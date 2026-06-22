@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "./AuthContext";
+import AuthForm from "./AuthForm";
 
 const TOOLS = [
   {
@@ -36,6 +39,15 @@ function Icon({ name }) {
 }
 
 export default function App() {
+  const { user, signOut } = useAuth();
+  const navigate = useNavigate();
+  const [authMode, setAuthMode] = useState(null);
+
+  React.useEffect(() => {
+    if (user) {
+      navigate("/library");
+    }
+  }, [user, navigate]);
   const [theme, setTheme] = useState("fun");
   const isPro = theme === "pro";
 
@@ -68,8 +80,8 @@ export default function App() {
               Pro
             </button>
           </div>
-          <button className="btn-ghost">Log in</button>
-          <button className="btn-primary">Sign up free</button>
+          <button className="btn-ghost" onClick={() => setAuthMode("login")}>Log in</button>
+          <button className="btn-primary" onClick={() => setAuthMode("signup")}>Sign up free</button>
         </div>
       </header>
 
@@ -104,7 +116,7 @@ export default function App() {
               <p>{t.desc}</p>
               {t.level && <span className="tool-level">{t.level}</span>}
               {t.status === "live" ? (
-                <button className="btn-primary tool-btn">Open tool</button>
+                <a href="/library" className="btn-primary tool-btn">Open tool</a>
               ) : (
                 <span className="soon-tag">Coming soon</span>
               )}

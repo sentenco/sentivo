@@ -19,11 +19,53 @@ const ALL_TOOLS = [
 
 const PER_PAGE = 10;
 
-const CATEGORY_ICON_PLACEHOLDER = (
-  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <circle cx="12" cy="12" r="9" strokeDasharray="3 3" />
-  </svg>
-);
+function CategoryIcon({ name }) {
+  const props = { width: 18, height: 18, viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: 2, strokeLinecap: "round", strokeLinejoin: "round" };
+  switch (name) {
+    case "Grammar":
+      return (
+        <svg {...props}>
+          <path d="M9 3h3a2 2 0 0 1 2 2v2a2 2 0 0 0 2 2h2a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2h-2a2 2 0 0 0-2 2v2a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2v-2a2 2 0 0 0-2-2H3a2 2 0 0 1-2-2v0" />
+        </svg>
+      );
+    case "Vocabulary":
+      return (
+        <svg {...props}>
+          <path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z" />
+        </svg>
+      );
+    case "Reading":
+      return (
+        <svg {...props}>
+          <path d="M3 5.5C3 4.7 3.7 4 4.5 4H11v16H4.5A1.5 1.5 0 0 1 3 18.5z" />
+          <path d="M21 5.5c0-.8-.7-1.5-1.5-1.5H13v16h6.5a1.5 1.5 0 0 0 1.5-1.5z" />
+        </svg>
+      );
+    case "Writing":
+      return (
+        <svg {...props}>
+          <path d="M12 20h9" />
+          <path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z" />
+        </svg>
+      );
+    case "Listening":
+      return (
+        <svg {...props}>
+          <path d="M3 18v-6a9 9 0 0 1 18 0v6" />
+          <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3z" />
+          <path d="M3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z" />
+        </svg>
+      );
+    case "Speaking":
+      return (
+        <svg {...props}>
+          <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+        </svg>
+      );
+    default:
+      return null;
+  }
+}
 
 function Motif({ type }) {
   switch (type) {
@@ -186,7 +228,7 @@ export default function Library() {
               className={`cat-pill ${category === cat ? "is-active" : ""}`}
               onClick={() => changeCategory(cat)}
             >
-              {cat !== "All" && <span className="cat-icon">{CATEGORY_ICON_PLACEHOLDER}</span>}
+              {cat !== "All" && <span className="cat-icon"><CategoryIcon name={cat} /></span>}
               {cat}
             </button>
           ))}
@@ -196,8 +238,11 @@ export default function Library() {
           <p className="empty-msg">No tools found. Try a different search or category.</p>
         ) : (
           <div className="cover-grid">
-            {pageItems.map((c) => (
-              <div key={c.id} className={`cover cover--${c.palette}`}>
+            {pageItems.map((c) => {
+  const CoverTag = c.id === "stress" ? "a" : "div";
+  const coverProps = c.id === "stress" ? { href: "/library/stress" } : {};
+  return (
+    <CoverTag key={c.id} {...coverProps} className={`cover cover--${c.palette}`}>
                 {c.access === "premium" && (
                   <span className="premium-badge">
                     <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -233,8 +278,9 @@ export default function Library() {
                 <div className="cover-footer">
                   <span className="cover-level">{c.level}</span>
                 </div>
-              </div>
-            ))}
+                </CoverTag>
+              );
+            })}
           </div>
         )}
 
