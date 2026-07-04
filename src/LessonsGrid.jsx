@@ -18,7 +18,7 @@ const LEVEL_COLORS = {
 
 const UNIT_COLORS = ["coral", "teal", "lavender", "gold", "teal", "lavender", "coral", "gold"];
 
-function LessonCard({ lesson, levelColor, onOpen, isPro }) {
+function LessonCard({ lesson, levelColor, onOpen, isPro, thumbnail }) {
   const unitIdx = (lesson.unit_number - 1) % UNIT_COLORS.length;
   const palette = {
     coral:   { bg: "#FAECE7", accent: "#D85A30" },
@@ -41,12 +41,16 @@ function LessonCard({ lesson, levelColor, onOpen, isPro }) {
         <span className="lg-lesson-num">Lesson {lesson.lesson_number}</span>
       </div>
       <div className="lg-card-motif">
-        <svg viewBox="0 0 80 50" width="80" height="50" fill="none" aria-hidden="true">
-          <rect x="8" y="10" width="64" height="30" rx="6" fill={palette.accent} opacity="0.12" />
-          <rect x="16" y="18" width="30" height="3" rx="1.5" fill={palette.accent} opacity="0.5" />
-          <rect x="16" y="25" width="48" height="3" rx="1.5" fill={palette.accent} opacity="0.35" />
-          <rect x="16" y="32" width="38" height="3" rx="1.5" fill={palette.accent} opacity="0.25" />
-        </svg>
+        {thumbnail ? (
+          <img className="lg-card-thumb" src={thumbnail} alt="" />
+        ) : (
+          <svg viewBox="0 0 80 50" width="80" height="50" fill="none" aria-hidden="true">
+            <rect x="8" y="10" width="64" height="30" rx="6" fill={palette.accent} opacity="0.12" />
+            <rect x="16" y="18" width="30" height="3" rx="1.5" fill={palette.accent} opacity="0.5" />
+            <rect x="16" y="25" width="48" height="3" rx="1.5" fill={palette.accent} opacity="0.35" />
+            <rect x="16" y="32" width="38" height="3" rx="1.5" fill={palette.accent} opacity="0.25" />
+          </svg>
+        )}
       </div>
       <h3 className="lg-card-title">{lesson.title}</h3>
       <p className="lg-card-topic">{lesson.topic}</p>
@@ -91,6 +95,7 @@ export default function LessonsGrid({ level = "A1", ageTrack = "kids", onBack, o
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [activeUnit, setActiveUnit] = useState("all");
+  const [thumbnails, setThumbnails] = useState({});
 
   const track = TRACK_META[ageTrack] || TRACK_META.kids;
   const lv = LEVEL_COLORS[level] || LEVEL_COLORS.A1;
@@ -110,6 +115,22 @@ export default function LessonsGrid({ level = "A1", ageTrack = "kids", onBack, o
           .order("lesson_number", { ascending: true });
         if (err) throw err;
         setLessons(data || []);
+
+        const ids = (data || []).map((l) => l.id);
+        if (ids.length) {
+          const { data: slideData } = await supabase
+            .from("lesson_slides")
+            .select("lesson_id, content")
+            .in("lesson_id", ids)
+            .eq("slide_number", 1);
+          const map = {};
+          (slideData || []).forEach((s) => {
+            if (s.content?.image_url) map[s.lesson_id] = s.content.image_url;
+          });
+          setThumbnails(map);
+        } else {
+          setThumbnails({});
+        }
       } catch (e) {
         setError(e.message);
         setLessons([]);
@@ -230,6 +251,7 @@ export default function LessonsGrid({ level = "A1", ageTrack = "kids", onBack, o
                 levelColor={lv.color}
                 onOpen={openLesson}
                 isPro={isPro}
+                thumbnail={thumbnails[lesson.id]}
               />
             ))}
           </div>
@@ -403,6 +425,12 @@ const styles = `
 .lg-card-motif {
   display: flex; align-items: center; justify-content: center;
   padding: 10px 0 4px;
+}
+.lg-card-thumb {
+  width: 100%;
+  height: 90px;
+  object-fit: cover;
+  border-radius: 10px;
 }
 
 .lg-card-title {

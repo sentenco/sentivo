@@ -220,6 +220,23 @@ export default function Library() {
   const [activeSidebar, setActiveSidebar] = useState("library");
   const [curriculumLevel, setCurriculumLevel] = useState(null);
 
+  useEffect(() => {
+    window.history.replaceState({ activeSidebar: "library", curriculumLevel: null }, "");
+    function onPopState(e) {
+      const state = e.state || {};
+      setActiveSidebar(state.activeSidebar || "library");
+      setCurriculumLevel(state.curriculumLevel || null);
+    }
+    window.addEventListener("popstate", onPopState);
+    return () => window.removeEventListener("popstate", onPopState);
+  }, []);
+
+  function goToSidebar(sidebar, level = null) {
+    setActiveSidebar(sidebar);
+    setCurriculumLevel(level);
+    window.history.pushState({ activeSidebar: sidebar, curriculumLevel: level }, "");
+  }
+
   const gridWrapRef = useRef(null);
   const [gridConfig, setGridConfig] = useState({ width: 160, height: 224, columns: 4 });
 
@@ -362,7 +379,7 @@ export default function Library() {
           <span className="sidebar-heading">Curriculum</span>
           <button
             className={`sidebar-item ${activeSidebar === "curriculum" && !curriculumLevel ? "sidebar-item--active" : "sidebar-item--inactive"}`}
-            onClick={() => { setActiveSidebar("curriculum"); setCurriculumLevel(null); }}
+            onClick={() => goToSidebar("curriculum", null)}
             title="Curriculum Overview"
           >
             <div className="sidebar-icon">
@@ -377,7 +394,7 @@ export default function Library() {
             <button
               key={lvl}
               className={`sidebar-item ${activeSidebar === "curriculum" && curriculumLevel === lvl ? "sidebar-item--active" : "sidebar-item--inactive"}`}
-              onClick={() => { setActiveSidebar("curriculum"); setCurriculumLevel(lvl); }}
+              onClick={() => goToSidebar("curriculum", lvl)}
               title={`${lvl} Lessons`}
               style={{ padding: "8px 10px" }}
             >
@@ -392,7 +409,7 @@ export default function Library() {
           <a
             href="/primary/virtual-scenario-room"
             className={`sidebar-item ${activeSidebar === "library" ? "sidebar-item--active" : "sidebar-item--inactive"}`}
-            onClick={() => setActiveSidebar("library")}
+            onClick={(e) => { e.preventDefault(); goToSidebar("library"); }}
           >
             <div className="sidebar-icon">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
