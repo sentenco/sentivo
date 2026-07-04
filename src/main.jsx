@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import './index.css'
 import Library from './Library.jsx'
 import Flashcards from './Flashcards.jsx'
+import LessonPlayerPage from './LessonPlayerPage.jsx'
 import { AuthProvider } from './AuthContext.jsx'
 
 createRoot(document.getElementById('root')).render(
@@ -14,6 +15,7 @@ createRoot(document.getElementById('root')).render(
           <Route path="/" element={<Library />} />
           <Route path="/library" element={<Library />} />
           <Route path="/library/stress" element={<Flashcards />} />
+          <Route path="/lesson-player/:id" element={<LessonPlayerPage />} />
         </Routes>
       </BrowserRouter>
     </AuthProvider>
