@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { supabase } from "./supabaseClient";
 
 const TRACK_META = {
@@ -91,6 +92,7 @@ function EmptyState({ level, track }) {
 }
 
 export default function LessonsGrid({ level = "A1", ageTrack = "kids", onBack, onBackToLevel, isPro = false }) {
+  const navigate = useNavigate();
   const [lessons, setLessons] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -206,6 +208,13 @@ export default function LessonsGrid({ level = "A1", ageTrack = "kids", onBack, o
             <span className="lg-stat-num">{units.filter((u) => u !== "all").length}</span>
             <span className="lg-stat-label">Units</span>
           </div>
+          <button
+            className="lg-guide-btn"
+            onClick={() => navigate(`/teacher-guide/${level}/${ageTrack}`)}
+          >
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+            Teacher Guide
+          </button>
         </div>
       </div>
 
@@ -337,6 +346,16 @@ const styles = `
 }
 .lg-stat-label { font-size: 11px; font-weight: 700; color: #A89BAA; text-transform: uppercase; letter-spacing: 0.06em; }
 .lg-stat-divider { width: 1px; height: 36px; background: rgba(0,0,0,0.08); }
+
+.lg-guide-btn {
+  display: flex; align-items: center; gap: 6px;
+  font-family: 'Quicksand', sans-serif; font-size: 12.5px; font-weight: 700;
+  color: #5A4E6A; background: #fff; border: 1.5px solid rgba(0,0,0,0.1);
+  border-radius: 999px; padding: 8px 16px; cursor: pointer; white-space: nowrap;
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+.lg-guide-btn:hover { border-color: var(--tr-color); color: var(--tr-color); }
+.lg-pro .lg-guide-btn { border-radius: 4px; }
 
 .lg-filter-bar {
   display: flex; gap: 8px; padding: 16px 48px;
