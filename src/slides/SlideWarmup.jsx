@@ -7,12 +7,14 @@ export default function SlideWarmup({ content }) {
       <style>{CSS}</style>
       <div className="slw-image-area">
         <span className="slw-pill">Warm-up</span>
-        {content.image_url && (
+        {content.image_url ? (
           <img className="slw-image" src={content.image_url} alt="" />
-        )}
+        ) : content.display ? (
+          <div className="slw-display">{content.display}</div>
+        ) : null}
       </div>
       <div className="slw-bottom">
-        <h2 className="slw-title">What do you see?</h2>
+        <h2 className="slw-title">{content.title || "What do you see?"}</h2>
         <div className="slw-questions">
           {questions.map((q, i) => (
             <span className="slw-chip" key={i}>
@@ -45,6 +47,15 @@ const CSS = `
   max-height: 100%;
   object-fit: contain;
   mix-blend-mode: multiply;
+}
+.slw-display {
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 700;
+  font-size: clamp(28px, 6vw, 44px);
+  letter-spacing: 4px;
+  color: #1B2A4A;
+  text-align: center;
+  padding: 0 24px;
 }
 .slw-pill {
   position: absolute;
