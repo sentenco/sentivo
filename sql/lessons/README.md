@@ -94,6 +94,8 @@ the real CEFR descriptors for that level. Two things to actively watch for:
 **A1 · Kids**
 - Unit 1 (5/5 lessons) — Hello & My Name, My Age, My Family, My Likes, All
   About Me. Complete, CEFR-checked, titles finalized. No images yet.
-- Unit 2+ — not started.
+- Unit 2 (1/5 lessons) — My Morning (daily routine) done, run in Supabase.
+  Planned next: My House, Food I Like, What's the Weather?, Unit 2 Review.
+- Unit 3+ — not started.
 
 **A2–C2** — not started.
