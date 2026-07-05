@@ -1,8 +1,8 @@
 
-export default function SlideHeader({ tag, title, subtitle, gradient }) {
+export default function SlideHeader({ tag, title, subtitle, gradient, isAdult }) {
   return (
     <div
-      className="slh-header"
+      className={`slh-header ${isAdult ? "is-adult" : ""}`}
       style={gradient ? { background: gradient } : undefined}
     >
       <style>{CSS}</style>
@@ -45,5 +45,31 @@ const CSS = `
   font-size: 12.5px;
   color: rgba(255,255,255,0.65);
   margin: 3px 0 0;
+}
+
+.slh-header.is-adult {
+  background: #1B2A4A;
+  padding: 16px 26px 14px;
+}
+.slh-header.is-adult .slh-tag {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 10px;
+  letter-spacing: 0.09em;
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.4);
+  border-radius: 3px;
+  color: rgba(255,255,255,0.85);
+}
+.slh-header.is-adult .slh-title {
+  font-family: 'Source Serif 4', serif;
+  font-weight: 600;
+  font-size: 20px;
+  letter-spacing: -0.1px;
+}
+.slh-header.is-adult .slh-subtitle {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  color: rgba(255,255,255,0.62);
 }
 `;

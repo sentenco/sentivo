@@ -1,9 +1,10 @@
 
-export default function SlideWarmup({ content }) {
+export default function SlideWarmup({ content, lesson }) {
   const questions = content.questions || [];
+  const isAdult = lesson?.age_track === "adults";
 
   return (
-    <div className="slw-slide">
+    <div className={`slw-slide ${isAdult ? "is-adult" : ""}`}>
       <style>{CSS}</style>
       <div className="slw-image-area">
         <span className="slw-pill">Warm-up</span>
@@ -103,5 +104,46 @@ const CSS = `
   padding: 9px 18px;
   border-radius: 999px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+}
+
+/* ── Adults theme ── */
+.slw-slide.is-adult .slw-image-area { background: #F7F5EF; }
+.slw-slide.is-adult .slw-pill {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 10px;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  background: #fff;
+  border: 1px solid #DEDAD0;
+  border-radius: 3px;
+  box-shadow: none;
+  color: #6B6458;
+}
+.slw-slide.is-adult .slw-display {
+  font-family: 'Source Serif 4', serif;
+  letter-spacing: 0.5px;
+  color: #1B2A4A;
+}
+.slw-slide.is-adult .slw-bottom {
+  background: #FFFFFF;
+  border-top: 1px solid #EDEAE2;
+  gap: 12px;
+}
+.slw-slide.is-adult .slw-title {
+  font-family: 'Source Serif 4', serif;
+  font-weight: 600;
+  font-size: 18px;
+  color: #1B2A4A;
+}
+.slw-slide.is-adult .slw-chip {
+  background: #fff;
+  color: #1B2A4A;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 13px;
+  border: 1px solid #DEDAD0;
+  border-radius: 4px;
+  box-shadow: none;
 }
 `;

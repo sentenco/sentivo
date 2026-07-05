@@ -1,17 +1,19 @@
 import { useState } from "react";
 import SlideHeader from "./SlideHeader";
 
-export default function SlideVocabulary({ content }) {
+export default function SlideVocabulary({ content, lesson }) {
   const words = content.words || [];
   const [zoomed, setZoomed] = useState(null);
+  const isAdult = lesson?.age_track === "adults";
 
   return (
-    <div className="slv-slide">
+    <div className={`slv-slide ${isAdult ? "is-adult" : ""}`}>
       <style>{CSS}</style>
       <SlideHeader
         tag={content.tag || "Vocabulary"}
         title={content.title || "New Words"}
         subtitle={content.subtitle || "Tap a card to see it bigger."}
+        isAdult={isAdult}
       />
       <div className="slv-grid">
         {words.slice(0, 4).map((w, i) => (
@@ -146,4 +148,22 @@ const CSS = `
   font-size: 24px;
   color: #1B2A4A;
 }
+
+/* ── Adults theme ── */
+.slv-slide.is-adult .slv-grid { background: #F7F5EF; }
+.slv-slide.is-adult .slv-card {
+  border-radius: 5px;
+  box-shadow: none;
+  border: 1px solid #DEDAD0;
+}
+.slv-slide.is-adult .slv-card:hover { transform: none; border-color: #B7ADA0; }
+.slv-slide.is-adult .slv-card-bottom {
+  font-family: 'Source Serif 4', serif;
+  font-weight: 600;
+  font-size: 17px;
+  border-top: 1px solid #EDEAE2;
+}
+.slv-slide.is-adult .slv-overlay { background: rgba(27, 42, 74, 0.72); }
+.slv-slide.is-adult .slv-zoom-card { border-radius: 6px; box-shadow: 0 16px 40px rgba(0,0,0,0.25); }
+.slv-slide.is-adult .slv-zoom-bottom { font-family: 'Source Serif 4', serif; font-weight: 600; }
 `;

@@ -1,6 +1,7 @@
-export default function SlidePhrases({ content }) {
+export default function SlidePhrases({ content, lesson }) {
   const teacher = content.teacher || [];
   const student = content.student || [];
+  const isAdult = lesson?.age_track === "adults";
 
   const turns = [];
   const max = Math.max(teacher.length, student.length);
@@ -10,7 +11,7 @@ export default function SlidePhrases({ content }) {
   }
 
   return (
-    <div className="slp-slide">
+    <div className={`slp-slide ${isAdult ? "is-adult" : ""}`}>
       <style>{CSS}</style>
       <div className="slp-header">
         <span className="slp-tag">{content.tag || "Key Phrases"}</span>
@@ -19,7 +20,11 @@ export default function SlidePhrases({ content }) {
       <div className="slp-thread">
         {turns.map((turn, i) => (
           <div className={`slp-turn slp-turn--${turn.speaker}`} key={i}>
-            <div className="slp-avatar">{turn.speaker === "teacher" ? "T" : "S"}</div>
+            <div className="slp-avatar">
+              {isAdult
+                ? turn.speaker === "teacher" ? "Q" : "A"
+                : turn.speaker === "teacher" ? "T" : "S"}
+            </div>
             <div className="slp-bubble">{turn.text}</div>
           </div>
         ))}
@@ -117,5 +122,61 @@ const CSS = `
   text-align: center;
   padding: 6px 20px 8px;
   flex-shrink: 0;
+}
+
+/* ── Adults theme: quoted model-answer transcript, not a chat bubble ── */
+.slp-slide.is-adult { background: #F7F5EF; }
+.slp-slide.is-adult .slp-tag {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 10px;
+  letter-spacing: 0.09em;
+  background: transparent;
+  border: 1px solid #DEDAD0;
+  border-radius: 3px;
+  color: #6B6458;
+}
+.slp-slide.is-adult .slp-title {
+  font-family: 'Source Serif 4', serif;
+  font-weight: 600;
+  font-size: 18px;
+  color: #1B2A4A;
+}
+.slp-slide.is-adult .slp-avatar {
+  border-radius: 3px;
+  width: auto;
+  min-width: 26px;
+  height: 22px;
+  padding: 0 6px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 10px;
+  letter-spacing: 0.04em;
+}
+.slp-slide.is-adult .slp-turn--teacher .slp-avatar { background: transparent; border: 1px solid #B7ADA0; color: #6B6458; }
+.slp-slide.is-adult .slp-turn--student .slp-avatar { background: #1B2A4A; color: #fff; }
+.slp-slide.is-adult .slp-bubble {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  border-radius: 5px;
+  line-height: 1.5;
+}
+.slp-slide.is-adult .slp-turn--teacher .slp-bubble {
+  background: #fff;
+  border: 1px solid #DEDAD0;
+  border-bottom-left-radius: 5px;
+  color: #6B6458;
+}
+.slp-slide.is-adult .slp-turn--student .slp-bubble {
+  background: #fff;
+  border: 1px solid #1B2A4A;
+  border-bottom-right-radius: 5px;
+  color: #1B2A4A;
+  font-weight: 500;
+}
+.slp-slide.is-adult .slp-note {
+  font-family: 'Inter', sans-serif;
+  color: #8A8272;
 }
 `;

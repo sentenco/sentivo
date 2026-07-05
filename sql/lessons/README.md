@@ -106,4 +106,21 @@ the real CEFR descriptors for that level. Two things to actively watch for:
   units when "All units" is selected. Covers A1 Kids Units 1–2 so far;
   extend the `GUIDES` object there as new units/tracks are built.
 
-**A2–C2** — not started.
+**A2 · Adults**
+- Unit 1 (1 lesson) — My Workday as a Photographer (`lesson14_insert.sql`).
+  Communication-first present simple: routines, frequency adverbs, work
+  vocabulary (start/meet/edit/send), error correction. Not run in Supabase
+  yet — user runs the script. No images yet (prompts given separately,
+  not stored in content). Teacher's Guide page not extended for this
+  track yet.
+- This is the first Adults-track lesson. Added a real "adults" visual
+  theme (serif headings via 'Source Serif 4', 'Inter' body, muted
+  navy/terracotta/cream palette, flat editorial chrome — no Fredoka,
+  no candy colors, no bounce) to `LessonPlayer.jsx` and every
+  `src/slides/Slide*.jsx` component, gated on `lesson.age_track ===
+  "adults"`. Kids/Teens rendering is untouched — verified via a
+  temporary local harness (not committed) rendering all 9 slide types
+  with `age_track: "adults"` mock data.
+- Unit 2+ — not started.
+
+**B1–C2** — not started.

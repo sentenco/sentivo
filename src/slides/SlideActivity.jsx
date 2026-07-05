@@ -2,6 +2,7 @@ import { useMemo, useState } from "react";
 import SlideHeader from "./SlideHeader";
 
 const SPEAKER_COLOR = { A: "#FF7A59", B: "#2CA97F" };
+const SPEAKER_COLOR_ADULT = { A: "#B5502E", B: "#1B2A4A" };
 
 function parseBlankSegments(text) {
   const regex = /\[([^\]]+)\]/g;
@@ -30,7 +31,8 @@ function shuffle(arr) {
   return a;
 }
 
-export default function SlideActivity({ content }) {
+export default function SlideActivity({ content, lesson }) {
+  const isAdult = lesson?.age_track === "adults";
   const answerWords = content.wordBank || content.blanks || [];
 
   const lines = useMemo(() => {
@@ -104,17 +106,18 @@ export default function SlideActivity({ content }) {
   }
 
   return (
-    <div className="sla-slide">
+    <div className={`sla-slide ${isAdult ? "is-adult" : ""}`}>
       <style>{CSS}</style>
       <SlideHeader
         tag={content.tag || "Activity"}
         title={content.title || "Fill in the Blanks"}
         subtitle={content.subtitle || "Drag each word into the right blank."}
+        isAdult={isAdult}
       />
       <div className="sla-body">
         <div className="sla-dialogue">
           {lines.map((line, i) => {
-            const color = SPEAKER_COLOR[line.speaker] || "#1B2A4A";
+            const color = (isAdult ? SPEAKER_COLOR_ADULT : SPEAKER_COLOR)[line.speaker] || "#1B2A4A";
             return (
               <div className="sla-line" key={i}>
                 <span className="sla-speaker" style={{ color }}>
@@ -276,4 +279,28 @@ const CSS = `
   font-size: 13px;
   color: #2CA97F;
 }
+
+/* ── Adults theme ── */
+.sla-slide.is-adult .sla-body { background: #F7F5EF; }
+.sla-slide.is-adult .sla-dialogue {
+  background: #fff;
+  border: 1px solid #DEDAD0;
+  border-radius: 6px;
+}
+.sla-slide.is-adult .sla-line { font-family: 'Inter', sans-serif; font-size: 14.5px; color: #1B2A4A; }
+.sla-slide.is-adult .sla-text { font-weight: 400; }
+.sla-slide.is-adult .sla-blank { border-radius: 3px; }
+.sla-slide.is-adult .sla-blank.is-over { background: #F1ECE3; }
+.sla-slide.is-adult .sla-wordbank { border-radius: 6px; }
+.sla-slide.is-adult .sla-wordbank.is-over { background: #F1ECE3; }
+.sla-slide.is-adult .sla-chip {
+  background: #fff;
+  border: 1px solid #1B2A4A;
+  color: #1B2A4A;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 12.5px;
+  border-radius: 4px;
+}
+.sla-slide.is-adult .sla-bank-done { font-family: 'Inter', sans-serif; color: #3B6D11; }
 `;

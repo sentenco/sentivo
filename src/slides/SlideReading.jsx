@@ -1,15 +1,17 @@
 import SlideHeader from "./SlideHeader";
 
-export default function SlideReading({ content }) {
+export default function SlideReading({ content, lesson }) {
   const questions = content.questions || [];
+  const isAdult = lesson?.age_track === "adults";
 
   return (
-    <div className="slr-slide">
+    <div className={`slr-slide ${isAdult ? "is-adult" : ""}`}>
       <style>{CSS}</style>
       <SlideHeader
         tag={content.tag || "Reading"}
         title={content.title || "Read and Answer"}
         subtitle={content.subtitle || "Read the text, then answer the questions below."}
+        isAdult={isAdult}
       />
       <div className="slr-body">
         <div className="slr-columns">
@@ -95,5 +97,30 @@ const CSS = `
   font-size: 13.5px;
   padding: 7px 14px;
   border-radius: 999px;
+}
+
+/* ── Adults theme: single-column editorial text, no image dependency ── */
+.slr-slide.is-adult .slr-body { background: #F7F5EF; }
+.slr-slide.is-adult .slr-columns {
+  grid-template-columns: 1fr;
+  justify-items: center;
+}
+.slr-slide.is-adult .slr-text {
+  font-family: 'Source Serif 4', serif;
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 1.65;
+  color: #1B2A4A;
+  max-width: 480px;
+  text-align: left;
+}
+.slr-slide.is-adult .slr-chip {
+  background: #fff;
+  border: 1px solid #DEDAD0;
+  color: #6B6458;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 13px;
+  border-radius: 4px;
 }
 `;

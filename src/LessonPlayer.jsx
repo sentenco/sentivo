@@ -130,14 +130,15 @@ export default function LessonPlayer({ lessonId: lessonIdProp }) {
   const slide = slides[current];
   const SlideComponent = SLIDE_COMPONENTS[slide.slide_type];
   const progress = ((current + 1) / slides.length) * 100;
+  const isAdult = lesson?.age_track === "adults";
 
   return (
-    <div className="lp-shell">
+    <div className={`lp-shell ${isAdult ? "is-adult" : ""}`}>
       <style>{CSS}</style>
 
       <div className="lp-header">
         <div className="lp-wordmark">
-          sentivo<span className="lp-dot">•</span>
+          sentivo{!isAdult && <span className="lp-dot">•</span>}
         </div>
         <div className="lp-slide-type">
           {SLIDE_TYPE_LABELS[slide.slide_type] || slide.slide_type}
@@ -191,7 +192,7 @@ export default function LessonPlayer({ lessonId: lessonIdProp }) {
 }
 
 const CSS = `
-@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Quicksand:wght@500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Quicksand:wght@500;600;700&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600;8..60,700&family=Inter:wght@400;500;600;700&display=swap');
 
 .lp-shell {
   width: 780px;
@@ -307,4 +308,50 @@ const CSS = `
   cursor: pointer;
 }
 .lp-dot.is-active { width: 20px; background: #FF7A59; }
+
+/* ── Adults theme: editorial, muted, no bounce ── */
+.lp-shell.is-adult {
+  background: #F7F5EF;
+  border: 1px solid #DEDAD0;
+  border-radius: 6px;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.35);
+  font-family: 'Inter', sans-serif;
+}
+.lp-shell.is-adult .lp-wordmark {
+  font-family: 'Source Serif 4', serif;
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: 0.02em;
+  color: #1B2A4A;
+}
+.lp-shell.is-adult .lp-slide-type {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: #B7ADA0;
+}
+.lp-shell.is-adult .lp-counter {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  color: #8A8272;
+}
+.lp-shell.is-adult .lp-progress-track { background: #EDEAE2; }
+.lp-shell.is-adult .lp-progress-fill { background: #B5502E; }
+.lp-shell.is-adult .lp-btn {
+  background: #1B2A4A;
+  border-radius: 4px;
+  box-shadow: none;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 13px;
+}
+.lp-shell.is-adult .lp-btn:active { transform: none; box-shadow: none; }
+.lp-shell.is-adult .lp-btn:disabled { box-shadow: none; }
+.lp-shell.is-adult .lp-dot {
+  border-radius: 2px;
+  width: 12px;
+  height: 3px;
+  background: #DEDAD0;
+}
+.lp-shell.is-adult .lp-dot.is-active { width: 22px; background: #1B2A4A; }
 `;

@@ -1,16 +1,18 @@
 import SlideHeader from "./SlideHeader";
 import { renderBlankLine } from "./dialogueUtils";
 
-export default function SlideWriting({ content }) {
+export default function SlideWriting({ content, lesson }) {
   const prompts = content.prompts || [];
+  const isAdult = lesson?.age_track === "adults";
 
   return (
-    <div className="slwr-slide">
+    <div className={`slwr-slide ${isAdult ? "is-adult" : ""}`}>
       <style>{CSS}</style>
       <SlideHeader
         tag={content.tag || "Writing"}
         title={content.title || "Write about you"}
         subtitle={content.subtitle || "Complete each sentence below."}
+        isAdult={isAdult}
       />
       <div className="slwr-body">
         {prompts.map((prompt, i) => (
@@ -66,6 +68,30 @@ const CSS = `
   font-family: 'Quicksand', sans-serif;
   font-weight: 600;
   font-size: 16.5px;
+  color: #1B2A4A;
+}
+
+/* ── Adults theme ── */
+.slwr-slide.is-adult .slwr-body { background: #F7F5EF; gap: 14px; }
+.slwr-slide.is-adult .slwr-row {
+  background: #fff;
+  border: 1px solid #DEDAD0;
+  border-radius: 6px;
+  padding: 12px 16px;
+}
+.slwr-slide.is-adult .slwr-num {
+  border-radius: 3px;
+  background: transparent;
+  border: 1px solid #B5502E;
+  color: #B5502E;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+}
+.slwr-slide.is-adult .slwr-sentence {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 15.5px;
   color: #1B2A4A;
 }
 `;

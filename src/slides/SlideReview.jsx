@@ -1,10 +1,12 @@
 import { useState } from "react";
 
 const GRADIENT = "linear-gradient(135deg, #3B6D11, #5FA873)";
+const GRADIENT_ADULT = "#1B2A4A";
 
-export default function SlideReview({ content }) {
+export default function SlideReview({ content, lesson }) {
   const checklist = content.checklist || [];
   const [checked, setChecked] = useState(() => new Set());
+  const isAdult = lesson?.age_track === "adults";
 
   function toggle(i) {
     setChecked((prev) => {
@@ -16,9 +18,9 @@ export default function SlideReview({ content }) {
   }
 
   return (
-    <div className="slrv-slide">
+    <div className={`slrv-slide ${isAdult ? "is-adult" : ""}`}>
       <style>{CSS}</style>
-      <div className="slrv-header" style={{ background: GRADIENT }}>
+      <div className="slrv-header" style={{ background: isAdult ? GRADIENT_ADULT : GRADIENT }}>
         {content.tag && <span className="slrv-tag">{content.tag}</span>}
         <h2 className="slrv-title">{content.title || "Today I can…"}</h2>
         {content.subtitle && <p className="slrv-subtitle">{content.subtitle}</p>}
@@ -156,5 +158,60 @@ const CSS = `
   font-size: 13.5px;
   color: #fff;
   margin: 0;
+}
+
+/* ── Adults theme ── */
+.slrv-slide.is-adult .slrv-tag {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 10px;
+  letter-spacing: 0.09em;
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.4);
+  border-radius: 3px;
+}
+.slrv-slide.is-adult .slrv-title {
+  font-family: 'Source Serif 4', serif;
+  font-weight: 600;
+  font-size: 20px;
+}
+.slrv-slide.is-adult .slrv-subtitle { font-family: 'Inter', sans-serif; font-weight: 400; }
+.slrv-slide.is-adult .slrv-body { background: #F7F5EF; }
+.slrv-slide.is-adult .slrv-item {
+  background: #fff;
+  border: 1px solid #DEDAD0;
+  border-radius: 5px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 13.5px;
+  color: #1B2A4A;
+}
+.slrv-slide.is-adult .slrv-item.is-checked {
+  background: #F1F5EE;
+  border-color: #3B6D11;
+  color: #2C6B4F;
+}
+.slrv-slide.is-adult .slrv-check {
+  border-radius: 3px;
+  border-color: #C9C2B4;
+}
+.slrv-slide.is-adult .slrv-item.is-checked .slrv-check {
+  background: #3B6D11;
+  border-color: #3B6D11;
+}
+.slrv-slide.is-adult .slrv-challenge {
+  background: #1B2A4A;
+  border-radius: 6px;
+}
+.slrv-slide.is-adult .slrv-challenge-label {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  color: #E8B978;
+}
+.slrv-slide.is-adult .slrv-challenge-text {
+  font-family: 'Source Serif 4', serif;
+  font-weight: 500;
+  font-size: 14.5px;
 }
 `;
