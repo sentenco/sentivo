@@ -65,10 +65,10 @@ const CSS = `
   min-height: 0;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 8px;
-  padding: 0 24px;
-  overflow: hidden;
+  padding: 8px 24px;
+  overflow-y: auto;
 }
 .slp-turn {
   display: flex;
