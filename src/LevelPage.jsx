@@ -13,16 +13,6 @@ const LEVEL_DATA = {
       "Give simple personal information — name, age, country, phone",
       "Talk in simple sentences about family, daily routine, home, food, shopping, hobbies, and weather",
     ],
-    units: [
-      "Greetings & Introductions",
-      "Numbers & Personal Information",
-      "Family & People",
-      "Daily Routine & Time",
-      "Home, Classroom & Town",
-      "Food, Likes & Health",
-      "Shopping & Money",
-      "Free Time, Weather & Review",
-    ],
   },
   A2: {
     name: "Elementary",
@@ -35,15 +25,6 @@ const LEVEL_DATA = {
       "Talk about daily routines, school and work, and simple past events",
       "Handle common situations like shopping, eating out, and travel",
       "Describe people, places, and experiences in simple linked sentences",
-    ],
-    units: [
-      "Daily Life & School",
-      "Simple Past Experiences",
-      "Shopping & Services",
-      "Eating Out",
-      "Travel & Transport",
-      "Health & Appointments",
-      "Hobbies & Technology",
     ],
   },
   B1: {
@@ -58,14 +39,6 @@ const LEVEL_DATA = {
       "Handle common work and school situations in English",
       "Discuss plans, preferences, and experiences with reasons",
     ],
-    units: [
-      "Work & Study Life",
-      "Travel & Problem-Solving",
-      "Opinions & Discussions",
-      "News & Media",
-      "Projects & Presentations",
-      "Extended Narratives",
-    ],
   },
   B2: {
     name: "Upper Intermediate",
@@ -78,14 +51,6 @@ const LEVEL_DATA = {
       "Participate in extended discussions on a variety of topics",
       "Understand and summarize longer texts and media",
       "Present arguments, advantages and disadvantages, and detailed opinions",
-    ],
-    units: [
-      "Current Issues",
-      "Workplace Communication",
-      "Academic Skills",
-      "Critical Reading & Listening",
-      "Formal Writing",
-      "Debates & Presentations",
     ],
   },
   C1: {
@@ -100,13 +65,6 @@ const LEVEL_DATA = {
       "Produce well-structured, detailed spoken and written work",
       "Adapt language appropriately to different formal and informal contexts",
     ],
-    units: [
-      "Academic & Professional Discourse",
-      "Complex Problem-Solving",
-      "Advanced Argumentation",
-      "Style & Register",
-      "Specialized Topics",
-    ],
   },
   C2: {
     name: "Proficient",
@@ -119,12 +77,6 @@ const LEVEL_DATA = {
       "Use English flexibly and confidently in any context",
       "Interpret and produce sophisticated texts and discourse",
       "Control tone, style, and nuance at a very fine level",
-    ],
-    units: [
-      "Advanced Text Analysis",
-      "Rhetoric & Persuasion",
-      "Research & Synthesis",
-      "Specialized Professional Domains",
     ],
   },
 };
@@ -234,12 +186,6 @@ export default function LevelPage({ level = "A1", onBack, onSelectTrack, isPro =
               </li>
             ))}
           </ul>
-          <div className="lp-units-label">Units covered</div>
-          <div className="lp-units-row">
-            {data.units.map((u, i) => (
-              <span key={i} className="lp-unit-chip">Unit {i + 1}: {u}</span>
-            ))}
-          </div>
         </div>
       </div>
 
@@ -378,14 +324,14 @@ const styles = `
 
 .lp-hero-right { display: flex; flex-direction: column; gap: 14px; }
 
-.lp-goals-label, .lp-units-label {
+.lp-goals-label {
   font-size: 10px;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: #A89BAA;
 }
-.lp-pro .lp-goals-label, .lp-pro .lp-units-label { color: #8A8070; }
+.lp-pro .lp-goals-label { color: #8A8070; }
 
 .lp-goals { list-style: none; display: flex; flex-direction: column; gap: 8px; }
 .lp-goal {
@@ -399,18 +345,6 @@ const styles = `
 }
 .lp-goal svg { flex-shrink: 0; margin-top: 2px; color: var(--lv-color); }
 .lp-pro .lp-goal { color: #1B2A4A; }
-
-.lp-units-row { display: flex; flex-wrap: wrap; gap: 6px; }
-.lp-unit-chip {
-  background: rgba(255,255,255,0.75);
-  border: 1px solid rgba(0,0,0,0.08);
-  border-radius: 999px;
-  font-size: 11px;
-  font-weight: 600;
-  color: #5A4E6A;
-  padding: 3px 10px;
-}
-.lp-pro .lp-unit-chip { border-radius: 3px; background: #fff; border-color: #DEDAD0; color: #6B6458; }
 
 .lp-tracks-section { padding: 36px 48px 60px; }
 .lp-tracks-hd { margin-bottom: 20px; }
