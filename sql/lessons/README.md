@@ -100,9 +100,10 @@ the real CEFR descriptors for that level. Two things to actively watch for:
   (assessment). A full-day routine story. Complete, all run in Supabase.
   No images yet.
 - Unit 3+ — not started.
-- Teacher Guide page live at `/teacher-guide/:level/:track` (see
-  `src/TeacherGuide.jsx`), linked from the Lessons Grid header. Covers
-  A1 Kids Units 1–2 so far; extend the `GUIDES` object there as new
-  units/tracks are built.
+- Teacher's Guide page live at `/teacher-guide/:level/:track` (see
+  `src/TeacherGuide.jsx`), linked from the Lessons Grid header. Opens in
+  a new tab; respects the active unit filter (`?unit=N`), or shows all
+  units when "All units" is selected. Covers A1 Kids Units 1–2 so far;
+  extend the `GUIDES` object there as new units/tracks are built.
 
 **A2–C2** — not started.

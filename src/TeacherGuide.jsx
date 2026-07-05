@@ -1,4 +1,4 @@
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 
 const GUIDES = {
   "A1-kids": {
@@ -159,7 +159,16 @@ function LessonTable({ lessons }) {
 export default function TeacherGuide() {
   const { level, track } = useParams();
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
   const guide = GUIDES[`${level}-${track}`];
+
+  const unitParam = searchParams.get("unit");
+  const scopedUnit = unitParam ? Number(unitParam) : null;
+  const units = guide
+    ? scopedUnit
+      ? guide.units.filter((u) => u.unit === scopedUnit)
+      : guide.units
+    : [];
 
   return (
     <div className="tg-wrap">
@@ -171,15 +180,15 @@ export default function TeacherGuide() {
           Lessons
         </button>
         <div className="tg-breadcrumb">
-          Curriculum &rsaquo; {level} &rsaquo; {track} &rsaquo; <span>Teacher Guide</span>
+          Curriculum &rsaquo; {level} &rsaquo; {track} &rsaquo; <span>Teacher's Guide{scopedUnit ? ` · Unit ${scopedUnit}` : ""}</span>
         </div>
       </div>
 
       {!guide ? (
         <div className="tg-empty">
-          <h1>Teacher Guide</h1>
+          <h1>Teacher's Guide</h1>
           <p>
-            There isn't a teacher guide for {level} {track} yet. Check back soon —
+            There isn't a teacher's guide for {level} {track} yet. Check back soon —
             we add guides as new units are built.
           </p>
         </div>
@@ -187,12 +196,16 @@ export default function TeacherGuide() {
         <div className="tg-content">
           <div className="tg-hero">
             <span className="tg-hero-badge">{level} · {track}</span>
-            <h1 className="tg-hero-title">Teacher Guide</h1>
+            <h1 className="tg-hero-title">Teacher's Guide</h1>
             <p className="tg-hero-subtitle">{guide.subtitle}</p>
-            <p className="tg-hero-intro">{guide.intro}</p>
+            <p className="tg-hero-intro">
+              {scopedUnit
+                ? `This is the Unit ${scopedUnit} section of the guide. Use it as a live reference to see what to teach first, what to practice, and what to avoid.`
+                : guide.intro}
+            </p>
           </div>
 
-          {guide.units.map((u) => (
+          {units.map((u) => (
             <section className="tg-unit" key={u.unit}>
               <h2 className="tg-unit-title">Unit {u.unit}</h2>
               <LessonTable lessons={u.lessons} />

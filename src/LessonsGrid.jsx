@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import { supabase } from "./supabaseClient";
 
 const TRACK_META = {
@@ -92,7 +91,6 @@ function EmptyState({ level, track }) {
 }
 
 export default function LessonsGrid({ level = "A1", ageTrack = "kids", onBack, onBackToLevel, isPro = false }) {
-  const navigate = useNavigate();
   const [lessons, setLessons] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -210,10 +208,13 @@ export default function LessonsGrid({ level = "A1", ageTrack = "kids", onBack, o
           </div>
           <button
             className="lg-guide-btn"
-            onClick={() => navigate(`/teacher-guide/${level}/${ageTrack}`)}
+            onClick={() => {
+              const url = `/teacher-guide/${level}/${ageTrack}${activeUnit !== "all" ? `?unit=${activeUnit}` : ""}`;
+              window.open(url, "_blank", "noopener");
+            }}
           >
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
-            Teacher Guide
+            {activeUnit === "all" ? "Teacher's Guide" : `Teacher's Guide · Unit ${activeUnit}`}
           </button>
         </div>
       </div>
