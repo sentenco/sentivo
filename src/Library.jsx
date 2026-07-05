@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { useNavigate, useParams, useLocation } from "react-router-dom";
 import { useAuth } from "./AuthContext";
 import AuthForm from "./AuthForm";
 import { supabase } from "./supabaseClient";
@@ -199,24 +200,19 @@ export default function Library() {
   const [authMode, setAuthMode] = useState(null);
   const [menuOpen, setMenuOpen] = useState(false);
   const isPro = theme === "pro";
-  const [activeSidebar, setActiveSidebar] = useState("library");
-  const [curriculumLevel, setCurriculumLevel] = useState(null);
-
-  useEffect(() => {
-    window.history.replaceState({ activeSidebar: "library", curriculumLevel: null }, "");
-    function onPopState(e) {
-      const state = e.state || {};
-      setActiveSidebar(state.activeSidebar || "library");
-      setCurriculumLevel(state.curriculumLevel || null);
-    }
-    window.addEventListener("popstate", onPopState);
-    return () => window.removeEventListener("popstate", onPopState);
-  }, []);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const params = useParams();
+  const isCurriculum = location.pathname.startsWith("/library/curriculum");
+  const curriculumLevel = params.level || null;
+  const curriculumTrack = params.track || null;
 
   function goToSidebar(sidebar, level = null) {
-    setActiveSidebar(sidebar);
-    setCurriculumLevel(level);
-    window.history.pushState({ activeSidebar: sidebar, curriculumLevel: level }, "");
+    if (sidebar === "curriculum") {
+      navigate(level ? `/library/curriculum/${level}` : "/library/curriculum");
+    } else {
+      navigate("/library");
+    }
   }
 
   const gridWrapRef = useRef(null);
@@ -347,7 +343,7 @@ export default function Library() {
         >
           <span className="sidebar-heading">Curriculum</span>
           <button
-            className={`sidebar-item ${activeSidebar === "curriculum" && !curriculumLevel ? "sidebar-item--active" : "sidebar-item--inactive"}`}
+            className={`sidebar-item ${isCurriculum && !curriculumLevel ? "sidebar-item--active" : "sidebar-item--inactive"}`}
             onClick={() => goToSidebar("curriculum", null)}
             title="Curriculum Overview"
           >
@@ -362,7 +358,7 @@ export default function Library() {
           {["A1","A2","B1","B2","C1","C2"].map((lvl) => (
             <button
               key={lvl}
-              className={`sidebar-item ${activeSidebar === "curriculum" && curriculumLevel === lvl ? "sidebar-item--active" : "sidebar-item--inactive"}`}
+              className={`sidebar-item ${isCurriculum && curriculumLevel === lvl ? "sidebar-item--active" : "sidebar-item--inactive"}`}
               onClick={() => goToSidebar("curriculum", lvl)}
               title={`${lvl} Lessons`}
               style={{ padding: "8px 10px" }}
@@ -377,7 +373,7 @@ export default function Library() {
           <span className="sidebar-heading" style={{ marginTop: 14 }}>Primary Tools</span>
           <a
             href="/primary/virtual-scenario-room"
-            className={`sidebar-item ${activeSidebar === "library" ? "sidebar-item--active" : "sidebar-item--inactive"}`}
+            className={`sidebar-item ${!isCurriculum ? "sidebar-item--active" : "sidebar-item--inactive"}`}
             onClick={(e) => { e.preventDefault(); goToSidebar("library"); }}
           >
             <div className="sidebar-icon">
@@ -400,12 +396,12 @@ export default function Library() {
           </div>
         </aside>
 
-      {activeSidebar === "curriculum" ? (
+      {isCurriculum ? (
         <div className="content" style={{ padding: 0, maxWidth: "100%", overflow: "auto" }}>
           <CurriculumRouter
             isPro={isPro}
-            initialLevel={curriculumLevel}
-            key={String(curriculumLevel)}
+            level={curriculumLevel}
+            track={curriculumTrack}
           />
         </div>
       ) : (

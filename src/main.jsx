@@ -14,6 +14,9 @@ createRoot(document.getElementById('root')).render(
         <Routes>
           <Route path="/" element={<Library />} />
           <Route path="/library" element={<Library />} />
+          <Route path="/library/curriculum" element={<Library />} />
+          <Route path="/library/curriculum/:level" element={<Library />} />
+          <Route path="/library/curriculum/:level/:track" element={<Library />} />
           <Route path="/library/stress" element={<Flashcards />} />
           <Route path="/lesson-player/:id" element={<LessonPlayerPage />} />
         </Routes>
