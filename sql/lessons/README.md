@@ -92,12 +92,17 @@ the real CEFR descriptors for that level. Two things to actively watch for:
 ## Status
 
 **A1 · Kids**
-- Unit 1 (5/5 lessons) — Hello & My Name, My Age, My Family, My Likes, All
-  About Me. Complete, CEFR-checked, titles finalized. No images yet.
-- Unit 2 (5/5 lessons) — My Morning, Breakfast Time, Go to School, My
-  Afternoon, My Evening. A full-day routine story (no dedicated review
-  lesson this time, unlike Unit 1). Complete, all run in Supabase. No
-  images yet.
+- Unit 1 (6/6 lessons) — Hello & My Name, My Age, My Family, My Likes, All
+  About Me, What Can You Say? (assessment). Complete, CEFR-checked,
+  titles finalized. No images yet.
+- Unit 2 (7/7 lessons) — My Morning, Breakfast Time, Go to School, My
+  Afternoon, My Evening, All About My Day (review), My Day Check
+  (assessment). A full-day routine story. Complete, all run in Supabase.
+  No images yet.
 - Unit 3+ — not started.
+- Teacher Guide page live at `/teacher-guide/:level/:track` (see
+  `src/TeacherGuide.jsx`), linked from the Lessons Grid header. Covers
+  A1 Kids Units 1–2 so far; extend the `GUIDES` object there as new
+  units/tracks are built.
 
 **A2–C2** — not started.
