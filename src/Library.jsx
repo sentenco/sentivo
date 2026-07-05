@@ -181,22 +181,6 @@ function BespokeIcon({ type, isPro, style }) {
   }
 }
 
-function HeartIcon({ filled }) {
-  return (
-    <svg width="14" height="14" viewBox="0 0 24 24" fill={filled ? "currentColor" : "none"} stroke="currentColor" strokeWidth="2">
-      <path d="M12 21s-7-4.6-9.5-9C.7 8.4 2 5 5 4c2-.7 4 .3 5 2 1-1.7 3-2.7 5-2 3 1 4.3 4.4 2.5 8-2.5 4.4-9.5 9-9.5 9z" />
-    </svg>
-  );
-}
-
-function BookmarkIcon({ filled }) {
-  return (
-    <svg width="13" height="13" viewBox="0 0 24 24" fill={filled ? "currentColor" : "none"} stroke="currentColor" strokeWidth="2">
-      <path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z" />
-    </svg>
-  );
-}
-
 function UserIcon() {
   return (
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -211,8 +195,6 @@ export default function Library() {
   const [category, setCategory] = useState("All");
   const [page, setPage] = useState(1);
   const [query, setQuery] = useState("");
-  const [bookmarked, setBookmarked] = useState({});
-  const [wishlisted, setWishlisted] = useState({});
   const { user, signOut } = useAuth();
   const [authMode, setAuthMode] = useState(null);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -319,14 +301,6 @@ export default function Library() {
     setPage(1);
   }
 
-  function toggleBookmark(id) {
-    setBookmarked((prev) => ({ ...prev, [id]: !prev[id] }));
-  }
-
-  function toggleWishlist(id) {
-    setWishlisted((prev) => ({ ...prev, [id]: !prev[id] }));
-  }
-
   return (
     <>
     <div className={`page ${isPro ? "theme-pro" : "theme-fun"}`}>
@@ -335,11 +309,6 @@ export default function Library() {
       <header className="nav">
         <div className="nav-left">
           <a href="/" className="brand">sent<span className="dot">i</span>vo<span className="lib-tag">Library</span></a>
-          <nav className="nav-links">
-            <a href="#my-tools">My Tools</a>
-            <a href="#bookmarks">Bookmarks</a>
-            <a href="#wishlist">Wishlist</a>
-          </nav>
         </div>
         <div className="nav-right">
           <div className="theme-toggle">
@@ -498,23 +467,6 @@ export default function Library() {
                     Premium
                   </span>
                 )}
-
-                <div className="save-icons">
-                  <button
-                    className="save-icon"
-                    onClick={() => toggleBookmark(c.id)}
-                    aria-label="Bookmark this tool"
-                  >
-                    <BookmarkIcon filled={!!bookmarked[c.id]} />
-                  </button>
-                  <button
-                    className="save-icon"
-                    onClick={() => toggleWishlist(c.id)}
-                    aria-label="Add to wishlist"
-                  >
-                    <HeartIcon filled={!!wishlisted[c.id]} />
-                  </button>
-                </div>
 
                 {c.tagline ? (
                   <div
@@ -732,19 +684,7 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 }
 .theme-pro .lib-tag { font-family: 'Inter', sans-serif; }
 
-.nav-links { display: flex; gap: 22px; }
-.nav-links a {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 600;
-  font-size: 13.5px;
-  color: inherit;
-  text-decoration: none;
-  opacity: 0.7;
-}
-.theme-pro .nav-links a { font-family: 'Inter', sans-serif; font-weight: 500; }
-.nav-links a:hover { opacity: 1; }
-
-.nav-right { display: flex; align-items: center; gap: 12px; position: relative; }
+.nav-right { display: flex; align-items: center; gap: 12px; position: relative; margin-left: auto; }
 .theme-toggle { display: flex; gap: 4px; background: rgba(255,255,255,0.6); border-radius: 999px; padding: 4px; }
 .theme-pro .theme-toggle { background: #fff; border-radius: 4px; border: 1px solid #DEDAD0; }
 .theme-toggle button {
@@ -941,27 +881,6 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 }
 .theme-pro .premium-badge { font-family: 'Inter', sans-serif; border-radius: 3px; background: #F0EBDD; color: #8A6A3A; }
 
-.save-icons {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  display: flex;
-  gap: 5px;
-}
-.save-icon {
-  width: 23px;
-  height: 23px;
-  border-radius: 50%;
-  border: none;
-  background: rgba(255,255,255,0.85);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  color: #B5483A;
-}
-.theme-pro .save-icon { border-radius: 4px; background: #fff; border: 1px solid #DEDAD0; color: #B08D57; }
-
 .cover-motif { flex-grow: 1; display: flex; align-items: center; justify-content: center; }
 .motif-svg { width: 100%; height: clamp(26px, 6vh, 56px); }
 .motif-word { font-family: 'Fredoka', sans-serif; font-size: 13px; }
@@ -1079,9 +998,6 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .page-indicator { font-family: 'Quicksand', sans-serif; font-size: 12.5px; opacity: 0.6; }
 .theme-pro .page-indicator { font-family: 'Inter', sans-serif; }
 
-@media (max-width: 700px) {
-  .nav-links { display: none; }
-}
 /* ── Sidebar: button reset ── */
 .sidebar-item { border: none; background: none; cursor: pointer; text-align: left; }
 .sidebar-item--inactive { cursor: pointer; }
