@@ -10,6 +10,10 @@ import SlideSpeaking from "./slides/SlideSpeaking";
 import SlideReading from "./slides/SlideReading";
 import SlideWriting from "./slides/SlideWriting";
 import SlideReview from "./slides/SlideReview";
+import SlideScenario from "./slides/SlideScenario";
+import SlideDiagnosis from "./slides/SlideDiagnosis";
+import SlideUpgrade from "./slides/SlideUpgrade";
+import SlideTransfer from "./slides/SlideTransfer";
 
 const SLIDE_COMPONENTS = {
   title: SlideTitle,
@@ -21,6 +25,11 @@ const SLIDE_COMPONENTS = {
   reading: SlideReading,
   writing: SlideWriting,
   review: SlideReview,
+  // C1/C2 advanced-track slide types (see docs/curriculum/*-teacher-guidance.md)
+  scenario: SlideScenario,
+  diagnosis: SlideDiagnosis,
+  upgrade: SlideUpgrade,
+  transfer: SlideTransfer,
 };
 
 const SLIDE_TYPE_LABELS = {
@@ -33,6 +42,10 @@ const SLIDE_TYPE_LABELS = {
   reading: "Reading",
   writing: "Writing",
   review: "Review",
+  scenario: "Scenario",
+  diagnosis: "Diagnosis",
+  upgrade: "Upgrade Clinic",
+  transfer: "Transfer",
 };
 
 export default function LessonPlayer({ lessonId: lessonIdProp }) {

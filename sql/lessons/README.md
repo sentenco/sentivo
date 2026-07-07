@@ -29,10 +29,13 @@ Vercel). Teachers browse Library → a CEFR level (A1–C2) → an age track
   these directly to see the exact JSON shape each `slide_type` expects
   (don't guess the schema from memory; the component is the source of truth).
 
-## The 9 slide types (slide_number 1–9)
+## The 9 slide types (slide_number 1–9) — A1–B2 lessons
 
-Every lesson has all 9, in this order: `title`, `warmup`, `vocabulary`,
-`phrases`, `activity`, `speaking`, `reading`, `writing`, `review`.
+Every A1–B2 lesson has all 9, in this order: `title`, `warmup`,
+`vocabulary`, `phrases`, `activity`, `speaking`, `reading`, `writing`,
+`review`. This fixed shape assumes a lesson built around a fixed
+vocabulary/grammar target and does not apply to C1/C2 — see the C1/C2
+section below.
 
 - **vocabulary** is a fixed 2×2 grid — exactly 4 words. If a lesson plan
   gives more than 4, pick the 4 most central/reused ones and don't change
@@ -53,6 +56,44 @@ Every lesson has all 9, in this order: `title`, `warmup`, `vocabulary`,
 - Images are **intentionally left blank** (no `image_url`) across all
   current lessons until the user generates illustrations in bulk. Don't add
   placeholder/stock images without being asked.
+
+## The 4 slide types for C1/C2 lessons
+
+C1/C2 content (see `docs/curriculum/c1-adults.md`, `c2-adults.md`,
+`c1-teens.md` and their matching `*-teacher-guidance.md` files) is built
+around 9-lesson units and Performance/Model/Output mode blocks, not a
+fixed vocabulary/grammar target — the 9 slide types above don't fit it
+(no vocabulary grid, no fill-in-blank target). Each C1/C2 lesson instead
+gets exactly 4 slides, in this order: `scenario`, `diagnosis`, `upgrade`,
+`transfer`. These map directly onto the teacher-guidance doc fields for
+that lesson:
+
+- **scenario** — `{ mode, patterns, purpose, elicit }`. `mode` is
+  Performance/Model/Output (colors the badge); `patterns` is the
+  canonical Speaking Simulator pattern name(s); `purpose`/`elicit` come
+  straight from the teacher-guidance doc.
+- **diagnosis** — `{ listenFor, likelyResponses: [...], scorecardFocus:
+  [{dimension, note}, ...] }`. `likelyResponses` is the "likely strong-B2/
+  C1 responses" quotes; `scorecardFocus` is the 1–3 Scorecard dimensions
+  named in the guidance, each with its short parenthetical note.
+- **upgrade** — `{ upgradePath, interventionPrompts: [...] }`. Copy the
+  upgrade-path text and the exact intervention lines verbatim from the
+  guidance doc.
+- **transfer** — `{ extension, recovery }`.
+
+No `lesson.age_track` gating in these components — the same visual
+treatment (editorial serif/sans, mode-color-coded badges: Performance
+terracotta, Model slate, Output green) is used for Adults and Teens
+C1/C2 alike, since neither is the Kids-style bouncy theme. Components:
+`src/slides/Slide{Scenario,Diagnosis,Upgrade,Transfer}.jsx`, registered
+in `LessonPlayer.jsx`'s `SLIDE_COMPONENTS`/`SLIDE_TYPE_LABELS` maps.
+Verified via a temporary local harness (not committed), same pattern as
+the Adults theme check.
+
+`duration_minutes` for C1/C2 lessons is an estimated 20 (a single
+narrow-focus mode-block segment, not a full standalone class) — there's
+no authoritative number from the framework docs; adjust if it doesn't
+match how these actually run in class.
 
 ## SQL script conventions
 
@@ -123,4 +164,22 @@ the real CEFR descriptors for that level. Two things to actively watch for:
   with `age_track: "adults"` mock data.
 - Unit 2+ — not started.
 
-**B1–C2** — not started.
+**B1** — not started.
+
+**C1 · Adults**
+- Unit 1, Lesson 1 (1/54 lessons) — "Taking a Quick Position"
+  (`lesson15_insert.sql`), pilot lesson for the new C1/C2 slide types.
+  Not run in Supabase yet — user runs the script. Content sourced
+  directly from `docs/curriculum/c1-adults.md` and
+  `c1-adults-teacher-guidance.md` (Unit 1, Lesson 1).
+- This introduced the 4 new C1/C2 slide types (`scenario`, `diagnosis`,
+  `upgrade`, `transfer`) — see the section above. Awaiting user
+  confirmation on this pilot before generating the remaining 152 C1/C2
+  lessons (Adults C1 Units 2–6, Adults C2 all 5, Teens C1 all 6).
+- Teacher's Guide page not extended for C1/C2 — the teacher-guidance
+  docs already serve that role for this track in much more detail than
+  the `GUIDES` object format supports; not planning to duplicate them
+  there unless asked.
+
+**C2** — not started in the app (content + teacher guidance complete in
+`docs/curriculum/`).
