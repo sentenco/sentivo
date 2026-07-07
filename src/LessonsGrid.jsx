@@ -329,7 +329,7 @@ const styles = `
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 16px 48px;
+  padding: 10px 48px;
   border-bottom: 1px solid rgba(0,0,0,0.06);
   background: rgba(255,255,255,0.55);
   backdrop-filter: blur(8px);
@@ -353,12 +353,12 @@ const styles = `
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 28px 48px;
+  padding: 14px 48px;
   border-bottom: 1px solid rgba(0,0,0,0.06);
   flex-shrink: 0;
 }
 
-.lg-header-left { display: flex; flex-direction: column; gap: 8px; }
+.lg-header-left { display: flex; flex-direction: column; gap: 4px; }
 .lg-header-badges { display: flex; align-items: center; gap: 7px; flex-wrap: wrap; }
 .lg-badge {
   font-size: 11px; font-weight: 700; padding: 4px 10px;
@@ -374,7 +374,7 @@ const styles = `
 
 .lg-header-title {
   font-family: 'Fredoka', sans-serif;
-  font-size: 28px; font-weight: 700; color: #2B2330;
+  font-size: 22px; font-weight: 700; color: #2B2330;
 }
 .lg-pro .lg-header-title { font-family: 'Source Serif 4', serif; color: #1B2A4A; }
 
@@ -385,23 +385,13 @@ const styles = `
 .lg-stat { text-align: center; }
 .lg-stat-num {
   display: block; font-family: 'Fredoka', sans-serif;
-  font-size: 32px; font-weight: 700; color: var(--tr-color); line-height: 1;
+  font-size: 24px; font-weight: 700; color: var(--tr-color); line-height: 1;
 }
 .lg-stat-label { font-size: 11px; font-weight: 700; color: #A89BAA; text-transform: uppercase; letter-spacing: 0.06em; }
-.lg-stat-divider { width: 1px; height: 36px; background: rgba(0,0,0,0.08); }
-
-.lg-guide-btn {
-  display: flex; align-items: center; gap: 6px;
-  font-family: 'Quicksand', sans-serif; font-size: 12.5px; font-weight: 700;
-  color: #5A4E6A; background: #fff; border: 1.5px solid rgba(0,0,0,0.1);
-  border-radius: 999px; padding: 8px 16px; cursor: pointer; white-space: nowrap;
-  transition: border-color 0.15s ease, color 0.15s ease;
-}
-.lg-guide-btn:hover { border-color: var(--tr-color); color: var(--tr-color); }
-.lg-pro .lg-guide-btn { border-radius: 4px; }
+.lg-stat-divider { width: 1px; height: 28px; background: rgba(0,0,0,0.08); }
 
 .lg-filter-bar {
-  display: flex; gap: 8px; padding: 16px 48px;
+  display: flex; gap: 8px; padding: 10px 48px;
   border-bottom: 1px solid rgba(0,0,0,0.06);
   overflow-x: auto; flex-shrink: 0;
   background: rgba(255,255,255,0.35);
@@ -415,7 +405,7 @@ const styles = `
 .lg-pro .lg-filter-pill { border-radius: 4px; background: #fff; border-color: #DEDAD0; color: #6B6458; }
 .lg-filter-pill:hover { border-color: currentColor; }
 
-.lg-content { flex: 1; padding: 28px 48px 60px; overflow-y: auto; }
+.lg-content { flex: 1; padding: 18px 48px 60px; overflow-y: auto; }
 
 .lg-loading {
   display: flex; align-items: center; justify-content: center;
