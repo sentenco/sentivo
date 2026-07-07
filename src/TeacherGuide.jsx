@@ -164,11 +164,10 @@ function LessonTable({ lessons }) {
 // predates the C1/C2 redesign and was never extended past A1 Kids. This
 // section groups by unit and renders each lesson's guide content directly
 // from Supabase instead.
-function AdvancedLessonGuide({ lesson, content, highlighted }) {
-  const domId = `tg-lesson-${lesson.unit_number}-${lesson.lesson_number}`;
+function AdvancedLessonGuide({ lesson, content }) {
   if (!content) {
     return (
-      <div id={domId} className={`tg-adv-lesson tg-adv-lesson--empty${highlighted ? " is-highlighted" : ""}`}>
+      <div className="tg-adv-lesson tg-adv-lesson--empty">
         <div className="tg-adv-lesson-head">
           <h3>Lesson {lesson.lesson_number} — {lesson.title}</h3>
         </div>
@@ -177,7 +176,7 @@ function AdvancedLessonGuide({ lesson, content, highlighted }) {
     );
   }
   return (
-    <div id={domId} className={`tg-adv-lesson${highlighted ? " is-highlighted" : ""}`}>
+    <div className="tg-adv-lesson">
       <div className="tg-adv-lesson-head">
         <h3>Lesson {lesson.lesson_number} — {lesson.title}</h3>
         {content.mode && <span className="tg-adv-mode-badge">{content.mode}</span>}
@@ -235,6 +234,7 @@ export default function TeacherGuide() {
         .order("unit_number", { ascending: true })
         .order("lesson_number", { ascending: true });
       if (scopedUnit) lessonsQuery = lessonsQuery.eq("unit_number", scopedUnit);
+      if (scopedLesson) lessonsQuery = lessonsQuery.eq("lesson_number", scopedLesson);
 
       const { data: lessonsData } = await lessonsQuery;
       if (cancelled) return;
@@ -265,15 +265,7 @@ export default function TeacherGuide() {
     return () => {
       cancelled = true;
     };
-  }, [isAdvancedTrack, level, track, scopedUnit]);
-
-  // Deep link from a lesson card's "Guide" button — jump straight to that
-  // lesson's section once its content has loaded in.
-  useEffect(() => {
-    if (!isAdvancedTrack || advLoading || !scopedLesson || !scopedUnit) return;
-    const el = document.getElementById(`tg-lesson-${scopedUnit}-${scopedLesson}`);
-    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
-  }, [isAdvancedTrack, advLoading, scopedUnit, scopedLesson]);
+  }, [isAdvancedTrack, level, track, scopedUnit, scopedLesson]);
 
   const advUnitGroups = [];
   advLessons.forEach((lesson) => {
@@ -295,7 +287,11 @@ export default function TeacherGuide() {
           Lessons
         </button>
         <div className="tg-breadcrumb">
-          Curriculum &rsaquo; {level} &rsaquo; {track} &rsaquo; <span>Teacher's Guide{scopedUnit ? ` · Unit ${scopedUnit}` : ""}</span>
+          Curriculum &rsaquo; {level} &rsaquo; {track} &rsaquo;{" "}
+          <span>
+            Teacher's Guide
+            {scopedLesson ? ` · Unit ${scopedUnit} · Lesson ${scopedLesson}` : scopedUnit ? ` · Unit ${scopedUnit}` : ""}
+          </span>
         </div>
       </div>
 
@@ -315,25 +311,22 @@ export default function TeacherGuide() {
           </div>
         ) : (
           <div className="tg-content">
-            <div className="tg-hero">
-              <span className="tg-hero-badge">{level} · {track}</span>
-              <h1 className="tg-hero-title">Teacher's Guide</h1>
-              <p className="tg-hero-intro">
-                {scopedUnit
-                  ? `Live reference for Unit ${scopedUnit} — one section per lesson, in teaching order.`
-                  : "Live reference for every lesson in this track — one section per lesson, in teaching order."}
-              </p>
-            </div>
+            {!scopedLesson && (
+              <div className="tg-hero">
+                <span className="tg-hero-badge">{level} · {track}</span>
+                <h1 className="tg-hero-title">Teacher's Guide</h1>
+                <p className="tg-hero-intro">
+                  {scopedUnit
+                    ? `Live reference for Unit ${scopedUnit} — one section per lesson, in teaching order.`
+                    : "Live reference for every lesson in this track — one section per lesson, in teaching order."}
+                </p>
+              </div>
+            )}
             {advUnitGroups.map((g) => (
-              <section className="tg-unit" key={g.unit}>
-                <h2 className="tg-unit-title">Unit {g.unit}</h2>
+              <section className={`tg-unit${scopedLesson ? " tg-unit--single" : ""}`} key={g.unit}>
+                {!scopedLesson && <h2 className="tg-unit-title">Unit {g.unit}</h2>}
                 {g.lessons.map((lesson) => (
-                  <AdvancedLessonGuide
-                    key={lesson.id}
-                    lesson={lesson}
-                    content={advContent[lesson.id]}
-                    highlighted={scopedLesson === lesson.lesson_number && scopedUnit === lesson.unit_number}
-                  />
+                  <AdvancedLessonGuide key={lesson.id} lesson={lesson} content={advContent[lesson.id]} />
                 ))}
               </section>
             ))}
@@ -456,10 +449,7 @@ const CSS = `
   margin-bottom: 16px;
 }
 .tg-adv-lesson--empty { background: #FAF8F4; }
-.tg-adv-lesson.is-highlighted {
-  border-color: #D85A30;
-  box-shadow: 0 0 0 3px #FAECE7;
-}
+.tg-unit--single { margin-top: 8px; }
 .tg-adv-lesson-head {
   display: flex; align-items: center; justify-content: space-between;
   gap: 12px; margin-bottom: 12px;

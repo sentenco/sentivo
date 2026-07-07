@@ -195,13 +195,9 @@ export default function LessonsGrid({ level = "A1", ageTrack = "kids", onBack, o
     );
   }
 
-  function openTeacherGuidePage() {
-    const url = `/teacher-guide/${level}/${ageTrack}${activeUnit !== "all" ? `?unit=${activeUnit}` : ""}`;
-    window.open(url, "_blank", "noopener");
-  }
-
-  // Deep-links into the same guide page, scoped to this lesson's unit and
-  // scrolled/highlighted to its specific section (see TeacherGuide.jsx).
+  // Opens the guide page scoped to just this one lesson — see
+  // TeacherGuide.jsx, which renders only the matching lesson when both
+  // ?unit= and ?lesson= are present instead of the whole unit's list.
   function openTeacherGuideForLesson(lesson) {
     const url = `/teacher-guide/${level}/${ageTrack}?unit=${lesson.unit_number}&lesson=${lesson.lesson_number}`;
     window.open(url, "_blank", "noopener");
@@ -277,10 +273,6 @@ export default function LessonsGrid({ level = "A1", ageTrack = "kids", onBack, o
               {u === "all" ? "All units" : `Unit ${u}`}
             </button>
           ))}
-          <button className="lg-filter-pill lg-filter-pill--guide" onClick={openTeacherGuidePage}>
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.3" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
-            Guide
-          </button>
         </div>
       )}
 
@@ -422,11 +414,6 @@ const styles = `
 }
 .lg-pro .lg-filter-pill { border-radius: 4px; background: #fff; border-color: #DEDAD0; color: #6B6458; }
 .lg-filter-pill:hover { border-color: currentColor; }
-.lg-filter-pill--guide {
-  display: inline-flex; align-items: center; gap: 6px;
-  color: #D85A30; border-color: #F0C9BA; background: #FFF6F2;
-}
-.lg-filter-pill--guide:hover { border-color: #D85A30; }
 
 .lg-content { flex: 1; padding: 28px 48px 60px; overflow-y: auto; }
 
