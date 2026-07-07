@@ -18,7 +18,7 @@ const LEVEL_COLORS = {
 
 const UNIT_COLORS = ["coral", "teal", "lavender", "gold", "teal", "lavender", "coral", "gold"];
 
-function LessonCard({ lesson, levelColor, onOpen, isPro, thumbnail }) {
+function LessonCard({ lesson, levelColor, onOpen, onOpenTeacher, isPro, thumbnail }) {
   const unitIdx = (lesson.unit_number - 1) % UNIT_COLORS.length;
   const palette = {
     coral:   { bg: "#FAECE7", accent: "#D85A30" },
@@ -26,6 +26,7 @@ function LessonCard({ lesson, levelColor, onOpen, isPro, thumbnail }) {
     lavender:{ bg: "#EEEDFE", accent: "#534AB7" },
     gold:    { bg: "#FAEEDA", accent: "#BA7517" },
   }[UNIT_COLORS[unitIdx]];
+  const isAdvancedTrack = lesson.level === "C1" || lesson.level === "C2";
 
   return (
     <div
@@ -63,6 +64,19 @@ function LessonCard({ lesson, levelColor, onOpen, isPro, thumbnail }) {
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
           {lesson.slide_count || "—"} slides
         </span>
+        {isAdvancedTrack && (
+          <button
+            className="lg-teacher-btn"
+            onClick={(e) => {
+              e.stopPropagation();
+              onOpenTeacher(lesson);
+            }}
+            title="Open teacher's guide in its own window"
+          >
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+            Guide
+          </button>
+        )}
         <button className="lg-start-btn">
           Start
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"/></svg>
@@ -144,10 +158,14 @@ export default function LessonsGrid({ level = "A1", ageTrack = "kids", onBack, o
   const units = ["all", ...Array.from(new Set(lessons.map((l) => l.unit_number))).sort((a, b) => a - b)];
   const visible = activeUnit === "all" ? lessons : lessons.filter((l) => l.unit_number === activeUnit);
 
+  // C1/C2 lessons split into a student-facing task and teacher-only
+  // coaching notes (see sql/lessons/README.md), shown in two separate
+  // windows. Firing two window.open() calls from one click is unreliable
+  // — most browsers (and this app's popup blocker in testing) only
+  // actually open one of the two — so each window now opens from its own
+  // distinct click: the card/Start button opens the student window, and
+  // a separate "Guide" button opens the teacher window.
   function openLesson(lesson) {
-    // C1/C2 lessons split into a student-facing task and teacher-only
-    // coaching notes (see sql/lessons/README.md) — open both as separate
-    // windows side by side instead of one combined player.
     const isAdvancedTrack = lesson.level === "C1" || lesson.level === "C2";
 
     if (!isAdvancedTrack) {
@@ -161,30 +179,30 @@ export default function LessonsGrid({ level = "A1", ageTrack = "kids", onBack, o
 
     const screenW = window.screen.availWidth || 1600;
     const screenH = window.screen.availHeight || 900;
-
-    // Student window: landscape, matches the 780x440 player card — meant
-    // to be shared/projected. Teacher window: portrait, matches the
-    // narrower 460x760 card — meant to be read privately, slide by slide.
     const studentW = Math.min(860, screenW - 40);
     const studentH = Math.min(560, screenH - 80);
-    const teacherW = Math.min(520, screenW - 40);
-    const teacherH = Math.min(820, screenH - 40);
-
-    const gap = 16;
-    const totalW = studentW + teacherW + gap;
-    const groupLeft = Math.max(0, Math.floor((screenW - totalW) / 2));
+    const studentLeft = Math.max(0, Math.floor((screenW - studentW) / 2));
     const studentTop = Math.max(0, Math.floor((screenH - studentH) / 2));
-    const teacherTop = Math.max(0, Math.floor((screenH - teacherH) / 2));
 
     window.open(
       `/lesson-player/${lesson.id}?view=student`,
       "sentivoLessonPlayerStudent",
-      `width=${studentW},height=${studentH},left=${groupLeft},top=${studentTop},toolbar=no,location=no,menubar=no,status=no,scrollbars=yes,resizable=yes`
+      `width=${studentW},height=${studentH},left=${studentLeft},top=${studentTop},toolbar=no,location=no,menubar=no,status=no,scrollbars=yes,resizable=yes`
     );
+  }
+
+  function openTeacherGuide(lesson) {
+    const screenW = window.screen.availWidth || 1600;
+    const screenH = window.screen.availHeight || 900;
+    const teacherW = Math.min(520, screenW - 40);
+    const teacherH = Math.min(820, screenH - 40);
+    const teacherLeft = Math.max(0, screenW - teacherW - 24);
+    const teacherTop = Math.max(0, Math.floor((screenH - teacherH) / 2));
+
     window.open(
       `/lesson-player/${lesson.id}?view=teacher`,
       "sentivoLessonPlayerTeacher",
-      `width=${teacherW},height=${teacherH},left=${groupLeft + studentW + gap},top=${teacherTop},toolbar=no,location=no,menubar=no,status=no,scrollbars=yes,resizable=yes`
+      `width=${teacherW},height=${teacherH},left=${teacherLeft},top=${teacherTop},toolbar=no,location=no,menubar=no,status=no,scrollbars=yes,resizable=yes`
     );
   }
 
@@ -296,6 +314,7 @@ export default function LessonsGrid({ level = "A1", ageTrack = "kids", onBack, o
                 lesson={lesson}
                 levelColor={lv.color}
                 onOpen={openLesson}
+                onOpenTeacher={openTeacherGuide}
                 isPro={isPro}
                 thumbnail={thumbnails[lesson.id]}
               />
@@ -516,4 +535,17 @@ const styles = `
 }
 .lg-start-btn:hover { opacity: 0.88; }
 .lg-card--pro .lg-start-btn { border-radius: 4px; }
+
+.lg-teacher-btn {
+  margin-left: auto;
+  display: flex; align-items: center; gap: 4px;
+  font-family: 'Quicksand', sans-serif; font-size: 11.5px; font-weight: 700;
+  background: #fff; color: var(--c-accent); border: 1.5px solid var(--c-accent);
+  border-radius: 999px; padding: 4px 10px; cursor: pointer; transition: opacity 0.15s;
+}
+.lg-teacher-btn:hover { opacity: 0.75; }
+.lg-card--pro .lg-teacher-btn { border-radius: 4px; }
+/* When both buttons are present, only the Start button should be pushed
+   to the far right — the Guide button sits directly to its left. */
+.lg-teacher-btn + .lg-start-btn { margin-left: 0; }
 `;

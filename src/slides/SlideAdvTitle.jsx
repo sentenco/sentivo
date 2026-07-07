@@ -1,3 +1,5 @@
+import { fitFontSize } from "./fitFontSize";
+
 const MODE_COLOR = {
   Performance: "#D85A30",
   Model: "#3D6B8C",
@@ -7,6 +9,7 @@ const MODE_COLOR = {
 export default function SlideAdvTitle({ content }) {
   const mode = content.mode || "";
   const accent = MODE_COLOR[mode] || "#1B2A4A";
+  const titleSize = fitFontSize(content.title, { max: 30, min: 20, softLimit: 40 });
 
   return (
     <div className="sladvt-slide">
@@ -16,7 +19,9 @@ export default function SlideAdvTitle({ content }) {
           {content.unit}
           {content.lessonLabel ? ` · ${content.lessonLabel}` : ""}
         </div>
-        <div className="sladvt-title">{content.title}</div>
+        <div className="sladvt-title" style={{ fontSize: `${titleSize}px` }}>
+          {content.title}
+        </div>
       </div>
       <div className="sladvt-footer" style={{ background: accent }}>
         <span>{mode}</span>
@@ -46,18 +51,18 @@ const CSS = `
   text-align: center;
 }
 .sladvt-eyebrow {
-  font-size: 11px;
+  font-size: 12.5px;
   letter-spacing: 0.08em;
   color: #B08D77;
   text-transform: uppercase;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
 .sladvt-title {
   font-family: 'Source Serif 4', serif;
   font-weight: 600;
-  font-size: 21px;
   color: #1B2A4A;
-  line-height: 1.3;
+  line-height: 1.32;
+  max-width: 34ch;
 }
 .sladvt-footer {
   height: 20px;

@@ -1,3 +1,5 @@
+import { fitFontSize } from "./fitFontSize";
+
 const MODE_COLOR = {
   Performance: "#D85A30",
   Model: "#3D6B8C",
@@ -6,13 +8,16 @@ const MODE_COLOR = {
 
 export default function SlideWrapUp({ content }) {
   const accent = MODE_COLOR[content.mode] || "#1B2A4A";
+  const textSize = fitFontSize(content.text, { max: 21, min: 15, softLimit: 160 });
 
   return (
     <div className="slwrap-slide">
       <style>{CSS}</style>
       <div className="slwrap-body">
         <div className="slwrap-label">Wrap-up</div>
-        <p className="slwrap-text">{content.text}</p>
+        <p className="slwrap-text" style={{ fontSize: `${textSize}px` }}>
+          {content.text}
+        </p>
       </div>
       <div className="slwrap-footer" style={{ background: accent }}>
         <span>{content.mode}</span>
@@ -49,10 +54,12 @@ const CSS = `
 .slwrap-text {
   font-family: 'Source Serif 4', serif;
   font-weight: 500;
-  font-size: 16px;
   line-height: 1.55;
   color: #1B2A4A;
   margin: 0;
+  text-align: justify;
+  text-indent: 1.6em;
+  hyphens: auto;
 }
 .slwrap-footer {
   height: 20px;

@@ -1,3 +1,5 @@
+import { fitFontSize } from "./fitFontSize";
+
 const MODE_COLOR = {
   Performance: "#D85A30",
   Model: "#3D6B8C",
@@ -6,13 +8,16 @@ const MODE_COLOR = {
 
 export default function SlideEngage({ content }) {
   const accent = MODE_COLOR[content.mode] || "#1B2A4A";
+  const textSize = fitFontSize(content.text, { max: 23, min: 16, softLimit: 130 });
 
   return (
     <div className="sleng-slide">
       <style>{CSS}</style>
       <div className="sleng-body">
         <div className="sleng-label">Engage</div>
-        <p className="sleng-text">{content.text}</p>
+        <p className="sleng-text" style={{ fontSize: `${textSize}px` }}>
+          {content.text}
+        </p>
       </div>
       <div className="sleng-footer" style={{ background: accent }}>
         <span>{content.mode}</span>
@@ -49,10 +54,12 @@ const CSS = `
 .sleng-text {
   font-family: 'Source Serif 4', serif;
   font-weight: 500;
-  font-size: 18px;
-  line-height: 1.5;
+  line-height: 1.55;
   color: #1B2A4A;
   margin: 0;
+  text-align: justify;
+  text-indent: 1.6em;
+  hyphens: auto;
 }
 .sleng-footer {
   height: 20px;

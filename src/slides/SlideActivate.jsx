@@ -1,3 +1,5 @@
+import { fitFontSize } from "./fitFontSize";
+
 const MODE_COLOR = {
   Performance: "#D85A30",
   Model: "#3D6B8C",
@@ -12,13 +14,16 @@ const PHASE_LABEL = {
 export default function SlideActivate({ content }) {
   const accent = MODE_COLOR[content.mode] || "#1B2A4A";
   const label = PHASE_LABEL[content.phase] || "Activate";
+  const textSize = fitFontSize(content.text, { max: 23, min: 16, softLimit: 130 });
 
   return (
     <div className="slact-slide">
       <style>{CSS}</style>
       <div className="slact-body">
         <div className="slact-label">{label}</div>
-        <p className="slact-text">{content.text}</p>
+        <p className="slact-text" style={{ fontSize: `${textSize}px` }}>
+          {content.text}
+        </p>
       </div>
       <div className="slact-footer" style={{ background: accent }}>
         <span>{content.mode}</span>
@@ -55,10 +60,12 @@ const CSS = `
 .slact-text {
   font-family: 'Source Serif 4', serif;
   font-weight: 500;
-  font-size: 18px;
-  line-height: 1.5;
+  line-height: 1.55;
   color: #1B2A4A;
   margin: 0;
+  text-align: justify;
+  text-indent: 1.6em;
+  hyphens: auto;
 }
 .slact-footer {
   height: 20px;

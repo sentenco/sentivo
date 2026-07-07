@@ -1,3 +1,5 @@
+import { fitFontSize } from "./fitFontSize";
+
 const MODE_COLOR = {
   Performance: "#D85A30",
   Model: "#3D6B8C",
@@ -7,6 +9,11 @@ const MODE_COLOR = {
 export default function SlideStudy({ content }) {
   const accent = MODE_COLOR[content.mode] || "#1B2A4A";
   const label = content.stageLabel || "Study";
+  const textSize = fitFontSize(content.text, { max: 21, min: 15, softLimit: 160 });
+  const compareSize = fitFontSize(
+    `${content.comparisonA || ""} ${content.comparisonB || ""}`,
+    { max: 16, min: 12.5, softLimit: 160 }
+  );
 
   return (
     <div className="slstd-slide">
@@ -15,11 +22,17 @@ export default function SlideStudy({ content }) {
         <div className="slstd-label">{label}</div>
         {content.comparisonA && content.comparisonB ? (
           <div className="slstd-compare">
-            <p className="slstd-compare-item">{content.comparisonA}</p>
-            <p className="slstd-compare-item">{content.comparisonB}</p>
+            <p className="slstd-compare-item" style={{ fontSize: `${compareSize}px` }}>
+              {content.comparisonA}
+            </p>
+            <p className="slstd-compare-item" style={{ fontSize: `${compareSize}px` }}>
+              {content.comparisonB}
+            </p>
           </div>
         ) : (
-          <p className="slstd-text">{content.text}</p>
+          <p className="slstd-text" style={{ fontSize: `${textSize}px` }}>
+            {content.text}
+          </p>
         )}
       </div>
       <div className="slstd-footer" style={{ background: accent }}>
@@ -57,10 +70,12 @@ const CSS = `
 .slstd-text {
   font-family: 'Source Serif 4', serif;
   font-weight: 500;
-  font-size: 16px;
-  line-height: 1.5;
+  line-height: 1.55;
   color: #1B2A4A;
   margin: 0;
+  text-align: justify;
+  text-indent: 1.6em;
+  hyphens: auto;
 }
 .slstd-compare {
   display: flex;
@@ -70,7 +85,6 @@ const CSS = `
 .slstd-compare-item {
   font-family: 'Source Serif 4', serif;
   font-weight: 500;
-  font-size: 14px;
   line-height: 1.5;
   color: #1B2A4A;
   background: #fff;
@@ -78,6 +92,9 @@ const CSS = `
   border-radius: 6px;
   padding: 10px 14px;
   margin: 0;
+  text-align: justify;
+  text-indent: 1.4em;
+  hyphens: auto;
 }
 .slstd-footer {
   height: 20px;
