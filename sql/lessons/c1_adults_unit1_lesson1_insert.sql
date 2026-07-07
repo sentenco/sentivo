@@ -13,7 +13,7 @@ values (
   1,
   1,
   'Take and sharpen a stance on phone etiquette in conversation, under time pressure.',
-  20,
+  25,
   7,
   true
 );

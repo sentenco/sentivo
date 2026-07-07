@@ -59,22 +59,19 @@ const SLIDE_TYPE_LABELS = {
 };
 
 // The teacher guide is teacher-only coaching content — never shown to the
-// student. A C1/C2 lesson opens as ?view=split (the default) — one window
-// with the student deck and the single-sheet teacher guide side by side.
-// Firing two window.open() calls from one click to open them as separate
-// windows proved unreliable across browsers (confirmed in testing — only
-// one of the two ever actually opened), so both panes now live in the one
-// window a single click reliably opens. ?view=student and ?view=teacher
-// still render each pane standalone for direct linking. See
-// LessonsGrid.jsx's openLesson() and sql/lessons/README.md.
+// student. Opening a C1/C2 lesson launches two separate LessonPlayer
+// windows: one at ?view=student (default) that only ever shows the
+// student-flow slide types, and one at ?view=teacher that shows this one
+// single-sheet slide (not paginated — it's one continuous scrollable
+// document, see SlideTeacherGuide). See LessonsGrid.jsx's openLesson()
+// and sql/lessons/README.md.
 const TEACHER_ONLY_TYPES = new Set(["teacherguide"]);
 
 export default function LessonPlayer({ lessonId: lessonIdProp }) {
   const params = useParams();
   const [searchParams] = useSearchParams();
   const lessonId = lessonIdProp || params.id;
-  const viewParam = searchParams.get("view");
-  const requestedView = viewParam === "teacher" || viewParam === "student" ? viewParam : "split";
+  const requestedView = searchParams.get("view") === "teacher" ? "teacher" : "student";
 
   const [lesson, setLesson] = useState(null);
   const [slides, setSlides] = useState([]);
@@ -119,14 +116,11 @@ export default function LessonPlayer({ lessonId: lessonIdProp }) {
 
   const teacherSlides = slides.filter((s) => TEACHER_ONLY_TYPES.has(s.slide_type));
   const studentSlides = slides.filter((s) => !TEACHER_ONLY_TYPES.has(s.slide_type));
-  const hasTeacherContent = teacherSlides.length > 0;
   // Fall back to the student slides if ?view=teacher is requested on a
   // lesson with no teacher-only content (e.g. an A1-B2 lesson) instead of
-  // rendering an empty screen. In split mode the teacher pane simply
-  // doesn't render when there's nothing to show.
-  const isTeacherOnlyView = requestedView === "teacher" && hasTeacherContent;
-  const showSplit = requestedView === "split" && hasTeacherContent;
-  const activeSlides = isTeacherOnlyView ? teacherSlides : studentSlides;
+  // rendering an empty screen.
+  const isTeacherView = requestedView === "teacher" && teacherSlides.length > 0;
+  const activeSlides = isTeacherView ? teacherSlides : studentSlides;
 
   const goPrev = useCallback(() => {
     setCurrent((c) => Math.max(0, c - 1));
@@ -185,26 +179,28 @@ export default function LessonPlayer({ lessonId: lessonIdProp }) {
   // The teacher guide is a single continuous scrollable sheet, not
   // paginated slides — it has its own internal header/footer (see
   // SlideTeacherGuide), so skip the normal lp-header/lp-nav chrome
-  // entirely for this pane.
-  const teacherSheet = hasTeacherContent ? (
-    <div className="lp-shell lp-shell--portrait lp-shell--sheet">
-      <div className="lp-slide-area">
-        <SlideTeacherGuide content={teacherSlides[0].content || {}} lesson={lesson} />
-      </div>
-    </div>
-  ) : null;
-
-  if (isTeacherOnlyView) {
+  // entirely for this view.
+  if (isTeacherView) {
     return (
-      <>
+      <div className="lp-shell lp-shell--portrait lp-shell--sheet">
         <style>{CSS}</style>
-        {teacherSheet}
-      </>
+        <div className="lp-slide-area">
+          {SlideComponent ? (
+            <SlideComponent content={slide.content || {}} lesson={lesson} />
+          ) : (
+            <div className="lp-status lp-status--error">
+              Unknown slide type: {slide.slide_type}
+            </div>
+          )}
+        </div>
+      </div>
     );
   }
 
-  const studentDeck = (
+  return (
     <div className={`lp-shell ${isAdult ? "is-adult" : ""}`}>
+      <style>{CSS}</style>
+
       <div className="lp-header">
         <div className="lp-wordmark">
           sentivo{!isAdult && <span className="lp-dot">•</span>}
@@ -258,23 +254,6 @@ export default function LessonPlayer({ lessonId: lessonIdProp }) {
       </div>
     </div>
   );
-
-  if (!showSplit) {
-    return (
-      <>
-        <style>{CSS}</style>
-        {studentDeck}
-      </>
-    );
-  }
-
-  return (
-    <div className="lp-split">
-      <style>{CSS}</style>
-      {studentDeck}
-      {teacherSheet}
-    </div>
-  );
 }
 
 const CSS = `
@@ -295,16 +274,7 @@ const CSS = `
 }
 .lp-shell * { box-sizing: border-box; }
 
-/* Split view: student deck + teacher sheet side by side in one window,
-   opened with a single window.open() call (see the note above
-   TEACHER_ONLY_TYPES for why this replaced two separate popups). */
-.lp-split {
-  display: flex;
-  align-items: flex-start;
-  gap: 20px;
-}
-
-/* Teacher pane is portrait — narrower and taller, built for reading
+/* Teacher windows are portrait — narrower and taller, built for reading
    notes slide-by-slide rather than sharing/projecting to a class. */
 .lp-shell--portrait {
   width: 460px;

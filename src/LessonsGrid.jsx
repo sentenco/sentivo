@@ -57,7 +57,10 @@ function LessonCard({ lesson, levelColor, onOpen, isPro, thumbnail }) {
       <div className="lg-card-footer">
         <span className="lg-card-meta">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          {lesson.duration_minutes || 25} min
+          {/* Every lesson is a fixed 25 minutes regardless of what any
+              individual row's duration_minutes says — matches the header's
+              "25 minutes each" copy above instead of drifting from it. */}
+          25 min
         </span>
         <span className="lg-card-meta">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
@@ -145,16 +148,11 @@ export default function LessonsGrid({ level = "A1", ageTrack = "kids", onBack, o
   const visible = activeUnit === "all" ? lessons : lessons.filter((l) => l.unit_number === activeUnit);
 
   // C1/C2 lessons split into a student-facing task and teacher-only
-  // coaching notes (see sql/lessons/README.md). Both used to open as two
-  // separate window.open() windows, but firing two window.open() calls
-  // from one click proved unreliable across browsers (confirmed in
-  // testing — only one of the two ever actually opened). LessonPlayer now
-  // renders both panes side by side in a single window (?view=split, the
-  // default there), so one click reliably opens everything at once.
+  // coaching notes (see sql/lessons/README.md), opened as two separate
+  // physical windows so the student deck can be shared/projected on its
+  // own while the teacher's notes stay private on the teacher's screen.
   function openLesson(lesson) {
     const isAdvancedTrack = lesson.level === "C1" || lesson.level === "C2";
-    const screenW = window.screen.availWidth || 1600;
-    const screenH = window.screen.availHeight || 900;
 
     if (!isAdvancedTrack) {
       window.open(
@@ -165,18 +163,32 @@ export default function LessonsGrid({ level = "A1", ageTrack = "kids", onBack, o
       return;
     }
 
-    // Wide enough for the landscape student deck (780px) + teacher sheet
-    // (460px) side by side with room to spare; falls back to whatever fits
-    // the screen on smaller displays.
-    const w = Math.min(1320, screenW - 40);
-    const h = Math.min(820, screenH - 40);
-    const left = Math.max(0, Math.floor((screenW - w) / 2));
-    const top = Math.max(0, Math.floor((screenH - h) / 2));
+    const screenW = window.screen.availWidth || 1600;
+    const screenH = window.screen.availHeight || 900;
+
+    // Student window: landscape, matches the 780x440 player card — meant
+    // to be shared/projected. Teacher window: portrait, matches the
+    // narrower 460x760 card — meant to be read privately, slide by slide.
+    const studentW = Math.min(860, screenW - 40);
+    const studentH = Math.min(560, screenH - 80);
+    const teacherW = Math.min(520, screenW - 40);
+    const teacherH = Math.min(820, screenH - 40);
+
+    const gap = 16;
+    const totalW = studentW + teacherW + gap;
+    const groupLeft = Math.max(0, Math.floor((screenW - totalW) / 2));
+    const studentTop = Math.max(0, Math.floor((screenH - studentH) / 2));
+    const teacherTop = Math.max(0, Math.floor((screenH - teacherH) / 2));
 
     window.open(
-      `/lesson-player/${lesson.id}`,
-      "sentivoLessonPlayer",
-      `width=${w},height=${h},left=${left},top=${top},toolbar=no,location=no,menubar=no,status=no,scrollbars=yes,resizable=yes`
+      `/lesson-player/${lesson.id}?view=student`,
+      "sentivoLessonPlayerStudent",
+      `width=${studentW},height=${studentH},left=${groupLeft},top=${studentTop},toolbar=no,location=no,menubar=no,status=no,scrollbars=yes,resizable=yes`
+    );
+    window.open(
+      `/lesson-player/${lesson.id}?view=teacher`,
+      "sentivoLessonPlayerTeacher",
+      `width=${teacherW},height=${teacherH},left=${groupLeft + studentW + gap},top=${teacherTop},toolbar=no,location=no,menubar=no,status=no,scrollbars=yes,resizable=yes`
     );
   }
 
@@ -437,6 +449,13 @@ const styles = `
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 16px;
+}
+/* Full-width desktop: lock to exactly 5 wider cards per row instead of
+   auto-fill cramming in 6-7 narrow ones. */
+@media (min-width: 1080px) {
+  .lg-grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
 }
 
 .lg-card {
