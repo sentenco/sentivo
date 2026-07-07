@@ -244,16 +244,72 @@ the real CEFR descriptors for that level. Two things to actively watch for:
   landscape, teacher window ~520×820 portrait, both centered as a group
   side by side. Verified against the live (now-corrected) pilot lesson —
   both orientations render and scroll correctly.
-- All three passes verified — this pilot lesson is done. Ready to
-  generate the remaining 152 C1/C2 lessons (Adults C1 Units 2–6, Adults
-  C2 all 5, Teens C1 all 6) using the same pattern: one concrete
-  second-person `scenario.task` per lesson (not the teacher-guidance
-  doc's "e.g." menu verbatim), `purpose`/`listenFor`/`likelyResponses`/
-  `scorecardFocus` in `diagnosis`, `upgradePath`/`interventionPrompts` in
-  `upgrade`, `extension`/`recovery` in `transfer`.
+- All three passes verified on the pilot — that lesson is fully done and
+  live.
+
+**Full rollout (2026-07-07): all 153 C1/C2 lessons now have generated
+SQL.** Adults C1 (54), Adults C2 (45), Teens C1 (54) — every unit across
+all three tracks. Only Adults C1 Unit 1 Lesson 1 (the pilot) has actually
+been run in Supabase; **the other 152 lessons are written but not yet
+run — the user needs to execute each file below in the Supabase SQL
+editor.**
+
+- **Tooling used:** built a one-off parser (`build_lessons.py`) that
+  reads each `*-teacher-guidance.md` file into structured per-lesson
+  dicts (purpose/elicit/listenFor/likelyResponses/upgradePath/
+  interventionPrompts/scorecardFocus/extension/recovery), and a
+  generator (`gen_sql.py`) that combines that with a hand-written
+  `task`/`title` per lesson to emit validated SQL. Neither script is
+  committed to the repo (they lived in scratch space) — if this needs
+  redoing, re-derive from the guidance docs the same way rather than
+  hunting for the scripts.
+- **The `task` field is the one thing that couldn't be mechanically
+  extracted** — every lesson's teacher-guidance "Elicit" field is
+  written as an instruction *about* the student in third person, often
+  with an open "e.g. X or Y" menu of example prompts. Each of the 152
+  lessons got a hand-written `task`: one concrete prompt, addressed to
+  the student directly in second person, chosen from (or in the spirit
+  of) the Elicit field's examples. `purpose`/`listenFor`/
+  `likelyResponses`/`scorecardFocus`/`upgradePath`/`interventionPrompts`/
+  `extension`/`recovery` were reused directly from the already-written
+  guidance docs — no rework needed there.
+- **Two real content gaps found and fixed while building this:**
+  (1) a multi-line field header (`**Intervention prompts (as written
+  feedback, delivered live in\nclass):**`) broke the naive parser at
+  first — fixed by joining wrapped bold headers before parsing;
+  (2) 62 lessons (37 in Adults C2, 25 in Teens C1) were missing the
+  "Listen for" field entirely in the source docs — a genuine content gap
+  from when they were first written, not a parsing bug. Backfilled each
+  from its lesson's Upgrade Path "before → after" pattern and committed
+  the fix to the docs themselves (commit `29e34f6`), not just the
+  generated SQL, so the source of truth stays complete.
+- **Teens C1 Unit 6 Lesson 6** ("Seeing It From Another Side") carries a
+  `TEACHER-HANDLING NOTE` prefixed onto its `purpose` field — the
+  original doc's safety note about the "friend coming out" example
+  (school-policy check, strict third-person framing, a ready substitute
+  scenario) lived under a non-standard field heading the parser doesn't
+  recognize, so it had to be manually folded into `purpose` to make sure
+  it actually reaches the teacher's screen. The student-facing `task`
+  for this lesson deliberately uses the safer default examples ("a new
+  student joining the class," "someone being stereotyped") rather than
+  the sensitive one.
+- **Validation performed on every file:** all 4 `$json$...$json$` blocks
+  per lesson parse as valid JSON, parens balance, every lesson UUID
+  appears exactly 5 times (1 `lessons` row + 4 `lesson_slides` rows), no
+  UUID collides with the pilot's, no duplicate
+  (level, age_track, unit_number, lesson_number). 152 lessons, 0 errors.
+- **Files** (one per unit, run each in the Supabase SQL editor):
+  - Adults C1: `c1_adults_unit1_lessons2-9_insert.sql` (finishes the
+    pilot's unit), `c1_adults_unit{2..6}_insert.sql`
+  - Adults C2: `c2_adults_unit{1..5}_insert.sql`
+  - Teens C1: `c1_teens_unit{1..6}_insert.sql`
 - Teacher's Guide page not extended for C1/C2 — the teacher-only window
   now covers this role per-lesson; the standalone Teacher's Guide page's
   per-unit-summary format isn't needed here unless asked.
+- No images anywhere in C1/C2 yet, same as every other track.
 
-**C2** — not started in the app (content + teacher guidance complete in
-`docs/curriculum/`).
+**C2 · Adults** — see "Full rollout" above; all 5 units generated,
+not yet run in Supabase.
+
+**Teens C1** — see "Full rollout" above; all 6 units generated, not yet
+run in Supabase.
