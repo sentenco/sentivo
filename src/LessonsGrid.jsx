@@ -145,10 +145,38 @@ export default function LessonsGrid({ level = "A1", ageTrack = "kids", onBack, o
   const visible = activeUnit === "all" ? lessons : lessons.filter((l) => l.unit_number === activeUnit);
 
   function openLesson(lesson) {
+    // C1/C2 lessons split into a student-facing task and teacher-only
+    // coaching notes (see sql/lessons/README.md) — open both as separate
+    // windows side by side instead of one combined player.
+    const isAdvancedTrack = lesson.level === "C1" || lesson.level === "C2";
+
+    if (!isAdvancedTrack) {
+      window.open(
+        `/lesson-player/${lesson.id}`,
+        "sentivoLessonPlayer",
+        "width=900,height=640,toolbar=no,location=no,menubar=no,status=no,scrollbars=yes,resizable=yes"
+      );
+      return;
+    }
+
+    const screenW = window.screen.availWidth || 1600;
+    const screenH = window.screen.availHeight || 900;
+    const winW = Math.min(820, Math.floor(screenW / 2) - 20);
+    const winH = Math.min(680, screenH - 80);
+    const gap = 16;
+    const totalW = winW * 2 + gap;
+    const left = Math.max(0, Math.floor((screenW - totalW) / 2));
+    const top = Math.max(0, Math.floor((screenH - winH) / 2));
+
     window.open(
-      `/lesson-player/${lesson.id}`,
-      "sentivoLessonPlayer",
-      "width=900,height=640,toolbar=no,location=no,menubar=no,status=no,scrollbars=yes,resizable=yes"
+      `/lesson-player/${lesson.id}?view=student`,
+      "sentivoLessonPlayerStudent",
+      `width=${winW},height=${winH},left=${left},top=${top},toolbar=no,location=no,menubar=no,status=no,scrollbars=yes,resizable=yes`
+    );
+    window.open(
+      `/lesson-player/${lesson.id}?view=teacher`,
+      "sentivoLessonPlayerTeacher",
+      `width=${winW},height=${winH},left=${left + winW + gap},top=${top},toolbar=no,location=no,menubar=no,status=no,scrollbars=yes,resizable=yes`
     );
   }
 

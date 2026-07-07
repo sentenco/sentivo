@@ -65,16 +65,30 @@ around 9-lesson units and Performance/Model/Output mode blocks, not a
 fixed vocabulary/grammar target — the 9 slide types above don't fit it
 (no vocabulary grid, no fill-in-blank target). Each C1/C2 lesson gets 4
 `lesson_slides` rows, but **only one of them (`scenario`) is ever shown
-to the student** — the other three are teacher-only coaching content
-that LessonPlayer routes into a separate "Teacher Notes" panel instead
-of the paginated Next/Prev sequence (see `TEACHER_ONLY_TYPES` in
-`LessonPlayer.jsx`). This split exists because the teacher-guidance docs
-are written in third person about the student ("get learners
-producing...") and include the actual "likely student responses" — never
-something to put in front of the student. Getting this wrong (putting
-coaching-note prose in front of a student, with open-ended "e.g. X or Y"
-examples instead of one committed prompt) was caught and fixed during
-the pilot — see the C1 section of Status below.
+to the student** — the other three are teacher-only coaching content.
+This split exists because the teacher-guidance docs are written in third
+person about the student ("get learners producing...") and include the
+actual "likely student responses" — never something to put in front of
+the student. Getting this wrong (putting coaching-note prose in front of
+a student, with open-ended "e.g. X or Y" examples instead of one
+committed prompt) was caught and fixed during the pilot — see the C1
+section of Status below.
+
+**Opening a C1/C2 lesson opens two separate popup windows side by side**
+instead of one combined player (`LessonsGrid.jsx`'s `openLesson()`,
+gated on `lesson.level === "C1" || "C2"`): one at
+`/lesson-player/:id?view=student` showing only the `scenario` slide (this
+is the window to share/project for the student), and one at
+`/lesson-player/:id?view=teacher` showing `diagnosis`/`upgrade`/`transfer`
+paginated slide-by-slide with a "Teacher View" badge (this is the
+teacher's private window — never share or project it). `LessonPlayer.jsx`
+reads the `view` query param via `TEACHER_ONLY_TYPES`/`isTeacherView` to
+decide which slide array drives its Next/Prev sequence; A1–B2 lessons are
+unaffected (no teacher-only slide types exist for them, and `openLesson`
+only splits into two windows for C1/C2). An earlier version of this put
+both views in one window behind a toggle button — replaced with real
+separate windows so the teacher can keep her notes open privately while
+only the student window is shared/projected.
 
 - **scenario** (student-facing) — `{ mode, task }`. `mode` is
   Performance/Model/Output (colors the badge and picks a friendly label —
@@ -100,13 +114,9 @@ treatment (editorial serif/sans, mode-color-coded badges: Performance
 terracotta, Model slate, Output green) is used for Adults and Teens
 C1/C2 alike, since neither is the Kids-style bouncy theme. Components:
 `src/slides/Slide{Scenario,Diagnosis,Upgrade,Transfer}.jsx`, registered
-in `LessonPlayer.jsx`'s `SLIDE_COMPONENTS`/`SLIDE_TYPE_LABELS` maps. The
-Teacher Notes toggle button and panel are in `LessonPlayer.jsx` itself
-(`showTeacherNotes` state, `TEACHER_ONLY_TYPES` set) — it stacks the
-teacher-only slide components non-paginated in a scrollable panel,
-reusing the exact same components/content as the DB, just rendered
-differently. Verified via a temporary local harness (not committed),
-same pattern as the Adults theme check.
+in `LessonPlayer.jsx`'s `SLIDE_COMPONENTS`/`SLIDE_TYPE_LABELS` maps.
+Verified against the live pilot lesson in Supabase (both `?view=student`
+and `?view=teacher`), not just mock data.
 
 `duration_minutes` for C1/C2 lessons is an estimated 20 (a single
 narrow-focus mode-block segment, not a full standalone class) — there's
@@ -185,32 +195,47 @@ the real CEFR descriptors for that level. Two things to actively watch for:
 **B1** — not started.
 
 **C1 · Adults**
-- Unit 1, Lesson 1 (1/54 lessons) — "Taking a Quick Position"
-  (`lesson15_insert.sql`), pilot lesson for the new C1/C2 slide types.
-  Not run in Supabase yet — user runs the script. Content sourced
-  directly from `docs/curriculum/c1-adults.md` and
-  `c1-adults-teacher-guidance.md` (Unit 1, Lesson 1).
+- Unit 1, Lesson 1 (1/54 lessons) — "Taking a Quick Position". The
+  `lessons` row and its original 4 `lesson_slides` rows are already live
+  in Supabase (from `lesson15_insert.sql`). Content sourced directly from
+  `docs/curriculum/c1-adults.md` and `c1-adults-teacher-guidance.md`
+  (Unit 1, Lesson 1).
 - This introduced the 4 new C1/C2 slide types (`scenario`, `diagnosis`,
   `upgrade`, `transfer`) — see the section above.
 - **First pilot pass put teacher-guidance prose directly in front of the
   student** (third-person coaching language, an open-ended "e.g. X or Y"
   prompt menu instead of one committed task, and "likely student
   responses" visible on the same screen a student would see). Caught by
-  the user immediately after the first pilot shipped. Fixed by splitting
-  `scenario` (student-facing, one concrete second-person task) from
-  `diagnosis`/`upgrade`/`transfer` (teacher-only, moved into a new
-  "Teacher Notes" panel in `LessonPlayer.jsx` instead of the student's
-  Next/Prev sequence) — see the section above for the corrected schema.
-  Re-verified visually before this file was updated.
-- Awaiting user confirmation on this corrected pilot before generating
-  the remaining 152 C1/C2 lessons (Adults C1 Units 2–6, Adults C2 all 5,
-  Teens C1 all 6). Each of those will need the same treatment: pick one
-  concrete prompt per lesson from the teacher-guidance doc's examples
-  (don't just copy the "e.g." menu), and split content into the
-  scenario/diagnosis fields as described above.
-- Teacher's Guide page not extended for C1/C2 — the in-player Teacher
-  Notes panel now covers this role per-lesson; the standalone Teacher's
-  Guide page's per-unit-summary format isn't needed here unless asked.
+  the user immediately after the first pilot shipped: "the one you put in
+  the slides sounds more like an instruction, it's not exactly the
+  lesson." Fixed by splitting `scenario` (student-facing, one concrete
+  second-person task) from `diagnosis`/`upgrade`/`transfer`
+  (teacher-only). **Run `lesson15_fix_content.sql`** (not
+  `lesson15_insert.sql` again — that one already ran and will hit a
+  `lessons_pkey` duplicate-key error) to replace the 4 slide rows with
+  the corrected content.
+- **Second pass:** the corrected content initially still rendered in one
+  window behind a "Teacher Notes" toggle button. The user asked for two
+  actual separate windows instead — one to share with the student, one
+  for the teacher to page through privately. Reworked `LessonPlayer.jsx`
+  to be driven by a `?view=student`/`?view=teacher` query param instead
+  of in-page toggle state, and `LessonsGrid.jsx`'s `openLesson()` now
+  opens both windows side by side for any C1/C2 lesson. Verified against
+  the live pilot lesson in Supabase — `?view=student` correctly shows
+  only the scenario slide (still holding the *old* pre-fix content since
+  `lesson15_fix_content.sql` hasn't been run yet — that's expected, not a
+  bug), `?view=teacher` correctly pages 1/3 → 3/3 through Diagnosis →
+  Upgrade → Transfer with the "Teacher View" badge.
+- **Next: run `lesson15_fix_content.sql`**, then open the lesson from the
+  Lessons Grid to confirm both windows look right with the corrected
+  content. Awaiting that confirmation before generating the remaining 152
+  C1/C2 lessons (Adults C1 Units 2–6, Adults C2 all 5, Teens C1 all 6) —
+  each needs the same two-pass treatment: pick one concrete prompt per
+  lesson from the teacher-guidance doc's examples (don't just copy the
+  "e.g." menu verbatim).
+- Teacher's Guide page not extended for C1/C2 — the teacher-only window
+  now covers this role per-lesson; the standalone Teacher's Guide page's
+  per-unit-summary format isn't needed here unless asked.
 
 **C2** — not started in the app (content + teacher guidance complete in
 `docs/curriculum/`).
