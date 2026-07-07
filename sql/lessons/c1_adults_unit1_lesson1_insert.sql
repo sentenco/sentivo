@@ -31,7 +31,8 @@ values
   $json${
   "unit": "Unit 1 · Lesson 1",
   "title": "Argument and Disagreement",
-  "mode": "Performance"
+  "mode": "Performance",
+  "image_url": "/lessons/c1-adults-u1-l1.jpg"
 }$json$::jsonb,
   true
 ),
