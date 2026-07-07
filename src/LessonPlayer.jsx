@@ -48,6 +48,12 @@ const SLIDE_TYPE_LABELS = {
   transfer: "Transfer",
 };
 
+// These slide types are teacher-only coaching content (purpose, what to
+// listen for, likely student responses, upgrade language, intervention
+// prompts) — never part of the student-paced Next/Prev sequence. Shown
+// instead in a separate Teacher Notes panel. See sql/lessons/README.md.
+const TEACHER_ONLY_TYPES = new Set(["diagnosis", "upgrade", "transfer"]);
+
 export default function LessonPlayer({ lessonId: lessonIdProp }) {
   const params = useParams();
   const lessonId = lessonIdProp || params.id;
@@ -57,6 +63,7 @@ export default function LessonPlayer({ lessonId: lessonIdProp }) {
   const [current, setCurrent] = useState(0);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [showTeacherNotes, setShowTeacherNotes] = useState(false);
 
   useEffect(() => {
     let cancelled = false;
@@ -93,13 +100,16 @@ export default function LessonPlayer({ lessonId: lessonIdProp }) {
     };
   }, [lessonId]);
 
+  const studentSlides = slides.filter((s) => !TEACHER_ONLY_TYPES.has(s.slide_type));
+  const teacherSlides = slides.filter((s) => TEACHER_ONLY_TYPES.has(s.slide_type));
+
   const goPrev = useCallback(() => {
     setCurrent((c) => Math.max(0, c - 1));
   }, []);
 
   const goNext = useCallback(() => {
-    setCurrent((c) => Math.min(slides.length - 1, c + 1));
-  }, [slides.length]);
+    setCurrent((c) => Math.min(studentSlides.length - 1, c + 1));
+  }, [studentSlides.length]);
 
   useEffect(() => {
     function onKeyDown(e) {
@@ -131,7 +141,7 @@ export default function LessonPlayer({ lessonId: lessonIdProp }) {
     );
   }
 
-  if (!slides.length) {
+  if (!studentSlides.length) {
     return (
       <div className="lp-shell lp-shell--state">
         <style>{CSS}</style>
@@ -140,9 +150,9 @@ export default function LessonPlayer({ lessonId: lessonIdProp }) {
     );
   }
 
-  const slide = slides[current];
+  const slide = studentSlides[current];
   const SlideComponent = SLIDE_COMPONENTS[slide.slide_type];
-  const progress = ((current + 1) / slides.length) * 100;
+  const progress = ((current + 1) / studentSlides.length) * 100;
   const isAdult = lesson?.age_track === "adults";
 
   return (
@@ -156,8 +166,17 @@ export default function LessonPlayer({ lessonId: lessonIdProp }) {
         <div className="lp-slide-type">
           {SLIDE_TYPE_LABELS[slide.slide_type] || slide.slide_type}
         </div>
+        {teacherSlides.length > 0 && (
+          <button
+            type="button"
+            className="lp-teacher-toggle"
+            onClick={() => setShowTeacherNotes((v) => !v)}
+          >
+            {showTeacherNotes ? "Close Notes" : "Teacher Notes"}
+          </button>
+        )}
         <div className="lp-counter">
-          {current + 1} / {slides.length}
+          {current + 1} / {studentSlides.length}
         </div>
       </div>
 
@@ -166,7 +185,18 @@ export default function LessonPlayer({ lessonId: lessonIdProp }) {
       </div>
 
       <div className="lp-slide-area">
-        {SlideComponent ? (
+        {showTeacherNotes ? (
+          <div className="lp-teacher-panel">
+            {teacherSlides.map((ts) => {
+              const TeacherComponent = SLIDE_COMPONENTS[ts.slide_type];
+              return TeacherComponent ? (
+                <div className="lp-teacher-block" key={ts.id ?? ts.slide_number}>
+                  <TeacherComponent content={ts.content || {}} lesson={lesson} />
+                </div>
+              ) : null;
+            })}
+          </div>
+        ) : SlideComponent ? (
           <SlideComponent content={slide.content || {}} lesson={lesson} />
         ) : (
           <div className="lp-status lp-status--error">
@@ -176,17 +206,20 @@ export default function LessonPlayer({ lessonId: lessonIdProp }) {
       </div>
 
       <div className="lp-nav">
-        <button className="lp-btn" onClick={goPrev} disabled={current === 0}>
+        <button className="lp-btn" onClick={goPrev} disabled={current === 0 || showTeacherNotes}>
           <span aria-hidden="true">←</span> Previous
         </button>
 
         <div className="lp-dots">
-          {slides.map((s, i) => (
+          {studentSlides.map((s, i) => (
             <button
               key={s.id ?? i}
               type="button"
-              className={`lp-dot ${i === current ? "is-active" : ""}`}
-              onClick={() => setCurrent(i)}
+              className={`lp-dot ${i === current && !showTeacherNotes ? "is-active" : ""}`}
+              onClick={() => {
+                setShowTeacherNotes(false);
+                setCurrent(i);
+              }}
               aria-label={`Go to slide ${i + 1}`}
             />
           ))}
@@ -195,7 +228,7 @@ export default function LessonPlayer({ lessonId: lessonIdProp }) {
         <button
           className="lp-btn"
           onClick={goNext}
-          disabled={current === slides.length - 1}
+          disabled={current === studentSlides.length - 1 || showTeacherNotes}
         >
           Next <span aria-hidden="true">→</span>
         </button>
@@ -265,6 +298,40 @@ const CSS = `
   font-weight: 600;
   font-size: 12.5px;
   color: #7C8598;
+}
+.lp-teacher-toggle {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  color: #5C6F8A;
+  background: transparent;
+  border: 1px solid #5C6F8A;
+  border-radius: 4px;
+  padding: 4px 10px;
+  cursor: pointer;
+}
+.lp-teacher-panel {
+  height: 100%;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+.lp-teacher-block {
+  border-bottom: 1px solid #DEDAD0;
+}
+.lp-teacher-block:last-child { border-bottom: none; }
+/* Teacher-note components normally assume a fixed-height slide frame;
+   override to natural content height when stacked in the notes panel. */
+.lp-teacher-panel .sldg-slide,
+.lp-teacher-panel .slug-slide,
+.lp-teacher-panel .sltr-slide {
+  height: auto;
+}
+.lp-teacher-panel .sldg-body,
+.lp-teacher-panel .slug-body,
+.lp-teacher-panel .sltr-body {
+  overflow-y: visible;
 }
 
 .lp-progress-track {

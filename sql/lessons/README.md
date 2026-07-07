@@ -63,32 +63,50 @@ C1/C2 content (see `docs/curriculum/c1-adults.md`, `c2-adults.md`,
 `c1-teens.md` and their matching `*-teacher-guidance.md` files) is built
 around 9-lesson units and Performance/Model/Output mode blocks, not a
 fixed vocabulary/grammar target — the 9 slide types above don't fit it
-(no vocabulary grid, no fill-in-blank target). Each C1/C2 lesson instead
-gets exactly 4 slides, in this order: `scenario`, `diagnosis`, `upgrade`,
-`transfer`. These map directly onto the teacher-guidance doc fields for
-that lesson:
+(no vocabulary grid, no fill-in-blank target). Each C1/C2 lesson gets 4
+`lesson_slides` rows, but **only one of them (`scenario`) is ever shown
+to the student** — the other three are teacher-only coaching content
+that LessonPlayer routes into a separate "Teacher Notes" panel instead
+of the paginated Next/Prev sequence (see `TEACHER_ONLY_TYPES` in
+`LessonPlayer.jsx`). This split exists because the teacher-guidance docs
+are written in third person about the student ("get learners
+producing...") and include the actual "likely student responses" — never
+something to put in front of the student. Getting this wrong (putting
+coaching-note prose in front of a student, with open-ended "e.g. X or Y"
+examples instead of one committed prompt) was caught and fixed during
+the pilot — see the C1 section of Status below.
 
-- **scenario** — `{ mode, patterns, purpose, elicit }`. `mode` is
-  Performance/Model/Output (colors the badge); `patterns` is the
-  canonical Speaking Simulator pattern name(s); `purpose`/`elicit` come
-  straight from the teacher-guidance doc.
-- **diagnosis** — `{ listenFor, likelyResponses: [...], scorecardFocus:
-  [{dimension, note}, ...] }`. `likelyResponses` is the "likely strong-B2/
-  C1 responses" quotes; `scorecardFocus` is the 1–3 Scorecard dimensions
-  named in the guidance, each with its short parenthetical note.
-- **upgrade** — `{ upgradePath, interventionPrompts: [...] }`. Copy the
-  upgrade-path text and the exact intervention lines verbatim from the
-  guidance doc.
-- **transfer** — `{ extension, recovery }`.
+- **scenario** (student-facing) — `{ mode, task }`. `mode` is
+  Performance/Model/Output (colors the badge and picks a friendly label —
+  "Speaking Task"/"Look & Notice"/"Writing Task"); `task` is **one
+  concrete, second-person instruction** ("You have 90 seconds. Take a
+  position: ..."), not the teacher-guidance doc's example menu. Pick one
+  specific prompt from the "Elicit" field's examples, or write a new one
+  in the same spirit — don't leave it open-ended.
+- **diagnosis** (teacher-only) — `{ purpose, listenFor, likelyResponses:
+  [...], scorecardFocus: [{dimension, note}, ...] }`. `purpose` is the
+  teacher-guidance doc's "Purpose" field (moved here from scenario);
+  `likelyResponses` is the "likely strong-B2/C1 responses" quotes —
+  reword them to match whichever concrete prompt you picked for
+  `scenario`, don't leave them referencing a different example;
+  `scorecardFocus` is the 1–3 Scorecard dimensions named in the guidance,
+  each with its short parenthetical note.
+- **upgrade** (teacher-only) — `{ upgradePath, interventionPrompts: [...]
+  }`. Copy the upgrade-path text and exact intervention lines verbatim.
+- **transfer** (teacher-only) — `{ extension, recovery }`.
 
 No `lesson.age_track` gating in these components — the same visual
 treatment (editorial serif/sans, mode-color-coded badges: Performance
 terracotta, Model slate, Output green) is used for Adults and Teens
 C1/C2 alike, since neither is the Kids-style bouncy theme. Components:
 `src/slides/Slide{Scenario,Diagnosis,Upgrade,Transfer}.jsx`, registered
-in `LessonPlayer.jsx`'s `SLIDE_COMPONENTS`/`SLIDE_TYPE_LABELS` maps.
-Verified via a temporary local harness (not committed), same pattern as
-the Adults theme check.
+in `LessonPlayer.jsx`'s `SLIDE_COMPONENTS`/`SLIDE_TYPE_LABELS` maps. The
+Teacher Notes toggle button and panel are in `LessonPlayer.jsx` itself
+(`showTeacherNotes` state, `TEACHER_ONLY_TYPES` set) — it stacks the
+teacher-only slide components non-paginated in a scrollable panel,
+reusing the exact same components/content as the DB, just rendered
+differently. Verified via a temporary local harness (not committed),
+same pattern as the Adults theme check.
 
 `duration_minutes` for C1/C2 lessons is an estimated 20 (a single
 narrow-focus mode-block segment, not a full standalone class) — there's
@@ -173,13 +191,26 @@ the real CEFR descriptors for that level. Two things to actively watch for:
   directly from `docs/curriculum/c1-adults.md` and
   `c1-adults-teacher-guidance.md` (Unit 1, Lesson 1).
 - This introduced the 4 new C1/C2 slide types (`scenario`, `diagnosis`,
-  `upgrade`, `transfer`) — see the section above. Awaiting user
-  confirmation on this pilot before generating the remaining 152 C1/C2
-  lessons (Adults C1 Units 2–6, Adults C2 all 5, Teens C1 all 6).
-- Teacher's Guide page not extended for C1/C2 — the teacher-guidance
-  docs already serve that role for this track in much more detail than
-  the `GUIDES` object format supports; not planning to duplicate them
-  there unless asked.
+  `upgrade`, `transfer`) — see the section above.
+- **First pilot pass put teacher-guidance prose directly in front of the
+  student** (third-person coaching language, an open-ended "e.g. X or Y"
+  prompt menu instead of one committed task, and "likely student
+  responses" visible on the same screen a student would see). Caught by
+  the user immediately after the first pilot shipped. Fixed by splitting
+  `scenario` (student-facing, one concrete second-person task) from
+  `diagnosis`/`upgrade`/`transfer` (teacher-only, moved into a new
+  "Teacher Notes" panel in `LessonPlayer.jsx` instead of the student's
+  Next/Prev sequence) — see the section above for the corrected schema.
+  Re-verified visually before this file was updated.
+- Awaiting user confirmation on this corrected pilot before generating
+  the remaining 152 C1/C2 lessons (Adults C1 Units 2–6, Adults C2 all 5,
+  Teens C1 all 6). Each of those will need the same treatment: pick one
+  concrete prompt per lesson from the teacher-guidance doc's examples
+  (don't just copy the "e.g." menu), and split content into the
+  scenario/diagnosis fields as described above.
+- Teacher's Guide page not extended for C1/C2 — the in-player Teacher
+  Notes panel now covers this role per-lesson; the standalone Teacher's
+  Guide page's per-unit-summary format isn't needed here unless asked.
 
 **C2** — not started in the app (content + teacher guidance complete in
 `docs/curriculum/`).

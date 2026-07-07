@@ -22,25 +22,23 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 
--- 1. Scenario
+-- 1. Scenario (student-facing)
 (
   '021032cc-8591-454e-9fa9-6e7f7ebca354',
   1,
   'scenario',
-  'Timed Opinion Turn + light Rapid Reformulation',
+  'Your Task',
   null,
   $json$
   {
     "mode": "Performance",
-    "patterns": "Timed Opinion Turn + light Rapid Reformulation",
-    "purpose": "Get learners producing fast, structured opinions under mild time pressure, and immediately reformulating for clearer stance-taking — the entry skill the rest of the unit builds on.",
-    "elicit": "60-90 second opinion turns on controversial-but-low-stakes prompts (e.g. \"Should companies ban smartphones in meetings?\" / \"Is remote work better than office work?\"). One prep-free attempt, then one immediate reformulation of the same turn."
+    "task": "You have 90 seconds. Take a clear position: should companies ban smartphones in meetings? Give your stance and two distinct reasons — not two versions of the same reason. When you finish, you'll try again, sharper."
   }
   $json$::jsonb,
   true
 ),
 
--- 2. Diagnosis
+-- 2. Diagnosis (teacher-only)
 (
   '021032cc-8591-454e-9fa9-6e7f7ebca354',
   2,
@@ -49,10 +47,11 @@ values
   null,
   $json$
   {
+    "purpose": "Get learners producing fast, structured opinions under mild time pressure, and immediately reformulating for clearer stance-taking — the entry skill the rest of the unit builds on.",
     "listenFor": "Whether the stance is clear in the first 10 seconds; whether reasons are distinct (not restatements of the stance); whether hedging is present but not overused; filler/false-start density under time pressure.",
     "likelyResponses": [
-      "I think remote work is better because you can save time and also it's more comfortable, and, um, also flexible.",
-      "In my opinion, banning phones is a good idea because people don't pay attention if they have their phone."
+      "I think banning phones is a good idea because people don't pay attention if they have their phone, and also it's distracting.",
+      "In my opinion, companies shouldn't ban phones because sometimes you need to check something important, and also it's not fair."
     ],
     "scorecardFocus": [
       {"dimension": "Naturalness", "note": "chunking, disfluency control"},

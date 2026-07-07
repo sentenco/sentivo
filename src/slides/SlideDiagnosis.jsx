@@ -10,6 +10,13 @@ export default function SlideDiagnosis({ content }) {
         <h2 className="sldg-title">What to Listen For</h2>
       </div>
       <div className="sldg-body">
+        {content.purpose && (
+          <div className="sldg-section">
+            <div className="sldg-label">Purpose</div>
+            <p className="sldg-text">{content.purpose}</p>
+          </div>
+        )}
+
         {content.listenFor && (
           <div className="sldg-section">
             <div className="sldg-label">Listen For</div>
