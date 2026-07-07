@@ -514,6 +514,8 @@ matters for peers and omitting what doesn't.
 policy/news text for classmates, with explicit selection of what to
 include.
 
+**Listen for:** Whether the response still stays include everything simplified, or whether it's begun to show genuinely selective.
+
 **Likely strong-B2 responses:** A brief that includes everything from the
 original text in simpler words, rather than genuinely selecting what
 matters for this specific peer audience.
@@ -549,6 +551,8 @@ differences clearly.
 explicit recommendation and reasoning a friend could follow without
 reading the originals.
 
+**Listen for:** Whether the response still stays description only, or whether it's begun to show committed recommendation.
+
 **Likely strong-B2 responses:** A note that describes both sources fairly
 but never actually recommends one, leaving the friend to decide anyway.
 
@@ -581,6 +585,8 @@ spontaneously for an absent classmate.
 
 **Elicit:** A 45–60 second structured explanation of a video/article
 covered in class, aimed at someone who missed it.
+
+**Listen for:** Whether the response still stays sequential retelling, or whether it's begun to show point plus significance.
 
 **Likely strong-B2 responses:** A mostly-accurate retelling that lists
 events/points in the order they appeared, without stepping back to say
@@ -770,6 +776,8 @@ anticipate likely questions.
 
 **Elicit:** A planned explanatory talk outline with an explicit
 anticipated-questions section.
+
+**Listen for:** Whether the response still stays generic close, or whether it's begun to show specific anticipation.
 
 **Likely strong-B2 responses:** A well-sequenced outline with a generic
 "questions?" note at the end, not actual anticipated questions.
@@ -1004,6 +1012,8 @@ points, and composure under unexpected/critical questions.
 **Elicit:** A model Q&A transcript/recording; learners identify specific
 strategies used and connect them to Lesson 6's live practice.
 
+**Listen for:** Whether the response still stays non specific praise, or whether it's begun to show strategy naming.
+
 **Likely strong-B2 responses:** "The presenter answers the questions
 well." (a correct but non-specific observation.)
 
@@ -1037,6 +1047,8 @@ mediation/explanation work.
 **Elicit:** A model presenter addressing different audiences (younger
 students, classmates, teachers) on similar content; learners map changes
 in detail, examples, and tone.
+
+**Listen for:** Whether the response still stays unspecific noticing, or whether it's begun to show specific mapping.
 
 **Likely strong-B2 responses:** "They talk differently to little kids
 than to teachers." (an accurate but unspecific observation.)
@@ -1115,6 +1127,8 @@ control over tone shifts.
 
 **Elicit:** A deliberately blunt/casual/overly formal response, then
 immediate reformulation to a specified better-fitting register.
+
+**Listen for:** Whether the response still stays vocabulary only fix, or whether it's begun to show structural fix.
 
 **Likely strong-B2 responses:** The reformulation changes vocabulary
 (swapping slang for "proper" words) but keeps the same blunt sentence
@@ -1225,6 +1239,8 @@ examples, and attitude signals adapt while the key message stays stable.
 audiences; learners map what stays the same (the core message) versus
 what changes (detail, examples, tone).
 
+**Listen for:** Whether the response still stays undifferentiated difference noticing, or whether it's begun to show stable/variable mapping.
+
 **Likely strong-B2 responses:** Notices that the explanations "sound
 different" without separating what's stable (the message) from what's
 variable (the delivery).
@@ -1260,6 +1276,8 @@ misunderstanding), weighing formality, directness, and politeness.
 **Elicit:** A model discussion where teens negotiate the exact phrasing
 of a sensitive message; learners identify what trade-off is being made
 between formality, directness, and politeness.
+
+**Listen for:** Whether the response still stays single dimension noticing, or whether it's begun to show trade off identification.
 
 **Likely strong-B2 responses:** "They try to make it sound polite."
 (accurate but doesn't identify the actual trade-off being negotiated.)
@@ -1297,6 +1315,8 @@ tone/register shifts without altering core meaning or commitments.
 then a rewritten version for a different audience (teacher, forum), with
 an explicit check that the underlying commitment is unchanged.
 
+**Listen for:** Whether the response still stays drifted commitment, or whether it's begun to show preserved commitment.
+
 **Likely strong-B2 responses:** The rewritten version changes tone but
 also accidentally changes the actual request or commitment slightly.
 
@@ -1331,6 +1351,8 @@ and structures for each register.
 phrases for talking to a friend, teacher, principal, and online
 strangers about the same topic.
 
+**Listen for:** Whether the response still stays general advice, or whether it's begun to show concrete reusable phrases.
+
 **Likely strong-B2 responses:** A style guide with accurate general
 advice ("be more formal with teachers") but no concrete, reusable
 phrases attached to each entry.
@@ -1363,6 +1385,8 @@ teen situations, articulating why certain choices suit each context.
 **Elicit:** A group-authored guideline document (100–150 words) for
 common situations (disagreeing with a friend, emailing a teacher, posting
 online), with reasoning for each recommendation.
+
+**Listen for:** Whether the response still stays bare rule, or whether it's begun to show reasoned guideline.
 
 **Likely strong-B2 responses:** A set of rules stated as commands ("be
 polite to teachers") without the reasoning behind why that choice
@@ -1445,6 +1469,8 @@ using challenge to improve solutions, not shut negotiation down.
 how the challenge actually improved the final proposal rather than just
 ending it.
 
+**Listen for:** Whether the response still stays outcome only noticing, or whether it's begun to show improvement tracking.
+
 **Likely strong-B2 responses:** "They challenge it and then the person
 changes their mind." (notices the outcome, misses how the challenge
 specifically improved rather than just defeated the proposal.)
@@ -1483,6 +1509,8 @@ contexts.
 specific reframing move that turns an accusatory statement into a neutral
 one.
 
+**Listen for:** Whether the response still stays effect noticing, or whether it's begun to show technique identification.
+
 **Likely strong-B2 responses:** "The mediator calms everyone down."
 (accurate effect, no identification of the specific reframing technique.)
 
@@ -1518,6 +1546,8 @@ final compromise.
 (project time/tasks, group-chat rules, shared club space), with all three
 elements explicit: needs, options, compromise.
 
+**Listen for:** Whether the response still stays outcome only documentation, or whether it's begun to show full process documentation.
+
 **Likely strong-B2 responses:** A written agreement that states the final
 decision clearly but skips documenting the needs or the options that were
 considered along the way.
@@ -1551,6 +1581,8 @@ without taking sides.
 
 **Elicit:** A written neutral account (100–130 words) of a conflict and
 its resolution, for an absent teacher or friend.
+
+**Listen for:** Whether the response still stays subtly biased neutral account, or whether it's begun to show genuinely neutral account.
 
 **Likely strong-B2 responses:** An account that's mostly neutral but
 subtly favours one side in word choice (e.g. "she finally agreed" implies
@@ -1588,6 +1620,8 @@ solution, and key reasons.
 **Elicit:** A 45–60 second structured explanation of a group decision for
 an outside audience (class or teacher), covering issue, solution, and
 reasons.
+
+**Listen for:** Whether the response still stays bare announcement, or whether it's begun to show reasoned explanation.
 
 **Likely strong-B2 responses:** "We decided to do X." (announces the
 outcome with no reasoning, assuming the audience doesn't need the
@@ -1754,6 +1788,8 @@ seconds) on a topic like "online identity vs offline self" or "belonging
 in different groups," with an explicit option to use a hypothetical or
 general example rather than a personal one.
 
+**Listen for:** Whether the response still stays flat feeling statement, or whether it's begun to show nuanced expression.
+
 **Likely strong-B2 responses:** A piece with a clear stance but flat,
 single-layer feeling expression ("I feel happy when I belong") without
 nuance or qualification.
@@ -1790,6 +1826,8 @@ without oversimplifying.
 issue (stereotypes in media, inclusion, online privacy) for
 less-informed peers.
 
+**Listen for:** Whether the response still stays miscalibrated complexity, or whether it's begun to show accessible but accurate.
+
 **Likely strong-B2 responses:** An explanation that oversimplifies to the
 point of losing accuracy, or one so detailed it loses the less-informed
 audience — the balance point is genuinely hard to hit.
@@ -1825,6 +1863,8 @@ openness" as its own skill.
 **Elicit:** A personal-or-hypothetical reflection (e.g. "a time I felt
 included/excluded"), reformulated for three audiences with visibly
 different openness levels.
+
+**Listen for:** Whether the response still stays uniform openness, or whether it's begun to show calibrated openness.
 
 **Likely strong-B2 responses:** The three versions differ in politeness
 but not really in openness — the learner shares the same level of detail
@@ -1906,6 +1946,8 @@ into shared, concrete statements.
 principles (for inclusion in group work, or for respectful discussion of
 differences).
 
+**Listen for:** Whether the response still stays vague principle, or whether it's begun to show concrete commitment.
+
 **Likely strong-B2 responses:** Vague, feel-good principles ("be nice to
 everyone") that aren't concrete enough to actually guide behaviour.
 
@@ -1956,6 +1998,8 @@ one is required to share real experiences) before starting.
 hypothetical identity-related situation might feel from more than one
 point of view, using third-person framing throughout.
 
+**Listen for:** Whether the response still stays single perspective sympathy, or whether it's begun to show multi perspective empathy.
+
 **Likely strong-B2 responses:** A one-sided empathy statement ("that
 must feel hard") without actually developing multiple points of view or
 adding social-awareness nuance.
@@ -1991,6 +2035,8 @@ against" answers.
 
 **Elicit:** Model responses on identity/social topics; learners identify
 specific phrases signalling nuance or mixed feelings.
+
+**Listen for:** Whether the response still stays vague noticing, or whether it's begun to show phrase identification.
 
 **Likely strong-B2 responses:** "They don't just say yes or no."
 (accurate but doesn't identify the specific phrase producing that
@@ -2028,6 +2074,8 @@ avoiding intrusive or over-personal storytelling.
 **Elicit:** Model articles/talks for youth audiences; learners identify
 specifically where the writer/speaker holds back from over-sharing while
 still sounding genuine.
+
+**Listen for:** Whether the response still stays presence noticing, or whether it's begun to show boundary noticing.
 
 **Likely strong-B2 responses:** "They share some of their own
 experience." (notices personal voice is present, doesn't notice where a
@@ -2067,6 +2115,8 @@ the track's closing lesson.
 **Elicit:** Paired texts/clips at different openness levels on the same
 underlying experience; learners map exactly what changes and what stays
 constant.
+
+**Listen for:** Whether the response still stays global impression, or whether it's begun to show specific mapping.
 
 **Likely strong-B2 responses:** "The private one is more personal and
 the public one is less personal." (accurate but doesn't map specific

@@ -290,6 +290,8 @@ for a senior audience.
 arguments/evidence and explicitly flags the limitations of the
 recommended course of action, not just its strengths.
 
+**Listen for:** Whether the response still stays confidence only, or whether it's begun to show confidence with honest limitation.
+
 **Likely strong-C1 responses:** A well-integrated synthesis that
 confidently recommends a course of action without acknowledging any
 weakness in it — persuasive but not fully honest about uncertainty, which
@@ -326,6 +328,8 @@ pre-emptive rebuttal.
 **Elicit:** A proposal section (150–180 words) that pre-empts at least one
 strong counterargument rather than waiting to be asked about it.
 
+**Listen for:** Whether the response still stays defends against easy objections, or whether it's begun to show pre empts the real one.
+
 **Likely strong-C1 responses:** A well-argued proposal that is airtight
 against objections the writer thought of, but silent on the single
 strongest objection a critical reader would actually raise.
@@ -361,6 +365,8 @@ framing, and call to action.
 **Elicit:** A slide outline or briefing script (5–6 slide-equivalents)
 converting the Lesson 1 stance into a structured strategic narrative with
 an explicit call to action.
+
+**Listen for:** Whether the response still stays report structure, or whether it's begun to show strategic narrative.
 
 **Likely strong-C1 responses:** A clear, logically ordered outline that
 presents information well but reads as a report rather than a strategic
@@ -402,6 +408,8 @@ simplified for non-expert decision-makers.
 purpose and audience, followed by an explicit call on what can be
 safely simplified without distortion.
 
+**Listen for:** Whether the response still stays flat completeness, or whether it's begun to show judged compression.
+
 **Likely strong-C1 responses:** An accurate summary of each source's
 content that treats all details as equally essential, producing a
 briefing too long and undifferentiated to actually be useful.
@@ -440,6 +448,8 @@ uncertainty without bias.
 non-expert, explicitly naming one implication and one area of genuine
 uncertainty.
 
+**Listen for:** Whether the response still stays false certainty, or whether it's begun to show honest calibration.
+
 **Likely strong-C1 responses:** A clear, accurate, neutral explanation
 that never mentions uncertainty at all — sounds authoritative but
 overstates the actual state of knowledge.
@@ -476,6 +486,8 @@ options to keep dialogue constructive under real pressure.
 sequencing logic (why this option is presented before that one) rather
 than just listing the options presented.
 
+**Listen for:** Whether the response still stays neutral listing assumption, or whether it's begun to show sequencing as strategy.
+
 **Likely strong-C1 responses:** "The mediator lists three options and
 lets people choose." (accurate but misses that sequencing itself is a
 persuasive/de-escalating choice, not neutral ordering.)
@@ -510,6 +522,8 @@ a specific audience, flagging what is known, unknown, and contested.
 
 **Elicit:** A written briefing (150–180 words) with explicit known/
 unknown/contested sections or signaling.
+
+**Listen for:** Whether the response still stays false settledness, or whether it's begun to show explicit epistemic status.
 
 **Likely strong-C1 responses:** A briefing that presents everything as
 equally settled fact, with no signal of what's actually contested or
@@ -546,6 +560,8 @@ positions, and a balanced recommendation suitable for formal circulation.
 specific stakeholder positions and risks per option, not just a generic
 pros/cons list.
 
+**Listen for:** Whether the response still stays generic pros/cons, or whether it's begun to show stakeholder attributed risk.
+
 **Likely strong-C1 responses:** A generic pros/cons list per option that
 never attributes a position to a specific stakeholder group, making it
 hard for a reader to anticipate resistance.
@@ -581,6 +597,8 @@ controlled register shifts and choice of what to foreground.
 
 **Elicit:** Two short written versions (60–80 words each) of the same
 core explanation, one for a technical team, one for an executive summary.
+
+**Listen for:** Whether the response still stays vocabulary only adaptation, or whether it's begun to show foregrounding adaptation.
 
 **Likely strong-C1 responses:** Two versions that differ mainly in
 vocabulary difficulty (simpler words for executives) rather than in what
@@ -698,6 +716,8 @@ trade-offs, and persuasiveness for a mixed audience.
 immediate reformulation aimed specifically at a mixed (multi-stakeholder)
 audience.
 
+**Listen for:** Whether the response still stays safe neutral but flat, or whether it's begun to show balanced and persuasive.
+
 **Likely strong-C1 responses:** A recommendation that's fair and
 accurate but reads as safely neutral to the point of being
 unpersuasive — hedges so evenly that no one is moved to act.
@@ -743,6 +763,8 @@ signaling priorities.
 multi-project status or risk landscape, for a reader who will spend under
 a minute on it.
 
+**Listen for:** Whether the response still stays even weighting, or whether it's begun to show signaled priority.
+
 **Likely strong-C1 responses:** A summary that's well-written and
 accurate but treats all three or four items as equally important, giving
 the reader no signal of where attention should actually go.
@@ -775,6 +797,8 @@ and recommend one, assuming a busy, skeptical reader.
 
 **Elicit:** A compressed options note (120–150 words) written for an
 explicitly skeptical reader who will look for gaps.
+
+**Listen for:** Whether the response still stays strengths only case, or whether it's begun to show skeptic anticipating case.
 
 **Likely strong-C1 responses:** A well-reasoned note that presents the
 recommended option's strengths thoroughly but doesn't anticipate the
@@ -812,6 +836,8 @@ without padding.
 **Elicit:** A single paragraph/email (50–70 words) with position, reason,
 next step — tighter than the C1 equivalent given C2's economy target.
 
+**Listen for:** Whether the response still stays correct but long, or whether it's begun to show correct and compressed.
+
 **Likely strong-C1 responses:** A clean, correct email that's still 100+
 words when 50 would do — grammatically excellent but not yet
 economical.
@@ -848,6 +874,8 @@ audience cares about (risk, cost, optics, timing).
 targeted precisely at whichever priority (risk/cost/optics/timing) the
 role-played listener names, then reformulated when the priority changes.
 
+**Listen for:** Whether the response still stays static defense, or whether it's begun to show priority responsive defense.
+
 **Likely strong-C1 responses:** A confident, accurate spoken defense that
 covers the recommendation well but doesn't noticeably shift emphasis when
 the listener's stated priority changes.
@@ -882,6 +910,8 @@ recommendation concisely and non-defensively.
 "what evidence underlies this?", "what happens if this fails?"), each
 answer capped at roughly 10 seconds — tighter than C1's 15-second target.
 
+**Listen for:** Whether the response still stays adequate but not tight, or whether it's begun to show maximally economical.
+
 **Likely strong-C1 responses:** Solid 15-second answers that are clear
 and non-defensive but still slightly longer than the true C2 economy bar
 requires.
@@ -914,6 +944,8 @@ keeping references to the documents clear and economical.
 **Elicit:** Two learners with conflicting compressed recommendations
 negotiate a reconciled position, citing specific parts of each note
 economically (not describing them at length).
+
+**Listen for:** Whether the response still stays verbose citation, or whether it's begun to show economical citation.
 
 **Likely strong-C1 responses:** Accurate references to the other's note
 that take a full sentence to set up each time ("if you look at the part
@@ -952,6 +984,8 @@ C1's equivalent lesson.
 identify not just one omission (the C1 bar) but the underlying principle
 governing what the writer chose to include at all.
 
+**Listen for:** Whether the response still stays single instance noticing, or whether it's begun to show principle extraction.
+
 **Likely strong-C1 responses:** Correctly identifies a specific omission
 and why it works, matching the C1 bar exactly, but doesn't generalize to
 a reusable principle for their own writing.
@@ -989,6 +1023,8 @@ briefing that distinguishes them on a dimension finer than "formal vs.
 informal" — e.g. which one assumes more shared context, which one
 signals confidence differently.
 
+**Listen for:** Whether the response still stays surface level distinction, or whether it's begun to show subtler distinction.
+
 **Likely strong-C1 responses:** An accurate comparison on formality and
 structure — the C1-level distinctions already covered — without finding a
 subtler difference.
@@ -1024,6 +1060,8 @@ decision for future readers — the unit's closing synthesis.
 **Elicit:** A decision process with a written packet plus a meeting
 transcript; learners trace not just what changed (the C1 bar) but why the
 meeting departed from the packet's framing.
+
+**Listen for:** Whether the response still stays divergence spotting, or whether it's begun to show divergence explaining.
 
 **Likely strong-C1 responses:** Accurately identifies that the meeting
 diverged from the packet's framing (matching the C1 bar) but doesn't
@@ -1066,6 +1104,8 @@ and call to action.
 **Elicit:** A 45-second stand-up briefing on a board-visible topic, then
 reformulation focused on narrative and call to action, not just clarity.
 
+**Listen for:** Whether the response still stays informative but flat, or whether it's begun to show narrative with ask.
+
 **Likely strong-C1 responses:** A clear, well-organized briefing that
 informs thoroughly but has no discernible narrative arc or explicit ask —
 information delivery without a persuasive throughline.
@@ -1098,6 +1138,8 @@ equivalent lesson.
 
 **Elicit:** Hostile, high-stakes Q&A (external partners, senior
 leadership with reputational stakes) following a brief presentation.
+
+**Listen for:** Whether the response still stays slight over explaining under hostility, or whether it's begun to show maintained economy under hostility.
 
 **Likely strong-C1 responses:** Composed, non-defensive answers that are
 accurate but slightly over-explain under real hostility — a natural
@@ -1133,6 +1175,8 @@ C2's higher-stakes bar.
 **Elicit:** A high-stakes presentation-driven decision discussion with
 multiple skeptical questioners, requiring the learner to both present and
 facilitate toward a decision.
+
+**Listen for:** Whether the response still stays even handling of all objections, or whether it's begun to show triaged handling.
 
 **Likely strong-C1 responses:** Effective steering that keeps discussion
 on track (matching the C1 bar) but treats all raised assumptions as
@@ -1171,6 +1215,8 @@ signposting, and Q&A strategy at C2 density.
 strategic choice in how the Q&A itself was structured or anticipated (not
 just the presentation content), then reuse that specific strategy.
 
+**Listen for:** Whether the response still stays presentation only analysis, or whether it's begun to show Q&A strategy analysis.
+
 **Likely strong-C1 responses:** Solid analysis of the presentation's
 structure and signposting (matching C1) without examining how the
 presenter shaped the anticipated Q&A in advance.
@@ -1207,6 +1253,8 @@ differences.
 announcements; a spoken briefing on differences, including a
 recommendation for which approach suits a stated upcoming scenario.
 
+**Listen for:** Whether the response still stays comparison only, or whether it's begun to show comparison applied.
+
 **Likely strong-C1 responses:** A solid structural/tonal comparison
 (matching C1) that doesn't connect the comparison to a specific upcoming
 decision the listener actually faces.
@@ -1242,6 +1290,8 @@ strategically to pushback, at C2's finer level of strategic reading.
 **Elicit:** A model board-level meeting; learners identify a moment where
 the presenter's response to pushback shapes the room's perception of
 their judgment, not just answers the question asked.
+
+**Listen for:** Whether the response still stays content of answer noticing, or whether it's begun to show signal of judgment noticing.
 
 **Likely strong-C1 responses:** Accurately describes how a question was
 answered (matching C1) without evaluating what that answer signaled about
@@ -1281,6 +1331,8 @@ precision bar than C1's equivalent lesson.
 not just the question but a strategic assessment of what a good vs.
 risky answer would signal.
 
+**Listen for:** Whether the response still stays prepared answer only, or whether it's begun to show answer plus signal awareness.
+
 **Likely strong-C1 responses:** Specific anticipated questions with
 prepared answers (matching the C1 bar), but without any note on what a
 risky answer might inadvertently signal.
@@ -1317,6 +1369,8 @@ at C2's bar of integrated rather than tacked-on engagement points.
 **Elicit:** A slide sequence/script with a mid-sequence checkpoint and an
 explicit contingency branch for outright rejection of the recommendation.
 
+**Listen for:** Whether the response still stays agreement assuming, or whether it's begun to show rejection prepared.
+
 **Likely strong-C1 responses:** A sequence with a reasonably placed
 checkpoint (matching C1) but no real contingency plan if the room rejects
 the recommendation outright — the sequence assumes agreement.
@@ -1351,6 +1405,8 @@ and timing specificity.
 **Elicit:** A follow-up email (100–130 words) where every action item has
 a named owner and a specific date, and any question raised but not fully
 answered live is explicitly flagged for follow-up rather than dropped.
+
+**Listen for:** Whether the response still stays silent dropping, or whether it's begun to show explicit flagging.
 
 **Likely strong-C1 responses:** Owned, dated action items (matching the
 C1 bar) but silently drops the one question that wasn't fully answered
@@ -1392,6 +1448,8 @@ implied stance, and what is left unsaid.
 softening device (a C1-level observation) but something the text
 deliberately never says at all, and why.
 
+**Listen for:** Whether the response still stays softening device noticing, or whether it's begun to show strategic silence noticing.
+
 **Likely strong-C1 responses:** Identifies hedges and softening language
 accurately (matching C1) but doesn't notice a significant silence — a
 fact or admission the text carefully avoids stating.
@@ -1426,6 +1484,8 @@ choices that make it diplomatic.
 
 **Elicit:** A 30-second analytical turn naming a specific device (not
 just "it's diplomatic") that produces a message's tone.
+
+**Listen for:** Whether the response still stays impression level, or whether it's begun to show device level.
 
 **Likely strong-C1 responses:** "It sounds diplomatic because it's
 careful and doesn't blame anyone." (accurate impression, no
@@ -1462,6 +1522,8 @@ hedge, and reframe to keep dialogue open while signaling boundaries.
 cross-team tension); learners map where a boundary is signaled without
 closing off the relationship.
 
+**Listen for:** Whether the response still stays softening noticing, or whether it's begun to show boundary under softening noticing.
+
 **Likely strong-C1 responses:** Identifies hedging and softening
 (matching C1) but doesn't find the specific moment a genuine boundary is
 being drawn underneath the diplomatic surface.
@@ -1496,6 +1558,8 @@ emphasis to reduce damage and improve alignment.
 **Elicit:** A rewritten message (matching original length) that changes
 tone/stance/emphasis while preserving every underlying fact and
 commitment exactly.
+
+**Listen for:** Whether the response still stays softened but lossy, or whether it's begun to show softened and lossless.
 
 **Likely strong-C1 responses:** A tactful rewrite (matching the C1 bar)
 that inadvertently drops or blurs one of the original facts in the
@@ -1534,6 +1598,8 @@ stance while keeping core commitments consistent.
 similar) of the same message, with an explicit consistency check on core
 commitments across both.
 
+**Listen for:** Whether the response still stays undetected inconsistency, or whether it's begun to show verified consistency.
+
 **Likely strong-C1 responses:** Two well-differentiated versions
 (matching C1) that, on close comparison, actually commit to slightly
 different things — an inconsistency invisible unless checked directly.
@@ -1571,6 +1637,8 @@ impact without obscuring the message.
 diplomatic tasks (saying no, delivering bad news, questioning a decision
 tactfully), each annotated with what makes it work.
 
+**Listen for:** Whether the response still stays one off phrasing, or whether it's begun to show reusable template.
+
 **Likely strong-C1 responses:** Effective one-off diplomatic phrasings
 (matching C1) that aren't abstracted into a reusable pattern — each
 works for its specific case but doesn't generalize.
@@ -1606,6 +1674,8 @@ reformulate to adjust strength, tact, and stance, moving from
 **Elicit:** Live sensitive prompts (disagreeing with a senior person,
 pushback from a partner); an initial response, then reformulation
 explicitly labeled as moving from blunt-or-vague toward calibrated.
+
+**Listen for:** Whether the response still stays overcorrection, or whether it's begun to show calibration.
 
 **Likely strong-C1 responses:** A first response that's clearly too
 blunt or too vague, and a reformulation that overcorrects to the other
@@ -1644,6 +1714,8 @@ and protecting face on all sides without escalation.
 **Elicit:** A sustained, emotionally loaded challenge scenario (being
 blamed for a problem, pressured into a risky public stance); learner must
 avoid escalation across multiple rounds.
+
+**Listen for:** Whether the response still stays late round escalation, or whether it's begun to show sustained composure.
 
 **Likely strong-C1 responses:** Composed handling of the first one or two
 rounds (matching C1) that shows signs of defensive escalation by the
@@ -1684,6 +1756,8 @@ and future options — the track's closing synthesis lesson.
 **Elicit:** A negotiation genuinely designed to have no full-resolution
 outcome; learner must close it constructively without forcing a false
 agreement.
+
+**Listen for:** Whether the response still stays awkward non closure, or whether it's begun to show graceful non resolution.
 
 **Likely strong-C1 responses:** Recognizes the negotiation can't fully
 resolve (a real C1-level maturity) but closes awkwardly, either forcing
