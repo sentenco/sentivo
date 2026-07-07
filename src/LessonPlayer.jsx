@@ -10,10 +10,12 @@ import SlideSpeaking from "./slides/SlideSpeaking";
 import SlideReading from "./slides/SlideReading";
 import SlideWriting from "./slides/SlideWriting";
 import SlideReview from "./slides/SlideReview";
-import SlideScenario from "./slides/SlideScenario";
-import SlideDiagnosis from "./slides/SlideDiagnosis";
-import SlideUpgrade from "./slides/SlideUpgrade";
-import SlideTransfer from "./slides/SlideTransfer";
+import SlideAdvTitle from "./slides/SlideAdvTitle";
+import SlideEngage from "./slides/SlideEngage";
+import SlideStudy from "./slides/SlideStudy";
+import SlideActivate from "./slides/SlideActivate";
+import SlideWrapUp from "./slides/SlideWrapUp";
+import SlideTeacherGuide from "./slides/SlideTeacherGuide";
 
 const SLIDE_COMPONENTS = {
   title: SlideTitle,
@@ -25,11 +27,17 @@ const SLIDE_COMPONENTS = {
   reading: SlideReading,
   writing: SlideWriting,
   review: SlideReview,
-  // C1/C2 advanced-track slide types (see docs/curriculum/*-teacher-guidance.md)
-  scenario: SlideScenario,
-  diagnosis: SlideDiagnosis,
-  upgrade: SlideUpgrade,
-  transfer: SlideTransfer,
+  // C1/C2 advanced-track slide types — student flow (Title/Engage/Study/
+  // Activate/Wrap-up, 5-7 slides depending on mode) plus a single-sheet
+  // teacher guide. See project_c1_c2_lesson_redesign memory for the full
+  // design; this replaces the earlier scenario/diagnosis/upgrade/transfer
+  // 4-slide-type design entirely.
+  advtitle: SlideAdvTitle,
+  engage: SlideEngage,
+  study: SlideStudy,
+  activate: SlideActivate,
+  wrapup: SlideWrapUp,
+  teacherguide: SlideTeacherGuide,
 };
 
 const SLIDE_TYPE_LABELS = {
@@ -42,20 +50,22 @@ const SLIDE_TYPE_LABELS = {
   reading: "Reading",
   writing: "Writing",
   review: "Review",
-  scenario: "Scenario",
-  diagnosis: "Diagnosis",
-  upgrade: "Upgrade Clinic",
-  transfer: "Transfer",
+  advtitle: "Title",
+  engage: "Engage",
+  study: "Study",
+  activate: "Activate",
+  wrapup: "Wrap-up",
+  teacherguide: "Teacher Guide",
 };
 
-// These slide types are teacher-only coaching content (purpose, what to
-// listen for, likely student responses, upgrade language, intervention
-// prompts) — never shown to the student. Opening a C1/C2 lesson launches
-// two separate LessonPlayer windows: one at ?view=student (default) that
-// only ever shows the other slide types, and one at ?view=teacher that
-// only shows these, paginated the same slide-per-slide way. See
-// LessonsGrid.jsx's openLesson() and sql/lessons/README.md.
-const TEACHER_ONLY_TYPES = new Set(["diagnosis", "upgrade", "transfer"]);
+// The teacher guide is teacher-only coaching content — never shown to the
+// student. Opening a C1/C2 lesson launches two separate LessonPlayer
+// windows: one at ?view=student (default) that only ever shows the
+// student-flow slide types, and one at ?view=teacher that shows this one
+// single-sheet slide (not paginated — it's one continuous scrollable
+// document, see SlideTeacherGuide). See LessonsGrid.jsx's openLesson()
+// and sql/lessons/README.md.
+const TEACHER_ONLY_TYPES = new Set(["teacherguide"]);
 
 export default function LessonPlayer({ lessonId: lessonIdProp }) {
   const params = useParams();
@@ -166,15 +176,35 @@ export default function LessonPlayer({ lessonId: lessonIdProp }) {
   const progress = ((current + 1) / activeSlides.length) * 100;
   const isAdult = lesson?.age_track === "adults";
 
+  // The teacher guide is a single continuous scrollable sheet, not
+  // paginated slides — it has its own internal header/footer (see
+  // SlideTeacherGuide), so skip the normal lp-header/lp-nav chrome
+  // entirely for this view.
+  if (isTeacherView) {
+    return (
+      <div className="lp-shell lp-shell--portrait lp-shell--sheet">
+        <style>{CSS}</style>
+        <div className="lp-slide-area">
+          {SlideComponent ? (
+            <SlideComponent content={slide.content || {}} lesson={lesson} />
+          ) : (
+            <div className="lp-status lp-status--error">
+              Unknown slide type: {slide.slide_type}
+            </div>
+          )}
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <div className={`lp-shell ${isAdult ? "is-adult" : ""} ${isTeacherView ? "lp-shell--portrait" : ""}`}>
+    <div className={`lp-shell ${isAdult ? "is-adult" : ""}`}>
       <style>{CSS}</style>
 
       <div className="lp-header">
         <div className="lp-wordmark">
           sentivo{!isAdult && <span className="lp-dot">•</span>}
         </div>
-        {isTeacherView && <span className="lp-view-badge">Teacher View</span>}
         <div className="lp-slide-type">
           {SLIDE_TYPE_LABELS[slide.slide_type] || slide.slide_type}
         </div>
@@ -295,18 +325,6 @@ const CSS = `
   font-size: 12.5px;
   color: #7C8598;
 }
-.lp-view-badge {
-  font-family: 'Inter', sans-serif;
-  font-weight: 700;
-  font-size: 10px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: #fff;
-  background: #5C6F8A;
-  border-radius: 3px;
-  padding: 3px 8px;
-}
-
 .lp-progress-track {
   height: 3px;
   background: #EFEFF2;

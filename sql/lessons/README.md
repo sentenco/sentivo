@@ -247,6 +247,18 @@ the real CEFR descriptors for that level. Two things to actively watch for:
 - All three passes verified on the pilot — that lesson is fully done and
   live.
 
+**⚠ Everything in this "Full rollout" block is SUPERSEDED as of
+2026-07-08 — see "Major C1/C2 redesign" further below.** The
+scenario/diagnosis/upgrade/transfer 4-slide-type design described here
+was replaced entirely (new slide types, universal topics instead of
+office-specific ones, advanced C1/C2 wording, a 5-7 slide student flow,
+a single-sheet teacher guide). Adults C1's old files have already been
+deleted from this directory and its old pilot content removed from
+Supabase. **Adults C2 and Teens C1's files below still reflect the old
+design and have NOT been rebuilt yet** — don't run them as-is; they'll
+need the same redesign treatment before use. Kept this block for
+history/process reference only.
+
 **Full rollout (2026-07-07): all 153 C1/C2 lessons now have generated
 SQL.** Adults C1 (54), Adults C2 (45), Teens C1 (54) — every unit across
 all three tracks. Only Adults C1 Unit 1 Lesson 1 (the pilot) has actually
@@ -308,8 +320,114 @@ editor.**
   per-unit-summary format isn't needed here unless asked.
 - No images anywhere in C1/C2 yet, same as every other track.
 
-**C2 · Adults** — see "Full rollout" above; all 5 units generated,
-not yet run in Supabase.
+**C2 · Adults** — see "Full rollout" above (now superseded); all 5
+units generated under the old design, not yet run in Supabase, needs
+the same redesign treatment as Adults C1 before use.
 
-**Teens C1** — see "Full rollout" above; all 6 units generated, not yet
-run in Supabase.
+**Teens C1** — see "Full rollout" above (now superseded); all 6 units
+generated under the old design, not yet run in Supabase, needs the same
+redesign treatment as Adults C1 before use.
+
+## Major C1/C2 redesign (2026-07-08)
+
+**Full rationale, all design decisions, and the complete universal
+topic bank for every unit live in the `project_c1_c2_lesson_redesign`
+memory file — read that first if picking this up fresh.** Summary of
+what changed and why:
+
+- User was unhappy with the original design after seeing it live: "1
+  slide is not satisfying," then later "im not happy about the ones we
+  have made" — the single-task-card format and the office/corporate-
+  specific topics ("open floor plan," "project management tool") didn't
+  feel like a real lesson or feel relatable to everyone.
+- **New pedagogical shape:** M/O/P (Performance/Model/Output) stays at
+  the unit level exactly as before. Each individual lesson now has an
+  internal Engage → Study → Activate structure (ELT's "ESA" framework),
+  with a 4A's overlay (Activity → Analysis → Abstraction → Application)
+  for reflective-domain units (identity, mediation, register,
+  diplomacy, negotiation) — see the memory file for the full worked
+  examples that validated both shapes.
+- **No writing anywhere.** C1/C2 students are already competent
+  writers — this course targets spoken fluency. Output mode is now
+  polished, prepared **spoken** delivery via a teleprompter tool
+  (provided script, music-paced, no pause, one retry allowed) instead
+  of written tasks.
+- **Three named tools, one per mode:** Performance = timer + twist
+  card (visible countdown, a mid-task complication card the teacher
+  voices); Model = weak/strong text comparison (student reads
+  `likelyResponses` vs. `upgradePath`-equivalent content themselves,
+  no video/audio sourcing needed); Output = teleprompter. Only
+  Performance needs real interactive app-building (timer logic, twist
+  card trigger) — Model and Output both run on text content. **This
+  first rebuild pass ships the static slide content/layout only** —
+  the actual timer countdown logic, twist-card trigger, and
+  teleprompter auto-scroll+music are simplified/placeholder for now,
+  a deliberately separate follow-up build.
+- **Universal topic bank, not office-specific.** 15 broad, universally
+  relatable life categories (money and fairness, technology, honesty
+  and relationships, family, health, environment, social norms,
+  community, education, media, politics-as-civic-not-partisan, work,
+  travel, justice, generations) replace the original workplace-only
+  topics. Every unit's topics now draw from this bank — full list and
+  per-unit assignments in the memory file.
+- **Advanced C1/C2 wording, student-facing only.** Student content
+  (task/Engage/Study/Activate/Wrap-up) uses sophisticated register and
+  complex sentence structure, matching the target level. Teacher-facing
+  content stays **easy to understand, correct grammar** — a teacher
+  using this may not be a C1/C2 speaker themselves ("some teachers in
+  fact cannot handle this level" — user's words). Don't let the
+  advanced-wording rule bleed into the teacher guide.
+- **5-7 slides per lesson** (Title, Engage, Study, Activate, Wrap-up,
+  with Performance getting a separate Activate-attempt and
+  Activate-retry slide, and reflective Model lessons getting separate
+  Study-Activity/Study-Analysis/Study-Abstraction slides) — directly
+  fixes the original "1 slide isn't satisfying" complaint.
+- **New slide types**, replacing `scenario`/`diagnosis`/`upgrade`/
+  `transfer` entirely: `advtitle`, `engage`, `study`, `activate`,
+  `wrapup` (student-facing, landscape, mode-colored footer: coral
+  `#D85A30` Performance / steel blue `#3D6B8C` Model / navy `#1B2A4A`
+  Output — replaces the earlier terracotta/slate/green palette from
+  the first design pass), and `teacherguide` (teacher-only, portrait).
+  Components: `src/slides/Slide{AdvTitle,Engage,Study,Activate,WrapUp,
+  TeacherGuide}.jsx`.
+- **Teacher guide is one continuous scrollable sheet, not paginated
+  slides** — a single `teacherguide` row per lesson holding a
+  `sections` array, rendered with one header/footer and a small coral
+  diamond-and-label divider (`◆ ENGAGE`) between sections instead of
+  repeating the slide frame per section. `LessonPlayer.jsx`'s teacher
+  view (`?view=teacher`) now bypasses the normal paginated chrome
+  entirely and renders this one component full-frame — see the
+  `isTeacherView` early-return in the component.
+- **Teacher guide scaffolding principle** — every Study/Activate
+  section should include a real model answer at target level (not just
+  abstract criteria) and, where the listening task requires subtle
+  discrimination, a simple mechanical test instead of "use your
+  judgment" (e.g. "could reason 2 be true while reason 1 is false? If
+  yes, distinct" instead of just "listen for whether the reasons are
+  different").
+
+**Cleanup performed:** deleted the old `c1_adults_unit1_lessons2-9_
+insert.sql` and `c1_adults_unit{2..6}_insert.sql` files (never run,
+now obsolete). Added `c1_adults_delete_old_content.sql` — run this in
+Supabase to remove the old pilot lesson (the only Adults C1 content
+actually live) before running any new-design content. Kept
+`lesson15_insert.sql`/`lesson15_fix_content.sql` for historical record
+since they were actually executed at the time, even though superseded.
+
+**Rebuilt: Adults C1, Unit 1, Lesson 1** —
+`c1_adults_unit1_lesson1_insert.sql`. Topic: "is glancing at your phone
+mid-conversation a genuine breach of etiquette, or has it simply become
+an unavoidable habit of modern life?" (category 1, money/fairness bank
+— actually etiquette/social-norms flavored; see memory for the full
+Unit 1 topic list). 7 slides (6 student + 1 teacher sheet), validated
+(0 JSON errors), verified visually via a temporary local harness (not
+committed) — all 6 student slides and the teacher sheet render
+correctly, no console errors. **Not yet run in Supabase.**
+
+**Not yet done:** the other 8 lessons of Unit 1, and all other 16
+units, need the same treatment (new topics from the universal bank,
+advanced wording, new slide structure) — this was intentionally done
+lesson-by-lesson this time rather than generating all 152 remaining
+lessons blind again, since that's exactly what caused the "not happy
+with what we made" reset. Confirm this Lesson 1 rebuild looks right
+live before continuing to the rest.
