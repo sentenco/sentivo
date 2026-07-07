@@ -58,7 +58,7 @@ const CSS = `
   flex-direction: column;
 }
 .slrv-header {
-  padding: 14px 24px 12px;
+  padding: 8px 24px 7px;
   flex-shrink: 0;
 }
 .slrv-tag {
@@ -72,21 +72,21 @@ const CSS = `
   text-transform: uppercase;
   padding: 3px 10px;
   border-radius: 999px;
-  margin-bottom: 6px;
+  margin-bottom: 4px;
 }
 .slrv-title {
   font-family: 'Fredoka', sans-serif;
   font-weight: 700;
-  font-size: 19px;
+  font-size: 17px;
   color: #fff;
   margin: 0;
 }
 .slrv-subtitle {
   font-family: 'Quicksand', sans-serif;
   font-weight: 500;
-  font-size: 12.5px;
+  font-size: 12px;
   color: rgba(255,255,255,0.75);
-  margin: 3px 0 0;
+  margin: 2px 0 0;
 }
 .slrv-body {
   flex: 1;
