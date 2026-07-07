@@ -1,4 +1,6 @@
+import { useEffect, useState } from "react";
 import { useNavigate, useParams, useSearchParams } from "react-router-dom";
+import { supabase } from "./supabaseClient";
 
 const GUIDES = {
   "A1-kids": {
@@ -156,11 +158,52 @@ function LessonTable({ lessons }) {
   );
 }
 
+// C1/C2 lessons carry real teacher guidance as a `teacherguide` slide row
+// per lesson (see sql/lessons/README.md and SlideTeacherGuide.jsx) rather
+// than a hardcoded table like the GUIDES object below — that content
+// predates the C1/C2 redesign and was never extended past A1 Kids. This
+// section groups by unit and renders each lesson's guide content directly
+// from Supabase instead.
+function AdvancedLessonGuide({ lesson, content }) {
+  if (!content) {
+    return (
+      <div className="tg-adv-lesson tg-adv-lesson--empty">
+        <div className="tg-adv-lesson-head">
+          <h3>Lesson {lesson.lesson_number} — {lesson.title}</h3>
+        </div>
+        <p className="tg-adv-empty-note">Guide not written yet for this lesson.</p>
+      </div>
+    );
+  }
+  return (
+    <div className="tg-adv-lesson">
+      <div className="tg-adv-lesson-head">
+        <h3>Lesson {lesson.lesson_number} — {lesson.title}</h3>
+        {content.mode && <span className="tg-adv-mode-badge">{content.mode}</span>}
+      </div>
+      {(content.sections || []).map((section, i) => (
+        <div className="tg-adv-section" key={i}>
+          <div className="tg-adv-section-label">{section.label}</div>
+          {(section.blocks || []).map((block, j) => (
+            <div className="tg-adv-block" key={j}>
+              {block.subLabel && <div className="tg-adv-sublabel">{block.subLabel}</div>}
+              <p className={`tg-adv-text ${block.style === "quote" ? "is-quote" : ""} ${block.style === "accent" ? "is-accent" : ""}`}>
+                {block.text}
+              </p>
+            </div>
+          ))}
+        </div>
+      ))}
+    </div>
+  );
+}
+
 export default function TeacherGuide() {
   const { level, track } = useParams();
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const guide = GUIDES[`${level}-${track}`];
+  const isAdvancedTrack = level === "C1" || level === "C2";
 
   const unitParam = searchParams.get("unit");
   const scopedUnit = unitParam ? Number(unitParam) : null;
@@ -169,6 +212,67 @@ export default function TeacherGuide() {
       ? guide.units.filter((u) => u.unit === scopedUnit)
       : guide.units
     : [];
+
+  const [advLessons, setAdvLessons] = useState([]);
+  const [advContent, setAdvContent] = useState({});
+  const [advLoading, setAdvLoading] = useState(isAdvancedTrack);
+
+  useEffect(() => {
+    if (!isAdvancedTrack) return;
+    let cancelled = false;
+
+    async function load() {
+      setAdvLoading(true);
+      let lessonsQuery = supabase
+        .from("lessons")
+        .select("*")
+        .eq("level", level)
+        .eq("age_track", track)
+        .eq("is_active", true)
+        .order("unit_number", { ascending: true })
+        .order("lesson_number", { ascending: true });
+      if (scopedUnit) lessonsQuery = lessonsQuery.eq("unit_number", scopedUnit);
+
+      const { data: lessonsData } = await lessonsQuery;
+      if (cancelled) return;
+      const list = lessonsData || [];
+      setAdvLessons(list);
+
+      const ids = list.map((l) => l.id);
+      if (ids.length) {
+        const { data: slidesData } = await supabase
+          .from("lesson_slides")
+          .select("lesson_id, content")
+          .in("lesson_id", ids)
+          .eq("slide_type", "teacherguide")
+          .eq("is_active", true);
+        if (cancelled) return;
+        const map = {};
+        (slidesData || []).forEach((s) => {
+          map[s.lesson_id] = s.content;
+        });
+        setAdvContent(map);
+      } else {
+        setAdvContent({});
+      }
+      setAdvLoading(false);
+    }
+
+    load();
+    return () => {
+      cancelled = true;
+    };
+  }, [isAdvancedTrack, level, track, scopedUnit]);
+
+  const advUnitGroups = [];
+  advLessons.forEach((lesson) => {
+    let group = advUnitGroups.find((g) => g.unit === lesson.unit_number);
+    if (!group) {
+      group = { unit: lesson.unit_number, lessons: [] };
+      advUnitGroups.push(group);
+    }
+    group.lessons.push(lesson);
+  });
 
   return (
     <div className="tg-wrap">
@@ -184,7 +288,42 @@ export default function TeacherGuide() {
         </div>
       </div>
 
-      {!guide ? (
+      {isAdvancedTrack ? (
+        advLoading ? (
+          <div className="tg-empty">
+            <h1>Teacher's Guide</h1>
+            <p>Loading…</p>
+          </div>
+        ) : advUnitGroups.length === 0 ? (
+          <div className="tg-empty">
+            <h1>Teacher's Guide</h1>
+            <p>
+              There aren't any {level} {track} lessons here yet. Check back soon —
+              we add new lessons every week.
+            </p>
+          </div>
+        ) : (
+          <div className="tg-content">
+            <div className="tg-hero">
+              <span className="tg-hero-badge">{level} · {track}</span>
+              <h1 className="tg-hero-title">Teacher's Guide</h1>
+              <p className="tg-hero-intro">
+                {scopedUnit
+                  ? `Live reference for Unit ${scopedUnit} — one section per lesson, in teaching order.`
+                  : "Live reference for every lesson in this track — one section per lesson, in teaching order."}
+              </p>
+            </div>
+            {advUnitGroups.map((g) => (
+              <section className="tg-unit" key={g.unit}>
+                <h2 className="tg-unit-title">Unit {g.unit}</h2>
+                {g.lessons.map((lesson) => (
+                  <AdvancedLessonGuide key={lesson.id} lesson={lesson} content={advContent[lesson.id]} />
+                ))}
+              </section>
+            ))}
+          </div>
+        )
+      ) : !guide ? (
         <div className="tg-empty">
           <h1>Teacher's Guide</h1>
           <p>
@@ -292,6 +431,45 @@ const CSS = `
 .tg-empty { padding: 60px 48px; text-align: center; }
 .tg-empty h1 { font-family: 'Fredoka', sans-serif; font-size: 24px; margin-bottom: 8px; }
 .tg-empty p { color: #8A7B8A; font-size: 14px; }
+
+.tg-adv-lesson {
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: 12px;
+  background: #fff;
+  padding: 18px 22px;
+  margin-bottom: 16px;
+}
+.tg-adv-lesson--empty { background: #FAF8F4; }
+.tg-adv-lesson-head {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 12px; margin-bottom: 12px;
+  padding-bottom: 10px; border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+.tg-adv-lesson-head h3 {
+  font-family: 'Fredoka', sans-serif; font-size: 15px; font-weight: 700;
+  color: #2B2330; margin: 0;
+}
+.tg-adv-mode-badge {
+  font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em;
+  color: #D85A30; background: #FAECE7; padding: 3px 10px; border-radius: 999px;
+  white-space: nowrap;
+}
+.tg-adv-empty-note { color: #A89BAA; font-size: 13px; font-style: italic; margin: 0; }
+.tg-adv-section { margin-bottom: 14px; }
+.tg-adv-section:last-child { margin-bottom: 0; }
+.tg-adv-section-label {
+  font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em;
+  color: #B08D77; margin-bottom: 6px;
+}
+.tg-adv-block { margin-bottom: 8px; }
+.tg-adv-block:last-child { margin-bottom: 0; }
+.tg-adv-sublabel {
+  font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em;
+  color: #A89BAA; margin-bottom: 3px;
+}
+.tg-adv-text { font-size: 13.5px; line-height: 1.6; color: #4A4152; margin: 0; }
+.tg-adv-text.is-quote { font-style: italic; color: #6B5F52; }
+.tg-adv-text.is-accent { font-style: italic; color: #B5502E; }
 
 @media (max-width: 720px) {
   .tg-topbar, .tg-content { padding-left: 20px; padding-right: 20px; }
