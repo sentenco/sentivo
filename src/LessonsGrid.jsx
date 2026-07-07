@@ -375,6 +375,9 @@ const styles = `
 .lg-header-title {
   font-family: 'Fredoka', sans-serif;
   font-size: 22px; font-weight: 700; color: #2B2330;
+  /* Overrides the global h1 { letter-spacing: -1.68px } (tuned for a
+     56px hero elsewhere) which crushes text illegibly at this size. */
+  letter-spacing: normal;
 }
 .lg-pro .lg-header-title { font-family: 'Source Serif 4', serif; color: #1B2A4A; }
 

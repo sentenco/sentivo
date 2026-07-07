@@ -404,6 +404,7 @@ const CSS = `
 .tg-hero-title {
   font-family: 'Fredoka', sans-serif; font-size: 30px; font-weight: 700;
   margin: 0 0 8px; color: #2B2330;
+  letter-spacing: normal;
 }
 .tg-hero-subtitle { font-size: 15px; font-weight: 600; color: #5A4E6A; margin: 0 0 10px; }
 .tg-hero-intro { font-size: 13.5px; font-weight: 500; color: #8A7B8A; line-height: 1.6; max-width: 720px; margin: 0; }

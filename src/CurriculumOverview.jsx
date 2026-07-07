@@ -288,6 +288,7 @@ const styles = `
   font-weight: 700;
   color: #2B2330;
   margin-bottom: 8px;
+  letter-spacing: normal;
 }
 .co-pro .co-hero-title { font-family: 'Source Serif 4', serif; color: #1B2A4A; }
 .co-hero-sub {
