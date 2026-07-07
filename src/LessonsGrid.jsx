@@ -18,7 +18,7 @@ const LEVEL_COLORS = {
 
 const UNIT_COLORS = ["coral", "teal", "lavender", "gold", "teal", "lavender", "coral", "gold"];
 
-function LessonCard({ lesson, levelColor, onOpen, isPro, thumbnail }) {
+function LessonCard({ lesson, levelColor, onOpen, onOpenTeacherGuide, isPro, thumbnail }) {
   const unitIdx = (lesson.unit_number - 1) % UNIT_COLORS.length;
   const palette = {
     coral:   { bg: "#FAECE7", accent: "#D85A30" },
@@ -26,6 +26,7 @@ function LessonCard({ lesson, levelColor, onOpen, isPro, thumbnail }) {
     lavender:{ bg: "#EEEDFE", accent: "#534AB7" },
     gold:    { bg: "#FAEEDA", accent: "#BA7517" },
   }[UNIT_COLORS[unitIdx]];
+  const isAdvancedTrack = lesson.level === "C1" || lesson.level === "C2";
 
   return (
     <div
@@ -37,8 +38,23 @@ function LessonCard({ lesson, levelColor, onOpen, isPro, thumbnail }) {
       onKeyDown={(e) => e.key === "Enter" && onOpen(lesson)}
     >
       <div className="lg-card-top">
-        <span className="lg-unit-badge">Unit {lesson.unit_number}</span>
-        <span className="lg-lesson-num">Lesson {lesson.lesson_number}</span>
+        <span className="lg-unit-badge">
+          Unit {lesson.unit_number}{isAdvancedTrack ? ` · Lesson ${lesson.lesson_number}` : ""}
+        </span>
+        {isAdvancedTrack ? (
+          <button
+            className="lg-card-guide-btn"
+            onClick={(e) => {
+              e.stopPropagation();
+              onOpenTeacherGuide(lesson);
+            }}
+          >
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.3" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+            Guide
+          </button>
+        ) : (
+          <span className="lg-lesson-num">Lesson {lesson.lesson_number}</span>
+        )}
       </div>
       <div className="lg-card-motif">
         {thumbnail ? (
@@ -184,6 +200,13 @@ export default function LessonsGrid({ level = "A1", ageTrack = "kids", onBack, o
     window.open(url, "_blank", "noopener");
   }
 
+  // Deep-links into the same guide page, scoped to this lesson's unit and
+  // scrolled/highlighted to its specific section (see TeacherGuide.jsx).
+  function openTeacherGuideForLesson(lesson) {
+    const url = `/teacher-guide/${level}/${ageTrack}?unit=${lesson.unit_number}&lesson=${lesson.lesson_number}`;
+    window.open(url, "_blank", "noopener");
+  }
+
   useEffect(() => {
     const styleId = "lg-styles";
     if (!document.getElementById(styleId)) {
@@ -238,10 +261,6 @@ export default function LessonsGrid({ level = "A1", ageTrack = "kids", onBack, o
             <span className="lg-stat-num">{units.filter((u) => u !== "all").length}</span>
             <span className="lg-stat-label">Units</span>
           </div>
-          <button className="lg-guide-btn" onClick={openTeacherGuidePage}>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
-            {activeUnit === "all" ? "Teacher's Guide" : `Teacher's Guide · Unit ${activeUnit}`}
-          </button>
         </div>
       </div>
 
@@ -290,6 +309,7 @@ export default function LessonsGrid({ level = "A1", ageTrack = "kids", onBack, o
                 lesson={lesson}
                 levelColor={lv.color}
                 onOpen={openLesson}
+                onOpenTeacherGuide={openTeacherGuideForLesson}
                 isPro={isPro}
                 thumbnail={thumbnails[lesson.id]}
               />
@@ -483,6 +503,15 @@ const styles = `
 }
 .lg-card--pro .lg-unit-badge { border-radius: 3px; }
 .lg-lesson-num { font-size: 10px; font-weight: 600; color: #A89BAA; }
+
+.lg-card-guide-btn {
+  display: inline-flex; align-items: center; gap: 4px;
+  font-family: 'Quicksand', sans-serif; font-size: 10.5px; font-weight: 700;
+  color: var(--c-accent); background: #fff; border: 1.5px solid var(--c-accent);
+  border-radius: 999px; padding: 3px 9px; cursor: pointer; transition: opacity 0.15s;
+}
+.lg-card-guide-btn:hover { opacity: 0.75; }
+.lg-card--pro .lg-card-guide-btn { border-radius: 3px; }
 
 .lg-card-motif {
   display: flex; align-items: center; justify-content: center;

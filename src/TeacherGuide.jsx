@@ -164,10 +164,11 @@ function LessonTable({ lessons }) {
 // predates the C1/C2 redesign and was never extended past A1 Kids. This
 // section groups by unit and renders each lesson's guide content directly
 // from Supabase instead.
-function AdvancedLessonGuide({ lesson, content }) {
+function AdvancedLessonGuide({ lesson, content, highlighted }) {
+  const domId = `tg-lesson-${lesson.unit_number}-${lesson.lesson_number}`;
   if (!content) {
     return (
-      <div className="tg-adv-lesson tg-adv-lesson--empty">
+      <div id={domId} className={`tg-adv-lesson tg-adv-lesson--empty${highlighted ? " is-highlighted" : ""}`}>
         <div className="tg-adv-lesson-head">
           <h3>Lesson {lesson.lesson_number} — {lesson.title}</h3>
         </div>
@@ -176,7 +177,7 @@ function AdvancedLessonGuide({ lesson, content }) {
     );
   }
   return (
-    <div className="tg-adv-lesson">
+    <div id={domId} className={`tg-adv-lesson${highlighted ? " is-highlighted" : ""}`}>
       <div className="tg-adv-lesson-head">
         <h3>Lesson {lesson.lesson_number} — {lesson.title}</h3>
         {content.mode && <span className="tg-adv-mode-badge">{content.mode}</span>}
@@ -207,6 +208,8 @@ export default function TeacherGuide() {
 
   const unitParam = searchParams.get("unit");
   const scopedUnit = unitParam ? Number(unitParam) : null;
+  const lessonParam = searchParams.get("lesson");
+  const scopedLesson = lessonParam ? Number(lessonParam) : null;
   const units = guide
     ? scopedUnit
       ? guide.units.filter((u) => u.unit === scopedUnit)
@@ -264,6 +267,14 @@ export default function TeacherGuide() {
     };
   }, [isAdvancedTrack, level, track, scopedUnit]);
 
+  // Deep link from a lesson card's "Guide" button — jump straight to that
+  // lesson's section once its content has loaded in.
+  useEffect(() => {
+    if (!isAdvancedTrack || advLoading || !scopedLesson || !scopedUnit) return;
+    const el = document.getElementById(`tg-lesson-${scopedUnit}-${scopedLesson}`);
+    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+  }, [isAdvancedTrack, advLoading, scopedUnit, scopedLesson]);
+
   const advUnitGroups = [];
   advLessons.forEach((lesson) => {
     let group = advUnitGroups.find((g) => g.unit === lesson.unit_number);
@@ -317,7 +328,12 @@ export default function TeacherGuide() {
               <section className="tg-unit" key={g.unit}>
                 <h2 className="tg-unit-title">Unit {g.unit}</h2>
                 {g.lessons.map((lesson) => (
-                  <AdvancedLessonGuide key={lesson.id} lesson={lesson} content={advContent[lesson.id]} />
+                  <AdvancedLessonGuide
+                    key={lesson.id}
+                    lesson={lesson}
+                    content={advContent[lesson.id]}
+                    highlighted={scopedLesson === lesson.lesson_number && scopedUnit === lesson.unit_number}
+                  />
                 ))}
               </section>
             ))}
@@ -440,6 +456,10 @@ const CSS = `
   margin-bottom: 16px;
 }
 .tg-adv-lesson--empty { background: #FAF8F4; }
+.tg-adv-lesson.is-highlighted {
+  border-color: #D85A30;
+  box-shadow: 0 0 0 3px #FAECE7;
+}
 .tg-adv-lesson-head {
   display: flex; align-items: center; justify-content: space-between;
   gap: 12px; margin-bottom: 12px;
