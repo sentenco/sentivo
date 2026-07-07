@@ -78,15 +78,24 @@ section of Status below.
 instead of one combined player (`LessonsGrid.jsx`'s `openLesson()`,
 gated on `lesson.level === "C1" || "C2"`): one at
 `/lesson-player/:id?view=student` showing only the `scenario` slide (this
-is the window to share/project for the student), and one at
-`/lesson-player/:id?view=teacher` showing `diagnosis`/`upgrade`/`transfer`
-paginated slide-by-slide with a "Teacher View" badge (this is the
-teacher's private window — never share or project it). `LessonPlayer.jsx`
-reads the `view` query param via `TEACHER_ONLY_TYPES`/`isTeacherView` to
-decide which slide array drives its Next/Prev sequence; A1–B2 lessons are
-unaffected (no teacher-only slide types exist for them, and `openLesson`
-only splits into two windows for C1/C2). An earlier version of this put
-both views in one window behind a toggle button — replaced with real
+is the window to share/project for the student — **landscape**, 780×440,
+same card size as A1–B2), and one at `/lesson-player/:id?view=teacher`
+showing `diagnosis`/`upgrade`/`transfer` paginated slide-by-slide with a
+"Teacher View" badge (this is the teacher's private window — never
+share or project it — **portrait**, 460×760 via the `.lp-shell--portrait`
+CSS class, sized for reading notes rather than projecting). Important:
+this two-window behavior only fires from clicking a lesson card's
+"Start" button in the Lessons Grid — visiting a `/lesson-player/:id`
+URL directly (e.g. to spot-check content) only ever shows the single
+view that URL's `?view=` param asks for, not both windows; this tripped
+up a manual check once already. `LessonPlayer.jsx` reads the `view`
+query param via `TEACHER_ONLY_TYPES`/`isTeacherView` to decide which
+slide array drives its Next/Prev sequence *and* which shell orientation
+to render; A1–B2 lessons are unaffected (no teacher-only slide types
+exist for them, and `openLesson` only splits into two windows for
+C1/C2). An earlier version of this put both views in one window behind
+a toggle button, then a same-size-landscape two-window version —
+replaced with real
 separate windows so the teacher can keep her notes open privately while
 only the student window is shared/projected.
 
@@ -220,19 +229,28 @@ the real CEFR descriptors for that level. Two things to actively watch for:
   for the teacher to page through privately. Reworked `LessonPlayer.jsx`
   to be driven by a `?view=student`/`?view=teacher` query param instead
   of in-page toggle state, and `LessonsGrid.jsx`'s `openLesson()` now
-  opens both windows side by side for any C1/C2 lesson. Verified against
-  the live pilot lesson in Supabase — `?view=student` correctly shows
-  only the scenario slide (still holding the *old* pre-fix content since
-  `lesson15_fix_content.sql` hasn't been run yet — that's expected, not a
-  bug), `?view=teacher` correctly pages 1/3 → 3/3 through Diagnosis →
-  Upgrade → Transfer with the "Teacher View" badge.
-- **Next: run `lesson15_fix_content.sql`**, then open the lesson from the
-  Lessons Grid to confirm both windows look right with the corrected
-  content. Awaiting that confirmation before generating the remaining 152
-  C1/C2 lessons (Adults C1 Units 2–6, Adults C2 all 5, Teens C1 all 6) —
-  each needs the same two-pass treatment: pick one concrete prompt per
-  lesson from the teacher-guidance doc's examples (don't just copy the
-  "e.g." menu verbatim).
+  opens both windows side by side for any C1/C2 lesson.
+- `lesson15_fix_content.sql` has been run — confirmed live via
+  `?view=teacher`, which now shows the corrected Purpose field and
+  phone-ban-matched Likely Responses instead of the original pre-fix
+  content.
+- **Third pass:** user asked for the two windows to have different
+  shapes — landscape for the student (to share/project) and **portrait**
+  for the teacher (to read notes privately, slide by slide), not two
+  same-size landscape windows. Added `.lp-shell--portrait` (460×760) in
+  `LessonPlayer.jsx`, applied whenever `isTeacherView` is true; student
+  view is unchanged (780×440, same as A1–B2). Updated `LessonsGrid.jsx`'s
+  popup dimensions/positioning to match: student window ~860×560
+  landscape, teacher window ~520×820 portrait, both centered as a group
+  side by side. Verified against the live (now-corrected) pilot lesson —
+  both orientations render and scroll correctly.
+- All three passes verified — this pilot lesson is done. Ready to
+  generate the remaining 152 C1/C2 lessons (Adults C1 Units 2–6, Adults
+  C2 all 5, Teens C1 all 6) using the same pattern: one concrete
+  second-person `scenario.task` per lesson (not the teacher-guidance
+  doc's "e.g." menu verbatim), `purpose`/`listenFor`/`likelyResponses`/
+  `scorecardFocus` in `diagnosis`, `upgradePath`/`interventionPrompts` in
+  `upgrade`, `extension`/`recovery` in `transfer`.
 - Teacher's Guide page not extended for C1/C2 — the teacher-only window
   now covers this role per-lesson; the standalone Teacher's Guide page's
   per-unit-summary format isn't needed here unless asked.

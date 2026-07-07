@@ -161,22 +161,30 @@ export default function LessonsGrid({ level = "A1", ageTrack = "kids", onBack, o
 
     const screenW = window.screen.availWidth || 1600;
     const screenH = window.screen.availHeight || 900;
-    const winW = Math.min(820, Math.floor(screenW / 2) - 20);
-    const winH = Math.min(680, screenH - 80);
+
+    // Student window: landscape, matches the 780x440 player card — meant
+    // to be shared/projected. Teacher window: portrait, matches the
+    // narrower 460x760 card — meant to be read privately, slide by slide.
+    const studentW = Math.min(860, screenW - 40);
+    const studentH = Math.min(560, screenH - 80);
+    const teacherW = Math.min(520, screenW - 40);
+    const teacherH = Math.min(820, screenH - 40);
+
     const gap = 16;
-    const totalW = winW * 2 + gap;
-    const left = Math.max(0, Math.floor((screenW - totalW) / 2));
-    const top = Math.max(0, Math.floor((screenH - winH) / 2));
+    const totalW = studentW + teacherW + gap;
+    const groupLeft = Math.max(0, Math.floor((screenW - totalW) / 2));
+    const studentTop = Math.max(0, Math.floor((screenH - studentH) / 2));
+    const teacherTop = Math.max(0, Math.floor((screenH - teacherH) / 2));
 
     window.open(
       `/lesson-player/${lesson.id}?view=student`,
       "sentivoLessonPlayerStudent",
-      `width=${winW},height=${winH},left=${left},top=${top},toolbar=no,location=no,menubar=no,status=no,scrollbars=yes,resizable=yes`
+      `width=${studentW},height=${studentH},left=${groupLeft},top=${studentTop},toolbar=no,location=no,menubar=no,status=no,scrollbars=yes,resizable=yes`
     );
     window.open(
       `/lesson-player/${lesson.id}?view=teacher`,
       "sentivoLessonPlayerTeacher",
-      `width=${winW},height=${winH},left=${left + winW + gap},top=${top},toolbar=no,location=no,menubar=no,status=no,scrollbars=yes,resizable=yes`
+      `width=${teacherW},height=${teacherH},left=${groupLeft + studentW + gap},top=${teacherTop},toolbar=no,location=no,menubar=no,status=no,scrollbars=yes,resizable=yes`
     );
   }
 

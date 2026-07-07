@@ -129,9 +129,11 @@ export default function LessonPlayer({ lessonId: lessonIdProp }) {
     return () => window.removeEventListener("keydown", onKeyDown);
   }, [goPrev, goNext]);
 
+  const shellStatePortraitClass = requestedView === "teacher" ? "lp-shell--portrait" : "";
+
   if (loading) {
     return (
-      <div className="lp-shell lp-shell--state">
+      <div className={`lp-shell lp-shell--state ${shellStatePortraitClass}`}>
         <style>{CSS}</style>
         <div className="lp-status">Loading lesson…</div>
       </div>
@@ -140,7 +142,7 @@ export default function LessonPlayer({ lessonId: lessonIdProp }) {
 
   if (error) {
     return (
-      <div className="lp-shell lp-shell--state">
+      <div className={`lp-shell lp-shell--state ${shellStatePortraitClass}`}>
         <style>{CSS}</style>
         <div className="lp-status lp-status--error">
           Couldn't load this lesson.
@@ -152,7 +154,7 @@ export default function LessonPlayer({ lessonId: lessonIdProp }) {
 
   if (!activeSlides.length) {
     return (
-      <div className="lp-shell lp-shell--state">
+      <div className={`lp-shell lp-shell--state ${shellStatePortraitClass}`}>
         <style>{CSS}</style>
         <div className="lp-status">This lesson doesn't have any slides yet.</div>
       </div>
@@ -165,7 +167,7 @@ export default function LessonPlayer({ lessonId: lessonIdProp }) {
   const isAdult = lesson?.age_track === "adults";
 
   return (
-    <div className={`lp-shell ${isAdult ? "is-adult" : ""}`}>
+    <div className={`lp-shell ${isAdult ? "is-adult" : ""} ${isTeacherView ? "lp-shell--portrait" : ""}`}>
       <style>{CSS}</style>
 
       <div className="lp-header">
@@ -241,6 +243,13 @@ const CSS = `
   box-sizing: border-box;
 }
 .lp-shell * { box-sizing: border-box; }
+
+/* Teacher windows are portrait — narrower and taller, built for reading
+   notes slide-by-slide rather than sharing/projecting to a class. */
+.lp-shell--portrait {
+  width: 460px;
+  height: 760px;
+}
 
 .lp-shell--state { align-items: center; justify-content: center; }
 .lp-status {
