@@ -14,15 +14,22 @@ export default function SlideWriting({ content, lesson }) {
         subtitle={content.subtitle || "Complete each sentence below."}
         isAdult={isAdult}
       />
-      <div className="slwr-body">
-        {prompts.map((prompt, i) => (
-          <div className="slwr-row" key={i}>
-            <span className="slwr-num">{i + 1}</span>
-            <span className="slwr-sentence">
-              {renderBlankLine(prompt, "#1B2A4A")}
-            </span>
+      <div className={`slwr-body ${content.image_url ? "has-image" : ""}`}>
+        <div className="slwr-list">
+          {prompts.map((prompt, i) => (
+            <div className="slwr-row" key={i}>
+              <span className="slwr-num">{i + 1}</span>
+              <span className="slwr-sentence">
+                {renderBlankLine(prompt, "#1B2A4A")}
+              </span>
+            </div>
+          ))}
+        </div>
+        {content.image_url && (
+          <div className="slwr-image-area">
+            <img className="slwr-image" src={content.image_url} alt="" />
           </div>
-        ))}
+        )}
       </div>
     </div>
   );
@@ -44,6 +51,37 @@ const CSS = `
   justify-content: center;
   gap: 18px;
   overflow: auto;
+}
+.slwr-body.has-image {
+  flex-direction: row;
+  align-items: center;
+  gap: 24px;
+}
+.slwr-list {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  min-width: 0;
+}
+.slwr-image-area {
+  flex-shrink: 0;
+  width: 38%;
+  height: 100%;
+  max-height: 240px;
+  border-radius: 16px;
+  background: #FDF8F0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 12px;
+}
+.slwr-image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  mix-blend-mode: multiply;
 }
 .slwr-row {
   display: flex;
@@ -73,6 +111,7 @@ const CSS = `
 
 /* ── Adults theme ── */
 .slwr-slide.is-adult .slwr-body { background: #F7F5EF; gap: 14px; }
+.slwr-slide.is-adult .slwr-image-area { background: #F7F5EF; border: 1px solid #DEDAD0; border-radius: 6px; }
 .slwr-slide.is-adult .slwr-row {
   background: #fff;
   border: 1px solid #DEDAD0;

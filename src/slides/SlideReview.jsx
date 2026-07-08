@@ -2,11 +2,18 @@ import { useState } from "react";
 
 const GRADIENT = "linear-gradient(135deg, #3B6D11, #5FA873)";
 const GRADIENT_ADULT = "#1B2A4A";
+const ITEM_COLORS = [
+  { bg: "#FAECE7", check: "#D85A30" },
+  { bg: "#E1F5EE", check: "#0F6E56" },
+  { bg: "#EEEDFE", check: "#534AB7" },
+  { bg: "#FAEEDA", check: "#BA7517" },
+];
 
 export default function SlideReview({ content, lesson }) {
   const checklist = content.checklist || [];
   const [checked, setChecked] = useState(() => new Set());
   const isAdult = lesson?.age_track === "adults";
+  const allChecked = checklist.length > 0 && checked.size === checklist.length;
 
   function toggle(i) {
     setChecked((prev) => {
@@ -21,27 +28,40 @@ export default function SlideReview({ content, lesson }) {
     <div className={`slrv-slide ${isAdult ? "is-adult" : ""}`}>
       <style>{CSS}</style>
       <div className="slrv-header" style={{ background: isAdult ? GRADIENT_ADULT : GRADIENT }}>
+        {!isAdult && <span className="slrv-trophy" aria-hidden="true">🏆</span>}
         {content.tag && <span className="slrv-tag">{content.tag}</span>}
         <h2 className="slrv-title">{content.title || "Today I can…"}</h2>
         {content.subtitle && <p className="slrv-subtitle">{content.subtitle}</p>}
       </div>
       <div className="slrv-body">
         <div className="slrv-checklist">
-          {checklist.map((item, i) => (
-            <button
-              type="button"
-              key={i}
-              className={`slrv-item ${checked.has(i) ? "is-checked" : ""}`}
-              onClick={() => toggle(i)}
-            >
-              <span className="slrv-check">{checked.has(i) ? "✓" : ""}</span>
-              {item}
-            </button>
-          ))}
+          {checklist.map((item, i) => {
+            const c = ITEM_COLORS[i % ITEM_COLORS.length];
+            const isChecked = checked.has(i);
+            return (
+              <button
+                type="button"
+                key={i}
+                className={`slrv-item ${isChecked ? "is-checked" : ""}`}
+                style={!isAdult ? { background: isChecked ? c.bg : "#F7F6F3" } : undefined}
+                onClick={() => toggle(i)}
+              >
+                <span
+                  className="slrv-check"
+                  style={!isAdult && isChecked ? { background: c.check, borderColor: c.check } : undefined}
+                >
+                  {isChecked ? "✓" : ""}
+                </span>
+                {item}
+              </button>
+            );
+          })}
         </div>
         {content.challenge && (
-          <div className="slrv-challenge">
-            <span className="slrv-challenge-label">Final challenge</span>
+          <div className={`slrv-challenge ${allChecked ? "is-ready" : ""}`}>
+            <span className="slrv-challenge-label">
+              {allChecked ? "You're ready! Final challenge" : "Final challenge"}
+            </span>
             <p className="slrv-challenge-text">{content.challenge}</p>
           </div>
         )}
@@ -58,8 +78,16 @@ const CSS = `
   flex-direction: column;
 }
 .slrv-header {
+  position: relative;
   padding: 8px 24px 7px;
   flex-shrink: 0;
+}
+.slrv-trophy {
+  position: absolute;
+  top: 8px;
+  right: 20px;
+  font-size: 28px;
+  filter: drop-shadow(0 2px 3px rgba(0,0,0,0.15));
 }
 .slrv-tag {
   display: inline-block;
@@ -91,47 +119,50 @@ const CSS = `
 .slrv-body {
   flex: 1;
   min-height: 0;
-  padding: 14px 24px;
+  padding: 18px 26px;
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  justify-content: center;
+  gap: 18px;
   overflow: auto;
 }
 .slrv-checklist {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 10px;
 }
 .slrv-item {
   display: flex;
   align-items: center;
   gap: 12px;
-  background: #F1F5F0;
+  background: #F7F6F3;
   border: none;
-  border-radius: 10px;
-  padding: 10px 14px;
+  border-radius: 12px;
+  padding: 11px 16px;
   font-family: 'Quicksand', sans-serif;
-  font-weight: 600;
-  font-size: 13.5px;
+  font-weight: 700;
+  font-size: 14px;
   color: #1B2A4A;
   text-align: left;
   cursor: pointer;
+  transition: transform 0.12s ease, background 0.15s ease;
 }
-.slrv-item.is-checked {
-  background: #E3F5E6;
-  color: #2C6B4F;
-}
+.slrv-item:hover { transform: translateY(-1px); }
+.slrv-item.is-checked { color: #1B2A4A; }
 .slrv-check {
   flex-shrink: 0;
-  width: 20px;
-  height: 20px;
+  width: 24px;
+  height: 24px;
   border-radius: 999px;
-  border: 2px solid #B7C4B4;
+  border: 2px solid #C9CBD1;
+  background: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 12px;
+  font-size: 13px;
+  font-weight: 700;
   color: #fff;
+  transition: background 0.15s ease, border-color 0.15s ease;
 }
 .slrv-item.is-checked .slrv-check {
   background: #3B6D11;
@@ -140,7 +171,11 @@ const CSS = `
 .slrv-challenge {
   background: #1B2A4A;
   border-radius: 12px;
-  padding: 12px 16px;
+  padding: 14px 18px;
+  transition: box-shadow 0.2s ease;
+}
+.slrv-challenge.is-ready {
+  box-shadow: 0 0 0 3px #FFE07A;
 }
 .slrv-challenge-label {
   display: block;
