@@ -17,7 +17,7 @@ export default function SlideVocabulary({ content, lesson }) {
       />
       <div className="slv-grid">
         {words.slice(0, 4).map((w, i) => (
-          <button type="button" className={`slv-tile ${i % 2 === 1 ? "slv-tile--alt" : ""}`} key={i} onClick={() => setZoomed(w)}>
+          <button type="button" className="slv-tile" key={i} onClick={() => setZoomed(w)}>
             <span className="slv-tile-badge">{i + 1}</span>
             <span className="slv-tile-word">{w.word}</span>
             {w.hint && <span className="slv-tile-hint">{w.hint}</span>}
@@ -67,7 +67,6 @@ const CSS = `
   background: var(--k-bg-cool, #FFF3D2);
   transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
-.slv-tile--alt { background: var(--k-tint, #FFE4A3); }
 .slv-tile:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
 .slv-tile-badge {
   position: absolute;

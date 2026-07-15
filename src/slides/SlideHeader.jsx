@@ -15,14 +15,14 @@ export default function SlideHeader({ tag, title, subtitle, gradient, isAdult })
 
 const CSS = `
 .slh-header {
-  background: var(--k-bg-cool, #1B2A4A);
+  background: var(--k-accent, #1B2A4A);
   padding: 9px 28px 8px;
   flex-shrink: 0;
 }
 .slh-tag {
   display: inline-block;
-  background: var(--k-accent, #FF7A59);
-  color: var(--k-btn-text, #fff);
+  background: #fff;
+  color: #1B2A4A;
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;
   font-size: 10.5px;

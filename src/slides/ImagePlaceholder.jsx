@@ -23,8 +23,8 @@ const CSS = `
   text-align: center;
   padding: 16px;
   border-radius: inherit;
-  border: 2px dashed var(--k-accent, #C9CBD1);
-  background: var(--k-tint, #F7F6F3);
+  border: 2px dashed var(--k-accent-dark, #C9CBD1);
+  background: var(--k-accent, #F7F6F3);
   box-sizing: border-box;
 }
 .img-ph-icon { font-size: 26px; opacity: 0.55; }

@@ -84,7 +84,6 @@ values
   "student": [
     "Hi! My name is ___."
   ],
-  "note": "Point to yourself and say your name!",
   "title": "Practice the Conversation",
   "image_note": "Two children meeting and waving hello outdoors, warm and friendly."
 }$json$::jsonb,
@@ -144,8 +143,7 @@ values
       "speaker": "A",
       "text": "Nice to meet you!"
     }
-  ],
-  "twist": "Now say hello with YOUR real name!"
+  ]
 }$json$::jsonb,
   true
 ),
@@ -169,8 +167,7 @@ values
       "speaker": "A",
       "text": "Goodbye!"
     }
-  ],
-  "note": "Teacher says the line first. Student repeats, then says it alone."
+  ]
 }$json$::jsonb,
   true
 ),
@@ -284,7 +281,6 @@ values
   "student": [
     "I'm from ___."
   ],
-  "note": "Point to your country on a map if you have one!",
   "title": "Practice the Conversation",
   "image_note": "A simple world map with a few countries in bright colors, no text."
 }$json$::jsonb,
@@ -461,7 +457,6 @@ values
   "student": [
     "I am ___ years old."
   ],
-  "note": "Hold up your fingers to show your age!",
   "title": "Practice the Conversation",
   "image_note": "A child blowing out candles on a birthday cake."
 }$json$::jsonb,
@@ -536,8 +531,7 @@ values
       "speaker": "A",
       "text": "When is your birthday?"
     }
-  ],
-  "note": "Switch! Student becomes A, teacher becomes B."
+  ]
 }$json$::jsonb,
   true
 ),
@@ -651,7 +645,6 @@ values
   "student": [
     "Yes, I like pizza!"
   ],
-  "note": "Show-and-tell: tell me your favorites!",
   "title": "Practice the Conversation",
   "image_note": "A child happily eating pizza or holding a favorite toy."
 }$json$::jsonb,
@@ -856,7 +849,6 @@ values
   "student": [
     "My name is ___. I'm from ___."
   ],
-  "note": "Use everything you learned this unit!",
   "title": "Practice the Conversation",
   "image_note": "A child confidently introducing themselves to the class."
 }$json$::jsonb,

@@ -106,7 +106,7 @@ const CSS = `
 .slw-bottom {
   flex: 1;
   min-height: 0;
-  background: var(--k-bg-cool, #D5E9E8);
+  background: var(--k-accent, #FFF4AA);
   padding: 14px 28px;
   display: flex;
   flex-direction: column;
