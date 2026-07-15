@@ -61,7 +61,7 @@ const CSS = `
 .slp-title {
   font-family: 'Fredoka', sans-serif;
   font-weight: 700;
-  font-size: 17px;
+  font-size: 19px;
   color: #1B2A4A;
   margin: 0;
 }
@@ -71,39 +71,39 @@ const CSS = `
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  gap: 8px;
-  padding: 8px 24px;
+  gap: 10px;
+  padding: 10px 28px;
   overflow-y: auto;
 }
 .slp-turn {
   display: flex;
   align-items: center;
-  gap: 8px;
-  max-width: 74%;
+  gap: 9px;
+  max-width: 76%;
 }
 .slp-turn--teacher { align-self: flex-start; }
 .slp-turn--student { align-self: flex-end; flex-direction: row-reverse; }
 .slp-avatar {
   flex-shrink: 0;
-  width: 24px;
-  height: 24px;
+  width: 26px;
+  height: 26px;
   border-radius: 999px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-family: 'Fredoka', sans-serif;
   font-weight: 700;
-  font-size: 11px;
+  font-size: 12px;
   color: #fff;
 }
 .slp-turn--teacher .slp-avatar { background: var(--k-accent, #FF7A59); }
 .slp-turn--student .slp-avatar { background: var(--k-secondary, #2CA97F); }
 .slp-bubble {
   border-radius: 14px;
-  padding: 8px 14px;
+  padding: 9px 16px;
   font-family: 'Quicksand', sans-serif;
   font-weight: 600;
-  font-size: 14.5px;
+  font-size: 16.5px;
   color: #1B2A4A;
 }
 .slp-turn--teacher .slp-bubble {

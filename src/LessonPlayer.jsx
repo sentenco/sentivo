@@ -395,43 +395,43 @@ const CSS = `
    Sunshine-theme hex>) so Teens (no .is-kids class, no vars defined)
    render pixel-identical to before. ── */
 .lp-shell.is-kids.kt-0 {
-  /* Units 1-3: Sunshine (original palette) */
-  --k-accent: #FF7A59;
-  --k-accent-dark: #C2452F;
-  --k-secondary: #2CA97F;
-  --k-bg: #FDF8F0;
-  --k-bg-cool: #E8F8F0;
-  --k-tint: #FFF3E9;
+  /* Units 1-3: Sunshine (pastel) */
+  --k-accent: #FF9478;
+  --k-accent-dark: #E06B4C;
+  --k-secondary: #6FC9A3;
+  --k-bg: #FFF6EC;
+  --k-bg-cool: #EAF9F1;
+  --k-tint: #FFEDE0;
   --k-motif: "☀";
 }
 .lp-shell.is-kids.kt-1 {
-  /* Units 4-6: Ocean */
-  --k-accent: #2AA9C7;
-  --k-accent-dark: #1B7A91;
-  --k-secondary: #FFC33D;
-  --k-bg: #EAF7FB;
-  --k-bg-cool: #FFF7E2;
-  --k-tint: #DFF3F8;
+  /* Units 4-6: Ocean (pastel) */
+  --k-accent: #5EC2DA;
+  --k-accent-dark: #3B93AC;
+  --k-secondary: #FFD873;
+  --k-bg: #EFFAFC;
+  --k-bg-cool: #FFF8E6;
+  --k-tint: #E4F5F9;
   --k-motif: "🌊";
 }
 .lp-shell.is-kids.kt-2 {
-  /* Units 7-9: Berry Meadow */
-  --k-accent: #E0507A;
-  --k-accent-dark: #A83259;
-  --k-secondary: #F2B705;
-  --k-bg: #FBF0F5;
-  --k-bg-cool: #FFF6DD;
-  --k-tint: #FCE3EC;
+  /* Units 7-9: Berry Meadow (pastel) */
+  --k-accent: #EE84A3;
+  --k-accent-dark: #C85E80;
+  --k-secondary: #FFCE5C;
+  --k-bg: #FDF3F7;
+  --k-bg-cool: #FFF9E9;
+  --k-tint: #FCEAF1;
   --k-motif: "🌸";
 }
 .lp-shell.is-kids.kt-3 {
-  /* Units 10-12: Galaxy */
-  --k-accent: #7C5CFF;
-  --k-accent-dark: #5136B8;
-  --k-secondary: #FF8C61;
-  --k-bg: #F1F0FF;
-  --k-bg-cool: #FFEDE4;
-  --k-tint: #E7E3FF;
+  /* Units 10-12: Galaxy (pastel) */
+  --k-accent: #A78BFA;
+  --k-accent-dark: #7C63D6;
+  --k-secondary: #FFAB8A;
+  --k-bg: #F6F5FF;
+  --k-bg-cool: #FFF2EA;
+  --k-tint: #EDEAFF;
   --k-motif: "✦";
 }
 .lp-shell.is-kids .lp-wordmark::after {

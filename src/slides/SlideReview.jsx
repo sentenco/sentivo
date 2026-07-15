@@ -105,21 +105,21 @@ const CSS = `
 .slrv-title {
   font-family: 'Fredoka', sans-serif;
   font-weight: 700;
-  font-size: 17px;
+  font-size: 19px;
   color: #fff;
   margin: 0;
 }
 .slrv-subtitle {
   font-family: 'Quicksand', sans-serif;
   font-weight: 500;
-  font-size: 12px;
+  font-size: 13px;
   color: rgba(255,255,255,0.75);
   margin: 2px 0 0;
 }
 .slrv-body {
   flex: 1;
   min-height: 0;
-  padding: 18px 26px;
+  padding: 18px 28px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -134,14 +134,14 @@ const CSS = `
 .slrv-item {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 13px;
   background: #F7F6F3;
   border: none;
   border-radius: 12px;
-  padding: 11px 16px;
+  padding: 12px 18px;
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;
-  font-size: 14px;
+  font-size: 15.5px;
   color: #1B2A4A;
   text-align: left;
   cursor: pointer;
@@ -171,7 +171,7 @@ const CSS = `
 .slrv-challenge {
   background: #1B2A4A;
   border-radius: 12px;
-  padding: 14px 18px;
+  padding: 15px 20px;
   transition: box-shadow 0.2s ease;
 }
 .slrv-challenge.is-ready {
@@ -190,7 +190,7 @@ const CSS = `
 .slrv-challenge-text {
   font-family: 'Quicksand', sans-serif;
   font-weight: 600;
-  font-size: 13.5px;
+  font-size: 15px;
   color: #fff;
   margin: 0;
 }

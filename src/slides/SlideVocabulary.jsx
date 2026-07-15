@@ -109,10 +109,10 @@ const CSS = `
 .slv-card-bottom {
   background: #fff;
   text-align: center;
-  padding: 6px 8px;
+  padding: 7px 10px;
   font-family: 'Fredoka', sans-serif;
   font-weight: 600;
-  font-size: 17px;
+  font-size: 19px;
   color: #1B2A4A;
 }
 .slv-overlay {
@@ -153,10 +153,10 @@ const CSS = `
 .slv-zoom-bottom {
   background: #fff;
   text-align: center;
-  padding: 12px 8px;
+  padding: 13px 10px;
   font-family: 'Fredoka', sans-serif;
   font-weight: 700;
-  font-size: 24px;
+  font-size: 26px;
   color: #1B2A4A;
 }
 

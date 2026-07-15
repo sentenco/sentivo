@@ -50,7 +50,7 @@ const CSS = `
 .sls-body {
   flex: 1;
   min-height: 0;
-  padding: 14px 24px;
+  padding: 14px 28px;
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -59,14 +59,14 @@ const CSS = `
 .sls-dialogue {
   background: var(--k-tint, #F7F8FA);
   border-radius: 14px;
-  padding: 14px 18px;
+  padding: 15px 20px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 11px;
 }
 .sls-line {
   font-family: 'Quicksand', sans-serif;
-  font-size: 15.5px;
+  font-size: 17px;
   color: #1B2A4A;
 }
 .sls-speaker {
@@ -77,7 +77,7 @@ const CSS = `
 .sls-note {
   font-family: 'Quicksand', sans-serif;
   font-weight: 600;
-  font-size: 12.5px;
+  font-size: 14px;
   color: #94A0B8;
   text-align: center;
 }

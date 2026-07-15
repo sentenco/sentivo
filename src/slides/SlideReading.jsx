@@ -52,7 +52,7 @@ const CSS = `
 .slr-body {
   flex: 1;
   min-height: 0;
-  padding: 14px 24px;
+  padding: 14px 28px;
   display: flex;
   flex-direction: column;
   gap: 10px;

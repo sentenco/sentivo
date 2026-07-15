@@ -111,7 +111,7 @@ const CSS = `
 .slwr-sentence {
   font-family: 'Quicksand', sans-serif;
   font-weight: 600;
-  font-size: 16.5px;
+  font-size: 18px;
   color: #1B2A4A;
 }
 

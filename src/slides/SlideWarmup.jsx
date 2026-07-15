@@ -81,7 +81,7 @@ const CSS = `
   flex: 1;
   min-height: 0;
   background: var(--k-bg-cool, #E8F8F0);
-  padding: 12px 24px;
+  padding: 14px 28px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -91,7 +91,7 @@ const CSS = `
 .slw-title {
   font-family: 'Fredoka', sans-serif;
   font-weight: 700;
-  font-size: 20px;
+  font-size: 22px;
   color: #1B2A4A;
   margin: 0;
 }
@@ -106,8 +106,8 @@ const CSS = `
   color: #2C6B4F;
   font-family: 'Quicksand', sans-serif;
   font-weight: 600;
-  font-size: 13.5px;
-  padding: 9px 18px;
+  font-size: 15px;
+  padding: 10px 20px;
   border-radius: 999px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.06);
 }
