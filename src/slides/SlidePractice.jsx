@@ -226,68 +226,80 @@ function BlankPractice({ content }) {
   );
 }
 
-/* ───────────────────────── Match: tap word to its picture ─────────────────────────
-   Tap-based, self-validating -- no Check button needed. Content authors: max
-   3 pairs so both columns fit the fixed frame with no scroll. */
+/* ───────────────────────── Match: drag the word under its picture ─────────────────────────
+   Drag a word chip from the tray into the drop zone under the picture it
+   names. Instant feedback on drop: the zone flashes green and locks if
+   correct, or flashes red and the chip bounces back to the tray if wrong.
+   Content authors: max 3 pairs so the row + tray fit with no scroll. */
 function MatchPractice({ content }) {
-  const pairs = content.pairs || [];
-  const leftItems = useMemo(() => shuffle(pairs.map((p, i) => ({ id: i, ...p }))), [content.pairs]);
-  const rightItems = useMemo(() => shuffle(pairs.map((p, i) => ({ id: i, ...p }))), [content.pairs]);
-
-  const [selectedLeft, setSelectedLeft] = useState(null);
-  const [matched, setMatched] = useState(() => new Set());
+  const pairs = useMemo(() => (content.pairs || []).map((p, i) => ({ id: i, ...p })), [content.pairs]);
+  const [tray, setTray] = useState(() => shuffle(pairs.map((p) => ({ id: p.id, word: p.word }))));
+  const [placed, setPlaced] = useState({});
   const [wrongFlash, setWrongFlash] = useState(null);
+  const [dragOverZone, setDragOverZone] = useState(null);
 
-  const allMatched = matched.size === pairs.length && pairs.length > 0;
+  const allMatched = Object.keys(placed).length === pairs.length && pairs.length > 0;
 
-  function pickLeft(id) {
-    if (matched.has(id)) return;
-    setSelectedLeft(id);
-  }
-  function pickRight(id) {
-    if (matched.has(id) || selectedLeft === null) return;
-    if (selectedLeft === id) {
-      setMatched((prev) => new Set(prev).add(id));
-      setSelectedLeft(null);
+  function dropOnZone(pairIndex, e) {
+    e.preventDefault();
+    setDragOverZone(null);
+    let payload;
+    try {
+      payload = JSON.parse(e.dataTransfer.getData("text/plain"));
+    } catch {
+      return;
+    }
+    const word = tray.find((w) => w.id === payload.id);
+    if (!word) return;
+    if (word.word === pairs[pairIndex].word) {
+      setTray((prev) => prev.filter((w) => w.id !== payload.id));
+      setPlaced((prev) => ({ ...prev, [pairIndex]: word.word }));
     } else {
-      setWrongFlash(id);
-      setTimeout(() => setWrongFlash(null), 450);
-      setSelectedLeft(null);
+      setWrongFlash(pairIndex);
+      setTimeout(() => setWrongFlash((cur) => (cur === pairIndex ? null : cur)), 500);
     }
   }
 
   return (
     <div className="slpm-body">
       {content.instruction && <p className="slpr-instruction">{content.instruction}</p>}
-      <div className="slpm-columns">
-        <div className="slpm-col">
-          {leftItems.map((it) => (
-            <button
-              type="button"
-              key={it.id}
-              className={`slpm-card ${selectedLeft === it.id ? "is-selected" : ""} ${matched.has(it.id) ? "is-matched" : ""}`}
-              onClick={() => pickLeft(it.id)}
-              disabled={matched.has(it.id)}
+      <div className="slpm-row">
+        {pairs.map((p, i) => (
+          <div className="slpm-col" key={p.id}>
+            <div className="slpm-card">
+              <span className="slpm-card-emoji">{p.emoji}</span>
+            </div>
+            <div
+              className={`slpm-zone ${dragOverZone === i ? "is-over" : ""} ${
+                placed[i] ? "is-correct" : ""
+              } ${wrongFlash === i ? "is-wrong" : ""}`}
+              onDragOver={(e) => {
+                e.preventDefault();
+                setDragOverZone(i);
+              }}
+              onDragLeave={() => setDragOverZone((cur) => (cur === i ? null : cur))}
+              onDrop={(e) => dropOnZone(i, e)}
             >
-              <span className="slpm-emoji">{it.emoji}</span>
-            </button>
-          ))}
-        </div>
-        <div className="slpm-col">
-          {rightItems.map((it) => (
-            <button
-              type="button"
-              key={it.id}
-              className={`slpm-card slpm-card--word ${matched.has(it.id) ? "is-matched" : ""} ${
-                wrongFlash === it.id ? "is-wrong" : ""
-              }`}
-              onClick={() => pickRight(it.id)}
-              disabled={matched.has(it.id)}
+              {placed[i] || "drop here"}
+            </div>
+          </div>
+        ))}
+      </div>
+      <div className="slpm-tray">
+        {tray.length === 0 ? (
+          <span className="slpr-bank-done">All words placed!</span>
+        ) : (
+          tray.map((w) => (
+            <span
+              key={w.id}
+              className="slpm-chip"
+              draggable
+              onDragStart={(e) => e.dataTransfer.setData("text/plain", JSON.stringify({ id: w.id }))}
             >
-              {it.word}
-            </button>
-          ))}
-        </div>
+              {w.word}
+            </span>
+          ))
+        )}
       </div>
       {allMatched && <div className="slpm-done">🎉 Great matching!</div>}
     </div>
@@ -728,29 +740,53 @@ const CSS = `
   padding: 0 20px;
 }
 
-/* ── Match ── */
-.slpm-body { flex: 1; min-height: 0; padding: 10px 26px 14px; display: flex; flex-direction: column; justify-content: center; gap: 10px; }
-.slpm-columns { display: flex; gap: 24px; justify-content: center; align-items: center; }
-.slpm-col { display: flex; flex-direction: column; gap: 10px; }
+/* ── Match: picture + drop zone in a row, word tray below ── */
+.slpm-body { flex: 1; min-height: 0; padding: 10px 26px 14px; display: flex; flex-direction: column; justify-content: center; gap: 14px; }
+.slpm-row { display: flex; gap: 20px; justify-content: center; }
+.slpm-col { display: flex; flex-direction: column; align-items: center; gap: 8px; }
 .slpm-card {
-  min-width: 96px;
-  padding: 11px 18px;
+  width: 84px;
+  height: 68px;
   border-radius: 14px;
   border: 3px solid var(--k-tint, #FFF6DE);
   background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.slpm-card-emoji { font-size: 30px; }
+.slpm-emoji { font-size: 16px; }
+.slpm-zone {
+  width: 100px;
+  min-height: 36px;
+  border-radius: 10px;
+  border: 3px dashed #DADCE3;
+  background: #FAFAFB;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;
-  font-size: 16px;
-  color: #1B2A4A;
-  cursor: pointer;
+  font-size: 13px;
+  color: #C2C6D2;
+  padding: 6px 8px;
   text-align: center;
-  transition: transform 0.12s ease, border-color 0.12s ease;
+  transition: background 0.15s ease, border-color 0.15s ease;
 }
-.slpm-card:hover:not(:disabled) { transform: translateY(-2px); }
-.slpm-card.is-selected { border-color: var(--k-accent, #22B8A8); background: var(--k-bg-cool, #E3F9F6); }
-.slpm-card.is-matched { border-color: #6FC9A3; background: #E4F6EC; color: #226B47; opacity: 0.85; }
-.slpm-card.is-wrong { border-color: #E0637A; background: #FDEBEF; }
-.slpm-emoji { font-size: 26px; }
+.slpm-zone.is-over { background: var(--k-bg-cool, #E3F9F6); border-color: var(--k-accent, #22B8A8); }
+.slpm-zone.is-correct { border: 3px solid #3B9A6B; background: #E4F6EC; color: #226B47; }
+.slpm-zone.is-wrong { border-color: #E0637A; background: #FDEBEF; color: #B03A52; }
+.slpm-tray { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; min-height: 34px; }
+.slpm-chip {
+  background: var(--k-secondary, #FFC845);
+  color: #7A5200;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  padding: 8px 18px;
+  border-radius: 999px;
+  cursor: grab;
+}
 .slpm-done { text-align: center; font-family: 'Quicksand', sans-serif; font-weight: 700; font-size: 15px; color: #2C6B4F; }
 
 /* ── Sort ── */
