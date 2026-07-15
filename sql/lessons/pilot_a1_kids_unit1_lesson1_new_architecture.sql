@@ -1,21 +1,15 @@
--- PILOT: A1 Kids Unit 1 Lesson 1 in the new 9-slide architecture (Title/Warmup/
--- Vocabulary/Highlight/Practice/Perform/Speaking/Review/Closer). Not part of the
--- combined rollout yet -- for review only. See docs/curriculum/
--- sentivo_curriculum_master_for_claude.md for the source framework.
+-- PILOT (update-in-place): A1 Kids Unit 1 Lesson 1 in the new 9-slide
+-- architecture. Your Kids A1 rollout is already live in Supabase, so this
+-- replaces just this one lesson's slides in place instead of re-inserting
+-- the lessons row (which already exists with this id).
+begin;
 
-insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
-values (
-  '9aa46d70-41a5-4721-a1be-4311c01c1366',
-  'Hello & My Name',
-  'A1',
-  'kids',
-  1,
-  1,
-  'Say hello, introduce yourself, and ask "What''s your name?" [Foundation, new 9-slide architecture: Title/Warmup/Vocabulary/Highlight/Practice/Perform/Speaking/Review/Closer]',
-  25,
-  9,
-  true
-);
+update lessons set
+  topic = 'Say hello, introduce yourself, and ask "What''s your name?" [Foundation, new 9-slide architecture: Title/Warmup/Vocabulary/Highlight/Practice/Perform/Speaking/Review/Closer]',
+  slide_count = 9
+where id = '9aa46d70-41a5-4721-a1be-4311c01c1366';
+
+delete from lesson_slides where lesson_id = '9aa46d70-41a5-4721-a1be-4311c01c1366';
 
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
@@ -223,3 +217,5 @@ values
 }$json$::jsonb,
   true
 );
+
+commit;
