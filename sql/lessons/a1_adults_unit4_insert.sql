@@ -1,17 +1,19 @@
--- A1 Adults Unit 4: Daily Routine (5 lessons) — TIERED (Foundation)
--- Regenerated per the Sentivo Intra-Level Progression Framework + lesson-level escalation + task rotation.
+-- A1 Adults Unit 4: Daily Routine (5 lessons) — TIERED + ROTATED
+-- Per docs/curriculum/a1-teens-adults-rotation-rework.md. Vocab/reading/writing/review
+-- unchanged from the tiered pilot; only activity+speaking reshuffled to the new
+-- per-unit format assignment, keeping each lesson's difficulty position intact.
 -- Run this whole script in the Supabase SQL editor.
 
 -- Lesson 1: My Day
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  'e4bf3d1f-25ed-47de-b2db-df8e3da1ec28',
+  '27cde442-7147-420f-be94-1fb02e8fba9b',
   'My Day',
   'A1',
   'adults',
   4,
   1,
-  'Name daily routine actions. [Foundation, Lesson 1: notice/receptive]',
+  'Name daily routine actions. [Foundation, L1, format R: short scripted role-play]',
   25,
   9,
   true
@@ -20,7 +22,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  'e4bf3d1f-25ed-47de-b2db-df8e3da1ec28',
+  '27cde442-7147-420f-be94-1fb02e8fba9b',
   1,
   'title',
   null,
@@ -31,7 +33,7 @@ values
   true
 ),
 (
-  'e4bf3d1f-25ed-47de-b2db-df8e3da1ec28',
+  '27cde442-7147-420f-be94-1fb02e8fba9b',
   2,
   'warmup',
   null,
@@ -47,7 +49,7 @@ values
   true
 ),
 (
-  'e4bf3d1f-25ed-47de-b2db-df8e3da1ec28',
+  '27cde442-7147-420f-be94-1fb02e8fba9b',
   3,
   'vocabulary',
   null,
@@ -77,7 +79,7 @@ values
   true
 ),
 (
-  'e4bf3d1f-25ed-47de-b2db-df8e3da1ec28',
+  '27cde442-7147-420f-be94-1fb02e8fba9b',
   4,
   'phrases',
   null,
@@ -97,7 +99,7 @@ values
   true
 ),
 (
-  'e4bf3d1f-25ed-47de-b2db-df8e3da1ec28',
+  '27cde442-7147-420f-be94-1fb02e8fba9b',
   5,
   'activity',
   null,
@@ -126,7 +128,7 @@ values
   true
 ),
 (
-  'e4bf3d1f-25ed-47de-b2db-df8e3da1ec28',
+  '27cde442-7147-420f-be94-1fb02e8fba9b',
   6,
   'speaking',
   null,
@@ -147,15 +149,15 @@ values
     },
     {
       "speaker": "B",
-      "text": "I sleep at 10pm!"
+      "text": "Now describe your own morning using these lines!"
     }
   ],
-  "note": "Teacher says the line first. Student repeats, then says it alone."
+  "note": "Short role-play: use the exact lines above to describe a morning, then describe your own."
 }$json$::jsonb,
   true
 ),
 (
-  'e4bf3d1f-25ed-47de-b2db-df8e3da1ec28',
+  '27cde442-7147-420f-be94-1fb02e8fba9b',
   7,
   'reading',
   null,
@@ -171,7 +173,7 @@ values
   true
 ),
 (
-  'e4bf3d1f-25ed-47de-b2db-df8e3da1ec28',
+  '27cde442-7147-420f-be94-1fb02e8fba9b',
   8,
   'writing',
   null,
@@ -186,7 +188,7 @@ values
   true
 ),
 (
-  'e4bf3d1f-25ed-47de-b2db-df8e3da1ec28',
+  '27cde442-7147-420f-be94-1fb02e8fba9b',
   9,
   'review',
   null,
@@ -205,13 +207,13 @@ values
 -- Lesson 2: Time in My Day
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  'f04e3cce-518d-4b37-818a-f8506e1167d7',
+  '1eed99e0-7cd5-40cb-98d4-3aa9f7d46159',
   'Time in My Day',
   'A1',
   'adults',
   4,
   2,
-  'Use frequency words with routine actions. [Foundation, Lesson 2: controlled practice]',
+  'Use frequency words with routine actions. [Foundation, L2, format E: choose-the-better-response]',
   25,
   9,
   true
@@ -220,7 +222,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  'f04e3cce-518d-4b37-818a-f8506e1167d7',
+  '1eed99e0-7cd5-40cb-98d4-3aa9f7d46159',
   1,
   'title',
   null,
@@ -231,7 +233,7 @@ values
   true
 ),
 (
-  'f04e3cce-518d-4b37-818a-f8506e1167d7',
+  '1eed99e0-7cd5-40cb-98d4-3aa9f7d46159',
   2,
   'warmup',
   null,
@@ -247,7 +249,7 @@ values
   true
 ),
 (
-  'f04e3cce-518d-4b37-818a-f8506e1167d7',
+  '1eed99e0-7cd5-40cb-98d4-3aa9f7d46159',
   3,
   'vocabulary',
   null,
@@ -277,7 +279,7 @@ values
   true
 ),
 (
-  'f04e3cce-518d-4b37-818a-f8506e1167d7',
+  '1eed99e0-7cd5-40cb-98d4-3aa9f7d46159',
   4,
   'phrases',
   null,
@@ -297,7 +299,7 @@ values
   true
 ),
 (
-  'f04e3cce-518d-4b37-818a-f8506e1167d7',
+  '1eed99e0-7cd5-40cb-98d4-3aa9f7d46159',
   5,
   'activity',
   null,
@@ -326,7 +328,7 @@ values
   true
 ),
 (
-  'f04e3cce-518d-4b37-818a-f8506e1167d7',
+  '1eed99e0-7cd5-40cb-98d4-3aa9f7d46159',
   6,
   'speaking',
   null,
@@ -335,27 +337,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "Do you always eat breakfast?"
+      "text": "Which is correct: 'I always wake up early' or 'I wake always up early'?"
     },
     {
       "speaker": "B",
-      "text": "Yes, I usually eat breakfast at 7am. Do you always wake up early?"
+      "text": "'I always wake up early' is correct."
     },
     {
       "speaker": "A",
-      "text": "I sometimes work late."
+      "text": "Good. Do you usually eat breakfast?"
     },
     {
       "speaker": "B",
-      "text": "Me too, sometimes!"
+      "text": "Yes, I usually eat breakfast at 7am."
     }
   ],
-  "note": "Switch! Student becomes A, teacher becomes B."
+  "note": "Choose the correct sentence first, then answer about your own routine."
 }$json$::jsonb,
   true
 ),
 (
-  'f04e3cce-518d-4b37-818a-f8506e1167d7',
+  '1eed99e0-7cd5-40cb-98d4-3aa9f7d46159',
   7,
   'reading',
   null,
@@ -371,7 +373,7 @@ values
   true
 ),
 (
-  'f04e3cce-518d-4b37-818a-f8506e1167d7',
+  '1eed99e0-7cd5-40cb-98d4-3aa9f7d46159',
   8,
   'writing',
   null,
@@ -386,7 +388,7 @@ values
   true
 ),
 (
-  'f04e3cce-518d-4b37-818a-f8506e1167d7',
+  '1eed99e0-7cd5-40cb-98d4-3aa9f7d46159',
   9,
   'review',
   null,
@@ -405,13 +407,13 @@ values
 -- Lesson 3: A Typical Morning
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '82630601-fa9f-4ae8-aa88-9adb67714e2f',
+  'ae6ca1af-87a4-4937-9969-14bb441b7423',
   'A Typical Morning',
   'A1',
   'adults',
   4,
   3,
-  'Sequence a morning routine. [Foundation, Lesson 3: freer practice, role reversal]',
+  'Sequence a morning routine. [Foundation, L3, format F: guided fill-in]',
   25,
   9,
   true
@@ -420,7 +422,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '82630601-fa9f-4ae8-aa88-9adb67714e2f',
+  'ae6ca1af-87a4-4937-9969-14bb441b7423',
   1,
   'title',
   null,
@@ -431,7 +433,7 @@ values
   true
 ),
 (
-  '82630601-fa9f-4ae8-aa88-9adb67714e2f',
+  'ae6ca1af-87a4-4937-9969-14bb441b7423',
   2,
   'warmup',
   null,
@@ -447,7 +449,7 @@ values
   true
 ),
 (
-  '82630601-fa9f-4ae8-aa88-9adb67714e2f',
+  'ae6ca1af-87a4-4937-9969-14bb441b7423',
   3,
   'vocabulary',
   null,
@@ -477,7 +479,7 @@ values
   true
 ),
 (
-  '82630601-fa9f-4ae8-aa88-9adb67714e2f',
+  'ae6ca1af-87a4-4937-9969-14bb441b7423',
   4,
   'phrases',
   null,
@@ -497,7 +499,7 @@ values
   true
 ),
 (
-  '82630601-fa9f-4ae8-aa88-9adb67714e2f',
+  'ae6ca1af-87a4-4937-9969-14bb441b7423',
   5,
   'activity',
   null,
@@ -526,7 +528,7 @@ values
   true
 ),
 (
-  '82630601-fa9f-4ae8-aa88-9adb67714e2f',
+  'ae6ca1af-87a4-4937-9969-14bb441b7423',
   6,
   'speaking',
   null,
@@ -539,7 +541,7 @@ values
     },
     {
       "speaker": "B",
-      "text": "First, I wake up. Then, I eat breakfast. What do you do?"
+      "text": "First, I wake up. Then, I eat breakfast."
     },
     {
       "speaker": "A",
@@ -547,15 +549,15 @@ values
     },
     {
       "speaker": "B",
-      "text": "Your turn to ask me something!"
+      "text": "Your turn to describe your own morning in order!"
     }
   ],
-  "note": "Student asks first this time. Teacher answers, then asks back."
+  "note": "Switch! Student becomes A, teacher becomes B."
 }$json$::jsonb,
   true
 ),
 (
-  '82630601-fa9f-4ae8-aa88-9adb67714e2f',
+  'ae6ca1af-87a4-4937-9969-14bb441b7423',
   7,
   'reading',
   null,
@@ -571,7 +573,7 @@ values
   true
 ),
 (
-  '82630601-fa9f-4ae8-aa88-9adb67714e2f',
+  'ae6ca1af-87a4-4937-9969-14bb441b7423',
   8,
   'writing',
   null,
@@ -586,7 +588,7 @@ values
   true
 ),
 (
-  '82630601-fa9f-4ae8-aa88-9adb67714e2f',
+  'ae6ca1af-87a4-4937-9969-14bb441b7423',
   9,
   'review',
   null,
@@ -605,13 +607,13 @@ values
 -- Lesson 4: Routine Questions
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  'fc050935-7ccb-4b4a-86a6-fa44c3e8b67a',
+  '08cdd8ad-872d-4b1c-8f4d-ab0404a90670',
   'Routine Questions',
   'A1',
   'adults',
   4,
   4,
-  'Combine routine and frequency into a full-day description. [Foundation, Lesson 4: production]',
+  'Combine routine and frequency into a full-day description. [Foundation, L4, format M: independent production, teacher matches back]',
   25,
   9,
   true
@@ -620,7 +622,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  'fc050935-7ccb-4b4a-86a6-fa44c3e8b67a',
+  '08cdd8ad-872d-4b1c-8f4d-ab0404a90670',
   1,
   'title',
   null,
@@ -631,7 +633,7 @@ values
   true
 ),
 (
-  'fc050935-7ccb-4b4a-86a6-fa44c3e8b67a',
+  '08cdd8ad-872d-4b1c-8f4d-ab0404a90670',
   2,
   'warmup',
   null,
@@ -647,7 +649,7 @@ values
   true
 ),
 (
-  'fc050935-7ccb-4b4a-86a6-fa44c3e8b67a',
+  '08cdd8ad-872d-4b1c-8f4d-ab0404a90670',
   3,
   'vocabulary',
   null,
@@ -677,7 +679,7 @@ values
   true
 ),
 (
-  'fc050935-7ccb-4b4a-86a6-fa44c3e8b67a',
+  '08cdd8ad-872d-4b1c-8f4d-ab0404a90670',
   4,
   'phrases',
   null,
@@ -697,7 +699,7 @@ values
   true
 ),
 (
-  'fc050935-7ccb-4b4a-86a6-fa44c3e8b67a',
+  '08cdd8ad-872d-4b1c-8f4d-ab0404a90670',
   5,
   'activity',
   null,
@@ -706,7 +708,7 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "I am [busy] [every day]."
+      "text": "I am [busy] every day."
     },
     {
       "speaker": "B",
@@ -726,7 +728,7 @@ values
   true
 ),
 (
-  'fc050935-7ccb-4b4a-86a6-fa44c3e8b67a',
+  '08cdd8ad-872d-4b1c-8f4d-ab0404a90670',
   6,
   'speaking',
   null,
@@ -735,27 +737,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "Tell me about your day."
+      "text": "Describe your day, in your own words -- busy or with free time?"
     },
     {
       "speaker": "B",
-      "text": "First, I wake up at 7am. I usually eat breakfast, then go to work."
+      "text": "I am busy every day. I have free time at night, so I relax before I sleep."
     },
     {
       "speaker": "A",
-      "text": "I am busy every day, but I have free time at night. I relax before I sleep."
+      "text": "I'll say it back: you're busy every day, and you relax at night."
     },
     {
       "speaker": "B",
-      "text": "That's a full day!"
+      "text": "Yes, exactly!"
     }
   ],
-  "note": "Mini talk: tell me all about your daily routine in a few sentences."
+  "note": "You speak first, fully in your own words. Teacher matches your sentence back to check it."
 }$json$::jsonb,
   true
 ),
 (
-  'fc050935-7ccb-4b4a-86a6-fa44c3e8b67a',
+  '08cdd8ad-872d-4b1c-8f4d-ab0404a90670',
   7,
   'reading',
   null,
@@ -771,7 +773,7 @@ values
   true
 ),
 (
-  'fc050935-7ccb-4b4a-86a6-fa44c3e8b67a',
+  '08cdd8ad-872d-4b1c-8f4d-ab0404a90670',
   8,
   'writing',
   null,
@@ -786,7 +788,7 @@ values
   true
 ),
 (
-  'fc050935-7ccb-4b4a-86a6-fa44c3e8b67a',
+  '08cdd8ad-872d-4b1c-8f4d-ab0404a90670',
   9,
   'review',
   null,
@@ -805,13 +807,13 @@ values
 -- Lesson 5: Unit Review
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  'ee0a34ff-3514-4100-90a6-b584d5a1509e',
+  '2ec7b3a0-6dc8-40c4-a78e-72ff2f6f3573',
   'Unit Review',
   'A1',
   'adults',
   4,
   5,
-  'Review daily routine and frequency words. [Foundation, Lesson 5: tier-matched review]',
+  'Unchanged by the rotation rework.',
   25,
   9,
   true
@@ -820,7 +822,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  'ee0a34ff-3514-4100-90a6-b584d5a1509e',
+  '2ec7b3a0-6dc8-40c4-a78e-72ff2f6f3573',
   1,
   'title',
   null,
@@ -831,7 +833,7 @@ values
   true
 ),
 (
-  'ee0a34ff-3514-4100-90a6-b584d5a1509e',
+  '2ec7b3a0-6dc8-40c4-a78e-72ff2f6f3573',
   2,
   'warmup',
   null,
@@ -847,7 +849,7 @@ values
   true
 ),
 (
-  'ee0a34ff-3514-4100-90a6-b584d5a1509e',
+  '2ec7b3a0-6dc8-40c4-a78e-72ff2f6f3573',
   3,
   'vocabulary',
   null,
@@ -877,7 +879,7 @@ values
   true
 ),
 (
-  'ee0a34ff-3514-4100-90a6-b584d5a1509e',
+  '2ec7b3a0-6dc8-40c4-a78e-72ff2f6f3573',
   4,
   'phrases',
   null,
@@ -897,7 +899,7 @@ values
   true
 ),
 (
-  'ee0a34ff-3514-4100-90a6-b584d5a1509e',
+  '2ec7b3a0-6dc8-40c4-a78e-72ff2f6f3573',
   5,
   'activity',
   null,
@@ -926,7 +928,7 @@ values
   true
 ),
 (
-  'ee0a34ff-3514-4100-90a6-b584d5a1509e',
+  '2ec7b3a0-6dc8-40c4-a78e-72ff2f6f3573',
   6,
   'speaking',
   null,
@@ -955,7 +957,7 @@ values
   true
 ),
 (
-  'ee0a34ff-3514-4100-90a6-b584d5a1509e',
+  '2ec7b3a0-6dc8-40c4-a78e-72ff2f6f3573',
   7,
   'reading',
   null,
@@ -971,7 +973,7 @@ values
   true
 ),
 (
-  'ee0a34ff-3514-4100-90a6-b584d5a1509e',
+  '2ec7b3a0-6dc8-40c4-a78e-72ff2f6f3573',
   8,
   'writing',
   null,
@@ -986,7 +988,7 @@ values
   true
 ),
 (
-  'ee0a34ff-3514-4100-90a6-b584d5a1509e',
+  '2ec7b3a0-6dc8-40c4-a78e-72ff2f6f3573',
   9,
   'review',
   null,

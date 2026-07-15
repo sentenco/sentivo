@@ -1,17 +1,19 @@
--- A1 Adults Unit 3: Home and Everyday Objects (5 lessons) — TIERED (Foundation)
--- Regenerated per the Sentivo Intra-Level Progression Framework + lesson-level escalation + task rotation.
+-- A1 Adults Unit 3: Home and Everyday Objects (5 lessons) — TIERED + ROTATED
+-- Per docs/curriculum/a1-teens-adults-rotation-rework.md. Vocab/reading/writing/review
+-- unchanged from the tiered pilot; only activity+speaking reshuffled to the new
+-- per-unit format assignment, keeping each lesson's difficulty position intact.
 -- Run this whole script in the Supabase SQL editor.
 
 -- Lesson 1: Rooms at Home
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '6ef72f2c-5aa5-4179-bc5b-af0aa17eb7b8',
+  '13edc025-d41e-4462-887a-dfc5f774ae9a',
   'Rooms at Home',
   'A1',
   'adults',
   3,
   1,
-  'Name rooms at home. [Foundation, Lesson 1: notice/receptive]',
+  'Name rooms at home. [Foundation, L1, format E: choose-the-better-response]',
   25,
   9,
   true
@@ -20,7 +22,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '6ef72f2c-5aa5-4179-bc5b-af0aa17eb7b8',
+  '13edc025-d41e-4462-887a-dfc5f774ae9a',
   1,
   'title',
   null,
@@ -31,7 +33,7 @@ values
   true
 ),
 (
-  '6ef72f2c-5aa5-4179-bc5b-af0aa17eb7b8',
+  '13edc025-d41e-4462-887a-dfc5f774ae9a',
   2,
   'warmup',
   null,
@@ -47,7 +49,7 @@ values
   true
 ),
 (
-  '6ef72f2c-5aa5-4179-bc5b-af0aa17eb7b8',
+  '13edc025-d41e-4462-887a-dfc5f774ae9a',
   3,
   'vocabulary',
   null,
@@ -77,7 +79,7 @@ values
   true
 ),
 (
-  '6ef72f2c-5aa5-4179-bc5b-af0aa17eb7b8',
+  '13edc025-d41e-4462-887a-dfc5f774ae9a',
   4,
   'phrases',
   null,
@@ -97,7 +99,7 @@ values
   true
 ),
 (
-  '6ef72f2c-5aa5-4179-bc5b-af0aa17eb7b8',
+  '13edc025-d41e-4462-887a-dfc5f774ae9a',
   5,
   'activity',
   null,
@@ -126,7 +128,7 @@ values
   true
 ),
 (
-  '6ef72f2c-5aa5-4179-bc5b-af0aa17eb7b8',
+  '13edc025-d41e-4462-887a-dfc5f774ae9a',
   6,
   'speaking',
   null,
@@ -135,27 +137,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "This is the kitchen."
+      "text": "Which is correct: 'This is the kitchen' or 'This is a kitchen of my house'?"
     },
     {
       "speaker": "B",
-      "text": "This is the bedroom."
+      "text": "'This is the kitchen' is correct and more natural."
     },
     {
       "speaker": "A",
-      "text": "This is the bathroom."
+      "text": "Good. What room is this?"
     },
     {
       "speaker": "B",
-      "text": "This is the living room!"
+      "text": "This is the living room."
     }
   ],
-  "note": "Teacher says the line first. Student repeats, then says it alone."
+  "note": "Choose the more natural sentence first, then name each room shown."
 }$json$::jsonb,
   true
 ),
 (
-  '6ef72f2c-5aa5-4179-bc5b-af0aa17eb7b8',
+  '13edc025-d41e-4462-887a-dfc5f774ae9a',
   7,
   'reading',
   null,
@@ -171,7 +173,7 @@ values
   true
 ),
 (
-  '6ef72f2c-5aa5-4179-bc5b-af0aa17eb7b8',
+  '13edc025-d41e-4462-887a-dfc5f774ae9a',
   8,
   'writing',
   null,
@@ -186,7 +188,7 @@ values
   true
 ),
 (
-  '6ef72f2c-5aa5-4179-bc5b-af0aa17eb7b8',
+  '13edc025-d41e-4462-887a-dfc5f774ae9a',
   9,
   'review',
   null,
@@ -205,13 +207,13 @@ values
 -- Lesson 2: Things at Home
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  'c5274447-6a91-4058-852c-ed5d9fe9d9e2',
+  'f5bc4e6b-a2fa-4095-9d1e-aafecaae8240',
   'Things at Home',
   'A1',
   'adults',
   3,
   2,
-  'Name everyday objects with ''there is/are''. [Foundation, Lesson 2: controlled practice]',
+  'Name everyday objects with ''there is/are''. [Foundation, L2, format M: read and identify]',
   25,
   9,
   true
@@ -220,7 +222,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  'c5274447-6a91-4058-852c-ed5d9fe9d9e2',
+  'f5bc4e6b-a2fa-4095-9d1e-aafecaae8240',
   1,
   'title',
   null,
@@ -231,7 +233,7 @@ values
   true
 ),
 (
-  'c5274447-6a91-4058-852c-ed5d9fe9d9e2',
+  'f5bc4e6b-a2fa-4095-9d1e-aafecaae8240',
   2,
   'warmup',
   null,
@@ -247,7 +249,7 @@ values
   true
 ),
 (
-  'c5274447-6a91-4058-852c-ed5d9fe9d9e2',
+  'f5bc4e6b-a2fa-4095-9d1e-aafecaae8240',
   3,
   'vocabulary',
   null,
@@ -277,7 +279,7 @@ values
   true
 ),
 (
-  'c5274447-6a91-4058-852c-ed5d9fe9d9e2',
+  'f5bc4e6b-a2fa-4095-9d1e-aafecaae8240',
   4,
   'phrases',
   null,
@@ -297,7 +299,7 @@ values
   true
 ),
 (
-  'c5274447-6a91-4058-852c-ed5d9fe9d9e2',
+  'f5bc4e6b-a2fa-4095-9d1e-aafecaae8240',
   5,
   'activity',
   null,
@@ -326,7 +328,7 @@ values
   true
 ),
 (
-  'c5274447-6a91-4058-852c-ed5d9fe9d9e2',
+  'f5bc4e6b-a2fa-4095-9d1e-aafecaae8240',
   6,
   'speaking',
   null,
@@ -335,27 +337,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "What is in your living room?"
+      "text": "There is a sofa in my living room."
     },
     {
       "speaker": "B",
-      "text": "There is a sofa. There are two chairs. What about yours?"
+      "text": "There are two chairs."
     },
     {
       "speaker": "A",
-      "text": "There is a table and a sofa too."
+      "text": "There is a table too."
     },
     {
       "speaker": "B",
       "text": "Nice room!"
     }
   ],
-  "note": "Switch! Student becomes A, teacher becomes B."
+  "note": "Read the model line, then say the same pattern about your own living room."
 }$json$::jsonb,
   true
 ),
 (
-  'c5274447-6a91-4058-852c-ed5d9fe9d9e2',
+  'f5bc4e6b-a2fa-4095-9d1e-aafecaae8240',
   7,
   'reading',
   null,
@@ -371,7 +373,7 @@ values
   true
 ),
 (
-  'c5274447-6a91-4058-852c-ed5d9fe9d9e2',
+  'f5bc4e6b-a2fa-4095-9d1e-aafecaae8240',
   8,
   'writing',
   null,
@@ -386,7 +388,7 @@ values
   true
 ),
 (
-  'c5274447-6a91-4058-852c-ed5d9fe9d9e2',
+  'f5bc4e6b-a2fa-4095-9d1e-aafecaae8240',
   9,
   'review',
   null,
@@ -405,13 +407,13 @@ values
 -- Lesson 3: Where Things Are
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '78e0efa1-2763-4998-8cc3-d4cb80469bce',
+  '812f2207-71eb-44bc-926b-68f4dfe150f2',
   'Where Things Are',
   'A1',
   'adults',
   3,
   3,
-  'Ask and answer where things are. [Foundation, Lesson 3: freer practice, role reversal]',
+  'Ask and answer where things are. [Foundation, L3, format R: freer, less-scripted role-play]',
   25,
   9,
   true
@@ -420,7 +422,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '78e0efa1-2763-4998-8cc3-d4cb80469bce',
+  '812f2207-71eb-44bc-926b-68f4dfe150f2',
   1,
   'title',
   null,
@@ -431,7 +433,7 @@ values
   true
 ),
 (
-  '78e0efa1-2763-4998-8cc3-d4cb80469bce',
+  '812f2207-71eb-44bc-926b-68f4dfe150f2',
   2,
   'warmup',
   null,
@@ -447,7 +449,7 @@ values
   true
 ),
 (
-  '78e0efa1-2763-4998-8cc3-d4cb80469bce',
+  '812f2207-71eb-44bc-926b-68f4dfe150f2',
   3,
   'vocabulary',
   null,
@@ -477,7 +479,7 @@ values
   true
 ),
 (
-  '78e0efa1-2763-4998-8cc3-d4cb80469bce',
+  '812f2207-71eb-44bc-926b-68f4dfe150f2',
   4,
   'phrases',
   null,
@@ -497,7 +499,7 @@ values
   true
 ),
 (
-  '78e0efa1-2763-4998-8cc3-d4cb80469bce',
+  '812f2207-71eb-44bc-926b-68f4dfe150f2',
   5,
   'activity',
   null,
@@ -526,7 +528,7 @@ values
   true
 ),
 (
-  '78e0efa1-2763-4998-8cc3-d4cb80469bce',
+  '812f2207-71eb-44bc-926b-68f4dfe150f2',
   6,
   'speaking',
   null,
@@ -535,27 +537,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "Where is your bed?"
+      "text": "Welcome! Let me show you around my home."
     },
     {
       "speaker": "B",
-      "text": "It is in my bedroom. Where is your sofa?"
+      "text": "Where is the kitchen?"
     },
     {
       "speaker": "A",
-      "text": "It is in the living room, next to the window."
+      "text": "It's next to the living room. The bathroom is upstairs."
     },
     {
       "speaker": "B",
-      "text": "Your turn to ask me something!"
+      "text": "Now show me around your own home!"
     }
   ],
-  "note": "Student asks first this time. Teacher answers, then asks back."
+  "note": "Freer role-play: after practicing, give your own short 'tour' of your home in your own words."
 }$json$::jsonb,
   true
 ),
 (
-  '78e0efa1-2763-4998-8cc3-d4cb80469bce',
+  '812f2207-71eb-44bc-926b-68f4dfe150f2',
   7,
   'reading',
   null,
@@ -571,7 +573,7 @@ values
   true
 ),
 (
-  '78e0efa1-2763-4998-8cc3-d4cb80469bce',
+  '812f2207-71eb-44bc-926b-68f4dfe150f2',
   8,
   'writing',
   null,
@@ -586,7 +588,7 @@ values
   true
 ),
 (
-  '78e0efa1-2763-4998-8cc3-d4cb80469bce',
+  '812f2207-71eb-44bc-926b-68f4dfe150f2',
   9,
   'review',
   null,
@@ -605,13 +607,13 @@ values
 -- Lesson 4: My Home
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  'ac44d134-c601-4ddb-b395-51a5968efa77',
+  '0388505f-b7e3-49f9-a0b0-a953180a4cbd',
   'My Home',
   'A1',
   'adults',
   3,
   4,
-  'Combine rooms, objects, and location into a home description. [Foundation, Lesson 4: production]',
+  'Combine rooms, objects, and location into a home description. [Foundation, L4, format F: open fill-in, minimal scaffolding]',
   25,
   9,
   true
@@ -620,7 +622,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  'ac44d134-c601-4ddb-b395-51a5968efa77',
+  '0388505f-b7e3-49f9-a0b0-a953180a4cbd',
   1,
   'title',
   null,
@@ -631,7 +633,7 @@ values
   true
 ),
 (
-  'ac44d134-c601-4ddb-b395-51a5968efa77',
+  '0388505f-b7e3-49f9-a0b0-a953180a4cbd',
   2,
   'warmup',
   null,
@@ -647,7 +649,7 @@ values
   true
 ),
 (
-  'ac44d134-c601-4ddb-b395-51a5968efa77',
+  '0388505f-b7e3-49f9-a0b0-a953180a4cbd',
   3,
   'vocabulary',
   null,
@@ -677,7 +679,7 @@ values
   true
 ),
 (
-  'ac44d134-c601-4ddb-b395-51a5968efa77',
+  '0388505f-b7e3-49f9-a0b0-a953180a4cbd',
   4,
   'phrases',
   null,
@@ -697,7 +699,7 @@ values
   true
 ),
 (
-  'ac44d134-c601-4ddb-b395-51a5968efa77',
+  '0388505f-b7e3-49f9-a0b0-a953180a4cbd',
   5,
   'activity',
   null,
@@ -706,7 +708,7 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "I live in an [apartment]."
+      "text": "I live in a(n) [apartment]."
     },
     {
       "speaker": "B",
@@ -726,7 +728,7 @@ values
   true
 ),
 (
-  'ac44d134-c601-4ddb-b395-51a5968efa77',
+  '0388505f-b7e3-49f9-a0b0-a953180a4cbd',
   6,
   'speaking',
   null,
@@ -735,27 +737,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "Tell me about your home."
+      "text": "Do you live in an apartment or a house, and is it comfortable?"
     },
     {
       "speaker": "B",
-      "text": "I live in an apartment. There is a kitchen, a bedroom, and a living room."
+      "text": "I live in a(n) ___. It is ___."
     },
     {
       "speaker": "A",
-      "text": "There is a sofa next to the window. My home is comfortable."
+      "text": "What is your favorite room, and why?"
     },
     {
       "speaker": "B",
-      "text": "Sounds like a nice home!"
+      "text": "My favorite room is ___, because ___."
     }
   ],
-  "note": "Mini talk: tell me all about your home in a few sentences."
+  "note": "Fill in your own answers -- no word bank this time. Say your full answers out loud."
 }$json$::jsonb,
   true
 ),
 (
-  'ac44d134-c601-4ddb-b395-51a5968efa77',
+  '0388505f-b7e3-49f9-a0b0-a953180a4cbd',
   7,
   'reading',
   null,
@@ -771,7 +773,7 @@ values
   true
 ),
 (
-  'ac44d134-c601-4ddb-b395-51a5968efa77',
+  '0388505f-b7e3-49f9-a0b0-a953180a4cbd',
   8,
   'writing',
   null,
@@ -786,7 +788,7 @@ values
   true
 ),
 (
-  'ac44d134-c601-4ddb-b395-51a5968efa77',
+  '0388505f-b7e3-49f9-a0b0-a953180a4cbd',
   9,
   'review',
   null,
@@ -805,13 +807,13 @@ values
 -- Lesson 5: Unit Review
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  'e7b92db9-7d8e-4b70-9866-23057cbbd366',
+  'b7c9bc2d-3cda-4968-ae2e-cd317e9cddc9',
   'Unit Review',
   'A1',
   'adults',
   3,
   5,
-  'Review rooms, objects, and location. [Foundation, Lesson 5: tier-matched review]',
+  'Unchanged by the rotation rework.',
   25,
   9,
   true
@@ -820,7 +822,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  'e7b92db9-7d8e-4b70-9866-23057cbbd366',
+  'b7c9bc2d-3cda-4968-ae2e-cd317e9cddc9',
   1,
   'title',
   null,
@@ -831,7 +833,7 @@ values
   true
 ),
 (
-  'e7b92db9-7d8e-4b70-9866-23057cbbd366',
+  'b7c9bc2d-3cda-4968-ae2e-cd317e9cddc9',
   2,
   'warmup',
   null,
@@ -847,7 +849,7 @@ values
   true
 ),
 (
-  'e7b92db9-7d8e-4b70-9866-23057cbbd366',
+  'b7c9bc2d-3cda-4968-ae2e-cd317e9cddc9',
   3,
   'vocabulary',
   null,
@@ -877,7 +879,7 @@ values
   true
 ),
 (
-  'e7b92db9-7d8e-4b70-9866-23057cbbd366',
+  'b7c9bc2d-3cda-4968-ae2e-cd317e9cddc9',
   4,
   'phrases',
   null,
@@ -897,7 +899,7 @@ values
   true
 ),
 (
-  'e7b92db9-7d8e-4b70-9866-23057cbbd366',
+  'b7c9bc2d-3cda-4968-ae2e-cd317e9cddc9',
   5,
   'activity',
   null,
@@ -926,7 +928,7 @@ values
   true
 ),
 (
-  'e7b92db9-7d8e-4b70-9866-23057cbbd366',
+  'b7c9bc2d-3cda-4968-ae2e-cd317e9cddc9',
   6,
   'speaking',
   null,
@@ -955,7 +957,7 @@ values
   true
 ),
 (
-  'e7b92db9-7d8e-4b70-9866-23057cbbd366',
+  'b7c9bc2d-3cda-4968-ae2e-cd317e9cddc9',
   7,
   'reading',
   null,
@@ -971,7 +973,7 @@ values
   true
 ),
 (
-  'e7b92db9-7d8e-4b70-9866-23057cbbd366',
+  'b7c9bc2d-3cda-4968-ae2e-cd317e9cddc9',
   8,
   'writing',
   null,
@@ -986,7 +988,7 @@ values
   true
 ),
 (
-  'e7b92db9-7d8e-4b70-9866-23057cbbd366',
+  'b7c9bc2d-3cda-4968-ae2e-cd317e9cddc9',
   9,
   'review',
   null,

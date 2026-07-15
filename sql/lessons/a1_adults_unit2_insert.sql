@@ -1,17 +1,19 @@
--- A1 Adults Unit 2: My Family (5 lessons) — TIERED (Foundation)
--- Regenerated per the Sentivo Intra-Level Progression Framework + lesson-level escalation + task rotation.
+-- A1 Adults Unit 2: My Family (5 lessons) — TIERED + ROTATED
+-- Per docs/curriculum/a1-teens-adults-rotation-rework.md. Vocab/reading/writing/review
+-- unchanged from the tiered pilot; only activity+speaking reshuffled to the new
+-- per-unit format assignment, keeping each lesson's difficulty position intact.
 -- Run this whole script in the Supabase SQL editor.
 
 -- Lesson 1: My Family
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '24431278-2a65-4d32-9354-919903f71045',
+  'e5c553f5-53a9-40fa-bc03-23029008894f',
   'My Family',
   'A1',
   'adults',
   2,
   1,
-  'Name immediate family members. [Foundation, Lesson 1: notice/receptive]',
+  'Name immediate family members. [Foundation, L1, format F: heaviest scaffold, full word bank]',
   25,
   9,
   true
@@ -20,7 +22,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '24431278-2a65-4d32-9354-919903f71045',
+  'e5c553f5-53a9-40fa-bc03-23029008894f',
   1,
   'title',
   null,
@@ -31,7 +33,7 @@ values
   true
 ),
 (
-  '24431278-2a65-4d32-9354-919903f71045',
+  'e5c553f5-53a9-40fa-bc03-23029008894f',
   2,
   'warmup',
   null,
@@ -47,7 +49,7 @@ values
   true
 ),
 (
-  '24431278-2a65-4d32-9354-919903f71045',
+  'e5c553f5-53a9-40fa-bc03-23029008894f',
   3,
   'vocabulary',
   null,
@@ -77,7 +79,7 @@ values
   true
 ),
 (
-  '24431278-2a65-4d32-9354-919903f71045',
+  'e5c553f5-53a9-40fa-bc03-23029008894f',
   4,
   'phrases',
   null,
@@ -97,7 +99,7 @@ values
   true
 ),
 (
-  '24431278-2a65-4d32-9354-919903f71045',
+  'e5c553f5-53a9-40fa-bc03-23029008894f',
   5,
   'activity',
   null,
@@ -126,7 +128,7 @@ values
   true
 ),
 (
-  '24431278-2a65-4d32-9354-919903f71045',
+  'e5c553f5-53a9-40fa-bc03-23029008894f',
   6,
   'speaking',
   null,
@@ -150,12 +152,12 @@ values
       "text": "I have one daughter!"
     }
   ],
-  "note": "Teacher says the line first. Student repeats, then says it alone."
+  "note": "Fill in the blanks with the word bank, then read the whole introduction together."
 }$json$::jsonb,
   true
 ),
 (
-  '24431278-2a65-4d32-9354-919903f71045',
+  'e5c553f5-53a9-40fa-bc03-23029008894f',
   7,
   'reading',
   null,
@@ -171,7 +173,7 @@ values
   true
 ),
 (
-  '24431278-2a65-4d32-9354-919903f71045',
+  'e5c553f5-53a9-40fa-bc03-23029008894f',
   8,
   'writing',
   null,
@@ -186,7 +188,7 @@ values
   true
 ),
 (
-  '24431278-2a65-4d32-9354-919903f71045',
+  'e5c553f5-53a9-40fa-bc03-23029008894f',
   9,
   'review',
   null,
@@ -205,13 +207,13 @@ values
 -- Lesson 2: Talking About Family
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  'cf83f805-c232-412a-b5f5-a0f47274b943',
+  '72d0b2c4-550e-4f13-810f-eaa7b325ece8',
   'Talking About Family',
   'A1',
   'adults',
   2,
   2,
-  'Describe family members with simple adjectives. [Foundation, Lesson 2: controlled practice]',
+  'Describe family members with simple adjectives. [Foundation, L2, format R: short scripted role-play]',
   25,
   9,
   true
@@ -220,7 +222,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  'cf83f805-c232-412a-b5f5-a0f47274b943',
+  '72d0b2c4-550e-4f13-810f-eaa7b325ece8',
   1,
   'title',
   null,
@@ -231,7 +233,7 @@ values
   true
 ),
 (
-  'cf83f805-c232-412a-b5f5-a0f47274b943',
+  '72d0b2c4-550e-4f13-810f-eaa7b325ece8',
   2,
   'warmup',
   null,
@@ -247,7 +249,7 @@ values
   true
 ),
 (
-  'cf83f805-c232-412a-b5f5-a0f47274b943',
+  '72d0b2c4-550e-4f13-810f-eaa7b325ece8',
   3,
   'vocabulary',
   null,
@@ -277,7 +279,7 @@ values
   true
 ),
 (
-  'cf83f805-c232-412a-b5f5-a0f47274b943',
+  '72d0b2c4-550e-4f13-810f-eaa7b325ece8',
   4,
   'phrases',
   null,
@@ -297,7 +299,7 @@ values
   true
 ),
 (
-  'cf83f805-c232-412a-b5f5-a0f47274b943',
+  '72d0b2c4-550e-4f13-810f-eaa7b325ece8',
   5,
   'activity',
   null,
@@ -326,7 +328,7 @@ values
   true
 ),
 (
-  'cf83f805-c232-412a-b5f5-a0f47274b943',
+  '72d0b2c4-550e-4f13-810f-eaa7b325ece8',
   6,
   'speaking',
   null,
@@ -335,27 +337,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "Are your parents kind?"
+      "text": "My parents are kind. My father is hardworking."
     },
     {
       "speaker": "B",
-      "text": "Yes, my parents are kind. Is your father hardworking?"
+      "text": "My mother is retired now."
     },
     {
       "speaker": "A",
-      "text": "Yes, he is very hardworking. My mother is retired."
+      "text": "That's nice. My parents are retired too."
     },
     {
       "speaker": "B",
-      "text": "Nice family!"
+      "text": "Now tell me about your own parents using these lines!"
     }
   ],
-  "note": "Switch! Student becomes A, teacher becomes B."
+  "note": "Short role-play: introduce your parents to a new colleague using the lines above."
 }$json$::jsonb,
   true
 ),
 (
-  'cf83f805-c232-412a-b5f5-a0f47274b943',
+  '72d0b2c4-550e-4f13-810f-eaa7b325ece8',
   7,
   'reading',
   null,
@@ -371,7 +373,7 @@ values
   true
 ),
 (
-  'cf83f805-c232-412a-b5f5-a0f47274b943',
+  '72d0b2c4-550e-4f13-810f-eaa7b325ece8',
   8,
   'writing',
   null,
@@ -386,7 +388,7 @@ values
   true
 ),
 (
-  'cf83f805-c232-412a-b5f5-a0f47274b943',
+  '72d0b2c4-550e-4f13-810f-eaa7b325ece8',
   9,
   'review',
   null,
@@ -405,13 +407,13 @@ values
 -- Lesson 3: Describing People
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '64ab57b8-c8f3-4296-b3ef-1abdd9a78c98',
+  '77778ac6-9420-42ee-a334-cfe751b33aa2',
   'Describing People',
   'A1',
   'adults',
   2,
   3,
-  'Describe family with simple physical descriptions. [Foundation, Lesson 3: freer practice, role reversal]',
+  'Describe family with simple physical descriptions. [Foundation, L3, format M: read and identify, then match]',
   25,
   9,
   true
@@ -420,7 +422,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '64ab57b8-c8f3-4296-b3ef-1abdd9a78c98',
+  '77778ac6-9420-42ee-a334-cfe751b33aa2',
   1,
   'title',
   null,
@@ -431,7 +433,7 @@ values
   true
 ),
 (
-  '64ab57b8-c8f3-4296-b3ef-1abdd9a78c98',
+  '77778ac6-9420-42ee-a334-cfe751b33aa2',
   2,
   'warmup',
   null,
@@ -447,7 +449,7 @@ values
   true
 ),
 (
-  '64ab57b8-c8f3-4296-b3ef-1abdd9a78c98',
+  '77778ac6-9420-42ee-a334-cfe751b33aa2',
   3,
   'vocabulary',
   null,
@@ -477,7 +479,7 @@ values
   true
 ),
 (
-  '64ab57b8-c8f3-4296-b3ef-1abdd9a78c98',
+  '77778ac6-9420-42ee-a334-cfe751b33aa2',
   4,
   'phrases',
   null,
@@ -497,7 +499,7 @@ values
   true
 ),
 (
-  '64ab57b8-c8f3-4296-b3ef-1abdd9a78c98',
+  '77778ac6-9420-42ee-a334-cfe751b33aa2',
   5,
   'activity',
   null,
@@ -526,7 +528,7 @@ values
   true
 ),
 (
-  '64ab57b8-c8f3-4296-b3ef-1abdd9a78c98',
+  '77778ac6-9420-42ee-a334-cfe751b33aa2',
   6,
   'speaking',
   null,
@@ -535,27 +537,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "Is your son tall or short?"
+      "text": "My son is tall."
     },
     {
       "speaker": "B",
-      "text": "My son is tall. Is your daughter young?"
+      "text": "My son is tall too!"
     },
     {
       "speaker": "A",
-      "text": "Yes, my daughter is young."
+      "text": "My daughter is short."
     },
     {
       "speaker": "B",
-      "text": "Your turn to ask me something!"
+      "text": "My daughter is short too!"
     }
   ],
-  "note": "Student asks first this time. Teacher answers, then asks back."
+  "note": "Read the model line, find the describing word, then say a matching sentence about your own family."
 }$json$::jsonb,
   true
 ),
 (
-  '64ab57b8-c8f3-4296-b3ef-1abdd9a78c98',
+  '77778ac6-9420-42ee-a334-cfe751b33aa2',
   7,
   'reading',
   null,
@@ -571,7 +573,7 @@ values
   true
 ),
 (
-  '64ab57b8-c8f3-4296-b3ef-1abdd9a78c98',
+  '77778ac6-9420-42ee-a334-cfe751b33aa2',
   8,
   'writing',
   null,
@@ -586,7 +588,7 @@ values
   true
 ),
 (
-  '64ab57b8-c8f3-4296-b3ef-1abdd9a78c98',
+  '77778ac6-9420-42ee-a334-cfe751b33aa2',
   9,
   'review',
   null,
@@ -605,13 +607,13 @@ values
 -- Lesson 4: Family Questions
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '31b75a96-5996-4458-afc5-390d2c60383a',
+  '716efe02-e2ee-4a6d-81c2-6f68dce816d9',
   'Family Questions',
   'A1',
   'adults',
   2,
   4,
-  'Combine family vocabulary into a short family description. [Foundation, Lesson 4: production]',
+  'Combine family vocabulary into a short description. [Foundation, L4, format E: choose-the-better-response + independent production]',
   25,
   9,
   true
@@ -620,7 +622,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '31b75a96-5996-4458-afc5-390d2c60383a',
+  '716efe02-e2ee-4a6d-81c2-6f68dce816d9',
   1,
   'title',
   null,
@@ -631,7 +633,7 @@ values
   true
 ),
 (
-  '31b75a96-5996-4458-afc5-390d2c60383a',
+  '716efe02-e2ee-4a6d-81c2-6f68dce816d9',
   2,
   'warmup',
   null,
@@ -647,7 +649,7 @@ values
   true
 ),
 (
-  '31b75a96-5996-4458-afc5-390d2c60383a',
+  '716efe02-e2ee-4a6d-81c2-6f68dce816d9',
   3,
   'vocabulary',
   null,
@@ -677,7 +679,7 @@ values
   true
 ),
 (
-  '31b75a96-5996-4458-afc5-390d2c60383a',
+  '716efe02-e2ee-4a6d-81c2-6f68dce816d9',
   4,
   'phrases',
   null,
@@ -697,7 +699,7 @@ values
   true
 ),
 (
-  '31b75a96-5996-4458-afc5-390d2c60383a',
+  '716efe02-e2ee-4a6d-81c2-6f68dce816d9',
   5,
   'activity',
   null,
@@ -726,7 +728,7 @@ values
   true
 ),
 (
-  '31b75a96-5996-4458-afc5-390d2c60383a',
+  '716efe02-e2ee-4a6d-81c2-6f68dce816d9',
   6,
   'speaking',
   null,
@@ -735,27 +737,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "Tell me about your family."
+      "text": "Which is correct: 'I live with my family' or 'I live in my family'?"
     },
     {
       "speaker": "B",
-      "text": "I live with my husband and one son. My parents are retired."
+      "text": "'I live with my family' is correct."
     },
     {
       "speaker": "A",
-      "text": "We are close, and we are together every weekend. I love my family."
+      "text": "Good. Now tell me: who do you live with, and are you close to them?"
     },
     {
       "speaker": "B",
-      "text": "That sounds wonderful!"
+      "text": "I live with my husband and children. We are close."
     }
   ],
-  "note": "Mini talk: tell me all about your family in a few sentences."
+  "note": "Choose the correct sentence first, then answer fully in your own words about your own family."
 }$json$::jsonb,
   true
 ),
 (
-  '31b75a96-5996-4458-afc5-390d2c60383a',
+  '716efe02-e2ee-4a6d-81c2-6f68dce816d9',
   7,
   'reading',
   null,
@@ -771,7 +773,7 @@ values
   true
 ),
 (
-  '31b75a96-5996-4458-afc5-390d2c60383a',
+  '716efe02-e2ee-4a6d-81c2-6f68dce816d9',
   8,
   'writing',
   null,
@@ -786,7 +788,7 @@ values
   true
 ),
 (
-  '31b75a96-5996-4458-afc5-390d2c60383a',
+  '716efe02-e2ee-4a6d-81c2-6f68dce816d9',
   9,
   'review',
   null,
@@ -805,13 +807,13 @@ values
 -- Lesson 5: Unit Review
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '011238d2-8fbf-48a4-adb9-36a73b6ea424',
+  '5fe9e769-07c2-4526-b199-7b00081258d1',
   'Unit Review',
   'A1',
   'adults',
   2,
   5,
-  'Review family vocabulary and descriptions. [Foundation, Lesson 5: tier-matched review]',
+  'Unchanged by the rotation rework.',
   25,
   9,
   true
@@ -820,7 +822,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '011238d2-8fbf-48a4-adb9-36a73b6ea424',
+  '5fe9e769-07c2-4526-b199-7b00081258d1',
   1,
   'title',
   null,
@@ -831,7 +833,7 @@ values
   true
 ),
 (
-  '011238d2-8fbf-48a4-adb9-36a73b6ea424',
+  '5fe9e769-07c2-4526-b199-7b00081258d1',
   2,
   'warmup',
   null,
@@ -847,7 +849,7 @@ values
   true
 ),
 (
-  '011238d2-8fbf-48a4-adb9-36a73b6ea424',
+  '5fe9e769-07c2-4526-b199-7b00081258d1',
   3,
   'vocabulary',
   null,
@@ -877,7 +879,7 @@ values
   true
 ),
 (
-  '011238d2-8fbf-48a4-adb9-36a73b6ea424',
+  '5fe9e769-07c2-4526-b199-7b00081258d1',
   4,
   'phrases',
   null,
@@ -897,7 +899,7 @@ values
   true
 ),
 (
-  '011238d2-8fbf-48a4-adb9-36a73b6ea424',
+  '5fe9e769-07c2-4526-b199-7b00081258d1',
   5,
   'activity',
   null,
@@ -926,7 +928,7 @@ values
   true
 ),
 (
-  '011238d2-8fbf-48a4-adb9-36a73b6ea424',
+  '5fe9e769-07c2-4526-b199-7b00081258d1',
   6,
   'speaking',
   null,
@@ -955,7 +957,7 @@ values
   true
 ),
 (
-  '011238d2-8fbf-48a4-adb9-36a73b6ea424',
+  '5fe9e769-07c2-4526-b199-7b00081258d1',
   7,
   'reading',
   null,
@@ -971,7 +973,7 @@ values
   true
 ),
 (
-  '011238d2-8fbf-48a4-adb9-36a73b6ea424',
+  '5fe9e769-07c2-4526-b199-7b00081258d1',
   8,
   'writing',
   null,
@@ -986,7 +988,7 @@ values
   true
 ),
 (
-  '011238d2-8fbf-48a4-adb9-36a73b6ea424',
+  '5fe9e769-07c2-4526-b199-7b00081258d1',
   9,
   'review',
   null,
