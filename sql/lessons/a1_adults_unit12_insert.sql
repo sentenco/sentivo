@@ -1,16 +1,17 @@
--- A1 Adults Unit 12: Appointments and Future Plans (5 lessons)
+-- A1 Adults Unit 12: Appointments and Future Plans (5 lessons) — TIERED (Bridge)
+-- Regenerated per the Sentivo Intra-Level Progression Framework + lesson-level escalation + task rotation.
 -- Run this whole script in the Supabase SQL editor.
 
 -- Lesson 1: Plans and Dates
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '4d77406f-ac46-49a9-b9d5-7fef6bdf18c3',
+  '7fca4c7f-55a9-4e52-bafa-9fe99d6f0a1c',
   'Plans and Dates',
   'A1',
   'adults',
   12,
   1,
-  'Say simple future plans with days and times.',
+  'Talk about days and simple plans. [Bridge, Lesson 1: notice/receptive]',
   25,
   9,
   true
@@ -19,7 +20,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '4d77406f-ac46-49a9-b9d5-7fef6bdf18c3',
+  '7fca4c7f-55a9-4e52-bafa-9fe99d6f0a1c',
   1,
   'title',
   null,
@@ -30,23 +31,23 @@ values
   true
 ),
 (
-  '4d77406f-ac46-49a9-b9d5-7fef6bdf18c3',
+  '7fca4c7f-55a9-4e52-bafa-9fe99d6f0a1c',
   2,
   'warmup',
   null,
   null,
   $json${
-  "display": "",
+  "display": "📅",
   "questions": [
-    "What are your plans this week?",
-    "Do you have a busy schedule?"
+    "Are you free on Monday?",
+    "Do you have an appointment this week?"
   ],
-  "title": "Warm-up"
+  "title": "Let's begin"
 }$json$::jsonb,
   true
 ),
 (
-  '4d77406f-ac46-49a9-b9d5-7fef6bdf18c3',
+  '7fca4c7f-55a9-4e52-bafa-9fe99d6f0a1c',
   3,
   'vocabulary',
   null,
@@ -54,19 +55,19 @@ values
   $json${
   "words": [
     {
-      "word": "Meeting",
+      "word": "Monday",
       "bg": "#FAECE7"
     },
     {
-      "word": "Tomorrow",
+      "word": "Tuesday",
       "bg": "#E1F5EE"
     },
     {
-      "word": "Next Week",
+      "word": "Appointment",
       "bg": "#EEEDFE"
     },
     {
-      "word": "Visit",
+      "word": "Free",
       "bg": "#FAEEDA"
     }
   ],
@@ -76,27 +77,27 @@ values
   true
 ),
 (
-  '4d77406f-ac46-49a9-b9d5-7fef6bdf18c3',
+  '7fca4c7f-55a9-4e52-bafa-9fe99d6f0a1c',
   4,
   'phrases',
   null,
   null,
   $json${
   "teacher": [
-    "What are your plans this week?",
-    "Do you have a meeting tomorrow?"
+    "Are you free on Monday?",
+    "Do you have an appointment?"
   ],
   "student": [
-    "I have a meeting on Monday.",
-    "Yes, tomorrow at 10."
+    "Yes, I am free on Monday.",
+    "Yes, I have an appointment."
   ],
-  "note": "Think about your real plans this week!",
+  "note": "Read the model text, then practice it.",
   "title": "Practice the Conversation"
 }$json$::jsonb,
   true
 ),
 (
-  '4d77406f-ac46-49a9-b9d5-7fef6bdf18c3',
+  '7fca4c7f-55a9-4e52-bafa-9fe99d6f0a1c',
   5,
   'activity',
   null,
@@ -105,27 +106,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "I have a [meeting] tomorrow."
+      "text": "I am free on [Monday]."
     },
     {
       "speaker": "B",
-      "text": "I have a class [next week]."
+      "text": "I have an [appointment] on [Tuesday]."
     },
     {
       "speaker": "A",
-      "text": "I will [visit] my parents."
+      "text": "I am [free] on Wednesday."
     }
   ],
   "blanks": [
-    "meeting",
-    "next week",
-    "visit"
+    "monday",
+    "appointment",
+    "free"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '4d77406f-ac46-49a9-b9d5-7fef6bdf18c3',
+  '7fca4c7f-55a9-4e52-bafa-9fe99d6f0a1c',
   6,
   'speaking',
   null,
@@ -134,69 +135,69 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "What are your plans this week?"
+      "text": "I am free on Monday."
     },
     {
       "speaker": "B",
-      "text": "I have a meeting on Monday."
+      "text": "I have an appointment on Tuesday."
     },
     {
       "speaker": "A",
-      "text": "I have a class next week!"
+      "text": "I am free on Wednesday too."
     },
     {
       "speaker": "B",
-      "text": "That's a busy week!"
+      "text": "Good, let's meet then!"
     }
   ],
-  "note": "Switch! Student becomes A, teacher becomes B."
+  "note": "Teacher says the line first. Student repeats, then says it alone."
 }$json$::jsonb,
   true
 ),
 (
-  '4d77406f-ac46-49a9-b9d5-7fef6bdf18c3',
+  '7fca4c7f-55a9-4e52-bafa-9fe99d6f0a1c',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "This week, I have a meeting on Monday. Next week, I have a class. Tomorrow, I will visit my parents. I have a busy schedule!",
+  "text": "I am free on Monday. I have an appointment on Tuesday. I am free on Wednesday too.",
   "questions": [
-    "What does the writer have on Monday?",
-    "What happens next week?",
-    "Who will the writer visit tomorrow?"
+    "When is the writer free?",
+    "When is the appointment?",
+    "What other day is the writer free?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '4d77406f-ac46-49a9-b9d5-7fef6bdf18c3',
+  '7fca4c7f-55a9-4e52-bafa-9fe99d6f0a1c',
   8,
   'writing',
   null,
   null,
   $json${
   "prompts": [
-    "On ___, I have a ___.",
-    "Next week, I will ___.",
-    "Tomorrow, I will ___."
+    "I am free on ___.",
+    "I have an appointment on ___.",
+    "I am free on ___ too."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '4d77406f-ac46-49a9-b9d5-7fef6bdf18c3',
+  '7fca4c7f-55a9-4e52-bafa-9fe99d6f0a1c',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Name four plan words",
-    "Say 'On ___, I have a ___'",
-    "Talk about my weekly plans"
+    "Name days of the week",
+    "Say 'I am free on ___'",
+    "Talk about an appointment"
   ],
-  "challenge": "Tell me one plan you have this week!"
+  "challenge": "Tell me what day you are free this week!"
 }$json$::jsonb,
   true
 );
@@ -204,13 +205,13 @@ values
 -- Lesson 2: Making Simple Plans
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '139b7ee6-41c1-4c28-b9bd-2bf2c9f58756',
+  'c2c4411c-d2bd-471f-91c6-a40002fbbfe7',
   'Making Simple Plans',
   'A1',
   'adults',
   12,
   2,
-  'Say a simple plan with beginner future expressions.',
+  'Use ''I''d like to'' for simple plans. [Bridge, Lesson 2: controlled practice, fill-in-blank]',
   25,
   9,
   true
@@ -219,7 +220,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '139b7ee6-41c1-4c28-b9bd-2bf2c9f58756',
+  'c2c4411c-d2bd-471f-91c6-a40002fbbfe7',
   1,
   'title',
   null,
@@ -230,23 +231,23 @@ values
   true
 ),
 (
-  '139b7ee6-41c1-4c28-b9bd-2bf2c9f58756',
+  'c2c4411c-d2bd-471f-91c6-a40002fbbfe7',
   2,
   'warmup',
   null,
   null,
   $json${
-  "display": "",
+  "display": "🤝",
   "questions": [
-    "What are you going to do this weekend?",
-    "Do you have plans?"
+    "Would you like to meet this week?",
+    "What day is convenient for you?"
   ],
-  "title": "Warm-up"
+  "title": "Let's begin"
 }$json$::jsonb,
   true
 ),
 (
-  '139b7ee6-41c1-4c28-b9bd-2bf2c9f58756',
+  'c2c4411c-d2bd-471f-91c6-a40002fbbfe7',
   3,
   'vocabulary',
   null,
@@ -254,19 +255,19 @@ values
   $json${
   "words": [
     {
-      "word": "I'm Going To",
+      "word": "I'd like to",
       "bg": "#FAECE7"
     },
     {
-      "word": "I Want To",
+      "word": "Meet",
       "bg": "#E1F5EE"
     },
     {
-      "word": "Plan",
+      "word": "This week",
       "bg": "#EEEDFE"
     },
     {
-      "word": "This Week",
+      "word": "Convenient",
       "bg": "#FAEEDA"
     }
   ],
@@ -276,27 +277,27 @@ values
   true
 ),
 (
-  '139b7ee6-41c1-4c28-b9bd-2bf2c9f58756',
+  'c2c4411c-d2bd-471f-91c6-a40002fbbfe7',
   4,
   'phrases',
   null,
   null,
   $json${
   "teacher": [
-    "What are you going to do?",
-    "Do you want to go out?"
+    "What day is convenient for you?",
+    "Would you like to meet this week?"
   ],
   "student": [
-    "I'm going to work late.",
-    "Yes, I want to go out!"
+    "Monday is convenient for me.",
+    "Yes, I'd like to meet this week."
   ],
-  "note": "Talk about your real plan for this week!",
+  "note": "Use the word bank: I'd like to, meet, this week, convenient.",
   "title": "Practice the Conversation"
 }$json$::jsonb,
   true
 ),
 (
-  '139b7ee6-41c1-4c28-b9bd-2bf2c9f58756',
+  'c2c4411c-d2bd-471f-91c6-a40002fbbfe7',
   5,
   'activity',
   null,
@@ -305,27 +306,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "[I'm going to] work late."
+      "text": "[I'd like to] [meet] on Monday."
     },
     {
       "speaker": "B",
-      "text": "[I want to] visit my family."
+      "text": "That is [convenient] for me too."
     },
     {
       "speaker": "A",
-      "text": "That's my [plan] for the week."
+      "text": "Let's meet [this week]."
     }
   ],
   "blanks": [
-    "I'm going to",
-    "I want to",
-    "plan"
+    "i'd like to",
+    "meet",
+    "convenient"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '139b7ee6-41c1-4c28-b9bd-2bf2c9f58756',
+  'c2c4411c-d2bd-471f-91c6-a40002fbbfe7',
   6,
   'speaking',
   null,
@@ -334,19 +335,19 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "What are you going to do this weekend?"
+      "text": "I'd like to meet this week. What day is convenient for you?"
     },
     {
       "speaker": "B",
-      "text": "I'm going to visit my parents."
+      "text": "Monday is convenient for me. What time?"
     },
     {
       "speaker": "A",
-      "text": "I want to relax at home!"
+      "text": "10am, if that's okay."
     },
     {
       "speaker": "B",
-      "text": "That's a good plan too!"
+      "text": "Perfect, see you then!"
     }
   ],
   "note": "Switch! Student becomes A, teacher becomes B."
@@ -354,49 +355,49 @@ values
   true
 ),
 (
-  '139b7ee6-41c1-4c28-b9bd-2bf2c9f58756',
+  'c2c4411c-d2bd-471f-91c6-a40002fbbfe7',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "This weekend, I'm going to visit my parents. I want to relax too. That's my plan! What's your plan for the weekend?",
+  "text": "I'd like to meet this week. Monday is convenient for me. Let's meet at 10am.",
   "questions": [
-    "What is the writer going to do?",
-    "What does the writer also want?",
-    "What question does the writer ask?"
+    "What does the writer want to do?",
+    "What day is convenient?",
+    "What time will they meet?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '139b7ee6-41c1-4c28-b9bd-2bf2c9f58756',
+  'c2c4411c-d2bd-471f-91c6-a40002fbbfe7',
   8,
   'writing',
   null,
   null,
   $json${
   "prompts": [
-    "I'm going to ___ this week.",
-    "I want to ___.",
-    "My plan is to ___."
+    "I'd like to meet on ___.",
+    "That is convenient for me.",
+    "Let's meet at ___."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '139b7ee6-41c1-4c28-b9bd-2bf2c9f58756',
+  'c2c4411c-d2bd-471f-91c6-a40002fbbfe7',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Say 'I'm going to ___'",
-    "Say 'I want to ___'",
-    "Talk about weekly plans"
+    "Use 'I'd like to' for a plan",
+    "Say a convenient day",
+    "Suggest a meeting time"
   ],
-  "challenge": "Tell me what you're going to do this weekend!"
+  "challenge": "Ask me to meet this week, and suggest a day and time!"
 }$json$::jsonb,
   true
 );
@@ -404,13 +405,13 @@ values
 -- Lesson 3: Invitations and Responses
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '28f10fec-eea9-4c19-a324-0026bed68d67',
+  'aae116d2-d40c-4251-b737-041dfa47e0a5',
   'Invitations and Responses',
   'A1',
   'adults',
   12,
   3,
-  'Make and answer a simple invitation.',
+  'Invite and respond, accepting or declining. [Bridge, Lesson 3: freer practice, choose-the-better-response]',
   25,
   9,
   true
@@ -419,7 +420,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '28f10fec-eea9-4c19-a324-0026bed68d67',
+  'aae116d2-d40c-4251-b737-041dfa47e0a5',
   1,
   'title',
   null,
@@ -430,23 +431,23 @@ values
   true
 ),
 (
-  '28f10fec-eea9-4c19-a324-0026bed68d67',
+  'aae116d2-d40c-4251-b737-041dfa47e0a5',
   2,
   'warmup',
   null,
   null,
   $json${
-  "display": "",
+  "display": "✉️",
   "questions": [
-    "Do you invite colleagues to lunch?",
-    "How do you say yes to an invitation?"
+    "How do you invite someone politely?",
+    "How do you politely say no?"
   ],
-  "title": "Warm-up"
+  "title": "Let's begin"
 }$json$::jsonb,
   true
 ),
 (
-  '28f10fec-eea9-4c19-a324-0026bed68d67',
+  'aae116d2-d40c-4251-b737-041dfa47e0a5',
   3,
   'vocabulary',
   null,
@@ -454,19 +455,19 @@ values
   $json${
   "words": [
     {
-      "word": "Do You Want To",
+      "word": "Would you like to",
       "bg": "#FAECE7"
     },
     {
-      "word": "Yes I Do",
+      "word": "I'd love to",
       "bg": "#E1F5EE"
     },
     {
-      "word": "No I Can't",
+      "word": "I'm sorry, I can't",
       "bg": "#EEEDFE"
     },
     {
-      "word": "Invite",
+      "word": "Another time",
       "bg": "#FAEEDA"
     }
   ],
@@ -476,27 +477,27 @@ values
   true
 ),
 (
-  '28f10fec-eea9-4c19-a324-0026bed68d67',
+  'aae116d2-d40c-4251-b737-041dfa47e0a5',
   4,
   'phrases',
   null,
   null,
   $json${
   "teacher": [
-    "Do you want to have coffee?",
-    "Do you want to come to dinner?"
+    "Would you like to come to dinner?",
+    "Can you make it?"
   ],
   "student": [
-    "Yes, I do!",
-    "No, I can't, sorry."
+    "I'd love to come!",
+    "I'm sorry, I can't."
   ],
-  "note": "Practice inviting a real colleague or friend!",
+  "note": "Two answers are given. Choose the more polite one.",
   "title": "Practice the Conversation"
 }$json$::jsonb,
   true
 ),
 (
-  '28f10fec-eea9-4c19-a324-0026bed68d67',
+  'aae116d2-d40c-4251-b737-041dfa47e0a5',
   5,
   'activity',
   null,
@@ -505,27 +506,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "[Do you want to] meet up?"
+      "text": "[Would you like to] come to dinner?"
     },
     {
       "speaker": "B",
-      "text": "[Yes, I do]!"
+      "text": "[I'd love to]! What time?"
     },
     {
       "speaker": "A",
-      "text": "I [invite] you to dinner."
+      "text": "[I'm sorry, I can't] make it Friday."
     }
   ],
   "blanks": [
-    "Do you want to",
-    "Yes, I do",
-    "invite"
+    "would you like to",
+    "i'd love to",
+    "i'm sorry, i can't"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '28f10fec-eea9-4c19-a324-0026bed68d67',
+  'aae116d2-d40c-4251-b737-041dfa47e0a5',
   6,
   'speaking',
   null,
@@ -534,19 +535,19 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "Do you want to have coffee tomorrow?"
+      "text": "Would you like to come to dinner on Friday?"
     },
     {
       "speaker": "B",
-      "text": "Yes, I do! That sounds nice."
+      "text": "I'd love to! What time?"
     },
     {
       "speaker": "A",
-      "text": "Do you want to come to the meeting?"
+      "text": "7pm. Can you make it?"
     },
     {
       "speaker": "B",
-      "text": "No, I can't, sorry. I'm busy."
+      "text": "I'm sorry, I can't. Maybe another time?"
     }
   ],
   "note": "Switch! Student becomes A, teacher becomes B."
@@ -554,49 +555,49 @@ values
   true
 ),
 (
-  '28f10fec-eea9-4c19-a324-0026bed68d67',
+  'aae116d2-d40c-4251-b737-041dfa47e0a5',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "Do you want to have coffee tomorrow? Yes, I do! I invite my colleague to lunch. She says yes. We are going to have a nice time together!",
+  "text": "Would you like to come to dinner on Friday? I'd love to! I'm sorry, I can't make Friday. Maybe another time?",
   "questions": [
-    "What is the writer invited to do?",
-    "Does the colleague say yes?",
-    "What are they going to do?"
+    "What is the invitation for?",
+    "Does the person accept or decline?",
+    "What does the person suggest?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '28f10fec-eea9-4c19-a324-0026bed68d67',
+  'aae116d2-d40c-4251-b737-041dfa47e0a5',
   8,
   'writing',
   null,
   null,
   $json${
   "prompts": [
-    "Do you want to ___? ___.",
-    "I invite my colleague to ___.",
-    "We are going to ___."
+    "Would you like to ___?",
+    "I'd love to! / I'm sorry, I can't.",
+    "Maybe another time?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '28f10fec-eea9-4c19-a324-0026bed68d67',
+  'aae116d2-d40c-4251-b737-041dfa47e0a5',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Ask 'Do you want to ___?'",
-    "Answer 'Yes, I do' / 'No, I can't'",
-    "Invite someone to do something"
+    "Invite someone politely",
+    "Accept an invitation",
+    "Decline politely and suggest another time"
   ],
-  "challenge": "Invite me to do something this week!"
+  "challenge": "Invite me to something, and I'll accept or decline!"
 }$json$::jsonb,
   true
 );
@@ -604,13 +605,13 @@ values
 -- Lesson 4: Appointments
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  'cdd8a221-3e38-4a4a-9826-5ae7b59a85fe',
+  '10691014-ea44-4ddb-9fb1-4edef0da3e25',
   'Appointments',
   'A1',
   'adults',
   12,
   4,
-  'Ask and answer simple questions about time and availability.',
+  'Combine plans, invitations, and appointments into a talk. [Bridge, Lesson 4: production, mini role-play]',
   25,
   9,
   true
@@ -619,7 +620,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  'cdd8a221-3e38-4a4a-9826-5ae7b59a85fe',
+  '10691014-ea44-4ddb-9fb1-4edef0da3e25',
   1,
   'title',
   null,
@@ -630,23 +631,23 @@ values
   true
 ),
 (
-  'cdd8a221-3e38-4a4a-9826-5ae7b59a85fe',
+  '10691014-ea44-4ddb-9fb1-4edef0da3e25',
   2,
   'warmup',
   null,
   null,
   $json${
-  "display": "",
+  "display": "📞",
   "questions": [
-    "Are you free this week?",
-    "How do you make appointments?"
+    "Have you booked an appointment recently?",
+    "Have you had to reschedule?"
   ],
-  "title": "Warm-up"
+  "title": "Let's begin"
 }$json$::jsonb,
   true
 ),
 (
-  'cdd8a221-3e38-4a4a-9826-5ae7b59a85fe',
+  '10691014-ea44-4ddb-9fb1-4edef0da3e25',
   3,
   'vocabulary',
   null,
@@ -654,19 +655,19 @@ values
   $json${
   "words": [
     {
-      "word": "Are You Free",
+      "word": "Book an appointment",
       "bg": "#FAECE7"
     },
     {
-      "word": "What Time",
+      "word": "Confirm",
       "bg": "#E1F5EE"
     },
     {
-      "word": "Busy",
+      "word": "Reschedule",
       "bg": "#EEEDFE"
     },
     {
-      "word": "Available",
+      "word": "Look forward to",
       "bg": "#FAEEDA"
     }
   ],
@@ -676,27 +677,27 @@ values
   true
 ),
 (
-  'cdd8a221-3e38-4a4a-9826-5ae7b59a85fe',
+  '10691014-ea44-4ddb-9fb1-4edef0da3e25',
   4,
   'phrases',
   null,
   null,
   $json${
   "teacher": [
-    "Are you free on Friday?",
-    "What time works for you?"
+    "I'd like to book an appointment.",
+    "Can you confirm the time?"
   ],
   "student": [
-    "Yes, I'm free on Friday.",
-    "3 o'clock works for me."
+    "Yes, Tuesday at 10am works.",
+    "Yes, I confirm."
   ],
-  "note": "Answer about your real availability!",
+  "note": "Put it all together: plan + invitation + appointment.",
   "title": "Practice the Conversation"
 }$json$::jsonb,
   true
 ),
 (
-  'cdd8a221-3e38-4a4a-9826-5ae7b59a85fe',
+  '10691014-ea44-4ddb-9fb1-4edef0da3e25',
   5,
   'activity',
   null,
@@ -705,27 +706,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "[Are you free] on Friday?"
+      "text": "I'd like to [book an appointment]."
     },
     {
       "speaker": "B",
-      "text": "[What time] works for you?"
+      "text": "Can you [confirm] Tuesday?"
     },
     {
       "speaker": "A",
-      "text": "I am [busy] on Monday."
+      "text": "I [look forward to] it."
     }
   ],
   "blanks": [
-    "Are you free",
-    "What time",
-    "busy"
+    "book an appointment",
+    "confirm",
+    "look forward to"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'cdd8a221-3e38-4a4a-9826-5ae7b59a85fe',
+  '10691014-ea44-4ddb-9fb1-4edef0da3e25',
   6,
   'speaking',
   null,
@@ -734,69 +735,69 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "Are you free on Friday?"
+      "text": "I'd like to book an appointment for next week."
     },
     {
       "speaker": "B",
-      "text": "Yes, I'm free in the afternoon."
+      "text": "Is Tuesday at 10am convenient? Can you confirm?"
     },
     {
       "speaker": "A",
-      "text": "What time works for you?"
+      "text": "Yes, I confirm. I look forward to it."
     },
     {
       "speaker": "B",
-      "text": "3 o'clock is good for me!"
+      "text": "See you then!"
     }
   ],
-  "note": "Switch! Student becomes A, teacher becomes B."
+  "note": "Mini role-play: book an appointment over the phone."
 }$json$::jsonb,
   true
 ),
 (
-  'cdd8a221-3e38-4a4a-9826-5ae7b59a85fe',
+  '10691014-ea44-4ddb-9fb1-4edef0da3e25',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "Are you free on Friday? Yes, I'm free in the afternoon. What time works for you? 3 o'clock is good. Let's make an appointment!",
+  "text": "I'd like to book an appointment for next week. Tuesday at 10am is convenient. I confirm. I look forward to it.",
   "questions": [
-    "Is the person free on Friday?",
-    "What time works for them?",
-    "What are they doing?"
+    "What does the writer want to book?",
+    "What day and time?",
+    "How does the writer feel about it?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'cdd8a221-3e38-4a4a-9826-5ae7b59a85fe',
+  '10691014-ea44-4ddb-9fb1-4edef0da3e25',
   8,
   'writing',
   null,
   null,
   $json${
   "prompts": [
-    "Are you free on ___? ___.",
-    "What time works for you? ___.",
-    "I am busy on ___."
+    "I'd like to book an appointment for ___.",
+    "I confirm ___.",
+    "I look forward to ___."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'cdd8a221-3e38-4a4a-9826-5ae7b59a85fe',
+  '10691014-ea44-4ddb-9fb1-4edef0da3e25',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Ask 'Are you free on ___?'",
-    "Ask 'What time works for you?'",
-    "Make an appointment"
+    "Book an appointment politely",
+    "Confirm a day and time",
+    "Say I look forward to something"
   ],
-  "challenge": "Make an appointment with me — ask when I'm free!"
+  "challenge": "Book an appointment with me over the phone!"
 }$json$::jsonb,
   true
 );
@@ -804,13 +805,13 @@ values
 -- Lesson 5: Unit Review
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  'a4e0a9bb-e71e-492c-a275-591978ec4282',
+  '1ff262d1-a4d8-46eb-8194-b24b8d55b4dc',
   'Unit Review',
   'A1',
   'adults',
   12,
   5,
-  'Talk briefly about plans, invitations, and appointments.',
+  'Review plans, invitations, and appointments. [Bridge, Lesson 5: tier-matched mixed review]',
   25,
   9,
   true
@@ -819,7 +820,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  'a4e0a9bb-e71e-492c-a275-591978ec4282',
+  '1ff262d1-a4d8-46eb-8194-b24b8d55b4dc',
   1,
   'title',
   null,
@@ -830,23 +831,23 @@ values
   true
 ),
 (
-  'a4e0a9bb-e71e-492c-a275-591978ec4282',
+  '1ff262d1-a4d8-46eb-8194-b24b8d55b4dc',
   2,
   'warmup',
   null,
   null,
   $json${
-  "display": "",
+  "display": "📅",
   "questions": [
-    "What plan words do you remember?",
-    "What are your plans this week?"
+    "When are you free this week?",
+    "Do you have any plans?"
   ],
-  "title": "Unit Review"
+  "title": "Let's begin"
 }$json$::jsonb,
   true
 ),
 (
-  'a4e0a9bb-e71e-492c-a275-591978ec4282',
+  '1ff262d1-a4d8-46eb-8194-b24b8d55b4dc',
   3,
   'vocabulary',
   null,
@@ -854,41 +855,41 @@ values
   $json${
   "words": [
     {
-      "word": "Meeting",
+      "word": "Free",
       "bg": "#FAECE7"
     },
     {
-      "word": "I'm Going To",
+      "word": "I'd like to",
       "bg": "#E1F5EE"
     },
     {
-      "word": "Invite",
+      "word": "Would you like to",
       "bg": "#EEEDFE"
     },
     {
-      "word": "Are You Free",
+      "word": "Confirm",
       "bg": "#FAEEDA"
     }
   ],
-  "title": "Review Words",
+  "title": "New Words",
   "subtitle": "Tap a card to see it bigger."
 }$json$::jsonb,
   true
 ),
 (
-  'a4e0a9bb-e71e-492c-a275-591978ec4282',
+  '1ff262d1-a4d8-46eb-8194-b24b8d55b4dc',
   4,
   'phrases',
   null,
   null,
   $json${
   "teacher": [
-    "What are your plans?",
-    "Are you free on Friday?"
+    "When are you free?",
+    "Do you have plans?"
   ],
   "student": [
-    "I have a meeting.",
-    "Yes, I'm free."
+    "I am free on Monday.",
+    "I'd like to meet this week."
   ],
   "note": "Use everything you learned this unit!",
   "title": "Practice the Conversation"
@@ -896,7 +897,7 @@ values
   true
 ),
 (
-  'a4e0a9bb-e71e-492c-a275-591978ec4282',
+  '1ff262d1-a4d8-46eb-8194-b24b8d55b4dc',
   5,
   'activity',
   null,
@@ -905,27 +906,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "I have a [meeting]."
+      "text": "I am [free] on Monday."
     },
     {
       "speaker": "B",
-      "text": "[I'm going to] visit my family."
+      "text": "[I'd like to] meet this week."
     },
     {
       "speaker": "A",
-      "text": "[Are you free] on Friday?"
+      "text": "[Would you like to] come to dinner?"
     }
   ],
   "blanks": [
-    "meeting",
-    "I'm going to",
-    "Are you free"
+    "free",
+    "i'd like to",
+    "would you like to"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'a4e0a9bb-e71e-492c-a275-591978ec4282',
+  '1ff262d1-a4d8-46eb-8194-b24b8d55b4dc',
   6,
   'speaking',
   null,
@@ -934,19 +935,19 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "What are your plans this week?"
+      "text": "Tell me about your plans this week."
     },
     {
       "speaker": "B",
-      "text": "I'm going to visit my family on Saturday."
+      "text": "I am free on Monday. I'd like to meet for coffee."
     },
     {
       "speaker": "A",
-      "text": "Are you free on Friday for coffee?"
+      "text": "Would you like to come to dinner on Friday too?"
     },
     {
       "speaker": "B",
-      "text": "Yes, I am! Let's meet at 3."
+      "text": "I'd love to! I confirm."
     }
   ],
   "note": "Switch! Student becomes A, teacher becomes B."
@@ -954,50 +955,49 @@ values
   true
 ),
 (
-  'a4e0a9bb-e71e-492c-a275-591978ec4282',
+  '1ff262d1-a4d8-46eb-8194-b24b8d55b4dc',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "This week, I have a meeting on Monday. I'm going to visit my family on Saturday. My friend invited me to coffee. I said yes! We will meet at 3 o'clock on Friday.",
+  "text": "I am free on Monday. I'd like to meet for coffee. Would you like to come to dinner on Friday? I'd love to! I confirm.",
   "questions": [
-    "What does the writer have on Monday?",
-    "What is the writer doing Saturday?",
-    "What time will they meet on Friday?"
+    "When is the writer free?",
+    "What does the writer want to do?",
+    "Does the person accept the dinner invitation?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'a4e0a9bb-e71e-492c-a275-591978ec4282',
+  '1ff262d1-a4d8-46eb-8194-b24b8d55b4dc',
   8,
   'writing',
   null,
   null,
   $json${
   "prompts": [
-    "This week, I have a ___.",
-    "I'm going to ___.",
-    "Are you free on ___?"
+    "I am free on ___.",
+    "I'd like to ___.",
+    "Would you like to ___?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'a4e0a9bb-e71e-492c-a275-591978ec4282',
+  '1ff262d1-a4d8-46eb-8194-b24b8d55b4dc',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Talk about weekly plans",
-    "Say 'I'm going to ___'",
-    "Make and answer invitations",
-    "Ask about availability"
+    "Talk about being free",
+    "Make a simple plan",
+    "Invite and respond politely"
   ],
-  "challenge": "Tell me your plans this week and invite me to something!"
+  "challenge": "Tell me your plans for this week, and invite me to something!"
 }$json$::jsonb,
   true
 );

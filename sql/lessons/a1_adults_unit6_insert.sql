@@ -1,16 +1,17 @@
--- A1 Adults Unit 6: Shopping and Money (5 lessons)
+-- A1 Adults Unit 6: Shopping and Money (5 lessons) — TIERED (Combination)
+-- Regenerated per the Sentivo Intra-Level Progression Framework + lesson-level escalation + task rotation.
 -- Run this whole script in the Supabase SQL editor.
 
 -- Lesson 1: In the Shop
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '28a6be01-88dc-489d-ae47-a877974934af',
+  '42cc7de2-e2c8-42e1-8aeb-d94b617d7fe3',
   'In the Shop',
   'A1',
   'adults',
   6,
   1,
-  'Name common shop items and places.',
+  'Name shops and shopping vocabulary. [Combination, Lesson 1: notice/receptive, read-and-identify]',
   25,
   9,
   true
@@ -19,7 +20,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '28a6be01-88dc-489d-ae47-a877974934af',
+  '42cc7de2-e2c8-42e1-8aeb-d94b617d7fe3',
   1,
   'title',
   null,
@@ -30,23 +31,23 @@ values
   true
 ),
 (
-  '28a6be01-88dc-489d-ae47-a877974934af',
+  '42cc7de2-e2c8-42e1-8aeb-d94b617d7fe3',
   2,
   'warmup',
   null,
   null,
   $json${
-  "display": "",
+  "display": "🛒",
   "questions": [
-    "Where do you shop?",
-    "Do you go to the supermarket often?"
+    "Do you go to the supermarket every week?",
+    "Do you like the bakery?"
   ],
-  "title": "Warm-up"
+  "title": "Let's begin"
 }$json$::jsonb,
   true
 ),
 (
-  '28a6be01-88dc-489d-ae47-a877974934af',
+  '42cc7de2-e2c8-42e1-8aeb-d94b617d7fe3',
   3,
   'vocabulary',
   null,
@@ -58,15 +59,15 @@ values
       "bg": "#FAECE7"
     },
     {
-      "word": "Pharmacy",
+      "word": "Bakery",
       "bg": "#E1F5EE"
     },
     {
-      "word": "Bread",
+      "word": "Shop assistant",
       "bg": "#EEEDFE"
     },
     {
-      "word": "Ticket",
+      "word": "Customer",
       "bg": "#FAEEDA"
     }
   ],
@@ -76,27 +77,27 @@ values
   true
 ),
 (
-  '28a6be01-88dc-489d-ae47-a877974934af',
+  '42cc7de2-e2c8-42e1-8aeb-d94b617d7fe3',
   4,
   'phrases',
   null,
   null,
   $json${
   "teacher": [
-    "Where do you buy bread?",
-    "Do you go to the pharmacy?"
+    "Where do you shop?",
+    "Do you go to the bakery?"
   ],
   "student": [
-    "I buy bread at the supermarket.",
-    "Yes, sometimes."
+    "I shop at the supermarket.",
+    "Yes, I go to the bakery."
   ],
-  "note": "Think about where you really shop!",
+  "note": "Read the model text, then find the shop words.",
   "title": "Practice the Conversation"
 }$json$::jsonb,
   true
 ),
 (
-  '28a6be01-88dc-489d-ae47-a877974934af',
+  '42cc7de2-e2c8-42e1-8aeb-d94b617d7fe3',
   5,
   'activity',
   null,
@@ -105,27 +106,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "I buy bread at the [supermarket]."
+      "text": "I shop at the [supermarket]."
     },
     {
       "speaker": "B",
-      "text": "I go to the [pharmacy]."
+      "text": "I buy bread at the [bakery]."
     },
     {
       "speaker": "A",
-      "text": "I need a [ticket]."
+      "text": "The [shop assistant] is helpful."
     }
   ],
   "blanks": [
     "supermarket",
-    "pharmacy",
-    "ticket"
+    "bakery",
+    "shop assistant"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '28a6be01-88dc-489d-ae47-a877974934af',
+  '42cc7de2-e2c8-42e1-8aeb-d94b617d7fe3',
   6,
   'speaking',
   null,
@@ -134,69 +135,69 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "Where do you buy milk?"
+      "text": "I shop at the supermarket every week."
     },
     {
       "speaker": "B",
-      "text": "I buy milk at the supermarket."
+      "text": "I go to the bakery for bread."
     },
     {
       "speaker": "A",
-      "text": "I go to the pharmacy for medicine!"
+      "text": "The shop assistant is helpful."
     },
     {
       "speaker": "B",
-      "text": "Me too, sometimes."
+      "text": "I am a customer there too!"
     }
   ],
-  "note": "Switch! Student becomes A, teacher becomes B."
+  "note": "Teacher says the line first. Student repeats, then says it alone."
 }$json$::jsonb,
   true
 ),
 (
-  '28a6be01-88dc-489d-ae47-a877974934af',
+  '42cc7de2-e2c8-42e1-8aeb-d94b617d7fe3',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "I buy bread at the supermarket. I buy medicine at the pharmacy. I buy a ticket at the station. I go shopping every week!",
+  "text": "I shop at the supermarket every week. I go to the bakery for bread. The shop assistant is helpful.",
   "questions": [
-    "Where does the writer buy bread?",
-    "Where does the writer buy medicine?",
-    "How often does the writer shop?"
+    "Where does the writer shop every week?",
+    "What does the writer buy at the bakery?",
+    "Is the shop assistant helpful?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '28a6be01-88dc-489d-ae47-a877974934af',
+  '42cc7de2-e2c8-42e1-8aeb-d94b617d7fe3',
   8,
   'writing',
   null,
   null,
   $json${
   "prompts": [
+    "I shop at the ___.",
     "I buy ___ at the ___.",
-    "I go to the ___.",
-    "I shop ___."
+    "The shop assistant is ___."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '28a6be01-88dc-489d-ae47-a877974934af',
+  '42cc7de2-e2c8-42e1-8aeb-d94b617d7fe3',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Name four shop items/places",
-    "Say 'I buy ___ at the ___'",
-    "Talk about shopping"
+    "Name 4 shopping words",
+    "Say 'I shop at the ___'",
+    "Talk about a shop I go to"
   ],
-  "challenge": "Tell me where you buy three things!"
+  "challenge": "Tell me about a shop you go to!"
 }$json$::jsonb,
   true
 );
@@ -204,13 +205,13 @@ values
 -- Lesson 2: Prices and Money
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '87678242-0a90-4cb5-90c5-d6f3416c9ff2',
+  'a8ffe16f-144d-4e29-b25d-1f3acf5e3ed4',
   'Prices and Money',
   'A1',
   'adults',
   6,
   2,
-  'Ask and answer simple questions about prices.',
+  'Ask and answer about prices. [Combination, Lesson 2: controlled practice, fill-in-blank]',
   25,
   9,
   true
@@ -219,7 +220,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '87678242-0a90-4cb5-90c5-d6f3416c9ff2',
+  'a8ffe16f-144d-4e29-b25d-1f3acf5e3ed4',
   1,
   'title',
   null,
@@ -230,23 +231,23 @@ values
   true
 ),
 (
-  '87678242-0a90-4cb5-90c5-d6f3416c9ff2',
+  'a8ffe16f-144d-4e29-b25d-1f3acf5e3ed4',
   2,
   'warmup',
   null,
   null,
   $json${
-  "display": "",
+  "display": "💰",
   "questions": [
-    "Do you check prices before buying?",
-    "Is coffee expensive where you live?"
+    "How much does bread cost?",
+    "Is fruit expensive?"
   ],
-  "title": "Warm-up"
+  "title": "Let's begin"
 }$json$::jsonb,
   true
 ),
 (
-  '87678242-0a90-4cb5-90c5-d6f3416c9ff2',
+  'a8ffe16f-144d-4e29-b25d-1f3acf5e3ed4',
   3,
   'vocabulary',
   null,
@@ -254,7 +255,7 @@ values
   $json${
   "words": [
     {
-      "word": "How Much",
+      "word": "How much",
       "bg": "#FAECE7"
     },
     {
@@ -262,7 +263,7 @@ values
       "bg": "#E1F5EE"
     },
     {
-      "word": "Dollar",
+      "word": "Cheap",
       "bg": "#EEEDFE"
     },
     {
@@ -276,27 +277,27 @@ values
   true
 ),
 (
-  '87678242-0a90-4cb5-90c5-d6f3416c9ff2',
+  'a8ffe16f-144d-4e29-b25d-1f3acf5e3ed4',
   4,
   'phrases',
   null,
   null,
   $json${
   "teacher": [
-    "How much is it?",
+    "How much is this?",
     "Is it expensive?"
   ],
   "student": [
-    "It's ten dollars.",
-    "No, it's cheap!"
+    "It is five dollars.",
+    "No, it is cheap."
   ],
-  "note": "Ask about a real price!",
+  "note": "Use the word bank: how much, price, cheap, expensive.",
   "title": "Practice the Conversation"
 }$json$::jsonb,
   true
 ),
 (
-  '87678242-0a90-4cb5-90c5-d6f3416c9ff2',
+  'a8ffe16f-144d-4e29-b25d-1f3acf5e3ed4',
   5,
   'activity',
   null,
@@ -305,27 +306,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "[How much] is it?"
+      "text": "[How much] is this bread?"
     },
     {
       "speaker": "B",
-      "text": "It's ten [dollars]."
+      "text": "The [price] is two dollars."
     },
     {
       "speaker": "A",
-      "text": "That is [expensive]!"
+      "text": "That is [cheap]!"
     }
   ],
   "blanks": [
-    "How much",
-    "dollars",
-    "expensive"
+    "how much",
+    "price",
+    "cheap"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '87678242-0a90-4cb5-90c5-d6f3416c9ff2',
+  'a8ffe16f-144d-4e29-b25d-1f3acf5e3ed4',
   6,
   'speaking',
   null,
@@ -338,15 +339,15 @@ values
     },
     {
       "speaker": "B",
-      "text": "It's two dollars."
+      "text": "The price is two dollars. That is cheap."
     },
     {
       "speaker": "A",
-      "text": "Is it expensive?"
+      "text": "How much are these shoes?"
     },
     {
       "speaker": "B",
-      "text": "No, it's cheap!"
+      "text": "They are fifty dollars. That is expensive!"
     }
   ],
   "note": "Switch! Student becomes A, teacher becomes B."
@@ -354,38 +355,38 @@ values
   true
 ),
 (
-  '87678242-0a90-4cb5-90c5-d6f3416c9ff2',
+  'a8ffe16f-144d-4e29-b25d-1f3acf5e3ed4',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "How much is it? It's ten dollars. Is it expensive? No, it's not expensive. I always ask the price before I buy!",
+  "text": "How much is this bread? The price is two dollars. That is cheap. The shoes are fifty dollars. That is expensive.",
   "questions": [
-    "How much is the item?",
-    "Is it expensive?",
-    "What does the writer always ask?"
+    "How much is the bread?",
+    "Is the bread cheap or expensive?",
+    "How much are the shoes?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '87678242-0a90-4cb5-90c5-d6f3416c9ff2',
+  'a8ffe16f-144d-4e29-b25d-1f3acf5e3ed4',
   8,
   'writing',
   null,
   null,
   $json${
   "prompts": [
-    "How much is it? It's ___.",
-    "Is it expensive? ___.",
-    "I want to buy a ___ for ___ dollars."
+    "The price of ___ is ___.",
+    "It is cheap/expensive.",
+    "How much is the ___?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '87678242-0a90-4cb5-90c5-d6f3416c9ff2',
+  'a8ffe16f-144d-4e29-b25d-1f3acf5e3ed4',
   9,
   'review',
   null,
@@ -393,10 +394,10 @@ values
   $json${
   "checklist": [
     "Ask 'How much is it?'",
-    "Say a price",
-    "Say 'expensive' or 'cheap'"
+    "Answer with a price",
+    "Say 'cheap' and 'expensive'"
   ],
-  "challenge": "Ask me the price of something!"
+  "challenge": "Ask me the price of three things!"
 }$json$::jsonb,
   true
 );
@@ -404,13 +405,13 @@ values
 -- Lesson 3: Shopping Requests
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '6dcca2b6-2c7a-4a33-8b12-041ffa240de7',
+  '0d2ff670-07e4-41cc-ad33-1be209d63a93',
   'Shopping Requests',
   'A1',
   'adults',
   6,
   3,
-  'Make simple requests in a shop.',
+  'Make simple shopping requests with ''I''d like''. [Combination, Lesson 3: freer practice, choose-the-better-response]',
   25,
   9,
   true
@@ -419,7 +420,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '6dcca2b6-2c7a-4a33-8b12-041ffa240de7',
+  '0d2ff670-07e4-41cc-ad33-1be209d63a93',
   1,
   'title',
   null,
@@ -430,23 +431,23 @@ values
   true
 ),
 (
-  '6dcca2b6-2c7a-4a33-8b12-041ffa240de7',
+  '0d2ff670-07e4-41cc-ad33-1be209d63a93',
   2,
   'warmup',
   null,
   null,
   $json${
-  "display": "",
+  "display": "🧾",
   "questions": [
-    "What do you usually buy at the shop?",
-    "Do you say 'please' when shopping?"
+    "How do you ask for something politely in a shop?",
+    "What do you say when you finish shopping?"
   ],
-  "title": "Warm-up"
+  "title": "Let's begin"
 }$json$::jsonb,
   true
 ),
 (
-  '6dcca2b6-2c7a-4a33-8b12-041ffa240de7',
+  '0d2ff670-07e4-41cc-ad33-1be209d63a93',
   3,
   'vocabulary',
   null,
@@ -454,19 +455,19 @@ values
   $json${
   "words": [
     {
-      "word": "I Want",
+      "word": "I'd like",
       "bg": "#FAECE7"
     },
     {
-      "word": "Can I Have",
+      "word": "Please",
       "bg": "#E1F5EE"
     },
     {
-      "word": "Please",
+      "word": "Anything else",
       "bg": "#EEEDFE"
     },
     {
-      "word": "Thank You",
+      "word": "That's all",
       "bg": "#FAEEDA"
     }
   ],
@@ -476,27 +477,27 @@ values
   true
 ),
 (
-  '6dcca2b6-2c7a-4a33-8b12-041ffa240de7',
+  '0d2ff670-07e4-41cc-ad33-1be209d63a93',
   4,
   'phrases',
   null,
   null,
   $json${
   "teacher": [
-    "What do you want?",
-    "Can I help you?"
+    "What would you like?",
+    "Anything else?"
   ],
   "student": [
-    "I want some bread, please.",
-    "Can I have a bag?"
+    "I'd like some bread, please.",
+    "No, that's all, thank you."
   ],
-  "note": "Practice like you're really in a shop!",
+  "note": "Two answers are given. Choose the more polite one.",
   "title": "Practice the Conversation"
 }$json$::jsonb,
   true
 ),
 (
-  '6dcca2b6-2c7a-4a33-8b12-041ffa240de7',
+  '0d2ff670-07e4-41cc-ad33-1be209d63a93',
   5,
   'activity',
   null,
@@ -505,27 +506,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "[I want] some bread."
+      "text": "[I'd like] some bread, [please]."
     },
     {
       "speaker": "B",
-      "text": "[Can I have] a bag?"
+      "text": "[Anything else]?"
     },
     {
       "speaker": "A",
-      "text": "[Thank you]!"
+      "text": "No, [that's all]."
     }
   ],
   "blanks": [
-    "I want",
-    "Can I have",
-    "Thank you"
+    "i'd like",
+    "anything else",
+    "that's all"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '6dcca2b6-2c7a-4a33-8b12-041ffa240de7',
+  '0d2ff670-07e4-41cc-ad33-1be209d63a93',
   6,
   'speaking',
   null,
@@ -534,69 +535,69 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "What do you want?"
+      "text": "Good morning! What would you like?"
     },
     {
       "speaker": "B",
-      "text": "I want some milk, please."
+      "text": "I'd like some bread and milk, please."
     },
     {
       "speaker": "A",
-      "text": "Can I have a bag too?"
+      "text": "Anything else?"
     },
     {
       "speaker": "B",
-      "text": "Of course! Here you go."
+      "text": "No, that's all, thank you."
     }
   ],
-  "note": "Switch! Student becomes A, teacher becomes B."
+  "note": "Mini role-play: shop assistant and customer at a bakery."
 }$json$::jsonb,
   true
 ),
 (
-  '6dcca2b6-2c7a-4a33-8b12-041ffa240de7',
+  '0d2ff670-07e4-41cc-ad33-1be209d63a93',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "I want some bread, please. Can I have a bag? Thank you! Shopping is easy when I know simple phrases.",
+  "text": "Good morning! I'd like some bread and milk, please. Anything else? No, that's all, thank you.",
   "questions": [
-    "What does the writer want?",
-    "What does the writer ask for?",
-    "Is shopping easy for the writer?"
+    "What does the customer want?",
+    "What does the shop assistant ask?",
+    "What does the customer say at the end?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '6dcca2b6-2c7a-4a33-8b12-041ffa240de7',
+  '0d2ff670-07e4-41cc-ad33-1be209d63a93',
   8,
   'writing',
   null,
   null,
   $json${
   "prompts": [
-    "I want a ___, please.",
-    "Can I have ___?",
-    "Thank you for the ___."
+    "I'd like ___, please.",
+    "Anything else?",
+    "No, that's all, thank you."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '6dcca2b6-2c7a-4a33-8b12-041ffa240de7',
+  '0d2ff670-07e4-41cc-ad33-1be209d63a93',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Say 'I want ___, please'",
-    "Say 'Can I have ___?'",
-    "Shop politely"
+    "Ask politely with 'I'd like'",
+    "Answer 'Anything else?'",
+    "Close a request with 'that's all'"
   ],
-  "challenge": "Ask me for something like you're in a shop!"
+  "challenge": "Order something from me at a pretend shop!"
 }$json$::jsonb,
   true
 );
@@ -604,13 +605,13 @@ values
 -- Lesson 4: Quantities
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  'b02c569b-d2bd-4cc4-97aa-2ea61bf40ca5',
+  '068b8cce-5873-4616-8fcd-114c5c510159',
   'Quantities',
   'A1',
   'adults',
   6,
   4,
-  'Use simple quantity words with shopping items.',
+  'Combine requests with quantities. [Combination, Lesson 4: production, mini role-play]',
   25,
   9,
   true
@@ -619,7 +620,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  'b02c569b-d2bd-4cc4-97aa-2ea61bf40ca5',
+  '068b8cce-5873-4616-8fcd-114c5c510159',
   1,
   'title',
   null,
@@ -630,23 +631,23 @@ values
   true
 ),
 (
-  'b02c569b-d2bd-4cc4-97aa-2ea61bf40ca5',
+  '068b8cce-5873-4616-8fcd-114c5c510159',
   2,
   'warmup',
   null,
   null,
   $json${
-  "display": "",
+  "display": "🍇",
   "questions": [
-    "Do you make a shopping list?",
-    "What's on your list this week?"
+    "How much fruit do you buy?",
+    "Do you buy a bottle of milk?"
   ],
-  "title": "Warm-up"
+  "title": "Let's begin"
 }$json$::jsonb,
   true
 ),
 (
-  'b02c569b-d2bd-4cc4-97aa-2ea61bf40ca5',
+  '068b8cce-5873-4616-8fcd-114c5c510159',
   3,
   'vocabulary',
   null,
@@ -654,19 +655,19 @@ values
   $json${
   "words": [
     {
-      "word": "Some",
+      "word": "A kilo of",
       "bg": "#FAECE7"
     },
     {
-      "word": "A Bottle Of",
+      "word": "A bottle of",
       "bg": "#E1F5EE"
     },
     {
-      "word": "A Bag Of",
+      "word": "A few",
       "bg": "#EEEDFE"
     },
     {
-      "word": "Two",
+      "word": "Enough",
       "bg": "#FAEEDA"
     }
   ],
@@ -676,27 +677,27 @@ values
   true
 ),
 (
-  'b02c569b-d2bd-4cc4-97aa-2ea61bf40ca5',
+  '068b8cce-5873-4616-8fcd-114c5c510159',
   4,
   'phrases',
   null,
   null,
   $json${
   "teacher": [
-    "How much water do you want?",
-    "Do you want a bag of rice?"
+    "How much would you like?",
+    "Is that enough?"
   ],
   "student": [
-    "I want a bottle of water.",
-    "Yes, a bag of rice, please."
+    "I'd like a kilo of apples.",
+    "Yes, that's enough."
   ],
-  "note": "Think about a real shopping list!",
+  "note": "Put it all together: request + quantity + politeness.",
   "title": "Practice the Conversation"
 }$json$::jsonb,
   true
 ),
 (
-  'b02c569b-d2bd-4cc4-97aa-2ea61bf40ca5',
+  '068b8cce-5873-4616-8fcd-114c5c510159',
   5,
   'activity',
   null,
@@ -705,27 +706,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "I want [some] milk."
+      "text": "I'd like [a kilo of] apples."
     },
     {
       "speaker": "B",
-      "text": "I want [a bottle of] water."
+      "text": "And [a bottle of] milk."
     },
     {
       "speaker": "A",
-      "text": "I want [a bag of] rice."
+      "text": "Just [a few] eggs too."
     }
   ],
   "blanks": [
-    "some",
+    "a kilo of",
     "a bottle of",
-    "a bag of"
+    "a few"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'b02c569b-d2bd-4cc4-97aa-2ea61bf40ca5',
+  '068b8cce-5873-4616-8fcd-114c5c510159',
   6,
   'speaking',
   null,
@@ -734,69 +735,69 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "What's on your shopping list?"
+      "text": "What would you like today?"
     },
     {
       "speaker": "B",
-      "text": "I need a bottle of water and some bread."
+      "text": "I'd like a kilo of apples and a bottle of milk, please."
     },
     {
       "speaker": "A",
-      "text": "I need a bag of rice too!"
+      "text": "Anything else?"
     },
     {
       "speaker": "B",
-      "text": "Let's go shopping!"
+      "text": "Just a few eggs too. That's enough, thank you."
     }
   ],
-  "note": "Switch! Student becomes A, teacher becomes B."
+  "note": "Mini role-play: shop for groceries with quantities."
 }$json$::jsonb,
   true
 ),
 (
-  'b02c569b-d2bd-4cc4-97aa-2ea61bf40ca5',
+  '068b8cce-5873-4616-8fcd-114c5c510159',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "My shopping list: some milk, a bottle of water, a bag of rice, two apples. I always make a list before shopping!",
+  "text": "I'd like a kilo of apples and a bottle of milk. I'd like a few eggs too. That's enough, thank you.",
   "questions": [
-    "What is on the shopping list?",
-    "How many apples does the writer want?",
-    "Does the writer make a list?"
+    "What does the customer want?",
+    "How much milk?",
+    "Is that enough?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'b02c569b-d2bd-4cc4-97aa-2ea61bf40ca5',
+  '068b8cce-5873-4616-8fcd-114c5c510159',
   8,
   'writing',
   null,
   null,
   $json${
   "prompts": [
-    "I want some ___.",
-    "I want a bottle of ___.",
-    "I want a bag of ___."
+    "I'd like a kilo of ___.",
+    "I'd like a bottle of ___.",
+    "That's enough, thank you."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'b02c569b-d2bd-4cc4-97aa-2ea61bf40ca5',
+  '068b8cce-5873-4616-8fcd-114c5c510159',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Say 'some', 'a bottle of', 'a bag of'",
-    "Make a shopping list",
-    "Talk about quantities"
+    "Use quantities: kilo, bottle, a few",
+    "Make a shopping request with quantity",
+    "Close a request politely"
   ],
-  "challenge": "Tell me your shopping list!"
+  "challenge": "Order groceries from me with quantities!"
 }$json$::jsonb,
   true
 );
@@ -804,13 +805,13 @@ values
 -- Lesson 5: Unit Review
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '23faa6b7-2e13-45bd-84b1-89b0cab06bcb',
+  '358c301b-6a72-4893-ac1c-238617de54dc',
   'Unit Review',
   'A1',
   'adults',
   6,
   5,
-  'Talk briefly about shopping, prices, and requests.',
+  'Review shops, prices, and requests. [Combination, Lesson 5: tier-matched mixed review]',
   25,
   9,
   true
@@ -819,7 +820,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '23faa6b7-2e13-45bd-84b1-89b0cab06bcb',
+  '358c301b-6a72-4893-ac1c-238617de54dc',
   1,
   'title',
   null,
@@ -830,23 +831,23 @@ values
   true
 ),
 (
-  '23faa6b7-2e13-45bd-84b1-89b0cab06bcb',
+  '358c301b-6a72-4893-ac1c-238617de54dc',
   2,
   'warmup',
   null,
   null,
   $json${
-  "display": "",
+  "display": "🛍️",
   "questions": [
-    "What shopping words do you remember?",
-    "Where do you like to shop?"
+    "Where do you shop?",
+    "What would you like to buy?"
   ],
-  "title": "Unit Review"
+  "title": "Let's begin"
 }$json$::jsonb,
   true
 ),
 (
-  '23faa6b7-2e13-45bd-84b1-89b0cab06bcb',
+  '358c301b-6a72-4893-ac1c-238617de54dc',
   3,
   'vocabulary',
   null,
@@ -854,29 +855,29 @@ values
   $json${
   "words": [
     {
-      "word": "Supermarket",
+      "word": "Shop",
       "bg": "#FAECE7"
     },
     {
-      "word": "How Much",
+      "word": "Price",
       "bg": "#E1F5EE"
     },
     {
-      "word": "I Want",
+      "word": "I'd like",
       "bg": "#EEEDFE"
     },
     {
-      "word": "Some",
+      "word": "Enough",
       "bg": "#FAEEDA"
     }
   ],
-  "title": "Review Words",
+  "title": "New Words",
   "subtitle": "Tap a card to see it bigger."
 }$json$::jsonb,
   true
 ),
 (
-  '23faa6b7-2e13-45bd-84b1-89b0cab06bcb',
+  '358c301b-6a72-4893-ac1c-238617de54dc',
   4,
   'phrases',
   null,
@@ -884,11 +885,11 @@ values
   $json${
   "teacher": [
     "Where do you shop?",
-    "How much is it?"
+    "What would you like?"
   ],
   "student": [
     "I shop at the supermarket.",
-    "It's ten dollars."
+    "I'd like some bread, please."
   ],
   "note": "Use everything you learned this unit!",
   "title": "Practice the Conversation"
@@ -896,7 +897,7 @@ values
   true
 ),
 (
-  '23faa6b7-2e13-45bd-84b1-89b0cab06bcb',
+  '358c301b-6a72-4893-ac1c-238617de54dc',
   5,
   'activity',
   null,
@@ -905,27 +906,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "I go to the [supermarket]."
+      "text": "I [shop] at the supermarket."
     },
     {
       "speaker": "B",
-      "text": "[How much] is it?"
+      "text": "The [price] is cheap."
     },
     {
       "speaker": "A",
-      "text": "[I want] some bread."
+      "text": "[I'd like] a kilo of apples."
     }
   ],
   "blanks": [
-    "supermarket",
-    "How much",
-    "I want"
+    "shop",
+    "price",
+    "i'd like"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '23faa6b7-2e13-45bd-84b1-89b0cab06bcb',
+  '358c301b-6a72-4893-ac1c-238617de54dc',
   6,
   'speaking',
   null,
@@ -934,19 +935,19 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "Where do you buy food?"
+      "text": "Tell me about your shopping."
     },
     {
       "speaker": "B",
-      "text": "I buy food at the supermarket."
+      "text": "I shop at the supermarket. The prices are cheap there."
     },
     {
       "speaker": "A",
-      "text": "How much is bread there?"
+      "text": "I'd like a kilo of apples and a bottle of milk, please."
     },
     {
       "speaker": "B",
-      "text": "It's about two dollars!"
+      "text": "Anything else?"
     }
   ],
   "note": "Switch! Student becomes A, teacher becomes B."
@@ -954,50 +955,49 @@ values
   true
 ),
 (
-  '23faa6b7-2e13-45bd-84b1-89b0cab06bcb',
+  '358c301b-6a72-4893-ac1c-238617de54dc',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "I go shopping at the supermarket every week. I buy bread, milk, and rice. I always ask, 'How much is it?' I say 'please' and 'thank you' too!",
+  "text": "I shop at the supermarket. The prices are cheap there. I'd like a kilo of apples and a bottle of milk.",
   "questions": [
     "Where does the writer shop?",
-    "What does the writer buy?",
-    "What polite words does the writer use?"
+    "Are the prices cheap or expensive?",
+    "What does the writer want to buy?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '23faa6b7-2e13-45bd-84b1-89b0cab06bcb',
+  '358c301b-6a72-4893-ac1c-238617de54dc',
   8,
   'writing',
   null,
   null,
   $json${
   "prompts": [
-    "I shop at the ___.",
-    "I buy ___.",
-    "How much is ___? It's ___."
+    "I shop at ___.",
+    "The prices are ___.",
+    "I'd like ___."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '23faa6b7-2e13-45bd-84b1-89b0cab06bcb',
+  '358c301b-6a72-4893-ac1c-238617de54dc',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Name shop items and places",
-    "Ask about prices",
-    "Make polite requests",
-    "Use quantities"
+    "Name shops and prices",
+    "Ask 'How much?'",
+    "Make a polite shopping request"
   ],
-  "challenge": "Go shopping with me — ask for three things and their prices!"
+  "challenge": "Tell me all about your shopping!"
 }$json$::jsonb,
   true
 );

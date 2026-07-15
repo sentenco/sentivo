@@ -1,16 +1,17 @@
--- A1 Adults Unit 11: Places in Town and Directions (5 lessons)
+-- A1 Adults Unit 11: Places in Town (5 lessons) — TIERED (Bridge)
+-- Regenerated per the Sentivo Intra-Level Progression Framework + lesson-level escalation + task rotation.
 -- Run this whole script in the Supabase SQL editor.
 
 -- Lesson 1: Places in Town
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  'b1223db7-f898-4471-a4ea-b76d34395a27',
+  '9f393ed7-8619-4e9d-9110-bcd613bac6cf',
   'Places in Town',
   'A1',
   'adults',
   11,
   1,
-  'Name common places in town.',
+  'Name places in town. [Bridge, Lesson 1: notice/receptive]',
   25,
   9,
   true
@@ -19,7 +20,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  'b1223db7-f898-4471-a4ea-b76d34395a27',
+  '9f393ed7-8619-4e9d-9110-bcd613bac6cf',
   1,
   'title',
   null,
@@ -30,23 +31,23 @@ values
   true
 ),
 (
-  'b1223db7-f898-4471-a4ea-b76d34395a27',
+  '9f393ed7-8619-4e9d-9110-bcd613bac6cf',
   2,
   'warmup',
   null,
   null,
   $json${
-  "display": "",
+  "display": "🏦",
   "questions": [
-    "What places do you go to near your home?",
-    "Do you know your town well?"
+    "Is there a bank near your home?",
+    "Do you go to the park?"
   ],
-  "title": "Warm-up"
+  "title": "Let's begin"
 }$json$::jsonb,
   true
 ),
 (
-  'b1223db7-f898-4471-a4ea-b76d34395a27',
+  '9f393ed7-8619-4e9d-9110-bcd613bac6cf',
   3,
   'vocabulary',
   null,
@@ -58,15 +59,15 @@ values
       "bg": "#FAECE7"
     },
     {
-      "word": "Station",
+      "word": "Pharmacy",
       "bg": "#E1F5EE"
     },
     {
-      "word": "Café",
+      "word": "Post office",
       "bg": "#EEEDFE"
     },
     {
-      "word": "Hospital",
+      "word": "Park",
       "bg": "#FAEEDA"
     }
   ],
@@ -76,27 +77,27 @@ values
   true
 ),
 (
-  'b1223db7-f898-4471-a4ea-b76d34395a27',
+  '9f393ed7-8619-4e9d-9110-bcd613bac6cf',
   4,
   'phrases',
   null,
   null,
   $json${
   "teacher": [
-    "Where is the bank?",
-    "Do you go to a café often?"
+    "Is there a bank near here?",
+    "Where is the pharmacy?"
   ],
   "student": [
-    "The bank is near here.",
-    "Yes, I go every week!"
+    "Yes, there is a bank near here.",
+    "The pharmacy is close by."
   ],
-  "note": "Think about places near your home!",
+  "note": "Read the model text, then find the place words.",
   "title": "Practice the Conversation"
 }$json$::jsonb,
   true
 ),
 (
-  'b1223db7-f898-4471-a4ea-b76d34395a27',
+  '9f393ed7-8619-4e9d-9110-bcd613bac6cf',
   5,
   'activity',
   null,
@@ -105,27 +106,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "I go to the [bank]."
+      "text": "There is a [bank] near my home."
     },
     {
       "speaker": "B",
-      "text": "I go to the [station]."
+      "text": "There is a [pharmacy] too."
     },
     {
       "speaker": "A",
-      "text": "I go to a [café]."
+      "text": "I go to the [post office] on Mondays."
     }
   ],
   "blanks": [
     "bank",
-    "station",
-    "café"
+    "pharmacy",
+    "post office"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'b1223db7-f898-4471-a4ea-b76d34395a27',
+  '9f393ed7-8619-4e9d-9110-bcd613bac6cf',
   6,
   'speaking',
   null,
@@ -134,69 +135,69 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "What places do you go to often?"
+      "text": "There is a bank near my home."
     },
     {
       "speaker": "B",
-      "text": "I go to the supermarket and the bank."
+      "text": "There is a pharmacy too."
     },
     {
       "speaker": "A",
-      "text": "I go to the café every morning!"
+      "text": "I go to the post office on Mondays."
     },
     {
       "speaker": "B",
-      "text": "That sounds nice!"
+      "text": "I go to the park every day!"
     }
   ],
-  "note": "Switch! Student becomes A, teacher becomes B."
+  "note": "Teacher says the line first. Student repeats, then says it alone."
 }$json$::jsonb,
   true
 ),
 (
-  'b1223db7-f898-4471-a4ea-b76d34395a27',
+  '9f393ed7-8619-4e9d-9110-bcd613bac6cf',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "I go to the bank every month. I go to the station every day for work. I go to a café on weekends. I know my town well!",
+  "text": "There is a bank near my home. There is a pharmacy too. I go to the post office on Mondays.",
   "questions": [
-    "How often does the writer go to the bank?",
-    "Why does the writer go to the station?",
-    "When does the writer go to the café?"
+    "What is near the writer's home?",
+    "What else is nearby?",
+    "When does the writer go to the post office?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'b1223db7-f898-4471-a4ea-b76d34395a27',
+  '9f393ed7-8619-4e9d-9110-bcd613bac6cf',
   8,
   'writing',
   null,
   null,
   $json${
   "prompts": [
-    "I go to the ___.",
-    "I go there ___.",
-    "My favorite place in town is the ___."
+    "There is a ___ near my home.",
+    "There is a ___ too.",
+    "I go to the ___ on ___."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'b1223db7-f898-4471-a4ea-b76d34395a27',
+  '9f393ed7-8619-4e9d-9110-bcd613bac6cf',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Name four places in town",
-    "Say 'I go to the ___'",
+    "Name 4 places in town",
+    "Say 'There is a ___ near my home'",
     "Talk about places I visit"
   ],
-  "challenge": "Tell me three places you go to often!"
+  "challenge": "Tell me about the places near your home!"
 }$json$::jsonb,
   true
 );
@@ -204,13 +205,13 @@ values
 -- Lesson 2: Where Is It?
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  'd51f73d9-fb1f-4939-9652-98421e905725',
+  '0ee38f73-376f-4620-b8a3-ad5e22f11a28',
   'Where Is It?',
   'A1',
   'adults',
   11,
   2,
-  'Ask and answer simple location questions.',
+  'Ask and answer where places are. [Bridge, Lesson 2: controlled practice, fill-in-blank]',
   25,
   9,
   true
@@ -219,7 +220,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  'd51f73d9-fb1f-4939-9652-98421e905725',
+  '0ee38f73-376f-4620-b8a3-ad5e22f11a28',
   1,
   'title',
   null,
@@ -230,23 +231,23 @@ values
   true
 ),
 (
-  'd51f73d9-fb1f-4939-9652-98421e905725',
+  '0ee38f73-376f-4620-b8a3-ad5e22f11a28',
   2,
   'warmup',
   null,
   null,
   $json${
-  "display": "",
+  "display": "📍",
   "questions": [
-    "Is your home near or far from the city center?",
-    "What is next to your home?"
+    "Where is the nearest bank?",
+    "Is the pharmacy near your home?"
   ],
-  "title": "Warm-up"
+  "title": "Let's begin"
 }$json$::jsonb,
   true
 ),
 (
-  'd51f73d9-fb1f-4939-9652-98421e905725',
+  '0ee38f73-376f-4620-b8a3-ad5e22f11a28',
   3,
   'vocabulary',
   null,
@@ -254,19 +255,19 @@ values
   $json${
   "words": [
     {
-      "word": "Where Is",
+      "word": "Where is",
       "bg": "#FAECE7"
     },
     {
-      "word": "It's Next To",
+      "word": "Next to",
       "bg": "#E1F5EE"
     },
     {
-      "word": "Near",
+      "word": "Between",
       "bg": "#EEEDFE"
     },
     {
-      "word": "Far",
+      "word": "Near",
       "bg": "#FAEEDA"
     }
   ],
@@ -276,7 +277,7 @@ values
   true
 ),
 (
-  'd51f73d9-fb1f-4939-9652-98421e905725',
+  '0ee38f73-376f-4620-b8a3-ad5e22f11a28',
   4,
   'phrases',
   null,
@@ -287,16 +288,16 @@ values
     "Is it near here?"
   ],
   "student": [
-    "It's next to the station.",
-    "Yes, it's very near."
+    "The bank is next to the pharmacy.",
+    "Yes, it is near here."
   ],
-  "note": "Describe a real location near you!",
+  "note": "Use the word bank: where is, next to, between, near.",
   "title": "Practice the Conversation"
 }$json$::jsonb,
   true
 ),
 (
-  'd51f73d9-fb1f-4939-9652-98421e905725',
+  '0ee38f73-376f-4620-b8a3-ad5e22f11a28',
   5,
   'activity',
   null,
@@ -305,27 +306,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "[Where is] the café?"
+      "text": "[Where is] the bank?"
     },
     {
       "speaker": "B",
-      "text": "[It's next to] the bank."
+      "text": "It is [next to] the pharmacy."
     },
     {
       "speaker": "A",
-      "text": "It is [near] here."
+      "text": "The park is [near] my home."
     }
   ],
   "blanks": [
-    "Where is",
-    "It's next to",
+    "where is",
+    "next to",
     "near"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'd51f73d9-fb1f-4939-9652-98421e905725',
+  '0ee38f73-376f-4620-b8a3-ad5e22f11a28',
   6,
   'speaking',
   null,
@@ -334,19 +335,19 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "Where is the hospital?"
+      "text": "Where is the bank?"
     },
     {
       "speaker": "B",
-      "text": "It's next to the school."
+      "text": "It is next to the pharmacy. Where is the post office?"
     },
     {
       "speaker": "A",
-      "text": "Is it far from here?"
+      "text": "It is between the bank and the park."
     },
     {
       "speaker": "B",
-      "text": "No, it's quite near!"
+      "text": "That's easy to find!"
     }
   ],
   "note": "Switch! Student becomes A, teacher becomes B."
@@ -354,23 +355,23 @@ values
   true
 ),
 (
-  'd51f73d9-fb1f-4939-9652-98421e905725',
+  '0ee38f73-376f-4620-b8a3-ad5e22f11a28',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "Where is the bank? It's next to the station. Is it near here? Yes, it's very near. I always ask for locations when I'm new somewhere.",
+  "text": "The bank is next to the pharmacy. The post office is between the bank and the park.",
   "questions": [
     "Where is the bank?",
-    "Is the bank near or far?",
-    "When does the writer ask for locations?"
+    "Where is the post office?",
+    "What is the post office between?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'd51f73d9-fb1f-4939-9652-98421e905725',
+  '0ee38f73-376f-4620-b8a3-ad5e22f11a28',
   8,
   'writing',
   null,
@@ -378,25 +379,25 @@ values
   $json${
   "prompts": [
     "The ___ is next to the ___.",
-    "It is near/far from ___.",
-    "Where is the ___? It's ___."
+    "The ___ is between ___ and ___.",
+    "It is near my home."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'd51f73d9-fb1f-4939-9652-98421e905725',
+  '0ee38f73-376f-4620-b8a3-ad5e22f11a28',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Ask 'Where is the ___?'",
-    "Answer with location phrases",
-    "Say 'near' and 'far'"
+    "Ask 'Where is ___?'",
+    "Use 'next to' and 'between'",
+    "Describe locations in town"
   ],
-  "challenge": "Ask me where something in town is!"
+  "challenge": "Tell me where a place is near your home!"
 }$json$::jsonb,
   true
 );
@@ -404,13 +405,13 @@ values
 -- Lesson 3: Directions
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  'ec1b37f7-f87b-430d-acb1-464cd9f50270',
+  '167901ee-4f9c-45d2-83e4-627eb6f46db4',
   'Directions',
   'A1',
   'adults',
   11,
   3,
-  'Understand and give simple directions.',
+  'Give simple directions combining actions with ''and''. [Bridge, Lesson 3: freer practice, error-spot]',
   25,
   9,
   true
@@ -419,7 +420,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  'ec1b37f7-f87b-430d-acb1-464cd9f50270',
+  '167901ee-4f9c-45d2-83e4-627eb6f46db4',
   1,
   'title',
   null,
@@ -430,23 +431,23 @@ values
   true
 ),
 (
-  'ec1b37f7-f87b-430d-acb1-464cd9f50270',
+  '167901ee-4f9c-45d2-83e4-627eb6f46db4',
   2,
   'warmup',
   null,
   null,
   $json${
-  "display": "",
+  "display": "🧭",
   "questions": [
-    "Do you know the way to the nearest shop?",
-    "Can you give simple directions?"
+    "Can you give directions to your home?",
+    "Do you turn left or right to get to the shop?"
   ],
-  "title": "Warm-up"
+  "title": "Let's begin"
 }$json$::jsonb,
   true
 ),
 (
-  'ec1b37f7-f87b-430d-acb1-464cd9f50270',
+  '167901ee-4f9c-45d2-83e4-627eb6f46db4',
   3,
   'vocabulary',
   null,
@@ -454,19 +455,19 @@ values
   $json${
   "words": [
     {
-      "word": "Go Straight",
+      "word": "Turn left",
       "bg": "#FAECE7"
     },
     {
-      "word": "Turn Left",
+      "word": "Turn right",
       "bg": "#E1F5EE"
     },
     {
-      "word": "Turn Right",
+      "word": "Go straight",
       "bg": "#EEEDFE"
     },
     {
-      "word": "Stop",
+      "word": "And then",
       "bg": "#FAEEDA"
     }
   ],
@@ -476,7 +477,7 @@ values
   true
 ),
 (
-  'ec1b37f7-f87b-430d-acb1-464cd9f50270',
+  '167901ee-4f9c-45d2-83e4-627eb6f46db4',
   4,
   'phrases',
   null,
@@ -487,16 +488,16 @@ values
     "Do I turn left?"
   ],
   "student": [
-    "Go straight, then turn left.",
+    "Turn left, and then go straight.",
     "Yes, turn left at the corner."
   ],
-  "note": "Give directions to a real place near you!",
+  "note": "One sentence has a mistake. Find it and fix it before you continue.",
   "title": "Practice the Conversation"
 }$json$::jsonb,
   true
 ),
 (
-  'ec1b37f7-f87b-430d-acb1-464cd9f50270',
+  '167901ee-4f9c-45d2-83e4-627eb6f46db4',
   5,
   'activity',
   null,
@@ -505,27 +506,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "[Go straight]."
-    },
-    {
-      "speaker": "B",
       "text": "[Turn left] at the corner."
     },
     {
+      "speaker": "B",
+      "text": "[And then] [go straight]."
+    },
+    {
       "speaker": "A",
-      "text": "Then [turn right]."
+      "text": "The bank is on your right."
     }
   ],
   "blanks": [
-    "Go straight",
-    "Turn left",
-    "turn right"
+    "turn left",
+    "and then",
+    "go straight"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'ec1b37f7-f87b-430d-acb1-464cd9f50270',
+  '167901ee-4f9c-45d2-83e4-627eb6f46db4',
   6,
   'speaking',
   null,
@@ -534,415 +535,15 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "How do I get to the station?"
+      "text": "How do I get to the bank?"
     },
     {
       "speaker": "B",
-      "text": "Go straight, then turn right."
+      "text": "Turn left at the corner, and then go straight."
     },
     {
       "speaker": "A",
-      "text": "Then what?"
-    },
-    {
-      "speaker": "B",
-      "text": "Stop at the café. The station is there!"
-    }
-  ],
-  "note": "Switch! Student becomes A, teacher becomes B."
-}$json$::jsonb,
-  true
-),
-(
-  'ec1b37f7-f87b-430d-acb1-464cd9f50270',
-  7,
-  'reading',
-  null,
-  null,
-  $json${
-  "text": "How do I get to the bank? Go straight. Turn left at the corner. Then turn right. Stop at the café. The bank is there!",
-  "questions": [
-    "What is the first direction?",
-    "What do you do at the corner?",
-    "Where does the route stop?"
-  ]
-}$json$::jsonb,
-  true
-),
-(
-  'ec1b37f7-f87b-430d-acb1-464cd9f50270',
-  8,
-  'writing',
-  null,
-  null,
-  $json${
-  "prompts": [
-    "Go ___.",
-    "Turn ___ at the ___.",
-    "Stop at the ___."
-  ]
-}$json$::jsonb,
-  true
-),
-(
-  'ec1b37f7-f87b-430d-acb1-464cd9f50270',
-  9,
-  'review',
-  null,
-  null,
-  $json${
-  "checklist": [
-    "Say 'go straight', 'turn left/right'",
-    "Give simple directions",
-    "Follow a route"
-  ],
-  "challenge": "Give me directions from your home to a shop!"
-}$json$::jsonb,
-  true
-);
-
--- Lesson 4: Getting Around
-insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
-values (
-  '612fea64-5e29-4556-bf3c-fbe49b59a731',
-  'Getting Around',
-  'A1',
-  'adults',
-  11,
-  4,
-  'Ask for simple help in town.',
-  25,
-  9,
-  true
-);
-
-insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
-values
-(
-  '612fea64-5e29-4556-bf3c-fbe49b59a731',
-  1,
-  'title',
-  null,
-  null,
-  $json${
-  "badge": "A1 · Beginner · Adults"
-}$json$::jsonb,
-  true
-),
-(
-  '612fea64-5e29-4556-bf3c-fbe49b59a731',
-  2,
-  'warmup',
-  null,
-  null,
-  $json${
-  "display": "",
-  "questions": [
-    "Have you asked a stranger for directions?",
-    "Do you feel comfortable asking for help?"
-  ],
-  "title": "Warm-up"
-}$json$::jsonb,
-  true
-),
-(
-  '612fea64-5e29-4556-bf3c-fbe49b59a731',
-  3,
-  'vocabulary',
-  null,
-  null,
-  $json${
-  "words": [
-    {
-      "word": "Where Is",
-      "bg": "#FAECE7"
-    },
-    {
-      "word": "How Do I Get To",
-      "bg": "#E1F5EE"
-    },
-    {
-      "word": "Excuse Me",
-      "bg": "#EEEDFE"
-    },
-    {
-      "word": "Help",
-      "bg": "#FAEEDA"
-    }
-  ],
-  "title": "New Words",
-  "subtitle": "Tap a card to see it bigger."
-}$json$::jsonb,
-  true
-),
-(
-  '612fea64-5e29-4556-bf3c-fbe49b59a731',
-  4,
-  'phrases',
-  null,
-  null,
-  $json${
-  "teacher": [
-    "Excuse me, where is the station?",
-    "Can you help me?"
-  ],
-  "student": [
-    "It's over there.",
-    "Yes, of course!"
-  ],
-  "note": "Practice asking a stranger for help!",
-  "title": "Practice the Conversation"
-}$json$::jsonb,
-  true
-),
-(
-  '612fea64-5e29-4556-bf3c-fbe49b59a731',
-  5,
-  'activity',
-  null,
-  null,
-  $json${
-  "dialogue": [
-    {
-      "speaker": "A",
-      "text": "[Excuse me], where is the bank?"
-    },
-    {
-      "speaker": "B",
-      "text": "[How do I get to] the station?"
-    },
-    {
-      "speaker": "A",
-      "text": "Can you [help] me?"
-    }
-  ],
-  "blanks": [
-    "Excuse me",
-    "How do I get to",
-    "help"
-  ]
-}$json$::jsonb,
-  true
-),
-(
-  '612fea64-5e29-4556-bf3c-fbe49b59a731',
-  6,
-  'speaking',
-  null,
-  null,
-  $json${
-  "dialogue": [
-    {
-      "speaker": "A",
-      "text": "Excuse me, where is the hospital?"
-    },
-    {
-      "speaker": "B",
-      "text": "It's next to the school."
-    },
-    {
-      "speaker": "A",
-      "text": "How do I get there?"
-    },
-    {
-      "speaker": "B",
-      "text": "Go straight, then turn left!"
-    }
-  ],
-  "note": "Switch! Student becomes A, teacher becomes B."
-}$json$::jsonb,
-  true
-),
-(
-  '612fea64-5e29-4556-bf3c-fbe49b59a731',
-  7,
-  'reading',
-  null,
-  null,
-  $json${
-  "text": "Excuse me, where is the station? It's next to the bank. How do I get there? Go straight, then turn right. Thank you for your help!",
-  "questions": [
-    "What does the writer ask?",
-    "Where is the station?",
-    "What direction does the writer follow?"
-  ]
-}$json$::jsonb,
-  true
-),
-(
-  '612fea64-5e29-4556-bf3c-fbe49b59a731',
-  8,
-  'writing',
-  null,
-  null,
-  $json${
-  "prompts": [
-    "Excuse me, where is the ___?",
-    "How do I get to the ___?",
-    "Thank you for your ___."
-  ]
-}$json$::jsonb,
-  true
-),
-(
-  '612fea64-5e29-4556-bf3c-fbe49b59a731',
-  9,
-  'review',
-  null,
-  null,
-  $json${
-  "checklist": [
-    "Say 'Excuse me'",
-    "Ask 'How do I get to ___?'",
-    "Ask for and give help in town"
-  ],
-  "challenge": "Ask me for help finding a place in town!"
-}$json$::jsonb,
-  true
-);
-
--- Lesson 5: Unit Review
-insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
-values (
-  '08aeae71-9578-45cc-9932-3f6be1628f28',
-  'Unit Review',
-  'A1',
-  'adults',
-  11,
-  5,
-  'Talk about places in town and simple directions.',
-  25,
-  9,
-  true
-);
-
-insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
-values
-(
-  '08aeae71-9578-45cc-9932-3f6be1628f28',
-  1,
-  'title',
-  null,
-  null,
-  $json${
-  "badge": "A1 · Beginner · Adults"
-}$json$::jsonb,
-  true
-),
-(
-  '08aeae71-9578-45cc-9932-3f6be1628f28',
-  2,
-  'warmup',
-  null,
-  null,
-  $json${
-  "display": "",
-  "questions": [
-    "What town words do you remember?",
-    "Can you give directions to your favorite place?"
-  ],
-  "title": "Unit Review"
-}$json$::jsonb,
-  true
-),
-(
-  '08aeae71-9578-45cc-9932-3f6be1628f28',
-  3,
-  'vocabulary',
-  null,
-  null,
-  $json${
-  "words": [
-    {
-      "word": "Bank",
-      "bg": "#FAECE7"
-    },
-    {
-      "word": "Where Is",
-      "bg": "#E1F5EE"
-    },
-    {
-      "word": "Turn Left",
-      "bg": "#EEEDFE"
-    },
-    {
-      "word": "Excuse Me",
-      "bg": "#FAEEDA"
-    }
-  ],
-  "title": "Review Words",
-  "subtitle": "Tap a card to see it bigger."
-}$json$::jsonb,
-  true
-),
-(
-  '08aeae71-9578-45cc-9932-3f6be1628f28',
-  4,
-  'phrases',
-  null,
-  null,
-  $json${
-  "teacher": [
-    "Where is the bank?",
-    "How do I get there?"
-  ],
-  "student": [
-    "It's next to the station.",
-    "Go straight, then turn left."
-  ],
-  "note": "Use everything you learned this unit!",
-  "title": "Practice the Conversation"
-}$json$::jsonb,
-  true
-),
-(
-  '08aeae71-9578-45cc-9932-3f6be1628f28',
-  5,
-  'activity',
-  null,
-  null,
-  $json${
-  "dialogue": [
-    {
-      "speaker": "A",
-      "text": "I go to the [bank]."
-    },
-    {
-      "speaker": "B",
-      "text": "[Where is] the station?"
-    },
-    {
-      "speaker": "A",
-      "text": "[Turn left] at the corner."
-    }
-  ],
-  "blanks": [
-    "bank",
-    "Where is",
-    "Turn left"
-  ]
-}$json$::jsonb,
-  true
-),
-(
-  '08aeae71-9578-45cc-9932-3f6be1628f28',
-  6,
-  'speaking',
-  null,
-  null,
-  $json${
-  "dialogue": [
-    {
-      "speaker": "A",
-      "text": "Excuse me, where is the café?"
-    },
-    {
-      "speaker": "B",
-      "text": "It's next to the bank. Go straight, then turn right."
-    },
-    {
-      "speaker": "A",
-      "text": "Thank you!"
+      "text": "The bank is on your right. Thank you!"
     },
     {
       "speaker": "B",
@@ -954,38 +555,438 @@ values
   true
 ),
 (
-  '08aeae71-9578-45cc-9932-3f6be1628f28',
+  '167901ee-4f9c-45d2-83e4-627eb6f46db4',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "Excuse me, where is the bank? It's next to the station. How do I get there? Go straight, then turn left. Thank you for your help! I found the bank easily.",
+  "text": "Turn left at the corner, and then go straight. The bank is on your right.",
   "questions": [
-    "Where is the bank?",
-    "What directions were given?",
-    "Did the writer find the bank?"
+    "What do you do first?",
+    "What do you do next?",
+    "Where is the bank?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '08aeae71-9578-45cc-9932-3f6be1628f28',
+  '167901ee-4f9c-45d2-83e4-627eb6f46db4',
   8,
   'writing',
   null,
   null,
   $json${
   "prompts": [
-    "The ___ is next to the ___.",
-    "Go ___, then turn ___.",
-    "Excuse me, where is the ___?"
+    "Turn ___ at the ___.",
+    "And then, ___.",
+    "The ___ is on your ___."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '08aeae71-9578-45cc-9932-3f6be1628f28',
+  '167901ee-4f9c-45d2-83e4-627eb6f46db4',
+  9,
+  'review',
+  null,
+  null,
+  $json${
+  "checklist": [
+    "Give directions with 'turn left/right'",
+    "Combine steps with 'and then'",
+    "Say where something is (left/right)"
+  ],
+  "challenge": "Give me directions to a place near your home!"
+}$json$::jsonb,
+  true
+);
+
+-- Lesson 4: Getting Around
+insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
+values (
+  '6d3a133f-a786-4986-9757-4d9de8f24def',
+  'Getting Around',
+  'A1',
+  'adults',
+  11,
+  4,
+  'Combine places, directions, and simple requests. [Bridge, Lesson 4: production, mini role-play]',
+  25,
+  9,
+  true
+);
+
+insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
+values
+(
+  '6d3a133f-a786-4986-9757-4d9de8f24def',
+  1,
+  'title',
+  null,
+  null,
+  $json${
+  "badge": "A1 · Beginner · Adults"
+}$json$::jsonb,
+  true
+),
+(
+  '6d3a133f-a786-4986-9757-4d9de8f24def',
+  2,
+  'warmup',
+  null,
+  null,
+  $json${
+  "display": "🗺️",
+  "questions": [
+    "How do you ask a stranger for directions?",
+    "Have you helped a visitor find a place?"
+  ],
+  "title": "Let's begin"
+}$json$::jsonb,
+  true
+),
+(
+  '6d3a133f-a786-4986-9757-4d9de8f24def',
+  3,
+  'vocabulary',
+  null,
+  null,
+  $json${
+  "words": [
+    {
+      "word": "Excuse me",
+      "bg": "#FAECE7"
+    },
+    {
+      "word": "Could you tell me",
+      "bg": "#E1F5EE"
+    },
+    {
+      "word": "Thanks a lot",
+      "bg": "#EEEDFE"
+    },
+    {
+      "word": "Visitor",
+      "bg": "#FAEEDA"
+    }
+  ],
+  "title": "New Words",
+  "subtitle": "Tap a card to see it bigger."
+}$json$::jsonb,
+  true
+),
+(
+  '6d3a133f-a786-4986-9757-4d9de8f24def',
+  4,
+  'phrases',
+  null,
+  null,
+  $json${
+  "teacher": [
+    "Excuse me, could you tell me the way to the bank?",
+    "Thanks a lot!"
+  ],
+  "student": [
+    "Turn left, and then go straight.",
+    "You're welcome!"
+  ],
+  "note": "Put it all together: polite request + directions + thanks.",
+  "title": "Practice the Conversation"
+}$json$::jsonb,
+  true
+),
+(
+  '6d3a133f-a786-4986-9757-4d9de8f24def',
+  5,
+  'activity',
+  null,
+  null,
+  $json${
+  "dialogue": [
+    {
+      "speaker": "A",
+      "text": "[Excuse me], [could you tell me] the way to the park?"
+    },
+    {
+      "speaker": "B",
+      "text": "Turn right, and then go straight."
+    },
+    {
+      "speaker": "A",
+      "text": "[Thanks a lot]!"
+    }
+  ],
+  "blanks": [
+    "excuse me",
+    "could you tell me",
+    "thanks a lot"
+  ]
+}$json$::jsonb,
+  true
+),
+(
+  '6d3a133f-a786-4986-9757-4d9de8f24def',
+  6,
+  'speaking',
+  null,
+  null,
+  $json${
+  "dialogue": [
+    {
+      "speaker": "A",
+      "text": "Excuse me, could you tell me the way to the post office?"
+    },
+    {
+      "speaker": "B",
+      "text": "Of course. Turn left at the bank, and then go straight."
+    },
+    {
+      "speaker": "A",
+      "text": "Thanks a lot!"
+    },
+    {
+      "speaker": "B",
+      "text": "You're welcome!"
+    }
+  ],
+  "note": "Mini role-play: you are a visitor asking a local for directions."
+}$json$::jsonb,
+  true
+),
+(
+  '6d3a133f-a786-4986-9757-4d9de8f24def',
+  7,
+  'reading',
+  null,
+  null,
+  $json${
+  "text": "Excuse me, could you tell me the way to the post office? Turn left at the bank, and then go straight. Thanks a lot!",
+  "questions": [
+    "What does the visitor ask?",
+    "What are the directions?",
+    "How does the visitor say thank you?"
+  ]
+}$json$::jsonb,
+  true
+),
+(
+  '6d3a133f-a786-4986-9757-4d9de8f24def',
+  8,
+  'writing',
+  null,
+  null,
+  $json${
+  "prompts": [
+    "Excuse me, could you tell me the way to ___?",
+    "Turn ___, and then ___.",
+    "Thanks a lot!"
+  ]
+}$json$::jsonb,
+  true
+),
+(
+  '6d3a133f-a786-4986-9757-4d9de8f24def',
+  9,
+  'review',
+  null,
+  null,
+  $json${
+  "checklist": [
+    "Ask for directions politely",
+    "Give directions in order",
+    "Say thanks and respond"
+  ],
+  "challenge": "Role-play asking me for directions in your town!"
+}$json$::jsonb,
+  true
+);
+
+-- Lesson 5: Unit Review
+insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
+values (
+  'ff6d6098-2a78-4603-bf46-eb46c1b7620d',
+  'Unit Review',
+  'A1',
+  'adults',
+  11,
+  5,
+  'Review town places, directions, and polite requests. [Bridge, Lesson 5: tier-matched mixed review]',
+  25,
+  9,
+  true
+);
+
+insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
+values
+(
+  'ff6d6098-2a78-4603-bf46-eb46c1b7620d',
+  1,
+  'title',
+  null,
+  null,
+  $json${
+  "badge": "A1 · Beginner · Adults"
+}$json$::jsonb,
+  true
+),
+(
+  'ff6d6098-2a78-4603-bf46-eb46c1b7620d',
+  2,
+  'warmup',
+  null,
+  null,
+  $json${
+  "display": "🏙️",
+  "questions": [
+    "What places are near your home?",
+    "Can you give simple directions?"
+  ],
+  "title": "Let's begin"
+}$json$::jsonb,
+  true
+),
+(
+  'ff6d6098-2a78-4603-bf46-eb46c1b7620d',
+  3,
+  'vocabulary',
+  null,
+  null,
+  $json${
+  "words": [
+    {
+      "word": "Near",
+      "bg": "#FAECE7"
+    },
+    {
+      "word": "Where is",
+      "bg": "#E1F5EE"
+    },
+    {
+      "word": "Turn left",
+      "bg": "#EEEDFE"
+    },
+    {
+      "word": "Thanks a lot",
+      "bg": "#FAEEDA"
+    }
+  ],
+  "title": "New Words",
+  "subtitle": "Tap a card to see it bigger."
+}$json$::jsonb,
+  true
+),
+(
+  'ff6d6098-2a78-4603-bf46-eb46c1b7620d',
+  4,
+  'phrases',
+  null,
+  null,
+  $json${
+  "teacher": [
+    "What is near your home?",
+    "Can you give directions to it?"
+  ],
+  "student": [
+    "The bank is near my home.",
+    "Turn left, and then go straight."
+  ],
+  "note": "Use everything you learned this unit!",
+  "title": "Practice the Conversation"
+}$json$::jsonb,
+  true
+),
+(
+  'ff6d6098-2a78-4603-bf46-eb46c1b7620d',
+  5,
+  'activity',
+  null,
+  null,
+  $json${
+  "dialogue": [
+    {
+      "speaker": "A",
+      "text": "The bank is [near] my home."
+    },
+    {
+      "speaker": "B",
+      "text": "[Where is] the pharmacy?"
+    },
+    {
+      "speaker": "A",
+      "text": "[Turn left] and go straight."
+    }
+  ],
+  "blanks": [
+    "near",
+    "where is",
+    "turn left"
+  ]
+}$json$::jsonb,
+  true
+),
+(
+  'ff6d6098-2a78-4603-bf46-eb46c1b7620d',
+  6,
+  'speaking',
+  null,
+  null,
+  $json${
+  "dialogue": [
+    {
+      "speaker": "A",
+      "text": "Tell me about places near your home and how to get there."
+    },
+    {
+      "speaker": "B",
+      "text": "The bank is near my home. Turn left at the corner, and then go straight."
+    },
+    {
+      "speaker": "A",
+      "text": "Where is the pharmacy?"
+    },
+    {
+      "speaker": "B",
+      "text": "It's next to the bank. Thanks a lot for asking!"
+    }
+  ],
+  "note": "Switch! Student becomes A, teacher becomes B."
+}$json$::jsonb,
+  true
+),
+(
+  'ff6d6098-2a78-4603-bf46-eb46c1b7620d',
+  7,
+  'reading',
+  null,
+  null,
+  $json${
+  "text": "The bank is near my home. Turn left at the corner, and then go straight. The pharmacy is next to the bank.",
+  "questions": [
+    "What is near the home?",
+    "What are the directions?",
+    "Where is the pharmacy?"
+  ]
+}$json$::jsonb,
+  true
+),
+(
+  'ff6d6098-2a78-4603-bf46-eb46c1b7620d',
+  8,
+  'writing',
+  null,
+  null,
+  $json${
+  "prompts": [
+    "The ___ is near my home.",
+    "Turn ___, and then ___.",
+    "The ___ is next to the ___."
+  ]
+}$json$::jsonb,
+  true
+),
+(
+  'ff6d6098-2a78-4603-bf46-eb46c1b7620d',
   9,
   'review',
   null,
@@ -993,11 +994,10 @@ values
   $json${
   "checklist": [
     "Name places in town",
-    "Ask and answer location questions",
-    "Give simple directions",
-    "Ask for help politely"
+    "Give directions in order",
+    "Ask and answer politely"
   ],
-  "challenge": "Ask me for directions to somewhere, and I'll guide you!"
+  "challenge": "Tell me all about the places near your home and how to get there!"
 }$json$::jsonb,
   true
 );

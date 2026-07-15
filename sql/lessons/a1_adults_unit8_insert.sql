@@ -1,16 +1,17 @@
--- A1 Adults Unit 8: Technology and Communication (5 lessons)
+-- A1 Adults Unit 8: Technology and Communication (5 lessons) — TIERED (Combination)
+-- Regenerated per the Sentivo Intra-Level Progression Framework + lesson-level escalation + task rotation.
 -- Run this whole script in the Supabase SQL editor.
 
 -- Lesson 1: Devices
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '931dfd49-ba17-4c83-b168-93280696088d',
+  '96501252-2318-457a-9538-dbfb46b71189',
   'Devices',
   'A1',
   'adults',
   8,
   1,
-  'Name basic technology devices.',
+  'Name common devices. [Combination, Lesson 1: notice/receptive, read-and-identify]',
   25,
   9,
   true
@@ -19,7 +20,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '931dfd49-ba17-4c83-b168-93280696088d',
+  '96501252-2318-457a-9538-dbfb46b71189',
   1,
   'title',
   null,
@@ -30,23 +31,23 @@ values
   true
 ),
 (
-  '931dfd49-ba17-4c83-b168-93280696088d',
+  '96501252-2318-457a-9538-dbfb46b71189',
   2,
   'warmup',
   null,
   null,
   $json${
-  "display": "",
+  "display": "📱",
   "questions": [
-    "What device do you use most?",
-    "Do you have a phone?"
+    "Do you have a phone?",
+    "Do you use a laptop for work?"
   ],
-  "title": "Warm-up"
+  "title": "Let's begin"
 }$json$::jsonb,
   true
 ),
 (
-  '931dfd49-ba17-4c83-b168-93280696088d',
+  '96501252-2318-457a-9538-dbfb46b71189',
   3,
   'vocabulary',
   null,
@@ -58,15 +59,15 @@ values
       "bg": "#FAECE7"
     },
     {
-      "word": "Laptop",
+      "word": "Computer",
       "bg": "#E1F5EE"
     },
     {
-      "word": "Computer",
+      "word": "Laptop",
       "bg": "#EEEDFE"
     },
     {
-      "word": "Email",
+      "word": "Tablet",
       "bg": "#FAEEDA"
     }
   ],
@@ -76,27 +77,27 @@ values
   true
 ),
 (
-  '931dfd49-ba17-4c83-b168-93280696088d',
+  '96501252-2318-457a-9538-dbfb46b71189',
   4,
   'phrases',
   null,
   null,
   $json${
   "teacher": [
-    "What device do you use?",
-    "Do you have a laptop?"
+    "Do you have a phone?",
+    "Do you use a laptop?"
   ],
   "student": [
-    "I use a phone.",
-    "Yes, I have a laptop!"
+    "Yes, I have a phone.",
+    "Yes, I use a laptop for work."
   ],
-  "note": "Think about the devices you really use!",
+  "note": "Read the model text, then find the device words.",
   "title": "Practice the Conversation"
 }$json$::jsonb,
   true
 ),
 (
-  '931dfd49-ba17-4c83-b168-93280696088d',
+  '96501252-2318-457a-9538-dbfb46b71189',
   5,
   'activity',
   null,
@@ -105,27 +106,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "I use a [phone]."
+      "text": "I have a [phone]."
     },
     {
       "speaker": "B",
-      "text": "I have a [laptop]."
+      "text": "I use a [computer] at work."
     },
     {
       "speaker": "A",
-      "text": "I send an [email]."
+      "text": "I have a [laptop] too."
     }
   ],
   "blanks": [
     "phone",
-    "laptop",
-    "email"
+    "computer",
+    "laptop"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '931dfd49-ba17-4c83-b168-93280696088d',
+  '96501252-2318-457a-9538-dbfb46b71189',
   6,
   'speaking',
   null,
@@ -134,69 +135,69 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "What device do you use most?"
+      "text": "I have a phone."
     },
     {
       "speaker": "B",
-      "text": "I use my phone the most."
+      "text": "I use a computer at work."
     },
     {
       "speaker": "A",
-      "text": "I use a computer for work!"
+      "text": "I have a laptop too."
     },
     {
       "speaker": "B",
-      "text": "Computers are useful for work."
+      "text": "I have a tablet!"
     }
   ],
-  "note": "Switch! Student becomes A, teacher becomes B."
+  "note": "Teacher says the line first. Student repeats, then says it alone."
 }$json$::jsonb,
   true
 ),
 (
-  '931dfd49-ba17-4c83-b168-93280696088d',
+  '96501252-2318-457a-9538-dbfb46b71189',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "I use a phone every day. I also have a laptop for work. I send emails every morning. Technology helps me every day!",
+  "text": "I have a phone. I use a computer at work. I have a laptop at home too.",
   "questions": [
-    "What device does the writer use every day?",
-    "What is the laptop for?",
-    "What does the writer send every morning?"
+    "What does the writer have?",
+    "What does the writer use at work?",
+    "What is at home?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '931dfd49-ba17-4c83-b168-93280696088d',
+  '96501252-2318-457a-9538-dbfb46b71189',
   8,
   'writing',
   null,
   null,
   $json${
   "prompts": [
-    "I use a ___.",
     "I have a ___.",
-    "I use technology to ___."
+    "I use a ___ at work.",
+    "I have a ___ at home."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '931dfd49-ba17-4c83-b168-93280696088d',
+  '96501252-2318-457a-9538-dbfb46b71189',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Name four tech words",
-    "Say 'I use a ___'",
-    "Talk about devices I use"
+    "Name 4 devices",
+    "Say 'I have a ___'",
+    "Talk about my devices"
   ],
-  "challenge": "Tell me what device you use most!"
+  "challenge": "Tell me about the devices you use!"
 }$json$::jsonb,
   true
 );
@@ -204,13 +205,13 @@ values
 -- Lesson 2: Communication Habits
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '89f59e3f-b5a4-4224-b70d-fa6e4b6716b4',
+  '0d0b4941-96ef-4923-b0bf-6d9f457665fd',
   'Communication Habits',
   'A1',
   'adults',
   8,
   2,
-  'Say simple things they do with technology.',
+  'Use frequency words with communication habits. [Combination, Lesson 2: controlled practice]',
   25,
   9,
   true
@@ -219,7 +220,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '89f59e3f-b5a4-4224-b70d-fa6e4b6716b4',
+  '0d0b4941-96ef-4923-b0bf-6d9f457665fd',
   1,
   'title',
   null,
@@ -230,23 +231,23 @@ values
   true
 ),
 (
-  '89f59e3f-b5a4-4224-b70d-fa6e4b6716b4',
+  '0d0b4941-96ef-4923-b0bf-6d9f457665fd',
   2,
   'warmup',
   null,
   null,
   $json${
-  "display": "",
+  "display": "📞",
   "questions": [
-    "Do you send emails at work?",
-    "Do you call your family often?"
+    "Do you call your family every day?",
+    "Do you usually text or call?"
   ],
-  "title": "Warm-up"
+  "title": "Let's begin"
 }$json$::jsonb,
   true
 ),
 (
-  '89f59e3f-b5a4-4224-b70d-fa6e4b6716b4',
+  '0d0b4941-96ef-4923-b0bf-6d9f457665fd',
   3,
   'vocabulary',
   null,
@@ -254,19 +255,19 @@ values
   $json${
   "words": [
     {
-      "word": "Send Emails",
+      "word": "Every day",
       "bg": "#FAECE7"
     },
     {
-      "word": "Call",
+      "word": "Usually",
       "bg": "#E1F5EE"
     },
     {
-      "word": "Text",
+      "word": "Call",
       "bg": "#EEEDFE"
     },
     {
-      "word": "Join A Meeting",
+      "word": "Text",
       "bg": "#FAEEDA"
     }
   ],
@@ -276,27 +277,27 @@ values
   true
 ),
 (
-  '89f59e3f-b5a4-4224-b70d-fa6e4b6716b4',
+  '0d0b4941-96ef-4923-b0bf-6d9f457665fd',
   4,
   'phrases',
   null,
   null,
   $json${
   "teacher": [
-    "Do you send emails at work?",
-    "Do you join meetings online?"
+    "Do you call your family every day?",
+    "Do you usually text?"
   ],
   "student": [
-    "Yes, I send emails every day.",
-    "Yes, I join meetings online."
+    "Yes, I call every day.",
+    "I usually text."
   ],
-  "note": "Think about what you really do with technology!",
+  "note": "Use the word bank: every day, usually, call, text.",
   "title": "Practice the Conversation"
 }$json$::jsonb,
   true
 ),
 (
-  '89f59e3f-b5a4-4224-b70d-fa6e4b6716b4',
+  '0d0b4941-96ef-4923-b0bf-6d9f457665fd',
   5,
   'activity',
   null,
@@ -305,27 +306,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "I [send emails] at work."
+      "text": "I [call] my mother [every day]."
     },
     {
       "speaker": "B",
-      "text": "I [call] my family."
+      "text": "I [usually] text my colleagues."
     },
     {
       "speaker": "A",
-      "text": "I [join a meeting] online."
+      "text": "I call my husband every day too."
     }
   ],
   "blanks": [
-    "send emails",
     "call",
-    "join a meeting"
+    "every day",
+    "usually"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '89f59e3f-b5a4-4224-b70d-fa6e4b6716b4',
+  '0d0b4941-96ef-4923-b0bf-6d9f457665fd',
   6,
   'speaking',
   null,
@@ -334,19 +335,19 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "What do you do with technology?"
+      "text": "Do you call your family every day?"
     },
     {
       "speaker": "B",
-      "text": "I send emails and call my family."
+      "text": "Yes, I call my mother every day. I usually text my friends."
     },
     {
       "speaker": "A",
-      "text": "I join meetings online!"
+      "text": "I usually text my colleagues too."
     },
     {
       "speaker": "B",
-      "text": "That's very useful for work."
+      "text": "Me too!"
     }
   ],
   "note": "Switch! Student becomes A, teacher becomes B."
@@ -354,49 +355,49 @@ values
   true
 ),
 (
-  '89f59e3f-b5a4-4224-b70d-fa6e4b6716b4',
+  '0d0b4941-96ef-4923-b0bf-6d9f457665fd',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "At work, I send emails. I call my family every weekend. I text my friends. Sometimes I join a meeting online. Technology is part of my life!",
+  "text": "I call my mother every day. I usually text my friends. I text my colleagues at work too.",
   "questions": [
-    "What does the writer do at work?",
-    "Who does the writer call?",
-    "Does the writer join meetings?"
+    "Who does the writer call every day?",
+    "Who does the writer usually text?",
+    "What about colleagues?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '89f59e3f-b5a4-4224-b70d-fa6e4b6716b4',
+  '0d0b4941-96ef-4923-b0bf-6d9f457665fd',
   8,
   'writing',
   null,
   null,
   $json${
   "prompts": [
-    "At work, I ___.",
-    "I call ___.",
-    "I use technology to ___."
+    "I call ___ every day.",
+    "I usually text ___.",
+    "I text ___ at work."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '89f59e3f-b5a4-4224-b70d-fa6e4b6716b4',
+  '0d0b4941-96ef-4923-b0bf-6d9f457665fd',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Name four tech habits",
-    "Say 'I ___ at work'",
-    "Talk about communication habits"
+    "Use 'every day' and 'usually'",
+    "Say 'call' and 'text'",
+    "Talk about my communication habits"
   ],
-  "challenge": "Tell me three things you do with technology!"
+  "challenge": "Tell me your communication habits!"
 }$json$::jsonb,
   true
 );
@@ -404,13 +405,13 @@ values
 -- Lesson 3: Messages and Calls
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  'aa1ba885-fc04-42d3-828e-5059caa758fe',
+  'ea5c4745-8ff3-487a-bfca-aee206e1817b',
   'Messages and Calls',
   'A1',
   'adults',
   8,
   3,
-  'Use simple communication phrases by phone or message.',
+  'Give a simple reason for communication choices. [Combination, Lesson 3: freer practice, choose-the-better-response]',
   25,
   9,
   true
@@ -419,7 +420,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  'aa1ba885-fc04-42d3-828e-5059caa758fe',
+  'ea5c4745-8ff3-487a-bfca-aee206e1817b',
   1,
   'title',
   null,
@@ -430,23 +431,23 @@ values
   true
 ),
 (
-  'aa1ba885-fc04-42d3-828e-5059caa758fe',
+  'ea5c4745-8ff3-487a-bfca-aee206e1817b',
   2,
   'warmup',
   null,
   null,
   $json${
-  "display": "",
+  "display": "💬",
   "questions": [
-    "How do you start a phone call?",
-    "Do you send messages every day?"
+    "Do you prefer calls or messages?",
+    "Why do you prefer that?"
   ],
-  "title": "Warm-up"
+  "title": "Let's begin"
 }$json$::jsonb,
   true
 ),
 (
-  'aa1ba885-fc04-42d3-828e-5059caa758fe',
+  'ea5c4745-8ff3-487a-bfca-aee206e1817b',
   3,
   'vocabulary',
   null,
@@ -454,19 +455,19 @@ values
   $json${
   "words": [
     {
-      "word": "Hello",
+      "word": "Because",
       "bg": "#FAECE7"
     },
     {
-      "word": "Call Me",
+      "word": "Easy",
       "bg": "#E1F5EE"
     },
     {
-      "word": "Send Me A Message",
+      "word": "Quick",
       "bg": "#EEEDFE"
     },
     {
-      "word": "See You",
+      "word": "Prefer",
       "bg": "#FAEEDA"
     }
   ],
@@ -476,27 +477,27 @@ values
   true
 ),
 (
-  'aa1ba885-fc04-42d3-828e-5059caa758fe',
+  'ea5c4745-8ff3-487a-bfca-aee206e1817b',
   4,
   'phrases',
   null,
   null,
   $json${
   "teacher": [
-    "How do you start a call?",
-    "How do you end a message?"
+    "Do you prefer calls or messages?",
+    "Why?"
   ],
   "student": [
-    "I say 'Hello'.",
-    "I say 'See you!'"
+    "I prefer messages because they are quick.",
+    "I prefer calls because they are easy."
   ],
-  "note": "Think about a real call or message you sent!",
+  "note": "Two answers are given. Choose the more natural one.",
   "title": "Practice the Conversation"
 }$json$::jsonb,
   true
 ),
 (
-  'aa1ba885-fc04-42d3-828e-5059caa758fe',
+  'ea5c4745-8ff3-487a-bfca-aee206e1817b',
   5,
   'activity',
   null,
@@ -505,27 +506,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "[Hello]! How are you?"
+      "text": "I [prefer] messages [because] they are [quick]."
     },
     {
       "speaker": "B",
-      "text": "[Call me] later, please."
+      "text": "I prefer calls because they are [easy]."
     },
     {
       "speaker": "A",
-      "text": "[See you] soon!"
+      "text": "Messages are faster for me."
     }
   ],
   "blanks": [
-    "Hello",
-    "Call me",
-    "See you"
+    "prefer",
+    "because",
+    "easy"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'aa1ba885-fc04-42d3-828e-5059caa758fe',
+  'ea5c4745-8ff3-487a-bfca-aee206e1817b',
   6,
   'speaking',
   null,
@@ -534,19 +535,19 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "Hello! How are you?"
+      "text": "Do you prefer calls or messages?"
     },
     {
       "speaker": "B",
-      "text": "I'm good, thank you! Can you call me later?"
+      "text": "I prefer messages because they are quick. Do you prefer calls?"
     },
     {
       "speaker": "A",
-      "text": "Yes, of course! See you soon."
+      "text": "Yes, I prefer calls because they are easy for me."
     },
     {
       "speaker": "B",
-      "text": "See you!"
+      "text": "That makes sense."
     }
   ],
   "note": "Switch! Student becomes A, teacher becomes B."
@@ -554,49 +555,49 @@ values
   true
 ),
 (
-  'aa1ba885-fc04-42d3-828e-5059caa758fe',
+  'ea5c4745-8ff3-487a-bfca-aee206e1817b',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "Hello! How are you? I'm fine, thank you. Can you send me a message later? Yes, of course. Thank you! See you soon!",
+  "text": "I prefer messages because they are quick. My husband prefers calls because they are easy for him.",
   "questions": [
-    "How does the call start?",
-    "What does the writer ask for?",
-    "How does the call end?"
+    "What does the writer prefer?",
+    "Why does the writer prefer messages?",
+    "What does the husband prefer?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'aa1ba885-fc04-42d3-828e-5059caa758fe',
+  'ea5c4745-8ff3-487a-bfca-aee206e1817b',
   8,
   'writing',
   null,
   null,
   $json${
   "prompts": [
-    "Hello! How are ___?",
-    "Please send me a ___.",
-    "___ soon!"
+    "I prefer ___ because ___.",
+    "My ___ prefers ___.",
+    "It is easy/quick for me."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'aa1ba885-fc04-42d3-828e-5059caa758fe',
+  'ea5c4745-8ff3-487a-bfca-aee206e1817b',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Say 'Hello' and 'See you'",
-    "Say 'Call me' / 'Send me a message'",
-    "Have a simple phone conversation"
+    "Give a preference with a reason",
+    "Use 'because' with one clause",
+    "Talk about communication preferences"
   ],
-  "challenge": "Call me and have a short conversation, from hello to goodbye!"
+  "challenge": "Tell me if you prefer calls or messages, and why!"
 }$json$::jsonb,
   true
 );
@@ -604,13 +605,13 @@ values
 -- Lesson 4: Tech Questions
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '3a64c431-6496-4279-ab89-ca6257b5d97a',
+  'fa6a7797-b0d9-40ec-9d9e-cf416334524e',
   'Tech Questions',
   'A1',
   'adults',
   8,
   4,
-  'Answer simple questions about technology use.',
+  'Combine devices, habits, and reasons into a short talk. [Combination, Lesson 4: production]',
   25,
   9,
   true
@@ -619,7 +620,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '3a64c431-6496-4279-ab89-ca6257b5d97a',
+  'fa6a7797-b0d9-40ec-9d9e-cf416334524e',
   1,
   'title',
   null,
@@ -630,23 +631,23 @@ values
   true
 ),
 (
-  '3a64c431-6496-4279-ab89-ca6257b5d97a',
+  'fa6a7797-b0d9-40ec-9d9e-cf416334524e',
   2,
   'warmup',
   null,
   null,
   $json${
-  "display": "",
+  "display": "⏱️",
   "questions": [
-    "Do you use email every day?",
-    "What app do you use most?"
+    "How much screen time do you have?",
+    "Do you take a break from your phone?"
   ],
-  "title": "Warm-up"
+  "title": "Let's begin"
 }$json$::jsonb,
   true
 ),
 (
-  '3a64c431-6496-4279-ab89-ca6257b5d97a',
+  'fa6a7797-b0d9-40ec-9d9e-cf416334524e',
   3,
   'vocabulary',
   null,
@@ -654,19 +655,19 @@ values
   $json${
   "words": [
     {
-      "word": "Do You Use",
+      "word": "Screen time",
       "bg": "#FAECE7"
     },
     {
-      "word": "What App",
+      "word": "Careful",
       "bg": "#E1F5EE"
     },
     {
-      "word": "Every Day",
+      "word": "Break",
       "bg": "#EEEDFE"
     },
     {
-      "word": "Email",
+      "word": "Balance",
       "bg": "#FAEEDA"
     }
   ],
@@ -676,27 +677,27 @@ values
   true
 ),
 (
-  '3a64c431-6496-4279-ab89-ca6257b5d97a',
+  'fa6a7797-b0d9-40ec-9d9e-cf416334524e',
   4,
   'phrases',
   null,
   null,
   $json${
   "teacher": [
-    "Do you use email?",
-    "What app do you use?"
+    "How much screen time do you have?",
+    "Do you take a break?"
   ],
   "student": [
-    "Yes, I use email every day.",
-    "I use a message app."
+    "I have a lot of screen time.",
+    "Yes, I take a break at night."
   ],
-  "note": "Answer about your real tech habits!",
+  "note": "Put it all together: device + habit + reason + opinion.",
   "title": "Practice the Conversation"
 }$json$::jsonb,
   true
 ),
 (
-  '3a64c431-6496-4279-ab89-ca6257b5d97a',
+  'fa6a7797-b0d9-40ec-9d9e-cf416334524e',
   5,
   'activity',
   null,
@@ -705,27 +706,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "[Do you use] a computer?"
+      "text": "I use my phone for [screen time] every day."
     },
     {
       "speaker": "B",
-      "text": "[What app] do you use?"
+      "text": "I try to be [careful] with it."
     },
     {
       "speaker": "A",
-      "text": "I use [email] every day."
+      "text": "I take a [break] at night."
     }
   ],
   "blanks": [
-    "Do you use",
-    "What app",
-    "email"
+    "screen time",
+    "careful",
+    "break"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '3a64c431-6496-4279-ab89-ca6257b5d97a',
+  'fa6a7797-b0d9-40ec-9d9e-cf416334524e',
   6,
   'speaking',
   null,
@@ -734,69 +735,69 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "Do you use email every day?"
+      "text": "Tell me about your phone habits."
     },
     {
       "speaker": "B",
-      "text": "Yes, I use it every day for work."
+      "text": "I check my phone every day because I text my colleagues."
     },
     {
       "speaker": "A",
-      "text": "What app do you use most?"
+      "text": "I try to have a balance, so I take a break at night."
     },
     {
       "speaker": "B",
-      "text": "I use a message app the most!"
+      "text": "That's a good habit!"
     }
   ],
-  "note": "Switch! Student becomes A, teacher becomes B."
+  "note": "Mini talk: tell me all about your phone habits in a few sentences."
 }$json$::jsonb,
   true
 ),
 (
-  '3a64c431-6496-4279-ab89-ca6257b5d97a',
+  'fa6a7797-b0d9-40ec-9d9e-cf416334524e',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "Do you use email every day? Yes, I use it every day. What app do you use? I use a message app. Technology is part of my daily work!",
+  "text": "I check my phone every day because I text my colleagues. I try to have a balance, so I take a break at night.",
   "questions": [
-    "Does the writer use email every day?",
-    "What app does the writer use?",
-    "Is technology part of daily work?"
+    "Why does the writer check the phone?",
+    "What does the writer try to have?",
+    "When does the writer take a break?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '3a64c431-6496-4279-ab89-ca6257b5d97a',
+  'fa6a7797-b0d9-40ec-9d9e-cf416334524e',
   8,
   'writing',
   null,
   null,
   $json${
   "prompts": [
-    "Do you use ___? ___.",
-    "My favorite app is ___.",
-    "I use technology to ___."
+    "I use my phone because ___.",
+    "I try to have a balance by ___.",
+    "I take a break at ___."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '3a64c431-6496-4279-ab89-ca6257b5d97a',
+  'fa6a7797-b0d9-40ec-9d9e-cf416334524e',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Ask 'Do you use ___?'",
-    "Ask 'What app do you use?'",
-    "Talk about technology use"
+    "Say why I use my phone",
+    "Talk about screen time balance",
+    "Say how I take a break"
   ],
-  "challenge": "Ask me what app I use and why!"
+  "challenge": "Tell me all about your phone habits and how you balance them!"
 }$json$::jsonb,
   true
 );
@@ -804,13 +805,13 @@ values
 -- Lesson 5: Unit Review
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '0b5496ff-b0e1-45c9-99d0-19524f9765b9',
+  '317fd1c5-ae62-4250-82f7-475bf7269aa6',
   'Unit Review',
   'A1',
   'adults',
   8,
   5,
-  'Talk briefly about technology and communication habits.',
+  'Review devices, habits, and preferences. [Combination, Lesson 5: tier-matched mixed review]',
   25,
   9,
   true
@@ -819,7 +820,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '0b5496ff-b0e1-45c9-99d0-19524f9765b9',
+  '317fd1c5-ae62-4250-82f7-475bf7269aa6',
   1,
   'title',
   null,
@@ -830,23 +831,23 @@ values
   true
 ),
 (
-  '0b5496ff-b0e1-45c9-99d0-19524f9765b9',
+  '317fd1c5-ae62-4250-82f7-475bf7269aa6',
   2,
   'warmup',
   null,
   null,
   $json${
-  "display": "",
+  "display": "📱",
   "questions": [
-    "What tech words do you remember?",
-    "What do you do with technology?"
+    "How often do you use your phone?",
+    "Do you prefer calls or messages?"
   ],
-  "title": "Unit Review"
+  "title": "Let's begin"
 }$json$::jsonb,
   true
 ),
 (
-  '0b5496ff-b0e1-45c9-99d0-19524f9765b9',
+  '317fd1c5-ae62-4250-82f7-475bf7269aa6',
   3,
   'vocabulary',
   null,
@@ -858,37 +859,37 @@ values
       "bg": "#FAECE7"
     },
     {
-      "word": "Email",
+      "word": "Every day",
       "bg": "#E1F5EE"
     },
     {
-      "word": "Call",
+      "word": "Prefer",
       "bg": "#EEEDFE"
     },
     {
-      "word": "Message",
+      "word": "Balance",
       "bg": "#FAEEDA"
     }
   ],
-  "title": "Review Words",
+  "title": "New Words",
   "subtitle": "Tap a card to see it bigger."
 }$json$::jsonb,
   true
 ),
 (
-  '0b5496ff-b0e1-45c9-99d0-19524f9765b9',
+  '317fd1c5-ae62-4250-82f7-475bf7269aa6',
   4,
   'phrases',
   null,
   null,
   $json${
   "teacher": [
-    "What device do you use?",
-    "What do you do with technology?"
+    "How often do you use your phone?",
+    "Do you prefer calls or messages?"
   ],
   "student": [
-    "I use a phone.",
-    "I send emails and call people."
+    "I use it every day.",
+    "I prefer messages."
   ],
   "note": "Use everything you learned this unit!",
   "title": "Practice the Conversation"
@@ -896,7 +897,7 @@ values
   true
 ),
 (
-  '0b5496ff-b0e1-45c9-99d0-19524f9765b9',
+  '317fd1c5-ae62-4250-82f7-475bf7269aa6',
   5,
   'activity',
   null,
@@ -905,27 +906,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "I use a [phone]."
+      "text": "I use my [phone] [every day]."
     },
     {
       "speaker": "B",
-      "text": "I send [email]s at work."
+      "text": "I [prefer] messages."
     },
     {
       "speaker": "A",
-      "text": "I [call] my family."
+      "text": "I try to have a [balance]."
     }
   ],
   "blanks": [
     "phone",
-    "email",
-    "call"
+    "every day",
+    "prefer"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '0b5496ff-b0e1-45c9-99d0-19524f9765b9',
+  '317fd1c5-ae62-4250-82f7-475bf7269aa6',
   6,
   'speaking',
   null,
@@ -934,19 +935,19 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "What device do you use most?"
+      "text": "Tell me about your phone habits."
     },
     {
       "speaker": "B",
-      "text": "I use my phone and laptop the most."
+      "text": "I use my phone every day. I prefer messages because they are quick."
     },
     {
       "speaker": "A",
-      "text": "What do you do with them?"
+      "text": "I try to have a balance and take a break at night."
     },
     {
       "speaker": "B",
-      "text": "I send emails and call my family!"
+      "text": "Good balance!"
     }
   ],
   "note": "Switch! Student becomes A, teacher becomes B."
@@ -954,50 +955,49 @@ values
   true
 ),
 (
-  '0b5496ff-b0e1-45c9-99d0-19524f9765b9',
+  '317fd1c5-ae62-4250-82f7-475bf7269aa6',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "I use a phone every day. At work, I send emails and join meetings. I call my family on weekends. Technology helps me stay connected!",
+  "text": "I use my phone every day. I prefer messages because they are quick. I try to have a balance and take a break at night.",
   "questions": [
-    "What device does the writer use?",
-    "What does the writer do at work?",
-    "Who does the writer call?"
+    "How often does the writer use the phone?",
+    "What does the writer prefer?",
+    "How does the writer balance screen time?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '0b5496ff-b0e1-45c9-99d0-19524f9765b9',
+  '317fd1c5-ae62-4250-82f7-475bf7269aa6',
   8,
   'writing',
   null,
   null,
   $json${
   "prompts": [
-    "I use a ___.",
-    "At work, I ___.",
-    "I call ___."
+    "I use my phone ___.",
+    "I prefer ___ because ___.",
+    "I balance it by ___."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '0b5496ff-b0e1-45c9-99d0-19524f9765b9',
+  '317fd1c5-ae62-4250-82f7-475bf7269aa6',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Name tech words",
-    "Talk about communication habits",
-    "Use message/call phrases",
-    "Answer tech questions"
+    "Talk about device habits",
+    "Give a preference with a reason",
+    "Talk about balance"
   ],
-  "challenge": "Tell me about the technology you use every day!"
+  "challenge": "Tell me all about your tech habits!"
 }$json$::jsonb,
   true
 );

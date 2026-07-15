@@ -1,16 +1,17 @@
--- A1 Adults Unit 3: Home and Everyday Objects (5 lessons)
+-- A1 Adults Unit 3: Home and Everyday Objects (5 lessons) — TIERED (Foundation)
+-- Regenerated per the Sentivo Intra-Level Progression Framework + lesson-level escalation + task rotation.
 -- Run this whole script in the Supabase SQL editor.
 
 -- Lesson 1: Rooms at Home
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '6ec93442-94bc-4f87-8ae9-4f6550506ed9',
+  '6ef72f2c-5aa5-4179-bc5b-af0aa17eb7b8',
   'Rooms at Home',
   'A1',
   'adults',
   3,
   1,
-  'Name common rooms and basic home vocabulary.',
+  'Name rooms at home. [Foundation, Lesson 1: notice/receptive]',
   25,
   9,
   true
@@ -19,7 +20,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '6ec93442-94bc-4f87-8ae9-4f6550506ed9',
+  '6ef72f2c-5aa5-4179-bc5b-af0aa17eb7b8',
   1,
   'title',
   null,
@@ -30,23 +31,23 @@ values
   true
 ),
 (
-  '6ec93442-94bc-4f87-8ae9-4f6550506ed9',
+  '6ef72f2c-5aa5-4179-bc5b-af0aa17eb7b8',
   2,
   'warmup',
   null,
   null,
   $json${
-  "display": "",
+  "display": "🏠",
   "questions": [
-    "What rooms are in your home?",
-    "Do you have an office at home?"
+    "How many rooms does your home have?",
+    "Where is your kitchen?"
   ],
-  "title": "Warm-up"
+  "title": "Let's begin"
 }$json$::jsonb,
   true
 ),
 (
-  '6ec93442-94bc-4f87-8ae9-4f6550506ed9',
+  '6ef72f2c-5aa5-4179-bc5b-af0aa17eb7b8',
   3,
   'vocabulary',
   null,
@@ -62,11 +63,11 @@ values
       "bg": "#E1F5EE"
     },
     {
-      "word": "Living Room",
+      "word": "Bathroom",
       "bg": "#EEEDFE"
     },
     {
-      "word": "Office",
+      "word": "Living room",
       "bg": "#FAEEDA"
     }
   ],
@@ -76,7 +77,7 @@ values
   true
 ),
 (
-  '6ec93442-94bc-4f87-8ae9-4f6550506ed9',
+  '6ef72f2c-5aa5-4179-bc5b-af0aa17eb7b8',
   4,
   'phrases',
   null,
@@ -84,19 +85,19 @@ values
   $json${
   "teacher": [
     "What room is this?",
-    "Do you have an office?"
+    "Where is your kitchen?"
   ],
   "student": [
     "This is the kitchen.",
-    "Yes, I have a small office."
+    "My kitchen is here."
   ],
-  "note": "Think about the rooms in your own home!",
+  "note": "Read the model text, then practice it.",
   "title": "Practice the Conversation"
 }$json$::jsonb,
   true
 ),
 (
-  '6ec93442-94bc-4f87-8ae9-4f6550506ed9',
+  '6ef72f2c-5aa5-4179-bc5b-af0aa17eb7b8',
   5,
   'activity',
   null,
@@ -113,19 +114,19 @@ values
     },
     {
       "speaker": "A",
-      "text": "This is my [office]."
+      "text": "This is the [bathroom]."
     }
   ],
   "blanks": [
     "kitchen",
     "bedroom",
-    "office"
+    "bathroom"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '6ec93442-94bc-4f87-8ae9-4f6550506ed9',
+  '6ef72f2c-5aa5-4179-bc5b-af0aa17eb7b8',
   6,
   'speaking',
   null,
@@ -134,69 +135,69 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "What rooms are in your home?"
+      "text": "This is the kitchen."
     },
     {
       "speaker": "B",
-      "text": "I have a kitchen, a bedroom, and a living room."
+      "text": "This is the bedroom."
     },
     {
       "speaker": "A",
-      "text": "I have an office too!"
+      "text": "This is the bathroom."
     },
     {
       "speaker": "B",
-      "text": "That's useful for work!"
+      "text": "This is the living room!"
     }
   ],
-  "note": "Switch! Student becomes A, teacher becomes B."
+  "note": "Teacher says the line first. Student repeats, then says it alone."
 }$json$::jsonb,
   true
 ),
 (
-  '6ec93442-94bc-4f87-8ae9-4f6550506ed9',
+  '6ef72f2c-5aa5-4179-bc5b-af0aa17eb7b8',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "In my home, I have a kitchen. I have a bedroom. I have a living room. I have a small office. I like my home!",
+  "text": "This is the kitchen. This is the bedroom. This is the bathroom.",
   "questions": [
-    "What rooms are in the home?",
-    "Does the writer have an office?",
-    "Does the writer like their home?"
+    "What is the first room?",
+    "What is the second room?",
+    "Name all three rooms."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '6ec93442-94bc-4f87-8ae9-4f6550506ed9',
+  '6ef72f2c-5aa5-4179-bc5b-af0aa17eb7b8',
   8,
   'writing',
   null,
   null,
   $json${
   "prompts": [
-    "In my home, I have a ___.",
     "This is the ___.",
-    "My favorite room is the ___."
+    "My home has a ___.",
+    "I have one ___."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '6ec93442-94bc-4f87-8ae9-4f6550506ed9',
+  '6ef72f2c-5aa5-4179-bc5b-af0aa17eb7b8',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Name four rooms",
+    "Name 4 rooms",
     "Say 'This is the ___'",
     "Talk about my home"
   ],
-  "challenge": "Name three rooms in your home!"
+  "challenge": "Tell me the rooms in your home!"
 }$json$::jsonb,
   true
 );
@@ -204,13 +205,13 @@ values
 -- Lesson 2: Things at Home
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '100c8b90-b89b-4fb2-9d00-de25aca7f735',
+  'c5274447-6a91-4058-852c-ed5d9fe9d9e2',
   'Things at Home',
   'A1',
   'adults',
   3,
   2,
-  'Name common household objects.',
+  'Name everyday objects with ''there is/are''. [Foundation, Lesson 2: controlled practice]',
   25,
   9,
   true
@@ -219,7 +220,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '100c8b90-b89b-4fb2-9d00-de25aca7f735',
+  'c5274447-6a91-4058-852c-ed5d9fe9d9e2',
   1,
   'title',
   null,
@@ -230,23 +231,23 @@ values
   true
 ),
 (
-  '100c8b90-b89b-4fb2-9d00-de25aca7f735',
+  'c5274447-6a91-4058-852c-ed5d9fe9d9e2',
   2,
   'warmup',
   null,
   null,
   $json${
-  "display": "",
+  "display": "🛋️",
   "questions": [
-    "What furniture is in your living room?",
-    "Do you have a sofa?"
+    "Is there a sofa in your living room?",
+    "How many chairs are there?"
   ],
-  "title": "Warm-up"
+  "title": "Let's begin"
 }$json$::jsonb,
   true
 ),
 (
-  '100c8b90-b89b-4fb2-9d00-de25aca7f735',
+  'c5274447-6a91-4058-852c-ed5d9fe9d9e2',
   3,
   'vocabulary',
   null,
@@ -254,19 +255,19 @@ values
   $json${
   "words": [
     {
-      "word": "Table",
+      "word": "There is",
       "bg": "#FAECE7"
     },
     {
-      "word": "Chair",
+      "word": "There are",
       "bg": "#E1F5EE"
     },
     {
-      "word": "Fridge",
+      "word": "Sofa",
       "bg": "#EEEDFE"
     },
     {
-      "word": "Sofa",
+      "word": "Table",
       "bg": "#FAEEDA"
     }
   ],
@@ -276,27 +277,27 @@ values
   true
 ),
 (
-  '100c8b90-b89b-4fb2-9d00-de25aca7f735',
+  'c5274447-6a91-4058-852c-ed5d9fe9d9e2',
   4,
   'phrases',
   null,
   null,
   $json${
   "teacher": [
-    "What is this?",
-    "Is this a table?"
+    "What is in your living room?",
+    "Is there a table?"
   ],
   "student": [
-    "It is a table.",
-    "Yes, it is a chair!"
+    "There is a sofa.",
+    "Yes, there is a table."
   ],
-  "note": "Think about furniture in your own home!",
+  "note": "Use the word bank: there is, there are, sofa, table.",
   "title": "Practice the Conversation"
 }$json$::jsonb,
   true
 ),
 (
-  '100c8b90-b89b-4fb2-9d00-de25aca7f735',
+  'c5274447-6a91-4058-852c-ed5d9fe9d9e2',
   5,
   'activity',
   null,
@@ -305,27 +306,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "This is a [table]."
+      "text": "[There is] a [sofa]."
     },
     {
       "speaker": "B",
-      "text": "This is a [fridge]."
+      "text": "[There are] two chairs."
     },
     {
       "speaker": "A",
-      "text": "This is a [sofa]."
+      "text": "There is a [table] too."
     }
   ],
   "blanks": [
-    "table",
-    "fridge",
-    "sofa"
+    "there is",
+    "there are",
+    "table"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '100c8b90-b89b-4fb2-9d00-de25aca7f735',
+  'c5274447-6a91-4058-852c-ed5d9fe9d9e2',
   6,
   'speaking',
   null,
@@ -334,19 +335,19 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "What is this?"
+      "text": "What is in your living room?"
     },
     {
       "speaker": "B",
-      "text": "It is a lamp!"
+      "text": "There is a sofa. There are two chairs. What about yours?"
     },
     {
       "speaker": "A",
-      "text": "Where is the sofa?"
+      "text": "There is a table and a sofa too."
     },
     {
       "speaker": "B",
-      "text": "The sofa is in the living room!"
+      "text": "Nice room!"
     }
   ],
   "note": "Switch! Student becomes A, teacher becomes B."
@@ -354,49 +355,49 @@ values
   true
 ),
 (
-  '100c8b90-b89b-4fb2-9d00-de25aca7f735',
+  'c5274447-6a91-4058-852c-ed5d9fe9d9e2',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "My kitchen has a table and a fridge. My bedroom has a bed and a lamp. My living room has a sofa. I like my furniture!",
+  "text": "There is a sofa in my living room. There are two chairs. There is a table too.",
   "questions": [
-    "What is in the kitchen?",
-    "What is in the bedroom?",
-    "What is in the living room?"
+    "What is in the living room?",
+    "How many chairs?",
+    "Is there a table?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '100c8b90-b89b-4fb2-9d00-de25aca7f735',
+  'c5274447-6a91-4058-852c-ed5d9fe9d9e2',
   8,
   'writing',
   null,
   null,
   $json${
   "prompts": [
-    "My kitchen has a ___.",
-    "My bedroom has a ___.",
-    "My living room has a ___."
+    "There is a ___ in my ___.",
+    "There are ___.",
+    "There is a ___ too."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '100c8b90-b89b-4fb2-9d00-de25aca7f735',
+  'c5274447-6a91-4058-852c-ed5d9fe9d9e2',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Name four furniture items",
-    "Say what's in each room",
-    "Talk about furniture"
+    "Use 'there is' and 'there are'",
+    "Name sofa, chair, table",
+    "Describe my living room"
   ],
-  "challenge": "Name one piece of furniture in each room of your home!"
+  "challenge": "Tell me what's in your living room!"
 }$json$::jsonb,
   true
 );
@@ -404,13 +405,13 @@ values
 -- Lesson 3: Where Things Are
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '0e15ff6c-947e-4413-825e-193685ae7342',
+  '78e0efa1-2763-4998-8cc3-d4cb80469bce',
   'Where Things Are',
   'A1',
   'adults',
   3,
   3,
-  'Say where objects are using basic prepositions.',
+  'Ask and answer where things are. [Foundation, Lesson 3: freer practice, role reversal]',
   25,
   9,
   true
@@ -419,7 +420,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '0e15ff6c-947e-4413-825e-193685ae7342',
+  '78e0efa1-2763-4998-8cc3-d4cb80469bce',
   1,
   'title',
   null,
@@ -430,23 +431,23 @@ values
   true
 ),
 (
-  '0e15ff6c-947e-4413-825e-193685ae7342',
+  '78e0efa1-2763-4998-8cc3-d4cb80469bce',
   2,
   'warmup',
   null,
   null,
   $json${
-  "display": "",
+  "display": "📍",
   "questions": [
-    "Where is your phone?",
-    "Is your bag on the table?"
+    "Where is your bed?",
+    "What is on your table?"
   ],
-  "title": "Warm-up"
+  "title": "Let's begin"
 }$json$::jsonb,
   true
 ),
 (
-  '0e15ff6c-947e-4413-825e-193685ae7342',
+  '78e0efa1-2763-4998-8cc3-d4cb80469bce',
   3,
   'vocabulary',
   null,
@@ -454,7 +455,7 @@ values
   $json${
   "words": [
     {
-      "word": "On",
+      "word": "Where is",
       "bg": "#FAECE7"
     },
     {
@@ -462,11 +463,11 @@ values
       "bg": "#E1F5EE"
     },
     {
-      "word": "Under",
+      "word": "On",
       "bg": "#EEEDFE"
     },
     {
-      "word": "Next To",
+      "word": "Next to",
       "bg": "#FAEEDA"
     }
   ],
@@ -476,27 +477,27 @@ values
   true
 ),
 (
-  '0e15ff6c-947e-4413-825e-193685ae7342',
+  '78e0efa1-2763-4998-8cc3-d4cb80469bce',
   4,
   'phrases',
   null,
   null,
   $json${
   "teacher": [
-    "Where is it?",
-    "Is it on the table?"
+    "Where is your sofa?",
+    "What is on the table?"
   ],
   "student": [
-    "It is on the table.",
-    "No, it is under the table!"
+    "My sofa is in the living room.",
+    "A lamp is on the table."
   ],
-  "note": "Look around and find real objects!",
+  "note": "Ask me first this time, then I'll ask you!",
   "title": "Practice the Conversation"
 }$json$::jsonb,
   true
 ),
 (
-  '0e15ff6c-947e-4413-825e-193685ae7342',
+  '78e0efa1-2763-4998-8cc3-d4cb80469bce',
   5,
   'activity',
   null,
@@ -505,27 +506,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "The keys are [on] the table."
+      "text": "[Where is] your bed?"
     },
     {
       "speaker": "B",
-      "text": "The shoes are [under] the bed."
+      "text": "It is [in] my bedroom."
     },
     {
       "speaker": "A",
-      "text": "The lamp is [next to] the sofa."
+      "text": "A lamp is [on] my table."
     }
   ],
   "blanks": [
-    "on",
-    "under",
-    "next to"
+    "where is",
+    "in",
+    "on"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '0e15ff6c-947e-4413-825e-193685ae7342',
+  '78e0efa1-2763-4998-8cc3-d4cb80469bce',
   6,
   'speaking',
   null,
@@ -534,69 +535,69 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "Where are your keys?"
+      "text": "Where is your bed?"
     },
     {
       "speaker": "B",
-      "text": "My keys are on the table."
+      "text": "It is in my bedroom. Where is your sofa?"
     },
     {
       "speaker": "A",
-      "text": "Where is your bag?"
+      "text": "It is in the living room, next to the window."
     },
     {
       "speaker": "B",
-      "text": "My bag is under the chair!"
+      "text": "Your turn to ask me something!"
     }
   ],
-  "note": "Switch! Student becomes A, teacher becomes B."
+  "note": "Student asks first this time. Teacher answers, then asks back."
 }$json$::jsonb,
   true
 ),
 (
-  '0e15ff6c-947e-4413-825e-193685ae7342',
+  '78e0efa1-2763-4998-8cc3-d4cb80469bce',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "Where are my keys? My keys are on the table. Where is my bag? My bag is under the chair. Where is my phone? My phone is next to the lamp!",
+  "text": "Where is my bed? It is in my bedroom. Where is the lamp? It is next to my bed.",
   "questions": [
-    "Where are the keys?",
-    "Where is the bag?",
-    "Where is the phone?"
+    "Where is the bed?",
+    "Where is the lamp?",
+    "What word means 'beside'?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '0e15ff6c-947e-4413-825e-193685ae7342',
+  '78e0efa1-2763-4998-8cc3-d4cb80469bce',
   8,
   'writing',
   null,
   null,
   $json${
   "prompts": [
-    "The ___ is on the ___.",
-    "The ___ is under the ___.",
-    "The ___ is next to the ___."
+    "My ___ is in the ___.",
+    "The ___ is next to my ___.",
+    "Where is the ___?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '0e15ff6c-947e-4413-825e-193685ae7342',
+  '78e0efa1-2763-4998-8cc3-d4cb80469bce',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Say 'on', 'in', 'under', 'next to'",
-    "Ask 'Where is it?'",
-    "Find objects in a picture"
+    "Ask 'Where is ___?'",
+    "Use 'in' and 'next to'",
+    "Describe where things are at home"
   ],
-  "challenge": "Tell me where something in your home is right now!"
+  "challenge": "Ask me where something is in your home!"
 }$json$::jsonb,
   true
 );
@@ -604,13 +605,13 @@ values
 -- Lesson 4: My Home
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  'b508fa93-8bc9-47da-9494-3d323f058f45',
+  'ac44d134-c601-4ddb-b395-51a5968efa77',
   'My Home',
   'A1',
   'adults',
   3,
   4,
-  'Give a short simple description of their home.',
+  'Combine rooms, objects, and location into a home description. [Foundation, Lesson 4: production]',
   25,
   9,
   true
@@ -619,7 +620,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  'b508fa93-8bc9-47da-9494-3d323f058f45',
+  'ac44d134-c601-4ddb-b395-51a5968efa77',
   1,
   'title',
   null,
@@ -630,23 +631,23 @@ values
   true
 ),
 (
-  'b508fa93-8bc9-47da-9494-3d323f058f45',
+  'ac44d134-c601-4ddb-b395-51a5968efa77',
   2,
   'warmup',
   null,
   null,
   $json${
-  "display": "",
+  "display": "🏡",
   "questions": [
-    "Is your home big or small?",
-    "How many rooms does your home have?"
+    "Do you live in an apartment or a house?",
+    "Is your home comfortable?"
   ],
-  "title": "Warm-up"
+  "title": "Let's begin"
 }$json$::jsonb,
   true
 ),
 (
-  'b508fa93-8bc9-47da-9494-3d323f058f45',
+  'ac44d134-c601-4ddb-b395-51a5968efa77',
   3,
   'vocabulary',
   null,
@@ -654,19 +655,19 @@ values
   $json${
   "words": [
     {
-      "word": "My Home Has",
+      "word": "Apartment",
       "bg": "#FAECE7"
     },
     {
-      "word": "There Is",
+      "word": "House",
       "bg": "#E1F5EE"
     },
     {
-      "word": "There Are",
+      "word": "Comfortable",
       "bg": "#EEEDFE"
     },
     {
-      "word": "Big",
+      "word": "Show",
       "bg": "#FAEEDA"
     }
   ],
@@ -676,27 +677,27 @@ values
   true
 ),
 (
-  'b508fa93-8bc9-47da-9494-3d323f058f45',
+  'ac44d134-c601-4ddb-b395-51a5968efa77',
   4,
   'phrases',
   null,
   null,
   $json${
   "teacher": [
-    "Is your home big?",
-    "What's in your home?"
+    "Do you live in an apartment or a house?",
+    "Is it comfortable?"
   ],
   "student": [
-    "My home is small.",
-    "There is a kitchen and a bedroom."
+    "I live in an apartment.",
+    "Yes, it is comfortable."
   ],
-  "note": "Describe your real home!",
+  "note": "Put it all together: rooms + objects + location.",
   "title": "Practice the Conversation"
 }$json$::jsonb,
   true
 ),
 (
-  'b508fa93-8bc9-47da-9494-3d323f058f45',
+  'ac44d134-c601-4ddb-b395-51a5968efa77',
   5,
   'activity',
   null,
@@ -705,27 +706,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "[My home has] three rooms."
+      "text": "I live in an [apartment]."
     },
     {
       "speaker": "B",
-      "text": "[There is] a balcony."
+      "text": "I live in a [house]."
     },
     {
       "speaker": "A",
-      "text": "[There are] two bedrooms."
+      "text": "My home is [comfortable]."
     }
   ],
   "blanks": [
-    "My home has",
-    "There is",
-    "There are"
+    "apartment",
+    "house",
+    "comfortable"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'b508fa93-8bc9-47da-9494-3d323f058f45',
+  'ac44d134-c601-4ddb-b395-51a5968efa77',
   6,
   'speaking',
   null,
@@ -734,69 +735,69 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "Is your home big or small?"
+      "text": "Tell me about your home."
     },
     {
       "speaker": "B",
-      "text": "My home is small but comfortable."
+      "text": "I live in an apartment. There is a kitchen, a bedroom, and a living room."
     },
     {
       "speaker": "A",
-      "text": "What's in your home?"
+      "text": "There is a sofa next to the window. My home is comfortable."
     },
     {
       "speaker": "B",
-      "text": "There is a kitchen and there are two bedrooms!"
+      "text": "Sounds like a nice home!"
     }
   ],
-  "note": "Switch! Student becomes A, teacher becomes B."
+  "note": "Mini talk: tell me all about your home in a few sentences."
 }$json$::jsonb,
   true
 ),
 (
-  'b508fa93-8bc9-47da-9494-3d323f058f45',
+  'ac44d134-c601-4ddb-b395-51a5968efa77',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "My home is small. There is a kitchen. There is a living room. There are two bedrooms. I like my home.",
+  "text": "I live in an apartment. There is a kitchen, a bedroom, and a living room. There is a sofa next to the window. My home is comfortable.",
   "questions": [
-    "Is the home big or small?",
-    "What is in the home?",
-    "How many bedrooms are there?"
+    "Does the writer live in an apartment or house?",
+    "What rooms are there?",
+    "Is the home comfortable?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'b508fa93-8bc9-47da-9494-3d323f058f45',
+  'ac44d134-c601-4ddb-b395-51a5968efa77',
   8,
   'writing',
   null,
   null,
   $json${
   "prompts": [
-    "My home is ___.",
-    "There is a ___.",
-    "There are ___."
+    "I live in a(n) ___.",
+    "There is a ___ and a ___.",
+    "My home is ___."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'b508fa93-8bc9-47da-9494-3d323f058f45',
+  'ac44d134-c601-4ddb-b395-51a5968efa77',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Say 'My home has ___'",
-    "Say 'There is' / 'There are'",
-    "Describe my own home"
+    "Describe my home type",
+    "Name rooms and objects",
+    "Say if my home is comfortable"
   ],
-  "challenge": "Describe your home to me using 'There is' and 'There are'!"
+  "challenge": "Tell me all about your home!"
 }$json$::jsonb,
   true
 );
@@ -804,13 +805,13 @@ values
 -- Lesson 5: Unit Review
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '25416f06-9c0b-404a-b798-f0e2ed3086e2',
+  'e7b92db9-7d8e-4b70-9866-23057cbbd366',
   'Unit Review',
   'A1',
   'adults',
   3,
   5,
-  'Describe a home and answer simple questions about it.',
+  'Review rooms, objects, and location. [Foundation, Lesson 5: tier-matched review]',
   25,
   9,
   true
@@ -819,7 +820,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '25416f06-9c0b-404a-b798-f0e2ed3086e2',
+  'e7b92db9-7d8e-4b70-9866-23057cbbd366',
   1,
   'title',
   null,
@@ -830,23 +831,23 @@ values
   true
 ),
 (
-  '25416f06-9c0b-404a-b798-f0e2ed3086e2',
+  'e7b92db9-7d8e-4b70-9866-23057cbbd366',
   2,
   'warmup',
   null,
   null,
   $json${
-  "display": "",
+  "display": "🏠",
   "questions": [
-    "What room words do you remember?",
-    "Can you describe your home?"
+    "What rooms are in your home?",
+    "Is your home comfortable?"
   ],
-  "title": "Unit Review"
+  "title": "Let's begin"
 }$json$::jsonb,
   true
 ),
 (
-  '25416f06-9c0b-404a-b798-f0e2ed3086e2',
+  'e7b92db9-7d8e-4b70-9866-23057cbbd366',
   3,
   'vocabulary',
   null,
@@ -854,29 +855,29 @@ values
   $json${
   "words": [
     {
-      "word": "Kitchen",
+      "word": "Home",
       "bg": "#FAECE7"
     },
     {
-      "word": "Bedroom",
+      "word": "There is",
       "bg": "#E1F5EE"
     },
     {
-      "word": "Table",
+      "word": "Kitchen",
       "bg": "#EEEDFE"
     },
     {
-      "word": "Sofa",
+      "word": "Comfortable",
       "bg": "#FAEEDA"
     }
   ],
-  "title": "Review Words",
+  "title": "New Words",
   "subtitle": "Tap a card to see it bigger."
 }$json$::jsonb,
   true
 ),
 (
-  '25416f06-9c0b-404a-b798-f0e2ed3086e2',
+  'e7b92db9-7d8e-4b70-9866-23057cbbd366',
   4,
   'phrases',
   null,
@@ -884,11 +885,11 @@ values
   $json${
   "teacher": [
     "What is in your home?",
-    "Where is your sofa?"
+    "Is it comfortable?"
   ],
   "student": [
-    "There is a kitchen.",
-    "It is in the living room."
+    "There is a kitchen and a bedroom.",
+    "Yes, it is comfortable."
   ],
   "note": "Use everything you learned this unit!",
   "title": "Practice the Conversation"
@@ -896,7 +897,7 @@ values
   true
 ),
 (
-  '25416f06-9c0b-404a-b798-f0e2ed3086e2',
+  'e7b92db9-7d8e-4b70-9866-23057cbbd366',
   5,
   'activity',
   null,
@@ -905,27 +906,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "This is the [kitchen]."
+      "text": "My [home] has three rooms."
     },
     {
       "speaker": "B",
-      "text": "This is a [table]."
+      "text": "[There is] a sofa in the living room."
     },
     {
       "speaker": "A",
-      "text": "[There are] two bedrooms."
+      "text": "My [kitchen] is next to the living room."
     }
   ],
   "blanks": [
-    "kitchen",
-    "table",
-    "There are"
+    "home",
+    "there is",
+    "kitchen"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '25416f06-9c0b-404a-b798-f0e2ed3086e2',
+  'e7b92db9-7d8e-4b70-9866-23057cbbd366',
   6,
   'speaking',
   null,
@@ -934,19 +935,19 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "What is in your home?"
+      "text": "Tell me about your home."
     },
     {
       "speaker": "B",
-      "text": "There is a kitchen, a living room, and two bedrooms."
+      "text": "My home has a kitchen and a bedroom. There is a sofa in the living room."
     },
     {
       "speaker": "A",
-      "text": "Where is your sofa?"
+      "text": "My home is comfortable."
     },
     {
       "speaker": "B",
-      "text": "It's in the living room!"
+      "text": "Nice home!"
     }
   ],
   "note": "Switch! Student becomes A, teacher becomes B."
@@ -954,50 +955,49 @@ values
   true
 ),
 (
-  '25416f06-9c0b-404a-b798-f0e2ed3086e2',
+  'e7b92db9-7d8e-4b70-9866-23057cbbd366',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "My home is small but nice. There is a kitchen and a living room. There are two bedrooms. My sofa is in the living room, next to the window. I like my home!",
+  "text": "My home has a kitchen and a bedroom. There is a sofa in the living room. My home is comfortable.",
   "questions": [
-    "Is the home big or small?",
-    "What rooms are there?",
-    "Where is the sofa?"
+    "What rooms are named?",
+    "What is in the living room?",
+    "Is the home comfortable?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '25416f06-9c0b-404a-b798-f0e2ed3086e2',
+  'e7b92db9-7d8e-4b70-9866-23057cbbd366',
   8,
   'writing',
   null,
   null,
   $json${
   "prompts": [
-    "My home has a ___.",
-    "My ___ is next to the ___.",
-    "There are ___ in my home."
+    "My home has ___.",
+    "There is a ___ in the ___.",
+    "My home is ___."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '25416f06-9c0b-404a-b798-f0e2ed3086e2',
+  'e7b92db9-7d8e-4b70-9866-23057cbbd366',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Name rooms and furniture",
-    "Use prepositions for location",
-    "Describe my home",
-    "Answer home questions"
+    "Name rooms and objects",
+    "Say where things are",
+    "Describe my home"
   ],
-  "challenge": "Give me a full description of your home!"
+  "challenge": "Tell me all about your home!"
 }$json$::jsonb,
   true
 );

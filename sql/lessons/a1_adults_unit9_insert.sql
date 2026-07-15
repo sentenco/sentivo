@@ -1,16 +1,17 @@
--- A1 Adults Unit 9: Travel and Transport (5 lessons)
+-- A1 Adults Unit 9: Travel and Transport (5 lessons) — TIERED (Bridge)
+-- Regenerated per the Sentivo Intra-Level Progression Framework + lesson-level escalation + task rotation.
 -- Run this whole script in the Supabase SQL editor.
 
 -- Lesson 1: Transport
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  'daff091c-90c7-4b37-ba76-0a7c6b27d665',
+  'cfcae3aa-14a7-44cf-bf2e-cfd407ff7efd',
   'Transport',
   'A1',
   'adults',
   9,
   1,
-  'Name common types of transport.',
+  'Name types of transport. [Bridge, Lesson 1: notice/receptive, read-and-identify]',
   25,
   9,
   true
@@ -19,7 +20,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  'daff091c-90c7-4b37-ba76-0a7c6b27d665',
+  'cfcae3aa-14a7-44cf-bf2e-cfd407ff7efd',
   1,
   'title',
   null,
@@ -30,23 +31,23 @@ values
   true
 ),
 (
-  'daff091c-90c7-4b37-ba76-0a7c6b27d665',
+  'cfcae3aa-14a7-44cf-bf2e-cfd407ff7efd',
   2,
   'warmup',
   null,
   null,
   $json${
-  "display": "",
+  "display": "🚌",
   "questions": [
-    "How do you travel to work?",
-    "Do you like taking the bus?"
+    "How do you get to work?",
+    "Do you take the bus or the train?"
   ],
-  "title": "Warm-up"
+  "title": "Let's begin"
 }$json$::jsonb,
   true
 ),
 (
-  'daff091c-90c7-4b37-ba76-0a7c6b27d665',
+  'cfcae3aa-14a7-44cf-bf2e-cfd407ff7efd',
   3,
   'vocabulary',
   null,
@@ -62,11 +63,11 @@ values
       "bg": "#E1F5EE"
     },
     {
-      "word": "Car",
+      "word": "Taxi",
       "bg": "#EEEDFE"
     },
     {
-      "word": "Bike",
+      "word": "Car",
       "bg": "#FAEEDA"
     }
   ],
@@ -76,27 +77,27 @@ values
   true
 ),
 (
-  'daff091c-90c7-4b37-ba76-0a7c6b27d665',
+  'cfcae3aa-14a7-44cf-bf2e-cfd407ff7efd',
   4,
   'phrases',
   null,
   null,
   $json${
   "teacher": [
-    "How do you go to work?",
+    "How do you get to work?",
     "Do you take the bus?"
   ],
   "student": [
-    "I go by car.",
-    "Yes, I take the bus!"
+    "I take the bus.",
+    "Yes, I take the bus every day."
   ],
-  "note": "Think about how you really travel!",
+  "note": "Read the model text, then find the transport words.",
   "title": "Practice the Conversation"
 }$json$::jsonb,
   true
 ),
 (
-  'daff091c-90c7-4b37-ba76-0a7c6b27d665',
+  'cfcae3aa-14a7-44cf-bf2e-cfd407ff7efd',
   5,
   'activity',
   null,
@@ -105,27 +106,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "I go by [bus]."
+      "text": "I take the [bus] to work."
     },
     {
       "speaker": "B",
-      "text": "I go by [train]."
+      "text": "I take the [train]."
     },
     {
       "speaker": "A",
-      "text": "I ride a [bike]."
+      "text": "Sometimes I take a [taxi]."
     }
   ],
   "blanks": [
     "bus",
     "train",
-    "bike"
+    "taxi"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'daff091c-90c7-4b37-ba76-0a7c6b27d665',
+  'cfcae3aa-14a7-44cf-bf2e-cfd407ff7efd',
   6,
   'speaking',
   null,
@@ -134,69 +135,69 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "How do you go to work?"
+      "text": "I take the bus to work."
     },
     {
       "speaker": "B",
-      "text": "I go by car."
+      "text": "I take the train."
     },
     {
       "speaker": "A",
-      "text": "I take the train!"
+      "text": "Sometimes I take a taxi."
     },
     {
       "speaker": "B",
-      "text": "The train is fast!"
+      "text": "I drive my car!"
     }
   ],
-  "note": "Switch! Student becomes A, teacher becomes B."
+  "note": "Teacher says the line first. Student repeats, then says it alone."
 }$json$::jsonb,
   true
 ),
 (
-  'daff091c-90c7-4b37-ba76-0a7c6b27d665',
+  'cfcae3aa-14a7-44cf-bf2e-cfd407ff7efd',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "I go to work by bus. My friend goes by car. My sister rides a bike. We all travel differently!",
+  "text": "I take the bus to work every day. Sometimes I take a taxi. My husband drives a car.",
   "questions": [
-    "How does the writer go to work?",
-    "How does the friend travel?",
-    "How does the sister travel?"
+    "How does the writer get to work?",
+    "What does the writer sometimes take?",
+    "How does the husband travel?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'daff091c-90c7-4b37-ba76-0a7c6b27d665',
+  'cfcae3aa-14a7-44cf-bf2e-cfd407ff7efd',
   8,
   'writing',
   null,
   null,
   $json${
   "prompts": [
-    "I go by ___.",
-    "My friend goes by ___.",
-    "I like traveling by ___."
+    "I take the ___ to work.",
+    "Sometimes I take a ___.",
+    "My ___ drives a ___."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'daff091c-90c7-4b37-ba76-0a7c6b27d665',
+  'cfcae3aa-14a7-44cf-bf2e-cfd407ff7efd',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Name four transport types",
-    "Say 'I go by ___'",
-    "Talk about transport"
+    "Name 4 types of transport",
+    "Say 'I take the ___'",
+    "Talk about how I get to work"
   ],
-  "challenge": "Tell me how you travel to work or school!"
+  "challenge": "Tell me how you get to work or school!"
 }$json$::jsonb,
   true
 );
@@ -204,13 +205,13 @@ values
 -- Lesson 2: Tickets and Times
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '82738be3-7515-4d0f-aeb0-94d84a1835fc',
+  '98fb7e93-ccb9-4e00-a650-5020b9c307f2',
   'Tickets and Times',
   'A1',
   'adults',
   9,
   2,
-  'Ask about simple ticket and schedule information.',
+  'Ask about tickets and times. [Bridge, Lesson 2: controlled practice, fill-in-blank]',
   25,
   9,
   true
@@ -219,7 +220,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '82738be3-7515-4d0f-aeb0-94d84a1835fc',
+  '98fb7e93-ccb9-4e00-a650-5020b9c307f2',
   1,
   'title',
   null,
@@ -230,23 +231,23 @@ values
   true
 ),
 (
-  '82738be3-7515-4d0f-aeb0-94d84a1835fc',
+  '98fb7e93-ccb9-4e00-a650-5020b9c307f2',
   2,
   'warmup',
   null,
   null,
   $json${
-  "display": "",
+  "display": "🎫",
   "questions": [
-    "Do you check bus or train times?",
-    "Have you bought a ticket in English?"
+    "Have you bought a train ticket?",
+    "Do you know when your bus leaves?"
   ],
-  "title": "Warm-up"
+  "title": "Let's begin"
 }$json$::jsonb,
   true
 ),
 (
-  '82738be3-7515-4d0f-aeb0-94d84a1835fc',
+  '98fb7e93-ccb9-4e00-a650-5020b9c307f2',
   3,
   'vocabulary',
   null,
@@ -258,15 +259,15 @@ values
       "bg": "#FAECE7"
     },
     {
-      "word": "What Time",
+      "word": "One-way",
       "bg": "#E1F5EE"
     },
     {
-      "word": "Train",
+      "word": "Round trip",
       "bg": "#EEEDFE"
     },
     {
-      "word": "Schedule",
+      "word": "Departure",
       "bg": "#FAEEDA"
     }
   ],
@@ -276,27 +277,27 @@ values
   true
 ),
 (
-  '82738be3-7515-4d0f-aeb0-94d84a1835fc',
+  '98fb7e93-ccb9-4e00-a650-5020b9c307f2',
   4,
   'phrases',
   null,
   null,
   $json${
   "teacher": [
-    "What time is the train?",
-    "How much is the ticket?"
+    "I'd like a ticket, please.",
+    "One-way or round trip?"
   ],
   "student": [
-    "The train is at 9.",
-    "It's five dollars."
+    "A round trip ticket, please.",
+    "The departure is at 9am."
   ],
-  "note": "Ask a real travel question!",
+  "note": "Use the word bank: ticket, one-way, round trip, departure.",
   "title": "Practice the Conversation"
 }$json$::jsonb,
   true
 ),
 (
-  '82738be3-7515-4d0f-aeb0-94d84a1835fc',
+  '98fb7e93-ccb9-4e00-a650-5020b9c307f2',
   5,
   'activity',
   null,
@@ -305,27 +306,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "[What time] is the bus?"
+      "text": "I'd like a [ticket] to the city."
     },
     {
       "speaker": "B",
-      "text": "How much is the [ticket]?"
+      "text": "[One-way] or [round trip]?"
     },
     {
       "speaker": "A",
-      "text": "The [train] is at 9."
+      "text": "Round trip, please. What time is the [departure]?"
     }
   ],
   "blanks": [
-    "What time",
     "ticket",
-    "train"
+    "one-way",
+    "departure"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '82738be3-7515-4d0f-aeb0-94d84a1835fc',
+  '98fb7e93-ccb9-4e00-a650-5020b9c307f2',
   6,
   'speaking',
   null,
@@ -334,19 +335,19 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "What time is the train?"
+      "text": "I'd like a ticket to the city, please."
     },
     {
       "speaker": "B",
-      "text": "The train is at 10 o'clock."
+      "text": "One-way or round trip?"
     },
     {
       "speaker": "A",
-      "text": "How much is the ticket?"
+      "text": "Round trip, please. What time is the departure?"
     },
     {
       "speaker": "B",
-      "text": "It's five dollars."
+      "text": "The departure is at 9am."
     }
   ],
   "note": "Switch! Student becomes A, teacher becomes B."
@@ -354,49 +355,49 @@ values
   true
 ),
 (
-  '82738be3-7515-4d0f-aeb0-94d84a1835fc',
+  '98fb7e93-ccb9-4e00-a650-5020b9c307f2',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "What time is the train? The train is at 9 o'clock. How much is the ticket? It's five dollars. I always check the time before I travel!",
+  "text": "I'd like a round trip ticket to the city, please. What time is the departure? The departure is at 9am.",
   "questions": [
-    "What time is the train?",
-    "How much is the ticket?",
-    "What does the writer check?"
+    "What kind of ticket did the customer buy?",
+    "What did the customer ask about?",
+    "What time is the departure?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '82738be3-7515-4d0f-aeb0-94d84a1835fc',
+  '98fb7e93-ccb9-4e00-a650-5020b9c307f2',
   8,
   'writing',
   null,
   null,
   $json${
   "prompts": [
-    "The train is at ___.",
-    "The ticket is ___.",
-    "I check the ___ before I travel."
+    "I'd like a ___ ticket.",
+    "What time is the ___?",
+    "The departure is at ___."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '82738be3-7515-4d0f-aeb0-94d84a1835fc',
+  '98fb7e93-ccb9-4e00-a650-5020b9c307f2',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Ask 'What time is ___?'",
-    "Ask 'How much is the ticket?'",
-    "Talk about schedules"
+    "Ask for a ticket",
+    "Say 'one-way' and 'round trip'",
+    "Ask about departure times"
   ],
-  "challenge": "Ask me about a train or bus time!"
+  "challenge": "Buy a ticket from me at a pretend station!"
 }$json$::jsonb,
   true
 );
@@ -404,13 +405,13 @@ values
 -- Lesson 3: At the Station
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '40f78b3d-4055-4eae-b4b9-7fe9398e0959',
+  '10503827-709c-4033-9d53-86a5ccade33a',
   'At the Station',
   'A1',
   'adults',
   9,
   3,
-  'Use simple phrases in a transport situation.',
+  'Combine transport and time with ''and''/''but''. [Bridge, Lesson 3: freer practice, error-spot]',
   25,
   9,
   true
@@ -419,7 +420,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '40f78b3d-4055-4eae-b4b9-7fe9398e0959',
+  '10503827-709c-4033-9d53-86a5ccade33a',
   1,
   'title',
   null,
@@ -430,23 +431,23 @@ values
   true
 ),
 (
-  '40f78b3d-4055-4eae-b4b9-7fe9398e0959',
+  '10503827-709c-4033-9d53-86a5ccade33a',
   2,
   'warmup',
   null,
   null,
   $json${
-  "display": "",
+  "display": "🚉",
   "questions": [
-    "Have you bought a ticket at a station?",
-    "What do you say at a ticket counter?"
+    "Is your train usually on time?",
+    "Have you missed a train?"
   ],
-  "title": "Warm-up"
+  "title": "Let's begin"
 }$json$::jsonb,
   true
 ),
 (
-  '40f78b3d-4055-4eae-b4b9-7fe9398e0959',
+  '10503827-709c-4033-9d53-86a5ccade33a',
   3,
   'vocabulary',
   null,
@@ -454,19 +455,19 @@ values
   $json${
   "words": [
     {
-      "word": "One Ticket Please",
+      "word": "Platform",
       "bg": "#FAECE7"
     },
     {
-      "word": "To The City Center",
+      "word": "Late",
       "bg": "#E1F5EE"
     },
     {
-      "word": "What Time",
+      "word": "On time",
       "bg": "#EEEDFE"
     },
     {
-      "word": "Platform",
+      "word": "But",
       "bg": "#FAEEDA"
     }
   ],
@@ -476,27 +477,27 @@ values
   true
 ),
 (
-  '40f78b3d-4055-4eae-b4b9-7fe9398e0959',
+  '10503827-709c-4033-9d53-86a5ccade33a',
   4,
   'phrases',
   null,
   null,
   $json${
   "teacher": [
-    "Where do you want to go?",
-    "What time do you want to leave?"
+    "Which platform is it?",
+    "Is the train on time?"
   ],
   "student": [
-    "One ticket, please. To the city center.",
-    "At 9 o'clock, please."
+    "It's platform 3.",
+    "The train is late today."
   ],
-  "note": "Practice like you're really at the station!",
+  "note": "One sentence has a mistake. Find it and fix it before you continue.",
   "title": "Practice the Conversation"
 }$json$::jsonb,
   true
 ),
 (
-  '40f78b3d-4055-4eae-b4b9-7fe9398e0959',
+  '10503827-709c-4033-9d53-86a5ccade33a',
   5,
   'activity',
   null,
@@ -505,27 +506,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "[One ticket please]."
+      "text": "The train is on [platform] 3."
     },
     {
       "speaker": "B",
-      "text": "[To the city center]."
+      "text": "It is usually [on time], [but] today it is [late]."
     },
     {
       "speaker": "A",
-      "text": "What [platform] is it?"
+      "text": "I need to hurry!"
     }
   ],
   "blanks": [
-    "One ticket please",
-    "To the city center",
-    "platform"
+    "platform",
+    "on time",
+    "late"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '40f78b3d-4055-4eae-b4b9-7fe9398e0959',
+  '10503827-709c-4033-9d53-86a5ccade33a',
   6,
   'speaking',
   null,
@@ -534,19 +535,19 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "One ticket, please."
+      "text": "Which platform is the train?"
     },
     {
       "speaker": "B",
-      "text": "Where do you want to go?"
+      "text": "It's platform 3. It's usually on time, but today it's late."
     },
     {
       "speaker": "A",
-      "text": "To the city center, please."
+      "text": "I need to hurry, but I have time for a coffee first."
     },
     {
       "speaker": "B",
-      "text": "That's platform 3!"
+      "text": "Good luck!"
     }
   ],
   "note": "Switch! Student becomes A, teacher becomes B."
@@ -554,49 +555,49 @@ values
   true
 ),
 (
-  '40f78b3d-4055-4eae-b4b9-7fe9398e0959',
+  '10503827-709c-4033-9d53-86a5ccade33a',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "One ticket, please. To the city center. What time? At 9 o'clock. What platform? Platform 3. Buying a ticket is easy!",
+  "text": "The train is on platform 3. It is usually on time, but today it is late. I need to hurry.",
   "questions": [
-    "Where does the traveler want to go?",
-    "What time is the trip?",
-    "What platform is it?"
+    "What platform is the train on?",
+    "Is the train usually on time?",
+    "Why does the writer need to hurry?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '40f78b3d-4055-4eae-b4b9-7fe9398e0959',
+  '10503827-709c-4033-9d53-86a5ccade33a',
   8,
   'writing',
   null,
   null,
   $json${
   "prompts": [
-    "One ticket, please. To ___.",
-    "The time is ___.",
-    "The platform is ___."
+    "The train is on platform ___.",
+    "It is usually ___, but today it is ___.",
+    "I need to ___."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '40f78b3d-4055-4eae-b4b9-7fe9398e0959',
+  '10503827-709c-4033-9d53-86a5ccade33a',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Say 'One ticket, please'",
-    "Say a destination",
-    "Ask about the platform"
+    "Use 'platform' and 'on time'",
+    "Combine two ideas with 'but'",
+    "Talk about being late or on time"
   ],
-  "challenge": "Buy a ticket from me — say the whole conversation!"
+  "challenge": "Tell me about a time your bus or train was late!"
 }$json$::jsonb,
   true
 );
@@ -604,13 +605,13 @@ values
 -- Lesson 4: Travel Plans
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '4658fb62-58bf-43db-858d-ed738fbd927a',
+  '2b22fb1e-1e76-4771-86a3-782904d31a5a',
   'Travel Plans',
   'A1',
   'adults',
   9,
   4,
-  'Talk simply about a short travel plan.',
+  'Combine transport, tickets, and simple plans into a talk. [Bridge, Lesson 4: production, mini role-play]',
   25,
   9,
   true
@@ -619,7 +620,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '4658fb62-58bf-43db-858d-ed738fbd927a',
+  '2b22fb1e-1e76-4771-86a3-782904d31a5a',
   1,
   'title',
   null,
@@ -630,23 +631,23 @@ values
   true
 ),
 (
-  '4658fb62-58bf-43db-858d-ed738fbd927a',
+  '2b22fb1e-1e76-4771-86a3-782904d31a5a',
   2,
   'warmup',
   null,
   null,
   $json${
-  "display": "",
+  "display": "✈️",
   "questions": [
-    "Do you have any travel plans?",
-    "How do you like to travel?"
+    "Where would you like to travel?",
+    "Do you have travel plans?"
   ],
-  "title": "Warm-up"
+  "title": "Let's begin"
 }$json$::jsonb,
   true
 ),
 (
-  '4658fb62-58bf-43db-858d-ed738fbd927a',
+  '2b22fb1e-1e76-4771-86a3-782904d31a5a',
   3,
   'vocabulary',
   null,
@@ -654,19 +655,19 @@ values
   $json${
   "words": [
     {
-      "word": "I Go To",
+      "word": "I'd like to",
       "bg": "#FAECE7"
     },
     {
-      "word": "I Take The",
+      "word": "Visit",
       "bg": "#E1F5EE"
     },
     {
-      "word": "Trip",
+      "word": "Next week",
       "bg": "#EEEDFE"
     },
     {
-      "word": "Destination",
+      "word": "Excited",
       "bg": "#FAEEDA"
     }
   ],
@@ -676,27 +677,27 @@ values
   true
 ),
 (
-  '4658fb62-58bf-43db-858d-ed738fbd927a',
+  '2b22fb1e-1e76-4771-86a3-782904d31a5a',
   4,
   'phrases',
   null,
   null,
   $json${
   "teacher": [
-    "Where are you going?",
-    "How are you traveling?"
+    "Where would you like to travel?",
+    "When would you like to go?"
   ],
   "student": [
-    "I'm going to the city.",
-    "I'm taking the train."
+    "I'd like to visit my family.",
+    "I'd like to go next week."
   ],
-  "note": "Talk about a real or imaginary trip!",
+  "note": "Put it all together: transport + ticket + simple plan.",
   "title": "Practice the Conversation"
 }$json$::jsonb,
   true
 ),
 (
-  '4658fb62-58bf-43db-858d-ed738fbd927a',
+  '2b22fb1e-1e76-4771-86a3-782904d31a5a',
   5,
   'activity',
   null,
@@ -705,27 +706,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "[I go to] the city."
+      "text": "[I'd like to] visit my family."
     },
     {
       "speaker": "B",
-      "text": "[I take the] bus."
+      "text": "I want to go [next week]."
     },
     {
       "speaker": "A",
-      "text": "It is a short [trip]."
+      "text": "I am [excited]!"
     }
   ],
   "blanks": [
-    "I go to",
-    "I take the",
-    "trip"
+    "i'd like to",
+    "next week",
+    "excited"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '4658fb62-58bf-43db-858d-ed738fbd927a',
+  '2b22fb1e-1e76-4771-86a3-782904d31a5a',
   6,
   'speaking',
   null,
@@ -734,69 +735,69 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "Where are you going this weekend?"
+      "text": "Tell me about your travel plans."
     },
     {
       "speaker": "B",
-      "text": "I'm going to the coast. I'm taking the train."
+      "text": "I'd like to visit my family next week. I'll take the train."
     },
     {
       "speaker": "A",
-      "text": "I'm going to the city by car!"
+      "text": "I need a round trip ticket. I am excited!"
     },
     {
       "speaker": "B",
-      "text": "Have a good trip!"
+      "text": "Have a great trip!"
     }
   ],
-  "note": "Switch! Student becomes A, teacher becomes B."
+  "note": "Mini role-play: buy a ticket for a trip you're planning."
 }$json$::jsonb,
   true
 ),
 (
-  '4658fb62-58bf-43db-858d-ed738fbd927a',
+  '2b22fb1e-1e76-4771-86a3-782904d31a5a',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "This weekend, I go to the city. I take the train. It is a short trip. I like traveling by train!",
+  "text": "I'd like to visit my family next week. I'll take the train. I need a round trip ticket. I am excited!",
   "questions": [
-    "Where is the writer going?",
-    "How is the writer traveling?",
-    "Is it a short or long trip?"
+    "What does the writer want to do?",
+    "How will the writer travel?",
+    "How does the writer feel?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '4658fb62-58bf-43db-858d-ed738fbd927a',
+  '2b22fb1e-1e76-4771-86a3-782904d31a5a',
   8,
   'writing',
   null,
   null,
   $json${
   "prompts": [
-    "I go to ___.",
-    "I take the ___.",
-    "My trip is ___."
+    "I'd like to visit ___.",
+    "I'll take the ___.",
+    "I am excited because ___."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '4658fb62-58bf-43db-858d-ed738fbd927a',
+  '2b22fb1e-1e76-4771-86a3-782904d31a5a',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Say 'I go to ___'",
-    "Say 'I take the ___'",
-    "Talk about a travel plan"
+    "Say 'I'd like to' for a plan",
+    "Combine transport and plans",
+    "Say how I feel about a trip"
   ],
-  "challenge": "Tell me about a trip you want to take!"
+  "challenge": "Tell me about a trip you'd like to take!"
 }$json$::jsonb,
   true
 );
@@ -804,13 +805,13 @@ values
 -- Lesson 5: Unit Review
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '282cb436-b549-4358-bba3-1fd43177e2fa',
+  '7b1245ac-3bdf-4445-81ed-5950200840e9',
   'Unit Review',
   'A1',
   'adults',
   9,
   5,
-  'Talk about transport, tickets, and simple travel plans.',
+  'Review transport, tickets, and travel plans. [Bridge, Lesson 5: tier-matched mixed review]',
   25,
   9,
   true
@@ -819,7 +820,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '282cb436-b549-4358-bba3-1fd43177e2fa',
+  '7b1245ac-3bdf-4445-81ed-5950200840e9',
   1,
   'title',
   null,
@@ -830,23 +831,23 @@ values
   true
 ),
 (
-  '282cb436-b549-4358-bba3-1fd43177e2fa',
+  '7b1245ac-3bdf-4445-81ed-5950200840e9',
   2,
   'warmup',
   null,
   null,
   $json${
-  "display": "",
+  "display": "🚌",
   "questions": [
-    "What transport words do you remember?",
-    "How do you usually travel?"
+    "How do you usually travel?",
+    "Do you have travel plans?"
   ],
-  "title": "Unit Review"
+  "title": "Let's begin"
 }$json$::jsonb,
   true
 ),
 (
-  '282cb436-b549-4358-bba3-1fd43177e2fa',
+  '7b1245ac-3bdf-4445-81ed-5950200840e9',
   3,
   'vocabulary',
   null,
@@ -862,21 +863,21 @@ values
       "bg": "#E1F5EE"
     },
     {
-      "word": "Platform",
+      "word": "But",
       "bg": "#EEEDFE"
     },
     {
-      "word": "Trip",
+      "word": "I'd like to",
       "bg": "#FAEEDA"
     }
   ],
-  "title": "Review Words",
+  "title": "New Words",
   "subtitle": "Tap a card to see it bigger."
 }$json$::jsonb,
   true
 ),
 (
-  '282cb436-b549-4358-bba3-1fd43177e2fa',
+  '7b1245ac-3bdf-4445-81ed-5950200840e9',
   4,
   'phrases',
   null,
@@ -884,11 +885,11 @@ values
   $json${
   "teacher": [
     "How do you travel?",
-    "What time is the bus?"
+    "Do you have travel plans?"
   ],
   "student": [
-    "I go by bus.",
-    "The bus is at 9."
+    "I take the bus.",
+    "I'd like to visit my family."
   ],
   "note": "Use everything you learned this unit!",
   "title": "Practice the Conversation"
@@ -896,7 +897,7 @@ values
   true
 ),
 (
-  '282cb436-b549-4358-bba3-1fd43177e2fa',
+  '7b1245ac-3bdf-4445-81ed-5950200840e9',
   5,
   'activity',
   null,
@@ -905,27 +906,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "I go by [bus]."
+      "text": "I take the [bus] to work."
     },
     {
       "speaker": "B",
-      "text": "[One ticket please]."
+      "text": "I need a [ticket] for the train."
     },
     {
       "speaker": "A",
-      "text": "It is a short [trip]."
+      "text": "[I'd like to] visit my family."
     }
   ],
   "blanks": [
     "bus",
-    "One ticket please",
-    "trip"
+    "ticket",
+    "i'd like to"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '282cb436-b549-4358-bba3-1fd43177e2fa',
+  '7b1245ac-3bdf-4445-81ed-5950200840e9',
   6,
   'speaking',
   null,
@@ -934,19 +935,19 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "How do you travel to work?"
+      "text": "Tell me about how you travel and your plans."
     },
     {
       "speaker": "B",
-      "text": "I go by train."
+      "text": "I take the bus to work. I'd like to visit my family next week by train."
     },
     {
       "speaker": "A",
-      "text": "What time is the train?"
+      "text": "I need a round trip ticket, but the train is sometimes late."
     },
     {
       "speaker": "B",
-      "text": "It's at 8 o'clock. One ticket, please!"
+      "text": "I hope it's on time for you!"
     }
   ],
   "note": "Switch! Student becomes A, teacher becomes B."
@@ -954,50 +955,49 @@ values
   true
 ),
 (
-  '282cb436-b549-4358-bba3-1fd43177e2fa',
+  '7b1245ac-3bdf-4445-81ed-5950200840e9',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "I go to work by train. The train is at 8 o'clock. I buy one ticket, please, to the city center. It is a short trip. I like traveling by train!",
+  "text": "I take the bus to work every day. I'd like to visit my family next week by train. I need a round trip ticket.",
   "questions": [
-    "How does the writer travel to work?",
-    "What time is the train?",
-    "Is it a short or long trip?"
+    "How does the writer get to work?",
+    "What are the writer's plans?",
+    "What ticket does the writer need?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '282cb436-b549-4358-bba3-1fd43177e2fa',
+  '7b1245ac-3bdf-4445-81ed-5950200840e9',
   8,
   'writing',
   null,
   null,
   $json${
   "prompts": [
-    "I go by ___.",
-    "The ___ is at ___.",
-    "My trip is ___."
+    "I take the ___ to work.",
+    "I'd like to ___.",
+    "I need a ___ ticket."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '282cb436-b549-4358-bba3-1fd43177e2fa',
+  '7b1245ac-3bdf-4445-81ed-5950200840e9',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Name transport types",
-    "Ask about tickets and times",
-    "Use station phrases",
-    "Talk about travel plans"
+    "Talk about transport",
+    "Ask for a ticket",
+    "Talk about a travel plan"
   ],
-  "challenge": "Plan a trip with me — tell me how, when, and where!"
+  "challenge": "Tell me all about how you travel and any plans you have!"
 }$json$::jsonb,
   true
 );

@@ -1,16 +1,17 @@
--- A1 Adults Unit 5: Work and Jobs (5 lessons)
+-- A1 Adults Unit 5: Work and Jobs (5 lessons) — TIERED (Combination)
+-- Regenerated per the Sentivo Intra-Level Progression Framework + lesson-level escalation + task rotation.
 -- Run this whole script in the Supabase SQL editor.
 
 -- Lesson 1: Jobs
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '62180f9a-6e05-4dc8-ba72-1ed6e9d9e65e',
+  'a5e4201b-8ae0-497b-b0e0-cbbc107295ea',
   'Jobs',
   'A1',
   'adults',
   5,
   1,
-  'Name common jobs.',
+  'Name common jobs. [Combination, Lesson 1: notice/receptive, read-and-identify]',
   25,
   9,
   true
@@ -19,7 +20,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '62180f9a-6e05-4dc8-ba72-1ed6e9d9e65e',
+  'a5e4201b-8ae0-497b-b0e0-cbbc107295ea',
   1,
   'title',
   null,
@@ -30,23 +31,23 @@ values
   true
 ),
 (
-  '62180f9a-6e05-4dc8-ba72-1ed6e9d9e65e',
+  'a5e4201b-8ae0-497b-b0e0-cbbc107295ea',
   2,
   'warmup',
   null,
   null,
   $json${
-  "display": "",
+  "display": "💼",
   "questions": [
     "What is your job?",
-    "What job do you want?"
+    "Do you know a doctor?"
   ],
-  "title": "Warm-up"
+  "title": "Let's begin"
 }$json$::jsonb,
   true
 ),
 (
-  '62180f9a-6e05-4dc8-ba72-1ed6e9d9e65e',
+  'a5e4201b-8ae0-497b-b0e0-cbbc107295ea',
   3,
   'vocabulary',
   null,
@@ -58,15 +59,15 @@ values
       "bg": "#FAECE7"
     },
     {
-      "word": "Driver",
+      "word": "Doctor",
       "bg": "#E1F5EE"
     },
     {
-      "word": "Nurse",
+      "word": "Engineer",
       "bg": "#EEEDFE"
     },
     {
-      "word": "Cook",
+      "word": "Driver",
       "bg": "#FAEEDA"
     }
   ],
@@ -76,7 +77,7 @@ values
   true
 ),
 (
-  '62180f9a-6e05-4dc8-ba72-1ed6e9d9e65e',
+  'a5e4201b-8ae0-497b-b0e0-cbbc107295ea',
   4,
   'phrases',
   null,
@@ -87,16 +88,16 @@ values
     "Are you a teacher?"
   ],
   "student": [
-    "I am an engineer.",
-    "No, I am a nurse!"
+    "I am a teacher.",
+    "No, I am an engineer."
   ],
-  "note": "Think of your real job or dream job!",
+  "note": "Read the model text, then find the job words.",
   "title": "Practice the Conversation"
 }$json$::jsonb,
   true
 ),
 (
-  '62180f9a-6e05-4dc8-ba72-1ed6e9d9e65e',
+  'a5e4201b-8ae0-497b-b0e0-cbbc107295ea',
   5,
   'activity',
   null,
@@ -109,23 +110,23 @@ values
     },
     {
       "speaker": "B",
-      "text": "I am a [nurse]."
+      "text": "I am a [doctor]."
     },
     {
       "speaker": "A",
-      "text": "I want to be a [cook]."
+      "text": "My brother is an [engineer]."
     }
   ],
   "blanks": [
     "teacher",
-    "nurse",
-    "cook"
+    "doctor",
+    "engineer"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '62180f9a-6e05-4dc8-ba72-1ed6e9d9e65e',
+  'a5e4201b-8ae0-497b-b0e0-cbbc107295ea',
   6,
   'speaking',
   null,
@@ -134,43 +135,43 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "What is your job?"
+      "text": "I am a teacher."
     },
     {
       "speaker": "B",
-      "text": "I am a driver."
+      "text": "I am a doctor."
     },
     {
       "speaker": "A",
-      "text": "I am an office worker!"
+      "text": "My brother is an engineer."
     },
     {
       "speaker": "B",
-      "text": "Interesting!"
+      "text": "My sister is a driver!"
     }
   ],
-  "note": "Switch! Student becomes A, teacher becomes B."
+  "note": "Teacher says the line first. Student repeats, then says it alone."
 }$json$::jsonb,
   true
 ),
 (
-  '62180f9a-6e05-4dc8-ba72-1ed6e9d9e65e',
+  'a5e4201b-8ae0-497b-b0e0-cbbc107295ea',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "I am a teacher. My friend is a nurse. My brother is a driver. Everyone has a different job. I like my job!",
+  "text": "I am a teacher. My husband is a doctor. My brother is an engineer.",
   "questions": [
     "What is the writer's job?",
-    "What is the friend's job?",
+    "What is the husband's job?",
     "What is the brother's job?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '62180f9a-6e05-4dc8-ba72-1ed6e9d9e65e',
+  'a5e4201b-8ae0-497b-b0e0-cbbc107295ea',
   8,
   'writing',
   null,
@@ -178,25 +179,25 @@ values
   $json${
   "prompts": [
     "I am a ___.",
-    "I want to be a ___.",
-    "My friend is a ___."
+    "My husband/wife is a ___.",
+    "My brother/sister is a ___."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '62180f9a-6e05-4dc8-ba72-1ed6e9d9e65e',
+  'a5e4201b-8ae0-497b-b0e0-cbbc107295ea',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Name four jobs",
+    "Name 4 jobs",
     "Say 'I am a ___'",
-    "Talk about jobs"
+    "Talk about family jobs"
   ],
-  "challenge": "Tell me your job or the job you want!"
+  "challenge": "Tell me your job and one family member's job!"
 }$json$::jsonb,
   true
 );
@@ -204,13 +205,13 @@ values
 -- Lesson 2: Workplaces
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  'fdfa6bde-8cd9-419a-845d-ae2039e3bdd5',
+  '0f0130ac-268f-4b11-b58d-dfdf0efa3a65',
   'Workplaces',
   'A1',
   'adults',
   5,
   2,
-  'Say where people work.',
+  'Name workplaces and combine job + place. [Combination, Lesson 2: controlled practice, fill-in-blank]',
   25,
   9,
   true
@@ -219,7 +220,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  'fdfa6bde-8cd9-419a-845d-ae2039e3bdd5',
+  '0f0130ac-268f-4b11-b58d-dfdf0efa3a65',
   1,
   'title',
   null,
@@ -230,23 +231,23 @@ values
   true
 ),
 (
-  'fdfa6bde-8cd9-419a-845d-ae2039e3bdd5',
+  '0f0130ac-268f-4b11-b58d-dfdf0efa3a65',
   2,
   'warmup',
   null,
   null,
   $json${
-  "display": "",
+  "display": "🏢",
   "questions": [
-    "Where do you work?",
-    "Do you work in an office?"
+    "Do you work in an office?",
+    "Do you work at a school?"
   ],
-  "title": "Warm-up"
+  "title": "Let's begin"
 }$json$::jsonb,
   true
 ),
 (
-  'fdfa6bde-8cd9-419a-845d-ae2039e3bdd5',
+  '0f0130ac-268f-4b11-b58d-dfdf0efa3a65',
   3,
   'vocabulary',
   null,
@@ -254,11 +255,11 @@ values
   $json${
   "words": [
     {
-      "word": "Hospital",
+      "word": "Office",
       "bg": "#FAECE7"
     },
     {
-      "word": "Office",
+      "word": "Hospital",
       "bg": "#E1F5EE"
     },
     {
@@ -266,7 +267,7 @@ values
       "bg": "#EEEDFE"
     },
     {
-      "word": "Shop",
+      "word": "Factory",
       "bg": "#FAEEDA"
     }
   ],
@@ -276,7 +277,7 @@ values
   true
 ),
 (
-  'fdfa6bde-8cd9-419a-845d-ae2039e3bdd5',
+  '0f0130ac-268f-4b11-b58d-dfdf0efa3a65',
   4,
   'phrases',
   null,
@@ -284,19 +285,19 @@ values
   $json${
   "teacher": [
     "Where do you work?",
-    "Do you work in a hospital?"
+    "Do you work in an office?"
   ],
   "student": [
     "I work in an office.",
-    "Yes, I work in a hospital!"
+    "Yes, I work in an office."
   ],
-  "note": "Think about where you really work!",
+  "note": "Use the word bank: office, hospital, school, factory.",
   "title": "Practice the Conversation"
 }$json$::jsonb,
   true
 ),
 (
-  'fdfa6bde-8cd9-419a-845d-ae2039e3bdd5',
+  '0f0130ac-268f-4b11-b58d-dfdf0efa3a65',
   5,
   'activity',
   null,
@@ -305,27 +306,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "I work in a [hospital]."
-    },
-    {
-      "speaker": "B",
       "text": "I work in an [office]."
     },
     {
+      "speaker": "B",
+      "text": "I work in a [hospital]."
+    },
+    {
       "speaker": "A",
-      "text": "I work in a [school]."
+      "text": "My sister works at a [school]."
     }
   ],
   "blanks": [
-    "hospital",
     "office",
+    "hospital",
     "school"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'fdfa6bde-8cd9-419a-845d-ae2039e3bdd5',
+  '0f0130ac-268f-4b11-b58d-dfdf0efa3a65',
   6,
   'speaking',
   null,
@@ -338,15 +339,15 @@ values
     },
     {
       "speaker": "B",
-      "text": "I work in a shop."
+      "text": "I work in a hospital. Where do you work?"
     },
     {
       "speaker": "A",
-      "text": "I work in a school!"
+      "text": "I work in an office. My brother works at a factory."
     },
     {
       "speaker": "B",
-      "text": "That sounds nice!"
+      "text": "Interesting!"
     }
   ],
   "note": "Switch! Student becomes A, teacher becomes B."
@@ -354,49 +355,49 @@ values
   true
 ),
 (
-  'fdfa6bde-8cd9-419a-845d-ae2039e3bdd5',
+  '0f0130ac-268f-4b11-b58d-dfdf0efa3a65',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "I work in an office. My sister works in a hospital. My friend works in a school. We all work in different places!",
+  "text": "I work in an office. My husband works in a hospital. My sister works at a school.",
   "questions": [
     "Where does the writer work?",
-    "Where does the sister work?",
-    "Where does the friend work?"
+    "Where does the husband work?",
+    "Where does the sister work?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'fdfa6bde-8cd9-419a-845d-ae2039e3bdd5',
+  '0f0130ac-268f-4b11-b58d-dfdf0efa3a65',
   8,
   'writing',
   null,
   null,
   $json${
   "prompts": [
-    "I work in a/an ___.",
-    "My friend works in a ___.",
-    "I want to work in a ___."
+    "I work in a(n) ___.",
+    "My husband/wife works in a(n) ___.",
+    "My ___ works at a ___."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'fdfa6bde-8cd9-419a-845d-ae2039e3bdd5',
+  '0f0130ac-268f-4b11-b58d-dfdf0efa3a65',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Name four workplaces",
-    "Say 'I work in a ___'",
-    "Talk about workplaces"
+    "Name 4 workplaces",
+    "Say 'I work in a(n) ___'",
+    "Talk about family workplaces"
   ],
-  "challenge": "Tell me where you work!"
+  "challenge": "Tell me where you work and where a family member works!"
 }$json$::jsonb,
   true
 );
@@ -404,13 +405,13 @@ values
 -- Lesson 3: Daily Work Tasks
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '1bdd5236-58fa-4ac1-b759-eaf5a613687d',
+  '2cedda39-d6c4-43fd-9636-d8aaaa3cc9f4',
   'Daily Work Tasks',
   'A1',
   'adults',
   5,
   3,
-  'Say simple things people do at work.',
+  'Describe simple work tasks with a reason. [Combination, Lesson 3: freer practice, error-spot]',
   25,
   9,
   true
@@ -419,7 +420,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '1bdd5236-58fa-4ac1-b759-eaf5a613687d',
+  '2cedda39-d6c4-43fd-9636-d8aaaa3cc9f4',
   1,
   'title',
   null,
@@ -430,23 +431,23 @@ values
   true
 ),
 (
-  '1bdd5236-58fa-4ac1-b759-eaf5a613687d',
+  '2cedda39-d6c4-43fd-9636-d8aaaa3cc9f4',
   2,
   'warmup',
   null,
   null,
   $json${
-  "display": "",
+  "display": "📋",
   "questions": [
     "What do you do at work?",
-    "Do you help people at work?"
+    "Do you help people at your job?"
   ],
-  "title": "Warm-up"
+  "title": "Let's begin"
 }$json$::jsonb,
   true
 ),
 (
-  '1bdd5236-58fa-4ac1-b759-eaf5a613687d',
+  '2cedda39-d6c4-43fd-9636-d8aaaa3cc9f4',
   3,
   'vocabulary',
   null,
@@ -454,19 +455,19 @@ values
   $json${
   "words": [
     {
-      "word": "Help",
+      "word": "Answer calls",
       "bg": "#FAECE7"
     },
     {
-      "word": "Drive",
+      "word": "Write reports",
       "bg": "#E1F5EE"
     },
     {
-      "word": "Teach",
+      "word": "Help people",
       "bg": "#EEEDFE"
     },
     {
-      "word": "Sell",
+      "word": "Because",
       "bg": "#FAEEDA"
     }
   ],
@@ -476,7 +477,7 @@ values
   true
 ),
 (
-  '1bdd5236-58fa-4ac1-b759-eaf5a613687d',
+  '2cedda39-d6c4-43fd-9636-d8aaaa3cc9f4',
   4,
   'phrases',
   null,
@@ -484,19 +485,19 @@ values
   $json${
   "teacher": [
     "What do you do at work?",
-    "Do you teach?"
+    "Do you like your tasks?"
   ],
   "student": [
-    "I help customers.",
-    "Yes, I teach English!"
+    "I answer calls and write reports.",
+    "I like it because it is interesting."
   ],
-  "note": "Think about your real work tasks!",
+  "note": "One sentence has a mistake. Find it and fix it before you continue.",
   "title": "Practice the Conversation"
 }$json$::jsonb,
   true
 ),
 (
-  '1bdd5236-58fa-4ac1-b759-eaf5a613687d',
+  '2cedda39-d6c4-43fd-9636-d8aaaa3cc9f4',
   5,
   'activity',
   null,
@@ -505,27 +506,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "At work, I [help] people."
+      "text": "I [answer calls] at work."
     },
     {
       "speaker": "B",
-      "text": "I [teach] students."
+      "text": "I [write reports] every day."
     },
     {
       "speaker": "A",
-      "text": "I [sell] products."
+      "text": "I like my job [because] I help people."
     }
   ],
   "blanks": [
-    "help",
-    "teach",
-    "sell"
+    "answer calls",
+    "write reports",
+    "because"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '1bdd5236-58fa-4ac1-b759-eaf5a613687d',
+  '2cedda39-d6c4-43fd-9636-d8aaaa3cc9f4',
   6,
   'speaking',
   null,
@@ -538,15 +539,15 @@ values
     },
     {
       "speaker": "B",
-      "text": "I drive a bus."
+      "text": "I answer calls and help people. I like it because it is interesting."
     },
     {
       "speaker": "A",
-      "text": "I help customers at a shop!"
+      "text": "I write reports every day. I like it because I work with numbers."
     },
     {
       "speaker": "B",
-      "text": "That's important work!"
+      "text": "That sounds like a good job!"
     }
   ],
   "note": "Switch! Student becomes A, teacher becomes B."
@@ -554,49 +555,49 @@ values
   true
 ),
 (
-  '1bdd5236-58fa-4ac1-b759-eaf5a613687d',
+  '2cedda39-d6c4-43fd-9636-d8aaaa3cc9f4',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "At work, I help customers. My friend teaches students. My brother drives a taxi. We all do different things at work!",
+  "text": "I answer calls at work. I help people every day. I like my job because it is interesting.",
   "questions": [
     "What does the writer do at work?",
-    "What does the friend do?",
-    "What does the brother do?"
+    "Who does the writer help?",
+    "Why does the writer like the job?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '1bdd5236-58fa-4ac1-b759-eaf5a613687d',
+  '2cedda39-d6c4-43fd-9636-d8aaaa3cc9f4',
   8,
   'writing',
   null,
   null,
   $json${
   "prompts": [
-    "At work, I ___.",
-    "My friend ___ at work.",
-    "I like to ___ at work."
+    "I ___ at work.",
+    "I ___ every day.",
+    "I like my job because ___."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '1bdd5236-58fa-4ac1-b759-eaf5a613687d',
+  '2cedda39-d6c4-43fd-9636-d8aaaa3cc9f4',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Name four work verbs",
-    "Say 'At work, I ___'",
-    "Talk about work tasks"
+    "Describe a work task",
+    "Use 'because' with one clause",
+    "Say why I like my job"
   ],
-  "challenge": "Tell me two things you do at work!"
+  "challenge": "Tell me one thing you do at work, and why you like it!"
 }$json$::jsonb,
   true
 );
@@ -604,13 +605,13 @@ values
 -- Lesson 4: Talking About Work
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '98183434-a9b9-416e-87a1-1370de22173e',
+  '7a8f1ba3-024c-4d00-9844-8121ac2601f5',
   'Talking About Work',
   'A1',
   'adults',
   5,
   4,
-  'Answer simple questions about work.',
+  'Combine job, workplace, tasks, and opinion into a short talk. [Combination, Lesson 4: production, mini role-play]',
   25,
   9,
   true
@@ -619,7 +620,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '98183434-a9b9-416e-87a1-1370de22173e',
+  '7a8f1ba3-024c-4d00-9844-8121ac2601f5',
   1,
   'title',
   null,
@@ -630,23 +631,23 @@ values
   true
 ),
 (
-  '98183434-a9b9-416e-87a1-1370de22173e',
+  '7a8f1ba3-024c-4d00-9844-8121ac2601f5',
   2,
   'warmup',
   null,
   null,
   $json${
-  "display": "",
+  "display": "🤝",
   "questions": [
-    "What do you do?",
-    "Do you like your job?"
+    "Do you enjoy your job?",
+    "Do you work with a team?"
   ],
-  "title": "Warm-up"
+  "title": "Let's begin"
 }$json$::jsonb,
   true
 ),
 (
-  '98183434-a9b9-416e-87a1-1370de22173e',
+  '7a8f1ba3-024c-4d00-9844-8121ac2601f5',
   3,
   'vocabulary',
   null,
@@ -654,19 +655,19 @@ values
   $json${
   "words": [
     {
-      "word": "What Do You Do",
+      "word": "Colleague",
       "bg": "#FAECE7"
     },
     {
-      "word": "Where Do You Work",
+      "word": "Difficult",
       "bg": "#E1F5EE"
     },
     {
-      "word": "Do You Like",
+      "word": "Enjoy",
       "bg": "#EEEDFE"
     },
     {
-      "word": "Job",
+      "word": "Team",
       "bg": "#FAEEDA"
     }
   ],
@@ -676,27 +677,27 @@ values
   true
 ),
 (
-  '98183434-a9b9-416e-87a1-1370de22173e',
+  '7a8f1ba3-024c-4d00-9844-8121ac2601f5',
   4,
   'phrases',
   null,
   null,
   $json${
   "teacher": [
-    "What do you do?",
-    "Do you like your job?"
+    "Do you enjoy your job?",
+    "Is it difficult?"
   ],
   "student": [
-    "I am a teacher.",
-    "Yes, I like my job!"
+    "Yes, I enjoy my job.",
+    "It is difficult sometimes."
   ],
-  "note": "Answer about your real work!",
+  "note": "Put it all together: job + place + task + opinion.",
   "title": "Practice the Conversation"
 }$json$::jsonb,
   true
 ),
 (
-  '98183434-a9b9-416e-87a1-1370de22173e',
+  '7a8f1ba3-024c-4d00-9844-8121ac2601f5',
   5,
   'activity',
   null,
@@ -705,27 +706,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "[What do you do]?"
+      "text": "My [colleague] and I work together."
     },
     {
       "speaker": "B",
-      "text": "[Where do you work]?"
+      "text": "The work is [difficult] sometimes."
     },
     {
       "speaker": "A",
-      "text": "[Do you like] your job?"
+      "text": "I [enjoy] my [team]."
     }
   ],
   "blanks": [
-    "What do you do",
-    "Where do you work",
-    "Do you like"
+    "colleague",
+    "difficult",
+    "enjoy"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '98183434-a9b9-416e-87a1-1370de22173e',
+  '7a8f1ba3-024c-4d00-9844-8121ac2601f5',
   6,
   'speaking',
   null,
@@ -734,69 +735,69 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "What do you do?"
+      "text": "Tell me about your job."
     },
     {
       "speaker": "B",
-      "text": "I am a nurse."
+      "text": "I am a nurse. I work in a hospital with my colleagues."
     },
     {
       "speaker": "A",
-      "text": "Do you like your job?"
+      "text": "It is difficult sometimes, but I enjoy my team."
     },
     {
       "speaker": "B",
-      "text": "Yes, I love it!"
+      "text": "That sounds like a good workplace."
     }
   ],
-  "note": "Switch! Student becomes A, teacher becomes B."
+  "note": "Mini role-play: introduce your job to a new colleague."
 }$json$::jsonb,
   true
 ),
 (
-  '98183434-a9b9-416e-87a1-1370de22173e',
+  '7a8f1ba3-024c-4d00-9844-8121ac2601f5',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "What do you do? I am an engineer. Where do you work? I work in an office. Do you like your job? Yes, I like it very much!",
+  "text": "I am a nurse. I work in a hospital with my colleagues. It is difficult sometimes, but I enjoy my team.",
   "questions": [
-    "What is the writer's job?",
+    "What is the job?",
     "Where does the writer work?",
-    "Does the writer like the job?"
+    "Does the writer enjoy the team?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '98183434-a9b9-416e-87a1-1370de22173e',
+  '7a8f1ba3-024c-4d00-9844-8121ac2601f5',
   8,
   'writing',
   null,
   null,
   $json${
   "prompts": [
-    "What do you do? ___.",
-    "Where do you work? ___.",
-    "Do you like your job? ___."
+    "I am a ___.",
+    "I work with ___.",
+    "I enjoy ___ because ___."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '98183434-a9b9-416e-87a1-1370de22173e',
+  '7a8f1ba3-024c-4d00-9844-8121ac2601f5',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Ask 'What do you do?'",
-    "Ask 'Where do you work?'",
-    "Answer work questions"
+    "Describe my job and workplace",
+    "Describe a task and an opinion",
+    "Talk about my colleagues"
   ],
-  "challenge": "Ask me about my job!"
+  "challenge": "Tell me all about your job!"
 }$json$::jsonb,
   true
 );
@@ -804,13 +805,13 @@ values
 -- Lesson 5: Unit Review
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '179b092d-8cb7-4fcd-8234-b520179cee13',
+  'fc44d97c-94d8-4b24-b10a-5bea27f9722b',
   'Unit Review',
   'A1',
   'adults',
   5,
   5,
-  'Talk briefly about jobs and work.',
+  'Review jobs, workplaces, tasks, and opinions. [Combination, Lesson 5: tier-matched mixed review]',
   25,
   9,
   true
@@ -819,7 +820,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '179b092d-8cb7-4fcd-8234-b520179cee13',
+  'fc44d97c-94d8-4b24-b10a-5bea27f9722b',
   1,
   'title',
   null,
@@ -830,23 +831,23 @@ values
   true
 ),
 (
-  '179b092d-8cb7-4fcd-8234-b520179cee13',
+  'fc44d97c-94d8-4b24-b10a-5bea27f9722b',
   2,
   'warmup',
   null,
   null,
   $json${
-  "display": "",
+  "display": "💼",
   "questions": [
-    "What job words do you remember?",
-    "Can you describe your job?"
+    "What is your job?",
+    "Do you enjoy it?"
   ],
-  "title": "Unit Review"
+  "title": "Let's begin"
 }$json$::jsonb,
   true
 ),
 (
-  '179b092d-8cb7-4fcd-8234-b520179cee13',
+  'fc44d97c-94d8-4b24-b10a-5bea27f9722b',
   3,
   'vocabulary',
   null,
@@ -854,41 +855,41 @@ values
   $json${
   "words": [
     {
-      "word": "Teacher",
+      "word": "Job",
       "bg": "#FAECE7"
     },
     {
-      "word": "Office",
+      "word": "Work in",
       "bg": "#E1F5EE"
     },
     {
-      "word": "Help",
+      "word": "Because",
       "bg": "#EEEDFE"
     },
     {
-      "word": "Job",
+      "word": "Enjoy",
       "bg": "#FAEEDA"
     }
   ],
-  "title": "Review Words",
+  "title": "New Words",
   "subtitle": "Tap a card to see it bigger."
 }$json$::jsonb,
   true
 ),
 (
-  '179b092d-8cb7-4fcd-8234-b520179cee13',
+  'fc44d97c-94d8-4b24-b10a-5bea27f9722b',
   4,
   'phrases',
   null,
   null,
   $json${
   "teacher": [
-    "What do you do?",
-    "Where do you work?"
+    "What is your job?",
+    "Do you enjoy it?"
   ],
   "student": [
     "I am a teacher.",
-    "I work in a school."
+    "Yes, I enjoy it."
   ],
   "note": "Use everything you learned this unit!",
   "title": "Practice the Conversation"
@@ -896,7 +897,7 @@ values
   true
 ),
 (
-  '179b092d-8cb7-4fcd-8234-b520179cee13',
+  'fc44d97c-94d8-4b24-b10a-5bea27f9722b',
   5,
   'activity',
   null,
@@ -905,27 +906,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "I am a [teacher]."
+      "text": "My [job] is teacher."
     },
     {
       "speaker": "B",
-      "text": "I work in an [office]."
+      "text": "I [work in] a school."
     },
     {
       "speaker": "A",
-      "text": "I [help] people at work."
+      "text": "I enjoy it [because] I help people."
     }
   ],
   "blanks": [
-    "teacher",
-    "office",
-    "help"
+    "job",
+    "work in",
+    "because"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '179b092d-8cb7-4fcd-8234-b520179cee13',
+  'fc44d97c-94d8-4b24-b10a-5bea27f9722b',
   6,
   'speaking',
   null,
@@ -934,19 +935,19 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "What do you do?"
+      "text": "Tell me about your job."
     },
     {
       "speaker": "B",
-      "text": "I am a nurse. I work in a hospital."
+      "text": "My job is teacher. I work in a school. I enjoy it because I help people."
     },
     {
       "speaker": "A",
-      "text": "Do you like your job?"
+      "text": "My colleagues are nice too."
     },
     {
       "speaker": "B",
-      "text": "Yes, I love helping people!"
+      "text": "Sounds like a great job!"
     }
   ],
   "note": "Switch! Student becomes A, teacher becomes B."
@@ -954,49 +955,49 @@ values
   true
 ),
 (
-  '179b092d-8cb7-4fcd-8234-b520179cee13',
+  'fc44d97c-94d8-4b24-b10a-5bea27f9722b',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "I am a teacher. I work in a school. Every day, I teach students and help them learn. I like my job very much!",
+  "text": "My job is teacher. I work in a school. I enjoy it because I help people. My colleagues are nice.",
   "questions": [
-    "What is the writer's job?",
+    "What is the job?",
     "Where does the writer work?",
-    "Does the writer like the job?"
+    "Why does the writer enjoy it?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '179b092d-8cb7-4fcd-8234-b520179cee13',
+  'fc44d97c-94d8-4b24-b10a-5bea27f9722b',
   8,
   'writing',
   null,
   null,
   $json${
   "prompts": [
-    "I am a ___.",
+    "My job is ___.",
     "I work in a ___.",
-    "At work, I ___."
+    "I enjoy it because ___."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '179b092d-8cb7-4fcd-8234-b520179cee13',
+  'fc44d97c-94d8-4b24-b10a-5bea27f9722b',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Name jobs and workplaces",
-    "Say work tasks",
-    "Ask and answer about work"
+    "Talk about my job and workplace",
+    "Describe a work task",
+    "Give a reason with 'because'"
   ],
-  "challenge": "Tell me all about your job!"
+  "challenge": "Tell me all about your job or a job you'd like!"
 }$json$::jsonb,
   true
 );

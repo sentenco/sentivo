@@ -1,16 +1,17 @@
--- A1 Adults Unit 10: Health and Feelings (5 lessons)
+-- A1 Adults Unit 10: Health and Feelings (5 lessons) — TIERED (Bridge)
+-- Regenerated per the Sentivo Intra-Level Progression Framework + lesson-level escalation + task rotation.
 -- Run this whole script in the Supabase SQL editor.
 
 -- Lesson 1: How Are You?
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  'ceb99f26-5af5-46d3-8bd8-f6e1466e74b8',
+  'd21e188a-38cf-4dcd-a8fe-10131718cc7e',
   'How Are You?',
   'A1',
   'adults',
   10,
   1,
-  'Name and use basic feelings vocabulary.',
+  'Ask and answer about feelings. [Bridge, Lesson 1: notice/receptive]',
   25,
   9,
   true
@@ -19,7 +20,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  'ceb99f26-5af5-46d3-8bd8-f6e1466e74b8',
+  'd21e188a-38cf-4dcd-a8fe-10131718cc7e',
   1,
   'title',
   null,
@@ -30,23 +31,23 @@ values
   true
 ),
 (
-  'ceb99f26-5af5-46d3-8bd8-f6e1466e74b8',
+  'd21e188a-38cf-4dcd-a8fe-10131718cc7e',
   2,
   'warmup',
   null,
   null,
   $json${
-  "display": "",
+  "display": "🙂",
   "questions": [
     "How are you today?",
-    "Are you often busy?"
+    "Are you tired?"
   ],
-  "title": "Warm-up"
+  "title": "Let's begin"
 }$json$::jsonb,
   true
 ),
 (
-  'ceb99f26-5af5-46d3-8bd8-f6e1466e74b8',
+  'd21e188a-38cf-4dcd-a8fe-10131718cc7e',
   3,
   'vocabulary',
   null,
@@ -54,19 +55,19 @@ values
   $json${
   "words": [
     {
-      "word": "Happy",
+      "word": "Tired",
       "bg": "#FAECE7"
     },
     {
-      "word": "Tired",
+      "word": "Well",
       "bg": "#E1F5EE"
     },
     {
-      "word": "Busy",
+      "word": "Not well",
       "bg": "#EEEDFE"
     },
     {
-      "word": "Stressed",
+      "word": "Fine",
       "bg": "#FAEEDA"
     }
   ],
@@ -76,7 +77,7 @@ values
   true
 ),
 (
-  'ceb99f26-5af5-46d3-8bd8-f6e1466e74b8',
+  'd21e188a-38cf-4dcd-a8fe-10131718cc7e',
   4,
   'phrases',
   null,
@@ -84,19 +85,19 @@ values
   $json${
   "teacher": [
     "How are you today?",
-    "Are you busy?"
+    "Are you well?"
   ],
   "student": [
-    "I'm happy today.",
-    "Yes, I'm very busy."
+    "I am fine, thank you.",
+    "I am a little tired."
   ],
-  "note": "Say how you really feel today!",
+  "note": "Read the model text, then practice it.",
   "title": "Practice the Conversation"
 }$json$::jsonb,
   true
 ),
 (
-  'ceb99f26-5af5-46d3-8bd8-f6e1466e74b8',
+  'd21e188a-38cf-4dcd-a8fe-10131718cc7e',
   5,
   'activity',
   null,
@@ -105,27 +106,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "I feel [happy]."
+      "text": "I am [tired] today."
     },
     {
       "speaker": "B",
-      "text": "I feel [tired]."
+      "text": "I am [well], thank you."
     },
     {
       "speaker": "A",
-      "text": "I am [busy] today."
+      "text": "I am [fine]."
     }
   ],
   "blanks": [
-    "happy",
     "tired",
-    "busy"
+    "well",
+    "fine"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'ceb99f26-5af5-46d3-8bd8-f6e1466e74b8',
+  'd21e188a-38cf-4dcd-a8fe-10131718cc7e',
   6,
   'speaking',
   null,
@@ -138,65 +139,65 @@ values
     },
     {
       "speaker": "B",
-      "text": "I'm a little stressed."
+      "text": "I am fine, thank you. How are you?"
     },
     {
       "speaker": "A",
-      "text": "I'm tired!"
+      "text": "I am a little tired."
     },
     {
       "speaker": "B",
-      "text": "Let's relax a bit."
+      "text": "I hope you feel better!"
     }
   ],
-  "note": "Switch! Student becomes A, teacher becomes B."
+  "note": "Teacher says the line first. Student repeats, then says it alone."
 }$json$::jsonb,
   true
 ),
 (
-  'ceb99f26-5af5-46d3-8bd8-f6e1466e74b8',
+  'd21e188a-38cf-4dcd-a8fe-10131718cc7e',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "Today I feel happy. Sometimes I feel tired after work. Sometimes I feel stressed. Everyone has feelings at work and at home!",
+  "text": "How are you today? I am fine, thank you. I am a little tired.",
   "questions": [
-    "How does the writer feel today?",
-    "When does the writer feel tired?",
-    "Does everyone have feelings?"
+    "How does the person feel?",
+    "Is the person very tired or a little tired?",
+    "What does the person say first?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'ceb99f26-5af5-46d3-8bd8-f6e1466e74b8',
+  'd21e188a-38cf-4dcd-a8fe-10131718cc7e',
   8,
   'writing',
   null,
   null,
   $json${
   "prompts": [
-    "Today I feel ___.",
-    "At work, I sometimes feel ___.",
-    "I feel happy when ___."
+    "I am ___ today.",
+    "I am a little ___.",
+    "How are you?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'ceb99f26-5af5-46d3-8bd8-f6e1466e74b8',
+  'd21e188a-38cf-4dcd-a8fe-10131718cc7e',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Name four feelings",
-    "Say 'I feel ___'",
-    "Talk about feelings at work"
+    "Say 'I am fine' or 'I am tired'",
+    "Ask 'How are you?'",
+    "Answer politely"
   ],
-  "challenge": "Tell me how you feel right now!"
+  "challenge": "Ask me how I am, and answer how you feel!"
 }$json$::jsonb,
   true
 );
@@ -204,13 +205,13 @@ values
 -- Lesson 2: Body and Health
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '90d00dff-b2dd-40f7-9959-4a294dc699e8',
+  '479ac479-8d3e-40e8-8cd6-93dea171ba32',
   'Body and Health',
   'A1',
   'adults',
   10,
   2,
-  'Name basic body parts and simple health problems.',
+  'Name body parts and simple symptoms. [Bridge, Lesson 2: controlled practice, fill-in-blank]',
   25,
   9,
   true
@@ -219,7 +220,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '90d00dff-b2dd-40f7-9959-4a294dc699e8',
+  '479ac479-8d3e-40e8-8cd6-93dea171ba32',
   1,
   'title',
   null,
@@ -230,23 +231,23 @@ values
   true
 ),
 (
-  '90d00dff-b2dd-40f7-9959-4a294dc699e8',
+  '479ac479-8d3e-40e8-8cd6-93dea171ba32',
   2,
   'warmup',
   null,
   null,
   $json${
-  "display": "",
+  "display": "🤒",
   "questions": [
-    "Do you ever have a headache?",
-    "What body part hurts most often?"
+    "Do you have a headache sometimes?",
+    "Does your stomach hurt?"
   ],
-  "title": "Warm-up"
+  "title": "Let's begin"
 }$json$::jsonb,
   true
 ),
 (
-  '90d00dff-b2dd-40f7-9959-4a294dc699e8',
+  '479ac479-8d3e-40e8-8cd6-93dea171ba32',
   3,
   'vocabulary',
   null,
@@ -258,215 +259,15 @@ values
       "bg": "#FAECE7"
     },
     {
-      "word": "Back",
-      "bg": "#E1F5EE"
-    },
-    {
       "word": "Stomach",
-      "bg": "#EEEDFE"
-    },
-    {
-      "word": "Pain",
-      "bg": "#FAEEDA"
-    }
-  ],
-  "title": "New Words",
-  "subtitle": "Tap a card to see it bigger."
-}$json$::jsonb,
-  true
-),
-(
-  '90d00dff-b2dd-40f7-9959-4a294dc699e8',
-  4,
-  'phrases',
-  null,
-  null,
-  $json${
-  "teacher": [
-    "What's the problem?",
-    "Does your back hurt?"
-  ],
-  "student": [
-    "I have a headache.",
-    "Yes, my back hurts."
-  ],
-  "note": "Think about a real or common health problem!",
-  "title": "Practice the Conversation"
-}$json$::jsonb,
-  true
-),
-(
-  '90d00dff-b2dd-40f7-9959-4a294dc699e8',
-  5,
-  'activity',
-  null,
-  null,
-  $json${
-  "dialogue": [
-    {
-      "speaker": "A",
-      "text": "I have a [head]ache."
-    },
-    {
-      "speaker": "B",
-      "text": "My [back] hurts."
-    },
-    {
-      "speaker": "A",
-      "text": "I have [pain] in my stomach."
-    }
-  ],
-  "blanks": [
-    "head",
-    "back",
-    "pain"
-  ]
-}$json$::jsonb,
-  true
-),
-(
-  '90d00dff-b2dd-40f7-9959-4a294dc699e8',
-  6,
-  'speaking',
-  null,
-  null,
-  $json${
-  "dialogue": [
-    {
-      "speaker": "A",
-      "text": "What's the problem?"
-    },
-    {
-      "speaker": "B",
-      "text": "My stomach hurts."
-    },
-    {
-      "speaker": "A",
-      "text": "I have a headache!"
-    },
-    {
-      "speaker": "B",
-      "text": "I hope you feel better soon."
-    }
-  ],
-  "note": "Switch! Student becomes A, teacher becomes B."
-}$json$::jsonb,
-  true
-),
-(
-  '90d00dff-b2dd-40f7-9959-4a294dc699e8',
-  7,
-  'reading',
-  null,
-  null,
-  $json${
-  "text": "I have a headache today. My back hurts too. Sometimes I have stomach pain. I need to rest when I don't feel well.",
-  "questions": [
-    "What problem does the writer have?",
-    "Does the writer's back hurt?",
-    "What does the writer need?"
-  ]
-}$json$::jsonb,
-  true
-),
-(
-  '90d00dff-b2dd-40f7-9959-4a294dc699e8',
-  8,
-  'writing',
-  null,
-  null,
-  $json${
-  "prompts": [
-    "I have a ___ache.",
-    "My ___ hurts.",
-    "When I don't feel well, I ___."
-  ]
-}$json$::jsonb,
-  true
-),
-(
-  '90d00dff-b2dd-40f7-9959-4a294dc699e8',
-  9,
-  'review',
-  null,
-  null,
-  $json${
-  "checklist": [
-    "Name four body parts",
-    "Say 'I have a ___ache'",
-    "Talk about simple health problems"
-  ],
-  "challenge": "Tell me about a time you didn't feel well!"
-}$json$::jsonb,
-  true
-);
-
--- Lesson 3: Simple Advice
-insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
-values (
-  '5068f8e1-f8bd-43d6-8c7a-b183795d387e',
-  'Simple Advice',
-  'A1',
-  'adults',
-  10,
-  3,
-  'Understand and use basic health advice.',
-  25,
-  9,
-  true
-);
-
-insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
-values
-(
-  '5068f8e1-f8bd-43d6-8c7a-b183795d387e',
-  1,
-  'title',
-  null,
-  null,
-  $json${
-  "badge": "A1 · Beginner · Adults"
-}$json$::jsonb,
-  true
-),
-(
-  '5068f8e1-f8bd-43d6-8c7a-b183795d387e',
-  2,
-  'warmup',
-  null,
-  null,
-  $json${
-  "display": "",
-  "questions": [
-    "What do you do when you feel sick?",
-    "Do you rest when you're tired?"
-  ],
-  "title": "Warm-up"
-}$json$::jsonb,
-  true
-),
-(
-  '5068f8e1-f8bd-43d6-8c7a-b183795d387e',
-  3,
-  'vocabulary',
-  null,
-  null,
-  $json${
-  "words": [
-    {
-      "word": "Rest",
-      "bg": "#FAECE7"
-    },
-    {
-      "word": "Drink Water",
       "bg": "#E1F5EE"
     },
     {
-      "word": "See A Doctor",
+      "word": "Headache",
       "bg": "#EEEDFE"
     },
     {
-      "word": "Go Home",
+      "word": "Hurts",
       "bg": "#FAEEDA"
     }
   ],
@@ -476,27 +277,27 @@ values
   true
 ),
 (
-  '5068f8e1-f8bd-43d6-8c7a-b183795d387e',
+  '479ac479-8d3e-40e8-8cd6-93dea171ba32',
   4,
   'phrases',
   null,
   null,
   $json${
   "teacher": [
-    "What should I do?",
-    "Should I see a doctor?"
+    "Do you have a headache?",
+    "Does your head hurt?"
   ],
   "student": [
-    "You should rest.",
-    "Yes, you should see a doctor."
+    "Yes, I have a headache.",
+    "Yes, my head hurts."
   ],
-  "note": "Give real, simple health advice!",
+  "note": "Use the word bank: head, stomach, headache, hurts.",
   "title": "Practice the Conversation"
 }$json$::jsonb,
   true
 ),
 (
-  '5068f8e1-f8bd-43d6-8c7a-b183795d387e',
+  '479ac479-8d3e-40e8-8cd6-93dea171ba32',
   5,
   'activity',
   null,
@@ -505,27 +306,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "You should [rest]."
+      "text": "I have a [headache]."
     },
     {
       "speaker": "B",
-      "text": "[Drink water] and relax."
+      "text": "My [stomach] hurts."
     },
     {
       "speaker": "A",
-      "text": "You should [see a doctor]."
+      "text": "My [head] hurts too."
     }
   ],
   "blanks": [
-    "rest",
-    "Drink water",
-    "see a doctor"
+    "headache",
+    "stomach",
+    "head"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '5068f8e1-f8bd-43d6-8c7a-b183795d387e',
+  '479ac479-8d3e-40e8-8cd6-93dea171ba32',
   6,
   'speaking',
   null,
@@ -534,19 +335,19 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "I don't feel well."
+      "text": "Do you have a headache?"
     },
     {
       "speaker": "B",
-      "text": "You should rest and drink water."
+      "text": "Yes, I have a headache. My stomach hurts too."
     },
     {
       "speaker": "A",
-      "text": "Should I go home?"
+      "text": "I am sorry to hear that."
     },
     {
       "speaker": "B",
-      "text": "Yes, you should go home and rest!"
+      "text": "Thank you."
     }
   ],
   "note": "Switch! Student becomes A, teacher becomes B."
@@ -554,223 +355,23 @@ values
   true
 ),
 (
-  '5068f8e1-f8bd-43d6-8c7a-b183795d387e',
+  '479ac479-8d3e-40e8-8cd6-93dea171ba32',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "I don't feel well. My friend says, 'You should rest.' 'Drink water,' she says. 'If it's serious, see a doctor.' Good advice helps me feel better!",
+  "text": "I have a headache today. My stomach hurts too. I feel unwell.",
   "questions": [
-    "What advice does the friend give?",
-    "What should the writer drink?",
-    "When should you see a doctor?"
+    "What does the writer have?",
+    "What else hurts?",
+    "How does the writer feel overall?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '5068f8e1-f8bd-43d6-8c7a-b183795d387e',
-  8,
-  'writing',
-  null,
-  null,
-  $json${
-  "prompts": [
-    "You should ___.",
-    "If you feel sick, you should ___.",
-    "Good advice is to ___."
-  ]
-}$json$::jsonb,
-  true
-),
-(
-  '5068f8e1-f8bd-43d6-8c7a-b183795d387e',
-  9,
-  'review',
-  null,
-  null,
-  $json${
-  "checklist": [
-    "Say 'You should ___'",
-    "Give simple health advice",
-    "Understand health advice"
-  ],
-  "challenge": "Give me some advice — I don't feel well today!"
-}$json$::jsonb,
-  true
-);
-
--- Lesson 4: At the Doctor
-insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
-values (
-  '8c25a025-a715-4a54-ba39-d2ba34ea6d8b',
-  'At the Doctor',
-  'A1',
-  'adults',
-  10,
-  4,
-  'Answer simple health questions.',
-  25,
-  9,
-  true
-);
-
-insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
-values
-(
-  '8c25a025-a715-4a54-ba39-d2ba34ea6d8b',
-  1,
-  'title',
-  null,
-  null,
-  $json${
-  "badge": "A1 · Beginner · Adults"
-}$json$::jsonb,
-  true
-),
-(
-  '8c25a025-a715-4a54-ba39-d2ba34ea6d8b',
-  2,
-  'warmup',
-  null,
-  null,
-  $json${
-  "display": "",
-  "questions": [
-    "Have you visited a doctor recently?",
-    "What do doctors usually ask?"
-  ],
-  "title": "Warm-up"
-}$json$::jsonb,
-  true
-),
-(
-  '8c25a025-a715-4a54-ba39-d2ba34ea6d8b',
-  3,
-  'vocabulary',
-  null,
-  null,
-  $json${
-  "words": [
-    {
-      "word": "What's The Problem",
-      "bg": "#FAECE7"
-    },
-    {
-      "word": "Do You Have A Cough",
-      "bg": "#E1F5EE"
-    },
-    {
-      "word": "Fever",
-      "bg": "#EEEDFE"
-    },
-    {
-      "word": "Cold",
-      "bg": "#FAEEDA"
-    }
-  ],
-  "title": "New Words",
-  "subtitle": "Tap a card to see it bigger."
-}$json$::jsonb,
-  true
-),
-(
-  '8c25a025-a715-4a54-ba39-d2ba34ea6d8b',
-  4,
-  'phrases',
-  null,
-  null,
-  $json${
-  "teacher": [
-    "What's the problem?",
-    "Do you have a cough?"
-  ],
-  "student": [
-    "I have a cold.",
-    "Yes, I have a cough."
-  ],
-  "note": "Practice like you're really at the doctor!",
-  "title": "Practice the Conversation"
-}$json$::jsonb,
-  true
-),
-(
-  '8c25a025-a715-4a54-ba39-d2ba34ea6d8b',
-  5,
-  'activity',
-  null,
-  null,
-  $json${
-  "dialogue": [
-    {
-      "speaker": "A",
-      "text": "[What's the problem]?"
-    },
-    {
-      "speaker": "B",
-      "text": "I have a [cold]."
-    },
-    {
-      "speaker": "A",
-      "text": "[Do you have a cough]?"
-    }
-  ],
-  "blanks": [
-    "What's the problem",
-    "cold",
-    "Do you have a cough"
-  ]
-}$json$::jsonb,
-  true
-),
-(
-  '8c25a025-a715-4a54-ba39-d2ba34ea6d8b',
-  6,
-  'speaking',
-  null,
-  null,
-  $json${
-  "dialogue": [
-    {
-      "speaker": "A",
-      "text": "What's the problem?"
-    },
-    {
-      "speaker": "B",
-      "text": "I have a fever and a cough."
-    },
-    {
-      "speaker": "A",
-      "text": "Do you have a headache too?"
-    },
-    {
-      "speaker": "B",
-      "text": "Yes, a small one."
-    }
-  ],
-  "note": "Switch! Student becomes A, teacher becomes B."
-}$json$::jsonb,
-  true
-),
-(
-  '8c25a025-a715-4a54-ba39-d2ba34ea6d8b',
-  7,
-  'reading',
-  null,
-  null,
-  $json${
-  "text": "What's the problem? I have a cold. Do you have a cough? Yes, I do. Do you have a fever? No, I don't. The doctor gives me good advice.",
-  "questions": [
-    "What problem does the patient have?",
-    "Does the patient have a cough?",
-    "Does the patient have a fever?"
-  ]
-}$json$::jsonb,
-  true
-),
-(
-  '8c25a025-a715-4a54-ba39-d2ba34ea6d8b',
+  '479ac479-8d3e-40e8-8cd6-93dea171ba32',
   8,
   'writing',
   null,
@@ -778,39 +379,39 @@ values
   $json${
   "prompts": [
     "I have a ___.",
-    "Do you have a ___? ___.",
-    "The doctor says I should ___."
+    "My ___ hurts.",
+    "I feel ___."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '8c25a025-a715-4a54-ba39-d2ba34ea6d8b',
+  '479ac479-8d3e-40e8-8cd6-93dea171ba32',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Ask 'What's the problem?'",
-    "Ask 'Do you have a ___?'",
-    "Answer health questions"
+    "Name head and stomach",
+    "Say 'I have a headache'",
+    "Say 'My ___ hurts'"
   ],
-  "challenge": "Be the doctor and ask me about my health!"
+  "challenge": "Tell me if anything hurts today, real or pretend!"
 }$json$::jsonb,
   true
 );
 
--- Lesson 5: Unit Review
+-- Lesson 3: Simple Advice
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  'bf11882f-558e-4fab-86fb-f4960c8823e9',
-  'Unit Review',
+  'b65fea89-f64f-45f7-a6e9-efdacea75463',
+  'Simple Advice',
   'A1',
   'adults',
   10,
-  5,
-  'Talk simply about feelings, health, and basic advice.',
+  3,
+  'Give and receive simple advice with ''because''. [Bridge, Lesson 3: freer practice, choose-the-better-response]',
   25,
   9,
   true
@@ -819,7 +420,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  'bf11882f-558e-4fab-86fb-f4960c8823e9',
+  'b65fea89-f64f-45f7-a6e9-efdacea75463',
   1,
   'title',
   null,
@@ -830,23 +431,23 @@ values
   true
 ),
 (
-  'bf11882f-558e-4fab-86fb-f4960c8823e9',
+  'b65fea89-f64f-45f7-a6e9-efdacea75463',
   2,
   'warmup',
   null,
   null,
   $json${
-  "display": "",
+  "display": "💊",
   "questions": [
-    "What feeling and health words do you remember?",
-    "How are you feeling today?"
+    "What do you do when you have a headache?",
+    "Do you rest when you feel unwell?"
   ],
-  "title": "Unit Review"
+  "title": "Let's begin"
 }$json$::jsonb,
   true
 ),
 (
-  'bf11882f-558e-4fab-86fb-f4960c8823e9',
+  'b65fea89-f64f-45f7-a6e9-efdacea75463',
   3,
   'vocabulary',
   null,
@@ -854,49 +455,49 @@ values
   $json${
   "words": [
     {
-      "word": "Happy",
+      "word": "You should",
       "bg": "#FAECE7"
     },
     {
-      "word": "Headache",
+      "word": "Rest",
       "bg": "#E1F5EE"
     },
     {
-      "word": "Rest",
+      "word": "Drink water",
       "bg": "#EEEDFE"
     },
     {
-      "word": "Cold",
+      "word": "Because",
       "bg": "#FAEEDA"
     }
   ],
-  "title": "Review Words",
+  "title": "New Words",
   "subtitle": "Tap a card to see it bigger."
 }$json$::jsonb,
   true
 ),
 (
-  'bf11882f-558e-4fab-86fb-f4960c8823e9',
+  'b65fea89-f64f-45f7-a6e9-efdacea75463',
   4,
   'phrases',
   null,
   null,
   $json${
   "teacher": [
-    "How are you?",
-    "What's the problem?"
+    "What should I do?",
+    "Why should I rest?"
   ],
   "student": [
-    "I'm happy.",
-    "I have a cold."
+    "You should rest.",
+    "Because it helps you feel better."
   ],
-  "note": "Use everything you learned this unit!",
+  "note": "Two answers are given. Choose the more helpful one.",
   "title": "Practice the Conversation"
 }$json$::jsonb,
   true
 ),
 (
-  'bf11882f-558e-4fab-86fb-f4960c8823e9',
+  'b65fea89-f64f-45f7-a6e9-efdacea75463',
   5,
   'activity',
   null,
@@ -905,7 +506,407 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "I feel [happy]."
+      "text": "[You should] rest."
+    },
+    {
+      "speaker": "B",
+      "text": "You should [drink water] too."
+    },
+    {
+      "speaker": "A",
+      "text": "[Because] it helps."
+    }
+  ],
+  "blanks": [
+    "you should",
+    "drink water",
+    "because"
+  ]
+}$json$::jsonb,
+  true
+),
+(
+  'b65fea89-f64f-45f7-a6e9-efdacea75463',
+  6,
+  'speaking',
+  null,
+  null,
+  $json${
+  "dialogue": [
+    {
+      "speaker": "A",
+      "text": "I have a headache. What should I do?"
+    },
+    {
+      "speaker": "B",
+      "text": "You should rest. You should drink water too, because it helps."
+    },
+    {
+      "speaker": "A",
+      "text": "Thank you, that's good advice."
+    },
+    {
+      "speaker": "B",
+      "text": "I hope you feel better soon!"
+    }
+  ],
+  "note": "Switch! Student becomes A, teacher becomes B."
+}$json$::jsonb,
+  true
+),
+(
+  'b65fea89-f64f-45f7-a6e9-efdacea75463',
+  7,
+  'reading',
+  null,
+  null,
+  $json${
+  "text": "I have a headache. You should rest. You should drink water too, because it helps you feel better.",
+  "questions": [
+    "What is the problem?",
+    "What is the first piece of advice?",
+    "Why should the person drink water?"
+  ]
+}$json$::jsonb,
+  true
+),
+(
+  'b65fea89-f64f-45f7-a6e9-efdacea75463',
+  8,
+  'writing',
+  null,
+  null,
+  $json${
+  "prompts": [
+    "You should ___.",
+    "You should ___ too, because ___.",
+    "That's good advice."
+  ]
+}$json$::jsonb,
+  true
+),
+(
+  'b65fea89-f64f-45f7-a6e9-efdacea75463',
+  9,
+  'review',
+  null,
+  null,
+  $json${
+  "checklist": [
+    "Give advice with 'You should'",
+    "Give a one-clause reason with 'because'",
+    "Receive advice politely"
+  ],
+  "challenge": "Give me advice for a headache or a cold!"
+}$json$::jsonb,
+  true
+);
+
+-- Lesson 4: At the Doctor
+insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
+values (
+  'e4c104b7-390e-499c-862f-4556d57b0c4e',
+  'At the Doctor',
+  'A1',
+  'adults',
+  10,
+  4,
+  'Combine symptoms and advice into a doctor''s visit conversation. [Bridge, Lesson 4: production, mini role-play]',
+  25,
+  9,
+  true
+);
+
+insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
+values
+(
+  'e4c104b7-390e-499c-862f-4556d57b0c4e',
+  1,
+  'title',
+  null,
+  null,
+  $json${
+  "badge": "A1 · Beginner · Adults"
+}$json$::jsonb,
+  true
+),
+(
+  'e4c104b7-390e-499c-862f-4556d57b0c4e',
+  2,
+  'warmup',
+  null,
+  null,
+  $json${
+  "display": "🩺",
+  "questions": [
+    "Have you been to the doctor recently?",
+    "What do you say when you make an appointment?"
+  ],
+  "title": "Let's begin"
+}$json$::jsonb,
+  true
+),
+(
+  'e4c104b7-390e-499c-862f-4556d57b0c4e',
+  3,
+  'vocabulary',
+  null,
+  null,
+  $json${
+  "words": [
+    {
+      "word": "What's wrong",
+      "bg": "#FAECE7"
+    },
+    {
+      "word": "Since when",
+      "bg": "#E1F5EE"
+    },
+    {
+      "word": "Appointment",
+      "bg": "#EEEDFE"
+    },
+    {
+      "word": "Feel better",
+      "bg": "#FAEEDA"
+    }
+  ],
+  "title": "New Words",
+  "subtitle": "Tap a card to see it bigger."
+}$json$::jsonb,
+  true
+),
+(
+  'e4c104b7-390e-499c-862f-4556d57b0c4e',
+  4,
+  'phrases',
+  null,
+  null,
+  $json${
+  "teacher": [
+    "What's wrong?",
+    "Since when?"
+  ],
+  "student": [
+    "I have a headache.",
+    "Since yesterday."
+  ],
+  "note": "Put it all together: symptom + advice + closing.",
+  "title": "Practice the Conversation"
+}$json$::jsonb,
+  true
+),
+(
+  'e4c104b7-390e-499c-862f-4556d57b0c4e',
+  5,
+  'activity',
+  null,
+  null,
+  $json${
+  "dialogue": [
+    {
+      "speaker": "A",
+      "text": "[What's wrong]?"
+    },
+    {
+      "speaker": "B",
+      "text": "I have a headache. [Since when]? Since yesterday."
+    },
+    {
+      "speaker": "A",
+      "text": "I hope you [feel better] soon."
+    }
+  ],
+  "blanks": [
+    "what's wrong",
+    "since when",
+    "feel better"
+  ]
+}$json$::jsonb,
+  true
+),
+(
+  'e4c104b7-390e-499c-862f-4556d57b0c4e',
+  6,
+  'speaking',
+  null,
+  null,
+  $json${
+  "dialogue": [
+    {
+      "speaker": "A",
+      "text": "Good morning. What's wrong?"
+    },
+    {
+      "speaker": "B",
+      "text": "I have a headache and my stomach hurts."
+    },
+    {
+      "speaker": "A",
+      "text": "Since when? Since yesterday. You should rest and drink water."
+    },
+    {
+      "speaker": "B",
+      "text": "Thank you, I hope I feel better soon."
+    }
+  ],
+  "note": "Mini role-play: doctor and patient at a check-up."
+}$json$::jsonb,
+  true
+),
+(
+  'e4c104b7-390e-499c-862f-4556d57b0c4e',
+  7,
+  'reading',
+  null,
+  null,
+  $json${
+  "text": "Good morning. What's wrong? I have a headache since yesterday. You should rest and drink water. I hope you feel better soon.",
+  "questions": [
+    "What is wrong?",
+    "Since when?",
+    "What is the advice?"
+  ]
+}$json$::jsonb,
+  true
+),
+(
+  'e4c104b7-390e-499c-862f-4556d57b0c4e',
+  8,
+  'writing',
+  null,
+  null,
+  $json${
+  "prompts": [
+    "I have a ___ since ___.",
+    "You should ___.",
+    "I hope you feel better."
+  ]
+}$json$::jsonb,
+  true
+),
+(
+  'e4c104b7-390e-499c-862f-4556d57b0c4e',
+  9,
+  'review',
+  null,
+  null,
+  $json${
+  "checklist": [
+    "Describe a symptom with 'since'",
+    "Give simple advice",
+    "Close politely"
+  ],
+  "challenge": "Role-play a doctor visit with me!"
+}$json$::jsonb,
+  true
+);
+
+-- Lesson 5: Unit Review
+insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
+values (
+  'c85f1cb0-f5c1-489b-8cab-fec178d1cec1',
+  'Unit Review',
+  'A1',
+  'adults',
+  10,
+  5,
+  'Review feelings, symptoms, and advice. [Bridge, Lesson 5: tier-matched mixed review]',
+  25,
+  9,
+  true
+);
+
+insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
+values
+(
+  'c85f1cb0-f5c1-489b-8cab-fec178d1cec1',
+  1,
+  'title',
+  null,
+  null,
+  $json${
+  "badge": "A1 · Beginner · Adults"
+}$json$::jsonb,
+  true
+),
+(
+  'c85f1cb0-f5c1-489b-8cab-fec178d1cec1',
+  2,
+  'warmup',
+  null,
+  null,
+  $json${
+  "display": "🙂",
+  "questions": [
+    "How are you today?",
+    "What advice do you give for a headache?"
+  ],
+  "title": "Let's begin"
+}$json$::jsonb,
+  true
+),
+(
+  'c85f1cb0-f5c1-489b-8cab-fec178d1cec1',
+  3,
+  'vocabulary',
+  null,
+  null,
+  $json${
+  "words": [
+    {
+      "word": "Tired",
+      "bg": "#FAECE7"
+    },
+    {
+      "word": "Headache",
+      "bg": "#E1F5EE"
+    },
+    {
+      "word": "You should",
+      "bg": "#EEEDFE"
+    },
+    {
+      "word": "Feel better",
+      "bg": "#FAEEDA"
+    }
+  ],
+  "title": "New Words",
+  "subtitle": "Tap a card to see it bigger."
+}$json$::jsonb,
+  true
+),
+(
+  'c85f1cb0-f5c1-489b-8cab-fec178d1cec1',
+  4,
+  'phrases',
+  null,
+  null,
+  $json${
+  "teacher": [
+    "How are you today?",
+    "What should I do for a headache?"
+  ],
+  "student": [
+    "I am a little tired.",
+    "You should rest."
+  ],
+  "note": "Use everything you learned this unit!",
+  "title": "Practice the Conversation"
+}$json$::jsonb,
+  true
+),
+(
+  'c85f1cb0-f5c1-489b-8cab-fec178d1cec1',
+  5,
+  'activity',
+  null,
+  null,
+  $json${
+  "dialogue": [
+    {
+      "speaker": "A",
+      "text": "I am [tired] today."
     },
     {
       "speaker": "B",
@@ -913,19 +914,19 @@ values
     },
     {
       "speaker": "A",
-      "text": "You should [rest]."
+      "text": "[You should] rest."
     }
   ],
   "blanks": [
-    "happy",
+    "tired",
     "headache",
-    "rest"
+    "you should"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'bf11882f-558e-4fab-86fb-f4960c8823e9',
+  'c85f1cb0-f5c1-489b-8cab-fec178d1cec1',
   6,
   'speaking',
   null,
@@ -938,15 +939,15 @@ values
     },
     {
       "speaker": "B",
-      "text": "I have a cold. I don't feel well."
+      "text": "I am tired, and I have a headache."
     },
     {
       "speaker": "A",
-      "text": "You should rest and drink water."
+      "text": "You should rest and drink water, because it helps."
     },
     {
       "speaker": "B",
-      "text": "Thank you, I will!"
+      "text": "Thank you, I hope I feel better soon."
     }
   ],
   "note": "Switch! Student becomes A, teacher becomes B."
@@ -954,49 +955,49 @@ values
   true
 ),
 (
-  'bf11882f-558e-4fab-86fb-f4960c8823e9',
+  'c85f1cb0-f5c1-489b-8cab-fec178d1cec1',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "Today I feel tired. I have a headache. My friend says, 'You should rest and drink water.' I go home and rest. Tomorrow I will feel better!",
+  "text": "I am tired today, and I have a headache. You should rest and drink water, because it helps. I hope I feel better soon.",
   "questions": [
     "How does the writer feel?",
-    "What advice does the friend give?",
-    "What will happen tomorrow?"
+    "What is the advice?",
+    "Why does the advice help?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'bf11882f-558e-4fab-86fb-f4960c8823e9',
+  'c85f1cb0-f5c1-489b-8cab-fec178d1cec1',
   8,
   'writing',
   null,
   null,
   $json${
   "prompts": [
-    "Today I feel ___.",
-    "I have a ___.",
-    "You should ___."
+    "I am ___ today.",
+    "You should ___, because ___.",
+    "I hope I feel better."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'bf11882f-558e-4fab-86fb-f4960c8823e9',
+  'c85f1cb0-f5c1-489b-8cab-fec178d1cec1',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Name feelings and health words",
-    "Talk about simple health problems",
-    "Give and understand advice"
+    "Talk about how I feel",
+    "Describe a symptom",
+    "Give and receive advice"
   ],
-  "challenge": "Tell me how you feel and ask me for advice!"
+  "challenge": "Tell me how you feel today and any advice you'd give!"
 }$json$::jsonb,
   true
 );
