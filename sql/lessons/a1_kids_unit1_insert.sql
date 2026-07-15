@@ -110,24 +110,28 @@ values
   null,
   null,
   $json${
-  "dialogue": [
+  "mode": "match",
+  "tag": "Activity",
+  "title": "Match the Greetings",
+  "subtitle": "Tap a picture, then tap its word.",
+  "instruction": "Match each picture to its word.",
+  "pairs": [
     {
-      "speaker": "A",
-      "text": "[Hello]! I am Leo."
+      "emoji": "👋",
+      "word": "Hello"
     },
     {
-      "speaker": "B",
-      "text": "[Hi]! My name is Ana."
+      "emoji": "🙋",
+      "word": "Hi"
     },
     {
-      "speaker": "A",
-      "text": "[Goodbye]!"
+      "emoji": "🚶",
+      "word": "Goodbye"
+    },
+    {
+      "emoji": "🏷️",
+      "word": "My name is"
     }
-  ],
-  "blanks": [
-    "hello",
-    "hi",
-    "goodbye"
   ]
 }$json$::jsonb,
   true
@@ -315,25 +319,22 @@ values
   null,
   null,
   $json${
-  "dialogue": [
+  "mode": "choice",
+  "tag": "Activity",
+  "title": "Which One?",
+  "subtitle": "Tap the correct answer.",
+  "instruction": "Which question asks about age?",
+  "options": [
     {
-      "speaker": "A",
-      "text": "[How old] are you?"
+      "text": "How old are you?",
+      "emoji": "🎂"
     },
     {
-      "speaker": "B",
-      "text": "I am seven [years old]."
-    },
-    {
-      "speaker": "A",
-      "text": "[I am] eight!"
+      "text": "What do you like?",
+      "emoji": "⭐"
     }
   ],
-  "blanks": [
-    "how old",
-    "years old",
-    "i am"
-  ]
+  "correctIndex": 0
 }$json$::jsonb,
   true
 ),
@@ -520,6 +521,7 @@ values
   null,
   null,
   $json${
+  "mode": "blank",
   "dialogue": [
     {
       "speaker": "A",
@@ -725,24 +727,42 @@ values
   null,
   null,
   $json${
-  "dialogue": [
+  "mode": "sort",
+  "tag": "Activity",
+  "title": "Like or Don't Like?",
+  "subtitle": "Drag each one to how you feel.",
+  "instruction": "Drag each thing to how you feel about it!",
+  "buckets": [
     {
-      "speaker": "A",
-      "text": "I [like] pizza."
+      "label": "I Like",
+      "emoji": "😊"
     },
     {
-      "speaker": "B",
-      "text": "I [don't like] spiders."
-    },
-    {
-      "speaker": "A",
-      "text": "I [love] cats!"
+      "label": "I Don't Like",
+      "emoji": "😕"
     }
   ],
-  "blanks": [
-    "like",
-    "don't like",
-    "love"
+  "items": [
+    {
+      "text": "Pizza",
+      "emoji": "🍕",
+      "bucket": 0
+    },
+    {
+      "text": "Cats",
+      "emoji": "🐱",
+      "bucket": 0
+    },
+    {
+      "text": "Spiders",
+      "emoji": "🕷️",
+      "bucket": 1
+    },
+    {
+      "text": "Homework",
+      "emoji": "📚",
+      "bucket": 1
+    }
   ]
 }$json$::jsonb,
   true
@@ -930,24 +950,101 @@ values
   null,
   null,
   $json${
-  "dialogue": [
+  "mode": "mixed",
+  "tag": "Unit Review",
+  "title": "Mix It Up!",
+  "subtitle": "Try one of each.",
+  "parts": [
     {
-      "speaker": "A",
-      "text": "My [name] is Mia."
+      "mode": "match",
+      "instruction": "Match each word.",
+      "pairs": [
+        {
+          "emoji": "🏷️",
+          "word": "Name"
+        },
+        {
+          "emoji": "🎂",
+          "word": "Age"
+        },
+        {
+          "emoji": "👨‍👩‍👧‍👦",
+          "word": "Family"
+        },
+        {
+          "emoji": "⭐",
+          "word": "Like"
+        }
+      ]
     },
     {
-      "speaker": "B",
-      "text": "I am seven years old. This is my [family]."
+      "mode": "choice",
+      "instruction": "Which one means 'family'?",
+      "options": [
+        {
+          "text": "Family",
+          "emoji": "👨‍👩‍👧‍👦"
+        },
+        {
+          "text": "Pizza",
+          "emoji": "🍕"
+        }
+      ],
+      "correctIndex": 0
     },
     {
-      "speaker": "A",
-      "text": "I [like] cats!"
+      "mode": "blank",
+      "dialogue": [
+        {
+          "speaker": "A",
+          "text": "My [name] is Mia."
+        },
+        {
+          "speaker": "B",
+          "text": "This is my [family]."
+        },
+        {
+          "speaker": "A",
+          "text": "I [like] cats!"
+        }
+      ],
+      "blanks": [
+        "name",
+        "family",
+        "like"
+      ]
+    },
+    {
+      "mode": "sort",
+      "instruction": "Drag each thing to how you feel.",
+      "buckets": [
+        {
+          "label": "I Like",
+          "emoji": "😊"
+        },
+        {
+          "label": "I Don't Like",
+          "emoji": "😕"
+        }
+      ],
+      "items": [
+        {
+          "text": "Cats",
+          "emoji": "🐱",
+          "bucket": 0
+        },
+        {
+          "text": "Pizza",
+          "emoji": "🍕",
+          "bucket": 0
+        },
+        {
+          "text": "Spiders",
+          "emoji": "🕷️",
+          "bucket": 1
+        }
+      ]
     }
-  ],
-  "blanks": [
-    "name",
-    "family",
-    "like"
   ]
 }$json$::jsonb,
   true

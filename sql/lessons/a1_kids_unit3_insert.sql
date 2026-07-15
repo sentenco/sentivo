@@ -108,24 +108,28 @@ values
   null,
   null,
   $json${
-  "dialogue": [
+  "mode": "match",
+  "tag": "Activity",
+  "title": "Match the Family",
+  "subtitle": "Tap a picture, then tap its word.",
+  "instruction": "Match each picture to its word.",
+  "pairs": [
     {
-      "speaker": "A",
-      "text": "This is my [mom]."
+      "emoji": "👩",
+      "word": "Mom"
     },
     {
-      "speaker": "B",
-      "text": "This is my [dad]."
+      "emoji": "👨",
+      "word": "Dad"
     },
     {
-      "speaker": "A",
-      "text": "I have one [sister]."
+      "emoji": "👧",
+      "word": "Sister"
+    },
+    {
+      "emoji": "👦",
+      "word": "Brother"
     }
-  ],
-  "blanks": [
-    "mom",
-    "dad",
-    "sister"
   ]
 }$json$::jsonb,
   true
@@ -313,24 +317,28 @@ values
   null,
   null,
   $json${
-  "dialogue": [
+  "mode": "order",
+  "tag": "Activity",
+  "title": "Introduce Your Family",
+  "subtitle": "Put the steps in order.",
+  "instruction": "Put the introduction in order!",
+  "items": [
     {
-      "speaker": "A",
-      "text": "This is my [grandma]."
+      "text": "Show a photo",
+      "emoji": "📷"
     },
     {
-      "speaker": "B",
-      "text": "This is my [grandpa]."
+      "text": "This is my grandma",
+      "emoji": "👵"
     },
     {
-      "speaker": "A",
-      "text": "This is my [baby] sister."
+      "text": "This is my grandpa",
+      "emoji": "👴"
+    },
+    {
+      "text": "This is my baby sister",
+      "emoji": "👶"
     }
-  ],
-  "blanks": [
-    "grandma",
-    "grandpa",
-    "baby"
   ]
 }$json$::jsonb,
   true
@@ -518,25 +526,22 @@ values
   null,
   null,
   $json${
-  "dialogue": [
+  "mode": "choice",
+  "tag": "Activity",
+  "title": "Which One?",
+  "subtitle": "Tap the correct answer.",
+  "instruction": "Which family is BIG?",
+  "options": [
     {
-      "speaker": "A",
-      "text": "My family is [big]."
+      "text": "Big Family",
+      "emoji": "👨‍👩‍👧‍👦👵👴"
     },
     {
-      "speaker": "B",
-      "text": "My family is [small]."
-    },
-    {
-      "speaker": "A",
-      "text": "I have [many] cousins."
+      "text": "Small Family",
+      "emoji": "👩‍👦"
     }
   ],
-  "blanks": [
-    "big",
-    "small",
-    "many"
-  ]
+  "correctIndex": 0
 }$json$::jsonb,
   true
 ),
@@ -723,24 +728,42 @@ values
   null,
   null,
   $json${
-  "dialogue": [
+  "mode": "sort",
+  "tag": "Activity",
+  "title": "Family or School?",
+  "subtitle": "Drag each word to the right group.",
+  "instruction": "Drag each word to the right group!",
+  "buckets": [
     {
-      "speaker": "A",
-      "text": "I [play] with my dad."
+      "label": "Family",
+      "emoji": "❤️"
     },
     {
-      "speaker": "B",
-      "text": "I [hug] my mom."
-    },
-    {
-      "speaker": "A",
-      "text": "I [love] my family!"
+      "label": "School",
+      "emoji": "🏫"
     }
   ],
-  "blanks": [
-    "play",
-    "hug",
-    "love"
+  "items": [
+    {
+      "text": "Hug",
+      "emoji": "🤗",
+      "bucket": 0
+    },
+    {
+      "text": "Homework",
+      "emoji": "📚",
+      "bucket": 1
+    },
+    {
+      "text": "Bus",
+      "emoji": "🚌",
+      "bucket": 1
+    },
+    {
+      "text": "Love",
+      "emoji": "💕",
+      "bucket": 0
+    }
   ]
 }$json$::jsonb,
   true
@@ -928,24 +951,101 @@ values
   null,
   null,
   $json${
-  "dialogue": [
+  "mode": "mixed",
+  "tag": "Unit Review",
+  "title": "Mix It Up!",
+  "subtitle": "Try one of each.",
+  "parts": [
     {
-      "speaker": "A",
-      "text": "This is my [family]."
+      "mode": "match",
+      "instruction": "Match each family member.",
+      "pairs": [
+        {
+          "emoji": "👩",
+          "word": "Mom"
+        },
+        {
+          "emoji": "👨",
+          "word": "Dad"
+        },
+        {
+          "emoji": "👵",
+          "word": "Grandma"
+        },
+        {
+          "emoji": "👴",
+          "word": "Grandpa"
+        }
+      ]
     },
     {
-      "speaker": "B",
-      "text": "Is your family [big] or small?"
+      "mode": "order",
+      "instruction": "Put the introduction in order!",
+      "items": [
+        {
+          "text": "Say hello",
+          "emoji": "👋"
+        },
+        {
+          "text": "Show a photo",
+          "emoji": "📷"
+        },
+        {
+          "text": "Name each person",
+          "emoji": "🗣️"
+        },
+        {
+          "text": "Say I love my family",
+          "emoji": "❤️"
+        }
+      ]
     },
     {
-      "speaker": "A",
-      "text": "I [love] my family."
+      "mode": "choice",
+      "instruction": "Which one is a grandparent?",
+      "options": [
+        {
+          "text": "Grandma",
+          "emoji": "👵"
+        },
+        {
+          "text": "Sister",
+          "emoji": "👧"
+        }
+      ],
+      "correctIndex": 0
+    },
+    {
+      "mode": "sort",
+      "instruction": "Drag each word to the right group!",
+      "buckets": [
+        {
+          "label": "Family",
+          "emoji": "❤️"
+        },
+        {
+          "label": "School",
+          "emoji": "🏫"
+        }
+      ],
+      "items": [
+        {
+          "text": "Hug",
+          "emoji": "🤗",
+          "bucket": 0
+        },
+        {
+          "text": "Bus",
+          "emoji": "🚌",
+          "bucket": 1
+        },
+        {
+          "text": "Love",
+          "emoji": "💕",
+          "bucket": 0
+        }
+      ]
     }
-  ],
-  "blanks": [
-    "family",
-    "big",
-    "love"
   ]
 }$json$::jsonb,
   true

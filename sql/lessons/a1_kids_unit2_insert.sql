@@ -110,25 +110,22 @@ values
   null,
   null,
   $json${
-  "dialogue": [
+  "mode": "choice",
+  "tag": "Activity",
+  "title": "Which One?",
+  "subtitle": "Tap the correct answer.",
+  "instruction": "Which one do you do FIRST in the morning?",
+  "options": [
     {
-      "speaker": "A",
-      "text": "I [wake up]."
+      "text": "Wake up",
+      "emoji": "⏰"
     },
     {
-      "speaker": "B",
-      "text": "I [brush my teeth]."
-    },
-    {
-      "speaker": "A",
-      "text": "I [get dressed]."
+      "text": "Eat breakfast",
+      "emoji": "🥣"
     }
   ],
-  "blanks": [
-    "wake up",
-    "brush my teeth",
-    "get dressed"
-  ]
+  "correctIndex": 0
 }$json$::jsonb,
   true
 ),
@@ -315,24 +312,28 @@ values
   null,
   null,
   $json${
-  "dialogue": [
+  "mode": "match",
+  "tag": "Activity",
+  "title": "Match to School",
+  "subtitle": "Tap a picture, then tap its word.",
+  "instruction": "Match each picture to its word.",
+  "pairs": [
     {
-      "speaker": "A",
-      "text": "I get my [school bag]."
+      "emoji": "🎒",
+      "word": "School bag"
     },
     {
-      "speaker": "B",
-      "text": "I put on my [shoes]."
+      "emoji": "👟",
+      "word": "Shoes"
     },
     {
-      "speaker": "A",
-      "text": "I take the [bus] to [school]."
+      "emoji": "🚌",
+      "word": "Bus"
+    },
+    {
+      "emoji": "🏫",
+      "word": "School"
     }
-  ],
-  "blanks": [
-    "school bag",
-    "shoes",
-    "bus"
   ]
 }$json$::jsonb,
   true
@@ -520,6 +521,7 @@ values
   null,
   null,
   $json${
+  "mode": "blank",
   "dialogue": [
     {
       "speaker": "A",
@@ -725,24 +727,28 @@ values
   null,
   null,
   $json${
-  "dialogue": [
+  "mode": "order",
+  "tag": "Activity",
+  "title": "My Evening",
+  "subtitle": "Put the steps in order.",
+  "instruction": "Put your evening in order!",
+  "items": [
     {
-      "speaker": "A",
-      "text": "I eat [dinner]."
+      "text": "Dinner",
+      "emoji": "🍽️"
     },
     {
-      "speaker": "B",
-      "text": "I take a [bath]."
+      "text": "Bath",
+      "emoji": "🛁"
     },
     {
-      "speaker": "A",
-      "text": "I put on my [pajamas] and go to [bed]."
+      "text": "Pajamas",
+      "emoji": "🧸"
+    },
+    {
+      "text": "Bed",
+      "emoji": "🛏️"
     }
-  ],
-  "blanks": [
-    "dinner",
-    "bath",
-    "pajamas"
   ]
 }$json$::jsonb,
   true
@@ -930,24 +936,92 @@ values
   null,
   null,
   $json${
-  "dialogue": [
+  "mode": "mixed",
+  "tag": "Unit Review",
+  "title": "Mix It Up!",
+  "subtitle": "Try one of each.",
+  "parts": [
     {
-      "speaker": "A",
-      "text": "In the [morning], I wake up and eat breakfast."
+      "mode": "choice",
+      "instruction": "What do you do FIRST?",
+      "options": [
+        {
+          "text": "Wake up",
+          "emoji": "🌅"
+        },
+        {
+          "text": "Go to bed",
+          "emoji": "🛏️"
+        }
+      ],
+      "correctIndex": 0
     },
     {
-      "speaker": "B",
-      "text": "I go to [school] and eat lunch."
+      "mode": "match",
+      "instruction": "Match each part of the day.",
+      "pairs": [
+        {
+          "emoji": "🌅",
+          "word": "Morning"
+        },
+        {
+          "emoji": "🏫",
+          "word": "School"
+        },
+        {
+          "emoji": "☀️",
+          "word": "Afternoon"
+        },
+        {
+          "emoji": "🌙",
+          "word": "Evening"
+        }
+      ]
     },
     {
-      "speaker": "A",
-      "text": "In the [evening], I go to bed."
+      "mode": "blank",
+      "dialogue": [
+        {
+          "speaker": "A",
+          "text": "In the [morning], I wake up and eat breakfast."
+        },
+        {
+          "speaker": "B",
+          "text": "I go to [school] and eat lunch."
+        },
+        {
+          "speaker": "A",
+          "text": "In the [evening], I go to bed."
+        }
+      ],
+      "blanks": [
+        "morning",
+        "school",
+        "evening"
+      ]
+    },
+    {
+      "mode": "order",
+      "instruction": "Put your whole day in order!",
+      "items": [
+        {
+          "text": "Wake up",
+          "emoji": "⏰"
+        },
+        {
+          "text": "Go to school",
+          "emoji": "🎒"
+        },
+        {
+          "text": "Eat lunch",
+          "emoji": "🍱"
+        },
+        {
+          "text": "Go to bed",
+          "emoji": "🛏️"
+        }
+      ]
     }
-  ],
-  "blanks": [
-    "morning",
-    "school",
-    "evening"
   ]
 }$json$::jsonb,
   true
