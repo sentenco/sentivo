@@ -42,7 +42,7 @@ const CSS = `
   position: relative;
   width: 100%;
   height: 100%;
-  background: var(--k-bg, #FFFAF0);
+  background: var(--k-bg, #FFFCF2);
   overflow: hidden;
 }
 .slt-slide.no-image {

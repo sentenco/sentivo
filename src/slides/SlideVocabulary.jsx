@@ -1,8 +1,6 @@
 import { useState } from "react";
 import SlideHeader from "./SlideHeader";
 
-const ROW_COLORS = ["var(--k-accent, #FFB300)", "var(--k-pop, #1E96C8)", "var(--k-secondary-dark, #D9A100)"];
-
 export default function SlideVocabulary({ content, lesson }) {
   const words = content.words || [];
   const [zoomed, setZoomed] = useState(null);
@@ -17,15 +15,13 @@ export default function SlideVocabulary({ content, lesson }) {
         subtitle={content.subtitle || "Tap a word to make it BIG!"}
         isAdult={isAdult}
       />
-      <div className="slv-list">
-        {words.slice(0, 6).map((w, i) => (
-          <button type="button" className="slv-row" key={i} onClick={() => setZoomed(w)}>
-            <span className="slv-row-badge" style={{ background: ROW_COLORS[i % ROW_COLORS.length] }}>
-              {i + 1}
-            </span>
-            <span className="slv-row-word">{w.word}</span>
-            {w.hint && <span className="slv-row-hint">{w.hint}</span>}
-            <span className="slv-row-tap" aria-hidden="true">🔍</span>
+      <div className="slv-grid">
+        {words.slice(0, 4).map((w, i) => (
+          <button type="button" className={`slv-tile ${i % 2 === 1 ? "slv-tile--alt" : ""}`} key={i} onClick={() => setZoomed(w)}>
+            <span className="slv-tile-badge">{i + 1}</span>
+            <span className="slv-tile-word">{w.word}</span>
+            {w.hint && <span className="slv-tile-hint">{w.hint}</span>}
+            <span className="slv-tile-tap" aria-hidden="true">🔍</span>
           </button>
         ))}
       </div>
@@ -47,65 +43,66 @@ const CSS = `
   flex-direction: column;
   position: relative;
 }
-.slv-list {
+.slv-grid {
   flex: 1;
   min-height: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-auto-flow: column;
   gap: 12px;
-  padding: 12px 34px 22px;
-  overflow: hidden;
+  padding: 10px 30px 18px;
 }
-.slv-row {
-  flex-shrink: 0;
+.slv-tile {
+  position: relative;
   display: flex;
   align-items: center;
-  gap: 16px;
+  justify-content: center;
+  text-align: center;
   border: none;
-  border-radius: 999px;
-  padding: 14px 20px 14px 10px;
+  border-radius: 18px;
+  padding: 10px 16px;
   cursor: pointer;
   font: inherit;
-  text-align: left;
-  background: var(--k-bg-cool, #FFF0C2);
+  background: var(--k-bg-cool, #FFF3D2);
   transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
-.slv-list .slv-row:nth-child(3n+2) { background: var(--k-tint, #FFE59A); }
-.slv-list .slv-row:nth-child(3n+3) { background: var(--k-bg, #FFFAF0); box-shadow: inset 0 0 0 2px var(--k-tint, #FFE59A); }
-.slv-row:hover { transform: translateY(-1px); box-shadow: 0 3px 10px rgba(0,0,0,0.1); }
-.slv-row-badge {
-  flex-shrink: 0;
-  width: 34px;
-  height: 34px;
+.slv-tile--alt { background: var(--k-tint, #FFE4A3); }
+.slv-tile:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+.slv-tile-badge {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  width: 22px;
+  height: 22px;
   border-radius: 999px;
+  background: var(--k-accent-dark, #E8A400);
   color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
   font-family: 'Fredoka', sans-serif;
   font-weight: 700;
-  font-size: 15px;
+  font-size: 11px;
 }
-.slv-row-word {
-  flex: 1;
-  min-width: 0;
+.slv-tile-word {
   font-family: 'Fredoka', sans-serif;
   font-weight: 600;
-  font-size: 23px;
+  font-size: 21px;
+  line-height: 1.2;
   color: #1B2A4A;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
-.slv-row-hint {
-  flex-shrink: 0;
+.slv-tile-hint {
+  position: absolute;
+  bottom: 8px;
+  left: 0;
+  right: 0;
   font-family: 'Quicksand', sans-serif;
   font-weight: 600;
-  font-size: 13px;
-  color: #94A0B8;
+  font-size: 11.5px;
+  color: #8A8272;
 }
-.slv-row-tap { flex-shrink: 0; font-size: 16px; opacity: 0.45; }
+.slv-tile-tap { position: absolute; bottom: 8px; right: 10px; font-size: 13px; opacity: 0.4; }
 
 .slv-overlay {
   position: absolute;
@@ -126,7 +123,7 @@ const CSS = `
   text-align: center;
   padding: 46px 56px;
   border-radius: 26px;
-  background: var(--k-accent, #FFB300);
+  background: var(--k-accent, #FFC933);
   box-shadow: 0 16px 40px rgba(0,0,0,0.3);
   cursor: default;
   font-family: 'Fredoka', sans-serif;
@@ -136,32 +133,30 @@ const CSS = `
   color: #fff;
 }
 
-/* ── Adults theme: calm single-column word list ── */
-.slv-slide.is-adult .slv-list { background: #F7F5EF; padding: 14px 32px; gap: 6px; }
-.slv-slide.is-adult .slv-row {
+/* ── Adults theme: calm 2x2 grid, no badges ── */
+.slv-slide.is-adult .slv-grid { background: #F7F5EF; }
+.slv-slide.is-adult .slv-tile {
   border-radius: 5px;
   background: #fff;
   border: 1px solid #DEDAD0;
-  padding: 10px 16px;
 }
-.slv-slide.is-adult .slv-list .slv-row:nth-child(3n+2),
-.slv-slide.is-adult .slv-list .slv-row:nth-child(3n+3) { background: #fff; box-shadow: none; }
-.slv-slide.is-adult .slv-row:hover { transform: none; border-color: #B7ADA0; box-shadow: none; }
-.slv-slide.is-adult .slv-row-badge {
-  background: transparent !important;
+.slv-slide.is-adult .slv-tile--alt { background: #fff; }
+.slv-slide.is-adult .slv-tile:hover { transform: none; border-color: #B7ADA0; box-shadow: none; }
+.slv-slide.is-adult .slv-tile-badge {
+  background: transparent;
   color: #B7ADA0;
   font-family: 'Source Serif 4', serif;
   font-weight: 600;
   width: auto;
   height: auto;
-  font-size: 15px;
+  font-size: 12px;
 }
-.slv-slide.is-adult .slv-row-word {
+.slv-slide.is-adult .slv-tile-word {
   font-family: 'Source Serif 4', serif;
   font-weight: 600;
-  font-size: 17px;
+  font-size: 18px;
 }
-.slv-slide.is-adult .slv-row-tap { display: none; }
+.slv-slide.is-adult .slv-tile-tap { display: none; }
 .slv-slide.is-adult .slv-overlay { background: rgba(27, 42, 74, 0.72); }
 .slv-slide.is-adult .slv-zoom-card {
   background: #1B2A4A;

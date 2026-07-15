@@ -1,12 +1,10 @@
 import { useState } from "react";
 
-const GRADIENT = "linear-gradient(135deg, #3B6D11, #5FA873)";
+const GRADIENT = "linear-gradient(135deg, var(--k-accent-dark, #E8A400), var(--k-accent, #FFC933))";
 const GRADIENT_ADULT = "#1B2A4A";
 const ITEM_COLORS = [
-  { bg: "#FFF0C2", check: "#C97F00" },
-  { bg: "#FFE59A", check: "#B87F00" },
-  { bg: "#FFE8F3", check: "#C23D82" },
-  { bg: "#EAF7E8", check: "#3B9A6B" },
+  { bg: "var(--k-bg-cool, #FFF3D2)", check: "var(--k-accent-dark, #E8A400)" },
+  { bg: "var(--k-tint, #FFE4A3)", check: "var(--k-accent-dark, #E8A400)" },
 ];
 
 export default function SlideReview({ content, lesson }) {
@@ -164,8 +162,8 @@ const CSS = `
   transition: background 0.15s ease, border-color 0.15s ease;
 }
 .slrv-item.is-checked .slrv-check {
-  background: #3B6D11;
-  border-color: #3B6D11;
+  background: var(--k-accent-dark, #E8A400);
+  border-color: var(--k-accent-dark, #E8A400);
 }
 .slrv-challenge {
   background: #1B2A4A;

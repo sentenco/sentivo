@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
 import SlideHeader from "./SlideHeader";
 
-const SPEAKER_COLOR = { A: "#FFB300", B: "#1E96C8" };
+const SPEAKER_COLOR = { A: "#FFC933", B: "#8B5CF6" };
 
 function parseBlankSegments(text) {
   const regex = /\[([^\]]+)\]/g;
@@ -648,7 +648,7 @@ const CSS = `
   gap: 10px;
 }
 .slpr-dialogue {
-  background: var(--k-tint, #FFE59A);
+  background: var(--k-tint, #FFE4A3);
   border-radius: 14px;
   padding: 12px 20px;
   display: flex;
@@ -674,7 +674,7 @@ const CSS = `
   transition: background 0.15s ease;
   font-weight: 700;
 }
-.slpr-blank.is-over { background: var(--k-bg-cool, #FFF0C2); }
+.slpr-blank.is-over { background: var(--k-bg-cool, #FFF3D2); }
 .slpr-blank.is-filled { color: #1B2A4A; }
 .slpr-blank.is-correct { border-color: #3B9A6B !important; background: #E4F6EC; color: #226B47; }
 .slpr-blank.is-wrong { border-color: #E0637A !important; background: #FDEBEF; color: #B03A52; }
@@ -687,9 +687,9 @@ const CSS = `
   border-radius: 10px;
   padding: 4px;
 }
-.slpr-wordbank.is-over { background: var(--k-bg-cool, #FFF0C2); }
+.slpr-wordbank.is-over { background: var(--k-bg-cool, #FFF3D2); }
 .slpr-chip {
-  background: var(--k-secondary, #FFD54A);
+  background: var(--k-secondary, #FFE28A);
   color: #7A5200;
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;
@@ -712,7 +712,7 @@ const CSS = `
   flex-wrap: wrap;
 }
 .slpr-check-btn {
-  background: var(--k-accent, #FFB300);
+  background: var(--k-accent, #FFC933);
   color: #fff;
   border: none;
   border-radius: 999px;
@@ -721,9 +721,9 @@ const CSS = `
   font-size: 14px;
   padding: 9px 20px;
   cursor: pointer;
-  box-shadow: 0 3px 0 var(--k-accent-dark, #C97F00);
+  box-shadow: 0 3px 0 var(--k-accent-dark, #E8A400);
 }
-.slpr-check-btn:active { transform: translateY(2px); box-shadow: 0 1px 0 var(--k-accent-dark, #C97F00); }
+.slpr-check-btn:active { transform: translateY(2px); box-shadow: 0 1px 0 var(--k-accent-dark, #E8A400); }
 .slpr-check-btn:disabled { opacity: 0.35; cursor: default; }
 .slpr-result { font-family: 'Quicksand', sans-serif; font-weight: 700; font-size: 13.5px; }
 .slpr-result.is-good { color: #2C6B4F; }
@@ -758,7 +758,7 @@ const CSS = `
   width: 84px;
   height: 68px;
   border-radius: 14px;
-  border: 3px solid var(--k-tint, #FFE59A);
+  border: 3px solid var(--k-tint, #FFE4A3);
   background: #fff;
   display: flex;
   align-items: center;
@@ -783,12 +783,12 @@ const CSS = `
   text-align: center;
   transition: background 0.15s ease, border-color 0.15s ease;
 }
-.slpm-zone.is-over { background: var(--k-bg-cool, #FFF0C2); border-color: var(--k-accent, #FFB300); }
+.slpm-zone.is-over { background: var(--k-bg-cool, #FFF3D2); border-color: var(--k-accent, #FFC933); }
 .slpm-zone.is-correct { border: 3px solid #3B9A6B; background: #E4F6EC; color: #226B47; }
 .slpm-zone.is-wrong { border-color: #E0637A; background: #FDEBEF; color: #B03A52; }
 .slpm-tray { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; min-height: 34px; }
 .slpm-chip {
-  background: var(--k-secondary, #FFD54A);
+  background: var(--k-secondary, #FFE28A);
   color: #7A5200;
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;
@@ -804,9 +804,9 @@ const CSS = `
 .slps-buckets { display: flex; gap: 14px; height: 130px; }
 .slps-bucket {
   flex: 1;
-  border: 3px dashed var(--k-accent, #FFB300);
+  border: 3px dashed var(--k-accent, #FFC933);
   border-radius: 16px;
-  background: var(--k-bg-cool, #FFF0C2);
+  background: var(--k-bg-cool, #FFF3D2);
   padding: 8px;
   display: flex;
   flex-direction: column;
@@ -851,7 +851,7 @@ const CSS = `
   padding: 5px;
   transition: background 0.15s ease, border-color 0.15s ease;
 }
-.slpo-slot.is-over { background: var(--k-bg-cool, #FFF0C2); border-color: var(--k-accent, #FFB300); }
+.slpo-slot.is-over { background: var(--k-bg-cool, #FFF3D2); border-color: var(--k-accent, #FFC933); }
 .slpo-slot.is-correct { border-color: #3B9A6B; background: #E4F6EC; }
 .slpo-slot.is-wrong { border-color: #E0637A; background: #FDEBEF; }
 .slpo-num { font-family: 'Quicksand', sans-serif; font-weight: 700; font-size: 10.5px; color: #94A0B8; }
@@ -879,7 +879,7 @@ const CSS = `
   width: 140px;
   padding: 16px 12px;
   border-radius: 18px;
-  border: 3px solid var(--k-tint, #FFE59A);
+  border: 3px solid var(--k-tint, #FFE4A3);
   background: #fff;
   display: flex;
   flex-direction: column;
@@ -905,8 +905,8 @@ const CSS = `
   height: 28px;
   border-radius: 999px;
   border: none;
-  background: var(--k-bg-cool, #FFF0C2);
-  color: var(--k-accent-dark, #C97F00);
+  background: var(--k-bg-cool, #FFF3D2);
+  color: var(--k-accent-dark, #E8A400);
   font-weight: 700;
   cursor: pointer;
 }

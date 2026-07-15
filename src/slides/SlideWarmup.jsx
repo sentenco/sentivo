@@ -43,7 +43,7 @@ const CSS = `
 .slw-image-area {
   position: relative;
   height: 66%;
-  background: var(--k-bg, #FFFAF0);
+  background: var(--k-bg, #FFFCF2);
   display: flex;
   align-items: center;
   justify-content: center;

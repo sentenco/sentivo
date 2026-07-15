@@ -403,49 +403,50 @@ const CSS = `
 }
 .lp-dot.is-active { width: 20px; background: var(--k-accent, #FF7A59); }
 
-/* ── Kids palette (v4, heat scale): fully saturated, not pastel -- the
+/* ── Kids palette (v5, heat scale): fully saturated, not pastel -- the
    hue itself climbs yellow -> orange -> red as units get harder, so the
    color is a legible difficulty signal, not just decoration. Rotates
    every 4 units, matching the Foundation (1-4) / Combination (5-8) /
-   Bridge (9-12) tiers. --k-pop (Speaker B / contrast accent) stays a
-   constant vivid blue across all three tiers so dialogue roles read the
-   same everywhere. Navy ink (#1B2A4A) stays constant. Slide components
-   opt in via var(--k-*, <fallback>) so Teens (no .is-kids class, no vars
-   defined) render pixel-identical to before. ── */
+   Bridge (9-12) tiers. --k-pop (Speaker B / contrast accent) is a
+   constant vivid violet across all three tiers -- yellow/orange/red's
+   complement, so it pops against every tier instead of clashing like
+   the blue it replaced. Navy ink (#1B2A4A) stays constant. Slide
+   components opt in via var(--k-*, <fallback>) so Teens (no .is-kids
+   class, no vars defined) render pixel-identical to before. ── */
 .lp-shell.is-kids.kt-0 {
-  /* Units 1-4: Foundation -- Sunshine Yellow */
-  --k-accent: #FFB300;
-  --k-accent-dark: #C97F00;
-  --k-secondary: #FFD54A;
-  --k-secondary-dark: #D9A100;
-  --k-pop: #1E96C8;
-  --k-bg: #FFFAF0;
-  --k-bg-cool: #FFF0C2;
-  --k-tint: #FFE59A;
+  /* Units 1-4: Foundation -- Sunshine Yellow (clean gold, not muddy) */
+  --k-accent: #FFC933;
+  --k-accent-dark: #E8A400;
+  --k-secondary: #FFE28A;
+  --k-secondary-dark: #D9970C;
+  --k-pop: #8B5CF6;
+  --k-bg: #FFFCF2;
+  --k-bg-cool: #FFF3D2;
+  --k-tint: #FFE4A3;
   --k-motif: "🌱";
 }
 .lp-shell.is-kids.kt-1 {
   /* Units 5-8: Combination -- Bold Orange */
-  --k-accent: #FF7A1A;
-  --k-accent-dark: #CC5500;
-  --k-secondary: #FFA34D;
-  --k-secondary-dark: #D97A26;
-  --k-pop: #1E96C8;
-  --k-bg: #FFF7F0;
-  --k-bg-cool: #FFDFC2;
-  --k-tint: #FFC896;
+  --k-accent: #FF8F1F;
+  --k-accent-dark: #E56A00;
+  --k-secondary: #FFC08A;
+  --k-secondary-dark: #E08030;
+  --k-pop: #8B5CF6;
+  --k-bg: #FFFAF5;
+  --k-bg-cool: #FFE9D5;
+  --k-tint: #FFD2A8;
   --k-motif: "🌿";
 }
 .lp-shell.is-kids.kt-2 {
   /* Units 9-12: Bridge -- Fiery Red */
-  --k-accent: #F23E2C;
-  --k-accent-dark: #B8281A;
-  --k-secondary: #FF7A63;
-  --k-secondary-dark: #D9503C;
-  --k-pop: #1E96C8;
-  --k-bg: #FFF3F1;
-  --k-bg-cool: #FFD3CC;
-  --k-tint: #FFB3A8;
+  --k-accent: #FF4D3D;
+  --k-accent-dark: #D92E1F;
+  --k-secondary: #FF9382;
+  --k-secondary-dark: #E0563F;
+  --k-pop: #8B5CF6;
+  --k-bg: #FFF7F5;
+  --k-bg-cool: #FFDCD4;
+  --k-tint: #FFB9AC;
   --k-motif: "🔥";
 }
 .lp-shell.is-kids .lp-wordmark::after {

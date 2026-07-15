@@ -2,7 +2,7 @@ import { useState } from "react";
 import SlideHeader from "./SlideHeader";
 import ImagePlaceholder from "./ImagePlaceholder";
 
-const SPEAKER_COLOR = { A: "#FFB300", B: "#1E96C8" };
+const SPEAKER_COLOR = { A: "#FFC933", B: "#8B5CF6" };
 
 /* ───────────────────────── Role-play: act out a short scene ─────────────────────────
    Content authors: max 3 lines so this fits with no scroll. */
@@ -157,7 +157,7 @@ const CSS = `
   gap: 8px;
 }
 .slpf-dialogue {
-  background: var(--k-tint, #FFE59A);
+  background: var(--k-tint, #FFE4A3);
   border-radius: 14px;
   padding: 11px 18px;
   display: flex;
@@ -171,7 +171,7 @@ const CSS = `
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;
   font-size: 13.5px;
-  color: var(--k-accent-dark, #C97F00);
+  color: var(--k-accent-dark, #E8A400);
   text-align: center;
   padding: 2px 8px;
 }
@@ -187,8 +187,8 @@ const CSS = `
 }
 .slpf-starters { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
 .slpf-starter {
-  background: var(--k-bg-cool, #FFF0C2);
-  color: var(--k-accent-dark, #C97F00);
+  background: var(--k-bg-cool, #FFF3D2);
+  color: var(--k-accent-dark, #E8A400);
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;
   font-size: 13px;
@@ -201,7 +201,7 @@ const CSS = `
   display: flex;
   align-items: center;
   gap: 14px;
-  background: var(--k-bg-cool, #FFF0C2);
+  background: var(--k-bg-cool, #FFF3D2);
   border-radius: 14px;
   padding: 11px 16px;
 }
@@ -210,7 +210,7 @@ const CSS = `
   width: 26px;
   height: 26px;
   border-radius: 999px;
-  background: var(--k-accent, #FFB300);
+  background: var(--k-accent, #FFC933);
   color: #fff;
   display: flex;
   align-items: center;
@@ -226,7 +226,7 @@ const CSS = `
   width: 140px;
   padding: 16px 12px;
   border-radius: 18px;
-  border: 3px solid var(--k-tint, #FFE59A);
+  border: 3px solid var(--k-tint, #FFE4A3);
   background: #fff;
   display: flex;
   flex-direction: column;
@@ -236,13 +236,13 @@ const CSS = `
   transition: transform 0.12s ease, border-color 0.12s ease;
 }
 .slpf-choose-card:hover { transform: translateY(-2px); }
-.slpf-choose-card.is-picked { border-color: var(--k-accent, #FFB300); background: var(--k-bg-cool, #FFF0C2); }
+.slpf-choose-card.is-picked { border-color: var(--k-accent, #FFC933); background: var(--k-bg-cool, #FFF3D2); }
 .slpf-choose-emoji { font-size: 38px; }
 .slpf-choose-text { font-family: 'Quicksand', sans-serif; font-weight: 700; font-size: 15px; color: #1B2A4A; }
 .slpf-why {
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;
   font-size: 14.5px;
-  color: var(--k-accent-dark, #C97F00);
+  color: var(--k-accent-dark, #E8A400);
 }
 `;
