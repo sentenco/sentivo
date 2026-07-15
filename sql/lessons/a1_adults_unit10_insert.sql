@@ -1,17 +1,19 @@
--- A1 Adults Unit 10: Health and Feelings (5 lessons) — TIERED (Bridge)
--- Regenerated per the Sentivo Intra-Level Progression Framework + lesson-level escalation + task rotation.
+-- A1 Adults Unit 10: Health and Feelings (5 lessons) — TIERED + ROTATED
+-- Per docs/curriculum/a1-teens-adults-rotation-rework.md. Vocab/reading/writing/review
+-- unchanged from the tiered pilot; only activity+speaking reshuffled to the new
+-- per-unit format assignment, keeping each lesson's difficulty position intact.
 -- Run this whole script in the Supabase SQL editor.
 
 -- Lesson 1: How Are You?
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  'd21e188a-38cf-4dcd-a8fe-10131718cc7e',
+  '3116b3e8-5e22-4acf-b93c-053edd83fa7f',
   'How Are You?',
   'A1',
   'adults',
   10,
   1,
-  'Ask and answer about feelings. [Bridge, Lesson 1: notice/receptive]',
+  'Ask and answer about feelings. [Bridge, L1, format R: short scripted role-play]',
   25,
   9,
   true
@@ -20,7 +22,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  'd21e188a-38cf-4dcd-a8fe-10131718cc7e',
+  '3116b3e8-5e22-4acf-b93c-053edd83fa7f',
   1,
   'title',
   null,
@@ -31,7 +33,7 @@ values
   true
 ),
 (
-  'd21e188a-38cf-4dcd-a8fe-10131718cc7e',
+  '3116b3e8-5e22-4acf-b93c-053edd83fa7f',
   2,
   'warmup',
   null,
@@ -47,7 +49,7 @@ values
   true
 ),
 (
-  'd21e188a-38cf-4dcd-a8fe-10131718cc7e',
+  '3116b3e8-5e22-4acf-b93c-053edd83fa7f',
   3,
   'vocabulary',
   null,
@@ -77,7 +79,7 @@ values
   true
 ),
 (
-  'd21e188a-38cf-4dcd-a8fe-10131718cc7e',
+  '3116b3e8-5e22-4acf-b93c-053edd83fa7f',
   4,
   'phrases',
   null,
@@ -97,7 +99,7 @@ values
   true
 ),
 (
-  'd21e188a-38cf-4dcd-a8fe-10131718cc7e',
+  '3116b3e8-5e22-4acf-b93c-053edd83fa7f',
   5,
   'activity',
   null,
@@ -126,7 +128,7 @@ values
   true
 ),
 (
-  'd21e188a-38cf-4dcd-a8fe-10131718cc7e',
+  '3116b3e8-5e22-4acf-b93c-053edd83fa7f',
   6,
   'speaking',
   null,
@@ -147,15 +149,15 @@ values
     },
     {
       "speaker": "B",
-      "text": "I hope you feel better!"
+      "text": "Now ask a colleague how they are, using these lines!"
     }
   ],
-  "note": "Teacher says the line first. Student repeats, then says it alone."
+  "note": "Short role-play: use the exact lines above, then greet a real colleague the same way."
 }$json$::jsonb,
   true
 ),
 (
-  'd21e188a-38cf-4dcd-a8fe-10131718cc7e',
+  '3116b3e8-5e22-4acf-b93c-053edd83fa7f',
   7,
   'reading',
   null,
@@ -171,7 +173,7 @@ values
   true
 ),
 (
-  'd21e188a-38cf-4dcd-a8fe-10131718cc7e',
+  '3116b3e8-5e22-4acf-b93c-053edd83fa7f',
   8,
   'writing',
   null,
@@ -186,7 +188,7 @@ values
   true
 ),
 (
-  'd21e188a-38cf-4dcd-a8fe-10131718cc7e',
+  '3116b3e8-5e22-4acf-b93c-053edd83fa7f',
   9,
   'review',
   null,
@@ -205,13 +207,13 @@ values
 -- Lesson 2: Body and Health
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '479ac479-8d3e-40e8-8cd6-93dea171ba32',
+  '0d566900-ce06-454f-a16c-9a5abe9680f5',
   'Body and Health',
   'A1',
   'adults',
   10,
   2,
-  'Name body parts and simple symptoms. [Bridge, Lesson 2: controlled practice, fill-in-blank]',
+  'Unchanged by the rotation rework -- L2 format F, matches original order.',
   25,
   9,
   true
@@ -220,7 +222,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '479ac479-8d3e-40e8-8cd6-93dea171ba32',
+  '0d566900-ce06-454f-a16c-9a5abe9680f5',
   1,
   'title',
   null,
@@ -231,7 +233,7 @@ values
   true
 ),
 (
-  '479ac479-8d3e-40e8-8cd6-93dea171ba32',
+  '0d566900-ce06-454f-a16c-9a5abe9680f5',
   2,
   'warmup',
   null,
@@ -247,7 +249,7 @@ values
   true
 ),
 (
-  '479ac479-8d3e-40e8-8cd6-93dea171ba32',
+  '0d566900-ce06-454f-a16c-9a5abe9680f5',
   3,
   'vocabulary',
   null,
@@ -277,7 +279,7 @@ values
   true
 ),
 (
-  '479ac479-8d3e-40e8-8cd6-93dea171ba32',
+  '0d566900-ce06-454f-a16c-9a5abe9680f5',
   4,
   'phrases',
   null,
@@ -297,7 +299,7 @@ values
   true
 ),
 (
-  '479ac479-8d3e-40e8-8cd6-93dea171ba32',
+  '0d566900-ce06-454f-a16c-9a5abe9680f5',
   5,
   'activity',
   null,
@@ -326,7 +328,7 @@ values
   true
 ),
 (
-  '479ac479-8d3e-40e8-8cd6-93dea171ba32',
+  '0d566900-ce06-454f-a16c-9a5abe9680f5',
   6,
   'speaking',
   null,
@@ -355,7 +357,7 @@ values
   true
 ),
 (
-  '479ac479-8d3e-40e8-8cd6-93dea171ba32',
+  '0d566900-ce06-454f-a16c-9a5abe9680f5',
   7,
   'reading',
   null,
@@ -371,7 +373,7 @@ values
   true
 ),
 (
-  '479ac479-8d3e-40e8-8cd6-93dea171ba32',
+  '0d566900-ce06-454f-a16c-9a5abe9680f5',
   8,
   'writing',
   null,
@@ -386,7 +388,7 @@ values
   true
 ),
 (
-  '479ac479-8d3e-40e8-8cd6-93dea171ba32',
+  '0d566900-ce06-454f-a16c-9a5abe9680f5',
   9,
   'review',
   null,
@@ -405,13 +407,13 @@ values
 -- Lesson 3: Simple Advice
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  'b65fea89-f64f-45f7-a6e9-efdacea75463',
+  '4d8b5c08-18fb-44c0-98b3-aad27365fc20',
   'Simple Advice',
   'A1',
   'adults',
   10,
   3,
-  'Give and receive simple advice with ''because''. [Bridge, Lesson 3: freer practice, choose-the-better-response]',
+  'Give and receive simple advice with ''because''. [Bridge, L3, format M: read and identify, then match]',
   25,
   9,
   true
@@ -420,7 +422,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  'b65fea89-f64f-45f7-a6e9-efdacea75463',
+  '4d8b5c08-18fb-44c0-98b3-aad27365fc20',
   1,
   'title',
   null,
@@ -431,7 +433,7 @@ values
   true
 ),
 (
-  'b65fea89-f64f-45f7-a6e9-efdacea75463',
+  '4d8b5c08-18fb-44c0-98b3-aad27365fc20',
   2,
   'warmup',
   null,
@@ -447,7 +449,7 @@ values
   true
 ),
 (
-  'b65fea89-f64f-45f7-a6e9-efdacea75463',
+  '4d8b5c08-18fb-44c0-98b3-aad27365fc20',
   3,
   'vocabulary',
   null,
@@ -477,7 +479,7 @@ values
   true
 ),
 (
-  'b65fea89-f64f-45f7-a6e9-efdacea75463',
+  '4d8b5c08-18fb-44c0-98b3-aad27365fc20',
   4,
   'phrases',
   null,
@@ -497,7 +499,7 @@ values
   true
 ),
 (
-  'b65fea89-f64f-45f7-a6e9-efdacea75463',
+  '4d8b5c08-18fb-44c0-98b3-aad27365fc20',
   5,
   'activity',
   null,
@@ -526,7 +528,7 @@ values
   true
 ),
 (
-  'b65fea89-f64f-45f7-a6e9-efdacea75463',
+  '4d8b5c08-18fb-44c0-98b3-aad27365fc20',
   6,
   'speaking',
   null,
@@ -535,27 +537,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "I have a headache. What should I do?"
+      "text": "You should rest."
     },
     {
       "speaker": "B",
-      "text": "You should rest. You should drink water too, because it helps."
+      "text": "You should rest too, if you're tired!"
     },
     {
       "speaker": "A",
-      "text": "Thank you, that's good advice."
+      "text": "You should drink water, because it helps."
     },
     {
       "speaker": "B",
-      "text": "I hope you feel better soon!"
+      "text": "You should drink water too, it always helps!"
     }
   ],
-  "note": "Switch! Student becomes A, teacher becomes B."
+  "note": "Read the model advice, then say a matching sentence with your own advice."
 }$json$::jsonb,
   true
 ),
 (
-  'b65fea89-f64f-45f7-a6e9-efdacea75463',
+  '4d8b5c08-18fb-44c0-98b3-aad27365fc20',
   7,
   'reading',
   null,
@@ -571,7 +573,7 @@ values
   true
 ),
 (
-  'b65fea89-f64f-45f7-a6e9-efdacea75463',
+  '4d8b5c08-18fb-44c0-98b3-aad27365fc20',
   8,
   'writing',
   null,
@@ -586,7 +588,7 @@ values
   true
 ),
 (
-  'b65fea89-f64f-45f7-a6e9-efdacea75463',
+  '4d8b5c08-18fb-44c0-98b3-aad27365fc20',
   9,
   'review',
   null,
@@ -605,13 +607,13 @@ values
 -- Lesson 4: At the Doctor
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  'e4c104b7-390e-499c-862f-4556d57b0c4e',
+  '32e2b405-345c-42ff-9f48-429393ac9abe',
   'At the Doctor',
   'A1',
   'adults',
   10,
   4,
-  'Combine symptoms and advice into a doctor''s visit conversation. [Bridge, Lesson 4: production, mini role-play]',
+  'Combine symptoms and advice into a doctor''s visit conversation. [Bridge, L4, format E: choose-the-better-response + independent production]',
   25,
   9,
   true
@@ -620,7 +622,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  'e4c104b7-390e-499c-862f-4556d57b0c4e',
+  '32e2b405-345c-42ff-9f48-429393ac9abe',
   1,
   'title',
   null,
@@ -631,7 +633,7 @@ values
   true
 ),
 (
-  'e4c104b7-390e-499c-862f-4556d57b0c4e',
+  '32e2b405-345c-42ff-9f48-429393ac9abe',
   2,
   'warmup',
   null,
@@ -647,7 +649,7 @@ values
   true
 ),
 (
-  'e4c104b7-390e-499c-862f-4556d57b0c4e',
+  '32e2b405-345c-42ff-9f48-429393ac9abe',
   3,
   'vocabulary',
   null,
@@ -677,7 +679,7 @@ values
   true
 ),
 (
-  'e4c104b7-390e-499c-862f-4556d57b0c4e',
+  '32e2b405-345c-42ff-9f48-429393ac9abe',
   4,
   'phrases',
   null,
@@ -697,7 +699,7 @@ values
   true
 ),
 (
-  'e4c104b7-390e-499c-862f-4556d57b0c4e',
+  '32e2b405-345c-42ff-9f48-429393ac9abe',
   5,
   'activity',
   null,
@@ -726,7 +728,7 @@ values
   true
 ),
 (
-  'e4c104b7-390e-499c-862f-4556d57b0c4e',
+  '32e2b405-345c-42ff-9f48-429393ac9abe',
   6,
   'speaking',
   null,
@@ -735,27 +737,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "Good morning. What's wrong?"
+      "text": "Which is correct: 'Since when?' or 'From when?'"
     },
     {
       "speaker": "B",
-      "text": "I have a headache and my stomach hurts."
+      "text": "'Since when do you have it' is correct."
     },
     {
       "speaker": "A",
-      "text": "Since when? Since yesterday. You should rest and drink water."
+      "text": "Good. Now tell me: what's wrong with you today, and since when?"
     },
     {
       "speaker": "B",
-      "text": "Thank you, I hope I feel better soon."
+      "text": "I have a headache since this morning."
     }
   ],
-  "note": "Mini role-play: doctor and patient at a check-up."
+  "note": "Choose the correct question first, then answer fully in your own words about how you feel."
 }$json$::jsonb,
   true
 ),
 (
-  'e4c104b7-390e-499c-862f-4556d57b0c4e',
+  '32e2b405-345c-42ff-9f48-429393ac9abe',
   7,
   'reading',
   null,
@@ -771,7 +773,7 @@ values
   true
 ),
 (
-  'e4c104b7-390e-499c-862f-4556d57b0c4e',
+  '32e2b405-345c-42ff-9f48-429393ac9abe',
   8,
   'writing',
   null,
@@ -786,7 +788,7 @@ values
   true
 ),
 (
-  'e4c104b7-390e-499c-862f-4556d57b0c4e',
+  '32e2b405-345c-42ff-9f48-429393ac9abe',
   9,
   'review',
   null,
@@ -805,13 +807,13 @@ values
 -- Lesson 5: Unit Review
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  'c85f1cb0-f5c1-489b-8cab-fec178d1cec1',
+  'f3ddc710-53fc-40ea-b209-670b0a8c125c',
   'Unit Review',
   'A1',
   'adults',
   10,
   5,
-  'Review feelings, symptoms, and advice. [Bridge, Lesson 5: tier-matched mixed review]',
+  'Unchanged by the rotation rework.',
   25,
   9,
   true
@@ -820,7 +822,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  'c85f1cb0-f5c1-489b-8cab-fec178d1cec1',
+  'f3ddc710-53fc-40ea-b209-670b0a8c125c',
   1,
   'title',
   null,
@@ -831,7 +833,7 @@ values
   true
 ),
 (
-  'c85f1cb0-f5c1-489b-8cab-fec178d1cec1',
+  'f3ddc710-53fc-40ea-b209-670b0a8c125c',
   2,
   'warmup',
   null,
@@ -847,7 +849,7 @@ values
   true
 ),
 (
-  'c85f1cb0-f5c1-489b-8cab-fec178d1cec1',
+  'f3ddc710-53fc-40ea-b209-670b0a8c125c',
   3,
   'vocabulary',
   null,
@@ -877,7 +879,7 @@ values
   true
 ),
 (
-  'c85f1cb0-f5c1-489b-8cab-fec178d1cec1',
+  'f3ddc710-53fc-40ea-b209-670b0a8c125c',
   4,
   'phrases',
   null,
@@ -897,7 +899,7 @@ values
   true
 ),
 (
-  'c85f1cb0-f5c1-489b-8cab-fec178d1cec1',
+  'f3ddc710-53fc-40ea-b209-670b0a8c125c',
   5,
   'activity',
   null,
@@ -926,7 +928,7 @@ values
   true
 ),
 (
-  'c85f1cb0-f5c1-489b-8cab-fec178d1cec1',
+  'f3ddc710-53fc-40ea-b209-670b0a8c125c',
   6,
   'speaking',
   null,
@@ -955,7 +957,7 @@ values
   true
 ),
 (
-  'c85f1cb0-f5c1-489b-8cab-fec178d1cec1',
+  'f3ddc710-53fc-40ea-b209-670b0a8c125c',
   7,
   'reading',
   null,
@@ -971,7 +973,7 @@ values
   true
 ),
 (
-  'c85f1cb0-f5c1-489b-8cab-fec178d1cec1',
+  'f3ddc710-53fc-40ea-b209-670b0a8c125c',
   8,
   'writing',
   null,
@@ -986,7 +988,7 @@ values
   true
 ),
 (
-  'c85f1cb0-f5c1-489b-8cab-fec178d1cec1',
+  'f3ddc710-53fc-40ea-b209-670b0a8c125c',
   9,
   'review',
   null,

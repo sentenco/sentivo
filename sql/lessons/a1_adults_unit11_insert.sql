@@ -1,17 +1,19 @@
--- A1 Adults Unit 11: Places in Town (5 lessons) — TIERED (Bridge)
--- Regenerated per the Sentivo Intra-Level Progression Framework + lesson-level escalation + task rotation.
+-- A1 Adults Unit 11: Places in Town (5 lessons) — TIERED + ROTATED
+-- Per docs/curriculum/a1-teens-adults-rotation-rework.md. Vocab/reading/writing/review
+-- unchanged from the tiered pilot; only activity+speaking reshuffled to the new
+-- per-unit format assignment, keeping each lesson's difficulty position intact.
 -- Run this whole script in the Supabase SQL editor.
 
 -- Lesson 1: Places in Town
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '9f393ed7-8619-4e9d-9110-bcd613bac6cf',
+  '6a35788e-8755-476b-968f-27595e1047fd',
   'Places in Town',
   'A1',
   'adults',
   11,
   1,
-  'Name places in town. [Bridge, Lesson 1: notice/receptive]',
+  'Unchanged by the rotation rework -- L1 format M, matches original order.',
   25,
   9,
   true
@@ -20,7 +22,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '9f393ed7-8619-4e9d-9110-bcd613bac6cf',
+  '6a35788e-8755-476b-968f-27595e1047fd',
   1,
   'title',
   null,
@@ -31,7 +33,7 @@ values
   true
 ),
 (
-  '9f393ed7-8619-4e9d-9110-bcd613bac6cf',
+  '6a35788e-8755-476b-968f-27595e1047fd',
   2,
   'warmup',
   null,
@@ -47,7 +49,7 @@ values
   true
 ),
 (
-  '9f393ed7-8619-4e9d-9110-bcd613bac6cf',
+  '6a35788e-8755-476b-968f-27595e1047fd',
   3,
   'vocabulary',
   null,
@@ -77,7 +79,7 @@ values
   true
 ),
 (
-  '9f393ed7-8619-4e9d-9110-bcd613bac6cf',
+  '6a35788e-8755-476b-968f-27595e1047fd',
   4,
   'phrases',
   null,
@@ -97,7 +99,7 @@ values
   true
 ),
 (
-  '9f393ed7-8619-4e9d-9110-bcd613bac6cf',
+  '6a35788e-8755-476b-968f-27595e1047fd',
   5,
   'activity',
   null,
@@ -126,7 +128,7 @@ values
   true
 ),
 (
-  '9f393ed7-8619-4e9d-9110-bcd613bac6cf',
+  '6a35788e-8755-476b-968f-27595e1047fd',
   6,
   'speaking',
   null,
@@ -155,7 +157,7 @@ values
   true
 ),
 (
-  '9f393ed7-8619-4e9d-9110-bcd613bac6cf',
+  '6a35788e-8755-476b-968f-27595e1047fd',
   7,
   'reading',
   null,
@@ -171,7 +173,7 @@ values
   true
 ),
 (
-  '9f393ed7-8619-4e9d-9110-bcd613bac6cf',
+  '6a35788e-8755-476b-968f-27595e1047fd',
   8,
   'writing',
   null,
@@ -186,7 +188,7 @@ values
   true
 ),
 (
-  '9f393ed7-8619-4e9d-9110-bcd613bac6cf',
+  '6a35788e-8755-476b-968f-27595e1047fd',
   9,
   'review',
   null,
@@ -205,13 +207,13 @@ values
 -- Lesson 2: Where Is It?
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '0ee38f73-376f-4620-b8a3-ad5e22f11a28',
+  '7f255938-3992-4299-9962-6f7512df1c5c',
   'Where Is It?',
   'A1',
   'adults',
   11,
   2,
-  'Ask and answer where places are. [Bridge, Lesson 2: controlled practice, fill-in-blank]',
+  'Ask and answer where places are. [Bridge, L2, format E: choose-the-better-response]',
   25,
   9,
   true
@@ -220,7 +222,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '0ee38f73-376f-4620-b8a3-ad5e22f11a28',
+  '7f255938-3992-4299-9962-6f7512df1c5c',
   1,
   'title',
   null,
@@ -231,7 +233,7 @@ values
   true
 ),
 (
-  '0ee38f73-376f-4620-b8a3-ad5e22f11a28',
+  '7f255938-3992-4299-9962-6f7512df1c5c',
   2,
   'warmup',
   null,
@@ -247,7 +249,7 @@ values
   true
 ),
 (
-  '0ee38f73-376f-4620-b8a3-ad5e22f11a28',
+  '7f255938-3992-4299-9962-6f7512df1c5c',
   3,
   'vocabulary',
   null,
@@ -277,7 +279,7 @@ values
   true
 ),
 (
-  '0ee38f73-376f-4620-b8a3-ad5e22f11a28',
+  '7f255938-3992-4299-9962-6f7512df1c5c',
   4,
   'phrases',
   null,
@@ -297,7 +299,7 @@ values
   true
 ),
 (
-  '0ee38f73-376f-4620-b8a3-ad5e22f11a28',
+  '7f255938-3992-4299-9962-6f7512df1c5c',
   5,
   'activity',
   null,
@@ -326,7 +328,7 @@ values
   true
 ),
 (
-  '0ee38f73-376f-4620-b8a3-ad5e22f11a28',
+  '7f255938-3992-4299-9962-6f7512df1c5c',
   6,
   'speaking',
   null,
@@ -335,27 +337,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "Where is the bank?"
+      "text": "Which is correct: 'next to' or 'near to'?"
     },
     {
       "speaker": "B",
-      "text": "It is next to the pharmacy. Where is the post office?"
+      "text": "'It is next to the pharmacy' is correct."
     },
     {
       "speaker": "A",
-      "text": "It is between the bank and the park."
+      "text": "Good. Where is a place you know, near your home?"
     },
     {
       "speaker": "B",
-      "text": "That's easy to find!"
+      "text": "The post office is near my home."
     }
   ],
-  "note": "Switch! Student becomes A, teacher becomes B."
+  "note": "Choose the correct sentence first, then answer about places near your own home."
 }$json$::jsonb,
   true
 ),
 (
-  '0ee38f73-376f-4620-b8a3-ad5e22f11a28',
+  '7f255938-3992-4299-9962-6f7512df1c5c',
   7,
   'reading',
   null,
@@ -371,7 +373,7 @@ values
   true
 ),
 (
-  '0ee38f73-376f-4620-b8a3-ad5e22f11a28',
+  '7f255938-3992-4299-9962-6f7512df1c5c',
   8,
   'writing',
   null,
@@ -386,7 +388,7 @@ values
   true
 ),
 (
-  '0ee38f73-376f-4620-b8a3-ad5e22f11a28',
+  '7f255938-3992-4299-9962-6f7512df1c5c',
   9,
   'review',
   null,
@@ -405,13 +407,13 @@ values
 -- Lesson 3: Directions
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '167901ee-4f9c-45d2-83e4-627eb6f46db4',
+  '2b85f218-f7ef-44aa-ad34-bc696a16de25',
   'Directions',
   'A1',
   'adults',
   11,
   3,
-  'Give simple directions combining actions with ''and''. [Bridge, Lesson 3: freer practice, error-spot]',
+  'Give simple directions combining actions with ''and''. [Bridge, L3, format R: freer, less-scripted role-play]',
   25,
   9,
   true
@@ -420,7 +422,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '167901ee-4f9c-45d2-83e4-627eb6f46db4',
+  '2b85f218-f7ef-44aa-ad34-bc696a16de25',
   1,
   'title',
   null,
@@ -431,7 +433,7 @@ values
   true
 ),
 (
-  '167901ee-4f9c-45d2-83e4-627eb6f46db4',
+  '2b85f218-f7ef-44aa-ad34-bc696a16de25',
   2,
   'warmup',
   null,
@@ -447,7 +449,7 @@ values
   true
 ),
 (
-  '167901ee-4f9c-45d2-83e4-627eb6f46db4',
+  '2b85f218-f7ef-44aa-ad34-bc696a16de25',
   3,
   'vocabulary',
   null,
@@ -477,7 +479,7 @@ values
   true
 ),
 (
-  '167901ee-4f9c-45d2-83e4-627eb6f46db4',
+  '2b85f218-f7ef-44aa-ad34-bc696a16de25',
   4,
   'phrases',
   null,
@@ -497,7 +499,7 @@ values
   true
 ),
 (
-  '167901ee-4f9c-45d2-83e4-627eb6f46db4',
+  '2b85f218-f7ef-44aa-ad34-bc696a16de25',
   5,
   'activity',
   null,
@@ -526,7 +528,7 @@ values
   true
 ),
 (
-  '167901ee-4f9c-45d2-83e4-627eb6f46db4',
+  '2b85f218-f7ef-44aa-ad34-bc696a16de25',
   6,
   'speaking',
   null,
@@ -543,19 +545,19 @@ values
     },
     {
       "speaker": "A",
-      "text": "The bank is on your right. Thank you!"
+      "text": "Thank you!"
     },
     {
       "speaker": "B",
-      "text": "You're welcome!"
+      "text": "Now give me directions to a real place near here!"
     }
   ],
-  "note": "Switch! Student becomes A, teacher becomes B."
+  "note": "Freer role-play: after practicing, give your own directions to a place you actually know."
 }$json$::jsonb,
   true
 ),
 (
-  '167901ee-4f9c-45d2-83e4-627eb6f46db4',
+  '2b85f218-f7ef-44aa-ad34-bc696a16de25',
   7,
   'reading',
   null,
@@ -571,7 +573,7 @@ values
   true
 ),
 (
-  '167901ee-4f9c-45d2-83e4-627eb6f46db4',
+  '2b85f218-f7ef-44aa-ad34-bc696a16de25',
   8,
   'writing',
   null,
@@ -586,7 +588,7 @@ values
   true
 ),
 (
-  '167901ee-4f9c-45d2-83e4-627eb6f46db4',
+  '2b85f218-f7ef-44aa-ad34-bc696a16de25',
   9,
   'review',
   null,
@@ -605,13 +607,13 @@ values
 -- Lesson 4: Getting Around
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '6d3a133f-a786-4986-9757-4d9de8f24def',
+  'db8faa3a-93d4-4729-8d58-4263c1dff07e',
   'Getting Around',
   'A1',
   'adults',
   11,
   4,
-  'Combine places, directions, and simple requests. [Bridge, Lesson 4: production, mini role-play]',
+  'Combine places, directions, and simple requests. [Bridge, L4, format F: open fill-in, minimal scaffolding]',
   25,
   9,
   true
@@ -620,7 +622,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '6d3a133f-a786-4986-9757-4d9de8f24def',
+  'db8faa3a-93d4-4729-8d58-4263c1dff07e',
   1,
   'title',
   null,
@@ -631,7 +633,7 @@ values
   true
 ),
 (
-  '6d3a133f-a786-4986-9757-4d9de8f24def',
+  'db8faa3a-93d4-4729-8d58-4263c1dff07e',
   2,
   'warmup',
   null,
@@ -647,7 +649,7 @@ values
   true
 ),
 (
-  '6d3a133f-a786-4986-9757-4d9de8f24def',
+  'db8faa3a-93d4-4729-8d58-4263c1dff07e',
   3,
   'vocabulary',
   null,
@@ -677,7 +679,7 @@ values
   true
 ),
 (
-  '6d3a133f-a786-4986-9757-4d9de8f24def',
+  'db8faa3a-93d4-4729-8d58-4263c1dff07e',
   4,
   'phrases',
   null,
@@ -697,7 +699,7 @@ values
   true
 ),
 (
-  '6d3a133f-a786-4986-9757-4d9de8f24def',
+  'db8faa3a-93d4-4729-8d58-4263c1dff07e',
   5,
   'activity',
   null,
@@ -726,7 +728,7 @@ values
   true
 ),
 (
-  '6d3a133f-a786-4986-9757-4d9de8f24def',
+  'db8faa3a-93d4-4729-8d58-4263c1dff07e',
   6,
   'speaking',
   null,
@@ -735,27 +737,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "Excuse me, could you tell me the way to the post office?"
+      "text": "Ask me for directions to a real place, politely."
     },
     {
       "speaker": "B",
-      "text": "Of course. Turn left at the bank, and then go straight."
+      "text": "Excuse me, could you tell me the way to ___?"
     },
     {
       "speaker": "A",
-      "text": "Thanks a lot!"
+      "text": "Turn ___, and then ___."
     },
     {
       "speaker": "B",
-      "text": "You're welcome!"
+      "text": "___!"
     }
   ],
-  "note": "Mini role-play: you are a visitor asking a local for directions."
+  "note": "Fill in your own conversation -- no word bank this time. Say it out loud fully."
 }$json$::jsonb,
   true
 ),
 (
-  '6d3a133f-a786-4986-9757-4d9de8f24def',
+  'db8faa3a-93d4-4729-8d58-4263c1dff07e',
   7,
   'reading',
   null,
@@ -771,7 +773,7 @@ values
   true
 ),
 (
-  '6d3a133f-a786-4986-9757-4d9de8f24def',
+  'db8faa3a-93d4-4729-8d58-4263c1dff07e',
   8,
   'writing',
   null,
@@ -786,7 +788,7 @@ values
   true
 ),
 (
-  '6d3a133f-a786-4986-9757-4d9de8f24def',
+  'db8faa3a-93d4-4729-8d58-4263c1dff07e',
   9,
   'review',
   null,
@@ -805,13 +807,13 @@ values
 -- Lesson 5: Unit Review
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  'ff6d6098-2a78-4603-bf46-eb46c1b7620d',
+  'f325ded0-3a74-4a54-9af6-a8175bdedcf7',
   'Unit Review',
   'A1',
   'adults',
   11,
   5,
-  'Review town places, directions, and polite requests. [Bridge, Lesson 5: tier-matched mixed review]',
+  'Unchanged by the rotation rework.',
   25,
   9,
   true
@@ -820,7 +822,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  'ff6d6098-2a78-4603-bf46-eb46c1b7620d',
+  'f325ded0-3a74-4a54-9af6-a8175bdedcf7',
   1,
   'title',
   null,
@@ -831,7 +833,7 @@ values
   true
 ),
 (
-  'ff6d6098-2a78-4603-bf46-eb46c1b7620d',
+  'f325ded0-3a74-4a54-9af6-a8175bdedcf7',
   2,
   'warmup',
   null,
@@ -847,7 +849,7 @@ values
   true
 ),
 (
-  'ff6d6098-2a78-4603-bf46-eb46c1b7620d',
+  'f325ded0-3a74-4a54-9af6-a8175bdedcf7',
   3,
   'vocabulary',
   null,
@@ -877,7 +879,7 @@ values
   true
 ),
 (
-  'ff6d6098-2a78-4603-bf46-eb46c1b7620d',
+  'f325ded0-3a74-4a54-9af6-a8175bdedcf7',
   4,
   'phrases',
   null,
@@ -897,7 +899,7 @@ values
   true
 ),
 (
-  'ff6d6098-2a78-4603-bf46-eb46c1b7620d',
+  'f325ded0-3a74-4a54-9af6-a8175bdedcf7',
   5,
   'activity',
   null,
@@ -926,7 +928,7 @@ values
   true
 ),
 (
-  'ff6d6098-2a78-4603-bf46-eb46c1b7620d',
+  'f325ded0-3a74-4a54-9af6-a8175bdedcf7',
   6,
   'speaking',
   null,
@@ -955,7 +957,7 @@ values
   true
 ),
 (
-  'ff6d6098-2a78-4603-bf46-eb46c1b7620d',
+  'f325ded0-3a74-4a54-9af6-a8175bdedcf7',
   7,
   'reading',
   null,
@@ -971,7 +973,7 @@ values
   true
 ),
 (
-  'ff6d6098-2a78-4603-bf46-eb46c1b7620d',
+  'f325ded0-3a74-4a54-9af6-a8175bdedcf7',
   8,
   'writing',
   null,
@@ -986,7 +988,7 @@ values
   true
 ),
 (
-  'ff6d6098-2a78-4603-bf46-eb46c1b7620d',
+  'f325ded0-3a74-4a54-9af6-a8175bdedcf7',
   9,
   'review',
   null,

@@ -1,17 +1,19 @@
--- A1 Adults Unit 12: Appointments and Future Plans (5 lessons) — TIERED (Bridge)
--- Regenerated per the Sentivo Intra-Level Progression Framework + lesson-level escalation + task rotation.
+-- A1 Adults Unit 12: Appointments and Future Plans (5 lessons) — TIERED + ROTATED
+-- Per docs/curriculum/a1-teens-adults-rotation-rework.md. Vocab/reading/writing/review
+-- unchanged from the tiered pilot; only activity+speaking reshuffled to the new
+-- per-unit format assignment, keeping each lesson's difficulty position intact.
 -- Run this whole script in the Supabase SQL editor.
 
 -- Lesson 1: Plans and Dates
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '7fca4c7f-55a9-4e52-bafa-9fe99d6f0a1c',
+  'c3b32a1e-61a0-4ae9-916c-f1c87fcc214b',
   'Plans and Dates',
   'A1',
   'adults',
   12,
   1,
-  'Talk about days and simple plans. [Bridge, Lesson 1: notice/receptive]',
+  'Talk about days and simple plans. [Bridge, L1, format E: choose-the-better-response]',
   25,
   9,
   true
@@ -20,7 +22,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '7fca4c7f-55a9-4e52-bafa-9fe99d6f0a1c',
+  'c3b32a1e-61a0-4ae9-916c-f1c87fcc214b',
   1,
   'title',
   null,
@@ -31,7 +33,7 @@ values
   true
 ),
 (
-  '7fca4c7f-55a9-4e52-bafa-9fe99d6f0a1c',
+  'c3b32a1e-61a0-4ae9-916c-f1c87fcc214b',
   2,
   'warmup',
   null,
@@ -47,7 +49,7 @@ values
   true
 ),
 (
-  '7fca4c7f-55a9-4e52-bafa-9fe99d6f0a1c',
+  'c3b32a1e-61a0-4ae9-916c-f1c87fcc214b',
   3,
   'vocabulary',
   null,
@@ -77,7 +79,7 @@ values
   true
 ),
 (
-  '7fca4c7f-55a9-4e52-bafa-9fe99d6f0a1c',
+  'c3b32a1e-61a0-4ae9-916c-f1c87fcc214b',
   4,
   'phrases',
   null,
@@ -97,7 +99,7 @@ values
   true
 ),
 (
-  '7fca4c7f-55a9-4e52-bafa-9fe99d6f0a1c',
+  'c3b32a1e-61a0-4ae9-916c-f1c87fcc214b',
   5,
   'activity',
   null,
@@ -126,7 +128,7 @@ values
   true
 ),
 (
-  '7fca4c7f-55a9-4e52-bafa-9fe99d6f0a1c',
+  'c3b32a1e-61a0-4ae9-916c-f1c87fcc214b',
   6,
   'speaking',
   null,
@@ -135,27 +137,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "I am free on Monday."
+      "text": "Which is correct: 'I am free on Monday' or 'I am free in Monday'?"
     },
     {
       "speaker": "B",
-      "text": "I have an appointment on Tuesday."
+      "text": "'I am free on Monday' is correct."
     },
     {
       "speaker": "A",
-      "text": "I am free on Wednesday too."
+      "text": "Good. When are you free this week?"
     },
     {
       "speaker": "B",
-      "text": "Good, let's meet then!"
+      "text": "I am free on Wednesday."
     }
   ],
-  "note": "Teacher says the line first. Student repeats, then says it alone."
+  "note": "Choose the correct sentence first, then answer about your own week."
 }$json$::jsonb,
   true
 ),
 (
-  '7fca4c7f-55a9-4e52-bafa-9fe99d6f0a1c',
+  'c3b32a1e-61a0-4ae9-916c-f1c87fcc214b',
   7,
   'reading',
   null,
@@ -171,7 +173,7 @@ values
   true
 ),
 (
-  '7fca4c7f-55a9-4e52-bafa-9fe99d6f0a1c',
+  'c3b32a1e-61a0-4ae9-916c-f1c87fcc214b',
   8,
   'writing',
   null,
@@ -186,7 +188,7 @@ values
   true
 ),
 (
-  '7fca4c7f-55a9-4e52-bafa-9fe99d6f0a1c',
+  'c3b32a1e-61a0-4ae9-916c-f1c87fcc214b',
   9,
   'review',
   null,
@@ -205,13 +207,13 @@ values
 -- Lesson 2: Making Simple Plans
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  'c2c4411c-d2bd-471f-91c6-a40002fbbfe7',
+  'a288c78a-5b13-4a6e-84a4-f68d1cb3231b',
   'Making Simple Plans',
   'A1',
   'adults',
   12,
   2,
-  'Use ''I''d like to'' for simple plans. [Bridge, Lesson 2: controlled practice, fill-in-blank]',
+  'Use ''I''d like to'' for simple plans. [Bridge, L2, format R: short scripted role-play]',
   25,
   9,
   true
@@ -220,7 +222,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  'c2c4411c-d2bd-471f-91c6-a40002fbbfe7',
+  'a288c78a-5b13-4a6e-84a4-f68d1cb3231b',
   1,
   'title',
   null,
@@ -231,7 +233,7 @@ values
   true
 ),
 (
-  'c2c4411c-d2bd-471f-91c6-a40002fbbfe7',
+  'a288c78a-5b13-4a6e-84a4-f68d1cb3231b',
   2,
   'warmup',
   null,
@@ -247,7 +249,7 @@ values
   true
 ),
 (
-  'c2c4411c-d2bd-471f-91c6-a40002fbbfe7',
+  'a288c78a-5b13-4a6e-84a4-f68d1cb3231b',
   3,
   'vocabulary',
   null,
@@ -277,7 +279,7 @@ values
   true
 ),
 (
-  'c2c4411c-d2bd-471f-91c6-a40002fbbfe7',
+  'a288c78a-5b13-4a6e-84a4-f68d1cb3231b',
   4,
   'phrases',
   null,
@@ -297,7 +299,7 @@ values
   true
 ),
 (
-  'c2c4411c-d2bd-471f-91c6-a40002fbbfe7',
+  'a288c78a-5b13-4a6e-84a4-f68d1cb3231b',
   5,
   'activity',
   null,
@@ -326,7 +328,7 @@ values
   true
 ),
 (
-  'c2c4411c-d2bd-471f-91c6-a40002fbbfe7',
+  'a288c78a-5b13-4a6e-84a4-f68d1cb3231b',
   6,
   'speaking',
   null,
@@ -347,15 +349,15 @@ values
     },
     {
       "speaker": "B",
-      "text": "Perfect, see you then!"
+      "text": "Now suggest your own meeting time, using these lines!"
     }
   ],
-  "note": "Switch! Student becomes A, teacher becomes B."
+  "note": "Short role-play: use the exact lines above to arrange a meeting, then arrange your own."
 }$json$::jsonb,
   true
 ),
 (
-  'c2c4411c-d2bd-471f-91c6-a40002fbbfe7',
+  'a288c78a-5b13-4a6e-84a4-f68d1cb3231b',
   7,
   'reading',
   null,
@@ -371,7 +373,7 @@ values
   true
 ),
 (
-  'c2c4411c-d2bd-471f-91c6-a40002fbbfe7',
+  'a288c78a-5b13-4a6e-84a4-f68d1cb3231b',
   8,
   'writing',
   null,
@@ -386,7 +388,7 @@ values
   true
 ),
 (
-  'c2c4411c-d2bd-471f-91c6-a40002fbbfe7',
+  'a288c78a-5b13-4a6e-84a4-f68d1cb3231b',
   9,
   'review',
   null,
@@ -405,13 +407,13 @@ values
 -- Lesson 3: Invitations and Responses
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  'aae116d2-d40c-4251-b737-041dfa47e0a5',
+  '8a1a2211-7c08-47f7-b70a-ca4094038612',
   'Invitations and Responses',
   'A1',
   'adults',
   12,
   3,
-  'Invite and respond, accepting or declining. [Bridge, Lesson 3: freer practice, choose-the-better-response]',
+  'Invite and respond, accepting or declining. [Bridge, L3, format F: guided fill-in]',
   25,
   9,
   true
@@ -420,7 +422,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  'aae116d2-d40c-4251-b737-041dfa47e0a5',
+  '8a1a2211-7c08-47f7-b70a-ca4094038612',
   1,
   'title',
   null,
@@ -431,7 +433,7 @@ values
   true
 ),
 (
-  'aae116d2-d40c-4251-b737-041dfa47e0a5',
+  '8a1a2211-7c08-47f7-b70a-ca4094038612',
   2,
   'warmup',
   null,
@@ -447,7 +449,7 @@ values
   true
 ),
 (
-  'aae116d2-d40c-4251-b737-041dfa47e0a5',
+  '8a1a2211-7c08-47f7-b70a-ca4094038612',
   3,
   'vocabulary',
   null,
@@ -477,7 +479,7 @@ values
   true
 ),
 (
-  'aae116d2-d40c-4251-b737-041dfa47e0a5',
+  '8a1a2211-7c08-47f7-b70a-ca4094038612',
   4,
   'phrases',
   null,
@@ -497,7 +499,7 @@ values
   true
 ),
 (
-  'aae116d2-d40c-4251-b737-041dfa47e0a5',
+  '8a1a2211-7c08-47f7-b70a-ca4094038612',
   5,
   'activity',
   null,
@@ -526,7 +528,7 @@ values
   true
 ),
 (
-  'aae116d2-d40c-4251-b737-041dfa47e0a5',
+  '8a1a2211-7c08-47f7-b70a-ca4094038612',
   6,
   'speaking',
   null,
@@ -547,7 +549,7 @@ values
     },
     {
       "speaker": "B",
-      "text": "I'm sorry, I can't. Maybe another time?"
+      "text": "Fill in your own answer now!"
     }
   ],
   "note": "Switch! Student becomes A, teacher becomes B."
@@ -555,7 +557,7 @@ values
   true
 ),
 (
-  'aae116d2-d40c-4251-b737-041dfa47e0a5',
+  '8a1a2211-7c08-47f7-b70a-ca4094038612',
   7,
   'reading',
   null,
@@ -571,7 +573,7 @@ values
   true
 ),
 (
-  'aae116d2-d40c-4251-b737-041dfa47e0a5',
+  '8a1a2211-7c08-47f7-b70a-ca4094038612',
   8,
   'writing',
   null,
@@ -586,7 +588,7 @@ values
   true
 ),
 (
-  'aae116d2-d40c-4251-b737-041dfa47e0a5',
+  '8a1a2211-7c08-47f7-b70a-ca4094038612',
   9,
   'review',
   null,
@@ -605,13 +607,13 @@ values
 -- Lesson 4: Appointments
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '10691014-ea44-4ddb-9fb1-4edef0da3e25',
+  'aff5758f-92f1-489f-bac8-caa5bf982bcd',
   'Appointments',
   'A1',
   'adults',
   12,
   4,
-  'Combine plans, invitations, and appointments into a talk. [Bridge, Lesson 4: production, mini role-play]',
+  'Combine plans, invitations, and appointments into a talk. [Bridge, L4, format M: independent production, teacher matches back]',
   25,
   9,
   true
@@ -620,7 +622,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '10691014-ea44-4ddb-9fb1-4edef0da3e25',
+  'aff5758f-92f1-489f-bac8-caa5bf982bcd',
   1,
   'title',
   null,
@@ -631,7 +633,7 @@ values
   true
 ),
 (
-  '10691014-ea44-4ddb-9fb1-4edef0da3e25',
+  'aff5758f-92f1-489f-bac8-caa5bf982bcd',
   2,
   'warmup',
   null,
@@ -647,7 +649,7 @@ values
   true
 ),
 (
-  '10691014-ea44-4ddb-9fb1-4edef0da3e25',
+  'aff5758f-92f1-489f-bac8-caa5bf982bcd',
   3,
   'vocabulary',
   null,
@@ -677,7 +679,7 @@ values
   true
 ),
 (
-  '10691014-ea44-4ddb-9fb1-4edef0da3e25',
+  'aff5758f-92f1-489f-bac8-caa5bf982bcd',
   4,
   'phrases',
   null,
@@ -697,7 +699,7 @@ values
   true
 ),
 (
-  '10691014-ea44-4ddb-9fb1-4edef0da3e25',
+  'aff5758f-92f1-489f-bac8-caa5bf982bcd',
   5,
   'activity',
   null,
@@ -726,7 +728,7 @@ values
   true
 ),
 (
-  '10691014-ea44-4ddb-9fb1-4edef0da3e25',
+  'aff5758f-92f1-489f-bac8-caa5bf982bcd',
   6,
   'speaking',
   null,
@@ -735,27 +737,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "I'd like to book an appointment for next week."
+      "text": "Tell me about an appointment you'd like to book, in your own words."
     },
     {
       "speaker": "B",
-      "text": "Is Tuesday at 10am convenient? Can you confirm?"
+      "text": "I'd like to book an appointment for ___. Is ___ convenient?"
     },
     {
       "speaker": "A",
-      "text": "Yes, I confirm. I look forward to it."
+      "text": "I'll say it back: you'd like to book an appointment for ___."
     },
     {
       "speaker": "B",
-      "text": "See you then!"
+      "text": "Yes, I confirm. I look forward to it!"
     }
   ],
-  "note": "Mini role-play: book an appointment over the phone."
+  "note": "You speak first, fully in your own words. Teacher matches your sentence back to check it."
 }$json$::jsonb,
   true
 ),
 (
-  '10691014-ea44-4ddb-9fb1-4edef0da3e25',
+  'aff5758f-92f1-489f-bac8-caa5bf982bcd',
   7,
   'reading',
   null,
@@ -771,7 +773,7 @@ values
   true
 ),
 (
-  '10691014-ea44-4ddb-9fb1-4edef0da3e25',
+  'aff5758f-92f1-489f-bac8-caa5bf982bcd',
   8,
   'writing',
   null,
@@ -786,7 +788,7 @@ values
   true
 ),
 (
-  '10691014-ea44-4ddb-9fb1-4edef0da3e25',
+  'aff5758f-92f1-489f-bac8-caa5bf982bcd',
   9,
   'review',
   null,
@@ -805,13 +807,13 @@ values
 -- Lesson 5: Unit Review
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '1ff262d1-a4d8-46eb-8194-b24b8d55b4dc',
+  'b0a240a2-f46b-483a-82a3-43b9c7a4348b',
   'Unit Review',
   'A1',
   'adults',
   12,
   5,
-  'Review plans, invitations, and appointments. [Bridge, Lesson 5: tier-matched mixed review]',
+  'Unchanged by the rotation rework.',
   25,
   9,
   true
@@ -820,7 +822,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '1ff262d1-a4d8-46eb-8194-b24b8d55b4dc',
+  'b0a240a2-f46b-483a-82a3-43b9c7a4348b',
   1,
   'title',
   null,
@@ -831,7 +833,7 @@ values
   true
 ),
 (
-  '1ff262d1-a4d8-46eb-8194-b24b8d55b4dc',
+  'b0a240a2-f46b-483a-82a3-43b9c7a4348b',
   2,
   'warmup',
   null,
@@ -847,7 +849,7 @@ values
   true
 ),
 (
-  '1ff262d1-a4d8-46eb-8194-b24b8d55b4dc',
+  'b0a240a2-f46b-483a-82a3-43b9c7a4348b',
   3,
   'vocabulary',
   null,
@@ -877,7 +879,7 @@ values
   true
 ),
 (
-  '1ff262d1-a4d8-46eb-8194-b24b8d55b4dc',
+  'b0a240a2-f46b-483a-82a3-43b9c7a4348b',
   4,
   'phrases',
   null,
@@ -897,7 +899,7 @@ values
   true
 ),
 (
-  '1ff262d1-a4d8-46eb-8194-b24b8d55b4dc',
+  'b0a240a2-f46b-483a-82a3-43b9c7a4348b',
   5,
   'activity',
   null,
@@ -926,7 +928,7 @@ values
   true
 ),
 (
-  '1ff262d1-a4d8-46eb-8194-b24b8d55b4dc',
+  'b0a240a2-f46b-483a-82a3-43b9c7a4348b',
   6,
   'speaking',
   null,
@@ -955,7 +957,7 @@ values
   true
 ),
 (
-  '1ff262d1-a4d8-46eb-8194-b24b8d55b4dc',
+  'b0a240a2-f46b-483a-82a3-43b9c7a4348b',
   7,
   'reading',
   null,
@@ -971,7 +973,7 @@ values
   true
 ),
 (
-  '1ff262d1-a4d8-46eb-8194-b24b8d55b4dc',
+  'b0a240a2-f46b-483a-82a3-43b9c7a4348b',
   8,
   'writing',
   null,
@@ -986,7 +988,7 @@ values
   true
 ),
 (
-  '1ff262d1-a4d8-46eb-8194-b24b8d55b4dc',
+  'b0a240a2-f46b-483a-82a3-43b9c7a4348b',
   9,
   'review',
   null,
