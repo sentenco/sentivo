@@ -55,8 +55,8 @@ const CSS = `
   padding: 14px 28px;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   gap: 10px;
-  overflow: auto;
 }
 .slr-columns {
   flex: 1;
@@ -101,8 +101,8 @@ const CSS = `
   justify-content: center;
 }
 .slr-chip {
-  background: #F4F0FF;
-  color: #6B5B95;
+  background: var(--k-bg-cool, #E3F9F6);
+  color: var(--k-accent-dark, #12867A);
   font-family: 'Quicksand', sans-serif;
   font-weight: 600;
   font-size: 13.5px;

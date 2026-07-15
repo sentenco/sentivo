@@ -1,7 +1,7 @@
 import SlideHeader from "./SlideHeader";
 import { renderBlankLine } from "./dialogueUtils";
 
-const SPEAKER_COLOR = { A: "#FF7A59", B: "#2CA97F" };
+const SPEAKER_COLOR = { A: "#22B8A8", B: "#FF6FB5" };
 const SPEAKER_COLOR_ADULT = { A: "#B5502E", B: "#1B2A4A" };
 
 export default function SlideSpeaking({ content, lesson }) {
@@ -53,16 +53,16 @@ const CSS = `
   padding: 14px 28px;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   gap: 12px;
-  overflow: auto;
 }
 .sls-dialogue {
-  background: var(--k-tint, #F7F8FA);
+  background: var(--k-tint, #FFF6DE);
   border-radius: 14px;
-  padding: 15px 20px;
+  padding: 14px 20px;
   display: flex;
   flex-direction: column;
-  gap: 11px;
+  gap: 10px;
 }
 .sls-line {
   font-family: 'Quicksand', sans-serif;

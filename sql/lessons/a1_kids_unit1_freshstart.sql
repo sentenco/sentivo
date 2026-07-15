@@ -1,13 +1,14 @@
--- A1 Kids Unit 1: new 9-slide architecture (update-in-place)
--- Title/Warmup/Vocabulary/Highlight/Practice/Activity/Reading-or-Speaking/Review/Wrap-up.
--- Kids A1 is already live in Supabase -- this UPDATEs each lesson's topic/
--- slide_count and replaces its lesson_slides in place. Wrapped in one transaction
--- per unit so a mistake can't half-apply.
+-- A1 Kids Unit 1: fresh start on new topics (About Me and My World)
+-- Source: sentivo_a1_kids_lesson_titles_units_1_to_12.md + sentivo_curriculum_master_for_claude.md
+-- Title/Warm-up/Vocabulary/Highlight/Practice/Activity/Reading-or-Speaking/Review/Wrap-up.
+-- Update-in-place: Kids A1 is already live in Supabase, and these topics fully replace
+-- Unit 1's old lessons (Hello & My Name/My Age/My Family/My Likes/All About Me).
 begin;
 
--- Lesson 9aa46d70: Hello & My Name
+-- Lesson 1: My Name and Hello
 update lessons set
-  topic = 'Say hello, introduce yourself, and ask "What''s your name?"',
+  title = 'My Name and Hello',
+  topic = 'Say hello and goodbye, and introduce your name.',
   slide_count = 9
 where id = '9aa46d70-41a5-4721-a1be-4311c01c1366';
 
@@ -23,7 +24,7 @@ values
   null,
   $json${
   "badge": "A1 · Beginner · Kids",
-  "image_note": "Hero image for 'Hello & My Name' -- A warm, welcoming scene of a diverse group of children at the start of a school day -- waving hello, smiling, everyday classroom or playground setting."
+  "image_note": "Hero image for 'My Name and Hello' -- a diverse group of children waving hello at the start of a school day, bright and friendly, no text."
 }$json$::jsonb,
   true
 ),
@@ -53,23 +54,23 @@ values
   "words": [
     {
       "word": "Hello",
-      "bg": "#FAECE7",
-      "image_note": "A child waving hello with a big smile, warm and welcoming."
+      "bg": "#E3F9F6",
+      "image_note": "A child waving hello with a big smile."
     },
     {
       "word": "Hi",
-      "bg": "#E1F5EE",
-      "image_note": "A child waving hi cheerfully, close-up, friendly expression."
+      "bg": "#FFF6DE",
+      "image_note": "A child waving hi cheerfully, close-up."
     },
     {
       "word": "Goodbye",
-      "bg": "#EEEDFE",
-      "image_note": "A child waving goodbye while walking away, warm sunset colors."
+      "bg": "#FFE8F3",
+      "image_note": "A child waving goodbye while walking away."
     },
     {
       "word": "My name is",
-      "bg": "#FAEEDA",
-      "image_note": "A child pointing to themselves with a nametag or speech bubble."
+      "bg": "#EAF7E8",
+      "image_note": "A child pointing to a nametag."
     }
   ],
   "title": "New Words",
@@ -84,16 +85,16 @@ values
   null,
   null,
   $json${
+  "tag": "Highlight",
   "teacher": [
-    "Hello! What is your name?",
-    "Goodbye!"
+    "Hello! What is your name?"
   ],
   "student": [
-    "Hi! My name is ___.",
-    "Goodbye!"
+    "Hi! My name is ___."
   ],
   "note": "Point to yourself and say your name!",
-  "title": "Practice the Conversation"
+  "title": "Practice the Conversation",
+  "image_note": "Two children meeting and waving hello outdoors, warm and friendly."
 }$json$::jsonb,
   true
 ),
@@ -121,10 +122,6 @@ values
     {
       "emoji": "🚶",
       "word": "Goodbye"
-    },
-    {
-      "emoji": "🏷️",
-      "word": "My name is"
     }
   ]
 }$json$::jsonb,
@@ -141,11 +138,11 @@ values
   "tag": "Activity",
   "title": "Act It Out",
   "subtitle": "Play the scene together.",
-  "scene": "Two friends meet at the park.",
+  "image_note": "Two children meeting at a park, one waving hello.",
   "lines": [
     {
       "speaker": "A",
-      "text": "Hello! I am Leo."
+      "text": "Hello! I'm Leo."
     },
     {
       "speaker": "B",
@@ -153,10 +150,10 @@ values
     },
     {
       "speaker": "A",
-      "text": "Goodbye!"
+      "text": "Nice to meet you!"
     }
   ],
-  "twist": "Now act it out again with YOUR real name!"
+  "twist": "Now say hello with YOUR real name!"
 }$json$::jsonb,
   true
 ),
@@ -178,10 +175,6 @@ values
     },
     {
       "speaker": "A",
-      "text": "Nice to meet you!"
-    },
-    {
-      "speaker": "B",
       "text": "Goodbye!"
     }
   ],
@@ -220,9 +213,10 @@ values
   true
 );
 
--- Lesson 094f23bd: My Age
+-- Lesson 2: Where I Am From
 update lessons set
-  topic = 'Count numbers and share your age.',
+  title = 'Where I Am From',
+  topic = 'Say what country you are from and where you live.',
   slide_count = 9
 where id = '094f23bd-27d9-47ea-9f87-bbce1276dc4d';
 
@@ -238,7 +232,7 @@ values
   null,
   $json${
   "badge": "A1 · Beginner · Kids",
-  "image_note": "Hero image for 'My Age' -- A warm, welcoming scene of a diverse group of children at the start of a school day -- waving hello, smiling."
+  "image_note": "Hero image for 'Where I Am From' -- a simple, colorful world map or globe with children pointing at it, bright and friendly."
 }$json$::jsonb,
   true
 ),
@@ -249,10 +243,10 @@ values
   null,
   null,
   $json${
-  "display": "🎂",
+  "display": "🌍",
   "questions": [
-    "How old are you?",
-    "Can you count to five?"
+    "Where do you live?",
+    "What country are you from?"
   ],
   "title": "What do you see?"
 }$json$::jsonb,
@@ -267,24 +261,24 @@ values
   $json${
   "words": [
     {
-      "word": "One",
-      "bg": "#FAECE7",
-      "image_note": "A single large numeral '1' with one matching object beside it (e.g. one apple)."
+      "word": "From",
+      "bg": "#E3F9F6",
+      "image_note": "Functional word -- skip a literal picture; show the example sentence in action instead."
     },
     {
-      "word": "How old",
-      "bg": "#E1F5EE",
-      "image_note": "Functional/grammar word, not a concrete object -- skip a literal picture. If illustrating, show the example sentence in action instead of the word alone."
+      "word": "Country",
+      "bg": "#FFF6DE",
+      "image_note": "A simple colorful world map with one country highlighted."
     },
     {
-      "word": "Years old",
-      "bg": "#EEEDFE",
-      "image_note": "A birthday cake with candles, or a child holding up fingers to show their age."
+      "word": "Live",
+      "bg": "#FFE8F3",
+      "image_note": "A simple, friendly house with a child standing in front of it."
     },
     {
-      "word": "I am",
-      "bg": "#FAEEDA",
-      "image_note": "Functional/grammar word, not a concrete object -- skip a literal picture. If illustrating, show the example sentence in action instead of the word alone."
+      "word": "I'm from",
+      "bg": "#EAF7E8",
+      "image_note": "A child pointing to a spot on a globe or map."
     }
   ],
   "title": "New Words",
@@ -299,16 +293,16 @@ values
   null,
   null,
   $json${
+  "tag": "Highlight",
   "teacher": [
-    "How old are you?",
-    "Can you count?"
+    "Where are you from?"
   ],
   "student": [
-    "I am seven years old.",
-    "One, two, three!"
+    "I'm from ___."
   ],
-  "note": "Use the word bank: one, how old, years old, I am.",
-  "title": "Practice the Conversation"
+  "note": "Point to your country on a map if you have one!",
+  "title": "Practice the Conversation",
+  "image_note": "A simple world map with a few countries in bright colors, no text."
 }$json$::jsonb,
   true
 ),
@@ -323,11 +317,11 @@ values
   "tag": "Practice",
   "title": "Which One?",
   "subtitle": "Tap the correct answer.",
-  "instruction": "Which question asks about age?",
+  "instruction": "Which question asks about your country?",
   "options": [
     {
-      "text": "How old are you?",
-      "emoji": "🎂"
+      "text": "Where are you from?",
+      "emoji": "🌍"
     },
     {
       "text": "What do you like?",
@@ -345,14 +339,14 @@ values
   null,
   null,
   $json${
-  "mode": "talk",
+  "mode": "interview",
   "tag": "Activity",
-  "title": "Show and Tell",
-  "subtitle": "Talk for one minute!",
-  "prompt": "Tell me how old you are and count for me!",
-  "starters": [
-    "I am...",
-    "I can count..."
+  "title": "Interview Time",
+  "subtitle": "Answer each question.",
+  "questions": [
+    "Where are you from?",
+    "What country do you live in?",
+    "Do you like your country?"
   ]
 }$json$::jsonb,
   true
@@ -364,11 +358,11 @@ values
   null,
   null,
   $json${
-  "text": "How old are you? I am seven years old. I can count: one, two, three, four, five!",
+  "text": "Hi! I am Mia. I am from Spain. I live in Madrid.",
   "questions": [
-    "How old is the child?",
-    "What can the child count?",
-    "What is the highest number said?"
+    "What is the girl's name?",
+    "What country is she from?",
+    "What city does she live in?"
   ]
 }$json$::jsonb,
   true
@@ -381,11 +375,11 @@ values
   null,
   $json${
   "checklist": [
-    "Say my age",
-    "Ask 'How old are you?'",
-    "Count to five"
+    "Say where I'm from",
+    "Say what country I live in",
+    "Ask a friend where they're from"
   ],
-  "challenge": "Tell me your age and count to five!"
+  "challenge": "Tell me where you are from!"
 }$json$::jsonb,
   true
 ),
@@ -396,17 +390,18 @@ values
   null,
   null,
   $json${
-  "sticker": "🎂",
+  "sticker": "🌍",
   "headline": "You did it!",
-  "goal": "You can say your age and count to five!",
+  "goal": "You can say where you are from!",
   "closing": "See you next time!"
 }$json$::jsonb,
   true
 );
 
--- Lesson 8c6534e4: My Family
+-- Lesson 3: My Age and Birthday
 update lessons set
-  topic = 'Learn family words and talk about who is in your family.',
+  title = 'My Age and Birthday',
+  topic = 'Say your age and talk about your birthday.',
   slide_count = 9
 where id = '8c6534e4-39c0-468e-946e-b578347a7461';
 
@@ -422,7 +417,7 @@ values
   null,
   $json${
   "badge": "A1 · Beginner · Kids",
-  "image_note": "Hero image for 'My Family' -- A warm, welcoming scene of a diverse group of children at the start of a school day -- waving hello, smiling."
+  "image_note": "Hero image for 'My Age and Birthday' -- a birthday party scene with a cake, balloons, and children celebrating."
 }$json$::jsonb,
   true
 ),
@@ -433,10 +428,10 @@ values
   null,
   null,
   $json${
-  "display": "👨‍👩‍👧‍👦",
+  "display": "🎂",
   "questions": [
-    "Who is in your family?",
-    "Do you have a sister or brother?"
+    "How old are you?",
+    "When is your birthday?"
   ],
   "title": "What do you see?"
 }$json$::jsonb,
@@ -451,24 +446,24 @@ values
   $json${
   "words": [
     {
-      "word": "Mom",
-      "bg": "#FAECE7",
-      "image_note": "A warm, smiling mother figure, simple and friendly illustration style."
+      "word": "How old",
+      "bg": "#E3F9F6",
+      "image_note": "Functional word -- skip a literal picture; show the example sentence in action instead."
     },
     {
-      "word": "Dad",
-      "bg": "#E1F5EE",
-      "image_note": "A warm, smiling father figure, simple and friendly illustration style."
+      "word": "Years old",
+      "bg": "#FFF6DE",
+      "image_note": "A birthday cake with candles."
     },
     {
-      "word": "Sister",
-      "bg": "#EEEDFE",
-      "image_note": "A young girl smiling, simple and friendly illustration style."
+      "word": "Birthday",
+      "bg": "#FFE8F3",
+      "image_note": "A wrapped birthday present with a bow."
     },
     {
-      "word": "Brother",
-      "bg": "#FAEEDA",
-      "image_note": "A young boy smiling, simple and friendly illustration style."
+      "word": "Age",
+      "bg": "#EAF7E8",
+      "image_note": "A child holding up fingers to show their age."
     }
   ],
   "title": "New Words",
@@ -483,16 +478,16 @@ values
   null,
   null,
   $json${
+  "tag": "Highlight",
   "teacher": [
-    "Who is this?",
-    "Is this your mom?"
+    "How old are you?"
   ],
   "student": [
-    "This is my mom.",
-    "Yes, this is my dad!"
+    "I am ___ years old."
   ],
-  "note": "Point to a family photo and name each person!",
-  "title": "Practice the Conversation"
+  "note": "Hold up your fingers to show your age!",
+  "title": "Practice the Conversation",
+  "image_note": "A child blowing out candles on a birthday cake."
 }$json$::jsonb,
   true
 ),
@@ -507,21 +502,21 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "This is my [mom]."
+      "text": "I am [seven] years old."
     },
     {
       "speaker": "B",
-      "text": "This is my [dad]."
+      "text": "My [birthday] is in May."
     },
     {
       "speaker": "A",
-      "text": "I have one [sister]."
+      "text": "How [old] are you?"
     }
   ],
   "blanks": [
-    "mom",
-    "dad",
-    "sister"
+    "seven",
+    "birthday",
+    "old"
   ]
 }$json$::jsonb,
   true
@@ -533,14 +528,14 @@ values
   null,
   null,
   $json${
-  "mode": "interview",
+  "mode": "talk",
   "tag": "Activity",
-  "title": "Interview Time",
-  "subtitle": "Answer each question.",
-  "questions": [
-    "Who is your mom?",
-    "Who is your dad?",
-    "Do you have a sister or brother?"
+  "title": "Show and Tell",
+  "subtitle": "Talk for one minute!",
+  "prompt": "Tell me your age and when your birthday is!",
+  "starters": [
+    "I am...",
+    "My birthday is..."
   ]
 }$json$::jsonb,
   true
@@ -555,22 +550,18 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "This is my mom."
+      "text": "How old are you?"
     },
     {
       "speaker": "B",
-      "text": "This is my dad."
+      "text": "I am seven years old."
     },
     {
       "speaker": "A",
-      "text": "I have one sister."
-    },
-    {
-      "speaker": "B",
-      "text": "I have one brother! Point to your family!"
+      "text": "When is your birthday?"
     }
   ],
-  "note": "Point-and-name game: point to each family member and say who they are!"
+  "note": "Switch! Student becomes A, teacher becomes B."
 }$json$::jsonb,
   true
 ),
@@ -582,11 +573,11 @@ values
   null,
   $json${
   "checklist": [
-    "Name 4 family members",
-    "Say 'This is my ___'",
-    "Point to my family"
+    "Say my age",
+    "Say my birthday month",
+    "Ask 'How old are you?'"
   ],
-  "challenge": "Point to your family and name everyone!"
+  "challenge": "Tell me your age and your birthday!"
 }$json$::jsonb,
   true
 ),
@@ -597,17 +588,18 @@ values
   null,
   null,
   $json${
-  "sticker": "👨‍👩‍👧‍👦",
+  "sticker": "🎂",
   "headline": "You did it!",
-  "goal": "You can name your family and say 'This is my ___'!",
+  "goal": "You can say your age and birthday!",
   "closing": "See you next time!"
 }$json$::jsonb,
   true
 );
 
--- Lesson 7e465b8c: My Likes
+-- Lesson 4: Things I Like
 update lessons set
-  topic = 'Say what you like and don''t like, and answer "Do you like...?"',
+  title = 'Things I Like',
+  topic = 'Say what you like and don''t like.',
   slide_count = 9
 where id = '7e465b8c-6e38-41ee-a345-f780dd5984dc';
 
@@ -623,7 +615,7 @@ values
   null,
   $json${
   "badge": "A1 · Beginner · Kids",
-  "image_note": "Hero image for 'My Likes' -- A warm, welcoming scene of a diverse group of children at the start of a school day -- waving hello, smiling."
+  "image_note": "Hero image for 'Things I Like' -- a child surrounded by a few favorite things (a toy, a pet, a food), bright and cheerful."
 }$json$::jsonb,
   true
 ),
@@ -653,23 +645,23 @@ values
   "words": [
     {
       "word": "Like",
-      "bg": "#FAECE7",
-      "image_note": "Simple, bright, kid-friendly illustration of 'Like' -- one clear subject, no text in the image, no background clutter."
+      "bg": "#E3F9F6",
+      "image_note": "A child smiling and giving a thumbs up to something."
     },
     {
       "word": "Don't like",
-      "bg": "#E1F5EE",
-      "image_note": "Functional/grammar word, not a concrete object -- skip a literal picture. If illustrating, show the example sentence in action instead of the word alone."
+      "bg": "#FFF6DE",
+      "image_note": "Functional word -- skip a literal picture; show the example sentence in action instead."
     },
     {
       "word": "Love",
-      "bg": "#EEEDFE",
-      "image_note": "A simple heart shape, or a family member giving a warm hug."
+      "bg": "#FFE8F3",
+      "image_note": "A simple heart shape."
     },
     {
       "word": "Favorite",
-      "bg": "#FAEEDA",
-      "image_note": "A single object with a small star or heart on it, marking it as special."
+      "bg": "#EAF7E8",
+      "image_note": "A single object with a small star on it."
     }
   ],
   "title": "New Words",
@@ -684,16 +676,16 @@ values
   null,
   null,
   $json${
+  "tag": "Highlight",
   "teacher": [
-    "Do you like pizza?",
-    "What is your favorite thing?"
+    "Do you like pizza?"
   ],
   "student": [
-    "Yes, I like pizza!",
-    "My favorite is cats."
+    "Yes, I like pizza!"
   ],
   "note": "Show-and-tell: tell me your favorites!",
-  "title": "Practice the Conversation"
+  "title": "Practice the Conversation",
+  "image_note": "A child happily eating pizza or holding a favorite toy."
 }$json$::jsonb,
   true
 ),
@@ -736,8 +728,8 @@ values
       "bucket": 1
     },
     {
-      "text": "Homework",
-      "emoji": "📚",
+      "text": "Broccoli",
+      "emoji": "🥦",
       "bucket": 1
     }
   ]
@@ -795,9 +787,9 @@ values
   "checklist": [
     "Say 'I like ___'",
     "Say 'I don't like ___'",
-    "Show-and-tell my favorite thing"
+    "Share my favorite thing"
   ],
-  "challenge": "Tell me three things you like and one thing you don't like!"
+  "challenge": "Tell me three things you like!"
 }$json$::jsonb,
   true
 ),
@@ -816,9 +808,10 @@ values
   true
 );
 
--- Lesson 06ef2c10: All About Me
+-- Lesson 5: Unit Review
 update lessons set
-  topic = 'Unit Review -- show what you can say about hello, your name, age, family, and likes.',
+  title = 'Unit Review',
+  topic = 'Unit Review -- introduce yourself: name, country, age, and something you like.',
   slide_count = 9
 where id = '06ef2c10-06c5-471b-b4f3-64177b46fac2';
 
@@ -834,7 +827,7 @@ values
   null,
   $json${
   "badge": "A1 · Beginner · Kids",
-  "image_note": "Hero image for 'All About Me' -- A warm, welcoming scene of a diverse group of children at the start of a school day -- waving hello, smiling."
+  "image_note": "Hero image for 'Unit Review' -- a happy group of children celebrating with stars and confetti, bright and festive."
 }$json$::jsonb,
   true
 ),
@@ -848,7 +841,7 @@ values
   "display": "🌟",
   "questions": [
     "What is your name?",
-    "How old are you?"
+    "Where are you from?"
   ],
   "title": "What do you see?"
 }$json$::jsonb,
@@ -863,24 +856,24 @@ values
   $json${
   "words": [
     {
-      "word": "Name",
-      "bg": "#FAECE7",
-      "image_note": "A nametag or name card with a friendly child pointing at it."
+      "word": "Hello",
+      "bg": "#E3F9F6",
+      "image_note": "A child waving hello with a big smile."
+    },
+    {
+      "word": "From",
+      "bg": "#FFF6DE",
+      "image_note": "Functional word -- skip a literal picture; show the example sentence in action instead."
     },
     {
       "word": "Age",
-      "bg": "#E1F5EE",
-      "image_note": "A birthday cake with candles, celebratory and bright."
-    },
-    {
-      "word": "Family",
-      "bg": "#EEEDFE",
-      "image_note": "A family of four holding hands together, warm and happy."
+      "bg": "#FFE8F3",
+      "image_note": "A birthday cake with candles."
     },
     {
       "word": "Like",
-      "bg": "#FAEEDA",
-      "image_note": "Simple, bright, kid-friendly illustration of 'Like' -- one clear subject, no text in the image, no background clutter."
+      "bg": "#EAF7E8",
+      "image_note": "A child smiling and giving a thumbs up."
     }
   ],
   "title": "New Words",
@@ -895,16 +888,16 @@ values
   null,
   null,
   $json${
+  "tag": "Highlight",
   "teacher": [
-    "What is your name?",
-    "Tell me about your family."
+    "Tell me about yourself!"
   ],
   "student": [
-    "My name is ___.",
-    "This is my family."
+    "My name is ___. I'm from ___."
   ],
   "note": "Use everything you learned this unit!",
-  "title": "Practice the Conversation"
+  "title": "Practice the Conversation",
+  "image_note": "A child confidently introducing themselves to the class."
 }$json$::jsonb,
   true
 ),
@@ -922,37 +915,29 @@ values
   "parts": [
     {
       "mode": "match",
-      "instruction": "Match each word.",
+      "instruction": "Match each greeting.",
       "pairs": [
         {
-          "emoji": "🏷️",
-          "word": "Name"
+          "emoji": "👋",
+          "word": "Hello"
         },
         {
-          "emoji": "🎂",
-          "word": "Age"
-        },
-        {
-          "emoji": "👨‍👩‍👧‍👦",
-          "word": "Family"
-        },
-        {
-          "emoji": "⭐",
-          "word": "Like"
+          "emoji": "🚶",
+          "word": "Goodbye"
         }
       ]
     },
     {
       "mode": "choice",
-      "instruction": "Which one means 'family'?",
+      "instruction": "Which question asks about your country?",
       "options": [
         {
-          "text": "Family",
-          "emoji": "👨‍👩‍👧‍👦"
+          "text": "Where are you from?",
+          "emoji": "🌍"
         },
         {
-          "text": "Pizza",
-          "emoji": "🍕"
+          "text": "What do you like?",
+          "emoji": "⭐"
         }
       ],
       "correctIndex": 0
@@ -962,21 +947,16 @@ values
       "dialogue": [
         {
           "speaker": "A",
-          "text": "My [name] is Mia."
+          "text": "I am [seven] years old."
         },
         {
           "speaker": "B",
-          "text": "This is my [family]."
-        },
-        {
-          "speaker": "A",
-          "text": "I [like] cats!"
+          "text": "My [birthday] is in May."
         }
       ],
       "blanks": [
-        "name",
-        "family",
-        "like"
+        "seven",
+        "birthday"
       ]
     },
     {
@@ -993,11 +973,6 @@ values
         }
       ],
       "items": [
-        {
-          "text": "Cats",
-          "emoji": "🐱",
-          "bucket": 0
-        },
         {
           "text": "Pizza",
           "emoji": "🍕",
@@ -1025,9 +1000,10 @@ values
   "tag": "Unit Review",
   "title": "Show and Tell",
   "subtitle": "Talk for one minute!",
-  "prompt": "Tell me everything about you: your name, age, family, and something you like!",
+  "prompt": "Tell me everything about you: name, country, age, and something you like!",
   "starters": [
     "My name is...",
+    "I'm from...",
     "I am ... years old",
     "I like..."
   ]
@@ -1041,10 +1017,10 @@ values
   null,
   null,
   $json${
-  "text": "Hi! My name is Mia. I am seven years old. I have a mom, a dad, and a sister. I like cats.",
+  "text": "Hi! My name is Mia. I am from Spain. I am seven years old. I like cats.",
   "questions": [
-    "What is the girl's name?",
-    "How old is she?",
+    "What is her name?",
+    "Where is she from?",
     "What does she like?"
   ]
 }$json$::jsonb,
@@ -1058,11 +1034,11 @@ values
   null,
   $json${
   "checklist": [
-    "Say hello and my name",
-    "Say my age",
-    "Talk about my family and likes"
+    "Say my name and hello",
+    "Say where I'm from",
+    "Say my age and something I like"
   ],
-  "challenge": "Tell me all about you: name, age, family, and something you like!"
+  "challenge": "Introduce yourself: name, country, age, and something you like!"
 }$json$::jsonb,
   true
 ),
@@ -1075,7 +1051,7 @@ values
   $json${
   "sticker": "🌟",
   "headline": "Great job!",
-  "goal": "You can talk about your name, age, family, and likes!",
+  "goal": "You can introduce yourself in English!",
   "closing": "See you in Unit 2!"
 }$json$::jsonb,
   true

@@ -1,24 +1,34 @@
 import { useState } from "react";
 import SlideHeader from "./SlideHeader";
+import ImagePlaceholder from "./ImagePlaceholder";
 
-const SPEAKER_COLOR = { A: "#FF9478", B: "#6FC9A3" };
+const SPEAKER_COLOR = { A: "#22B8A8", B: "#FF6FB5" };
 
-/* ───────────────────────── Role-play: act out a short scene ───────────────────────── */
+/* ───────────────────────── Role-play: act out a short scene ─────────────────────────
+   Content authors: max 3 lines so this fits with no scroll. */
 function RoleplayPerform({ content }) {
   return (
-    <div className="slpf-body">
-      {content.scene && <div className="slpf-scene">{content.scene}</div>}
-      <div className="slpf-dialogue">
-        {(content.lines || []).map((line, i) => (
-          <div className="slpf-line" key={i}>
-            <span className="slpf-speaker" style={{ color: SPEAKER_COLOR[line.speaker] || "#1B2A4A" }}>
-              {line.speaker}:
-            </span>
-            <span className="slpf-text">{line.text}</span>
-          </div>
-        ))}
+    <div className="slpf-roleplay">
+      <div className="slpf-scene-img">
+        {content.image_url ? (
+          <img src={content.image_url} alt="" />
+        ) : (
+          <ImagePlaceholder note={content.image_note} compact />
+        )}
       </div>
-      {content.twist && <div className="slpf-twist">✦ {content.twist}</div>}
+      <div className="slpf-roleplay-right">
+        <div className="slpf-dialogue">
+          {(content.lines || []).map((line, i) => (
+            <div className="slpf-line" key={i}>
+              <span className="slpf-speaker" style={{ color: SPEAKER_COLOR[line.speaker] || "#1B2A4A" }}>
+                {line.speaker}:
+              </span>
+              <span className="slpf-text">{line.text}</span>
+            </div>
+          ))}
+        </div>
+        {content.twist && <div className="slpf-twist">✦ {content.twist}</div>}
+      </div>
     </div>
   );
 }
@@ -44,7 +54,8 @@ function TalkPerform({ content }) {
   );
 }
 
-/* ───────────────────────── Interview: a short question list ───────────────────────── */
+/* ───────────────────────── Interview: a short question list ─────────────────────────
+   Content authors: max 3 questions so this fits with no scroll. */
 function InterviewPerform({ content }) {
   return (
     <div className="slpf-body">
@@ -115,113 +126,123 @@ const CSS = `
 .slpf-body {
   flex: 1;
   min-height: 0;
-  padding: 12px 28px 14px;
+  padding: 10px 28px 14px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 10px;
-  overflow: auto;
 }
 .slpf-body--center { align-items: center; justify-content: center; text-align: center; }
 
-.slpf-scene {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 700;
-  font-size: 15px;
-  color: var(--k-accent-dark, #E06B4C);
-  background: var(--k-tint, #FFEDE0);
-  border-radius: 999px;
-  padding: 8px 18px;
-  align-self: center;
-  text-align: center;
+/* ── Role-play: image left, dialogue right ── */
+.slpf-roleplay {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  gap: 16px;
+  padding: 10px 24px 14px 24px;
 }
-.slpf-dialogue {
-  background: var(--k-tint, #F7F8FA);
-  border-radius: 14px;
-  padding: 12px 20px;
+.slpf-scene-img {
+  flex-shrink: 0;
+  width: 32%;
+}
+.slpf-scene-img .img-ph { border-radius: 14px; }
+.slpf-scene-img img { width: 100%; height: 100%; object-fit: cover; border-radius: 14px; }
+.slpf-roleplay-right {
+  flex: 1;
+  min-width: 0;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   gap: 8px;
 }
-.slpf-line { font-family: 'Quicksand', sans-serif; font-size: 17px; color: #1B2A4A; }
+.slpf-dialogue {
+  background: var(--k-tint, #FFF6DE);
+  border-radius: 14px;
+  padding: 11px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+.slpf-line { font-family: 'Quicksand', sans-serif; font-size: 15.5px; color: #1B2A4A; }
 .slpf-speaker { font-weight: 700; margin-right: 6px; }
 .slpf-text { font-weight: 600; }
 .slpf-twist {
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;
-  font-size: 14.5px;
-  color: var(--k-accent-dark, #E06B4C);
+  font-size: 13.5px;
+  color: var(--k-accent-dark, #12867A);
   text-align: center;
-  padding: 4px 16px;
+  padding: 2px 8px;
 }
 
-.slpf-mic { font-size: 44px; }
+.slpf-mic { font-size: 42px; }
 .slpf-prompt {
   font-family: 'Fredoka', sans-serif;
   font-weight: 700;
-  font-size: 22px;
+  font-size: 21px;
   color: #1B2A4A;
   margin: 0;
   max-width: 440px;
 }
 .slpf-starters { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
 .slpf-starter {
-  background: var(--k-tint, #FFEDE0);
-  color: var(--k-accent-dark, #E06B4C);
+  background: var(--k-bg-cool, #E3F9F6);
+  color: var(--k-accent-dark, #12867A);
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;
-  font-size: 13.5px;
-  padding: 8px 16px;
+  font-size: 13px;
+  padding: 7px 15px;
   border-radius: 999px;
 }
 
-.slpf-qlist { display: flex; flex-direction: column; gap: 12px; justify-content: center; flex: 1; }
+.slpf-qlist { display: flex; flex-direction: column; gap: 10px; justify-content: center; flex: 1; }
 .slpf-qcard {
   display: flex;
   align-items: center;
   gap: 14px;
-  background: var(--k-tint, #F7F6F3);
+  background: var(--k-bg-cool, #E3F9F6);
   border-radius: 14px;
-  padding: 14px 18px;
+  padding: 11px 16px;
 }
 .slpf-qnum {
   flex-shrink: 0;
-  width: 28px;
-  height: 28px;
+  width: 26px;
+  height: 26px;
   border-radius: 999px;
-  background: var(--k-accent, #FF9478);
+  background: var(--k-accent, #22B8A8);
   color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
   font-family: 'Fredoka', sans-serif;
   font-weight: 700;
-  font-size: 13px;
+  font-size: 12px;
 }
-.slpf-qtext { font-family: 'Quicksand', sans-serif; font-weight: 700; font-size: 17px; color: #1B2A4A; }
+.slpf-qtext { font-family: 'Quicksand', sans-serif; font-weight: 700; font-size: 15.5px; color: #1B2A4A; }
 
 .slpf-choose-options { display: flex; gap: 18px; justify-content: center; flex-wrap: wrap; }
 .slpf-choose-card {
-  width: 150px;
-  padding: 18px 14px;
+  width: 140px;
+  padding: 16px 12px;
   border-radius: 18px;
-  border: 3px solid var(--k-tint, #EEE);
+  border: 3px solid var(--k-tint, #FFF6DE);
   background: #fff;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
+  gap: 7px;
   cursor: pointer;
   transition: transform 0.12s ease, border-color 0.12s ease;
 }
 .slpf-choose-card:hover { transform: translateY(-2px); }
-.slpf-choose-card.is-picked { border-color: var(--k-accent, #FF9478); background: var(--k-tint, #FFEDE0); }
-.slpf-choose-emoji { font-size: 40px; }
-.slpf-choose-text { font-family: 'Quicksand', sans-serif; font-weight: 700; font-size: 15.5px; color: #1B2A4A; }
+.slpf-choose-card.is-picked { border-color: var(--k-accent, #22B8A8); background: var(--k-bg-cool, #E3F9F6); }
+.slpf-choose-emoji { font-size: 38px; }
+.slpf-choose-text { font-family: 'Quicksand', sans-serif; font-weight: 700; font-size: 15px; color: #1B2A4A; }
 .slpf-why {
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;
-  font-size: 15px;
-  color: var(--k-accent-dark, #E06B4C);
+  font-size: 14.5px;
+  color: var(--k-accent-dark, #12867A);
 }
 `;

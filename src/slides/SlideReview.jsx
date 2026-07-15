@@ -3,10 +3,10 @@ import { useState } from "react";
 const GRADIENT = "linear-gradient(135deg, #3B6D11, #5FA873)";
 const GRADIENT_ADULT = "#1B2A4A";
 const ITEM_COLORS = [
-  { bg: "#FAECE7", check: "#D85A30" },
-  { bg: "#E1F5EE", check: "#0F6E56" },
-  { bg: "#EEEDFE", check: "#534AB7" },
-  { bg: "#FAEEDA", check: "#BA7517" },
+  { bg: "#E3F9F6", check: "#12867A" },
+  { bg: "#FFF6DE", check: "#B87F00" },
+  { bg: "#FFE8F3", check: "#C23D82" },
+  { bg: "#EAF7E8", check: "#3B9A6B" },
 ];
 
 export default function SlideReview({ content, lesson }) {
@@ -119,12 +119,11 @@ const CSS = `
 .slrv-body {
   flex: 1;
   min-height: 0;
-  padding: 18px 28px;
+  padding: 16px 28px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 18px;
-  overflow: auto;
+  gap: 14px;
 }
 .slrv-checklist {
   display: flex;

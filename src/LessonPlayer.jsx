@@ -156,13 +156,7 @@ export default function LessonPlayer({ lessonId: lessonIdProp }) {
   const shellStatePortraitClass = requestedView === "teacher" ? "lp-shell--portrait" : "";
   const isAdult = lesson?.age_track === "adults";
   const isKids = lesson?.age_track === "kids";
-  // Kids palette rotates every 3 units (Units 1-3 / 4-6 / 7-9 / 10-12) so the
-  // app doesn't look identical unit after unit. Teens/Adults are untouched —
-  // the kt-N vars are only ever read by CSS scoped under .is-kids.
-  const kidsThemeIndex = isKids
-    ? Math.min(3, Math.floor(((lesson?.unit_number || 1) - 1) / 3))
-    : 0;
-  const kidsThemeClass = isKids ? `is-kids kt-${kidsThemeIndex}` : "";
+  const kidsThemeClass = isKids ? "is-kids" : "";
 
   if (loading) {
     return (
@@ -402,54 +396,24 @@ const CSS = `
 }
 .lp-dot.is-active { width: 20px; background: var(--k-accent, #FF7A59); }
 
-/* ── Kids palette rotation: every 3 units gets a new accent/background
-   pairing so the app doesn't look identical unit after unit. Navy ink
-   (#1B2A4A) and the slide layout stay constant — only the "canvas" hue
-   shifts. Slide components opt in by referencing var(--k-*, <original
-   Sunshine-theme hex>) so Teens (no .is-kids class, no vars defined)
-   render pixel-identical to before. ── */
-.lp-shell.is-kids.kt-0 {
-  /* Units 1-3: Sunshine (pastel) */
-  --k-accent: #FF9478;
-  --k-accent-dark: #E06B4C;
-  --k-secondary: #6FC9A3;
-  --k-bg: #FFF6EC;
-  --k-bg-cool: #EAF9F1;
-  --k-tint: #FFEDE0;
-  --k-motif: "☀";
-}
-.lp-shell.is-kids.kt-1 {
-  /* Units 4-6: Ocean (pastel) */
-  --k-accent: #5EC2DA;
-  --k-accent-dark: #3B93AC;
-  --k-secondary: #FFD873;
-  --k-bg: #EFFAFC;
-  --k-bg-cool: #FFF8E6;
-  --k-tint: #E4F5F9;
-  --k-motif: "🌊";
-}
-.lp-shell.is-kids.kt-2 {
-  /* Units 7-9: Berry Meadow (pastel) */
-  --k-accent: #EE84A3;
-  --k-accent-dark: #C85E80;
-  --k-secondary: #FFCE5C;
-  --k-bg: #FDF3F7;
-  --k-bg-cool: #FFF9E9;
-  --k-tint: #FCEAF1;
-  --k-motif: "🌸";
-}
-.lp-shell.is-kids.kt-3 {
-  /* Units 10-12: Galaxy (pastel) */
-  --k-accent: #A78BFA;
-  --k-accent-dark: #7C63D6;
-  --k-secondary: #FFAB8A;
-  --k-bg: #F6F5FF;
-  --k-bg-cool: #FFF2EA;
-  --k-tint: #EDEAFF;
+/* ── Kids palette (v2, "Candy Lagoon" -- deliberately different from the
+   earlier coral/mint Sunshine theme this replaces): turquoise primary,
+   sunny yellow secondary, cream canvas. Navy ink (#1B2A4A) stays constant.
+   Slide components opt in via var(--k-*, <fallback>) so Teens (no
+   .is-kids class, no vars defined) render pixel-identical to before. ── */
+.lp-shell.is-kids {
+  --k-accent: #22B8A8;
+  --k-accent-dark: #12867A;
+  --k-secondary: #FFC845;
+  --k-secondary-dark: #E0A310;
+  --k-pop: #FF6FB5;
+  --k-bg: #FFFBF2;
+  --k-bg-cool: #E3F9F6;
+  --k-tint: #FFF6DE;
   --k-motif: "✦";
 }
 .lp-shell.is-kids .lp-wordmark::after {
-  content: var(--k-motif, "☀");
+  content: var(--k-motif, "✦");
   margin-left: 5px;
   font-size: 12px;
   vertical-align: 1px;

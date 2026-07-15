@@ -1,3 +1,5 @@
+import ImagePlaceholder from "./ImagePlaceholder";
+
 export default function SlidePhrases({ content, lesson }) {
   const teacher = content.teacher || [];
   const student = content.student || [];
@@ -13,23 +15,32 @@ export default function SlidePhrases({ content, lesson }) {
   return (
     <div className={`slp-slide ${isAdult ? "is-adult" : ""}`}>
       <style>{CSS}</style>
-      <div className="slp-header">
-        <span className="slp-tag">{content.tag || "Key Phrases"}</span>
-        <h2 className="slp-title">{content.title || "Practice the Conversation"}</h2>
+      <div className="slp-scene">
+        {content.image_url ? (
+          <img className="slp-scene-img" src={content.image_url} alt="" />
+        ) : (
+          <ImagePlaceholder note={content.image_note} compact />
+        )}
       </div>
-      <div className="slp-thread">
-        {turns.map((turn, i) => (
-          <div className={`slp-turn slp-turn--${turn.speaker}`} key={i}>
-            <div className="slp-avatar">
-              {isAdult
-                ? turn.speaker === "teacher" ? "Q" : "A"
-                : turn.speaker === "teacher" ? "T" : "S"}
+      <div className="slp-main">
+        <div className="slp-header">
+          <span className="slp-tag">{content.tag || "Highlight"}</span>
+          <h2 className="slp-title">{content.title || "Practice the Conversation"}</h2>
+        </div>
+        <div className="slp-thread">
+          {turns.map((turn, i) => (
+            <div className={`slp-turn slp-turn--${turn.speaker}`} key={i}>
+              <div className="slp-avatar">
+                {isAdult
+                  ? turn.speaker === "teacher" ? "Q" : "A"
+                  : turn.speaker === "teacher" ? "T" : "S"}
+              </div>
+              <div className="slp-bubble">{turn.text}</div>
             </div>
-            <div className="slp-bubble">{turn.text}</div>
-          </div>
-        ))}
+          ))}
+        </div>
+        {content.note && <div className="slp-note">{content.note}</div>}
       </div>
-      {content.note && <div className="slp-note">{content.note}</div>}
     </div>
   );
 }
@@ -39,15 +50,32 @@ const CSS = `
   width: 100%;
   height: 100%;
   display: flex;
+}
+.slp-scene {
+  flex-shrink: 0;
+  width: 34%;
+  padding: 14px 0 14px 14px;
+}
+.slp-scene .img-ph { border-radius: 16px; }
+.slp-scene-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 16px;
+}
+.slp-main {
+  flex: 1;
+  min-width: 0;
+  display: flex;
   flex-direction: column;
 }
 .slp-header {
-  padding: 10px 24px 4px;
+  padding: 14px 20px 4px;
   flex-shrink: 0;
 }
 .slp-tag {
   display: inline-block;
-  background: var(--k-accent, #FF7A59);
+  background: var(--k-accent, #22B8A8);
   color: #fff;
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;
@@ -61,7 +89,7 @@ const CSS = `
 .slp-title {
   font-family: 'Fredoka', sans-serif;
   font-weight: 700;
-  font-size: 19px;
+  font-size: 18px;
   color: #1B2A4A;
   margin: 0;
 }
@@ -70,62 +98,63 @@ const CSS = `
   min-height: 0;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  gap: 10px;
-  padding: 10px 28px;
-  overflow-y: auto;
+  justify-content: center;
+  gap: 9px;
+  padding: 6px 20px;
 }
 .slp-turn {
   display: flex;
   align-items: center;
-  gap: 9px;
-  max-width: 76%;
+  gap: 8px;
+  max-width: 92%;
 }
 .slp-turn--teacher { align-self: flex-start; }
 .slp-turn--student { align-self: flex-end; flex-direction: row-reverse; }
 .slp-avatar {
   flex-shrink: 0;
-  width: 26px;
-  height: 26px;
+  width: 24px;
+  height: 24px;
   border-radius: 999px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-family: 'Fredoka', sans-serif;
   font-weight: 700;
-  font-size: 12px;
+  font-size: 11px;
   color: #fff;
 }
-.slp-turn--teacher .slp-avatar { background: var(--k-accent, #FF7A59); }
-.slp-turn--student .slp-avatar { background: var(--k-secondary, #2CA97F); }
+.slp-turn--teacher .slp-avatar { background: var(--k-accent, #22B8A8); }
+.slp-turn--student .slp-avatar { background: var(--k-pop, #FF6FB5); }
 .slp-bubble {
   border-radius: 14px;
-  padding: 9px 16px;
+  padding: 8px 14px;
   font-family: 'Quicksand', sans-serif;
   font-weight: 600;
-  font-size: 16.5px;
+  font-size: 15px;
   color: #1B2A4A;
 }
 .slp-turn--teacher .slp-bubble {
-  background: var(--k-tint, #FAECE7);
+  background: var(--k-bg-cool, #E3F9F6);
   border-bottom-left-radius: 4px;
 }
 .slp-turn--student .slp-bubble {
-  background: var(--k-bg-cool, #E1F5EE);
+  background: var(--k-tint, #FFF6DE);
   border-bottom-right-radius: 4px;
 }
 .slp-note {
   font-family: 'Quicksand', sans-serif;
-  font-weight: 500;
+  font-weight: 600;
   font-size: 11.5px;
   color: #94A0B8;
   text-align: center;
-  padding: 6px 20px 8px;
+  padding: 4px 16px 10px;
   flex-shrink: 0;
 }
 
-/* ── Adults theme: quoted model-answer transcript, not a chat bubble ── */
+/* ── Adults theme: quoted model-answer transcript, no scene image ── */
 .slp-slide.is-adult { background: #F7F5EF; }
+.slp-slide.is-adult .slp-scene { display: none; }
+.slp-slide.is-adult .slp-main { width: 100%; }
 .slp-slide.is-adult .slp-tag {
   font-family: 'Inter', sans-serif;
   font-weight: 600;
