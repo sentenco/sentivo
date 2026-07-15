@@ -1,17 +1,19 @@
--- A1 Teens Unit 4: Friends and Free Time (5 lessons) — TIERED (Foundation)
--- Regenerated per the Sentivo Intra-Level Progression Framework + lesson-level escalation + task rotation.
+-- A1 Teens Unit 4: Friends and Free Time (5 lessons) — TIERED + ROTATED
+-- Per docs/curriculum/a1-teens-adults-rotation-rework.md. Vocab/reading/writing/review
+-- unchanged from the tiered pilot; only activity+speaking reshuffled to the new
+-- per-unit format assignment, keeping each lesson's difficulty position intact.
 -- Run this whole script in the Supabase SQL editor.
 
 -- Lesson 1: Friends and Words for People
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '03604ecc-814e-42a4-bff5-6e7bf6618364',
+  '3e8cf11a-c30c-44c1-914c-3a227b36fe0a',
   'Friends and Words for People',
   'A1',
   'teens',
   4,
   1,
-  'Name friends and simple people words. [Foundation, Lesson 1: notice/receptive]',
+  'Name friends and simple people words. [Foundation, L1, format R: short scripted role-play]',
   25,
   9,
   true
@@ -20,7 +22,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '03604ecc-814e-42a4-bff5-6e7bf6618364',
+  '3e8cf11a-c30c-44c1-914c-3a227b36fe0a',
   1,
   'title',
   null,
@@ -31,7 +33,7 @@ values
   true
 ),
 (
-  '03604ecc-814e-42a4-bff5-6e7bf6618364',
+  '3e8cf11a-c30c-44c1-914c-3a227b36fe0a',
   2,
   'warmup',
   null,
@@ -47,7 +49,7 @@ values
   true
 ),
 (
-  '03604ecc-814e-42a4-bff5-6e7bf6618364',
+  '3e8cf11a-c30c-44c1-914c-3a227b36fe0a',
   3,
   'vocabulary',
   null,
@@ -77,7 +79,7 @@ values
   true
 ),
 (
-  '03604ecc-814e-42a4-bff5-6e7bf6618364',
+  '3e8cf11a-c30c-44c1-914c-3a227b36fe0a',
   4,
   'phrases',
   null,
@@ -97,7 +99,7 @@ values
   true
 ),
 (
-  '03604ecc-814e-42a4-bff5-6e7bf6618364',
+  '3e8cf11a-c30c-44c1-914c-3a227b36fe0a',
   5,
   'activity',
   null,
@@ -110,23 +112,23 @@ values
     },
     {
       "speaker": "B",
-      "text": "He is a [boy]."
+      "text": "She is a [girl]."
     },
     {
       "speaker": "A",
-      "text": "She is a [girl]."
+      "text": "She is my [classmate]."
     }
   ],
   "blanks": [
     "friend",
-    "boy",
-    "girl"
+    "girl",
+    "classmate"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '03604ecc-814e-42a4-bff5-6e7bf6618364',
+  '3e8cf11a-c30c-44c1-914c-3a227b36fe0a',
   6,
   'speaking',
   null,
@@ -135,27 +137,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "This is my friend."
+      "text": "This is my friend. Her name is Mia."
     },
     {
       "speaker": "B",
-      "text": "Is your friend a boy or a girl?"
+      "text": "Is she a boy or a girl?"
     },
     {
       "speaker": "A",
-      "text": "She is a girl. Her name is Mia."
+      "text": "She is a girl. She is my classmate."
     },
     {
       "speaker": "B",
-      "text": "Nice friend!"
+      "text": "Now introduce your own friend to me!"
     }
   ],
-  "note": "Teacher says the line first. Student repeats, then says it alone."
+  "note": "Very short role-play: introduce a friend using the exact lines above, then try your own."
 }$json$::jsonb,
   true
 ),
 (
-  '03604ecc-814e-42a4-bff5-6e7bf6618364',
+  '3e8cf11a-c30c-44c1-914c-3a227b36fe0a',
   7,
   'reading',
   null,
@@ -171,7 +173,7 @@ values
   true
 ),
 (
-  '03604ecc-814e-42a4-bff5-6e7bf6618364',
+  '3e8cf11a-c30c-44c1-914c-3a227b36fe0a',
   8,
   'writing',
   null,
@@ -186,7 +188,7 @@ values
   true
 ),
 (
-  '03604ecc-814e-42a4-bff5-6e7bf6618364',
+  '3e8cf11a-c30c-44c1-914c-3a227b36fe0a',
   9,
   'review',
   null,
@@ -205,13 +207,13 @@ values
 -- Lesson 2: What Friends Like
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '42971fe7-333b-4dbd-bf4a-28aa0d8d8280',
+  'd56a2bc9-c955-44f7-909b-8f6f47065c30',
   'What Friends Like',
   'A1',
   'teens',
   4,
   2,
-  'Say what friends like using simple present. [Foundation, Lesson 2: controlled practice]',
+  'Say what friends like using simple present. [Foundation, L2, format E: choose-the-better-answer]',
   25,
   9,
   true
@@ -220,7 +222,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '42971fe7-333b-4dbd-bf4a-28aa0d8d8280',
+  'd56a2bc9-c955-44f7-909b-8f6f47065c30',
   1,
   'title',
   null,
@@ -231,7 +233,7 @@ values
   true
 ),
 (
-  '42971fe7-333b-4dbd-bf4a-28aa0d8d8280',
+  'd56a2bc9-c955-44f7-909b-8f6f47065c30',
   2,
   'warmup',
   null,
@@ -247,7 +249,7 @@ values
   true
 ),
 (
-  '42971fe7-333b-4dbd-bf4a-28aa0d8d8280',
+  'd56a2bc9-c955-44f7-909b-8f6f47065c30',
   3,
   'vocabulary',
   null,
@@ -277,7 +279,7 @@ values
   true
 ),
 (
-  '42971fe7-333b-4dbd-bf4a-28aa0d8d8280',
+  'd56a2bc9-c955-44f7-909b-8f6f47065c30',
   4,
   'phrases',
   null,
@@ -297,7 +299,7 @@ values
   true
 ),
 (
-  '42971fe7-333b-4dbd-bf4a-28aa0d8d8280',
+  'd56a2bc9-c955-44f7-909b-8f6f47065c30',
   5,
   'activity',
   null,
@@ -326,7 +328,7 @@ values
   true
 ),
 (
-  '42971fe7-333b-4dbd-bf4a-28aa0d8d8280',
+  'd56a2bc9-c955-44f7-909b-8f6f47065c30',
   6,
   'speaking',
   null,
@@ -335,27 +337,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "Does your friend like games?"
+      "text": "Which is correct: 'She don't like math' or 'She doesn't like math'?"
     },
     {
       "speaker": "B",
-      "text": "Yes, my friend likes games. She doesn't like math."
+      "text": "'She doesn't like math' is correct."
     },
     {
       "speaker": "A",
-      "text": "My friend likes music."
+      "text": "Good! Does your friend like games?"
     },
     {
       "speaker": "B",
-      "text": "Nice!"
+      "text": "Yes, my friend likes games and music."
     }
   ],
-  "note": "Switch! Student becomes A, teacher becomes B."
+  "note": "Choose the correct sentence, then answer the question about your own friend."
 }$json$::jsonb,
   true
 ),
 (
-  '42971fe7-333b-4dbd-bf4a-28aa0d8d8280',
+  'd56a2bc9-c955-44f7-909b-8f6f47065c30',
   7,
   'reading',
   null,
@@ -371,7 +373,7 @@ values
   true
 ),
 (
-  '42971fe7-333b-4dbd-bf4a-28aa0d8d8280',
+  'd56a2bc9-c955-44f7-909b-8f6f47065c30',
   8,
   'writing',
   null,
@@ -386,7 +388,7 @@ values
   true
 ),
 (
-  '42971fe7-333b-4dbd-bf4a-28aa0d8d8280',
+  'd56a2bc9-c955-44f7-909b-8f6f47065c30',
   9,
   'review',
   null,
@@ -405,13 +407,13 @@ values
 -- Lesson 3: Free Time Activities
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  'c678a6f7-4030-4118-8d66-6791410e40e1',
+  '604cc665-bd90-491d-95f9-4389b88b9d0d',
   'Free Time Activities',
   'A1',
   'teens',
   4,
   3,
-  'Name free time activities. [Foundation, Lesson 3: freer practice, role reversal]',
+  'Name free time activities. [Foundation, L3, format F: guided fill-in]',
   25,
   9,
   true
@@ -420,7 +422,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  'c678a6f7-4030-4118-8d66-6791410e40e1',
+  '604cc665-bd90-491d-95f9-4389b88b9d0d',
   1,
   'title',
   null,
@@ -431,7 +433,7 @@ values
   true
 ),
 (
-  'c678a6f7-4030-4118-8d66-6791410e40e1',
+  '604cc665-bd90-491d-95f9-4389b88b9d0d',
   2,
   'warmup',
   null,
@@ -447,7 +449,7 @@ values
   true
 ),
 (
-  'c678a6f7-4030-4118-8d66-6791410e40e1',
+  '604cc665-bd90-491d-95f9-4389b88b9d0d',
   3,
   'vocabulary',
   null,
@@ -477,7 +479,7 @@ values
   true
 ),
 (
-  'c678a6f7-4030-4118-8d66-6791410e40e1',
+  '604cc665-bd90-491d-95f9-4389b88b9d0d',
   4,
   'phrases',
   null,
@@ -497,7 +499,7 @@ values
   true
 ),
 (
-  'c678a6f7-4030-4118-8d66-6791410e40e1',
+  '604cc665-bd90-491d-95f9-4389b88b9d0d',
   5,
   'activity',
   null,
@@ -526,7 +528,7 @@ values
   true
 ),
 (
-  'c678a6f7-4030-4118-8d66-6791410e40e1',
+  '604cc665-bd90-491d-95f9-4389b88b9d0d',
   6,
   'speaking',
   null,
@@ -547,15 +549,15 @@ values
     },
     {
       "speaker": "B",
-      "text": "Your turn to ask me something!"
+      "text": "That sounds fun!"
     }
   ],
-  "note": "Student asks first this time. Teacher answers, then asks back."
+  "note": "Switch! Student becomes A, teacher becomes B."
 }$json$::jsonb,
   true
 ),
 (
-  'c678a6f7-4030-4118-8d66-6791410e40e1',
+  '604cc665-bd90-491d-95f9-4389b88b9d0d',
   7,
   'reading',
   null,
@@ -571,7 +573,7 @@ values
   true
 ),
 (
-  'c678a6f7-4030-4118-8d66-6791410e40e1',
+  '604cc665-bd90-491d-95f9-4389b88b9d0d',
   8,
   'writing',
   null,
@@ -586,7 +588,7 @@ values
   true
 ),
 (
-  'c678a6f7-4030-4118-8d66-6791410e40e1',
+  '604cc665-bd90-491d-95f9-4389b88b9d0d',
   9,
   'review',
   null,
@@ -605,13 +607,13 @@ values
 -- Lesson 4: Friends and Free Time Questions
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '370da70a-dc49-466a-a709-1ca3be42a51c',
+  'e4d5365d-ea3d-48a3-963b-dd5f402c8c94',
   'Friends and Free Time Questions',
   'A1',
   'teens',
   4,
   4,
-  'Combine friends and free time into a short talk. [Foundation, Lesson 4: production]',
+  'Combine friends and free time into a short talk. [Foundation, L4, format M: independent production, teacher matches back]',
   25,
   9,
   true
@@ -620,7 +622,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '370da70a-dc49-466a-a709-1ca3be42a51c',
+  'e4d5365d-ea3d-48a3-963b-dd5f402c8c94',
   1,
   'title',
   null,
@@ -631,7 +633,7 @@ values
   true
 ),
 (
-  '370da70a-dc49-466a-a709-1ca3be42a51c',
+  'e4d5365d-ea3d-48a3-963b-dd5f402c8c94',
   2,
   'warmup',
   null,
@@ -647,7 +649,7 @@ values
   true
 ),
 (
-  '370da70a-dc49-466a-a709-1ca3be42a51c',
+  'e4d5365d-ea3d-48a3-963b-dd5f402c8c94',
   3,
   'vocabulary',
   null,
@@ -677,7 +679,7 @@ values
   true
 ),
 (
-  '370da70a-dc49-466a-a709-1ca3be42a51c',
+  'e4d5365d-ea3d-48a3-963b-dd5f402c8c94',
   4,
   'phrases',
   null,
@@ -697,7 +699,7 @@ values
   true
 ),
 (
-  '370da70a-dc49-466a-a709-1ca3be42a51c',
+  'e4d5365d-ea3d-48a3-963b-dd5f402c8c94',
   5,
   'activity',
   null,
@@ -726,7 +728,7 @@ values
   true
 ),
 (
-  '370da70a-dc49-466a-a709-1ca3be42a51c',
+  'e4d5365d-ea3d-48a3-963b-dd5f402c8c94',
   6,
   'speaking',
   null,
@@ -735,27 +737,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "Tell me about your best friend and free time."
+      "text": "Tell me about your best friend, in your own words."
     },
     {
       "speaker": "B",
-      "text": "My best friend is Mia. She likes games and music."
+      "text": "My best friend is ___. She likes ___ and ___."
     },
     {
       "speaker": "A",
-      "text": "We play together every day. It's fun!"
+      "text": "I'll say it back to check: your best friend is ___, and you play together ___."
     },
     {
       "speaker": "B",
-      "text": "Sounds like a great friendship!"
+      "text": "Yes, that's right!"
     }
   ],
-  "note": "Mini talk: tell me all about your best friend and free time in a few sentences."
+  "note": "You speak first this time, fully in your own words. Teacher matches your sentence back to check it."
 }$json$::jsonb,
   true
 ),
 (
-  '370da70a-dc49-466a-a709-1ca3be42a51c',
+  'e4d5365d-ea3d-48a3-963b-dd5f402c8c94',
   7,
   'reading',
   null,
@@ -771,7 +773,7 @@ values
   true
 ),
 (
-  '370da70a-dc49-466a-a709-1ca3be42a51c',
+  'e4d5365d-ea3d-48a3-963b-dd5f402c8c94',
   8,
   'writing',
   null,
@@ -786,7 +788,7 @@ values
   true
 ),
 (
-  '370da70a-dc49-466a-a709-1ca3be42a51c',
+  'e4d5365d-ea3d-48a3-963b-dd5f402c8c94',
   9,
   'review',
   null,
@@ -805,13 +807,13 @@ values
 -- Lesson 5: Unit Review
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '6928db27-fafe-47c8-90ec-d4156548dabc',
+  'a4c1c3fa-fd4a-4ed9-8fd5-a1a9f3bb4c30',
   'Unit Review',
   'A1',
   'teens',
   4,
   5,
-  'Review friends, likes, and free time. [Foundation, Lesson 5: tier-matched review]',
+  'Unit Review -- tier-matched mixed review. Unchanged by the rotation rework.',
   25,
   9,
   true
@@ -820,7 +822,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '6928db27-fafe-47c8-90ec-d4156548dabc',
+  'a4c1c3fa-fd4a-4ed9-8fd5-a1a9f3bb4c30',
   1,
   'title',
   null,
@@ -831,7 +833,7 @@ values
   true
 ),
 (
-  '6928db27-fafe-47c8-90ec-d4156548dabc',
+  'a4c1c3fa-fd4a-4ed9-8fd5-a1a9f3bb4c30',
   2,
   'warmup',
   null,
@@ -847,7 +849,7 @@ values
   true
 ),
 (
-  '6928db27-fafe-47c8-90ec-d4156548dabc',
+  'a4c1c3fa-fd4a-4ed9-8fd5-a1a9f3bb4c30',
   3,
   'vocabulary',
   null,
@@ -877,7 +879,7 @@ values
   true
 ),
 (
-  '6928db27-fafe-47c8-90ec-d4156548dabc',
+  'a4c1c3fa-fd4a-4ed9-8fd5-a1a9f3bb4c30',
   4,
   'phrases',
   null,
@@ -897,7 +899,7 @@ values
   true
 ),
 (
-  '6928db27-fafe-47c8-90ec-d4156548dabc',
+  'a4c1c3fa-fd4a-4ed9-8fd5-a1a9f3bb4c30',
   5,
   'activity',
   null,
@@ -926,7 +928,7 @@ values
   true
 ),
 (
-  '6928db27-fafe-47c8-90ec-d4156548dabc',
+  'a4c1c3fa-fd4a-4ed9-8fd5-a1a9f3bb4c30',
   6,
   'speaking',
   null,
@@ -955,7 +957,7 @@ values
   true
 ),
 (
-  '6928db27-fafe-47c8-90ec-d4156548dabc',
+  'a4c1c3fa-fd4a-4ed9-8fd5-a1a9f3bb4c30',
   7,
   'reading',
   null,
@@ -971,7 +973,7 @@ values
   true
 ),
 (
-  '6928db27-fafe-47c8-90ec-d4156548dabc',
+  'a4c1c3fa-fd4a-4ed9-8fd5-a1a9f3bb4c30',
   8,
   'writing',
   null,
@@ -986,7 +988,7 @@ values
   true
 ),
 (
-  '6928db27-fafe-47c8-90ec-d4156548dabc',
+  'a4c1c3fa-fd4a-4ed9-8fd5-a1a9f3bb4c30',
   9,
   'review',
   null,
