@@ -5,13 +5,19 @@ Per the Sentivo Intra-Level Progression Framework, adapted for Kids'
 jumps between tiers, more repetition, more visual/oral support, and
 controlled production even at the hardest tier).
 
-**Scope note:** Units 1-2 are already live in Supabase and are left
-untouched for now (per the standing decision to disregard live content
-until a separate retrofit pass). Only Units 3-12 are regenerated here.
-Tier boundaries are kept at the same 1-4/5-8/9-12 split used for A1
-Teens for consistency across tracks, so Units 3-4 continue the
-Foundation tier already established by the live Units 1-2, rather than
-jumping straight to Combination.
+**Scope note:** Units 1-2 are live in Supabase. This matrix originally
+left them untouched and only regenerated Units 3-12. That changed once
+a structural problem surfaced: the live Unit 1 had 6 lessons and Unit 2
+had 7 (both with an extra "assessment" lesson beyond the standard
+review), predating the 5-lesson-per-unit convention used everywhere
+else. `sql/lessons/fix_kids_unit1_2_structure.sql` normalizes both to 5
+lessons (Unit 1: merges "All About Me" + "What Can You Say?" into one
+Unit Review; Unit 2: merges "Breakfast Time" into "My Morning", merges
+"All About My Day" + "My Day Check" into one Unit Review) and rewrites
+all kept lessons' content to match the Foundation-tier framework below
+-- same row IDs and titles, content fully replaced. Pending the user
+running that script in Supabase. Tier boundaries stay at the same
+1-4/5-8/9-12 split used for A1 Teens for consistency across tracks.
 
 **Ceiling guardrail:** Same A1 boundary as Teens (no comparatives, no
 simple past narrative, no "going to" future), but pulled in even
