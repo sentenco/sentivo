@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
 import SlideHeader from "./SlideHeader";
 
-const SPEAKER_COLOR = { A: "#22B8A8", B: "#FF6FB5" };
+const SPEAKER_COLOR = { A: "#FF8FA8", B: "#7FC8F8" };
 
 function parseBlankSegments(text) {
   const regex = /\[([^\]]+)\]/g;
@@ -307,8 +307,12 @@ function MatchPractice({ content }) {
 }
 
 /* ───────────────────────── Sort: drag into one of two groups ─────────────────────────
-   Content authors: max 4 items total so the tray + buckets fit with no scroll. */
+   Content authors: max 4 items total so the tray + buckets fit with no scroll.
+   Set content.subjective = true for opinion-based sorts (e.g. Like / Don't Like) --
+   this drops the Check button and correctness styling entirely, since there is no
+   right answer to validate. */
 function SortPractice({ content }) {
+  const subjective = !!content.subjective;
   const buckets = content.buckets || [];
   const [items, setItems] = useState(() => shuffle((content.items || []).map((it, i) => ({ ...it, id: i }))));
   const [placed, setPlaced] = useState({});
@@ -368,7 +372,9 @@ function SortPractice({ content }) {
                 .map((it) => (
                   <span
                     key={it.id}
-                    className={`slps-chip ${checked ? (it.bucket === bi ? "is-correct" : "is-wrong") : ""}`}
+                    className={`slps-chip ${
+                      !subjective && checked ? (it.bucket === bi ? "is-correct" : "is-wrong") : ""
+                    }`}
                     draggable
                     onDragStart={(e) => e.dataTransfer.setData("text/plain", JSON.stringify({ id: it.id }))}
                   >
@@ -391,21 +397,25 @@ function SortPractice({ content }) {
           </span>
         ))}
       </div>
-      <div className="slpr-check-row">
-        <button type="button" className="slpr-check-btn" disabled={!allPlaced} onClick={() => setChecked(true)}>
-          ✓ Check
-        </button>
-        {checked && (
-          <>
-            <span className={`slpr-result ${allCorrect ? "is-good" : "is-retry"}`}>
-              {allCorrect ? "🎉 All correct!" : `${correctCount} of ${(content.items || []).length} correct -- try again!`}
-            </span>
-            <button type="button" className="slpr-retry-btn" onClick={reset}>
-              ↻ Try Again
-            </button>
-          </>
-        )}
-      </div>
+      {subjective ? (
+        allPlaced && <div className="slpm-done">🎉 All sorted!</div>
+      ) : (
+        <div className="slpr-check-row">
+          <button type="button" className="slpr-check-btn" disabled={!allPlaced} onClick={() => setChecked(true)}>
+            ✓ Check
+          </button>
+          {checked && (
+            <>
+              <span className={`slpr-result ${allCorrect ? "is-good" : "is-retry"}`}>
+                {allCorrect ? "🎉 All correct!" : `${correctCount} of ${(content.items || []).length} correct -- try again!`}
+              </span>
+              <button type="button" className="slpr-retry-btn" onClick={reset}>
+                ↻ Try Again
+              </button>
+            </>
+          )}
+        </div>
+      )}
     </div>
   );
 }
@@ -638,7 +648,7 @@ const CSS = `
   gap: 10px;
 }
 .slpr-dialogue {
-  background: var(--k-tint, #FFF6DE);
+  background: var(--k-tint, #FFF3D9);
   border-radius: 14px;
   padding: 12px 20px;
   display: flex;
@@ -664,7 +674,7 @@ const CSS = `
   transition: background 0.15s ease;
   font-weight: 700;
 }
-.slpr-blank.is-over { background: var(--k-bg-cool, #E3F9F6); }
+.slpr-blank.is-over { background: var(--k-bg-cool, #FFEEF2); }
 .slpr-blank.is-filled { color: #1B2A4A; }
 .slpr-blank.is-correct { border-color: #3B9A6B !important; background: #E4F6EC; color: #226B47; }
 .slpr-blank.is-wrong { border-color: #E0637A !important; background: #FDEBEF; color: #B03A52; }
@@ -677,9 +687,9 @@ const CSS = `
   border-radius: 10px;
   padding: 4px;
 }
-.slpr-wordbank.is-over { background: var(--k-bg-cool, #E3F9F6); }
+.slpr-wordbank.is-over { background: var(--k-bg-cool, #FFEEF2); }
 .slpr-chip {
-  background: var(--k-secondary, #FFC845);
+  background: var(--k-secondary, #FFD166);
   color: #7A5200;
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;
@@ -702,7 +712,7 @@ const CSS = `
   flex-wrap: wrap;
 }
 .slpr-check-btn {
-  background: var(--k-accent, #22B8A8);
+  background: var(--k-accent, #FF8FA8);
   color: #fff;
   border: none;
   border-radius: 999px;
@@ -711,9 +721,9 @@ const CSS = `
   font-size: 14px;
   padding: 9px 20px;
   cursor: pointer;
-  box-shadow: 0 3px 0 var(--k-accent-dark, #12867A);
+  box-shadow: 0 3px 0 var(--k-accent-dark, #E5678A);
 }
-.slpr-check-btn:active { transform: translateY(2px); box-shadow: 0 1px 0 var(--k-accent-dark, #12867A); }
+.slpr-check-btn:active { transform: translateY(2px); box-shadow: 0 1px 0 var(--k-accent-dark, #E5678A); }
 .slpr-check-btn:disabled { opacity: 0.35; cursor: default; }
 .slpr-result { font-family: 'Quicksand', sans-serif; font-weight: 700; font-size: 13.5px; }
 .slpr-result.is-good { color: #2C6B4F; }
@@ -748,7 +758,7 @@ const CSS = `
   width: 84px;
   height: 68px;
   border-radius: 14px;
-  border: 3px solid var(--k-tint, #FFF6DE);
+  border: 3px solid var(--k-tint, #FFF3D9);
   background: #fff;
   display: flex;
   align-items: center;
@@ -773,12 +783,12 @@ const CSS = `
   text-align: center;
   transition: background 0.15s ease, border-color 0.15s ease;
 }
-.slpm-zone.is-over { background: var(--k-bg-cool, #E3F9F6); border-color: var(--k-accent, #22B8A8); }
+.slpm-zone.is-over { background: var(--k-bg-cool, #FFEEF2); border-color: var(--k-accent, #FF8FA8); }
 .slpm-zone.is-correct { border: 3px solid #3B9A6B; background: #E4F6EC; color: #226B47; }
 .slpm-zone.is-wrong { border-color: #E0637A; background: #FDEBEF; color: #B03A52; }
 .slpm-tray { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; min-height: 34px; }
 .slpm-chip {
-  background: var(--k-secondary, #FFC845);
+  background: var(--k-secondary, #FFD166);
   color: #7A5200;
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;
@@ -794,9 +804,9 @@ const CSS = `
 .slps-buckets { display: flex; gap: 14px; height: 130px; }
 .slps-bucket {
   flex: 1;
-  border: 3px dashed var(--k-accent, #22B8A8);
+  border: 3px dashed var(--k-accent, #FF8FA8);
   border-radius: 16px;
-  background: var(--k-bg-cool, #E3F9F6);
+  background: var(--k-bg-cool, #FFEEF2);
   padding: 8px;
   display: flex;
   flex-direction: column;
@@ -841,7 +851,7 @@ const CSS = `
   padding: 5px;
   transition: background 0.15s ease, border-color 0.15s ease;
 }
-.slpo-slot.is-over { background: var(--k-bg-cool, #E3F9F6); border-color: var(--k-accent, #22B8A8); }
+.slpo-slot.is-over { background: var(--k-bg-cool, #FFEEF2); border-color: var(--k-accent, #FF8FA8); }
 .slpo-slot.is-correct { border-color: #3B9A6B; background: #E4F6EC; }
 .slpo-slot.is-wrong { border-color: #E0637A; background: #FDEBEF; }
 .slpo-num { font-family: 'Quicksand', sans-serif; font-weight: 700; font-size: 10.5px; color: #94A0B8; }
@@ -869,7 +879,7 @@ const CSS = `
   width: 140px;
   padding: 16px 12px;
   border-radius: 18px;
-  border: 3px solid var(--k-tint, #FFF6DE);
+  border: 3px solid var(--k-tint, #FFF3D9);
   background: #fff;
   display: flex;
   flex-direction: column;
@@ -895,8 +905,8 @@ const CSS = `
   height: 28px;
   border-radius: 999px;
   border: none;
-  background: var(--k-bg-cool, #E3F9F6);
-  color: var(--k-accent-dark, #12867A);
+  background: var(--k-bg-cool, #FFEEF2);
+  color: var(--k-accent-dark, #E5678A);
   font-weight: 700;
   cursor: pointer;
 }

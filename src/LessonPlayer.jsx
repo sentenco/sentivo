@@ -156,7 +156,14 @@ export default function LessonPlayer({ lessonId: lessonIdProp }) {
   const shellStatePortraitClass = requestedView === "teacher" ? "lp-shell--portrait" : "";
   const isAdult = lesson?.age_track === "adults";
   const isKids = lesson?.age_track === "kids";
-  const kidsThemeClass = isKids ? "is-kids" : "";
+  // Palette rotates every 4 units -- matching the Foundation (1-4) /
+  // Combination (5-8) / Bridge (9-12) tiers -- as a visible sign of
+  // progress. Teens/Adults are untouched -- the kt-N vars are only ever
+  // read by CSS scoped under .is-kids.
+  const kidsThemeIndex = isKids
+    ? Math.min(2, Math.floor(((lesson?.unit_number || 1) - 1) / 4))
+    : 0;
+  const kidsThemeClass = isKids ? `is-kids kt-${kidsThemeIndex}` : "";
 
   if (loading) {
     return (
@@ -396,24 +403,51 @@ const CSS = `
 }
 .lp-dot.is-active { width: 20px; background: var(--k-accent, #FF7A59); }
 
-/* ── Kids palette (v2, "Candy Lagoon" -- deliberately different from the
-   earlier coral/mint Sunshine theme this replaces): turquoise primary,
-   sunny yellow secondary, cream canvas. Navy ink (#1B2A4A) stays constant.
+/* ── Kids palette (v3, pastel-but-vibrant): light, soft-saturated hues --
+   not muddy/washed out, not deep jewel tones like the turquoise this
+   replaces. Rotates every 4 units, matching the Foundation (1-4) /
+   Combination (5-8) / Bridge (9-12) tiers, so the palette itself becomes
+   a visible sign of leveling up. Navy ink (#1B2A4A) stays constant.
    Slide components opt in via var(--k-*, <fallback>) so Teens (no
    .is-kids class, no vars defined) render pixel-identical to before. ── */
-.lp-shell.is-kids {
-  --k-accent: #22B8A8;
-  --k-accent-dark: #12867A;
-  --k-secondary: #FFC845;
-  --k-secondary-dark: #E0A310;
-  --k-pop: #FF6FB5;
-  --k-bg: #FFFBF2;
-  --k-bg-cool: #E3F9F6;
-  --k-tint: #FFF6DE;
-  --k-motif: "✦";
+.lp-shell.is-kids.kt-0 {
+  /* Units 1-4: Foundation -- Coral Sunshine */
+  --k-accent: #FF8FA8;
+  --k-accent-dark: #E5678A;
+  --k-secondary: #FFD166;
+  --k-secondary-dark: #E8B23D;
+  --k-pop: #7FC8F8;
+  --k-bg: #FFF8F3;
+  --k-bg-cool: #FFEEF2;
+  --k-tint: #FFF3D9;
+  --k-motif: "🌱";
+}
+.lp-shell.is-kids.kt-1 {
+  /* Units 5-8: Combination -- Mint Sky */
+  --k-accent: #5ED9C7;
+  --k-accent-dark: #34AC9B;
+  --k-secondary: #7FC8F8;
+  --k-secondary-dark: #4FA3DE;
+  --k-pop: #FF9EC4;
+  --k-bg: #F3FCFA;
+  --k-bg-cool: #E8F7FF;
+  --k-tint: #DFF7F1;
+  --k-motif: "🌿";
+}
+.lp-shell.is-kids.kt-2 {
+  /* Units 9-12: Bridge -- Berry Lavender */
+  --k-accent: #B79CFF;
+  --k-accent-dark: #8E72E0;
+  --k-secondary: #FF9EC4;
+  --k-secondary-dark: #E8729F;
+  --k-pop: #FFD166;
+  --k-bg: #FAF8FF;
+  --k-bg-cool: #FFF0F7;
+  --k-tint: #F0EBFF;
+  --k-motif: "🌟";
 }
 .lp-shell.is-kids .lp-wordmark::after {
-  content: var(--k-motif, "✦");
+  content: var(--k-motif, "🌱");
   margin-left: 5px;
   font-size: 12px;
   vertical-align: 1px;

@@ -3,8 +3,8 @@ import { useState } from "react";
 const GRADIENT = "linear-gradient(135deg, #3B6D11, #5FA873)";
 const GRADIENT_ADULT = "#1B2A4A";
 const ITEM_COLORS = [
-  { bg: "#E3F9F6", check: "#12867A" },
-  { bg: "#FFF6DE", check: "#B87F00" },
+  { bg: "#FFEEF2", check: "#E5678A" },
+  { bg: "#FFF3D9", check: "#B87F00" },
   { bg: "#FFE8F3", check: "#C23D82" },
   { bg: "#EAF7E8", check: "#3B9A6B" },
 ];

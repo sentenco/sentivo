@@ -101,8 +101,8 @@ const CSS = `
   justify-content: center;
 }
 .slr-chip {
-  background: var(--k-bg-cool, #E3F9F6);
-  color: var(--k-accent-dark, #12867A);
+  background: var(--k-bg-cool, #FFEEF2);
+  color: var(--k-accent-dark, #E5678A);
   font-family: 'Quicksand', sans-serif;
   font-weight: 600;
   font-size: 13.5px;

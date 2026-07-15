@@ -54,22 +54,18 @@ values
   "words": [
     {
       "word": "Hello",
-      "bg": "#E3F9F6",
       "image_note": "A child waving hello with a big smile."
     },
     {
       "word": "Hi",
-      "bg": "#FFF6DE",
       "image_note": "A child waving hi cheerfully, close-up."
     },
     {
       "word": "Goodbye",
-      "bg": "#FFE8F3",
       "image_note": "A child waving goodbye while walking away."
     },
     {
       "word": "My name is",
-      "bg": "#EAF7E8",
       "image_note": "A child pointing to a nametag."
     }
   ],
@@ -261,23 +257,18 @@ values
   $json${
   "words": [
     {
-      "word": "From",
-      "bg": "#E3F9F6",
-      "image_note": "Functional word -- skip a literal picture; show the example sentence in action instead."
+      "word": "From"
     },
     {
       "word": "Country",
-      "bg": "#FFF6DE",
       "image_note": "A simple colorful world map with one country highlighted."
     },
     {
       "word": "Live",
-      "bg": "#FFE8F3",
       "image_note": "A simple, friendly house with a child standing in front of it."
     },
     {
       "word": "I'm from",
-      "bg": "#EAF7E8",
       "image_note": "A child pointing to a spot on a globe or map."
     }
   ],
@@ -446,23 +437,18 @@ values
   $json${
   "words": [
     {
-      "word": "How old",
-      "bg": "#E3F9F6",
-      "image_note": "Functional word -- skip a literal picture; show the example sentence in action instead."
+      "word": "How old"
     },
     {
       "word": "Years old",
-      "bg": "#FFF6DE",
       "image_note": "A birthday cake with candles."
     },
     {
       "word": "Birthday",
-      "bg": "#FFE8F3",
       "image_note": "A wrapped birthday present with a bow."
     },
     {
       "word": "Age",
-      "bg": "#EAF7E8",
       "image_note": "A child holding up fingers to show their age."
     }
   ],
@@ -645,22 +631,17 @@ values
   "words": [
     {
       "word": "Like",
-      "bg": "#E3F9F6",
       "image_note": "A child smiling and giving a thumbs up to something."
     },
     {
-      "word": "Don't like",
-      "bg": "#FFF6DE",
-      "image_note": "Functional word -- skip a literal picture; show the example sentence in action instead."
+      "word": "Don't like"
     },
     {
       "word": "Love",
-      "bg": "#FFE8F3",
       "image_note": "A simple heart shape."
     },
     {
       "word": "Favorite",
-      "bg": "#EAF7E8",
       "image_note": "A single object with a small star on it."
     }
   ],
@@ -701,6 +682,7 @@ values
   "title": "Like or Don't Like?",
   "subtitle": "Drag each one to how you feel.",
   "instruction": "Drag each thing to how you feel about it!",
+  "subjective": true,
   "buckets": [
     {
       "label": "I Like",
@@ -857,22 +839,17 @@ values
   "words": [
     {
       "word": "Hello",
-      "bg": "#E3F9F6",
       "image_note": "A child waving hello with a big smile."
     },
     {
-      "word": "From",
-      "bg": "#FFF6DE",
-      "image_note": "Functional word -- skip a literal picture; show the example sentence in action instead."
+      "word": "From"
     },
     {
       "word": "Age",
-      "bg": "#FFE8F3",
       "image_note": "A birthday cake with candles."
     },
     {
       "word": "Like",
-      "bg": "#EAF7E8",
       "image_note": "A child smiling and giving a thumbs up."
     }
   ],
@@ -962,6 +939,7 @@ values
     {
       "mode": "sort",
       "instruction": "Drag each thing to how you feel.",
+      "subjective": true,
       "buckets": [
         {
           "label": "I Like",
