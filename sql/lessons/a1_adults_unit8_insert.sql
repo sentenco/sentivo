@@ -1,17 +1,19 @@
--- A1 Adults Unit 8: Technology and Communication (5 lessons) — TIERED (Combination)
--- Regenerated per the Sentivo Intra-Level Progression Framework + lesson-level escalation + task rotation.
+-- A1 Adults Unit 8: Technology and Communication (5 lessons) — TIERED + ROTATED
+-- Per docs/curriculum/a1-teens-adults-rotation-rework.md. Vocab/reading/writing/review
+-- unchanged from the tiered pilot; only activity+speaking reshuffled to the new
+-- per-unit format assignment, keeping each lesson's difficulty position intact.
 -- Run this whole script in the Supabase SQL editor.
 
 -- Lesson 1: Devices
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '96501252-2318-457a-9538-dbfb46b71189',
+  'ccb795bc-f397-408b-91cb-ca9f5ff20f44',
   'Devices',
   'A1',
   'adults',
   8,
   1,
-  'Name common devices. [Combination, Lesson 1: notice/receptive, read-and-identify]',
+  'Name common devices. [Combination, L1, format E: choose-the-better-response]',
   25,
   9,
   true
@@ -20,7 +22,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '96501252-2318-457a-9538-dbfb46b71189',
+  'ccb795bc-f397-408b-91cb-ca9f5ff20f44',
   1,
   'title',
   null,
@@ -31,7 +33,7 @@ values
   true
 ),
 (
-  '96501252-2318-457a-9538-dbfb46b71189',
+  'ccb795bc-f397-408b-91cb-ca9f5ff20f44',
   2,
   'warmup',
   null,
@@ -47,7 +49,7 @@ values
   true
 ),
 (
-  '96501252-2318-457a-9538-dbfb46b71189',
+  'ccb795bc-f397-408b-91cb-ca9f5ff20f44',
   3,
   'vocabulary',
   null,
@@ -77,7 +79,7 @@ values
   true
 ),
 (
-  '96501252-2318-457a-9538-dbfb46b71189',
+  'ccb795bc-f397-408b-91cb-ca9f5ff20f44',
   4,
   'phrases',
   null,
@@ -97,7 +99,7 @@ values
   true
 ),
 (
-  '96501252-2318-457a-9538-dbfb46b71189',
+  'ccb795bc-f397-408b-91cb-ca9f5ff20f44',
   5,
   'activity',
   null,
@@ -126,7 +128,7 @@ values
   true
 ),
 (
-  '96501252-2318-457a-9538-dbfb46b71189',
+  'ccb795bc-f397-408b-91cb-ca9f5ff20f44',
   6,
   'speaking',
   null,
@@ -135,27 +137,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "I have a phone."
+      "text": "Which is correct: 'I have a phone' or 'I have phone'?"
+    },
+    {
+      "speaker": "B",
+      "text": "'I have a phone' is correct."
+    },
+    {
+      "speaker": "A",
+      "text": "Good. What device do you use at work?"
     },
     {
       "speaker": "B",
       "text": "I use a computer at work."
-    },
-    {
-      "speaker": "A",
-      "text": "I have a laptop too."
-    },
-    {
-      "speaker": "B",
-      "text": "I have a tablet!"
     }
   ],
-  "note": "Teacher says the line first. Student repeats, then says it alone."
+  "note": "Choose the correct sentence first, then answer about the devices you use."
 }$json$::jsonb,
   true
 ),
 (
-  '96501252-2318-457a-9538-dbfb46b71189',
+  'ccb795bc-f397-408b-91cb-ca9f5ff20f44',
   7,
   'reading',
   null,
@@ -171,7 +173,7 @@ values
   true
 ),
 (
-  '96501252-2318-457a-9538-dbfb46b71189',
+  'ccb795bc-f397-408b-91cb-ca9f5ff20f44',
   8,
   'writing',
   null,
@@ -186,7 +188,7 @@ values
   true
 ),
 (
-  '96501252-2318-457a-9538-dbfb46b71189',
+  'ccb795bc-f397-408b-91cb-ca9f5ff20f44',
   9,
   'review',
   null,
@@ -205,13 +207,13 @@ values
 -- Lesson 2: Communication Habits
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '0d0b4941-96ef-4923-b0bf-6d9f457665fd',
+  '62ed9817-1764-4eb7-8eef-fa507e0a0352',
   'Communication Habits',
   'A1',
   'adults',
   8,
   2,
-  'Use frequency words with communication habits. [Combination, Lesson 2: controlled practice]',
+  'Unchanged by the rotation rework -- L2 format F, matches original order.',
   25,
   9,
   true
@@ -220,7 +222,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '0d0b4941-96ef-4923-b0bf-6d9f457665fd',
+  '62ed9817-1764-4eb7-8eef-fa507e0a0352',
   1,
   'title',
   null,
@@ -231,7 +233,7 @@ values
   true
 ),
 (
-  '0d0b4941-96ef-4923-b0bf-6d9f457665fd',
+  '62ed9817-1764-4eb7-8eef-fa507e0a0352',
   2,
   'warmup',
   null,
@@ -247,7 +249,7 @@ values
   true
 ),
 (
-  '0d0b4941-96ef-4923-b0bf-6d9f457665fd',
+  '62ed9817-1764-4eb7-8eef-fa507e0a0352',
   3,
   'vocabulary',
   null,
@@ -277,7 +279,7 @@ values
   true
 ),
 (
-  '0d0b4941-96ef-4923-b0bf-6d9f457665fd',
+  '62ed9817-1764-4eb7-8eef-fa507e0a0352',
   4,
   'phrases',
   null,
@@ -297,7 +299,7 @@ values
   true
 ),
 (
-  '0d0b4941-96ef-4923-b0bf-6d9f457665fd',
+  '62ed9817-1764-4eb7-8eef-fa507e0a0352',
   5,
   'activity',
   null,
@@ -326,7 +328,7 @@ values
   true
 ),
 (
-  '0d0b4941-96ef-4923-b0bf-6d9f457665fd',
+  '62ed9817-1764-4eb7-8eef-fa507e0a0352',
   6,
   'speaking',
   null,
@@ -355,7 +357,7 @@ values
   true
 ),
 (
-  '0d0b4941-96ef-4923-b0bf-6d9f457665fd',
+  '62ed9817-1764-4eb7-8eef-fa507e0a0352',
   7,
   'reading',
   null,
@@ -371,7 +373,7 @@ values
   true
 ),
 (
-  '0d0b4941-96ef-4923-b0bf-6d9f457665fd',
+  '62ed9817-1764-4eb7-8eef-fa507e0a0352',
   8,
   'writing',
   null,
@@ -386,7 +388,7 @@ values
   true
 ),
 (
-  '0d0b4941-96ef-4923-b0bf-6d9f457665fd',
+  '62ed9817-1764-4eb7-8eef-fa507e0a0352',
   9,
   'review',
   null,
@@ -405,13 +407,13 @@ values
 -- Lesson 3: Messages and Calls
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  'ea5c4745-8ff3-487a-bfca-aee206e1817b',
+  'cd41d1ca-e914-4c43-8873-440c308b0a92',
   'Messages and Calls',
   'A1',
   'adults',
   8,
   3,
-  'Give a simple reason for communication choices. [Combination, Lesson 3: freer practice, choose-the-better-response]',
+  'Give a simple reason for communication choices. [Combination, L3, format M: read and identify, then match]',
   25,
   9,
   true
@@ -420,7 +422,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  'ea5c4745-8ff3-487a-bfca-aee206e1817b',
+  'cd41d1ca-e914-4c43-8873-440c308b0a92',
   1,
   'title',
   null,
@@ -431,7 +433,7 @@ values
   true
 ),
 (
-  'ea5c4745-8ff3-487a-bfca-aee206e1817b',
+  'cd41d1ca-e914-4c43-8873-440c308b0a92',
   2,
   'warmup',
   null,
@@ -447,7 +449,7 @@ values
   true
 ),
 (
-  'ea5c4745-8ff3-487a-bfca-aee206e1817b',
+  'cd41d1ca-e914-4c43-8873-440c308b0a92',
   3,
   'vocabulary',
   null,
@@ -477,7 +479,7 @@ values
   true
 ),
 (
-  'ea5c4745-8ff3-487a-bfca-aee206e1817b',
+  'cd41d1ca-e914-4c43-8873-440c308b0a92',
   4,
   'phrases',
   null,
@@ -497,7 +499,7 @@ values
   true
 ),
 (
-  'ea5c4745-8ff3-487a-bfca-aee206e1817b',
+  'cd41d1ca-e914-4c43-8873-440c308b0a92',
   5,
   'activity',
   null,
@@ -526,7 +528,7 @@ values
   true
 ),
 (
-  'ea5c4745-8ff3-487a-bfca-aee206e1817b',
+  'cd41d1ca-e914-4c43-8873-440c308b0a92',
   6,
   'speaking',
   null,
@@ -535,27 +537,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "Do you prefer calls or messages?"
+      "text": "I prefer messages because they are quick."
     },
     {
       "speaker": "B",
-      "text": "I prefer messages because they are quick. Do you prefer calls?"
+      "text": "I prefer messages too, because they are quick!"
     },
     {
       "speaker": "A",
-      "text": "Yes, I prefer calls because they are easy for me."
+      "text": "I prefer calls because they are easy."
     },
     {
       "speaker": "B",
-      "text": "That makes sense."
+      "text": "I prefer calls too, because they are easy!"
     }
   ],
-  "note": "Switch! Student becomes A, teacher becomes B."
+  "note": "Read the model line, then say a matching sentence about your own preference."
 }$json$::jsonb,
   true
 ),
 (
-  'ea5c4745-8ff3-487a-bfca-aee206e1817b',
+  'cd41d1ca-e914-4c43-8873-440c308b0a92',
   7,
   'reading',
   null,
@@ -571,7 +573,7 @@ values
   true
 ),
 (
-  'ea5c4745-8ff3-487a-bfca-aee206e1817b',
+  'cd41d1ca-e914-4c43-8873-440c308b0a92',
   8,
   'writing',
   null,
@@ -586,7 +588,7 @@ values
   true
 ),
 (
-  'ea5c4745-8ff3-487a-bfca-aee206e1817b',
+  'cd41d1ca-e914-4c43-8873-440c308b0a92',
   9,
   'review',
   null,
@@ -605,13 +607,13 @@ values
 -- Lesson 4: Tech Questions
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  'fa6a7797-b0d9-40ec-9d9e-cf416334524e',
+  '857f3c4d-e084-4a93-922a-8aca02e5bb71',
   'Tech Questions',
   'A1',
   'adults',
   8,
   4,
-  'Combine devices, habits, and reasons into a short talk. [Combination, Lesson 4: production]',
+  'Unchanged by the rotation rework -- L4 format R, matches original order.',
   25,
   9,
   true
@@ -620,7 +622,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  'fa6a7797-b0d9-40ec-9d9e-cf416334524e',
+  '857f3c4d-e084-4a93-922a-8aca02e5bb71',
   1,
   'title',
   null,
@@ -631,7 +633,7 @@ values
   true
 ),
 (
-  'fa6a7797-b0d9-40ec-9d9e-cf416334524e',
+  '857f3c4d-e084-4a93-922a-8aca02e5bb71',
   2,
   'warmup',
   null,
@@ -647,7 +649,7 @@ values
   true
 ),
 (
-  'fa6a7797-b0d9-40ec-9d9e-cf416334524e',
+  '857f3c4d-e084-4a93-922a-8aca02e5bb71',
   3,
   'vocabulary',
   null,
@@ -677,7 +679,7 @@ values
   true
 ),
 (
-  'fa6a7797-b0d9-40ec-9d9e-cf416334524e',
+  '857f3c4d-e084-4a93-922a-8aca02e5bb71',
   4,
   'phrases',
   null,
@@ -697,7 +699,7 @@ values
   true
 ),
 (
-  'fa6a7797-b0d9-40ec-9d9e-cf416334524e',
+  '857f3c4d-e084-4a93-922a-8aca02e5bb71',
   5,
   'activity',
   null,
@@ -726,7 +728,7 @@ values
   true
 ),
 (
-  'fa6a7797-b0d9-40ec-9d9e-cf416334524e',
+  '857f3c4d-e084-4a93-922a-8aca02e5bb71',
   6,
   'speaking',
   null,
@@ -755,7 +757,7 @@ values
   true
 ),
 (
-  'fa6a7797-b0d9-40ec-9d9e-cf416334524e',
+  '857f3c4d-e084-4a93-922a-8aca02e5bb71',
   7,
   'reading',
   null,
@@ -771,7 +773,7 @@ values
   true
 ),
 (
-  'fa6a7797-b0d9-40ec-9d9e-cf416334524e',
+  '857f3c4d-e084-4a93-922a-8aca02e5bb71',
   8,
   'writing',
   null,
@@ -786,7 +788,7 @@ values
   true
 ),
 (
-  'fa6a7797-b0d9-40ec-9d9e-cf416334524e',
+  '857f3c4d-e084-4a93-922a-8aca02e5bb71',
   9,
   'review',
   null,
@@ -805,13 +807,13 @@ values
 -- Lesson 5: Unit Review
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '317fd1c5-ae62-4250-82f7-475bf7269aa6',
+  '288a77b2-8e75-445b-b639-d7088f53c531',
   'Unit Review',
   'A1',
   'adults',
   8,
   5,
-  'Review devices, habits, and preferences. [Combination, Lesson 5: tier-matched mixed review]',
+  'Unchanged by the rotation rework.',
   25,
   9,
   true
@@ -820,7 +822,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '317fd1c5-ae62-4250-82f7-475bf7269aa6',
+  '288a77b2-8e75-445b-b639-d7088f53c531',
   1,
   'title',
   null,
@@ -831,7 +833,7 @@ values
   true
 ),
 (
-  '317fd1c5-ae62-4250-82f7-475bf7269aa6',
+  '288a77b2-8e75-445b-b639-d7088f53c531',
   2,
   'warmup',
   null,
@@ -847,7 +849,7 @@ values
   true
 ),
 (
-  '317fd1c5-ae62-4250-82f7-475bf7269aa6',
+  '288a77b2-8e75-445b-b639-d7088f53c531',
   3,
   'vocabulary',
   null,
@@ -877,7 +879,7 @@ values
   true
 ),
 (
-  '317fd1c5-ae62-4250-82f7-475bf7269aa6',
+  '288a77b2-8e75-445b-b639-d7088f53c531',
   4,
   'phrases',
   null,
@@ -897,7 +899,7 @@ values
   true
 ),
 (
-  '317fd1c5-ae62-4250-82f7-475bf7269aa6',
+  '288a77b2-8e75-445b-b639-d7088f53c531',
   5,
   'activity',
   null,
@@ -926,7 +928,7 @@ values
   true
 ),
 (
-  '317fd1c5-ae62-4250-82f7-475bf7269aa6',
+  '288a77b2-8e75-445b-b639-d7088f53c531',
   6,
   'speaking',
   null,
@@ -955,7 +957,7 @@ values
   true
 ),
 (
-  '317fd1c5-ae62-4250-82f7-475bf7269aa6',
+  '288a77b2-8e75-445b-b639-d7088f53c531',
   7,
   'reading',
   null,
@@ -971,7 +973,7 @@ values
   true
 ),
 (
-  '317fd1c5-ae62-4250-82f7-475bf7269aa6',
+  '288a77b2-8e75-445b-b639-d7088f53c531',
   8,
   'writing',
   null,
@@ -986,7 +988,7 @@ values
   true
 ),
 (
-  '317fd1c5-ae62-4250-82f7-475bf7269aa6',
+  '288a77b2-8e75-445b-b639-d7088f53c531',
   9,
   'review',
   null,

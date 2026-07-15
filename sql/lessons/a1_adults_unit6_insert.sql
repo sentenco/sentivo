@@ -1,17 +1,19 @@
--- A1 Adults Unit 6: Shopping and Money (5 lessons) — TIERED (Combination)
--- Regenerated per the Sentivo Intra-Level Progression Framework + lesson-level escalation + task rotation.
+-- A1 Adults Unit 6: Shopping and Money (5 lessons) — TIERED + ROTATED
+-- Per docs/curriculum/a1-teens-adults-rotation-rework.md. Vocab/reading/writing/review
+-- unchanged from the tiered pilot; only activity+speaking reshuffled to the new
+-- per-unit format assignment, keeping each lesson's difficulty position intact.
 -- Run this whole script in the Supabase SQL editor.
 
 -- Lesson 1: In the Shop
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '42cc7de2-e2c8-42e1-8aeb-d94b617d7fe3',
+  'b90b70d4-599c-47bb-b5db-5bb8143526a3',
   'In the Shop',
   'A1',
   'adults',
   6,
   1,
-  'Name shops and shopping vocabulary. [Combination, Lesson 1: notice/receptive, read-and-identify]',
+  'Name shops and shopping vocabulary. [Combination, L1, format F: heaviest scaffold, full word bank]',
   25,
   9,
   true
@@ -20,7 +22,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '42cc7de2-e2c8-42e1-8aeb-d94b617d7fe3',
+  'b90b70d4-599c-47bb-b5db-5bb8143526a3',
   1,
   'title',
   null,
@@ -31,7 +33,7 @@ values
   true
 ),
 (
-  '42cc7de2-e2c8-42e1-8aeb-d94b617d7fe3',
+  'b90b70d4-599c-47bb-b5db-5bb8143526a3',
   2,
   'warmup',
   null,
@@ -47,7 +49,7 @@ values
   true
 ),
 (
-  '42cc7de2-e2c8-42e1-8aeb-d94b617d7fe3',
+  'b90b70d4-599c-47bb-b5db-5bb8143526a3',
   3,
   'vocabulary',
   null,
@@ -77,7 +79,7 @@ values
   true
 ),
 (
-  '42cc7de2-e2c8-42e1-8aeb-d94b617d7fe3',
+  'b90b70d4-599c-47bb-b5db-5bb8143526a3',
   4,
   'phrases',
   null,
@@ -97,7 +99,7 @@ values
   true
 ),
 (
-  '42cc7de2-e2c8-42e1-8aeb-d94b617d7fe3',
+  'b90b70d4-599c-47bb-b5db-5bb8143526a3',
   5,
   'activity',
   null,
@@ -126,7 +128,7 @@ values
   true
 ),
 (
-  '42cc7de2-e2c8-42e1-8aeb-d94b617d7fe3',
+  'b90b70d4-599c-47bb-b5db-5bb8143526a3',
   6,
   'speaking',
   null,
@@ -150,12 +152,12 @@ values
       "text": "I am a customer there too!"
     }
   ],
-  "note": "Teacher says the line first. Student repeats, then says it alone."
+  "note": "Fill in the blanks with the word bank, then read the whole passage together."
 }$json$::jsonb,
   true
 ),
 (
-  '42cc7de2-e2c8-42e1-8aeb-d94b617d7fe3',
+  'b90b70d4-599c-47bb-b5db-5bb8143526a3',
   7,
   'reading',
   null,
@@ -171,7 +173,7 @@ values
   true
 ),
 (
-  '42cc7de2-e2c8-42e1-8aeb-d94b617d7fe3',
+  'b90b70d4-599c-47bb-b5db-5bb8143526a3',
   8,
   'writing',
   null,
@@ -186,7 +188,7 @@ values
   true
 ),
 (
-  '42cc7de2-e2c8-42e1-8aeb-d94b617d7fe3',
+  'b90b70d4-599c-47bb-b5db-5bb8143526a3',
   9,
   'review',
   null,
@@ -205,13 +207,13 @@ values
 -- Lesson 2: Prices and Money
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  'a8ffe16f-144d-4e29-b25d-1f3acf5e3ed4',
+  'cb36fdd8-b804-4074-84e4-7f605f33332d',
   'Prices and Money',
   'A1',
   'adults',
   6,
   2,
-  'Ask and answer about prices. [Combination, Lesson 2: controlled practice, fill-in-blank]',
+  'Ask and answer about prices. [Combination, L2, format E: choose-the-better-response]',
   25,
   9,
   true
@@ -220,7 +222,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  'a8ffe16f-144d-4e29-b25d-1f3acf5e3ed4',
+  'cb36fdd8-b804-4074-84e4-7f605f33332d',
   1,
   'title',
   null,
@@ -231,7 +233,7 @@ values
   true
 ),
 (
-  'a8ffe16f-144d-4e29-b25d-1f3acf5e3ed4',
+  'cb36fdd8-b804-4074-84e4-7f605f33332d',
   2,
   'warmup',
   null,
@@ -247,7 +249,7 @@ values
   true
 ),
 (
-  'a8ffe16f-144d-4e29-b25d-1f3acf5e3ed4',
+  'cb36fdd8-b804-4074-84e4-7f605f33332d',
   3,
   'vocabulary',
   null,
@@ -277,7 +279,7 @@ values
   true
 ),
 (
-  'a8ffe16f-144d-4e29-b25d-1f3acf5e3ed4',
+  'cb36fdd8-b804-4074-84e4-7f605f33332d',
   4,
   'phrases',
   null,
@@ -297,7 +299,7 @@ values
   true
 ),
 (
-  'a8ffe16f-144d-4e29-b25d-1f3acf5e3ed4',
+  'cb36fdd8-b804-4074-84e4-7f605f33332d',
   5,
   'activity',
   null,
@@ -326,7 +328,7 @@ values
   true
 ),
 (
-  'a8ffe16f-144d-4e29-b25d-1f3acf5e3ed4',
+  'cb36fdd8-b804-4074-84e4-7f605f33332d',
   6,
   'speaking',
   null,
@@ -335,27 +337,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "How much is this bread?"
+      "text": "Which is correct: 'How much is this?' or 'How many is this?'?"
     },
     {
       "speaker": "B",
-      "text": "The price is two dollars. That is cheap."
+      "text": "'How much is this?' is correct for price."
     },
     {
       "speaker": "A",
-      "text": "How much are these shoes?"
+      "text": "Good. Is that cheap or expensive to you?"
     },
     {
       "speaker": "B",
-      "text": "They are fifty dollars. That is expensive!"
+      "text": "That's cheap for me."
     }
   ],
-  "note": "Switch! Student becomes A, teacher becomes B."
+  "note": "Choose the correct question first, then answer about prices you know."
 }$json$::jsonb,
   true
 ),
 (
-  'a8ffe16f-144d-4e29-b25d-1f3acf5e3ed4',
+  'cb36fdd8-b804-4074-84e4-7f605f33332d',
   7,
   'reading',
   null,
@@ -371,7 +373,7 @@ values
   true
 ),
 (
-  'a8ffe16f-144d-4e29-b25d-1f3acf5e3ed4',
+  'cb36fdd8-b804-4074-84e4-7f605f33332d',
   8,
   'writing',
   null,
@@ -386,7 +388,7 @@ values
   true
 ),
 (
-  'a8ffe16f-144d-4e29-b25d-1f3acf5e3ed4',
+  'cb36fdd8-b804-4074-84e4-7f605f33332d',
   9,
   'review',
   null,
@@ -405,13 +407,13 @@ values
 -- Lesson 3: Shopping Requests
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '0d2ff670-07e4-41cc-ad33-1be209d63a93',
+  '25586155-90df-404b-8110-d45b396d633a',
   'Shopping Requests',
   'A1',
   'adults',
   6,
   3,
-  'Make simple shopping requests with ''I''d like''. [Combination, Lesson 3: freer practice, choose-the-better-response]',
+  'Unchanged by the rotation rework -- L3 format R, matches original order.',
   25,
   9,
   true
@@ -420,7 +422,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '0d2ff670-07e4-41cc-ad33-1be209d63a93',
+  '25586155-90df-404b-8110-d45b396d633a',
   1,
   'title',
   null,
@@ -431,7 +433,7 @@ values
   true
 ),
 (
-  '0d2ff670-07e4-41cc-ad33-1be209d63a93',
+  '25586155-90df-404b-8110-d45b396d633a',
   2,
   'warmup',
   null,
@@ -447,7 +449,7 @@ values
   true
 ),
 (
-  '0d2ff670-07e4-41cc-ad33-1be209d63a93',
+  '25586155-90df-404b-8110-d45b396d633a',
   3,
   'vocabulary',
   null,
@@ -477,7 +479,7 @@ values
   true
 ),
 (
-  '0d2ff670-07e4-41cc-ad33-1be209d63a93',
+  '25586155-90df-404b-8110-d45b396d633a',
   4,
   'phrases',
   null,
@@ -497,7 +499,7 @@ values
   true
 ),
 (
-  '0d2ff670-07e4-41cc-ad33-1be209d63a93',
+  '25586155-90df-404b-8110-d45b396d633a',
   5,
   'activity',
   null,
@@ -526,7 +528,7 @@ values
   true
 ),
 (
-  '0d2ff670-07e4-41cc-ad33-1be209d63a93',
+  '25586155-90df-404b-8110-d45b396d633a',
   6,
   'speaking',
   null,
@@ -555,7 +557,7 @@ values
   true
 ),
 (
-  '0d2ff670-07e4-41cc-ad33-1be209d63a93',
+  '25586155-90df-404b-8110-d45b396d633a',
   7,
   'reading',
   null,
@@ -571,7 +573,7 @@ values
   true
 ),
 (
-  '0d2ff670-07e4-41cc-ad33-1be209d63a93',
+  '25586155-90df-404b-8110-d45b396d633a',
   8,
   'writing',
   null,
@@ -586,7 +588,7 @@ values
   true
 ),
 (
-  '0d2ff670-07e4-41cc-ad33-1be209d63a93',
+  '25586155-90df-404b-8110-d45b396d633a',
   9,
   'review',
   null,
@@ -605,13 +607,13 @@ values
 -- Lesson 4: Quantities
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '068b8cce-5873-4616-8fcd-114c5c510159',
+  'a957ac5b-58d7-4acd-b18a-c162bbd90ee8',
   'Quantities',
   'A1',
   'adults',
   6,
   4,
-  'Combine requests with quantities. [Combination, Lesson 4: production, mini role-play]',
+  'Combine requests with quantities. [Combination, L4, format M: independent production, teacher matches back]',
   25,
   9,
   true
@@ -620,7 +622,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '068b8cce-5873-4616-8fcd-114c5c510159',
+  'a957ac5b-58d7-4acd-b18a-c162bbd90ee8',
   1,
   'title',
   null,
@@ -631,7 +633,7 @@ values
   true
 ),
 (
-  '068b8cce-5873-4616-8fcd-114c5c510159',
+  'a957ac5b-58d7-4acd-b18a-c162bbd90ee8',
   2,
   'warmup',
   null,
@@ -647,7 +649,7 @@ values
   true
 ),
 (
-  '068b8cce-5873-4616-8fcd-114c5c510159',
+  'a957ac5b-58d7-4acd-b18a-c162bbd90ee8',
   3,
   'vocabulary',
   null,
@@ -677,7 +679,7 @@ values
   true
 ),
 (
-  '068b8cce-5873-4616-8fcd-114c5c510159',
+  'a957ac5b-58d7-4acd-b18a-c162bbd90ee8',
   4,
   'phrases',
   null,
@@ -697,7 +699,7 @@ values
   true
 ),
 (
-  '068b8cce-5873-4616-8fcd-114c5c510159',
+  'a957ac5b-58d7-4acd-b18a-c162bbd90ee8',
   5,
   'activity',
   null,
@@ -726,7 +728,7 @@ values
   true
 ),
 (
-  '068b8cce-5873-4616-8fcd-114c5c510159',
+  'a957ac5b-58d7-4acd-b18a-c162bbd90ee8',
   6,
   'speaking',
   null,
@@ -735,27 +737,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "What would you like today?"
+      "text": "Tell me your shopping list, in your own words."
     },
     {
       "speaker": "B",
-      "text": "I'd like a kilo of apples and a bottle of milk, please."
+      "text": "I'd like a kilo of ___, a bottle of ___, and a few ___."
     },
     {
       "speaker": "A",
-      "text": "Anything else?"
+      "text": "I'll say it back: you'd like a kilo of ___, a bottle of ___, and a few ___."
     },
     {
       "speaker": "B",
-      "text": "Just a few eggs too. That's enough, thank you."
+      "text": "Yes, that's enough, thank you!"
     }
   ],
-  "note": "Mini role-play: shop for groceries with quantities."
+  "note": "You speak first, fully in your own words. Teacher matches your list back to check it."
 }$json$::jsonb,
   true
 ),
 (
-  '068b8cce-5873-4616-8fcd-114c5c510159',
+  'a957ac5b-58d7-4acd-b18a-c162bbd90ee8',
   7,
   'reading',
   null,
@@ -771,7 +773,7 @@ values
   true
 ),
 (
-  '068b8cce-5873-4616-8fcd-114c5c510159',
+  'a957ac5b-58d7-4acd-b18a-c162bbd90ee8',
   8,
   'writing',
   null,
@@ -786,7 +788,7 @@ values
   true
 ),
 (
-  '068b8cce-5873-4616-8fcd-114c5c510159',
+  'a957ac5b-58d7-4acd-b18a-c162bbd90ee8',
   9,
   'review',
   null,
@@ -805,13 +807,13 @@ values
 -- Lesson 5: Unit Review
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '358c301b-6a72-4893-ac1c-238617de54dc',
+  '651736d2-a7cf-47a5-9d5f-2f2a18957f6f',
   'Unit Review',
   'A1',
   'adults',
   6,
   5,
-  'Review shops, prices, and requests. [Combination, Lesson 5: tier-matched mixed review]',
+  'Unchanged by the rotation rework.',
   25,
   9,
   true
@@ -820,7 +822,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '358c301b-6a72-4893-ac1c-238617de54dc',
+  '651736d2-a7cf-47a5-9d5f-2f2a18957f6f',
   1,
   'title',
   null,
@@ -831,7 +833,7 @@ values
   true
 ),
 (
-  '358c301b-6a72-4893-ac1c-238617de54dc',
+  '651736d2-a7cf-47a5-9d5f-2f2a18957f6f',
   2,
   'warmup',
   null,
@@ -847,7 +849,7 @@ values
   true
 ),
 (
-  '358c301b-6a72-4893-ac1c-238617de54dc',
+  '651736d2-a7cf-47a5-9d5f-2f2a18957f6f',
   3,
   'vocabulary',
   null,
@@ -877,7 +879,7 @@ values
   true
 ),
 (
-  '358c301b-6a72-4893-ac1c-238617de54dc',
+  '651736d2-a7cf-47a5-9d5f-2f2a18957f6f',
   4,
   'phrases',
   null,
@@ -897,7 +899,7 @@ values
   true
 ),
 (
-  '358c301b-6a72-4893-ac1c-238617de54dc',
+  '651736d2-a7cf-47a5-9d5f-2f2a18957f6f',
   5,
   'activity',
   null,
@@ -926,7 +928,7 @@ values
   true
 ),
 (
-  '358c301b-6a72-4893-ac1c-238617de54dc',
+  '651736d2-a7cf-47a5-9d5f-2f2a18957f6f',
   6,
   'speaking',
   null,
@@ -955,7 +957,7 @@ values
   true
 ),
 (
-  '358c301b-6a72-4893-ac1c-238617de54dc',
+  '651736d2-a7cf-47a5-9d5f-2f2a18957f6f',
   7,
   'reading',
   null,
@@ -971,7 +973,7 @@ values
   true
 ),
 (
-  '358c301b-6a72-4893-ac1c-238617de54dc',
+  '651736d2-a7cf-47a5-9d5f-2f2a18957f6f',
   8,
   'writing',
   null,
@@ -986,7 +988,7 @@ values
   true
 ),
 (
-  '358c301b-6a72-4893-ac1c-238617de54dc',
+  '651736d2-a7cf-47a5-9d5f-2f2a18957f6f',
   9,
   'review',
   null,

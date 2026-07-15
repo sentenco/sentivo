@@ -1,17 +1,19 @@
--- A1 Adults Unit 5: Work and Jobs (5 lessons) — TIERED (Combination)
--- Regenerated per the Sentivo Intra-Level Progression Framework + lesson-level escalation + task rotation.
+-- A1 Adults Unit 5: Work and Jobs (5 lessons) — TIERED + ROTATED
+-- Per docs/curriculum/a1-teens-adults-rotation-rework.md. Vocab/reading/writing/review
+-- unchanged from the tiered pilot; only activity+speaking reshuffled to the new
+-- per-unit format assignment, keeping each lesson's difficulty position intact.
 -- Run this whole script in the Supabase SQL editor.
 
 -- Lesson 1: Jobs
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  'a5e4201b-8ae0-497b-b0e0-cbbc107295ea',
+  '31b427c3-cbe7-4bfd-a00b-28787b0939f4',
   'Jobs',
   'A1',
   'adults',
   5,
   1,
-  'Name common jobs. [Combination, Lesson 1: notice/receptive, read-and-identify]',
+  'Unchanged by the rotation rework -- L1 format M, matches original order.',
   25,
   9,
   true
@@ -20,7 +22,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  'a5e4201b-8ae0-497b-b0e0-cbbc107295ea',
+  '31b427c3-cbe7-4bfd-a00b-28787b0939f4',
   1,
   'title',
   null,
@@ -31,7 +33,7 @@ values
   true
 ),
 (
-  'a5e4201b-8ae0-497b-b0e0-cbbc107295ea',
+  '31b427c3-cbe7-4bfd-a00b-28787b0939f4',
   2,
   'warmup',
   null,
@@ -47,7 +49,7 @@ values
   true
 ),
 (
-  'a5e4201b-8ae0-497b-b0e0-cbbc107295ea',
+  '31b427c3-cbe7-4bfd-a00b-28787b0939f4',
   3,
   'vocabulary',
   null,
@@ -77,7 +79,7 @@ values
   true
 ),
 (
-  'a5e4201b-8ae0-497b-b0e0-cbbc107295ea',
+  '31b427c3-cbe7-4bfd-a00b-28787b0939f4',
   4,
   'phrases',
   null,
@@ -97,7 +99,7 @@ values
   true
 ),
 (
-  'a5e4201b-8ae0-497b-b0e0-cbbc107295ea',
+  '31b427c3-cbe7-4bfd-a00b-28787b0939f4',
   5,
   'activity',
   null,
@@ -126,7 +128,7 @@ values
   true
 ),
 (
-  'a5e4201b-8ae0-497b-b0e0-cbbc107295ea',
+  '31b427c3-cbe7-4bfd-a00b-28787b0939f4',
   6,
   'speaking',
   null,
@@ -155,7 +157,7 @@ values
   true
 ),
 (
-  'a5e4201b-8ae0-497b-b0e0-cbbc107295ea',
+  '31b427c3-cbe7-4bfd-a00b-28787b0939f4',
   7,
   'reading',
   null,
@@ -171,7 +173,7 @@ values
   true
 ),
 (
-  'a5e4201b-8ae0-497b-b0e0-cbbc107295ea',
+  '31b427c3-cbe7-4bfd-a00b-28787b0939f4',
   8,
   'writing',
   null,
@@ -186,7 +188,7 @@ values
   true
 ),
 (
-  'a5e4201b-8ae0-497b-b0e0-cbbc107295ea',
+  '31b427c3-cbe7-4bfd-a00b-28787b0939f4',
   9,
   'review',
   null,
@@ -205,13 +207,13 @@ values
 -- Lesson 2: Workplaces
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '0f0130ac-268f-4b11-b58d-dfdf0efa3a65',
+  'e03841dc-3c3b-4dee-b763-4dc93e25f8e7',
   'Workplaces',
   'A1',
   'adults',
   5,
   2,
-  'Name workplaces and combine job + place. [Combination, Lesson 2: controlled practice, fill-in-blank]',
+  'Name workplaces and combine job + place. [Combination, L2, format R: short scripted role-play]',
   25,
   9,
   true
@@ -220,7 +222,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '0f0130ac-268f-4b11-b58d-dfdf0efa3a65',
+  'e03841dc-3c3b-4dee-b763-4dc93e25f8e7',
   1,
   'title',
   null,
@@ -231,7 +233,7 @@ values
   true
 ),
 (
-  '0f0130ac-268f-4b11-b58d-dfdf0efa3a65',
+  'e03841dc-3c3b-4dee-b763-4dc93e25f8e7',
   2,
   'warmup',
   null,
@@ -247,7 +249,7 @@ values
   true
 ),
 (
-  '0f0130ac-268f-4b11-b58d-dfdf0efa3a65',
+  'e03841dc-3c3b-4dee-b763-4dc93e25f8e7',
   3,
   'vocabulary',
   null,
@@ -277,7 +279,7 @@ values
   true
 ),
 (
-  '0f0130ac-268f-4b11-b58d-dfdf0efa3a65',
+  'e03841dc-3c3b-4dee-b763-4dc93e25f8e7',
   4,
   'phrases',
   null,
@@ -297,7 +299,7 @@ values
   true
 ),
 (
-  '0f0130ac-268f-4b11-b58d-dfdf0efa3a65',
+  'e03841dc-3c3b-4dee-b763-4dc93e25f8e7',
   5,
   'activity',
   null,
@@ -326,7 +328,7 @@ values
   true
 ),
 (
-  '0f0130ac-268f-4b11-b58d-dfdf0efa3a65',
+  'e03841dc-3c3b-4dee-b763-4dc93e25f8e7',
   6,
   'speaking',
   null,
@@ -347,15 +349,15 @@ values
     },
     {
       "speaker": "B",
-      "text": "Interesting!"
+      "text": "Now tell me where you work, using these lines!"
     }
   ],
-  "note": "Switch! Student becomes A, teacher becomes B."
+  "note": "Short role-play: use the exact lines above to talk about workplaces, then use your own."
 }$json$::jsonb,
   true
 ),
 (
-  '0f0130ac-268f-4b11-b58d-dfdf0efa3a65',
+  'e03841dc-3c3b-4dee-b763-4dc93e25f8e7',
   7,
   'reading',
   null,
@@ -371,7 +373,7 @@ values
   true
 ),
 (
-  '0f0130ac-268f-4b11-b58d-dfdf0efa3a65',
+  'e03841dc-3c3b-4dee-b763-4dc93e25f8e7',
   8,
   'writing',
   null,
@@ -386,7 +388,7 @@ values
   true
 ),
 (
-  '0f0130ac-268f-4b11-b58d-dfdf0efa3a65',
+  'e03841dc-3c3b-4dee-b763-4dc93e25f8e7',
   9,
   'review',
   null,
@@ -405,13 +407,13 @@ values
 -- Lesson 3: Daily Work Tasks
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '2cedda39-d6c4-43fd-9636-d8aaaa3cc9f4',
+  '3130fe26-f589-4e3b-a282-b98ef8b0ec9e',
   'Daily Work Tasks',
   'A1',
   'adults',
   5,
   3,
-  'Describe simple work tasks with a reason. [Combination, Lesson 3: freer practice, error-spot]',
+  'Describe simple work tasks with a reason. [Combination, L3, format F: guided fill-in]',
   25,
   9,
   true
@@ -420,7 +422,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '2cedda39-d6c4-43fd-9636-d8aaaa3cc9f4',
+  '3130fe26-f589-4e3b-a282-b98ef8b0ec9e',
   1,
   'title',
   null,
@@ -431,7 +433,7 @@ values
   true
 ),
 (
-  '2cedda39-d6c4-43fd-9636-d8aaaa3cc9f4',
+  '3130fe26-f589-4e3b-a282-b98ef8b0ec9e',
   2,
   'warmup',
   null,
@@ -447,7 +449,7 @@ values
   true
 ),
 (
-  '2cedda39-d6c4-43fd-9636-d8aaaa3cc9f4',
+  '3130fe26-f589-4e3b-a282-b98ef8b0ec9e',
   3,
   'vocabulary',
   null,
@@ -477,7 +479,7 @@ values
   true
 ),
 (
-  '2cedda39-d6c4-43fd-9636-d8aaaa3cc9f4',
+  '3130fe26-f589-4e3b-a282-b98ef8b0ec9e',
   4,
   'phrases',
   null,
@@ -497,7 +499,7 @@ values
   true
 ),
 (
-  '2cedda39-d6c4-43fd-9636-d8aaaa3cc9f4',
+  '3130fe26-f589-4e3b-a282-b98ef8b0ec9e',
   5,
   'activity',
   null,
@@ -526,7 +528,7 @@ values
   true
 ),
 (
-  '2cedda39-d6c4-43fd-9636-d8aaaa3cc9f4',
+  '3130fe26-f589-4e3b-a282-b98ef8b0ec9e',
   6,
   'speaking',
   null,
@@ -543,11 +545,11 @@ values
     },
     {
       "speaker": "A",
-      "text": "I write reports every day. I like it because I work with numbers."
+      "text": "I write reports every day. Fill in your own task now!"
     },
     {
       "speaker": "B",
-      "text": "That sounds like a good job!"
+      "text": "I ___ at work. I like it because ___."
     }
   ],
   "note": "Switch! Student becomes A, teacher becomes B."
@@ -555,7 +557,7 @@ values
   true
 ),
 (
-  '2cedda39-d6c4-43fd-9636-d8aaaa3cc9f4',
+  '3130fe26-f589-4e3b-a282-b98ef8b0ec9e',
   7,
   'reading',
   null,
@@ -571,7 +573,7 @@ values
   true
 ),
 (
-  '2cedda39-d6c4-43fd-9636-d8aaaa3cc9f4',
+  '3130fe26-f589-4e3b-a282-b98ef8b0ec9e',
   8,
   'writing',
   null,
@@ -586,7 +588,7 @@ values
   true
 ),
 (
-  '2cedda39-d6c4-43fd-9636-d8aaaa3cc9f4',
+  '3130fe26-f589-4e3b-a282-b98ef8b0ec9e',
   9,
   'review',
   null,
@@ -605,13 +607,13 @@ values
 -- Lesson 4: Talking About Work
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '7a8f1ba3-024c-4d00-9844-8121ac2601f5',
+  'b1ef4791-f32a-4a8d-be9c-7ce1cb325242',
   'Talking About Work',
   'A1',
   'adults',
   5,
   4,
-  'Combine job, workplace, tasks, and opinion into a short talk. [Combination, Lesson 4: production, mini role-play]',
+  'Combine job, workplace, tasks, and opinion into a short talk. [Combination, L4, format E: choose-the-better-response + independent production]',
   25,
   9,
   true
@@ -620,7 +622,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '7a8f1ba3-024c-4d00-9844-8121ac2601f5',
+  'b1ef4791-f32a-4a8d-be9c-7ce1cb325242',
   1,
   'title',
   null,
@@ -631,7 +633,7 @@ values
   true
 ),
 (
-  '7a8f1ba3-024c-4d00-9844-8121ac2601f5',
+  'b1ef4791-f32a-4a8d-be9c-7ce1cb325242',
   2,
   'warmup',
   null,
@@ -647,7 +649,7 @@ values
   true
 ),
 (
-  '7a8f1ba3-024c-4d00-9844-8121ac2601f5',
+  'b1ef4791-f32a-4a8d-be9c-7ce1cb325242',
   3,
   'vocabulary',
   null,
@@ -677,7 +679,7 @@ values
   true
 ),
 (
-  '7a8f1ba3-024c-4d00-9844-8121ac2601f5',
+  'b1ef4791-f32a-4a8d-be9c-7ce1cb325242',
   4,
   'phrases',
   null,
@@ -697,7 +699,7 @@ values
   true
 ),
 (
-  '7a8f1ba3-024c-4d00-9844-8121ac2601f5',
+  'b1ef4791-f32a-4a8d-be9c-7ce1cb325242',
   5,
   'activity',
   null,
@@ -726,7 +728,7 @@ values
   true
 ),
 (
-  '7a8f1ba3-024c-4d00-9844-8121ac2601f5',
+  'b1ef4791-f32a-4a8d-be9c-7ce1cb325242',
   6,
   'speaking',
   null,
@@ -735,27 +737,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "Tell me about your job."
+      "text": "Which is correct: 'I enjoy my team' or 'I enjoy of my team'?"
     },
     {
       "speaker": "B",
-      "text": "I am a nurse. I work in a hospital with my colleagues."
+      "text": "'I enjoy my team' is correct. No 'of' after enjoy."
     },
     {
       "speaker": "A",
-      "text": "It is difficult sometimes, but I enjoy my team."
+      "text": "Good. Now tell me about your own job and colleagues, in your own words."
     },
     {
       "speaker": "B",
-      "text": "That sounds like a good workplace."
+      "text": "I work with my colleagues. It is difficult sometimes, but I enjoy my team."
     }
   ],
-  "note": "Mini role-play: introduce your job to a new colleague."
+  "note": "Choose the correct sentence first, then answer fully in your own words about your own job."
 }$json$::jsonb,
   true
 ),
 (
-  '7a8f1ba3-024c-4d00-9844-8121ac2601f5',
+  'b1ef4791-f32a-4a8d-be9c-7ce1cb325242',
   7,
   'reading',
   null,
@@ -771,7 +773,7 @@ values
   true
 ),
 (
-  '7a8f1ba3-024c-4d00-9844-8121ac2601f5',
+  'b1ef4791-f32a-4a8d-be9c-7ce1cb325242',
   8,
   'writing',
   null,
@@ -786,7 +788,7 @@ values
   true
 ),
 (
-  '7a8f1ba3-024c-4d00-9844-8121ac2601f5',
+  'b1ef4791-f32a-4a8d-be9c-7ce1cb325242',
   9,
   'review',
   null,
@@ -805,13 +807,13 @@ values
 -- Lesson 5: Unit Review
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  'fc44d97c-94d8-4b24-b10a-5bea27f9722b',
+  'ee892200-05c3-4d55-933b-4f974f72397a',
   'Unit Review',
   'A1',
   'adults',
   5,
   5,
-  'Review jobs, workplaces, tasks, and opinions. [Combination, Lesson 5: tier-matched mixed review]',
+  'Unchanged by the rotation rework.',
   25,
   9,
   true
@@ -820,7 +822,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  'fc44d97c-94d8-4b24-b10a-5bea27f9722b',
+  'ee892200-05c3-4d55-933b-4f974f72397a',
   1,
   'title',
   null,
@@ -831,7 +833,7 @@ values
   true
 ),
 (
-  'fc44d97c-94d8-4b24-b10a-5bea27f9722b',
+  'ee892200-05c3-4d55-933b-4f974f72397a',
   2,
   'warmup',
   null,
@@ -847,7 +849,7 @@ values
   true
 ),
 (
-  'fc44d97c-94d8-4b24-b10a-5bea27f9722b',
+  'ee892200-05c3-4d55-933b-4f974f72397a',
   3,
   'vocabulary',
   null,
@@ -877,7 +879,7 @@ values
   true
 ),
 (
-  'fc44d97c-94d8-4b24-b10a-5bea27f9722b',
+  'ee892200-05c3-4d55-933b-4f974f72397a',
   4,
   'phrases',
   null,
@@ -897,7 +899,7 @@ values
   true
 ),
 (
-  'fc44d97c-94d8-4b24-b10a-5bea27f9722b',
+  'ee892200-05c3-4d55-933b-4f974f72397a',
   5,
   'activity',
   null,
@@ -926,7 +928,7 @@ values
   true
 ),
 (
-  'fc44d97c-94d8-4b24-b10a-5bea27f9722b',
+  'ee892200-05c3-4d55-933b-4f974f72397a',
   6,
   'speaking',
   null,
@@ -955,7 +957,7 @@ values
   true
 ),
 (
-  'fc44d97c-94d8-4b24-b10a-5bea27f9722b',
+  'ee892200-05c3-4d55-933b-4f974f72397a',
   7,
   'reading',
   null,
@@ -971,7 +973,7 @@ values
   true
 ),
 (
-  'fc44d97c-94d8-4b24-b10a-5bea27f9722b',
+  'ee892200-05c3-4d55-933b-4f974f72397a',
   8,
   'writing',
   null,
@@ -986,7 +988,7 @@ values
   true
 ),
 (
-  'fc44d97c-94d8-4b24-b10a-5bea27f9722b',
+  'ee892200-05c3-4d55-933b-4f974f72397a',
   9,
   'review',
   null,

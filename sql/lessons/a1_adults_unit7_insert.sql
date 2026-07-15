@@ -1,17 +1,19 @@
--- A1 Adults Unit 7: Food and Drinks (5 lessons) — TIERED (Combination)
--- Regenerated per the Sentivo Intra-Level Progression Framework + lesson-level escalation + task rotation.
+-- A1 Adults Unit 7: Food and Drinks (5 lessons) — TIERED + ROTATED
+-- Per docs/curriculum/a1-teens-adults-rotation-rework.md. Vocab/reading/writing/review
+-- unchanged from the tiered pilot; only activity+speaking reshuffled to the new
+-- per-unit format assignment, keeping each lesson's difficulty position intact.
 -- Run this whole script in the Supabase SQL editor.
 
 -- Lesson 1: Food and Drinks
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '53782ab4-d9c4-47f6-a28e-e66a3f2a3ae2',
+  'a3a1564b-1039-4ead-aff1-de752284af66',
   'Food and Drinks',
   'A1',
   'adults',
   7,
   1,
-  'Name common foods and drinks. [Combination, Lesson 1: notice/receptive, read-and-identify]',
+  'Name common foods and drinks. [Combination, L1, format R: short scripted role-play]',
   25,
   9,
   true
@@ -20,7 +22,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '53782ab4-d9c4-47f6-a28e-e66a3f2a3ae2',
+  'a3a1564b-1039-4ead-aff1-de752284af66',
   1,
   'title',
   null,
@@ -31,7 +33,7 @@ values
   true
 ),
 (
-  '53782ab4-d9c4-47f6-a28e-e66a3f2a3ae2',
+  'a3a1564b-1039-4ead-aff1-de752284af66',
   2,
   'warmup',
   null,
@@ -47,7 +49,7 @@ values
   true
 ),
 (
-  '53782ab4-d9c4-47f6-a28e-e66a3f2a3ae2',
+  'a3a1564b-1039-4ead-aff1-de752284af66',
   3,
   'vocabulary',
   null,
@@ -77,7 +79,7 @@ values
   true
 ),
 (
-  '53782ab4-d9c4-47f6-a28e-e66a3f2a3ae2',
+  'a3a1564b-1039-4ead-aff1-de752284af66',
   4,
   'phrases',
   null,
@@ -97,7 +99,7 @@ values
   true
 ),
 (
-  '53782ab4-d9c4-47f6-a28e-e66a3f2a3ae2',
+  'a3a1564b-1039-4ead-aff1-de752284af66',
   5,
   'activity',
   null,
@@ -126,7 +128,7 @@ values
   true
 ),
 (
-  '53782ab4-d9c4-47f6-a28e-e66a3f2a3ae2',
+  'a3a1564b-1039-4ead-aff1-de752284af66',
   6,
   'speaking',
   null,
@@ -147,15 +149,15 @@ values
     },
     {
       "speaker": "B",
-      "text": "I like that too!"
+      "text": "Now tell me your own breakfast, using these lines!"
     }
   ],
-  "note": "Teacher says the line first. Student repeats, then says it alone."
+  "note": "Short role-play: use the exact lines above to talk about breakfast, then use your own."
 }$json$::jsonb,
   true
 ),
 (
-  '53782ab4-d9c4-47f6-a28e-e66a3f2a3ae2',
+  'a3a1564b-1039-4ead-aff1-de752284af66',
   7,
   'reading',
   null,
@@ -171,7 +173,7 @@ values
   true
 ),
 (
-  '53782ab4-d9c4-47f6-a28e-e66a3f2a3ae2',
+  'a3a1564b-1039-4ead-aff1-de752284af66',
   8,
   'writing',
   null,
@@ -186,7 +188,7 @@ values
   true
 ),
 (
-  '53782ab4-d9c4-47f6-a28e-e66a3f2a3ae2',
+  'a3a1564b-1039-4ead-aff1-de752284af66',
   9,
   'review',
   null,
@@ -205,13 +207,13 @@ values
 -- Lesson 2: Likes and Dislikes
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  'f5d39944-a496-40c4-a36f-5298b6e1c349',
+  'ee22ac9d-6c95-481c-89dd-55e0db4c0975',
   'Likes and Dislikes',
   'A1',
   'adults',
   7,
   2,
-  'Say food likes and dislikes with a reason. [Combination, Lesson 2: controlled practice, fill-in-blank]',
+  'Say food likes and dislikes with a reason. [Combination, L2, format M: read and identify, then match]',
   25,
   9,
   true
@@ -220,7 +222,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  'f5d39944-a496-40c4-a36f-5298b6e1c349',
+  'ee22ac9d-6c95-481c-89dd-55e0db4c0975',
   1,
   'title',
   null,
@@ -231,7 +233,7 @@ values
   true
 ),
 (
-  'f5d39944-a496-40c4-a36f-5298b6e1c349',
+  'ee22ac9d-6c95-481c-89dd-55e0db4c0975',
   2,
   'warmup',
   null,
@@ -247,7 +249,7 @@ values
   true
 ),
 (
-  'f5d39944-a496-40c4-a36f-5298b6e1c349',
+  'ee22ac9d-6c95-481c-89dd-55e0db4c0975',
   3,
   'vocabulary',
   null,
@@ -277,7 +279,7 @@ values
   true
 ),
 (
-  'f5d39944-a496-40c4-a36f-5298b6e1c349',
+  'ee22ac9d-6c95-481c-89dd-55e0db4c0975',
   4,
   'phrases',
   null,
@@ -297,7 +299,7 @@ values
   true
 ),
 (
-  'f5d39944-a496-40c4-a36f-5298b6e1c349',
+  'ee22ac9d-6c95-481c-89dd-55e0db4c0975',
   5,
   'activity',
   null,
@@ -326,7 +328,7 @@ values
   true
 ),
 (
-  'f5d39944-a496-40c4-a36f-5298b6e1c349',
+  'ee22ac9d-6c95-481c-89dd-55e0db4c0975',
   6,
   'speaking',
   null,
@@ -335,27 +337,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "Do you like coffee?"
+      "text": "I like coffee because it's delicious."
     },
     {
       "speaker": "B",
-      "text": "Yes, I like coffee because it's delicious. I don't like tea, though."
+      "text": "I like coffee too, because it's delicious!"
     },
     {
       "speaker": "A",
-      "text": "I like cheese because it's tasty."
+      "text": "I don't like tea."
     },
     {
       "speaker": "B",
-      "text": "Me too!"
+      "text": "I don't like tea either."
     }
   ],
-  "note": "Switch! Student becomes A, teacher becomes B."
+  "note": "Read the model line, then say a matching sentence about your own taste."
 }$json$::jsonb,
   true
 ),
 (
-  'f5d39944-a496-40c4-a36f-5298b6e1c349',
+  'ee22ac9d-6c95-481c-89dd-55e0db4c0975',
   7,
   'reading',
   null,
@@ -371,7 +373,7 @@ values
   true
 ),
 (
-  'f5d39944-a496-40c4-a36f-5298b6e1c349',
+  'ee22ac9d-6c95-481c-89dd-55e0db4c0975',
   8,
   'writing',
   null,
@@ -386,7 +388,7 @@ values
   true
 ),
 (
-  'f5d39944-a496-40c4-a36f-5298b6e1c349',
+  'ee22ac9d-6c95-481c-89dd-55e0db4c0975',
   9,
   'review',
   null,
@@ -405,13 +407,13 @@ values
 -- Lesson 3: Meals
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  'b8acbb8b-567e-4a2c-ac16-0a0a322917f0',
+  '852dd17f-c2e2-46c5-9d5e-a8c25e65bad1',
   'Meals',
   'A1',
   'adults',
   7,
   3,
-  'Talk about breakfast, lunch, and dinner. [Combination, Lesson 3: freer practice, role reversal]',
+  'Unchanged by the rotation rework -- L3 format E, matches original order.',
   25,
   9,
   true
@@ -420,7 +422,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  'b8acbb8b-567e-4a2c-ac16-0a0a322917f0',
+  '852dd17f-c2e2-46c5-9d5e-a8c25e65bad1',
   1,
   'title',
   null,
@@ -431,7 +433,7 @@ values
   true
 ),
 (
-  'b8acbb8b-567e-4a2c-ac16-0a0a322917f0',
+  '852dd17f-c2e2-46c5-9d5e-a8c25e65bad1',
   2,
   'warmup',
   null,
@@ -447,7 +449,7 @@ values
   true
 ),
 (
-  'b8acbb8b-567e-4a2c-ac16-0a0a322917f0',
+  '852dd17f-c2e2-46c5-9d5e-a8c25e65bad1',
   3,
   'vocabulary',
   null,
@@ -477,7 +479,7 @@ values
   true
 ),
 (
-  'b8acbb8b-567e-4a2c-ac16-0a0a322917f0',
+  '852dd17f-c2e2-46c5-9d5e-a8c25e65bad1',
   4,
   'phrases',
   null,
@@ -497,7 +499,7 @@ values
   true
 ),
 (
-  'b8acbb8b-567e-4a2c-ac16-0a0a322917f0',
+  '852dd17f-c2e2-46c5-9d5e-a8c25e65bad1',
   5,
   'activity',
   null,
@@ -526,7 +528,7 @@ values
   true
 ),
 (
-  'b8acbb8b-567e-4a2c-ac16-0a0a322917f0',
+  '852dd17f-c2e2-46c5-9d5e-a8c25e65bad1',
   6,
   'speaking',
   null,
@@ -555,7 +557,7 @@ values
   true
 ),
 (
-  'b8acbb8b-567e-4a2c-ac16-0a0a322917f0',
+  '852dd17f-c2e2-46c5-9d5e-a8c25e65bad1',
   7,
   'reading',
   null,
@@ -571,7 +573,7 @@ values
   true
 ),
 (
-  'b8acbb8b-567e-4a2c-ac16-0a0a322917f0',
+  '852dd17f-c2e2-46c5-9d5e-a8c25e65bad1',
   8,
   'writing',
   null,
@@ -586,7 +588,7 @@ values
   true
 ),
 (
-  'b8acbb8b-567e-4a2c-ac16-0a0a322917f0',
+  '852dd17f-c2e2-46c5-9d5e-a8c25e65bad1',
   9,
   'review',
   null,
@@ -605,13 +607,13 @@ values
 -- Lesson 4: Ordering in a Café
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '8f1bd7fe-746c-4759-b633-4b1a5ed066ff',
+  'a55f7987-d2b9-464f-9bf3-9034f0318185',
   'Ordering in a Café',
   'A1',
   'adults',
   7,
   4,
-  'Combine food vocabulary into an ordering conversation. [Combination, Lesson 4: production, mini role-play]',
+  'Combine food vocabulary into an ordering conversation. [Combination, L4, format F: open fill-in, minimal scaffolding]',
   25,
   9,
   true
@@ -620,7 +622,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '8f1bd7fe-746c-4759-b633-4b1a5ed066ff',
+  'a55f7987-d2b9-464f-9bf3-9034f0318185',
   1,
   'title',
   null,
@@ -631,7 +633,7 @@ values
   true
 ),
 (
-  '8f1bd7fe-746c-4759-b633-4b1a5ed066ff',
+  'a55f7987-d2b9-464f-9bf3-9034f0318185',
   2,
   'warmup',
   null,
@@ -647,7 +649,7 @@ values
   true
 ),
 (
-  '8f1bd7fe-746c-4759-b633-4b1a5ed066ff',
+  'a55f7987-d2b9-464f-9bf3-9034f0318185',
   3,
   'vocabulary',
   null,
@@ -677,7 +679,7 @@ values
   true
 ),
 (
-  '8f1bd7fe-746c-4759-b633-4b1a5ed066ff',
+  'a55f7987-d2b9-464f-9bf3-9034f0318185',
   4,
   'phrases',
   null,
@@ -697,7 +699,7 @@ values
   true
 ),
 (
-  '8f1bd7fe-746c-4759-b633-4b1a5ed066ff',
+  'a55f7987-d2b9-464f-9bf3-9034f0318185',
   5,
   'activity',
   null,
@@ -726,7 +728,7 @@ values
   true
 ),
 (
-  '8f1bd7fe-746c-4759-b633-4b1a5ed066ff',
+  'a55f7987-d2b9-464f-9bf3-9034f0318185',
   6,
   'speaking',
   null,
@@ -735,27 +737,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "Good morning! Can I have a coffee and some bread, please?"
+      "text": "What would you order, and here or to go?"
     },
     {
       "speaker": "B",
-      "text": "Of course. Here or to go?"
+      "text": "Can I have a ___, please? ___, please."
     },
     {
       "speaker": "A",
-      "text": "To go, please. Anything else I need?"
+      "text": "Anything else?"
     },
     {
       "speaker": "B",
-      "text": "That's all, thank you!"
+      "text": "___."
     }
   ],
-  "note": "Mini role-play: order food and drinks at a pretend café."
+  "note": "Fill in your own order -- no word bank this time. Say your full order out loud."
 }$json$::jsonb,
   true
 ),
 (
-  '8f1bd7fe-746c-4759-b633-4b1a5ed066ff',
+  'a55f7987-d2b9-464f-9bf3-9034f0318185',
   7,
   'reading',
   null,
@@ -771,7 +773,7 @@ values
   true
 ),
 (
-  '8f1bd7fe-746c-4759-b633-4b1a5ed066ff',
+  'a55f7987-d2b9-464f-9bf3-9034f0318185',
   8,
   'writing',
   null,
@@ -786,7 +788,7 @@ values
   true
 ),
 (
-  '8f1bd7fe-746c-4759-b633-4b1a5ed066ff',
+  'a55f7987-d2b9-464f-9bf3-9034f0318185',
   9,
   'review',
   null,
@@ -805,13 +807,13 @@ values
 -- Lesson 5: Unit Review
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  'ff8b84e5-607c-45ea-b3ce-b04af67458a7',
+  'f9018768-ce06-4d07-972b-3a2ed25b7083',
   'Unit Review',
   'A1',
   'adults',
   7,
   5,
-  'Review food, likes, mealtimes, and ordering. [Combination, Lesson 5: tier-matched mixed review]',
+  'Unchanged by the rotation rework.',
   25,
   9,
   true
@@ -820,7 +822,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  'ff8b84e5-607c-45ea-b3ce-b04af67458a7',
+  'f9018768-ce06-4d07-972b-3a2ed25b7083',
   1,
   'title',
   null,
@@ -831,7 +833,7 @@ values
   true
 ),
 (
-  'ff8b84e5-607c-45ea-b3ce-b04af67458a7',
+  'f9018768-ce06-4d07-972b-3a2ed25b7083',
   2,
   'warmup',
   null,
@@ -847,7 +849,7 @@ values
   true
 ),
 (
-  'ff8b84e5-607c-45ea-b3ce-b04af67458a7',
+  'f9018768-ce06-4d07-972b-3a2ed25b7083',
   3,
   'vocabulary',
   null,
@@ -877,7 +879,7 @@ values
   true
 ),
 (
-  'ff8b84e5-607c-45ea-b3ce-b04af67458a7',
+  'f9018768-ce06-4d07-972b-3a2ed25b7083',
   4,
   'phrases',
   null,
@@ -897,7 +899,7 @@ values
   true
 ),
 (
-  'ff8b84e5-607c-45ea-b3ce-b04af67458a7',
+  'f9018768-ce06-4d07-972b-3a2ed25b7083',
   5,
   'activity',
   null,
@@ -926,7 +928,7 @@ values
   true
 ),
 (
-  'ff8b84e5-607c-45ea-b3ce-b04af67458a7',
+  'f9018768-ce06-4d07-972b-3a2ed25b7083',
   6,
   'speaking',
   null,
@@ -955,7 +957,7 @@ values
   true
 ),
 (
-  'ff8b84e5-607c-45ea-b3ce-b04af67458a7',
+  'f9018768-ce06-4d07-972b-3a2ed25b7083',
   7,
   'reading',
   null,
@@ -971,7 +973,7 @@ values
   true
 ),
 (
-  'ff8b84e5-607c-45ea-b3ce-b04af67458a7',
+  'f9018768-ce06-4d07-972b-3a2ed25b7083',
   8,
   'writing',
   null,
@@ -986,7 +988,7 @@ values
   true
 ),
 (
-  'ff8b84e5-607c-45ea-b3ce-b04af67458a7',
+  'f9018768-ce06-4d07-972b-3a2ed25b7083',
   9,
   'review',
   null,
