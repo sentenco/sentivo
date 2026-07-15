@@ -1,17 +1,17 @@
--- A1 Kids Unit 5: Classroom Things (5 lessons)
--- Generated from project_a1_kids_master_curriculum memory, Unit 5.
+-- A1 Kids Unit 5: Classroom Things (5 lessons) — TIERED (Combination)
+-- Regenerated per the Sentivo Intra-Level Progression Framework + lesson-level escalation + task rotation.
 -- Run this whole script in the Supabase SQL editor.
 
 -- Lesson 1: Classroom Objects
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '6ae0acfd-46e3-4416-a5b4-f08cb5fb2c61',
+  '9319ffd3-3c41-4a65-adc8-a69c46c3a643',
   'Classroom Objects',
   'A1',
   'kids',
   5,
   1,
-  'Identify common classroom objects.',
+  'Name classroom objects. [Combination, Lesson 1: notice/receptive, matching]',
   25,
   9,
   true
@@ -20,7 +20,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '6ae0acfd-46e3-4416-a5b4-f08cb5fb2c61',
+  '9319ffd3-3c41-4a65-adc8-a69c46c3a643',
   1,
   'title',
   null,
@@ -31,23 +31,23 @@ values
   true
 ),
 (
-  '6ae0acfd-46e3-4416-a5b4-f08cb5fb2c61',
+  '9319ffd3-3c41-4a65-adc8-a69c46c3a643',
   2,
   'warmup',
   null,
   null,
   $json${
-  "display": "🎒",
+  "display": "✏️",
   "questions": [
-    "What's inside your backpack?",
-    "What do you use at school?"
+    "Do you have a pencil?",
+    "What is in your bag?"
   ],
   "title": "What do you see?"
 }$json$::jsonb,
   true
 ),
 (
-  '6ae0acfd-46e3-4416-a5b4-f08cb5fb2c61',
+  '9319ffd3-3c41-4a65-adc8-a69c46c3a643',
   3,
   'vocabulary',
   null,
@@ -63,7 +63,7 @@ values
       "bg": "#E1F5EE"
     },
     {
-      "word": "Chair",
+      "word": "Bag",
       "bg": "#EEEDFE"
     },
     {
@@ -77,7 +77,7 @@ values
   true
 ),
 (
-  '6ae0acfd-46e3-4416-a5b4-f08cb5fb2c61',
+  '9319ffd3-3c41-4a65-adc8-a69c46c3a643',
   4,
   'phrases',
   null,
@@ -85,19 +85,19 @@ values
   $json${
   "teacher": [
     "What is this?",
-    "Is this a pencil?"
+    "Do you have a pencil?"
   ],
   "student": [
-    "It is a pencil.",
-    "Yes, it is a book!"
+    "This is a pencil.",
+    "Yes, I have a pencil."
   ],
-  "note": "Point to a real object when you practice!",
+  "note": "Point to something in your classroom or bag!",
   "title": "Practice the Conversation"
 }$json$::jsonb,
   true
 ),
 (
-  '6ae0acfd-46e3-4416-a5b4-f08cb5fb2c61',
+  '9319ffd3-3c41-4a65-adc8-a69c46c3a643',
   5,
   'activity',
   null,
@@ -114,19 +114,19 @@ values
     },
     {
       "speaker": "A",
-      "text": "This is a [chair]."
+      "text": "This is my [bag]."
     }
   ],
   "blanks": [
     "pencil",
     "book",
-    "chair"
+    "bag"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '6ae0acfd-46e3-4416-a5b4-f08cb5fb2c61',
+  '9319ffd3-3c41-4a65-adc8-a69c46c3a643',
   6,
   'speaking',
   null,
@@ -135,43 +135,43 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "What is this?"
+      "text": "This is a pencil."
     },
     {
       "speaker": "B",
-      "text": "It is a desk."
+      "text": "This is a book."
     },
     {
       "speaker": "A",
-      "text": "What is that?"
+      "text": "This is my bag."
     },
     {
       "speaker": "B",
-      "text": "It is a chair!"
+      "text": "This is my desk!"
     }
   ],
-  "note": "Switch! Student becomes A, teacher becomes B."
+  "note": "Teacher says the line first. Student repeats, then says it alone."
 }$json$::jsonb,
   true
 ),
 (
-  '6ae0acfd-46e3-4416-a5b4-f08cb5fb2c61',
+  '9319ffd3-3c41-4a65-adc8-a69c46c3a643',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "This is my classroom. I see a pencil. I see a book. I see a chair. I see a desk. I like my classroom!",
+  "text": "This is a pencil. This is a book. This is my bag.",
   "questions": [
-    "What does the writer see first?",
-    "Is there a chair in the classroom?",
-    "Does the writer like the classroom?"
+    "What is the first object?",
+    "What is the second object?",
+    "Whose bag is it?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '6ae0acfd-46e3-4416-a5b4-f08cb5fb2c61',
+  '9319ffd3-3c41-4a65-adc8-a69c46c3a643',
   8,
   'writing',
   null,
@@ -179,25 +179,25 @@ values
   $json${
   "prompts": [
     "This is a ___.",
-    "In my classroom, I see a ___.",
-    "My favorite classroom object is ___."
+    "This is my ___.",
+    "I have a ___."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '6ae0acfd-46e3-4416-a5b4-f08cb5fb2c61',
+  '9319ffd3-3c41-4a65-adc8-a69c46c3a643',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Name four classroom objects",
+    "Name 4 classroom objects",
     "Say 'This is a ___'",
-    "Answer 'What is this?'"
+    "Point to something in my bag"
   ],
-  "challenge": "Point to three objects near you and name them!"
+  "challenge": "Show me what's in your bag!"
 }$json$::jsonb,
   true
 );
@@ -205,13 +205,13 @@ values
 -- Lesson 2: This Is My Pencil
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  'e0d82d30-584d-4b59-b583-f5dd0f30406a',
+  '4e42f5ed-cd3d-48b7-a30d-0f01ea986183',
   'This Is My Pencil',
   'A1',
   'kids',
   5,
   2,
-  'Say and identify ownership with classroom items.',
+  'Combine possession with classroom objects. [Combination, Lesson 2: controlled practice, picture-supported frames]',
   25,
   9,
   true
@@ -220,7 +220,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  'e0d82d30-584d-4b59-b583-f5dd0f30406a',
+  '4e42f5ed-cd3d-48b7-a30d-0f01ea986183',
   1,
   'title',
   null,
@@ -231,23 +231,23 @@ values
   true
 ),
 (
-  'e0d82d30-584d-4b59-b583-f5dd0f30406a',
+  '4e42f5ed-cd3d-48b7-a30d-0f01ea986183',
   2,
   'warmup',
   null,
   null,
   $json${
-  "display": "✏️",
+  "display": "📏",
   "questions": [
-    "Do you have a pencil?",
-    "What is your favorite school item?"
+    "Is this your pencil?",
+    "Do you have an eraser?"
   ],
   "title": "What do you see?"
 }$json$::jsonb,
   true
 ),
 (
-  'e0d82d30-584d-4b59-b583-f5dd0f30406a',
+  '4e42f5ed-cd3d-48b7-a30d-0f01ea986183',
   3,
   'vocabulary',
   null,
@@ -255,11 +255,11 @@ values
   $json${
   "words": [
     {
-      "word": "Bag",
+      "word": "My",
       "bg": "#FAECE7"
     },
     {
-      "word": "Ruler",
+      "word": "Your",
       "bg": "#E1F5EE"
     },
     {
@@ -267,7 +267,7 @@ values
       "bg": "#EEEDFE"
     },
     {
-      "word": "Pen",
+      "word": "Ruler",
       "bg": "#FAEEDA"
     }
   ],
@@ -277,7 +277,7 @@ values
   true
 ),
 (
-  'e0d82d30-584d-4b59-b583-f5dd0f30406a',
+  '4e42f5ed-cd3d-48b7-a30d-0f01ea986183',
   4,
   'phrases',
   null,
@@ -285,19 +285,19 @@ values
   $json${
   "teacher": [
     "Is this your pencil?",
-    "Is this your bag?"
+    "Is this your eraser?"
   ],
   "student": [
     "Yes, this is my pencil.",
-    "No, this is not my bag."
+    "This is my eraser."
   ],
-  "note": "Point to your own things when you practice!",
+  "note": "Use the word bank: my, your, eraser, ruler.",
   "title": "Practice the Conversation"
 }$json$::jsonb,
   true
 ),
 (
-  'e0d82d30-584d-4b59-b583-f5dd0f30406a',
+  '4e42f5ed-cd3d-48b7-a30d-0f01ea986183',
   5,
   'activity',
   null,
@@ -306,27 +306,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "This is my [bag]."
+      "text": "This is [my] pencil."
     },
     {
       "speaker": "B",
-      "text": "This is my [ruler]."
+      "text": "Is this [your] eraser?"
     },
     {
       "speaker": "A",
-      "text": "This is my [eraser]."
+      "text": "Yes, and this is my [ruler]."
     }
   ],
   "blanks": [
-    "bag",
-    "ruler",
-    "eraser"
+    "my",
+    "your",
+    "ruler"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'e0d82d30-584d-4b59-b583-f5dd0f30406a',
+  '4e42f5ed-cd3d-48b7-a30d-0f01ea986183',
   6,
   'speaking',
   null,
@@ -339,15 +339,15 @@ values
     },
     {
       "speaker": "B",
-      "text": "Yes, this is my pencil."
+      "text": "Yes, this is my pencil. Is this your eraser?"
     },
     {
       "speaker": "A",
-      "text": "Is this your pen?"
+      "text": "Yes, and this is my ruler."
     },
     {
       "speaker": "B",
-      "text": "No, this is not my pen!"
+      "text": "Nice!"
     }
   ],
   "note": "Switch! Student becomes A, teacher becomes B."
@@ -355,23 +355,23 @@ values
   true
 ),
 (
-  'e0d82d30-584d-4b59-b583-f5dd0f30406a',
+  '4e42f5ed-cd3d-48b7-a30d-0f01ea986183',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "This is my pencil. This is my bag. This is my ruler. These are my things for school. I take care of my things!",
+  "text": "This is my pencil. This is my eraser. This is my ruler too.",
   "questions": [
-    "What things does the writer have?",
-    "Does the writer take care of their things?",
-    "Is the ruler the writer's?"
+    "Whose pencil is it?",
+    "What else does the writer have?",
+    "How many objects are named?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'e0d82d30-584d-4b59-b583-f5dd0f30406a',
+  '4e42f5ed-cd3d-48b7-a30d-0f01ea986183',
   8,
   'writing',
   null,
@@ -379,14 +379,14 @@ values
   $json${
   "prompts": [
     "This is my ___.",
-    "This is not my ___.",
-    "I take care of my ___."
+    "This is my ___ too.",
+    "I have my ___."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'e0d82d30-584d-4b59-b583-f5dd0f30406a',
+  '4e42f5ed-cd3d-48b7-a30d-0f01ea986183',
   9,
   'review',
   null,
@@ -394,10 +394,10 @@ values
   $json${
   "checklist": [
     "Say 'This is my ___'",
-    "Say 'This is not my ___'",
-    "Talk about owning school items"
+    "Ask 'Is this your ___?'",
+    "Name eraser and ruler"
   ],
-  "challenge": "Show me something that is yours and say the sentence!"
+  "challenge": "Show me three things that are yours!"
 }$json$::jsonb,
   true
 );
@@ -405,13 +405,13 @@ values
 -- Lesson 3: What's in the Classroom?
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  'a091c420-7843-443f-a0da-fc6ef2b3a282',
+  '41de2716-cfcb-40c2-9241-534e7e991c74',
   'What''s in the Classroom?',
   'A1',
   'kids',
   5,
   3,
-  'Recognize classroom items in a picture.',
+  'Ask and find classroom objects. [Combination, Lesson 3: freer practice, TPR find-it game]',
   25,
   9,
   true
@@ -420,7 +420,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  'a091c420-7843-443f-a0da-fc6ef2b3a282',
+  '41de2716-cfcb-40c2-9241-534e7e991c74',
   1,
   'title',
   null,
@@ -431,23 +431,23 @@ values
   true
 ),
 (
-  'a091c420-7843-443f-a0da-fc6ef2b3a282',
+  '41de2716-cfcb-40c2-9241-534e7e991c74',
   2,
   'warmup',
   null,
   null,
   $json${
-  "display": "🏫",
+  "display": "🪑",
   "questions": [
-    "What do you see in a classroom?",
-    "Is there a board in your classroom?"
+    "Where is your chair?",
+    "Where is the board?"
   ],
   "title": "What do you see?"
 }$json$::jsonb,
   true
 ),
 (
-  'a091c420-7843-443f-a0da-fc6ef2b3a282',
+  '41de2716-cfcb-40c2-9241-534e7e991c74',
   3,
   'vocabulary',
   null,
@@ -455,19 +455,19 @@ values
   $json${
   "words": [
     {
-      "word": "Board",
+      "word": "Where is",
       "bg": "#FAECE7"
     },
     {
-      "word": "Window",
+      "word": "Chair",
       "bg": "#E1F5EE"
     },
     {
-      "word": "Door",
+      "word": "Table",
       "bg": "#EEEDFE"
     },
     {
-      "word": "Clock",
+      "word": "Board",
       "bg": "#FAEEDA"
     }
   ],
@@ -477,27 +477,27 @@ values
   true
 ),
 (
-  'a091c420-7843-443f-a0da-fc6ef2b3a282',
+  '41de2716-cfcb-40c2-9241-534e7e991c74',
   4,
   'phrases',
   null,
   null,
   $json${
   "teacher": [
-    "What do you see?",
-    "Where is the door?"
+    "Where is your chair?",
+    "Where is the board?"
   ],
   "student": [
-    "I see a board.",
-    "The door is there!"
+    "My chair is here.",
+    "The board is there."
   ],
-  "note": "Look around your room when you practice!",
+  "note": "Point and find things in the room!",
   "title": "Practice the Conversation"
 }$json$::jsonb,
   true
 ),
 (
-  'a091c420-7843-443f-a0da-fc6ef2b3a282',
+  '41de2716-cfcb-40c2-9241-534e7e991c74',
   5,
   'activity',
   null,
@@ -506,27 +506,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "I see a [board]."
+      "text": "[Where is] your chair?"
     },
     {
       "speaker": "B",
-      "text": "I see a [window]."
+      "text": "My [chair] is here."
     },
     {
       "speaker": "A",
-      "text": "I see a [clock]."
+      "text": "The [table] is there."
     }
   ],
   "blanks": [
-    "board",
-    "window",
-    "clock"
+    "where is",
+    "chair",
+    "table"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'a091c420-7843-443f-a0da-fc6ef2b3a282',
+  '41de2716-cfcb-40c2-9241-534e7e991c74',
   6,
   'speaking',
   null,
@@ -535,69 +535,69 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "What do you see in the classroom?"
+      "text": "Where is your chair?"
     },
     {
       "speaker": "B",
-      "text": "I see a board and a window."
+      "text": "My chair is here! Where is the board?"
     },
     {
       "speaker": "A",
-      "text": "I see a door and a clock!"
+      "text": "The board is there. Where is the table?"
     },
     {
       "speaker": "B",
-      "text": "Our classroom is nice!"
+      "text": "Your turn to find something!"
     }
   ],
-  "note": "Switch! Student becomes A, teacher becomes B."
+  "note": "Point-and-find game: ask where something is, then point to find it!"
 }$json$::jsonb,
   true
 ),
 (
-  'a091c420-7843-443f-a0da-fc6ef2b3a282',
+  '41de2716-cfcb-40c2-9241-534e7e991c74',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "My classroom has a big board. It has two windows. It has one door. It has a clock on the wall. I like my classroom!",
+  "text": "Where is my chair? My chair is here. Where is the board? The board is there.",
   "questions": [
-    "How many windows does the classroom have?",
-    "How many doors does it have?",
-    "Where is the clock?"
+    "Where is the chair?",
+    "Where is the board?",
+    "What game are they playing?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'a091c420-7843-443f-a0da-fc6ef2b3a282',
+  '41de2716-cfcb-40c2-9241-534e7e991c74',
   8,
   'writing',
   null,
   null,
   $json${
   "prompts": [
-    "My classroom has a ___.",
-    "I see a ___ on the wall.",
-    "My classroom is ___."
+    "My chair is ___.",
+    "The board is ___.",
+    "Where is the ___?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'a091c420-7843-443f-a0da-fc6ef2b3a282',
+  '41de2716-cfcb-40c2-9241-534e7e991c74',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Name classroom features",
-    "Say 'I see a ___'",
-    "Describe a classroom"
+    "Ask 'Where is ___?'",
+    "Say 'here' and 'there'",
+    "Find classroom objects"
   ],
-  "challenge": "Describe your classroom or room to me right now!"
+  "challenge": "Ask me where something is in the room!"
 }$json$::jsonb,
   true
 );
@@ -605,13 +605,13 @@ values
 -- Lesson 4: In My Bag
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  'e97a514f-5469-4336-9c7e-e35f6a84ce4c',
+  '65cea5d9-22c9-4ff8-9bc9-7be2f2191a6e',
   'In My Bag',
   'A1',
   'kids',
   5,
   4,
-  'Name school things in a bag.',
+  'Show and tell what''s in your bag. [Combination, Lesson 4: production, show-and-tell]',
   25,
   9,
   true
@@ -620,7 +620,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  'e97a514f-5469-4336-9c7e-e35f6a84ce4c',
+  '65cea5d9-22c9-4ff8-9bc9-7be2f2191a6e',
   1,
   'title',
   null,
@@ -631,7 +631,7 @@ values
   true
 ),
 (
-  'e97a514f-5469-4336-9c7e-e35f6a84ce4c',
+  '65cea5d9-22c9-4ff8-9bc9-7be2f2191a6e',
   2,
   'warmup',
   null,
@@ -639,15 +639,15 @@ values
   $json${
   "display": "🎒",
   "questions": [
-    "What's inside your school bag?",
-    "How many things do you have in your bag?"
+    "What do you have in your bag?",
+    "Can you show me?"
   ],
   "title": "What do you see?"
 }$json$::jsonb,
   true
 ),
 (
-  'e97a514f-5469-4336-9c7e-e35f6a84ce4c',
+  '65cea5d9-22c9-4ff8-9bc9-7be2f2191a6e',
   3,
   'vocabulary',
   null,
@@ -655,19 +655,19 @@ values
   $json${
   "words": [
     {
-      "word": "Notebook",
+      "word": "And",
       "bg": "#FAECE7"
     },
     {
-      "word": "Sharpener",
+      "word": "Have",
       "bg": "#E1F5EE"
     },
     {
-      "word": "Snack",
+      "word": "Show",
       "bg": "#EEEDFE"
     },
     {
-      "word": "Water",
+      "word": "Bag",
       "bg": "#FAEEDA"
     }
   ],
@@ -677,27 +677,27 @@ values
   true
 ),
 (
-  'e97a514f-5469-4336-9c7e-e35f6a84ce4c',
+  '65cea5d9-22c9-4ff8-9bc9-7be2f2191a6e',
   4,
   'phrases',
   null,
   null,
   $json${
   "teacher": [
-    "What's in your bag?",
-    "Do you have a snack?"
+    "What do you have in your bag?",
+    "Can you show me?"
   ],
   "student": [
-    "I have a notebook.",
-    "Yes, I have a snack!"
+    "I have a pencil and a book.",
+    "Yes, look!"
   ],
-  "note": "Think about what's really in your bag!",
+  "note": "Open your bag and show me what's inside!",
   "title": "Practice the Conversation"
 }$json$::jsonb,
   true
 ),
 (
-  'e97a514f-5469-4336-9c7e-e35f6a84ce4c',
+  '65cea5d9-22c9-4ff8-9bc9-7be2f2191a6e',
   5,
   'activity',
   null,
@@ -706,27 +706,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "In my bag, I have a [notebook]."
+      "text": "I [have] a pencil [and] a book."
     },
     {
       "speaker": "B",
-      "text": "I have a [sharpener]."
+      "text": "Let me [show] you my bag."
     },
     {
       "speaker": "A",
-      "text": "I have a [snack]."
+      "text": "I have an eraser too."
     }
   ],
   "blanks": [
-    "notebook",
-    "sharpener",
-    "snack"
+    "have",
+    "and",
+    "show"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'e97a514f-5469-4336-9c7e-e35f6a84ce4c',
+  '65cea5d9-22c9-4ff8-9bc9-7be2f2191a6e',
   6,
   'speaking',
   null,
@@ -735,69 +735,69 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "What's in your bag?"
+      "text": "What is in your bag?"
     },
     {
       "speaker": "B",
-      "text": "I have a notebook and a pencil."
+      "text": "I have a pencil and a book. I have an eraser too."
     },
     {
       "speaker": "A",
-      "text": "I have a snack and water!"
+      "text": "Show me! I have a ruler and a pencil."
     },
     {
       "speaker": "B",
-      "text": "My bag is heavy!"
+      "text": "Nice bag!"
     }
   ],
-  "note": "Switch! Student becomes A, teacher becomes B."
+  "note": "Show-and-tell: open your bag and tell me what's inside!"
 }$json$::jsonb,
   true
 ),
 (
-  'e97a514f-5469-4336-9c7e-e35f6a84ce4c',
+  '65cea5d9-22c9-4ff8-9bc9-7be2f2191a6e',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "In my bag, I have a notebook. I have a sharpener. I have a snack and water. My bag is ready for school!",
+  "text": "I have a pencil and a book in my bag. I have an eraser too. My bag is full!",
   "questions": [
-    "What does the writer have in their bag?",
-    "Does the writer have a snack?",
-    "Is the bag ready for school?"
+    "What is in the bag?",
+    "What else is in the bag?",
+    "Is the bag full or empty?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'e97a514f-5469-4336-9c7e-e35f6a84ce4c',
+  '65cea5d9-22c9-4ff8-9bc9-7be2f2191a6e',
   8,
   'writing',
   null,
   null,
   $json${
   "prompts": [
-    "In my bag, I have a ___.",
-    "I also have a ___.",
+    "I have a ___ and a ___.",
+    "I have a ___ too.",
     "My bag is ___."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'e97a514f-5469-4336-9c7e-e35f6a84ce4c',
+  '65cea5d9-22c9-4ff8-9bc9-7be2f2191a6e',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Say 'In my bag, I have a ___'",
-    "Name school supplies",
-    "Talk about what's in a bag"
+    "Say what's in my bag using 'and'",
+    "Show-and-tell my bag",
+    "Name 3+ classroom objects"
   ],
-  "challenge": "Tell me three things in your bag right now!"
+  "challenge": "Show me what's in your bag and tell me each thing!"
 }$json$::jsonb,
   true
 );
@@ -805,13 +805,13 @@ values
 -- Lesson 5: Unit Review
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '567054b7-743a-4f9f-9011-84606984aebf',
+  'd14fd8d4-8a5f-4519-b8bc-034ac6d0e02f',
   'Unit Review',
   'A1',
   'kids',
   5,
   5,
-  'Review classroom vocabulary from Unit 5.',
+  'Review classroom objects and location. [Combination, Lesson 5: tier-matched mixed review]',
   25,
   9,
   true
@@ -820,7 +820,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '567054b7-743a-4f9f-9011-84606984aebf',
+  'd14fd8d4-8a5f-4519-b8bc-034ac6d0e02f',
   1,
   'title',
   null,
@@ -831,23 +831,23 @@ values
   true
 ),
 (
-  '567054b7-743a-4f9f-9011-84606984aebf',
+  'd14fd8d4-8a5f-4519-b8bc-034ac6d0e02f',
   2,
   'warmup',
   null,
   null,
   $json${
-  "display": "🏫",
+  "display": "🎒",
   "questions": [
-    "What classroom words do you remember?",
-    "What's in your bag?"
+    "What is in your bag?",
+    "Where is your pencil?"
   ],
-  "title": "Let's Review!"
+  "title": "What do you see?"
 }$json$::jsonb,
   true
 ),
 (
-  '567054b7-743a-4f9f-9011-84606984aebf',
+  'd14fd8d4-8a5f-4519-b8bc-034ac6d0e02f',
   3,
   'vocabulary',
   null,
@@ -859,25 +859,25 @@ values
       "bg": "#FAECE7"
     },
     {
-      "word": "Book",
+      "word": "My",
       "bg": "#E1F5EE"
     },
     {
-      "word": "Board",
+      "word": "Where is",
       "bg": "#EEEDFE"
     },
     {
-      "word": "Notebook",
+      "word": "Bag",
       "bg": "#FAEEDA"
     }
   ],
-  "title": "Classroom Words",
+  "title": "New Words",
   "subtitle": "Tap a card to see it bigger."
 }$json$::jsonb,
   true
 ),
 (
-  '567054b7-743a-4f9f-9011-84606984aebf',
+  'd14fd8d4-8a5f-4519-b8bc-034ac6d0e02f',
   4,
   'phrases',
   null,
@@ -885,11 +885,11 @@ values
   $json${
   "teacher": [
     "What is this?",
-    "What's in your bag?"
+    "Where is your pencil?"
   ],
   "student": [
-    "This is a pencil.",
-    "I have a notebook."
+    "This is my pencil.",
+    "My pencil is here."
   ],
   "note": "Use everything you learned this unit!",
   "title": "Practice the Conversation"
@@ -897,7 +897,7 @@ values
   true
 ),
 (
-  '567054b7-743a-4f9f-9011-84606984aebf',
+  'd14fd8d4-8a5f-4519-b8bc-034ac6d0e02f',
   5,
   'activity',
   null,
@@ -910,23 +910,23 @@ values
     },
     {
       "speaker": "B",
-      "text": "I see a [board]."
+      "text": "[Where is] your book?"
     },
     {
       "speaker": "A",
-      "text": "In my bag, I have a [notebook]."
+      "text": "It is in my [bag]."
     }
   ],
   "blanks": [
     "pencil",
-    "board",
-    "notebook"
+    "where is",
+    "bag"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '567054b7-743a-4f9f-9011-84606984aebf',
+  'd14fd8d4-8a5f-4519-b8bc-034ac6d0e02f',
   6,
   'speaking',
   null,
@@ -935,19 +935,19 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "What is this?"
+      "text": "This is my pencil and my book."
     },
     {
       "speaker": "B",
-      "text": "It is a book."
+      "text": "Where is your eraser?"
     },
     {
       "speaker": "A",
-      "text": "What's in your bag?"
+      "text": "It is in my bag."
     },
     {
       "speaker": "B",
-      "text": "I have a notebook and a pencil!"
+      "text": "Show me your bag!"
     }
   ],
   "note": "Switch! Student becomes A, teacher becomes B."
@@ -955,38 +955,38 @@ values
   true
 ),
 (
-  '567054b7-743a-4f9f-9011-84606984aebf',
+  'd14fd8d4-8a5f-4519-b8bc-034ac6d0e02f',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "This is my classroom. I see a board and a clock. This is my bag. I have a notebook, a pencil, and a snack. I am ready for school!",
+  "text": "This is my pencil and my book. My eraser is in my bag. I have many classroom things!",
   "questions": [
-    "What does the writer see in the classroom?",
-    "What is in the writer's bag?",
-    "Is the writer ready for school?"
+    "What things are named?",
+    "Where is the eraser?",
+    "Does the writer have many things?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '567054b7-743a-4f9f-9011-84606984aebf',
+  'd14fd8d4-8a5f-4519-b8bc-034ac6d0e02f',
   8,
   'writing',
   null,
   null,
   $json${
   "prompts": [
-    "This is a ___.",
-    "In my bag, I have a ___.",
-    "My classroom has a ___."
+    "This is my ___.",
+    "My ___ is in my bag.",
+    "I have ___."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '567054b7-743a-4f9f-9011-84606984aebf',
+  'd14fd8d4-8a5f-4519-b8bc-034ac6d0e02f',
   9,
   'review',
   null,
@@ -994,11 +994,10 @@ values
   $json${
   "checklist": [
     "Name classroom objects",
-    "Say 'This is my ___'",
-    "Describe a classroom",
-    "Say what's in my bag"
+    "Say where things are",
+    "Show-and-tell my classroom things"
   ],
-  "challenge": "Show me your bag and tell me three things inside!"
+  "challenge": "Show me everything in your bag!"
 }$json$::jsonb,
   true
 );

@@ -1,16 +1,17 @@
--- A1 Kids Unit 8: Food I Like (5 lessons)
+-- A1 Kids Unit 8: Food I Like (5 lessons) — TIERED (Combination)
+-- Regenerated per the Sentivo Intra-Level Progression Framework + lesson-level escalation + task rotation.
 -- Run this whole script in the Supabase SQL editor.
 
 -- Lesson 1: Food
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '5a79ef5b-25d9-41f0-a410-b6a142a0d69e',
+  'eb13ccdf-4647-4417-b635-eceb33696e8b',
   'Food',
   'A1',
   'kids',
   8,
   1,
-  'Identify common food items.',
+  'Name common foods. [Combination, Lesson 1: notice/receptive, matching]',
   25,
   9,
   true
@@ -19,7 +20,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '5a79ef5b-25d9-41f0-a410-b6a142a0d69e',
+  'eb13ccdf-4647-4417-b635-eceb33696e8b',
   1,
   'title',
   null,
@@ -30,207 +31,7 @@ values
   true
 ),
 (
-  '5a79ef5b-25d9-41f0-a410-b6a142a0d69e',
-  2,
-  'warmup',
-  null,
-  null,
-  $json${
-  "display": "🍞",
-  "questions": [
-    "What did you eat today?",
-    "What is your favorite food?"
-  ],
-  "title": "What do you see?"
-}$json$::jsonb,
-  true
-),
-(
-  '5a79ef5b-25d9-41f0-a410-b6a142a0d69e',
-  3,
-  'vocabulary',
-  null,
-  null,
-  $json${
-  "words": [
-    {
-      "word": "Bread",
-      "bg": "#FAECE7"
-    },
-    {
-      "word": "Rice",
-      "bg": "#E1F5EE"
-    },
-    {
-      "word": "Egg",
-      "bg": "#EEEDFE"
-    },
-    {
-      "word": "Milk",
-      "bg": "#FAEEDA"
-    }
-  ],
-  "title": "New Words",
-  "subtitle": "Tap a card to see it bigger."
-}$json$::jsonb,
-  true
-),
-(
-  '5a79ef5b-25d9-41f0-a410-b6a142a0d69e',
-  4,
-  'phrases',
-  null,
-  null,
-  $json${
-  "teacher": [
-    "What is this?",
-    "Is this rice?"
-  ],
-  "student": [
-    "It is rice.",
-    "Yes, it is bread!"
-  ],
-  "note": "Think about food you ate today!",
-  "title": "Practice the Conversation"
-}$json$::jsonb,
-  true
-),
-(
-  '5a79ef5b-25d9-41f0-a410-b6a142a0d69e',
-  5,
-  'activity',
-  null,
-  null,
-  $json${
-  "dialogue": [
-    {
-      "speaker": "A",
-      "text": "This is [bread]."
-    },
-    {
-      "speaker": "B",
-      "text": "This is [rice]."
-    },
-    {
-      "speaker": "A",
-      "text": "This is [milk]."
-    }
-  ],
-  "blanks": [
-    "bread",
-    "rice",
-    "milk"
-  ]
-}$json$::jsonb,
-  true
-),
-(
-  '5a79ef5b-25d9-41f0-a410-b6a142a0d69e',
-  6,
-  'speaking',
-  null,
-  null,
-  $json${
-  "dialogue": [
-    {
-      "speaker": "A",
-      "text": "What is this?"
-    },
-    {
-      "speaker": "B",
-      "text": "It is an egg!"
-    },
-    {
-      "speaker": "A",
-      "text": "What did you eat today?"
-    },
-    {
-      "speaker": "B",
-      "text": "I ate rice and chicken!"
-    }
-  ],
-  "note": "Switch! Student becomes A, teacher becomes B."
-}$json$::jsonb,
-  true
-),
-(
-  '5a79ef5b-25d9-41f0-a410-b6a142a0d69e',
-  7,
-  'reading',
-  null,
-  null,
-  $json${
-  "text": "I eat food every day. I eat bread. I eat rice. I eat eggs. I drink milk. Food makes me strong!",
-  "questions": [
-    "What does the writer eat?",
-    "Does the writer drink milk?",
-    "Why is food important?"
-  ]
-}$json$::jsonb,
-  true
-),
-(
-  '5a79ef5b-25d9-41f0-a410-b6a142a0d69e',
-  8,
-  'writing',
-  null,
-  null,
-  $json${
-  "prompts": [
-    "I eat ___.",
-    "I drink ___.",
-    "My favorite food is ___."
-  ]
-}$json$::jsonb,
-  true
-),
-(
-  '5a79ef5b-25d9-41f0-a410-b6a142a0d69e',
-  9,
-  'review',
-  null,
-  null,
-  $json${
-  "checklist": [
-    "Name four foods",
-    "Say 'This is ___'",
-    "Talk about food I eat"
-  ],
-  "challenge": "Tell me what you ate today!"
-}$json$::jsonb,
-  true
-);
-
--- Lesson 2: Fruits
-insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
-values (
-  '9ec61994-abee-4ca8-a187-4ffbf6914dc5',
-  'Fruits',
-  'A1',
-  'kids',
-  8,
-  2,
-  'Name common fruits.',
-  25,
-  9,
-  true
-);
-
-insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
-values
-(
-  '9ec61994-abee-4ca8-a187-4ffbf6914dc5',
-  1,
-  'title',
-  null,
-  null,
-  $json${
-  "badge": "A1 · Beginner · Kids"
-}$json$::jsonb,
-  true
-),
-(
-  '9ec61994-abee-4ca8-a187-4ffbf6914dc5',
+  'eb13ccdf-4647-4417-b635-eceb33696e8b',
   2,
   'warmup',
   null,
@@ -238,15 +39,15 @@ values
   $json${
   "display": "🍎",
   "questions": [
-    "What is your favorite fruit?",
-    "Do you like apples?"
+    "Do you eat apples?",
+    "Do you drink milk?"
   ],
   "title": "What do you see?"
 }$json$::jsonb,
   true
 ),
 (
-  '9ec61994-abee-4ca8-a187-4ffbf6914dc5',
+  'eb13ccdf-4647-4417-b635-eceb33696e8b',
   3,
   'vocabulary',
   null,
@@ -258,15 +59,15 @@ values
       "bg": "#FAECE7"
     },
     {
-      "word": "Banana",
+      "word": "Bread",
       "bg": "#E1F5EE"
     },
     {
-      "word": "Orange",
+      "word": "Milk",
       "bg": "#EEEDFE"
     },
     {
-      "word": "Grapes",
+      "word": "Rice",
       "bg": "#FAEEDA"
     }
   ],
@@ -276,27 +77,27 @@ values
   true
 ),
 (
-  '9ec61994-abee-4ca8-a187-4ffbf6914dc5',
+  'eb13ccdf-4647-4417-b635-eceb33696e8b',
   4,
   'phrases',
   null,
   null,
   $json${
   "teacher": [
-    "What fruit is this?",
-    "Do you like bananas?"
+    "What food is this?",
+    "Do you eat apples?"
   ],
   "student": [
-    "It is an apple.",
-    "Yes, I like bananas!"
+    "This is an apple.",
+    "Yes, I eat apples."
   ],
-  "note": "Think of your favorite fruit!",
+  "note": "Point to a food picture!",
   "title": "Practice the Conversation"
 }$json$::jsonb,
   true
 ),
 (
-  '9ec61994-abee-4ca8-a187-4ffbf6914dc5',
+  'eb13ccdf-4647-4417-b635-eceb33696e8b',
   5,
   'activity',
   null,
@@ -305,27 +106,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "I like [apples]."
+      "text": "This is an [apple]."
     },
     {
       "speaker": "B",
-      "text": "I like [bananas]."
+      "text": "This is [bread]."
     },
     {
       "speaker": "A",
-      "text": "I like [oranges]."
+      "text": "This is [milk]."
     }
   ],
   "blanks": [
-    "apples",
-    "bananas",
-    "oranges"
+    "apple",
+    "bread",
+    "milk"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '9ec61994-abee-4ca8-a187-4ffbf6914dc5',
+  'eb13ccdf-4647-4417-b635-eceb33696e8b',
   6,
   'speaking',
   null,
@@ -334,83 +135,83 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "What is your favorite fruit?"
+      "text": "This is an apple."
     },
     {
       "speaker": "B",
-      "text": "My favorite fruit is grapes."
+      "text": "This is bread."
     },
     {
       "speaker": "A",
-      "text": "I like oranges!"
+      "text": "This is milk."
     },
     {
       "speaker": "B",
-      "text": "Oranges are yummy!"
+      "text": "This is rice!"
     }
   ],
-  "note": "Switch! Student becomes A, teacher becomes B."
+  "note": "Teacher says the food first. Student repeats, then says it alone."
 }$json$::jsonb,
   true
 ),
 (
-  '9ec61994-abee-4ca8-a187-4ffbf6914dc5',
+  'eb13ccdf-4647-4417-b635-eceb33696e8b',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "I like fruit. I like apples. I like bananas. I like oranges. My favorite fruit is grapes. Fruit is sweet and healthy!",
+  "text": "This is an apple. This is bread. This is milk.",
   "questions": [
-    "What fruits does the writer like?",
-    "What is the writer's favorite fruit?",
-    "Is fruit healthy?"
+    "What is the first food?",
+    "What is the second food?",
+    "Name all three foods."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '9ec61994-abee-4ca8-a187-4ffbf6914dc5',
+  'eb13ccdf-4647-4417-b635-eceb33696e8b',
   8,
   'writing',
   null,
   null,
   $json${
   "prompts": [
-    "I like ___.",
-    "My favorite fruit is ___.",
-    "___ is sweet."
+    "This is ___.",
+    "I eat ___.",
+    "I drink ___."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '9ec61994-abee-4ca8-a187-4ffbf6914dc5',
+  'eb13ccdf-4647-4417-b635-eceb33696e8b',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Name four fruits",
-    "Say 'I like ___'",
-    "Talk about favorite fruit"
+    "Name 4 foods",
+    "Say 'This is ___'",
+    "Point to a food"
   ],
-  "challenge": "Tell me your favorite fruit!"
+  "challenge": "Point to a food and name it!"
 }$json$::jsonb,
   true
 );
 
--- Lesson 3: I Like / I Don't Like
+-- Lesson 2: Fruits
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '419ccf14-e86a-461b-aa2d-cae8af0dc47a',
-  'I Like / I Don''t Like',
+  '6ef0f1c2-62b9-4502-8763-fcd9807fcdf3',
+  'Fruits',
   'A1',
   'kids',
   8,
-  3,
-  'Express simple food preferences.',
+  2,
+  'Name fruits and combine with ''and''. [Combination, Lesson 2: controlled practice]',
   25,
   9,
   true
@@ -419,7 +220,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '419ccf14-e86a-461b-aa2d-cae8af0dc47a',
+  '6ef0f1c2-62b9-4502-8763-fcd9807fcdf3',
   1,
   'title',
   null,
@@ -430,23 +231,23 @@ values
   true
 ),
 (
-  '419ccf14-e86a-461b-aa2d-cae8af0dc47a',
+  '6ef0f1c2-62b9-4502-8763-fcd9807fcdf3',
   2,
   'warmup',
   null,
   null,
   $json${
-  "display": "😋",
+  "display": "🍌",
   "questions": [
-    "What food do you like?",
-    "What food don't you like?"
+    "Do you like bananas?",
+    "Do you eat grapes?"
   ],
   "title": "What do you see?"
 }$json$::jsonb,
   true
 ),
 (
-  '419ccf14-e86a-461b-aa2d-cae8af0dc47a',
+  '6ef0f1c2-62b9-4502-8763-fcd9807fcdf3',
   3,
   'vocabulary',
   null,
@@ -454,19 +255,19 @@ values
   $json${
   "words": [
     {
-      "word": "Chicken",
+      "word": "Banana",
       "bg": "#FAECE7"
     },
     {
-      "word": "Vegetables",
+      "word": "Orange",
       "bg": "#E1F5EE"
     },
     {
-      "word": "Cake",
+      "word": "Grapes",
       "bg": "#EEEDFE"
     },
     {
-      "word": "Fish",
+      "word": "And",
       "bg": "#FAEEDA"
     }
   ],
@@ -476,27 +277,27 @@ values
   true
 ),
 (
-  '419ccf14-e86a-461b-aa2d-cae8af0dc47a',
+  '6ef0f1c2-62b9-4502-8763-fcd9807fcdf3',
   4,
   'phrases',
   null,
   null,
   $json${
   "teacher": [
-    "Do you like vegetables?",
-    "Do you like cake?"
+    "Do you like bananas?",
+    "Do you eat oranges?"
   ],
   "student": [
-    "I don't like vegetables.",
-    "Yes, I like cake!"
+    "Yes, I like bananas.",
+    "Yes, I eat oranges."
   ],
-  "note": "Think of one food you like and one you don't!",
+  "note": "Use the word bank: banana, orange, grapes, and.",
   "title": "Practice the Conversation"
 }$json$::jsonb,
   true
 ),
 (
-  '419ccf14-e86a-461b-aa2d-cae8af0dc47a',
+  '6ef0f1c2-62b9-4502-8763-fcd9807fcdf3',
   5,
   'activity',
   null,
@@ -505,27 +306,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "I [like] chicken."
+      "text": "I eat a [banana] [and] an [orange]."
     },
     {
       "speaker": "B",
-      "text": "I don't [like] fish."
+      "text": "I eat [grapes] too."
     },
     {
       "speaker": "A",
-      "text": "I like [cake]."
+      "text": "Fruit is good for me!"
     }
   ],
   "blanks": [
-    "like",
-    "like",
-    "cake"
+    "banana",
+    "and",
+    "grapes"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '419ccf14-e86a-461b-aa2d-cae8af0dc47a',
+  '6ef0f1c2-62b9-4502-8763-fcd9807fcdf3',
   6,
   'speaking',
   null,
@@ -534,19 +335,19 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "Do you like vegetables?"
+      "text": "I eat a banana and an orange."
     },
     {
       "speaker": "B",
-      "text": "No, I don't like vegetables."
+      "text": "I eat grapes too!"
     },
     {
       "speaker": "A",
-      "text": "Do you like chicken?"
+      "text": "Fruit is good for me."
     },
     {
       "speaker": "B",
-      "text": "Yes, I like chicken!"
+      "text": "I love fruit!"
     }
   ],
   "note": "Switch! Student becomes A, teacher becomes B."
@@ -554,63 +355,63 @@ values
   true
 ),
 (
-  '419ccf14-e86a-461b-aa2d-cae8af0dc47a',
+  '6ef0f1c2-62b9-4502-8763-fcd9807fcdf3',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "I like chicken. I like cake. I don't like fish. I don't like vegetables very much. Everyone likes different food!",
+  "text": "I eat a banana and an orange. I eat grapes too. Fruit is good for me!",
   "questions": [
-    "What food does the writer like?",
-    "What food does the writer not like?",
-    "Does everyone like the same food?"
+    "What two fruits does the writer eat first?",
+    "What fruit does the writer eat too?",
+    "Is fruit good?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '419ccf14-e86a-461b-aa2d-cae8af0dc47a',
+  '6ef0f1c2-62b9-4502-8763-fcd9807fcdf3',
   8,
   'writing',
   null,
   null,
   $json${
   "prompts": [
-    "I like ___.",
-    "I don't like ___.",
-    "My friend likes ___."
+    "I eat a ___ and a/an ___.",
+    "I eat ___ too.",
+    "Fruit is ___ for me."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '419ccf14-e86a-461b-aa2d-cae8af0dc47a',
+  '6ef0f1c2-62b9-4502-8763-fcd9807fcdf3',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Say 'I like ___'",
-    "Say 'I don't like ___'",
-    "Talk about food preferences"
+    "Name 3 fruits",
+    "Use 'and' to join two fruits",
+    "Say fruit is good"
   ],
-  "challenge": "Tell me one food you like and one you don't like!"
+  "challenge": "Name two fruits together using 'and'!"
 }$json$::jsonb,
   true
 );
 
--- Lesson 4: Healthy Food
+-- Lesson 3: I Like / I Don't Like
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '87e2a439-0b86-4bbc-9d99-bf0fbb408d3e',
-  'Healthy Food',
+  'a98e85f0-872b-4767-976c-4a3ba9179342',
+  'I Like / I Don''t Like',
   'A1',
   'kids',
   8,
-  4,
-  'Recognize simple healthy food.',
+  3,
+  'Say food likes and dislikes. [Combination, Lesson 3: freer practice, TPR thumbs up/down]',
   25,
   9,
   true
@@ -619,7 +420,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '87e2a439-0b86-4bbc-9d99-bf0fbb408d3e',
+  'a98e85f0-872b-4767-976c-4a3ba9179342',
   1,
   'title',
   null,
@@ -630,23 +431,223 @@ values
   true
 ),
 (
-  '87e2a439-0b86-4bbc-9d99-bf0fbb408d3e',
+  'a98e85f0-872b-4767-976c-4a3ba9179342',
   2,
   'warmup',
   null,
   null,
   $json${
-  "display": "🥦",
+  "display": "🥕",
   "questions": [
-    "What food is healthy?",
-    "Do you eat vegetables?"
+    "Do you like carrots?",
+    "Is pizza yummy?"
   ],
   "title": "What do you see?"
 }$json$::jsonb,
   true
 ),
 (
-  '87e2a439-0b86-4bbc-9d99-bf0fbb408d3e',
+  'a98e85f0-872b-4767-976c-4a3ba9179342',
+  3,
+  'vocabulary',
+  null,
+  null,
+  $json${
+  "words": [
+    {
+      "word": "I like",
+      "bg": "#FAECE7"
+    },
+    {
+      "word": "I don't like",
+      "bg": "#E1F5EE"
+    },
+    {
+      "word": "Yummy",
+      "bg": "#EEEDFE"
+    },
+    {
+      "word": "Yucky",
+      "bg": "#FAEEDA"
+    }
+  ],
+  "title": "New Words",
+  "subtitle": "Tap a card to see it bigger."
+}$json$::jsonb,
+  true
+),
+(
+  'a98e85f0-872b-4767-976c-4a3ba9179342',
+  4,
+  'phrases',
+  null,
+  null,
+  $json${
+  "teacher": [
+    "Do you like carrots?",
+    "Is it yummy or yucky?"
+  ],
+  "student": [
+    "I like carrots, they are yummy.",
+    "I don't like it, it's yucky."
+  ],
+  "note": "Thumbs up for yummy, thumbs down for yucky!",
+  "title": "Practice the Conversation"
+}$json$::jsonb,
+  true
+),
+(
+  'a98e85f0-872b-4767-976c-4a3ba9179342',
+  5,
+  'activity',
+  null,
+  null,
+  $json${
+  "dialogue": [
+    {
+      "speaker": "A",
+      "text": "[I like] pizza. It is [yummy]."
+    },
+    {
+      "speaker": "B",
+      "text": "[I don't like] fish."
+    },
+    {
+      "speaker": "A",
+      "text": "That's [yucky] for me."
+    }
+  ],
+  "blanks": [
+    "i like",
+    "i don't like",
+    "yummy"
+  ]
+}$json$::jsonb,
+  true
+),
+(
+  'a98e85f0-872b-4767-976c-4a3ba9179342',
+  6,
+  'speaking',
+  null,
+  null,
+  $json${
+  "dialogue": [
+    {
+      "speaker": "A",
+      "text": "Do you like pizza?"
+    },
+    {
+      "speaker": "B",
+      "text": "I like pizza, it's yummy! I don't like fish, it's yucky for me."
+    },
+    {
+      "speaker": "A",
+      "text": "I like carrots too."
+    },
+    {
+      "speaker": "B",
+      "text": "Thumbs up or thumbs down for carrots?"
+    }
+  ],
+  "note": "Thumbs up/thumbs down game: I say a food, you show thumbs up or down and say why!"
+}$json$::jsonb,
+  true
+),
+(
+  'a98e85f0-872b-4767-976c-4a3ba9179342',
+  7,
+  'reading',
+  null,
+  null,
+  $json${
+  "text": "I like pizza. It is yummy. I don't like fish. It is yucky for me.",
+  "questions": [
+    "What does the writer like?",
+    "What doesn't the writer like?",
+    "Is fish yummy or yucky for the writer?"
+  ]
+}$json$::jsonb,
+  true
+),
+(
+  'a98e85f0-872b-4767-976c-4a3ba9179342',
+  8,
+  'writing',
+  null,
+  null,
+  $json${
+  "prompts": [
+    "I like ___. It is yummy.",
+    "I don't like ___.",
+    "It is yucky for me."
+  ]
+}$json$::jsonb,
+  true
+),
+(
+  'a98e85f0-872b-4767-976c-4a3ba9179342',
+  9,
+  'review',
+  null,
+  null,
+  $json${
+  "checklist": [
+    "Say 'I like' and 'I don't like'",
+    "Say 'yummy' and 'yucky'",
+    "Show thumbs up or down for a food"
+  ],
+  "challenge": "Tell me a food you like and a food you don't like!"
+}$json$::jsonb,
+  true
+);
+
+-- Lesson 4: Healthy Food
+insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
+values (
+  '7609619a-462c-4485-99d3-5e33724e18ad',
+  'Healthy Food',
+  'A1',
+  'kids',
+  8,
+  4,
+  'Combine food vocabulary into a healthy-eating talk. [Combination, Lesson 4: production, show-and-tell]',
+  25,
+  9,
+  true
+);
+
+insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
+values
+(
+  '7609619a-462c-4485-99d3-5e33724e18ad',
+  1,
+  'title',
+  null,
+  null,
+  $json${
+  "badge": "A1 · Beginner · Kids"
+}$json$::jsonb,
+  true
+),
+(
+  '7609619a-462c-4485-99d3-5e33724e18ad',
+  2,
+  'warmup',
+  null,
+  null,
+  $json${
+  "display": "🥗",
+  "questions": [
+    "What healthy food do you eat?",
+    "What do you drink every day?"
+  ],
+  "title": "What do you see?"
+}$json$::jsonb,
+  true
+),
+(
+  '7609619a-462c-4485-99d3-5e33724e18ad',
   3,
   'vocabulary',
   null,
@@ -658,15 +659,15 @@ values
       "bg": "#FAECE7"
     },
     {
-      "word": "Carrot",
+      "word": "Good for me",
       "bg": "#E1F5EE"
     },
     {
-      "word": "Broccoli",
+      "word": "Eat",
       "bg": "#EEEDFE"
     },
     {
-      "word": "Water",
+      "word": "Drink",
       "bg": "#FAEEDA"
     }
   ],
@@ -676,27 +677,27 @@ values
   true
 ),
 (
-  '87e2a439-0b86-4bbc-9d99-bf0fbb408d3e',
+  '7609619a-462c-4485-99d3-5e33724e18ad',
   4,
   'phrases',
   null,
   null,
   $json${
   "teacher": [
-    "Is this healthy?",
-    "Do you drink water?"
+    "What healthy food do you eat?",
+    "What do you drink?"
   ],
   "student": [
-    "Yes, it is healthy.",
-    "Yes, I drink water every day!"
+    "I eat apples, they are healthy.",
+    "I drink milk every day."
   ],
-  "note": "Think about food that is good for you!",
+  "note": "Put it all together: food + drink + healthy opinion.",
   "title": "Practice the Conversation"
 }$json$::jsonb,
   true
 ),
 (
-  '87e2a439-0b86-4bbc-9d99-bf0fbb408d3e',
+  '7609619a-462c-4485-99d3-5e33724e18ad',
   5,
   'activity',
   null,
@@ -705,27 +706,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "Carrots are [healthy]."
+      "text": "I [eat] apples. They are [healthy]."
     },
     {
       "speaker": "B",
-      "text": "I eat [broccoli]."
+      "text": "I [drink] milk."
     },
     {
       "speaker": "A",
-      "text": "I drink [water]."
+      "text": "It is [good for me]."
     }
   ],
   "blanks": [
+    "eat",
     "healthy",
-    "broccoli",
-    "water"
+    "good for me"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '87e2a439-0b86-4bbc-9d99-bf0fbb408d3e',
+  '7609619a-462c-4485-99d3-5e33724e18ad',
   6,
   'speaking',
   null,
@@ -734,58 +735,58 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "What's healthy?"
+      "text": "What healthy food do you eat?"
     },
     {
       "speaker": "B",
-      "text": "Carrots and broccoli are healthy!"
+      "text": "I eat apples and bananas. They are healthy."
     },
     {
       "speaker": "A",
-      "text": "I eat vegetables. It's healthy!"
+      "text": "I drink milk every day. It is good for me."
     },
     {
       "speaker": "B",
-      "text": "I drink water every day!"
+      "text": "I like healthy food too!"
     }
   ],
-  "note": "Switch! Student becomes A, teacher becomes B."
+  "note": "Show-and-tell: tell me your healthy foods for today!"
 }$json$::jsonb,
   true
 ),
 (
-  '87e2a439-0b86-4bbc-9d99-bf0fbb408d3e',
+  '7609619a-462c-4485-99d3-5e33724e18ad',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "I eat healthy food. I eat carrots. I eat broccoli. I drink water every day. Healthy food makes me strong and happy!",
+  "text": "I eat apples and bananas. They are healthy. I drink milk every day. It is good for me.",
   "questions": [
-    "What healthy food does the writer eat?",
-    "Does the writer drink water?",
-    "How does healthy food make the writer feel?"
+    "What healthy foods does the writer eat?",
+    "What does the writer drink?",
+    "Is milk good for the writer?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '87e2a439-0b86-4bbc-9d99-bf0fbb408d3e',
+  '7609619a-462c-4485-99d3-5e33724e18ad',
   8,
   'writing',
   null,
   null,
   $json${
   "prompts": [
-    "I eat ___. It's healthy.",
-    "I drink ___.",
-    "Healthy food makes me ___."
+    "I eat ___ and ___.",
+    "They are healthy.",
+    "I drink ___ every day."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '87e2a439-0b86-4bbc-9d99-bf0fbb408d3e',
+  '7609619a-462c-4485-99d3-5e33724e18ad',
   9,
   'review',
   null,
@@ -793,10 +794,10 @@ values
   $json${
   "checklist": [
     "Name healthy foods",
-    "Say 'It's healthy'",
+    "Say 'good for me'",
     "Talk about healthy eating"
   ],
-  "challenge": "Name one healthy food you eat!"
+  "challenge": "Tell me your healthy foods and drinks!"
 }$json$::jsonb,
   true
 );
@@ -804,13 +805,13 @@ values
 -- Lesson 5: Unit Review
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '96d5c817-c957-4069-8a39-bfe4e37f63ca',
+  'bd117b4f-5984-49ad-9fc4-5df329dea81b',
   'Unit Review',
   'A1',
   'kids',
   8,
   5,
-  'Review food vocabulary and preference language.',
+  'Review food, fruit, and likes/dislikes. [Combination, Lesson 5: tier-matched mixed review]',
   25,
   9,
   true
@@ -819,7 +820,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '96d5c817-c957-4069-8a39-bfe4e37f63ca',
+  'bd117b4f-5984-49ad-9fc4-5df329dea81b',
   1,
   'title',
   null,
@@ -830,7 +831,7 @@ values
   true
 ),
 (
-  '96d5c817-c957-4069-8a39-bfe4e37f63ca',
+  'bd117b4f-5984-49ad-9fc4-5df329dea81b',
   2,
   'warmup',
   null,
@@ -838,15 +839,15 @@ values
   $json${
   "display": "🍎",
   "questions": [
-    "What foods do you remember?",
-    "What do you like to eat?"
+    "What food do you like?",
+    "Is it healthy?"
   ],
-  "title": "Let's Review!"
+  "title": "What do you see?"
 }$json$::jsonb,
   true
 ),
 (
-  '96d5c817-c957-4069-8a39-bfe4e37f63ca',
+  'bd117b4f-5984-49ad-9fc4-5df329dea81b',
   3,
   'vocabulary',
   null,
@@ -854,41 +855,41 @@ values
   $json${
   "words": [
     {
-      "word": "Bread",
+      "word": "Food",
       "bg": "#FAECE7"
     },
     {
-      "word": "Apple",
+      "word": "Like",
       "bg": "#E1F5EE"
     },
     {
-      "word": "Chicken",
+      "word": "Yummy",
       "bg": "#EEEDFE"
     },
     {
-      "word": "Water",
+      "word": "Healthy",
       "bg": "#FAEEDA"
     }
   ],
-  "title": "Review Words",
+  "title": "New Words",
   "subtitle": "Tap a card to see it bigger."
 }$json$::jsonb,
   true
 ),
 (
-  '96d5c817-c957-4069-8a39-bfe4e37f63ca',
+  'bd117b4f-5984-49ad-9fc4-5df329dea81b',
   4,
   'phrases',
   null,
   null,
   $json${
   "teacher": [
-    "What is this?",
-    "Do you like it?"
+    "What food do you like?",
+    "Is it healthy?"
   ],
   "student": [
-    "It is an apple.",
-    "Yes, I like it!"
+    "I like apples.",
+    "Yes, they are healthy."
   ],
   "note": "Use everything you learned this unit!",
   "title": "Practice the Conversation"
@@ -896,7 +897,7 @@ values
   true
 ),
 (
-  '96d5c817-c957-4069-8a39-bfe4e37f63ca',
+  'bd117b4f-5984-49ad-9fc4-5df329dea81b',
   5,
   'activity',
   null,
@@ -905,27 +906,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "This is [bread]."
+      "text": "I [like] apples and bananas."
     },
     {
       "speaker": "B",
-      "text": "I like [apples]."
+      "text": "They are [yummy] and [healthy]."
     },
     {
       "speaker": "A",
-      "text": "I don't [like] fish."
+      "text": "I eat healthy [food]."
     }
   ],
   "blanks": [
-    "bread",
-    "apples",
-    "like"
+    "like",
+    "yummy",
+    "food"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '96d5c817-c957-4069-8a39-bfe4e37f63ca',
+  'bd117b4f-5984-49ad-9fc4-5df329dea81b',
   6,
   'speaking',
   null,
@@ -934,15 +935,15 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "What is your favorite food?"
+      "text": "I like apples and bananas. They are yummy and healthy."
     },
     {
       "speaker": "B",
-      "text": "My favorite food is chicken."
+      "text": "I like carrots. I don't like fish."
     },
     {
       "speaker": "A",
-      "text": "I like apples and water!"
+      "text": "I drink milk every day."
     },
     {
       "speaker": "B",
@@ -954,49 +955,49 @@ values
   true
 ),
 (
-  '96d5c817-c957-4069-8a39-bfe4e37f63ca',
+  'bd117b4f-5984-49ad-9fc4-5df329dea81b',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "I eat many foods. I eat bread and rice. I like apples and bananas. I don't like fish. I drink water every day. I try to eat healthy food!",
+  "text": "I like apples and bananas. They are yummy and healthy. I drink milk every day. Healthy food is good for me!",
   "questions": [
-    "What does the writer eat?",
-    "What fruit does the writer like?",
-    "What does the writer not like?"
+    "What foods does the writer like?",
+    "Are they yummy or yucky?",
+    "Is healthy food good?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '96d5c817-c957-4069-8a39-bfe4e37f63ca',
+  'bd117b4f-5984-49ad-9fc4-5df329dea81b',
   8,
   'writing',
   null,
   null,
   $json${
   "prompts": [
-    "I eat ___.",
-    "I like ___.",
-    "I don't like ___."
+    "I like ___ and ___.",
+    "They are ___.",
+    "Healthy food is ___ for me."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '96d5c817-c957-4069-8a39-bfe4e37f63ca',
+  'bd117b4f-5984-49ad-9fc4-5df329dea81b',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Name foods and fruits",
-    "Say 'I like ___' / 'I don't like ___'",
+    "Name foods",
+    "Say likes and dislikes",
     "Talk about healthy food"
   ],
-  "challenge": "Tell me three foods you like and one you don't!"
+  "challenge": "Tell me all about your favorite foods!"
 }$json$::jsonb,
   true
 );

@@ -1,17 +1,17 @@
--- A1 Kids Unit 6: Animals (5 lessons)
--- Generated from project_a1_kids_master_curriculum memory, Unit 6.
+-- A1 Kids Unit 6: Animals (5 lessons) — TIERED (Combination)
+-- Regenerated per the Sentivo Intra-Level Progression Framework + lesson-level escalation + task rotation.
 -- Run this whole script in the Supabase SQL editor.
 
 -- Lesson 1: Animals
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '1d55c419-a820-4dfd-9e57-f2357cd9f716',
+  'f47bc376-262a-4819-891f-9432fc9e3f66',
   'Animals',
   'A1',
   'kids',
   6,
   1,
-  'Identify common animals.',
+  'Name common animals. [Combination, Lesson 1: notice/receptive, matching]',
   25,
   9,
   true
@@ -20,7 +20,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '1d55c419-a820-4dfd-9e57-f2357cd9f716',
+  'f47bc376-262a-4819-891f-9432fc9e3f66',
   1,
   'title',
   null,
@@ -31,7 +31,7 @@ values
   true
 ),
 (
-  '1d55c419-a820-4dfd-9e57-f2357cd9f716',
+  'f47bc376-262a-4819-891f-9432fc9e3f66',
   2,
   'warmup',
   null,
@@ -39,15 +39,15 @@ values
   $json${
   "display": "🐶",
   "questions": [
-    "What animals do you know?",
-    "What sound does a dog make?"
+    "Do you have a pet?",
+    "Do you like dogs?"
   ],
   "title": "What do you see?"
 }$json$::jsonb,
   true
 ),
 (
-  '1d55c419-a820-4dfd-9e57-f2357cd9f716',
+  'f47bc376-262a-4819-891f-9432fc9e3f66',
   3,
   'vocabulary',
   null,
@@ -77,27 +77,27 @@ values
   true
 ),
 (
-  '1d55c419-a820-4dfd-9e57-f2357cd9f716',
+  'f47bc376-262a-4819-891f-9432fc9e3f66',
   4,
   'phrases',
   null,
   null,
   $json${
   "teacher": [
-    "What is this animal?",
-    "Is it a dog?"
+    "What animal is this?",
+    "Do you like dogs?"
   ],
   "student": [
-    "It is a dog.",
-    "No, it is a cat!"
+    "This is a dog.",
+    "Yes, I like dogs!"
   ],
-  "note": "Make an animal sound when you practice!",
+  "note": "Point to an animal picture!",
   "title": "Practice the Conversation"
 }$json$::jsonb,
   true
 ),
 (
-  '1d55c419-a820-4dfd-9e57-f2357cd9f716',
+  'f47bc376-262a-4819-891f-9432fc9e3f66',
   5,
   'activity',
   null,
@@ -106,15 +106,15 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "It is a [dog]."
+      "text": "This is a [dog]."
     },
     {
       "speaker": "B",
-      "text": "It is a [cat]."
+      "text": "This is a [cat]."
     },
     {
       "speaker": "A",
-      "text": "It is a [bird]."
+      "text": "This is a [bird]."
     }
   ],
   "blanks": [
@@ -126,7 +126,7 @@ values
   true
 ),
 (
-  '1d55c419-a820-4dfd-9e57-f2357cd9f716',
+  'f47bc376-262a-4819-891f-9432fc9e3f66',
   6,
   'speaking',
   null,
@@ -135,69 +135,69 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "What is this animal?"
+      "text": "This is a dog."
     },
     {
       "speaker": "B",
-      "text": "It is a fish!"
+      "text": "This is a cat."
     },
     {
       "speaker": "A",
-      "text": "What sound does a dog make?"
+      "text": "This is a bird."
     },
     {
       "speaker": "B",
-      "text": "Woof woof!"
+      "text": "This is a fish!"
     }
   ],
-  "note": "Switch! Student becomes A, teacher becomes B."
+  "note": "Teacher says the animal first. Student repeats, then says it alone."
 }$json$::jsonb,
   true
 ),
 (
-  '1d55c419-a820-4dfd-9e57-f2357cd9f716',
+  'f47bc376-262a-4819-891f-9432fc9e3f66',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "I like animals! A dog says woof. A cat says meow. A bird can fly. A fish can swim. Animals are fun!",
+  "text": "This is a dog. This is a cat. This is a bird.",
   "questions": [
-    "What sound does a dog make?",
-    "What sound does a cat make?",
-    "What can a fish do?"
+    "What is the first animal?",
+    "What is the second animal?",
+    "Name all three animals."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '1d55c419-a820-4dfd-9e57-f2357cd9f716',
+  'f47bc376-262a-4819-891f-9432fc9e3f66',
   8,
   'writing',
   null,
   null,
   $json${
   "prompts": [
-    "A dog says ___.",
-    "My favorite animal is ___.",
-    "A ___ can ___."
+    "This is a ___.",
+    "I see a ___.",
+    "My favorite animal is ___."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '1d55c419-a820-4dfd-9e57-f2357cd9f716',
+  'f47bc376-262a-4819-891f-9432fc9e3f66',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Name four animals",
-    "Say animal sounds",
-    "Answer 'What is this animal?'"
+    "Name 4 animals",
+    "Say 'This is a ___'",
+    "Point to an animal"
   ],
-  "challenge": "Name your favorite animal and make its sound!"
+  "challenge": "Point to an animal picture and name it!"
 }$json$::jsonb,
   true
 );
@@ -205,13 +205,13 @@ values
 -- Lesson 2: Farm Animals
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '709388bc-3198-4079-b4c2-103f383a7265',
+  'd3045560-ac5a-444b-a3c9-b40f20632af7',
   'Farm Animals',
   'A1',
   'kids',
   6,
   2,
-  'Name common farm animals.',
+  'Name farm animals and combine with ''and''. [Combination, Lesson 2: controlled practice]',
   25,
   9,
   true
@@ -220,7 +220,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '709388bc-3198-4079-b4c2-103f383a7265',
+  'd3045560-ac5a-444b-a3c9-b40f20632af7',
   1,
   'title',
   null,
@@ -231,7 +231,7 @@ values
   true
 ),
 (
-  '709388bc-3198-4079-b4c2-103f383a7265',
+  'd3045560-ac5a-444b-a3c9-b40f20632af7',
   2,
   'warmup',
   null,
@@ -239,15 +239,15 @@ values
   $json${
   "display": "🐄",
   "questions": [
-    "Have you visited a farm?",
-    "What animals live on a farm?"
+    "Have you seen a cow?",
+    "Do you like horses?"
   ],
   "title": "What do you see?"
 }$json$::jsonb,
   true
 ),
 (
-  '709388bc-3198-4079-b4c2-103f383a7265',
+  'd3045560-ac5a-444b-a3c9-b40f20632af7',
   3,
   'vocabulary',
   null,
@@ -259,15 +259,15 @@ values
       "bg": "#FAECE7"
     },
     {
-      "word": "Pig",
+      "word": "Horse",
       "bg": "#E1F5EE"
     },
     {
-      "word": "Horse",
+      "word": "Sheep",
       "bg": "#EEEDFE"
     },
     {
-      "word": "Sheep",
+      "word": "And",
       "bg": "#FAEEDA"
     }
   ],
@@ -277,27 +277,27 @@ values
   true
 ),
 (
-  '709388bc-3198-4079-b4c2-103f383a7265',
+  'd3045560-ac5a-444b-a3c9-b40f20632af7',
   4,
   'phrases',
   null,
   null,
   $json${
   "teacher": [
-    "What animal is this?",
-    "Is it a cow?"
+    "Have you seen a cow?",
+    "Do you like horses?"
   ],
   "student": [
-    "It is a cow.",
-    "Yes, it is a pig!"
+    "Yes, I have seen a cow.",
+    "Yes, I like horses."
   ],
-  "note": "Think about a farm you have seen or a picture!",
+  "note": "Use the word bank: cow, horse, sheep, and.",
   "title": "Practice the Conversation"
 }$json$::jsonb,
   true
 ),
 (
-  '709388bc-3198-4079-b4c2-103f383a7265',
+  'd3045560-ac5a-444b-a3c9-b40f20632af7',
   5,
   'activity',
   null,
@@ -306,27 +306,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "It is a [cow]."
+      "text": "I see a [cow] [and] a [horse]."
     },
     {
       "speaker": "B",
-      "text": "It is a [pig]."
+      "text": "I see a [sheep] too."
     },
     {
       "speaker": "A",
-      "text": "It is a [horse]."
+      "text": "Farm animals are fun!"
     }
   ],
   "blanks": [
     "cow",
-    "pig",
-    "horse"
+    "and",
+    "sheep"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '709388bc-3198-4079-b4c2-103f383a7265',
+  'd3045560-ac5a-444b-a3c9-b40f20632af7',
   6,
   'speaking',
   null,
@@ -335,19 +335,19 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "What animal is this?"
+      "text": "I see a cow and a horse."
     },
     {
       "speaker": "B",
-      "text": "It is a sheep!"
+      "text": "I see a sheep too!"
     },
     {
       "speaker": "A",
-      "text": "What sound does a cow make?"
+      "text": "Farm animals are fun."
     },
     {
       "speaker": "B",
-      "text": "Moo moo!"
+      "text": "I love farm animals!"
     }
   ],
   "note": "Switch! Student becomes A, teacher becomes B."
@@ -355,49 +355,49 @@ values
   true
 ),
 (
-  '709388bc-3198-4079-b4c2-103f383a7265',
+  'd3045560-ac5a-444b-a3c9-b40f20632af7',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "On the farm, I see a cow. I see a pig. I see a horse. I see a sheep. The farm has many animals!",
+  "text": "I see a cow and a horse. I see a sheep too. Farm animals are fun!",
   "questions": [
-    "What animals are on the farm?",
-    "Does the farm have a horse?",
-    "How many animals does the writer see?"
+    "What two animals does the writer see first?",
+    "What animal does the writer see too?",
+    "Are farm animals fun?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '709388bc-3198-4079-b4c2-103f383a7265',
+  'd3045560-ac5a-444b-a3c9-b40f20632af7',
   8,
   'writing',
   null,
   null,
   $json${
   "prompts": [
-    "On the farm, I see a ___.",
-    "A cow says ___.",
-    "My favorite farm animal is ___."
+    "I see a ___ and a ___.",
+    "I see a ___ too.",
+    "Farm animals are ___."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '709388bc-3198-4079-b4c2-103f383a7265',
+  'd3045560-ac5a-444b-a3c9-b40f20632af7',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Name four farm animals",
-    "Say 'On the farm, I see a ___'",
-    "Talk about farm animals"
+    "Name 3 farm animals",
+    "Use 'and' to join two animals",
+    "Say if farm animals are fun"
   ],
-  "challenge": "Name three farm animals right now!"
+  "challenge": "Name two farm animals together using 'and'!"
 }$json$::jsonb,
   true
 );
@@ -405,13 +405,13 @@ values
 -- Lesson 3: Pets
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '32bc09a2-d3a2-44ec-a5d8-e76cf4449960',
+  '39e1541f-0c79-49c2-b9fc-90b27adefe18',
   'Pets',
   'A1',
   'kids',
   6,
   3,
-  'Say pet names and basic preferences.',
+  'Say pet preferences with ''I like/I don''t like''. [Combination, Lesson 3: freer practice, TPR animal sounds]',
   25,
   9,
   true
@@ -420,7 +420,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '32bc09a2-d3a2-44ec-a5d8-e76cf4449960',
+  '39e1541f-0c79-49c2-b9fc-90b27adefe18',
   1,
   'title',
   null,
@@ -431,7 +431,7 @@ values
   true
 ),
 (
-  '32bc09a2-d3a2-44ec-a5d8-e76cf4449960',
+  '39e1541f-0c79-49c2-b9fc-90b27adefe18',
   2,
   'warmup',
   null,
@@ -440,14 +440,14 @@ values
   "display": "🐱",
   "questions": [
     "Do you have a pet?",
-    "What pet would you like?"
+    "What pet do you like?"
   ],
   "title": "What do you see?"
 }$json$::jsonb,
   true
 ),
 (
-  '32bc09a2-d3a2-44ec-a5d8-e76cf4449960',
+  '39e1541f-0c79-49c2-b9fc-90b27adefe18',
   3,
   'vocabulary',
   null,
@@ -455,19 +455,19 @@ values
   $json${
   "words": [
     {
-      "word": "Rabbit",
+      "word": "Pet",
       "bg": "#FAECE7"
     },
     {
-      "word": "Pet",
+      "word": "I like",
       "bg": "#E1F5EE"
     },
     {
-      "word": "Like",
+      "word": "I don't like",
       "bg": "#EEEDFE"
     },
     {
-      "word": "Have",
+      "word": "Cute",
       "bg": "#FAEEDA"
     }
   ],
@@ -477,27 +477,27 @@ values
   true
 ),
 (
-  '32bc09a2-d3a2-44ec-a5d8-e76cf4449960',
+  '39e1541f-0c79-49c2-b9fc-90b27adefe18',
   4,
   'phrases',
   null,
   null,
   $json${
   "teacher": [
-    "Do you have a pet?",
-    "What pet do you like?"
+    "Do you like cats?",
+    "What pet do you want?"
   ],
   "student": [
-    "Yes, I have a dog.",
-    "I like cats!"
+    "I like cats, they are cute.",
+    "I want a dog."
   ],
-  "note": "Think of a real or dream pet!",
+  "note": "Make an animal sound, then say if you like it!",
   "title": "Practice the Conversation"
 }$json$::jsonb,
   true
 ),
 (
-  '32bc09a2-d3a2-44ec-a5d8-e76cf4449960',
+  '39e1541f-0c79-49c2-b9fc-90b27adefe18',
   5,
   'activity',
   null,
@@ -506,27 +506,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "I [have] a dog."
+      "text": "[I like] cats. They are [cute]."
     },
     {
       "speaker": "B",
-      "text": "I [like] cats."
+      "text": "[I don't like] big dogs."
     },
     {
       "speaker": "A",
-      "text": "I want a [rabbit]."
+      "text": "I like small [pet]s."
     }
   ],
   "blanks": [
-    "have",
-    "like",
-    "rabbit"
+    "i like",
+    "i don't like",
+    "cute"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '32bc09a2-d3a2-44ec-a5d8-e76cf4449960',
+  '39e1541f-0c79-49c2-b9fc-90b27adefe18',
   6,
   'speaking',
   null,
@@ -535,69 +535,69 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "Do you have a pet?"
+      "text": "Do you like cats?"
     },
     {
       "speaker": "B",
-      "text": "Yes, I have a cat."
+      "text": "I like cats, they are cute! I don't like big dogs."
     },
     {
       "speaker": "A",
-      "text": "I like rabbits!"
+      "text": "I like small pets too."
     },
     {
       "speaker": "B",
-      "text": "Rabbits are cute!"
+      "text": "Make a cat sound! Meow!"
     }
   ],
-  "note": "Switch! Student becomes A, teacher becomes B."
+  "note": "Animal sound game: make the animal sound, then say if you like that pet!"
 }$json$::jsonb,
   true
 ),
 (
-  '32bc09a2-d3a2-44ec-a5d8-e76cf4449960',
+  '39e1541f-0c79-49c2-b9fc-90b27adefe18',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "I have a pet. I have a dog. My dog is small. I like my dog very much. My friend has a cat. She likes her cat too!",
+  "text": "I like cats. They are cute. I don't like big dogs. I like small pets.",
   "questions": [
-    "What pet does the writer have?",
-    "Is the dog big or small?",
-    "What pet does the friend have?"
+    "What does the writer like?",
+    "What doesn't the writer like?",
+    "What size pets does the writer like?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '32bc09a2-d3a2-44ec-a5d8-e76cf4449960',
+  '39e1541f-0c79-49c2-b9fc-90b27adefe18',
   8,
   'writing',
   null,
   null,
   $json${
   "prompts": [
-    "I have a ___.",
-    "I like ___.",
-    "My pet is ___."
+    "I like ___. They are ___.",
+    "I don't like ___.",
+    "I like ___ pets."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '32bc09a2-d3a2-44ec-a5d8-e76cf4449960',
+  '39e1541f-0c79-49c2-b9fc-90b27adefe18',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Say 'I have a ___'",
-    "Say 'I like ___'",
-    "Talk about pets"
+    "Say 'I like' and 'I don't like'",
+    "Say 'cute'",
+    "Make an animal sound"
   ],
-  "challenge": "Tell me about a pet you have or want!"
+  "challenge": "Tell me a pet you like and a pet you don't like!"
 }$json$::jsonb,
   true
 );
@@ -605,13 +605,13 @@ values
 -- Lesson 4: Animal Actions
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  'b04f3a48-ba21-444b-802d-87a0b11df536',
+  'a376f416-b9a4-49da-bc5d-0a3f3ad7a931',
   'Animal Actions',
   'A1',
   'kids',
   6,
   4,
-  'Match animals with simple actions or sounds.',
+  'Combine animals with actions. [Combination, Lesson 4: production, TPR show-and-tell]',
   25,
   9,
   true
@@ -620,7 +620,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  'b04f3a48-ba21-444b-802d-87a0b11df536',
+  'a376f416-b9a4-49da-bc5d-0a3f3ad7a931',
   1,
   'title',
   null,
@@ -631,23 +631,23 @@ values
   true
 ),
 (
-  'b04f3a48-ba21-444b-802d-87a0b11df536',
+  'a376f416-b9a4-49da-bc5d-0a3f3ad7a931',
   2,
   'warmup',
   null,
   null,
   $json${
-  "display": "🐸",
+  "display": "🐦",
   "questions": [
-    "Can you jump like a frog?",
-    "What animal can fly?"
+    "Can a fish swim?",
+    "Can a bird fly?"
   ],
   "title": "What do you see?"
 }$json$::jsonb,
   true
 ),
 (
-  'b04f3a48-ba21-444b-802d-87a0b11df536',
+  'a376f416-b9a4-49da-bc5d-0a3f3ad7a931',
   3,
   'vocabulary',
   null,
@@ -659,15 +659,15 @@ values
       "bg": "#FAECE7"
     },
     {
-      "word": "Swim",
+      "word": "Run",
       "bg": "#E1F5EE"
     },
     {
-      "word": "Fly",
+      "word": "Swim",
       "bg": "#EEEDFE"
     },
     {
-      "word": "Run",
+      "word": "Fly",
       "bg": "#FAEEDA"
     }
   ],
@@ -677,27 +677,27 @@ values
   true
 ),
 (
-  'b04f3a48-ba21-444b-802d-87a0b11df536',
+  'a376f416-b9a4-49da-bc5d-0a3f3ad7a931',
   4,
   'phrases',
   null,
   null,
   $json${
   "teacher": [
-    "What can a bird do?",
-    "Can a fish fly?"
+    "Can a fish swim?",
+    "Can a bird fly?"
   ],
   "student": [
-    "A bird can fly.",
-    "No, a fish can swim!"
+    "Yes, a fish can swim.",
+    "Yes, a bird can fly."
   ],
-  "note": "Act out the action when you practice!",
+  "note": "Act out the animal action, then say it!",
   "title": "Practice the Conversation"
 }$json$::jsonb,
   true
 ),
 (
-  'b04f3a48-ba21-444b-802d-87a0b11df536',
+  'a376f416-b9a4-49da-bc5d-0a3f3ad7a931',
   5,
   'activity',
   null,
@@ -710,23 +710,23 @@ values
     },
     {
       "speaker": "B",
-      "text": "A fish can [swim]."
+      "text": "A dog can [run]."
     },
     {
       "speaker": "A",
-      "text": "A bird can [fly]."
+      "text": "A fish can [swim]."
     }
   ],
   "blanks": [
     "jump",
-    "swim",
-    "fly"
+    "run",
+    "swim"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'b04f3a48-ba21-444b-802d-87a0b11df536',
+  'a376f416-b9a4-49da-bc5d-0a3f3ad7a931',
   6,
   'speaking',
   null,
@@ -735,69 +735,69 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "What can a dog do?"
+      "text": "A frog can jump. A dog can run."
     },
     {
       "speaker": "B",
-      "text": "A dog can run!"
+      "text": "A fish can swim. A bird can fly!"
     },
     {
       "speaker": "A",
-      "text": "What can a fish do?"
+      "text": "Let's act like a frog! Jump!"
     },
     {
       "speaker": "B",
-      "text": "A fish can swim!"
+      "text": "Let's act like a bird! Fly!"
     }
   ],
-  "note": "Switch! Student becomes A, teacher becomes B."
+  "note": "Show-and-tell with actions: act out each animal while you say what it can do!"
 }$json$::jsonb,
   true
 ),
 (
-  'b04f3a48-ba21-444b-802d-87a0b11df536',
+  'a376f416-b9a4-49da-bc5d-0a3f3ad7a931',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "Animals can do many things. A frog can jump. A fish can swim. A bird can fly. A dog can run. I like to watch animals move!",
+  "text": "A frog can jump. A dog can run. A fish can swim. A bird can fly.",
   "questions": [
     "What can a frog do?",
-    "What can a bird do?",
-    "What can a dog do?"
+    "What can a fish do?",
+    "What can a bird do?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'b04f3a48-ba21-444b-802d-87a0b11df536',
+  'a376f416-b9a4-49da-bc5d-0a3f3ad7a931',
   8,
   'writing',
   null,
   null,
   $json${
   "prompts": [
-    "A frog can ___.",
-    "A bird can ___.",
-    "I can ___."
+    "A ___ can jump.",
+    "A ___ can swim.",
+    "A ___ can fly."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'b04f3a48-ba21-444b-802d-87a0b11df536',
+  'a376f416-b9a4-49da-bc5d-0a3f3ad7a931',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Say animal actions",
-    "Say 'A ___ can ___'",
-    "Act out an animal"
+    "Say 4 animal actions",
+    "Act out an animal",
+    "Say 'A ___ can ___'"
   ],
-  "challenge": "Act out an animal action and let me guess!"
+  "challenge": "Act out an animal and tell me what it can do!"
 }$json$::jsonb,
   true
 );
@@ -805,13 +805,13 @@ values
 -- Lesson 5: Unit Review
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  'f926373a-6001-4465-98c9-81f23b3add4a',
+  'a2cae378-0ae3-43ac-acc6-7d878cd61998',
   'Unit Review',
   'A1',
   'kids',
   6,
   5,
-  'Review animal vocabulary from Unit 6.',
+  'Review animals, pets, and actions. [Combination, Lesson 5: tier-matched mixed review]',
   25,
   9,
   true
@@ -820,7 +820,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  'f926373a-6001-4465-98c9-81f23b3add4a',
+  'a2cae378-0ae3-43ac-acc6-7d878cd61998',
   1,
   'title',
   null,
@@ -831,7 +831,7 @@ values
   true
 ),
 (
-  'f926373a-6001-4465-98c9-81f23b3add4a',
+  'a2cae378-0ae3-43ac-acc6-7d878cd61998',
   2,
   'warmup',
   null,
@@ -839,15 +839,15 @@ values
   $json${
   "display": "🐶",
   "questions": [
-    "What animals do you remember?",
-    "What can animals do?"
+    "What animal do you like?",
+    "Can you act like an animal?"
   ],
-  "title": "Let's Review!"
+  "title": "What do you see?"
 }$json$::jsonb,
   true
 ),
 (
-  'f926373a-6001-4465-98c9-81f23b3add4a',
+  'a2cae378-0ae3-43ac-acc6-7d878cd61998',
   3,
   'vocabulary',
   null,
@@ -859,37 +859,37 @@ values
       "bg": "#FAECE7"
     },
     {
-      "word": "Cow",
+      "word": "Like",
       "bg": "#E1F5EE"
     },
     {
-      "word": "Bird",
+      "word": "Cute",
       "bg": "#EEEDFE"
     },
     {
-      "word": "Fish",
+      "word": "Jump",
       "bg": "#FAEEDA"
     }
   ],
-  "title": "Animal Words",
+  "title": "New Words",
   "subtitle": "Tap a card to see it bigger."
 }$json$::jsonb,
   true
 ),
 (
-  'f926373a-6001-4465-98c9-81f23b3add4a',
+  'a2cae378-0ae3-43ac-acc6-7d878cd61998',
   4,
   'phrases',
   null,
   null,
   $json${
   "teacher": [
-    "What is this animal?",
+    "What animal do you like?",
     "What can it do?"
   ],
   "student": [
-    "It is a dog.",
-    "It can run."
+    "I like dogs.",
+    "A dog can run."
   ],
   "note": "Use everything you learned this unit!",
   "title": "Practice the Conversation"
@@ -897,7 +897,7 @@ values
   true
 ),
 (
-  'f926373a-6001-4465-98c9-81f23b3add4a',
+  'a2cae378-0ae3-43ac-acc6-7d878cd61998',
   5,
   'activity',
   null,
@@ -906,27 +906,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "It is a [dog]."
+      "text": "I [like] dogs. They are [cute]."
     },
     {
       "speaker": "B",
-      "text": "A bird can [fly]."
+      "text": "A dog can [jump]."
     },
     {
       "speaker": "A",
-      "text": "I [have] a cat."
+      "text": "I see a [dog] and a cat."
     }
   ],
   "blanks": [
-    "dog",
-    "fly",
-    "have"
+    "like",
+    "cute",
+    "jump"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'f926373a-6001-4465-98c9-81f23b3add4a',
+  'a2cae378-0ae3-43ac-acc6-7d878cd61998',
   6,
   'speaking',
   null,
@@ -935,19 +935,19 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "What is your favorite animal?"
+      "text": "I like dogs. They are cute and they can jump."
     },
     {
       "speaker": "B",
-      "text": "My favorite animal is a dog!"
+      "text": "I like cats. They are cute too."
     },
     {
       "speaker": "A",
-      "text": "What can it do?"
+      "text": "I see a dog and a cat!"
     },
     {
       "speaker": "B",
-      "text": "It can run and jump!"
+      "text": "Let's act like animals!"
     }
   ],
   "note": "Switch! Student becomes A, teacher becomes B."
@@ -955,50 +955,49 @@ values
   true
 ),
 (
-  'f926373a-6001-4465-98c9-81f23b3add4a',
+  'a2cae378-0ae3-43ac-acc6-7d878cd61998',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "I like animals. I have a dog. My dog can run and jump. On the farm, I see a cow and a horse. A bird can fly. Animals are amazing!",
+  "text": "I like dogs. They are cute. A dog can run and jump. I see a dog and a cat.",
   "questions": [
-    "What pet does the writer have?",
-    "What can the dog do?",
-    "What can a bird do?"
+    "What animal does the writer like?",
+    "What can a dog do?",
+    "What two animals does the writer see?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'f926373a-6001-4465-98c9-81f23b3add4a',
+  'a2cae378-0ae3-43ac-acc6-7d878cd61998',
   8,
   'writing',
   null,
   null,
   $json${
   "prompts": [
-    "I have a ___.",
+    "I like ___. They are ___.",
     "A ___ can ___.",
-    "My favorite animal is ___."
+    "I see a ___ and a ___."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'f926373a-6001-4465-98c9-81f23b3add4a',
+  'a2cae378-0ae3-43ac-acc6-7d878cd61998',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Name farm and pet animals",
-    "Say animal actions",
-    "Say 'I have a ___'",
-    "Talk about my favorite animal"
+    "Name animals",
+    "Say a pet preference",
+    "Say what an animal can do"
   ],
-  "challenge": "Tell me about your favorite animal and what it can do!"
+  "challenge": "Tell me your favorite animal and what it can do!"
 }$json$::jsonb,
   true
 );

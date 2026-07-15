@@ -1,17 +1,17 @@
--- A1 Kids Unit 4: Colors and Numbers (5 lessons)
--- Generated from project_a1_kids_master_curriculum memory, Unit 4.
+-- A1 Kids Unit 4: Colors and Numbers (5 lessons) — TIERED (Foundation)
+-- Regenerated per the Sentivo Intra-Level Progression Framework + lesson-level escalation + task rotation.
 -- Run this whole script in the Supabase SQL editor.
 
 -- Lesson 1: Colors
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  'a343a126-be99-48fd-ae80-3276754da1d4',
+  'c7e53235-a359-48da-82f9-ae4380ca518e',
   'Colors',
   'A1',
   'kids',
   4,
   1,
-  'Recognize and say basic colors: red, blue, yellow, green.',
+  'Name basic colors. [Foundation, Lesson 1: notice/receptive, matching]',
   25,
   9,
   true
@@ -20,7 +20,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  'a343a126-be99-48fd-ae80-3276754da1d4',
+  'c7e53235-a359-48da-82f9-ae4380ca518e',
   1,
   'title',
   null,
@@ -31,23 +31,23 @@ values
   true
 ),
 (
-  'a343a126-be99-48fd-ae80-3276754da1d4',
+  'c7e53235-a359-48da-82f9-ae4380ca518e',
   2,
   'warmup',
   null,
   null,
   $json${
-  "display": "🎨",
+  "display": "🌈",
   "questions": [
-    "What colors do you know?",
-    "What color is your shirt?"
+    "What is your favorite color?",
+    "Do you see red?"
   ],
   "title": "What do you see?"
 }$json$::jsonb,
   true
 ),
 (
-  'a343a126-be99-48fd-ae80-3276754da1d4',
+  'c7e53235-a359-48da-82f9-ae4380ca518e',
   3,
   'vocabulary',
   null,
@@ -77,7 +77,7 @@ values
   true
 ),
 (
-  'a343a126-be99-48fd-ae80-3276754da1d4',
+  'c7e53235-a359-48da-82f9-ae4380ca518e',
   4,
   'phrases',
   null,
@@ -85,19 +85,19 @@ values
   $json${
   "teacher": [
     "What color is this?",
-    "Is it red?"
+    "Do you like red?"
   ],
   "student": [
-    "It is red.",
-    "No, it is blue!"
+    "This is red.",
+    "Yes, I like red!"
   ],
-  "note": "Point to something colorful when you practice!",
+  "note": "Point to something red, blue, yellow, or green!",
   "title": "Practice the Conversation"
 }$json$::jsonb,
   true
 ),
 (
-  'a343a126-be99-48fd-ae80-3276754da1d4',
+  'c7e53235-a359-48da-82f9-ae4380ca518e',
   5,
   'activity',
   null,
@@ -106,15 +106,15 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "It is [red]."
+      "text": "This is [red]."
     },
     {
       "speaker": "B",
-      "text": "It is [blue]."
+      "text": "This is [blue]."
     },
     {
       "speaker": "A",
-      "text": "It is [yellow]."
+      "text": "This is [yellow]."
     }
   ],
   "blanks": [
@@ -126,7 +126,7 @@ values
   true
 ),
 (
-  'a343a126-be99-48fd-ae80-3276754da1d4',
+  'c7e53235-a359-48da-82f9-ae4380ca518e',
   6,
   'speaking',
   null,
@@ -135,69 +135,69 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "What color is this?"
+      "text": "This is red."
     },
     {
       "speaker": "B",
-      "text": "It is red!"
+      "text": "This is blue."
     },
     {
       "speaker": "A",
-      "text": "What color is that?"
+      "text": "This is yellow."
     },
     {
       "speaker": "B",
-      "text": "It is green!"
+      "text": "This is green!"
     }
   ],
-  "note": "Switch! Student becomes A, teacher becomes B."
+  "note": "Teacher says the color first. Student repeats, then says it alone."
 }$json$::jsonb,
   true
 ),
 (
-  'a343a126-be99-48fd-ae80-3276754da1d4',
+  'c7e53235-a359-48da-82f9-ae4380ca518e',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "I like colors! My shirt is red. My bag is blue. My pencil is yellow. My ball is green. I like all the colors!",
+  "text": "This is red. This is blue. This is yellow. This is green.",
   "questions": [
-    "What color is the shirt?",
-    "What color is the bag?",
-    "What color is the ball?"
+    "What color is first?",
+    "What color is next?",
+    "Name all four colors."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'a343a126-be99-48fd-ae80-3276754da1d4',
+  'c7e53235-a359-48da-82f9-ae4380ca518e',
   8,
   'writing',
   null,
   null,
   $json${
   "prompts": [
-    "My shirt is ___.",
+    "This is ___.",
     "My favorite color is ___.",
-    "My ___ is ___."
+    "I see ___."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'a343a126-be99-48fd-ae80-3276754da1d4',
+  'c7e53235-a359-48da-82f9-ae4380ca518e',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Say four colors",
-    "Answer 'What color is this?'",
-    "Describe things by color"
+    "Name 4 colors",
+    "Say 'This is ___'",
+    "Point to a color"
   ],
-  "challenge": "Point to three things and say their colors!"
+  "challenge": "Point to something and say its color!"
 }$json$::jsonb,
   true
 );
@@ -205,13 +205,13 @@ values
 -- Lesson 2: Numbers
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '5921d437-f78e-41a5-9c6c-5c3dbbba1c7e',
+  'c66b374c-073b-4618-b34b-66da50d7ead3',
   'Numbers',
   'A1',
   'kids',
   4,
   2,
-  'Recognize and say numbers 1-10.',
+  'Count 1-10. [Foundation, Lesson 2: controlled practice]',
   25,
   9,
   true
@@ -220,7 +220,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '5921d437-f78e-41a5-9c6c-5c3dbbba1c7e',
+  'c66b374c-073b-4618-b34b-66da50d7ead3',
   1,
   'title',
   null,
@@ -231,7 +231,7 @@ values
   true
 ),
 (
-  '5921d437-f78e-41a5-9c6c-5c3dbbba1c7e',
+  'c66b374c-073b-4618-b34b-66da50d7ead3',
   2,
   'warmup',
   null,
@@ -239,15 +239,15 @@ values
   $json${
   "display": "🔢",
   "questions": [
-    "How many fingers do you have?",
-    "Can you count to 10?"
+    "Can you count to four?",
+    "How many fingers do you have?"
   ],
   "title": "What do you see?"
 }$json$::jsonb,
   true
 ),
 (
-  '5921d437-f78e-41a5-9c6c-5c3dbbba1c7e',
+  'c66b374c-073b-4618-b34b-66da50d7ead3',
   3,
   'vocabulary',
   null,
@@ -277,27 +277,27 @@ values
   true
 ),
 (
-  '5921d437-f78e-41a5-9c6c-5c3dbbba1c7e',
+  'c66b374c-073b-4618-b34b-66da50d7ead3',
   4,
   'phrases',
   null,
   null,
   $json${
   "teacher": [
-    "How many?",
+    "How many is this?",
     "Can you count?"
   ],
   "student": [
-    "One, two, three!",
-    "Yes, I can count!"
+    "This is one.",
+    "One, two, three, four!"
   ],
-  "note": "Count your fingers when you practice!",
+  "note": "Count on your fingers!",
   "title": "Practice the Conversation"
 }$json$::jsonb,
   true
 ),
 (
-  '5921d437-f78e-41a5-9c6c-5c3dbbba1c7e',
+  'c66b374c-073b-4618-b34b-66da50d7ead3',
   5,
   'activity',
   null,
@@ -306,27 +306,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "[One], two, three."
+      "text": "This is [one]."
     },
     {
       "speaker": "B",
-      "text": "[Four], five, six."
+      "text": "This is [two]."
     },
     {
       "speaker": "A",
-      "text": "Seven, [eight], nine, ten!"
+      "text": "This is [three]."
     }
   ],
   "blanks": [
-    "One",
-    "Four",
-    "eight"
+    "one",
+    "two",
+    "three"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '5921d437-f78e-41a5-9c6c-5c3dbbba1c7e',
+  'c66b374c-073b-4618-b34b-66da50d7ead3',
   6,
   'speaking',
   null,
@@ -335,19 +335,19 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "Let's count together!"
+      "text": "One."
     },
     {
       "speaker": "B",
-      "text": "One, two, three, four, five!"
+      "text": "Two."
     },
     {
       "speaker": "A",
-      "text": "Six, seven, eight!"
+      "text": "Three."
     },
     {
       "speaker": "B",
-      "text": "Nine, ten! We did it!"
+      "text": "Four!"
     }
   ],
   "note": "Switch! Student becomes A, teacher becomes B."
@@ -355,49 +355,49 @@ values
   true
 ),
 (
-  '5921d437-f78e-41a5-9c6c-5c3dbbba1c7e',
+  'c66b374c-073b-4618-b34b-66da50d7ead3',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "I can count! One, two, three, four, five. Six, seven, eight, nine, ten. I can count to ten in English!",
+  "text": "One, two, three, four. I can count to four!",
   "questions": [
-    "What number comes after five?",
-    "What number comes after nine?",
-    "Can the writer count to ten?"
+    "What number is first?",
+    "What number is last?",
+    "Can the writer count to four?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '5921d437-f78e-41a5-9c6c-5c3dbbba1c7e',
+  'c66b374c-073b-4618-b34b-66da50d7ead3',
   8,
   'writing',
   null,
   null,
   $json${
   "prompts": [
+    "One, two, ___.",
     "I can count to ___.",
-    "My favorite number is ___.",
-    "One, two, ___, four, ___."
+    "This is number ___."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '5921d437-f78e-41a5-9c6c-5c3dbbba1c7e',
+  'c66b374c-073b-4618-b34b-66da50d7ead3',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Count from 1 to 10",
+    "Count 1 to 4",
     "Say numbers out loud",
-    "Recognize number words"
+    "Count my fingers"
   ],
-  "challenge": "Count from one to ten right now!"
+  "challenge": "Count to four with me!"
 }$json$::jsonb,
   true
 );
@@ -405,13 +405,13 @@ values
 -- Lesson 3: Count and Match
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '18daa902-d76e-4f42-b77a-4cbc425aff29',
+  '5546d8a9-9d92-476c-b548-8ed23c96bcab',
   'Count and Match',
   'A1',
   'kids',
   4,
   3,
-  'Count small groups and match the number to the correct quantity.',
+  'Match numbers to colors and objects. [Foundation, Lesson 3: freer practice, TPR game]',
   25,
   9,
   true
@@ -420,7 +420,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '18daa902-d76e-4f42-b77a-4cbc425aff29',
+  '5546d8a9-9d92-476c-b548-8ed23c96bcab',
   1,
   'title',
   null,
@@ -431,23 +431,23 @@ values
   true
 ),
 (
-  '18daa902-d76e-4f42-b77a-4cbc425aff29',
+  '5546d8a9-9d92-476c-b548-8ed23c96bcab',
   2,
   'warmup',
   null,
   null,
   $json${
-  "display": "🍎",
+  "display": "🖐️",
   "questions": [
-    "How many apples do you see?",
-    "Can you count objects?"
+    "How many red things do you see?",
+    "Can you count to five?"
   ],
   "title": "What do you see?"
 }$json$::jsonb,
   true
 ),
 (
-  '18daa902-d76e-4f42-b77a-4cbc425aff29',
+  '5546d8a9-9d92-476c-b548-8ed23c96bcab',
   3,
   'vocabulary',
   null,
@@ -459,15 +459,15 @@ values
       "bg": "#FAECE7"
     },
     {
-      "word": "Six",
+      "word": "How many",
       "bg": "#E1F5EE"
     },
     {
-      "word": "Seven",
+      "word": "Match",
       "bg": "#EEEDFE"
     },
     {
-      "word": "Eight",
+      "word": "Count",
       "bg": "#FAEEDA"
     }
   ],
@@ -477,27 +477,27 @@ values
   true
 ),
 (
-  '18daa902-d76e-4f42-b77a-4cbc425aff29',
+  '5546d8a9-9d92-476c-b548-8ed23c96bcab',
   4,
   'phrases',
   null,
   null,
   $json${
   "teacher": [
-    "How many apples?",
-    "How many balls?"
+    "How many red things?",
+    "Can you count them?"
   ],
   "student": [
-    "There are five.",
-    "There are seven!"
+    "I see five red things.",
+    "One, two, three, four, five!"
   ],
-  "note": "Count out loud, one at a time!",
+  "note": "Point and count out loud!",
   "title": "Practice the Conversation"
 }$json$::jsonb,
   true
 ),
 (
-  '18daa902-d76e-4f42-b77a-4cbc425aff29',
+  '5546d8a9-9d92-476c-b548-8ed23c96bcab',
   5,
   'activity',
   null,
@@ -506,27 +506,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "There are [five] apples."
+      "text": "[How many] red things?"
     },
     {
       "speaker": "B",
-      "text": "There are [six] balls."
+      "text": "I [count] them: one, two, three."
     },
     {
       "speaker": "A",
-      "text": "There are [seven] books."
+      "text": "[Five] blue things!"
     }
   ],
   "blanks": [
-    "five",
-    "six",
-    "seven"
+    "how many",
+    "count",
+    "five"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '18daa902-d76e-4f42-b77a-4cbc425aff29',
+  '5546d8a9-9d92-476c-b548-8ed23c96bcab',
   6,
   'speaking',
   null,
@@ -535,69 +535,69 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "How many apples are there?"
+      "text": "How many red things do you see?"
     },
     {
       "speaker": "B",
-      "text": "There are five apples."
+      "text": "One, two, three! Three red things."
     },
     {
       "speaker": "A",
-      "text": "How many balls are there?"
+      "text": "How many blue things?"
     },
     {
       "speaker": "B",
-      "text": "There are eight balls!"
+      "text": "Five blue things! Your turn to count!"
     }
   ],
-  "note": "Switch! Student becomes A, teacher becomes B."
+  "note": "Point around the room and count things by color together!"
 }$json$::jsonb,
   true
 ),
 (
-  '18daa902-d76e-4f42-b77a-4cbc425aff29',
+  '5546d8a9-9d92-476c-b548-8ed23c96bcab',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "I see five apples on the table. I see six balls in the box. I see seven books on the shelf. I like to count!",
+  "text": "I see three red things. I see five blue things. I like to count and match colors.",
   "questions": [
-    "How many apples are on the table?",
-    "How many balls are in the box?",
-    "How many books are on the shelf?"
+    "How many red things?",
+    "How many blue things?",
+    "What does the writer like to do?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '18daa902-d76e-4f42-b77a-4cbc425aff29',
+  '5546d8a9-9d92-476c-b548-8ed23c96bcab',
   8,
   'writing',
   null,
   null,
   $json${
   "prompts": [
-    "There are ___ apples.",
-    "I can count ___ things in my room.",
-    "There are ___ ___."
+    "I see ___ red things.",
+    "I see ___ blue things.",
+    "I like to count and ___."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '18daa902-d76e-4f42-b77a-4cbc425aff29',
+  '5546d8a9-9d92-476c-b548-8ed23c96bcab',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Count small groups of objects",
-    "Say 'There are ___'",
-    "Match numbers to quantities"
+    "Count to five",
+    "Match numbers to colors",
+    "Ask 'How many?'"
   ],
-  "challenge": "Count five things you can see right now!"
+  "challenge": "Count five things of your favorite color!"
 }$json$::jsonb,
   true
 );
@@ -605,13 +605,13 @@ values
 -- Lesson 4: My Favorite Number
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '9697f20a-771c-4743-809e-598e62c29d44',
+  'f7dd2a6c-f03d-450e-a9ee-b5ff219a2f12',
   'My Favorite Number',
   'A1',
   'kids',
   4,
   4,
-  'Say a favorite number using simple speaking.',
+  'Show and tell a favorite number and color. [Foundation, Lesson 4: production, show-and-tell]',
   25,
   9,
   true
@@ -620,7 +620,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '9697f20a-771c-4743-809e-598e62c29d44',
+  'f7dd2a6c-f03d-450e-a9ee-b5ff219a2f12',
   1,
   'title',
   null,
@@ -631,7 +631,7 @@ values
   true
 ),
 (
-  '9697f20a-771c-4743-809e-598e62c29d44',
+  'f7dd2a6c-f03d-450e-a9ee-b5ff219a2f12',
   2,
   'warmup',
   null,
@@ -640,14 +640,14 @@ values
   "display": "⭐",
   "questions": [
     "What is your favorite number?",
-    "Why do you like that number?"
+    "What is your favorite color?"
   ],
   "title": "What do you see?"
 }$json$::jsonb,
   true
 ),
 (
-  '9697f20a-771c-4743-809e-598e62c29d44',
+  'f7dd2a6c-f03d-450e-a9ee-b5ff219a2f12',
   3,
   'vocabulary',
   null,
@@ -655,15 +655,15 @@ values
   $json${
   "words": [
     {
-      "word": "Nine",
+      "word": "Favorite",
       "bg": "#FAECE7"
     },
     {
-      "word": "Ten",
+      "word": "Because",
       "bg": "#E1F5EE"
     },
     {
-      "word": "Favorite",
+      "word": "Like",
       "bg": "#EEEDFE"
     },
     {
@@ -677,7 +677,7 @@ values
   true
 ),
 (
-  '9697f20a-771c-4743-809e-598e62c29d44',
+  'f7dd2a6c-f03d-450e-a9ee-b5ff219a2f12',
   4,
   'phrases',
   null,
@@ -685,19 +685,19 @@ values
   $json${
   "teacher": [
     "What is your favorite number?",
-    "Why do you like it?"
+    "What is your favorite color?"
   ],
   "student": [
-    "My favorite number is seven.",
-    "Because it is lucky!"
+    "My favorite number is three.",
+    "My favorite color is blue."
   ],
-  "note": "Pick a number and think of a reason!",
+  "note": "Think of your favorite number and color!",
   "title": "Practice the Conversation"
 }$json$::jsonb,
   true
 ),
 (
-  '9697f20a-771c-4743-809e-598e62c29d44',
+  'f7dd2a6c-f03d-450e-a9ee-b5ff219a2f12',
   5,
   'activity',
   null,
@@ -706,27 +706,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "My favorite [number] is nine."
+      "text": "My [favorite] number is three."
     },
     {
       "speaker": "B",
-      "text": "My [favorite] number is ten."
+      "text": "I [like] the color blue."
     },
     {
       "speaker": "A",
-      "text": "I like number [nine]!"
+      "text": "My favorite [number] is five!"
     }
   ],
   "blanks": [
-    "number",
     "favorite",
-    "nine"
+    "like",
+    "number"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '9697f20a-771c-4743-809e-598e62c29d44',
+  'f7dd2a6c-f03d-450e-a9ee-b5ff219a2f12',
   6,
   'speaking',
   null,
@@ -735,43 +735,43 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "What is your favorite number?"
+      "text": "My favorite number is three. My favorite color is blue."
     },
     {
       "speaker": "B",
-      "text": "My favorite number is ten."
+      "text": "My favorite number is five. My favorite color is red."
     },
     {
       "speaker": "A",
-      "text": "Why do you like it?"
+      "text": "I like blue and three together!"
     },
     {
       "speaker": "B",
-      "text": "Because it is a big number!"
+      "text": "I like red and five!"
     }
   ],
-  "note": "Switch! Student becomes A, teacher becomes B."
+  "note": "Show-and-tell: draw your favorite number and color, then tell me about it!"
 }$json$::jsonb,
   true
 ),
 (
-  '9697f20a-771c-4743-809e-598e62c29d44',
+  'f7dd2a6c-f03d-450e-a9ee-b5ff219a2f12',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "My favorite number is seven. I like seven because it is lucky. My friend's favorite number is ten. She likes ten because it is a big number!",
+  "text": "My favorite number is three. My favorite color is blue. I like blue and three!",
   "questions": [
-    "What is the writer's favorite number?",
-    "Why does the writer like seven?",
-    "What is the friend's favorite number?"
+    "What is the favorite number?",
+    "What is the favorite color?",
+    "Does the writer like them together?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '9697f20a-771c-4743-809e-598e62c29d44',
+  'f7dd2a6c-f03d-450e-a9ee-b5ff219a2f12',
   8,
   'writing',
   null,
@@ -779,25 +779,25 @@ values
   $json${
   "prompts": [
     "My favorite number is ___.",
-    "I like this number because ___.",
-    "My friend's favorite number is ___."
+    "My favorite color is ___.",
+    "I like ___."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '9697f20a-771c-4743-809e-598e62c29d44',
+  'f7dd2a6c-f03d-450e-a9ee-b5ff219a2f12',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Say 'My favorite number is ___'",
-    "Give a reason with 'because'",
-    "Talk about numbers"
+    "Say my favorite number",
+    "Say my favorite color",
+    "Show-and-tell my favorites"
   ],
-  "challenge": "Tell me your favorite number and why!"
+  "challenge": "Tell me your favorite number and color!"
 }$json$::jsonb,
   true
 );
@@ -805,13 +805,13 @@ values
 -- Lesson 5: Unit Review
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  'ad11a582-461b-4c97-a129-ecbe4819817f',
+  '1ef356b7-5118-4428-b1e2-8809975cbce9',
   'Unit Review',
   'A1',
   'kids',
   4,
   5,
-  'Review colors and numbers from Unit 4.',
+  'Review colors and numbers. [Foundation, Lesson 5: tier-matched mixed review]',
   25,
   9,
   true
@@ -820,7 +820,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  'ad11a582-461b-4c97-a129-ecbe4819817f',
+  '1ef356b7-5118-4428-b1e2-8809975cbce9',
   1,
   'title',
   null,
@@ -831,23 +831,23 @@ values
   true
 ),
 (
-  'ad11a582-461b-4c97-a129-ecbe4819817f',
+  '1ef356b7-5118-4428-b1e2-8809975cbce9',
   2,
   'warmup',
   null,
   null,
   $json${
-  "display": "🎨",
+  "display": "🌈",
   "questions": [
-    "What colors do you remember?",
-    "Can you count to ten?"
+    "What color do you see?",
+    "Can you count to four?"
   ],
-  "title": "Let's Review!"
+  "title": "What do you see?"
 }$json$::jsonb,
   true
 ),
 (
-  'ad11a582-461b-4c97-a129-ecbe4819817f',
+  '1ef356b7-5118-4428-b1e2-8809975cbce9',
   3,
   'vocabulary',
   null,
@@ -863,21 +863,21 @@ values
       "bg": "#E1F5EE"
     },
     {
-      "word": "Five",
+      "word": "One",
       "bg": "#EEEDFE"
     },
     {
-      "word": "Ten",
+      "word": "Two",
       "bg": "#FAEEDA"
     }
   ],
-  "title": "Colors & Numbers",
+  "title": "New Words",
   "subtitle": "Tap a card to see it bigger."
 }$json$::jsonb,
   true
 ),
 (
-  'ad11a582-461b-4c97-a129-ecbe4819817f',
+  '1ef356b7-5118-4428-b1e2-8809975cbce9',
   4,
   'phrases',
   null,
@@ -885,11 +885,11 @@ values
   $json${
   "teacher": [
     "What color is this?",
-    "How many are there?"
+    "How many is this?"
   ],
   "student": [
-    "It is red.",
-    "There are five."
+    "This is red.",
+    "This is two."
   ],
   "note": "Use everything you learned this unit!",
   "title": "Practice the Conversation"
@@ -897,7 +897,7 @@ values
   true
 ),
 (
-  'ad11a582-461b-4c97-a129-ecbe4819817f',
+  '1ef356b7-5118-4428-b1e2-8809975cbce9',
   5,
   'activity',
   null,
@@ -906,27 +906,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "It is [red]."
+      "text": "This is [red]."
     },
     {
       "speaker": "B",
-      "text": "There are [five] balls."
+      "text": "This is number [one]."
     },
     {
       "speaker": "A",
-      "text": "My favorite [number] is ten."
+      "text": "I [like] blue and three."
     }
   ],
   "blanks": [
     "red",
-    "five",
-    "number"
+    "one",
+    "like"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'ad11a582-461b-4c97-a129-ecbe4819817f',
+  '1ef356b7-5118-4428-b1e2-8809975cbce9',
   6,
   'speaking',
   null,
@@ -935,19 +935,19 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "What color is this?"
+      "text": "This is red. This is number one."
     },
     {
       "speaker": "B",
-      "text": "It is blue!"
+      "text": "This is blue. This is number two."
     },
     {
       "speaker": "A",
-      "text": "How many balls are there?"
+      "text": "I like blue and three together!"
     },
     {
       "speaker": "B",
-      "text": "There are ten balls!"
+      "text": "I like red and one!"
     }
   ],
   "note": "Switch! Student becomes A, teacher becomes B."
@@ -955,50 +955,49 @@ values
   true
 ),
 (
-  'ad11a582-461b-4c97-a129-ecbe4819817f',
+  '1ef356b7-5118-4428-b1e2-8809975cbce9',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "I like colors and numbers! My bag is blue. I have five pencils. I can count to ten. My favorite number is seven!",
+  "text": "This is red. This is number one. My favorite color is blue. My favorite number is three.",
   "questions": [
-    "What color is the bag?",
-    "How many pencils are there?",
+    "What color is shown first?",
+    "What is the favorite color?",
     "What is the favorite number?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'ad11a582-461b-4c97-a129-ecbe4819817f',
+  '1ef356b7-5118-4428-b1e2-8809975cbce9',
   8,
   'writing',
   null,
   null,
   $json${
   "prompts": [
-    "My ___ is ___ (color).",
-    "I have ___ ___.",
+    "This is ___.",
+    "My favorite color is ___.",
     "My favorite number is ___."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'ad11a582-461b-4c97-a129-ecbe4819817f',
+  '1ef356b7-5118-4428-b1e2-8809975cbce9',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Say four colors",
-    "Count from 1 to 10",
-    "Say 'There are ___'",
-    "Say my favorite number"
+    "Name colors",
+    "Count 1 to 5",
+    "Say my favorite color and number"
   ],
-  "challenge": "Show me a colorful object and count something for me!"
+  "challenge": "Tell me your favorite color and number!"
 }$json$::jsonb,
   true
 );

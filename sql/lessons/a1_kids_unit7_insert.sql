@@ -1,17 +1,17 @@
--- A1 Kids Unit 7: My Toys (5 lessons)
--- Generated from project_a1_kids_master_curriculum memory, Unit 7.
+-- A1 Kids Unit 7: My Toys (5 lessons) — TIERED (Combination)
+-- Regenerated per the Sentivo Intra-Level Progression Framework + lesson-level escalation + task rotation.
 -- Run this whole script in the Supabase SQL editor.
 
 -- Lesson 1: Toys
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  'df78f410-95d7-4173-8956-442c88954da4',
+  'e26c6ce6-5e95-4686-83dd-e9d2fbeef6af',
   'Toys',
   'A1',
   'kids',
   7,
   1,
-  'Identify common toys.',
+  'Name common toys. [Combination, Lesson 1: notice/receptive, matching]',
   25,
   9,
   true
@@ -20,7 +20,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  'df78f410-95d7-4173-8956-442c88954da4',
+  'e26c6ce6-5e95-4686-83dd-e9d2fbeef6af',
   1,
   'title',
   null,
@@ -31,23 +31,23 @@ values
   true
 ),
 (
-  'df78f410-95d7-4173-8956-442c88954da4',
+  'e26c6ce6-5e95-4686-83dd-e9d2fbeef6af',
   2,
   'warmup',
   null,
   null,
   $json${
-  "display": "🧸",
+  "display": "⚽",
   "questions": [
-    "What toys do you have?",
-    "What is your favorite toy?"
+    "Do you have a ball?",
+    "What toys do you have?"
   ],
   "title": "What do you see?"
 }$json$::jsonb,
   true
 ),
 (
-  'df78f410-95d7-4173-8956-442c88954da4',
+  'e26c6ce6-5e95-4686-83dd-e9d2fbeef6af',
   3,
   'vocabulary',
   null,
@@ -77,27 +77,27 @@ values
   true
 ),
 (
-  'df78f410-95d7-4173-8956-442c88954da4',
+  'e26c6ce6-5e95-4686-83dd-e9d2fbeef6af',
   4,
   'phrases',
   null,
   null,
   $json${
   "teacher": [
-    "What is this?",
-    "Is this a ball?"
+    "What toy is this?",
+    "Do you have a ball?"
   ],
   "student": [
-    "It is a ball.",
-    "Yes, it is a doll!"
+    "This is a ball.",
+    "Yes, I have a ball."
   ],
-  "note": "Point to a toy when you practice!",
+  "note": "Point to a toy picture!",
   "title": "Practice the Conversation"
 }$json$::jsonb,
   true
 ),
 (
-  'df78f410-95d7-4173-8956-442c88954da4',
+  'e26c6ce6-5e95-4686-83dd-e9d2fbeef6af',
   5,
   'activity',
   null,
@@ -114,7 +114,7 @@ values
     },
     {
       "speaker": "A",
-      "text": "This is a [car]."
+      "text": "This is a toy [car]."
     }
   ],
   "blanks": [
@@ -126,7 +126,7 @@ values
   true
 ),
 (
-  'df78f410-95d7-4173-8956-442c88954da4',
+  'e26c6ce6-5e95-4686-83dd-e9d2fbeef6af',
   6,
   'speaking',
   null,
@@ -135,69 +135,69 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "What is this?"
+      "text": "This is a ball."
     },
     {
       "speaker": "B",
-      "text": "It is blocks!"
+      "text": "This is a doll."
     },
     {
       "speaker": "A",
-      "text": "What is that?"
+      "text": "This is a toy car."
     },
     {
       "speaker": "B",
-      "text": "It is a car!"
+      "text": "These are my blocks!"
     }
   ],
-  "note": "Switch! Student becomes A, teacher becomes B."
+  "note": "Teacher says the toy first. Student repeats, then says it alone."
 }$json$::jsonb,
   true
 ),
 (
-  'df78f410-95d7-4173-8956-442c88954da4',
+  'e26c6ce6-5e95-4686-83dd-e9d2fbeef6af',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "I have many toys. I have a ball. I have a doll. I have a car. I have blocks too. I love my toys!",
+  "text": "This is a ball. This is a doll. This is a toy car.",
   "questions": [
-    "What toys does the writer have?",
-    "Does the writer have a car?",
-    "Does the writer love their toys?"
+    "What is the first toy?",
+    "What is the second toy?",
+    "Name all three toys."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'df78f410-95d7-4173-8956-442c88954da4',
+  'e26c6ce6-5e95-4686-83dd-e9d2fbeef6af',
   8,
   'writing',
   null,
   null,
   $json${
   "prompts": [
-    "I have a ___.",
     "This is a ___.",
-    "My toy box has a ___."
+    "I have a ___.",
+    "My favorite toy is ___."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'df78f410-95d7-4173-8956-442c88954da4',
+  'e26c6ce6-5e95-4686-83dd-e9d2fbeef6af',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Name four toys",
+    "Name 4 toys",
     "Say 'This is a ___'",
-    "Answer 'What is this?'"
+    "Point to a toy"
   ],
-  "challenge": "Name one toy you have at home!"
+  "challenge": "Show me your favorite toy!"
 }$json$::jsonb,
   true
 );
@@ -205,13 +205,13 @@ values
 -- Lesson 2: My Favorite Toy
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '785034d5-6325-484c-81ff-5d97d42b2b6d',
+  '1297f89c-7946-4dbd-947d-d57ff3c6ac90',
   'My Favorite Toy',
   'A1',
   'kids',
   7,
   2,
-  'Say a favorite toy.',
+  'Describe a favorite toy. [Combination, Lesson 2: controlled practice]',
   25,
   9,
   true
@@ -220,7 +220,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '785034d5-6325-484c-81ff-5d97d42b2b6d',
+  '1297f89c-7946-4dbd-947d-d57ff3c6ac90',
   1,
   'title',
   null,
@@ -231,23 +231,23 @@ values
   true
 ),
 (
-  '785034d5-6325-484c-81ff-5d97d42b2b6d',
+  '1297f89c-7946-4dbd-947d-d57ff3c6ac90',
   2,
   'warmup',
   null,
   null,
   $json${
-  "display": "⭐",
+  "display": "🧸",
   "questions": [
     "What is your favorite toy?",
-    "Why do you like it?"
+    "Do you play with blocks?"
   ],
   "title": "What do you see?"
 }$json$::jsonb,
   true
 ),
 (
-  '785034d5-6325-484c-81ff-5d97d42b2b6d',
+  '1297f89c-7946-4dbd-947d-d57ff3c6ac90',
   3,
   'vocabulary',
   null,
@@ -255,19 +255,19 @@ values
   $json${
   "words": [
     {
-      "word": "Kite",
+      "word": "Favorite",
       "bg": "#FAECE7"
     },
     {
-      "word": "Robot",
+      "word": "Play with",
       "bg": "#E1F5EE"
     },
     {
-      "word": "Puzzle",
+      "word": "Fun",
       "bg": "#EEEDFE"
     },
     {
-      "word": "Teddy",
+      "word": "Toy",
       "bg": "#FAEEDA"
     }
   ],
@@ -277,7 +277,7 @@ values
   true
 ),
 (
-  '785034d5-6325-484c-81ff-5d97d42b2b6d',
+  '1297f89c-7946-4dbd-947d-d57ff3c6ac90',
   4,
   'phrases',
   null,
@@ -285,19 +285,19 @@ values
   $json${
   "teacher": [
     "What is your favorite toy?",
-    "Why do you like it?"
+    "Do you play with it?"
   ],
   "student": [
-    "My favorite toy is my robot.",
-    "Because it is fun!"
+    "My favorite toy is a ball.",
+    "Yes, I play with it every day."
   ],
-  "note": "Think of your real favorite toy!",
+  "note": "Use the word bank: favorite, play with, fun, toy.",
   "title": "Practice the Conversation"
 }$json$::jsonb,
   true
 ),
 (
-  '785034d5-6325-484c-81ff-5d97d42b2b6d',
+  '1297f89c-7946-4dbd-947d-d57ff3c6ac90',
   5,
   'activity',
   null,
@@ -306,27 +306,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "My favorite toy is my [robot]."
+      "text": "My [favorite] toy is a car."
     },
     {
       "speaker": "B",
-      "text": "My favorite toy is my [teddy] bear."
+      "text": "I [play with] my doll."
     },
     {
       "speaker": "A",
-      "text": "I like the [puzzle]."
+      "text": "Toys are [fun]!"
     }
   ],
   "blanks": [
-    "robot",
-    "teddy",
-    "puzzle"
+    "favorite",
+    "play with",
+    "fun"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '785034d5-6325-484c-81ff-5d97d42b2b6d',
+  '1297f89c-7946-4dbd-947d-d57ff3c6ac90',
   6,
   'speaking',
   null,
@@ -335,19 +335,19 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "What is your favorite toy?"
+      "text": "My favorite toy is a car."
     },
     {
       "speaker": "B",
-      "text": "My favorite toy is my kite."
+      "text": "I play with my doll every day."
     },
     {
       "speaker": "A",
-      "text": "Why do you like it?"
+      "text": "Toys are fun!"
     },
     {
       "speaker": "B",
-      "text": "Because I can fly it outside!"
+      "text": "I love my toys too!"
     }
   ],
   "note": "Switch! Student becomes A, teacher becomes B."
@@ -355,49 +355,49 @@ values
   true
 ),
 (
-  '785034d5-6325-484c-81ff-5d97d42b2b6d',
+  '1297f89c-7946-4dbd-947d-d57ff3c6ac90',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "My favorite toy is my teddy bear. I like it because it is soft. My friend's favorite toy is a robot. He likes it because it moves!",
+  "text": "My favorite toy is a car. I play with it every day. Toys are fun!",
   "questions": [
-    "What is the writer's favorite toy?",
-    "Why does the writer like it?",
-    "What is the friend's favorite toy?"
+    "What is the favorite toy?",
+    "How often does the writer play with it?",
+    "Are toys fun?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '785034d5-6325-484c-81ff-5d97d42b2b6d',
+  '1297f89c-7946-4dbd-947d-d57ff3c6ac90',
   8,
   'writing',
   null,
   null,
   $json${
   "prompts": [
-    "My favorite toy is my ___.",
-    "I like it because ___.",
-    "My friend's favorite toy is ___."
+    "My favorite toy is ___.",
+    "I play with it ___.",
+    "Toys are ___."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '785034d5-6325-484c-81ff-5d97d42b2b6d',
+  '1297f89c-7946-4dbd-947d-d57ff3c6ac90',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Say 'My favorite toy is ___'",
-    "Give a reason with 'because'",
-    "Talk about toys"
+    "Say my favorite toy",
+    "Say 'I play with ___'",
+    "Say toys are fun"
   ],
-  "challenge": "Tell me your favorite toy and why you like it!"
+  "challenge": "Tell me your favorite toy and how often you play with it!"
 }$json$::jsonb,
   true
 );
@@ -405,13 +405,13 @@ values
 -- Lesson 3: Big and Small Toys
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '40a487ef-7bad-4ced-bb09-40f65ee0e9bf',
+  '273e4ae2-6f41-4b96-815f-4ac3241b9d25',
   'Big and Small Toys',
   'A1',
   'kids',
   7,
   3,
-  'Use simple size language with toys.',
+  'Describe toy size. [Combination, Lesson 3: freer practice, TPR game]',
   25,
   9,
   true
@@ -420,7 +420,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '40a487ef-7bad-4ced-bb09-40f65ee0e9bf',
+  '273e4ae2-6f41-4b96-815f-4ac3241b9d25',
   1,
   'title',
   null,
@@ -431,23 +431,23 @@ values
   true
 ),
 (
-  '40a487ef-7bad-4ced-bb09-40f65ee0e9bf',
+  '273e4ae2-6f41-4b96-815f-4ac3241b9d25',
   2,
   'warmup',
   null,
   null,
   $json${
-  "display": "📏",
+  "display": "🧸",
   "questions": [
-    "Do you have a big toy?",
-    "Do you have a small toy?"
+    "Is your toy big or small?",
+    "Is your toy soft or hard?"
   ],
   "title": "What do you see?"
 }$json$::jsonb,
   true
 ),
 (
-  '40a487ef-7bad-4ced-bb09-40f65ee0e9bf',
+  '273e4ae2-6f41-4b96-815f-4ac3241b9d25',
   3,
   'vocabulary',
   null,
@@ -463,11 +463,11 @@ values
       "bg": "#E1F5EE"
     },
     {
-      "word": "Toy",
+      "word": "Soft",
       "bg": "#EEEDFE"
     },
     {
-      "word": "Box",
+      "word": "Hard",
       "bg": "#FAEEDA"
     }
   ],
@@ -477,7 +477,7 @@ values
   true
 ),
 (
-  '40a487ef-7bad-4ced-bb09-40f65ee0e9bf',
+  '273e4ae2-6f41-4b96-815f-4ac3241b9d25',
   4,
   'phrases',
   null,
@@ -485,19 +485,19 @@ values
   $json${
   "teacher": [
     "Is your toy big or small?",
-    "Is this a big ball?"
+    "Is it soft or hard?"
   ],
   "student": [
     "My toy is big.",
-    "No, it is a small ball!"
+    "It is soft."
   ],
-  "note": "Compare two of your own toys!",
+  "note": "Show big and small with your hands!",
   "title": "Practice the Conversation"
 }$json$::jsonb,
   true
 ),
 (
-  '40a487ef-7bad-4ced-bb09-40f65ee0e9bf',
+  '273e4ae2-6f41-4b96-815f-4ac3241b9d25',
   5,
   'activity',
   null,
@@ -506,27 +506,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "This toy is [big]."
+      "text": "My teddy bear is [big] and [soft]."
     },
     {
       "speaker": "B",
-      "text": "This toy is [small]."
+      "text": "My car is [small] and [hard]."
     },
     {
       "speaker": "A",
-      "text": "I like [big] toys."
+      "text": "I like big toys."
     }
   ],
   "blanks": [
     "big",
     "small",
-    "big"
+    "soft"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '40a487ef-7bad-4ced-bb09-40f65ee0e9bf',
+  '273e4ae2-6f41-4b96-815f-4ac3241b9d25',
   6,
   'speaking',
   null,
@@ -539,65 +539,65 @@ values
     },
     {
       "speaker": "B",
-      "text": "My toy is small."
+      "text": "My teddy bear is big and soft. Is your toy small?"
     },
     {
       "speaker": "A",
-      "text": "My toy is big!"
+      "text": "Yes, my car is small and hard."
     },
     {
       "speaker": "B",
-      "text": "Big toys are fun too!"
+      "text": "Show me big and small with your hands!"
     }
   ],
-  "note": "Switch! Student becomes A, teacher becomes B."
+  "note": "Show 'big' with big arms and 'small' with small hands, then describe your toy!"
 }$json$::jsonb,
   true
 ),
 (
-  '40a487ef-7bad-4ced-bb09-40f65ee0e9bf',
+  '273e4ae2-6f41-4b96-815f-4ac3241b9d25',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "I have a big toy car. I have a small toy car too. I like the big car more. My toy box has big toys and small toys!",
+  "text": "My teddy bear is big and soft. My car is small and hard. I like both toys!",
   "questions": [
-    "Does the writer have a big toy car?",
-    "Does the writer have a small toy car?",
-    "What does the writer like more?"
+    "Is the teddy bear big or small?",
+    "Is the car soft or hard?",
+    "Does the writer like both toys?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '40a487ef-7bad-4ced-bb09-40f65ee0e9bf',
+  '273e4ae2-6f41-4b96-815f-4ac3241b9d25',
   8,
   'writing',
   null,
   null,
   $json${
   "prompts": [
-    "My toy is ___ (big/small).",
-    "I have a big ___.",
-    "I have a small ___."
+    "My ___ is big and ___.",
+    "My ___ is small and ___.",
+    "I like ___."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '40a487ef-7bad-4ced-bb09-40f65ee0e9bf',
+  '273e4ae2-6f41-4b96-815f-4ac3241b9d25',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Say 'big' and 'small'",
-    "Describe toys by size",
-    "Compare two toys"
+    "Say 'big', 'small', 'soft', 'hard'",
+    "Describe a toy's size and feel",
+    "Show sizes with my hands"
   ],
-  "challenge": "Show me a big toy and a small toy!"
+  "challenge": "Describe one of your toys: is it big or small, soft or hard?"
 }$json$::jsonb,
   true
 );
@@ -605,13 +605,13 @@ values
 -- Lesson 4: Toy Colors
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '9226bd85-7187-4bbc-a467-285a77f51436',
+  'fde4fca4-9cb3-4a02-be79-944de6efb90b',
   'Toy Colors',
   'A1',
   'kids',
   7,
   4,
-  'Combine toy vocabulary with colors.',
+  'Combine toys, size, and color into a show-and-tell. [Combination, Lesson 4: production]',
   25,
   9,
   true
@@ -620,7 +620,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '9226bd85-7187-4bbc-a467-285a77f51436',
+  'fde4fca4-9cb3-4a02-be79-944de6efb90b',
   1,
   'title',
   null,
@@ -631,23 +631,23 @@ values
   true
 ),
 (
-  '9226bd85-7187-4bbc-a467-285a77f51436',
+  'fde4fca4-9cb3-4a02-be79-944de6efb90b',
   2,
   'warmup',
   null,
   null,
   $json${
-  "display": "🌈",
+  "display": "🎨",
   "questions": [
     "What color is your favorite toy?",
-    "Do you have a red toy?"
+    "Can you show me your toys?"
   ],
   "title": "What do you see?"
 }$json$::jsonb,
   true
 ),
 (
-  '9226bd85-7187-4bbc-a467-285a77f51436',
+  'fde4fca4-9cb3-4a02-be79-944de6efb90b',
   3,
   'vocabulary',
   null,
@@ -655,19 +655,19 @@ values
   $json${
   "words": [
     {
-      "word": "Red Ball",
+      "word": "Color",
       "bg": "#FAECE7"
     },
     {
-      "word": "Blue Car",
+      "word": "Have",
       "bg": "#E1F5EE"
     },
     {
-      "word": "Green Kite",
+      "word": "And",
       "bg": "#EEEDFE"
     },
     {
-      "word": "Yellow Doll",
+      "word": "Show",
       "bg": "#FAEEDA"
     }
   ],
@@ -677,27 +677,27 @@ values
   true
 ),
 (
-  '9226bd85-7187-4bbc-a467-285a77f51436',
+  'fde4fca4-9cb3-4a02-be79-944de6efb90b',
   4,
   'phrases',
   null,
   null,
   $json${
   "teacher": [
-    "What color is your ball?",
-    "Is your car blue?"
+    "What color is your toy?",
+    "Can you show me?"
   ],
   "student": [
-    "My ball is red.",
-    "Yes, my car is blue!"
+    "My toy is red and big.",
+    "Yes, look!"
   ],
-  "note": "Describe a toy by its color and name!",
+  "note": "Put it all together: toy + color + size!",
   "title": "Practice the Conversation"
 }$json$::jsonb,
   true
 ),
 (
-  '9226bd85-7187-4bbc-a467-285a77f51436',
+  'fde4fca4-9cb3-4a02-be79-944de6efb90b',
   5,
   'activity',
   null,
@@ -706,27 +706,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "I have a [red] ball."
+      "text": "I [have] a red ball."
     },
     {
       "speaker": "B",
-      "text": "I have a [blue] car."
+      "text": "It is big [and] round."
     },
     {
       "speaker": "A",
-      "text": "I have a [green] kite."
+      "text": "Let me [show] you!"
     }
   ],
   "blanks": [
-    "red",
-    "blue",
-    "green"
+    "have",
+    "and",
+    "show"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '9226bd85-7187-4bbc-a467-285a77f51436',
+  'fde4fca4-9cb3-4a02-be79-944de6efb90b',
   6,
   'speaking',
   null,
@@ -735,69 +735,69 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "What color is your favorite toy?"
+      "text": "Tell me about your favorite toy."
     },
     {
       "speaker": "B",
-      "text": "My favorite toy is a yellow doll."
+      "text": "I have a red ball. It is big and round. I play with it every day."
     },
     {
       "speaker": "A",
-      "text": "I have a red ball!"
+      "text": "I have a small blue car. It is fun!"
     },
     {
       "speaker": "B",
-      "text": "Red is a nice color!"
+      "text": "Show me your toy!"
     }
   ],
-  "note": "Switch! Student becomes A, teacher becomes B."
+  "note": "Show-and-tell: show me a toy and tell me its color and size!"
 }$json$::jsonb,
   true
 ),
 (
-  '9226bd85-7187-4bbc-a467-285a77f51436',
+  'fde4fca4-9cb3-4a02-be79-944de6efb90b',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "I have a red ball. I have a blue car. I have a green kite. My toys have many colors. I like colorful toys!",
+  "text": "I have a red ball. It is big and round. I play with it every day. It is fun!",
   "questions": [
     "What color is the ball?",
-    "What color is the car?",
-    "What color is the kite?"
+    "Is the ball big or small?",
+    "How often does the writer play with it?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '9226bd85-7187-4bbc-a467-285a77f51436',
+  'fde4fca4-9cb3-4a02-be79-944de6efb90b',
   8,
   'writing',
   null,
   null,
   $json${
   "prompts": [
-    "I have a ___ ___ (color + toy).",
-    "My favorite colorful toy is ___.",
-    "My toy box has many ___."
+    "I have a ___ ___.",
+    "It is ___ and ___.",
+    "I play with it ___."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '9226bd85-7187-4bbc-a467-285a77f51436',
+  'fde4fca4-9cb3-4a02-be79-944de6efb90b',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Describe toys with colors",
-    "Say 'I have a ___ ___'",
-    "Name colorful toys"
+    "Describe a toy's color and size",
+    "Say 'I have a ___'",
+    "Show-and-tell my favorite toy"
   ],
-  "challenge": "Describe one of your toys using a color!"
+  "challenge": "Show me your favorite toy and tell me all about it!"
 }$json$::jsonb,
   true
 );
@@ -805,13 +805,13 @@ values
 -- Lesson 5: Unit Review
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '46759245-9ff3-43e1-80ec-651b12372f0d',
+  'c76fc9e6-30a9-4f41-978f-d6edb3d79f8e',
   'Unit Review',
   'A1',
   'kids',
   7,
   5,
-  'Review toy vocabulary from Unit 7.',
+  'Review toys, size, and color. [Combination, Lesson 5: tier-matched mixed review]',
   25,
   9,
   true
@@ -820,7 +820,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '46759245-9ff3-43e1-80ec-651b12372f0d',
+  'c76fc9e6-30a9-4f41-978f-d6edb3d79f8e',
   1,
   'title',
   null,
@@ -831,7 +831,7 @@ values
   true
 ),
 (
-  '46759245-9ff3-43e1-80ec-651b12372f0d',
+  'c76fc9e6-30a9-4f41-978f-d6edb3d79f8e',
   2,
   'warmup',
   null,
@@ -839,15 +839,15 @@ values
   $json${
   "display": "🧸",
   "questions": [
-    "What toys do you remember?",
-    "What is your favorite toy?"
+    "What is your favorite toy?",
+    "What color is it?"
   ],
-  "title": "Let's Review!"
+  "title": "What do you see?"
 }$json$::jsonb,
   true
 ),
 (
-  '46759245-9ff3-43e1-80ec-651b12372f0d',
+  'c76fc9e6-30a9-4f41-978f-d6edb3d79f8e',
   3,
   'vocabulary',
   null,
@@ -855,41 +855,41 @@ values
   $json${
   "words": [
     {
-      "word": "Ball",
+      "word": "Toy",
       "bg": "#FAECE7"
     },
     {
-      "word": "Doll",
+      "word": "Favorite",
       "bg": "#E1F5EE"
     },
     {
-      "word": "Robot",
+      "word": "Big",
       "bg": "#EEEDFE"
     },
     {
-      "word": "Kite",
+      "word": "Color",
       "bg": "#FAEEDA"
     }
   ],
-  "title": "Toy Words",
+  "title": "New Words",
   "subtitle": "Tap a card to see it bigger."
 }$json$::jsonb,
   true
 ),
 (
-  '46759245-9ff3-43e1-80ec-651b12372f0d',
+  'c76fc9e6-30a9-4f41-978f-d6edb3d79f8e',
   4,
   'phrases',
   null,
   null,
   $json${
   "teacher": [
-    "What is this?",
-    "What is your favorite toy?"
+    "What is your favorite toy?",
+    "What color is it?"
   ],
   "student": [
-    "It is a ball.",
-    "My favorite toy is my robot."
+    "My favorite toy is a ball.",
+    "It is red."
   ],
   "note": "Use everything you learned this unit!",
   "title": "Practice the Conversation"
@@ -897,7 +897,7 @@ values
   true
 ),
 (
-  '46759245-9ff3-43e1-80ec-651b12372f0d',
+  'c76fc9e6-30a9-4f41-978f-d6edb3d79f8e',
   5,
   'activity',
   null,
@@ -906,27 +906,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "This is a [ball]."
+      "text": "My favorite [toy] is a car."
     },
     {
       "speaker": "B",
-      "text": "My favorite toy is my [robot]."
+      "text": "It is [big] and red."
     },
     {
       "speaker": "A",
-      "text": "I have a [red] ball."
+      "text": "I love the [color]!"
     }
   ],
   "blanks": [
-    "ball",
-    "robot",
-    "red"
+    "toy",
+    "big",
+    "color"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '46759245-9ff3-43e1-80ec-651b12372f0d',
+  'c76fc9e6-30a9-4f41-978f-d6edb3d79f8e',
   6,
   'speaking',
   null,
@@ -935,19 +935,19 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "What is your favorite toy?"
+      "text": "My favorite toy is a car. It is big and blue."
     },
     {
       "speaker": "B",
-      "text": "My favorite toy is my kite."
+      "text": "My favorite toy is a doll. It is small and pink."
     },
     {
       "speaker": "A",
-      "text": "What color is it?"
+      "text": "I play with my toys every day."
     },
     {
       "speaker": "B",
-      "text": "It is green!"
+      "text": "Me too!"
     }
   ],
   "note": "Switch! Student becomes A, teacher becomes B."
@@ -955,50 +955,49 @@ values
   true
 ),
 (
-  '46759245-9ff3-43e1-80ec-651b12372f0d',
+  'c76fc9e6-30a9-4f41-978f-d6edb3d79f8e',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "I have many toys. I have a red ball. I have a blue car. My favorite toy is my teddy bear because it is soft. I love my toys!",
+  "text": "My favorite toy is a car. It is big and blue. I play with it every day. Toys are fun!",
   "questions": [
-    "What color is the ball?",
-    "What color is the car?",
-    "What is the favorite toy?"
+    "What is the favorite toy?",
+    "What color and size is it?",
+    "How often does the writer play?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '46759245-9ff3-43e1-80ec-651b12372f0d',
+  'c76fc9e6-30a9-4f41-978f-d6edb3d79f8e',
   8,
   'writing',
   null,
   null,
   $json${
   "prompts": [
-    "I have a ___.",
-    "My favorite toy is my ___.",
-    "My toy is ___ (color)."
+    "My favorite toy is ___.",
+    "It is ___ and ___.",
+    "I play with it ___."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '46759245-9ff3-43e1-80ec-651b12372f0d',
+  'c76fc9e6-30a9-4f41-978f-d6edb3d79f8e',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Name four toys",
-    "Say 'My favorite toy is ___'",
-    "Describe toys by size",
-    "Describe toys by color"
+    "Name toys",
+    "Describe a toy's size and color",
+    "Show-and-tell my favorite toy"
   ],
-  "challenge": "Show me your favorite toy and describe it!"
+  "challenge": "Tell me all about your favorite toy!"
 }$json$::jsonb,
   true
 );

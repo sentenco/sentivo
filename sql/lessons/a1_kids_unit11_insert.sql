@@ -1,16 +1,17 @@
--- A1 Kids Unit 11: My House (5 lessons)
+-- A1 Kids Unit 11: My House (5 lessons) — TIERED (Bridge)
+-- Regenerated per the Sentivo Intra-Level Progression Framework + lesson-level escalation + task rotation.
 -- Run this whole script in the Supabase SQL editor.
 
 -- Lesson 1: Rooms of the House
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '2aa2f373-eeee-45fa-a183-7082fe0b002d',
+  '767489e9-523b-4a6a-929e-df71f887ea40',
   'Rooms of the House',
   'A1',
   'kids',
   11,
   1,
-  'Identify the main rooms of a house.',
+  'Name rooms of the house. [Bridge, Lesson 1: notice/receptive, matching]',
   25,
   9,
   true
@@ -19,7 +20,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '2aa2f373-eeee-45fa-a183-7082fe0b002d',
+  '767489e9-523b-4a6a-929e-df71f887ea40',
   1,
   'title',
   null,
@@ -30,7 +31,7 @@ values
   true
 ),
 (
-  '2aa2f373-eeee-45fa-a183-7082fe0b002d',
+  '767489e9-523b-4a6a-929e-df71f887ea40',
   2,
   'warmup',
   null,
@@ -38,15 +39,15 @@ values
   $json${
   "display": "🏠",
   "questions": [
-    "What rooms are in your house?",
-    "Where do you sleep?"
+    "Do you have a kitchen?",
+    "Where is your bedroom?"
   ],
   "title": "What do you see?"
 }$json$::jsonb,
   true
 ),
 (
-  '2aa2f373-eeee-45fa-a183-7082fe0b002d',
+  '767489e9-523b-4a6a-929e-df71f887ea40',
   3,
   'vocabulary',
   null,
@@ -66,7 +67,7 @@ values
       "bg": "#EEEDFE"
     },
     {
-      "word": "Living Room",
+      "word": "Living room",
       "bg": "#FAEEDA"
     }
   ],
@@ -76,7 +77,7 @@ values
   true
 ),
 (
-  '2aa2f373-eeee-45fa-a183-7082fe0b002d',
+  '767489e9-523b-4a6a-929e-df71f887ea40',
   4,
   'phrases',
   null,
@@ -84,19 +85,19 @@ values
   $json${
   "teacher": [
     "What room is this?",
-    "Is this the kitchen?"
+    "Where is your bedroom?"
   ],
   "student": [
     "This is the kitchen.",
-    "Yes, this is the kitchen!"
+    "My bedroom is here."
   ],
-  "note": "Think about the rooms in your own house!",
+  "note": "Point to a room picture!",
   "title": "Practice the Conversation"
 }$json$::jsonb,
   true
 ),
 (
-  '2aa2f373-eeee-45fa-a183-7082fe0b002d',
+  '767489e9-523b-4a6a-929e-df71f887ea40',
   5,
   'activity',
   null,
@@ -109,7 +110,7 @@ values
     },
     {
       "speaker": "B",
-      "text": "This is the [bedroom]."
+      "text": "This is my [bedroom]."
     },
     {
       "speaker": "A",
@@ -125,7 +126,7 @@ values
   true
 ),
 (
-  '2aa2f373-eeee-45fa-a183-7082fe0b002d',
+  '767489e9-523b-4a6a-929e-df71f887ea40',
   6,
   'speaking',
   null,
@@ -134,43 +135,43 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "What room is this?"
+      "text": "This is the kitchen."
+    },
+    {
+      "speaker": "B",
+      "text": "This is my bedroom."
+    },
+    {
+      "speaker": "A",
+      "text": "This is the bathroom."
     },
     {
       "speaker": "B",
       "text": "This is the living room!"
-    },
-    {
-      "speaker": "A",
-      "text": "Where do you sleep?"
-    },
-    {
-      "speaker": "B",
-      "text": "I sleep in my bedroom!"
     }
   ],
-  "note": "Switch! Student becomes A, teacher becomes B."
+  "note": "Teacher says the room first. Student repeats, then says it alone."
 }$json$::jsonb,
   true
 ),
 (
-  '2aa2f373-eeee-45fa-a183-7082fe0b002d',
+  '767489e9-523b-4a6a-929e-df71f887ea40',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "This is my house. This is the kitchen. This is the bedroom. This is the bathroom. This is the living room. I love my house!",
+  "text": "This is the kitchen. This is my bedroom. This is the bathroom.",
   "questions": [
-    "What rooms are in the house?",
-    "Does the writer love their house?",
-    "Where do you cook food?"
+    "What is the first room?",
+    "Whose bedroom is it?",
+    "What is the third room?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '2aa2f373-eeee-45fa-a183-7082fe0b002d',
+  '767489e9-523b-4a6a-929e-df71f887ea40',
   8,
   'writing',
   null,
@@ -178,25 +179,25 @@ values
   $json${
   "prompts": [
     "This is the ___.",
-    "I sleep in the ___.",
-    "My favorite room is the ___."
+    "This is my ___.",
+    "My house has a ___."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '2aa2f373-eeee-45fa-a183-7082fe0b002d',
+  '767489e9-523b-4a6a-929e-df71f887ea40',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Name four rooms",
+    "Name 4 rooms",
     "Say 'This is the ___'",
-    "Talk about my house"
+    "Point to a room"
   ],
-  "challenge": "Name three rooms in your house!"
+  "challenge": "Tell me the rooms in your house!"
 }$json$::jsonb,
   true
 );
@@ -204,13 +205,13 @@ values
 -- Lesson 2: Furniture in the House
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '1fc74a50-f45d-491d-93cb-690a95aad9cc',
+  '34e3247f-aafd-44f2-9fc8-4af5943db419',
   'Furniture in the House',
   'A1',
   'kids',
   11,
   2,
-  'Name common furniture items.',
+  'Combine rooms and furniture with ''there is''. [Bridge, Lesson 2: controlled practice]',
   25,
   9,
   true
@@ -219,7 +220,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '1fc74a50-f45d-491d-93cb-690a95aad9cc',
+  '34e3247f-aafd-44f2-9fc8-4af5943db419',
   1,
   'title',
   null,
@@ -230,7 +231,7 @@ values
   true
 ),
 (
-  '1fc74a50-f45d-491d-93cb-690a95aad9cc',
+  '34e3247f-aafd-44f2-9fc8-4af5943db419',
   2,
   'warmup',
   null,
@@ -238,15 +239,15 @@ values
   $json${
   "display": "🛋️",
   "questions": [
-    "What furniture is in your bedroom?",
-    "Do you have a sofa?"
+    "Is there a sofa in your living room?",
+    "Is there a bed in your bedroom?"
   ],
   "title": "What do you see?"
 }$json$::jsonb,
   true
 ),
 (
-  '1fc74a50-f45d-491d-93cb-690a95aad9cc',
+  '34e3247f-aafd-44f2-9fc8-4af5943db419',
   3,
   'vocabulary',
   null,
@@ -254,19 +255,19 @@ values
   $json${
   "words": [
     {
-      "word": "Bed",
+      "word": "There is",
       "bg": "#FAECE7"
     },
     {
-      "word": "Table",
+      "word": "Sofa",
       "bg": "#E1F5EE"
     },
     {
-      "word": "Chair",
+      "word": "Bed",
       "bg": "#EEEDFE"
     },
     {
-      "word": "Sofa",
+      "word": "Table",
       "bg": "#FAEEDA"
     }
   ],
@@ -276,27 +277,27 @@ values
   true
 ),
 (
-  '1fc74a50-f45d-491d-93cb-690a95aad9cc',
+  '34e3247f-aafd-44f2-9fc8-4af5943db419',
   4,
   'phrases',
   null,
   null,
   $json${
   "teacher": [
-    "What is this?",
-    "Is this a bed?"
+    "What is in your living room?",
+    "What is in your bedroom?"
   ],
   "student": [
-    "It is a bed.",
-    "Yes, it is a table!"
+    "There is a sofa.",
+    "There is a bed."
   ],
-  "note": "Think about furniture in your own house!",
+  "note": "Use the word bank: there is, sofa, bed, table.",
   "title": "Practice the Conversation"
 }$json$::jsonb,
   true
 ),
 (
-  '1fc74a50-f45d-491d-93cb-690a95aad9cc',
+  '34e3247f-aafd-44f2-9fc8-4af5943db419',
   5,
   'activity',
   null,
@@ -305,27 +306,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "This is a [bed]."
+      "text": "[There is] a [sofa] in the living room."
     },
     {
       "speaker": "B",
-      "text": "This is a [table]."
+      "text": "There is a [bed] in my bedroom."
     },
     {
       "speaker": "A",
-      "text": "This is a [sofa]."
+      "text": "There is a table in the kitchen."
     }
   ],
   "blanks": [
-    "bed",
-    "table",
-    "sofa"
+    "there is",
+    "sofa",
+    "bed"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '1fc74a50-f45d-491d-93cb-690a95aad9cc',
+  '34e3247f-aafd-44f2-9fc8-4af5943db419',
   6,
   'speaking',
   null,
@@ -334,19 +335,19 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "What is this?"
+      "text": "What is in your living room?"
     },
     {
       "speaker": "B",
-      "text": "It is a chair!"
+      "text": "There is a sofa. What is in your bedroom?"
     },
     {
       "speaker": "A",
-      "text": "Where is the sofa?"
+      "text": "There is a bed and a table."
     },
     {
       "speaker": "B",
-      "text": "The sofa is in the living room!"
+      "text": "Nice room!"
     }
   ],
   "note": "Switch! Student becomes A, teacher becomes B."
@@ -354,49 +355,49 @@ values
   true
 ),
 (
-  '1fc74a50-f45d-491d-93cb-690a95aad9cc',
+  '34e3247f-aafd-44f2-9fc8-4af5943db419',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "My bedroom has a bed. My kitchen has a table and chairs. My living room has a sofa. I like my furniture!",
+  "text": "There is a sofa in the living room. There is a bed in my bedroom. There is a table in the kitchen.",
   "questions": [
+    "What is in the living room?",
     "What is in the bedroom?",
-    "What is in the kitchen?",
-    "What is in the living room?"
+    "What is in the kitchen?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '1fc74a50-f45d-491d-93cb-690a95aad9cc',
+  '34e3247f-aafd-44f2-9fc8-4af5943db419',
   8,
   'writing',
   null,
   null,
   $json${
   "prompts": [
-    "My bedroom has a ___.",
-    "My kitchen has a ___.",
-    "My living room has a ___."
+    "There is a ___ in the ___.",
+    "There is a ___ in my ___.",
+    "There is a ___ too."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '1fc74a50-f45d-491d-93cb-690a95aad9cc',
+  '34e3247f-aafd-44f2-9fc8-4af5943db419',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Name four furniture items",
-    "Say what's in each room",
-    "Talk about furniture"
+    "Use 'there is' with furniture",
+    "Name sofa, bed, table",
+    "Say what's in each room"
   ],
-  "challenge": "Name one piece of furniture in each room of your house!"
+  "challenge": "Tell me what's in one room of your house!"
 }$json$::jsonb,
   true
 );
@@ -404,13 +405,13 @@ values
 -- Lesson 3: Where Is It?
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  'c4e26c8d-2aae-41d9-82f3-e6e4a4b4142c',
+  '51b0dedb-6e29-4c0a-9379-aec412b7e36b',
   'Where Is It?',
   'A1',
   'kids',
   11,
   3,
-  'Use simple prepositions (in/on/under) to locate objects.',
+  'Ask and answer where things are. [Bridge, Lesson 3: freer practice, TPR find-it game]',
   25,
   9,
   true
@@ -419,7 +420,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  'c4e26c8d-2aae-41d9-82f3-e6e4a4b4142c',
+  '51b0dedb-6e29-4c0a-9379-aec412b7e36b',
   1,
   'title',
   null,
@@ -430,23 +431,23 @@ values
   true
 ),
 (
-  'c4e26c8d-2aae-41d9-82f3-e6e4a4b4142c',
+  '51b0dedb-6e29-4c0a-9379-aec412b7e36b',
   2,
   'warmup',
   null,
   null,
   $json${
-  "display": "🔍",
+  "display": "📍",
   "questions": [
-    "Where is your bag?",
-    "Is your book on the table?"
+    "Where is your bed?",
+    "What is on your table?"
   ],
   "title": "What do you see?"
 }$json$::jsonb,
   true
 ),
 (
-  'c4e26c8d-2aae-41d9-82f3-e6e4a4b4142c',
+  '51b0dedb-6e29-4c0a-9379-aec412b7e36b',
   3,
   'vocabulary',
   null,
@@ -454,19 +455,19 @@ values
   $json${
   "words": [
     {
-      "word": "In",
+      "word": "Where is",
       "bg": "#FAECE7"
     },
     {
-      "word": "On",
+      "word": "In",
       "bg": "#E1F5EE"
     },
     {
-      "word": "Under",
+      "word": "On",
       "bg": "#EEEDFE"
     },
     {
-      "word": "Where",
+      "word": "Under",
       "bg": "#FAEEDA"
     }
   ],
@@ -476,27 +477,27 @@ values
   true
 ),
 (
-  'c4e26c8d-2aae-41d9-82f3-e6e4a4b4142c',
+  '51b0dedb-6e29-4c0a-9379-aec412b7e36b',
   4,
   'phrases',
   null,
   null,
   $json${
   "teacher": [
-    "Where is it?",
-    "Is it on the table?"
+    "Where is the sofa?",
+    "What is on the table?"
   ],
   "student": [
-    "It is on the table.",
-    "No, it is under the table!"
+    "The sofa is in the living room.",
+    "A book is on the table."
   ],
-  "note": "Look around and find real objects!",
+  "note": "Point and find things in your house!",
   "title": "Practice the Conversation"
 }$json$::jsonb,
   true
 ),
 (
-  'c4e26c8d-2aae-41d9-82f3-e6e4a4b4142c',
+  '51b0dedb-6e29-4c0a-9379-aec412b7e36b',
   5,
   'activity',
   null,
@@ -505,27 +506,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "The ball is [on] the table."
+      "text": "[Where is] the sofa?"
     },
     {
       "speaker": "B",
-      "text": "The cat is [under] the table."
+      "text": "It is [in] the living room."
     },
     {
       "speaker": "A",
-      "text": "The book is [in] the bag."
+      "text": "A book is [on] the table."
     }
   ],
   "blanks": [
-    "on",
-    "under",
-    "in"
+    "where is",
+    "in",
+    "on"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'c4e26c8d-2aae-41d9-82f3-e6e4a4b4142c',
+  '51b0dedb-6e29-4c0a-9379-aec412b7e36b',
   6,
   'speaking',
   null,
@@ -534,69 +535,69 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "Where is the ball?"
+      "text": "Where is the sofa?"
     },
     {
       "speaker": "B",
-      "text": "The ball is under the chair."
+      "text": "It is in the living room. Where is your bed?"
     },
     {
       "speaker": "A",
-      "text": "Where is the book?"
+      "text": "It is in my bedroom. A toy is under my bed!"
     },
     {
       "speaker": "B",
-      "text": "The book is on the table!"
+      "text": "Your turn to find something!"
     }
   ],
-  "note": "Switch! Student becomes A, teacher becomes B."
+  "note": "Find-it game: ask where something is, then point to find it in your house!"
 }$json$::jsonb,
   true
 ),
 (
-  'c4e26c8d-2aae-41d9-82f3-e6e4a4b4142c',
+  '51b0dedb-6e29-4c0a-9379-aec412b7e36b',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "Where is my ball? My ball is under the table. Where is my book? My book is on the table. Where is my pencil? My pencil is in my bag!",
+  "text": "Where is the sofa? It is in the living room. Where is my bed? It is in my bedroom. A toy is under my bed.",
   "questions": [
-    "Where is the ball?",
-    "Where is the book?",
-    "Where is the pencil?"
+    "Where is the sofa?",
+    "Where is the bed?",
+    "What is under the bed?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'c4e26c8d-2aae-41d9-82f3-e6e4a4b4142c',
+  '51b0dedb-6e29-4c0a-9379-aec412b7e36b',
   8,
   'writing',
   null,
   null,
   $json${
   "prompts": [
-    "The ___ is on the ___.",
-    "The ___ is under the ___.",
-    "The ___ is in the ___."
+    "The sofa is in the ___.",
+    "My bed is in my ___.",
+    "A ___ is under my bed."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'c4e26c8d-2aae-41d9-82f3-e6e4a4b4142c',
+  '51b0dedb-6e29-4c0a-9379-aec412b7e36b',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Say 'in', 'on', 'under'",
-    "Ask 'Where is it?'",
-    "Find objects in a picture"
+    "Ask 'Where is ___?'",
+    "Use 'in', 'on', 'under'",
+    "Find things in my house"
   ],
-  "challenge": "Tell me where something in your room is right now!"
+  "challenge": "Ask me where something is in your house!"
 }$json$::jsonb,
   true
 );
@@ -604,13 +605,13 @@ values
 -- Lesson 4: My Favorite Room
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '8f3346b5-2ad1-4551-bceb-445852a8abbb',
+  'eb67730b-ba79-4b4a-9db5-97c3100c48f7',
   'My Favorite Room',
   'A1',
   'kids',
   11,
   4,
-  'Say a favorite room and give a simple reason.',
+  'Show and tell about a favorite room. [Bridge, Lesson 4: production]',
   25,
   9,
   true
@@ -619,7 +620,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '8f3346b5-2ad1-4551-bceb-445852a8abbb',
+  'eb67730b-ba79-4b4a-9db5-97c3100c48f7',
   1,
   'title',
   null,
@@ -630,13 +631,13 @@ values
   true
 ),
 (
-  '8f3346b5-2ad1-4551-bceb-445852a8abbb',
+  'eb67730b-ba79-4b4a-9db5-97c3100c48f7',
   2,
   'warmup',
   null,
   null,
   $json${
-  "display": "⭐",
+  "display": "🖼️",
   "questions": [
     "What is your favorite room?",
     "Why do you like it?"
@@ -646,7 +647,7 @@ values
   true
 ),
 (
-  '8f3346b5-2ad1-4551-bceb-445852a8abbb',
+  'eb67730b-ba79-4b4a-9db5-97c3100c48f7',
   3,
   'vocabulary',
   null,
@@ -662,11 +663,11 @@ values
       "bg": "#E1F5EE"
     },
     {
-      "word": "Play",
+      "word": "Cozy",
       "bg": "#EEEDFE"
     },
     {
-      "word": "Sleep",
+      "word": "Show",
       "bg": "#FAEEDA"
     }
   ],
@@ -676,7 +677,7 @@ values
   true
 ),
 (
-  '8f3346b5-2ad1-4551-bceb-445852a8abbb',
+  'eb67730b-ba79-4b4a-9db5-97c3100c48f7',
   4,
   'phrases',
   null,
@@ -688,15 +689,15 @@ values
   ],
   "student": [
     "My favorite room is my bedroom.",
-    "Because I sleep and play there!"
+    "It is cozy."
   ],
-  "note": "Think of your real favorite room!",
+  "note": "Put it all together: room + furniture + a simple picture reason.",
   "title": "Practice the Conversation"
 }$json$::jsonb,
   true
 ),
 (
-  '8f3346b5-2ad1-4551-bceb-445852a8abbb',
+  'eb67730b-ba79-4b4a-9db5-97c3100c48f7',
   5,
   'activity',
   null,
@@ -709,23 +710,23 @@ values
     },
     {
       "speaker": "B",
-      "text": "I like it [because] it is fun."
+      "text": "It is [cozy]."
     },
     {
       "speaker": "A",
-      "text": "I [play] there."
+      "text": "Let me [show] you."
     }
   ],
   "blanks": [
     "favorite",
-    "because",
-    "play"
+    "cozy",
+    "show"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '8f3346b5-2ad1-4551-bceb-445852a8abbb',
+  'eb67730b-ba79-4b4a-9db5-97c3100c48f7',
   6,
   'speaking',
   null,
@@ -734,69 +735,69 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "What is your favorite room?"
+      "text": "My favorite room is my bedroom. There is a bed and toys."
     },
     {
       "speaker": "B",
-      "text": "My favorite room is the living room."
+      "text": "It is cozy. My favorite room is the kitchen!"
     },
     {
       "speaker": "A",
-      "text": "Why do you like it?"
+      "text": "Show me your favorite room!"
     },
     {
       "speaker": "B",
-      "text": "Because I watch TV and play there!"
+      "text": "There is a table and yummy food."
     }
   ],
-  "note": "Switch! Student becomes A, teacher becomes B."
+  "note": "Show-and-tell: tell me about your favorite room in your house!"
 }$json$::jsonb,
   true
 ),
 (
-  '8f3346b5-2ad1-4551-bceb-445852a8abbb',
+  'eb67730b-ba79-4b4a-9db5-97c3100c48f7',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "My favorite room is my bedroom. I like it because I sleep and play there. My friend's favorite room is the kitchen. She likes it because she helps cook!",
+  "text": "My favorite room is my bedroom. There is a bed and my toys. It is cozy. I love my room!",
   "questions": [
-    "What is the writer's favorite room?",
-    "Why does the writer like it?",
-    "What is the friend's favorite room?"
+    "What is the favorite room?",
+    "What is in the room?",
+    "How does the writer feel about it?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '8f3346b5-2ad1-4551-bceb-445852a8abbb',
+  'eb67730b-ba79-4b4a-9db5-97c3100c48f7',
   8,
   'writing',
   null,
   null,
   $json${
   "prompts": [
-    "My favorite room is the ___.",
-    "I like it because ___.",
-    "In this room, I ___."
+    "My favorite room is ___.",
+    "There is a ___ and ___.",
+    "I love my room because it is ___."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '8f3346b5-2ad1-4551-bceb-445852a8abbb',
+  'eb67730b-ba79-4b4a-9db5-97c3100c48f7',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Say 'My favorite room is ___'",
-    "Give a reason with 'because'",
-    "Talk about my house"
+    "Say my favorite room",
+    "Say what's in it",
+    "Show-and-tell my favorite room"
   ],
-  "challenge": "Tell me your favorite room and why you like it!"
+  "challenge": "Show me your favorite room and tell me what's in it!"
 }$json$::jsonb,
   true
 );
@@ -804,13 +805,13 @@ values
 -- Lesson 5: Unit Review
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  'ab9f4ec4-6406-4a93-bb77-f3653126c0e7',
+  '4b9c1a1f-dd94-482c-8a9f-8e207946379b',
   'Unit Review',
   'A1',
   'kids',
   11,
   5,
-  'Review house and furniture vocabulary.',
+  'Review rooms, furniture, and location. [Bridge, Lesson 5: tier-matched mixed review]',
   25,
   9,
   true
@@ -819,7 +820,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  'ab9f4ec4-6406-4a93-bb77-f3653126c0e7',
+  '4b9c1a1f-dd94-482c-8a9f-8e207946379b',
   1,
   'title',
   null,
@@ -830,7 +831,7 @@ values
   true
 ),
 (
-  'ab9f4ec4-6406-4a93-bb77-f3653126c0e7',
+  '4b9c1a1f-dd94-482c-8a9f-8e207946379b',
   2,
   'warmup',
   null,
@@ -838,15 +839,15 @@ values
   $json${
   "display": "🏠",
   "questions": [
-    "What rooms do you remember?",
-    "What furniture do you remember?"
+    "What rooms are in your house?",
+    "What is your favorite room?"
   ],
-  "title": "Let's Review!"
+  "title": "What do you see?"
 }$json$::jsonb,
   true
 ),
 (
-  'ab9f4ec4-6406-4a93-bb77-f3653126c0e7',
+  '4b9c1a1f-dd94-482c-8a9f-8e207946379b',
   3,
   'vocabulary',
   null,
@@ -854,41 +855,41 @@ values
   $json${
   "words": [
     {
-      "word": "Kitchen",
+      "word": "Room",
       "bg": "#FAECE7"
     },
     {
-      "word": "Bedroom",
+      "word": "There is",
       "bg": "#E1F5EE"
     },
     {
-      "word": "Bed",
+      "word": "Favorite",
       "bg": "#EEEDFE"
     },
     {
-      "word": "Sofa",
+      "word": "Cozy",
       "bg": "#FAEEDA"
     }
   ],
-  "title": "Review Words",
+  "title": "New Words",
   "subtitle": "Tap a card to see it bigger."
 }$json$::jsonb,
   true
 ),
 (
-  'ab9f4ec4-6406-4a93-bb77-f3653126c0e7',
+  '4b9c1a1f-dd94-482c-8a9f-8e207946379b',
   4,
   'phrases',
   null,
   null,
   $json${
   "teacher": [
-    "What room is this?",
-    "What is this?"
+    "What rooms are in your house?",
+    "What is your favorite room?"
   ],
   "student": [
-    "This is the kitchen.",
-    "It is a bed."
+    "There is a kitchen and a bedroom.",
+    "My favorite room is my bedroom."
   ],
   "note": "Use everything you learned this unit!",
   "title": "Practice the Conversation"
@@ -896,7 +897,7 @@ values
   true
 ),
 (
-  'ab9f4ec4-6406-4a93-bb77-f3653126c0e7',
+  '4b9c1a1f-dd94-482c-8a9f-8e207946379b',
   5,
   'activity',
   null,
@@ -905,27 +906,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "This is the [kitchen]."
+      "text": "This is my [room]."
     },
     {
       "speaker": "B",
-      "text": "This is a [bed]."
+      "text": "[There is] a bed and a table."
     },
     {
       "speaker": "A",
-      "text": "The cat is [under] the table."
+      "text": "It is my [favorite] room."
     }
   ],
   "blanks": [
-    "kitchen",
-    "bed",
-    "under"
+    "room",
+    "there is",
+    "favorite"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'ab9f4ec4-6406-4a93-bb77-f3653126c0e7',
+  '4b9c1a1f-dd94-482c-8a9f-8e207946379b',
   6,
   'speaking',
   null,
@@ -934,19 +935,19 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "What is your favorite room?"
+      "text": "This is my bedroom. There is a bed and my toys."
     },
     {
       "speaker": "B",
-      "text": "My favorite room is my bedroom!"
+      "text": "This is my favorite room. It is cozy."
     },
     {
       "speaker": "A",
-      "text": "Where is your bed?"
+      "text": "Where is your favorite room?"
     },
     {
       "speaker": "B",
-      "text": "My bed is in my bedroom!"
+      "text": "It is upstairs!"
     }
   ],
   "note": "Switch! Student becomes A, teacher becomes B."
@@ -954,38 +955,38 @@ values
   true
 ),
 (
-  'ab9f4ec4-6406-4a93-bb77-f3653126c0e7',
+  '4b9c1a1f-dd94-482c-8a9f-8e207946379b',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "This is my house. It has a kitchen, a bedroom, and a living room. My bedroom has a bed. My living room has a sofa. My favorite room is my bedroom because I sleep and play there!",
+  "text": "This is my bedroom. There is a bed and my toys. It is my favorite room. It is cozy!",
   "questions": [
-    "What rooms does the house have?",
-    "What is in the bedroom?",
-    "What is the favorite room?"
+    "What room is this?",
+    "What is in the room?",
+    "Is it the favorite room?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'ab9f4ec4-6406-4a93-bb77-f3653126c0e7',
+  '4b9c1a1f-dd94-482c-8a9f-8e207946379b',
   8,
   'writing',
   null,
   null,
   $json${
   "prompts": [
-    "This is the ___.",
-    "My ___ has a ___.",
-    "My favorite room is ___ because ___."
+    "This is my ___.",
+    "There is a ___ and ___.",
+    "It is my favorite room because ___."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'ab9f4ec4-6406-4a93-bb77-f3653126c0e7',
+  '4b9c1a1f-dd94-482c-8a9f-8e207946379b',
   9,
   'review',
   null,
@@ -993,10 +994,10 @@ values
   $json${
   "checklist": [
     "Name rooms and furniture",
-    "Use 'in/on/under'",
-    "Say my favorite room and why"
+    "Say where things are",
+    "Show-and-tell my favorite room"
   ],
-  "challenge": "Describe your favorite room and what's in it!"
+  "challenge": "Tell me all about your house and favorite room!"
 }$json$::jsonb,
   true
 );

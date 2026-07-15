@@ -1,16 +1,17 @@
--- A1 Kids Unit 9: My Body (5 lessons)
+-- A1 Kids Unit 9: My Body (5 lessons) — TIERED (Bridge)
+-- Regenerated per the Sentivo Intra-Level Progression Framework + lesson-level escalation + task rotation.
 -- Run this whole script in the Supabase SQL editor.
 
 -- Lesson 1: Body Parts
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '17d05677-8282-4c97-aaf4-38b42e5bcea6',
+  'd8c7ee8b-aaa1-4a7e-a54d-c35c73a6bde1',
   'Body Parts',
   'A1',
   'kids',
   9,
   1,
-  'Name common body parts.',
+  'Name body parts. [Bridge, Lesson 1: notice/receptive, matching]',
   25,
   9,
   true
@@ -19,7 +20,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '17d05677-8282-4c97-aaf4-38b42e5bcea6',
+  'd8c7ee8b-aaa1-4a7e-a54d-c35c73a6bde1',
   1,
   'title',
   null,
@@ -30,23 +31,23 @@ values
   true
 ),
 (
-  '17d05677-8282-4c97-aaf4-38b42e5bcea6',
+  'd8c7ee8b-aaa1-4a7e-a54d-c35c73a6bde1',
   2,
   'warmup',
   null,
   null,
   $json${
-  "display": "🙆",
+  "display": "🙋",
   "questions": [
     "Can you touch your head?",
-    "What body parts do you know?"
+    "Where are your eyes?"
   ],
   "title": "What do you see?"
 }$json$::jsonb,
   true
 ),
 (
-  '17d05677-8282-4c97-aaf4-38b42e5bcea6',
+  'd8c7ee8b-aaa1-4a7e-a54d-c35c73a6bde1',
   3,
   'vocabulary',
   null,
@@ -58,15 +59,15 @@ values
       "bg": "#FAECE7"
     },
     {
-      "word": "Arm",
+      "word": "Hand",
       "bg": "#E1F5EE"
     },
     {
-      "word": "Leg",
+      "word": "Foot",
       "bg": "#EEEDFE"
     },
     {
-      "word": "Hand",
+      "word": "Eyes",
       "bg": "#FAEEDA"
     }
   ],
@@ -76,7 +77,7 @@ values
   true
 ),
 (
-  '17d05677-8282-4c97-aaf4-38b42e5bcea6',
+  'd8c7ee8b-aaa1-4a7e-a54d-c35c73a6bde1',
   4,
   'phrases',
   null,
@@ -84,19 +85,19 @@ values
   $json${
   "teacher": [
     "What is this?",
-    "Is this your hand?"
+    "Can you touch your head?"
   ],
   "student": [
-    "It is my head.",
-    "Yes, this is my hand!"
+    "This is my head.",
+    "Yes, I can touch my head!"
   ],
-  "note": "Point to your own body when you practice!",
+  "note": "Point to a body part!",
   "title": "Practice the Conversation"
 }$json$::jsonb,
   true
 ),
 (
-  '17d05677-8282-4c97-aaf4-38b42e5bcea6',
+  'd8c7ee8b-aaa1-4a7e-a54d-c35c73a6bde1',
   5,
   'activity',
   null,
@@ -109,23 +110,23 @@ values
     },
     {
       "speaker": "B",
-      "text": "This is my [arm]."
+      "text": "This is my [hand]."
     },
     {
       "speaker": "A",
-      "text": "This is my [leg]."
+      "text": "This is my [foot]."
     }
   ],
   "blanks": [
     "head",
-    "arm",
-    "leg"
+    "hand",
+    "foot"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '17d05677-8282-4c97-aaf4-38b42e5bcea6',
+  'd8c7ee8b-aaa1-4a7e-a54d-c35c73a6bde1',
   6,
   'speaking',
   null,
@@ -134,43 +135,43 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "What is this?"
+      "text": "This is my head."
     },
     {
       "speaker": "B",
-      "text": "It is my hand!"
+      "text": "This is my hand."
     },
     {
       "speaker": "A",
-      "text": "Touch your head!"
+      "text": "This is my foot."
     },
     {
       "speaker": "B",
-      "text": "I touched my head!"
+      "text": "These are my eyes!"
     }
   ],
-  "note": "Switch! Student becomes A, teacher becomes B."
+  "note": "Teacher says the body part first. Student repeats, then says it alone."
 }$json$::jsonb,
   true
 ),
 (
-  '17d05677-8282-4c97-aaf4-38b42e5bcea6',
+  'd8c7ee8b-aaa1-4a7e-a54d-c35c73a6bde1',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "This is my body. This is my head. This is my arm. This is my leg. This is my hand. I have a strong body!",
+  "text": "This is my head. This is my hand. This is my foot.",
   "questions": [
-    "What body parts does the writer name?",
-    "Is the body strong?",
-    "Point to your own head!"
+    "What is the first body part?",
+    "What is the second body part?",
+    "Name all three body parts."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '17d05677-8282-4c97-aaf4-38b42e5bcea6',
+  'd8c7ee8b-aaa1-4a7e-a54d-c35c73a6bde1',
   8,
   'writing',
   null,
@@ -178,25 +179,25 @@ values
   $json${
   "prompts": [
     "This is my ___.",
-    "I have two ___.",
-    "My body has a ___."
+    "These are my ___.",
+    "I have two ___."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '17d05677-8282-4c97-aaf4-38b42e5bcea6',
+  'd8c7ee8b-aaa1-4a7e-a54d-c35c73a6bde1',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Name four body parts",
+    "Name 4 body parts",
     "Say 'This is my ___'",
-    "Point to body parts"
+    "Point to a body part"
   ],
-  "challenge": "Point to and name three body parts right now!"
+  "challenge": "Point to your head, hand, and foot!"
 }$json$::jsonb,
   true
 );
@@ -204,13 +205,13 @@ values
 -- Lesson 2: Touch Your…
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  'ba7d3e80-04fb-4e26-9656-7be4efdde361',
+  'cb31604a-47f4-4abd-ab75-24892e046ef8',
   'Touch Your…',
   'A1',
   'kids',
   9,
   2,
-  'Understand and respond to simple body instructions.',
+  'Follow simple TPR commands. [Bridge, Lesson 2: controlled practice, TPR]',
   25,
   9,
   true
@@ -219,7 +220,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  'ba7d3e80-04fb-4e26-9656-7be4efdde361',
+  'cb31604a-47f4-4abd-ab75-24892e046ef8',
   1,
   'title',
   null,
@@ -230,23 +231,23 @@ values
   true
 ),
 (
-  'ba7d3e80-04fb-4e26-9656-7be4efdde361',
+  'cb31604a-47f4-4abd-ab75-24892e046ef8',
   2,
   'warmup',
   null,
   null,
   $json${
-  "display": "👆",
+  "display": "👃",
   "questions": [
     "Can you touch your nose?",
-    "Can you touch your foot?"
+    "Where is your ear?"
   ],
   "title": "What do you see?"
 }$json$::jsonb,
   true
 ),
 (
-  'ba7d3e80-04fb-4e26-9656-7be4efdde361',
+  'cb31604a-47f4-4abd-ab75-24892e046ef8',
   3,
   'vocabulary',
   null,
@@ -258,11 +259,11 @@ values
       "bg": "#FAECE7"
     },
     {
-      "word": "Foot",
+      "word": "Nose",
       "bg": "#E1F5EE"
     },
     {
-      "word": "Shoulder",
+      "word": "Ear",
       "bg": "#EEEDFE"
     },
     {
@@ -276,27 +277,27 @@ values
   true
 ),
 (
-  'ba7d3e80-04fb-4e26-9656-7be4efdde361',
+  'cb31604a-47f4-4abd-ab75-24892e046ef8',
   4,
   'phrases',
   null,
   null,
   $json${
   "teacher": [
-    "Touch your foot!",
-    "Touch your shoulder!"
+    "Touch your nose!",
+    "Touch your ear!"
   ],
   "student": [
-    "I touched my foot!",
-    "I touched my shoulder!"
+    "I touch my nose.",
+    "I touch my ear."
   ],
-  "note": "Actually do the action when you practice!",
+  "note": "Use the word bank: touch, nose, ear, knee.",
   "title": "Practice the Conversation"
 }$json$::jsonb,
   true
 ),
 (
-  'ba7d3e80-04fb-4e26-9656-7be4efdde361',
+  'cb31604a-47f4-4abd-ab75-24892e046ef8',
   5,
   'activity',
   null,
@@ -305,27 +306,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "[Touch] your knee."
+      "text": "[Touch] your [nose]."
     },
     {
       "speaker": "B",
-      "text": "I touched my [foot]."
+      "text": "Touch your [ear]."
     },
     {
       "speaker": "A",
-      "text": "Touch your [shoulder]."
+      "text": "Touch your knee!"
     }
   ],
   "blanks": [
-    "Touch",
-    "foot",
-    "shoulder"
+    "touch",
+    "nose",
+    "ear"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'ba7d3e80-04fb-4e26-9656-7be4efdde361',
+  'cb31604a-47f4-4abd-ab75-24892e046ef8',
   6,
   'speaking',
   null,
@@ -334,43 +335,43 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "Touch your knee!"
+      "text": "Touch your nose!"
     },
     {
       "speaker": "B",
-      "text": "I touched my knee!"
+      "text": "I touch my nose. Touch your ear!"
     },
     {
       "speaker": "A",
-      "text": "Touch your shoulder!"
+      "text": "I touch my ear. Touch your knee!"
     },
     {
       "speaker": "B",
-      "text": "I touched my shoulder too!"
+      "text": "I touch my knee!"
     }
   ],
-  "note": "Switch! Student becomes A, teacher becomes B."
+  "note": "TPR game: say the command, then both of you touch that body part!"
 }$json$::jsonb,
   true
 ),
 (
-  'ba7d3e80-04fb-4e26-9656-7be4efdde361',
+  'cb31604a-47f4-4abd-ab75-24892e046ef8',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "My teacher says, 'Touch your foot!' I touch my foot. My teacher says, 'Touch your shoulder!' I touch my shoulder. I like this game!",
+  "text": "Touch your nose. Touch your ear. Touch your knee. Good job!",
   "questions": [
-    "What does the teacher say first?",
-    "What does the writer touch second?",
-    "Does the writer like the game?"
+    "What do you touch first?",
+    "What do you touch second?",
+    "What do you touch third?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'ba7d3e80-04fb-4e26-9656-7be4efdde361',
+  'cb31604a-47f4-4abd-ab75-24892e046ef8',
   8,
   'writing',
   null,
@@ -378,25 +379,25 @@ values
   $json${
   "prompts": [
     "Touch your ___.",
-    "I touched my ___.",
-    "My favorite body game is ___."
+    "I touch my ___.",
+    "Touch your ___ and ___."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'ba7d3e80-04fb-4e26-9656-7be4efdde361',
+  'cb31604a-47f4-4abd-ab75-24892e046ef8',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Say 'Touch your ___'",
-    "Follow body instructions",
-    "Name more body parts"
+    "Follow 'Touch your ___' commands",
+    "Say nose, ear, knee",
+    "Play the touch game"
   ],
-  "challenge": "Touch three body parts when I say them!"
+  "challenge": "Give me a 'touch your ___' command!"
 }$json$::jsonb,
   true
 );
@@ -404,13 +405,13 @@ values
 -- Lesson 3: My Face
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  'aed7960a-73d4-4133-b57b-51c9f4a2180f',
+  'a85aa8c7-2132-4899-843c-075b53375ada',
   'My Face',
   'A1',
   'kids',
   9,
   3,
-  'Name face parts.',
+  'Describe the face with ''and''. [Bridge, Lesson 3: freer practice, TPR game]',
   25,
   9,
   true
@@ -419,7 +420,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  'aed7960a-73d4-4133-b57b-51c9f4a2180f',
+  'a85aa8c7-2132-4899-843c-075b53375ada',
   1,
   'title',
   null,
@@ -430,7 +431,7 @@ values
   true
 ),
 (
-  'aed7960a-73d4-4133-b57b-51c9f4a2180f',
+  'a85aa8c7-2132-4899-843c-075b53375ada',
   2,
   'warmup',
   null,
@@ -438,15 +439,15 @@ values
   $json${
   "display": "😊",
   "questions": [
-    "What do you see on a face?",
-    "How many eyes do you have?"
+    "Is your mouth big or small?",
+    "Do you have short or long hair?"
   ],
   "title": "What do you see?"
 }$json$::jsonb,
   true
 ),
 (
-  'aed7960a-73d4-4133-b57b-51c9f4a2180f',
+  'a85aa8c7-2132-4899-843c-075b53375ada',
   3,
   'vocabulary',
   null,
@@ -454,19 +455,19 @@ values
   $json${
   "words": [
     {
-      "word": "Eyes",
+      "word": "Mouth",
       "bg": "#FAECE7"
     },
     {
-      "word": "Nose",
+      "word": "Hair",
       "bg": "#E1F5EE"
     },
     {
-      "word": "Mouth",
+      "word": "Big",
       "bg": "#EEEDFE"
     },
     {
-      "word": "Ears",
+      "word": "Small",
       "bg": "#FAEEDA"
     }
   ],
@@ -476,27 +477,27 @@ values
   true
 ),
 (
-  'aed7960a-73d4-4133-b57b-51c9f4a2180f',
+  'a85aa8c7-2132-4899-843c-075b53375ada',
   4,
   'phrases',
   null,
   null,
   $json${
   "teacher": [
-    "What is this?",
-    "Is this your nose?"
+    "Is your mouth big?",
+    "Do you have long hair?"
   ],
   "student": [
-    "These are my eyes.",
-    "Yes, this is my nose!"
+    "My mouth is small.",
+    "I have long hair."
   ],
-  "note": "Point to your own face when you practice!",
+  "note": "Point to your face and describe it!",
   "title": "Practice the Conversation"
 }$json$::jsonb,
   true
 ),
 (
-  'aed7960a-73d4-4133-b57b-51c9f4a2180f',
+  'a85aa8c7-2132-4899-843c-075b53375ada',
   5,
   'activity',
   null,
@@ -505,27 +506,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "These are my [eyes]."
+      "text": "This is my [mouth]."
     },
     {
       "speaker": "B",
-      "text": "This is my [nose]."
+      "text": "This is my [hair]."
     },
     {
       "speaker": "A",
-      "text": "This is my [mouth]."
+      "text": "I have [big] eyes and a small mouth."
     }
   ],
   "blanks": [
-    "eyes",
-    "nose",
-    "mouth"
+    "mouth",
+    "hair",
+    "big"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'aed7960a-73d4-4133-b57b-51c9f4a2180f',
+  'a85aa8c7-2132-4899-843c-075b53375ada',
   6,
   'speaking',
   null,
@@ -534,69 +535,69 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "What is this?"
+      "text": "This is my mouth and my hair."
     },
     {
       "speaker": "B",
-      "text": "These are my ears!"
+      "text": "I have big eyes and short hair."
     },
     {
       "speaker": "A",
-      "text": "How many eyes do you have?"
+      "text": "I have small eyes and long hair."
     },
     {
       "speaker": "B",
-      "text": "I have two eyes!"
+      "text": "Let's draw our faces!"
     }
   ],
-  "note": "Switch! Student becomes A, teacher becomes B."
+  "note": "Face game: point to a face part and describe it big/small!"
 }$json$::jsonb,
   true
 ),
 (
-  'aed7960a-73d4-4133-b57b-51c9f4a2180f',
+  'a85aa8c7-2132-4899-843c-075b53375ada',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "This is my face. I have two eyes. I have one nose. I have one mouth. I have two ears. My face is happy today!",
+  "text": "This is my face. I have big eyes and a small mouth. I have long hair.",
   "questions": [
-    "How many eyes does the writer have?",
-    "How many ears does the writer have?",
-    "Is the writer's face happy?"
+    "Are the eyes big or small?",
+    "Is the mouth big or small?",
+    "Is the hair long or short?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'aed7960a-73d4-4133-b57b-51c9f4a2180f',
+  'a85aa8c7-2132-4899-843c-075b53375ada',
   8,
   'writing',
   null,
   null,
   $json${
   "prompts": [
-    "I have two ___.",
-    "This is my ___.",
-    "My face is ___ today."
+    "I have ___ eyes.",
+    "I have a ___ mouth.",
+    "I have ___ hair."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'aed7960a-73d4-4133-b57b-51c9f4a2180f',
+  'a85aa8c7-2132-4899-843c-075b53375ada',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Name four face parts",
-    "Say how many eyes/ears I have",
-    "Point to my own face"
+    "Say 'mouth' and 'hair'",
+    "Describe eyes and mouth size",
+    "Draw and describe my face"
   ],
-  "challenge": "Point to and name three parts of your face!"
+  "challenge": "Describe your face to me: eyes, mouth, and hair!"
 }$json$::jsonb,
   true
 );
@@ -604,13 +605,13 @@ values
 -- Lesson 4: Body Actions
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '16032e84-358d-4b06-93f2-acb437cc6ba2',
+  'ff3e2ee9-3042-4dbe-9251-983dacd552ef',
   'Body Actions',
   'A1',
   'kids',
   9,
   4,
-  'Use simple action language with body parts.',
+  'Combine body parts and actions into a show-and-tell. [Bridge, Lesson 4: production]',
   25,
   9,
   true
@@ -619,7 +620,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '16032e84-358d-4b06-93f2-acb437cc6ba2',
+  'ff3e2ee9-3042-4dbe-9251-983dacd552ef',
   1,
   'title',
   null,
@@ -630,7 +631,7 @@ values
   true
 ),
 (
-  '16032e84-358d-4b06-93f2-acb437cc6ba2',
+  'ff3e2ee9-3042-4dbe-9251-983dacd552ef',
   2,
   'warmup',
   null,
@@ -639,14 +640,14 @@ values
   "display": "👏",
   "questions": [
     "Can you clap your hands?",
-    "Can you jump with your legs?"
+    "Can you wave?"
   ],
   "title": "What do you see?"
 }$json$::jsonb,
   true
 ),
 (
-  '16032e84-358d-4b06-93f2-acb437cc6ba2',
+  'ff3e2ee9-3042-4dbe-9251-983dacd552ef',
   3,
   'vocabulary',
   null,
@@ -662,11 +663,11 @@ values
       "bg": "#E1F5EE"
     },
     {
-      "word": "Kick",
+      "word": "Wiggle",
       "bg": "#EEEDFE"
     },
     {
-      "word": "Stomp",
+      "word": "Show",
       "bg": "#FAEEDA"
     }
   ],
@@ -676,27 +677,27 @@ values
   true
 ),
 (
-  '16032e84-358d-4b06-93f2-acb437cc6ba2',
+  'ff3e2ee9-3042-4dbe-9251-983dacd552ef',
   4,
   'phrases',
   null,
   null,
   $json${
   "teacher": [
-    "Clap your hands!",
-    "Wave your hand!"
+    "Can you clap your hands?",
+    "Can you wave?"
   ],
   "student": [
-    "I clap my hands!",
-    "I wave my hand!"
+    "I clap my hands.",
+    "I wave my hand."
   ],
-  "note": "Do the action when you say it!",
+  "note": "Put it all together: body part + action!",
   "title": "Practice the Conversation"
 }$json$::jsonb,
   true
 ),
 (
-  '16032e84-358d-4b06-93f2-acb437cc6ba2',
+  'ff3e2ee9-3042-4dbe-9251-983dacd552ef',
   5,
   'activity',
   null,
@@ -705,27 +706,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "[Clap] your hands."
+      "text": "I [clap] my hands."
     },
     {
       "speaker": "B",
-      "text": "[Wave] your hand."
+      "text": "I [wave] my hand."
     },
     {
       "speaker": "A",
-      "text": "[Stomp] your feet."
+      "text": "I [wiggle] my fingers."
     }
   ],
   "blanks": [
-    "Clap",
-    "Wave",
-    "Stomp"
+    "clap",
+    "wave",
+    "wiggle"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '16032e84-358d-4b06-93f2-acb437cc6ba2',
+  'ff3e2ee9-3042-4dbe-9251-983dacd552ef',
   6,
   'speaking',
   null,
@@ -734,69 +735,69 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "Clap your hands!"
+      "text": "I clap my hands and wave."
     },
     {
       "speaker": "B",
-      "text": "I am clapping!"
+      "text": "I wiggle my fingers and touch my nose."
     },
     {
       "speaker": "A",
-      "text": "Kick with your leg!"
+      "text": "Show me what you can do!"
     },
     {
       "speaker": "B",
-      "text": "I am kicking!"
+      "text": "I can clap, wave, and wiggle!"
     }
   ],
-  "note": "Switch! Student becomes A, teacher becomes B."
+  "note": "Show-and-tell: show me three body actions in a row!"
 }$json$::jsonb,
   true
 ),
 (
-  '16032e84-358d-4b06-93f2-acb437cc6ba2',
+  'ff3e2ee9-3042-4dbe-9251-983dacd552ef',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "I can clap my hands. I can wave my hand. I can kick with my leg. I can stomp my feet. My body can do many things!",
+  "text": "I clap my hands. I wave my hand. I wiggle my fingers. My body can do many things!",
   "questions": [
-    "What can the writer do with their hands?",
-    "What can the writer do with their leg?",
-    "What can the writer's body do?"
+    "What does the writer clap?",
+    "What does the writer wave?",
+    "What can the body do?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '16032e84-358d-4b06-93f2-acb437cc6ba2',
+  'ff3e2ee9-3042-4dbe-9251-983dacd552ef',
   8,
   'writing',
   null,
   null,
   $json${
   "prompts": [
-    "I can clap my ___.",
-    "I can kick with my ___.",
+    "I clap my ___.",
+    "I wave my ___.",
     "My body can ___."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '16032e84-358d-4b06-93f2-acb437cc6ba2',
+  'ff3e2ee9-3042-4dbe-9251-983dacd552ef',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Say body actions",
-    "Say 'I can ___ my ___'",
-    "Do actions with my body"
+    "Say and do 3 body actions",
+    "Combine body part + action",
+    "Show-and-tell what my body can do"
   ],
-  "challenge": "Clap, wave, and stomp for me right now!"
+  "challenge": "Show me three things your body can do!"
 }$json$::jsonb,
   true
 );
@@ -804,13 +805,13 @@ values
 -- Lesson 5: Unit Review
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '5088fa85-f902-43eb-bfb1-7a138e13a1a8',
+  'c4f9daf6-d594-408b-8320-93779a89262a',
   'Unit Review',
   'A1',
   'kids',
   9,
   5,
-  'Review body vocabulary.',
+  'Review body parts and actions. [Bridge, Lesson 5: tier-matched mixed review]',
   25,
   9,
   true
@@ -819,7 +820,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '5088fa85-f902-43eb-bfb1-7a138e13a1a8',
+  'c4f9daf6-d594-408b-8320-93779a89262a',
   1,
   'title',
   null,
@@ -830,23 +831,23 @@ values
   true
 ),
 (
-  '5088fa85-f902-43eb-bfb1-7a138e13a1a8',
+  'c4f9daf6-d594-408b-8320-93779a89262a',
   2,
   'warmup',
   null,
   null,
   $json${
-  "display": "🙆",
+  "display": "🙋",
   "questions": [
-    "What body parts do you remember?",
-    "What actions can your body do?"
+    "Can you touch your head?",
+    "Can you clap your hands?"
   ],
-  "title": "Let's Review!"
+  "title": "What do you see?"
 }$json$::jsonb,
   true
 ),
 (
-  '5088fa85-f902-43eb-bfb1-7a138e13a1a8',
+  'c4f9daf6-d594-408b-8320-93779a89262a',
   3,
   'vocabulary',
   null,
@@ -858,37 +859,37 @@ values
       "bg": "#FAECE7"
     },
     {
-      "word": "Hand",
+      "word": "Touch",
       "bg": "#E1F5EE"
     },
     {
-      "word": "Eyes",
+      "word": "Hair",
       "bg": "#EEEDFE"
     },
     {
-      "word": "Foot",
+      "word": "Clap",
       "bg": "#FAEEDA"
     }
   ],
-  "title": "Review Words",
+  "title": "New Words",
   "subtitle": "Tap a card to see it bigger."
 }$json$::jsonb,
   true
 ),
 (
-  '5088fa85-f902-43eb-bfb1-7a138e13a1a8',
+  'c4f9daf6-d594-408b-8320-93779a89262a',
   4,
   'phrases',
   null,
   null,
   $json${
   "teacher": [
-    "What is this?",
-    "Touch your foot!"
+    "Touch your head!",
+    "Can you clap?"
   ],
   "student": [
-    "This is my head.",
-    "I touched my foot!"
+    "I touch my head.",
+    "I clap my hands!"
   ],
   "note": "Use everything you learned this unit!",
   "title": "Practice the Conversation"
@@ -896,7 +897,7 @@ values
   true
 ),
 (
-  '5088fa85-f902-43eb-bfb1-7a138e13a1a8',
+  'c4f9daf6-d594-408b-8320-93779a89262a',
   5,
   'activity',
   null,
@@ -909,23 +910,23 @@ values
     },
     {
       "speaker": "B",
-      "text": "These are my [eyes]."
+      "text": "[Touch] your nose!"
     },
     {
       "speaker": "A",
-      "text": "I can [clap] my hands."
+      "text": "I [clap] my hands."
     }
   ],
   "blanks": [
     "head",
-    "eyes",
+    "touch",
     "clap"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '5088fa85-f902-43eb-bfb1-7a138e13a1a8',
+  'c4f9daf6-d594-408b-8320-93779a89262a',
   6,
   'speaking',
   null,
@@ -934,19 +935,19 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "Touch your nose!"
+      "text": "This is my head. Touch your nose!"
     },
     {
       "speaker": "B",
-      "text": "I touched my nose!"
+      "text": "I touch my nose. I have long hair."
     },
     {
       "speaker": "A",
-      "text": "Clap your hands!"
+      "text": "I clap my hands and wave!"
     },
     {
       "speaker": "B",
-      "text": "I am clapping now!"
+      "text": "Let's play the touch game!"
     }
   ],
   "note": "Switch! Student becomes A, teacher becomes B."
@@ -954,23 +955,23 @@ values
   true
 ),
 (
-  '5088fa85-f902-43eb-bfb1-7a138e13a1a8',
+  'c4f9daf6-d594-408b-8320-93779a89262a',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "This is my body. I have two eyes and one nose. I have two hands and two feet. I can clap my hands. I can kick with my leg. My body is strong!",
+  "text": "This is my head. I touch my nose. I have long hair. I clap my hands.",
   "questions": [
-    "How many eyes does the writer have?",
-    "What can the writer clap?",
-    "Is the writer's body strong?"
+    "What body part is named first?",
+    "What does the writer touch?",
+    "What does the writer do with hands?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '5088fa85-f902-43eb-bfb1-7a138e13a1a8',
+  'c4f9daf6-d594-408b-8320-93779a89262a',
   8,
   'writing',
   null,
@@ -978,25 +979,25 @@ values
   $json${
   "prompts": [
     "This is my ___.",
-    "I have two ___.",
-    "I can ___ my ___."
+    "I touch my ___.",
+    "I clap my ___."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '5088fa85-f902-43eb-bfb1-7a138e13a1a8',
+  'c4f9daf6-d594-408b-8320-93779a89262a',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Name body and face parts",
-    "Follow body instructions",
-    "Say body actions"
+    "Name body parts",
+    "Follow touch commands",
+    "Show a body action"
   ],
-  "challenge": "Point to a body part and do an action with it!"
+  "challenge": "Show me your body parts and actions!"
 }$json$::jsonb,
   true
 );
