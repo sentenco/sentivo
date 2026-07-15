@@ -1,17 +1,19 @@
--- A1 Teens Unit 10: Weather and Seasons (5 lessons) — TIERED (Bridge)
--- Regenerated per the Sentivo Intra-Level Progression Framework + lesson-level escalation + task rotation.
+-- A1 Teens Unit 10: Weather and Seasons (5 lessons) — TIERED + ROTATED
+-- Per docs/curriculum/a1-teens-adults-rotation-rework.md. Vocab/reading/writing/review
+-- unchanged from the tiered pilot; only activity+speaking reshuffled to the new
+-- per-unit format assignment, keeping each lesson's difficulty position intact.
 -- Run this whole script in the Supabase SQL editor.
 
 -- Lesson 1: Weather and Seasons
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  'bc7b2c14-8755-430f-8d4c-eede0c936944',
+  'fb139b1c-b3a4-476c-a133-28149d5912a8',
   'Weather and Seasons',
   'A1',
   'teens',
   10,
   1,
-  'Name weather and seasons. [Bridge, Lesson 1: notice/receptive]',
+  'Name weather and seasons. [Bridge, L1, format R: short scripted role-play]',
   25,
   9,
   true
@@ -20,7 +22,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  'bc7b2c14-8755-430f-8d4c-eede0c936944',
+  'fb139b1c-b3a4-476c-a133-28149d5912a8',
   1,
   'title',
   null,
@@ -31,7 +33,7 @@ values
   true
 ),
 (
-  'bc7b2c14-8755-430f-8d4c-eede0c936944',
+  'fb139b1c-b3a4-476c-a133-28149d5912a8',
   2,
   'warmup',
   null,
@@ -47,7 +49,7 @@ values
   true
 ),
 (
-  'bc7b2c14-8755-430f-8d4c-eede0c936944',
+  'fb139b1c-b3a4-476c-a133-28149d5912a8',
   3,
   'vocabulary',
   null,
@@ -77,7 +79,7 @@ values
   true
 ),
 (
-  'bc7b2c14-8755-430f-8d4c-eede0c936944',
+  'fb139b1c-b3a4-476c-a133-28149d5912a8',
   4,
   'phrases',
   null,
@@ -97,7 +99,7 @@ values
   true
 ),
 (
-  'bc7b2c14-8755-430f-8d4c-eede0c936944',
+  'fb139b1c-b3a4-476c-a133-28149d5912a8',
   5,
   'activity',
   null,
@@ -126,7 +128,7 @@ values
   true
 ),
 (
-  'bc7b2c14-8755-430f-8d4c-eede0c936944',
+  'fb139b1c-b3a4-476c-a133-28149d5912a8',
   6,
   'speaking',
   null,
@@ -147,15 +149,15 @@ values
     },
     {
       "speaker": "B",
-      "text": "I like winter more!"
+      "text": "Now describe today's real weather using these lines!"
     }
   ],
-  "note": "Teacher says the line first. Student repeats, then says it alone."
+  "note": "Short role-play: use the exact lines above to talk about weather, then use your own."
 }$json$::jsonb,
   true
 ),
 (
-  'bc7b2c14-8755-430f-8d4c-eede0c936944',
+  'fb139b1c-b3a4-476c-a133-28149d5912a8',
   7,
   'reading',
   null,
@@ -171,7 +173,7 @@ values
   true
 ),
 (
-  'bc7b2c14-8755-430f-8d4c-eede0c936944',
+  'fb139b1c-b3a4-476c-a133-28149d5912a8',
   8,
   'writing',
   null,
@@ -186,7 +188,7 @@ values
   true
 ),
 (
-  'bc7b2c14-8755-430f-8d4c-eede0c936944',
+  'fb139b1c-b3a4-476c-a133-28149d5912a8',
   9,
   'review',
   null,
@@ -205,13 +207,13 @@ values
 -- Lesson 2: What's the Weather Like?
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '229d4c99-fcc9-4041-8eaa-a048cdbf6bdf',
+  '082dd143-0ac4-4ea2-8635-4db3fc1a375a',
   'What''s the Weather Like?',
   'A1',
   'teens',
   10,
   2,
-  'Combine weather and clothing with ''and''. [Bridge, Lesson 2: controlled practice, connector combined]',
+  'Unchanged by the rotation rework -- L2 format F, matches original order.',
   25,
   9,
   true
@@ -220,7 +222,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '229d4c99-fcc9-4041-8eaa-a048cdbf6bdf',
+  '082dd143-0ac4-4ea2-8635-4db3fc1a375a',
   1,
   'title',
   null,
@@ -231,7 +233,7 @@ values
   true
 ),
 (
-  '229d4c99-fcc9-4041-8eaa-a048cdbf6bdf',
+  '082dd143-0ac4-4ea2-8635-4db3fc1a375a',
   2,
   'warmup',
   null,
@@ -247,7 +249,7 @@ values
   true
 ),
 (
-  '229d4c99-fcc9-4041-8eaa-a048cdbf6bdf',
+  '082dd143-0ac4-4ea2-8635-4db3fc1a375a',
   3,
   'vocabulary',
   null,
@@ -277,7 +279,7 @@ values
   true
 ),
 (
-  '229d4c99-fcc9-4041-8eaa-a048cdbf6bdf',
+  '082dd143-0ac4-4ea2-8635-4db3fc1a375a',
   4,
   'phrases',
   null,
@@ -297,7 +299,7 @@ values
   true
 ),
 (
-  '229d4c99-fcc9-4041-8eaa-a048cdbf6bdf',
+  '082dd143-0ac4-4ea2-8635-4db3fc1a375a',
   5,
   'activity',
   null,
@@ -326,7 +328,7 @@ values
   true
 ),
 (
-  '229d4c99-fcc9-4041-8eaa-a048cdbf6bdf',
+  '082dd143-0ac4-4ea2-8635-4db3fc1a375a',
   6,
   'speaking',
   null,
@@ -355,7 +357,7 @@ values
   true
 ),
 (
-  '229d4c99-fcc9-4041-8eaa-a048cdbf6bdf',
+  '082dd143-0ac4-4ea2-8635-4db3fc1a375a',
   7,
   'reading',
   null,
@@ -371,7 +373,7 @@ values
   true
 ),
 (
-  '229d4c99-fcc9-4041-8eaa-a048cdbf6bdf',
+  '082dd143-0ac4-4ea2-8635-4db3fc1a375a',
   8,
   'writing',
   null,
@@ -386,7 +388,7 @@ values
   true
 ),
 (
-  '229d4c99-fcc9-4041-8eaa-a048cdbf6bdf',
+  '082dd143-0ac4-4ea2-8635-4db3fc1a375a',
   9,
   'review',
   null,
@@ -405,13 +407,13 @@ values
 -- Lesson 3: Seasons and Clothes
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  'd2eb1b24-52f7-4ef0-8d6b-f19dac919559',
+  '47aa6fca-52c5-4de6-a8d6-3671b88cd598',
   'Seasons and Clothes',
   'A1',
   'teens',
   10,
   3,
-  'Say a simple preference: ''I like it better''. [Bridge, Lesson 3: freer practice, role reversal, preference chunk]',
+  'Say a simple preference: ''I like it better''. [Bridge, L3, format M: student-led matching]',
   25,
   9,
   true
@@ -420,7 +422,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  'd2eb1b24-52f7-4ef0-8d6b-f19dac919559',
+  '47aa6fca-52c5-4de6-a8d6-3671b88cd598',
   1,
   'title',
   null,
@@ -431,7 +433,7 @@ values
   true
 ),
 (
-  'd2eb1b24-52f7-4ef0-8d6b-f19dac919559',
+  '47aa6fca-52c5-4de6-a8d6-3671b88cd598',
   2,
   'warmup',
   null,
@@ -447,7 +449,7 @@ values
   true
 ),
 (
-  'd2eb1b24-52f7-4ef0-8d6b-f19dac919559',
+  '47aa6fca-52c5-4de6-a8d6-3671b88cd598',
   3,
   'vocabulary',
   null,
@@ -477,7 +479,7 @@ values
   true
 ),
 (
-  'd2eb1b24-52f7-4ef0-8d6b-f19dac919559',
+  '47aa6fca-52c5-4de6-a8d6-3671b88cd598',
   4,
   'phrases',
   null,
@@ -497,7 +499,7 @@ values
   true
 ),
 (
-  'd2eb1b24-52f7-4ef0-8d6b-f19dac919559',
+  '47aa6fca-52c5-4de6-a8d6-3671b88cd598',
   5,
   'activity',
   null,
@@ -526,7 +528,7 @@ values
   true
 ),
 (
-  'd2eb1b24-52f7-4ef0-8d6b-f19dac919559',
+  '47aa6fca-52c5-4de6-a8d6-3671b88cd598',
   6,
   'speaking',
   null,
@@ -535,27 +537,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "What is your favorite season?"
+      "text": "My favorite season is spring."
     },
     {
       "speaker": "B",
-      "text": "My favorite season is autumn. I like it better than summer. What about you?"
+      "text": "My favorite season is spring too!"
     },
     {
       "speaker": "A",
-      "text": "I like spring. It's not too hot and not too cold."
+      "text": "I like it better than summer."
     },
     {
       "speaker": "B",
-      "text": "Your turn to ask me something!"
+      "text": "I like autumn better than summer."
     }
   ],
-  "note": "Student asks first this time. Teacher answers, then asks back."
+  "note": "Student says a line first this time. Teacher echoes it back, matching!"
 }$json$::jsonb,
   true
 ),
 (
-  'd2eb1b24-52f7-4ef0-8d6b-f19dac919559',
+  '47aa6fca-52c5-4de6-a8d6-3671b88cd598',
   7,
   'reading',
   null,
@@ -571,7 +573,7 @@ values
   true
 ),
 (
-  'd2eb1b24-52f7-4ef0-8d6b-f19dac919559',
+  '47aa6fca-52c5-4de6-a8d6-3671b88cd598',
   8,
   'writing',
   null,
@@ -586,7 +588,7 @@ values
   true
 ),
 (
-  'd2eb1b24-52f7-4ef0-8d6b-f19dac919559',
+  '47aa6fca-52c5-4de6-a8d6-3671b88cd598',
   9,
   'review',
   null,
@@ -605,13 +607,13 @@ values
 -- Lesson 4: Weather Preferences
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  'ebf5282f-152f-416f-be96-68098a10cc60',
+  '29df268d-2c3c-419d-bd3f-5d8dc06003cd',
   'Weather Preferences',
   'A1',
   'teens',
   10,
   4,
-  'Combine weather, seasons, and preference into a talk. [Bridge, Lesson 4: production]',
+  'Combine weather, seasons, and preference into a talk. [Bridge, L4, format E: choose-the-better-answer + independent production]',
   25,
   9,
   true
@@ -620,7 +622,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  'ebf5282f-152f-416f-be96-68098a10cc60',
+  '29df268d-2c3c-419d-bd3f-5d8dc06003cd',
   1,
   'title',
   null,
@@ -631,7 +633,7 @@ values
   true
 ),
 (
-  'ebf5282f-152f-416f-be96-68098a10cc60',
+  '29df268d-2c3c-419d-bd3f-5d8dc06003cd',
   2,
   'warmup',
   null,
@@ -647,7 +649,7 @@ values
   true
 ),
 (
-  'ebf5282f-152f-416f-be96-68098a10cc60',
+  '29df268d-2c3c-419d-bd3f-5d8dc06003cd',
   3,
   'vocabulary',
   null,
@@ -677,7 +679,7 @@ values
   true
 ),
 (
-  'ebf5282f-152f-416f-be96-68098a10cc60',
+  '29df268d-2c3c-419d-bd3f-5d8dc06003cd',
   4,
   'phrases',
   null,
@@ -697,7 +699,7 @@ values
   true
 ),
 (
-  'ebf5282f-152f-416f-be96-68098a10cc60',
+  '29df268d-2c3c-419d-bd3f-5d8dc06003cd',
   5,
   'activity',
   null,
@@ -726,7 +728,7 @@ values
   true
 ),
 (
-  'ebf5282f-152f-416f-be96-68098a10cc60',
+  '29df268d-2c3c-419d-bd3f-5d8dc06003cd',
   6,
   'speaking',
   null,
@@ -735,27 +737,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "Tell me about your favorite weather."
+      "text": "Which is correct: 'I like snow better than rain' or 'I like snow more better than rain'?"
     },
     {
       "speaker": "B",
-      "text": "I like snow better than rain. In winter, I play outside with my friends."
+      "text": "'I like snow better than rain' is correct. Just 'better', not 'more better'."
     },
     {
       "speaker": "A",
-      "text": "When it rains, I stay inside and read. My favorite season is winter."
+      "text": "Good! Do you prefer rain or snow, and what do you do in each?"
     },
     {
       "speaker": "B",
-      "text": "That sounds nice!"
+      "text": "I like snow better. I play outside in the snow."
     }
   ],
-  "note": "Mini talk: tell me all about your favorite weather and season."
+  "note": "Fix the mistake first, then answer fully in your own words -- no word bank this time."
 }$json$::jsonb,
   true
 ),
 (
-  'ebf5282f-152f-416f-be96-68098a10cc60',
+  '29df268d-2c3c-419d-bd3f-5d8dc06003cd',
   7,
   'reading',
   null,
@@ -771,7 +773,7 @@ values
   true
 ),
 (
-  'ebf5282f-152f-416f-be96-68098a10cc60',
+  '29df268d-2c3c-419d-bd3f-5d8dc06003cd',
   8,
   'writing',
   null,
@@ -786,7 +788,7 @@ values
   true
 ),
 (
-  'ebf5282f-152f-416f-be96-68098a10cc60',
+  '29df268d-2c3c-419d-bd3f-5d8dc06003cd',
   9,
   'review',
   null,
@@ -805,13 +807,13 @@ values
 -- Lesson 5: Unit Review
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '22bf9326-46b2-41f5-96a6-7891e4715592',
+  '60aced87-ebc5-4af7-af5f-318b4464b82b',
   'Unit Review',
   'A1',
   'teens',
   10,
   5,
-  'Review weather, seasons, and preferences. [Bridge, Lesson 5: tier-matched review]',
+  'Unchanged by the rotation rework.',
   25,
   9,
   true
@@ -820,7 +822,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '22bf9326-46b2-41f5-96a6-7891e4715592',
+  '60aced87-ebc5-4af7-af5f-318b4464b82b',
   1,
   'title',
   null,
@@ -831,7 +833,7 @@ values
   true
 ),
 (
-  '22bf9326-46b2-41f5-96a6-7891e4715592',
+  '60aced87-ebc5-4af7-af5f-318b4464b82b',
   2,
   'warmup',
   null,
@@ -847,7 +849,7 @@ values
   true
 ),
 (
-  '22bf9326-46b2-41f5-96a6-7891e4715592',
+  '60aced87-ebc5-4af7-af5f-318b4464b82b',
   3,
   'vocabulary',
   null,
@@ -877,7 +879,7 @@ values
   true
 ),
 (
-  '22bf9326-46b2-41f5-96a6-7891e4715592',
+  '60aced87-ebc5-4af7-af5f-318b4464b82b',
   4,
   'phrases',
   null,
@@ -897,7 +899,7 @@ values
   true
 ),
 (
-  '22bf9326-46b2-41f5-96a6-7891e4715592',
+  '60aced87-ebc5-4af7-af5f-318b4464b82b',
   5,
   'activity',
   null,
@@ -926,7 +928,7 @@ values
   true
 ),
 (
-  '22bf9326-46b2-41f5-96a6-7891e4715592',
+  '60aced87-ebc5-4af7-af5f-318b4464b82b',
   6,
   'speaking',
   null,
@@ -955,7 +957,7 @@ values
   true
 ),
 (
-  '22bf9326-46b2-41f5-96a6-7891e4715592',
+  '60aced87-ebc5-4af7-af5f-318b4464b82b',
   7,
   'reading',
   null,
@@ -971,7 +973,7 @@ values
   true
 ),
 (
-  '22bf9326-46b2-41f5-96a6-7891e4715592',
+  '60aced87-ebc5-4af7-af5f-318b4464b82b',
   8,
   'writing',
   null,
@@ -986,7 +988,7 @@ values
   true
 ),
 (
-  '22bf9326-46b2-41f5-96a6-7891e4715592',
+  '60aced87-ebc5-4af7-af5f-318b4464b82b',
   9,
   'review',
   null,

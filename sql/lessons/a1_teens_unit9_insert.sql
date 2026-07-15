@@ -1,17 +1,19 @@
--- A1 Teens Unit 9: Clothes and Style (5 lessons) — TIERED (Bridge)
--- Regenerated per the Sentivo Intra-Level Progression Framework + lesson-level escalation + task rotation.
+-- A1 Teens Unit 9: Clothes and Style (5 lessons) — TIERED + ROTATED
+-- Per docs/curriculum/a1-teens-adults-rotation-rework.md. Vocab/reading/writing/review
+-- unchanged from the tiered pilot; only activity+speaking reshuffled to the new
+-- per-unit format assignment, keeping each lesson's difficulty position intact.
 -- Run this whole script in the Supabase SQL editor.
 
 -- Lesson 1: Clothes and Style
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  'b4d536fa-c106-4459-966a-eaf41bbe6587',
+  'e790deeb-0312-4491-86cb-a4a0f496da0d',
   'Clothes and Style',
   'A1',
   'teens',
   9,
   1,
-  'Name clothes items. [Bridge, Lesson 1: notice/receptive]',
+  'Name clothes items. [Bridge, L1, format F: heaviest scaffold, full word bank]',
   25,
   9,
   true
@@ -20,7 +22,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  'b4d536fa-c106-4459-966a-eaf41bbe6587',
+  'e790deeb-0312-4491-86cb-a4a0f496da0d',
   1,
   'title',
   null,
@@ -31,7 +33,7 @@ values
   true
 ),
 (
-  'b4d536fa-c106-4459-966a-eaf41bbe6587',
+  'e790deeb-0312-4491-86cb-a4a0f496da0d',
   2,
   'warmup',
   null,
@@ -47,7 +49,7 @@ values
   true
 ),
 (
-  'b4d536fa-c106-4459-966a-eaf41bbe6587',
+  'e790deeb-0312-4491-86cb-a4a0f496da0d',
   3,
   'vocabulary',
   null,
@@ -77,7 +79,7 @@ values
   true
 ),
 (
-  'b4d536fa-c106-4459-966a-eaf41bbe6587',
+  'e790deeb-0312-4491-86cb-a4a0f496da0d',
   4,
   'phrases',
   null,
@@ -97,7 +99,7 @@ values
   true
 ),
 (
-  'b4d536fa-c106-4459-966a-eaf41bbe6587',
+  'e790deeb-0312-4491-86cb-a4a0f496da0d',
   5,
   'activity',
   null,
@@ -126,7 +128,7 @@ values
   true
 ),
 (
-  'b4d536fa-c106-4459-966a-eaf41bbe6587',
+  'e790deeb-0312-4491-86cb-a4a0f496da0d',
   6,
   'speaking',
   null,
@@ -150,12 +152,12 @@ values
       "text": "Thank you!"
     }
   ],
-  "note": "Teacher says the line first. Student repeats, then says it alone."
+  "note": "Fill in the blanks with the word bank, then read the whole outfit description together."
 }$json$::jsonb,
   true
 ),
 (
-  'b4d536fa-c106-4459-966a-eaf41bbe6587',
+  'e790deeb-0312-4491-86cb-a4a0f496da0d',
   7,
   'reading',
   null,
@@ -171,7 +173,7 @@ values
   true
 ),
 (
-  'b4d536fa-c106-4459-966a-eaf41bbe6587',
+  'e790deeb-0312-4491-86cb-a4a0f496da0d',
   8,
   'writing',
   null,
@@ -186,7 +188,7 @@ values
   true
 ),
 (
-  'b4d536fa-c106-4459-966a-eaf41bbe6587',
+  'e790deeb-0312-4491-86cb-a4a0f496da0d',
   9,
   'review',
   null,
@@ -205,13 +207,13 @@ values
 -- Lesson 2: What Are You Wearing?
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '39e3ed1e-f667-42e9-96ad-41f4f577f4d2',
+  '4e091757-6e6e-4e18-b563-40bf5ffd6b29',
   'What Are You Wearing?',
   'A1',
   'teens',
   9,
   2,
-  'Describe clothes with color and connector ''and''. [Bridge, Lesson 2: controlled practice, connector combined]',
+  'Describe clothes with color and connector ''and''. [Bridge, L2, format M: teacher models, student echoes]',
   25,
   9,
   true
@@ -220,7 +222,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '39e3ed1e-f667-42e9-96ad-41f4f577f4d2',
+  '4e091757-6e6e-4e18-b563-40bf5ffd6b29',
   1,
   'title',
   null,
@@ -231,7 +233,7 @@ values
   true
 ),
 (
-  '39e3ed1e-f667-42e9-96ad-41f4f577f4d2',
+  '4e091757-6e6e-4e18-b563-40bf5ffd6b29',
   2,
   'warmup',
   null,
@@ -247,7 +249,7 @@ values
   true
 ),
 (
-  '39e3ed1e-f667-42e9-96ad-41f4f577f4d2',
+  '4e091757-6e6e-4e18-b563-40bf5ffd6b29',
   3,
   'vocabulary',
   null,
@@ -277,7 +279,7 @@ values
   true
 ),
 (
-  '39e3ed1e-f667-42e9-96ad-41f4f577f4d2',
+  '4e091757-6e6e-4e18-b563-40bf5ffd6b29',
   4,
   'phrases',
   null,
@@ -297,7 +299,7 @@ values
   true
 ),
 (
-  '39e3ed1e-f667-42e9-96ad-41f4f577f4d2',
+  '4e091757-6e6e-4e18-b563-40bf5ffd6b29',
   5,
   'activity',
   null,
@@ -326,7 +328,7 @@ values
   true
 ),
 (
-  '39e3ed1e-f667-42e9-96ad-41f4f577f4d2',
+  '4e091757-6e6e-4e18-b563-40bf5ffd6b29',
   6,
   'speaking',
   null,
@@ -335,27 +337,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "What color is your shirt?"
+      "text": "My shirt is red and my jeans are blue."
     },
     {
       "speaker": "B",
-      "text": "My shirt is red and my jeans are blue. What about you?"
-    },
-    {
-      "speaker": "A",
       "text": "My shoes are black and my jacket is blue."
     },
     {
-      "speaker": "B",
+      "speaker": "A",
       "text": "Nice colors!"
+    },
+    {
+      "speaker": "B",
+      "text": "Thanks!"
     }
   ],
-  "note": "Switch! Student becomes A, teacher becomes B."
+  "note": "Teacher says the line first. Student repeats, then says it alone."
 }$json$::jsonb,
   true
 ),
 (
-  '39e3ed1e-f667-42e9-96ad-41f4f577f4d2',
+  '4e091757-6e6e-4e18-b563-40bf5ffd6b29',
   7,
   'reading',
   null,
@@ -371,7 +373,7 @@ values
   true
 ),
 (
-  '39e3ed1e-f667-42e9-96ad-41f4f577f4d2',
+  '4e091757-6e6e-4e18-b563-40bf5ffd6b29',
   8,
   'writing',
   null,
@@ -386,7 +388,7 @@ values
   true
 ),
 (
-  '39e3ed1e-f667-42e9-96ad-41f4f577f4d2',
+  '4e091757-6e6e-4e18-b563-40bf5ffd6b29',
   9,
   'review',
   null,
@@ -405,13 +407,13 @@ values
 -- Lesson 3: Style and Color
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '3a5d23ca-7149-4c3d-8247-0886da95ada5',
+  '3eaad0fc-c695-4d2d-8544-025627e60549',
   'Style and Color',
   'A1',
   'teens',
   9,
   3,
-  'Give a simple opinion about style using ''but''. [Bridge, Lesson 3: freer practice, role reversal, connector combined]',
+  'Unchanged by the rotation rework -- L3 format E, matches original order.',
   25,
   9,
   true
@@ -420,7 +422,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '3a5d23ca-7149-4c3d-8247-0886da95ada5',
+  '3eaad0fc-c695-4d2d-8544-025627e60549',
   1,
   'title',
   null,
@@ -431,7 +433,7 @@ values
   true
 ),
 (
-  '3a5d23ca-7149-4c3d-8247-0886da95ada5',
+  '3eaad0fc-c695-4d2d-8544-025627e60549',
   2,
   'warmup',
   null,
@@ -447,7 +449,7 @@ values
   true
 ),
 (
-  '3a5d23ca-7149-4c3d-8247-0886da95ada5',
+  '3eaad0fc-c695-4d2d-8544-025627e60549',
   3,
   'vocabulary',
   null,
@@ -477,7 +479,7 @@ values
   true
 ),
 (
-  '3a5d23ca-7149-4c3d-8247-0886da95ada5',
+  '3eaad0fc-c695-4d2d-8544-025627e60549',
   4,
   'phrases',
   null,
@@ -497,7 +499,7 @@ values
   true
 ),
 (
-  '3a5d23ca-7149-4c3d-8247-0886da95ada5',
+  '3eaad0fc-c695-4d2d-8544-025627e60549',
   5,
   'activity',
   null,
@@ -526,7 +528,7 @@ values
   true
 ),
 (
-  '3a5d23ca-7149-4c3d-8247-0886da95ada5',
+  '3eaad0fc-c695-4d2d-8544-025627e60549',
   6,
   'speaking',
   null,
@@ -555,7 +557,7 @@ values
   true
 ),
 (
-  '3a5d23ca-7149-4c3d-8247-0886da95ada5',
+  '3eaad0fc-c695-4d2d-8544-025627e60549',
   7,
   'reading',
   null,
@@ -571,7 +573,7 @@ values
   true
 ),
 (
-  '3a5d23ca-7149-4c3d-8247-0886da95ada5',
+  '3eaad0fc-c695-4d2d-8544-025627e60549',
   8,
   'writing',
   null,
@@ -586,7 +588,7 @@ values
   true
 ),
 (
-  '3a5d23ca-7149-4c3d-8247-0886da95ada5',
+  '3eaad0fc-c695-4d2d-8544-025627e60549',
   9,
   'review',
   null,
@@ -605,13 +607,13 @@ values
 -- Lesson 4: Shopping for Clothes
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '8326e99d-04ac-45bc-8c70-36894792006d',
+  '1a081261-75c1-4e7e-9333-080fb1152674',
   'Shopping for Clothes',
   'A1',
   'teens',
   9,
   4,
-  'Combine clothes vocabulary into a shopping conversation. [Bridge, Lesson 4: production]',
+  'Unchanged by the rotation rework -- L4 format R, matches original order.',
   25,
   9,
   true
@@ -620,7 +622,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '8326e99d-04ac-45bc-8c70-36894792006d',
+  '1a081261-75c1-4e7e-9333-080fb1152674',
   1,
   'title',
   null,
@@ -631,7 +633,7 @@ values
   true
 ),
 (
-  '8326e99d-04ac-45bc-8c70-36894792006d',
+  '1a081261-75c1-4e7e-9333-080fb1152674',
   2,
   'warmup',
   null,
@@ -647,7 +649,7 @@ values
   true
 ),
 (
-  '8326e99d-04ac-45bc-8c70-36894792006d',
+  '1a081261-75c1-4e7e-9333-080fb1152674',
   3,
   'vocabulary',
   null,
@@ -677,7 +679,7 @@ values
   true
 ),
 (
-  '8326e99d-04ac-45bc-8c70-36894792006d',
+  '1a081261-75c1-4e7e-9333-080fb1152674',
   4,
   'phrases',
   null,
@@ -697,7 +699,7 @@ values
   true
 ),
 (
-  '8326e99d-04ac-45bc-8c70-36894792006d',
+  '1a081261-75c1-4e7e-9333-080fb1152674',
   5,
   'activity',
   null,
@@ -726,7 +728,7 @@ values
   true
 ),
 (
-  '8326e99d-04ac-45bc-8c70-36894792006d',
+  '1a081261-75c1-4e7e-9333-080fb1152674',
   6,
   'speaking',
   null,
@@ -755,7 +757,7 @@ values
   true
 ),
 (
-  '8326e99d-04ac-45bc-8c70-36894792006d',
+  '1a081261-75c1-4e7e-9333-080fb1152674',
   7,
   'reading',
   null,
@@ -771,7 +773,7 @@ values
   true
 ),
 (
-  '8326e99d-04ac-45bc-8c70-36894792006d',
+  '1a081261-75c1-4e7e-9333-080fb1152674',
   8,
   'writing',
   null,
@@ -786,7 +788,7 @@ values
   true
 ),
 (
-  '8326e99d-04ac-45bc-8c70-36894792006d',
+  '1a081261-75c1-4e7e-9333-080fb1152674',
   9,
   'review',
   null,
@@ -805,13 +807,13 @@ values
 -- Lesson 5: Unit Review
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  'f06ca7b6-e3ee-403a-ba13-6f619e8ed650',
+  'c6d9c4a7-694b-4313-8afa-732b97f49772',
   'Unit Review',
   'A1',
   'teens',
   9,
   5,
-  'Review clothes, colors, and shopping. [Bridge, Lesson 5: tier-matched review]',
+  'Unchanged by the rotation rework.',
   25,
   9,
   true
@@ -820,7 +822,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  'f06ca7b6-e3ee-403a-ba13-6f619e8ed650',
+  'c6d9c4a7-694b-4313-8afa-732b97f49772',
   1,
   'title',
   null,
@@ -831,7 +833,7 @@ values
   true
 ),
 (
-  'f06ca7b6-e3ee-403a-ba13-6f619e8ed650',
+  'c6d9c4a7-694b-4313-8afa-732b97f49772',
   2,
   'warmup',
   null,
@@ -847,7 +849,7 @@ values
   true
 ),
 (
-  'f06ca7b6-e3ee-403a-ba13-6f619e8ed650',
+  'c6d9c4a7-694b-4313-8afa-732b97f49772',
   3,
   'vocabulary',
   null,
@@ -877,7 +879,7 @@ values
   true
 ),
 (
-  'f06ca7b6-e3ee-403a-ba13-6f619e8ed650',
+  'c6d9c4a7-694b-4313-8afa-732b97f49772',
   4,
   'phrases',
   null,
@@ -897,7 +899,7 @@ values
   true
 ),
 (
-  'f06ca7b6-e3ee-403a-ba13-6f619e8ed650',
+  'c6d9c4a7-694b-4313-8afa-732b97f49772',
   5,
   'activity',
   null,
@@ -926,7 +928,7 @@ values
   true
 ),
 (
-  'f06ca7b6-e3ee-403a-ba13-6f619e8ed650',
+  'c6d9c4a7-694b-4313-8afa-732b97f49772',
   6,
   'speaking',
   null,
@@ -955,7 +957,7 @@ values
   true
 ),
 (
-  'f06ca7b6-e3ee-403a-ba13-6f619e8ed650',
+  'c6d9c4a7-694b-4313-8afa-732b97f49772',
   7,
   'reading',
   null,
@@ -971,7 +973,7 @@ values
   true
 ),
 (
-  'f06ca7b6-e3ee-403a-ba13-6f619e8ed650',
+  'c6d9c4a7-694b-4313-8afa-732b97f49772',
   8,
   'writing',
   null,
@@ -986,7 +988,7 @@ values
   true
 ),
 (
-  'f06ca7b6-e3ee-403a-ba13-6f619e8ed650',
+  'c6d9c4a7-694b-4313-8afa-732b97f49772',
   9,
   'review',
   null,

@@ -1,17 +1,19 @@
--- A1 Teens Unit 12: Weekend Plans (5 lessons) — TIERED (Bridge)
--- Regenerated per the Sentivo Intra-Level Progression Framework + lesson-level escalation + task rotation.
+-- A1 Teens Unit 12: Weekend Plans (5 lessons) — TIERED + ROTATED
+-- Per docs/curriculum/a1-teens-adults-rotation-rework.md. Vocab/reading/writing/review
+-- unchanged from the tiered pilot; only activity+speaking reshuffled to the new
+-- per-unit format assignment, keeping each lesson's difficulty position intact.
 -- Run this whole script in the Supabase SQL editor.
 
 -- Lesson 1: Weekend Plans
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '2df001df-6be5-4e42-bc26-449651b039e2',
+  '97e7bc17-cbc6-464e-9d14-22e9991b6986',
   'Weekend Plans',
   'A1',
   'teens',
   12,
   1,
-  'Say simple weekend activities. [Bridge, Lesson 1: notice/receptive]',
+  'Say simple weekend activities. [Bridge, L1, format E: choose-the-better-answer]',
   25,
   9,
   true
@@ -20,7 +22,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '2df001df-6be5-4e42-bc26-449651b039e2',
+  '97e7bc17-cbc6-464e-9d14-22e9991b6986',
   1,
   'title',
   null,
@@ -31,7 +33,7 @@ values
   true
 ),
 (
-  '2df001df-6be5-4e42-bc26-449651b039e2',
+  '97e7bc17-cbc6-464e-9d14-22e9991b6986',
   2,
   'warmup',
   null,
@@ -47,7 +49,7 @@ values
   true
 ),
 (
-  '2df001df-6be5-4e42-bc26-449651b039e2',
+  '97e7bc17-cbc6-464e-9d14-22e9991b6986',
   3,
   'vocabulary',
   null,
@@ -77,7 +79,7 @@ values
   true
 ),
 (
-  '2df001df-6be5-4e42-bc26-449651b039e2',
+  '97e7bc17-cbc6-464e-9d14-22e9991b6986',
   4,
   'phrases',
   null,
@@ -97,7 +99,7 @@ values
   true
 ),
 (
-  '2df001df-6be5-4e42-bc26-449651b039e2',
+  '97e7bc17-cbc6-464e-9d14-22e9991b6986',
   5,
   'activity',
   null,
@@ -126,7 +128,7 @@ values
   true
 ),
 (
-  '2df001df-6be5-4e42-bc26-449651b039e2',
+  '97e7bc17-cbc6-464e-9d14-22e9991b6986',
   6,
   'speaking',
   null,
@@ -135,27 +137,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "On the weekend, I relax."
+      "text": "Which is correct: 'On the weekend I relax' or 'In the weekend I relax'?"
     },
     {
       "speaker": "B",
-      "text": "I have a plan for Saturday."
+      "text": "'On the weekend' is correct."
     },
     {
       "speaker": "A",
-      "text": "I visit my grandma on Sundays."
+      "text": "Good! What is your plan for this weekend?"
     },
     {
       "speaker": "B",
-      "text": "That sounds nice!"
+      "text": "I have a plan to visit my grandma."
     }
   ],
-  "note": "Teacher says the line first. Student repeats, then says it alone."
+  "note": "Choose the correct sentence first, then answer about your own weekend plan."
 }$json$::jsonb,
   true
 ),
 (
-  '2df001df-6be5-4e42-bc26-449651b039e2',
+  '97e7bc17-cbc6-464e-9d14-22e9991b6986',
   7,
   'reading',
   null,
@@ -171,7 +173,7 @@ values
   true
 ),
 (
-  '2df001df-6be5-4e42-bc26-449651b039e2',
+  '97e7bc17-cbc6-464e-9d14-22e9991b6986',
   8,
   'writing',
   null,
@@ -186,7 +188,7 @@ values
   true
 ),
 (
-  '2df001df-6be5-4e42-bc26-449651b039e2',
+  '97e7bc17-cbc6-464e-9d14-22e9991b6986',
   9,
   'review',
   null,
@@ -205,13 +207,13 @@ values
 -- Lesson 2: Making Simple Plans
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '02d37a87-ef7d-4acf-bd22-11e1063f2736',
+  'd5aff168-7248-468a-85cc-4c2fff3d4263',
   'Making Simple Plans',
   'A1',
   'teens',
   12,
   2,
-  'Use ''want to'' for simple plans. [Bridge, Lesson 2: controlled practice, forward-looking chunk]',
+  'Use ''want to'' for simple plans. [Bridge, L2, format R: short scripted role-play]',
   25,
   9,
   true
@@ -220,7 +222,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '02d37a87-ef7d-4acf-bd22-11e1063f2736',
+  'd5aff168-7248-468a-85cc-4c2fff3d4263',
   1,
   'title',
   null,
@@ -231,7 +233,7 @@ values
   true
 ),
 (
-  '02d37a87-ef7d-4acf-bd22-11e1063f2736',
+  'd5aff168-7248-468a-85cc-4c2fff3d4263',
   2,
   'warmup',
   null,
@@ -247,7 +249,7 @@ values
   true
 ),
 (
-  '02d37a87-ef7d-4acf-bd22-11e1063f2736',
+  'd5aff168-7248-468a-85cc-4c2fff3d4263',
   3,
   'vocabulary',
   null,
@@ -277,7 +279,7 @@ values
   true
 ),
 (
-  '02d37a87-ef7d-4acf-bd22-11e1063f2736',
+  'd5aff168-7248-468a-85cc-4c2fff3d4263',
   4,
   'phrases',
   null,
@@ -297,7 +299,7 @@ values
   true
 ),
 (
-  '02d37a87-ef7d-4acf-bd22-11e1063f2736',
+  'd5aff168-7248-468a-85cc-4c2fff3d4263',
   5,
   'activity',
   null,
@@ -326,7 +328,7 @@ values
   true
 ),
 (
-  '02d37a87-ef7d-4acf-bd22-11e1063f2736',
+  'd5aff168-7248-468a-85cc-4c2fff3d4263',
   6,
   'speaking',
   null,
@@ -335,27 +337,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "What do you want to do this weekend?"
+      "text": "I want to watch a movie this weekend."
     },
     {
       "speaker": "B",
-      "text": "I want to watch a movie. Do you want to meet friends?"
+      "text": "I want to meet my friends. We can go together."
     },
     {
       "speaker": "A",
-      "text": "Yes, I want to meet my friends and go to the park together."
+      "text": "Sounds like a nice plan!"
     },
     {
       "speaker": "B",
-      "text": "Sounds like a nice plan!"
+      "text": "Now make your own weekend plan using these lines!"
     }
   ],
-  "note": "Switch! Student becomes A, teacher becomes B."
+  "note": "Short role-play: use the exact lines above to make a plan, then make your own."
 }$json$::jsonb,
   true
 ),
 (
-  '02d37a87-ef7d-4acf-bd22-11e1063f2736',
+  'd5aff168-7248-468a-85cc-4c2fff3d4263',
   7,
   'reading',
   null,
@@ -371,7 +373,7 @@ values
   true
 ),
 (
-  '02d37a87-ef7d-4acf-bd22-11e1063f2736',
+  'd5aff168-7248-468a-85cc-4c2fff3d4263',
   8,
   'writing',
   null,
@@ -386,7 +388,7 @@ values
   true
 ),
 (
-  '02d37a87-ef7d-4acf-bd22-11e1063f2736',
+  'd5aff168-7248-468a-85cc-4c2fff3d4263',
   9,
   'review',
   null,
@@ -405,13 +407,13 @@ values
 -- Lesson 3: Invitations and Responses
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '69f1c259-967d-4899-8237-2dddf0c41eb0',
+  '076010c9-55a1-462b-844c-b97e4203f96e',
   'Invitations and Responses',
   'A1',
   'teens',
   12,
   3,
-  'Invite and respond using ''want to''. [Bridge, Lesson 3: freer practice, role reversal]',
+  'Invite and respond using ''want to''. [Bridge, L3, format F: guided fill-in]',
   25,
   9,
   true
@@ -420,7 +422,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '69f1c259-967d-4899-8237-2dddf0c41eb0',
+  '076010c9-55a1-462b-844c-b97e4203f96e',
   1,
   'title',
   null,
@@ -431,7 +433,7 @@ values
   true
 ),
 (
-  '69f1c259-967d-4899-8237-2dddf0c41eb0',
+  '076010c9-55a1-462b-844c-b97e4203f96e',
   2,
   'warmup',
   null,
@@ -447,7 +449,7 @@ values
   true
 ),
 (
-  '69f1c259-967d-4899-8237-2dddf0c41eb0',
+  '076010c9-55a1-462b-844c-b97e4203f96e',
   3,
   'vocabulary',
   null,
@@ -477,7 +479,7 @@ values
   true
 ),
 (
-  '69f1c259-967d-4899-8237-2dddf0c41eb0',
+  '076010c9-55a1-462b-844c-b97e4203f96e',
   4,
   'phrases',
   null,
@@ -497,7 +499,7 @@ values
   true
 ),
 (
-  '69f1c259-967d-4899-8237-2dddf0c41eb0',
+  '076010c9-55a1-462b-844c-b97e4203f96e',
   5,
   'activity',
   null,
@@ -520,13 +522,13 @@ values
   "blanks": [
     "would you like to",
     "sure",
-    "sorry"
+    "busy"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '69f1c259-967d-4899-8237-2dddf0c41eb0',
+  '076010c9-55a1-462b-844c-b97e4203f96e',
   6,
   'speaking',
   null,
@@ -543,19 +545,19 @@ values
     },
     {
       "speaker": "A",
-      "text": "Sorry, I'm busy on Sunday. I want to visit my grandma."
+      "text": "Sorry, I'm busy on Sunday."
     },
     {
       "speaker": "B",
-      "text": "Your turn to invite me!"
+      "text": "Fill in your own invitation now!"
     }
   ],
-  "note": "Student asks first this time. Teacher answers, then asks back."
+  "note": "Switch! Student becomes A, teacher becomes B."
 }$json$::jsonb,
   true
 ),
 (
-  '69f1c259-967d-4899-8237-2dddf0c41eb0',
+  '076010c9-55a1-462b-844c-b97e4203f96e',
   7,
   'reading',
   null,
@@ -571,7 +573,7 @@ values
   true
 ),
 (
-  '69f1c259-967d-4899-8237-2dddf0c41eb0',
+  '076010c9-55a1-462b-844c-b97e4203f96e',
   8,
   'writing',
   null,
@@ -586,7 +588,7 @@ values
   true
 ),
 (
-  '69f1c259-967d-4899-8237-2dddf0c41eb0',
+  '076010c9-55a1-462b-844c-b97e4203f96e',
   9,
   'review',
   null,
@@ -605,13 +607,13 @@ values
 -- Lesson 4: Talking About the Weekend
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  'eaa3e905-a6f8-4efe-bdb0-5a8482f10576',
+  '7d2b4a43-4b04-482e-afc7-0ec6c3993889',
   'Talking About the Weekend',
   'A1',
   'teens',
   12,
   4,
-  'Combine plans, invitations, and reasons into a full talk. [Bridge, Lesson 4: production]',
+  'Combine plans, invitations, and reasons into a full talk. [Bridge, L4, format M: independent production, teacher matches back]',
   25,
   9,
   true
@@ -620,7 +622,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  'eaa3e905-a6f8-4efe-bdb0-5a8482f10576',
+  '7d2b4a43-4b04-482e-afc7-0ec6c3993889',
   1,
   'title',
   null,
@@ -631,7 +633,7 @@ values
   true
 ),
 (
-  'eaa3e905-a6f8-4efe-bdb0-5a8482f10576',
+  '7d2b4a43-4b04-482e-afc7-0ec6c3993889',
   2,
   'warmup',
   null,
@@ -647,7 +649,7 @@ values
   true
 ),
 (
-  'eaa3e905-a6f8-4efe-bdb0-5a8482f10576',
+  '7d2b4a43-4b04-482e-afc7-0ec6c3993889',
   3,
   'vocabulary',
   null,
@@ -677,7 +679,7 @@ values
   true
 ),
 (
-  'eaa3e905-a6f8-4efe-bdb0-5a8482f10576',
+  '7d2b4a43-4b04-482e-afc7-0ec6c3993889',
   4,
   'phrases',
   null,
@@ -697,7 +699,7 @@ values
   true
 ),
 (
-  'eaa3e905-a6f8-4efe-bdb0-5a8482f10576',
+  '7d2b4a43-4b04-482e-afc7-0ec6c3993889',
   5,
   'activity',
   null,
@@ -726,7 +728,7 @@ values
   true
 ),
 (
-  'eaa3e905-a6f8-4efe-bdb0-5a8482f10576',
+  '7d2b4a43-4b04-482e-afc7-0ec6c3993889',
   6,
   'speaking',
   null,
@@ -735,27 +737,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "Tell me about your weekend plan."
+      "text": "Tell me your weekend plan, in your own words."
     },
     {
       "speaker": "B",
-      "text": "I want to meet my friends and watch a movie together. It's exciting!"
+      "text": "This weekend, I plan to ___. I'm excited because ___."
     },
     {
       "speaker": "A",
-      "text": "I plan to visit my grandma. I can't wait to see her."
+      "text": "I'll say it back: this weekend you plan to ___, and you can't wait."
     },
     {
       "speaker": "B",
-      "text": "Sounds like a great weekend!"
+      "text": "Yes, exactly!"
     }
   ],
-  "note": "Mini talk: tell me all about your weekend plan in a few sentences."
+  "note": "You speak first, fully in your own words. Teacher matches your sentence back to check it."
 }$json$::jsonb,
   true
 ),
 (
-  'eaa3e905-a6f8-4efe-bdb0-5a8482f10576',
+  '7d2b4a43-4b04-482e-afc7-0ec6c3993889',
   7,
   'reading',
   null,
@@ -771,7 +773,7 @@ values
   true
 ),
 (
-  'eaa3e905-a6f8-4efe-bdb0-5a8482f10576',
+  '7d2b4a43-4b04-482e-afc7-0ec6c3993889',
   8,
   'writing',
   null,
@@ -786,7 +788,7 @@ values
   true
 ),
 (
-  'eaa3e905-a6f8-4efe-bdb0-5a8482f10576',
+  '7d2b4a43-4b04-482e-afc7-0ec6c3993889',
   9,
   'review',
   null,
@@ -805,13 +807,13 @@ values
 -- Lesson 5: Unit Review
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  'e089467b-c18b-461f-a6ed-e1fec5662b8f',
+  '3f86ff99-0ccb-4600-8737-7409d0bc03ca',
   'Unit Review',
   'A1',
   'teens',
   12,
   5,
-  'Review weekend plans, invitations, and feelings. [Bridge, Lesson 5: tier-matched review]',
+  'Unchanged by the rotation rework.',
   25,
   9,
   true
@@ -820,7 +822,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  'e089467b-c18b-461f-a6ed-e1fec5662b8f',
+  '3f86ff99-0ccb-4600-8737-7409d0bc03ca',
   1,
   'title',
   null,
@@ -831,7 +833,7 @@ values
   true
 ),
 (
-  'e089467b-c18b-461f-a6ed-e1fec5662b8f',
+  '3f86ff99-0ccb-4600-8737-7409d0bc03ca',
   2,
   'warmup',
   null,
@@ -847,7 +849,7 @@ values
   true
 ),
 (
-  'e089467b-c18b-461f-a6ed-e1fec5662b8f',
+  '3f86ff99-0ccb-4600-8737-7409d0bc03ca',
   3,
   'vocabulary',
   null,
@@ -877,7 +879,7 @@ values
   true
 ),
 (
-  'e089467b-c18b-461f-a6ed-e1fec5662b8f',
+  '3f86ff99-0ccb-4600-8737-7409d0bc03ca',
   4,
   'phrases',
   null,
@@ -897,7 +899,7 @@ values
   true
 ),
 (
-  'e089467b-c18b-461f-a6ed-e1fec5662b8f',
+  '3f86ff99-0ccb-4600-8737-7409d0bc03ca',
   5,
   'activity',
   null,
@@ -926,7 +928,7 @@ values
   true
 ),
 (
-  'e089467b-c18b-461f-a6ed-e1fec5662b8f',
+  '3f86ff99-0ccb-4600-8737-7409d0bc03ca',
   6,
   'speaking',
   null,
@@ -955,7 +957,7 @@ values
   true
 ),
 (
-  'e089467b-c18b-461f-a6ed-e1fec5662b8f',
+  '3f86ff99-0ccb-4600-8737-7409d0bc03ca',
   7,
   'reading',
   null,
@@ -971,7 +973,7 @@ values
   true
 ),
 (
-  'e089467b-c18b-461f-a6ed-e1fec5662b8f',
+  '3f86ff99-0ccb-4600-8737-7409d0bc03ca',
   8,
   'writing',
   null,
@@ -986,7 +988,7 @@ values
   true
 ),
 (
-  'e089467b-c18b-461f-a6ed-e1fec5662b8f',
+  '3f86ff99-0ccb-4600-8737-7409d0bc03ca',
   9,
   'review',
   null,

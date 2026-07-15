@@ -1,17 +1,19 @@
--- A1 Teens Unit 11: Social Media and Tech (5 lessons) — TIERED (Bridge)
--- Regenerated per the Sentivo Intra-Level Progression Framework + lesson-level escalation + task rotation.
+-- A1 Teens Unit 11: Social Media and Tech (5 lessons) — TIERED + ROTATED
+-- Per docs/curriculum/a1-teens-adults-rotation-rework.md. Vocab/reading/writing/review
+-- unchanged from the tiered pilot; only activity+speaking reshuffled to the new
+-- per-unit format assignment, keeping each lesson's difficulty position intact.
 -- Run this whole script in the Supabase SQL editor.
 
 -- Lesson 1: Social Media and Tech
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  'f79969a9-828c-4d38-b314-908557c40a3c',
+  'b3ab3a8b-129f-4501-ac7c-37501329f44c',
   'Social Media and Tech',
   'A1',
   'teens',
   11,
   1,
-  'Name tech and social media words. [Bridge, Lesson 1: notice/receptive]',
+  'Unchanged by the rotation rework -- L1 format M, matches original order.',
   25,
   9,
   true
@@ -20,7 +22,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  'f79969a9-828c-4d38-b314-908557c40a3c',
+  'b3ab3a8b-129f-4501-ac7c-37501329f44c',
   1,
   'title',
   null,
@@ -31,7 +33,7 @@ values
   true
 ),
 (
-  'f79969a9-828c-4d38-b314-908557c40a3c',
+  'b3ab3a8b-129f-4501-ac7c-37501329f44c',
   2,
   'warmup',
   null,
@@ -47,7 +49,7 @@ values
   true
 ),
 (
-  'f79969a9-828c-4d38-b314-908557c40a3c',
+  'b3ab3a8b-129f-4501-ac7c-37501329f44c',
   3,
   'vocabulary',
   null,
@@ -77,7 +79,7 @@ values
   true
 ),
 (
-  'f79969a9-828c-4d38-b314-908557c40a3c',
+  'b3ab3a8b-129f-4501-ac7c-37501329f44c',
   4,
   'phrases',
   null,
@@ -97,7 +99,7 @@ values
   true
 ),
 (
-  'f79969a9-828c-4d38-b314-908557c40a3c',
+  'b3ab3a8b-129f-4501-ac7c-37501329f44c',
   5,
   'activity',
   null,
@@ -126,7 +128,7 @@ values
   true
 ),
 (
-  'f79969a9-828c-4d38-b314-908557c40a3c',
+  'b3ab3a8b-129f-4501-ac7c-37501329f44c',
   6,
   'speaking',
   null,
@@ -155,7 +157,7 @@ values
   true
 ),
 (
-  'f79969a9-828c-4d38-b314-908557c40a3c',
+  'b3ab3a8b-129f-4501-ac7c-37501329f44c',
   7,
   'reading',
   null,
@@ -171,7 +173,7 @@ values
   true
 ),
 (
-  'f79969a9-828c-4d38-b314-908557c40a3c',
+  'b3ab3a8b-129f-4501-ac7c-37501329f44c',
   8,
   'writing',
   null,
@@ -186,7 +188,7 @@ values
   true
 ),
 (
-  'f79969a9-828c-4d38-b314-908557c40a3c',
+  'b3ab3a8b-129f-4501-ac7c-37501329f44c',
   9,
   'review',
   null,
@@ -205,13 +207,13 @@ values
 -- Lesson 2: Online Habits
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '03689551-9b7f-4408-be9d-4de6bcb571d2',
+  '528e6886-c3da-4a78-92de-8c0ef79e6c63',
   'Online Habits',
   'A1',
   'teens',
   11,
   2,
-  'Use frequency words with tech habits. [Bridge, Lesson 2: controlled practice, frequency combined]',
+  'Use frequency words with tech habits. [Bridge, L2, format E: choose-the-better-answer]',
   25,
   9,
   true
@@ -220,7 +222,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '03689551-9b7f-4408-be9d-4de6bcb571d2',
+  '528e6886-c3da-4a78-92de-8c0ef79e6c63',
   1,
   'title',
   null,
@@ -231,7 +233,7 @@ values
   true
 ),
 (
-  '03689551-9b7f-4408-be9d-4de6bcb571d2',
+  '528e6886-c3da-4a78-92de-8c0ef79e6c63',
   2,
   'warmup',
   null,
@@ -247,7 +249,7 @@ values
   true
 ),
 (
-  '03689551-9b7f-4408-be9d-4de6bcb571d2',
+  '528e6886-c3da-4a78-92de-8c0ef79e6c63',
   3,
   'vocabulary',
   null,
@@ -277,7 +279,7 @@ values
   true
 ),
 (
-  '03689551-9b7f-4408-be9d-4de6bcb571d2',
+  '528e6886-c3da-4a78-92de-8c0ef79e6c63',
   4,
   'phrases',
   null,
@@ -297,7 +299,7 @@ values
   true
 ),
 (
-  '03689551-9b7f-4408-be9d-4de6bcb571d2',
+  '528e6886-c3da-4a78-92de-8c0ef79e6c63',
   5,
   'activity',
   null,
@@ -326,7 +328,7 @@ values
   true
 ),
 (
-  '03689551-9b7f-4408-be9d-4de6bcb571d2',
+  '528e6886-c3da-4a78-92de-8c0ef79e6c63',
   6,
   'speaking',
   null,
@@ -335,27 +337,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "Do you check your phone every day?"
+      "text": "Which is correct: 'I check my phone every day' or 'I check my phone every days'?"
     },
     {
       "speaker": "B",
-      "text": "Yes, I check it every day. I usually scroll videos too."
+      "text": "'I check my phone every day' is correct. No 's' on day."
     },
     {
       "speaker": "A",
-      "text": "I message my friends every day."
+      "text": "Good! What do you usually do on your phone?"
     },
     {
       "speaker": "B",
-      "text": "Me too!"
+      "text": "I usually scroll videos and message my friends."
     }
   ],
-  "note": "Switch! Student becomes A, teacher becomes B."
+  "note": "Choose the correct sentence first, then answer about your own phone habits."
 }$json$::jsonb,
   true
 ),
 (
-  '03689551-9b7f-4408-be9d-4de6bcb571d2',
+  '528e6886-c3da-4a78-92de-8c0ef79e6c63',
   7,
   'reading',
   null,
@@ -371,7 +373,7 @@ values
   true
 ),
 (
-  '03689551-9b7f-4408-be9d-4de6bcb571d2',
+  '528e6886-c3da-4a78-92de-8c0ef79e6c63',
   8,
   'writing',
   null,
@@ -386,7 +388,7 @@ values
   true
 ),
 (
-  '03689551-9b7f-4408-be9d-4de6bcb571d2',
+  '528e6886-c3da-4a78-92de-8c0ef79e6c63',
   9,
   'review',
   null,
@@ -405,13 +407,13 @@ values
 -- Lesson 3: Messages and Communication
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  'e1baa035-11dc-452b-91b1-5b2d9d5c9b96',
+  '07f2b194-cfb5-49c6-a200-5de7b3b3476a',
   'Messages and Communication',
   'A1',
   'teens',
   11,
   3,
-  'Give a simple reason for tech habits using ''because''. [Bridge, Lesson 3: freer practice, role reversal]',
+  'Give a simple reason for tech habits using ''because''. [Bridge, L3, format R: freer, less-scripted role-play]',
   25,
   9,
   true
@@ -420,7 +422,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  'e1baa035-11dc-452b-91b1-5b2d9d5c9b96',
+  '07f2b194-cfb5-49c6-a200-5de7b3b3476a',
   1,
   'title',
   null,
@@ -431,7 +433,7 @@ values
   true
 ),
 (
-  'e1baa035-11dc-452b-91b1-5b2d9d5c9b96',
+  '07f2b194-cfb5-49c6-a200-5de7b3b3476a',
   2,
   'warmup',
   null,
@@ -447,7 +449,7 @@ values
   true
 ),
 (
-  'e1baa035-11dc-452b-91b1-5b2d9d5c9b96',
+  '07f2b194-cfb5-49c6-a200-5de7b3b3476a',
   3,
   'vocabulary',
   null,
@@ -477,7 +479,7 @@ values
   true
 ),
 (
-  'e1baa035-11dc-452b-91b1-5b2d9d5c9b96',
+  '07f2b194-cfb5-49c6-a200-5de7b3b3476a',
   4,
   'phrases',
   null,
@@ -497,7 +499,7 @@ values
   true
 ),
 (
-  'e1baa035-11dc-452b-91b1-5b2d9d5c9b96',
+  '07f2b194-cfb5-49c6-a200-5de7b3b3476a',
   5,
   'activity',
   null,
@@ -526,7 +528,7 @@ values
   true
 ),
 (
-  'e1baa035-11dc-452b-91b1-5b2d9d5c9b96',
+  '07f2b194-cfb5-49c6-a200-5de7b3b3476a',
   6,
   'speaking',
   null,
@@ -539,7 +541,7 @@ values
     },
     {
       "speaker": "B",
-      "text": "I like it because it's easy and fast. I talk to my friends every day."
+      "text": "I like it because it's easy and fast."
     },
     {
       "speaker": "A",
@@ -547,15 +549,15 @@ values
     },
     {
       "speaker": "B",
-      "text": "Your turn to ask me something!"
+      "text": "Now act out your own conversation about why you like an app!"
     }
   ],
-  "note": "Student asks first this time. Teacher answers, then asks back."
+  "note": "Freer role-play: after practicing the lines, invent your own short conversation about an app you like."
 }$json$::jsonb,
   true
 ),
 (
-  'e1baa035-11dc-452b-91b1-5b2d9d5c9b96',
+  '07f2b194-cfb5-49c6-a200-5de7b3b3476a',
   7,
   'reading',
   null,
@@ -571,7 +573,7 @@ values
   true
 ),
 (
-  'e1baa035-11dc-452b-91b1-5b2d9d5c9b96',
+  '07f2b194-cfb5-49c6-a200-5de7b3b3476a',
   8,
   'writing',
   null,
@@ -586,7 +588,7 @@ values
   true
 ),
 (
-  'e1baa035-11dc-452b-91b1-5b2d9d5c9b96',
+  '07f2b194-cfb5-49c6-a200-5de7b3b3476a',
   9,
   'review',
   null,
@@ -605,13 +607,13 @@ values
 -- Lesson 4: Tech Questions
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  'a11a49ec-a130-4800-895c-3fb2d9a04a1d',
+  '0275ab83-79c0-48c1-a816-43284bb25471',
   'Tech Questions',
   'A1',
   'teens',
   11,
   4,
-  'Combine tech habits and reasons into a talk. [Bridge, Lesson 4: production]',
+  'Combine tech habits and reasons into a talk. [Bridge, L4, format F: open fill-in, minimal scaffolding]',
   25,
   9,
   true
@@ -620,7 +622,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  'a11a49ec-a130-4800-895c-3fb2d9a04a1d',
+  '0275ab83-79c0-48c1-a816-43284bb25471',
   1,
   'title',
   null,
@@ -631,7 +633,7 @@ values
   true
 ),
 (
-  'a11a49ec-a130-4800-895c-3fb2d9a04a1d',
+  '0275ab83-79c0-48c1-a816-43284bb25471',
   2,
   'warmup',
   null,
@@ -647,7 +649,7 @@ values
   true
 ),
 (
-  'a11a49ec-a130-4800-895c-3fb2d9a04a1d',
+  '0275ab83-79c0-48c1-a816-43284bb25471',
   3,
   'vocabulary',
   null,
@@ -677,7 +679,7 @@ values
   true
 ),
 (
-  'a11a49ec-a130-4800-895c-3fb2d9a04a1d',
+  '0275ab83-79c0-48c1-a816-43284bb25471',
   4,
   'phrases',
   null,
@@ -697,7 +699,7 @@ values
   true
 ),
 (
-  'a11a49ec-a130-4800-895c-3fb2d9a04a1d',
+  '0275ab83-79c0-48c1-a816-43284bb25471',
   5,
   'activity',
   null,
@@ -714,19 +716,19 @@ values
     },
     {
       "speaker": "A",
-      "text": "I am [careful] with my phone."
+      "text": "I am careful with my phone."
     }
   ],
   "blanks": [
     "too much",
-    "break",
-    "careful"
+    "screen time",
+    "break"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'a11a49ec-a130-4800-895c-3fb2d9a04a1d',
+  '0275ab83-79c0-48c1-a816-43284bb25471',
   6,
   'speaking',
   null,
@@ -735,27 +737,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "Tell me about your phone habits."
+      "text": "How much screen time do you have, and do you take breaks?"
     },
     {
       "speaker": "B",
-      "text": "I check my phone every day because I like messaging my friends."
+      "text": "I have ___ screen time. I take a break by ___."
     },
     {
       "speaker": "A",
-      "text": "Sometimes I have too much screen time, so I take a break and read."
+      "text": "Are you careful with your phone?"
     },
     {
       "speaker": "B",
-      "text": "That's a good habit!"
+      "text": "___."
     }
   ],
-  "note": "Mini talk: tell me all about your phone habits in a few sentences."
+  "note": "Fill in your own answers -- no word bank this time. Say your full answers out loud."
 }$json$::jsonb,
   true
 ),
 (
-  'a11a49ec-a130-4800-895c-3fb2d9a04a1d',
+  '0275ab83-79c0-48c1-a816-43284bb25471',
   7,
   'reading',
   null,
@@ -771,7 +773,7 @@ values
   true
 ),
 (
-  'a11a49ec-a130-4800-895c-3fb2d9a04a1d',
+  '0275ab83-79c0-48c1-a816-43284bb25471',
   8,
   'writing',
   null,
@@ -786,7 +788,7 @@ values
   true
 ),
 (
-  'a11a49ec-a130-4800-895c-3fb2d9a04a1d',
+  '0275ab83-79c0-48c1-a816-43284bb25471',
   9,
   'review',
   null,
@@ -805,13 +807,13 @@ values
 -- Lesson 5: Unit Review
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  'e873e169-2eca-4a15-9033-79eeec73e793',
+  '63c9c787-fd03-49bd-9cfb-67b8d1fb2cd0',
   'Unit Review',
   'A1',
   'teens',
   11,
   5,
-  'Review tech vocabulary, habits, and reasons. [Bridge, Lesson 5: tier-matched review]',
+  'Unchanged by the rotation rework.',
   25,
   9,
   true
@@ -820,7 +822,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  'e873e169-2eca-4a15-9033-79eeec73e793',
+  '63c9c787-fd03-49bd-9cfb-67b8d1fb2cd0',
   1,
   'title',
   null,
@@ -831,7 +833,7 @@ values
   true
 ),
 (
-  'e873e169-2eca-4a15-9033-79eeec73e793',
+  '63c9c787-fd03-49bd-9cfb-67b8d1fb2cd0',
   2,
   'warmup',
   null,
@@ -847,7 +849,7 @@ values
   true
 ),
 (
-  'e873e169-2eca-4a15-9033-79eeec73e793',
+  '63c9c787-fd03-49bd-9cfb-67b8d1fb2cd0',
   3,
   'vocabulary',
   null,
@@ -877,7 +879,7 @@ values
   true
 ),
 (
-  'e873e169-2eca-4a15-9033-79eeec73e793',
+  '63c9c787-fd03-49bd-9cfb-67b8d1fb2cd0',
   4,
   'phrases',
   null,
@@ -897,7 +899,7 @@ values
   true
 ),
 (
-  'e873e169-2eca-4a15-9033-79eeec73e793',
+  '63c9c787-fd03-49bd-9cfb-67b8d1fb2cd0',
   5,
   'activity',
   null,
@@ -926,7 +928,7 @@ values
   true
 ),
 (
-  'e873e169-2eca-4a15-9033-79eeec73e793',
+  '63c9c787-fd03-49bd-9cfb-67b8d1fb2cd0',
   6,
   'speaking',
   null,
@@ -955,7 +957,7 @@ values
   true
 ),
 (
-  'e873e169-2eca-4a15-9033-79eeec73e793',
+  '63c9c787-fd03-49bd-9cfb-67b8d1fb2cd0',
   7,
   'reading',
   null,
@@ -971,7 +973,7 @@ values
   true
 ),
 (
-  'e873e169-2eca-4a15-9033-79eeec73e793',
+  '63c9c787-fd03-49bd-9cfb-67b8d1fb2cd0',
   8,
   'writing',
   null,
@@ -986,7 +988,7 @@ values
   true
 ),
 (
-  'e873e169-2eca-4a15-9033-79eeec73e793',
+  '63c9c787-fd03-49bd-9cfb-67b8d1fb2cd0',
   9,
   'review',
   null,
