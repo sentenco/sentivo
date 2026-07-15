@@ -1,17 +1,17 @@
--- A2 Teens Unit 6: Food and Going Out (5 lessons)
--- Generated from project_a2_teens_master_curriculum memory.
+-- A2 Teens Unit 6: Food and Going Out (5 lessons) — TIERED (Combination)
+-- Regenerated per the Sentivo Intra-Level Progression Framework.
 -- Run this whole script in the Supabase SQL editor.
 
 -- Lesson 1: Where Shall We Eat?
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '20fc1e19-96a0-4d24-8b7b-f17ea7084c7d',
+  '9d357b59-1d73-4dd3-997d-d26ba135ee7b',
   'Where Shall We Eat?',
   'A2',
   'teens',
   6,
   1,
-  'Suggest and respond to ideas about where to eat.',
+  'Compare restaurant choices with reasons. [Combination tier]',
   25,
   9,
   true
@@ -20,7 +20,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '20fc1e19-96a0-4d24-8b7b-f17ea7084c7d',
+  '9d357b59-1d73-4dd3-997d-d26ba135ee7b',
   1,
   'title',
   null,
@@ -31,7 +31,7 @@ values
   true
 ),
 (
-  '20fc1e19-96a0-4d24-8b7b-f17ea7084c7d',
+  '9d357b59-1d73-4dd3-997d-d26ba135ee7b',
   2,
   'warmup',
   null,
@@ -39,15 +39,15 @@ values
   $json${
   "display": "🍜",
   "questions": [
-    "Where do you like to eat with friends?",
-    "Do you have a food craving right now?"
+    "Is the place near you cheaper than downtown?",
+    "Do you pick a place because of reviews?"
   ],
   "title": "What's your take?"
 }$json$::jsonb,
   true
 ),
 (
-  '20fc1e19-96a0-4d24-8b7b-f17ea7084c7d',
+  '9d357b59-1d73-4dd3-997d-d26ba135ee7b',
   3,
   'vocabulary',
   null,
@@ -55,19 +55,19 @@ values
   $json${
   "words": [
     {
-      "word": "Shall we",
+      "word": "Craving",
       "bg": "#FAECE7"
     },
     {
-      "word": "Craving",
+      "word": "Cheaper than",
       "bg": "#E1F5EE"
     },
     {
-      "word": "Nearby",
+      "word": "Closer than",
       "bg": "#EEEDFE"
     },
     {
-      "word": "Suggestion",
+      "word": "Better reviews",
       "bg": "#FAEEDA"
     }
   ],
@@ -77,27 +77,27 @@ values
   true
 ),
 (
-  '20fc1e19-96a0-4d24-8b7b-f17ea7084c7d',
+  '9d357b59-1d73-4dd3-997d-d26ba135ee7b',
   4,
   'phrases',
   null,
   null,
   $json${
   "teacher": [
-    "Shall we get pizza?",
-    "What are you craving?"
+    "Is this place cheaper than that one?",
+    "Why do you want to go there?"
   ],
   "student": [
-    "Sure, that sounds great.",
-    "I'm craving noodles."
+    "Yes, it's cheaper and closer.",
+    "I want to go because it has better reviews."
   ],
-  "note": "Practice suggesting a place to eat!",
+  "note": "Partial prompt: ___ is ___ than ___ because ___.",
   "title": "Practice the Conversation"
 }$json$::jsonb,
   true
 ),
 (
-  '20fc1e19-96a0-4d24-8b7b-f17ea7084c7d',
+  '9d357b59-1d73-4dd3-997d-d26ba135ee7b',
   5,
   'activity',
   null,
@@ -106,27 +106,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "[Shall we] try that new café?"
+      "text": "This café is [cheaper than] the one downtown."
     },
     {
       "speaker": "B",
-      "text": "I'm [craving] something sweet."
+      "text": "It's also [closer than] my house."
     },
     {
       "speaker": "A",
-      "text": "There's a good place [nearby]."
+      "text": "It has [better reviews] too."
     }
   ],
   "blanks": [
-    "shall we",
-    "craving",
-    "nearby"
+    "cheaper than",
+    "closer than",
+    "better reviews"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '20fc1e19-96a0-4d24-8b7b-f17ea7084c7d',
+  '9d357b59-1d73-4dd3-997d-d26ba135ee7b',
   6,
   'speaking',
   null,
@@ -135,69 +135,69 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "Shall we get something to eat?"
+      "text": "Shall we eat at the new noodle place?"
     },
     {
       "speaker": "B",
-      "text": "Sure, I'm craving noodles. Is there a place nearby?"
+      "text": "Sure, it's cheaper than the usual place because it's smaller."
     },
     {
       "speaker": "A",
-      "text": "Yes, there's a great noodle place two minutes away."
+      "text": "And it's closer than downtown, plus it has better reviews online."
     },
     {
       "speaker": "B",
-      "text": "Perfect, let's go!"
+      "text": "Sounds like a good choice, let's go."
     }
   ],
-  "note": "Switch! Student becomes A, teacher becomes B."
+  "note": "Switch! Student becomes A, teacher becomes B. Justify the choice with at least two reasons."
 }$json$::jsonb,
   true
 ),
 (
-  '20fc1e19-96a0-4d24-8b7b-f17ea7084c7d',
+  '9d357b59-1d73-4dd3-997d-d26ba135ee7b',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "Message thread: Shall we grab lunch today? Sure! What are you craving? I'm craving something spicy. There's a new Thai place nearby. Sounds perfect, let's meet there at 1pm!",
+  "text": "My friends and I wanted to eat out, so we compared two places. The noodle shop is cheaper than the burger place because the portions cost less. It's also closer than downtown, only a five-minute walk. Online, it has better reviews than the burger place too, with more people mentioning fresh ingredients. Because of these reasons, we decided the noodle shop was the better choice for tonight.",
   "questions": [
-    "What is the person craving?",
-    "What kind of place is nearby?",
-    "What time will they meet?"
+    "Why is the noodle shop cheaper?",
+    "Why is it more convenient?",
+    "What did the reviews say?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '20fc1e19-96a0-4d24-8b7b-f17ea7084c7d',
+  '9d357b59-1d73-4dd3-997d-d26ba135ee7b',
   8,
   'writing',
   null,
   null,
   $json${
   "prompts": [
-    "Shall we ___?",
-    "I'm craving ___.",
-    "There's a good place ___."
+    "___ is cheaper/closer than ___ because ___.",
+    "It has better reviews than ___ because ___.",
+    "We chose ___ because ___."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '20fc1e19-96a0-4d24-8b7b-f17ea7084c7d',
+  '9d357b59-1d73-4dd3-997d-d26ba135ee7b',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Suggest a place to eat",
-    "Say 'Shall we...?'",
-    "Respond to a food suggestion"
+    "Compare restaurant choices",
+    "Use comparatives with 'because'",
+    "Justify a decision with two or more reasons"
   ],
-  "challenge": "Suggest a place to eat with me!"
+  "challenge": "Compare two places to eat and explain your choice with reasons!"
 }$json$::jsonb,
   true
 );
@@ -205,13 +205,13 @@ values
 -- Lesson 2: Ordering Food
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '83f7247a-d1b2-47b5-b28a-3918f307e63a',
+  '555ab16a-cfc7-486e-a44c-af16464e788a',
   'Ordering Food',
   'A2',
   'teens',
   6,
   2,
-  'Order food politely using simple restaurant language.',
+  'Order food and compare menu options with reasons. [Combination tier]',
   25,
   9,
   true
@@ -220,7 +220,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '83f7247a-d1b2-47b5-b28a-3918f307e63a',
+  '555ab16a-cfc7-486e-a44c-af16464e788a',
   1,
   'title',
   null,
@@ -231,7 +231,7 @@ values
   true
 ),
 (
-  '83f7247a-d1b2-47b5-b28a-3918f307e63a',
+  '555ab16a-cfc7-486e-a44c-af16464e788a',
   2,
   'warmup',
   null,
@@ -239,15 +239,15 @@ values
   $json${
   "display": "🍽️",
   "questions": [
-    "How do you order food politely?",
-    "Do you eat in or take food to go?"
+    "Do you prefer something spicier or milder?",
+    "Do you choose the healthier option?"
   ],
   "title": "What's your take?"
 }$json$::jsonb,
   true
 ),
 (
-  '83f7247a-d1b2-47b5-b28a-3918f307e63a',
+  '555ab16a-cfc7-486e-a44c-af16464e788a',
   3,
   'vocabulary',
   null,
@@ -255,19 +255,19 @@ values
   $json${
   "words": [
     {
-      "word": "Order",
+      "word": "Spicier than",
       "bg": "#FAECE7"
     },
     {
-      "word": "Recommend",
+      "word": "Healthier option",
       "bg": "#E1F5EE"
     },
     {
-      "word": "Bill",
+      "word": "Recommend",
       "bg": "#EEEDFE"
     },
     {
-      "word": "To go",
+      "word": "Instead of",
       "bg": "#FAEEDA"
     }
   ],
@@ -277,27 +277,27 @@ values
   true
 ),
 (
-  '83f7247a-d1b2-47b5-b28a-3918f307e63a',
+  '555ab16a-cfc7-486e-a44c-af16464e788a',
   4,
   'phrases',
   null,
   null,
   $json${
   "teacher": [
-    "What would you like to order?",
-    "Would you like it to go?"
+    "Would you like something spicier?",
+    "Why do you recommend that dish?"
   ],
   "student": [
-    "I'd like a burger, please.",
-    "No, I'll eat here."
+    "Yes, spicier than usual, please.",
+    "I recommend it because it's healthier."
   ],
-  "note": "Practice ordering politely!",
+  "note": "Partial prompt: I'll have ___ instead of ___ because ___.",
   "title": "Practice the Conversation"
 }$json$::jsonb,
   true
 ),
 (
-  '83f7247a-d1b2-47b5-b28a-3918f307e63a',
+  '555ab16a-cfc7-486e-a44c-af16464e788a',
   5,
   'activity',
   null,
@@ -306,27 +306,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "I'd like to [order] a sandwich."
+      "text": "This dish is [spicier than] the other one."
     },
     {
       "speaker": "B",
-      "text": "What do you [recommend]?"
+      "text": "I'll choose the [healthier option]."
     },
     {
       "speaker": "A",
-      "text": "Can I have the [bill], please?"
+      "text": "I'll have soup [instead of] fries."
     }
   ],
   "blanks": [
-    "order",
-    "recommend",
-    "bill"
+    "spicier than",
+    "healthier option",
+    "instead of"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '83f7247a-d1b2-47b5-b28a-3918f307e63a',
+  '555ab16a-cfc7-486e-a44c-af16464e788a',
   6,
   'speaking',
   null,
@@ -335,83 +335,83 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "What would you like to order?"
+      "text": "What do you recommend from the menu?"
     },
     {
       "speaker": "B",
-      "text": "I'd like the chicken sandwich, please. What do you recommend?"
+      "text": "The grilled chicken is healthier than the fried one, and it's spicier too if you like that."
     },
     {
       "speaker": "A",
-      "text": "The pasta is great here. Would you like it to go?"
+      "text": "I'll have the soup instead of fries, because it's lighter."
     },
     {
       "speaker": "B",
-      "text": "No thanks, I'll eat here. Can I have the bill later?"
+      "text": "Good choice."
     }
   ],
-  "note": "Switch! Student becomes A, teacher becomes B."
+  "note": "Switch! Student becomes A, teacher becomes B. Recommend and explain why."
 }$json$::jsonb,
   true
 ),
 (
-  '83f7247a-d1b2-47b5-b28a-3918f307e63a',
+  '555ab16a-cfc7-486e-a44c-af16464e788a',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "At the café: Hi, what would you like to order? I'd like the veggie burger, please. Would you like fries with that? Yes, please. Anything to drink? Just water, thanks. Here's your bill whenever you're ready.",
+  "text": "At the café, the waiter asked what we wanted. My friend chose the grilled chicken instead of the fried version, because it's healthier and less oily. I asked if the curry was spicier than the soup, and the waiter said yes, so I ordered the curry because I like spicy food. We both agreed the healthier option didn't mean less tasty, it was actually better than we expected.",
   "questions": [
-    "What did the customer order?",
-    "Did they order fries?",
-    "What did they drink?"
+    "What did the friend choose instead of fried chicken, and why?",
+    "Was the curry spicier or milder than the soup?",
+    "What did they agree about healthy food?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '83f7247a-d1b2-47b5-b28a-3918f307e63a',
+  '555ab16a-cfc7-486e-a44c-af16464e788a',
   8,
   'writing',
   null,
   null,
   $json${
   "prompts": [
-    "I'd like to order ___.",
-    "Can I have ___, please?",
-    "I'll eat here / take it to go."
+    "I'll have ___ instead of ___ because ___.",
+    "___ is spicier/healthier than ___.",
+    "We agreed that ___."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '83f7247a-d1b2-47b5-b28a-3918f307e63a',
+  '555ab16a-cfc7-486e-a44c-af16464e788a',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Order food politely",
-    "Ask for a recommendation",
-    "Ask for the bill"
+    "Order food with a comparative reason",
+    "Use 'instead of' to make a choice",
+    "Recommend a healthier or spicier option"
   ],
-  "challenge": "Order a meal from me at a pretend restaurant!"
+  "challenge": "Order a meal from me and explain your choice using comparatives!"
 }$json$::jsonb,
   true
 );
 
--- Lesson 3: Best and Worst Meals
+-- Lesson 3: Eating Out: Better or Worse?
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  'b6043f6b-0e75-41e6-96b8-1d760b691a17',
-  'Best and Worst Meals',
+  '9dc45e45-803b-43db-883a-0c5b5bfb46b2',
+  'Eating Out: Better or Worse?',
   'A2',
   'teens',
   6,
   3,
-  'Compare meals and eating experiences using superlatives and comparatives.',
+  'Compare eating out and eating at home, past experience. [Combination tier]',
   25,
   9,
   true
@@ -420,7 +420,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  'b6043f6b-0e75-41e6-96b8-1d760b691a17',
+  '9dc45e45-803b-43db-883a-0c5b5bfb46b2',
   1,
   'title',
   null,
@@ -431,23 +431,23 @@ values
   true
 ),
 (
-  'b6043f6b-0e75-41e6-96b8-1d760b691a17',
+  '9dc45e45-803b-43db-883a-0c5b5bfb46b2',
   2,
   'warmup',
   null,
   null,
   $json${
-  "display": "🌶️",
+  "display": "🏠",
   "questions": [
-    "What is the tastiest meal you've had?",
-    "What was your worst food experience?"
+    "Was your last meal out better than eating at home?",
+    "Is eating out more convenient but less healthy?"
   ],
   "title": "What's your take?"
 }$json$::jsonb,
   true
 ),
 (
-  'b6043f6b-0e75-41e6-96b8-1d760b691a17',
+  '9dc45e45-803b-43db-883a-0c5b5bfb46b2',
   3,
   'vocabulary',
   null,
@@ -455,19 +455,19 @@ values
   $json${
   "words": [
     {
-      "word": "Tastiest",
+      "word": "More convenient",
       "bg": "#FAECE7"
     },
     {
-      "word": "Worst",
+      "word": "Less healthy",
       "bg": "#E1F5EE"
     },
     {
-      "word": "Spicier",
+      "word": "Last time",
       "bg": "#EEEDFE"
     },
     {
-      "word": "Fresher",
+      "word": "Worth the cost",
       "bg": "#FAEEDA"
     }
   ],
@@ -477,27 +477,27 @@ values
   true
 ),
 (
-  'b6043f6b-0e75-41e6-96b8-1d760b691a17',
+  '9dc45e45-803b-43db-883a-0c5b5bfb46b2',
   4,
   'phrases',
   null,
   null,
   $json${
   "teacher": [
-    "What is the tastiest meal you've had?",
-    "Was it spicier than usual?"
+    "Was eating out better than cooking last time?",
+    "Is it worth the cost?"
   ],
   "student": [
-    "The tastiest meal was my grandma's soup.",
-    "Yes, it was spicier than I expected."
+    "It was more convenient, but less healthy.",
+    "Yes, it was worth the cost."
   ],
-  "note": "Think of your best and worst food memories!",
+  "note": "Partial prompt: Last time, eating out was ___ than cooking because ___.",
   "title": "Practice the Conversation"
 }$json$::jsonb,
   true
 ),
 (
-  'b6043f6b-0e75-41e6-96b8-1d760b691a17',
+  '9dc45e45-803b-43db-883a-0c5b5bfb46b2',
   5,
   'activity',
   null,
@@ -506,27 +506,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "That was the [tastiest] meal I've ever had."
+      "text": "Eating out is [more convenient] than cooking."
     },
     {
       "speaker": "B",
-      "text": "This dish is [spicier] than the last one."
+      "text": "But it's usually [less healthy]."
     },
     {
       "speaker": "A",
-      "text": "That was honestly my [worst] meal ever."
+      "text": "[Last time], it was [worth the cost]."
     }
   ],
   "blanks": [
-    "tastiest",
-    "spicier",
-    "worst"
+    "more convenient",
+    "less healthy",
+    "worth the cost"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'b6043f6b-0e75-41e6-96b8-1d760b691a17',
+  '9dc45e45-803b-43db-883a-0c5b5bfb46b2',
   6,
   'speaking',
   null,
@@ -535,69 +535,69 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "What is the tastiest meal you've ever had?"
+      "text": "Was eating out last weekend better than cooking at home?"
     },
     {
       "speaker": "B",
-      "text": "My grandma's soup, definitely. It's fresher and tastier than any restaurant."
+      "text": "It was more convenient because I didn't have to clean up, but it was less healthy than my usual meals."
     },
     {
       "speaker": "A",
-      "text": "My worst meal was at a new place, it was too spicy for me!"
+      "text": "Was it worth the cost?"
     },
     {
       "speaker": "B",
-      "text": "That sounds like a rough experience!"
+      "text": "Yes, because it saved me time on a busy day."
     }
   ],
-  "note": "Switch! Student becomes A, teacher becomes B."
+  "note": "Switch! Student becomes A, teacher becomes B. Weigh both sides before deciding."
 }$json$::jsonb,
   true
 ),
 (
-  'b6043f6b-0e75-41e6-96b8-1d760b691a17',
+  '9dc45e45-803b-43db-883a-0c5b5bfb46b2',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "Two friends compare food memories. Zara says the tastiest meal she had was her mom's homemade pasta, fresher than any restaurant. Omar says his worst meal was way spicier than he expected and he couldn't finish it.",
+  "text": "Last weekend, I ate out instead of cooking at home. It was more convenient than making dinner myself, because I was exhausted after a long week. However, the meal was less healthy than what I usually eat, with more oil and sugar than I expected. Even so, I think it was worth the cost, because the time I saved let me rest properly. Next time, I might choose a healthier restaurant so I don't have to choose between convenience and health.",
   "questions": [
-    "What was Zara's tastiest meal?",
-    "Why does Zara say it was better than a restaurant?",
-    "What happened with Omar's meal?"
+    "Why was eating out more convenient?",
+    "Why was the meal less healthy?",
+    "Was it worth the cost, and why?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'b6043f6b-0e75-41e6-96b8-1d760b691a17',
+  '9dc45e45-803b-43db-883a-0c5b5bfb46b2',
   8,
   'writing',
   null,
   null,
   $json${
   "prompts": [
-    "The tastiest meal I've had was ___.",
-    "It was ___ than ___.",
-    "My worst food experience was ___."
+    "Last time, eating out was more convenient than cooking because ___.",
+    "But it was less healthy because ___.",
+    "It was/wasn't worth the cost because ___."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'b6043f6b-0e75-41e6-96b8-1d760b691a17',
+  '9dc45e45-803b-43db-883a-0c5b5bfb46b2',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Use superlatives: tastiest, worst",
-    "Use comparatives: spicier, fresher",
-    "Talk about food memories"
+    "Compare eating out and cooking",
+    "Weigh convenience against health",
+    "Justify whether something was worth it"
   ],
-  "challenge": "Tell me your best and worst food memories!"
+  "challenge": "Tell me about a time eating out was better or worse than cooking, and why!"
 }$json$::jsonb,
   true
 );
@@ -605,13 +605,13 @@ values
 -- Lesson 4: A Food Review Post
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  'ebb643b7-ee3a-4759-a2af-a4d6d3db522c',
+  'ad77bf7e-ac95-4ff0-9501-bfe83c69cf7f',
   'A Food Review Post',
   'A2',
   'teens',
   6,
   4,
-  'Write a short food review post.',
+  'Write a comparative food review with reasons. [Combination tier]',
   25,
   9,
   true
@@ -620,7 +620,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  'ebb643b7-ee3a-4759-a2af-a4d6d3db522c',
+  'ad77bf7e-ac95-4ff0-9501-bfe83c69cf7f',
   1,
   'title',
   null,
@@ -631,7 +631,7 @@ values
   true
 ),
 (
-  'ebb643b7-ee3a-4759-a2af-a4d6d3db522c',
+  'ad77bf7e-ac95-4ff0-9501-bfe83c69cf7f',
   2,
   'warmup',
   null,
@@ -639,15 +639,15 @@ values
   $json${
   "display": "📝",
   "questions": [
-    "Have you reviewed a restaurant before?",
-    "What makes a good food review?"
+    "Was a meal better than you expected?",
+    "Was the portion bigger than usual?"
   ],
   "title": "What's your take?"
 }$json$::jsonb,
   true
 ),
 (
-  'ebb643b7-ee3a-4759-a2af-a4d6d3db522c',
+  'ad77bf7e-ac95-4ff0-9501-bfe83c69cf7f',
   3,
   'vocabulary',
   null,
@@ -655,7 +655,7 @@ values
   $json${
   "words": [
     {
-      "word": "Delicious",
+      "word": "Better than expected",
       "bg": "#FAECE7"
     },
     {
@@ -663,11 +663,11 @@ values
       "bg": "#E1F5EE"
     },
     {
-      "word": "Portion",
+      "word": "Bigger portion",
       "bg": "#EEEDFE"
     },
     {
-      "word": "Atmosphere",
+      "word": "Compared to",
       "bg": "#FAEEDA"
     }
   ],
@@ -677,27 +677,27 @@ values
   true
 ),
 (
-  'ebb643b7-ee3a-4759-a2af-a4d6d3db522c',
+  'ad77bf7e-ac95-4ff0-9501-bfe83c69cf7f',
   4,
   'phrases',
   null,
   null,
   $json${
   "teacher": [
-    "Was the food delicious?",
-    "Was it overpriced?"
+    "Was the food better than you expected?",
+    "Compared to other places, how was it?"
   ],
   "student": [
-    "Yes, it was delicious.",
-    "A little overpriced, but worth it."
+    "Yes, much better than expected.",
+    "Compared to others, it was more expensive."
   ],
-  "note": "Think about a meal you'd review!",
+  "note": "Partial prompt: Compared to ___, this place was ___ because ___.",
   "title": "Practice the Conversation"
 }$json$::jsonb,
   true
 ),
 (
-  'ebb643b7-ee3a-4759-a2af-a4d6d3db522c',
+  'ad77bf7e-ac95-4ff0-9501-bfe83c69cf7f',
   5,
   'activity',
   null,
@@ -706,7 +706,7 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "The food was [delicious]."
+      "text": "The food was [better than expected]."
     },
     {
       "speaker": "B",
@@ -714,19 +714,19 @@ values
     },
     {
       "speaker": "A",
-      "text": "The [atmosphere] was really nice."
+      "text": "The portion was [bigger] than usual."
     }
   ],
   "blanks": [
-    "delicious",
+    "better than expected",
     "overpriced",
-    "atmosphere"
+    "bigger"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'ebb643b7-ee3a-4759-a2af-a4d6d3db522c',
+  'ad77bf7e-ac95-4ff0-9501-bfe83c69cf7f',
   6,
   'speaking',
   null,
@@ -735,69 +735,69 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "How was your meal at the new café?"
+      "text": "How was your meal, compared to what you expected?"
     },
     {
       "speaker": "B",
-      "text": "The food was delicious and the atmosphere was cozy."
+      "text": "It was better than expected, and the portion was bigger than most places."
     },
     {
       "speaker": "A",
-      "text": "Was it expensive?"
+      "text": "Was it overpriced compared to similar restaurants?"
     },
     {
       "speaker": "B",
-      "text": "A little overpriced, but the portion was big, so it was worth it."
+      "text": "A little, but the quality made it worth it."
     }
   ],
-  "note": "Switch! Student becomes A, teacher becomes B."
+  "note": "Switch! Student becomes A, teacher becomes B. Compare price, portion, and quality."
 }$json$::jsonb,
   true
 ),
 (
-  'ebb643b7-ee3a-4759-a2af-a4d6d3db522c',
+  'ad77bf7e-ac95-4ff0-9501-bfe83c69cf7f',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "My review of the new café: the food was delicious and the atmosphere was cozy and quiet. The portions were generous. It was a little overpriced, but I would still recommend it for a special occasion.",
+  "text": "My review of the new café: compared to what I expected, the food was much better, especially the pasta. The portion was bigger than most cafés I've tried, which made it feel worth the price. It was a little overpriced compared to similar places nearby, but the quality justified the cost for me. I'd recommend it over the older café down the street, because the atmosphere was also more relaxing.",
   "questions": [
-    "What did the reviewer think of the food?",
-    "What was the atmosphere like?",
-    "Would the reviewer recommend it?"
+    "How did the food compare to expectations?",
+    "How did the portion compare to other cafés?",
+    "Why does the writer recommend it over the other café?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'ebb643b7-ee3a-4759-a2af-a4d6d3db522c',
+  'ad77bf7e-ac95-4ff0-9501-bfe83c69cf7f',
   8,
   'writing',
   null,
   null,
   $json${
   "prompts": [
-    "My review of ___: the food was ___.",
-    "The atmosphere was ___.",
-    "I would/wouldn't recommend it because ___."
+    "Compared to what I expected, the food was ___.",
+    "The portion was bigger/smaller than ___.",
+    "I recommend it over ___ because ___."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'ebb643b7-ee3a-4759-a2af-a4d6d3db522c',
+  'ad77bf7e-ac95-4ff0-9501-bfe83c69cf7f',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Write a short food review",
-    "Describe food and atmosphere",
-    "Give a recommendation"
+    "Write a comparative food review",
+    "Compare price, portion, and quality",
+    "Recommend one place over another"
   ],
-  "challenge": "Write and read me a food review!"
+  "challenge": "Write a comparative review comparing two places you've eaten!"
 }$json$::jsonb,
   true
 );
@@ -805,13 +805,13 @@ values
 -- Lesson 5: Unit Review
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '67a88f45-3300-493f-9193-0aaed583d8d9',
+  '8db46d58-a4d0-4417-9e4d-736035bd52e0',
   'Unit Review',
   'A2',
   'teens',
   6,
   5,
-  'Review food suggestions, ordering, comparisons, and a food review.',
+  'Review restaurant comparisons, ordering, and food reviews. [Combination tier]',
   25,
   9,
   true
@@ -820,7 +820,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '67a88f45-3300-493f-9193-0aaed583d8d9',
+  '8db46d58-a4d0-4417-9e4d-736035bd52e0',
   1,
   'title',
   null,
@@ -831,7 +831,7 @@ values
   true
 ),
 (
-  '67a88f45-3300-493f-9193-0aaed583d8d9',
+  '8db46d58-a4d0-4417-9e4d-736035bd52e0',
   2,
   'warmup',
   null,
@@ -839,15 +839,15 @@ values
   $json${
   "display": "🍕",
   "questions": [
-    "Where do you like to eat?",
-    "What is the tastiest food you know?"
+    "Was your last meal cheaper or more expensive than usual?",
+    "Was it worth it?"
   ],
   "title": "What's your take?"
 }$json$::jsonb,
   true
 ),
 (
-  '67a88f45-3300-493f-9193-0aaed583d8d9',
+  '8db46d58-a4d0-4417-9e4d-736035bd52e0',
   3,
   'vocabulary',
   null,
@@ -855,19 +855,19 @@ values
   $json${
   "words": [
     {
-      "word": "Craving",
+      "word": "Cheaper than",
       "bg": "#FAECE7"
     },
     {
-      "word": "Order",
+      "word": "Healthier",
       "bg": "#E1F5EE"
     },
     {
-      "word": "Tastiest",
+      "word": "Worth it",
       "bg": "#EEEDFE"
     },
     {
-      "word": "Review",
+      "word": "Compared to",
       "bg": "#FAEEDA"
     }
   ],
@@ -877,27 +877,27 @@ values
   true
 ),
 (
-  '67a88f45-3300-493f-9193-0aaed583d8d9',
+  '8db46d58-a4d0-4417-9e4d-736035bd52e0',
   4,
   'phrases',
   null,
   null,
   $json${
   "teacher": [
-    "What are you craving?",
-    "What would you order?"
+    "How did your last meal compare to usual?",
+    "Was it worth it?"
   ],
   "student": [
-    "I'm craving pizza.",
-    "I'd order the pasta."
+    "It was cheaper but less healthy.",
+    "Yes, it was definitely worth it."
   ],
-  "note": "Use everything you learned this unit!",
+  "note": "Use comparatives with 'because' throughout.",
   "title": "Practice the Conversation"
 }$json$::jsonb,
   true
 ),
 (
-  '67a88f45-3300-493f-9193-0aaed583d8d9',
+  '8db46d58-a4d0-4417-9e4d-736035bd52e0',
   5,
   'activity',
   null,
@@ -906,27 +906,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "I'm [craving] something spicy."
+      "text": "This place is [cheaper than] the other one."
     },
     {
       "speaker": "B",
-      "text": "I'd like to [order] the noodles."
+      "text": "But it's [less healthy]."
     },
     {
       "speaker": "A",
-      "text": "That was the [tastiest] meal ever!"
+      "text": "Still, it's [worth it] for the taste."
     }
   ],
   "blanks": [
-    "craving",
-    "order",
-    "tastiest"
+    "cheaper than",
+    "less healthy",
+    "worth it"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '67a88f45-3300-493f-9193-0aaed583d8d9',
+  '8db46d58-a4d0-4417-9e4d-736035bd52e0',
   6,
   'speaking',
   null,
@@ -935,19 +935,19 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "Shall we eat out today? What are you craving?"
+      "text": "Compare your last two meals out."
     },
     {
       "speaker": "B",
-      "text": "I'm craving noodles. I'd like to order the spicy ones."
+      "text": "The noodle place was cheaper than the café, but less healthy, so it depends what I want."
     },
     {
       "speaker": "A",
-      "text": "That was the tastiest meal I've had in months!"
+      "text": "Was the café worth the extra cost?"
     },
     {
       "speaker": "B",
-      "text": "I should write a review about it."
+      "text": "Yes, because the portion was bigger and the reviews were better."
     }
   ],
   "note": "Switch! Student becomes A, teacher becomes B."
@@ -955,50 +955,49 @@ values
   true
 ),
 (
-  '67a88f45-3300-493f-9193-0aaed583d8d9',
+  '8db46d58-a4d0-4417-9e4d-736035bd52e0',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "Yesterday, my friend and I decided to eat out. I was craving something spicy, so we ordered noodles at a new place nearby. It was the tastiest meal I've had in months! The atmosphere was nice too. I wrote a review recommending it to everyone.",
+  "text": "I compared my last two meals out. The noodle place was cheaper than the café, but the food was less healthy, with more oil. The café was more expensive, but the portion was bigger and it had better reviews online. In the end, I think the café was worth it because the quality was better than expected, even though it cost more than the noodle place.",
   "questions": [
-    "What was the writer craving?",
-    "What did they order?",
-    "What did the writer do after the meal?"
+    "Which place was cheaper?",
+    "Which place had a bigger portion and better reviews?",
+    "Which place did the writer think was worth it, and why?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '67a88f45-3300-493f-9193-0aaed583d8d9',
+  '8db46d58-a4d0-4417-9e4d-736035bd52e0',
   8,
   'writing',
   null,
   null,
   $json${
   "prompts": [
-    "I was craving ___.",
-    "We ordered ___.",
-    "It was the tastiest/worst meal because ___."
+    "___ was cheaper than ___, but ___.",
+    "___ had a bigger portion and better reviews than ___.",
+    "I think ___ was worth it because ___."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '67a88f45-3300-493f-9193-0aaed583d8d9',
+  '8db46d58-a4d0-4417-9e4d-736035bd52e0',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Suggest a place to eat",
-    "Order food politely",
-    "Compare meals",
-    "Write a food review"
+    "Compare restaurant choices with reasons",
+    "Order food using comparatives",
+    "Write a comparative food review"
   ],
-  "challenge": "Tell me all about your favorite food experience!"
+  "challenge": "Tell me all about your favorite and least favorite places to eat, compared to each other!"
 }$json$::jsonb,
   true
 );

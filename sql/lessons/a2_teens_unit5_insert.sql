@@ -1,17 +1,17 @@
--- A2 Teens Unit 5: Media and Technology (5 lessons)
--- Generated from project_a2_teens_master_curriculum memory.
+-- A2 Teens Unit 5: Media and Technology (5 lessons) — TIERED (Combination)
+-- Regenerated per the Sentivo Intra-Level Progression Framework.
 -- Run this whole script in the Supabase SQL editor.
 
 -- Lesson 1: My Screen Time
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '884ef303-1400-4619-92a6-be7f7eab639c',
+  'a75f5bc6-ebbc-4745-8ab2-a2458e3e4e25',
   'My Screen Time',
   'A2',
   'teens',
   5,
   1,
-  'Describe screen time habits using frequency and time expressions.',
+  'Compare screen time habits using simple past + comparatives. [Combination tier: 2 combined targets, partial scaffolding]',
   25,
   9,
   true
@@ -20,7 +20,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '884ef303-1400-4619-92a6-be7f7eab639c',
+  'a75f5bc6-ebbc-4745-8ab2-a2458e3e4e25',
   1,
   'title',
   null,
@@ -31,7 +31,7 @@ values
   true
 ),
 (
-  '884ef303-1400-4619-92a6-be7f7eab639c',
+  'a75f5bc6-ebbc-4745-8ab2-a2458e3e4e25',
   2,
   'warmup',
   null,
@@ -39,15 +39,15 @@ values
   $json${
   "display": "📱",
   "questions": [
-    "How much screen time do you have a day?",
-    "Do you check notifications a lot?"
+    "Did you use your phone more or less than yesterday?",
+    "How much screen time did you have last week?"
   ],
   "title": "What's your take?"
 }$json$::jsonb,
   true
 ),
 (
-  '884ef303-1400-4619-92a6-be7f7eab639c',
+  'a75f5bc6-ebbc-4745-8ab2-a2458e3e4e25',
   3,
   'vocabulary',
   null,
@@ -55,7 +55,7 @@ values
   $json${
   "words": [
     {
-      "word": "Scroll",
+      "word": "Scrolled",
       "bg": "#FAECE7"
     },
     {
@@ -63,11 +63,11 @@ values
       "bg": "#E1F5EE"
     },
     {
-      "word": "Screen time",
+      "word": "More time",
       "bg": "#EEEDFE"
     },
     {
-      "word": "App",
+      "word": "Less time",
       "bg": "#FAEEDA"
     }
   ],
@@ -77,27 +77,27 @@ values
   true
 ),
 (
-  '884ef303-1400-4619-92a6-be7f7eab639c',
+  'a75f5bc6-ebbc-4745-8ab2-a2458e3e4e25',
   4,
   'phrases',
   null,
   null,
   $json${
   "teacher": [
-    "How much screen time do you have?",
-    "What app do you use most?"
+    "Did you spend more time online this week?",
+    "Was it more or less than last week?"
   ],
   "student": [
-    "I have about three hours a day.",
-    "I use a messaging app most."
+    "I spent more time than last week.",
+    "I scrolled less than usual."
   ],
-  "note": "Think about your real screen time habits!",
+  "note": "Partial prompt: This week I spent ___ time than last week because ___.",
   "title": "Practice the Conversation"
 }$json$::jsonb,
   true
 ),
 (
-  '884ef303-1400-4619-92a6-be7f7eab639c',
+  'a75f5bc6-ebbc-4745-8ab2-a2458e3e4e25',
   5,
   'activity',
   null,
@@ -106,27 +106,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "I [scroll] through videos every evening."
+      "text": "I [scrolled] more than last week."
     },
     {
       "speaker": "B",
-      "text": "My [screen time] is about three hours."
+      "text": "I checked [notifications] less than before."
     },
     {
       "speaker": "A",
-      "text": "I check [notifications] too often."
+      "text": "I spent [more time] gaming."
     }
   ],
   "blanks": [
-    "scroll",
-    "screen time",
-    "notifications"
+    "scrolled",
+    "notifications",
+    "more time"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '884ef303-1400-4619-92a6-be7f7eab639c',
+  'a75f5bc6-ebbc-4745-8ab2-a2458e3e4e25',
   6,
   'speaking',
   null,
@@ -135,69 +135,69 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "How much screen time do you have a day?"
+      "text": "Did you spend more or less time online this week?"
     },
     {
       "speaker": "B",
-      "text": "Probably three or four hours. I scroll a lot in the evening."
+      "text": "I scrolled more than last week because I was bored during the break."
     },
     {
       "speaker": "A",
-      "text": "I check notifications too much, even during class."
+      "text": "I spent less time than usual because I had more homework."
     },
     {
       "speaker": "B",
-      "text": "Same here, it's hard to stop!"
+      "text": "That makes sense."
     }
   ],
-  "note": "Switch! Student becomes A, teacher becomes B."
+  "note": "Switch! Student becomes A, teacher becomes B. Compare this week to last week."
 }$json$::jsonb,
   true
 ),
 (
-  '884ef303-1400-4619-92a6-be7f7eab639c',
+  'a75f5bc6-ebbc-4745-8ab2-a2458e3e4e25',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "A survey asked teens about screen time. Most said they spend three to five hours a day on their phones. Many scroll through videos before bed. Almost everyone checks notifications too often, even during homework.",
+  "text": "Last week, I spent less time on my phone than usual because I was busy with exams. This week was different. I scrolled more than last week and checked notifications constantly. I spent more time gaming than studying, which was worse for my focus. Next week, I want to spend less time online than this week.",
   "questions": [
-    "How many hours do most teens spend on their phones?",
-    "What do many teens do before bed?",
-    "When do teens check notifications, even?"
+    "Was last week's screen time more or less than usual, and why?",
+    "What changed this week?",
+    "What does the writer want to do next week?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '884ef303-1400-4619-92a6-be7f7eab639c',
+  'a75f5bc6-ebbc-4745-8ab2-a2458e3e4e25',
   8,
   'writing',
   null,
   null,
   $json${
   "prompts": [
-    "My screen time is about ___ hours.",
-    "I usually use my phone to ___.",
-    "I check notifications ___."
+    "This week, I spent ___ time online than last week because ___.",
+    "I scrolled ___ than usual.",
+    "Next week, I want to spend ___ time than this week."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '884ef303-1400-4619-92a6-be7f7eab639c',
+  'a75f5bc6-ebbc-4745-8ab2-a2458e3e4e25',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Describe screen time habits",
-    "Use frequency words",
-    "Talk about phone use"
+    "Compare screen time between two weeks",
+    "Use 'more/less time than'",
+    "Give a reason with because"
   ],
-  "challenge": "Tell me about your real screen time habits!"
+  "challenge": "Compare your screen time this week to last week, and explain why!"
 }$json$::jsonb,
   true
 );
@@ -205,13 +205,13 @@ values
 -- Lesson 2: Good or Bad Habit?
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  'bd319c30-8b97-4f4b-b2b2-c4d81e7c9471',
+  'cc014df8-46a1-4cd8-aa71-6aa4dd2f5808',
   'Good or Bad Habit?',
   'A2',
   'teens',
   5,
   2,
-  'Give opinions about tech habits using because.',
+  'Compare tech habits and justify opinions. [Combination tier]',
   25,
   9,
   true
@@ -220,7 +220,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  'bd319c30-8b97-4f4b-b2b2-c4d81e7c9471',
+  'cc014df8-46a1-4cd8-aa71-6aa4dd2f5808',
   1,
   'title',
   null,
@@ -231,7 +231,7 @@ values
   true
 ),
 (
-  'bd319c30-8b97-4f4b-b2b2-c4d81e7c9471',
+  'cc014df8-46a1-4cd8-aa71-6aa4dd2f5808',
   2,
   'warmup',
   null,
@@ -239,15 +239,15 @@ values
   $json${
   "display": "⚖️",
   "questions": [
-    "Is social media a good or bad habit for you?",
-    "Do you think phones are distracting?"
+    "Is social media more helpful or more distracting for you?",
+    "Was your old phone habit healthier than now?"
   ],
   "title": "What's your take?"
 }$json$::jsonb,
   true
 ),
 (
-  'bd319c30-8b97-4f4b-b2b2-c4d81e7c9471',
+  'cc014df8-46a1-4cd8-aa71-6aa4dd2f5808',
   3,
   'vocabulary',
   null,
@@ -263,11 +263,11 @@ values
       "bg": "#E1F5EE"
     },
     {
-      "word": "Addictive",
+      "word": "More addictive",
       "bg": "#EEEDFE"
     },
     {
-      "word": "Balance",
+      "word": "Healthier",
       "bg": "#FAEEDA"
     }
   ],
@@ -277,27 +277,27 @@ values
   true
 ),
 (
-  'bd319c30-8b97-4f4b-b2b2-c4d81e7c9471',
+  'cc014df8-46a1-4cd8-aa71-6aa4dd2f5808',
   4,
   'phrases',
   null,
   null,
   $json${
   "teacher": [
-    "Is social media good or bad for you?",
-    "Is it distracting?"
+    "Is social media more helpful or more distracting?",
+    "Was it healthier before?"
   ],
   "student": [
-    "I think it's both good and bad.",
-    "Yes, it can be distracting during homework."
+    "It's more distracting than helpful for me.",
+    "My old habits were healthier than now."
   ],
-  "note": "Think about the good and bad sides of technology!",
+  "note": "Partial prompt: ___ is more ___ than ___ because ___.",
   "title": "Practice the Conversation"
 }$json$::jsonb,
   true
 ),
 (
-  'bd319c30-8b97-4f4b-b2b2-c4d81e7c9471',
+  'cc014df8-46a1-4cd8-aa71-6aa4dd2f5808',
   5,
   'activity',
   null,
@@ -306,27 +306,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "Phones can be [distracting] during class."
+      "text": "Social media is [more addictive] than useful for me."
     },
     {
       "speaker": "B",
-      "text": "But apps can also be [helpful] for studying."
+      "text": "Learning apps are more [helpful] than games."
     },
     {
       "speaker": "A",
-      "text": "Social media can be [addictive]."
+      "text": "My old routine was [healthier]."
     }
   ],
   "blanks": [
-    "distracting",
+    "more addictive",
     "helpful",
-    "addictive"
+    "healthier"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'bd319c30-8b97-4f4b-b2b2-c4d81e7c9471',
+  'cc014df8-46a1-4cd8-aa71-6aa4dd2f5808',
   6,
   'speaking',
   null,
@@ -335,69 +335,69 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "Do you think social media is a good or bad habit?"
+      "text": "Do you think social media is more helpful or more distracting?"
     },
     {
       "speaker": "B",
-      "text": "I think it's both. It's helpful for talking to friends, but it can be addictive."
+      "text": "For me, it's more distracting than helpful because I lose focus easily."
     },
     {
       "speaker": "A",
-      "text": "I try to find a balance between screen time and other things."
+      "text": "I think my habits were healthier last year than now, because I read more books."
     },
     {
       "speaker": "B",
-      "text": "That's a healthy way to think about it."
+      "text": "I feel the same way about gaming."
     }
   ],
-  "note": "Switch! Student becomes A, teacher becomes B."
+  "note": "Switch! Student becomes A, teacher becomes B. Give reasons, not just opinions."
 }$json$::jsonb,
   true
 ),
 (
-  'bd319c30-8b97-4f4b-b2b2-c4d81e7c9471',
+  'cc014df8-46a1-4cd8-aa71-6aa4dd2f5808',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "Technology has good and bad sides. It's helpful for learning and staying in touch with friends. But it can also be distracting and even addictive. Many teens are learning to find a balance between screens and real life.",
+  "text": "Technology has two sides. For some teens, apps are more helpful than distracting because they support learning and staying in touch with friends. For others, social media is more addictive than useful, pulling attention away from homework and sleep. Last year, many teens said their habits were healthier than this year, with less scrolling and more outdoor time. The difference usually comes down to how much control a person has over their own screen time.",
   "questions": [
-    "What is one good side of technology?",
-    "What is one bad side?",
-    "What are teens learning to find?"
+    "What is one way technology is helpful?",
+    "What is one way it can be distracting?",
+    "How did habits compare between last year and this year?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'bd319c30-8b97-4f4b-b2b2-c4d81e7c9471',
+  'cc014df8-46a1-4cd8-aa71-6aa4dd2f5808',
   8,
   'writing',
   null,
   null,
   $json${
   "prompts": [
-    "Technology is helpful because ___.",
-    "It can be distracting when ___.",
-    "I try to find balance by ___."
+    "For me, ___ is more helpful/distracting than ___ because ___.",
+    "My habits were healthier/less healthy last year than now because ___.",
+    "I think the difference comes from ___."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'bd319c30-8b97-4f4b-b2b2-c4d81e7c9471',
+  'cc014df8-46a1-4cd8-aa71-6aa4dd2f5808',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Give opinions about tech habits",
-    "Use 'distracting', 'helpful', 'addictive'",
-    "Talk about balance"
+    "Compare helpful and distracting tech habits",
+    "Use comparatives with 'because'",
+    "Justify an opinion about technology"
   ],
-  "challenge": "Tell me your honest opinion about social media!"
+  "challenge": "Tell me if technology is more helpful or more distracting for you, and why!"
 }$json$::jsonb,
   true
 );
@@ -405,13 +405,13 @@ values
 -- Lesson 3: A Tech Problem
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  'c84a99a8-b014-4154-a228-5f03613afacd',
+  '11d5e6df-04c2-4da1-8093-048bb8f1046e',
   'A Tech Problem',
   'A2',
   'teens',
   5,
   3,
-  'Describe a past tech problem using simple past.',
+  'Tell a past tech-problem story with comparison and connectors. [Combination tier]',
   25,
   9,
   true
@@ -420,7 +420,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  'c84a99a8-b014-4154-a228-5f03613afacd',
+  '11d5e6df-04c2-4da1-8093-048bb8f1046e',
   1,
   'title',
   null,
@@ -431,7 +431,7 @@ values
   true
 ),
 (
-  'c84a99a8-b014-4154-a228-5f03613afacd',
+  '11d5e6df-04c2-4da1-8093-048bb8f1046e',
   2,
   'warmup',
   null,
@@ -439,15 +439,15 @@ values
   $json${
   "display": "💻",
   "questions": [
-    "Have you ever had a tech problem?",
-    "Did you lose important files?"
+    "Have you had a tech problem that was worse than expected?",
+    "Did you find a solution that was better than before?"
   ],
   "title": "What's your take?"
 }$json$::jsonb,
   true
 ),
 (
-  'c84a99a8-b014-4154-a228-5f03613afacd',
+  '11d5e6df-04c2-4da1-8093-048bb8f1046e',
   3,
   'vocabulary',
   null,
@@ -459,15 +459,15 @@ values
       "bg": "#FAECE7"
     },
     {
-      "word": "Lost",
+      "word": "Worse than",
       "bg": "#E1F5EE"
     },
     {
-      "word": "Fixed",
+      "word": "Backed up",
       "bg": "#EEEDFE"
     },
     {
-      "word": "Backed up",
+      "word": "Better than",
       "bg": "#FAEEDA"
     }
   ],
@@ -477,27 +477,27 @@ values
   true
 ),
 (
-  'c84a99a8-b014-4154-a228-5f03613afacd',
+  '11d5e6df-04c2-4da1-8093-048bb8f1046e',
   4,
   'phrases',
   null,
   null,
   $json${
   "teacher": [
-    "What tech problem did you have?",
-    "How did you fix it?"
+    "Was the problem worse than you expected?",
+    "Was your solution better than before?"
   ],
   "student": [
-    "My phone crashed last week.",
-    "I fixed it by restarting it."
+    "It was worse than I expected.",
+    "My new backup system is better than before."
   ],
-  "note": "Think about a tech problem you had!",
+  "note": "Partial prompt: My problem was ___ than expected, but ___ was better than before.",
   "title": "Practice the Conversation"
 }$json$::jsonb,
   true
 ),
 (
-  'c84a99a8-b014-4154-a228-5f03613afacd',
+  '11d5e6df-04c2-4da1-8093-048bb8f1046e',
   5,
   'activity',
   null,
@@ -506,27 +506,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "My laptop [crashed] during my homework."
+      "text": "My laptop [crashed], and it was [worse than] I thought."
     },
     {
       "speaker": "B",
-      "text": "I [lost] some of my photos."
+      "text": "I lost photos, but I [backed up] the rest."
     },
     {
       "speaker": "A",
-      "text": "I finally [fixed] it with my dad's help."
+      "text": "My new system is [better than] the old one."
     }
   ],
   "blanks": [
     "crashed",
-    "lost",
-    "fixed"
+    "worse than",
+    "better than"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'c84a99a8-b014-4154-a228-5f03613afacd',
+  '11d5e6df-04c2-4da1-8093-048bb8f1046e',
   6,
   'speaking',
   null,
@@ -535,69 +535,69 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "What tech problem did you have recently?"
+      "text": "Tell me about a tech problem you had."
     },
     {
       "speaker": "B",
-      "text": "My phone crashed and I lost some photos. It was awful."
+      "text": "Last month, my laptop crashed and it was worse than I expected because I lost two projects."
     },
     {
       "speaker": "A",
-      "text": "I fixed my laptop by restarting it. Now I always back up my files."
+      "text": "I backed up my files afterward, and now my system is better than before."
     },
     {
       "speaker": "B",
-      "text": "That's a good habit to learn!"
+      "text": "That's a smart change."
     }
   ],
-  "note": "Switch! Student becomes A, teacher becomes B."
+  "note": "Switch! Student becomes A, teacher becomes B. Sequence the story and compare before/after."
 }$json$::jsonb,
   true
 ),
 (
-  'c84a99a8-b014-4154-a228-5f03613afacd',
+  '11d5e6df-04c2-4da1-8093-048bb8f1046e',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "Last week, my laptop crashed right before I finished my project. I lost two hours of work! I was upset, but I fixed it by restarting and reopening the file. Now I always back up my work just in case.",
+  "text": "Last month, my laptop crashed right before I finished an important project. The situation was worse than I expected, because I hadn't saved my work in days. I felt frustrated, but I asked a friend for help and we recovered most of the file. After that, I started backing up my work every week, and my new habit is much better than my old one. Now I feel more relaxed because I know my files are safe.",
   "questions": [
     "What happened to the laptop?",
-    "What did the writer lose?",
-    "What does the writer do now?"
+    "Why was the situation worse than expected?",
+    "How is the writer's new habit better than the old one?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'c84a99a8-b014-4154-a228-5f03613afacd',
+  '11d5e6df-04c2-4da1-8093-048bb8f1046e',
   8,
   'writing',
   null,
   null,
   $json${
   "prompts": [
-    "My ___ crashed/broke.",
-    "I lost ___.",
-    "I fixed it by ___."
+    "Last month, my ___ crashed/broke, and it was ___ than I expected.",
+    "After that, I ___.",
+    "Now my habit is better than before because ___."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'c84a99a8-b014-4154-a228-5f03613afacd',
+  '11d5e6df-04c2-4da1-8093-048bb8f1046e',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Use past verbs: crashed, lost, fixed, backed up",
-    "Tell a tech problem story",
-    "Say what I learned"
+    "Tell a tech problem story with sequencing",
+    "Use 'worse than' and 'better than'",
+    "Compare a past habit to a new one"
   ],
-  "challenge": "Tell me about a tech problem you had and how you solved it!"
+  "challenge": "Tell me about a tech problem, what changed, and why the new way is better!"
 }$json$::jsonb,
   true
 );
@@ -605,13 +605,13 @@ values
 -- Lesson 4: A Short Review
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  'c7f33bb6-8255-475f-bcd7-c59d622d89e7',
+  '03beae92-e450-4405-8d89-b14ed44d01e4',
   'A Short Review',
   'A2',
   'teens',
   5,
   4,
-  'Write a short review of an app, game, or show.',
+  'Write a comparative review of an app or show. [Combination tier]',
   25,
   9,
   true
@@ -620,7 +620,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  'c7f33bb6-8255-475f-bcd7-c59d622d89e7',
+  '03beae92-e450-4405-8d89-b14ed44d01e4',
   1,
   'title',
   null,
@@ -631,7 +631,7 @@ values
   true
 ),
 (
-  'c7f33bb6-8255-475f-bcd7-c59d622d89e7',
+  '03beae92-e450-4405-8d89-b14ed44d01e4',
   2,
   'warmup',
   null,
@@ -639,15 +639,15 @@ values
   $json${
   "display": "⭐",
   "questions": [
-    "Would you recommend your favorite app?",
-    "What show do you recommend?"
+    "Is your favorite app more useful than others you've tried?",
+    "Is a popular show overrated in your opinion?"
   ],
   "title": "What's your take?"
 }$json$::jsonb,
   true
 ),
 (
-  'c7f33bb6-8255-475f-bcd7-c59d622d89e7',
+  '03beae92-e450-4405-8d89-b14ed44d01e4',
   3,
   'vocabulary',
   null,
@@ -659,15 +659,15 @@ values
       "bg": "#FAECE7"
     },
     {
-      "word": "Rating",
+      "word": "More useful",
       "bg": "#E1F5EE"
     },
     {
-      "word": "Worth it",
+      "word": "Overrated",
       "bg": "#EEEDFE"
     },
     {
-      "word": "Overrated",
+      "word": "Worth it",
       "bg": "#FAEEDA"
     }
   ],
@@ -677,27 +677,27 @@ values
   true
 ),
 (
-  'c7f33bb6-8255-475f-bcd7-c59d622d89e7',
+  '03beae92-e450-4405-8d89-b14ed44d01e4',
   4,
   'phrases',
   null,
   null,
   $json${
   "teacher": [
-    "Would you recommend this app?",
-    "What rating would you give it?"
+    "Is this app more useful than others?",
+    "Is it worth it?"
   ],
   "student": [
-    "Yes, I would recommend it.",
-    "I would give it a five out of five."
+    "Yes, it's more useful than most apps.",
+    "Yes, it's totally worth it."
   ],
-  "note": "Think of an app, game, or show you'd review!",
+  "note": "Partial prompt: ___ is more ___ than ___ because ___.",
   "title": "Practice the Conversation"
 }$json$::jsonb,
   true
 ),
 (
-  'c7f33bb6-8255-475f-bcd7-c59d622d89e7',
+  '03beae92-e450-4405-8d89-b14ed44d01e4',
   5,
   'activity',
   null,
@@ -706,11 +706,11 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "I [recommend] this app to everyone."
+      "text": "This app is [more useful] than the last one I tried."
     },
     {
       "speaker": "B",
-      "text": "My [rating] is four out of five stars."
+      "text": "I think that show is [overrated]."
     },
     {
       "speaker": "A",
@@ -718,15 +718,15 @@ values
     }
   ],
   "blanks": [
-    "recommend",
-    "rating",
+    "more useful",
+    "overrated",
     "worth it"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'c7f33bb6-8255-475f-bcd7-c59d622d89e7',
+  '03beae92-e450-4405-8d89-b14ed44d01e4',
   6,
   'speaking',
   null,
@@ -739,65 +739,65 @@ values
     },
     {
       "speaker": "B",
-      "text": "Yes! I'd give it a rating of five out of five. It's totally worth it."
+      "text": "Yes, it's more useful than any app I've tried because it's simple and fast."
     },
     {
       "speaker": "A",
-      "text": "I think that new game is a bit overrated, honestly."
+      "text": "I think that new game is a bit overrated, honestly, it's not better than the older version."
     },
     {
       "speaker": "B",
-      "text": "Interesting, I'll try it myself and see."
+      "text": "Interesting, I'll compare them myself."
     }
   ],
-  "note": "Switch! Student becomes A, teacher becomes B."
+  "note": "Switch! Student becomes A, teacher becomes B. Compare with a specific alternative."
 }$json$::jsonb,
   true
 ),
 (
-  'c7f33bb6-8255-475f-bcd7-c59d622d89e7',
+  '03beae92-e450-4405-8d89-b14ed44d01e4',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "My review: this app is amazing for learning new languages. Rating: five out of five stars. I recommend it because it's fun and easy to use. It's totally worth it. Some people say similar apps are overrated, but I disagree.",
+  "text": "My review this week: this language app is more useful than any other app I've tried, because the lessons are short and the design is simple. I compared it to two other popular apps, and both felt more complicated and less fun. Some people say learning apps are overrated compared to real practice, but I disagree, because this one actually helped me remember new words better than before. I recommend it if you want something better than a textbook.",
   "questions": [
-    "What is the review about?",
-    "What rating did the writer give?",
-    "Why does the writer recommend it?"
+    "What is the app being reviewed?",
+    "How does it compare to other apps the writer tried?",
+    "Why does the writer disagree that learning apps are overrated?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'c7f33bb6-8255-475f-bcd7-c59d622d89e7',
+  '03beae92-e450-4405-8d89-b14ed44d01e4',
   8,
   'writing',
   null,
   null,
   $json${
   "prompts": [
-    "My review of ___: ___.",
-    "Rating: ___ out of five.",
-    "I recommend it because ___."
+    "___ is more useful than ___ because ___.",
+    "Compared to ___, I think ___ is better because ___.",
+    "I recommend it because it's better than ___."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'c7f33bb6-8255-475f-bcd7-c59d622d89e7',
+  '03beae92-e450-4405-8d89-b14ed44d01e4',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Write a short review",
-    "Give a rating",
-    "Recommend something with a reason"
+    "Write a comparative review",
+    "Use 'more ___ than' with a reason",
+    "Compare something to a specific alternative"
   ],
-  "challenge": "Write and read me a review of your favorite app or show!"
+  "challenge": "Write a short comparative review of your favorite app or show!"
 }$json$::jsonb,
   true
 );
@@ -805,13 +805,13 @@ values
 -- Lesson 5: Unit Review
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '212d8108-057b-4f1d-8e52-7092fa91eeca',
+  '45f4444a-3614-4448-b93d-262c41c51350',
   'Unit Review',
   'A2',
   'teens',
   5,
   5,
-  'Review screen time, tech opinions, a tech problem, and a review.',
+  'Review screen time, tech opinions, a tech problem, and a comparative review. [Combination tier]',
   25,
   9,
   true
@@ -820,7 +820,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '212d8108-057b-4f1d-8e52-7092fa91eeca',
+  '45f4444a-3614-4448-b93d-262c41c51350',
   1,
   'title',
   null,
@@ -831,7 +831,7 @@ values
   true
 ),
 (
-  '212d8108-057b-4f1d-8e52-7092fa91eeca',
+  '45f4444a-3614-4448-b93d-262c41c51350',
   2,
   'warmup',
   null,
@@ -839,15 +839,15 @@ values
   $json${
   "display": "🖥️",
   "questions": [
-    "How is your screen time?",
-    "What tech problem have you had?"
+    "Was your screen time this month more or less than last month?",
+    "Would you recommend your favorite app?"
   ],
   "title": "What's your take?"
 }$json$::jsonb,
   true
 ),
 (
-  '212d8108-057b-4f1d-8e52-7092fa91eeca',
+  '45f4444a-3614-4448-b93d-262c41c51350',
   3,
   'vocabulary',
   null,
@@ -859,11 +859,11 @@ values
       "bg": "#FAECE7"
     },
     {
-      "word": "Distracting",
+      "word": "More/less than",
       "bg": "#E1F5EE"
     },
     {
-      "word": "Crashed",
+      "word": "Worse than",
       "bg": "#EEEDFE"
     },
     {
@@ -877,27 +877,27 @@ values
   true
 ),
 (
-  '212d8108-057b-4f1d-8e52-7092fa91eeca',
+  '45f4444a-3614-4448-b93d-262c41c51350',
   4,
   'phrases',
   null,
   null,
   $json${
   "teacher": [
-    "How much screen time do you have?",
-    "What would you recommend?"
+    "How does your screen time compare to before?",
+    "What would you recommend, and why?"
   ],
   "student": [
-    "I have about three hours a day.",
-    "I recommend this app because it's helpful."
+    "It's more than before because of the holidays.",
+    "I recommend it because it's more useful than others."
   ],
-  "note": "Use everything you learned this unit!",
+  "note": "Use comparatives and 'because' throughout this review.",
   "title": "Practice the Conversation"
 }$json$::jsonb,
   true
 ),
 (
-  '212d8108-057b-4f1d-8e52-7092fa91eeca',
+  '45f4444a-3614-4448-b93d-262c41c51350',
   5,
   'activity',
   null,
@@ -906,27 +906,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "My [screen time] is about four hours."
+      "text": "My screen time is [more] than last month."
     },
     {
       "speaker": "B",
-      "text": "Phones can be [distracting] sometimes."
+      "text": "This app is [more useful] than my old one."
     },
     {
       "speaker": "A",
-      "text": "My phone [crashed] last week."
+      "text": "My old laptop crashed, but the new one is [better than] it."
     }
   ],
   "blanks": [
-    "screen time",
-    "distracting",
-    "crashed"
+    "more",
+    "more useful",
+    "better than"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '212d8108-057b-4f1d-8e52-7092fa91eeca',
+  '45f4444a-3614-4448-b93d-262c41c51350',
   6,
   'speaking',
   null,
@@ -935,19 +935,19 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "Let's talk about technology. How is your screen time?"
+      "text": "Compare your tech life this month to last month."
     },
     {
       "speaker": "B",
-      "text": "About three hours a day. It can be distracting, but also helpful."
+      "text": "My screen time is more than last month because I've been gaming a lot. But I also got a better laptop."
     },
     {
       "speaker": "A",
-      "text": "My phone crashed last month and I lost some photos!"
+      "text": "I'd recommend this new app, it's more useful than the last one and less distracting."
     },
     {
       "speaker": "B",
-      "text": "I recommend backing up your files regularly."
+      "text": "I'll compare it to mine!"
     }
   ],
   "note": "Switch! Student becomes A, teacher becomes B."
@@ -955,50 +955,49 @@ values
   true
 ),
 (
-  '212d8108-057b-4f1d-8e52-7092fa91eeca',
+  '45f4444a-3614-4448-b93d-262c41c51350',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "My screen time is about four hours a day. It can be distracting, but it's also helpful for school and staying in touch with friends. Last month, my phone crashed and I lost some files. Now I back everything up. I recommend doing the same!",
+  "text": "This month, my screen time was more than last month because of the school holidays. I scrolled more and gamed more, which was worse for my sleep. But not everything was negative: my old laptop crashed last month, and my new one is much better than the old one. I'd recommend backing up your files, because it's more useful than you think until something goes wrong. Overall, I want next month's screen time to be less than this month's.",
   "questions": [
-    "What is the writer's screen time?",
-    "What happened last month?",
+    "How did this month's screen time compare to last month?",
+    "What tech problem happened, and how was it resolved?",
     "What does the writer recommend?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '212d8108-057b-4f1d-8e52-7092fa91eeca',
+  '45f4444a-3614-4448-b93d-262c41c51350',
   8,
   'writing',
   null,
   null,
   $json${
   "prompts": [
-    "My screen time is ___.",
-    "Technology is good/bad because ___.",
-    "I recommend ___."
+    "This month, my screen time was ___ than last month because ___.",
+    "My tech problem was ___, but now ___.",
+    "I recommend ___ because it's more ___ than ___."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '212d8108-057b-4f1d-8e52-7092fa91eeca',
+  '45f4444a-3614-4448-b93d-262c41c51350',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Talk about screen time",
-    "Give tech opinions",
-    "Tell a tech problem story",
-    "Write a review"
+    "Compare screen time across time periods",
+    "Tell a tech problem story with comparison",
+    "Write a comparative recommendation"
   ],
-  "challenge": "Tell me all about your relationship with technology!"
+  "challenge": "Tell me all about your tech life this month compared to last month!"
 }$json$::jsonb,
   true
 );

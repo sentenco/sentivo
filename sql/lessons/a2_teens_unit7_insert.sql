@@ -1,17 +1,17 @@
--- A2 Teens Unit 7: Town Life and Getting Around (5 lessons)
--- Generated from project_a2_teens_master_curriculum memory.
+-- A2 Teens Unit 7: Town Life and Getting Around (5 lessons) — TIERED (Combination)
+-- Regenerated per the Sentivo Intra-Level Progression Framework.
 -- Run this whole script in the Supabase SQL editor.
 
 -- Lesson 1: Places Teens Go
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  'c6abdb91-c9e1-422e-aa0e-1c98b6376ac0',
+  'fba12093-ccc1-45ac-9de0-9324d0e86dfb',
   'Places Teens Go',
   'A2',
   'teens',
   7,
   1,
-  'Name places teens go and what they do there.',
+  'Describe places using past experience and connectors. [Combination tier]',
   25,
   9,
   true
@@ -20,7 +20,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  'c6abdb91-c9e1-422e-aa0e-1c98b6376ac0',
+  'fba12093-ccc1-45ac-9de0-9324d0e86dfb',
   1,
   'title',
   null,
@@ -31,7 +31,7 @@ values
   true
 ),
 (
-  'c6abdb91-c9e1-422e-aa0e-1c98b6376ac0',
+  'fba12093-ccc1-45ac-9de0-9324d0e86dfb',
   2,
   'warmup',
   null,
@@ -39,15 +39,15 @@ values
   $json${
   "display": "🏬",
   "questions": [
-    "Where do you go with friends after school?",
-    "Do you like the mall or the skate park?"
+    "Where did you go last weekend, and why?",
+    "Did you enjoy it but wish it was different?"
   ],
   "title": "What's your take?"
 }$json$::jsonb,
   true
 ),
 (
-  'c6abdb91-c9e1-422e-aa0e-1c98b6376ac0',
+  'fba12093-ccc1-45ac-9de0-9324d0e86dfb',
   3,
   'vocabulary',
   null,
@@ -55,19 +55,19 @@ values
   $json${
   "words": [
     {
-      "word": "Mall",
+      "word": "Went to",
       "bg": "#FAECE7"
     },
     {
-      "word": "Arcade",
+      "word": "And",
       "bg": "#E1F5EE"
     },
     {
-      "word": "Skate park",
+      "word": "But",
       "bg": "#EEEDFE"
     },
     {
-      "word": "Café",
+      "word": "Because",
       "bg": "#FAEEDA"
     }
   ],
@@ -77,27 +77,27 @@ values
   true
 ),
 (
-  'c6abdb91-c9e1-422e-aa0e-1c98b6376ac0',
+  'fba12093-ccc1-45ac-9de0-9324d0e86dfb',
   4,
   'phrases',
   null,
   null,
   $json${
   "teacher": [
-    "Where do you usually go with friends?",
-    "What do you do at the mall?"
+    "Where did you go, and why did you choose it?",
+    "Did you enjoy it, but wish something was different?"
   ],
   "student": [
-    "We usually go to the mall.",
-    "We shop and get food."
+    "I went to the mall because it was raining.",
+    "I liked it, but it was crowded."
   ],
-  "note": "Think about places you go with friends!",
+  "note": "Partial prompt: I went to ___ and ___, but ___.",
   "title": "Practice the Conversation"
 }$json$::jsonb,
   true
 ),
 (
-  'c6abdb91-c9e1-422e-aa0e-1c98b6376ac0',
+  'fba12093-ccc1-45ac-9de0-9324d0e86dfb',
   5,
   'activity',
   null,
@@ -106,27 +106,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "We usually go to the [mall] after school."
+      "text": "I [went to] the skate park [and] met friends there."
     },
     {
       "speaker": "B",
-      "text": "I love the [arcade] on weekends."
+      "text": "I liked it, [but] it was very hot."
     },
     {
       "speaker": "A",
-      "text": "My friends skate at the [skate park]."
+      "text": "I went [because] my friend invited me."
     }
   ],
   "blanks": [
-    "mall",
-    "arcade",
-    "skate park"
+    "went to",
+    "and",
+    "but"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'c6abdb91-c9e1-422e-aa0e-1c98b6376ac0',
+  'fba12093-ccc1-45ac-9de0-9324d0e86dfb',
   6,
   'speaking',
   null,
@@ -135,69 +135,69 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "Where do you usually go with friends?"
+      "text": "Where did you go with friends recently, and why?"
     },
     {
       "speaker": "B",
-      "text": "We usually go to the café or the mall. What about you?"
+      "text": "I went to the café and studied there because it's quiet."
     },
     {
       "speaker": "A",
-      "text": "I like the arcade and sometimes the skate park."
+      "text": "I went to the arcade too, but it was too noisy for studying."
     },
     {
       "speaker": "B",
-      "text": "That sounds fun!"
+      "text": "That makes sense!"
     }
   ],
-  "note": "Switch! Student becomes A, teacher becomes B."
+  "note": "Switch! Student becomes A, teacher becomes B. Connect two ideas with and/but/because."
 }$json$::jsonb,
   true
 ),
 (
-  'c6abdb91-c9e1-422e-aa0e-1c98b6376ac0',
+  'fba12093-ccc1-45ac-9de0-9324d0e86dfb',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "Four teens share where they hang out. Sam goes to the skate park every weekend. Mia loves the café near school for studying. Leo plays games at the arcade. Ana likes shopping at the mall with friends.",
+  "text": "Last Saturday, four friends went to different places in town. Sam went to the skate park and practiced tricks all afternoon, because the weather was perfect. Mia went to the café and studied for two hours, but she left early because it got too crowded. Leo went to the arcade with his cousin and won a small prize, and Ana went shopping because she needed new shoes for a school event. Everyone chose a different place, but they all met up for dinner afterward.",
   "questions": [
-    "Where does Sam go every weekend?",
-    "Where does Mia like to study?",
-    "What does Leo do at the arcade?"
+    "Why did Sam go to the skate park?",
+    "Why did Mia leave the café early?",
+    "What did everyone do afterward?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'c6abdb91-c9e1-422e-aa0e-1c98b6376ac0',
+  'fba12093-ccc1-45ac-9de0-9324d0e86dfb',
   8,
   'writing',
   null,
   null,
   $json${
   "prompts": [
-    "I usually go to the ___.",
-    "I go there to ___.",
-    "My favorite place in town is ___."
+    "Last weekend, I went to ___ and ___, because ___.",
+    "I liked it, but ___.",
+    "Afterward, I ___."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'c6abdb91-c9e1-422e-aa0e-1c98b6376ac0',
+  'fba12093-ccc1-45ac-9de0-9324d0e86dfb',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Name places teens go",
-    "Say what I do there",
-    "Talk about my favorite hangout"
+    "Describe a past outing with connectors",
+    "Use 'and', 'but', 'because' to connect ideas",
+    "Explain why I chose a place"
   ],
-  "challenge": "Tell me your favorite place to hang out and why!"
+  "challenge": "Tell me where you went recently and why, connecting your ideas!"
 }$json$::jsonb,
   true
 );
@@ -205,13 +205,13 @@ values
 -- Lesson 2: Directions and Meeting Points
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  'db75b44d-589f-469f-b7a3-76198dd68161',
+  'b608dcfa-f22d-4d63-8d1d-5036dc2d6c26',
   'Directions and Meeting Points',
   'A2',
   'teens',
   7,
   2,
-  'Give and understand simple directions and meeting points.',
+  'Give directions with sequencing and connectors. [Combination tier]',
   25,
   9,
   true
@@ -220,7 +220,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  'db75b44d-589f-469f-b7a3-76198dd68161',
+  'b608dcfa-f22d-4d63-8d1d-5036dc2d6c26',
   1,
   'title',
   null,
@@ -231,7 +231,7 @@ values
   true
 ),
 (
-  'db75b44d-589f-469f-b7a3-76198dd68161',
+  'b608dcfa-f22d-4d63-8d1d-5036dc2d6c26',
   2,
   'warmup',
   null,
@@ -239,15 +239,15 @@ values
   $json${
   "display": "🧭",
   "questions": [
-    "Can you give directions to your school?",
-    "Where is a good meeting point near you?"
+    "Did you get lost on the way somewhere, but find it eventually?",
+    "Where did you turn to find the place?"
   ],
   "title": "What's your take?"
 }$json$::jsonb,
   true
 ),
 (
-  'db75b44d-589f-469f-b7a3-76198dd68161',
+  'b608dcfa-f22d-4d63-8d1d-5036dc2d6c26',
   3,
   'vocabulary',
   null,
@@ -255,19 +255,19 @@ values
   $json${
   "words": [
     {
-      "word": "Turn left",
+      "word": "Turned",
       "bg": "#FAECE7"
     },
     {
-      "word": "Straight ahead",
+      "word": "Walked past",
       "bg": "#E1F5EE"
     },
     {
-      "word": "Across from",
+      "word": "And then",
       "bg": "#EEEDFE"
     },
     {
-      "word": "Meeting point",
+      "word": "But",
       "bg": "#FAEEDA"
     }
   ],
@@ -277,27 +277,27 @@ values
   true
 ),
 (
-  'db75b44d-589f-469f-b7a3-76198dd68161',
+  'b608dcfa-f22d-4d63-8d1d-5036dc2d6c26',
   4,
   'phrases',
   null,
   null,
   $json${
   "teacher": [
-    "How do I get to the café?",
-    "Where should we meet?"
+    "How did you find the place?",
+    "Did anything go wrong on the way?"
   ],
   "student": [
-    "Turn left and it's straight ahead.",
-    "Let's meet across from the mall."
+    "I turned left and then found it.",
+    "I got lost, but a stranger helped me."
   ],
-  "note": "Practice giving simple directions!",
+  "note": "Partial prompt: I turned ___ and then ___, but ___.",
   "title": "Practice the Conversation"
 }$json$::jsonb,
   true
 ),
 (
-  'db75b44d-589f-469f-b7a3-76198dd68161',
+  'b608dcfa-f22d-4d63-8d1d-5036dc2d6c26',
   5,
   'activity',
   null,
@@ -306,27 +306,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "[Turn left] at the corner."
+      "text": "I [turned] left at the mall."
     },
     {
       "speaker": "B",
-      "text": "Then go [straight ahead]."
+      "text": "I [walked past] the café [and then] found the shop."
     },
     {
       "speaker": "A",
-      "text": "The café is [across from] the school."
+      "text": "I got lost, [but] I asked for help."
     }
   ],
   "blanks": [
-    "turn left",
-    "straight ahead",
-    "across from"
+    "turned",
+    "walked past",
+    "and then"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'db75b44d-589f-469f-b7a3-76198dd68161',
+  'b608dcfa-f22d-4d63-8d1d-5036dc2d6c26',
   6,
   'speaking',
   null,
@@ -335,69 +335,69 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "How do I get to the arcade from here?"
+      "text": "How did you find the new café?"
     },
     {
       "speaker": "B",
-      "text": "Turn left at the corner, then go straight ahead."
+      "text": "I turned left at the mall and then walked past the school, but I still couldn't find it."
     },
     {
       "speaker": "A",
-      "text": "It's across from the skate park, right?"
+      "text": "What happened next?"
     },
     {
       "speaker": "B",
-      "text": "Exactly! You can't miss it."
+      "text": "I asked someone for directions, and then I finally found it near the park."
     }
   ],
-  "note": "Switch! Student becomes A, teacher becomes B."
+  "note": "Switch! Student becomes A, teacher becomes B. Sequence the journey and note any problem."
 }$json$::jsonb,
   true
 ),
 (
-  'db75b44d-589f-469f-b7a3-76198dd68161',
+  'b608dcfa-f22d-4d63-8d1d-5036dc2d6c26',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "Message: how do I get to the meeting point? Turn left at the mall, then go straight ahead for two minutes. The café is across from the bus stop. See you there at 4pm!",
+  "text": "Yesterday, I tried to find a new bookshop for the first time. I turned left at the mall and then walked past the school, but the shop wasn't where I expected. I got a little lost, so I asked a shopkeeper for directions, and then I found it two streets further, next to the park. It took longer than I planned, but I finally arrived and it was worth the walk because the shop had exactly the book I wanted.",
   "questions": [
-    "What is the first direction given?",
-    "Where is the café located?",
-    "What time will they meet?"
+    "What did the writer do first?",
+    "What problem happened?",
+    "How did the writer solve it?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'db75b44d-589f-469f-b7a3-76198dd68161',
+  'b608dcfa-f22d-4d63-8d1d-5036dc2d6c26',
   8,
   'writing',
   null,
   null,
   $json${
   "prompts": [
-    "Turn ___ at the ___.",
-    "The place is across from ___.",
-    "Let's meet at ___."
+    "I turned ___ and then ___, but ___.",
+    "I got lost, so I ___.",
+    "I finally found it because ___."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'db75b44d-589f-469f-b7a3-76198dd68161',
+  'b608dcfa-f22d-4d63-8d1d-5036dc2d6c26',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Give simple directions",
-    "Understand a meeting point message",
-    "Use 'turn left/right' and 'across from'"
+    "Sequence a journey with connectors",
+    "Describe a problem finding a place",
+    "Explain how the problem was solved"
   ],
-  "challenge": "Give me directions to your favorite hangout spot!"
+  "challenge": "Tell me about a time you found (or got lost finding) a new place!"
 }$json$::jsonb,
   true
 );
@@ -405,13 +405,13 @@ values
 -- Lesson 3: Busy or Quiet?
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '39adae76-e783-4969-943c-f999db6ef503',
+  'cd8d76ca-ad27-4c79-a8a2-f59cce67d845',
   'Busy or Quiet?',
   'A2',
   'teens',
   7,
   3,
-  'Compare places in town using comparatives.',
+  'Compare places in town with reasons. [Combination tier]',
   25,
   9,
   true
@@ -420,7 +420,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '39adae76-e783-4969-943c-f999db6ef503',
+  'cd8d76ca-ad27-4c79-a8a2-f59cce67d845',
   1,
   'title',
   null,
@@ -431,7 +431,7 @@ values
   true
 ),
 (
-  '39adae76-e783-4969-943c-f999db6ef503',
+  'cd8d76ca-ad27-4c79-a8a2-f59cce67d845',
   2,
   'warmup',
   null,
@@ -439,15 +439,15 @@ values
   $json${
   "display": "🚶‍♀️",
   "questions": [
-    "Is the mall busy or quiet on weekends?",
-    "Do you prefer busy or peaceful places?"
+    "Was the mall more crowded than usual last weekend?",
+    "Do you prefer livelier or calmer places?"
   ],
   "title": "What's your take?"
 }$json$::jsonb,
   true
 ),
 (
-  '39adae76-e783-4969-943c-f999db6ef503',
+  'cd8d76ca-ad27-4c79-a8a2-f59cce67d845',
   3,
   'vocabulary',
   null,
@@ -459,7 +459,7 @@ values
       "bg": "#FAECE7"
     },
     {
-      "word": "Peaceful",
+      "word": "More peaceful",
       "bg": "#E1F5EE"
     },
     {
@@ -477,27 +477,27 @@ values
   true
 ),
 (
-  '39adae76-e783-4969-943c-f999db6ef503',
+  'cd8d76ca-ad27-4c79-a8a2-f59cce67d845',
   4,
   'phrases',
   null,
   null,
   $json${
   "teacher": [
-    "Is the mall busier than the café?",
-    "Which place is calmer?"
+    "Was it more crowded than usual?",
+    "Do you prefer it livelier or calmer?"
   ],
   "student": [
-    "Yes, the mall is much busier.",
-    "The café is calmer than the mall."
+    "Yes, it was much more crowded.",
+    "I prefer it calmer."
   ],
-  "note": "Compare two places in town!",
+  "note": "Partial prompt: ___ was more ___ than usual because ___.",
   "title": "Practice the Conversation"
 }$json$::jsonb,
   true
 ),
 (
-  '39adae76-e783-4969-943c-f999db6ef503',
+  'cd8d76ca-ad27-4c79-a8a2-f59cce67d845',
   5,
   'activity',
   null,
@@ -506,27 +506,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "The mall is [crowded] on weekends."
+      "text": "The mall was [more crowded] than usual."
     },
     {
       "speaker": "B",
-      "text": "The park is more [peaceful]."
+      "text": "The park felt [more peaceful]."
     },
     {
       "speaker": "A",
-      "text": "The arcade is [livelier] than the library."
+      "text": "I prefer places that are [calmer]."
     }
   ],
   "blanks": [
-    "crowded",
-    "peaceful",
-    "livelier"
+    "more crowded",
+    "more peaceful",
+    "calmer"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '39adae76-e783-4969-943c-f999db6ef503',
+  'cd8d76ca-ad27-4c79-a8a2-f59cce67d845',
   6,
   'speaking',
   null,
@@ -535,69 +535,69 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "Is the mall busy or quiet on Saturdays?"
+      "text": "Was the mall more crowded than usual last weekend?"
     },
     {
       "speaker": "B",
-      "text": "It's really crowded. I prefer calmer places like the park."
+      "text": "Yes, it was much more crowded than usual because of the sale."
     },
     {
       "speaker": "A",
-      "text": "The arcade is livelier, but the library is much calmer."
+      "text": "I preferred the park, it was calmer and more peaceful."
     },
     {
       "speaker": "B",
-      "text": "I like both, depending on my mood."
+      "text": "I like livelier places, honestly."
     }
   ],
-  "note": "Switch! Student becomes A, teacher becomes B."
+  "note": "Switch! Student becomes A, teacher becomes B. Explain your preference with a reason."
 }$json$::jsonb,
   true
 ),
 (
-  '39adae76-e783-4969-943c-f999db6ef503',
+  'cd8d76ca-ad27-4c79-a8a2-f59cce67d845',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "Two friends compare their town's places. Leo says the mall is crowded and loud on weekends, while the park is more peaceful. Ana says the arcade is livelier than the library, which is much calmer for studying.",
+  "text": "Last weekend, the mall was more crowded than usual because there was a big sale. My friend and I couldn't move easily, and it was louder than we expected. Because of that, we decided to leave and go to the park instead. The park was much calmer and more peaceful, with fewer people and more space to relax. I think I prefer quieter places, but my friend said the mall was livelier and more exciting for her.",
   "questions": [
-    "What does Leo say about the mall?",
-    "What is more peaceful, according to Leo?",
-    "What does Ana compare?"
+    "Why was the mall more crowded than usual?",
+    "Where did they go instead, and why?",
+    "Do the two friends prefer the same type of place?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '39adae76-e783-4969-943c-f999db6ef503',
+  'cd8d76ca-ad27-4c79-a8a2-f59cce67d845',
   8,
   'writing',
   null,
   null,
   $json${
   "prompts": [
-    "The ___ is busier than the ___.",
-    "I prefer ___ places because ___.",
-    "The ___ is calmer than the ___."
+    "___ was more crowded than usual because ___.",
+    "We decided to ___ instead.",
+    "I prefer ___ places because ___."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '39adae76-e783-4969-943c-f999db6ef503',
+  'cd8d76ca-ad27-4c79-a8a2-f59cce67d845',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Compare places using busy/quiet adjectives",
-    "Use comparatives",
-    "Say which places I prefer"
+    "Compare busy and quiet places",
+    "Give a reason for a place being busy",
+    "Explain a personal preference"
   ],
-  "challenge": "Compare two places in your town!"
+  "challenge": "Compare a busy place and a quiet place, and tell me which you prefer and why!"
 }$json$::jsonb,
   true
 );
@@ -605,13 +605,13 @@ values
 -- Lesson 4: A Day Out Plan
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '16853284-d779-4d2e-8d35-f4d60876030f',
+  '13f51509-4399-41e0-8f8a-18f9c95e63bb',
   'A Day Out Plan',
   'A2',
   'teens',
   7,
   4,
-  'Write a short plan for a day out using sequencing words.',
+  'Plan a day out with sequencing and connectors. [Combination tier]',
   25,
   9,
   true
@@ -620,7 +620,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '16853284-d779-4d2e-8d35-f4d60876030f',
+  '13f51509-4399-41e0-8f8a-18f9c95e63bb',
   1,
   'title',
   null,
@@ -631,7 +631,7 @@ values
   true
 ),
 (
-  '16853284-d779-4d2e-8d35-f4d60876030f',
+  '13f51509-4399-41e0-8f8a-18f9c95e63bb',
   2,
   'warmup',
   null,
@@ -639,15 +639,15 @@ values
   $json${
   "display": "🗓️",
   "questions": [
-    "What would a perfect day out look like for you?",
-    "Where would you go first?"
+    "What would your ideal day out look like, and why?",
+    "What would you do first and why?"
   ],
   "title": "What's your take?"
 }$json$::jsonb,
   true
 ),
 (
-  '16853284-d779-4d2e-8d35-f4d60876030f',
+  '13f51509-4399-41e0-8f8a-18f9c95e63bb',
   3,
   'vocabulary',
   null,
@@ -655,15 +655,15 @@ values
   $json${
   "words": [
     {
-      "word": "Plan",
+      "word": "First",
       "bg": "#FAECE7"
     },
     {
-      "word": "First",
+      "word": "After that",
       "bg": "#E1F5EE"
     },
     {
-      "word": "Afterward",
+      "word": "Because",
       "bg": "#EEEDFE"
     },
     {
@@ -677,27 +677,27 @@ values
   true
 ),
 (
-  '16853284-d779-4d2e-8d35-f4d60876030f',
+  '13f51509-4399-41e0-8f8a-18f9c95e63bb',
   4,
   'phrases',
   null,
   null,
   $json${
   "teacher": [
-    "What is your plan for the day?",
-    "Where will you go first?"
+    "What's your plan for the day, and why?",
+    "What would you do first?"
   ],
   "student": [
-    "First, we'll go to the mall.",
-    "Afterward, we'll get food."
+    "First, we'll go to the arcade because it opens early.",
+    "After that, we'll eat because we'll be hungry."
   ],
-  "note": "Plan a day out in order!",
+  "note": "Partial prompt: First, ___ because ___. After that, ___.",
   "title": "Practice the Conversation"
 }$json$::jsonb,
   true
 ),
 (
-  '16853284-d779-4d2e-8d35-f4d60876030f',
+  '13f51509-4399-41e0-8f8a-18f9c95e63bb',
   5,
   'activity',
   null,
@@ -706,11 +706,11 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "[First], we'll go to the arcade."
+      "text": "[First], we'll go to the skate park because it's quiet in the morning."
     },
     {
       "speaker": "B",
-      "text": "[Afterward], we'll grab food."
+      "text": "[After that], we'll get food because we'll be hungry."
     },
     {
       "speaker": "A",
@@ -719,14 +719,14 @@ values
   ],
   "blanks": [
     "first",
-    "afterward",
+    "after that",
     "wrap up"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '16853284-d779-4d2e-8d35-f4d60876030f',
+  '13f51509-4399-41e0-8f8a-18f9c95e63bb',
   6,
   'speaking',
   null,
@@ -735,69 +735,69 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "What is your plan for a perfect day out?"
+      "text": "What is your plan for the perfect day out, and why that order?"
     },
     {
       "speaker": "B",
-      "text": "First, we'll go to the skate park. Afterward, we'll get food at the mall."
+      "text": "First, we'll go to the skate park, because it's quiet in the morning. After that, we'll get lunch because we'll be hungry by noon."
     },
     {
       "speaker": "A",
-      "text": "Then we'll wrap up the day at the café."
+      "text": "Then we'll wrap up at the café, because it's a relaxing way to end the day."
     },
     {
       "speaker": "B",
-      "text": "That sounds like a perfect plan!"
+      "text": "That's a well-planned day!"
     }
   ],
-  "note": "Switch! Student becomes A, teacher becomes B."
+  "note": "Switch! Student becomes A, teacher becomes B. Justify each step of the plan."
 }$json$::jsonb,
   true
 ),
 (
-  '16853284-d779-4d2e-8d35-f4d60876030f',
+  '13f51509-4399-41e0-8f8a-18f9c95e63bb',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "My perfect day out plan: first, we'll meet at the skate park at 10am. Afterward, we'll get lunch at the new café nearby. Then, we'll go shopping at the mall. Finally, we'll wrap up the day watching a movie.",
+  "text": "Here is my plan for a perfect day out. First, we'll meet at the skate park at 10am, because it's quiet before noon and we can practice without crowds. After that, we'll get lunch at the new café nearby, because everyone said the food is great and it's close by. Then, we'll go shopping at the mall, but only for an hour, because we don't want to spend too much money. Finally, we'll wrap up the day watching a movie, because it's a relaxing way to end a busy day.",
   "questions": [
-    "Where do they meet first?",
-    "What do they do afterward?",
-    "How do they wrap up the day?"
+    "Why does the plan start at the skate park?",
+    "Why do they choose that café?",
+    "Why do they limit shopping to an hour?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '16853284-d779-4d2e-8d35-f4d60876030f',
+  '13f51509-4399-41e0-8f8a-18f9c95e63bb',
   8,
   'writing',
   null,
   null,
   $json${
   "prompts": [
-    "First, we'll ___.",
-    "Afterward, we'll ___.",
-    "We'll wrap up by ___."
+    "First, we'll ___ because ___.",
+    "After that, we'll ___ because ___.",
+    "Finally, we'll ___ because ___."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '16853284-d779-4d2e-8d35-f4d60876030f',
+  '13f51509-4399-41e0-8f8a-18f9c95e63bb',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Plan a day out in order",
-    "Use sequencing words",
-    "Write a short connected plan"
+    "Plan a day out with reasons for each step",
+    "Use sequencing words with 'because'",
+    "Justify choices in a plan"
   ],
-  "challenge": "Tell me your plan for a perfect day out!"
+  "challenge": "Tell me your plan for a perfect day out, and explain why you chose each part!"
 }$json$::jsonb,
   true
 );
@@ -805,13 +805,13 @@ values
 -- Lesson 5: Unit Review
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '9c302c76-c0af-4f7f-b102-5ed8612230c0',
+  '80ed8a69-0050-4b1d-9567-25757ed55de5',
   'Unit Review',
   'A2',
   'teens',
   7,
   5,
-  'Review town places, directions, comparisons, and a day-out plan.',
+  'Review town places, directions, comparisons, and a reasoned day plan. [Combination tier]',
   25,
   9,
   true
@@ -820,7 +820,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '9c302c76-c0af-4f7f-b102-5ed8612230c0',
+  '80ed8a69-0050-4b1d-9567-25757ed55de5',
   1,
   'title',
   null,
@@ -831,7 +831,7 @@ values
   true
 ),
 (
-  '9c302c76-c0af-4f7f-b102-5ed8612230c0',
+  '80ed8a69-0050-4b1d-9567-25757ed55de5',
   2,
   'warmup',
   null,
@@ -839,15 +839,15 @@ values
   $json${
   "display": "🏙️",
   "questions": [
-    "Where do you like to hang out?",
-    "What's your plan this weekend?"
+    "Where did you go recently, and why?",
+    "Was it more or less crowded than expected?"
   ],
   "title": "What's your take?"
 }$json$::jsonb,
   true
 ),
 (
-  '9c302c76-c0af-4f7f-b102-5ed8612230c0',
+  '80ed8a69-0050-4b1d-9567-25757ed55de5',
   3,
   'vocabulary',
   null,
@@ -855,19 +855,19 @@ values
   $json${
   "words": [
     {
-      "word": "Hangout",
+      "word": "Went to",
       "bg": "#FAECE7"
     },
     {
-      "word": "Directions",
+      "word": "More crowded",
       "bg": "#E1F5EE"
     },
     {
-      "word": "Busier",
+      "word": "Because",
       "bg": "#EEEDFE"
     },
     {
-      "word": "Plan",
+      "word": "First",
       "bg": "#FAEEDA"
     }
   ],
@@ -877,27 +877,27 @@ values
   true
 ),
 (
-  '9c302c76-c0af-4f7f-b102-5ed8612230c0',
+  '80ed8a69-0050-4b1d-9567-25757ed55de5',
   4,
   'phrases',
   null,
   null,
   $json${
   "teacher": [
-    "Where do you hang out?",
-    "What's your plan for the weekend?"
+    "Where did you go, and why?",
+    "Was it busier or calmer than expected?"
   ],
   "student": [
-    "I hang out at the skate park.",
-    "My plan is to meet friends at the mall."
+    "I went to the café because it's quiet.",
+    "It was calmer than I expected."
   ],
-  "note": "Use everything you learned this unit!",
+  "note": "Use connectors and comparatives throughout.",
   "title": "Practice the Conversation"
 }$json$::jsonb,
   true
 ),
 (
-  '9c302c76-c0af-4f7f-b102-5ed8612230c0',
+  '80ed8a69-0050-4b1d-9567-25757ed55de5',
   5,
   'activity',
   null,
@@ -906,27 +906,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "My favorite [hangout] is the café."
+      "text": "I [went to] the mall [because] of the sale."
     },
     {
       "speaker": "B",
-      "text": "Can you give me [directions] there?"
+      "text": "It was [more crowded] than usual."
     },
     {
       "speaker": "A",
-      "text": "It's [busier] than the library, but I like it."
+      "text": "[First], we shopped, and then we ate."
     }
   ],
   "blanks": [
-    "hangout",
-    "directions",
-    "busier"
+    "went to",
+    "more crowded",
+    "first"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '9c302c76-c0af-4f7f-b102-5ed8612230c0',
+  '80ed8a69-0050-4b1d-9567-25757ed55de5',
   6,
   'speaking',
   null,
@@ -935,19 +935,19 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "Where's your favorite hangout in town?"
+      "text": "Tell me about a recent outing and how you'd plan the next one."
     },
     {
       "speaker": "B",
-      "text": "The skate park. It's busier than the library, but full of energy."
+      "text": "I went to the mall because of a sale, but it was more crowded than I expected."
     },
     {
       "speaker": "A",
-      "text": "Can you give me directions there?"
+      "text": "Next time, first I'll go somewhere calmer, and then I'll decide based on how I feel."
     },
     {
       "speaker": "B",
-      "text": "Sure, turn left at the mall and it's straight ahead!"
+      "text": "That sounds like a better plan."
     }
   ],
   "note": "Switch! Student becomes A, teacher becomes B."
@@ -955,50 +955,50 @@ values
   true
 ),
 (
-  '9c302c76-c0af-4f7f-b102-5ed8612230c0',
+  '80ed8a69-0050-4b1d-9567-25757ed55de5',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "My favorite hangout is the skate park. It's busier and livelier than the library, but I love the energy. To get there, turn left at the mall and go straight ahead. My plan for Saturday: first, meet friends there, then grab food afterward.",
+  "text": "Last weekend, I went to the mall because of a big sale, but it was more crowded than I expected, so I left early and went to the park instead, which was much calmer. Next time, I want to plan better: first, I'll check how busy a place usually is, and then I'll decide whether to go in the morning or afternoon. Because of this experience, I now prefer quieter places for relaxing and livelier places only when I'm ready for crowds.",
   "questions": [
-    "What is the writer's favorite hangout?",
-    "How do you get there?",
-    "What is the plan for Saturday?"
+    "Why did the writer leave the mall early?",
+    "What will the writer do differently next time?",
+    "What preference did the writer discover?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '9c302c76-c0af-4f7f-b102-5ed8612230c0',
+  '80ed8a69-0050-4b1d-9567-25757ed55de5',
   8,
   'writing',
   null,
   null,
   $json${
   "prompts": [
-    "My favorite hangout is ___.",
-    "To get there, ___.",
-    "My plan for this weekend is ___."
+    "I went to ___ because ___, but ___.",
+    "Next time, first I'll ___, and then ___.",
+    "I prefer ___ because ___."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '9c302c76-c0af-4f7f-b102-5ed8612230c0',
+  '80ed8a69-0050-4b1d-9567-25757ed55de5',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Name places teens go",
-    "Give directions",
-    "Compare places",
-    "Plan a day out"
+    "Describe a past outing with reasons",
+    "Give directions with connectors",
+    "Compare busy and quiet places",
+    "Plan a day out with justification"
   ],
-  "challenge": "Tell me all about your town and your weekend plans!"
+  "challenge": "Tell me all about your town, your outings, and how you'd plan a perfect day!"
 }$json$::jsonb,
   true
 );

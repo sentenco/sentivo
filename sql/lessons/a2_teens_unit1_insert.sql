@@ -1,17 +1,17 @@
--- A2 Teens Unit 1: Identity and Personal Style (5 lessons)
--- Generated from project_a2_teens_master_curriculum memory.
+-- A2 Teens Unit 1: Identity and Personal Style (5 lessons) — TIERED (Foundation)
+-- Regenerated per the Sentivo Intra-Level Progression Framework.
 -- Run this whole script in the Supabase SQL editor.
 
 -- Lesson 1: My Style, My Choice
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  'ed145f40-1a1b-414e-a387-6485b9f75fb3',
+  '10c87193-820b-433e-80f2-060616e4a55e',
   'My Style, My Choice',
   'A2',
   'teens',
   1,
   1,
-  'Describe personal style and give reasons for clothing and style choices.',
+  'Describe personal style using simple present. [Foundation tier: 1 grammar target, heavy scaffolding]',
   25,
   9,
   true
@@ -20,7 +20,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  'ed145f40-1a1b-414e-a387-6485b9f75fb3',
+  '10c87193-820b-433e-80f2-060616e4a55e',
   1,
   'title',
   null,
@@ -31,7 +31,7 @@ values
   true
 ),
 (
-  'ed145f40-1a1b-414e-a387-6485b9f75fb3',
+  '10c87193-820b-433e-80f2-060616e4a55e',
   2,
   'warmup',
   null,
@@ -39,15 +39,15 @@ values
   $json${
   "display": "👟",
   "questions": [
-    "How would you describe your style?",
-    "Is your style casual or sporty?"
+    "What are you wearing today?",
+    "Is your style casual?"
   ],
   "title": "What's your take?"
 }$json$::jsonb,
   true
 ),
 (
-  'ed145f40-1a1b-414e-a387-6485b9f75fb3',
+  '10c87193-820b-433e-80f2-060616e4a55e',
   3,
   'vocabulary',
   null,
@@ -77,27 +77,27 @@ values
   true
 ),
 (
-  'ed145f40-1a1b-414e-a387-6485b9f75fb3',
+  '10c87193-820b-433e-80f2-060616e4a55e',
   4,
   'phrases',
   null,
   null,
   $json${
   "teacher": [
-    "How would you describe your style?",
-    "Why do you like that style?"
+    "What is your style?",
+    "Do you wear casual clothes?"
   ],
   "student": [
-    "My style is casual and comfortable.",
-    "I like it because it feels like me."
+    "My style is casual.",
+    "Yes, I wear casual clothes."
   ],
-  "note": "Think about your own style before you answer!",
+  "note": "Use the sentence frame: My style is ___.",
   "title": "Practice the Conversation"
 }$json$::jsonb,
   true
 ),
 (
-  'ed145f40-1a1b-414e-a387-6485b9f75fb3',
+  '10c87193-820b-433e-80f2-060616e4a55e',
   5,
   'activity',
   null,
@@ -106,27 +106,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "My style is [casual] because it's comfortable."
+      "text": "My style is [casual]."
     },
     {
       "speaker": "B",
-      "text": "I like a [sporty] look for school."
+      "text": "I wear [sporty] clothes."
     },
     {
       "speaker": "A",
-      "text": "She always looks [neat] and put-together."
+      "text": "My clothes are [colorful]."
     }
   ],
   "blanks": [
     "casual",
     "sporty",
-    "neat"
+    "colorful"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'ed145f40-1a1b-414e-a387-6485b9f75fb3',
+  '10c87193-820b-433e-80f2-060616e4a55e',
   6,
   'speaking',
   null,
@@ -135,69 +135,69 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "How would you describe your style?"
+      "text": "What is your style?"
     },
     {
       "speaker": "B",
-      "text": "My style is casual and colorful. I like it because it feels like me."
+      "text": "My style is casual. I wear jeans and T-shirts."
     },
     {
       "speaker": "A",
-      "text": "I prefer a neat, simple look, but sometimes I go sporty."
+      "text": "My style is neat. I like simple clothes."
     },
     {
       "speaker": "B",
-      "text": "That sounds like you!"
+      "text": "Nice!"
     }
   ],
-  "note": "Switch! Student becomes A, teacher becomes B."
+  "note": "Switch! Student becomes A, teacher becomes B. Use the frame: My style is ___. I wear ___."
 }$json$::jsonb,
   true
 ),
 (
-  'ed145f40-1a1b-414e-a387-6485b9f75fb3',
+  '10c87193-820b-433e-80f2-060616e4a55e',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "Two teens post about their style. Jess writes: my style is colorful and a bit sporty because I'm always active. Marco writes: my style is neat and simple because I don't like fuss. Different styles, same confidence!",
+  "text": "Hi, I'm Jess. My style is casual. I wear jeans and T-shirts. I like colorful clothes.",
   "questions": [
     "What is Jess's style?",
-    "Why does Jess like that style?",
-    "What is Marco's style?"
+    "What does Jess wear?",
+    "Does Jess like colorful clothes?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'ed145f40-1a1b-414e-a387-6485b9f75fb3',
+  '10c87193-820b-433e-80f2-060616e4a55e',
   8,
   'writing',
   null,
   null,
   $json${
   "prompts": [
-    "My style is ___ because ___.",
-    "I usually wear ___.",
-    "My style fits me because ___."
+    "My style is ___.",
+    "I wear ___.",
+    "I like ___ clothes."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'ed145f40-1a1b-414e-a387-6485b9f75fb3',
+  '10c87193-820b-433e-80f2-060616e4a55e',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Describe my personal style",
-    "Give a reason with 'because'",
-    "Talk about what I usually wear"
+    "Say 'My style is ___'",
+    "Name 4 style words",
+    "Describe what I wear"
   ],
-  "challenge": "Describe your style and explain why it fits you!"
+  "challenge": "Describe your style using the frame: My style is ___. I wear ___."
 }$json$::jsonb,
   true
 );
@@ -205,13 +205,13 @@ values
 -- Lesson 2: People I Look Up To
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '41569997-af1b-4a64-99f7-763d7d855995',
+  '425aebc2-90d0-4da8-87e0-8a0bbc62693b',
   'People I Look Up To',
   'A2',
   'teens',
   1,
   2,
-  'Describe a person they admire using appearance and personality language.',
+  'Describe a person using simple present. [Foundation tier]',
   25,
   9,
   true
@@ -220,7 +220,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '41569997-af1b-4a64-99f7-763d7d855995',
+  '425aebc2-90d0-4da8-87e0-8a0bbc62693b',
   1,
   'title',
   null,
@@ -231,7 +231,7 @@ values
   true
 ),
 (
-  '41569997-af1b-4a64-99f7-763d7d855995',
+  '425aebc2-90d0-4da8-87e0-8a0bbc62693b',
   2,
   'warmup',
   null,
@@ -240,14 +240,14 @@ values
   "display": "⭐",
   "questions": [
     "Who do you look up to?",
-    "What makes that person special?"
+    "Is that person kind?"
   ],
   "title": "What's your take?"
 }$json$::jsonb,
   true
 ),
 (
-  '41569997-af1b-4a64-99f7-763d7d855995',
+  '425aebc2-90d0-4da8-87e0-8a0bbc62693b',
   3,
   'vocabulary',
   null,
@@ -259,15 +259,15 @@ values
       "bg": "#FAECE7"
     },
     {
-      "word": "Creative",
+      "word": "Kind",
       "bg": "#E1F5EE"
     },
     {
-      "word": "Confident",
+      "word": "Funny",
       "bg": "#EEEDFE"
     },
     {
-      "word": "Kind",
+      "word": "Friendly",
       "bg": "#FAEEDA"
     }
   ],
@@ -277,7 +277,7 @@ values
   true
 ),
 (
-  '41569997-af1b-4a64-99f7-763d7d855995',
+  '425aebc2-90d0-4da8-87e0-8a0bbc62693b',
   4,
   'phrases',
   null,
@@ -285,19 +285,19 @@ values
   $json${
   "teacher": [
     "Who do you admire?",
-    "Why do you admire them?"
+    "What is that person like?"
   ],
   "student": [
-    "I admire my older sister.",
-    "I admire her because she is hardworking."
+    "I admire my sister.",
+    "She is kind and hardworking."
   ],
-  "note": "Think of someone you really admire!",
+  "note": "Use the frame: I admire ___. He/She is ___.",
   "title": "Practice the Conversation"
 }$json$::jsonb,
   true
 ),
 (
-  '41569997-af1b-4a64-99f7-763d7d855995',
+  '425aebc2-90d0-4da8-87e0-8a0bbc62693b',
   5,
   'activity',
   null,
@@ -306,27 +306,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "I admire my coach because she is [hardworking]."
+      "text": "I admire my coach. She is [hardworking]."
     },
     {
       "speaker": "B",
-      "text": "My favorite artist is very [creative]."
+      "text": "My brother is [kind]."
     },
     {
       "speaker": "A",
-      "text": "I look up to people who are [confident]."
+      "text": "My friend is [funny]."
     }
   ],
   "blanks": [
     "hardworking",
-    "creative",
-    "confident"
+    "kind",
+    "funny"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '41569997-af1b-4a64-99f7-763d7d855995',
+  '425aebc2-90d0-4da8-87e0-8a0bbc62693b',
   6,
   'speaking',
   null,
@@ -335,43 +335,43 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "Who do you look up to?"
+      "text": "Who do you admire?"
     },
     {
       "speaker": "B",
-      "text": "I admire my older brother. He is hardworking and kind."
+      "text": "I admire my brother. He is kind and friendly."
     },
     {
       "speaker": "A",
-      "text": "I admire a singer I follow because she is confident and creative."
+      "text": "I admire my coach. She is hardworking."
     },
     {
       "speaker": "B",
-      "text": "That's a great role model!"
+      "text": "Nice!"
     }
   ],
-  "note": "Switch! Student becomes A, teacher becomes B."
+  "note": "Switch! Student becomes A, teacher becomes B. Use the frame: I admire ___. He/She is ___."
 }$json$::jsonb,
   true
 ),
 (
-  '41569997-af1b-4a64-99f7-763d7d855995',
+  '425aebc2-90d0-4da8-87e0-8a0bbc62693b',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "Two teens talk about people they admire. Sara admires her grandmother because she is kind and hardworking. Tom admires a YouTuber because he is creative and always positive. Both say these people inspire them every day.",
+  "text": "I admire my sister. She is hardworking and kind. She helps me every day. I admire her a lot.",
   "questions": [
-    "Who does Sara admire?",
-    "Why does Sara admire her?",
-    "Who does Tom admire and why?"
+    "Who does the writer admire?",
+    "Is the sister kind or unkind?",
+    "What does the sister do?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '41569997-af1b-4a64-99f7-763d7d855995',
+  '425aebc2-90d0-4da8-87e0-8a0bbc62693b',
   8,
   'writing',
   null,
@@ -379,39 +379,39 @@ values
   $json${
   "prompts": [
     "I admire ___.",
-    "I admire them because ___.",
-    "They inspire me to ___."
+    "He/She is ___.",
+    "He/She helps me by ___."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '41569997-af1b-4a64-99f7-763d7d855995',
+  '425aebc2-90d0-4da8-87e0-8a0bbc62693b',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Describe someone I admire",
-    "Use personality adjectives",
-    "Give a reason with 'because'"
+    "Say 'I admire ___'",
+    "Name 4 personality words",
+    "Describe someone I admire"
   ],
-  "challenge": "Tell me about someone you look up to and why!"
+  "challenge": "Describe someone you admire using: I admire ___. He/She is ___."
 }$json$::jsonb,
   true
 );
 
--- Lesson 3: Same or Different?
+-- Lesson 3: What I'm Like
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  'fb4d95ee-1a1a-435e-9f41-7189bbacba7d',
-  'Same or Different?',
+  '9b840fa9-7328-435a-8629-c937d68c71dd',
+  'What I''m Like',
   'A2',
   'teens',
   1,
   3,
-  'Compare people and styles using basic comparative language.',
+  'Describe own personality using simple present. [Foundation tier]',
   25,
   9,
   true
@@ -420,7 +420,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  'fb4d95ee-1a1a-435e-9f41-7189bbacba7d',
+  '9b840fa9-7328-435a-8629-c937d68c71dd',
   1,
   'title',
   null,
@@ -431,23 +431,23 @@ values
   true
 ),
 (
-  'fb4d95ee-1a1a-435e-9f41-7189bbacba7d',
+  '9b840fa9-7328-435a-8629-c937d68c71dd',
   2,
   'warmup',
   null,
   null,
   $json${
-  "display": "🔀",
+  "display": "🙂",
   "questions": [
-    "Are you and your best friend similar or different?",
-    "Who is quieter, you or your friend?"
+    "Are you shy or confident?",
+    "Are you talkative?"
   ],
   "title": "What's your take?"
 }$json$::jsonb,
   true
 ),
 (
-  'fb4d95ee-1a1a-435e-9f41-7189bbacba7d',
+  '9b840fa9-7328-435a-8629-c937d68c71dd',
   3,
   'vocabulary',
   null,
@@ -455,19 +455,19 @@ values
   $json${
   "words": [
     {
-      "word": "Taller",
+      "word": "Confident",
       "bg": "#FAECE7"
     },
     {
-      "word": "Quieter",
+      "word": "Shy",
       "bg": "#E1F5EE"
     },
     {
-      "word": "More colorful",
+      "word": "Talkative",
       "bg": "#EEEDFE"
     },
     {
-      "word": "Less sporty",
+      "word": "Quiet",
       "bg": "#FAEEDA"
     }
   ],
@@ -477,27 +477,27 @@ values
   true
 ),
 (
-  'fb4d95ee-1a1a-435e-9f41-7189bbacba7d',
+  '9b840fa9-7328-435a-8629-c937d68c71dd',
   4,
   'phrases',
   null,
   null,
   $json${
   "teacher": [
-    "Are you taller than your friend?",
-    "Who is more colorful in style?"
+    "What are you like?",
+    "Are you shy or confident?"
   ],
   "student": [
-    "I'm taller than my friend.",
-    "My friend is more colorful than me."
+    "I am confident.",
+    "I am a bit shy."
   ],
-  "note": "Compare yourself with a friend!",
+  "note": "Use the frame: I am ___.",
   "title": "Practice the Conversation"
 }$json$::jsonb,
   true
 ),
 (
-  'fb4d95ee-1a1a-435e-9f41-7189bbacba7d',
+  '9b840fa9-7328-435a-8629-c937d68c71dd',
   5,
   'activity',
   null,
@@ -506,27 +506,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "I'm [taller] than my best friend."
+      "text": "I am [confident] at school."
     },
     {
       "speaker": "B",
-      "text": "My friend is [quieter] than me."
+      "text": "I am a bit [shy]."
     },
     {
       "speaker": "A",
-      "text": "Her style is [more colorful] than mine."
+      "text": "I am [talkative] with friends."
     }
   ],
   "blanks": [
-    "taller",
-    "quieter",
-    "more colorful"
+    "confident",
+    "shy",
+    "talkative"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'fb4d95ee-1a1a-435e-9f41-7189bbacba7d',
+  '9b840fa9-7328-435a-8629-c937d68c71dd',
   6,
   'speaking',
   null,
@@ -535,69 +535,69 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "Are you and your best friend similar or different?"
+      "text": "What are you like?"
     },
     {
       "speaker": "B",
-      "text": "We are different. I'm quieter, but she is more confident."
+      "text": "I am quiet at school, but talkative with friends."
     },
     {
       "speaker": "A",
-      "text": "My style is less sporty than my brother's."
+      "text": "I am confident and friendly."
     },
     {
       "speaker": "B",
-      "text": "It's cool to be different!"
+      "text": "Nice to know you!"
     }
   ],
-  "note": "Switch! Student becomes A, teacher becomes B."
+  "note": "Switch! Student becomes A, teacher becomes B. Use the frame: I am ___."
 }$json$::jsonb,
   true
 ),
 (
-  'fb4d95ee-1a1a-435e-9f41-7189bbacba7d',
+  '9b840fa9-7328-435a-8629-c937d68c71dd',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "Mia and her friend Leo have different styles. Mia is quieter and her style is neat and simple. Leo is more confident and his style is colorful and sporty. They are different, but they are still best friends.",
+  "text": "Hi, I'm Leo. I am quiet at school. I am talkative with my friends. I am also confident in sports.",
   "questions": [
-    "Is Mia quieter or louder than Leo?",
-    "What is Leo's style like?",
-    "Are Mia and Leo still friends?"
+    "Is Leo quiet or loud at school?",
+    "Is Leo talkative with friends?",
+    "Is Leo confident in sports?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'fb4d95ee-1a1a-435e-9f41-7189bbacba7d',
+  '9b840fa9-7328-435a-8629-c937d68c71dd',
   8,
   'writing',
   null,
   null,
   $json${
   "prompts": [
-    "I am ___ than my friend.",
-    "My style is ___ than theirs.",
-    "We are different, but ___."
+    "I am ___ at school.",
+    "I am ___ with friends.",
+    "I am ___ in sports/hobbies."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'fb4d95ee-1a1a-435e-9f41-7189bbacba7d',
+  '9b840fa9-7328-435a-8629-c937d68c71dd',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Use comparatives for people",
-    "Compare styles and personalities",
-    "Say how I'm different from a friend"
+    "Say 'I am ___'",
+    "Name 4 personality words",
+    "Describe myself"
   ],
-  "challenge": "Compare yourself with a friend or sibling!"
+  "challenge": "Describe yourself using: I am ___."
 }$json$::jsonb,
   true
 );
@@ -605,13 +605,13 @@ values
 -- Lesson 4: My Profile Post
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '5a79e39b-f4f3-457b-8e6f-f8b90c359475',
+  '7fe6c659-1f01-4c2d-ba38-57376348206a',
   'My Profile Post',
   'A2',
   'teens',
   1,
   4,
-  'Write a short personal profile post with simple connected sentences.',
+  'Write a short profile using simple present. [Foundation tier]',
   25,
   9,
   true
@@ -620,7 +620,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '5a79e39b-f4f3-457b-8e6f-f8b90c359475',
+  '7fe6c659-1f01-4c2d-ba38-57376348206a',
   1,
   'title',
   null,
@@ -631,7 +631,7 @@ values
   true
 ),
 (
-  '5a79e39b-f4f3-457b-8e6f-f8b90c359475',
+  '7fe6c659-1f01-4c2d-ba38-57376348206a',
   2,
   'warmup',
   null,
@@ -639,15 +639,15 @@ values
   $json${
   "display": "📱",
   "questions": [
-    "What would you write in your bio?",
-    "What are your interests?"
+    "What are your interests?",
+    "What is your hobby?"
   ],
   "title": "What's your take?"
 }$json$::jsonb,
   true
 ),
 (
-  '5a79e39b-f4f3-457b-8e6f-f8b90c359475',
+  '7fe6c659-1f01-4c2d-ba38-57376348206a',
   3,
   'vocabulary',
   null,
@@ -659,15 +659,15 @@ values
       "bg": "#FAECE7"
     },
     {
-      "word": "Personality",
+      "word": "Hobby",
       "bg": "#E1F5EE"
     },
     {
-      "word": "Profile",
+      "word": "Personality",
       "bg": "#EEEDFE"
     },
     {
-      "word": "Bio",
+      "word": "Style",
       "bg": "#FAEEDA"
     }
   ],
@@ -677,7 +677,7 @@ values
   true
 ),
 (
-  '5a79e39b-f4f3-457b-8e6f-f8b90c359475',
+  '7fe6c659-1f01-4c2d-ba38-57376348206a',
   4,
   'phrases',
   null,
@@ -685,19 +685,19 @@ values
   $json${
   "teacher": [
     "What are your interests?",
-    "How would you describe your personality?"
+    "What is your style?"
   ],
   "student": [
     "My interests are music and sports.",
-    "My personality is friendly and funny."
+    "My style is casual."
   ],
-  "note": "Think about what makes a great profile!",
+  "note": "Use the frame: My interests are ___. My style is ___.",
   "title": "Practice the Conversation"
 }$json$::jsonb,
   true
 ),
 (
-  '5a79e39b-f4f3-457b-8e6f-f8b90c359475',
+  '7fe6c659-1f01-4c2d-ba38-57376348206a',
   5,
   'activity',
   null,
@@ -710,23 +710,23 @@ values
     },
     {
       "speaker": "B",
-      "text": "My [personality] is friendly and curious."
+      "text": "My [hobby] is drawing."
     },
     {
       "speaker": "A",
-      "text": "This is my new [profile] post."
+      "text": "My [style] is casual."
     }
   ],
   "blanks": [
     "interests",
-    "personality",
-    "profile"
+    "hobby",
+    "style"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '5a79e39b-f4f3-457b-8e6f-f8b90c359475',
+  '7fe6c659-1f01-4c2d-ba38-57376348206a',
   6,
   'speaking',
   null,
@@ -735,69 +735,69 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "What would your profile post say?"
+      "text": "What are your interests?"
     },
     {
       "speaker": "B",
-      "text": "My interests are music and photography, and I'm friendly but a bit shy."
+      "text": "My interests are music and photography. My style is casual."
     },
     {
       "speaker": "A",
-      "text": "Mine would say I love sports and I'm confident and funny."
+      "text": "My hobby is gaming. I am friendly and funny."
     },
     {
       "speaker": "B",
       "text": "Sounds like a great profile!"
     }
   ],
-  "note": "Switch! Student becomes A, teacher becomes B."
+  "note": "Switch! Student becomes A, teacher becomes B. Use the frames from Lessons 1-3."
 }$json$::jsonb,
   true
 ),
 (
-  '5a79e39b-f4f3-457b-8e6f-f8b90c359475',
+  '7fe6c659-1f01-4c2d-ba38-57376348206a',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "Hi, I'm Ana! My interests are music and drawing. My style is colorful and casual. I'm friendly, but sometimes shy. I love spending time with my friends because they make me laugh. That's a bit about me!",
+  "text": "Hi, I'm Ana! My interests are music and drawing. My style is colorful. I am friendly.",
   "questions": [
     "What are Ana's interests?",
     "What is Ana's style?",
-    "Why does Ana love spending time with friends?"
+    "Is Ana friendly?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '5a79e39b-f4f3-457b-8e6f-f8b90c359475',
+  '7fe6c659-1f01-4c2d-ba38-57376348206a',
   8,
   'writing',
   null,
   null,
   $json${
   "prompts": [
-    "My interests are ___ and ___.",
-    "My personality is ___.",
-    "I love ___ because ___."
+    "My interests are ___.",
+    "My style is ___.",
+    "I am ___."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '5a79e39b-f4f3-457b-8e6f-f8b90c359475',
+  '7fe6c659-1f01-4c2d-ba38-57376348206a',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Write a short profile post",
-    "Describe interests and personality",
-    "Connect ideas with and/but/because"
+    "Write a short profile",
+    "Use 'My interests are ___'",
+    "Use 'My style is ___' and 'I am ___'"
   ],
-  "challenge": "Read me your profile post!"
+  "challenge": "Read me your profile post using the frames you practiced!"
 }$json$::jsonb,
   true
 );
@@ -805,13 +805,13 @@ values
 -- Lesson 5: Unit Review
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '45e51fb1-e051-41fb-bc0e-ecf41e4721eb',
+  '58107b29-9612-48c9-b05e-b96070882f19',
   'Unit Review',
   'A2',
   'teens',
   1,
   5,
-  'Review identity, style comparisons, and a teen profile.',
+  'Review identity and style descriptions using simple present. [Foundation tier]',
   25,
   9,
   true
@@ -820,7 +820,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '45e51fb1-e051-41fb-bc0e-ecf41e4721eb',
+  '58107b29-9612-48c9-b05e-b96070882f19',
   1,
   'title',
   null,
@@ -831,7 +831,7 @@ values
   true
 ),
 (
-  '45e51fb1-e051-41fb-bc0e-ecf41e4721eb',
+  '58107b29-9612-48c9-b05e-b96070882f19',
   2,
   'warmup',
   null,
@@ -839,7 +839,7 @@ values
   $json${
   "display": "🪞",
   "questions": [
-    "How would you describe your style?",
+    "What is your style?",
     "Who do you admire?"
   ],
   "title": "What's your take?"
@@ -847,7 +847,7 @@ values
   true
 ),
 (
-  '45e51fb1-e051-41fb-bc0e-ecf41e4721eb',
+  '58107b29-9612-48c9-b05e-b96070882f19',
   3,
   'vocabulary',
   null,
@@ -863,11 +863,11 @@ values
       "bg": "#E1F5EE"
     },
     {
-      "word": "Different",
+      "word": "Personality",
       "bg": "#EEEDFE"
     },
     {
-      "word": "Profile",
+      "word": "Interests",
       "bg": "#FAEEDA"
     }
   ],
@@ -877,7 +877,7 @@ values
   true
 ),
 (
-  '45e51fb1-e051-41fb-bc0e-ecf41e4721eb',
+  '58107b29-9612-48c9-b05e-b96070882f19',
   4,
   'phrases',
   null,
@@ -885,19 +885,19 @@ values
   $json${
   "teacher": [
     "What is your style?",
-    "Who inspires you?"
+    "Who do you admire?"
   ],
   "student": [
-    "My style is casual and colorful.",
-    "My sister inspires me because she is hardworking."
+    "My style is casual.",
+    "I admire my sister."
   ],
-  "note": "Use everything you learned this unit!",
+  "note": "Use the frames you learned this unit!",
   "title": "Practice the Conversation"
 }$json$::jsonb,
   true
 ),
 (
-  '45e51fb1-e051-41fb-bc0e-ecf41e4721eb',
+  '58107b29-9612-48c9-b05e-b96070882f19',
   5,
   'activity',
   null,
@@ -906,27 +906,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "My [style] is casual and neat."
+      "text": "My [style] is casual."
     },
     {
       "speaker": "B",
-      "text": "I [admire] my coach because she is confident."
+      "text": "I [admire] my coach."
     },
     {
       "speaker": "A",
-      "text": "My friend is [different] from me, but we get along."
+      "text": "My [personality] is friendly."
     }
   ],
   "blanks": [
     "style",
     "admire",
-    "different"
+    "personality"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '45e51fb1-e051-41fb-bc0e-ecf41e4721eb',
+  '58107b29-9612-48c9-b05e-b96070882f19',
   6,
   'speaking',
   null,
@@ -935,19 +935,19 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "Tell me about your style and who you admire."
+      "text": "Tell me about your style and personality."
     },
     {
       "speaker": "B",
-      "text": "My style is sporty and colorful. I admire my brother because he's hardworking."
+      "text": "My style is casual. I am friendly and confident."
     },
     {
       "speaker": "A",
-      "text": "We're different, but we both love music."
+      "text": "I admire my brother. He is kind and hardworking."
     },
     {
       "speaker": "B",
-      "text": "That's what makes friendship interesting!"
+      "text": "Nice to know you!"
     }
   ],
   "note": "Switch! Student becomes A, teacher becomes B."
@@ -955,38 +955,38 @@ values
   true
 ),
 (
-  '45e51fb1-e051-41fb-bc0e-ecf41e4721eb',
+  '58107b29-9612-48c9-b05e-b96070882f19',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "Hi, I'm Leo. My style is sporty and casual because I love being active. I admire my dad because he is hardworking and kind. My best friend has a different style, more colorful and neat, but we still have a lot in common.",
+  "text": "Hi, I'm Leo. My style is casual. I am friendly and confident. I admire my dad. He is kind and hardworking.",
   "questions": [
     "What is Leo's style?",
-    "Who does Leo admire?",
-    "Is Leo's friend's style the same or different?"
+    "What is Leo like?",
+    "Who does Leo admire?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '45e51fb1-e051-41fb-bc0e-ecf41e4721eb',
+  '58107b29-9612-48c9-b05e-b96070882f19',
   8,
   'writing',
   null,
   null,
   $json${
   "prompts": [
-    "My style is ___ because ___.",
-    "I admire ___ because ___.",
-    "My friend and I are ___."
+    "My style is ___.",
+    "I am ___.",
+    "I admire ___ because he/she is ___."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '45e51fb1-e051-41fb-bc0e-ecf41e4721eb',
+  '58107b29-9612-48c9-b05e-b96070882f19',
   9,
   'review',
   null,
@@ -994,11 +994,10 @@ values
   $json${
   "checklist": [
     "Describe my style",
-    "Talk about someone I admire",
-    "Compare myself with others",
-    "Write a profile post"
+    "Describe my personality",
+    "Describe someone I admire"
   ],
-  "challenge": "Tell me all about your identity and style!"
+  "challenge": "Tell me your style, your personality, and who you admire!"
 }$json$::jsonb,
   true
 );

@@ -1,17 +1,17 @@
--- A2 Teens Unit 8: Travel and Holidays (5 lessons)
--- Generated from project_a2_teens_master_curriculum memory.
+-- A2 Teens Unit 8: Travel and Holidays (5 lessons) — TIERED (Combination)
+-- Regenerated per the Sentivo Intra-Level Progression Framework.
 -- Run this whole script in the Supabase SQL editor.
 
 -- Lesson 1: Travel Plans
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  'becf9e18-e168-480a-83f2-576a499125da',
+  'f5f4dd16-a90c-49ae-bc12-03ecd8649cdf',
   'Travel Plans',
   'A2',
   'teens',
   8,
   1,
-  'Talk about future travel plans using going to.',
+  'Compare travel plans and destinations with reasons. [Combination tier]',
   25,
   9,
   true
@@ -20,7 +20,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  'becf9e18-e168-480a-83f2-576a499125da',
+  'f5f4dd16-a90c-49ae-bc12-03ecd8649cdf',
   1,
   'title',
   null,
@@ -31,7 +31,7 @@ values
   true
 ),
 (
-  'becf9e18-e168-480a-83f2-576a499125da',
+  'f5f4dd16-a90c-49ae-bc12-03ecd8649cdf',
   2,
   'warmup',
   null,
@@ -39,15 +39,15 @@ values
   $json${
   "display": "✈️",
   "questions": [
-    "Are you going to travel this year?",
-    "Where would you like to go?"
+    "Is your next trip cheaper or more expensive than your last one?",
+    "Is it farther than your last destination?"
   ],
   "title": "What's your take?"
 }$json$::jsonb,
   true
 ),
 (
-  'becf9e18-e168-480a-83f2-576a499125da',
+  'f5f4dd16-a90c-49ae-bc12-03ecd8649cdf',
   3,
   'vocabulary',
   null,
@@ -59,15 +59,15 @@ values
       "bg": "#FAECE7"
     },
     {
-      "word": "Destination",
+      "word": "Cheaper than",
       "bg": "#E1F5EE"
     },
     {
-      "word": "Pack",
+      "word": "Farther than",
       "bg": "#EEEDFE"
     },
     {
-      "word": "Itinerary",
+      "word": "Because",
       "bg": "#FAEEDA"
     }
   ],
@@ -77,27 +77,27 @@ values
   true
 ),
 (
-  'becf9e18-e168-480a-83f2-576a499125da',
+  'f5f4dd16-a90c-49ae-bc12-03ecd8649cdf',
   4,
   'phrases',
   null,
   null,
   $json${
   "teacher": [
-    "Where are you going to travel?",
-    "When will you go?"
+    "Is this trip cheaper than your last one?",
+    "Why did you choose this destination?"
   ],
   "student": [
-    "I'm going to visit my cousins.",
-    "We're going in the summer."
+    "Yes, it's cheaper than last year's trip.",
+    "I chose it because it's closer."
   ],
-  "note": "Think about a real or dream travel plan!",
+  "note": "Partial prompt: This trip is ___ than my last one because ___.",
   "title": "Practice the Conversation"
 }$json$::jsonb,
   true
 ),
 (
-  'becf9e18-e168-480a-83f2-576a499125da',
+  'f5f4dd16-a90c-49ae-bc12-03ecd8649cdf',
   5,
   'activity',
   null,
@@ -106,27 +106,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "I'm [going to] visit my cousins this summer."
+      "text": "This trip is [cheaper than] last year's."
     },
     {
       "speaker": "B",
-      "text": "My [destination] is a beach town."
+      "text": "It's also [farther than] my last destination."
     },
     {
       "speaker": "A",
-      "text": "I need to [pack] my bags soon."
+      "text": "I chose it [because] of the beaches."
     }
   ],
   "blanks": [
-    "going to",
-    "destination",
-    "pack"
+    "cheaper than",
+    "farther than",
+    "because"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'becf9e18-e168-480a-83f2-576a499125da',
+  'f5f4dd16-a90c-49ae-bc12-03ecd8649cdf',
   6,
   'speaking',
   null,
@@ -135,69 +135,69 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "Are you going to travel this year?"
+      "text": "How does this trip compare to your last one?"
     },
     {
       "speaker": "B",
-      "text": "Yes, I'm going to visit my cousins. My destination is a small coastal town."
+      "text": "It's cheaper than last year's trip, because we're staying with family."
     },
     {
       "speaker": "A",
-      "text": "I need to pack soon, we leave next week!"
+      "text": "It's farther than my last destination, but I chose it because of the beaches."
     },
     {
       "speaker": "B",
-      "text": "Have an amazing trip!"
+      "text": "Sounds like an exciting choice!"
     }
   ],
-  "note": "Switch! Student becomes A, teacher becomes B."
+  "note": "Switch! Student becomes A, teacher becomes B. Compare this trip to a past one, with a reason."
 }$json$::jsonb,
   true
 ),
 (
-  'becf9e18-e168-480a-83f2-576a499125da',
+  'f5f4dd16-a90c-49ae-bc12-03ecd8649cdf',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "This summer, I'm going to travel to visit my cousins in a coastal town. My destination is famous for its beaches. I need to pack my bags soon because we leave in two weeks. I can't wait!",
+  "text": "This year, I'm planning a trip that's quite different from last year's. It's cheaper than my last trip, because we're staying with relatives instead of a hotel. It's also farther than where I went before, almost twice the distance, but I chose this destination because of the famous beaches and the lower cost of food. Compared to last year, I expect this trip to feel more relaxing, because we won't need to plan every detail ourselves.",
   "questions": [
-    "Where is the writer going to travel?",
-    "What is the destination famous for?",
-    "When do they leave?"
+    "Why is this trip cheaper than last year's?",
+    "How does the distance compare to last year?",
+    "Why did the writer choose this destination?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'becf9e18-e168-480a-83f2-576a499125da',
+  'f5f4dd16-a90c-49ae-bc12-03ecd8649cdf',
   8,
   'writing',
   null,
   null,
   $json${
   "prompts": [
-    "I'm going to travel to ___.",
-    "My destination is ___.",
-    "I need to pack ___."
+    "This trip is cheaper/more expensive than my last one because ___.",
+    "It's farther/closer than ___.",
+    "I chose it because ___."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'becf9e18-e168-480a-83f2-576a499125da',
+  'f5f4dd16-a90c-49ae-bc12-03ecd8649cdf',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Use 'going to' for travel plans",
-    "Talk about a destination",
-    "Say when I will travel"
+    "Compare a new trip to a past one",
+    "Use comparatives with a reason",
+    "Explain a travel choice"
   ],
-  "challenge": "Tell me about a trip you're planning or dreaming about!"
+  "challenge": "Tell me about a trip you're planning, compared to a past one!"
 }$json$::jsonb,
   true
 );
@@ -205,13 +205,13 @@ values
 -- Lesson 2: Last Holiday
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '8162eff8-299e-495a-81ce-845210eba37d',
+  '6f6f589e-284f-46bb-a339-096ce064d41b',
   'Last Holiday',
   'A2',
   'teens',
   8,
   2,
-  'Describe a past holiday using simple past.',
+  'Tell a past holiday story comparing it to expectations. [Combination tier]',
   25,
   9,
   true
@@ -220,7 +220,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '8162eff8-299e-495a-81ce-845210eba37d',
+  '6f6f589e-284f-46bb-a339-096ce064d41b',
   1,
   'title',
   null,
@@ -231,7 +231,7 @@ values
   true
 ),
 (
-  '8162eff8-299e-495a-81ce-845210eba37d',
+  '6f6f589e-284f-46bb-a339-096ce064d41b',
   2,
   'warmup',
   null,
@@ -239,15 +239,15 @@ values
   $json${
   "display": "🧳",
   "questions": [
-    "Where did you go on your last holiday?",
-    "Did you explore a new place?"
+    "Was your last holiday better or worse than you expected?",
+    "Did you discover something you didn't expect?"
   ],
   "title": "What's your take?"
 }$json$::jsonb,
   true
 ),
 (
-  '8162eff8-299e-495a-81ce-845210eba37d',
+  '6f6f589e-284f-46bb-a339-096ce064d41b',
   3,
   'vocabulary',
   null,
@@ -259,11 +259,11 @@ values
       "bg": "#FAECE7"
     },
     {
-      "word": "Explored",
+      "word": "Better than expected",
       "bg": "#E1F5EE"
     },
     {
-      "word": "Relaxed",
+      "word": "Explored",
       "bg": "#EEEDFE"
     },
     {
@@ -277,27 +277,27 @@ values
   true
 ),
 (
-  '8162eff8-299e-495a-81ce-845210eba37d',
+  '6f6f589e-284f-46bb-a339-096ce064d41b',
   4,
   'phrases',
   null,
   null,
   $json${
   "teacher": [
-    "Where did you go on your last holiday?",
-    "What did you do there?"
+    "Was your last holiday better than you expected?",
+    "What did you discover?"
   ],
   "student": [
-    "I flew to the coast.",
-    "I explored the old town."
+    "It was much better than expected.",
+    "I discovered a hidden beach."
   ],
-  "note": "Think about your last holiday!",
+  "note": "Partial prompt: My last holiday was ___ than I expected because ___.",
   "title": "Practice the Conversation"
 }$json$::jsonb,
   true
 ),
 (
-  '8162eff8-299e-495a-81ce-845210eba37d',
+  '6f6f589e-284f-46bb-a339-096ce064d41b',
   5,
   'activity',
   null,
@@ -306,27 +306,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "Last holiday, I [flew] to the coast."
+      "text": "I [flew] to the coast last summer."
     },
     {
       "speaker": "B",
-      "text": "I [explored] a new city."
+      "text": "It was [better than expected]."
     },
     {
       "speaker": "A",
-      "text": "I [relaxed] on the beach all day."
+      "text": "I [discovered] a quiet beach."
     }
   ],
   "blanks": [
     "flew",
-    "explored",
-    "relaxed"
+    "better than expected",
+    "discovered"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '8162eff8-299e-495a-81ce-845210eba37d',
+  '6f6f589e-284f-46bb-a339-096ce064d41b',
   6,
   'speaking',
   null,
@@ -335,69 +335,69 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "Where did you go on your last holiday?"
+      "text": "Was your last holiday better or worse than you expected?"
     },
     {
       "speaker": "B",
-      "text": "I flew to the coast with my family. We explored the old town."
+      "text": "It was better than expected because the weather was perfect the whole week."
     },
     {
       "speaker": "A",
-      "text": "I discovered a beautiful hidden beach and relaxed all day."
+      "text": "I flew somewhere new and discovered a hidden beach that wasn't in any guidebook."
     },
     {
       "speaker": "B",
-      "text": "That sounds amazing!"
+      "text": "That sounds like an amazing surprise!"
     }
   ],
-  "note": "Switch! Student becomes A, teacher becomes B."
+  "note": "Switch! Student becomes A, teacher becomes B. Compare the trip to expectations, with a reason."
 }$json$::jsonb,
   true
 ),
 (
-  '8162eff8-299e-495a-81ce-845210eba37d',
+  '6f6f589e-284f-46bb-a339-096ce064d41b',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "Last summer, I flew to a coastal city with my family. We explored the old town and discovered a beautiful hidden beach. I relaxed there for hours. It was one of the best holidays I've ever had.",
+  "text": "Last summer, I flew to a coastal town I had never visited before. Honestly, I expected it to be crowded and touristy, but it turned out to be much quieter than I imagined. I explored the old streets on the first day, and then I discovered a hidden beach that wasn't mentioned in any guidebook, which was better than anything I had planned. Compared to my last trip, this holiday felt more relaxing, because I had fewer plans and more time to simply enjoy the moment.",
   "questions": [
-    "How did the writer travel?",
-    "What did they explore?",
-    "What did they discover?"
+    "What did the writer expect the town to be like?",
+    "What did the writer discover?",
+    "How did this holiday compare to the last one?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '8162eff8-299e-495a-81ce-845210eba37d',
+  '6f6f589e-284f-46bb-a339-096ce064d41b',
   8,
   'writing',
   null,
   null,
   $json${
   "prompts": [
-    "Last holiday, I ___.",
-    "I explored ___.",
-    "I discovered ___."
+    "I expected ___ to be ___, but it was ___.",
+    "I discovered ___.",
+    "Compared to my last trip, this one felt ___ because ___."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '8162eff8-299e-495a-81ce-845210eba37d',
+  '6f6f589e-284f-46bb-a339-096ce064d41b',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Use past verbs: flew, explored, relaxed, discovered",
-    "Tell a holiday story",
-    "Describe a past trip"
+    "Tell a holiday story comparing it to expectations",
+    "Use 'better/worse than expected'",
+    "Compare two different trips"
   ],
-  "challenge": "Tell me about your last holiday!"
+  "challenge": "Tell me about a holiday that was different from what you expected!"
 }$json$::jsonb,
   true
 );
@@ -405,13 +405,13 @@ values
 -- Lesson 3: Beach or City?
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  'e24c011a-23c8-432e-b5da-3d899ad93124',
+  'b470bf8e-ed32-4079-b677-f08e49b993b3',
   'Beach or City?',
   'A2',
   'teens',
   8,
   3,
-  'Compare holiday types using comparatives and opinions.',
+  'Compare and justify a holiday preference. [Combination tier]',
   25,
   9,
   true
@@ -420,7 +420,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  'e24c011a-23c8-432e-b5da-3d899ad93124',
+  'b470bf8e-ed32-4079-b677-f08e49b993b3',
   1,
   'title',
   null,
@@ -431,7 +431,7 @@ values
   true
 ),
 (
-  'e24c011a-23c8-432e-b5da-3d899ad93124',
+  'b470bf8e-ed32-4079-b677-f08e49b993b3',
   2,
   'warmup',
   null,
@@ -439,15 +439,15 @@ values
   $json${
   "display": "🏙️",
   "questions": [
-    "Do you prefer the beach or the city on holiday?",
-    "Which is more relaxing for you?"
+    "Is the beach more relaxing than the city for you?",
+    "Compared to the city, is the beach more or less exciting?"
   ],
   "title": "What's your take?"
 }$json$::jsonb,
   true
 ),
 (
-  'e24c011a-23c8-432e-b5da-3d899ad93124',
+  'b470bf8e-ed32-4079-b677-f08e49b993b3',
   3,
   'vocabulary',
   null,
@@ -467,7 +467,7 @@ values
       "bg": "#EEEDFE"
     },
     {
-      "word": "Peaceful",
+      "word": "Compared to",
       "bg": "#FAEEDA"
     }
   ],
@@ -477,27 +477,27 @@ values
   true
 ),
 (
-  'e24c011a-23c8-432e-b5da-3d899ad93124',
+  'b470bf8e-ed32-4079-b677-f08e49b993b3',
   4,
   'phrases',
   null,
   null,
   $json${
   "teacher": [
-    "Is the beach more relaxing than the city?",
-    "Which do you prefer?"
+    "Compared to the city, is the beach more relaxing?",
+    "Which do you prefer, and why?"
   ],
   "student": [
-    "Yes, the beach is more relaxing.",
+    "Yes, the beach is more relaxing than the city.",
     "I prefer the city because it's livelier."
   ],
-  "note": "Compare two types of holiday!",
+  "note": "Partial prompt: Compared to ___, ___ is more ___ because ___.",
   "title": "Practice the Conversation"
 }$json$::jsonb,
   true
 ),
 (
-  'e24c011a-23c8-432e-b5da-3d899ad93124',
+  'b470bf8e-ed32-4079-b677-f08e49b993b3',
   5,
   'activity',
   null,
@@ -514,19 +514,19 @@ values
     },
     {
       "speaker": "A",
-      "text": "I prefer [peaceful] places."
+      "text": "[Compared to] last year, I prefer quieter trips now."
     }
   ],
   "blanks": [
     "more relaxing",
     "livelier",
-    "peaceful"
+    "compared to"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'e24c011a-23c8-432e-b5da-3d899ad93124',
+  'b470bf8e-ed32-4079-b677-f08e49b993b3',
   6,
   'speaking',
   null,
@@ -535,69 +535,69 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "Do you prefer beach holidays or city holidays?"
+      "text": "Compared to the city, is the beach more relaxing for you?"
     },
     {
       "speaker": "B",
-      "text": "I prefer the beach, it's more relaxing and peaceful."
+      "text": "Yes, definitely, the beach is more relaxing than the city because there's less noise."
     },
     {
       "speaker": "A",
-      "text": "I prefer the city, it's livelier and there's more culture to explore."
+      "text": "I prefer the city because it's livelier and has more culture, compared to a quiet beach town."
     },
     {
       "speaker": "B",
-      "text": "We're opposites when it comes to holidays!"
+      "text": "We really do have different tastes!"
     }
   ],
-  "note": "Switch! Student becomes A, teacher becomes B."
+  "note": "Switch! Student becomes A, teacher becomes B. Compare with a specific reason each time."
 }$json$::jsonb,
   true
 ),
 (
-  'e24c011a-23c8-432e-b5da-3d899ad93124',
+  'b470bf8e-ed32-4079-b677-f08e49b993b3',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "Two friends have different holiday preferences. Mia prefers the beach because it's more relaxing and peaceful. Leo prefers the city because it's livelier and more cultural, with museums and events. They agree both can be great holidays.",
+  "text": "My friend and I have different holiday preferences, and comparing them says a lot about us. For me, the beach is more relaxing than the city, because there's less noise and I don't have to plan every hour. Compared to my beach trips, my friend's city trips are livelier and more cultural, with museums and events every day. Last year, we tried a compromise: half the trip at the beach, half in the city, and compared to doing only one, it turned out to be the best of both.",
   "questions": [
-    "What does Mia prefer?",
-    "Why does Leo prefer the city?",
-    "What do they agree on?"
+    "Why does the writer prefer the beach?",
+    "How does the friend's preference compare?",
+    "What compromise did they try last year?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'e24c011a-23c8-432e-b5da-3d899ad93124',
+  'b470bf8e-ed32-4079-b677-f08e49b993b3',
   8,
   'writing',
   null,
   null,
   $json${
   "prompts": [
-    "I prefer ___ holidays because ___.",
-    "The beach is more ___ than the city.",
-    "The city is more ___ than the beach."
+    "Compared to the city/beach, I prefer ___ because ___.",
+    "My friend prefers ___ because ___.",
+    "Last year, we tried ___, and compared to before, it was ___."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'e24c011a-23c8-432e-b5da-3d899ad93124',
+  'b470bf8e-ed32-4079-b677-f08e49b993b3',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Compare beach and city holidays",
-    "Use comparatives",
-    "Give my holiday preference"
+    "Compare beach and city holidays with reasons",
+    "Use 'compared to' as a connector",
+    "Describe a compromise between two preferences"
   ],
-  "challenge": "Tell me if you prefer the beach or the city, and why!"
+  "challenge": "Tell me if you prefer the beach or the city, compared to the other, and why!"
 }$json$::jsonb,
   true
 );
@@ -605,13 +605,13 @@ values
 -- Lesson 4: A Travel Message
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '4bb30430-a3af-4b8b-a5d8-710f8361dfd6',
+  '59a6b1bc-684f-4ba7-afda-256c1d526b22',
   'A Travel Message',
   'A2',
   'teens',
   8,
   4,
-  'Write a short message describing a trip.',
+  'Write a comparative travel message. [Combination tier]',
   25,
   9,
   true
@@ -620,7 +620,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '4bb30430-a3af-4b8b-a5d8-710f8361dfd6',
+  '59a6b1bc-684f-4ba7-afda-256c1d526b22',
   1,
   'title',
   null,
@@ -631,7 +631,7 @@ values
   true
 ),
 (
-  '4bb30430-a3af-4b8b-a5d8-710f8361dfd6',
+  '59a6b1bc-684f-4ba7-afda-256c1d526b22',
   2,
   'warmup',
   null,
@@ -639,15 +639,15 @@ values
   $json${
   "display": "💌",
   "questions": [
-    "Have you sent a postcard or message from a trip?",
-    "What would you write?"
+    "Is this trip better than you imagined so far?",
+    "How is it compared to home?"
   ],
   "title": "What's your take?"
 }$json$::jsonb,
   true
 ),
 (
-  '4bb30430-a3af-4b8b-a5d8-710f8361dfd6',
+  '59a6b1bc-684f-4ba7-afda-256c1d526b22',
   3,
   'vocabulary',
   null,
@@ -655,7 +655,7 @@ values
   $json${
   "words": [
     {
-      "word": "Amazing",
+      "word": "Better than",
       "bg": "#FAECE7"
     },
     {
@@ -663,11 +663,11 @@ values
       "bg": "#E1F5EE"
     },
     {
-      "word": "View",
+      "word": "So far",
       "bg": "#EEEDFE"
     },
     {
-      "word": "Memories",
+      "word": "Compared to home",
       "bg": "#FAEEDA"
     }
   ],
@@ -677,27 +677,27 @@ values
   true
 ),
 (
-  '4bb30430-a3af-4b8b-a5d8-710f8361dfd6',
+  '59a6b1bc-684f-4ba7-afda-256c1d526b22',
   4,
   'phrases',
   null,
   null,
   $json${
   "teacher": [
-    "What would you write in a travel message?",
-    "What is the view like?"
+    "Is the trip better than you expected so far?",
+    "How does it compare to home?"
   ],
   "student": [
-    "I'd write about the amazing food.",
-    "The view is beautiful."
+    "Yes, so far it's better than I imagined.",
+    "It's much quieter compared to home."
   ],
-  "note": "Think about a travel message you'd send!",
+  "note": "Partial prompt: So far, this trip is ___ than I expected. Compared to home, it's ___.",
   "title": "Practice the Conversation"
 }$json$::jsonb,
   true
 ),
 (
-  '4bb30430-a3af-4b8b-a5d8-710f8361dfd6',
+  '59a6b1bc-684f-4ba7-afda-256c1d526b22',
   5,
   'activity',
   null,
@@ -706,27 +706,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "This trip is [amazing]!"
+      "text": "This trip is [better than] I imagined."
     },
     {
       "speaker": "B",
-      "text": "I [wish you were here] with me."
+      "text": "[So far], everything has been amazing."
     },
     {
       "speaker": "A",
-      "text": "The [view] from the hotel is beautiful."
+      "text": "[Compared to home], it's much quieter."
     }
   ],
   "blanks": [
-    "amazing",
-    "wish you were here",
-    "view"
+    "better than",
+    "so far",
+    "compared to home"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '4bb30430-a3af-4b8b-a5d8-710f8361dfd6',
+  '59a6b1bc-684f-4ba7-afda-256c1d526b22',
   6,
   'speaking',
   null,
@@ -735,69 +735,69 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "What would you write to a friend from your trip?"
+      "text": "What would you write to a friend about your trip so far?"
     },
     {
       "speaker": "B",
-      "text": "This trip is amazing! The view from our hotel is beautiful. Wish you were here!"
+      "text": "So far, this trip is better than I expected. Compared to home, everything moves slower here."
     },
     {
       "speaker": "A",
-      "text": "I'd write about the memories we're making every day."
+      "text": "I'd write about how the food is spicier than what we're used to."
     },
     {
       "speaker": "B",
-      "text": "That sounds like a lovely message!"
+      "text": "That sounds like a great message!"
     }
   ],
-  "note": "Switch! Student becomes A, teacher becomes B."
+  "note": "Switch! Student becomes A, teacher becomes B. Compare the trip to expectations and to home."
 }$json$::jsonb,
   true
 ),
 (
-  '4bb30430-a3af-4b8b-a5d8-710f8361dfd6',
+  '59a6b1bc-684f-4ba7-afda-256c1d526b22',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "Message from vacation: Hi! This trip is amazing. The view from our hotel is beautiful, and the food is delicious. We're making so many great memories. Wish you were here! See you next week.",
+  "text": "Message from vacation: Hi! This trip is better than I imagined so far. Compared to home, everything here feels slower and calmer, which I really needed. The food is spicier than what we usually eat, but it's delicious. The view from our room is more beautiful than any photo I saw online. Compared to last year's trip, this one already feels more relaxing. Wish you were here! I'll tell you everything when I'm back.",
   "questions": [
-    "How does the writer describe the trip?",
-    "What is the view like?",
-    "What does the writer say about memories?"
+    "How does the trip compare to the writer's expectations?",
+    "How does the food compare to home?",
+    "How does this trip compare to last year's?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '4bb30430-a3af-4b8b-a5d8-710f8361dfd6',
+  '59a6b1bc-684f-4ba7-afda-256c1d526b22',
   8,
   'writing',
   null,
   null,
   $json${
   "prompts": [
-    "This trip is ___!",
-    "The view is ___.",
-    "Wish you were here because ___."
+    "So far, this trip is ___ than I expected.",
+    "Compared to home, ___.",
+    "Compared to last year's trip, this one is ___."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '4bb30430-a3af-4b8b-a5d8-710f8361dfd6',
+  '59a6b1bc-684f-4ba7-afda-256c1d526b22',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Write a short travel message",
-    "Describe a view or experience",
-    "Use 'wish you were here'"
+    "Write a comparative travel message",
+    "Compare a trip to expectations and to home",
+    "Use 'so far' and 'compared to'"
   ],
-  "challenge": "Write and read me a travel message from an imaginary trip!"
+  "challenge": "Write a travel message comparing an imaginary trip to home and to a past trip!"
 }$json$::jsonb,
   true
 );
@@ -805,13 +805,13 @@ values
 -- Lesson 5: Unit Review
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  'ff88386a-bdf2-4b42-9e9e-ef68eddad1c0',
+  'e5f2fea9-a458-471b-9138-7e0c4c3825e9',
   'Unit Review',
   'A2',
   'teens',
   8,
   5,
-  'Review travel plans, a past holiday, comparisons, and a travel message.',
+  'Review travel plans, a past holiday, comparisons, and a travel message. [Combination tier]',
   25,
   9,
   true
@@ -820,7 +820,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  'ff88386a-bdf2-4b42-9e9e-ef68eddad1c0',
+  'e5f2fea9-a458-471b-9138-7e0c4c3825e9',
   1,
   'title',
   null,
@@ -831,7 +831,7 @@ values
   true
 ),
 (
-  'ff88386a-bdf2-4b42-9e9e-ef68eddad1c0',
+  'e5f2fea9-a458-471b-9138-7e0c4c3825e9',
   2,
   'warmup',
   null,
@@ -839,15 +839,15 @@ values
   $json${
   "display": "🌍",
   "questions": [
-    "Where would you like to travel?",
-    "Where did you go on your last trip?"
+    "Was your last trip cheaper or more expensive than planned?",
+    "Was it better or worse than expected?"
   ],
   "title": "What's your take?"
 }$json$::jsonb,
   true
 ),
 (
-  'ff88386a-bdf2-4b42-9e9e-ef68eddad1c0',
+  'e5f2fea9-a458-471b-9138-7e0c4c3825e9',
   3,
   'vocabulary',
   null,
@@ -855,19 +855,19 @@ values
   $json${
   "words": [
     {
-      "word": "Travel",
+      "word": "Cheaper than",
       "bg": "#FAECE7"
     },
     {
-      "word": "Explored",
+      "word": "Better than expected",
       "bg": "#E1F5EE"
     },
     {
-      "word": "Prefer",
+      "word": "Compared to",
       "bg": "#EEEDFE"
     },
     {
-      "word": "Amazing",
+      "word": "So far",
       "bg": "#FAEEDA"
     }
   ],
@@ -877,27 +877,27 @@ values
   true
 ),
 (
-  'ff88386a-bdf2-4b42-9e9e-ef68eddad1c0',
+  'e5f2fea9-a458-471b-9138-7e0c4c3825e9',
   4,
   'phrases',
   null,
   null,
   $json${
   "teacher": [
-    "Where are you going to travel?",
-    "Where did you go last time?"
+    "How did your trip compare to what you planned?",
+    "Was it better or worse than expected?"
   ],
   "student": [
-    "I'm going to visit the coast.",
-    "Last time, I explored a new city."
+    "It was cheaper than planned.",
+    "It was better than expected."
   ],
-  "note": "Use everything you learned this unit!",
+  "note": "Use comparatives with reasons throughout.",
   "title": "Practice the Conversation"
 }$json$::jsonb,
   true
 ),
 (
-  'ff88386a-bdf2-4b42-9e9e-ef68eddad1c0',
+  'e5f2fea9-a458-471b-9138-7e0c4c3825e9',
   5,
   'activity',
   null,
@@ -906,27 +906,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "I'm going to [travel] to the coast this summer."
+      "text": "This trip was [cheaper than] I planned."
     },
     {
       "speaker": "B",
-      "text": "Last year, I [explored] a new city."
+      "text": "It was [better than expected] overall."
     },
     {
       "speaker": "A",
-      "text": "I [prefer] the beach because it's relaxing."
+      "text": "[Compared to] last year, I prefer this one."
     }
   ],
   "blanks": [
-    "travel",
-    "explored",
-    "prefer"
+    "cheaper than",
+    "better than expected",
+    "compared to"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'ff88386a-bdf2-4b42-9e9e-ef68eddad1c0',
+  'e5f2fea9-a458-471b-9138-7e0c4c3825e9',
   6,
   'speaking',
   null,
@@ -935,19 +935,19 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "Tell me about your travel plans and past trips."
+      "text": "Tell me about your travel plans and how they compared to reality."
     },
     {
       "speaker": "B",
-      "text": "I'm going to travel to the mountains this year. Last year, I explored a coastal city."
+      "text": "This trip was cheaper than I planned, because we stayed with family. It was better than expected overall."
     },
     {
       "speaker": "A",
-      "text": "Which do you prefer, the beach or the city?"
+      "text": "Compared to last year, do you prefer this trip?"
     },
     {
       "speaker": "B",
-      "text": "I prefer the beach, it's more relaxing. This trip is going to be amazing!"
+      "text": "Yes, definitely, because it felt more relaxing and less rushed."
     }
   ],
   "note": "Switch! Student becomes A, teacher becomes B."
@@ -955,50 +955,50 @@ values
   true
 ),
 (
-  'ff88386a-bdf2-4b42-9e9e-ef68eddad1c0',
+  'e5f2fea9-a458-471b-9138-7e0c4c3825e9',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "This year, I'm going to travel to the mountains with my family. Last year, we explored a coastal city and it was amazing. I prefer the beach because it's more relaxing than the city. I'm already excited to send everyone a travel message!",
+  "text": "This year's trip was cheaper than I planned, because we stayed with relatives instead of a hotel. It turned out better than expected: the beaches were more beautiful than any photo, and the food was spicier and more delicious than back home. Compared to last year's rushed city trip, this one felt more relaxing because we had fewer plans. So far, this is my favorite trip, and I already want to compare it to wherever I go next year.",
   "questions": [
-    "Where is the writer going to travel this year?",
-    "What did they do last year?",
-    "What does the writer prefer?"
+    "Why was this trip cheaper than planned?",
+    "How did it compare to expectations?",
+    "How did it compare to last year's trip?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'ff88386a-bdf2-4b42-9e9e-ef68eddad1c0',
+  'e5f2fea9-a458-471b-9138-7e0c4c3825e9',
   8,
   'writing',
   null,
   null,
   $json${
   "prompts": [
-    "This year, I'm going to ___.",
-    "Last year, I ___.",
-    "I prefer ___ because ___."
+    "This trip was cheaper/more expensive than planned because ___.",
+    "It was better/worse than expected because ___.",
+    "Compared to last year, this trip ___."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'ff88386a-bdf2-4b42-9e9e-ef68eddad1c0',
+  'e5f2fea9-a458-471b-9138-7e0c4c3825e9',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Talk about travel plans",
-    "Tell a past holiday story",
+    "Compare travel plans to reality",
+    "Tell a holiday story with comparisons",
     "Compare holiday types",
-    "Write a travel message"
+    "Write a comparative travel message"
   ],
-  "challenge": "Tell me all about your travel dreams and memories!"
+  "challenge": "Tell me all about your travel dreams, compared to your travel reality!"
 }$json$::jsonb,
   true
 );

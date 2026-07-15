@@ -1,17 +1,17 @@
--- A2 Teens Unit 3: School and Study Skills (5 lessons)
--- Generated from project_a2_teens_master_curriculum memory.
+-- A2 Teens Unit 3: School and Study Skills (5 lessons) — TIERED (Foundation)
+-- Regenerated per the Sentivo Intra-Level Progression Framework.
 -- Run this whole script in the Supabase SQL editor.
 
--- Lesson 1: School Subjects and Opinions
+-- Lesson 1: School Subjects
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '71eca52d-037c-4de6-b56b-15806a9582f1',
-  'School Subjects and Opinions',
+  '6fec1ec1-c141-4519-ae55-b1ca060a2a9d',
+  'School Subjects',
   'A2',
   'teens',
   3,
   1,
-  'Give opinions about school subjects using because.',
+  'Talk about subjects using frequency adverbs. [Foundation tier]',
   25,
   9,
   true
@@ -20,7 +20,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '71eca52d-037c-4de6-b56b-15806a9582f1',
+  '6fec1ec1-c141-4519-ae55-b1ca060a2a9d',
   1,
   'title',
   null,
@@ -31,7 +31,7 @@ values
   true
 ),
 (
-  '71eca52d-037c-4de6-b56b-15806a9582f1',
+  '6fec1ec1-c141-4519-ae55-b1ca060a2a9d',
   2,
   'warmup',
   null,
@@ -39,215 +39,15 @@ values
   $json${
   "display": "📘",
   "questions": [
-    "What is your favorite subject?",
-    "Is math interesting or boring for you?"
+    "What subject do you usually enjoy?",
+    "Do you always do homework?"
   ],
   "title": "What's your take?"
 }$json$::jsonb,
   true
 ),
 (
-  '71eca52d-037c-4de6-b56b-15806a9582f1',
-  3,
-  'vocabulary',
-  null,
-  null,
-  $json${
-  "words": [
-    {
-      "word": "Interesting",
-      "bg": "#FAECE7"
-    },
-    {
-      "word": "Boring",
-      "bg": "#E1F5EE"
-    },
-    {
-      "word": "Challenging",
-      "bg": "#EEEDFE"
-    },
-    {
-      "word": "Useful",
-      "bg": "#FAEEDA"
-    }
-  ],
-  "title": "New Words",
-  "subtitle": "Tap a card to see it bigger."
-}$json$::jsonb,
-  true
-),
-(
-  '71eca52d-037c-4de6-b56b-15806a9582f1',
-  4,
-  'phrases',
-  null,
-  null,
-  $json${
-  "teacher": [
-    "What do you think of history?",
-    "Is it interesting or boring?"
-  ],
-  "student": [
-    "I think history is interesting.",
-    "Math is challenging for me, but useful."
-  ],
-  "note": "Think about your real opinions on subjects!",
-  "title": "Practice the Conversation"
-}$json$::jsonb,
-  true
-),
-(
-  '71eca52d-037c-4de6-b56b-15806a9582f1',
-  5,
-  'activity',
-  null,
-  null,
-  $json${
-  "dialogue": [
-    {
-      "speaker": "A",
-      "text": "I think science is [interesting]."
-    },
-    {
-      "speaker": "B",
-      "text": "Math is [challenging] but useful."
-    },
-    {
-      "speaker": "A",
-      "text": "History can be [boring] sometimes."
-    }
-  ],
-  "blanks": [
-    "interesting",
-    "challenging",
-    "boring"
-  ]
-}$json$::jsonb,
-  true
-),
-(
-  '71eca52d-037c-4de6-b56b-15806a9582f1',
-  6,
-  'speaking',
-  null,
-  null,
-  $json${
-  "dialogue": [
-    {
-      "speaker": "A",
-      "text": "What do you think of your subjects this year?"
-    },
-    {
-      "speaker": "B",
-      "text": "I think art is interesting because I can be creative."
-    },
-    {
-      "speaker": "A",
-      "text": "Math is challenging for me, but I know it's useful."
-    },
-    {
-      "speaker": "B",
-      "text": "I feel the same about science!"
-    }
-  ],
-  "note": "Switch! Student becomes A, teacher becomes B."
-}$json$::jsonb,
-  true
-),
-(
-  '71eca52d-037c-4de6-b56b-15806a9582f1',
-  7,
-  'reading',
-  null,
-  null,
-  $json${
-  "text": "Two students share opinions. Ali writes: I think biology is interesting because we learn about real life. Zara writes: I find history a bit boring, but I know it's useful for understanding the world.",
-  "questions": [
-    "What does Ali think of biology?",
-    "What does Zara think of history?",
-    "Why does Zara say history is useful?"
-  ]
-}$json$::jsonb,
-  true
-),
-(
-  '71eca52d-037c-4de6-b56b-15806a9582f1',
-  8,
-  'writing',
-  null,
-  null,
-  $json${
-  "prompts": [
-    "I think ___ is ___.",
-    "___ is challenging because ___.",
-    "My favorite subject is ___ because ___."
-  ]
-}$json$::jsonb,
-  true
-),
-(
-  '71eca52d-037c-4de6-b56b-15806a9582f1',
-  9,
-  'review',
-  null,
-  null,
-  $json${
-  "checklist": [
-    "Give opinions about subjects",
-    "Use interesting/boring/challenging/useful",
-    "Explain my opinion with because"
-  ],
-  "challenge": "Tell me your honest opinion about three subjects!"
-}$json$::jsonb,
-  true
-);
-
--- Lesson 2: Homework Habits
-insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
-values (
-  'f0e81531-e242-48d7-90f7-718adc657a74',
-  'Homework Habits',
-  'A2',
-  'teens',
-  3,
-  2,
-  'Describe study and homework habits using simple present and frequency words.',
-  25,
-  9,
-  true
-);
-
-insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
-values
-(
-  'f0e81531-e242-48d7-90f7-718adc657a74',
-  1,
-  'title',
-  null,
-  null,
-  $json${
-  "badge": "A2 · Elementary · Teens"
-}$json$::jsonb,
-  true
-),
-(
-  'f0e81531-e242-48d7-90f7-718adc657a74',
-  2,
-  'warmup',
-  null,
-  null,
-  $json${
-  "display": "📓",
-  "questions": [
-    "When do you usually do homework?",
-    "Do you focus easily?"
-  ],
-  "title": "What's your take?"
-}$json$::jsonb,
-  true
-),
-(
-  'f0e81531-e242-48d7-90f7-718adc657a74',
+  '6fec1ec1-c141-4519-ae55-b1ca060a2a9d',
   3,
   'vocabulary',
   null,
@@ -259,15 +59,15 @@ values
       "bg": "#FAECE7"
     },
     {
-      "word": "Sometimes",
+      "word": "Always",
       "bg": "#E1F5EE"
     },
     {
-      "word": "Rarely",
+      "word": "Sometimes",
       "bg": "#EEEDFE"
     },
     {
-      "word": "Focus",
+      "word": "Never",
       "bg": "#FAEEDA"
     }
   ],
@@ -277,27 +77,27 @@ values
   true
 ),
 (
-  'f0e81531-e242-48d7-90f7-718adc657a74',
+  '6fec1ec1-c141-4519-ae55-b1ca060a2a9d',
   4,
   'phrases',
   null,
   null,
   $json${
   "teacher": [
-    "When do you usually do homework?",
-    "Do you focus well?"
+    "Do you usually like math?",
+    "Do you always do homework?"
   ],
   "student": [
-    "I usually do homework after dinner.",
-    "I sometimes lose focus."
+    "I usually like science.",
+    "I always do my homework."
   ],
-  "note": "Think about your real homework habits!",
+  "note": "Use the frame: I usually/always/sometimes/never ___.",
   "title": "Practice the Conversation"
 }$json$::jsonb,
   true
 ),
 (
-  'f0e81531-e242-48d7-90f7-718adc657a74',
+  '6fec1ec1-c141-4519-ae55-b1ca060a2a9d',
   5,
   'activity',
   null,
@@ -306,27 +106,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "I [usually] do homework after school."
+      "text": "I [usually] like science."
     },
     {
       "speaker": "B",
-      "text": "I [sometimes] study with music."
+      "text": "I [always] do my homework."
     },
     {
       "speaker": "A",
-      "text": "I [rarely] leave homework until the last minute."
+      "text": "I [never] miss class."
     }
   ],
   "blanks": [
     "usually",
-    "sometimes",
-    "rarely"
+    "always",
+    "never"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'f0e81531-e242-48d7-90f7-718adc657a74',
+  '6fec1ec1-c141-4519-ae55-b1ca060a2a9d',
   6,
   'speaking',
   null,
@@ -335,43 +135,43 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "When do you usually do your homework?"
+      "text": "Do you usually like your subjects?"
     },
     {
       "speaker": "B",
-      "text": "I usually do it after dinner. Sometimes I lose focus though."
+      "text": "I usually like art. I always do my homework."
     },
     {
       "speaker": "A",
-      "text": "I rarely wait until the last minute because it stresses me out."
+      "text": "I sometimes find math hard, but I never give up."
     },
     {
       "speaker": "B",
-      "text": "That's a smart habit!"
+      "text": "Good attitude!"
     }
   ],
-  "note": "Switch! Student becomes A, teacher becomes B."
+  "note": "Switch! Student becomes A, teacher becomes B. Use: I usually/always/sometimes/never ___."
 }$json$::jsonb,
   true
 ),
 (
-  'f0e81531-e242-48d7-90f7-718adc657a74',
+  '6fec1ec1-c141-4519-ae55-b1ca060a2a9d',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "A study blog post: I usually do my homework right after school, when my brain is still active. I sometimes take a short break first. I rarely study late at night because I can't focus well then.",
+  "text": "I usually like science class. I always do my homework. I sometimes find math hard. I never miss school.",
   "questions": [
-    "When does the writer usually do homework?",
-    "What does the writer sometimes do first?",
-    "Why does the writer rarely study late?"
+    "What subject does the writer usually like?",
+    "Does the writer always do homework?",
+    "Does the writer ever miss school?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'f0e81531-e242-48d7-90f7-718adc657a74',
+  '6fec1ec1-c141-4519-ae55-b1ca060a2a9d',
   8,
   'writing',
   null,
@@ -379,39 +179,39 @@ values
   $json${
   "prompts": [
     "I usually ___.",
-    "I sometimes ___.",
-    "I rarely ___ because ___."
+    "I always ___.",
+    "I never ___."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'f0e81531-e242-48d7-90f7-718adc657a74',
+  '6fec1ec1-c141-4519-ae55-b1ca060a2a9d',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Use frequency words: usually, sometimes, rarely",
-    "Describe my homework habits",
-    "Talk about focus and studying"
+    "Say 'I usually ___'",
+    "Name 4 frequency words",
+    "Talk about my school habits"
   ],
-  "challenge": "Tell me about your homework habits!"
+  "challenge": "Tell me your school habits using usually/always/sometimes/never!"
 }$json$::jsonb,
   true
 );
 
--- Lesson 3: Better Ways to Study
+-- Lesson 2: My Study Habits
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '3a50925c-d3b2-4ed6-a92f-37275b1f5776',
-  'Better Ways to Study',
+  'e4f0569a-1dcc-4527-9a81-7b0dde950e5a',
+  'My Study Habits',
   'A2',
   'teens',
   3,
-  3,
-  'Compare study methods using comparatives.',
+  2,
+  'Describe study habits using frequency adverbs. [Foundation tier]',
   25,
   9,
   true
@@ -420,7 +220,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '3a50925c-d3b2-4ed6-a92f-37275b1f5776',
+  'e4f0569a-1dcc-4527-9a81-7b0dde950e5a',
   1,
   'title',
   null,
@@ -431,23 +231,23 @@ values
   true
 ),
 (
-  '3a50925c-d3b2-4ed6-a92f-37275b1f5776',
+  'e4f0569a-1dcc-4527-9a81-7b0dde950e5a',
   2,
   'warmup',
   null,
   null,
   $json${
-  "display": "📇",
+  "display": "📓",
   "questions": [
-    "What is your best study method?",
-    "Is studying alone easier for you?"
+    "When do you usually study?",
+    "Do you always take a break?"
   ],
   "title": "What's your take?"
 }$json$::jsonb,
   true
 ),
 (
-  '3a50925c-d3b2-4ed6-a92f-37275b1f5776',
+  'e4f0569a-1dcc-4527-9a81-7b0dde950e5a',
   3,
   'vocabulary',
   null,
@@ -455,19 +255,19 @@ values
   $json${
   "words": [
     {
-      "word": "Effective",
+      "word": "Study",
       "bg": "#FAECE7"
     },
     {
-      "word": "Flashcards",
+      "word": "Review",
       "bg": "#E1F5EE"
     },
     {
-      "word": "Quieter",
+      "word": "Focus",
       "bg": "#EEEDFE"
     },
     {
-      "word": "Easier",
+      "word": "Break",
       "bg": "#FAEEDA"
     }
   ],
@@ -477,27 +277,27 @@ values
   true
 ),
 (
-  '3a50925c-d3b2-4ed6-a92f-37275b1f5776',
+  'e4f0569a-1dcc-4527-9a81-7b0dde950e5a',
   4,
   'phrases',
   null,
   null,
   $json${
   "teacher": [
-    "Is studying with flashcards effective?",
-    "Which is easier for you?"
+    "When do you usually study?",
+    "Do you take breaks?"
   ],
   "student": [
-    "Flashcards are more effective for me.",
-    "Studying alone is easier than in a group."
+    "I usually study after school.",
+    "I sometimes take a break."
   ],
-  "note": "Compare two study methods!",
+  "note": "Use the frame: I usually ___ after ___.",
   "title": "Practice the Conversation"
 }$json$::jsonb,
   true
 ),
 (
-  '3a50925c-d3b2-4ed6-a92f-37275b1f5776',
+  'e4f0569a-1dcc-4527-9a81-7b0dde950e5a',
   5,
   'activity',
   null,
@@ -506,27 +306,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "Flashcards are [more effective] than just reading."
+      "text": "I [usually] study after school."
     },
     {
       "speaker": "B",
-      "text": "The library is [quieter] than my house."
+      "text": "I [sometimes] review my notes."
     },
     {
       "speaker": "A",
-      "text": "Studying with a friend is [easier] for me."
+      "text": "I [always] take a short break."
     }
   ],
   "blanks": [
-    "more effective",
-    "quieter",
-    "easier"
+    "usually",
+    "sometimes",
+    "always"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '3a50925c-d3b2-4ed6-a92f-37275b1f5776',
+  'e4f0569a-1dcc-4527-9a81-7b0dde950e5a',
   6,
   'speaking',
   null,
@@ -535,83 +335,83 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "What is your best study method?"
+      "text": "When do you usually study?"
     },
     {
       "speaker": "B",
-      "text": "Flashcards work better for me than just reading notes."
+      "text": "I usually study after dinner. I always take a short break first."
     },
     {
       "speaker": "A",
-      "text": "The library is quieter than my house, so I focus better there."
+      "text": "I sometimes review my notes before bed."
     },
     {
       "speaker": "B",
-      "text": "I should try that!"
+      "text": "That's a good habit."
     }
   ],
-  "note": "Switch! Student becomes A, teacher becomes B."
+  "note": "Switch! Student becomes A, teacher becomes B. Use frequency adverbs from the vocabulary."
 }$json$::jsonb,
   true
 ),
 (
-  '3a50925c-d3b2-4ed6-a92f-37275b1f5776',
+  'e4f0569a-1dcc-4527-9a81-7b0dde950e5a',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "Two students compare study methods. Leo says flashcards are more effective than rereading notes because they test his memory. Ana says studying at the library is easier than at home because it's quieter and has fewer distractions.",
+  "text": "I usually study after school. I always take a short break first. I sometimes review my notes before bed. I never study very late.",
   "questions": [
-    "What does Leo say about flashcards?",
-    "Where does Ana prefer to study?",
-    "Why does Ana prefer the library?"
+    "When does the writer usually study?",
+    "Does the writer always take a break?",
+    "Does the writer study late?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '3a50925c-d3b2-4ed6-a92f-37275b1f5776',
+  'e4f0569a-1dcc-4527-9a81-7b0dde950e5a',
   8,
   'writing',
   null,
   null,
   $json${
   "prompts": [
-    "___ is more effective than ___.",
-    "___ is easier for me because ___.",
-    "My best study method is ___."
+    "I usually study ___.",
+    "I always ___ before I study.",
+    "I sometimes ___."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '3a50925c-d3b2-4ed6-a92f-37275b1f5776',
+  'e4f0569a-1dcc-4527-9a81-7b0dde950e5a',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Compare study methods",
-    "Use comparatives for studying",
-    "Explain what works best for me"
+    "Say 'I usually study ___'",
+    "Describe my study routine",
+    "Use frequency adverbs"
   ],
-  "challenge": "Tell me your best study method and why it works!"
+  "challenge": "Tell me your study habits!"
 }$json$::jsonb,
   true
 );
 
--- Lesson 4: A School Success Story
+-- Lesson 3: Following My Schedule
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '83d9c660-7bde-4c46-b7c0-f1dece46861b',
-  'A School Success Story',
+  '8a567f4c-b925-46c0-bca8-3e1413ee6c95',
+  'Following My Schedule',
   'A2',
   'teens',
   3,
-  4,
-  'Tell a simple past story about a school achievement.',
+  3,
+  'Talk about routines using frequency adverbs. [Foundation tier]',
   25,
   9,
   true
@@ -620,7 +420,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '83d9c660-7bde-4c46-b7c0-f1dece46861b',
+  '8a567f4c-b925-46c0-bca8-3e1413ee6c95',
   1,
   'title',
   null,
@@ -631,23 +431,23 @@ values
   true
 ),
 (
-  '83d9c660-7bde-4c46-b7c0-f1dece46861b',
+  '8a567f4c-b925-46c0-bca8-3e1413ee6c95',
   2,
   'warmup',
   null,
   null,
   $json${
-  "display": "🏅",
+  "display": "🕐",
   "questions": [
-    "Have you had a school success recently?",
-    "Did you study hard for a test?"
+    "Do you always follow your schedule?",
+    "Are you usually on time?"
   ],
   "title": "What's your take?"
 }$json$::jsonb,
   true
 ),
 (
-  '83d9c660-7bde-4c46-b7c0-f1dece46861b',
+  '8a567f4c-b925-46c0-bca8-3e1413ee6c95',
   3,
   'vocabulary',
   null,
@@ -655,19 +455,19 @@ values
   $json${
   "words": [
     {
-      "word": "Studied",
+      "word": "Schedule",
       "bg": "#FAECE7"
     },
     {
-      "word": "Passed",
+      "word": "On time",
       "bg": "#E1F5EE"
     },
     {
-      "word": "Improved",
+      "word": "Late",
       "bg": "#EEEDFE"
     },
     {
-      "word": "Proud",
+      "word": "Routine",
       "bg": "#FAEEDA"
     }
   ],
@@ -677,27 +477,27 @@ values
   true
 ),
 (
-  '83d9c660-7bde-4c46-b7c0-f1dece46861b',
+  '8a567f4c-b925-46c0-bca8-3e1413ee6c95',
   4,
   'phrases',
   null,
   null,
   $json${
   "teacher": [
-    "What did you study for?",
-    "How did it go?"
+    "Are you usually on time?",
+    "Do you follow a routine?"
   ],
   "student": [
-    "I studied hard for my science test.",
-    "I passed with a great score!"
+    "I am usually on time.",
+    "I always follow my routine."
   ],
-  "note": "Think about a recent school success!",
+  "note": "Use the frame: I am usually/always ___.",
   "title": "Practice the Conversation"
 }$json$::jsonb,
   true
 ),
 (
-  '83d9c660-7bde-4c46-b7c0-f1dece46861b',
+  '8a567f4c-b925-46c0-bca8-3e1413ee6c95',
   5,
   'activity',
   null,
@@ -706,27 +506,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "I [studied] hard for my exam."
+      "text": "I am [usually] on time for class."
     },
     {
       "speaker": "B",
-      "text": "I [passed] with a good grade."
+      "text": "I [always] follow my schedule."
     },
     {
       "speaker": "A",
-      "text": "My English [improved] a lot this year."
+      "text": "I am [sometimes] late."
     }
   ],
   "blanks": [
-    "studied",
-    "passed",
-    "improved"
+    "usually",
+    "always",
+    "sometimes"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '83d9c660-7bde-4c46-b7c0-f1dece46861b',
+  '8a567f4c-b925-46c0-bca8-3e1413ee6c95',
   6,
   'speaking',
   null,
@@ -735,69 +535,269 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "Tell me about a school success you had."
+      "text": "Are you usually on time for class?"
     },
     {
       "speaker": "B",
-      "text": "I studied hard for my math test and passed with a great score."
+      "text": "Yes, I am usually on time. I always follow my schedule."
     },
     {
       "speaker": "A",
-      "text": "My English improved a lot this year because I practiced every day."
+      "text": "I am sometimes late, but never on test days."
     },
     {
       "speaker": "B",
-      "text": "You should be proud!"
+      "text": "Good planning!"
     }
   ],
-  "note": "Switch! Student becomes A, teacher becomes B."
+  "note": "Switch! Student becomes A, teacher becomes B. Use frequency adverbs."
 }$json$::jsonb,
   true
 ),
 (
-  '83d9c660-7bde-4c46-b7c0-f1dece46861b',
+  '8a567f4c-b925-46c0-bca8-3e1413ee6c95',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "Last month, I studied hard for my science exam every night. It was difficult, but I didn't give up. Finally, I passed with my best grade ever! My teacher said my hard work improved a lot. I felt very proud.",
+  "text": "I am usually on time for class. I always follow my schedule. I am sometimes late on Mondays. I am never late on test days.",
   "questions": [
-    "What did the writer study for?",
-    "How did the writer feel about it being difficult?",
-    "What was the result?"
+    "Is the writer usually on time?",
+    "When is the writer sometimes late?",
+    "Is the writer ever late on test days?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '83d9c660-7bde-4c46-b7c0-f1dece46861b',
+  '8a567f4c-b925-46c0-bca8-3e1413ee6c95',
   8,
   'writing',
   null,
   null,
   $json${
   "prompts": [
-    "I studied hard for ___.",
-    "I passed/improved because ___.",
-    "I felt proud because ___."
+    "I am usually ___.",
+    "I always ___.",
+    "I am sometimes ___."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '83d9c660-7bde-4c46-b7c0-f1dece46861b',
+  '8a567f4c-b925-46c0-bca8-3e1413ee6c95',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Use past verbs: studied, passed, improved",
-    "Tell a school success story",
-    "Say why I felt proud"
+    "Describe my schedule habits",
+    "Use 'usually' and 'always'",
+    "Talk about being on time"
   ],
-  "challenge": "Tell me about a school success you're proud of!"
+  "challenge": "Tell me about your daily schedule and routine!"
+}$json$::jsonb,
+  true
+);
+
+-- Lesson 4: A Study Plan
+insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
+values (
+  'f2ce835d-f72d-4025-8c9a-282661787dc4',
+  'A Study Plan',
+  'A2',
+  'teens',
+  3,
+  4,
+  'Write a short study plan using frequency adverbs. [Foundation tier]',
+  25,
+  9,
+  true
+);
+
+insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
+values
+(
+  'f2ce835d-f72d-4025-8c9a-282661787dc4',
+  1,
+  'title',
+  null,
+  null,
+  $json${
+  "badge": "A2 · Elementary · Teens"
+}$json$::jsonb,
+  true
+),
+(
+  'f2ce835d-f72d-4025-8c9a-282661787dc4',
+  2,
+  'warmup',
+  null,
+  null,
+  $json${
+  "display": "📋",
+  "questions": [
+    "Do you have a study plan?",
+    "What is your study goal?"
+  ],
+  "title": "What's your take?"
+}$json$::jsonb,
+  true
+),
+(
+  'f2ce835d-f72d-4025-8c9a-282661787dc4',
+  3,
+  'vocabulary',
+  null,
+  null,
+  $json${
+  "words": [
+    {
+      "word": "Plan",
+      "bg": "#FAECE7"
+    },
+    {
+      "word": "Goal",
+      "bg": "#E1F5EE"
+    },
+    {
+      "word": "Every day",
+      "bg": "#EEEDFE"
+    },
+    {
+      "word": "Improve",
+      "bg": "#FAEEDA"
+    }
+  ],
+  "title": "New Words",
+  "subtitle": "Tap a card to see it bigger."
+}$json$::jsonb,
+  true
+),
+(
+  'f2ce835d-f72d-4025-8c9a-282661787dc4',
+  4,
+  'phrases',
+  null,
+  null,
+  $json${
+  "teacher": [
+    "What is your study plan?",
+    "What is your goal?"
+  ],
+  "student": [
+    "I usually study every day.",
+    "My goal is to improve in math."
+  ],
+  "note": "Use the frame: My study plan: I usually ___.",
+  "title": "Practice the Conversation"
+}$json$::jsonb,
+  true
+),
+(
+  'f2ce835d-f72d-4025-8c9a-282661787dc4',
+  5,
+  'activity',
+  null,
+  null,
+  $json${
+  "dialogue": [
+    {
+      "speaker": "A",
+      "text": "My study [plan]: I usually study after school."
+    },
+    {
+      "speaker": "B",
+      "text": "My [goal] is to improve in English."
+    },
+    {
+      "speaker": "A",
+      "text": "I study [every day]."
+    }
+  ],
+  "blanks": [
+    "plan",
+    "goal",
+    "every day"
+  ]
+}$json$::jsonb,
+  true
+),
+(
+  'f2ce835d-f72d-4025-8c9a-282661787dc4',
+  6,
+  'speaking',
+  null,
+  null,
+  $json${
+  "dialogue": [
+    {
+      "speaker": "A",
+      "text": "What is your study plan?"
+    },
+    {
+      "speaker": "B",
+      "text": "I usually study every day after dinner. My goal is to improve in science."
+    },
+    {
+      "speaker": "A",
+      "text": "I always review my notes before bed."
+    },
+    {
+      "speaker": "B",
+      "text": "That's a solid plan!"
+    }
+  ],
+  "note": "Switch! Student becomes A, teacher becomes B. Use the frames from Lessons 1-3."
+}$json$::jsonb,
+  true
+),
+(
+  'f2ce835d-f72d-4025-8c9a-282661787dc4',
+  7,
+  'reading',
+  null,
+  null,
+  $json${
+  "text": "My study plan: I usually study every day after school. I always review my notes before bed. My goal is to improve in math.",
+  "questions": [
+    "When does the writer usually study?",
+    "What does the writer always do before bed?",
+    "What is the writer's goal?"
+  ]
+}$json$::jsonb,
+  true
+),
+(
+  'f2ce835d-f72d-4025-8c9a-282661787dc4',
+  8,
+  'writing',
+  null,
+  null,
+  $json${
+  "prompts": [
+    "My study plan: I usually ___.",
+    "I always ___.",
+    "My goal is to ___."
+  ]
+}$json$::jsonb,
+  true
+),
+(
+  'f2ce835d-f72d-4025-8c9a-282661787dc4',
+  9,
+  'review',
+  null,
+  null,
+  $json${
+  "checklist": [
+    "Write a short study plan",
+    "Use frequency adverbs",
+    "State a study goal"
+  ],
+  "challenge": "Read me your study plan!"
 }$json$::jsonb,
   true
 );
@@ -805,13 +805,13 @@ values
 -- Lesson 5: Unit Review
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  'ca112f7f-3934-4796-ad8d-68e5c83b97e9',
+  '77f1dc10-144e-46ea-b557-465bb7273f62',
   'Unit Review',
   'A2',
   'teens',
   3,
   5,
-  'Review subject opinions, homework habits, study methods, and a success story.',
+  'Review school habits and frequency adverbs. [Foundation tier]',
   25,
   9,
   true
@@ -820,7 +820,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  'ca112f7f-3934-4796-ad8d-68e5c83b97e9',
+  '77f1dc10-144e-46ea-b557-465bb7273f62',
   1,
   'title',
   null,
@@ -831,7 +831,7 @@ values
   true
 ),
 (
-  'ca112f7f-3934-4796-ad8d-68e5c83b97e9',
+  '77f1dc10-144e-46ea-b557-465bb7273f62',
   2,
   'warmup',
   null,
@@ -839,15 +839,15 @@ values
   $json${
   "display": "🎓",
   "questions": [
-    "What is your favorite subject?",
-    "What is your best study habit?"
+    "What subject do you usually like?",
+    "What is your study goal?"
   ],
   "title": "What's your take?"
 }$json$::jsonb,
   true
 ),
 (
-  'ca112f7f-3934-4796-ad8d-68e5c83b97e9',
+  '77f1dc10-144e-46ea-b557-465bb7273f62',
   3,
   'vocabulary',
   null,
@@ -859,15 +859,15 @@ values
       "bg": "#FAECE7"
     },
     {
-      "word": "Homework",
+      "word": "Usually",
       "bg": "#E1F5EE"
     },
     {
-      "word": "Effective",
+      "word": "Study",
       "bg": "#EEEDFE"
     },
     {
-      "word": "Passed",
+      "word": "Goal",
       "bg": "#FAEEDA"
     }
   ],
@@ -877,27 +877,27 @@ values
   true
 ),
 (
-  'ca112f7f-3934-4796-ad8d-68e5c83b97e9',
+  '77f1dc10-144e-46ea-b557-465bb7273f62',
   4,
   'phrases',
   null,
   null,
   $json${
   "teacher": [
-    "What do you think of your subjects?",
-    "What is your best study method?"
+    "What do you usually study?",
+    "What is your goal?"
   ],
   "student": [
-    "I think art is interesting.",
-    "Flashcards work best for me."
+    "I usually study math.",
+    "My goal is to improve."
   ],
-  "note": "Use everything you learned this unit!",
+  "note": "Use the frames you learned this unit!",
   "title": "Practice the Conversation"
 }$json$::jsonb,
   true
 ),
 (
-  'ca112f7f-3934-4796-ad8d-68e5c83b97e9',
+  '77f1dc10-144e-46ea-b557-465bb7273f62',
   5,
   'activity',
   null,
@@ -910,23 +910,23 @@ values
     },
     {
       "speaker": "B",
-      "text": "I usually do [homework] after school."
+      "text": "I [usually] study after school."
     },
     {
       "speaker": "A",
-      "text": "I [passed] my last exam with a great score."
+      "text": "My [goal] is to improve."
     }
   ],
   "blanks": [
     "subject",
-    "homework",
-    "passed"
+    "usually",
+    "goal"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'ca112f7f-3934-4796-ad8d-68e5c83b97e9',
+  '77f1dc10-144e-46ea-b557-465bb7273f62',
   6,
   'speaking',
   null,
@@ -935,19 +935,19 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "Tell me about school this year."
+      "text": "Tell me about your school habits."
     },
     {
       "speaker": "B",
-      "text": "My favorite subject is science because it's interesting. I usually do homework after school."
+      "text": "My favorite subject is science. I usually study after school."
     },
     {
       "speaker": "A",
-      "text": "Flashcards are more effective for me than just reading."
+      "text": "I always review my notes. My goal is to improve in English."
     },
     {
       "speaker": "B",
-      "text": "I studied hard and passed my last test with my best grade!"
+      "text": "Great study habits!"
     }
   ],
   "note": "Switch! Student becomes A, teacher becomes B."
@@ -955,48 +955,48 @@ values
   true
 ),
 (
-  'ca112f7f-3934-4796-ad8d-68e5c83b97e9',
+  '77f1dc10-144e-46ea-b557-465bb7273f62',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "This year, my favorite subject is science because it's interesting and useful. I usually do homework right after school. I found that flashcards are more effective than just reading my notes. Last month, I studied hard and passed my exam with my best grade ever!",
+  "text": "My favorite subject is science. I usually study after school and I always review my notes before bed. I am sometimes late for class, but never on test days. My goal is to improve in math.",
   "questions": [
     "What is the writer's favorite subject?",
-    "When does the writer usually do homework?",
-    "What happened last month?"
+    "When does the writer usually study?",
+    "What is the writer's goal?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'ca112f7f-3934-4796-ad8d-68e5c83b97e9',
+  '77f1dc10-144e-46ea-b557-465bb7273f62',
   8,
   'writing',
   null,
   null,
   $json${
   "prompts": [
-    "My favorite subject is ___ because ___.",
-    "My best study method is ___.",
-    "I felt proud when ___."
+    "My favorite subject is ___.",
+    "I usually ___.",
+    "My goal is to ___."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'ca112f7f-3934-4796-ad8d-68e5c83b97e9',
+  '77f1dc10-144e-46ea-b557-465bb7273f62',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Give subject opinions",
-    "Describe homework habits",
-    "Compare study methods",
-    "Tell a success story"
+    "Talk about school subjects",
+    "Describe study habits",
+    "Use frequency adverbs",
+    "State a goal"
   ],
   "challenge": "Tell me all about your school life and study habits!"
 }$json$::jsonb,

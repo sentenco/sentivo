@@ -1,17 +1,17 @@
--- A2 Teens Unit 10: Entertainment and Events (5 lessons)
--- Generated from project_a2_teens_master_curriculum memory.
+-- A2 Teens Unit 10: Entertainment and Events (5 lessons) — TIERED (Bridge)
+-- Regenerated per the Sentivo Intra-Level Progression Framework.
 -- Run this whole script in the Supabase SQL editor.
 
 -- Lesson 1: What Do You Watch or Listen To?
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  'f1c0d795-e018-4319-8971-72ef1fe5f2d9',
+  '5c4bafb6-493e-4c1b-9e33-06fbbd6cb563',
   'What Do You Watch or Listen To?',
   'A2',
   'teens',
   10,
   1,
-  'Talk about entertainment preferences.',
+  'Compare taste now and before, and say what changed it. [Bridge tier]',
   25,
   9,
   true
@@ -20,7 +20,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  'f1c0d795-e018-4319-8971-72ef1fe5f2d9',
+  '5c4bafb6-493e-4c1b-9e33-06fbbd6cb563',
   1,
   'title',
   null,
@@ -31,7 +31,7 @@ values
   true
 ),
 (
-  'f1c0d795-e018-4319-8971-72ef1fe5f2d9',
+  '5c4bafb6-493e-4c1b-9e33-06fbbd6cb563',
   2,
   'warmup',
   null,
@@ -39,15 +39,15 @@ values
   $json${
   "display": "🎧",
   "questions": [
-    "What show or series are you watching?",
-    "What genre of music do you like?"
+    "What did you used to watch that you don't watch now?",
+    "What changed your taste?"
   ],
   "title": "What's your take?"
 }$json$::jsonb,
   true
 ),
 (
-  'f1c0d795-e018-4319-8971-72ef1fe5f2d9',
+  '5c4bafb6-493e-4c1b-9e33-06fbbd6cb563',
   3,
   'vocabulary',
   null,
@@ -55,19 +55,19 @@ values
   $json${
   "words": [
     {
-      "word": "Series",
+      "word": "Used to watch",
       "bg": "#FAECE7"
     },
     {
-      "word": "Playlist",
+      "word": "Now I like",
       "bg": "#E1F5EE"
     },
     {
-      "word": "Genre",
+      "word": "Changed my mind",
       "bg": "#EEEDFE"
     },
     {
-      "word": "Podcast",
+      "word": "Since then",
       "bg": "#FAEEDA"
     }
   ],
@@ -77,27 +77,27 @@ values
   true
 ),
 (
-  'f1c0d795-e018-4319-8971-72ef1fe5f2d9',
+  '5c4bafb6-493e-4c1b-9e33-06fbbd6cb563',
   4,
   'phrases',
   null,
   null,
   $json${
   "teacher": [
-    "What series are you watching?",
-    "What genre do you like?"
+    "What did you used to watch?",
+    "What changed your mind?"
   ],
   "student": [
-    "I'm watching a mystery series.",
-    "I like pop and hip-hop."
+    "I used to watch only comedies.",
+    "A friend's recommendation changed my mind."
   ],
-  "note": "Think about what you're watching or listening to!",
+  "note": "Compare your taste now to before. Say what changed it.",
   "title": "Practice the Conversation"
 }$json$::jsonb,
   true
 ),
 (
-  'f1c0d795-e018-4319-8971-72ef1fe5f2d9',
+  '5c4bafb6-493e-4c1b-9e33-06fbbd6cb563',
   5,
   'activity',
   null,
@@ -106,27 +106,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "I'm watching a new [series]."
+      "text": "I [used to watch] only comedies."
     },
     {
       "speaker": "B",
-      "text": "I made a new [playlist]."
+      "text": "[Now I like] documentaries too."
     },
     {
       "speaker": "A",
-      "text": "My favorite [genre] is pop."
+      "text": "A friend [changed my mind]."
     }
   ],
   "blanks": [
-    "series",
-    "playlist",
-    "genre"
+    "used to watch",
+    "now i like",
+    "changed my mind"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'f1c0d795-e018-4319-8971-72ef1fe5f2d9',
+  '5c4bafb6-493e-4c1b-9e33-06fbbd6cb563',
   6,
   'speaking',
   null,
@@ -135,69 +135,69 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "What are you watching these days?"
+      "text": "How has your taste in shows changed?"
     },
     {
       "speaker": "B",
-      "text": "I'm watching a mystery series. What about you?"
+      "text": "I used to watch only comedies. Now I like documentaries too."
     },
     {
       "speaker": "A",
-      "text": "I made a new playlist and I'm listening to a podcast about music."
+      "text": "What changed your mind?"
     },
     {
       "speaker": "B",
-      "text": "Send me the playlist!"
+      "text": "A friend recommended one, and I liked it more than I expected."
     }
   ],
-  "note": "Switch! Student becomes A, teacher becomes B."
+  "note": "Switch! Student becomes A, teacher becomes B. Compare taste now to a year ago and explain the change."
 }$json$::jsonb,
   true
 ),
 (
-  'f1c0d795-e018-4319-8971-72ef1fe5f2d9',
+  '5c4bafb6-493e-4c1b-9e33-06fbbd6cb563',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "Four teens share what they enjoy. Sam is watching a new mystery series. Mia made a playlist of her favorite pop songs. Leo listens to a comedy podcast every morning. Ana loves hip-hop and rock music.",
+  "text": "A year ago, I only watched comedies. I thought anything serious would feel like homework after school. Now I like documentaries more than comedies, and that surprised even me. It started when a friend recommended a documentary. I only watched it because I was bored, but I finished the whole series in a week. Since then, my taste has slowly changed. I still watch comedies sometimes, but they are not my first choice anymore. Now I choose shows based on what I will remember later, not just what is easy to watch.",
   "questions": [
-    "What is Sam watching?",
-    "What did Mia make?",
-    "What does Leo listen to?"
+    "What did the writer only watch a year ago?",
+    "What changed the writer's taste?",
+    "How does the writer choose shows now?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'f1c0d795-e018-4319-8971-72ef1fe5f2d9',
+  '5c4bafb6-493e-4c1b-9e33-06fbbd6cb563',
   8,
   'writing',
   null,
   null,
   $json${
   "prompts": [
-    "I'm watching/listening to ___.",
-    "My favorite genre is ___.",
-    "I recommend ___ because ___."
+    "Compare your taste now to a year ago. What's different?",
+    "What changed it? A friend, a recommendation, something else?",
+    "How do you choose what to watch now, compared to before?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'f1c0d795-e018-4319-8971-72ef1fe5f2d9',
+  '5c4bafb6-493e-4c1b-9e33-06fbbd6cb563',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Talk about entertainment preferences",
-    "Use series/playlist/genre/podcast",
-    "Recommend something I enjoy"
+    "Compare current taste to past taste",
+    "Say what caused the change",
+    "Use 'used to' and 'now' together"
   ],
-  "challenge": "Tell me what you're watching or listening to right now!"
+  "challenge": "Compare your taste in shows or music now to a year ago, and tell me what changed it."
 }$json$::jsonb,
   true
 );
@@ -205,13 +205,13 @@ values
 -- Lesson 2: Event Plans
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '678925fe-09ac-4aa2-ae84-fadaf95a12f9',
+  'fda2c389-2c83-4f12-86c2-507c71775656',
   'Event Plans',
   'A2',
   'teens',
   10,
   2,
-  'Make plans for an event using going to.',
+  'Plan a future event and compare it to a past one. [Bridge tier]',
   25,
   9,
   true
@@ -220,7 +220,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '678925fe-09ac-4aa2-ae84-fadaf95a12f9',
+  'fda2c389-2c83-4f12-86c2-507c71775656',
   1,
   'title',
   null,
@@ -231,7 +231,7 @@ values
   true
 ),
 (
-  '678925fe-09ac-4aa2-ae84-fadaf95a12f9',
+  'fda2c389-2c83-4f12-86c2-507c71775656',
   2,
   'warmup',
   null,
@@ -239,15 +239,15 @@ values
   $json${
   "display": "🎤",
   "questions": [
-    "Are you going to a concert or event soon?",
-    "What event would you love to attend?"
+    "What event are you going to next, and how does it compare to last time?",
+    "What are you expecting, based on last time?"
   ],
   "title": "What's your take?"
 }$json$::jsonb,
   true
 ),
 (
-  '678925fe-09ac-4aa2-ae84-fadaf95a12f9',
+  'fda2c389-2c83-4f12-86c2-507c71775656',
   3,
   'vocabulary',
   null,
@@ -255,19 +255,19 @@ values
   $json${
   "words": [
     {
-      "word": "Concert",
+      "word": "Going to",
       "bg": "#FAECE7"
     },
     {
-      "word": "Tickets",
+      "word": "Bigger than",
       "bg": "#E1F5EE"
     },
     {
-      "word": "Line up",
+      "word": "Based on",
       "bg": "#EEEDFE"
     },
     {
-      "word": "Excited",
+      "word": "Last time",
       "bg": "#FAEEDA"
     }
   ],
@@ -277,27 +277,27 @@ values
   true
 ),
 (
-  '678925fe-09ac-4aa2-ae84-fadaf95a12f9',
+  'fda2c389-2c83-4f12-86c2-507c71775656',
   4,
   'phrases',
   null,
   null,
   $json${
   "teacher": [
-    "Are you going to the concert?",
-    "Do you have tickets?"
+    "What are you going to next?",
+    "How does it compare to last time?"
   ],
   "student": [
-    "Yes, I'm going with my friends.",
-    "We bought tickets last week."
+    "I'm going to a concert next month.",
+    "I expect it to be bigger than last time."
   ],
-  "note": "Think about an event you're excited about!",
+  "note": "Use a past event to say what you expect from the next one.",
   "title": "Practice the Conversation"
 }$json$::jsonb,
   true
 ),
 (
-  '678925fe-09ac-4aa2-ae84-fadaf95a12f9',
+  'fda2c389-2c83-4f12-86c2-507c71775656',
   5,
   'activity',
   null,
@@ -306,27 +306,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "I'm going to the [concert] this weekend."
+      "text": "I'm [going to] a concert next month."
     },
     {
       "speaker": "B",
-      "text": "We bought [tickets] last week."
+      "text": "I expect it to be [bigger than] last time."
     },
     {
       "speaker": "A",
-      "text": "I'm so [excited] for it!"
+      "text": "[Based on] last time, it will be great."
     }
   ],
   "blanks": [
-    "concert",
-    "tickets",
-    "excited"
+    "going to",
+    "bigger than",
+    "based on"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '678925fe-09ac-4aa2-ae84-fadaf95a12f9',
+  'fda2c389-2c83-4f12-86c2-507c71775656',
   6,
   'speaking',
   null,
@@ -335,69 +335,69 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "Are you going to the concert this weekend?"
+      "text": "What event are you going to next?"
     },
     {
       "speaker": "B",
-      "text": "Yes! We bought tickets last week and I'm so excited."
+      "text": "I'm going to a concert next month. Based on last time, I think it will be amazing."
     },
     {
       "speaker": "A",
-      "text": "What time is the line up?"
+      "text": "Why do you think that?"
     },
     {
       "speaker": "B",
-      "text": "It starts at 7pm, we're getting there early!"
+      "text": "Last time was better than I expected, so I'm expecting even more this time."
     }
   ],
-  "note": "Switch! Student becomes A, teacher becomes B."
+  "note": "Switch! Student becomes A, teacher becomes B. Use a past event to explain what you expect next time."
 }$json$::jsonb,
   true
 ),
 (
-  '678925fe-09ac-4aa2-ae84-fadaf95a12f9',
+  'fda2c389-2c83-4f12-86c2-507c71775656',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "This weekend, I'm going to my first concert! We bought tickets a month ago. The line up starts at 7pm and my favorite band plays at 9pm. I'm so excited I can barely wait.",
+  "text": "I'm going to my second concert next month. Last time, I didn't expect much, because I had never been to one before. It was better than I expected, with a great crowd and amazing music. This time, I'm going to the same place, but a different singer. Based on last time, I think this show will be bigger, because more people are talking about it online. I don't know for sure until I'm there, but last time taught me something: don't expect too little, or you might miss something great.",
   "questions": [
-    "What event is the writer going to?",
-    "When did they buy tickets?",
-    "What time does the favorite band play?"
+    "Why didn't the writer expect much last time?",
+    "Why does the writer think this show will be bigger?",
+    "What did last time teach the writer?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '678925fe-09ac-4aa2-ae84-fadaf95a12f9',
+  'fda2c389-2c83-4f12-86c2-507c71775656',
   8,
   'writing',
   null,
   null,
   $json${
   "prompts": [
-    "I'm going to ___ this weekend.",
-    "I bought tickets ___.",
-    "I'm excited because ___."
+    "What event are you going to next? Compare it to a past event.",
+    "What do you expect, based on what happened last time?",
+    "What did a past event teach you about expectations?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '678925fe-09ac-4aa2-ae84-fadaf95a12f9',
+  'fda2c389-2c83-4f12-86c2-507c71775656',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Talk about event plans",
-    "Use 'going to' for future events",
-    "Express excitement"
+    "Use 'going to' for a future event",
+    "Compare it to a past event",
+    "Explain an expectation with 'based on'"
   ],
-  "challenge": "Tell me about an event you're excited to attend!"
+  "challenge": "Tell me about an event you're going to, and what you expect based on a past one."
 }$json$::jsonb,
   true
 );
@@ -405,13 +405,13 @@ values
 -- Lesson 3: Better Than…
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  'b35e77c2-12c9-4c3c-ae0e-47f705cb26d4',
+  '122fec4e-6156-41c4-b541-6c240718eded',
   'Better Than…',
   'A2',
   'teens',
   10,
   3,
-  'Compare entertainment options using comparatives.',
+  'Compare something popular now to how it feels later. [Bridge tier]',
   25,
   9,
   true
@@ -420,7 +420,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  'b35e77c2-12c9-4c3c-ae0e-47f705cb26d4',
+  '122fec4e-6156-41c4-b541-6c240718eded',
   1,
   'title',
   null,
@@ -431,7 +431,7 @@ values
   true
 ),
 (
-  'b35e77c2-12c9-4c3c-ae0e-47f705cb26d4',
+  '122fec4e-6156-41c4-b541-6c240718eded',
   2,
   'warmup',
   null,
@@ -439,15 +439,15 @@ values
   $json${
   "display": "🎬",
   "questions": [
-    "Is this show better than the last one?",
-    "What is funnier, comedy or drama?"
+    "Is there something everyone loved that you don't like as much now?",
+    "Is there something old that is still good?"
   ],
   "title": "What's your take?"
 }$json$::jsonb,
   true
 ),
 (
-  'b35e77c2-12c9-4c3c-ae0e-47f705cb26d4',
+  '122fec4e-6156-41c4-b541-6c240718eded',
   3,
   'vocabulary',
   null,
@@ -455,19 +455,19 @@ values
   $json${
   "words": [
     {
-      "word": "Funnier",
+      "word": "Everyone loved it",
       "bg": "#FAECE7"
     },
     {
-      "word": "More thrilling",
+      "word": "Looking back",
       "bg": "#E1F5EE"
     },
     {
-      "word": "Better than",
+      "word": "Still good",
       "bg": "#EEEDFE"
     },
     {
-      "word": "Worse than",
+      "word": "Not as good",
       "bg": "#FAEEDA"
     }
   ],
@@ -477,27 +477,27 @@ values
   true
 ),
 (
-  'b35e77c2-12c9-4c3c-ae0e-47f705cb26d4',
+  '122fec4e-6156-41c4-b541-6c240718eded',
   4,
   'phrases',
   null,
   null,
   $json${
   "teacher": [
-    "Is this movie better than the last one?",
-    "What is funnier for you?"
+    "Looking back, do you still like it?",
+    "Is it still as good as before?"
   ],
   "student": [
-    "Yes, it's much better.",
-    "Comedy is funnier for me."
+    "Looking back, I don't like it as much.",
+    "It's still as good as I remember."
   ],
-  "note": "Compare two shows, movies, or songs!",
+  "note": "Give your honest opinion, looking back, and say why.",
   "title": "Practice the Conversation"
 }$json$::jsonb,
   true
 ),
 (
-  'b35e77c2-12c9-4c3c-ae0e-47f705cb26d4',
+  '122fec4e-6156-41c4-b541-6c240718eded',
   5,
   'activity',
   null,
@@ -506,27 +506,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "This new series is [funnier] than the old one."
+      "text": "[Everyone loved it], but I don't now."
     },
     {
       "speaker": "B",
-      "text": "The movie was [more thrilling] than I expected."
+      "text": "[Looking back], the story wasn't great."
     },
     {
       "speaker": "A",
-      "text": "This album is [better than] the last one."
+      "text": "This old show is [still good]."
     }
   ],
   "blanks": [
-    "funnier",
-    "more thrilling",
-    "better than"
+    "everyone loved it",
+    "looking back",
+    "still good"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'b35e77c2-12c9-4c3c-ae0e-47f705cb26d4',
+  '122fec4e-6156-41c4-b541-6c240718eded',
   6,
   'speaking',
   null,
@@ -535,69 +535,69 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "Is the new season better than the last one?"
+      "text": "Everyone loved that movie last year. Do you still like it?"
     },
     {
       "speaker": "B",
-      "text": "Yes, it's funnier and more thrilling than before."
+      "text": "Looking back, not really. The story wasn't as good as I remembered."
     },
     {
       "speaker": "A",
-      "text": "I think the movie was worse than the book, though."
+      "text": "What about something old that's still good for you?"
     },
     {
       "speaker": "B",
-      "text": "Books are usually better!"
+      "text": "A cartoon I watched as a kid is still good. I watched it again and it was better than I expected."
     }
   ],
-  "note": "Switch! Student becomes A, teacher becomes B."
+  "note": "Switch! Student becomes A, teacher becomes B. Compare a past opinion to your opinion now."
 }$json$::jsonb,
   true
 ),
 (
-  'b35e77c2-12c9-4c3c-ae0e-47f705cb26d4',
+  '122fec4e-6156-41c4-b541-6c240718eded',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "A review: the new season is funnier and more thrilling than the last one. The characters are better developed. However, some fans say the movie version was worse than the book because it left out important scenes.",
+  "text": "Last year, everyone in my class loved a certain movie, and I loved it too. But I watched it again recently, and looking back, I don't think it was as good as everyone said. The story had some problems I didn't notice the first time. On the other hand, a cartoon I watched as a kid was still good when I watched it again. The jokes were smarter than I remembered. Comparing these two, I learned something: something can feel amazing because everyone loves it at the time, but that doesn't always last.",
   "questions": [
-    "Is the new season funnier or less funny?",
-    "What do some fans say about the movie?",
-    "Why do fans prefer the book?"
+    "What did the writer think of the popular movie, looking back?",
+    "What did the writer think of the childhood cartoon?",
+    "What did the writer learn from comparing them?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'b35e77c2-12c9-4c3c-ae0e-47f705cb26d4',
+  '122fec4e-6156-41c4-b541-6c240718eded',
   8,
   'writing',
   null,
   null,
   $json${
   "prompts": [
-    "___ is funnier than ___.",
-    "___ was better/worse than ___.",
-    "In my opinion, ___ is more thrilling."
+    "Compare something popular now to how you feel about it later.",
+    "Is there something old that's still good? Why?",
+    "What did comparing these two things teach you?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'b35e77c2-12c9-4c3c-ae0e-47f705cb26d4',
+  '122fec4e-6156-41c4-b541-6c240718eded',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Compare entertainment using comparatives",
-    "Use 'better than' and 'worse than'",
-    "Give my opinion"
+    "Compare a past opinion to a current one",
+    "Say if something is still good or not as good",
+    "Explain what I learned"
   ],
-  "challenge": "Compare two shows or movies you know!"
+  "challenge": "Tell me about something popular you don't like as much now, and something old that's still good."
 }$json$::jsonb,
   true
 );
@@ -605,13 +605,13 @@ values
 -- Lesson 4: A Review or Recommendation
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  'cb260ccc-0b3b-431e-a99f-f0d348ab255d',
+  'a782d545-5550-487c-89c5-97f00dc27ec3',
   'A Review or Recommendation',
   'A2',
   'teens',
   10,
   4,
-  'Write a short recommendation for a show, song, or event.',
+  'Write a recommendation that depends on the person. [Bridge tier]',
   25,
   9,
   true
@@ -620,7 +620,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  'cb260ccc-0b3b-431e-a99f-f0d348ab255d',
+  'a782d545-5550-487c-89c5-97f00dc27ec3',
   1,
   'title',
   null,
@@ -631,7 +631,7 @@ values
   true
 ),
 (
-  'cb260ccc-0b3b-431e-a99f-f0d348ab255d',
+  'a782d545-5550-487c-89c5-97f00dc27ec3',
   2,
   'warmup',
   null,
@@ -639,15 +639,15 @@ values
   $json${
   "display": "📣",
   "questions": [
-    "What show would you recommend to everyone?",
-    "Is there something you'd tell people to skip?"
+    "Does your recommendation depend on who's asking?",
+    "What's one thing someone should know first?"
   ],
   "title": "What's your take?"
 }$json$::jsonb,
   true
 ),
 (
-  'cb260ccc-0b3b-431e-a99f-f0d348ab255d',
+  'a782d545-5550-487c-89c5-97f00dc27ec3',
   3,
   'vocabulary',
   null,
@@ -655,215 +655,15 @@ values
   $json${
   "words": [
     {
-      "word": "Must-watch",
+      "word": "It depends",
       "bg": "#FAECE7"
     },
     {
-      "word": "Highly recommend",
+      "word": "Worth it",
       "bg": "#E1F5EE"
     },
     {
-      "word": "Skip",
-      "bg": "#EEEDFE"
-    },
-    {
-      "word": "Worth watching",
-      "bg": "#FAEEDA"
-    }
-  ],
-  "title": "New Words",
-  "subtitle": "Tap a card to see it bigger."
-}$json$::jsonb,
-  true
-),
-(
-  'cb260ccc-0b3b-431e-a99f-f0d348ab255d',
-  4,
-  'phrases',
-  null,
-  null,
-  $json${
-  "teacher": [
-    "Would you recommend this show?",
-    "Is it worth watching?"
-  ],
-  "student": [
-    "Yes, it's a must-watch.",
-    "Definitely worth watching."
-  ],
-  "note": "Think of a show or song you'd recommend!",
-  "title": "Practice the Conversation"
-}$json$::jsonb,
-  true
-),
-(
-  'cb260ccc-0b3b-431e-a99f-f0d348ab255d',
-  5,
-  'activity',
-  null,
-  null,
-  $json${
-  "dialogue": [
-    {
-      "speaker": "A",
-      "text": "This show is a [must-watch]."
-    },
-    {
-      "speaker": "B",
-      "text": "I [highly recommend] this album."
-    },
-    {
-      "speaker": "A",
-      "text": "Honestly, you can [skip] the sequel."
-    }
-  ],
-  "blanks": [
-    "must-watch",
-    "highly recommend",
-    "skip"
-  ]
-}$json$::jsonb,
-  true
-),
-(
-  'cb260ccc-0b3b-431e-a99f-f0d348ab255d',
-  6,
-  'speaking',
-  null,
-  null,
-  $json${
-  "dialogue": [
-    {
-      "speaker": "A",
-      "text": "What show would you recommend?"
-    },
-    {
-      "speaker": "B",
-      "text": "I highly recommend this series, it's a must-watch."
-    },
-    {
-      "speaker": "A",
-      "text": "What about the second season?"
-    },
-    {
-      "speaker": "B",
-      "text": "Honestly, you can skip it. It's not as worth watching."
-    }
-  ],
-  "note": "Switch! Student becomes A, teacher becomes B."
-}$json$::jsonb,
-  true
-),
-(
-  'cb260ccc-0b3b-431e-a99f-f0d348ab255d',
-  7,
-  'reading',
-  null,
-  null,
-  $json${
-  "text": "My recommendation this week: this new series is a must-watch, definitely worth your time. I highly recommend the soundtrack too. However, I'd say you can skip the movie spin-off, it's not as good as the show.",
-  "questions": [
-    "What does the writer recommend?",
-    "What else do they highly recommend?",
-    "What do they say to skip?"
-  ]
-}$json$::jsonb,
-  true
-),
-(
-  'cb260ccc-0b3b-431e-a99f-f0d348ab255d',
-  8,
-  'writing',
-  null,
-  null,
-  $json${
-  "prompts": [
-    "I highly recommend ___.",
-    "It's worth watching because ___.",
-    "You can skip ___ because ___."
-  ]
-}$json$::jsonb,
-  true
-),
-(
-  'cb260ccc-0b3b-431e-a99f-f0d348ab255d',
-  9,
-  'review',
-  null,
-  null,
-  $json${
-  "checklist": [
-    "Write a short recommendation",
-    "Use 'must-watch' and 'worth watching'",
-    "Give balanced opinions"
-  ],
-  "challenge": "Recommend something to me and explain why!"
-}$json$::jsonb,
-  true
-);
-
--- Lesson 5: Unit Review
-insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
-values (
-  '3b4d9381-825d-418d-94c9-95726537f6ab',
-  'Unit Review',
-  'A2',
-  'teens',
-  10,
-  5,
-  'Review entertainment preferences, event plans, comparisons, and a recommendation.',
-  25,
-  9,
-  true
-);
-
-insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
-values
-(
-  '3b4d9381-825d-418d-94c9-95726537f6ab',
-  1,
-  'title',
-  null,
-  null,
-  $json${
-  "badge": "A2 · Elementary · Teens"
-}$json$::jsonb,
-  true
-),
-(
-  '3b4d9381-825d-418d-94c9-95726537f6ab',
-  2,
-  'warmup',
-  null,
-  null,
-  $json${
-  "display": "🍿",
-  "questions": [
-    "What are you watching these days?",
-    "What event are you excited about?"
-  ],
-  "title": "What's your take?"
-}$json$::jsonb,
-  true
-),
-(
-  '3b4d9381-825d-418d-94c9-95726537f6ab',
-  3,
-  'vocabulary',
-  null,
-  null,
-  $json${
-  "words": [
-    {
-      "word": "Series",
-      "bg": "#FAECE7"
-    },
-    {
-      "word": "Concert",
-      "bg": "#E1F5EE"
-    },
-    {
-      "word": "Better than",
+      "word": "One thing to know",
       "bg": "#EEEDFE"
     },
     {
@@ -877,27 +677,27 @@ values
   true
 ),
 (
-  '3b4d9381-825d-418d-94c9-95726537f6ab',
+  'a782d545-5550-487c-89c5-97f00dc27ec3',
   4,
   'phrases',
   null,
   null,
   $json${
   "teacher": [
-    "What are you watching?",
-    "What would you recommend?"
+    "Does it depend on who's asking?",
+    "What's one thing to know first?"
   ],
   "student": [
-    "I'm watching a new series.",
-    "I recommend the new album."
+    "It depends: some people will love it, some won't.",
+    "One thing to know: it's slow at the start."
   ],
-  "note": "Use everything you learned this unit!",
+  "note": "Write your own recommendation using the checklist, not a fixed sentence frame.",
   "title": "Practice the Conversation"
 }$json$::jsonb,
   true
 ),
 (
-  '3b4d9381-825d-418d-94c9-95726537f6ab',
+  'a782d545-5550-487c-89c5-97f00dc27ec3',
   5,
   'activity',
   null,
@@ -906,27 +706,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "I'm watching a new [series]."
+      "text": "My recommendation [it depends] on who's asking."
     },
     {
       "speaker": "B",
-      "text": "I'm going to a [concert] this weekend."
+      "text": "It's [worth it], with [one thing to know]."
     },
     {
       "speaker": "A",
-      "text": "This show is [better than] the last one."
+      "text": "I [recommend] it, but not for everyone."
     }
   ],
   "blanks": [
-    "series",
-    "concert",
-    "better than"
+    "it depends",
+    "worth it",
+    "recommend"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '3b4d9381-825d-418d-94c9-95726537f6ab',
+  'a782d545-5550-487c-89c5-97f00dc27ec3',
   6,
   'speaking',
   null,
@@ -935,70 +735,269 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "Tell me what you're into these days."
+      "text": "Would you recommend that show to everyone?"
     },
     {
       "speaker": "B",
-      "text": "I'm watching a new series, it's better than the last one. I highly recommend it."
+      "text": "It depends. If you like slow stories, it's worth it. If you want fast action, skip it."
     },
     {
       "speaker": "A",
-      "text": "I'm going to a concert this weekend, I'm so excited!"
+      "text": "What's one thing someone should know first?"
     },
     {
       "speaker": "B",
-      "text": "Have an amazing time!"
+      "text": "It's slow for the first few episodes, but it gets much better."
     }
   ],
-  "note": "Switch! Student becomes A, teacher becomes B."
+  "note": "Switch! Student becomes A, teacher becomes B. Give a recommendation that depends on the person, not a simple yes or no."
 }$json$::jsonb,
   true
 ),
 (
-  '3b4d9381-825d-418d-94c9-95726537f6ab',
+  'a782d545-5550-487c-89c5-97f00dc27ec3',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "These days, I'm watching a new mystery series. It's funnier and better than the last one, so I highly recommend it. This weekend, I'm going to a concert with my friends. We bought tickets last month and I'm so excited!",
+  "text": "People often ask me if I'd recommend this show, and my honest answer is: it depends. If you want fast, easy entertainment, I would say skip it, because the first three episodes are slow. But if you can be patient, I think it's worth the time, because the story gets much better later. One thing to know: don't start it during a busy week, because it needs more attention than a show you just watch in the background. I used to give simple 'yes' or 'no' recommendations, but now I think that's not very helpful, because what works for one person doesn't always work for another.",
   "questions": [
-    "What is the writer watching?",
-    "What does the writer recommend?",
-    "What is happening this weekend?"
+    "What does the recommendation depend on?",
+    "What's the one thing to know before starting?",
+    "Why does the writer no longer give simple yes/no recommendations?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '3b4d9381-825d-418d-94c9-95726537f6ab',
+  'a782d545-5550-487c-89c5-97f00dc27ec3',
   8,
   'writing',
   null,
   null,
   $json${
   "prompts": [
-    "These days, I'm watching/listening to ___.",
-    "I recommend ___ because ___.",
-    "This weekend, I'm going to ___."
+    "Write a recommendation that depends on the person. Who is it for?",
+    "What's one thing someone should know before they try it?",
+    "Why can a simple yes/no recommendation be less helpful?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '3b4d9381-825d-418d-94c9-95726537f6ab',
+  'a782d545-5550-487c-89c5-97f00dc27ec3',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Talk about entertainment preferences",
-    "Make event plans",
-    "Compare shows or songs",
-    "Write a recommendation"
+    "Write a recommendation that depends on the person",
+    "Give one important thing to know first",
+    "Explain why 'it depends' can be more honest than yes/no"
   ],
-  "challenge": "Tell me all about your entertainment picks this month!"
+  "challenge": "Give me a recommendation that depends on the person, plus one thing they should know first."
+}$json$::jsonb,
+  true
+);
+
+-- Lesson 5: Unit Review
+insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
+values (
+  'f05b63c5-e705-43aa-9c63-f8db1e649784',
+  'Unit Review',
+  'A2',
+  'teens',
+  10,
+  5,
+  'Connect taste, event plans, opinions, and a recommendation. [Bridge tier]',
+  25,
+  9,
+  true
+);
+
+insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
+values
+(
+  'f05b63c5-e705-43aa-9c63-f8db1e649784',
+  1,
+  'title',
+  null,
+  null,
+  $json${
+  "badge": "A2 · Elementary · Teens"
+}$json$::jsonb,
+  true
+),
+(
+  'f05b63c5-e705-43aa-9c63-f8db1e649784',
+  2,
+  'warmup',
+  null,
+  null,
+  $json${
+  "display": "🍿",
+  "questions": [
+    "How has your judgment about entertainment become more careful?",
+    "What opinion did this unit change?"
+  ],
+  "title": "What's your take?"
+}$json$::jsonb,
+  true
+),
+(
+  'f05b63c5-e705-43aa-9c63-f8db1e649784',
+  3,
+  'vocabulary',
+  null,
+  null,
+  $json${
+  "words": [
+    {
+      "word": "Changed",
+      "bg": "#FAECE7"
+    },
+    {
+      "word": "Based on",
+      "bg": "#E1F5EE"
+    },
+    {
+      "word": "Looking back",
+      "bg": "#EEEDFE"
+    },
+    {
+      "word": "It depends",
+      "bg": "#FAEEDA"
+    }
+  ],
+  "title": "New Words",
+  "subtitle": "Tap a card to see it bigger."
+}$json$::jsonb,
+  true
+),
+(
+  'f05b63c5-e705-43aa-9c63-f8db1e649784',
+  4,
+  'phrases',
+  null,
+  null,
+  $json${
+  "teacher": [
+    "How has your judgment changed?",
+    "What opinion did this unit change?"
+  ],
+  "student": [
+    "I judge things less by what's popular now.",
+    "This unit changed how I recommend things to friends."
+  ],
+  "note": "Connect at least two lessons from this unit together.",
+  "title": "Practice the Conversation"
+}$json$::jsonb,
+  true
+),
+(
+  'f05b63c5-e705-43aa-9c63-f8db1e649784',
+  5,
+  'activity',
+  null,
+  null,
+  $json${
+  "dialogue": [
+    {
+      "speaker": "A",
+      "text": "My taste has [changed] since this unit."
+    },
+    {
+      "speaker": "B",
+      "text": "I plan events [based on] the last one now."
+    },
+    {
+      "speaker": "A",
+      "text": "[Looking back], my opinions change a lot."
+    }
+  ],
+  "blanks": [
+    "changed",
+    "based on",
+    "looking back"
+  ]
+}$json$::jsonb,
+  true
+),
+(
+  'f05b63c5-e705-43aa-9c63-f8db1e649784',
+  6,
+  'speaking',
+  null,
+  null,
+  $json${
+  "dialogue": [
+    {
+      "speaker": "A",
+      "text": "How has your judgment about entertainment become more careful this unit?"
+    },
+    {
+      "speaker": "B",
+      "text": "I used to just say something was good or bad. Now I say 'it depends,' like in the recommendation lesson."
+    },
+    {
+      "speaker": "A",
+      "text": "I compare things to my past self more now, like in the taste lesson, before deciding if something is worth it."
+    },
+    {
+      "speaker": "B",
+      "text": "It's strange how much more careful this feels now."
+    }
+  ],
+  "note": "Switch! Student becomes A, teacher becomes B. Connect at least two lessons from the unit."
+}$json$::jsonb,
+  true
+),
+(
+  'f05b63c5-e705-43aa-9c63-f8db1e649784',
+  7,
+  'reading',
+  null,
+  null,
+  $json${
+  "text": "Looking back at this whole unit, my thinking about entertainment has changed. The taste lesson showed me that my taste changes without me noticing. The same idea came back when I looked at something I loved before and didn't like as much now. My opinions clearly are not fixed. The event lesson taught me to be careful about big expectations, and that connects to the recommendation lesson, where I learned that 'it depends' is often more honest than a simple yes or no. If I had to sum up this whole unit in one idea, it would be this: entertainment opinions feel permanent, but they change more than we think, and knowing that makes recommendations more useful.",
+  "questions": [
+    "How does the taste lesson connect to the 'still good or not' lesson?",
+    "How does the event lesson connect to the recommendation lesson?",
+    "What one idea sums up the whole unit?"
+  ]
+}$json$::jsonb,
+  true
+),
+(
+  'f05b63c5-e705-43aa-9c63-f8db1e649784',
+  8,
+  'writing',
+  null,
+  null,
+  $json${
+  "prompts": [
+    "Connect two lessons from this unit. How do they relate?",
+    "How have your own entertainment opinions changed, even recently?",
+    "Sum up the whole unit in one sentence."
+  ]
+}$json$::jsonb,
+  true
+),
+(
+  'f05b63c5-e705-43aa-9c63-f8db1e649784',
+  9,
+  'review',
+  null,
+  null,
+  $json${
+  "checklist": [
+    "Connect two or more lessons from the unit",
+    "Say how opinions can change over time",
+    "Sum up the unit's main idea"
+  ],
+  "challenge": "Connect two ideas from this unit and tell me what you'd tell a friend about judging entertainment."
 }$json$::jsonb,
   true
 );
