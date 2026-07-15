@@ -378,7 +378,7 @@ const CSS = `
   align-items: center;
   gap: 6px;
   background: var(--k-accent, #FF7A59);
-  color: #fff;
+  color: var(--k-btn-text, #fff);
   border: none;
   border-radius: 8px;
   box-shadow: 0 3px 0 var(--k-accent-dark, #C2452F);
@@ -403,26 +403,33 @@ const CSS = `
 }
 .lp-dot.is-active { width: 20px; background: var(--k-accent, #FF7A59); }
 
-/* ── Kids palette (v5, heat scale): fully saturated, not pastel -- the
+/* ── Kids palette (v6, heat scale): fully saturated, not pastel -- the
    hue itself climbs yellow -> orange -> red as units get harder, so the
    color is a legible difficulty signal, not just decoration. Rotates
    every 4 units, matching the Foundation (1-4) / Combination (5-8) /
    Bridge (9-12) tiers. --k-pop (Speaker B / contrast accent) is a
    constant vivid violet across all three tiers -- yellow/orange/red's
-   complement, so it pops against every tier instead of clashing like
-   the blue it replaced. Navy ink (#1B2A4A) stays constant. Slide
-   components opt in via var(--k-*, <fallback>) so Teens (no .is-kids
-   class, no vars defined) render pixel-identical to before. ── */
+   complement. --k-ink is a warm dark brown (not navy) used for header
+   bars and instruction/callout blocks, replacing the old #1B2A4A so
+   nothing in the Kids theme reads as "dark blue" anymore -- also
+   constant across tiers. --k-btn-text picks white or --k-ink per tier
+   so button/badge/tag text stays legible even where --k-accent itself
+   is light (tier 0's pale yellow). Slide components opt in via
+   var(--k-*, <fallback>) so Teens (no .is-kids class, no vars defined)
+   render pixel-identical to before. ── */
 .lp-shell.is-kids.kt-0 {
-  /* Units 1-4: Foundation -- Sunshine Yellow (clean gold, not muddy) */
-  --k-accent: #FFC933;
-  --k-accent-dark: #E8A400;
-  --k-secondary: #FFE28A;
-  --k-secondary-dark: #D9970C;
+  /* Units 1-4: Foundation -- Sunshine Yellow (matched to the user's
+     reference swatch, shade 3 of 5: pale-to-vivid lemon ramp) */
+  --k-accent: #F0F589;
+  --k-accent-dark: #B5B300;
+  --k-secondary: #F7FAB8;
+  --k-secondary-dark: #D6DA55;
   --k-pop: #8B5CF6;
-  --k-bg: #FFFCF2;
-  --k-bg-cool: #FFF3D2;
-  --k-tint: #FFE4A3;
+  --k-ink: #3D2B1E;
+  --k-btn-text: var(--k-ink);
+  --k-bg: #FDFDF0;
+  --k-bg-cool: #F9FAD0;
+  --k-tint: #F0F589;
   --k-motif: "🌱";
 }
 .lp-shell.is-kids.kt-1 {
@@ -432,6 +439,8 @@ const CSS = `
   --k-secondary: #FFC08A;
   --k-secondary-dark: #E08030;
   --k-pop: #8B5CF6;
+  --k-ink: #3D2B1E;
+  --k-btn-text: #fff;
   --k-bg: #FFFAF5;
   --k-bg-cool: #FFE9D5;
   --k-tint: #FFD2A8;
@@ -444,6 +453,8 @@ const CSS = `
   --k-secondary: #FF9382;
   --k-secondary-dark: #E0563F;
   --k-pop: #8B5CF6;
+  --k-ink: #3D2B1E;
+  --k-btn-text: #fff;
   --k-bg: #FFF7F5;
   --k-bg-cool: #FFDCD4;
   --k-tint: #FFB9AC;

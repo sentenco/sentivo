@@ -713,7 +713,7 @@ const CSS = `
 }
 .slpr-check-btn {
   background: var(--k-accent, #FFC933);
-  color: #fff;
+  color: var(--k-btn-text, #fff);
   border: none;
   border-radius: 999px;
   font-family: 'Quicksand', sans-serif;

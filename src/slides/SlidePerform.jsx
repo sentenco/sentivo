@@ -211,7 +211,7 @@ const CSS = `
   height: 26px;
   border-radius: 999px;
   background: var(--k-accent, #FFC933);
-  color: #fff;
+  color: var(--k-btn-text, #fff);
   display: flex;
   align-items: center;
   justify-content: center;

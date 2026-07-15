@@ -166,7 +166,7 @@ const CSS = `
   border-color: var(--k-accent-dark, #E8A400);
 }
 .slrv-challenge {
-  background: #1B2A4A;
+  background: var(--k-ink, #1B2A4A);
   border-radius: 12px;
   padding: 15px 20px;
   transition: box-shadow 0.2s ease;

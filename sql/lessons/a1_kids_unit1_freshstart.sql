@@ -37,8 +37,8 @@ values
   $json${
   "display": "👋",
   "questions": [
-    "What do you say when you meet someone?",
-    "What do you say when you leave?"
+    "Do you see children?",
+    "Are they happy?"
   ],
   "title": "What do you see?"
 }$json$::jsonb,
@@ -237,8 +237,8 @@ values
   $json${
   "display": "🌍",
   "questions": [
-    "Where do you live?",
-    "What country are you from?"
+    "Do you see a map?",
+    "Is it colorful?"
   ],
   "title": "What do you see?"
 }$json$::jsonb,
@@ -414,8 +414,8 @@ values
   $json${
   "display": "🎂",
   "questions": [
-    "How old are you?",
-    "When is your birthday?"
+    "Do you see a cake?",
+    "How many candles?"
   ],
   "title": "What do you see?"
 }$json$::jsonb,
@@ -604,8 +604,8 @@ values
   $json${
   "display": "⭐",
   "questions": [
-    "What do you like?",
-    "What don't you like?"
+    "Do you see a toy?",
+    "Do you like it?"
   ],
   "title": "What do you see?"
 }$json$::jsonb,
@@ -809,8 +809,8 @@ values
   $json${
   "display": "🌟",
   "questions": [
-    "What is your name?",
-    "Where are you from?"
+    "Do you see stars?",
+    "Are they happy?"
   ],
   "title": "What do you see?"
 }$json$::jsonb,

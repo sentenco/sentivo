@@ -130,7 +130,7 @@ const CSS = `
   font-weight: 700;
   font-size: 52px;
   line-height: 1.15;
-  color: #fff;
+  color: var(--k-btn-text, #fff);
 }
 
 /* ── Adults theme: calm 2x2 grid, no badges ── */

@@ -76,7 +76,7 @@ const CSS = `
 .slp-tag {
   display: inline-block;
   background: var(--k-accent, #FFC933);
-  color: #fff;
+  color: var(--k-btn-text, #fff);
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;
   font-size: 10px;
@@ -123,7 +123,7 @@ const CSS = `
   font-size: 11px;
   color: #fff;
 }
-.slp-turn--teacher .slp-avatar { background: var(--k-accent, #FFC933); }
+.slp-turn--teacher .slp-avatar { background: var(--k-accent, #FFC933); color: var(--k-btn-text, #fff); }
 .slp-turn--student .slp-avatar { background: var(--k-pop, #8B5CF6); }
 .slp-bubble {
   border-radius: 14px;
