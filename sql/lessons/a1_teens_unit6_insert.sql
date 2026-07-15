@@ -1,16 +1,17 @@
--- A1 Teens Unit 6: My Daily Routine (5 lessons)
+-- A1 Teens Unit 6: Daily Routine (5 lessons) — TIERED (Combination)
+-- Regenerated per the Sentivo Intra-Level Progression Framework + lesson-level escalation + task rotation.
 -- Run this whole script in the Supabase SQL editor.
 
 -- Lesson 1: My Daily Routine
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  'c9903aba-9873-46ca-a6df-3ab704e9afb9',
+  '33bc5534-6ef6-460d-b328-426c62ce4985',
   'My Daily Routine',
   'A1',
   'teens',
   6,
   1,
-  'Name common daily routine verbs.',
+  'Name daily routine actions. [Combination, Lesson 1: notice/receptive]',
   25,
   9,
   true
@@ -19,7 +20,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  'c9903aba-9873-46ca-a6df-3ab704e9afb9',
+  '33bc5534-6ef6-460d-b328-426c62ce4985',
   1,
   'title',
   null,
@@ -30,7 +31,7 @@ values
   true
 ),
 (
-  'c9903aba-9873-46ca-a6df-3ab704e9afb9',
+  '33bc5534-6ef6-460d-b328-426c62ce4985',
   2,
   'warmup',
   null,
@@ -38,15 +39,15 @@ values
   $json${
   "display": "⏰",
   "questions": [
-    "What do you do every day?",
-    "Do you study every day?"
+    "What time do you wake up?",
+    "What time do you sleep?"
   ],
-  "title": "Let's Start!"
+  "title": "Let's start!"
 }$json$::jsonb,
   true
 ),
 (
-  'c9903aba-9873-46ca-a6df-3ab704e9afb9',
+  '33bc5534-6ef6-460d-b328-426c62ce4985',
   3,
   'vocabulary',
   null,
@@ -54,19 +55,19 @@ values
   $json${
   "words": [
     {
-      "word": "Get Up",
+      "word": "Wake up",
       "bg": "#FAECE7"
     },
     {
-      "word": "Wash",
+      "word": "Get dressed",
       "bg": "#E1F5EE"
     },
     {
-      "word": "Eat",
+      "word": "Go to school",
       "bg": "#EEEDFE"
     },
     {
-      "word": "Study",
+      "word": "Sleep",
       "bg": "#FAEEDA"
     }
   ],
@@ -76,27 +77,27 @@ values
   true
 ),
 (
-  'c9903aba-9873-46ca-a6df-3ab704e9afb9',
+  '33bc5534-6ef6-460d-b328-426c62ce4985',
   4,
   'phrases',
   null,
   null,
   $json${
   "teacher": [
-    "What do you do every day?",
-    "Do you study every day?"
+    "What time do you wake up?",
+    "What do you do next?"
   ],
   "student": [
-    "I get up and eat.",
-    "Yes, I study every day."
+    "I wake up at 7am.",
+    "I get dressed."
   ],
-  "note": "Think about your real daily actions!",
+  "note": "Point to a clock picture!",
   "title": "Practice the Conversation"
 }$json$::jsonb,
   true
 ),
 (
-  'c9903aba-9873-46ca-a6df-3ab704e9afb9',
+  '33bc5534-6ef6-460d-b328-426c62ce4985',
   5,
   'activity',
   null,
@@ -105,27 +106,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "I [get up] at 7."
+      "text": "I [wake up] at 7am."
     },
     {
       "speaker": "B",
-      "text": "I [eat] breakfast."
+      "text": "I [get dressed]."
     },
     {
       "speaker": "A",
-      "text": "I [study] every day."
+      "text": "I [go to school]."
     }
   ],
   "blanks": [
-    "get up",
-    "eat",
-    "study"
+    "wake up",
+    "get dressed",
+    "go to school"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'c9903aba-9873-46ca-a6df-3ab704e9afb9',
+  '33bc5534-6ef6-460d-b328-426c62ce4985',
   6,
   'speaking',
   null,
@@ -134,69 +135,69 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "What do you do every day?"
+      "text": "I wake up at 7am."
     },
     {
       "speaker": "B",
-      "text": "I get up, wash, and eat breakfast."
+      "text": "I get dressed."
     },
     {
       "speaker": "A",
-      "text": "I study every day too!"
+      "text": "I go to school at 8am."
     },
     {
       "speaker": "B",
-      "text": "Same here!"
+      "text": "I sleep at 10pm!"
     }
   ],
-  "note": "Switch! Student becomes A, teacher becomes B."
+  "note": "Teacher says the line first. Student repeats, then says it alone."
 }$json$::jsonb,
   true
 ),
 (
-  'c9903aba-9873-46ca-a6df-3ab704e9afb9',
+  '33bc5534-6ef6-460d-b328-426c62ce4985',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "Every day, I get up. I wash my face. I eat breakfast. I go to school. I study. At night, I sleep. This is my daily routine!",
+  "text": "I wake up at 7am. I get dressed. I go to school at 8am. I sleep at 10pm.",
   "questions": [
-    "What does the writer do first?",
-    "Does the writer go to school?",
-    "What happens at night?"
+    "What time does the writer wake up?",
+    "What time does school start?",
+    "What time does the writer sleep?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'c9903aba-9873-46ca-a6df-3ab704e9afb9',
+  '33bc5534-6ef6-460d-b328-426c62ce4985',
   8,
   'writing',
   null,
   null,
   $json${
   "prompts": [
-    "I get up at ___.",
-    "I eat ___.",
-    "I study ___."
+    "I wake up at ___.",
+    "I get dressed and ___.",
+    "I sleep at ___."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'c9903aba-9873-46ca-a6df-3ab704e9afb9',
+  '33bc5534-6ef6-460d-b328-426c62ce4985',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Name four routine verbs",
-    "Say 'I ___ every day'",
-    "Talk about my daily routine"
+    "Name 4 daily actions",
+    "Say wake up and sleep times",
+    "Talk about my morning"
   ],
-  "challenge": "Tell me three things you do every day!"
+  "challenge": "Tell me your daily routine!"
 }$json$::jsonb,
   true
 );
@@ -204,13 +205,13 @@ values
 -- Lesson 2: Time in My Day
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  'f6b7aa33-abd1-496e-96e8-e56f80a730ee',
+  '1cfadb89-d972-4893-bbe9-50c2e955b0a6',
   'Time in My Day',
   'A1',
   'teens',
   6,
   2,
-  'Say simple routine times.',
+  'Use frequency words with routine actions. [Combination, Lesson 2: controlled practice, 2 combined targets]',
   25,
   9,
   true
@@ -219,7 +220,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  'f6b7aa33-abd1-496e-96e8-e56f80a730ee',
+  '1cfadb89-d972-4893-bbe9-50c2e955b0a6',
   1,
   'title',
   null,
@@ -230,23 +231,23 @@ values
   true
 ),
 (
-  'f6b7aa33-abd1-496e-96e8-e56f80a730ee',
+  '1cfadb89-d972-4893-bbe9-50c2e955b0a6',
   2,
   'warmup',
   null,
   null,
   $json${
-  "display": "🕖",
+  "display": "🍳",
   "questions": [
-    "What time do you wake up?",
-    "What time do you go to bed?"
+    "Do you always eat breakfast?",
+    "Do you sometimes wake up late?"
   ],
-  "title": "Let's Start!"
+  "title": "Let's start!"
 }$json$::jsonb,
   true
 ),
 (
-  'f6b7aa33-abd1-496e-96e8-e56f80a730ee',
+  '1cfadb89-d972-4893-bbe9-50c2e955b0a6',
   3,
   'vocabulary',
   null,
@@ -254,19 +255,19 @@ values
   $json${
   "words": [
     {
-      "word": "In the Morning",
+      "word": "Usually",
       "bg": "#FAECE7"
     },
     {
-      "word": "At 7 O'clock",
+      "word": "Always",
       "bg": "#E1F5EE"
     },
     {
-      "word": "At Night",
+      "word": "Sometimes",
       "bg": "#EEEDFE"
     },
     {
-      "word": "Time",
+      "word": "Breakfast",
       "bg": "#FAEEDA"
     }
   ],
@@ -276,27 +277,27 @@ values
   true
 ),
 (
-  'f6b7aa33-abd1-496e-96e8-e56f80a730ee',
+  '1cfadb89-d972-4893-bbe9-50c2e955b0a6',
   4,
   'phrases',
   null,
   null,
   $json${
   "teacher": [
-    "What time do you get up?",
-    "What time do you sleep?"
+    "Do you always eat breakfast?",
+    "Do you sometimes wake up late?"
   ],
   "student": [
-    "I get up at 7.",
-    "I sleep at 10."
+    "Yes, I always eat breakfast.",
+    "I sometimes wake up late."
   ],
-  "note": "Say your real times!",
+  "note": "Use the word bank: usually, always, sometimes, breakfast.",
   "title": "Practice the Conversation"
 }$json$::jsonb,
   true
 ),
 (
-  'f6b7aa33-abd1-496e-96e8-e56f80a730ee',
+  '1cfadb89-d972-4893-bbe9-50c2e955b0a6',
   5,
   'activity',
   null,
@@ -305,27 +306,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "I get up [in the morning]."
+      "text": "I [usually] eat [breakfast] at 7am."
     },
     {
       "speaker": "B",
-      "text": "I eat [at 7 o'clock]."
+      "text": "I [always] wake up early."
     },
     {
       "speaker": "A",
-      "text": "I sleep [at night]."
+      "text": "I [sometimes] wake up late."
     }
   ],
   "blanks": [
-    "in the morning",
-    "at 7 o'clock",
-    "at night"
+    "usually",
+    "always",
+    "sometimes"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'f6b7aa33-abd1-496e-96e8-e56f80a730ee',
+  '1cfadb89-d972-4893-bbe9-50c2e955b0a6',
   6,
   'speaking',
   null,
@@ -334,19 +335,19 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "What time do you get up?"
+      "text": "Do you always eat breakfast?"
     },
     {
       "speaker": "B",
-      "text": "I get up at 6:30 in the morning."
+      "text": "Yes, I usually eat breakfast at 7am. Do you always wake up early?"
     },
     {
       "speaker": "A",
-      "text": "What time do you sleep?"
+      "text": "I sometimes wake up late."
     },
     {
       "speaker": "B",
-      "text": "I sleep at 10 at night!"
+      "text": "Me too, sometimes!"
     }
   ],
   "note": "Switch! Student becomes A, teacher becomes B."
@@ -354,49 +355,49 @@ values
   true
 ),
 (
-  'f6b7aa33-abd1-496e-96e8-e56f80a730ee',
+  '1cfadb89-d972-4893-bbe9-50c2e955b0a6',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "In the morning, I get up at 7 o'clock. I eat breakfast at 7:30. At night, I sleep at 10 o'clock. I have a regular schedule!",
+  "text": "I usually eat breakfast at 7am. I always wake up early. Sometimes I wake up late on weekends.",
   "questions": [
-    "What time does the writer get up?",
-    "What time does the writer eat breakfast?",
-    "What time does the writer sleep?"
+    "When does the writer usually eat breakfast?",
+    "Does the writer always wake up early?",
+    "When does the writer sometimes wake up late?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'f6b7aa33-abd1-496e-96e8-e56f80a730ee',
+  '1cfadb89-d972-4893-bbe9-50c2e955b0a6',
   8,
   'writing',
   null,
   null,
   $json${
   "prompts": [
-    "I get up at ___.",
-    "I eat breakfast at ___.",
-    "I sleep at ___."
+    "I usually ___.",
+    "I always ___.",
+    "Sometimes I ___."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'f6b7aa33-abd1-496e-96e8-e56f80a730ee',
+  '1cfadb89-d972-4893-bbe9-50c2e955b0a6',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Say time phrases",
-    "Say 'at ___ o'clock'",
-    "Talk about my daily schedule"
+    "Use 'usually', 'always', 'sometimes'",
+    "Talk about breakfast time",
+    "Talk about weekend routine"
   ],
-  "challenge": "Tell me three times from your day!"
+  "challenge": "Tell me your usual routine, and something you sometimes do differently!"
 }$json$::jsonb,
   true
 );
@@ -404,13 +405,13 @@ values
 -- Lesson 3: My Morning
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '35b01559-36a8-487c-b21e-f82425e1602c',
+  'a76e6948-61dc-44b8-b85d-3703dab1c484',
   'My Morning',
   'A1',
   'teens',
   6,
   3,
-  'Describe a simple morning routine.',
+  'Sequence a morning routine. [Combination, Lesson 3: freer practice, role reversal]',
   25,
   9,
   true
@@ -419,7 +420,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '35b01559-36a8-487c-b21e-f82425e1602c',
+  'a76e6948-61dc-44b8-b85d-3703dab1c484',
   1,
   'title',
   null,
@@ -430,7 +431,7 @@ values
   true
 ),
 (
-  '35b01559-36a8-487c-b21e-f82425e1602c',
+  'a76e6948-61dc-44b8-b85d-3703dab1c484',
   2,
   'warmup',
   null,
@@ -438,15 +439,15 @@ values
   $json${
   "display": "🌅",
   "questions": [
-    "What is the first thing you do in the morning?",
-    "Do you eat breakfast?"
+    "What do you do first in the morning?",
+    "What do you do last?"
   ],
-  "title": "Let's Start!"
+  "title": "Let's start!"
 }$json$::jsonb,
   true
 ),
 (
-  '35b01559-36a8-487c-b21e-f82425e1602c',
+  'a76e6948-61dc-44b8-b85d-3703dab1c484',
   3,
   'vocabulary',
   null,
@@ -462,11 +463,11 @@ values
       "bg": "#E1F5EE"
     },
     {
-      "word": "After That",
+      "word": "After that",
       "bg": "#EEEDFE"
     },
     {
-      "word": "Breakfast",
+      "word": "Finally",
       "bg": "#FAEEDA"
     }
   ],
@@ -476,7 +477,7 @@ values
   true
 ),
 (
-  '35b01559-36a8-487c-b21e-f82425e1602c',
+  'a76e6948-61dc-44b8-b85d-3703dab1c484',
   4,
   'phrases',
   null,
@@ -484,19 +485,19 @@ values
   $json${
   "teacher": [
     "What do you do first?",
-    "What do you do then?"
+    "What do you do after that?"
   ],
   "student": [
-    "First, I get up.",
-    "Then, I eat breakfast."
+    "First, I wake up.",
+    "Then, I get dressed."
   ],
-  "note": "Describe your real morning in order!",
+  "note": "Ask me first this time, then I'll ask you!",
   "title": "Practice the Conversation"
 }$json$::jsonb,
   true
 ),
 (
-  '35b01559-36a8-487c-b21e-f82425e1602c',
+  'a76e6948-61dc-44b8-b85d-3703dab1c484',
   5,
   'activity',
   null,
@@ -505,27 +506,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "[First], I get up."
+      "text": "[First], I wake up."
     },
     {
       "speaker": "B",
-      "text": "[Then], I wash my face."
+      "text": "[Then], I eat breakfast."
     },
     {
       "speaker": "A",
-      "text": "[After that], I eat breakfast."
+      "text": "[Finally], I go to school."
     }
   ],
   "blanks": [
-    "First",
-    "Then",
-    "After that"
+    "first",
+    "then",
+    "finally"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '35b01559-36a8-487c-b21e-f82425e1602c',
+  'a76e6948-61dc-44b8-b85d-3703dab1c484',
   6,
   'speaking',
   null,
@@ -538,39 +539,39 @@ values
     },
     {
       "speaker": "B",
-      "text": "First, I get up and wash my face."
+      "text": "First, I wake up. Then, I eat breakfast. What do you do?"
     },
     {
       "speaker": "A",
-      "text": "Then what?"
+      "text": "After that, I get dressed. Finally, I go to school."
     },
     {
       "speaker": "B",
-      "text": "Then I eat breakfast and go to school!"
+      "text": "Your turn to ask me something!"
     }
   ],
-  "note": "Switch! Student becomes A, teacher becomes B."
+  "note": "Student asks first this time. Teacher answers, then asks back."
 }$json$::jsonb,
   true
 ),
 (
-  '35b01559-36a8-487c-b21e-f82425e1602c',
+  'a76e6948-61dc-44b8-b85d-3703dab1c484',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "First, I get up at 7. Then, I wash my face. After that, I eat breakfast. Finally, I go to school. This is my morning routine!",
+  "text": "First, I wake up. Then, I eat breakfast. After that, I get dressed. Finally, I go to school.",
   "questions": [
     "What does the writer do first?",
-    "What happens after washing?",
-    "Where does the writer go finally?"
+    "What does the writer do after breakfast?",
+    "What is the last step?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '35b01559-36a8-487c-b21e-f82425e1602c',
+  'a76e6948-61dc-44b8-b85d-3703dab1c484',
   8,
   'writing',
   null,
@@ -579,24 +580,24 @@ values
   "prompts": [
     "First, I ___.",
     "Then, I ___.",
-    "After that, I ___."
+    "Finally, I ___."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '35b01559-36a8-487c-b21e-f82425e1602c',
+  'a76e6948-61dc-44b8-b85d-3703dab1c484',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Use 'first', 'then', 'after that'",
-    "Describe my morning in order",
-    "Talk about breakfast"
+    "Use 'first, then, after that, finally'",
+    "Sequence my morning",
+    "Ask about someone's morning"
   ],
-  "challenge": "Describe your morning routine in order!"
+  "challenge": "Tell me your morning routine in order!"
 }$json$::jsonb,
   true
 );
@@ -604,13 +605,13 @@ values
 -- Lesson 4: Daily Routine Questions
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '13d57b3b-9f13-42d6-9c74-f8d93cbbd637',
+  'b2747654-3f24-4b8a-a43b-46913d43ebc5',
   'Daily Routine Questions',
   'A1',
   'teens',
   6,
   4,
-  'Ask and answer basic routine questions.',
+  'Combine routine and frequency into a full-day talk. [Combination, Lesson 4: production]',
   25,
   9,
   true
@@ -619,7 +620,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '13d57b3b-9f13-42d6-9c74-f8d93cbbd637',
+  'b2747654-3f24-4b8a-a43b-46913d43ebc5',
   1,
   'title',
   null,
@@ -630,23 +631,23 @@ values
   true
 ),
 (
-  '13d57b3b-9f13-42d6-9c74-f8d93cbbd637',
+  'b2747654-3f24-4b8a-a43b-46913d43ebc5',
   2,
   'warmup',
   null,
   null,
   $json${
-  "display": "❓",
+  "display": "😴",
   "questions": [
-    "What time do you get up?",
-    "What do you do in the morning?"
+    "Is your day busy or relaxed?",
+    "Are you tired at night?"
   ],
-  "title": "Let's Start!"
+  "title": "Let's start!"
 }$json$::jsonb,
   true
 ),
 (
-  '13d57b3b-9f13-42d6-9c74-f8d93cbbd637',
+  'b2747654-3f24-4b8a-a43b-46913d43ebc5',
   3,
   'vocabulary',
   null,
@@ -654,19 +655,19 @@ values
   $json${
   "words": [
     {
-      "word": "What Time",
+      "word": "Every day",
       "bg": "#FAECE7"
     },
     {
-      "word": "In the Morning",
+      "word": "Busy",
       "bg": "#E1F5EE"
     },
     {
-      "word": "Routine",
+      "word": "Tired",
       "bg": "#EEEDFE"
     },
     {
-      "word": "Schedule",
+      "word": "Relax",
       "bg": "#FAEEDA"
     }
   ],
@@ -676,27 +677,27 @@ values
   true
 ),
 (
-  '13d57b3b-9f13-42d6-9c74-f8d93cbbd637',
+  'b2747654-3f24-4b8a-a43b-46913d43ebc5',
   4,
   'phrases',
   null,
   null,
   $json${
   "teacher": [
-    "What time do you get up?",
-    "What do you do in the morning?"
+    "Is your day busy?",
+    "Are you tired at night?"
   ],
   "student": [
-    "I get up at 7.",
-    "I eat and go to school."
+    "Yes, my day is busy.",
+    "I am tired at night."
   ],
-  "note": "Answer about your real routine!",
+  "note": "Put it all together: routine + sequence + frequency + feeling.",
   "title": "Practice the Conversation"
 }$json$::jsonb,
   true
 ),
 (
-  '13d57b3b-9f13-42d6-9c74-f8d93cbbd637',
+  'b2747654-3f24-4b8a-a43b-46913d43ebc5',
   5,
   'activity',
   null,
@@ -705,27 +706,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "[What time] do you get up?"
+      "text": "I am [busy] [every day]."
     },
     {
       "speaker": "B",
-      "text": "What do you do [in the morning]?"
+      "text": "I am [tired] at night."
     },
     {
       "speaker": "A",
-      "text": "That's my [routine]."
+      "text": "I [relax] before I sleep."
     }
   ],
   "blanks": [
-    "What time",
-    "in the morning",
-    "routine"
+    "busy",
+    "every day",
+    "tired"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '13d57b3b-9f13-42d6-9c74-f8d93cbbd637',
+  'b2747654-3f24-4b8a-a43b-46913d43ebc5',
   6,
   'speaking',
   null,
@@ -734,69 +735,69 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "What time do you get up?"
+      "text": "Tell me about your day."
     },
     {
       "speaker": "B",
-      "text": "I get up at 6:45."
+      "text": "First, I wake up at 7am. I usually eat breakfast, then go to school."
     },
     {
       "speaker": "A",
-      "text": "What do you do in the morning?"
+      "text": "I am busy every day, and tired at night. I relax before I sleep."
     },
     {
       "speaker": "B",
-      "text": "I wash, eat, and go to school!"
+      "text": "That's a full day!"
     }
   ],
-  "note": "Switch! Student becomes A, teacher becomes B."
+  "note": "Mini talk: tell me all about your daily routine in a few sentences."
 }$json$::jsonb,
   true
 ),
 (
-  '13d57b3b-9f13-42d6-9c74-f8d93cbbd637',
+  'b2747654-3f24-4b8a-a43b-46913d43ebc5',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "What time do you get up? I get up at 7. What do you do in the morning? I wash, eat breakfast, and go to school. That's my daily routine!",
+  "text": "First, I wake up at 7am. I usually eat breakfast. Then, I go to school. I am busy every day. I am tired at night, so I relax before I sleep.",
   "questions": [
-    "What time does the writer get up?",
-    "What does the writer do in the morning?",
-    "Is this a daily routine?"
+    "What time does the writer wake up?",
+    "Is the day busy or relaxed?",
+    "What does the writer do before sleep?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '13d57b3b-9f13-42d6-9c74-f8d93cbbd637',
+  'b2747654-3f24-4b8a-a43b-46913d43ebc5',
   8,
   'writing',
   null,
   null,
   $json${
   "prompts": [
-    "What time do you get up? ___.",
-    "In the morning, I ___.",
-    "My routine is ___."
+    "First, I ___.",
+    "I am busy/tired ___.",
+    "I relax by ___."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '13d57b3b-9f13-42d6-9c74-f8d93cbbd637',
+  'b2747654-3f24-4b8a-a43b-46913d43ebc5',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Ask 'What time do you ___?'",
-    "Ask about morning routines",
-    "Answer routine questions"
+    "Sequence my whole day",
+    "Say if I'm busy or tired",
+    "Say how I relax"
   ],
-  "challenge": "Ask me what time I get up and what I do in the morning!"
+  "challenge": "Tell me all about your daily routine, from morning to night!"
 }$json$::jsonb,
   true
 );
@@ -804,13 +805,13 @@ values
 -- Lesson 5: Unit Review
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  'c193991c-9824-4f62-b619-dde875cbf741',
+  'de7f4438-667b-4750-a0da-fe33f1b8e78d',
   'Unit Review',
   'A1',
   'teens',
   6,
   5,
-  'Describe a simple daily routine.',
+  'Review daily routine and frequency words. [Combination, Lesson 5: tier-matched review]',
   25,
   9,
   true
@@ -819,7 +820,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  'c193991c-9824-4f62-b619-dde875cbf741',
+  'de7f4438-667b-4750-a0da-fe33f1b8e78d',
   1,
   'title',
   null,
@@ -830,7 +831,7 @@ values
   true
 ),
 (
-  'c193991c-9824-4f62-b619-dde875cbf741',
+  'de7f4438-667b-4750-a0da-fe33f1b8e78d',
   2,
   'warmup',
   null,
@@ -838,15 +839,15 @@ values
   $json${
   "display": "⏰",
   "questions": [
-    "What routine words do you remember?",
-    "Can you describe your day?"
+    "What is your morning routine?",
+    "Are you tired at night?"
   ],
-  "title": "Let's Review!"
+  "title": "Let's start!"
 }$json$::jsonb,
   true
 ),
 (
-  'c193991c-9824-4f62-b619-dde875cbf741',
+  'de7f4438-667b-4750-a0da-fe33f1b8e78d',
   3,
   'vocabulary',
   null,
@@ -854,41 +855,41 @@ values
   $json${
   "words": [
     {
-      "word": "Get Up",
+      "word": "Routine",
       "bg": "#FAECE7"
     },
     {
-      "word": "Eat",
+      "word": "First",
       "bg": "#E1F5EE"
     },
     {
-      "word": "Study",
+      "word": "Usually",
       "bg": "#EEEDFE"
     },
     {
-      "word": "Sleep",
+      "word": "Tired",
       "bg": "#FAEEDA"
     }
   ],
-  "title": "Review Words",
+  "title": "New Words",
   "subtitle": "Tap a card to see it bigger."
 }$json$::jsonb,
   true
 ),
 (
-  'c193991c-9824-4f62-b619-dde875cbf741',
+  'de7f4438-667b-4750-a0da-fe33f1b8e78d',
   4,
   'phrases',
   null,
   null,
   $json${
   "teacher": [
-    "What time do you get up?",
-    "What do you do every day?"
+    "What is your routine?",
+    "Are you tired at night?"
   ],
   "student": [
-    "I get up at 7.",
-    "I study every day."
+    "First, I wake up, then I eat breakfast.",
+    "Yes, I am tired at night."
   ],
   "note": "Use everything you learned this unit!",
   "title": "Practice the Conversation"
@@ -896,7 +897,7 @@ values
   true
 ),
 (
-  'c193991c-9824-4f62-b619-dde875cbf741',
+  'de7f4438-667b-4750-a0da-fe33f1b8e78d',
   5,
   'activity',
   null,
@@ -905,27 +906,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "I [get up] at 7."
+      "text": "My [routine] starts at 7am."
     },
     {
       "speaker": "B",
-      "text": "[Then], I eat breakfast."
+      "text": "[First], I wake up."
     },
     {
       "speaker": "A",
-      "text": "I [study] every day."
+      "text": "I [usually] eat breakfast."
     }
   ],
   "blanks": [
-    "get up",
-    "Then",
-    "study"
+    "routine",
+    "first",
+    "usually"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'c193991c-9824-4f62-b619-dde875cbf741',
+  'de7f4438-667b-4750-a0da-fe33f1b8e78d',
   6,
   'speaking',
   null,
@@ -934,19 +935,19 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "What time do you get up?"
+      "text": "Tell me about your daily routine."
     },
     {
       "speaker": "B",
-      "text": "I get up at 7. Then I eat and go to school."
+      "text": "First, I wake up. I usually eat breakfast, then go to school."
     },
     {
       "speaker": "A",
-      "text": "What do you do at night?"
+      "text": "I am tired at night, so I relax before I sleep."
     },
     {
       "speaker": "B",
-      "text": "I study, then I sleep at 10!"
+      "text": "Sounds like a good routine!"
     }
   ],
   "note": "Switch! Student becomes A, teacher becomes B."
@@ -954,50 +955,49 @@ values
   true
 ),
 (
-  'c193991c-9824-4f62-b619-dde875cbf741',
+  'de7f4438-667b-4750-a0da-fe33f1b8e78d',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "Every day, I get up at 7. Then I eat breakfast. After that, I go to school and study. At night, I sleep at 10 o'clock. This is my daily routine!",
+  "text": "First, I wake up. I usually eat breakfast. Then, I go to school. I am tired at night, so I relax.",
   "questions": [
-    "What time does the writer get up?",
-    "What does the writer do after breakfast?",
-    "What time does the writer sleep?"
+    "What is the first step?",
+    "What does the writer usually do?",
+    "Why does the writer relax at night?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'c193991c-9824-4f62-b619-dde875cbf741',
+  'de7f4438-667b-4750-a0da-fe33f1b8e78d',
   8,
   'writing',
   null,
   null,
   $json${
   "prompts": [
-    "I get up at ___.",
-    "Then, I ___.",
+    "First, I ___.",
+    "I usually ___.",
     "At night, I ___."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'c193991c-9824-4f62-b619-dde875cbf741',
+  'de7f4438-667b-4750-a0da-fe33f1b8e78d',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Name routine verbs",
-    "Say times in my day",
-    "Describe my routine in order",
-    "Ask routine questions"
+    "Sequence my routine",
+    "Use frequency words",
+    "Talk about my whole day"
   ],
-  "challenge": "Describe your whole daily routine to me!"
+  "challenge": "Tell me all about your daily routine!"
 }$json$::jsonb,
   true
 );

@@ -1,16 +1,17 @@
--- A1 Teens Unit 4: Friends and Free Time (5 lessons)
+-- A1 Teens Unit 4: Friends and Free Time (5 lessons) — TIERED (Foundation)
+-- Regenerated per the Sentivo Intra-Level Progression Framework + lesson-level escalation + task rotation.
 -- Run this whole script in the Supabase SQL editor.
 
 -- Lesson 1: Friends and Words for People
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  'c719ae09-658d-4ef5-b22a-ad4c5282be0f',
+  '03604ecc-814e-42a4-bff5-6e7bf6618364',
   'Friends and Words for People',
   'A1',
   'teens',
   4,
   1,
-  'Name simple words for friends and describe friendship.',
+  'Name friends and simple people words. [Foundation, Lesson 1: notice/receptive]',
   25,
   9,
   true
@@ -19,7 +20,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  'c719ae09-658d-4ef5-b22a-ad4c5282be0f',
+  '03604ecc-814e-42a4-bff5-6e7bf6618364',
   1,
   'title',
   null,
@@ -30,7 +31,7 @@ values
   true
 ),
 (
-  'c719ae09-658d-4ef5-b22a-ad4c5282be0f',
+  '03604ecc-814e-42a4-bff5-6e7bf6618364',
   2,
   'warmup',
   null,
@@ -38,15 +39,15 @@ values
   $json${
   "display": "🧑‍🤝‍🧑",
   "questions": [
-    "Who is your best friend?",
-    "What makes a good friend?"
+    "Do you have a friend at school?",
+    "Who is your best friend?"
   ],
-  "title": "Let's Start!"
+  "title": "Let's start!"
 }$json$::jsonb,
   true
 ),
 (
-  'c719ae09-658d-4ef5-b22a-ad4c5282be0f',
+  '03604ecc-814e-42a4-bff5-6e7bf6618364',
   3,
   'vocabulary',
   null,
@@ -58,15 +59,15 @@ values
       "bg": "#FAECE7"
     },
     {
-      "word": "Best Friend",
+      "word": "Boy",
       "bg": "#E1F5EE"
     },
     {
-      "word": "Classmate",
+      "word": "Girl",
       "bg": "#EEEDFE"
     },
     {
-      "word": "Close",
+      "word": "Classmate",
       "bg": "#FAEEDA"
     }
   ],
@@ -76,27 +77,27 @@ values
   true
 ),
 (
-  'c719ae09-658d-4ef5-b22a-ad4c5282be0f',
+  '03604ecc-814e-42a4-bff5-6e7bf6618364',
   4,
   'phrases',
   null,
   null,
   $json${
   "teacher": [
-    "Who is your best friend?",
-    "Is your friend close to you?"
+    "Who is this?",
+    "Is this your friend?"
   ],
   "student": [
-    "My best friend is Leo.",
-    "Yes, we are very close."
+    "This is my friend.",
+    "Yes, this is my friend."
   ],
-  "note": "Think about your real best friend!",
+  "note": "Point to a photo of a friend!",
   "title": "Practice the Conversation"
 }$json$::jsonb,
   true
 ),
 (
-  'c719ae09-658d-4ef5-b22a-ad4c5282be0f',
+  '03604ecc-814e-42a4-bff5-6e7bf6618364',
   5,
   'activity',
   null,
@@ -105,27 +106,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "My best [friend] is Leo."
+      "text": "This is my [friend]."
     },
     {
       "speaker": "B",
-      "text": "My [classmate] is nice."
+      "text": "He is a [boy]."
     },
     {
       "speaker": "A",
-      "text": "We are [close]."
+      "text": "She is a [girl]."
     }
   ],
   "blanks": [
     "friend",
-    "classmate",
-    "close"
+    "boy",
+    "girl"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'c719ae09-658d-4ef5-b22a-ad4c5282be0f',
+  '03604ecc-814e-42a4-bff5-6e7bf6618364',
   6,
   'speaking',
   null,
@@ -134,69 +135,69 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "Who is your best friend?"
+      "text": "This is my friend."
     },
     {
       "speaker": "B",
-      "text": "My best friend is Mia."
+      "text": "Is your friend a boy or a girl?"
     },
     {
       "speaker": "A",
-      "text": "Is she nice?"
+      "text": "She is a girl. Her name is Mia."
     },
     {
       "speaker": "B",
-      "text": "Yes, she is very nice and close to me!"
+      "text": "Nice friend!"
     }
   ],
-  "note": "Switch! Student becomes A, teacher becomes B."
+  "note": "Teacher says the line first. Student repeats, then says it alone."
 }$json$::jsonb,
   true
 ),
 (
-  'c719ae09-658d-4ef5-b22a-ad4c5282be0f',
+  '03604ecc-814e-42a4-bff5-6e7bf6618364',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "My best friend is Leo. He is nice and close to me. My classmate Ana is also my friend. I like having good friends!",
+  "text": "This is my friend. Her name is Mia. She is a girl. She is my classmate.",
   "questions": [
-    "Who is the writer's best friend?",
-    "Is Leo nice?",
-    "Who else is the writer's friend?"
+    "What is the friend's name?",
+    "Is the friend a boy or a girl?",
+    "Is the friend a classmate?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'c719ae09-658d-4ef5-b22a-ad4c5282be0f',
+  '03604ecc-814e-42a4-bff5-6e7bf6618364',
   8,
   'writing',
   null,
   null,
   $json${
   "prompts": [
-    "My best friend is ___.",
-    "My friend is ___.",
-    "My friend is ___ to me."
+    "This is my friend.",
+    "My friend's name is ___.",
+    "My friend is a ___."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'c719ae09-658d-4ef5-b22a-ad4c5282be0f',
+  '03604ecc-814e-42a4-bff5-6e7bf6618364',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Say 'My best friend is ___'",
-    "Describe a friend",
-    "Use 'classmate' and 'close'"
+    "Say 'This is my friend'",
+    "Say 'boy' or 'girl'",
+    "Name a friend"
   ],
-  "challenge": "Tell me about your best friend!"
+  "challenge": "Tell me about a friend!"
 }$json$::jsonb,
   true
 );
@@ -204,13 +205,13 @@ values
 -- Lesson 2: What Friends Like
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  'e4b68a0e-108f-47d3-b572-e4b4896ee937',
+  '42971fe7-333b-4dbd-bf4a-28aa0d8d8280',
   'What Friends Like',
   'A1',
   'teens',
   4,
   2,
-  'Talk about a friend''s likes using simple present.',
+  'Say what friends like using simple present. [Foundation, Lesson 2: controlled practice]',
   25,
   9,
   true
@@ -219,7 +220,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  'e4b68a0e-108f-47d3-b572-e4b4896ee937',
+  '42971fe7-333b-4dbd-bf4a-28aa0d8d8280',
   1,
   'title',
   null,
@@ -230,23 +231,23 @@ values
   true
 ),
 (
-  'e4b68a0e-108f-47d3-b572-e4b4896ee937',
+  '42971fe7-333b-4dbd-bf4a-28aa0d8d8280',
   2,
   'warmup',
   null,
   null,
   $json${
-  "display": "💭",
+  "display": "🎮",
   "questions": [
-    "What does your friend like?",
-    "What does your friend not like?"
+    "Does your friend like games?",
+    "Does your friend like music?"
   ],
-  "title": "Let's Start!"
+  "title": "Let's start!"
 }$json$::jsonb,
   true
 ),
 (
-  'e4b68a0e-108f-47d3-b572-e4b4896ee937',
+  '42971fe7-333b-4dbd-bf4a-28aa0d8d8280',
   3,
   'vocabulary',
   null,
@@ -254,19 +255,19 @@ values
   $json${
   "words": [
     {
-      "word": "Likes",
+      "word": "Like",
       "bg": "#FAECE7"
     },
     {
-      "word": "Doesn't Like",
+      "word": "Don't like",
       "bg": "#E1F5EE"
     },
     {
-      "word": "Music",
+      "word": "Games",
       "bg": "#EEEDFE"
     },
     {
-      "word": "Games",
+      "word": "Music",
       "bg": "#FAEEDA"
     }
   ],
@@ -276,27 +277,27 @@ values
   true
 ),
 (
-  'e4b68a0e-108f-47d3-b572-e4b4896ee937',
+  '42971fe7-333b-4dbd-bf4a-28aa0d8d8280',
   4,
   'phrases',
   null,
   null,
   $json${
   "teacher": [
-    "What does your friend like?",
-    "Does she like music?"
+    "Does your friend like games?",
+    "What does your friend like?"
   ],
   "student": [
-    "My friend likes music.",
-    "Yes, she loves music!"
+    "Yes, my friend likes games.",
+    "My friend likes music."
   ],
-  "note": "Think about a real friend's real likes!",
+  "note": "Use the word bank: like, don't like, games, music.",
   "title": "Practice the Conversation"
 }$json$::jsonb,
   true
 ),
 (
-  'e4b68a0e-108f-47d3-b572-e4b4896ee937',
+  '42971fe7-333b-4dbd-bf4a-28aa0d8d8280',
   5,
   'activity',
   null,
@@ -305,27 +306,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "My friend [likes] music."
+      "text": "My friend [like]s games."
     },
     {
       "speaker": "B",
-      "text": "She [doesn't like] sports."
+      "text": "She [don't like]s math."
     },
     {
       "speaker": "A",
-      "text": "My friend likes [games]."
+      "text": "She likes [music]."
     }
   ],
   "blanks": [
-    "likes",
-    "doesn't like",
-    "games"
+    "like",
+    "don't like",
+    "music"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'e4b68a0e-108f-47d3-b572-e4b4896ee937',
+  '42971fe7-333b-4dbd-bf4a-28aa0d8d8280',
   6,
   'speaking',
   null,
@@ -334,19 +335,19 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "What does your friend like?"
+      "text": "Does your friend like games?"
     },
     {
       "speaker": "B",
-      "text": "My friend likes video games."
+      "text": "Yes, my friend likes games. She doesn't like math."
     },
     {
       "speaker": "A",
-      "text": "Does she like sports?"
+      "text": "My friend likes music."
     },
     {
       "speaker": "B",
-      "text": "No, she doesn't like sports!"
+      "text": "Nice!"
     }
   ],
   "note": "Switch! Student becomes A, teacher becomes B."
@@ -354,23 +355,23 @@ values
   true
 ),
 (
-  'e4b68a0e-108f-47d3-b572-e4b4896ee937',
+  '42971fe7-333b-4dbd-bf4a-28aa0d8d8280',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "My friend Ana likes music. She doesn't like sports. My friend Leo likes games. He doesn't like reading. Everyone likes different things!",
+  "text": "My friend likes games. She likes music too. She doesn't like math.",
   "questions": [
-    "What does Ana like?",
-    "What does Ana not like?",
-    "What does Leo like?"
+    "What does the friend like?",
+    "What else does she like?",
+    "What doesn't she like?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'e4b68a0e-108f-47d3-b572-e4b4896ee937',
+  '42971fe7-333b-4dbd-bf4a-28aa0d8d8280',
   8,
   'writing',
   null,
@@ -379,24 +380,24 @@ values
   "prompts": [
     "My friend likes ___.",
     "My friend doesn't like ___.",
-    "We both like ___."
+    "I like ___ too."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'e4b68a0e-108f-47d3-b572-e4b4896ee937',
+  '42971fe7-333b-4dbd-bf4a-28aa0d8d8280',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Say 'My friend likes ___'",
-    "Say 'doesn't like'",
-    "Talk about a friend's interests"
+    "Say 'likes' and 'doesn't like'",
+    "Talk about what a friend likes",
+    "Talk about what I like"
   ],
-  "challenge": "Tell me one thing your friend likes and one thing they don't!"
+  "challenge": "Tell me what your friend likes and doesn't like!"
 }$json$::jsonb,
   true
 );
@@ -404,13 +405,13 @@ values
 -- Lesson 3: Free Time Activities
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  'a2747307-0bad-4bd8-b334-b166e8d6b917',
+  'c678a6f7-4030-4118-8d66-6791410e40e1',
   'Free Time Activities',
   'A1',
   'teens',
   4,
   3,
-  'Name common free-time activities.',
+  'Name free time activities. [Foundation, Lesson 3: freer practice, role reversal]',
   25,
   9,
   true
@@ -419,7 +420,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  'a2747307-0bad-4bd8-b334-b166e8d6b917',
+  'c678a6f7-4030-4118-8d66-6791410e40e1',
   1,
   'title',
   null,
@@ -430,23 +431,23 @@ values
   true
 ),
 (
-  'a2747307-0bad-4bd8-b334-b166e8d6b917',
+  'c678a6f7-4030-4118-8d66-6791410e40e1',
   2,
   'warmup',
   null,
   null,
   $json${
-  "display": "🎮",
+  "display": "🎨",
   "questions": [
-    "What do you do after school?",
-    "Do you watch videos or listen to music?"
+    "What do you do in your free time?",
+    "Do you like to draw?"
   ],
-  "title": "Let's Start!"
+  "title": "Let's start!"
 }$json$::jsonb,
   true
 ),
 (
-  'a2747307-0bad-4bd8-b334-b166e8d6b917',
+  'c678a6f7-4030-4118-8d66-6791410e40e1',
   3,
   'vocabulary',
   null,
@@ -454,19 +455,19 @@ values
   $json${
   "words": [
     {
-      "word": "Watch Videos",
+      "word": "Play",
       "bg": "#FAECE7"
     },
     {
-      "word": "Listen to Music",
+      "word": "Watch TV",
       "bg": "#E1F5EE"
     },
     {
-      "word": "Chat",
+      "word": "Read",
       "bg": "#EEEDFE"
     },
     {
-      "word": "Play Games",
+      "word": "Draw",
       "bg": "#FAEEDA"
     }
   ],
@@ -476,27 +477,27 @@ values
   true
 ),
 (
-  'a2747307-0bad-4bd8-b334-b166e8d6b917',
+  'c678a6f7-4030-4118-8d66-6791410e40e1',
   4,
   'phrases',
   null,
   null,
   $json${
   "teacher": [
-    "What do you do after school?",
-    "Do you play games?"
+    "What do you do in your free time?",
+    "Do you like to draw?"
   ],
   "student": [
-    "I watch videos.",
-    "Yes, I play games every day!"
+    "I play games.",
+    "Yes, I like to draw."
   ],
-  "note": "Think about what you really do after school!",
+  "note": "Ask me first this time, then I'll ask you!",
   "title": "Practice the Conversation"
 }$json$::jsonb,
   true
 ),
 (
-  'a2747307-0bad-4bd8-b334-b166e8d6b917',
+  'c678a6f7-4030-4118-8d66-6791410e40e1',
   5,
   'activity',
   null,
@@ -505,27 +506,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "I [watch videos] after school."
+      "text": "I [play] with my friends."
     },
     {
       "speaker": "B",
-      "text": "I [listen to music]."
+      "text": "I [watch TV] at home."
     },
     {
       "speaker": "A",
-      "text": "I [chat] with friends."
+      "text": "I like to [draw]."
     }
   ],
   "blanks": [
-    "watch videos",
-    "listen to music",
-    "chat"
+    "play",
+    "watch tv",
+    "draw"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'a2747307-0bad-4bd8-b334-b166e8d6b917',
+  'c678a6f7-4030-4118-8d66-6791410e40e1',
   6,
   'speaking',
   null,
@@ -534,69 +535,69 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "What do you do after school?"
+      "text": "What do you do in your free time?"
     },
     {
       "speaker": "B",
-      "text": "I play games and chat with friends."
+      "text": "I play games and watch TV. What about you?"
     },
     {
       "speaker": "A",
-      "text": "I listen to music!"
+      "text": "I like to draw and read."
     },
     {
       "speaker": "B",
-      "text": "That sounds fun!"
+      "text": "Your turn to ask me something!"
     }
   ],
-  "note": "Switch! Student becomes A, teacher becomes B."
+  "note": "Student asks first this time. Teacher answers, then asks back."
 }$json$::jsonb,
   true
 ),
 (
-  'a2747307-0bad-4bd8-b334-b166e8d6b917',
+  'c678a6f7-4030-4118-8d66-6791410e40e1',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "After school, I watch videos. Sometimes I listen to music. I chat with my friends online. On weekends, I play games. I have a lot of free time activities!",
+  "text": "In my free time, I play games. I watch TV too. Sometimes I read or draw.",
   "questions": [
-    "What does the writer do after school?",
-    "Who does the writer chat with?",
-    "What does the writer do on weekends?"
+    "What does the writer play?",
+    "What does the writer watch?",
+    "What else does the writer do?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'a2747307-0bad-4bd8-b334-b166e8d6b917',
+  'c678a6f7-4030-4118-8d66-6791410e40e1',
   8,
   'writing',
   null,
   null,
   $json${
   "prompts": [
-    "After school, I ___.",
-    "I like to ___.",
-    "On weekends, I ___."
+    "In my free time, I ___.",
+    "I also ___.",
+    "Sometimes I ___."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'a2747307-0bad-4bd8-b334-b166e8d6b917',
+  'c678a6f7-4030-4118-8d66-6791410e40e1',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Name four free-time activities",
-    "Say what I do after school",
-    "Talk about my free time"
+    "Name 4 free time activities",
+    "Say 'In my free time, I ___'",
+    "Ask about free time"
   ],
-  "challenge": "Tell me your favorite free-time activity!"
+  "challenge": "Tell me what you do in your free time!"
 }$json$::jsonb,
   true
 );
@@ -604,13 +605,13 @@ values
 -- Lesson 4: Friends and Free Time Questions
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  'a74b21a6-3940-4e9c-94fc-29eb0fba0a2d',
+  '370da70a-dc49-466a-a709-1ca3be42a51c',
   'Friends and Free Time Questions',
   'A1',
   'teens',
   4,
   4,
-  'Ask and answer simple questions about friends and free time.',
+  'Combine friends and free time into a short talk. [Foundation, Lesson 4: production]',
   25,
   9,
   true
@@ -619,7 +620,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  'a74b21a6-3940-4e9c-94fc-29eb0fba0a2d',
+  '370da70a-dc49-466a-a709-1ca3be42a51c',
   1,
   'title',
   null,
@@ -630,23 +631,23 @@ values
   true
 ),
 (
-  'a74b21a6-3940-4e9c-94fc-29eb0fba0a2d',
+  '370da70a-dc49-466a-a709-1ca3be42a51c',
   2,
   'warmup',
   null,
   null,
   $json${
-  "display": "❓",
+  "display": "🌟",
   "questions": [
-    "What do you do with friends?",
-    "What do you like to do?"
+    "Do you play with friends every day?",
+    "Who is your best friend?"
   ],
-  "title": "Let's Start!"
+  "title": "Let's start!"
 }$json$::jsonb,
   true
 ),
 (
-  'a74b21a6-3940-4e9c-94fc-29eb0fba0a2d',
+  '370da70a-dc49-466a-a709-1ca3be42a51c',
   3,
   'vocabulary',
   null,
@@ -654,19 +655,19 @@ values
   $json${
   "words": [
     {
-      "word": "What Do You Do",
+      "word": "Together",
       "bg": "#FAECE7"
     },
     {
-      "word": "Together",
+      "word": "Fun",
       "bg": "#E1F5EE"
     },
     {
-      "word": "Hang Out",
+      "word": "Best friend",
       "bg": "#EEEDFE"
     },
     {
-      "word": "Fun",
+      "word": "Every day",
       "bg": "#FAEEDA"
     }
   ],
@@ -676,27 +677,27 @@ values
   true
 ),
 (
-  'a74b21a6-3940-4e9c-94fc-29eb0fba0a2d',
+  '370da70a-dc49-466a-a709-1ca3be42a51c',
   4,
   'phrases',
   null,
   null,
   $json${
   "teacher": [
-    "What do you do with friends?",
-    "Is it fun?"
+    "Do you play with friends every day?",
+    "Who is your best friend?"
   ],
   "student": [
-    "We hang out together.",
-    "Yes, it's very fun!"
+    "Yes, we play together every day.",
+    "My best friend is Mia."
   ],
-  "note": "Answer about real time with friends!",
+  "note": "Put it all together: friend + what they like + free time.",
   "title": "Practice the Conversation"
 }$json$::jsonb,
   true
 ),
 (
-  'a74b21a6-3940-4e9c-94fc-29eb0fba0a2d',
+  '370da70a-dc49-466a-a709-1ca3be42a51c',
   5,
   'activity',
   null,
@@ -705,27 +706,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "[What do you do] with friends?"
+      "text": "My [best friend] is Mia."
     },
     {
       "speaker": "B",
-      "text": "We [hang out] together."
+      "text": "We play [together] every day."
     },
     {
       "speaker": "A",
-      "text": "It is [fun]."
+      "text": "It is [fun]!"
     }
   ],
   "blanks": [
-    "What do you do",
-    "hang out",
+    "best friend",
+    "together",
     "fun"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'a74b21a6-3940-4e9c-94fc-29eb0fba0a2d',
+  '370da70a-dc49-466a-a709-1ca3be42a51c',
   6,
   'speaking',
   null,
@@ -734,243 +735,43 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "What do you do with friends?"
+      "text": "Tell me about your best friend and free time."
     },
     {
       "speaker": "B",
-      "text": "We play games together."
+      "text": "My best friend is Mia. She likes games and music."
     },
     {
       "speaker": "A",
-      "text": "Is it fun?"
+      "text": "We play together every day. It's fun!"
     },
     {
       "speaker": "B",
-      "text": "Yes, it's really fun!"
+      "text": "Sounds like a great friendship!"
     }
   ],
-  "note": "Switch! Student becomes A, teacher becomes B."
+  "note": "Mini talk: tell me all about your best friend and free time in a few sentences."
 }$json$::jsonb,
   true
 ),
 (
-  'a74b21a6-3940-4e9c-94fc-29eb0fba0a2d',
+  '370da70a-dc49-466a-a709-1ca3be42a51c',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "What do you do with friends? We hang out together. We play games and chat. What do you like to do? I like to watch videos. It's a lot of fun!",
+  "text": "My best friend is Mia. She likes games and music. We play together every day. It is fun!",
   "questions": [
-    "What do the friends do together?",
-    "Is it fun?",
-    "What does the writer like to do?"
+    "Who is the best friend?",
+    "What does Mia like?",
+    "How often do they play together?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'a74b21a6-3940-4e9c-94fc-29eb0fba0a2d',
-  8,
-  'writing',
-  null,
-  null,
-  $json${
-  "prompts": [
-    "What do you do with friends? ___.",
-    "We ___ together.",
-    "It is ___."
-  ]
-}$json$::jsonb,
-  true
-),
-(
-  'a74b21a6-3940-4e9c-94fc-29eb0fba0a2d',
-  9,
-  'review',
-  null,
-  null,
-  $json${
-  "checklist": [
-    "Ask 'What do you do with friends?'",
-    "Say 'We ___ together'",
-    "Talk about fun activities"
-  ],
-  "challenge": "Tell me what you do with your friends!"
-}$json$::jsonb,
-  true
-);
-
--- Lesson 5: Unit Review
-insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
-values (
-  '053a2f41-fa1b-4b50-9cde-0d7ddbdeb583',
-  'Unit Review',
-  'A1',
-  'teens',
-  4,
-  5,
-  'Talk briefly about friends and free time.',
-  25,
-  9,
-  true
-);
-
-insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
-values
-(
-  '053a2f41-fa1b-4b50-9cde-0d7ddbdeb583',
-  1,
-  'title',
-  null,
-  null,
-  $json${
-  "badge": "A1 · Beginner · Teens"
-}$json$::jsonb,
-  true
-),
-(
-  '053a2f41-fa1b-4b50-9cde-0d7ddbdeb583',
-  2,
-  'warmup',
-  null,
-  null,
-  $json${
-  "display": "🧑‍🤝‍🧑",
-  "questions": [
-    "What friend words do you remember?",
-    "What free-time activities do you remember?"
-  ],
-  "title": "Let's Review!"
-}$json$::jsonb,
-  true
-),
-(
-  '053a2f41-fa1b-4b50-9cde-0d7ddbdeb583',
-  3,
-  'vocabulary',
-  null,
-  null,
-  $json${
-  "words": [
-    {
-      "word": "Friend",
-      "bg": "#FAECE7"
-    },
-    {
-      "word": "Games",
-      "bg": "#E1F5EE"
-    },
-    {
-      "word": "Music",
-      "bg": "#EEEDFE"
-    },
-    {
-      "word": "Fun",
-      "bg": "#FAEEDA"
-    }
-  ],
-  "title": "Review Words",
-  "subtitle": "Tap a card to see it bigger."
-}$json$::jsonb,
-  true
-),
-(
-  '053a2f41-fa1b-4b50-9cde-0d7ddbdeb583',
-  4,
-  'phrases',
-  null,
-  null,
-  $json${
-  "teacher": [
-    "Who is your friend?",
-    "What do you do together?"
-  ],
-  "student": [
-    "My friend is Leo.",
-    "We play games together."
-  ],
-  "note": "Use everything you learned this unit!",
-  "title": "Practice the Conversation"
-}$json$::jsonb,
-  true
-),
-(
-  '053a2f41-fa1b-4b50-9cde-0d7ddbdeb583',
-  5,
-  'activity',
-  null,
-  null,
-  $json${
-  "dialogue": [
-    {
-      "speaker": "A",
-      "text": "My best [friend] is Leo."
-    },
-    {
-      "speaker": "B",
-      "text": "We play [games] together."
-    },
-    {
-      "speaker": "A",
-      "text": "It is [fun]."
-    }
-  ],
-  "blanks": [
-    "friend",
-    "games",
-    "fun"
-  ]
-}$json$::jsonb,
-  true
-),
-(
-  '053a2f41-fa1b-4b50-9cde-0d7ddbdeb583',
-  6,
-  'speaking',
-  null,
-  null,
-  $json${
-  "dialogue": [
-    {
-      "speaker": "A",
-      "text": "Tell me about your best friend."
-    },
-    {
-      "speaker": "B",
-      "text": "My best friend is Mia. She likes music."
-    },
-    {
-      "speaker": "A",
-      "text": "What do you do together?"
-    },
-    {
-      "speaker": "B",
-      "text": "We chat and watch videos. It's fun!"
-    }
-  ],
-  "note": "Switch! Student becomes A, teacher becomes B."
-}$json$::jsonb,
-  true
-),
-(
-  '053a2f41-fa1b-4b50-9cde-0d7ddbdeb583',
-  7,
-  'reading',
-  null,
-  null,
-  $json${
-  "text": "My best friend is Leo. He likes music and games. We hang out after school. We chat and play games together. It's always fun!",
-  "questions": [
-    "Who is the writer's best friend?",
-    "What does Leo like?",
-    "What do they do together?"
-  ]
-}$json$::jsonb,
-  true
-),
-(
-  '053a2f41-fa1b-4b50-9cde-0d7ddbdeb583',
+  '370da70a-dc49-466a-a709-1ca3be42a51c',
   8,
   'writing',
   null,
@@ -985,18 +786,218 @@ values
   true
 ),
 (
-  '053a2f41-fa1b-4b50-9cde-0d7ddbdeb583',
+  '370da70a-dc49-466a-a709-1ca3be42a51c',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Describe a friend",
-    "Talk about free-time activities",
-    "Ask and answer about friends"
+    "Introduce my best friend",
+    "Say what my friend likes",
+    "Talk about free time together"
   ],
-  "challenge": "Tell me about your best friend and what you do together!"
+  "challenge": "Tell me all about your best friend and free time!"
+}$json$::jsonb,
+  true
+);
+
+-- Lesson 5: Unit Review
+insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
+values (
+  '6928db27-fafe-47c8-90ec-d4156548dabc',
+  'Unit Review',
+  'A1',
+  'teens',
+  4,
+  5,
+  'Review friends, likes, and free time. [Foundation, Lesson 5: tier-matched review]',
+  25,
+  9,
+  true
+);
+
+insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
+values
+(
+  '6928db27-fafe-47c8-90ec-d4156548dabc',
+  1,
+  'title',
+  null,
+  null,
+  $json${
+  "badge": "A1 · Beginner · Teens"
+}$json$::jsonb,
+  true
+),
+(
+  '6928db27-fafe-47c8-90ec-d4156548dabc',
+  2,
+  'warmup',
+  null,
+  null,
+  $json${
+  "display": "🧑‍🤝‍🧑",
+  "questions": [
+    "Who is your friend?",
+    "What do you do in your free time?"
+  ],
+  "title": "Let's start!"
+}$json$::jsonb,
+  true
+),
+(
+  '6928db27-fafe-47c8-90ec-d4156548dabc',
+  3,
+  'vocabulary',
+  null,
+  null,
+  $json${
+  "words": [
+    {
+      "word": "Friend",
+      "bg": "#FAECE7"
+    },
+    {
+      "word": "Like",
+      "bg": "#E1F5EE"
+    },
+    {
+      "word": "Play",
+      "bg": "#EEEDFE"
+    },
+    {
+      "word": "Fun",
+      "bg": "#FAEEDA"
+    }
+  ],
+  "title": "New Words",
+  "subtitle": "Tap a card to see it bigger."
+}$json$::jsonb,
+  true
+),
+(
+  '6928db27-fafe-47c8-90ec-d4156548dabc',
+  4,
+  'phrases',
+  null,
+  null,
+  $json${
+  "teacher": [
+    "Who is your friend?",
+    "What do you do in your free time?"
+  ],
+  "student": [
+    "This is my friend.",
+    "I play games in my free time."
+  ],
+  "note": "Use everything you learned this unit!",
+  "title": "Practice the Conversation"
+}$json$::jsonb,
+  true
+),
+(
+  '6928db27-fafe-47c8-90ec-d4156548dabc',
+  5,
+  'activity',
+  null,
+  null,
+  $json${
+  "dialogue": [
+    {
+      "speaker": "A",
+      "text": "This is my [friend]."
+    },
+    {
+      "speaker": "B",
+      "text": "She [like]s music."
+    },
+    {
+      "speaker": "A",
+      "text": "We [play] together."
+    }
+  ],
+  "blanks": [
+    "friend",
+    "like",
+    "play"
+  ]
+}$json$::jsonb,
+  true
+),
+(
+  '6928db27-fafe-47c8-90ec-d4156548dabc',
+  6,
+  'speaking',
+  null,
+  null,
+  $json${
+  "dialogue": [
+    {
+      "speaker": "A",
+      "text": "Tell me about your friend and free time."
+    },
+    {
+      "speaker": "B",
+      "text": "This is my friend. She likes music. We play together every day."
+    },
+    {
+      "speaker": "A",
+      "text": "It is fun!"
+    },
+    {
+      "speaker": "B",
+      "text": "Sounds fun!"
+    }
+  ],
+  "note": "Switch! Student becomes A, teacher becomes B."
+}$json$::jsonb,
+  true
+),
+(
+  '6928db27-fafe-47c8-90ec-d4156548dabc',
+  7,
+  'reading',
+  null,
+  null,
+  $json${
+  "text": "This is my friend. She likes music. We play together. It is fun!",
+  "questions": [
+    "Who is this about?",
+    "What does the friend like?",
+    "Is it fun?"
+  ]
+}$json$::jsonb,
+  true
+),
+(
+  '6928db27-fafe-47c8-90ec-d4156548dabc',
+  8,
+  'writing',
+  null,
+  null,
+  $json${
+  "prompts": [
+    "This is my friend.",
+    "My friend likes ___.",
+    "We ___ together."
+  ]
+}$json$::jsonb,
+  true
+),
+(
+  '6928db27-fafe-47c8-90ec-d4156548dabc',
+  9,
+  'review',
+  null,
+  null,
+  $json${
+  "checklist": [
+    "Talk about a friend",
+    "Say what a friend likes",
+    "Talk about free time together"
+  ],
+  "challenge": "Tell me all about your friends and free time!"
 }$json$::jsonb,
   true
 );

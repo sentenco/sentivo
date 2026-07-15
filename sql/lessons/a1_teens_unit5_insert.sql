@@ -1,16 +1,17 @@
--- A1 Teens Unit 5: Hobbies and Interests (5 lessons)
+-- A1 Teens Unit 5: Hobbies and Interests (5 lessons) — TIERED (Combination)
+-- Regenerated per the Sentivo Intra-Level Progression Framework + lesson-level escalation + task rotation.
 -- Run this whole script in the Supabase SQL editor.
 
 -- Lesson 1: Hobbies and Interests
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '278fd81c-4e3b-4d51-8d51-274392e62dfa',
+  'e7066821-f647-48f1-a64d-19f63dfa5f22',
   'Hobbies and Interests',
   'A1',
   'teens',
   5,
   1,
-  'Name common hobbies and interests.',
+  'Name hobbies. [Combination, Lesson 1: notice/receptive]',
   25,
   9,
   true
@@ -19,7 +20,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '278fd81c-4e3b-4d51-8d51-274392e62dfa',
+  'e7066821-f647-48f1-a64d-19f63dfa5f22',
   1,
   'title',
   null,
@@ -30,23 +31,23 @@ values
   true
 ),
 (
-  '278fd81c-4e3b-4d51-8d51-274392e62dfa',
+  'e7066821-f647-48f1-a64d-19f63dfa5f22',
   2,
   'warmup',
   null,
   null,
   $json${
-  "display": "🎨",
+  "display": "⚽",
   "questions": [
     "What is your hobby?",
-    "Do you like drawing or singing?"
+    "Do you like football?"
   ],
-  "title": "Let's Start!"
+  "title": "Let's start!"
 }$json$::jsonb,
   true
 ),
 (
-  '278fd81c-4e3b-4d51-8d51-274392e62dfa',
+  'e7066821-f647-48f1-a64d-19f63dfa5f22',
   3,
   'vocabulary',
   null,
@@ -54,19 +55,19 @@ values
   $json${
   "words": [
     {
-      "word": "Drawing",
+      "word": "Hobby",
       "bg": "#FAECE7"
     },
     {
-      "word": "Reading",
+      "word": "Football",
       "bg": "#E1F5EE"
     },
     {
-      "word": "Singing",
+      "word": "Dancing",
       "bg": "#EEEDFE"
     },
     {
-      "word": "Gaming",
+      "word": "Painting",
       "bg": "#FAEEDA"
     }
   ],
@@ -76,7 +77,7 @@ values
   true
 ),
 (
-  '278fd81c-4e3b-4d51-8d51-274392e62dfa',
+  'e7066821-f647-48f1-a64d-19f63dfa5f22',
   4,
   'phrases',
   null,
@@ -84,19 +85,19 @@ values
   $json${
   "teacher": [
     "What is your hobby?",
-    "Do you like drawing?"
+    "Do you like dancing?"
   ],
   "student": [
-    "My hobby is gaming.",
-    "Yes, I like drawing!"
+    "My hobby is football.",
+    "Yes, I like dancing."
   ],
-  "note": "Think of your real hobby!",
+  "note": "Point to a hobby picture!",
   "title": "Practice the Conversation"
 }$json$::jsonb,
   true
 ),
 (
-  '278fd81c-4e3b-4d51-8d51-274392e62dfa',
+  'e7066821-f647-48f1-a64d-19f63dfa5f22',
   5,
   'activity',
   null,
@@ -105,27 +106,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "My hobby is [drawing]."
+      "text": "My [hobby] is football."
     },
     {
       "speaker": "B",
-      "text": "I like [singing]."
+      "text": "I like [dancing]."
     },
     {
       "speaker": "A",
-      "text": "I like [gaming]."
+      "text": "I like [painting] too."
     }
   ],
   "blanks": [
-    "drawing",
-    "singing",
-    "gaming"
+    "hobby",
+    "dancing",
+    "painting"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '278fd81c-4e3b-4d51-8d51-274392e62dfa',
+  'e7066821-f647-48f1-a64d-19f63dfa5f22',
   6,
   'speaking',
   null,
@@ -134,43 +135,43 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "What is your hobby?"
+      "text": "My hobby is football."
     },
     {
       "speaker": "B",
-      "text": "My hobby is reading."
+      "text": "My hobby is dancing."
     },
     {
       "speaker": "A",
-      "text": "I like gaming!"
+      "text": "I like painting too."
     },
     {
       "speaker": "B",
-      "text": "That's a cool hobby!"
+      "text": "I like painting too!"
     }
   ],
-  "note": "Switch! Student becomes A, teacher becomes B."
+  "note": "Teacher says the line first. Student repeats, then says it alone."
 }$json$::jsonb,
   true
 ),
 (
-  '278fd81c-4e3b-4d51-8d51-274392e62dfa',
+  'e7066821-f647-48f1-a64d-19f63dfa5f22',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "My hobby is drawing. I also like singing. My friend's hobby is gaming. She plays every day. Everyone has different hobbies!",
+  "text": "My hobby is football. I like dancing too. My friend likes painting.",
   "questions": [
-    "What is the writer's hobby?",
+    "What is the hobby?",
     "What else does the writer like?",
-    "What is the friend's hobby?"
+    "What does the friend like?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '278fd81c-4e3b-4d51-8d51-274392e62dfa',
+  'e7066821-f647-48f1-a64d-19f63dfa5f22',
   8,
   'writing',
   null,
@@ -179,22 +180,22 @@ values
   "prompts": [
     "My hobby is ___.",
     "I like ___.",
-    "My friend's hobby is ___."
+    "My friend likes ___."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '278fd81c-4e3b-4d51-8d51-274392e62dfa',
+  'e7066821-f647-48f1-a64d-19f63dfa5f22',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Name four hobbies",
+    "Name 4 hobbies",
     "Say 'My hobby is ___'",
-    "Talk about hobbies"
+    "Talk about a friend's hobby"
   ],
   "challenge": "Tell me your hobby!"
 }$json$::jsonb,
@@ -204,13 +205,13 @@ values
 -- Lesson 2: I Like / I Don't Like
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  'f61617fd-9a7c-4f38-bc50-df00771145bb',
+  'dc9a18e3-f4f3-44e0-a2e1-84c620669327',
   'I Like / I Don''t Like',
   'A1',
   'teens',
   5,
   2,
-  'Express simple likes and dislikes about hobbies.',
+  'Say likes and dislikes with a short reason. [Combination, Lesson 2: controlled practice, 2 combined targets]',
   25,
   9,
   true
@@ -219,7 +220,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  'f61617fd-9a7c-4f38-bc50-df00771145bb',
+  'dc9a18e3-f4f3-44e0-a2e1-84c620669327',
   1,
   'title',
   null,
@@ -230,23 +231,23 @@ values
   true
 ),
 (
-  'f61617fd-9a7c-4f38-bc50-df00771145bb',
+  'dc9a18e3-f4f3-44e0-a2e1-84c620669327',
   2,
   'warmup',
   null,
   null,
   $json${
-  "display": "👍",
+  "display": "❤️",
   "questions": [
-    "What hobby do you like?",
-    "What hobby don't you like?"
+    "What do you love?",
+    "What don't you like?"
   ],
-  "title": "Let's Start!"
+  "title": "Let's start!"
 }$json$::jsonb,
   true
 ),
 (
-  'f61617fd-9a7c-4f38-bc50-df00771145bb',
+  'dc9a18e3-f4f3-44e0-a2e1-84c620669327',
   3,
   'vocabulary',
   null,
@@ -254,19 +255,19 @@ values
   $json${
   "words": [
     {
-      "word": "Sports",
+      "word": "Love",
       "bg": "#FAECE7"
     },
     {
-      "word": "Painting",
+      "word": "Don't like",
       "bg": "#E1F5EE"
     },
     {
-      "word": "Dancing",
+      "word": "Because",
       "bg": "#EEEDFE"
     },
     {
-      "word": "Cooking",
+      "word": "Fun",
       "bg": "#FAEEDA"
     }
   ],
@@ -276,27 +277,27 @@ values
   true
 ),
 (
-  'f61617fd-9a7c-4f38-bc50-df00771145bb',
+  'dc9a18e3-f4f3-44e0-a2e1-84c620669327',
   4,
   'phrases',
   null,
   null,
   $json${
   "teacher": [
-    "Do you like sports?",
-    "Do you like dancing?"
+    "Do you love football?",
+    "Why do you like it?"
   ],
   "student": [
-    "Yes, I like sports.",
-    "No, I don't like dancing."
+    "Yes, I love football.",
+    "I like it because it's fun."
   ],
-  "note": "Give your real opinion!",
+  "note": "Use the word bank: love, don't like, because, fun.",
   "title": "Practice the Conversation"
 }$json$::jsonb,
   true
 ),
 (
-  'f61617fd-9a7c-4f38-bc50-df00771145bb',
+  'dc9a18e3-f4f3-44e0-a2e1-84c620669327',
   5,
   'activity',
   null,
@@ -305,27 +306,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "I like [sports]."
+      "text": "I [love] football [because] it's [fun]."
     },
     {
       "speaker": "B",
-      "text": "I don't like [painting]."
+      "text": "I [don't like] math."
     },
     {
       "speaker": "A",
-      "text": "I like [cooking]."
+      "text": "I love dancing too."
     }
   ],
   "blanks": [
-    "sports",
-    "painting",
-    "cooking"
+    "love",
+    "don't like",
+    "because"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'f61617fd-9a7c-4f38-bc50-df00771145bb',
+  'dc9a18e3-f4f3-44e0-a2e1-84c620669327',
   6,
   'speaking',
   null,
@@ -334,19 +335,19 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "Do you like sports?"
+      "text": "I love football because it's fun."
     },
     {
       "speaker": "B",
-      "text": "Yes, I like sports a lot!"
+      "text": "I don't like football, but I love dancing."
     },
     {
       "speaker": "A",
-      "text": "Do you like dancing?"
+      "text": "Why do you love dancing?"
     },
     {
       "speaker": "B",
-      "text": "No, I don't like dancing."
+      "text": "Because it's fun!"
     }
   ],
   "note": "Switch! Student becomes A, teacher becomes B."
@@ -354,49 +355,49 @@ values
   true
 ),
 (
-  'f61617fd-9a7c-4f38-bc50-df00771145bb',
+  'dc9a18e3-f4f3-44e0-a2e1-84c620669327',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "I like sports. I like cooking too. I don't like painting. I don't like dancing very much. We all like different hobbies!",
+  "text": "I love football because it's fun. I don't like math. My friend loves dancing because it's fun too.",
   "questions": [
-    "What does the writer like?",
-    "What does the writer not like?",
-    "Do we all like the same hobbies?"
+    "Why does the writer love football?",
+    "What doesn't the writer like?",
+    "Why does the friend love dancing?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'f61617fd-9a7c-4f38-bc50-df00771145bb',
+  'dc9a18e3-f4f3-44e0-a2e1-84c620669327',
   8,
   'writing',
   null,
   null,
   $json${
   "prompts": [
-    "I like ___.",
+    "I love ___ because ___.",
     "I don't like ___.",
-    "My favorite hobby is ___."
+    "My friend loves ___ because ___."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'f61617fd-9a7c-4f38-bc50-df00771145bb',
+  'dc9a18e3-f4f3-44e0-a2e1-84c620669327',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Say 'I like ___'",
+    "Say 'I love ___ because ___'",
     "Say 'I don't like ___'",
-    "Talk about hobby preferences"
+    "Give a simple reason with 'because'"
   ],
-  "challenge": "Tell me a hobby you like and one you don't!"
+  "challenge": "Tell me one thing you love, and why!"
 }$json$::jsonb,
   true
 );
@@ -404,13 +405,13 @@ values
 -- Lesson 3: Interest Questions
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '6aad198e-c0df-4254-b8fa-e21bc0f53cdf',
+  'd77cad8c-656e-4514-804b-ee489ea4ea42',
   'Interest Questions',
   'A1',
   'teens',
   5,
   3,
-  'Ask and answer questions about interests.',
+  'Ask and answer about hobbies with reasons. [Combination, Lesson 3: freer practice, role reversal]',
   25,
   9,
   true
@@ -419,7 +420,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '6aad198e-c0df-4254-b8fa-e21bc0f53cdf',
+  'd77cad8c-656e-4514-804b-ee489ea4ea42',
   1,
   'title',
   null,
@@ -430,407 +431,7 @@ values
   true
 ),
 (
-  '6aad198e-c0df-4254-b8fa-e21bc0f53cdf',
-  2,
-  'warmup',
-  null,
-  null,
-  $json${
-  "display": "❓",
-  "questions": [
-    "Do you like music?",
-    "What do you enjoy doing?"
-  ],
-  "title": "Let's Start!"
-}$json$::jsonb,
-  true
-),
-(
-  '6aad198e-c0df-4254-b8fa-e21bc0f53cdf',
-  3,
-  'vocabulary',
-  null,
-  null,
-  $json${
-  "words": [
-    {
-      "word": "Enjoy",
-      "bg": "#FAECE7"
-    },
-    {
-      "word": "Interest",
-      "bg": "#E1F5EE"
-    },
-    {
-      "word": "Do You Like",
-      "bg": "#EEEDFE"
-    },
-    {
-      "word": "Hobby",
-      "bg": "#FAEEDA"
-    }
-  ],
-  "title": "New Words",
-  "subtitle": "Tap a card to see it bigger."
-}$json$::jsonb,
-  true
-),
-(
-  '6aad198e-c0df-4254-b8fa-e21bc0f53cdf',
-  4,
-  'phrases',
-  null,
-  null,
-  $json${
-  "teacher": [
-    "Do you like music?",
-    "What do you enjoy?"
-  ],
-  "student": [
-    "Yes, I like music.",
-    "I enjoy drawing."
-  ],
-  "note": "Ask a real question about interests!",
-  "title": "Practice the Conversation"
-}$json$::jsonb,
-  true
-),
-(
-  '6aad198e-c0df-4254-b8fa-e21bc0f53cdf',
-  5,
-  'activity',
-  null,
-  null,
-  $json${
-  "dialogue": [
-    {
-      "speaker": "A",
-      "text": "[Do you like] music?"
-    },
-    {
-      "speaker": "B",
-      "text": "What do you [enjoy]?"
-    },
-    {
-      "speaker": "A",
-      "text": "My [interest] is art."
-    }
-  ],
-  "blanks": [
-    "Do you like",
-    "enjoy",
-    "interest"
-  ]
-}$json$::jsonb,
-  true
-),
-(
-  '6aad198e-c0df-4254-b8fa-e21bc0f53cdf',
-  6,
-  'speaking',
-  null,
-  null,
-  $json${
-  "dialogue": [
-    {
-      "speaker": "A",
-      "text": "Do you like music?"
-    },
-    {
-      "speaker": "B",
-      "text": "Yes, I love music!"
-    },
-    {
-      "speaker": "A",
-      "text": "What do you enjoy doing?"
-    },
-    {
-      "speaker": "B",
-      "text": "I enjoy singing and dancing!"
-    }
-  ],
-  "note": "Switch! Student becomes A, teacher becomes B."
-}$json$::jsonb,
-  true
-),
-(
-  '6aad198e-c0df-4254-b8fa-e21bc0f53cdf',
-  7,
-  'reading',
-  null,
-  null,
-  $json${
-  "text": "Do you like music? Yes, I like music very much. What do you enjoy doing? I enjoy singing. My interest is music and art.",
-  "questions": [
-    "Does the writer like music?",
-    "What does the writer enjoy doing?",
-    "What is the writer's interest?"
-  ]
-}$json$::jsonb,
-  true
-),
-(
-  '6aad198e-c0df-4254-b8fa-e21bc0f53cdf',
-  8,
-  'writing',
-  null,
-  null,
-  $json${
-  "prompts": [
-    "Do you like ___? ___.",
-    "I enjoy ___.",
-    "My interest is ___."
-  ]
-}$json$::jsonb,
-  true
-),
-(
-  '6aad198e-c0df-4254-b8fa-e21bc0f53cdf',
-  9,
-  'review',
-  null,
-  null,
-  $json${
-  "checklist": [
-    "Ask 'Do you like ___?'",
-    "Ask 'What do you enjoy?'",
-    "Talk about interests"
-  ],
-  "challenge": "Ask me what I enjoy doing!"
-}$json$::jsonb,
-  true
-);
-
--- Lesson 4: Hobbies in Real Life
-insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
-values (
-  '991e4582-39df-4fa5-8af3-2ca223641779',
-  'Hobbies in Real Life',
-  'A1',
-  'teens',
-  5,
-  4,
-  'Describe when and how they do a hobby.',
-  25,
-  9,
-  true
-);
-
-insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
-values
-(
-  '991e4582-39df-4fa5-8af3-2ca223641779',
-  1,
-  'title',
-  null,
-  null,
-  $json${
-  "badge": "A1 · Beginner · Teens"
-}$json$::jsonb,
-  true
-),
-(
-  '991e4582-39df-4fa5-8af3-2ca223641779',
-  2,
-  'warmup',
-  null,
-  null,
-  $json${
-  "display": "🕐",
-  "questions": [
-    "When do you do your hobby?",
-    "Do you do it after school or on weekends?"
-  ],
-  "title": "Let's Start!"
-}$json$::jsonb,
-  true
-),
-(
-  '991e4582-39df-4fa5-8af3-2ca223641779',
-  3,
-  'vocabulary',
-  null,
-  null,
-  $json${
-  "words": [
-    {
-      "word": "After School",
-      "bg": "#FAECE7"
-    },
-    {
-      "word": "On Weekends",
-      "bg": "#E1F5EE"
-    },
-    {
-      "word": "In the Evening",
-      "bg": "#EEEDFE"
-    },
-    {
-      "word": "Every Day",
-      "bg": "#FAEEDA"
-    }
-  ],
-  "title": "New Words",
-  "subtitle": "Tap a card to see it bigger."
-}$json$::jsonb,
-  true
-),
-(
-  '991e4582-39df-4fa5-8af3-2ca223641779',
-  4,
-  'phrases',
-  null,
-  null,
-  $json${
-  "teacher": [
-    "When do you do your hobby?",
-    "Do you do it every day?"
-  ],
-  "student": [
-    "I do it after school.",
-    "Yes, every day!"
-  ],
-  "note": "Think about your real hobby routine!",
-  "title": "Practice the Conversation"
-}$json$::jsonb,
-  true
-),
-(
-  '991e4582-39df-4fa5-8af3-2ca223641779',
-  5,
-  'activity',
-  null,
-  null,
-  $json${
-  "dialogue": [
-    {
-      "speaker": "A",
-      "text": "I draw [after school]."
-    },
-    {
-      "speaker": "B",
-      "text": "I play games [on weekends]."
-    },
-    {
-      "speaker": "A",
-      "text": "I read [in the evening]."
-    }
-  ],
-  "blanks": [
-    "after school",
-    "on weekends",
-    "in the evening"
-  ]
-}$json$::jsonb,
-  true
-),
-(
-  '991e4582-39df-4fa5-8af3-2ca223641779',
-  6,
-  'speaking',
-  null,
-  null,
-  $json${
-  "dialogue": [
-    {
-      "speaker": "A",
-      "text": "When do you do your hobby?"
-    },
-    {
-      "speaker": "B",
-      "text": "I sing after school."
-    },
-    {
-      "speaker": "A",
-      "text": "Do you do it every day?"
-    },
-    {
-      "speaker": "B",
-      "text": "No, only on weekends!"
-    }
-  ],
-  "note": "Switch! Student becomes A, teacher becomes B."
-}$json$::jsonb,
-  true
-),
-(
-  '991e4582-39df-4fa5-8af3-2ca223641779',
-  7,
-  'reading',
-  null,
-  null,
-  $json${
-  "text": "I draw after school. I play games on weekends. I read in the evening. My hobbies fill my free time every day!",
-  "questions": [
-    "When does the writer draw?",
-    "When does the writer play games?",
-    "When does the writer read?"
-  ]
-}$json$::jsonb,
-  true
-),
-(
-  '991e4582-39df-4fa5-8af3-2ca223641779',
-  8,
-  'writing',
-  null,
-  null,
-  $json${
-  "prompts": [
-    "I do my hobby ___.",
-    "I ___ on weekends.",
-    "I ___ every day."
-  ]
-}$json$::jsonb,
-  true
-),
-(
-  '991e4582-39df-4fa5-8af3-2ca223641779',
-  9,
-  'review',
-  null,
-  null,
-  $json${
-  "checklist": [
-    "Say time phrases for hobbies",
-    "Describe a hobby routine",
-    "Talk about when I do things"
-  ],
-  "challenge": "Tell me when you do your hobby!"
-}$json$::jsonb,
-  true
-);
-
--- Lesson 5: Unit Review
-insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
-values (
-  '149d4283-de2c-4e4f-99a2-a370e606f574',
-  'Unit Review',
-  'A1',
-  'teens',
-  5,
-  5,
-  'Talk briefly about hobbies and interests.',
-  25,
-  9,
-  true
-);
-
-insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
-values
-(
-  '149d4283-de2c-4e4f-99a2-a370e606f574',
-  1,
-  'title',
-  null,
-  null,
-  $json${
-  "badge": "A1 · Beginner · Teens"
-}$json$::jsonb,
-  true
-),
-(
-  '149d4283-de2c-4e4f-99a2-a370e606f574',
+  'd77cad8c-656e-4514-804b-ee489ea4ea42',
   2,
   'warmup',
   null,
@@ -838,15 +439,15 @@ values
   $json${
   "display": "🎨",
   "questions": [
-    "What hobbies do you remember?",
-    "What is your hobby?"
+    "What hobby do you have?",
+    "Is it exciting or boring?"
   ],
-  "title": "Let's Review!"
+  "title": "Let's start!"
 }$json$::jsonb,
   true
 ),
 (
-  '149d4283-de2c-4e4f-99a2-a370e606f574',
+  'd77cad8c-656e-4514-804b-ee489ea4ea42',
   3,
   'vocabulary',
   null,
@@ -854,49 +455,49 @@ values
   $json${
   "words": [
     {
-      "word": "Drawing",
+      "word": "What hobby",
       "bg": "#FAECE7"
     },
     {
-      "word": "Gaming",
+      "word": "Why",
       "bg": "#E1F5EE"
     },
     {
-      "word": "Music",
+      "word": "Boring",
       "bg": "#EEEDFE"
     },
     {
-      "word": "Sports",
+      "word": "Exciting",
       "bg": "#FAEEDA"
     }
   ],
-  "title": "Review Words",
+  "title": "New Words",
   "subtitle": "Tap a card to see it bigger."
 }$json$::jsonb,
   true
 ),
 (
-  '149d4283-de2c-4e4f-99a2-a370e606f574',
+  'd77cad8c-656e-4514-804b-ee489ea4ea42',
   4,
   'phrases',
   null,
   null,
   $json${
   "teacher": [
-    "What is your hobby?",
-    "When do you do it?"
+    "What hobby do you have?",
+    "Why do you like it?"
   ],
   "student": [
-    "My hobby is drawing.",
-    "I do it after school."
+    "My hobby is painting.",
+    "It's exciting, not boring."
   ],
-  "note": "Use everything you learned this unit!",
+  "note": "Ask me first this time, then I'll ask you!",
   "title": "Practice the Conversation"
 }$json$::jsonb,
   true
 ),
 (
-  '149d4283-de2c-4e4f-99a2-a370e606f574',
+  'd77cad8c-656e-4514-804b-ee489ea4ea42',
   5,
   'activity',
   null,
@@ -905,27 +506,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "My hobby is [drawing]."
+      "text": "[What hobby] do you have?"
     },
     {
       "speaker": "B",
-      "text": "I like [sports]."
+      "text": "[Why] do you like it?"
     },
     {
       "speaker": "A",
-      "text": "I play [after school]."
+      "text": "It's [exciting], not boring."
     }
   ],
   "blanks": [
-    "drawing",
-    "sports",
-    "after school"
+    "what hobby",
+    "why",
+    "exciting"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '149d4283-de2c-4e4f-99a2-a370e606f574',
+  'd77cad8c-656e-4514-804b-ee489ea4ea42',
   6,
   'speaking',
   null,
@@ -934,43 +535,43 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "What is your hobby?"
+      "text": "What hobby do you have?"
     },
     {
       "speaker": "B",
-      "text": "My hobby is gaming."
+      "text": "My hobby is dancing. Why do you like football?"
     },
     {
       "speaker": "A",
-      "text": "When do you play?"
+      "text": "Because it's exciting, not boring."
     },
     {
       "speaker": "B",
-      "text": "I play every evening!"
+      "text": "Your turn to ask me something!"
     }
   ],
-  "note": "Switch! Student becomes A, teacher becomes B."
+  "note": "Student asks first this time. Teacher answers, then asks back."
 }$json$::jsonb,
   true
 ),
 (
-  '149d4283-de2c-4e4f-99a2-a370e606f574',
+  'd77cad8c-656e-4514-804b-ee489ea4ea42',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "My hobby is drawing. I also enjoy music. I draw after school every day. On weekends, I listen to music. I love my hobbies!",
+  "text": "My hobby is dancing. It's exciting, not boring. My friend's hobby is football because it's fun.",
   "questions": [
-    "What is the writer's hobby?",
-    "What does the writer enjoy?",
-    "When does the writer draw?"
+    "Is dancing exciting or boring, for the writer?",
+    "What is the friend's hobby?",
+    "Why does the friend like football?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '149d4283-de2c-4e4f-99a2-a370e606f574',
+  'd77cad8c-656e-4514-804b-ee489ea4ea42',
   8,
   'writing',
   null,
@@ -978,25 +579,425 @@ values
   $json${
   "prompts": [
     "My hobby is ___.",
-    "I enjoy ___.",
-    "I do it ___."
+    "It's ___, not boring.",
+    "My friend's hobby is ___ because ___."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '149d4283-de2c-4e4f-99a2-a370e606f574',
+  'd77cad8c-656e-4514-804b-ee489ea4ea42',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Name hobbies",
-    "Say likes and dislikes",
-    "Talk about hobby routines"
+    "Ask 'What hobby do you have?'",
+    "Say 'exciting' or 'boring'",
+    "Give a reason for a hobby"
   ],
-  "challenge": "Tell me your hobby and when you do it!"
+  "challenge": "Ask me about my hobby, then tell me about yours with a reason!"
+}$json$::jsonb,
+  true
+);
+
+-- Lesson 4: Hobbies in Real Life
+insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
+values (
+  '27e1c424-de7e-48b5-bd05-3e33dedd02b6',
+  'Hobbies in Real Life',
+  'A1',
+  'teens',
+  5,
+  4,
+  'Combine hobby vocabulary into a short talk. [Combination, Lesson 4: production]',
+  25,
+  9,
+  true
+);
+
+insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
+values
+(
+  '27e1c424-de7e-48b5-bd05-3e33dedd02b6',
+  1,
+  'title',
+  null,
+  null,
+  $json${
+  "badge": "A1 · Beginner · Teens"
+}$json$::jsonb,
+  true
+),
+(
+  '27e1c424-de7e-48b5-bd05-3e33dedd02b6',
+  2,
+  'warmup',
+  null,
+  null,
+  $json${
+  "display": "🏆",
+  "questions": [
+    "Do you do your hobby alone or with friends?",
+    "How often do you practice?"
+  ],
+  "title": "Let's start!"
+}$json$::jsonb,
+  true
+),
+(
+  '27e1c424-de7e-48b5-bd05-3e33dedd02b6',
+  3,
+  'vocabulary',
+  null,
+  null,
+  $json${
+  "words": [
+    {
+      "word": "Every week",
+      "bg": "#FAECE7"
+    },
+    {
+      "word": "Alone",
+      "bg": "#E1F5EE"
+    },
+    {
+      "word": "With friends",
+      "bg": "#EEEDFE"
+    },
+    {
+      "word": "Practice",
+      "bg": "#FAEEDA"
+    }
+  ],
+  "title": "New Words",
+  "subtitle": "Tap a card to see it bigger."
+}$json$::jsonb,
+  true
+),
+(
+  '27e1c424-de7e-48b5-bd05-3e33dedd02b6',
+  4,
+  'phrases',
+  null,
+  null,
+  $json${
+  "teacher": [
+    "Do you do it alone or with friends?",
+    "How often do you practice?"
+  ],
+  "student": [
+    "I do it with friends.",
+    "I practice every week."
+  ],
+  "note": "Put it all together: hobby + reason + how often + with whom.",
+  "title": "Practice the Conversation"
+}$json$::jsonb,
+  true
+),
+(
+  '27e1c424-de7e-48b5-bd05-3e33dedd02b6',
+  5,
+  'activity',
+  null,
+  null,
+  $json${
+  "dialogue": [
+    {
+      "speaker": "A",
+      "text": "I [practice] football [every week]."
+    },
+    {
+      "speaker": "B",
+      "text": "I do it [with friends]."
+    },
+    {
+      "speaker": "A",
+      "text": "Sometimes I dance [alone]."
+    }
+  ],
+  "blanks": [
+    "practice",
+    "every week",
+    "with friends"
+  ]
+}$json$::jsonb,
+  true
+),
+(
+  '27e1c424-de7e-48b5-bd05-3e33dedd02b6',
+  6,
+  'speaking',
+  null,
+  null,
+  $json${
+  "dialogue": [
+    {
+      "speaker": "A",
+      "text": "Tell me about your hobby."
+    },
+    {
+      "speaker": "B",
+      "text": "My hobby is football. I love it because it's fun and exciting."
+    },
+    {
+      "speaker": "A",
+      "text": "I practice every week with my friends."
+    },
+    {
+      "speaker": "B",
+      "text": "That sounds like a great hobby!"
+    }
+  ],
+  "note": "Mini talk: tell me all about your hobby in a few sentences."
+}$json$::jsonb,
+  true
+),
+(
+  '27e1c424-de7e-48b5-bd05-3e33dedd02b6',
+  7,
+  'reading',
+  null,
+  null,
+  $json${
+  "text": "My hobby is football. I love it because it's fun. I practice every week with my friends. It's not boring, it's exciting!",
+  "questions": [
+    "What is the hobby?",
+    "How often does the writer practice?",
+    "Who does the writer practice with?"
+  ]
+}$json$::jsonb,
+  true
+),
+(
+  '27e1c424-de7e-48b5-bd05-3e33dedd02b6',
+  8,
+  'writing',
+  null,
+  null,
+  $json${
+  "prompts": [
+    "My hobby is ___.",
+    "I love it because ___.",
+    "I practice ___ with ___."
+  ]
+}$json$::jsonb,
+  true
+),
+(
+  '27e1c424-de7e-48b5-bd05-3e33dedd02b6',
+  9,
+  'review',
+  null,
+  null,
+  $json${
+  "checklist": [
+    "Describe my hobby with a reason",
+    "Say how often I do it",
+    "Say who I do it with"
+  ],
+  "challenge": "Tell me all about your hobby!"
+}$json$::jsonb,
+  true
+);
+
+-- Lesson 5: Unit Review
+insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
+values (
+  'f34d5ddc-b2b9-4913-8aa0-83ec77cfc046',
+  'Unit Review',
+  'A1',
+  'teens',
+  5,
+  5,
+  'Review hobbies, likes, and reasons. [Combination, Lesson 5: tier-matched review]',
+  25,
+  9,
+  true
+);
+
+insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
+values
+(
+  'f34d5ddc-b2b9-4913-8aa0-83ec77cfc046',
+  1,
+  'title',
+  null,
+  null,
+  $json${
+  "badge": "A1 · Beginner · Teens"
+}$json$::jsonb,
+  true
+),
+(
+  'f34d5ddc-b2b9-4913-8aa0-83ec77cfc046',
+  2,
+  'warmup',
+  null,
+  null,
+  $json${
+  "display": "🎨",
+  "questions": [
+    "What is your hobby?",
+    "Why do you love it?"
+  ],
+  "title": "Let's start!"
+}$json$::jsonb,
+  true
+),
+(
+  'f34d5ddc-b2b9-4913-8aa0-83ec77cfc046',
+  3,
+  'vocabulary',
+  null,
+  null,
+  $json${
+  "words": [
+    {
+      "word": "Hobby",
+      "bg": "#FAECE7"
+    },
+    {
+      "word": "Love",
+      "bg": "#E1F5EE"
+    },
+    {
+      "word": "Because",
+      "bg": "#EEEDFE"
+    },
+    {
+      "word": "Every week",
+      "bg": "#FAEEDA"
+    }
+  ],
+  "title": "New Words",
+  "subtitle": "Tap a card to see it bigger."
+}$json$::jsonb,
+  true
+),
+(
+  'f34d5ddc-b2b9-4913-8aa0-83ec77cfc046',
+  4,
+  'phrases',
+  null,
+  null,
+  $json${
+  "teacher": [
+    "What is your hobby?",
+    "Why do you love it?"
+  ],
+  "student": [
+    "My hobby is dancing.",
+    "I love it because it's fun."
+  ],
+  "note": "Use everything you learned this unit!",
+  "title": "Practice the Conversation"
+}$json$::jsonb,
+  true
+),
+(
+  'f34d5ddc-b2b9-4913-8aa0-83ec77cfc046',
+  5,
+  'activity',
+  null,
+  null,
+  $json${
+  "dialogue": [
+    {
+      "speaker": "A",
+      "text": "My [hobby] is painting."
+    },
+    {
+      "speaker": "B",
+      "text": "I [love] it [because] it's fun."
+    },
+    {
+      "speaker": "A",
+      "text": "I practice [every week]."
+    }
+  ],
+  "blanks": [
+    "hobby",
+    "love",
+    "every week"
+  ]
+}$json$::jsonb,
+  true
+),
+(
+  'f34d5ddc-b2b9-4913-8aa0-83ec77cfc046',
+  6,
+  'speaking',
+  null,
+  null,
+  $json${
+  "dialogue": [
+    {
+      "speaker": "A",
+      "text": "Tell me about your hobby."
+    },
+    {
+      "speaker": "B",
+      "text": "My hobby is dancing. I love it because it's exciting. I practice every week."
+    },
+    {
+      "speaker": "A",
+      "text": "I do it with my friends."
+    },
+    {
+      "speaker": "B",
+      "text": "Sounds fun!"
+    }
+  ],
+  "note": "Switch! Student becomes A, teacher becomes B."
+}$json$::jsonb,
+  true
+),
+(
+  'f34d5ddc-b2b9-4913-8aa0-83ec77cfc046',
+  7,
+  'reading',
+  null,
+  null,
+  $json${
+  "text": "My hobby is dancing. I love it because it's exciting. I practice every week with my friends.",
+  "questions": [
+    "What is the hobby?",
+    "Why does the writer love it?",
+    "How often does the writer practice?"
+  ]
+}$json$::jsonb,
+  true
+),
+(
+  'f34d5ddc-b2b9-4913-8aa0-83ec77cfc046',
+  8,
+  'writing',
+  null,
+  null,
+  $json${
+  "prompts": [
+    "My hobby is ___.",
+    "I love it because ___.",
+    "I practice ___."
+  ]
+}$json$::jsonb,
+  true
+),
+(
+  'f34d5ddc-b2b9-4913-8aa0-83ec77cfc046',
+  9,
+  'review',
+  null,
+  null,
+  $json${
+  "checklist": [
+    "Talk about my hobby",
+    "Give a reason with 'because'",
+    "Say how often and with whom"
+  ],
+  "challenge": "Tell me all about your hobby!"
 }$json$::jsonb,
   true
 );

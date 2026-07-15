@@ -1,16 +1,17 @@
--- A1 Teens Unit 3: School Life (5 lessons)
+-- A1 Teens Unit 3: School (5 lessons) — TIERED (Foundation)
+-- Regenerated per the Sentivo Intra-Level Progression Framework + lesson-level escalation + task rotation.
 -- Run this whole script in the Supabase SQL editor.
 
 -- Lesson 1: School Subjects
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '49cad78b-c93f-4dae-a364-210be7be180a',
+  '29186baf-8761-49ce-a62d-25203e95a601',
   'School Subjects',
   'A1',
   'teens',
   3,
   1,
-  'Name basic school subjects.',
+  'Name school subjects. [Foundation, Lesson 1: notice/receptive]',
   25,
   9,
   true
@@ -19,7 +20,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '49cad78b-c93f-4dae-a364-210be7be180a',
+  '29186baf-8761-49ce-a62d-25203e95a601',
   1,
   'title',
   null,
@@ -30,7 +31,7 @@ values
   true
 ),
 (
-  '49cad78b-c93f-4dae-a364-210be7be180a',
+  '29186baf-8761-49ce-a62d-25203e95a601',
   2,
   'warmup',
   null,
@@ -38,15 +39,15 @@ values
   $json${
   "display": "📚",
   "questions": [
-    "What subjects do you study?",
-    "What is your favorite subject?"
+    "Do you have math today?",
+    "Do you like art?"
   ],
-  "title": "Let's Start!"
+  "title": "Let's start!"
 }$json$::jsonb,
   true
 ),
 (
-  '49cad78b-c93f-4dae-a364-210be7be180a',
+  '29186baf-8761-49ce-a62d-25203e95a601',
   3,
   'vocabulary',
   null,
@@ -54,11 +55,11 @@ values
   $json${
   "words": [
     {
-      "word": "English",
+      "word": "Math",
       "bg": "#FAECE7"
     },
     {
-      "word": "Math",
+      "word": "Art",
       "bg": "#E1F5EE"
     },
     {
@@ -66,7 +67,7 @@ values
       "bg": "#EEEDFE"
     },
     {
-      "word": "Art",
+      "word": "Music",
       "bg": "#FAEEDA"
     }
   ],
@@ -76,27 +77,27 @@ values
   true
 ),
 (
-  '49cad78b-c93f-4dae-a364-210be7be180a',
+  '29186baf-8761-49ce-a62d-25203e95a601',
   4,
   'phrases',
   null,
   null,
   $json${
   "teacher": [
-    "What do you study?",
-    "Do you like math?"
+    "What subject is this?",
+    "Do you have math today?"
   ],
   "student": [
-    "I study English and math.",
-    "Yes, I like math!"
+    "This is math.",
+    "Yes, I have math today."
   ],
-  "note": "Think about your real school subjects!",
+  "note": "Point to your school bag or book!",
   "title": "Practice the Conversation"
 }$json$::jsonb,
   true
 ),
 (
-  '49cad78b-c93f-4dae-a364-210be7be180a',
+  '29186baf-8761-49ce-a62d-25203e95a601',
   5,
   'activity',
   null,
@@ -105,27 +106,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "I study [English]."
+      "text": "This is [math]."
     },
     {
       "speaker": "B",
-      "text": "I study [math]."
+      "text": "This is [art]."
     },
     {
       "speaker": "A",
-      "text": "I like [science]."
+      "text": "I have [science] today."
     }
   ],
   "blanks": [
-    "English",
     "math",
+    "art",
     "science"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '49cad78b-c93f-4dae-a364-210be7be180a',
+  '29186baf-8761-49ce-a62d-25203e95a601',
   6,
   'speaking',
   null,
@@ -134,69 +135,69 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "What subjects do you study?"
+      "text": "This is math."
     },
     {
       "speaker": "B",
-      "text": "I study English, math, and art."
+      "text": "This is art."
     },
     {
       "speaker": "A",
-      "text": "What is your favorite subject?"
+      "text": "I have science today."
     },
     {
       "speaker": "B",
-      "text": "My favorite subject is art!"
+      "text": "I have music today!"
     }
   ],
-  "note": "Switch! Student becomes A, teacher becomes B."
+  "note": "Teacher says the line first. Student repeats, then says it alone."
 }$json$::jsonb,
   true
 ),
 (
-  '49cad78b-c93f-4dae-a364-210be7be180a',
+  '29186baf-8761-49ce-a62d-25203e95a601',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "I study many subjects. I study English. I study math. I study science. My favorite subject is art. I like school!",
+  "text": "I have math, art, science, and music at school. Today I have math.",
   "questions": [
-    "What subjects does the writer study?",
-    "What is the favorite subject?",
-    "Does the writer like school?"
+    "What subjects does the writer have?",
+    "What subject is today?",
+    "Name one subject."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '49cad78b-c93f-4dae-a364-210be7be180a',
+  '29186baf-8761-49ce-a62d-25203e95a601',
   8,
   'writing',
   null,
   null,
   $json${
   "prompts": [
-    "I study ___.",
-    "My favorite subject is ___.",
-    "I like ___ because ___."
+    "I have ___ at school.",
+    "Today I have ___.",
+    "My subjects are ___."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '49cad78b-c93f-4dae-a364-210be7be180a',
+  '29186baf-8761-49ce-a62d-25203e95a601',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Name four school subjects",
-    "Say 'I study ___'",
-    "Say my favorite subject"
+    "Name 4 school subjects",
+    "Say 'This is ___'",
+    "Say what subject I have today"
   ],
-  "challenge": "Tell me your favorite subject and why!"
+  "challenge": "Tell me your school subjects!"
 }$json$::jsonb,
   true
 );
@@ -204,13 +205,13 @@ values
 -- Lesson 2: My School Day
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  'a45a2bff-a356-45ca-90ad-d2a50af16643',
+  '5b5b8e57-14cd-4328-91c0-17aaa5384513',
   'My School Day',
   'A1',
   'teens',
   3,
   2,
-  'Say simple school day sentences.',
+  'Talk about a simple school day. [Foundation, Lesson 2: controlled practice]',
   25,
   9,
   true
@@ -219,7 +220,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  'a45a2bff-a356-45ca-90ad-d2a50af16643',
+  '5b5b8e57-14cd-4328-91c0-17aaa5384513',
   1,
   'title',
   null,
@@ -230,7 +231,7 @@ values
   true
 ),
 (
-  'a45a2bff-a356-45ca-90ad-d2a50af16643',
+  '5b5b8e57-14cd-4328-91c0-17aaa5384513',
   2,
   'warmup',
   null,
@@ -238,15 +239,15 @@ values
   $json${
   "display": "🏫",
   "questions": [
-    "What time do you go to school?",
-    "How many classes do you have?"
+    "When is your break?",
+    "Do you have homework today?"
   ],
-  "title": "Let's Start!"
+  "title": "Let's start!"
 }$json$::jsonb,
   true
 ),
 (
-  'a45a2bff-a356-45ca-90ad-d2a50af16643',
+  '5b5b8e57-14cd-4328-91c0-17aaa5384513',
   3,
   'vocabulary',
   null,
@@ -254,19 +255,19 @@ values
   $json${
   "words": [
     {
-      "word": "Study",
+      "word": "Class",
       "bg": "#FAECE7"
     },
     {
-      "word": "Have",
+      "word": "Break",
       "bg": "#E1F5EE"
     },
     {
-      "word": "Go To",
+      "word": "Lunch",
       "bg": "#EEEDFE"
     },
     {
-      "word": "Class",
+      "word": "Homework",
       "bg": "#FAEEDA"
     }
   ],
@@ -276,27 +277,27 @@ values
   true
 ),
 (
-  'a45a2bff-a356-45ca-90ad-d2a50af16643',
+  '5b5b8e57-14cd-4328-91c0-17aaa5384513',
   4,
   'phrases',
   null,
   null,
   $json${
   "teacher": [
-    "What time do you go to school?",
-    "How many classes do you have?"
+    "When is your class?",
+    "Do you have homework?"
   ],
   "student": [
-    "I go to school at 8.",
-    "I have six classes."
+    "My class is at 9am.",
+    "Yes, I have homework."
   ],
-  "note": "Think about your real school schedule!",
+  "note": "Use the word bank: class, break, lunch, homework.",
   "title": "Practice the Conversation"
 }$json$::jsonb,
   true
 ),
 (
-  'a45a2bff-a356-45ca-90ad-d2a50af16643',
+  '5b5b8e57-14cd-4328-91c0-17aaa5384513',
   5,
   'activity',
   null,
@@ -305,27 +306,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "I [go to] school at 8."
+      "text": "My [class] is at 9am."
     },
     {
       "speaker": "B",
-      "text": "I [have] six classes."
+      "text": "My [break] is at 11am."
     },
     {
       "speaker": "A",
-      "text": "I [study] every day."
+      "text": "I have [homework] today."
     }
   ],
   "blanks": [
-    "go to",
-    "have",
-    "study"
+    "class",
+    "break",
+    "homework"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'a45a2bff-a356-45ca-90ad-d2a50af16643',
+  '5b5b8e57-14cd-4328-91c0-17aaa5384513',
   6,
   'speaking',
   null,
@@ -334,19 +335,19 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "What time do you go to school?"
+      "text": "When is your class?"
     },
     {
       "speaker": "B",
-      "text": "I go to school at 7:30."
+      "text": "My class is at 9am. When is your break?"
     },
     {
       "speaker": "A",
-      "text": "How many classes do you have?"
+      "text": "My break is at 11am. I have homework today."
     },
     {
       "speaker": "B",
-      "text": "I have five classes today!"
+      "text": "Me too!"
     }
   ],
   "note": "Switch! Student becomes A, teacher becomes B."
@@ -354,49 +355,49 @@ values
   true
 ),
 (
-  'a45a2bff-a356-45ca-90ad-d2a50af16643',
+  '5b5b8e57-14cd-4328-91c0-17aaa5384513',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "I go to school at 8 o'clock. I have six classes today. I study English, math, and science. School finishes at 3 o'clock.",
+  "text": "My class is at 9am. My break is at 11am. Lunch is at 1pm. I have homework today.",
   "questions": [
-    "What time does school start?",
-    "How many classes does the writer have?",
-    "What time does school finish?"
+    "What time is class?",
+    "What time is break?",
+    "Does the writer have homework?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'a45a2bff-a356-45ca-90ad-d2a50af16643',
+  '5b5b8e57-14cd-4328-91c0-17aaa5384513',
   8,
   'writing',
   null,
   null,
   $json${
   "prompts": [
-    "I go to school at ___.",
-    "I have ___ classes.",
-    "School finishes at ___."
+    "My class is at ___.",
+    "My break is at ___.",
+    "Today I have ___."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'a45a2bff-a356-45ca-90ad-d2a50af16643',
+  '5b5b8e57-14cd-4328-91c0-17aaa5384513',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Say what time school starts",
-    "Say how many classes I have",
+    "Say class and break times",
+    "Say 'I have homework'",
     "Talk about my school day"
   ],
-  "challenge": "Tell me about your school day and schedule!"
+  "challenge": "Tell me about your school day!"
 }$json$::jsonb,
   true
 );
@@ -404,13 +405,13 @@ values
 -- Lesson 3: Teachers and Classmates
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '11e70d1a-06ba-4d5c-9d8d-796d0d794b64',
+  '263deb0b-11c5-4f18-b45a-0a5782e585bb',
   'Teachers and Classmates',
   'A1',
   'teens',
   3,
   3,
-  'Describe people at school in simple terms.',
+  'Talk about teachers and classmates. [Foundation, Lesson 3: freer practice, role reversal]',
   25,
   9,
   true
@@ -419,7 +420,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '11e70d1a-06ba-4d5c-9d8d-796d0d794b64',
+  '263deb0b-11c5-4f18-b45a-0a5782e585bb',
   1,
   'title',
   null,
@@ -430,23 +431,23 @@ values
   true
 ),
 (
-  '11e70d1a-06ba-4d5c-9d8d-796d0d794b64',
+  '263deb0b-11c5-4f18-b45a-0a5782e585bb',
   2,
   'warmup',
   null,
   null,
   $json${
-  "display": "🧑‍🏫",
+  "display": "👩‍🏫",
   "questions": [
-    "Is your teacher kind?",
-    "Do you have a funny classmate?"
+    "Is your teacher nice?",
+    "Do you have a smart classmate?"
   ],
-  "title": "Let's Start!"
+  "title": "Let's start!"
 }$json$::jsonb,
   true
 ),
 (
-  '11e70d1a-06ba-4d5c-9d8d-796d0d794b64',
+  '263deb0b-11c5-4f18-b45a-0a5782e585bb',
   3,
   'vocabulary',
   null,
@@ -462,11 +463,11 @@ values
       "bg": "#E1F5EE"
     },
     {
-      "word": "Kind",
+      "word": "Nice",
       "bg": "#EEEDFE"
     },
     {
-      "word": "Funny",
+      "word": "Smart",
       "bg": "#FAEEDA"
     }
   ],
@@ -476,27 +477,27 @@ values
   true
 ),
 (
-  '11e70d1a-06ba-4d5c-9d8d-796d0d794b64',
+  '263deb0b-11c5-4f18-b45a-0a5782e585bb',
   4,
   'phrases',
   null,
   null,
   $json${
   "teacher": [
-    "Is your teacher kind?",
-    "Is your classmate funny?"
+    "Is your teacher nice?",
+    "Who is your classmate?"
   ],
   "student": [
-    "Yes, my teacher is kind.",
-    "Yes, he is very funny!"
+    "Yes, my teacher is nice.",
+    "My classmate is Ana."
   ],
-  "note": "Describe a real teacher or classmate!",
+  "note": "Ask me first this time, then I'll ask you!",
   "title": "Practice the Conversation"
 }$json$::jsonb,
   true
 ),
 (
-  '11e70d1a-06ba-4d5c-9d8d-796d0d794b64',
+  '263deb0b-11c5-4f18-b45a-0a5782e585bb',
   5,
   'activity',
   null,
@@ -505,27 +506,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "My [teacher] is kind."
+      "text": "My [teacher] is nice."
     },
     {
       "speaker": "B",
-      "text": "My [classmate] is funny."
+      "text": "My [classmate] is smart."
     },
     {
       "speaker": "A",
-      "text": "My teacher is [strict]."
+      "text": "She is [nice] too."
     }
   ],
   "blanks": [
     "teacher",
     "classmate",
-    "strict"
+    "nice"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '11e70d1a-06ba-4d5c-9d8d-796d0d794b64',
+  '263deb0b-11c5-4f18-b45a-0a5782e585bb',
   6,
   'speaking',
   null,
@@ -534,43 +535,43 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "Is your teacher kind or strict?"
+      "text": "Is your teacher nice?"
     },
     {
       "speaker": "B",
-      "text": "My teacher is kind."
+      "text": "Yes, my teacher is nice. Is your classmate smart?"
     },
     {
       "speaker": "A",
-      "text": "Is your classmate funny?"
+      "text": "Yes, my classmate is very smart."
     },
     {
       "speaker": "B",
-      "text": "Yes, she is very funny!"
+      "text": "Your turn to ask me something!"
     }
   ],
-  "note": "Switch! Student becomes A, teacher becomes B."
+  "note": "Student asks first this time. Teacher answers, then asks back."
 }$json$::jsonb,
   true
 ),
 (
-  '11e70d1a-06ba-4d5c-9d8d-796d0d794b64',
+  '263deb0b-11c5-4f18-b45a-0a5782e585bb',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "My teacher is kind. My math teacher is strict but fair. My best classmate is funny. We laugh every day at school.",
+  "text": "My teacher is nice. My classmate is smart. We are friends at school.",
   "questions": [
-    "Is the teacher kind or strict?",
-    "How is the math teacher described?",
-    "Is the classmate funny?"
+    "Is the teacher nice or not nice?",
+    "Is the classmate smart?",
+    "Are they friends?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '11e70d1a-06ba-4d5c-9d8d-796d0d794b64',
+  '263deb0b-11c5-4f18-b45a-0a5782e585bb',
   8,
   'writing',
   null,
@@ -579,24 +580,24 @@ values
   "prompts": [
     "My teacher is ___.",
     "My classmate is ___.",
-    "My friend is ___."
+    "We are ___."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '11e70d1a-06ba-4d5c-9d8d-796d0d794b64',
+  '263deb0b-11c5-4f18-b45a-0a5782e585bb',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Say 'kind', 'strict', 'funny'",
-    "Describe a teacher or classmate",
-    "Say 'My teacher is ___'"
+    "Describe my teacher",
+    "Describe a classmate",
+    "Ask about someone's teacher"
   ],
-  "challenge": "Describe your teacher or a classmate to me!"
+  "challenge": "Tell me about your teacher and a classmate!"
 }$json$::jsonb,
   true
 );
@@ -604,13 +605,13 @@ values
 -- Lesson 4: School Questions
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  'd8ce1179-61d8-4739-a279-43da185e49d9',
+  'db61015a-6df8-4e1b-ba1c-40b6b154272c',
   'School Questions',
   'A1',
   'teens',
   3,
   4,
-  'Answer simple questions about school life.',
+  'Combine subjects, schedule, and people into a school talk. [Foundation, Lesson 4: production]',
   25,
   9,
   true
@@ -619,7 +620,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  'd8ce1179-61d8-4739-a279-43da185e49d9',
+  'db61015a-6df8-4e1b-ba1c-40b6b154272c',
   1,
   'title',
   null,
@@ -630,23 +631,23 @@ values
   true
 ),
 (
-  'd8ce1179-61d8-4739-a279-43da185e49d9',
+  'db61015a-6df8-4e1b-ba1c-40b6b154272c',
   2,
   'warmup',
   null,
   null,
   $json${
-  "display": "❓",
+  "display": "🎒",
   "questions": [
-    "Do you like school?",
-    "What is your favorite subject?"
+    "What is your favorite subject?",
+    "Is school easy or hard?"
   ],
-  "title": "Let's Start!"
+  "title": "Let's start!"
 }$json$::jsonb,
   true
 ),
 (
-  'd8ce1179-61d8-4739-a279-43da185e49d9',
+  'db61015a-6df8-4e1b-ba1c-40b6b154272c',
   3,
   'vocabulary',
   null,
@@ -654,19 +655,19 @@ values
   $json${
   "words": [
     {
-      "word": "What Do You Study",
+      "word": "Favorite",
       "bg": "#FAECE7"
     },
     {
-      "word": "Do You Like",
+      "word": "Easy",
       "bg": "#E1F5EE"
     },
     {
-      "word": "Favorite",
+      "word": "Hard",
       "bg": "#EEEDFE"
     },
     {
-      "word": "Subject",
+      "word": "Fun",
       "bg": "#FAEEDA"
     }
   ],
@@ -676,27 +677,27 @@ values
   true
 ),
 (
-  'd8ce1179-61d8-4739-a279-43da185e49d9',
+  'db61015a-6df8-4e1b-ba1c-40b6b154272c',
   4,
   'phrases',
   null,
   null,
   $json${
   "teacher": [
-    "Do you like school?",
-    "What is your favorite subject?"
+    "What is your favorite subject?",
+    "Is it easy or hard?"
   ],
   "student": [
-    "Yes, I like school.",
-    "My favorite subject is science."
+    "My favorite subject is art.",
+    "It is easy for me."
   ],
-  "note": "Answer about your real school life!",
+  "note": "Put it all together: subject + schedule + people + opinion.",
   "title": "Practice the Conversation"
 }$json$::jsonb,
   true
 ),
 (
-  'd8ce1179-61d8-4739-a279-43da185e49d9',
+  'db61015a-6df8-4e1b-ba1c-40b6b154272c',
   5,
   'activity',
   null,
@@ -705,27 +706,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "[Do you like] school?"
+      "text": "My [favorite] subject is math."
     },
     {
       "speaker": "B",
-      "text": "What is your [favorite] subject?"
+      "text": "It is [easy] for me."
     },
     {
       "speaker": "A",
-      "text": "What do you [study]?"
+      "text": "School is [fun]!"
     }
   ],
   "blanks": [
-    "Do you like",
     "favorite",
-    "study"
+    "easy",
+    "fun"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'd8ce1179-61d8-4739-a279-43da185e49d9',
+  'db61015a-6df8-4e1b-ba1c-40b6b154272c',
   6,
   'speaking',
   null,
@@ -734,69 +735,69 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "Do you like school?"
+      "text": "Tell me about your school day."
     },
     {
       "speaker": "B",
-      "text": "Yes, I like school a lot!"
+      "text": "My favorite subject is art. My teacher is nice and my classmates are fun."
     },
     {
       "speaker": "A",
-      "text": "What is your favorite subject?"
+      "text": "Math is a bit hard for me, but I like my class."
     },
     {
       "speaker": "B",
-      "text": "My favorite subject is art!"
+      "text": "School sounds fun for you!"
     }
   ],
-  "note": "Switch! Student becomes A, teacher becomes B."
+  "note": "Mini talk: tell me all about your school day in a few sentences."
 }$json$::jsonb,
   true
 ),
 (
-  'd8ce1179-61d8-4739-a279-43da185e49d9',
+  'db61015a-6df8-4e1b-ba1c-40b6b154272c',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "Do you like school? Yes, I like school. What is your favorite subject? My favorite subject is science. What do you study? I study English and math.",
+  "text": "My favorite subject is art. My teacher is nice. My classmates are fun. School is fun for me!",
   "questions": [
-    "Does the writer like school?",
     "What is the favorite subject?",
-    "What does the writer study?"
+    "How is the teacher?",
+    "Is school fun or boring?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'd8ce1179-61d8-4739-a279-43da185e49d9',
+  'db61015a-6df8-4e1b-ba1c-40b6b154272c',
   8,
   'writing',
   null,
   null,
   $json${
   "prompts": [
-    "Do you like school? ___.",
     "My favorite subject is ___.",
-    "I study ___."
+    "My teacher is ___.",
+    "School is ___ for me."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'd8ce1179-61d8-4739-a279-43da185e49d9',
+  'db61015a-6df8-4e1b-ba1c-40b6b154272c',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Ask 'Do you like school?'",
-    "Ask 'What is your favorite subject?'",
-    "Answer school questions"
+    "Say my favorite subject",
+    "Describe school with an opinion",
+    "Talk about school with several sentences"
   ],
-  "challenge": "Ask me if I like school and what my favorite subject is!"
+  "challenge": "Tell me all about your school day!"
 }$json$::jsonb,
   true
 );
@@ -804,13 +805,13 @@ values
 -- Lesson 5: Unit Review
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '012dcbc9-dd10-4e96-a4d4-bec1b95eae26',
+  '9a8826f2-e431-488b-a286-8059e4fcd261',
   'Unit Review',
   'A1',
   'teens',
   3,
   5,
-  'Speak briefly about school subjects and school life.',
+  'Review school subjects, schedule, and people. [Foundation, Lesson 5: tier-matched review]',
   25,
   9,
   true
@@ -819,7 +820,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '012dcbc9-dd10-4e96-a4d4-bec1b95eae26',
+  '9a8826f2-e431-488b-a286-8059e4fcd261',
   1,
   'title',
   null,
@@ -830,23 +831,23 @@ values
   true
 ),
 (
-  '012dcbc9-dd10-4e96-a4d4-bec1b95eae26',
+  '9a8826f2-e431-488b-a286-8059e4fcd261',
   2,
   'warmup',
   null,
   null,
   $json${
-  "display": "📚",
+  "display": "🎓",
   "questions": [
-    "What school words do you remember?",
-    "Can you describe your school day?"
+    "What is your favorite subject?",
+    "Is your teacher nice?"
   ],
-  "title": "Let's Review!"
+  "title": "Let's start!"
 }$json$::jsonb,
   true
 ),
 (
-  '012dcbc9-dd10-4e96-a4d4-bec1b95eae26',
+  '9a8826f2-e431-488b-a286-8059e4fcd261',
   3,
   'vocabulary',
   null,
@@ -854,15 +855,15 @@ values
   $json${
   "words": [
     {
-      "word": "Math",
+      "word": "Subject",
       "bg": "#FAECE7"
     },
     {
-      "word": "Teacher",
+      "word": "Class",
       "bg": "#E1F5EE"
     },
     {
-      "word": "Class",
+      "word": "Teacher",
       "bg": "#EEEDFE"
     },
     {
@@ -870,25 +871,25 @@ values
       "bg": "#FAEEDA"
     }
   ],
-  "title": "Review Words",
+  "title": "New Words",
   "subtitle": "Tap a card to see it bigger."
 }$json$::jsonb,
   true
 ),
 (
-  '012dcbc9-dd10-4e96-a4d4-bec1b95eae26',
+  '9a8826f2-e431-488b-a286-8059e4fcd261',
   4,
   'phrases',
   null,
   null,
   $json${
   "teacher": [
-    "What do you study?",
-    "Do you like school?"
+    "What is your favorite subject?",
+    "Is your teacher nice?"
   ],
   "student": [
-    "I study math.",
-    "Yes, I like school."
+    "My favorite subject is science.",
+    "Yes, my teacher is nice."
   ],
   "note": "Use everything you learned this unit!",
   "title": "Practice the Conversation"
@@ -896,7 +897,7 @@ values
   true
 ),
 (
-  '012dcbc9-dd10-4e96-a4d4-bec1b95eae26',
+  '9a8826f2-e431-488b-a286-8059e4fcd261',
   5,
   'activity',
   null,
@@ -905,27 +906,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "I study [math]."
+      "text": "My favorite [subject] is music."
     },
     {
       "speaker": "B",
-      "text": "My [teacher] is kind."
+      "text": "My [class] is at 9am."
     },
     {
       "speaker": "A",
-      "text": "I have six [class]es."
+      "text": "My [teacher] is nice."
     }
   ],
   "blanks": [
-    "math",
-    "teacher",
-    "class"
+    "subject",
+    "class",
+    "teacher"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '012dcbc9-dd10-4e96-a4d4-bec1b95eae26',
+  '9a8826f2-e431-488b-a286-8059e4fcd261',
   6,
   'speaking',
   null,
@@ -934,19 +935,19 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "What do you study at school?"
+      "text": "Tell me about your school."
     },
     {
       "speaker": "B",
-      "text": "I study English, math, and science."
+      "text": "My favorite subject is music. My class is at 9am. My teacher is nice."
     },
     {
       "speaker": "A",
-      "text": "Is your teacher kind?"
+      "text": "I have homework today, but school is fun."
     },
     {
       "speaker": "B",
-      "text": "Yes, my teacher is very kind!"
+      "text": "Sounds like a good day!"
     }
   ],
   "note": "Switch! Student becomes A, teacher becomes B."
@@ -954,38 +955,38 @@ values
   true
 ),
 (
-  '012dcbc9-dd10-4e96-a4d4-bec1b95eae26',
+  '9a8826f2-e431-488b-a286-8059e4fcd261',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "I go to school at 8 o'clock. I study English, math, and science. My favorite subject is art. My teacher is kind. My classmate is funny. I like school!",
+  "text": "My favorite subject is music. My class is at 9am. My teacher is nice. School is fun for me.",
   "questions": [
-    "What time does school start?",
     "What is the favorite subject?",
-    "How is the teacher described?"
+    "What time is class?",
+    "Is school fun?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '012dcbc9-dd10-4e96-a4d4-bec1b95eae26',
+  '9a8826f2-e431-488b-a286-8059e4fcd261',
   8,
   'writing',
   null,
   null,
   $json${
   "prompts": [
-    "I study ___.",
+    "My favorite subject is ___.",
     "My teacher is ___.",
-    "My favorite subject is ___."
+    "School is ___ for me."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '012dcbc9-dd10-4e96-a4d4-bec1b95eae26',
+  '9a8826f2-e431-488b-a286-8059e4fcd261',
   9,
   'review',
   null,
@@ -993,11 +994,10 @@ values
   $json${
   "checklist": [
     "Name school subjects",
-    "Describe school day",
-    "Describe teachers and classmates",
-    "Answer school questions"
+    "Talk about my schedule",
+    "Describe my teacher and school"
   ],
-  "challenge": "Tell me all about your school day right now!"
+  "challenge": "Tell me all about your school!"
 }$json$::jsonb,
   true
 );

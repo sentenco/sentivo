@@ -1,16 +1,17 @@
--- A1 Teens Unit 8: Food and Drinks (5 lessons)
+-- A1 Teens Unit 8: Food and Drinks (5 lessons) — TIERED (Combination)
+-- Regenerated per the Sentivo Intra-Level Progression Framework + lesson-level escalation + task rotation.
 -- Run this whole script in the Supabase SQL editor.
 
 -- Lesson 1: Food and Drinks
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  'defc5acd-4141-4102-859c-6c6fc03c4c0a',
+  '8308a23d-f50f-4320-b1d8-0593c4e84cea',
   'Food and Drinks',
   'A1',
   'teens',
   8,
   1,
-  'Name basic food and drink items.',
+  'Name common foods and drinks. [Combination, Lesson 1: notice/receptive]',
   25,
   9,
   true
@@ -19,7 +20,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  'defc5acd-4141-4102-859c-6c6fc03c4c0a',
+  '8308a23d-f50f-4320-b1d8-0593c4e84cea',
   1,
   'title',
   null,
@@ -30,207 +31,7 @@ values
   true
 ),
 (
-  'defc5acd-4141-4102-859c-6c6fc03c4c0a',
-  2,
-  'warmup',
-  null,
-  null,
-  $json${
-  "display": "🥤",
-  "questions": [
-    "What do you usually eat?",
-    "Do you drink tea or juice?"
-  ],
-  "title": "Let's Start!"
-}$json$::jsonb,
-  true
-),
-(
-  'defc5acd-4141-4102-859c-6c6fc03c4c0a',
-  3,
-  'vocabulary',
-  null,
-  null,
-  $json${
-  "words": [
-    {
-      "word": "Water",
-      "bg": "#FAECE7"
-    },
-    {
-      "word": "Tea",
-      "bg": "#E1F5EE"
-    },
-    {
-      "word": "Juice",
-      "bg": "#EEEDFE"
-    },
-    {
-      "word": "Bread",
-      "bg": "#FAEEDA"
-    }
-  ],
-  "title": "New Words",
-  "subtitle": "Tap a card to see it bigger."
-}$json$::jsonb,
-  true
-),
-(
-  'defc5acd-4141-4102-859c-6c6fc03c4c0a',
-  4,
-  'phrases',
-  null,
-  null,
-  $json${
-  "teacher": [
-    "What do you drink?",
-    "Do you like tea?"
-  ],
-  "student": [
-    "I drink water.",
-    "Yes, I like tea!"
-  ],
-  "note": "Think about what you really eat and drink!",
-  "title": "Practice the Conversation"
-}$json$::jsonb,
-  true
-),
-(
-  'defc5acd-4141-4102-859c-6c6fc03c4c0a',
-  5,
-  'activity',
-  null,
-  null,
-  $json${
-  "dialogue": [
-    {
-      "speaker": "A",
-      "text": "I drink [water]."
-    },
-    {
-      "speaker": "B",
-      "text": "I like [juice]."
-    },
-    {
-      "speaker": "A",
-      "text": "I eat [bread]."
-    }
-  ],
-  "blanks": [
-    "water",
-    "juice",
-    "bread"
-  ]
-}$json$::jsonb,
-  true
-),
-(
-  'defc5acd-4141-4102-859c-6c6fc03c4c0a',
-  6,
-  'speaking',
-  null,
-  null,
-  $json${
-  "dialogue": [
-    {
-      "speaker": "A",
-      "text": "What do you drink?"
-    },
-    {
-      "speaker": "B",
-      "text": "I drink tea every morning."
-    },
-    {
-      "speaker": "A",
-      "text": "I like juice!"
-    },
-    {
-      "speaker": "B",
-      "text": "Juice is great too!"
-    }
-  ],
-  "note": "Switch! Student becomes A, teacher becomes B."
-}$json$::jsonb,
-  true
-),
-(
-  'defc5acd-4141-4102-859c-6c6fc03c4c0a',
-  7,
-  'reading',
-  null,
-  null,
-  $json${
-  "text": "I drink water every day. I like tea in the morning. Sometimes I drink juice. I eat bread and rice. Food and drinks are important!",
-  "questions": [
-    "What does the writer drink every day?",
-    "When does the writer drink tea?",
-    "What food does the writer eat?"
-  ]
-}$json$::jsonb,
-  true
-),
-(
-  'defc5acd-4141-4102-859c-6c6fc03c4c0a',
-  8,
-  'writing',
-  null,
-  null,
-  $json${
-  "prompts": [
-    "I drink ___.",
-    "I eat ___.",
-    "I like ___ in the morning."
-  ]
-}$json$::jsonb,
-  true
-),
-(
-  'defc5acd-4141-4102-859c-6c6fc03c4c0a',
-  9,
-  'review',
-  null,
-  null,
-  $json${
-  "checklist": [
-    "Name four foods/drinks",
-    "Say 'I drink ___' / 'I eat ___'",
-    "Talk about meals"
-  ],
-  "challenge": "Tell me what you usually eat and drink!"
-}$json$::jsonb,
-  true
-);
-
--- Lesson 2: Likes and Dislikes
-insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
-values (
-  'a6d77b79-6d55-47a8-a8b5-f402f4514acf',
-  'Likes and Dislikes',
-  'A1',
-  'teens',
-  8,
-  2,
-  'Say what food and drinks they like or don''t like.',
-  25,
-  9,
-  true
-);
-
-insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
-values
-(
-  'a6d77b79-6d55-47a8-a8b5-f402f4514acf',
-  1,
-  'title',
-  null,
-  null,
-  $json${
-  "badge": "A1 · Beginner · Teens"
-}$json$::jsonb,
-  true
-),
-(
-  'a6d77b79-6d55-47a8-a8b5-f402f4514acf',
+  '8308a23d-f50f-4320-b1d8-0593c4e84cea',
   2,
   'warmup',
   null,
@@ -238,15 +39,15 @@ values
   $json${
   "display": "🍕",
   "questions": [
-    "What food do you like?",
-    "What food don't you like?"
+    "Do you like pizza?",
+    "Do you drink juice?"
   ],
-  "title": "Let's Start!"
+  "title": "Let's start!"
 }$json$::jsonb,
   true
 ),
 (
-  'a6d77b79-6d55-47a8-a8b5-f402f4514acf',
+  '8308a23d-f50f-4320-b1d8-0593c4e84cea',
   3,
   'vocabulary',
   null,
@@ -258,15 +59,15 @@ values
       "bg": "#FAECE7"
     },
     {
-      "word": "Vegetables",
+      "word": "Juice",
       "bg": "#E1F5EE"
     },
     {
-      "word": "Sweet",
+      "word": "Rice",
       "bg": "#EEEDFE"
     },
     {
-      "word": "Spicy",
+      "word": "Water",
       "bg": "#FAEEDA"
     }
   ],
@@ -276,7 +77,7 @@ values
   true
 ),
 (
-  'a6d77b79-6d55-47a8-a8b5-f402f4514acf',
+  '8308a23d-f50f-4320-b1d8-0593c4e84cea',
   4,
   'phrases',
   null,
@@ -284,19 +85,19 @@ values
   $json${
   "teacher": [
     "Do you like pizza?",
-    "Do you like spicy food?"
+    "What do you drink?"
   ],
   "student": [
-    "Yes, I love pizza!",
-    "No, I don't like spicy food."
+    "Yes, I like pizza.",
+    "I drink juice."
   ],
-  "note": "Give your real food opinions!",
+  "note": "Point to a food picture!",
   "title": "Practice the Conversation"
 }$json$::jsonb,
   true
 ),
 (
-  'a6d77b79-6d55-47a8-a8b5-f402f4514acf',
+  '8308a23d-f50f-4320-b1d8-0593c4e84cea',
   5,
   'activity',
   null,
@@ -305,27 +106,227 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "I [like] pizza."
+      "text": "I like [pizza]."
     },
     {
       "speaker": "B",
-      "text": "I don't [like] vegetables."
+      "text": "I drink [juice]."
     },
     {
       "speaker": "A",
-      "text": "I like [sweet] food."
+      "text": "I eat [rice] too."
     }
   ],
   "blanks": [
-    "like",
-    "like",
+    "pizza",
+    "juice",
+    "rice"
+  ]
+}$json$::jsonb,
+  true
+),
+(
+  '8308a23d-f50f-4320-b1d8-0593c4e84cea',
+  6,
+  'speaking',
+  null,
+  null,
+  $json${
+  "dialogue": [
+    {
+      "speaker": "A",
+      "text": "I like pizza."
+    },
+    {
+      "speaker": "B",
+      "text": "I drink juice."
+    },
+    {
+      "speaker": "A",
+      "text": "I eat rice too."
+    },
+    {
+      "speaker": "B",
+      "text": "I drink water!"
+    }
+  ],
+  "note": "Teacher says the line first. Student repeats, then says it alone."
+}$json$::jsonb,
+  true
+),
+(
+  '8308a23d-f50f-4320-b1d8-0593c4e84cea',
+  7,
+  'reading',
+  null,
+  null,
+  $json${
+  "text": "I like pizza. I drink juice. I eat rice too. I also drink water.",
+  "questions": [
+    "What food does the writer like?",
+    "What does the writer drink?",
+    "What else does the writer eat?"
+  ]
+}$json$::jsonb,
+  true
+),
+(
+  '8308a23d-f50f-4320-b1d8-0593c4e84cea',
+  8,
+  'writing',
+  null,
+  null,
+  $json${
+  "prompts": [
+    "I like ___.",
+    "I drink ___.",
+    "I eat ___."
+  ]
+}$json$::jsonb,
+  true
+),
+(
+  '8308a23d-f50f-4320-b1d8-0593c4e84cea',
+  9,
+  'review',
+  null,
+  null,
+  $json${
+  "checklist": [
+    "Name 4 foods or drinks",
+    "Say 'I like ___'",
+    "Say what I drink"
+  ],
+  "challenge": "Tell me your favorite food and drink!"
+}$json$::jsonb,
+  true
+);
+
+-- Lesson 2: Likes and Dislikes
+insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
+values (
+  '2c417a1c-19bd-4233-be98-48436e64ec59',
+  'Likes and Dislikes',
+  'A1',
+  'teens',
+  8,
+  2,
+  'Say food likes and dislikes with a reason. [Combination, Lesson 2: controlled practice, 2 combined targets]',
+  25,
+  9,
+  true
+);
+
+insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
+values
+(
+  '2c417a1c-19bd-4233-be98-48436e64ec59',
+  1,
+  'title',
+  null,
+  null,
+  $json${
+  "badge": "A1 · Beginner · Teens"
+}$json$::jsonb,
+  true
+),
+(
+  '2c417a1c-19bd-4233-be98-48436e64ec59',
+  2,
+  'warmup',
+  null,
+  null,
+  $json${
+  "display": "😋",
+  "questions": [
+    "What food is delicious to you?",
+    "What don't you like to eat?"
+  ],
+  "title": "Let's start!"
+}$json$::jsonb,
+  true
+),
+(
+  '2c417a1c-19bd-4233-be98-48436e64ec59',
+  3,
+  'vocabulary',
+  null,
+  null,
+  $json${
+  "words": [
+    {
+      "word": "Delicious",
+      "bg": "#FAECE7"
+    },
+    {
+      "word": "Don't like",
+      "bg": "#E1F5EE"
+    },
+    {
+      "word": "Because",
+      "bg": "#EEEDFE"
+    },
+    {
+      "word": "Sweet",
+      "bg": "#FAEEDA"
+    }
+  ],
+  "title": "New Words",
+  "subtitle": "Tap a card to see it bigger."
+}$json$::jsonb,
+  true
+),
+(
+  '2c417a1c-19bd-4233-be98-48436e64ec59',
+  4,
+  'phrases',
+  null,
+  null,
+  $json${
+  "teacher": [
+    "Do you like pizza?",
+    "Why do you like it?"
+  ],
+  "student": [
+    "Yes, pizza is delicious.",
+    "I like it because it's sweet."
+  ],
+  "note": "Use the word bank: delicious, don't like, because, sweet.",
+  "title": "Practice the Conversation"
+}$json$::jsonb,
+  true
+),
+(
+  '2c417a1c-19bd-4233-be98-48436e64ec59',
+  5,
+  'activity',
+  null,
+  null,
+  $json${
+  "dialogue": [
+    {
+      "speaker": "A",
+      "text": "Pizza is [delicious]."
+    },
+    {
+      "speaker": "B",
+      "text": "I [don't like] fish."
+    },
+    {
+      "speaker": "A",
+      "text": "I like cake [because] it's [sweet]."
+    }
+  ],
+  "blanks": [
+    "delicious",
+    "don't like",
     "sweet"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'a6d77b79-6d55-47a8-a8b5-f402f4514acf',
+  '2c417a1c-19bd-4233-be98-48436e64ec59',
   6,
   'speaking',
   null,
@@ -338,15 +339,15 @@ values
     },
     {
       "speaker": "B",
-      "text": "Yes, I love pizza!"
+      "text": "Yes, pizza is delicious. I don't like fish, though."
     },
     {
       "speaker": "A",
-      "text": "Do you like vegetables?"
+      "text": "I like cake because it's sweet."
     },
     {
       "speaker": "B",
-      "text": "No, I don't like vegetables much."
+      "text": "Me too!"
     }
   ],
   "note": "Switch! Student becomes A, teacher becomes B."
@@ -354,49 +355,49 @@ values
   true
 ),
 (
-  'a6d77b79-6d55-47a8-a8b5-f402f4514acf',
+  '2c417a1c-19bd-4233-be98-48436e64ec59',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "I like pizza. I like sweet food. I don't like spicy food. I don't like vegetables very much. Everyone has different tastes!",
+  "text": "Pizza is delicious. I don't like fish. I like cake because it's sweet.",
   "questions": [
-    "What does the writer like?",
-    "What does the writer not like?",
-    "Do people have different tastes?"
+    "Is pizza delicious or bad?",
+    "What doesn't the writer like?",
+    "Why does the writer like cake?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'a6d77b79-6d55-47a8-a8b5-f402f4514acf',
+  '2c417a1c-19bd-4233-be98-48436e64ec59',
   8,
   'writing',
   null,
   null,
   $json${
   "prompts": [
-    "I like ___.",
+    "___ is delicious.",
     "I don't like ___.",
-    "My favorite food is ___."
+    "I like ___ because it's ___."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'a6d77b79-6d55-47a8-a8b5-f402f4514acf',
+  '2c417a1c-19bd-4233-be98-48436e64ec59',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Say 'I like ___'",
+    "Say 'delicious' and 'sweet'",
     "Say 'I don't like ___'",
-    "Talk about food preferences"
+    "Give a reason with 'because'"
   ],
-  "challenge": "Tell me a food you like and one you don't!"
+  "challenge": "Tell me a food you like and a food you don't like, with a reason!"
 }$json$::jsonb,
   true
 );
@@ -404,13 +405,13 @@ values
 -- Lesson 3: At Mealtimes
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  'eab0dd26-2823-461a-90f1-7a429c1fa35e',
+  'ba0349e2-3ecb-4ae0-99dd-4005aa239946',
   'At Mealtimes',
   'A1',
   'teens',
   8,
   3,
-  'Talk about simple meal routines.',
+  'Talk about breakfast, lunch, and dinner. [Combination, Lesson 3: freer practice, role reversal]',
   25,
   9,
   true
@@ -419,7 +420,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  'eab0dd26-2823-461a-90f1-7a429c1fa35e',
+  'ba0349e2-3ecb-4ae0-99dd-4005aa239946',
   1,
   'title',
   null,
@@ -430,7 +431,7 @@ values
   true
 ),
 (
-  'eab0dd26-2823-461a-90f1-7a429c1fa35e',
+  'ba0349e2-3ecb-4ae0-99dd-4005aa239946',
   2,
   'warmup',
   null,
@@ -439,14 +440,14 @@ values
   "display": "🍽️",
   "questions": [
     "What do you eat for breakfast?",
-    "What time do you have lunch?"
+    "What do you eat for dinner?"
   ],
-  "title": "Let's Start!"
+  "title": "Let's start!"
 }$json$::jsonb,
   true
 ),
 (
-  'eab0dd26-2823-461a-90f1-7a429c1fa35e',
+  'ba0349e2-3ecb-4ae0-99dd-4005aa239946',
   3,
   'vocabulary',
   null,
@@ -466,7 +467,7 @@ values
       "bg": "#EEEDFE"
     },
     {
-      "word": "Snack",
+      "word": "Every day",
       "bg": "#FAEEDA"
     }
   ],
@@ -476,7 +477,7 @@ values
   true
 ),
 (
-  'eab0dd26-2823-461a-90f1-7a429c1fa35e',
+  'ba0349e2-3ecb-4ae0-99dd-4005aa239946',
   4,
   'phrases',
   null,
@@ -484,19 +485,19 @@ values
   $json${
   "teacher": [
     "What do you eat for breakfast?",
-    "Do you eat a snack?"
+    "What do you eat for dinner?"
   ],
   "student": [
-    "I eat bread for breakfast.",
-    "Yes, I eat a snack after school!"
+    "I eat eggs for breakfast.",
+    "I eat rice for dinner."
   ],
-  "note": "Think about your real meals!",
+  "note": "Ask me first this time, then I'll ask you!",
   "title": "Practice the Conversation"
 }$json$::jsonb,
   true
 ),
 (
-  'eab0dd26-2823-461a-90f1-7a429c1fa35e',
+  'ba0349e2-3ecb-4ae0-99dd-4005aa239946',
   5,
   'activity',
   null,
@@ -505,27 +506,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "I eat [breakfast] at 7."
+      "text": "For [breakfast], I eat eggs."
     },
     {
       "speaker": "B",
-      "text": "I eat [lunch] at school."
+      "text": "For [lunch], I eat a sandwich."
     },
     {
       "speaker": "A",
-      "text": "I eat [dinner] with my family."
+      "text": "For dinner, I eat rice [every day]."
     }
   ],
   "blanks": [
     "breakfast",
     "lunch",
-    "dinner"
+    "every day"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'eab0dd26-2823-461a-90f1-7a429c1fa35e',
+  'ba0349e2-3ecb-4ae0-99dd-4005aa239946',
   6,
   'speaking',
   null,
@@ -538,65 +539,65 @@ values
     },
     {
       "speaker": "B",
-      "text": "I eat bread and eggs."
+      "text": "I eat eggs for breakfast. What do you eat for lunch?"
     },
     {
       "speaker": "A",
-      "text": "What about lunch?"
+      "text": "I eat a sandwich for lunch. I eat rice for dinner every day."
     },
     {
       "speaker": "B",
-      "text": "I eat rice and chicken at school!"
+      "text": "Your turn to ask me something!"
     }
   ],
-  "note": "Switch! Student becomes A, teacher becomes B."
+  "note": "Student asks first this time. Teacher answers, then asks back."
 }$json$::jsonb,
   true
 ),
 (
-  'eab0dd26-2823-461a-90f1-7a429c1fa35e',
+  'ba0349e2-3ecb-4ae0-99dd-4005aa239946',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "I eat breakfast at 7. I eat lunch at school. I eat dinner with my family at 7pm. Sometimes I have a snack after school. I eat three meals a day!",
+  "text": "For breakfast, I eat eggs. For lunch, I eat a sandwich. For dinner, I eat rice every day.",
   "questions": [
-    "What time does the writer eat breakfast?",
-    "Where does the writer eat lunch?",
-    "Who does the writer eat dinner with?"
+    "What does the writer eat for breakfast?",
+    "What does the writer eat for lunch?",
+    "What does the writer eat every day?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'eab0dd26-2823-461a-90f1-7a429c1fa35e',
+  'ba0349e2-3ecb-4ae0-99dd-4005aa239946',
   8,
   'writing',
   null,
   null,
   $json${
   "prompts": [
-    "I eat breakfast at ___.",
-    "I eat lunch at ___.",
-    "I eat dinner with ___."
+    "For breakfast, I eat ___.",
+    "For lunch, I eat ___.",
+    "For dinner, I eat ___."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'eab0dd26-2823-461a-90f1-7a429c1fa35e',
+  'ba0349e2-3ecb-4ae0-99dd-4005aa239946',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Name four meals",
-    "Say meal times",
-    "Talk about my meal routine"
+    "Name breakfast, lunch, dinner foods",
+    "Say 'For ___, I eat ___'",
+    "Ask about mealtimes"
   ],
-  "challenge": "Tell me about your meals today!"
+  "challenge": "Tell me what you eat for breakfast, lunch, and dinner!"
 }$json$::jsonb,
   true
 );
@@ -604,13 +605,13 @@ values
 -- Lesson 4: Ordering Food
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '0eae2f7e-44b2-4c1f-a16a-f5fbc4fc8769',
+  '248d35f8-1842-4b2f-a536-4f1371fe3103',
   'Ordering Food',
   'A1',
   'teens',
   8,
   4,
-  'Use a simple order in a food situation.',
+  'Combine food vocabulary into a simple ordering conversation. [Combination, Lesson 4: production]',
   25,
   9,
   true
@@ -619,7 +620,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '0eae2f7e-44b2-4c1f-a16a-f5fbc4fc8769',
+  '248d35f8-1842-4b2f-a536-4f1371fe3103',
   1,
   'title',
   null,
@@ -630,7 +631,7 @@ values
   true
 ),
 (
-  '0eae2f7e-44b2-4c1f-a16a-f5fbc4fc8769',
+  '248d35f8-1842-4b2f-a536-4f1371fe3103',
   2,
   'warmup',
   null,
@@ -638,15 +639,15 @@ values
   $json${
   "display": "🧾",
   "questions": [
-    "What do you say to order food?",
-    "Have you ordered food in English?"
+    "What would you order at a restaurant?",
+    "Do you say please and thank you?"
   ],
-  "title": "Let's Start!"
+  "title": "Let's start!"
 }$json$::jsonb,
   true
 ),
 (
-  '0eae2f7e-44b2-4c1f-a16a-f5fbc4fc8769',
+  '248d35f8-1842-4b2f-a536-4f1371fe3103',
   3,
   'vocabulary',
   null,
@@ -654,19 +655,19 @@ values
   $json${
   "words": [
     {
-      "word": "I Want",
+      "word": "I'd like",
       "bg": "#FAECE7"
     },
     {
-      "word": "Can I Have",
+      "word": "Please",
       "bg": "#E1F5EE"
     },
     {
-      "word": "Please",
+      "word": "Menu",
       "bg": "#EEEDFE"
     },
     {
-      "word": "Menu",
+      "word": "Thank you",
       "bg": "#FAEEDA"
     }
   ],
@@ -676,27 +677,27 @@ values
   true
 ),
 (
-  '0eae2f7e-44b2-4c1f-a16a-f5fbc4fc8769',
+  '248d35f8-1842-4b2f-a536-4f1371fe3103',
   4,
   'phrases',
   null,
   null,
   $json${
   "teacher": [
-    "What do you want?",
-    "Can I help you?"
+    "What would you like?",
+    "Anything else?"
   ],
   "student": [
-    "I want a pizza, please.",
-    "Can I have some water?"
+    "I'd like pizza, please.",
+    "No, thank you."
   ],
-  "note": "Practice ordering like you're really at a restaurant!",
+  "note": "Put it all together: order + please + thank you.",
   "title": "Practice the Conversation"
 }$json$::jsonb,
   true
 ),
 (
-  '0eae2f7e-44b2-4c1f-a16a-f5fbc4fc8769',
+  '248d35f8-1842-4b2f-a536-4f1371fe3103',
   5,
   'activity',
   null,
@@ -705,27 +706,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "[I want] a pizza, please."
+      "text": "[I'd like] pizza, [please]."
     },
     {
       "speaker": "B",
-      "text": "[Can I have] some juice?"
+      "text": "Can I see the [menu]?"
     },
     {
       "speaker": "A",
-      "text": "Thank you, [please]."
+      "text": "[Thank you]!"
     }
   ],
   "blanks": [
-    "I want",
-    "Can I have",
-    "please"
+    "i'd like",
+    "please",
+    "thank you"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '0eae2f7e-44b2-4c1f-a16a-f5fbc4fc8769',
+  '248d35f8-1842-4b2f-a536-4f1371fe3103',
   6,
   'speaking',
   null,
@@ -734,69 +735,69 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "What do you want?"
+      "text": "Can I see the menu, please?"
     },
     {
       "speaker": "B",
-      "text": "I want a sandwich, please."
+      "text": "Of course! What would you like?"
     },
     {
       "speaker": "A",
-      "text": "Can I have some water too?"
+      "text": "I'd like pizza and juice, please."
     },
     {
       "speaker": "B",
-      "text": "Of course! Here you go."
+      "text": "Thank you!"
     }
   ],
-  "note": "Switch! Student becomes A, teacher becomes B."
+  "note": "Mini role-play: order food at a pretend restaurant."
 }$json$::jsonb,
   true
 ),
 (
-  '0eae2f7e-44b2-4c1f-a16a-f5fbc4fc8769',
+  '248d35f8-1842-4b2f-a536-4f1371fe3103',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "I want a pizza, please. Can I have some juice too? Thank you! Ordering food is easy when you know simple phrases.",
+  "text": "Can I see the menu, please? I'd like pizza and juice. Thank you! Pizza is delicious.",
   "questions": [
-    "What does the writer want?",
-    "What else does the writer ask for?",
-    "Is ordering food easy?"
+    "What did the customer ask for?",
+    "What did they order?",
+    "Did they say thank you?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '0eae2f7e-44b2-4c1f-a16a-f5fbc4fc8769',
+  '248d35f8-1842-4b2f-a536-4f1371fe3103',
   8,
   'writing',
   null,
   null,
   $json${
   "prompts": [
-    "I want a ___, please.",
-    "Can I have ___?",
-    "Thank you for the ___."
+    "I'd like ___, please.",
+    "Can I see the ___?",
+    "Thank you!"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '0eae2f7e-44b2-4c1f-a16a-f5fbc4fc8769',
+  '248d35f8-1842-4b2f-a536-4f1371fe3103',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Say 'I want ___, please'",
-    "Say 'Can I have ___?'",
-    "Order food politely"
+    "Order food politely",
+    "Say 'please' and 'thank you'",
+    "Ask for a menu"
   ],
-  "challenge": "Order your favorite food from me right now!"
+  "challenge": "Order a meal from me at a pretend restaurant!"
 }$json$::jsonb,
   true
 );
@@ -804,13 +805,13 @@ values
 -- Lesson 5: Unit Review
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '7b8097e1-7f5e-4dc9-97e7-dfc5086dc1c0',
+  '75f5e066-e875-4aef-98e1-f8987be824b6',
   'Unit Review',
   'A1',
   'teens',
   8,
   5,
-  'Talk about food, drinks, and simple preferences.',
+  'Review food, likes, mealtimes, and ordering. [Combination, Lesson 5: tier-matched review]',
   25,
   9,
   true
@@ -819,7 +820,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '7b8097e1-7f5e-4dc9-97e7-dfc5086dc1c0',
+  '75f5e066-e875-4aef-98e1-f8987be824b6',
   1,
   'title',
   null,
@@ -830,7 +831,7 @@ values
   true
 ),
 (
-  '7b8097e1-7f5e-4dc9-97e7-dfc5086dc1c0',
+  '75f5e066-e875-4aef-98e1-f8987be824b6',
   2,
   'warmup',
   null,
@@ -838,15 +839,15 @@ values
   $json${
   "display": "🍕",
   "questions": [
-    "What food words do you remember?",
-    "What do you like to eat?"
+    "What is your favorite food?",
+    "What do you eat for breakfast?"
   ],
-  "title": "Let's Review!"
+  "title": "Let's start!"
 }$json$::jsonb,
   true
 ),
 (
-  '7b8097e1-7f5e-4dc9-97e7-dfc5086dc1c0',
+  '75f5e066-e875-4aef-98e1-f8987be824b6',
   3,
   'vocabulary',
   null,
@@ -854,11 +855,11 @@ values
   $json${
   "words": [
     {
-      "word": "Water",
+      "word": "Food",
       "bg": "#FAECE7"
     },
     {
-      "word": "Pizza",
+      "word": "Delicious",
       "bg": "#E1F5EE"
     },
     {
@@ -866,29 +867,29 @@ values
       "bg": "#EEEDFE"
     },
     {
-      "word": "Please",
+      "word": "I'd like",
       "bg": "#FAEEDA"
     }
   ],
-  "title": "Review Words",
+  "title": "New Words",
   "subtitle": "Tap a card to see it bigger."
 }$json$::jsonb,
   true
 ),
 (
-  '7b8097e1-7f5e-4dc9-97e7-dfc5086dc1c0',
+  '75f5e066-e875-4aef-98e1-f8987be824b6',
   4,
   'phrases',
   null,
   null,
   $json${
   "teacher": [
-    "What do you like?",
-    "What do you want?"
+    "What is your favorite food?",
+    "What do you eat for breakfast?"
   ],
   "student": [
-    "I like pizza.",
-    "I want water, please."
+    "My favorite food is pizza.",
+    "I eat eggs for breakfast."
   ],
   "note": "Use everything you learned this unit!",
   "title": "Practice the Conversation"
@@ -896,7 +897,7 @@ values
   true
 ),
 (
-  '7b8097e1-7f5e-4dc9-97e7-dfc5086dc1c0',
+  '75f5e066-e875-4aef-98e1-f8987be824b6',
   5,
   'activity',
   null,
@@ -905,27 +906,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "I [like] pizza."
+      "text": "My favorite [food] is pizza."
     },
     {
       "speaker": "B",
-      "text": "I eat [breakfast] at 7."
+      "text": "It is [delicious]."
     },
     {
       "speaker": "A",
-      "text": "[Can I have] some water?"
+      "text": "[I'd like] some, please."
     }
   ],
   "blanks": [
-    "like",
-    "breakfast",
-    "Can I have"
+    "food",
+    "delicious",
+    "i'd like"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '7b8097e1-7f5e-4dc9-97e7-dfc5086dc1c0',
+  '75f5e066-e875-4aef-98e1-f8987be824b6',
   6,
   'speaking',
   null,
@@ -934,19 +935,19 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "What do you like to eat?"
+      "text": "Tell me about your favorite food."
     },
     {
       "speaker": "B",
-      "text": "I like pizza and bread."
+      "text": "My favorite food is pizza. It is delicious. I eat it for lunch."
     },
     {
       "speaker": "A",
-      "text": "What do you want to drink?"
+      "text": "I'd like some pizza, please!"
     },
     {
       "speaker": "B",
-      "text": "I want juice, please!"
+      "text": "Me too!"
     }
   ],
   "note": "Switch! Student becomes A, teacher becomes B."
@@ -954,50 +955,49 @@ values
   true
 ),
 (
-  '7b8097e1-7f5e-4dc9-97e7-dfc5086dc1c0',
+  '75f5e066-e875-4aef-98e1-f8987be824b6',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "I like pizza and bread. I don't like spicy food. I eat breakfast at 7 and lunch at school. When I order food, I say 'I want' and 'please'. Food is important to me!",
+  "text": "My favorite food is pizza. It is delicious. I eat it for lunch. I'd like pizza every day!",
   "questions": [
-    "What does the writer like?",
-    "What time is breakfast?",
-    "How does the writer order food?"
+    "What is the favorite food?",
+    "Is it delicious or bad?",
+    "When does the writer eat it?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '7b8097e1-7f5e-4dc9-97e7-dfc5086dc1c0',
+  '75f5e066-e875-4aef-98e1-f8987be824b6',
   8,
   'writing',
   null,
   null,
   $json${
   "prompts": [
-    "I like ___.",
-    "I eat ___ at ___.",
-    "I want ___, please."
+    "My favorite food is ___.",
+    "It is ___.",
+    "I eat it for ___."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '7b8097e1-7f5e-4dc9-97e7-dfc5086dc1c0',
+  '75f5e066-e875-4aef-98e1-f8987be824b6',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Name foods and drinks",
-    "Say likes and dislikes",
-    "Talk about meals",
+    "Talk about favorite food",
+    "Give a reason",
     "Order food politely"
   ],
-  "challenge": "Order a meal from me, from start to finish!"
+  "challenge": "Tell me all about your favorite food and drinks!"
 }$json$::jsonb,
   true
 );

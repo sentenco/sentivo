@@ -1,16 +1,17 @@
--- A1 Teens Unit 1: Greetings and Introductions (5 lessons)
+-- A1 Teens Unit 1: Hello and Me (5 lessons) — TIERED (Foundation)
+-- Regenerated per the Sentivo Intra-Level Progression Framework + lesson-level escalation + task rotation.
 -- Run this whole script in the Supabase SQL editor.
 
 -- Lesson 1: Hello and Me
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '270e8eb8-fa00-47c5-81ad-7f0bc5db40cf',
+  'd1ce9dbf-8643-4a0b-ae1f-d0c8249bb79b',
   'Hello and Me',
   'A1',
   'teens',
   1,
   1,
-  'Introduce yourself and exchange basic greeting information.',
+  'Say name and basic greetings. [Foundation, Lesson 1: notice/receptive, matching-style activity]',
   25,
   9,
   true
@@ -19,7 +20,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '270e8eb8-fa00-47c5-81ad-7f0bc5db40cf',
+  'd1ce9dbf-8643-4a0b-ae1f-d0c8249bb79b',
   1,
   'title',
   null,
@@ -30,7 +31,7 @@ values
   true
 ),
 (
-  '270e8eb8-fa00-47c5-81ad-7f0bc5db40cf',
+  'd1ce9dbf-8643-4a0b-ae1f-d0c8249bb79b',
   2,
   'warmup',
   null,
@@ -38,15 +39,15 @@ values
   $json${
   "display": "👋",
   "questions": [
-    "What's your name?",
-    "How are you today?"
+    "What is your name?",
+    "Can you say hello in English?"
   ],
-  "title": "Let's Start!"
+  "title": "Let's start!"
 }$json$::jsonb,
   true
 ),
 (
-  '270e8eb8-fa00-47c5-81ad-7f0bc5db40cf',
+  'd1ce9dbf-8643-4a0b-ae1f-d0c8249bb79b',
   3,
   'vocabulary',
   null,
@@ -62,11 +63,11 @@ values
       "bg": "#E1F5EE"
     },
     {
-      "word": "Age",
+      "word": "I am",
       "bg": "#EEEDFE"
     },
     {
-      "word": "Country",
+      "word": "Nice to meet you",
       "bg": "#FAEEDA"
     }
   ],
@@ -76,27 +77,27 @@ values
   true
 ),
 (
-  '270e8eb8-fa00-47c5-81ad-7f0bc5db40cf',
+  'd1ce9dbf-8643-4a0b-ae1f-d0c8249bb79b',
   4,
   'phrases',
   null,
   null,
   $json${
   "teacher": [
-    "Hi! What's your name?",
-    "How old are you?"
+    "Hello! What is your name?",
+    "Nice to meet you!"
   ],
   "student": [
-    "Hi! My name is Ana.",
-    "I'm fourteen."
+    "Hello! My name is ___.",
+    "Nice to meet you too!"
   ],
-  "note": "Use your real name and age when you practice!",
+  "note": "Point to yourself and say your name!",
   "title": "Practice the Conversation"
 }$json$::jsonb,
   true
 ),
 (
-  '270e8eb8-fa00-47c5-81ad-7f0bc5db40cf',
+  'd1ce9dbf-8643-4a0b-ae1f-d0c8249bb79b',
   5,
   'activity',
   null,
@@ -105,27 +106,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "Hi! My [name] is Ana."
+      "text": "[Hello]! I am Leo."
     },
     {
       "speaker": "B",
-      "text": "I am [fourteen] years old."
+      "text": "My [name] is Ana."
     },
     {
       "speaker": "A",
-      "text": "I am from [Brazil]."
+      "text": "[Nice to meet you]!"
     }
   ],
   "blanks": [
+    "hello",
     "name",
-    "fourteen",
-    "Brazil"
+    "nice to meet you"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '270e8eb8-fa00-47c5-81ad-7f0bc5db40cf',
+  'd1ce9dbf-8643-4a0b-ae1f-d0c8249bb79b',
   6,
   'speaking',
   null,
@@ -134,19 +135,218 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "Hi! What's your name?"
+      "text": "Hello! My name is Leo."
     },
     {
       "speaker": "B",
-      "text": "My name is Sam."
+      "text": "Hello! My name is Ana."
     },
     {
       "speaker": "A",
-      "text": "How old are you?"
+      "text": "Nice to meet you, Ana!"
     },
     {
       "speaker": "B",
-      "text": "I'm fifteen years old!"
+      "text": "Nice to meet you too!"
+    }
+  ],
+  "note": "Teacher says the line first. Student repeats, then says it alone."
+}$json$::jsonb,
+  true
+),
+(
+  'd1ce9dbf-8643-4a0b-ae1f-d0c8249bb79b',
+  7,
+  'reading',
+  null,
+  null,
+  $json${
+  "text": "Hello! My name is Leo. Nice to meet you!",
+  "questions": [
+    "What is the boy's name?",
+    "What does he say first?",
+    "What does 'nice to meet you' mean?"
+  ]
+}$json$::jsonb,
+  true
+),
+(
+  'd1ce9dbf-8643-4a0b-ae1f-d0c8249bb79b',
+  8,
+  'writing',
+  null,
+  null,
+  $json${
+  "prompts": [
+    "Hello! My name is ___.",
+    "Nice to meet you!"
+  ]
+}$json$::jsonb,
+  true
+),
+(
+  'd1ce9dbf-8643-4a0b-ae1f-d0c8249bb79b',
+  9,
+  'review',
+  null,
+  null,
+  $json${
+  "checklist": [
+    "Say 'Hello'",
+    "Say 'My name is ___'",
+    "Say 'Nice to meet you'"
+  ],
+  "challenge": "Say hello and tell me your name!"
+}$json$::jsonb,
+  true
+);
+
+-- Lesson 2: Questions and Answers
+insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
+values (
+  '9b916ff8-a4b2-4cd3-86c7-9c903c699ff1',
+  'Questions and Answers',
+  'A1',
+  'teens',
+  1,
+  2,
+  'Ask and answer ''What is your name?'' and ''How old are you?''. [Foundation, Lesson 2: controlled practice]',
+  25,
+  9,
+  true
+);
+
+insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
+values
+(
+  '9b916ff8-a4b2-4cd3-86c7-9c903c699ff1',
+  1,
+  'title',
+  null,
+  null,
+  $json${
+  "badge": "A1 · Beginner · Teens"
+}$json$::jsonb,
+  true
+),
+(
+  '9b916ff8-a4b2-4cd3-86c7-9c903c699ff1',
+  2,
+  'warmup',
+  null,
+  null,
+  $json${
+  "display": "❓",
+  "questions": [
+    "How old are you?",
+    "What is your name?"
+  ],
+  "title": "Let's start!"
+}$json$::jsonb,
+  true
+),
+(
+  '9b916ff8-a4b2-4cd3-86c7-9c903c699ff1',
+  3,
+  'vocabulary',
+  null,
+  null,
+  $json${
+  "words": [
+    {
+      "word": "What",
+      "bg": "#FAECE7"
+    },
+    {
+      "word": "How old",
+      "bg": "#E1F5EE"
+    },
+    {
+      "word": "Years old",
+      "bg": "#EEEDFE"
+    },
+    {
+      "word": "I am",
+      "bg": "#FAEEDA"
+    }
+  ],
+  "title": "New Words",
+  "subtitle": "Tap a card to see it bigger."
+}$json$::jsonb,
+  true
+),
+(
+  '9b916ff8-a4b2-4cd3-86c7-9c903c699ff1',
+  4,
+  'phrases',
+  null,
+  null,
+  $json${
+  "teacher": [
+    "What is your name?",
+    "How old are you?"
+  ],
+  "student": [
+    "My name is ___.",
+    "I am ___ years old."
+  ],
+  "note": "Use the word bank: What, How old, years old, I am.",
+  "title": "Practice the Conversation"
+}$json$::jsonb,
+  true
+),
+(
+  '9b916ff8-a4b2-4cd3-86c7-9c903c699ff1',
+  5,
+  'activity',
+  null,
+  null,
+  $json${
+  "dialogue": [
+    {
+      "speaker": "A",
+      "text": "[What] is your name?"
+    },
+    {
+      "speaker": "B",
+      "text": "[How old] are you?"
+    },
+    {
+      "speaker": "A",
+      "text": "I am 14 [years old]."
+    }
+  ],
+  "blanks": [
+    "what",
+    "how old",
+    "years old"
+  ]
+}$json$::jsonb,
+  true
+),
+(
+  '9b916ff8-a4b2-4cd3-86c7-9c903c699ff1',
+  6,
+  'speaking',
+  null,
+  null,
+  $json${
+  "dialogue": [
+    {
+      "speaker": "A",
+      "text": "What is your name?"
+    },
+    {
+      "speaker": "B",
+      "text": "My name is Ana. How old are you?"
+    },
+    {
+      "speaker": "A",
+      "text": "I am 14 years old."
+    },
+    {
+      "speaker": "B",
+      "text": "I am 14 years old too!"
     }
   ],
   "note": "Switch! Student becomes A, teacher becomes B."
@@ -154,23 +354,23 @@ values
   true
 ),
 (
-  '270e8eb8-fa00-47c5-81ad-7f0bc5db40cf',
+  '9b916ff8-a4b2-4cd3-86c7-9c903c699ff1',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "Hi! My name is Ana. I am fourteen years old. I am from Brazil. Nice to meet you!",
+  "text": "Hi! My name is Ana. I am 14 years old. What is your name? How old are you?",
   "questions": [
-    "What is her name?",
-    "How old is she?",
-    "Where is she from?"
+    "What is Ana's name?",
+    "How old is Ana?",
+    "What two questions does Ana ask?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '270e8eb8-fa00-47c5-81ad-7f0bc5db40cf',
+  '9b916ff8-a4b2-4cd3-86c7-9c903c699ff1',
   8,
   'writing',
   null,
@@ -179,224 +379,24 @@ values
   "prompts": [
     "My name is ___.",
     "I am ___ years old.",
-    "I am from ___."
+    "What is your name?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '270e8eb8-fa00-47c5-81ad-7f0bc5db40cf',
+  '9b916ff8-a4b2-4cd3-86c7-9c903c699ff1',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Say my name and age",
-    "Say where I'm from",
-    "Greet someone new"
-  ],
-  "challenge": "Introduce yourself to me right now!"
-}$json$::jsonb,
-  true
-);
-
--- Lesson 2: Questions and Answers
-insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
-values (
-  'f8e795c4-571d-4831-a1c0-f8fe6a5e5e9c',
-  'Questions and Answers',
-  'A1',
-  'teens',
-  1,
-  2,
-  'Ask and answer basic introduction questions.',
-  25,
-  9,
-  true
-);
-
-insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
-values
-(
-  'f8e795c4-571d-4831-a1c0-f8fe6a5e5e9c',
-  1,
-  'title',
-  null,
-  null,
-  $json${
-  "badge": "A1 · Beginner · Teens"
-}$json$::jsonb,
-  true
-),
-(
-  'f8e795c4-571d-4831-a1c0-f8fe6a5e5e9c',
-  2,
-  'warmup',
-  null,
-  null,
-  $json${
-  "display": "❓",
-  "questions": [
-    "What questions do you ask a new person?",
-    "Do you know your friend's age?"
-  ],
-  "title": "Let's Start!"
-}$json$::jsonb,
-  true
-),
-(
-  'f8e795c4-571d-4831-a1c0-f8fe6a5e5e9c',
-  3,
-  'vocabulary',
-  null,
-  null,
-  $json${
-  "words": [
-    {
-      "word": "What's",
-      "bg": "#FAECE7"
-    },
-    {
-      "word": "How old",
-      "bg": "#E1F5EE"
-    },
-    {
-      "word": "Where",
-      "bg": "#EEEDFE"
-    },
-    {
-      "word": "From",
-      "bg": "#FAEEDA"
-    }
-  ],
-  "title": "New Words",
-  "subtitle": "Tap a card to see it bigger."
-}$json$::jsonb,
-  true
-),
-(
-  'f8e795c4-571d-4831-a1c0-f8fe6a5e5e9c',
-  4,
-  'phrases',
-  null,
-  null,
-  $json${
-  "teacher": [
-    "Where are you from?",
-    "What's your name?"
-  ],
-  "student": [
-    "I'm from Mexico.",
-    "My name is Leo."
-  ],
-  "note": "Ask a real question and answer honestly!",
-  "title": "Practice the Conversation"
-}$json$::jsonb,
-  true
-),
-(
-  'f8e795c4-571d-4831-a1c0-f8fe6a5e5e9c',
-  5,
-  'activity',
-  null,
-  null,
-  $json${
-  "dialogue": [
-    {
-      "speaker": "A",
-      "text": "[What's] your name?"
-    },
-    {
-      "speaker": "B",
-      "text": "[How old] are you?"
-    },
-    {
-      "speaker": "A",
-      "text": "[Where] are you from?"
-    }
-  ],
-  "blanks": [
-    "What's",
-    "How old",
-    "Where"
-  ]
-}$json$::jsonb,
-  true
-),
-(
-  'f8e795c4-571d-4831-a1c0-f8fe6a5e5e9c',
-  6,
-  'speaking',
-  null,
-  null,
-  $json${
-  "dialogue": [
-    {
-      "speaker": "A",
-      "text": "What's your name?"
-    },
-    {
-      "speaker": "B",
-      "text": "My name is Mia."
-    },
-    {
-      "speaker": "A",
-      "text": "Where are you from?"
-    },
-    {
-      "speaker": "B",
-      "text": "I'm from Spain!"
-    }
-  ],
-  "note": "Switch! Student becomes A, teacher becomes B."
-}$json$::jsonb,
-  true
-),
-(
-  'f8e795c4-571d-4831-a1c0-f8fe6a5e5e9c',
-  7,
-  'reading',
-  null,
-  null,
-  $json${
-  "text": "What's your name? My name is Leo. How old are you? I'm thirteen. Where are you from? I'm from Mexico. Nice to meet you!",
-  "questions": [
-    "What is his name?",
-    "How old is he?",
-    "Where is he from?"
-  ]
-}$json$::jsonb,
-  true
-),
-(
-  'f8e795c4-571d-4831-a1c0-f8fe6a5e5e9c',
-  8,
-  'writing',
-  null,
-  null,
-  $json${
-  "prompts": [
-    "What's your name? ___.",
-    "How old are you? ___.",
-    "Where are you from? ___."
-  ]
-}$json$::jsonb,
-  true
-),
-(
-  'f8e795c4-571d-4831-a1c0-f8fe6a5e5e9c',
-  9,
-  'review',
-  null,
-  null,
-  $json${
-  "checklist": [
-    "Ask 'What's your name?'",
+    "Ask 'What is your name?'",
     "Ask 'How old are you?'",
-    "Ask 'Where are you from?'"
+    "Answer both questions"
   ],
-  "challenge": "Ask me these three questions right now!"
+  "challenge": "Ask me your name and age, then answer mine!"
 }$json$::jsonb,
   true
 );
@@ -404,13 +404,13 @@ values
 -- Lesson 3: Spelling and Numbers
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '0853aa3c-3283-40f6-b661-c63f5a413697',
+  '7b30cbd8-2777-4873-9c16-d98bc59b702a',
   'Spelling and Numbers',
   'A1',
   'teens',
   1,
   3,
-  'Spell a name and say basic numbers in personal information.',
+  'Spell your name and say numbers 1-20. [Foundation, Lesson 3: freer practice, role reversal]',
   25,
   9,
   true
@@ -419,7 +419,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '0853aa3c-3283-40f6-b661-c63f5a413697',
+  '7b30cbd8-2777-4873-9c16-d98bc59b702a',
   1,
   'title',
   null,
@@ -430,7 +430,7 @@ values
   true
 ),
 (
-  '0853aa3c-3283-40f6-b661-c63f5a413697',
+  '7b30cbd8-2777-4873-9c16-d98bc59b702a',
   2,
   'warmup',
   null,
@@ -439,14 +439,14 @@ values
   "display": "🔤",
   "questions": [
     "Can you spell your name?",
-    "What is your phone number?"
+    "What number is your age?"
   ],
-  "title": "Let's Start!"
+  "title": "Let's start!"
 }$json$::jsonb,
   true
 ),
 (
-  '0853aa3c-3283-40f6-b661-c63f5a413697',
+  '7b30cbd8-2777-4873-9c16-d98bc59b702a',
   3,
   'vocabulary',
   null,
@@ -458,15 +458,15 @@ values
       "bg": "#FAECE7"
     },
     {
-      "word": "Number",
+      "word": "Letter",
       "bg": "#E1F5EE"
     },
     {
-      "word": "Letter",
+      "word": "Number",
       "bg": "#EEEDFE"
     },
     {
-      "word": "Phone",
+      "word": "How do you spell",
       "bg": "#FAEEDA"
     }
   ],
@@ -476,27 +476,27 @@ values
   true
 ),
 (
-  '0853aa3c-3283-40f6-b661-c63f5a413697',
+  '7b30cbd8-2777-4873-9c16-d98bc59b702a',
   4,
   'phrases',
   null,
   null,
   $json${
   "teacher": [
-    "Can you spell your name?",
-    "What's your phone number?"
+    "How do you spell your name?",
+    "Can you say a number?"
   ],
   "student": [
-    "A-N-A.",
-    "It's 555-1234."
+    "L-E-O. Leo.",
+    "The number is 14."
   ],
-  "note": "Spell your real name out loud!",
+  "note": "Two ways to say it: which sounds better, 'spell it' or 'say the letters'? Both are fine!",
   "title": "Practice the Conversation"
 }$json$::jsonb,
   true
 ),
 (
-  '0853aa3c-3283-40f6-b661-c63f5a413697',
+  '7b30cbd8-2777-4873-9c16-d98bc59b702a',
   5,
   'activity',
   null,
@@ -505,27 +505,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "Can you [spell] your name?"
+      "text": "[How do you spell] your name?"
     },
     {
       "speaker": "B",
-      "text": "A-N-A. That's my [name]."
+      "text": "L-E-O. That's my [letter]s."
     },
     {
       "speaker": "A",
-      "text": "My phone [number] is 555-1234."
+      "text": "What [number] is your age?"
     }
   ],
   "blanks": [
-    "spell",
-    "name",
+    "how do you spell",
+    "letter",
     "number"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '0853aa3c-3283-40f6-b661-c63f5a413697',
+  '7b30cbd8-2777-4873-9c16-d98bc59b702a',
   6,
   'speaking',
   null,
@@ -534,69 +534,69 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "Can you spell your name?"
+      "text": "How do you spell your name?"
     },
     {
       "speaker": "B",
-      "text": "L-E-O."
+      "text": "L-E-O. And you?"
     },
     {
       "speaker": "A",
-      "text": "What's your phone number?"
+      "text": "A-N-A. What number is your age?"
     },
     {
       "speaker": "B",
-      "text": "It's 555-6789!"
+      "text": "Fourteen. Your turn to ask me!"
     }
   ],
-  "note": "Switch! Student becomes A, teacher becomes B."
+  "note": "Student asks first this time. Teacher answers, then asks back."
 }$json$::jsonb,
   true
 ),
 (
-  '0853aa3c-3283-40f6-b661-c63f5a413697',
+  '7b30cbd8-2777-4873-9c16-d98bc59b702a',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "My name is Ana. A-N-A. My phone number is 555-1234. I can spell my name and say my number in English!",
+  "text": "How do you spell your name? L-E-O. My age is a number: 14. Fourteen years old.",
   "questions": [
-    "How do you spell Ana's name?",
-    "What is her phone number?",
-    "Can she spell her name in English?"
+    "How do you spell Leo's name?",
+    "What is Leo's age as a number?",
+    "What is 14 in words?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '0853aa3c-3283-40f6-b661-c63f5a413697',
+  '7b30cbd8-2777-4873-9c16-d98bc59b702a',
   8,
   'writing',
   null,
   null,
   $json${
   "prompts": [
-    "My name is spelled ___.",
-    "My phone number is ___.",
-    "I can count to ___."
+    "My name is spelled: ___.",
+    "My age is the number ___.",
+    "In words, my age is ___."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '0853aa3c-3283-40f6-b661-c63f5a413697',
+  '7b30cbd8-2777-4873-9c16-d98bc59b702a',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Spell my name",
-    "Say a phone number",
-    "Use numbers 1-20"
+    "Spell my name out loud",
+    "Say a number 1-20",
+    "Ask someone to spell their name"
   ],
-  "challenge": "Spell your name for me right now!"
+  "challenge": "Spell your name for me, then tell me your age as a number!"
 }$json$::jsonb,
   true
 );
@@ -604,13 +604,13 @@ values
 -- Lesson 4: Meeting Someone New
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '37409c0d-ebc4-4894-acaf-223f21820246',
+  'be02f2eb-16dd-45b5-984d-2d85b853d6de',
   'Meeting Someone New',
   'A1',
   'teens',
   1,
   4,
-  'Use a short first-meeting conversation.',
+  'Combine greetings, name, age, and spelling in one short talk. [Foundation, Lesson 4: production, mini role-play]',
   25,
   9,
   true
@@ -619,7 +619,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '37409c0d-ebc4-4894-acaf-223f21820246',
+  'be02f2eb-16dd-45b5-984d-2d85b853d6de',
   1,
   'title',
   null,
@@ -630,7 +630,7 @@ values
   true
 ),
 (
-  '37409c0d-ebc4-4894-acaf-223f21820246',
+  'be02f2eb-16dd-45b5-984d-2d85b853d6de',
   2,
   'warmup',
   null,
@@ -638,15 +638,15 @@ values
   $json${
   "display": "🤝",
   "questions": [
-    "How do you greet someone new?",
-    "What do you say when you meet a new classmate?"
+    "Have you met someone new this week?",
+    "What do you say first when you meet someone?"
   ],
-  "title": "Let's Start!"
+  "title": "Let's start!"
 }$json$::jsonb,
   true
 ),
 (
-  '37409c0d-ebc4-4894-acaf-223f21820246',
+  'be02f2eb-16dd-45b5-984d-2d85b853d6de',
   3,
   'vocabulary',
   null,
@@ -658,15 +658,15 @@ values
       "bg": "#FAECE7"
     },
     {
-      "word": "Nice",
+      "word": "New",
       "bg": "#E1F5EE"
     },
     {
-      "word": "Too",
+      "word": "Friend",
       "bg": "#EEEDFE"
     },
     {
-      "word": "New",
+      "word": "Talk",
       "bg": "#FAEEDA"
     }
   ],
@@ -676,27 +676,27 @@ values
   true
 ),
 (
-  '37409c0d-ebc4-4894-acaf-223f21820246',
+  'be02f2eb-16dd-45b5-984d-2d85b853d6de',
   4,
   'phrases',
   null,
   null,
   $json${
   "teacher": [
-    "Hi, I'm Sam. Nice to meet you.",
-    "Are you new here?"
+    "Let's meet! What is your name?",
+    "Nice to meet a new friend!"
   ],
   "student": [
-    "Nice to meet you too!",
-    "Yes, I'm new."
+    "Hello! My name is ___, I am ___ years old.",
+    "Nice to meet you too!"
   ],
-  "note": "Practice like you're really meeting someone new!",
+  "note": "Put it all together: hello, name, age, spelling.",
   "title": "Practice the Conversation"
 }$json$::jsonb,
   true
 ),
 (
-  '37409c0d-ebc4-4894-acaf-223f21820246',
+  'be02f2eb-16dd-45b5-984d-2d85b853d6de',
   5,
   'activity',
   null,
@@ -705,27 +705,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "Hi, I'm Sam. [Nice] to meet you."
+      "text": "Let's [meet]! Hello, I'm Leo."
     },
     {
       "speaker": "B",
-      "text": "Nice to [meet] you too!"
+      "text": "Hi, [new] friend! I'm Ana."
     },
     {
       "speaker": "A",
-      "text": "Are you [new] here?"
+      "text": "Let's [talk] more!"
     }
   ],
   "blanks": [
-    "Nice",
     "meet",
-    "new"
+    "new",
+    "talk"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '37409c0d-ebc4-4894-acaf-223f21820246',
+  'be02f2eb-16dd-45b5-984d-2d85b853d6de',
   6,
   'speaking',
   null,
@@ -734,69 +734,69 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "Hi, I'm Mia. Nice to meet you."
+      "text": "Hello! My name is Leo. L-E-O. I am 14 years old."
     },
     {
       "speaker": "B",
-      "text": "Nice to meet you too! I'm Leo."
+      "text": "Nice to meet you, Leo! My name is Ana. A-N-A. I am 14 too."
     },
     {
       "speaker": "A",
-      "text": "Are you new here?"
+      "text": "Nice to meet you, Ana!"
     },
     {
       "speaker": "B",
-      "text": "Yes, this is my first day!"
+      "text": "Let's be friends!"
     }
   ],
-  "note": "Switch! Student becomes A, teacher becomes B."
+  "note": "Mini role-play: pretend you're meeting for the first time. Use everything from this unit."
 }$json$::jsonb,
   true
 ),
 (
-  '37409c0d-ebc4-4894-acaf-223f21820246',
+  'be02f2eb-16dd-45b5-984d-2d85b853d6de',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "Hi, I'm Sam. Nice to meet you! I'm new here. This is my first day. What's your name?",
+  "text": "Hello! My name is Leo, L-E-O. I am 14 years old. Nice to meet you!",
   "questions": [
-    "What does Sam say first?",
-    "Is Sam new?",
-    "What question does Sam ask?"
+    "What is the boy's name, spelled out?",
+    "How old is he?",
+    "What does he say at the end?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '37409c0d-ebc4-4894-acaf-223f21820246',
+  'be02f2eb-16dd-45b5-984d-2d85b853d6de',
   8,
   'writing',
   null,
   null,
   $json${
   "prompts": [
-    "Hi, I'm ___. Nice to meet you.",
-    "Are you new here? ___.",
-    "This is my first ___."
+    "Hello! My name is ___, ___.",
+    "I am ___ years old.",
+    "Nice to meet you!"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '37409c0d-ebc4-4894-acaf-223f21820246',
+  'be02f2eb-16dd-45b5-984d-2d85b853d6de',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Say 'Nice to meet you'",
-    "Ask 'Are you new here?'",
-    "Have a first-meeting conversation"
+    "Introduce myself with name, spelling, and age",
+    "Greet someone new",
+    "Use everything from this unit together"
   ],
-  "challenge": "Meet me for the first time — say the whole conversation!"
+  "challenge": "Meet me for the first time! Tell me your name, spell it, and say your age."
 }$json$::jsonb,
   true
 );
@@ -804,13 +804,13 @@ values
 -- Lesson 5: Unit Review
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '183b45f3-e45e-4472-a02b-c9ec53f8dbd9',
+  '044b0572-32c3-4eca-9544-c15361f7d295',
   'Unit Review',
   'A1',
   'teens',
   1,
   5,
-  'Complete a short introduction conversation independently.',
+  'Review greetings, questions, spelling, and numbers. [Foundation, Lesson 5: tier-matched review]',
   25,
   9,
   true
@@ -819,7 +819,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '183b45f3-e45e-4472-a02b-c9ec53f8dbd9',
+  '044b0572-32c3-4eca-9544-c15361f7d295',
   1,
   'title',
   null,
@@ -830,7 +830,7 @@ values
   true
 ),
 (
-  '183b45f3-e45e-4472-a02b-c9ec53f8dbd9',
+  '044b0572-32c3-4eca-9544-c15361f7d295',
   2,
   'warmup',
   null,
@@ -838,15 +838,15 @@ values
   $json${
   "display": "👋",
   "questions": [
-    "What greetings do you remember?",
-    "Can you introduce yourself?"
+    "What is your name?",
+    "How old are you?"
   ],
-  "title": "Let's Review!"
+  "title": "Let's start!"
 }$json$::jsonb,
   true
 ),
 (
-  '183b45f3-e45e-4472-a02b-c9ec53f8dbd9',
+  '044b0572-32c3-4eca-9544-c15361f7d295',
   3,
   'vocabulary',
   null,
@@ -862,7 +862,7 @@ values
       "bg": "#E1F5EE"
     },
     {
-      "word": "Meet",
+      "word": "How old",
       "bg": "#EEEDFE"
     },
     {
@@ -870,25 +870,25 @@ values
       "bg": "#FAEEDA"
     }
   ],
-  "title": "Review Words",
+  "title": "New Words",
   "subtitle": "Tap a card to see it bigger."
 }$json$::jsonb,
   true
 ),
 (
-  '183b45f3-e45e-4472-a02b-c9ec53f8dbd9',
+  '044b0572-32c3-4eca-9544-c15361f7d295',
   4,
   'phrases',
   null,
   null,
   $json${
   "teacher": [
-    "What's your name?",
-    "Where are you from?"
+    "What is your name?",
+    "How old are you?"
   ],
   "student": [
-    "My name is Ana.",
-    "I'm from Brazil."
+    "My name is ___.",
+    "I am ___ years old."
   ],
   "note": "Use everything you learned this unit!",
   "title": "Practice the Conversation"
@@ -896,7 +896,7 @@ values
   true
 ),
 (
-  '183b45f3-e45e-4472-a02b-c9ec53f8dbd9',
+  '044b0572-32c3-4eca-9544-c15361f7d295',
   5,
   'activity',
   null,
@@ -905,27 +905,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "Hi! My [name] is Ana."
+      "text": "[Hello]! What is your [name]?"
     },
     {
       "speaker": "B",
-      "text": "Nice to [meet] you!"
+      "text": "My name is Ana. [How old] are you?"
     },
     {
       "speaker": "A",
-      "text": "Can you [spell] your name?"
+      "text": "I can [spell] my name: L-E-O."
     }
   ],
   "blanks": [
+    "hello",
     "name",
-    "meet",
     "spell"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '183b45f3-e45e-4472-a02b-c9ec53f8dbd9',
+  '044b0572-32c3-4eca-9544-c15361f7d295',
   6,
   'speaking',
   null,
@@ -934,19 +934,19 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "Hi! What's your name?"
+      "text": "Hello! What is your name?"
     },
     {
       "speaker": "B",
-      "text": "My name is Leo. Nice to meet you!"
+      "text": "My name is Ana, A-N-A. How old are you?"
     },
     {
       "speaker": "A",
-      "text": "How old are you and where are you from?"
+      "text": "I am 14 years old. Nice to meet you!"
     },
     {
       "speaker": "B",
-      "text": "I'm thirteen and I'm from Mexico!"
+      "text": "Nice to meet you too!"
     }
   ],
   "note": "Switch! Student becomes A, teacher becomes B."
@@ -954,50 +954,49 @@ values
   true
 ),
 (
-  '183b45f3-e45e-4472-a02b-c9ec53f8dbd9',
+  '044b0572-32c3-4eca-9544-c15361f7d295',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "Hi! My name is Ana. I am fourteen. I am from Brazil. Nice to meet you! Can you spell your name? A-N-A. What's your name?",
+  "text": "Hello! My name is Ana, A-N-A. I am 14 years old. Nice to meet you!",
   "questions": [
-    "What is her name and age?",
-    "Where is she from?",
-    "What does she ask at the end?"
+    "What is the girl's name?",
+    "How is her name spelled?",
+    "How old is she?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '183b45f3-e45e-4472-a02b-c9ec53f8dbd9',
+  '044b0572-32c3-4eca-9544-c15361f7d295',
   8,
   'writing',
   null,
   null,
   $json${
   "prompts": [
-    "My name is ___.",
-    "I am from ___.",
-    "Nice to meet you, ___!"
+    "Hello! My name is ___.",
+    "I am ___ years old.",
+    "Nice to meet you!"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '183b45f3-e45e-4472-a02b-c9ec53f8dbd9',
+  '044b0572-32c3-4eca-9544-c15361f7d295',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Introduce myself fully",
-    "Ask basic questions",
-    "Spell my name",
-    "Meet someone new"
+    "Greet someone",
+    "Say and spell my name",
+    "Say my age"
   ],
-  "challenge": "Have a full introduction conversation with me!"
+  "challenge": "Introduce yourself to me: hello, name, spelling, and age!"
 }$json$::jsonb,
   true
 );

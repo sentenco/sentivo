@@ -1,16 +1,17 @@
--- A1 Teens Unit 10: Weather and Seasons (5 lessons)
+-- A1 Teens Unit 10: Weather and Seasons (5 lessons) — TIERED (Bridge)
+-- Regenerated per the Sentivo Intra-Level Progression Framework + lesson-level escalation + task rotation.
 -- Run this whole script in the Supabase SQL editor.
 
 -- Lesson 1: Weather and Seasons
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '772c455a-19a6-4c9c-b8f7-ce40b434bd43',
+  'bc7b2c14-8755-430f-8d4c-eede0c936944',
   'Weather and Seasons',
   'A1',
   'teens',
   10,
   1,
-  'Name basic weather words and seasons.',
+  'Name weather and seasons. [Bridge, Lesson 1: notice/receptive]',
   25,
   9,
   true
@@ -19,7 +20,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '772c455a-19a6-4c9c-b8f7-ce40b434bd43',
+  'bc7b2c14-8755-430f-8d4c-eede0c936944',
   1,
   'title',
   null,
@@ -30,23 +31,23 @@ values
   true
 ),
 (
-  '772c455a-19a6-4c9c-b8f7-ce40b434bd43',
+  'bc7b2c14-8755-430f-8d4c-eede0c936944',
   2,
   'warmup',
   null,
   null,
   $json${
-  "display": "🌤️",
+  "display": "☀️",
   "questions": [
-    "What's the weather like today?",
-    "What season is it?"
+    "Is it sunny today?",
+    "Do you like summer or winter?"
   ],
-  "title": "Let's Start!"
+  "title": "Let's start!"
 }$json$::jsonb,
   true
 ),
 (
-  '772c455a-19a6-4c9c-b8f7-ce40b434bd43',
+  'bc7b2c14-8755-430f-8d4c-eede0c936944',
   3,
   'vocabulary',
   null,
@@ -62,11 +63,11 @@ values
       "bg": "#E1F5EE"
     },
     {
-      "word": "Hot",
+      "word": "Summer",
       "bg": "#EEEDFE"
     },
     {
-      "word": "Cold",
+      "word": "Winter",
       "bg": "#FAEEDA"
     }
   ],
@@ -76,27 +77,27 @@ values
   true
 ),
 (
-  '772c455a-19a6-4c9c-b8f7-ce40b434bd43',
+  'bc7b2c14-8755-430f-8d4c-eede0c936944',
   4,
   'phrases',
   null,
   null,
   $json${
   "teacher": [
-    "What's the weather like?",
-    "Is it hot today?"
+    "Is it sunny today?",
+    "What season is it?"
   ],
   "student": [
-    "It's sunny.",
-    "Yes, it's very hot!"
+    "Yes, it's sunny.",
+    "It's summer."
   ],
-  "note": "Look outside and describe it!",
+  "note": "Point to the sky or a season picture!",
   "title": "Practice the Conversation"
 }$json$::jsonb,
   true
 ),
 (
-  '772c455a-19a6-4c9c-b8f7-ce40b434bd43',
+  'bc7b2c14-8755-430f-8d4c-eede0c936944',
   5,
   'activity',
   null,
@@ -105,27 +106,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "It is [sunny]."
+      "text": "Today is [sunny]."
     },
     {
       "speaker": "B",
-      "text": "It is [rainy]."
+      "text": "Yesterday was [rainy]."
     },
     {
       "speaker": "A",
-      "text": "It is [hot]."
+      "text": "It's [summer] now."
     }
   ],
   "blanks": [
     "sunny",
     "rainy",
-    "hot"
+    "summer"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '772c455a-19a6-4c9c-b8f7-ce40b434bd43',
+  'bc7b2c14-8755-430f-8d4c-eede0c936944',
   6,
   'speaking',
   null,
@@ -134,69 +135,69 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "What's the weather like today?"
+      "text": "Today is sunny."
     },
     {
       "speaker": "B",
-      "text": "It's cold and windy."
+      "text": "Yesterday was rainy."
     },
     {
       "speaker": "A",
-      "text": "I like sunny weather!"
+      "text": "It's summer now."
     },
     {
       "speaker": "B",
-      "text": "Me too!"
+      "text": "I like winter more!"
     }
   ],
-  "note": "Switch! Student becomes A, teacher becomes B."
+  "note": "Teacher says the line first. Student repeats, then says it alone."
 }$json$::jsonb,
   true
 ),
 (
-  '772c455a-19a6-4c9c-b8f7-ce40b434bd43',
+  'bc7b2c14-8755-430f-8d4c-eede0c936944',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "Today it is sunny. Yesterday it was rainy. In summer, it is hot. In winter, it is cold. I like to talk about the weather!",
+  "text": "Today is sunny. Yesterday was rainy. It is summer now. Summer is hot.",
   "questions": [
-    "What is the weather today?",
-    "What was the weather yesterday?",
-    "What is the weather like in summer?"
+    "Is today sunny or rainy?",
+    "What season is it?",
+    "Is summer hot or cold?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '772c455a-19a6-4c9c-b8f7-ce40b434bd43',
+  'bc7b2c14-8755-430f-8d4c-eede0c936944',
   8,
   'writing',
   null,
   null,
   $json${
   "prompts": [
-    "Today it is ___.",
-    "In summer, it is ___.",
-    "In winter, it is ___."
+    "Today is ___.",
+    "It is ___ now.",
+    "___ is ___ (hot/cold)."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '772c455a-19a6-4c9c-b8f7-ce40b434bd43',
+  'bc7b2c14-8755-430f-8d4c-eede0c936944',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Name four weather words",
-    "Say 'It is ___'",
-    "Talk about the weather"
+    "Name weather words",
+    "Name seasons",
+    "Say what the weather is today"
   ],
-  "challenge": "Describe today's weather!"
+  "challenge": "Tell me the weather and season today!"
 }$json$::jsonb,
   true
 );
@@ -204,13 +205,13 @@ values
 -- Lesson 2: What's the Weather Like?
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  'c5dced3e-819b-4f04-b48c-71d1153f529b',
+  '229d4c99-fcc9-4041-8eaa-a048cdbf6bdf',
   'What''s the Weather Like?',
   'A1',
   'teens',
   10,
   2,
-  'Answer a simple weather question.',
+  'Combine weather and clothing with ''and''. [Bridge, Lesson 2: controlled practice, connector combined]',
   25,
   9,
   true
@@ -219,7 +220,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  'c5dced3e-819b-4f04-b48c-71d1153f529b',
+  '229d4c99-fcc9-4041-8eaa-a048cdbf6bdf',
   1,
   'title',
   null,
@@ -230,23 +231,23 @@ values
   true
 ),
 (
-  'c5dced3e-819b-4f04-b48c-71d1153f529b',
+  '229d4c99-fcc9-4041-8eaa-a048cdbf6bdf',
   2,
   'warmup',
   null,
   null,
   $json${
-  "display": "🌬️",
+  "display": "🧥",
   "questions": [
-    "Is it windy today?",
-    "Is it cloudy today?"
+    "Is it cold or hot today?",
+    "What do you wear when it's cold?"
   ],
-  "title": "Let's Start!"
+  "title": "Let's start!"
 }$json$::jsonb,
   true
 ),
 (
-  'c5dced3e-819b-4f04-b48c-71d1153f529b',
+  '229d4c99-fcc9-4041-8eaa-a048cdbf6bdf',
   3,
   'vocabulary',
   null,
@@ -254,19 +255,19 @@ values
   $json${
   "words": [
     {
-      "word": "Windy",
+      "word": "Cold",
       "bg": "#FAECE7"
     },
     {
-      "word": "Cloudy",
+      "word": "Hot",
       "bg": "#E1F5EE"
     },
     {
-      "word": "Weather",
+      "word": "Wear",
       "bg": "#EEEDFE"
     },
     {
-      "word": "Like",
+      "word": "Windy",
       "bg": "#FAEEDA"
     }
   ],
@@ -276,27 +277,27 @@ values
   true
 ),
 (
-  'c5dced3e-819b-4f04-b48c-71d1153f529b',
+  '229d4c99-fcc9-4041-8eaa-a048cdbf6bdf',
   4,
   'phrases',
   null,
   null,
   $json${
   "teacher": [
-    "What's the weather like?",
-    "Is it windy?"
+    "Is it cold today?",
+    "What do you wear?"
   ],
   "student": [
-    "It's cloudy.",
-    "Yes, it's windy today."
+    "Yes, it's cold.",
+    "I wear a jacket."
   ],
-  "note": "Answer with the real weather today!",
+  "note": "Use the word bank: cold, hot, wear, windy.",
   "title": "Practice the Conversation"
 }$json$::jsonb,
   true
 ),
 (
-  'c5dced3e-819b-4f04-b48c-71d1153f529b',
+  '229d4c99-fcc9-4041-8eaa-a048cdbf6bdf',
   5,
   'activity',
   null,
@@ -305,27 +306,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "What's the [weather] like?"
+      "text": "It's [cold] and [windy]."
     },
     {
       "speaker": "B",
-      "text": "It is [windy]."
+      "text": "I [wear] a jacket."
     },
     {
       "speaker": "A",
-      "text": "It is [cloudy] too."
+      "text": "Summer is [hot]."
     }
   ],
   "blanks": [
-    "weather",
-    "windy",
-    "cloudy"
+    "cold",
+    "wear",
+    "hot"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'c5dced3e-819b-4f04-b48c-71d1153f529b',
+  '229d4c99-fcc9-4041-8eaa-a048cdbf6bdf',
   6,
   'speaking',
   null,
@@ -334,19 +335,19 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "What's the weather like today?"
+      "text": "Is it cold today?"
     },
     {
       "speaker": "B",
-      "text": "It's cloudy and a little windy."
+      "text": "Yes, it's cold and windy. I wear a jacket."
     },
     {
       "speaker": "A",
-      "text": "Is it cold?"
+      "text": "In summer, it's hot. I wear a T-shirt."
     },
     {
       "speaker": "B",
-      "text": "No, it's actually warm!"
+      "text": "That makes sense!"
     }
   ],
   "note": "Switch! Student becomes A, teacher becomes B."
@@ -354,49 +355,49 @@ values
   true
 ),
 (
-  'c5dced3e-819b-4f04-b48c-71d1153f529b',
+  '229d4c99-fcc9-4041-8eaa-a048cdbf6bdf',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "What's the weather like today? It's cloudy and windy. Is it cold? No, it's warm. I check the weather every morning!",
+  "text": "Today it's cold and windy. I wear a jacket. In summer, it's hot and I wear a T-shirt.",
   "questions": [
-    "What's the weather like?",
-    "Is it cold or warm?",
-    "When does the writer check the weather?"
+    "What is the weather today?",
+    "What does the writer wear today?",
+    "What does the writer wear in summer?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'c5dced3e-819b-4f04-b48c-71d1153f529b',
+  '229d4c99-fcc9-4041-8eaa-a048cdbf6bdf',
   8,
   'writing',
   null,
   null,
   $json${
   "prompts": [
-    "What's the weather like? It's ___.",
-    "Is it cold? ___.",
-    "I check the weather ___."
+    "Today it's ___.",
+    "I wear a ___.",
+    "In summer, I wear ___."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'c5dced3e-819b-4f04-b48c-71d1153f529b',
+  '229d4c99-fcc9-4041-8eaa-a048cdbf6bdf',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Ask 'What's the weather like?'",
-    "Answer with 'It's ___'",
-    "Talk about daily weather"
+    "Use 'cold', 'hot', 'windy'",
+    "Say what I wear for the weather",
+    "Combine weather and clothes with 'and'"
   ],
-  "challenge": "Ask me what the weather is like today!"
+  "challenge": "Tell me the weather today and what you wear!"
 }$json$::jsonb,
   true
 );
@@ -404,13 +405,13 @@ values
 -- Lesson 3: Seasons and Clothes
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '378df934-24cb-44c2-a72f-acdb5fd6c39f',
+  'd2eb1b24-52f7-4ef0-8d6b-f19dac919559',
   'Seasons and Clothes',
   'A1',
   'teens',
   10,
   3,
-  'Match seasons with suitable clothes.',
+  'Say a simple preference: ''I like it better''. [Bridge, Lesson 3: freer practice, role reversal, preference chunk]',
   25,
   9,
   true
@@ -419,7 +420,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '378df934-24cb-44c2-a72f-acdb5fd6c39f',
+  'd2eb1b24-52f7-4ef0-8d6b-f19dac919559',
   1,
   'title',
   null,
@@ -430,7 +431,7 @@ values
   true
 ),
 (
-  '378df934-24cb-44c2-a72f-acdb5fd6c39f',
+  'd2eb1b24-52f7-4ef0-8d6b-f19dac919559',
   2,
   'warmup',
   null,
@@ -438,15 +439,15 @@ values
   $json${
   "display": "🍂",
   "questions": [
-    "What season is it now?",
-    "What do you wear in winter?"
+    "What is your favorite season?",
+    "Do you like summer or winter better?"
   ],
-  "title": "Let's Start!"
+  "title": "Let's start!"
 }$json$::jsonb,
   true
 ),
 (
-  '378df934-24cb-44c2-a72f-acdb5fd6c39f',
+  'd2eb1b24-52f7-4ef0-8d6b-f19dac919559',
   3,
   'vocabulary',
   null,
@@ -454,11 +455,11 @@ values
   $json${
   "words": [
     {
-      "word": "Spring",
+      "word": "Favorite season",
       "bg": "#FAECE7"
     },
     {
-      "word": "Summer",
+      "word": "Spring",
       "bg": "#E1F5EE"
     },
     {
@@ -466,7 +467,7 @@ values
       "bg": "#EEEDFE"
     },
     {
-      "word": "Winter",
+      "word": "I like it better",
       "bg": "#FAEEDA"
     }
   ],
@@ -476,27 +477,27 @@ values
   true
 ),
 (
-  '378df934-24cb-44c2-a72f-acdb5fd6c39f',
+  'd2eb1b24-52f7-4ef0-8d6b-f19dac919559',
   4,
   'phrases',
   null,
   null,
   $json${
   "teacher": [
-    "What season is it?",
-    "What do you wear in summer?"
+    "What is your favorite season?",
+    "Do you like summer better?"
   ],
   "student": [
-    "It is autumn.",
-    "I wear shorts in summer."
+    "My favorite season is spring.",
+    "I like winter better."
   ],
-  "note": "Think about your favorite season and clothes!",
+  "note": "Ask me first this time, then I'll ask you!",
   "title": "Practice the Conversation"
 }$json$::jsonb,
   true
 ),
 (
-  '378df934-24cb-44c2-a72f-acdb5fd6c39f',
+  'd2eb1b24-52f7-4ef0-8d6b-f19dac919559',
   5,
   'activity',
   null,
@@ -505,27 +506,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "In [summer], I wear shorts."
+      "text": "My [favorite season] is spring."
     },
     {
       "speaker": "B",
-      "text": "In [winter], I wear a coat."
+      "text": "I like [autumn] too."
     },
     {
       "speaker": "A",
-      "text": "I like [spring]."
+      "text": "[I like it better] than summer."
     }
   ],
   "blanks": [
-    "summer",
-    "winter",
-    "spring"
+    "favorite season",
+    "autumn",
+    "i like it better"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '378df934-24cb-44c2-a72f-acdb5fd6c39f',
+  'd2eb1b24-52f7-4ef0-8d6b-f19dac919559',
   6,
   'speaking',
   null,
@@ -534,69 +535,69 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "What season is it now?"
+      "text": "What is your favorite season?"
     },
     {
       "speaker": "B",
-      "text": "It is autumn."
+      "text": "My favorite season is autumn. I like it better than summer. What about you?"
     },
     {
       "speaker": "A",
-      "text": "What do you wear in autumn?"
+      "text": "I like spring. It's not too hot and not too cold."
     },
     {
       "speaker": "B",
-      "text": "I wear a jacket!"
+      "text": "Your turn to ask me something!"
     }
   ],
-  "note": "Switch! Student becomes A, teacher becomes B."
+  "note": "Student asks first this time. Teacher answers, then asks back."
 }$json$::jsonb,
   true
 ),
 (
-  '378df934-24cb-44c2-a72f-acdb5fd6c39f',
+  'd2eb1b24-52f7-4ef0-8d6b-f19dac919559',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "In spring, I wear a light jacket. In summer, I wear shorts. In autumn, I wear a sweater. In winter, I wear a big coat. I like all four seasons!",
+  "text": "My favorite season is autumn. I like it better than summer. It's not too hot and not too cold.",
   "questions": [
-    "What does the writer wear in spring?",
-    "What does the writer wear in summer?",
-    "What does the writer wear in winter?"
+    "What is the favorite season?",
+    "What season does the writer like less?",
+    "Why does the writer like autumn?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '378df934-24cb-44c2-a72f-acdb5fd6c39f',
+  'd2eb1b24-52f7-4ef0-8d6b-f19dac919559',
   8,
   'writing',
   null,
   null,
   $json${
   "prompts": [
-    "In spring, I wear ___.",
-    "In summer, I wear ___.",
-    "In winter, I wear ___."
+    "My favorite season is ___.",
+    "I like it better than ___.",
+    "It's not too ___ and not too ___."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '378df934-24cb-44c2-a72f-acdb5fd6c39f',
+  'd2eb1b24-52f7-4ef0-8d6b-f19dac919559',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Name four seasons",
-    "Match clothes to seasons",
-    "Talk about seasonal clothes"
+    "Say my favorite season",
+    "Say 'I like it better'",
+    "Give a simple reason for a season"
   ],
-  "challenge": "Tell me what you wear in your favorite season!"
+  "challenge": "Tell me your favorite season and why you like it better!"
 }$json$::jsonb,
   true
 );
@@ -604,13 +605,13 @@ values
 -- Lesson 4: Weather Preferences
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  'd9cf0a75-a269-432e-a2b1-d1c019a82234',
+  'ebf5282f-152f-416f-be96-68098a10cc60',
   'Weather Preferences',
   'A1',
   'teens',
   10,
   4,
-  'Say which weather they like.',
+  'Combine weather, seasons, and preference into a talk. [Bridge, Lesson 4: production]',
   25,
   9,
   true
@@ -619,7 +620,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  'd9cf0a75-a269-432e-a2b1-d1c019a82234',
+  'ebf5282f-152f-416f-be96-68098a10cc60',
   1,
   'title',
   null,
@@ -630,23 +631,23 @@ values
   true
 ),
 (
-  'd9cf0a75-a269-432e-a2b1-d1c019a82234',
+  'ebf5282f-152f-416f-be96-68098a10cc60',
   2,
   'warmup',
   null,
   null,
   $json${
-  "display": "😎",
+  "display": "🌧️",
   "questions": [
-    "Do you like hot weather?",
-    "What weather makes you happy?"
+    "Do you like rain or snow?",
+    "Do you stay inside when it rains?"
   ],
-  "title": "Let's Start!"
+  "title": "Let's start!"
 }$json$::jsonb,
   true
 ),
 (
-  'd9cf0a75-a269-432e-a2b1-d1c019a82234',
+  'ebf5282f-152f-416f-be96-68098a10cc60',
   3,
   'vocabulary',
   null,
@@ -654,19 +655,19 @@ values
   $json${
   "words": [
     {
-      "word": "Prefer",
+      "word": "Rain",
       "bg": "#FAECE7"
     },
     {
-      "word": "Favorite",
+      "word": "Snow",
       "bg": "#E1F5EE"
     },
     {
-      "word": "Best",
+      "word": "Outside",
       "bg": "#EEEDFE"
     },
     {
-      "word": "Enjoy",
+      "word": "Inside",
       "bg": "#FAEEDA"
     }
   ],
@@ -676,27 +677,27 @@ values
   true
 ),
 (
-  'd9cf0a75-a269-432e-a2b1-d1c019a82234',
+  'ebf5282f-152f-416f-be96-68098a10cc60',
   4,
   'phrases',
   null,
   null,
   $json${
   "teacher": [
-    "What weather do you like?",
-    "Do you prefer hot or cold?"
+    "Do you like rain or snow?",
+    "Do you play outside or stay inside?"
   ],
   "student": [
-    "I like sunny weather.",
-    "I prefer hot weather!"
+    "I like snow better.",
+    "I stay inside when it rains."
   ],
-  "note": "Give your real weather opinion!",
+  "note": "Put it all together: weather + season + preference + activity.",
   "title": "Practice the Conversation"
 }$json$::jsonb,
   true
 ),
 (
-  'd9cf0a75-a269-432e-a2b1-d1c019a82234',
+  'ebf5282f-152f-416f-be96-68098a10cc60',
   5,
   'activity',
   null,
@@ -705,27 +706,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "I [prefer] sunny weather."
+      "text": "I like [snow] better than [rain]."
     },
     {
       "speaker": "B",
-      "text": "My [favorite] season is summer."
+      "text": "I play [outside] in summer."
     },
     {
       "speaker": "A",
-      "text": "I [enjoy] rainy days."
+      "text": "I stay [inside] when it's cold."
     }
   ],
   "blanks": [
-    "prefer",
-    "favorite",
-    "enjoy"
+    "snow",
+    "outside",
+    "inside"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'd9cf0a75-a269-432e-a2b1-d1c019a82234',
+  'ebf5282f-152f-416f-be96-68098a10cc60',
   6,
   'speaking',
   null,
@@ -734,69 +735,69 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "What weather do you like best?"
+      "text": "Tell me about your favorite weather."
     },
     {
       "speaker": "B",
-      "text": "I like sunny weather best."
+      "text": "I like snow better than rain. In winter, I play outside with my friends."
     },
     {
       "speaker": "A",
-      "text": "I prefer cold weather!"
+      "text": "When it rains, I stay inside and read. My favorite season is winter."
     },
     {
       "speaker": "B",
-      "text": "Really? That's interesting!"
+      "text": "That sounds nice!"
     }
   ],
-  "note": "Switch! Student becomes A, teacher becomes B."
+  "note": "Mini talk: tell me all about your favorite weather and season."
 }$json$::jsonb,
   true
 ),
 (
-  'd9cf0a75-a269-432e-a2b1-d1c019a82234',
+  'ebf5282f-152f-416f-be96-68098a10cc60',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "I like sunny weather. I don't like rainy weather. My favorite season is summer because it's hot. Everyone prefers different weather!",
+  "text": "I like snow better than rain. In winter, I play outside with my friends. When it rains, I stay inside and read. My favorite season is winter.",
   "questions": [
-    "What weather does the writer like?",
-    "What weather does the writer not like?",
-    "What is the favorite season?"
+    "Does the writer like snow or rain better?",
+    "What does the writer do in winter?",
+    "What does the writer do when it rains?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'd9cf0a75-a269-432e-a2b1-d1c019a82234',
+  'ebf5282f-152f-416f-be96-68098a10cc60',
   8,
   'writing',
   null,
   null,
   $json${
   "prompts": [
-    "I like ___ weather.",
-    "I don't like ___ weather.",
+    "I like ___ better than ___.",
+    "In ___, I ___.",
     "My favorite season is ___."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'd9cf0a75-a269-432e-a2b1-d1c019a82234',
+  'ebf5282f-152f-416f-be96-68098a10cc60',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Say 'I prefer ___'",
-    "Say weather likes and dislikes",
-    "Talk about my favorite season"
+    "Say a weather preference",
+    "Say an activity for a season",
+    "Talk about my favorite season with reasons"
   ],
-  "challenge": "Tell me your favorite weather and why!"
+  "challenge": "Tell me all about your favorite weather and what you do in it!"
 }$json$::jsonb,
   true
 );
@@ -804,13 +805,13 @@ values
 -- Lesson 5: Unit Review
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '5221f97f-74d0-494d-b81e-fc3a7a848c39',
+  '22bf9326-46b2-41f5-96a6-7891e4715592',
   'Unit Review',
   'A1',
   'teens',
   10,
   5,
-  'Talk about weather, seasons, and preferences.',
+  'Review weather, seasons, and preferences. [Bridge, Lesson 5: tier-matched review]',
   25,
   9,
   true
@@ -819,7 +820,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '5221f97f-74d0-494d-b81e-fc3a7a848c39',
+  '22bf9326-46b2-41f5-96a6-7891e4715592',
   1,
   'title',
   null,
@@ -830,7 +831,7 @@ values
   true
 ),
 (
-  '5221f97f-74d0-494d-b81e-fc3a7a848c39',
+  '22bf9326-46b2-41f5-96a6-7891e4715592',
   2,
   'warmup',
   null,
@@ -838,15 +839,15 @@ values
   $json${
   "display": "🌤️",
   "questions": [
-    "What weather words do you remember?",
-    "What season do you like best?"
+    "What's the weather like today?",
+    "What is your favorite season?"
   ],
-  "title": "Let's Review!"
+  "title": "Let's start!"
 }$json$::jsonb,
   true
 ),
 (
-  '5221f97f-74d0-494d-b81e-fc3a7a848c39',
+  '22bf9326-46b2-41f5-96a6-7891e4715592',
   3,
   'vocabulary',
   null,
@@ -854,41 +855,41 @@ values
   $json${
   "words": [
     {
-      "word": "Sunny",
+      "word": "Weather",
       "bg": "#FAECE7"
     },
     {
-      "word": "Winter",
+      "word": "Season",
       "bg": "#E1F5EE"
     },
     {
-      "word": "Wearing",
+      "word": "Better",
       "bg": "#EEEDFE"
     },
     {
-      "word": "Prefer",
+      "word": "Wear",
       "bg": "#FAEEDA"
     }
   ],
-  "title": "Review Words",
+  "title": "New Words",
   "subtitle": "Tap a card to see it bigger."
 }$json$::jsonb,
   true
 ),
 (
-  '5221f97f-74d0-494d-b81e-fc3a7a848c39',
+  '22bf9326-46b2-41f5-96a6-7891e4715592',
   4,
   'phrases',
   null,
   null,
   $json${
   "teacher": [
-    "What's the weather like?",
-    "What season do you like?"
+    "What's the weather like today?",
+    "What is your favorite season?"
   ],
   "student": [
-    "It's sunny.",
-    "I like summer."
+    "It's sunny today.",
+    "My favorite season is spring."
   ],
   "note": "Use everything you learned this unit!",
   "title": "Practice the Conversation"
@@ -896,7 +897,7 @@ values
   true
 ),
 (
-  '5221f97f-74d0-494d-b81e-fc3a7a848c39',
+  '22bf9326-46b2-41f5-96a6-7891e4715592',
   5,
   'activity',
   null,
@@ -905,27 +906,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "It is [sunny]."
+      "text": "The [weather] is sunny today."
     },
     {
       "speaker": "B",
-      "text": "In [winter], I wear a coat."
+      "text": "My favorite [season] is summer."
     },
     {
       "speaker": "A",
-      "text": "I [prefer] hot weather."
+      "text": "I like it [better] than winter."
     }
   ],
   "blanks": [
-    "sunny",
-    "winter",
-    "prefer"
+    "weather",
+    "season",
+    "better"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '5221f97f-74d0-494d-b81e-fc3a7a848c39',
+  '22bf9326-46b2-41f5-96a6-7891e4715592',
   6,
   'speaking',
   null,
@@ -934,19 +935,19 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "What's the weather like today?"
+      "text": "Tell me about the weather and your favorite season."
     },
     {
       "speaker": "B",
-      "text": "It's sunny and warm."
+      "text": "The weather is sunny today. My favorite season is summer, I like it better than winter."
     },
     {
       "speaker": "A",
-      "text": "What season do you like best?"
+      "text": "I wear a T-shirt in summer and a jacket in winter."
     },
     {
       "speaker": "B",
-      "text": "I like summer best because it's sunny!"
+      "text": "That makes sense!"
     }
   ],
   "note": "Switch! Student becomes A, teacher becomes B."
@@ -954,49 +955,49 @@ values
   true
 ),
 (
-  '5221f97f-74d0-494d-b81e-fc3a7a848c39',
+  '22bf9326-46b2-41f5-96a6-7891e4715592',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "Today it is sunny. My favorite season is summer. In summer, I wear shorts. In winter, I wear a coat because it's cold. I prefer hot weather!",
+  "text": "The weather is sunny today. My favorite season is summer. I like it better than winter. I wear a T-shirt in summer.",
   "questions": [
-    "What's the weather today?",
+    "What is the weather today?",
     "What is the favorite season?",
-    "What weather does the writer prefer?"
+    "What does the writer wear in summer?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '5221f97f-74d0-494d-b81e-fc3a7a848c39',
+  '22bf9326-46b2-41f5-96a6-7891e4715592',
   8,
   'writing',
   null,
   null,
   $json${
   "prompts": [
-    "Today it is ___.",
-    "In ___, I wear ___.",
-    "I prefer ___ weather."
+    "The weather is ___ today.",
+    "My favorite season is ___.",
+    "I wear ___ in ___."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '5221f97f-74d0-494d-b81e-fc3a7a848c39',
+  '22bf9326-46b2-41f5-96a6-7891e4715592',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Name weather and seasons",
-    "Match clothes to seasons",
-    "Talk about weather preferences"
+    "Describe today's weather",
+    "Say my favorite season with a preference",
+    "Say what I wear in different seasons"
   ],
-  "challenge": "Tell me about the weather, your favorite season, and what you wear!"
+  "challenge": "Tell me all about the weather and seasons you like!"
 }$json$::jsonb,
   true
 );

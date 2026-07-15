@@ -1,16 +1,17 @@
--- A1 Teens Unit 9: Clothes and Style (5 lessons)
+-- A1 Teens Unit 9: Clothes and Style (5 lessons) — TIERED (Bridge)
+-- Regenerated per the Sentivo Intra-Level Progression Framework + lesson-level escalation + task rotation.
 -- Run this whole script in the Supabase SQL editor.
 
 -- Lesson 1: Clothes and Style
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  'f5dbaddc-8f43-4193-8df4-9cf7746a678a',
+  'b4d536fa-c106-4459-966a-eaf41bbe6587',
   'Clothes and Style',
   'A1',
   'teens',
   9,
   1,
-  'Name basic clothes and style words.',
+  'Name clothes items. [Bridge, Lesson 1: notice/receptive]',
   25,
   9,
   true
@@ -19,7 +20,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  'f5dbaddc-8f43-4193-8df4-9cf7746a678a',
+  'b4d536fa-c106-4459-966a-eaf41bbe6587',
   1,
   'title',
   null,
@@ -30,7 +31,7 @@ values
   true
 ),
 (
-  'f5dbaddc-8f43-4193-8df4-9cf7746a678a',
+  'b4d536fa-c106-4459-966a-eaf41bbe6587',
   2,
   'warmup',
   null,
@@ -39,14 +40,14 @@ values
   "display": "👕",
   "questions": [
     "What are you wearing today?",
-    "Do you like jeans?"
+    "Do you have jeans?"
   ],
-  "title": "Let's Start!"
+  "title": "Let's start!"
 }$json$::jsonb,
   true
 ),
 (
-  'f5dbaddc-8f43-4193-8df4-9cf7746a678a',
+  'b4d536fa-c106-4459-966a-eaf41bbe6587',
   3,
   'vocabulary',
   null,
@@ -62,11 +63,11 @@ values
       "bg": "#E1F5EE"
     },
     {
-      "word": "Dress",
+      "word": "Shoes",
       "bg": "#EEEDFE"
     },
     {
-      "word": "Shoes",
+      "word": "Jacket",
       "bg": "#FAEEDA"
     }
   ],
@@ -76,27 +77,27 @@ values
   true
 ),
 (
-  'f5dbaddc-8f43-4193-8df4-9cf7746a678a',
+  'b4d536fa-c106-4459-966a-eaf41bbe6587',
   4,
   'phrases',
   null,
   null,
   $json${
   "teacher": [
-    "What is this?",
-    "Do you wear jeans?"
+    "What are you wearing?",
+    "Do you have a jacket?"
   ],
   "student": [
-    "It is a shirt.",
-    "Yes, I wear jeans a lot!"
+    "I'm wearing a shirt.",
+    "Yes, I have a jacket."
   ],
-  "note": "Look at what you're wearing right now!",
+  "note": "Point to something you're wearing!",
   "title": "Practice the Conversation"
 }$json$::jsonb,
   true
 ),
 (
-  'f5dbaddc-8f43-4193-8df4-9cf7746a678a',
+  'b4d536fa-c106-4459-966a-eaf41bbe6587',
   5,
   'activity',
   null,
@@ -105,27 +106,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "I wear a [shirt]."
+      "text": "I'm wearing a [shirt]."
     },
     {
       "speaker": "B",
-      "text": "I wear [jeans]."
+      "text": "I have [jeans] and [shoes]."
     },
     {
       "speaker": "A",
-      "text": "I wear [shoes]."
+      "text": "I have a [jacket] too."
     }
   ],
   "blanks": [
     "shirt",
     "jeans",
-    "shoes"
+    "jacket"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'f5dbaddc-8f43-4193-8df4-9cf7746a678a',
+  'b4d536fa-c106-4459-966a-eaf41bbe6587',
   6,
   'speaking',
   null,
@@ -134,69 +135,69 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "What are you wearing today?"
-    },
-    {
-      "speaker": "B",
       "text": "I'm wearing a shirt and jeans."
     },
     {
+      "speaker": "B",
+      "text": "I'm wearing shoes and a jacket."
+    },
+    {
       "speaker": "A",
-      "text": "I'm wearing a dress!"
+      "text": "I like your jacket!"
     },
     {
       "speaker": "B",
-      "text": "Nice!"
+      "text": "Thank you!"
     }
   ],
-  "note": "Switch! Student becomes A, teacher becomes B."
+  "note": "Teacher says the line first. Student repeats, then says it alone."
 }$json$::jsonb,
   true
 ),
 (
-  'f5dbaddc-8f43-4193-8df4-9cf7746a678a',
+  'b4d536fa-c106-4459-966a-eaf41bbe6587',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "Today I wear a shirt. I wear jeans. I wear shoes. Sometimes I wear a jacket. I choose my clothes every morning!",
+  "text": "I'm wearing a shirt and jeans today. I have shoes too. My jacket is at home.",
   "questions": [
-    "What does the writer wear?",
-    "Does the writer wear a jacket?",
-    "When does the writer choose clothes?"
+    "What is the writer wearing?",
+    "What does the writer have?",
+    "Where is the jacket?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'f5dbaddc-8f43-4193-8df4-9cf7746a678a',
+  'b4d536fa-c106-4459-966a-eaf41bbe6587',
   8,
   'writing',
   null,
   null,
   $json${
   "prompts": [
-    "I wear a ___.",
-    "I like wearing ___.",
-    "Today I am wearing ___."
+    "I'm wearing a ___.",
+    "I have ___ and ___.",
+    "My ___ is at home."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'f5dbaddc-8f43-4193-8df4-9cf7746a678a',
+  'b4d536fa-c106-4459-966a-eaf41bbe6587',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Name four clothes items",
-    "Say 'I wear ___'",
-    "Talk about my clothes"
+    "Name 4 clothes items",
+    "Say 'I'm wearing ___'",
+    "Talk about my clothes today"
   ],
-  "challenge": "Tell me what you're wearing right now!"
+  "challenge": "Tell me what you're wearing today!"
 }$json$::jsonb,
   true
 );
@@ -204,13 +205,13 @@ values
 -- Lesson 2: What Are You Wearing?
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  'be074df0-ee6e-43f4-b485-0cd45a93de07',
+  '39e3ed1e-f667-42e9-96ad-41f4f577f4d2',
   'What Are You Wearing?',
   'A1',
   'teens',
   9,
   2,
-  'Describe what someone is wearing.',
+  'Describe clothes with color and connector ''and''. [Bridge, Lesson 2: controlled practice, connector combined]',
   25,
   9,
   true
@@ -219,7 +220,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  'be074df0-ee6e-43f4-b485-0cd45a93de07',
+  '39e3ed1e-f667-42e9-96ad-41f4f577f4d2',
   1,
   'title',
   null,
@@ -230,207 +231,7 @@ values
   true
 ),
 (
-  'be074df0-ee6e-43f4-b485-0cd45a93de07',
-  2,
-  'warmup',
-  null,
-  null,
-  $json${
-  "display": "🧥",
-  "questions": [
-    "What is your friend wearing today?",
-    "Are you wearing a jacket?"
-  ],
-  "title": "Let's Start!"
-}$json$::jsonb,
-  true
-),
-(
-  'be074df0-ee6e-43f4-b485-0cd45a93de07',
-  3,
-  'vocabulary',
-  null,
-  null,
-  $json${
-  "words": [
-    {
-      "word": "Wearing",
-      "bg": "#FAECE7"
-    },
-    {
-      "word": "Jacket",
-      "bg": "#E1F5EE"
-    },
-    {
-      "word": "Cap",
-      "bg": "#EEEDFE"
-    },
-    {
-      "word": "He/She Is",
-      "bg": "#FAEEDA"
-    }
-  ],
-  "title": "New Words",
-  "subtitle": "Tap a card to see it bigger."
-}$json$::jsonb,
-  true
-),
-(
-  'be074df0-ee6e-43f4-b485-0cd45a93de07',
-  4,
-  'phrases',
-  null,
-  null,
-  $json${
-  "teacher": [
-    "What is he wearing?",
-    "Is she wearing a cap?"
-  ],
-  "student": [
-    "He is wearing a jacket.",
-    "Yes, she is wearing a cap!"
-  ],
-  "note": "Describe someone you can see or imagine!",
-  "title": "Practice the Conversation"
-}$json$::jsonb,
-  true
-),
-(
-  'be074df0-ee6e-43f4-b485-0cd45a93de07',
-  5,
-  'activity',
-  null,
-  null,
-  $json${
-  "dialogue": [
-    {
-      "speaker": "A",
-      "text": "He is [wearing] a jacket."
-    },
-    {
-      "speaker": "B",
-      "text": "She is wearing a [cap]."
-    },
-    {
-      "speaker": "A",
-      "text": "[He/She is] wearing shoes."
-    }
-  ],
-  "blanks": [
-    "wearing",
-    "cap",
-    "He/She is"
-  ]
-}$json$::jsonb,
-  true
-),
-(
-  'be074df0-ee6e-43f4-b485-0cd45a93de07',
-  6,
-  'speaking',
-  null,
-  null,
-  $json${
-  "dialogue": [
-    {
-      "speaker": "A",
-      "text": "What is he wearing?"
-    },
-    {
-      "speaker": "B",
-      "text": "He is wearing a shirt and jeans."
-    },
-    {
-      "speaker": "A",
-      "text": "Is she wearing a dress?"
-    },
-    {
-      "speaker": "B",
-      "text": "Yes, she is wearing a blue dress!"
-    }
-  ],
-  "note": "Switch! Student becomes A, teacher becomes B."
-}$json$::jsonb,
-  true
-),
-(
-  'be074df0-ee6e-43f4-b485-0cd45a93de07',
-  7,
-  'reading',
-  null,
-  null,
-  $json${
-  "text": "My friend is wearing a jacket. He is wearing jeans too. My sister is wearing a dress. She is wearing a cap. Everyone has their own style!",
-  "questions": [
-    "What is the friend wearing?",
-    "What is the sister wearing?",
-    "Does everyone have their own style?"
-  ]
-}$json$::jsonb,
-  true
-),
-(
-  'be074df0-ee6e-43f4-b485-0cd45a93de07',
-  8,
-  'writing',
-  null,
-  null,
-  $json${
-  "prompts": [
-    "He is wearing ___.",
-    "She is wearing ___.",
-    "My friend is wearing ___."
-  ]
-}$json$::jsonb,
-  true
-),
-(
-  'be074df0-ee6e-43f4-b485-0cd45a93de07',
-  9,
-  'review',
-  null,
-  null,
-  $json${
-  "checklist": [
-    "Say 'He/She is wearing ___'",
-    "Describe someone's outfit",
-    "Talk about style"
-  ],
-  "challenge": "Describe what someone near you is wearing!"
-}$json$::jsonb,
-  true
-);
-
--- Lesson 3: Style and Color
-insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
-values (
-  'd810add2-a802-4d8f-98bc-2861b25467d3',
-  'Style and Color',
-  'A1',
-  'teens',
-  9,
-  3,
-  'Describe clothes with colors.',
-  25,
-  9,
-  true
-);
-
-insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
-values
-(
-  'd810add2-a802-4d8f-98bc-2861b25467d3',
-  1,
-  'title',
-  null,
-  null,
-  $json${
-  "badge": "A1 · Beginner · Teens"
-}$json$::jsonb,
-  true
-),
-(
-  'd810add2-a802-4d8f-98bc-2861b25467d3',
+  '39e3ed1e-f667-42e9-96ad-41f4f577f4d2',
   2,
   'warmup',
   null,
@@ -438,15 +239,15 @@ values
   $json${
   "display": "🎨",
   "questions": [
-    "What color shirt do you like?",
-    "Do you wear black clothes?"
+    "What color is your shirt?",
+    "Do you like red or blue?"
   ],
-  "title": "Let's Start!"
+  "title": "Let's start!"
 }$json$::jsonb,
   true
 ),
 (
-  'd810add2-a802-4d8f-98bc-2861b25467d3',
+  '39e3ed1e-f667-42e9-96ad-41f4f577f4d2',
   3,
   'vocabulary',
   null,
@@ -454,19 +255,19 @@ values
   $json${
   "words": [
     {
-      "word": "Black",
+      "word": "Red",
       "bg": "#FAECE7"
     },
     {
-      "word": "White",
+      "word": "Blue",
       "bg": "#E1F5EE"
     },
     {
-      "word": "Red Shirt",
+      "word": "And",
       "bg": "#EEEDFE"
     },
     {
-      "word": "Blue Jeans",
+      "word": "Black",
       "bg": "#FAEEDA"
     }
   ],
@@ -476,7 +277,7 @@ values
   true
 ),
 (
-  'd810add2-a802-4d8f-98bc-2861b25467d3',
+  '39e3ed1e-f667-42e9-96ad-41f4f577f4d2',
   4,
   'phrases',
   null,
@@ -484,19 +285,19 @@ values
   $json${
   "teacher": [
     "What color is your shirt?",
-    "Do you like black clothes?"
+    "Do you like red and blue?"
   ],
   "student": [
-    "My shirt is red.",
-    "Yes, I like black clothes!"
+    "My shirt is blue.",
+    "I like red and blue."
   ],
-  "note": "Describe your real clothes with colors!",
+  "note": "Use the word bank: red, blue, and, black.",
   "title": "Practice the Conversation"
 }$json$::jsonb,
   true
 ),
 (
-  'd810add2-a802-4d8f-98bc-2861b25467d3',
+  '39e3ed1e-f667-42e9-96ad-41f4f577f4d2',
   5,
   'activity',
   null,
@@ -505,27 +306,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "I have a [red shirt]."
+      "text": "My shirt is [red] [and] my jeans are [blue]."
     },
     {
       "speaker": "B",
-      "text": "I have [blue jeans]."
+      "text": "My shoes are [black]."
     },
     {
       "speaker": "A",
-      "text": "I like [black] shoes."
+      "text": "I like red and black."
     }
   ],
   "blanks": [
-    "red shirt",
-    "blue jeans",
+    "red",
+    "and",
     "black"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'd810add2-a802-4d8f-98bc-2861b25467d3',
+  '39e3ed1e-f667-42e9-96ad-41f4f577f4d2',
   6,
   'speaking',
   null,
@@ -538,15 +339,15 @@ values
     },
     {
       "speaker": "B",
-      "text": "My shirt is white."
+      "text": "My shirt is red and my jeans are blue. What about you?"
     },
     {
       "speaker": "A",
-      "text": "I have blue jeans!"
+      "text": "My shoes are black and my jacket is blue."
     },
     {
       "speaker": "B",
-      "text": "Blue jeans are cool!"
+      "text": "Nice colors!"
     }
   ],
   "note": "Switch! Student becomes A, teacher becomes B."
@@ -554,63 +355,63 @@ values
   true
 ),
 (
-  'd810add2-a802-4d8f-98bc-2861b25467d3',
+  '39e3ed1e-f667-42e9-96ad-41f4f577f4d2',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "I have a red shirt. I have blue jeans. I like black shoes. My favorite outfit is my red shirt and blue jeans. Colors make clothes fun!",
+  "text": "My shirt is red and my jeans are blue. My shoes are black. I like red and blue together.",
   "questions": [
     "What color is the shirt?",
-    "What color are the jeans?",
-    "What is the favorite outfit?"
+    "What color are the shoes?",
+    "What two colors does the writer like together?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'd810add2-a802-4d8f-98bc-2861b25467d3',
+  '39e3ed1e-f667-42e9-96ad-41f4f577f4d2',
   8,
   'writing',
   null,
   null,
   $json${
   "prompts": [
-    "I have a ___ ___ (color + item).",
-    "My favorite outfit is ___.",
-    "I like ___ clothes."
+    "My shirt is ___ and my ___ is ___.",
+    "My shoes are ___.",
+    "I like ___ and ___."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'd810add2-a802-4d8f-98bc-2861b25467d3',
+  '39e3ed1e-f667-42e9-96ad-41f4f577f4d2',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Describe clothes with colors",
-    "Say 'I have a ___ ___'",
-    "Talk about a favorite outfit"
+    "Name clothes colors",
+    "Use 'and' to join two ideas",
+    "Describe an outfit with colors"
   ],
-  "challenge": "Describe your favorite outfit using colors!"
+  "challenge": "Tell me the colors of your clothes today!"
 }$json$::jsonb,
   true
 );
 
--- Lesson 4: Shopping for Clothes
+-- Lesson 3: Style and Color
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '63bf9aa7-6b86-4933-b17d-4cdacc0d7abe',
-  'Shopping for Clothes',
+  '3a5d23ca-7149-4c3d-8247-0886da95ada5',
+  'Style and Color',
   'A1',
   'teens',
   9,
-  4,
-  'Ask for a clothing item simply.',
+  3,
+  'Give a simple opinion about style using ''but''. [Bridge, Lesson 3: freer practice, role reversal, connector combined]',
   25,
   9,
   true
@@ -619,7 +420,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '63bf9aa7-6b86-4933-b17d-4cdacc0d7abe',
+  '3a5d23ca-7149-4c3d-8247-0886da95ada5',
   1,
   'title',
   null,
@@ -630,7 +431,207 @@ values
   true
 ),
 (
-  '63bf9aa7-6b86-4933-b17d-4cdacc0d7abe',
+  '3a5d23ca-7149-4c3d-8247-0886da95ada5',
+  2,
+  'warmup',
+  null,
+  null,
+  $json${
+  "display": "👟",
+  "questions": [
+    "Is your favorite shirt old or new?",
+    "Are your shoes comfortable?"
+  ],
+  "title": "Let's start!"
+}$json$::jsonb,
+  true
+),
+(
+  '3a5d23ca-7149-4c3d-8247-0886da95ada5',
+  3,
+  'vocabulary',
+  null,
+  null,
+  $json${
+  "words": [
+    {
+      "word": "But",
+      "bg": "#FAECE7"
+    },
+    {
+      "word": "Comfortable",
+      "bg": "#E1F5EE"
+    },
+    {
+      "word": "Nice",
+      "bg": "#EEEDFE"
+    },
+    {
+      "word": "Old",
+      "bg": "#FAEEDA"
+    }
+  ],
+  "title": "New Words",
+  "subtitle": "Tap a card to see it bigger."
+}$json$::jsonb,
+  true
+),
+(
+  '3a5d23ca-7149-4c3d-8247-0886da95ada5',
+  4,
+  'phrases',
+  null,
+  null,
+  $json${
+  "teacher": [
+    "Are your shoes comfortable?",
+    "Is your jacket old or new?"
+  ],
+  "student": [
+    "Yes, they are comfortable.",
+    "It's old, but I like it."
+  ],
+  "note": "Ask me first this time, then I'll ask you!",
+  "title": "Practice the Conversation"
+}$json$::jsonb,
+  true
+),
+(
+  '3a5d23ca-7149-4c3d-8247-0886da95ada5',
+  5,
+  'activity',
+  null,
+  null,
+  $json${
+  "dialogue": [
+    {
+      "speaker": "A",
+      "text": "My jacket is old, [but] I like it."
+    },
+    {
+      "speaker": "B",
+      "text": "My shoes are [comfortable]."
+    },
+    {
+      "speaker": "A",
+      "text": "They are [nice] too."
+    }
+  ],
+  "blanks": [
+    "but",
+    "comfortable",
+    "nice"
+  ]
+}$json$::jsonb,
+  true
+),
+(
+  '3a5d23ca-7149-4c3d-8247-0886da95ada5',
+  6,
+  'speaking',
+  null,
+  null,
+  $json${
+  "dialogue": [
+    {
+      "speaker": "A",
+      "text": "Is your jacket old or new?"
+    },
+    {
+      "speaker": "B",
+      "text": "It's old, but I like it. Are your shoes comfortable?"
+    },
+    {
+      "speaker": "A",
+      "text": "Yes, they're comfortable and nice."
+    },
+    {
+      "speaker": "B",
+      "text": "Your turn to ask me something!"
+    }
+  ],
+  "note": "Student asks first this time. Teacher answers, then asks back."
+}$json$::jsonb,
+  true
+),
+(
+  '3a5d23ca-7149-4c3d-8247-0886da95ada5',
+  7,
+  'reading',
+  null,
+  null,
+  $json${
+  "text": "My jacket is old, but I like it. My shoes are new. They are comfortable and nice.",
+  "questions": [
+    "Is the jacket old or new?",
+    "Does the writer like the jacket?",
+    "Are the shoes comfortable?"
+  ]
+}$json$::jsonb,
+  true
+),
+(
+  '3a5d23ca-7149-4c3d-8247-0886da95ada5',
+  8,
+  'writing',
+  null,
+  null,
+  $json${
+  "prompts": [
+    "My ___ is old, but ___.",
+    "My ___ are comfortable.",
+    "I like them because ___."
+  ]
+}$json$::jsonb,
+  true
+),
+(
+  '3a5d23ca-7149-4c3d-8247-0886da95ada5',
+  9,
+  'review',
+  null,
+  null,
+  $json${
+  "checklist": [
+    "Use 'but' to join two ideas",
+    "Say 'comfortable' and 'nice'",
+    "Give a simple opinion about clothes"
+  ],
+  "challenge": "Tell me about an old thing you still like, using 'but'!"
+}$json$::jsonb,
+  true
+);
+
+-- Lesson 4: Shopping for Clothes
+insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
+values (
+  '8326e99d-04ac-45bc-8c70-36894792006d',
+  'Shopping for Clothes',
+  'A1',
+  'teens',
+  9,
+  4,
+  'Combine clothes vocabulary into a shopping conversation. [Bridge, Lesson 4: production]',
+  25,
+  9,
+  true
+);
+
+insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
+values
+(
+  '8326e99d-04ac-45bc-8c70-36894792006d',
+  1,
+  'title',
+  null,
+  null,
+  $json${
+  "badge": "A1 · Beginner · Teens"
+}$json$::jsonb,
+  true
+),
+(
+  '8326e99d-04ac-45bc-8c70-36894792006d',
   2,
   'warmup',
   null,
@@ -639,14 +640,14 @@ values
   "display": "🛍️",
   "questions": [
     "Do you like shopping for clothes?",
-    "What clothes do you want to buy?"
+    "Do you try clothes on first?"
   ],
-  "title": "Let's Start!"
+  "title": "Let's start!"
 }$json$::jsonb,
   true
 ),
 (
-  '63bf9aa7-6b86-4933-b17d-4cdacc0d7abe',
+  '8326e99d-04ac-45bc-8c70-36894792006d',
   3,
   'vocabulary',
   null,
@@ -654,15 +655,215 @@ values
   $json${
   "words": [
     {
-      "word": "I Want",
+      "word": "How much",
       "bg": "#FAECE7"
     },
     {
-      "word": "Can I Have This",
+      "word": "Try on",
       "bg": "#E1F5EE"
     },
     {
-      "word": "Shop",
+      "word": "Buy",
+      "bg": "#EEEDFE"
+    },
+    {
+      "word": "Size",
+      "bg": "#FAEEDA"
+    }
+  ],
+  "title": "New Words",
+  "subtitle": "Tap a card to see it bigger."
+}$json$::jsonb,
+  true
+),
+(
+  '8326e99d-04ac-45bc-8c70-36894792006d',
+  4,
+  'phrases',
+  null,
+  null,
+  $json${
+  "teacher": [
+    "How much is this shirt?",
+    "Can I try it on?"
+  ],
+  "student": [
+    "It's 10 dollars.",
+    "Yes, you can try it on."
+  ],
+  "note": "Put it all together: color + opinion + shopping words.",
+  "title": "Practice the Conversation"
+}$json$::jsonb,
+  true
+),
+(
+  '8326e99d-04ac-45bc-8c70-36894792006d',
+  5,
+  'activity',
+  null,
+  null,
+  $json${
+  "dialogue": [
+    {
+      "speaker": "A",
+      "text": "[How much] is this jacket?"
+    },
+    {
+      "speaker": "B",
+      "text": "Can I [try on] this shirt?"
+    },
+    {
+      "speaker": "A",
+      "text": "I want to [buy] it."
+    }
+  ],
+  "blanks": [
+    "how much",
+    "try on",
+    "buy"
+  ]
+}$json$::jsonb,
+  true
+),
+(
+  '8326e99d-04ac-45bc-8c70-36894792006d',
+  6,
+  'speaking',
+  null,
+  null,
+  $json${
+  "dialogue": [
+    {
+      "speaker": "A",
+      "text": "How much is this jacket?"
+    },
+    {
+      "speaker": "B",
+      "text": "It's 20 dollars. Can I help you?"
+    },
+    {
+      "speaker": "A",
+      "text": "Can I try it on? I like the color, but I want the right size."
+    },
+    {
+      "speaker": "B",
+      "text": "Of course!"
+    }
+  ],
+  "note": "Mini role-play: shop for clothes at a pretend store."
+}$json$::jsonb,
+  true
+),
+(
+  '8326e99d-04ac-45bc-8c70-36894792006d',
+  7,
+  'reading',
+  null,
+  null,
+  $json${
+  "text": "How much is this jacket? It's 20 dollars. Can I try it on? I like the color, but I want the right size. I want to buy it.",
+  "questions": [
+    "How much is the jacket?",
+    "What does the customer want to do first?",
+    "Does the customer want to buy it?"
+  ]
+}$json$::jsonb,
+  true
+),
+(
+  '8326e99d-04ac-45bc-8c70-36894792006d',
+  8,
+  'writing',
+  null,
+  null,
+  $json${
+  "prompts": [
+    "How much is this ___?",
+    "Can I try on this ___?",
+    "I want to buy ___."
+  ]
+}$json$::jsonb,
+  true
+),
+(
+  '8326e99d-04ac-45bc-8c70-36894792006d',
+  9,
+  'review',
+  null,
+  null,
+  $json${
+  "checklist": [
+    "Ask 'How much is this?'",
+    "Ask to try something on",
+    "Say 'I want to buy ___'"
+  ],
+  "challenge": "Go shopping with me! Ask about a price and try something on."
+}$json$::jsonb,
+  true
+);
+
+-- Lesson 5: Unit Review
+insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
+values (
+  'f06ca7b6-e3ee-403a-ba13-6f619e8ed650',
+  'Unit Review',
+  'A1',
+  'teens',
+  9,
+  5,
+  'Review clothes, colors, and shopping. [Bridge, Lesson 5: tier-matched review]',
+  25,
+  9,
+  true
+);
+
+insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
+values
+(
+  'f06ca7b6-e3ee-403a-ba13-6f619e8ed650',
+  1,
+  'title',
+  null,
+  null,
+  $json${
+  "badge": "A1 · Beginner · Teens"
+}$json$::jsonb,
+  true
+),
+(
+  'f06ca7b6-e3ee-403a-ba13-6f619e8ed650',
+  2,
+  'warmup',
+  null,
+  null,
+  $json${
+  "display": "👕",
+  "questions": [
+    "What are you wearing today?",
+    "Do you like shopping?"
+  ],
+  "title": "Let's start!"
+}$json$::jsonb,
+  true
+),
+(
+  'f06ca7b6-e3ee-403a-ba13-6f619e8ed650',
+  3,
+  'vocabulary',
+  null,
+  null,
+  $json${
+  "words": [
+    {
+      "word": "Wearing",
+      "bg": "#FAECE7"
+    },
+    {
+      "word": "Color",
+      "bg": "#E1F5EE"
+    },
+    {
+      "word": "But",
       "bg": "#EEEDFE"
     },
     {
@@ -676,207 +877,7 @@ values
   true
 ),
 (
-  '63bf9aa7-6b86-4933-b17d-4cdacc0d7abe',
-  4,
-  'phrases',
-  null,
-  null,
-  $json${
-  "teacher": [
-    "What do you want?",
-    "Can I help you?"
-  ],
-  "student": [
-    "I want a jacket.",
-    "Can I have this shirt, please?"
-  ],
-  "note": "Practice like you're really in a clothes shop!",
-  "title": "Practice the Conversation"
-}$json$::jsonb,
-  true
-),
-(
-  '63bf9aa7-6b86-4933-b17d-4cdacc0d7abe',
-  5,
-  'activity',
-  null,
-  null,
-  $json${
-  "dialogue": [
-    {
-      "speaker": "A",
-      "text": "[I want] a jacket."
-    },
-    {
-      "speaker": "B",
-      "text": "[Can I have this] shirt?"
-    },
-    {
-      "speaker": "A",
-      "text": "I want to [buy] shoes."
-    }
-  ],
-  "blanks": [
-    "I want",
-    "Can I have this",
-    "buy"
-  ]
-}$json$::jsonb,
-  true
-),
-(
-  '63bf9aa7-6b86-4933-b17d-4cdacc0d7abe',
-  6,
-  'speaking',
-  null,
-  null,
-  $json${
-  "dialogue": [
-    {
-      "speaker": "A",
-      "text": "What do you want to buy?"
-    },
-    {
-      "speaker": "B",
-      "text": "I want a new jacket."
-    },
-    {
-      "speaker": "A",
-      "text": "Can I have this shirt, please?"
-    },
-    {
-      "speaker": "B",
-      "text": "Yes, of course!"
-    }
-  ],
-  "note": "Switch! Student becomes A, teacher becomes B."
-}$json$::jsonb,
-  true
-),
-(
-  '63bf9aa7-6b86-4933-b17d-4cdacc0d7abe',
-  7,
-  'reading',
-  null,
-  null,
-  $json${
-  "text": "I go shopping for clothes. I want a jacket. I say, 'Can I have this shirt, please?' Shopping is fun when I know the right words!",
-  "questions": [
-    "What does the writer want?",
-    "What does the writer say in the shop?",
-    "Is shopping fun?"
-  ]
-}$json$::jsonb,
-  true
-),
-(
-  '63bf9aa7-6b86-4933-b17d-4cdacc0d7abe',
-  8,
-  'writing',
-  null,
-  null,
-  $json${
-  "prompts": [
-    "I want a ___.",
-    "Can I have this ___?",
-    "I want to buy ___."
-  ]
-}$json$::jsonb,
-  true
-),
-(
-  '63bf9aa7-6b86-4933-b17d-4cdacc0d7abe',
-  9,
-  'review',
-  null,
-  null,
-  $json${
-  "checklist": [
-    "Say 'I want a ___'",
-    "Say 'Can I have this ___?'",
-    "Practice shopping for clothes"
-  ],
-  "challenge": "Ask me for a piece of clothing like you're in a shop!"
-}$json$::jsonb,
-  true
-);
-
--- Lesson 5: Unit Review
-insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
-values (
-  '6ab9bdda-a8ce-4cb4-8dda-badd3af034e3',
-  'Unit Review',
-  'A1',
-  'teens',
-  9,
-  5,
-  'Describe clothes, colors, and a simple shopping request.',
-  25,
-  9,
-  true
-);
-
-insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
-values
-(
-  '6ab9bdda-a8ce-4cb4-8dda-badd3af034e3',
-  1,
-  'title',
-  null,
-  null,
-  $json${
-  "badge": "A1 · Beginner · Teens"
-}$json$::jsonb,
-  true
-),
-(
-  '6ab9bdda-a8ce-4cb4-8dda-badd3af034e3',
-  2,
-  'warmup',
-  null,
-  null,
-  $json${
-  "display": "👕",
-  "questions": [
-    "What clothes words do you remember?",
-    "What are you wearing today?"
-  ],
-  "title": "Let's Review!"
-}$json$::jsonb,
-  true
-),
-(
-  '6ab9bdda-a8ce-4cb4-8dda-badd3af034e3',
-  3,
-  'vocabulary',
-  null,
-  null,
-  $json${
-  "words": [
-    {
-      "word": "Shirt",
-      "bg": "#FAECE7"
-    },
-    {
-      "word": "Jeans",
-      "bg": "#E1F5EE"
-    },
-    {
-      "word": "Wearing",
-      "bg": "#EEEDFE"
-    },
-    {
-      "word": "Buy",
-      "bg": "#FAEEDA"
-    }
-  ],
-  "title": "Review Words",
-  "subtitle": "Tap a card to see it bigger."
-}$json$::jsonb,
-  true
-),
-(
-  '6ab9bdda-a8ce-4cb4-8dda-badd3af034e3',
+  'f06ca7b6-e3ee-403a-ba13-6f619e8ed650',
   4,
   'phrases',
   null,
@@ -884,11 +885,11 @@ values
   $json${
   "teacher": [
     "What are you wearing?",
-    "What do you want to buy?"
+    "Do you like shopping for clothes?"
   ],
   "student": [
-    "I'm wearing a shirt.",
-    "I want to buy shoes."
+    "I'm wearing a blue shirt.",
+    "Yes, I like shopping."
   ],
   "note": "Use everything you learned this unit!",
   "title": "Practice the Conversation"
@@ -896,7 +897,7 @@ values
   true
 ),
 (
-  '6ab9bdda-a8ce-4cb4-8dda-badd3af034e3',
+  'f06ca7b6-e3ee-403a-ba13-6f619e8ed650',
   5,
   'activity',
   null,
@@ -905,27 +906,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "I am [wearing] a shirt."
+      "text": "I'm [wearing] a red shirt."
     },
     {
       "speaker": "B",
-      "text": "I have blue [jeans]."
+      "text": "I like the [color]."
     },
     {
       "speaker": "A",
-      "text": "I want to [buy] a jacket."
+      "text": "It's old, [but] I like it."
     }
   ],
   "blanks": [
     "wearing",
-    "jeans",
-    "buy"
+    "color",
+    "but"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '6ab9bdda-a8ce-4cb4-8dda-badd3af034e3',
+  'f06ca7b6-e3ee-403a-ba13-6f619e8ed650',
   6,
   'speaking',
   null,
@@ -934,19 +935,19 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "What are you wearing today?"
+      "text": "Tell me about your clothes today."
     },
     {
       "speaker": "B",
-      "text": "I'm wearing a red shirt and jeans."
+      "text": "I'm wearing a red shirt and blue jeans. I like the colors together."
     },
     {
       "speaker": "A",
-      "text": "What do you want to buy?"
+      "text": "My shoes are old, but I still like them."
     },
     {
       "speaker": "B",
-      "text": "I want to buy new shoes!"
+      "text": "Nice style!"
     }
   ],
   "note": "Switch! Student becomes A, teacher becomes B."
@@ -954,50 +955,49 @@ values
   true
 ),
 (
-  '6ab9bdda-a8ce-4cb4-8dda-badd3af034e3',
+  'f06ca7b6-e3ee-403a-ba13-6f619e8ed650',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "Today I am wearing a red shirt and blue jeans. I like black shoes too. When I go shopping, I say 'I want' and 'Can I have this?' Clothes and style are fun!",
+  "text": "I'm wearing a red shirt and blue jeans. I like the colors together. My shoes are old, but I still like them.",
   "questions": [
     "What is the writer wearing?",
-    "What color shoes does the writer like?",
-    "What does the writer say when shopping?"
+    "What colors does the writer like together?",
+    "Are the shoes old or new?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '6ab9bdda-a8ce-4cb4-8dda-badd3af034e3',
+  'f06ca7b6-e3ee-403a-ba13-6f619e8ed650',
   8,
   'writing',
   null,
   null,
   $json${
   "prompts": [
-    "I am wearing ___.",
-    "I like ___ clothes.",
-    "I want to buy ___."
+    "I'm wearing ___.",
+    "I like the ___.",
+    "My ___ is old, but ___."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '6ab9bdda-a8ce-4cb4-8dda-badd3af034e3',
+  'f06ca7b6-e3ee-403a-ba13-6f619e8ed650',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Name clothes items",
-    "Describe clothes with colors",
-    "Describe what someone is wearing",
-    "Ask for clothes in a shop"
+    "Describe my clothes and colors",
+    "Give a simple opinion with 'but'",
+    "Talk about shopping"
   ],
-  "challenge": "Describe your outfit and then 'buy' something from me!"
+  "challenge": "Tell me all about your style and clothes!"
 }$json$::jsonb,
   true
 );

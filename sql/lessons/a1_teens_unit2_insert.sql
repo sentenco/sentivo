@@ -1,16 +1,17 @@
--- A1 Teens Unit 2: Family and People I Know (5 lessons)
+-- A1 Teens Unit 2: My Family (5 lessons) — TIERED (Foundation)
+-- Regenerated per the Sentivo Intra-Level Progression Framework + lesson-level escalation + task rotation.
 -- Run this whole script in the Supabase SQL editor.
 
 -- Lesson 1: My Family
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '75bd9355-a220-4298-b905-58b97f044131',
+  'a9351fe8-670a-424d-989d-0d0fdc6ed0a8',
   'My Family',
   'A1',
   'teens',
   2,
   1,
-  'Name basic family members.',
+  'Name immediate family members. [Foundation, Lesson 1: notice/receptive]',
   25,
   9,
   true
@@ -19,7 +20,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '75bd9355-a220-4298-b905-58b97f044131',
+  'a9351fe8-670a-424d-989d-0d0fdc6ed0a8',
   1,
   'title',
   null,
@@ -30,7 +31,7 @@ values
   true
 ),
 (
-  '75bd9355-a220-4298-b905-58b97f044131',
+  'a9351fe8-670a-424d-989d-0d0fdc6ed0a8',
   2,
   'warmup',
   null,
@@ -38,15 +39,15 @@ values
   $json${
   "display": "👨‍👩‍👧‍👦",
   "questions": [
-    "Who is in your family?",
-    "Do you have siblings?"
+    "Do you have a sister or brother?",
+    "Who is in your family?"
   ],
-  "title": "Let's Start!"
+  "title": "Let's start!"
 }$json$::jsonb,
   true
 ),
 (
-  '75bd9355-a220-4298-b905-58b97f044131',
+  'a9351fe8-670a-424d-989d-0d0fdc6ed0a8',
   3,
   'vocabulary',
   null,
@@ -54,11 +55,11 @@ values
   $json${
   "words": [
     {
-      "word": "Mother",
+      "word": "Mom",
       "bg": "#FAECE7"
     },
     {
-      "word": "Father",
+      "word": "Dad",
       "bg": "#E1F5EE"
     },
     {
@@ -76,7 +77,7 @@ values
   true
 ),
 (
-  '75bd9355-a220-4298-b905-58b97f044131',
+  'a9351fe8-670a-424d-989d-0d0fdc6ed0a8',
   4,
   'phrases',
   null,
@@ -84,19 +85,19 @@ values
   $json${
   "teacher": [
     "Who is this?",
-    "Is this your mother?"
+    "Is this your mom?"
   ],
   "student": [
-    "This is my mother.",
-    "Yes, this is my father!"
+    "This is my mom.",
+    "Yes, this is my dad."
   ],
-  "note": "Think of a real family photo!",
+  "note": "Point to a family photo when you practice!",
   "title": "Practice the Conversation"
 }$json$::jsonb,
   true
 ),
 (
-  '75bd9355-a220-4298-b905-58b97f044131',
+  'a9351fe8-670a-424d-989d-0d0fdc6ed0a8',
   5,
   'activity',
   null,
@@ -105,27 +106,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "This is my [mother]."
+      "text": "This is my [mom]."
     },
     {
       "speaker": "B",
-      "text": "This is my [father]."
+      "text": "This is my [dad]."
     },
     {
       "speaker": "A",
-      "text": "I have a [sister]."
+      "text": "I have one [sister]."
     }
   ],
   "blanks": [
-    "mother",
-    "father",
+    "mom",
+    "dad",
     "sister"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '75bd9355-a220-4298-b905-58b97f044131',
+  'a9351fe8-670a-424d-989d-0d0fdc6ed0a8',
   6,
   'speaking',
   null,
@@ -134,43 +135,43 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "Who is this?"
+      "text": "This is my mom."
     },
     {
       "speaker": "B",
-      "text": "This is my brother."
+      "text": "This is my dad."
     },
     {
       "speaker": "A",
-      "text": "Do you have siblings?"
+      "text": "I have one sister."
     },
     {
       "speaker": "B",
-      "text": "Yes, one sister and one brother!"
+      "text": "I have one brother!"
     }
   ],
-  "note": "Switch! Student becomes A, teacher becomes B."
+  "note": "Teacher says the line first. Student repeats, then says it alone."
 }$json$::jsonb,
   true
 ),
 (
-  '75bd9355-a220-4298-b905-58b97f044131',
+  'a9351fe8-670a-424d-989d-0d0fdc6ed0a8',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "This is my family. This is my mother. This is my father. I have one sister and one brother. I love my family!",
+  "text": "This is my family. This is my mom. This is my dad. I have one sister and one brother.",
   "questions": [
-    "How many siblings does the writer have?",
     "Who is in the family?",
-    "Does the writer love their family?"
+    "How many sisters?",
+    "How many brothers?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '75bd9355-a220-4298-b905-58b97f044131',
+  'a9351fe8-670a-424d-989d-0d0fdc6ed0a8',
   8,
   'writing',
   null,
@@ -178,25 +179,25 @@ values
   $json${
   "prompts": [
     "This is my ___.",
-    "I have a ___.",
-    "My family has ___ people."
+    "I have ___ sister(s).",
+    "I have ___ brother(s)."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '75bd9355-a220-4298-b905-58b97f044131',
+  'a9351fe8-670a-424d-989d-0d0fdc6ed0a8',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Name four family members",
+    "Name 4 family members",
     "Say 'This is my ___'",
     "Talk about my family"
   ],
-  "challenge": "Tell me about your family right now!"
+  "challenge": "Tell me who is in your family!"
 }$json$::jsonb,
   true
 );
@@ -204,13 +205,13 @@ values
 -- Lesson 2: Talking About Family
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '50c9a74c-8d19-4edc-acf5-ba28d42f6ba8',
+  'b428c7b2-3fd4-4336-a4d0-dc4cc9d6479b',
   'Talking About Family',
   'A1',
   'teens',
   2,
   2,
-  'Say simple facts about family members.',
+  'Describe family members with simple adjectives. [Foundation, Lesson 2: controlled practice]',
   25,
   9,
   true
@@ -219,7 +220,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '50c9a74c-8d19-4edc-acf5-ba28d42f6ba8',
+  'b428c7b2-3fd4-4336-a4d0-dc4cc9d6479b',
   1,
   'title',
   null,
@@ -230,23 +231,23 @@ values
   true
 ),
 (
-  '50c9a74c-8d19-4edc-acf5-ba28d42f6ba8',
+  'b428c7b2-3fd4-4336-a4d0-dc4cc9d6479b',
   2,
   'warmup',
   null,
   null,
   $json${
-  "display": "💬",
+  "display": "👵",
   "questions": [
-    "What does your mother do?",
-    "How old is your brother or sister?"
+    "Is your grandma kind?",
+    "Is someone in your family funny?"
   ],
-  "title": "Let's Start!"
+  "title": "Let's start!"
 }$json$::jsonb,
   true
 ),
 (
-  '50c9a74c-8d19-4edc-acf5-ba28d42f6ba8',
+  'b428c7b2-3fd4-4336-a4d0-dc4cc9d6479b',
   3,
   'vocabulary',
   null,
@@ -254,19 +255,19 @@ values
   $json${
   "words": [
     {
-      "word": "Parents",
+      "word": "Grandma",
       "bg": "#FAECE7"
     },
     {
-      "word": "Have Got",
+      "word": "Grandpa",
       "bg": "#E1F5EE"
     },
     {
-      "word": "Job",
+      "word": "Kind",
       "bg": "#EEEDFE"
     },
     {
-      "word": "Old",
+      "word": "Funny",
       "bg": "#FAEEDA"
     }
   ],
@@ -276,27 +277,27 @@ values
   true
 ),
 (
-  '50c9a74c-8d19-4edc-acf5-ba28d42f6ba8',
+  'b428c7b2-3fd4-4336-a4d0-dc4cc9d6479b',
   4,
   'phrases',
   null,
   null,
   $json${
   "teacher": [
-    "What does your father do?",
-    "How old is your mother?"
+    "Is your grandma kind?",
+    "Is your dad funny?"
   ],
   "student": [
-    "My father is a teacher.",
-    "My mother is forty."
+    "Yes, my grandma is kind.",
+    "Yes, my dad is funny."
   ],
-  "note": "Say one real fact about a family member!",
+  "note": "Use the word bank: grandma, grandpa, kind, funny.",
   "title": "Practice the Conversation"
 }$json$::jsonb,
   true
 ),
 (
-  '50c9a74c-8d19-4edc-acf5-ba28d42f6ba8',
+  'b428c7b2-3fd4-4336-a4d0-dc4cc9d6479b',
   5,
   'activity',
   null,
@@ -305,27 +306,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "I have [got] a sister."
+      "text": "My [grandma] is kind."
     },
     {
       "speaker": "B",
-      "text": "My [parents] work hard."
+      "text": "My [grandpa] is funny."
     },
     {
       "speaker": "A",
-      "text": "My sister is [old]er than me."
+      "text": "My mom is [kind] too."
     }
   ],
   "blanks": [
-    "got",
-    "parents",
-    "old"
+    "grandma",
+    "grandpa",
+    "kind"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '50c9a74c-8d19-4edc-acf5-ba28d42f6ba8',
+  'b428c7b2-3fd4-4336-a4d0-dc4cc9d6479b',
   6,
   'speaking',
   null,
@@ -334,19 +335,19 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "What does your mother do?"
+      "text": "Is your grandma kind?"
     },
     {
       "speaker": "B",
-      "text": "My mother is a doctor."
+      "text": "Yes, my grandma is kind. Is your grandpa funny?"
     },
     {
       "speaker": "A",
-      "text": "I have got a younger brother!"
+      "text": "Yes, my grandpa is very funny!"
     },
     {
       "speaker": "B",
-      "text": "That's nice!"
+      "text": "Nice family!"
     }
   ],
   "note": "Switch! Student becomes A, teacher becomes B."
@@ -354,49 +355,49 @@ values
   true
 ),
 (
-  '50c9a74c-8d19-4edc-acf5-ba28d42f6ba8',
+  'b428c7b2-3fd4-4336-a4d0-dc4cc9d6479b',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "I have got a big family. My mother is a teacher. My father is a driver. My parents work hard. I love them very much.",
+  "text": "My grandma is kind. My grandpa is funny. My mom is kind too. My family is nice.",
   "questions": [
-    "What does the mother do?",
-    "What does the father do?",
-    "Do the parents work hard?"
+    "Is grandma kind or unkind?",
+    "Is grandpa funny or serious?",
+    "Is mom kind or unkind?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '50c9a74c-8d19-4edc-acf5-ba28d42f6ba8',
+  'b428c7b2-3fd4-4336-a4d0-dc4cc9d6479b',
   8,
   'writing',
   null,
   null,
   $json${
   "prompts": [
-    "My mother is a ___.",
-    "My father is a ___.",
-    "I have got a ___."
+    "My grandma is ___.",
+    "My grandpa is ___.",
+    "My family is ___."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '50c9a74c-8d19-4edc-acf5-ba28d42f6ba8',
+  'b428c7b2-3fd4-4336-a4d0-dc4cc9d6479b',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Say 'I have got a ___'",
-    "Say a family member's job",
-    "Talk about family facts"
+    "Say 'kind' and 'funny'",
+    "Describe a family member",
+    "Say 'My ___ is ___'"
   ],
-  "challenge": "Tell me one fact about someone in your family!"
+  "challenge": "Describe one person in your family!"
 }$json$::jsonb,
   true
 );
@@ -404,13 +405,13 @@ values
 -- Lesson 3: People I Know
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '58b4bd80-c084-44ab-86b6-03c02be47689',
+  '1cb88731-6cbd-4281-86df-b0db71509f30',
   'People I Know',
   'A1',
   'teens',
   2,
   3,
-  'Describe people in the family with simple words.',
+  'Talk about cousins, aunts, and uncles. [Foundation, Lesson 3: freer practice, role reversal]',
   25,
   9,
   true
@@ -419,7 +420,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '58b4bd80-c084-44ab-86b6-03c02be47689',
+  '1cb88731-6cbd-4281-86df-b0db71509f30',
   1,
   'title',
   null,
@@ -430,23 +431,23 @@ values
   true
 ),
 (
-  '58b4bd80-c084-44ab-86b6-03c02be47689',
+  '1cb88731-6cbd-4281-86df-b0db71509f30',
   2,
   'warmup',
   null,
   null,
   $json${
-  "display": "📏",
+  "display": "👪",
   "questions": [
-    "Is your brother tall or short?",
-    "Who is the oldest in your family?"
+    "Do you have a cousin?",
+    "Do you have an aunt or uncle?"
   ],
-  "title": "Let's Start!"
+  "title": "Let's start!"
 }$json$::jsonb,
   true
 ),
 (
-  '58b4bd80-c084-44ab-86b6-03c02be47689',
+  '1cb88731-6cbd-4281-86df-b0db71509f30',
   3,
   'vocabulary',
   null,
@@ -454,19 +455,19 @@ values
   $json${
   "words": [
     {
-      "word": "Tall",
+      "word": "Cousin",
       "bg": "#FAECE7"
     },
     {
-      "word": "Short",
+      "word": "Aunt",
       "bg": "#E1F5EE"
     },
     {
-      "word": "Young",
+      "word": "Uncle",
       "bg": "#EEEDFE"
     },
     {
-      "word": "Old",
+      "word": "Family",
       "bg": "#FAEEDA"
     }
   ],
@@ -476,27 +477,27 @@ values
   true
 ),
 (
-  '58b4bd80-c084-44ab-86b6-03c02be47689',
+  '1cb88731-6cbd-4281-86df-b0db71509f30',
   4,
   'phrases',
   null,
   null,
   $json${
   "teacher": [
-    "Is your father tall?",
-    "Is your sister young?"
+    "Do you have a cousin?",
+    "How many aunts do you have?"
   ],
   "student": [
-    "Yes, he is tall.",
-    "Yes, she is young."
+    "Yes, I have two cousins.",
+    "I have one aunt."
   ],
-  "note": "Describe a real family member!",
+  "note": "Ask me first this time, then I'll ask you!",
   "title": "Practice the Conversation"
 }$json$::jsonb,
   true
 ),
 (
-  '58b4bd80-c084-44ab-86b6-03c02be47689',
+  '1cb88731-6cbd-4281-86df-b0db71509f30',
   5,
   'activity',
   null,
@@ -505,27 +506,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "My brother is [tall]."
+      "text": "I have a [cousin]."
     },
     {
       "speaker": "B",
-      "text": "My grandma is [old]."
+      "text": "I have an [aunt] and an [uncle]."
     },
     {
       "speaker": "A",
-      "text": "My cousin is [young]."
+      "text": "My whole [family] is big!"
     }
   ],
   "blanks": [
-    "tall",
-    "old",
-    "young"
+    "cousin",
+    "aunt",
+    "family"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '58b4bd80-c084-44ab-86b6-03c02be47689',
+  '1cb88731-6cbd-4281-86df-b0db71509f30',
   6,
   'speaking',
   null,
@@ -534,69 +535,69 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "Is your father tall or short?"
+      "text": "Do you have a cousin?"
     },
     {
       "speaker": "B",
-      "text": "My father is tall!"
+      "text": "Yes, I have two cousins. Do you have an aunt?"
     },
     {
       "speaker": "A",
-      "text": "Is your sister young or old?"
+      "text": "Yes, I have one aunt and one uncle."
     },
     {
       "speaker": "B",
-      "text": "She is young, only ten!"
+      "text": "Your turn to ask me something!"
     }
   ],
-  "note": "Switch! Student becomes A, teacher becomes B."
+  "note": "Student asks first this time. Teacher answers, then asks back."
 }$json$::jsonb,
   true
 ),
 (
-  '58b4bd80-c084-44ab-86b6-03c02be47689',
+  '1cb88731-6cbd-4281-86df-b0db71509f30',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "My brother is tall. My sister is short. My grandma is old and kind. My cousin is young. My family has many different people!",
+  "text": "I have two cousins. I have one aunt and one uncle. My family is big!",
   "questions": [
-    "Is the brother tall or short?",
-    "Is the sister tall or short?",
-    "Is the grandma young or old?"
+    "How many cousins?",
+    "How many aunts?",
+    "Is the family big or small?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '58b4bd80-c084-44ab-86b6-03c02be47689',
+  '1cb88731-6cbd-4281-86df-b0db71509f30',
   8,
   'writing',
   null,
   null,
   $json${
   "prompts": [
-    "My ___ is tall/short.",
-    "My ___ is young/old.",
+    "I have ___ cousin(s).",
+    "I have ___ aunt(s) and ___ uncle(s).",
     "My family is ___."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '58b4bd80-c084-44ab-86b6-03c02be47689',
+  '1cb88731-6cbd-4281-86df-b0db71509f30',
   9,
   'review',
   null,
   null,
   $json${
   "checklist": [
-    "Say 'tall', 'short', 'young', 'old'",
-    "Describe one family member",
-    "Complete 'My ___ is ___'"
+    "Name cousin, aunt, uncle",
+    "Ask about someone's family",
+    "Say if my family is big or small"
   ],
-  "challenge": "Describe one family member using two adjectives!"
+  "challenge": "Ask me about my family, then tell me about yours!"
 }$json$::jsonb,
   true
 );
@@ -604,13 +605,13 @@ values
 -- Lesson 4: Family Questions
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '4e2b077a-be1e-40cb-8a3c-c5aa52adf153',
+  '5176262c-1c4c-49f8-94d2-9accded32ce0',
   'Family Questions',
   'A1',
   'teens',
   2,
   4,
-  'Answer simple questions about family.',
+  'Combine family vocabulary into a short family talk. [Foundation, Lesson 4: production]',
   25,
   9,
   true
@@ -619,7 +620,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '4e2b077a-be1e-40cb-8a3c-c5aa52adf153',
+  '5176262c-1c4c-49f8-94d2-9accded32ce0',
   1,
   'title',
   null,
@@ -630,23 +631,23 @@ values
   true
 ),
 (
-  '4e2b077a-be1e-40cb-8a3c-c5aa52adf153',
+  '5176262c-1c4c-49f8-94d2-9accded32ce0',
   2,
   'warmup',
   null,
   null,
   $json${
-  "display": "❓",
+  "display": "❤️",
   "questions": [
-    "Do you have a sister?",
-    "How many brothers do you have?"
+    "Is your family big or small?",
+    "Do you love your family?"
   ],
-  "title": "Let's Start!"
+  "title": "Let's start!"
 }$json$::jsonb,
   true
 ),
 (
-  '4e2b077a-be1e-40cb-8a3c-c5aa52adf153',
+  '5176262c-1c4c-49f8-94d2-9accded32ce0',
   3,
   'vocabulary',
   null,
@@ -654,19 +655,19 @@ values
   $json${
   "words": [
     {
-      "word": "Do You Have",
+      "word": "Big",
       "bg": "#FAECE7"
     },
     {
-      "word": "How Many",
+      "word": "Small",
       "bg": "#E1F5EE"
     },
     {
-      "word": "Sibling",
+      "word": "Together",
       "bg": "#EEEDFE"
     },
     {
-      "word": "Cousin",
+      "word": "Love",
       "bg": "#FAEEDA"
     }
   ],
@@ -676,27 +677,27 @@ values
   true
 ),
 (
-  '4e2b077a-be1e-40cb-8a3c-c5aa52adf153',
+  '5176262c-1c4c-49f8-94d2-9accded32ce0',
   4,
   'phrases',
   null,
   null,
   $json${
   "teacher": [
-    "Do you have a sister?",
-    "How many brothers do you have?"
+    "Is your family big or small?",
+    "Do you like being together?"
   ],
   "student": [
-    "Yes, I have one sister.",
-    "I have two brothers."
+    "My family is big.",
+    "Yes, I love my family."
   ],
-  "note": "Answer truthfully about your own family!",
+  "note": "Put it all together: family members + description.",
   "title": "Practice the Conversation"
 }$json$::jsonb,
   true
 ),
 (
-  '4e2b077a-be1e-40cb-8a3c-c5aa52adf153',
+  '5176262c-1c4c-49f8-94d2-9accded32ce0',
   5,
   'activity',
   null,
@@ -705,227 +706,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "[Do you have] a brother?"
+      "text": "My family is [big]."
     },
     {
       "speaker": "B",
-      "text": "[How many] cousins do you have?"
+      "text": "We are [together] every weekend."
     },
     {
       "speaker": "A",
-      "text": "I have three [cousin]s."
+      "text": "I [love] my family."
     }
   ],
   "blanks": [
-    "Do you have",
-    "How many",
-    "cousin"
+    "big",
+    "together",
+    "love"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '4e2b077a-be1e-40cb-8a3c-c5aa52adf153',
-  6,
-  'speaking',
-  null,
-  null,
-  $json${
-  "dialogue": [
-    {
-      "speaker": "A",
-      "text": "Do you have a sister?"
-    },
-    {
-      "speaker": "B",
-      "text": "Yes, I have one sister."
-    },
-    {
-      "speaker": "A",
-      "text": "How many cousins do you have?"
-    },
-    {
-      "speaker": "B",
-      "text": "I have five cousins!"
-    }
-  ],
-  "note": "Switch! Student becomes A, teacher becomes B."
-}$json$::jsonb,
-  true
-),
-(
-  '4e2b077a-be1e-40cb-8a3c-c5aa52adf153',
-  7,
-  'reading',
-  null,
-  null,
-  $json${
-  "text": "Do you have a sister? Yes, I have one sister. How many brothers do you have? I have two brothers. I have a big family!",
-  "questions": [
-    "How many sisters does the writer have?",
-    "How many brothers does the writer have?",
-    "Is it a big family?"
-  ]
-}$json$::jsonb,
-  true
-),
-(
-  '4e2b077a-be1e-40cb-8a3c-c5aa52adf153',
-  8,
-  'writing',
-  null,
-  null,
-  $json${
-  "prompts": [
-    "Do you have a sister? ___.",
-    "How many brothers? ___.",
-    "I have ___ cousins."
-  ]
-}$json$::jsonb,
-  true
-),
-(
-  '4e2b077a-be1e-40cb-8a3c-c5aa52adf153',
-  9,
-  'review',
-  null,
-  null,
-  $json${
-  "checklist": [
-    "Ask 'Do you have a ___?'",
-    "Ask 'How many ___?'",
-    "Answer family questions"
-  ],
-  "challenge": "Ask me two questions about my family!"
-}$json$::jsonb,
-  true
-);
-
--- Lesson 5: Unit Review
-insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
-values (
-  '542c175b-3a02-4130-a038-9abfef45d99e',
-  'Unit Review',
-  'A1',
-  'teens',
-  2,
-  5,
-  'Talk briefly about family using learned words and questions.',
-  25,
-  9,
-  true
-);
-
-insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
-values
-(
-  '542c175b-3a02-4130-a038-9abfef45d99e',
-  1,
-  'title',
-  null,
-  null,
-  $json${
-  "badge": "A1 · Beginner · Teens"
-}$json$::jsonb,
-  true
-),
-(
-  '542c175b-3a02-4130-a038-9abfef45d99e',
-  2,
-  'warmup',
-  null,
-  null,
-  $json${
-  "display": "👨‍👩‍👧‍👦",
-  "questions": [
-    "What family words do you remember?",
-    "Can you describe your family?"
-  ],
-  "title": "Let's Review!"
-}$json$::jsonb,
-  true
-),
-(
-  '542c175b-3a02-4130-a038-9abfef45d99e',
-  3,
-  'vocabulary',
-  null,
-  null,
-  $json${
-  "words": [
-    {
-      "word": "Mother",
-      "bg": "#FAECE7"
-    },
-    {
-      "word": "Father",
-      "bg": "#E1F5EE"
-    },
-    {
-      "word": "Tall",
-      "bg": "#EEEDFE"
-    },
-    {
-      "word": "Old",
-      "bg": "#FAEEDA"
-    }
-  ],
-  "title": "Review Words",
-  "subtitle": "Tap a card to see it bigger."
-}$json$::jsonb,
-  true
-),
-(
-  '542c175b-3a02-4130-a038-9abfef45d99e',
-  4,
-  'phrases',
-  null,
-  null,
-  $json${
-  "teacher": [
-    "Who is this?",
-    "Do you have a sister?"
-  ],
-  "student": [
-    "This is my mother.",
-    "Yes, I have one sister."
-  ],
-  "note": "Use everything you learned this unit!",
-  "title": "Practice the Conversation"
-}$json$::jsonb,
-  true
-),
-(
-  '542c175b-3a02-4130-a038-9abfef45d99e',
-  5,
-  'activity',
-  null,
-  null,
-  $json${
-  "dialogue": [
-    {
-      "speaker": "A",
-      "text": "This is my [mother]."
-    },
-    {
-      "speaker": "B",
-      "text": "My brother is [tall]."
-    },
-    {
-      "speaker": "A",
-      "text": "[Do you have] a sister?"
-    }
-  ],
-  "blanks": [
-    "mother",
-    "tall",
-    "Do you have"
-  ]
-}$json$::jsonb,
-  true
-),
-(
-  '542c175b-3a02-4130-a038-9abfef45d99e',
+  '5176262c-1c4c-49f8-94d2-9accded32ce0',
   6,
   'speaking',
   null,
@@ -938,15 +739,215 @@ values
     },
     {
       "speaker": "B",
-      "text": "I have a mother, a father, and one brother."
+      "text": "My family is big. I have a mom, a dad, two sisters, and one brother."
     },
     {
       "speaker": "A",
-      "text": "Is your brother tall?"
+      "text": "We are together every weekend. I love my family."
     },
     {
       "speaker": "B",
-      "text": "Yes, he is very tall!"
+      "text": "That sounds wonderful!"
+    }
+  ],
+  "note": "Mini talk: tell me all about your family in a few sentences."
+}$json$::jsonb,
+  true
+),
+(
+  '5176262c-1c4c-49f8-94d2-9accded32ce0',
+  7,
+  'reading',
+  null,
+  null,
+  $json${
+  "text": "My family is big. I have a mom, a dad, and two sisters. We are together every weekend. I love my family.",
+  "questions": [
+    "Is the family big or small?",
+    "Who is in the family?",
+    "When are they together?"
+  ]
+}$json$::jsonb,
+  true
+),
+(
+  '5176262c-1c4c-49f8-94d2-9accded32ce0',
+  8,
+  'writing',
+  null,
+  null,
+  $json${
+  "prompts": [
+    "My family is ___.",
+    "I have ___.",
+    "I love my family because ___."
+  ]
+}$json$::jsonb,
+  true
+),
+(
+  '5176262c-1c4c-49f8-94d2-9accded32ce0',
+  9,
+  'review',
+  null,
+  null,
+  $json${
+  "checklist": [
+    "Describe my family size",
+    "Name family members",
+    "Say I love my family"
+  ],
+  "challenge": "Tell me all about your family!"
+}$json$::jsonb,
+  true
+);
+
+-- Lesson 5: Unit Review
+insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
+values (
+  '4a487eca-34d9-438e-9910-1db95d62a20f',
+  'Unit Review',
+  'A1',
+  'teens',
+  2,
+  5,
+  'Review family vocabulary and descriptions. [Foundation, Lesson 5: tier-matched review]',
+  25,
+  9,
+  true
+);
+
+insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
+values
+(
+  '4a487eca-34d9-438e-9910-1db95d62a20f',
+  1,
+  'title',
+  null,
+  null,
+  $json${
+  "badge": "A1 · Beginner · Teens"
+}$json$::jsonb,
+  true
+),
+(
+  '4a487eca-34d9-438e-9910-1db95d62a20f',
+  2,
+  'warmup',
+  null,
+  null,
+  $json${
+  "display": "👨‍👩‍👧‍👦",
+  "questions": [
+    "Who is in your family?",
+    "Is your family big or small?"
+  ],
+  "title": "Let's start!"
+}$json$::jsonb,
+  true
+),
+(
+  '4a487eca-34d9-438e-9910-1db95d62a20f',
+  3,
+  'vocabulary',
+  null,
+  null,
+  $json${
+  "words": [
+    {
+      "word": "Family",
+      "bg": "#FAECE7"
+    },
+    {
+      "word": "Mom",
+      "bg": "#E1F5EE"
+    },
+    {
+      "word": "Kind",
+      "bg": "#EEEDFE"
+    },
+    {
+      "word": "Big",
+      "bg": "#FAEEDA"
+    }
+  ],
+  "title": "New Words",
+  "subtitle": "Tap a card to see it bigger."
+}$json$::jsonb,
+  true
+),
+(
+  '4a487eca-34d9-438e-9910-1db95d62a20f',
+  4,
+  'phrases',
+  null,
+  null,
+  $json${
+  "teacher": [
+    "Who is this?",
+    "Is your family big or small?"
+  ],
+  "student": [
+    "This is my mom.",
+    "My family is big."
+  ],
+  "note": "Use everything you learned this unit!",
+  "title": "Practice the Conversation"
+}$json$::jsonb,
+  true
+),
+(
+  '4a487eca-34d9-438e-9910-1db95d62a20f',
+  5,
+  'activity',
+  null,
+  null,
+  $json${
+  "dialogue": [
+    {
+      "speaker": "A",
+      "text": "This is my [family]."
+    },
+    {
+      "speaker": "B",
+      "text": "This is my [mom]. She is [kind]."
+    },
+    {
+      "speaker": "A",
+      "text": "My family is [big]."
+    }
+  ],
+  "blanks": [
+    "family",
+    "mom",
+    "big"
+  ]
+}$json$::jsonb,
+  true
+),
+(
+  '4a487eca-34d9-438e-9910-1db95d62a20f',
+  6,
+  'speaking',
+  null,
+  null,
+  $json${
+  "dialogue": [
+    {
+      "speaker": "A",
+      "text": "Tell me about your family."
+    },
+    {
+      "speaker": "B",
+      "text": "This is my mom. She is kind. My family is big."
+    },
+    {
+      "speaker": "A",
+      "text": "I have a cousin and an aunt too."
+    },
+    {
+      "speaker": "B",
+      "text": "Nice family!"
     }
   ],
   "note": "Switch! Student becomes A, teacher becomes B."
@@ -954,38 +955,38 @@ values
   true
 ),
 (
-  '542c175b-3a02-4130-a038-9abfef45d99e',
+  '4a487eca-34d9-438e-9910-1db95d62a20f',
   7,
   'reading',
   null,
   null,
   $json${
-  "text": "I have a big family. My mother is a teacher. My father is tall. I have one sister and one brother. My grandma is old and kind. I love my family!",
+  "text": "This is my family. My mom is kind. My family is big. I love my family.",
   "questions": [
-    "What does the mother do?",
-    "How many siblings does the writer have?",
-    "How is the grandma described?"
+    "Who is kind?",
+    "Is the family big or small?",
+    "Does the writer love the family?"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '542c175b-3a02-4130-a038-9abfef45d99e',
+  '4a487eca-34d9-438e-9910-1db95d62a20f',
   8,
   'writing',
   null,
   null,
   $json${
   "prompts": [
-    "My family has ___ people.",
+    "This is my family.",
     "My ___ is ___.",
-    "I have got a ___."
+    "My family is ___."
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '542c175b-3a02-4130-a038-9abfef45d99e',
+  '4a487eca-34d9-438e-9910-1db95d62a20f',
   9,
   'review',
   null,
@@ -993,10 +994,10 @@ values
   $json${
   "checklist": [
     "Name family members",
-    "Describe family with adjectives",
-    "Ask and answer family questions"
+    "Describe a family member",
+    "Say if my family is big or small"
   ],
-  "challenge": "Tell me all about your family right now!"
+  "challenge": "Tell me all about your family!"
 }$json$::jsonb,
   true
 );
