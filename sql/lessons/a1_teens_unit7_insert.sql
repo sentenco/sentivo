@@ -1,17 +1,19 @@
--- A1 Teens Unit 7: My Room (5 lessons) — TIERED (Combination)
--- Regenerated per the Sentivo Intra-Level Progression Framework + lesson-level escalation + task rotation.
+-- A1 Teens Unit 7: My Room (5 lessons) — TIERED + ROTATED
+-- Per docs/curriculum/a1-teens-adults-rotation-rework.md. Vocab/reading/writing/review
+-- unchanged from the tiered pilot; only activity+speaking reshuffled to the new
+-- per-unit format assignment, keeping each lesson's difficulty position intact.
 -- Run this whole script in the Supabase SQL editor.
 
 -- Lesson 1: My Room
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '909f4e72-0452-43a6-96fe-7b8a26002cc4',
+  '5a46bbef-8719-4582-a2ee-ded2fd6e575b',
   'My Room',
   'A1',
   'teens',
   7,
   1,
-  'Name furniture and room objects. [Combination, Lesson 1: notice/receptive]',
+  'Name furniture and room objects. [Combination, L1, format R: short scripted role-play]',
   25,
   9,
   true
@@ -20,7 +22,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '909f4e72-0452-43a6-96fe-7b8a26002cc4',
+  '5a46bbef-8719-4582-a2ee-ded2fd6e575b',
   1,
   'title',
   null,
@@ -31,7 +33,7 @@ values
   true
 ),
 (
-  '909f4e72-0452-43a6-96fe-7b8a26002cc4',
+  '5a46bbef-8719-4582-a2ee-ded2fd6e575b',
   2,
   'warmup',
   null,
@@ -47,7 +49,7 @@ values
   true
 ),
 (
-  '909f4e72-0452-43a6-96fe-7b8a26002cc4',
+  '5a46bbef-8719-4582-a2ee-ded2fd6e575b',
   3,
   'vocabulary',
   null,
@@ -77,7 +79,7 @@ values
   true
 ),
 (
-  '909f4e72-0452-43a6-96fe-7b8a26002cc4',
+  '5a46bbef-8719-4582-a2ee-ded2fd6e575b',
   4,
   'phrases',
   null,
@@ -97,7 +99,7 @@ values
   true
 ),
 (
-  '909f4e72-0452-43a6-96fe-7b8a26002cc4',
+  '5a46bbef-8719-4582-a2ee-ded2fd6e575b',
   5,
   'activity',
   null,
@@ -126,7 +128,7 @@ values
   true
 ),
 (
-  '909f4e72-0452-43a6-96fe-7b8a26002cc4',
+  '5a46bbef-8719-4582-a2ee-ded2fd6e575b',
   6,
   'speaking',
   null,
@@ -147,15 +149,15 @@ values
     },
     {
       "speaker": "B",
-      "text": "My room has a window too!"
+      "text": "Now describe your own room using these lines!"
     }
   ],
-  "note": "Teacher says the line first. Student repeats, then says it alone."
+  "note": "Short role-play: use the exact lines above to describe a room, then describe your own."
 }$json$::jsonb,
   true
 ),
 (
-  '909f4e72-0452-43a6-96fe-7b8a26002cc4',
+  '5a46bbef-8719-4582-a2ee-ded2fd6e575b',
   7,
   'reading',
   null,
@@ -171,7 +173,7 @@ values
   true
 ),
 (
-  '909f4e72-0452-43a6-96fe-7b8a26002cc4',
+  '5a46bbef-8719-4582-a2ee-ded2fd6e575b',
   8,
   'writing',
   null,
@@ -186,7 +188,7 @@ values
   true
 ),
 (
-  '909f4e72-0452-43a6-96fe-7b8a26002cc4',
+  '5a46bbef-8719-4582-a2ee-ded2fd6e575b',
   9,
   'review',
   null,
@@ -205,13 +207,13 @@ values
 -- Lesson 2: In My Room
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '5ea76edb-a1df-447f-8305-b57cd0af0d57',
+  '7b234a38-e3e7-4813-98ec-e03210a9fa22',
   'In My Room',
   'A1',
   'teens',
   7,
   2,
-  'Use ''there is/are'' and prepositions of place. [Combination, Lesson 2: controlled practice, 2 combined targets]',
+  'Use ''there is/are'' and prepositions of place. [Combination, L2, format M: teacher models, student echoes]',
   25,
   9,
   true
@@ -220,7 +222,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '5ea76edb-a1df-447f-8305-b57cd0af0d57',
+  '7b234a38-e3e7-4813-98ec-e03210a9fa22',
   1,
   'title',
   null,
@@ -231,7 +233,7 @@ values
   true
 ),
 (
-  '5ea76edb-a1df-447f-8305-b57cd0af0d57',
+  '7b234a38-e3e7-4813-98ec-e03210a9fa22',
   2,
   'warmup',
   null,
@@ -247,7 +249,7 @@ values
   true
 ),
 (
-  '5ea76edb-a1df-447f-8305-b57cd0af0d57',
+  '7b234a38-e3e7-4813-98ec-e03210a9fa22',
   3,
   'vocabulary',
   null,
@@ -277,7 +279,7 @@ values
   true
 ),
 (
-  '5ea76edb-a1df-447f-8305-b57cd0af0d57',
+  '7b234a38-e3e7-4813-98ec-e03210a9fa22',
   4,
   'phrases',
   null,
@@ -297,7 +299,7 @@ values
   true
 ),
 (
-  '5ea76edb-a1df-447f-8305-b57cd0af0d57',
+  '7b234a38-e3e7-4813-98ec-e03210a9fa22',
   5,
   'activity',
   null,
@@ -326,7 +328,7 @@ values
   true
 ),
 (
-  '5ea76edb-a1df-447f-8305-b57cd0af0d57',
+  '7b234a38-e3e7-4813-98ec-e03210a9fa22',
   6,
   'speaking',
   null,
@@ -335,27 +337,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "What is on your desk?"
+      "text": "There is a lamp on my desk."
     },
     {
       "speaker": "B",
-      "text": "There is a lamp on my desk. What is next to your bed?"
+      "text": "There are books on my shelf."
     },
     {
       "speaker": "A",
-      "text": "There is a chair next to my bed. There are books on my shelf too."
+      "text": "There is a chair next to my bed."
     },
     {
       "speaker": "B",
       "text": "Nice room!"
     }
   ],
-  "note": "Switch! Student becomes A, teacher becomes B."
+  "note": "Teacher says the line first. Student repeats, then says it alone."
 }$json$::jsonb,
   true
 ),
 (
-  '5ea76edb-a1df-447f-8305-b57cd0af0d57',
+  '7b234a38-e3e7-4813-98ec-e03210a9fa22',
   7,
   'reading',
   null,
@@ -371,7 +373,7 @@ values
   true
 ),
 (
-  '5ea76edb-a1df-447f-8305-b57cd0af0d57',
+  '7b234a38-e3e7-4813-98ec-e03210a9fa22',
   8,
   'writing',
   null,
@@ -386,7 +388,7 @@ values
   true
 ),
 (
-  '5ea76edb-a1df-447f-8305-b57cd0af0d57',
+  '7b234a38-e3e7-4813-98ec-e03210a9fa22',
   9,
   'review',
   null,
@@ -405,13 +407,13 @@ values
 -- Lesson 3: My Space
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  'd832ca13-975f-465d-87c2-52bb84c3d60b',
+  'b3b63939-c4b1-4cb6-a24a-dd0747f4bbb1',
   'My Space',
   'A1',
   'teens',
   7,
   3,
-  'Describe your room with a simple opinion. [Combination, Lesson 3: freer practice, role reversal]',
+  'Unchanged by the rotation rework -- L3 format E, matches original order.',
   25,
   9,
   true
@@ -420,7 +422,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  'd832ca13-975f-465d-87c2-52bb84c3d60b',
+  'b3b63939-c4b1-4cb6-a24a-dd0747f4bbb1',
   1,
   'title',
   null,
@@ -431,7 +433,7 @@ values
   true
 ),
 (
-  'd832ca13-975f-465d-87c2-52bb84c3d60b',
+  'b3b63939-c4b1-4cb6-a24a-dd0747f4bbb1',
   2,
   'warmup',
   null,
@@ -447,7 +449,7 @@ values
   true
 ),
 (
-  'd832ca13-975f-465d-87c2-52bb84c3d60b',
+  'b3b63939-c4b1-4cb6-a24a-dd0747f4bbb1',
   3,
   'vocabulary',
   null,
@@ -477,7 +479,7 @@ values
   true
 ),
 (
-  'd832ca13-975f-465d-87c2-52bb84c3d60b',
+  'b3b63939-c4b1-4cb6-a24a-dd0747f4bbb1',
   4,
   'phrases',
   null,
@@ -497,7 +499,7 @@ values
   true
 ),
 (
-  'd832ca13-975f-465d-87c2-52bb84c3d60b',
+  'b3b63939-c4b1-4cb6-a24a-dd0747f4bbb1',
   5,
   'activity',
   null,
@@ -526,7 +528,7 @@ values
   true
 ),
 (
-  'd832ca13-975f-465d-87c2-52bb84c3d60b',
+  'b3b63939-c4b1-4cb6-a24a-dd0747f4bbb1',
   6,
   'speaking',
   null,
@@ -555,7 +557,7 @@ values
   true
 ),
 (
-  'd832ca13-975f-465d-87c2-52bb84c3d60b',
+  'b3b63939-c4b1-4cb6-a24a-dd0747f4bbb1',
   7,
   'reading',
   null,
@@ -571,7 +573,7 @@ values
   true
 ),
 (
-  'd832ca13-975f-465d-87c2-52bb84c3d60b',
+  'b3b63939-c4b1-4cb6-a24a-dd0747f4bbb1',
   8,
   'writing',
   null,
@@ -586,7 +588,7 @@ values
   true
 ),
 (
-  'd832ca13-975f-465d-87c2-52bb84c3d60b',
+  'b3b63939-c4b1-4cb6-a24a-dd0747f4bbb1',
   9,
   'review',
   null,
@@ -605,13 +607,13 @@ values
 -- Lesson 4: Room Questions
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '33e3ac39-f975-47aa-9d15-350ef91d6812',
+  'f8df8b49-850b-40db-9138-d4a59e21999e',
   'Room Questions',
   'A1',
   'teens',
   7,
   4,
-  'Combine furniture, location, and opinion into a room description. [Combination, Lesson 4: production]',
+  'Combine furniture, location, and opinion into a room description. [Combination, L4, format F: open fill-in, minimal scaffolding]',
   25,
   9,
   true
@@ -620,7 +622,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '33e3ac39-f975-47aa-9d15-350ef91d6812',
+  'f8df8b49-850b-40db-9138-d4a59e21999e',
   1,
   'title',
   null,
@@ -631,7 +633,7 @@ values
   true
 ),
 (
-  '33e3ac39-f975-47aa-9d15-350ef91d6812',
+  'f8df8b49-850b-40db-9138-d4a59e21999e',
   2,
   'warmup',
   null,
@@ -647,7 +649,7 @@ values
   true
 ),
 (
-  '33e3ac39-f975-47aa-9d15-350ef91d6812',
+  'f8df8b49-850b-40db-9138-d4a59e21999e',
   3,
   'vocabulary',
   null,
@@ -677,7 +679,7 @@ values
   true
 ),
 (
-  '33e3ac39-f975-47aa-9d15-350ef91d6812',
+  'f8df8b49-850b-40db-9138-d4a59e21999e',
   4,
   'phrases',
   null,
@@ -697,7 +699,7 @@ values
   true
 ),
 (
-  '33e3ac39-f975-47aa-9d15-350ef91d6812',
+  'f8df8b49-850b-40db-9138-d4a59e21999e',
   5,
   'activity',
   null,
@@ -726,7 +728,7 @@ values
   true
 ),
 (
-  '33e3ac39-f975-47aa-9d15-350ef91d6812',
+  'f8df8b49-850b-40db-9138-d4a59e21999e',
   6,
   'speaking',
   null,
@@ -735,27 +737,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "Tell me about your room."
+      "text": "What is your favorite thing in your room, and where is it?"
     },
     {
       "speaker": "B",
-      "text": "My room is colorful and tidy. There is a poster on the wall."
+      "text": "My favorite thing is ___. It is in the ___."
     },
     {
       "speaker": "A",
-      "text": "My favorite thing is my desk, in the corner next to the window."
+      "text": "Is there a poster on your wall?"
     },
     {
       "speaker": "B",
-      "text": "Your room sounds nice!"
+      "text": "Yes / No, ___."
     }
   ],
-  "note": "Mini talk: tell me all about your room in a few sentences."
+  "note": "Fill in your own answers -- no word bank this time. Say your full answers out loud."
 }$json$::jsonb,
   true
 ),
 (
-  '33e3ac39-f975-47aa-9d15-350ef91d6812',
+  'f8df8b49-850b-40db-9138-d4a59e21999e',
   7,
   'reading',
   null,
@@ -771,7 +773,7 @@ values
   true
 ),
 (
-  '33e3ac39-f975-47aa-9d15-350ef91d6812',
+  'f8df8b49-850b-40db-9138-d4a59e21999e',
   8,
   'writing',
   null,
@@ -786,7 +788,7 @@ values
   true
 ),
 (
-  '33e3ac39-f975-47aa-9d15-350ef91d6812',
+  'f8df8b49-850b-40db-9138-d4a59e21999e',
   9,
   'review',
   null,
@@ -805,13 +807,13 @@ values
 -- Lesson 5: Unit Review
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  'cc7b0a31-3256-4271-a900-66d2ea1bf550',
+  'b27ff332-7fa3-48c7-addd-47c31895483c',
   'Unit Review',
   'A1',
   'teens',
   7,
   5,
-  'Review room vocabulary, location, and opinion. [Combination, Lesson 5: tier-matched review]',
+  'Unchanged by the rotation rework.',
   25,
   9,
   true
@@ -820,7 +822,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  'cc7b0a31-3256-4271-a900-66d2ea1bf550',
+  'b27ff332-7fa3-48c7-addd-47c31895483c',
   1,
   'title',
   null,
@@ -831,7 +833,7 @@ values
   true
 ),
 (
-  'cc7b0a31-3256-4271-a900-66d2ea1bf550',
+  'b27ff332-7fa3-48c7-addd-47c31895483c',
   2,
   'warmup',
   null,
@@ -847,7 +849,7 @@ values
   true
 ),
 (
-  'cc7b0a31-3256-4271-a900-66d2ea1bf550',
+  'b27ff332-7fa3-48c7-addd-47c31895483c',
   3,
   'vocabulary',
   null,
@@ -877,7 +879,7 @@ values
   true
 ),
 (
-  'cc7b0a31-3256-4271-a900-66d2ea1bf550',
+  'b27ff332-7fa3-48c7-addd-47c31895483c',
   4,
   'phrases',
   null,
@@ -897,7 +899,7 @@ values
   true
 ),
 (
-  'cc7b0a31-3256-4271-a900-66d2ea1bf550',
+  'b27ff332-7fa3-48c7-addd-47c31895483c',
   5,
   'activity',
   null,
@@ -926,7 +928,7 @@ values
   true
 ),
 (
-  'cc7b0a31-3256-4271-a900-66d2ea1bf550',
+  'b27ff332-7fa3-48c7-addd-47c31895483c',
   6,
   'speaking',
   null,
@@ -955,7 +957,7 @@ values
   true
 ),
 (
-  'cc7b0a31-3256-4271-a900-66d2ea1bf550',
+  'b27ff332-7fa3-48c7-addd-47c31895483c',
   7,
   'reading',
   null,
@@ -971,7 +973,7 @@ values
   true
 ),
 (
-  'cc7b0a31-3256-4271-a900-66d2ea1bf550',
+  'b27ff332-7fa3-48c7-addd-47c31895483c',
   8,
   'writing',
   null,
@@ -986,7 +988,7 @@ values
   true
 ),
 (
-  'cc7b0a31-3256-4271-a900-66d2ea1bf550',
+  'b27ff332-7fa3-48c7-addd-47c31895483c',
   9,
   'review',
   null,

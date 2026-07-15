@@ -1,17 +1,19 @@
--- A1 Teens Unit 5: Hobbies and Interests (5 lessons) — TIERED (Combination)
--- Regenerated per the Sentivo Intra-Level Progression Framework + lesson-level escalation + task rotation.
+-- A1 Teens Unit 5: Hobbies and Interests (5 lessons) — TIERED + ROTATED
+-- Per docs/curriculum/a1-teens-adults-rotation-rework.md. Vocab/reading/writing/review
+-- unchanged from the tiered pilot; only activity+speaking reshuffled to the new
+-- per-unit format assignment, keeping each lesson's difficulty position intact.
 -- Run this whole script in the Supabase SQL editor.
 
 -- Lesson 1: Hobbies and Interests
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  'e7066821-f647-48f1-a64d-19f63dfa5f22',
+  '86c33efe-b799-4562-99fd-0459b3c9fcb1',
   'Hobbies and Interests',
   'A1',
   'teens',
   5,
   1,
-  'Name hobbies. [Combination, Lesson 1: notice/receptive]',
+  'Unchanged by the rotation rework -- L1 format M, matches original order.',
   25,
   9,
   true
@@ -20,7 +22,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  'e7066821-f647-48f1-a64d-19f63dfa5f22',
+  '86c33efe-b799-4562-99fd-0459b3c9fcb1',
   1,
   'title',
   null,
@@ -31,7 +33,7 @@ values
   true
 ),
 (
-  'e7066821-f647-48f1-a64d-19f63dfa5f22',
+  '86c33efe-b799-4562-99fd-0459b3c9fcb1',
   2,
   'warmup',
   null,
@@ -47,7 +49,7 @@ values
   true
 ),
 (
-  'e7066821-f647-48f1-a64d-19f63dfa5f22',
+  '86c33efe-b799-4562-99fd-0459b3c9fcb1',
   3,
   'vocabulary',
   null,
@@ -77,7 +79,7 @@ values
   true
 ),
 (
-  'e7066821-f647-48f1-a64d-19f63dfa5f22',
+  '86c33efe-b799-4562-99fd-0459b3c9fcb1',
   4,
   'phrases',
   null,
@@ -97,7 +99,7 @@ values
   true
 ),
 (
-  'e7066821-f647-48f1-a64d-19f63dfa5f22',
+  '86c33efe-b799-4562-99fd-0459b3c9fcb1',
   5,
   'activity',
   null,
@@ -126,7 +128,7 @@ values
   true
 ),
 (
-  'e7066821-f647-48f1-a64d-19f63dfa5f22',
+  '86c33efe-b799-4562-99fd-0459b3c9fcb1',
   6,
   'speaking',
   null,
@@ -155,7 +157,7 @@ values
   true
 ),
 (
-  'e7066821-f647-48f1-a64d-19f63dfa5f22',
+  '86c33efe-b799-4562-99fd-0459b3c9fcb1',
   7,
   'reading',
   null,
@@ -171,7 +173,7 @@ values
   true
 ),
 (
-  'e7066821-f647-48f1-a64d-19f63dfa5f22',
+  '86c33efe-b799-4562-99fd-0459b3c9fcb1',
   8,
   'writing',
   null,
@@ -186,7 +188,7 @@ values
   true
 ),
 (
-  'e7066821-f647-48f1-a64d-19f63dfa5f22',
+  '86c33efe-b799-4562-99fd-0459b3c9fcb1',
   9,
   'review',
   null,
@@ -205,13 +207,13 @@ values
 -- Lesson 2: I Like / I Don't Like
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  'dc9a18e3-f4f3-44e0-a2e1-84c620669327',
+  '40c7272f-2abc-4060-9c80-cb1bc4527896',
   'I Like / I Don''t Like',
   'A1',
   'teens',
   5,
   2,
-  'Say likes and dislikes with a short reason. [Combination, Lesson 2: controlled practice, 2 combined targets]',
+  'Say likes and dislikes with a reason. [Combination, L2, format R: short scripted role-play]',
   25,
   9,
   true
@@ -220,7 +222,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  'dc9a18e3-f4f3-44e0-a2e1-84c620669327',
+  '40c7272f-2abc-4060-9c80-cb1bc4527896',
   1,
   'title',
   null,
@@ -231,7 +233,7 @@ values
   true
 ),
 (
-  'dc9a18e3-f4f3-44e0-a2e1-84c620669327',
+  '40c7272f-2abc-4060-9c80-cb1bc4527896',
   2,
   'warmup',
   null,
@@ -247,7 +249,7 @@ values
   true
 ),
 (
-  'dc9a18e3-f4f3-44e0-a2e1-84c620669327',
+  '40c7272f-2abc-4060-9c80-cb1bc4527896',
   3,
   'vocabulary',
   null,
@@ -277,7 +279,7 @@ values
   true
 ),
 (
-  'dc9a18e3-f4f3-44e0-a2e1-84c620669327',
+  '40c7272f-2abc-4060-9c80-cb1bc4527896',
   4,
   'phrases',
   null,
@@ -297,7 +299,7 @@ values
   true
 ),
 (
-  'dc9a18e3-f4f3-44e0-a2e1-84c620669327',
+  '40c7272f-2abc-4060-9c80-cb1bc4527896',
   5,
   'activity',
   null,
@@ -306,7 +308,7 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "I [love] football [because] it's [fun]."
+      "text": "I [love] football [because] it's fun."
     },
     {
       "speaker": "B",
@@ -314,19 +316,19 @@ values
     },
     {
       "speaker": "A",
-      "text": "I love dancing too."
+      "text": "Dancing is [fun] too."
     }
   ],
   "blanks": [
     "love",
     "don't like",
-    "because"
+    "fun"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  'dc9a18e3-f4f3-44e0-a2e1-84c620669327',
+  '40c7272f-2abc-4060-9c80-cb1bc4527896',
   6,
   'speaking',
   null,
@@ -350,12 +352,12 @@ values
       "text": "Because it's fun!"
     }
   ],
-  "note": "Switch! Student becomes A, teacher becomes B."
+  "note": "Short role-play: use the exact lines above to compare hobbies, then swap roles."
 }$json$::jsonb,
   true
 ),
 (
-  'dc9a18e3-f4f3-44e0-a2e1-84c620669327',
+  '40c7272f-2abc-4060-9c80-cb1bc4527896',
   7,
   'reading',
   null,
@@ -371,7 +373,7 @@ values
   true
 ),
 (
-  'dc9a18e3-f4f3-44e0-a2e1-84c620669327',
+  '40c7272f-2abc-4060-9c80-cb1bc4527896',
   8,
   'writing',
   null,
@@ -386,7 +388,7 @@ values
   true
 ),
 (
-  'dc9a18e3-f4f3-44e0-a2e1-84c620669327',
+  '40c7272f-2abc-4060-9c80-cb1bc4527896',
   9,
   'review',
   null,
@@ -405,13 +407,13 @@ values
 -- Lesson 3: Interest Questions
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  'd77cad8c-656e-4514-804b-ee489ea4ea42',
+  'c315486c-1aa6-4a45-a94c-db038cd29b1b',
   'Interest Questions',
   'A1',
   'teens',
   5,
   3,
-  'Ask and answer about hobbies with reasons. [Combination, Lesson 3: freer practice, role reversal]',
+  'Ask and answer about hobbies with reasons. [Combination, L3, format F: guided fill-in]',
   25,
   9,
   true
@@ -420,7 +422,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  'd77cad8c-656e-4514-804b-ee489ea4ea42',
+  'c315486c-1aa6-4a45-a94c-db038cd29b1b',
   1,
   'title',
   null,
@@ -431,7 +433,7 @@ values
   true
 ),
 (
-  'd77cad8c-656e-4514-804b-ee489ea4ea42',
+  'c315486c-1aa6-4a45-a94c-db038cd29b1b',
   2,
   'warmup',
   null,
@@ -447,7 +449,7 @@ values
   true
 ),
 (
-  'd77cad8c-656e-4514-804b-ee489ea4ea42',
+  'c315486c-1aa6-4a45-a94c-db038cd29b1b',
   3,
   'vocabulary',
   null,
@@ -477,7 +479,7 @@ values
   true
 ),
 (
-  'd77cad8c-656e-4514-804b-ee489ea4ea42',
+  'c315486c-1aa6-4a45-a94c-db038cd29b1b',
   4,
   'phrases',
   null,
@@ -497,7 +499,7 @@ values
   true
 ),
 (
-  'd77cad8c-656e-4514-804b-ee489ea4ea42',
+  'c315486c-1aa6-4a45-a94c-db038cd29b1b',
   5,
   'activity',
   null,
@@ -526,7 +528,7 @@ values
   true
 ),
 (
-  'd77cad8c-656e-4514-804b-ee489ea4ea42',
+  'c315486c-1aa6-4a45-a94c-db038cd29b1b',
   6,
   'speaking',
   null,
@@ -547,15 +549,15 @@ values
     },
     {
       "speaker": "B",
-      "text": "Your turn to ask me something!"
+      "text": "Fill in your own answer now!"
     }
   ],
-  "note": "Student asks first this time. Teacher answers, then asks back."
+  "note": "Switch! Student becomes A, teacher becomes B."
 }$json$::jsonb,
   true
 ),
 (
-  'd77cad8c-656e-4514-804b-ee489ea4ea42',
+  'c315486c-1aa6-4a45-a94c-db038cd29b1b',
   7,
   'reading',
   null,
@@ -571,7 +573,7 @@ values
   true
 ),
 (
-  'd77cad8c-656e-4514-804b-ee489ea4ea42',
+  'c315486c-1aa6-4a45-a94c-db038cd29b1b',
   8,
   'writing',
   null,
@@ -586,7 +588,7 @@ values
   true
 ),
 (
-  'd77cad8c-656e-4514-804b-ee489ea4ea42',
+  'c315486c-1aa6-4a45-a94c-db038cd29b1b',
   9,
   'review',
   null,
@@ -605,13 +607,13 @@ values
 -- Lesson 4: Hobbies in Real Life
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  '27e1c424-de7e-48b5-bd05-3e33dedd02b6',
+  'cb771bf8-b767-40ba-8987-1489bce7ff3d',
   'Hobbies in Real Life',
   'A1',
   'teens',
   5,
   4,
-  'Combine hobby vocabulary into a short talk. [Combination, Lesson 4: production]',
+  'Combine hobby vocabulary into a short talk. [Combination, L4, format E: choose-the-better-answer + independent production]',
   25,
   9,
   true
@@ -620,7 +622,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  '27e1c424-de7e-48b5-bd05-3e33dedd02b6',
+  'cb771bf8-b767-40ba-8987-1489bce7ff3d',
   1,
   'title',
   null,
@@ -631,7 +633,7 @@ values
   true
 ),
 (
-  '27e1c424-de7e-48b5-bd05-3e33dedd02b6',
+  'cb771bf8-b767-40ba-8987-1489bce7ff3d',
   2,
   'warmup',
   null,
@@ -647,7 +649,7 @@ values
   true
 ),
 (
-  '27e1c424-de7e-48b5-bd05-3e33dedd02b6',
+  'cb771bf8-b767-40ba-8987-1489bce7ff3d',
   3,
   'vocabulary',
   null,
@@ -677,7 +679,7 @@ values
   true
 ),
 (
-  '27e1c424-de7e-48b5-bd05-3e33dedd02b6',
+  'cb771bf8-b767-40ba-8987-1489bce7ff3d',
   4,
   'phrases',
   null,
@@ -697,7 +699,7 @@ values
   true
 ),
 (
-  '27e1c424-de7e-48b5-bd05-3e33dedd02b6',
+  'cb771bf8-b767-40ba-8987-1489bce7ff3d',
   5,
   'activity',
   null,
@@ -706,7 +708,7 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "I [practice] football [every week]."
+      "text": "I practice [every week]."
     },
     {
       "speaker": "B",
@@ -718,15 +720,15 @@ values
     }
   ],
   "blanks": [
-    "practice",
     "every week",
-    "with friends"
+    "with friends",
+    "alone"
   ]
 }$json$::jsonb,
   true
 ),
 (
-  '27e1c424-de7e-48b5-bd05-3e33dedd02b6',
+  'cb771bf8-b767-40ba-8987-1489bce7ff3d',
   6,
   'speaking',
   null,
@@ -735,27 +737,27 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "Tell me about your hobby."
+      "text": "Which is correct: 'I practice every week' or 'I practice every weeks'?"
     },
     {
       "speaker": "B",
-      "text": "My hobby is football. I love it because it's fun and exciting."
+      "text": "'I practice every week' is correct. No 's' on week."
     },
     {
       "speaker": "A",
-      "text": "I practice every week with my friends."
+      "text": "Good! Now tell me: how often do YOU practice your hobby, and with who?"
     },
     {
       "speaker": "B",
-      "text": "That sounds like a great hobby!"
+      "text": "I practice every week with my friends."
     }
   ],
-  "note": "Mini talk: tell me all about your hobby in a few sentences."
+  "note": "Fix the mistake first, then answer fully in your own words -- no word bank this time."
 }$json$::jsonb,
   true
 ),
 (
-  '27e1c424-de7e-48b5-bd05-3e33dedd02b6',
+  'cb771bf8-b767-40ba-8987-1489bce7ff3d',
   7,
   'reading',
   null,
@@ -771,7 +773,7 @@ values
   true
 ),
 (
-  '27e1c424-de7e-48b5-bd05-3e33dedd02b6',
+  'cb771bf8-b767-40ba-8987-1489bce7ff3d',
   8,
   'writing',
   null,
@@ -786,7 +788,7 @@ values
   true
 ),
 (
-  '27e1c424-de7e-48b5-bd05-3e33dedd02b6',
+  'cb771bf8-b767-40ba-8987-1489bce7ff3d',
   9,
   'review',
   null,
@@ -805,13 +807,13 @@ values
 -- Lesson 5: Unit Review
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
 values (
-  'f34d5ddc-b2b9-4913-8aa0-83ec77cfc046',
+  '187cc8fa-c8d6-4d43-8636-aeb8f8b432e0',
   'Unit Review',
   'A1',
   'teens',
   5,
   5,
-  'Review hobbies, likes, and reasons. [Combination, Lesson 5: tier-matched review]',
+  'Unchanged by the rotation rework.',
   25,
   9,
   true
@@ -820,7 +822,7 @@ values (
 insert into lesson_slides (lesson_id, slide_number, slide_type, title, subtitle, content, is_active)
 values
 (
-  'f34d5ddc-b2b9-4913-8aa0-83ec77cfc046',
+  '187cc8fa-c8d6-4d43-8636-aeb8f8b432e0',
   1,
   'title',
   null,
@@ -831,7 +833,7 @@ values
   true
 ),
 (
-  'f34d5ddc-b2b9-4913-8aa0-83ec77cfc046',
+  '187cc8fa-c8d6-4d43-8636-aeb8f8b432e0',
   2,
   'warmup',
   null,
@@ -847,7 +849,7 @@ values
   true
 ),
 (
-  'f34d5ddc-b2b9-4913-8aa0-83ec77cfc046',
+  '187cc8fa-c8d6-4d43-8636-aeb8f8b432e0',
   3,
   'vocabulary',
   null,
@@ -877,7 +879,7 @@ values
   true
 ),
 (
-  'f34d5ddc-b2b9-4913-8aa0-83ec77cfc046',
+  '187cc8fa-c8d6-4d43-8636-aeb8f8b432e0',
   4,
   'phrases',
   null,
@@ -897,7 +899,7 @@ values
   true
 ),
 (
-  'f34d5ddc-b2b9-4913-8aa0-83ec77cfc046',
+  '187cc8fa-c8d6-4d43-8636-aeb8f8b432e0',
   5,
   'activity',
   null,
@@ -926,7 +928,7 @@ values
   true
 ),
 (
-  'f34d5ddc-b2b9-4913-8aa0-83ec77cfc046',
+  '187cc8fa-c8d6-4d43-8636-aeb8f8b432e0',
   6,
   'speaking',
   null,
@@ -955,7 +957,7 @@ values
   true
 ),
 (
-  'f34d5ddc-b2b9-4913-8aa0-83ec77cfc046',
+  '187cc8fa-c8d6-4d43-8636-aeb8f8b432e0',
   7,
   'reading',
   null,
@@ -971,7 +973,7 @@ values
   true
 ),
 (
-  'f34d5ddc-b2b9-4913-8aa0-83ec77cfc046',
+  '187cc8fa-c8d6-4d43-8636-aeb8f8b432e0',
   8,
   'writing',
   null,
@@ -986,7 +988,7 @@ values
   true
 ),
 (
-  'f34d5ddc-b2b9-4913-8aa0-83ec77cfc046',
+  '187cc8fa-c8d6-4d43-8636-aeb8f8b432e0',
   9,
   'review',
   null,
