@@ -23,7 +23,7 @@ const CSS = `
   text-align: center;
   padding: 16px;
   border-radius: inherit;
-  border: 2px dashed var(--k-accent-dark, #C9CBD1);
+  border: 2px dashed var(--k-secondary, #C9CBD1);
   background: var(--k-accent, #F7F6F3);
   box-sizing: border-box;
 }
@@ -34,14 +34,15 @@ const CSS = `
   font-size: 11.5px;
   letter-spacing: 0.4px;
   text-transform: uppercase;
-  color: #1B2A4A;
+  color: var(--k-btn-text, #1B2A4A);
 }
 .img-ph-note {
   font-family: 'Quicksand', sans-serif;
   font-weight: 500;
   font-size: 11.5px;
   line-height: 1.4;
-  color: #6B7286;
+  color: var(--k-btn-text, #6B7286);
+  opacity: 0.75;
   max-width: 90%;
 }
 .img-ph--compact { gap: 3px; padding: 10px; }
@@ -64,5 +65,6 @@ const CSS = `
 .is-adult .img-ph-note {
   font-family: 'Inter', sans-serif;
   color: #8A8272;
+  opacity: 1;
 }
 `;

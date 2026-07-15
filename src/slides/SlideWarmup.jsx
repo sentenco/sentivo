@@ -118,7 +118,7 @@ const CSS = `
   font-family: 'Fredoka', sans-serif;
   font-weight: 700;
   font-size: 22px;
-  color: #1B2A4A;
+  color: var(--k-btn-text, #1B2A4A);
   margin: 0;
 }
 .slw-questions {

@@ -36,14 +36,15 @@ const CSS = `
   font-family: 'Fredoka', sans-serif;
   font-weight: 700;
   font-size: 19px;
-  color: #1B2A4A;
+  color: var(--k-btn-text, #1B2A4A);
   margin: 0;
 }
 .slh-subtitle {
   font-family: 'Quicksand', sans-serif;
   font-weight: 500;
   font-size: 13.5px;
-  color: rgba(27,42,74,0.65);
+  color: var(--k-btn-text, #1B2A4A);
+  opacity: 0.65;
   margin: 2px 0 0;
 }
 
@@ -73,5 +74,6 @@ const CSS = `
   font-weight: 400;
   font-size: 12px;
   color: rgba(255,255,255,0.62);
+  opacity: 1;
 }
 `;

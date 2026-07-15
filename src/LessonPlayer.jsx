@@ -403,19 +403,23 @@ const CSS = `
 }
 .lp-dot.is-active { width: 20px; background: var(--k-accent, #FF7A59); }
 
-/* ── Kids palette (v7, three-color pastel): a fixed 3-color palette
-   given by the user -- #FFF4AA (butter yellow, main), #D5F3D1 (mint),
-   #D5E9E8 (seafoam) -- used the same way across every unit for now
-   (no more per-unit rotation; the kt-0/1/2 classing stays wired below
-   so a future rotation can be reintroduced by editing one block, but
-   all three currently resolve to the same palette). None of the 3
-   colors are dark, so there is no "dark ink" background role anymore
-   -- every accent surface (buttons, tags, badges, headers) pairs a
-   pale fill with navy (#1B2A4A) text instead of light text on a dark
-   fill. --k-btn-text is therefore always navy. Slide components opt
-   in via var(--k-*, <fallback>) so Teens (no .is-kids class, no vars
-   defined) render pixel-identical to before. ── */
+/* ── Kids palette (v8, per-tier rotation restored): the palette now
+   changes every 4 units again -- Foundation (1-4) / Combination (5-8)
+   / Bridge (9-12) -- as a visible sign of progress, so it doesn't look
+   the same for the whole course. Each tier is still a fixed 3-color
+   set with one color declared as the majority (--k-accent, used for
+   headers/buttons/placeholders/CTAs) and the other two filling the
+   lighter secondary/tertiary roles. Kids tier 0 (Units 1-4) is pale
+   -- its majority color is light, so --k-btn-text is navy. Kids tier 1
+   (Units 5-8) is a warm orange set whose majority color (#e56703) is
+   genuinely dark, so --k-btn-text flips to white there, and
+   --k-accent-dark reuses the majority color itself (not the lighter
+   second tone) so anything pairing white text with "accent-dark" as a
+   fill stays readable. Slide components opt in via var(--k-*,
+   <fallback>) so Teens (no .is-kids class, no vars defined) render
+   pixel-identical to before. ── */
 .lp-shell.is-kids.kt-0 {
+  /* Units 1-4: pale butter yellow / mint / seafoam */
   --k-accent: #FFF4AA;
   --k-accent-dark: #D5F3D1;
   --k-secondary: #D5F3D1;
@@ -428,18 +432,20 @@ const CSS = `
   --k-motif: "🌱";
 }
 .lp-shell.is-kids.kt-1 {
-  --k-accent: #FFF4AA;
-  --k-accent-dark: #D5F3D1;
-  --k-secondary: #D5F3D1;
-  --k-secondary-dark: #D5E9E8;
-  --k-pop: #D5E9E8;
-  --k-btn-text: #1B2A4A;
-  --k-bg: #FFFEF8;
-  --k-bg-cool: #D5E9E8;
-  --k-tint: #D5F3D1;
+  /* Units 5-8: burnt orange (majority) / mid orange / pale gold */
+  --k-accent: #e56703;
+  --k-accent-dark: #e56703;
+  --k-secondary: #ffa13d;
+  --k-secondary-dark: #fbdf71;
+  --k-pop: #fbdf71;
+  --k-btn-text: #fff;
+  --k-bg: #FFF8EE;
+  --k-bg-cool: #fbdf71;
+  --k-tint: #ffa13d;
   --k-motif: "🌿";
 }
 .lp-shell.is-kids.kt-2 {
+  /* Units 9-12: unchanged for now, matches tier 0 until a palette is given */
   --k-accent: #FFF4AA;
   --k-accent-dark: #D5F3D1;
   --k-secondary: #D5F3D1;

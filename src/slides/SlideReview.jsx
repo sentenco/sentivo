@@ -89,8 +89,8 @@ const CSS = `
 }
 .slrv-tag {
   display: inline-block;
-  background: rgba(27,42,74,0.1);
-  color: #1B2A4A;
+  background: rgba(255,255,255,0.3);
+  color: var(--k-btn-text, #1B2A4A);
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;
   font-size: 10px;
@@ -104,14 +104,15 @@ const CSS = `
   font-family: 'Fredoka', sans-serif;
   font-weight: 700;
   font-size: 19px;
-  color: #1B2A4A;
+  color: var(--k-btn-text, #1B2A4A);
   margin: 0;
 }
 .slrv-subtitle {
   font-family: 'Quicksand', sans-serif;
   font-weight: 500;
   font-size: 13px;
-  color: rgba(27,42,74,0.65);
+  color: var(--k-btn-text, #1B2A4A);
+  opacity: 0.65;
   margin: 2px 0 0;
 }
 .slrv-body {
@@ -209,7 +210,7 @@ const CSS = `
   font-size: 20px;
   color: #fff;
 }
-.slrv-slide.is-adult .slrv-subtitle { font-family: 'Inter', sans-serif; font-weight: 400; color: rgba(255,255,255,0.75); }
+.slrv-slide.is-adult .slrv-subtitle { font-family: 'Inter', sans-serif; font-weight: 400; color: rgba(255,255,255,0.75); opacity: 1; }
 .slrv-slide.is-adult .slrv-body { background: #F7F5EF; }
 .slrv-slide.is-adult .slrv-item {
   background: #fff;
