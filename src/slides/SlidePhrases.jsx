@@ -47,7 +47,7 @@ const CSS = `
 }
 .slp-tag {
   display: inline-block;
-  background: #FF7A59;
+  background: var(--k-accent, #FF7A59);
   color: #fff;
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;
@@ -96,8 +96,8 @@ const CSS = `
   font-size: 11px;
   color: #fff;
 }
-.slp-turn--teacher .slp-avatar { background: #FF7A59; }
-.slp-turn--student .slp-avatar { background: #2CA97F; }
+.slp-turn--teacher .slp-avatar { background: var(--k-accent, #FF7A59); }
+.slp-turn--student .slp-avatar { background: var(--k-secondary, #2CA97F); }
 .slp-bubble {
   border-radius: 14px;
   padding: 8px 14px;
@@ -107,11 +107,11 @@ const CSS = `
   color: #1B2A4A;
 }
 .slp-turn--teacher .slp-bubble {
-  background: #FAECE7;
+  background: var(--k-tint, #FAECE7);
   border-bottom-left-radius: 4px;
 }
 .slp-turn--student .slp-bubble {
-  background: #E1F5EE;
+  background: var(--k-bg-cool, #E1F5EE);
   border-bottom-right-radius: 4px;
 }
 .slp-note {

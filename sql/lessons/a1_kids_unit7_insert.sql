@@ -26,7 +26,8 @@ values
   null,
   null,
   $json${
-  "badge": "A1 · Beginner · Kids"
+  "badge": "A1 · Beginner · Kids",
+  "image_note": "Hero image for 'Toys' -- A cheerful kitchen or table scene with a spread of simple, colorful foods -- fruit, bread, milk."
 }$json$::jsonb,
   true
 ),
@@ -56,19 +57,23 @@ values
   "words": [
     {
       "word": "Ball",
-      "bg": "#FAECE7"
+      "bg": "#FAECE7",
+      "image_note": "A single bouncy ball, simple bold colors, maybe mid-bounce."
     },
     {
       "word": "Doll",
-      "bg": "#E1F5EE"
+      "bg": "#E1F5EE",
+      "image_note": "A single simple toy doll, friendly and colorful."
     },
     {
       "word": "Car",
-      "bg": "#EEEDFE"
+      "bg": "#EEEDFE",
+      "image_note": "A single colorful toy car, simple rounded shape."
     },
     {
       "word": "Blocks",
-      "bg": "#FAEEDA"
+      "bg": "#FAEEDA",
+      "image_note": "A small stack of colorful building blocks."
     }
   ],
   "title": "New Words",
@@ -226,7 +231,8 @@ values
   null,
   null,
   $json${
-  "badge": "A1 · Beginner · Kids"
+  "badge": "A1 · Beginner · Kids",
+  "image_note": "Hero image for 'My Favorite Toy' -- A cheerful kitchen or table scene with a spread of simple, colorful foods -- fruit, bread, milk."
 }$json$::jsonb,
   true
 ),
@@ -256,19 +262,23 @@ values
   "words": [
     {
       "word": "Favorite",
-      "bg": "#FAECE7"
+      "bg": "#FAECE7",
+      "image_note": "A single object with a small star or heart on it, marking it as special."
     },
     {
       "word": "Play with",
-      "bg": "#E1F5EE"
+      "bg": "#E1F5EE",
+      "image_note": "A child playing happily with a toy on the floor."
     },
     {
       "word": "Fun",
-      "bg": "#EEEDFE"
+      "bg": "#EEEDFE",
+      "image_note": "A child laughing and playing, arms up in excitement."
     },
     {
       "word": "Toy",
-      "bg": "#FAEEDA"
+      "bg": "#FAEEDA",
+      "image_note": "A pile of a few simple, colorful toys (ball, blocks, car)."
     }
   ],
   "title": "New Words",
@@ -426,7 +436,8 @@ values
   null,
   null,
   $json${
-  "badge": "A1 · Beginner · Kids"
+  "badge": "A1 · Beginner · Kids",
+  "image_note": "Hero image for 'Big and Small Toys' -- A cheerful kitchen or table scene with a spread of simple, colorful foods -- fruit, bread, milk."
 }$json$::jsonb,
   true
 ),
@@ -456,19 +467,23 @@ values
   "words": [
     {
       "word": "Big",
-      "bg": "#FAECE7"
+      "bg": "#FAECE7",
+      "image_note": "A large object next to a small one, clearly showing the size difference."
     },
     {
       "word": "Small",
-      "bg": "#E1F5EE"
+      "bg": "#E1F5EE",
+      "image_note": "A small object next to a large one, clearly showing the size difference."
     },
     {
       "word": "Soft",
-      "bg": "#EEEDFE"
+      "bg": "#EEEDFE",
+      "image_note": "A plush teddy bear or soft blanket, cozy texture implied."
     },
     {
       "word": "Hard",
-      "bg": "#FAEEDA"
+      "bg": "#FAEEDA",
+      "image_note": "A wooden block or toy car, solid and rigid-looking."
     }
   ],
   "title": "New Words",
@@ -626,7 +641,8 @@ values
   null,
   null,
   $json${
-  "badge": "A1 · Beginner · Kids"
+  "badge": "A1 · Beginner · Kids",
+  "image_note": "Hero image for 'Toy Colors' -- A cheerful kitchen or table scene with a spread of simple, colorful foods -- fruit, bread, milk."
 }$json$::jsonb,
   true
 ),
@@ -656,19 +672,23 @@ values
   "words": [
     {
       "word": "Color",
-      "bg": "#FAECE7"
+      "bg": "#FAECE7",
+      "image_note": "A small rainbow arc or a set of colorful crayons."
     },
     {
       "word": "Have",
-      "bg": "#E1F5EE"
+      "bg": "#E1F5EE",
+      "image_note": "Functional/grammar word, not a concrete object -- skip a literal picture. If illustrating, show the example sentence in action instead of the word alone."
     },
     {
       "word": "And",
-      "bg": "#EEEDFE"
+      "bg": "#EEEDFE",
+      "image_note": "Functional/grammar word, not a concrete object -- skip a literal picture. If illustrating, show the example sentence in action instead of the word alone."
     },
     {
       "word": "Show",
-      "bg": "#FAEEDA"
+      "bg": "#FAEEDA",
+      "image_note": "Functional/grammar word, not a concrete object -- skip a literal picture. If illustrating, show the example sentence in action instead of the word alone."
     }
   ],
   "title": "New Words",
@@ -826,7 +846,8 @@ values
   null,
   null,
   $json${
-  "badge": "A1 · Beginner · Kids"
+  "badge": "A1 · Beginner · Kids",
+  "image_note": "Hero image for 'Unit Review' -- A cheerful kitchen or table scene with a spread of simple, colorful foods -- fruit, bread, milk."
 }$json$::jsonb,
   true
 ),
@@ -856,19 +877,23 @@ values
   "words": [
     {
       "word": "Toy",
-      "bg": "#FAECE7"
+      "bg": "#FAECE7",
+      "image_note": "A pile of a few simple, colorful toys (ball, blocks, car)."
     },
     {
       "word": "Favorite",
-      "bg": "#E1F5EE"
+      "bg": "#E1F5EE",
+      "image_note": "A single object with a small star or heart on it, marking it as special."
     },
     {
       "word": "Big",
-      "bg": "#EEEDFE"
+      "bg": "#EEEDFE",
+      "image_note": "A large object next to a small one, clearly showing the size difference."
     },
     {
       "word": "Color",
-      "bg": "#FAEEDA"
+      "bg": "#FAEEDA",
+      "image_note": "A small rainbow arc or a set of colorful crayons."
     }
   ],
   "title": "New Words",

@@ -26,7 +26,8 @@ values
   null,
   null,
   $json${
-  "badge": "A1 · Beginner · Kids"
+  "badge": "A1 · Beginner · Kids",
+  "image_note": "Hero image for 'Animals' -- A child's playroom scene with a scattered mix of simple, colorful toys -- balls, blocks, a toy car."
 }$json$::jsonb,
   true
 ),
@@ -56,19 +57,23 @@ values
   "words": [
     {
       "word": "Dog",
-      "bg": "#FAECE7"
+      "bg": "#FAECE7",
+      "image_note": "A friendly cartoon dog, simple rounded shape, wagging tail."
     },
     {
       "word": "Cat",
-      "bg": "#E1F5EE"
+      "bg": "#E1F5EE",
+      "image_note": "A friendly cartoon cat, simple rounded shape, sitting."
     },
     {
       "word": "Bird",
-      "bg": "#EEEDFE"
+      "bg": "#EEEDFE",
+      "image_note": "A small colorful cartoon bird, simple rounded shape."
     },
     {
       "word": "Fish",
-      "bg": "#FAEEDA"
+      "bg": "#FAEEDA",
+      "image_note": "A simple colorful cartoon fish, swimming."
     }
   ],
   "title": "New Words",
@@ -226,7 +231,8 @@ values
   null,
   null,
   $json${
-  "badge": "A1 · Beginner · Kids"
+  "badge": "A1 · Beginner · Kids",
+  "image_note": "Hero image for 'Farm Animals' -- A child's playroom scene with a scattered mix of simple, colorful toys -- balls, blocks, a toy car."
 }$json$::jsonb,
   true
 ),
@@ -256,19 +262,23 @@ values
   "words": [
     {
       "word": "Cow",
-      "bg": "#FAECE7"
+      "bg": "#FAECE7",
+      "image_note": "A friendly cartoon cow, simple rounded shape, black and white spots."
     },
     {
       "word": "Horse",
-      "bg": "#E1F5EE"
+      "bg": "#E1F5EE",
+      "image_note": "A friendly cartoon horse, simple rounded shape."
     },
     {
       "word": "Sheep",
-      "bg": "#EEEDFE"
+      "bg": "#EEEDFE",
+      "image_note": "A friendly cartoon sheep, fluffy white wool, simple shape."
     },
     {
       "word": "And",
-      "bg": "#FAEEDA"
+      "bg": "#FAEEDA",
+      "image_note": "Functional/grammar word, not a concrete object -- skip a literal picture. If illustrating, show the example sentence in action instead of the word alone."
     }
   ],
   "title": "New Words",
@@ -426,7 +436,8 @@ values
   null,
   null,
   $json${
-  "badge": "A1 · Beginner · Kids"
+  "badge": "A1 · Beginner · Kids",
+  "image_note": "Hero image for 'Pets' -- A child's playroom scene with a scattered mix of simple, colorful toys -- balls, blocks, a toy car."
 }$json$::jsonb,
   true
 ),
@@ -456,19 +467,23 @@ values
   "words": [
     {
       "word": "Pet",
-      "bg": "#FAECE7"
+      "bg": "#FAECE7",
+      "image_note": "A child hugging a small pet, like a dog or cat, affectionately."
     },
     {
       "word": "I like",
-      "bg": "#E1F5EE"
+      "bg": "#E1F5EE",
+      "image_note": "Functional/grammar word, not a concrete object -- skip a literal picture. If illustrating, show the example sentence in action instead of the word alone."
     },
     {
       "word": "I don't like",
-      "bg": "#EEEDFE"
+      "bg": "#EEEDFE",
+      "image_note": "Functional/grammar word, not a concrete object -- skip a literal picture. If illustrating, show the example sentence in action instead of the word alone."
     },
     {
       "word": "Cute",
-      "bg": "#FAEEDA"
+      "bg": "#FAEEDA",
+      "image_note": "An adorable small toy or animal with big round eyes."
     }
   ],
   "title": "New Words",
@@ -626,7 +641,8 @@ values
   null,
   null,
   $json${
-  "badge": "A1 · Beginner · Kids"
+  "badge": "A1 · Beginner · Kids",
+  "image_note": "Hero image for 'Animal Actions' -- A child's playroom scene with a scattered mix of simple, colorful toys -- balls, blocks, a toy car."
 }$json$::jsonb,
   true
 ),
@@ -656,19 +672,23 @@ values
   "words": [
     {
       "word": "Jump",
-      "bg": "#FAECE7"
+      "bg": "#FAECE7",
+      "image_note": "A child jumping in mid-air, arms and legs spread, motion lines."
     },
     {
       "word": "Run",
-      "bg": "#E1F5EE"
+      "bg": "#E1F5EE",
+      "image_note": "A child running happily, mid-stride, motion lines."
     },
     {
       "word": "Swim",
-      "bg": "#EEEDFE"
+      "bg": "#EEEDFE",
+      "image_note": "A child swimming in a pool, simple splashy water lines."
     },
     {
       "word": "Fly",
-      "bg": "#FAEEDA"
+      "bg": "#FAEEDA",
+      "image_note": "A bird flying through a blue sky with simple clouds."
     }
   ],
   "title": "New Words",
@@ -826,7 +846,8 @@ values
   null,
   null,
   $json${
-  "badge": "A1 · Beginner · Kids"
+  "badge": "A1 · Beginner · Kids",
+  "image_note": "Hero image for 'Unit Review' -- A child's playroom scene with a scattered mix of simple, colorful toys -- balls, blocks, a toy car."
 }$json$::jsonb,
   true
 ),
@@ -856,19 +877,23 @@ values
   "words": [
     {
       "word": "Dog",
-      "bg": "#FAECE7"
+      "bg": "#FAECE7",
+      "image_note": "A friendly cartoon dog, simple rounded shape, wagging tail."
     },
     {
       "word": "Like",
-      "bg": "#E1F5EE"
+      "bg": "#E1F5EE",
+      "image_note": "Simple, bright, kid-friendly illustration of 'Like' -- one clear subject, no text in the image, no background clutter."
     },
     {
       "word": "Cute",
-      "bg": "#EEEDFE"
+      "bg": "#EEEDFE",
+      "image_note": "An adorable small toy or animal with big round eyes."
     },
     {
       "word": "Jump",
-      "bg": "#FAEEDA"
+      "bg": "#FAEEDA",
+      "image_note": "A child jumping in mid-air, arms and legs spread, motion lines."
     }
   ],
   "title": "New Words",

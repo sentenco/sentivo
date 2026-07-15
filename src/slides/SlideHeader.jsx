@@ -21,7 +21,7 @@ const CSS = `
 }
 .slh-tag {
   display: inline-block;
-  background: #FF7A59;
+  background: var(--k-accent, #FF7A59);
   color: #fff;
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;

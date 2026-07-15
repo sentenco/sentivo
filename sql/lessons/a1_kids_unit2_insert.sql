@@ -28,7 +28,8 @@ values
   null,
   null,
   $json${
-  "badge": "A1 · Beginner · Kids"
+  "badge": "A1 · Beginner · Kids",
+  "image_note": "Hero image for 'My Morning' -- A cheerful family scene at home -- parents and children together in a cozy living room, warm morning light."
 }$json$::jsonb,
   true
 ),
@@ -58,19 +59,23 @@ values
   "words": [
     {
       "word": "Wake up",
-      "bg": "#FAECE7"
+      "bg": "#FAECE7",
+      "image_note": "A child stretching in bed as sunlight comes through the window."
     },
     {
       "word": "Brush my teeth",
-      "bg": "#E1F5EE"
+      "bg": "#E1F5EE",
+      "image_note": "A child brushing their teeth at the bathroom sink, smiling."
     },
     {
       "word": "Get dressed",
-      "bg": "#EEEDFE"
+      "bg": "#EEEDFE",
+      "image_note": "A child putting on a shirt, clothes laid out on the bed."
     },
     {
       "word": "Eat breakfast",
-      "bg": "#FAEEDA"
+      "bg": "#FAEEDA",
+      "image_note": "A child eating cereal or toast at the breakfast table."
     }
   ],
   "title": "New Words",
@@ -228,7 +233,8 @@ values
   null,
   null,
   $json${
-  "badge": "A1 · Beginner · Kids"
+  "badge": "A1 · Beginner · Kids",
+  "image_note": "Hero image for 'Go to School' -- A cheerful family scene at home -- parents and children together in a cozy living room, warm morning light."
 }$json$::jsonb,
   true
 ),
@@ -258,19 +264,23 @@ values
   "words": [
     {
       "word": "School bag",
-      "bg": "#FAECE7"
+      "bg": "#FAECE7",
+      "image_note": "A colorful backpack, packed and ready by the door."
     },
     {
       "word": "Shoes",
-      "bg": "#E1F5EE"
+      "bg": "#E1F5EE",
+      "image_note": "A pair of bright, simple children's shoes side by side."
     },
     {
       "word": "Bus",
-      "bg": "#EEEDFE"
+      "bg": "#EEEDFE",
+      "image_note": "A cheerful yellow school bus, simple and rounded shapes."
     },
     {
       "word": "School",
-      "bg": "#FAEEDA"
+      "bg": "#FAEEDA",
+      "image_note": "A cheerful, simple school building with a flag or bell on top."
     }
   ],
   "title": "New Words",
@@ -428,7 +438,8 @@ values
   null,
   null,
   $json${
-  "badge": "A1 · Beginner · Kids"
+  "badge": "A1 · Beginner · Kids",
+  "image_note": "Hero image for 'My Afternoon' -- A cheerful family scene at home -- parents and children together in a cozy living room, warm morning light."
 }$json$::jsonb,
   true
 ),
@@ -458,19 +469,23 @@ values
   "words": [
     {
       "word": "Lunch",
-      "bg": "#FAECE7"
+      "bg": "#FAECE7",
+      "image_note": "A lunchbox open showing a sandwich, fruit, and a juice box."
     },
     {
       "word": "Homework",
-      "bg": "#E1F5EE"
+      "bg": "#E1F5EE",
+      "image_note": "A child at a desk writing in a notebook with a pencil."
     },
     {
       "word": "Play",
-      "bg": "#EEEDFE"
+      "bg": "#EEEDFE",
+      "image_note": "A child playing happily with toys on the floor."
     },
     {
       "word": "TV",
-      "bg": "#FAEEDA"
+      "bg": "#FAEEDA",
+      "image_note": "A simple rounded television showing a bright cartoon scene."
     }
   ],
   "title": "New Words",
@@ -628,7 +643,8 @@ values
   null,
   null,
   $json${
-  "badge": "A1 · Beginner · Kids"
+  "badge": "A1 · Beginner · Kids",
+  "image_note": "Hero image for 'My Evening' -- A cheerful family scene at home -- parents and children together in a cozy living room, warm morning light."
 }$json$::jsonb,
   true
 ),
@@ -658,19 +674,23 @@ values
   "words": [
     {
       "word": "Dinner",
-      "bg": "#FAECE7"
+      "bg": "#FAECE7",
+      "image_note": "A family sitting together at a dinner table with plates of food."
     },
     {
       "word": "Bath",
-      "bg": "#E1F5EE"
+      "bg": "#E1F5EE",
+      "image_note": "A child in a bathtub with bubbles, rubber duck nearby."
     },
     {
       "word": "Pajamas",
-      "bg": "#EEEDFE"
+      "bg": "#EEEDFE",
+      "image_note": "A child in cozy pajamas, ready for bed, yawning."
     },
     {
       "word": "Bed",
-      "bg": "#FAEEDA"
+      "bg": "#FAEEDA",
+      "image_note": "Simple, bright, kid-friendly illustration of 'Bed' -- one clear subject, no text in the image, no background clutter."
     }
   ],
   "title": "New Words",
@@ -828,7 +848,8 @@ values
   null,
   null,
   $json${
-  "badge": "A1 · Beginner · Kids"
+  "badge": "A1 · Beginner · Kids",
+  "image_note": "Hero image for 'All About My Day' -- A cheerful family scene at home -- parents and children together in a cozy living room, warm morning light."
 }$json$::jsonb,
   true
 ),
@@ -858,19 +879,23 @@ values
   "words": [
     {
       "word": "Morning",
-      "bg": "#FAECE7"
+      "bg": "#FAECE7",
+      "image_note": "The sun rising over a house, soft yellow and pink sky."
     },
     {
       "word": "School",
-      "bg": "#E1F5EE"
+      "bg": "#E1F5EE",
+      "image_note": "A cheerful, simple school building with a flag or bell on top."
     },
     {
       "word": "Afternoon",
-      "bg": "#EEEDFE"
+      "bg": "#EEEDFE",
+      "image_note": "A bright midday sun with a child playing outside."
     },
     {
       "word": "Evening",
-      "bg": "#FAEEDA"
+      "bg": "#FAEEDA",
+      "image_note": "A house with warm lit windows under a dusky purple sky."
     }
   ],
   "title": "New Words",

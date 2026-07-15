@@ -1,5 +1,6 @@
 import { useState } from "react";
 import SlideHeader from "./SlideHeader";
+import ImagePlaceholder from "./ImagePlaceholder";
 
 export default function SlideVocabulary({ content, lesson }) {
   const words = content.words || [];
@@ -25,9 +26,13 @@ export default function SlideVocabulary({ content, lesson }) {
           >
             <div
               className="slv-card-top"
-              style={{ background: w.bg || "#F4F0FF" }}
+              style={{ background: w.image_url ? (w.bg || "#F4F0FF") : undefined }}
             >
-              {w.image_url && <img src={w.image_url} alt={w.word || ""} />}
+              {w.image_url ? (
+                <img src={w.image_url} alt={w.word || ""} />
+              ) : (
+                <ImagePlaceholder note={w.image_note} compact />
+              )}
             </div>
             <div className="slv-card-bottom">{w.word}</div>
           </button>
@@ -39,10 +44,12 @@ export default function SlideVocabulary({ content, lesson }) {
           <div className="slv-zoom-card">
             <div
               className="slv-zoom-top"
-              style={{ background: zoomed.bg || "#F4F0FF" }}
+              style={{ background: zoomed.image_url ? (zoomed.bg || "#F4F0FF") : undefined }}
             >
-              {zoomed.image_url && (
+              {zoomed.image_url ? (
                 <img src={zoomed.image_url} alt={zoomed.word || ""} />
+              ) : (
+                <ImagePlaceholder note={zoomed.image_note} />
               )}
             </div>
             <div className="slv-zoom-bottom">{zoomed.word}</div>
@@ -90,7 +97,9 @@ const CSS = `
   display: flex;
   align-items: center;
   justify-content: center;
+  background: var(--k-tint, #F4F0FF);
 }
+.slv-card-top .img-ph { border: none; border-radius: 0; }
 .slv-card-top img {
   max-width: 70%;
   max-height: 70%;
@@ -132,7 +141,9 @@ const CSS = `
   display: flex;
   align-items: center;
   justify-content: center;
+  background: var(--k-tint, #F4F0FF);
 }
+.slv-zoom-top .img-ph { border: none; border-radius: 0; }
 .slv-zoom-top img {
   max-width: 75%;
   max-height: 75%;

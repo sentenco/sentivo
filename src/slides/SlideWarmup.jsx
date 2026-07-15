@@ -1,3 +1,4 @@
+import ImagePlaceholder from "./ImagePlaceholder";
 
 export default function SlideWarmup({ content, lesson }) {
   const questions = content.questions || [];
@@ -12,6 +13,10 @@ export default function SlideWarmup({ content, lesson }) {
           <img className="slw-image" src={content.image_url} alt="" />
         ) : content.display ? (
           <div className="slw-display">{content.display}</div>
+        ) : content.image_note ? (
+          <div className="slw-placeholder">
+            <ImagePlaceholder note={content.image_note} compact />
+          </div>
         ) : null}
       </div>
       <div className="slw-bottom">
@@ -38,11 +43,12 @@ const CSS = `
 .slw-image-area {
   position: relative;
   height: 66%;
-  background: #FDF8F0;
+  background: var(--k-bg, #FDF8F0);
   display: flex;
   align-items: center;
   justify-content: center;
 }
+.slw-placeholder { width: 100%; height: 100%; padding: 14px; box-sizing: border-box; }
 .slw-image {
   max-width: 100%;
   max-height: 100%;
@@ -74,7 +80,7 @@ const CSS = `
 .slw-bottom {
   flex: 1;
   min-height: 0;
-  background: #E8F8F0;
+  background: var(--k-bg-cool, #E8F8F0);
   padding: 12px 24px;
   display: flex;
   flex-direction: column;

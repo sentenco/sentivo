@@ -26,7 +26,8 @@ values
   null,
   null,
   $json${
-  "badge": "A1 · Beginner · Kids"
+  "badge": "A1 · Beginner · Kids",
+  "image_note": "Hero image for 'Weather Words' -- A cutaway view of a cozy house showing a few rooms at once -- kitchen, bedroom, living room."
 }$json$::jsonb,
   true
 ),
@@ -56,19 +57,23 @@ values
   "words": [
     {
       "word": "Sunny",
-      "bg": "#FAECE7"
+      "bg": "#FAECE7",
+      "image_note": "A bright yellow sun with rays, clear blue sky, no clouds."
     },
     {
       "word": "Rainy",
-      "bg": "#E1F5EE"
+      "bg": "#E1F5EE",
+      "image_note": "Grey clouds with simple raindrops falling, maybe a puddle."
     },
     {
       "word": "Cloudy",
-      "bg": "#EEEDFE"
+      "bg": "#EEEDFE",
+      "image_note": "Soft grey and white clouds filling the sky, sun barely peeking through."
     },
     {
       "word": "Windy",
-      "bg": "#FAEEDA"
+      "bg": "#FAEEDA",
+      "image_note": "Trees bending and leaves blowing sideways, motion lines for wind."
     }
   ],
   "title": "New Words",
@@ -226,7 +231,8 @@ values
   null,
   null,
   $json${
-  "badge": "A1 · Beginner · Kids"
+  "badge": "A1 · Beginner · Kids",
+  "image_note": "Hero image for 'Sunny or Rainy' -- A cutaway view of a cozy house showing a few rooms at once -- kitchen, bedroom, living room."
 }$json$::jsonb,
   true
 ),
@@ -256,19 +262,23 @@ values
   "words": [
     {
       "word": "Is it",
-      "bg": "#FAECE7"
+      "bg": "#FAECE7",
+      "image_note": "Functional/grammar word, not a concrete object -- skip a literal picture. If illustrating, show the example sentence in action instead of the word alone."
     },
     {
       "word": "Yes",
-      "bg": "#E1F5EE"
+      "bg": "#E1F5EE",
+      "image_note": "A simple green checkmark or a child nodding happily."
     },
     {
       "word": "No",
-      "bg": "#EEEDFE"
+      "bg": "#EEEDFE",
+      "image_note": "A simple red X or a child shaking their head gently."
     },
     {
       "word": "Hot",
-      "bg": "#FAEEDA"
+      "bg": "#FAEEDA",
+      "image_note": "A bright sun with wavy heat lines, a child fanning themselves."
     }
   ],
   "title": "New Words",
@@ -426,7 +436,8 @@ values
   null,
   null,
   $json${
-  "badge": "A1 · Beginner · Kids"
+  "badge": "A1 · Beginner · Kids",
+  "image_note": "Hero image for 'What's the Weather Like?' -- A cutaway view of a cozy house showing a few rooms at once -- kitchen, bedroom, living room."
 }$json$::jsonb,
   true
 ),
@@ -456,19 +467,23 @@ values
   "words": [
     {
       "word": "Wear",
-      "bg": "#FAECE7"
+      "bg": "#FAECE7",
+      "image_note": "A child putting on a jacket or coat, simple illustration."
     },
     {
       "word": "Coat",
-      "bg": "#E1F5EE"
+      "bg": "#E1F5EE",
+      "image_note": "A single warm winter coat, simple and bold, on a hanger."
     },
     {
       "word": "Umbrella",
-      "bg": "#EEEDFE"
+      "bg": "#EEEDFE",
+      "image_note": "A single open umbrella, bright color, simple and bold."
     },
     {
       "word": "And",
-      "bg": "#FAEEDA"
+      "bg": "#FAEEDA",
+      "image_note": "Functional/grammar word, not a concrete object -- skip a literal picture. If illustrating, show the example sentence in action instead of the word alone."
     }
   ],
   "title": "New Words",
@@ -626,7 +641,8 @@ values
   null,
   null,
   $json${
-  "badge": "A1 · Beginner · Kids"
+  "badge": "A1 · Beginner · Kids",
+  "image_note": "Hero image for 'Weather Clothes' -- A cutaway view of a cozy house showing a few rooms at once -- kitchen, bedroom, living room."
 }$json$::jsonb,
   true
 ),
@@ -656,19 +672,23 @@ values
   "words": [
     {
       "word": "Today",
-      "bg": "#FAECE7"
+      "bg": "#FAECE7",
+      "image_note": "Functional/grammar word, not a concrete object -- skip a literal picture. If illustrating, show the example sentence in action instead of the word alone."
     },
     {
       "word": "Because",
-      "bg": "#E1F5EE"
+      "bg": "#E1F5EE",
+      "image_note": "Functional/grammar word, not a concrete object -- skip a literal picture. If illustrating, show the example sentence in action instead of the word alone."
     },
     {
       "word": "Need",
-      "bg": "#EEEDFE"
+      "bg": "#EEEDFE",
+      "image_note": "Functional/grammar word, not a concrete object -- skip a literal picture. If illustrating, show the example sentence in action instead of the word alone."
     },
     {
       "word": "Ready",
-      "bg": "#FAEEDA"
+      "bg": "#FAEEDA",
+      "image_note": "A child with a backpack, standing by the door, thumbs up."
     }
   ],
   "title": "New Words",
@@ -826,7 +846,8 @@ values
   null,
   null,
   $json${
-  "badge": "A1 · Beginner · Kids"
+  "badge": "A1 · Beginner · Kids",
+  "image_note": "Hero image for 'Unit Review' -- A cutaway view of a cozy house showing a few rooms at once -- kitchen, bedroom, living room."
 }$json$::jsonb,
   true
 ),
@@ -856,19 +877,23 @@ values
   "words": [
     {
       "word": "Weather",
-      "bg": "#FAECE7"
+      "bg": "#FAECE7",
+      "image_note": "A small scene showing sun, cloud, and rain together, split panel style."
     },
     {
       "word": "Sunny",
-      "bg": "#E1F5EE"
+      "bg": "#E1F5EE",
+      "image_note": "A bright yellow sun with rays, clear blue sky, no clouds."
     },
     {
       "word": "Wear",
-      "bg": "#EEEDFE"
+      "bg": "#EEEDFE",
+      "image_note": "A child putting on a jacket or coat, simple illustration."
     },
     {
       "word": "Ready",
-      "bg": "#FAEEDA"
+      "bg": "#FAEEDA",
+      "image_note": "A child with a backpack, standing by the door, thumbs up."
     }
   ],
   "title": "New Words",

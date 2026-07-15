@@ -57,7 +57,7 @@ const CSS = `
   overflow: auto;
 }
 .sls-dialogue {
-  background: #F7F8FA;
+  background: var(--k-tint, #F7F8FA);
   border-radius: 14px;
   padding: 14px 18px;
   display: flex;

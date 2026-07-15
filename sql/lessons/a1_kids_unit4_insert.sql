@@ -26,7 +26,8 @@ values
   null,
   null,
   $json${
-  "badge": "A1 · Beginner · Kids"
+  "badge": "A1 · Beginner · Kids",
+  "image_note": "Hero image for 'Colors' -- A tidy, colorful classroom corner showing school supplies -- desks, books, pencils, backpacks."
 }$json$::jsonb,
   true
 ),
@@ -56,19 +57,23 @@ values
   "words": [
     {
       "word": "Red",
-      "bg": "#FAECE7"
+      "bg": "#FAECE7",
+      "image_note": "A simple red shape (e.g. a red apple or red ball), bold solid color."
     },
     {
       "word": "Blue",
-      "bg": "#E1F5EE"
+      "bg": "#E1F5EE",
+      "image_note": "A simple blue shape (e.g. a blue ball or blue sky), bold solid color."
     },
     {
       "word": "Yellow",
-      "bg": "#EEEDFE"
+      "bg": "#EEEDFE",
+      "image_note": "A simple yellow shape (e.g. a yellow sun or banana), bold solid color."
     },
     {
       "word": "Green",
-      "bg": "#FAEEDA"
+      "bg": "#FAEEDA",
+      "image_note": "A simple green shape (e.g. a green leaf or green apple), bold solid color."
     }
   ],
   "title": "New Words",
@@ -226,7 +231,8 @@ values
   null,
   null,
   $json${
-  "badge": "A1 · Beginner · Kids"
+  "badge": "A1 · Beginner · Kids",
+  "image_note": "Hero image for 'Numbers' -- A tidy, colorful classroom corner showing school supplies -- desks, books, pencils, backpacks."
 }$json$::jsonb,
   true
 ),
@@ -256,19 +262,23 @@ values
   "words": [
     {
       "word": "One",
-      "bg": "#FAECE7"
+      "bg": "#FAECE7",
+      "image_note": "A single large numeral '1' with one matching object beside it (e.g. one apple)."
     },
     {
       "word": "Two",
-      "bg": "#E1F5EE"
+      "bg": "#E1F5EE",
+      "image_note": "A large numeral '2' with two matching objects beside it."
     },
     {
       "word": "Three",
-      "bg": "#EEEDFE"
+      "bg": "#EEEDFE",
+      "image_note": "A large numeral '3' with three matching objects beside it."
     },
     {
       "word": "Four",
-      "bg": "#FAEEDA"
+      "bg": "#FAEEDA",
+      "image_note": "A large numeral '4' with four matching objects beside it."
     }
   ],
   "title": "New Words",
@@ -426,7 +436,8 @@ values
   null,
   null,
   $json${
-  "badge": "A1 · Beginner · Kids"
+  "badge": "A1 · Beginner · Kids",
+  "image_note": "Hero image for 'Count and Match' -- A tidy, colorful classroom corner showing school supplies -- desks, books, pencils, backpacks."
 }$json$::jsonb,
   true
 ),
@@ -456,19 +467,23 @@ values
   "words": [
     {
       "word": "Five",
-      "bg": "#FAECE7"
+      "bg": "#FAECE7",
+      "image_note": "A large numeral '5' with five matching objects beside it."
     },
     {
       "word": "How many",
-      "bg": "#E1F5EE"
+      "bg": "#E1F5EE",
+      "image_note": "Functional/grammar word, not a concrete object -- skip a literal picture. If illustrating, show the example sentence in action instead of the word alone."
     },
     {
       "word": "Match",
-      "bg": "#EEEDFE"
+      "bg": "#EEEDFE",
+      "image_note": "Two identical simple shapes or numbers connected by a line, puzzle-piece feel."
     },
     {
       "word": "Count",
-      "bg": "#FAEEDA"
+      "bg": "#FAEEDA",
+      "image_note": "A row of simple objects (like blocks or stars) lined up to be counted."
     }
   ],
   "title": "New Words",
@@ -626,7 +641,8 @@ values
   null,
   null,
   $json${
-  "badge": "A1 · Beginner · Kids"
+  "badge": "A1 · Beginner · Kids",
+  "image_note": "Hero image for 'My Favorite Number' -- A tidy, colorful classroom corner showing school supplies -- desks, books, pencils, backpacks."
 }$json$::jsonb,
   true
 ),
@@ -656,19 +672,23 @@ values
   "words": [
     {
       "word": "Favorite",
-      "bg": "#FAECE7"
+      "bg": "#FAECE7",
+      "image_note": "A single object with a small star or heart on it, marking it as special."
     },
     {
       "word": "Because",
-      "bg": "#E1F5EE"
+      "bg": "#E1F5EE",
+      "image_note": "Functional/grammar word, not a concrete object -- skip a literal picture. If illustrating, show the example sentence in action instead of the word alone."
     },
     {
       "word": "Like",
-      "bg": "#EEEDFE"
+      "bg": "#EEEDFE",
+      "image_note": "Simple, bright, kid-friendly illustration of 'Like' -- one clear subject, no text in the image, no background clutter."
     },
     {
       "word": "Number",
-      "bg": "#FAEEDA"
+      "bg": "#FAEEDA",
+      "image_note": "A friendly numeral character, simple and colorful."
     }
   ],
   "title": "New Words",
@@ -826,7 +846,8 @@ values
   null,
   null,
   $json${
-  "badge": "A1 · Beginner · Kids"
+  "badge": "A1 · Beginner · Kids",
+  "image_note": "Hero image for 'Unit Review' -- A tidy, colorful classroom corner showing school supplies -- desks, books, pencils, backpacks."
 }$json$::jsonb,
   true
 ),
@@ -856,19 +877,23 @@ values
   "words": [
     {
       "word": "Red",
-      "bg": "#FAECE7"
+      "bg": "#FAECE7",
+      "image_note": "A simple red shape (e.g. a red apple or red ball), bold solid color."
     },
     {
       "word": "Blue",
-      "bg": "#E1F5EE"
+      "bg": "#E1F5EE",
+      "image_note": "A simple blue shape (e.g. a blue ball or blue sky), bold solid color."
     },
     {
       "word": "One",
-      "bg": "#EEEDFE"
+      "bg": "#EEEDFE",
+      "image_note": "A single large numeral '1' with one matching object beside it (e.g. one apple)."
     },
     {
       "word": "Two",
-      "bg": "#FAEEDA"
+      "bg": "#FAEEDA",
+      "image_note": "A large numeral '2' with two matching objects beside it."
     }
   ],
   "title": "New Words",

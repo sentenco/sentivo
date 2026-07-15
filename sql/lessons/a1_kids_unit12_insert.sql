@@ -26,7 +26,8 @@ values
   null,
   null,
   $json${
-  "badge": "A1 · Beginner · Kids"
+  "badge": "A1 · Beginner · Kids",
+  "image_note": "Hero image for 'Feelings Vocabulary' -- A festive, celebratory classroom scene -- children showing off what they've learned, trophy or stars."
 }$json$::jsonb,
   true
 ),
@@ -56,19 +57,23 @@ values
   "words": [
     {
       "word": "Happy",
-      "bg": "#FAECE7"
+      "bg": "#FAECE7",
+      "image_note": "A child with a big smile, arms raised, sparkles around them."
     },
     {
       "word": "Sad",
-      "bg": "#E1F5EE"
+      "bg": "#E1F5EE",
+      "image_note": "A child with a downturned mouth and drooping shoulders, a small raincloud above."
     },
     {
       "word": "Angry",
-      "bg": "#EEEDFE"
+      "bg": "#EEEDFE",
+      "image_note": "A child with furrowed eyebrows and crossed arms, small steam lines."
     },
     {
       "word": "Tired",
-      "bg": "#FAEEDA"
+      "bg": "#FAEEDA",
+      "image_note": "A child yawning with heavy eyelids, maybe rubbing their eyes."
     }
   ],
   "title": "New Words",
@@ -226,7 +231,8 @@ values
   null,
   null,
   $json${
-  "badge": "A1 · Beginner · Kids"
+  "badge": "A1 · Beginner · Kids",
+  "image_note": "Hero image for 'I Feel...' -- A festive, celebratory classroom scene -- children showing off what they've learned, trophy or stars."
 }$json$::jsonb,
   true
 ),
@@ -256,19 +262,23 @@ values
   "words": [
     {
       "word": "Excited",
-      "bg": "#FAECE7"
+      "bg": "#FAECE7",
+      "image_note": "A child jumping with arms up, big open-mouthed smile, sparkles."
     },
     {
       "word": "Scared",
-      "bg": "#E1F5EE"
+      "bg": "#E1F5EE",
+      "image_note": "A child with wide eyes and hands near their face, startled expression."
     },
     {
       "word": "Because",
-      "bg": "#EEEDFE"
+      "bg": "#EEEDFE",
+      "image_note": "Functional/grammar word, not a concrete object -- skip a literal picture. If illustrating, show the example sentence in action instead of the word alone."
     },
     {
       "word": "Today",
-      "bg": "#FAEEDA"
+      "bg": "#FAEEDA",
+      "image_note": "Functional/grammar word, not a concrete object -- skip a literal picture. If illustrating, show the example sentence in action instead of the word alone."
     }
   ],
   "title": "New Words",
@@ -426,7 +436,8 @@ values
   null,
   null,
   $json${
-  "badge": "A1 · Beginner · Kids"
+  "badge": "A1 · Beginner · Kids",
+  "image_note": "Hero image for 'Are You Happy?' -- A festive, celebratory classroom scene -- children showing off what they've learned, trophy or stars."
 }$json$::jsonb,
   true
 ),
@@ -456,19 +467,23 @@ values
   "words": [
     {
       "word": "Are you",
-      "bg": "#FAECE7"
+      "bg": "#FAECE7",
+      "image_note": "Functional/grammar word, not a concrete object -- skip a literal picture. If illustrating, show the example sentence in action instead of the word alone."
     },
     {
       "word": "Yes, I am",
-      "bg": "#E1F5EE"
+      "bg": "#E1F5EE",
+      "image_note": "Functional/grammar word, not a concrete object -- skip a literal picture. If illustrating, show the example sentence in action instead of the word alone."
     },
     {
       "word": "No, I'm not",
-      "bg": "#EEEDFE"
+      "bg": "#EEEDFE",
+      "image_note": "Functional/grammar word, not a concrete object -- skip a literal picture. If illustrating, show the example sentence in action instead of the word alone."
     },
     {
       "word": "Okay",
-      "bg": "#FAEEDA"
+      "bg": "#FAEEDA",
+      "image_note": "Functional/grammar word, not a concrete object -- skip a literal picture. If illustrating, show the example sentence in action instead of the word alone."
     }
   ],
   "title": "New Words",
@@ -626,7 +641,8 @@ values
   null,
   null,
   $json${
-  "badge": "A1 · Beginner · Kids"
+  "badge": "A1 · Beginner · Kids",
+  "image_note": "Hero image for 'What Makes You Feel...?' -- A festive, celebratory classroom scene -- children showing off what they've learned, trophy or stars."
 }$json$::jsonb,
   true
 ),
@@ -656,19 +672,23 @@ values
   "words": [
     {
       "word": "Makes me",
-      "bg": "#FAECE7"
+      "bg": "#FAECE7",
+      "image_note": "Functional/grammar word, not a concrete object -- skip a literal picture. If illustrating, show the example sentence in action instead of the word alone."
     },
     {
       "word": "Smile",
-      "bg": "#E1F5EE"
+      "bg": "#E1F5EE",
+      "image_note": "A single simple smiling mouth or a child's happy face, close-up."
     },
     {
       "word": "Cry",
-      "bg": "#EEEDFE"
+      "bg": "#EEEDFE",
+      "image_note": "A child with a tear on their cheek, simple and gentle (not distressing)."
     },
     {
       "word": "Feeling",
-      "bg": "#FAEEDA"
+      "bg": "#FAEEDA",
+      "image_note": "A row of four simple faces showing happy, sad, angry, and surprised."
     }
   ],
   "title": "New Words",
@@ -826,7 +846,8 @@ values
   null,
   null,
   $json${
-  "badge": "A1 · Beginner · Kids"
+  "badge": "A1 · Beginner · Kids",
+  "image_note": "Hero image for 'Unit Review' -- A festive, celebratory classroom scene -- children showing off what they've learned, trophy or stars."
 }$json$::jsonb,
   true
 ),
@@ -856,19 +877,23 @@ values
   "words": [
     {
       "word": "Feel",
-      "bg": "#FAECE7"
+      "bg": "#FAECE7",
+      "image_note": "Functional/grammar word, not a concrete object -- skip a literal picture. If illustrating, show the example sentence in action instead of the word alone."
     },
     {
       "word": "Happy",
-      "bg": "#E1F5EE"
+      "bg": "#E1F5EE",
+      "image_note": "A child with a big smile, arms raised, sparkles around them."
     },
     {
       "word": "Are you",
-      "bg": "#EEEDFE"
+      "bg": "#EEEDFE",
+      "image_note": "Functional/grammar word, not a concrete object -- skip a literal picture. If illustrating, show the example sentence in action instead of the word alone."
     },
     {
       "word": "Makes me",
-      "bg": "#FAEEDA"
+      "bg": "#FAEEDA",
+      "image_note": "Functional/grammar word, not a concrete object -- skip a literal picture. If illustrating, show the example sentence in action instead of the word alone."
     }
   ],
   "title": "New Words",

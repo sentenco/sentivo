@@ -1,8 +1,10 @@
 import SlideHeader from "./SlideHeader";
+import ImagePlaceholder from "./ImagePlaceholder";
 
 export default function SlideReading({ content, lesson }) {
   const questions = content.questions || [];
   const isAdult = lesson?.age_track === "adults";
+  const showImageColumn = !!(content.image_url || content.image_note);
 
   return (
     <div className={`slr-slide ${isAdult ? "is-adult" : ""}`}>
@@ -14,11 +16,15 @@ export default function SlideReading({ content, lesson }) {
         isAdult={isAdult}
       />
       <div className="slr-body">
-        <div className="slr-columns">
+        <div className={`slr-columns ${showImageColumn ? "" : "slr-columns--text-only"}`}>
           <p className="slr-text">{content.text}</p>
-          {content.image_url && (
+          {showImageColumn && (
             <div className="slr-image-wrap">
-              <img src={content.image_url} alt="" />
+              {content.image_url ? (
+                <img src={content.image_url} alt="" />
+              ) : (
+                <ImagePlaceholder note={content.image_note} compact />
+              )}
             </div>
           )}
         </div>
@@ -60,6 +66,11 @@ const CSS = `
   gap: 16px;
   align-items: center;
 }
+.slr-columns--text-only {
+  grid-template-columns: 1fr;
+  justify-items: center;
+}
+.slr-columns--text-only .slr-text { max-width: 520px; text-align: center; }
 .slr-text {
   font-family: 'Quicksand', sans-serif;
   font-weight: 600;
@@ -72,7 +83,7 @@ const CSS = `
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #FDF8F0;
+  background: var(--k-bg, #FDF8F0);
   border-radius: 12px;
   overflow: hidden;
   height: 100%;

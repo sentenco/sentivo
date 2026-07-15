@@ -1,3 +1,4 @@
+import ImagePlaceholder from "./ImagePlaceholder";
 
 export default function SlideTitle({ content, lesson }) {
   const title = content.title || lesson?.title || "Untitled lesson";
@@ -5,19 +6,33 @@ export default function SlideTitle({ content, lesson }) {
     content.badge ||
     [lesson?.level, lesson?.age_track].filter(Boolean).join(" · ");
   const isAdult = lesson?.age_track === "adults";
+  const hasImage = !!content.image_url;
 
   return (
-    <div className={`slt-slide ${isAdult ? "is-adult" : ""}`}>
+    <div className={`slt-slide ${isAdult ? "is-adult" : ""} ${hasImage ? "" : "no-image"}`}>
       <style>{CSS}</style>
-      {content.image_url && (
-        <img className="slt-image" src={content.image_url} alt="" />
+      {hasImage ? (
+        <>
+          <img className="slt-image" src={content.image_url} alt="" />
+          <div className="slt-overlay" />
+          <div className="slt-content">
+            {badge && <span className="slt-badge">{badge}</span>}
+            <h1 className="slt-title">{title}</h1>
+            {content.subtitle && <p className="slt-subtitle">{content.subtitle}</p>}
+          </div>
+        </>
+      ) : (
+        <>
+          <div className="slt-placeholder-area">
+            <ImagePlaceholder note={content.image_note} />
+          </div>
+          <div className="slt-content slt-content--flat">
+            {badge && <span className="slt-badge">{badge}</span>}
+            <h1 className="slt-title">{title}</h1>
+            {content.subtitle && <p className="slt-subtitle">{content.subtitle}</p>}
+          </div>
+        </>
       )}
-      <div className="slt-overlay" />
-      <div className="slt-content">
-        {badge && <span className="slt-badge">{badge}</span>}
-        <h1 className="slt-title">{title}</h1>
-        {content.subtitle && <p className="slt-subtitle">{content.subtitle}</p>}
-      </div>
     </div>
   );
 }
@@ -27,9 +42,19 @@ const CSS = `
   position: relative;
   width: 100%;
   height: 100%;
-  background: #FDF8F0;
+  background: var(--k-bg, #FDF8F0);
   overflow: hidden;
 }
+.slt-slide.no-image {
+  display: flex;
+  flex-direction: column;
+}
+.slt-placeholder-area {
+  flex: 1;
+  min-height: 0;
+  padding: 16px 20px 0;
+}
+.slt-placeholder-area .img-ph { border-radius: 14px; }
 .slt-image {
   position: absolute;
   inset: 0;
@@ -47,6 +72,11 @@ const CSS = `
   position: absolute;
   left: 0; right: 0; bottom: 0;
   padding: 24px 28px;
+}
+.slt-content--flat {
+  position: static;
+  padding: 14px 24px 18px;
+  flex-shrink: 0;
 }
 .slt-badge {
   display: inline-block;
@@ -79,6 +109,16 @@ const CSS = `
   max-width: 480px;
   line-height: 1.5;
 }
+.slt-content--flat .slt-badge {
+  color: var(--k-accent-dark, #C2452F);
+  background: var(--k-tint, #FFF3E9);
+  border-color: transparent;
+}
+.slt-content--flat .slt-title,
+.slt-content--flat .slt-subtitle {
+  color: #1B2A4A;
+}
+.slt-content--flat .slt-subtitle { opacity: 0.72; }
 
 /* ── Adults theme: editorial, muted, serif/sans pairing ── */
 .slt-slide.is-adult {

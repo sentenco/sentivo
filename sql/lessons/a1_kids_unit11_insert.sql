@@ -26,7 +26,8 @@ values
   null,
   null,
   $json${
-  "badge": "A1 · Beginner · Kids"
+  "badge": "A1 · Beginner · Kids",
+  "image_note": "Hero image for 'Rooms of the House' -- A row of a few children's faces showing different simple feelings -- happy, sad, excited."
 }$json$::jsonb,
   true
 ),
@@ -56,19 +57,23 @@ values
   "words": [
     {
       "word": "Kitchen",
-      "bg": "#FAECE7"
+      "bg": "#FAECE7",
+      "image_note": "A simple, colorful kitchen scene with a stove, sink, and table."
     },
     {
       "word": "Bedroom",
-      "bg": "#E1F5EE"
+      "bg": "#E1F5EE",
+      "image_note": "A simple, cozy bedroom scene with a bed and a window."
     },
     {
       "word": "Bathroom",
-      "bg": "#EEEDFE"
+      "bg": "#EEEDFE",
+      "image_note": "A simple bathroom scene with a sink, tub, and mirror."
     },
     {
       "word": "Living room",
-      "bg": "#FAEEDA"
+      "bg": "#FAEEDA",
+      "image_note": "A simple living room scene with a sofa, TV, and a rug."
     }
   ],
   "title": "New Words",
@@ -226,7 +231,8 @@ values
   null,
   null,
   $json${
-  "badge": "A1 · Beginner · Kids"
+  "badge": "A1 · Beginner · Kids",
+  "image_note": "Hero image for 'Furniture in the House' -- A row of a few children's faces showing different simple feelings -- happy, sad, excited."
 }$json$::jsonb,
   true
 ),
@@ -256,19 +262,23 @@ values
   "words": [
     {
       "word": "There is",
-      "bg": "#FAECE7"
+      "bg": "#FAECE7",
+      "image_note": "Functional/grammar word, not a concrete object -- skip a literal picture. If illustrating, show the example sentence in action instead of the word alone."
     },
     {
       "word": "Sofa",
-      "bg": "#E1F5EE"
+      "bg": "#E1F5EE",
+      "image_note": "A single comfy sofa with a few pillows, simple and bold."
     },
     {
       "word": "Bed",
-      "bg": "#EEEDFE"
+      "bg": "#EEEDFE",
+      "image_note": "Simple, bright, kid-friendly illustration of 'Bed' -- one clear subject, no text in the image, no background clutter."
     },
     {
       "word": "Table",
-      "bg": "#FAEEDA"
+      "bg": "#FAEEDA",
+      "image_note": "A simple wooden table, single object, bold outline."
     }
   ],
   "title": "New Words",
@@ -426,7 +436,8 @@ values
   null,
   null,
   $json${
-  "badge": "A1 · Beginner · Kids"
+  "badge": "A1 · Beginner · Kids",
+  "image_note": "Hero image for 'Where Is It?' -- A row of a few children's faces showing different simple feelings -- happy, sad, excited."
 }$json$::jsonb,
   true
 ),
@@ -456,19 +467,23 @@ values
   "words": [
     {
       "word": "Where is",
-      "bg": "#FAECE7"
+      "bg": "#FAECE7",
+      "image_note": "Functional/grammar word, not a concrete object -- skip a literal picture. If illustrating, show the example sentence in action instead of the word alone."
     },
     {
       "word": "In",
-      "bg": "#E1F5EE"
+      "bg": "#E1F5EE",
+      "image_note": "A simple scene showing one object inside another (e.g. a toy inside a box)."
     },
     {
       "word": "On",
-      "bg": "#EEEDFE"
+      "bg": "#EEEDFE",
+      "image_note": "A simple scene showing one object on top of another (e.g. a cup on a table)."
     },
     {
       "word": "Under",
-      "bg": "#FAEEDA"
+      "bg": "#FAEEDA",
+      "image_note": "A simple scene showing one object under another (e.g. a cat under a chair)."
     }
   ],
   "title": "New Words",
@@ -626,7 +641,8 @@ values
   null,
   null,
   $json${
-  "badge": "A1 · Beginner · Kids"
+  "badge": "A1 · Beginner · Kids",
+  "image_note": "Hero image for 'My Favorite Room' -- A row of a few children's faces showing different simple feelings -- happy, sad, excited."
 }$json$::jsonb,
   true
 ),
@@ -656,19 +672,23 @@ values
   "words": [
     {
       "word": "Favorite",
-      "bg": "#FAECE7"
+      "bg": "#FAECE7",
+      "image_note": "A single object with a small star or heart on it, marking it as special."
     },
     {
       "word": "Because",
-      "bg": "#E1F5EE"
+      "bg": "#E1F5EE",
+      "image_note": "Functional/grammar word, not a concrete object -- skip a literal picture. If illustrating, show the example sentence in action instead of the word alone."
     },
     {
       "word": "Cozy",
-      "bg": "#EEEDFE"
+      "bg": "#EEEDFE",
+      "image_note": "A child curled up on a sofa or bed with a blanket, warm lighting."
     },
     {
       "word": "Show",
-      "bg": "#FAEEDA"
+      "bg": "#FAEEDA",
+      "image_note": "Functional/grammar word, not a concrete object -- skip a literal picture. If illustrating, show the example sentence in action instead of the word alone."
     }
   ],
   "title": "New Words",
@@ -826,7 +846,8 @@ values
   null,
   null,
   $json${
-  "badge": "A1 · Beginner · Kids"
+  "badge": "A1 · Beginner · Kids",
+  "image_note": "Hero image for 'Unit Review' -- A row of a few children's faces showing different simple feelings -- happy, sad, excited."
 }$json$::jsonb,
   true
 ),
@@ -856,19 +877,23 @@ values
   "words": [
     {
       "word": "Room",
-      "bg": "#FAECE7"
+      "bg": "#FAECE7",
+      "image_note": "A simple, cozy room with basic furniture, warm colors."
     },
     {
       "word": "There is",
-      "bg": "#E1F5EE"
+      "bg": "#E1F5EE",
+      "image_note": "Functional/grammar word, not a concrete object -- skip a literal picture. If illustrating, show the example sentence in action instead of the word alone."
     },
     {
       "word": "Favorite",
-      "bg": "#EEEDFE"
+      "bg": "#EEEDFE",
+      "image_note": "A single object with a small star or heart on it, marking it as special."
     },
     {
       "word": "Cozy",
-      "bg": "#FAEEDA"
+      "bg": "#FAEEDA",
+      "image_note": "A child curled up on a sofa or bed with a blanket, warm lighting."
     }
   ],
   "title": "New Words",

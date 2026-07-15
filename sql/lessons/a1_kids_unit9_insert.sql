@@ -26,7 +26,8 @@ values
   null,
   null,
   $json${
-  "badge": "A1 · Beginner · Kids"
+  "badge": "A1 · Beginner · Kids",
+  "image_note": "Hero image for 'Body Parts' -- A split-sky scene showing different weather -- sun on one side, rain clouds on the other."
 }$json$::jsonb,
   true
 ),
@@ -56,19 +57,23 @@ values
   "words": [
     {
       "word": "Head",
-      "bg": "#FAECE7"
+      "bg": "#FAECE7",
+      "image_note": "A simple cartoon child's head and face, front-facing."
     },
     {
       "word": "Hand",
-      "bg": "#E1F5EE"
+      "bg": "#E1F5EE",
+      "image_note": "A single open hand, simple and bold outline."
     },
     {
       "word": "Foot",
-      "bg": "#EEEDFE"
+      "bg": "#EEEDFE",
+      "image_note": "A single bare foot, simple and bold outline."
     },
     {
       "word": "Eyes",
-      "bg": "#FAEEDA"
+      "bg": "#FAEEDA",
+      "image_note": "A pair of large friendly cartoon eyes, simple and bold."
     }
   ],
   "title": "New Words",
@@ -226,7 +231,8 @@ values
   null,
   null,
   $json${
-  "badge": "A1 · Beginner · Kids"
+  "badge": "A1 · Beginner · Kids",
+  "image_note": "Hero image for 'Touch Your…' -- A split-sky scene showing different weather -- sun on one side, rain clouds on the other."
 }$json$::jsonb,
   true
 ),
@@ -256,19 +262,23 @@ values
   "words": [
     {
       "word": "Touch",
-      "bg": "#FAECE7"
+      "bg": "#FAECE7",
+      "image_note": "A child's hand reaching out to touch an object, gentle gesture."
     },
     {
       "word": "Nose",
-      "bg": "#E1F5EE"
+      "bg": "#E1F5EE",
+      "image_note": "A single simple cartoon nose, bold outline."
     },
     {
       "word": "Ear",
-      "bg": "#EEEDFE"
+      "bg": "#EEEDFE",
+      "image_note": "A single simple cartoon ear, bold outline."
     },
     {
       "word": "Knee",
-      "bg": "#FAEEDA"
+      "bg": "#FAEEDA",
+      "image_note": "A child pointing to their bent knee, simple illustration."
     }
   ],
   "title": "New Words",
@@ -426,7 +436,8 @@ values
   null,
   null,
   $json${
-  "badge": "A1 · Beginner · Kids"
+  "badge": "A1 · Beginner · Kids",
+  "image_note": "Hero image for 'My Face' -- A split-sky scene showing different weather -- sun on one side, rain clouds on the other."
 }$json$::jsonb,
   true
 ),
@@ -456,19 +467,23 @@ values
   "words": [
     {
       "word": "Mouth",
-      "bg": "#FAECE7"
+      "bg": "#FAECE7",
+      "image_note": "A single simple smiling cartoon mouth, bold outline."
     },
     {
       "word": "Hair",
-      "bg": "#E1F5EE"
+      "bg": "#E1F5EE",
+      "image_note": "A simple cartoon child's head with clearly visible, colorful hair."
     },
     {
       "word": "Big",
-      "bg": "#EEEDFE"
+      "bg": "#EEEDFE",
+      "image_note": "A large object next to a small one, clearly showing the size difference."
     },
     {
       "word": "Small",
-      "bg": "#FAEEDA"
+      "bg": "#FAEEDA",
+      "image_note": "A small object next to a large one, clearly showing the size difference."
     }
   ],
   "title": "New Words",
@@ -626,7 +641,8 @@ values
   null,
   null,
   $json${
-  "badge": "A1 · Beginner · Kids"
+  "badge": "A1 · Beginner · Kids",
+  "image_note": "Hero image for 'Body Actions' -- A split-sky scene showing different weather -- sun on one side, rain clouds on the other."
 }$json$::jsonb,
   true
 ),
@@ -656,19 +672,23 @@ values
   "words": [
     {
       "word": "Clap",
-      "bg": "#FAECE7"
+      "bg": "#FAECE7",
+      "image_note": "A child clapping both hands together, motion lines, happy face."
     },
     {
       "word": "Wave",
-      "bg": "#E1F5EE"
+      "bg": "#E1F5EE",
+      "image_note": "A child waving one hand up high, cheerful expression."
     },
     {
       "word": "Wiggle",
-      "bg": "#EEEDFE"
+      "bg": "#EEEDFE",
+      "image_note": "A child wiggling their fingers or toes, playful motion lines."
     },
     {
       "word": "Show",
-      "bg": "#FAEEDA"
+      "bg": "#FAEEDA",
+      "image_note": "Functional/grammar word, not a concrete object -- skip a literal picture. If illustrating, show the example sentence in action instead of the word alone."
     }
   ],
   "title": "New Words",
@@ -826,7 +846,8 @@ values
   null,
   null,
   $json${
-  "badge": "A1 · Beginner · Kids"
+  "badge": "A1 · Beginner · Kids",
+  "image_note": "Hero image for 'Unit Review' -- A split-sky scene showing different weather -- sun on one side, rain clouds on the other."
 }$json$::jsonb,
   true
 ),
@@ -856,19 +877,23 @@ values
   "words": [
     {
       "word": "Head",
-      "bg": "#FAECE7"
+      "bg": "#FAECE7",
+      "image_note": "A simple cartoon child's head and face, front-facing."
     },
     {
       "word": "Touch",
-      "bg": "#E1F5EE"
+      "bg": "#E1F5EE",
+      "image_note": "A child's hand reaching out to touch an object, gentle gesture."
     },
     {
       "word": "Hair",
-      "bg": "#EEEDFE"
+      "bg": "#EEEDFE",
+      "image_note": "A simple cartoon child's head with clearly visible, colorful hair."
     },
     {
       "word": "Clap",
-      "bg": "#FAEEDA"
+      "bg": "#FAEEDA",
+      "image_note": "A child clapping both hands together, motion lines, happy face."
     }
   ],
   "title": "New Words",

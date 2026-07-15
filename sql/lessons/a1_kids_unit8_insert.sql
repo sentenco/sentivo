@@ -26,7 +26,8 @@ values
   null,
   null,
   $json${
-  "badge": "A1 · Beginner · Kids"
+  "badge": "A1 · Beginner · Kids",
+  "image_note": "Hero image for 'Food' -- A child pointing to parts of their own face and body, playful and simple, mirror or close-up framing."
 }$json$::jsonb,
   true
 ),
@@ -56,19 +57,23 @@ values
   "words": [
     {
       "word": "Apple",
-      "bg": "#FAECE7"
+      "bg": "#FAECE7",
+      "image_note": "A single red apple, simple and bold, maybe with a leaf."
     },
     {
       "word": "Bread",
-      "bg": "#E1F5EE"
+      "bg": "#E1F5EE",
+      "image_note": "A simple loaf of bread or a slice of bread, warm brown tones."
     },
     {
       "word": "Milk",
-      "bg": "#EEEDFE"
+      "bg": "#EEEDFE",
+      "image_note": "A glass of milk, simple and bold, maybe with a milk carton."
     },
     {
       "word": "Rice",
-      "bg": "#FAEEDA"
+      "bg": "#FAEEDA",
+      "image_note": "A simple bowl of white rice, steam lines for warmth."
     }
   ],
   "title": "New Words",
@@ -226,7 +231,8 @@ values
   null,
   null,
   $json${
-  "badge": "A1 · Beginner · Kids"
+  "badge": "A1 · Beginner · Kids",
+  "image_note": "Hero image for 'Fruits' -- A child pointing to parts of their own face and body, playful and simple, mirror or close-up framing."
 }$json$::jsonb,
   true
 ),
@@ -256,19 +262,23 @@ values
   "words": [
     {
       "word": "Banana",
-      "bg": "#FAECE7"
+      "bg": "#FAECE7",
+      "image_note": "A single yellow banana, simple and bold, slightly curved."
     },
     {
       "word": "Orange",
-      "bg": "#E1F5EE"
+      "bg": "#E1F5EE",
+      "image_note": "A single orange fruit, simple and bold, round shape."
     },
     {
       "word": "Grapes",
-      "bg": "#EEEDFE"
+      "bg": "#EEEDFE",
+      "image_note": "A small bunch of purple or green grapes, simple and bold."
     },
     {
       "word": "And",
-      "bg": "#FAEEDA"
+      "bg": "#FAEEDA",
+      "image_note": "Functional/grammar word, not a concrete object -- skip a literal picture. If illustrating, show the example sentence in action instead of the word alone."
     }
   ],
   "title": "New Words",
@@ -426,7 +436,8 @@ values
   null,
   null,
   $json${
-  "badge": "A1 · Beginner · Kids"
+  "badge": "A1 · Beginner · Kids",
+  "image_note": "Hero image for 'I Like / I Don't Like' -- A child pointing to parts of their own face and body, playful and simple, mirror or close-up framing."
 }$json$::jsonb,
   true
 ),
@@ -456,19 +467,23 @@ values
   "words": [
     {
       "word": "I like",
-      "bg": "#FAECE7"
+      "bg": "#FAECE7",
+      "image_note": "Functional/grammar word, not a concrete object -- skip a literal picture. If illustrating, show the example sentence in action instead of the word alone."
     },
     {
       "word": "I don't like",
-      "bg": "#E1F5EE"
+      "bg": "#E1F5EE",
+      "image_note": "Functional/grammar word, not a concrete object -- skip a literal picture. If illustrating, show the example sentence in action instead of the word alone."
     },
     {
       "word": "Yummy",
-      "bg": "#EEEDFE"
+      "bg": "#EEEDFE",
+      "image_note": "Simple, bright, kid-friendly illustration of 'Yummy' -- one clear subject, no text in the image, no background clutter."
     },
     {
       "word": "Yucky",
-      "bg": "#FAEEDA"
+      "bg": "#FAEEDA",
+      "image_note": "A child making a scrunched-up, unhappy face at a plate of food."
     }
   ],
   "title": "New Words",
@@ -626,7 +641,8 @@ values
   null,
   null,
   $json${
-  "badge": "A1 · Beginner · Kids"
+  "badge": "A1 · Beginner · Kids",
+  "image_note": "Hero image for 'Healthy Food' -- A child pointing to parts of their own face and body, playful and simple, mirror or close-up framing."
 }$json$::jsonb,
   true
 ),
@@ -656,19 +672,23 @@ values
   "words": [
     {
       "word": "Healthy",
-      "bg": "#FAECE7"
+      "bg": "#FAECE7",
+      "image_note": "A colorful plate with fruits and vegetables, bright and appetizing."
     },
     {
       "word": "Good for me",
-      "bg": "#E1F5EE"
+      "bg": "#E1F5EE",
+      "image_note": "A child eating a fruit or vegetable happily, a small heart or star nearby."
     },
     {
       "word": "Eat",
-      "bg": "#EEEDFE"
+      "bg": "#EEEDFE",
+      "image_note": "A child eating happily at the table, fork or spoon in hand."
     },
     {
       "word": "Drink",
-      "bg": "#FAEEDA"
+      "bg": "#FAEEDA",
+      "image_note": "A child drinking from a cup, simple and cheerful."
     }
   ],
   "title": "New Words",
@@ -826,7 +846,8 @@ values
   null,
   null,
   $json${
-  "badge": "A1 · Beginner · Kids"
+  "badge": "A1 · Beginner · Kids",
+  "image_note": "Hero image for 'Unit Review' -- A child pointing to parts of their own face and body, playful and simple, mirror or close-up framing."
 }$json$::jsonb,
   true
 ),
@@ -856,19 +877,23 @@ values
   "words": [
     {
       "word": "Food",
-      "bg": "#FAECE7"
+      "bg": "#FAECE7",
+      "image_note": "A simple plate with a mix of fruit, bread, and vegetables."
     },
     {
       "word": "Like",
-      "bg": "#E1F5EE"
+      "bg": "#E1F5EE",
+      "image_note": "Simple, bright, kid-friendly illustration of 'Like' -- one clear subject, no text in the image, no background clutter."
     },
     {
       "word": "Yummy",
-      "bg": "#EEEDFE"
+      "bg": "#EEEDFE",
+      "image_note": "Simple, bright, kid-friendly illustration of 'Yummy' -- one clear subject, no text in the image, no background clutter."
     },
     {
       "word": "Healthy",
-      "bg": "#FAEEDA"
+      "bg": "#FAEEDA",
+      "image_note": "A colorful plate with fruits and vegetables, bright and appetizing."
     }
   ],
   "title": "New Words",

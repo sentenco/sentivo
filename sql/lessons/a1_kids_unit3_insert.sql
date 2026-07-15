@@ -26,7 +26,8 @@ values
   null,
   null,
   $json${
-  "badge": "A1 · Beginner · Kids"
+  "badge": "A1 · Beginner · Kids",
+  "image_note": "Hero image for 'Family Vocabulary' -- A bright classroom scene, colorful numbers and shapes on the wall, children counting together."
 }$json$::jsonb,
   true
 ),
@@ -56,19 +57,23 @@ values
   "words": [
     {
       "word": "Mom",
-      "bg": "#FAECE7"
+      "bg": "#FAECE7",
+      "image_note": "A warm, smiling mother figure, simple and friendly illustration style."
     },
     {
       "word": "Dad",
-      "bg": "#E1F5EE"
+      "bg": "#E1F5EE",
+      "image_note": "A warm, smiling father figure, simple and friendly illustration style."
     },
     {
       "word": "Sister",
-      "bg": "#EEEDFE"
+      "bg": "#EEEDFE",
+      "image_note": "A young girl smiling, simple and friendly illustration style."
     },
     {
       "word": "Brother",
-      "bg": "#FAEEDA"
+      "bg": "#FAEEDA",
+      "image_note": "A young boy smiling, simple and friendly illustration style."
     }
   ],
   "title": "New Words",
@@ -226,7 +231,8 @@ values
   null,
   null,
   $json${
-  "badge": "A1 · Beginner · Kids"
+  "badge": "A1 · Beginner · Kids",
+  "image_note": "Hero image for 'This Is My...' -- A bright classroom scene, colorful numbers and shapes on the wall, children counting together."
 }$json$::jsonb,
   true
 ),
@@ -256,19 +262,23 @@ values
   "words": [
     {
       "word": "Grandma",
-      "bg": "#FAECE7"
+      "bg": "#FAECE7",
+      "image_note": "A warm, smiling grandmother figure with glasses, gentle and cozy."
     },
     {
       "word": "Grandpa",
-      "bg": "#E1F5EE"
+      "bg": "#E1F5EE",
+      "image_note": "A warm, smiling grandfather figure, gentle and cozy."
     },
     {
       "word": "Baby",
-      "bg": "#EEEDFE"
+      "bg": "#EEEDFE",
+      "image_note": "A cute smiling baby, simple rounded illustration style."
     },
     {
       "word": "Family",
-      "bg": "#FAEEDA"
+      "bg": "#FAEEDA",
+      "image_note": "A family of four holding hands together, warm and happy."
     }
   ],
   "title": "New Words",
@@ -426,7 +436,8 @@ values
   null,
   null,
   $json${
-  "badge": "A1 · Beginner · Kids"
+  "badge": "A1 · Beginner · Kids",
+  "image_note": "Hero image for 'Big or Small Family?' -- A bright classroom scene, colorful numbers and shapes on the wall, children counting together."
 }$json$::jsonb,
   true
 ),
@@ -456,19 +467,23 @@ values
   "words": [
     {
       "word": "Big",
-      "bg": "#FAECE7"
+      "bg": "#FAECE7",
+      "image_note": "A large object next to a small one, clearly showing the size difference."
     },
     {
       "word": "Small",
-      "bg": "#E1F5EE"
+      "bg": "#E1F5EE",
+      "image_note": "A small object next to a large one, clearly showing the size difference."
     },
     {
       "word": "Many",
-      "bg": "#EEEDFE"
+      "bg": "#EEEDFE",
+      "image_note": "A group of several family members standing together, cheerful."
     },
     {
       "word": "Family",
-      "bg": "#FAEEDA"
+      "bg": "#FAEEDA",
+      "image_note": "A family of four holding hands together, warm and happy."
     }
   ],
   "title": "New Words",
@@ -626,7 +641,8 @@ values
   null,
   null,
   $json${
-  "badge": "A1 · Beginner · Kids"
+  "badge": "A1 · Beginner · Kids",
+  "image_note": "Hero image for 'I Love My Family' -- A bright classroom scene, colorful numbers and shapes on the wall, children counting together."
 }$json$::jsonb,
   true
 ),
@@ -656,19 +672,23 @@ values
   "words": [
     {
       "word": "Play",
-      "bg": "#FAECE7"
+      "bg": "#FAECE7",
+      "image_note": "A child playing happily with toys on the floor."
     },
     {
       "word": "Hug",
-      "bg": "#E1F5EE"
+      "bg": "#E1F5EE",
+      "image_note": "Two family members hugging warmly, arms wrapped around each other."
     },
     {
       "word": "Love",
-      "bg": "#EEEDFE"
+      "bg": "#EEEDFE",
+      "image_note": "A simple heart shape, or a family member giving a warm hug."
     },
     {
       "word": "Together",
-      "bg": "#FAEEDA"
+      "bg": "#FAEEDA",
+      "image_note": "A family doing an activity together, like playing a board game."
     }
   ],
   "title": "New Words",
@@ -826,7 +846,8 @@ values
   null,
   null,
   $json${
-  "badge": "A1 · Beginner · Kids"
+  "badge": "A1 · Beginner · Kids",
+  "image_note": "Hero image for 'Unit Review' -- A bright classroom scene, colorful numbers and shapes on the wall, children counting together."
 }$json$::jsonb,
   true
 ),
@@ -856,19 +877,23 @@ values
   "words": [
     {
       "word": "Mom",
-      "bg": "#FAECE7"
+      "bg": "#FAECE7",
+      "image_note": "A warm, smiling mother figure, simple and friendly illustration style."
     },
     {
       "word": "Dad",
-      "bg": "#E1F5EE"
+      "bg": "#E1F5EE",
+      "image_note": "A warm, smiling father figure, simple and friendly illustration style."
     },
     {
       "word": "Grandma",
-      "bg": "#EEEDFE"
+      "bg": "#EEEDFE",
+      "image_note": "A warm, smiling grandmother figure with glasses, gentle and cozy."
     },
     {
       "word": "Grandpa",
-      "bg": "#FAEEDA"
+      "bg": "#FAEEDA",
+      "image_note": "A warm, smiling grandfather figure, gentle and cozy."
     }
   ],
   "title": "New Words",

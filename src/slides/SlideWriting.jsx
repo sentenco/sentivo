@@ -1,9 +1,11 @@
 import SlideHeader from "./SlideHeader";
 import { renderBlankLine } from "./dialogueUtils";
+import ImagePlaceholder from "./ImagePlaceholder";
 
 export default function SlideWriting({ content, lesson }) {
   const prompts = content.prompts || [];
   const isAdult = lesson?.age_track === "adults";
+  const showImage = !!(content.image_url || content.image_note);
 
   return (
     <div className={`slwr-slide ${isAdult ? "is-adult" : ""}`}>
@@ -14,7 +16,7 @@ export default function SlideWriting({ content, lesson }) {
         subtitle={content.subtitle || "Complete each sentence below."}
         isAdult={isAdult}
       />
-      <div className={`slwr-body ${content.image_url ? "has-image" : ""}`}>
+      <div className={`slwr-body ${showImage ? "has-image" : ""}`}>
         <div className="slwr-list">
           {prompts.map((prompt, i) => (
             <div className="slwr-row" key={i}>
@@ -25,9 +27,13 @@ export default function SlideWriting({ content, lesson }) {
             </div>
           ))}
         </div>
-        {content.image_url && (
+        {showImage && (
           <div className="slwr-image-area">
-            <img className="slwr-image" src={content.image_url} alt="" />
+            {content.image_url ? (
+              <img className="slwr-image" src={content.image_url} alt="" />
+            ) : (
+              <ImagePlaceholder note={content.image_note} compact />
+            )}
           </div>
         )}
       </div>
@@ -70,7 +76,7 @@ const CSS = `
   height: 100%;
   max-height: 240px;
   border-radius: 16px;
-  background: #FDF8F0;
+  background: var(--k-bg, #FDF8F0);
   display: flex;
   align-items: center;
   justify-content: center;

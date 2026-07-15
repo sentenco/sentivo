@@ -28,7 +28,8 @@ values
   null,
   null,
   $json${
-  "badge": "A1 · Beginner · Kids"
+  "badge": "A1 · Beginner · Kids",
+  "image_note": "Hero image for 'Hello & My Name' -- A warm, welcoming scene of a diverse group of children at the start of a school day -- waving hello, smiling, everyday classroom or playground setting."
 }$json$::jsonb,
   true
 ),
@@ -58,19 +59,23 @@ values
   "words": [
     {
       "word": "Hello",
-      "bg": "#FAECE7"
+      "bg": "#FAECE7",
+      "image_note": "A child waving hello with a big smile, warm and welcoming."
     },
     {
       "word": "Hi",
-      "bg": "#E1F5EE"
+      "bg": "#E1F5EE",
+      "image_note": "A child waving hi cheerfully, close-up, friendly expression."
     },
     {
       "word": "Goodbye",
-      "bg": "#EEEDFE"
+      "bg": "#EEEDFE",
+      "image_note": "A child waving goodbye while walking away, warm sunset colors."
     },
     {
       "word": "My name is",
-      "bg": "#FAEEDA"
+      "bg": "#FAEEDA",
+      "image_note": "A child pointing to themselves with a nametag or speech bubble."
     }
   ],
   "title": "New Words",
@@ -228,7 +233,8 @@ values
   null,
   null,
   $json${
-  "badge": "A1 · Beginner · Kids"
+  "badge": "A1 · Beginner · Kids",
+  "image_note": "Hero image for 'My Age' -- A warm, welcoming scene of a diverse group of children at the start of a school day -- waving hello, smiling, everyday classroom or playground setting."
 }$json$::jsonb,
   true
 ),
@@ -258,19 +264,23 @@ values
   "words": [
     {
       "word": "One",
-      "bg": "#FAECE7"
+      "bg": "#FAECE7",
+      "image_note": "A single large numeral '1' with one matching object beside it (e.g. one apple)."
     },
     {
       "word": "How old",
-      "bg": "#E1F5EE"
+      "bg": "#E1F5EE",
+      "image_note": "Functional/grammar word, not a concrete object -- skip a literal picture. If illustrating, show the example sentence in action instead of the word alone."
     },
     {
       "word": "Years old",
-      "bg": "#EEEDFE"
+      "bg": "#EEEDFE",
+      "image_note": "A birthday cake with candles, or a child holding up fingers to show their age."
     },
     {
       "word": "I am",
-      "bg": "#FAEEDA"
+      "bg": "#FAEEDA",
+      "image_note": "Functional/grammar word, not a concrete object -- skip a literal picture. If illustrating, show the example sentence in action instead of the word alone."
     }
   ],
   "title": "New Words",
@@ -428,7 +438,8 @@ values
   null,
   null,
   $json${
-  "badge": "A1 · Beginner · Kids"
+  "badge": "A1 · Beginner · Kids",
+  "image_note": "Hero image for 'My Family' -- A warm, welcoming scene of a diverse group of children at the start of a school day -- waving hello, smiling, everyday classroom or playground setting."
 }$json$::jsonb,
   true
 ),
@@ -458,19 +469,23 @@ values
   "words": [
     {
       "word": "Mom",
-      "bg": "#FAECE7"
+      "bg": "#FAECE7",
+      "image_note": "A warm, smiling mother figure, simple and friendly illustration style."
     },
     {
       "word": "Dad",
-      "bg": "#E1F5EE"
+      "bg": "#E1F5EE",
+      "image_note": "A warm, smiling father figure, simple and friendly illustration style."
     },
     {
       "word": "Sister",
-      "bg": "#EEEDFE"
+      "bg": "#EEEDFE",
+      "image_note": "A young girl smiling, simple and friendly illustration style."
     },
     {
       "word": "Brother",
-      "bg": "#FAEEDA"
+      "bg": "#FAEEDA",
+      "image_note": "A young boy smiling, simple and friendly illustration style."
     }
   ],
   "title": "New Words",
@@ -628,7 +643,8 @@ values
   null,
   null,
   $json${
-  "badge": "A1 · Beginner · Kids"
+  "badge": "A1 · Beginner · Kids",
+  "image_note": "Hero image for 'My Likes' -- A warm, welcoming scene of a diverse group of children at the start of a school day -- waving hello, smiling, everyday classroom or playground setting."
 }$json$::jsonb,
   true
 ),
@@ -658,19 +674,23 @@ values
   "words": [
     {
       "word": "Like",
-      "bg": "#FAECE7"
+      "bg": "#FAECE7",
+      "image_note": "Simple, bright, kid-friendly illustration of 'Like' -- one clear subject, no text in the image, no background clutter."
     },
     {
       "word": "Don't like",
-      "bg": "#E1F5EE"
+      "bg": "#E1F5EE",
+      "image_note": "Functional/grammar word, not a concrete object -- skip a literal picture. If illustrating, show the example sentence in action instead of the word alone."
     },
     {
       "word": "Love",
-      "bg": "#EEEDFE"
+      "bg": "#EEEDFE",
+      "image_note": "A simple heart shape, or a family member giving a warm hug."
     },
     {
       "word": "Favorite",
-      "bg": "#FAEEDA"
+      "bg": "#FAEEDA",
+      "image_note": "A single object with a small star or heart on it, marking it as special."
     }
   ],
   "title": "New Words",
@@ -828,7 +848,8 @@ values
   null,
   null,
   $json${
-  "badge": "A1 · Beginner · Kids"
+  "badge": "A1 · Beginner · Kids",
+  "image_note": "Hero image for 'All About Me' -- A warm, welcoming scene of a diverse group of children at the start of a school day -- waving hello, smiling, everyday classroom or playground setting."
 }$json$::jsonb,
   true
 ),
@@ -858,19 +879,23 @@ values
   "words": [
     {
       "word": "Name",
-      "bg": "#FAECE7"
+      "bg": "#FAECE7",
+      "image_note": "A nametag or name card with a friendly child pointing at it."
     },
     {
       "word": "Age",
-      "bg": "#E1F5EE"
+      "bg": "#E1F5EE",
+      "image_note": "A birthday cake with candles, celebratory and bright."
     },
     {
       "word": "Family",
-      "bg": "#EEEDFE"
+      "bg": "#EEEDFE",
+      "image_note": "A family of four holding hands together, warm and happy."
     },
     {
       "word": "Like",
-      "bg": "#FAEEDA"
+      "bg": "#FAEEDA",
+      "image_note": "Simple, bright, kid-friendly illustration of 'Like' -- one clear subject, no text in the image, no background clutter."
     }
   ],
   "title": "New Words",

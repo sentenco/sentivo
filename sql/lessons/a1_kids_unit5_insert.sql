@@ -26,7 +26,8 @@ values
   null,
   null,
   $json${
-  "badge": "A1 · Beginner · Kids"
+  "badge": "A1 · Beginner · Kids",
+  "image_note": "Hero image for 'Classroom Objects' -- A friendly farm or park scene with a few simple, recognizable animals (dog, cat, bird) together."
 }$json$::jsonb,
   true
 ),
@@ -56,19 +57,23 @@ values
   "words": [
     {
       "word": "Pencil",
-      "bg": "#FAECE7"
+      "bg": "#FAECE7",
+      "image_note": "A single yellow pencil, simple and bold."
     },
     {
       "word": "Book",
-      "bg": "#E1F5EE"
+      "bg": "#E1F5EE",
+      "image_note": "A single colorful storybook, closed, simple illustration."
     },
     {
       "word": "Bag",
-      "bg": "#EEEDFE"
+      "bg": "#EEEDFE",
+      "image_note": "A colorful school backpack, simple and bold."
     },
     {
       "word": "Desk",
-      "bg": "#FAEEDA"
+      "bg": "#FAEEDA",
+      "image_note": "A simple child's school desk with a chair."
     }
   ],
   "title": "New Words",
@@ -226,7 +231,8 @@ values
   null,
   null,
   $json${
-  "badge": "A1 · Beginner · Kids"
+  "badge": "A1 · Beginner · Kids",
+  "image_note": "Hero image for 'This Is My Pencil' -- A friendly farm or park scene with a few simple, recognizable animals (dog, cat, bird) together."
 }$json$::jsonb,
   true
 ),
@@ -256,19 +262,23 @@ values
   "words": [
     {
       "word": "My",
-      "bg": "#FAECE7"
+      "bg": "#FAECE7",
+      "image_note": "Functional/grammar word, not a concrete object -- skip a literal picture. If illustrating, show the example sentence in action instead of the word alone."
     },
     {
       "word": "Your",
-      "bg": "#E1F5EE"
+      "bg": "#E1F5EE",
+      "image_note": "Functional/grammar word, not a concrete object -- skip a literal picture. If illustrating, show the example sentence in action instead of the word alone."
     },
     {
       "word": "Eraser",
-      "bg": "#EEEDFE"
+      "bg": "#EEEDFE",
+      "image_note": "A single pink or white eraser, simple and bold."
     },
     {
       "word": "Ruler",
-      "bg": "#FAEEDA"
+      "bg": "#FAEEDA",
+      "image_note": "A single wooden or plastic ruler with visible markings."
     }
   ],
   "title": "New Words",
@@ -426,7 +436,8 @@ values
   null,
   null,
   $json${
-  "badge": "A1 · Beginner · Kids"
+  "badge": "A1 · Beginner · Kids",
+  "image_note": "Hero image for 'What's in the Classroom?' -- A friendly farm or park scene with a few simple, recognizable animals (dog, cat, bird) together."
 }$json$::jsonb,
   true
 ),
@@ -456,19 +467,23 @@ values
   "words": [
     {
       "word": "Where is",
-      "bg": "#FAECE7"
+      "bg": "#FAECE7",
+      "image_note": "Functional/grammar word, not a concrete object -- skip a literal picture. If illustrating, show the example sentence in action instead of the word alone."
     },
     {
       "word": "Chair",
-      "bg": "#E1F5EE"
+      "bg": "#E1F5EE",
+      "image_note": "A simple child's chair, single object, bold outline."
     },
     {
       "word": "Table",
-      "bg": "#EEEDFE"
+      "bg": "#EEEDFE",
+      "image_note": "A simple wooden table, single object, bold outline."
     },
     {
       "word": "Board",
-      "bg": "#FAEEDA"
+      "bg": "#FAEEDA",
+      "image_note": "A classroom whiteboard or chalkboard with simple marks on it."
     }
   ],
   "title": "New Words",
@@ -626,7 +641,8 @@ values
   null,
   null,
   $json${
-  "badge": "A1 · Beginner · Kids"
+  "badge": "A1 · Beginner · Kids",
+  "image_note": "Hero image for 'In My Bag' -- A friendly farm or park scene with a few simple, recognizable animals (dog, cat, bird) together."
 }$json$::jsonb,
   true
 ),
@@ -656,19 +672,23 @@ values
   "words": [
     {
       "word": "And",
-      "bg": "#FAECE7"
+      "bg": "#FAECE7",
+      "image_note": "Functional/grammar word, not a concrete object -- skip a literal picture. If illustrating, show the example sentence in action instead of the word alone."
     },
     {
       "word": "Have",
-      "bg": "#E1F5EE"
+      "bg": "#E1F5EE",
+      "image_note": "Functional/grammar word, not a concrete object -- skip a literal picture. If illustrating, show the example sentence in action instead of the word alone."
     },
     {
       "word": "Show",
-      "bg": "#EEEDFE"
+      "bg": "#EEEDFE",
+      "image_note": "Functional/grammar word, not a concrete object -- skip a literal picture. If illustrating, show the example sentence in action instead of the word alone."
     },
     {
       "word": "Bag",
-      "bg": "#FAEEDA"
+      "bg": "#FAEEDA",
+      "image_note": "A colorful school backpack, simple and bold."
     }
   ],
   "title": "New Words",
@@ -826,7 +846,8 @@ values
   null,
   null,
   $json${
-  "badge": "A1 · Beginner · Kids"
+  "badge": "A1 · Beginner · Kids",
+  "image_note": "Hero image for 'Unit Review' -- A friendly farm or park scene with a few simple, recognizable animals (dog, cat, bird) together."
 }$json$::jsonb,
   true
 ),
@@ -856,19 +877,23 @@ values
   "words": [
     {
       "word": "Pencil",
-      "bg": "#FAECE7"
+      "bg": "#FAECE7",
+      "image_note": "A single yellow pencil, simple and bold."
     },
     {
       "word": "My",
-      "bg": "#E1F5EE"
+      "bg": "#E1F5EE",
+      "image_note": "Functional/grammar word, not a concrete object -- skip a literal picture. If illustrating, show the example sentence in action instead of the word alone."
     },
     {
       "word": "Where is",
-      "bg": "#EEEDFE"
+      "bg": "#EEEDFE",
+      "image_note": "Functional/grammar word, not a concrete object -- skip a literal picture. If illustrating, show the example sentence in action instead of the word alone."
     },
     {
       "word": "Bag",
-      "bg": "#FAEEDA"
+      "bg": "#FAEEDA",
+      "image_note": "A colorful school backpack, simple and bold."
     }
   ],
   "title": "New Words",

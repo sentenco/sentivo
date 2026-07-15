@@ -141,6 +141,14 @@ export default function LessonPlayer({ lessonId: lessonIdProp }) {
 
   const shellStatePortraitClass = requestedView === "teacher" ? "lp-shell--portrait" : "";
   const isAdult = lesson?.age_track === "adults";
+  const isKids = lesson?.age_track === "kids";
+  // Kids palette rotates every 3 units (Units 1-3 / 4-6 / 7-9 / 10-12) so the
+  // app doesn't look identical unit after unit. Teens/Adults are untouched —
+  // the kt-N vars are only ever read by CSS scoped under .is-kids.
+  const kidsThemeIndex = isKids
+    ? Math.min(3, Math.floor(((lesson?.unit_number || 1) - 1) / 3))
+    : 0;
+  const kidsThemeClass = isKids ? `is-kids kt-${kidsThemeIndex}` : "";
 
   if (loading) {
     return (
@@ -198,7 +206,7 @@ export default function LessonPlayer({ lessonId: lessonIdProp }) {
   }
 
   return (
-    <div className={`lp-shell ${isAdult ? "is-adult" : ""}`}>
+    <div className={`lp-shell ${isAdult ? "is-adult" : ""} ${kidsThemeClass}`}>
       <style>{CSS}</style>
 
       <div className="lp-header">
@@ -310,7 +318,7 @@ const CSS = `
   font-size: 17px;
   color: #1B2A4A;
 }
-.lp-dot { color: #FF7A59; }
+.lp-dot { color: var(--k-accent, #FF7A59); }
 .lp-slide-type {
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;
@@ -332,7 +340,7 @@ const CSS = `
 }
 .lp-progress-fill {
   height: 100%;
-  background: #FF7A59;
+  background: var(--k-accent, #FF7A59);
   transition: width 0.25s ease;
 }
 
@@ -354,19 +362,19 @@ const CSS = `
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  background: #FF7A59;
+  background: var(--k-accent, #FF7A59);
   color: #fff;
   border: none;
   border-radius: 8px;
-  box-shadow: 0 3px 0 #C2452F;
+  box-shadow: 0 3px 0 var(--k-accent-dark, #C2452F);
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;
   font-size: 13.5px;
   padding: 9px 16px;
   cursor: pointer;
 }
-.lp-btn:active { transform: translateY(2px); box-shadow: 0 1px 0 #C2452F; }
-.lp-btn:disabled { opacity: 0.3; cursor: default; box-shadow: 0 3px 0 #C2452F; pointer-events: none; }
+.lp-btn:active { transform: translateY(2px); box-shadow: 0 1px 0 var(--k-accent-dark, #C2452F); }
+.lp-btn:disabled { opacity: 0.3; cursor: default; box-shadow: 0 3px 0 var(--k-accent-dark, #C2452F); pointer-events: none; }
 
 .lp-dots { display: flex; align-items: center; gap: 6px; }
 .lp-dot {
@@ -378,7 +386,60 @@ const CSS = `
   padding: 0;
   cursor: pointer;
 }
-.lp-dot.is-active { width: 20px; background: #FF7A59; }
+.lp-dot.is-active { width: 20px; background: var(--k-accent, #FF7A59); }
+
+/* ── Kids palette rotation: every 3 units gets a new accent/background
+   pairing so the app doesn't look identical unit after unit. Navy ink
+   (#1B2A4A) and the slide layout stay constant — only the "canvas" hue
+   shifts. Slide components opt in by referencing var(--k-*, <original
+   Sunshine-theme hex>) so Teens (no .is-kids class, no vars defined)
+   render pixel-identical to before. ── */
+.lp-shell.is-kids.kt-0 {
+  /* Units 1-3: Sunshine (original palette) */
+  --k-accent: #FF7A59;
+  --k-accent-dark: #C2452F;
+  --k-secondary: #2CA97F;
+  --k-bg: #FDF8F0;
+  --k-bg-cool: #E8F8F0;
+  --k-tint: #FFF3E9;
+  --k-motif: "☀";
+}
+.lp-shell.is-kids.kt-1 {
+  /* Units 4-6: Ocean */
+  --k-accent: #2AA9C7;
+  --k-accent-dark: #1B7A91;
+  --k-secondary: #FFC33D;
+  --k-bg: #EAF7FB;
+  --k-bg-cool: #FFF7E2;
+  --k-tint: #DFF3F8;
+  --k-motif: "🌊";
+}
+.lp-shell.is-kids.kt-2 {
+  /* Units 7-9: Berry Meadow */
+  --k-accent: #E0507A;
+  --k-accent-dark: #A83259;
+  --k-secondary: #F2B705;
+  --k-bg: #FBF0F5;
+  --k-bg-cool: #FFF6DD;
+  --k-tint: #FCE3EC;
+  --k-motif: "🌸";
+}
+.lp-shell.is-kids.kt-3 {
+  /* Units 10-12: Galaxy */
+  --k-accent: #7C5CFF;
+  --k-accent-dark: #5136B8;
+  --k-secondary: #FF8C61;
+  --k-bg: #F1F0FF;
+  --k-bg-cool: #FFEDE4;
+  --k-tint: #E7E3FF;
+  --k-motif: "✦";
+}
+.lp-shell.is-kids .lp-wordmark::after {
+  content: var(--k-motif, "☀");
+  margin-left: 5px;
+  font-size: 12px;
+  vertical-align: 1px;
+}
 
 /* ── Adults theme: editorial, muted, no bounce ── */
 .lp-shell.is-adult {
