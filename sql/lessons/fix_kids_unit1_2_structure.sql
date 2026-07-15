@@ -1,3 +1,9 @@
+-- SUPERSEDED: do not run this file. delete_all_a1.sql now wipes all of A1
+-- (including Units 1-2) before a fresh full re-insert, so there are no
+-- rows left for this UPDATE-based script to target. Kept for reference
+-- only -- its lesson content (5-lesson structure, merged reviews) will be
+-- reused in the fresh insert version instead.
+--
 -- Fix A1 Kids Unit 1 & Unit 2: normalize from 6/7 lessons to the standard 5-lesson-per-unit shape.
 -- Unit 1: merges 'All About Me' + 'What Can You Say?' into one Unit Review (L5). Drops the old L6.
 -- Unit 2: merges 'Breakfast Time' into 'My Morning' (L1). Renumbers School/Afternoon/Evening to L2/L3/L4.
