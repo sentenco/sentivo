@@ -432,9 +432,9 @@ const CSS = `
   --k-motif: "🌱";
 }
 .lp-shell.is-kids.kt-1 {
-  /* Units 5-8: burnt orange (majority) / mid orange / pale gold */
-  --k-accent: #e56703;
-  --k-accent-dark: #e56703;
+  /* Units 5-8: burnt orange (majority, lightened) / mid orange / pale gold */
+  --k-accent: #F0821F;
+  --k-accent-dark: #F0821F;
   --k-secondary: #ffa13d;
   --k-secondary-dark: #fbdf71;
   --k-pop: #fbdf71;
