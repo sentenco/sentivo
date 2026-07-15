@@ -76,7 +76,7 @@ const CSS = `
   height: 100%;
   max-height: 240px;
   border-radius: 16px;
-  background: var(--k-bg, #FDF8F0);
+  background: var(--k-bg, #FFFAF0);
   display: flex;
   align-items: center;
   justify-content: center;

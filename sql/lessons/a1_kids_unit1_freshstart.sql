@@ -53,24 +53,20 @@ values
   $json${
   "words": [
     {
-      "word": "Hello",
-      "image_note": "A child waving hello with a big smile."
+      "word": "Hello"
     },
     {
-      "word": "Hi",
-      "image_note": "A child waving hi cheerfully, close-up."
+      "word": "Hi"
     },
     {
-      "word": "Goodbye",
-      "image_note": "A child waving goodbye while walking away."
+      "word": "Goodbye"
     },
     {
-      "word": "My name is",
-      "image_note": "A child pointing to a nametag."
+      "word": "My name is"
     }
   ],
   "title": "New Words",
-  "subtitle": "Tap a card to see it bigger."
+  "subtitle": "Tap a word to make it BIG!"
 }$json$::jsonb,
   true
 ),
@@ -260,20 +256,17 @@ values
       "word": "From"
     },
     {
-      "word": "Country",
-      "image_note": "A simple colorful world map with one country highlighted."
+      "word": "Country"
     },
     {
-      "word": "Live",
-      "image_note": "A simple, friendly house with a child standing in front of it."
+      "word": "Live"
     },
     {
-      "word": "I'm from",
-      "image_note": "A child pointing to a spot on a globe or map."
+      "word": "I'm from"
     }
   ],
   "title": "New Words",
-  "subtitle": "Tap a card to see it bigger."
+  "subtitle": "Tap a word to make it BIG!"
 }$json$::jsonb,
   true
 ),
@@ -440,20 +433,17 @@ values
       "word": "How old"
     },
     {
-      "word": "Years old",
-      "image_note": "A birthday cake with candles."
+      "word": "Years old"
     },
     {
-      "word": "Birthday",
-      "image_note": "A wrapped birthday present with a bow."
+      "word": "Birthday"
     },
     {
-      "word": "Age",
-      "image_note": "A child holding up fingers to show their age."
+      "word": "Age"
     }
   ],
   "title": "New Words",
-  "subtitle": "Tap a card to see it bigger."
+  "subtitle": "Tap a word to make it BIG!"
 }$json$::jsonb,
   true
 ),
@@ -630,23 +620,20 @@ values
   $json${
   "words": [
     {
-      "word": "Like",
-      "image_note": "A child smiling and giving a thumbs up to something."
+      "word": "Like"
     },
     {
       "word": "Don't like"
     },
     {
-      "word": "Love",
-      "image_note": "A simple heart shape."
+      "word": "Love"
     },
     {
-      "word": "Favorite",
-      "image_note": "A single object with a small star on it."
+      "word": "Favorite"
     }
   ],
   "title": "New Words",
-  "subtitle": "Tap a card to see it bigger."
+  "subtitle": "Tap a word to make it BIG!"
 }$json$::jsonb,
   true
 ),
@@ -838,23 +825,20 @@ values
   $json${
   "words": [
     {
-      "word": "Hello",
-      "image_note": "A child waving hello with a big smile."
+      "word": "Hello"
     },
     {
       "word": "From"
     },
     {
-      "word": "Age",
-      "image_note": "A birthday cake with candles."
+      "word": "Age"
     },
     {
-      "word": "Like",
-      "image_note": "A child smiling and giving a thumbs up."
+      "word": "Like"
     }
   ],
   "title": "New Words",
-  "subtitle": "Tap a card to see it bigger."
+  "subtitle": "Tap a word to make it BIG!"
 }$json$::jsonb,
   true
 ),

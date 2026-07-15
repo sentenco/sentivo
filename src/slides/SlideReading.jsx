@@ -83,7 +83,7 @@ const CSS = `
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--k-bg, #FDF8F0);
+  background: var(--k-bg, #FFFAF0);
   border-radius: 12px;
   overflow: hidden;
   height: 100%;
@@ -101,8 +101,8 @@ const CSS = `
   justify-content: center;
 }
 .slr-chip {
-  background: var(--k-bg-cool, #FFEEF2);
-  color: var(--k-accent-dark, #E5678A);
+  background: var(--k-bg-cool, #FFF0C2);
+  color: var(--k-accent-dark, #C97F00);
   font-family: 'Quicksand', sans-serif;
   font-weight: 600;
   font-size: 13.5px;
