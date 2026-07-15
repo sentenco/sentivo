@@ -1,21 +1,25 @@
 import { useState } from "react";
 import SlideHeader from "./SlideHeader";
 import ImagePlaceholder from "./ImagePlaceholder";
+import ZoomOverlay from "./ZoomOverlay";
 
-const SPEAKER_COLOR = { A: "#FFC933", B: "#8B5CF6" };
+const SPEAKER_COLOR = { A: "#1B2A4A", B: "#1B2A4A" };
 
 /* ───────────────────────── Role-play: act out a short scene ─────────────────────────
    Content authors: max 3 lines so this fits with no scroll. */
 function RoleplayPerform({ content }) {
+  const [zoomed, setZoomed] = useState(false);
   return (
     <div className="slpf-roleplay">
-      <div className="slpf-scene-img">
-        {content.image_url ? (
+      {content.image_url ? (
+        <button type="button" className="slpf-scene-img" onClick={() => setZoomed(true)}>
           <img src={content.image_url} alt="" />
-        ) : (
+        </button>
+      ) : (
+        <div className="slpf-scene-img">
           <ImagePlaceholder note={content.image_note} compact />
-        )}
-      </div>
+        </div>
+      )}
       <div className="slpf-roleplay-right">
         <div className="slpf-dialogue">
           {(content.lines || []).map((line, i) => (
@@ -29,17 +33,21 @@ function RoleplayPerform({ content }) {
         </div>
         {content.twist && <div className="slpf-twist">✦ {content.twist}</div>}
       </div>
+      <ZoomOverlay active={zoomed} onClose={() => setZoomed(false)}>
+        <img src={content.image_url} alt="" className="slpf-scene-img-big" />
+      </ZoomOverlay>
     </div>
   );
 }
 
 /* ───────────────────────── Talk: one-minute talk / show-and-tell ───────────────────────── */
 function TalkPerform({ content }) {
+  const [zoomed, setZoomed] = useState(false);
   return (
     <div className="slpf-body slpf-body--center">
-      <div className="slpf-mic" aria-hidden="true">
+      <button type="button" className="slpf-mic" aria-label="Tap to make bigger" onClick={() => setZoomed(true)}>
         🎤
-      </div>
+      </button>
       <p className="slpf-prompt">{content.prompt}</p>
       {(content.starters || []).length > 0 && (
         <div className="slpf-starters">
@@ -50,6 +58,9 @@ function TalkPerform({ content }) {
           ))}
         </div>
       )}
+      <ZoomOverlay active={zoomed} onClose={() => setZoomed(false)}>
+        <span className="slpf-mic-big" aria-hidden="true">🎤</span>
+      </ZoomOverlay>
     </div>
   );
 }
@@ -145,9 +156,15 @@ const CSS = `
 .slpf-scene-img {
   flex-shrink: 0;
   width: 32%;
+  display: block;
+  border: none;
+  background: none;
+  padding: 0;
 }
+button.slpf-scene-img { cursor: pointer; }
 .slpf-scene-img .img-ph { border-radius: 14px; }
 .slpf-scene-img img { width: 100%; height: 100%; object-fit: cover; border-radius: 14px; }
+.slpf-scene-img-big { max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 18px; }
 .slpf-roleplay-right {
   flex: 1;
   min-width: 0;
@@ -171,12 +188,13 @@ const CSS = `
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;
   font-size: 13.5px;
-  color: var(--k-accent-dark, #E8A400);
+  color: #1B2A4A;
   text-align: center;
   padding: 2px 8px;
 }
 
-.slpf-mic { font-size: 42px; }
+.slpf-mic { font-size: 42px; border: none; background: none; padding: 0; cursor: pointer; line-height: 1; }
+.slpf-mic-big { font-size: 140px; line-height: 1; }
 .slpf-prompt {
   font-family: 'Fredoka', sans-serif;
   font-weight: 700;
@@ -187,8 +205,8 @@ const CSS = `
 }
 .slpf-starters { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
 .slpf-starter {
-  background: var(--k-bg-cool, #FFF3D2);
-  color: var(--k-accent-dark, #E8A400);
+  background: var(--k-bg-cool, #D5E9E8);
+  color: #1B2A4A;
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;
   font-size: 13px;
@@ -243,6 +261,6 @@ const CSS = `
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;
   font-size: 14.5px;
-  color: var(--k-accent-dark, #E8A400);
+  color: #1B2A4A;
 }
 `;

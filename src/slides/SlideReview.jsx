@@ -1,10 +1,10 @@
 import { useState } from "react";
 
-const GRADIENT = "linear-gradient(135deg, var(--k-accent-dark, #E8A400), var(--k-accent, #FFC933))";
+const GRADIENT = "linear-gradient(135deg, var(--k-tint, #D5F3D1), var(--k-accent, #FFF4AA))";
 const GRADIENT_ADULT = "#1B2A4A";
 const ITEM_COLORS = [
-  { bg: "var(--k-bg-cool, #FFF3D2)", check: "var(--k-accent-dark, #E8A400)" },
-  { bg: "var(--k-tint, #FFE4A3)", check: "var(--k-accent-dark, #E8A400)" },
+  { bg: "var(--k-bg-cool, #D5E9E8)", check: "var(--k-accent-dark, #D5F3D1)" },
+  { bg: "var(--k-tint, #D5F3D1)", check: "var(--k-accent-dark, #D5F3D1)" },
 ];
 
 export default function SlideReview({ content, lesson }) {
@@ -89,8 +89,8 @@ const CSS = `
 }
 .slrv-tag {
   display: inline-block;
-  background: rgba(255,255,255,0.2);
-  color: #fff;
+  background: rgba(27,42,74,0.1);
+  color: #1B2A4A;
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;
   font-size: 10px;
@@ -104,14 +104,14 @@ const CSS = `
   font-family: 'Fredoka', sans-serif;
   font-weight: 700;
   font-size: 19px;
-  color: #fff;
+  color: #1B2A4A;
   margin: 0;
 }
 .slrv-subtitle {
   font-family: 'Quicksand', sans-serif;
   font-weight: 500;
   font-size: 13px;
-  color: rgba(255,255,255,0.75);
+  color: rgba(27,42,74,0.65);
   margin: 2px 0 0;
 }
 .slrv-body {
@@ -158,21 +158,21 @@ const CSS = `
   justify-content: center;
   font-size: 13px;
   font-weight: 700;
-  color: #fff;
+  color: var(--k-btn-text, #fff);
   transition: background 0.15s ease, border-color 0.15s ease;
 }
 .slrv-item.is-checked .slrv-check {
-  background: var(--k-accent-dark, #E8A400);
-  border-color: var(--k-accent-dark, #E8A400);
+  background: var(--k-accent-dark, #D5F3D1);
+  border-color: var(--k-accent-dark, #D5F3D1);
 }
 .slrv-challenge {
-  background: var(--k-ink, #1B2A4A);
+  background: var(--k-bg-cool, #D5E9E8);
   border-radius: 12px;
   padding: 15px 20px;
   transition: box-shadow 0.2s ease;
 }
 .slrv-challenge.is-ready {
-  box-shadow: 0 0 0 3px #FFE07A;
+  box-shadow: 0 0 0 3px var(--k-accent, #FFF4AA);
 }
 .slrv-challenge-label {
   display: block;
@@ -181,14 +181,14 @@ const CSS = `
   font-size: 10.5px;
   letter-spacing: 0.5px;
   text-transform: uppercase;
-  color: #FFE07A;
+  color: #1B2A4A;
   margin-bottom: 4px;
 }
 .slrv-challenge-text {
   font-family: 'Quicksand', sans-serif;
   font-weight: 600;
   font-size: 15px;
-  color: #fff;
+  color: #1B2A4A;
   margin: 0;
 }
 
@@ -201,13 +201,15 @@ const CSS = `
   background: transparent;
   border: 1px solid rgba(255,255,255,0.4);
   border-radius: 3px;
+  color: #fff;
 }
 .slrv-slide.is-adult .slrv-title {
   font-family: 'Source Serif 4', serif;
   font-weight: 600;
   font-size: 20px;
+  color: #fff;
 }
-.slrv-slide.is-adult .slrv-subtitle { font-family: 'Inter', sans-serif; font-weight: 400; }
+.slrv-slide.is-adult .slrv-subtitle { font-family: 'Inter', sans-serif; font-weight: 400; color: rgba(255,255,255,0.75); }
 .slrv-slide.is-adult .slrv-body { background: #F7F5EF; }
 .slrv-slide.is-adult .slrv-item {
   background: #fff;
@@ -245,5 +247,6 @@ const CSS = `
   font-family: 'Source Serif 4', serif;
   font-weight: 500;
   font-size: 14.5px;
+  color: #fff;
 }
 `;

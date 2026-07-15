@@ -1,3 +1,6 @@
+import { useState } from "react";
+import ZoomOverlay from "./ZoomOverlay";
+
 const CONFETTI = [
   { top: "9%", left: "9%", size: 14, rotate: -14 },
   { top: "16%", left: "85%", size: 10, rotate: 18 },
@@ -10,6 +13,8 @@ const CONFETTI = [
 ];
 
 export default function SlideCloser({ content }) {
+  const [zoomed, setZoomed] = useState(false);
+  const sticker = content.sticker || "🌟";
   return (
     <div className="slcl-slide">
       <style>{CSS}</style>
@@ -22,13 +27,16 @@ export default function SlideCloser({ content }) {
         />
       ))}
       <div className="slcl-card">
-        <div className="slcl-medallion">
-          <span className="slcl-badge" aria-hidden="true">{content.sticker || "🌟"}</span>
-        </div>
+        <button type="button" className="slcl-medallion" onClick={() => setZoomed(true)} aria-label="Tap to make bigger">
+          <span className="slcl-badge" aria-hidden="true">{sticker}</span>
+        </button>
         <h2 className="slcl-headline">{content.headline || "You did it!"}</h2>
         {content.goal && <p className="slcl-goal">{content.goal}</p>}
         <span className="slcl-bye">{content.closing || "See you next time!"}</span>
       </div>
+      <ZoomOverlay active={zoomed} onClose={() => setZoomed(false)}>
+        <span className="slcl-badge-big" aria-hidden="true">{sticker}</span>
+      </ZoomOverlay>
     </div>
   );
 }
@@ -42,7 +50,7 @@ const CSS = `
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  background: linear-gradient(160deg, var(--k-accent, #FFC933), var(--k-accent-dark, #E8A400));
+  background: linear-gradient(160deg, var(--k-accent, #FFF4AA), var(--k-accent-dark, #D5F3D1));
 }
 .slcl-confetti {
   position: absolute;
@@ -51,7 +59,7 @@ const CSS = `
   pointer-events: none;
 }
 .slcl-confetti--a { background: #ffffff; opacity: 0.55; }
-.slcl-confetti--b { background: var(--k-pop, #8B5CF6); opacity: 0.6; }
+.slcl-confetti--b { background: var(--k-pop, #D5E9E8); opacity: 0.8; }
 .slcl-card {
   position: relative;
   z-index: 2;
@@ -73,14 +81,17 @@ const CSS = `
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--k-bg-cool, #FFF3D2);
-  border: 4px solid var(--k-accent, #FFC933);
+  background: var(--k-bg-cool, #D5E9E8);
+  border: 4px solid var(--k-accent, #FFF4AA);
   margin-bottom: 2px;
+  cursor: pointer;
+  padding: 0;
 }
 .slcl-badge {
   font-size: 42px;
   filter: drop-shadow(0 3px 6px rgba(0,0,0,0.15));
 }
+.slcl-badge-big { font-size: 160px; line-height: 1; }
 .slcl-headline {
   font-family: 'Fredoka', sans-serif;
   font-weight: 700;
@@ -100,8 +111,8 @@ const CSS = `
 .slcl-bye {
   margin-top: 6px;
   display: inline-block;
-  background: var(--k-accent-dark, #E8A400);
-  color: #fff;
+  background: var(--k-accent-dark, #D5F3D1);
+  color: var(--k-btn-text, #1B2A4A);
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;
   font-size: 13px;

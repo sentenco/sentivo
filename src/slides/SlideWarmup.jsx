@@ -1,8 +1,11 @@
+import { useState } from "react";
 import ImagePlaceholder from "./ImagePlaceholder";
+import ZoomOverlay from "./ZoomOverlay";
 
 export default function SlideWarmup({ content, lesson }) {
   const questions = content.questions || [];
   const isAdult = lesson?.age_track === "adults";
+  const [zoomed, setZoomed] = useState(false);
 
   return (
     <div className={`slw-slide ${isAdult ? "is-adult" : ""}`}>
@@ -10,9 +13,13 @@ export default function SlideWarmup({ content, lesson }) {
       <div className="slw-image-area">
         <span className="slw-pill">Warm-up</span>
         {content.image_url ? (
-          <img className="slw-image" src={content.image_url} alt="" />
+          <button type="button" className="slw-image-btn" onClick={() => setZoomed(true)} aria-label="Tap to make bigger">
+            <img className="slw-image" src={content.image_url} alt="" />
+          </button>
         ) : content.display ? (
-          <div className="slw-display">{content.display}</div>
+          <button type="button" className="slw-display" onClick={() => setZoomed(true)} aria-label="Tap to make bigger">
+            {content.display}
+          </button>
         ) : content.image_note ? (
           <div className="slw-placeholder">
             <ImagePlaceholder note={content.image_note} compact />
@@ -29,6 +36,13 @@ export default function SlideWarmup({ content, lesson }) {
           ))}
         </div>
       </div>
+      <ZoomOverlay active={zoomed} onClose={() => setZoomed(false)}>
+        {content.image_url ? (
+          <img src={content.image_url} alt="" className="slw-image-big" />
+        ) : (
+          <span className="slw-display-big" aria-hidden="true">{content.display}</span>
+        )}
+      </ZoomOverlay>
     </div>
   );
 }
@@ -37,24 +51,27 @@ const CSS = `
 .slw-slide {
   width: 100%;
   height: 100%;
+  position: relative;
   display: flex;
   flex-direction: column;
 }
 .slw-image-area {
   position: relative;
   height: 66%;
-  background: var(--k-bg, #FFFCF2);
+  background: var(--k-bg, #FFFEF8);
   display: flex;
   align-items: center;
   justify-content: center;
 }
 .slw-placeholder { width: 100%; height: 100%; padding: 14px; box-sizing: border-box; }
+.slw-image-btn { border: none; background: none; padding: 0; cursor: pointer; max-width: 100%; max-height: 100%; }
 .slw-image {
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
   mix-blend-mode: multiply;
 }
+.slw-image-big { max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 16px; }
 .slw-display {
   font-family: 'Fredoka', sans-serif;
   font-weight: 700;
@@ -63,6 +80,15 @@ const CSS = `
   color: #1B2A4A;
   text-align: center;
   padding: 0 24px;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+.slw-display-big {
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 700;
+  font-size: 160px;
+  line-height: 1;
 }
 .slw-pill {
   position: absolute;
@@ -80,7 +106,7 @@ const CSS = `
 .slw-bottom {
   flex: 1;
   min-height: 0;
-  background: var(--k-bg-cool, #E8F8F0);
+  background: var(--k-bg-cool, #D5E9E8);
   padding: 14px 28px;
   display: flex;
   flex-direction: column;
@@ -103,7 +129,7 @@ const CSS = `
 }
 .slw-chip {
   background: #fff;
-  color: #2C6B4F;
+  color: #1B2A4A;
   font-family: 'Quicksand', sans-serif;
   font-weight: 600;
   font-size: 15px;

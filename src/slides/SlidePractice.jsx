@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
 import SlideHeader from "./SlideHeader";
 
-const SPEAKER_COLOR = { A: "#FFC933", B: "#8B5CF6" };
+const SPEAKER_COLOR = { A: "#1B2A4A", B: "#1B2A4A" };
 
 function parseBlankSegments(text) {
   const regex = /\[([^\]]+)\]/g;
@@ -690,7 +690,7 @@ const CSS = `
 .slpr-wordbank.is-over { background: var(--k-bg-cool, #FFF3D2); }
 .slpr-chip {
   background: var(--k-secondary, #FFE28A);
-  color: #7A5200;
+  color: #1B2A4A;
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;
   font-size: 14px;
@@ -789,7 +789,7 @@ const CSS = `
 .slpm-tray { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; min-height: 34px; }
 .slpm-chip {
   background: var(--k-secondary, #FFE28A);
-  color: #7A5200;
+  color: #1B2A4A;
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;
   font-size: 14px;
@@ -905,8 +905,8 @@ const CSS = `
   height: 28px;
   border-radius: 999px;
   border: none;
-  background: var(--k-bg-cool, #FFF3D2);
-  color: var(--k-accent-dark, #E8A400);
+  background: var(--k-bg-cool, #D5E9E8);
+  color: #1B2A4A;
   font-weight: 700;
   cursor: pointer;
 }

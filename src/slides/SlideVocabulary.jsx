@@ -76,8 +76,8 @@ const CSS = `
   width: 22px;
   height: 22px;
   border-radius: 999px;
-  background: var(--k-accent-dark, #E8A400);
-  color: #fff;
+  background: var(--k-accent-dark, #D5F3D1);
+  color: var(--k-btn-text, #fff);
   display: flex;
   align-items: center;
   justify-content: center;

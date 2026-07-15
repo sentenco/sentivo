@@ -1,7 +1,7 @@
 import SlideHeader from "./SlideHeader";
 import { renderBlankLine } from "./dialogueUtils";
 
-const SPEAKER_COLOR = { A: "#FFC933", B: "#8B5CF6" };
+const SPEAKER_COLOR = { A: "#1B2A4A", B: "#1B2A4A" };
 const SPEAKER_COLOR_ADULT = { A: "#B5502E", B: "#1B2A4A" };
 
 export default function SlideSpeaking({ content, lesson }) {

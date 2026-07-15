@@ -1,4 +1,6 @@
+import { useState } from "react";
 import ImagePlaceholder from "./ImagePlaceholder";
+import ZoomOverlay from "./ZoomOverlay";
 
 export default function SlideTitle({ content, lesson }) {
   const title = content.title || lesson?.title || "Untitled lesson";
@@ -7,19 +9,25 @@ export default function SlideTitle({ content, lesson }) {
     [lesson?.level, lesson?.age_track].filter(Boolean).join(" · ");
   const isAdult = lesson?.age_track === "adults";
   const hasImage = !!content.image_url;
+  const [zoomed, setZoomed] = useState(false);
 
   return (
     <div className={`slt-slide ${isAdult ? "is-adult" : ""} ${hasImage ? "" : "no-image"}`}>
       <style>{CSS}</style>
       {hasImage ? (
         <>
-          <img className="slt-image" src={content.image_url} alt="" />
+          <button type="button" className="slt-image-btn" onClick={() => setZoomed(true)} aria-label="Tap to make bigger">
+            <img className="slt-image" src={content.image_url} alt="" />
+          </button>
           <div className="slt-overlay" />
           <div className="slt-content">
             {badge && <span className="slt-badge">{badge}</span>}
             <h1 className="slt-title">{title}</h1>
             {content.subtitle && <p className="slt-subtitle">{content.subtitle}</p>}
           </div>
+          <ZoomOverlay active={zoomed} onClose={() => setZoomed(false)}>
+            <img src={content.image_url} alt="" className="slt-image-big" />
+          </ZoomOverlay>
         </>
       ) : (
         <>
@@ -55,13 +63,22 @@ const CSS = `
   padding: 16px 20px 0;
 }
 .slt-placeholder-area .img-ph { border-radius: 14px; }
-.slt-image {
+.slt-image-btn {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  border: none;
+  padding: 0;
+  cursor: pointer;
 }
+.slt-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.slt-image-big { max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 16px; }
 .slt-overlay {
   position: absolute;
   left: 0; right: 0; bottom: 0;
@@ -110,7 +127,7 @@ const CSS = `
   line-height: 1.5;
 }
 .slt-content--flat .slt-badge {
-  color: var(--k-accent-dark, #C2452F);
+  color: #1B2A4A;
   background: var(--k-tint, #FFF3E9);
   border-color: transparent;
 }

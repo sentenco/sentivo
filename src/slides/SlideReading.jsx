@@ -1,10 +1,13 @@
+import { useState } from "react";
 import SlideHeader from "./SlideHeader";
 import ImagePlaceholder from "./ImagePlaceholder";
+import ZoomOverlay from "./ZoomOverlay";
 
 export default function SlideReading({ content, lesson }) {
   const questions = content.questions || [];
   const isAdult = lesson?.age_track === "adults";
   const showImageColumn = !!(content.image_url || content.image_note);
+  const [zoomed, setZoomed] = useState(false);
 
   return (
     <div className={`slr-slide ${isAdult ? "is-adult" : ""}`}>
@@ -19,13 +22,15 @@ export default function SlideReading({ content, lesson }) {
         <div className={`slr-columns ${showImageColumn ? "" : "slr-columns--text-only"}`}>
           <p className="slr-text">{content.text}</p>
           {showImageColumn && (
-            <div className="slr-image-wrap">
-              {content.image_url ? (
+            content.image_url ? (
+              <button type="button" className="slr-image-wrap" onClick={() => setZoomed(true)}>
                 <img src={content.image_url} alt="" />
-              ) : (
+              </button>
+            ) : (
+              <div className="slr-image-wrap">
                 <ImagePlaceholder note={content.image_note} compact />
-              )}
-            </div>
+              </div>
+            )
           )}
         </div>
         {questions.length > 0 && (
@@ -38,6 +43,9 @@ export default function SlideReading({ content, lesson }) {
           </div>
         )}
       </div>
+      <ZoomOverlay active={zoomed} onClose={() => setZoomed(false)}>
+        <img src={content.image_url} alt="" className="slr-image-big" />
+      </ZoomOverlay>
     </div>
   );
 }
@@ -83,17 +91,22 @@ const CSS = `
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--k-bg, #FFFCF2);
+  background: var(--k-bg, #FFFEF8);
   border-radius: 12px;
   overflow: hidden;
   height: 100%;
+  width: 100%;
+  border: none;
+  padding: 0;
 }
+button.slr-image-wrap { cursor: pointer; }
 .slr-image-wrap img {
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
   mix-blend-mode: multiply;
 }
+.slr-image-big { max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 16px; }
 .slr-questions {
   display: flex;
   gap: 8px;
@@ -101,8 +114,8 @@ const CSS = `
   justify-content: center;
 }
 .slr-chip {
-  background: var(--k-bg-cool, #FFF3D2);
-  color: var(--k-accent-dark, #E8A400);
+  background: var(--k-bg-cool, #D5E9E8);
+  color: #1B2A4A;
   font-family: 'Quicksand', sans-serif;
   font-weight: 600;
   font-size: 13.5px;

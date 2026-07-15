@@ -34,7 +34,7 @@ const CSS = `
   font-size: 11.5px;
   letter-spacing: 0.4px;
   text-transform: uppercase;
-  color: var(--k-accent-dark, #7C8598);
+  color: #1B2A4A;
 }
 .img-ph-note {
   font-family: 'Quicksand', sans-serif;

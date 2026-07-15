@@ -1,9 +1,12 @@
+import { useState } from "react";
 import ImagePlaceholder from "./ImagePlaceholder";
+import ZoomOverlay from "./ZoomOverlay";
 
 export default function SlidePhrases({ content, lesson }) {
   const teacher = content.teacher || [];
   const student = content.student || [];
   const isAdult = lesson?.age_track === "adults";
+  const [zoomed, setZoomed] = useState(false);
 
   const turns = [];
   const max = Math.max(teacher.length, student.length);
@@ -17,7 +20,9 @@ export default function SlidePhrases({ content, lesson }) {
       <style>{CSS}</style>
       <div className="slp-scene">
         {content.image_url ? (
-          <img className="slp-scene-img" src={content.image_url} alt="" />
+          <button type="button" className="slp-scene-btn" onClick={() => setZoomed(true)} aria-label="Tap to make bigger">
+            <img className="slp-scene-img" src={content.image_url} alt="" />
+          </button>
         ) : (
           <ImagePlaceholder note={content.image_note} compact />
         )}
@@ -41,6 +46,9 @@ export default function SlidePhrases({ content, lesson }) {
         </div>
         {content.note && <div className="slp-note">{content.note}</div>}
       </div>
+      <ZoomOverlay active={zoomed} onClose={() => setZoomed(false)}>
+        <img src={content.image_url} alt="" className="slp-scene-img-big" />
+      </ZoomOverlay>
     </div>
   );
 }
@@ -49,6 +57,7 @@ const CSS = `
 .slp-slide {
   width: 100%;
   height: 100%;
+  position: relative;
   display: flex;
 }
 .slp-scene {
@@ -57,6 +66,8 @@ const CSS = `
   padding: 14px 0 14px 14px;
 }
 .slp-scene .img-ph { border-radius: 16px; }
+.slp-scene-btn { display: block; width: 100%; height: 100%; border: none; background: none; padding: 0; cursor: pointer; }
+.slp-scene-img-big { max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 16px; }
 .slp-scene-img {
   width: 100%;
   height: 100%;
@@ -121,10 +132,10 @@ const CSS = `
   font-family: 'Fredoka', sans-serif;
   font-weight: 700;
   font-size: 11px;
-  color: #fff;
+  color: var(--k-btn-text, #fff);
 }
-.slp-turn--teacher .slp-avatar { background: var(--k-accent, #FFC933); color: var(--k-btn-text, #fff); }
-.slp-turn--student .slp-avatar { background: var(--k-pop, #8B5CF6); }
+.slp-turn--teacher .slp-avatar { background: var(--k-accent, #FFF4AA); }
+.slp-turn--student .slp-avatar { background: var(--k-pop, #D5E9E8); }
 .slp-bubble {
   border-radius: 14px;
   padding: 8px 14px;
