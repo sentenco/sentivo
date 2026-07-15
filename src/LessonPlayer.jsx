@@ -6,10 +6,13 @@ import SlideWarmup from "./slides/SlideWarmup";
 import SlideVocabulary from "./slides/SlideVocabulary";
 import SlidePhrases from "./slides/SlidePhrases";
 import SlideActivity from "./slides/SlideActivity";
+import SlidePractice from "./slides/SlidePractice";
+import SlidePerform from "./slides/SlidePerform";
 import SlideSpeaking from "./slides/SlideSpeaking";
 import SlideReading from "./slides/SlideReading";
 import SlideWriting from "./slides/SlideWriting";
 import SlideReview from "./slides/SlideReview";
+import SlideCloser from "./slides/SlideCloser";
 import SlideAdvTitle from "./slides/SlideAdvTitle";
 import SlideEngage from "./slides/SlideEngage";
 import SlideStudy from "./slides/SlideStudy";
@@ -23,10 +26,18 @@ const SLIDE_COMPONENTS = {
   vocabulary: SlideVocabulary,
   phrases: SlidePhrases,
   activity: SlideActivity,
+  // A1 Kids new 9-slide architecture (docs/curriculum/sentivo_curriculum_master
+  // -for-claude.md): "phrases" doubles as Highlight, "activity" stays reserved
+  // for Teens/Adults' existing blank-drill content. Kids gets two new roles:
+  // practice (the Match/Sort/Order/Choice/Blank mechanics, guided/controlled)
+  // and perform (freer performance: role-play/talk/interview/choose).
+  practice: SlidePractice,
+  perform: SlidePerform,
   speaking: SlideSpeaking,
   reading: SlideReading,
   writing: SlideWriting,
   review: SlideReview,
+  closer: SlideCloser,
   // C1/C2 advanced-track slide types — student flow (Title/Engage/Study/
   // Activate/Wrap-up, 5-7 slides depending on mode) plus a single-sheet
   // teacher guide. See project_c1_c2_lesson_redesign memory for the full
@@ -46,10 +57,13 @@ const SLIDE_TYPE_LABELS = {
   vocabulary: "Vocabulary",
   phrases: "Key Phrases",
   activity: "Activity",
+  practice: "Practice",
+  perform: "Activity",
   speaking: "Speaking",
   reading: "Reading",
   writing: "Writing",
   review: "Review",
+  closer: "Wrap-up",
   advtitle: "Title",
   engage: "Engage",
   study: "Study",
