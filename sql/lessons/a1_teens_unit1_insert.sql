@@ -1,5 +1,8 @@
 -- A1 Teens Unit 1: Me and My Basic Profile (5 lessons) -- New 9-slide architecture, Foundation tier
--- Run this whole script in the Supabase SQL editor.
+-- Safe to re-run: deletes any existing rows for these lesson ids first.
+
+delete from lesson_slides where lesson_id in ('ad0fa779-8234-4b2e-a647-d30bade5ec9f', '634d1349-5359-4fc3-8573-9552fd2fd3a8', 'ba25bc10-1985-4d98-ab13-8a7ce502df90', '46a04d53-adcf-42fa-98e5-5cb7beda6db6', 'd32880ed-96d2-47a8-a304-64f5198c2b26');
+delete from lessons where id in ('ad0fa779-8234-4b2e-a647-d30bade5ec9f', '634d1349-5359-4fc3-8573-9552fd2fd3a8', 'ba25bc10-1985-4d98-ab13-8a7ce502df90', '46a04d53-adcf-42fa-98e5-5cb7beda6db6', 'd32880ed-96d2-47a8-a304-64f5198c2b26');
 
 -- Lesson 1: My Name, My Age, My Story
 insert into lessons (id, title, level, age_track, unit_number, lesson_number, topic, duration_minutes, slide_count, is_active)
