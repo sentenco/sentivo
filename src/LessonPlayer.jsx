@@ -445,16 +445,19 @@ const CSS = `
   --k-motif: "🌿";
 }
 .lp-shell.is-kids.kt-2 {
-  /* Units 9-12: unchanged for now, matches tier 0 until a palette is given */
-  --k-accent: #FFF4AA;
-  --k-accent-dark: #D5F3D1;
-  --k-secondary: #D5F3D1;
-  --k-secondary-dark: #D5E9E8;
-  --k-pop: #D5E9E8;
-  --k-btn-text: #1B2A4A;
-  --k-bg: #FFFEF8;
-  --k-bg-cool: #D5E9E8;
-  --k-tint: #D5F3D1;
+  /* Units 9-12: crimson (majority) / brick red / wheat. Both dark
+     colors are too dark to pair with navy text (contrast ~2:1), so
+     wheat is the only safe fill for every "light" role -- secondary,
+     tint, bg-cool, and pop all resolve to the same wheat tone here. */
+  --k-accent: #DC143C;
+  --k-accent-dark: #A52A2A;
+  --k-secondary: #F5DEB3;
+  --k-secondary-dark: #F5DEB3;
+  --k-pop: #F5DEB3;
+  --k-btn-text: #fff;
+  --k-bg: #FFF9F0;
+  --k-bg-cool: #F5DEB3;
+  --k-tint: #F5DEB3;
   --k-motif: "🌟";
 }
 .lp-shell.is-kids .lp-wordmark::after {

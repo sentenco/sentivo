@@ -132,10 +132,9 @@ const CSS = `
   font-family: 'Fredoka', sans-serif;
   font-weight: 700;
   font-size: 11px;
-  color: var(--k-btn-text, #fff);
 }
-.slp-turn--teacher .slp-avatar { background: var(--k-accent, #FFF4AA); }
-.slp-turn--student .slp-avatar { background: var(--k-pop, #D5E9E8); }
+.slp-turn--teacher .slp-avatar { background: var(--k-accent, #FFF4AA); color: var(--k-btn-text, #fff); }
+.slp-turn--student .slp-avatar { background: var(--k-pop, #D5E9E8); color: #1B2A4A; }
 .slp-bubble {
   border-radius: 14px;
   padding: 8px 14px;
