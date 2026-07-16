@@ -156,14 +156,20 @@ export default function LessonPlayer({ lessonId: lessonIdProp }) {
   const shellStatePortraitClass = requestedView === "teacher" ? "lp-shell--portrait" : "";
   const isAdult = lesson?.age_track === "adults";
   const isKids = lesson?.age_track === "kids";
+  const isTeens = lesson?.age_track === "teens";
   // Palette rotates every 4 units -- matching the Foundation (1-4) /
   // Combination (5-8) / Bridge (9-12) tiers -- as a visible sign of
-  // progress. Teens/Adults are untouched -- the kt-N vars are only ever
-  // read by CSS scoped under .is-kids.
+  // progress. Adults is untouched -- the kt-N/tt-N vars are only ever
+  // read by CSS scoped under .is-kids / .is-teens respectively, so the
+  // two tracks can share the same variable names without colliding.
   const kidsThemeIndex = isKids
     ? Math.min(2, Math.floor(((lesson?.unit_number || 1) - 1) / 4))
     : 0;
   const kidsThemeClass = isKids ? `is-kids kt-${kidsThemeIndex}` : "";
+  const teensThemeIndex = isTeens
+    ? Math.min(2, Math.floor(((lesson?.unit_number || 1) - 1) / 4))
+    : 0;
+  const teensThemeClass = isTeens ? `is-teens tt-${teensThemeIndex}` : "";
 
   if (loading) {
     return (
@@ -221,7 +227,7 @@ export default function LessonPlayer({ lessonId: lessonIdProp }) {
   }
 
   return (
-    <div className={`lp-shell ${isAdult ? "is-adult" : ""} ${kidsThemeClass}`}>
+    <div className={`lp-shell ${isAdult ? "is-adult" : ""} ${kidsThemeClass} ${teensThemeClass}`}>
       <style>{CSS}</style>
 
       <div className="lp-header">
@@ -455,6 +461,58 @@ const CSS = `
 }
 .lp-shell.is-kids .lp-wordmark::after {
   content: var(--k-motif, "🌱");
+  margin-left: 5px;
+  font-size: 12px;
+  vertical-align: 1px;
+}
+
+/* ── Teens palette: same --k-* variable set as Kids (reusing every slide
+   component's var(--k-*, <fallback>) hooks) but scoped under .is-teens so
+   the two tracks never collide, and rotating every 4 units on its own
+   three-tier cycle -- bolder/more saturated than Kids' pastel set so the
+   two age tracks read as distinct at a glance, not a reskin of the same
+   look. Navy stays the constant ink color across all three tiers. ── */
+.lp-shell.is-teens.tt-0 {
+  /* Units 1-4: Neon Pop -- hot magenta (majority) shading to pale pink */
+  --k-accent: #E93D82;
+  --k-accent-dark: #D02E6D;
+  --k-secondary: #FBD9E7;
+  --k-secondary-dark: #F3A9C4;
+  --k-pop: #F7B8D0;
+  --k-btn-text: #1B2A4A;
+  --k-bg: #FFF6FA;
+  --k-bg-cool: #FCE4EE;
+  --k-tint: #FCEAF1;
+  --k-motif: "⚡";
+}
+.lp-shell.is-teens.tt-1 {
+  /* Units 5-8: Electric -- vivid azure (majority) shading to pale blue */
+  --k-accent: #2E90E5;
+  --k-accent-dark: #1C6FBF;
+  --k-secondary: #D6EBFB;
+  --k-secondary-dark: #9FCBF2;
+  --k-pop: #B8DCF7;
+  --k-btn-text: #1B2A4A;
+  --k-bg: #F5FAFF;
+  --k-bg-cool: #E3F1FC;
+  --k-tint: #E9F4FD;
+  --k-motif: "🎧";
+}
+.lp-shell.is-teens.tt-2 {
+  /* Units 9-12: Blaze -- warm amber-gold (majority) shading to pale gold */
+  --k-accent: #E8871E;
+  --k-accent-dark: #C46A0F;
+  --k-secondary: #FBE8D0;
+  --k-secondary-dark: #F0C589;
+  --k-pop: #F5D4A0;
+  --k-btn-text: #1B2A4A;
+  --k-bg: #FFFAF3;
+  --k-bg-cool: #FBEEDD;
+  --k-tint: #FCF0E2;
+  --k-motif: "🏅";
+}
+.lp-shell.is-teens .lp-wordmark::after {
+  content: var(--k-motif, "⚡");
   margin-left: 5px;
   font-size: 12px;
   vertical-align: 1px;

@@ -10,7 +10,7 @@ values (
   'teens',
   1,
   1,
-  'Say my name and my age. [Foundation, Lesson 1: recognition, matching game]',
+  'Say my name, age, birthday, and where I''m from. [Foundation, Lesson 1: recognition, tap-to-reveal identity cards]',
   25,
   9,
   true
@@ -26,7 +26,7 @@ values
   null,
   $json${
   "badge": "A1 · Beginner · Teens",
-  "image_note": "A cheerful teen waving hello, holding a name tag. Bright and simple."
+  "image_note": "A set of mystery ID cards -- birthday cake, flag, name tag, number -- ready to flip over."
 }$json$::jsonb,
   true
 ),
@@ -37,10 +37,10 @@ values
   null,
   null,
   $json${
-  "display": "👋",
+  "display": "🎴",
   "questions": [
     "What's your name?",
-    "How old are you?"
+    "Where are you from?"
   ],
   "title": "Let's start!"
 }$json$::jsonb,
@@ -53,6 +53,7 @@ values
   null,
   null,
   $json${
+  "subtitle": "Tap a card to see it bigger.",
   "words": [
     {
       "word": "My name is"
@@ -61,10 +62,10 @@ values
       "word": "I am ... years old"
     },
     {
-      "word": "Hello"
+      "word": "My birthday is ..."
     },
     {
-      "word": "Nice to meet you"
+      "word": "I'm from ..."
     }
   ]
 }$json$::jsonb,
@@ -81,14 +82,14 @@ values
   "title": "Practice the Conversation",
   "teacher": [
     "Hi! What's your name?",
-    "How old are you?"
+    "When's your birthday?"
   ],
   "student": [
     "My name is ___.",
-    "I'm ___ years old."
+    "My birthday is in ___."
   ],
-  "note": "Use your real name and age!",
-  "image_note": "Two teens saying hello at school."
+  "note": "Say your real name and birthday month!",
+  "image_note": "Two teens comparing ID cards and laughing."
 }$json$::jsonb,
   true
 ),
@@ -101,8 +102,8 @@ values
   $json${
   "mode": "match",
   "tag": "Practice",
-  "title": "Match the Words",
-  "subtitle": "Tap a picture, then tap its word.",
+  "title": "Mystery Card Match",
+  "subtitle": "Match each icon to its word.",
   "instruction": "Match the picture to the word.",
   "pairs": [
     {
@@ -111,11 +112,11 @@ values
     },
     {
       "emoji": "🎂",
-      "word": "age"
+      "word": "birthday"
     },
     {
-      "emoji": "👋",
-      "word": "hello"
+      "emoji": "🌍",
+      "word": "country"
     }
   ]
 }$json$::jsonb,
@@ -128,26 +129,15 @@ values
   null,
   null,
   $json${
-  "mode": "roleplay",
+  "mode": "interview",
   "tag": "Activity",
-  "title": "Act It Out",
-  "subtitle": "Play the scene together.",
-  "image_note": "Two teens meeting for the first time.",
-  "lines": [
-    {
-      "speaker": "A",
-      "text": "Hi! I'm Sam."
-    },
-    {
-      "speaker": "B",
-      "text": "Hi Sam! I'm Jess."
-    },
-    {
-      "speaker": "A",
-      "text": "Nice to meet you!"
-    }
-  ],
-  "twist": "Now use YOUR name!"
+  "title": "Tap-to-Reveal Cards",
+  "subtitle": "Flip a card and answer it.",
+  "questions": [
+    "What's your name?",
+    "How old are you?",
+    "When's your birthday?"
+  ]
 }$json$::jsonb,
   true
 ),
@@ -164,7 +154,7 @@ values
   "dialogue": [
     {
       "speaker": "A",
-      "text": "Hi! What's your name?"
+      "text": "What's your name?"
     },
     {
       "speaker": "B",
@@ -172,14 +162,14 @@ values
     },
     {
       "speaker": "A",
-      "text": "How old are you?"
+      "text": "When's your birthday?"
     },
     {
       "speaker": "B",
-      "text": "I'm ___ years old."
+      "text": "My birthday is in ___."
     }
   ],
-  "note": "Say your own name and age."
+  "note": "Say your own name and birthday."
 }$json$::jsonb,
   true
 ),
@@ -195,9 +185,9 @@ values
   "checklist": [
     "Say my name",
     "Say my age",
-    "Say hello"
+    "Say my birthday"
   ],
-  "challenge": "Tell me your name and age!"
+  "challenge": "Tell me your name and birthday!"
 }$json$::jsonb,
   true
 ),
@@ -209,9 +199,9 @@ values
   null,
   $json${
   "headline": "Great job!",
-  "goal": "You can say your name and age.",
+  "goal": "You can talk about yourself.",
   "closing": "See you next time!",
-  "sticker": "🎉"
+  "sticker": "🎴"
 }$json$::jsonb,
   true
 );
@@ -268,6 +258,7 @@ values
   null,
   null,
   $json${
+  "subtitle": "Tap a card to see it bigger.",
   "words": [
     {
       "word": "I like"
@@ -317,7 +308,7 @@ values
   "tag": "Practice",
   "title": "This or That",
   "subtitle": "Tap the right picture.",
-  "instruction": "Which one is 'music'?",
+  "instruction": "Which one is 'games'?",
   "options": [
     {
       "emoji": "🎵",
@@ -326,9 +317,13 @@ values
     {
       "emoji": "🎮",
       "text": "Games"
+    },
+    {
+      "emoji": "🍕",
+      "text": "Pizza"
     }
   ],
-  "correctIndex": 0
+  "correctIndex": 1
 }$json$::jsonb,
   true
 ),
@@ -455,6 +450,7 @@ values
   null,
   null,
   $json${
+  "subtitle": "Tap a card to see it bigger.",
   "words": [
     {
       "word": "Monday"
@@ -502,7 +498,7 @@ values
   $json${
   "mode": "order",
   "tag": "Practice",
-  "title": "Order My Week",
+  "title": "Drag My Week",
   "subtitle": "Drag the days in order.",
   "instruction": "Put the days in order.",
   "items": [
@@ -662,6 +658,7 @@ values
   null,
   null,
   $json${
+  "subtitle": "Tap a card to see it bigger.",
   "words": [
     {
       "word": "my hobby"
@@ -709,7 +706,7 @@ values
   $json${
   "mode": "sort",
   "tag": "Practice",
-  "title": "Sort My Card",
+  "title": "Profile Builder",
   "subtitle": "Drag each word to its group.",
   "instruction": "Sort the words into groups.",
   "buckets": [
@@ -876,6 +873,7 @@ values
   null,
   null,
   $json${
+  "subtitle": "Tap a card to see it bigger.",
   "words": [
     {
       "word": "name"
