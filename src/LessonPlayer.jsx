@@ -424,16 +424,17 @@ const CSS = `
   --k-motif: "☀";
 }
 .lp-shell.is-kids.kt-1 {
-  /* Units 5-8: burnt orange (majority, lightened) / mid orange / pale gold */
-  --k-accent: #F0821F;
-  --k-accent-dark: #F0821F;
-  --k-secondary: #ffa13d;
-  --k-secondary-dark: #fbdf71;
-  --k-pop: #fbdf71;
-  --k-btn-text: #fff;
-  --k-bg: #FFF8EE;
-  --k-bg-cool: #fbdf71;
-  --k-tint: #ffa13d;
+  /* Units 5-8: Meadow -- emerald (majority) shading down to pale mint,
+     matching the teal used for Unit 2 in the curriculum grid */
+  --k-accent: #2FA37D;
+  --k-accent-dark: #1E8B6B;
+  --k-secondary: #CFEFE0;
+  --k-secondary-dark: #9AD9BE;
+  --k-pop: #7FCDAA;
+  --k-btn-text: #1B2A4A;
+  --k-bg: #F4FBF8;
+  --k-bg-cool: #E1F5EE;
+  --k-tint: #DFF4EB;
   --k-motif: "🌿";
 }
 .lp-shell.is-kids.kt-2 {
