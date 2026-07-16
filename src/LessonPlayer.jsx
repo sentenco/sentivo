@@ -403,33 +403,25 @@ const CSS = `
 }
 .lp-dot.is-active { width: 20px; background: var(--k-accent, #FF7A59); }
 
-/* ── Kids palette (v8, per-tier rotation restored): the palette now
-   changes every 4 units again -- Foundation (1-4) / Combination (5-8)
-   / Bridge (9-12) -- as a visible sign of progress, so it doesn't look
-   the same for the whole course. Each tier is still a fixed 3-color
-   set with one color declared as the majority (--k-accent, used for
-   headers/buttons/placeholders/CTAs) and the other two filling the
-   lighter secondary/tertiary roles. Kids tier 0 (Units 1-4) is pale
-   -- its majority color is light, so --k-btn-text is navy. Kids tier 1
-   (Units 5-8) is a warm orange set whose majority color (#e56703) is
-   genuinely dark, so --k-btn-text flips to white there, and
-   --k-accent-dark reuses the majority color itself (not the lighter
-   second tone) so anything pairing white text with "accent-dark" as a
-   fill stays readable. Slide components opt in via var(--k-*,
-   <fallback>) so Teens (no .is-kids class, no vars defined) render
-   pixel-identical to before. ── */
+/* ── Kids palette: back to the original coral + navy identity, still
+   rotating every 4 units so the app doesn't look identical unit after
+   unit. --k-btn-text is the constant navy ink (#1B2A4A) reused from the
+   very first Sunshine theme -- every tier's majority color stays light
+   enough for navy to read clearly on it. Slide components opt in via
+   var(--k-*, <fallback>) so Teens (no .is-kids class, no vars defined)
+   render pixel-identical to before. ── */
 .lp-shell.is-kids.kt-0 {
-  /* Units 1-4: pale butter yellow / mint / seafoam */
-  --k-accent: #FFF4AA;
-  --k-accent-dark: #D5F3D1;
-  --k-secondary: #D5F3D1;
-  --k-secondary-dark: #D5E9E8;
-  --k-pop: #D5E9E8;
+  /* Units 1-4: Sunshine -- coral (majority) shading down to pale peach */
+  --k-accent: #FF7A59;
+  --k-accent-dark: #E8623D;
+  --k-secondary: #FFC9B8;
+  --k-secondary-dark: #FF9F80;
+  --k-pop: #FFAB91;
   --k-btn-text: #1B2A4A;
-  --k-bg: #FFFEF8;
-  --k-bg-cool: #D5E9E8;
-  --k-tint: #D5F3D1;
-  --k-motif: "🌱";
+  --k-bg: #FDF8F0;
+  --k-bg-cool: #FFE4DA;
+  --k-tint: #FFEDE5;
+  --k-motif: "☀";
 }
 .lp-shell.is-kids.kt-1 {
   /* Units 5-8: burnt orange (majority, lightened) / mid orange / pale gold */
