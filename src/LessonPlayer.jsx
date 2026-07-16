@@ -438,20 +438,20 @@ const CSS = `
   --k-motif: "🌿";
 }
 .lp-shell.is-kids.kt-2 {
-  /* Units 9-12: crimson (majority) / brick red / wheat. Both dark
-     colors are too dark to pair with navy text (contrast ~2:1), so
-     wheat is the only safe fill for every "light" role -- secondary,
-     tint, bg-cool, and pop all resolve to the same wheat tone here. */
-  --k-accent: #DC143C;
-  --k-accent-dark: #A52A2A;
-  --k-secondary: #F5DEB3;
-  --k-secondary-dark: #F5DEB3;
-  --k-pop: #F5DEB3;
-  --k-btn-text: #fff;
-  --k-bg: #FFF9F0;
-  --k-bg-cool: #F5DEB3;
-  --k-tint: #F5DEB3;
-  --k-motif: "🌟";
+  /* Units 9-12: Twilight -- periwinkle violet (majority) shading down to
+     pale lavender, matching the purple used for Unit 11 in the curriculum
+     grid. Kept lighter than that card's deep indigo so navy ink still
+     reads clearly on it. */
+  --k-accent: #8B80E8;
+  --k-accent-dark: #7A6EDE;
+  --k-secondary: #DEDBFB;
+  --k-secondary-dark: #C2BBF7;
+  --k-pop: #B3A8F5;
+  --k-btn-text: #1B2A4A;
+  --k-bg: #F8F7FE;
+  --k-bg-cool: #EEEDFE;
+  --k-tint: #ECEAFC;
+  --k-motif: "✨";
 }
 .lp-shell.is-kids .lp-wordmark::after {
   content: var(--k-motif, "🌱");
