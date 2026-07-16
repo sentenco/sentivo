@@ -1,12 +1,12 @@
-export default function ImagePlaceholder({ note, compact }) {
+export default function ImagePlaceholder({ note, compact, micro }) {
   return (
-    <div className={`img-ph ${compact ? "img-ph--compact" : ""}`}>
+    <div className={`img-ph ${compact ? "img-ph--compact" : ""} ${micro ? "img-ph--micro" : ""}`}>
       <style>{CSS}</style>
       <span className="img-ph-icon" aria-hidden="true">
         🖼
       </span>
-      <span className="img-ph-label">Image needed</span>
-      {note && <span className="img-ph-note">{note}</span>}
+      {!micro && <span className="img-ph-label">Image needed</span>}
+      {note && !micro && <span className="img-ph-note">{note}</span>}
     </div>
   );
 }
@@ -49,6 +49,8 @@ const CSS = `
 .img-ph--compact .img-ph-icon { font-size: 18px; }
 .img-ph--compact .img-ph-label { font-size: 10px; }
 .img-ph--compact .img-ph-note { font-size: 10px; max-width: 95%; }
+.img-ph--micro { padding: 4px; gap: 0; border-width: 1.5px; }
+.img-ph--micro .img-ph-icon { font-size: 20px; opacity: 0.6; }
 
 .is-adult .img-ph {
   border-radius: 4px;

@@ -13,7 +13,7 @@ values (
   'teens',
   1,
   1,
-  'Say my name, age, birthday, and where I''m from. [Foundation, Lesson 1: recognition, tap-to-reveal identity cards]',
+  'Say my name, age, birthday, and where I''m from.',
   25,
   9,
   true
@@ -106,19 +106,18 @@ values
   "mode": "match",
   "tag": "Practice",
   "title": "Mystery Card Match",
-  "subtitle": "Match each icon to its word.",
-  "instruction": "Match the picture to the word.",
+  "subtitle": "Match each picture to its word.",
   "pairs": [
     {
-      "emoji": "📛",
+      "image_note": "A name tag icon.",
       "word": "name"
     },
     {
-      "emoji": "🎂",
+      "image_note": "A birthday cake with candles.",
       "word": "birthday"
     },
     {
-      "emoji": "🌍",
+      "image_note": "A globe or world map.",
       "word": "country"
     }
   ]
@@ -132,14 +131,37 @@ values
   null,
   null,
   $json${
-  "mode": "interview",
+  "mode": "build",
   "tag": "Activity",
-  "title": "Tap-to-Reveal Cards",
-  "subtitle": "Flip a card and answer it.",
-  "questions": [
-    "What's your name?",
-    "How old are you?",
-    "When's your birthday?"
+  "title": "Sentence Builder",
+  "subtitle": "Put the jumbled words in order to answer.",
+  "prompts": [
+    {
+      "question": "What's your name?",
+      "words": [
+        "My",
+        "name",
+        "is",
+        "Alex."
+      ]
+    },
+    {
+      "question": "How old are you?",
+      "words": [
+        "I",
+        "am",
+        "fourteen."
+      ]
+    },
+    {
+      "question": "When's your birthday?",
+      "words": [
+        "My",
+        "birthday",
+        "is",
+        "June."
+      ]
+    }
   ]
 }$json$::jsonb,
   true
@@ -218,7 +240,7 @@ values (
   'teens',
   1,
   2,
-  'Say what I like and don''t like. [Foundation, Lesson 2: controlled choice]',
+  'Say what I like and don''t like.',
   25,
   9,
   true
@@ -410,7 +432,7 @@ values (
   'teens',
   1,
   3,
-  'Talk about my week. [Foundation, Lesson 3: sequencing]',
+  'Talk about my week.',
   25,
   9,
   true
@@ -618,7 +640,7 @@ values (
   'teens',
   1,
   4,
-  'Build a simple ''about me'' description. [Foundation, Lesson 4: categorizing]',
+  'Build a simple ''about me'' description.',
   25,
   9,
   true
@@ -833,7 +855,7 @@ values (
   'teens',
   1,
   5,
-  'Unit Review -- name, age, likes, week, and profile. [Foundation, Lesson 5: mixed review]',
+  'Unit Review -- name, age, likes, week, and profile.',
   25,
   9,
   true

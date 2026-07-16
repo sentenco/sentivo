@@ -118,16 +118,16 @@ const CSS = `
 .slrv-body {
   flex: 1;
   min-height: 0;
-  padding: 16px 28px;
+  padding: 10px 28px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 14px;
+  gap: 10px;
 }
 .slrv-checklist {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 7px;
 }
 .slrv-item {
   display: flex;
@@ -136,7 +136,7 @@ const CSS = `
   background: #F7F6F3;
   border: none;
   border-radius: 12px;
-  padding: 12px 18px;
+  padding: 9px 18px;
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;
   font-size: 15.5px;
@@ -169,7 +169,7 @@ const CSS = `
 .slrv-challenge {
   background: var(--k-bg-cool, #D5E9E8);
   border-radius: 12px;
-  padding: 15px 20px;
+  padding: 10px 18px;
   transition: box-shadow 0.2s ease;
 }
 .slrv-challenge.is-ready {

@@ -466,49 +466,48 @@ const CSS = `
   vertical-align: 1px;
 }
 
-/* ── Teens palette: same --k-* variable set as Kids (reusing every slide
-   component's var(--k-*, <fallback>) hooks) but scoped under .is-teens so
-   the two tracks never collide, and rotating every 4 units on its own
-   three-tier cycle -- bolder/more saturated than Kids' pastel set so the
-   two age tracks read as distinct at a glance, not a reskin of the same
-   look. Navy stays the constant ink color across all three tiers. ── */
+/* ── Teens palette: identical hex values to the Kids kt-0/1/2 tiers
+   (same every-4-units rotation), scoped under .is-teens so the two
+   tracks' CSS never collides even though the colors match. Only the
+   wordmark motif differs, as a small track-level tell. ── */
 .lp-shell.is-teens.tt-0 {
-  /* Units 1-4: Neon Pop -- hot magenta (majority) shading to pale pink */
-  --k-accent: #E93D82;
-  --k-accent-dark: #D02E6D;
-  --k-secondary: #FBD9E7;
-  --k-secondary-dark: #F3A9C4;
-  --k-pop: #F7B8D0;
+  /* Units 1-4: Sunshine -- coral (majority) shading down to pale peach */
+  --k-accent: #FF7A59;
+  --k-accent-dark: #E8623D;
+  --k-secondary: #FFC9B8;
+  --k-secondary-dark: #FF9F80;
+  --k-pop: #FFAB91;
   --k-btn-text: #1B2A4A;
-  --k-bg: #FFF6FA;
-  --k-bg-cool: #FCE4EE;
-  --k-tint: #FCEAF1;
+  --k-bg: #FDF8F0;
+  --k-bg-cool: #FFE4DA;
+  --k-tint: #FFEDE5;
   --k-motif: "⚡";
 }
 .lp-shell.is-teens.tt-1 {
-  /* Units 5-8: Electric -- vivid azure (majority) shading to pale blue */
-  --k-accent: #2E90E5;
-  --k-accent-dark: #1C6FBF;
-  --k-secondary: #D6EBFB;
-  --k-secondary-dark: #9FCBF2;
-  --k-pop: #B8DCF7;
+  /* Units 5-8: Meadow -- emerald (majority) shading down to pale mint */
+  --k-accent: #2FA37D;
+  --k-accent-dark: #1E8B6B;
+  --k-secondary: #CFEFE0;
+  --k-secondary-dark: #9AD9BE;
+  --k-pop: #7FCDAA;
   --k-btn-text: #1B2A4A;
-  --k-bg: #F5FAFF;
-  --k-bg-cool: #E3F1FC;
-  --k-tint: #E9F4FD;
+  --k-bg: #F4FBF8;
+  --k-bg-cool: #E1F5EE;
+  --k-tint: #DFF4EB;
   --k-motif: "🎧";
 }
 .lp-shell.is-teens.tt-2 {
-  /* Units 9-12: Blaze -- warm amber-gold (majority) shading to pale gold */
-  --k-accent: #E8871E;
-  --k-accent-dark: #C46A0F;
-  --k-secondary: #FBE8D0;
-  --k-secondary-dark: #F0C589;
-  --k-pop: #F5D4A0;
+  /* Units 9-12: Twilight -- periwinkle violet (majority) shading down to
+     pale lavender */
+  --k-accent: #8B80E8;
+  --k-accent-dark: #7A6EDE;
+  --k-secondary: #DEDBFB;
+  --k-secondary-dark: #C2BBF7;
+  --k-pop: #B3A8F5;
   --k-btn-text: #1B2A4A;
-  --k-bg: #FFFAF3;
-  --k-bg-cool: #FBEEDD;
-  --k-tint: #FCF0E2;
+  --k-bg: #F8F7FE;
+  --k-bg-cool: #EEEDFE;
+  --k-tint: #ECEAFC;
   --k-motif: "🏅";
 }
 .lp-shell.is-teens .lp-wordmark::after {

@@ -1,9 +1,18 @@
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import SlideHeader from "./SlideHeader";
 import ImagePlaceholder from "./ImagePlaceholder";
 import ZoomOverlay from "./ZoomOverlay";
 
 const SPEAKER_COLOR = { A: "#1B2A4A", B: "#1B2A4A" };
+
+function shuffleWords(words) {
+  const a = (words || []).map((text, i) => ({ text, id: i }));
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
 
 /* ───────────────────────── Role-play: act out a short scene ─────────────────────────
    Content authors: max 3 lines so this fits with no scroll. */
@@ -82,6 +91,138 @@ function InterviewPerform({ content }) {
   );
 }
 
+/* ───────────────────────── Build: sentence builder ─────────────────────────
+   One question at a time (stepper), jumbled words dragged into slots to
+   build the spoken answer. Content authors: max 3 questions, max 4 words
+   per answer, so each step fits with no scroll. */
+function BuildPerform({ content }) {
+  const prompts = content.prompts || [];
+  const [step, setStep] = useState(0);
+  const prompt = prompts[step] || {};
+  const words = prompt.words || [];
+
+  const [tray, setTray] = useState(() => shuffleWords(words));
+  const [slots, setSlots] = useState(() => Array(words.length).fill(null));
+  const [checked, setChecked] = useState(false);
+  const [dragOverSlot, setDragOverSlot] = useState(null);
+
+  useEffect(() => {
+    setTray(shuffleWords(words));
+    setSlots(Array(words.length).fill(null));
+    setChecked(false);
+    setDragOverSlot(null);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [step]);
+
+  const allPlaced = slots.every((s) => s !== null) && slots.length > 0;
+  const allCorrect = checked && slots.every((s, i) => s?.text === words[i]);
+
+  function dropOnSlot(slotIndex, e) {
+    e.preventDefault();
+    setDragOverSlot(null);
+    let payload;
+    try {
+      payload = JSON.parse(e.dataTransfer.getData("text/plain"));
+    } catch {
+      return;
+    }
+    const item = tray.find((w) => w.id === payload.id);
+    if (!item) return;
+    setChecked(false);
+    setTray((prev) => prev.filter((w) => w.id !== payload.id));
+    setSlots((prev) => {
+      const next = [...prev];
+      const displaced = next[slotIndex];
+      next[slotIndex] = item;
+      if (displaced) setTray((t) => [...t, displaced]);
+      return next;
+    });
+  }
+
+  function reset() {
+    setTray(shuffleWords(words));
+    setSlots(Array(words.length).fill(null));
+    setChecked(false);
+  }
+
+  return (
+    <div className="slpf-build-body">
+      <div className="slpf-build-stepper">
+        <button type="button" className="slpf-build-nav" disabled={step === 0} onClick={() => setStep((s) => s - 1)}>
+          ←
+        </button>
+        <span className="slpf-build-label">
+          Question {step + 1} / {prompts.length}
+        </span>
+        <button
+          type="button"
+          className="slpf-build-nav"
+          disabled={step === prompts.length - 1}
+          onClick={() => setStep((s) => s + 1)}
+        >
+          →
+        </button>
+      </div>
+      <p className="slpf-build-question">{prompt.question}</p>
+      <div className="slpf-build-slots">
+        {slots.map((s, i) => (
+          <div
+            key={i}
+            className={`slpf-build-slot ${dragOverSlot === i ? "is-over" : ""} ${
+              checked ? (s?.text === words[i] ? "is-correct" : "is-wrong") : ""
+            }`}
+            onDragOver={(e) => {
+              e.preventDefault();
+              setDragOverSlot(i);
+            }}
+            onDragLeave={() => setDragOverSlot((cur) => (cur === i ? null : cur))}
+            onDrop={(e) => dropOnSlot(i, e)}
+          >
+            {s ? (
+              <span
+                className="slpf-build-chip"
+                draggable
+                onDragStart={(e) => e.dataTransfer.setData("text/plain", JSON.stringify({ id: s.id }))}
+              >
+                {s.text}
+              </span>
+            ) : (
+              <span className="slpf-build-empty">···</span>
+            )}
+          </div>
+        ))}
+      </div>
+      <div className="slpf-build-tray">
+        {tray.map((w) => (
+          <span
+            key={w.id}
+            className="slpf-build-chip"
+            draggable
+            onDragStart={(e) => e.dataTransfer.setData("text/plain", JSON.stringify({ id: w.id }))}
+          >
+            {w.text}
+          </span>
+        ))}
+      </div>
+      <div className="slpf-build-check-row">
+        <button type="button" className="slpf-build-check-btn" disabled={!allPlaced} onClick={() => setChecked(true)}>
+          ✓ Check
+        </button>
+        {checked && (
+          <>
+            <span className={`slpf-build-result ${allCorrect ? "is-good" : "is-retry"}`}>
+              {allCorrect ? "🎉 Perfect!" : "Not quite -- try again!"}
+            </span>
+            <button type="button" className="slpf-build-retry-btn" onClick={reset}>
+              ↻ Try Again
+            </button>
+          </>
+        )}
+      </div>
+    </div>
+  );
+}
+
 /* ───────────────────────── Choose: opinion pick, no right answer ───────────────────────── */
 function ChoosePerform({ content }) {
   const [picked, setPicked] = useState(null);
@@ -123,6 +264,7 @@ export default function SlidePerform({ content }) {
       {mode === "interview" && <InterviewPerform content={content} />}
       {mode === "choose" && <ChoosePerform content={content} />}
       {mode === "talk" && <TalkPerform content={content} />}
+      {mode === "build" && <BuildPerform content={content} />}
     </div>
   );
 }
@@ -262,5 +404,93 @@ button.slpf-scene-img { cursor: pointer; }
   font-weight: 700;
   font-size: 14.5px;
   color: #1B2A4A;
+}
+
+/* ── Build: sentence builder ── */
+.slpf-build-body { flex: 1; min-height: 0; padding: 10px 28px 14px; display: flex; flex-direction: column; justify-content: center; gap: 12px; }
+.slpf-build-stepper { display: flex; align-items: center; justify-content: center; gap: 14px; }
+.slpf-build-nav {
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+  border: none;
+  background: var(--k-bg-cool, #D5E9E8);
+  color: #1B2A4A;
+  font-weight: 700;
+  cursor: pointer;
+}
+.slpf-build-nav:disabled { opacity: 0.3; cursor: default; }
+.slpf-build-label {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+  color: #7C8598;
+}
+.slpf-build-question {
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 700;
+  font-size: 19px;
+  color: #1B2A4A;
+  text-align: center;
+  margin: 0;
+}
+.slpf-build-slots { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
+.slpf-build-slot {
+  min-width: 84px;
+  min-height: 42px;
+  border: 3px dashed #DADCE3;
+  border-radius: 10px;
+  background: #FAFAFB;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 8px;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+.slpf-build-slot.is-over { background: var(--k-bg-cool, #FFF3D2); border-color: var(--k-accent, #FFC933); }
+.slpf-build-slot.is-correct { border-color: #3B9A6B; border-style: solid; background: #E4F6EC; }
+.slpf-build-slot.is-wrong { border-color: #E0637A; border-style: solid; background: #FDEBEF; }
+.slpf-build-empty { font-family: 'Quicksand', sans-serif; font-size: 13px; color: #C2C6D2; }
+.slpf-build-tray { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; min-height: 34px; }
+.slpf-build-chip {
+  background: var(--k-secondary, #FFE28A);
+  color: #1B2A4A;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  padding: 7px 16px;
+  border-radius: 999px;
+  cursor: grab;
+}
+.slpf-build-check-row { display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap; }
+.slpf-build-check-btn {
+  background: var(--k-accent, #FFC933);
+  color: var(--k-btn-text, #fff);
+  border: none;
+  border-radius: 999px;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  padding: 9px 20px;
+  cursor: pointer;
+  box-shadow: 0 3px 0 var(--k-accent-dark, #E8A400);
+}
+.slpf-build-check-btn:active { transform: translateY(2px); box-shadow: 0 1px 0 var(--k-accent-dark, #E8A400); }
+.slpf-build-check-btn:disabled { opacity: 0.35; cursor: default; }
+.slpf-build-result { font-family: 'Quicksand', sans-serif; font-weight: 700; font-size: 13.5px; }
+.slpf-build-result.is-good { color: #2C6B4F; }
+.slpf-build-result.is-retry { color: #B03A52; }
+.slpf-build-retry-btn {
+  background: #fff;
+  color: #1B2A4A;
+  border: 2px solid #DADCE3;
+  border-radius: 999px;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  padding: 7px 16px;
+  cursor: pointer;
 }
 `;

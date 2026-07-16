@@ -1,6 +1,7 @@
 import { useMemo, useState } from "react";
 import SlideHeader from "./SlideHeader";
 import ZoomOverlay from "./ZoomOverlay";
+import ImagePlaceholder from "./ImagePlaceholder";
 
 const SPEAKER_COLOR = { A: "#1B2A4A", B: "#1B2A4A" };
 
@@ -264,18 +265,32 @@ function MatchPractice({ content }) {
 
   return (
     <div className="slpm-body">
-      {content.instruction && <p className="slpr-instruction">{content.instruction}</p>}
       <div className="slpm-row">
         {pairs.map((p, i) => (
           <div className="slpm-col" key={p.id}>
-            <button
-              type="button"
-              className="slpm-card"
-              onClick={() => setZoomedEmoji(p.emoji)}
-              aria-label="Tap to make bigger"
-            >
-              <span className="slpm-card-emoji">{p.emoji}</span>
-            </button>
+            {p.image_url ? (
+              <button
+                type="button"
+                className="slpm-card"
+                onClick={() => setZoomedEmoji(p.emoji)}
+                aria-label="Tap to make bigger"
+              >
+                <img className="slpm-card-img" src={p.image_url} alt="" />
+              </button>
+            ) : p.emoji ? (
+              <button
+                type="button"
+                className="slpm-card"
+                onClick={() => setZoomedEmoji(p.emoji)}
+                aria-label="Tap to make bigger"
+              >
+                <span className="slpm-card-emoji">{p.emoji}</span>
+              </button>
+            ) : (
+              <div className="slpm-card slpm-card--placeholder">
+                <ImagePlaceholder note={p.image_note} micro />
+              </div>
+            )}
             <div
               className={`slpm-zone ${dragOverZone === i ? "is-over" : ""} ${
                 placed[i] ? "is-correct" : ""
@@ -359,7 +374,6 @@ function SortPractice({ content }) {
 
   return (
     <div className="slps-body">
-      {content.instruction && <p className="slpr-instruction">{content.instruction}</p>}
       <div className="slps-buckets">
         {buckets.map((b, bi) => (
           <div
@@ -474,7 +488,6 @@ function OrderPractice({ content }) {
 
   return (
     <div className="slpo-body">
-      {content.instruction && <p className="slpr-instruction">{content.instruction}</p>}
       <div className="slpo-slots">
         {slots.map((s, i) => (
           <div
@@ -543,7 +556,6 @@ function ChoicePractice({ content }) {
 
   return (
     <div className="slpc-body">
-      {content.instruction && <p className="slpr-instruction slpc-instruction">{content.instruction}</p>}
       <div className="slpc-options">
         {options.map((opt, i) => {
           const isPicked = picked === i;
@@ -750,16 +762,6 @@ const CSS = `
   cursor: pointer;
 }
 
-.slpr-instruction {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 700;
-  font-size: 15.5px;
-  color: #1B2A4A;
-  text-align: center;
-  margin: 0;
-  padding: 0 20px;
-}
-
 /* ── Match: picture + drop zone in a row, word tray below ── */
 .slpm-body { flex: 1; min-height: 0; padding: 10px 26px 14px; display: flex; flex-direction: column; justify-content: center; gap: 14px; }
 .slpm-row { display: flex; gap: 20px; justify-content: center; }
@@ -775,7 +777,10 @@ const CSS = `
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
 }
+.slpm-card--placeholder { cursor: default; }
+.slpm-card-img { width: 100%; height: 100%; object-fit: cover; }
 .slpm-card-emoji { font-size: 30px; }
 .slpm-emoji-big { font-size: 180px; line-height: 1; }
 .slpm-emoji { font-size: 16px; }
@@ -886,7 +891,6 @@ const CSS = `
 
 /* ── Choice ── */
 .slpc-body { flex: 1; min-height: 0; padding: 12px 26px 14px; display: flex; flex-direction: column; gap: 14px; justify-content: center; }
-.slpc-instruction { font-size: 17px; }
 .slpc-options { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
 .slpc-card {
   width: 140px;
