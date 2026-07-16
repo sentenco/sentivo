@@ -127,8 +127,8 @@ const CSS = `
   line-height: 1.5;
 }
 .slt-content--flat .slt-badge {
-  color: #1B2A4A;
-  background: var(--k-tint, #FFF3E9);
+  color: #FFF3E4;
+  background: #1B2A4A;
   border-color: transparent;
 }
 .slt-content--flat .slt-title,
