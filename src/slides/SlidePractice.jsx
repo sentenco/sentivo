@@ -1,5 +1,6 @@
 import { useMemo, useState } from "react";
 import SlideHeader from "./SlideHeader";
+import ZoomOverlay from "./ZoomOverlay";
 
 const SPEAKER_COLOR = { A: "#1B2A4A", B: "#1B2A4A" };
 
@@ -237,6 +238,7 @@ function MatchPractice({ content }) {
   const [placed, setPlaced] = useState({});
   const [wrongFlash, setWrongFlash] = useState(null);
   const [dragOverZone, setDragOverZone] = useState(null);
+  const [zoomedEmoji, setZoomedEmoji] = useState(null);
 
   const allMatched = Object.keys(placed).length === pairs.length && pairs.length > 0;
 
@@ -266,9 +268,14 @@ function MatchPractice({ content }) {
       <div className="slpm-row">
         {pairs.map((p, i) => (
           <div className="slpm-col" key={p.id}>
-            <div className="slpm-card">
+            <button
+              type="button"
+              className="slpm-card"
+              onClick={() => setZoomedEmoji(p.emoji)}
+              aria-label="Tap to make bigger"
+            >
               <span className="slpm-card-emoji">{p.emoji}</span>
-            </div>
+            </button>
             <div
               className={`slpm-zone ${dragOverZone === i ? "is-over" : ""} ${
                 placed[i] ? "is-correct" : ""
@@ -302,6 +309,9 @@ function MatchPractice({ content }) {
         )}
       </div>
       {allMatched && <div className="slpm-done">🎉 Great matching!</div>}
+      <ZoomOverlay active={!!zoomedEmoji} onClose={() => setZoomedEmoji(null)}>
+        <span className="slpm-emoji-big" aria-hidden="true">{zoomedEmoji}</span>
+      </ZoomOverlay>
     </div>
   );
 }
@@ -744,12 +754,10 @@ const CSS = `
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;
   font-size: 15.5px;
-  color: #FFF3E4;
-  background: #1B2A4A;
+  color: #1B2A4A;
   text-align: center;
-  margin: 0 20px;
-  padding: 8px 18px;
-  border-radius: 12px;
+  margin: 0;
+  padding: 0 20px;
 }
 
 /* ── Match: picture + drop zone in a row, word tray below ── */
@@ -762,11 +770,14 @@ const CSS = `
   border-radius: 14px;
   border: 3px solid var(--k-tint, #FFE4A3);
   background: #fff;
+  padding: 0;
+  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 .slpm-card-emoji { font-size: 30px; }
+.slpm-emoji-big { font-size: 180px; line-height: 1; }
 .slpm-emoji { font-size: 16px; }
 .slpm-zone {
   width: 100px;

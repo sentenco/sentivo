@@ -15,7 +15,7 @@ export default function SlideHeader({ tag, title, subtitle, gradient, isAdult })
 
 const CSS = `
 .slh-header {
-  background: var(--k-accent, #1B2A4A);
+  background: #1B2A4A;
   padding: 9px 28px 8px;
   flex-shrink: 0;
 }
@@ -36,15 +36,15 @@ const CSS = `
   font-family: 'Fredoka', sans-serif;
   font-weight: 700;
   font-size: 19px;
-  color: var(--k-btn-text, #1B2A4A);
+  color: #FFF3E4;
   margin: 0;
 }
 .slh-subtitle {
   font-family: 'Quicksand', sans-serif;
   font-weight: 500;
   font-size: 13.5px;
-  color: var(--k-btn-text, #1B2A4A);
-  opacity: 0.65;
+  color: #FFF3E4;
+  opacity: 0.72;
   margin: 2px 0 0;
 }
 

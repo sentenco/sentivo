@@ -734,12 +734,10 @@ const CSS = `
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;
   font-size: 16px;
-  color: #FFF3E4;
-  background: #1B2A4A;
+  color: #1B2A4A;
   text-align: center;
-  margin: 0 20px;
-  padding: 8px 18px;
-  border-radius: 12px;
+  margin: 0;
+  padding: 0 20px;
 }
 
 /* ── Match ── */
