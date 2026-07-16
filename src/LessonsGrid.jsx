@@ -16,16 +16,15 @@ const LEVEL_COLORS = {
   C2: { color: "#534AB7", light: "#EEEDFE" },
 };
 
-const UNIT_COLORS = ["coral", "teal", "lavender", "gold", "teal", "lavender", "coral", "gold"];
+const UNIT_COLORS = ["coral", "teal", "lavender"];
 
 function LessonCard({ lesson, levelColor, onOpen, onOpenTeacherGuide, isPro, thumbnail }) {
-  const unitIdx = (lesson.unit_number - 1) % UNIT_COLORS.length;
+  const unitTier = Math.min(2, Math.floor((lesson.unit_number - 1) / 4));
   const palette = {
     coral:   { bg: "#FAECE7", accent: "#D85A30" },
     teal:    { bg: "#E1F5EE", accent: "#0F6E56" },
     lavender:{ bg: "#EEEDFE", accent: "#534AB7" },
-    gold:    { bg: "#FAEEDA", accent: "#BA7517" },
-  }[UNIT_COLORS[unitIdx]];
+  }[UNIT_COLORS[unitTier]];
   const isAdvancedTrack = lesson.level === "C1" || lesson.level === "C2";
 
   return (
