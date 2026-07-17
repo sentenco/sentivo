@@ -305,6 +305,9 @@ export default function Library() {
       <header className="nav">
         <div className="nav-left">
           <a href="/" className="brand">sent<span className="dot">i</span>vo<span className="lib-tag">Library</span></a>
+          <button type="button" className="storybook-pill" onClick={() => navigate("/library/storybook")}>
+            <span className="storybook-pill-icon" aria-hidden="true">📖</span> Story Book
+          </button>
         </div>
         <div className="nav-right">
           <div className="theme-toggle">
@@ -679,6 +682,30 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   margin-left: 8px;
 }
 .theme-pro .lib-tag { font-family: 'Inter', sans-serif; }
+.storybook-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #FF7A59;
+  color: #fff;
+  border: none;
+  border-radius: 999px;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 700;
+  font-size: 12.5px;
+  padding: 7px 14px;
+  cursor: pointer;
+  box-shadow: 0 2px 0 #C2452F;
+}
+.storybook-pill:active { transform: translateY(1px); box-shadow: 0 1px 0 #C2452F; }
+.storybook-pill-icon { font-size: 13px; }
+.theme-pro .storybook-pill {
+  background: #1B2A4A;
+  border-radius: 3px;
+  box-shadow: none;
+  font-family: 'Inter', sans-serif;
+  letter-spacing: 0.02em;
+}
 
 .nav-right { display: flex; align-items: center; gap: 12px; position: relative; margin-left: auto; }
 .theme-toggle { display: flex; gap: 4px; background: rgba(255,255,255,0.6); border-radius: 999px; padding: 4px; }
