@@ -1,6 +1,7 @@
 import { useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { CHAPTERS, STORYBOOK_TITLE, STORYBOOK_SUBTITLE } from "./storybookData";
+import ImagePlaceholder from "./slides/ImagePlaceholder";
+import { CHAPTERS, CHARACTERS, COVER_IMAGE_NOTE, STORYBOOK_TITLE, STORYBOOK_SUBTITLE } from "./storybookData";
 
 const PAGE_TYPES = ["story", "questions", "truefalse", "build0", "build1", "build2", "mysentence"];
 const PAGE_LABELS = {
@@ -25,6 +26,9 @@ function shuffle(arr) {
 function StoryPage({ chapter }) {
   return (
     <div className="sb-page sb-page--story">
+      <div className="sb-lead-image">
+        <ImagePlaceholder note={chapter.imageNote} compact />
+      </div>
       <span className="sb-chapter-num">Chapter {chapter.number}</span>
       <h2 className="sb-chapter-title">{chapter.title}</h2>
       <p className="sb-story-text">{chapter.story}</p>
@@ -96,13 +100,16 @@ function BuildSentencePage({ chapter, index }) {
 
   const [tray, setTray] = useState(() => shuffle(words.map((text, i) => ({ text, id: i }))));
   const [built, setBuilt] = useState([]);
+  const [checked, setChecked] = useState(false);
 
   function tapTray(word) {
+    if (checked) return;
     setTray((prev) => prev.filter((w) => w.id !== word.id));
     setBuilt((prev) => [...prev, word]);
   }
 
   function tapBuilt(word) {
+    if (checked) return;
     setBuilt((prev) => prev.filter((w) => w.id !== word.id));
     setTray((prev) => [...prev, word]);
   }
@@ -110,19 +117,19 @@ function BuildSentencePage({ chapter, index }) {
   function reset() {
     setTray(shuffle(words.map((text, i) => ({ text, id: i }))));
     setBuilt([]);
+    setChecked(false);
   }
 
   const allPlaced = built.length === words.length;
-  const isCorrect = allPlaced && built.every((w, i) => w.text === words[i]);
+  const isCorrect = checked && built.every((w, i) => w.text === words[i]);
 
   return (
     <div className="sb-page">
       <h3 className="sb-page-title">
         Build-a-Sentence <span className="sb-page-title-sub">({index + 1} of 3)</span>
       </h3>
-      <p className="sb-page-hint">Read the sentence. Tap the words below to build it in the same order.</p>
-      <p className="sb-target-sentence">{sentence.target}</p>
-      <div className={`sb-build-row ${allPlaced ? (isCorrect ? "is-correct" : "is-wrong") : ""}`}>
+      <p className="sb-page-hint">Tap the words in the correct order to build a sentence from the story.</p>
+      <div className={`sb-build-row ${checked ? (isCorrect ? "is-correct" : "is-wrong") : ""}`}>
         {built.length === 0 && <span className="sb-build-empty">Tap words below to start building…</span>}
         {built.map((w) => (
           <button type="button" key={w.id} className="sb-word-chip sb-word-chip--built" onClick={() => tapBuilt(w)}>
@@ -130,11 +137,6 @@ function BuildSentencePage({ chapter, index }) {
           </button>
         ))}
       </div>
-      {allPlaced && (
-        <div className={`sb-build-feedback ${isCorrect ? "is-good" : "is-retry"}`}>
-          {isCorrect ? "🎉 Perfect! You built the sentence." : "Not quite the same order -- try again!"}
-        </div>
-      )}
       <div className="sb-word-tray">
         {tray.map((w) => (
           <button type="button" key={w.id} className="sb-word-chip" onClick={() => tapTray(w)}>
@@ -142,11 +144,21 @@ function BuildSentencePage({ chapter, index }) {
           </button>
         ))}
       </div>
-      {allPlaced && !isCorrect && (
-        <button type="button" className="sb-retry-btn" onClick={reset}>
-          ↻ Try Again
+      <div className="sb-build-check-row">
+        <button type="button" className="sb-check-btn" disabled={!allPlaced || checked} onClick={() => setChecked(true)}>
+          ✓ Check
         </button>
-      )}
+        {checked && (
+          <>
+            <span className={`sb-build-feedback ${isCorrect ? "is-good" : "is-retry"}`}>
+              {isCorrect ? "🎉 Perfect! That's the sentence." : "Not quite the right order -- try again!"}
+            </span>
+            <button type="button" className="sb-retry-btn" onClick={reset}>
+              ↻ Try Again
+            </button>
+          </>
+        )}
+      </div>
     </div>
   );
 }
@@ -244,6 +256,9 @@ export default function StoryBook() {
       <div className="sb-stage">
         {view === "cover" && (
           <div className="sb-book sb-cover">
+            <div className="sb-cover-image">
+              <ImagePlaceholder note={COVER_IMAGE_NOTE} compact />
+            </div>
             <span className="sb-cover-badge">A1 · Teens · Story Book</span>
             <h1 className="sb-cover-title">{STORYBOOK_TITLE}</h1>
             <p className="sb-cover-subtitle">{STORYBOOK_SUBTITLE}</p>
@@ -251,6 +266,23 @@ export default function StoryBook() {
               Follow Joshua, Paul, Mia, and Angel through ten short chapters of everyday school life. Each chapter
               comes with questions, a true-or-false check, and a Build-a-Sentence game.
             </p>
+            <div className="sb-characters">
+              <span className="sb-characters-heading">Meet the Characters</span>
+              <div className="sb-characters-grid">
+                {CHARACTERS.map((c) => (
+                  <div key={c.name} className="sb-character-card">
+                    <div className="sb-character-avatar">
+                      <ImagePlaceholder micro />
+                    </div>
+                    <div className="sb-character-info">
+                      <span className="sb-character-name">{c.name}</span>
+                      <span className="sb-character-role">{c.role}</span>
+                      <span className="sb-character-look">{c.look}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
             <button type="button" className="sb-cta-btn" onClick={() => setView("toc")}>
               Open Book →
             </button>
@@ -357,31 +389,34 @@ const CSS = `
   flex: 1;
   width: 100%;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
-  padding: 24px;
+  padding: 32px 24px 60px;
 }
 
+/* Portrait book -- an actual book shape, not a wide slide */
 .sb-book {
-  width: 780px;
+  width: 460px;
   max-width: 100%;
-  min-height: 460px;
+  min-height: 680px;
   background: #FFFDF7;
-  border-radius: 20px;
+  border-radius: 18px;
   border: 3px solid #1B2A4A;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.18);
+  box-shadow: 0 24px 60px rgba(0,0,0,0.2), inset 3px 0 0 rgba(27,42,74,0.06);
   display: flex;
   flex-direction: column;
-  padding: 36px 44px;
+  padding: 30px 28px;
   animation: sb-page-in 0.28s ease;
 }
 @keyframes sb-page-in {
-  from { opacity: 0; transform: translateX(14px); }
-  to { opacity: 1; transform: translateX(0); }
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 /* ── Cover ── */
-.sb-cover { align-items: center; text-align: center; justify-content: center; gap: 14px; }
+.sb-cover { align-items: center; text-align: center; gap: 12px; }
+.sb-cover-image { width: 100%; height: 190px; border-radius: 14px; overflow: hidden; margin-bottom: 4px; }
+.sb-cover-image .img-ph { border-radius: 14px; }
 .sb-cover-badge {
   display: inline-block;
   background: #FAECE7;
@@ -397,27 +432,53 @@ const CSS = `
 .sb-cover-title {
   font-family: 'Fredoka', sans-serif;
   font-weight: 700;
-  font-size: 32px;
+  font-size: 25px;
+  line-height: 1.2;
   color: #1B2A4A;
-  margin: 6px 0 0;
-  max-width: 560px;
+  margin: 4px 0 0;
 }
 .sb-cover-subtitle {
   font-family: 'Quicksand', sans-serif;
   font-weight: 600;
-  font-size: 16px;
+  font-size: 14.5px;
   color: #D85A30;
   margin: 0;
 }
 .sb-cover-blurb {
   font-family: 'Quicksand', sans-serif;
   font-weight: 500;
-  font-size: 15px;
-  line-height: 1.6;
+  font-size: 13.5px;
+  line-height: 1.55;
   color: #5C6478;
-  max-width: 480px;
-  margin: 6px 0 10px;
+  margin: 4px 0 4px;
 }
+.sb-characters { width: 100%; margin: 6px 0 4px; }
+.sb-characters-heading {
+  display: block;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: #94A0B8;
+  margin-bottom: 8px;
+}
+.sb-characters-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.sb-character-card {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #FAF7EF;
+  border-radius: 10px;
+  padding: 8px;
+  text-align: left;
+}
+.sb-character-avatar { width: 40px; height: 40px; flex-shrink: 0; border-radius: 8px; overflow: hidden; }
+.sb-character-avatar .img-ph { border-radius: 8px; }
+.sb-character-info { display: flex; flex-direction: column; min-width: 0; }
+.sb-character-name { font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 12.5px; color: #1B2A4A; }
+.sb-character-role { font-family: 'Quicksand', sans-serif; font-weight: 600; font-size: 10px; color: #D85A30; }
+.sb-character-look { font-family: 'Quicksand', sans-serif; font-weight: 500; font-size: 10px; color: #94A0B8; line-height: 1.3; }
 .sb-cta-btn {
   background: #D85A30;
   color: #fff;
@@ -429,6 +490,7 @@ const CSS = `
   padding: 13px 30px;
   cursor: pointer;
   box-shadow: 0 3px 0 #A8431F;
+  margin-top: 4px;
 }
 .sb-cta-btn:active { transform: translateY(2px); box-shadow: 0 1px 0 #A8431F; }
 
@@ -436,20 +498,20 @@ const CSS = `
 .sb-toc-heading {
   font-family: 'Fredoka', sans-serif;
   font-weight: 700;
-  font-size: 24px;
+  font-size: 22px;
   color: #1B2A4A;
-  margin: 0 0 18px;
+  margin: 0 0 16px;
 }
-.sb-toc-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+.sb-toc-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 9px; }
 .sb-toc-btn {
   width: 100%;
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 12px;
   background: #FAF7EF;
   border: none;
   border-radius: 12px;
-  padding: 13px 18px;
+  padding: 11px 14px;
   cursor: pointer;
   text-align: left;
   transition: background 0.12s ease, transform 0.12s ease;
@@ -457,8 +519,8 @@ const CSS = `
 .sb-toc-btn:hover { background: #FAECE7; transform: translateX(2px); }
 .sb-toc-num {
   flex-shrink: 0;
-  width: 28px;
-  height: 28px;
+  width: 26px;
+  height: 26px;
   border-radius: 999px;
   background: #D85A30;
   color: #fff;
@@ -467,13 +529,13 @@ const CSS = `
   justify-content: center;
   font-family: 'Fredoka', sans-serif;
   font-weight: 700;
-  font-size: 13px;
+  font-size: 12px;
 }
 .sb-toc-title {
   flex: 1;
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;
-  font-size: 15.5px;
+  font-size: 14px;
   color: #1B2A4A;
 }
 .sb-toc-arrow { color: #D85A30; font-weight: 700; }
@@ -483,7 +545,7 @@ const CSS = `
 .sb-page-header-label {
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;
-  font-size: 11px;
+  font-size: 10.5px;
   letter-spacing: 0.6px;
   text-transform: uppercase;
   color: #D85A30;
@@ -491,56 +553,58 @@ const CSS = `
 .sb-page-header-counter {
   font-family: 'Quicksand', sans-serif;
   font-weight: 600;
-  font-size: 12px;
+  font-size: 11px;
   color: #94A0B8;
 }
-.sb-progress-track { height: 3px; background: #EFEAE0; border-radius: 999px; margin: 10px 0 22px; overflow: hidden; }
+.sb-progress-track { height: 3px; background: #EFEAE0; border-radius: 999px; margin: 9px 0 18px; overflow: hidden; }
 .sb-progress-fill { height: 100%; background: #D85A30; transition: width 0.2s ease; }
 
 .sb-page-body { flex: 1; min-height: 260px; }
 .sb-page { display: flex; flex-direction: column; gap: 10px; }
-.sb-page-title { font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 20px; color: #1B2A4A; margin: 0; }
-.sb-page-title-sub { font-family: 'Quicksand', sans-serif; font-weight: 600; font-size: 13px; color: #94A0B8; }
-.sb-page-hint { font-family: 'Quicksand', sans-serif; font-weight: 500; font-size: 14px; color: #7C8598; margin: -4px 0 4px; }
+.sb-page-title { font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 18px; color: #1B2A4A; margin: 0; }
+.sb-page-title-sub { font-family: 'Quicksand', sans-serif; font-weight: 600; font-size: 12px; color: #94A0B8; }
+.sb-page-hint { font-family: 'Quicksand', sans-serif; font-weight: 500; font-size: 13px; color: #7C8598; margin: -4px 0 4px; }
 
 /* ── Story ── */
+.sb-lead-image { width: 100%; height: 150px; border-radius: 12px; overflow: hidden; margin-bottom: 4px; }
+.sb-lead-image .img-ph { border-radius: 12px; }
 .sb-chapter-num {
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;
-  font-size: 12px;
+  font-size: 11px;
   letter-spacing: 0.6px;
   text-transform: uppercase;
   color: #D85A30;
 }
-.sb-chapter-title { font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 26px; color: #1B2A4A; margin: 4px 0 14px; }
+.sb-chapter-title { font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 22px; color: #1B2A4A; margin: 3px 0 10px; }
 .sb-story-text {
   font-family: 'Quicksand', sans-serif;
   font-weight: 500;
-  font-size: 17px;
-  line-height: 1.75;
+  font-size: 15px;
+  line-height: 1.7;
   color: #1B2A4A;
   margin: 0;
 }
 
 /* ── Questions ── */
-.sb-qlist { margin: 0; padding: 0 0 0 20px; display: flex; flex-direction: column; gap: 12px; }
-.sb-qitem { font-family: 'Quicksand', sans-serif; font-weight: 600; font-size: 16px; color: #1B2A4A; }
+.sb-qlist { margin: 0; padding: 0 0 0 18px; display: flex; flex-direction: column; gap: 12px; }
+.sb-qitem { font-family: 'Quicksand', sans-serif; font-weight: 600; font-size: 15px; color: #1B2A4A; }
 
 /* ── True/False ── */
-.sb-tf-list { display: flex; flex-direction: column; gap: 10px; }
+.sb-tf-list { display: flex; flex-direction: column; gap: 9px; }
 .sb-tf-row {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 14px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
   background: #FAF7EF;
   border-radius: 12px;
-  padding: 12px 16px;
+  padding: 11px 14px;
   transition: background 0.15s ease;
 }
 .sb-tf-row.is-correct { background: #E4F6EC; }
 .sb-tf-row.is-wrong { background: #FDEBEF; }
-.sb-tf-text { font-family: 'Quicksand', sans-serif; font-weight: 600; font-size: 15px; color: #1B2A4A; }
+.sb-tf-text { font-family: 'Quicksand', sans-serif; font-weight: 600; font-size: 14px; color: #1B2A4A; }
 .sb-tf-buttons { display: flex; gap: 8px; flex-shrink: 0; }
 .sb-tf-btn {
   background: #fff;
@@ -549,82 +613,86 @@ const CSS = `
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;
   font-size: 13px;
-  padding: 7px 16px;
+  padding: 6px 15px;
   border-radius: 999px;
   cursor: pointer;
 }
 .sb-tf-btn.is-picked { background: #D85A30; border-color: #D85A30; color: #fff; }
 
 /* ── Build-a-sentence ── */
-.sb-target-sentence {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 700;
-  font-size: 16px;
-  color: #1B2A4A;
-  background: #FAECE7;
-  border-radius: 10px;
-  padding: 10px 16px;
-  margin: 0;
-}
 .sb-build-row {
   min-height: 44px;
   border: 3px dashed #DADCE3;
   border-radius: 12px;
-  padding: 8px 12px;
+  padding: 8px 10px;
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 7px;
   align-items: center;
   transition: border-color 0.15s ease, background 0.15s ease;
 }
 .sb-build-row.is-correct { border-color: #3B9A6B; border-style: solid; background: #E4F6EC; }
 .sb-build-row.is-wrong { border-color: #E0637A; border-style: solid; background: #FDEBEF; }
-.sb-build-empty { font-family: 'Quicksand', sans-serif; font-size: 13px; color: #C2C6D2; }
-.sb-word-tray { display: flex; flex-wrap: wrap; gap: 9px; min-height: 34px; }
+.sb-build-empty { font-family: 'Quicksand', sans-serif; font-size: 12.5px; color: #C2C6D2; }
+.sb-word-tray { display: flex; flex-wrap: wrap; gap: 8px; min-height: 34px; }
 .sb-word-chip {
   background: #fff;
   border: 2px solid #EAE6DC;
   color: #1B2A4A;
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;
-  font-size: 14.5px;
-  padding: 7px 15px;
+  font-size: 13.5px;
+  padding: 6px 13px;
   border-radius: 999px;
   cursor: pointer;
 }
 .sb-word-chip--built { background: #D85A30; border-color: #D85A30; color: #fff; }
-.sb-build-feedback { font-family: 'Quicksand', sans-serif; font-weight: 700; font-size: 13.5px; }
+.sb-build-check-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-top: 2px; }
+.sb-check-btn {
+  background: #D85A30;
+  color: #fff;
+  border: none;
+  border-radius: 999px;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  padding: 8px 18px;
+  cursor: pointer;
+  box-shadow: 0 3px 0 #A8431F;
+}
+.sb-check-btn:active { transform: translateY(2px); box-shadow: 0 1px 0 #A8431F; }
+.sb-check-btn:disabled { opacity: 0.35; cursor: default; box-shadow: 0 3px 0 #A8431F; }
+.sb-build-feedback { font-family: 'Quicksand', sans-serif; font-weight: 700; font-size: 13px; }
 .sb-build-feedback.is-good { color: #2C6B4F; }
 .sb-build-feedback.is-retry { color: #B03A52; }
 .sb-retry-btn {
-  align-self: flex-start;
   background: #fff;
   color: #1B2A4A;
   border: 2px solid #DADCE3;
   border-radius: 999px;
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;
-  font-size: 13px;
-  padding: 7px 16px;
+  font-size: 12.5px;
+  padding: 7px 15px;
   cursor: pointer;
 }
 
 /* ── My Sentence ── */
-.sb-example { font-family: 'Quicksand', sans-serif; font-size: 14px; color: #94A0B8; margin: 0; }
+.sb-example { font-family: 'Quicksand', sans-serif; font-size: 13px; color: #94A0B8; margin: 0; }
 .sb-my-sentence-input {
   font-family: 'Quicksand', sans-serif;
-  font-size: 15px;
+  font-size: 14px;
   color: #1B2A4A;
   border: 2px solid #EAE6DC;
   border-radius: 12px;
-  padding: 12px 14px;
+  padding: 11px 13px;
   resize: none;
   outline: none;
 }
 .sb-my-sentence-input:focus { border-color: #D85A30; }
 
 /* ── Nav row ── */
-.sb-nav-row { display: flex; align-items: center; justify-content: space-between; margin-top: 22px; }
+.sb-nav-row { display: flex; align-items: center; justify-content: space-between; margin-top: 18px; }
 .sb-nav-btn {
   background: #fff;
   color: #1B2A4A;
@@ -632,17 +700,18 @@ const CSS = `
   border-radius: 999px;
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;
-  font-size: 13.5px;
-  padding: 9px 18px;
+  font-size: 12.5px;
+  padding: 8px 15px;
   cursor: pointer;
 }
 .sb-nav-btn--primary { background: #D85A30; border-color: #D85A30; color: #fff; }
 .sb-nav-btn:disabled { opacity: 0.35; cursor: default; }
-.sb-nav-dots { display: flex; gap: 5px; }
+.sb-nav-dots { display: flex; gap: 4px; flex-wrap: wrap; justify-content: center; max-width: 90px; }
 .sb-nav-dot { width: 6px; height: 6px; border-radius: 999px; background: #E4E0D4; }
-.sb-nav-dot.is-active { width: 16px; background: #D85A30; }
+.sb-nav-dot.is-active { width: 14px; background: #D85A30; }
 
-@media (max-width: 720px) {
-  .sb-book { padding: 26px 22px; }
+@media (max-width: 520px) {
+  .sb-book { padding: 22px 18px; }
+  .sb-characters-grid { grid-template-columns: 1fr; }
 }
 `;
