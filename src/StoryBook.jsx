@@ -564,14 +564,16 @@ const CSS = `
   text-transform: uppercase;
   color: #D85A30;
 }
-.sb-chapter-title { font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 22px; color: #1B2A4A; margin: 3px 0 10px; }
+.sb-chapter-title { font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 27px; color: #1B2A4A; margin: 3px 0 12px; }
 .sb-story-text {
   font-family: 'Quicksand', sans-serif;
   font-weight: 500;
-  font-size: 15px;
-  line-height: 1.7;
+  font-size: 19px;
+  line-height: 1.75;
   color: #1B2A4A;
   margin: 0;
+  text-align: justify;
+  text-indent: 32px;
 }
 
 /* ── Questions ── */
