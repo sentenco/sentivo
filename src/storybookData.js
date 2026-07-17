@@ -1,7 +1,7 @@
 // A1 Teens digital storybook: "The School Days of Joshua, Paul, Mia & Angel"
 // Static content -- no Supabase, mirrors the pattern in CurriculumOverview.jsx.
 
-export const STORYBOOK_TITLE = "The School Days of Joshua, Paul, Mia & Angel";
+export const STORYBOOK_TITLE = "Joshua's Diary";
 export const STORYBOOK_SUBTITLE = "An A1 storybook for teens";
 export const COVER_IMAGE_NOTE =
   "A group illustration of all four teen friends standing together outside their school, smiling: Joshua, Paul, Mia, and Angel.";

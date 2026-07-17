@@ -193,15 +193,6 @@ function MySentencePage({ chapter }) {
   );
 }
 
-function BookFrame({ className = "", children }) {
-  return (
-    <div className="sb-book-frame">
-      <div className="sb-spine" aria-hidden="true" />
-      <div className={`sb-book ${className}`}>{children}</div>
-    </div>
-  );
-}
-
 function renderPage(pageType, chapter) {
   switch (pageType) {
     case "intro":
@@ -276,19 +267,16 @@ export default function StoryBook() {
 
       <div className="sb-stage">
         {view === "cover" && (
-          <BookFrame className="sb-cover">
+          <button type="button" className="sb-book sb-cover" onClick={() => setView("characters")}>
             <div className="sb-cover-image">
               <ImagePlaceholder note={COVER_IMAGE_NOTE} compact />
             </div>
             <h1 className="sb-cover-title">{STORYBOOK_TITLE}</h1>
-            <button type="button" className="sb-cover-link" onClick={() => setView("characters")}>
-              Begin Reading →
-            </button>
-          </BookFrame>
+          </button>
         )}
 
         {view === "characters" && (
-          <BookFrame className="sb-characters-page">
+          <div className="sb-book sb-characters-page">
             <h2 className="sb-toc-heading">Meet the Characters</h2>
             <p className="sb-page-hint">The same four friends appear all through the book.</p>
             <div className="sb-characters-grid">
@@ -308,11 +296,11 @@ export default function StoryBook() {
             <button type="button" className="sb-cta-btn" onClick={() => setView("toc")}>
               Table of Contents →
             </button>
-          </BookFrame>
+          </div>
         )}
 
         {view === "toc" && (
-          <BookFrame className="sb-toc">
+          <div className="sb-book sb-toc">
             <h2 className="sb-toc-heading">Table of Contents</h2>
             <ol className="sb-toc-list">
               {CHAPTERS.map((c, i) => (
@@ -325,11 +313,11 @@ export default function StoryBook() {
                 </li>
               ))}
             </ol>
-          </BookFrame>
+          </div>
         )}
 
         {view === "chapter" && (
-          <BookFrame>
+          <div className="sb-book">
             <div className="sb-page-header">
               <span className="sb-page-header-label">{PAGE_LABELS[pageType]}</span>
               <span className="sb-page-header-counter">Chapter {chapter.number} of {CHAPTERS.length}</span>
@@ -356,7 +344,7 @@ export default function StoryBook() {
                 Next →
               </button>
             </div>
-          </BookFrame>
+          </div>
         )}
       </div>
     </div>
@@ -416,63 +404,18 @@ const CSS = `
   padding: 36px 24px 60px;
 }
 
-/* ── Book frame: spine + stacked-page depth so the portrait card actually
-   reads as a physical book, not just a tall rounded rectangle. ── */
-.sb-book-frame {
-  position: relative;
-  width: 460px;
-  max-width: 100%;
-  padding-left: 14px;
-}
-.sb-book-frame::before,
-.sb-book-frame::after {
-  content: "";
-  position: absolute;
-  top: 7px;
-  right: -7px;
-  bottom: -7px;
-  left: 21px;
-  border-radius: 3px 14px 14px 3px;
-  border: 2px solid #E4DCC8;
-}
-.sb-book-frame::before { background: #F1E9D4; top: 14px; right: -14px; bottom: -14px; z-index: 0; }
-.sb-book-frame::after { background: #F8F1DE; z-index: 1; }
-.sb-spine {
-  position: absolute;
-  left: 0;
-  top: 3px;
-  bottom: 3px;
-  width: 22px;
-  border-radius: 6px 0 0 6px;
-  background: linear-gradient(90deg, #101B31 0%, #22345C 45%, #17253F 100%);
-  box-shadow: inset -5px 0 10px rgba(0,0,0,0.4), inset 2px 0 0 rgba(255,255,255,0.06);
-  z-index: 3;
-}
-.sb-spine::after {
-  content: "";
-  position: absolute;
-  top: 10px;
-  bottom: 10px;
-  left: 4px;
-  right: 4px;
-  border-top: 1px solid rgba(255,255,255,0.15);
-  border-bottom: 1px solid rgba(255,255,255,0.15);
-}
-
-/* Portrait book page -- the actual content surface */
+/* Landscape book card */
 .sb-book {
-  position: relative;
-  z-index: 2;
-  width: 100%;
-  min-height: 680px;
+  width: 780px;
+  max-width: 100%;
+  min-height: 460px;
   background: #FFFDF7;
-  border-radius: 3px 16px 16px 3px;
+  border-radius: 18px;
   border: 3px solid #1B2A4A;
-  border-left: none;
-  box-shadow: 5px 0 12px rgba(27,42,74,0.15), 0 20px 50px rgba(0,0,0,0.22);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.2);
   display: flex;
   flex-direction: column;
-  padding: 30px 26px;
+  padding: 30px 36px;
   animation: sb-page-in 0.28s ease;
 }
 @keyframes sb-page-in {
@@ -480,33 +423,31 @@ const CSS = `
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* ── Cover: image + title, nothing else ── */
-.sb-cover { align-items: center; justify-content: center; text-align: center; gap: 18px; }
-.sb-cover-image { width: 100%; height: 300px; border-radius: 12px; overflow: hidden; }
+/* ── Cover: image + title, nothing else. The whole card is the button. ── */
+.sb-cover {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 18px;
+  cursor: pointer;
+  font: inherit;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+.sb-cover:hover { transform: translateY(-2px); box-shadow: 0 26px 56px rgba(0,0,0,0.24); }
+.sb-cover-image { width: 100%; height: 220px; border-radius: 12px; overflow: hidden; }
 .sb-cover-image .img-ph { border-radius: 12px; }
 .sb-cover-title {
   font-family: 'Fredoka', sans-serif;
   font-weight: 700;
-  font-size: 28px;
+  font-size: 30px;
   line-height: 1.25;
   color: #1B2A4A;
   margin: 0;
 }
-.sb-cover-link {
-  background: none;
-  border: none;
-  border-bottom: 2px solid #D85A30;
-  color: #D85A30;
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 700;
-  font-size: 14px;
-  padding: 0 0 2px;
-  cursor: pointer;
-}
 
 /* ── Characters page ── */
 .sb-characters-page { gap: 12px; }
-.sb-characters-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 4px; }
+.sb-characters-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 4px; }
 .sb-character-card {
   display: flex;
   align-items: center;
@@ -610,7 +551,7 @@ const CSS = `
 
 /* ── Chapter intro: full-page image + title, nothing else ── */
 .sb-page--intro { flex: 1; align-items: center; justify-content: center; text-align: center; gap: 8px; }
-.sb-intro-image { width: 100%; height: 340px; border-radius: 12px; overflow: hidden; margin-bottom: 10px; }
+.sb-intro-image { width: 100%; height: 230px; border-radius: 12px; overflow: hidden; margin-bottom: 10px; }
 .sb-intro-image .img-ph { border-radius: 12px; }
 .sb-page--intro .sb-chapter-title { text-align: center; }
 
@@ -753,7 +694,7 @@ const CSS = `
 }
 .sb-nav-btn--primary { background: #D85A30; border-color: #D85A30; color: #fff; }
 .sb-nav-btn:disabled { opacity: 0.35; cursor: default; }
-.sb-nav-dots { display: flex; gap: 4px; flex-wrap: wrap; justify-content: center; max-width: 90px; }
+.sb-nav-dots { display: flex; gap: 5px; flex-wrap: wrap; justify-content: center; }
 .sb-nav-dot { width: 6px; height: 6px; border-radius: 999px; background: #E4E0D4; }
 .sb-nav-dot.is-active { width: 14px; background: #D85A30; }
 
