@@ -1,10 +1,11 @@
 import { useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ImagePlaceholder from "./slides/ImagePlaceholder";
-import { CHAPTERS, CHARACTERS, COVER_IMAGE_NOTE, STORYBOOK_TITLE, STORYBOOK_SUBTITLE } from "./storybookData";
+import { CHAPTERS, CHARACTERS, COVER_IMAGE_NOTE, STORYBOOK_TITLE } from "./storybookData";
 
-const PAGE_TYPES = ["story", "questions", "truefalse", "build0", "build1", "build2", "mysentence"];
+const PAGE_TYPES = ["intro", "story", "questions", "truefalse", "build0", "build1", "build2", "mysentence"];
 const PAGE_LABELS = {
+  intro: "Chapter",
   story: "Story",
   questions: "Questions",
   truefalse: "True or False",
@@ -23,12 +24,21 @@ function shuffle(arr) {
   return a;
 }
 
+function ChapterIntroPage({ chapter }) {
+  return (
+    <div className="sb-page sb-page--intro">
+      <div className="sb-intro-image">
+        <ImagePlaceholder note={chapter.imageNote} compact />
+      </div>
+      <span className="sb-chapter-num">Chapter {chapter.number}</span>
+      <h2 className="sb-chapter-title">{chapter.title}</h2>
+    </div>
+  );
+}
+
 function StoryPage({ chapter }) {
   return (
     <div className="sb-page sb-page--story">
-      <div className="sb-lead-image">
-        <ImagePlaceholder note={chapter.imageNote} compact />
-      </div>
       <span className="sb-chapter-num">Chapter {chapter.number}</span>
       <h2 className="sb-chapter-title">{chapter.title}</h2>
       <p className="sb-story-text">{chapter.story}</p>
@@ -183,8 +193,19 @@ function MySentencePage({ chapter }) {
   );
 }
 
+function BookFrame({ className = "", children }) {
+  return (
+    <div className="sb-book-frame">
+      <div className="sb-spine" aria-hidden="true" />
+      <div className={`sb-book ${className}`}>{children}</div>
+    </div>
+  );
+}
+
 function renderPage(pageType, chapter) {
   switch (pageType) {
+    case "intro":
+      return <ChapterIntroPage chapter={chapter} />;
     case "story":
       return <StoryPage chapter={chapter} />;
     case "questions":
@@ -206,7 +227,7 @@ function renderPage(pageType, chapter) {
 
 export default function StoryBook() {
   const navigate = useNavigate();
-  const [view, setView] = useState("cover"); // cover | toc | chapter
+  const [view, setView] = useState("cover"); // cover | characters | toc | chapter
   const [chapterIdx, setChapterIdx] = useState(0);
   const [pageIdx, setPageIdx] = useState(0);
 
@@ -255,42 +276,43 @@ export default function StoryBook() {
 
       <div className="sb-stage">
         {view === "cover" && (
-          <div className="sb-book sb-cover">
+          <BookFrame className="sb-cover">
             <div className="sb-cover-image">
               <ImagePlaceholder note={COVER_IMAGE_NOTE} compact />
             </div>
-            <span className="sb-cover-badge">A1 · Teens · Story Book</span>
             <h1 className="sb-cover-title">{STORYBOOK_TITLE}</h1>
-            <p className="sb-cover-subtitle">{STORYBOOK_SUBTITLE}</p>
-            <p className="sb-cover-blurb">
-              Follow Joshua, Paul, Mia, and Angel through ten short chapters of everyday school life. Each chapter
-              comes with questions, a true-or-false check, and a Build-a-Sentence game.
-            </p>
-            <div className="sb-characters">
-              <span className="sb-characters-heading">Meet the Characters</span>
-              <div className="sb-characters-grid">
-                {CHARACTERS.map((c) => (
-                  <div key={c.name} className="sb-character-card">
-                    <div className="sb-character-avatar">
-                      <ImagePlaceholder micro />
-                    </div>
-                    <div className="sb-character-info">
-                      <span className="sb-character-name">{c.name}</span>
-                      <span className="sb-character-role">{c.role}</span>
-                      <span className="sb-character-look">{c.look}</span>
-                    </div>
+            <button type="button" className="sb-cover-link" onClick={() => setView("characters")}>
+              Begin Reading →
+            </button>
+          </BookFrame>
+        )}
+
+        {view === "characters" && (
+          <BookFrame className="sb-characters-page">
+            <h2 className="sb-toc-heading">Meet the Characters</h2>
+            <p className="sb-page-hint">The same four friends appear all through the book.</p>
+            <div className="sb-characters-grid">
+              {CHARACTERS.map((c) => (
+                <div key={c.name} className="sb-character-card">
+                  <div className="sb-character-avatar">
+                    <ImagePlaceholder micro />
                   </div>
-                ))}
-              </div>
+                  <div className="sb-character-info">
+                    <span className="sb-character-name">{c.name}</span>
+                    <span className="sb-character-role">{c.role}</span>
+                    <span className="sb-character-look">{c.look}</span>
+                  </div>
+                </div>
+              ))}
             </div>
             <button type="button" className="sb-cta-btn" onClick={() => setView("toc")}>
-              Open Book →
+              Table of Contents →
             </button>
-          </div>
+          </BookFrame>
         )}
 
         {view === "toc" && (
-          <div className="sb-book sb-toc">
+          <BookFrame className="sb-toc">
             <h2 className="sb-toc-heading">Table of Contents</h2>
             <ol className="sb-toc-list">
               {CHAPTERS.map((c, i) => (
@@ -303,11 +325,11 @@ export default function StoryBook() {
                 </li>
               ))}
             </ol>
-          </div>
+          </BookFrame>
         )}
 
         {view === "chapter" && (
-          <div className="sb-book">
+          <BookFrame>
             <div className="sb-page-header">
               <span className="sb-page-header-label">{PAGE_LABELS[pageType]}</span>
               <span className="sb-page-header-counter">Chapter {chapter.number} of {CHAPTERS.length}</span>
@@ -334,7 +356,7 @@ export default function StoryBook() {
                 Next →
               </button>
             </div>
-          </div>
+          </BookFrame>
         )}
       </div>
     </div>
@@ -391,21 +413,66 @@ const CSS = `
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  padding: 32px 24px 60px;
+  padding: 36px 24px 60px;
 }
 
-/* Portrait book -- an actual book shape, not a wide slide */
-.sb-book {
+/* ── Book frame: spine + stacked-page depth so the portrait card actually
+   reads as a physical book, not just a tall rounded rectangle. ── */
+.sb-book-frame {
+  position: relative;
   width: 460px;
   max-width: 100%;
+  padding-left: 14px;
+}
+.sb-book-frame::before,
+.sb-book-frame::after {
+  content: "";
+  position: absolute;
+  top: 7px;
+  right: -7px;
+  bottom: -7px;
+  left: 21px;
+  border-radius: 3px 14px 14px 3px;
+  border: 2px solid #E4DCC8;
+}
+.sb-book-frame::before { background: #F1E9D4; top: 14px; right: -14px; bottom: -14px; z-index: 0; }
+.sb-book-frame::after { background: #F8F1DE; z-index: 1; }
+.sb-spine {
+  position: absolute;
+  left: 0;
+  top: 3px;
+  bottom: 3px;
+  width: 22px;
+  border-radius: 6px 0 0 6px;
+  background: linear-gradient(90deg, #101B31 0%, #22345C 45%, #17253F 100%);
+  box-shadow: inset -5px 0 10px rgba(0,0,0,0.4), inset 2px 0 0 rgba(255,255,255,0.06);
+  z-index: 3;
+}
+.sb-spine::after {
+  content: "";
+  position: absolute;
+  top: 10px;
+  bottom: 10px;
+  left: 4px;
+  right: 4px;
+  border-top: 1px solid rgba(255,255,255,0.15);
+  border-bottom: 1px solid rgba(255,255,255,0.15);
+}
+
+/* Portrait book page -- the actual content surface */
+.sb-book {
+  position: relative;
+  z-index: 2;
+  width: 100%;
   min-height: 680px;
   background: #FFFDF7;
-  border-radius: 18px;
+  border-radius: 3px 16px 16px 3px;
   border: 3px solid #1B2A4A;
-  box-shadow: 0 24px 60px rgba(0,0,0,0.2), inset 3px 0 0 rgba(27,42,74,0.06);
+  border-left: none;
+  box-shadow: 5px 0 12px rgba(27,42,74,0.15), 0 20px 50px rgba(0,0,0,0.22);
   display: flex;
   flex-direction: column;
-  padding: 30px 28px;
+  padding: 30px 26px;
   animation: sb-page-in 0.28s ease;
 }
 @keyframes sb-page-in {
@@ -413,57 +480,33 @@ const CSS = `
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* ── Cover ── */
-.sb-cover { align-items: center; text-align: center; gap: 12px; }
-.sb-cover-image { width: 100%; height: 190px; border-radius: 14px; overflow: hidden; margin-bottom: 4px; }
-.sb-cover-image .img-ph { border-radius: 14px; }
-.sb-cover-badge {
-  display: inline-block;
-  background: #FAECE7;
-  color: #D85A30;
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 700;
-  font-size: 11.5px;
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
-  padding: 5px 14px;
-  border-radius: 999px;
-}
+/* ── Cover: image + title, nothing else ── */
+.sb-cover { align-items: center; justify-content: center; text-align: center; gap: 18px; }
+.sb-cover-image { width: 100%; height: 300px; border-radius: 12px; overflow: hidden; }
+.sb-cover-image .img-ph { border-radius: 12px; }
 .sb-cover-title {
   font-family: 'Fredoka', sans-serif;
   font-weight: 700;
-  font-size: 25px;
-  line-height: 1.2;
+  font-size: 28px;
+  line-height: 1.25;
   color: #1B2A4A;
-  margin: 4px 0 0;
-}
-.sb-cover-subtitle {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 600;
-  font-size: 14.5px;
-  color: #D85A30;
   margin: 0;
 }
-.sb-cover-blurb {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 500;
-  font-size: 13.5px;
-  line-height: 1.55;
-  color: #5C6478;
-  margin: 4px 0 4px;
-}
-.sb-characters { width: 100%; margin: 6px 0 4px; }
-.sb-characters-heading {
-  display: block;
+.sb-cover-link {
+  background: none;
+  border: none;
+  border-bottom: 2px solid #D85A30;
+  color: #D85A30;
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;
-  font-size: 11px;
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
-  color: #94A0B8;
-  margin-bottom: 8px;
+  font-size: 14px;
+  padding: 0 0 2px;
+  cursor: pointer;
 }
-.sb-characters-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+
+/* ── Characters page ── */
+.sb-characters-page { gap: 12px; }
+.sb-characters-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 4px; }
 .sb-character-card {
   display: flex;
   align-items: center;
@@ -565,9 +608,13 @@ const CSS = `
 .sb-page-title-sub { font-family: 'Quicksand', sans-serif; font-weight: 600; font-size: 12px; color: #94A0B8; }
 .sb-page-hint { font-family: 'Quicksand', sans-serif; font-weight: 500; font-size: 13px; color: #7C8598; margin: -4px 0 4px; }
 
+/* ── Chapter intro: full-page image + title, nothing else ── */
+.sb-page--intro { flex: 1; align-items: center; justify-content: center; text-align: center; gap: 8px; }
+.sb-intro-image { width: 100%; height: 340px; border-radius: 12px; overflow: hidden; margin-bottom: 10px; }
+.sb-intro-image .img-ph { border-radius: 12px; }
+.sb-page--intro .sb-chapter-title { text-align: center; }
+
 /* ── Story ── */
-.sb-lead-image { width: 100%; height: 150px; border-radius: 12px; overflow: hidden; margin-bottom: 4px; }
-.sb-lead-image .img-ph { border-radius: 12px; }
 .sb-chapter-num {
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;
