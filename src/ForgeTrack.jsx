@@ -81,7 +81,7 @@ const CSS = `
 .ft-shell {
   width: 100%;
   min-height: 100vh;
-  background: radial-gradient(circle at 15% 0%, #867863 0%, #605952 45%, #58534D 100%);
+  background: radial-gradient(circle at 15% 0%, #FFF6E6 0%, #FBE7C6 50%, #F6D9AC 100%);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -100,8 +100,8 @@ const CSS = `
 .ft-back-link {
   font-family: 'Fredoka', sans-serif;
   font-weight: 700;
-  font-size: 13.5px;
-  color: #605952;
+  font-size: 14px;
+  color: #2E2617;
   background: #F2A65A;
   border: none;
   border-radius: 999px;
@@ -111,10 +111,10 @@ const CSS = `
 .ft-topbar-title {
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;
-  font-size: 12px;
+  font-size: 12.5px;
   letter-spacing: 1.5px;
   text-transform: uppercase;
-  color: #B8B0A0;
+  color: #B0A48C;
 }
 .ft-topbar-slot { width: 90px; }
 
@@ -127,7 +127,7 @@ const CSS = `
 
 .ft-missing {
   font-family: 'Quicksand', sans-serif;
-  color: #DCD4C0;
+  color: #8B7F68;
   text-align: center;
   margin-top: 60px;
 }
@@ -137,26 +137,26 @@ const CSS = `
 .ft-tag {
   font-family: 'Quicksand', sans-serif;
   font-weight: 600;
-  font-size: 12px;
-  color: #C9A876;
-  background: rgba(242,166,90,0.10);
-  border: 1px solid rgba(242,166,90,0.3);
+  font-size: 12.5px;
+  color: #C97A2E;
+  background: rgba(242,166,90,0.12);
+  border: 1px solid rgba(242,166,90,0.4);
   border-radius: 999px;
   padding: 4px 12px;
 }
-.ft-tag--level { color: #B8B0A0; background: #766E63; border-color: #8B7F6D; }
+.ft-tag--level { color: #8B7F68; background: #FBF1DF; border-color: #EDDFC3; }
 .ft-hero-title {
   font-family: 'Fredoka', sans-serif;
   font-weight: 700;
-  font-size: 38px;
-  color: #FFFDF7;
+  font-size: 40px;
+  color: #2E2617;
   margin: 0 0 10px;
 }
 .ft-hero-blurb {
   font-family: 'Quicksand', sans-serif;
   font-weight: 500;
-  font-size: 15px;
-  color: #DCD4C0;
+  font-size: 16px;
+  color: #6B5F49;
   margin: 0;
   max-width: 560px;
   line-height: 1.5;
@@ -172,19 +172,21 @@ const CSS = `
   display: flex;
   flex-direction: column;
   gap: 6px;
-  background: #6A635A;
-  border: 1px solid #8B7F6D;
+  background: #FFFFFF;
+  border: 1px solid #EAD9B8;
   border-radius: 14px;
   padding: 16px 16px 18px;
   min-height: 140px;
   text-align: left;
   font-family: inherit;
+  box-shadow: 0 10px 24px rgba(43,35,20,0.06);
 }
 
 .ft-lesson-tile--locked {
-  opacity: 0.45;
+  opacity: 0.5;
   align-items: flex-start;
   justify-content: center;
+  box-shadow: none;
 }
 .ft-lesson-tile--live {
   cursor: pointer;
@@ -198,34 +200,34 @@ const CSS = `
 .ft-lesson-num {
   font-family: 'Fredoka', sans-serif;
   font-weight: 700;
-  font-size: 13px;
-  color: #F2A65A;
+  font-size: 13.5px;
+  color: #C97A2E;
 }
 .ft-lesson-status {
   font-family: 'Quicksand', sans-serif;
   font-weight: 500;
-  font-size: 12.5px;
-  color: #B8B0A0;
+  font-size: 13px;
+  color: #B0A48C;
 }
 .ft-lesson-title {
   font-family: 'Fredoka', sans-serif;
   font-weight: 700;
-  font-size: 14.5px;
-  color: #FFFDF7;
+  font-size: 15px;
+  color: #2E2617;
   line-height: 1.25;
 }
 .ft-lesson-technique {
   font-family: 'Quicksand', sans-serif;
   font-weight: 500;
-  font-size: 11.5px;
-  color: #DCD4C0;
+  font-size: 12px;
+  color: #6B5F49;
 }
 .ft-lesson-cta {
   margin-top: auto;
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;
-  font-size: 12px;
-  color: #F2A65A;
+  font-size: 12.5px;
+  color: #C97A2E;
 }
 
 @media (max-width: 900px) {

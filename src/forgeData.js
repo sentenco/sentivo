@@ -11,26 +11,36 @@ export const WORDS = [
     word: "arrive",
     imageNote: "Someone arriving at work in the morning, walking in the door with a coffee.",
     starter: "In the morning, I arrive…",
+    meaning: "to get to a place",
+    example: "She arrives at the office at 9 a.m.",
   },
   {
     word: "review",
     imageNote: "Someone looking closely at a computer screen, reading through something.",
     starter: "First, I review…",
+    meaning: "to look at something carefully",
+    example: "I review my messages every morning.",
   },
   {
     word: "solve",
     imageNote: "Someone fixing a problem or debugging code, focused and thinking.",
     starter: "When something breaks, I solve…",
+    meaning: "to find the answer to a problem",
+    example: "She solved the bug in under an hour.",
   },
   {
     word: "develop",
     imageNote: "A small team working together around a laptop on a project.",
     starter: "With my team, I develop…",
+    meaning: "to build or create something over time",
+    example: "Our team develops a new feature every month.",
   },
   {
     word: "wrap up",
     imageNote: "Someone leaving work in the evening, a wall clock showing 5 o'clock.",
     starter: "At the end of the day, I wrap up…",
+    meaning: "to finish something",
+    example: "Let's wrap up the meeting in five minutes.",
   },
 ];
 
@@ -60,8 +70,7 @@ export default {
   },
 
   tapAndSay: {
-    sceneImageNote: "An engineer's full workday shown as one wide scene, with five distinct moments visible left to right: arriving at the office, reviewing a screen, solving a problem at a whiteboard, developing something with teammates, and wrapping up as they leave at a clock reading 5 o'clock.",
-    instruction: "Tap a moment → say the full sentence.",
+    instruction: "Tap a picture → say the full sentence.",
     escapeHatches: ["Describe it", "Near enough", "Buy time"],
   },
 
@@ -76,9 +85,9 @@ export default {
     modelFrame: "I like… because…",
   },
 
-  selfCheck: {
+  scorecard: {
     canDoLine: "I can describe my workday using: arrive, review, solve, develop, wrap up.",
-    scorecard: [
+    rows: [
       { label: "Range", max: 3 },
       { label: "Accuracy", max: 3 },
       { label: "Fluency", max: 6 },
@@ -90,10 +99,18 @@ export default {
 
   homework: {
     heading: "Grow your words before next class.",
-    items: [
-      { label: "Read your passage", detail: "Passage to be added." },
-      { label: "Next words", detail: "crowded · quiet · busy · friendly · tall" },
-      { label: "Record a voice note", detail: "3 minutes, describing your office and the people you work with." },
+    passage: [
+      "It's 9 a.m. and Maya ",
+      { word: "arrive", text: "arrives" },
+      " at the office with a coffee in hand. She sits down and ",
+      { word: "review", text: "reviews" },
+      " her messages from the night before. A few minutes later, a teammate calls — the app is crashing for users in Europe. Maya ",
+      { word: "solve", text: "solves" },
+      " the bug in under an hour and pushes a fix. In the afternoon, she and her team ",
+      { word: "develop", text: "develop" },
+      " a new feature for the mobile app. By 5 p.m., she ",
+      { word: "wrap up", text: "wraps up" },
+      " her tasks, saves her work, and heads home.",
     ],
   },
 };
