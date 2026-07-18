@@ -216,11 +216,15 @@ function renderPage(pageType, chapter) {
   }
 }
 
+const TOC_PAGE_SIZE = 5;
+
 export default function StoryBook() {
   const navigate = useNavigate();
   const [view, setView] = useState("cover"); // cover | characters | toc | chapter
   const [chapterIdx, setChapterIdx] = useState(0);
   const [pageIdx, setPageIdx] = useState(0);
+  const [tocPage, setTocPage] = useState(0);
+  const tocPageCount = Math.ceil(CHAPTERS.length / TOC_PAGE_SIZE);
 
   const chapter = CHAPTERS[chapterIdx];
   const pageType = PAGE_TYPES[pageIdx];
@@ -259,8 +263,10 @@ export default function StoryBook() {
         <button type="button" className="sb-back-link" onClick={() => navigate("/library")}>
           ← Library
         </button>
-        <span className="sb-topbar-title">{STORYBOOK_TITLE}</span>
-        <button type="button" className="sb-toc-link" onClick={() => setView("toc")}>
+        <button type="button" className="sb-topbar-title" onClick={() => setView("cover")}>
+          {STORYBOOK_TITLE}
+        </button>
+        <button type="button" className="sb-toc-link" onClick={() => { setTocPage(0); setView("toc"); }}>
           Contents
         </button>
       </header>
@@ -293,7 +299,7 @@ export default function StoryBook() {
                 </div>
               ))}
             </div>
-            <button type="button" className="sb-cta-btn" onClick={() => setView("toc")}>
+            <button type="button" className="sb-cta-btn" onClick={() => { setTocPage(0); setView("toc"); }}>
               Table of Contents →
             </button>
           </div>
@@ -303,16 +309,35 @@ export default function StoryBook() {
           <div className="sb-book sb-toc">
             <h2 className="sb-toc-heading">Table of Contents</h2>
             <ol className="sb-toc-list">
-              {CHAPTERS.map((c, i) => (
-                <li key={c.number} className="sb-toc-item">
-                  <button type="button" className="sb-toc-btn" onClick={() => openChapter(i)}>
-                    <span className="sb-toc-num">{c.number}</span>
-                    <span className="sb-toc-title">{c.title}</span>
-                    <span className="sb-toc-arrow">→</span>
-                  </button>
-                </li>
-              ))}
+              {CHAPTERS.slice(tocPage * TOC_PAGE_SIZE, tocPage * TOC_PAGE_SIZE + TOC_PAGE_SIZE).map((c) => {
+                const idx = c.number - 1;
+                return (
+                  <li key={c.number} className="sb-toc-item">
+                    <button type="button" className="sb-toc-btn" onClick={() => openChapter(idx)}>
+                      <span className="sb-toc-num">{c.number}</span>
+                      <span className="sb-toc-title">{c.title}</span>
+                      <span className="sb-toc-arrow">→</span>
+                    </button>
+                  </li>
+                );
+              })}
             </ol>
+            {tocPageCount > 1 && (
+              <div className="sb-toc-pager">
+                <button type="button" className="sb-nav-btn" onClick={() => setTocPage((p) => p - 1)} disabled={tocPage === 0}>
+                  ← Previous
+                </button>
+                <span className="sb-page-header-counter">Page {tocPage + 1} of {tocPageCount}</span>
+                <button
+                  type="button"
+                  className="sb-nav-btn sb-nav-btn--primary"
+                  onClick={() => setTocPage((p) => p + 1)}
+                  disabled={tocPage === tocPageCount - 1}
+                >
+                  Next →
+                </button>
+              </div>
+            )}
           </div>
         )}
 
@@ -386,6 +411,8 @@ const CSS = `
 }
 .sb-toc-link { background: #D85A30; color: #fff; border-color: #D85A30; }
 .sb-topbar-title {
+  background: none;
+  border: none;
   font-family: 'Fredoka', sans-serif;
   font-weight: 700;
   font-size: 15px;
@@ -393,7 +420,9 @@ const CSS = `
   text-align: center;
   flex: 1;
   padding: 0 16px;
+  cursor: pointer;
 }
+.sb-topbar-title:hover { text-decoration: underline; }
 
 .sb-stage {
   flex: 1;
@@ -404,11 +433,13 @@ const CSS = `
   padding: 36px 24px 60px;
 }
 
-/* Landscape book card */
+/* Landscape book card -- every page (cover, characters, contents, chapter
+   pages) shares this exact size so the book doesn't resize as you flip
+   through it. */
 .sb-book {
   width: 780px;
   max-width: 100%;
-  min-height: 460px;
+  height: 480px;
   background: #FFFDF7;
   border-radius: 18px;
   border: 3px solid #1B2A4A;
@@ -416,6 +447,7 @@ const CSS = `
   display: flex;
   flex-direction: column;
   padding: 30px 36px;
+  overflow-y: auto;
   animation: sb-page-in 0.28s ease;
 }
 @keyframes sb-page-in {
@@ -523,6 +555,13 @@ const CSS = `
   color: #1B2A4A;
 }
 .sb-toc-arrow { color: #D85A30; font-weight: 700; }
+.sb-toc-pager {
+  margin-top: auto;
+  padding-top: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 
 /* ── Chapter page chrome ── */
 .sb-page-header { display: flex; align-items: center; justify-content: space-between; }
@@ -543,7 +582,7 @@ const CSS = `
 .sb-progress-track { height: 3px; background: #EFEAE0; border-radius: 999px; margin: 9px 0 18px; overflow: hidden; }
 .sb-progress-fill { height: 100%; background: #D85A30; transition: width 0.2s ease; }
 
-.sb-page-body { flex: 1; min-height: 260px; }
+.sb-page-body { flex: 1; min-height: 260px; overflow-y: auto; }
 .sb-page { display: flex; flex-direction: column; gap: 10px; }
 .sb-page-title { font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 18px; color: #1B2A4A; margin: 0; }
 .sb-page-title-sub { font-family: 'Quicksand', sans-serif; font-weight: 600; font-size: 12px; color: #94A0B8; }
@@ -619,12 +658,13 @@ const CSS = `
   flex-wrap: wrap;
   gap: 7px;
   align-items: center;
+  justify-content: center;
   transition: border-color 0.15s ease, background 0.15s ease;
 }
 .sb-build-row.is-correct { border-color: #3B9A6B; border-style: solid; background: #E4F6EC; }
 .sb-build-row.is-wrong { border-color: #E0637A; border-style: solid; background: #FDEBEF; }
 .sb-build-empty { font-family: 'Quicksand', sans-serif; font-size: 12.5px; color: #C2C6D2; }
-.sb-word-tray { display: flex; flex-wrap: wrap; gap: 8px; min-height: 34px; }
+.sb-word-tray { display: flex; flex-wrap: wrap; gap: 8px; min-height: 34px; justify-content: center; }
 .sb-word-chip {
   background: #fff;
   border: 2px solid #EAE6DC;

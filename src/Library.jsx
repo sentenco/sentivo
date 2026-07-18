@@ -5,7 +5,7 @@ import AuthForm from "./AuthForm";
 import { supabase } from "./supabaseClient";
 import CurriculumRouter from "./CurriculumRouter";
 
-const CATEGORIES = ["All", "Grammar", "Vocabulary", "Reading", "Writing", "Listening", "Speaking"];
+const CATEGORIES = ["Grammar", "Vocabulary", "Reading", "Writing", "Listening", "Speaking"];
 
 const PER_PAGE = 8;
 
@@ -129,6 +129,13 @@ function BespokeIcon({ type, isPro, style }) {
             <rect x="67" y="36" width="10" height="17" rx="5" />
           </svg>
         );
+      case "book":
+        return (
+          <svg viewBox="0 0 100 70" className="bespoke-icon" stroke="currentColor" strokeWidth="2.2" fill="none" strokeLinecap="round" strokeLinejoin="round" style={style}>
+            <path d="M50 24c-9-5-21-5-30-2v28c9-3 21-3 30 2c9-5 21-5 30-2V22c-9-3-21-3-30 2z" />
+            <path d="M50 24v28" />
+          </svg>
+        );
       default:
         return null;
     }
@@ -174,6 +181,19 @@ function BespokeIcon({ type, isPro, style }) {
             <rect x="69" y="35" width="11" height="18" rx="5.5" />
             <path d="M80 38q9 4 9 12" strokeWidth="2" opacity="0.55" />
             <path d="M85 35q13 4 11 17" strokeWidth="2" opacity="0.3" />
+          </g>
+        </svg>
+      );
+    case "book":
+      return (
+        <svg viewBox="0 0 100 70" className="bespoke-icon" style={style}>
+          <ellipse cx="50" cy="54" rx="26" ry="6" className="bespoke-shadow" />
+          <g>
+            <path d="M50 20c-8-6-20-6-28-3v30c8-3 20-3 28 3z" className="bespoke-book-left" />
+            <path d="M50 20c8-6 20-6 28-3v30c-8-3-20-3-28 3z" className="bespoke-book-right" />
+            <path d="M50 20v30" className="bespoke-book-spine" />
+            <path d="M27 24l16 2.5M27 31l16 2.5M27 38l14 2" className="bespoke-book-lines" />
+            <path d="M73 24l-16 2.5M73 31l-16 2.5M73 38l-14 2" className="bespoke-book-lines" />
           </g>
         </svg>
       );
@@ -305,9 +325,6 @@ export default function Library() {
       <header className="nav">
         <div className="nav-left">
           <a href="/" className="brand">sent<span className="dot">i</span>vo<span className="lib-tag">Library</span></a>
-          <button type="button" className="storybook-pill" onClick={() => navigate("/library/storybook")}>
-            <span className="storybook-pill-icon" aria-hidden="true">📖</span> Story Book
-          </button>
         </div>
         <div className="nav-right">
           <div className="theme-toggle">
@@ -454,7 +471,7 @@ export default function Library() {
     <CoverTag
       key={c.id}
       {...coverProps}
-      className={`cover cover--${c.palette} ${c.tagline ? "cover--redesigned" : ""}`}
+      className={`cover cover--${c.palette} ${c.tagline ? "cover--redesigned" : ""} ${c.content_type === "story" ? "cover--story" : ""}`}
       style={{ width: `${gridConfig.width}px`, height: `${gridConfig.height}px` }}
     >
                 {c.access === "premium" && (
@@ -467,7 +484,22 @@ export default function Library() {
                   </span>
                 )}
 
-                {c.tagline ? (
+                {c.content_type === "story" ? (
+                  <div className="story-card-content">
+                    <span className="story-badge">📖 Story</span>
+                    <div className="story-icon-wrap">
+                      <BespokeIcon
+                        type={c.motif}
+                        isPro={isPro}
+                        style={{ width: gridConfig.width * 0.46, maxWidth: "none" }}
+                      />
+                    </div>
+                    <div className="story-card-text">
+                      <h3 className="story-card-title">{c.title}</h3>
+                      <span className="story-card-sub">{c.sub}</span>
+                    </div>
+                  </div>
+                ) : c.tagline ? (
                   <div
                     className="bespoke-content"
                     style={{ gap: Math.max(4, gridConfig.height * 0.028) }}
@@ -682,30 +714,6 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   margin-left: 8px;
 }
 .theme-pro .lib-tag { font-family: 'Inter', sans-serif; }
-.storybook-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  background: #FF7A59;
-  color: #fff;
-  border: none;
-  border-radius: 999px;
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 700;
-  font-size: 12.5px;
-  padding: 7px 14px;
-  cursor: pointer;
-  box-shadow: 0 2px 0 #C2452F;
-}
-.storybook-pill:active { transform: translateY(1px); box-shadow: 0 1px 0 #C2452F; }
-.storybook-pill-icon { font-size: 13px; }
-.theme-pro .storybook-pill {
-  background: #1B2A4A;
-  border-radius: 3px;
-  box-shadow: none;
-  font-family: 'Inter', sans-serif;
-  letter-spacing: 0.02em;
-}
 
 .nav-right { display: flex; align-items: center; gap: 12px; position: relative; margin-left: auto; }
 .theme-toggle { display: flex; gap: 4px; background: rgba(255,255,255,0.6); border-radius: 999px; padding: 4px; }
@@ -952,6 +960,67 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   border: 1px solid #DEDAD0;
 }
 
+/* Story cards: a distinct "book" thumbnail, not a tool-deck card */
+.cover--story { background: linear-gradient(160deg, #FFF6E9 0%, #FFDBB0 100%); }
+.cover--story::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 7px;
+  background: linear-gradient(180deg, #D85A30, #A8431F);
+  box-shadow: 2px 0 3px rgba(0,0,0,0.15);
+}
+.theme-pro .cover--story { background: #fff !important; border: 1px solid #DEDAD0; border-left: 4px solid #D85A30; }
+.theme-pro .cover--story::before { display: none; }
+
+.story-card-content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding-left: 6px;
+}
+.story-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(255,255,255,0.85);
+  font-family: 'Quicksand', sans-serif;
+  font-size: 8.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 3px 7px;
+  border-radius: 999px;
+  color: #8A3A1F;
+}
+.theme-pro .story-badge { font-family: 'Inter', sans-serif; border-radius: 3px; background: #F0EBDD; color: #8A6A3A; }
+.story-icon-wrap { flex: 1; width: 100%; display: flex; align-items: center; justify-content: center; min-height: 0; }
+.story-card-text { text-align: center; }
+.story-card-title {
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 700;
+  font-size: clamp(13px, 1.8vw, 18px);
+  line-height: 1.2;
+  color: #1B2A4A;
+  margin: 0;
+}
+.theme-pro .story-card-title { font-family: 'Source Serif 4', serif; }
+.story-card-sub {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 600;
+  font-size: 9.5px;
+  color: #8A6A5A;
+  opacity: 0.8;
+}
+
 .bespoke-content {
   width: 100%;
   height: 100%;
@@ -1003,6 +1072,10 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .bespoke-bars rect { fill: #C2452F; }
 .bespoke-headphones path, .bespoke-headphones rect { stroke: #0E6F52; }
 .bespoke-headphones rect { fill: #0E6F52; }
+.bespoke-book-left { fill: #D85A30; }
+.bespoke-book-right { fill: #E8734F; }
+.bespoke-book-spine { stroke: #8A3A1F; stroke-width: 2; fill: none; }
+.bespoke-book-lines { stroke: #FFFFFF; stroke-width: 1.4; stroke-linecap: round; opacity: 0.55; fill: none; }
 
 .pagination { display: flex; align-items: center; justify-content: center; gap: 18px; flex-shrink: 0; }
 .pagination button {
