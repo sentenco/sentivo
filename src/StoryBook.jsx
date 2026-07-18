@@ -437,9 +437,9 @@ const CSS = `
    pages) shares this exact size so the book doesn't resize as you flip
    through it. */
 .sb-book {
-  width: 780px;
+  width: 860px;
   max-width: 100%;
-  height: 480px;
+  height: 660px;
   background: #FFFDF7;
   border-radius: 18px;
   border: 3px solid #1B2A4A;
@@ -466,7 +466,7 @@ const CSS = `
   transition: transform 0.12s ease, box-shadow 0.12s ease;
 }
 .sb-cover:hover { transform: translateY(-2px); box-shadow: 0 26px 56px rgba(0,0,0,0.24); }
-.sb-cover-image { width: 100%; height: 220px; border-radius: 12px; overflow: hidden; }
+.sb-cover-image { width: 100%; height: 300px; border-radius: 12px; overflow: hidden; }
 .sb-cover-image .img-ph { border-radius: 12px; }
 .sb-cover-title {
   font-family: 'Fredoka', sans-serif;
@@ -582,7 +582,7 @@ const CSS = `
 .sb-progress-track { height: 3px; background: #EFEAE0; border-radius: 999px; margin: 9px 0 18px; overflow: hidden; }
 .sb-progress-fill { height: 100%; background: #D85A30; transition: width 0.2s ease; }
 
-.sb-page-body { flex: 1; min-height: 260px; overflow-y: auto; }
+.sb-page-body { flex: 1; min-height: 420px; overflow-y: auto; }
 .sb-page { display: flex; flex-direction: column; gap: 10px; }
 .sb-page-title { font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 18px; color: #1B2A4A; margin: 0; }
 .sb-page-title-sub { font-family: 'Quicksand', sans-serif; font-weight: 600; font-size: 12px; color: #94A0B8; }
@@ -590,7 +590,7 @@ const CSS = `
 
 /* ── Chapter intro: full-page image + title, nothing else ── */
 .sb-page--intro { flex: 1; align-items: center; justify-content: center; text-align: center; gap: 8px; }
-.sb-intro-image { width: 100%; height: 230px; border-radius: 12px; overflow: hidden; margin-bottom: 10px; }
+.sb-intro-image { width: 100%; height: 300px; border-radius: 12px; overflow: hidden; margin-bottom: 10px; }
 .sb-intro-image .img-ph { border-radius: 12px; }
 .sb-page--intro .sb-chapter-title { text-align: center; }
 
