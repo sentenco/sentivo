@@ -6,6 +6,7 @@ import { supabase } from "./supabaseClient";
 import CurriculumRouter from "./CurriculumRouter";
 import ImagePlaceholder from "./slides/ImagePlaceholder";
 import storybookCoverImg from "./assets/storybook/cover.jpeg";
+import storybook2CoverImg from "./assets/storybook2/cover.png";
 
 const CATEGORIES = ["Reading", "Grammar", "Vocabulary", "Writing", "Listening", "Speaking"];
 
@@ -15,6 +16,7 @@ const CATEGORIES = ["Reading", "Grammar", "Vocabulary", "Writing", "Listening", 
 // to an ImagePlaceholder in the card.
 const STORY_COVERS = {
   storybook: storybookCoverImg,
+  "storybook-2": storybook2CoverImg,
 };
 
 const PER_PAGE = 8;

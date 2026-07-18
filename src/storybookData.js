@@ -377,4 +377,5 @@ export default {
   coverImage: COVER_IMAGE,
   coverImageNote: COVER_IMAGE_NOTE,
   chapters: CHAPTERS,
+  chapterImageAspect: "1 / 1",
 };

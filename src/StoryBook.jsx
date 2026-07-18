@@ -24,10 +24,10 @@ function shuffle(arr) {
   return a;
 }
 
-function ChapterIntroPage({ chapter }) {
+function ChapterIntroPage({ chapter, imageAspect }) {
   return (
     <div className="sb-page sb-page--intro">
-      <div className="sb-intro-image">
+      <div className="sb-intro-image" style={imageAspect ? { aspectRatio: imageAspect } : undefined}>
         {chapter.image ? (
           <img src={chapter.image} alt={chapter.title} />
         ) : (
@@ -197,10 +197,10 @@ function MySentencePage({ chapter }) {
   );
 }
 
-function renderPage(pageType, chapter) {
+function renderPage(pageType, chapter, imageAspect) {
   switch (pageType) {
     case "intro":
-      return <ChapterIntroPage chapter={chapter} />;
+      return <ChapterIntroPage chapter={chapter} imageAspect={imageAspect} />;
     case "story":
       return <StoryPage chapter={chapter} />;
     case "questions":
@@ -324,7 +324,7 @@ export default function StoryBook({ book = defaultBook }) {
               />
             </div>
             <div className="sb-page-body" key={`${chapterIdx}-${pageIdx}`}>
-              {renderPage(pageType, chapter)}
+              {renderPage(pageType, chapter, book.chapterImageAspect)}
             </div>
             <div className="sb-nav-row">
               <button type="button" className="sb-nav-btn" onClick={goPrev} disabled={isFirstPage}>
@@ -543,7 +543,7 @@ const CSS = `
 /* ── Chapter intro: full-page image + title, nothing else. Container is
    square to match the source art's native 1:1 ratio -- nothing cropped. ── */
 .sb-page--intro { flex: 1; align-items: center; justify-content: center; text-align: center; gap: 8px; }
-.sb-intro-image { width: 365px; height: 365px; max-width: 100%; border-radius: 12px; overflow: hidden; margin: 0 auto 8px; }
+.sb-intro-image { height: 365px; width: auto; max-width: 100%; aspect-ratio: 1 / 1; border-radius: 12px; overflow: hidden; margin: 0 auto 8px; }
 .sb-intro-image .img-ph { border-radius: 12px; }
 .sb-intro-image img { width: 100%; height: 100%; object-fit: contain; display: block; }
 .sb-page--intro .sb-chapter-title { text-align: center; }
