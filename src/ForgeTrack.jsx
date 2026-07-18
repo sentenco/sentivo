@@ -114,7 +114,7 @@ const CSS = `
   font-size: 12px;
   letter-spacing: 1.5px;
   text-transform: uppercase;
-  color: #9C9484;
+  color: #B8B0A0;
 }
 .ft-topbar-slot { width: 90px; }
 
@@ -127,7 +127,7 @@ const CSS = `
 
 .ft-missing {
   font-family: 'Quicksand', sans-serif;
-  color: #C4BCA8;
+  color: #DCD4C0;
   text-align: center;
   margin-top: 60px;
 }
@@ -144,19 +144,19 @@ const CSS = `
   border-radius: 999px;
   padding: 4px 12px;
 }
-.ft-tag--level { color: #9C9484; background: #766E63; border-color: #8B7F6D; }
+.ft-tag--level { color: #B8B0A0; background: #766E63; border-color: #8B7F6D; }
 .ft-hero-title {
   font-family: 'Fredoka', sans-serif;
   font-weight: 700;
   font-size: 38px;
-  color: #F4EFE6;
+  color: #FFFDF7;
   margin: 0 0 10px;
 }
 .ft-hero-blurb {
   font-family: 'Quicksand', sans-serif;
   font-weight: 500;
   font-size: 15px;
-  color: #C4BCA8;
+  color: #DCD4C0;
   margin: 0;
   max-width: 560px;
   line-height: 1.5;
@@ -205,20 +205,20 @@ const CSS = `
   font-family: 'Quicksand', sans-serif;
   font-weight: 500;
   font-size: 12.5px;
-  color: #9C9484;
+  color: #B8B0A0;
 }
 .ft-lesson-title {
   font-family: 'Fredoka', sans-serif;
   font-weight: 700;
   font-size: 14.5px;
-  color: #F4EFE6;
+  color: #FFFDF7;
   line-height: 1.25;
 }
 .ft-lesson-technique {
   font-family: 'Quicksand', sans-serif;
   font-weight: 500;
   font-size: 11.5px;
-  color: #C4BCA8;
+  color: #DCD4C0;
 }
 .ft-lesson-cta {
   margin-top: auto;

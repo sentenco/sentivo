@@ -375,7 +375,7 @@ const CSS = `
   font-family: 'Fredoka', sans-serif;
   font-weight: 700;
   font-size: 15px;
-  color: #F4EFE6;
+  color: #FFFDF7;
   text-align: center;
   flex: 1;
 }
@@ -383,7 +383,7 @@ const CSS = `
 
 .fg-missing {
   font-family: 'Quicksand', sans-serif;
-  color: #C4BCA8;
+  color: #DCD4C0;
   text-align: center;
   margin-top: 60px;
 }
@@ -438,7 +438,7 @@ const CSS = `
   border-radius: 999px;
   font-size: 10.5px;
 }
-.fg-strip-label { margin-left: auto; color: #9C9484; }
+.fg-strip-label { margin-left: auto; color: #B8B0A0; }
 
 .fg-deck-body { flex: 1; min-height: 0; overflow-y: auto; }
 .fg-slide { display: flex; flex-direction: column; gap: 11px; height: 100%; }
@@ -446,10 +446,10 @@ const CSS = `
   font-family: 'Fredoka', sans-serif;
   font-weight: 700;
   font-size: 26px;
-  color: #F4EFE6;
+  color: #FFFDF7;
   margin: 0;
 }
-.fg-optional { font-family: 'Quicksand', sans-serif; font-weight: 500; font-size: 15px; color: #9C9484; }
+.fg-optional { font-family: 'Quicksand', sans-serif; font-weight: 500; font-size: 15px; color: #B8B0A0; }
 
 /* ── Cover ── */
 .fg-slide--cover {
@@ -470,14 +470,14 @@ const CSS = `
   font-family: 'Fredoka', sans-serif;
   font-weight: 700;
   font-size: 44px;
-  color: #F4EFE6;
+  color: #FFFDF7;
   margin: 0;
 }
 .fg-cover-subtitle {
   font-family: 'Quicksand', sans-serif;
   font-weight: 500;
   font-size: 16px;
-  color: #C4BCA8;
+  color: #DCD4C0;
   margin: 0;
 }
 .fg-cover-technique {
@@ -508,9 +508,9 @@ const CSS = `
   font-family: 'Quicksand', sans-serif;
   font-weight: 500;
   font-size: 18px;
-  color: #E8E3D8;
+  color: #FCF7EC;
 }
-.fg-timer { font-family: 'Quicksand', sans-serif; font-size: 13px; color: #9C9484; margin-top: auto; }
+.fg-timer { font-family: 'Quicksand', sans-serif; font-size: 13px; color: #B8B0A0; margin-top: auto; }
 
 /* ── Word Load ── */
 .fg-wordrows { display: flex; flex-direction: column; gap: 6px; }
@@ -535,7 +535,7 @@ const CSS = `
   font-family: 'Quicksand', sans-serif;
   font-weight: 500;
   font-size: 14px;
-  color: #DCD5C4;
+  color: #F0E9D8;
 }
 
 /* ── Spotlight ── */
@@ -554,7 +554,7 @@ const CSS = `
   font-weight: 500;
   font-size: 16px;
   font-style: italic;
-  color: #E8E3D8;
+  color: #FCF7EC;
 }
 
 /* ── Tap & Say ── */
@@ -565,7 +565,7 @@ const CSS = `
   font-family: 'Quicksand', sans-serif;
   font-weight: 600;
   font-size: 13px;
-  color: #E8E3D8;
+  color: #FCF7EC;
   background: #766E63;
   border: 1.5px solid #8B7F6D;
   border-radius: 999px;
@@ -586,7 +586,7 @@ const CSS = `
   font-family: 'Quicksand', sans-serif;
   font-weight: 500;
   font-size: 11.5px;
-  color: #9C9484;
+  color: #B8B0A0;
   background: #766E63;
   padding: 4px 10px;
   border-radius: 999px;
@@ -597,7 +597,7 @@ const CSS = `
   font-family: 'Fredoka', sans-serif;
   font-weight: 700;
   font-size: 19px;
-  color: #F4EFE6;
+  color: #FFFDF7;
   margin: 0;
 }
 .fg-guiderail { margin: 0; padding: 0 0 0 20px; display: flex; flex-direction: column; gap: 8px; }
@@ -605,7 +605,7 @@ const CSS = `
   font-family: 'Quicksand', sans-serif;
   font-weight: 500;
   font-size: 15px;
-  color: #DCD5C4;
+  color: #F0E9D8;
 }
 .fg-model-frame {
   font-family: 'Quicksand', sans-serif;
@@ -622,7 +622,7 @@ const CSS = `
   font-family: 'Quicksand', sans-serif;
   font-weight: 600;
   font-size: 12px;
-  color: #9C9484;
+  color: #B8B0A0;
   background: #6A635A;
   border: 1px solid #8B7F6D;
   border-radius: 999px;
@@ -633,7 +633,7 @@ const CSS = `
   width: 260px;
   font-family: 'Quicksand', sans-serif;
   font-size: 12.5px;
-  color: #C4BCA8;
+  color: #DCD4C0;
   background: #766E63;
   border-left: 3px solid #F2A65A;
   border-radius: 6px;
@@ -647,7 +647,7 @@ const CSS = `
   font-weight: 500;
   font-style: italic;
   font-size: 16px;
-  color: #E8E3D8;
+  color: #FCF7EC;
   margin: 0;
 }
 .fg-scorecard { display: flex; flex-direction: column; gap: 5px; }
@@ -664,7 +664,7 @@ const CSS = `
   font-family: 'Quicksand', sans-serif;
   font-weight: 600;
   font-size: 13.5px;
-  color: #DCD5C4;
+  color: #F0E9D8;
   flex: 1;
 }
 .fg-score-input {
@@ -672,7 +672,7 @@ const CSS = `
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;
   font-size: 14px;
-  color: #F4EFE6;
+  color: #FFFDF7;
   background: #605952;
   border: 1px solid #8B7F6D;
   border-radius: 6px;
@@ -685,7 +685,7 @@ const CSS = `
   font-size: 16px;
   color: #F2A65A;
 }
-.fg-score-max { font-family: 'Quicksand', sans-serif; font-size: 12.5px; color: #9C9484; }
+.fg-score-max { font-family: 'Quicksand', sans-serif; font-size: 12.5px; color: #B8B0A0; }
 .fg-score-tag {
   align-self: flex-start;
   font-family: 'Quicksand', sans-serif;
@@ -693,7 +693,7 @@ const CSS = `
   font-size: 11px;
   letter-spacing: 0.4px;
   text-transform: uppercase;
-  color: #9C9484;
+  color: #B8B0A0;
   background: #766E63;
   padding: 3px 10px;
   border-radius: 999px;
@@ -719,7 +719,7 @@ const CSS = `
   font-family: 'Quicksand', sans-serif;
   font-weight: 500;
   font-size: 13.5px;
-  color: #DCD5C4;
+  color: #F0E9D8;
 }
 
 /* ── Nav row ── */
@@ -728,7 +728,7 @@ const CSS = `
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;
   font-size: 13px;
-  color: #E8E3D8;
+  color: #FCF7EC;
   background: #766E63;
   border: 1px solid #8B7F6D;
   border-radius: 999px;
