@@ -81,7 +81,7 @@ const CSS = `
 .ft-shell {
   width: 100%;
   min-height: 100vh;
-  background: radial-gradient(circle at 15% 0%, #6C5E49 0%, #463F38 45%, #3E3933 100%);
+  background: radial-gradient(circle at 15% 0%, #867863 0%, #605952 45%, #58534D 100%);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -101,7 +101,7 @@ const CSS = `
   font-family: 'Fredoka', sans-serif;
   font-weight: 700;
   font-size: 13.5px;
-  color: #463F38;
+  color: #605952;
   background: #F2A65A;
   border: none;
   border-radius: 999px;
@@ -144,7 +144,7 @@ const CSS = `
   border-radius: 999px;
   padding: 4px 12px;
 }
-.ft-tag--level { color: #9C9484; background: #5C5449; border-color: #716553; }
+.ft-tag--level { color: #9C9484; background: #766E63; border-color: #8B7F6D; }
 .ft-hero-title {
   font-family: 'Fredoka', sans-serif;
   font-weight: 700;
@@ -172,8 +172,8 @@ const CSS = `
   display: flex;
   flex-direction: column;
   gap: 6px;
-  background: #504940;
-  border: 1px solid #716553;
+  background: #6A635A;
+  border: 1px solid #8B7F6D;
   border-radius: 14px;
   padding: 16px 16px 18px;
   min-height: 140px;
