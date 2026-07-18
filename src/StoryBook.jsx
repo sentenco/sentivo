@@ -220,16 +220,12 @@ function renderPage(pageType, chapter) {
   }
 }
 
-const TOC_PAGE_SIZE = 5;
-
 export default function StoryBook({ book = defaultBook }) {
   const navigate = useNavigate();
   const [view, setView] = useState("cover"); // cover | toc | chapter
   const [chapterIdx, setChapterIdx] = useState(0);
   const [pageIdx, setPageIdx] = useState(0);
-  const [tocPage, setTocPage] = useState(0);
   const CHAPTERS = book.chapters;
-  const tocPageCount = Math.ceil(CHAPTERS.length / TOC_PAGE_SIZE);
 
   const chapter = CHAPTERS[chapterIdx];
   const pageType = PAGE_TYPES[pageIdx];
@@ -271,7 +267,7 @@ export default function StoryBook({ book = defaultBook }) {
         <button type="button" className="sb-topbar-title" onClick={() => setView("cover")}>
           {book.title}
         </button>
-        <button type="button" className="sb-toc-link" onClick={() => { setTocPage(0); setView("toc"); }}>
+        <button type="button" className="sb-toc-link" onClick={() => setView("toc")}>
           Contents
         </button>
       </header>
@@ -281,7 +277,7 @@ export default function StoryBook({ book = defaultBook }) {
           <button
             type="button"
             className="sb-cover-card"
-            onClick={() => { setTocPage(0); setView("toc"); }}
+            onClick={() => setView("toc")}
           >
             {book.coverImage ? (
               <img className="sb-cover-card-img" src={book.coverImage} alt={book.title} />
@@ -299,7 +295,7 @@ export default function StoryBook({ book = defaultBook }) {
           <div className="sb-book sb-toc">
             <h2 className="sb-toc-heading">Table of Contents</h2>
             <ol className="sb-toc-list">
-              {CHAPTERS.slice(tocPage * TOC_PAGE_SIZE, tocPage * TOC_PAGE_SIZE + TOC_PAGE_SIZE).map((c) => {
+              {CHAPTERS.map((c) => {
                 const idx = c.number - 1;
                 return (
                   <li key={c.number} className="sb-toc-item">
@@ -312,22 +308,6 @@ export default function StoryBook({ book = defaultBook }) {
                 );
               })}
             </ol>
-            {tocPageCount > 1 && (
-              <div className="sb-toc-pager">
-                <button type="button" className="sb-nav-btn" onClick={() => setTocPage((p) => p - 1)} disabled={tocPage === 0}>
-                  ← Previous
-                </button>
-                <span className="sb-page-header-counter">Page {tocPage + 1} of {tocPageCount}</span>
-                <button
-                  type="button"
-                  className="sb-nav-btn sb-nav-btn--primary"
-                  onClick={() => setTocPage((p) => p + 1)}
-                  disabled={tocPage === tocPageCount - 1}
-                >
-                  Next →
-                </button>
-              </div>
-            )}
           </div>
         )}
 
@@ -493,20 +473,20 @@ const CSS = `
 .sb-toc-heading {
   font-family: 'Fredoka', sans-serif;
   font-weight: 700;
-  font-size: 27px;
+  font-size: 22px;
   color: #1B2A4A;
-  margin: 0 0 16px;
+  margin: 0 0 10px;
 }
-.sb-toc-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 9px; }
+.sb-toc-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
 .sb-toc-btn {
   width: 100%;
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   background: #FAF7EF;
   border: none;
-  border-radius: 12px;
-  padding: 11px 14px;
+  border-radius: 10px;
+  padding: 8px 13px;
   cursor: pointer;
   text-align: left;
   transition: background 0.12s ease, transform 0.12s ease;
@@ -514,8 +494,8 @@ const CSS = `
 .sb-toc-btn:hover { background: #FAECE7; transform: translateX(2px); }
 .sb-toc-num {
   flex-shrink: 0;
-  width: 28px;
-  height: 28px;
+  width: 22px;
+  height: 22px;
   border-radius: 999px;
   background: #D85A30;
   color: #fff;
@@ -524,23 +504,16 @@ const CSS = `
   justify-content: center;
   font-family: 'Fredoka', sans-serif;
   font-weight: 700;
-  font-size: 13px;
+  font-size: 11.5px;
 }
 .sb-toc-title {
   flex: 1;
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;
-  font-size: 16px;
+  font-size: 14px;
   color: #1B2A4A;
 }
 .sb-toc-arrow { color: #D85A30; font-weight: 700; }
-.sb-toc-pager {
-  margin-top: auto;
-  padding-top: 14px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
 
 /* ── Chapter page chrome ── */
 .sb-page-header { display: flex; align-items: center; justify-content: space-between; }
