@@ -81,7 +81,7 @@ const CSS = `
 .ft-shell {
   width: 100%;
   min-height: 100vh;
-  background: radial-gradient(circle at 15% 0%, #2A2118 0%, #16171C 45%, #101114 100%);
+  background: radial-gradient(circle at 15% 0%, #52442F 0%, #2C251E 45%, #241F19 100%);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -101,7 +101,7 @@ const CSS = `
   font-family: 'Manrope', sans-serif;
   font-weight: 700;
   font-size: 13.5px;
-  color: #16171C;
+  color: #2C251E;
   background: #F2A65A;
   border: none;
   border-radius: 999px;
@@ -114,7 +114,7 @@ const CSS = `
   font-size: 12px;
   letter-spacing: 1.5px;
   text-transform: uppercase;
-  color: #7A7666;
+  color: #9C9484;
 }
 .ft-topbar-slot { width: 90px; }
 
@@ -127,7 +127,7 @@ const CSS = `
 
 .ft-missing {
   font-family: 'Inter', sans-serif;
-  color: #A8A296;
+  color: #C4BCA8;
   text-align: center;
   margin-top: 60px;
 }
@@ -144,7 +144,7 @@ const CSS = `
   border-radius: 999px;
   padding: 4px 12px;
 }
-.ft-tag--level { color: #7A7666; background: #22232A; border-color: #35322A; }
+.ft-tag--level { color: #9C9484; background: #423A2F; border-color: #574B39; }
 .ft-hero-title {
   font-family: 'Manrope', sans-serif;
   font-weight: 800;
@@ -156,7 +156,7 @@ const CSS = `
   font-family: 'Inter', sans-serif;
   font-weight: 500;
   font-size: 15px;
-  color: #A8A296;
+  color: #C4BCA8;
   margin: 0;
   max-width: 560px;
   line-height: 1.5;
@@ -172,8 +172,8 @@ const CSS = `
   display: flex;
   flex-direction: column;
   gap: 6px;
-  background: #1B1C22;
-  border: 1px solid #35322A;
+  background: #362F26;
+  border: 1px solid #574B39;
   border-radius: 14px;
   padding: 16px 16px 18px;
   min-height: 140px;
@@ -205,7 +205,7 @@ const CSS = `
   font-family: 'Inter', sans-serif;
   font-weight: 500;
   font-size: 12.5px;
-  color: #7A7666;
+  color: #9C9484;
 }
 .ft-lesson-title {
   font-family: 'Manrope', sans-serif;
@@ -218,7 +218,7 @@ const CSS = `
   font-family: 'Inter', sans-serif;
   font-weight: 500;
   font-size: 11.5px;
-  color: #A8A296;
+  color: #C4BCA8;
 }
 .ft-lesson-cta {
   margin-top: auto;
