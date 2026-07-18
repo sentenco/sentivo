@@ -4,9 +4,18 @@ import { useAuth } from "./AuthContext";
 import AuthForm from "./AuthForm";
 import { supabase } from "./supabaseClient";
 import CurriculumRouter from "./CurriculumRouter";
+import ImagePlaceholder from "./slides/ImagePlaceholder";
 import storybookCoverImg from "./assets/storybook/cover.jpeg";
 
 const CATEGORIES = ["Reading", "Grammar", "Vocabulary", "Writing", "Listening", "Speaking"];
+
+// Static story-cover lookup by tools.id -- stories are static content (like
+// storybookData.js), not stored in Supabase, so their cover art is looked up
+// locally here rather than via a DB column. Books without art yet fall back
+// to an ImagePlaceholder in the card.
+const STORY_COVERS = {
+  storybook: storybookCoverImg,
+};
 
 const PER_PAGE = 8;
 
@@ -492,7 +501,13 @@ export default function Library() {
 
                 {c.content_type === "story" ? (
                   <div className="story-card-content">
-                    <img className="story-card-cover-img" src={storybookCoverImg} alt={c.title} />
+                    {STORY_COVERS[c.id] ? (
+                      <img className="story-card-cover-img" src={STORY_COVERS[c.id]} alt={c.title} />
+                    ) : (
+                      <div className="story-card-cover-ph">
+                        <ImagePlaceholder note="Book cover image" compact />
+                      </div>
+                    )}
                     <span className="story-badge">📖 Story</span>
                     <div className="story-card-scrim" />
                     <div className="story-card-text">
@@ -969,6 +984,7 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
    title stamped over the bottom like a real book jacket. */
 .story-card-content { position: absolute; inset: 0; overflow: hidden; }
 .story-card-cover-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 20%; }
+.story-card-cover-ph { position: absolute; inset: 0; }
 .story-card-scrim {
   position: absolute;
   left: 0;

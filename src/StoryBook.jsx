@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ImagePlaceholder from "./slides/ImagePlaceholder";
-import { CHAPTERS, COVER_IMAGE, COVER_IMAGE_NOTE, STORYBOOK_TITLE } from "./storybookData";
+import defaultBook from "./storybookData";
 
 const PAGE_TYPES = ["intro", "story", "questions", "truefalse", "build0", "build1", "build2", "mysentence"];
 const PAGE_LABELS = {
@@ -222,12 +222,13 @@ function renderPage(pageType, chapter) {
 
 const TOC_PAGE_SIZE = 5;
 
-export default function StoryBook() {
+export default function StoryBook({ book = defaultBook }) {
   const navigate = useNavigate();
   const [view, setView] = useState("cover"); // cover | toc | chapter
   const [chapterIdx, setChapterIdx] = useState(0);
   const [pageIdx, setPageIdx] = useState(0);
   const [tocPage, setTocPage] = useState(0);
+  const CHAPTERS = book.chapters;
   const tocPageCount = Math.ceil(CHAPTERS.length / TOC_PAGE_SIZE);
 
   const chapter = CHAPTERS[chapterIdx];
@@ -268,7 +269,7 @@ export default function StoryBook() {
           ← Library
         </button>
         <button type="button" className="sb-topbar-title" onClick={() => setView("cover")}>
-          {STORYBOOK_TITLE}
+          {book.title}
         </button>
         <button type="button" className="sb-toc-link" onClick={() => { setTocPage(0); setView("toc"); }}>
           Contents
@@ -282,15 +283,15 @@ export default function StoryBook() {
             className="sb-cover-card"
             onClick={() => { setTocPage(0); setView("toc"); }}
           >
-            {COVER_IMAGE ? (
-              <img className="sb-cover-card-img" src={COVER_IMAGE} alt={STORYBOOK_TITLE} />
+            {book.coverImage ? (
+              <img className="sb-cover-card-img" src={book.coverImage} alt={book.title} />
             ) : (
               <div className="sb-cover-card-ph">
-                <ImagePlaceholder note={COVER_IMAGE_NOTE} />
+                <ImagePlaceholder note={book.coverImageNote} />
               </div>
             )}
             <div className="sb-cover-card-scrim" />
-            <h1 className="sb-cover-card-title">{STORYBOOK_TITLE}</h1>
+            <h1 className="sb-cover-card-title">{book.title}</h1>
           </button>
         )}
 

@@ -371,3 +371,10 @@ export const CHAPTERS = [
     mySentenceExample: "My friends make school fun.",
   },
 ];
+
+export default {
+  title: STORYBOOK_TITLE,
+  coverImage: COVER_IMAGE,
+  coverImageNote: COVER_IMAGE_NOTE,
+  chapters: CHAPTERS,
+};
