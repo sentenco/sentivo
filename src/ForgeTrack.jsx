@@ -1,6 +1,73 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { getTrack } from "./forgeTracks";
 
+const ICON_PROPS = { width: 22, height: 22, viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: 2, strokeLinecap: "round", strokeLinejoin: "round" };
+
+function TechniqueIcon({ technique }) {
+  switch (technique) {
+    case "Fill the Gap":
+      return (
+        <svg {...ICON_PROPS}>
+          <path d="M4 8h4" /><path d="M12 8h8" strokeDasharray="2 2.5" /><path d="M4 16h16" />
+        </svg>
+      );
+    case "Echoing":
+      return (
+        <svg {...ICON_PROPS}>
+          <path d="M4 5h13a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H10l-4 4v-4H4a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z" />
+          <path d="M8 10a4 4 0 0 1 8 0" opacity="0.5" />
+        </svg>
+      );
+    case "Question Chain":
+      return (
+        <svg {...ICON_PROPS}>
+          <circle cx="7" cy="8" r="3" /><circle cx="17" cy="16" r="3" />
+          <path d="M9.5 9.5 14.5 14.5" strokeDasharray="1 2.5" />
+        </svg>
+      );
+    default:
+      return (
+        <svg {...ICON_PROPS}>
+          <rect x="3" y="5" width="18" height="14" rx="2" />
+          <circle cx="8.5" cy="10" r="1.5" />
+          <path d="M21 15l-5-4-4 3-3-2-6 5" />
+        </svg>
+      );
+  }
+}
+
+function LockIcon() {
+  return (
+    <svg {...ICON_PROPS}>
+      <rect x="5" y="11" width="14" height="9" rx="2" />
+      <path d="M8 11V7a4 4 0 0 1 8 0v4" />
+    </svg>
+  );
+}
+
+function slideCount(lesson) {
+  if (lesson.format === "picture") return 7 + lesson.words.length;
+  return 10;
+}
+
+// FORGE lessons open as a standalone popup player, matching the curriculum's
+// chrome-less window.open pattern in LessonsGrid.jsx -- an independent
+// window, not embedded in the Library's tab/page flow.
+function openLesson(trackId, num) {
+  const screenW = window.screen.availWidth || 1600;
+  const screenH = window.screen.availHeight || 900;
+  const w = Math.min(1040, screenW - 40);
+  const h = Math.min(780, screenH - 80);
+  const left = Math.max(0, Math.floor((screenW - w) / 2));
+  const top = Math.max(0, Math.floor((screenH - h) / 2));
+
+  window.open(
+    `/library/forge/${trackId}/${num}`,
+    "sentivoForgePlayer",
+    `width=${w},height=${h},left=${left},top=${top},toolbar=no,location=no,menubar=no,status=no,scrollbars=yes,resizable=yes`
+  );
+}
+
 export default function ForgeTrack() {
   const { trackId } = useParams();
   const navigate = useNavigate();
@@ -50,8 +117,11 @@ export default function ForgeTrack() {
             if (!lesson) {
               return (
                 <div key={num} className="ft-lesson-tile ft-lesson-tile--locked">
-                  <span className="ft-lesson-num">L{num}</span>
-                  <span className="ft-lesson-status">Coming soon</span>
+                  <div className="ft-lesson-top">
+                    <span className="ft-lesson-badge ft-lesson-badge--locked">L{num}</span>
+                  </div>
+                  <div className="ft-lesson-icon ft-lesson-icon--locked"><LockIcon /></div>
+                  <p className="ft-lesson-title2 ft-lesson-title2--locked">Coming soon</p>
                 </div>
               );
             }
@@ -60,12 +130,19 @@ export default function ForgeTrack() {
                 type="button"
                 key={num}
                 className="ft-lesson-tile ft-lesson-tile--live"
-                onClick={() => navigate(`/library/forge/${track.id}/${num}`)}
+                onClick={() => openLesson(track.id, num)}
               >
-                <span className="ft-lesson-num">L{num}</span>
-                <span className="ft-lesson-title">{lesson.title}</span>
-                <span className="ft-lesson-technique">{lesson.technique}</span>
-                <span className="ft-lesson-cta">Start →</span>
+                <div className="ft-lesson-top">
+                  <span className="ft-lesson-badge">L{num}</span>
+                  <span className="ft-lesson-tagtext">{lesson.tag}</span>
+                </div>
+                <div className="ft-lesson-icon"><TechniqueIcon technique={lesson.technique} /></div>
+                <h3 className="ft-lesson-title2">{lesson.title}</h3>
+                <p className="ft-lesson-desc">{lesson.subtitle}</p>
+                <div className="ft-lesson-foot">
+                  <span className="ft-lesson-meta">{slideCount(lesson)} slides</span>
+                  <span className="ft-lesson-startbtn">Start →</span>
+                </div>
               </button>
             );
           })}
@@ -171,63 +248,107 @@ const CSS = `
 .ft-lesson-tile {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 9px;
   background: #FFFFFF;
   border: 1px solid #EAD9B8;
   border-radius: 14px;
-  padding: 16px 16px 18px;
-  min-height: 140px;
+  padding: 13px 13px 12px;
+  min-height: 210px;
   text-align: left;
   font-family: inherit;
   box-shadow: 0 10px 24px rgba(43,35,20,0.06);
 }
 
 .ft-lesson-tile--locked {
-  opacity: 0.5;
-  align-items: flex-start;
-  justify-content: center;
+  opacity: 0.55;
   box-shadow: none;
 }
 .ft-lesson-tile--live {
   cursor: pointer;
-  transition: transform 0.15s ease, border-color 0.15s ease;
+  transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
 }
 .ft-lesson-tile--live:hover {
   border-color: #F2A65A;
   transform: translateY(-2px);
+  box-shadow: 0 14px 30px rgba(43,35,20,0.1);
 }
 
-.ft-lesson-num {
+.ft-lesson-top { display: flex; align-items: center; justify-content: space-between; gap: 6px; }
+.ft-lesson-badge {
   font-family: 'Fredoka', sans-serif;
   font-weight: 700;
-  font-size: 13.5px;
+  font-size: 11.5px;
   color: #C97A2E;
+  background: rgba(242,166,90,0.16);
+  border-radius: 999px;
+  padding: 3px 9px;
 }
-.ft-lesson-status {
+.ft-lesson-badge--locked { color: #B0A48C; background: #FBF1DF; }
+.ft-lesson-tagtext {
   font-family: 'Quicksand', sans-serif;
-  font-weight: 500;
-  font-size: 13px;
+  font-weight: 600;
+  font-size: 9.5px;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
   color: #B0A48C;
 }
-.ft-lesson-title {
+
+.ft-lesson-icon {
+  width: 100%;
+  height: 46px;
+  background: #FBF1DF;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #C97A2E;
+}
+.ft-lesson-icon--locked { color: #C2B393; }
+
+.ft-lesson-title2 {
   font-family: 'Fredoka', sans-serif;
   font-weight: 700;
-  font-size: 15px;
+  font-size: 14px;
   color: #2E2617;
   line-height: 1.25;
+  margin: 0;
 }
-.ft-lesson-technique {
+.ft-lesson-title2--locked { color: #B0A48C; margin-top: auto; }
+.ft-lesson-desc {
   font-family: 'Quicksand', sans-serif;
   font-weight: 500;
-  font-size: 12px;
+  font-size: 11.5px;
   color: #6B5F49;
+  line-height: 1.35;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
-.ft-lesson-cta {
+
+.ft-lesson-foot {
   margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 8px;
+  border-top: 1px solid #F3E9D3;
+}
+.ft-lesson-meta {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 500;
+  font-size: 10.5px;
+  color: #8B7F68;
+}
+.ft-lesson-startbtn {
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;
-  font-size: 12.5px;
-  color: #C97A2E;
+  font-size: 11px;
+  color: #2E2617;
+  background: #F2A65A;
+  border-radius: 999px;
+  padding: 5px 11px;
 }
 
 @media (max-width: 900px) {

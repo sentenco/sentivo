@@ -6,7 +6,9 @@ import { getLesson } from "./forgeTracks";
 const SLIDE_LABELS = {
   cover: "Cover",
   warmup: "Warm-up",
+  homeworkcheck: "Homework Check",
   wordload: "Word Load",
+  howitworks: "How It Works",
   yourturn: "Your Turn",
   pushit: "Push It",
   scorecard: "Scorecard",
@@ -14,17 +16,22 @@ const SLIDE_LABELS = {
 };
 
 function buildSlideTypes(lesson) {
-  const pictureSlides = lesson.words.map((_, i) => `pic-${i}`);
-  return ["cover", "warmup", "wordload", ...pictureSlides, "yourturn", "pushit", "scorecard", "homework"];
+  if (lesson.format === "picture") {
+    const pictureSlides = lesson.words.map((_, i) => `pic-${i}`);
+    return ["cover", "warmup", "wordload", ...pictureSlides, "yourturn", "pushit", "scorecard", "homework"];
+  }
+  return ["cover", "warmup", "homeworkcheck", "wordload", "howitworks", "game", "yourturn", "pushit", "scorecard", "homework"];
 }
 
-function slideLabel(slideType) {
+function slideLabel(slideType, lesson) {
   if (slideType.startsWith("pic-")) return "Say the Picture";
+  if (slideType === "game") return lesson.gameLabel;
   return SLIDE_LABELS[slideType];
 }
 
-function showsPostit(slideType) {
-  return slideType === "yourturn" || slideType === "pushit";
+function showsPostit(slideType, format) {
+  if (format === "picture") return slideType === "yourturn" || slideType === "pushit";
+  return ["howitworks", "game", "yourturn", "pushit"].includes(slideType);
 }
 
 function TopStrip({ lesson, slideType }) {
@@ -37,7 +44,7 @@ function TopStrip({ lesson, slideType }) {
       <span>{lesson.technique}</span>
       <span className="fg-strip-dot">·</span>
       <span className="fg-strip-tag">{lesson.tag}</span>
-      <span className="fg-strip-label">{slideLabel(slideType)}</span>
+      <span className="fg-strip-label">{slideLabel(slideType, lesson)}</span>
     </div>
   );
 }
@@ -117,6 +124,110 @@ function WordLoadSlide({ lesson }) {
   );
 }
 
+function WordLoadListSlide({ lesson }) {
+  return (
+    <div className="fg-slide">
+      <h2 className="fg-heading">Word Load</h2>
+      <div className="fg-loadlist">
+        {lesson.words.map((w) => (
+          <div key={w.word} className="fg-loadrow">
+            {lesson.format === "gap" && (
+              <div className="fg-loadrow-img"><ImagePlaceholder note={w.imageNote} compact /></div>
+            )}
+            <div className="fg-loadrow-text">
+              <span className="fg-loadrow-word">{w.word}</span>
+              {lesson.format === "gap" && (
+                <span className="fg-loadrow-detail">“{w.frame}”</span>
+              )}
+              {lesson.format === "echo" && (
+                <span className="fg-loadrow-detail">Q: “{w.question}” → A: “{w.answer}”</span>
+              )}
+              {lesson.format === "chain" && (
+                <span className="fg-loadrow-detail">Follow-ups: {w.followups.join(" · ")} → “{w.example}”</span>
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function HomeworkCheckSlide({ lesson }) {
+  return (
+    <div className="fg-slide fg-slide--centered">
+      <h2 className="fg-heading">Words you grew at home.</h2>
+      <div className="fg-chips">
+        {lesson.words.map((w) => (
+          <span key={w.word} className="fg-chip">{w.word}</span>
+        ))}
+      </div>
+      <p className="fg-move-line">{lesson.homeworkCheck.line}</p>
+    </div>
+  );
+}
+
+function HowItWorksSlide({ lesson }) {
+  const hw = lesson.howItWorks;
+  return (
+    <div className="fg-slide fg-slide--centered">
+      <h2 className="fg-heading">How It Works</h2>
+      <p className="fg-move-line">{hw.line}</p>
+      {hw.demoImageNote && (
+        <div className="fg-picture-img"><ImagePlaceholder note={hw.demoImageNote} /></div>
+      )}
+      <p className="fg-howitworks-q">“{hw.demoQ}”</p>
+      {hw.demoFollowups && (
+        <p className="fg-howitworks-followups">(Think: {hw.demoFollowups.join(" · ")})</p>
+      )}
+      <span className="fg-howitworks-arrow">↓</span>
+      <p className="fg-howitworks-a">“{hw.demoA}”</p>
+    </div>
+  );
+}
+
+function GameSlide({ lesson }) {
+  const [idx, setIdx] = useState(0);
+  const word = lesson.words[idx];
+  const isFirst = idx === 0;
+  const isLast = idx === lesson.words.length - 1;
+
+  return (
+    <div className="fg-slide fg-slide--centered">
+      <h2 className="fg-heading">{lesson.gameLabel}</h2>
+      <p className="fg-move-line">{lesson.game.instruction}</p>
+
+      {lesson.format === "gap" && (
+        <>
+          <div className="fg-picture-img"><ImagePlaceholder note={word.imageNote} /></div>
+          <p className="fg-picture-starter">“{word.frame}”</p>
+        </>
+      )}
+      {lesson.format === "echo" && (
+        <p className="fg-howitworks-q">“{word.question}”</p>
+      )}
+      {lesson.format === "chain" && (
+        <>
+          <p className="fg-howitworks-q">“{word.question}”</p>
+          <p className="fg-howitworks-followups">(Think: {word.followups.join(" · ")})</p>
+        </>
+      )}
+
+      <div className="fg-game-stepper">
+        <button type="button" className="fg-game-btn" onClick={() => setIdx((i) => i - 1)} disabled={isFirst}>← Prev</button>
+        <span className="fg-game-count">{idx + 1} / {lesson.words.length}</span>
+        <button type="button" className="fg-game-btn" onClick={() => setIdx((i) => i + 1)} disabled={isLast}>Next →</button>
+      </div>
+
+      <div className="fg-hatches">
+        {lesson.game.escapeHatches.map((h) => (
+          <span key={h} className="fg-hatch">{h}</span>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function SayThePictureSlide({ word }) {
   return (
     <div className="fg-slide fg-slide--centered">
@@ -131,15 +242,26 @@ function SayThePictureSlide({ word }) {
 }
 
 function YourTurnSlide({ lesson }) {
+  const yt = lesson.yourTurn;
   return (
     <div className="fg-slide">
       <h2 className="fg-heading">Your Turn</h2>
-      <p className="fg-prompt">{lesson.yourTurn.prompt}</p>
-      <ol className="fg-guiderail">
-        {lesson.words.map((w) => (
-          <li key={w.word}>{w.starter}</li>
-        ))}
-      </ol>
+      <p className="fg-prompt">{yt.prompt}</p>
+      {yt.guiderail && (
+        <ol className="fg-guiderail">
+          {lesson.words.map((w) => (
+            <li key={w.word}>{w.starter || w.frame || w.example}</li>
+          ))}
+        </ol>
+      )}
+      {yt.note && <p className="fg-move-line">{yt.note}</p>}
+      {yt.escapeHatches && (
+        <div className="fg-hatches">
+          {yt.escapeHatches.map((h) => (
+            <span key={h} className="fg-hatch">{h}</span>
+          ))}
+        </div>
+      )}
     </div>
   );
 }
@@ -219,6 +341,9 @@ function ScorecardSlide({ lesson }) {
             <span className="fg-score-max">/ {lesson.scorecard.totalMax}</span>
           </div>
         </div>
+        {lesson.scorecard.compareLine && (
+          <p className="fg-candoline">{lesson.scorecard.compareLine}</p>
+        )}
         <button type="button" className="fg-download-btn" onClick={() => downloadScorecard(lesson, scores, total)}>
           ⬇ Download result
         </button>
@@ -227,7 +352,7 @@ function ScorecardSlide({ lesson }) {
   );
 }
 
-function HomeworkSlide({ lesson }) {
+function HomeworkPassageSlide({ lesson }) {
   const [zoomed, setZoomed] = useState(null);
   const zoomedWord = lesson.words.find((w) => w.word === zoomed);
   return (
@@ -250,6 +375,28 @@ function HomeworkSlide({ lesson }) {
   );
 }
 
+function HomeworkListSlide({ lesson }) {
+  return (
+    <div className="fg-slide">
+      <h2 className="fg-heading">{lesson.homework.heading}</h2>
+      <ol className="fg-homework-list">
+        {lesson.homework.items.map((item, i) => (
+          <li key={i}>
+            <span className="fg-homework-label">{item.label}</span>
+            <span className="fg-homework-detail">{item.detail}</span>
+          </li>
+        ))}
+      </ol>
+    </div>
+  );
+}
+
+function HomeworkSlide({ lesson }) {
+  return lesson.homework.passage
+    ? <HomeworkPassageSlide lesson={lesson} />
+    : <HomeworkListSlide lesson={lesson} />;
+}
+
 function renderSlide(slideType, lesson) {
   if (slideType.startsWith("pic-")) {
     const idx = Number(slideType.slice(4));
@@ -260,8 +407,16 @@ function renderSlide(slideType, lesson) {
       return <CoverSlide lesson={lesson} />;
     case "warmup":
       return <WarmupSlide lesson={lesson} />;
+    case "homeworkcheck":
+      return <HomeworkCheckSlide lesson={lesson} />;
     case "wordload":
-      return <WordLoadSlide lesson={lesson} />;
+      return lesson.format === "picture"
+        ? <WordLoadSlide lesson={lesson} />
+        : <WordLoadListSlide lesson={lesson} />;
+    case "howitworks":
+      return <HowItWorksSlide lesson={lesson} />;
+    case "game":
+      return <GameSlide lesson={lesson} />;
     case "yourturn":
       return <YourTurnSlide lesson={lesson} />;
     case "pushit":
@@ -301,7 +456,7 @@ export default function Forge() {
   const slideType = slideTypes[slideIdx];
   const isFirst = slideIdx === 0;
   const isLast = slideIdx === slideTypes.length - 1;
-  const withPostit = showsPostit(slideType);
+  const withPostit = showsPostit(slideType, lesson.format);
 
   return (
     <div className="fg-shell">
@@ -577,6 +732,31 @@ const CSS = `
 }
 .fg-wordtoken:hover { border-color: #F2A65A; transform: translateY(-2px); }
 
+.fg-loadlist { display: flex; flex-direction: column; gap: 8px; margin-top: 6px; }
+.fg-loadrow {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: #FBF1DF;
+  border-radius: 10px;
+  padding: 8px 14px;
+}
+.fg-loadrow-img { width: 52px; height: 40px; flex-shrink: 0; }
+.fg-loadrow-img .img-ph { border-radius: 6px; }
+.fg-loadrow-text { display: flex; flex-direction: column; gap: 2px; }
+.fg-loadrow-word {
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  color: #C97A2E;
+}
+.fg-loadrow-detail {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 500;
+  font-size: 13.5px;
+  color: #4A3F2C;
+}
+
 .fg-zoom-backdrop {
   position: fixed;
   inset: 0;
@@ -650,6 +830,61 @@ const CSS = `
   font-style: italic;
   color: #3A311F;
   margin: 0;
+}
+
+/* ── How It Works / Game ── */
+.fg-howitworks-q {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  color: #3A311F;
+  margin: 0;
+}
+.fg-howitworks-followups {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 500;
+  font-style: italic;
+  font-size: 13.5px;
+  color: #8B7F68;
+  margin: 0;
+}
+.fg-howitworks-arrow { font-size: 18px; color: #C2B393; }
+.fg-howitworks-a {
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  color: #C97A2E;
+  margin: 0;
+  max-width: 560px;
+}
+.fg-game-stepper { display: flex; align-items: center; gap: 14px; }
+.fg-game-btn {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  color: #3A311F;
+  background: #FBF1DF;
+  border: 1px solid #EAD9B8;
+  border-radius: 999px;
+  padding: 6px 14px;
+  cursor: pointer;
+}
+.fg-game-btn:disabled { opacity: 0.35; cursor: default; }
+.fg-game-count {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 600;
+  font-size: 12.5px;
+  color: #8B7F68;
+}
+.fg-hatches { display: flex; gap: 8px; }
+.fg-hatch {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  color: #8B7F68;
+  background: #FBF1DF;
+  padding: 4px 10px;
+  border-radius: 999px;
 }
 
 /* ── Your Turn / Push It ── */
@@ -783,6 +1018,27 @@ const CSS = `
   border-radius: 5px;
   padding: 1px 5px;
   cursor: pointer;
+}
+.fg-homework-list { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.fg-homework-list li {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  background: #FBF1DF;
+  border-radius: 10px;
+  padding: 10px 14px;
+}
+.fg-homework-label {
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  color: #C97A2E;
+}
+.fg-homework-detail {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 500;
+  font-size: 13.5px;
+  color: #4A3F2C;
 }
 
 /* ── Nav row ── */

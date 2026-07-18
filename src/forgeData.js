@@ -49,6 +49,7 @@ export default {
   code: "L1",
   title: "A Day at Work",
   technique: "Say the Picture",
+  format: "picture",
   tag: "Baseline",
   subtitle: "Talk about your day — morning to evening.",
   techniqueLine: "Say the Picture — look, then talk.",
@@ -65,6 +66,7 @@ export default {
 
   yourTurn: {
     prompt: "Walk me through your day — from arrive to wrap up. (3–4 sentences)",
+    guiderail: true,
   },
 
   pushIt: {
