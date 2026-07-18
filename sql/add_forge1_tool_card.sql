@@ -1,29 +1,32 @@
--- Adds the "FORGE L1: A Day at Work" card to the Library's Speaking
--- category. id "forge-1" links to the newly registered route
--- /library/forge-1. FORGE is a new, independent lesson type (one-to-one
--- adult speaking lessons) alongside the existing IGNITE curriculum --
--- it does not use the lessons/lesson_slides tables, so this row only
--- needs to exist for the thumbnail; the deck itself is static content
--- rendered by Forge.jsx (src/forgeData.js).
+-- Adds the "A Day at Work" FORGE track card to the Library's Speaking
+-- category. id "forge-1" links to /library/forge/forge-1 (the track
+-- overview listing Lessons 1-10), which then links into individual lessons
+-- at /library/forge/forge-1/:lessonNum.
 --
--- content_type "forge" + motif "forge" + palette "forge" trigger the
--- distinct dark "workshop" card style in Library.jsx, deliberately
--- different from every book-jacket/tool-deck card.
+-- A FORGE track is a 10-lesson speaking course tailored to one learner
+-- profile (occupation + interest) -- this is Track 1: a software engineer.
+-- Only Lesson 1 is authored so far; Lessons 2-10 render as "Coming soon"
+-- until src/forgeTracks.js is filled in.
+--
+-- content_type "forge-track" triggers the same full-bleed photo-cover
+-- thumbnail style as Story Book cards (src/Library.jsx), with a "Speaking"
+-- badge instead of "Story". No cover photo is wired in yet -- the card
+-- shows an ImagePlaceholder until one is added to FORGE_COVERS.
 
 insert into tools (
   id, title, sub, level, access, motif, palette, category, sort_order, content_type, tagline
 ) values (
   'forge-1',
-  'FORGE L1',
-  'Say the Picture',
+  'A Day at Work',
+  'Software Engineer · Tech',
   'A2',
   'free',
   'forge',
   'forge',
   'Speaking',
   1,
-  'forge',
-  'A Day at Work'
+  'forge-track',
+  null
 )
 on conflict (id) do update set
   title = excluded.title,

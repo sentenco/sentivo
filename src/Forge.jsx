@@ -1,7 +1,7 @@
-import { useMemo, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import ImagePlaceholder from "./slides/ImagePlaceholder";
-import defaultLesson from "./forgeData";
+import { getLesson } from "./forgeTracks";
 
 const SLIDE_TYPES = ["cover", "warmup", "wordload", "spotlight", "tapsay", "yourturn", "pushit", "selfcheck", "homework"];
 const SLIDE_LABELS = {
@@ -267,9 +267,28 @@ function renderSlide(slideType, lesson) {
   }
 }
 
-export default function Forge({ lesson = defaultLesson }) {
+export default function Forge() {
   const navigate = useNavigate();
+  const { trackId, lessonNum } = useParams();
   const [slideIdx, setSlideIdx] = useState(0);
+  const lesson = getLesson(trackId, Number(lessonNum));
+
+  if (!lesson) {
+    return (
+      <div className="fg-shell">
+        <style>{CSS}</style>
+        <header className="fg-topbar">
+          <button type="button" className="fg-back-link" onClick={() => navigate(`/library/forge/${trackId}`)}>
+            ← Lessons
+          </button>
+        </header>
+        <div className="fg-stage">
+          <p className="fg-missing">This lesson isn't ready yet.</p>
+        </div>
+      </div>
+    );
+  }
+
   const slideType = SLIDE_TYPES[slideIdx];
   const isFirst = slideIdx === 0;
   const isLast = slideIdx === SLIDE_TYPES.length - 1;
@@ -279,8 +298,8 @@ export default function Forge({ lesson = defaultLesson }) {
     <div className="fg-shell">
       <style>{CSS}</style>
       <header className="fg-topbar">
-        <button type="button" className="fg-back-link" onClick={() => navigate("/library")}>
-          ← Library
+        <button type="button" className="fg-back-link" onClick={() => navigate(`/library/forge/${trackId}`)}>
+          ← Lessons
         </button>
         <span className="fg-topbar-title">{lesson.code} · {lesson.title}</span>
         <span className="fg-topbar-slot" />
@@ -361,6 +380,13 @@ const CSS = `
   flex: 1;
 }
 .fg-topbar-slot { width: 90px; }
+
+.fg-missing {
+  font-family: 'Inter', sans-serif;
+  color: #A8A296;
+  text-align: center;
+  margin-top: 60px;
+}
 
 .fg-stage {
   flex: 1;
