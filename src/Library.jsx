@@ -4,8 +4,9 @@ import { useAuth } from "./AuthContext";
 import AuthForm from "./AuthForm";
 import { supabase } from "./supabaseClient";
 import CurriculumRouter from "./CurriculumRouter";
+import ImagePlaceholder from "./slides/ImagePlaceholder";
 
-const CATEGORIES = ["Grammar", "Vocabulary", "Reading", "Writing", "Listening", "Speaking"];
+const CATEGORIES = ["Reading", "Grammar", "Vocabulary", "Writing", "Listening", "Speaking"];
 
 const PER_PAGE = 8;
 
@@ -213,7 +214,7 @@ function UserIcon() {
 
 export default function Library() {
   const [theme, setTheme] = useState("fun");
-  const [category, setCategory] = useState("All");
+  const [category, setCategory] = useState("Reading");
   const [page, setPage] = useState(1);
   const [query, setQuery] = useState("");
   const { user, signOut } = useAuth();
@@ -266,7 +267,12 @@ export default function Library() {
   }, []);
 
   const filtered = tools.filter((t) => {
-    const matchesCategory = category === "All" || t.category === category;
+    const matchesCategory =
+      category === "All"
+        ? true
+        : category === "Reading"
+          ? t.category === "Reading" && t.content_type === "story"
+          : t.category === category;
     const matchesQuery = t.title.toLowerCase().includes(query.toLowerCase());
     return matchesCategory && matchesQuery;
   });
@@ -488,11 +494,7 @@ export default function Library() {
                   <div className="story-card-content">
                     <span className="story-badge">📖 Story</span>
                     <div className="story-icon-wrap">
-                      <BespokeIcon
-                        type={c.motif}
-                        isPro={isPro}
-                        style={{ width: gridConfig.width * 0.46, maxWidth: "none" }}
-                      />
+                      <ImagePlaceholder compact note="Book cover image" />
                     </div>
                     <div className="story-card-text">
                       <h3 className="story-card-title">{c.title}</h3>
