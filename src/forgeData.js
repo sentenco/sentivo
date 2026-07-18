@@ -63,21 +63,8 @@ export default {
     ],
   },
 
-  spotlight: {
-    line: "Picture → starter → full sentence.",
-    demoImageNote: "An engineer sitting at a desk, looking at a screen.",
-    example: "First, I review my screen. Then I solve the problem.",
-  },
-
-  tapAndSay: {
-    instruction: "Tap a picture → say the full sentence.",
-    escapeHatches: ["Describe it", "Near enough", "Buy time"],
-  },
-
   yourTurn: {
     prompt: "Walk me through your day — from arrive to wrap up. (3–4 sentences)",
-    escapeHatches: ["Describe it", "Near enough", "Buy time"],
-    teacherNote: "This is the diagnostic — assess fluency, turn length, missing words.",
   },
 
   pushIt: {

@@ -3,19 +3,29 @@ import { useNavigate, useParams } from "react-router-dom";
 import ImagePlaceholder from "./slides/ImagePlaceholder";
 import { getLesson } from "./forgeTracks";
 
-const SLIDE_TYPES = ["cover", "warmup", "wordload", "spotlight", "gallery", "yourturn", "pushit", "scorecard", "homework"];
 const SLIDE_LABELS = {
   cover: "Cover",
   warmup: "Warm-up",
   wordload: "Word Load",
-  spotlight: "Spotlight",
-  gallery: "Picture Bank",
   yourturn: "Your Turn",
   pushit: "Push It",
   scorecard: "Scorecard",
   homework: "Homework",
 };
-const NO_POSTIT = ["cover", "wordload", "gallery", "scorecard", "homework"];
+
+function buildSlideTypes(lesson) {
+  const pictureSlides = lesson.words.map((_, i) => `pic-${i}`);
+  return ["cover", "warmup", "wordload", ...pictureSlides, "yourturn", "pushit", "scorecard", "homework"];
+}
+
+function slideLabel(slideType) {
+  if (slideType.startsWith("pic-")) return "Say the Picture";
+  return SLIDE_LABELS[slideType];
+}
+
+function showsPostit(slideType) {
+  return slideType === "yourturn" || slideType === "pushit";
+}
 
 function TopStrip({ lesson, slideType }) {
   return (
@@ -27,7 +37,7 @@ function TopStrip({ lesson, slideType }) {
       <span>{lesson.technique}</span>
       <span className="fg-strip-dot">·</span>
       <span className="fg-strip-tag">{lesson.tag}</span>
-      <span className="fg-strip-label">{SLIDE_LABELS[slideType]}</span>
+      <span className="fg-strip-label">{slideLabel(slideType)}</span>
     </div>
   );
 }
@@ -59,19 +69,6 @@ function WordZoomModal({ word, onClose }) {
   );
 }
 
-function NotesToggle({ note }) {
-  const [open, setOpen] = useState(false);
-  if (!note) return null;
-  return (
-    <div className="fg-notes">
-      {open && <div className="fg-notes-panel">{note}</div>}
-      <button type="button" className="fg-notes-btn" onClick={() => setOpen((o) => !o)}>
-        {open ? "✕ Hide notes" : "🗒 Teacher notes"}
-      </button>
-    </div>
-  );
-}
-
 function CoverSlide({ lesson }) {
   return (
     <div className="fg-slide fg-slide--cover">
@@ -90,14 +87,13 @@ function CoverSlide({ lesson }) {
 
 function WarmupSlide({ lesson }) {
   return (
-    <div className="fg-slide">
+    <div className="fg-slide fg-slide--centered">
       <h2 className="fg-heading">{lesson.warmup.heading}</h2>
-      <ol className="fg-qlist">
+      <div className="fg-qlist">
         {lesson.warmup.questions.map((q, i) => (
-          <li key={i}>{q}</li>
+          <p key={i}>{q}</p>
         ))}
-      </ol>
-      <span className="fg-timer">⏱ Give it a minute</span>
+      </div>
     </div>
   );
 }
@@ -121,52 +117,15 @@ function WordLoadSlide({ lesson }) {
   );
 }
 
-function SpotlightSlide({ lesson }) {
+function SayThePictureSlide({ word }) {
   return (
-    <div className="fg-slide">
+    <div className="fg-slide fg-slide--centered">
       <h2 className="fg-heading">Say the Picture</h2>
-      <p className="fg-move-line">{lesson.spotlight.line}</p>
-      <div className="fg-spotlight-body">
-        <div className="fg-spotlight-img">
-          <ImagePlaceholder note={lesson.spotlight.demoImageNote} />
-        </div>
-        <p className="fg-spotlight-example">“{lesson.spotlight.example}”</p>
+      <div className="fg-picture-img">
+        <ImagePlaceholder note={word.imageNote} />
       </div>
-    </div>
-  );
-}
-
-function GallerySlide({ lesson }) {
-  const [practiced, setPracticed] = useState([]);
-  function toggle(word) {
-    setPracticed((prev) => (prev.includes(word) ? prev.filter((w) => w !== word) : [...prev, word]));
-  }
-  return (
-    <div className="fg-slide">
-      <h2 className="fg-heading">Picture Bank</h2>
-      <p className="fg-move-line">{lesson.tapAndSay.instruction}</p>
-      <div className="fg-gallery">
-        {lesson.words.map((w) => (
-          <button
-            type="button"
-            key={w.word}
-            className={`fg-gallery-card ${practiced.includes(w.word) ? "is-practiced" : ""}`}
-            onClick={() => toggle(w.word)}
-          >
-            {practiced.includes(w.word) && <span className="fg-gallery-check">✓</span>}
-            <div className="fg-gallery-img">
-              <ImagePlaceholder note={w.imageNote} compact />
-            </div>
-            <span className="fg-gallery-word">{w.word}</span>
-            <span className="fg-gallery-starter">“{w.starter}”</span>
-          </button>
-        ))}
-      </div>
-      <div className="fg-hatches">
-        {lesson.tapAndSay.escapeHatches.map((h) => (
-          <span key={h} className="fg-hatch">{h}</span>
-        ))}
-      </div>
+      <span className="fg-picture-word">{word.word}</span>
+      <p className="fg-picture-starter">“{word.starter}”</p>
     </div>
   );
 }
@@ -181,12 +140,6 @@ function YourTurnSlide({ lesson }) {
           <li key={w.word}>{w.starter}</li>
         ))}
       </ol>
-      <div className="fg-hatches">
-        {lesson.yourTurn.escapeHatches.map((h) => (
-          <span key={h} className="fg-hatch">{h}</span>
-        ))}
-      </div>
-      <NotesToggle note={lesson.yourTurn.teacherNote} />
     </div>
   );
 }
@@ -298,6 +251,10 @@ function HomeworkSlide({ lesson }) {
 }
 
 function renderSlide(slideType, lesson) {
+  if (slideType.startsWith("pic-")) {
+    const idx = Number(slideType.slice(4));
+    return <SayThePictureSlide word={lesson.words[idx]} />;
+  }
   switch (slideType) {
     case "cover":
       return <CoverSlide lesson={lesson} />;
@@ -305,10 +262,6 @@ function renderSlide(slideType, lesson) {
       return <WarmupSlide lesson={lesson} />;
     case "wordload":
       return <WordLoadSlide lesson={lesson} />;
-    case "spotlight":
-      return <SpotlightSlide lesson={lesson} />;
-    case "gallery":
-      return <GallerySlide lesson={lesson} />;
     case "yourturn":
       return <YourTurnSlide lesson={lesson} />;
     case "pushit":
@@ -344,9 +297,11 @@ export default function Forge() {
     );
   }
 
-  const slideType = SLIDE_TYPES[slideIdx];
+  const slideTypes = buildSlideTypes(lesson);
+  const slideType = slideTypes[slideIdx];
   const isFirst = slideIdx === 0;
-  const isLast = slideIdx === SLIDE_TYPES.length - 1;
+  const isLast = slideIdx === slideTypes.length - 1;
+  const withPostit = showsPostit(slideType);
 
   return (
     <div className="fg-shell">
@@ -362,8 +317,8 @@ export default function Forge() {
       <div className="fg-stage">
         <div className="fg-deck">
           <TopStrip lesson={lesson} slideType={slideType} />
-          {!NO_POSTIT.includes(slideType) && <PostIt words={lesson.words} />}
-          <div className="fg-deck-body" key={slideIdx}>
+          {withPostit && <PostIt words={lesson.words} />}
+          <div className={`fg-deck-body ${withPostit ? "has-postit" : ""}`} key={slideIdx}>
             {renderSlide(slideType, lesson)}
           </div>
           <div className="fg-nav-row">
@@ -371,7 +326,7 @@ export default function Forge() {
               ← Previous
             </button>
             <div className="fg-nav-dots">
-              {SLIDE_TYPES.map((_, i) => (
+              {slideTypes.map((_, i) => (
                 <span key={i} className={`fg-nav-dot ${i === slideIdx ? "is-active" : ""}`} />
               ))}
             </div>
@@ -527,7 +482,9 @@ const CSS = `
 }
 
 .fg-deck-body { flex: 1; min-height: 0; overflow-y: auto; }
+.fg-deck-body.has-postit { padding-right: 168px; }
 .fg-slide { display: flex; flex-direction: column; gap: 13px; height: 100%; }
+.fg-slide--centered { align-items: center; justify-content: center; text-align: center; gap: 18px; }
 .fg-heading {
   font-family: 'Fredoka', sans-serif;
   font-weight: 700;
@@ -588,14 +545,14 @@ const CSS = `
 }
 
 /* ── Warm-up ── */
-.fg-qlist { margin: 0; padding: 0 0 0 20px; display: flex; flex-direction: column; gap: 10px; }
-.fg-qlist li {
+.fg-qlist { display: flex; flex-direction: column; gap: 12px; align-items: center; }
+.fg-qlist p {
+  margin: 0;
   font-family: 'Quicksand', sans-serif;
   font-weight: 500;
   font-size: 19px;
   color: #3A311F;
 }
-.fg-timer { font-family: 'Quicksand', sans-serif; font-size: 14px; color: #8B7F68; margin-top: auto; }
 
 /* ── Word Load ── */
 .fg-move-line {
@@ -605,7 +562,7 @@ const CSS = `
   color: #C97A2E;
   margin: 0;
 }
-.fg-wordgrid { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 8px; }
+.fg-wordgrid { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; margin-top: 8px; }
 .fg-wordtoken {
   font-family: 'Fredoka', sans-serif;
   font-weight: 700;
@@ -677,76 +634,22 @@ const CSS = `
   margin: 0;
 }
 
-/* ── Spotlight ── */
-.fg-spotlight-body { display: flex; align-items: center; gap: 20px; }
-.fg-spotlight-img { width: 320px; height: 220px; flex-shrink: 0; }
-.fg-spotlight-img .img-ph { border-radius: 12px; }
-.fg-spotlight-example {
+/* ── Say the Picture ── */
+.fg-picture-img { width: 340px; max-width: 90%; height: 240px; }
+.fg-picture-img .img-ph { border-radius: 12px; }
+.fg-picture-word {
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+  color: #C97A2E;
+}
+.fg-picture-starter {
   font-family: 'Quicksand', sans-serif;
   font-weight: 500;
   font-size: 18px;
   font-style: italic;
   color: #3A311F;
-}
-
-/* ── Picture Bank (gallery) ── */
-.fg-gallery { display: flex; flex-wrap: wrap; gap: 12px; }
-.fg-gallery-card {
-  position: relative;
-  flex: 1 1 28%;
-  min-width: 170px;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  background: #FBF1DF;
-  border: 2px solid #EDDFC3;
-  border-radius: 12px;
-  padding: 10px;
-  cursor: pointer;
-  text-align: left;
-  font-family: inherit;
-  transition: border-color 0.15s ease;
-}
-.fg-gallery-card:hover { border-color: #F2A65A; }
-.fg-gallery-card.is-practiced { border-color: #F2A65A; background: rgba(242,166,90,0.10); }
-.fg-gallery-img { width: 100%; height: 110px; }
-.fg-gallery-img .img-ph { border-radius: 8px; }
-.fg-gallery-word {
-  font-family: 'Fredoka', sans-serif;
-  font-weight: 700;
-  font-size: 15.5px;
-  color: #C97A2E;
-}
-.fg-gallery-starter {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 500;
-  font-size: 13px;
-  color: #4A3F2C;
-}
-.fg-gallery-check {
-  position: absolute;
-  top: 8px;
-  right: 8px;
-  width: 22px;
-  height: 22px;
-  border-radius: 999px;
-  background: #F2A65A;
-  color: #FFFFFF;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 12px;
-  font-weight: 700;
-}
-.fg-hatches { display: flex; gap: 8px; margin-top: 4px; }
-.fg-hatch {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 500;
-  font-size: 12px;
-  color: #8B7F68;
-  background: #FBF1DF;
-  padding: 4px 10px;
-  border-radius: 999px;
+  margin: 0;
 }
 
 /* ── Your Turn / Push It ── */
@@ -772,50 +675,24 @@ const CSS = `
   color: #C97A2E;
 }
 
-/* ── Notes toggle -- anchored to the deck itself (not the scrolling slide
-   content) so its expanding panel never fights the slide's own layout. ── */
-.fg-notes { position: absolute; right: 34px; bottom: 70px; z-index: 5; display: flex; flex-direction: column; align-items: flex-end; gap: 8px; }
-.fg-notes-btn {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 600;
-  font-size: 12.5px;
-  color: #8B7F68;
-  background: #FFFFFF;
-  border: 1px solid #EAD9B8;
-  border-radius: 999px;
-  padding: 5px 12px;
-  cursor: pointer;
-}
-.fg-notes-panel {
-  width: 260px;
-  font-family: 'Quicksand', sans-serif;
-  font-size: 13px;
-  color: #4A3F2C;
-  background: #FBF1DF;
-  border-left: 3px solid #F2A65A;
-  border-radius: 6px;
-  padding: 10px 12px;
-  box-shadow: 0 12px 30px rgba(43,35,20,0.2);
-}
-
 /* ── Scorecard ── */
 .fg-slide--scorecard { align-items: center; justify-content: flex-start; }
 .fg-sheet {
   width: 100%;
-  max-width: 420px;
+  max-width: 400px;
   background: #FBF1DF;
   border: 1px solid #EDDFC3;
   border-radius: 16px;
-  padding: 20px 24px 22px;
+  padding: 16px 22px 16px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 8px;
 }
 .fg-sheet-head { display: flex; align-items: center; justify-content: space-between; }
 .fg-sheet-title {
   font-family: 'Fredoka', sans-serif;
   font-weight: 700;
-  font-size: 22px;
+  font-size: 20px;
   color: #2E2617;
 }
 .fg-sheet-tag {
@@ -833,57 +710,57 @@ const CSS = `
   font-family: 'Quicksand', sans-serif;
   font-weight: 500;
   font-style: italic;
-  font-size: 14.5px;
+  font-size: 13.5px;
   color: #4A3F2C;
   margin: 0;
 }
-.fg-sheet-rows { display: flex; flex-direction: column; gap: 4px; }
+.fg-sheet-rows { display: flex; flex-direction: column; gap: 3px; }
 .fg-score-row {
   display: flex;
   align-items: center;
   gap: 10px;
   border-radius: 8px;
-  padding: 8px 12px;
+  padding: 5px 12px;
 }
 .fg-score-row.is-alt { background: rgba(233,217,184,0.5); }
-.fg-score-row--total { background: rgba(242,166,90,0.16); margin-top: 4px; }
+.fg-score-row--total { background: rgba(242,166,90,0.16); margin-top: 3px; }
 .fg-score-label {
   font-family: 'Quicksand', sans-serif;
   font-weight: 600;
-  font-size: 14px;
+  font-size: 13.5px;
   color: #3A311F;
   flex: 1;
 }
 .fg-score-input {
-  width: 48px;
+  width: 44px;
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;
-  font-size: 14.5px;
+  font-size: 14px;
   color: #2E2617;
   background: #FFFFFF;
   border: 1px solid #EAD9B8;
   border-radius: 6px;
-  padding: 4px 6px;
+  padding: 3px 6px;
   text-align: center;
 }
 .fg-score-total {
   font-family: 'Fredoka', sans-serif;
   font-weight: 700;
-  font-size: 17px;
+  font-size: 16px;
   color: #C97A2E;
 }
-.fg-score-max { font-family: 'Quicksand', sans-serif; font-size: 13px; color: #8B7F68; }
+.fg-score-max { font-family: 'Quicksand', sans-serif; font-size: 12.5px; color: #8B7F68; }
 .fg-download-btn {
   align-self: center;
-  margin-top: 6px;
+  margin-top: 3px;
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;
-  font-size: 13.5px;
+  font-size: 13px;
   color: #2E2617;
   background: #F2A65A;
   border: none;
   border-radius: 999px;
-  padding: 10px 20px;
+  padding: 8px 18px;
   cursor: pointer;
 }
 
@@ -923,12 +800,13 @@ const CSS = `
 }
 .fg-nav-btn--primary { background: #F2A65A; color: #2E2617; border-color: #F2A65A; }
 .fg-nav-btn:disabled { opacity: 0.35; cursor: default; }
-.fg-nav-dots { display: flex; gap: 5px; }
+.fg-nav-dots { display: flex; flex-wrap: wrap; justify-content: center; gap: 5px; max-width: 400px; }
 .fg-nav-dot { width: 6px; height: 6px; border-radius: 999px; background: #EAD9B8; }
 .fg-nav-dot.is-active { width: 16px; background: #F2A65A; }
 
 @media (max-width: 720px) {
   .fg-deck { padding: 18px 20px 20px; height: auto; min-height: 580px; }
   .fg-postit { display: none; }
+  .fg-deck-body.has-postit { padding-right: 0; }
 }
 `;
