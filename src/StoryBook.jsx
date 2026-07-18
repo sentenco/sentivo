@@ -471,7 +471,7 @@ const CSS = `
 .sb-cover-title {
   font-family: 'Fredoka', sans-serif;
   font-weight: 700;
-  font-size: 30px;
+  font-size: 40px;
   line-height: 1.25;
   color: #1B2A4A;
   margin: 0;
@@ -603,7 +603,7 @@ const CSS = `
   text-transform: uppercase;
   color: #D85A30;
 }
-.sb-chapter-title { font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 27px; color: #1B2A4A; margin: 3px 0 12px; }
+.sb-chapter-title { font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 34px; color: #1B2A4A; margin: 3px 0 12px; }
 .sb-story-text {
   font-family: 'Quicksand', sans-serif;
   font-weight: 500;
