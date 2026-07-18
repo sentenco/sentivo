@@ -4,7 +4,7 @@ import { useAuth } from "./AuthContext";
 import AuthForm from "./AuthForm";
 import { supabase } from "./supabaseClient";
 import CurriculumRouter from "./CurriculumRouter";
-import ImagePlaceholder from "./slides/ImagePlaceholder";
+import storybookCoverImg from "./assets/storybook/cover.jpeg";
 
 const CATEGORIES = ["Reading", "Grammar", "Vocabulary", "Writing", "Listening", "Speaking"];
 
@@ -492,10 +492,9 @@ export default function Library() {
 
                 {c.content_type === "story" ? (
                   <div className="story-card-content">
+                    <img className="story-card-cover-img" src={storybookCoverImg} alt={c.title} />
                     <span className="story-badge">📖 Story</span>
-                    <div className="story-icon-wrap">
-                      <ImagePlaceholder compact note="Book cover image" />
-                    </div>
+                    <div className="story-card-scrim" />
                     <div className="story-card-text">
                       <h3 className="story-card-title">{c.title}</h3>
                       <span className="story-card-sub">{c.sub}</span>
@@ -962,30 +961,21 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   border: 1px solid #DEDAD0;
 }
 
-/* Story cards: a distinct "book" thumbnail, not a tool-deck card */
-.cover--story { background: linear-gradient(160deg, #FFF6E9 0%, #FFDBB0 100%); }
-.cover--story::before {
-  content: "";
+/* Story cards: a distinct "book" thumbnail, not a tool-deck card --
+   the cover photo fills the whole card, so no extra background needed. */
+.theme-pro .cover--story { border: 1px solid #DEDAD0; }
+
+/* Full-bleed cover art, ignoring the card's own padding, with the
+   title stamped over the bottom like a real book jacket. */
+.story-card-content { position: absolute; inset: 0; overflow: hidden; }
+.story-card-cover-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 20%; }
+.story-card-scrim {
   position: absolute;
   left: 0;
-  top: 0;
+  right: 0;
   bottom: 0;
-  width: 7px;
-  background: linear-gradient(180deg, #D85A30, #A8431F);
-  box-shadow: 2px 0 3px rgba(0,0,0,0.15);
-}
-.theme-pro .cover--story { background: #fff !important; border: 1px solid #DEDAD0; border-left: 4px solid #D85A30; }
-.theme-pro .cover--story::before { display: none; }
-
-.story-card-content {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  padding-left: 6px;
+  height: 48%;
+  background: linear-gradient(to top, rgba(20,15,10,0.85) 0%, rgba(20,15,10,0.4) 60%, rgba(20,15,10,0) 100%);
 }
 .story-badge {
   position: absolute;
@@ -1004,14 +994,14 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   color: #8A3A1F;
 }
 .theme-pro .story-badge { font-family: 'Inter', sans-serif; border-radius: 3px; background: #F0EBDD; color: #8A6A3A; }
-.story-icon-wrap { flex: 1; width: 100%; display: flex; align-items: center; justify-content: center; min-height: 0; }
-.story-card-text { text-align: center; }
+.story-card-text { position: absolute; left: 14px; right: 14px; bottom: 12px; text-align: left; }
 .story-card-title {
   font-family: 'Fredoka', sans-serif;
   font-weight: 700;
   font-size: clamp(13px, 1.8vw, 18px);
   line-height: 1.2;
-  color: #1B2A4A;
+  color: #fff;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.45);
   margin: 0;
 }
 .theme-pro .story-card-title { font-family: 'Source Serif 4', serif; }
@@ -1019,8 +1009,8 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   font-family: 'Quicksand', sans-serif;
   font-weight: 600;
   font-size: 9.5px;
-  color: #8A6A5A;
-  opacity: 0.8;
+  color: rgba(255,255,255,0.85);
+  text-shadow: 0 1px 4px rgba(0,0,0,0.4);
 }
 
 .bespoke-content {

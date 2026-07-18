@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ImagePlaceholder from "./slides/ImagePlaceholder";
-import { CHAPTERS, CHARACTERS, COVER_IMAGE, COVER_IMAGE_NOTE, STORYBOOK_TITLE } from "./storybookData";
+import { CHAPTERS, COVER_IMAGE, COVER_IMAGE_NOTE, STORYBOOK_TITLE } from "./storybookData";
 
 const PAGE_TYPES = ["intro", "story", "questions", "truefalse", "build0", "build1", "build2", "mysentence"];
 const PAGE_LABELS = {
@@ -224,7 +224,7 @@ const TOC_PAGE_SIZE = 5;
 
 export default function StoryBook() {
   const navigate = useNavigate();
-  const [view, setView] = useState("cover"); // cover | characters | toc | chapter
+  const [view, setView] = useState("cover"); // cover | toc | chapter
   const [chapterIdx, setChapterIdx] = useState(0);
   const [pageIdx, setPageIdx] = useState(0);
   const [tocPage, setTocPage] = useState(0);
@@ -277,40 +277,21 @@ export default function StoryBook() {
 
       <div className="sb-stage">
         {view === "cover" && (
-          <button type="button" className="sb-book sb-cover" onClick={() => setView("characters")}>
-            <div className="sb-cover-image">
-              {COVER_IMAGE ? (
-                <img src={COVER_IMAGE} alt={STORYBOOK_TITLE} />
-              ) : (
-                <ImagePlaceholder note={COVER_IMAGE_NOTE} compact />
-              )}
-            </div>
-            <h1 className="sb-cover-title">{STORYBOOK_TITLE}</h1>
+          <button
+            type="button"
+            className="sb-cover-card"
+            onClick={() => { setTocPage(0); setView("toc"); }}
+          >
+            {COVER_IMAGE ? (
+              <img className="sb-cover-card-img" src={COVER_IMAGE} alt={STORYBOOK_TITLE} />
+            ) : (
+              <div className="sb-cover-card-ph">
+                <ImagePlaceholder note={COVER_IMAGE_NOTE} />
+              </div>
+            )}
+            <div className="sb-cover-card-scrim" />
+            <h1 className="sb-cover-card-title">{STORYBOOK_TITLE}</h1>
           </button>
-        )}
-
-        {view === "characters" && (
-          <div className="sb-book sb-characters-page">
-            <h2 className="sb-toc-heading">Meet the Characters</h2>
-            <p className="sb-page-hint">The same four friends appear all through the book.</p>
-            <div className="sb-characters-grid">
-              {CHARACTERS.map((c) => (
-                <div key={c.name} className="sb-character-card">
-                  <div className="sb-character-avatar">
-                    <ImagePlaceholder micro />
-                  </div>
-                  <div className="sb-character-info">
-                    <span className="sb-character-name">{c.name}</span>
-                    <span className="sb-character-role">{c.role}</span>
-                    <span className="sb-character-look">{c.look}</span>
-                  </div>
-                </div>
-              ))}
-            </div>
-            <button type="button" className="sb-cta-btn" onClick={() => { setTocPage(0); setView("toc"); }}>
-              Table of Contents →
-            </button>
-          </div>
         )}
 
         {view === "toc" && (
@@ -463,67 +444,55 @@ const CSS = `
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* ── Cover: image + title, nothing else. The whole card is the button. ── */
-.sb-cover {
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  gap: 18px;
+/* ── Cover: a real portrait book jacket. Full-bleed art, title stamped
+   over the bottom like printed cover type. Sized to the art's native
+   2:3 ratio so the whole illustration shows, nothing cropped. ── */
+.sb-cover-card {
+  position: relative;
+  width: 440px;
+  max-width: 100%;
+  aspect-ratio: 2 / 3;
+  border-radius: 18px;
+  border: 3px solid #1B2A4A;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+  overflow: hidden;
+  padding: 0;
+  background: #FFFDF7;
+  display: block;
   cursor: pointer;
   font: inherit;
   transition: transform 0.12s ease, box-shadow 0.12s ease;
+  animation: sb-page-in 0.28s ease;
 }
-.sb-cover:hover { transform: translateY(-2px); box-shadow: 0 26px 56px rgba(0,0,0,0.24); }
-.sb-cover-image { width: 100%; height: 300px; border-radius: 12px; overflow: hidden; }
-.sb-cover-image .img-ph { border-radius: 12px; }
-.sb-cover-image img { width: 100%; height: 100%; object-fit: cover; object-position: center 30%; display: block; }
-.sb-cover-title {
+.sb-cover-card:hover { transform: translateY(-2px); box-shadow: 0 26px 56px rgba(0,0,0,0.24); }
+.sb-cover-card-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; display: block; }
+.sb-cover-card-ph { position: absolute; inset: 0; }
+.sb-cover-card-scrim {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 42%;
+  background: linear-gradient(to top, rgba(14,18,32,0.88) 0%, rgba(14,18,32,0.5) 55%, rgba(14,18,32,0) 100%);
+}
+.sb-cover-card-title {
+  position: absolute;
+  left: 26px;
+  right: 26px;
+  bottom: 26px;
   font-family: 'Fredoka', sans-serif;
   font-weight: 700;
-  font-size: 40px;
-  line-height: 1.25;
-  color: #1B2A4A;
+  font-size: 36px;
+  line-height: 1.2;
+  color: #fff;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.4);
   margin: 0;
-}
-
-/* ── Characters page ── */
-.sb-characters-page { gap: 12px; }
-.sb-characters-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 4px; }
-.sb-character-card {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  background: #FAF7EF;
-  border-radius: 10px;
-  padding: 8px;
   text-align: left;
 }
-.sb-character-avatar { width: 40px; height: 40px; flex-shrink: 0; border-radius: 8px; overflow: hidden; }
-.sb-character-avatar .img-ph { border-radius: 8px; }
-.sb-character-info { display: flex; flex-direction: column; min-width: 0; }
-.sb-character-name { font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 12.5px; color: #1B2A4A; }
-.sb-character-role { font-family: 'Quicksand', sans-serif; font-weight: 600; font-size: 10px; color: #D85A30; }
-.sb-character-look { font-family: 'Quicksand', sans-serif; font-weight: 500; font-size: 10px; color: #94A0B8; line-height: 1.3; }
-.sb-cta-btn {
-  background: #D85A30;
-  color: #fff;
-  border: none;
-  border-radius: 999px;
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 700;
-  font-size: 15px;
-  padding: 13px 30px;
-  cursor: pointer;
-  box-shadow: 0 3px 0 #A8431F;
-  margin-top: 4px;
-}
-.sb-cta-btn:active { transform: translateY(2px); box-shadow: 0 1px 0 #A8431F; }
 
 /* ── Table of contents ── */
 .sb-toc-heading {
   font-family: 'Fredoka', sans-serif;
   font-weight: 700;
-  font-size: 22px;
+  font-size: 27px;
   color: #1B2A4A;
   margin: 0 0 16px;
 }
@@ -544,8 +513,8 @@ const CSS = `
 .sb-toc-btn:hover { background: #FAECE7; transform: translateX(2px); }
 .sb-toc-num {
   flex-shrink: 0;
-  width: 26px;
-  height: 26px;
+  width: 28px;
+  height: 28px;
   border-radius: 999px;
   background: #D85A30;
   color: #fff;
@@ -554,13 +523,13 @@ const CSS = `
   justify-content: center;
   font-family: 'Fredoka', sans-serif;
   font-weight: 700;
-  font-size: 12px;
+  font-size: 13px;
 }
 .sb-toc-title {
   flex: 1;
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;
-  font-size: 14px;
+  font-size: 16px;
   color: #1B2A4A;
 }
 .sb-toc-arrow { color: #D85A30; font-weight: 700; }
@@ -577,7 +546,7 @@ const CSS = `
 .sb-page-header-label {
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;
-  font-size: 10.5px;
+  font-size: 12px;
   letter-spacing: 0.6px;
   text-transform: uppercase;
   color: #D85A30;
@@ -585,7 +554,7 @@ const CSS = `
 .sb-page-header-counter {
   font-family: 'Quicksand', sans-serif;
   font-weight: 600;
-  font-size: 11px;
+  font-size: 13px;
   color: #94A0B8;
 }
 .sb-progress-track { height: 3px; background: #EFEAE0; border-radius: 999px; margin: 9px 0 18px; overflow: hidden; }
@@ -593,22 +562,23 @@ const CSS = `
 
 .sb-page-body { flex: 1; min-height: 420px; overflow-y: auto; }
 .sb-page { display: flex; flex-direction: column; gap: 10px; }
-.sb-page-title { font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 18px; color: #1B2A4A; margin: 0; }
-.sb-page-title-sub { font-family: 'Quicksand', sans-serif; font-weight: 600; font-size: 12px; color: #94A0B8; }
-.sb-page-hint { font-family: 'Quicksand', sans-serif; font-weight: 500; font-size: 13px; color: #7C8598; margin: -4px 0 4px; }
+.sb-page-title { font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 23px; color: #1B2A4A; margin: 0; }
+.sb-page-title-sub { font-family: 'Quicksand', sans-serif; font-weight: 600; font-size: 15px; color: #94A0B8; }
+.sb-page-hint { font-family: 'Quicksand', sans-serif; font-weight: 500; font-size: 16px; color: #7C8598; margin: -4px 0 4px; }
 
-/* ── Chapter intro: full-page image + title, nothing else ── */
+/* ── Chapter intro: full-page image + title, nothing else. Container is
+   square to match the source art's native 1:1 ratio -- nothing cropped. ── */
 .sb-page--intro { flex: 1; align-items: center; justify-content: center; text-align: center; gap: 8px; }
-.sb-intro-image { width: 100%; height: 300px; border-radius: 12px; overflow: hidden; margin-bottom: 10px; }
+.sb-intro-image { width: 365px; height: 365px; max-width: 100%; border-radius: 12px; overflow: hidden; margin: 0 auto 8px; }
 .sb-intro-image .img-ph { border-radius: 12px; }
-.sb-intro-image img { width: 100%; height: 100%; object-fit: cover; object-position: center 40%; display: block; }
+.sb-intro-image img { width: 100%; height: 100%; object-fit: contain; display: block; }
 .sb-page--intro .sb-chapter-title { text-align: center; }
 
 /* ── Story ── */
 .sb-chapter-num {
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;
-  font-size: 11px;
+  font-size: 13px;
   letter-spacing: 0.6px;
   text-transform: uppercase;
   color: #D85A30;
@@ -626,8 +596,8 @@ const CSS = `
 }
 
 /* ── Questions ── */
-.sb-qlist { margin: 0; padding: 0 0 0 18px; display: flex; flex-direction: column; gap: 12px; }
-.sb-qitem { font-family: 'Quicksand', sans-serif; font-weight: 600; font-size: 15px; color: #1B2A4A; }
+.sb-qlist { margin: 0; padding: 0 0 0 18px; display: flex; flex-direction: column; gap: 14px; }
+.sb-qitem { font-family: 'Quicksand', sans-serif; font-weight: 600; font-size: 18px; color: #1B2A4A; line-height: 1.4; }
 
 /* ── True/False ── */
 .sb-tf-list { display: flex; flex-direction: column; gap: 9px; }
@@ -643,7 +613,7 @@ const CSS = `
 }
 .sb-tf-row.is-correct { background: #E4F6EC; }
 .sb-tf-row.is-wrong { background: #FDEBEF; }
-.sb-tf-text { font-family: 'Quicksand', sans-serif; font-weight: 600; font-size: 14px; color: #1B2A4A; }
+.sb-tf-text { font-family: 'Quicksand', sans-serif; font-weight: 600; font-size: 17px; color: #1B2A4A; line-height: 1.4; }
 .sb-tf-buttons { display: flex; gap: 8px; flex-shrink: 0; }
 .sb-tf-btn {
   background: #fff;
@@ -651,8 +621,8 @@ const CSS = `
   color: #1B2A4A;
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;
-  font-size: 13px;
-  padding: 6px 15px;
+  font-size: 15px;
+  padding: 7px 17px;
   border-radius: 999px;
   cursor: pointer;
 }
@@ -673,7 +643,7 @@ const CSS = `
 }
 .sb-build-row.is-correct { border-color: #3B9A6B; border-style: solid; background: #E4F6EC; }
 .sb-build-row.is-wrong { border-color: #E0637A; border-style: solid; background: #FDEBEF; }
-.sb-build-empty { font-family: 'Quicksand', sans-serif; font-size: 12.5px; color: #C2C6D2; }
+.sb-build-empty { font-family: 'Quicksand', sans-serif; font-size: 15px; color: #C2C6D2; }
 .sb-word-tray { display: flex; flex-wrap: wrap; gap: 8px; min-height: 34px; justify-content: center; }
 .sb-word-chip {
   background: #fff;
@@ -681,8 +651,8 @@ const CSS = `
   color: #1B2A4A;
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;
-  font-size: 13.5px;
-  padding: 6px 13px;
+  font-size: 16px;
+  padding: 7px 15px;
   border-radius: 999px;
   cursor: pointer;
 }
@@ -695,14 +665,14 @@ const CSS = `
   border-radius: 999px;
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;
-  font-size: 13px;
-  padding: 8px 18px;
+  font-size: 15px;
+  padding: 9px 20px;
   cursor: pointer;
   box-shadow: 0 3px 0 #A8431F;
 }
 .sb-check-btn:active { transform: translateY(2px); box-shadow: 0 1px 0 #A8431F; }
 .sb-check-btn:disabled { opacity: 0.35; cursor: default; box-shadow: 0 3px 0 #A8431F; }
-.sb-build-feedback { font-family: 'Quicksand', sans-serif; font-weight: 700; font-size: 13px; }
+.sb-build-feedback { font-family: 'Quicksand', sans-serif; font-weight: 700; font-size: 15px; }
 .sb-build-feedback.is-good { color: #2C6B4F; }
 .sb-build-feedback.is-retry { color: #B03A52; }
 .sb-retry-btn {
@@ -712,20 +682,20 @@ const CSS = `
   border-radius: 999px;
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;
-  font-size: 12.5px;
-  padding: 7px 15px;
+  font-size: 14px;
+  padding: 8px 16px;
   cursor: pointer;
 }
 
 /* ── My Sentence ── */
-.sb-example { font-family: 'Quicksand', sans-serif; font-size: 13px; color: #94A0B8; margin: 0; }
+.sb-example { font-family: 'Quicksand', sans-serif; font-size: 15px; color: #94A0B8; margin: 0; }
 .sb-my-sentence-input {
   font-family: 'Quicksand', sans-serif;
-  font-size: 14px;
+  font-size: 16px;
   color: #1B2A4A;
   border: 2px solid #EAE6DC;
   border-radius: 12px;
-  padding: 11px 13px;
+  padding: 12px 14px;
   resize: none;
   outline: none;
 }
@@ -740,8 +710,8 @@ const CSS = `
   border-radius: 999px;
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;
-  font-size: 12.5px;
-  padding: 8px 15px;
+  font-size: 14.5px;
+  padding: 9px 17px;
   cursor: pointer;
 }
 .sb-nav-btn--primary { background: #D85A30; border-color: #D85A30; color: #fff; }
@@ -752,6 +722,5 @@ const CSS = `
 
 @media (max-width: 520px) {
   .sb-book { padding: 22px 18px; }
-  .sb-characters-grid { grid-template-columns: 1fr; }
 }
 `;
