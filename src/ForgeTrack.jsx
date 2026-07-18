@@ -76,12 +76,12 @@ export default function ForgeTrack() {
 }
 
 const CSS = `
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Quicksand:wght@500;600;700&display=swap');
 
 .ft-shell {
   width: 100%;
   min-height: 100vh;
-  background: radial-gradient(circle at 15% 0%, #52442F 0%, #2C251E 45%, #241F19 100%);
+  background: radial-gradient(circle at 15% 0%, #6C5E49 0%, #463F38 45%, #3E3933 100%);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -98,10 +98,10 @@ const CSS = `
   padding: 22px 24px 0;
 }
 .ft-back-link {
-  font-family: 'Manrope', sans-serif;
+  font-family: 'Fredoka', sans-serif;
   font-weight: 700;
   font-size: 13.5px;
-  color: #2C251E;
+  color: #463F38;
   background: #F2A65A;
   border: none;
   border-radius: 999px;
@@ -109,7 +109,7 @@ const CSS = `
   cursor: pointer;
 }
 .ft-topbar-title {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Quicksand', sans-serif;
   font-weight: 700;
   font-size: 12px;
   letter-spacing: 1.5px;
@@ -126,7 +126,7 @@ const CSS = `
 }
 
 .ft-missing {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Quicksand', sans-serif;
   color: #C4BCA8;
   text-align: center;
   margin-top: 60px;
@@ -135,7 +135,7 @@ const CSS = `
 .ft-hero { margin-bottom: 36px; }
 .ft-hero-tags { display: flex; gap: 8px; margin-bottom: 14px; }
 .ft-tag {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Quicksand', sans-serif;
   font-weight: 600;
   font-size: 12px;
   color: #C9A876;
@@ -144,16 +144,16 @@ const CSS = `
   border-radius: 999px;
   padding: 4px 12px;
 }
-.ft-tag--level { color: #9C9484; background: #423A2F; border-color: #574B39; }
+.ft-tag--level { color: #9C9484; background: #5C5449; border-color: #716553; }
 .ft-hero-title {
-  font-family: 'Manrope', sans-serif;
-  font-weight: 800;
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 700;
   font-size: 38px;
   color: #F4EFE6;
   margin: 0 0 10px;
 }
 .ft-hero-blurb {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Quicksand', sans-serif;
   font-weight: 500;
   font-size: 15px;
   color: #C4BCA8;
@@ -172,8 +172,8 @@ const CSS = `
   display: flex;
   flex-direction: column;
   gap: 6px;
-  background: #362F26;
-  border: 1px solid #574B39;
+  background: #504940;
+  border: 1px solid #716553;
   border-radius: 14px;
   padding: 16px 16px 18px;
   min-height: 140px;
@@ -196,33 +196,33 @@ const CSS = `
 }
 
 .ft-lesson-num {
-  font-family: 'Manrope', sans-serif;
-  font-weight: 800;
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 700;
   font-size: 13px;
   color: #F2A65A;
 }
 .ft-lesson-status {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Quicksand', sans-serif;
   font-weight: 500;
   font-size: 12.5px;
   color: #9C9484;
 }
 .ft-lesson-title {
-  font-family: 'Manrope', sans-serif;
+  font-family: 'Fredoka', sans-serif;
   font-weight: 700;
   font-size: 14.5px;
   color: #F4EFE6;
   line-height: 1.25;
 }
 .ft-lesson-technique {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Quicksand', sans-serif;
   font-weight: 500;
   font-size: 11.5px;
   color: #C4BCA8;
 }
 .ft-lesson-cta {
   margin-top: auto;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Quicksand', sans-serif;
   font-weight: 700;
   font-size: 12px;
   color: #F2A65A;

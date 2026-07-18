@@ -339,12 +339,12 @@ export default function Forge() {
 }
 
 const CSS = `
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Quicksand:wght@500;600;700&display=swap');
 
 .fg-shell {
   width: 100%;
   min-height: 100vh;
-  background: radial-gradient(circle at 15% 0%, #52442F 0%, #2C251E 45%, #241F19 100%);
+  background: radial-gradient(circle at 15% 0%, #6C5E49 0%, #463F38 45%, #3E3933 100%);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -361,10 +361,10 @@ const CSS = `
   padding: 22px 24px 0;
 }
 .fg-back-link {
-  font-family: 'Manrope', sans-serif;
+  font-family: 'Fredoka', sans-serif;
   font-weight: 700;
   font-size: 13.5px;
-  color: #2C251E;
+  color: #463F38;
   background: #F2A65A;
   border: none;
   border-radius: 999px;
@@ -372,7 +372,7 @@ const CSS = `
   cursor: pointer;
 }
 .fg-topbar-title {
-  font-family: 'Manrope', sans-serif;
+  font-family: 'Fredoka', sans-serif;
   font-weight: 700;
   font-size: 15px;
   color: #F4EFE6;
@@ -382,7 +382,7 @@ const CSS = `
 .fg-topbar-slot { width: 90px; }
 
 .fg-missing {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Quicksand', sans-serif;
   color: #C4BCA8;
   text-align: center;
   margin-top: 60px;
@@ -402,8 +402,8 @@ const CSS = `
   width: 960px;
   max-width: 100%;
   height: 560px;
-  background: #362F26;
-  border: 1px solid #574B39;
+  background: #504940;
+  border: 1px solid #716553;
   border-radius: 16px;
   box-shadow: 0 24px 60px rgba(0,0,0,0.45);
   display: flex;
@@ -420,14 +420,14 @@ const CSS = `
   display: flex;
   align-items: center;
   gap: 8px;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Quicksand', sans-serif;
   font-weight: 600;
   font-size: 11.5px;
   letter-spacing: 0.3px;
   text-transform: uppercase;
   color: #C9A876;
   padding-bottom: 12px;
-  border-bottom: 1px solid #4A4030;
+  border-bottom: 1px solid #645A4A;
   margin-bottom: 16px;
 }
 .fg-strip-dot { color: #6E6754; }
@@ -443,13 +443,13 @@ const CSS = `
 .fg-deck-body { flex: 1; min-height: 0; overflow-y: auto; }
 .fg-slide { display: flex; flex-direction: column; gap: 11px; height: 100%; }
 .fg-heading {
-  font-family: 'Manrope', sans-serif;
-  font-weight: 800;
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 700;
   font-size: 26px;
   color: #F4EFE6;
   margin: 0;
 }
-.fg-optional { font-family: 'Inter', sans-serif; font-weight: 500; font-size: 15px; color: #9C9484; }
+.fg-optional { font-family: 'Quicksand', sans-serif; font-weight: 500; font-size: 15px; color: #9C9484; }
 
 /* ── Cover ── */
 .fg-slide--cover {
@@ -459,7 +459,7 @@ const CSS = `
   gap: 16px;
 }
 .fg-cover-kicker {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Quicksand', sans-serif;
   font-weight: 700;
   font-size: 12px;
   letter-spacing: 0.6px;
@@ -467,21 +467,21 @@ const CSS = `
   color: #F2A65A;
 }
 .fg-cover-title {
-  font-family: 'Manrope', sans-serif;
-  font-weight: 800;
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 700;
   font-size: 44px;
   color: #F4EFE6;
   margin: 0;
 }
 .fg-cover-subtitle {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Quicksand', sans-serif;
   font-weight: 500;
   font-size: 16px;
   color: #C4BCA8;
   margin: 0;
 }
 .fg-cover-technique {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Quicksand', sans-serif;
   font-weight: 600;
   font-size: 13.5px;
   color: #C9A876;
@@ -491,7 +491,7 @@ const CSS = `
 /* ── Word chips ── */
 .fg-chips { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
 .fg-chip {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Quicksand', sans-serif;
   font-weight: 600;
   font-size: 13px;
   color: #F2A65A;
@@ -500,17 +500,17 @@ const CSS = `
   border-radius: 999px;
   padding: 6px 14px;
 }
-.fg-chip.is-active { background: #F2A65A; color: #362F26; border-color: #F2A65A; }
+.fg-chip.is-active { background: #F2A65A; color: #504940; border-color: #F2A65A; }
 
 /* ── Warm-up ── */
 .fg-qlist { margin: 0; padding: 0 0 0 20px; display: flex; flex-direction: column; gap: 10px; }
 .fg-qlist li {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Quicksand', sans-serif;
   font-weight: 500;
   font-size: 18px;
   color: #E8E3D8;
 }
-.fg-timer { font-family: 'Inter', sans-serif; font-size: 13px; color: #9C9484; margin-top: auto; }
+.fg-timer { font-family: 'Quicksand', sans-serif; font-size: 13px; color: #9C9484; margin-top: auto; }
 
 /* ── Word Load ── */
 .fg-wordrows { display: flex; flex-direction: column; gap: 6px; }
@@ -519,12 +519,12 @@ const CSS = `
   grid-template-columns: 90px 56px 1fr;
   align-items: center;
   gap: 14px;
-  background: #423A2F;
+  background: #5C5449;
   border-radius: 10px;
   padding: 6px 14px;
 }
 .fg-wordrow-word {
-  font-family: 'Manrope', sans-serif;
+  font-family: 'Fredoka', sans-serif;
   font-weight: 700;
   font-size: 15px;
   color: #F2A65A;
@@ -532,7 +532,7 @@ const CSS = `
 .fg-wordrow-img { width: 56px; height: 38px; }
 .fg-wordrow-img .img-ph { border-radius: 6px; }
 .fg-wordrow-starter {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Quicksand', sans-serif;
   font-weight: 500;
   font-size: 14px;
   color: #DCD5C4;
@@ -540,7 +540,7 @@ const CSS = `
 
 /* ── Spotlight ── */
 .fg-move-line {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Quicksand', sans-serif;
   font-weight: 600;
   font-size: 15px;
   color: #C9A876;
@@ -550,7 +550,7 @@ const CSS = `
 .fg-spotlight-img { width: 220px; height: 150px; flex-shrink: 0; }
 .fg-spotlight-img .img-ph { border-radius: 10px; }
 .fg-spotlight-example {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Quicksand', sans-serif;
   font-weight: 500;
   font-size: 16px;
   font-style: italic;
@@ -562,19 +562,19 @@ const CSS = `
 .fg-tapsay-img .img-ph { border-radius: 10px; }
 .fg-tapsay-moments { display: flex; flex-wrap: wrap; gap: 8px; }
 .fg-moment-btn {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Quicksand', sans-serif;
   font-weight: 600;
   font-size: 13px;
   color: #E8E3D8;
-  background: #423A2F;
-  border: 1.5px solid #574B39;
+  background: #5C5449;
+  border: 1.5px solid #716553;
   border-radius: 999px;
   padding: 7px 15px;
   cursor: pointer;
 }
-.fg-moment-btn.is-active { background: #F2A65A; color: #362F26; border-color: #F2A65A; }
+.fg-moment-btn.is-active { background: #F2A65A; color: #504940; border-color: #F2A65A; }
 .fg-tapsay-starter {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Quicksand', sans-serif;
   font-weight: 500;
   font-style: italic;
   font-size: 15px;
@@ -583,18 +583,18 @@ const CSS = `
 }
 .fg-hatches { display: flex; gap: 8px; margin-top: 4px; }
 .fg-hatch {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Quicksand', sans-serif;
   font-weight: 500;
   font-size: 11.5px;
   color: #9C9484;
-  background: #423A2F;
+  background: #5C5449;
   padding: 4px 10px;
   border-radius: 999px;
 }
 
 /* ── Your Turn / Push It ── */
 .fg-prompt {
-  font-family: 'Manrope', sans-serif;
+  font-family: 'Fredoka', sans-serif;
   font-weight: 700;
   font-size: 19px;
   color: #F4EFE6;
@@ -602,13 +602,13 @@ const CSS = `
 }
 .fg-guiderail { margin: 0; padding: 0 0 0 20px; display: flex; flex-direction: column; gap: 8px; }
 .fg-guiderail li {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Quicksand', sans-serif;
   font-weight: 500;
   font-size: 15px;
   color: #DCD5C4;
 }
 .fg-model-frame {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Quicksand', sans-serif;
   font-weight: 500;
   font-style: italic;
   font-size: 15px;
@@ -619,22 +619,22 @@ const CSS = `
    content) so its expanding panel never fights the slide's own layout. ── */
 .fg-notes { position: absolute; right: 34px; bottom: 70px; z-index: 5; display: flex; flex-direction: column; align-items: flex-end; gap: 8px; }
 .fg-notes-btn {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Quicksand', sans-serif;
   font-weight: 600;
   font-size: 12px;
   color: #9C9484;
-  background: #362F26;
-  border: 1px solid #574B39;
+  background: #504940;
+  border: 1px solid #716553;
   border-radius: 999px;
   padding: 5px 12px;
   cursor: pointer;
 }
 .fg-notes-panel {
   width: 260px;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Quicksand', sans-serif;
   font-size: 12.5px;
   color: #C4BCA8;
-  background: #423A2F;
+  background: #5C5449;
   border-left: 3px solid #F2A65A;
   border-radius: 6px;
   padding: 10px 12px;
@@ -643,7 +643,7 @@ const CSS = `
 
 /* ── Self-Check ── */
 .fg-candoline {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Quicksand', sans-serif;
   font-weight: 500;
   font-style: italic;
   font-size: 16px;
@@ -655,13 +655,13 @@ const CSS = `
   display: flex;
   align-items: center;
   gap: 10px;
-  background: #423A2F;
+  background: #5C5449;
   border-radius: 8px;
   padding: 6px 14px;
 }
 .fg-score-row--total { background: rgba(242,166,90,0.12); }
 .fg-score-label {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Quicksand', sans-serif;
   font-weight: 600;
   font-size: 13.5px;
   color: #DCD5C4;
@@ -669,32 +669,32 @@ const CSS = `
 }
 .fg-score-input {
   width: 46px;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Quicksand', sans-serif;
   font-weight: 700;
   font-size: 14px;
   color: #F4EFE6;
-  background: #2C251E;
-  border: 1px solid #574B39;
+  background: #463F38;
+  border: 1px solid #716553;
   border-radius: 6px;
   padding: 4px 6px;
   text-align: center;
 }
 .fg-score-total {
-  font-family: 'Manrope', sans-serif;
-  font-weight: 800;
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 700;
   font-size: 16px;
   color: #F2A65A;
 }
-.fg-score-max { font-family: 'Inter', sans-serif; font-size: 12.5px; color: #9C9484; }
+.fg-score-max { font-family: 'Quicksand', sans-serif; font-size: 12.5px; color: #9C9484; }
 .fg-score-tag {
   align-self: flex-start;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Quicksand', sans-serif;
   font-weight: 600;
   font-size: 11px;
   letter-spacing: 0.4px;
   text-transform: uppercase;
   color: #9C9484;
-  background: #423A2F;
+  background: #5C5449;
   padding: 3px 10px;
   border-radius: 999px;
 }
@@ -705,40 +705,40 @@ const CSS = `
   display: flex;
   flex-direction: column;
   gap: 2px;
-  background: #423A2F;
+  background: #5C5449;
   border-radius: 10px;
   padding: 10px 14px;
 }
 .fg-homework-label {
-  font-family: 'Manrope', sans-serif;
+  font-family: 'Fredoka', sans-serif;
   font-weight: 700;
   font-size: 14px;
   color: #F2A65A;
 }
 .fg-homework-detail {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Quicksand', sans-serif;
   font-weight: 500;
   font-size: 13.5px;
   color: #DCD5C4;
 }
 
 /* ── Nav row ── */
-.fg-nav-row { display: flex; align-items: center; justify-content: space-between; margin-top: 16px; padding-top: 14px; border-top: 1px solid #4A4030; }
+.fg-nav-row { display: flex; align-items: center; justify-content: space-between; margin-top: 16px; padding-top: 14px; border-top: 1px solid #645A4A; }
 .fg-nav-btn {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Quicksand', sans-serif;
   font-weight: 700;
   font-size: 13px;
   color: #E8E3D8;
-  background: #423A2F;
-  border: 1px solid #574B39;
+  background: #5C5449;
+  border: 1px solid #716553;
   border-radius: 999px;
   padding: 8px 16px;
   cursor: pointer;
 }
-.fg-nav-btn--primary { background: #F2A65A; color: #362F26; border-color: #F2A65A; }
+.fg-nav-btn--primary { background: #F2A65A; color: #504940; border-color: #F2A65A; }
 .fg-nav-btn:disabled { opacity: 0.35; cursor: default; }
 .fg-nav-dots { display: flex; gap: 5px; }
-.fg-nav-dot { width: 6px; height: 6px; border-radius: 999px; background: #574B39; }
+.fg-nav-dot { width: 6px; height: 6px; border-radius: 999px; background: #716553; }
 .fg-nav-dot.is-active { width: 16px; background: #F2A65A; }
 
 @media (max-width: 720px) {

@@ -7,6 +7,7 @@ import CurriculumRouter from "./CurriculumRouter";
 import ImagePlaceholder from "./slides/ImagePlaceholder";
 import storybookCoverImg from "./assets/storybook/cover.jpeg";
 import storybook2CoverImg from "./assets/storybook2/cover.png";
+import forge1CoverImg from "./assets/forge/track1-cover.jpeg";
 
 const CATEGORIES = ["Reading", "Grammar", "Vocabulary", "Writing", "Listening", "Speaking"];
 
@@ -23,7 +24,9 @@ const STORY_COVERS = {
 // gets a real cover photo once generated; falls back to an ImagePlaceholder
 // in the card until then. Portrait, same ~0.7 width:height ratio as every
 // other card in the grid (see the ASPECT constant below).
-const FORGE_COVERS = {};
+const FORGE_COVERS = {
+  "forge-1": forge1CoverImg,
+};
 
 const PER_PAGE = 8;
 
