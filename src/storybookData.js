@@ -1,8 +1,21 @@
 // A1 Teens digital storybook: "The School Days of Joshua, Paul, Mia & Angel"
 // Static content -- no Supabase, mirrors the pattern in CurriculumOverview.jsx.
 
+import coverImg from "./assets/storybook/cover.jpeg";
+import chapter1Img from "./assets/storybook/chapter1.png";
+import chapter2Img from "./assets/storybook/chapter2.png";
+import chapter3Img from "./assets/storybook/chapter3.png";
+import chapter4Img from "./assets/storybook/chapter4.png";
+import chapter5Img from "./assets/storybook/chapter5.png";
+import chapter6Img from "./assets/storybook/chapter6.png";
+import chapter7Img from "./assets/storybook/chapter7.png";
+import chapter8Img from "./assets/storybook/chapter8.png";
+import chapter9Img from "./assets/storybook/chapter9.png";
+import chapter10Img from "./assets/storybook/chapter10.png";
+
 export const STORYBOOK_TITLE = "Joshua's Diary";
 export const STORYBOOK_SUBTITLE = "An A1 storybook for teens";
+export const COVER_IMAGE = coverImg;
 export const COVER_IMAGE_NOTE =
   "A group illustration of all four teen friends standing together outside their school, smiling: Joshua, Paul, Mia, and Angel.";
 
@@ -20,6 +33,7 @@ export const CHAPTERS = [
   {
     number: 1,
     title: "My Morning Alarm",
+    image: chapter1Img,
     imageNote: "Joshua sitting up in bed with his phone, morning light through the window; Mia and Angel visible in the kitchen doorway.",
     story:
       "In the morning, my alarm rings at six thirty. I open my eyes and see my phone on the small table. Paul sends me a short message: “Wake up, Joshua!” I laugh, turn off the alarm, and sit up in my bed. In the kitchen, Mia drinks hot chocolate and talks with Angel. We eat bread and eggs together and look at our school bags. After breakfast, we walk to school and feel ready for the day.",
@@ -53,6 +67,7 @@ export const CHAPTERS = [
   {
     number: 2,
     title: "A Busy Break Time",
+    image: chapter2Img,
     imageNote: "Joshua and Mia at a school desk during break time, with Paul eating a sandwich and Angel talking nearby.",
     story:
       "At school, I sit with Mia during break time. Our classroom is noisy, but I like the happy sound. Paul buys a sandwich and a bottle of water from the small canteen. Near the window, Angel tells us about her basketball practice after class. We listen to her and smile because she is very excited. My sandwich is warm, and Mia shares her apple with me. When the bell rings again, we go back to class together.",
@@ -86,6 +101,7 @@ export const CHAPTERS = [
   {
     number: 3,
     title: "Our Favorite Lunch",
+    image: chapter3Img,
     imageNote: "All four friends sitting together at an outdoor lunch table near the school garden, sharing food.",
     story:
       "At lunch time, we sit at the same table near the school garden. Joshua likes rice and chicken, but Paul likes noodles more. Mia opens her lunch box and shows us her favorite sandwich. Angel drinks juice and says the mango flavor is very good. We talk about food, laugh together, and share small bites. The sun is bright, so we stay in the shade and enjoy our meal. After lunch, everyone feels full and happy.",
@@ -119,6 +135,7 @@ export const CHAPTERS = [
   {
     number: 4,
     title: "After-School Plans",
+    image: chapter4Img,
     imageNote: "The four friends at the school gate in the late afternoon sun, Paul holding a skateboard.",
     story:
       "When classes end, I wait for my friends at the school gate. Paul wants to go to the park because he likes skateboarding there. Mia needs to go home early and help her mother in the kitchen. Angel asks us to stop at a small shop for cold drinks first. I look at the sky, feel the warm air, and think it is a good afternoon. In the end, we go to the shop together and talk on the way. After that, we say goodbye and follow our own plans.",
@@ -152,6 +169,7 @@ export const CHAPTERS = [
   {
     number: 5,
     title: "A Rainy Walk Home",
+    image: chapter5Img,
     imageNote: "The four friends walking home together in the rain, all sharing one big blue umbrella.",
     story:
       "This afternoon, dark clouds fill the sky above our school. A few minutes later, the rain starts, and everyone runs to the front hall. Paul laughs because he has a big blue umbrella in his bag. Mia stands next to me and watches the water on the street. Angel says the rain is cold, but she likes the fresh air. When the rain gets lighter, we walk home slowly under Paul’s umbrella. Our shoes get a little wet, but the walk feels fun.",
@@ -185,6 +203,7 @@ export const CHAPTERS = [
   {
     number: 6,
     title: "My Hobby Club",
+    image: chapter6Img,
     imageNote: "Joshua and Mia sitting together in the art room, drawing; a finished picture of a park with birds on the table.",
     story:
       "On Wednesday, I stay at school for the art club after class. Mia sits beside me because she also likes drawing. Paul does not join the club, but he comes to see our pictures for a few minutes. Angel looks at my paper and says my tree is nice and colorful. The room is quiet, so I can think and draw well. I make a picture of a park with birds, grass, and a bench. Before going home, I put my drawing in my bag and feel proud.",
@@ -218,6 +237,7 @@ export const CHAPTERS = [
   {
     number: 7,
     title: "A Saturday at Home",
+    image: chapter7Img,
     imageNote: "Joshua at the breakfast table with a plate of pancakes, looking at a photo on his phone.",
     story:
       "On Saturday morning, I do not go to school, so I wake up a little late. My father makes pancakes, and the sweet smell fills the kitchen. After breakfast, Paul sends me a photo of his new football shoes. Mia stays at home and reads a comic book near her window. Angel helps her older sister clean the living room and arrange the chairs. In the afternoon, I play a mobile game and listen to music in my room. It is a simple day, but I feel relaxed and happy.",
@@ -251,6 +271,7 @@ export const CHAPTERS = [
   {
     number: 8,
     title: "A Small Birthday Surprise",
+    image: chapter8Img,
     imageNote: "The friends surprising Mia at the lunch table with a small pink gift bag and a set of colorful pens.",
     story:
       "Today is Mia’s birthday, and we want to do something nice for her. Before class, Paul gives Angel a small pink gift bag to carry. I keep a birthday card inside my notebook and wait for the right time. At lunch, we call Mia to our table and sing for her with big smiles. She looks surprised, opens the gift bag, and finds a set of colorful pens. Her eyes shine, and she thanks us again and again. The lunch break feels short, but the moment feels special.",
@@ -284,6 +305,7 @@ export const CHAPTERS = [
   {
     number: 9,
     title: "Our Class Project Day",
+    image: chapter9Img,
     imageNote: "Joshua, Paul, Mia, and Angel gathered around a classroom desk, making a poster about healthy habits.",
     story:
       "This week, our class makes a simple project about healthy habits. In the classroom, the teacher puts us in one group, so we work together. Paul writes the title on a big sheet of paper with neat letters. Mia draws fruit and water bottles in bright colors. Angel talks about exercise and gives us good ideas for the poster. I cut the pictures carefully and glue them in the right place. At the end of class, our poster looks clean, colorful, and complete.",
@@ -317,6 +339,7 @@ export const CHAPTERS = [
   {
     number: 10,
     title: "The Best Day of the Term",
+    image: chapter10Img,
     imageNote: "The four friends standing together in front of a wall of colorful class posters, all smiling.",
     story:
       "This morning, our teacher puts the class projects on the wall for everyone to see. I stand with Paul, Mia, and Angel in front of our poster and smile. The teacher says our work is neat, colorful, and easy to understand. Paul looks proud, and Angel gives Mia a happy high five. During break time, we talk about our favorite moments this term. I think about the rainy walk, the art club, and Mia’s birthday surprise. On the way home, I feel thankful for my friends and for all our good days together.",

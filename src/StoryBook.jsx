@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ImagePlaceholder from "./slides/ImagePlaceholder";
-import { CHAPTERS, CHARACTERS, COVER_IMAGE_NOTE, STORYBOOK_TITLE } from "./storybookData";
+import { CHAPTERS, CHARACTERS, COVER_IMAGE, COVER_IMAGE_NOTE, STORYBOOK_TITLE } from "./storybookData";
 
 const PAGE_TYPES = ["intro", "story", "questions", "truefalse", "build0", "build1", "build2", "mysentence"];
 const PAGE_LABELS = {
@@ -28,7 +28,11 @@ function ChapterIntroPage({ chapter }) {
   return (
     <div className="sb-page sb-page--intro">
       <div className="sb-intro-image">
-        <ImagePlaceholder note={chapter.imageNote} compact />
+        {chapter.image ? (
+          <img src={chapter.image} alt={chapter.title} />
+        ) : (
+          <ImagePlaceholder note={chapter.imageNote} compact />
+        )}
       </div>
       <span className="sb-chapter-num">Chapter {chapter.number}</span>
       <h2 className="sb-chapter-title">{chapter.title}</h2>
@@ -275,7 +279,11 @@ export default function StoryBook() {
         {view === "cover" && (
           <button type="button" className="sb-book sb-cover" onClick={() => setView("characters")}>
             <div className="sb-cover-image">
-              <ImagePlaceholder note={COVER_IMAGE_NOTE} compact />
+              {COVER_IMAGE ? (
+                <img src={COVER_IMAGE} alt={STORYBOOK_TITLE} />
+              ) : (
+                <ImagePlaceholder note={COVER_IMAGE_NOTE} compact />
+              )}
             </div>
             <h1 className="sb-cover-title">{STORYBOOK_TITLE}</h1>
           </button>
@@ -468,6 +476,7 @@ const CSS = `
 .sb-cover:hover { transform: translateY(-2px); box-shadow: 0 26px 56px rgba(0,0,0,0.24); }
 .sb-cover-image { width: 100%; height: 300px; border-radius: 12px; overflow: hidden; }
 .sb-cover-image .img-ph { border-radius: 12px; }
+.sb-cover-image img { width: 100%; height: 100%; object-fit: cover; object-position: center 30%; display: block; }
 .sb-cover-title {
   font-family: 'Fredoka', sans-serif;
   font-weight: 700;
@@ -592,6 +601,7 @@ const CSS = `
 .sb-page--intro { flex: 1; align-items: center; justify-content: center; text-align: center; gap: 8px; }
 .sb-intro-image { width: 100%; height: 300px; border-radius: 12px; overflow: hidden; margin-bottom: 10px; }
 .sb-intro-image .img-ph { border-radius: 12px; }
+.sb-intro-image img { width: 100%; height: 100%; object-fit: cover; object-position: center 40%; display: block; }
 .sb-page--intro .sb-chapter-title { text-align: center; }
 
 /* ── Story ── */
