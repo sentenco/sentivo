@@ -14,6 +14,11 @@ import forgeL8 from "./forgeData8";
 import forgeL9 from "./forgeData9";
 import forgeL10 from "./forgeData10";
 
+// L2 reuses L1's content exactly (same format, same lesson) -- only the
+// id/code are relabeled so the deck's slide labels and scorecard download
+// filename read "L2" instead of "L1".
+const forgeL2 = { ...forgeL1, id: "forge-2", code: "L2" };
+
 const TRACKS = [
   {
     id: "forge-1",
@@ -22,7 +27,7 @@ const TRACKS = [
     interest: "Tech",
     level: "A2",
     blurb: "10 lessons built around your job and your world. Come back after Lesson 10 to see how far you've come.",
-    lessons: [forgeL1, null, forgeL3, forgeL4, forgeL5, forgeL6, forgeL7, forgeL8, forgeL9, forgeL10],
+    lessons: [forgeL1, forgeL2, forgeL3, forgeL4, forgeL5, forgeL6, forgeL7, forgeL8, forgeL9, forgeL10],
   },
 ];
 
