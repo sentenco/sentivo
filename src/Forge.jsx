@@ -132,7 +132,7 @@ function WordLoadListSlide({ lesson }) {
         {lesson.words.map((w) => (
           <div key={w.word} className="fg-loadrow">
             {lesson.format === "gap" && (
-              <div className="fg-loadrow-img"><ImagePlaceholder note={w.imageNote} compact /></div>
+              <div className="fg-loadrow-img"><ImagePlaceholder micro /></div>
             )}
             <div className="fg-loadrow-text">
               <span className="fg-loadrow-word">{w.word}</span>
@@ -741,7 +741,7 @@ const CSS = `
   border-radius: 10px;
   padding: 8px 14px;
 }
-.fg-loadrow-img { width: 52px; height: 40px; flex-shrink: 0; }
+.fg-loadrow-img { width: 56px; height: 38px; flex-shrink: 0; }
 .fg-loadrow-img .img-ph { border-radius: 6px; }
 .fg-loadrow-text { display: flex; flex-direction: column; gap: 2px; }
 .fg-loadrow-word {
@@ -918,10 +918,10 @@ const CSS = `
   background: #FBF1DF;
   border: 1px solid #EDDFC3;
   border-radius: 16px;
-  padding: 16px 22px 16px;
+  padding: 12px 22px 12px;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 5px;
 }
 .fg-sheet-head { display: flex; align-items: center; justify-content: space-between; }
 .fg-sheet-title {
@@ -945,7 +945,8 @@ const CSS = `
   font-family: 'Quicksand', sans-serif;
   font-weight: 500;
   font-style: italic;
-  font-size: 13.5px;
+  font-size: 12.5px;
+  line-height: 1.35;
   color: #4A3F2C;
   margin: 0;
 }
@@ -955,7 +956,7 @@ const CSS = `
   align-items: center;
   gap: 10px;
   border-radius: 8px;
-  padding: 5px 12px;
+  padding: 3px 12px;
 }
 .fg-score-row.is-alt { background: rgba(233,217,184,0.5); }
 .fg-score-row--total { background: rgba(242,166,90,0.16); margin-top: 3px; }
