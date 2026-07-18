@@ -148,6 +148,14 @@ function BespokeIcon({ type, isPro, style }) {
             <path d="M50 24v28" />
           </svg>
         );
+      case "forge":
+        return (
+          <svg viewBox="0 0 100 70" className="bespoke-icon" stroke="currentColor" strokeWidth="2.2" fill="none" strokeLinecap="round" strokeLinejoin="round" style={style}>
+            <path d="M22 52h56l-8-16H30z" />
+            <path d="M32 52v9h36v-9" />
+            <path d="M48 30l4-10 5 8-4 3z" />
+          </svg>
+        );
       default:
         return null;
     }
@@ -207,6 +215,17 @@ function BespokeIcon({ type, isPro, style }) {
             <path d="M27 24l16 2.5M27 31l16 2.5M27 38l14 2" className="bespoke-book-lines" />
             <path d="M73 24l-16 2.5M73 31l-16 2.5M73 38l-14 2" className="bespoke-book-lines" />
           </g>
+        </svg>
+      );
+    case "forge":
+      return (
+        <svg viewBox="0 0 100 70" className="bespoke-icon" style={style}>
+          <ellipse cx="50" cy="60" rx="26" ry="5" className="bespoke-shadow" />
+          <path d="M22 52h56l-8-16H30z" className="bespoke-forge-anvil" />
+          <rect x="32" y="52" width="36" height="9" rx="2" className="bespoke-forge-base" />
+          <path d="M48 30l4-10 5 8-4 3z" className="bespoke-forge-spark" />
+          <circle cx="61" cy="23" r="2.4" className="bespoke-forge-spark" />
+          <circle cx="67" cy="31" r="1.7" className="bespoke-forge-spark" opacity="0.7" />
         </svg>
       );
     default:
@@ -906,11 +925,21 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .cover--teal { background: linear-gradient(160deg, #C9F0E2 0%, #8FDDC0 100%); }
 .cover--lavender { background: linear-gradient(160deg, #E3DAFF 0%, #C2AEF5 100%); }
 .cover--gold { background: linear-gradient(160deg, #FCE7BD 0%, #F3C871 100%); }
+/* Dark "workshop" palette for FORGE speaking lessons -- deliberately distinct
+   from every other (light, pastel) card so it reads as a different kind of
+   content at a glance, not another tool deck. */
+.cover--forge { background: linear-gradient(160deg, #2A2118 0%, #1B1C22 100%); }
+.cover--forge .bespoke-tagline { color: #F4EFE6; }
+.cover--forge .bespoke-label { color: #F2A65A; opacity: 1; }
+.cover--forge .bespoke-icon { color: #F2A65A; }
 
 .theme-pro .cover--coral { background: #fff; border-top: 4px solid #D85A30; }
 .theme-pro .cover--teal { background: #fff; border-top: 4px solid #0F6E56; }
 .theme-pro .cover--lavender { background: #fff; border-top: 4px solid #534AB7; }
 .theme-pro .cover--gold { background: #fff; border-top: 4px solid #B08D57; }
+.theme-pro .cover--forge { background: #1B1C22 !important; border-top: 4px solid #F2A65A; }
+.theme-pro .cover--forge .bespoke-tagline { font-family: 'Source Serif 4', serif; color: #F4EFE6; }
+.theme-pro .cover--forge .bespoke-label { color: #F2A65A; }
 
 .premium-badge {
   position: absolute;
@@ -1086,6 +1115,9 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .bespoke-book-right { fill: #E8734F; }
 .bespoke-book-spine { stroke: #8A3A1F; stroke-width: 2; fill: none; }
 .bespoke-book-lines { stroke: #FFFFFF; stroke-width: 1.4; stroke-linecap: round; opacity: 0.55; fill: none; }
+.bespoke-forge-anvil { fill: #3A3630; }
+.bespoke-forge-base { fill: #26241F; }
+.bespoke-forge-spark { fill: #F2A65A; }
 
 .pagination { display: flex; align-items: center; justify-content: center; gap: 18px; flex-shrink: 0; }
 .pagination button {

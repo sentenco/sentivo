@@ -8,6 +8,7 @@ import LessonPlayerPage from './LessonPlayerPage.jsx'
 import TeacherGuide from './TeacherGuide.jsx'
 import StoryBook from './StoryBook.jsx'
 import storybook2 from './storybookData2.js'
+import Forge from './Forge.jsx'
 import { AuthProvider } from './AuthContext.jsx'
 
 createRoot(document.getElementById('root')).render(
@@ -23,6 +24,7 @@ createRoot(document.getElementById('root')).render(
           <Route path="/library/stress" element={<Flashcards />} />
           <Route path="/library/storybook" element={<StoryBook />} />
           <Route path="/library/storybook-2" element={<StoryBook book={storybook2} />} />
+          <Route path="/library/forge-1" element={<Forge />} />
           <Route path="/lesson-player/:id" element={<LessonPlayerPage />} />
           <Route path="/teacher-guide/:level/:track" element={<TeacherGuide />} />
         </Routes>
