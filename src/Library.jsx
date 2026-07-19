@@ -481,13 +481,13 @@ export default function Library() {
                 <div className="grid-wrap" ref={gridWrapRef}>
         {category === "Speaking" ? (
           <div className="speaking-grid">
-            <a href="/library/forge/forge-1" className="speaking-tile speaking-tile--forge">
+            <a href="/library/forge" className="speaking-tile speaking-tile--forge">
               <span className="speaking-tile-kicker">Speaking · A2</span>
               <h3 className="speaking-tile-title">FORGE</h3>
               <p className="speaking-tile-desc">Build real vocabulary through pictures, gaps, echoes, and question chains.</p>
               <span className="speaking-tile-cta">Open FORGE →</span>
             </a>
-            <a href="/library/ascend/ascend-1" className="speaking-tile speaking-tile--ascend">
+            <a href="/library/ascend" className="speaking-tile speaking-tile--ascend">
               <span className="speaking-tile-kicker">Speaking · C1</span>
               <h3 className="speaking-tile-title">ASCEND</h3>
               <p className="speaking-tile-desc">Precision, structure, and diplomatic control for students who already sound fluent.</p>

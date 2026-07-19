@@ -9,9 +9,11 @@ import TeacherGuide from './TeacherGuide.jsx'
 import StoryBook from './StoryBook.jsx'
 import storybook2 from './storybookData2.js'
 import Forge from './Forge.jsx'
+import ForgeHub from './ForgeHub.jsx'
 import ForgeTrack from './ForgeTrack.jsx'
 import ForgeGuide from './ForgeGuide.jsx'
 import Ascend from './Ascend.jsx'
+import AscendHub from './AscendHub.jsx'
 import AscendTrack from './AscendTrack.jsx'
 import AscendGuide from './AscendGuide.jsx'
 import { AuthProvider } from './AuthContext.jsx'
@@ -31,9 +33,11 @@ createRoot(document.getElementById('root')).render(
             <Route path="/library/stress" element={<Flashcards />} />
             <Route path="/library/storybook" element={<StoryBook />} />
             <Route path="/library/storybook-2" element={<StoryBook book={storybook2} />} />
+            <Route path="/library/forge" element={<ForgeHub />} />
             <Route path="/library/forge/:trackId" element={<ForgeTrack />} />
             <Route path="/library/forge/:trackId/:lessonNum" element={<Forge />} />
             <Route path="/library/forge/:trackId/:lessonNum/guide" element={<ForgeGuide />} />
+            <Route path="/library/ascend" element={<AscendHub />} />
             <Route path="/library/ascend/:trackId" element={<AscendTrack />} />
             <Route path="/library/ascend/:trackId/:lessonNum" element={<Ascend />} />
             <Route path="/library/ascend/:trackId/:lessonNum/guide" element={<AscendGuide />} />
