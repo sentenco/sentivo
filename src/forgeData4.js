@@ -97,12 +97,66 @@ export default {
     scoreTag: "progress",
   },
 
-  homework: {
-    heading: "Grow your words before next class.",
-    items: [
-      { label: "Read your passage", detail: "Passage to be added." },
-      { label: "Next lesson's 5 words", detail: "order · visited · meet up · book · plan" },
-      { label: "Record a voice note", detail: "Describe your plan for the weekend, step by step." },
-    ],
+  teacherGuide: {
+    cover: {
+      goal: "Same technique as L3 — Fill the Gap — new topic: making plans.",
+      say: ["Same move as last time, new topic — today we're talking about plans, using 'going to'."],
+      do: ["Quick recap of the fill-the-gap mechanic if needed."],
+      timing: "1 min",
+    },
+    warmup: {
+      goal: "Prime future-plan talk before the technique starts.",
+      say: ["What are you going to do this weekend?", "Do you have any plans for next month?"],
+      do: ["Let him answer freely, don't correct 'going to' errors yet."],
+      timing: "2 min",
+    },
+    homeworkcheck: {
+      goal: "Check L3's homework landed.",
+      say: ["Tell me one thing you recorded about something you did recently."],
+      do: ["Accept any attempt, move on."],
+      timing: "1 min",
+    },
+    wordload: {
+      goal: "Introduce meet up/book/cancel/plan/join with gapped frames.",
+      say: ["Five new frames today, same format as last time."],
+      do: ["Read each frame aloud with its picture cue."],
+      timing: "3 min",
+    },
+    howitworks: {
+      goal: "Model the frame → fill → say move once.",
+      say: ["This weekend, I'm going to meet up with ______.", "This weekend, I'm going to meet up with my sister."],
+      do: ["Say the frame, pause, model the completed sentence."],
+      timing: "2 min",
+    },
+    game: {
+      goal: "Drill all 5 plan frames.",
+      say: ["Finish each one, then we move to the next."],
+      do: ["Present each frame in turn, use escape hatches if stuck."],
+      timing: "4 min",
+    },
+    yourturn: {
+      goal: "Unaided — a real upcoming plan, 3-4 sentences.",
+      say: ["Tell me about a plan you have coming up — three or four sentences."],
+      do: ["Let him build freely."],
+      timing: "3 min",
+    },
+    pushit: {
+      goal: "Optional — backup plan using if/will.",
+      say: ["Tell me about a backup plan — what will you do if your first plan doesn't work?"],
+      do: ["Model: 'I'm going to book a table outside, but if it rains, I'll cancel it and go to a restaurant instead.'"],
+      timing: "2 min (optional)",
+    },
+    scorecard: {
+      goal: "Score today — closes the Fill the Gap block.",
+      say: ["Let's score today — this closes out our Fill the Gap block."],
+      do: ["Score normally."],
+      timing: "2 min",
+    },
+    homework: {
+      goal: "Preview L5's recycled words (order, visited, meet up, book, plan) — new technique next time.",
+      say: ["Next lesson is different — no more gaps, I'll ask you questions and you answer using words from the last few lessons. Take a look at these first."],
+      do: ["Flag explicitly: L5 is a new technique (Echoing), recycling old words, not new vocabulary."],
+      timing: "1 min",
+    },
   },
 };

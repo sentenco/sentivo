@@ -97,12 +97,66 @@ export default {
     scoreTag: "progress",
   },
 
-  homework: {
-    heading: "Grow your words before next class.",
-    items: [
-      { label: "Read your passage", detail: "Passage to be added." },
-      { label: "Next lesson's 5 words", detail: "prefer · enjoy · mind · rather · depends" },
-      { label: "Record a voice note", detail: "Answer 3 questions about what you like. Start each answer by repeating my question words." },
-    ],
+  teacherGuide: {
+    cover: {
+      goal: "New technique — Echoing. No picture, no blank — catch my words and answer in full.",
+      say: ["New move today — no picture, no blank to fill. I'll ask a question, and you repeat the key part of my question to start your answer."],
+      do: ["Explain clearly: this is harder than before because there's no visual scaffold — the shape comes from listening."],
+      timing: "1 min",
+    },
+    warmup: {
+      goal: "Prime the mixed errands/plans topic.",
+      say: ["What do you usually do after work?", "What errands do you have this week?"],
+      do: ["Let him answer naturally."],
+      timing: "2 min",
+    },
+    homeworkcheck: {
+      goal: "Check L4's homework landed.",
+      say: ["Tell me one thing you recorded about your plan."],
+      do: ["Accept any attempt, move on."],
+      timing: "1 min",
+    },
+    wordload: {
+      goal: "Show the 5 recycled words with teacher question + echoed answer shape.",
+      say: ["These are words you already know from earlier lessons — today we reuse them in a new way."],
+      do: ["Read each question + answer pair aloud once."],
+      timing: "3 min",
+    },
+    howitworks: {
+      goal: "Model hearing the question, catching the key words, and finishing in a full sentence.",
+      say: ["What do you usually order?", "I usually order pizza, because it's quick."],
+      do: ["Ask the demo question, then answer it yourself exactly the way you want him to."],
+      timing: "2 min",
+    },
+    game: {
+      goal: "Fire each question, he echoes + completes.",
+      say: ["I'll ask, you echo my words to start, then finish the sentence."],
+      do: ["Ask each of the 5 questions in turn, let him echo + answer, use escape hatches if stuck."],
+      timing: "4 min",
+    },
+    yourturn: {
+      goal: "A short linked conversation, no guiderail shown.",
+      say: ["I'll ask about your week — errands and plans. Echo my words, then keep talking."],
+      do: ["Ask 2-3 natural follow-up questions live; this is unscaffolded, so give him room."],
+      timing: "3 min",
+    },
+    pushit: {
+      goal: "Optional — echo, answer, then add an extra unprompted sentence.",
+      say: ["Echo one of my questions, answer it, then add one more sentence I didn't ask for."],
+      do: ["Model: 'I usually order pizza, because it's quick. I also like it because I can share it with friends.'"],
+      timing: "2 min (optional)",
+    },
+    scorecard: {
+      goal: "Score today — first lesson of the Echoing block.",
+      say: ["Let's score today's echoing."],
+      do: ["Score normally; no prior benchmark since this is a new block."],
+      timing: "2 min",
+    },
+    homework: {
+      goal: "Preview L6's words (prefer, enjoy, mind, rather, depends).",
+      say: ["Next lesson is about opinions and preferences — take a look at these words first."],
+      do: ["No structural flag needed — same technique continues into L6."],
+      timing: "1 min",
+    },
   },
 };

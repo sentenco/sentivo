@@ -86,20 +86,65 @@ export default {
     scoreTag: "baseline",
   },
 
-  homework: {
-    heading: "Grow your words before next class.",
-    passage: [
-      "It's 9 a.m. and Maya ",
-      { word: "arrive", text: "arrives" },
-      " at the office with a coffee in hand. She sits down and ",
-      { word: "review", text: "reviews" },
-      " her messages from the night before. A few minutes later, a teammate calls — the app is crashing for users in Europe. Maya ",
-      { word: "solve", text: "solves" },
-      " the bug in under an hour and pushes a fix. In the afternoon, she and her team ",
-      { word: "develop", text: "develop" },
-      " a new feature for the mobile app. By 5 p.m., she ",
-      { word: "wrap up", text: "wraps up" },
-      " her tasks, saves her work, and heads home.",
-    ],
+  teacherGuide: {
+    cover: {
+      goal: "Set the frame — this is the diagnostic/intake lesson. Keep it warm, not test-like.",
+      say: [
+        "Today we're just going to talk about your day, from morning to evening — nothing to prepare, nothing to get wrong.",
+        "I'll show you five words as we go, and by the end you'll use all of them.",
+      ],
+      do: ["Let the title sit for a moment before moving on.", "This is also your first real listen to him — treat it like a relaxed conversation."],
+      timing: "1 min",
+    },
+    warmup: {
+      goal: "Live intake — your first real listen to this student, not just a warm-up.",
+      say: ["Let's start easy — just tell me a bit about your work.", "What's your job?", "Where do you work?", "What time do you arrive?"],
+      do: ["Let him talk freely, don't correct.", "This is quiet intake — note his baseline level, vocabulary gaps, and confidence as he answers."],
+      timing: "3 min",
+    },
+    wordload: {
+      goal: "Introduce the 5 words with picture + fixed starter, no translations.",
+      say: ["I'm going to show you five words for today. Each one has a picture and a starter sentence — the starter is fixed, you'll use the same shape every time you see a similar picture."],
+      do: ["Go through each row once, pointing at the picture and reading the starter aloud.", "Don't ask him to produce anything yet — this is just introduction."],
+      timing: "3 min",
+    },
+    picture: {
+      goal: "One picture at a time — he narrates using the starter, you model once first.",
+      say: [
+        "Picture, then starter, then the full sentence — that's the whole move.",
+        "First, I review my screen. Then I solve the problem.",
+        "Now it's your turn — look at the picture and finish the starter.",
+      ],
+      do: [
+        "Model the first picture yourself before handing over.",
+        "For each of the 5 pictures: show it, let him complete the starter, gently correct only real errors.",
+        "Note which words he hedges on — those become homework targets.",
+      ],
+      timing: "6 min",
+    },
+    yourturn: {
+      goal: "The diagnostic — walk through the whole day unaided, note fluency and freezes.",
+      say: ["Now put it all together — walk me through your day, from arrive to wrap up. Three or four sentences."],
+      do: ["This is the actual baseline measurement — don't help unless he's fully stuck.", "Note turn length, hesitations, and any words he skips or avoids — this defines his starting point."],
+      timing: "3 min",
+    },
+    pushit: {
+      goal: "Optional bonus — only if time allows, no pressure.",
+      say: ["One more, just for fun if we have time — which part of your day do you like most, and why?"],
+      do: ["Skip if short on time.", "Model 'I like… because…' if he needs a nudge."],
+      timing: "2 min (optional)",
+    },
+    scorecard: {
+      goal: "Score the baseline honestly — this is the number every future lesson is measured against.",
+      say: ["Let's put a number on today. This isn't a test — it's just where we're starting from."],
+      do: ["Score Range/Accuracy/Fluency/Interaction based on the Your Turn diagnostic performance.", "Total becomes the baseline — write it down somewhere you'll remember for L10."],
+      timing: "2 min",
+    },
+    homework: {
+      goal: "Preview L2's words with real definitions and examples before he leaves.",
+      say: ["Before next class, look over these five new words — read the meaning and the example sentence for each."],
+      do: ["Point out these are a new kind of word — describing places and people, not actions.", "Make sure he's seen all 5 before the slide ends."],
+      timing: "1 min",
+    },
   },
 };

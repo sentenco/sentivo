@@ -101,12 +101,66 @@ export default {
     scoreTag: "progress",
   },
 
-  homework: {
-    heading: "Grow your words before next class.",
-    items: [
-      { label: "Read your passage", detail: "Passage to be added." },
-      { label: "Next lesson's 5 words", detail: "complain · refund · replace · fix · sort out" },
-      { label: "Record a voice note", detail: "Answer one question about your tech habits. Fold in two follow-ups." },
-    ],
+  teacherGuide: {
+    cover: {
+      goal: "Same technique as L8 — Question Chain — new topic: technology.",
+      say: ["Same move as last time, new topic — today it's about technology in daily life."],
+      do: ["Quick recap of the chain move if needed."],
+      timing: "1 min",
+    },
+    warmup: {
+      goal: "Prime the tech topic.",
+      say: ["Have you ever had a problem with your phone?", "What apps do you use every day?"],
+      do: ["Let him answer freely."],
+      timing: "2 min",
+    },
+    homeworkcheck: {
+      goal: "Check L8's homework landed — the whole story.",
+      say: ["Tell me the whole story from what you recorded."],
+      do: ["Expect a fuller, connected answer by now."],
+      timing: "2 min",
+    },
+    wordload: {
+      goal: "Show the 5 tech words with follow-ups and folded example, present-perfect focus.",
+      say: ["Five tech words today — notice the questions use 'have you ever' this time."],
+      do: ["Read each row aloud, pointing out the present perfect question forms."],
+      timing: "3 min",
+    },
+    howitworks: {
+      goal: "Recap the chain move with the same demo.",
+      say: ["What did you do this weekend?", "(silently: who with? why did you like it?)", "I went hiking. I went with my brother because he loves the mountains, and I liked it because the weather was perfect."],
+      do: ["Quick model recap since this is his second chain lesson."],
+      timing: "2 min",
+    },
+    game: {
+      goal: "Drill the chain move on all 5 tech questions.",
+      say: ["Same as before — one question from me, one folded answer from you."],
+      do: ["Ask each question, let him build the folded answer, minimal intervention."],
+      timing: "5 min",
+    },
+    yourturn: {
+      goal: "One prompt, full chained turn about a tech story.",
+      say: ["Tell me about a time technology helped you or gave you a problem.", "Think first — what two things would I naturally ask next?"],
+      do: ["Give him space to think before starting."],
+      timing: "3 min",
+    },
+    pushit: {
+      goal: "Optional — chain three follow-ups or a longer story.",
+      say: ["Chain three follow-ups this time, or tell me a five or six sentence mini-story."],
+      do: ["Model the longer example if needed: 'My phone crashed during an important call last month. I panicked because I was talking to a client...'"],
+      timing: "2 min (optional)",
+    },
+    scorecard: {
+      goal: "Score today.",
+      say: ["Let's see the score today."],
+      do: ["Score normally."],
+      timing: "2 min",
+    },
+    homework: {
+      goal: "Preview L10's words (complain, refund, replace, fix, sort out) — the final lesson.",
+      say: ["Next lesson is your last one — take a look at these words about solving problems."],
+      do: ["Flag that L10 is the capstone/final lesson — build a little anticipation."],
+      timing: "1 min",
+    },
   },
 };

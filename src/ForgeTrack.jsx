@@ -68,6 +68,23 @@ function openLesson(trackId, num) {
   );
 }
 
+// Teacher Guide opens as its own separate popup, triggered by its own
+// explicit click -- not paired automatically with the student window.
+function openGuide(trackId, num) {
+  const screenW = window.screen.availWidth || 1600;
+  const screenH = window.screen.availHeight || 900;
+  const w = Math.min(640, screenW - 40);
+  const h = Math.min(840, screenH - 40);
+  const left = Math.max(0, Math.floor((screenW - w) / 2));
+  const top = Math.max(0, Math.floor((screenH - h) / 2));
+
+  window.open(
+    `/library/forge/${trackId}/${num}/guide`,
+    "sentivoForgeGuide",
+    `width=${w},height=${h},left=${left},top=${top},toolbar=no,location=no,menubar=no,status=no,scrollbars=yes,resizable=yes`
+  );
+}
+
 export default function ForgeTrack() {
   const { trackId } = useParams();
   const navigate = useNavigate();
@@ -126,12 +143,7 @@ export default function ForgeTrack() {
               );
             }
             return (
-              <button
-                type="button"
-                key={num}
-                className="ft-lesson-tile ft-lesson-tile--live"
-                onClick={() => openLesson(track.id, num)}
-              >
+              <div key={num} className="ft-lesson-tile ft-lesson-tile--live">
                 <div className="ft-lesson-top">
                   <span className="ft-lesson-badge">L{num}</span>
                   <span className="ft-lesson-tagtext">{lesson.tag}</span>
@@ -139,11 +151,16 @@ export default function ForgeTrack() {
                 <div className="ft-lesson-icon"><TechniqueIcon technique={lesson.technique} /></div>
                 <h3 className="ft-lesson-title2">{lesson.title}</h3>
                 <p className="ft-lesson-desc">{lesson.subtitle}</p>
+                <span className="ft-lesson-meta">{slideCount(lesson)} slides</span>
                 <div className="ft-lesson-foot">
-                  <span className="ft-lesson-meta">{slideCount(lesson)} slides</span>
-                  <span className="ft-lesson-startbtn">Start →</span>
+                  <button type="button" className="ft-lesson-guidebtn" onClick={() => openGuide(track.id, num)}>
+                    📋 Guide
+                  </button>
+                  <button type="button" className="ft-lesson-startbtn" onClick={() => openLesson(track.id, num)}>
+                    Start →
+                  </button>
                 </div>
-              </button>
+              </div>
             );
           })}
         </div>
@@ -264,12 +281,10 @@ const CSS = `
   box-shadow: none;
 }
 .ft-lesson-tile--live {
-  cursor: pointer;
-  transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
 }
 .ft-lesson-tile--live:hover {
   border-color: #F2A65A;
-  transform: translateY(-2px);
   box-shadow: 0 14px 30px rgba(43,35,20,0.1);
 }
 
@@ -327,19 +342,32 @@ const CSS = `
   overflow: hidden;
 }
 
-.ft-lesson-foot {
+.ft-lesson-meta {
   margin-top: auto;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 500;
+  font-size: 10.5px;
+  color: #8B7F68;
+}
+.ft-lesson-foot {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding-top: 8px;
   border-top: 1px solid #F3E9D3;
+  gap: 6px;
 }
-.ft-lesson-meta {
+.ft-lesson-guidebtn {
   font-family: 'Quicksand', sans-serif;
-  font-weight: 500;
+  font-weight: 700;
   font-size: 10.5px;
-  color: #8B7F68;
+  color: #C97A2E;
+  background: #FBF1DF;
+  border: 1px solid #EAD9B8;
+  border-radius: 999px;
+  padding: 5px 10px;
+  white-space: nowrap;
+  cursor: pointer;
 }
 .ft-lesson-startbtn {
   font-family: 'Quicksand', sans-serif;
@@ -347,8 +375,11 @@ const CSS = `
   font-size: 11px;
   color: #2E2617;
   background: #F2A65A;
+  border: none;
   border-radius: 999px;
   padding: 5px 11px;
+  white-space: nowrap;
+  cursor: pointer;
 }
 
 @media (max-width: 900px) {

@@ -101,12 +101,66 @@ export default {
     scoreTag: "progress",
   },
 
-  homework: {
-    heading: "Grow your words before next class.",
-    items: [
-      { label: "Read your passage", detail: "Passage to be added." },
-      { label: "Next lesson's 5 words", detail: "download · update · back up · log in · crash" },
-      { label: "Record a voice note", detail: "Answer one question about a recent trip. Fold in two follow-ups." },
-    ],
+  teacherGuide: {
+    cover: {
+      goal: "New technique — Question Chain. One question, two silent follow-ups, one folded answer.",
+      say: ["New move, and it's the hardest one yet. I ask ONE question. In your head, think of two more questions I'd naturally ask next — then answer all three in one connected turn."],
+      do: ["Take time to explain this clearly — it's a real jump in difficulty from Echoing."],
+      timing: "2 min",
+    },
+    warmup: {
+      goal: "Prime the travel topic.",
+      say: ["How do you usually get to work?", "Do you like traveling by train or car?"],
+      do: ["Let him answer freely."],
+      timing: "2 min",
+    },
+    homeworkcheck: {
+      goal: "Check L7's homework landed — now asking for the whole story, not just one detail.",
+      say: ["Tell me the whole story from what you recorded."],
+      do: ["This is a step up from earlier 'tell me one thing' checks — expect a fuller answer."],
+      timing: "2 min",
+    },
+    wordload: {
+      goal: "Show the 5 travel words with their two follow-ups and folded example.",
+      say: ["Each word today comes with two follow-up questions it invites, and one example that folds all three together."],
+      do: ["Read each row aloud, pointing out how the example answers all three questions at once."],
+      timing: "3 min",
+    },
+    howitworks: {
+      goal: "Model the full chain move once, clearly.",
+      say: ["What did you do this weekend?", "(silently: who with? why did you like it?)", "I went hiking. I went with my brother because he loves the mountains, and I liked it because the weather was perfect."],
+      do: ["Ask the demo question, pause visibly as if thinking, then deliver the full folded answer — make the 'silent thinking' step visible."],
+      timing: "3 min",
+    },
+    game: {
+      goal: "Drill the chain move on all 5 travel questions.",
+      say: ["I'll ask one question and stop. You give me the folded answer — join your sentences with because, and, so, or but."],
+      do: ["Ask each question, let him build the full folded answer, use escape hatches only if he's stuck on vocabulary, not on the structure."],
+      timing: "5 min",
+    },
+    yourturn: {
+      goal: "One prompt, full chained turn, unaided.",
+      say: ["Tell me about how you travel to work or on a trip.", "Before you speak, think — what two things would I naturally ask next? Answer those too."],
+      do: ["Give him a moment to think before he starts — don't rush this one."],
+      timing: "3 min",
+    },
+    pushit: {
+      goal: "Optional — chain three follow-ups or a longer mini-story.",
+      say: ["This time, chain three follow-ups instead of two, or tell me a five or six sentence mini-story from one prompt."],
+      do: ["Model the longer example if he needs a push: 'I traveled to Rome last spring. I went with two friends because we wanted a short break...'"],
+      timing: "2 min (optional)",
+    },
+    scorecard: {
+      goal: "Score today — first lesson of the hardest block.",
+      say: ["Let's score today — this is the start of our hardest block, so don't worry if it feels tougher."],
+      do: ["Score normally; reassure that Question Chain is meant to feel harder."],
+      timing: "2 min",
+    },
+    homework: {
+      goal: "Preview L9's words (download, update, back up, log in, crash).",
+      say: ["Next lesson is about technology — take a look at these words first."],
+      do: ["No structural flag needed — same technique continues."],
+      timing: "1 min",
+    },
   },
 };

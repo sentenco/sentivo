@@ -355,52 +355,34 @@ function ScorecardSlide({ lesson }) {
   );
 }
 
-function HomeworkPassageSlide({ lesson }) {
-  const [zoomed, setZoomed] = useState(null);
-  const zoomedWord = lesson.words.find((w) => w.word === zoomed);
+function HomeworkSlide({ nextLesson }) {
+  if (!nextLesson) {
+    return (
+      <div className="fg-slide fg-slide--centered">
+        <h2 className="fg-heading">You did it!</h2>
+        <p className="fg-move-line">No new words this time — review your favourite words from all 10 lessons.</p>
+      </div>
+    );
+  }
   return (
     <div className="fg-slide">
-      <h2 className="fg-heading">{lesson.homework.heading}</h2>
-      <p className="fg-move-line">Tap a highlighted word for its meaning and an example.</p>
-      <p className="fg-passage">
-        {lesson.homework.passage.map((part, i) =>
-          typeof part === "string" ? (
-            <span key={i}>{part}</span>
-          ) : (
-            <button type="button" key={i} className="fg-passage-word" onClick={() => setZoomed(part.word)}>
-              {part.text}
-            </button>
-          )
-        )}
-      </p>
-      <WordZoomModal word={zoomedWord} onClose={() => setZoomed(null)} />
-    </div>
-  );
-}
-
-function HomeworkListSlide({ lesson }) {
-  return (
-    <div className="fg-slide">
-      <h2 className="fg-heading">{lesson.homework.heading}</h2>
-      <ol className="fg-homework-list">
-        {lesson.homework.items.map((item, i) => (
-          <li key={i}>
-            <span className="fg-homework-label">{item.label}</span>
-            <span className="fg-homework-detail">{item.detail}</span>
-          </li>
+      <h2 className="fg-heading">Meet next lesson's words</h2>
+      <p className="fg-move-line">Read each word, its meaning, and the example — you'll use them next class.</p>
+      <div className="fg-loadlist">
+        {nextLesson.words.map((w) => (
+          <div key={w.word} className="fg-loadrow fg-loadrow--homework">
+            <div className="fg-loadrow-text">
+              <span className="fg-loadrow-word">{w.word} <span className="fg-homework-meaning">— {w.meaning}</span></span>
+              <span className="fg-loadrow-detail">“{w.example}”</span>
+            </div>
+          </div>
         ))}
-      </ol>
+      </div>
     </div>
   );
 }
 
-function HomeworkSlide({ lesson }) {
-  return lesson.homework.passage
-    ? <HomeworkPassageSlide lesson={lesson} />
-    : <HomeworkListSlide lesson={lesson} />;
-}
-
-function renderSlide(slideType, lesson) {
+function renderSlide(slideType, lesson, nextLesson) {
   if (slideType.startsWith("pic-")) {
     const idx = Number(slideType.slice(4));
     return <SayThePictureSlide word={lesson.words[idx]} />;
@@ -427,7 +409,7 @@ function renderSlide(slideType, lesson) {
     case "scorecard":
       return <ScorecardSlide lesson={lesson} />;
     case "homework":
-      return <HomeworkSlide lesson={lesson} />;
+      return <HomeworkSlide nextLesson={nextLesson} />;
     default:
       return null;
   }
@@ -438,6 +420,7 @@ export default function Forge() {
   const { trackId, lessonNum } = useParams();
   const [slideIdx, setSlideIdx] = useState(0);
   const lesson = getLesson(trackId, Number(lessonNum));
+  const nextLesson = getLesson(trackId, Number(lessonNum) + 1);
 
   if (!lesson) {
     return (
@@ -477,7 +460,7 @@ export default function Forge() {
           <TopStrip lesson={lesson} slideType={slideType} />
           {withPostit && <PostIt words={lesson.words} />}
           <div className={`fg-deck-body ${withPostit ? "has-postit" : ""}`} key={slideIdx}>
-            {renderSlide(slideType, lesson)}
+            {renderSlide(slideType, lesson, nextLesson)}
           </div>
           <div className="fg-nav-row">
             <button type="button" className="fg-nav-btn" onClick={() => setSlideIdx((i) => i - 1)} disabled={isFirst}>
@@ -759,6 +742,13 @@ const CSS = `
   font-size: 13.5px;
   color: #4A3F2C;
 }
+.fg-homework-meaning {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 500;
+  font-style: italic;
+  font-size: 13px;
+  color: #8B7F68;
+}
 
 .fg-zoom-backdrop {
   position: fixed;
@@ -1001,48 +991,6 @@ const CSS = `
   border-radius: 999px;
   padding: 8px 18px;
   cursor: pointer;
-}
-
-/* ── Homework ── */
-.fg-passage {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 1.7;
-  color: #3A311F;
-  margin: 0;
-}
-.fg-passage-word {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 700;
-  font-size: 16px;
-  color: #C97A2E;
-  background: rgba(242,166,90,0.16);
-  border: none;
-  border-radius: 5px;
-  padding: 1px 5px;
-  cursor: pointer;
-}
-.fg-homework-list { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 10px; }
-.fg-homework-list li {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  background: #FBF1DF;
-  border-radius: 10px;
-  padding: 10px 14px;
-}
-.fg-homework-label {
-  font-family: 'Fredoka', sans-serif;
-  font-weight: 700;
-  font-size: 14px;
-  color: #C97A2E;
-}
-.fg-homework-detail {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 500;
-  font-size: 13.5px;
-  color: #4A3F2C;
 }
 
 /* ── Nav row ── */

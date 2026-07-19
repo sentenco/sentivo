@@ -87,12 +87,60 @@ export default {
     scoreTag: "progress",
   },
 
-  homework: {
-    heading: "Grow your words before next class.",
-    items: [
-      { label: "Read your passage", detail: "A short story about visiting a new place, using this lesson's 5 words." },
-      { label: "Next lesson's 5 words", detail: "visited · tried · met · stayed · lost" },
-      { label: "Record a voice note", detail: "Describe a place you visited recently. Use each new word once." },
-    ],
+  teacherGuide: {
+    cover: {
+      goal: "Same technique as L1, new topic — describing people and places.",
+      say: ["Same game as last time — look at a picture, say the sentence. New topic today: your office and the people in it."],
+      do: ["Quick recap of the Say-the-Picture move if he seems to have forgotten it."],
+      timing: "1 min",
+    },
+    warmup: {
+      goal: "Light warm-up questions to prime the topic before the homework check.",
+      say: ["Is your office big or small?", "Are your coworkers friendly?"],
+      do: ["Keep this brief — just enough to get him thinking about his workplace."],
+      timing: "1 min",
+    },
+    homeworkcheck: {
+      goal: "Check the L1 homework landed before teaching anything new.",
+      say: ["Last time I gave you five new words to look at. Tell me one thing you remember or recorded."],
+      do: ["Accept any genuine attempt — this isn't a test, just a bridge into today's words.", "If he's blank, that's fine — move straight into Word Load, the words are about to be taught properly anyway."],
+      timing: "2 min",
+    },
+    wordload: {
+      goal: "Introduce crowded/quiet/busy/tall/friendly with picture + starter.",
+      say: ["Five new words today, same format — picture, then a starter sentence."],
+      do: ["Go through each row, reading the starter aloud once."],
+      timing: "3 min",
+    },
+    picture: {
+      goal: "Narrate each picture using its starter — model once first.",
+      say: ["In the morning, the office is crowded.", "Now you try the next one."],
+      do: ["Model the first picture, then hand over for the remaining four.", "Note any word he avoids — flag it for homework."],
+      timing: "6 min",
+    },
+    yourturn: {
+      goal: "Describe the office and coworkers unaided, 3-4 sentences.",
+      say: ["Now describe your own office and the people you work with — three or four sentences."],
+      do: ["Let him build it himself; only use the guiderail starters if he freezes."],
+      timing: "3 min",
+    },
+    pushit: {
+      goal: "Optional — favorite part of the office and why.",
+      say: ["If we have a minute — what's your favorite part of your office, and why?"],
+      do: ["Model 'I like the kitchen, because it's quiet and friendly' if needed."],
+      timing: "2 min (optional)",
+    },
+    scorecard: {
+      goal: "Score today and compare informally to L1's energy and fluency.",
+      say: ["Let's score today — see how this compares to last time."],
+      do: ["Score normally; no formal L1 comparison line yet, but it's worth mentioning out loud if he seems more fluent."],
+      timing: "2 min",
+    },
+    homework: {
+      goal: "Preview L3's words (visited, tried, met, stayed, lost) with definitions and examples.",
+      say: ["Next lesson we start talking about the past — look over these five words before we meet again."],
+      do: ["Flag that these are past-tense action words, different from today's descriptive words."],
+      timing: "1 min",
+    },
   },
 };

@@ -97,12 +97,66 @@ export default {
     scoreTag: "progress",
   },
 
-  homework: {
-    heading: "Grow your words before next class.",
-    items: [
-      { label: "Read your passage", detail: "Passage to be added." },
-      { label: "Next lesson's 5 words", detail: "cut down · keep up · skip · stick to · quit" },
-      { label: "Record a voice note", detail: "Answer 3 questions about your habits. Echo each question, then add a reason." },
-    ],
+  teacherGuide: {
+    cover: {
+      goal: "Same technique as L5 — Echoing — new topic: opinions & preferences.",
+      say: ["Same move as last time, new topic — today it's about what you prefer and enjoy."],
+      do: ["Quick recap of echoing if needed."],
+      timing: "1 min",
+    },
+    warmup: {
+      goal: "Prime opinion-sharing before the drill.",
+      say: ["Do you prefer mornings or evenings?", "What's something you really enjoy doing?"],
+      do: ["Let him answer freely."],
+      timing: "2 min",
+    },
+    homeworkcheck: {
+      goal: "Check L5's homework landed.",
+      say: ["Tell me one thing you recorded about your week."],
+      do: ["Accept any attempt, move on."],
+      timing: "1 min",
+    },
+    wordload: {
+      goal: "Show prefer/enjoy/mind/rather/depends with question + answer shape.",
+      say: ["Five opinion words today, same format."],
+      do: ["Read each pair aloud once."],
+      timing: "3 min",
+    },
+    howitworks: {
+      goal: "Model the echo + reason move.",
+      say: ["Where do you prefer to work?", "I prefer to work from home, because it's quiet."],
+      do: ["Ask, then answer yourself with a reason attached — reasons are the focus this lesson."],
+      timing: "2 min",
+    },
+    game: {
+      goal: "Drill all 5 opinion questions.",
+      say: ["I'll ask, you echo, then answer with a reason."],
+      do: ["Fire each question, insist on a reason in the answer, not just the echo."],
+      timing: "4 min",
+    },
+    yourturn: {
+      goal: "A short opinion conversation, reason required each time.",
+      say: ["I'll ask about your opinions. Echo my words, then give a reason each time."],
+      do: ["Ask 2-3 live follow-ups; push gently for 'because' every time."],
+      timing: "3 min",
+    },
+    pushit: {
+      goal: "Optional — echo, answer, add an extra sentence.",
+      say: ["Echo one question, answer it, then add one more sentence I didn't ask for."],
+      do: ["Model: 'I prefer to work from home, because it's quiet. I also get more done without interruptions.'"],
+      timing: "2 min (optional)",
+    },
+    scorecard: {
+      goal: "Score today.",
+      say: ["Let's score today's opinions round."],
+      do: ["Score normally."],
+      timing: "2 min",
+    },
+    homework: {
+      goal: "Preview L7's words (cut down, keep up, skip, stick to, quit).",
+      say: ["Next lesson is about health and habits — take a look at these words first."],
+      do: ["No structural flag needed."],
+      timing: "1 min",
+    },
   },
 };

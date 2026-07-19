@@ -97,12 +97,66 @@ export default {
     scoreTag: "progress",
   },
 
-  homework: {
-    heading: "Grow your words before next class.",
-    items: [
-      { label: "Read your passage", detail: "Passage to be added." },
-      { label: "Next lesson's 5 words", detail: "meet up · book · cancel · plan · join" },
-      { label: "Record a voice note", detail: "Talk about a plan you have. Use each new word once." },
-    ],
+  teacherGuide: {
+    cover: {
+      goal: "New technique starts today — Fill the Gap. You give the start, he finishes it.",
+      say: ["New move today — I'll give you the start of a sentence, and you finish it out loud."],
+      do: ["Explain this is different from Say the Picture: now there's a sentence frame, not just a picture."],
+      timing: "1 min",
+    },
+    warmup: {
+      goal: "Prime past-tense storytelling before the technique is introduced.",
+      say: ["What did you do last weekend?", "When was the last time you tried something new?"],
+      do: ["Let him answer naturally — don't correct past tense errors yet, that's what today teaches."],
+      timing: "2 min",
+    },
+    homeworkcheck: {
+      goal: "Check L2's homework words landed.",
+      say: ["Tell me one thing you recorded from the passage I gave you."],
+      do: ["Accept any attempt; move on regardless."],
+      timing: "1 min",
+    },
+    wordload: {
+      goal: "Introduce the 5 gapped frames — picture cues the gap, no translation.",
+      say: ["Each word has a half-sentence with a gap. Your job is just to finish it."],
+      do: ["Read each frame aloud once, pointing at the picture cue."],
+      timing: "3 min",
+    },
+    howitworks: {
+      goal: "Model the exact move once before the game.",
+      say: ["I give the frame, you fill the blank, then say the whole sentence out loud.", "Last month, I visited ______.", "Last month, I visited Lisbon."],
+      do: ["Say the frame, pause, then model a completed example — make the gap-fill mechanic completely clear before handing over."],
+      timing: "2 min",
+    },
+    game: {
+      goal: "Drill all 5 frames — finish each sentence, move to the next.",
+      say: ["Finish each sentence, then we move straight to the next one — quick and light."],
+      do: ["Present each frame; let him complete it aloud.", "Use escape hatches (Describe it / Near enough / Buy time) if he's stuck rather than giving the answer."],
+      timing: "4 min",
+    },
+    yourturn: {
+      goal: "Unaided — something he did recently, 3-4 sentences.",
+      say: ["Tell me about something you did recently — three or four sentences, in your own words."],
+      do: ["Let him build freely; guiderail frames are there if he needs a nudge."],
+      timing: "3 min",
+    },
+    pushit: {
+      goal: "Optional — join two events with because/but/so.",
+      say: ["Tell me about two things that happened on the same day — join them with because, but, or so."],
+      do: ["Model: 'I visited the museum, but it was closed, so I went to the park instead.'"],
+      timing: "2 min (optional)",
+    },
+    scorecard: {
+      goal: "Score today's past-simple performance.",
+      say: ["Let's score how that went."],
+      do: ["Score normally across the 4 dimensions."],
+      timing: "2 min",
+    },
+    homework: {
+      goal: "Preview L4's words (meet up, book, cancel, plan, join).",
+      say: ["Next lesson we talk about plans for the future — look over these five words first."],
+      do: ["Flag the grammar shift: past tense today, 'going to' + future plans next time."],
+      timing: "1 min",
+    },
   },
 };
