@@ -3,24 +3,26 @@ import { useNavigate, useParams } from "react-router-dom";
 import { getLessonByCode } from "./vtTracks";
 import VTTimeline from "./VTTimeline";
 
-const DISCUSSION_SLIDES = ["cover", "definition", "timeline", "usages", "form", "signals", "ccq", "recap"];
+const DISCUSSION_SLIDES = ["cover", "warmup", "definition", "timeline", "usages", "form", "signals", "ccq", "recap"];
 const TEST_SLIDES = ["cover", "partA", "partB", "partC", "partD", "partE", "score"];
 
 function CoverSlide({ tense, lesson }) {
-  const isDiscussion = lesson.kind === "Discussion";
   return (
     <div className="vtl-slide vtl-slide--cover">
       <span className="vtl-kind-badge">{lesson.kind}</span>
       <h2 className="vtl-cover-title">{lesson.title}</h2>
       <p className="vtl-cover-sub">Tense {tense.number} of 12 · {tense.groupTitle}</p>
-      {isDiscussion ? (
-        <>
-          <p className="vtl-cover-line"><strong>Objective:</strong> {lesson.objective}</p>
-          <p className="vtl-cover-question">“{lesson.leadIn}”</p>
-        </>
-      ) : (
-        <p className="vtl-cover-line">{lesson.testGoal}</p>
-      )}
+      {lesson.kind !== "Discussion" && <p className="vtl-cover-line">{lesson.testGoal}</p>}
+    </div>
+  );
+}
+
+function WarmupSlide({ lesson }) {
+  return (
+    <div className="vtl-slide">
+      <h3 className="vtl-h">Warm-up</h3>
+      <p className="vtl-cover-question">“{lesson.leadIn}”</p>
+      <p className="vtl-warmup-note">Ask before teaching the tense — listen for how they use it naturally.</p>
     </div>
   );
 }
@@ -85,14 +87,20 @@ function FormSlide({ lesson }) {
 function SignalsSlide({ lesson }) {
   return (
     <div className="vtl-slide">
-      <h3 className="vtl-h">Signal words</h3>
-      <div className="vtl-chip-row">
-        {lesson.signalWords.map((w, i) => <span key={i} className="vtl-chip">{w}</span>)}
+      <div className="vtl-two-col">
+        <div className="vtl-two-col-half">
+          <h3 className="vtl-h">Signal words</h3>
+          <div className="vtl-chip-row">
+            {lesson.signalWords.map((w, i) => <span key={i} className="vtl-chip">{w}</span>)}
+          </div>
+        </div>
+        <div className="vtl-two-col-half">
+          <h3 className="vtl-h">Common mistakes</h3>
+          <ul className="vtl-list">
+            {lesson.commonMistakes.map((m, i) => <li key={i}>{m}</li>)}
+          </ul>
+        </div>
       </div>
-      <h3 className="vtl-h vtl-h--mt">Common mistakes</h3>
-      <ul className="vtl-list">
-        {lesson.commonMistakes.map((m, i) => <li key={i}>{m}</li>)}
-      </ul>
     </div>
   );
 }
@@ -100,14 +108,20 @@ function SignalsSlide({ lesson }) {
 function CcqSlide({ lesson }) {
   return (
     <div className="vtl-slide">
-      <h3 className="vtl-h">Concept checking questions</h3>
-      <ul className="vtl-list">
-        {lesson.ccqs.map((c, i) => <li key={i}>{c}</li>)}
-      </ul>
-      <h3 className="vtl-h vtl-h--mt">Quick interactive moments</h3>
-      <ul className="vtl-list">
-        {lesson.interactive.map((c, i) => <li key={i}>{c}</li>)}
-      </ul>
+      <div className="vtl-two-col">
+        <div className="vtl-two-col-half">
+          <h3 className="vtl-h">Concept checking questions</h3>
+          <ul className="vtl-list">
+            {lesson.ccqs.map((c, i) => <li key={i}>{c}</li>)}
+          </ul>
+        </div>
+        <div className="vtl-two-col-half">
+          <h3 className="vtl-h">Quick interactive moments</h3>
+          <ul className="vtl-list">
+            {lesson.interactive.map((c, i) => <li key={i}>{c}</li>)}
+          </ul>
+        </div>
+      </div>
     </div>
   );
 }
@@ -150,6 +164,7 @@ function ScoreSlide({ tense, lesson }) {
 function renderSlide(slideType, tense, lesson) {
   switch (slideType) {
     case "cover": return <CoverSlide tense={tense} lesson={lesson} />;
+    case "warmup": return <WarmupSlide lesson={lesson} />;
     case "definition": return <DefinitionSlide lesson={lesson} />;
     case "timeline": return <TimelineSlide tense={tense} lesson={lesson} />;
     case "usages": return <UsagesSlide lesson={lesson} />;
@@ -237,22 +252,24 @@ const CSS = `
 
 .vtl-shell {
   width: 100%;
-  min-height: 100vh;
+  height: 100vh;
   background: radial-gradient(circle at 15% 0%, #F1EFFC 0%, #E4E0FA 50%, #D8D2F6 100%);
   display: flex;
   flex-direction: column;
   align-items: center;
   box-sizing: border-box;
+  overflow: hidden;
 }
 .vtl-shell * { box-sizing: border-box; }
 
 .vtl-topbar {
   width: 100%;
-  max-width: 760px;
+  max-width: 1120px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 18px 20px 0;
+  padding: 14px 24px 0;
+  flex-shrink: 0;
 }
 .vtl-back-link {
   font-family: 'Fredoka', sans-serif;
@@ -277,10 +294,11 @@ const CSS = `
 .vtl-stage {
   flex: 1;
   width: 100%;
-  max-width: 720px;
-  padding: 20px 20px 40px;
+  max-width: 1120px;
+  padding: 16px 24px 20px;
   display: flex;
   flex-direction: column;
+  min-height: 0;
 }
 
 .vtl-missing {
@@ -296,114 +314,140 @@ const CSS = `
   flex-direction: column;
   background: #FFFFFF;
   border: 1px solid #DAD4F5;
-  border-radius: 20px;
-  padding: 28px 30px 20px;
+  border-radius: 22px;
+  padding: 20px 56px;
   box-shadow: 0 20px 50px rgba(43,37,96,0.12);
+  min-height: 0;
 }
 
-.vtl-deck-body { flex: 1; min-height: 320px; }
+.vtl-deck-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 0;
+  overflow-y: auto;
+  gap: 22px;
+  padding: 8px 0;
+}
 
-.vtl-slide { display: flex; flex-direction: column; gap: 10px; }
-.vtl-slide--cover { align-items: flex-start; gap: 14px; padding-top: 8px; }
+.vtl-slide { display: flex; flex-direction: column; align-items: center; gap: 18px; width: 100%; }
+.vtl-slide--cover { gap: 16px; }
 
 .vtl-kind-badge {
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;
-  font-size: 11px;
-  letter-spacing: 0.5px;
+  font-size: 13px;
+  letter-spacing: 0.8px;
   text-transform: uppercase;
   color: #5B4FE0;
   background: rgba(91,79,224,0.12);
   border-radius: 999px;
-  padding: 4px 12px;
+  padding: 6px 16px;
 }
 .vtl-cover-title {
   font-family: 'Fredoka', sans-serif;
   font-weight: 700;
-  font-size: 30px;
+  font-size: 60px;
   color: #2B2560;
   margin: 0;
+  line-height: 1.05;
 }
 .vtl-cover-sub {
   font-family: 'Quicksand', sans-serif;
   font-weight: 600;
-  font-size: 12.5px;
+  font-size: 16px;
   color: #8A82C9;
-  margin: -8px 0 0;
+  margin: 0;
 }
 .vtl-cover-line {
   font-family: 'Quicksand', sans-serif;
-  font-weight: 500;
-  font-size: 15px;
+  font-weight: 600;
+  font-size: 20px;
   color: #4B4380;
   line-height: 1.5;
   margin: 0;
+  max-width: 640px;
 }
 .vtl-cover-question {
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;
-  font-size: 17px;
+  font-size: 34px;
   font-style: italic;
   color: #2B2560;
+  margin: 0;
+  max-width: 780px;
+  line-height: 1.3;
+}
+.vtl-warmup-note {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  color: #8A82C9;
   margin: 0;
 }
 
 .vtl-h {
   font-family: 'Fredoka', sans-serif;
   font-weight: 700;
-  font-size: 20px;
+  font-size: 32px;
   color: #2B2560;
   margin: 0;
 }
-.vtl-h--mt { margin-top: 14px; }
 
 .vtl-definition {
   font-family: 'Quicksand', sans-serif;
   font-weight: 600;
-  font-size: 16px;
+  font-size: 26px;
   color: #4B4380;
   line-height: 1.5;
   margin: 0;
+  max-width: 760px;
 }
 
-.vtl-timeline-wrap { background: #F5F3FD; border-radius: 12px; padding: 14px; }
+.vtl-timeline-wrap { background: #F5F3FD; border-radius: 14px; padding: 22px; width: 100%; max-width: 620px; }
 .vtl-timeline-note {
   font-family: 'Quicksand', sans-serif;
   font-weight: 500;
-  font-size: 13.5px;
+  font-size: 18px;
   color: #6B5590;
   margin: 0;
+  max-width: 620px;
 }
 
-.vtl-usage-list { display: flex; flex-direction: column; gap: 10px; }
+.vtl-usage-list { display: flex; flex-direction: column; gap: 10px; width: 100%; max-width: 680px; }
 .vtl-usage-row {
   display: flex;
-  flex-direction: column;
-  gap: 3px;
+  align-items: baseline;
+  gap: 10px;
   background: #F5F3FD;
   border-radius: 10px;
-  padding: 10px 12px;
+  padding: 12px 16px;
+  text-align: left;
 }
 .vtl-usage-label {
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;
-  font-size: 12px;
+  font-size: 14px;
   color: #5B4FE0;
+  white-space: nowrap;
 }
 .vtl-usage-example {
   font-family: 'Quicksand', sans-serif;
   font-weight: 500;
-  font-size: 14.5px;
+  font-size: 18px;
   font-style: italic;
   color: #2B2560;
 }
 
-.vtl-form-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
-.vtl-form-col { background: #F5F3FD; border-radius: 10px; padding: 10px 12px; display: flex; flex-direction: column; gap: 6px; }
+.vtl-form-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; width: 100%; max-width: 760px; }
+.vtl-form-col { background: #F5F3FD; border-radius: 12px; padding: 14px 16px; display: flex; flex-direction: column; gap: 8px; text-align: left; }
 .vtl-form-label {
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;
-  font-size: 11px;
+  font-size: 12.5px;
   text-transform: uppercase;
   letter-spacing: 0.4px;
   color: #5B4FE0;
@@ -411,28 +455,32 @@ const CSS = `
 .vtl-form-line {
   font-family: 'Quicksand', sans-serif;
   font-weight: 500;
-  font-size: 13px;
+  font-size: 15.5px;
   color: #2B2560;
   margin: 0;
 }
 
-.vtl-chip-row { display: flex; flex-wrap: wrap; gap: 7px; }
+.vtl-two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 34px; width: 100%; max-width: 860px; text-align: left; }
+.vtl-two-col-half { display: flex; flex-direction: column; gap: 12px; align-items: flex-start; }
+.vtl-two-col-half .vtl-h { font-size: 22px; }
+
+.vtl-chip-row { display: flex; flex-wrap: wrap; gap: 8px; }
 .vtl-chip {
   font-family: 'Quicksand', sans-serif;
   font-weight: 600;
-  font-size: 12.5px;
+  font-size: 15px;
   color: #5B4FE0;
   background: rgba(91,79,224,0.12);
   border-radius: 999px;
-  padding: 5px 12px;
+  padding: 6px 14px;
 }
 
 .vtl-list {
   font-family: 'Quicksand', sans-serif;
   font-weight: 500;
-  font-size: 14.5px;
+  font-size: 16.5px;
   color: #4B4380;
-  line-height: 1.6;
+  line-height: 1.55;
   margin: 0;
   padding-left: 20px;
 }
@@ -440,48 +488,49 @@ const CSS = `
 .vtl-recap-line {
   font-family: 'Quicksand', sans-serif;
   font-weight: 500;
-  font-size: 15px;
+  font-size: 19px;
   color: #4B4380;
   line-height: 1.5;
   margin: 0;
+  max-width: 700px;
 }
 
 .vtl-part-badge {
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;
-  font-size: 11px;
-  letter-spacing: 0.5px;
+  font-size: 13px;
+  letter-spacing: 0.8px;
   text-transform: uppercase;
   color: #5B4FE0;
   background: rgba(91,79,224,0.12);
   border-radius: 999px;
-  padding: 4px 12px;
-  align-self: flex-start;
+  padding: 6px 16px;
 }
 .vtl-part-desc {
   font-family: 'Quicksand', sans-serif;
   font-weight: 500;
-  font-size: 16px;
+  font-size: 26px;
   color: #2B2560;
-  line-height: 1.55;
+  line-height: 1.5;
   margin: 0;
+  max-width: 760px;
 }
 
-.vtl-nav-row { display: flex; align-items: center; justify-content: space-between; margin-top: 18px; padding-top: 14px; border-top: 1px solid #EEECFB; }
+.vtl-nav-row { display: flex; align-items: center; justify-content: space-between; padding-top: 14px; border-top: 1px solid #EEECFB; flex-shrink: 0; }
 .vtl-nav-btn {
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;
-  font-size: 13px;
+  font-size: 14px;
   color: #2B2560;
   background: #F5F3FD;
   border: 1px solid #DAD4F5;
   border-radius: 999px;
-  padding: 8px 16px;
+  padding: 9px 18px;
   cursor: pointer;
 }
 .vtl-nav-btn--primary { background: #5B4FE0; color: #FFFFFF; border-color: #5B4FE0; }
 .vtl-nav-btn:disabled { opacity: 0.35; cursor: default; }
-.vtl-nav-dots { display: flex; flex-wrap: wrap; justify-content: center; gap: 5px; max-width: 300px; }
+.vtl-nav-dots { display: flex; flex-wrap: wrap; justify-content: center; gap: 5px; max-width: 340px; }
 .vtl-nav-dot { width: 6px; height: 6px; border-radius: 999px; background: #DAD4F5; }
 .vtl-nav-dot.is-active { width: 16px; background: #5B4FE0; }
 `;
