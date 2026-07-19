@@ -18,7 +18,10 @@ const SLIDE_LABELS = {
 function buildSlideTypes(lesson) {
   if (lesson.format === "picture") {
     const pictureSlides = lesson.words.map((_, i) => `pic-${i}`);
-    return ["cover", "warmup", "wordload", ...pictureSlides, "yourturn", "pushit", "scorecard", "homework"];
+    const base = ["cover", "warmup"];
+    if (lesson.homeworkCheck) base.push("homeworkcheck");
+    base.push("wordload", ...pictureSlides, "yourturn", "pushit", "scorecard", "homework");
+    return base;
   }
   return ["cover", "warmup", "homeworkcheck", "wordload", "howitworks", "game", "yourturn", "pushit", "scorecard", "homework"];
 }

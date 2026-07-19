@@ -46,7 +46,7 @@ function LockIcon() {
 }
 
 function slideCount(lesson) {
-  if (lesson.format === "picture") return 7 + lesson.words.length;
+  if (lesson.format === "picture") return 7 + lesson.words.length + (lesson.homeworkCheck ? 1 : 0);
   return 10;
 }
 

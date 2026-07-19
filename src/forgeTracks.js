@@ -5,6 +5,7 @@
 // their content is added here.
 
 import forgeL1 from "./forgeData";
+import forgeL2 from "./forgeData2";
 import forgeL3 from "./forgeData3";
 import forgeL4 from "./forgeData4";
 import forgeL5 from "./forgeData5";
@@ -13,11 +14,6 @@ import forgeL7 from "./forgeData7";
 import forgeL8 from "./forgeData8";
 import forgeL9 from "./forgeData9";
 import forgeL10 from "./forgeData10";
-
-// L2 reuses L1's content exactly (same format, same lesson) -- only the
-// id/code are relabeled so the deck's slide labels and scorecard download
-// filename read "L2" instead of "L1".
-const forgeL2 = { ...forgeL1, id: "forge-2", code: "L2" };
 
 const TRACKS = [
   {
