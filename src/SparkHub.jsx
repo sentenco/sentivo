@@ -1,5 +1,7 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import LESSONS from "./sparkTracks";
+import KIDS_LESSONS from "./sparkTracks";
+import TEENS_LESSONS from "./sparkTeensTracks";
 
 const ICON_PROPS = { width: 22, height: 22, viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: 2, strokeLinecap: "round", strokeLinejoin: "round" };
 
@@ -21,17 +23,41 @@ function QuestIcon({ title }) {
       </svg>
     );
   }
+  if (title === "Action Quest") {
+    return (
+      <svg {...ICON_PROPS}>
+        <circle cx="12" cy="5" r="2" />
+        <path d="M12 7v6l-3 7M12 13l3 7M8 10l-3 3M16 10l3 3" />
+      </svg>
+    );
+  }
+  if (title === "Football") {
+    return (
+      <svg {...ICON_PROPS}>
+        <circle cx="12" cy="12" r="9" />
+        <path d="M12 7l3.5 2.5-1.3 4H9.8l-1.3-4z" />
+      </svg>
+    );
+  }
+  if (title === "School") {
+    return (
+      <svg {...ICON_PROPS}>
+        <path d="M2 9l10-5 10 5-10 5z" />
+        <path d="M6 11v5c0 1.5 2.7 3 6 3s6-1.5 6-3v-5" />
+      </svg>
+    );
+  }
   return (
     <svg {...ICON_PROPS}>
-      <circle cx="12" cy="5" r="2" />
-      <path d="M12 7v6l-3 7M12 13l3 7M8 10l-3 3M16 10l3 3" />
+      <circle cx="9" cy="8" r="3" /><circle cx="17" cy="9" r="2.5" />
+      <path d="M3 20c0-3 2.7-5 6-5s6 2 6 5" /><path d="M14.5 15.5c2.5 0 4.5 1.8 4.5 4.5" />
     </svg>
   );
 }
 
 // SPARK trial lessons open as a standalone popup player, matching the
 // FORGE/ASCEND/SHIFT chrome-less window.open pattern.
-function openLesson(id) {
+function openLesson(path) {
   const screenW = window.screen.availWidth || 1600;
   const screenH = window.screen.availHeight || 900;
   const w = Math.min(1080, screenW - 40);
@@ -40,13 +66,13 @@ function openLesson(id) {
   const top = Math.max(0, Math.floor((screenH - h) / 2));
 
   window.open(
-    `/library/spark/${id}`,
+    path,
     "sentivoSparkPlayer",
     `width=${w},height=${h},left=${left},top=${top},toolbar=no,location=no,menubar=no,status=no,scrollbars=yes,resizable=yes`
   );
 }
 
-function openGuide(id) {
+function openGuide(path) {
   const screenW = window.screen.availWidth || 1600;
   const screenH = window.screen.availHeight || 900;
   const w = Math.min(640, screenW - 40);
@@ -55,14 +81,33 @@ function openGuide(id) {
   const top = Math.max(0, Math.floor((screenH - h) / 2));
 
   window.open(
-    `/library/spark/${id}/guide`,
+    path,
     "sentivoSparkGuide",
     `width=${w},height=${h},left=${left},top=${top},toolbar=no,location=no,menubar=no,status=no,scrollbars=yes,resizable=yes`
   );
 }
 
+const AUDIENCES = {
+  kids: {
+    label: "Kids",
+    lessons: KIDS_LESSONS,
+    blurb: "Three 20-minute trial classes for kids — playful, picture-first, and built to get a new student talking in the first two minutes.",
+    lessonPath: (id) => `/library/spark/${id}`,
+    guidePath: (id) => `/library/spark/${id}/guide`,
+  },
+  teens: {
+    label: "Teens",
+    lessons: TEENS_LESSONS,
+    blurb: "Three 20-minute trial classes for teens — conversation-game mini-lessons about football, school, and friends that turn a short answer into real speaking practice.",
+    lessonPath: (id) => `/library/spark/teens/${id}`,
+    guidePath: (id) => `/library/spark/teens/${id}/guide`,
+  },
+};
+
 export default function SparkHub() {
   const navigate = useNavigate();
+  const [audience, setAudience] = useState("kids");
+  const config = AUDIENCES[audience];
 
   return (
     <div className="spkh-shell">
@@ -78,14 +123,24 @@ export default function SparkHub() {
       <div className="spkh-stage">
         <div className="spkh-hero">
           <h1 className="spkh-hero-title">SPARK</h1>
-          <p className="spkh-hero-blurb">
-            Three 20-minute trial classes for kids — playful, picture-first, and built to get a new student talking
-            in the first two minutes. Pick the quest that fits the child in front of you.
-          </p>
+          <p className="spkh-hero-blurb">{config.blurb}</p>
+
+          <div className="spkh-audience-toggle">
+            {Object.entries(AUDIENCES).map(([key, a]) => (
+              <button
+                key={key}
+                type="button"
+                className={`spkh-audience-btn ${audience === key ? "is-active" : ""}`}
+                onClick={() => setAudience(key)}
+              >
+                {a.label}
+              </button>
+            ))}
+          </div>
         </div>
 
         <div className="spkh-lessons-grid">
-          {LESSONS.map((lesson) => (
+          {config.lessons.map((lesson) => (
             <div key={lesson.id} className="spkh-lesson-card">
               <div className="spkh-lesson-top">
                 <span className="spkh-lesson-badge">{lesson.code}</span>
@@ -95,10 +150,10 @@ export default function SparkHub() {
               <h3 className="spkh-lesson-title">{lesson.title}</h3>
               <p className="spkh-lesson-desc">{lesson.coreAim}</p>
               <div className="spkh-lesson-foot">
-                <button type="button" className="spkh-lesson-guidebtn" onClick={() => openGuide(lesson.id)}>
+                <button type="button" className="spkh-lesson-guidebtn" onClick={() => openGuide(config.guidePath(lesson.id))}>
                   📋 Guide
                 </button>
-                <button type="button" className="spkh-lesson-startbtn" onClick={() => openLesson(lesson.id)}>
+                <button type="button" className="spkh-lesson-startbtn" onClick={() => openLesson(config.lessonPath(lesson.id))}>
                   Start →
                 </button>
               </div>
@@ -161,7 +216,7 @@ const CSS = `
 
 .spkh-stage { flex: 1; width: 100%; max-width: 960px; padding: 40px 24px 60px; }
 
-.spkh-hero { margin-bottom: 36px; }
+.spkh-hero { margin-bottom: 30px; }
 .spkh-hero-title {
   font-family: 'Fredoka', sans-serif;
   font-weight: 700;
@@ -174,10 +229,24 @@ const CSS = `
   font-weight: 500;
   font-size: 16px;
   color: #8A7233;
-  margin: 0;
+  margin: 0 0 18px;
   max-width: 640px;
   line-height: 1.5;
 }
+
+.spkh-audience-toggle { display: inline-flex; background: #FFF3D0; border-radius: 999px; padding: 4px; gap: 4px; }
+.spkh-audience-btn {
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  color: #8A7233;
+  background: transparent;
+  border: none;
+  border-radius: 999px;
+  padding: 8px 22px;
+  cursor: pointer;
+}
+.spkh-audience-btn.is-active { background: #FFB800; color: #4A3B12; }
 
 .spkh-lessons-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
 
