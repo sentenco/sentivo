@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useNavigate, useParams, useLocation } from "react-router-dom";
+import { useNavigate, useParams, useLocation, useSearchParams } from "react-router-dom";
 import { useAuth } from "./AuthContext";
 import AuthForm from "./AuthForm";
 import { supabase } from "./supabaseClient";
@@ -234,8 +234,9 @@ function UserIcon() {
 
 export default function Library() {
   const [theme, setTheme] = useState("fun");
-  const [category, setCategory] = useState("Reading");
-  const [page, setPage] = useState(1);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [category, setCategory] = useState(() => searchParams.get("cat") || "Reading");
+  const [page, setPage] = useState(() => Number(searchParams.get("page")) || 1);
   const [query, setQuery] = useState("");
   const { user, signOut } = useAuth();
   const [authMode, setAuthMode] = useState(null);
@@ -341,6 +342,12 @@ export default function Library() {
   function changeCategory(cat) {
     setCategory(cat);
     setPage(1);
+    setSearchParams({ cat }, { replace: true });
+  }
+
+  function changePage(next) {
+    setPage(next);
+    setSearchParams({ cat: category, page: String(next) }, { replace: true });
   }
 
   return (
@@ -610,9 +617,9 @@ export default function Library() {
 
         {category !== "Speaking" && (
         <div className="pagination">
-          <button disabled={safePage === 1} onClick={() => setPage((p) => p - 1)}>&larr; Prev</button>
+          <button disabled={safePage === 1} onClick={() => changePage(safePage - 1)}>&larr; Prev</button>
           <span className="page-indicator">Page {safePage} of {totalPages}</span>
-          <button disabled={safePage === totalPages} onClick={() => setPage((p) => p + 1)}>Next &rarr;</button>
+          <button disabled={safePage === totalPages} onClick={() => changePage(safePage + 1)}>Next &rarr;</button>
         </div>
         )}
       </main>
