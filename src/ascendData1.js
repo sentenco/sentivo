@@ -85,14 +85,127 @@ export default {
   },
 
   teacherGuide: {
-    cover: "Introduce the lesson type — Upgrade — and today's goal: prove the student can move from vague language to precise collocations. This is the baseline lesson; there's no incoming homework to check.",
-    warmup: "This is the secret-capture moment. Ask the question and let the student answer immediately, with no prep time — that's what 'impromptu' means here. Silently note their exact sentence; you'll use it on the Highlight slide. Don't correct anything yet.",
-    vocabulary: "This is a game, not a table read-through. For each phrase: show the vague version, ask the student to attempt their own upgrade out loud, then tap 'Show our version' to reveal the target. If this is the student's first Upgrade lesson, explain what a collocation is before you start: a natural pairing of words native speakers use together, e.g. 'make a decision', not 'do a decision'. The goal is recognizing why the upgraded version sounds more natural, not memorizing a list.",
-    highlight: "Type the student's actual Warm-up sentence into box 1, exactly as they said it. Then challenge them out loud: 'Can you say that more precisely?' Give them a real attempt before you reveal your own model version in box 3 — this personal, in-the-moment comparison is the core moment of the lesson.",
-    practice: "Bank is fully visible for this drill. Say the vague version, let the student respond, and only correct if they pick the wrong collocation from the bank — this is about recall and reflex, not new thinking.",
-    activity: "This is the diagnostic. Bank stays visible since this is a High-support lesson (shown as a chip row above the prompt). Time the student for exactly 60 seconds. Silently count how many collocations they use and write the number down — this is the baseline every future lesson, and eventually L10's re-test, has to beat.",
-    pushit: "Optional — only use if time allows. No timer, no pressure. It's a bonus rep before scoring, not a test.",
-    scorecard: "Score based on today's performance, not memory. Use the collocation count from the Activity slide to help judge Precision and Persuasion/Structure.",
-    homework: "Preview next lesson's bank with the student before they leave, so it isn't the first time they see it in L2.",
+    cover: {
+      goal: "Set the frame for the lesson type and today's baseline goal.",
+      say: [
+        "Today we're doing something a little different — we're going to find the exact words you're missing, not new vocabulary, just more precise versions of what you already know.",
+        "This is our baseline lesson, so don't worry about getting it right — we're just measuring where you are right now.",
+      ],
+      do: [
+        "Let the title sit on screen for a few seconds before moving on.",
+        "Don't explain the bank yet — that comes on the next slide.",
+      ],
+      timing: "1 min",
+    },
+    warmup: {
+      goal: "Secretly capture the student's raw, unedited sentence for later use on the Highlight slide.",
+      say: [
+        "Quick question — don't overthink it, just answer straight away.",
+        "What's the first thing that comes to mind when you think about AI in business?",
+      ],
+      do: [
+        "Give zero prep time — that's the whole point of 'impromptu'.",
+        "Write down their exact sentence, word for word, even if it's rough. You'll need it in a few minutes.",
+        "Don't correct anything yet — just capture it.",
+      ],
+      timing: "2 min",
+    },
+    vocabulary: {
+      goal: "Teach the 5 collocations as a game — student attempts before you reveal, not a list to read.",
+      say: [
+        "Before I show you the answer, this is a bit of a game.",
+        "I'll show you a simple sentence, and I want you to try upgrading it yourself out loud — however it comes out is fine.",
+        "Then I'll tap the button and show you our version, and we'll compare.",
+        "Quick definition since this is new: a collocation is just a natural pairing of words — native speakers say 'make a decision', not 'do a decision'. Same idea, just business language.",
+      ],
+      do: [
+        "Read the vague phrase on screen aloud.",
+        "Pause and let the student attempt their own upgrade — accept anything, don't correct yet.",
+        "Tap 'Show our version' to reveal, then compare out loud.",
+        "Repeat for all 5 phrases using Next.",
+      ],
+      timing: "5 min",
+    },
+    highlight: {
+      goal: "Personally upgrade the exact sentence they gave you in the Warm-up — the core moment of the lesson.",
+      say: [
+        "Remember what you said a few minutes ago? Let's look at it together.",
+        "Now — can you try saying that again, but using one or two of today's words?",
+        "Here's how I'd say it — listen for the difference.",
+      ],
+      do: [
+        "Type their exact Warm-up sentence into box 1.",
+        "Ask them to rephrase it out loud using today's bank — give them a real attempt, don't rush them.",
+        "Type your own upgraded model into box 3, reading it aloud as you type.",
+        "Compare all three versions out loud: their original, their attempt, your model.",
+      ],
+      timing: "4 min",
+    },
+    practice: {
+      goal: "Fast recall drill with the bank still fully visible.",
+      say: [
+        "Quick fire round — bank's still up, just react fast, don't think too hard.",
+        "It's getting better fast.",
+        "Lots of companies use it.",
+        "It can do a lot of things.",
+        "It's not perfect.",
+      ],
+      do: [
+        "Say each vague sentence and let the student respond immediately with the upgrade.",
+        "Correct gently only if they use the wrong collocation — this is reflex training, not new teaching.",
+      ],
+      timing: "3 min",
+    },
+    activity: {
+      goal: "The actual diagnostic. Count collocations — this number is the baseline every future lesson has to beat.",
+      say: [
+        "Okay, this one's timed — 60 seconds, and I want you to just talk, don't stop even if you stumble.",
+        "How is AI changing business right now?",
+        "Go.",
+      ],
+      do: [
+        "Start a 60-second timer the moment they begin.",
+        "Silently tally every collocation they use from the bank — write the number down somewhere private, this is the baseline.",
+        "Don't interrupt or correct during the 60 seconds.",
+      ],
+      timing: "2 min",
+    },
+    pushit: {
+      goal: "Optional bonus rep, no pressure, only if time allows.",
+      say: [
+        "If we've got a minute — one more, no timer this time, just for fun.",
+        "Describe a business you know using two of today's words.",
+      ],
+      do: [
+        "Skip this slide entirely if you're short on time — it's not required.",
+        "No correction needed here, just enjoy the extra rep.",
+      ],
+      timing: "2 min (optional)",
+    },
+    scorecard: {
+      goal: "Score today's performance and log it as the baseline for every future comparison.",
+      say: [
+        "Let's put a number on today — this is our starting point, not a test you can fail.",
+        "I'm going to score you on four things: precision, nuance, structure, and how you handled the pressure.",
+      ],
+      do: [
+        "Fill in each score based on the Activity performance, using the collocation count as your main signal for Precision and Persuasion/Structure.",
+        "Total shows automatically.",
+        "Download the result and save it somewhere — you'll compare directly against this in L10.",
+      ],
+      timing: "2 min",
+    },
+    homework: {
+      goal: "Preview next lesson's bank so it isn't a surprise, using the passage as reinforcement reading.",
+      say: [
+        "Before next time, read through this passage a couple of times — notice how the five phrases sit naturally in real sentences.",
+        "Also take a quick look at next lesson's words at the bottom — you don't need to know them yet, just get your eyes on them.",
+      ],
+      do: [
+        "Point out the highlighted phrases in the passage as pronunciation/stress practice, not just reading.",
+        "Make sure they see the 'Next lesson's bank' box before closing.",
+      ],
+      timing: "1 min",
+    },
   },
 };

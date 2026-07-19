@@ -85,14 +85,77 @@ export default {
   },
 
   teacherGuide: {
-    cover: "Second Counter lesson. Support drops to Mid — softening language is added on top of L6's rebuttal bank.",
-    warmup: "3 claims, mark agree/disagree + one-line reason each. Capture whichever reaction is bluntest for the Highlight slide.",
-    vocabulary: "Fully visible softening layer. Have the student attempt their own soft opener before revealing each target phrase.",
-    highlight: "Deliver the same disagreement three times, softening each time — from an L6-level firm rebuttal, to a gently-pushed-back version, to the softest, most sophisticated reframe. The student should notice what changes between the three versions, not just hear them. Use the two text boxes to build the softest version live with the student.",
-    practice: "Every turn must validate before countering, no exceptions, even for weak claims — open with 'I see where you're coming from' before disagreeing.",
-    activity: "Student pitches a regulation stance of their choice; teacher objects once; student counters live, softening layer required. Target-count: softening phrases used before each counter, not just the first one.",
-    pushit: "Reframe move — instead of countering directly, shift the frame of the argument itself.",
-    scorecard: "No comparison line this lesson.",
-    homework: "No new bank for L8 — the student should arrive having fully recalled L6 and L7's language from memory.",
+    cover: {
+      goal: "Second Counter lesson. Support drops to Mid — softening language layers on top of L6's rebuttal bank.",
+      say: ["Same move as last time — concede then counter — but today we're softening how it opens."],
+      do: ["Briefly recap L6's move by name before introducing the new softening layer."],
+      timing: "1 min",
+    },
+    warmup: {
+      goal: "3 claims, agree/disagree + one-line reason each — capture whichever reaction is bluntest.",
+      say: [
+        "Three claims — for each, tell me agree or disagree, and one reason why.",
+        "Governments should regulate AI more strictly.",
+        "AI regulation will slow down innovation too much.",
+        "Companies can be trusted to regulate themselves.",
+      ],
+      do: ["Capture whichever reaction is bluntest for the Highlight slide."],
+      timing: "3 min",
+    },
+    vocabulary: {
+      goal: "Fully visible softening layer — student attempts their own soft opener before you reveal the target.",
+      say: ["For each move, try opening it softly yourself first — then I'll show you ours."],
+      do: ["Run all 5 softening phrases as attempt-then-reveal, menu visible throughout."],
+      timing: "4 min",
+    },
+    highlight: {
+      goal: "Same disagreement delivered 3 ways, softening each time — the student should notice what changes.",
+      say: [
+        "Same disagreement, three versions, each one softer. Listen for what changes.",
+        "That's true up to a point, but the bigger concern is unregulated harm.",
+        "I see where you're coming from — but I'd gently push back: some slowdown might be the price of avoiding real harm.",
+        "I hear what you're saying, and if I can offer a different perspective: maybe the real trade-off isn't speed versus safety at all.",
+        "Which one felt the most sophisticated? Why?",
+      ],
+      do: [
+        "Deliver all three versions yourself first so they hear the progression.",
+        "Then use the two text boxes to build the softest version live with the student's own attempt.",
+      ],
+      timing: "5 min",
+    },
+    practice: {
+      goal: "Every turn must validate before countering — no exceptions, even for weak claims.",
+      say: ["No matter how weak the claim, you have to open with 'I see where you're coming from' before disagreeing.", "Regulation kills innovation."],
+      do: ["Enforce the opener strictly — if they skip it, stop them and have them redo the turn."],
+      timing: "3 min",
+    },
+    activity: {
+      goal: "Student pitches, teacher objects once, student counters live with the softening layer required.",
+      say: ["Pick a regulation stance, any stance. I'll object once, and you counter — softening layer required."],
+      do: [
+        "Let them choose their own stance.",
+        "Object once, genuinely, then let them counter.",
+        "Target-count: softening phrases used before each counter, not just the first one.",
+      ],
+      timing: "3 min",
+    },
+    pushit: {
+      goal: "Reframe move — shift the frame of the argument instead of countering directly.",
+      say: ["Instead of countering directly this time, try shifting the whole frame of the argument.", "Maybe the real question isn't 'regulate or not,' but 'who gets to write the rules.'"],
+      do: ["This is a harder move — model it once before asking them to try."],
+      timing: "1 min (optional)",
+    },
+    scorecard: {
+      goal: "No comparison line this lesson.",
+      say: ["No comparison today — just score where you are."],
+      do: ["Score normally, no benchmark needed."],
+      timing: "2 min",
+    },
+    homework: {
+      goal: "No new bank for L8 — the student should arrive having fully recalled L6+L7's language from memory.",
+      say: ["No new words before next time — just make sure L6 and L7's phrases are solid in your memory, because next lesson has no bank at all."],
+      do: ["Warn them explicitly that L8 removes all support — this is their heads-up."],
+      timing: "1 min",
+    },
   },
 };

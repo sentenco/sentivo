@@ -61,6 +61,27 @@ function openLesson(trackId, num) {
   );
 }
 
+// Teacher Guide opens as its own separate popup, triggered by its own
+// explicit click -- not paired automatically with the student window.
+// (The curriculum tried auto-opening a student+teacher pair from one
+// click twice and reverted it as unreliable; a dedicated button avoids
+// that failure mode.) Portrait-ish sizing since it's a long scrollable
+// reference document meant to be read, not projected.
+function openGuide(trackId, num) {
+  const screenW = window.screen.availWidth || 1600;
+  const screenH = window.screen.availHeight || 900;
+  const w = Math.min(640, screenW - 40);
+  const h = Math.min(840, screenH - 40);
+  const left = Math.max(0, Math.floor((screenW - w) / 2));
+  const top = Math.max(0, Math.floor((screenH - h) / 2));
+
+  window.open(
+    `/library/ascend/${trackId}/${num}/guide`,
+    "sentivoAscendGuide",
+    `width=${w},height=${h},left=${left},top=${top},toolbar=no,location=no,menubar=no,status=no,scrollbars=yes,resizable=yes`
+  );
+}
+
 export default function AscendTrack() {
   const { trackId } = useParams();
   const navigate = useNavigate();
@@ -118,12 +139,7 @@ export default function AscendTrack() {
               );
             }
             return (
-              <button
-                type="button"
-                key={num}
-                className="as-lesson-tile as-lesson-tile--live"
-                onClick={() => openLesson(track.id, num)}
-              >
+              <div key={num} className="as-lesson-tile as-lesson-tile--live">
                 <div className="as-lesson-top">
                   <span className="as-lesson-badge">L{num}</span>
                   <span className="as-lesson-tagtext">{lesson.tag}</span>
@@ -131,11 +147,16 @@ export default function AscendTrack() {
                 <div className="as-lesson-icon"><TypeIcon type={lesson.type} /></div>
                 <h3 className="as-lesson-title2">{lesson.title}</h3>
                 <p className="as-lesson-desc">{lesson.subtitle}</p>
+                <span className="as-lesson-meta">{lesson.support} support · {slideCount(lesson)} slides</span>
                 <div className="as-lesson-foot">
-                  <span className="as-lesson-meta">{lesson.support} support · {slideCount(lesson)} slides</span>
-                  <span className="as-lesson-startbtn">Start →</span>
+                  <button type="button" className="as-lesson-guidebtn" onClick={() => openGuide(track.id, num)}>
+                    📋 Guide
+                  </button>
+                  <button type="button" className="as-lesson-startbtn" onClick={() => openLesson(track.id, num)}>
+                    Start →
+                  </button>
                 </div>
-              </button>
+              </div>
             );
           })}
         </div>
@@ -256,12 +277,10 @@ const CSS = `
   box-shadow: none;
 }
 .as-lesson-tile--live {
-  cursor: pointer;
-  transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
 }
 .as-lesson-tile--live:hover {
   border-color: #3FCDAF;
-  transform: translateY(-2px);
   box-shadow: 0 14px 30px rgba(20,80,65,0.16);
 }
 
@@ -319,8 +338,14 @@ const CSS = `
   overflow: hidden;
 }
 
-.as-lesson-foot {
+.as-lesson-meta {
   margin-top: auto;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 500;
+  font-size: 9.5px;
+  color: #8AAFA5;
+}
+.as-lesson-foot {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -328,11 +353,17 @@ const CSS = `
   border-top: 1px solid #E3F3ED;
   gap: 6px;
 }
-.as-lesson-meta {
+.as-lesson-guidebtn {
   font-family: 'Quicksand', sans-serif;
-  font-weight: 500;
-  font-size: 9.5px;
-  color: #8AAFA5;
+  font-weight: 700;
+  font-size: 10.5px;
+  color: #128571;
+  background: #E9F7F2;
+  border: 1px solid #D3EFE6;
+  border-radius: 999px;
+  padding: 5px 10px;
+  white-space: nowrap;
+  cursor: pointer;
 }
 .as-lesson-startbtn {
   font-family: 'Quicksand', sans-serif;
@@ -340,9 +371,11 @@ const CSS = `
   font-size: 11px;
   color: #17352E;
   background: #3FCDAF;
+  border: none;
   border-radius: 999px;
   padding: 5px 11px;
   white-space: nowrap;
+  cursor: pointer;
 }
 
 @media (max-width: 900px) {

@@ -74,14 +74,80 @@ export default {
   },
 
   teacherGuide: {
-    cover: "Final lesson. No new material — this is pure integration and the payoff moment for the whole course.",
-    warmup: "Recall 5 expressions from anywhere in the course, no gaps allowed — then move straight into the Highlight slide with no further warm-up. Don't capture anything here; the real capture happens on the Re-test slide.",
-    vocabulary: "Nothing shown. Full recall only, no prompting.",
-    highlight: "60-second recommendation on 'Should our company double down on AI investment, or diversify?', then 3 hostile questions fired back to back with no pause: what happens if the market crashes, isn't 'diversify' just avoiding a decision, what would you tell the board tomorrow morning.",
-    practice: "One quick rehearsal round on a smaller question before the real thing — then no more support for the rest of the lesson.",
-    activity: "Argue for doubling down on AI investment for 60 seconds, then immediately argue against it, just as convincingly, for 60 seconds. Stance-switching under pressure is the clearest C1→C2 signal in the whole package.",
-    retest: "This is the actual deliverable. Re-run L1's exact task, cold, no notes, no bank. Count collocations used exactly as you did in L1. Compare turn length, collocation count, hedges used, and overall control directly against your L1 recording or notes — this comparison is what you hand the student and what you're selling.",
-    scorecard: "Score today, then compute the headline metric: L10 total minus L1 total, and the collocation count jump. Log both on the Progress Sheet.",
-    homework: "No new material, no next lesson. Log the final Progress Sheet row and hand the student the L1-vs-L10 comparison as tangible proof of the ten lessons.",
+    cover: {
+      goal: "Final lesson — no new material, this is pure integration and the payoff moment for the whole course.",
+      say: ["Today's the payoff. No new material — everything we do today is proving what you've already built."],
+      do: ["Bring your L1 notes/recording with you before this lesson starts — you'll need the exact numbers for the re-test comparison."],
+      timing: "1 min",
+    },
+    warmup: {
+      goal: "Recall 5 expressions, no gaps — then go straight into Highlight with no further warm-up.",
+      say: ["Five expressions, anywhere in the course, no gaps. Go."],
+      do: [
+        "Move straight into the Highlight slide once they've produced 5 — no extended warm-up today.",
+        "Don't capture anything here; the real capture happens on the Re-test slide.",
+      ],
+      timing: "2 min",
+    },
+    vocabulary: {
+      goal: "Nothing shown — full recall only, no prompting.",
+      say: ["Nothing on screen today — everything comes from you."],
+      do: ["Move through quickly; there's no content here beyond confirming they're ready."],
+      timing: "30 sec",
+    },
+    highlight: {
+      goal: "60-second recommendation, then 3 hostile questions fired back to back with no pause.",
+      say: [
+        "Sixty seconds: should our company double down on AI investment, or diversify? Then I'm going to fire three questions at you, no pause between them.",
+        "What happens if the AI market crashes in two years?",
+        "Isn't 'diversify' just a way of avoiding a real decision?",
+        "What would you actually tell the board to do tomorrow morning?",
+      ],
+      do: ["Fire all three questions rapidly, no gaps — the pressure is the point."],
+      timing: "4 min",
+    },
+    practice: {
+      goal: "One quick rehearsal round on a smaller question — then no more support for the rest of the lesson.",
+      say: ["One warm-up round on something smaller before the real thing."],
+      do: ["Keep this brief — after this slide, there's no more scaffolding for the rest of the lesson."],
+      timing: "2 min",
+    },
+    activity: {
+      goal: "Argue for, then immediately against — stance-switching under pressure is the clearest C1→C2 signal in the package.",
+      say: [
+        "For, then against: should the company double down on AI investment? Sixty seconds arguing for, then immediately sixty seconds arguing against, just as convincingly.",
+      ],
+      do: ["Don't let them pause between the two stances — the immediate flip is the whole point of the exercise."],
+      timing: "3 min",
+    },
+    retest: {
+      goal: "This is the actual deliverable. Re-run L1's exact task, cold, no notes, no bank.",
+      say: [
+        "Last thing — exact same question as Lesson 1, word for word, no notes.",
+        "How is AI changing business right now?",
+        "Sixty seconds. Go.",
+      ],
+      do: [
+        "No support of any kind — this must be genuinely cold.",
+        "Count collocations used exactly as you did in L1.",
+        "Compare turn length, collocation count, hedges used, and overall control directly against the L1 recording or notes — this comparison is what you hand the student and what you're selling.",
+      ],
+      timing: "2 min",
+    },
+    scorecard: {
+      goal: "Score today, then compute the headline metric: L10 total minus L1 total.",
+      say: [
+        "Let's score today, and then let's do the math on the whole ten lessons.",
+        "[Reveal the number] That's how much you've improved, measured, not just felt.",
+      ],
+      do: ["Compute L10 total minus L1 total, and the collocation count jump. Log both on the Progress Sheet."],
+      timing: "3 min",
+    },
+    homework: {
+      goal: "No new material, no next lesson — log the final row and hand over the comparison as proof.",
+      say: ["That's the course. Take this passage as a keepsake — read it back and notice how differently it lands now compared to ten lessons ago."],
+      do: ["Log the final Progress Sheet row and hand the student the L1-vs-L10 comparison as tangible proof of the ten lessons."],
+      timing: "1 min",
+    },
   },
 };

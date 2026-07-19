@@ -83,14 +83,90 @@ export default {
   },
 
   teacherGuide: {
-    cover: "Final lesson of the Upgrade block. Support is Low — the student should be producing precision largely unaided by now.",
-    warmup: "React to the headline in one sentence, captured verbatim. Expect it blunt — that bluntness is exactly what today's hedging bank softens.",
-    vocabulary: "No bank shown before this slide — first check the student can produce L1's 5 and L2's 5 from memory. Then run this lesson's hedging bank as the reveal game.",
-    highlight: "This time the upgrade adds a hedge, not just precision. Type the Warm-up reaction, challenge the student to soften it, then reveal your model. This is the second 'aha': precision made them sound like an expert; hedging makes them sound like a careful one — the actual C1→C2 distinction this whole package is built to prove.",
-    practice: "No bank shown. Blunt claim → measured version, using likely to / rather than / that said / arguably / admittedly.",
-    activity: "No bank on screen — Low support. Aim for 3+ precision collocations from any earlier lesson plus 2+ hedges. This is diagnostic-style and closes the Upgrade block; the student should sound precise and measured with zero support.",
-    pushit: "Diplomat's rewrite bonus — harsh version then diplomatic version, read both aloud.",
-    scorecard: "This score is the real baseline for unsupported precision — useful context when you get to L8 and L10.",
-    homework: "Preview L4's signpost bank (the Frame block starts next lesson) before the student leaves.",
+    cover: {
+      goal: "Final Upgrade lesson. Support is Low — the student should produce precision largely unaided by now.",
+      say: ["Last one in this block — today's a bit harder because there's no bank on most slides. You've earned that."],
+      do: ["Frame this explicitly as the graduation point of the block, not just 'another lesson'."],
+      timing: "30 sec",
+    },
+    warmup: {
+      goal: "React to a headline, captured verbatim — expect it blunt, since that's what today softens.",
+      say: [
+        "React to this in one sentence — don't plan it, just say what you think.",
+        "New study finds leading AI hiring tools show measurable bias against older candidates.",
+      ],
+      do: [
+        "Capture their exact reaction word for word.",
+        "Expect bluntness ('that's wrong', 'companies shouldn't...') — that's the raw material for the Highlight slide, not a problem to fix now.",
+      ],
+      timing: "2 min",
+    },
+    vocabulary: {
+      goal: "Check L1+L2 recall first — no bank shown for either. Then run the hedging bank as the reveal game.",
+      say: [
+        "Before anything new — give me L1's 5 and L2's 5, from memory, no bank.",
+        "Now, new set: hedging words. These aren't collocations, they're how you sound careful instead of certain.",
+      ],
+      do: [
+        "Hold firm on the no-bank recall check — this is the real diagnostic for whether L1/L2 stuck.",
+        "Run the 4 hedging pairs (likely to, rather than, that said, arguably, admittedly) as attempt-then-reveal.",
+      ],
+      timing: "5 min",
+    },
+    highlight: {
+      goal: "The second 'aha' — precision made them sound like an expert; hedging makes them sound careful.",
+      say: [
+        "Let's go back to your reaction from earlier.",
+        "Now — same idea, but can you soften it? Add a hedge somewhere.",
+        "Here's mine — listen for where the hedge sits.",
+      ],
+      do: [
+        "Type their Warm-up reaction, challenge them to add a hedge this time (not just precision), then reveal your model.",
+        "Name the distinction out loud explicitly: this is the difference between sounding correct and sounding measured — the actual C1→C2 jump.",
+      ],
+      timing: "4 min",
+    },
+    practice: {
+      goal: "No bank shown — blunt claim to measured version, from memory.",
+      say: [
+        "No bank this time. Blunt claim, you soften it.",
+        "AI hiring tools are biased.",
+        "Companies should stop using them.",
+        "This is a huge failure.",
+      ],
+      do: ["Let them reach for likely to / rather than / that said / arguably / admittedly unaided — only prompt if they're fully stuck."],
+      timing: "3 min",
+    },
+    activity: {
+      goal: "Diagnostic-style, no support — 3+ precision collocations from any lesson plus 2+ hedges.",
+      say: [
+        "This one's the real test of the block — no bank, sixty seconds.",
+        "Should companies be fully responsible for their AI's mistakes?",
+      ],
+      do: [
+        "No bank on screen — this is genuinely unaided.",
+        "Silently count 3+ precision collocations (from any lesson) and 2+ hedges.",
+        "This closes the Upgrade block — treat the result as a real signal, not just practice.",
+      ],
+      timing: "2 min",
+    },
+    pushit: {
+      goal: "Diplomat's rewrite — harsh version then diplomatic version, read both aloud.",
+      say: ["Last bonus round of the block — I'll read a harsh version, you give me the diplomatic one."],
+      do: ["Read the harsh version aloud, let them attempt the diplomatic rewrite, then show your model."],
+      timing: "2 min (optional)",
+    },
+    scorecard: {
+      goal: "This score is the real baseline for unsupported precision — keep it for L8 and L10 context.",
+      say: ["This number matters more than the last two — it's you with zero support, so it's our real starting line."],
+      do: ["Note this score somewhere separate — you'll reference it again in L8 and L10."],
+      timing: "2 min",
+    },
+    homework: {
+      goal: "Preview L4's signpost bank — the Frame block starts next lesson.",
+      say: ["Next lesson is a different skill entirely — not new words, but how to organize an argument. Take a look at the new bank."],
+      do: ["Flag explicitly that L4 is a new block (Frame) so the shift in lesson shape doesn't feel like a surprise."],
+      timing: "1 min",
+    },
   },
 };

@@ -12,6 +12,7 @@ import Forge from './Forge.jsx'
 import ForgeTrack from './ForgeTrack.jsx'
 import Ascend from './Ascend.jsx'
 import AscendTrack from './AscendTrack.jsx'
+import AscendGuide from './AscendGuide.jsx'
 import { AuthProvider } from './AuthContext.jsx'
 
 createRoot(document.getElementById('root')).render(
@@ -31,6 +32,7 @@ createRoot(document.getElementById('root')).render(
           <Route path="/library/forge/:trackId/:lessonNum" element={<Forge />} />
           <Route path="/library/ascend/:trackId" element={<AscendTrack />} />
           <Route path="/library/ascend/:trackId/:lessonNum" element={<Ascend />} />
+          <Route path="/library/ascend/:trackId/:lessonNum/guide" element={<AscendGuide />} />
           <Route path="/lesson-player/:id" element={<LessonPlayerPage />} />
           <Route path="/teacher-guide/:level/:track" element={<TeacherGuide />} />
         </Routes>

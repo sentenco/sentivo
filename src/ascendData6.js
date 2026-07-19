@@ -86,14 +86,79 @@ export default {
   },
 
   teacherGuide: {
-    cover: "First lesson of the Counter block. Rebuttal bank is fully visible — High support.",
-    warmup: "State the provocation flat, no softening on your way in. Capture the reaction verbatim — expect blunt disagreement, since that bluntness is exactly what today's move softens.",
-    vocabulary: "Menu fully visible. For each blunt-vs-diplomatic pair, let the student attempt their own diplomatic version before revealing the target.",
-    highlight: "Show a blunt response and a diplomatic response to the same provocation side by side, then have the student practice converting the blunt one live using the two text boxes. Name the move explicitly: concede something real, then counter — not deny, not soften into agreement.",
-    practice: "Menu visible — drill the exact move on all 5 provocations.",
-    activity: "Argue hard, no warm-up: 'AI tools are killing genuine productivity.' 90 seconds, student rebuts diplomatically, staying warm throughout. Target-count: how many times did concede-then-counter land cleanly, not just once at the start?",
-    pushit: "Have the student self-rate their last rebuttal 1–5 on warmth and firmness; redo it if either is below a 4.",
-    scorecard: "No comparison line — L6 opens a new block.",
-    homework: "Preview L7's softening layer (the same Counter block, one lesson deeper) before the student leaves.",
+    cover: {
+      goal: "First Counter lesson. Rebuttal bank fully visible — High support.",
+      say: ["New block: rebuttal. Today's about disagreeing with someone without sounding defensive or aggressive."],
+      do: ["Set expectations that this block involves you (the teacher) playing an active provocateur role, not just prompting."],
+      timing: "1 min",
+    },
+    warmup: {
+      goal: "State the provocation flat, no softening — expect blunt disagreement, that's the raw material for today.",
+      say: ["AI tools just make people lazier and less productive — they don't actually help."],
+      do: [
+        "Deliver this flat and firm, no softening on your way in.",
+        "Capture their reaction verbatim — expect blunt disagreement, that's exactly what today's move softens.",
+      ],
+      timing: "2 min",
+    },
+    vocabulary: {
+      goal: "Menu fully visible — for each blunt-vs-diplomatic pair, let them attempt before revealing.",
+      say: [
+        "For each one, I'll show you the blunt version — try making it diplomatic yourself first, then I'll show you ours.",
+      ],
+      do: ["Run all 5 rebuttal pairs as attempt-then-reveal, menu visible throughout."],
+      timing: "5 min",
+    },
+    highlight: {
+      goal: "Blunt vs diplomatic response side by side — name the move: concede something real, then counter.",
+      say: [
+        "Here's a blunt response and a diplomatic one to the same thing. Listen for the difference.",
+        "No, that's wrong, AI clearly helps productivity.",
+        "I take your point, but that's true up to a point — for repetitive tasks, AI genuinely saves time. The real question is whether people reinvest that time productively.",
+        "The move is: concede something real, then counter. Not deny, not agree — concede, then counter.",
+      ],
+      do: [
+        "Type the blunt version in box 1, have them attempt a diplomatic rewrite, then reveal your model in box 3.",
+        "Name the move explicitly out loud — this naming is what makes it repeatable.",
+      ],
+      timing: "4 min",
+    },
+    practice: {
+      goal: "Menu visible — drill the exact move on all 5 provocations.",
+      say: [
+        "Five more provocations, quick fire, menu stays up.",
+        "AI just creates more busywork, checking its output.",
+        "People become dependent on it and stop thinking for themselves.",
+      ],
+      do: ["Drill through all 5 items, correcting only the mechanism (concede-then-counter), not their opinions."],
+      timing: "4 min",
+    },
+    activity: {
+      goal: "90-second mini-debate — argue hard, no warm-up, target: how many clean concede-then-counters land.",
+      say: ["AI tools are killing genuine productivity — they just create more busywork.", "Ninety seconds — rebut me, and stay warm the whole time."],
+      do: [
+        "Argue hard with no warm-up into it.",
+        "Target-count: how many times did concede-then-counter land cleanly, not just once at the start?",
+      ],
+      timing: "3 min",
+    },
+    pushit: {
+      goal: "Self-rating bonus — 1-5 on warmth and firmness, redo if either is below a 4.",
+      say: ["Rate your last rebuttal yourself — one to five on warmth, one to five on firmness."],
+      do: ["If either score is below a 4, have them redo that one rebuttal."],
+      timing: "1 min (optional)",
+    },
+    scorecard: {
+      goal: "No comparison line — L6 opens a new block.",
+      say: ["Fresh block, fresh baseline — no comparison to Frame or Upgrade scores today."],
+      do: ["Score normally; this number is Counter's own starting point."],
+      timing: "2 min",
+    },
+    homework: {
+      goal: "Preview L7's softening layer — same block, one lesson deeper.",
+      say: ["Next time we add warmth on top of this — softer openers before the same rebuttal move. Take a look at the new phrases."],
+      do: ["Flag that L7 stays in the same block, just adds a layer — less of a shift than L4→L6 was."],
+      timing: "1 min",
+    },
   },
 };

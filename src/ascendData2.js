@@ -88,14 +88,96 @@ export default {
   },
 
   teacherGuide: {
-    cover: "Same Upgrade type as L1, now Mid support. Frame today as speed, not new content: the student already has these words; the goal is producing them under a clock.",
-    warmup: "Rapid-fire — 15 seconds per question, no time to plan. Vague words tend to come back out under pressure; that's expected and exactly what today's drill fixes. Capture one of the blunt answers for the Highlight slide.",
-    vocabulary: "Before revealing the bank, check recall: can the student still produce L1's 5 collocations unprompted? Then run this lesson's 5 the same reveal-game way as L1.",
-    highlight: "Same mechanism as L1, but faster — type the Warm-up sentence, challenge, then your model. The 'aha' should land quicker this time since the student has done this once already.",
-    practice: "Bank is half-hidden — only give the first word of each upgrade as a cue (e.g. 'drive…', 'disrupt…', 'weigh…').",
-    activity: "Bank stays visible since this is a Mid-support lesson (shown as chips above the prompt). 30 seconds, climb the ladder: basic → better → expert. Target-count must beat L1's number — watch for regression to vague words under the timer; that regression is the actual homework target.",
-    pushit: "Optional bonus rep, no timer — a breather before scoring.",
-    scorecard: "If today's total is at or above L1's, say so out loud — it's the first proof point before L10's headline number.",
-    homework: "Preview L3's bank (hedging language) before the student leaves.",
+    cover: {
+      goal: "Same Upgrade type as L1, now Mid support — frame today as speed, not new content.",
+      say: [
+        "Good news — you already know today's words, this time we're just testing how fast you can produce them.",
+        "Last lesson was about finding the right word. Today's about finding it under a clock.",
+      ],
+      do: ["Move quickly through this slide — no new setup needed since they've done L1."],
+      timing: "30 sec",
+    },
+    warmup: {
+      goal: "Rapid-fire capture under real time pressure — expect vague words to slip back out.",
+      say: [
+        "Fifteen seconds each, three questions, go fast, don't plan.",
+        "Should companies use AI to screen job applicants?",
+        "What's one job you think AI will change first?",
+        "Is automation good or bad news for hiring?",
+      ],
+      do: [
+        "Actually enforce the 15 seconds — don't let them slow down.",
+        "Vague words coming back out under pressure is expected — that's exactly what today fixes, not a bad sign.",
+        "Write down one of their blunt answers for the Highlight slide.",
+      ],
+      timing: "2 min",
+    },
+    vocabulary: {
+      goal: "Check L1 recall first, then run this lesson's 5 as the same reveal game.",
+      say: [
+        "Before we start new ones — can you give me L1's 5 words from memory, no bank?",
+        "Now let's do the same game as last time, just faster.",
+      ],
+      do: [
+        "If they can't recall L1's 5 unprompted, spend an extra minute reviewing before moving on.",
+        "Run this lesson's 5 phrases the same reveal-game way as L1 — attempt, then reveal.",
+      ],
+      timing: "4 min",
+    },
+    highlight: {
+      goal: "Same mechanism as L1, but faster — the 'aha' should land quicker this time.",
+      say: [
+        "Same thing as last time — let's upgrade what you just said, but quicker this round.",
+        "Here's my version — notice it took us less time to get here than L1.",
+      ],
+      do: [
+        "Type their Warm-up sentence, challenge them, then type your model — move briskly.",
+        "Point out explicitly that this is faster than L1 — that speed is the actual progress.",
+      ],
+      timing: "3 min",
+    },
+    practice: {
+      goal: "Bank half-hidden drill — only the first word of each upgrade shown as a cue.",
+      say: [
+        "This time I'll only give you the first word — you finish it.",
+        "It makes more money. → drive…",
+        "It changes whole industries. → disrupt…",
+        "You have to think about good and bad. → weigh…",
+      ],
+      do: ["Only reveal the cue word, not the full phrase — resist the urge to help further."],
+      timing: "2 min",
+    },
+    activity: {
+      goal: "Timed ladder — target-count must beat L1's number.",
+      say: [
+        "Thirty seconds, one idea: 'AI is changing hiring.' Climb it — basic, then better, then expert.",
+      ],
+      do: [
+        "Bank stays visible on screen since this is Mid support — let them glance at it.",
+        "Start the 30-second timer.",
+        "Watch for regression to vague words under time pressure — that regression is the real homework target, not a failure.",
+      ],
+      timing: "2 min",
+    },
+    pushit: {
+      goal: "Optional bonus rep, no timer — a breather before scoring.",
+      say: ["One more, same ladder, no clock this time — just for the extra rep."],
+      do: ["Skip if short on time."],
+      timing: "1 min (optional)",
+    },
+    scorecard: {
+      goal: "Score today and explicitly compare against L1's baseline.",
+      say: [
+        "Let's score it — and if this beats last lesson's number, I'm going to tell you, because that's the whole point.",
+      ],
+      do: ["If today's total is at or above L1's, say so out loud — it's the first proof point before L10's headline number."],
+      timing: "2 min",
+    },
+    homework: {
+      goal: "Preview L3's hedging bank before the student leaves.",
+      say: ["Read this passage a couple of times, and take a look at next lesson's words — they're a new type: hedging language."],
+      do: ["Point out that L3's bank looks different — small connector words, not big collocations — so they're not surprised next lesson."],
+      timing: "1 min",
+    },
   },
 };
