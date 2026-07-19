@@ -358,6 +358,7 @@ export default function Library() {
       <header className="nav">
         <div className="nav-left">
           <a href="/" className="brand">sent<span className="dot">i</span>vo<span className="lib-tag">Library</span></a>
+          <a href="/library/spark" className="trial-btn">⚡ Trial Class</a>
         </div>
         <div className="nav-right">
           <div className="theme-toggle">
@@ -795,6 +796,20 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   letter-spacing: 1px;
   margin-left: 8px;
 }
+.trial-btn {
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  color: #4A3B12;
+  background: linear-gradient(135deg, #FFDD7A 0%, #FFB800 100%);
+  border: none;
+  border-radius: 999px;
+  padding: 8px 16px;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(255,184,0,0.35);
+  white-space: nowrap;
+}
+.trial-btn:hover { box-shadow: 0 6px 16px rgba(255,184,0,0.45); }
 .theme-pro .lib-tag { font-family: 'Inter', sans-serif; }
 
 .nav-right { display: flex; align-items: center; gap: 12px; position: relative; margin-left: auto; }

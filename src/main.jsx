@@ -22,6 +22,9 @@ import Shift from './Shift.jsx'
 import ShiftHub from './ShiftHub.jsx'
 import ShiftTrack from './ShiftTrack.jsx'
 import ShiftGuide from './ShiftGuide.jsx'
+import Spark from './Spark.jsx'
+import SparkHub from './SparkHub.jsx'
+import SparkGuide from './SparkGuide.jsx'
 import { AuthProvider } from './AuthContext.jsx'
 import SiteGate from './SiteGate.jsx'
 
@@ -53,6 +56,9 @@ createRoot(document.getElementById('root')).render(
             <Route path="/library/shift/:trackId" element={<ShiftTrack />} />
             <Route path="/library/shift/:trackId/:lessonNum" element={<Shift />} />
             <Route path="/library/shift/:trackId/:lessonNum/guide" element={<ShiftGuide />} />
+            <Route path="/library/spark" element={<SparkHub />} />
+            <Route path="/library/spark/:lessonId" element={<Spark />} />
+            <Route path="/library/spark/:lessonId/guide" element={<SparkGuide />} />
             <Route path="/lesson-player/:id" element={<LessonPlayerPage />} />
             <Route path="/teacher-guide/:level/:track" element={<TeacherGuide />} />
           </Routes>
