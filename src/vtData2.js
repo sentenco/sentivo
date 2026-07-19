@@ -1,0 +1,49 @@
+// Verb Tenses -- Tense 2: Present Continuous (Unit 1: Present Tenses)
+
+export default {
+  number: 2,
+  groupTitle: "Unit 1: Present Tenses",
+  tenseName: "Present Continuous",
+  timelineVariant: 2,
+
+  lessonA: {
+    code: "2A",
+    title: "Present Continuous",
+    kind: "Discussion",
+    objective: "The learner understands that the present continuous is used for actions happening now, temporary actions, and changing situations.",
+    leadIn: "What are you doing right now?",
+    definition: "The present continuous shows actions in progress now or around now.",
+    timelineNote: "A long bar crosses the present moment.",
+    usages: [
+      { label: "Happening now", example: "I am studying now." },
+      { label: "Temporary situations", example: "She is staying with her aunt this week." },
+      { label: "Changing situations", example: "The weather is getting hotter." },
+    ],
+    form: {
+      affirmative: ["Subject + am/is/are + verb-ing"],
+      negative: ["Subject + am/is/are not + verb-ing"],
+      interrogative: ["Am/Is/Are + subject + verb-ing?"],
+    },
+    signalWords: ["now", "right now", "at the moment", "these days"],
+    commonMistakes: ["Using the base verb instead of verb-ing.", "Confusing a routine with an action happening now."],
+    ccqs: ["Is it happening now?", "Is it temporary?", "Is it finished?"],
+    interactive: [
+      "Student describes what the teacher is doing on screen.",
+      "Student compares one present simple sentence and one present continuous sentence.",
+    ],
+  },
+
+  lessonB: {
+    code: "2B",
+    title: "Present Continuous",
+    kind: "Test/Application",
+    testGoal: "Check meaning, form, and controlled use of present continuous.",
+    sections: [
+      { part: "A", label: "Multiple choice", desc: "Choose the correct am/is/are + verb-ing form." },
+      { part: "B", label: "Identify the usage", desc: "Decide whether the sentence is a routine or an action happening now." },
+      { part: "C", label: "Change the sentence", desc: "Change the sentence to negative and to a question." },
+      { part: "D", label: "Error correction", desc: "Fix errors from a missing be verb or the wrong verb-ing form." },
+      { part: "E", label: "Speaking check", desc: "Answer 3 “What are you doing…?” questions." },
+    ],
+  },
+};

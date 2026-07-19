@@ -486,7 +486,16 @@ export default function Library() {
         </div>
 
                 <div className="grid-wrap" ref={gridWrapRef}>
-        {category === "Speaking" ? (
+        {category === "Grammar" ? (
+          <div className="speaking-grid">
+            <a href="/library/grammar/verb-tenses" className="speaking-tile speaking-tile--verbtenses">
+              <span className="speaking-tile-kicker">Grammar · A1–C2</span>
+              <h3 className="speaking-tile-title">Verb Tenses</h3>
+              <p className="speaking-tile-desc">All 12 English tenses, one Discussion lesson and one Test lesson each.</p>
+              <span className="speaking-tile-cta">Open Verb Tenses →</span>
+            </a>
+          </div>
+        ) : category === "Speaking" ? (
           <div className="speaking-grid">
             <a href="/library/forge" className="speaking-tile speaking-tile--forge">
               <span className="speaking-tile-kicker">Speaking · A2</span>
@@ -615,7 +624,7 @@ export default function Library() {
         )}
         </div>
 
-        {category !== "Speaking" && (
+        {category !== "Speaking" && category !== "Grammar" && (
         <div className="pagination">
           <button disabled={safePage === 1} onClick={() => changePage(safePage - 1)}>&larr; Prev</button>
           <span className="page-indicator">Page {safePage} of {totalPages}</span>
@@ -958,6 +967,7 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .speaking-tile:hover { transform: translateY(-3px); box-shadow: 0 20px 40px rgba(0,0,0,0.2); }
 .speaking-tile--forge { background: radial-gradient(circle at 20% 0%, #FFF6E6 0%, #FBE7C6 60%, #F6D9AC 100%); }
 .speaking-tile--ascend { background: radial-gradient(circle at 20% 0%, #EAFBF6 0%, #D6F2E9 60%, #C3E9DC 100%); }
+.speaking-tile--verbtenses { background: radial-gradient(circle at 20% 0%, #F1EFFC 0%, #E4E0FA 60%, #D8D2F6 100%); }
 .speaking-tile-kicker {
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;
@@ -967,6 +977,7 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 }
 .speaking-tile--forge .speaking-tile-kicker { color: #C97A2E; }
 .speaking-tile--ascend .speaking-tile-kicker { color: #128571; }
+.speaking-tile--verbtenses .speaking-tile-kicker { color: #5B4FE0; }
 .speaking-tile-title {
   font-family: 'Fredoka', sans-serif;
   font-weight: 700;
@@ -975,6 +986,7 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 }
 .speaking-tile--forge .speaking-tile-title { color: #2E2617; }
 .speaking-tile--ascend .speaking-tile-title { color: #17352E; }
+.speaking-tile--verbtenses .speaking-tile-title { color: #2B2560; }
 .speaking-tile-desc {
   font-family: 'Quicksand', sans-serif;
   font-weight: 500;
@@ -985,6 +997,7 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 }
 .speaking-tile--forge .speaking-tile-desc { color: #6B5F49; }
 .speaking-tile--ascend .speaking-tile-desc { color: #3E6157; }
+.speaking-tile--verbtenses .speaking-tile-desc { color: #5B5590; }
 .speaking-tile-cta {
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;
@@ -995,6 +1008,7 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 }
 .speaking-tile--forge .speaking-tile-cta { background: #F2A65A; color: #2E2617; }
 .speaking-tile--ascend .speaking-tile-cta { background: #3FCDAF; color: #17352E; }
+.speaking-tile--verbtenses .speaking-tile-cta { background: #5B4FE0; color: #FFFFFF; }
 
 .cover {
   flex-shrink: 0;

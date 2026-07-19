@@ -16,6 +16,8 @@ import Ascend from './Ascend.jsx'
 import AscendHub from './AscendHub.jsx'
 import AscendTrack from './AscendTrack.jsx'
 import AscendGuide from './AscendGuide.jsx'
+import VerbTensesTrack from './VerbTensesTrack.jsx'
+import VerbTensesLesson from './VerbTensesLesson.jsx'
 import { AuthProvider } from './AuthContext.jsx'
 import SiteGate from './SiteGate.jsx'
 
@@ -41,6 +43,8 @@ createRoot(document.getElementById('root')).render(
             <Route path="/library/ascend/:trackId" element={<AscendTrack />} />
             <Route path="/library/ascend/:trackId/:lessonNum" element={<Ascend />} />
             <Route path="/library/ascend/:trackId/:lessonNum/guide" element={<AscendGuide />} />
+            <Route path="/library/grammar/verb-tenses" element={<VerbTensesTrack />} />
+            <Route path="/library/grammar/verb-tenses/:code" element={<VerbTensesLesson />} />
             <Route path="/lesson-player/:id" element={<LessonPlayerPage />} />
             <Route path="/teacher-guide/:level/:track" element={<TeacherGuide />} />
           </Routes>
