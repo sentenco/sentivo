@@ -479,7 +479,22 @@ export default function Library() {
         </div>
 
                 <div className="grid-wrap" ref={gridWrapRef}>
-        {toolsLoading ? (
+        {category === "Speaking" ? (
+          <div className="speaking-grid">
+            <a href="/library/forge/forge-1" className="speaking-tile speaking-tile--forge">
+              <span className="speaking-tile-kicker">Speaking · A2</span>
+              <h3 className="speaking-tile-title">FORGE</h3>
+              <p className="speaking-tile-desc">Build real vocabulary through pictures, gaps, echoes, and question chains.</p>
+              <span className="speaking-tile-cta">Open FORGE →</span>
+            </a>
+            <a href="/library/ascend/ascend-1" className="speaking-tile speaking-tile--ascend">
+              <span className="speaking-tile-kicker">Speaking · C1</span>
+              <h3 className="speaking-tile-title">ASCEND</h3>
+              <p className="speaking-tile-desc">Precision, structure, and diplomatic control for students who already sound fluent.</p>
+              <span className="speaking-tile-cta">Open ASCEND →</span>
+            </a>
+          </div>
+        ) : toolsLoading ? (
           <p className="empty-msg">Loading library…</p>
         ) : toolsError ? (
           <p className="empty-msg">Couldn't load the library right now. Please refresh.</p>
@@ -593,11 +608,13 @@ export default function Library() {
         )}
         </div>
 
+        {category !== "Speaking" && (
         <div className="pagination">
           <button disabled={safePage === 1} onClick={() => setPage((p) => p - 1)}>&larr; Prev</button>
           <span className="page-indicator">Page {safePage} of {totalPages}</span>
           <button disabled={safePage === totalPages} onClick={() => setPage((p) => p + 1)}>Next &rarr;</button>
         </div>
+        )}
       </main>
       )}
       </div>
@@ -911,6 +928,66 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   width: 100%;
   height: 100%;
 }
+
+.speaking-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(220px, 320px));
+  gap: 22px;
+  width: 100%;
+  max-width: 700px;
+}
+.speaking-tile {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-start;
+  text-decoration: none;
+  border-radius: 18px;
+  padding: 26px 24px;
+  min-height: 220px;
+  box-shadow: 0 14px 30px rgba(0,0,0,0.14);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.speaking-tile:hover { transform: translateY(-3px); box-shadow: 0 20px 40px rgba(0,0,0,0.2); }
+.speaking-tile--forge { background: radial-gradient(circle at 20% 0%, #FFF6E6 0%, #FBE7C6 60%, #F6D9AC 100%); }
+.speaking-tile--ascend { background: radial-gradient(circle at 20% 0%, #EAFBF6 0%, #D6F2E9 60%, #C3E9DC 100%); }
+.speaking-tile-kicker {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 700;
+  font-size: 11.5px;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+}
+.speaking-tile--forge .speaking-tile-kicker { color: #C97A2E; }
+.speaking-tile--ascend .speaking-tile-kicker { color: #128571; }
+.speaking-tile-title {
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 700;
+  font-size: 30px;
+  margin: 2px 0 0;
+}
+.speaking-tile--forge .speaking-tile-title { color: #2E2617; }
+.speaking-tile--ascend .speaking-tile-title { color: #17352E; }
+.speaking-tile-desc {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 500;
+  font-size: 13.5px;
+  line-height: 1.45;
+  margin: 0;
+  flex: 1;
+}
+.speaking-tile--forge .speaking-tile-desc { color: #6B5F49; }
+.speaking-tile--ascend .speaking-tile-desc { color: #3E6157; }
+.speaking-tile-cta {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 700;
+  font-size: 12.5px;
+  border-radius: 999px;
+  padding: 7px 15px;
+  margin-top: 6px;
+}
+.speaking-tile--forge .speaking-tile-cta { background: #F2A65A; color: #2E2617; }
+.speaking-tile--ascend .speaking-tile-cta { background: #3FCDAF; color: #17352E; }
 
 .cover {
   flex-shrink: 0;
