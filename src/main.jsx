@@ -14,29 +14,32 @@ import Ascend from './Ascend.jsx'
 import AscendTrack from './AscendTrack.jsx'
 import AscendGuide from './AscendGuide.jsx'
 import { AuthProvider } from './AuthContext.jsx'
+import SiteGate from './SiteGate.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <AuthProvider>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Library />} />
-          <Route path="/library" element={<Library />} />
-          <Route path="/library/curriculum" element={<Library />} />
-          <Route path="/library/curriculum/:level" element={<Library />} />
-          <Route path="/library/curriculum/:level/:track" element={<Library />} />
-          <Route path="/library/stress" element={<Flashcards />} />
-          <Route path="/library/storybook" element={<StoryBook />} />
-          <Route path="/library/storybook-2" element={<StoryBook book={storybook2} />} />
-          <Route path="/library/forge/:trackId" element={<ForgeTrack />} />
-          <Route path="/library/forge/:trackId/:lessonNum" element={<Forge />} />
-          <Route path="/library/ascend/:trackId" element={<AscendTrack />} />
-          <Route path="/library/ascend/:trackId/:lessonNum" element={<Ascend />} />
-          <Route path="/library/ascend/:trackId/:lessonNum/guide" element={<AscendGuide />} />
-          <Route path="/lesson-player/:id" element={<LessonPlayerPage />} />
-          <Route path="/teacher-guide/:level/:track" element={<TeacherGuide />} />
-        </Routes>
-      </BrowserRouter>
+      <SiteGate>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Library />} />
+            <Route path="/library" element={<Library />} />
+            <Route path="/library/curriculum" element={<Library />} />
+            <Route path="/library/curriculum/:level" element={<Library />} />
+            <Route path="/library/curriculum/:level/:track" element={<Library />} />
+            <Route path="/library/stress" element={<Flashcards />} />
+            <Route path="/library/storybook" element={<StoryBook />} />
+            <Route path="/library/storybook-2" element={<StoryBook book={storybook2} />} />
+            <Route path="/library/forge/:trackId" element={<ForgeTrack />} />
+            <Route path="/library/forge/:trackId/:lessonNum" element={<Forge />} />
+            <Route path="/library/ascend/:trackId" element={<AscendTrack />} />
+            <Route path="/library/ascend/:trackId/:lessonNum" element={<Ascend />} />
+            <Route path="/library/ascend/:trackId/:lessonNum/guide" element={<AscendGuide />} />
+            <Route path="/lesson-player/:id" element={<LessonPlayerPage />} />
+            <Route path="/teacher-guide/:level/:track" element={<TeacherGuide />} />
+          </Routes>
+        </BrowserRouter>
+      </SiteGate>
     </AuthProvider>
   </StrictMode>,
 )
