@@ -38,11 +38,43 @@ export default {
     kind: "Test/Application",
     testGoal: "Check meaning, form, and controlled use of future perfect.",
     sections: [
-      { part: "A", label: "Multiple choice", desc: "Choose the correct will have + past participle form." },
-      { part: "B", label: "Choose the best tense", desc: "Choose the best tense for a deadline meaning." },
-      { part: "C", label: "Change the sentence", desc: "Change to negative and to interrogative." },
-      { part: "D", label: "Error correction", desc: "Correct deadline-meaning errors." },
-      { part: "E", label: "Speaking check", desc: "Answer 3 “by…” prompts." },
+      {
+        part: "A", label: "Multiple choice", desc: "Choose the correct will have + past participle form.",
+        items: [
+          { q: "I _____ the report by Friday.", options: ["finish", "will finish", "will have finished", "have finished"], correct: 2 },
+          { q: "By 2030, she _____ here for ten years.", options: ["live", "will live", "will have lived", "has lived"], correct: 2 },
+          { q: "By next month, they _____ the project.", options: ["complete", "will complete", "will have completed", "completed"], correct: 2 },
+        ],
+      },
+      {
+        part: "B", label: "Choose the best tense", desc: "Choose the best tense for a deadline meaning.",
+        items: [
+          { q: "I will have finished the report by Friday.", options: ["Completed before a future time", "Total before a future point"], correct: 0 },
+          { q: "She will have lived here for ten years by 2030.", options: ["Completed before a future time", "Total before a future point"], correct: 1 },
+        ],
+      },
+      {
+        part: "C", label: "Change the sentence", desc: "Change to negative and to interrogative.",
+        items: [
+          { base: "He will have left by 9.", negative: "He will not have left by 9.", question: "Will he have left by 9?" },
+          { base: "They will have arrived by noon.", negative: "They will not have arrived by noon.", question: "Will they have arrived by noon?" },
+        ],
+      },
+      {
+        part: "D", label: "Error correction", desc: "Correct deadline-meaning errors.",
+        items: [
+          { wrong: "By Friday, I will finish the report.", correct: "By Friday, I will have finished the report." },
+          { wrong: "She will live here for ten years by 2030.", correct: "She will have lived here for ten years by 2030." },
+        ],
+      },
+      {
+        part: "E", label: "Speaking check", desc: "Answer 3 “by…” prompts.",
+        items: [
+          "What will you have finished by the end of this week?",
+          "What will you have achieved in five years?",
+          "By this time next year, what will have changed in your life?",
+        ],
+      },
     ],
   },
 };

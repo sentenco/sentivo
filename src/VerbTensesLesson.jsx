@@ -22,7 +22,6 @@ function WarmupSlide({ lesson }) {
     <div className="vtl-slide">
       <h3 className="vtl-h">Warm-up</h3>
       <p className="vtl-cover-question">“{lesson.leadIn}”</p>
-      <p className="vtl-warmup-note">Ask before teaching the tense — listen for how they use it naturally.</p>
     </div>
   );
 }
@@ -136,14 +135,91 @@ function RecapSlide({ tense, lesson }) {
   );
 }
 
+function McItem({ item, index }) {
+  const [picked, setPicked] = useState(null);
+  return (
+    <div className="vtl-quiz-item">
+      <p className="vtl-quiz-q">{index + 1}. {item.q}</p>
+      <div className="vtl-quiz-options">
+        {item.options.map((opt, i) => {
+          const answered = picked !== null;
+          const isCorrect = i === item.correct;
+          const isPicked = i === picked;
+          const cls = answered && isCorrect ? "is-correct" : answered && isPicked ? "is-wrong" : "";
+          return (
+            <button
+              key={i}
+              type="button"
+              className={`vtl-quiz-opt ${cls}`}
+              onClick={() => setPicked(i)}
+              disabled={answered}
+            >
+              {opt}
+            </button>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
+function TransformItem({ item }) {
+  const [shown, setShown] = useState(false);
+  return (
+    <div className="vtl-quiz-item">
+      <p className="vtl-quiz-q">{item.base}</p>
+      {shown ? (
+        <div className="vtl-reveal-block">
+          <p><strong>Negative:</strong> {item.negative}</p>
+          <p><strong>Question:</strong> {item.question}</p>
+        </div>
+      ) : (
+        <button type="button" className="vtl-reveal-btn" onClick={() => setShown(true)}>Show negative &amp; question</button>
+      )}
+    </div>
+  );
+}
+
+function ErrorFixItem({ item }) {
+  const [shown, setShown] = useState(false);
+  return (
+    <div className="vtl-quiz-item">
+      <p className="vtl-quiz-q vtl-quiz-q--error">{item.wrong}</p>
+      {shown ? (
+        <p className="vtl-reveal-correct">{item.correct}</p>
+      ) : (
+        <button type="button" className="vtl-reveal-btn" onClick={() => setShown(true)}>Show correction</button>
+      )}
+    </div>
+  );
+}
+
 function PartSlide({ lesson, partKey }) {
   const section = lesson.sections.find((s) => s.part === partKey);
   if (!section) return null;
+  const items = section.items || [];
+
   return (
-    <div className="vtl-slide">
-      <span className="vtl-part-badge">Part {section.part}</span>
-      <h3 className="vtl-h">{section.label}</h3>
-      <p className="vtl-part-desc">{section.desc}</p>
+    <div className="vtl-slide vtl-slide--part">
+      <span className="vtl-part-badge">Part {section.part} · {section.label}</span>
+
+      {partKey === "A" || partKey === "B" ? (
+        <div className="vtl-quiz-list">
+          {items.map((item, i) => <McItem key={i} item={item} index={i} />)}
+        </div>
+      ) : partKey === "C" ? (
+        <div className="vtl-quiz-list">
+          {items.map((item, i) => <TransformItem key={i} item={item} />)}
+        </div>
+      ) : partKey === "D" ? (
+        <div className="vtl-quiz-list">
+          {items.map((item, i) => <ErrorFixItem key={i} item={item} />)}
+        </div>
+      ) : (
+        <ul className="vtl-list vtl-speaking-list">
+          {items.map((q, i) => <li key={i}>{q}</li>)}
+        </ul>
+      )}
     </div>
   );
 }
@@ -506,15 +582,73 @@ const CSS = `
   border-radius: 999px;
   padding: 6px 16px;
 }
-.vtl-part-desc {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 500;
-  font-size: 26px;
-  color: #2B2560;
-  line-height: 1.5;
-  margin: 0;
-  max-width: 760px;
+
+.vtl-slide--part { justify-content: flex-start; }
+
+.vtl-quiz-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: 100%;
+  max-width: 840px;
+  text-align: left;
 }
+.vtl-quiz-item {
+  background: #F5F3FD;
+  border-radius: 12px;
+  padding: 14px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.vtl-quiz-q {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  color: #2B2560;
+  margin: 0;
+}
+.vtl-quiz-q--error { color: #B0413E; text-decoration: line-through; text-decoration-color: rgba(176,65,62,0.4); }
+
+.vtl-quiz-options { display: flex; flex-wrap: wrap; gap: 8px; }
+.vtl-quiz-opt {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  color: #2B2560;
+  background: #FFFFFF;
+  border: 1.5px solid #DAD4F5;
+  border-radius: 10px;
+  padding: 8px 14px;
+  cursor: pointer;
+}
+.vtl-quiz-opt:disabled { cursor: default; }
+.vtl-quiz-opt.is-correct { background: #E6F6EC; border-color: #55B983; color: #1F6B41; }
+.vtl-quiz-opt.is-wrong { background: #FBEAEA; border-color: #D9807D; color: #A8382F; }
+
+.vtl-reveal-btn {
+  align-self: flex-start;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  color: #5B4FE0;
+  background: #FFFFFF;
+  border: 1.5px solid #DAD4F5;
+  border-radius: 999px;
+  padding: 7px 16px;
+  cursor: pointer;
+}
+.vtl-reveal-block { display: flex; flex-direction: column; gap: 4px; }
+.vtl-reveal-block p, .vtl-reveal-correct {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 600;
+  font-size: 17px;
+  color: #1F6B41;
+  margin: 0;
+}
+
+.vtl-speaking-list { max-width: 720px; font-size: 20px; }
+.vtl-speaking-list li { margin-bottom: 8px; }
 
 .vtl-nav-row { display: flex; align-items: center; justify-content: space-between; padding-top: 14px; border-top: 1px solid #EEECFB; flex-shrink: 0; }
 .vtl-nav-btn {

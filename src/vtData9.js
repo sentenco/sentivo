@@ -39,11 +39,44 @@ export default {
     kind: "Test/Application",
     testGoal: "Check meaning, form, and controlled use of future simple.",
     sections: [
-      { part: "A", label: "Multiple choice", desc: "Choose the correct will/won't form." },
-      { part: "B", label: "Match the function", desc: "Match the sentence to prediction, offer, promise, or decision." },
-      { part: "C", label: "Change the sentence", desc: "Change to negative and to a question." },
-      { part: "D", label: "Error correction", desc: "Fix common future simple errors." },
-      { part: "E", label: "Speaking check", desc: "Give 3 future simple responses to situations." },
+      {
+        part: "A", label: "Multiple choice", desc: "Choose the correct will/won't form.",
+        items: [
+          { q: "It _____ tomorrow.", options: ["rain", "rains", "will rain", "is raining"], correct: 2 },
+          { q: "The phone is ringing — I _____ it.", options: ["answer", "answered", "will answer", "am answering"], correct: 2 },
+          { q: "Don't worry, I _____ you.", options: ["help", "helped", "will help", "am helping"], correct: 2 },
+        ],
+      },
+      {
+        part: "B", label: "Match the function", desc: "Match the sentence to prediction, offer, promise, or decision.",
+        items: [
+          { q: "It will rain tomorrow.", options: ["Prediction", "Instant decision", "Offer or promise"], correct: 0 },
+          { q: "I'll answer the phone.", options: ["Prediction", "Instant decision", "Offer or promise"], correct: 1 },
+          { q: "I'll help you.", options: ["Prediction", "Instant decision", "Offer or promise"], correct: 2 },
+        ],
+      },
+      {
+        part: "C", label: "Change the sentence", desc: "Change to negative and to a question.",
+        items: [
+          { base: "She will call you later.", negative: "She will not call you later.", question: "Will she call you later?" },
+          { base: "They will arrive tomorrow.", negative: "They will not arrive tomorrow.", question: "Will they arrive tomorrow?" },
+        ],
+      },
+      {
+        part: "D", label: "Error correction", desc: "Fix common future simple errors.",
+        items: [
+          { wrong: "I will to help you.", correct: "I will help you." },
+          { wrong: "It rain tomorrow.", correct: "It will rain tomorrow." },
+        ],
+      },
+      {
+        part: "E", label: "Speaking check", desc: "Give 3 future simple responses to situations.",
+        items: [
+          "What do you think will happen tomorrow?",
+          "Will you help a friend this week if they ask?",
+          "What will you do after this lesson?",
+        ],
+      },
     ],
   },
 };

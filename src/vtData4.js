@@ -38,11 +38,43 @@ export default {
     kind: "Test/Application",
     testGoal: "Check meaning, form, and controlled use of present perfect continuous.",
     sections: [
-      { part: "A", label: "Multiple choice", desc: "Choose the correct have/has been + verb-ing form." },
-      { part: "B", label: "Identify the focus", desc: "Choose the sentence that shows duration." },
-      { part: "C", label: "Change the sentence", desc: "Change an affirmative sentence to negative and to a question." },
-      { part: "D", label: "Error correction", desc: "Fix errors such as “I have studying…”." },
-      { part: "E", label: "Speaking check", desc: "Answer 3 duration questions." },
+      {
+        part: "A", label: "Multiple choice", desc: "Choose the correct have/has been + verb-ing form.",
+        items: [
+          { q: "I _____ here for two years.", options: ["work", "worked", "have worked", "have been working"], correct: 3 },
+          { q: "He _____, so he is tired.", options: ["run", "has run", "has been running", "runs"], correct: 2 },
+          { q: "They _____ for three hours.", options: ["study", "have studied", "have been studying", "studied"], correct: 2 },
+        ],
+      },
+      {
+        part: "B", label: "Identify the focus", desc: "Choose the sentence that shows duration.",
+        items: [
+          { q: "I have been working here for two years.", options: ["Duration until now", "Recent activity with a visible result"], correct: 0 },
+          { q: "He has been running, so he is tired.", options: ["Duration until now", "Recent activity with a visible result"], correct: 1 },
+        ],
+      },
+      {
+        part: "C", label: "Change the sentence", desc: "Change an affirmative sentence to negative and to a question.",
+        items: [
+          { base: "I have been studying English for a year.", negative: "I have not been studying English for a year.", question: "Have you been studying English for a year?" },
+          { base: "She has been waiting for an hour.", negative: "She has not been waiting for an hour.", question: "Has she been waiting for an hour?" },
+        ],
+      },
+      {
+        part: "D", label: "Error correction", desc: "Fix errors such as “I have working here…”.",
+        items: [
+          { wrong: "I have working here for two years.", correct: "I have been working here for two years." },
+          { wrong: "He has been study all day.", correct: "He has been studying all day." },
+        ],
+      },
+      {
+        part: "E", label: "Speaking check", desc: "Answer 3 duration questions.",
+        items: [
+          "How long have you been studying English?",
+          "How long have you been living in your city?",
+          "What have you been doing all morning?",
+        ],
+      },
     ],
   },
 };
