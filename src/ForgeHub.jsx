@@ -1,13 +1,11 @@
 import { useNavigate } from "react-router-dom";
 import TRACKS from "./forgeTracks";
 import ImagePlaceholder from "./slides/ImagePlaceholder";
-import forge1CoverImg from "./assets/forge/track1-cover.jpeg";
 
-// Cover photo per track, same lookup pattern as Library.jsx's FORGE_COVERS --
-// falls back to ImagePlaceholder until a track gets a real photo.
-const COVERS = {
-  "forge-1": forge1CoverImg,
-};
+// No track has a hub cover photo yet -- every card falls back to
+// ImagePlaceholder until real art is generated per track (same lookup
+// pattern as AscendHub, ready for a COVERS[track.id] entry later).
+const COVERS = {};
 
 function slideCount(lesson) {
   if (!lesson) return 0;
