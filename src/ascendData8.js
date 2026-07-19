@@ -13,36 +13,27 @@ export default {
   bankWords: [],
 
   warmup: {
-    heading: "Teacher states, no softening on the way in.",
-    instruction: "Capture verbatim — this is the sharpest provocation in the block, on purpose.",
-    questions: ["“AI is going to make half the workforce obsolete within a decade — there's nothing anyone can do about it.”"],
+    heading: null,
+    questions: ["“AI is going to make half the workforce obsolete within a decade — there's nothing anyone can do about it.” No softening on the way in."],
   },
 
   vocabulary: {
-    heading: "Vocabulary — recall only",
-    note: "No bank shown. Produce 3 phrases from L6 and 3 from L7, unprompted, before continuing.",
+    heading: "Vocabulary",
     rows: [],
   },
 
   highlight: {
     heading: "Concede-then-Counter + Spot-the-Assumption",
-    intro: "Model naming the hidden assumption in the warm-up claim, then countering it.",
-    before: "Claim: “AI is going to make half the workforce obsolete within a decade — there's nothing anyone can do about it.”",
-    after: "“I see where you're coming from — some roles will genuinely disappear. But that claim assumes displacement happens without new roles being created to replace them, and that's the part history doesn't really support.”",
-    note: "The new move: not just softer disagreement, but locating the specific unproven assumption the claim rests on.",
   },
 
   practice: {
     heading: "Hold Your Ground",
-    instruction: "Teacher pushes back twice on the student's counter — stay firm and polite both times, not just the first.",
     items: [],
   },
 
   activity: {
     heading: "Mini-Debate (harder, no menu)",
-    instruction: "Faster pace, tougher claims. Teacher pushes from both directions across the exchange.",
     prompt: "Will AI destroy more jobs than it creates?",
-    note: "Target-count: assumptions correctly named + rebuttals landed, fully unaided.",
   },
 
   pushIt: {
@@ -66,10 +57,30 @@ export default {
 
   homework: {
     heading: "Before next lesson",
-    items: [
-      { label: "Read your passage", detail: "A weak-logic argument about job displacement to dismantle." },
-      { label: "Next lesson", detail: "No new bank — rapid recall from any lesson so far." },
-      { label: "Voice note (~3 min)", detail: "Dismantle diplomatically: “AI will destroy more jobs than it creates, full stop.”" },
+    passage: [
+      "“",
+      { text: "I see where you're coming from" },
+      " — some roles will genuinely disappear,” she said. “But ",
+      { text: "the real question is" },
+      " whether that claim assumes displacement happens without new roles being created to replace them. ",
+      { text: "That's true up to a point" },
+      ", but ",
+      { text: "the bigger concern is" },
+      " treating the outcome as inevitable rather than something policy can actually shape.”",
     ],
+    nextLabel: "Next lesson",
+    nextBank: "No new bank — rapid recall from any lesson so far.",
+  },
+
+  teacherGuide: {
+    cover: "Final Counter lesson. No menu at all — full command, no support. This closes the block.",
+    warmup: "State the provocation with no softening on the way in — this is deliberately the sharpest claim in the block. Capture verbatim.",
+    vocabulary: "No bank shown. Before continuing, have the student produce 3 phrases from L6 and 3 from L7, fully unprompted.",
+    highlight: "Model naming the hidden assumption in the warm-up claim, then countering it — e.g. the claim assumes displacement happens without new roles being created to replace them. This is the new move: not just softer disagreement, but locating the specific unproven assumption a claim rests on. Use the two text boxes to build this live with the student's own attempt first.",
+    practice: "Teacher pushes back twice on the student's counter — they need to stay firm and polite both times, not just the first.",
+    activity: "Faster pace, tougher claims, no menu. Push from both directions across the exchange. Target-count: assumptions correctly named plus rebuttals landed, fully unaided.",
+    pushit: "The pivot — acknowledge the objection, then pivot straight to the strongest point without dwelling on it.",
+    scorecard: "Closes the Counter block. From here on, everything is integration, not new material — flag this explicitly to the student.",
+    homework: "No new bank for L9 — rapid recall from any lesson so far, priming the Arena block.",
   },
 };

@@ -283,7 +283,7 @@ function HomeworkSlide({ lesson }) {
       </p>
       {hw.nextBank && (
         <div className="ad-nextbank">
-          <span className="ad-nextbank-label">Next lesson's bank</span>
+          <span className="ad-nextbank-label">{hw.nextLabel || "Next lesson's bank"}</span>
           <p className="ad-nextbank-text">{hw.nextBank}</p>
         </div>
       )}

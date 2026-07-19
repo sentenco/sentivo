@@ -13,14 +13,12 @@ export default {
   bankWords: ["likely to", "rather than", "that said", "arguably", "admittedly"],
 
   warmup: {
-    heading: "React to this headline in one sentence.",
-    instruction: "Capture the reaction verbatim — expect it blunt.",
-    questions: ["“New study finds leading AI hiring tools show measurable bias against older candidates.”"],
+    heading: null,
+    questions: ["“New study finds leading AI hiring tools show measurable bias against older candidates.” React in one sentence."],
   },
 
   vocabulary: {
-    heading: "Vocabulary — no L1/L2 shown, recall only",
-    note: "Before this slide: say L1's 5 + L2's 5 from memory, no bank shown for either.",
+    heading: "Vocabulary",
     rows: [
       { label: "it will replace X", value: "likely to transform, rather than replace, X" },
       { label: "it's true", value: "that said, it's not the whole picture" },
@@ -31,15 +29,10 @@ export default {
 
   highlight: {
     heading: "The Live Upgrade — for nuance",
-    intro: "Take his Warm-up reaction → add a hedge this time, not just precision.",
-    before: "[Write his actual Warm-up sentence here]",
-    after: "e.g. His: “That's wrong, companies shouldn't use biased AI tools.” → C1: “That's likely to be a genuine problem — that said, the technology is arguably still evolving, and admittedly, human hiring isn't bias-free either.”",
-    note: "The second aha. Precision made him sound like an expert; hedging makes him sound like a careful one — the C1→C2 distinction this whole package proves.",
   },
 
   practice: {
     heading: "Soften the Absolute",
-    instruction: "Blunt claim → measured version. No bank shown.",
     items: [
       "“AI hiring tools are biased.” → (likely to / arguably)",
       "“Companies should stop using them.” → (rather than)",
@@ -49,9 +42,7 @@ export default {
 
   activity: {
     heading: "60-Second Briefing — precise AND measured",
-    instruction: "No bank on screen. Aim for 3+ precision collocations (any lesson) and 2+ hedges.",
     prompt: "Should companies be fully responsible for their AI's mistakes?",
-    note: "Diagnostic-style — closes the Upgrade block. He should sound precise and measured with zero support.",
   },
 
   pushIt: {
@@ -75,10 +66,31 @@ export default {
 
   homework: {
     heading: "Before next lesson",
-    items: [
-      { label: "Read your passage", detail: "A short AI-ethics op-ed using 3+ collocations and 2+ hedges." },
-      { label: "Next lesson's bank", detail: "firstly · more importantly · that said · on balance · I'd recommend" },
-      { label: "Voice note (~3 min)", detail: "“Is it ethical for a company to use AI in hiring decisions?” Use 3+ collocations, 2+ hedges." },
+    passage: [
+      "AI hiring tools are ",
+      { text: "likely to" },
+      " keep spreading across the industry, ",
+      { text: "rather than" },
+      " disappearing under pressure. ",
+      { text: "That said" },
+      ", the bias concerns raised this year are ",
+      { text: "arguably" },
+      " some of the most serious the sector has faced. Vendors, ",
+      { text: "admittedly" },
+      ", still have work to do before these systems can be trusted without close human oversight.",
     ],
+    nextBank: "firstly · more importantly · that said · on balance · I'd recommend",
+  },
+
+  teacherGuide: {
+    cover: "Final lesson of the Upgrade block. Support is Low — the student should be producing precision largely unaided by now.",
+    warmup: "React to the headline in one sentence, captured verbatim. Expect it blunt — that bluntness is exactly what today's hedging bank softens.",
+    vocabulary: "No bank shown before this slide — first check the student can produce L1's 5 and L2's 5 from memory. Then run this lesson's hedging bank as the reveal game.",
+    highlight: "This time the upgrade adds a hedge, not just precision. Type the Warm-up reaction, challenge the student to soften it, then reveal your model. This is the second 'aha': precision made them sound like an expert; hedging makes them sound like a careful one — the actual C1→C2 distinction this whole package is built to prove.",
+    practice: "No bank shown. Blunt claim → measured version, using likely to / rather than / that said / arguably / admittedly.",
+    activity: "No bank on screen — Low support. Aim for 3+ precision collocations from any earlier lesson plus 2+ hedges. This is diagnostic-style and closes the Upgrade block; the student should sound precise and measured with zero support.",
+    pushit: "Diplomat's rewrite bonus — harsh version then diplomatic version, read both aloud.",
+    scorecard: "This score is the real baseline for unsupported precision — useful context when you get to L8 and L10.",
+    homework: "Preview L4's signpost bank (the Frame block starts next lesson) before the student leaves.",
   },
 };

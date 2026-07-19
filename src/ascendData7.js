@@ -13,8 +13,7 @@ export default {
   bankWords: ["I see where you're coming from", "I'd gently push back", "there's another way to look at it", "if I can offer a different perspective", "I hear what you're saying, and"],
 
   warmup: {
-    heading: "Agree-or-fight — 3 claims.",
-    instruction: "Mark agree/disagree + one-line reason each. Capture whichever reaction is bluntest.",
+    heading: null,
     questions: [
       "“Governments should regulate AI more strictly.”",
       "“AI regulation will slow down innovation too much.”",
@@ -24,7 +23,6 @@ export default {
 
   vocabulary: {
     heading: "Vocabulary — the Softening Layer",
-    note: null,
     rows: [
       { label: "Open warm", value: "I see where you're coming from…" },
       { label: "Signal a gentle pushback", value: "…but I'd gently push back on one part" },
@@ -36,23 +34,16 @@ export default {
 
   highlight: {
     heading: "Three Rebuttals, Each Softer",
-    intro: "Same disagreement with “Regulation will slow down innovation too much,” delivered 3 ways, softening each time.",
-    before: "1. “That's true up to a point, but the bigger concern is unregulated harm.” (L6-level: fine, firmer)",
-    after: "2. “I see where you're coming from — but I'd gently push back: some slowdown might be the price of avoiding real harm.” (softer)\n3. “I hear what you're saying, and if I can offer a different perspective: maybe the real trade-off isn't speed vs. safety, but which harms we're willing to risk.” (softest, most sophisticated)",
-    note: "He should notice what changes between the three, not just hear them.",
   },
 
   practice: {
     heading: "Yes-and-But",
-    instruction: "Every turn must validate before countering — no exceptions, even for weak claims.",
     items: ["“Regulation kills innovation.” → must open with “I see where you're coming from” before disagreeing."],
   },
 
   activity: {
     heading: "Mini-Debate — Handle the Objection",
-    instruction: "Pitch a regulation stance of your choice. Teacher objects once. Counter live, softening layer required.",
     prompt: "Your regulation stance, your choice.",
-    note: "Target-count: softening phrases used before each counter, not just the first one.",
   },
 
   pushIt: {
@@ -76,10 +67,32 @@ export default {
 
   homework: {
     heading: "Before next lesson",
-    items: [
-      { label: "Read your passage", detail: "An op-ed on AI regulation to react to." },
-      { label: "Next lesson", detail: "No new bank — full recall of L6+L7's rebuttal and softening language." },
-      { label: "Voice note (~3 min)", detail: "Counter diplomatically: “AI regulation is government overreach, plain and simple.”" },
+    passage: [
+      "“",
+      { text: "I see where you're coming from" },
+      " — regulation can slow things down. ",
+      { text: "I'd gently push back" },
+      ", though: some slowdown might be the price of avoiding real harm. ",
+      { text: "There's another way to look at it" },
+      ": maybe the real trade-off isn't speed versus safety at all. ",
+      { text: "If I can offer a different perspective" },
+      ", it's really about who gets to decide where that line sits. ",
+      { text: "I hear what you're saying, and" },
+      " here's my concern — leaving it entirely to companies rarely ends well.”",
     ],
+    nextLabel: "Next lesson",
+    nextBank: "No new bank — full recall of L6 and L7's rebuttal and softening language.",
+  },
+
+  teacherGuide: {
+    cover: "Second Counter lesson. Support drops to Mid — softening language is added on top of L6's rebuttal bank.",
+    warmup: "3 claims, mark agree/disagree + one-line reason each. Capture whichever reaction is bluntest for the Highlight slide.",
+    vocabulary: "Fully visible softening layer. Have the student attempt their own soft opener before revealing each target phrase.",
+    highlight: "Deliver the same disagreement three times, softening each time — from an L6-level firm rebuttal, to a gently-pushed-back version, to the softest, most sophisticated reframe. The student should notice what changes between the three versions, not just hear them. Use the two text boxes to build the softest version live with the student.",
+    practice: "Every turn must validate before countering, no exceptions, even for weak claims — open with 'I see where you're coming from' before disagreeing.",
+    activity: "Student pitches a regulation stance of their choice; teacher objects once; student counters live, softening layer required. Target-count: softening phrases used before each counter, not just the first one.",
+    pushit: "Reframe move — instead of countering directly, shift the frame of the argument itself.",
+    scorecard: "No comparison line this lesson.",
+    homework: "No new bank for L8 — the student should arrive having fully recalled L6 and L7's language from memory.",
   },
 };

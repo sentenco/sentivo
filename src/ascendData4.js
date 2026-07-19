@@ -13,42 +13,35 @@ export default {
   bankWords: ["firstly", "more importantly", "that said", "on balance", "I'd recommend"],
 
   warmup: {
-    heading: "One-breath opinion — no pausing to plan.",
-    instruction: "Capture verbatim — expect rambling, several ideas in one breath.",
+    heading: null,
     questions: ["Should every company be investing in AI right now?"],
   },
 
   vocabulary: {
     heading: "Vocabulary — the Frame's signposts",
-    note: null,
     rows: [
-      { label: "Position", value: "“On the whole, I'd argue that…”" },
-      { label: "Reason 1", value: "“Firstly, …”" },
-      { label: "Reason 2", value: "“More importantly, …”" },
-      { label: "Caveat", value: "“That said, …”" },
-      { label: "Recommendation", value: "“On balance, I'd recommend…”" },
+      { label: "Position", value: "On the whole, I'd argue that…" },
+      { label: "Reason 1", value: "Firstly, …" },
+      { label: "Reason 2", value: "More importantly, …" },
+      { label: "Caveat", value: "That said, …" },
+      { label: "Recommendation", value: "On balance, I'd recommend…" },
     ],
   },
 
   highlight: {
     heading: "Rambling vs Framed",
-    intro: "Compare his rambling Warm-up answer with a framed version of the same ideas.",
-    before: "Weak (rambling): “AI is expensive but also it could save money later and some companies are already doing it and if you don't you might fall behind but it's risky too.”",
-    after: "Strong (framed): “On the whole, I'd argue most companies should start investing now. Firstly, early movers are already gaining a competitive edge. More importantly, the cost of retrofitting later is far higher than adapting now. That said, smaller companies should weigh the trade-offs against cash flow. On balance, I'd recommend a phased investment, not an all-in bet.”",
-    note: "Same ideas, same words even — the only difference is order. Structure is now his visible ceiling, the same way precision was in L1.",
   },
 
   practice: {
     heading: "Frame the Slots",
-    instruction: "4 loose ideas about AI investment — slot them into Position→Reasons→Caveat→Recommendation out loud, frame visible on screen. Don't correct content, only slot placement.",
-    items: [],
+    items: [
+      "4 loose ideas about AI investment — slot each into Position, Reasons, Caveat, or Recommendation, out loud, frame visible on screen.",
+    ],
   },
 
   activity: {
     heading: "The 90-Second Case (frame on screen)",
-    instruction: "90 seconds. Frame stays visible. Reuse at least 2 Upgrade collocations from any earlier lesson.",
     prompt: "Should a mid-sized company invest in AI now, or wait?",
-    note: "Target-count: signposts landed (out of 5) + collocations reused (out of 2+).",
   },
 
   pushIt: {
@@ -72,10 +65,31 @@ export default {
 
   homework: {
     heading: "Before next lesson",
-    items: [
-      { label: "Read your passage", detail: "A short framed business case using the signpost bank." },
-      { label: "Next lesson's bank", detail: "the key issue is · crucially · my recommendation would be (plus recall L4's 5)" },
-      { label: "Voice note (~3 min, framed)", detail: "“Should a company invest in AI-generated marketing content?”" },
+    passage: [
+      "On the whole, most companies should start exploring AI now rather than waiting. ",
+      { text: "Firstly" },
+      ", early movers are already pulling ahead. ",
+      { text: "More importantly" },
+      ", the cost of retrofitting later is far higher than adapting early. ",
+      { text: "That said" },
+      ", smaller companies need to move carefully. ",
+      { text: "On balance" },
+      ", ",
+      { text: "I'd recommend" },
+      " a phased rollout rather than an all-in bet.",
     ],
+    nextBank: "the key issue is · crucially · my recommendation would be (plus recall L4's 5)",
+  },
+
+  teacherGuide: {
+    cover: "First lesson of the Frame block. Frame: Position → 2 Reasons → Caveat → Recommendation. Today the frame is fully visible — High support.",
+    warmup: "One-breath opinion, no pausing to plan. Capture verbatim — expect rambling, several ideas crammed into one breath. That messiness is the material for the Highlight slide.",
+    vocabulary: "This lesson's bank IS the frame's signposts, not vocabulary in the L1-L3 sense. Run the same reveal-game format, but frame each 'phrase' as a slot in the structure (Position, Reason 1, Reason 2, Caveat, Recommendation).",
+    highlight: "Type the student's rambling Warm-up answer, then challenge them to reorganize it into the frame rather than just rephrase it. Reveal your own framed version. The point to land: same ideas, same words even — the only difference is order. Structure is now their visible ceiling, the same way precision was in L1.",
+    practice: "Give 4 loose ideas about AI investment; the student slots them into Position→Reasons→Caveat→Recommendation out loud, frame visible on screen. Don't correct content — only whether each idea landed in the right slot.",
+    activity: "Frame stays visible (High support). 90 seconds. Ask them to reuse at least 2 Upgrade collocations from any earlier lesson inside the case — this is the first real compounding moment. Target-count: signposts landed out of 5, plus collocations reused.",
+    pushit: "Add a rhetorical device (rule of three) to the Recommendation line — a small polish, not a new skill.",
+    scorecard: "No comparison line yet — L4 opens a new block, so there's nothing prior to benchmark against within Frame.",
+    homework: "Preview L5's 3 new signposts (the key issue is / crucially / my recommendation would be) plus a recall reminder of L4's 5.",
   },
 };

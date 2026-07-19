@@ -13,14 +13,12 @@ export default {
   bankWords: ["the key issue is", "crucially", "my recommendation would be"],
 
   warmup: {
-    heading: "Commit and defend — 20 seconds.",
-    instruction: "No hedging allowed here. Capture verbatim — note whether the frame appears unprompted.",
-    questions: ["Is now a good time to start an AI startup, or is the market already too crowded?"],
+    heading: null,
+    questions: ["Is now a good time to start an AI startup, or is the market already too crowded? Commit and defend — 20 seconds, no hedging."],
   },
 
   vocabulary: {
     heading: "Recall L4's 5 + 3 new",
-    note: "Recall L4's signposts aloud, unprompted, before seeing the new additions.",
     rows: [
       { label: "sharper than “firstly”", value: "the key issue is…" },
       { label: "sharper than “more importantly”", value: "crucially, …" },
@@ -30,23 +28,16 @@ export default {
 
   highlight: {
     heading: "Rebuild a Broken Pitch",
-    intro: "A pitch missing its Caveat and Recommendation — identify what's missing and add it live.",
-    before: "Given: “On the whole, I'd argue this startup has real potential. The key issue is the founding team's technical depth, and crucially, they already have a working prototype.”",
-    after: "Missing: Caveat + Recommendation — he supplies both live.",
-    note: "Tests whether he recognizes the frame's shape, not just its vocabulary.",
   },
 
   practice: {
     heading: "Reason-Stacking",
-    instruction: "Add a stronger second reason to a one-reason pitch, then a credible caveat.",
     items: ["“The key issue is their prototype works.” → add Reason 2 + Caveat."],
   },
 
   activity: {
     heading: "The Board Pitch ⏱ (frame from memory)",
-    instruction: "90 seconds, no frame on screen.",
     prompt: "Should investors back an early-stage AI startup with no revenue yet?",
-    note: "Target-count: did all 4 frame parts land unaided? That's the number L8's harder rebuttal task builds on.",
   },
 
   pushIt: {
@@ -70,10 +61,27 @@ export default {
 
   homework: {
     heading: "Before next lesson",
-    items: [
-      { label: "Read your passage", detail: "A startup investment memo, framed." },
-      { label: "Next lesson's bank", detail: "I take your point, but… · that's true up to a point · the real question is… · while I see the appeal of that · the bigger concern is" },
-      { label: "Voice note (~3 min, no frame prompt)", detail: "“Pitch a company you'd invest in right now — any industry.”" },
+    passage: [
+      "On the whole, I'd argue this startup has real potential. ",
+      { text: "The key issue is" },
+      " the founding team's technical depth, and ",
+      { text: "crucially" },
+      ", they already have a working prototype. That said, they haven't proven demand at scale yet. ",
+      { text: "My recommendation would be" },
+      " a small initial stake, with a follow-on tied to their next funding round.",
     ],
+    nextBank: "I take your point, but… · that's true up to a point · the real question is… · while I see the appeal of that · the bigger concern is",
+  },
+
+  teacherGuide: {
+    cover: "Second and final Frame lesson. Support drops to Mid — the frame is no longer shown on screen.",
+    warmup: "Commit and defend in 20 seconds, no hedging allowed here. Capture verbatim and note whether the frame appears unprompted — that's a real signal for how internalized it already is.",
+    vocabulary: "Recall L4's 5 signposts aloud, unprompted, before revealing this lesson's 3 sharper additions.",
+    highlight: "Show a pitch missing its Caveat and Recommendation; have the student identify what's missing and supply both live. This tests whether they recognize the frame's shape, not just its vocabulary — a different skill than L4.",
+    practice: "Add a stronger second reason to a one-reason pitch, then a credible caveat.",
+    activity: "No frame on screen — Mid support, frame from memory. 90 seconds. Target-count: did all 4 frame parts land unaided? That number is what L8's harder rebuttal task builds on.",
+    pushit: "Open the pitch with a rhetorical question hook — a delivery flourish, not a new structural skill.",
+    scorecard: "Closes the Frame block. Flag explicitly if Persuasion/Structure hasn't visibly outscored L4 — that's the actual proof the frame is internalized, not just memorized.",
+    homework: "Preview L6's rebuttal bank (the Counter block starts next lesson) before the student leaves.",
   },
 };

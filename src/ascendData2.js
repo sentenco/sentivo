@@ -13,8 +13,7 @@ export default {
   bankWords: ["drive revenue", "disrupt entire sectors", "pressing challenge", "weigh the trade-offs", "gain a competitive edge"],
 
   warmup: {
-    heading: "Rapid-fire — 15 seconds each.",
-    instruction: "No time to plan. Vague words come back out under pressure — that's the point.",
+    heading: null,
     questions: [
       "Should companies use AI to screen job applicants?",
       "What's one job you think AI will change first?",
@@ -24,7 +23,6 @@ export default {
 
   vocabulary: {
     heading: "Vocabulary",
-    note: "Recall check: can he still produce L1's 5 unprompted before moving on?",
     rows: [
       { label: "it makes more money", value: "it can drive revenue" },
       { label: "it changes whole industries", value: "it's set to disrupt entire sectors" },
@@ -36,15 +34,10 @@ export default {
 
   highlight: {
     heading: "The Live Upgrade — faster this time",
-    intro: "Take his Warm-up sentence → upgrade it live, quicker than L1.",
-    before: "[Write his actual Warm-up sentence here]",
-    after: "e.g. His: “Automation is a big problem for hiring, but it also makes more money for the company.” → C1: “Automation is a pressing challenge for hiring, but it can genuinely drive revenue if companies weigh the trade-offs properly.”",
-    note: "Same mechanism as L1 — the aha should land quicker this time.",
   },
 
   practice: {
     heading: "Swap It Up (bank half-hidden)",
-    instruction: "Only the first word of each upgrade is shown as a cue.",
     items: [
       "“It makes more money.” → (drive…)",
       "“It changes whole industries.” → (disrupt…)",
@@ -54,9 +47,7 @@ export default {
 
   activity: {
     heading: "Collocation Ladder ⏱",
-    instruction: "One idea, 30 seconds, climb the ladder on a timer: basic → better → expert.",
-    prompt: "“AI is changing hiring.”",
-    note: "Target-count must beat L1's number. Watch for regression to vague words under the timer — that's the homework target.",
+    prompt: "AI is changing hiring.",
   },
 
   pushIt: {
@@ -80,10 +71,31 @@ export default {
 
   homework: {
     heading: "Before next lesson",
-    items: [
-      { label: "Read your passage", detail: "A short piece on hiring automation using this lesson's 5 collocations." },
-      { label: "Next lesson's bank", detail: "likely to · rather than · that said · arguably · admittedly" },
-      { label: "Voice note (~3 min)", detail: "“Will automation take more jobs than it creates in hiring?” Use 4+ collocations from L1+L2 combined." },
+    passage: [
+      "Automation is quickly becoming a ",
+      { text: "pressing challenge" },
+      " for hiring teams. Done well, it can genuinely ",
+      { text: "drive revenue" },
+      " by cutting time-to-hire, but companies still need to ",
+      { text: "weigh the trade-offs" },
+      " between speed and fairness. Some analysts even argue it's set to ",
+      { text: "disrupt entire sectors" },
+      " of recruitment altogether — and the businesses that adapt first will ",
+      { text: "gain a competitive edge" },
+      " over the ones that wait.",
     ],
+    nextBank: "likely to · rather than · that said · arguably · admittedly",
+  },
+
+  teacherGuide: {
+    cover: "Same Upgrade type as L1, now Mid support. Frame today as speed, not new content: the student already has these words; the goal is producing them under a clock.",
+    warmup: "Rapid-fire — 15 seconds per question, no time to plan. Vague words tend to come back out under pressure; that's expected and exactly what today's drill fixes. Capture one of the blunt answers for the Highlight slide.",
+    vocabulary: "Before revealing the bank, check recall: can the student still produce L1's 5 collocations unprompted? Then run this lesson's 5 the same reveal-game way as L1.",
+    highlight: "Same mechanism as L1, but faster — type the Warm-up sentence, challenge, then your model. The 'aha' should land quicker this time since the student has done this once already.",
+    practice: "Bank is half-hidden — only give the first word of each upgrade as a cue (e.g. 'drive…', 'disrupt…', 'weigh…').",
+    activity: "Bank stays visible since this is a Mid-support lesson (shown as chips above the prompt). 30 seconds, climb the ladder: basic → better → expert. Target-count must beat L1's number — watch for regression to vague words under the timer; that regression is the actual homework target.",
+    pushit: "Optional bonus rep, no timer — a breather before scoring.",
+    scorecard: "If today's total is at or above L1's, say so out loud — it's the first proof point before L10's headline number.",
+    homework: "Preview L3's bank (hedging language) before the student leaves.",
   },
 };

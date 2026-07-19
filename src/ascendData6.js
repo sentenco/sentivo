@@ -13,14 +13,12 @@ export default {
   bankWords: ["I take your point, but…", "that's true up to a point", "the real question is…", "while I see the appeal of that", "the bigger concern is"],
 
   warmup: {
-    heading: "Teacher provocation — react, unscripted.",
-    instruction: "Capture the reaction verbatim. Expect blunt disagreement — that's exactly what today softens.",
-    questions: ["“AI tools just make people lazier and less productive — they don't actually help.”"],
+    heading: null,
+    questions: ["“AI tools just make people lazier and less productive — they don't actually help.” React, unscripted."],
   },
 
   vocabulary: {
     heading: "Vocabulary — the Rebuttal Bank",
-    note: null,
     rows: [
       { label: "No, that's wrong", value: "I take your point, but the data tells a different story" },
       { label: "That's not really true", value: "that's true up to a point — for repetitive tasks, yes" },
@@ -32,15 +30,10 @@ export default {
 
   highlight: {
     heading: "Diplomatic vs Blunt",
-    intro: "Two responses to the same provocation, side by side.",
-    before: "Blunt: “No, that's wrong, AI clearly helps productivity.”",
-    after: "Diplomatic: “I take your point, but that's true up to a point — for repetitive tasks, AI genuinely saves time. The real question is whether people reinvest that time productively or just fill it with more meetings.”",
-    note: "The move, named: concede something real, then counter — not deny, not soften into agreement.",
   },
 
   practice: {
     heading: "Concede-then-Counter Drill ×5",
-    instruction: "Menu visible — practice the exact move each time.",
     items: [
       "“AI just creates more busywork, checking its output.”",
       "“People become dependent on it and stop thinking for themselves.”",
@@ -52,9 +45,7 @@ export default {
 
   activity: {
     heading: "Mini-Debate ⏱",
-    instruction: "90 seconds. Rebut diplomatically, staying warm throughout. Teacher argues hard, no warm-up:",
     prompt: "AI tools are killing genuine productivity — they just create more busywork.",
-    note: "Target-count: how many times did concede-then-counter land cleanly, not just once at the start?",
   },
 
   pushIt: {
@@ -78,10 +69,31 @@ export default {
 
   homework: {
     heading: "Before next lesson",
-    items: [
-      { label: "Read your passage", detail: "A workplace debate transcript modeling the move." },
-      { label: "Next lesson's bank", detail: "I see where you're coming from · I'd gently push back · there's another way to look at it · if I can offer a different perspective · I hear what you're saying, and" },
-      { label: "Voice note (~3 min)", detail: "Someone says AI tools are “killing productivity, not helping it.” Rebut diplomatically, use 2+ rebuttal phrases." },
+    passage: [
+      "“",
+      { text: "I take your point, but" },
+      " the data tells a different story,” she said calmly. “",
+      { text: "That's true up to a point" },
+      " — for repetitive tasks, sure. ",
+      { text: "The real question is" },
+      " whether people reinvest the time it saves. ",
+      { text: "While I see the appeal of that" },
+      " argument, I'd push back on one part: ",
+      { text: "the bigger concern is" },
+      " how that saved time actually gets used.”",
     ],
+    nextBank: "I see where you're coming from · I'd gently push back · there's another way to look at it · if I can offer a different perspective · I hear what you're saying, and",
+  },
+
+  teacherGuide: {
+    cover: "First lesson of the Counter block. Rebuttal bank is fully visible — High support.",
+    warmup: "State the provocation flat, no softening on your way in. Capture the reaction verbatim — expect blunt disagreement, since that bluntness is exactly what today's move softens.",
+    vocabulary: "Menu fully visible. For each blunt-vs-diplomatic pair, let the student attempt their own diplomatic version before revealing the target.",
+    highlight: "Show a blunt response and a diplomatic response to the same provocation side by side, then have the student practice converting the blunt one live using the two text boxes. Name the move explicitly: concede something real, then counter — not deny, not soften into agreement.",
+    practice: "Menu visible — drill the exact move on all 5 provocations.",
+    activity: "Argue hard, no warm-up: 'AI tools are killing genuine productivity.' 90 seconds, student rebuts diplomatically, staying warm throughout. Target-count: how many times did concede-then-counter land cleanly, not just once at the start?",
+    pushit: "Have the student self-rate their last rebuttal 1–5 on warmth and firmness; redo it if either is below a 4.",
+    scorecard: "No comparison line — L6 opens a new block.",
+    homework: "Preview L7's softening layer (the same Counter block, one lesson deeper) before the student leaves.",
   },
 };
