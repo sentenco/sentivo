@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { getLesson } from "./sparkAdultsTracks";
 
-const WHEEL_COLORS = ["#A8783D", "#C9A063", "#8B6A3F", "#D4B483", "#6E5530"];
+const WHEEL_COLORS = ["#8B2E3F", "#C8863A", "#1F6F5C", "#3B5B8C", "#6B4226"];
 
 const INTRO_SLIDE = {
   kind: "list",
@@ -24,16 +24,40 @@ function CoverSlide({ lesson, slide }) {
   );
 }
 
+function ZoomableChips({ items, compact }) {
+  const [zoomed, setZoomed] = useState(null);
+  return (
+    <>
+      <div className={`spa-item-list ${compact ? "spa-item-list--compact" : ""}`}>
+        {items.map((item, i) => (
+          <button
+            key={i}
+            type="button"
+            className={`spa-item-chip ${compact ? "spa-item-chip--muted" : ""}`}
+            onClick={() => setZoomed(item)}
+          >
+            {item}
+          </button>
+        ))}
+      </div>
+      {zoomed !== null && (
+        <div className="spa-zoom-overlay" onClick={() => setZoomed(null)}>
+          <div className="spa-zoom-card" onClick={(e) => e.stopPropagation()}>
+            <span className="spa-zoom-text">{zoomed}</span>
+            <button type="button" className="spa-zoom-close" onClick={() => setZoomed(null)}>Close</button>
+          </div>
+        </div>
+      )}
+    </>
+  );
+}
+
 function ListSlide({ slide }) {
   return (
     <div className="spa-slide">
       <h2 className="spa-slide-title">{slide.title}</h2>
       <p className="spa-instruction">{slide.instruction}</p>
-      <div className="spa-item-list">
-        {slide.items.map((item, i) => (
-          <span key={i} className="spa-item-chip">{item}</span>
-        ))}
-      </div>
+      <ZoomableChips items={slide.items} />
     </div>
   );
 }
@@ -84,11 +108,7 @@ function WheelSlide({ slide }) {
           {result ? <p className="spa-wheel-result-text">{result}</p> : <p className="spa-wheel-result-placeholder">Spin to get a description.</p>}
         </div>
       </div>
-      <div className="spa-item-list spa-item-list--compact">
-        {slide.items.map((item, i) => (
-          <span key={i} className="spa-item-chip spa-item-chip--muted">{item}</span>
-        ))}
-      </div>
+      <ZoomableChips items={slide.items} compact />
     </div>
   );
 }
@@ -251,7 +271,7 @@ const CSS = `
 .spa-shell {
   width: 100%;
   height: 100vh;
-  background: #F7F5F0;
+  background: radial-gradient(circle at 12% -10%, #FDF6EA 0%, #F6DFB4 42%, #E5B478 78%, #D89A5C 100%);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -273,8 +293,8 @@ const CSS = `
   font-family: 'Inter', sans-serif;
   font-weight: 600;
   font-size: 13px;
-  color: #2A2621;
-  background: #EFEAE0;
+  color: #3A2416;
+  background: #FBEFDB;
   border: none;
   border-radius: 6px;
   padding: 8px 16px;
@@ -286,7 +306,7 @@ const CSS = `
   font-size: 12px;
   letter-spacing: 1.2px;
   text-transform: uppercase;
-  color: #8B8171;
+  color: #7A4A1F;
 }
 .spa-topbar-slot { width: 100px; }
 
@@ -295,14 +315,15 @@ const CSS = `
 .spa-stage { flex: 1; width: 100%; display: flex; align-items: center; justify-content: center; padding: 20px 28px 28px; min-height: 0; }
 
 .spa-deck {
+  position: relative;
   width: 900px;
   max-width: 100%;
   height: 100%;
   max-height: 600px;
   background: #FFFFFF;
-  border: 1px solid #E9E3D6;
-  border-radius: 4px;
-  box-shadow: 0 20px 50px rgba(60,50,30,0.08);
+  border: 1px solid #EDD3A5;
+  border-radius: 8px;
+  box-shadow: 0 24px 60px rgba(139,60,20,0.18);
   display: flex;
   flex-direction: column;
   padding: 48px 64px;
@@ -334,12 +355,57 @@ const CSS = `
   font-weight: 500;
   font-size: 15px;
   color: #2A2621;
-  background: #F7F5F0;
-  border: 1px solid #E9E3D6;
-  border-radius: 6px;
-  padding: 8px 16px;
+  background: linear-gradient(180deg, #FDF3DF 0%, #FAEACB 100%);
+  border: 1px solid #E3BE7C;
+  border-radius: 8px;
+  padding: 9px 17px;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
 }
-.spa-item-chip--muted { font-size: 13px; color: #8B8171; background: transparent; }
+.spa-item-chip:hover { transform: translateY(-1px); box-shadow: 0 6px 14px rgba(139,60,20,0.16); border-color: #C8863A; }
+.spa-item-chip--muted { font-size: 13px; color: #8B6A3F; background: transparent; border-color: #E9D3A6; }
+.spa-item-chip--muted:hover { background: #FDF3DF; }
+
+/* Zoom overlay */
+.spa-zoom-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(38,16,10,0.6);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+.spa-zoom-card {
+  max-width: 80%;
+  background: linear-gradient(155deg, #8B2E3F 0%, #5C1F29 100%);
+  border-radius: 14px;
+  padding: 40px 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  box-shadow: 0 30px 70px rgba(30,10,10,0.4);
+}
+.spa-zoom-text {
+  font-family: 'Source Serif 4', serif;
+  font-weight: 700;
+  font-size: 34px;
+  color: #FBEFDB;
+  line-height: 1.25;
+}
+.spa-zoom-close {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 13px;
+  color: #F6DFB4;
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(246,223,180,0.5);
+  border-radius: 999px;
+  padding: 7px 20px;
+  cursor: pointer;
+}
 
 /* Cover */
 .spa-slide--cover { gap: 16px; }
@@ -349,7 +415,7 @@ const CSS = `
   font-size: 13px;
   letter-spacing: 1.5px;
   text-transform: uppercase;
-  color: #A8783D;
+  color: #C8863A;
 }
 .spa-cover-title {
   font-family: 'Source Serif 4', serif;
@@ -363,7 +429,7 @@ const CSS = `
   font-family: 'Inter', sans-serif;
   font-weight: 500;
   font-size: 15px;
-  color: #8B8171;
+  color: #8B6A3F;
 }
 
 /* Feedback */
@@ -396,7 +462,7 @@ const CSS = `
   height: 200px;
   border-radius: 50%;
   border: 3px solid #FFFFFF;
-  box-shadow: 0 0 0 1px #E9E3D6, 0 10px 24px rgba(60,50,30,0.15);
+  box-shadow: 0 0 0 1px #EDD3A5, 0 12px 28px rgba(139,60,20,0.22);
   transition: transform 3s cubic-bezier(0.17, 0.67, 0.12, 0.99);
 }
 .spa-wheel-hub {
@@ -415,7 +481,7 @@ const CSS = `
 }
 .spa-wheel-hub:disabled { opacity: 0.6; cursor: default; }
 .spa-wheel-result { min-height: 26px; }
-.spa-wheel-result-text { font-family: 'Source Serif 4', serif; font-weight: 700; font-size: 19px; color: #A8783D; margin: 0; }
+.spa-wheel-result-text { font-family: 'Source Serif 4', serif; font-weight: 700; font-size: 19px; color: #8B2E3F; margin: 0; }
 .spa-wheel-result-placeholder { font-family: 'Inter', sans-serif; font-size: 13px; color: #8B8171; margin: 0; }
 
 /* Boarding pass */
@@ -433,7 +499,7 @@ const CSS = `
   inset: 0;
   backface-visibility: hidden;
   border-radius: 8px;
-  border: 1px solid #E9E3D6;
+  border: 1px solid #EDD3A5;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -441,26 +507,26 @@ const CSS = `
   gap: 8px;
   padding: 16px;
 }
-.spa-bp-face--front { background: #F7F5F0; }
-.spa-bp-face--back { background: #2A2621; transform: rotateY(180deg); }
+.spa-bp-face--front { background: linear-gradient(180deg, #FDF3DF 0%, #F6DFB4 100%); }
+.spa-bp-face--back { background: linear-gradient(155deg, #3B1220 0%, #1C0B10 100%); transform: rotateY(180deg); border-color: #5C1F29; }
 .spa-bp-kicker {
   font-family: 'Inter', sans-serif;
   font-weight: 600;
   font-size: 10.5px;
   letter-spacing: 1.5px;
   text-transform: uppercase;
-  color: #A8783D;
+  color: #C8863A;
 }
-.spa-bp-front-text { font-family: 'Inter', sans-serif; font-weight: 500; font-size: 14px; color: #8B8171; }
-.spa-bp-place { font-family: 'Source Serif 4', serif; font-weight: 700; font-size: 26px; color: #FFFFFF; }
+.spa-bp-front-text { font-family: 'Inter', sans-serif; font-weight: 500; font-size: 14px; color: #8B6A3F; }
+.spa-bp-place { font-family: 'Source Serif 4', serif; font-weight: 700; font-size: 26px; color: #FBEFDB; }
 .spa-bp-tag {
   font-family: 'Inter', sans-serif;
   font-weight: 600;
   font-size: 11px;
   letter-spacing: 0.8px;
   text-transform: uppercase;
-  color: #D4B483;
-  border: 1px solid #6E5530;
+  color: #E8B87A;
+  border: 1px solid #8B5A2F;
   border-radius: 999px;
   padding: 3px 12px;
 }
@@ -470,7 +536,7 @@ const CSS = `
   font-weight: 600;
   font-size: 14px;
   color: #FFFFFF;
-  background: #2A2621;
+  background: #8B2E3F;
   border: none;
   border-radius: 6px;
   padding: 11px 26px;
@@ -481,8 +547,8 @@ const CSS = `
 .spa-menu-card {
   width: 100%;
   max-width: 380px;
-  background: #F7F5F0;
-  border: 1px solid #E9E3D6;
+  background: linear-gradient(180deg, #FDF3DF 0%, #FAEACB 100%);
+  border: 1px solid #E3BE7C;
   border-radius: 8px;
   padding: 8px 22px;
   display: flex;
@@ -494,39 +560,39 @@ const CSS = `
   font-size: 15px;
   color: #2A2621;
   padding: 12px 0;
-  border-bottom: 1px solid #E9E3D6;
+  border-bottom: 1px solid #E9D3A6;
 }
 .spa-menu-row:last-child { border-bottom: none; }
 .spa-menu-row--mystery { display: flex; justify-content: center; }
-.spa-menu-locked { font-style: italic; color: #8B8171; }
+.spa-menu-locked { font-style: italic; color: #8B6A3F; }
 .spa-reveal-btn {
   font-family: 'Inter', sans-serif;
   font-weight: 600;
   font-size: 13px;
-  color: #A8783D;
+  color: #8B2E3F;
   background: transparent;
-  border: 1px solid #A8783D;
+  border: 1px solid #8B2E3F;
   border-radius: 999px;
   padding: 6px 16px;
   cursor: pointer;
 }
 
 /* Nav */
-.spa-nav-row { display: flex; align-items: center; justify-content: space-between; padding-top: 20px; border-top: 1px solid #E9E3D6; flex-shrink: 0; }
+.spa-nav-row { display: flex; align-items: center; justify-content: space-between; padding-top: 20px; border-top: 1px solid #EDD3A5; flex-shrink: 0; }
 .spa-nav-btn {
   font-family: 'Inter', sans-serif;
   font-weight: 600;
   font-size: 13px;
   color: #2A2621;
-  background: #F7F5F0;
-  border: 1px solid #E9E3D6;
+  background: #FBEFDB;
+  border: 1px solid #E3BE7C;
   border-radius: 6px;
   padding: 9px 18px;
   cursor: pointer;
 }
-.spa-nav-btn--primary { background: #2A2621; color: #FFFFFF; border-color: #2A2621; }
+.spa-nav-btn--primary { background: #8B2E3F; color: #FFFFFF; border-color: #8B2E3F; }
 .spa-nav-btn:disabled { opacity: 0.35; cursor: default; }
 .spa-nav-dots { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; max-width: 300px; }
-.spa-nav-dot { width: 5px; height: 5px; border-radius: 999px; background: #E9E3D6; }
-.spa-nav-dot.is-active { width: 16px; border-radius: 999px; background: #A8783D; }
+.spa-nav-dot { width: 5px; height: 5px; border-radius: 999px; background: #E9D3A6; }
+.spa-nav-dot.is-active { width: 16px; border-radius: 999px; background: #C8863A; }
 `;
