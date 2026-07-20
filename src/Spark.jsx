@@ -113,9 +113,15 @@ function FlipCardsSlide({ slide }) {
               tabIndex={0}
             >
               <div className="spk-flip-card-inner">
-                <div className="spk-flip-face spk-flip-face--front">{c.number}</div>
+                <div className="spk-flip-face spk-flip-face--front">
+                  <span className="spk-flip-ribbon-v" />
+                  <span className="spk-flip-ribbon-h" />
+                  <span className="spk-flip-sparkle spk-flip-sparkle--a"><SparkIcon name="star" size={16} /></span>
+                  <span className="spk-flip-number">{c.number}</span>
+                  <span className="spk-flip-sparkle spk-flip-sparkle--b"><SparkIcon name="star" size={12} /></span>
+                </div>
                 <div className="spk-flip-face spk-flip-face--back">
-                  <SparkPicture name={c.icon} size={46} />
+                  <SparkPicture name={c.icon} size={78} />
                   <button
                     type="button"
                     className="spk-flip-zoom-btn"
@@ -124,7 +130,7 @@ function FlipCardsSlide({ slide }) {
                       setZoomed(i);
                     }}
                   >
-                    <SparkIcon name="magnifier" size={13} />
+                    <SparkIcon name="magnifier" size={16} />
                   </button>
                 </div>
               </div>
@@ -140,7 +146,7 @@ function FlipCardsSlide({ slide }) {
       {zoomed !== null && (
         <div className="spk-zoom-overlay" onClick={() => setZoomed(null)}>
           <div className="spk-zoom-card" onClick={(e) => e.stopPropagation()}>
-            <SparkPicture name={slide.cards[zoomed].icon} size={140} />
+            <SparkPicture name={slide.cards[zoomed].icon} size={160} />
             <button type="button" className="spk-reveal-btn" onClick={() => setZoomed(null)}>Close</button>
           </div>
         </div>
@@ -526,9 +532,9 @@ const CSS = `
 }
 
 /* Flip cards */
-.spk-flip-layout { display: flex; flex-direction: row; align-items: center; gap: 32px; width: 100%; justify-content: center; }
-.spk-flip-cards { display: flex; flex-wrap: wrap; gap: 12px; max-width: 420px; justify-content: center; }
-.spk-flip-card { width: 96px; height: 116px; cursor: pointer; perspective: 900px; }
+.spk-flip-layout { display: flex; flex-direction: column; align-items: center; gap: 22px; width: 100%; }
+.spk-flip-cards { display: flex; flex-wrap: wrap; gap: 18px; max-width: 800px; justify-content: center; }
+.spk-flip-card { width: 132px; height: 168px; cursor: pointer; perspective: 1100px; }
 .spk-flip-card-inner {
   position: relative;
   width: 100%;
@@ -536,12 +542,14 @@ const CSS = `
   transform-style: preserve-3d;
   transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1);
 }
+.spk-flip-card:hover .spk-flip-card-inner { transform: translateY(-4px); }
+.spk-flip-card.is-flipped:hover .spk-flip-card-inner { transform: rotateY(180deg) translateY(-4px); }
 .spk-flip-card.is-flipped .spk-flip-card-inner { transform: rotateY(180deg); }
 .spk-flip-face {
   position: absolute;
   inset: 0;
   backface-visibility: hidden;
-  border-radius: 12px;
+  border-radius: 18px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -549,35 +557,69 @@ const CSS = `
   gap: 2px;
 }
 .spk-flip-face--front {
-  background: #FFB800;
-  border: 2px solid #E09E00;
+  background: linear-gradient(150deg, #FFD35C 0%, #FFB800 55%, #F5890A 100%);
+  border: 3px solid #E8850A;
+  box-shadow: 0 7px 0 #D97706, 0 16px 26px rgba(217,119,6,0.35);
+  transition: box-shadow 0.2s ease;
+  overflow: hidden;
+}
+.spk-flip-card:hover .spk-flip-face--front { box-shadow: 0 3px 0 #D97706, 0 10px 18px rgba(217,119,6,0.3); }
+.spk-flip-ribbon-v {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 26%;
+  transform: translateX(-50%);
+  background: linear-gradient(180deg, #FFF8E6 0%, #FFE9B8 100%);
+  box-shadow: inset 0 0 0 1px rgba(217,119,6,0.15);
+}
+.spk-flip-ribbon-h {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 26%;
+  transform: translateY(-50%);
+  background: linear-gradient(90deg, #FFF8E6 0%, #FFE9B8 100%);
+  box-shadow: inset 0 0 0 1px rgba(217,119,6,0.15);
+}
+.spk-flip-number {
+  position: relative;
+  z-index: 1;
   font-family: 'Fredoka', sans-serif;
   font-weight: 700;
-  font-size: 34px;
+  font-size: 46px;
   color: #FFFFFF;
+  text-shadow: 0 3px 0 rgba(180,90,0,0.4);
 }
+.spk-flip-sparkle { position: absolute; z-index: 1; opacity: 0.85; }
+.spk-flip-sparkle--a { top: 10px; right: 12px; }
+.spk-flip-sparkle--b { bottom: 12px; left: 12px; }
 .spk-flip-face--back {
-  background: #FFF3D0;
-  border: 2px solid #FFDD7A;
+  background: linear-gradient(165deg, #FFFDF6 0%, #FFF3D0 100%);
+  border: 3px solid #FFDD7A;
+  box-shadow: 0 10px 20px rgba(180,140,0,0.16);
   transform: rotateY(180deg);
   position: relative;
 }
 .spk-flip-zoom-btn {
   position: absolute;
-  top: 4px;
-  right: 4px;
-  width: 24px;
-  height: 24px;
+  top: 8px;
+  right: 8px;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
-  border: 1px solid #FFDD7A;
+  border: 1.5px solid #FFDD7A;
   background: #FFFFFF;
+  box-shadow: 0 2px 6px rgba(180,140,0,0.2);
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 0;
 }
-.spk-flip-starters { display: flex; flex-direction: column; gap: 12px; align-items: flex-start; }
+.spk-flip-starters { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
 
 .spk-zoom-overlay {
   position: absolute;
