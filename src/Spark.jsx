@@ -4,10 +4,12 @@ import { getLesson } from "./sparkTracks";
 import SparkIcon from "./slides/SparkIcons";
 import ImagePlaceholder from "./slides/ImagePlaceholder";
 
+const EXTENSIONS = ["png", "svg"];
+
 function SparkPicture({ name, size = 64 }) {
-  const [errored, setErrored] = useState(false);
+  const [attempt, setAttempt] = useState(0);
   if (!name) return null;
-  if (errored) {
+  if (attempt >= EXTENSIONS.length) {
     return (
       <div style={{ width: size, height: size }}>
         <ImagePlaceholder note={name} compact />
@@ -16,9 +18,9 @@ function SparkPicture({ name, size = 64 }) {
   }
   return (
     <img
-      src={`/spark-images/kids/${name}.png`}
+      src={`/spark-images/kids/${name}.${EXTENSIONS[attempt]}`}
       alt={name}
-      onError={() => setErrored(true)}
+      onError={() => setAttempt((a) => a + 1)}
       style={{ width: size, height: size, objectFit: "contain" }}
     />
   );
