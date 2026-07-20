@@ -104,10 +104,10 @@ export default {
       requiredImage: "3 key story images from earlier in the lesson, with a large arrow flow between them.",
     },
     {
+      kind: "feedback",
       title: "Great Story!",
       purpose: "Give positive child-facing feedback and a parent-ready summary.",
       timing: "4 min",
-      isFeedback: true,
       childText: ["Great job!", "You told a story!", "You listened very well!"],
       feedback: {
         strength: "Good listening, good visual understanding, strong participation in picture tasks, good sequencing support.",

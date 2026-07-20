@@ -237,23 +237,6 @@ function FeedbackSlide({ slide }) {
           <p key={i} className="spk-child-line">{line}</p>
         ))}
       </div>
-      {slide.feedback && (
-        <div className="spk-parent-card">
-          <span className="spk-parent-kicker">For Parents</span>
-          <div className="spk-parent-row">
-            <span className="spk-parent-label">Strength</span>
-            <p className="spk-parent-text">{slide.feedback.strength}</p>
-          </div>
-          <div className="spk-parent-row">
-            <span className="spk-parent-label">Target</span>
-            <p className="spk-parent-text">{slide.feedback.target}</p>
-          </div>
-          <div className="spk-parent-row">
-            <span className="spk-parent-label">Recommended path</span>
-            <p className="spk-parent-text">{slide.feedback.recommendedPath}</p>
-          </div>
-        </div>
-      )}
     </div>
   );
 }
@@ -657,43 +640,6 @@ const CSS = `
   color: #4A3B12;
   margin: 0;
 }
-.spk-parent-card {
-  width: 100%;
-  max-width: 640px;
-  background: #FFF9E5;
-  border: 1px solid #FFE28A;
-  border-radius: 16px;
-  padding: 16px 22px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  text-align: left;
-}
-.spk-parent-kicker {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 700;
-  font-size: 11px;
-  letter-spacing: 0.6px;
-  text-transform: uppercase;
-  color: #FF4FA3;
-  align-self: center;
-}
-.spk-parent-row { display: flex; flex-direction: column; gap: 2px; }
-.spk-parent-label {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 700;
-  font-size: 12px;
-  color: #C98A00;
-}
-.spk-parent-text {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 1.4;
-  color: #4A3B12;
-  margin: 0;
-}
-
 /* Nav */
 .spk-nav-row { display: flex; align-items: center; justify-content: space-between; padding-top: 14px; border-top: 1px solid #FFF3D0; flex-shrink: 0; }
 .spk-nav-btn {

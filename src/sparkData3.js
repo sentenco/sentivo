@@ -114,10 +114,10 @@ export default {
       requiredImage: "One simple two-step mission card, e.g. toy + box + jump.",
     },
     {
+      kind: "feedback",
       title: "Great Job Today!",
       purpose: "Give positive child-facing feedback and a parent-ready summary.",
       timing: "4 min",
-      isFeedback: true,
       childText: ["Great job!", "You listened fast!", "You did the actions and spoke English!"],
       feedback: {
         strength: "Strong listening response, good participation, good understanding of action commands, willing to repeat full sentences.",

@@ -35,7 +35,7 @@ function gimmickContent(slide) {
 
 function SlideSection({ num, slide }) {
   const doItems = [...(slide.supportMoves || []), ...(slide.expectedOutput ? [`Expected: ${slide.expectedOutput.join(" / ")}`] : [])];
-  const isFeedback = slide.isFeedback || slide.kind === "feedback";
+  const isFeedback = slide.kind === "feedback";
   return (
     <section className="spkg-section">
       <div className="spkg-section-head">
