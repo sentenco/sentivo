@@ -32,7 +32,7 @@ export default {
       kidGuide: ["I can ___.", "I am ___ing."],
       teacherScript: ["Wave!", "Clap!", "Can you jump?", "Say: I can jump."],
       expectedOutput: ["I can jump.", "I am jumping."],
-      requiredImage: "Cheerful title; big icons for clap, wave, jump, sit.",
+      sceneIcons: ["wave", "clap", "jump"],
     },
     {
       title: "Copy Me!",
@@ -40,7 +40,7 @@ export default {
       timing: "30 sec",
       kidGuide: ["I can ___.", "I am ___ing."],
       teacherScript: ["Copy me!", "Jump!", "Now say it!"],
-      requiredImage: "3-4 action icons; maybe a big \"Go!\" button or arrow.",
+      sceneIcons: ["jump", "clap"],
     },
     {
       title: "Action Time",
@@ -50,7 +50,7 @@ export default {
       teacherScript: ["Jump!", "What are you doing?", "Say: I am jumping.", "Can you clap?", "Say: I can clap."],
       expectedOutput: ["I am jumping.", "I can clap."],
       promptOptions: ["jump", "clap", "sit", "stand", "dance"],
-      requiredImage: "Large action image or icon shown one at a time, with space for quick action switching.",
+      sceneIcons: ["jump", "sit", "stand"],
     },
     {
       title: "Where Is the Teddy?",
@@ -58,7 +58,7 @@ export default {
       timing: "30 sec",
       kidGuide: ["It is on the ___.", "It is in the ___.", "It is under the ___."],
       teacherScript: ["Where is the teddy?"],
-      requiredImage: "One toy or teddy graphic, one reference object (box, chair, table), 3 location labels visually represented (on, in, under).",
+      sceneIcons: ["teddy", "chair", "box"],
     },
     {
       title: "Look and Say",
@@ -67,7 +67,7 @@ export default {
       kidGuide: ["It is on the ___."],
       teacherScript: ["Where is it?", "Say the whole sentence.", "Good! On the chair."],
       expectedOutput: ["It is on the chair."],
-      requiredImage: "One clear preposition picture — example: teddy on the chair.",
+      sceneIcons: ["teddy", "chair"],
     },
     {
       title: "Look and Say Again",
@@ -76,7 +76,7 @@ export default {
       kidGuide: ["It is under the ___."],
       teacherScript: ["Where is it now?", "Under or on?", "Say the whole sentence."],
       expectedOutput: ["It is under the table."],
-      requiredImage: "Example: teddy under the table.",
+      sceneIcons: ["teddy", "table"],
     },
     {
       title: "One More Place",
@@ -85,7 +85,7 @@ export default {
       kidGuide: ["It is in the ___.", "It is next to the ___."],
       teacherScript: ["Where is it?", "Can you say the whole sentence?"],
       expectedOutput: ["It is in the box."],
-      requiredImage: "Example: teddy in the box or next to the chair.",
+      sceneIcons: ["teddy", "box"],
     },
     {
       title: "Show and Put",
@@ -93,7 +93,7 @@ export default {
       timing: "30 sec",
       kidGuide: ["This is my ___.", "It is on the ___.", "It is under the ___."],
       teacherScript: ["Show me a pencil.", "Put it on your book.", "Now say it!"],
-      requiredImage: "Prompt icons for pencil, book, toy; arrow showing object movement.",
+      sceneIcons: ["pencil", "book"],
     },
     {
       title: "Your Turn!",
@@ -111,7 +111,7 @@ export default {
       kidGuide: ["I can ___.", "It is in the ___."],
       teacherScript: ["Jump two times.", "Put the toy in the box.", "Now tell me!"],
       expectedOutput: ["I can jump.", "The toy is in the box."],
-      requiredImage: "One simple two-step mission card, e.g. toy + box + jump.",
+      sceneIcons: ["jump", "box"],
     },
     {
       kind: "feedback",

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { getLesson } from "./sparkTracks";
-import ImagePlaceholder from "./slides/ImagePlaceholder";
+import SparkIcon from "./slides/SparkIcons";
 
 const QUESTION_SLIDES = [
   { kind: "question", prompt: "What's your name?", starter: "My name is ___.", timing: "30 sec" },
@@ -39,9 +39,13 @@ function RegularSlide({ slide }) {
   return (
     <div className="spk-slide">
       <h2 className="spk-slide-title">{slide.title}</h2>
-      {slide.requiredImage && (
-        <div className="spk-image-wrap">
-          <ImagePlaceholder note={slide.requiredImage} compact />
+      {slide.sceneIcons && slide.sceneIcons.length > 0 && (
+        <div className="spk-scene-row">
+          {slide.sceneIcons.map((name, i) => (
+            <div key={i} className="spk-scene-icon">
+              <SparkIcon name={name} size={84} />
+            </div>
+          ))}
         </div>
       )}
       <div className="spk-guide-block">
@@ -88,8 +92,7 @@ function FlipCardsSlide({ slide }) {
               <div className="spk-flip-card-inner">
                 <div className="spk-flip-face spk-flip-face--front">{c.number}</div>
                 <div className="spk-flip-face spk-flip-face--back">
-                  <span className="spk-flip-emoji">{c.emoji}</span>
-                  <span className="spk-flip-label">{c.label}</span>
+                  <SparkIcon name={c.icon} size={46} />
                   <button
                     type="button"
                     className="spk-flip-zoom-btn"
@@ -98,7 +101,7 @@ function FlipCardsSlide({ slide }) {
                       setZoomed(i);
                     }}
                   >
-                    🔍
+                    <SparkIcon name="magnifier" size={13} />
                   </button>
                 </div>
               </div>
@@ -114,8 +117,7 @@ function FlipCardsSlide({ slide }) {
       {zoomed !== null && (
         <div className="spk-zoom-overlay" onClick={() => setZoomed(null)}>
           <div className="spk-zoom-card" onClick={(e) => e.stopPropagation()}>
-            <span className="spk-zoom-emoji">{slide.cards[zoomed].emoji}</span>
-            <span className="spk-zoom-label">{slide.cards[zoomed].label}</span>
+            <SparkIcon name={slide.cards[zoomed].icon} size={140} />
             <button type="button" className="spk-reveal-btn" onClick={() => setZoomed(null)}>Close</button>
           </div>
         </div>
@@ -149,7 +151,7 @@ function SortSlide({ slide }) {
   function Chip({ i }) {
     return (
       <div className="spk-sort-chip" draggable onDragStart={(e) => onDragStart(e, i)}>
-        <span className="spk-flip-emoji">{slide.items[i].emoji}</span>
+        <SparkIcon name={slide.items[i].icon} size={44} />
       </div>
     );
   }
@@ -174,7 +176,7 @@ function SortSlide({ slide }) {
           <span className="spk-sort-box-starter">{slide.likeStarter}</span>
         </div>
         <div className="spk-sort-box" onDragOver={(e) => e.preventDefault()} onDrop={(e) => onDrop(e, "dislike")}>
-          <span className="spk-sort-box-label">I Don't Like</span>
+          <span className="spk-sort-box-label">I Don&apos;t Like</span>
           <div className="spk-sort-box-items">
             {dislikeIdx.map((i) => <Chip key={i} i={i} />)}
           </div>
@@ -187,25 +189,37 @@ function SortSlide({ slide }) {
 
 function MysterySlide({ slide }) {
   const [revealed, setRevealed] = useState(false);
+  const [zoomed, setZoomed] = useState(false);
   return (
     <div className="spk-slide">
       <h2 className="spk-slide-title">{slide.title}</h2>
-      <div className="spk-mystery-box">
-        {revealed ? (
-          <>
-            <span className="spk-flip-emoji">{slide.emoji}</span>
-            <span className="spk-flip-label">{slide.label}</span>
-          </>
-        ) : (
-          <span className="spk-mystery-question">?</span>
-        )}
+      <div
+        className="spk-mystery-box"
+        onClick={() => revealed && setZoomed(true)}
+        role={revealed ? "button" : undefined}
+        tabIndex={revealed ? 0 : undefined}
+      >
+        {revealed ? <SparkIcon name={slide.icon} size={72} /> : <span className="spk-mystery-question">?</span>}
       </div>
       {!revealed && (
         <button type="button" className="spk-reveal-btn" onClick={() => setRevealed(true)}>
           Reveal
         </button>
       )}
+      {revealed && (
+        <button type="button" className="spk-reveal-btn" onClick={() => setZoomed(true)}>
+          Zoom in
+        </button>
+      )}
       <span className="spk-guide-pill">{slide.starter}</span>
+      {zoomed && (
+        <div className="spk-zoom-overlay" onClick={() => setZoomed(false)}>
+          <div className="spk-zoom-card" onClick={(e) => e.stopPropagation()}>
+            <SparkIcon name={slide.icon} size={140} />
+            <button type="button" className="spk-reveal-btn" onClick={() => setZoomed(false)}>Close</button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
@@ -222,7 +236,8 @@ function FindShowSlide({ slide }) {
       </div>
       <span className="spk-guide-pill">{slide.starter}</span>
       <button type="button" className={`spk-star-btn ${starred ? "is-starred" : ""}`} onClick={() => setStarred((s) => !s)}>
-        {starred ? "⭐ Great job!" : "☆ Give a star"}
+        <SparkIcon name={starred ? "star" : "starOutline"} size={20} />
+        {starred ? "Great job!" : "Give a star"}
       </button>
     </div>
   );
@@ -231,7 +246,7 @@ function FindShowSlide({ slide }) {
 function FeedbackSlide({ slide }) {
   return (
     <div className="spk-slide spk-slide--feedback">
-      <span className="spk-trophy">{slide.emoji || "🏆"}</span>
+      <SparkIcon name="trophy" size={72} />
       <div className="spk-child-lines">
         {slide.childText.map((line, i) => (
           <p key={i} className="spk-child-line">{line}</p>
@@ -414,8 +429,6 @@ const CSS = `
   margin: 0;
 }
 
-.spk-image-wrap { width: 100%; max-width: 460px; aspect-ratio: 16/9; }
-
 .spk-guide-block { display: flex; flex-direction: column; align-items: center; gap: 10px; }
 .spk-guide-label {
   font-family: 'Quicksand', sans-serif;
@@ -437,16 +450,28 @@ const CSS = `
   padding: 10px 22px;
 }
 
-.spk-prompt-chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; max-width: 640px; }
+.spk-scene-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; }
+.spk-scene-icon {
+  width: 100px;
+  height: 100px;
+  border-radius: 16px;
+  background: #FFF9E5;
+  border: 2px solid #FFE28A;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.spk-prompt-chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; max-width: 640px; }
 .spk-prompt-chip {
   font-family: 'Quicksand', sans-serif;
-  font-weight: 600;
-  font-size: 13px;
+  font-weight: 700;
+  font-size: 17px;
   color: #C98A00;
   background: #FFF9E5;
   border: 1px solid #FFE28A;
   border-radius: 999px;
-  padding: 5px 12px;
+  padding: 8px 16px;
 }
 
 /* Cover */
@@ -480,7 +505,7 @@ const CSS = `
 /* Flip cards */
 .spk-flip-layout { display: flex; flex-direction: row; align-items: center; gap: 32px; width: 100%; justify-content: center; }
 .spk-flip-cards { display: flex; flex-wrap: wrap; gap: 12px; max-width: 420px; justify-content: center; }
-.spk-flip-card { width: 88px; height: 108px; cursor: pointer; perspective: 900px; }
+.spk-flip-card { width: 96px; height: 116px; cursor: pointer; perspective: 900px; }
 .spk-flip-card-inner {
   position: relative;
   width: 100%;
@@ -514,18 +539,15 @@ const CSS = `
   transform: rotateY(180deg);
   position: relative;
 }
-.spk-flip-emoji { font-size: 30px; line-height: 1; }
-.spk-flip-label { font-family: 'Quicksand', sans-serif; font-weight: 700; font-size: 11px; color: #8A7233; text-transform: capitalize; }
 .spk-flip-zoom-btn {
   position: absolute;
   top: 4px;
   right: 4px;
-  width: 22px;
-  height: 22px;
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
   border: 1px solid #FFDD7A;
   background: #FFFFFF;
-  font-size: 11px;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -552,15 +574,13 @@ const CSS = `
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
+  gap: 14px;
 }
-.spk-zoom-emoji { font-size: 84px; line-height: 1; }
-.spk-zoom-label { font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 22px; color: #4A3B12; text-transform: capitalize; }
 
 /* Sort */
 .spk-slide--sort { gap: 14px; }
 .spk-sort-bank {
-  min-height: 66px;
+  min-height: 74px;
   width: 100%;
   max-width: 560px;
   display: flex;
@@ -573,8 +593,8 @@ const CSS = `
   padding: 10px;
 }
 .spk-sort-chip {
-  width: 52px;
-  height: 52px;
+  width: 60px;
+  height: 60px;
   border-radius: 12px;
   background: #FFF3D0;
   border: 2px solid #FFDD7A;
@@ -586,24 +606,24 @@ const CSS = `
 .spk-sort-boxes { display: flex; gap: 20px; width: 100%; max-width: 640px; justify-content: center; }
 .spk-sort-box {
   flex: 1;
-  min-height: 120px;
+  min-height: 130px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   background: #FFF9E5;
   border: 2px solid #FFE28A;
   border-radius: 14px;
-  padding: 12px;
+  padding: 14px;
 }
-.spk-sort-box-label { font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 16px; color: #4A3B12; }
-.spk-sort-box-items { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; min-height: 52px; }
-.spk-sort-box-starter { font-family: 'Quicksand', sans-serif; font-weight: 700; font-size: 12.5px; color: #C98A00; }
+.spk-sort-box-label { font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 22px; color: #4A3B12; }
+.spk-sort-box-items { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; min-height: 60px; }
+.spk-sort-box-starter { font-family: 'Quicksand', sans-serif; font-weight: 700; font-size: 16px; color: #C98A00; }
 
 /* Mystery */
 .spk-mystery-box {
-  width: 140px;
-  height: 140px;
+  width: 150px;
+  height: 150px;
   border-radius: 20px;
   background: #FFF3D0;
   border: 3px dashed #FFDD7A;
@@ -619,24 +639,26 @@ const CSS = `
 .spk-star-btn {
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;
-  font-size: 15px;
+  font-size: 16px;
   color: #C98A00;
   background: #FFF3D0;
   border: 2px solid #FFDD7A;
   border-radius: 999px;
   padding: 10px 22px;
   cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
 }
 .spk-star-btn.is-starred { background: #FFB800; color: #FFFFFF; border-color: #E09E00; }
 
 /* Feedback slide */
 .spk-slide--feedback { gap: 14px; }
-.spk-trophy { font-size: 44px; }
 .spk-child-lines { display: flex; flex-direction: column; gap: 4px; }
 .spk-child-line {
   font-family: 'Fredoka', sans-serif;
   font-weight: 700;
-  font-size: 26px;
+  font-size: 30px;
   color: #4A3B12;
   margin: 0;
 }

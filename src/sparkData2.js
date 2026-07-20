@@ -32,7 +32,7 @@ export default {
       kidGuide: ["It is a ___.", "I choose ___."],
       teacherScript: ["Who do you choose?", "Is it a boy or a girl?", "Do you like the dog or the monkey?"],
       expectedOutput: ["I choose the dog.", "It is a boy.", "I choose the monkey because I like monkeys."],
-      requiredImage: "Two large character images, e.g. boy and girl, or dog and monkey; friendly storybook or map-style background.",
+      sceneIcons: ["boy", "girl"],
     },
     {
       title: "Meet the Character",
@@ -40,7 +40,7 @@ export default {
       timing: "30 sec",
       kidGuide: ["He is ___.", "She is ___.", "He has ___.", "She has ___."],
       teacherScript: ["Look at the picture.", "Who is it?", "What does he have?"],
-      requiredImage: "One large character picture with a few visual clues around it, e.g. ball, hat, apple, school bag.",
+      sceneIcons: ["boy", "hat", "apple"],
     },
     {
       title: "Tell Me About the Picture",
@@ -49,7 +49,7 @@ export default {
       kidGuide: ["He is a boy.", "He has a ball.", "It is red."],
       teacherScript: ["Who is it?", "What does he have?", "What color is it?", "Is he happy or sad?"],
       expectedOutput: ["He is a boy.", "He has a ball.", "It is red.", "He is happy."],
-      requiredImage: "Same character image, large and uncluttered — one clear story scene, e.g. a boy with a red ball in a park. 2-3 hotspots highlighting obvious details, if useful.",
+      sceneIcons: ["boy", "ball"],
     },
     {
       title: "What Happens Next?",
@@ -57,7 +57,7 @@ export default {
       timing: "30 sec",
       kidGuide: ["I think ___.", "He goes to ___.", "She goes to ___."],
       teacherScript: ["What happens next?", "Where does he go?"],
-      requiredImage: "One story picture on the left; three big choice images or silhouettes on the right showing possible next steps; fun arrow or path graphic.",
+      sceneIcons: ["boy", "arrow", "apple"],
     },
     {
       title: "Guess the Story",
@@ -66,7 +66,7 @@ export default {
       kidGuide: ["I think he goes to ___.", "I think she gets a ___."],
       teacherScript: ["What happens next?", "Choose one.", "Say the whole sentence.", "Reveal correct next image."],
       expectedOutput: ["I think he goes to the park.", "I think she gets an apple."],
-      requiredImage: "First story moment shown clearly, plus 2-3 possible next-picture options.",
+      sceneIcons: ["girl", "arrow", "apple"],
     },
     {
       title: "Guess Again!",
@@ -75,7 +75,7 @@ export default {
       kidGuide: ["He is ___.", "Then he ___."],
       teacherScript: ["What is he doing?", "What happens next?", "Can you say: First… then…?"],
       expectedOutput: ["Then he runs.", "First he plays, then he goes home."],
-      requiredImage: "Same structure as the previous slide for consistency — new story moment and new options.",
+      sceneIcons: ["monkey", "arrow", "banana"],
     },
     {
       title: "Put It in Order",
@@ -83,7 +83,7 @@ export default {
       timing: "30 sec",
       kidGuide: ["First ___.", "Then ___.", "Last ___."],
       teacherScript: ["Which one is first?", "What is next?"],
-      requiredImage: "Three or four story pictures shuffled across the slide; big numbers 1-4 or spaces to place them.",
+      sceneIcons: ["boy", "girl", "monkey", "dog"],
     },
     {
       title: "Story Order Challenge",
@@ -92,7 +92,7 @@ export default {
       kidGuide: ["First ___.", "Then ___.", "Last ___."],
       teacherScript: ["Show me number 1.", "What happens first?", "What happens next?", "What happens last?"],
       expectedOutput: ["First he has a ball.", "Then he goes to the park.", "Last he goes home."],
-      requiredImage: "The same picture cards, now being arranged or pointed to in order — 3-4 sequence images from one simple story.",
+      sceneIcons: ["boy", "ball", "apple"],
     },
     {
       title: "Tell the Story!",
@@ -101,7 +101,7 @@ export default {
       kidGuide: ["First ___.", "Then ___.", "Last ___."],
       teacherScript: ["Can you tell me the story?", "Use: first, then, last."],
       expectedOutput: ["Short 3-part retell."],
-      requiredImage: "3 key story images from earlier in the lesson, with a large arrow flow between them.",
+      sceneIcons: ["boy", "arrow", "apple"],
     },
     {
       kind: "feedback",
