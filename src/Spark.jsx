@@ -2,6 +2,27 @@ import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { getLesson } from "./sparkTracks";
 import SparkIcon from "./slides/SparkIcons";
+import ImagePlaceholder from "./slides/ImagePlaceholder";
+
+function SparkPicture({ name, size = 64 }) {
+  const [errored, setErrored] = useState(false);
+  if (!name) return null;
+  if (errored) {
+    return (
+      <div style={{ width: size, height: size }}>
+        <ImagePlaceholder note={name} compact />
+      </div>
+    );
+  }
+  return (
+    <img
+      src={`/spark-images/kids/${name}.png`}
+      alt={name}
+      onError={() => setErrored(true)}
+      style={{ width: size, height: size, objectFit: "contain" }}
+    />
+  );
+}
 
 const QUESTION_SLIDES = [
   { kind: "question", prompt: "What's your name?", starter: "My name is ___.", timing: "30 sec" },
@@ -43,7 +64,7 @@ function RegularSlide({ slide }) {
         <div className="spk-scene-row">
           {slide.sceneIcons.map((name, i) => (
             <div key={i} className="spk-scene-icon">
-              <SparkIcon name={name} size={84} />
+              <SparkPicture name={name} size={84} />
             </div>
           ))}
         </div>
@@ -92,7 +113,7 @@ function FlipCardsSlide({ slide }) {
               <div className="spk-flip-card-inner">
                 <div className="spk-flip-face spk-flip-face--front">{c.number}</div>
                 <div className="spk-flip-face spk-flip-face--back">
-                  <SparkIcon name={c.icon} size={46} />
+                  <SparkPicture name={c.icon} size={46} />
                   <button
                     type="button"
                     className="spk-flip-zoom-btn"
@@ -117,7 +138,7 @@ function FlipCardsSlide({ slide }) {
       {zoomed !== null && (
         <div className="spk-zoom-overlay" onClick={() => setZoomed(null)}>
           <div className="spk-zoom-card" onClick={(e) => e.stopPropagation()}>
-            <SparkIcon name={slide.cards[zoomed].icon} size={140} />
+            <SparkPicture name={slide.cards[zoomed].icon} size={140} />
             <button type="button" className="spk-reveal-btn" onClick={() => setZoomed(null)}>Close</button>
           </div>
         </div>
@@ -151,7 +172,7 @@ function SortSlide({ slide }) {
   function Chip({ i }) {
     return (
       <div className="spk-sort-chip" draggable onDragStart={(e) => onDragStart(e, i)}>
-        <SparkIcon name={slide.items[i].icon} size={44} />
+        <SparkPicture name={slide.items[i].icon} size={44} />
       </div>
     );
   }
@@ -199,7 +220,7 @@ function MysterySlide({ slide }) {
         role={revealed ? "button" : undefined}
         tabIndex={revealed ? 0 : undefined}
       >
-        {revealed ? <SparkIcon name={slide.icon} size={72} /> : <span className="spk-mystery-question">?</span>}
+        {revealed ? <SparkPicture name={slide.icon} size={72} /> : <span className="spk-mystery-question">?</span>}
       </div>
       {!revealed && (
         <button type="button" className="spk-reveal-btn" onClick={() => setRevealed(true)}>
@@ -215,7 +236,7 @@ function MysterySlide({ slide }) {
       {zoomed && (
         <div className="spk-zoom-overlay" onClick={() => setZoomed(false)}>
           <div className="spk-zoom-card" onClick={(e) => e.stopPropagation()}>
-            <SparkIcon name={slide.icon} size={140} />
+            <SparkPicture name={slide.icon} size={140} />
             <button type="button" className="spk-reveal-btn" onClick={() => setZoomed(false)}>Close</button>
           </div>
         </div>
@@ -246,7 +267,7 @@ function FindShowSlide({ slide }) {
 function FeedbackSlide({ slide }) {
   return (
     <div className="spk-slide spk-slide--feedback">
-      <SparkIcon name="trophy" size={72} />
+      <SparkPicture name="trophy" size={72} />
       <div className="spk-child-lines">
         {slide.childText.map((line, i) => (
           <p key={i} className="spk-child-line">{line}</p>
@@ -399,13 +420,7 @@ const CSS = `
   max-width: 100%;
   height: 100%;
   max-height: 620px;
-  background-color: #FFFFFF;
-  background-image:
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'%3E%3Cpolygon points='26,8 32,22 47,23 35,33 39,48 26,40 13,48 17,33 5,23 20,22' fill='%23FFB800' fill-opacity='0.13'/%3E%3Ccircle cx='108' cy='30' r='7' fill='%23FF4FA3' fill-opacity='0.10'/%3E%3C/svg%3E"),
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'%3E%3Cpolygon points='114,92 120,106 135,107 123,117 127,132 114,124 101,132 105,117 93,107 108,106' fill='%23FFB800' fill-opacity='0.13'/%3E%3Ccircle cx='32' cy='110' r='7' fill='%23FF4FA3' fill-opacity='0.10'/%3E%3C/svg%3E");
-  background-repeat: no-repeat, no-repeat;
-  background-position: top left, bottom right;
-  background-size: 160px 160px, 160px 160px;
+  background: #FFFFFF;
   border: 1px solid #FFE28A;
   border-radius: 24px;
   box-shadow: 0 24px 60px rgba(180,140,0,0.16);

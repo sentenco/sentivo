@@ -57,7 +57,7 @@ export default {
       timing: "30 sec",
       kidGuide: ["I think ___.", "He goes to ___.", "She goes to ___."],
       teacherScript: ["What happens next?", "Where does he go?"],
-      sceneIcons: ["boy", "arrow", "apple"],
+      sceneIcons: ["boy", "apple"],
     },
     {
       title: "Guess the Story",
@@ -66,7 +66,7 @@ export default {
       kidGuide: ["I think he goes to ___.", "I think she gets a ___."],
       teacherScript: ["What happens next?", "Choose one.", "Say the whole sentence.", "Reveal correct next image."],
       expectedOutput: ["I think he goes to the park.", "I think she gets an apple."],
-      sceneIcons: ["girl", "arrow", "apple"],
+      sceneIcons: ["girl", "apple"],
     },
     {
       title: "Guess Again!",
@@ -75,7 +75,7 @@ export default {
       kidGuide: ["He is ___.", "Then he ___."],
       teacherScript: ["What is he doing?", "What happens next?", "Can you say: First… then…?"],
       expectedOutput: ["Then he runs.", "First he plays, then he goes home."],
-      sceneIcons: ["monkey", "arrow", "banana"],
+      sceneIcons: ["monkey", "banana"],
     },
     {
       title: "Put It in Order",
@@ -101,7 +101,7 @@ export default {
       kidGuide: ["First ___.", "Then ___.", "Last ___."],
       teacherScript: ["Can you tell me the story?", "Use: first, then, last."],
       expectedOutput: ["Short 3-part retell."],
-      sceneIcons: ["boy", "arrow", "apple"],
+      sceneIcons: ["boy", "apple"],
     },
     {
       kind: "feedback",
