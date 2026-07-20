@@ -4,6 +4,16 @@ import { getLesson } from "./sparkAdultsTracks";
 
 const WHEEL_COLORS = ["#A8783D", "#C9A063", "#8B6A3F", "#D4B483", "#6E5530"];
 
+const INTRO_SLIDE = {
+  kind: "list",
+  title: "Before we begin",
+  instruction: "A few quick questions to get started.",
+  items: ["Your name?", "Your age?", "Correct you while you speak, or after you finish?"],
+  timing: "1 min",
+  purpose: "Set the tone and learn the student's correction preference before the lesson begins.",
+  teacherNote: "Respect whatever the student says for the rest of the trial — this isn't a language test, it's rapport and expectation-setting.",
+};
+
 function CoverSlide({ lesson, slide }) {
   return (
     <div className="spa-slide spa-slide--cover">
@@ -190,7 +200,7 @@ export default function SparkAdults() {
     );
   }
 
-  const slides = lesson.slides;
+  const slides = [lesson.slides[0], INTRO_SLIDE, ...lesson.slides.slice(1)];
   const slide = slides[slideIdx];
   const isFirst = slideIdx === 0;
   const isLast = slideIdx === slides.length - 1;

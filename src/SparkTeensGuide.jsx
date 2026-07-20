@@ -1,6 +1,26 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { getLesson } from "./sparkTeensTracks";
 
+const INTRO_SLIDE = {
+  title: "Before We Start",
+  timing: "1 min",
+  purpose: "Get to know the student and set expectations before the lesson begins",
+  miniGameType: "Quick Q&A",
+  teacherScript: [
+    "Hi! Before we start, a few quick things.",
+    "What's your name?",
+    "How old are you?",
+    "Do you want me to correct you while you're speaking, or wait until you finish?",
+  ],
+  likelyAnswers: ["My name is Alex.", "I'm 14.", "Correct me after, please. / It's OK to correct me anytime."],
+  followUps: [],
+  correctionNotes: [
+    "This is about setting expectations, not correcting language here.",
+    "Respect whatever the student prefers for the rest of the lesson.",
+  ],
+  pacingNote: "Keep this light and quick — it's rapport-building, not a test.",
+};
+
 function SlideSection({ num, slide }) {
   const doItems = [
     ...(slide.likelyAnswers ? [`Likely answers: ${slide.likelyAnswers.join(" / ")}`] : []),
@@ -98,7 +118,7 @@ export default function SparkTeensGuide() {
         </div>
 
         <div className="spktg-sections">
-          {lesson.slides.map((slide, i) => (
+          {[INTRO_SLIDE, ...lesson.slides].map((slide, i) => (
             <SlideSection key={i} num={i + 1} slide={slide} />
           ))}
         </div>

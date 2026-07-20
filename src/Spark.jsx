@@ -41,6 +41,24 @@ function RegularSlide({ slide }) {
   );
 }
 
+const INTRO_SLIDE = {
+  title: "Hi there!",
+  purpose: "Warm welcome — learn the child's name, age, and comfort level with correction before the game starts.",
+  timing: "1 min",
+  kidGuide: ["My name is ___.", "I am ___ years old."],
+  sayMore: ["My name is ___ and I am ___ years old."],
+  teacherScript: [
+    "Hi! What's your name?",
+    "How old are you?",
+    "It's OK to make mistakes! Is it OK if I help you fix them while we play?",
+  ],
+  expectedOutput: ["My name is Mia.", "I am 7 years old.", "Yes! / OK!"],
+  supportMoves: [
+    "If the child is shy, model the answer first: \"My name is Teacher. I am ... years old!\"",
+    "Keep the correction question simple — a nod or \"OK!\" is a full answer.",
+  ],
+};
+
 function FeedbackSlide({ slide }) {
   return (
     <div className="spk-slide spk-slide--feedback">
@@ -92,7 +110,7 @@ export default function Spark() {
     );
   }
 
-  const slides = lesson.slides;
+  const slides = [INTRO_SLIDE, ...lesson.slides];
   const slide = slides[slideIdx];
   const isFirst = slideIdx === 0;
   const isLast = slideIdx === slides.length - 1;

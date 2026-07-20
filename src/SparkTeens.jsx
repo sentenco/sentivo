@@ -13,6 +13,33 @@ function StemRow({ stems }) {
   );
 }
 
+const INTRO_SLIDE = {
+  title: "Before We Start",
+  timing: "1 min",
+  purpose: "Get to know the student and set expectations before the lesson begins",
+  miniGameType: "Quick Q&A",
+  cardTitle: "Quick Questions",
+  questions: [
+    "What's your name?",
+    "How old are you?",
+    "Do you want me to correct you while you speak, or after you finish?",
+  ],
+  sentenceStems: ["My name is ___.", "I'm ___ years old.", "Correct me ___."],
+  teacherScript: [
+    "Hi! Before we start, a few quick things.",
+    "What's your name?",
+    "How old are you?",
+    "Do you want me to correct you while you're speaking, or wait until you finish?",
+  ],
+  likelyAnswers: ["My name is Alex.", "I'm 14.", "Correct me after, please. / It's OK to correct me anytime."],
+  followUps: [],
+  correctionNotes: [
+    "This is about setting expectations, not correcting language here.",
+    "Respect whatever the student prefers for the rest of the lesson.",
+  ],
+  pacingNote: "Keep this light and quick — it's rapport-building, not a test.",
+};
+
 function TeenSlide({ slide }) {
   if (slide.isFinal) {
     return (
@@ -92,7 +119,7 @@ export default function SparkTeens() {
     );
   }
 
-  const slides = lesson.slides;
+  const slides = [INTRO_SLIDE, ...lesson.slides];
   const slide = slides[slideIdx];
   const isFirst = slideIdx === 0;
   const isLast = slideIdx === slides.length - 1;

@@ -1,6 +1,16 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { getLesson } from "./sparkAdultsTracks";
 
+const INTRO_SLIDE = {
+  kind: "list",
+  title: "Before we begin",
+  instruction: "A few quick questions to get started.",
+  items: ["Your name?", "Your age?", "Correct you while you speak, or after you finish?"],
+  timing: "1 min",
+  purpose: "Set the tone and learn the student's correction preference before the lesson begins.",
+  teacherNote: "Respect whatever the student says for the rest of the trial — this isn't a language test, it's rapport and expectation-setting.",
+};
+
 function gimmickContent(slide) {
   if (slide.kind === "wheel") return `Wheel wedges: ${slide.wheelOptions.join(" · ")}`;
   if (slide.kind === "boardingpass") return `Destinations: ${slide.destinations.map((d) => `${d.place} (${d.tag})`).join(" · ")}`;
@@ -95,7 +105,7 @@ export default function SparkAdultsGuide() {
         </div>
 
         <div className="spag-sections">
-          {lesson.slides.map((slide, i) => (
+          {[lesson.slides[0], INTRO_SLIDE, ...lesson.slides.slice(1)].map((slide, i) => (
             <SlideSection key={i} num={i + 1} slide={slide} />
           ))}
         </div>
