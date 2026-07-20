@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import KIDS_LESSONS from "./sparkTracks";
 import TEENS_LESSONS from "./sparkTeensTracks";
+import ADULTS_LESSONS from "./sparkAdultsTracks";
 
 const ICON_PROPS = { width: 22, height: 22, viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: 2, strokeLinecap: "round", strokeLinejoin: "round" };
 
@@ -44,6 +45,29 @@ function QuestIcon({ title }) {
       <svg {...ICON_PROPS}>
         <path d="M2 9l10-5 10 5-10 5z" />
         <path d="M6 11v5c0 1.5 2.7 3 6 3s6-1.5 6-3v-5" />
+      </svg>
+    );
+  }
+  if (title === "Personality Types") {
+    return (
+      <svg {...ICON_PROPS}>
+        <circle cx="12" cy="12" r="9" />
+        <path d="M12 3v18M3 12h9" />
+      </svg>
+    );
+  }
+  if (title === "Travel & Adventure") {
+    return (
+      <svg {...ICON_PROPS}>
+        <path d="M3 12l18-8-8 18-2-8-8-2z" />
+      </svg>
+    );
+  }
+  if (title === "Food & Restaurants") {
+    return (
+      <svg {...ICON_PROPS}>
+        <path d="M6 3v7a2 2 0 0 0 2 2v9M6 3v9M9 3v7" />
+        <path d="M16 3c-1.5 0-2 2-2 4.5S15 12 16 12v9" />
       </svg>
     );
   }
@@ -101,6 +125,13 @@ const AUDIENCES = {
     blurb: "Three 20-minute trial classes for teens — conversation-game mini-lessons about football, school, and friends that turn a short answer into real speaking practice.",
     lessonPath: (id) => `/library/spark/teens/${id}`,
     guidePath: (id) => `/library/spark/teens/${id}/guide`,
+  },
+  adults: {
+    label: "Adults",
+    lessons: ADULTS_LESSONS,
+    blurb: "Three independent 20-minute trial classes for adults — each with its own topic and its own signature gimmick, so a learner never sees the same lesson twice.",
+    lessonPath: (id) => `/library/spark/adults/${id}`,
+    guidePath: (id) => `/library/spark/adults/${id}/guide`,
   },
 };
 
