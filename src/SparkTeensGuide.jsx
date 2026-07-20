@@ -21,6 +21,16 @@ const INTRO_SLIDE = {
   pacingNote: "Keep this light and quick — it's rapport-building, not a test.",
 };
 
+function gimmickContent(slide) {
+  const parts = [];
+  if (slide.wordCard) parts.push(`Flip word: ${slide.wordCard.word} → ${slide.wordCard.meaning}`);
+  if (slide.choices) parts.push(`Choices: ${slide.choices.join(" / ")}`);
+  if (slide.questions) parts.push(`Questions: ${slide.questions.join(" / ")}`);
+  if (slide.statements) parts.push(`Statements: ${slide.statements.join(" / ")}`);
+  if (slide.sentenceStems) parts.push(`Hidden starter${slide.sentenceStems.length > 1 ? "s" : ""}: ${slide.sentenceStems.join(" / ")}`);
+  return parts.length > 0 ? parts.join(" | ") : null;
+}
+
 function SlideSection({ num, slide }) {
   const doItems = [
     ...(slide.likelyAnswers ? [`Likely answers: ${slide.likelyAnswers.join(" / ")}`] : []),
@@ -36,7 +46,7 @@ function SlideSection({ num, slide }) {
         <h2 className="spktg-section-title">{slide.title}</h2>
         {slide.timing && <span className="spktg-timing">⏱ {slide.timing}</span>}
       </div>
-      {slide.purpose && <p className="spktg-goal">{slide.purpose} · {slide.miniGameType}</p>}
+      {slide.purpose && <p className="spktg-goal">{slide.purpose}{slide.miniGameType ? ` · ${slide.miniGameType}` : ""}</p>}
       {slide.teacherScript && slide.teacherScript.length > 0 && (
         <div className="spktg-block spktg-block--say">
           <span className="spktg-block-label">Say</span>
@@ -47,6 +57,12 @@ function SlideSection({ num, slide }) {
           </div>
         </div>
       )}
+      {gimmickContent(slide) && (
+        <div className="spktg-block spktg-block--do">
+          <span className="spktg-block-label">On-slide content</span>
+          <p className="spktg-say-line" style={{ background: "transparent", borderLeft: "none", padding: 0 }}>{gimmickContent(slide)}</p>
+        </div>
+      )}
       {doItems.length > 0 && (
         <div className="spktg-block spktg-block--do">
           <span className="spktg-block-label">Do</span>
@@ -55,7 +71,7 @@ function SlideSection({ num, slide }) {
           </ul>
         </div>
       )}
-      {slide.isFinal && (
+      {slide.kind === "feedback" && (
         <div className="spktg-block spktg-block--do">
           <span className="spktg-block-label">Trial feedback (fill live)</span>
           <ul className="spktg-do-list">
@@ -118,7 +134,11 @@ export default function SparkTeensGuide() {
         </div>
 
         <div className="spktg-sections">
-          {[INTRO_SLIDE, ...lesson.slides].map((slide, i) => (
+          {[
+            { title: lesson.title, purpose: "Clean opening slide only.", timing: "30 sec" },
+            INTRO_SLIDE,
+            ...lesson.slides,
+          ].map((slide, i) => (
             <SlideSection key={i} num={i + 1} slide={slide} />
           ))}
         </div>

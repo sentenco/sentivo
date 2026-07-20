@@ -2,8 +2,16 @@ import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { getLesson } from "./sparkTeensTracks";
 
-function StemRow({ stems }) {
+function StemReveal({ stems }) {
+  const [revealed, setRevealed] = useState(false);
   if (!stems || stems.length === 0) return null;
+  if (!revealed) {
+    return (
+      <button type="button" className="spkt-reveal-btn" onClick={() => setRevealed(true)}>
+        Show sentence starter{stems.length > 1 ? "s" : ""}
+      </button>
+    );
+  }
   return (
     <div className="spkt-stems">
       {stems.map((s, i) => (
@@ -40,31 +48,52 @@ const INTRO_SLIDE = {
   pacingNote: "Keep this light and quick — it's rapport-building, not a test.",
 };
 
-function TeenSlide({ slide }) {
-  if (slide.isFinal) {
-    return (
-      <div className="spkt-slide">
-        <span className="spkt-badge">{slide.miniGameType}</span>
-        <h2 className="spkt-slide-title">{slide.title}</h2>
-        <div className="spkt-review-words">
-          {slide.reviewWords.map((w, i) => <span key={i} className="spkt-review-chip">{w}</span>)}
-        </div>
-        <p className="spkt-final-prompt">{slide.finalPrompt}</p>
-      </div>
-    );
-  }
+function CoverSlide({ title }) {
+  return (
+    <div className="spkt-slide spkt-slide--cover">
+      <h1 className="spkt-cover-title">{title}</h1>
+      <span className="spkt-cover-kicker">Trial Class</span>
+      <span className="spkt-cover-length">20 minutes</span>
+    </div>
+  );
+}
 
+function FeedbackWordSlide() {
+  return (
+    <div className="spkt-slide spkt-slide--feedback">
+      <h1 className="spkt-feedback-word">Feedback</h1>
+    </div>
+  );
+}
+
+function FinalSlide({ slide }) {
+  return (
+    <div className="spkt-slide spkt-slide--final">
+      <h1 className="spkt-final-title">{slide.title}</h1>
+      {slide.subtitle && <p className="spkt-final-subtitle">{slide.subtitle}</p>}
+    </div>
+  );
+}
+
+function WordFlip({ wordCard }) {
+  const [flipped, setFlipped] = useState(false);
+  return (
+    <div className={`spkt-wordflip ${flipped ? "is-flipped" : ""}`} onClick={() => setFlipped((f) => !f)} role="button" tabIndex={0}>
+      <div className="spkt-wordflip-inner">
+        <div className="spkt-wordflip-face spkt-wordflip-face--front">{wordCard.word}</div>
+        <div className="spkt-wordflip-face spkt-wordflip-face--back">{wordCard.meaning}</div>
+      </div>
+    </div>
+  );
+}
+
+function TeenSlide({ slide }) {
   return (
     <div className="spkt-slide">
       <span className="spkt-badge">{slide.miniGameType}</span>
       <h2 className="spkt-slide-title">{slide.title}</h2>
 
-      {slide.wordCard && (
-        <div className="spkt-wordcard">
-          <span className="spkt-wordcard-word">{slide.wordCard.word}</span>
-          <span className="spkt-wordcard-meaning">{slide.wordCard.meaning}</span>
-        </div>
-      )}
+      {slide.wordCard && <WordFlip wordCard={slide.wordCard} />}
 
       {slide.prompt && <p className="spkt-prompt">{slide.prompt}</p>}
 
@@ -92,9 +121,18 @@ function TeenSlide({ slide }) {
         </div>
       )}
 
-      <StemRow stems={slide.sentenceStems} />
+      <StemReveal stems={slide.sentenceStems} />
     </div>
   );
+}
+
+function renderSlide(slide) {
+  switch (slide.kind) {
+    case "cover": return <CoverSlide title={slide.title} />;
+    case "feedback": return <FeedbackWordSlide />;
+    case "final": return <FinalSlide slide={slide} />;
+    default: return <TeenSlide slide={slide} />;
+  }
 }
 
 export default function SparkTeens() {
@@ -119,7 +157,7 @@ export default function SparkTeens() {
     );
   }
 
-  const slides = [INTRO_SLIDE, ...lesson.slides];
+  const slides = [{ kind: "cover", title: lesson.title }, INTRO_SLIDE, ...lesson.slides];
   const slide = slides[slideIdx];
   const isFirst = slideIdx === 0;
   const isLast = slideIdx === slides.length - 1;
@@ -138,7 +176,7 @@ export default function SparkTeens() {
       <div className="spkt-stage">
         <div className="spkt-deck">
           <div className="spkt-deck-body" key={slideIdx}>
-            <TeenSlide slide={slide} />
+            {renderSlide(slide)}
           </div>
           <div className="spkt-nav-row">
             <button type="button" className="spkt-nav-btn" onClick={() => setSlideIdx((i) => i - 1)} disabled={isFirst}>
@@ -211,14 +249,14 @@ const CSS = `
   width: 1080px;
   max-width: 100%;
   height: 100%;
-  max-height: 620px;
+  max-height: 640px;
   background: #FFFFFF;
   border: 1px solid #FFE28A;
   border-radius: 24px;
   box-shadow: 0 24px 60px rgba(180,140,0,0.16);
   display: flex;
   flex-direction: column;
-  padding: 26px 48px;
+  padding: 24px 48px;
 }
 
 .spkt-deck-body { flex: 1; min-height: 0; overflow-y: auto; display: flex; }
@@ -228,7 +266,7 @@ const CSS = `
 .spkt-badge {
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;
-  font-size: 12px;
+  font-size: 13px;
   letter-spacing: 0.5px;
   text-transform: uppercase;
   color: #C98A00;
@@ -236,58 +274,111 @@ const CSS = `
   border-radius: 999px;
   padding: 5px 14px;
 }
-.spkt-slide-title { font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 34px; color: #4A3B12; margin: 0; }
+.spkt-slide-title { font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 42px; color: #4A3B12; margin: 0; }
 
-.spkt-wordcard {
+/* Cover */
+.spkt-slide--cover { gap: 12px; }
+.spkt-cover-title { font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 58px; color: #4A3B12; margin: 0; }
+.spkt-cover-kicker {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  color: #C98A00;
+}
+.spkt-cover-length { font-family: 'Quicksand', sans-serif; font-weight: 600; font-size: 16px; color: #8A7233; }
+
+/* Feedback / final */
+.spkt-feedback-word { font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 56px; color: #4A3B12; margin: 0; }
+.spkt-final-title { font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 50px; color: #4A3B12; margin: 0; }
+.spkt-final-subtitle { font-family: 'Quicksand', sans-serif; font-weight: 600; font-size: 22px; color: #8A7233; margin: 0; }
+
+/* Word flip */
+.spkt-wordflip { width: 260px; height: 130px; cursor: pointer; perspective: 1000px; }
+.spkt-wordflip-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1);
+}
+.spkt-wordflip.is-flipped .spkt-wordflip-inner { transform: rotateY(180deg); }
+.spkt-wordflip-face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  border-radius: 16px;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: 4px;
+  justify-content: center;
+  padding: 10px 20px;
+  text-align: center;
+}
+.spkt-wordflip-face--front {
+  background: #FFB800;
+  border: 2px solid #E09E00;
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 700;
+  font-size: 38px;
+  color: #FFFFFF;
+  text-transform: capitalize;
+}
+.spkt-wordflip-face--back {
   background: #FFF3D0;
   border: 2px solid #FFDD7A;
-  border-radius: 16px;
-  padding: 14px 28px;
+  transform: rotateY(180deg);
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  color: #4A3B12;
 }
-.spkt-wordcard-word { font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 28px; color: #4A3B12; }
-.spkt-wordcard-meaning { font-family: 'Quicksand', sans-serif; font-weight: 500; font-style: italic; font-size: 14px; color: #8A7233; }
 
-.spkt-prompt { font-family: 'Quicksand', sans-serif; font-weight: 700; font-size: 22px; color: #4A3B12; margin: 0; max-width: 700px; }
+.spkt-prompt { font-family: 'Quicksand', sans-serif; font-weight: 700; font-size: 26px; color: #4A3B12; margin: 0; max-width: 700px; }
 
 .spkt-choice-list { display: flex; flex-direction: column; gap: 8px; width: 100%; max-width: 520px; }
 .spkt-choice-chip {
   font-family: 'Quicksand', sans-serif;
   font-weight: 600;
-  font-size: 17px;
+  font-size: 19px;
   color: #4A3B12;
   background: #FFF3D0;
   border-radius: 10px;
-  padding: 9px 16px;
+  padding: 10px 16px;
 }
 
 .spkt-card { width: 100%; max-width: 560px; background: #FFF3D0; border-radius: 14px; padding: 16px 22px; display: flex; flex-direction: column; gap: 8px; }
-.spkt-card-title { font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 16px; color: #C98A00; }
+.spkt-card-title { font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 17px; color: #C98A00; }
 .spkt-question-list { margin: 0; padding-left: 20px; text-align: left; display: flex; flex-direction: column; gap: 6px; }
-.spkt-question-list li { font-family: 'Quicksand', sans-serif; font-weight: 600; font-size: 17px; color: #4A3B12; }
+.spkt-question-list li { font-family: 'Quicksand', sans-serif; font-weight: 600; font-size: 19px; color: #4A3B12; }
 
 .spkt-tfm { display: flex; flex-direction: column; align-items: center; gap: 10px; width: 100%; }
-.spkt-tfm-instructions { font-family: 'Quicksand', sans-serif; font-weight: 600; font-style: italic; font-size: 14px; color: #8A7233; margin: 0; }
+.spkt-tfm-instructions { font-family: 'Quicksand', sans-serif; font-weight: 600; font-style: italic; font-size: 15px; color: #8A7233; margin: 0; }
 .spkt-statement-list { display: flex; flex-direction: column; gap: 8px; width: 100%; max-width: 560px; }
-.spkt-statement-chip { font-family: 'Quicksand', sans-serif; font-weight: 600; font-size: 16px; color: #4A3B12; background: #FFF3D0; border-radius: 10px; padding: 9px 16px; }
+.spkt-statement-chip { font-family: 'Quicksand', sans-serif; font-weight: 600; font-size: 18px; color: #4A3B12; background: #FFF3D0; border-radius: 10px; padding: 10px 16px; }
 
-.spkt-review-words { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
-.spkt-review-chip { font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 16px; color: #4A3B12; background: #FFF3D0; border: 2px solid #FFDD7A; border-radius: 999px; padding: 6px 16px; }
-.spkt-final-prompt { font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 24px; color: #4A3B12; margin: 0; max-width: 700px; }
+.spkt-reveal-btn {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  color: #FF4FA3;
+  background: #FFF0F7;
+  border: 2px dashed #FFB8DA;
+  border-radius: 999px;
+  padding: 10px 22px;
+  cursor: pointer;
+}
 
 .spkt-stems { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; max-width: 700px; }
 .spkt-stem-pill {
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;
-  font-size: 15px;
-  color: #FF4FA3;
-  background: #FFF0F7;
-  border: 1.5px solid #FFD3EA;
+  font-size: 16px;
+  color: #4A3B12;
+  background: #FFF3D0;
+  border: 1.5px solid #FFDD7A;
   border-radius: 999px;
-  padding: 6px 14px;
+  padding: 8px 16px;
 }
 
 .spkt-nav-row { display: flex; align-items: center; justify-content: space-between; padding-top: 14px; border-top: 1px solid #FFF3D0; flex-shrink: 0; }
