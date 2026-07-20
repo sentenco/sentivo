@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { getLesson } from "./sparkTeensTracks";
+import SparkIcon from "./slides/SparkIcons";
 
 function StemReveal({ stems }) {
   const [revealed, setRevealed] = useState(false);
@@ -92,6 +93,16 @@ function TeenSlide({ slide }) {
     <div className="spkt-slide">
       <span className="spkt-badge">{slide.miniGameType}</span>
       <h2 className="spkt-slide-title">{slide.title}</h2>
+
+      {slide.sceneIcons && slide.sceneIcons.length > 0 && (
+        <div className="spkt-scene-row">
+          {slide.sceneIcons.map((name, i) => (
+            <div key={i} className="spkt-scene-icon">
+              <SparkIcon name={name} size={56} />
+            </div>
+          ))}
+        </div>
+      )}
 
       {slide.wordCard && <WordFlip wordCard={slide.wordCard} />}
 
@@ -250,7 +261,13 @@ const CSS = `
   max-width: 100%;
   height: 100%;
   max-height: 640px;
-  background: #FFFFFF;
+  background-color: #FFFFFF;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'%3E%3Cg stroke='%23FFB800' stroke-opacity='0.14' stroke-width='4' stroke-linecap='round'%3E%3Cline x1='16' y1='10' x2='16' y2='34'/%3E%3Cline x1='4' y1='22' x2='28' y2='22'/%3E%3C/g%3E%3Ccircle cx='100' cy='34' r='6' fill='%23FF4FA3' fill-opacity='0.10'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'%3E%3Cg stroke='%23FFB800' stroke-opacity='0.14' stroke-width='4' stroke-linecap='round'%3E%3Cline x1='124' y1='106' x2='124' y2='130'/%3E%3Cline x1='112' y1='118' x2='136' y2='118'/%3E%3C/g%3E%3Ccircle cx='36' cy='108' r='6' fill='%23FF4FA3' fill-opacity='0.10'/%3E%3C/svg%3E");
+  background-repeat: no-repeat, no-repeat;
+  background-position: top left, bottom right;
+  background-size: 160px 160px, 160px 160px;
   border: 1px solid #FFE28A;
   border-radius: 24px;
   box-shadow: 0 24px 60px rgba(180,140,0,0.16);
@@ -275,6 +292,18 @@ const CSS = `
   padding: 5px 14px;
 }
 .spkt-slide-title { font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 42px; color: #4A3B12; margin: 0; }
+
+.spkt-scene-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+.spkt-scene-icon {
+  width: 76px;
+  height: 76px;
+  border-radius: 14px;
+  background: #FFF9E5;
+  border: 2px solid #FFE28A;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 /* Cover */
 .spkt-slide--cover { gap: 12px; }

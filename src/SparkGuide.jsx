@@ -30,6 +30,7 @@ function gimmickContent(slide) {
   if (slide.kind === "sort") return `Items: ${slide.items.map((i) => i.label).join(", ")} | ${slide.idStarter} / ${slide.likeStarter} / ${slide.dislikeStarter}`;
   if (slide.kind === "mystery") return `Hidden picture: ${slide.label} | Starter: ${slide.starter}`;
   if (slide.kind === "findshow") return `Prompts: ${slide.prompts.join(", ")} | Starter: ${slide.starter}`;
+  if (slide.sceneIcons) return `Pictures: ${slide.sceneIcons.join(", ")}`;
   return null;
 }
 

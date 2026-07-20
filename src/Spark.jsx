@@ -399,7 +399,13 @@ const CSS = `
   max-width: 100%;
   height: 100%;
   max-height: 620px;
-  background: #FFFFFF;
+  background-color: #FFFFFF;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'%3E%3Cpolygon points='26,8 32,22 47,23 35,33 39,48 26,40 13,48 17,33 5,23 20,22' fill='%23FFB800' fill-opacity='0.13'/%3E%3Ccircle cx='108' cy='30' r='7' fill='%23FF4FA3' fill-opacity='0.10'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'%3E%3Cpolygon points='114,92 120,106 135,107 123,117 127,132 114,124 101,132 105,117 93,107 108,106' fill='%23FFB800' fill-opacity='0.13'/%3E%3Ccircle cx='32' cy='110' r='7' fill='%23FF4FA3' fill-opacity='0.10'/%3E%3C/svg%3E");
+  background-repeat: no-repeat, no-repeat;
+  background-position: top left, bottom right;
+  background-size: 160px 160px, 160px 160px;
   border: 1px solid #FFE28A;
   border-radius: 24px;
   box-shadow: 0 24px 60px rgba(180,140,0,0.16);

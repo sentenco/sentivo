@@ -32,15 +32,6 @@ export default {
       teacherNote: "Teacher handles fuller explanation and checking.",
     },
     {
-      kind: "list",
-      title: "Wheel setup",
-      instruction: "Spin and answer.",
-      items: ["Loves big parties", "Needs quiet time alone", "Enjoys people, then needs space", "Talks easily with strangers", "Changes with the situation"],
-      timing: "1 min",
-      purpose: "Introduce the wheel wedges cleanly.",
-      teacherNote: "Teacher uses the repeated follow-up sequence orally after each spin.",
-    },
-    {
       kind: "wheel",
       title: "Wheel round",
       instruction: "Spin and speak.",

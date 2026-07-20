@@ -62,16 +62,39 @@ function ListSlide({ slide }) {
   );
 }
 
+function wrapWheelLabel(text, maxLen = 13) {
+  const words = text.split(" ");
+  const lines = [];
+  let cur = "";
+  for (const w of words) {
+    const test = cur ? `${cur} ${w}` : w;
+    if (test.length > maxLen && cur) {
+      lines.push(cur);
+      cur = w;
+    } else {
+      cur = test;
+    }
+  }
+  if (cur) lines.push(cur);
+  return lines;
+}
+
+const WHEEL_SIZE = 260;
+const WHEEL_C = WHEEL_SIZE / 2;
+const WHEEL_R = 115;
+
+function wheelPolar(angleDeg, r) {
+  const rad = ((angleDeg - 90) * Math.PI) / 180;
+  return [WHEEL_C + r * Math.cos(rad), WHEEL_C + r * Math.sin(rad)];
+}
+
 function WheelSlide({ slide }) {
   const [rotation, setRotation] = useState(0);
   const [spinning, setSpinning] = useState(false);
   const [result, setResult] = useState(null);
+  const [zoomed, setZoomed] = useState(false);
   const options = slide.wheelOptions;
   const wedgeAngle = 360 / options.length;
-
-  const gradient = options
-    .map((_, i) => `${WHEEL_COLORS[i % WHEEL_COLORS.length]} ${i * wedgeAngle}deg ${(i + 1) * wedgeAngle}deg`)
-    .join(", ");
 
   function spin() {
     if (spinning) return;
@@ -79,36 +102,84 @@ function WheelSlide({ slide }) {
     const middle = idx * wedgeAngle + wedgeAngle / 2;
     const targetMod = ((360 - middle) % 360 + 360) % 360;
     const base = rotation - (((rotation % 360) + 360) % 360);
-    const newRotation = base + 4 * 360 + targetMod;
+    const newRotation = base + 5 * 360 + targetMod;
     setSpinning(true);
     setResult(null);
+    setZoomed(false);
     setRotation(newRotation);
     setTimeout(() => {
       setSpinning(false);
       setResult(options[idx]);
-    }, 3000);
+    }, 3200);
   }
 
   return (
-    <div className="spa-slide">
+    <div className="spa-slide spa-slide--wheel">
       <h2 className="spa-slide-title">{slide.title}</h2>
       <p className="spa-instruction">{slide.instruction}</p>
       <div className="spa-wheel-area">
-        <div className="spa-wheel-wrap">
-          <span className="spa-wheel-pointer" />
-          <div
-            className="spa-wheel-disc"
-            style={{ transform: `rotate(${rotation}deg)`, background: `conic-gradient(${gradient})` }}
-          />
-          <button type="button" className="spa-wheel-hub" onClick={spin} disabled={spinning}>
+        <div className="spa-wheel-wrap-lg">
+          <span className="spa-wheel-pointer-lg" />
+          <svg
+            className="spa-wheel-svg"
+            viewBox={`0 0 ${WHEEL_SIZE} ${WHEEL_SIZE}`}
+            style={{
+              transform: `rotate(${rotation}deg)`,
+              transition: spinning ? "transform 3.2s cubic-bezier(0.17,0.67,0.1,0.99)" : "none",
+            }}
+          >
+            {options.map((opt, i) => {
+              const start = i * wedgeAngle;
+              const end = (i + 1) * wedgeAngle;
+              const mid = start + wedgeAngle / 2;
+              const [x1, y1] = wheelPolar(start, WHEEL_R);
+              const [x2, y2] = wheelPolar(end, WHEEL_R);
+              const largeArc = wedgeAngle > 180 ? 1 : 0;
+              const lines = wrapWheelLabel(opt);
+              const firstY = WHEEL_C - 98;
+              return (
+                <g key={i}>
+                  <path
+                    d={`M${WHEEL_C},${WHEEL_C} L${x1},${y1} A${WHEEL_R},${WHEEL_R} 0 ${largeArc} 1 ${x2},${y2} Z`}
+                    fill={WHEEL_COLORS[i % WHEEL_COLORS.length]}
+                    stroke="#FFFFFF"
+                    strokeWidth="2.5"
+                  />
+                  <g transform={`rotate(${mid}, ${WHEEL_C}, ${WHEEL_C})`}>
+                    <text x={WHEEL_C} y={firstY} textAnchor="middle" fontFamily="Inter, sans-serif" fontWeight="700" fontSize="10.5" fill="#FFFFFF">
+                      {lines.map((line, li) => (
+                        <tspan key={li} x={WHEEL_C} dy={li === 0 ? 0 : 12}>{line}</tspan>
+                      ))}
+                    </text>
+                  </g>
+                </g>
+              );
+            })}
+            <circle cx={WHEEL_C} cy={WHEEL_C} r="24" fill="#FFFFFF" stroke="#2A2621" strokeWidth="2.5" />
+          </svg>
+          <button type="button" className="spa-wheel-hub-lg" onClick={spin} disabled={spinning}>
             {spinning ? "…" : "Spin"}
           </button>
         </div>
         <div className="spa-wheel-result">
-          {result ? <p className="spa-wheel-result-text">{result}</p> : <p className="spa-wheel-result-placeholder">Spin to get a description.</p>}
+          {result ? (
+            <button type="button" className="spa-wheel-result-btn" onClick={() => setZoomed(true)}>
+              {result}
+            </button>
+          ) : (
+            <p className="spa-wheel-result-placeholder">Spin to get a description.</p>
+          )}
         </div>
       </div>
       <ZoomableChips items={slide.items} compact />
+      {zoomed && (
+        <div className="spa-zoom-overlay" onClick={() => setZoomed(false)}>
+          <div className="spa-zoom-card" onClick={(e) => e.stopPropagation()}>
+            <span className="spa-zoom-text">{result}</span>
+            <button type="button" className="spa-zoom-close" onClick={() => setZoomed(false)}>Close</button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
@@ -320,7 +391,13 @@ const CSS = `
   max-width: 100%;
   height: 100%;
   max-height: 600px;
-  background: #FFFFFF;
+  background-color: #FFFFFF;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150' viewBox='0 0 150 150'%3E%3Cpath d='M20 70 V30 H60' stroke='%23C8863A' stroke-opacity='0.18' stroke-width='1.5' fill='none'/%3E%3Ccircle cx='20' cy='30' r='2.5' fill='%23C8863A' fill-opacity='0.2'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150' viewBox='0 0 150 150'%3E%3Cpath d='M130 80 V120 H90' stroke='%23C8863A' stroke-opacity='0.18' stroke-width='1.5' fill='none'/%3E%3Ccircle cx='130' cy='120' r='2.5' fill='%23C8863A' fill-opacity='0.2'/%3E%3C/svg%3E");
+  background-repeat: no-repeat, no-repeat;
+  background-position: top left, bottom right;
+  background-size: 150px 150px, 150px 150px;
   border: 1px solid #EDD3A5;
   border-radius: 8px;
   box-shadow: 0 24px 60px rgba(139,60,20,0.18);
@@ -443,45 +520,56 @@ const CSS = `
 }
 
 /* Wheel */
-.spa-wheel-area { display: flex; flex-direction: column; align-items: center; gap: 14px; }
-.spa-wheel-wrap { position: relative; width: 200px; height: 200px; display: flex; align-items: center; justify-content: center; }
-.spa-wheel-pointer {
+.spa-wheel-area { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+.spa-slide--wheel { gap: 12px; }
+.spa-wheel-wrap-lg { position: relative; width: 260px; height: 260px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.spa-wheel-pointer-lg {
   position: absolute;
-  top: -4px;
+  top: -5px;
   left: 50%;
   transform: translateX(-50%);
   width: 0;
   height: 0;
-  border-left: 9px solid transparent;
-  border-right: 9px solid transparent;
-  border-top: 14px solid #2A2621;
+  border-left: 11px solid transparent;
+  border-right: 11px solid transparent;
+  border-top: 18px solid #2A2621;
   z-index: 3;
+  filter: drop-shadow(0 2px 2px rgba(0,0,0,0.2));
 }
-.spa-wheel-disc {
-  width: 200px;
-  height: 200px;
+.spa-wheel-svg {
+  width: 260px;
+  height: 260px;
   border-radius: 50%;
-  border: 3px solid #FFFFFF;
-  box-shadow: 0 0 0 1px #EDD3A5, 0 12px 28px rgba(139,60,20,0.22);
-  transition: transform 3s cubic-bezier(0.17, 0.67, 0.12, 0.99);
+  box-shadow: 0 0 0 4px #FFFFFF, 0 0 0 5px #EDD3A5, 0 14px 30px rgba(139,60,20,0.26);
 }
-.spa-wheel-hub {
+.spa-wheel-hub-lg {
   position: absolute;
   width: 56px;
   height: 56px;
   border-radius: 50%;
   background: #FFFFFF;
-  border: 2px solid #2A2621;
+  border: 3px solid #2A2621;
   color: #2A2621;
   font-family: 'Inter', sans-serif;
-  font-weight: 600;
+  font-weight: 700;
   font-size: 13px;
   cursor: pointer;
   z-index: 2;
 }
-.spa-wheel-hub:disabled { opacity: 0.6; cursor: default; }
-.spa-wheel-result { min-height: 26px; }
-.spa-wheel-result-text { font-family: 'Source Serif 4', serif; font-weight: 700; font-size: 19px; color: #8B2E3F; margin: 0; }
+.spa-wheel-hub-lg:disabled { opacity: 0.6; cursor: default; }
+.spa-wheel-result { min-height: 30px; }
+.spa-wheel-result-btn {
+  font-family: 'Source Serif 4', serif;
+  font-weight: 700;
+  font-size: 19px;
+  color: #FFFFFF;
+  background: #8B2E3F;
+  border: none;
+  border-radius: 999px;
+  padding: 10px 24px;
+  margin: 0;
+  cursor: pointer;
+}
 .spa-wheel-result-placeholder { font-family: 'Inter', sans-serif; font-size: 13px; color: #8B8171; margin: 0; }
 
 /* Boarding pass */

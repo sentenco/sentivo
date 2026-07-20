@@ -23,6 +23,7 @@ const INTRO_SLIDE = {
 
 function gimmickContent(slide) {
   const parts = [];
+  if (slide.sceneIcons) parts.push(`Pictures: ${slide.sceneIcons.join(", ")}`);
   if (slide.wordCard) parts.push(`Flip word: ${slide.wordCard.word} → ${slide.wordCard.meaning}`);
   if (slide.choices) parts.push(`Choices: ${slide.choices.join(" / ")}`);
   if (slide.questions) parts.push(`Questions: ${slide.questions.join(" / ")}`);

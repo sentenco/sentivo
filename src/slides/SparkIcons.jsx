@@ -232,27 +232,53 @@ const ICONS = {
   ),
   jump: (
     <>
-      <circle cx="50" cy="26" r="10" fill="#E9B98A" />
-      <path d="M50 36 L50 56 M50 44 L32 32 M50 44 L68 32 M50 56 L34 78 M50 56 L66 78" stroke="#4E9BD6" strokeWidth="7" fill="none" strokeLinecap="round" />
+      <circle cx="50" cy="20" r="11" fill="#E9B98A" />
+      <path d="M34 52 Q50 40 66 52 L70 74 H30 Z" fill="#4E9BD6" />
+      <path d="M36 54 L20 34" stroke="#4E9BD6" strokeWidth="9" fill="none" strokeLinecap="round" />
+      <path d="M64 54 L80 34" stroke="#4E9BD6" strokeWidth="9" fill="none" strokeLinecap="round" />
+      <path d="M38 74 L26 90" stroke="#4E9BD6" strokeWidth="9" fill="none" strokeLinecap="round" />
+      <path d="M62 74 L74 90" stroke="#4E9BD6" strokeWidth="9" fill="none" strokeLinecap="round" />
     </>
   ),
   sit: (
     <>
-      <circle cx="50" cy="26" r="10" fill="#E9B98A" />
-      <path d="M50 36 L50 58 M50 44 L30 50 M50 44 L70 50 M50 58 L34 58 M50 58 L74 58 M34 58 L34 78 M74 58 L74 78" stroke="#4E9BD6" strokeWidth="7" fill="none" strokeLinecap="round" />
+      <circle cx="42" cy="26" r="11" fill="#E9B98A" />
+      <path d="M26 56 Q42 44 58 56 L60 74 H24 Z" fill="#4E9BD6" />
+      <path d="M56 68 L82 68" stroke="#4E9BD6" strokeWidth="12" fill="none" strokeLinecap="round" />
+      <path d="M28 74 L26 90 M56 74 L58 90" stroke="#4E9BD6" strokeWidth="9" fill="none" strokeLinecap="round" />
     </>
   ),
   stand: (
     <>
-      <circle cx="50" cy="22" r="10" fill="#E9B98A" />
-      <path d="M50 32 L50 62 M50 42 L34 54 M50 42 L66 54 M50 62 L38 88 M50 62 L62 88" stroke="#4E9BD6" strokeWidth="7" fill="none" strokeLinecap="round" />
+      <circle cx="50" cy="24" r="11" fill="#E9B98A" />
+      <path d="M32 58 Q50 44 68 58 L72 88 H28 Z" fill="#4E9BD6" />
+      <path d="M32 60 L20 76" stroke="#4E9BD6" strokeWidth="9" fill="none" strokeLinecap="round" />
+      <path d="M68 60 L80 76" stroke="#4E9BD6" strokeWidth="9" fill="none" strokeLinecap="round" />
     </>
   ),
   dance: (
     <>
-      <circle cx="50" cy="24" r="10" fill="#E9B98A" />
-      <path d="M50 34 L44 60 M44 42 L24 30 M44 42 L64 26 M44 60 L28 84 M44 60 L60 82" stroke="#EA6F9C" strokeWidth="7" fill="none" strokeLinecap="round" />
+      <circle cx="50" cy="22" r="11" fill="#E9B98A" />
+      <path d="M34 54 Q50 42 66 54 L68 78 H32 Z" fill="#EA6F9C" />
+      <path d="M36 56 L18 44" stroke="#EA6F9C" strokeWidth="9" fill="none" strokeLinecap="round" />
+      <path d="M64 56 L82 66" stroke="#EA6F9C" strokeWidth="9" fill="none" strokeLinecap="round" />
+      <path d="M40 78 L28 92" stroke="#EA6F9C" strokeWidth="9" fill="none" strokeLinecap="round" />
+      <path d="M56 78 L74 86" stroke="#EA6F9C" strokeWidth="9" fill="none" strokeLinecap="round" />
     </>
+  ),
+  clock: (
+    <>
+      <circle cx="50" cy="50" r="34" fill="#FDF3DF" stroke="#3A2A18" strokeWidth="4" />
+      <path d="M50 30 L50 50 L66 58" stroke="#4E9BD6" strokeWidth="5" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+      <circle cx="50" cy="50" r="4" fill="#3A2A18" />
+      <circle cx="50" cy="19" r="2.5" fill="#3A2A18" />
+      <circle cx="50" cy="81" r="2.5" fill="#3A2A18" />
+      <circle cx="19" cy="50" r="2.5" fill="#3A2A18" />
+      <circle cx="81" cy="50" r="2.5" fill="#3A2A18" />
+    </>
+  ),
+  heart: (
+    <path d="M50 85 C15 60 5 38 5 22 C5 8 17 2 28 2 C38 2 46 8 50 18 C54 8 62 2 72 2 C83 2 95 8 95 22 C95 38 85 60 50 85 Z" fill="#EA6F9C" />
   ),
 };
 
