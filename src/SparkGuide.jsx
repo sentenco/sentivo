@@ -1,24 +1,41 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { getLesson } from "./sparkTracks";
 
-const INTRO_SLIDE = {
-  title: "Hi there!",
-  purpose: "Warm welcome — learn the child's name, age, and comfort level with correction before the game starts.",
-  timing: "1 min",
-  teacherScript: [
-    "Hi! What's your name?",
-    "How old are you?",
-    "It's OK to make mistakes! Is it OK if I help you fix them while we play?",
-  ],
-  expectedOutput: ["My name is Mia.", "I am 7 years old.", "Yes! / OK!"],
-  supportMoves: [
-    "If the child is shy, model the answer first: \"My name is Teacher. I am ... years old!\"",
-    "Keep the correction question simple — a nod or \"OK!\" is a full answer.",
-  ],
-};
+const QUESTION_SLIDES = [
+  {
+    title: "What's your name?",
+    purpose: "Get-to-know-you — sentence starter is hidden on the student slide; reveal it only if the child can't answer.",
+    timing: "30 sec",
+    teacherScript: ["What's your name?"],
+    supportMoves: ["Hidden starter: \"My name is ___.\" — show only if needed."],
+  },
+  {
+    title: "How old are you?",
+    purpose: "Get-to-know-you — sentence starter is hidden on the student slide; reveal it only if the child can't answer.",
+    timing: "30 sec",
+    teacherScript: ["How old are you?"],
+    supportMoves: ["Hidden starter: \"I am ___ years old.\" — show only if needed."],
+  },
+  {
+    title: "What do you like to do for fun?",
+    purpose: "Get-to-know-you — sentence starter is hidden on the student slide; reveal it only if the child can't answer.",
+    timing: "30 sec",
+    teacherScript: ["What do you like to do for fun?"],
+    supportMoves: ["Hidden starter: \"I like to ___.\" — show only if needed."],
+  },
+];
+
+function gimmickContent(slide) {
+  if (slide.kind === "flipcards") return `Cards: ${slide.cards.map((c) => `${c.number}. ${c.label}`).join(" · ")} | Starters: ${slide.starters.join(" / ")}`;
+  if (slide.kind === "sort") return `Items: ${slide.items.map((i) => i.label).join(", ")} | ${slide.idStarter} / ${slide.likeStarter} / ${slide.dislikeStarter}`;
+  if (slide.kind === "mystery") return `Hidden picture: ${slide.label} | Starter: ${slide.starter}`;
+  if (slide.kind === "findshow") return `Prompts: ${slide.prompts.join(", ")} | Starter: ${slide.starter}`;
+  return null;
+}
 
 function SlideSection({ num, slide }) {
   const doItems = [...(slide.supportMoves || []), ...(slide.expectedOutput ? [`Expected: ${slide.expectedOutput.join(" / ")}`] : [])];
+  const isFeedback = slide.isFeedback || slide.kind === "feedback";
   return (
     <section className="spkg-section">
       <div className="spkg-section-head">
@@ -37,6 +54,12 @@ function SlideSection({ num, slide }) {
           </div>
         </div>
       )}
+      {gimmickContent(slide) && (
+        <div className="spkg-block spkg-block--do">
+          <span className="spkg-block-label">On-slide content</span>
+          <p className="spkg-say-line" style={{ background: "transparent", borderLeft: "none", padding: 0 }}>{gimmickContent(slide)}</p>
+        </div>
+      )}
       {doItems.length > 0 && (
         <div className="spkg-block spkg-block--do">
           <span className="spkg-block-label">Do</span>
@@ -47,7 +70,7 @@ function SlideSection({ num, slide }) {
           </ul>
         </div>
       )}
-      {slide.isFeedback && (
+      {isFeedback && slide.feedback && (
         <div className="spkg-block spkg-block--do">
           <span className="spkg-block-label">Parent feedback</span>
           <ul className="spkg-do-list">
@@ -108,7 +131,11 @@ export default function SparkGuide() {
         </div>
 
         <div className="spkg-sections">
-          {[INTRO_SLIDE, ...lesson.slides].map((slide, i) => (
+          {[
+            { title: lesson.title, purpose: "Clean opening slide only.", timing: "30 sec" },
+            ...QUESTION_SLIDES,
+            ...lesson.slides,
+          ].map((slide, i) => (
             <SlideSection key={i} num={i + 1} slide={slide} />
           ))}
         </div>
