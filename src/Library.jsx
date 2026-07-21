@@ -1056,12 +1056,14 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .cover--lavender { background: linear-gradient(160deg, #E3DAFF 0%, #C2AEF5 100%); }
 .cover--gold { background: linear-gradient(160deg, #FCE7BD 0%, #F3C871 100%); }
 .cover--orange { background: linear-gradient(160deg, #FFD3AD 0%, #FF9A56 100%); }
+.cover--aqua { background: linear-gradient(160deg, #C7F0F5 0%, #7FD6E3 100%); }
 
 .theme-pro .cover--coral { background: #fff; border-top: 4px solid #D85A30; }
 .theme-pro .cover--teal { background: #fff; border-top: 4px solid #0F6E56; }
 .theme-pro .cover--lavender { background: #fff; border-top: 4px solid #534AB7; }
 .theme-pro .cover--gold { background: #fff; border-top: 4px solid #B08D57; }
 .theme-pro .cover--orange { background: #fff; border-top: 4px solid #D9722C; }
+.theme-pro .cover--aqua { background: #fff; border-top: 4px solid #128A9E; }
 
 .premium-badge {
   position: absolute;
