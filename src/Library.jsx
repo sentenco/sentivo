@@ -1057,6 +1057,7 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .cover--gold { background: linear-gradient(160deg, #FCE7BD 0%, #F3C871 100%); }
 .cover--orange { background: linear-gradient(160deg, #FFD3AD 0%, #FF9A56 100%); }
 .cover--aqua { background: linear-gradient(160deg, #C7F0F5 0%, #7FD6E3 100%); }
+.cover--slate { background: linear-gradient(160deg, #D9E0EC 0%, #A6B4CE 100%); }
 
 .theme-pro .cover--coral { background: #fff; border-top: 4px solid #D85A30; }
 .theme-pro .cover--teal { background: #fff; border-top: 4px solid #0F6E56; }
@@ -1064,6 +1065,7 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .theme-pro .cover--gold { background: #fff; border-top: 4px solid #B08D57; }
 .theme-pro .cover--orange { background: #fff; border-top: 4px solid #D9722C; }
 .theme-pro .cover--aqua { background: #fff; border-top: 4px solid #128A9E; }
+.theme-pro .cover--slate { background: #fff; border-top: 4px solid #47597D; }
 
 .premium-badge {
   position: absolute;
