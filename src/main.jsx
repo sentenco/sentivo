@@ -8,6 +8,7 @@ import LessonPlayerPage from './LessonPlayerPage.jsx'
 import TeacherGuide from './TeacherGuide.jsx'
 import StoryBook from './StoryBook.jsx'
 import storybook2 from './storybookData2.js'
+import storybook3 from './storybookData3.js'
 import Forge from './Forge.jsx'
 import ForgeHub from './ForgeHub.jsx'
 import ForgeTrack from './ForgeTrack.jsx'
@@ -46,6 +47,7 @@ createRoot(document.getElementById('root')).render(
             <Route path="/library/stress" element={<Flashcards />} />
             <Route path="/library/storybook" element={<StoryBook />} />
             <Route path="/library/storybook-2" element={<StoryBook book={storybook2} />} />
+            <Route path="/library/storybook-3" element={<StoryBook book={storybook3} />} />
             <Route path="/library/forge" element={<ForgeHub />} />
             <Route path="/library/forge/:trackId" element={<ForgeTrack />} />
             <Route path="/library/forge/:trackId/:lessonNum" element={<Forge />} />
