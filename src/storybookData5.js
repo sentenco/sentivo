@@ -44,12 +44,12 @@ export const CHAPTERS = [
         jumbled: ["After", "big", "I", "to", "next", "the", "gym", "school,", "walk", "playground.", "the", "to"],
       },
       {
-        target: "Inside the gym, the lights are bright, and a tall hoop hangs above the shiny court.",
-        jumbled: ["gym,", "tall", "hoop", "Inside", "hangs", "the", "bright,", "the", "a", "lights", "shiny", "above", "are", "court.", "and"],
+        target: "A tall hoop hangs above the shiny court.",
+        jumbled: ["the", "shiny", "A", "court.", "hangs", "above", "hoop", "tall"],
       },
       {
-        target: "I take a deep breath, try again, and this time the ball comes back to my hand.",
-        jumbled: ["again,", "deep", "I", "breath,", "take", "to", "and", "my", "comes", "back", "this", "time", "try", "hand.", "the", "ball"],
+        target: "I take a deep breath and try again.",
+        jumbled: ["try", "and", "breath", "again.", "take", "I", "deep", "a"],
       },
     ],
     mySentencePrompt: "Write or say one sentence about basketball and you.",
@@ -74,16 +74,16 @@ export const CHAPTERS = [
     ],
     buildSentence: [
       {
-        target: "The coach in the red shirt walks over to me and sits down beside me.",
-        jumbled: ["red", "me", "walks", "coach", "me.", "The", "to", "and", "shirt", "in", "the", "down", "over", "sits", "beside"],
+        target: "The coach walks over to me and sits down beside me.",
+        jumbled: ["beside", "me.", "me", "down", "over", "The", "sits", "and", "coach", "walks", "to"],
       },
       {
-        target: "He says, “My name is Coach Ben, and I am happy you joined the team.”",
-        jumbled: ["is", "He", "name", "Ben,", "“My", "says,", "and", "team.”", "I", "joined", "Coach", "am", "happy", "you", "the"],
+        target: "My name is Coach Ben, and I am happy you joined.",
+        jumbled: ["I", "is", "you", "am", "name", "joined.", "My", "happy", "Coach", "Ben,", "and"],
       },
       {
-        target: "In that moment, I feel calm because now I know my coach and two new friends.",
-        jumbled: ["know", "calm", "moment,", "I", "coach", "because", "now", "feel", "my", "I", "that", "two", "and", "new", "In", "friends."],
+        target: "I feel calm because I know my coach and new friends.",
+        jumbled: ["coach", "friends.", "because", "I", "calm", "new", "and", "my", "know", "I", "feel"],
       },
     ],
     mySentencePrompt: "Write or say one sentence about a coach or a teacher you like.",
@@ -116,8 +116,8 @@ export const CHAPTERS = [
         jumbled: ["her,", "ball", "close", "my", "I", "to", "and", "stays", "body.", "copy", "slowly", "my"],
       },
       {
-        target: "In that moment, I feel proud because I can bounce and walk with the ball.",
-        jumbled: ["bounce", "because", "proud", "I", "feel", "moment,", "walk", "and", "can", "that", "with", "the", "I", "In", "ball."],
+        target: "I feel proud because I can bounce and walk with the ball.",
+        jumbled: ["can", "walk", "and", "bounce", "ball.", "because", "the", "feel", "I", "I", "with", "proud"],
       },
     ],
     mySentencePrompt: "Write or say one sentence about learning something new.",
@@ -146,12 +146,12 @@ export const CHAPTERS = [
         jumbled: ["knees,", "the", "then", "your", "up", "push", "Bend", "ball", "softly."],
       },
       {
-        target: "I bend my knees, look at the hoop, and push the ball up with both hands.",
-        jumbled: ["knees,", "the", "bend", "at", "look", "I", "hoop,", "up", "my", "push", "and", "ball", "with", "hands.", "the", "both"],
+        target: "I bend my knees and push the ball up with both hands.",
+        jumbled: ["up", "my", "hands.", "bend", "ball", "both", "push", "I", "and", "knees", "with", "the"],
       },
       {
-        target: "My friends cheer for me, and I feel excited because I made my first basket today.",
-        jumbled: ["for", "cheer", "and", "excited", "friends", "me,", "I", "because", "My", "feel", "first", "I", "made", "basket", "my", "today."],
+        target: "My friends cheer for me because I made my first basket.",
+        jumbled: ["My", "made", "for", "I", "me", "cheer", "my", "basket.", "first", "because", "friends"],
       },
     ],
     mySentencePrompt: "Write or say one sentence about trying again after a mistake.",
@@ -180,8 +180,8 @@ export const CHAPTERS = [
         jumbled: ["on", "slip", "the", "I", "and", "Suddenly,", "fall", "shiny", "on", "floor", "my", "side."],
       },
       {
-        target: "Coach Ben tells the team, “Falling is normal, so do not be afraid to try.”",
-        jumbled: ["the", "tells", "“Falling", "Ben", "Coach", "team,", "normal,", "is", "not", "so", "do", "try.”", "be", "afraid", "to"],
+        target: "Falling is normal, so do not be afraid to try.",
+        jumbled: ["Falling", "to", "normal,", "so", "try.", "is", "afraid", "do", "be", "not"],
       },
       {
         target: "In that moment, I feel brave because a small mistake did not stop me.",
@@ -214,8 +214,8 @@ export const CHAPTERS = [
         jumbled: ["her", "opens", "and", "bag", "small", "Mia", "some", "shares", "team.", "crackers", "with", "the"],
       },
       {
-        target: "I tell them I do not know many players yet, but I want to learn more.",
-        jumbled: ["them", "not", "players", "I", "know", "do", "many", "tell", "I", "yet,", "I", "but", "to", "want", "learn", "more."],
+        target: "I do not know many players yet, but I want to learn.",
+        jumbled: ["know", "do", "players", "but", "learn.", "I", "I", "yet,", "many", "want", "not", "to"],
       },
       {
         target: "In that moment, I feel warm inside because these teammates feel like real friends.",
@@ -248,12 +248,12 @@ export const CHAPTERS = [
         jumbled: ["I", "gym", "stay", "Friday,", "practice", "the", "in", "for", "On", "extra", "with", "Mia", "and", "Jay."],
       },
       {
-        target: "Jay counts my baskets out loud and says, “Nina, you are getting better every day.”",
-        jumbled: ["my", "counts", "out", "Jay", "and", "baskets", "loud", "are", "says,", "“Nina,", "better", "you", "getting", "every", "day.”"],
+        target: "I am getting better every day.",
+        jumbled: ["I", "better", "am", "getting", "day.", "every"],
       },
       {
-        target: "In that moment, I feel proud because I work hard even when no one asks me to.",
-        jumbled: ["proud", "work", "because", "I", "hard", "feel", "moment,", "I", "one", "even", "no", "that", "when", "asks", "In", "me", "to."],
+        target: "I feel proud because I work hard on my own.",
+        jumbled: ["my", "proud", "I", "I", "feel", "work", "hard", "own.", "because", "on"],
       },
     ],
     mySentencePrompt: "Write or say one sentence about working hard at something.",
@@ -278,8 +278,8 @@ export const CHAPTERS = [
     ],
     buildSentence: [
       {
-        target: "Coach Ben tells us to wear our team shirts and come early on game day.",
-        jumbled: ["us", "tells", "to", "Coach", "our", "Ben", "wear", "shirts", "team", "and", "early", "come", "day.", "on", "game"],
+        target: "Coach Ben tells us to wear our team shirts.",
+        jumbled: ["team", "our", "Coach", "to", "shirts.", "tells", "wear", "us", "Ben"],
       },
       {
         target: "Pass the ball, help each other, and do not be afraid.",
@@ -312,8 +312,8 @@ export const CHAPTERS = [
     ],
     buildSentence: [
       {
-        target: "When the game starts, I run, pass, and try to stay close to Mia and Jay.",
-        jumbled: ["game", "starts,", "the", "run,", "When", "try", "pass,", "I", "stay", "and", "to", "close", "Mia", "to", "Jay.", "and"],
+        target: "I run, pass, and try to stay close to my team.",
+        jumbled: ["team.", "to", "pass,", "to", "try", "stay", "my", "run,", "close", "and", "I"],
       },
       {
         target: "I bend my knees, look up, and shoot the ball into the basket.",
@@ -354,8 +354,8 @@ export const CHAPTERS = [
         jumbled: ["says,", "Ben", "are", "“Nina,", "Coach", "a", "you", "part", "real", "this", "of", "now.”", "team"],
       },
       {
-        target: "In that moment, I feel proud because the basketball team truly feels like my place.",
-        jumbled: ["proud", "because", "feel", "moment,", "I", "team", "basketball", "the", "that", "truly", "like", "feels", "my", "In", "place."],
+        target: "I feel proud because the team feels like my place.",
+        jumbled: ["proud", "place.", "my", "the", "I", "team", "feel", "because", "feels", "like"],
       },
     ],
     mySentencePrompt: "Write or say one sentence about a place where you feel you belong.",

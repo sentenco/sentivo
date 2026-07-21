@@ -48,8 +48,8 @@ export const CHAPTERS = [
         jumbled: ["eggs,", "the", "breakfast.", "a", "On", "I", "bread,", "glass", "see", "and", "table,", "of", "juice", "for"],
       },
       {
-        target: "I sit with my family, eat my breakfast, and feel calm and happy at home.",
-        jumbled: ["breakfast,", "happy", "home.", "I", "calm", "feel", "my", "family,", "and", "sit", "eat", "and", "with", "my", "at"],
+        target: "I sit with my family and eat my breakfast.",
+        jumbled: ["I", "my", "family", "eat", "my", "and", "breakfast.", "with", "sit"],
       },
     ],
     mySentencePrompt: "Write or say one sentence about your morning at home.",
@@ -74,16 +74,16 @@ export const CHAPTERS = [
     ],
     buildSentence: [
       {
-        target: "I walk to the gate and see my neighbor, Bea, with a small paper bag in her hand.",
-        jumbled: ["to", "neighbor,", "see", "Bea,", "walk", "the", "hand.", "and", "a", "with", "in", "bag", "my", "small", "gate", "her", "I", "paper"],
+        target: "I walk to the gate and see my neighbor, Bea.",
+        jumbled: ["I", "gate", "walk", "see", "my", "to", "and", "Bea.", "neighbor,", "the"],
       },
       {
         target: "She says her mother made banana bread and wants to share some with us.",
         jumbled: ["says", "made", "us.", "some", "mother", "share", "to", "wants", "banana", "with", "She", "and", "her", "bread"],
       },
       {
-        target: "When I take the paper bag and thank her, I feel glad to have a kind neighbor.",
-        jumbled: ["a", "glad", "the", "feel", "bag", "I", "and", "have", "her,", "When", "take", "kind", "paper", "thank", "to", "neighbor"],
+        target: "I feel glad to have a kind neighbor.",
+        jumbled: ["a", "to", "have", "glad", "I", "kind", "neighbor.", "feel"],
       },
     ],
     mySentencePrompt: "Write or say one sentence about your neighbor.",
@@ -150,8 +150,8 @@ export const CHAPTERS = [
         jumbled: ["slowly.", "questions", "him", "and", "sit", "beside", "read", "the", "I"],
       },
       {
-        target: "He smiles at us, and I feel proud because we help him do his work.",
-        jumbled: ["because", "feel", "work.", "smiles", "do", "proud", "and", "he", "us,", "we", "his", "at", "I", "help", "He"],
+        target: "He smiles at us, and I feel proud.",
+        jumbled: ["proud.", "at", "and", "smiles", "I", "feel", "He", "us,"],
       },
     ],
     mySentencePrompt: "Write or say one sentence about homework at home.",
@@ -214,12 +214,12 @@ export const CHAPTERS = [
         jumbled: ["Before", "asks", "the", "our", "lunch,", "us", "clean", "room.", "mother", "help", "to", "living"],
       },
       {
-        target: "The room looks messy at first, but little by little it becomes clean and bright.",
-        jumbled: ["room", "little", "and", "but", "at", "clean", "The", "becomes", "looks", "bright.", "it", "first,", "by", "little", "messy"],
+        target: "The room looks messy at first, but it becomes clean.",
+        jumbled: ["at", "The", "but", "becomes", "it", "clean.", "looks", "messy", "room", "first,"],
       },
       {
-        target: "When we finish and sit down to look at the room, I feel happy because we did the work together.",
-        jumbled: ["we", "and", "the", "because", "room,", "work", "happy", "sit", "at", "feel", "did", "I", "together.", "finish", "to", "down", "look", "When", "the", "we"],
+        target: "I feel happy because we did the work together.",
+        jumbled: ["we", "happy", "I", "feel", "did", "together.", "the", "because", "work"],
       },
     ],
     mySentencePrompt: "Write or say one sentence about cleaning at home.",
@@ -252,8 +252,8 @@ export const CHAPTERS = [
         jumbled: ["The", "together.", "while", "roof", "sound", "on", "play", "rain", "we", "soft", "makes", "a", "the"],
       },
       {
-        target: "When the game ends, I do not feel bored because the rainy afternoon becomes fun.",
-        jumbled: ["fun.", "I", "game", "rainy", "feel", "not", "ends,", "the", "because", "When", "bored", "afternoon", "becomes", "do", "the"],
+        target: "I do not feel bored because the game is fun.",
+        jumbled: ["not", "do", "is", "bored", "I", "game", "feel", "fun.", "because", "the"],
       },
     ],
     mySentencePrompt: "Write or say one sentence about a rainy day at home.",
@@ -278,16 +278,16 @@ export const CHAPTERS = [
     ],
     buildSentence: [
       {
-        target: "In the evening, our father comes home from work and smiles when he sees everyone together.",
-        jumbled: ["smiles", "father", "together.", "our", "everyone", "sees", "home", "evening,", "when", "work", "he", "comes", "from", "and", "In", "the"],
+        target: "Our father comes home from work and smiles at us.",
+        jumbled: ["comes", "us.", "Our", "smiles", "from", "and", "at", "home", "father", "work"],
       },
       {
         target: "We eat dinner, pass the dishes, and listen to one another.",
         jumbled: ["dishes,", "one", "another.", "dinner,", "We", "to", "and", "the", "listen", "eat", "pass"],
       },
       {
-        target: "As I look around at my family and friends, I feel warm inside and very thankful.",
-        jumbled: ["around", "I", "inside", "friends,", "warm", "and", "look", "feel", "very", "thankful.", "at", "my", "As", "family", "and", "I"],
+        target: "I feel warm inside and very thankful.",
+        jumbled: ["very", "and", "I", "thankful.", "inside", "warm", "feel"],
       },
     ],
     mySentencePrompt: "Write or say one sentence about dinner with your family.",
@@ -354,8 +354,8 @@ export const CHAPTERS = [
         jumbled: ["weekend.", "looks", "of", "but", "the", "simple,", "memories", "good", "feels", "it", "house", "full", "The", "from"],
       },
       {
-        target: "As the sun goes down, I feel peaceful because home is warm when love and kindness are inside it.",
-        jumbled: ["peaceful", "sun", "inside", "goes", "As", "home", "are", "kindness", "the", "because", "warm", "feel", "down,", "and", "it.", "love", "when", "I", "is"],
+        target: "I feel peaceful because home is warm and full of love.",
+        jumbled: ["warm", "peaceful", "home", "because", "is", "of", "and", "love.", "I", "feel", "full"],
       },
     ],
     mySentencePrompt: "Write or say one sentence about your home.",

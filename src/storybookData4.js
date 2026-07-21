@@ -79,12 +79,12 @@ export const CHAPTERS = [
         jumbled: ["asks", "two", "Mr.", "blows", "us", "and", "whistle", "his", "Cruz", "make", "to", "lines."],
       },
       {
-        target: "A boy named Luis stands next to me and shows me how to stretch my arms and legs.",
-        jumbled: ["named", "me", "stretch", "A", "and", "next", "arms", "shows", "to", "legs.", "boy", "Luis", "my", "and", "how", "stands", "me", "to"],
+        target: "Luis stands next to me and shows me how to stretch.",
+        jumbled: ["and", "me", "stands", "me", "to", "how", "stretch.", "next", "Luis", "shows", "to"],
       },
       {
-        target: "At the end of practice, I feel tired but happy because I finished my first day with the team.",
-        jumbled: ["because", "I", "practice,", "happy", "first", "finished", "the", "At", "team.", "but", "day", "with", "feel", "tired", "my", "end", "of", "the"],
+        target: "I feel tired but happy after my first day with the team.",
+        jumbled: ["with", "after", "team.", "happy", "I", "feel", "the", "but", "tired", "first", "day", "my"],
       },
     ],
     mySentencePrompt: "Write or say one sentence about practice.",
@@ -143,8 +143,8 @@ export const CHAPTERS = [
     ],
     buildSentence: [
       {
-        target: "Mr. Cruz tells us to run from one side of the field to the other side.",
-        jumbled: ["tells", "of", "to", "one", "the", "us", "side.", "field", "Mr.", "from", "the", "Cruz", "other", "run", "side", "to"],
+        target: "Mr. Cruz tells us to run across the field.",
+        jumbled: ["run", "tells", "the", "Cruz", "across", "us", "to", "field.", "Mr."],
       },
       {
         target: "I take a deep breath and keep running beside him.",
@@ -181,8 +181,8 @@ export const CHAPTERS = [
         jumbled: ["on", "asks", "minute.", "practice", "me", "a", "Monday,", "stay", "for", "Mr.", "After", "Cruz", "to"],
       },
       {
-        target: "He tells me my passes are getting better, but I need to talk more with my teammates.",
-        jumbled: ["tells", "more", "with", "better,", "I", "my", "to", "He", "my", "passes", "teammates.", "talk", "are", "me", "but", "need", "getting"],
+        target: "My passes are getting better, but I need to talk more.",
+        jumbled: ["I", "but", "more.", "to", "better,", "My", "need", "getting", "talk", "passes", "are"],
       },
       {
         target: "I feel calm because the coach believes I can improve.",
@@ -211,16 +211,16 @@ export const CHAPTERS = [
     ],
     buildSentence: [
       {
-        target: "At break time on Tuesday, I sit under a tree with some teammates near the field.",
-        jumbled: ["under", "field.", "the", "At", "a", "teammates", "time", "Tuesday,", "with", "break", "near", "some", "tree", "I", "sit", "on"],
+        target: "I sit under a tree with some teammates near the field.",
+        jumbled: ["I", "tree", "a", "teammates", "near", "field.", "under", "with", "some", "sit", "the"],
       },
       {
         target: "I tell them I played football in the park with my cousins after class.",
         jumbled: ["played", "I", "football", "class.", "my", "with", "after", "the", "tell", "cousins", "in", "them", "I", "park"],
       },
       {
-        target: "When I walk back to class with them, I feel like I really belong to the team now.",
-        jumbled: ["feel", "really", "to", "class", "team", "belong", "When", "back", "them,", "I", "the", "with", "I", "now.", "walk", "like", "to"],
+        target: "I feel like I really belong to the team now.",
+        jumbled: ["feel", "team", "to", "I", "belong", "I", "now.", "the", "really", "like"],
       },
     ],
     mySentencePrompt: "Write or say one sentence about your friends at school.",
@@ -249,12 +249,12 @@ export const CHAPTERS = [
         jumbled: ["football", "cover", "sky", "afternoon,", "practice", "the", "begins.", "dark", "One", "before", "clouds"],
       },
       {
-        target: "The grass feels wet under my shoes, and the ball moves faster on the ground.",
-        jumbled: ["and", "under", "ball", "moves", "wet", "grass", "on", "The", "ground.", "feels", "shoes,", "the", "my", "faster", "the"],
+        target: "The grass feels wet, and the ball moves faster.",
+        jumbled: ["ball", "moves", "The", "the", "faster.", "feels", "and", "wet,", "grass"],
       },
       {
-        target: "When practice ends, my clothes are wet, but I feel fresh and full of energy.",
-        jumbled: ["but", "clothes", "fresh", "practice", "and", "my", "When", "full", "ends,", "of", "I", "wet,", "are", "energy.", "feel"],
+        target: "My clothes are wet, but I feel fresh and full of energy.",
+        jumbled: ["wet,", "clothes", "full", "My", "feel", "energy.", "and", "of", "fresh", "are", "but", "I"],
       },
     ],
     mySentencePrompt: "Write or say one sentence about rain and sports.",
@@ -279,16 +279,16 @@ export const CHAPTERS = [
     ],
     buildSentence: [
       {
-        target: "On Friday, Mr. Cruz tells us we will have a match against another class next week.",
-        jumbled: ["tells", "On", "class", "another", "a", "next", "week.", "Mr.", "have", "against", "us", "Friday,", "Cruz", "we", "will", "match"],
+        target: "Mr. Cruz tells us we will have a match next week.",
+        jumbled: ["will", "match", "us", "next", "a", "have", "Mr.", "we", "tells", "Cruz", "week."],
       },
       {
-        target: "I try to speak more on the field, just like Mr. Cruz told me before.",
-        jumbled: ["told", "before.", "I", "to", "field,", "just", "Cruz", "the", "more", "like", "try", "on", "speak", "Mr.", "me"],
+        target: "I try to speak more on the field.",
+        jumbled: ["I", "more", "field.", "the", "try", "to", "on", "speak"],
       },
       {
-        target: "I feel nervous about the game, but I also feel ready to help my team.",
-        jumbled: ["but", "team.", "feel", "nervous", "ready", "the", "about", "I", "help", "I", "also", "feel", "my", "game,", "to"],
+        target: "I feel nervous, but I also feel ready to help my team.",
+        jumbled: ["also", "but", "ready", "help", "nervous,", "to", "my", "team.", "feel", "feel", "I", "I"],
       },
     ],
     mySentencePrompt: "Write or say one sentence about a match.",
@@ -313,16 +313,16 @@ export const CHAPTERS = [
     ],
     buildSentence: [
       {
-        target: "The day of the match arrives, and I wake up early with a fast heartbeat.",
-        jumbled: ["and", "early", "heartbeat.", "with", "of", "wake", "the", "The", "arrives,", "I", "day", "a", "match", "up", "fast"],
+        target: "The day of the match arrives, and I wake up early.",
+        jumbled: ["day", "the", "early.", "up", "arrives,", "The", "match", "and", "wake", "I", "of"],
       },
       {
         target: "She kicks it hard, and the ball goes into the goal.",
         jumbled: ["the", "goes", "goal.", "kicks", "and", "into", "hard,", "it", "the", "She", "ball"],
       },
       {
-        target: "After the match, I feel tired, excited, and very proud of what we did together.",
-        jumbled: ["very", "excited,", "what", "of", "match,", "proud", "I", "After", "together.", "tired,", "and", "did", "the", "feel", "we"],
+        target: "I feel tired, excited, and proud of what we did.",
+        jumbled: ["what", "tired,", "did.", "excited,", "feel", "of", "and", "proud", "I", "we"],
       },
     ],
     mySentencePrompt: "Write or say one sentence about a game you play.",
@@ -355,8 +355,8 @@ export const CHAPTERS = [
         jumbled: ["but", "friendship,", "to", "It", "shirt,", "football.", "effort,", "and", "only", "me", "a", "is", "it", "means"],
       },
       {
-        target: "As I walk home after school, I feel happy because I am not only learning to play, I am learning to be part of a team.",
-        jumbled: ["not", "a", "after", "school,", "I", "play,", "As", "walk", "team.", "only", "learning", "happy", "because", "I", "am", "to", "feel", "learning", "home", "be", "to", "I", "am", "of", "part"],
+        target: "I am learning to be part of a team.",
+        jumbled: ["to", "a", "team.", "am", "learning", "I", "of", "part", "be"],
       },
     ],
     mySentencePrompt: "Write or say one sentence about being part of a team.",
