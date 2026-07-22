@@ -187,7 +187,7 @@ function UserIcon() {
 export default function Library() {
   const isPro = true;
   const [searchParams, setSearchParams] = useSearchParams();
-  const [category, setCategory] = useState(() => searchParams.get("cat") || "Reading");
+  const [category, setCategory] = useState(() => searchParams.get("cat") || "All");
   const [page, setPage] = useState(() => Number(searchParams.get("page")) || 1);
   const [query, setQuery] = useState("");
   const { user, signOut } = useAuth();
@@ -313,10 +313,7 @@ export default function Library() {
             className="gc-header-brand"
             onClick={(e) => { e.preventDefault(); goToSidebar("library"); }}
           >
-            <svg className="cal-s" viewBox="0 0 100 100" aria-hidden="true">
-              <path d="M 35 7 A 20 20 0 0 1 35 47 L 65 53 A 20 20 0 0 0 65 93" fill="none" stroke="#D85A30" strokeWidth="15" strokeLinecap="square" strokeLinejoin="miter" />
-            </svg>
-            entivo
+            <span className="cal-s">S</span>entivo
           </a>
           <div className="gc-topbar-actions">
             <label className="gc-search">
@@ -335,7 +332,6 @@ export default function Library() {
                 }}
               />
             </label>
-            <a href="/library/spark" className="gc-btn trial">⚡ Trial Class</a>
             {!user ? (
               <>
                 <button className="gc-btn" onClick={() => setAuthMode("login")}>Log in</button>
@@ -375,14 +371,6 @@ export default function Library() {
               {cat}
             </button>
           ))}
-          <a
-            href="/primary/virtual-scenario-room"
-            className="gc-sec-tab gc-sec-tab--util"
-            onClick={(e) => { e.preventDefault(); goToSidebar("library"); }}
-          >
-            Scenario Room
-          </a>
-          <span className="gc-sec-tab gc-sec-tab--util gc-sec-tab--soon" title="Coming soon">WhatsApp Corrector</span>
         </div>
 
         <div className="gc-editions">
@@ -610,16 +598,16 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 }
 .gc-topbar { display: flex; align-items: center; justify-content: space-between; padding: 12px 40px; font-family: 'Inter', sans-serif; }
 .gc-header-brand {
-  font-family: 'Source Serif 4', serif;
-  font-size: 21px;
+  font-family: 'Inter', sans-serif;
+  font-size: 20px;
   font-weight: 700;
   color: #1B2A4A;
   letter-spacing: 0.01em;
   text-decoration: none;
   display: flex;
-  align-items: center;
+  align-items: baseline;
 }
-.gc-header-brand .cal-s { width: 27px; height: 27px; display: inline-block; vertical-align: -6px; margin-right: 1px; }
+.gc-header-brand .cal-s { font-family: "Snell Roundhand", "Apple Chancery", "Brush Script MT", "Segoe Script", cursive; font-size: 32px; font-weight: 400; color: #D85A30; line-height: 0; display: inline-block; vertical-align: -8px; margin-right: 1px; }
 .gc-topbar-actions { display: flex; align-items: center; gap: 12px; }
 .gc-search { display: flex; align-items: center; gap: 6px; padding: 7px 12px; border: 1px solid rgba(27,42,74,0.25); border-radius: 3px; background: rgba(27,42,74,0.03); color: #6B6255; }
 .gc-search svg { width: 14px; height: 14px; flex-shrink: 0; }
@@ -627,8 +615,6 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .gc-search input::placeholder { color: #9C9385; }
 .gc-btn { font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 700; padding: 8px 16px; border-radius: 3px; border: 1.5px solid #1B2A4A; color: #1B2A4A; background: transparent; cursor: pointer; text-decoration: none; }
 .gc-btn.primary { background: #1B2A4A; color: #FEFEFD; }
-.gc-btn.trial { background: #D85A30; color: #fff; border-color: #D85A30; white-space: nowrap; }
-
 .gc-sections { display: flex; align-items: center; gap: 0; padding: 9px 40px; font-family: 'Inter', sans-serif; overflow-x: auto; border-bottom: 1px solid rgba(27,42,74,0.12); }
 .gc-sec-tab {
   font-size: 12.5px;
@@ -637,23 +623,19 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   text-transform: uppercase;
   padding: 7px 16px;
   color: #1B2A4A;
+  border: none;
   border-bottom: 2px solid transparent;
   white-space: nowrap;
   background: none;
-  border-left: none;
-  border-top: none;
   cursor: pointer;
   text-decoration: none;
 }
 .gc-sec-tab:not(:last-child) { border-right: 1px solid rgba(27,42,74,0.1); }
 .gc-sec-tab.is-active { border-bottom-color: #D85A30; color: #D85A30; }
-.gc-sec-tab--util { opacity: 0.6; font-weight: 700; }
-.gc-sec-tab--util:hover { opacity: 1; }
-.gc-sec-tab--soon { cursor: default; }
 
 .gc-editions { display: flex; align-items: center; justify-content: center; gap: 11px; padding: 8px 40px; border-bottom: 1px solid rgba(27,42,74,0.12); font-family: 'Inter', sans-serif; background: rgba(27,42,74,0.025); }
 .gc-ed-label { font-size: 10px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: #6B6355; margin-right: 4px; }
-.gc-ed-spark { font-size: 11.5px; font-weight: 800; letter-spacing: 0.02em; padding: 5px 14px; border-radius: 999px; background: #D85A30; color: #fff; text-decoration: none; }
+.gc-ed-spark { font-size: 11.5px; font-weight: 700; letter-spacing: 0.02em; padding: 5px 12px; border-radius: 999px; color: #6B6355; text-decoration: none; }
 .gc-ed-tab { font-size: 11.5px; font-weight: 700; letter-spacing: 0.02em; padding: 5px 12px; border-radius: 999px; color: #6B6355; background: none; border: none; cursor: pointer; }
 .gc-ed-tab.is-active { background: #1B2A4A; color: #fff; }
 
