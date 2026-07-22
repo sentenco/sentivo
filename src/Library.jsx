@@ -8,8 +8,125 @@ import ImagePlaceholder from "./slides/ImagePlaceholder";
 import storybookCoverImg from "./assets/storybook/cover.jpeg";
 import storybook2CoverImg from "./assets/storybook2/cover.png";
 import forge1CoverImg from "./assets/forge/track1-cover.jpeg";
+import DAILY_CORRECTIONS from "./dailyCorrections";
 
 const CATEGORIES = ["Reading", "Grammar", "Vocabulary", "Writing", "Listening", "Speaking"];
+
+// "Today" launch date -- the day count in the Today masthead (Vol. 1, No. X)
+// counts up from here, like a real newspaper's running issue number.
+const GAZETTE_LAUNCH = new Date(2026, 6, 22);
+
+function daysSince(date) {
+  const startOfToday = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+  return Math.floor((startOfToday - GAZETTE_LAUNCH) / 86400000);
+}
+
+function gcd(a, b) {
+  return b === 0 ? a : gcd(b, a % b);
+}
+
+// Deterministic "shuffle" -- steps through every index exactly once before
+// repeating, so picks stay evenly spread without needing real randomness
+// (which would make Today different per visitor instead of per day).
+function pickDeterministic(total, seed, count) {
+  if (total <= 0) return [];
+  let step = 1;
+  for (let s = 7; s < total + 7; s++) {
+    if (gcd(s, total) === 1) { step = s; break; }
+  }
+  const out = [];
+  let i = ((seed % total) + total) % total;
+  for (let n = 0; n < total && out.length < count; n++) {
+    i = (i + step) % total;
+    out.push(i);
+  }
+  return out;
+}
+
+const CATEGORY_HUE = {
+  Reading: "teal", Writing: "teal",
+  Grammar: "gold", Vocabulary: "gold",
+  Listening: "coral", Speaking: "coral",
+};
+const CATEGORY_ICON = {
+  Reading: "📖", Grammar: "🔤", Vocabulary: "📚",
+  Writing: "✍️", Listening: "🎧", Speaking: "🗣️",
+};
+
+function CorrectionLine({ segments }) {
+  return segments.map((seg, i) => {
+    if ("wrong" in seg) return <span key={i} className="corr-wrong">{seg.wrong}</span>;
+    if ("right" in seg) return <span key={i} className="corr-right">{seg.right}</span>;
+    return <React.Fragment key={i}>{seg.text}</React.Fragment>;
+  });
+}
+
+function TodayFeature({ tools }) {
+  const today = new Date();
+  const dayIndex = daysSince(today);
+  const total = DAILY_CORRECTIONS.length;
+  const headlineIdx = ((dayIndex % total) + total) % total;
+  const headline = DAILY_CORRECTIONS[headlineIdx];
+  const briefIdxs = pickDeterministic(total, headlineIdx, 3);
+  const briefs = briefIdxs.map((i) => DAILY_CORRECTIONS[i]);
+
+  const featured = tools.length
+    ? pickDeterministic(tools.length, dayIndex, Math.min(4, tools.length)).map((i) => tools[i])
+    : [];
+
+  const issueNo = 1 + Math.max(0, dayIndex);
+  const dateLabel = today.toLocaleDateString(undefined, { weekday: "short", month: "long", day: "numeric" });
+
+  return (
+    <div className="gc-main">
+      <div className="gc-metabar">
+        <span>Vol. 1, No. {issueNo}</span>
+        <span>{dateLabel}</span>
+      </div>
+
+      <div className="gc-eyebrow">Lead Correction · {headline.category}</div>
+      <h2 className="gc-headline">
+        <span className="corr-quote">&#10078;</span>
+        <CorrectionLine segments={headline.sentence} />
+      </h2>
+      {headline.explain.map((line, i) => (
+        <p className="gc-explain" key={i}>{line}</p>
+      ))}
+
+      <div className="gc-briefs">
+        {briefs.map((b) => (
+          <div className={`gc-brief-col hue-${b.hue === "grammar" ? "coral" : b.hue === "vocab" ? "gold" : "teal"}`} key={b.id}>
+            <div className="col-h">{b.category}</div>
+            <div className="col-line"><CorrectionLine segments={b.sentence} /></div>
+            <div className="col-note">{b.explain[0]}</div>
+          </div>
+        ))}
+      </div>
+
+      {featured.length > 0 && (
+        <div className="gc-featured">
+          <div className="fh"><span className="col-h">Featured Today</span></div>
+          <div className="gc-fgrid">
+            {featured.map((t) => {
+              const href = t.content_type === "forge-track" ? `/library/forge/${t.id}` : `/library/${t.id}`;
+              const hue = CATEGORY_HUE[t.category] || "gold";
+              return (
+                <a href={href} className={`gc-fcard hue-${hue}`} key={t.id}>
+                  <div className="fic">{CATEGORY_ICON[t.category] || "📘"}</div>
+                  <h5>{t.title}</h5>
+                  <span className="fsub">
+                    {t.access === "premium" && <span className="prem">Premium · </span>}
+                    {t.level ? `${t.level} · ` : ""}{t.category}
+                  </span>
+                </a>
+              );
+            })}
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
 
 // Static story-cover lookup by tools.id -- stories are static content (like
 // storybookData.js), not stored in Supabase, so their cover art is looked up
@@ -407,7 +524,13 @@ export default function Library() {
       ) : (
       <main className="content">
                 <div className="grid-wrap" ref={gridWrapRef}>
-        {category === "Grammar" ? (
+        {category === "All" && !query.trim() ? (
+          toolsLoading ? (
+            <p className="empty-msg">Loading today's edition…</p>
+          ) : (
+            <TodayFeature tools={tools} />
+          )
+        ) : category === "Grammar" ? (
           <div className="speaking-grid">
             <a href="/library/grammar/verb-tenses" className="speaking-tile speaking-tile--verbtenses">
               <span className="speaking-tile-kicker">Grammar · A1–C2</span>
@@ -551,7 +674,7 @@ export default function Library() {
         )}
         </div>
 
-        {category !== "Speaking" && category !== "Grammar" && (
+        {category !== "Speaking" && category !== "Grammar" && !(category === "All" && !query.trim()) && (
         <div className="pagination">
           <button disabled={safePage === 1} onClick={() => changePage(safePage - 1)}>&larr; Prev</button>
           <span className="page-indicator">Page {safePage} of {totalPages}</span>
@@ -638,6 +761,41 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .gc-ed-spark { font-size: 11.5px; font-weight: 700; letter-spacing: 0.02em; padding: 5px 12px; border-radius: 999px; color: #6B6355; text-decoration: none; }
 .gc-ed-tab { font-size: 11.5px; font-weight: 700; letter-spacing: 0.02em; padding: 5px 12px; border-radius: 999px; color: #6B6355; background: none; border: none; cursor: pointer; }
 .gc-ed-tab.is-active { background: #1B2A4A; color: #fff; }
+
+/* ── Today: daily corrections feature ── */
+.gc-main { width: 100%; max-width: 900px; margin: 0 auto; padding: 20px 4px 8px; overflow-y: auto; }
+.gc-metabar { display: flex; align-items: baseline; justify-content: space-between; font-family: 'Inter', sans-serif; font-size: 10.5px; font-weight: 700; letter-spacing: 0.05em; color: #6B6355; margin-bottom: 14px; }
+.gc-eyebrow { font-family: 'Inter', sans-serif; font-size: 10.5px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: #D85A30; margin: 0 0 8px; }
+.gc-headline { font-family: 'Source Serif 4', serif; font-size: clamp(20px, 2.6vw, 27px); font-weight: 700; line-height: 1.28; margin: 0 0 12px; color: #1B2A4A; text-wrap: balance; }
+.corr-quote { color: #D85A30; margin-right: 3px; }
+.corr-wrong { color: #9C9385; font-weight: 400; text-decoration: line-through; text-decoration-color: #B9AF9C; margin-right: 5px; }
+.corr-right { color: #D85A30; font-weight: 700; }
+.gc-explain { font-family: 'Inter', sans-serif; font-size: 14px; line-height: 1.65; color: #4A4438; max-width: 640px; margin: 0 0 4px; }
+.gc-explain + .gc-explain { margin-top: 2px; }
+
+.gc-briefs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin: 20px 0 18px; padding-top: 16px; border-top: 1px solid rgba(27,42,74,0.14); }
+.gc-brief-col .col-h { font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
+.gc-brief-col.hue-coral .col-h { color: #D85A30; }
+.gc-brief-col.hue-gold .col-h { color: #C6923E; }
+.gc-brief-col.hue-teal .col-h { color: #2F6B63; }
+.gc-brief-col .col-line { font-family: 'Source Serif 4', serif; font-size: 15px; font-weight: 700; line-height: 1.35; margin-bottom: 5px; color: #1B2A4A; }
+.gc-brief-col .col-note { font-family: 'Inter', sans-serif; font-size: 11.5px; line-height: 1.5; color: #6B6355; }
+
+.gc-featured { margin-top: 18px; padding-top: 16px; border-top: 1px solid rgba(27,42,74,0.14); }
+.gc-featured .fh { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 12px; }
+.gc-featured .col-h { font-family: 'Inter', sans-serif; font-size: 10.5px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: #1B2A4A; }
+.gc-fgrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; }
+.gc-fcard { border: 1px solid rgba(27,42,74,0.16); border-top-width: 3px; padding: 12px; text-decoration: none; display: block; }
+.gc-fcard.hue-teal { border-top-color: #2F6B63; }
+.gc-fcard.hue-gold { border-top-color: #C6923E; }
+.gc-fcard.hue-coral { border-top-color: #D85A30; }
+.gc-fcard .fic { width: 30px; height: 30px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 15px; margin-bottom: 9px; }
+.gc-fcard.hue-teal .fic { background: rgba(47,107,99,0.12); }
+.gc-fcard.hue-gold .fic { background: rgba(198,146,62,0.14); }
+.gc-fcard.hue-coral .fic { background: rgba(216,90,48,0.12); }
+.gc-fcard h5 { font-family: 'Source Serif 4', serif; font-size: 14px; font-weight: 700; margin: 0 0 4px; line-height: 1.25; color: #1B2A4A; }
+.gc-fcard .fsub { font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 0.03em; text-transform: uppercase; color: #6B6355; }
+.gc-fcard .fsub .prem { color: #D85A30; }
 
 .account-wrap { position: relative; }
 .avatar-btn {
