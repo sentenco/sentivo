@@ -30,54 +30,6 @@ const FORGE_COVERS = {
 
 const PER_PAGE = 8;
 
-function CategoryIcon({ name }) {
-  const props = { width: 18, height: 18, viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: 2, strokeLinecap: "round", strokeLinejoin: "round" };
-  switch (name) {
-    case "Grammar":
-      return (
-        <svg {...props}>
-          <path d="M9 3h3a2 2 0 0 1 2 2v2a2 2 0 0 0 2 2h2a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2h-2a2 2 0 0 0-2 2v2a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2v-2a2 2 0 0 0-2-2H3a2 2 0 0 1-2-2v0" />
-        </svg>
-      );
-    case "Vocabulary":
-      return (
-        <svg {...props}>
-          <path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z" />
-        </svg>
-      );
-    case "Reading":
-      return (
-        <svg {...props}>
-          <path d="M3 5.5C3 4.7 3.7 4 4.5 4H11v16H4.5A1.5 1.5 0 0 1 3 18.5z" />
-          <path d="M21 5.5c0-.8-.7-1.5-1.5-1.5H13v16h6.5a1.5 1.5 0 0 0 1.5-1.5z" />
-        </svg>
-      );
-    case "Writing":
-      return (
-        <svg {...props}>
-          <path d="M12 20h9" />
-          <path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z" />
-        </svg>
-      );
-    case "Listening":
-      return (
-        <svg {...props}>
-          <path d="M3 18v-6a9 9 0 0 1 18 0v6" />
-          <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3z" />
-          <path d="M3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z" />
-        </svg>
-      );
-    case "Speaking":
-      return (
-        <svg {...props}>
-          <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
-        </svg>
-      );
-    default:
-      return null;
-  }
-}
-
 function Motif({ type }) {
   switch (type) {
     case "stress":
@@ -233,7 +185,7 @@ function UserIcon() {
 }
 
 export default function Library() {
-  const [theme, setTheme] = useState("fun");
+  const isPro = true;
   const [searchParams, setSearchParams] = useSearchParams();
   const [category, setCategory] = useState(() => searchParams.get("cat") || "Reading");
   const [page, setPage] = useState(() => Number(searchParams.get("page")) || 1);
@@ -241,7 +193,6 @@ export default function Library() {
   const { user, signOut } = useAuth();
   const [authMode, setAuthMode] = useState(null);
   const [menuOpen, setMenuOpen] = useState(false);
-  const isPro = theme === "pro";
   const navigate = useNavigate();
   const location = useLocation();
   const params = useParams();
@@ -342,7 +293,7 @@ export default function Library() {
   function changeCategory(cat) {
     setCategory(cat);
     setPage(1);
-    setSearchParams({ cat }, { replace: true });
+    navigate(`/library?cat=${encodeURIComponent(cat)}`);
   }
 
   function changePage(next) {
@@ -355,101 +306,108 @@ export default function Library() {
     <div className={`page ${isPro ? "theme-pro" : "theme-fun"}`}>
       <style>{CSS}</style>
 
-      <header className="nav">
-        <div className="nav-left">
-          <a href="/" className="brand">sent<span className="dot">i</span>vo<span className="lib-tag">Library</span></a>
-          <a href="/library/spark" className="trial-btn">⚡ Trial Class</a>
-        </div>
-        <div className="nav-right">
-          <div className="theme-toggle">
-            <button className={!isPro ? "is-active" : ""} onClick={() => setTheme("fun")}>Fun</button>
-            <button className={isPro ? "is-active" : ""} onClick={() => setTheme("pro")}>Pro</button>
+      <header className="gc-band">
+        <div className="gc-topbar">
+          <a
+            href="/library"
+            className="gc-header-brand"
+            onClick={(e) => { e.preventDefault(); goToSidebar("library"); }}
+          >
+            <svg className="cal-s" viewBox="0 0 100 100" aria-hidden="true">
+              <path d="M 35 7 A 20 20 0 0 1 35 47 L 65 53 A 20 20 0 0 0 65 93" fill="none" stroke="#D85A30" strokeWidth="15" strokeLinecap="square" strokeLinejoin="miter" />
+            </svg>
+            entivo
+          </a>
+          <div className="gc-topbar-actions">
+            <label className="gc-search">
+              <svg viewBox="0 0 20 20" aria-hidden="true">
+                <circle cx="9" cy="9" r="6.2" fill="none" stroke="currentColor" strokeWidth="1.6" />
+                <line x1="13.6" y1="13.6" x2="18" y2="18" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
+              </svg>
+              <input
+                type="text"
+                placeholder="Search the library…"
+                value={query}
+                onChange={(e) => {
+                  setQuery(e.target.value);
+                  setPage(1);
+                  if (isCurriculum) goToSidebar("library");
+                }}
+              />
+            </label>
+            <a href="/library/spark" className="gc-btn trial">⚡ Trial Class</a>
+            {!user ? (
+              <>
+                <button className="gc-btn" onClick={() => setAuthMode("login")}>Log in</button>
+                <button className="gc-btn primary" onClick={() => setAuthMode("signup")}>Sign up</button>
+              </>
+            ) : (
+              <div className="account-wrap">
+                <button className="avatar-btn" onClick={() => setMenuOpen((m) => !m)} aria-label="Account menu">
+                  <UserIcon />
+                </button>
+                {menuOpen && (
+                  <div className="account-menu">
+                    <a href="#my-tools">My Tools</a>
+                    <a href="#settings">Account settings</a>
+                    <a href="#plan">Plan: Free &mdash; Upgrade</a>
+                    <button className="logout-btn" onClick={() => { signOut(); setMenuOpen(false); }}>Log out</button>
+                  </div>
+                )}
+              </div>
+            )}
           </div>
+        </div>
 
-          {!user ? (
-  <>
-    <button className="btn-ghost" onClick={() => setAuthMode("login")}>Log in</button>
-    <button className="btn-primary" onClick={() => setAuthMode("signup")}>Sign up</button>
-  </>
-) : (
-  <div className="account-wrap">
-    <button className="avatar-btn" onClick={() => setMenuOpen((m) => !m)} aria-label="Account menu">
-      <UserIcon />
-    </button>
-    {menuOpen && (
-      <div className="account-menu">
-        <a href="#my-tools">My Tools</a>
-        <a href="#settings">Account settings</a>
-        <a href="#plan">Plan: Free &mdash; Upgrade</a>
-        <button className="logout-btn" onClick={() => { signOut(); setMenuOpen(false); }}>Log out</button>
-      </div>
-    )}
-  </div>
-)}
+        <div className="gc-sections">
+          <button
+            className={`gc-sec-tab ${!isCurriculum && category === "All" ? "is-active" : ""}`}
+            onClick={() => changeCategory("All")}
+          >
+            Today
+          </button>
+          {CATEGORIES.map((cat) => (
+            <button
+              key={cat}
+              className={`gc-sec-tab ${!isCurriculum && category === cat ? "is-active" : ""}`}
+              onClick={() => changeCategory(cat)}
+            >
+              {cat}
+            </button>
+          ))}
+          <a
+            href="/primary/virtual-scenario-room"
+            className="gc-sec-tab gc-sec-tab--util"
+            onClick={(e) => { e.preventDefault(); goToSidebar("library"); }}
+          >
+            Scenario Room
+          </a>
+          <span className="gc-sec-tab gc-sec-tab--util gc-sec-tab--soon" title="Coming soon">WhatsApp Corrector</span>
+        </div>
+
+        <div className="gc-editions">
+          <span className="gc-ed-label">Edition</span>
+          <button
+            className={`gc-ed-tab ${isCurriculum && !curriculumLevel ? "is-active" : ""}`}
+            onClick={() => goToSidebar("curriculum", null)}
+          >
+            Overview
+          </button>
+          <a href="/library/spark" className="gc-ed-spark">Spark Class</a>
+          {["A1", "A2", "B1", "B2", "C1", "C2"].map((lvl) => (
+            <button
+              key={lvl}
+              className={`gc-ed-tab ${isCurriculum && curriculumLevel === lvl ? "is-active" : ""}`}
+              onClick={() => goToSidebar("curriculum", lvl)}
+              title={{ "A1": "A1 — Beginner", "A2": "A2 — Elementary", "B1": "B1 — Intermediate", "B2": "B2 — Upper Int.", "C1": "C1 — Advanced", "C2": "C2 — Proficient" }[lvl]}
+            >
+              {lvl}
+            </button>
+          ))}
         </div>
       </header>
 
       <div className="body-wrap">
-        <aside
-          className="primary-sidebar"
-          onMouseEnter={e => { e.currentTarget.classList.add('is-expanded'); }}
-          onMouseLeave={e => { e.currentTarget.classList.remove('is-expanded'); }}
-        >
-          <span className="sidebar-heading">Curriculum</span>
-          <button
-            className={`sidebar-item ${isCurriculum && !curriculumLevel ? "sidebar-item--active" : "sidebar-item--inactive"}`}
-            onClick={() => goToSidebar("curriculum", null)}
-            title="Curriculum Overview"
-          >
-            <div className="sidebar-icon">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
-                <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
-              </svg>
-            </div>
-            <span className="sidebar-label">Overview</span>
-          </button>
-          {["A1","A2","B1","B2","C1","C2"].map((lvl) => (
-            <button
-              key={lvl}
-              className={`sidebar-item ${isCurriculum && curriculumLevel === lvl ? "sidebar-item--active" : "sidebar-item--inactive"}`}
-              onClick={() => goToSidebar("curriculum", lvl)}
-              title={`${lvl} Lessons`}
-              style={{ padding: "8px 10px" }}
-            >
-              <div className="sidebar-icon sidebar-icon--level">
-                <span className="sidebar-level-code">{lvl}</span>
-              </div>
-              <span className="sidebar-label">{{"A1":"A1 — Beginner","A2":"A2 — Elementary","B1":"B1 — Intermediate","B2":"B2 — Upper Int.","C1":"C1 — Advanced","C2":"C2 — Proficient"}[lvl]}</span>
-            </button>
-          ))}
-
-          <span className="sidebar-heading" style={{ marginTop: 14 }}>Primary Tools</span>
-          <a
-            href="/primary/virtual-scenario-room"
-            className={`sidebar-item ${!isCurriculum ? "sidebar-item--active" : "sidebar-item--inactive"}`}
-            onClick={(e) => { e.preventDefault(); goToSidebar("library"); }}
-          >
-            <div className="sidebar-icon">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-                <rect x="2" y="7" width="20" height="13" rx="2.5"/>
-                <path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
-                <circle cx="9" cy="14" r="1.4" fill="currentColor" stroke="none"/>
-                <circle cx="15" cy="14" r="1.4" fill="currentColor" stroke="none"/>
-              </svg>
-            </div>
-            <span className="sidebar-label">Virtual Scenario Room</span>
-          </a>
-          <div className="sidebar-item sidebar-item--inactive">
-            <div className="sidebar-icon">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
-              </svg>
-            </div>
-            <span className="sidebar-label">WhatsApp Corrector</span>
-          </div>
-        </aside>
-
       {isCurriculum ? (
         <div className="content" style={{ padding: 0, maxWidth: "100%", overflow: "auto" }}>
           <CurriculumRouter
@@ -460,32 +418,6 @@ export default function Library() {
         </div>
       ) : (
       <main className="content">
-        <div className="search-row">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <circle cx="11" cy="11" r="7" />
-            <path d="M21 21l-4.3-4.3" />
-          </svg>
-          <input
-            type="text"
-            placeholder="Search the library..."
-            value={query}
-            onChange={(e) => { setQuery(e.target.value); setPage(1); }}
-          />
-        </div>
-
-        <div className="cat-row">
-          {CATEGORIES.map((cat) => (
-            <button
-              key={cat}
-              className={`cat-pill ${category === cat ? "is-active" : ""}`}
-              onClick={() => changeCategory(cat)}
-            >
-              {cat !== "All" && <span className="cat-icon"><CategoryIcon name={cat} /></span>}
-              {cat}
-            </button>
-          ))}
-        </div>
-
                 <div className="grid-wrap" ref={gridWrapRef}>
         {category === "Grammar" ? (
           <div className="speaking-grid">
@@ -669,182 +601,61 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   overflow: hidden;
 }
 
-/* ── Primary Tools Sidebar ── */
-.primary-sidebar {
-  width: 72px;
-  background: transparent;
-  border-right: 1px solid rgba(0,0,0,0.06);
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding: 22px 10px;
-  flex-shrink: 0;
-  overflow-x: hidden;
-  overflow-y: auto;
-  transition: width 0.26s cubic-bezier(0.4,0,0.2,1);
-  gap: 6px;
-  z-index: 10;
-  scrollbar-width: none;
-}
-.primary-sidebar::-webkit-scrollbar { display: none; }
-.primary-sidebar.is-expanded { width: 220px; }
-
-.sidebar-heading {
-  font-family: 'Quicksand', sans-serif;
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 1.2px;
-  color: #7A6E8A;
-  text-transform: uppercase;
-  white-space: nowrap;
-  opacity: 0;
-  margin-bottom: 4px;
-  margin-top: 8px;
-  padding-left: 2px;
-  transition: opacity 0.15s ease;
-}
-.theme-pro .sidebar-heading { color: #7A7060; }
-.primary-sidebar.is-expanded .sidebar-heading { opacity: 1; }
-
-.sidebar-item {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  gap: 11px;
-  padding: 10px 10px;
-  border-radius: 13px;
-  cursor: pointer;
-  text-decoration: none;
-  overflow: hidden;
-  white-space: nowrap;
-  transition: background 0.15s ease;
-}
-.sidebar-item--active {
-  background: #FF7A59;
-  color: white;
-  box-shadow: 0 4px 0 rgba(200,74,32,0.28);
-}
-.sidebar-item--inactive {
-  color: #3D3552;
-  opacity: 0.7;
-  cursor: pointer;
-}
-.sidebar-item--inactive:hover {
-  opacity: 1;
-  background: rgba(0,0,0,0.04);
-}
-.theme-pro .sidebar-item--active { background: #1B2A4A; box-shadow: none; }
-.theme-pro .sidebar-item--inactive { color: #1B2A4A; }
-
-.sidebar-icon {
-  width: 30px;
-  height: 30px;
-  border-radius: 9px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-.sidebar-item--active .sidebar-icon { background: rgba(255,255,255,0.22); }
-.sidebar-item--inactive .sidebar-icon { background: rgba(156,138,196,0.15); }
-.theme-pro .sidebar-item--inactive .sidebar-icon { background: #F0EBDD; }
-
-.sidebar-label {
-  font-family: 'Quicksand', sans-serif;
-  font-size: 12.5px;
-  font-weight: 700;
-  color: #3D3552;
-  opacity: 0;
-  transition: opacity 0.18s ease;
-  white-space: nowrap;
-}
-.theme-pro .sidebar-label { font-family: 'Inter', sans-serif; font-weight: 600; color: #1B2A4A; }
-.primary-sidebar.is-expanded .sidebar-label { opacity: 1; }
-
-
-.theme-fun { background: radial-gradient(circle at 10% 0%, #FFF3D6 0%, #FFEFEA 45%, #F4F0FF 100%); color: #3D3552; }
 .theme-pro { background: #F7F5EF; color: #1B2A4A; }
 
-.nav {
+/* ── Gazette masthead ── */
+.gc-band {
+  flex-shrink: 0;
+  background-image: linear-gradient(90deg, rgba(216,90,48,0.10) 0%, rgba(198,146,62,0.10) 50%, rgba(47,107,99,0.10) 100%);
+}
+.gc-topbar { display: flex; align-items: center; justify-content: space-between; padding: 12px 40px; font-family: 'Inter', sans-serif; }
+.gc-header-brand {
+  font-family: 'Source Serif 4', serif;
+  font-size: 21px;
+  font-weight: 700;
+  color: #1B2A4A;
+  letter-spacing: 0.01em;
+  text-decoration: none;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: clamp(6px, 2vh, 18px) 40px;
-  flex-wrap: wrap;
-  gap: 16px;
-  flex-shrink: 0;
 }
-.nav-left { display: flex; align-items: center; gap: 30px; }
-.brand {
-  font-family: 'Fredoka', sans-serif;
-  font-size: 20px;
-  font-weight: 700;
-  display: flex;
-  align-items: baseline;
-  text-decoration: none;
-  color: inherit;
-}
-.theme-pro .brand { font-family: 'Source Serif 4', serif; }
-.dot { color: #FF7A59; }
-.theme-pro .dot { color: #B08D57; }
-.lib-tag {
-  font-family: 'Quicksand', sans-serif;
-  font-size: 11px;
-  font-weight: 600;
-  opacity: 0.5;
+.gc-header-brand .cal-s { width: 27px; height: 27px; display: inline-block; vertical-align: -6px; margin-right: 1px; }
+.gc-topbar-actions { display: flex; align-items: center; gap: 12px; }
+.gc-search { display: flex; align-items: center; gap: 6px; padding: 7px 12px; border: 1px solid rgba(27,42,74,0.25); border-radius: 3px; background: rgba(27,42,74,0.03); color: #6B6255; }
+.gc-search svg { width: 14px; height: 14px; flex-shrink: 0; }
+.gc-search input { border: none; background: transparent; outline: none; font-family: 'Inter', sans-serif; font-size: 13px; color: #1B2A4A; width: 170px; }
+.gc-search input::placeholder { color: #9C9385; }
+.gc-btn { font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 700; padding: 8px 16px; border-radius: 3px; border: 1.5px solid #1B2A4A; color: #1B2A4A; background: transparent; cursor: pointer; text-decoration: none; }
+.gc-btn.primary { background: #1B2A4A; color: #FEFEFD; }
+.gc-btn.trial { background: #D85A30; color: #fff; border-color: #D85A30; white-space: nowrap; }
+
+.gc-sections { display: flex; align-items: center; gap: 0; padding: 9px 40px; font-family: 'Inter', sans-serif; overflow-x: auto; border-bottom: 1px solid rgba(27,42,74,0.12); }
+.gc-sec-tab {
+  font-size: 12.5px;
+  font-weight: 800;
+  letter-spacing: 0.03em;
   text-transform: uppercase;
-  letter-spacing: 1px;
-  margin-left: 8px;
-}
-.trial-btn {
-  font-family: 'Fredoka', sans-serif;
-  font-weight: 700;
-  font-size: 13px;
-  color: #4A3B12;
-  background: linear-gradient(135deg, #FFDD7A 0%, #FFB800 100%);
-  border: none;
-  border-radius: 999px;
-  padding: 8px 16px;
-  text-decoration: none;
-  box-shadow: 0 4px 12px rgba(255,184,0,0.35);
+  padding: 7px 16px;
+  color: #1B2A4A;
+  border-bottom: 2px solid transparent;
   white-space: nowrap;
-}
-.trial-btn:hover { box-shadow: 0 6px 16px rgba(255,184,0,0.45); }
-.theme-pro .lib-tag { font-family: 'Inter', sans-serif; }
-
-.nav-right { display: flex; align-items: center; gap: 12px; position: relative; margin-left: auto; }
-.theme-toggle { display: flex; gap: 4px; background: rgba(255,255,255,0.6); border-radius: 999px; padding: 4px; }
-.theme-pro .theme-toggle { background: #fff; border-radius: 4px; border: 1px solid #DEDAD0; }
-.theme-toggle button {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 600;
-  font-size: 12px;
-  padding: 6px 12px;
-  border: none;
-  background: transparent;
-  border-radius: 999px;
+  background: none;
+  border-left: none;
+  border-top: none;
   cursor: pointer;
-  color: inherit;
-  opacity: 0.6;
+  text-decoration: none;
 }
-.theme-pro .theme-toggle button { font-family: 'Inter', sans-serif; border-radius: 3px; }
-.theme-toggle button.is-active { background: #FF7A59; color: white; opacity: 1; }
-.theme-pro .theme-toggle button.is-active { background: #1B2A4A; color: #F7F5EF; }
+.gc-sec-tab:not(:last-child) { border-right: 1px solid rgba(27,42,74,0.1); }
+.gc-sec-tab.is-active { border-bottom-color: #D85A30; color: #D85A30; }
+.gc-sec-tab--util { opacity: 0.6; font-weight: 700; }
+.gc-sec-tab--util:hover { opacity: 1; }
+.gc-sec-tab--soon { cursor: default; }
 
-.btn-ghost, .btn-primary {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 600;
-  font-size: 13px;
-  padding: 8px 16px;
-  border-radius: 999px;
-  cursor: pointer;
-  border: none;
-}
-.theme-pro .btn-ghost, .theme-pro .btn-primary { font-family: 'Inter', sans-serif; border-radius: 4px; }
-.btn-ghost { background: transparent; color: inherit; border: 1.5px solid currentColor; opacity: 0.7; }
-.theme-pro .btn-ghost { border: 1px solid #DEDAD0; opacity: 1; }
-.btn-primary { background: #FF7A59; color: white; }
-.theme-pro .btn-primary { background: #1B2A4A; color: #F7F5EF; }
+.gc-editions { display: flex; align-items: center; justify-content: center; gap: 11px; padding: 8px 40px; border-bottom: 1px solid rgba(27,42,74,0.12); font-family: 'Inter', sans-serif; background: rgba(27,42,74,0.025); }
+.gc-ed-label { font-size: 10px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: #6B6355; margin-right: 4px; }
+.gc-ed-spark { font-size: 11.5px; font-weight: 800; letter-spacing: 0.02em; padding: 5px 14px; border-radius: 999px; background: #D85A30; color: #fff; text-decoration: none; }
+.gc-ed-tab { font-size: 11.5px; font-weight: 700; letter-spacing: 0.02em; padding: 5px 12px; border-radius: 999px; color: #6B6355; background: none; border: none; cursor: pointer; }
+.gc-ed-tab.is-active { background: #1B2A4A; color: #fff; }
 
 .account-wrap { position: relative; }
 .avatar-btn {
@@ -903,49 +714,6 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   flex-direction: column;
   overflow: hidden;
 }
-
-.search-row {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  background: white;
-  border-radius: 999px;
-  padding: clamp(5px, 1.4vh, 12px) 20px;
-  margin-bottom: clamp(6px, 1.4vh, 14px);
-  flex-shrink: 0;
-}
-.theme-pro .search-row { border-radius: 4px; border: 1px solid #DEDAD0; }
-.search-row input {
-  border: none;
-  outline: none;
-  font-family: 'Quicksand', sans-serif;
-  font-size: 14px;
-  width: 100%;
-  background: transparent;
-  color: inherit;
-}
-.theme-pro .search-row input { font-family: 'Inter', sans-serif; }
-
-.cat-row { display: flex; gap: 10px; margin-bottom: clamp(6px, 1.4vh, 14px); flex-wrap: wrap; justify-content: center; flex-shrink: 0; }
-.cat-pill {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 600;
-  font-size: 13px;
-  padding: 9px 16px;
-  border-radius: 999px;
-  border: none;
-  background: rgba(255,255,255,0.65);
-  cursor: pointer;
-  color: inherit;
-  opacity: 0.7;
-}
-.theme-pro .cat-pill { font-family: 'Inter', sans-serif; border-radius: 4px; background: #fff; border: 1px solid #DEDAD0; }
-.cat-icon { display: flex; opacity: 0.7; }
-.cat-pill.is-active { background: #FF7A59; color: white; opacity: 1; }
-.theme-pro .cat-pill.is-active { background: #1B2A4A; color: #F7F5EF; border-color: #1B2A4A; }
 
 .empty-msg { font-size: 14px; opacity: 0.6; padding: 30px 0; text-align: center; }
 
@@ -1273,20 +1041,5 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .pagination button:disabled { opacity: 0.35; cursor: default; }
 .page-indicator { font-family: 'Quicksand', sans-serif; font-size: 12.5px; opacity: 0.6; }
 .theme-pro .page-indicator { font-family: 'Inter', sans-serif; }
-
-/* ── Sidebar: button reset ── */
-.sidebar-item { border: none; background: none; cursor: pointer; text-align: left; }
-.sidebar-item--inactive { cursor: pointer; }
-
-/* ── Sidebar: curriculum level badges ── */
-.sidebar-icon--level { background: rgba(255,122,89,0.18) !important; }
-.theme-pro .sidebar-icon--level { background: rgba(27,42,74,0.1) !important; }
-.sidebar-level-code {
-  font-family: 'Fredoka', sans-serif;
-  font-size: 11px; font-weight: 700; color: #FF7A59;
-}
-.theme-pro .sidebar-level-code { color: #1B2A4A; }
-.sidebar-item--active .sidebar-level-code { color: #fff; }
-.sidebar-item--active .sidebar-icon--level { background: rgba(255,255,255,0.22) !important; }
 
 `;
