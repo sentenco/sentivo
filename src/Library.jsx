@@ -84,6 +84,12 @@ function TodayFeature({ tools }) {
         <span>{dateLabel}</span>
       </div>
 
+      <div className="gc-masthead">
+        <div className="gc-brand">the sentivo gazette</div>
+        <div className="gc-subtitle">The Newspaper of Record for English Teachers</div>
+        <div className="gc-spectrum" />
+      </div>
+
       <div className="gc-eyebrow">Lead Correction · {headline.category}</div>
       <h2 className="gc-headline">
         <span className="corr-quote">&#10078;</span>
@@ -523,7 +529,7 @@ export default function Library() {
         </div>
       ) : (
       <main className="content">
-                <div className="grid-wrap" ref={gridWrapRef}>
+                <div className={`grid-wrap ${category === "All" && !query.trim() ? "grid-wrap--today" : ""}`} ref={gridWrapRef}>
         {category === "All" && !query.trim() ? (
           toolsLoading ? (
             <p className="empty-msg">Loading today's edition…</p>
@@ -765,6 +771,10 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 /* ── Today: daily corrections feature ── */
 .gc-main { width: 100%; max-width: 900px; margin: 0 auto; padding: 20px 4px 8px; overflow-y: auto; }
 .gc-metabar { display: flex; align-items: baseline; justify-content: space-between; font-family: 'Inter', sans-serif; font-size: 10.5px; font-weight: 700; letter-spacing: 0.05em; color: #6B6355; margin-bottom: 14px; }
+.gc-masthead { text-align: center; margin-bottom: 22px; }
+.gc-brand { font-family: 'Source Serif 4', serif; font-size: clamp(28px, 4vw, 38px); font-weight: 700; letter-spacing: -0.01em; color: #1B2A4A; text-transform: lowercase; }
+.gc-subtitle { font-family: 'Inter', sans-serif; font-size: 10.5px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: #6B6355; margin-top: 6px; }
+.gc-spectrum { height: 4px; margin-top: 14px; border-radius: 3px; background: linear-gradient(90deg, #D85A30 0%, #C6923E 50%, #2F6B63 100%); }
 .gc-eyebrow { font-family: 'Inter', sans-serif; font-size: 10.5px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: #D85A30; margin: 0 0 8px; }
 .gc-headline { font-family: 'Source Serif 4', serif; font-size: clamp(20px, 2.6vw, 27px); font-weight: 700; line-height: 1.28; margin: 0 0 12px; color: #1B2A4A; text-wrap: balance; }
 .corr-quote { color: #D85A30; margin-right: 3px; }
@@ -864,6 +874,7 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   align-items: center;
   justify-content: center;
 }
+.grid-wrap--today { align-items: flex-start; overflow-y: auto; }
 
 .cover-grid {
   display: grid;
