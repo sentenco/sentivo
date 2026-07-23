@@ -226,6 +226,33 @@ function TodayFeature({ tools, user }) {
             <ComingSoonWidget title="Slide Deck Builder" description="Turn a lesson into a ready-to-teach slide deck." />
           </div>
         </div>
+
+        {recommended.length > 0 && (
+          <div className="gc-reclessons">
+            <div className="gc-rl-head">
+              <span className="gc-rl-title">Recommended Lessons</span>
+              <span className="gc-rl-sub">Fresh picks every day</span>
+            </div>
+            <div className="gc-rl-grid">
+              {recommended.map((t, i) => {
+                const href = t.content_type === "forge-track" ? `/library/forge/${t.id}` : `/library/${t.id}`;
+                const hue = CATEGORY_HUE[t.category] || "gold";
+                return (
+                  <a href={href} className={`gc-rl-card hue-${hue}`} key={t.id}>
+                    <span className="gc-rl-num" aria-hidden="true">{String(i + 1).padStart(2, "0")}</span>
+                    <span className="gc-rl-icon">{CATEGORY_ICON[t.category] || "📘"}</span>
+                    <span className="gc-rl-name">{t.title}</span>
+                    <span className="gc-rl-meta">
+                      {t.access === "premium" && <span className="prem">Premium · </span>}
+                      {t.level ? `${t.level} · ` : ""}{t.category}
+                    </span>
+                    <span className="gc-rl-cta">Open lesson <span className="arr">→</span></span>
+                  </a>
+                );
+              })}
+            </div>
+          </div>
+        )}
       </div>
 
       <aside className="gc-sidebar">
@@ -235,29 +262,6 @@ function TodayFeature({ tools, user }) {
         <div className="gc-widget gc-widget--calendar">
           <MiniCalendar />
         </div>
-        {recommended.length > 0 && (
-          <div className="gc-widget gc-widget--recommended">
-            <div className="gc-widget-title">Recommended Lessons</div>
-            <div className="gc-rec-list">
-              {recommended.map((t) => {
-                const href = t.content_type === "forge-track" ? `/library/forge/${t.id}` : `/library/${t.id}`;
-                const hue = CATEGORY_HUE[t.category] || "gold";
-                return (
-                  <a href={href} className={`gc-rec-item hue-${hue}`} key={t.id}>
-                    <span className="gc-rec-icon">{CATEGORY_ICON[t.category] || "📘"}</span>
-                    <span className="gc-rec-text">
-                      <span className="gc-rec-title">{t.title}</span>
-                      <span className="gc-rec-meta">
-                        {t.access === "premium" && <span className="prem">Premium · </span>}
-                        {t.level ? `${t.level} · ` : ""}{t.category}
-                      </span>
-                    </span>
-                  </a>
-                );
-              })}
-            </div>
-          </div>
-        )}
       </aside>
     </div>
   );
@@ -954,17 +958,90 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .gc-widget--boxed .gc-widget-note { margin-top: 4px; }
 .gc-widget--boxed .gc-soon-tag { margin-top: 8px; }
 
-.gc-rec-list { display: flex; flex-direction: column; }
-.gc-rec-item { display: flex; align-items: flex-start; gap: 10px; padding: 10px 0; border-top: 1px solid rgba(27,42,74,0.1); text-decoration: none; }
-.gc-rec-item:first-child { border-top: none; padding-top: 2px; }
-.gc-rec-icon { width: 26px; height: 26px; flex-shrink: 0; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 13px; background: rgba(27,42,74,0.06); }
-.gc-rec-item.hue-teal .gc-rec-icon { background: rgba(47,107,99,0.12); }
-.gc-rec-item.hue-gold .gc-rec-icon { background: rgba(198,146,62,0.14); }
-.gc-rec-item.hue-coral .gc-rec-icon { background: rgba(216,90,48,0.12); }
-.gc-rec-text { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
-.gc-rec-title { font-family: 'Source Serif 4', serif; font-size: 12.5px; font-weight: 700; line-height: 1.3; color: #1B2A4A; }
-.gc-rec-meta { font-family: 'Inter', sans-serif; font-size: 9.5px; font-weight: 700; letter-spacing: 0.03em; text-transform: uppercase; color: #6B6355; }
-.gc-rec-meta .prem { color: #D85A30; }
+/* ── Recommended Lessons: newspaper section front ── */
+.gc-reclessons { margin-top: 30px; }
+.gc-rl-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  border-top: 3px solid #1B2A4A;
+  position: relative;
+  padding-top: 9px;
+  margin-bottom: 14px;
+}
+.gc-rl-head::before { content: ""; position: absolute; top: 2px; left: 0; right: 0; height: 1px; background: #1B2A4A; }
+.gc-rl-title { font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: #1B2A4A; }
+.gc-rl-sub { font-family: 'Source Serif 4', serif; font-style: italic; font-size: 12px; color: #6B6355; }
+
+.gc-rl-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.gc-rl-card {
+  position: relative;
+  min-width: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  background: #FEFEFD;
+  border: 1px solid rgba(27,42,74,0.16);
+  border-radius: 4px;
+  padding: 14px 14px 12px;
+  text-decoration: none;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+.gc-rl-card::after { content: ""; position: absolute; left: 0; right: 100%; bottom: 0; height: 3px; transition: right 0.28s ease; }
+.gc-rl-card.hue-coral::after { background: #D85A30; }
+.gc-rl-card.hue-gold::after { background: #C6923E; }
+.gc-rl-card.hue-teal::after { background: #2F6B63; }
+.gc-rl-card:hover { transform: translateY(-3px); box-shadow: 0 12px 26px rgba(27,42,74,0.13); }
+.gc-rl-card:hover::after { right: 0; }
+
+.gc-rl-num {
+  position: absolute;
+  top: -6px;
+  right: 8px;
+  font-family: 'Source Serif 4', serif;
+  font-size: 54px;
+  font-weight: 700;
+  line-height: 1;
+  color: #1B2A4A;
+  opacity: 0.07;
+  pointer-events: none;
+  font-variant-numeric: tabular-nums;
+}
+.gc-rl-icon { width: 30px; height: 30px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 15px; }
+.gc-rl-card.hue-teal .gc-rl-icon { background: rgba(47,107,99,0.12); }
+.gc-rl-card.hue-gold .gc-rl-icon { background: rgba(198,146,62,0.14); }
+.gc-rl-card.hue-coral .gc-rl-icon { background: rgba(216,90,48,0.12); }
+.gc-rl-name { font-family: 'Source Serif 4', serif; font-size: 14.5px; font-weight: 700; line-height: 1.3; color: #1B2A4A; margin-top: 2px; }
+.gc-rl-meta { font-family: 'Inter', sans-serif; font-size: 9.5px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: #6B6355; }
+.gc-rl-meta .prem { color: #D85A30; }
+.gc-rl-cta {
+  margin-top: auto;
+  padding-top: 8px;
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  opacity: 0;
+  transform: translateY(3px);
+  transition: opacity 0.18s ease, transform 0.18s ease;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.gc-rl-card.hue-coral .gc-rl-cta { color: #D85A30; }
+.gc-rl-card.hue-gold .gc-rl-cta { color: #C6923E; }
+.gc-rl-card.hue-teal .gc-rl-cta { color: #2F6B63; }
+.gc-rl-cta .arr { transition: transform 0.18s ease; }
+.gc-rl-card:hover .gc-rl-cta { opacity: 1; transform: translateY(0); }
+.gc-rl-card:hover .gc-rl-cta .arr { transform: translateX(3px); }
+
+@media (prefers-reduced-motion: reduce) {
+  .gc-rl-card, .gc-rl-card::after, .gc-rl-cta, .gc-rl-cta .arr { transition: none; }
+  .gc-rl-card:hover { transform: none; }
+  .gc-rl-cta { opacity: 1; transform: none; }
+}
 
 .account-wrap { position: relative; }
 .avatar-btn {
