@@ -858,26 +858,26 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   --marigold: #FFB648;
   --hair: rgba(43,42,74,0.11);
 }
-.theme-pro { background: radial-gradient(circle at 12% 0%, #FFF3D6 0%, #FFEFEA 45%, #F2EEFF 100%); color: var(--ink); }
+.theme-pro { background: var(--paper); color: var(--ink); }
 
 /* ── Gazette masthead ── */
 .gc-band {
   flex-shrink: 0;
-  background-image: linear-gradient(90deg, rgba(124,92,252,0.08) 0%, rgba(255,138,76,0.09) 50%, rgba(22,191,174,0.08) 100%);
+  background: var(--card);
   border-bottom: 1px solid var(--hair);
 }
 .gc-topbar { display: flex; align-items: center; justify-content: space-between; padding: 9px 40px; font-family: 'Quicksand', sans-serif; }
 .gc-header-brand {
   font-family: 'Fredoka', sans-serif;
   font-size: 22px;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--ink);
   letter-spacing: 0.01em;
   text-decoration: none;
   display: flex;
   align-items: baseline;
 }
-.gc-header-brand .cal-s { font-family: "Snell Roundhand", "Apple Chancery", "Brush Script MT", "Segoe Script", cursive; font-size: 34px; font-weight: 400; color: var(--rust); line-height: 0; display: inline-block; vertical-align: -8px; margin-right: 1px; }
+.gc-header-brand .cal-s { color: var(--rust); }
 .gc-topbar-actions { display: flex; align-items: center; gap: 12px; }
 .gc-search { display: flex; align-items: center; gap: 6px; padding: 7px 12px; border: 1px solid rgba(34,58,51,0.3); border-radius: 999px; background: var(--card); color: var(--muted); }
 .gc-search svg { width: 14px; height: 14px; flex-shrink: 0; }
