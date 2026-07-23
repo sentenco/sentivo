@@ -259,8 +259,6 @@ function TodayFeature({ tools, user }) {
   const total = DAILY_CORRECTIONS.length;
   const headlineIdx = ((dayIndex % total) + total) % total;
   const headline = DAILY_CORRECTIONS[headlineIdx];
-  const briefIdxs = pickDeterministic(total, headlineIdx, 3);
-  const briefs = briefIdxs.map((i) => DAILY_CORRECTIONS[i]);
 
   const recommended = tools.length
     ? pickDeterministic(tools.length, dayIndex, Math.min(6, tools.length)).map((i) => tools[i])
@@ -279,6 +277,7 @@ function TodayFeature({ tools, user }) {
 
         <TeacherGreeting user={user} />
 
+        <div className="gc-eyebrow">Daily Correction</div>
         <h2 className="gc-headline">
           <span className="corr-quote">&#10078;</span>
           <CorrectionLine segments={headline.sentence} />
@@ -287,37 +286,14 @@ function TodayFeature({ tools, user }) {
           <p className="gc-explain" key={i}>{line}</p>
         ))}
 
-        <div className="gc-briefs">
-          {briefs.map((b) => (
-            <div className={`gc-brief-col hue-${b.hue === "grammar" ? "coral" : b.hue === "vocab" ? "gold" : "teal"}`} key={b.id}>
-              <div className="col-h">{b.category}</div>
-              <div className="col-line"><CorrectionLine segments={b.sentence} /></div>
-              <div className="col-note">{b.explain[0]}</div>
-            </div>
-          ))}
-        </div>
-
-        {recommended.length > 0 && (
-          <div className="gc-featured">
-            <div className="fh"><span className="col-h">Recommended Lessons</span></div>
-            <div className="gc-fgrid">
-              {recommended.map((t) => {
-                const href = t.content_type === "forge-track" ? `/library/forge/${t.id}` : `/library/${t.id}`;
-                const hue = CATEGORY_HUE[t.category] || "gold";
-                return (
-                  <a href={href} className={`gc-fcard hue-${hue}`} key={t.id}>
-                    <div className="fic">{CATEGORY_ICON[t.category] || "📘"}</div>
-                    <h5>{t.title}</h5>
-                    <span className="fsub">
-                      {t.access === "premium" && <span className="prem">Premium · </span>}
-                      {t.level ? `${t.level} · ` : ""}{t.category}
-                    </span>
-                  </a>
-                );
-              })}
-            </div>
+        <div className="gc-boxrow">
+          <div className="gc-widget gc-widget--salary gc-widget--boxed">
+            <SalaryTracker />
           </div>
-        )}
+          <div className="gc-widget gc-widget--soon gc-widget--boxed">
+            <SlideBuilderComingSoon />
+          </div>
+        </div>
       </div>
 
       <aside className="gc-sidebar">
@@ -327,12 +303,29 @@ function TodayFeature({ tools, user }) {
         <div className="gc-widget gc-widget--calendar">
           <MiniCalendar />
         </div>
-        <div className="gc-widget gc-widget--salary">
-          <SalaryTracker />
-        </div>
-        <div className="gc-widget gc-widget--soon">
-          <SlideBuilderComingSoon />
-        </div>
+        {recommended.length > 0 && (
+          <div className="gc-widget gc-widget--recommended">
+            <div className="gc-widget-title">Recommended Lessons</div>
+            <div className="gc-rec-list">
+              {recommended.map((t) => {
+                const href = t.content_type === "forge-track" ? `/library/forge/${t.id}` : `/library/${t.id}`;
+                const hue = CATEGORY_HUE[t.category] || "gold";
+                return (
+                  <a href={href} className={`gc-rec-item hue-${hue}`} key={t.id}>
+                    <span className="gc-rec-icon">{CATEGORY_ICON[t.category] || "📘"}</span>
+                    <span className="gc-rec-text">
+                      <span className="gc-rec-title">{t.title}</span>
+                      <span className="gc-rec-meta">
+                        {t.access === "premium" && <span className="prem">Premium · </span>}
+                        {t.level ? `${t.level} · ` : ""}{t.category}
+                      </span>
+                    </span>
+                  </a>
+                );
+              })}
+            </div>
+          </div>
+        )}
       </aside>
     </div>
   );
@@ -973,7 +966,7 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .gc-ed-tab.is-active { background: #1B2A4A; color: #fff; }
 
 /* ── Today: daily corrections feature ── */
-.gc-dashboard { width: 100%; max-width: 1120px; margin: 0 auto; padding: 20px 4px 24px; display: grid; grid-template-columns: 1fr 260px; align-items: start; gap: 36px; }
+.gc-dashboard { width: 100%; max-width: 1160px; margin: 0 auto; padding: 20px 4px 24px; display: grid; grid-template-columns: 1fr 300px; align-items: start; gap: 36px; }
 .gc-main { min-width: 0; }
 
 .gc-sidebar { display: flex; flex-direction: column; gap: 16px; position: sticky; top: 0; }
@@ -1045,29 +1038,24 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .gc-explain { font-family: 'Inter', sans-serif; font-size: 14px; line-height: 1.65; color: #4A4438; max-width: 640px; margin: 0 0 4px; }
 .gc-explain + .gc-explain { margin-top: 2px; }
 
-.gc-briefs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin: 20px 0 18px; padding-top: 16px; border-top: 1px solid rgba(27,42,74,0.14); }
-.gc-brief-col .col-h { font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
-.gc-brief-col.hue-coral .col-h { color: #D85A30; }
-.gc-brief-col.hue-gold .col-h { color: #C6923E; }
-.gc-brief-col.hue-teal .col-h { color: #2F6B63; }
-.gc-brief-col .col-line { font-family: 'Source Serif 4', serif; font-size: 15px; font-weight: 700; line-height: 1.35; margin-bottom: 5px; color: #1B2A4A; }
-.gc-brief-col .col-note { font-family: 'Inter', sans-serif; font-size: 11.5px; line-height: 1.5; color: #6B6355; }
+.gc-eyebrow { font-family: 'Inter', sans-serif; font-size: 10.5px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: #D85A30; margin: 0 0 8px; }
 
-.gc-featured { margin-top: 18px; padding-top: 16px; border-top: 1px solid rgba(27,42,74,0.14); }
-.gc-featured .fh { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 12px; }
-.gc-featured .col-h { font-family: 'Inter', sans-serif; font-size: 10.5px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: #1B2A4A; }
-.gc-fgrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; }
-.gc-fcard { border: 1px solid rgba(27,42,74,0.16); border-top-width: 3px; padding: 12px; text-decoration: none; display: block; }
-.gc-fcard.hue-teal { border-top-color: #2F6B63; }
-.gc-fcard.hue-gold { border-top-color: #C6923E; }
-.gc-fcard.hue-coral { border-top-color: #D85A30; }
-.gc-fcard .fic { width: 30px; height: 30px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 15px; margin-bottom: 9px; }
-.gc-fcard.hue-teal .fic { background: rgba(47,107,99,0.12); }
-.gc-fcard.hue-gold .fic { background: rgba(198,146,62,0.14); }
-.gc-fcard.hue-coral .fic { background: rgba(216,90,48,0.12); }
-.gc-fcard h5 { font-family: 'Source Serif 4', serif; font-size: 14px; font-weight: 700; margin: 0 0 4px; line-height: 1.25; color: #1B2A4A; }
-.gc-fcard .fsub { font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 0.03em; text-transform: uppercase; color: #6B6355; }
-.gc-fcard .fsub .prem { color: #D85A30; }
+.gc-boxrow { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 28px; }
+.gc-boxrow > .gc-widget { min-width: 0; }
+.gc-widget--boxed { padding: 22px; }
+.gc-widget--boxed .gc-widget-title { font-size: 16px; }
+
+.gc-rec-list { display: flex; flex-direction: column; }
+.gc-rec-item { display: flex; align-items: flex-start; gap: 10px; padding: 10px 0; border-top: 1px solid rgba(27,42,74,0.1); text-decoration: none; }
+.gc-rec-item:first-child { border-top: none; padding-top: 2px; }
+.gc-rec-icon { width: 26px; height: 26px; flex-shrink: 0; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 13px; background: rgba(27,42,74,0.06); }
+.gc-rec-item.hue-teal .gc-rec-icon { background: rgba(47,107,99,0.12); }
+.gc-rec-item.hue-gold .gc-rec-icon { background: rgba(198,146,62,0.14); }
+.gc-rec-item.hue-coral .gc-rec-icon { background: rgba(216,90,48,0.12); }
+.gc-rec-text { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.gc-rec-title { font-family: 'Source Serif 4', serif; font-size: 12.5px; font-weight: 700; line-height: 1.3; color: #1B2A4A; }
+.gc-rec-meta { font-family: 'Inter', sans-serif; font-size: 9.5px; font-weight: 700; letter-spacing: 0.03em; text-transform: uppercase; color: #6B6355; }
+.gc-rec-meta .prem { color: #D85A30; }
 
 .account-wrap { position: relative; }
 .avatar-btn {
