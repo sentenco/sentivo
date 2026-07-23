@@ -10,7 +10,9 @@ export default {
   tag: "Progress",
   subtitle: "Same precision — now under a clock.",
   techniqueLine: "You already know these words. Today you use them fast.",
-  bankWords: ["drive revenue", "disrupt entire sectors", "pressing challenge", "weigh the trade-offs", "gain a competitive edge"],
+  bankWords: ["drive revenue", "pressing challenge", "gain a competitive edge"],
+  gradedActivities: true,
+  slideOrder: ["cover", "warmup", "vocabulary", "practice", "highlight", "scorecard", "homework"],
 
   warmup: {
     heading: null,
@@ -25,9 +27,7 @@ export default {
     heading: "Vocabulary",
     rows: [
       { label: "it makes more money", value: "it can drive revenue" },
-      { label: "it changes whole industries", value: "it's set to disrupt entire sectors" },
       { label: "it's a big problem", value: "it's a pressing challenge" },
-      { label: "you have to think about the good and bad", value: "you have to weigh the trade-offs" },
       { label: "it helps you beat other companies", value: "it helps a business gain a competitive edge" },
     ],
   },
@@ -37,30 +37,21 @@ export default {
   },
 
   practice: {
-    heading: "Swap It Up (bank half-hidden)",
+    heading: "Swap It Up",
     items: [
-      "“It makes more money.” → (drive…)",
-      "“It changes whole industries.” → (disrupt…)",
-      "“You have to think about good and bad.” → (weigh…)",
+      { pre: "AI tools can ", target: "help", post: " a business increase its profits.", hint: "drive · boost · fuel" },
+      { pre: "Bad hiring decisions are a ", target: "big", post: " problem for growing companies.", hint: "pressing · serious · significant" },
+      { pre: "Leaders have to ", target: "think about", post: " the pros and cons before investing.", hint: "weigh · consider · evaluate" },
+      { pre: "New technology could totally ", target: "change", post: " how entire sectors do business.", hint: "disrupt · transform · reshape" },
+      { pre: "Early adopters often ", target: "get ahead of", post: " their competitors.", hint: "gain an edge over · outpace · outperform" },
     ],
-  },
-
-  activity: {
-    heading: "Collocation Ladder ⏱",
-    prompt: "AI is changing hiring.",
-  },
-
-  pushIt: {
-    heading: "Push It",
-    prompt: "One more idea, same ladder, no timer — a breather before scoring.",
-    model: "Automation helps a business gain a competitive edge, but only if it can weigh the trade-offs against the pressing challenge of retraining staff.",
   },
 
   scorecard: {
     canDoLine: "I can produce precise C1 collocations under time pressure, not just when I have time to think.",
     rows: [
-      { label: "Precision", max: 3 },
-      { label: "Nuance", max: 3 },
+      { label: "Precision", max: 3, source: "practice" },
+      { label: "Nuance", max: 3, source: "highlight" },
       { label: "Persuasion/Structure", max: 6 },
       { label: "Interaction under pressure", max: 6 },
     ],
@@ -76,15 +67,11 @@ export default {
       { text: "pressing challenge" },
       " for hiring teams. Done well, it can genuinely ",
       { text: "drive revenue" },
-      " by cutting time-to-hire, but companies still need to ",
-      { text: "weigh the trade-offs" },
-      " between speed and fairness. Some analysts even argue it's set to ",
-      { text: "disrupt entire sectors" },
-      " of recruitment altogether — and the businesses that adapt first will ",
+      " by cutting time-to-hire — and the businesses that adapt first will ",
       { text: "gain a competitive edge" },
       " over the ones that wait.",
     ],
-    nextBank: "likely to · rather than · that said · arguably · admittedly",
+    nextBank: "likely to · rather than · that said · arguably",
   },
 
   teacherGuide: {
@@ -108,19 +95,30 @@ export default {
       do: [
         "Actually enforce the 15 seconds — don't let them slow down.",
         "Vague words coming back out under pressure is expected — that's exactly what today fixes, not a bad sign.",
-        "Write down one of their blunt answers for the Highlight slide.",
+        "Write down one of their blunt answers for the Highlight slide, later in the lesson.",
       ],
       timing: "2 min",
     },
     vocabulary: {
-      goal: "Check L1 recall first, then run this lesson's 5 as the same reveal game.",
+      goal: "Check L1 recall first, then run this lesson's 3 as the same reveal game.",
       say: [
-        "Before we start new ones — can you give me L1's 5 words from memory, no bank?",
+        "Before we start new ones — can you give me L1's 3 words from memory, no bank?",
         "Now let's do the same game as last time, just faster.",
       ],
       do: [
-        "If they can't recall L1's 5 unprompted, spend an extra minute reviewing before moving on.",
-        "Run this lesson's 5 phrases the same reveal-game way as L1 — attempt, then reveal.",
+        "If they can't recall L1's 3 unprompted, spend an extra minute reviewing before moving on.",
+        "Run this lesson's 3 phrases the same reveal-game way as L1 — attempt, then reveal.",
+      ],
+      timing: "3 min",
+    },
+    practice: {
+      goal: "Graded activity. 5 sentences, one highlighted word each — same swap mechanic as L1, just faster pace.",
+      say: [
+        "Same game as last lesson — one highlighted word, give me a sharper swap.",
+      ],
+      do: [
+        "Keep the pace brisk — this is Mid support, so let them glance at the bank if they stall, but don't hand it to them.",
+        "Mark ✓ or ✗ per item — the tally becomes this lesson's Precision score.",
       ],
       timing: "4 min",
     },
@@ -131,42 +129,14 @@ export default {
         "Here's my version — notice it took us less time to get here than L1.",
       ],
       do: [
-        "Type their Warm-up sentence, challenge them, then type your model — move briskly.",
+        "Type their Warm-up sentence into Before, challenge them, then type your model into After — move briskly.",
         "Point out explicitly that this is faster than L1 — that speed is the actual progress.",
+        "Rate the upgrade 0–3 — becomes this lesson's Nuance score.",
       ],
       timing: "3 min",
     },
-    practice: {
-      goal: "Bank half-hidden drill — only the first word of each upgrade shown as a cue.",
-      say: [
-        "This time I'll only give you the first word — you finish it.",
-        "It makes more money. → drive…",
-        "It changes whole industries. → disrupt…",
-        "You have to think about good and bad. → weigh…",
-      ],
-      do: ["Only reveal the cue word, not the full phrase — resist the urge to help further."],
-      timing: "2 min",
-    },
-    activity: {
-      goal: "Timed ladder — target-count must beat L1's number.",
-      say: [
-        "Thirty seconds, one idea: 'AI is changing hiring.' Climb it — basic, then better, then expert.",
-      ],
-      do: [
-        "Bank stays visible on screen since this is Mid support — let them glance at it.",
-        "Start the 30-second timer.",
-        "Watch for regression to vague words under time pressure — that regression is the real homework target, not a failure.",
-      ],
-      timing: "2 min",
-    },
-    pushit: {
-      goal: "Optional bonus rep, no timer — a breather before scoring.",
-      say: ["One more, same ladder, no clock this time — just for the extra rep."],
-      do: ["Skip if short on time."],
-      timing: "1 min (optional)",
-    },
     scorecard: {
-      goal: "Score today and explicitly compare against L1's baseline.",
+      goal: "Precision and Nuance pre-fill from the graded slides — confirm, then explicitly compare against L1's baseline.",
       say: [
         "Let's score it — and if this beats last lesson's number, I'm going to tell you, because that's the whole point.",
       ],

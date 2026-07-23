@@ -15,6 +15,7 @@ const SLIDE_LABELS = {
 };
 
 function buildSlideTypes(lesson) {
+  if (lesson.slideOrder) return lesson.slideOrder;
   return ["cover", "warmup", "vocabulary", "highlight", "practice", "activity", lesson.retest ? "retest" : "pushit", "scorecard", "homework"];
 }
 

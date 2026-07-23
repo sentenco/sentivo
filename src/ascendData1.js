@@ -10,7 +10,9 @@ export default {
   tag: "Baseline",
   subtitle: "Find the exact words you're missing — then use them.",
   techniqueLine: "Live upgrade of your own sentence. Precision, not vocabulary.",
-  bankWords: ["advancing at a remarkable pace", "widespread adoption", "broad range of applications", "reshape the labour market", "notable limitations"],
+  bankWords: ["advancing at a remarkable pace", "widespread adoption", "reshape the labour market"],
+  gradedActivities: true,
+  slideOrder: ["cover", "warmup", "vocabulary", "practice", "highlight", "scorecard", "homework"],
 
   warmup: {
     heading: null,
@@ -22,9 +24,7 @@ export default {
     rows: [
       { label: "it's getting better fast", value: "advancing at a remarkable pace" },
       { label: "lots of companies use it", value: "widespread adoption across industries" },
-      { label: "it can do a lot of things", value: "a broad range of applications" },
       { label: "it will change jobs", value: "reshape the labour market" },
-      { label: "it's not perfect", value: "notable limitations" },
     ],
   },
 
@@ -35,29 +35,19 @@ export default {
   practice: {
     heading: "Swap It Up",
     items: [
-      "“It's getting better fast.” → ?",
-      "“Lots of companies use it.” → ?",
-      "“It can do a lot of things.” → ?",
-      "“It's not perfect.” → ?",
+      { pre: "AI is really ", target: "good", post: " at finding patterns in huge datasets.", hint: "sophisticated · powerful · advanced" },
+      { pre: "Many companies ", target: "use", post: " AI to speed up customer support.", hint: "leverage · deploy · adopt" },
+      { pre: "The technology is ", target: "growing", post: " incredibly quickly across every industry.", hint: "advancing · accelerating · expanding" },
+      { pre: "Automation could ", target: "change", post: " the way entire industries operate.", hint: "transform · reshape · redefine" },
+      { pre: "Even the best AI tools still have some ", target: "problems", post: " that need fixing.", hint: "limitations · shortcomings · flaws" },
     ],
-  },
-
-  activity: {
-    heading: "60-Second Briefing (the diagnostic)",
-    prompt: "How is AI changing business right now?",
-  },
-
-  pushIt: {
-    heading: "Push It",
-    prompt: "One more idea, no timer: describe a business you know using 2+ collocations from today's bank.",
-    model: "The industry is advancing at a remarkable pace, and even smaller companies now show widespread adoption of AI tools.",
   },
 
   scorecard: {
     canDoLine: "I can describe AI's impact on business using precise, natural collocations instead of vague words.",
     rows: [
-      { label: "Precision", max: 3 },
-      { label: "Nuance", max: 3 },
+      { label: "Precision", max: 3, source: "practice" },
+      { label: "Nuance", max: 3, source: "highlight" },
       { label: "Persuasion/Structure", max: 6 },
       { label: "Interaction under pressure", max: 6 },
     ],
@@ -73,15 +63,11 @@ export default {
       { text: "advancing at a remarkable pace" },
       ", and across almost every sector, companies now report ",
       { text: "widespread adoption" },
-      " of AI-powered tools. From customer service to logistics, the technology already covers a ",
-      { text: "broad range of applications" },
-      " — and many analysts believe it will ",
+      " of AI-powered tools. Many analysts believe it will ",
       { text: "reshape the labour market" },
-      " within a decade. That said, even the most advanced systems still show ",
-      { text: "notable limitations" },
-      ", particularly when it comes to judgment and context.",
+      " within the next decade, changing how entire industries operate.",
     ],
-    nextBank: "drive revenue · disrupt entire sectors · pressing challenge · weigh the trade-offs · gain a competitive edge",
+    nextBank: "drive revenue · pressing challenge · gain a competitive edge",
   },
 
   teacherGuide: {
@@ -105,13 +91,13 @@ export default {
       ],
       do: [
         "Give zero prep time — that's the whole point of 'impromptu'.",
-        "Write down their exact sentence, word for word, even if it's rough. You'll need it in a few minutes.",
+        "Write down their exact sentence, word for word, even if it's rough. You'll need it on the Highlight slide, later in the lesson.",
         "Don't correct anything yet — just capture it.",
       ],
       timing: "2 min",
     },
     vocabulary: {
-      goal: "Teach the 5 collocations as a game — student attempts before you reveal, not a list to read.",
+      goal: "Teach the 3 collocations as a game — student attempts before you reveal, not a list to read.",
       say: [
         "Before I show you the answer, this is a bit of a game.",
         "I'll show you a simple sentence, and I want you to try upgrading it yourself out loud — however it comes out is fine.",
@@ -122,83 +108,56 @@ export default {
         "Read the vague phrase on screen aloud.",
         "Pause and let the student attempt their own upgrade — accept anything, don't correct yet.",
         "Tap 'Show our version' to reveal, then compare out loud.",
-        "Repeat for all 5 phrases using Next.",
-      ],
-      timing: "5 min",
-    },
-    highlight: {
-      goal: "Personally upgrade the exact sentence they gave you in the Warm-up — the core moment of the lesson.",
-      say: [
-        "Remember what you said a few minutes ago? Let's look at it together.",
-        "Now — can you try saying that again, but using one or two of today's words?",
-        "Here's how I'd say it — listen for the difference.",
-      ],
-      do: [
-        "Type their exact Warm-up sentence into box 1.",
-        "Ask them to rephrase it out loud using today's bank — give them a real attempt, don't rush them.",
-        "Type your own upgraded model into box 3, reading it aloud as you type.",
-        "Compare all three versions out loud: their original, their attempt, your model.",
+        "Repeat for all 3 phrases using Next.",
       ],
       timing: "4 min",
     },
     practice: {
-      goal: "Fast recall drill with the bank still fully visible.",
+      goal: "Graded activity. 5 sentences, one highlighted word each — student proposes a sharper single-word swap, you mark it.",
       say: [
-        "Quick fire round — bank's still up, just react fast, don't think too hard.",
-        "It's getting better fast.",
-        "Lots of companies use it.",
-        "It can do a lot of things.",
-        "It's not perfect.",
+        "Same idea as the vocabulary game, but now it's just one word at a time, and this one's graded.",
+        "I'll read the sentence — the highlighted word is the one we're upgrading. Give me a better word.",
       ],
       do: [
-        "Say each vague sentence and let the student respond immediately with the upgrade.",
-        "Correct gently only if they use the wrong collocation — this is reflex training, not new teaching.",
+        "Read each sentence aloud, with emphasis on the highlighted word.",
+        "Let the student attempt their own swap first — only tap 'Show ideas' if they're stuck.",
+        "Mark ✓ or ✗ based on whether their word is a genuine upgrade — the tally becomes this lesson's Precision score.",
       ],
-      timing: "3 min",
+      timing: "5 min",
     },
-    activity: {
-      goal: "The actual diagnostic. Count collocations — this number is the baseline every future lesson has to beat.",
+    highlight: {
+      goal: "Personally upgrade the exact sentence they gave you in the Warm-up — the core moment of the lesson, now placed mid-lesson after they've warmed up on Vocabulary and Swap It Up.",
       say: [
-        "Okay, this one's timed — 60 seconds, and I want you to just talk, don't stop even if you stumble.",
-        "How is AI changing business right now?",
-        "Go.",
+        "Remember what you said at the very start? Let's look at it together.",
+        "Now — can you try saying that again, but using one or two of today's words?",
+        "Here's how I'd say it — listen for the difference.",
       ],
       do: [
-        "Start a 60-second timer the moment they begin.",
-        "Silently tally every collocation they use from the bank — write the number down somewhere private, this is the baseline.",
-        "Don't interrupt or correct during the 60 seconds.",
+        "Type their exact Warm-up sentence into the Before box.",
+        "Ask them to rephrase it out loud using today's bank — give them a real attempt, don't rush them.",
+        "Type the upgraded version into the After box, reading it aloud as you type.",
+        "Rate the upgrade 0–3 — this becomes this lesson's Nuance score.",
       ],
-      timing: "2 min",
-    },
-    pushit: {
-      goal: "Optional bonus rep, no pressure, only if time allows.",
-      say: [
-        "If we've got a minute — one more, no timer this time, just for fun.",
-        "Describe a business you know using two of today's words.",
-      ],
-      do: [
-        "Skip this slide entirely if you're short on time — it's not required.",
-        "No correction needed here, just enjoy the extra rep.",
-      ],
-      timing: "2 min (optional)",
+      timing: "4 min",
     },
     scorecard: {
-      goal: "Score today's performance and log it as the baseline for every future comparison.",
+      goal: "Precision and Nuance are pre-filled from Swap It Up and the Live Upgrade rating — confirm or adjust, then fill in the rest and log it as the baseline.",
       say: [
         "Let's put a number on today — this is our starting point, not a test you can fail.",
-        "I'm going to score you on four things: precision, nuance, structure, and how you handled the pressure.",
+        "Two of these are already filled in from what we just did — I'll add the last two.",
       ],
       do: [
-        "Fill in each score based on the Activity performance, using the collocation count as your main signal for Precision and Persuasion/Structure.",
+        "Precision and Nuance auto-fill from the graded slides — adjust only if something clearly doesn't reflect what happened.",
+        "Fill in Persuasion/Structure and Interaction under pressure based on overall impression.",
         "Total shows automatically.",
         "Download the result and save it somewhere — you'll compare directly against this in L10.",
       ],
       timing: "2 min",
     },
     homework: {
-      goal: "Preview next lesson's bank so it isn't a surprise, using the passage as reinforcement reading.",
+      goal: "Reinforce today's 3 collocations through the reading passage, and preview next lesson's bank.",
       say: [
-        "Before next time, read through this passage a couple of times — notice how the five phrases sit naturally in real sentences.",
+        "Before next time, read through this passage a couple of times — notice how today's three phrases sit naturally in real sentences.",
         "Also take a quick look at next lesson's words at the bottom — you don't need to know them yet, just get your eyes on them.",
       ],
       do: [

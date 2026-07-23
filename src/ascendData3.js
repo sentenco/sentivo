@@ -10,7 +10,9 @@ export default {
   tag: "Progress",
   subtitle: "Precise isn't enough. Now sound measured too.",
   techniqueLine: "Experts rarely speak in absolutes. This is how you sound like one.",
-  bankWords: ["likely to", "rather than", "that said", "arguably", "admittedly"],
+  bankWords: ["likely to", "rather than", "that said", "arguably"],
+  gradedActivities: true,
+  slideOrder: ["cover", "warmup", "vocabulary", "practice", "highlight", "scorecard", "homework"],
 
   warmup: {
     heading: null,
@@ -23,7 +25,6 @@ export default {
       { label: "it will replace X", value: "likely to transform, rather than replace, X" },
       { label: "it's true", value: "that said, it's not the whole picture" },
       { label: "it's definitely a problem", value: "arguably, one of the bigger problems" },
-      { label: "it's a weakness", value: "admittedly, a real limitation" },
     ],
   },
 
@@ -32,30 +33,21 @@ export default {
   },
 
   practice: {
-    heading: "Soften the Absolute",
+    heading: "Swap It Up",
     items: [
-      "“AI hiring tools are biased.” → (likely to / arguably)",
-      "“Companies should stop using them.” → (rather than)",
-      "“This is a huge failure.” → (admittedly / that said)",
+      { pre: "AI hiring tools ", target: "are", post: " biased against older candidates.", hint: "are likely to be · arguably are" },
+      { pre: "Companies should ", target: "stop", post: " using biased systems immediately.", hint: "reconsider · reassess" },
+      { pre: "This is ", target: "definitely", post: " one of the sector's biggest problems.", hint: "arguably · quite possibly" },
+      { pre: "The bias concerns are ", target: "true", post: ", but there's more to the story.", hint: "valid, that said · real, that said" },
+      { pre: "Vendors ", target: "clearly", post: " have work left to do.", hint: "admittedly · undeniably" },
     ],
-  },
-
-  activity: {
-    heading: "60-Second Briefing — precise AND measured",
-    prompt: "Should companies be fully responsible for their AI's mistakes?",
-  },
-
-  pushIt: {
-    heading: "Push It",
-    prompt: "Diplomat's rewrite — read both aloud, harsh then diplomatic.",
-    model: "Harsh: AI hiring tools are unfair and companies are lazy for using them. → Diplomatic: AI hiring tools admittedly carry real risks, and that said, companies weighing convenience against fairness face a genuinely pressing challenge.",
   },
 
   scorecard: {
     canDoLine: "I can sound precise and measured at the same time, without a bank in front of me.",
     rows: [
-      { label: "Precision", max: 3 },
-      { label: "Nuance", max: 3 },
+      { label: "Precision", max: 3, source: "practice" },
+      { label: "Nuance", max: 3, source: "highlight" },
       { label: "Persuasion/Structure", max: 6 },
       { label: "Interaction under pressure", max: 6 },
     ],
@@ -75,9 +67,7 @@ export default {
       { text: "That said" },
       ", the bias concerns raised this year are ",
       { text: "arguably" },
-      " some of the most serious the sector has faced. Vendors, ",
-      { text: "admittedly" },
-      ", still have work to do before these systems can be trusted without close human oversight.",
+      " some of the most serious the sector has faced.",
     ],
     nextBank: "firstly · more importantly · that said · on balance · I'd recommend",
   },
@@ -97,21 +87,32 @@ export default {
       ],
       do: [
         "Capture their exact reaction word for word.",
-        "Expect bluntness ('that's wrong', 'companies shouldn't...') — that's the raw material for the Highlight slide, not a problem to fix now.",
+        "Expect bluntness ('that's wrong', 'companies shouldn't...') — that's the raw material for the Highlight slide, later in the lesson, not a problem to fix now.",
       ],
       timing: "2 min",
     },
     vocabulary: {
       goal: "Check L1+L2 recall first — no bank shown for either. Then run the hedging bank as the reveal game.",
       say: [
-        "Before anything new — give me L1's 5 and L2's 5, from memory, no bank.",
+        "Before anything new — give me L1's 3 and L2's 3, from memory, no bank.",
         "Now, new set: hedging words. These aren't collocations, they're how you sound careful instead of certain.",
       ],
       do: [
         "Hold firm on the no-bank recall check — this is the real diagnostic for whether L1/L2 stuck.",
-        "Run the 4 hedging pairs (likely to, rather than, that said, arguably, admittedly) as attempt-then-reveal.",
+        "Run the 3 hedging pairs as attempt-then-reveal.",
       ],
-      timing: "5 min",
+      timing: "4 min",
+    },
+    practice: {
+      goal: "Graded activity, no bank shown — blunt word swapped for a hedged one, from memory.",
+      say: [
+        "Same swap game, no bank this time. Highlighted word — soften it or make it more measured.",
+      ],
+      do: [
+        "Let them reach for likely to / rather than / that said / arguably unaided — only reveal the hint if they're fully stuck.",
+        "Mark ✓ or ✗ per item — the tally becomes this lesson's Precision score.",
+      ],
+      timing: "4 min",
     },
     highlight: {
       goal: "The second 'aha' — precision made them sound like an expert; hedging makes them sound careful.",
@@ -121,43 +122,14 @@ export default {
         "Here's mine — listen for where the hedge sits.",
       ],
       do: [
-        "Type their Warm-up reaction, challenge them to add a hedge this time (not just precision), then reveal your model.",
+        "Type their Warm-up reaction into Before, challenge them to add a hedge this time (not just precision), then type your model into After.",
         "Name the distinction out loud explicitly: this is the difference between sounding correct and sounding measured — the actual C1→C2 jump.",
+        "Rate the upgrade 0–3 — becomes this lesson's Nuance score.",
       ],
       timing: "4 min",
     },
-    practice: {
-      goal: "No bank shown — blunt claim to measured version, from memory.",
-      say: [
-        "No bank this time. Blunt claim, you soften it.",
-        "AI hiring tools are biased.",
-        "Companies should stop using them.",
-        "This is a huge failure.",
-      ],
-      do: ["Let them reach for likely to / rather than / that said / arguably / admittedly unaided — only prompt if they're fully stuck."],
-      timing: "3 min",
-    },
-    activity: {
-      goal: "Diagnostic-style, no support — 3+ precision collocations from any lesson plus 2+ hedges.",
-      say: [
-        "This one's the real test of the block — no bank, sixty seconds.",
-        "Should companies be fully responsible for their AI's mistakes?",
-      ],
-      do: [
-        "No bank on screen — this is genuinely unaided.",
-        "Silently count 3+ precision collocations (from any lesson) and 2+ hedges.",
-        "This closes the Upgrade block — treat the result as a real signal, not just practice.",
-      ],
-      timing: "2 min",
-    },
-    pushit: {
-      goal: "Diplomat's rewrite — harsh version then diplomatic version, read both aloud.",
-      say: ["Last bonus round of the block — I'll read a harsh version, you give me the diplomatic one."],
-      do: ["Read the harsh version aloud, let them attempt the diplomatic rewrite, then show your model."],
-      timing: "2 min (optional)",
-    },
     scorecard: {
-      goal: "This score is the real baseline for unsupported precision — keep it for L8 and L10 context.",
+      goal: "Precision and Nuance pre-fill from the graded slides. This score is the real baseline for unsupported precision — keep it for L8 and L10 context.",
       say: ["This number matters more than the last two — it's you with zero support, so it's our real starting line."],
       do: ["Note this score somewhere separate — you'll reference it again in L8 and L10."],
       timing: "2 min",

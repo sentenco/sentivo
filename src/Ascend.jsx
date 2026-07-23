@@ -16,6 +16,7 @@ const SLIDE_LABELS = {
 };
 
 function buildSlideTypes(lesson) {
+  if (lesson.slideOrder) return lesson.slideOrder;
   return ["cover", "warmup", "vocabulary", "highlight", "practice", "activity", lesson.retest ? "retest" : "pushit", "scorecard", "homework"];
 }
 
@@ -107,10 +108,61 @@ function VocabularySlide({ lesson }) {
   );
 }
 
-function HighlightSlide({ lesson }) {
+function HighlightSlide({ lesson, grades, setGrade }) {
   const h = lesson.highlight;
-  const [studentSentence, setStudentSentence] = useState("");
-  const [teacherModel, setTeacherModel] = useState("");
+  const [before, setBefore] = useState("");
+  const [after, setAfter] = useState("");
+  const [rating, setRating] = useState(grades?.highlight?.score ?? null);
+
+  function rate(value) {
+    setRating(value);
+    setGrade("highlight", value, 3);
+  }
+
+  if (lesson.gradedActivities) {
+    return (
+      <div className="ad-slide">
+        <h2 className="ad-heading">{h.heading}</h2>
+        <div className="ad-beforeafter">
+          <div className="ad-highlight-step">
+            <label className="ad-highlight-label">Before</label>
+            <textarea
+              className="ad-highlight-input"
+              value={before}
+              onChange={(e) => setBefore(e.target.value)}
+              placeholder="Type the student's impromptu sentence…"
+            />
+          </div>
+          <span className="ad-beforeafter-arrow">→</span>
+          <div className="ad-highlight-step">
+            <label className="ad-highlight-label">After</label>
+            <textarea
+              className="ad-highlight-input"
+              value={after}
+              onChange={(e) => setAfter(e.target.value)}
+              placeholder="Type the upgraded version…"
+            />
+          </div>
+        </div>
+        <div className="ad-rate-row">
+          <span className="ad-rate-label">Rate the upgrade</span>
+          <div className="ad-rate-btns">
+            {[0, 1, 2, 3].map((v) => (
+              <button
+                type="button"
+                key={v}
+                className={`ad-rate-btn ${rating === v ? "is-active" : ""}`}
+                onClick={() => rate(v)}
+              >
+                {v}
+              </button>
+            ))}
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="ad-slide">
       <h2 className="ad-heading">{h.heading}</h2>
@@ -118,8 +170,8 @@ function HighlightSlide({ lesson }) {
         <label className="ad-highlight-label">1 · Write the student's Warm-up sentence</label>
         <textarea
           className="ad-highlight-input"
-          value={studentSentence}
-          onChange={(e) => setStudentSentence(e.target.value)}
+          value={before}
+          onChange={(e) => setBefore(e.target.value)}
           placeholder="Listen to their answer, then type it here…"
         />
       </div>
@@ -128,8 +180,8 @@ function HighlightSlide({ lesson }) {
         <label className="ad-highlight-label">3 · Your model version</label>
         <textarea
           className="ad-highlight-input"
-          value={teacherModel}
-          onChange={(e) => setTeacherModel(e.target.value)}
+          value={after}
+          onChange={(e) => setAfter(e.target.value)}
           placeholder="Write your upgraded version here…"
         />
       </div>
@@ -137,8 +189,13 @@ function HighlightSlide({ lesson }) {
   );
 }
 
-function PracticeSlide({ lesson }) {
+function PracticeSlide({ lesson, grades, setGrade }) {
   const p = lesson.practice;
+
+  if (lesson.gradedActivities) {
+    return <SwapItUpSlide items={p.items} heading={p.heading} setGrade={setGrade} />;
+  }
+
   return (
     <div className="ad-slide">
       <h2 className="ad-heading">{p.heading}</h2>
@@ -149,6 +206,61 @@ function PracticeSlide({ lesson }) {
           ))}
         </ol>
       )}
+    </div>
+  );
+}
+
+function SwapItUpSlide({ items, heading, setGrade }) {
+  const [marks, setMarks] = useState({});
+  const [revealed, setRevealed] = useState({});
+  const correctCount = Object.values(marks).filter((v) => v === true).length;
+
+  function mark(i, ok) {
+    const next = { ...marks, [i]: ok };
+    setMarks(next);
+    setGrade("practice", Object.values(next).filter((v) => v === true).length, items.length);
+  }
+
+  return (
+    <div className="ad-slide">
+      <div className="ad-swap-headrow">
+        <h2 className="ad-heading">{heading}</h2>
+        <span className="ad-swap-tally">{correctCount} / {items.length}</span>
+      </div>
+      <div className="ad-swap-list">
+        {items.map((item, i) => (
+          <div key={i} className="ad-swap-item">
+            <p className="ad-swap-sentence">
+              {item.pre}<mark className="ad-swap-target">{item.target}</mark>{item.post}
+            </p>
+            <div className="ad-swap-row">
+              {revealed[i] ? (
+                <span className="ad-swap-hint">{item.hint}</span>
+              ) : (
+                <button type="button" className="ad-swap-hintbtn" onClick={() => setRevealed((r) => ({ ...r, [i]: true }))}>
+                  Show ideas
+                </button>
+              )}
+              <div className="ad-swap-controls">
+                <button
+                  type="button"
+                  className={`ad-swap-btn ad-swap-btn--ok ${marks[i] === true ? "is-active" : ""}`}
+                  onClick={() => mark(i, true)}
+                >
+                  ✓
+                </button>
+                <button
+                  type="button"
+                  className={`ad-swap-btn ad-swap-btn--no ${marks[i] === false ? "is-active" : ""}`}
+                  onClick={() => mark(i, false)}
+                >
+                  ✗
+                </button>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
@@ -214,9 +326,13 @@ function downloadScorecard(lesson, scores, total) {
   URL.revokeObjectURL(url);
 }
 
-function ScorecardSlide({ lesson }) {
+function ScorecardSlide({ lesson, grades }) {
   const [scores, setScores] = useState(() =>
-    Object.fromEntries(lesson.scorecard.rows.map((row) => [row.label, ""]))
+    Object.fromEntries(lesson.scorecard.rows.map((row) => {
+      const g = row.source && grades[row.source];
+      if (g) return [row.label, Math.round((g.score / g.max) * row.max)];
+      return [row.label, ""];
+    }))
   );
   const total = lesson.scorecard.rows.reduce((sum, row) => {
     const v = Number(scores[row.label]);
@@ -291,7 +407,7 @@ function HomeworkSlide({ lesson }) {
   );
 }
 
-function renderSlide(slideType, lesson) {
+function renderSlide(slideType, lesson, grades, setGrade) {
   switch (slideType) {
     case "cover":
       return <CoverSlide lesson={lesson} />;
@@ -300,9 +416,9 @@ function renderSlide(slideType, lesson) {
     case "vocabulary":
       return <VocabularySlide lesson={lesson} />;
     case "highlight":
-      return <HighlightSlide lesson={lesson} />;
+      return <HighlightSlide lesson={lesson} grades={grades} setGrade={setGrade} />;
     case "practice":
-      return <PracticeSlide lesson={lesson} />;
+      return <PracticeSlide lesson={lesson} grades={grades} setGrade={setGrade} />;
     case "activity":
       return <ActivitySlide lesson={lesson} />;
     case "pushit":
@@ -310,7 +426,7 @@ function renderSlide(slideType, lesson) {
     case "retest":
       return <RetestSlide lesson={lesson} />;
     case "scorecard":
-      return <ScorecardSlide lesson={lesson} />;
+      return <ScorecardSlide lesson={lesson} grades={grades} />;
     case "homework":
       return <HomeworkSlide lesson={lesson} />;
     default:
@@ -322,7 +438,12 @@ export default function Ascend() {
   const navigate = useNavigate();
   const { trackId, lessonNum } = useParams();
   const [slideIdx, setSlideIdx] = useState(0);
+  const [grades, setGrades] = useState({});
   const lesson = getLesson(trackId, Number(lessonNum));
+
+  function setGrade(key, score, max) {
+    setGrades((g) => ({ ...g, [key]: { score, max } }));
+  }
 
   if (!lesson) {
     return (
@@ -360,7 +481,7 @@ export default function Ascend() {
         <div className="ad-deck">
           <TopStrip lesson={lesson} slideType={slideType} />
           <div className="ad-deck-body" key={slideIdx}>
-            {renderSlide(slideType, lesson)}
+            {renderSlide(slideType, lesson, grades, setGrade)}
           </div>
           <div className="ad-nav-row">
             <button type="button" className="ad-nav-btn" onClick={() => setSlideIdx((i) => i - 1)} disabled={isFirst}>
@@ -709,6 +830,84 @@ const CSS = `
   color: #128571;
   margin: 0;
 }
+.ad-beforeafter { display: grid; grid-template-columns: 1fr auto 1fr; gap: 12px; align-items: center; }
+.ad-beforeafter-arrow { font-family: 'Fredoka', sans-serif; font-size: 20px; color: #128571; }
+.ad-rate-row { display: flex; align-items: center; gap: 10px; margin-top: 2px; }
+.ad-rate-label {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+  color: #6B8C82;
+}
+.ad-rate-btns { display: flex; gap: 6px; }
+.ad-rate-btn {
+  width: 30px;
+  height: 30px;
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  color: #17352E;
+  background: #FFFFFF;
+  border: 1px solid #D3EFE6;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.ad-rate-btn.is-active { background: #3FCDAF; border-color: #3FCDAF; color: #0E2A24; }
+
+/* ── Swap It Up (graded) ── */
+.ad-swap-headrow { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.ad-swap-tally {
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  color: #128571;
+  background: rgba(18,133,113,0.12);
+  padding: 3px 13px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+.ad-swap-list { display: flex; flex-direction: column; gap: 10px; overflow-y: auto; }
+.ad-swap-item {
+  background: #E9F7F2;
+  border: 1px solid #D3EFE6;
+  border-radius: 12px;
+  padding: 12px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.ad-swap-sentence { font-family: 'Quicksand', sans-serif; font-weight: 600; font-size: 14.5px; line-height: 1.4; color: #17352E; margin: 0; }
+.ad-swap-target { background: #FFE39A; color: #5A3E00; padding: 1px 6px; border-radius: 5px; font-weight: 700; }
+.ad-swap-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.ad-swap-hint { font-family: 'Quicksand', sans-serif; font-style: italic; font-size: 12px; color: #6B8C82; }
+.ad-swap-hintbtn {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 700;
+  font-size: 11.5px;
+  color: #128571;
+  background: none;
+  border: 1px solid #A9DDD0;
+  border-radius: 999px;
+  padding: 3px 11px;
+  cursor: pointer;
+}
+.ad-swap-controls { display: flex; gap: 6px; }
+.ad-swap-btn {
+  width: 27px;
+  height: 27px;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  border-radius: 7px;
+  border: 1px solid #D3EFE6;
+  background: #FFFFFF;
+  color: #8AAFA5;
+  cursor: pointer;
+}
+.ad-swap-btn--ok.is-active { background: #3FCDAF; border-color: #3FCDAF; color: #0E2A24; }
+.ad-swap-btn--no.is-active { background: #F3A6A6; border-color: #F3A6A6; color: #5A0E0E; }
 .ad-comparecard {
   background: #E9F7F2;
   border-left: 3px solid #3FCDAF;
