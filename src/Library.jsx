@@ -204,15 +204,16 @@ function TodayFeature({ tools, onSeeAllLessons }) {
           <p className="gc-explain" key={i}>{line}</p>
         ))}
 
-        <div className="gc-briefs-box">
-          <div className="gc-briefs">
-            {briefs.map((b) => (
-              <div className={`gc-brief-col hue-${b.hue === "grammar" ? "coral" : b.hue === "vocab" ? "gold" : "teal"}`} key={b.id}>
-                <div className="col-h">{b.category}</div>
-                <div className="col-line"><CorrectionLine segments={b.sentence} /></div>
+        <div className="gc-briefs">
+          {briefs.map((b) => (
+            <div className={`gc-brief-col hue-${b.hue === "grammar" ? "coral" : b.hue === "vocab" ? "gold" : "teal"}`} key={b.id}>
+              <div className="col-h">{b.category}</div>
+              <div className="col-line"><CorrectionLine segments={b.sentence} /></div>
+              <div className="col-explain">
+                {b.explain.map((line, i) => <p key={i}>{line}</p>)}
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
 
         <div className="gc-boxrow">
@@ -961,13 +962,35 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 
 .gc-eyebrow { font-family: 'Quicksand', sans-serif; font-size: 11px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ochre); margin: 0 0 8px; }
 
-.gc-briefs-box { margin: 12px 0 2px; padding: 14px 16px; background: var(--card); border: 1px solid var(--hair); border-radius: 16px; }
-.gc-briefs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.gc-briefs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 12px 0 2px; }
+.gc-brief-col { position: relative; background: var(--card); border: 1px solid var(--hair); border-radius: 14px; padding: 12px 14px; transition: box-shadow .15s ease, border-color .15s ease; }
+.gc-brief-col:hover { border-color: rgba(43,42,74,0.22); box-shadow: 0 8px 20px rgba(43,42,74,0.12); }
 .gc-brief-col .col-h { font-family: 'Quicksand', sans-serif; font-size: 10px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 4px; }
 .gc-brief-col.hue-coral .col-h { color: var(--rust); }
 .gc-brief-col.hue-gold .col-h { color: var(--ochre); }
 .gc-brief-col.hue-teal .col-h { color: var(--dusk); }
 .gc-brief-col .col-line { font-family: 'Fredoka', sans-serif; font-size: 12.5px; font-weight: 600; line-height: 1.3; color: var(--ink); }
+
+.col-explain {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  right: 0;
+  background: var(--card);
+  border: 1px solid var(--hair);
+  border-radius: 12px;
+  padding: 10px 12px;
+  box-shadow: 0 12px 28px rgba(43,42,74,0.18);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-4px);
+  transition: opacity .15s ease, transform .15s ease, visibility .15s;
+  z-index: 30;
+  pointer-events: none;
+}
+.col-explain p { font-family: 'Quicksand', sans-serif; font-size: 11.5px; line-height: 1.4; color: #4C4A3E; margin: 0; }
+.col-explain p + p { margin-top: 4px; }
+.gc-brief-col:hover .col-explain { opacity: 1; visibility: visible; transform: translateY(0); }
 
 /* ── Gradient feature cards ── */
 .gc-boxrow { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 12px; }
