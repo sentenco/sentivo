@@ -172,82 +172,11 @@ function TeacherGreeting({ user }) {
   );
 }
 
-function SalaryTracker() {
-  const [classes, setClasses] = useState(() => {
-    try {
-      const saved = JSON.parse(localStorage.getItem("sentivo_salary_classes") || "[]");
-      return Array.isArray(saved) ? saved : [];
-    } catch {
-      return [];
-    }
-  });
-  const [name, setName] = useState("");
-  const [rate, setRate] = useState("");
-
-  useEffect(() => {
-    localStorage.setItem("sentivo_salary_classes", JSON.stringify(classes));
-  }, [classes]);
-
-  function addClass(e) {
-    e.preventDefault();
-    const r = parseFloat(rate);
-    if (!name.trim() || !Number.isFinite(r) || r < 0) return;
-    setClasses((c) => [...c, { id: Date.now(), name: name.trim(), rate: r }]);
-    setName("");
-    setRate("");
-  }
-
-  function removeClass(id) {
-    setClasses((c) => c.filter((x) => x.id !== id));
-  }
-
-  const total = classes.reduce((sum, c) => sum + c.rate, 0);
-
-  return (
-    <div className="gc-salary">
-      <div className="gc-widget-title">Salary Tracker</div>
-      {classes.length > 0 && (
-        <ul className="gc-salary-list">
-          {classes.map((c) => (
-            <li key={c.id}>
-              <span className="gc-salary-name">{c.name}</span>
-              <span className="gc-salary-rate">${c.rate.toFixed(2)}</span>
-              <button type="button" className="gc-salary-remove" onClick={() => removeClass(c.id)} aria-label={`Remove ${c.name}`}>×</button>
-            </li>
-          ))}
-        </ul>
-      )}
-      <div className="gc-salary-total">
-        <span>Total</span>
-        <span>${total.toFixed(2)}</span>
-      </div>
-      <form className="gc-salary-form" onSubmit={addClass}>
-        <input
-          type="text"
-          placeholder="Class name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
-        <input
-          type="number"
-          placeholder="Rate"
-          min="0"
-          step="0.01"
-          value={rate}
-          onChange={(e) => setRate(e.target.value)}
-        />
-        <button type="submit">Add</button>
-      </form>
-      <p className="gc-widget-note">Saved on this device only.</p>
-    </div>
-  );
-}
-
-function SlideBuilderComingSoon() {
+function ComingSoonWidget({ title, description }) {
   return (
     <div className="gc-coming-soon">
-      <div className="gc-widget-title">Slide Deck Builder</div>
-      <p className="gc-widget-note">Turn a lesson into a ready-to-teach slide deck — pick a design, drop in your own content.</p>
+      <div className="gc-widget-title">{title}</div>
+      <p className="gc-widget-note">{description}</p>
       <span className="gc-soon-tag">Coming soon</span>
     </div>
   );
@@ -259,6 +188,8 @@ function TodayFeature({ tools, user }) {
   const total = DAILY_CORRECTIONS.length;
   const headlineIdx = ((dayIndex % total) + total) % total;
   const headline = DAILY_CORRECTIONS[headlineIdx];
+  const briefIdxs = pickDeterministic(total, headlineIdx, 3);
+  const briefs = briefIdxs.map((i) => DAILY_CORRECTIONS[i]);
 
   const recommended = tools.length
     ? pickDeterministic(tools.length, dayIndex, Math.min(6, tools.length)).map((i) => tools[i])
@@ -286,12 +217,21 @@ function TodayFeature({ tools, user }) {
           <p className="gc-explain" key={i}>{line}</p>
         ))}
 
+        <div className="gc-briefs">
+          {briefs.map((b) => (
+            <div className={`gc-brief-col hue-${b.hue === "grammar" ? "coral" : b.hue === "vocab" ? "gold" : "teal"}`} key={b.id}>
+              <div className="col-h">{b.category}</div>
+              <div className="col-line"><CorrectionLine segments={b.sentence} /></div>
+            </div>
+          ))}
+        </div>
+
         <div className="gc-boxrow">
           <div className="gc-widget gc-widget--salary gc-widget--boxed">
-            <SalaryTracker />
+            <ComingSoonWidget title="Salary Tracker" description="Track your pay per class, all in one place." />
           </div>
           <div className="gc-widget gc-widget--soon gc-widget--boxed">
-            <SlideBuilderComingSoon />
+            <ComingSoonWidget title="Slide Deck Builder" description="Turn a lesson into a ready-to-teach slide deck." />
           </div>
         </div>
       </div>
@@ -979,37 +919,6 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .gc-widget-title { font-family: 'Source Serif 4', serif; font-size: 14.5px; font-weight: 700; color: #1B2A4A; margin-bottom: 10px; }
 .gc-widget-note { font-family: 'Inter', sans-serif; font-size: 10.5px; line-height: 1.5; color: #6B6355; margin-top: 8px; }
 
-.gc-salary-list { list-style: none; padding: 0; margin: 0 0 8px; display: flex; flex-direction: column; gap: 6px; }
-.gc-salary-list li { display: flex; align-items: center; gap: 6px; font-family: 'Inter', sans-serif; font-size: 12px; }
-.gc-salary-name { flex: 1; color: #1B2A4A; font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.gc-salary-rate { color: #6B6355; font-variant-numeric: tabular-nums; }
-.gc-salary-remove { background: none; border: none; color: #9C9385; font-size: 15px; line-height: 1; cursor: pointer; padding: 0 2px; }
-.gc-salary-remove:hover { color: #D85A30; }
-.gc-salary-total { display: flex; justify-content: space-between; font-family: 'Inter', sans-serif; font-size: 12.5px; font-weight: 800; color: #1B2A4A; padding-top: 8px; border-top: 1px solid rgba(27,42,74,0.14); font-variant-numeric: tabular-nums; }
-.gc-salary-form { display: flex; flex-direction: column; gap: 6px; margin-top: 10px; }
-.gc-salary-form input {
-  font-family: 'Inter', sans-serif;
-  font-size: 12px;
-  padding: 6px 8px;
-  border: 1px solid rgba(27,42,74,0.2);
-  border-radius: 3px;
-  outline: none;
-  color: #1B2A4A;
-  background: rgba(27,42,74,0.02);
-}
-.gc-salary-form button {
-  font-family: 'Inter', sans-serif;
-  font-size: 12px;
-  font-weight: 700;
-  padding: 6px 8px;
-  border-radius: 3px;
-  border: 1.5px solid #1B2A4A;
-  background: transparent;
-  color: #1B2A4A;
-  cursor: pointer;
-}
-.gc-salary-form button:hover { background: #1B2A4A; color: #fff; }
-
 .gc-soon-tag { display: inline-block; font-family: 'Inter', sans-serif; font-size: 9.5px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: #6B6355; background: rgba(27,42,74,0.06); padding: 3px 8px; border-radius: 999px; margin-top: 10px; }
 
 .gc-clock { text-align: center; }
@@ -1040,10 +949,19 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 
 .gc-eyebrow { font-family: 'Inter', sans-serif; font-size: 10.5px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: #D85A30; margin: 0 0 8px; }
 
-.gc-boxrow { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 28px; }
+.gc-briefs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin: 18px 0 4px; padding-top: 14px; border-top: 1px solid rgba(27,42,74,0.14); }
+.gc-brief-col .col-h { font-family: 'Inter', sans-serif; font-size: 9.5px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 4px; }
+.gc-brief-col.hue-coral .col-h { color: #D85A30; }
+.gc-brief-col.hue-gold .col-h { color: #C6923E; }
+.gc-brief-col.hue-teal .col-h { color: #2F6B63; }
+.gc-brief-col .col-line { font-family: 'Source Serif 4', serif; font-size: 13.5px; font-weight: 700; line-height: 1.3; color: #1B2A4A; }
+
+.gc-boxrow { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 24px; }
 .gc-boxrow > .gc-widget { min-width: 0; }
-.gc-widget--boxed { padding: 22px; }
-.gc-widget--boxed .gc-widget-title { font-size: 16px; }
+.gc-widget--boxed { padding: 14px 16px; }
+.gc-widget--boxed .gc-widget-title { font-size: 13.5px; margin-bottom: 4px; }
+.gc-widget--boxed .gc-widget-note { margin-top: 4px; }
+.gc-widget--boxed .gc-soon-tag { margin-top: 8px; }
 
 .gc-rec-list { display: flex; flex-direction: column; }
 .gc-rec-item { display: flex; align-items: flex-start; gap: 10px; padding: 10px 0; border-top: 1px solid rgba(27,42,74,0.1); text-decoration: none; }
