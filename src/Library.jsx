@@ -849,7 +849,7 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 
 .page {
   --ink: #2B2A4A;
-  --paper: #FFF3E4;
+  --paper: #FFFFFF;
   --card: #FFFFFF;
   --muted: #8B84A3;
   --rust: #7C5CFC;
