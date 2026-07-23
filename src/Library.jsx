@@ -195,17 +195,9 @@ function TodayFeature({ tools, user }) {
     ? pickDeterministic(tools.length, dayIndex, Math.min(6, tools.length)).map((i) => tools[i])
     : [];
 
-  const issueNo = 1 + Math.max(0, dayIndex);
-  const dateLabel = today.toLocaleDateString(undefined, { weekday: "short", month: "long", day: "numeric" });
-
   return (
     <div className="gc-dashboard">
       <div className="gc-main">
-        <div className="gc-metabar">
-          <span>Vol. 1, No. {issueNo}</span>
-          <span>{dateLabel}</span>
-        </div>
-
         <TeacherGreeting user={user} />
 
         <div className="gc-eyebrow">Daily Correction</div>
@@ -933,8 +925,7 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .gc-cal-cell { font-family: 'Inter', sans-serif; font-size: 11.5px; font-weight: 600; color: #1B2A4A; padding: 5px 0; border-radius: 3px; }
 .gc-cal-cell.is-empty { visibility: hidden; }
 .gc-cal-cell.is-today { background: #D85A30; color: #fff; font-weight: 800; }
-.gc-metabar { display: flex; align-items: baseline; justify-content: space-between; font-family: 'Inter', sans-serif; font-size: 10.5px; font-weight: 700; letter-spacing: 0.05em; color: #6B6355; margin-bottom: 14px; }
-.gc-greeting { text-align: center; margin-bottom: 22px; }
+.gc-greeting { text-align: center; margin-top: 4px; margin-bottom: 22px; }
 .gc-greeting-line { font-family: 'Source Serif 4', serif; font-size: clamp(20px, 3vw, 28px); font-weight: 700; letter-spacing: -0.01em; color: #1B2A4A; }
 .gc-greeting-btn { background: none; border: none; cursor: pointer; padding: 2px 4px; border-radius: 3px; }
 .gc-greeting-btn:hover { background: rgba(27,42,74,0.06); }
