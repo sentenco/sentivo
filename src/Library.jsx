@@ -204,13 +204,15 @@ function TodayFeature({ tools, onSeeAllLessons }) {
           <p className="gc-explain" key={i}>{line}</p>
         ))}
 
-        <div className="gc-briefs">
-          {briefs.map((b) => (
-            <div className={`gc-brief-col hue-${b.hue === "grammar" ? "coral" : b.hue === "vocab" ? "gold" : "teal"}`} key={b.id}>
-              <div className="col-h">{b.category}</div>
-              <div className="col-line"><CorrectionLine segments={b.sentence} /></div>
-            </div>
-          ))}
+        <div className="gc-briefs-box">
+          <div className="gc-briefs">
+            {briefs.map((b) => (
+              <div className={`gc-brief-col hue-${b.hue === "grammar" ? "coral" : b.hue === "vocab" ? "gold" : "teal"}`} key={b.id}>
+                <div className="col-h">{b.category}</div>
+                <div className="col-line"><CorrectionLine segments={b.sentence} /></div>
+              </div>
+            ))}
+          </div>
         </div>
 
         <div className="gc-boxrow">
@@ -959,7 +961,8 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 
 .gc-eyebrow { font-family: 'Quicksand', sans-serif; font-size: 11px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ochre); margin: 0 0 8px; }
 
-.gc-briefs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 10px 0 2px; padding-top: 8px; border-top: 1px solid var(--hair); }
+.gc-briefs-box { margin: 12px 0 2px; padding: 14px 16px; background: var(--card); border: 1px solid var(--hair); border-radius: 16px; }
+.gc-briefs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
 .gc-brief-col .col-h { font-family: 'Quicksand', sans-serif; font-size: 10px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 4px; }
 .gc-brief-col.hue-coral .col-h { color: var(--rust); }
 .gc-brief-col.hue-gold .col-h { color: var(--ochre); }
