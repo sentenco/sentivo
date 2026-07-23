@@ -52,8 +52,8 @@ export default {
     rows: [
       { label: "Precision", max: 3, source: "practice" },
       { label: "Nuance", max: 3, source: "highlight" },
-      { label: "Persuasion/Structure", max: 6 },
-      { label: "Interaction under pressure", max: 6 },
+      { label: "Persuasion/Structure", max: 6, source: "vocabulary" },
+      { label: "Interaction under pressure", max: 6, source: "warmup" },
     ],
     totalMax: 18,
     scoreTag: "progress",
@@ -96,6 +96,7 @@ export default {
         "Actually enforce the 15 seconds — don't let them slow down.",
         "Vague words coming back out under pressure is expected — that's exactly what today fixes, not a bad sign.",
         "Write down one of their blunt answers for the Highlight slide, later in the lesson.",
+        "Rate how they handled the 15-second pressure 0–3 — this becomes this lesson's Interaction under pressure score.",
       ],
       timing: "2 min",
     },
@@ -108,6 +109,7 @@ export default {
       do: [
         "If they can't recall L1's 3 unprompted, spend an extra minute reviewing before moving on.",
         "Run this lesson's 3 phrases the same reveal-game way as L1 — attempt, then reveal.",
+        "Rate how well-formed their spontaneous attempts were 0–3 — this becomes this lesson's Persuasion/Structure score.",
       ],
       timing: "3 min",
     },
@@ -136,11 +138,14 @@ export default {
       timing: "3 min",
     },
     scorecard: {
-      goal: "Precision and Nuance pre-fill from the graded slides — confirm, then explicitly compare against L1's baseline.",
+      goal: "All four rows pre-fill from the graded slides — confirm, then explicitly compare against L1's baseline.",
       say: [
         "Let's score it — and if this beats last lesson's number, I'm going to tell you, because that's the whole point.",
       ],
-      do: ["If today's total is at or above L1's, say so out loud — it's the first proof point before L10's headline number."],
+      do: [
+        "All four rows auto-fill from the graded slides — adjust only if something clearly doesn't reflect what happened.",
+        "If today's total is at or above L1's, say so out loud — it's the first proof point before L10's headline number.",
+      ],
       timing: "2 min",
     },
     homework: {

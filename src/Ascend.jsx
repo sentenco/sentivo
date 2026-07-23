@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { getLesson } from "./ascendTracks";
 
@@ -44,8 +44,35 @@ function CoverSlide({ lesson }) {
   );
 }
 
-function WarmupSlide({ lesson }) {
+function RatingControl({ label, value, onChange }) {
+  return (
+    <div className="ad-rate-row">
+      <span className="ad-rate-label">{label}</span>
+      <div className="ad-rate-btns">
+        {[0, 1, 2, 3].map((v) => (
+          <button
+            type="button"
+            key={v}
+            className={`ad-rate-btn ${value === v ? "is-active" : ""}`}
+            onClick={() => onChange(v)}
+          >
+            {v}
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function WarmupSlide({ lesson, grades, setGrade }) {
   const w = lesson.warmup;
+  const [rating, setRating] = useState(grades?.warmup?.score ?? null);
+
+  function rate(value) {
+    setRating(value);
+    setGrade("warmup", value, 3);
+  }
+
   return (
     <div className="ad-slide ad-slide--centered">
       <span className="ad-impromptu-badge">⏱ Impromptu</span>
@@ -55,14 +82,23 @@ function WarmupSlide({ lesson }) {
           <p key={i}>{q}</p>
         ))}
       </div>
+      {lesson.gradedActivities && (
+        <RatingControl label="Rate handling the pressure" value={rating} onChange={rate} />
+      )}
     </div>
   );
 }
 
-function VocabularySlide({ lesson }) {
+function VocabularySlide({ lesson, grades, setGrade }) {
   const v = lesson.vocabulary;
   const [idx, setIdx] = useState(0);
   const [revealed, setRevealed] = useState(false);
+  const [rating, setRating] = useState(grades?.vocabulary?.score ?? null);
+
+  function rate(value) {
+    setRating(value);
+    setGrade("vocabulary", value, 3);
+  }
 
   if (v.rows.length === 0) {
     return (
@@ -104,6 +140,9 @@ function VocabularySlide({ lesson }) {
         <button type="button" className="ad-game-btn" onClick={() => go(-1)} disabled={isFirst}>← Prev</button>
         <button type="button" className="ad-game-btn" onClick={() => go(1)} disabled={isLast}>Next →</button>
       </div>
+      {lesson.gradedActivities && (
+        <RatingControl label="Rate their spontaneous attempts" value={rating} onChange={rate} />
+      )}
     </div>
   );
 }
@@ -144,21 +183,7 @@ function HighlightSlide({ lesson, grades, setGrade }) {
             />
           </div>
         </div>
-        <div className="ad-rate-row">
-          <span className="ad-rate-label">Rate the upgrade</span>
-          <div className="ad-rate-btns">
-            {[0, 1, 2, 3].map((v) => (
-              <button
-                type="button"
-                key={v}
-                className={`ad-rate-btn ${rating === v ? "is-active" : ""}`}
-                onClick={() => rate(v)}
-              >
-                {v}
-              </button>
-            ))}
-          </div>
-        </div>
+        <RatingControl label="Rate the upgrade" value={rating} onChange={rate} />
       </div>
     );
   }
@@ -215,10 +240,12 @@ function SwapItUpSlide({ items, heading, setGrade }) {
   const [revealed, setRevealed] = useState({});
   const correctCount = Object.values(marks).filter((v) => v === true).length;
 
+  useEffect(() => {
+    setGrade("practice", correctCount, items.length);
+  }, [correctCount]);
+
   function mark(i, ok) {
-    const next = { ...marks, [i]: ok };
-    setMarks(next);
-    setGrade("practice", Object.values(next).filter((v) => v === true).length, items.length);
+    setMarks((prev) => ({ ...prev, [i]: ok }));
   }
 
   return (
@@ -412,9 +439,9 @@ function renderSlide(slideType, lesson, grades, setGrade) {
     case "cover":
       return <CoverSlide lesson={lesson} />;
     case "warmup":
-      return <WarmupSlide lesson={lesson} />;
+      return <WarmupSlide lesson={lesson} grades={grades} setGrade={setGrade} />;
     case "vocabulary":
-      return <VocabularySlide lesson={lesson} />;
+      return <VocabularySlide lesson={lesson} grades={grades} setGrade={setGrade} />;
     case "highlight":
       return <HighlightSlide lesson={lesson} grades={grades} setGrade={setGrade} />;
     case "practice":
@@ -736,10 +763,10 @@ const CSS = `
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 14px;
+  gap: 10px;
   background: #E9F7F2;
   border-radius: 16px;
-  padding: 28px 36px;
+  padding: 18px 36px;
   width: 100%;
   max-width: 720px;
 }

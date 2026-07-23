@@ -48,8 +48,8 @@ export default {
     rows: [
       { label: "Precision", max: 3, source: "practice" },
       { label: "Nuance", max: 3, source: "highlight" },
-      { label: "Persuasion/Structure", max: 6 },
-      { label: "Interaction under pressure", max: 6 },
+      { label: "Persuasion/Structure", max: 6, source: "vocabulary" },
+      { label: "Interaction under pressure", max: 6, source: "warmup" },
     ],
     totalMax: 18,
     scoreTag: "progress",
@@ -88,6 +88,7 @@ export default {
       do: [
         "Capture their exact reaction word for word.",
         "Expect bluntness ('that's wrong', 'companies shouldn't...') — that's the raw material for the Highlight slide, later in the lesson, not a problem to fix now.",
+        "Rate how they handled reacting on the spot 0–3 — this becomes this lesson's Interaction under pressure score.",
       ],
       timing: "2 min",
     },
@@ -100,6 +101,7 @@ export default {
       do: [
         "Hold firm on the no-bank recall check — this is the real diagnostic for whether L1/L2 stuck.",
         "Run the 3 hedging pairs as attempt-then-reveal.",
+        "Rate how well-formed their spontaneous attempts were 0–3 — this becomes this lesson's Persuasion/Structure score.",
       ],
       timing: "4 min",
     },
@@ -129,9 +131,12 @@ export default {
       timing: "4 min",
     },
     scorecard: {
-      goal: "Precision and Nuance pre-fill from the graded slides. This score is the real baseline for unsupported precision — keep it for L8 and L10 context.",
+      goal: "All four rows pre-fill from the graded slides. This score is the real baseline for unsupported precision — keep it for L8 and L10 context.",
       say: ["This number matters more than the last two — it's you with zero support, so it's our real starting line."],
-      do: ["Note this score somewhere separate — you'll reference it again in L8 and L10."],
+      do: [
+        "All four rows auto-fill from the graded slides — adjust only if something clearly doesn't reflect what happened.",
+        "Note this score somewhere separate — you'll reference it again in L8 and L10.",
+      ],
       timing: "2 min",
     },
     homework: {
