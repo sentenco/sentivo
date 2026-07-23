@@ -61,6 +61,60 @@ function CorrectionLine({ segments }) {
   });
 }
 
+function DigitalClock() {
+  const [now, setNow] = useState(new Date());
+  useEffect(() => {
+    const id = setInterval(() => setNow(new Date()), 1000);
+    return () => clearInterval(id);
+  }, []);
+  const h24 = now.getHours();
+  const h12 = ((h24 + 11) % 12) + 1;
+  const hh = String(h12).padStart(2, "0");
+  const mm = String(now.getMinutes()).padStart(2, "0");
+  const ss = String(now.getSeconds()).padStart(2, "0");
+  const ampm = h24 >= 12 ? "PM" : "AM";
+  let tz = "";
+  try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone; } catch { /* unsupported */ }
+
+  return (
+    <div className="gc-clock">
+      <div className="gc-clock-time">{hh}:{mm}<span className="gc-clock-sec">:{ss}</span></div>
+      <div className="gc-clock-meta">
+        <span>{ampm}</span>
+        {tz && <span>{tz}</span>}
+      </div>
+    </div>
+  );
+}
+
+function MiniCalendar() {
+  const today = new Date();
+  const year = today.getFullYear();
+  const month = today.getMonth();
+  const firstDay = new Date(year, month, 1).getDay();
+  const daysInMonth = new Date(year, month + 1, 0).getDate();
+  const monthLabel = today.toLocaleDateString(undefined, { month: "long", year: "numeric" });
+  const cells = [];
+  for (let i = 0; i < firstDay; i++) cells.push(null);
+  for (let d = 1; d <= daysInMonth; d++) cells.push(d);
+
+  return (
+    <div className="gc-calendar">
+      <div className="gc-cal-month">{monthLabel}</div>
+      <div className="gc-cal-grid gc-cal-grid--head">
+        {["S", "M", "T", "W", "T", "F", "S"].map((d, i) => <span key={i}>{d}</span>)}
+      </div>
+      <div className="gc-cal-grid">
+        {cells.map((d, i) => (
+          <span key={i} className={`gc-cal-cell ${d === today.getDate() ? "is-today" : ""} ${d ? "" : "is-empty"}`}>
+            {d || ""}
+          </span>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function TodayFeature({ tools }) {
   const today = new Date();
   const dayIndex = daysSince(today);
@@ -70,66 +124,77 @@ function TodayFeature({ tools }) {
   const briefIdxs = pickDeterministic(total, headlineIdx, 3);
   const briefs = briefIdxs.map((i) => DAILY_CORRECTIONS[i]);
 
-  const featured = tools.length
-    ? pickDeterministic(tools.length, dayIndex, Math.min(4, tools.length)).map((i) => tools[i])
+  const recommended = tools.length
+    ? pickDeterministic(tools.length, dayIndex, Math.min(6, tools.length)).map((i) => tools[i])
     : [];
 
   const issueNo = 1 + Math.max(0, dayIndex);
   const dateLabel = today.toLocaleDateString(undefined, { weekday: "short", month: "long", day: "numeric" });
 
   return (
-    <div className="gc-main">
-      <div className="gc-metabar">
-        <span>Vol. 1, No. {issueNo}</span>
-        <span>{dateLabel}</span>
-      </div>
-
-      <div className="gc-masthead">
-        <div className="gc-brand">the sentivo gazette</div>
-        <div className="gc-subtitle">The Newspaper of Record for English Teachers</div>
-        <div className="gc-spectrum" />
-      </div>
-
-      <div className="gc-eyebrow">Lead Correction · {headline.category}</div>
-      <h2 className="gc-headline">
-        <span className="corr-quote">&#10078;</span>
-        <CorrectionLine segments={headline.sentence} />
-      </h2>
-      {headline.explain.map((line, i) => (
-        <p className="gc-explain" key={i}>{line}</p>
-      ))}
-
-      <div className="gc-briefs">
-        {briefs.map((b) => (
-          <div className={`gc-brief-col hue-${b.hue === "grammar" ? "coral" : b.hue === "vocab" ? "gold" : "teal"}`} key={b.id}>
-            <div className="col-h">{b.category}</div>
-            <div className="col-line"><CorrectionLine segments={b.sentence} /></div>
-            <div className="col-note">{b.explain[0]}</div>
-          </div>
-        ))}
-      </div>
-
-      {featured.length > 0 && (
-        <div className="gc-featured">
-          <div className="fh"><span className="col-h">Featured Today</span></div>
-          <div className="gc-fgrid">
-            {featured.map((t) => {
-              const href = t.content_type === "forge-track" ? `/library/forge/${t.id}` : `/library/${t.id}`;
-              const hue = CATEGORY_HUE[t.category] || "gold";
-              return (
-                <a href={href} className={`gc-fcard hue-${hue}`} key={t.id}>
-                  <div className="fic">{CATEGORY_ICON[t.category] || "📘"}</div>
-                  <h5>{t.title}</h5>
-                  <span className="fsub">
-                    {t.access === "premium" && <span className="prem">Premium · </span>}
-                    {t.level ? `${t.level} · ` : ""}{t.category}
-                  </span>
-                </a>
-              );
-            })}
-          </div>
+    <div className="gc-dashboard">
+      <div className="gc-main">
+        <div className="gc-metabar">
+          <span>Vol. 1, No. {issueNo}</span>
+          <span>{dateLabel}</span>
         </div>
-      )}
+
+        <div className="gc-masthead">
+          <div className="gc-brand">the sentivo gazette</div>
+          <div className="gc-subtitle">The Newspaper of Record for English Teachers</div>
+          <div className="gc-spectrum" />
+        </div>
+
+        <div className="gc-eyebrow">Lead Correction · {headline.category}</div>
+        <h2 className="gc-headline">
+          <span className="corr-quote">&#10078;</span>
+          <CorrectionLine segments={headline.sentence} />
+        </h2>
+        {headline.explain.map((line, i) => (
+          <p className="gc-explain" key={i}>{line}</p>
+        ))}
+
+        <div className="gc-briefs">
+          {briefs.map((b) => (
+            <div className={`gc-brief-col hue-${b.hue === "grammar" ? "coral" : b.hue === "vocab" ? "gold" : "teal"}`} key={b.id}>
+              <div className="col-h">{b.category}</div>
+              <div className="col-line"><CorrectionLine segments={b.sentence} /></div>
+              <div className="col-note">{b.explain[0]}</div>
+            </div>
+          ))}
+        </div>
+
+        {recommended.length > 0 && (
+          <div className="gc-featured">
+            <div className="fh"><span className="col-h">Recommended Lessons</span></div>
+            <div className="gc-fgrid">
+              {recommended.map((t) => {
+                const href = t.content_type === "forge-track" ? `/library/forge/${t.id}` : `/library/${t.id}`;
+                const hue = CATEGORY_HUE[t.category] || "gold";
+                return (
+                  <a href={href} className={`gc-fcard hue-${hue}`} key={t.id}>
+                    <div className="fic">{CATEGORY_ICON[t.category] || "📘"}</div>
+                    <h5>{t.title}</h5>
+                    <span className="fsub">
+                      {t.access === "premium" && <span className="prem">Premium · </span>}
+                      {t.level ? `${t.level} · ` : ""}{t.category}
+                    </span>
+                  </a>
+                );
+              })}
+            </div>
+          </div>
+        )}
+      </div>
+
+      <aside className="gc-sidebar">
+        <div className="gc-widget gc-widget--clock">
+          <DigitalClock />
+        </div>
+        <div className="gc-widget gc-widget--calendar">
+          <MiniCalendar />
+        </div>
+      </aside>
     </div>
   );
 }
@@ -769,7 +834,26 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .gc-ed-tab.is-active { background: #1B2A4A; color: #fff; }
 
 /* ── Today: daily corrections feature ── */
-.gc-main { width: 100%; max-width: 900px; margin: 0 auto; padding: 20px 4px 8px; overflow-y: auto; }
+.gc-dashboard { width: 100%; max-width: 1120px; margin: 0 auto; padding: 20px 4px 24px; display: grid; grid-template-columns: 1fr 260px; align-items: start; gap: 36px; }
+.gc-main { min-width: 0; }
+
+.gc-sidebar { display: flex; flex-direction: column; gap: 16px; position: sticky; top: 0; }
+.gc-widget { background: #FEFEFD; border: 1px solid rgba(27,42,74,0.16); border-top-width: 3px; border-radius: 4px; padding: 16px; }
+.gc-widget--clock { border-top-color: #D85A30; }
+.gc-widget--calendar { border-top-color: #2F6B63; }
+
+.gc-clock { text-align: center; }
+.gc-clock-time { font-family: 'Source Serif 4', serif; font-variant-numeric: tabular-nums; font-size: 32px; font-weight: 700; color: #1B2A4A; letter-spacing: 0.01em; }
+.gc-clock-sec { font-size: 18px; color: #9C9385; font-weight: 600; }
+.gc-clock-meta { display: flex; justify-content: center; gap: 8px; margin-top: 4px; font-family: 'Inter', sans-serif; font-size: 9.5px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #6B6355; }
+
+.gc-cal-month { font-family: 'Source Serif 4', serif; font-size: 14.5px; font-weight: 700; color: #1B2A4A; text-align: center; margin-bottom: 10px; }
+.gc-cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 3px; text-align: center; }
+.gc-cal-grid--head { margin-bottom: 4px; }
+.gc-cal-grid--head span { font-family: 'Inter', sans-serif; font-size: 9px; font-weight: 800; letter-spacing: 0.04em; color: #9C9385; text-transform: uppercase; }
+.gc-cal-cell { font-family: 'Inter', sans-serif; font-size: 11.5px; font-weight: 600; color: #1B2A4A; padding: 5px 0; border-radius: 3px; }
+.gc-cal-cell.is-empty { visibility: hidden; }
+.gc-cal-cell.is-today { background: #D85A30; color: #fff; font-weight: 800; }
 .gc-metabar { display: flex; align-items: baseline; justify-content: space-between; font-family: 'Inter', sans-serif; font-size: 10.5px; font-weight: 700; letter-spacing: 0.05em; color: #6B6355; margin-bottom: 14px; }
 .gc-masthead { text-align: center; margin-bottom: 22px; }
 .gc-brand { font-family: 'Source Serif 4', serif; font-size: clamp(28px, 4vw, 38px); font-weight: 700; letter-spacing: -0.01em; color: #1B2A4A; text-transform: lowercase; }
