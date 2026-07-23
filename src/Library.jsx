@@ -115,7 +115,145 @@ function MiniCalendar() {
   );
 }
 
-function TodayFeature({ tools }) {
+function TeacherGreeting({ user }) {
+  const [name, setName] = useState(() => {
+    const saved = localStorage.getItem("sentivo_teacher_name");
+    if (saved) return saved;
+    if (user?.email) {
+      const prefix = user.email.split("@")[0];
+      return prefix.charAt(0).toUpperCase() + prefix.slice(1);
+    }
+    return "";
+  });
+  const [editing, setEditing] = useState(false);
+  const [draft, setDraft] = useState(name);
+
+  useEffect(() => {
+    localStorage.setItem("sentivo_teacher_name", name);
+  }, [name]);
+
+  const hour = new Date().getHours();
+  const greeting = hour < 12 ? "Good morning" : hour < 17 ? "Good afternoon" : "Good evening";
+
+  function startEditing() {
+    setDraft(name);
+    setEditing(true);
+  }
+  function save() {
+    setName(draft.trim());
+    setEditing(false);
+  }
+
+  return (
+    <div className="gc-greeting">
+      {editing ? (
+        <span className="gc-greeting-line gc-greeting-line--editing">
+          {greeting}, Teacher{" "}
+          <input
+            autoFocus
+            className="gc-greeting-input"
+            value={draft}
+            onChange={(e) => setDraft(e.target.value)}
+            onBlur={save}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") save();
+              if (e.key === "Escape") { setDraft(name); setEditing(false); }
+            }}
+            placeholder="your name"
+          />
+        </span>
+      ) : (
+        <button type="button" className="gc-greeting-line gc-greeting-btn" onClick={startEditing} title="Click to edit your name">
+          {greeting}{name ? `, Teacher ${name}` : ", Teacher"}
+        </button>
+      )}
+      <div className="gc-spectrum" />
+    </div>
+  );
+}
+
+function SalaryTracker() {
+  const [classes, setClasses] = useState(() => {
+    try {
+      const saved = JSON.parse(localStorage.getItem("sentivo_salary_classes") || "[]");
+      return Array.isArray(saved) ? saved : [];
+    } catch {
+      return [];
+    }
+  });
+  const [name, setName] = useState("");
+  const [rate, setRate] = useState("");
+
+  useEffect(() => {
+    localStorage.setItem("sentivo_salary_classes", JSON.stringify(classes));
+  }, [classes]);
+
+  function addClass(e) {
+    e.preventDefault();
+    const r = parseFloat(rate);
+    if (!name.trim() || !Number.isFinite(r) || r < 0) return;
+    setClasses((c) => [...c, { id: Date.now(), name: name.trim(), rate: r }]);
+    setName("");
+    setRate("");
+  }
+
+  function removeClass(id) {
+    setClasses((c) => c.filter((x) => x.id !== id));
+  }
+
+  const total = classes.reduce((sum, c) => sum + c.rate, 0);
+
+  return (
+    <div className="gc-salary">
+      <div className="gc-widget-title">Salary Tracker</div>
+      {classes.length > 0 && (
+        <ul className="gc-salary-list">
+          {classes.map((c) => (
+            <li key={c.id}>
+              <span className="gc-salary-name">{c.name}</span>
+              <span className="gc-salary-rate">${c.rate.toFixed(2)}</span>
+              <button type="button" className="gc-salary-remove" onClick={() => removeClass(c.id)} aria-label={`Remove ${c.name}`}>×</button>
+            </li>
+          ))}
+        </ul>
+      )}
+      <div className="gc-salary-total">
+        <span>Total</span>
+        <span>${total.toFixed(2)}</span>
+      </div>
+      <form className="gc-salary-form" onSubmit={addClass}>
+        <input
+          type="text"
+          placeholder="Class name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
+        <input
+          type="number"
+          placeholder="Rate"
+          min="0"
+          step="0.01"
+          value={rate}
+          onChange={(e) => setRate(e.target.value)}
+        />
+        <button type="submit">Add</button>
+      </form>
+      <p className="gc-widget-note">Saved on this device only.</p>
+    </div>
+  );
+}
+
+function SlideBuilderComingSoon() {
+  return (
+    <div className="gc-coming-soon">
+      <div className="gc-widget-title">Slide Deck Builder</div>
+      <p className="gc-widget-note">Turn a lesson into a ready-to-teach slide deck — pick a design, drop in your own content.</p>
+      <span className="gc-soon-tag">Coming soon</span>
+    </div>
+  );
+}
+
+function TodayFeature({ tools, user }) {
   const today = new Date();
   const dayIndex = daysSince(today);
   const total = DAILY_CORRECTIONS.length;
@@ -139,13 +277,8 @@ function TodayFeature({ tools }) {
           <span>{dateLabel}</span>
         </div>
 
-        <div className="gc-masthead">
-          <div className="gc-brand">the sentivo gazette</div>
-          <div className="gc-subtitle">The Newspaper of Record for English Teachers</div>
-          <div className="gc-spectrum" />
-        </div>
+        <TeacherGreeting user={user} />
 
-        <div className="gc-eyebrow">Lead Correction · {headline.category}</div>
         <h2 className="gc-headline">
           <span className="corr-quote">&#10078;</span>
           <CorrectionLine segments={headline.sentence} />
@@ -193,6 +326,12 @@ function TodayFeature({ tools }) {
         </div>
         <div className="gc-widget gc-widget--calendar">
           <MiniCalendar />
+        </div>
+        <div className="gc-widget gc-widget--salary">
+          <SalaryTracker />
+        </div>
+        <div className="gc-widget gc-widget--soon">
+          <SlideBuilderComingSoon />
         </div>
       </aside>
     </div>
@@ -599,7 +738,7 @@ export default function Library() {
           toolsLoading ? (
             <p className="empty-msg">Loading today's edition…</p>
           ) : (
-            <TodayFeature tools={tools} />
+            <TodayFeature tools={tools} user={user} />
           )
         ) : category === "Grammar" ? (
           <div className="speaking-grid">
@@ -841,6 +980,44 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .gc-widget { background: #FEFEFD; border: 1px solid rgba(27,42,74,0.16); border-top-width: 3px; border-radius: 4px; padding: 16px; }
 .gc-widget--clock { border-top-color: #D85A30; }
 .gc-widget--calendar { border-top-color: #2F6B63; }
+.gc-widget--salary { border-top-color: #C6923E; }
+.gc-widget--soon { border-top-color: #9C9385; }
+
+.gc-widget-title { font-family: 'Source Serif 4', serif; font-size: 14.5px; font-weight: 700; color: #1B2A4A; margin-bottom: 10px; }
+.gc-widget-note { font-family: 'Inter', sans-serif; font-size: 10.5px; line-height: 1.5; color: #6B6355; margin-top: 8px; }
+
+.gc-salary-list { list-style: none; padding: 0; margin: 0 0 8px; display: flex; flex-direction: column; gap: 6px; }
+.gc-salary-list li { display: flex; align-items: center; gap: 6px; font-family: 'Inter', sans-serif; font-size: 12px; }
+.gc-salary-name { flex: 1; color: #1B2A4A; font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.gc-salary-rate { color: #6B6355; font-variant-numeric: tabular-nums; }
+.gc-salary-remove { background: none; border: none; color: #9C9385; font-size: 15px; line-height: 1; cursor: pointer; padding: 0 2px; }
+.gc-salary-remove:hover { color: #D85A30; }
+.gc-salary-total { display: flex; justify-content: space-between; font-family: 'Inter', sans-serif; font-size: 12.5px; font-weight: 800; color: #1B2A4A; padding-top: 8px; border-top: 1px solid rgba(27,42,74,0.14); font-variant-numeric: tabular-nums; }
+.gc-salary-form { display: flex; flex-direction: column; gap: 6px; margin-top: 10px; }
+.gc-salary-form input {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  padding: 6px 8px;
+  border: 1px solid rgba(27,42,74,0.2);
+  border-radius: 3px;
+  outline: none;
+  color: #1B2A4A;
+  background: rgba(27,42,74,0.02);
+}
+.gc-salary-form button {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 6px 8px;
+  border-radius: 3px;
+  border: 1.5px solid #1B2A4A;
+  background: transparent;
+  color: #1B2A4A;
+  cursor: pointer;
+}
+.gc-salary-form button:hover { background: #1B2A4A; color: #fff; }
+
+.gc-soon-tag { display: inline-block; font-family: 'Inter', sans-serif; font-size: 9.5px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: #6B6355; background: rgba(27,42,74,0.06); padding: 3px 8px; border-radius: 999px; margin-top: 10px; }
 
 .gc-clock { text-align: center; }
 .gc-clock-time { font-family: 'Source Serif 4', serif; font-variant-numeric: tabular-nums; font-size: 32px; font-weight: 700; color: #1B2A4A; letter-spacing: 0.01em; }
@@ -855,11 +1032,12 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .gc-cal-cell.is-empty { visibility: hidden; }
 .gc-cal-cell.is-today { background: #D85A30; color: #fff; font-weight: 800; }
 .gc-metabar { display: flex; align-items: baseline; justify-content: space-between; font-family: 'Inter', sans-serif; font-size: 10.5px; font-weight: 700; letter-spacing: 0.05em; color: #6B6355; margin-bottom: 14px; }
-.gc-masthead { text-align: center; margin-bottom: 22px; }
-.gc-brand { font-family: 'Source Serif 4', serif; font-size: clamp(28px, 4vw, 38px); font-weight: 700; letter-spacing: -0.01em; color: #1B2A4A; text-transform: lowercase; }
-.gc-subtitle { font-family: 'Inter', sans-serif; font-size: 10.5px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: #6B6355; margin-top: 6px; }
+.gc-greeting { text-align: center; margin-bottom: 22px; }
+.gc-greeting-line { font-family: 'Source Serif 4', serif; font-size: clamp(20px, 3vw, 28px); font-weight: 700; letter-spacing: -0.01em; color: #1B2A4A; }
+.gc-greeting-btn { background: none; border: none; cursor: pointer; padding: 2px 4px; border-radius: 3px; }
+.gc-greeting-btn:hover { background: rgba(27,42,74,0.06); }
+.gc-greeting-input { font: inherit; color: inherit; border: none; border-bottom: 2px solid #D85A30; background: transparent; outline: none; width: 9ch; text-align: center; }
 .gc-spectrum { height: 4px; margin-top: 14px; border-radius: 3px; background: linear-gradient(90deg, #D85A30 0%, #C6923E 50%, #2F6B63 100%); }
-.gc-eyebrow { font-family: 'Inter', sans-serif; font-size: 10.5px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: #D85A30; margin: 0 0 8px; }
 .gc-headline { font-family: 'Source Serif 4', serif; font-size: clamp(20px, 2.6vw, 27px); font-weight: 700; line-height: 1.28; margin: 0 0 12px; color: #1B2A4A; text-wrap: balance; }
 .corr-quote { color: #D85A30; margin-right: 3px; }
 .corr-wrong { color: #9C9385; font-weight: 400; text-decoration: line-through; text-decoration-color: #B9AF9C; margin-right: 5px; }
