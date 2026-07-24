@@ -1641,25 +1641,27 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .gdn-bed--empty .gdn-bed-cta { color: var(--muted); }
 
 /* ---------- Reading: Bookshelf ---------- */
-.bkshf-page { width: 100%; max-width: 620px; margin: 0 auto; }
-.bkshf-masthead { text-align: center; padding-bottom: 6px; }
+.bkshf-page { width: 100%; max-width: 780px; margin: 0 auto; }
+.bkshf-masthead { text-align: center; padding-bottom: 4px; }
 .bkshf-nameplate-pill {
   display: inline-flex;
   align-items: center;
   gap: 9px;
   font-family: 'Fredoka', sans-serif;
   font-weight: 700;
-  font-size: 24px;
+  font-size: 22px;
   color: var(--ink);
   background: rgba(185,133,82,0.14);
-  padding: 5px 20px 8px;
+  padding: 4px 18px 7px;
   border-radius: 999px;
 }
 
-.bkshf-shelves { padding: 14px 0 0; }
-.bkshf-shelf-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+.bkshf-shelves { padding: 8px 0 0; }
+.bkshf-shelf-row { display: flex; justify-content: center; align-items: flex-end; flex-wrap: nowrap; gap: 12px; }
 .bkshf-book {
   position: relative;
+  flex: 0 0 auto;
+  height: clamp(110px, 19vh, 190px);
   aspect-ratio: 2 / 3;
   border-radius: 7px 7px 3px 3px;
   overflow: hidden;
@@ -1691,18 +1693,14 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .bkshf-book-title--onimg { position: absolute; z-index: 1; left: 8px; right: 8px; bottom: 7px; margin: 0; font-size: 11px; color: #FFFFFF; }
 
 .bkshf-shelf-ledge {
-  height: 11px;
+  height: 9px;
   border-radius: 0 0 3px 3px;
-  margin: 0 0 18px;
+  margin: 0 0 14px;
   background: linear-gradient(180deg, #B98552 0%, #8A5F35 100%);
-  box-shadow: 0 7px 11px rgba(74,54,35,0.22);
+  box-shadow: 0 6px 9px rgba(74,54,35,0.22);
   position: relative;
 }
 .bkshf-shelf-ledge::after { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 2px; background: rgba(255,255,255,0.3); }
-
-@media (max-width: 760px) {
-  .bkshf-shelf-row { grid-template-columns: repeat(2, 1fr); }
-}
 
 .cover {
   flex-shrink: 0;
