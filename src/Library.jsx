@@ -1641,27 +1641,27 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .gdn-bed--empty .gdn-bed-cta { color: var(--muted); }
 
 /* ---------- Reading: Bookshelf ---------- */
-.bkshf-page { width: 100%; max-width: 780px; margin: 0 auto; }
-.bkshf-masthead { text-align: center; padding-bottom: 4px; }
+.bkshf-page { width: 100%; max-width: 1040px; margin: 0 auto; }
+.bkshf-masthead { text-align: center; padding-bottom: 2px; }
 .bkshf-nameplate-pill {
   display: inline-flex;
   align-items: center;
-  gap: 9px;
+  gap: 8px;
   font-family: 'Fredoka', sans-serif;
   font-weight: 700;
-  font-size: 22px;
+  font-size: 19px;
   color: var(--ink);
   background: rgba(185,133,82,0.14);
-  padding: 4px 18px 7px;
+  padding: 4px 16px 6px;
   border-radius: 999px;
 }
 
-.bkshf-shelves { padding: 8px 0 0; }
+.bkshf-shelves { padding: 4px 0 0; }
 .bkshf-shelf-row { display: flex; justify-content: center; align-items: flex-end; flex-wrap: nowrap; gap: 12px; }
 .bkshf-book {
   position: relative;
   flex: 0 0 auto;
-  height: clamp(110px, 19vh, 190px);
+  width: clamp(90px, 14vw, 132px);
   aspect-ratio: 2 / 3;
   border-radius: 7px 7px 3px 3px;
   overflow: hidden;
@@ -1695,7 +1695,7 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .bkshf-shelf-ledge {
   height: 9px;
   border-radius: 0 0 3px 3px;
-  margin: 0 0 14px;
+  margin: 0 0 12px;
   background: linear-gradient(180deg, #B98552 0%, #8A5F35 100%);
   box-shadow: 0 6px 9px rgba(74,54,35,0.22);
   position: relative;
