@@ -16,7 +16,7 @@ import storybook8CoverImg from "./assets/storybook8/cover.jpeg";
 import forge1CoverImg from "./assets/forge/track1-cover.jpeg";
 import DAILY_CORRECTIONS from "./dailyCorrections";
 
-const CATEGORIES = ["Reading", "Grammar", "Vocabulary", "Writing", "Listening", "Speaking"];
+const CATEGORIES = ["Reading", "Articles", "Grammar", "Vocabulary", "Writing", "Listening", "Speaking"];
 
 // "Today" launch date -- the day count in the Today masthead (Vol. 1, No. X)
 // counts up from here, like a real newspaper's running issue number.
@@ -231,6 +231,9 @@ function TodayFeature({ tools, onSeeAllLessons }) {
           </div>
           <div className="gc-widget gc-widget--notebook gc-widget--boxed">
             <ComingSoonWidget icon="📝" title="Digital Notebook" description="Write live on a shared whiteboard while you teach." />
+          </div>
+          <div className="gc-widget gc-widget--wheel gc-widget--boxed">
+            <ComingSoonWidget icon="🎡" title="Spin the Wheel" description="Randomly pick a student or topic on the spot." />
           </div>
         </div>
 
@@ -1008,7 +1011,7 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .gc-brief-col:hover .col-explain { opacity: 1; visibility: visible; transform: translateY(0); }
 
 /* ── Gradient feature cards ── */
-.gc-boxrow { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 12px; }
+.gc-boxrow { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 12px; }
 .gc-boxrow > .gc-widget { min-width: 0; }
 .gc-widget--boxed {
   position: relative;
@@ -1033,6 +1036,7 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .gc-widget--salary.gc-widget--boxed { background: linear-gradient(135deg, #9D82FF 0%, #6C4FE0 100%); }
 .gc-widget--soon.gc-widget--boxed { background: linear-gradient(135deg, #33E4C9 0%, #12A996 100%); }
 .gc-widget--notebook.gc-widget--boxed { background: linear-gradient(135deg, #FFB648 0%, #FF8A4C 100%); }
+.gc-widget--wheel.gc-widget--boxed { background: linear-gradient(135deg, #FF7EB6 0%, #E1306C 100%); }
 .gc-coming-soon { position: relative; display: flex; flex-direction: column; align-items: flex-start; }
 .gc-cs-icon {
   width: 30px;
