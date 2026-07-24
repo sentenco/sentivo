@@ -1641,7 +1641,7 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .gdn-bed--empty .gdn-bed-cta { color: var(--muted); }
 
 /* ---------- Reading: Bookshelf ---------- */
-.bkshf-page { width: 100%; max-width: 1040px; margin: 0 auto; }
+.bkshf-page { width: 100%; max-width: 1040px; margin: -10px auto 0; }
 .bkshf-masthead { text-align: center; padding-bottom: 2px; }
 .bkshf-nameplate-pill {
   display: inline-flex;
@@ -1662,7 +1662,7 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .bkshf-book {
   position: relative;
   flex: 0 0 auto;
-  width: clamp(90px, 14vw, 132px);
+  width: clamp(95px, 15vw, 145px);
   aspect-ratio: 2 / 3;
   border-radius: 7px 7px 3px 3px;
   overflow: hidden;
@@ -1694,9 +1694,10 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .bkshf-book-title--onimg { position: absolute; z-index: 1; left: 8px; right: 8px; bottom: 7px; margin: 0; font-size: 11px; color: #FFFFFF; }
 
 .bkshf-shelf-ledge {
+  width: calc(100% + 24px);
   height: 9px;
   border-radius: 0 0 3px 3px;
-  margin: 0 0 12px;
+  margin: 0 0 12px -12px;
   background: linear-gradient(180deg, #B98552 0%, #8A5F35 100%);
   box-shadow: 0 6px 9px rgba(74,54,35,0.22);
   position: relative;
