@@ -309,6 +309,62 @@ function GrammarFeature({ navigate }) {
   );
 }
 
+const BOOK_MOTIF_COLORS = ["#E8A33D", "#16BFAE", "#7C5CFC", "#4C7FE0", "#E0637A", "#E89E2E", "#0F9E90", "#A9754D"];
+
+function BookshelfFeature({ items, navigate }) {
+  const rows = [];
+  for (let i = 0; i < items.length; i += 4) rows.push(items.slice(i, i + 4));
+
+  return (
+    <div className="bkshf-page">
+      <div className="bkshf-masthead">
+        <h1><span className="bkshf-nameplate-pill">📚 Bookshelf</span></h1>
+      </div>
+
+      {items.length === 0 ? (
+        <p className="empty-msg">No stories yet.</p>
+      ) : (
+        <div className="bkshf-shelves">
+          {rows.map((row, ri) => (
+            <div key={ri}>
+              <div className="bkshf-shelf-row">
+                {row.map((c, i) => {
+                  const color = BOOK_MOTIF_COLORS[(ri * 4 + i) % BOOK_MOTIF_COLORS.length];
+                  const cover = STORY_COVERS[c.id];
+                  return (
+                    <a
+                      key={c.id}
+                      href={`/library/${c.id}`}
+                      className="bkshf-book"
+                      onClick={(e) => { e.preventDefault(); navigate(`/library/${c.id}`); }}
+                    >
+                      {cover ? (
+                        <>
+                          <img className="bkshf-book-img" src={cover} alt={c.title} />
+                          <div className="bkshf-book-scrim" />
+                          <h3 className="bkshf-book-title bkshf-book-title--onimg">{c.title}</h3>
+                        </>
+                      ) : (
+                        <div className="bkshf-book-flat" style={{ background: `${color}1F` }}>
+                          <span className="bkshf-book-motif" style={{ "--motif-color": `${color}33` }} />
+                          <span className="bkshf-ribbon" style={{ background: color }} />
+                          <h3 className="bkshf-book-title">{c.title}</h3>
+                        </div>
+                      )}
+                      {c.level && <span className="bkshf-level">{c.level}</span>}
+                    </a>
+                  );
+                })}
+              </div>
+              <div className="bkshf-shelf-ledge" style={ri === rows.length - 1 ? { marginBottom: 0 } : undefined} />
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
 function TodayFeature({ tools, onSeeAllLessons }) {
   const today = new Date();
   const dayIndex = daysSince(today);
@@ -804,7 +860,7 @@ export default function Library() {
         </div>
       ) : (
       <main className="content">
-                <div className={`grid-wrap ${category === "All" && !query.trim() && !showAllToday ? "grid-wrap--today" : (category === "Articles" || category === "Grammar") ? "grid-wrap--top" : ""}`} ref={gridWrapRef}>
+                <div className={`grid-wrap ${category === "All" && !query.trim() && !showAllToday ? "grid-wrap--today" : (category === "Articles" || category === "Grammar" || category === "Reading") ? "grid-wrap--top" : ""}`} ref={gridWrapRef}>
         {category === "All" && !query.trim() && !showAllToday ? (
           toolsLoading ? (
             <p className="empty-msg">Loading today's edition…</p>
@@ -815,6 +871,8 @@ export default function Library() {
           <ArticlesFeature navigate={navigate} />
         ) : category === "Grammar" ? (
           <GrammarFeature navigate={navigate} />
+        ) : category === "Reading" ? (
+          <BookshelfFeature items={pageItems} navigate={navigate} />
         ) : category === "Speaking" ? (
           <div className="speaking-grid">
             <a href="/library/forge" className="speaking-tile speaking-tile--forge">
@@ -1341,7 +1399,7 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   justify-content: center;
 }
 .grid-wrap--today { align-items: flex-start; overflow-y: auto; }
-.grid-wrap--top { align-items: flex-start; padding-top: clamp(4px, 2vh, 24px); }
+.grid-wrap--top { align-items: flex-start; padding-top: clamp(4px, 2vh, 24px); overflow-y: auto; }
 
 .cover-grid {
   display: grid;
@@ -1582,6 +1640,82 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .gdn-bed--empty { opacity: 0.7; cursor: default; }
 .gdn-bed--empty .gdn-bed-soil { background: var(--hair); }
 .gdn-bed--empty .gdn-bed-cta { color: var(--muted); }
+
+/* ---------- Reading: Bookshelf ---------- */
+.bkshf-page { width: 100%; max-width: 1040px; margin: 0 auto; }
+.bkshf-masthead { text-align: center; padding-bottom: 8px; }
+.bkshf-nameplate-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 700;
+  font-size: 28px;
+  color: var(--ink);
+  background: rgba(185,133,82,0.14);
+  padding: 6px 22px 9px;
+  border-radius: 999px;
+}
+
+.bkshf-shelves { padding: 22px 0 0; }
+.bkshf-shelf-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.bkshf-book {
+  position: relative;
+  aspect-ratio: 2 / 3;
+  border-radius: 8px 8px 4px 4px;
+  overflow: hidden;
+  display: block;
+  text-decoration: none;
+  box-shadow: 0 8px 16px rgba(31,36,48,0.10);
+  cursor: pointer;
+}
+.bkshf-book-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.bkshf-book-scrim { position: absolute; inset: 0; background: linear-gradient(0deg, rgba(0,0,0,0.68) 0%, rgba(0,0,0,0) 55%); }
+.bkshf-book-flat {
+  position: relative;
+  width: 100%; height: 100%;
+  padding: 18px 15px 12px;
+  display: flex; flex-direction: column;
+  overflow: hidden;
+}
+.bkshf-book-motif { position: absolute; right: -26px; bottom: -26px; width: 96px; height: 96px; border-radius: 50%; background: var(--motif-color, rgba(0,0,0,0.06)); }
+.bkshf-ribbon { position: absolute; top: 0; right: 16px; width: 16px; height: 26px; z-index: 1; clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 76%, 0 100%); }
+.bkshf-book-title {
+  position: relative; z-index: 1;
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  margin: 4px 0 0;
+  color: var(--ink);
+  line-height: 1.3;
+}
+.bkshf-book-title--onimg { position: absolute; z-index: 1; left: 12px; right: 12px; bottom: 10px; margin: 0; color: #FFFFFF; }
+.bkshf-level {
+  position: absolute; top: 8px; left: 8px; z-index: 1;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 800;
+  font-size: 9.5px;
+  letter-spacing: 0.03em;
+  color: var(--ink);
+  background: rgba(255,255,255,0.85);
+  padding: 2px 8px;
+  border-radius: 999px;
+}
+.bkshf-book-img ~ .bkshf-level { color: #2B2A4A; }
+
+.bkshf-shelf-ledge {
+  height: 16px;
+  border-radius: 0 0 4px 4px;
+  margin: 0 0 30px;
+  background: linear-gradient(180deg, #B98552 0%, #8A5F35 100%);
+  box-shadow: 0 10px 16px rgba(74,54,35,0.22);
+  position: relative;
+}
+.bkshf-shelf-ledge::after { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 3px; background: rgba(255,255,255,0.3); }
+
+@media (max-width: 760px) {
+  .bkshf-shelf-row { grid-template-columns: repeat(2, 1fr); }
+}
 
 .cover {
   flex-shrink: 0;
