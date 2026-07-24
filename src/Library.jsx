@@ -805,7 +805,7 @@ export default function Library() {
         </div>
       ) : (
       <main className="content">
-                <div className={`grid-wrap ${category === "All" && !query.trim() && !showAllToday ? "grid-wrap--today" : ""}`} ref={gridWrapRef}>
+                <div className={`grid-wrap ${category === "All" && !query.trim() && !showAllToday ? "grid-wrap--today" : (category === "Articles" || category === "Grammar") ? "grid-wrap--top" : ""}`} ref={gridWrapRef}>
         {category === "All" && !query.trim() && !showAllToday ? (
           toolsLoading ? (
             <p className="empty-msg">Loading today's edition…</p>
@@ -1342,6 +1342,7 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   justify-content: center;
 }
 .grid-wrap--today { align-items: flex-start; overflow-y: auto; }
+.grid-wrap--top { align-items: flex-start; padding-top: clamp(4px, 2vh, 24px); }
 
 .cover-grid {
   display: grid;
