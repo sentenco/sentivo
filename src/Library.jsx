@@ -15,6 +15,7 @@ import storybook7CoverImg from "./assets/storybook7/cover.jpeg";
 import storybook8CoverImg from "./assets/storybook8/cover.jpeg";
 import forge1CoverImg from "./assets/forge/track1-cover.jpeg";
 import DAILY_CORRECTIONS from "./dailyCorrections";
+import { ARTICLES, ARTICLE_TOPICS } from "./articlesData";
 
 const CATEGORIES = ["Articles", "Reading", "Grammar", "Vocabulary", "Writing", "Listening", "Speaking"];
 
@@ -179,6 +180,67 @@ function ComingSoonWidget({ icon, title, description }) {
       <div className="gc-widget-title">{title}</div>
       <p className="gc-widget-note">{description}</p>
       <span className="gc-soon-tag">Coming soon</span>
+    </div>
+  );
+}
+
+function ArticlesFeature({ navigate }) {
+  const lead = ARTICLES[0];
+  const briefs = ARTICLES.slice(1);
+  const dateline = new Date().toLocaleDateString(undefined, { weekday: "long", month: "long", day: "numeric", year: "numeric" });
+
+  return (
+    <div className="gaz-page">
+      <div className="gaz-masthead">
+        <h1 className="gaz-nameplate">The Sentivo Gazette</h1>
+        <div className="gaz-dateline">{dateline}</div>
+      </div>
+      <div className="gaz-rule-thick" />
+      <div className="gaz-rule-thin" />
+      <nav className="gaz-topics">
+        <span className="gaz-topic is-active">All</span>
+        {ARTICLE_TOPICS.map((t) => (
+          <span key={t.label} className="gaz-topic" title={t.title}>{t.label}</span>
+        ))}
+      </nav>
+      <div className="gaz-rule-thin" />
+
+      <button type="button" className="gaz-lead" onClick={() => navigate(`/library/articles/${lead.slug}`)}>
+        <div>
+          <div className="gaz-lead-kicker">Lead Story · {lead.topicTitle}</div>
+          <h2 className="gaz-lead-title">{lead.title}</h2>
+          <p className="gaz-lead-dek">{lead.dek}</p>
+          <div className="gaz-lead-meta">
+            <span className="gaz-byline">Sentivo Editorial</span>
+            <span className="gaz-dot">·</span>
+            <span className="gaz-editions">📚 3 Editions</span>
+            <span className="gaz-dot">·</span>
+            <span>{lead.editions.polished.readTime}</span>
+          </div>
+        </div>
+        <div className="gaz-lead-art">{lead.emoji}</div>
+      </button>
+
+      <div className="gaz-grid">
+        {briefs.map((a) => (
+          <button
+            key={a.slug}
+            type="button"
+            className={`gaz-story ${a.ready ? "" : "gaz-story--soon"}`}
+            onClick={() => a.ready && navigate(`/library/articles/${a.slug}`)}
+            disabled={!a.ready}
+          >
+            <div className={`gaz-thumb gaz-thumb--${a.variant}`}>{a.emoji}</div>
+            <div className="gaz-story-body">
+              <div className="gaz-story-kicker">{a.topicLabel}</div>
+              <h3 className="gaz-story-title">{a.title}</h3>
+              <div className="gaz-story-meta">
+                {a.ready ? <span className="gaz-editions">📚 3 Ed.</span> : <span className="gaz-soon">Coming soon</span>}
+              </div>
+            </div>
+          </button>
+        ))}
+      </div>
     </div>
   );
 }
@@ -685,6 +747,8 @@ export default function Library() {
           ) : (
             <TodayFeature tools={tools} onSeeAllLessons={() => setShowAllToday(true)} />
           )
+        ) : category === "Articles" ? (
+          <ArticlesFeature navigate={navigate} />
         ) : category === "Grammar" ? (
           <div className="speaking-grid">
             <a href="/library/grammar/parts-of-speech" className="speaking-tile speaking-tile--partsofspeech">
@@ -835,7 +899,7 @@ export default function Library() {
         )}
         </div>
 
-        {category !== "Speaking" && category !== "Grammar" && !(category === "All" && !query.trim() && !showAllToday) && (
+        {category !== "Speaking" && category !== "Grammar" && category !== "Articles" && !(category === "All" && !query.trim() && !showAllToday) && (
         <div className="pagination">
           <button disabled={safePage === 1} onClick={() => changePage(safePage - 1)}>&larr; Prev</button>
           <span className="page-indicator">Page {safePage} of {totalPages}</span>
@@ -1310,6 +1374,118 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .speaking-tile--partsofspeech .speaking-tile-cta { background: #2F80ED; color: #FFFFFF; }
 .speaking-tile--verbtenses .speaking-tile-cta { background: #5B4FE0; color: #FFFFFF; }
 .speaking-tile--shift .speaking-tile-cta { background: #E1483B; color: #FFFFFF; }
+
+/* ---------- Articles: The Sentivo Gazette ---------- */
+.gaz-page { width: 100%; max-width: 1040px; margin: 0 auto; display: flex; flex-direction: column; }
+.gaz-masthead { text-align: center; padding-bottom: 6px; }
+.gaz-nameplate {
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 700;
+  font-size: 28px;
+  margin: 0 0 4px;
+  color: var(--ink);
+}
+.gaz-dateline { font-family: 'Quicksand', sans-serif; font-size: 10.5px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; }
+.gaz-rule-thick { height: 3px; background: var(--ink); margin-bottom: 2px; }
+.gaz-rule-thin { height: 1px; background: var(--hair); }
+
+.gaz-topics { display: flex; justify-content: center; flex-wrap: wrap; padding: 7px 0; }
+.gaz-topic {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 800;
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  padding: 0 16px;
+  border-right: 1px solid var(--hair);
+  cursor: default;
+}
+.gaz-topic:last-child { border-right: none; }
+.gaz-topic.is-active { color: var(--rust); }
+
+.gaz-lead {
+  display: grid;
+  grid-template-columns: 1fr 260px;
+  gap: 26px;
+  align-items: center;
+  padding: 14px 0 12px;
+  border-bottom: 1px solid var(--hair);
+  cursor: pointer;
+  background: none;
+  border-left: none; border-right: none; border-top: none;
+  text-align: left;
+  width: 100%;
+}
+.gaz-lead-kicker { font-family: 'Quicksand', sans-serif; font-weight: 800; font-size: 9.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--rust); margin-bottom: 6px; }
+.gaz-lead-title { font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 21px; line-height: 1.16; margin: 0 0 6px; color: var(--ink); text-wrap: balance; }
+.gaz-lead-dek {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 12.5px;
+  color: var(--ink-soft);
+  line-height: 1.4;
+  margin: 0 0 10px;
+  max-width: 460px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.gaz-lead-meta { display: flex; align-items: center; gap: 7px; font-family: 'Quicksand', sans-serif; font-size: 10.5px; color: var(--muted); }
+.gaz-byline { font-weight: 700; color: var(--ink-soft); }
+.gaz-editions { color: var(--rust); font-weight: 700; }
+.gaz-lead-art {
+  height: 118px;
+  border-radius: 6px;
+  background: linear-gradient(135deg, var(--rust-soft, rgba(124,92,252,0.14)) 0%, var(--dusk-soft, rgba(22,191,174,0.14)) 100%);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 40px;
+}
+
+.gaz-grid { display: grid; grid-template-columns: repeat(3, 1fr); column-gap: 24px; }
+.gaz-story {
+  position: relative;
+  display: flex;
+  gap: 11px;
+  padding: 12px 0;
+  border-top: 1px solid var(--hair);
+  background: none;
+  border-left: none; border-right: none; border-bottom: none;
+  text-align: left;
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+}
+.gaz-story:not(:nth-child(3n))::after {
+  content: "";
+  position: absolute;
+  top: 12px; bottom: 12px; right: -12px;
+  width: 1px;
+  background: var(--hair);
+}
+.gaz-story--soon { cursor: default; opacity: 0.55; }
+.gaz-thumb { width: 50px; height: 50px; flex-shrink: 0; border-radius: 5px; display: flex; align-items: center; justify-content: center; font-size: 19px; }
+.gaz-thumb--tech { background: linear-gradient(135deg, rgba(22,191,174,0.18), transparent); }
+.gaz-thumb--work { background: linear-gradient(135deg, rgba(124,92,252,0.16), transparent); }
+.gaz-thumb--planet { background: linear-gradient(135deg, rgba(255,182,72,0.2), transparent); }
+.gaz-thumb--daily { background: linear-gradient(135deg, rgba(255,138,76,0.18), transparent); }
+.gaz-thumb--culture { background: linear-gradient(135deg, rgba(124,92,252,0.16), rgba(255,138,76,0.16)); }
+.gaz-story-body { min-width: 0; }
+.gaz-story-kicker { font-family: 'Quicksand', sans-serif; font-weight: 800; font-size: 8.5px; letter-spacing: 0.07em; text-transform: uppercase; color: var(--rust); margin-bottom: 3px; }
+.gaz-story-title {
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 1.25;
+  margin: 0 0 4px;
+  color: var(--ink);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.gaz-story-meta { font-family: 'Quicksand', sans-serif; font-size: 9px; color: var(--muted); }
+.gaz-soon { font-weight: 700; letter-spacing: 0.03em; text-transform: uppercase; font-size: 8.5px; }
 
 .cover {
   flex-shrink: 0;

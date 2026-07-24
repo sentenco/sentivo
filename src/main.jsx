@@ -7,6 +7,7 @@ import Flashcards from './Flashcards.jsx'
 import LessonPlayerPage from './LessonPlayerPage.jsx'
 import TeacherGuide from './TeacherGuide.jsx'
 import StoryBook from './StoryBook.jsx'
+import ArticleReader from './ArticleReader.jsx'
 import storybook2 from './storybookData2.js'
 import storybook3 from './storybookData3.js'
 import storybook4 from './storybookData4.js'
@@ -56,6 +57,7 @@ createRoot(document.getElementById('root')).render(
             <Route path="/library/curriculum/:level" element={<Library />} />
             <Route path="/library/curriculum/:level/:track" element={<Library />} />
             <Route path="/library/stress" element={<Flashcards />} />
+            <Route path="/library/articles/:slug" element={<ArticleReader />} />
             <Route path="/library/storybook" element={<StoryBook />} />
             <Route path="/library/storybook-2" element={<StoryBook book={storybook2} />} />
             <Route path="/library/storybook-3" element={<StoryBook book={storybook3} />} />
