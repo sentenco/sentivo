@@ -687,6 +687,12 @@ export default function Library() {
           )
         ) : category === "Grammar" ? (
           <div className="speaking-grid">
+            <a href="/library/grammar/parts-of-speech" className="speaking-tile speaking-tile--partsofspeech">
+              <span className="speaking-tile-kicker">Grammar · A1–C2</span>
+              <h3 className="speaking-tile-title">Parts of Speech</h3>
+              <p className="speaking-tile-desc">The 8 parts of speech across 6 topics, one Lesson and one Assessment each.</p>
+              <span className="speaking-tile-cta">Open Parts of Speech →</span>
+            </a>
             <a href="/library/grammar/verb-tenses" className="speaking-tile speaking-tile--verbtenses">
               <span className="speaking-tile-kicker">Grammar · A1–C2</span>
               <h3 className="speaking-tile-title">Verb Tenses</h3>
@@ -1252,6 +1258,7 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .speaking-tile:hover { transform: translateY(-3px); box-shadow: 0 20px 40px rgba(0,0,0,0.2); }
 .speaking-tile--forge { background: radial-gradient(circle at 20% 0%, #FFF6E6 0%, #FBE7C6 60%, #F6D9AC 100%); }
 .speaking-tile--ascend { background: radial-gradient(circle at 20% 0%, #EAFBF6 0%, #D6F2E9 60%, #C3E9DC 100%); }
+.speaking-tile--partsofspeech { background: radial-gradient(circle at 20% 0%, #EAF4FF 0%, #D9EAFE 60%, #C7DEFB 100%); }
 .speaking-tile--verbtenses { background: radial-gradient(circle at 20% 0%, #F1EFFC 0%, #E4E0FA 60%, #D8D2F6 100%); }
 .speaking-tile--shift { background: radial-gradient(circle at 20% 0%, #FFF1EF 0%, #FFDBD5 60%, #FFC3BA 100%); }
 .speaking-tile-kicker {
@@ -1263,6 +1270,7 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 }
 .speaking-tile--forge .speaking-tile-kicker { color: #C97A2E; }
 .speaking-tile--ascend .speaking-tile-kicker { color: #128571; }
+.speaking-tile--partsofspeech .speaking-tile-kicker { color: #2F80ED; }
 .speaking-tile--verbtenses .speaking-tile-kicker { color: #5B4FE0; }
 .speaking-tile--shift .speaking-tile-kicker { color: #E1483B; }
 .speaking-tile-title {
@@ -1273,6 +1281,7 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 }
 .speaking-tile--forge .speaking-tile-title { color: #2E2617; }
 .speaking-tile--ascend .speaking-tile-title { color: #17352E; }
+.speaking-tile--partsofspeech .speaking-tile-title { color: #163A66; }
 .speaking-tile--verbtenses .speaking-tile-title { color: #2B2560; }
 .speaking-tile--shift .speaking-tile-title { color: #4A211B; }
 .speaking-tile-desc {
@@ -1285,6 +1294,7 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 }
 .speaking-tile--forge .speaking-tile-desc { color: #6B5F49; }
 .speaking-tile--ascend .speaking-tile-desc { color: #3E6157; }
+.speaking-tile--partsofspeech .speaking-tile-desc { color: #4A6690; }
 .speaking-tile--verbtenses .speaking-tile-desc { color: #5B5590; }
 .speaking-tile--shift .speaking-tile-desc { color: #8C5C52; }
 .speaking-tile-cta {
@@ -1297,6 +1307,7 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 }
 .speaking-tile--forge .speaking-tile-cta { background: #F2A65A; color: #2E2617; }
 .speaking-tile--ascend .speaking-tile-cta { background: #3FCDAF; color: #17352E; }
+.speaking-tile--partsofspeech .speaking-tile-cta { background: #2F80ED; color: #FFFFFF; }
 .speaking-tile--verbtenses .speaking-tile-cta { background: #5B4FE0; color: #FFFFFF; }
 .speaking-tile--shift .speaking-tile-cta { background: #E1483B; color: #FFFFFF; }
 

@@ -28,6 +28,8 @@ import AscendTrack from './AscendTrack.jsx'
 import AscendGuide from './AscendGuide.jsx'
 import VerbTensesTrack from './VerbTensesTrack.jsx'
 import VerbTensesLesson from './VerbTensesLesson.jsx'
+import PartsOfSpeechTrack from './PartsOfSpeechTrack.jsx'
+import PartsOfSpeechLesson from './PartsOfSpeechLesson.jsx'
 import Shift from './Shift.jsx'
 import ShiftHub from './ShiftHub.jsx'
 import ShiftTrack from './ShiftTrack.jsx'
@@ -74,6 +76,8 @@ createRoot(document.getElementById('root')).render(
             <Route path="/library/ascend/:trackId" element={<AscendTrack />} />
             <Route path="/library/ascend/:trackId/:lessonNum" element={<Ascend />} />
             <Route path="/library/ascend/:trackId/:lessonNum/guide" element={<AscendGuide />} />
+            <Route path="/library/grammar/parts-of-speech" element={<PartsOfSpeechTrack />} />
+            <Route path="/library/grammar/parts-of-speech/:code" element={<PartsOfSpeechLesson />} />
             <Route path="/library/grammar/verb-tenses" element={<VerbTensesTrack />} />
             <Route path="/library/grammar/verb-tenses/:code" element={<VerbTensesLesson />} />
             <Route path="/library/shift" element={<ShiftHub />} />
