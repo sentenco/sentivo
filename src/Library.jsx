@@ -16,7 +16,7 @@ import storybook8CoverImg from "./assets/storybook8/cover.jpeg";
 import forge1CoverImg from "./assets/forge/track1-cover.jpeg";
 import DAILY_CORRECTIONS from "./dailyCorrections";
 
-const CATEGORIES = ["Reading", "Articles", "Grammar", "Vocabulary", "Writing", "Listening", "Speaking"];
+const CATEGORIES = ["Articles", "Reading", "Grammar", "Vocabulary", "Writing", "Listening", "Speaking"];
 
 // "Today" launch date -- the day count in the Today masthead (Vol. 1, No. X)
 // counts up from here, like a real newspaper's running issue number.
@@ -647,7 +647,6 @@ export default function Library() {
         </div>
 
         <div className="gc-editions">
-          <span className="gc-ed-label">Edition</span>
           <button
             className={`gc-ed-tab ${isCurriculum && !curriculumLevel ? "is-active" : ""}`}
             onClick={() => goToSidebar("curriculum", null)}
@@ -926,7 +925,6 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .gc-sec-tab.is-active { border-bottom-color: transparent; background: var(--ink); color: #FFFFFF; border-radius: 999px; }
 
 .gc-editions { display: flex; align-items: center; justify-content: center; gap: 11px; padding: 5px 40px; border-bottom: 1px solid var(--hair); font-family: 'Quicksand', sans-serif; background: rgba(34,58,51,0.035); }
-.gc-ed-label { font-size: 10px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-right: 4px; }
 .gc-ed-spark { font-size: 12px; font-weight: 800; letter-spacing: 0.02em; padding: 5px 13px; border-radius: 999px; color: var(--muted); text-decoration: none; }
 .gc-ed-spark:hover { color: var(--rust); }
 .gc-ed-tab { font-size: 12px; font-weight: 800; letter-spacing: 0.02em; padding: 5px 13px; border-radius: 999px; color: var(--muted); background: none; border: none; cursor: pointer; }
