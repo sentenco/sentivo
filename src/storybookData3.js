@@ -1,12 +1,9 @@
 // A1 Teens digital storybook, Book 3: "Siblings and Neighbors at Home"
 // Static content -- no Supabase, mirrors the pattern in storybookData2.js.
-// Images are not generated yet (Midjourney subscription paused as of 2026-07-21).
-// image/coverImage are left null so StoryBook.jsx's built-in ImagePlaceholder
-// fallback renders instead -- swap in real imports from ./assets/storybook3/
-// once art exists, same as storybookData.js / storybookData2.js do.
+import coverImg from "./assets/storybook3/cover.jpeg";
 
 export const STORYBOOK_TITLE = "Siblings and Neighbors at Home";
-export const COVER_IMAGE = null;
+export const COVER_IMAGE = coverImg;
 export const COVER_IMAGE_NOTE =
   "Lena sitting at the family breakfast table on a sunny Saturday morning, smiling at her younger brother Marco as sunlight comes through the window.";
 

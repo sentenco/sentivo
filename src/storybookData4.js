@@ -1,12 +1,9 @@
 // A1 Teens digital storybook, Book 4: "My School Football Team"
 // Static content -- no Supabase, mirrors the pattern in storybookData3.js.
-// Images are not generated yet (Midjourney subscription paused as of 2026-07-21).
-// image/coverImage are left null so StoryBook.jsx's built-in ImagePlaceholder
-// fallback renders instead -- swap in real imports from ./assets/storybook4/
-// once art exists, same as storybookData.js / storybookData2.js do.
+import coverImg from "./assets/storybook4/cover.jpeg";
 
 export const STORYBOOK_TITLE = "My School Football Team";
-export const COVER_IMAGE = null;
+export const COVER_IMAGE = coverImg;
 export const COVER_IMAGE_NOTE =
   "Marco standing proudly on the school football field in his new blue number-ten team shirt, teammates and Coach Cruz visible behind him near the goal.";
 

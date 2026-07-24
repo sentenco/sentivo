@@ -3,13 +3,10 @@
 // Unlike Books 1-6 (teen narrators), this book's narrator is an adult
 // office worker and stays gender-neutral throughout, matching the source
 // text (no gendered pronoun is ever used for the narrator).
-// Images are not generated yet (Midjourney subscription paused as of 2026-07-21).
-// image/coverImage are left null so StoryBook.jsx's built-in ImagePlaceholder
-// fallback renders instead -- swap in real imports from ./assets/storybook7/
-// once art exists, same as storybookData.js / storybookData2.js do.
+import coverImg from "./assets/storybook7/cover.jpeg";
 
 export const STORYBOOK_TITLE = "A Full and Good Week";
-export const COVER_IMAGE = null;
+export const COVER_IMAGE = coverImg;
 export const COVER_IMAGE_NOTE =
   "The narrator sitting at a desk by a big office window on a Monday morning, coffee cup nearby, city skyline visible through the window, computer screen glowing softly.";
 

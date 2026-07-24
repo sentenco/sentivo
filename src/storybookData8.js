@@ -3,13 +3,10 @@
 // Like Book 7, this narrator is an adult worker and stays gender-neutral
 // throughout, matching the source text (no gendered pronoun is ever used
 // for the narrator -- only for manager Ms. Cruz, who is explicitly "she").
-// Images are not generated yet (Midjourney subscription paused as of 2026-07-21).
-// image/coverImage are left null so StoryBook.jsx's built-in ImagePlaceholder
-// fallback renders instead -- swap in real imports from ./assets/storybook8/
-// once art exists, same as storybookData.js / storybookData2.js do.
+import coverImg from "./assets/storybook8/cover.jpeg";
 
 export const STORYBOOK_TITLE = "A Good Week at the Shop";
-export const COVER_IMAGE = null;
+export const COVER_IMAGE = coverImg;
 export const COVER_IMAGE_NOTE =
   "The narrator standing behind the counter of a small neighborhood shop, smiling at the door, shelves of bottles and boxes neatly stocked behind them, morning light through the front window.";
 

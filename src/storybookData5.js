@@ -1,12 +1,9 @@
 // A1 Teens digital storybook, Book 5: "My School Basketball Team"
 // Static content -- no Supabase, mirrors the pattern in storybookData4.js.
-// Images are not generated yet (Midjourney subscription paused as of 2026-07-21).
-// image/coverImage are left null so StoryBook.jsx's built-in ImagePlaceholder
-// fallback renders instead -- swap in real imports from ./assets/storybook5/
-// once art exists, same as storybookData.js / storybookData2.js do.
+import coverImg from "./assets/storybook5/cover.jpeg";
 
 export const STORYBOOK_TITLE = "My School Basketball Team";
-export const COVER_IMAGE = null;
+export const COVER_IMAGE = coverImg;
 export const COVER_IMAGE_NOTE =
   "Nina standing on the shiny school gym court holding a basketball with both hands, the tall hoop above her, Coach Ben and teammates Mia and Jay visible nearby.";
 
