@@ -1398,7 +1398,7 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   justify-content: center;
 }
 .grid-wrap--today { align-items: flex-start; overflow-y: auto; }
-.grid-wrap--top { align-items: flex-start; padding-top: clamp(4px, 2vh, 24px); overflow-y: auto; }
+.grid-wrap--top { align-items: flex-start; padding-top: clamp(0px, 0.5vh, 10px); overflow-y: auto; }
 
 .cover-grid {
   display: grid;
