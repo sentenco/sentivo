@@ -261,8 +261,7 @@ function GrammarFeature({ navigate }) {
   return (
     <div className="gdn-page">
       <div className="gdn-masthead">
-        <span className="gdn-kicker">🌱 Grammar</span>
-        <h1 className="gdn-nameplate">The Grammar Garden</h1>
+        <h1 className="gdn-nameplate"><span className="gdn-nameplate-pill">🌱 The Grammar Garden</span></h1>
         <p className="gdn-sub">Language grows from the roots up — plant a rule, watch a sentence bloom.</p>
       </div>
 
@@ -1546,22 +1545,19 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   text-align: center;
   padding-bottom: 8px;
 }
-.gdn-kicker {
+.gdn-nameplate { margin: 0 0 6px; }
+.gdn-nameplate-pill {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 800;
-  font-size: 10.5px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--leaf);
+  gap: 10px;
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 700;
+  font-size: 28px;
+  color: var(--ink);
   background: var(--leaf-soft);
-  padding: 4px 12px;
+  padding: 6px 22px 9px;
   border-radius: 999px;
-  margin-bottom: 10px;
 }
-.gdn-nameplate { font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 28px; margin: 0 0 6px; color: var(--ink); }
 .gdn-sub { font-family: 'Quicksand', sans-serif; font-size: 13px; color: var(--muted); margin: 0 auto; max-width: 460px; }
 
 .gdn-beds { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; padding: 18px 0 6px; }
