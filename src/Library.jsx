@@ -245,7 +245,19 @@ function ArticlesFeature({ navigate }) {
   );
 }
 
+const GRAMMAR_MODULES = [
+  { num: "BED 01", icon: "🌻", title: "Parts of Speech", spec: "8 word classes across 6 topics. One Lesson, one Assessment each. A1–C2.", href: "/library/grammar/parts-of-speech", ready: true },
+  { num: "BED 02", icon: "🌿", title: "Verb Tenses", spec: "All 12 English tenses. One Discussion, one Test lesson each. A1–C2.", href: "/library/grammar/verb-tenses", ready: true },
+  { num: "BED 03", icon: "🌰", title: "Sentence Structure", spec: "Clauses, word order, and how simple sentences become complex ones.", href: null, ready: false },
+];
+const GRAMMAR_PER_PAGE = 8;
+
 function GrammarFeature({ navigate }) {
+  const [page, setPage] = useState(1);
+  const totalPages = Math.max(1, Math.ceil(GRAMMAR_MODULES.length / GRAMMAR_PER_PAGE));
+  const safePage = Math.min(page, totalPages);
+  const pageItems = GRAMMAR_MODULES.slice((safePage - 1) * GRAMMAR_PER_PAGE, safePage * GRAMMAR_PER_PAGE);
+
   return (
     <div className="gdn-page">
       <div className="gdn-masthead">
@@ -254,51 +266,46 @@ function GrammarFeature({ navigate }) {
         <p className="gdn-sub">Language grows from the roots up — plant a rule, watch a sentence bloom.</p>
       </div>
 
-      <div className="gdn-hero">
-        <div className="gdn-packet">
-          <span className="gdn-packet-leaf tl">🌿</span><span className="gdn-packet-leaf tr">🌿</span>
-          <div className="gdn-packet-label">Today's Sowing</div>
-          <p className="gdn-packet-rule">Adjectives grow <b>before</b> the noun.</p>
-          <div className="gdn-packet-example">
-            <span className="grows">a clever fox</span>
-            <span className="wilts">a fox clever</span>
-          </div>
-          <span className="gdn-packet-zone">🌡️ Grows in: A1–C2</span>
-        </div>
+      <div className="gdn-beds">
+        {pageItems.map((m) =>
+          m.ready ? (
+            <a
+              key={m.num}
+              href={m.href}
+              className="gdn-bed"
+              onClick={(e) => { e.preventDefault(); navigate(m.href); }}
+            >
+              <div className="gdn-bed-soil" />
+              <div className="gdn-bed-body">
+                <div className="gdn-bed-icon">{m.icon}</div>
+                <div className="gdn-bed-num">{m.num}</div>
+                <h3 className="gdn-bed-title">{m.title}</h3>
+                <p className="gdn-bed-spec">{m.spec}</p>
+                <span className="gdn-bed-cta">Tend this bed →</span>
+              </div>
+            </a>
+          ) : (
+            <div key={m.num} className="gdn-bed gdn-bed--empty">
+              <div className="gdn-bed-soil" />
+              <div className="gdn-bed-body">
+                <div className="gdn-bed-icon">{m.icon}</div>
+                <div className="gdn-bed-num">{m.num}</div>
+                <h3 className="gdn-bed-title">{m.title}</h3>
+                <p className="gdn-bed-spec">{m.spec}</p>
+                <span className="gdn-bed-cta">Not yet planted</span>
+              </div>
+            </div>
+          )
+        )}
       </div>
 
-      <div className="gdn-beds">
-        <a href="/library/grammar/parts-of-speech" className="gdn-bed" onClick={(e) => { e.preventDefault(); navigate("/library/grammar/parts-of-speech"); }}>
-          <div className="gdn-bed-soil" />
-          <div className="gdn-bed-body">
-            <div className="gdn-bed-icon">🌻</div>
-            <div className="gdn-bed-num">BED 01</div>
-            <h3 className="gdn-bed-title">Parts of Speech</h3>
-            <p className="gdn-bed-spec">8 word classes across 6 topics. One Lesson, one Assessment each. A1–C2.</p>
-            <span className="gdn-bed-cta">Tend this bed →</span>
-          </div>
-        </a>
-        <a href="/library/grammar/verb-tenses" className="gdn-bed" onClick={(e) => { e.preventDefault(); navigate("/library/grammar/verb-tenses"); }}>
-          <div className="gdn-bed-soil" />
-          <div className="gdn-bed-body">
-            <div className="gdn-bed-icon">🌿</div>
-            <div className="gdn-bed-num">BED 02</div>
-            <h3 className="gdn-bed-title">Verb Tenses</h3>
-            <p className="gdn-bed-spec">All 12 English tenses. One Discussion, one Test lesson each. A1–C2.</p>
-            <span className="gdn-bed-cta">Tend this bed →</span>
-          </div>
-        </a>
-        <div className="gdn-bed gdn-bed--empty">
-          <div className="gdn-bed-soil" />
-          <div className="gdn-bed-body">
-            <div className="gdn-bed-icon">🌰</div>
-            <div className="gdn-bed-num">BED 03</div>
-            <h3 className="gdn-bed-title">Sentence Structure</h3>
-            <p className="gdn-bed-spec">Clauses, word order, and how simple sentences become complex ones.</p>
-            <span className="gdn-bed-cta">Not yet planted</span>
-          </div>
+      {totalPages > 1 && (
+        <div className="pagination">
+          <button disabled={safePage === 1} onClick={() => setPage(safePage - 1)}>&larr; Prev</button>
+          <span className="page-indicator">Page {safePage} of {totalPages}</span>
+          <button disabled={safePage === totalPages} onClick={() => setPage(safePage + 1)}>Next &rarr;</button>
         </div>
-      </div>
+      )}
     </div>
   );
 }
@@ -1556,44 +1563,7 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .gdn-nameplate { font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 28px; margin: 0 0 6px; color: var(--ink); }
 .gdn-sub { font-family: 'Quicksand', sans-serif; font-size: 13px; color: var(--muted); margin: 0 auto; max-width: 460px; }
 
-.gdn-hero { padding: 16px 0 6px; display: flex; justify-content: center; }
-.gdn-packet {
-  position: relative;
-  width: 100%;
-  max-width: 440px;
-  background: var(--card);
-  border: 1px solid var(--hair);
-  border-radius: 14px;
-  padding: 18px 24px 16px;
-  box-shadow: 0 10px 22px rgba(76,154,93,0.10);
-}
-.gdn-packet-leaf { position: absolute; font-size: 14px; opacity: 0.55; }
-.gdn-packet-leaf.tl { top: 10px; left: 12px; }
-.gdn-packet-leaf.tr { top: 10px; right: 12px; transform: scaleX(-1); }
-.gdn-packet-label { font-family: 'Quicksand', sans-serif; font-weight: 800; font-size: 9.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--soil); margin-bottom: 8px; }
-.gdn-packet-rule { font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 17px; line-height: 1.3; margin: 0 0 8px; color: var(--ink); }
-.gdn-packet-rule b { color: var(--leaf); }
-.gdn-packet-example { display: flex; flex-direction: column; gap: 3px; font-family: 'Quicksand', sans-serif; font-size: 12.5px; }
-.gdn-packet-example .grows { color: var(--leaf); font-weight: 700; }
-.gdn-packet-example .grows::before { content: "🌱 "; }
-.gdn-packet-example .wilts { color: var(--muted); opacity: 0.85; }
-.gdn-packet-example .wilts::before { content: "🥀 "; }
-.gdn-packet-zone {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-family: 'Quicksand', sans-serif;
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.03em;
-  color: var(--soil);
-  background: var(--soil-soft);
-  padding: 3px 10px;
-  border-radius: 999px;
-  margin-top: 12px;
-}
-
-.gdn-beds { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; padding: 18px 0 6px; }
+.gdn-beds { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; padding: 18px 0 6px; }
 .gdn-bed {
   position: relative;
   display: block;
@@ -1606,12 +1576,12 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   cursor: pointer;
 }
 .gdn-bed-soil { height: 7px; background: linear-gradient(90deg, var(--soil), var(--soil-soft)); }
-.gdn-bed-body { padding: 13px 15px 14px; }
-.gdn-bed-icon { font-size: 19px; margin-bottom: 5px; }
-.gdn-bed-num { font-family: 'Quicksand', sans-serif; font-size: 9.5px; color: var(--leaf); font-weight: 700; letter-spacing: 0.06em; margin-bottom: 5px; }
-.gdn-bed-title { font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 14px; margin: 0 0 5px; color: var(--ink); }
-.gdn-bed-spec { font-family: 'Quicksand', sans-serif; font-size: 10.5px; color: var(--ink-soft, var(--muted)); line-height: 1.35; margin: 0 0 10px; min-height: 28px; }
-.gdn-bed-cta { font-family: 'Quicksand', sans-serif; font-size: 10px; font-weight: 700; color: var(--leaf); }
+.gdn-bed-body { padding: 12px 13px 13px; }
+.gdn-bed-icon { font-size: 18px; margin-bottom: 5px; }
+.gdn-bed-num { font-family: 'Quicksand', sans-serif; font-size: 9px; color: var(--leaf); font-weight: 700; letter-spacing: 0.06em; margin-bottom: 5px; }
+.gdn-bed-title { font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 13px; margin: 0 0 5px; color: var(--ink); }
+.gdn-bed-spec { font-family: 'Quicksand', sans-serif; font-size: 10px; color: var(--ink-soft, var(--muted)); line-height: 1.35; margin: 0 0 10px; min-height: 42px; }
+.gdn-bed-cta { font-family: 'Quicksand', sans-serif; font-size: 9.5px; font-weight: 700; color: var(--leaf); }
 .gdn-bed--empty { opacity: 0.7; cursor: default; }
 .gdn-bed--empty .gdn-bed-soil { background: var(--hair); }
 .gdn-bed--empty .gdn-bed-cta { color: var(--muted); }
