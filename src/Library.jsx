@@ -584,7 +584,7 @@ export default function Library() {
           <a
             href="/library"
             className="gc-header-brand"
-            onClick={(e) => { e.preventDefault(); goToSidebar("library"); }}
+            onClick={(e) => { e.preventDefault(); changeCategory("All"); }}
           >
             <span className="cal-s">S</span>entivo
           </a>
