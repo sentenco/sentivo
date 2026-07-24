@@ -318,7 +318,7 @@ function BookshelfFeature({ items, navigate }) {
   return (
     <div className="bkshf-page">
       <div className="bkshf-masthead">
-        <h1><span className="bkshf-nameplate-pill">📚 Bookshelf</span></h1>
+        <h1><span className="bkshf-nameplate-pill">📖 Bookshelf</span></h1>
       </div>
 
       {items.length === 0 ? (
@@ -351,7 +351,6 @@ function BookshelfFeature({ items, navigate }) {
                           <h3 className="bkshf-book-title">{c.title}</h3>
                         </div>
                       )}
-                      {c.level && <span className="bkshf-level">{c.level}</span>}
                     </a>
                   );
                 })}
@@ -1642,31 +1641,31 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .gdn-bed--empty .gdn-bed-cta { color: var(--muted); }
 
 /* ---------- Reading: Bookshelf ---------- */
-.bkshf-page { width: 100%; max-width: 1040px; margin: 0 auto; }
-.bkshf-masthead { text-align: center; padding-bottom: 8px; }
+.bkshf-page { width: 100%; max-width: 620px; margin: 0 auto; }
+.bkshf-masthead { text-align: center; padding-bottom: 6px; }
 .bkshf-nameplate-pill {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: 9px;
   font-family: 'Fredoka', sans-serif;
   font-weight: 700;
-  font-size: 28px;
+  font-size: 24px;
   color: var(--ink);
   background: rgba(185,133,82,0.14);
-  padding: 6px 22px 9px;
+  padding: 5px 20px 8px;
   border-radius: 999px;
 }
 
-.bkshf-shelves { padding: 22px 0 0; }
-.bkshf-shelf-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.bkshf-shelves { padding: 14px 0 0; }
+.bkshf-shelf-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
 .bkshf-book {
   position: relative;
   aspect-ratio: 2 / 3;
-  border-radius: 8px 8px 4px 4px;
+  border-radius: 7px 7px 3px 3px;
   overflow: hidden;
   display: block;
   text-decoration: none;
-  box-shadow: 0 8px 16px rgba(31,36,48,0.10);
+  box-shadow: 0 6px 12px rgba(31,36,48,0.10);
   cursor: pointer;
 }
 .bkshf-book-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
@@ -1674,44 +1673,32 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .bkshf-book-flat {
   position: relative;
   width: 100%; height: 100%;
-  padding: 18px 15px 12px;
+  padding: 12px 10px 9px;
   display: flex; flex-direction: column;
   overflow: hidden;
 }
-.bkshf-book-motif { position: absolute; right: -26px; bottom: -26px; width: 96px; height: 96px; border-radius: 50%; background: var(--motif-color, rgba(0,0,0,0.06)); }
-.bkshf-ribbon { position: absolute; top: 0; right: 16px; width: 16px; height: 26px; z-index: 1; clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 76%, 0 100%); }
+.bkshf-book-motif { position: absolute; right: -18px; bottom: -18px; width: 64px; height: 64px; border-radius: 50%; background: var(--motif-color, rgba(0,0,0,0.06)); }
+.bkshf-ribbon { position: absolute; top: 0; right: 12px; width: 12px; height: 18px; z-index: 1; clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 76%, 0 100%); }
 .bkshf-book-title {
   position: relative; z-index: 1;
   font-family: 'Fredoka', sans-serif;
   font-weight: 600;
-  font-size: 15px;
-  margin: 4px 0 0;
+  font-size: 11px;
+  margin: 3px 0 0;
   color: var(--ink);
-  line-height: 1.3;
+  line-height: 1.25;
 }
-.bkshf-book-title--onimg { position: absolute; z-index: 1; left: 12px; right: 12px; bottom: 10px; margin: 0; color: #FFFFFF; }
-.bkshf-level {
-  position: absolute; top: 8px; left: 8px; z-index: 1;
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 800;
-  font-size: 9.5px;
-  letter-spacing: 0.03em;
-  color: var(--ink);
-  background: rgba(255,255,255,0.85);
-  padding: 2px 8px;
-  border-radius: 999px;
-}
-.bkshf-book-img ~ .bkshf-level { color: #2B2A4A; }
+.bkshf-book-title--onimg { position: absolute; z-index: 1; left: 8px; right: 8px; bottom: 7px; margin: 0; font-size: 11px; color: #FFFFFF; }
 
 .bkshf-shelf-ledge {
-  height: 16px;
-  border-radius: 0 0 4px 4px;
-  margin: 0 0 30px;
+  height: 11px;
+  border-radius: 0 0 3px 3px;
+  margin: 0 0 18px;
   background: linear-gradient(180deg, #B98552 0%, #8A5F35 100%);
-  box-shadow: 0 10px 16px rgba(74,54,35,0.22);
+  box-shadow: 0 7px 11px rgba(74,54,35,0.22);
   position: relative;
 }
-.bkshf-shelf-ledge::after { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 3px; background: rgba(255,255,255,0.3); }
+.bkshf-shelf-ledge::after { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 2px; background: rgba(255,255,255,0.3); }
 
 @media (max-width: 760px) {
   .bkshf-shelf-row { grid-template-columns: repeat(2, 1fr); }
