@@ -326,7 +326,7 @@ function BookshelfFeature({ items, navigate }) {
       ) : (
         <div className="bkshf-shelves">
           {rows.map((row, ri) => (
-            <div key={ri}>
+            <div key={ri} className="bkshf-shelf-group">
               <div className="bkshf-shelf-row">
                 {row.map((c, i) => {
                   const color = BOOK_MOTIF_COLORS[(ri * 4 + i) % BOOK_MOTIF_COLORS.length];
@@ -1657,6 +1657,7 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 }
 
 .bkshf-shelves { padding: 4px 0 0; }
+.bkshf-shelf-group { width: fit-content; margin: 0 auto; }
 .bkshf-shelf-row { display: flex; justify-content: center; align-items: flex-end; flex-wrap: nowrap; gap: 12px; }
 .bkshf-book {
   position: relative;
