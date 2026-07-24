@@ -245,6 +245,64 @@ function ArticlesFeature({ navigate }) {
   );
 }
 
+function GrammarFeature({ navigate }) {
+  return (
+    <div className="gdn-page">
+      <div className="gdn-masthead">
+        <span className="gdn-kicker">🌱 Grammar</span>
+        <h1 className="gdn-nameplate">The Grammar Garden</h1>
+        <p className="gdn-sub">Language grows from the roots up — plant a rule, watch a sentence bloom.</p>
+      </div>
+
+      <div className="gdn-hero">
+        <div className="gdn-packet">
+          <span className="gdn-packet-leaf tl">🌿</span><span className="gdn-packet-leaf tr">🌿</span>
+          <div className="gdn-packet-label">Today's Sowing</div>
+          <p className="gdn-packet-rule">Adjectives grow <b>before</b> the noun.</p>
+          <div className="gdn-packet-example">
+            <span className="grows">a clever fox</span>
+            <span className="wilts">a fox clever</span>
+          </div>
+          <span className="gdn-packet-zone">🌡️ Grows in: A1–C2</span>
+        </div>
+      </div>
+
+      <div className="gdn-beds">
+        <a href="/library/grammar/parts-of-speech" className="gdn-bed" onClick={(e) => { e.preventDefault(); navigate("/library/grammar/parts-of-speech"); }}>
+          <div className="gdn-bed-soil" />
+          <div className="gdn-bed-body">
+            <div className="gdn-bed-icon">🌻</div>
+            <div className="gdn-bed-num">BED 01</div>
+            <h3 className="gdn-bed-title">Parts of Speech</h3>
+            <p className="gdn-bed-spec">8 word classes across 6 topics. One Lesson, one Assessment each. A1–C2.</p>
+            <span className="gdn-bed-cta">Tend this bed →</span>
+          </div>
+        </a>
+        <a href="/library/grammar/verb-tenses" className="gdn-bed" onClick={(e) => { e.preventDefault(); navigate("/library/grammar/verb-tenses"); }}>
+          <div className="gdn-bed-soil" />
+          <div className="gdn-bed-body">
+            <div className="gdn-bed-icon">🌿</div>
+            <div className="gdn-bed-num">BED 02</div>
+            <h3 className="gdn-bed-title">Verb Tenses</h3>
+            <p className="gdn-bed-spec">All 12 English tenses. One Discussion, one Test lesson each. A1–C2.</p>
+            <span className="gdn-bed-cta">Tend this bed →</span>
+          </div>
+        </a>
+        <div className="gdn-bed gdn-bed--empty">
+          <div className="gdn-bed-soil" />
+          <div className="gdn-bed-body">
+            <div className="gdn-bed-icon">🌰</div>
+            <div className="gdn-bed-num">BED 03</div>
+            <h3 className="gdn-bed-title">Sentence Structure</h3>
+            <p className="gdn-bed-spec">Clauses, word order, and how simple sentences become complex ones.</p>
+            <span className="gdn-bed-cta">Not yet planted</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function TodayFeature({ tools, onSeeAllLessons }) {
   const today = new Date();
   const dayIndex = daysSince(today);
@@ -750,20 +808,7 @@ export default function Library() {
         ) : category === "Articles" ? (
           <ArticlesFeature navigate={navigate} />
         ) : category === "Grammar" ? (
-          <div className="speaking-grid">
-            <a href="/library/grammar/parts-of-speech" className="speaking-tile speaking-tile--partsofspeech">
-              <span className="speaking-tile-kicker">Grammar · A1–C2</span>
-              <h3 className="speaking-tile-title">Parts of Speech</h3>
-              <p className="speaking-tile-desc">The 8 parts of speech across 6 topics, one Lesson and one Assessment each.</p>
-              <span className="speaking-tile-cta">Open Parts of Speech →</span>
-            </a>
-            <a href="/library/grammar/verb-tenses" className="speaking-tile speaking-tile--verbtenses">
-              <span className="speaking-tile-kicker">Grammar · A1–C2</span>
-              <h3 className="speaking-tile-title">Verb Tenses</h3>
-              <p className="speaking-tile-desc">All 12 English tenses, one Discussion lesson and one Test lesson each.</p>
-              <span className="speaking-tile-cta">Open Verb Tenses →</span>
-            </a>
-          </div>
+          <GrammarFeature navigate={navigate} />
         ) : category === "Speaking" ? (
           <div className="speaking-grid">
             <a href="/library/forge" className="speaking-tile speaking-tile--forge">
@@ -1322,8 +1367,6 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .speaking-tile:hover { transform: translateY(-3px); box-shadow: 0 20px 40px rgba(0,0,0,0.2); }
 .speaking-tile--forge { background: radial-gradient(circle at 20% 0%, #FFF6E6 0%, #FBE7C6 60%, #F6D9AC 100%); }
 .speaking-tile--ascend { background: radial-gradient(circle at 20% 0%, #EAFBF6 0%, #D6F2E9 60%, #C3E9DC 100%); }
-.speaking-tile--partsofspeech { background: radial-gradient(circle at 20% 0%, #EAF4FF 0%, #D9EAFE 60%, #C7DEFB 100%); }
-.speaking-tile--verbtenses { background: radial-gradient(circle at 20% 0%, #F1EFFC 0%, #E4E0FA 60%, #D8D2F6 100%); }
 .speaking-tile--shift { background: radial-gradient(circle at 20% 0%, #FFF1EF 0%, #FFDBD5 60%, #FFC3BA 100%); }
 .speaking-tile-kicker {
   font-family: 'Quicksand', sans-serif;
@@ -1334,8 +1377,6 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 }
 .speaking-tile--forge .speaking-tile-kicker { color: #C97A2E; }
 .speaking-tile--ascend .speaking-tile-kicker { color: #128571; }
-.speaking-tile--partsofspeech .speaking-tile-kicker { color: #2F80ED; }
-.speaking-tile--verbtenses .speaking-tile-kicker { color: #5B4FE0; }
 .speaking-tile--shift .speaking-tile-kicker { color: #E1483B; }
 .speaking-tile-title {
   font-family: 'Fredoka', sans-serif;
@@ -1345,8 +1386,6 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 }
 .speaking-tile--forge .speaking-tile-title { color: #2E2617; }
 .speaking-tile--ascend .speaking-tile-title { color: #17352E; }
-.speaking-tile--partsofspeech .speaking-tile-title { color: #163A66; }
-.speaking-tile--verbtenses .speaking-tile-title { color: #2B2560; }
 .speaking-tile--shift .speaking-tile-title { color: #4A211B; }
 .speaking-tile-desc {
   font-family: 'Quicksand', sans-serif;
@@ -1358,8 +1397,6 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 }
 .speaking-tile--forge .speaking-tile-desc { color: #6B5F49; }
 .speaking-tile--ascend .speaking-tile-desc { color: #3E6157; }
-.speaking-tile--partsofspeech .speaking-tile-desc { color: #4A6690; }
-.speaking-tile--verbtenses .speaking-tile-desc { color: #5B5590; }
 .speaking-tile--shift .speaking-tile-desc { color: #8C5C52; }
 .speaking-tile-cta {
   font-family: 'Quicksand', sans-serif;
@@ -1371,8 +1408,6 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 }
 .speaking-tile--forge .speaking-tile-cta { background: #F2A65A; color: #2E2617; }
 .speaking-tile--ascend .speaking-tile-cta { background: #3FCDAF; color: #17352E; }
-.speaking-tile--partsofspeech .speaking-tile-cta { background: #2F80ED; color: #FFFFFF; }
-.speaking-tile--verbtenses .speaking-tile-cta { background: #5B4FE0; color: #FFFFFF; }
 .speaking-tile--shift .speaking-tile-cta { background: #E1483B; color: #FFFFFF; }
 
 /* ---------- Articles: The Sentivo Gazette ---------- */
@@ -1486,6 +1521,100 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 }
 .gaz-story-meta { font-family: 'Quicksand', sans-serif; font-size: 9px; color: var(--muted); }
 .gaz-soon { font-weight: 700; letter-spacing: 0.03em; text-transform: uppercase; font-size: 8.5px; }
+
+/* ---------- Grammar: The Grammar Garden ---------- */
+.gdn-page {
+  --leaf: #4C9A5D;
+  --leaf-soft: rgba(76,154,93,0.13);
+  --soil: #9B7653;
+  --soil-soft: rgba(155,118,83,0.18);
+  width: 100%;
+  max-width: 1040px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+.gdn-masthead {
+  text-align: center;
+  padding-bottom: 8px;
+}
+.gdn-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 800;
+  font-size: 10.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--leaf);
+  background: var(--leaf-soft);
+  padding: 4px 12px;
+  border-radius: 999px;
+  margin-bottom: 10px;
+}
+.gdn-nameplate { font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 28px; margin: 0 0 6px; color: var(--ink); }
+.gdn-sub { font-family: 'Quicksand', sans-serif; font-size: 13px; color: var(--muted); margin: 0 auto; max-width: 460px; }
+
+.gdn-hero { padding: 16px 0 6px; display: flex; justify-content: center; }
+.gdn-packet {
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+  background: var(--card);
+  border: 1px solid var(--hair);
+  border-radius: 14px;
+  padding: 18px 24px 16px;
+  box-shadow: 0 10px 22px rgba(76,154,93,0.10);
+}
+.gdn-packet-leaf { position: absolute; font-size: 14px; opacity: 0.55; }
+.gdn-packet-leaf.tl { top: 10px; left: 12px; }
+.gdn-packet-leaf.tr { top: 10px; right: 12px; transform: scaleX(-1); }
+.gdn-packet-label { font-family: 'Quicksand', sans-serif; font-weight: 800; font-size: 9.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--soil); margin-bottom: 8px; }
+.gdn-packet-rule { font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 17px; line-height: 1.3; margin: 0 0 8px; color: var(--ink); }
+.gdn-packet-rule b { color: var(--leaf); }
+.gdn-packet-example { display: flex; flex-direction: column; gap: 3px; font-family: 'Quicksand', sans-serif; font-size: 12.5px; }
+.gdn-packet-example .grows { color: var(--leaf); font-weight: 700; }
+.gdn-packet-example .grows::before { content: "🌱 "; }
+.gdn-packet-example .wilts { color: var(--muted); opacity: 0.85; }
+.gdn-packet-example .wilts::before { content: "🥀 "; }
+.gdn-packet-zone {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  color: var(--soil);
+  background: var(--soil-soft);
+  padding: 3px 10px;
+  border-radius: 999px;
+  margin-top: 12px;
+}
+
+.gdn-beds { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; padding: 18px 0 6px; }
+.gdn-bed {
+  position: relative;
+  display: block;
+  background: var(--card);
+  border: 1px solid var(--hair);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 16px rgba(76,154,93,0.06);
+  text-decoration: none;
+  cursor: pointer;
+}
+.gdn-bed-soil { height: 7px; background: linear-gradient(90deg, var(--soil), var(--soil-soft)); }
+.gdn-bed-body { padding: 13px 15px 14px; }
+.gdn-bed-icon { font-size: 19px; margin-bottom: 5px; }
+.gdn-bed-num { font-family: 'Quicksand', sans-serif; font-size: 9.5px; color: var(--leaf); font-weight: 700; letter-spacing: 0.06em; margin-bottom: 5px; }
+.gdn-bed-title { font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 14px; margin: 0 0 5px; color: var(--ink); }
+.gdn-bed-spec { font-family: 'Quicksand', sans-serif; font-size: 10.5px; color: var(--ink-soft, var(--muted)); line-height: 1.35; margin: 0 0 10px; min-height: 28px; }
+.gdn-bed-cta { font-family: 'Quicksand', sans-serif; font-size: 10px; font-weight: 700; color: var(--leaf); }
+.gdn-bed--empty { opacity: 0.7; cursor: default; }
+.gdn-bed--empty .gdn-bed-soil { background: var(--hair); }
+.gdn-bed--empty .gdn-bed-cta { color: var(--muted); }
 
 .cover {
   flex-shrink: 0;
