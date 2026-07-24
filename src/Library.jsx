@@ -1065,6 +1065,26 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   margin-top: 7px;
 }
 
+/* ── Responsive: narrower / non-maximized browser windows ── */
+@media (max-width: 1300px) {
+  .gc-topbar, .gc-sections, .gc-editions { padding-left: 20px; padding-right: 20px; }
+  .gc-sections { justify-content: flex-start; }
+  .gc-dashboard { grid-template-columns: 1fr; max-width: 720px; }
+  .gc-sidebar { flex-direction: row; gap: 14px; }
+  .gc-sidebar > .gc-widget { flex: 1; min-width: 0; }
+}
+@media (max-width: 900px) {
+  .gc-topbar, .gc-sections, .gc-editions { padding-left: 14px; padding-right: 14px; }
+  .gc-search input { width: 110px; }
+  .gc-boxrow { grid-template-columns: repeat(2, 1fr); }
+  .gc-briefs { grid-template-columns: repeat(2, 1fr); }
+  .gc-sidebar { flex-direction: column; }
+}
+@media (max-width: 560px) {
+  .gc-boxrow { grid-template-columns: 1fr; }
+  .gc-briefs { grid-template-columns: 1fr; }
+}
+
 /* ── Recommended Lessons: newspaper section front ── */
 .gc-reclessons { margin-top: 18px; }
 .gc-rl-head {
