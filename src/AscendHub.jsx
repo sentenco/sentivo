@@ -1,11 +1,13 @@
 import { useNavigate } from "react-router-dom";
 import TRACKS from "./ascendTracks";
 import ImagePlaceholder from "./slides/ImagePlaceholder";
+import ascend1CoverImg from "./assets/ascend/track1-cover.jpeg";
 
-// No real cover photos yet for any ASCEND track -- every card falls back to
-// ImagePlaceholder until art is generated (same lookup pattern as FORGE's
-// hub/Library covers, ready for a COVERS[track.id] entry per track later).
-const COVERS = {};
+// Tracks without a real cover photo yet fall back to ImagePlaceholder
+// (same lookup pattern as FORGE's hub/Library covers).
+const COVERS = {
+  "ascend-1": ascend1CoverImg,
+};
 
 export default function AscendHub() {
   const navigate = useNavigate();
