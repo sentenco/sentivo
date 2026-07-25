@@ -153,30 +153,30 @@ const CSS = `
 
 .app-shell {
   width: 100%;
-  min-height: 100vh;
+  height: 100vh;
+  overflow: hidden;
   background: #FFFFFF;
   color: #171717;
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
 }
 .app-shell * { box-sizing: border-box; }
 
 .app-missing { padding: 60px; text-align: center; font-family: 'Source Serif 4', serif; color: #8A8578; }
 
 .app-editions {
-  position: sticky;
-  top: 0;
-  z-index: 5;
+  flex-shrink: 0;
   display: flex;
   justify-content: center;
   gap: 4px;
-  padding: 10px;
-  background: rgba(255,255,255,0.92);
-  backdrop-filter: blur(6px);
+  padding: 8px;
+  background: #FFFFFF;
   border-bottom: 1px solid #EAE7E0;
 }
 .app-ed-btn {
   font-family: 'Source Serif 4', serif;
-  font-size: 11px;
+  font-size: 10.5px;
   font-weight: 600;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -184,58 +184,74 @@ const CSS = `
   background: none;
   border: 1px solid transparent;
   border-radius: 999px;
-  padding: 5px 14px;
+  padding: 4px 12px;
   cursor: pointer;
 }
 .app-ed-btn.is-active { color: #171717; border-color: #171717; }
 
-.app-page { max-width: 760px; margin: 0 auto; padding: 0 0 70px; }
+.app-page {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  max-width: 760px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0;
+  overflow: hidden;
+}
 
 .app-hero {
-  height: 260px;
+  flex-shrink: 0;
+  height: clamp(46px, 9vh, 90px);
   background: linear-gradient(135deg, #3a3a3a, #111111);
   filter: grayscale(1);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 72px;
+  font-size: clamp(22px, 4vh, 38px);
 }
 
 .app-title {
+  flex-shrink: 0;
   font-family: 'Playfair Display', serif;
   font-weight: 900;
-  font-size: 52px;
-  line-height: 1.05;
+  font-size: clamp(20px, 3.4vh, 34px);
+  line-height: 1.08;
   letter-spacing: -0.01em;
   text-align: center;
   text-transform: uppercase;
-  margin: 40px 30px 18px;
+  margin: clamp(10px, 2vh, 18px) 26px clamp(6px, 1.2vh, 10px);
 }
 .app-title em { font-style: italic; font-weight: 700; }
 
 .app-byline {
+  flex-shrink: 0;
   font-family: 'Source Serif 4', serif;
-  font-size: 12px;
+  font-size: 10.5px;
   letter-spacing: 0.04em;
   text-transform: uppercase;
   color: #8A8578;
   text-align: center;
-  margin: 0 0 40px;
+  margin: 0 0 clamp(10px, 1.8vh, 18px);
 }
 .app-dot { margin: 0 6px; }
 
 .app-columns {
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
   font-family: 'Source Serif 4', serif;
-  font-size: 16px;
-  line-height: 1.65;
+  font-size: clamp(11px, 1.55vh, 14px);
+  line-height: 1.5;
   color: #262626;
   columns: 2;
-  column-gap: 40px;
+  column-gap: 32px;
   column-rule: 1px solid #E2DED5;
   text-align: justify;
-  padding: 0 30px;
+  padding: 0 26px;
 }
-.app-columns p { margin: 0 0 20px; break-inside: avoid; }
+.app-columns p { margin: 0 0 12px; break-inside: avoid; }
 
 .app-gloss {
   text-decoration: underline dotted #A39B87;
@@ -289,21 +305,21 @@ const CSS = `
 }
 
 .app-references {
-  max-width: 700px;
-  margin: 34px auto 0;
-  padding: 18px 30px 0;
+  flex-shrink: 0;
+  margin: 0 auto;
+  padding: 8px 26px;
   border-top: 1px solid #EAE7E0;
   display: flex;
   flex-wrap: wrap;
-  gap: 4px 16px;
+  gap: 3px 14px;
   justify-content: center;
   font-family: 'Source Serif 4', serif;
-  font-size: 11px;
+  font-size: 9.5px;
   color: #A39B87;
 }
 
 @media (max-width: 640px) {
-  .app-title { font-size: 34px; margin: 28px 20px 14px; }
-  .app-columns { columns: 1; padding: 0 22px; }
+  .app-title { font-size: 20px; }
+  .app-columns { columns: 1; padding: 0 20px; }
 }
 `;
