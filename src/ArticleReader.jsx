@@ -4,6 +4,25 @@ import { getArticle } from "./articlesData";
 
 const EDITION_KEYS = ["plain", "polished", "precise"];
 
+// Opens the clean, student-facing reading view as a standalone popup --
+// matching the FORGE/ASCEND/Verb Tenses chrome-less window.open pattern.
+// This page (ArticleReader) stays the teacher's reference copy, with the
+// discussion guide and citations; the popup is what gets shared on screen.
+function openPlayer(slug) {
+  const screenW = window.screen.availWidth || 1600;
+  const screenH = window.screen.availHeight || 900;
+  const w = Math.min(900, screenW - 40);
+  const h = Math.min(760, screenH - 80);
+  const left = Math.max(0, Math.floor((screenW - w) / 2));
+  const top = Math.max(0, Math.floor((screenH - h) / 2));
+
+  window.open(
+    `/library/articles/${slug}/player`,
+    "sentivoArticlePlayer",
+    `width=${w},height=${h},left=${left},top=${top},toolbar=no,location=no,menubar=no,status=no,scrollbars=yes,resizable=yes`
+  );
+}
+
 function Gloss({ word, pos, def, glossKey, openKey, setOpenKey }) {
   const isOpen = openKey === glossKey;
   return (
@@ -92,7 +111,10 @@ export default function ArticleReader() {
         <button type="button" className="ar-back-link" onClick={() => navigate("/library?cat=Articles")}>
           ← Articles
         </button>
-        <span className="ar-crumb">{article.topicTitle}</span>
+        <span className="ar-crumb">Teacher's guide · {article.topicTitle}</span>
+        <button type="button" className="ar-present-btn" onClick={() => openPlayer(article.slug)}>
+          🖥️ Present to class
+        </button>
       </header>
 
       <div className="ar-article">
@@ -223,6 +245,18 @@ const CSS = `
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--muted);
+  flex: 1;
+}
+.ar-present-btn {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  color: #FFFFFF;
+  background: var(--rust);
+  border: none;
+  border-radius: 999px;
+  padding: 8px 16px;
+  cursor: pointer;
 }
 
 .ar-missing { max-width: 640px; margin: 60px auto; text-align: center; color: var(--muted); font-family: 'Quicksand', sans-serif; }
