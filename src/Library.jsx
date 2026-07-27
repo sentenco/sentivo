@@ -971,7 +971,7 @@ export default function Library() {
         </div>
       ) : (
       <main className={`content ${category === "Articles" ? "content--wide" : ""}`}>
-                <div className={`grid-wrap ${category === "All" && !query.trim() && !showAllToday ? "grid-wrap--today" : (category === "Articles" || category === "Grammar" || category === "Reading" || category === "Speaking" || category === "Vocabulary" || category === "Writing") ? "grid-wrap--top" : ""}`} ref={gridWrapRef}>
+                <div className={`grid-wrap ${category === "All" && !query.trim() && !showAllToday ? "grid-wrap--today" : (category === "Articles" || category === "Grammar" || category === "Reading" || category === "Speaking" || category === "Vocabulary" || category === "Writing" || category === "Listening") ? "grid-wrap--top" : ""}`} ref={gridWrapRef}>
         {category === "All" && !query.trim() && !showAllToday ? (
           toolsLoading ? (
             <p className="empty-msg">Loading today's edition…</p>
@@ -1031,11 +1031,11 @@ export default function Library() {
               </a>
             </div>
           </div>
-        ) : (category === "Vocabulary" || category === "Writing") ? (
-          <div className={`dyn-landing dyn-landing--${category === "Vocabulary" ? "vocab" : "writing"}`}>
+        ) : (category === "Vocabulary" || category === "Writing" || category === "Listening") ? (
+          <div className={`dyn-landing dyn-landing--${category === "Vocabulary" ? "vocab" : category === "Writing" ? "writing" : "listening"}`}>
             <div className="dyn-landing-hero">
               <span className="dyn-landing-eyebrow">Sentivo · {category}</span>
-              <h1><span className="dyn-landing-pill">{category === "Vocabulary" ? "🗂️ Word Bank" : "✍️ Writing Desk"}</span></h1>
+              <h1><span className="dyn-landing-pill">{category === "Vocabulary" ? "🗂️ Word Bank" : category === "Writing" ? "✍️ Writing Desk" : "🎧 Sound Booth"}</span></h1>
             </div>
             <div className="dyn-landing-row"></div>
             {genericContent}
@@ -1504,6 +1504,11 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
     repeating-linear-gradient(180deg, rgba(255,255,255,0.5) 0px, rgba(255,255,255,0.5) 1px, transparent 1px, transparent 64px),
     linear-gradient(180deg, #FBEDE3 0%, #F5D5BC 100%);
 }
+.dyn-landing--listening {
+  background:
+    repeating-linear-gradient(180deg, rgba(255,255,255,0.5) 0px, rgba(255,255,255,0.5) 1px, transparent 1px, transparent 64px),
+    linear-gradient(180deg, #F0EDFC 0%, #DFD8F7 100%);
+}
 .dyn-landing-hero { text-align: center; }
 .dyn-landing-eyebrow {
   display: block;
@@ -1515,6 +1520,7 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 }
 .dyn-landing--vocab .dyn-landing-eyebrow { color: #A24E71; }
 .dyn-landing--writing .dyn-landing-eyebrow { color: #A15A2E; }
+.dyn-landing--listening .dyn-landing-eyebrow { color: #5D4E9E; }
 .dyn-landing-pill {
   display: inline-flex;
   align-items: center;
@@ -1529,12 +1535,15 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 }
 .dyn-landing--vocab .dyn-landing-pill { background: rgba(210,74,124,0.14); }
 .dyn-landing--writing .dyn-landing-pill { background: rgba(197,105,42,0.16); }
+.dyn-landing--listening .dyn-landing-pill { background: rgba(93,78,158,0.14); }
 .dyn-landing-row { position: relative; height: 2px; width: 100%; max-width: 1040px; margin: clamp(22px, 2.8vw, 32px) 0; }
 .dyn-landing--vocab .dyn-landing-row { background: #F3C3D6; }
 .dyn-landing--writing .dyn-landing-row { background: #EBC6A6; }
+.dyn-landing--listening .dyn-landing-row { background: #CCC0EF; }
 .dyn-landing-row::before, .dyn-landing-row::after { content: ""; position: absolute; top: -3px; width: 8px; height: 8px; border-radius: 50%; }
 .dyn-landing--vocab .dyn-landing-row::before, .dyn-landing--vocab .dyn-landing-row::after { background: #D24A7C; }
 .dyn-landing--writing .dyn-landing-row::before, .dyn-landing--writing .dyn-landing-row::after { background: #C5692A; }
+.dyn-landing--listening .dyn-landing-row::before, .dyn-landing--listening .dyn-landing-row::after { background: #6E5DC6; }
 .dyn-landing-row::before { left: 0; }
 .dyn-landing-row::after { right: 0; }
 .dyn-landing .cover-grid { justify-content: center; }
