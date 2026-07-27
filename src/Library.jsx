@@ -754,10 +754,118 @@ export default function Library() {
     navigate(`/library?cat=${encodeURIComponent(cat)}`);
   }
 
-  function changePage(next) {
-    setPage(next);
-    setSearchParams({ cat: category, page: String(next) }, { replace: true });
-  }
+  const genericContent = toolsLoading ? (
+    <p className="empty-msg">Loading library…</p>
+  ) : toolsError ? (
+    <p className="empty-msg">Couldn't load the library right now. Please refresh.</p>
+  ) : pageItems.length === 0 ? (
+    <p className="empty-msg">No tools found. Try a different search or category.</p>
+  ) : (
+    <div
+      className="cover-grid"
+      style={{ gridTemplateColumns: `repeat(${gridConfig.columns}, ${gridConfig.width}px)` }}
+    >
+      {pageItems.map((c) => {
+  const CoverTag = "a";
+  const coverProps = { href: c.content_type === "forge-track" ? `/library/forge/${c.id}` : `/library/${c.id}` };
+  return (
+    <CoverTag
+      key={c.id}
+      {...coverProps}
+      className={`cover cover--${c.palette} ${c.tagline ? "cover--redesigned" : ""} ${c.content_type === "story" ? "cover--story" : ""} ${c.content_type === "forge-track" ? "cover--forge-track" : ""}`}
+      style={{ width: `${gridConfig.width}px`, height: `${gridConfig.height}px` }}
+    >
+                {c.access === "premium" && (
+                  <span className="premium-badge">
+                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                      <rect x="5" y="11" width="14" height="9" rx="2" />
+                      <path d="M8 11V7a4 4 0 0 1 8 0v4" />
+                    </svg>
+                    Premium
+                  </span>
+                )}
+
+                {c.content_type === "forge-track" ? (
+                  <div className="story-card-content">
+                    {FORGE_COVERS[c.id] ? (
+                      <img className="story-card-cover-img" src={FORGE_COVERS[c.id]} alt={c.title} />
+                    ) : (
+                      <div className="story-card-cover-ph">
+                        <ImagePlaceholder note="Track cover photo" compact />
+                      </div>
+                    )}
+                    <span className="story-badge">🗣️ Speaking</span>
+                    <div className="story-card-scrim" />
+                    <div className="story-card-text">
+                      <h3 className="story-card-title">{c.title}</h3>
+                      <span className="story-card-sub">{c.sub}</span>
+                    </div>
+                  </div>
+                ) : c.content_type === "story" ? (
+                  <div className="story-card-content">
+                    {STORY_COVERS[c.id] ? (
+                      <img className="story-card-cover-img" src={STORY_COVERS[c.id]} alt={c.title} />
+                    ) : (
+                      <div className="story-card-cover-ph">
+                        <ImagePlaceholder note="Book cover image" compact />
+                      </div>
+                    )}
+                    <span className="story-badge">📖 Story</span>
+                    <div className="story-card-scrim" />
+                    <div className="story-card-text">
+                      <h3 className="story-card-title">{c.title}</h3>
+                      <span className="story-card-sub">{c.sub}</span>
+                    </div>
+                  </div>
+                ) : c.tagline ? (
+                  <div
+                    className="bespoke-content"
+                    style={{ gap: Math.max(4, gridConfig.height * 0.028) }}
+                  >
+                    <div
+                      className="bespoke-icon-wrap"
+                      style={{ maxHeight: gridConfig.height * 0.65 }}
+                    >
+                      <BespokeIcon
+                        type={c.motif}
+                        isPro={isPro}
+                        style={{ width: gridConfig.width * 0.67, maxWidth: "none" }}
+                      />
+                    </div>
+                    <p
+                      className="bespoke-tagline"
+                      style={{ fontSize: Math.max(10, gridConfig.height * 0.065), margin: 0 }}
+                    >
+                      {c.tagline}
+                    </p>
+                    <div
+                      className="bespoke-divider"
+                      style={{ width: gridConfig.width * 0.7 }}
+                    />
+                    <span
+                      className="bespoke-label"
+                      style={{ fontSize: Math.max(7, gridConfig.height * 0.038) }}
+                    >
+                      {c.title.toUpperCase()}
+                    </span>
+                  </div>
+                ) : (
+                  <>
+                    <div className="cover-motif"><Motif type={c.motif} /></div>
+                    <div className="cover-text">
+                      <h3>{c.title}</h3>
+                      <span className="cover-sub">{c.sub}</span>
+                    </div>
+                    <div className="cover-footer">
+                      <span className="cover-level">{c.level}</span>
+                    </div>
+                  </>
+                )}
+                </CoverTag>
+              );
+            })}
+    </div>
+  );
 
   return (
     <>
@@ -863,7 +971,7 @@ export default function Library() {
         </div>
       ) : (
       <main className={`content ${category === "Articles" ? "content--wide" : ""}`}>
-                <div className={`grid-wrap ${category === "All" && !query.trim() && !showAllToday ? "grid-wrap--today" : (category === "Articles" || category === "Grammar" || category === "Reading" || category === "Speaking") ? "grid-wrap--top" : ""}`} ref={gridWrapRef}>
+                <div className={`grid-wrap ${category === "All" && !query.trim() && !showAllToday ? "grid-wrap--today" : (category === "Articles" || category === "Grammar" || category === "Reading" || category === "Speaking" || category === "Vocabulary" || category === "Writing") ? "grid-wrap--top" : ""}`} ref={gridWrapRef}>
         {category === "All" && !query.trim() && !showAllToday ? (
           toolsLoading ? (
             <p className="empty-msg">Loading today's edition…</p>
@@ -923,117 +1031,17 @@ export default function Library() {
               </a>
             </div>
           </div>
-        ) : toolsLoading ? (
-          <p className="empty-msg">Loading library…</p>
-        ) : toolsError ? (
-          <p className="empty-msg">Couldn't load the library right now. Please refresh.</p>
-        ) : pageItems.length === 0 ? (
-          <p className="empty-msg">No tools found. Try a different search or category.</p>
-        ) : (
-          <div
-            className="cover-grid"
-            style={{ gridTemplateColumns: `repeat(${gridConfig.columns}, ${gridConfig.width}px)` }}
-          >
-            {pageItems.map((c) => {
-  const CoverTag = "a";
-  const coverProps = { href: c.content_type === "forge-track" ? `/library/forge/${c.id}` : `/library/${c.id}` };
-  return (
-    <CoverTag
-      key={c.id}
-      {...coverProps}
-      className={`cover cover--${c.palette} ${c.tagline ? "cover--redesigned" : ""} ${c.content_type === "story" ? "cover--story" : ""} ${c.content_type === "forge-track" ? "cover--forge-track" : ""}`}
-      style={{ width: `${gridConfig.width}px`, height: `${gridConfig.height}px` }}
-    >
-                {c.access === "premium" && (
-                  <span className="premium-badge">
-                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                      <rect x="5" y="11" width="14" height="9" rx="2" />
-                      <path d="M8 11V7a4 4 0 0 1 8 0v4" />
-                    </svg>
-                    Premium
-                  </span>
-                )}
-
-                {c.content_type === "forge-track" ? (
-                  <div className="story-card-content">
-                    {FORGE_COVERS[c.id] ? (
-                      <img className="story-card-cover-img" src={FORGE_COVERS[c.id]} alt={c.title} />
-                    ) : (
-                      <div className="story-card-cover-ph">
-                        <ImagePlaceholder note="Track cover photo" compact />
-                      </div>
-                    )}
-                    <span className="story-badge">🗣️ Speaking</span>
-                    <div className="story-card-scrim" />
-                    <div className="story-card-text">
-                      <h3 className="story-card-title">{c.title}</h3>
-                      <span className="story-card-sub">{c.sub}</span>
-                    </div>
-                  </div>
-                ) : c.content_type === "story" ? (
-                  <div className="story-card-content">
-                    {STORY_COVERS[c.id] ? (
-                      <img className="story-card-cover-img" src={STORY_COVERS[c.id]} alt={c.title} />
-                    ) : (
-                      <div className="story-card-cover-ph">
-                        <ImagePlaceholder note="Book cover image" compact />
-                      </div>
-                    )}
-                    <span className="story-badge">📖 Story</span>
-                    <div className="story-card-scrim" />
-                    <div className="story-card-text">
-                      <h3 className="story-card-title">{c.title}</h3>
-                      <span className="story-card-sub">{c.sub}</span>
-                    </div>
-                  </div>
-                ) : c.tagline ? (
-                  <div
-                    className="bespoke-content"
-                    style={{ gap: Math.max(4, gridConfig.height * 0.028) }}
-                  >
-                    <div
-                      className="bespoke-icon-wrap"
-                      style={{ maxHeight: gridConfig.height * 0.65 }}
-                    >
-                      <BespokeIcon
-                        type={c.motif}
-                        isPro={isPro}
-                        style={{ width: gridConfig.width * 0.67, maxWidth: "none" }}
-                      />
-                    </div>
-                    <p
-                      className="bespoke-tagline"
-                      style={{ fontSize: Math.max(10, gridConfig.height * 0.065), margin: 0 }}
-                    >
-                      {c.tagline}
-                    </p>
-                    <div
-                      className="bespoke-divider"
-                      style={{ width: gridConfig.width * 0.7 }}
-                    />
-                    <span
-                      className="bespoke-label"
-                      style={{ fontSize: Math.max(7, gridConfig.height * 0.038) }}
-                    >
-                      {c.title.toUpperCase()}
-                    </span>
-                  </div>
-                ) : (
-                  <>
-                    <div className="cover-motif"><Motif type={c.motif} /></div>
-                    <div className="cover-text">
-                      <h3>{c.title}</h3>
-                      <span className="cover-sub">{c.sub}</span>
-                    </div>
-                    <div className="cover-footer">
-                      <span className="cover-level">{c.level}</span>
-                    </div>
-                  </>
-                )}
-                </CoverTag>
-              );
-            })}
+        ) : (category === "Vocabulary" || category === "Writing") ? (
+          <div className={`dyn-landing dyn-landing--${category === "Vocabulary" ? "vocab" : "writing"}`}>
+            <div className="dyn-landing-hero">
+              <span className="dyn-landing-eyebrow">Sentivo · {category}</span>
+              <h1><span className="dyn-landing-pill">{category === "Vocabulary" ? "🗂️ Word Bank" : "✍️ Writing Desk"}</span></h1>
+            </div>
+            <div className="dyn-landing-row"></div>
+            {genericContent}
           </div>
+        ) : (
+          genericContent
         )}
         </div>
 
@@ -1474,6 +1482,63 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   width: 100%;
   height: 100%;
 }
+
+/* ---------- Vocabulary / Writing: dynamic catalog landing ---------- */
+.dyn-landing {
+  width: 100%;
+  max-width: 1220px;
+  margin: 0 auto;
+  border-radius: 22px;
+  padding: clamp(20px, 2.6vw, 32px) clamp(18px, 2.4vw, 28px) clamp(26px, 3vw, 36px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.dyn-landing--vocab {
+  background:
+    repeating-linear-gradient(180deg, rgba(255,255,255,0.5) 0px, rgba(255,255,255,0.5) 1px, transparent 1px, transparent 64px),
+    linear-gradient(180deg, #FDF0F5 0%, #FADCE7 100%);
+}
+.dyn-landing--writing {
+  background:
+    repeating-linear-gradient(180deg, rgba(255,255,255,0.5) 0px, rgba(255,255,255,0.5) 1px, transparent 1px, transparent 64px),
+    linear-gradient(180deg, #FBEDE3 0%, #F5D5BC 100%);
+}
+.dyn-landing-hero { text-align: center; }
+.dyn-landing-eyebrow {
+  display: block;
+  font-family: 'SF Mono', 'Menlo', Consolas, monospace;
+  font-size: clamp(10.5px, 0.9vw, 11px);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.dyn-landing--vocab .dyn-landing-eyebrow { color: #A24E71; }
+.dyn-landing--writing .dyn-landing-eyebrow { color: #A15A2E; }
+.dyn-landing-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 700;
+  font-size: clamp(24px, 2.4vw, 30px);
+  letter-spacing: 0.04em;
+  color: #2B2A4A;
+  padding: 6px 22px 9px;
+  border-radius: 999px;
+}
+.dyn-landing--vocab .dyn-landing-pill { background: rgba(210,74,124,0.14); }
+.dyn-landing--writing .dyn-landing-pill { background: rgba(197,105,42,0.16); }
+.dyn-landing-row { position: relative; height: 2px; width: 100%; max-width: 1040px; margin: clamp(22px, 2.8vw, 32px) 0; }
+.dyn-landing--vocab .dyn-landing-row { background: #F3C3D6; }
+.dyn-landing--writing .dyn-landing-row { background: #EBC6A6; }
+.dyn-landing-row::before, .dyn-landing-row::after { content: ""; position: absolute; top: -3px; width: 8px; height: 8px; border-radius: 50%; }
+.dyn-landing--vocab .dyn-landing-row::before, .dyn-landing--vocab .dyn-landing-row::after { background: #D24A7C; }
+.dyn-landing--writing .dyn-landing-row::before, .dyn-landing--writing .dyn-landing-row::after { background: #C5692A; }
+.dyn-landing-row::before { left: 0; }
+.dyn-landing-row::after { right: 0; }
+.dyn-landing .cover-grid { justify-content: center; }
+.dyn-landing .empty-msg { color: #2B2A4A; }
 
 .spklab-page {
   width: 100%;
