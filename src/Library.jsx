@@ -1433,12 +1433,12 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .speaking-hero {
   text-align: center;
   max-width: 560px;
-  margin: 0 auto 30px;
+  margin: 0 auto clamp(16px, 3vw, 30px);
 }
 .speaking-eyebrow {
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;
-  font-size: 12.5px;
+  font-size: clamp(11px, 1vw, 12.5px);
   letter-spacing: 1.2px;
   text-transform: uppercase;
   color: var(--muted);
@@ -1446,17 +1446,17 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .speaking-title {
   font-family: 'Fredoka', sans-serif;
   font-weight: 700;
-  font-size: 34px;
+  font-size: clamp(24px, 3vw, 34px);
   color: var(--ink);
   margin: 10px 0 12px;
 }
 .speaking-sub {
   font-family: 'Quicksand', sans-serif;
   font-weight: 500;
-  font-size: 15px;
+  font-size: clamp(13px, 1.2vw, 15px);
   line-height: 1.55;
   color: var(--muted);
-  margin: 0 0 22px;
+  margin: 0 0 clamp(14px, 2vw, 22px);
 }
 .speaking-ladder {
   display: flex;
@@ -1468,20 +1468,20 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .speaking-ladder-item {
   font-family: 'Quicksand', sans-serif;
   font-weight: 600;
-  font-size: 13px;
+  font-size: clamp(11.5px, 1vw, 13px);
   border-radius: 999px;
-  padding: 6px 14px;
+  padding: clamp(5px, 0.5vw, 6px) clamp(11px, 1vw, 14px);
 }
 .speaking-ladder-item b { font-family: 'Fredoka', sans-serif; font-weight: 700; margin-right: 4px; }
 .speaking-ladder-item--forge { background: #FBE7C6; color: #7A4A15; }
 .speaking-ladder-item--shift { background: #FFDBD5; color: #8C2E22; }
 .speaking-ladder-item--ascend { background: #D6F2E9; color: #0E5B4C; }
-.speaking-ladder-arrow { color: var(--muted); font-size: 14px; }
+.speaking-ladder-arrow { color: var(--muted); font-size: clamp(12px, 1vw, 14px); }
 
 .speaking-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(220px, 320px));
-  gap: 22px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(12px, 1.8vw, 22px);
   width: 100%;
   max-width: 1040px;
 }
@@ -1492,7 +1492,7 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   align-items: flex-start;
   text-decoration: none;
   border-radius: 18px;
-  padding: 26px 24px;
+  padding: clamp(18px, 2vw, 26px) clamp(16px, 1.8vw, 24px);
   min-height: 220px;
   box-shadow: 0 14px 30px rgba(0,0,0,0.14);
   transition: transform 0.15s ease, box-shadow 0.15s ease;
@@ -1504,7 +1504,7 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .speaking-tile-kicker {
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;
-  font-size: 11.5px;
+  font-size: clamp(10px, 0.85vw, 11.5px);
   letter-spacing: 0.6px;
   text-transform: uppercase;
 }
@@ -1514,7 +1514,7 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .speaking-tile-title {
   font-family: 'Fredoka', sans-serif;
   font-weight: 700;
-  font-size: 30px;
+  font-size: clamp(22px, 2.2vw, 30px);
   margin: 2px 0 0;
 }
 .speaking-tile--forge .speaking-tile-title { color: #2E2617; }
@@ -1523,7 +1523,7 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .speaking-tile-desc {
   font-family: 'Quicksand', sans-serif;
   font-weight: 500;
-  font-size: 13.5px;
+  font-size: clamp(12.5px, 1vw, 13.5px);
   line-height: 1.45;
   margin: 0;
   flex: 1;
@@ -1534,7 +1534,7 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .speaking-tile-cta {
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;
-  font-size: 12.5px;
+  font-size: clamp(11.5px, 0.95vw, 12.5px);
   border-radius: 999px;
   padding: 7px 15px;
   margin-top: 6px;
