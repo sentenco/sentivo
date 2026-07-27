@@ -878,13 +878,6 @@ export default function Library() {
               <span className="speaking-eyebrow">Sentivo · Speaking</span>
               <h1 className="speaking-title">Three tracks, three goals</h1>
               <p className="speaking-sub">Every Speaking course is built around one gap, not a general level. Pick the track that matches what a student is missing.</p>
-              <div className="speaking-ladder">
-                <span className="speaking-ladder-item speaking-ladder-item--forge"><b>Forge</b> A2</span>
-                <span className="speaking-ladder-arrow">→</span>
-                <span className="speaking-ladder-item speaking-ladder-item--shift"><b>Shift</b> A2–B1</span>
-                <span className="speaking-ladder-arrow">→</span>
-                <span className="speaking-ladder-item speaking-ladder-item--ascend"><b>Ascend</b> C1</span>
-              </div>
             </div>
           <div className="speaking-grid">
             <a href="/library/forge" className="speaking-tile speaking-tile--forge">
@@ -1458,26 +1451,6 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   color: var(--muted);
   margin: 0 0 clamp(14px, 2vw, 22px);
 }
-.speaking-ladder {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  flex-wrap: wrap;
-}
-.speaking-ladder-item {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 600;
-  font-size: clamp(11.5px, 1vw, 13px);
-  border-radius: 999px;
-  padding: clamp(5px, 0.5vw, 6px) clamp(11px, 1vw, 14px);
-}
-.speaking-ladder-item b { font-family: 'Fredoka', sans-serif; font-weight: 700; margin-right: 4px; }
-.speaking-ladder-item--forge { background: #FBE7C6; color: #7A4A15; }
-.speaking-ladder-item--shift { background: #FFDBD5; color: #8C2E22; }
-.speaking-ladder-item--ascend { background: #D6F2E9; color: #0E5B4C; }
-.speaking-ladder-arrow { color: var(--muted); font-size: clamp(12px, 1vw, 14px); }
-
 .speaking-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
