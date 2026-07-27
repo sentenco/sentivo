@@ -858,7 +858,7 @@ export default function Library() {
           />
         </div>
       ) : (
-      <main className="content">
+      <main className={`content ${category === "Articles" ? "content--wide" : ""}`}>
                 <div className={`grid-wrap ${category === "All" && !query.trim() && !showAllToday ? "grid-wrap--today" : (category === "Articles" || category === "Grammar" || category === "Reading" || category === "Speaking") ? "grid-wrap--top" : ""}`} ref={gridWrapRef}>
         {category === "All" && !query.trim() && !showAllToday ? (
           toolsLoading ? (
@@ -1394,6 +1394,7 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   flex-direction: column;
   overflow: hidden;
 }
+.content--wide { max-width: 1600px; }
 
 .empty-msg { font-size: 14px; opacity: 0.6; padding: 30px 0; text-align: center; }
 
@@ -1523,12 +1524,12 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 }
 
 /* ---------- Articles: The Sentivo Gazette ---------- */
-.gaz-page { width: 100%; max-width: 1040px; margin: 0 auto; display: flex; flex-direction: column; }
+.gaz-page { width: 100%; max-width: 1500px; margin: 0 auto; display: flex; flex-direction: column; }
 .gaz-masthead { text-align: center; padding-bottom: 6px; }
 .gaz-nameplate {
   font-family: 'Fredoka', sans-serif;
   font-weight: 700;
-  font-size: 28px;
+  font-size: clamp(28px, 2.6vw, 38px);
   margin: 0 0 4px;
   color: var(--ink);
 }
@@ -1553,10 +1554,10 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 
 .gaz-lead {
   display: grid;
-  grid-template-columns: 1fr 260px;
-  gap: 26px;
+  grid-template-columns: 1fr 360px;
+  gap: clamp(26px, 3vw, 42px);
   align-items: center;
-  padding: 14px 0 12px;
+  padding: clamp(14px, 1.6vw, 22px) 0 clamp(12px, 1.4vw, 18px);
   border-bottom: 1px solid var(--hair);
   cursor: pointer;
   background: none;
@@ -1564,37 +1565,37 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   text-align: left;
   width: 100%;
 }
-.gaz-lead-kicker { font-family: 'Quicksand', sans-serif; font-weight: 800; font-size: 9.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--rust); margin-bottom: 6px; }
-.gaz-lead-title { font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 21px; line-height: 1.16; margin: 0 0 6px; color: var(--ink); text-wrap: balance; }
+.gaz-lead-kicker { font-family: 'Quicksand', sans-serif; font-weight: 800; font-size: clamp(9.5px, 0.8vw, 11.5px); letter-spacing: 0.1em; text-transform: uppercase; color: var(--rust); margin-bottom: 8px; }
+.gaz-lead-title { font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: clamp(21px, 2.4vw, 32px); line-height: 1.16; margin: 0 0 10px; color: var(--ink); text-wrap: balance; }
 .gaz-lead-dek {
   font-family: 'Quicksand', sans-serif;
-  font-size: 12.5px;
+  font-size: clamp(12.5px, 1.05vw, 15.5px);
   color: var(--ink-soft);
-  line-height: 1.4;
-  margin: 0 0 10px;
-  max-width: 460px;
+  line-height: 1.45;
+  margin: 0 0 12px;
+  max-width: 640px;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
-.gaz-lead-meta { display: flex; align-items: center; gap: 7px; font-family: 'Quicksand', sans-serif; font-size: 10.5px; color: var(--muted); }
+.gaz-lead-meta { display: flex; align-items: center; gap: 7px; font-family: 'Quicksand', sans-serif; font-size: clamp(10.5px, 0.85vw, 12px); color: var(--muted); }
 .gaz-byline { font-weight: 700; color: var(--ink-soft); }
 .gaz-editions { color: var(--rust); font-weight: 700; }
 .gaz-lead-art {
-  height: 118px;
-  border-radius: 6px;
+  height: clamp(118px, 13vw, 200px);
+  border-radius: 8px;
   background: linear-gradient(135deg, var(--rust-soft, rgba(124,92,252,0.14)) 0%, var(--dusk-soft, rgba(22,191,174,0.14)) 100%);
   display: flex; align-items: center; justify-content: center;
-  font-size: 40px;
+  font-size: clamp(40px, 4vw, 64px);
 }
 
-.gaz-grid { display: grid; grid-template-columns: repeat(3, 1fr); column-gap: 24px; }
+.gaz-grid { display: grid; grid-template-columns: repeat(3, 1fr); column-gap: clamp(24px, 3vw, 44px); row-gap: 4px; }
 .gaz-story {
   position: relative;
   display: flex;
-  gap: 11px;
-  padding: 12px 0;
+  gap: clamp(11px, 1.2vw, 16px);
+  padding: clamp(12px, 1.4vw, 18px) 0;
   border-top: 1px solid var(--hair);
   background: none;
   border-left: none; border-right: none; border-bottom: none;
@@ -1606,33 +1607,33 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .gaz-story:not(:nth-child(3n))::after {
   content: "";
   position: absolute;
-  top: 12px; bottom: 12px; right: -12px;
+  top: 12px; bottom: 12px; right: calc(clamp(24px, 3vw, 44px) / -2);
   width: 1px;
   background: var(--hair);
 }
 .gaz-story--soon { cursor: default; opacity: 0.55; }
-.gaz-thumb { width: 50px; height: 50px; flex-shrink: 0; border-radius: 5px; display: flex; align-items: center; justify-content: center; font-size: 19px; }
+.gaz-thumb { width: clamp(50px, 4.6vw, 68px); height: clamp(50px, 4.6vw, 68px); flex-shrink: 0; border-radius: 7px; display: flex; align-items: center; justify-content: center; font-size: clamp(19px, 1.8vw, 26px); }
 .gaz-thumb--tech { background: linear-gradient(135deg, rgba(22,191,174,0.18), transparent); }
 .gaz-thumb--work { background: linear-gradient(135deg, rgba(124,92,252,0.16), transparent); }
 .gaz-thumb--planet { background: linear-gradient(135deg, rgba(255,182,72,0.2), transparent); }
 .gaz-thumb--daily { background: linear-gradient(135deg, rgba(255,138,76,0.18), transparent); }
 .gaz-thumb--culture { background: linear-gradient(135deg, rgba(124,92,252,0.16), rgba(255,138,76,0.16)); }
 .gaz-story-body { min-width: 0; }
-.gaz-story-kicker { font-family: 'Quicksand', sans-serif; font-weight: 800; font-size: 8.5px; letter-spacing: 0.07em; text-transform: uppercase; color: var(--rust); margin-bottom: 3px; }
+.gaz-story-kicker { font-family: 'Quicksand', sans-serif; font-weight: 800; font-size: clamp(8.5px, 0.7vw, 10px); letter-spacing: 0.07em; text-transform: uppercase; color: var(--rust); margin-bottom: 4px; }
 .gaz-story-title {
   font-family: 'Fredoka', sans-serif;
   font-weight: 600;
-  font-size: 12px;
-  line-height: 1.25;
-  margin: 0 0 4px;
+  font-size: clamp(12px, 1.15vw, 15.5px);
+  line-height: 1.28;
+  margin: 0 0 5px;
   color: var(--ink);
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
-.gaz-story-meta { font-family: 'Quicksand', sans-serif; font-size: 9px; color: var(--muted); }
-.gaz-soon { font-weight: 700; letter-spacing: 0.03em; text-transform: uppercase; font-size: 8.5px; }
+.gaz-story-meta { font-family: 'Quicksand', sans-serif; font-size: clamp(9px, 0.75vw, 10.5px); color: var(--muted); }
+.gaz-soon { font-weight: 700; letter-spacing: 0.03em; text-transform: uppercase; font-size: clamp(8.5px, 0.7vw, 10px); }
 
 /* ---------- Grammar: The Grammar Garden ---------- */
 .gdn-page {
