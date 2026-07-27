@@ -873,32 +873,51 @@ export default function Library() {
         ) : category === "Reading" ? (
           <BookshelfFeature items={filtered} navigate={navigate} />
         ) : category === "Speaking" ? (
-          <div className="speaking-page">
-            <div className="speaking-hero">
-              <span className="speaking-eyebrow">Sentivo · Speaking</span>
-              <h1 className="speaking-title">Gaps</h1>
-              <p className="speaking-sub">Every Speaking course targets one gap, not a general level. Pick the track that matches what a student is missing.</p>
+          <div className="spklab-page">
+            <div className="spklab-hero">
+              <span className="spklab-eyebrow">Sentivo · Speaking</span>
+              <h1 className="spklab-title">Diagnose the gap. Prescribe the track.</h1>
+              <p className="spklab-sub">Every Speaking course is built around one identified gap, not a general level.</p>
             </div>
-          <div className="speaking-grid">
-            <a href="/library/forge" className="speaking-tile speaking-tile--forge">
-              <span className="speaking-tile-kicker">Level A2</span>
-              <h3 className="speaking-tile-title">FORGE</h3>
-              <p className="speaking-tile-desc">Build real vocabulary through pictures, gaps, echoes, and question chains.</p>
-              <span className="speaking-tile-cta">Open FORGE →</span>
-            </a>
-            <a href="/library/shift" className="speaking-tile speaking-tile--shift">
-              <span className="speaking-tile-kicker">Level A2-B1</span>
-              <h3 className="speaking-tile-title">SHIFT</h3>
-              <p className="speaking-tile-desc">Fast tense choice and self-repair under pressure, for students who already know the grammar.</p>
-              <span className="speaking-tile-cta">Open SHIFT →</span>
-            </a>
-            <a href="/library/ascend" className="speaking-tile speaking-tile--ascend">
-              <span className="speaking-tile-kicker">Level C1</span>
-              <h3 className="speaking-tile-title">ASCEND</h3>
-              <p className="speaking-tile-desc">Precision, structure, and diplomatic control for students who already sound fluent.</p>
-              <span className="speaking-tile-cta">Open ASCEND →</span>
-            </a>
-          </div>
+            <div className="spklab-lane"></div>
+            <div className="spklab-grid">
+              <a href="/library/forge" className="spklab-card spklab-card--forge">
+                <div className="spklab-card-head"><span>Case 01</span><span className="spklab-tag">Level A2</span></div>
+                <div className="spklab-body">
+                  <div className="spklab-label">Gap identified</div>
+                  <p className="spklab-gap">Thin working vocabulary</p>
+                  <h3 className="spklab-name">Forge</h3>
+                  <p className="spklab-desc">Build real vocabulary through pictures, gaps, echoes, and question chains.</p>
+                  <div className="spklab-readout"><span>Track</span><b>A Day at Work</b></div>
+                  <div className="spklab-readout"><span>Dosage</span><b>10 lessons</b></div>
+                  <span className="spklab-cta">Open Forge →</span>
+                </div>
+              </a>
+              <a href="/library/shift" className="spklab-card spklab-card--shift">
+                <div className="spklab-card-head"><span>Case 02</span><span className="spklab-tag">Level A2-B1</span></div>
+                <div className="spklab-body">
+                  <div className="spklab-label">Gap identified</div>
+                  <p className="spklab-gap">Slow tense self-repair</p>
+                  <h3 className="spklab-name">Shift</h3>
+                  <p className="spklab-desc">Fast tense choice and self-repair under pressure, for students who already know the grammar.</p>
+                  <div className="spklab-readout"><span>Track</span><b>Tense Control Reset</b></div>
+                  <div className="spklab-readout"><span>Dosage</span><b>10 lessons</b></div>
+                  <span className="spklab-cta">Open Shift →</span>
+                </div>
+              </a>
+              <a href="/library/ascend" className="spklab-card spklab-card--ascend">
+                <div className="spklab-card-head"><span>Case 03</span><span className="spklab-tag">Level C1</span></div>
+                <div className="spklab-body">
+                  <div className="spklab-label">Gap identified</div>
+                  <p className="spklab-gap">Imprecise, unstructured speech</p>
+                  <h3 className="spklab-name">Ascend</h3>
+                  <p className="spklab-desc">Precision, structure, and diplomatic control for students who already sound fluent.</p>
+                  <div className="spklab-readout"><span>Track</span><b>Business + AI</b></div>
+                  <div className="spklab-readout"><span>Dosage</span><b>10 lessons</b></div>
+                  <span className="spklab-cta">Open Ascend →</span>
+                </div>
+              </a>
+            </div>
           </div>
         ) : toolsLoading ? (
           <p className="empty-msg">Loading library…</p>
@@ -1416,110 +1435,95 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   height: 100%;
 }
 
-.speaking-page {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.spklab-page {
   width: 100%;
-  max-width: 1040px;
+  max-width: 1080px;
+  background:
+    repeating-linear-gradient(180deg, rgba(255,255,255,0.5) 0px, rgba(255,255,255,0.5) 1px, transparent 1px, transparent 64px),
+    linear-gradient(180deg, #EEF3EA 0%, #E4ECDF 100%);
+  border-radius: 22px;
+  padding: clamp(26px, 3.6vw, 48px) clamp(20px, 3.2vw, 40px);
 }
-.speaking-hero {
-  text-align: center;
-  max-width: 560px;
-  margin: 0 auto clamp(16px, 3vw, 30px);
-}
-.speaking-eyebrow {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 700;
-  font-size: clamp(11px, 1vw, 12.5px);
-  letter-spacing: 1.2px;
+.spklab-hero { text-align: center; max-width: 560px; margin: 0 auto; }
+.spklab-eyebrow {
+  font-family: 'SF Mono', 'Menlo', Consolas, monospace;
+  font-size: clamp(10.5px, 0.9vw, 11px);
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--muted);
+  color: #5A6B4F;
 }
-.speaking-title {
+.spklab-title {
   font-family: 'Fredoka', sans-serif;
   font-weight: 700;
-  font-size: clamp(30px, 4.2vw, 46px);
-  color: var(--ink);
-  margin: 10px 0 12px;
+  font-size: clamp(26px, 3.6vw, 38px);
+  letter-spacing: -0.01em;
+  color: #22301B;
+  margin: 10px 0 10px;
 }
-.speaking-sub {
+.spklab-sub {
   font-family: 'Quicksand', sans-serif;
   font-weight: 500;
-  font-size: clamp(13px, 1.2vw, 15px);
+  font-size: clamp(13px, 1.1vw, 15px);
   line-height: 1.55;
-  color: var(--muted);
-  margin: 0 0 clamp(14px, 2vw, 22px);
+  color: #4E5C44;
+  margin: 0 auto;
 }
-.speaking-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: clamp(12px, 1.8vw, 22px);
-  width: 100%;
-  max-width: 1040px;
-}
-.speaking-tile {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  align-items: flex-start;
+.spklab-lane { position: relative; height: 2px; background: #C9D4BE; margin: clamp(26px, 3vw, 36px) 0; }
+.spklab-lane::before, .spklab-lane::after { content: ""; position: absolute; top: -3px; width: 8px; height: 8px; border-radius: 50%; background: #8FA37E; }
+.spklab-lane::before { left: 0; }
+.spklab-lane::after { right: 0; }
+
+.spklab-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(14px, 1.8vw, 22px); }
+.spklab-card {
+  display: block;
   text-decoration: none;
-  border-radius: 18px;
-  padding: clamp(18px, 2vw, 26px) clamp(16px, 1.8vw, 24px);
-  min-height: 220px;
-  box-shadow: 0 14px 30px rgba(0,0,0,0.14);
+  background: #FFFFFF;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 26px rgba(34,48,27,0.12);
+  position: relative;
   transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
-.speaking-tile:hover { transform: translateY(-3px); box-shadow: 0 20px 40px rgba(0,0,0,0.2); }
-.speaking-tile--forge { background: radial-gradient(circle at 20% 0%, #FFFBEA 0%, #FFF0BE 60%, #FFE28A 100%); }
-.speaking-tile--shift { background: radial-gradient(circle at 20% 0%, #EAF7E9 0%, #CFEDC9 60%, #B3E0A8 100%); }
-.speaking-tile--ascend { background: radial-gradient(circle at 20% 0%, #FFF1EF 0%, #FFDBD5 60%, #FFC3BA 100%); }
-.speaking-tile-kicker {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 700;
-  font-size: clamp(10px, 0.85vw, 11.5px);
-  letter-spacing: 0.6px;
-  text-transform: uppercase;
+.spklab-card:hover { transform: translateY(-3px); box-shadow: 0 16px 34px rgba(34,48,27,0.18); }
+.spklab-card::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 6px; }
+.spklab-card--forge::before { background: #E8A33D; }
+.spklab-card--shift::before { background: #D4453A; }
+.spklab-card--ascend::before { background: #2E8F7A; }
+
+.spklab-card-head {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 12px 18px 12px 22px;
+  color: #FFFFFF;
+  font-family: 'SF Mono', 'Menlo', Consolas, monospace;
+  font-size: 10.5px; letter-spacing: 0.06em; text-transform: uppercase;
 }
-.speaking-tile--forge .speaking-tile-kicker { color: #C98A00; }
-.speaking-tile--shift .speaking-tile-kicker { color: #2F7D32; }
-.speaking-tile--ascend .speaking-tile-kicker { color: #E1483B; }
-.speaking-tile-title {
-  font-family: 'Fredoka', sans-serif;
-  font-weight: 700;
-  font-size: clamp(22px, 2.2vw, 30px);
-  margin: 2px 0 0;
+.spklab-card--forge .spklab-card-head { background: #E8A33D; }
+.spklab-card--shift .spklab-card-head { background: #D4453A; }
+.spklab-card--ascend .spklab-card-head { background: #2E8F7A; }
+.spklab-tag { display: inline-block; padding: 3px 9px; border-radius: 999px; background: rgba(255,255,255,0.28); font-weight: 700; }
+
+.spklab-body { padding: 20px 20px 22px; }
+.spklab-label { font-family: 'SF Mono', 'Menlo', Consolas, monospace; font-size: 9.5px; letter-spacing: 0.08em; text-transform: uppercase; color: #9AA0A6; margin-bottom: 3px; }
+.spklab-gap { font-family: 'Quicksand', sans-serif; font-weight: 700; font-size: 13.5px; margin: 0 0 14px; }
+.spklab-card--forge .spklab-gap { color: #96631C; }
+.spklab-card--shift .spklab-gap { color: #A23A2F; }
+.spklab-card--ascend .spklab-gap { color: #1E7261; }
+.spklab-name { font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: clamp(22px, 2.1vw, 26px); color: #161B20; margin: 0 0 8px; }
+.spklab-desc { font-family: 'Quicksand', sans-serif; font-size: 12.5px; line-height: 1.5; color: #5C6873; margin: 0 0 16px; }
+.spklab-readout { display: flex; justify-content: space-between; font-family: 'SF Mono', 'Menlo', Consolas, monospace; font-size: 10.5px; color: #8A9280; border-top: 1px dashed #E7EAE2; padding-top: 8px; margin-top: 2px; }
+.spklab-readout + .spklab-readout { border-top: none; padding-top: 2px; }
+.spklab-readout b { color: #2B333B; }
+.spklab-cta {
+  display: block; text-align: center; margin-top: 14px;
+  font-family: 'Quicksand', sans-serif; font-weight: 700; font-size: 12.5px;
+  color: #FFFFFF; border-radius: 8px; padding: 10px 0;
 }
-.speaking-tile--forge .speaking-tile-title { color: #4A3B0F; }
-.speaking-tile--shift .speaking-tile-title { color: #1B3D1A; }
-.speaking-tile--ascend .speaking-tile-title { color: #4A211B; }
-.speaking-tile-desc {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 500;
-  font-size: clamp(12.5px, 1vw, 13.5px);
-  line-height: 1.45;
-  margin: 0;
-  flex: 1;
-}
-.speaking-tile--forge .speaking-tile-desc { color: #7A6B3F; }
-.speaking-tile--shift .speaking-tile-desc { color: #4F6B4A; }
-.speaking-tile--ascend .speaking-tile-desc { color: #8C5C52; }
-.speaking-tile-cta {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 700;
-  font-size: clamp(11.5px, 0.95vw, 12.5px);
-  border-radius: 999px;
-  padding: 7px 15px;
-  margin-top: 6px;
-  white-space: nowrap;
-  align-self: flex-start;
-}
-.speaking-tile--forge .speaking-tile-cta { background: #FFB800; color: #4A3B0F; }
-.speaking-tile--shift .speaking-tile-cta { background: #6FCB63; color: #1B3D1A; }
-.speaking-tile--ascend .speaking-tile-cta { background: #E1483B; color: #FFFFFF; }
+.spklab-card--forge .spklab-cta { background: #E8A33D; }
+.spklab-card--shift .spklab-cta { background: #D4453A; }
+.spklab-card--ascend .spklab-cta { background: #2E8F7A; }
 
 @media (max-width: 700px) {
-  .speaking-grid { grid-template-columns: 1fr; max-width: 420px; }
+  .spklab-grid { grid-template-columns: 1fr; }
 }
 
 /* ---------- Articles: The Sentivo Gazette ---------- */
