@@ -1695,9 +1695,7 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  background:
-    repeating-linear-gradient(180deg, rgba(255,255,255,0.5) 0px, rgba(255,255,255,0.5) 1px, transparent 1px, transparent 64px),
-    linear-gradient(180deg, #F2F2F0 0%, #E5E5E1 100%);
+  background: #EFEEEA;
   border-radius: 22px;
   padding: clamp(26px, 3.6vw, 48px) clamp(20px, 3.2vw, 40px) clamp(30px, 4vw, 52px);
 }
