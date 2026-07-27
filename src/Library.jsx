@@ -1150,7 +1150,7 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   gap: 28px;
   background:
     repeating-linear-gradient(180deg, rgba(255,255,255,0.5) 0px, rgba(255,255,255,0.5) 1px, transparent 1px, transparent 64px),
-    linear-gradient(180deg, #FFF7E8 0%, #FCE9C4 100%);
+    linear-gradient(180deg, #EAF3FC 0%, #D2E5F6 100%);
   border-radius: 22px;
   padding: clamp(22px, 3vw, 40px) clamp(20px, 3vw, 36px);
 }
@@ -1162,7 +1162,7 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   font-size: clamp(10.5px, 0.9vw, 11px);
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: #8A6B3A;
+  color: #4C6E8F;
   margin-bottom: 10px;
 }
 
@@ -1210,8 +1210,20 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .gc-eyebrow { font-family: 'Quicksand', sans-serif; font-size: 12px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ochre); margin: 0 0 8px; }
 
 .gc-briefs { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin: 12px 0 2px; }
-.gc-brief-col { position: relative; background: var(--card); border: 1px solid var(--hair); border-radius: 14px; padding: 14px 16px; transition: box-shadow .15s ease, border-color .15s ease; }
-.gc-brief-col:hover { border-color: rgba(43,42,74,0.22); box-shadow: 0 8px 20px rgba(43,42,74,0.12); }
+.gc-brief-col {
+  position: relative;
+  background: #FFFFFF;
+  border: 1px solid transparent;
+  border-top: 3px solid transparent;
+  border-radius: 14px;
+  padding: 14px 16px;
+  box-shadow: 0 6px 16px rgba(43,42,74,0.08);
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+.gc-brief-col:hover { transform: translateY(-2px); box-shadow: 0 10px 22px rgba(43,42,74,0.14); }
+.gc-brief-col.hue-coral { background: rgba(124,92,252,0.07); border-top-color: var(--rust); }
+.gc-brief-col.hue-gold { background: rgba(255,138,76,0.09); border-top-color: var(--ochre); }
+.gc-brief-col.hue-teal { background: rgba(22,191,174,0.08); border-top-color: var(--dusk); }
 .gc-brief-col .col-h { font-family: 'Quicksand', sans-serif; font-size: 11px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 5px; }
 .gc-brief-col.hue-coral .col-h { color: var(--rust); }
 .gc-brief-col.hue-gold .col-h { color: var(--ochre); }
