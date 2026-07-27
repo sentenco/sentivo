@@ -59,18 +59,12 @@ export default function SlideDeckPlayer() {
     <div className="spl-shell">
       <style>{CSS}</style>
 
-      <div className="spl-topbar">
-        <span className="spl-badge"><span className="spl-s-dot">S</span>entivo</span>
-        <span className="spl-counter">{index + 1} / {n}</span>
-      </div>
-
       <div className="spl-canvas-wrap">
         <div className="spl-canvas-frame">
-          {slide.title && (
-            <div className="spl-instruction-bar">
-              <h2 className="spl-title">{slide.title}</h2>
-            </div>
-          )}
+          <div className="spl-instruction-bar">
+            <span className="spl-badge"><span className="spl-s-dot">S</span>entivo</span>
+            {slide.title && <h2 className="spl-title">{slide.title}</h2>}
+          </div>
           <div className="spl-canvas-body">
             {(slide.elements || []).map((el) => (
               el.type === "text" ? (
@@ -127,20 +121,19 @@ const CSS = `
 
 .spl-missing { margin: auto; color: #9A93A8; font-size: 14px; }
 
-.spl-topbar { flex-shrink: 0; display: flex; align-items: center; justify-content: space-between; padding: 0 2px 14px; }
 .spl-badge {
   display: inline-flex; align-items: center; gap: 6px;
-  background: var(--navy); color: #FFFFFF;
-  padding: 8px 16px 8px 8px; border-radius: 999px;
-  font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 14px;
-  box-shadow: 0 4px 0 var(--coral-dark);
+  background: #FFFFFF; color: var(--navy);
+  padding: 6px 14px 6px 6px; border-radius: 999px;
+  font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 12.5px;
+  box-shadow: 0 3px 0 var(--coral-dark);
+  margin-bottom: 10px;
 }
 .spl-s-dot {
-  width: 22px; height: 22px; border-radius: 50%;
+  width: 18px; height: 18px; border-radius: 50%;
   background: var(--coral); color: #fff;
-  display: flex; align-items: center; justify-content: center; font-size: 12px;
+  display: flex; align-items: center; justify-content: center; font-size: 10px;
 }
-.spl-counter { font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 14px; color: #9A93A8; }
 
 .spl-canvas-wrap { flex: 1; min-height: 0; display: flex; align-items: center; justify-content: center; }
 .spl-canvas-frame {
@@ -155,7 +148,7 @@ const CSS = `
   display: flex;
   flex-direction: column;
 }
-.spl-instruction-bar { flex-shrink: 0; background: var(--navy); padding: clamp(14px, 2.4vw, 22px) clamp(20px, 3vw, 30px); }
+.spl-instruction-bar { flex-shrink: 0; background: var(--navy); padding: clamp(14px, 2.4vw, 22px) clamp(20px, 3vw, 30px) clamp(16px, 2.6vw, 24px); display: flex; flex-direction: column; align-items: flex-start; }
 .spl-title { font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: clamp(20px, 3vw, 30px); color: #FFF6E9; margin: 0; }
 
 .spl-canvas-body { position: relative; flex: 1; min-height: 0; }

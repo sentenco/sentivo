@@ -299,14 +299,10 @@ export default function SlideDeckEditor() {
       </div>
 
       <div className="sde-frame">
-        <div className="sde-topbar">
-          <span className="sde-badge"><span className="sde-s-dot">S</span>entivo</span>
-          <span className="sde-counter">{activeIndex + 1} / {n}</span>
-        </div>
-
         <div className="sde-canvas-wrap">
           <div className="sde-canvas-frame">
             <div className="sde-instruction-bar">
+              <span className="sde-badge"><span className="sde-s-dot">S</span>entivo</span>
               <input
                 className="sde-title-input"
                 value={slide.title}
@@ -491,22 +487,21 @@ const CSS = `
   padding: 0 20px;
 }
 
-.sde-topbar { display: flex; align-items: center; justify-content: space-between; padding: 0 2px 14px; }
 .sde-badge {
   display: inline-flex; align-items: center; gap: 6px;
-  background: var(--navy); color: #FFFFFF;
-  padding: 8px 16px 8px 8px; border-radius: 999px;
-  font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 14px;
-  box-shadow: 0 4px 0 var(--coral-dark);
+  background: #FFFFFF; color: var(--navy);
+  padding: 6px 14px 6px 6px; border-radius: 999px;
+  font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 12.5px;
+  box-shadow: 0 3px 0 var(--coral-dark);
+  margin-bottom: 10px;
 }
 .sde-s-dot {
-  width: 22px; height: 22px; border-radius: 50%;
+  width: 18px; height: 18px; border-radius: 50%;
   background: var(--coral); color: #fff;
-  display: flex; align-items: center; justify-content: center; font-size: 12px;
+  display: flex; align-items: center; justify-content: center; font-size: 10px;
 }
-.sde-counter { font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 14px; color: #9A93A8; }
 
-.sde-canvas-wrap { }
+.sde-canvas-wrap { margin-top: 4px; }
 .sde-canvas-frame {
   background: #FFFFFF;
   border-radius: 16px;
@@ -516,7 +511,7 @@ const CSS = `
   display: flex;
   flex-direction: column;
 }
-.sde-instruction-bar { flex-shrink: 0; background: var(--navy); padding: 16px 22px; }
+.sde-instruction-bar { flex-shrink: 0; background: var(--navy); padding: 18px 22px 20px; display: flex; flex-direction: column; align-items: flex-start; }
 .sde-title-input {
   width: 100%;
   font-family: 'Fredoka', sans-serif;
