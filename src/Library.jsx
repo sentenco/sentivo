@@ -192,6 +192,7 @@ function ArticlesFeature({ navigate }) {
   return (
     <div className="gaz-page">
       <div className="gaz-masthead">
+        <span className="gaz-eyebrow">Sentivo · Articles</span>
         <h1 className="gaz-nameplate">The Sentivo Gazette</h1>
         <div className="gaz-dateline">{dateline}</div>
       </div>
@@ -1529,8 +1530,28 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 }
 
 /* ---------- Articles: The Sentivo Gazette ---------- */
-.gaz-page { width: 100%; max-width: 1500px; margin: 0 auto; display: flex; flex-direction: column; }
+.gaz-page {
+  width: 100%;
+  max-width: 1500px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  background:
+    repeating-linear-gradient(180deg, rgba(255,255,255,0.5) 0px, rgba(255,255,255,0.5) 1px, transparent 1px, transparent 64px),
+    linear-gradient(180deg, #F2F2F0 0%, #E5E5E1 100%);
+  border-radius: 22px;
+  padding: clamp(26px, 3.6vw, 48px) clamp(20px, 3.2vw, 40px) clamp(30px, 4vw, 52px);
+}
 .gaz-masthead { text-align: center; padding-bottom: 6px; }
+.gaz-eyebrow {
+  display: block;
+  font-family: 'SF Mono', 'Menlo', Consolas, monospace;
+  font-size: clamp(10.5px, 0.9vw, 11px);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #6B6B67;
+  margin-bottom: 10px;
+}
 .gaz-nameplate {
   font-family: 'Fredoka', sans-serif;
   font-weight: 700;
@@ -1540,7 +1561,7 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 }
 .gaz-dateline { font-family: 'Quicksand', sans-serif; font-size: 10.5px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; }
 .gaz-rule-thick { height: 3px; background: var(--ink); margin-bottom: 2px; }
-.gaz-rule-thin { height: 1px; background: var(--hair); }
+.gaz-rule-thin { height: 1px; background: #CFCFC9; }
 
 .gaz-topics { display: flex; justify-content: center; flex-wrap: wrap; padding: 7px 0; }
 .gaz-topic {
@@ -1551,7 +1572,7 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   text-transform: uppercase;
   color: var(--ink-soft);
   padding: 0 16px;
-  border-right: 1px solid var(--hair);
+  border-right: 1px solid #CFCFC9;
   cursor: default;
 }
 .gaz-topic:last-child { border-right: none; }
@@ -1563,7 +1584,7 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   gap: clamp(26px, 3vw, 42px);
   align-items: center;
   padding: clamp(14px, 1.6vw, 22px) 0 clamp(12px, 1.4vw, 18px);
-  border-bottom: 1px solid var(--hair);
+  border-bottom: 1px solid #CFCFC9;
   cursor: pointer;
   background: none;
   border-left: none; border-right: none; border-top: none;
@@ -1590,7 +1611,7 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .gaz-lead-art {
   height: clamp(118px, 13vw, 200px);
   border-radius: 8px;
-  background: linear-gradient(135deg, var(--rust-soft, rgba(124,92,252,0.14)) 0%, var(--dusk-soft, rgba(22,191,174,0.14)) 100%);
+  background: linear-gradient(135deg, #D9D9D3 0%, #C4C4BC 100%);
   display: flex; align-items: center; justify-content: center;
   font-size: clamp(40px, 4vw, 64px);
 }
@@ -1601,7 +1622,7 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   display: flex;
   gap: clamp(11px, 1.2vw, 16px);
   padding: clamp(12px, 1.4vw, 18px) 0;
-  border-top: 1px solid var(--hair);
+  border-top: 1px solid #CFCFC9;
   background: none;
   border-left: none; border-right: none; border-bottom: none;
   text-align: left;
@@ -1614,7 +1635,7 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   position: absolute;
   top: 12px; bottom: 12px; right: calc(clamp(24px, 3vw, 44px) / -2);
   width: 1px;
-  background: var(--hair);
+  background: #CFCFC9;
 }
 .gaz-story--soon { cursor: default; opacity: 0.55; }
 .gaz-thumb { width: clamp(50px, 4.6vw, 68px); height: clamp(50px, 4.6vw, 68px); flex-shrink: 0; border-radius: 7px; display: flex; align-items: center; justify-content: center; font-size: clamp(19px, 1.8vw, 26px); }
