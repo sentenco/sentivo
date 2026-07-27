@@ -246,9 +246,9 @@ function ArticlesFeature({ navigate }) {
 }
 
 const GRAMMAR_MODULES = [
-  { num: "BED 01", icon: "🌻", title: "Parts of Speech", spec: "8 word classes across 6 topics. One Lesson, one Assessment each. A1–C2.", href: "/library/grammar/parts-of-speech", ready: true },
-  { num: "BED 02", icon: "🌿", title: "Verb Tenses", spec: "All 12 English tenses. One Discussion, one Test lesson each. A1–C2.", href: "/library/grammar/verb-tenses", ready: true },
-  { num: "BED 03", icon: "🌰", title: "Sentence Structure", spec: "Clauses, word order, and how simple sentences become complex ones.", href: null, ready: false },
+  { num: "BED 01", icon: "🌻", title: "Parts of Speech", spec: "8 word classes across 6 topics. One Lesson, one Assessment each. A1–C2.", href: "/library/grammar/parts-of-speech", ready: true, hue: "leaf" },
+  { num: "BED 02", icon: "🌿", title: "Verb Tenses", spec: "All 12 English tenses. One Discussion, one Test lesson each. A1–C2.", href: "/library/grammar/verb-tenses", ready: true, hue: "gold" },
+  { num: "BED 03", icon: "🌰", title: "Sentence Structure", spec: "Clauses, word order, and how simple sentences become complex ones.", href: null, ready: false, hue: "soil" },
 ];
 const GRAMMAR_PER_PAGE = 8;
 
@@ -261,9 +261,11 @@ function GrammarFeature({ navigate }) {
   return (
     <div className="gdn-page">
       <div className="gdn-masthead">
+        <span className="gdn-eyebrow">Sentivo · Grammar</span>
         <h1 className="gdn-nameplate"><span className="gdn-nameplate-pill">🌱 The Grammar Garden</span></h1>
         <p className="gdn-sub">Language grows from the roots up — plant a rule, watch a sentence bloom.</p>
       </div>
+      <div className="gdn-row"></div>
 
       <div className="gdn-beds">
         {pageItems.map((m) =>
@@ -271,27 +273,25 @@ function GrammarFeature({ navigate }) {
             <a
               key={m.num}
               href={m.href}
-              className="gdn-bed"
+              className={`gdn-bed gdn-bed--${m.hue}`}
               onClick={(e) => { e.preventDefault(); navigate(m.href); }}
             >
-              <div className="gdn-bed-soil" />
+              <div className="gdn-bed-head"><span>{m.num}</span><span className="gdn-bed-tag">Ready</span></div>
               <div className="gdn-bed-body">
                 <div className="gdn-bed-icon">{m.icon}</div>
-                <div className="gdn-bed-num">{m.num}</div>
                 <h3 className="gdn-bed-title">{m.title}</h3>
                 <p className="gdn-bed-spec">{m.spec}</p>
                 <span className="gdn-bed-cta">Tend this bed →</span>
               </div>
             </a>
           ) : (
-            <div key={m.num} className="gdn-bed gdn-bed--empty">
-              <div className="gdn-bed-soil" />
+            <div key={m.num} className={`gdn-bed gdn-bed--${m.hue} gdn-bed--empty`}>
+              <div className="gdn-bed-head"><span>{m.num}</span><span className="gdn-bed-tag">Not planted</span></div>
               <div className="gdn-bed-body">
                 <div className="gdn-bed-icon">{m.icon}</div>
-                <div className="gdn-bed-num">{m.num}</div>
                 <h3 className="gdn-bed-title">{m.title}</h3>
                 <p className="gdn-bed-spec">{m.spec}</p>
-                <span className="gdn-bed-cta">Not yet planted</span>
+                <span className="gdn-bed-cta">Coming soon</span>
               </div>
             </div>
           )
@@ -1640,57 +1640,92 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 
 /* ---------- Grammar: The Grammar Garden ---------- */
 .gdn-page {
-  --leaf: #4C9A5D;
-  --leaf-soft: rgba(76,154,93,0.13);
-  --soil: #9B7653;
-  --soil-soft: rgba(155,118,83,0.18);
+  --leaf: #4C9A5D; --leaf-deep: #2E6E3D;
+  --gold: #E3A73C; --gold-deep: #96631C;
+  --soil: #8A6748; --soil-deep: #5C452F;
   width: 100%;
-  max-width: 1040px;
+  max-width: 1080px;
   margin: 0 auto;
-  display: flex;
-  flex-direction: column;
+  background:
+    repeating-linear-gradient(180deg, rgba(255,255,255,0.5) 0px, rgba(255,255,255,0.5) 1px, transparent 1px, transparent 64px),
+    linear-gradient(180deg, #F3EEE1 0%, #EAE1CC 100%);
+  border-radius: 22px;
+  padding: clamp(26px, 3.6vw, 48px) clamp(20px, 3.2vw, 40px);
 }
-.gdn-masthead {
-  text-align: center;
-  padding-bottom: 8px;
+.gdn-masthead { text-align: center; }
+.gdn-eyebrow {
+  font-family: 'SF Mono', 'Menlo', Consolas, monospace;
+  font-size: clamp(10.5px, 0.9vw, 11px);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #7A6944;
 }
-.gdn-nameplate { margin: 0 0 6px; }
+.gdn-nameplate { margin: 10px 0 6px; }
 .gdn-nameplate-pill {
   display: inline-flex;
   align-items: center;
   gap: 10px;
   font-family: 'Fredoka', sans-serif;
   font-weight: 700;
-  font-size: 28px;
-  color: var(--ink);
-  background: var(--leaf-soft);
-  padding: 6px 22px 9px;
-  border-radius: 999px;
+  font-size: clamp(26px, 3.4vw, 36px);
+  letter-spacing: -0.01em;
+  color: #33291A;
 }
-.gdn-sub { font-family: 'Quicksand', sans-serif; font-size: 13px; color: var(--muted); margin: 0 auto; max-width: 460px; }
+.gdn-sub { font-family: 'Quicksand', sans-serif; font-weight: 500; font-size: clamp(13px, 1.1vw, 15px); color: #6B5C3E; margin: 0 auto; max-width: 460px; }
+.gdn-row { position: relative; height: 2px; background: #DACCA6; margin: clamp(26px, 3vw, 36px) 0; }
+.gdn-row::before, .gdn-row::after { content: ""; position: absolute; top: -3px; width: 8px; height: 8px; border-radius: 50%; background: #B99B5F; }
+.gdn-row::before { left: 0; }
+.gdn-row::after { right: 0; }
 
-.gdn-beds { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; padding: 18px 0 6px; }
+.gdn-beds { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(14px, 1.8vw, 22px); }
 .gdn-bed {
   position: relative;
   display: block;
-  background: var(--card);
-  border: 1px solid var(--hair);
-  border-radius: 12px;
+  background: #FFFFFF;
+  border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 6px 16px rgba(76,154,93,0.06);
+  box-shadow: 0 10px 26px rgba(51,41,26,0.12);
   text-decoration: none;
   cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
-.gdn-bed-soil { height: 7px; background: linear-gradient(90deg, var(--soil), var(--soil-soft)); }
-.gdn-bed-body { padding: 12px 13px 13px; }
-.gdn-bed-icon { font-size: 18px; margin-bottom: 5px; }
-.gdn-bed-num { font-family: 'Quicksand', sans-serif; font-size: 9px; color: var(--leaf); font-weight: 700; letter-spacing: 0.06em; margin-bottom: 5px; }
-.gdn-bed-title { font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 13px; margin: 0 0 5px; color: var(--ink); }
-.gdn-bed-spec { font-family: 'Quicksand', sans-serif; font-size: 10px; color: var(--ink-soft, var(--muted)); line-height: 1.35; margin: 0 0 10px; min-height: 42px; }
-.gdn-bed-cta { font-family: 'Quicksand', sans-serif; font-size: 9.5px; font-weight: 700; color: var(--leaf); }
-.gdn-bed--empty { opacity: 0.7; cursor: default; }
-.gdn-bed--empty .gdn-bed-soil { background: var(--hair); }
-.gdn-bed--empty .gdn-bed-cta { color: var(--muted); }
+.gdn-bed:hover { transform: translateY(-3px); box-shadow: 0 16px 34px rgba(51,41,26,0.18); }
+.gdn-bed::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 6px; }
+.gdn-bed--leaf::before { background: var(--leaf); }
+.gdn-bed--gold::before { background: var(--gold); }
+.gdn-bed--soil::before { background: var(--soil); }
+
+.gdn-bed-head {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 12px 18px 12px 22px;
+  color: #FFFFFF;
+  font-family: 'SF Mono', 'Menlo', Consolas, monospace;
+  font-size: 10.5px; letter-spacing: 0.06em; text-transform: uppercase;
+}
+.gdn-bed--leaf .gdn-bed-head { background: var(--leaf); }
+.gdn-bed--gold .gdn-bed-head { background: var(--gold); }
+.gdn-bed--soil .gdn-bed-head { background: var(--soil); }
+.gdn-bed-tag { display: inline-block; padding: 3px 9px; border-radius: 999px; background: rgba(255,255,255,0.28); font-weight: 700; }
+
+.gdn-bed-body { padding: 20px 20px 22px; }
+.gdn-bed-icon { font-size: clamp(22px, 2vw, 26px); margin-bottom: 8px; }
+.gdn-bed-title { font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: clamp(19px, 1.9vw, 22px); margin: 0 0 8px; color: #221B10; }
+.gdn-bed-spec { font-family: 'Quicksand', sans-serif; font-size: 12.5px; color: #6B5C3E; line-height: 1.5; margin: 0 0 18px; min-height: 42px; }
+.gdn-bed-cta {
+  display: block; text-align: center;
+  font-family: 'Quicksand', sans-serif; font-size: 12.5px; font-weight: 700;
+  color: #FFFFFF; border-radius: 8px; padding: 10px 0;
+}
+.gdn-bed--leaf .gdn-bed-cta { background: var(--leaf); }
+.gdn-bed--gold .gdn-bed-cta { background: var(--gold); }
+.gdn-bed--soil .gdn-bed-cta { background: var(--soil); }
+.gdn-bed--empty { cursor: default; }
+.gdn-bed--empty .gdn-bed-head { opacity: 0.55; }
+.gdn-bed--empty .gdn-bed-cta { opacity: 0.55; }
+
+@media (max-width: 700px) {
+  .gdn-beds { grid-template-columns: 1fr; }
+}
 
 /* ---------- Reading: Bookshelf ---------- */
 .bkshf-page { width: 100%; max-width: 1280px; margin: -10px auto 0; }
