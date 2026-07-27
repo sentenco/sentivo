@@ -318,8 +318,10 @@ function BookshelfFeature({ items, navigate }) {
   return (
     <div className="bkshf-page">
       <div className="bkshf-masthead">
+        <span className="bkshf-eyebrow">Sentivo · Reading</span>
         <h1><span className="bkshf-nameplate-pill">📖 Library</span></h1>
       </div>
+      <div className="bkshf-row"></div>
 
       {items.length === 0 ? (
         <p className="empty-msg">No stories yet.</p>
@@ -1728,8 +1730,26 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 }
 
 /* ---------- Reading: Bookshelf ---------- */
-.bkshf-page { width: 100%; max-width: 1280px; margin: -10px auto 0; }
-.bkshf-masthead { text-align: center; padding-bottom: 2px; }
+.bkshf-page {
+  width: 100%;
+  max-width: 1320px;
+  margin: -10px auto 0;
+  background:
+    repeating-linear-gradient(180deg, rgba(255,255,255,0.5) 0px, rgba(255,255,255,0.5) 1px, transparent 1px, transparent 64px),
+    linear-gradient(180deg, #EDF1F5 0%, #E2E8EE 100%);
+  border-radius: 22px;
+  padding: clamp(26px, 3.6vw, 48px) clamp(20px, 3.2vw, 40px) clamp(30px, 4vw, 52px);
+}
+.bkshf-masthead { text-align: center; }
+.bkshf-eyebrow {
+  display: block;
+  font-family: 'SF Mono', 'Menlo', Consolas, monospace;
+  font-size: clamp(10.5px, 0.9vw, 11px);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #5A6B7B;
+  margin-bottom: 10px;
+}
 .bkshf-nameplate-pill {
   display: inline-flex;
   align-items: center;
@@ -1738,13 +1758,17 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   font-weight: 700;
   font-size: clamp(24px, 2.4vw, 30px);
   letter-spacing: 0.08em;
-  color: var(--ink);
-  background: rgba(185,133,82,0.14);
+  color: #22303B;
+  background: rgba(185,133,82,0.18);
   padding: 6px 22px 9px;
   border-radius: 999px;
 }
+.bkshf-row { position: relative; height: 2px; background: #C7D2DB; margin: clamp(26px, 3vw, 36px) 0; }
+.bkshf-row::before, .bkshf-row::after { content: ""; position: absolute; top: -3px; width: 8px; height: 8px; border-radius: 50%; background: #92A6B7; }
+.bkshf-row::before { left: 0; }
+.bkshf-row::after { right: 0; }
 
-.bkshf-shelves { padding: 4px 0 0; }
+.bkshf-shelves { padding: 0; }
 .bkshf-shelf-group { width: fit-content; margin: 0 auto; }
 .bkshf-shelf-row { display: flex; justify-content: center; align-items: flex-end; flex-wrap: nowrap; gap: 18px; }
 .bkshf-book {
@@ -1778,8 +1802,9 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   margin: 3px 0 0;
   color: var(--ink);
   line-height: 1.25;
+  text-align: center;
 }
-.bkshf-book-title--onimg { position: absolute; z-index: 1; left: 8px; right: 8px; bottom: 7px; margin: 0; font-size: clamp(11px, 1.1vw, 13.5px); color: #FFFFFF; }
+.bkshf-book-title--onimg { position: absolute; z-index: 1; left: 8px; right: 8px; bottom: 7px; margin: 0; font-size: clamp(11px, 1.1vw, 13.5px); color: #FFFFFF; text-align: center; }
 
 .bkshf-shelf-ledge {
   width: calc(100% + 36px);
