@@ -11,8 +11,8 @@ const EDITION_KEYS = ["plain", "polished", "precise"];
 function openPlayer(slug) {
   const screenW = window.screen.availWidth || 1600;
   const screenH = window.screen.availHeight || 900;
-  const w = Math.min(900, screenW - 40);
-  const h = Math.min(760, screenH - 80);
+  const w = Math.min(680, screenW - 40);
+  const h = Math.min(960, screenH - 80);
   const left = Math.max(0, Math.floor((screenW - w) / 2));
   const top = Math.max(0, Math.floor((screenH - h) / 2));
 

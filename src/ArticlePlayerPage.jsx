@@ -194,7 +194,7 @@ const CSS = `
   min-height: 0;
   display: flex;
   flex-direction: column;
-  max-width: 760px;
+  max-width: 640px;
   width: 100%;
   margin: 0 auto;
   padding: 0;
@@ -203,37 +203,37 @@ const CSS = `
 
 .app-hero {
   flex-shrink: 0;
-  height: clamp(46px, 9vh, 90px);
+  height: clamp(56px, 8vh, 90px);
   background: linear-gradient(135deg, #3a3a3a, #111111);
   filter: grayscale(1);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: clamp(22px, 4vh, 38px);
+  font-size: clamp(26px, 3.6vh, 38px);
 }
 
 .app-title {
   flex-shrink: 0;
   font-family: 'Playfair Display', serif;
   font-weight: 900;
-  font-size: clamp(20px, 3.4vh, 34px);
-  line-height: 1.08;
+  font-size: clamp(24px, 3.4vh, 32px);
+  line-height: 1.1;
   letter-spacing: -0.01em;
   text-align: center;
   text-transform: uppercase;
-  margin: clamp(10px, 2vh, 18px) 26px clamp(6px, 1.2vh, 10px);
+  margin: clamp(14px, 2.2vh, 20px) 24px clamp(8px, 1.2vh, 12px);
 }
 .app-title em { font-style: italic; font-weight: 700; }
 
 .app-byline {
   flex-shrink: 0;
   font-family: 'Source Serif 4', serif;
-  font-size: 10.5px;
+  font-size: 12px;
   letter-spacing: 0.04em;
   text-transform: uppercase;
   color: #8A8578;
   text-align: center;
-  margin: 0 0 clamp(10px, 1.8vh, 18px);
+  margin: 0 0 clamp(14px, 2vh, 20px);
 }
 .app-dot { margin: 0 6px; }
 
@@ -242,14 +242,14 @@ const CSS = `
   min-height: 0;
   overflow: hidden;
   font-family: 'Source Serif 4', serif;
-  font-size: clamp(11px, 1.55vh, 14px);
-  line-height: 1.5;
+  font-size: clamp(15px, 1.9vh, 18px);
+  line-height: 1.55;
   color: #262626;
   columns: 2;
-  column-gap: 32px;
+  column-gap: 28px;
   column-rule: 1px solid #E2DED5;
   text-align: justify;
-  padding: 0 26px;
+  padding: 0 24px;
 }
 .app-columns p { margin: 0 0 12px; break-inside: avoid; }
 
@@ -307,14 +307,14 @@ const CSS = `
 .app-references {
   flex-shrink: 0;
   margin: 0 auto;
-  padding: 8px 26px;
+  padding: 10px 24px;
   border-top: 1px solid #EAE7E0;
   display: flex;
   flex-wrap: wrap;
   gap: 3px 14px;
   justify-content: center;
   font-family: 'Source Serif 4', serif;
-  font-size: 9.5px;
+  font-size: 11px;
   color: #A39B87;
 }
 
