@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getNotebookDesign } from "./notebookDesigns";
+import { getNotebookDesign, NOTEBOOK_STAGE_MARGIN } from "./notebookDesigns";
 
 const PAPER_STYLES = ["blank", "ruled", "grid"];
 const INK_COLORS = ["#2B2B2B", "#C0392B", "#1E5FBF", "#1E8F76", "#7C5CFC"];
@@ -44,71 +44,74 @@ export default function NotebookPage() {
     <div className="nbp-shell" style={{ background: design.frame }}>
       <style>{CSS}</style>
 
-      <div className="nbp-toolbar">
-        <div className="nbp-tool-group">
-          <label className="nbp-tool-label">Size</label>
-          <input
-            type="range"
-            min="14"
-            max="44"
-            value={fontSize}
-            onChange={(e) => setFontSize(Number(e.target.value))}
-            className="nbp-slider"
-          />
-        </div>
-
-        <div className="nbp-tool-group">
-          <select className="nbp-select" value={fontFace} onChange={(e) => setFontFace(e.target.value)}>
-            {FONT_FACES.map((f) => (
-              <option key={f.key} value={f.key}>{f.label}</option>
-            ))}
-          </select>
-        </div>
-
-        <div className="nbp-tool-group">
-          <button type="button" className="nbp-btn" onMouseDown={(e) => e.preventDefault()} onClick={() => exec("bold")}><b>B</b></button>
-          <button type="button" className="nbp-btn" onMouseDown={(e) => e.preventDefault()} onClick={() => exec("italic")}><i>I</i></button>
-          <button type="button" className="nbp-btn" onMouseDown={(e) => e.preventDefault()} onClick={() => exec("underline")}><u>U</u></button>
-        </div>
-
-        <div className="nbp-tool-group">
-          {["left", "center", "right", "justify"].map((a) => (
-            <button
-              key={a}
-              type="button"
-              className={`nbp-btn nbp-align-btn ${align === a ? "is-active" : ""}`}
-              onMouseDown={(e) => e.preventDefault()}
-              onClick={() => { setAlign(a); exec("justify" + a[0].toUpperCase() + a.slice(1)); }}
-              title={a}
-            >
-              {a === "left" ? "⯇" : a === "center" ? "≡" : a === "right" ? "⯈" : "☰"}
-            </button>
-          ))}
-        </div>
-
-        <div className="nbp-tool-group">
-          {INK_COLORS.map((c) => (
-            <button
-              key={c}
-              type="button"
-              className="nbp-swatch"
-              style={{ background: c }}
-              onMouseDown={(e) => e.preventDefault()}
-              onClick={() => exec("foreColor", c)}
-              aria-label={`Color ${c}`}
+      <div className="nbp-toolbar-wrap">
+        <div className="nbp-toolbar-handle">✏️ Tools</div>
+        <div className="nbp-toolbar-panel">
+          <div className="nbp-tool-group">
+            <label className="nbp-tool-label">Size</label>
+            <input
+              type="range"
+              min="14"
+              max="44"
+              value={fontSize}
+              onChange={(e) => setFontSize(Number(e.target.value))}
+              className="nbp-slider"
             />
-          ))}
-        </div>
+          </div>
 
-        <div className="nbp-tool-group">
-          <select className="nbp-select" value={paper} onChange={(e) => setPaper(e.target.value)}>
-            {PAPER_STYLES.map((p) => (
-              <option key={p} value={p}>{p[0].toUpperCase() + p.slice(1)} paper</option>
+          <div className="nbp-tool-group">
+            <select className="nbp-select" value={fontFace} onChange={(e) => setFontFace(e.target.value)}>
+              {FONT_FACES.map((f) => (
+                <option key={f.key} value={f.key}>{f.label}</option>
+              ))}
+            </select>
+          </div>
+
+          <div className="nbp-tool-group">
+            <button type="button" className="nbp-btn" onMouseDown={(e) => e.preventDefault()} onClick={() => exec("bold")}><b>B</b></button>
+            <button type="button" className="nbp-btn" onMouseDown={(e) => e.preventDefault()} onClick={() => exec("italic")}><i>I</i></button>
+            <button type="button" className="nbp-btn" onMouseDown={(e) => e.preventDefault()} onClick={() => exec("underline")}><u>U</u></button>
+          </div>
+
+          <div className="nbp-tool-group">
+            {["left", "center", "right", "justify"].map((a) => (
+              <button
+                key={a}
+                type="button"
+                className={`nbp-btn nbp-align-btn ${align === a ? "is-active" : ""}`}
+                onMouseDown={(e) => e.preventDefault()}
+                onClick={() => { setAlign(a); exec("justify" + a[0].toUpperCase() + a.slice(1)); }}
+                title={a}
+              >
+                {a === "left" ? "⯇" : a === "center" ? "≡" : a === "right" ? "⯈" : "☰"}
+              </button>
             ))}
-          </select>
-        </div>
+          </div>
 
-        <button type="button" className="nbp-clear-btn" onClick={handleClear}>Clear page</button>
+          <div className="nbp-tool-group">
+            {INK_COLORS.map((c) => (
+              <button
+                key={c}
+                type="button"
+                className="nbp-swatch"
+                style={{ background: c }}
+                onMouseDown={(e) => e.preventDefault()}
+                onClick={() => exec("foreColor", c)}
+                aria-label={`Color ${c}`}
+              />
+            ))}
+          </div>
+
+          <div className="nbp-tool-group">
+            <select className="nbp-select" value={paper} onChange={(e) => setPaper(e.target.value)}>
+              {PAPER_STYLES.map((p) => (
+                <option key={p} value={p}>{p[0].toUpperCase() + p.slice(1)} paper</option>
+              ))}
+            </select>
+          </div>
+
+          <button type="button" className="nbp-clear-btn" onClick={handleClear}>Clear page</button>
+        </div>
       </div>
 
       <div className="nbp-stage">
@@ -142,7 +145,7 @@ export default function NotebookPage() {
 }
 
 const CSS = `
-@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Quicksand:wght@500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Fredoka:wght@600;700&family=Quicksand:wght@500;600;700&display=swap');
 
 .nbp-missing {
   height: 100vh;
@@ -157,48 +160,89 @@ const CSS = `
   width: 100%;
   height: 100vh;
   overflow: hidden;
-  display: flex;
-  flex-direction: column;
+  position: relative;
   box-sizing: border-box;
 }
 .nbp-shell * { box-sizing: border-box; }
 
-.nbp-toolbar {
-  flex-shrink: 0;
+.nbp-toolbar-wrap {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 40;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.nbp-toolbar-handle {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #FFFFFF;
+  background: rgba(20,20,20,0.7);
+  backdrop-filter: blur(6px);
+  border-radius: 999px;
+  padding: 6px 14px;
+  user-select: none;
+  cursor: default;
+  transition: opacity 0.15s ease;
+}
+.nbp-toolbar-wrap:hover .nbp-toolbar-handle { opacity: 0; height: 0; padding-top: 0; padding-bottom: 0; overflow: hidden; }
+
+.nbp-toolbar-panel {
+  margin-top: 6px;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  pointer-events: none;
   display: flex;
   align-items: center;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 12px;
-  padding: 8px 14px;
-  background: rgba(255,255,255,0.92);
-  backdrop-filter: blur(6px);
-  border-bottom: 1px solid rgba(0,0,0,0.08);
+  background: rgba(20,20,20,0.82);
+  backdrop-filter: blur(10px);
+  border-radius: 14px;
+  padding: 0 16px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.28);
+  transition: max-height 0.22s ease, opacity 0.18s ease, padding 0.22s ease;
 }
-.nbp-tool-group { display: flex; align-items: center; gap: 5px; }
-.nbp-tool-label { font-family: 'Quicksand', sans-serif; font-size: 10.5px; font-weight: 700; color: #666; margin-right: 2px; }
+.nbp-toolbar-wrap:hover .nbp-toolbar-panel {
+  max-height: 90px;
+  opacity: 1;
+  pointer-events: auto;
+  padding: 10px 16px;
+}
 
-.nbp-slider { width: 90px; accent-color: #1E8F76; }
+.nbp-tool-group { display: flex; align-items: center; gap: 5px; }
+.nbp-tool-label { font-family: 'Quicksand', sans-serif; font-size: 10.5px; font-weight: 700; color: rgba(255,255,255,0.7); margin-right: 2px; }
+
+.nbp-slider { width: 80px; accent-color: #3FCDAF; }
 
 .nbp-select {
   font-family: 'Quicksand', sans-serif;
   font-size: 12px;
   font-weight: 600;
-  color: #2B2B2B;
-  background: #F1F3F2;
-  border: 1px solid #DCE3E0;
+  color: #FFFFFF;
+  background: rgba(255,255,255,0.14);
+  border: 1px solid rgba(255,255,255,0.2);
   border-radius: 8px;
   padding: 5px 8px;
   cursor: pointer;
 }
+.nbp-select option { color: #1B2B27; }
 
 .nbp-btn {
   min-width: 28px;
   height: 28px;
   font-family: 'Quicksand', sans-serif;
   font-size: 13px;
-  color: #2B2B2B;
-  background: #F1F3F2;
-  border: 1px solid #DCE3E0;
+  color: #FFFFFF;
+  background: rgba(255,255,255,0.14);
+  border: 1px solid rgba(255,255,255,0.2);
   border-radius: 7px;
   cursor: pointer;
   display: flex;
@@ -206,40 +250,40 @@ const CSS = `
   justify-content: center;
   padding: 0 6px;
 }
-.nbp-btn:hover { background: #E5EAE8; }
-.nbp-align-btn.is-active { background: #1E8F76; color: #FFFFFF; border-color: #1E8F76; }
+.nbp-btn:hover { background: rgba(255,255,255,0.24); }
+.nbp-align-btn.is-active { background: #3FCDAF; color: #10201B; border-color: #3FCDAF; }
 
 .nbp-swatch {
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  border: 2px solid rgba(0,0,0,0.12);
+  border: 2px solid rgba(255,255,255,0.35);
   cursor: pointer;
   padding: 0;
 }
 
 .nbp-clear-btn {
-  margin-left: auto;
   font-family: 'Quicksand', sans-serif;
   font-size: 11.5px;
   font-weight: 700;
   letter-spacing: 0.03em;
-  color: #C0392B;
-  background: rgba(192,57,43,0.08);
-  border: 1px solid rgba(192,57,43,0.25);
+  color: #FF8A78;
+  background: rgba(255,138,120,0.14);
+  border: 1px solid rgba(255,138,120,0.3);
   border-radius: 8px;
   padding: 6px 12px;
   cursor: pointer;
+  white-space: nowrap;
 }
-.nbp-clear-btn:hover { background: rgba(192,57,43,0.15); }
+.nbp-clear-btn:hover { background: rgba(255,138,120,0.24); }
 
 .nbp-stage {
-  flex: 1;
-  min-height: 0;
+  position: absolute;
+  inset: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 18px;
+  padding: ${NOTEBOOK_STAGE_MARGIN}px;
   overflow: auto;
 }
 
@@ -285,7 +329,7 @@ const CSS = `
 }
 
 @media (max-width: 560px) {
-  .nbp-toolbar { gap: 8px; padding: 6px 10px; }
+  .nbp-toolbar-panel { gap: 8px; }
   .nbp-tool-label { display: none; }
 }
 `;

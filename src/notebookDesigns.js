@@ -64,4 +64,9 @@ export function getNotebookDesign(key) {
   return DESIGNS.find((d) => d.key === key) || null;
 }
 
+// Shared with NotebookPage's .nbp-stage padding so the popup window JS
+// sizing (in NotebookHub) and the actual CSS layout agree on how much
+// frame to leave around the paper.
+export const NOTEBOOK_STAGE_MARGIN = 16;
+
 export default DESIGNS;
