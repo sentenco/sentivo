@@ -318,7 +318,7 @@ function BookshelfFeature({ items, navigate }) {
   return (
     <div className="bkshf-page">
       <div className="bkshf-masthead">
-        <h1><span className="bkshf-nameplate-pill">📖 Bookshelf</span></h1>
+        <h1><span className="bkshf-nameplate-pill">📖 Library</span></h1>
       </div>
 
       {items.length === 0 ? (
@@ -1689,28 +1689,28 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .gdn-bed--empty .gdn-bed-cta { color: var(--muted); }
 
 /* ---------- Reading: Bookshelf ---------- */
-.bkshf-page { width: 100%; max-width: 1040px; margin: -10px auto 0; }
+.bkshf-page { width: 100%; max-width: 1280px; margin: -10px auto 0; }
 .bkshf-masthead { text-align: center; padding-bottom: 2px; }
 .bkshf-nameplate-pill {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   font-family: 'Fredoka', sans-serif;
   font-weight: 700;
-  font-size: 19px;
+  font-size: clamp(24px, 2.4vw, 30px);
   color: var(--ink);
   background: rgba(185,133,82,0.14);
-  padding: 4px 16px 6px;
+  padding: 6px 22px 9px;
   border-radius: 999px;
 }
 
 .bkshf-shelves { padding: 4px 0 0; }
 .bkshf-shelf-group { width: fit-content; margin: 0 auto; }
-.bkshf-shelf-row { display: flex; justify-content: center; align-items: flex-end; flex-wrap: nowrap; gap: 12px; }
+.bkshf-shelf-row { display: flex; justify-content: center; align-items: flex-end; flex-wrap: nowrap; gap: 18px; }
 .bkshf-book {
   position: relative;
   flex: 0 0 auto;
-  width: clamp(95px, 15vw, 145px);
+  width: clamp(110px, 19vw, 190px);
   aspect-ratio: 2 / 3;
   border-radius: 7px 7px 3px 3px;
   overflow: hidden;
@@ -1734,18 +1734,18 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   position: relative; z-index: 1;
   font-family: 'Fredoka', sans-serif;
   font-weight: 600;
-  font-size: 11px;
+  font-size: clamp(11px, 1.1vw, 13.5px);
   margin: 3px 0 0;
   color: var(--ink);
   line-height: 1.25;
 }
-.bkshf-book-title--onimg { position: absolute; z-index: 1; left: 8px; right: 8px; bottom: 7px; margin: 0; font-size: 11px; color: #FFFFFF; }
+.bkshf-book-title--onimg { position: absolute; z-index: 1; left: 8px; right: 8px; bottom: 7px; margin: 0; font-size: clamp(11px, 1.1vw, 13.5px); color: #FFFFFF; }
 
 .bkshf-shelf-ledge {
-  width: calc(100% + 24px);
+  width: calc(100% + 36px);
   height: 9px;
   border-radius: 0 0 3px 3px;
-  margin: 0 0 12px -12px;
+  margin: 0 0 12px -18px;
   background: linear-gradient(180deg, #B98552 0%, #8A5F35 100%);
   box-shadow: 0 6px 9px rgba(74,54,35,0.22);
   position: relative;
