@@ -1212,6 +1212,7 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .gc-briefs { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin: 12px 0 2px; }
 .gc-brief-col {
   position: relative;
+  z-index: 1;
   background: #FFFFFF;
   border: 1px solid transparent;
   border-top: 3px solid transparent;
@@ -1220,10 +1221,10 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   box-shadow: 0 6px 16px rgba(43,42,74,0.08);
   transition: transform .15s ease, box-shadow .15s ease;
 }
-.gc-brief-col:hover { transform: translateY(-2px); box-shadow: 0 10px 22px rgba(43,42,74,0.14); }
-.gc-brief-col.hue-coral { background: rgba(124,92,252,0.07); border-top-color: var(--rust); }
-.gc-brief-col.hue-gold { background: rgba(255,138,76,0.09); border-top-color: var(--ochre); }
-.gc-brief-col.hue-teal { background: rgba(22,191,174,0.08); border-top-color: var(--dusk); }
+.gc-brief-col:hover { transform: translateY(-2px); box-shadow: 0 10px 22px rgba(43,42,74,0.14); z-index: 50; }
+.gc-brief-col.hue-coral { border-top-color: var(--rust); }
+.gc-brief-col.hue-gold { border-top-color: var(--ochre); }
+.gc-brief-col.hue-teal { border-top-color: var(--dusk); }
 .gc-brief-col .col-h { font-family: 'Quicksand', sans-serif; font-size: 11px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 5px; }
 .gc-brief-col.hue-coral .col-h { color: var(--rust); }
 .gc-brief-col.hue-gold .col-h { color: var(--ochre); }
