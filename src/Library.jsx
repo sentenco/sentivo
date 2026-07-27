@@ -1698,6 +1698,7 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   font-family: 'Fredoka', sans-serif;
   font-weight: 700;
   font-size: clamp(24px, 2.4vw, 30px);
+  letter-spacing: 0.08em;
   color: var(--ink);
   background: rgba(185,133,82,0.14);
   padding: 6px 22px 9px;
