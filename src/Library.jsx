@@ -439,8 +439,14 @@ function TodayFeature({ tools, onSeeAllLessons, navigate }) {
           <div className="gc-widget gc-widget--salary gc-widget--boxed">
             <ComingSoonWidget icon="🧾" title="Salary Tracker" description="Track your pay per class, all in one place." />
           </div>
-          <div className="gc-widget gc-widget--soon gc-widget--boxed">
-            <ComingSoonWidget icon="🎞️" title="Slide Deck Builder" description="Turn a lesson into a ready-to-teach slide deck." />
+          <div
+            className="gc-widget gc-widget--deck gc-widget--boxed gc-widget--clickable"
+            role="button"
+            tabIndex={0}
+            onClick={() => navigate("/library/slides")}
+            onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") navigate("/library/slides"); }}
+          >
+            <ReadyWidget icon="🎞️" title="Slide Deck Builder" description="Build a slide deck and present it live." />
           </div>
           <div
             className="gc-widget gc-widget--notebook gc-widget--boxed gc-widget--clickable"
@@ -1324,7 +1330,7 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   pointer-events: none;
 }
 .gc-widget--salary.gc-widget--boxed { background: linear-gradient(135deg, #FFCB66 0%, #E8A33D 100%); }
-.gc-widget--soon.gc-widget--boxed { background: linear-gradient(135deg, #FF9A6B 0%, #E5623A 100%); }
+.gc-widget--deck.gc-widget--boxed { background: linear-gradient(135deg, #FF9A6B 0%, #E5623A 100%); }
 .gc-widget--notebook.gc-widget--boxed { background: linear-gradient(135deg, #3FCDAF 0%, #1E8F76 100%); }
 .gc-widget--wheel.gc-widget--boxed { background: linear-gradient(135deg, #FF7C97 0%, #D6395F 100%); }
 .gc-widget--clickable { cursor: pointer; transition: transform 0.15s ease, box-shadow 0.15s ease; }
