@@ -1,21 +1,38 @@
-export const LAYOUTS = [
-  { key: "title", label: "Title", icon: "🔠", hint: "A big heading, good for section breaks." },
-  { key: "bullets", label: "Bullet list", icon: "📋", hint: "A heading with a list of points, one per line." },
-  { key: "image-text", label: "Image + text", icon: "🖼️", hint: "A caption for an image alongside a short note." },
-];
-
-export function newSlide(layout = "title") {
+export function newTextElement(x = 30, y = 40) {
   return {
     id: crypto.randomUUID(),
-    layout,
-    heading: "",
-    body: "",
-    imageNote: "",
+    type: "text",
+    x,
+    y,
+    w: 34,
+    fontSize: 22,
+    color: "#1B2A4A",
+    align: "left",
+    text: "",
+  };
+}
+
+export function newImageElement(src, x = 30, y = 30) {
+  return {
+    id: crypto.randomUUID(),
+    type: "image",
+    x,
+    y,
+    w: 28,
+    src,
+  };
+}
+
+export function newSlide(title = "") {
+  return {
+    id: crypto.randomUUID(),
+    title,
+    elements: [],
   };
 }
 
 export function newDeckSlides() {
-  return [newSlide("title")];
+  return [newSlide("")];
 }
 
 export function timeAgo(iso) {

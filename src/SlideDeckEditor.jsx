@@ -2,7 +2,9 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { supabase } from "./supabaseClient";
 import { useAuth } from "./AuthContext";
-import { LAYOUTS, newSlide } from "./slideDeckTypes";
+import { newSlide, newTextElement, newImageElement } from "./slideDeckTypes";
+
+const IMAGE_BUCKET = "slide-images";
 
 // Opens the read-only presenter as a standalone popup -- matching the
 // FORGE/ASCEND/Notebook chrome-less window.open pattern.
@@ -26,14 +28,22 @@ export default function SlideDeckEditor() {
   const navigate = useNavigate();
   const { user, loading: authLoading } = useAuth();
 
-  const [title, setTitle] = useState("");
+  const [deckTitle, setDeckTitle] = useState("");
   const [slides, setSlides] = useState([]);
   const [activeIndex, setActiveIndex] = useState(0);
   const [loading, setLoading] = useState(true);
   const [notFound, setNotFound] = useState(false);
-  const [status, setStatus] = useState("saved"); // "saved" | "saving" | "error"
+  const [status, setStatus] = useState("saved");
+  const [selectedId, setSelectedId] = useState(null);
+  const [libraryOpen, setLibraryOpen] = useState(false);
+  const [libraryImages, setLibraryImages] = useState([]);
+  const [uploading, setUploading] = useState(false);
+
   const saveTimer = useRef(null);
   const loadedRef = useRef(false);
+  const canvasRef = useRef(null);
+  const dragRef = useRef(null);
+  const fileInputRef = useRef(null);
 
   useEffect(() => {
     if (authLoading) return;
@@ -51,8 +61,8 @@ export default function SlideDeckEditor() {
       if (error || !data) {
         setNotFound(true);
       } else {
-        setTitle(data.title || "Untitled deck");
-        setSlides(data.slides && data.slides.length ? data.slides : [newSlide("title")]);
+        setDeckTitle(data.title || "Untitled deck");
+        setSlides(data.slides && data.slides.length ? data.slides : [newSlide()]);
         loadedRef.current = true;
       }
       setLoading(false);
@@ -60,6 +70,25 @@ export default function SlideDeckEditor() {
     load();
     return () => { isMounted = false; };
   }, [deckId, user, authLoading]);
+
+  useEffect(() => {
+    if (!user) return;
+    let isMounted = true;
+    async function loadLibrary() {
+      const { data, error } = await supabase.storage.from(IMAGE_BUCKET).list(user.id, { limit: 100, sortBy: { column: "created_at", order: "desc" } });
+      if (!isMounted || error || !data) return;
+      const images = data
+        .filter((f) => f.name)
+        .map((f) => {
+          const path = `${user.id}/${f.name}`;
+          const { data: pub } = supabase.storage.from(IMAGE_BUCKET).getPublicUrl(path);
+          return { name: f.name, url: pub.publicUrl };
+        });
+      setLibraryImages(images);
+    }
+    loadLibrary();
+    return () => { isMounted = false; };
+  }, [user]);
 
   const persist = useCallback((nextTitle, nextSlides) => {
     if (!loadedRef.current || !user) return;
@@ -75,23 +104,43 @@ export default function SlideDeckEditor() {
     }, 700);
   }, [deckId, user]);
 
-  function updateTitle(value) {
-    setTitle(value);
+  function updateDeckTitle(value) {
+    setDeckTitle(value);
     persist(value, slides);
   }
 
   function updateSlide(index, patch) {
     setSlides((prev) => {
       const next = prev.map((s, i) => (i === index ? { ...s, ...patch } : s));
-      persist(title, next);
+      persist(deckTitle, next);
       return next;
     });
   }
 
+  function updateElement(index, elementId, patch) {
+    setSlides((prev) => {
+      const next = prev.map((s, i) => {
+        if (i !== index) return s;
+        return { ...s, elements: s.elements.map((el) => (el.id === elementId ? { ...el, ...patch } : el)) };
+      });
+      persist(deckTitle, next);
+      return next;
+    });
+  }
+
+  function deleteElement(index, elementId) {
+    setSlides((prev) => {
+      const next = prev.map((s, i) => (i === index ? { ...s, elements: s.elements.filter((el) => el.id !== elementId) } : s));
+      persist(deckTitle, next);
+      return next;
+    });
+    setSelectedId(null);
+  }
+
   function addSlide() {
     setSlides((prev) => {
-      const next = [...prev, newSlide("title")];
-      persist(title, next);
+      const next = [...prev, newSlide()];
+      persist(deckTitle, next);
       setActiveIndex(next.length - 1);
       return next;
     });
@@ -99,24 +148,107 @@ export default function SlideDeckEditor() {
 
   function deleteSlide(index) {
     if (slides.length <= 1) return;
+    if (!window.confirm("Delete this slide?")) return;
     setSlides((prev) => {
       const next = prev.filter((_, i) => i !== index);
-      persist(title, next);
+      persist(deckTitle, next);
       return next;
     });
     setActiveIndex((i) => Math.max(0, Math.min(i, slides.length - 2)));
   }
 
-  function moveSlide(index, dir) {
-    const target = index + dir;
+  function moveSlide(dir) {
+    const target = activeIndex + dir;
     if (target < 0 || target >= slides.length) return;
     setSlides((prev) => {
       const next = [...prev];
-      [next[index], next[target]] = [next[target], next[index]];
-      persist(title, next);
+      [next[activeIndex], next[target]] = [next[target], next[activeIndex]];
+      persist(deckTitle, next);
       return next;
     });
     setActiveIndex(target);
+  }
+
+  function handleCanvasClick(e) {
+    if (e.target !== canvasRef.current) { setSelectedId(null); return; }
+    const rect = canvasRef.current.getBoundingClientRect();
+    const x = Math.min(85, Math.max(2, ((e.clientX - rect.left) / rect.width) * 100));
+    const y = Math.min(88, Math.max(4, ((e.clientY - rect.top) / rect.height) * 100));
+    const el = newTextElement(x, y);
+    setSlides((prev) => {
+      const next = prev.map((s, i) => (i === activeIndex ? { ...s, elements: [...s.elements, el] } : s));
+      persist(deckTitle, next);
+      return next;
+    });
+    setSelectedId(el.id);
+  }
+
+  function startDrag(e, elementId) {
+    e.preventDefault();
+    e.stopPropagation();
+    setSelectedId(elementId);
+    const rect = canvasRef.current.getBoundingClientRect();
+    dragRef.current = { elementId, rect };
+    window.addEventListener("pointermove", onDragMove);
+    window.addEventListener("pointerup", onDragEnd);
+  }
+
+  function onDragMove(e) {
+    if (!dragRef.current) return;
+    const { elementId, rect } = dragRef.current;
+    const x = Math.min(92, Math.max(0, ((e.clientX - rect.left) / rect.width) * 100));
+    const y = Math.min(94, Math.max(0, ((e.clientY - rect.top) / rect.height) * 100));
+    setSlides((prev) => prev.map((s, i) => (i === activeIndex ? { ...s, elements: s.elements.map((el) => (el.id === elementId ? { ...el, x, y } : el)) } : s)));
+  }
+
+  function onDragEnd() {
+    window.removeEventListener("pointermove", onDragMove);
+    window.removeEventListener("pointerup", onDragEnd);
+    dragRef.current = null;
+    setSlides((prev) => { persist(deckTitle, prev); return prev; });
+  }
+
+  async function handleUpload(e) {
+    const files = Array.from(e.target.files || []);
+    if (!files.length || !user) return;
+    setUploading(true);
+    for (const file of files) {
+      const path = `${user.id}/${crypto.randomUUID()}-${file.name}`;
+      const { error } = await supabase.storage.from(IMAGE_BUCKET).upload(path, file);
+      if (!error) {
+        const { data: pub } = supabase.storage.from(IMAGE_BUCKET).getPublicUrl(path);
+        setLibraryImages((prev) => [{ name: path.split("/")[1], url: pub.publicUrl }, ...prev]);
+      }
+    }
+    setUploading(false);
+    e.target.value = "";
+  }
+
+  function placeImage(url) {
+    const el = newImageElement(url, 32, 32);
+    setSlides((prev) => {
+      const next = prev.map((s, i) => (i === activeIndex ? { ...s, elements: [...s.elements, el] } : s));
+      persist(deckTitle, next);
+      return next;
+    });
+    setSelectedId(el.id);
+  }
+
+  function startResize(e, elementId, currentW) {
+    e.preventDefault();
+    e.stopPropagation();
+    const rect = canvasRef.current.getBoundingClientRect();
+    function onMove(ev) {
+      const w = Math.min(90, Math.max(8, ((ev.clientX - rect.left) / rect.width) * 100 - 0));
+      setSlides((prev) => prev.map((s, i) => (i === activeIndex ? { ...s, elements: s.elements.map((el) => (el.id === elementId ? { ...el, w } : el)) } : s)));
+    }
+    function onUp() {
+      window.removeEventListener("pointermove", onMove);
+      window.removeEventListener("pointerup", onUp);
+      setSlides((prev) => { persist(deckTitle, prev); return prev; });
+    }
+    window.addEventListener("pointermove", onMove);
+    window.addEventListener("pointerup", onUp);
   }
 
   if (authLoading || loading) return <div className="sde-shell"><style>{CSS}</style></div>;
@@ -139,156 +271,139 @@ export default function SlideDeckEditor() {
     );
   }
 
-  const active = slides[activeIndex] || slides[0];
+  const slide = slides[activeIndex] || slides[0];
+  const n = slides.length;
 
   return (
-    <div className="sde-shell">
+    <div className="sde-shell" onClick={() => setSelectedId(null)}>
       <style>{CSS}</style>
 
-      <header className="sde-topbar">
+      <div className="sde-toolbar" onClick={(e) => e.stopPropagation()}>
         <button type="button" className="sde-back-link" onClick={() => navigate("/library/slides")}>← Decks</button>
         <input
-          className="sde-title-input"
-          value={title}
-          onChange={(e) => updateTitle(e.target.value)}
+          className="sde-deck-title"
+          value={deckTitle}
+          onChange={(e) => updateDeckTitle(e.target.value)}
           placeholder="Untitled deck"
         />
-        <div className="sde-topbar-right">
+        <div className="sde-toolbar-right">
           <span className={`sde-status sde-status--${status}`}>
             {status === "saving" ? "Saving…" : status === "error" ? "Couldn't save" : "Saved"}
           </span>
+          <button type="button" className="sde-tool-btn" onClick={() => moveSlide(-1)} disabled={activeIndex === 0}>Move ←</button>
+          <button type="button" className="sde-tool-btn" onClick={() => moveSlide(1)} disabled={activeIndex === n - 1}>Move →</button>
+          <button type="button" className="sde-tool-btn" onClick={() => deleteSlide(activeIndex)} disabled={n <= 1}>Delete slide</button>
+          <button type="button" className="sde-tool-btn" onClick={() => setLibraryOpen((v) => !v)}>🖼️ Images</button>
           <button type="button" className="sde-present-btn" onClick={() => openPresenter(deckId)}>Present ▶</button>
         </div>
-      </header>
+      </div>
 
-      <div className="sde-body">
-        <div className="sde-rail">
-          {slides.map((s, i) => {
-            const layout = LAYOUTS.find((l) => l.key === s.layout) || LAYOUTS[0];
-            return (
-              <div key={s.id} className={`sde-rail-item ${i === activeIndex ? "is-active" : ""}`} onClick={() => setActiveIndex(i)}>
-                <span className="sde-rail-num">{i + 1}</span>
-                <span className="sde-rail-icon">{layout.icon}</span>
-                <span className="sde-rail-heading">{s.heading || "Untitled slide"}</span>
-                <div className="sde-rail-actions">
-                  <button type="button" onClick={(e) => { e.stopPropagation(); moveSlide(i, -1); }} disabled={i === 0} aria-label="Move up">↑</button>
-                  <button type="button" onClick={(e) => { e.stopPropagation(); moveSlide(i, 1); }} disabled={i === slides.length - 1} aria-label="Move down">↓</button>
-                  <button type="button" onClick={(e) => { e.stopPropagation(); deleteSlide(i); }} disabled={slides.length <= 1} aria-label="Delete slide">×</button>
-                </div>
-              </div>
-            );
-          })}
-          <button type="button" className="sde-add-btn" onClick={addSlide}>+ Add slide</button>
+      <div className="sde-frame">
+        <div className="sde-topbar">
+          <span className="sde-badge"><span className="sde-s-dot">S</span>entivo</span>
+          <span className="sde-counter">{activeIndex + 1} / {n}</span>
         </div>
 
-        <div className="sde-editor">
-          <div className="sde-layout-picker">
-            {LAYOUTS.map((l) => (
-              <button
-                key={l.key}
-                type="button"
-                className={`sde-layout-btn ${active.layout === l.key ? "is-active" : ""}`}
-                onClick={() => updateSlide(activeIndex, { layout: l.key })}
-              >
-                <span>{l.icon}</span> {l.label}
+        <div className="sde-canvas-wrap">
+          <div className="sde-canvas-frame">
+            <div className="sde-instruction-bar">
+              <input
+                className="sde-title-input"
+                value={slide.title}
+                onChange={(e) => updateSlide(activeIndex, { title: e.target.value })}
+                placeholder="Title"
+                onClick={(e) => e.stopPropagation()}
+              />
+            </div>
+            <div className="sde-canvas-body" ref={canvasRef} onClick={handleCanvasClick}>
+              {slide.elements.map((el) => (
+                el.type === "text" ? (
+                  <div
+                    key={el.id}
+                    className={`sde-el sde-el--text ${selectedId === el.id ? "is-selected" : ""}`}
+                    style={{ left: `${el.x}%`, top: `${el.y}%`, width: `${el.w}%` }}
+                    onClick={(e) => { e.stopPropagation(); setSelectedId(el.id); }}
+                  >
+                    {selectedId === el.id && (
+                      <div className="sde-el-toolbar" onPointerDown={(e) => e.stopPropagation()}>
+                        <span className="sde-drag-handle" onPointerDown={(e) => startDrag(e, el.id)}>⠿</span>
+                        <button type="button" onClick={() => updateElement(activeIndex, el.id, { fontSize: Math.max(11, el.fontSize - 2) })}>A-</button>
+                        <button type="button" onClick={() => updateElement(activeIndex, el.id, { fontSize: Math.min(64, el.fontSize + 2) })}>A+</button>
+                        {["left", "center", "right"].map((a) => (
+                          <button key={a} type="button" className={el.align === a ? "is-active" : ""} onClick={() => updateElement(activeIndex, el.id, { align: a })}>
+                            {a === "left" ? "⯇" : a === "center" ? "≡" : "⯈"}
+                          </button>
+                        ))}
+                        <button type="button" className="sde-el-delete" onClick={() => deleteElement(activeIndex, el.id)}>×</button>
+                      </div>
+                    )}
+                    <div
+                      className="sde-el-text"
+                      contentEditable
+                      suppressContentEditableWarning
+                      style={{ fontSize: `${el.fontSize}px`, color: el.color, textAlign: el.align }}
+                      onBlur={(e) => updateElement(activeIndex, el.id, { text: e.currentTarget.textContent })}
+                      onClick={(e) => e.stopPropagation()}
+                      data-placeholder="Type here…"
+                    >
+                      {el.text}
+                    </div>
+                  </div>
+                ) : (
+                  <div
+                    key={el.id}
+                    className={`sde-el sde-el--image ${selectedId === el.id ? "is-selected" : ""}`}
+                    style={{ left: `${el.x}%`, top: `${el.y}%`, width: `${el.w}%` }}
+                    onClick={(e) => { e.stopPropagation(); setSelectedId(el.id); }}
+                    onPointerDown={(e) => startDrag(e, el.id)}
+                  >
+                    <img src={el.src} alt="" draggable={false} />
+                    {selectedId === el.id && (
+                      <>
+                        <button type="button" className="sde-el-delete sde-el-delete--img" onPointerDown={(e) => e.stopPropagation()} onClick={(e) => { e.stopPropagation(); deleteElement(activeIndex, el.id); }}>×</button>
+                        <span className="sde-resize-handle" onPointerDown={(e) => startResize(e, el.id, el.w)} />
+                      </>
+                    )}
+                  </div>
+                )
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div className="sde-bottombar">
+          <button type="button" className="sde-nav-btn" onClick={() => setActiveIndex((i) => Math.max(0, i - 1))} disabled={activeIndex === 0}>← Previous</button>
+          <div className="sde-dots">
+            {slides.map((s, i) => (
+              <span key={s.id} className={i === activeIndex ? "is-active" : ""} onClick={() => setActiveIndex(i)} />
+            ))}
+          </div>
+          <button type="button" className="sde-nav-btn" onClick={() => (activeIndex === n - 1 ? addSlide() : setActiveIndex((i) => i + 1))}>
+            {activeIndex === n - 1 ? "+ Add slide" : "Next →"}
+          </button>
+        </div>
+      </div>
+
+      {libraryOpen && (
+        <div className="sde-library" onClick={(e) => e.stopPropagation()}>
+          <div className="sde-library-head">
+            <span>Image library</span>
+            <button type="button" onClick={() => setLibraryOpen(false)}>×</button>
+          </div>
+          <button type="button" className="sde-upload-btn" onClick={() => fileInputRef.current?.click()} disabled={uploading}>
+            {uploading ? "Uploading…" : "+ Upload image"}
+          </button>
+          <input ref={fileInputRef} type="file" accept="image/*" multiple hidden onChange={handleUpload} />
+          <div className="sde-library-grid">
+            {libraryImages.length === 0 && <p className="sde-library-empty">No images yet. Upload one to use it on any slide.</p>}
+            {libraryImages.map((img) => (
+              <button key={img.name} type="button" className="sde-library-thumb" onClick={() => placeImage(img.url)}>
+                <img src={img.url} alt="" />
               </button>
             ))}
           </div>
-          <p className="sde-layout-hint">{(LAYOUTS.find((l) => l.key === active.layout) || LAYOUTS[0]).hint}</p>
-
-          <label className="sde-field-label">Heading</label>
-          <input
-            className="sde-field-input"
-            value={active.heading}
-            onChange={(e) => updateSlide(activeIndex, { heading: e.target.value })}
-            placeholder="Slide heading"
-          />
-
-          {active.layout === "bullets" && (
-            <>
-              <label className="sde-field-label">Bullet points (one per line)</label>
-              <textarea
-                className="sde-field-textarea"
-                value={active.body}
-                onChange={(e) => updateSlide(activeIndex, { body: e.target.value })}
-                placeholder={"First point\nSecond point\n..."}
-              />
-            </>
-          )}
-
-          {active.layout === "title" && (
-            <>
-              <label className="sde-field-label">Subtext (optional)</label>
-              <textarea
-                className="sde-field-textarea sde-field-textarea--short"
-                value={active.body}
-                onChange={(e) => updateSlide(activeIndex, { body: e.target.value })}
-                placeholder="A short line under the heading"
-              />
-            </>
-          )}
-
-          {active.layout === "image-text" && (
-            <>
-              <label className="sde-field-label">Image caption</label>
-              <input
-                className="sde-field-input"
-                value={active.imageNote}
-                onChange={(e) => updateSlide(activeIndex, { imageNote: e.target.value })}
-                placeholder="What the image shows"
-              />
-              <label className="sde-field-label">Text</label>
-              <textarea
-                className="sde-field-textarea"
-                value={active.body}
-                onChange={(e) => updateSlide(activeIndex, { body: e.target.value })}
-                placeholder="Notes to go beside the image"
-              />
-            </>
-          )}
         </div>
-
-        <div className="sde-preview">
-          <div className="sde-preview-label">Preview</div>
-          <div className="sde-preview-frame">
-            <SlidePreview slide={active} />
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function SlidePreview({ slide }) {
-  if (slide.layout === "bullets") {
-    const points = (slide.body || "").split("\n").map((p) => p.trim()).filter(Boolean);
-    return (
-      <div className="sp-bullets">
-        <h2 className="sp-heading">{slide.heading || "Untitled slide"}</h2>
-        <ul className="sp-list">
-          {points.length ? points.map((p, i) => <li key={i}>{p}</li>) : <li className="sp-placeholder">Add bullet points…</li>}
-        </ul>
-      </div>
-    );
-  }
-  if (slide.layout === "image-text") {
-    return (
-      <div className="sp-image-text">
-        <div className="sp-image-box">
-          <span>🖼️</span>
-          <p>{slide.imageNote || "Image caption"}</p>
-        </div>
-        <div className="sp-image-copy">
-          <h2 className="sp-heading">{slide.heading || "Untitled slide"}</h2>
-          <p className="sp-body">{slide.body || "Notes go here…"}</p>
-        </div>
-      </div>
-    );
-  }
-  return (
-    <div className="sp-title">
-      <h2 className="sp-heading sp-heading--big">{slide.heading || "Untitled slide"}</h2>
-      {slide.body && <p className="sp-body">{slide.body}</p>}
+      )}
     </div>
   );
 }
@@ -296,13 +411,19 @@ function SlidePreview({ slide }) {
 const CSS = `
 @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&family=Quicksand:wght@500;600;700&display=swap');
 
+:root {
+  --navy: #1B2A4A;
+  --coral: #FF6B4A;
+  --coral-dark: #E0502F;
+  --coral-tint: #FFE3D9;
+}
+
 .sde-shell {
   width: 100%;
-  height: 100vh;
-  overflow: hidden;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background: #FFFBF7;
+  background: #F2F0F4;
   font-family: 'Quicksand', sans-serif;
   color: #2B2A1E;
 }
@@ -310,183 +431,213 @@ const CSS = `
 
 .sde-missing { padding: 60px; text-align: center; color: #9A8A73; }
 
-.sde-topbar {
+.sde-toolbar {
   flex-shrink: 0;
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 14px;
   padding: 12px 20px;
   background: #FFFFFF;
-  border-bottom: 1px solid #F5E3D6;
+  border-bottom: 1px solid #EAE7EF;
 }
-.sde-back-link { font-weight: 700; font-size: 13px; color: #E5623A; background: none; border: none; cursor: pointer; flex-shrink: 0; }
-.sde-title-input {
+.sde-back-link { font-weight: 700; font-size: 13px; color: var(--coral); background: none; border: none; cursor: pointer; flex-shrink: 0; }
+.sde-deck-title {
   flex: 1;
   min-width: 0;
   font-family: 'Fredoka', sans-serif;
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 600;
-  color: #2B2A1E;
+  color: var(--navy);
   background: none;
   border: none;
   outline: none;
   padding: 6px 8px;
   border-radius: 8px;
 }
-.sde-title-input:focus { background: #FFF3E9; }
-.sde-topbar-right { display: flex; align-items: center; gap: 14px; flex-shrink: 0; }
-.sde-status { font-size: 11.5px; font-weight: 700; color: #9A8A73; }
+.sde-deck-title:focus { background: #F5F3FA; }
+.sde-toolbar-right { display: flex; align-items: center; gap: 8px; flex-shrink: 0; flex-wrap: wrap; }
+.sde-status { font-size: 11px; font-weight: 700; color: #9A93A8; margin-right: 4px; }
 .sde-status--saving { color: #E5A83F; }
 .sde-status--error { color: #D6392A; }
+.sde-tool-btn {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--navy);
+  background: #F1F0F6;
+  border: none;
+  border-radius: 8px;
+  padding: 7px 11px;
+  cursor: pointer;
+}
+.sde-tool-btn:disabled { opacity: 0.4; cursor: default; }
 .sde-present-btn {
   font-family: 'Fredoka', sans-serif;
   font-size: 13px;
   font-weight: 600;
   color: #FFFFFF;
-  background: linear-gradient(135deg, #FF9A6B 0%, #E5623A 100%);
+  background: linear-gradient(135deg, #FF9A6B 0%, var(--coral-dark) 100%);
   border: none;
   border-radius: 10px;
   padding: 9px 16px;
   cursor: pointer;
-  box-shadow: 0 8px 18px rgba(229,98,58,0.28);
+  box-shadow: 0 8px 18px rgba(229,80,47,0.28);
 }
 
-.sde-body { flex: 1; min-height: 0; display: flex; }
+.sde-frame {
+  max-width: 1040px;
+  width: 100%;
+  margin: 24px auto;
+  padding: 0 20px;
+}
 
-.sde-rail {
-  width: 240px;
-  flex-shrink: 0;
-  overflow-y: auto;
-  padding: 14px;
+.sde-topbar { display: flex; align-items: center; justify-content: space-between; padding: 0 2px 14px; }
+.sde-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: var(--navy); color: #FFFFFF;
+  padding: 8px 16px 8px 8px; border-radius: 999px;
+  font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 14px;
+  box-shadow: 0 4px 0 var(--coral-dark);
+}
+.sde-s-dot {
+  width: 22px; height: 22px; border-radius: 50%;
+  background: var(--coral); color: #fff;
+  display: flex; align-items: center; justify-content: center; font-size: 12px;
+}
+.sde-counter { font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 14px; color: #9A93A8; }
+
+.sde-canvas-wrap { }
+.sde-canvas-frame {
   background: #FFFFFF;
-  border-right: 1px solid #F5E3D6;
+  border-radius: 16px;
+  box-shadow: 0 24px 50px -14px rgba(27,42,74,0.24);
+  overflow: hidden;
+  aspect-ratio: 16/9;
   display: flex;
   flex-direction: column;
-  gap: 8px;
 }
-.sde-rail-item {
-  position: relative;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 9px 10px;
-  border-radius: 10px;
-  border: 1px solid #F5E3D6;
-  cursor: pointer;
-  font-size: 12.5px;
-}
-.sde-rail-item.is-active { border-color: #E5623A; background: #FFF3E9; }
-.sde-rail-num { font-weight: 800; color: #C9B9A2; font-size: 11px; width: 14px; }
-.sde-rail-icon { font-size: 13px; }
-.sde-rail-heading { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-weight: 600; }
-.sde-rail-actions { display: none; gap: 2px; }
-.sde-rail-item:hover .sde-rail-actions { display: flex; }
-.sde-rail-actions button {
-  width: 18px; height: 18px; border: none; background: rgba(0,0,0,0.06); border-radius: 5px;
-  font-size: 10px; cursor: pointer; color: #7A6A57; display: flex; align-items: center; justify-content: center;
-}
-.sde-rail-actions button:disabled { opacity: 0.3; cursor: default; }
-
-.sde-add-btn {
-  margin-top: 4px;
-  font-family: 'Quicksand', sans-serif;
-  font-size: 12.5px;
-  font-weight: 700;
-  color: #E5623A;
-  background: rgba(229,98,58,0.08);
-  border: 1px dashed #F0C199;
-  border-radius: 10px;
-  padding: 9px;
-  cursor: pointer;
-}
-
-.sde-editor {
-  width: 320px;
-  flex-shrink: 0;
-  overflow-y: auto;
-  padding: 20px;
-  border-right: 1px solid #F5E3D6;
-}
-
-.sde-layout-picker { display: flex; flex-direction: column; gap: 6px; margin-bottom: 6px; }
-.sde-layout-btn {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-family: 'Quicksand', sans-serif;
-  font-size: 12.5px;
-  font-weight: 700;
-  color: #7A6A57;
-  background: #FFF7F0;
-  border: 1px solid #F5E3D6;
-  border-radius: 9px;
-  padding: 8px 10px;
-  cursor: pointer;
-  text-align: left;
-}
-.sde-layout-btn.is-active { background: #FFE3CE; border-color: #E5623A; color: #B4451F; }
-.sde-layout-hint { font-size: 11px; color: #9A8A73; margin: 4px 0 18px; line-height: 1.4; }
-
-.sde-field-label { display: block; font-size: 10.5px; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase; color: #9A8A73; margin: 14px 0 6px; }
-.sde-field-input, .sde-field-textarea {
+.sde-instruction-bar { flex-shrink: 0; background: var(--navy); padding: 16px 22px; }
+.sde-title-input {
   width: 100%;
-  font-family: 'Quicksand', sans-serif;
-  font-size: 13.5px;
-  font-weight: 600;
-  color: #2B2A1E;
-  background: #FFF7F0;
-  border: 1px solid #F5E3D6;
-  border-radius: 10px;
-  padding: 9px 11px;
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  color: #FFF6E9;
+  background: none;
+  border: none;
   outline: none;
 }
-.sde-field-input:focus, .sde-field-textarea:focus { border-color: #E5623A; }
-.sde-field-textarea { resize: vertical; min-height: 110px; line-height: 1.6; }
-.sde-field-textarea--short { min-height: 60px; }
+.sde-title-input::placeholder { color: rgba(255,246,233,0.4); }
 
-.sde-preview { flex: 1; min-width: 0; display: flex; flex-direction: column; padding: 24px; }
-.sde-preview-label { font-size: 10.5px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: #9A8A73; margin-bottom: 10px; }
-.sde-preview-frame {
-  flex: 1;
-  min-height: 0;
-  border-radius: 16px;
-  background: #FFFFFF;
-  border: 1px solid #F5E3D6;
-  box-shadow: 0 14px 32px rgba(229,98,58,0.12);
+.sde-canvas-body { position: relative; flex: 1; min-height: 0; cursor: crosshair; }
+
+.sde-el { position: absolute; }
+.sde-el--text { cursor: text; }
+.sde-el-text {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 600;
+  line-height: 1.4;
+  outline: none;
+  min-width: 20px;
+  min-height: 1.4em;
+  cursor: text;
+}
+.sde-el-text:empty::before { content: attr(data-placeholder); opacity: 0.3; }
+.sde-el.is-selected .sde-el-text { outline: 1.5px dashed var(--coral-tint); outline-offset: 4px; }
+
+.sde-el-toolbar {
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  margin-bottom: 6px;
   display: flex;
   align-items: center;
-  justify-content: center;
-  padding: 40px;
-  aspect-ratio: 16 / 9;
-  max-height: 100%;
+  gap: 3px;
+  background: var(--navy);
+  border-radius: 8px;
+  padding: 4px 5px;
+  box-shadow: 0 8px 18px rgba(27,42,74,0.3);
+  white-space: nowrap;
+  z-index: 10;
+}
+.sde-el-toolbar button, .sde-drag-handle {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  color: #FFFFFF;
+  background: rgba(255,255,255,0.12);
+  border: none;
+  border-radius: 5px;
+  min-width: 22px;
+  height: 22px;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  padding: 0 5px;
+}
+.sde-el-toolbar button.is-active { background: var(--coral); }
+.sde-drag-handle { cursor: grab; }
+.sde-el-delete { background: rgba(255,107,74,0.3) !important; }
+
+.sde-el--image { cursor: grab; }
+.sde-el--image img { width: 100%; display: block; border-radius: 6px; pointer-events: none; }
+.sde-el--image.is-selected img { outline: 2px solid var(--coral); outline-offset: 2px; }
+.sde-el-delete--img {
+  position: absolute; top: -10px; right: -10px;
+  width: 22px; height: 22px; border-radius: 50%;
+  background: var(--coral); color: #fff; border: 2px solid #fff;
+  font-size: 12px; cursor: pointer;
+}
+.sde-resize-handle {
+  position: absolute; bottom: -6px; right: -6px;
+  width: 14px; height: 14px; border-radius: 50%;
+  background: #FFFFFF; border: 2px solid var(--coral);
+  cursor: nwse-resize;
 }
 
-.sp-heading { font-family: 'Fredoka', sans-serif; font-weight: 600; color: #2B2A1E; margin: 0 0 10px; }
-.sp-heading--big { font-size: clamp(22px, 4vw, 34px); text-align: center; }
-.sp-body { font-size: 14px; line-height: 1.6; color: #6B6455; }
-.sp-title { text-align: center; }
-.sp-bullets { width: 100%; }
-.sp-list { margin: 0; padding-left: 22px; font-size: 14px; line-height: 1.9; color: #4A4436; }
-.sp-placeholder { color: #C9B9A2; }
-.sp-image-text { display: flex; gap: 24px; align-items: center; width: 100%; }
-.sp-image-box {
-  flex: 1;
-  aspect-ratio: 4/3;
-  background: #FFF3E9;
-  border-radius: 12px;
+.sde-bottombar { display: flex; align-items: center; justify-content: space-between; padding: 16px 2px 0; }
+.sde-nav-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--coral); color: #FFFFFF; border: none;
+  font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 14px;
+  padding: 11px 20px; border-radius: 14px;
+  box-shadow: 0 4px 0 var(--coral-dark);
+  cursor: pointer;
+}
+.sde-nav-btn:disabled { background: #EFEDF4; color: #C4BFD1; box-shadow: 0 4px 0 #E1DEE8; cursor: default; }
+.sde-dots { display: flex; align-items: center; gap: 6px; }
+.sde-dots span { width: 7px; height: 7px; border-radius: 50%; background: #DAD6E4; cursor: pointer; }
+.sde-dots span.is-active { width: 22px; border-radius: 4px; background: var(--coral); }
+
+.sde-library {
+  position: fixed;
+  top: 0; right: 0;
+  width: 300px;
+  height: 100vh;
+  background: #FFFFFF;
+  border-left: 1px solid #EAE7EF;
+  box-shadow: -12px 0 30px rgba(27,42,74,0.14);
+  padding: 18px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  font-size: 26px;
-  color: #C9924E;
+  gap: 12px;
+  z-index: 50;
 }
-.sp-image-box p { font-size: 11px; color: #B48A5A; text-align: center; padding: 0 12px; }
-.sp-image-copy { flex: 1.2; }
+.sde-library-head { display: flex; align-items: center; justify-content: space-between; font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 15px; color: var(--navy); }
+.sde-library-head button { background: none; border: none; font-size: 18px; cursor: pointer; color: #9A93A8; }
+.sde-upload-btn {
+  font-family: 'Quicksand', sans-serif; font-weight: 700; font-size: 12.5px;
+  color: var(--coral); background: var(--coral-tint);
+  border: 1px dashed var(--coral); border-radius: 10px;
+  padding: 10px; cursor: pointer;
+}
+.sde-upload-btn:disabled { opacity: 0.6; cursor: default; }
+.sde-library-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; overflow-y: auto; }
+.sde-library-empty { grid-column: 1/-1; font-size: 12px; color: #9A93A8; text-align: center; padding: 20px 0; }
+.sde-library-thumb { padding: 0; border: 1px solid #EAE7EF; border-radius: 8px; overflow: hidden; cursor: pointer; aspect-ratio: 1; background: #F7F6FA; }
+.sde-library-thumb img { width: 100%; height: 100%; object-fit: cover; }
 
-@media (max-width: 900px) {
-  .sde-body { flex-direction: column; overflow-y: auto; }
-  .sde-rail, .sde-editor { width: 100%; border-right: none; border-bottom: 1px solid #F5E3D6; }
+@media (max-width: 720px) {
+  .sde-toolbar { flex-wrap: wrap; }
+  .sde-library { width: 100%; }
 }
 `;
