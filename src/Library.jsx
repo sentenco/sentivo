@@ -379,6 +379,23 @@ function BookshelfFeature({ items, navigate }) {
   );
 }
 
+// Opens the Spin the Wheel tool as a standalone popup -- matching the
+// FORGE/ASCEND/Article Player chrome-less window.open pattern.
+function openWheel() {
+  const screenW = window.screen.availWidth || 1400;
+  const screenH = window.screen.availHeight || 900;
+  const w = Math.min(980, screenW - 40);
+  const h = Math.min(680, screenH - 80);
+  const left = Math.max(0, Math.floor((screenW - w) / 2));
+  const top = Math.max(0, Math.floor((screenH - h) / 2));
+
+  window.open(
+    "/library/wheel",
+    "sentivoWheel",
+    `width=${w},height=${h},left=${left},top=${top},toolbar=no,location=no,menubar=no,status=no,scrollbars=yes,resizable=yes`
+  );
+}
+
 function TodayFeature({ tools, onSeeAllLessons, navigate }) {
   const today = new Date();
   const dayIndex = daysSince(today);
@@ -434,8 +451,14 @@ function TodayFeature({ tools, onSeeAllLessons, navigate }) {
           >
             <ReadyWidget icon="📝" title="Digital Notebook" description="Write live on a designed page while you teach." />
           </div>
-          <div className="gc-widget gc-widget--wheel gc-widget--boxed">
-            <ComingSoonWidget icon="🎡" title="Spin the Wheel" description="Randomly pick a student or topic on the spot." />
+          <div
+            className="gc-widget gc-widget--wheel gc-widget--boxed gc-widget--clickable"
+            role="button"
+            tabIndex={0}
+            onClick={openWheel}
+            onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") openWheel(); }}
+          >
+            <ReadyWidget icon="🎡" title="Spin the Wheel" description="Randomly pick a student or topic on the spot." />
           </div>
         </div>
 

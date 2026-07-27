@@ -11,6 +11,7 @@ import ArticleReader from './ArticleReader.jsx'
 import ArticlePlayerPage from './ArticlePlayerPage.jsx'
 import NotebookHub from './NotebookHub.jsx'
 import NotebookPage from './NotebookPage.jsx'
+import WheelPage from './WheelPage.jsx'
 import storybook2 from './storybookData2.js'
 import storybook3 from './storybookData3.js'
 import storybook4 from './storybookData4.js'
@@ -64,6 +65,7 @@ createRoot(document.getElementById('root')).render(
             <Route path="/library/articles/:slug/player" element={<ArticlePlayerPage />} />
             <Route path="/library/notebook" element={<NotebookHub />} />
             <Route path="/library/notebook/:design" element={<NotebookPage />} />
+            <Route path="/library/wheel" element={<WheelPage />} />
             <Route path="/library/storybook" element={<StoryBook />} />
             <Route path="/library/storybook-2" element={<StoryBook book={storybook2} />} />
             <Route path="/library/storybook-3" element={<StoryBook book={storybook3} />} />
