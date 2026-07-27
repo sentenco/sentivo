@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { getNotebookDesign, NOTEBOOK_STAGE_MARGIN } from "./notebookDesigns";
 
 const PAPER_STYLES = ["blank", "ruled", "grid"];
-const INK_COLORS = ["#2B2B2B", "#C0392B", "#1E5FBF", "#1E8F76", "#7C5CFC"];
+const INK_COLORS = ["#1A1A1A", "#E4322B", "#2B6FE0", "#F2C230"];
 const FONT_FACES = [
   { key: "hand", label: "Handwriting", family: "'Caveat', cursive" },
   { key: "print", label: "Print", family: "'Quicksand', sans-serif" },
@@ -182,10 +182,10 @@ const CSS = `
   font-weight: 700;
   letter-spacing: 0.04em;
   color: #FFFFFF;
-  background: rgba(20,20,20,0.7);
-  backdrop-filter: blur(6px);
+  background: #1E8F76;
   border-radius: 999px;
   padding: 6px 14px;
+  box-shadow: 0 6px 16px rgba(30,143,118,0.35);
   user-select: none;
   cursor: default;
   transition: opacity 0.15s ease;
@@ -202,47 +202,48 @@ const CSS = `
   align-items: center;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 12px;
-  background: rgba(20,20,20,0.82);
-  backdrop-filter: blur(10px);
+  gap: 10px 14px;
+  background: #FFFFFF;
+  border: 1px solid #E1F0EA;
   border-radius: 14px;
   padding: 0 16px;
-  box-shadow: 0 12px 30px rgba(0,0,0,0.28);
+  box-shadow: 0 12px 30px rgba(30,143,118,0.18);
   transition: max-height 0.22s ease, opacity 0.18s ease, padding 0.22s ease;
 }
 .nbp-toolbar-wrap:hover .nbp-toolbar-panel {
-  max-height: 90px;
+  max-height: 260px;
+  width: max-content;
+  max-width: 88vw;
   opacity: 1;
   pointer-events: auto;
-  padding: 10px 16px;
+  padding: 12px 16px;
 }
 
 .nbp-tool-group { display: flex; align-items: center; gap: 5px; }
-.nbp-tool-label { font-family: 'Quicksand', sans-serif; font-size: 10.5px; font-weight: 700; color: rgba(255,255,255,0.7); margin-right: 2px; }
+.nbp-tool-label { font-family: 'Quicksand', sans-serif; font-size: 10.5px; font-weight: 700; color: #5A6E68; margin-right: 2px; }
 
-.nbp-slider { width: 80px; accent-color: #3FCDAF; }
+.nbp-slider { width: 80px; accent-color: #1E8F76; }
 
 .nbp-select {
   font-family: 'Quicksand', sans-serif;
   font-size: 12px;
   font-weight: 600;
-  color: #FFFFFF;
-  background: rgba(255,255,255,0.14);
-  border: 1px solid rgba(255,255,255,0.2);
+  color: #1B2B27;
+  background: #F1F6F4;
+  border: 1px solid #DCE9E4;
   border-radius: 8px;
   padding: 5px 8px;
   cursor: pointer;
 }
-.nbp-select option { color: #1B2B27; }
 
 .nbp-btn {
   min-width: 28px;
   height: 28px;
   font-family: 'Quicksand', sans-serif;
   font-size: 13px;
-  color: #FFFFFF;
-  background: rgba(255,255,255,0.14);
-  border: 1px solid rgba(255,255,255,0.2);
+  color: #1B2B27;
+  background: #F1F6F4;
+  border: 1px solid #DCE9E4;
   border-radius: 7px;
   cursor: pointer;
   display: flex;
@@ -250,14 +251,14 @@ const CSS = `
   justify-content: center;
   padding: 0 6px;
 }
-.nbp-btn:hover { background: rgba(255,255,255,0.24); }
-.nbp-align-btn.is-active { background: #3FCDAF; color: #10201B; border-color: #3FCDAF; }
+.nbp-btn:hover { background: #E1F0EA; }
+.nbp-align-btn.is-active { background: #1E8F76; color: #FFFFFF; border-color: #1E8F76; }
 
 .nbp-swatch {
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  border: 2px solid rgba(255,255,255,0.35);
+  border: 2px solid rgba(0,0,0,0.12);
   cursor: pointer;
   padding: 0;
 }
@@ -267,15 +268,15 @@ const CSS = `
   font-size: 11.5px;
   font-weight: 700;
   letter-spacing: 0.03em;
-  color: #FF8A78;
-  background: rgba(255,138,120,0.14);
-  border: 1px solid rgba(255,138,120,0.3);
+  color: #C0392B;
+  background: rgba(192,57,43,0.08);
+  border: 1px solid rgba(192,57,43,0.25);
   border-radius: 8px;
   padding: 6px 12px;
   cursor: pointer;
   white-space: nowrap;
 }
-.nbp-clear-btn:hover { background: rgba(255,138,120,0.24); }
+.nbp-clear-btn:hover { background: rgba(192,57,43,0.15); }
 
 .nbp-stage {
   position: absolute;
