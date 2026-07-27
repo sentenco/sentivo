@@ -147,6 +147,7 @@ function TeacherGreeting() {
 
   return (
     <div className="gc-greeting">
+      <span className="gc-eyebrow-top">Sentivo · Today</span>
       {editing ? (
         <span className="gc-greeting-line gc-greeting-line--editing">
           {greeting}, Teacher{" "}
@@ -1139,8 +1140,31 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .gc-ed-tab.is-active { background: var(--ink); color: var(--card); }
 
 /* ── Today: teacher dashboard ── */
-.gc-dashboard { width: 100%; max-width: 1160px; margin: 0 auto; padding: 14px 4px 16px; display: grid; grid-template-columns: 1fr 280px; align-items: start; gap: 28px; }
+.gc-dashboard {
+  width: 100%;
+  max-width: 1220px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  align-items: start;
+  gap: 28px;
+  background:
+    repeating-linear-gradient(180deg, rgba(255,255,255,0.5) 0px, rgba(255,255,255,0.5) 1px, transparent 1px, transparent 64px),
+    linear-gradient(180deg, #FFF7E8 0%, #FCE9C4 100%);
+  border-radius: 22px;
+  padding: clamp(22px, 3vw, 40px) clamp(20px, 3vw, 36px);
+}
 .gc-main { min-width: 0; }
+.gc-eyebrow-top {
+  display: block;
+  text-align: center;
+  font-family: 'SF Mono', 'Menlo', Consolas, monospace;
+  font-size: clamp(10.5px, 0.9vw, 11px);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #8A6B3A;
+  margin-bottom: 10px;
+}
 
 .gc-sidebar { display: flex; flex-direction: column; gap: 12px; position: sticky; top: 0; }
 .gc-widget { background: var(--card); border: 1px solid var(--hair); border-radius: 16px; padding: 14px; box-shadow: 0 6px 18px rgba(43,42,74,0.06); }
@@ -1238,10 +1262,10 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   background: rgba(255,255,255,0.10);
   pointer-events: none;
 }
-.gc-widget--salary.gc-widget--boxed { background: linear-gradient(135deg, #9D82FF 0%, #6C4FE0 100%); }
-.gc-widget--soon.gc-widget--boxed { background: linear-gradient(135deg, #33E4C9 0%, #12A996 100%); }
-.gc-widget--notebook.gc-widget--boxed { background: linear-gradient(135deg, #FFB648 0%, #FF8A4C 100%); }
-.gc-widget--wheel.gc-widget--boxed { background: linear-gradient(135deg, #FF7EB6 0%, #E1306C 100%); }
+.gc-widget--salary.gc-widget--boxed { background: linear-gradient(135deg, #FFCB66 0%, #E8A33D 100%); }
+.gc-widget--soon.gc-widget--boxed { background: linear-gradient(135deg, #FF9A6B 0%, #E5623A 100%); }
+.gc-widget--notebook.gc-widget--boxed { background: linear-gradient(135deg, #3FCDAF 0%, #1E8F76 100%); }
+.gc-widget--wheel.gc-widget--boxed { background: linear-gradient(135deg, #FF7C97 0%, #D6395F 100%); }
 .gc-coming-soon { position: relative; display: flex; flex-direction: column; align-items: flex-start; }
 .gc-cs-icon {
   width: 30px;
