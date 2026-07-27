@@ -21,6 +21,7 @@ export default function WheelPage() {
   const [rotation, setRotation] = useState(0);
   const [spinning, setSpinning] = useState(false);
   const [result, setResult] = useState(null);
+  const [winnerIndex, setWinnerIndex] = useState(null);
   const spinCountRef = useRef(0);
 
   const words = useMemo(
@@ -37,12 +38,14 @@ export default function WheelPage() {
   function handleTextChange(e) {
     setRawText(e.target.value);
     setResult(null);
+    setWinnerIndex(null);
   }
 
   function spin() {
     if (spinning || n < 2) return;
     setSpinning(true);
     setResult(null);
+    setWinnerIndex(null);
 
     const targetIndex = Math.floor(Math.random() * n);
     const sliceCenter = targetIndex * sliceAngle + sliceAngle / 2;
@@ -50,7 +53,7 @@ export default function WheelPage() {
     const jitter = (Math.random() - 0.5) * jitterRange;
 
     spinCountRef.current += 1;
-    const fullSpins = 5 + spinCountRef.current * 0; // consistent spin count
+    const fullSpins = 5;
     const targetOffset = ((360 - sliceCenter - jitter) % 360 + 360) % 360;
     const nextRotation = rotation - (rotation % 360) + fullSpins * 360 + targetOffset;
 
@@ -58,6 +61,7 @@ export default function WheelPage() {
     window.setTimeout(() => {
       setSpinning(false);
       setResult(words[targetIndex]);
+      setWinnerIndex(targetIndex);
     }, 4200);
   }
 
@@ -65,42 +69,49 @@ export default function WheelPage() {
     <div className="wp-shell">
       <style>{CSS}</style>
 
-      <div className="wp-panel">
-        <div className="wp-panel-head">
-          <span className="wp-eyebrow">Sentivo · Today</span>
-          <h1 className="wp-title">Spin the Wheel</h1>
-          <p className="wp-blurb">Paste your list, one item per line. Each line becomes a slice.</p>
+      <div className="wp-panel-zone">
+        <div className="wp-panel-tab">
+          <span className="wp-panel-tab-icon">📝</span>
+          <span className="wp-panel-tab-text">Words</span>
         </div>
 
-        <label className="wp-label" htmlFor="wp-words">Words</label>
-        <textarea
-          id="wp-words"
-          className="wp-textarea"
-          value={rawText}
-          onChange={handleTextChange}
-          placeholder={"Alex\nJordan\nSam\n..."}
-          spellCheck={false}
-        />
-        <div className="wp-count">{n} {n === 1 ? "slice" : "slices"}{n < 2 ? " — add at least 2" : ""}</div>
-
-        <button
-          type="button"
-          className="wp-spin-btn"
-          onClick={spin}
-          disabled={spinning || n < 2}
-        >
-          {spinning ? "Spinning…" : "Spin"}
-        </button>
-
-        {result && (
-          <div className="wp-result">
-            <span className="wp-result-label">Winner</span>
-            <span className="wp-result-value">🎉 {result}</span>
+        <div className="wp-panel">
+          <div className="wp-panel-head">
+            <span className="wp-eyebrow">Sentivo · Today</span>
+            <h1 className="wp-title">Spin the Wheel</h1>
+            <p className="wp-blurb">Paste your list, one item per line. Each line becomes a slice.</p>
           </div>
-        )}
+
+          <label className="wp-label" htmlFor="wp-words">Words</label>
+          <textarea
+            id="wp-words"
+            className="wp-textarea"
+            value={rawText}
+            onChange={handleTextChange}
+            placeholder={"Alex\nJordan\nSam\n..."}
+            spellCheck={false}
+          />
+          <div className="wp-count">{n} {n === 1 ? "slice" : "slices"}{n < 2 ? " — add at least 2" : ""}</div>
+
+          <button
+            type="button"
+            className="wp-spin-btn"
+            onClick={spin}
+            disabled={spinning || n < 2}
+          >
+            {spinning ? "Spinning…" : "Spin"}
+          </button>
+        </div>
       </div>
 
       <div className="wp-stage">
+        {result && (
+          <div className="wp-winner-banner">
+            <span className="wp-winner-tag">Winner</span>
+            <span className="wp-winner-name">🎉 {result}</span>
+          </div>
+        )}
+
         <div className="wp-wheel-wrap">
           <div className="wp-pointer" />
           <div
@@ -123,9 +134,15 @@ export default function WheelPage() {
                   if (labelRotate > 90 && labelRotate < 270) labelRotate += 180;
                   const fontSize = Math.max(9, Math.min(15, 130 / Math.max(n, 6)));
                   const label = word.length > 16 ? word.slice(0, 15) + "…" : word;
+                  const isWinner = i === winnerIndex;
                   return (
-                    <g key={i}>
-                      <path d={slicePath(cx, cy, r, start, end)} fill={COLORS[i % COLORS.length]} stroke="#FFFFFF" strokeWidth="2" />
+                    <g key={i} className={isWinner ? "wp-slice-winner" : undefined}>
+                      <path
+                        d={slicePath(cx, cy, r, start, end)}
+                        fill={COLORS[i % COLORS.length]}
+                        stroke={isWinner ? "#FFD23F" : "#FFFFFF"}
+                        strokeWidth={isWinner ? 5 : 2}
+                      />
                       <text
                         x={labelPos.x}
                         y={labelPos.y}
@@ -167,16 +184,62 @@ const CSS = `
 }
 .wp-shell * { box-sizing: border-box; }
 
-.wp-panel {
+.wp-panel-zone {
+  position: relative;
   flex-shrink: 0;
+  width: 54px;
+  height: 100%;
+  z-index: 30;
+}
+
+.wp-panel-tab {
+  position: absolute;
+  inset: 0;
+  width: 54px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: #FFFFFF;
+  border-right: 1px solid #FBE1E7;
+  cursor: default;
+  transition: opacity 0.15s ease;
+}
+.wp-panel-tab-icon { font-size: 18px; }
+.wp-panel-tab-text {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #D6395F;
+}
+.wp-panel-zone:hover .wp-panel-tab { opacity: 0; pointer-events: none; }
+
+.wp-panel {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 320px;
   height: 100%;
   overflow-y: auto;
   padding: 26px 24px;
   background: #FFFFFF;
   border-right: 1px solid #FBE1E7;
+  box-shadow: 12px 0 30px rgba(43,42,74,0.14);
   display: flex;
   flex-direction: column;
+  transform: translateX(-100%);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.22s ease, opacity 0.18s ease;
+}
+.wp-panel-zone:hover .wp-panel {
+  transform: translateX(0);
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .wp-panel-head { margin-bottom: 18px; }
@@ -232,26 +295,44 @@ const CSS = `
 .wp-spin-btn:hover:not(:disabled) { transform: translateY(-1px); }
 .wp-spin-btn:disabled { opacity: 0.5; cursor: default; box-shadow: none; }
 
-.wp-result {
-  margin-top: 18px;
-  padding: 14px 16px;
-  background: rgba(214,57,95,0.08);
-  border: 1px solid rgba(214,57,95,0.22);
-  border-radius: 12px;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-.wp-result-label { font-size: 10.5px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: #D6395F; }
-.wp-result-value { font-family: 'Fredoka', sans-serif; font-size: 17px; font-weight: 600; color: #2B2A4A; }
-
 .wp-stage {
   flex: 1;
   min-width: 0;
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 24px;
+}
+
+.wp-winner-banner {
+  position: absolute;
+  top: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 25;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #FFFFFF;
+  border: 2px solid #FFD23F;
+  border-radius: 999px;
+  padding: 10px 22px;
+  box-shadow: 0 14px 30px rgba(43,42,74,0.24);
+  animation: wp-pop-in 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.wp-winner-tag {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #D6395F;
+}
+.wp-winner-name { font-family: 'Fredoka', sans-serif; font-size: 20px; font-weight: 600; color: #2B2A4A; }
+
+@keyframes wp-pop-in {
+  0% { opacity: 0; transform: translateX(-50%) translateY(-10px) scale(0.85); }
+  100% { opacity: 1; transform: translateX(-50%) translateY(0) scale(1); }
 }
 
 .wp-wheel-wrap {
@@ -287,6 +368,7 @@ const CSS = `
 
 .wp-svg { width: 100%; height: 100%; display: block; }
 .wp-slice-label { font-family: 'Quicksand', sans-serif; font-weight: 700; pointer-events: none; }
+.wp-slice-winner path { filter: drop-shadow(0 0 6px rgba(255,210,63,0.9)); }
 
 .wp-empty-disc {
   width: 100%;
@@ -325,8 +407,7 @@ const CSS = `
 .wp-hub-s { color: #7C5CFC; }
 
 @media (max-width: 760px) {
-  .wp-shell { flex-direction: column; overflow-y: auto; height: auto; min-height: 100vh; }
-  .wp-panel { width: 100%; border-right: none; border-bottom: 1px solid #FBE1E7; }
-  .wp-textarea { min-height: 120px; }
+  .wp-winner-banner { top: 12px; padding: 8px 16px; }
+  .wp-winner-name { font-size: 16px; }
 }
 `;
