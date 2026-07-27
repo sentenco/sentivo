@@ -871,7 +871,7 @@ export default function Library() {
         ) : category === "Grammar" ? (
           <GrammarFeature navigate={navigate} />
         ) : category === "Reading" ? (
-          <BookshelfFeature items={pageItems} navigate={navigate} />
+          <BookshelfFeature items={filtered} navigate={navigate} />
         ) : category === "Speaking" ? (
           <div className="speaking-page">
             <div className="speaking-hero">
@@ -1014,7 +1014,7 @@ export default function Library() {
         )}
         </div>
 
-        {category !== "Speaking" && category !== "Grammar" && category !== "Articles" && !(category === "All" && !query.trim() && !showAllToday) && (
+        {category !== "Speaking" && category !== "Grammar" && category !== "Articles" && category !== "Reading" && !(category === "All" && !query.trim() && !showAllToday) && (
         <div className="pagination">
           <button disabled={safePage === 1} onClick={() => changePage(safePage - 1)}>&larr; Prev</button>
           <span className="page-indicator">Page {safePage} of {totalPages}</span>
