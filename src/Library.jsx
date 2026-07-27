@@ -859,7 +859,7 @@ export default function Library() {
         </div>
       ) : (
       <main className="content">
-                <div className={`grid-wrap ${category === "All" && !query.trim() && !showAllToday ? "grid-wrap--today" : (category === "Articles" || category === "Grammar" || category === "Reading") ? "grid-wrap--top" : ""}`} ref={gridWrapRef}>
+                <div className={`grid-wrap ${category === "All" && !query.trim() && !showAllToday ? "grid-wrap--today" : (category === "Articles" || category === "Grammar" || category === "Reading" || category === "Speaking") ? "grid-wrap--top" : ""}`} ref={gridWrapRef}>
         {category === "All" && !query.trim() && !showAllToday ? (
           toolsLoading ? (
             <p className="empty-msg">Loading today's edition…</p>
@@ -873,6 +873,19 @@ export default function Library() {
         ) : category === "Reading" ? (
           <BookshelfFeature items={pageItems} navigate={navigate} />
         ) : category === "Speaking" ? (
+          <div className="speaking-page">
+            <div className="speaking-hero">
+              <span className="speaking-eyebrow">Sentivo · Speaking</span>
+              <h1 className="speaking-title">Three tracks, three goals</h1>
+              <p className="speaking-sub">Every Speaking course is built around one gap, not a general level. Pick the track that matches what a student is missing.</p>
+              <div className="speaking-ladder">
+                <span className="speaking-ladder-item speaking-ladder-item--forge"><b>Forge</b> A2</span>
+                <span className="speaking-ladder-arrow">→</span>
+                <span className="speaking-ladder-item speaking-ladder-item--shift"><b>Shift</b> A2–B1</span>
+                <span className="speaking-ladder-arrow">→</span>
+                <span className="speaking-ladder-item speaking-ladder-item--ascend"><b>Ascend</b> C1</span>
+              </div>
+            </div>
           <div className="speaking-grid">
             <a href="/library/forge" className="speaking-tile speaking-tile--forge">
               <span className="speaking-tile-kicker">Speaking · Level A2</span>
@@ -892,6 +905,7 @@ export default function Library() {
               <p className="speaking-tile-desc">Precision, structure, and diplomatic control for students who already sound fluent.</p>
               <span className="speaking-tile-cta">Open ASCEND →</span>
             </a>
+          </div>
           </div>
         ) : toolsLoading ? (
           <p className="empty-msg">Loading library…</p>
@@ -1408,6 +1422,61 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   width: 100%;
   height: 100%;
 }
+
+.speaking-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 1040px;
+}
+.speaking-hero {
+  text-align: center;
+  max-width: 560px;
+  margin: 0 auto 30px;
+}
+.speaking-eyebrow {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 700;
+  font-size: 12.5px;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.speaking-title {
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 700;
+  font-size: 34px;
+  color: var(--ink);
+  margin: 10px 0 12px;
+}
+.speaking-sub {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--muted);
+  margin: 0 0 22px;
+}
+.speaking-ladder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.speaking-ladder-item {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 600;
+  font-size: 13px;
+  border-radius: 999px;
+  padding: 6px 14px;
+}
+.speaking-ladder-item b { font-family: 'Fredoka', sans-serif; font-weight: 700; margin-right: 4px; }
+.speaking-ladder-item--forge { background: #FBE7C6; color: #7A4A15; }
+.speaking-ladder-item--shift { background: #FFDBD5; color: #8C2E22; }
+.speaking-ladder-item--ascend { background: #D6F2E9; color: #0E5B4C; }
+.speaking-ladder-arrow { color: var(--muted); font-size: 14px; }
 
 .speaking-grid {
   display: grid;
