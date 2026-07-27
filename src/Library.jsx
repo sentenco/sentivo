@@ -875,22 +875,22 @@ export default function Library() {
         ) : category === "Speaking" ? (
           <div className="speaking-grid">
             <a href="/library/forge" className="speaking-tile speaking-tile--forge">
-              <span className="speaking-tile-kicker">Speaking · A2</span>
+              <span className="speaking-tile-kicker">Speaking · Level A2</span>
               <h3 className="speaking-tile-title">FORGE</h3>
               <p className="speaking-tile-desc">Build real vocabulary through pictures, gaps, echoes, and question chains.</p>
               <span className="speaking-tile-cta">Open FORGE →</span>
             </a>
-            <a href="/library/ascend" className="speaking-tile speaking-tile--ascend">
-              <span className="speaking-tile-kicker">Speaking · C1</span>
-              <h3 className="speaking-tile-title">ASCEND</h3>
-              <p className="speaking-tile-desc">Precision, structure, and diplomatic control for students who already sound fluent.</p>
-              <span className="speaking-tile-cta">Open ASCEND →</span>
-            </a>
             <a href="/library/shift" className="speaking-tile speaking-tile--shift">
-              <span className="speaking-tile-kicker">Speaking · A2-B1</span>
+              <span className="speaking-tile-kicker">Speaking · Level A2-B1</span>
               <h3 className="speaking-tile-title">SHIFT</h3>
               <p className="speaking-tile-desc">Fast tense choice and self-repair under pressure, for students who already know the grammar.</p>
               <span className="speaking-tile-cta">Open SHIFT →</span>
+            </a>
+            <a href="/library/ascend" className="speaking-tile speaking-tile--ascend">
+              <span className="speaking-tile-kicker">Speaking · Level C1</span>
+              <h3 className="speaking-tile-title">ASCEND</h3>
+              <p className="speaking-tile-desc">Precision, structure, and diplomatic control for students who already sound fluent.</p>
+              <span className="speaking-tile-cta">Open ASCEND →</span>
             </a>
           </div>
         ) : toolsLoading ? (
