@@ -185,6 +185,17 @@ function ComingSoonWidget({ icon, title, description }) {
   );
 }
 
+function ReadyWidget({ icon, title, description }) {
+  return (
+    <div className="gc-coming-soon">
+      <span className="gc-cs-icon" aria-hidden="true">{icon}</span>
+      <div className="gc-widget-title">{title}</div>
+      <p className="gc-widget-note">{description}</p>
+      <span className="gc-soon-tag gc-ready-tag">Open →</span>
+    </div>
+  );
+}
+
 function ArticlesFeature({ navigate }) {
   const lead = ARTICLES[0];
   const briefs = ARTICLES.slice(1);
@@ -368,7 +379,7 @@ function BookshelfFeature({ items, navigate }) {
   );
 }
 
-function TodayFeature({ tools, onSeeAllLessons }) {
+function TodayFeature({ tools, onSeeAllLessons, navigate }) {
   const today = new Date();
   const dayIndex = daysSince(today);
   const total = DAILY_CORRECTIONS.length;
@@ -414,8 +425,14 @@ function TodayFeature({ tools, onSeeAllLessons }) {
           <div className="gc-widget gc-widget--soon gc-widget--boxed">
             <ComingSoonWidget icon="🎞️" title="Slide Deck Builder" description="Turn a lesson into a ready-to-teach slide deck." />
           </div>
-          <div className="gc-widget gc-widget--notebook gc-widget--boxed">
-            <ComingSoonWidget icon="📝" title="Digital Notebook" description="Write live on a shared whiteboard while you teach." />
+          <div
+            className="gc-widget gc-widget--notebook gc-widget--boxed gc-widget--clickable"
+            role="button"
+            tabIndex={0}
+            onClick={() => navigate("/library/notebook")}
+            onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") navigate("/library/notebook"); }}
+          >
+            <ReadyWidget icon="📝" title="Digital Notebook" description="Write live on a designed page while you teach." />
           </div>
           <div className="gc-widget gc-widget--wheel gc-widget--boxed">
             <ComingSoonWidget icon="🎡" title="Spin the Wheel" description="Randomly pick a student or topic on the spot." />
@@ -976,7 +993,7 @@ export default function Library() {
           toolsLoading ? (
             <p className="empty-msg">Loading today's edition…</p>
           ) : (
-            <TodayFeature tools={tools} onSeeAllLessons={() => setShowAllToday(true)} />
+            <TodayFeature tools={tools} onSeeAllLessons={() => setShowAllToday(true)} navigate={navigate} />
           )
         ) : category === "Articles" ? (
           <ArticlesFeature navigate={navigate} />
@@ -1287,6 +1304,8 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .gc-widget--soon.gc-widget--boxed { background: linear-gradient(135deg, #FF9A6B 0%, #E5623A 100%); }
 .gc-widget--notebook.gc-widget--boxed { background: linear-gradient(135deg, #3FCDAF 0%, #1E8F76 100%); }
 .gc-widget--wheel.gc-widget--boxed { background: linear-gradient(135deg, #FF7C97 0%, #D6395F 100%); }
+.gc-widget--clickable { cursor: pointer; transition: transform 0.15s ease, box-shadow 0.15s ease; }
+.gc-widget--clickable:hover { transform: translateY(-2px); box-shadow: 0 16px 30px rgba(43,42,74,0.22); }
 .gc-coming-soon { position: relative; display: flex; flex-direction: column; align-items: flex-start; }
 .gc-cs-icon {
   width: 30px;
