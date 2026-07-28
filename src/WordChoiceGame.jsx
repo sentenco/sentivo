@@ -1,5 +1,4 @@
 import { useMemo, useState } from "react";
-import SYNONYMS_SET from "./synonymsGameData";
 
 function shuffled(arr) {
   const a = [...arr];
@@ -10,19 +9,23 @@ function shuffled(arr) {
   return a;
 }
 
-export default function SynonymsGame() {
+// Generic one-on-one "pick the matching word" quiz engine. Data-driven --
+// pass a title, instruction line, and a data set shaped like
+// [{ word, choices: [4], correct }]. Used for Synonyms, Antonyms, and any
+// future word-choice game under Vocabulary.
+export default function WordChoiceGame({ title, instruction, data, onBack }) {
   const [phase, setPhase] = useState("start"); // "start" | "playing" | "done"
   const [index, setIndex] = useState(0);
   const [score, setScore] = useState(0);
   const [selected, setSelected] = useState(null);
-  const [runOrder, setRunOrder] = useState(SYNONYMS_SET);
+  const [runOrder, setRunOrder] = useState(data);
 
   const n = runOrder.length;
   const q = runOrder[index];
   const choiceOrder = useMemo(() => (q ? shuffled(q.choices) : []), [q]);
 
   function start() {
-    setRunOrder(shuffled(SYNONYMS_SET));
+    setRunOrder(shuffled(data));
     setIndex(0);
     setScore(0);
     setSelected(null);
@@ -48,11 +51,15 @@ export default function SynonymsGame() {
     <div className="syn-shell">
       <style>{CSS}</style>
 
+      {onBack && (
+        <button type="button" className="syn-back" onClick={onBack}>← Games</button>
+      )}
+
       {phase === "start" && (
         <div className="syn-card syn-start">
           <span className="syn-eyebrow">Sentivo · Vocabulary</span>
-          <h1 className="syn-title">Synonyms</h1>
-          <p className="syn-blurb">Pick the word that means the same thing. 10 questions, one at a time.</p>
+          <h1 className="syn-title">{title}</h1>
+          <p className="syn-blurb">{instruction} 10 questions, one at a time.</p>
           <button type="button" className="syn-btn syn-btn--primary" onClick={start}>Start ▶</button>
         </div>
       )}
@@ -64,7 +71,7 @@ export default function SynonymsGame() {
             <span className="syn-score">Score {score}</span>
           </div>
 
-          <p className="syn-instruction">Choose the synonym.</p>
+          <p className="syn-instruction">{instruction}</p>
           <h2 className="syn-word">{q.word}</h2>
 
           <div className="syn-choices">
@@ -122,6 +129,7 @@ const CSS = `
 @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&family=Quicksand:wght@500;600;700&display=swap');
 
 .syn-shell {
+  position: relative;
   width: 100%;
   min-height: 100%;
   display: flex;
@@ -131,6 +139,20 @@ const CSS = `
   font-family: 'Quicksand', sans-serif;
 }
 .syn-shell * { box-sizing: border-box; }
+
+.syn-back {
+  position: absolute;
+  top: clamp(8px, 2vw, 20px);
+  left: clamp(8px, 2vw, 20px);
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  color: #7C5CFC;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px 4px;
+}
 
 .syn-card {
   width: 100%;

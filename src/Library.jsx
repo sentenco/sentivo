@@ -16,7 +16,7 @@ import storybook8CoverImg from "./assets/storybook8/cover.jpeg";
 import forge1CoverImg from "./assets/forge/track1-cover.jpeg";
 import DAILY_CORRECTIONS from "./dailyCorrections";
 import { ARTICLES, ARTICLE_TOPICS } from "./articlesData";
-import SynonymsGame from "./SynonymsGame";
+import VocabularyGames from "./VocabularyGames";
 
 const CATEGORIES = ["Articles", "Reading", "Grammar", "Vocabulary", "Writing", "Listening", "Speaking"];
 
@@ -1079,7 +1079,7 @@ export default function Library() {
             </div>
           </div>
         ) : category === "Vocabulary" ? (
-          <SynonymsGame />
+          <VocabularyGames />
         ) : (category === "Writing" || category === "Listening") ? (
           <div className={`dyn-landing dyn-landing--${category === "Writing" ? "writing" : "listening"}`}>
             <div className="dyn-landing-hero">
