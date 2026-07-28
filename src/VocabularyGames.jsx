@@ -2,6 +2,8 @@ import { useState } from "react";
 import WordChoiceGame from "./WordChoiceGame";
 import SYNONYMS_SET from "./synonymsGameData";
 import ANTONYMS_SET from "./antonymsGameData";
+import SYNONYMS_TOPICS from "./synonymsTopics";
+import ANTONYMS_TOPICS from "./antonymsTopics";
 
 const GAME_TYPES = [
   {
@@ -22,16 +24,36 @@ const GAME_TYPES = [
   },
 ];
 
+const TOPICS = [
+  { key: "feelings", title: "Feelings & Emotions" },
+  { key: "dailyActions", title: "Daily Actions" },
+  { key: "describingPeople", title: "Describing People" },
+  { key: "describingThings", title: "Describing Things" },
+  { key: "schoolAndStudy", title: "School & Study" },
+  { key: "travelAndPlaces", title: "Travel & Places" },
+  { key: "homeAndDailyLife", title: "Home & Daily Life" },
+];
+
 const CATEGORIES_BY_GAME = {
   synonyms: [
     { key: "sample", title: "Sample Set", blurb: "10 starter words to try the game.", ready: true, data: SYNONYMS_SET },
-    { key: "daily-life", title: "Daily Life", blurb: "More words on the way.", ready: false },
-    { key: "work-business", title: "Work & Business", blurb: "More words on the way.", ready: false },
+    ...TOPICS.map((t) => ({
+      key: t.key,
+      title: t.title,
+      blurb: "10 words on this topic.",
+      ready: true,
+      data: SYNONYMS_TOPICS[t.key],
+    })),
   ],
   antonyms: [
     { key: "sample", title: "Sample Set", blurb: "10 starter words to try the game.", ready: true, data: ANTONYMS_SET },
-    { key: "daily-life", title: "Daily Life", blurb: "More words on the way.", ready: false },
-    { key: "work-business", title: "Work & Business", blurb: "More words on the way.", ready: false },
+    ...TOPICS.map((t) => ({
+      key: t.key,
+      title: t.title,
+      blurb: "10 words on this topic.",
+      ready: true,
+      data: ANTONYMS_TOPICS[t.key],
+    })),
   ],
 };
 
