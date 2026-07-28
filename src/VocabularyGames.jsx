@@ -71,6 +71,7 @@ const CATEGORIES_BY_GAME = {
     key: p.key,
     title: p.title,
     blurb: `${p.categoryA} or ${p.categoryB}? 10 words to sort.`,
+    level: p.level,
     ready: true,
     pack: p,
   })),
@@ -132,6 +133,7 @@ export default function VocabularyGames() {
                 disabled={!c.ready}
               >
                 <span className="vg-cat-tag">{c.ready ? "Ready" : "Coming soon"}</span>
+                {c.level && <span className="vg-cat-level">{c.level}</span>}
                 <span className="vg-cat-title">{c.title}</span>
                 <span className="vg-cat-blurb">{c.blurb}</span>
                 {c.ready && <span className="vg-cat-cta">Play →</span>}
@@ -280,6 +282,7 @@ const CSS = `
   margin-bottom: 10px;
 }
 .vg-cat-card--soon .vg-cat-tag { color: #9A93A8; background: rgba(154,147,168,0.12); }
+.vg-cat-level { font-size: 10.5px; font-weight: 700; color: #9A93A8; margin-bottom: 6px; }
 .vg-cat-title { font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 15.5px; color: #2B2A4A; margin-bottom: 4px; }
 .vg-cat-blurb { font-size: 12px; color: #7A7391; margin-bottom: 12px; }
 .vg-cat-cta { font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 12px; color: #D6396F; }
