@@ -112,6 +112,7 @@ export default function OddOneOutGame({ title, items, onBack, backLabel = "← G
               <span className={`oo-feedback ${picked === item.odd ? "is-correct" : "is-incorrect"}`}>
                 {picked === item.odd ? "Correct! 🎉" : `Not quite — "${item.odd}" is the odd one out.`}
               </span>
+              {item.explanation && <span className="oo-explanation">{item.explanation}</span>}
               {followUp && <span className="oo-followup">💬 {followUp}</span>}
               <button type="button" className="oo-btn oo-btn--primary" onClick={next}>
                 {index + 1 >= n ? "See score →" : "Next →"}
@@ -236,6 +237,7 @@ const CSS = `
 .oo-feedback { font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 15px; }
 .oo-feedback.is-correct { color: #1F7A47; }
 .oo-feedback.is-incorrect { color: #B3392F; }
+.oo-explanation { font-size: 13px; color: #7A6B4E; font-style: italic; max-width: 400px; }
 .oo-followup { font-size: 13px; color: #6B5A66; background: #F5F3FF; border-radius: 12px; padding: 8px 14px; max-width: 380px; }
 
 .oo-done-emoji { font-size: 48px; margin-bottom: 4px; }
