@@ -16,6 +16,7 @@ import storybook8CoverImg from "./assets/storybook8/cover.jpeg";
 import forge1CoverImg from "./assets/forge/track1-cover.jpeg";
 import DAILY_CORRECTIONS from "./dailyCorrections";
 import { ARTICLES, ARTICLE_TOPICS } from "./articlesData";
+import SynonymsGame from "./SynonymsGame";
 
 const CATEGORIES = ["Articles", "Reading", "Grammar", "Vocabulary", "Writing", "Listening", "Speaking"];
 
@@ -1077,11 +1078,13 @@ export default function Library() {
               </a>
             </div>
           </div>
-        ) : (category === "Vocabulary" || category === "Writing" || category === "Listening") ? (
-          <div className={`dyn-landing dyn-landing--${category === "Vocabulary" ? "vocab" : category === "Writing" ? "writing" : "listening"}`}>
+        ) : category === "Vocabulary" ? (
+          <SynonymsGame />
+        ) : (category === "Writing" || category === "Listening") ? (
+          <div className={`dyn-landing dyn-landing--${category === "Writing" ? "writing" : "listening"}`}>
             <div className="dyn-landing-hero">
               <span className="dyn-landing-eyebrow">Sentivo · {category}</span>
-              <h1><span className="dyn-landing-pill">{category === "Vocabulary" ? "🗂️ Word Bank" : category === "Writing" ? "✍️ Writing Desk" : "🎧 Sound Booth"}</span></h1>
+              <h1><span className="dyn-landing-pill">{category === "Writing" ? "✍️ Writing Desk" : "🎧 Sound Booth"}</span></h1>
             </div>
             <div className="dyn-landing-row"></div>
             {genericContent}
@@ -1091,7 +1094,7 @@ export default function Library() {
         )}
         </div>
 
-        {category !== "Speaking" && category !== "Grammar" && category !== "Articles" && category !== "Reading" && !(category === "All" && !query.trim() && !showAllToday) && (
+        {category !== "Speaking" && category !== "Grammar" && category !== "Articles" && category !== "Reading" && category !== "Vocabulary" && !(category === "All" && !query.trim() && !showAllToday) && (
         <div className="pagination">
           <button disabled={safePage === 1} onClick={() => changePage(safePage - 1)}>&larr; Prev</button>
           <span className="page-indicator">Page {safePage} of {totalPages}</span>
