@@ -6,6 +6,8 @@ import ANTONYMS_SET from "./antonymsGameData";
 import SYNONYMS_TOPICS from "./synonymsTopics";
 import ANTONYMS_TOPICS from "./antonymsTopics";
 import WORD_SORT_PACKS from "./wordSortPacks";
+import OddOneOutGame from "./OddOneOutGame";
+import ODD_ONE_OUT_PACKS from "./oddOneOutData";
 
 const GAME_TYPES = [
   {
@@ -34,7 +36,17 @@ const GAME_TYPES = [
     hue: "green",
     kind: "sort",
   },
+  {
+    key: "oddOneOut",
+    title: "Odd One Out",
+    icon: "🔎",
+    blurb: "Tap the word that doesn't belong.",
+    hue: "orange",
+    kind: "oddOneOut",
+  },
 ];
+
+const AUDIENCES = ["Kids", "Teens", "Adults"];
 
 const TOPICS = [
   { key: "feelings", title: "Feelings & Emotions" },
@@ -75,6 +87,14 @@ const CATEGORIES_BY_GAME = {
     ready: true,
     pack: p,
   })),
+  oddOneOut: ODD_ONE_OUT_PACKS.map((p) => ({
+    key: p.key,
+    title: p.title,
+    blurb: "15 rounds, 1 odd word each.",
+    audience: p.audience,
+    ready: true,
+    items: p.items,
+  })),
 };
 
 export default function VocabularyGames() {
@@ -92,6 +112,17 @@ export default function VocabularyGames() {
         categoryA={category.pack.categoryA}
         categoryB={category.pack.categoryB}
         items={category.pack.items}
+        onBack={() => setCategoryKey(null)}
+        backLabel="← Categories"
+      />
+    );
+  }
+
+  if (game && category && category.ready && game.kind === "oddOneOut") {
+    return (
+      <OddOneOutGame
+        title={`${category.audience} · ${category.title}`}
+        items={category.items}
         onBack={() => setCategoryKey(null)}
         backLabel="← Categories"
       />
@@ -123,23 +154,47 @@ export default function VocabularyGames() {
           </div>
           <div className="vg-row"></div>
 
-          <div className="vg-cat-grid">
-            {categories.map((c) => (
-              <button
-                key={c.key}
-                type="button"
-                className={`vg-cat-card ${c.ready ? "" : "vg-cat-card--soon"}`}
-                onClick={() => c.ready && setCategoryKey(c.key)}
-                disabled={!c.ready}
-              >
-                <span className="vg-cat-tag">{c.ready ? "Ready" : "Coming soon"}</span>
-                {c.level && <span className="vg-cat-level">{c.level}</span>}
-                <span className="vg-cat-title">{c.title}</span>
-                <span className="vg-cat-blurb">{c.blurb}</span>
-                {c.ready && <span className="vg-cat-cta">Play →</span>}
-              </button>
-            ))}
-          </div>
+          {categories.some((c) => c.audience) ? (
+            AUDIENCES.filter((aud) => categories.some((c) => c.audience === aud)).map((aud) => (
+              <div key={aud} className="vg-audience-group">
+                <span className={`vg-audience-tag vg-audience-tag--${aud.toLowerCase()}`}>{aud}</span>
+                <div className="vg-cat-grid">
+                  {categories.filter((c) => c.audience === aud).map((c) => (
+                    <button
+                      key={c.key}
+                      type="button"
+                      className={`vg-cat-card ${c.ready ? "" : "vg-cat-card--soon"}`}
+                      onClick={() => c.ready && setCategoryKey(c.key)}
+                      disabled={!c.ready}
+                    >
+                      <span className="vg-cat-tag">{c.ready ? "Ready" : "Coming soon"}</span>
+                      <span className="vg-cat-title">{c.title}</span>
+                      <span className="vg-cat-blurb">{c.blurb}</span>
+                      {c.ready && <span className="vg-cat-cta">Play →</span>}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            ))
+          ) : (
+            <div className="vg-cat-grid">
+              {categories.map((c) => (
+                <button
+                  key={c.key}
+                  type="button"
+                  className={`vg-cat-card ${c.ready ? "" : "vg-cat-card--soon"}`}
+                  onClick={() => c.ready && setCategoryKey(c.key)}
+                  disabled={!c.ready}
+                >
+                  <span className="vg-cat-tag">{c.ready ? "Ready" : "Coming soon"}</span>
+                  {c.level && <span className="vg-cat-level">{c.level}</span>}
+                  <span className="vg-cat-title">{c.title}</span>
+                  <span className="vg-cat-blurb">{c.blurb}</span>
+                  {c.ready && <span className="vg-cat-cta">Play →</span>}
+                </button>
+              ))}
+            </div>
+          )}
         </div>
       </div>
     );
@@ -249,10 +304,26 @@ const CSS = `
 .vg-block--pink { background: linear-gradient(135deg, #FF8FB3 0%, #D6396F 100%); }
 .vg-block--purple { background: linear-gradient(135deg, #A78BFA 0%, #7C5CFC 100%); }
 .vg-block--green { background: linear-gradient(135deg, #34D399 0%, #1F9D6E 100%); }
+.vg-block--orange { background: linear-gradient(135deg, #FBBF24 0%, #D97706 100%); }
 .vg-block-icon { font-size: 26px; margin-bottom: 10px; }
 .vg-block-title { font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 19px; margin: 0 0 6px; }
 .vg-block-blurb { font-size: 13px; opacity: 0.92; margin: 0 0 18px; line-height: 1.5; }
 .vg-block-cta { font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 12.5px; }
+
+.vg-audience-group { width: 100%; margin-bottom: 28px; }
+.vg-audience-group:last-child { margin-bottom: 0; }
+.vg-audience-tag {
+  display: inline-block;
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 600;
+  font-size: 13px;
+  border-radius: 999px;
+  padding: 5px 16px;
+  margin-bottom: 14px;
+}
+.vg-audience-tag--kids { color: #B4650F; background: rgba(251,191,36,0.20); }
+.vg-audience-tag--teens { color: #1F9D6E; background: rgba(52,211,153,0.16); }
+.vg-audience-tag--adults { color: #4C3F91; background: rgba(124,92,252,0.14); }
 
 .vg-cat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 240px)); gap: 16px; justify-content: center; width: 100%; }
 .vg-cat-card {
