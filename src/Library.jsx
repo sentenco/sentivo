@@ -17,6 +17,7 @@ import forge1CoverImg from "./assets/forge/track1-cover.jpeg";
 import DAILY_CORRECTIONS from "./dailyCorrections";
 import { ARTICLES, ARTICLE_TOPICS } from "./articlesData";
 import VocabularyGames from "./VocabularyGames";
+import WritingActivities from "./WritingActivities";
 
 const CATEGORIES = ["Articles", "Reading", "Grammar", "Vocabulary", "Writing", "Listening", "Speaking"];
 
@@ -1080,11 +1081,20 @@ export default function Library() {
           </div>
         ) : category === "Vocabulary" ? (
           <VocabularyGames />
-        ) : (category === "Writing" || category === "Listening") ? (
-          <div className={`dyn-landing dyn-landing--${category === "Writing" ? "writing" : "listening"}`}>
+        ) : category === "Writing" ? (
+          <div className="dyn-landing dyn-landing--writing">
             <div className="dyn-landing-hero">
-              <span className="dyn-landing-eyebrow">Sentivo · {category}</span>
-              <h1><span className="dyn-landing-pill">{category === "Writing" ? "✍️ Writing Desk" : "🎧 Sound Booth"}</span></h1>
+              <span className="dyn-landing-eyebrow">Sentivo · Writing</span>
+              <h1><span className="dyn-landing-pill">✍️ Writing Desk</span></h1>
+            </div>
+            <div className="dyn-landing-row"></div>
+            <WritingActivities />
+          </div>
+        ) : category === "Listening" ? (
+          <div className="dyn-landing dyn-landing--listening">
+            <div className="dyn-landing-hero">
+              <span className="dyn-landing-eyebrow">Sentivo · Listening</span>
+              <h1><span className="dyn-landing-pill">🎧 Sound Booth</span></h1>
             </div>
             <div className="dyn-landing-row"></div>
             {genericContent}
@@ -1094,7 +1104,7 @@ export default function Library() {
         )}
         </div>
 
-        {category !== "Speaking" && category !== "Grammar" && category !== "Articles" && category !== "Reading" && category !== "Vocabulary" && !(category === "All" && !query.trim() && !showAllToday) && (
+        {category !== "Speaking" && category !== "Grammar" && category !== "Articles" && category !== "Reading" && category !== "Vocabulary" && category !== "Writing" && !(category === "All" && !query.trim() && !showAllToday) && (
         <div className="pagination">
           <button disabled={safePage === 1} onClick={() => changePage(safePage - 1)}>&larr; Prev</button>
           <span className="page-indicator">Page {safePage} of {totalPages}</span>
