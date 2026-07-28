@@ -1,9 +1,11 @@
 import { useState } from "react";
 import WordChoiceGame from "./WordChoiceGame";
+import WordSortGame from "./WordSortGame";
 import SYNONYMS_SET from "./synonymsGameData";
 import ANTONYMS_SET from "./antonymsGameData";
 import SYNONYMS_TOPICS from "./synonymsTopics";
 import ANTONYMS_TOPICS from "./antonymsTopics";
+import WORD_SORT_PACKS from "./wordSortPacks";
 
 const GAME_TYPES = [
   {
@@ -13,6 +15,7 @@ const GAME_TYPES = [
     blurb: "Pick the word that means the same thing.",
     instruction: "Choose the synonym.",
     hue: "pink",
+    kind: "choice",
   },
   {
     key: "antonyms",
@@ -21,6 +24,15 @@ const GAME_TYPES = [
     blurb: "Pick the word that means the opposite.",
     instruction: "Choose the antonym.",
     hue: "purple",
+    kind: "choice",
+  },
+  {
+    key: "wordSort",
+    title: "Word Sort",
+    icon: "🗃️",
+    blurb: "Sort each word into the right category.",
+    hue: "green",
+    kind: "sort",
   },
 ];
 
@@ -55,6 +67,13 @@ const CATEGORIES_BY_GAME = {
       data: ANTONYMS_TOPICS[t.key],
     })),
   ],
+  wordSort: WORD_SORT_PACKS.map((p) => ({
+    key: p.key,
+    title: p.title,
+    blurb: `${p.categoryA} or ${p.categoryB}? 10 words to sort.`,
+    ready: true,
+    pack: p,
+  })),
 };
 
 export default function VocabularyGames() {
@@ -64,6 +83,19 @@ export default function VocabularyGames() {
   const game = GAME_TYPES.find((g) => g.key === gameKey);
   const categories = gameKey ? CATEGORIES_BY_GAME[gameKey] : [];
   const category = categories.find((c) => c.key === categoryKey);
+
+  if (game && category && category.ready && game.kind === "sort") {
+    return (
+      <WordSortGame
+        title={category.title}
+        categoryA={category.pack.categoryA}
+        categoryB={category.pack.categoryB}
+        items={category.pack.items}
+        onBack={() => setCategoryKey(null)}
+        backLabel="← Categories"
+      />
+    );
+  }
 
   if (game && category && category.ready) {
     return (
@@ -214,6 +246,7 @@ const CSS = `
 .vg-block:hover { transform: translateY(-3px); }
 .vg-block--pink { background: linear-gradient(135deg, #FF8FB3 0%, #D6396F 100%); }
 .vg-block--purple { background: linear-gradient(135deg, #A78BFA 0%, #7C5CFC 100%); }
+.vg-block--green { background: linear-gradient(135deg, #34D399 0%, #1F9D6E 100%); }
 .vg-block-icon { font-size: 26px; margin-bottom: 10px; }
 .vg-block-title { font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 19px; margin: 0 0 6px; }
 .vg-block-blurb { font-size: 13px; opacity: 0.92; margin: 0 0 18px; line-height: 1.5; }
