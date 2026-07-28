@@ -13,7 +13,7 @@ function shuffled(arr) {
 // pass a title, instruction line, and a data set shaped like
 // [{ word, choices: [4], correct }]. Used for Synonyms, Antonyms, and any
 // future word-choice game under Vocabulary.
-export default function WordChoiceGame({ title, instruction, data, onBack }) {
+export default function WordChoiceGame({ title, instruction, data, onBack, backLabel = "← Games" }) {
   const [phase, setPhase] = useState("start"); // "start" | "playing" | "done"
   const [index, setIndex] = useState(0);
   const [score, setScore] = useState(0);
@@ -52,7 +52,7 @@ export default function WordChoiceGame({ title, instruction, data, onBack }) {
       <style>{CSS}</style>
 
       {onBack && (
-        <button type="button" className="syn-back" onClick={onBack}>← Games</button>
+        <button type="button" className="syn-back" onClick={onBack}>{backLabel}</button>
       )}
 
       {phase === "start" && (
