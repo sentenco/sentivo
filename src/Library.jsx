@@ -1151,6 +1151,7 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   --ochre: #FF8A4C;
   --dusk: #16BFAE;
   --marigold: #FFB648;
+  --coral: #FF6B4A;
   --hair: rgba(43,42,74,0.11);
 }
 .theme-pro { background: var(--paper); color: var(--ink); }
@@ -1197,14 +1198,14 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   text-decoration: none;
 }
 .gc-sec-tab:not(:last-child) { border-right: 1px solid rgba(34,58,51,0.12); }
-.gc-sec-tab:hover { color: var(--rust); }
+.gc-sec-tab:hover { color: var(--coral); }
 .gc-sec-tab.is-active { border-bottom-color: transparent; background: var(--ink); color: #FFFFFF; border-radius: 999px; }
 
 .gc-editions { display: flex; align-items: center; justify-content: center; gap: 11px; padding: 5px 40px; border-bottom: 1px solid var(--hair); font-family: 'Quicksand', sans-serif; background: rgba(34,58,51,0.035); }
 .gc-ed-spark { font-size: 12px; font-weight: 800; letter-spacing: 0.02em; padding: 5px 13px; border-radius: 999px; color: var(--muted); text-decoration: none; }
-.gc-ed-spark:hover { color: var(--rust); }
+.gc-ed-spark:hover { color: var(--coral); }
 .gc-ed-tab { font-size: 12px; font-weight: 800; letter-spacing: 0.02em; padding: 5px 13px; border-radius: 999px; color: var(--muted); background: none; border: none; cursor: pointer; }
-.gc-ed-tab:hover { color: var(--ink); }
+.gc-ed-tab:hover { color: var(--coral); }
 .gc-ed-tab.is-active { background: var(--ink); color: var(--card); }
 
 /* ── Today: teacher dashboard ── */
