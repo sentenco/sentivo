@@ -275,6 +275,8 @@ export default function SlideDeckEditor() {
 
   const slide = slides[activeIndex] || slides[0];
   const n = slides.length;
+  const selectedEl = slide.elements.find((el) => el.id === selectedId) || null;
+  const selectedIsText = selectedEl && selectedEl.type === "text";
 
   return (
     <div className="sde-shell" onClick={() => setSelectedId(null)}>
@@ -295,6 +297,61 @@ export default function SlideDeckEditor() {
           <button type="button" className="sde-tool-btn" onClick={() => setLibraryOpen((v) => !v)}>🖼️ Images</button>
           <button type="button" className="sde-present-btn" onClick={() => openPresenter(deckId)}>Present ▶</button>
         </div>
+      </div>
+
+      <div
+        className="sde-format-bar"
+        onClick={(e) => e.stopPropagation()}
+        onMouseDown={(e) => { if (e.target.tagName !== "SELECT") e.preventDefault(); }}
+      >
+        {selectedIsText ? (
+          <>
+            <span className="sde-format-label">Font size</span>
+            <select
+              className="sde-size-select"
+              value={selectedEl.fontSize}
+              onChange={(e) => updateElement(activeIndex, selectedEl.id, { fontSize: Number(e.target.value) })}
+            >
+              {FONT_SIZES.map((sz) => (
+                <option key={sz} value={sz}>{sz}px</option>
+              ))}
+            </select>
+            <button type="button" className={`sde-bold-btn ${selectedEl.bold ? "is-active" : ""}`} onClick={() => updateElement(activeIndex, selectedEl.id, { bold: !selectedEl.bold })} title="Bold">B</button>
+            <button type="button" className={`sde-italic-btn ${selectedEl.italic ? "is-active" : ""}`} onClick={() => updateElement(activeIndex, selectedEl.id, { italic: !selectedEl.italic })} title="Italic">I</button>
+            <span className="sde-toolbar-divider" />
+            <span className="sde-format-label">Text color</span>
+            {TEXT_COLORS.map((c) => (
+              <button
+                key={c}
+                type="button"
+                className={`sde-color-swatch ${selectedEl.color === c ? "is-active" : ""}`}
+                style={{ background: c }}
+                onClick={() => updateElement(activeIndex, selectedEl.id, { color: c })}
+                title="Text color"
+              />
+            ))}
+            <span className="sde-toolbar-divider" />
+            <span className="sde-format-label">Align text</span>
+            {["left", "center", "right"].map((a) => (
+              <button key={a} type="button" className={selectedEl.align === a ? "is-active" : ""} onClick={() => updateElement(activeIndex, selectedEl.id, { align: a })} title={`Align text ${a}`}>
+                {a === "left" ? "⯇" : a === "center" ? "≡" : "⯈"}
+              </button>
+            ))}
+            <span className="sde-toolbar-divider" />
+            <span className="sde-format-label">Position on slide</span>
+            {["left", "center", "right"].map((pos) => (
+              <button key={pos} type="button" onClick={() => positionElement(selectedEl.id, pos, selectedEl.w)} title={`Move box to ${pos} of slide`}>
+                {pos === "left" ? "⇤" : pos === "center" ? "⇔" : "⇥"}
+              </button>
+            ))}
+            <span className="sde-toolbar-divider" />
+            <button type="button" className="sde-el-delete" onClick={() => deleteElement(activeIndex, selectedEl.id)}>Delete text</button>
+          </>
+        ) : selectedEl ? (
+          <span className="sde-format-hint">Image selected — drag it, resize from the corner, or delete it on the slide.</span>
+        ) : (
+          <span className="sde-format-hint">Click anywhere on the slide to add text, then use this bar to format it.</span>
+        )}
       </div>
 
       <div className="sde-frame">
@@ -320,46 +377,7 @@ export default function SlideDeckEditor() {
                     onClick={(e) => { e.stopPropagation(); setSelectedId(el.id); }}
                   >
                     {selectedId === el.id && (
-                      <div className="sde-el-toolbar" onPointerDown={(e) => e.stopPropagation()} onMouseDown={(e) => { if (e.target.tagName !== "SELECT") e.preventDefault(); }}>
-                        <span className="sde-drag-handle" onPointerDown={(e) => startDrag(e, el.id)} title="Drag to move">⠿</span>
-                        <select
-                          className="sde-size-select"
-                          value={el.fontSize}
-                          onChange={(e) => updateElement(activeIndex, el.id, { fontSize: Number(e.target.value) })}
-                          title="Font size"
-                        >
-                          {FONT_SIZES.map((sz) => (
-                            <option key={sz} value={sz}>{sz}</option>
-                          ))}
-                        </select>
-                        <button type="button" className={`sde-bold-btn ${el.bold ? "is-active" : ""}`} onClick={() => updateElement(activeIndex, el.id, { bold: !el.bold })} title="Bold">B</button>
-                        <button type="button" className={`sde-italic-btn ${el.italic ? "is-active" : ""}`} onClick={() => updateElement(activeIndex, el.id, { italic: !el.italic })} title="Italic">I</button>
-                        <span className="sde-toolbar-divider" />
-                        {["left", "center", "right"].map((a) => (
-                          <button key={a} type="button" className={el.align === a ? "is-active" : ""} onClick={() => updateElement(activeIndex, el.id, { align: a })} title={`Align text ${a}`}>
-                            {a === "left" ? "⯇" : a === "center" ? "≡" : "⯈"}
-                          </button>
-                        ))}
-                        <span className="sde-toolbar-divider" />
-                        {["left", "center", "right"].map((pos) => (
-                          <button key={pos} type="button" onClick={() => positionElement(el.id, pos, el.w)} title={`Move box to ${pos} of slide`}>
-                            {pos === "left" ? "⇤" : pos === "center" ? "⇔" : "⇥"}
-                          </button>
-                        ))}
-                        <span className="sde-toolbar-divider" />
-                        {TEXT_COLORS.map((c) => (
-                          <button
-                            key={c}
-                            type="button"
-                            className={`sde-color-swatch ${el.color === c ? "is-active" : ""}`}
-                            style={{ background: c }}
-                            onClick={() => updateElement(activeIndex, el.id, { color: c })}
-                            title="Text color"
-                          />
-                        ))}
-                        <span className="sde-toolbar-divider" />
-                        <button type="button" className="sde-el-delete" onClick={() => deleteElement(activeIndex, el.id)}>Delete</button>
-                      </div>
+                      <span className="sde-drag-handle sde-drag-handle--corner" onPointerDown={(e) => startDrag(e, el.id)} title="Drag to move">⠿</span>
                     )}
                     <div
                       className="sde-el-text"
@@ -584,61 +602,55 @@ const CSS = `
 .sde-el-text:empty::before { content: attr(data-placeholder); opacity: 0.3; }
 .sde-el.is-selected .sde-el-text { outline: 1.5px dashed var(--coral-tint); outline-offset: 4px; }
 
-.sde-el-toolbar {
-  position: absolute;
-  bottom: 100%;
-  left: 0;
-  margin-bottom: 6px;
+.sde-format-bar {
+  flex-shrink: 0;
+  max-width: 1040px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 10px 20px;
   display: flex;
   align-items: center;
-  gap: 3px;
-  background: var(--navy);
-  border-radius: 8px;
-  padding: 4px 5px;
-  box-shadow: 0 8px 18px rgba(27,42,74,0.3);
-  white-space: nowrap;
-  z-index: 10;
+  flex-wrap: wrap;
+  gap: 6px;
+  background: #FFFFFF;
+  border-bottom: 1px solid #EAE7EF;
+  min-height: 44px;
 }
-.sde-el-toolbar button, .sde-drag-handle {
+.sde-format-label { font-size: 10.5px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: #9A93A8; margin: 0 4px 0 6px; }
+.sde-format-label:first-child { margin-left: 0; }
+.sde-format-hint { font-size: 12.5px; color: #9A93A8; }
+.sde-format-bar button, .sde-size-select {
   font-family: 'Quicksand', sans-serif;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 700;
-  color: #FFFFFF;
-  background: rgba(255,255,255,0.12);
+  color: var(--navy);
+  background: #F1F0F6;
   border: none;
-  border-radius: 5px;
-  min-width: 22px;
-  height: 22px;
+  border-radius: 6px;
+  min-width: 24px;
+  height: 26px;
   cursor: pointer;
   display: flex; align-items: center; justify-content: center;
-  padding: 0 5px;
+  padding: 0 7px;
 }
-.sde-el-toolbar button.is-active { background: var(--coral); }
-.sde-drag-handle { cursor: grab; }
-.sde-el-delete { background: rgba(255,107,74,0.3) !important; padding: 0 8px; }
-.sde-size-select {
-  font-family: 'Quicksand', sans-serif;
-  font-size: 11px;
-  font-weight: 700;
-  color: #FFFFFF;
-  background: rgba(255,255,255,0.12);
-  border: none;
-  border-radius: 5px;
-  height: 22px;
-  padding: 0 2px;
-  cursor: pointer;
-}
-.sde-size-select option { color: #1B2A4A; }
-.sde-bold-btn { font-weight: 900 !important; }
-.sde-italic-btn { font-style: italic; }
-.sde-toolbar-divider { width: 1px; height: 16px; background: rgba(255,255,255,0.15); margin: 0 2px; }
+.sde-size-select { padding: 0 4px; }
+.sde-format-bar button.is-active { background: var(--coral); color: #FFFFFF; }
+.sde-toolbar-divider { width: 1px; height: 20px; background: #EAE7EF; margin: 0 2px; }
 .sde-color-swatch {
-  width: 18px; height: 18px; min-width: 18px; border-radius: 50%;
-  border: 1.5px solid rgba(255,255,255,0.3);
+  width: 20px; height: 20px; min-width: 20px; border-radius: 50%;
+  border: 1.5px solid #EAE7EF;
   padding: 0;
   cursor: pointer;
 }
-.sde-color-swatch.is-active { border-color: #FFFFFF; box-shadow: 0 0 0 2px var(--coral); }
+.sde-color-swatch.is-active { border-color: var(--coral); box-shadow: 0 0 0 2px rgba(255,107,74,0.22); }
+.sde-el-delete { background: rgba(255,107,74,0.14) !important; color: var(--coral-dark) !important; padding: 0 12px; }
+.sde-drag-handle--corner {
+  position: absolute; top: -11px; left: -11px;
+  width: 22px; height: 22px; border-radius: 50%;
+  background: var(--navy); color: #FFFFFF;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px; cursor: grab; z-index: 5;
+}
 
 .sde-el--image { cursor: grab; }
 .sde-el--image img { width: 100%; display: block; border-radius: 6px; pointer-events: none; }
