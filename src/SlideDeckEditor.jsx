@@ -346,7 +346,6 @@ export default function SlideDeckEditor() {
         ))}
         <span className="sde-toolbar-divider" />
         <button type="button" disabled={!selectedIsText} className="sde-el-delete" onClick={() => deleteElement(activeIndex, selectedEl.id)}>Delete text</button>
-        {!selectedId && <span className="sde-format-hint">Click anywhere on the slide to add text, then use this bar to format it.</span>}
         {selectedEl && !selectedIsText && <span className="sde-format-hint">Image selected — drag it, resize from the corner, or delete it on the slide.</span>}
       </div>
 
@@ -391,7 +390,7 @@ export default function SlideDeckEditor() {
                         if (!text || !text.trim()) deleteElement(activeIndex, el.id);
                         else updateElement(activeIndex, el.id, { text });
                       }}
-                      onClick={(e) => e.stopPropagation()}
+                      onClick={(e) => { e.stopPropagation(); setSelectedId(el.id); }}
                       data-placeholder="Type here… (click away to remove if empty)"
                     >
                       {el.text}
