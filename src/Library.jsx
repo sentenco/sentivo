@@ -1028,9 +1028,9 @@ export default function Library() {
                 </button>
                 {menuOpen && (
                   <div className="account-menu">
-                    <a href="#my-tools">My Tools</a>
                     <a href="#settings">Account settings</a>
                     <a href="#plan">Plan: Free &mdash; Upgrade</a>
+                    <a href="mailto:hello@sentivo.com">Help &amp; Support</a>
                     <button className="logout-btn" onClick={() => { signOut(); setMenuOpen(false); }}>Log out</button>
                   </div>
                 )}
