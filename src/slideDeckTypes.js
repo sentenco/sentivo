@@ -5,10 +5,11 @@ export function newTextElement(x = 30, y = 40) {
     x,
     y,
     w: 34,
-    fontSize: 22,
+    fontSize: 24,
     color: "#1B2A4A",
     align: "left",
     bold: false,
+    italic: false,
     text: "",
   };
 }

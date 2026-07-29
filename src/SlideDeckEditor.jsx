@@ -6,6 +6,7 @@ import { newSlide, newTextElement, newImageElement } from "./slideDeckTypes";
 
 const IMAGE_BUCKET = "slide-images";
 const TEXT_COLORS = ["#1B2A4A", "#FF6B4A", "#5B6B85", "#1F9D6E", "#FFFFFF"];
+const FONT_SIZES = [12, 14, 16, 18, 20, 24, 28, 32, 36, 44, 54, 64];
 
 // Opens the read-only presenter as a standalone popup -- matching the
 // FORGE/ASCEND/Notebook chrome-less window.open pattern.
@@ -39,6 +40,7 @@ export default function SlideDeckEditor() {
   const [libraryOpen, setLibraryOpen] = useState(false);
   const [libraryImages, setLibraryImages] = useState([]);
   const [uploading, setUploading] = useState(false);
+  const [uploadError, setUploadError] = useState(null);
 
   const saveTimer = useRef(null);
   const loadedRef = useRef(false);
@@ -130,6 +132,11 @@ export default function SlideDeckEditor() {
     });
   }
 
+  function positionElement(elementId, pos, w) {
+    const x = pos === "left" ? 3 : pos === "center" ? Math.max(0, (94 - w) / 2) : Math.max(0, 94 - w);
+    updateElement(activeIndex, elementId, { x });
+  }
+
   function deleteElement(index, elementId) {
     setSlides((prev) => {
       const next = prev.map((s, i) => (i === index ? { ...s, elements: s.elements.filter((el) => el.id !== elementId) } : s));
@@ -157,18 +164,6 @@ export default function SlideDeckEditor() {
       return next;
     });
     setActiveIndex((i) => Math.max(0, Math.min(i, slides.length - 2)));
-  }
-
-  function moveSlide(dir) {
-    const target = activeIndex + dir;
-    if (target < 0 || target >= slides.length) return;
-    setSlides((prev) => {
-      const next = [...prev];
-      [next[activeIndex], next[target]] = [next[target], next[activeIndex]];
-      persist(deckTitle, next);
-      return next;
-    });
-    setActiveIndex(target);
   }
 
   function handleCanvasClick(e) {
@@ -215,12 +210,16 @@ export default function SlideDeckEditor() {
     const files = Array.from(e.target.files || []);
     if (!files.length || !user) return;
     setUploading(true);
+    setUploadError(null);
     for (const file of files) {
       const path = `${user.id}/${crypto.randomUUID()}-${file.name}`;
       const { error } = await supabase.storage.from(IMAGE_BUCKET).upload(path, file);
       if (!error) {
         const { data: pub } = supabase.storage.from(IMAGE_BUCKET).getPublicUrl(path);
         setLibraryImages((prev) => [{ name: path.split("/")[1], url: pub.publicUrl }, ...prev]);
+      } else {
+        console.error("Slide image upload failed:", error);
+        setUploadError(error.message || "Upload failed.");
       }
     }
     setUploading(false);
@@ -293,9 +292,6 @@ export default function SlideDeckEditor() {
           <span className={`sde-status sde-status--${status}`}>
             {status === "saving" ? "Saving…" : status === "error" ? "Couldn't save" : "Saved"}
           </span>
-          <button type="button" className="sde-tool-btn" onClick={() => moveSlide(-1)} disabled={activeIndex === 0}>Move ←</button>
-          <button type="button" className="sde-tool-btn" onClick={() => moveSlide(1)} disabled={activeIndex === n - 1}>Move →</button>
-          <button type="button" className="sde-tool-btn" onClick={() => deleteSlide(activeIndex)} disabled={n <= 1}>Delete slide</button>
           <button type="button" className="sde-tool-btn" onClick={() => setLibraryOpen((v) => !v)}>🖼️ Images</button>
           <button type="button" className="sde-present-btn" onClick={() => openPresenter(deckId)}>Present ▶</button>
         </div>
@@ -324,15 +320,30 @@ export default function SlideDeckEditor() {
                     onClick={(e) => { e.stopPropagation(); setSelectedId(el.id); }}
                   >
                     {selectedId === el.id && (
-                      <div className="sde-el-toolbar" onPointerDown={(e) => e.stopPropagation()} onMouseDown={(e) => e.preventDefault()}>
-                        <span className="sde-drag-handle" onPointerDown={(e) => startDrag(e, el.id)}>⠿</span>
-                        <button type="button" onClick={() => updateElement(activeIndex, el.id, { fontSize: Math.max(11, el.fontSize - 2) })}>A-</button>
-                        <span className="sde-el-size">{el.fontSize}</span>
-                        <button type="button" onClick={() => updateElement(activeIndex, el.id, { fontSize: Math.min(64, el.fontSize + 2) })}>A+</button>
-                        <button type="button" className={`sde-bold-btn ${el.bold ? "is-active" : ""}`} onClick={() => updateElement(activeIndex, el.id, { bold: !el.bold })}>B</button>
+                      <div className="sde-el-toolbar" onPointerDown={(e) => e.stopPropagation()} onMouseDown={(e) => { if (e.target.tagName !== "SELECT") e.preventDefault(); }}>
+                        <span className="sde-drag-handle" onPointerDown={(e) => startDrag(e, el.id)} title="Drag to move">⠿</span>
+                        <select
+                          className="sde-size-select"
+                          value={el.fontSize}
+                          onChange={(e) => updateElement(activeIndex, el.id, { fontSize: Number(e.target.value) })}
+                          title="Font size"
+                        >
+                          {FONT_SIZES.map((sz) => (
+                            <option key={sz} value={sz}>{sz}</option>
+                          ))}
+                        </select>
+                        <button type="button" className={`sde-bold-btn ${el.bold ? "is-active" : ""}`} onClick={() => updateElement(activeIndex, el.id, { bold: !el.bold })} title="Bold">B</button>
+                        <button type="button" className={`sde-italic-btn ${el.italic ? "is-active" : ""}`} onClick={() => updateElement(activeIndex, el.id, { italic: !el.italic })} title="Italic">I</button>
+                        <span className="sde-toolbar-divider" />
                         {["left", "center", "right"].map((a) => (
-                          <button key={a} type="button" className={el.align === a ? "is-active" : ""} onClick={() => updateElement(activeIndex, el.id, { align: a })}>
+                          <button key={a} type="button" className={el.align === a ? "is-active" : ""} onClick={() => updateElement(activeIndex, el.id, { align: a })} title={`Align text ${a}`}>
                             {a === "left" ? "⯇" : a === "center" ? "≡" : "⯈"}
+                          </button>
+                        ))}
+                        <span className="sde-toolbar-divider" />
+                        {["left", "center", "right"].map((pos) => (
+                          <button key={pos} type="button" onClick={() => positionElement(el.id, pos, el.w)} title={`Move box to ${pos} of slide`}>
+                            {pos === "left" ? "⇤" : pos === "center" ? "⇔" : "⇥"}
                           </button>
                         ))}
                         <span className="sde-toolbar-divider" />
@@ -343,6 +354,7 @@ export default function SlideDeckEditor() {
                             className={`sde-color-swatch ${el.color === c ? "is-active" : ""}`}
                             style={{ background: c }}
                             onClick={() => updateElement(activeIndex, el.id, { color: c })}
+                            title="Text color"
                           />
                         ))}
                         <span className="sde-toolbar-divider" />
@@ -359,7 +371,7 @@ export default function SlideDeckEditor() {
                           newElementIdRef.current = null;
                         }
                       }}
-                      style={{ fontSize: `${el.fontSize}px`, color: el.color, textAlign: el.align, fontWeight: el.bold ? 800 : 600 }}
+                      style={{ fontSize: `${el.fontSize}px`, color: el.color, textAlign: el.align, fontWeight: el.bold ? 800 : 600, fontStyle: el.italic ? "italic" : "normal" }}
                       onBlur={(e) => {
                         const text = e.currentTarget.textContent;
                         if (!text || !text.trim()) deleteElement(activeIndex, el.id);
@@ -397,7 +409,12 @@ export default function SlideDeckEditor() {
           <button type="button" className="sde-nav-btn" onClick={() => setActiveIndex((i) => Math.max(0, i - 1))} disabled={activeIndex === 0}>← Previous</button>
           <div className="sde-dots">
             {slides.map((s, i) => (
-              <span key={s.id} className={i === activeIndex ? "is-active" : ""} onClick={() => setActiveIndex(i)} />
+              <span key={s.id} className="sde-dot-wrap">
+                <span className={i === activeIndex ? "is-active" : ""} onClick={() => setActiveIndex(i)} />
+                {n > 1 && (
+                  <button type="button" className="sde-dot-delete" title="Delete slide" onClick={(e) => { e.stopPropagation(); deleteSlide(i); }}>×</button>
+                )}
+              </span>
             ))}
           </div>
           <button type="button" className="sde-nav-btn" onClick={() => (activeIndex === n - 1 ? addSlide() : setActiveIndex((i) => i + 1))}>
@@ -416,6 +433,7 @@ export default function SlideDeckEditor() {
             {uploading ? "Uploading…" : "+ Upload image"}
           </button>
           <input ref={fileInputRef} type="file" accept="image/*" multiple hidden onChange={handleUpload} />
+          {uploadError && <p className="sde-upload-error">Couldn't upload: {uploadError}</p>}
           <div className="sde-library-grid">
             {libraryImages.length === 0 && <p className="sde-library-empty">No images yet. Upload one to use it on any slide.</p>}
             {libraryImages.map((img) => (
@@ -598,8 +616,21 @@ const CSS = `
 .sde-el-toolbar button.is-active { background: var(--coral); }
 .sde-drag-handle { cursor: grab; }
 .sde-el-delete { background: rgba(255,107,74,0.3) !important; padding: 0 8px; }
-.sde-el-size { font-size: 10.5px; font-weight: 700; color: rgba(255,255,255,0.6); min-width: 18px; text-align: center; }
+.sde-size-select {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  color: #FFFFFF;
+  background: rgba(255,255,255,0.12);
+  border: none;
+  border-radius: 5px;
+  height: 22px;
+  padding: 0 2px;
+  cursor: pointer;
+}
+.sde-size-select option { color: #1B2A4A; }
 .sde-bold-btn { font-weight: 900 !important; }
+.sde-italic-btn { font-style: italic; }
 .sde-toolbar-divider { width: 1px; height: 16px; background: rgba(255,255,255,0.15); margin: 0 2px; }
 .sde-color-swatch {
   width: 18px; height: 18px; min-width: 18px; border-radius: 50%;
@@ -636,8 +667,17 @@ const CSS = `
 }
 .sde-nav-btn:disabled { background: #EFEDF4; color: #C4BFD1; box-shadow: 0 4px 0 #E1DEE8; cursor: default; }
 .sde-dots { display: flex; align-items: center; gap: 6px; }
-.sde-dots span { width: 7px; height: 7px; border-radius: 50%; background: #DAD6E4; cursor: pointer; }
-.sde-dots span.is-active { width: 22px; border-radius: 4px; background: var(--coral); }
+.sde-dot-wrap { position: relative; display: inline-flex; align-items: center; padding-top: 14px; }
+.sde-dot-wrap > span { display: block; width: 7px; height: 7px; border-radius: 50%; background: #DAD6E4; cursor: pointer; }
+.sde-dot-wrap > span.is-active { width: 22px; border-radius: 4px; background: var(--coral); }
+.sde-dot-delete {
+  position: absolute; top: -2px; left: 50%; transform: translateX(-50%);
+  width: 15px; height: 15px; border-radius: 50%;
+  background: var(--coral); color: #fff; border: none;
+  font-size: 10px; line-height: 1; cursor: pointer;
+  display: none; align-items: center; justify-content: center; padding: 0;
+}
+.sde-dot-wrap:hover .sde-dot-delete { display: flex; }
 
 .sde-library {
   position: fixed;
@@ -662,6 +702,7 @@ const CSS = `
   padding: 10px; cursor: pointer;
 }
 .sde-upload-btn:disabled { opacity: 0.6; cursor: default; }
+.sde-upload-error { font-size: 11.5px; color: #D6392A; background: rgba(214,57,42,0.08); border-radius: 8px; padding: 8px 10px; line-height: 1.4; }
 .sde-library-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; overflow-y: auto; }
 .sde-library-empty { grid-column: 1/-1; font-size: 12px; color: #9A93A8; text-align: center; padding: 20px 0; }
 .sde-library-thumb { padding: 0; border: 1px solid #EAE7EF; border-radius: 8px; overflow: hidden; cursor: pointer; aspect-ratio: 1; background: #F7F6FA; }
