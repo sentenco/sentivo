@@ -28,8 +28,10 @@ For EACH of the 8 categories, using real sources you find through research, writ
 
 - TITLE: a punchy, curiosity-driven headline, under 12 words
 - DEK: one sentence hook/subtitle, about 20 words, no spoilers
-- ARTICLE: 350–450 words, 4–5 paragraphs, written in natural, clear English for an intermediate learner (CEFR B1–B2) — clear sentences, no overly complex jargon, explain any technical term in plain words the first time it's used. Include one short, real quote from a source if one exists.
-- REFERENCES: exactly 3 real sources you used, each as "domain.com — short headline of that source's article"
+- ARTICLE: 350–450 words, 4–5 paragraphs, written in natural, clear English for an intermediate learner (CEFR B1–B2) — clear sentences, no overly complex jargon, explain any technical term in plain words the first time it's used. Include one short, real quote from a source if one exists. Number your sources 1, 2, and 3 as you use them (see REFERENCES below), and place an inline marker like [1], [2], or [3] immediately after any sentence that source supports — reuse the SAME 3 numbers throughout the article. Do not introduce a 4th, 5th, etc. source number; if you consult more than 3 sources, pick the 3 most important ones for the REFERENCES list and cite only those.
+- REFERENCES: exactly 3 real sources you used, each as "domain.com — short headline of that source's article", numbered 1–3 to match the [1] [2] [3] markers used in the ARTICLE text above
+
+IMPORTANT: Compile everything — all 8 articles, each with its ARTICLE text (including inline [1]/[2]/[3] markers) and its own REFERENCES list directly underneath — into ONE single response. Do not split the references into a separate message, file, or follow-up; each article's references must appear immediately after that article's text, in the same output.
 
 Format your output clearly, one section per category, like this:
 
@@ -37,7 +39,7 @@ Format your output clearly, one section per category, like this:
 TITLE: ...
 DEK: ...
 ARTICLE:
-...(paragraphs)...
+...(paragraphs with [1] [2] [3] markers inline)...
 REFERENCES:
 1. domain.com — headline
 2. domain.com — headline
@@ -46,7 +48,7 @@ REFERENCES:
 ## 2. Nature & Science
 ...(same structure)...
 
-(continue through all 8 categories)
+(continue through all 8 categories, all in this one response)
 
 Do not repeat a topic or angle you've already covered in a previous run of this prompt — always find something new and current.
 ```
