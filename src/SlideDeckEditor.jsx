@@ -300,58 +300,54 @@ export default function SlideDeckEditor() {
       </div>
 
       <div
-        className="sde-format-bar"
+        className={`sde-format-bar ${selectedIsText ? "" : "is-disabled"}`}
         onClick={(e) => e.stopPropagation()}
         onMouseDown={(e) => { if (e.target.tagName !== "SELECT") e.preventDefault(); }}
       >
-        {selectedIsText ? (
-          <>
-            <span className="sde-format-label">Font size</span>
-            <select
-              className="sde-size-select"
-              value={selectedEl.fontSize}
-              onChange={(e) => updateElement(activeIndex, selectedEl.id, { fontSize: Number(e.target.value) })}
-            >
-              {FONT_SIZES.map((sz) => (
-                <option key={sz} value={sz}>{sz}px</option>
-              ))}
-            </select>
-            <button type="button" className={`sde-bold-btn ${selectedEl.bold ? "is-active" : ""}`} onClick={() => updateElement(activeIndex, selectedEl.id, { bold: !selectedEl.bold })} title="Bold">B</button>
-            <button type="button" className={`sde-italic-btn ${selectedEl.italic ? "is-active" : ""}`} onClick={() => updateElement(activeIndex, selectedEl.id, { italic: !selectedEl.italic })} title="Italic">I</button>
-            <span className="sde-toolbar-divider" />
-            <span className="sde-format-label">Text color</span>
-            {TEXT_COLORS.map((c) => (
-              <button
-                key={c}
-                type="button"
-                className={`sde-color-swatch ${selectedEl.color === c ? "is-active" : ""}`}
-                style={{ background: c }}
-                onClick={() => updateElement(activeIndex, selectedEl.id, { color: c })}
-                title="Text color"
-              />
-            ))}
-            <span className="sde-toolbar-divider" />
-            <span className="sde-format-label">Align text</span>
-            {["left", "center", "right"].map((a) => (
-              <button key={a} type="button" className={selectedEl.align === a ? "is-active" : ""} onClick={() => updateElement(activeIndex, selectedEl.id, { align: a })} title={`Align text ${a}`}>
-                {a === "left" ? "⯇" : a === "center" ? "≡" : "⯈"}
-              </button>
-            ))}
-            <span className="sde-toolbar-divider" />
-            <span className="sde-format-label">Position on slide</span>
-            {["left", "center", "right"].map((pos) => (
-              <button key={pos} type="button" onClick={() => positionElement(selectedEl.id, pos, selectedEl.w)} title={`Move box to ${pos} of slide`}>
-                {pos === "left" ? "⇤" : pos === "center" ? "⇔" : "⇥"}
-              </button>
-            ))}
-            <span className="sde-toolbar-divider" />
-            <button type="button" className="sde-el-delete" onClick={() => deleteElement(activeIndex, selectedEl.id)}>Delete text</button>
-          </>
-        ) : selectedEl ? (
-          <span className="sde-format-hint">Image selected — drag it, resize from the corner, or delete it on the slide.</span>
-        ) : (
-          <span className="sde-format-hint">Click anywhere on the slide to add text, then use this bar to format it.</span>
-        )}
+        <span className="sde-format-label">Font size</span>
+        <select
+          className="sde-size-select"
+          value={selectedIsText ? selectedEl.fontSize : 24}
+          disabled={!selectedIsText}
+          onChange={(e) => updateElement(activeIndex, selectedEl.id, { fontSize: Number(e.target.value) })}
+        >
+          {FONT_SIZES.map((sz) => (
+            <option key={sz} value={sz}>{sz}px</option>
+          ))}
+        </select>
+        <button type="button" disabled={!selectedIsText} className={`sde-bold-btn ${selectedIsText && selectedEl.bold ? "is-active" : ""}`} onClick={() => updateElement(activeIndex, selectedEl.id, { bold: !selectedEl.bold })} title="Bold">B</button>
+        <button type="button" disabled={!selectedIsText} className={`sde-italic-btn ${selectedIsText && selectedEl.italic ? "is-active" : ""}`} onClick={() => updateElement(activeIndex, selectedEl.id, { italic: !selectedEl.italic })} title="Italic">I</button>
+        <span className="sde-toolbar-divider" />
+        <span className="sde-format-label">Text color</span>
+        {TEXT_COLORS.map((c) => (
+          <button
+            key={c}
+            type="button"
+            disabled={!selectedIsText}
+            className={`sde-color-swatch ${selectedIsText && selectedEl.color === c ? "is-active" : ""}`}
+            style={{ background: c }}
+            onClick={() => updateElement(activeIndex, selectedEl.id, { color: c })}
+            title="Text color"
+          />
+        ))}
+        <span className="sde-toolbar-divider" />
+        <span className="sde-format-label">Align text</span>
+        {["left", "center", "right"].map((a) => (
+          <button key={a} type="button" disabled={!selectedIsText} className={selectedIsText && selectedEl.align === a ? "is-active" : ""} onClick={() => updateElement(activeIndex, selectedEl.id, { align: a })} title={`Align text ${a}`}>
+            {a === "left" ? "⯇" : a === "center" ? "≡" : "⯈"}
+          </button>
+        ))}
+        <span className="sde-toolbar-divider" />
+        <span className="sde-format-label">Position on slide</span>
+        {["left", "center", "right"].map((pos) => (
+          <button key={pos} type="button" disabled={!selectedIsText} onClick={() => positionElement(selectedEl.id, pos, selectedEl.w)} title={`Move box to ${pos} of slide`}>
+            {pos === "left" ? "⇤" : pos === "center" ? "⇔" : "⇥"}
+          </button>
+        ))}
+        <span className="sde-toolbar-divider" />
+        <button type="button" disabled={!selectedIsText} className="sde-el-delete" onClick={() => deleteElement(activeIndex, selectedEl.id)}>Delete text</button>
+        {!selectedId && <span className="sde-format-hint">Click anywhere on the slide to add text, then use this bar to format it.</span>}
+        {selectedEl && !selectedIsText && <span className="sde-format-hint">Image selected — drag it, resize from the corner, or delete it on the slide.</span>}
       </div>
 
       <div className="sde-frame">
@@ -606,35 +602,38 @@ const CSS = `
   flex-shrink: 0;
   max-width: 1040px;
   width: 100%;
-  margin: 0 auto;
-  padding: 10px 20px;
+  margin: 12px auto 0;
+  padding: 10px 16px;
   display: flex;
   align-items: center;
   flex-wrap: wrap;
   gap: 6px;
-  background: #FFFFFF;
-  border-bottom: 1px solid #EAE7EF;
-  min-height: 44px;
+  background: #F3F2F6;
+  border: 1px solid #E4E1EC;
+  border-radius: 12px;
+  min-height: 46px;
 }
+.sde-format-bar.is-disabled { background: #F7F6FA; }
 .sde-format-label { font-size: 10.5px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: #9A93A8; margin: 0 4px 0 6px; }
 .sde-format-label:first-child { margin-left: 0; }
-.sde-format-hint { font-size: 12.5px; color: #9A93A8; }
+.sde-format-hint { flex-basis: 100%; font-size: 12.5px; color: #9A93A8; margin-top: 2px; }
 .sde-format-bar button, .sde-size-select {
   font-family: 'Quicksand', sans-serif;
   font-size: 12px;
   font-weight: 700;
   color: var(--navy);
-  background: #F1F0F6;
-  border: none;
+  background: #FFFFFF;
+  border: 1px solid #E4E1EC;
   border-radius: 6px;
-  min-width: 24px;
-  height: 26px;
+  min-width: 26px;
+  height: 28px;
   cursor: pointer;
   display: flex; align-items: center; justify-content: center;
   padding: 0 7px;
 }
 .sde-size-select { padding: 0 4px; }
-.sde-format-bar button.is-active { background: var(--coral); color: #FFFFFF; }
+.sde-format-bar button.is-active { background: var(--coral); border-color: var(--coral); color: #FFFFFF; }
+.sde-format-bar button:disabled, .sde-format-bar select:disabled { opacity: 0.4; cursor: default; }
 .sde-toolbar-divider { width: 1px; height: 20px; background: #EAE7EF; margin: 0 2px; }
 .sde-color-swatch {
   width: 20px; height: 20px; min-width: 20px; border-radius: 50%;
