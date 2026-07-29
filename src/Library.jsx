@@ -1171,9 +1171,9 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   text-decoration: none;
   display: flex;
   align-items: center;
-  gap: 3px;
+  gap: 0;
 }
-.gc-header-logo { height: 24px; width: auto; display: block; }
+.gc-header-logo { height: 32px; width: auto; display: block; margin-right: -5px; }
 .gc-topbar-actions { display: flex; align-items: center; gap: 12px; }
 .gc-search { display: flex; align-items: center; gap: 6px; padding: 7px 12px; border: 1px solid rgba(34,58,51,0.3); border-radius: 999px; background: var(--card); color: var(--muted); }
 .gc-search svg { width: 14px; height: 14px; flex-shrink: 0; }
