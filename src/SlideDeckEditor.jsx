@@ -113,14 +113,6 @@ export default function SlideDeckEditor() {
     persist(value, slides);
   }
 
-  function updateSlide(index, patch) {
-    setSlides((prev) => {
-      const next = prev.map((s, i) => (i === index ? { ...s, ...patch } : s));
-      persist(deckTitle, next);
-      return next;
-    });
-  }
-
   // Ribbon buttons work even with nothing selected: resolve (and select) a
   // text target first -- the current text box, else the slide's first text
   // box, else a freshly created one -- so formatting always has somewhere to go.
@@ -388,16 +380,6 @@ export default function SlideDeckEditor() {
       <div className="sde-frame">
         <div className="sde-canvas-wrap">
           <div className="sde-canvas-frame">
-            <div className="sde-instruction-bar">
-              <span className="sde-badge"><span className="sde-s-dot">S</span>entivo</span>
-              <input
-                className="sde-title-input"
-                value={slide.title}
-                onChange={(e) => updateSlide(activeIndex, { title: e.target.value })}
-                placeholder="Title"
-                onClick={(e) => e.stopPropagation()}
-              />
-            </div>
             <div className="sde-canvas-body" ref={canvasRef} onClick={handleCanvasClick}>
               {slide.elements.map((el) => (
                 el.type === "text" ? (
@@ -579,20 +561,6 @@ const CSS = `
   padding: 0 20px;
 }
 
-.sde-badge {
-  display: inline-flex; align-items: center; gap: 6px;
-  background: #FFFFFF; color: var(--navy);
-  padding: 6px 14px 6px 6px; border-radius: 999px;
-  font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 12.5px;
-  box-shadow: 0 3px 0 var(--coral-dark);
-  margin-bottom: 10px;
-}
-.sde-s-dot {
-  width: 18px; height: 18px; border-radius: 50%;
-  background: var(--coral); color: #fff;
-  display: flex; align-items: center; justify-content: center; font-size: 10px;
-}
-
 .sde-canvas-wrap { margin-top: 4px; }
 .sde-canvas-frame {
   background: #FFFFFF;
@@ -603,18 +571,6 @@ const CSS = `
   display: flex;
   flex-direction: column;
 }
-.sde-instruction-bar { flex-shrink: 0; background: var(--navy); padding: 18px 22px 20px; display: flex; flex-direction: column; align-items: flex-start; }
-.sde-title-input {
-  width: 100%;
-  font-family: 'Fredoka', sans-serif;
-  font-weight: 700;
-  font-size: 24px;
-  color: #FFF6E9;
-  background: none;
-  border: none;
-  outline: none;
-}
-.sde-title-input::placeholder { color: rgba(255,246,233,0.4); }
 
 .sde-canvas-body { position: relative; flex: 1; min-height: 0; }
 

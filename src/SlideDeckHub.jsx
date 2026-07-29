@@ -13,6 +13,7 @@ export default function SlideDeckHub() {
   const [creating, setCreating] = useState(false);
   const [authMode, setAuthMode] = useState(null);
   const [deletingId, setDeletingId] = useState(null);
+  const [tab, setTab] = useState("new");
 
   useEffect(() => {
     if (!user) {
@@ -89,40 +90,59 @@ export default function SlideDeckHub() {
               </div>
             </div>
           ) : (
-            <div className="sdh-grid">
-              <button type="button" className="sdh-card sdh-card--new" onClick={createDeck} disabled={creating}>
-                <span className="sdh-new-icon">+</span>
-                <span className="sdh-new-label">{creating ? "Creating…" : "New deck"}</span>
-              </button>
+            <>
+              <div className="sdh-tabs">
+                <button type="button" className={`sdh-tab ${tab === "new" ? "is-active" : ""}`} onClick={() => setTab("new")}>New deck</button>
+                <button type="button" className={`sdh-tab ${tab === "mine" ? "is-active" : ""}`} onClick={() => setTab("mine")}>My decks{decks.length > 0 ? ` (${decks.length})` : ""}</button>
+              </div>
 
-              {loading ? (
-                <div className="sdh-empty">Loading your decks…</div>
-              ) : decks.length === 0 ? null : (
-                decks.map((deck) => (
-                  <button
-                    type="button"
-                    key={deck.id}
-                    className="sdh-card"
-                    onClick={() => navigate(`/library/slides/${deck.id}/edit`)}
-                  >
-                    <button
-                      type="button"
-                      className="sdh-card-delete"
-                      onClick={(e) => deleteDeck(deck.id, e)}
-                      disabled={deletingId === deck.id}
-                      aria-label="Delete deck"
-                    >
-                      ×
-                    </button>
-                    <span className="sdh-card-icon">🎞️</span>
-                    <span className="sdh-card-title">{deck.title || "Untitled deck"}</span>
-                    <span className="sdh-card-meta">
-                      {(deck.slides || []).length} {(deck.slides || []).length === 1 ? "slide" : "slides"} · {timeAgo(deck.updated_at)}
-                    </span>
+              {tab === "new" ? (
+                <div className="sdh-grid">
+                  <button type="button" className="sdh-card sdh-card--new" onClick={createDeck} disabled={creating}>
+                    <span className="sdh-new-icon">+</span>
+                    <span className="sdh-new-label">{creating ? "Creating…" : "Blank"}</span>
                   </button>
-                ))
+                  <div className="sdh-card sdh-card--template">
+                    <span className="sdh-template-tag">Coming soon</span>
+                    <span className="sdh-card-icon">🖼️</span>
+                    <span className="sdh-card-title">Templates</span>
+                    <span className="sdh-card-meta">Ready-made designs will show up here.</span>
+                  </div>
+                </div>
+              ) : (
+                <div className="sdh-grid">
+                  {loading ? (
+                    <div className="sdh-empty">Loading your decks…</div>
+                  ) : decks.length === 0 ? (
+                    <div className="sdh-empty">No decks yet — start one from the New deck tab.</div>
+                  ) : (
+                    decks.map((deck) => (
+                      <button
+                        type="button"
+                        key={deck.id}
+                        className="sdh-card"
+                        onClick={() => navigate(`/library/slides/${deck.id}/edit`)}
+                      >
+                        <button
+                          type="button"
+                          className="sdh-card-delete"
+                          onClick={(e) => deleteDeck(deck.id, e)}
+                          disabled={deletingId === deck.id}
+                          aria-label="Delete deck"
+                        >
+                          ×
+                        </button>
+                        <span className="sdh-card-icon">🎞️</span>
+                        <span className="sdh-card-title">{deck.title || "Untitled deck"}</span>
+                        <span className="sdh-card-meta">
+                          {(deck.slides || []).length} {(deck.slides || []).length === 1 ? "slide" : "slides"} · {timeAgo(deck.updated_at)}
+                        </span>
+                      </button>
+                    ))
+                  )}
+                </div>
               )}
-            </div>
+            </>
           )}
         </div>
       </div>
@@ -204,10 +224,37 @@ const CSS = `
   margin: 0 auto;
 }
 
+.sdh-tabs { display: flex; justify-content: center; gap: 8px; margin-bottom: 22px; }
+.sdh-tab {
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 600;
+  font-size: 13.5px;
+  color: #9A8A73;
+  background: #FFFFFF;
+  border: 1px solid #F5DFC7;
+  border-radius: 999px;
+  padding: 8px 18px;
+  cursor: pointer;
+}
+.sdh-tab.is-active { color: #FFFFFF; background: linear-gradient(135deg, #FF9A6B 0%, #E5623A 100%); border-color: transparent; }
+
 .sdh-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 18px;
+}
+
+.sdh-card--template { align-items: flex-start; cursor: default; opacity: 0.75; }
+.sdh-template-tag {
+  font-size: 9.5px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #9A8A73;
+  background: rgba(154,138,115,0.12);
+  border-radius: 999px;
+  padding: 4px 10px;
+  margin-bottom: 8px;
 }
 
 .sdh-card {

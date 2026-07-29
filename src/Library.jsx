@@ -927,7 +927,7 @@ export default function Library() {
             className="gc-header-brand"
             onClick={(e) => { e.preventDefault(); changeCategory("All"); }}
           >
-            <span className="cal-s">S</span>entivo
+            <img src="/logo-sentivo.png" alt="" className="gc-header-logo" />entivo
           </a>
           <div className="gc-topbar-actions">
             <label className="gc-search">
@@ -1170,9 +1170,10 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   letter-spacing: 0.01em;
   text-decoration: none;
   display: flex;
-  align-items: baseline;
+  align-items: center;
+  gap: 3px;
 }
-.gc-header-brand .cal-s { color: var(--rust); }
+.gc-header-logo { height: 24px; width: auto; display: block; }
 .gc-topbar-actions { display: flex; align-items: center; gap: 12px; }
 .gc-search { display: flex; align-items: center; gap: 6px; padding: 7px 12px; border: 1px solid rgba(34,58,51,0.3); border-radius: 999px; background: var(--card); color: var(--muted); }
 .gc-search svg { width: 14px; height: 14px; flex-shrink: 0; }
