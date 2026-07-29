@@ -191,18 +191,9 @@ export default function SlideDeckEditor() {
   function handleCanvasClick(e) {
     // A click that lands on a child (text/image element) is handled entirely
     // by that element's own onMouseDown -- don't undo its selection here.
+    // Clicking empty canvas just deselects; use the "+ Add text box" button to write.
     if (e.target !== canvasRef.current) return;
-    const rect = canvasRef.current.getBoundingClientRect();
-    const x = Math.min(85, Math.max(2, ((e.clientX - rect.left) / rect.width) * 100));
-    const y = Math.min(88, Math.max(4, ((e.clientY - rect.top) / rect.height) * 100));
-    const el = newTextElement(x, y);
-    setSlides((prev) => {
-      const next = prev.map((s, i) => (i === activeIndex ? { ...s, elements: [...s.elements, el] } : s));
-      persist(deckTitle, next);
-      return next;
-    });
-    setSelectedId(el.id);
-    newElementIdRef.current = el.id;
+    setSelectedId(null);
   }
 
   // Select immediately on press, and drag the moment the pointer moves past
@@ -625,7 +616,7 @@ const CSS = `
 }
 .sde-title-input::placeholder { color: rgba(255,246,233,0.4); }
 
-.sde-canvas-body { position: relative; flex: 1; min-height: 0; cursor: crosshair; }
+.sde-canvas-body { position: relative; flex: 1; min-height: 0; }
 
 .sde-el { position: absolute; }
 .sde-el--text { cursor: text; }
