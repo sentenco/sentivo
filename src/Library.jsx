@@ -1714,7 +1714,7 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  background: #EFEEEA;
+  background: linear-gradient(180deg, #F4F6FA 0%, #E7EAF2 100%);
   border-radius: 22px;
   padding: clamp(26px, 3.6vw, 48px) clamp(20px, 3.2vw, 40px) clamp(30px, 4vw, 52px);
 }
@@ -1725,7 +1725,7 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   font-size: clamp(10.5px, 0.9vw, 11px);
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: #6B6B67;
+  color: var(--muted);
   margin-bottom: 10px;
 }
 .gaz-nameplate {
@@ -1737,7 +1737,7 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 }
 .gaz-dateline { font-family: 'Quicksand', sans-serif; font-size: 10.5px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; }
 .gaz-rule-thick { height: 3px; background: var(--ink); margin-bottom: 2px; }
-.gaz-rule-thin { height: 1px; background: #CFCFC9; }
+.gaz-rule-thin { height: 1px; background: #D6DAE6; }
 
 .gaz-topics { display: flex; justify-content: center; flex-wrap: wrap; padding: 7px 0; }
 .gaz-topic {
@@ -1748,7 +1748,7 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   text-transform: uppercase;
   color: var(--ink-soft);
   padding: 0 16px;
-  border-right: 1px solid #CFCFC9;
+  border-right: 1px solid #D6DAE6;
   cursor: default;
 }
 .gaz-topic:last-child { border-right: none; }
@@ -1760,7 +1760,7 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   gap: clamp(26px, 3vw, 42px);
   align-items: center;
   padding: clamp(14px, 1.6vw, 22px) 0 clamp(12px, 1.4vw, 18px);
-  border-bottom: 1px solid #CFCFC9;
+  border-bottom: 1px solid #D6DAE6;
   cursor: pointer;
   background: none;
   border-left: none; border-right: none; border-top: none;
@@ -1787,7 +1787,7 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .gaz-lead-art {
   height: clamp(118px, 13vw, 200px);
   border-radius: 8px;
-  background: linear-gradient(135deg, #D9D9D3 0%, #C4C4BC 100%);
+  background: linear-gradient(135deg, #DDE1EB 0%, #C7CCDA 100%);
   display: flex; align-items: center; justify-content: center;
   font-size: clamp(40px, 4vw, 64px);
 }
@@ -1798,7 +1798,7 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   display: flex;
   gap: clamp(11px, 1.2vw, 16px);
   padding: clamp(12px, 1.4vw, 18px) 0;
-  border-top: 1px solid #CFCFC9;
+  border-top: 1px solid #D6DAE6;
   background: none;
   border-left: none; border-right: none; border-bottom: none;
   text-align: left;
@@ -1811,7 +1811,7 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   position: absolute;
   top: 12px; bottom: 12px; right: calc(clamp(24px, 3vw, 44px) / -2);
   width: 1px;
-  background: #CFCFC9;
+  background: #D6DAE6;
 }
 .gaz-story--soon { cursor: default; opacity: 0.55; }
 .gaz-thumb { width: clamp(50px, 4.6vw, 68px); height: clamp(50px, 4.6vw, 68px); flex-shrink: 0; border-radius: 7px; display: flex; align-items: center; justify-content: center; font-size: clamp(19px, 1.8vw, 26px); }
