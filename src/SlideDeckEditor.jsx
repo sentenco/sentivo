@@ -435,7 +435,7 @@ export default function SlideDeckEditor() {
                         if (!text || !text.trim()) deleteElement(activeIndex, el.id);
                         else updateElement(activeIndex, el.id, { text });
                       }}
-                      data-placeholder="Type here… (click away to remove if empty)"
+                      data-placeholder="Type here…"
                     >
                       {el.text}
                     </div>
