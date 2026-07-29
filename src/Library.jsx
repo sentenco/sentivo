@@ -413,9 +413,9 @@ function TodayFeature({ tools, onSeeAllLessons, navigate }) {
 
   return (
     <div className="gc-dashboard">
+      <TeacherGreeting />
+      <div className="gc-dashboard-body">
       <div className="gc-main">
-        <TeacherGreeting />
-
         <div className="gc-eyebrow">Daily Correction</div>
         <h2 className="gc-headline">
           <span className="corr-quote">&#10078;</span>
@@ -505,6 +505,7 @@ function TodayFeature({ tools, onSeeAllLessons, navigate }) {
           <MiniCalendar />
         </div>
       </aside>
+      </div>
     </div>
   );
 }
@@ -1217,15 +1218,17 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   width: 100%;
   max-width: 1220px;
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr 280px;
-  align-items: start;
-  gap: 28px;
   background:
     repeating-linear-gradient(180deg, rgba(255,255,255,0.5) 0px, rgba(255,255,255,0.5) 1px, transparent 1px, transparent 64px),
     linear-gradient(180deg, #F4F6FA 0%, #E7EAF2 100%);
   border-radius: 22px;
   padding: clamp(22px, 3vw, 40px) clamp(20px, 3vw, 36px);
+}
+.gc-dashboard-body {
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  align-items: start;
+  gap: 28px;
 }
 .gc-main { min-width: 0; }
 .gc-eyebrow-top {
@@ -1386,7 +1389,8 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 @media (max-width: 1300px) {
   .gc-topbar, .gc-sections, .gc-editions { padding-left: 20px; padding-right: 20px; }
   .gc-sections { justify-content: flex-start; }
-  .gc-dashboard { grid-template-columns: 1fr; max-width: 720px; }
+  .gc-dashboard { max-width: 720px; }
+  .gc-dashboard-body { grid-template-columns: 1fr; }
   .gc-sidebar { flex-direction: row; gap: 14px; }
   .gc-sidebar > .gc-widget { flex: 1; min-width: 0; }
 }
