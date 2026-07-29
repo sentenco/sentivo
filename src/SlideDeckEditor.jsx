@@ -121,6 +121,28 @@ export default function SlideDeckEditor() {
     });
   }
 
+  // Ribbon buttons work even with nothing selected: resolve (and select) a
+  // text target first -- the current text box, else the slide's first text
+  // box, else a freshly created one -- so formatting always has somewhere to go.
+  function ensureTextTarget() {
+    const slide = slides[activeIndex];
+    const current = slide?.elements.find((el) => el.id === selectedId);
+    if (current && current.type === "text") return current;
+    const existing = slide?.elements.find((el) => el.type === "text");
+    if (existing) {
+      setSelectedId(existing.id);
+      return existing;
+    }
+    const el = newTextElement(30, 40);
+    setSlides((prev) => {
+      const next = prev.map((s, i) => (i === activeIndex ? { ...s, elements: [...s.elements, el] } : s));
+      persist(deckTitle, next);
+      return next;
+    });
+    setSelectedId(el.id);
+    return el;
+  }
+
   function updateElement(index, elementId, patch) {
     setSlides((prev) => {
       const next = prev.map((s, i) => {
@@ -167,7 +189,9 @@ export default function SlideDeckEditor() {
   }
 
   function handleCanvasClick(e) {
-    if (e.target !== canvasRef.current) { setSelectedId(null); return; }
+    // A click that lands on a child (text/image element) is handled entirely
+    // by that element's own onMouseDown -- don't undo its selection here.
+    if (e.target !== canvasRef.current) return;
     const rect = canvasRef.current.getBoundingClientRect();
     const x = Math.min(85, Math.max(2, ((e.clientX - rect.left) / rect.width) * 100));
     const y = Math.min(88, Math.max(4, ((e.clientY - rect.top) / rect.height) * 100));
@@ -300,7 +324,7 @@ export default function SlideDeckEditor() {
       </div>
 
       <div
-        className={`sde-format-bar ${selectedIsText ? "" : "is-disabled"}`}
+        className="sde-format-bar"
         onClick={(e) => e.stopPropagation()}
         onMouseDown={(e) => { if (e.target.tagName !== "SELECT") e.preventDefault(); }}
       >
@@ -308,44 +332,42 @@ export default function SlideDeckEditor() {
         <select
           className="sde-size-select"
           value={selectedIsText ? selectedEl.fontSize : 24}
-          disabled={!selectedIsText}
-          onChange={(e) => updateElement(activeIndex, selectedEl.id, { fontSize: Number(e.target.value) })}
+          onChange={(e) => { const t = ensureTextTarget(); updateElement(activeIndex, t.id, { fontSize: Number(e.target.value) }); }}
         >
           {FONT_SIZES.map((sz) => (
             <option key={sz} value={sz}>{sz}px</option>
           ))}
         </select>
-        <button type="button" disabled={!selectedIsText} className={`sde-bold-btn ${selectedIsText && selectedEl.bold ? "is-active" : ""}`} onClick={() => updateElement(activeIndex, selectedEl.id, { bold: !selectedEl.bold })} title="Bold">B</button>
-        <button type="button" disabled={!selectedIsText} className={`sde-italic-btn ${selectedIsText && selectedEl.italic ? "is-active" : ""}`} onClick={() => updateElement(activeIndex, selectedEl.id, { italic: !selectedEl.italic })} title="Italic">I</button>
+        <button type="button" className={`sde-bold-btn ${selectedIsText && selectedEl.bold ? "is-active" : ""}`} onClick={() => { const t = ensureTextTarget(); updateElement(activeIndex, t.id, { bold: !t.bold }); }} title="Bold">B</button>
+        <button type="button" className={`sde-italic-btn ${selectedIsText && selectedEl.italic ? "is-active" : ""}`} onClick={() => { const t = ensureTextTarget(); updateElement(activeIndex, t.id, { italic: !t.italic }); }} title="Italic">I</button>
         <span className="sde-toolbar-divider" />
         <span className="sde-format-label">Text color</span>
         {TEXT_COLORS.map((c) => (
           <button
             key={c}
             type="button"
-            disabled={!selectedIsText}
             className={`sde-color-swatch ${selectedIsText && selectedEl.color === c ? "is-active" : ""}`}
             style={{ background: c }}
-            onClick={() => updateElement(activeIndex, selectedEl.id, { color: c })}
+            onClick={() => { const t = ensureTextTarget(); updateElement(activeIndex, t.id, { color: c }); }}
             title="Text color"
           />
         ))}
         <span className="sde-toolbar-divider" />
         <span className="sde-format-label">Align text</span>
         {["left", "center", "right"].map((a) => (
-          <button key={a} type="button" disabled={!selectedIsText} className={selectedIsText && selectedEl.align === a ? "is-active" : ""} onClick={() => updateElement(activeIndex, selectedEl.id, { align: a })} title={`Align text ${a}`}>
+          <button key={a} type="button" className={selectedIsText && selectedEl.align === a ? "is-active" : ""} onClick={() => { const t = ensureTextTarget(); updateElement(activeIndex, t.id, { align: a }); }} title={`Align text ${a}`}>
             {a === "left" ? "⯇" : a === "center" ? "≡" : "⯈"}
           </button>
         ))}
         <span className="sde-toolbar-divider" />
         <span className="sde-format-label">Position on slide</span>
         {["left", "center", "right"].map((pos) => (
-          <button key={pos} type="button" disabled={!selectedIsText} onClick={() => positionElement(selectedEl.id, pos, selectedEl.w)} title={`Move box to ${pos} of slide`}>
+          <button key={pos} type="button" onClick={() => { const t = ensureTextTarget(); positionElement(t.id, pos, t.w); }} title={`Move box to ${pos} of slide`}>
             {pos === "left" ? "⇤" : pos === "center" ? "⇔" : "⇥"}
           </button>
         ))}
         <span className="sde-toolbar-divider" />
-        <button type="button" disabled={!selectedIsText} className="sde-el-delete" onClick={() => deleteElement(activeIndex, selectedEl.id)}>Delete text</button>
+        <button type="button" className="sde-el-delete" onClick={() => { if (selectedIsText) deleteElement(activeIndex, selectedEl.id); }} title={selectedIsText ? "Delete this text box" : "Select a text box first"}>Delete text</button>
         {selectedEl && !selectedIsText && <span className="sde-format-hint">Image selected — drag it, resize from the corner, or delete it on the slide.</span>}
       </div>
 
@@ -369,7 +391,7 @@ export default function SlideDeckEditor() {
                     key={el.id}
                     className={`sde-el sde-el--text ${selectedId === el.id ? "is-selected" : ""}`}
                     style={{ left: `${el.x}%`, top: `${el.y}%`, width: `${el.w}%` }}
-                    onClick={(e) => { e.stopPropagation(); setSelectedId(el.id); }}
+                    onMouseDown={(e) => { e.stopPropagation(); setSelectedId(el.id); }}
                   >
                     {selectedId === el.id && (
                       <span className="sde-drag-handle sde-drag-handle--corner" onPointerDown={(e) => startDrag(e, el.id)} title="Drag to move">⠿</span>
@@ -390,7 +412,7 @@ export default function SlideDeckEditor() {
                         if (!text || !text.trim()) deleteElement(activeIndex, el.id);
                         else updateElement(activeIndex, el.id, { text });
                       }}
-                      onClick={(e) => { e.stopPropagation(); setSelectedId(el.id); }}
+                      onMouseDown={(e) => { e.stopPropagation(); setSelectedId(el.id); }}
                       data-placeholder="Type here… (click away to remove if empty)"
                     >
                       {el.text}
@@ -612,7 +634,6 @@ const CSS = `
   border-radius: 12px;
   min-height: 46px;
 }
-.sde-format-bar.is-disabled { background: #F7F6FA; }
 .sde-format-label { font-size: 10.5px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: #9A93A8; margin: 0 4px 0 6px; }
 .sde-format-label:first-child { margin-left: 0; }
 .sde-format-hint { flex-basis: 100%; font-size: 12.5px; color: #9A93A8; margin-top: 2px; }
@@ -632,7 +653,6 @@ const CSS = `
 }
 .sde-size-select { padding: 0 4px; }
 .sde-format-bar button.is-active { background: var(--coral); border-color: var(--coral); color: #FFFFFF; }
-.sde-format-bar button:disabled, .sde-format-bar select:disabled { opacity: 0.4; cursor: default; }
 .sde-toolbar-divider { width: 1px; height: 20px; background: #EAE7EF; margin: 0 2px; }
 .sde-color-swatch {
   width: 20px; height: 20px; min-width: 20px; border-radius: 50%;
