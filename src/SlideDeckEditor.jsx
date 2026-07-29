@@ -205,29 +205,53 @@ export default function SlideDeckEditor() {
     newElementIdRef.current = el.id;
   }
 
-  function startDrag(e, elementId) {
-    e.preventDefault();
+  // Select immediately on press, and drag the moment the pointer moves past
+  // a small threshold -- so dragging works from a press anywhere on the
+  // element (not just a tiny handle), while a plain click/tap still just
+  // selects it (and, for text, still places the cursor for editing).
+  function startElementInteraction(e, elementId) {
     e.stopPropagation();
     setSelectedId(elementId);
+    if (!canvasRef.current) return;
     const rect = canvasRef.current.getBoundingClientRect();
-    dragRef.current = { elementId, rect };
-    window.addEventListener("pointermove", onDragMove);
-    window.addEventListener("pointerup", onDragEnd);
+    const startX = e.clientX;
+    const startY = e.clientY;
+    dragRef.current = { elementId, rect, dragging: false };
+
+    function onMove(ev) {
+      const state = dragRef.current;
+      if (!state) return;
+      if (!state.dragging && (Math.abs(ev.clientX - startX) > 5 || Math.abs(ev.clientY - startY) > 5)) {
+        state.dragging = true;
+        if (document.activeElement instanceof HTMLElement) document.activeElement.blur();
+      }
+      if (!state.dragging) return;
+      ev.preventDefault();
+      const x = Math.min(92, Math.max(0, ((ev.clientX - rect.left) / rect.width) * 100));
+      const y = Math.min(94, Math.max(0, ((ev.clientY - rect.top) / rect.height) * 100));
+      setSlides((prev) => prev.map((s, i) => (i === activeIndex ? { ...s, elements: s.elements.map((el) => (el.id === elementId ? { ...el, x, y } : el)) } : s)));
+    }
+    function onUp() {
+      window.removeEventListener("pointermove", onMove);
+      window.removeEventListener("pointerup", onUp);
+      if (dragRef.current?.dragging) {
+        setSlides((prev) => { persist(deckTitle, prev); return prev; });
+      }
+      dragRef.current = null;
+    }
+    window.addEventListener("pointermove", onMove);
+    window.addEventListener("pointerup", onUp);
   }
 
-  function onDragMove(e) {
-    if (!dragRef.current) return;
-    const { elementId, rect } = dragRef.current;
-    const x = Math.min(92, Math.max(0, ((e.clientX - rect.left) / rect.width) * 100));
-    const y = Math.min(94, Math.max(0, ((e.clientY - rect.top) / rect.height) * 100));
-    setSlides((prev) => prev.map((s, i) => (i === activeIndex ? { ...s, elements: s.elements.map((el) => (el.id === elementId ? { ...el, x, y } : el)) } : s)));
-  }
-
-  function onDragEnd() {
-    window.removeEventListener("pointermove", onDragMove);
-    window.removeEventListener("pointerup", onDragEnd);
-    dragRef.current = null;
-    setSlides((prev) => { persist(deckTitle, prev); return prev; });
+  function addTextBox() {
+    const el = newTextElement(30, 40);
+    setSlides((prev) => {
+      const next = prev.map((s, i) => (i === activeIndex ? { ...s, elements: [...s.elements, el] } : s));
+      persist(deckTitle, next);
+      return next;
+    });
+    setSelectedId(el.id);
+    newElementIdRef.current = el.id;
   }
 
   async function handleUpload(e) {
@@ -318,6 +342,7 @@ export default function SlideDeckEditor() {
           <span className={`sde-status sde-status--${status}`}>
             {status === "saving" ? "Saving…" : status === "error" ? "Couldn't save" : "Saved"}
           </span>
+          <button type="button" className="sde-tool-btn sde-tool-btn--primary" onClick={addTextBox}>+ Add text box</button>
           <button type="button" className="sde-tool-btn" onClick={() => setLibraryOpen((v) => !v)}>🖼️ Images</button>
           <button type="button" className="sde-present-btn" onClick={() => openPresenter(deckId)}>Present ▶</button>
         </div>
@@ -366,8 +391,6 @@ export default function SlideDeckEditor() {
             {pos === "left" ? "⇤" : pos === "center" ? "⇔" : "⇥"}
           </button>
         ))}
-        <span className="sde-toolbar-divider" />
-        <button type="button" className="sde-el-delete" onClick={() => { if (selectedIsText) deleteElement(activeIndex, selectedEl.id); }} title={selectedIsText ? "Delete this text box" : "Select a text box first"}>Delete text</button>
         {selectedEl && !selectedIsText && <span className="sde-format-hint">Image selected — drag it, resize from the corner, or delete it on the slide.</span>}
       </div>
 
@@ -391,10 +414,10 @@ export default function SlideDeckEditor() {
                     key={el.id}
                     className={`sde-el sde-el--text ${selectedId === el.id ? "is-selected" : ""}`}
                     style={{ left: `${el.x}%`, top: `${el.y}%`, width: `${el.w}%` }}
-                    onMouseDown={(e) => { e.stopPropagation(); setSelectedId(el.id); }}
+                    onPointerDown={(e) => startElementInteraction(e, el.id)}
                   >
                     {selectedId === el.id && (
-                      <span className="sde-drag-handle sde-drag-handle--corner" onPointerDown={(e) => startDrag(e, el.id)} title="Drag to move">⠿</span>
+                      <button type="button" className="sde-el-delete sde-el-delete--img" onPointerDown={(e) => e.stopPropagation()} onClick={(e) => { e.stopPropagation(); deleteElement(activeIndex, el.id); }}>×</button>
                     )}
                     <div
                       className="sde-el-text"
@@ -412,7 +435,6 @@ export default function SlideDeckEditor() {
                         if (!text || !text.trim()) deleteElement(activeIndex, el.id);
                         else updateElement(activeIndex, el.id, { text });
                       }}
-                      onMouseDown={(e) => { e.stopPropagation(); setSelectedId(el.id); }}
                       data-placeholder="Type here… (click away to remove if empty)"
                     >
                       {el.text}
@@ -423,8 +445,7 @@ export default function SlideDeckEditor() {
                     key={el.id}
                     className={`sde-el sde-el--image ${selectedId === el.id ? "is-selected" : ""}`}
                     style={{ left: `${el.x}%`, top: `${el.y}%`, width: `${el.w}%` }}
-                    onClick={(e) => { e.stopPropagation(); setSelectedId(el.id); }}
-                    onPointerDown={(e) => startDrag(e, el.id)}
+                    onPointerDown={(e) => startElementInteraction(e, el.id)}
                   >
                     <img src={el.src} alt="" draggable={false} />
                     {selectedId === el.id && (
@@ -546,6 +567,7 @@ const CSS = `
   cursor: pointer;
 }
 .sde-tool-btn:disabled { opacity: 0.4; cursor: default; }
+.sde-tool-btn--primary { color: var(--coral-dark); background: var(--coral-tint); }
 .sde-present-btn {
   font-family: 'Fredoka', sans-serif;
   font-size: 13px;
@@ -662,13 +684,6 @@ const CSS = `
 }
 .sde-color-swatch.is-active { border-color: var(--coral); box-shadow: 0 0 0 2px rgba(255,107,74,0.22); }
 .sde-el-delete { background: rgba(255,107,74,0.14) !important; color: var(--coral-dark) !important; padding: 0 12px; }
-.sde-drag-handle--corner {
-  position: absolute; top: -11px; left: -11px;
-  width: 22px; height: 22px; border-radius: 50%;
-  background: var(--navy); color: #FFFFFF;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 12px; cursor: grab; z-index: 5;
-}
 
 .sde-el--image { cursor: grab; }
 .sde-el--image img { width: 100%; display: block; border-radius: 6px; pointer-events: none; }
