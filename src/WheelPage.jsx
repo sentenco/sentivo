@@ -92,15 +92,6 @@ export default function WheelPage() {
             spellCheck={false}
           />
           <div className="wp-count">{n} {n === 1 ? "slice" : "slices"}{n < 2 ? " — add at least 2" : ""}</div>
-
-          <button
-            type="button"
-            className="wp-spin-btn"
-            onClick={spin}
-            disabled={spinning || n < 2}
-          >
-            {spinning ? "Spinning…" : "Spin"}
-          </button>
         </div>
       </div>
 
@@ -161,9 +152,16 @@ export default function WheelPage() {
               </svg>
             )}
           </div>
-          <div className="wp-hub">
-            <span className="wp-hub-s">S</span>entivo
-          </div>
+          <button
+            type="button"
+            className="wp-hub"
+            onClick={spin}
+            disabled={spinning || n < 2}
+            title={n < 2 ? "Add at least 2 words to spin" : "Spin"}
+          >
+            <img src="/logo-sentivo.png" alt="" className="wp-hub-logo" />
+            <span className="wp-hub-label">{spinning ? "…" : "SPIN"}</span>
+          </button>
         </div>
       </div>
     </div>
@@ -279,22 +277,6 @@ const CSS = `
 
 .wp-count { font-size: 11.5px; color: #8A8398; margin: 8px 0 16px; }
 
-.wp-spin-btn {
-  font-family: 'Fredoka', sans-serif;
-  font-size: 15px;
-  font-weight: 600;
-  color: #FFFFFF;
-  background: linear-gradient(135deg, #FF7C97 0%, #D6395F 100%);
-  border: none;
-  border-radius: 12px;
-  padding: 13px 18px;
-  cursor: pointer;
-  box-shadow: 0 10px 22px rgba(214,57,95,0.28);
-  transition: transform 0.12s ease, opacity 0.12s ease;
-}
-.wp-spin-btn:hover:not(:disabled) { transform: translateY(-1px); }
-.wp-spin-btn:disabled { opacity: 0.5; cursor: default; box-shadow: none; }
-
 .wp-stage {
   flex: 1;
   min-width: 0;
@@ -312,23 +294,36 @@ const CSS = `
   transform: translateX(-50%);
   z-index: 25;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 10px;
+  gap: 4px;
   background: #FFFFFF;
-  border: 2px solid #FFD23F;
-  border-radius: 999px;
-  padding: 10px 22px;
-  box-shadow: 0 14px 30px rgba(43,42,74,0.24);
+  border: 3px solid #FFD23F;
+  border-radius: 24px;
+  padding: 14px 36px;
+  box-shadow: 0 18px 40px rgba(43,42,74,0.28);
   animation: wp-pop-in 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  max-width: min(80vw, 560px);
 }
 .wp-winner-tag {
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 800;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: #D6395F;
 }
-.wp-winner-name { font-family: 'Fredoka', sans-serif; font-size: 20px; font-weight: 600; color: #2B2A4A; }
+.wp-winner-name {
+  font-family: 'Fredoka', sans-serif;
+  font-size: clamp(26px, 4.4vw, 44px);
+  font-weight: 700;
+  color: #2B2A4A;
+  text-align: center;
+  line-height: 1.15;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
 
 @keyframes wp-pop-in {
   0% { opacity: 0; transform: translateX(-50%) translateY(-10px) scale(0.85); }
@@ -391,23 +386,49 @@ const CSS = `
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 15;
-  width: 74px;
-  height: 74px;
+  width: 92px;
+  height: 92px;
   border-radius: 50%;
   background: #FFFFFF;
+  border: none;
+  padding: 0;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 2px;
   font-family: 'Fredoka', sans-serif;
-  font-size: 12.5px;
-  font-weight: 700;
   color: #2B2A4A;
   box-shadow: 0 6px 16px rgba(43,42,74,0.28), inset 0 0 0 3px #FBE1E7;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
-.wp-hub-s { color: #7C5CFC; }
+.wp-hub:hover:not(:disabled) {
+  transform: translate(-50%, -50%) scale(1.05);
+  box-shadow: 0 8px 20px rgba(43,42,74,0.34), inset 0 0 0 3px #FBE1E7;
+}
+.wp-hub:active:not(:disabled) {
+  transform: translate(-50%, -50%) scale(0.97);
+}
+.wp-hub:disabled {
+  cursor: default;
+  opacity: 0.65;
+}
+.wp-hub-logo {
+  width: 34px;
+  height: 34px;
+  object-fit: contain;
+  display: block;
+}
+.wp-hub-label {
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  color: #FF6B4A;
+}
 
 @media (max-width: 760px) {
-  .wp-winner-banner { top: 12px; padding: 8px 16px; }
-  .wp-winner-name { font-size: 16px; }
+  .wp-winner-banner { top: 12px; padding: 10px 20px; }
+  .wp-winner-name { font-size: clamp(20px, 6vw, 30px); }
 }
 `;
