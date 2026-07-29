@@ -5,6 +5,7 @@ import { useAuth } from "./AuthContext";
 import { newSlide, newTextElement, newImageElement } from "./slideDeckTypes";
 
 const IMAGE_BUCKET = "slide-images";
+const TEXT_COLORS = ["#1B2A4A", "#FF6B4A", "#5B6B85", "#1F9D6E", "#FFFFFF"];
 
 // Opens the read-only presenter as a standalone popup -- matching the
 // FORGE/ASCEND/Notebook chrome-less window.open pattern.
@@ -44,6 +45,7 @@ export default function SlideDeckEditor() {
   const canvasRef = useRef(null);
   const dragRef = useRef(null);
   const fileInputRef = useRef(null);
+  const newElementIdRef = useRef(null);
 
   useEffect(() => {
     if (authLoading) return;
@@ -181,6 +183,7 @@ export default function SlideDeckEditor() {
       return next;
     });
     setSelectedId(el.id);
+    newElementIdRef.current = el.id;
   }
 
   function startDrag(e, elementId) {
@@ -321,26 +324,49 @@ export default function SlideDeckEditor() {
                     onClick={(e) => { e.stopPropagation(); setSelectedId(el.id); }}
                   >
                     {selectedId === el.id && (
-                      <div className="sde-el-toolbar" onPointerDown={(e) => e.stopPropagation()}>
+                      <div className="sde-el-toolbar" onPointerDown={(e) => e.stopPropagation()} onMouseDown={(e) => e.preventDefault()}>
                         <span className="sde-drag-handle" onPointerDown={(e) => startDrag(e, el.id)}>⠿</span>
                         <button type="button" onClick={() => updateElement(activeIndex, el.id, { fontSize: Math.max(11, el.fontSize - 2) })}>A-</button>
+                        <span className="sde-el-size">{el.fontSize}</span>
                         <button type="button" onClick={() => updateElement(activeIndex, el.id, { fontSize: Math.min(64, el.fontSize + 2) })}>A+</button>
+                        <button type="button" className={`sde-bold-btn ${el.bold ? "is-active" : ""}`} onClick={() => updateElement(activeIndex, el.id, { bold: !el.bold })}>B</button>
                         {["left", "center", "right"].map((a) => (
                           <button key={a} type="button" className={el.align === a ? "is-active" : ""} onClick={() => updateElement(activeIndex, el.id, { align: a })}>
                             {a === "left" ? "⯇" : a === "center" ? "≡" : "⯈"}
                           </button>
                         ))}
-                        <button type="button" className="sde-el-delete" onClick={() => deleteElement(activeIndex, el.id)}>×</button>
+                        <span className="sde-toolbar-divider" />
+                        {TEXT_COLORS.map((c) => (
+                          <button
+                            key={c}
+                            type="button"
+                            className={`sde-color-swatch ${el.color === c ? "is-active" : ""}`}
+                            style={{ background: c }}
+                            onClick={() => updateElement(activeIndex, el.id, { color: c })}
+                          />
+                        ))}
+                        <span className="sde-toolbar-divider" />
+                        <button type="button" className="sde-el-delete" onClick={() => deleteElement(activeIndex, el.id)}>Delete</button>
                       </div>
                     )}
                     <div
                       className="sde-el-text"
                       contentEditable
                       suppressContentEditableWarning
-                      style={{ fontSize: `${el.fontSize}px`, color: el.color, textAlign: el.align }}
-                      onBlur={(e) => updateElement(activeIndex, el.id, { text: e.currentTarget.textContent })}
+                      ref={(node) => {
+                        if (node && newElementIdRef.current === el.id) {
+                          node.focus();
+                          newElementIdRef.current = null;
+                        }
+                      }}
+                      style={{ fontSize: `${el.fontSize}px`, color: el.color, textAlign: el.align, fontWeight: el.bold ? 800 : 600 }}
+                      onBlur={(e) => {
+                        const text = e.currentTarget.textContent;
+                        if (!text || !text.trim()) deleteElement(activeIndex, el.id);
+                        else updateElement(activeIndex, el.id, { text });
+                      }}
                       onClick={(e) => e.stopPropagation()}
-                      data-placeholder="Type here…"
+                      data-placeholder="Type here… (click away to remove if empty)"
                     >
                       {el.text}
                     </div>
@@ -571,7 +597,17 @@ const CSS = `
 }
 .sde-el-toolbar button.is-active { background: var(--coral); }
 .sde-drag-handle { cursor: grab; }
-.sde-el-delete { background: rgba(255,107,74,0.3) !important; }
+.sde-el-delete { background: rgba(255,107,74,0.3) !important; padding: 0 8px; }
+.sde-el-size { font-size: 10.5px; font-weight: 700; color: rgba(255,255,255,0.6); min-width: 18px; text-align: center; }
+.sde-bold-btn { font-weight: 900 !important; }
+.sde-toolbar-divider { width: 1px; height: 16px; background: rgba(255,255,255,0.15); margin: 0 2px; }
+.sde-color-swatch {
+  width: 18px; height: 18px; min-width: 18px; border-radius: 50%;
+  border: 1.5px solid rgba(255,255,255,0.3);
+  padding: 0;
+  cursor: pointer;
+}
+.sde-color-swatch.is-active { border-color: #FFFFFF; box-shadow: 0 0 0 2px var(--coral); }
 
 .sde-el--image { cursor: grab; }
 .sde-el--image img { width: 100%; display: block; border-radius: 6px; pointer-events: none; }

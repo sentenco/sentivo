@@ -8,6 +8,7 @@ export function newTextElement(x = 30, y = 40) {
     fontSize: 22,
     color: "#1B2A4A",
     align: "left",
+    bold: false,
     text: "",
   };
 }

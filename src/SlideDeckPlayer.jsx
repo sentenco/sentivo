@@ -71,7 +71,7 @@ export default function SlideDeckPlayer() {
                 <div
                   key={el.id}
                   className="spl-el spl-el--text"
-                  style={{ left: `${el.x}%`, top: `${el.y}%`, width: `${el.w}%`, fontSize: `${el.fontSize}px`, color: el.color, textAlign: el.align }}
+                  style={{ left: `${el.x}%`, top: `${el.y}%`, width: `${el.w}%`, fontSize: `${el.fontSize}px`, color: el.color, textAlign: el.align, fontWeight: el.bold ? 800 : 600 }}
                 >
                   {el.text}
                 </div>
