@@ -124,6 +124,72 @@ function MiniCalendar() {
   );
 }
 
+function WordLookup() {
+  const [query, setQuery] = useState("");
+  const [status, setStatus] = useState("idle"); // idle | loading | done | error
+  const [result, setResult] = useState(null);
+  const requestId = useRef(0);
+
+  async function lookup(e) {
+    e.preventDefault();
+    const word = query.trim();
+    if (!word) return;
+    const id = ++requestId.current;
+    setStatus("loading");
+    setResult(null);
+    try {
+      const res = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${encodeURIComponent(word)}`);
+      if (id !== requestId.current) return;
+      if (!res.ok) throw new Error("not found");
+      const data = await res.json();
+      const meanings = (data[0]?.meanings || []).slice(0, 3).map((m) => ({
+        pos: m.partOfSpeech,
+        def: m.definitions?.[0]?.definition,
+      }));
+      if (!meanings.length) throw new Error("no meanings");
+      setResult({ word: data[0].word || word, meanings });
+      setStatus("done");
+    } catch {
+      if (id !== requestId.current) return;
+      setStatus("error");
+    }
+  }
+
+  return (
+    <div className="gc-lookup">
+      <div className="gc-widget-title">Parts of Speech</div>
+      <form className="gc-lookup-form" onSubmit={lookup}>
+        <input
+          className="gc-lookup-input"
+          type="text"
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          placeholder="Search a word…"
+        />
+        <button type="submit" className="gc-lookup-btn" aria-label="Search" disabled={status === "loading"}>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round">
+            <circle cx="11" cy="11" r="7" />
+            <path d="M21 21l-4.3-4.3" />
+          </svg>
+        </button>
+      </form>
+      {status === "loading" && <div className="gc-lookup-status">Looking up…</div>}
+      {status === "error" && <div className="gc-lookup-status gc-lookup-status--error">No results for "{query.trim()}"</div>}
+      {status === "done" && result && (
+        <div className="gc-lookup-result">
+          <div className="gc-lookup-word">{result.word}</div>
+          {result.meanings.map((m, i) => (
+            <div className="gc-lookup-meaning" key={i}>
+              <span className="gc-lookup-pos">{m.pos}</span>
+              {m.def && <span className="gc-lookup-def">{m.def}</span>}
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
 function TeacherGreeting() {
   const [name, setName] = useState(() => {
     return localStorage.getItem("sentivo_teacher_name") || "";
@@ -498,6 +564,9 @@ function TodayFeature({ tools, onSeeAllLessons, navigate }) {
       </div>
 
       <aside className="gc-sidebar">
+        <div className="gc-widget gc-widget--lookup">
+          <WordLookup />
+        </div>
         <div className="gc-widget gc-widget--clock">
           <DigitalClock />
         </div>
@@ -1246,9 +1315,59 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .gc-widget { background: var(--card); border: 1px solid var(--hair); border-radius: 16px; padding: 14px; box-shadow: 0 6px 18px rgba(43,42,74,0.06); }
 .gc-widget--clock { border-top: 3px solid var(--navy); }
 .gc-widget--calendar { border-top: 3px solid var(--coral); }
+.gc-widget--lookup { border-top: 3px solid var(--coral); }
 
 .gc-widget-title { font-family: 'Fredoka', sans-serif; font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 6px; }
 .gc-widget-note { font-family: 'Quicksand', sans-serif; font-size: 11.5px; line-height: 1.55; color: var(--muted); margin-top: 8px; }
+
+.gc-lookup-form { display: flex; align-items: center; gap: 6px; }
+.gc-lookup-input {
+  flex: 1;
+  min-width: 0;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 12.5px;
+  color: var(--ink);
+  background: #F5F6FA;
+  border: 1px solid var(--hair);
+  border-radius: 999px;
+  padding: 7px 12px;
+  outline: none;
+}
+.gc-lookup-input:focus { border-color: var(--coral); }
+.gc-lookup-input::placeholder { color: var(--muted); }
+.gc-lookup-btn {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: none;
+  background: var(--coral);
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.gc-lookup-btn:disabled { opacity: 0.6; cursor: default; }
+.gc-lookup-status { font-family: 'Quicksand', sans-serif; font-size: 11.5px; color: var(--muted); margin-top: 8px; }
+.gc-lookup-status--error { color: var(--coral); }
+.gc-lookup-result { margin-top: 10px; }
+.gc-lookup-word { font-family: 'Fredoka', sans-serif; font-size: 15px; font-weight: 700; color: var(--ink); text-transform: capitalize; margin-bottom: 5px; }
+.gc-lookup-meaning { display: flex; align-items: baseline; gap: 6px; margin-top: 5px; }
+.gc-lookup-meaning:first-of-type { margin-top: 0; }
+.gc-lookup-pos {
+  flex-shrink: 0;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 9.5px;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--navy);
+  background: rgba(27,42,74,0.08);
+  border-radius: 999px;
+  padding: 2px 8px;
+}
+.gc-lookup-def { font-family: 'Quicksand', sans-serif; font-size: 11.5px; line-height: 1.4; color: var(--ink-soft, var(--ink)); }
 
 .gc-clock { text-align: center; }
 .gc-clock-time { font-family: 'Fredoka', sans-serif; font-variant-numeric: tabular-nums; font-size: 26px; font-weight: 600; color: var(--ink); letter-spacing: 0.01em; }
