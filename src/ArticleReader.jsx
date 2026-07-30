@@ -349,16 +349,14 @@ const CSS = `
   font-size: 18px;
   line-height: 1.72;
   color: var(--ink);
+  text-align: justify;
 }
 .ar-body p { margin: 0 0 20px; }
 
 .ar-gloss {
-  text-decoration: underline dotted var(--dusk);
-  text-underline-offset: 3px;
-  text-decoration-thickness: 1.5px;
   cursor: pointer;
   position: relative;
-  font-weight: 600;
+  font-weight: 800;
 }
 .ar-tip {
   position: absolute;

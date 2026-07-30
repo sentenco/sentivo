@@ -254,11 +254,9 @@ const CSS = `
 .app-columns p { margin: 0 0 12px; break-inside: avoid; }
 
 .app-gloss {
-  text-decoration: underline dotted #A39B87;
-  text-underline-offset: 3px;
   cursor: pointer;
   position: relative;
-  font-weight: 600;
+  font-weight: 800;
 }
 .app-tip {
   position: absolute;
