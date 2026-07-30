@@ -1861,7 +1861,7 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  background: linear-gradient(180deg, #F4F6FA 0%, #E7EAF2 100%);
+  background: linear-gradient(180deg, #FBFCFE 0%, #F3F5FA 100%);
   border-radius: 22px;
   padding: clamp(26px, 3.6vw, 48px) clamp(20px, 3.2vw, 40px) clamp(30px, 4vw, 52px);
 }
