@@ -148,7 +148,7 @@ export default function ArticleReader() {
         </div>
 
         <div className="ar-hero">
-          {article.image ? <img src={article.image} alt="" /> : article.emoji}
+          {article.image ? <img src={article.image} alt="" /> : <span className="ar-hero-emoji">{article.emoji}</span>}
         </div>
 
         <div className="ar-body">
@@ -342,11 +342,21 @@ const CSS = `
   border-radius: 14px;
   background: linear-gradient(135deg, var(--rust-soft) 0%, var(--dusk-soft) 100%);
   display: flex; align-items: center; justify-content: center;
-  font-size: 46px;
   margin-bottom: 30px;
   overflow: hidden;
 }
 .ar-hero img { width: 100%; height: 100%; object-fit: contain; }
+.ar-hero-emoji {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.55);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 58px;
+}
 
 .ar-body {
   font-family: 'Source Serif 4', Georgia, serif;

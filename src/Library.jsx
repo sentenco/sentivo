@@ -317,7 +317,7 @@ function ArticlesFeature({ navigate }) {
             </div>
           </div>
           <div className="gaz-lead-art">
-            {lead.image ? <img src={lead.image} alt="" /> : lead.emoji}
+            {lead.image ? <img src={lead.image} alt="" /> : <span className="gaz-lead-art-emoji">{lead.emoji}</span>}
           </div>
         </button>
       ) : (
@@ -1940,10 +1940,20 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   border-radius: 8px;
   background: linear-gradient(135deg, #DDE1EB 0%, #C7CCDA 100%);
   display: flex; align-items: center; justify-content: center;
-  font-size: clamp(40px, 4vw, 64px);
   overflow: hidden;
 }
 .gaz-lead-art img { width: 100%; height: 100%; object-fit: contain; }
+.gaz-lead-art-emoji {
+  width: clamp(80px, 9vw, 120px);
+  height: clamp(80px, 9vw, 120px);
+  border-radius: 50%;
+  background: rgba(255,255,255,0.55);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: clamp(36px, 4vw, 56px);
+}
 
 .gaz-grid { display: grid; grid-template-columns: repeat(3, 1fr); column-gap: clamp(24px, 3vw, 44px); row-gap: 4px; }
 .gaz-story {
