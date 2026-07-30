@@ -83,6 +83,9 @@ export default function ArticlePlayerPage() {
   }
 
   const ed = article.editions[edition];
+  const publishedLabel = article.publishedAt
+    ? new Date(`${article.publishedAt}T00:00:00`).toLocaleDateString(undefined, { month: "long", day: "numeric", year: "numeric" })
+    : null;
 
   function scrollToRef(n) {
     const el = document.getElementById(`app-ref-${n}`);
@@ -115,6 +118,8 @@ export default function ArticlePlayerPage() {
 
         <div className="app-byline">
           <span>Sentivo Editorial</span>
+          {publishedLabel && <span className="app-dot">·</span>}
+          {publishedLabel && <span>{publishedLabel}</span>}
           <span className="app-dot">·</span>
           <span>{article.topicTitle}</span>
           <span className="app-dot">·</span>

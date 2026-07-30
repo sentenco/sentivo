@@ -98,6 +98,9 @@ export default function ArticleReader() {
   }
 
   const ed = article.editions[edition];
+  const publishedLabel = article.publishedAt
+    ? new Date(`${article.publishedAt}T00:00:00`).toLocaleDateString(undefined, { month: "long", day: "numeric", year: "numeric" })
+    : null;
 
   function scrollToRef(n) {
     const el = document.getElementById(`ar-ref-${n}`);
@@ -144,7 +147,7 @@ export default function ArticleReader() {
 
         <div className="ar-byline">
           <span className="ar-byline-avatar">SE</span>
-          <span>Sentivo Editorial · Updated this week</span>
+          <span>Sentivo Editorial{publishedLabel ? ` · Published ${publishedLabel}` : ""}</span>
         </div>
 
         <div className="ar-hero">
