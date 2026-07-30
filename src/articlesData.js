@@ -2,6 +2,7 @@
 // glosses, citations, references, discussion guide), sourced via the
 // standing Perplexity research prompt (see docs/gazette-article-prompt.md).
 
+import filipinosRethinkImg from "./assets/articles/filipinos-rethink-healthy.jpeg";
 import spudcellsImg from "./assets/articles/spudcells.jpeg";
 import aiWorkflowsImg from "./assets/articles/ai-workflows.jpeg";
 import fourDayWorkweekImg from "./assets/articles/four-day-workweek.jpeg";
@@ -24,6 +25,7 @@ export const ARTICLES = [
     slug: "filipinos-rethink-healthy",
     ready: true,
     emoji: "🧘",
+    image: filipinosRethinkImg,
     variant: "daily",
     topicLabel: "Daily Life",
     topicTitle: "Wellbeing & Daily Life",
