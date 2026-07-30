@@ -902,6 +902,882 @@ export const ARTICLES = [
       },
     ],
   },
+  {
+    slug: "self-care-month-2026",
+    ready: true,
+    emoji: "💧",
+    variant: "daily",
+    topicLabel: "Daily Life",
+    topicTitle: "Wellbeing & Daily Life",
+    title: "Self-Care Month Puts Simple Health Habits Back in Focus",
+    dek: "A global July campaign is reminding people that good health often starts with small daily routines, not expensive products or dramatic changes.",
+    editions: {
+      plain: {
+        label: "Plain Edition",
+        range: "A1–A2",
+        readTime: "2 min read",
+        wordCount: 195,
+        blocks: [
+          { type: "p", parts: [
+            { t: "This July, health groups around the world are celebrating Self-Care Month 2026. The message is simple: everyday habits matter. The World Health Organization says self-care means healthy choices like eating well, moving your body, sleeping enough, and staying connected with other people. It is not only about spa days or expensive products." },
+          ] },
+          { type: "p", parts: [
+            { t: "Many people feel tired or overloaded by fast digital life. Because of this, experts say it is better to start small. Instead of changing everything at once, choose one or two easy habits, like drinking more water, taking a short walk after work, or using your phone less before bed." },
+          ] },
+          { type: "p", parts: [
+            { t: "Experts also say self-care should not feel like pressure. Some wellness trends online look perfect and expensive, but real self-care is often simple. The WHO message this year is: 'Test. Track. Thrive.' This means noticing your habits, understanding how your body feels, and making small changes over time." },
+          ] },
+          { type: "p", parts: [
+            { t: "For English learners, this topic connects global health ideas with daily life, and it is a great way to practice giving simple health advice." },
+          ] },
+        ],
+      },
+      polished: {
+        label: "Polished Edition",
+        range: "B1–B2",
+        readTime: "4 min read",
+        wordCount: 385,
+        blocks: [
+          { type: "p", parts: [
+            { t: "This July, health groups around the world are marking Self-Care Month 2026 with a simple message: everyday habits matter. The World Health Organization says self-care includes healthy practices and lifestyle choices such as eating well, moving your body, sleeping enough, and staying connected with other people. In other words, self-care is not only about spa days or buying wellness products. It is about the small things people do regularly to protect their physical and mental health." },
+            { c: 1 },
+          ] },
+          { type: "p", parts: [
+            { t: "That message is especially timely because many people feel tired, distracted, or " },
+            { g: "overloaded", pos: "adjective", def: "given too much to handle" },
+            { t: " by fast digital life. Health writers say " },
+            { g: "routines", pos: "noun", def: "regular ways of doing things, done in the same order each time" },
+            { t: " work best when they are realistic. Instead of trying to change everything at once, people are encouraged to choose one or two habits that are easy to repeat, such as drinking more water, taking a short walk after work, or reducing screen time before bed." },
+            { c: 2 },
+          ] },
+          { type: "quote", text: "Take a 10-minute walk after work." },
+          { type: "p", parts: [
+            { t: "Experts also stress that self-care should not feel like pressure. Some wellness trends online make health look perfect and expensive, but public health messages are moving in the opposite direction. The WHO theme for this year says, 'Self-Care puts your health in your hands: Test. Track. Thrive.' That idea supports simple awareness: notice your habits, understand how your body feels, and make " },
+            { g: "sustainable", pos: "adjective", def: "able to continue over a long time" },
+            { t: " adjustments over time." },
+            { c: 3 },
+          ] },
+          { type: "p", parts: [
+            { t: "For intermediate English learners, this story is useful because it connects global health language with familiar daily actions. Students can discuss which habits are easy or difficult, compare routines in different countries, and practice giving health advice in English." },
+          ] },
+        ],
+      },
+      precise: {
+        label: "Precise Edition",
+        range: "C1–C2",
+        readTime: "4 min read",
+        wordCount: 380,
+        blocks: [
+          { type: "p", parts: [
+            { t: "This July, health organisations worldwide are observing Self-Care Month 2026, championing a modest but resonant message: everyday habits matter more than dramatic overhauls. The World Health Organization defines self-care as encompassing healthy practices and lifestyle choices — nutrition, physical activity, adequate sleep, and social connection — rather than merely spa visits or wellness products." },
+            { c: 1 },
+          ] },
+          { type: "p", parts: [
+            { t: "This message proves particularly timely given how frequently people report feeling fatigued, distracted, or overloaded amid accelerating digital life. Health commentators note that routines prove most durable when adopted " },
+            { g: "incrementally", pos: "adverb", def: "gradually, in small steps rather than all at once" },
+            { t: " — drinking more water, taking a brief walk after work, or curbing screen time before bed, rather than attempting wholesale transformation." },
+            { c: 2 },
+          ] },
+          { type: "quote", text: "Take a 10-minute walk after work." },
+          { type: "p", parts: [
+            { t: "Practitioners further caution against self-care becoming another source of pressure. Where online wellness aesthetics often appear immaculate and costly, public health messaging increasingly emphasises " },
+            { g: "efficacy", pos: "noun", def: "the ability to produce a desired result" },
+            { t: " over appearance. The WHO's 2026 theme — 'Test. Track. Thrive.' — encourages simple self-awareness: observing one's habits, attending to bodily signals, and making sustainable adjustments over time." },
+            { c: 3 },
+          ] },
+          { type: "p", parts: [
+            { t: "For intermediate learners, this narrative usefully bridges global health discourse and familiar daily conduct, inviting discussion of which habits prove most " },
+            { g: "discretionary", pos: "adjective", def: "available for use at one's own judgment, not obligatory" },
+            { t: " versus essential, comparative routines across cultures, and the practice of offering health guidance in English." },
+          ] },
+        ],
+      },
+    },
+    references: [
+      { domain: "who.int", headline: "Self-Care Month 2026" },
+      { domain: "doctoranywhere.ph", headline: "How to Build a Wellness Routine That Actually Sticks in 2026" },
+      { domain: "uphealthsystem.com", headline: "Healthy Habits to Start in 2026 for Better Overall Health" },
+    ],
+    discussionGuide: [
+      {
+        q: "What is one small habit you could add to your daily routine? Why did you choose it?",
+        follow: ["What usually stops people from keeping new habits?"],
+      },
+      {
+        q: "The WHO says self-care is 'Test. Track. Thrive.' What does this mean to you?",
+        follow: [],
+      },
+      {
+        q: "Do you think online wellness trends (like spa days or expensive products) make self-care feel more difficult? Why or why not?",
+        follow: [],
+      },
+    ],
+  },
+  {
+    slug: "toddler-food-study",
+    ready: true,
+    emoji: "🥫",
+    variant: "planet",
+    topicLabel: "Nature & Science",
+    topicTitle: "Nature, Science & Planet",
+    title: "Toddler Food Study Raises Fresh Health Questions",
+    dek: "A new July research headline says most toddler foods may be ultra-processed, opening a wider conversation about nutrition and early childhood health.",
+    editions: {
+      plain: {
+        label: "Plain Edition",
+        range: "A1–A2",
+        readTime: "2 min read",
+        wordCount: 180,
+        blocks: [
+          { type: "p", parts: [
+            { t: "A new July 2026 report says something surprising: four out of five toddler foods are ultra-processed. Ultra-processed foods are made with many changes from their natural ingredients. Companies often add flavoring, coloring, or chemicals to make the food last longer or taste better." },
+          ] },
+          { type: "p", parts: [
+            { t: "This is important because toddler years are a key time for growth. During this time, children learn what foods feel normal to eat. If children eat mostly processed snacks and packaged meals, they may get used to strong flavors and soft textures, instead of fresh fruits, vegetables, and simple home-cooked food." },
+          ] },
+          { type: "p", parts: [
+            { t: "The news does not mean all packaged food is bad. The real question is about balance. Parents need food labels that are easy to understand, and healthy food that is still affordable and easy to prepare." },
+          ] },
+          { type: "p", parts: [
+            { t: "This topic is useful for the classroom. Students can talk about children's snacks in different countries, how advertising affects food choices, and vocabulary about ingredients and nutrition." },
+          ] },
+        ],
+      },
+      polished: {
+        label: "Polished Edition",
+        range: "B1–B2",
+        readTime: "4 min read",
+        wordCount: 380,
+        blocks: [
+          { type: "p", parts: [
+            { t: "A July 2026 research update has put toddler nutrition back in the spotlight. ScienceDaily highlighted a striking finding: four in five toddler foods are " },
+            { g: "ultra-processed", pos: "phrase", def: "changed a lot from the food's natural form, often with added chemicals" },
+            { t: ". These are products heavily changed from their original ingredients and often include " },
+            { g: "additives", pos: "noun", def: "substances added to food to improve taste, appearance, or shelf life" },
+            { t: " such as flavoring, coloring, or preservatives to improve taste, texture, or shelf life. While convenient, researchers often worry that too much processing can reduce " },
+            { g: "nutritional", pos: "adjective", def: "relating to food and how it affects health" },
+            { t: " quality and shape unhealthy eating habits early in life." },
+            { c: 1 },
+          ] },
+          { type: "p", parts: [
+            { t: "The story matters because toddler years are a key period for growth and taste development. During this stage, children learn what kinds of food feel normal and enjoyable. If highly processed snacks, sweet pouches, or packaged meals become common, children may become more used to strong flavors and softer textures than to fresh fruits, vegetables, and simple home-cooked meals." },
+            { c: 2 },
+          ] },
+          { type: "p", parts: [
+            { t: "Although the headline sounds alarming, experts usually do not argue that every packaged food is bad. The bigger question is balance and information. Parents need labels they can understand and access to healthier options that are still affordable and practical. More research in health science is also showing that early nutrition affects not only physical growth but long-term habits connected to energy, concentration, and wellbeing." },
+            { c: 3 },
+          ] },
+          { type: "p", parts: [
+            { t: "For classrooms, this topic offers an accessible way to talk about science, family choices, and public health in plain English. Learners can compare children's snacks in different countries, discuss how advertising influences food choices, and practice vocabulary related to ingredients, labels, and nutrition." },
+          ] },
+        ],
+      },
+      precise: {
+        label: "Precise Edition",
+        range: "C1–C2",
+        readTime: "4 min read",
+        wordCount: 380,
+        blocks: [
+          { type: "p", parts: [
+            { t: "A July 2026 research update has returned toddler nutrition to public scrutiny. ScienceDaily's findings prove striking: four in five toddler foods qualify as ultra-processed — products substantially altered from their original ingredients, typically incorporating additives such as flavouring, colouring, or preservatives to enhance taste, texture, or shelf life. Whatever their convenience, researchers frequently caution that such " },
+            { g: "ubiquity", pos: "noun", def: "the fact of being present or found everywhere" },
+            { t: " may compromise nutritional quality and entrench unhealthy eating patterns from an early age." },
+            { c: 1 },
+          ] },
+          { type: "p", parts: [
+            { t: "This matters acutely because toddlerhood constitutes a formative period for both growth and " },
+            { g: "palate", pos: "noun", def: "a person's ability to taste and enjoy different foods" },
+            { t: " development. Children absorb, during this window, which foods feel normal and pleasurable. Should heavily processed snacks and packaged meals predominate, children risk acclimating to intense flavours and softened textures rather than to fresh produce and home-prepared fare." },
+            { c: 2 },
+          ] },
+          { type: "p", parts: [
+            { t: "Though the headline unsettles, experts rarely contend that all packaged food is deleterious; the more pressing concern is one of balance and transparency. Parents require intelligible labelling and access to healthier alternatives that remain both practical and within reach financially, given persistent " },
+            { g: "affordability", pos: "noun", def: "the quality of being reasonably priced" },
+            { t: " constraints. Emerging health science further indicates that early nutrition shapes not merely physical growth but enduring habits governing energy, concentration, and wellbeing." },
+            { c: 3 },
+          ] },
+          { type: "p", parts: [
+            { t: "For classrooms, this episode furnishes an accessible entry point into science, familial decision-making, and public health discourse. Learners might compare children's snacks across nations, interrogate the influence of advertising on dietary choice, and rehearse vocabulary pertaining to ingredients, labelling, and nutrition." },
+          ] },
+        ],
+      },
+    },
+    references: [
+      { domain: "sciencedaily.com", headline: "ScienceDaily: Your source for the latest research news" },
+      { domain: "sciencedaily.com", headline: "Health & Medicine News" },
+      { domain: "abs-cbn.com", headline: "Health & Science News | ABS-CBN Latest Updates" },
+    ],
+    discussionGuide: [
+      {
+        q: "Were you surprised that most toddler foods are ultra-processed? Why or why not?",
+        follow: ["What packaged foods do you eat regularly? Are they processed?"],
+      },
+      {
+        q: "The article says parents need labels they can understand. Do you find food labels easy or difficult to read? Why?",
+        follow: [],
+      },
+      {
+        q: "How could families make healthier food choices without spending more money or time?",
+        follow: [],
+      },
+    ],
+  },
+  {
+    slug: "ai-tools-work-partners",
+    ready: true,
+    emoji: "🛠️",
+    variant: "tech",
+    topicLabel: "Digital & Tech",
+    topicTitle: "Digital Life & Future Tech",
+    title: "July's AI Tools Turn Chatbots Into Work Partners",
+    dek: "New platform updates suggest AI is shifting from answering questions to completing bigger, more practical tasks across work and creative apps.",
+    editions: {
+      plain: {
+        label: "Plain Edition",
+        range: "A1–A2",
+        readTime: "2 min read",
+        wordCount: 195,
+        blocks: [
+          { type: "p", parts: [
+            { t: "In July 2026, many companies released new AI updates. These updates show that AI is changing quickly. Instead of working like simple chatbots that only answer questions, new AI systems are being built as 'work partners.' They can now do longer, more complete tasks, like coding, planning, designing, and searching the internet." },
+          ] },
+          { type: "p", parts: [
+            { t: "Before, people used AI mostly to get fast answers. Now, AI is trying to help finish whole projects with less work from the person using it. For example, AI can research a topic, write a summary, and even help build a presentation, all in one process." },
+          ] },
+          { type: "p", parts: [
+            { t: "But this change also creates new challenges. When AI becomes more powerful, people need to think carefully. They must check facts, protect private information, and know when a human still needs to check the work." },
+          ] },
+          { type: "p", parts: [
+            { t: "For students and teachers, this is important. AI can save time, but people still need to guide it well, check the results, and use their own thinking together with AI's speed." },
+          ] },
+        ],
+      },
+      polished: {
+        label: "Polished Edition",
+        range: "B1–B2",
+        readTime: "4 min read",
+        wordCount: 385,
+        blocks: [
+          { type: "p", parts: [
+            { t: "July 2026 brought a wave of AI product updates that show how quickly digital tools are changing. Instead of acting like simple chatbots, many new systems are being designed as work partners that can handle longer and more complicated tasks. Reports from this month mention tools for coding, campaign planning, creative design, and web browsing. The goal is no longer just fast answers. It is to help users finish real projects with less " },
+            { g: "manual", pos: "adjective", def: "done by hand or by a person, not by a machine" },
+            { t: " effort." },
+            { c: 1 },
+          ] },
+          { type: "p", parts: [
+            { t: "One roundup of July platform news says companies introduced products that move AI deeper into everyday " },
+            { g: "workflows", pos: "noun", def: "the full processes of completing tasks, step by step" },
+            { t: ". For example, a user may want to research a topic, summarize findings, draft a presentation, and prepare visuals. Newer AI systems increasingly try to support that whole chain, not only one step." },
+            { c: 2 },
+          ] },
+          { type: "quote", text: "From instrument to partner." },
+          { type: "p", parts: [
+            { t: "This change is exciting, but it also creates new pressure for users to learn wisely. When tools become more powerful, people need better judgment about checking facts, protecting privacy, and knowing when human review is still necessary. A system that drafts code or builds content quickly can still make mistakes, especially if the user accepts every suggestion without thinking. That is why " },
+            { g: "digital literacy", pos: "phrase", def: "the ability to use technology critically and effectively" },
+            { t: " is becoming just as important as technical skill." },
+            { c: 3 },
+          ] },
+          { type: "p", parts: [
+            { t: "For students and teachers, this story is especially relevant. AI can save time by organizing ideas, simplifying explanations, or generating practice materials, but it also changes what learners need to practice on their own. In the near future, success may depend less on typing the perfect prompt and more on guiding AI carefully, checking results, and combining machine speed with human creativity." },
+          ] },
+        ],
+      },
+      precise: {
+        label: "Precise Edition",
+        range: "C1–C2",
+        readTime: "4 min read",
+        wordCount: 385,
+        blocks: [
+          { type: "p", parts: [
+            { t: "July 2026 witnessed a wave of AI product releases underscoring the rapidity of digital transformation. Rather than functioning as rudimentary chatbots, emergent systems are increasingly conceived as collaborative partners capable of executing longer, more intricate tasks — spanning coding, campaign strategy, creative design, and web navigation. The ambition has shifted from expedient answers toward completing substantive projects with diminished manual intervention." },
+            { c: 1 },
+          ] },
+          { type: "p", parts: [
+            { t: "Industry commentary on July's platform announcements indicates that AI is being woven more deeply into everyday workflows — the sequential process by which a task is completed. A user might research a topic, synthesise findings, draft a presentation, and prepare visuals; contemporary AI increasingly aims to " },
+            { g: "augment", pos: "verb", def: "to make something greater by adding to it" },
+            { t: " this entire chain rather than a single step." },
+            { c: 2 },
+          ] },
+          { type: "quote", text: "From instrument to partner." },
+          { type: "p", parts: [
+            { t: "This evolution, however exhilarating, imposes fresh demands on user judgement. As tools grow more capable, users require sharper " },
+            { g: "discernment", pos: "noun", def: "the ability to judge well" },
+            { t: " regarding fact-checking, privacy safeguarding, and recognising when human oversight remains indispensable. A system that drafts code or content swiftly may nonetheless err, particularly where " },
+            { g: "overreliance", pos: "noun", def: "depending on something too much" },
+            { t: " on unexamined suggestions prevails." },
+            { c: 3 },
+          ] },
+          { type: "p", parts: [
+            { t: "For students and educators, this development carries particular weight. AI may expedite the organisation of ideas or generation of practice material, yet it simultaneously redefines what learners must cultivate independently. Future success may hinge less on crafting a flawless prompt than on judiciously directing AI, scrutinising its output, and marrying computational speed with human ingenuity." },
+          ] },
+        ],
+      },
+    },
+    references: [
+      { domain: "campaignme.com", headline: "AI platform updates you need to know from July 2026" },
+      { domain: "microsoft.com", headline: "What's next in AI: 7 trends to watch in 2026" },
+      { domain: "marketingprofs.com", headline: "AI Update, July 10, 2026: AI News and Views From the Past Week" },
+    ],
+    discussionGuide: [
+      {
+        q: "Would you want an AI 'work partner' to help you finish a big project? What tasks would you want it to do?",
+        follow: ["What parts would you still want to do yourself?"],
+      },
+      {
+        q: "The article says AI's power creates a need for better judgment, like checking facts. How do you usually check if information is true?",
+        follow: [],
+      },
+      {
+        q: "Do you think students should use AI to help with schoolwork? Where should the line be?",
+        follow: [],
+      },
+    ],
+  },
+  {
+    slug: "global-engagement-slips",
+    ready: true,
+    emoji: "📉",
+    variant: "work",
+    topicLabel: "Work & Business",
+    topicTitle: "Worklife, Business & Careers",
+    title: "Global Engagement Slips, and Workplaces Feel the Cost",
+    dek: "A major 2026 workplace report says fewer employees feel engaged at work, pushing companies to rethink leadership, hybrid work, and wellbeing.",
+    editions: {
+      plain: {
+        label: "Plain Edition",
+        range: "A1–A2",
+        readTime: "2 min read",
+        wordCount: 195,
+        blocks: [
+          { type: "p", parts: [
+            { t: "A big workplace report in 2026 says fewer workers feel engaged in their jobs. 'Engagement' means how connected, motivated, and interested people feel about their work. New data says only 20% of workers worldwide feel engaged — the lowest number since 2020. This costs companies a lot of money, because workers who do not care about their jobs often work less carefully and leave their jobs more often." },
+          ] },
+          { type: "p", parts: [
+            { t: "This matters because it is not just a personal feeling. It affects how well companies work. Many reports say workers now want more than just a salary. They want clear communication, fair workloads, flexible schedules, and managers who care about their wellbeing." },
+          ] },
+          { type: "p", parts: [
+            { t: "At the same time, AI is changing jobs and creating new stress. Some workers worry about losing their jobs to AI, while others feel pressure to learn new tools quickly. Good managers in 2026 must help workers learn new skills while also keeping trust and good spirit on the team." },
+          ] },
+          { type: "p", parts: [
+            { t: "This is useful for English learners talking about careers and office life." },
+          ] },
+        ],
+      },
+      polished: {
+        label: "Polished Edition",
+        range: "B1–B2",
+        readTime: "4 min read",
+        wordCount: 375,
+        blocks: [
+          { type: "p", parts: [
+            { t: "A major workplace report released in 2026 says employee " },
+            { g: "engagement", pos: "noun", def: "how involved, motivated, and emotionally connected someone feels in their job" },
+            { t: " has fallen again around the world. Gallup's new findings say global engagement fell to 20% in 2025, the lowest level since 2020, and the report links this trend to huge economic losses. When workers stop caring deeply about their tasks, companies often see weaker teamwork, lower productivity, and higher " },
+            { g: "turnover", pos: "noun", def: "the rate at which employees leave a company and are replaced" },
+            { t: "." },
+            { c: 1 },
+          ] },
+          { type: "p", parts: [
+            { t: "This story matters because disengagement is not just a private feeling. It affects how organizations perform and how leaders make decisions. Several 2026 workplace trend reports say employees now expect more than salary and job security. They want clearer communication, manageable workloads, flexible schedules, and managers who understand both performance and wellbeing." },
+            { c: 3 },
+          ] },
+          { type: "p", parts: [
+            { t: "At the same time, AI is changing job design and creating new stress. Some workers worry about being replaced, while others feel pressure to adapt to new tools very quickly. The Society for Human Resource Management lists 'AI Regulations, Ethics, and Workforce Transformation' among the top five workplace issues for 2026. Good management in 2026 means helping staff build new skills while also protecting trust and " },
+            { g: "morale", pos: "noun", def: "the general feeling of confidence and enthusiasm in a group" },
+            { t: "." },
+            { c: 2 },
+          ] },
+          { type: "p", parts: [
+            { t: "For learners, this trend offers rich language for discussing careers and office culture. Students can compare what makes workers feel motivated, debate the pros and cons of hybrid schedules, and practice business English for feedback, meetings, and team support." },
+          ] },
+        ],
+      },
+      precise: {
+        label: "Precise Edition",
+        range: "C1–C2",
+        readTime: "4 min read",
+        wordCount: 375,
+        blocks: [
+          { type: "p", parts: [
+            { t: "A major 2026 workplace report indicates that employee engagement has declined once more across the globe. Gallup's latest findings place global engagement at a mere 20% in 2025 — its lowest ebb since 2020 — and attribute this trajectory to substantial economic losses. As workers grow indifferent to their responsibilities, organisations typically witness weakened collaboration, diminished productivity, and elevated " },
+            { g: "attrition", pos: "noun", def: "a gradual reduction in employees through resignation or retirement" },
+            { t: "." },
+            { c: 1 },
+          ] },
+          { type: "p", parts: [
+            { t: "This matters because disengagement transcends private sentiment, materially shaping organisational performance and executive decision-making. Numerous 2026 workplace analyses report that employees now anticipate more than remuneration and job security, seeking transparent communication, equitable workloads, flexible arrangements, and managers attentive to both performance and wellbeing." },
+            { c: 3 },
+          ] },
+          { type: "p", parts: [
+            { t: "Concurrently, artificial intelligence is reshaping job design and generating fresh anxieties. Some employees fear obsolescence, while others feel compelled to assimilate new tools with undue haste. SHRM enumerates 'AI Regulations, Ethics, and Workforce Transformation' among 2026's foremost workplace concerns, underscoring how thoroughly technological and human considerations have become intertwined. Effective management now entails cultivating new competencies while safeguarding trust and " },
+            { g: "cohesion", pos: "noun", def: "the state of sticking together or forming a united whole" },
+            { t: "." },
+            { c: 2 },
+          ] },
+          { type: "p", parts: [
+            { t: "For learners, this phenomenon yields substantial vocabulary for discussing careers and organisational culture — comparing motivational drivers, weighing hybrid arrangements, and rehearsing business English for feedback and collaborative dialogue." },
+          ] },
+        ],
+      },
+    },
+    references: [
+      { domain: "gallup.com", headline: "State of the Global Workplace 2026" },
+      { domain: "shrm.org", headline: "2026 Top Five Workplace Issues" },
+      { domain: "zoom.com", headline: "12 must-know hybrid work trends in 2026" },
+    ],
+    discussionGuide: [
+      {
+        q: "What makes you feel motivated or 'engaged' at work or school? What makes you feel disconnected?",
+        follow: [],
+      },
+      {
+        q: "The article says only 20% of workers worldwide feel engaged. Does that number surprise you? Why or why not?",
+        follow: ["What do you think causes low engagement?"],
+      },
+      {
+        q: "How do you think AI is changing jobs in your field or country?",
+        follow: ["Do you feel worried or excited about this change?"],
+      },
+    ],
+  },
+  {
+    slug: "strengthened-shs-curriculum",
+    ready: true,
+    emoji: "🏫",
+    variant: "work",
+    topicLabel: "Study & Skills",
+    topicTitle: "Study, School & Skills",
+    title: "Philippines Rolls Out Stronger Senior High Curriculum",
+    dek: "A new curriculum for Philippine senior high schools aims to make learning more focused, practical, and responsive to students' future paths.",
+    editions: {
+      plain: {
+        label: "Plain Edition",
+        range: "A1–A2",
+        readTime: "2 min read",
+        wordCount: 190,
+        blocks: [
+          { type: "p", parts: [
+            { t: "The Philippines is making a big change in senior high school. Starting in School Year 2026–2027, the Department of Education (DepEd) will use a new 'Strengthened Senior High School Curriculum' in public and private schools. The goal is to make school more focused and more useful for students who are preparing for work, training, or university." },
+          ] },
+          { type: "p", parts: [
+            { t: "This matters because many students feel pressure to choose their future path before they feel ready. A better curriculum can help by connecting classroom lessons more clearly to real jobs and further study." },
+          ] },
+          { type: "p", parts: [
+            { t: "The story also connects to how schools use technology. A new rule says students and school staff cannot use their phones and gadgets during class time in public schools, except for learning or emergencies." },
+          ] },
+          { type: "p", parts: [
+            { t: "This shows that schools want to use technology in smart ways, without too much distraction. The main goal is not more gadgets or fewer gadgets — it is better learning. For English learners, students can discuss useful school subjects, future skills, and phone rules in class." },
+          ] },
+        ],
+      },
+      polished: {
+        label: "Polished Edition",
+        range: "B1–B2",
+        readTime: "4 min read",
+        wordCount: 380,
+        blocks: [
+          { type: "p", parts: [
+            { t: "The Philippines is preparing a major change in senior high school learning. According to a July 2026 report, the Department of Education will " },
+            { g: "implement", pos: "verb", def: "to put a plan or system into action" },
+            { t: " a Strengthened Senior High School " },
+            { g: "curriculum", pos: "noun", def: "the subjects and content taught in a school or course" },
+            { t: " in public and private schools for School Year 2026–2027. The reform aims to make the curriculum more focused and more useful for students preparing for work, training, or university. In simple terms, schools are trying to teach fewer scattered topics and give more attention to skills that match real next steps after graduation." },
+            { c: 1 },
+          ] },
+          { type: "p", parts: [
+            { t: "This matters because many students feel pressure to choose a future path before they are fully ready. A stronger curriculum can help by connecting classroom content more clearly to careers and higher education. Reports on education and skills in 2026 continue to stress the value of practical learning, adaptability, and clearer skills pathways for young people." },
+            { c: 3 },
+          ] },
+          { type: "p", parts: [
+            { t: "The story also connects with debates about how technology should be used in school. A July 1 update said the use of learners' and school personnel's gadgets during class hours in public schools is prohibited except for educational or emergency purposes. That rule reflects a growing challenge in education: schools want to use technology meaningfully, but they also want to reduce " },
+            { g: "distraction", pos: "noun", def: "something that takes your attention away from what you should be doing" },
+            { t: ". The broader goal is not simply more devices or fewer devices. It is better learning." },
+            { c: 2 },
+          ] },
+          { type: "p", parts: [
+            { t: "For ESL classrooms, this topic is practical and close to students' real lives. Learners can discuss which subjects feel useful, what skills they need after high school, and whether classroom gadget rules help or hurt learning." },
+          ] },
+        ],
+      },
+      precise: {
+        label: "Precise Edition",
+        range: "C1–C2",
+        readTime: "4 min read",
+        wordCount: 375,
+        blocks: [
+          { type: "p", parts: [
+            { t: "The Philippines is instituting a substantial reform of senior high school education. Per a July 2026 report, the Department of Education will implement a Strengthened Senior High School Curriculum across public and private institutions beginning School Year 2026–2027, intending to " },
+            { g: "streamline", pos: "verb", def: "to make a process simpler and more efficient" },
+            { t: " content and render it more germane to students preparing for employment, vocational training, or university." },
+            { c: 1 },
+          ] },
+          { type: "p", parts: [
+            { t: "This matters because students frequently feel compelled to select a future trajectory before they feel adequately prepared. A more coherent curriculum may ameliorate this by aligning classroom content more transparently with career and higher-education pathways. Contemporary reports on education continue to emphasise practical learning, adaptability, and clearer " },
+            { g: "pedagogical", pos: "adjective", def: "relating to teaching methods" },
+            { t: " pathways for young people." },
+            { c: 3 },
+          ] },
+          { type: "p", parts: [
+            { t: "The narrative further intersects with debates over technology's classroom role. A July 1 directive stipulated that gadget use by learners and personnel during class hours in public schools is " },
+            { g: "circumscribed", pos: "verb", def: "restricted or limited" },
+            { t: " save for educational or emergency purposes — reflecting education's perennial challenge of harnessing technology meaningfully while curbing distraction. The overarching aim is neither maximal nor minimal device use, but enhanced learning outcomes." },
+            { c: 2 },
+          ] },
+          { type: "p", parts: [
+            { t: "For ESL classrooms, this episode proves immediately relevant, inviting discussion of which subjects feel genuinely useful, which skills students require post-graduation, and whether gadget restrictions serve or hinder learning." },
+          ] },
+        ],
+      },
+    },
+    references: [
+      { domain: "abs-cbn.com", headline: "DepEd rolls out 'strengthened' senior high curriculum" },
+      { domain: "facebook.com", headline: "DepEd: gadget use during class hours prohibited except for educational or emergency purposes" },
+      { domain: "unesco.org", headline: "Education transforms lives" },
+    ],
+    discussionGuide: [
+      {
+        q: "Do you think school subjects should connect more directly to future jobs? Why or why not?",
+        follow: [],
+      },
+      {
+        q: "The Philippines banned gadgets in class except for learning or emergencies. Do you agree with this rule? Why or why not?",
+        follow: ["What are the benefits and problems of using phones in class?"],
+      },
+      {
+        q: "What skills do you wish your school taught you before graduation?",
+        follow: [],
+      },
+    ],
+  },
+  {
+    slug: "sports-new-style-stage",
+    ready: true,
+    emoji: "🎾",
+    variant: "culture",
+    topicLabel: "Culture & Fun",
+    topicTitle: "Culture, Stories & Fun",
+    title: "Sports Overtake Fashion as a New Style Stage",
+    dek: "A 2026 culture report says tennis and other sports are becoming major centers of fashion, lifestyle influence, and entertainment buzz.",
+    editions: {
+      plain: {
+        label: "Plain Edition",
+        range: "A1–A2",
+        readTime: "2 min read",
+        wordCount: 185,
+        blocks: [
+          { type: "p", parts: [
+            { t: "One of the most fun culture trends of 2026 is the connection between sports and fashion. A big culture report says sports are no longer only about competition. They are also becoming a place for fashion, identity, and entertainment. This trend is called 'Serving Looks' — a phrase that mixes tennis and style." },
+          ] },
+          { type: "p", parts: [
+            { t: "The report gives tennis as an example. It says the US Open got more online attention than New York Fashion Week the year before. This does not mean fashion is disappearing. It is moving to new places. Athletes and sports fans are now influencing what people wear and post online." },
+          ] },
+          { type: "p", parts: [
+            { t: "This fits a bigger pattern in entertainment. People want events that feel exciting, social, and easy to share online. Sports give people all of this, plus strong personalities and exciting moments. Big events in 2026, like Wimbledon and the World Cup, are keeping sports at the center of pop culture." },
+          ] },
+          { type: "p", parts: [
+            { t: "For English learners, students can describe sports outfits, compare fashion shows and sports events, and talk about why athletes are now trendsetters." },
+          ] },
+        ],
+      },
+      polished: {
+        label: "Polished Edition",
+        range: "B1–B2",
+        readTime: "4 min read",
+        wordCount: 375,
+        blocks: [
+          { type: "p", parts: [
+            { t: "One of the liveliest culture trends of 2026 is the growing connection between sports and style. A major cultural forecast argues that sports are no longer only about competition. They are also becoming powerful spaces for fashion, identity, and entertainment. In the report, this trend is called 'Serving Looks,' a phrase that plays on both tennis and style. The idea is simple: stadiums and courts are starting to shape culture in the same way runways once did." },
+            { c: 1 },
+          ] },
+          { type: "p", parts: [
+            { t: "The report points to tennis as a clear example. It says the US Open generated far more online coverage than New York Fashion Week the year before, showing how sports events can now lead lifestyle conversation. This does not mean fashion is disappearing. Instead, it is moving into new places. Athletes, " },
+            { g: "spectators", pos: "noun", def: "people who watch an event, especially a sports game" },
+            { t: ", and sports brands are influencing what people wear, what they post online, and what feels modern or " },
+            { g: "aspirational", pos: "adjective", def: "relating to something people hope to have or achieve" },
+            { t: "." },
+            { c: 2 },
+          ] },
+          { type: "p", parts: [
+            { t: "This shift fits a larger entertainment pattern. People want events that feel alive, social, and visually exciting. Sports offer all of that, plus strong personalities, memorable moments, and communities of fans. Big global events in 2026, including Wimbledon and the World Cup, are helping to keep sports at the center of pop culture conversation throughout the year." },
+            { c: 3 },
+          ] },
+          { type: "p", parts: [
+            { t: "For English learners, this story creates fun classroom possibilities. Students can describe sports outfits, compare fashion shows and sporting events, or discuss why athletes are now important " },
+            { g: "trendsetters", pos: "noun", def: "people or things that start a new fashion or style" },
+            { t: ". It is also a strong reminder that culture does not stay in one place." },
+          ] },
+        ],
+      },
+      precise: {
+        label: "Precise Edition",
+        range: "C1–C2",
+        readTime: "4 min read",
+        wordCount: 380,
+        blocks: [
+          { type: "p", parts: [
+            { t: "Among 2026's most vibrant cultural currents is the deepening entanglement of sport and style. A prominent cultural forecast contends that athletic competition no longer exists in isolation from fashion, identity, and entertainment — indeed, stadiums and courts increasingly shape culture much as runways once did, a phenomenon the report terms 'Serving Looks.'" },
+            { c: 1 },
+          ] },
+          { type: "p", parts: [
+            { t: "Tennis furnishes an illustrative case: the US Open, the report notes, generated markedly greater online coverage than New York Fashion Week the preceding year, evidencing sport's ascension to the " },
+            { g: "vanguard", pos: "noun", def: "the leading position in a trend or movement" },
+            { t: " of lifestyle discourse. Fashion has not vanished but relocated — athletes and spectators alike now confer " },
+            { g: "cachet", pos: "noun", def: "the quality of being respected or admired; prestige" },
+            { t: " upon what people wear and share online." },
+            { c: 2 },
+          ] },
+          { type: "p", parts: [
+            { t: "This realignment reflects a broader entertainment pattern favouring events that feel visceral, communal, and visually arresting. Sport supplies all three, alongside charismatic personalities and fervent fan communities. Major 2026 fixtures — Wimbledon and the World Cup among them — sustain sport's centrality to popular culture throughout the calendar year." },
+            { c: 3 },
+          ] },
+          { type: "p", parts: [
+            { t: "For language learners, this narrative yields playful classroom material: describing athletic attire, comparing runway shows against sporting spectacles, or examining why athletes now function as cultural " },
+            { g: "arbiters", pos: "noun", def: "people who have influence over what is done or considered acceptable" },
+            { t: ". It serves as a vivid reminder that culture rarely stays put — sometimes the next defining style narrative emerges not from a runway, but from a tennis court." },
+          ] },
+        ],
+      },
+    },
+    references: [
+      { domain: "webershandwick.com", headline: "Predicting the Unpredictable: The Top 10 Cultural Trends and Moments of 2026" },
+      { domain: "forbes.com", headline: "7 Cultural Trends Shaping Business in 2026 and Beyond" },
+      { domain: "britannica.com", headline: "Major Events of 2026 | Pop Culture, Current Events & Trends" },
+    ],
+    discussionGuide: [
+      {
+        q: "Do you follow any athletes because of their style or fashion sense? Who, and why?",
+        follow: [],
+      },
+      {
+        q: "The article says sports events now get more attention online than fashion shows. Does this surprise you?",
+        follow: ["Do you think this will continue, or will fashion 'catch up'?"],
+      },
+      {
+        q: "What sport or sports event do you think has the most interesting fashion or style?",
+        follow: [],
+      },
+    ],
+  },
+  {
+    slug: "social-media-substance-over-noise",
+    ready: true,
+    emoji: "🧵",
+    variant: "culture",
+    topicLabel: "Society & Issues",
+    topicTitle: "People, Society & Issues",
+    title: "Social Media's New Goal: Substance Over Noise",
+    dek: "Fresh 2026 reports say people are rewarding content that feels useful, real, and community-based instead of loud posts built only for attention.",
+    editions: {
+      plain: {
+        label: "Plain Edition",
+        range: "A1–A2",
+        readTime: "2 min read",
+        wordCount: 190,
+        blocks: [
+          { type: "p", parts: [
+            { t: "Many 2026 social media reports say something is changing: people want more meaning, not just noise. The 'attention economy' is the online system where creators and companies compete for clicks and views. But now, users are becoming more selective." },
+          ] },
+          { type: "p", parts: [
+            { t: "Instead of reacting to whatever is loudest, many people prefer content that feels helpful, honest, or meaningful. One agency calls this 'social with substance.' This means posts with real value, not just empty performance." },
+          ] },
+          { type: "p", parts: [
+            { t: "Reports also show strong interest in community, learning, and more human, honest brand voices. People still enjoy humor and trends, but they want it mixed with real information or connection." },
+          ] },
+          { type: "p", parts: [
+            { t: "This change affects everyone online. Accounts that only chase fast attention may struggle if people get tired of shallow posts. Creators who explain things clearly and build trust can grow stronger, more loyal audiences. For English learners, this is a good topic to discuss why some posts feel empty while others feel meaningful." },
+          ] },
+        ],
+      },
+      polished: {
+        label: "Polished Edition",
+        range: "B1–B2",
+        readTime: "4 min read",
+        wordCount: 375,
+        blocks: [
+          { type: "p", parts: [
+            { t: "A growing number of 2026 social media reports say the " },
+            { g: "attention economy", pos: "phrase", def: "the online system where creators and platforms compete for people's time and attention" },
+            { t: " is changing shape. The attention economy is the online system where creators, brands, and platforms compete constantly for clicks, views, and time. But newer reports suggest that users are becoming more selective. Instead of reacting to whatever is loudest, many now prefer content that feels helpful, " },
+            { g: "credible", pos: "adjective", def: "able to be trusted or believed" },
+            { t: ", or socially meaningful." },
+            { c: 2 },
+          ] },
+          { type: "p", parts: [
+            { t: "Ogilvy Social.Lab describes this shift as a move toward 'social with substance.' That phrase suggests a return to posts with more value and less empty performance. Sprout Social and National University also report strong interest in community, education, search-friendly content, and more human brand voices. In practical terms, people still enjoy humor and trends, but they increasingly want those things mixed with information, personality, or a real sense of connection." },
+            { c: 1 },
+          ] },
+          { type: "quote", text: "Social with substance." },
+          { type: "p", parts: [
+            { t: "This change affects creators, companies, and everyday users. Accounts that only chase fast " },
+            { g: "engagement", pos: "noun", def: "interaction such as likes, comments, and shares on a post" },
+            { t: " may struggle if audiences start ignoring repetitive or shallow posts. By contrast, creators who explain ideas clearly, respond thoughtfully, and build trust can grow stronger followings over time." },
+            { c: 3 },
+          ] },
+          { type: "p", parts: [
+            { t: "For ESL teaching, the story has strong classroom value. Students can examine why some posts feel empty while others feel meaningful, compare different kinds of creators, and practice evaluating online information in English." },
+          ] },
+        ],
+      },
+      precise: {
+        label: "Precise Edition",
+        range: "C1–C2",
+        readTime: "4 min read",
+        wordCount: 375,
+        blocks: [
+          { type: "p", parts: [
+            { t: "A growing corpus of 2026 social media analyses suggests the attention economy — the perpetual online contest among creators, brands, and platforms for clicks, views, and time — is undergoing transformation. Emerging evidence indicates that users are exercising greater discrimination, favouring content that feels useful, credible, or socially consequential over whatever proves merely loudest." },
+            { c: 2 },
+          ] },
+          { type: "p", parts: [
+            { t: "Ogilvy Social.Lab characterises this shift as a turn toward 'social with substance,' implying a retreat from empty performative " },
+            { g: "veneer", pos: "noun", def: "an attractive appearance that covers something less genuine" },
+            { t: " in favour of genuinely valuable content. Sprout Social and National University corroborate this, documenting pronounced interest in community, education, discoverable content, and more authentically human brand voices." },
+            { c: 1 },
+          ] },
+          { type: "quote", text: "Social with substance." },
+          { type: "p", parts: [
+            { t: "This recalibration bears upon creators, enterprises, and ordinary users alike. Accounts pursuing only transient engagement may falter as audiences grow weary of repetitive, superficial content, whereas creators who elucidate ideas lucidly and cultivate trust stand to accrue more durable followings." },
+            { c: 3 },
+          ] },
+          { type: "p", parts: [
+            { t: "For ESL instruction, this narrative carries considerable pedagogical value: students might interrogate why certain posts register as vacuous while others feel " },
+            { g: "discernibly", pos: "adverb", def: "in a way that can be noticed or recognised" },
+            { t: " meaningful, compare divergent creator archetypes, and practise evaluating online information critically in English." },
+          ] },
+        ],
+      },
+    },
+    references: [
+      { domain: "ogilvy.com", headline: "Social Trends 2026: Social With Substance and the Return of Real" },
+      { domain: "sproutsocial.com", headline: "7 social media trends you need to know in 2026" },
+      { domain: "nu.edu", headline: "Social Media Trends in 2026: What's Next" },
+    ],
+    discussionGuide: [
+      {
+        q: "Do you agree that social media is becoming more about 'substance' than noise? Have you noticed this yourself?",
+        follow: [],
+      },
+      {
+        q: "What makes a social media post feel 'meaningful' to you, instead of empty?",
+        follow: ["Can you give an example of a post or creator you trust?"],
+      },
+      {
+        q: "How do you decide if information you see online is credible or not?",
+        follow: [],
+      },
+    ],
+  },
+  {
+    slug: "slow-travel-surges",
+    ready: true,
+    emoji: "🐌",
+    variant: "planet",
+    topicLabel: "Travel & Places",
+    topicTitle: "Places, Travel & Journeys",
+    title: "Slow Travel Surges as Visitors Stay Longer",
+    dek: "Search trends in 2026 show more travelers choosing one place for longer stays, with food, local experiences, and less rushing leading the plan.",
+    editions: {
+      plain: {
+        label: "Plain Edition",
+        range: "A1–A2",
+        readTime: "2 min read",
+        wordCount: 185,
+        blocks: [
+          { type: "p", parts: [
+            { t: "A big travel trend in 2026 is clear: many people want to slow down. Google's travel report says searches for 'slow travel' reached an all-time high this year. Searches for 'slow travel Italy' grew 100% in just one month." },
+          ] },
+          { type: "p", parts: [
+            { t: "Slow travel means staying in one place longer, instead of visiting many places quickly. For travelers, this often means less stress and more time to enjoy local food, neighborhoods, and daily culture." },
+          ] },
+          { type: "p", parts: [
+            { t: "People are also planning trips around food and local experiences. In Kansas City, people searching what to do also searched for the city's best barbecue. In Mexico City, searches for the best restaurants reached a 10-year high." },
+          ] },
+          { type: "p", parts: [
+            { t: "Another trend is 'digital disconnection.' Some travelers now choose places with weak phone signal on purpose. Being 'unreachable' is part of the fun for them. For English learners, students can plan a slow-travel trip and explain what kind of experience they enjoy most." },
+          ] },
+        ],
+      },
+      polished: {
+        label: "Polished Edition",
+        range: "B1–B2",
+        readTime: "4 min read",
+        wordCount: 380,
+        blocks: [
+          { type: "p", parts: [
+            { t: "A major travel trend in 2026 is clear: many people want to slow down. Google's travel trends report says search interest in 'slow travel' hit an all-time high this year, and searches for 'slow travel Italy' rose 100% in the past month. Slow travel means staying in one place longer instead of racing through many destinations in a short time. For travelers, that often means less stress, deeper local experience, and more time to enjoy neighborhoods, food, and daily culture." },
+            { c: 1 },
+          ] },
+          { type: "p", parts: [
+            { t: "The data suggests that people are planning trips around specific activities and local flavor. Google highlights searches connected to food tours, city specialties, beach towns, and adventure experiences. In Kansas City, for example, people searching what to do also searched for the city's best barbecue. In Mexico City, searches for the best restaurants hit a 10-year high, and 'street food tour' became a trending search. This points to a style of " },
+            { g: "immersive", pos: "adjective", def: "providing a deep, complete experience" },
+            { t: " travel that values lived experience over " },
+            { g: "checklist tourism", pos: "phrase", def: "traveling by quickly visiting many famous sites without a deeper experience" },
+            { t: "." },
+            { c: 3 },
+          ] },
+          { type: "p", parts: [
+            { t: "Another July 2026 travel feature describes a related movement toward digital " },
+            { g: "disconnection", pos: "noun", def: "the state of not being connected, especially to technology" },
+            { t: " and remote destinations. Some travelers are even building trips around weak phone signal, treating it as a benefit rather than a problem. The article says this trend includes 'dead-zoning,' or choosing places where being unreachable is part of the appeal. Together, these ideas suggest that many travelers are reacting against crowded itineraries and overstimulation." },
+            { c: 2 },
+          ] },
+          { type: "quote", text: "Escaping into silence." },
+          { type: "p", parts: [
+            { t: "For classroom use, this story is full of practical travel language. Students can design slow-travel plans, compare fast and slow tourism, and explain what kind of local experience they value most." },
+          ] },
+        ],
+      },
+      precise: {
+        label: "Precise Edition",
+        range: "C1–C2",
+        readTime: "4 min read",
+        wordCount: 385,
+        blocks: [
+          { type: "p", parts: [
+            { t: "A defining travel trend of 2026 is unmistakable: a marked appetite for decelerated exploration. Google's travel trends report notes that search interest in 'slow travel' has reached an unprecedented peak this year, with queries for 'slow travel Italy' surging 100% within a single month. Slow travel entails prolonged sojourns in a single locale rather than " },
+            { g: "peripatetic", pos: "adjective", def: "travelling from place to place" },
+            { t: " circuits through numerous destinations, typically yielding diminished stress and richer immersion in local custom." },
+            { c: 1 },
+          ] },
+          { type: "p", parts: [
+            { t: "Underlying data suggest travellers increasingly organise itineraries around specific activities and regional flavour — culinary tours, civic specialities, coastal retreats, and adventure pursuits. In Kansas City, searches for local activities coincided with queries for the city's finest barbecue; in Mexico City, restaurant searches reached a decade-long high, with 'street food tour' emerging as a trending query — evidence of experiential travel eclipsing checklist-driven tourism." },
+            { c: 3 },
+          ] },
+          { type: "p", parts: [
+            { t: "A further July 2026 feature identifies a parallel movement toward digital disconnection and remote destinations, wherein travellers deliberately seek diminished connectivity, reframing it as asset rather than inconvenience — a practice termed 'dead-zoning.' Collectively, these currents suggest widespread reaction against crowded itineraries and sensory " },
+            { g: "saturation", pos: "noun", def: "the state of being completely filled with something" },
+            { t: "." },
+            { c: 2 },
+          ] },
+          { type: "quote", text: "Escaping into silence." },
+          { type: "p", parts: [
+            { t: "For classroom application, this narrative furnishes abundant practical vocabulary: students might devise slow-travel itineraries, contrast rapid and unhurried tourism, and articulate which local experiences they most prize, and perhaps a measure of " },
+            { g: "solitude", pos: "noun", def: "the state of being alone, often peacefully" },
+            { t: "." },
+          ] },
+        ],
+      },
+    },
+    references: [
+      { domain: "google.com", headline: "2026 travel trends and top destinations for summer" },
+      { domain: "latimes.com", headline: "2026 Travel Trends: Why the World's Most Elite Travelers Are Escaping Into Silence" },
+      { domain: "odysseys-unlimited.com", headline: "11 Travel Trends to Watch For in 2026" },
+    ],
+    discussionGuide: [
+      {
+        q: "Would you rather visit many cities quickly, or stay in one place for a long time? Why?",
+        follow: [],
+      },
+      {
+        q: "The article talks about travelers who like having no phone signal on purpose. Would you enjoy this, or would it stress you out?",
+        follow: [],
+      },
+      {
+        q: "If you planned a 'slow travel' trip, where would you go, and what would you do there?",
+        follow: ["What local food or experience would you want to try?"],
+      },
+    ],
+  },
 ];
 
 export function getArticle(slug) {
