@@ -1936,14 +1936,14 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .gaz-byline { font-weight: 700; color: var(--ink-soft); }
 .gaz-editions { color: var(--coral); font-weight: 700; }
 .gaz-lead-art {
-  height: clamp(118px, 13vw, 200px);
+  height: clamp(160px, 18vw, 260px);
   border-radius: 8px;
   background: linear-gradient(135deg, #DDE1EB 0%, #C7CCDA 100%);
   display: flex; align-items: center; justify-content: center;
   font-size: clamp(40px, 4vw, 64px);
   overflow: hidden;
 }
-.gaz-lead-art img { width: 100%; height: 100%; object-fit: cover; }
+.gaz-lead-art img { width: 100%; height: 100%; object-fit: contain; }
 
 .gaz-grid { display: grid; grid-template-columns: repeat(3, 1fr); column-gap: clamp(24px, 3vw, 44px); row-gap: 4px; }
 .gaz-story {
@@ -1968,7 +1968,7 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 }
 .gaz-story--soon { cursor: default; opacity: 0.55; }
 .gaz-thumb { width: clamp(50px, 4.6vw, 68px); height: clamp(50px, 4.6vw, 68px); flex-shrink: 0; border-radius: 7px; display: flex; align-items: center; justify-content: center; font-size: clamp(19px, 1.8vw, 26px); overflow: hidden; }
-.gaz-thumb img { width: 100%; height: 100%; object-fit: cover; }
+.gaz-thumb img { width: 100%; height: 100%; object-fit: contain; }
 .gaz-thumb--tech { background: linear-gradient(135deg, rgba(27,42,74,0.16), transparent); }
 .gaz-thumb--work { background: linear-gradient(135deg, rgba(90,107,146,0.18), transparent); }
 .gaz-thumb--planet { background: linear-gradient(135deg, rgba(255,107,74,0.2), transparent); }

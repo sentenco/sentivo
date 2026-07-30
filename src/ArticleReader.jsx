@@ -338,7 +338,7 @@ const CSS = `
 }
 
 .ar-hero {
-  height: 220px;
+  height: 360px;
   border-radius: 14px;
   background: linear-gradient(135deg, var(--rust-soft) 0%, var(--dusk-soft) 100%);
   display: flex; align-items: center; justify-content: center;
@@ -346,7 +346,7 @@ const CSS = `
   margin-bottom: 30px;
   overflow: hidden;
 }
-.ar-hero img { width: 100%; height: 100%; object-fit: cover; }
+.ar-hero img { width: 100%; height: 100%; object-fit: contain; }
 
 .ar-body {
   font-family: 'Source Serif 4', Georgia, serif;

@@ -214,7 +214,7 @@ const CSS = `
   font-size: clamp(26px, 3.6vh, 38px);
   overflow: hidden;
 }
-.app-hero img { width: 100%; height: 100%; object-fit: cover; }
+.app-hero img { width: 100%; height: 100%; object-fit: contain; }
 
 .app-title {
   flex-shrink: 0;
