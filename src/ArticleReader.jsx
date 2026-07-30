@@ -338,7 +338,8 @@ const CSS = `
 }
 
 .ar-hero {
-  height: 360px;
+  aspect-ratio: 3 / 2;
+  max-height: 380px;
   border-radius: 14px;
   background: linear-gradient(135deg, var(--rust-soft) 0%, var(--dusk-soft) 100%);
   display: flex; align-items: center; justify-content: center;
