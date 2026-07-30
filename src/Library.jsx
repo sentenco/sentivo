@@ -1978,7 +1978,7 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   background: #D6DAE6;
 }
 .gaz-story--soon { cursor: default; opacity: 0.55; }
-.gaz-thumb { width: clamp(76px, 6.9vw, 102px); aspect-ratio: 3 / 2; flex-shrink: 0; border-radius: 7px; display: flex; align-items: center; justify-content: center; font-size: clamp(19px, 1.8vw, 26px); overflow: hidden; }
+.gaz-thumb { width: clamp(76px, 6.9vw, 102px); aspect-ratio: 3 / 2; flex-shrink: 0; align-self: flex-start; border-radius: 7px; display: flex; align-items: center; justify-content: center; font-size: clamp(19px, 1.8vw, 26px); overflow: hidden; }
 .gaz-thumb img { width: 100%; height: 100%; object-fit: contain; }
 .gaz-thumb--tech { background: linear-gradient(135deg, rgba(27,42,74,0.16), transparent); }
 .gaz-thumb--work { background: linear-gradient(135deg, rgba(90,107,146,0.18), transparent); }
