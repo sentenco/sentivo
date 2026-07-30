@@ -2,6 +2,12 @@
 // glosses, citations, references, discussion guide), sourced via the
 // standing Perplexity research prompt (see docs/gazette-article-prompt.md).
 
+import spudcellsImg from "./assets/articles/spudcells.jpeg";
+import aiWorkflowsImg from "./assets/articles/ai-workflows.jpeg";
+import fourDayWorkweekImg from "./assets/articles/four-day-workweek.jpeg";
+import skillsMoveUsImg from "./assets/articles/skills-move-us.jpeg";
+import wisdomFlexingImg from "./assets/articles/wisdom-flexing.jpeg";
+
 export const ARTICLE_TOPICS = [
   { label: "Daily Life", title: "Wellbeing & Daily Life" },
   { label: "Nature & Science", title: "Nature, Science & Planet" },
@@ -135,6 +141,7 @@ export const ARTICLES = [
     slug: "spudcells-lab-made-cells",
     ready: true,
     emoji: "🧪",
+    image: spudcellsImg,
     variant: "planet",
     topicLabel: "Nature & Science",
     topicTitle: "Nature, Science & Planet",
@@ -246,6 +253,7 @@ export const ARTICLES = [
     slug: "ai-workflows-everyday-apps",
     ready: true,
     emoji: "🤖",
+    image: aiWorkflowsImg,
     variant: "tech",
     topicLabel: "Digital & Tech",
     topicTitle: "Digital Life & Future Tech",
@@ -357,6 +365,7 @@ export const ARTICLES = [
     slug: "four-day-week-2026",
     ready: true,
     emoji: "🗓️",
+    image: fourDayWorkweekImg,
     variant: "work",
     topicLabel: "Work & Business",
     topicTitle: "Worklife, Business & Careers",
@@ -468,6 +477,7 @@ export const ARTICLES = [
     slug: "skills-move-us",
     ready: true,
     emoji: "🎓",
+    image: skillsMoveUsImg,
     variant: "work",
     topicLabel: "Study & Skills",
     topicTitle: "Study, School & Skills",
@@ -579,6 +589,7 @@ export const ARTICLES = [
     slug: "wisdom-flexing-nerdy-cool",
     ready: true,
     emoji: "📚",
+    image: wisdomFlexingImg,
     variant: "culture",
     topicLabel: "Culture & Fun",
     topicTitle: "Culture, Stories & Fun",

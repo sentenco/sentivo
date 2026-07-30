@@ -147,7 +147,9 @@ export default function ArticleReader() {
           <span>Sentivo Editorial · Updated this week</span>
         </div>
 
-        <div className="ar-hero">{article.emoji}</div>
+        <div className="ar-hero">
+          {article.image ? <img src={article.image} alt="" /> : article.emoji}
+        </div>
 
         <div className="ar-body">
           {ed.blocks.map((block, i) =>
@@ -342,7 +344,9 @@ const CSS = `
   display: flex; align-items: center; justify-content: center;
   font-size: 46px;
   margin-bottom: 30px;
+  overflow: hidden;
 }
+.ar-hero img { width: 100%; height: 100%; object-fit: cover; }
 
 .ar-body {
   font-family: 'Source Serif 4', Georgia, serif;

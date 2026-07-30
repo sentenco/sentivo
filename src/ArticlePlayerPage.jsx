@@ -107,7 +107,9 @@ export default function ArticlePlayerPage() {
       </div>
 
       <div className="app-page">
-        <div className="app-hero">{article.emoji}</div>
+        <div className="app-hero">
+          {article.image ? <img src={article.image} alt="" /> : article.emoji}
+        </div>
 
         <h1 className="app-title"><StyledTitle title={article.title} /></h1>
 
@@ -210,7 +212,9 @@ const CSS = `
   align-items: center;
   justify-content: center;
   font-size: clamp(26px, 3.6vh, 38px);
+  overflow: hidden;
 }
+.app-hero img { width: 100%; height: 100%; object-fit: cover; }
 
 .app-title {
   flex-shrink: 0;

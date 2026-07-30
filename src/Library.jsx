@@ -316,7 +316,9 @@ function ArticlesFeature({ navigate }) {
               <span>{lead.editions.polished.readTime}</span>
             </div>
           </div>
-          <div className="gaz-lead-art">{lead.emoji}</div>
+          <div className="gaz-lead-art">
+            {lead.image ? <img src={lead.image} alt="" /> : lead.emoji}
+          </div>
         </button>
       ) : (
         <p className="gaz-empty">No articles in this category yet — check back soon.</p>
@@ -331,7 +333,9 @@ function ArticlesFeature({ navigate }) {
             onClick={() => a.ready && navigate(`/library/articles/${a.slug}`)}
             disabled={!a.ready}
           >
-            <div className={`gaz-thumb gaz-thumb--${a.variant}`}>{a.emoji}</div>
+            <div className={`gaz-thumb gaz-thumb--${a.variant}`}>
+              {a.image ? <img src={a.image} alt="" /> : a.emoji}
+            </div>
             <div className="gaz-story-body">
               <div className="gaz-story-kicker">{a.topicLabel}</div>
               <h3 className="gaz-story-title">{a.title}</h3>
@@ -1937,7 +1941,9 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   background: linear-gradient(135deg, #DDE1EB 0%, #C7CCDA 100%);
   display: flex; align-items: center; justify-content: center;
   font-size: clamp(40px, 4vw, 64px);
+  overflow: hidden;
 }
+.gaz-lead-art img { width: 100%; height: 100%; object-fit: cover; }
 
 .gaz-grid { display: grid; grid-template-columns: repeat(3, 1fr); column-gap: clamp(24px, 3vw, 44px); row-gap: 4px; }
 .gaz-story {
@@ -1961,7 +1967,8 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   background: #D6DAE6;
 }
 .gaz-story--soon { cursor: default; opacity: 0.55; }
-.gaz-thumb { width: clamp(50px, 4.6vw, 68px); height: clamp(50px, 4.6vw, 68px); flex-shrink: 0; border-radius: 7px; display: flex; align-items: center; justify-content: center; font-size: clamp(19px, 1.8vw, 26px); }
+.gaz-thumb { width: clamp(50px, 4.6vw, 68px); height: clamp(50px, 4.6vw, 68px); flex-shrink: 0; border-radius: 7px; display: flex; align-items: center; justify-content: center; font-size: clamp(19px, 1.8vw, 26px); overflow: hidden; }
+.gaz-thumb img { width: 100%; height: 100%; object-fit: cover; }
 .gaz-thumb--tech { background: linear-gradient(135deg, rgba(27,42,74,0.16), transparent); }
 .gaz-thumb--work { background: linear-gradient(135deg, rgba(90,107,146,0.18), transparent); }
 .gaz-thumb--planet { background: linear-gradient(135deg, rgba(255,107,74,0.2), transparent); }
