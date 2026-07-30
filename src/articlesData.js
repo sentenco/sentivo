@@ -24,6 +24,7 @@ export const ARTICLES = [
   {
     slug: "filipinos-rethink-healthy",
     ready: true,
+    publishedAt: "2026-07-29",
     emoji: "🧘",
     image: filipinosRethinkImg,
     variant: "daily",
@@ -142,6 +143,7 @@ export const ARTICLES = [
   {
     slug: "spudcells-lab-made-cells",
     ready: true,
+    publishedAt: "2026-07-29",
     emoji: "🧪",
     image: spudcellsImg,
     variant: "planet",
@@ -254,6 +256,7 @@ export const ARTICLES = [
   {
     slug: "ai-workflows-everyday-apps",
     ready: true,
+    publishedAt: "2026-07-29",
     emoji: "🤖",
     image: aiWorkflowsImg,
     variant: "tech",
@@ -366,6 +369,7 @@ export const ARTICLES = [
   {
     slug: "four-day-week-2026",
     ready: true,
+    publishedAt: "2026-07-29",
     emoji: "🗓️",
     image: fourDayWorkweekImg,
     variant: "work",
@@ -478,6 +482,7 @@ export const ARTICLES = [
   {
     slug: "skills-move-us",
     ready: true,
+    publishedAt: "2026-07-29",
     emoji: "🎓",
     image: skillsMoveUsImg,
     variant: "work",
@@ -590,6 +595,7 @@ export const ARTICLES = [
   {
     slug: "wisdom-flexing-nerdy-cool",
     ready: true,
+    publishedAt: "2026-07-29",
     emoji: "📚",
     image: wisdomFlexingImg,
     variant: "culture",
@@ -700,6 +706,7 @@ export const ARTICLES = [
   {
     slug: "micro-communities-social-media",
     ready: true,
+    publishedAt: "2026-07-29",
     emoji: "💬",
     variant: "culture",
     topicLabel: "Society & Issues",
@@ -807,6 +814,7 @@ export const ARTICLES = [
   {
     slug: "hidden-season-travel",
     ready: true,
+    publishedAt: "2026-07-29",
     emoji: "🧳",
     variant: "planet",
     topicLabel: "Travel & Places",
@@ -918,6 +926,7 @@ export const ARTICLES = [
   {
     slug: "self-care-month-2026",
     ready: true,
+    publishedAt: "2026-07-30",
     emoji: "💧",
     variant: "daily",
     topicLabel: "Daily Life",
@@ -1029,6 +1038,7 @@ export const ARTICLES = [
   {
     slug: "toddler-food-study",
     ready: true,
+    publishedAt: "2026-07-30",
     emoji: "🥫",
     variant: "planet",
     topicLabel: "Nature & Science",
@@ -1138,6 +1148,7 @@ export const ARTICLES = [
   {
     slug: "ai-tools-work-partners",
     ready: true,
+    publishedAt: "2026-07-30",
     emoji: "🛠️",
     variant: "tech",
     topicLabel: "Digital & Tech",
@@ -1249,6 +1260,7 @@ export const ARTICLES = [
   {
     slug: "global-engagement-slips",
     ready: true,
+    publishedAt: "2026-07-30",
     emoji: "📉",
     variant: "work",
     topicLabel: "Work & Business",
@@ -1356,6 +1368,7 @@ export const ARTICLES = [
   {
     slug: "strengthened-shs-curriculum",
     ready: true,
+    publishedAt: "2026-07-30",
     emoji: "🏫",
     variant: "work",
     topicLabel: "Study & Skills",
@@ -1465,6 +1478,7 @@ export const ARTICLES = [
   {
     slug: "sports-new-style-stage",
     ready: true,
+    publishedAt: "2026-07-30",
     emoji: "🎾",
     variant: "culture",
     topicLabel: "Culture & Fun",
@@ -1574,6 +1588,7 @@ export const ARTICLES = [
   {
     slug: "social-media-substance-over-noise",
     ready: true,
+    publishedAt: "2026-07-30",
     emoji: "🧵",
     variant: "culture",
     topicLabel: "Society & Issues",
@@ -1683,6 +1698,7 @@ export const ARTICLES = [
   {
     slug: "slow-travel-surges",
     ready: true,
+    publishedAt: "2026-07-30",
     emoji: "🐌",
     variant: "planet",
     topicLabel: "Travel & Places",

@@ -267,8 +267,10 @@ function ReadyWidget({ icon, title, description }) {
 function ArticlesFeature({ navigate }) {
   const [activeTopic, setActiveTopic] = useState("All");
   const filtered = activeTopic === "All" ? ARTICLES : ARTICLES.filter((a) => a.topicLabel === activeTopic);
-  const lead = filtered[0];
-  const briefs = filtered.slice(1);
+  const lead = filtered.length
+    ? filtered.reduce((newest, a) => (!newest || new Date(a.publishedAt) > new Date(newest.publishedAt) ? a : newest), null)
+    : null;
+  const briefs = filtered.filter((a) => a !== lead);
   const dateline = new Date().toLocaleDateString(undefined, { weekday: "long", month: "long", day: "numeric", year: "numeric" });
 
   return (
@@ -1956,12 +1958,12 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   font-size: clamp(36px, 4vw, 56px);
 }
 
-.gaz-grid { display: grid; grid-template-columns: repeat(3, 1fr); column-gap: clamp(24px, 3vw, 44px); row-gap: 4px; }
+.gaz-grid { display: grid; grid-template-columns: repeat(2, 1fr); column-gap: clamp(28px, 3.6vw, 52px); row-gap: 8px; }
 .gaz-story {
   position: relative;
   display: flex;
-  gap: clamp(11px, 1.2vw, 16px);
-  padding: clamp(12px, 1.4vw, 18px) 0;
+  gap: clamp(14px, 1.6vw, 20px);
+  padding: clamp(16px, 1.8vw, 22px) 0;
   border-top: 1px solid #D6DAE6;
   background: none;
   border-left: none; border-right: none; border-bottom: none;
@@ -1970,36 +1972,36 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   font: inherit;
   color: inherit;
 }
-.gaz-story:not(:nth-child(3n))::after {
+.gaz-story:not(:nth-child(2n))::after {
   content: "";
   position: absolute;
-  top: 12px; bottom: 12px; right: calc(clamp(24px, 3vw, 44px) / -2);
+  top: 14px; bottom: 14px; right: calc(clamp(28px, 3.6vw, 52px) / -2);
   width: 1px;
   background: #D6DAE6;
 }
 .gaz-story--soon { cursor: default; opacity: 0.55; }
-.gaz-thumb { width: clamp(76px, 6.9vw, 102px); aspect-ratio: 3 / 2; flex-shrink: 0; align-self: flex-start; border-radius: 7px; display: flex; align-items: center; justify-content: center; font-size: clamp(19px, 1.8vw, 26px); overflow: hidden; }
+.gaz-thumb { width: clamp(140px, 15vw, 200px); aspect-ratio: 3 / 2; flex-shrink: 0; align-self: flex-start; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: clamp(26px, 2.6vw, 36px); overflow: hidden; }
 .gaz-thumb img { width: 100%; height: 100%; object-fit: contain; }
 .gaz-thumb--tech { background: linear-gradient(135deg, rgba(27,42,74,0.16), transparent); }
 .gaz-thumb--work { background: linear-gradient(135deg, rgba(90,107,146,0.18), transparent); }
 .gaz-thumb--planet { background: linear-gradient(135deg, rgba(255,107,74,0.2), transparent); }
 .gaz-thumb--daily { background: linear-gradient(135deg, rgba(224,80,47,0.18), transparent); }
 .gaz-thumb--culture { background: linear-gradient(135deg, rgba(27,42,74,0.14), rgba(255,107,74,0.14)); }
-.gaz-story-body { min-width: 0; }
-.gaz-story-kicker { font-family: 'Quicksand', sans-serif; font-weight: 800; font-size: clamp(8.5px, 0.7vw, 10px); letter-spacing: 0.07em; text-transform: uppercase; color: var(--coral); margin-bottom: 4px; }
+.gaz-story-body { min-width: 0; align-self: center; }
+.gaz-story-kicker { font-family: 'Quicksand', sans-serif; font-weight: 800; font-size: clamp(10px, 0.9vw, 11.5px); letter-spacing: 0.07em; text-transform: uppercase; color: var(--coral); margin-bottom: 6px; }
 .gaz-story-title {
   font-family: 'Fredoka', sans-serif;
   font-weight: 600;
-  font-size: clamp(12px, 1.15vw, 15.5px);
+  font-size: clamp(17px, 1.7vw, 21px);
   line-height: 1.28;
-  margin: 0 0 5px;
+  margin: 0 0 8px;
   color: var(--ink);
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
-.gaz-story-meta { font-family: 'Quicksand', sans-serif; font-size: clamp(9px, 0.75vw, 10.5px); color: var(--muted); }
+.gaz-story-meta { font-family: 'Quicksand', sans-serif; font-size: clamp(10.5px, 0.9vw, 12px); color: var(--muted); }
 .gaz-soon { font-weight: 700; letter-spacing: 0.03em; text-transform: uppercase; font-size: clamp(8.5px, 0.7vw, 10px); }
 
 /* ---------- Grammar: The Grammar Garden ---------- */
