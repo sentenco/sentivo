@@ -265,8 +265,10 @@ function ReadyWidget({ icon, title, description }) {
 }
 
 function ArticlesFeature({ navigate }) {
-  const lead = ARTICLES[0];
-  const briefs = ARTICLES.slice(1);
+  const [activeTopic, setActiveTopic] = useState("All");
+  const filtered = activeTopic === "All" ? ARTICLES : ARTICLES.filter((a) => a.topicLabel === activeTopic);
+  const lead = filtered[0];
+  const briefs = filtered.slice(1);
   const dateline = new Date().toLocaleDateString(undefined, { weekday: "long", month: "long", day: "numeric", year: "numeric" });
 
   return (
@@ -279,28 +281,46 @@ function ArticlesFeature({ navigate }) {
       <div className="gaz-rule-thick" />
       <div className="gaz-rule-thin" />
       <nav className="gaz-topics">
-        <span className="gaz-topic is-active">All</span>
+        <button
+          type="button"
+          className={`gaz-topic ${activeTopic === "All" ? "is-active" : ""}`}
+          onClick={() => setActiveTopic("All")}
+        >
+          All
+        </button>
         {ARTICLE_TOPICS.map((t) => (
-          <span key={t.label} className="gaz-topic" title={t.title}>{t.label}</span>
+          <button
+            key={t.label}
+            type="button"
+            className={`gaz-topic ${activeTopic === t.label ? "is-active" : ""}`}
+            title={t.title}
+            onClick={() => setActiveTopic(t.label)}
+          >
+            {t.label}
+          </button>
         ))}
       </nav>
       <div className="gaz-rule-thin" />
 
-      <button type="button" className="gaz-lead" onClick={() => navigate(`/library/articles/${lead.slug}`)}>
-        <div>
-          <div className="gaz-lead-kicker">Lead Story · {lead.topicTitle}</div>
-          <h2 className="gaz-lead-title">{lead.title}</h2>
-          <p className="gaz-lead-dek">{lead.dek}</p>
-          <div className="gaz-lead-meta">
-            <span className="gaz-byline">Sentivo Editorial</span>
-            <span className="gaz-dot">·</span>
-            <span className="gaz-editions">📚 3 Editions</span>
-            <span className="gaz-dot">·</span>
-            <span>{lead.editions.polished.readTime}</span>
+      {lead ? (
+        <button type="button" className="gaz-lead" onClick={() => navigate(`/library/articles/${lead.slug}`)}>
+          <div>
+            <div className="gaz-lead-kicker">{activeTopic === "All" ? "Lead Story · " : ""}{lead.topicTitle}</div>
+            <h2 className="gaz-lead-title">{lead.title}</h2>
+            <p className="gaz-lead-dek">{lead.dek}</p>
+            <div className="gaz-lead-meta">
+              <span className="gaz-byline">Sentivo Editorial</span>
+              <span className="gaz-dot">·</span>
+              <span className="gaz-editions">📚 3 Editions</span>
+              <span className="gaz-dot">·</span>
+              <span>{lead.editions.polished.readTime}</span>
+            </div>
           </div>
-        </div>
-        <div className="gaz-lead-art">{lead.emoji}</div>
-      </button>
+          <div className="gaz-lead-art">{lead.emoji}</div>
+        </button>
+      ) : (
+        <p className="gaz-empty">No articles in this category yet — check back soon.</p>
+      )}
 
       <div className="gaz-grid">
         {briefs.map((a) => (
@@ -1870,12 +1890,16 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--ink-soft);
-  padding: 0 16px;
+  padding: 6px 16px;
+  background: none;
+  border: none;
   border-right: 1px solid #D6DAE6;
-  cursor: default;
+  cursor: pointer;
 }
+.gaz-topic:hover { color: var(--coral); }
 .gaz-topic:last-child { border-right: none; }
 .gaz-topic.is-active { color: var(--coral); }
+.gaz-empty { font-family: 'Quicksand', sans-serif; font-size: 13px; color: var(--muted); text-align: center; padding: 30px 0; }
 
 .gaz-lead {
   display: grid;
