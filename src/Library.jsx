@@ -190,6 +190,77 @@ function WordLookup() {
   );
 }
 
+function GrammarChecker() {
+  const [text, setText] = useState("");
+  const [status, setStatus] = useState("idle"); // idle | loading | done | error
+  const [corrections, setCorrections] = useState(null);
+  const [errorMsg, setErrorMsg] = useState("");
+  const requestId = useRef(0);
+
+  async function check(e) {
+    e.preventDefault();
+    const input = text.trim();
+    if (!input) return;
+    const id = ++requestId.current;
+    setStatus("loading");
+    setCorrections(null);
+    setErrorMsg("");
+    try {
+      const res = await fetch("/api/grammar-check", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ text: input }),
+      });
+      if (id !== requestId.current) return;
+      const data = await res.json().catch(() => null);
+      if (!res.ok) throw new Error(data?.error || "Something went wrong.");
+      setCorrections(Array.isArray(data?.corrections) ? data.corrections : []);
+      setStatus("done");
+    } catch (err) {
+      if (id !== requestId.current) return;
+      setErrorMsg(err.message || "Couldn't check that text. Try again.");
+      setStatus("error");
+    }
+  }
+
+  return (
+    <div className="gc-grammar">
+      <div className="gc-widget-title">Grammar Checker</div>
+      <form className="gc-grammar-form" onSubmit={check}>
+        <textarea
+          className="gc-grammar-input"
+          value={text}
+          onChange={(e) => setText(e.target.value)}
+          placeholder="Paste a sentence or paragraph to check…"
+          rows={3}
+        />
+        <button type="submit" className="gc-grammar-btn" disabled={status === "loading" || !text.trim()}>
+          {status === "loading" ? "Checking…" : "Check grammar"}
+        </button>
+      </form>
+      {status === "error" && <div className="gc-lookup-status gc-lookup-status--error">{errorMsg}</div>}
+      {status === "done" && corrections && (
+        corrections.length === 0 ? (
+          <div className="gc-grammar-clean">No issues found — looks good.</div>
+        ) : (
+          <div className="gc-grammar-results">
+            {corrections.map((c, i) => (
+              <div className="gc-grammar-item" key={i}>
+                <div className="gc-grammar-diff">
+                  <span className="gc-grammar-wrong">{c.original}</span>
+                  <span className="gc-grammar-arrow">→</span>
+                  <span className="gc-grammar-right">{c.corrected}</span>
+                </div>
+                {c.explanation && <p className="gc-grammar-explain">{c.explanation}</p>}
+              </div>
+            ))}
+          </div>
+        )
+      )}
+    </div>
+  );
+}
+
 function TeacherGreeting() {
   const [name, setName] = useState(() => {
     return localStorage.getItem("sentivo_teacher_name") || "";
@@ -529,6 +600,15 @@ function TodayFeature({ tools, onSeeAllLessons, navigate }) {
           ))}
         </div>
 
+        <div className="gc-toolsrow">
+          <div className="gc-widget gc-widget--lookup">
+            <WordLookup />
+          </div>
+          <div className="gc-widget gc-widget--grammar">
+            <GrammarChecker />
+          </div>
+        </div>
+
         <div className="gc-boxrow">
           <div className="gc-widget gc-widget--salary gc-widget--boxed">
             <ComingSoonWidget icon="🧾" title="Salary Tracker" description="Track your pay per class, all in one place." />
@@ -590,9 +670,6 @@ function TodayFeature({ tools, onSeeAllLessons, navigate }) {
       </div>
 
       <aside className="gc-sidebar">
-        <div className="gc-widget gc-widget--lookup">
-          <WordLookup />
-        </div>
         <div className="gc-widget gc-widget--clock">
           <DigitalClock />
         </div>
@@ -1473,6 +1550,49 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .col-explain p + p { margin-top: 4px; }
 .gc-brief-col:hover .col-explain { opacity: 1; visibility: visible; transform: translateY(0); }
 
+/* ── Teacher tools: Parts of Speech + Grammar Checker ── */
+.gc-toolsrow { display: grid; grid-template-columns: minmax(240px, 380px) 1fr; gap: 16px; margin: 14px 0 2px; }
+.gc-widget--grammar { border-top: 3px solid var(--navy); }
+
+.gc-grammar-form { display: flex; flex-direction: column; gap: 8px; }
+.gc-grammar-input {
+  width: 100%;
+  min-height: 60px;
+  resize: vertical;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 12.5px;
+  color: var(--ink);
+  background: #F5F6FA;
+  border: 1px solid var(--hair);
+  border-radius: 12px;
+  padding: 9px 12px;
+  outline: none;
+}
+.gc-grammar-input:focus { border-color: var(--navy); }
+.gc-grammar-input::placeholder { color: var(--muted); }
+.gc-grammar-btn {
+  align-self: flex-end;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  color: #FFFFFF;
+  background: var(--navy);
+  border: none;
+  border-radius: 999px;
+  padding: 7px 16px;
+  cursor: pointer;
+}
+.gc-grammar-btn:disabled { opacity: 0.5; cursor: default; }
+.gc-grammar-clean { font-family: 'Quicksand', sans-serif; font-size: 12px; color: var(--muted); margin-top: 10px; }
+.gc-grammar-results { display: flex; flex-direction: column; gap: 10px; margin-top: 10px; }
+.gc-grammar-item { border-top: 1px solid var(--hair); padding-top: 8px; }
+.gc-grammar-item:first-child { border-top: none; padding-top: 0; }
+.gc-grammar-diff { display: flex; align-items: baseline; flex-wrap: wrap; gap: 6px; font-family: 'Quicksand', sans-serif; font-size: 12.5px; }
+.gc-grammar-wrong { color: #9B9382; text-decoration: line-through; text-decoration-color: #B9AF9C; }
+.gc-grammar-arrow { color: var(--muted); }
+.gc-grammar-right { color: var(--coral); font-weight: 700; }
+.gc-grammar-explain { font-family: 'Quicksand', sans-serif; font-size: 11.5px; line-height: 1.4; color: var(--ink-soft, var(--ink)); margin: 3px 0 0; }
+
 /* ── Gradient feature cards ── */
 .gc-boxrow { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 12px; }
 .gc-boxrow > .gc-widget { min-width: 0; }
@@ -1548,6 +1668,7 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 @media (max-width: 560px) {
   .gc-boxrow { grid-template-columns: 1fr; }
   .gc-briefs { grid-template-columns: 1fr; }
+  .gc-toolsrow { grid-template-columns: 1fr; }
 }
 
 /* ── Recommended Lessons: newspaper section front ── */
