@@ -8,6 +8,11 @@ import ascendLawL2 from "./ascendDataLaw2";
 import ascendLawL3 from "./ascendDataLaw3";
 import ascendLawL4 from "./ascendDataLaw4";
 import ascendLawL5 from "./ascendDataLaw5";
+import ascendNegotiationL1 from "./ascendDataNegotiation1";
+import ascendNegotiationL2 from "./ascendDataNegotiation2";
+import ascendNegotiationL3 from "./ascendDataNegotiation3";
+import ascendNegotiationL4 from "./ascendDataNegotiation4";
+import ascendNegotiationL5 from "./ascendDataNegotiation5";
 
 const TRACKS = [
   {
@@ -27,6 +32,15 @@ const TRACKS = [
     level: "C1",
     blurb: "5 lessons of precision, framing, and diplomatic control — built for legal English. Lesson 5 replays Lesson 1's question so you can hear the difference for yourself.",
     lessons: [ascendLawL1, ascendLawL2, ascendLawL3, ascendLawL4, ascendLawL5],
+  },
+  {
+    id: "ascend-negotiation",
+    category: "Law",
+    title: "Contract Negotiation",
+    theme: "Contract Negotiation",
+    level: "C1",
+    blurb: "5 lessons of precision, framing, and diplomatic control — built for deal-making. Lesson 5 replays Lesson 1's question so you can hear the difference for yourself.",
+    lessons: [ascendNegotiationL1, ascendNegotiationL2, ascendNegotiationL3, ascendNegotiationL4, ascendNegotiationL5],
   },
 ];
 
