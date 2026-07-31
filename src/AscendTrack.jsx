@@ -24,7 +24,13 @@ function TypeIcon({ type }) {
           <path d="M5 5l7 7-7 7" /><path d="M19 5l-7 7 7 7" opacity="0.5" />
         </svg>
       );
-    case "Arena":
+    case "Reversal":
+      return (
+        <svg {...ICON_PROPS}>
+          <path d="M4 7h11l-3-3" /><path d="M20 17H9l3 3" />
+        </svg>
+      );
+    case "Rematch":
       return (
         <svg {...ICON_PROPS}>
           <circle cx="12" cy="12" r="8" /><circle cx="12" cy="12" r="4" /><circle cx="12" cy="12" r="0.6" fill="currentColor" />
@@ -40,7 +46,7 @@ function TypeIcon({ type }) {
 }
 
 function slideCount(lesson) {
-  return lesson.retest ? 9 : 9;
+  return lesson.slideOrder.length;
 }
 
 // ASCEND lessons open as a standalone popup player, matching FORGE's
@@ -147,10 +153,10 @@ export default function AscendTrack() {
                 <div className="as-lesson-icon"><TypeIcon type={lesson.type} /></div>
                 <h3 className="as-lesson-title2">{lesson.title}</h3>
                 <p className="as-lesson-desc">{lesson.subtitle}</p>
-                <span className="as-lesson-meta">{lesson.support} support · {slideCount(lesson)} slides</span>
+                <span className="as-lesson-meta">{slideCount(lesson)} slides</span>
                 <div className="as-lesson-foot">
                   <button type="button" className="as-lesson-guidebtn" onClick={() => openGuide(track.id, num)}>
-                    📋 Guide
+                    Guide
                   </button>
                   <button type="button" className="as-lesson-startbtn" onClick={() => openLesson(track.id, num)}>
                     Start →

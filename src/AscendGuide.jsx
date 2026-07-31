@@ -4,19 +4,16 @@ import { getLesson } from "./ascendTracks";
 const SLIDE_LABELS = {
   cover: "Cover",
   warmup: "Warm-up",
-  vocabulary: "Vocabulary",
-  highlight: "Highlight",
-  practice: "Practice",
-  activity: "Activity",
-  pushit: "Push It",
-  retest: "Re-test",
-  scorecard: "Scorecard",
-  homework: "Homework",
+  gimmick: "Main Activity",
+  levelup: "Level It Up",
+  closing: "Closing",
+  round1: "Round 1",
+  round2: "Round 2",
+  thankyou: "Thank You",
 };
 
 function buildSlideTypes(lesson) {
-  if (lesson.slideOrder) return lesson.slideOrder;
-  return ["cover", "warmup", "vocabulary", "highlight", "practice", "activity", lesson.retest ? "retest" : "pushit", "scorecard", "homework"];
+  return lesson.slideOrder;
 }
 
 function SlideSection({ num, slideType, entry }) {
@@ -36,7 +33,7 @@ function SlideSection({ num, slideType, entry }) {
       <div className="ag-section-head">
         <span className="ag-section-num">{num}</span>
         <h2 className="ag-section-title">{SLIDE_LABELS[slideType]}</h2>
-        {entry.timing && <span className="ag-timing">⏱ {entry.timing}</span>}
+        {entry.timing && <span className="ag-timing">{entry.timing}</span>}
       </div>
       {entry.goal && <p className="ag-goal">{entry.goal}</p>}
       {entry.say && entry.say.length > 0 && (
@@ -99,7 +96,7 @@ export default function AscendGuide() {
 
       <div className="ag-stage">
         <div className="ag-hero">
-          <span className="ag-hero-kicker">{lesson.code} · {lesson.icon} {lesson.type} · {lesson.support} support</span>
+          <span className="ag-hero-kicker">{lesson.code} · {lesson.type} · {lesson.tag}</span>
           <h1 className="ag-hero-title">{lesson.title}</h1>
           <p className="ag-hero-blurb">{lesson.subtitle}</p>
         </div>
