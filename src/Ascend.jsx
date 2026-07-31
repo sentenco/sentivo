@@ -17,21 +17,15 @@ function buildSlideTypes(lesson) {
   return lesson.slideOrder;
 }
 
-function Brand() {
+function DeckHeader({ slideType }) {
   return (
-    <div className="ad-brand">
-      <img src="/logo-sentivo.png" alt="" className="ad-brand-logo" />entivo
-    </div>
-  );
-}
-
-function TopStrip({ lesson, slideType }) {
-  return (
-    <div className="ad-strip">
-      <span>{lesson.code}</span>
-      <span className="ad-strip-dot">·</span>
-      <span>{lesson.type}</span>
-      <span className="ad-strip-label">{SLIDE_LABELS[slideType]}</span>
+    <div className="ad-deck-header">
+      <div className="ad-brand-badge">
+        <div className="ad-brand">
+          <img src="/logo-sentivo.png" alt="" className="ad-brand-logo" />entivo
+        </div>
+      </div>
+      <span className="ad-deck-header-label">{SLIDE_LABELS[slideType]}</span>
     </div>
   );
 }
@@ -75,17 +69,17 @@ function WarmupSlide({ lesson }) {
 
   return (
     <div className="ad-slide ad-slide--centered">
-      <span className="ad-slide-tag">Warm-up · Find a synonym</span>
+      <span className="ad-slide-tag">Warm-up · Level it up</span>
       <div className="ad-synogame">
         <span className="ad-synogame-count">{idx + 1} / {w.items.length}</span>
         <p className="ad-synogame-sentence">
           {item.pre}<mark className="ad-synogame-target">{item.word}</mark>{item.post}
         </p>
         {revealed ? (
-          <p className="ad-synogame-answer">{item.synonyms}</p>
+          <p className="ad-synogame-answer">{item.upgraded}</p>
         ) : (
           <button type="button" className="ad-primary-btn" onClick={() => setRevealed(true)}>
-            Show example synonyms
+            Show the leveled-up version
           </button>
         )}
       </div>
@@ -200,7 +194,7 @@ function ReversalGimmickSlide({ lesson }) {
         {flipped ? "Now argue AGAINST" : "Argue FOR"}
       </span>
       <p className="ad-prompt-quote">“{g.position}”</p>
-      <button type="button" className="ad-primary-btn" onClick={() => setFlipped((f) => !f)} disabled={flipped}>
+      <button type="button" className="ad-primary-btn" onClick={() => setFlipped((f) => !f)}>
         Flip it
       </button>
     </div>
@@ -211,7 +205,7 @@ function LevelUpSlide({ lesson }) {
   const [before, setBefore] = useState("");
   const [after, setAfter] = useState("");
   return (
-    <div className="ad-slide">
+    <div className="ad-slide ad-slide--centered">
       <h2 className="ad-heading">Level It Up</h2>
       <p className="ad-instruction">Take something the student said today, plain or rough, and upgrade it together, live.</p>
       <div className="ad-beforeafter">
@@ -268,7 +262,6 @@ function Round1Slide({ lesson }) {
     <div className="ad-slide ad-slide--centered">
       <span className="ad-slide-tag">Round 1 · Same question, better answer</span>
       <p className="ad-prompt-quote">“{r.question}”</p>
-      <p className="ad-instruction">{r.note}</p>
     </div>
   );
 }
@@ -279,7 +272,6 @@ function Round2Slide({ lesson }) {
     <div className="ad-slide ad-slide--centered">
       <span className="ad-slide-tag">Round 2 · Live debate · {r.timing}</span>
       <p className="ad-prompt-quote">“{r.topic}”</p>
-      <p className="ad-instruction">{r.note}</p>
     </div>
   );
 }
@@ -287,7 +279,7 @@ function Round2Slide({ lesson }) {
 function ThankYouSlide({ lesson }) {
   const t = lesson.thankYou;
   return (
-    <div className="ad-slide">
+    <div className="ad-slide ad-slide--centered">
       <h2 className="ad-heading">{t.heading}</h2>
       <div className="ad-skills-list">
         {t.skills.map((s) => (
@@ -358,11 +350,8 @@ export default function Ascend() {
 
       <div className="ad-stage">
         <div className="ad-deck">
+          <DeckHeader slideType={slideType} />
           <div className="ad-deck-inner">
-            <div className="ad-deck-head">
-              <Brand />
-              <TopStrip lesson={lesson} slideType={slideType} />
-            </div>
             <div className="ad-deck-body" key={slideIdx}>
               {renderSlide(slideType, lesson)}
             </div>
@@ -448,35 +437,43 @@ const CSS = `
   to { opacity: 1; transform: translateY(0); }
 }
 
-.ad-deck-inner { flex: 1; min-height: 0; display: flex; flex-direction: column; padding: 26px 42px 20px; }
-
-.ad-deck-head { display: flex; flex-direction: column; gap: 14px; margin-bottom: 8px; }
+.ad-deck-header {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 32px;
+  background: var(--navy);
+}
+.ad-brand-badge {
+  background: #FFFFFF;
+  border-radius: 999px;
+  padding: 6px 18px 6px 12px;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.14);
+}
 .ad-brand {
   font-family: 'Fredoka', sans-serif;
   font-weight: 700;
-  font-size: 26px;
+  font-size: 22px;
   color: var(--navy);
   display: flex;
   align-items: center;
   gap: 0;
 }
-.ad-brand-logo { height: 40px; width: auto; display: block; margin-right: -5px; }
-
-.ad-strip {
-  display: flex;
-  align-items: center;
-  gap: 8px;
+.ad-brand-logo { height: 32px; width: auto; display: block; margin-right: -4px; }
+.ad-deck-header-label {
   font-family: 'Quicksand', sans-serif;
-  font-weight: 600;
+  font-weight: 700;
   font-size: 12.5px;
-  letter-spacing: 0.3px;
+  letter-spacing: 0.6px;
   text-transform: uppercase;
-  color: var(--coral);
-  padding-bottom: 12px;
-  border-bottom: 1px solid var(--hair);
+  color: #FFFFFF;
 }
-.ad-strip-dot { color: var(--hair); }
-.ad-strip-label { margin-left: auto; color: var(--muted); }
+
+.ad-deck-inner { flex: 1; min-height: 0; display: flex; flex-direction: column; padding: 26px 42px 20px; }
 
 .ad-deck-body { flex: 1; min-height: 0; overflow-y: auto; }
 .ad-slide { display: flex; flex-direction: column; gap: 13px; height: 100%; padding-top: 8px; }
@@ -672,7 +669,7 @@ const CSS = `
   padding: 12px 16px;
 }
 .ad-highlight-input::placeholder { color: var(--muted); }
-.ad-beforeafter { display: grid; grid-template-columns: 1fr auto 1fr; gap: 14px; align-items: center; }
+.ad-beforeafter { display: grid; grid-template-columns: 1fr auto 1fr; gap: 14px; align-items: center; width: 100%; max-width: 760px; }
 .ad-beforeafter-arrow { font-family: 'Fredoka', sans-serif; font-size: 20px; color: var(--coral); }
 
 /* Closing / sticky note */
@@ -712,8 +709,9 @@ const CSS = `
   font-size: 16px;
   line-height: 1.5;
   color: var(--navy);
-  margin-top: auto;
+  margin: 0;
   max-width: 700px;
+  text-align: center;
 }
 
 /* Nav row / footer */

@@ -12,9 +12,9 @@ export default {
   warmup: {
     kind: "synonyms",
     items: [
-      { pre: "Early adopters could ", word: "gain a competitive edge", post: " over rivals.", synonyms: "get ahead of the competition · pull out in front · win an advantage" },
-      { pre: "This requires a ", word: "significant upfront investment", post: " from leadership.", synonyms: "a big initial cost · a large amount of money to start · a major early commitment" },
-      { pre: "Leadership is betting on a ", word: "long-term payoff", post: ".", synonyms: "a reward that comes later · benefits down the road · results that take time to show" },
+      { pre: "Early adopters could ", word: "get ahead of the competition", post: ".", upgraded: "gain a competitive edge" },
+      { pre: "This requires ", word: "a big cost at the start", post: " from leadership.", upgraded: "significant upfront investment" },
+      { pre: "Leadership is betting on ", word: "a reward that comes later", post: ".", upgraded: "long-term payoff" },
     ],
   },
 
@@ -38,8 +38,8 @@ export default {
       timing: "1 min",
     },
     warmup: {
-      goal: "Synonym warm-up, same mechanic, new words.",
-      say: ["Same game as before — synonym for the highlighted phrase."],
+      goal: "Same level-it-up mechanic, new target words from last lesson's sticky notes.",
+      say: ["Same game as before — level up the highlighted phrase before I show you the target."],
       do: [],
       timing: "4 min",
     },

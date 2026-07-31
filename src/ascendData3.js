@@ -12,9 +12,9 @@ export default {
   warmup: {
     kind: "synonyms",
     items: [
-      { pre: "This ", word: "raises serious concerns", post: " among regulators.", synonyms: "worries people · draws sharp criticism · is a real cause for alarm" },
-      { pre: "Mishandling data could ", word: "erode public trust", post: " in the company.", synonyms: "damage people's confidence · make people trust the company less · weaken its reputation" },
-      { pre: "We need to ", word: "strike the right balance", post: " between innovation and privacy.", synonyms: "find the right compromise · balance both sides fairly · get the mix right" },
+      { pre: "This ", word: "makes regulators worried", post: ".", upgraded: "raises serious concerns" },
+      { pre: "Mishandling data could ", word: "make people trust the company less", post: ".", upgraded: "erode public trust" },
+      { pre: "We need to ", word: "get the balance right", post: " between innovation and privacy.", upgraded: "strike the right balance" },
     ],
   },
 
@@ -43,9 +43,9 @@ export default {
       timing: "1 min",
     },
     warmup: {
-      goal: "Synonym warm-up, same mechanic as Lesson 2, new words.",
-      say: ["Same game — I'll highlight a word, you give me another way to say it."],
-      do: ["Let them attempt before revealing the examples."],
+      goal: "Same level-it-up mechanic as Lesson 2, new target words from last lesson's sticky notes.",
+      say: ["Same game — I'll highlight the easy version, you try to level it up before I show you the target."],
+      do: ["Let them attempt the upgrade before revealing the target phrase."],
       timing: "4 min",
     },
     gimmick: {

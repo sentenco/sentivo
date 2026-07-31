@@ -12,9 +12,9 @@ export default {
   warmup: {
     kind: "synonyms",
     items: [
-      { pre: "The company wants to ", word: "streamline operations", post: " before the next quarter.", synonyms: "simplify processes · make things more efficient · cut out extra steps" },
-      { pre: "There's real concern about ", word: "workforce displacement", post: " as automation spreads.", synonyms: "job losses · people being replaced · employees losing their roles" },
-      { pre: "Leadership is doing a ", word: "cost-benefit analysis", post: " before deciding.", synonyms: "weighing the pros and cons · comparing costs and benefits · evaluating trade-offs" },
+      { pre: "The company wants to ", word: "simplify things", post: " before the next quarter.", upgraded: "streamline operations" },
+      { pre: "There's real concern about ", word: "people losing their jobs", post: " as automation spreads.", upgraded: "workforce displacement" },
+      { pre: "Leadership is ", word: "weighing the pros and cons", post: " before deciding.", upgraded: "cost-benefit analysis" },
     ],
   },
 
@@ -43,11 +43,11 @@ export default {
       timing: "1 min",
     },
     warmup: {
-      goal: "Student produces a synonym for each highlighted word, seeding today's target vocabulary.",
-      say: ["I'll read a sentence with one word highlighted. Give me another way to say it before I show you examples."],
+      goal: "Student tries to level up each easy phrase before seeing the target word from last lesson's sticky note.",
+      say: ["I'll read a sentence with a simple word highlighted. Try to say it in a more polished way before I show you the target phrase."],
       do: [
         "Read each sentence aloud with emphasis on the highlighted phrase.",
-        "Let them attempt a synonym first, then reveal the examples to compare.",
+        "Let them attempt the upgrade first, then reveal the target phrase — it should match their sticky note from last lesson.",
       ],
       timing: "4 min",
     },
