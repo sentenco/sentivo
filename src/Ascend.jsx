@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { getLesson } from "./ascendTracks";
 
 const SLIDE_LABELS = {
@@ -30,8 +30,6 @@ function TopStrip({ lesson, slideType }) {
     <div className="ad-strip">
       <span>{lesson.code}</span>
       <span className="ad-strip-dot">·</span>
-      <span>{lesson.title}</span>
-      <span className="ad-strip-dot">·</span>
       <span>{lesson.type}</span>
       <span className="ad-strip-label">{SLIDE_LABELS[slideType]}</span>
     </div>
@@ -43,7 +41,6 @@ function CoverSlide({ lesson }) {
     <div className="ad-slide ad-slide--cover">
       <span className="ad-cover-kicker">{lesson.code} · {lesson.type}</span>
       <h1 className="ad-cover-title">{lesson.title}</h1>
-      <p className="ad-cover-subtitle">{lesson.subtitle}</p>
     </div>
   );
 }
@@ -335,7 +332,6 @@ function renderSlide(slideType, lesson) {
 }
 
 export default function Ascend() {
-  const navigate = useNavigate();
   const { trackId, lessonNum } = useParams();
   const [slideIdx, setSlideIdx] = useState(0);
   const lesson = getLesson(trackId, Number(lessonNum));
@@ -344,11 +340,6 @@ export default function Ascend() {
     return (
       <div className="ad-shell">
         <style>{CSS}</style>
-        <header className="ad-topbar">
-          <button type="button" className="ad-back-link" onClick={() => navigate(`/library/ascend/${trackId}`)}>
-            ← Lessons
-          </button>
-        </header>
         <div className="ad-stage">
           <p className="ad-missing">This lesson isn't ready yet.</p>
         </div>
@@ -364,22 +355,17 @@ export default function Ascend() {
   return (
     <div className="ad-shell">
       <style>{CSS}</style>
-      <header className="ad-topbar">
-        <button type="button" className="ad-back-link" onClick={() => navigate(`/library/ascend/${trackId}`)}>
-          ← Lessons
-        </button>
-        <span className="ad-topbar-title">{lesson.code} · {lesson.title}</span>
-        <span className="ad-topbar-slot" />
-      </header>
 
       <div className="ad-stage">
         <div className="ad-deck">
-          <div className="ad-deck-head">
-            <Brand />
-            <TopStrip lesson={lesson} slideType={slideType} />
-          </div>
-          <div className="ad-deck-body" key={slideIdx}>
-            {renderSlide(slideType, lesson)}
+          <div className="ad-deck-inner">
+            <div className="ad-deck-head">
+              <Brand />
+              <TopStrip lesson={lesson} slideType={slideType} />
+            </div>
+            <div className="ad-deck-body" key={slideIdx}>
+              {renderSlide(slideType, lesson)}
+            </div>
           </div>
           <div className="ad-nav-row">
             <button type="button" className="ad-nav-btn" onClick={() => setSlideIdx((i) => i - 1)} disabled={isFirst}>
@@ -427,35 +413,6 @@ const CSS = `
 }
 .ad-shell * { box-sizing: border-box; }
 
-.ad-topbar {
-  width: 100%;
-  max-width: 1040px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 22px 24px 0;
-}
-.ad-back-link {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 700;
-  font-size: 14px;
-  color: #FFFFFF;
-  background: var(--navy);
-  border: none;
-  border-radius: 999px;
-  padding: 8px 16px;
-  cursor: pointer;
-}
-.ad-topbar-title {
-  font-family: 'Fredoka', sans-serif;
-  font-weight: 700;
-  font-size: 16px;
-  color: var(--navy);
-  text-align: center;
-  flex: 1;
-}
-.ad-topbar-slot { width: 90px; }
-
 .ad-missing {
   font-family: 'Quicksand', sans-serif;
   color: var(--muted);
@@ -467,9 +424,9 @@ const CSS = `
   flex: 1;
   width: 100%;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
-  padding: 32px 24px 60px;
+  padding: 40px 24px 60px;
 }
 
 .ad-deck {
@@ -483,7 +440,7 @@ const CSS = `
   box-shadow: 0 24px 60px rgba(27,42,74,0.14);
   display: flex;
   flex-direction: column;
-  padding: 22px 42px 30px;
+  overflow: hidden;
   animation: ad-slide-in 0.24s ease;
 }
 @keyframes ad-slide-in {
@@ -491,17 +448,19 @@ const CSS = `
   to { opacity: 1; transform: translateY(0); }
 }
 
-.ad-deck-head { display: flex; flex-direction: column; gap: 10px; margin-bottom: 8px; }
+.ad-deck-inner { flex: 1; min-height: 0; display: flex; flex-direction: column; padding: 26px 42px 20px; }
+
+.ad-deck-head { display: flex; flex-direction: column; gap: 14px; margin-bottom: 8px; }
 .ad-brand {
   font-family: 'Fredoka', sans-serif;
   font-weight: 700;
-  font-size: 15px;
+  font-size: 26px;
   color: var(--navy);
   display: flex;
   align-items: center;
   gap: 0;
 }
-.ad-brand-logo { height: 20px; width: auto; display: block; margin-right: -3px; }
+.ad-brand-logo { height: 40px; width: auto; display: block; margin-right: -5px; }
 
 .ad-strip {
   display: flex;
@@ -757,15 +716,23 @@ const CSS = `
   max-width: 700px;
 }
 
-/* Nav row */
-.ad-nav-row { display: flex; align-items: center; justify-content: space-between; margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--hair); }
+/* Nav row / footer */
+.ad-nav-row {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 16px 42px;
+  background: var(--navy);
+}
 .ad-nav-btn {
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;
   font-size: 14px;
-  color: var(--navy);
-  background: #F9FAFC;
-  border: 1px solid var(--hair);
+  color: #FFFFFF;
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.22);
   border-radius: 999px;
   padding: 8px 16px;
   cursor: pointer;
@@ -773,10 +740,12 @@ const CSS = `
 .ad-nav-btn--primary { background: var(--coral); color: #FFFFFF; border-color: var(--coral); }
 .ad-nav-btn:disabled { opacity: 0.35; cursor: default; }
 .ad-nav-dots { display: flex; flex-wrap: wrap; justify-content: center; gap: 5px; max-width: 400px; }
-.ad-nav-dot { width: 6px; height: 6px; border-radius: 999px; background: var(--hair); }
+.ad-nav-dot { width: 6px; height: 6px; border-radius: 999px; background: rgba(255,255,255,0.25); }
 .ad-nav-dot.is-active { width: 16px; background: var(--coral); }
 
 @media (max-width: 720px) {
-  .ad-deck { padding: 18px 20px 20px; height: auto; min-height: 580px; }
+  .ad-deck-inner { padding: 20px 20px 16px; }
+  .ad-nav-row { padding: 14px 20px; }
+  .ad-deck { height: auto; min-height: 580px; }
 }
 `;
