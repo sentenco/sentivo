@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useParams } from "react-router-dom";
-import { getLesson } from "./ascendTracks";
+import { getLesson, getTrack } from "./ascendTracks";
 
 const SLIDE_LABELS = {
   cover: "Cover",
@@ -17,7 +17,7 @@ function buildSlideTypes(lesson) {
   return lesson.slideOrder;
 }
 
-function DeckHeader({ slideType }) {
+function DeckHeader({ trackTitle, slideType }) {
   return (
     <div className="ad-deck-header">
       <div className="ad-brand-badge">
@@ -25,6 +25,7 @@ function DeckHeader({ slideType }) {
           <img src="/logo-sentivo.png" alt="" className="ad-brand-logo" />entivo
         </div>
       </div>
+      <span className="ad-deck-header-title">{trackTitle}</span>
       <span className="ad-deck-header-label">{SLIDE_LABELS[slideType]}</span>
     </div>
   );
@@ -327,6 +328,7 @@ export default function Ascend() {
   const { trackId, lessonNum } = useParams();
   const [slideIdx, setSlideIdx] = useState(0);
   const lesson = getLesson(trackId, Number(lessonNum));
+  const track = getTrack(trackId);
 
   if (!lesson) {
     return (
@@ -350,7 +352,7 @@ export default function Ascend() {
 
       <div className="ad-stage">
         <div className="ad-deck">
-          <DeckHeader slideType={slideType} />
+          <DeckHeader trackTitle={track?.title} slideType={slideType} />
           <div className="ad-deck-inner">
             <div className="ad-deck-body" key={slideIdx}>
               {renderSlide(slideType, lesson)}
@@ -441,12 +443,12 @@ const CSS = `
   flex-shrink: 0;
   display: flex;
   align-items: center;
-  justify-content: space-between;
   gap: 12px;
   padding: 14px 32px;
   background: var(--navy);
 }
 .ad-brand-badge {
+  flex-shrink: 0;
   background: #FFFFFF;
   border-radius: 999px;
   padding: 6px 18px 6px 12px;
@@ -464,7 +466,16 @@ const CSS = `
   gap: 0;
 }
 .ad-brand-logo { height: 32px; width: auto; display: block; margin-right: -4px; }
+.ad-deck-header-title {
+  flex: 1;
+  text-align: center;
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  color: #FFFFFF;
+}
 .ad-deck-header-label {
+  flex-shrink: 0;
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;
   font-size: 12.5px;
