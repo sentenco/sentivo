@@ -9,8 +9,23 @@ const COVERS = {
   "ascend-1": ascend1CoverImg,
 };
 
+function groupByCategory(tracks) {
+  const order = [];
+  const groups = {};
+  tracks.forEach((track) => {
+    const cat = track.category || "Other";
+    if (!groups[cat]) {
+      groups[cat] = [];
+      order.push(cat);
+    }
+    groups[cat].push(track);
+  });
+  return order.map((cat) => ({ category: cat, tracks: groups[cat] }));
+}
+
 export default function AscendHub() {
   const navigate = useNavigate();
+  const categories = groupByCategory(TRACKS);
 
   return (
     <div className="ah-shell">
@@ -31,41 +46,51 @@ export default function AscendHub() {
           </p>
         </div>
 
-        <div className="ah-tracks-grid">
-          {TRACKS.map((track) => {
-            const authored = track.lessons.filter(Boolean).length;
-            return (
-              <a key={track.id} href={`/library/ascend/${track.id}`} className="ah-track-card">
-                <div className="ah-track-cover">
-                  {COVERS[track.id] ? (
-                    <img className="ah-track-cover-img" src={COVERS[track.id]} alt={track.title} />
-                  ) : (
-                    <ImagePlaceholder note="Track cover photo" compact />
-                  )}
-                </div>
-                <div className="ah-track-body">
-                  <div className="ah-track-tags">
-                    <span className="ah-tag">{track.theme}</span>
-                    <span className="ah-tag ah-tag--level">{track.level}</span>
-                  </div>
-                  <h3 className="ah-track-title">{track.title}</h3>
-                  <p className="ah-track-desc">{track.blurb}</p>
-                  <span className="ah-track-meta">{authored} of {track.lessons.length} lessons ready</span>
-                </div>
-              </a>
-            );
-          })}
-
-          <div className="ah-track-card ah-track-card--ghost">
-            <div className="ah-track-cover ah-track-cover--ghost">
-              <span className="ah-ghost-icon">+</span>
+        {categories.map(({ category, tracks }) => (
+          <section className="ah-category" key={category}>
+            <h2 className="ah-category-title">{category}</h2>
+            <div className="ah-tracks-grid">
+              {tracks.map((track) => {
+                const authored = track.lessons.filter(Boolean).length;
+                return (
+                  <a key={track.id} href={`/library/ascend/${track.id}`} className="ah-track-card">
+                    <div className="ah-track-cover">
+                      {COVERS[track.id] ? (
+                        <img className="ah-track-cover-img" src={COVERS[track.id]} alt={track.title} />
+                      ) : (
+                        <ImagePlaceholder note="Track cover photo" compact />
+                      )}
+                    </div>
+                    <div className="ah-track-body">
+                      <div className="ah-track-tags">
+                        <span className="ah-tag">{track.theme}</span>
+                        <span className="ah-tag ah-tag--level">{track.level}</span>
+                      </div>
+                      <h3 className="ah-track-title">{track.title}</h3>
+                      <p className="ah-track-desc">{track.blurb}</p>
+                      <span className="ah-track-meta">{authored} of {track.lessons.length} lessons ready</span>
+                    </div>
+                  </a>
+                );
+              })}
             </div>
-            <div className="ah-track-body">
-              <h3 className="ah-track-title ah-track-title--ghost">More tracks coming</h3>
-              <p className="ah-track-desc">New profiles get added here as they're built.</p>
+          </section>
+        ))}
+
+        <section className="ah-category">
+          <h2 className="ah-category-title">Coming soon</h2>
+          <div className="ah-tracks-grid">
+            <div className="ah-track-card ah-track-card--ghost">
+              <div className="ah-track-cover ah-track-cover--ghost">
+                <span className="ah-ghost-icon">+</span>
+              </div>
+              <div className="ah-track-body">
+                <h3 className="ah-track-title ah-track-title--ghost">More categories coming</h3>
+                <p className="ah-track-desc">New profiles get added here as they're built.</p>
+              </div>
             </div>
           </div>
-        </div>
+        </section>
       </div>
     </div>
   );
@@ -137,6 +162,18 @@ const CSS = `
   margin: 0;
   max-width: 560px;
   line-height: 1.5;
+}
+
+.ah-category { margin-bottom: 36px; }
+.ah-category:last-child { margin-bottom: 0; }
+.ah-category-title {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #128571;
+  margin: 0 0 14px;
 }
 
 .ah-tracks-grid {

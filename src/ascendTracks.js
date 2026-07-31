@@ -12,6 +12,7 @@ import ascendLawL5 from "./ascendDataLaw5";
 const TRACKS = [
   {
     id: "ascend-1",
+    category: "Business",
     title: "Business + AI",
     theme: "Business + AI",
     level: "C1",
@@ -20,6 +21,7 @@ const TRACKS = [
   },
   {
     id: "ascend-law",
+    category: "Law",
     title: "Law & Advocacy",
     theme: "Law & Advocacy",
     level: "C1",
