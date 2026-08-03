@@ -120,14 +120,8 @@ export default function ArticlePlayerPage() {
       </div>
 
       <div className="app-page">
-        <div className={`app-hero ${article.showEditorialBanner ? "app-hero--banner" : ""}`}>
-          {article.showEditorialBanner ? (
-            <img src={editorialBanner} alt="Sentivo Editorial" />
-          ) : article.image ? (
-            <img src={article.image} alt="" />
-          ) : (
-            article.emoji
-          )}
+        <div className="app-hero">
+          <img src={editorialBanner} alt="Sentivo Editorial" />
         </div>
 
         <h1 className="app-title"><StyledTitle title={article.title} /></h1>
@@ -213,22 +207,14 @@ const CSS = `
 
 .app-hero {
   flex-shrink: 0;
-  height: clamp(56px, 8vh, 90px);
-  background: linear-gradient(135deg, #3a3a3a, #111111);
-  filter: grayscale(1);
+  height: clamp(150px, 18vh, 220px);
+  background: #FBFAF7;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: clamp(26px, 3.6vh, 38px);
   overflow: hidden;
 }
-.app-hero img { width: 100%; height: 100%; object-fit: contain; }
-.app-hero--banner {
-  height: clamp(150px, 18vh, 220px);
-  background: #FBFAF7;
-  filter: none;
-}
-.app-hero--banner img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
+.app-hero img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
 
 .app-title {
   flex-shrink: 0;
