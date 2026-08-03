@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate, useParams, useSearchParams } from "react-router-dom";
+import { useParams, useSearchParams } from "react-router-dom";
 import { supabase } from "./supabaseClient";
 
 const GUIDES = {
@@ -200,7 +200,6 @@ function AdvancedLessonGuide({ lesson, content }) {
 
 export default function TeacherGuide() {
   const { level, track } = useParams();
-  const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const guide = GUIDES[`${level}-${track}`];
   const isAdvancedTrack = level === "C1" || level === "C2";
@@ -282,10 +281,6 @@ export default function TeacherGuide() {
       <style>{CSS}</style>
 
       <div className="tg-topbar">
-        <button className="tg-back" onClick={() => navigate(`/library/curriculum/${level}/${track}`)}>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
-          Lessons
-        </button>
         <div className="tg-breadcrumb">
           Curriculum &rsaquo; {level} &rsaquo; {track} &rsaquo;{" "}
           <span>
@@ -384,12 +379,6 @@ const CSS = `
   background: rgba(255,255,255,0.7);
   backdrop-filter: blur(8px);
 }
-.tg-back {
-  display: flex; align-items: center; gap: 7px;
-  font-family: 'Quicksand', sans-serif; font-size: 13px; font-weight: 700;
-  color: #5A4E6A; background: none; border: none; cursor: pointer; padding: 0;
-}
-.tg-back:hover { color: #FF7A59; }
 .tg-breadcrumb { font-size: 12px; font-weight: 600; color: #8A7B8A; text-transform: capitalize; }
 .tg-breadcrumb span { color: #D85A30; }
 

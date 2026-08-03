@@ -1,4 +1,4 @@
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { getLesson } from "./sparkAdultsTracks";
 
 const INTRO_SLIDE = {
@@ -50,7 +50,6 @@ function SlideSection({ num, slide }) {
 }
 
 export default function SparkAdultsGuide() {
-  const navigate = useNavigate();
   const { lessonId } = useParams();
   const lesson = getLesson(lessonId);
 
@@ -58,11 +57,6 @@ export default function SparkAdultsGuide() {
     return (
       <div className="spag-shell">
         <style>{CSS}</style>
-        <header className="spag-topbar">
-          <button type="button" className="spag-back-link" onClick={() => navigate("/library/spark")}>
-            ← Trial Class
-          </button>
-        </header>
         <div className="spag-stage">
           <p className="spag-missing">This lesson isn't ready yet.</p>
         </div>
@@ -74,9 +68,6 @@ export default function SparkAdultsGuide() {
     <div className="spag-shell">
       <style>{CSS}</style>
       <header className="spag-topbar">
-        <button type="button" className="spag-back-link" onClick={() => navigate("/library/spark")}>
-          ← Trial Class
-        </button>
         <span className="spag-topbar-title">Teacher Guide</span>
       </header>
 
@@ -133,24 +124,12 @@ const CSS = `
   max-width: 640px;
   display: flex;
   align-items: center;
-  gap: 14px;
+  justify-content: center;
   padding: 20px 24px 0;
   position: sticky;
   top: 0;
   background: #FCFBF8;
   z-index: 5;
-}
-.spag-back-link {
-  font-family: 'Inter', sans-serif;
-  font-weight: 600;
-  font-size: 13px;
-  color: #2A2621;
-  background: #EFEAE0;
-  border: none;
-  border-radius: 6px;
-  padding: 7px 14px;
-  cursor: pointer;
-  white-space: nowrap;
 }
 .spag-topbar-title { font-family: 'Inter', sans-serif; font-weight: 600; font-size: 11.5px; letter-spacing: 1.5px; text-transform: uppercase; color: #8B8171; }
 

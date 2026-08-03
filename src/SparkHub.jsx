@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import KIDS_LESSONS from "./sparkTracks";
 import TEENS_LESSONS from "./sparkTeensTracks";
 import ADULTS_LESSONS from "./sparkAdultsTracks";
@@ -136,7 +135,6 @@ const AUDIENCES = {
 };
 
 export default function SparkHub() {
-  const navigate = useNavigate();
   const [audience, setAudience] = useState("kids");
   const config = AUDIENCES[audience];
 
@@ -144,11 +142,7 @@ export default function SparkHub() {
     <div className="spkh-shell">
       <style>{CSS}</style>
       <header className="spkh-topbar">
-        <button type="button" className="spkh-back-link" onClick={() => navigate("/library")}>
-          ← Library
-        </button>
         <span className="spkh-topbar-title">SPARK · Trial Class</span>
-        <span className="spkh-topbar-slot" />
       </header>
 
       <div className="spkh-stage">
@@ -221,19 +215,8 @@ const CSS = `
   max-width: 1040px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   padding: 22px 24px 0;
-}
-.spkh-back-link {
-  font-family: 'Fredoka', sans-serif;
-  font-weight: 700;
-  font-size: 14px;
-  color: #4A3B12;
-  background: #FFDD7A;
-  border: none;
-  border-radius: 999px;
-  padding: 8px 16px;
-  cursor: pointer;
 }
 .spkh-topbar-title {
   font-family: 'Quicksand', sans-serif;
@@ -243,7 +226,6 @@ const CSS = `
   text-transform: uppercase;
   color: #C98A00;
 }
-.spkh-topbar-slot { width: 90px; }
 
 .spkh-stage { flex: 1; width: 100%; max-width: 960px; padding: 40px 24px 60px; }
 

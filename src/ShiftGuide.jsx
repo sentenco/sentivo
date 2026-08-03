@@ -1,4 +1,4 @@
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { getLesson } from "./shiftTracks";
 
 const SLIDE_LABELS = {
@@ -62,7 +62,6 @@ function SlideSection({ num, slideType, entry }) {
 }
 
 export default function ShiftGuide() {
-  const navigate = useNavigate();
   const { trackId, lessonNum } = useParams();
   const lesson = getLesson(trackId, Number(lessonNum));
 
@@ -70,11 +69,6 @@ export default function ShiftGuide() {
     return (
       <div className="shg-shell">
         <style>{CSS}</style>
-        <header className="shg-topbar">
-          <button type="button" className="shg-back-link" onClick={() => navigate(`/library/shift/${trackId}`)}>
-            ← Lessons
-          </button>
-        </header>
         <div className="shg-stage">
           <p className="shg-missing">This lesson isn't ready yet.</p>
         </div>
@@ -88,9 +82,6 @@ export default function ShiftGuide() {
     <div className="shg-shell">
       <style>{CSS}</style>
       <header className="shg-topbar">
-        <button type="button" className="shg-back-link" onClick={() => navigate(`/library/shift/${trackId}`)}>
-          ← Lessons
-        </button>
         <span className="shg-topbar-title">Teacher Guide</span>
       </header>
 
@@ -130,24 +121,12 @@ const CSS = `
   max-width: 640px;
   display: flex;
   align-items: center;
-  gap: 14px;
+  justify-content: center;
   padding: 20px 24px 0;
   position: sticky;
   top: 0;
   background: #FFFAF9;
   z-index: 5;
-}
-.shg-back-link {
-  font-family: 'Fredoka', sans-serif;
-  font-weight: 700;
-  font-size: 13px;
-  color: #4A211B;
-  background: #FFB3A6;
-  border: none;
-  border-radius: 999px;
-  padding: 7px 14px;
-  cursor: pointer;
-  white-space: nowrap;
 }
 .shg-topbar-title {
   font-family: 'Quicksand', sans-serif;

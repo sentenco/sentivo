@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import ImagePlaceholder from "./slides/ImagePlaceholder";
 import { getLesson } from "./forgeTracks";
 
@@ -416,7 +416,6 @@ function renderSlide(slideType, lesson, nextLesson) {
 }
 
 export default function Forge() {
-  const navigate = useNavigate();
   const { trackId, lessonNum } = useParams();
   const [slideIdx, setSlideIdx] = useState(0);
   const lesson = getLesson(trackId, Number(lessonNum));
@@ -426,11 +425,6 @@ export default function Forge() {
     return (
       <div className="fg-shell">
         <style>{CSS}</style>
-        <header className="fg-topbar">
-          <button type="button" className="fg-back-link" onClick={() => navigate(`/library/forge/${trackId}`)}>
-            ← Lessons
-          </button>
-        </header>
         <div className="fg-stage">
           <p className="fg-missing">This lesson isn't ready yet.</p>
         </div>
@@ -448,11 +442,7 @@ export default function Forge() {
     <div className="fg-shell">
       <style>{CSS}</style>
       <header className="fg-topbar">
-        <button type="button" className="fg-back-link" onClick={() => navigate(`/library/forge/${trackId}`)}>
-          ← Lessons
-        </button>
         <span className="fg-topbar-title">{lesson.code} · {lesson.title}</span>
-        <span className="fg-topbar-slot" />
       </header>
 
       <div className="fg-stage">
@@ -505,19 +495,8 @@ const CSS = `
   max-width: 1040px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   padding: 22px 24px 0;
-}
-.fg-back-link {
-  font-family: 'Fredoka', sans-serif;
-  font-weight: 700;
-  font-size: 14px;
-  color: #2E2617;
-  background: #F2A65A;
-  border: none;
-  border-radius: 999px;
-  padding: 8px 16px;
-  cursor: pointer;
 }
 .fg-topbar-title {
   font-family: 'Fredoka', sans-serif;
@@ -525,9 +504,7 @@ const CSS = `
   font-size: 16px;
   color: #2E2617;
   text-align: center;
-  flex: 1;
 }
-.fg-topbar-slot { width: 90px; }
 
 .fg-missing {
   font-family: 'Quicksand', sans-serif;

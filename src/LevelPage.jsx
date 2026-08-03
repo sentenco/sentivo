@@ -142,7 +142,7 @@ const AGE_TRACKS = [
   },
 ];
 
-export default function LevelPage({ level = "A1", onBack, onSelectTrack, isPro = false }) {
+export default function LevelPage({ level = "A1", onSelectTrack, isPro = false }) {
   const data = LEVEL_DATA[level] || LEVEL_DATA.A1;
 
   useEffect(() => {
@@ -159,10 +159,6 @@ export default function LevelPage({ level = "A1", onBack, onSelectTrack, isPro =
     <div className={`lp-wrap${isPro ? " lp-pro" : ""}`}>
       {/* ── Back + breadcrumb ── */}
       <div className="lp-topbar">
-        <button className="lp-back" onClick={onBack}>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
-          Curriculum
-        </button>
         <div className="lp-breadcrumb">
           Curriculum &rsaquo; <span style={{ color: data.color }}>{level} — {data.name}</span>
         </div>
@@ -247,23 +243,6 @@ const styles = `
   backdrop-filter: blur(8px);
 }
 .lp-pro .lp-topbar { background: rgba(247,245,239,0.8); }
-
-.lp-back {
-  display: flex;
-  align-items: center;
-  gap: 7px;
-  font-family: 'Quicksand', sans-serif;
-  font-size: 13px;
-  font-weight: 700;
-  color: #5A4E6A;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-}
-.lp-back:hover { color: #FF7A59; }
-.lp-pro .lp-back { color: #6B6458; }
-.lp-pro .lp-back:hover { color: #1B2A4A; }
 
 .lp-breadcrumb {
   font-size: 12px;

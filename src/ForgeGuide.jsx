@@ -1,4 +1,4 @@
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { getLesson } from "./forgeTracks";
 
 const LABELS = {
@@ -78,7 +78,6 @@ function SlideSection({ num, sectionKey, label, entry }) {
 }
 
 export default function ForgeGuide() {
-  const navigate = useNavigate();
   const { trackId, lessonNum } = useParams();
   const lesson = getLesson(trackId, Number(lessonNum));
 
@@ -86,11 +85,6 @@ export default function ForgeGuide() {
     return (
       <div className="fgg-shell">
         <style>{CSS}</style>
-        <header className="fgg-topbar">
-          <button type="button" className="fgg-back-link" onClick={() => navigate(`/library/forge/${trackId}`)}>
-            ← Lessons
-          </button>
-        </header>
         <div className="fgg-stage">
           <p className="fgg-missing">This lesson isn't ready yet.</p>
         </div>
@@ -105,9 +99,6 @@ export default function ForgeGuide() {
     <div className="fgg-shell">
       <style>{CSS}</style>
       <header className="fgg-topbar">
-        <button type="button" className="fgg-back-link" onClick={() => navigate(`/library/forge/${trackId}`)}>
-          ← Lessons
-        </button>
         <span className="fgg-topbar-title">Teacher Guide</span>
       </header>
 
@@ -147,24 +138,12 @@ const CSS = `
   max-width: 640px;
   display: flex;
   align-items: center;
-  gap: 14px;
+  justify-content: center;
   padding: 20px 24px 0;
   position: sticky;
   top: 0;
   background: #FFFBF4;
   z-index: 5;
-}
-.fgg-back-link {
-  font-family: 'Fredoka', sans-serif;
-  font-weight: 700;
-  font-size: 13px;
-  color: #2E2617;
-  background: #F2A65A;
-  border: none;
-  border-radius: 999px;
-  padding: 7px 14px;
-  cursor: pointer;
-  white-space: nowrap;
 }
 .fgg-topbar-title {
   font-family: 'Quicksand', sans-serif;

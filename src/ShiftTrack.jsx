@@ -1,4 +1,4 @@
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { getTrack } from "./shiftTracks";
 
 const ICON_PROPS = { width: 22, height: 22, viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: 2, strokeLinecap: "round", strokeLinejoin: "round" };
@@ -58,18 +58,12 @@ function openGuide(trackId, num) {
 
 export default function ShiftTrack() {
   const { trackId } = useParams();
-  const navigate = useNavigate();
   const track = getTrack(trackId);
 
   if (!track) {
     return (
       <div className="sht-shell">
         <style>{CSS}</style>
-        <header className="sht-topbar">
-          <button type="button" className="sht-back-link" onClick={() => navigate("/library")}>
-            ← Library
-          </button>
-        </header>
         <div className="sht-stage">
           <p className="sht-missing">Track not found.</p>
         </div>
@@ -81,11 +75,7 @@ export default function ShiftTrack() {
     <div className="sht-shell">
       <style>{CSS}</style>
       <header className="sht-topbar">
-        <button type="button" className="sht-back-link" onClick={() => navigate("/library")}>
-          ← Library
-        </button>
         <span className="sht-topbar-title">SHIFT</span>
-        <span className="sht-topbar-slot" />
       </header>
 
       <div className="sht-stage">
@@ -158,19 +148,8 @@ const CSS = `
   max-width: 1040px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   padding: 22px 24px 0;
-}
-.sht-back-link {
-  font-family: 'Fredoka', sans-serif;
-  font-weight: 700;
-  font-size: 14px;
-  color: #4A211B;
-  background: #FFB3A6;
-  border: none;
-  border-radius: 999px;
-  padding: 8px 16px;
-  cursor: pointer;
 }
 .sht-topbar-title {
   font-family: 'Quicksand', sans-serif;
@@ -180,7 +159,6 @@ const CSS = `
   text-transform: uppercase;
   color: #C98F84;
 }
-.sht-topbar-slot { width: 90px; }
 
 .sht-stage {
   flex: 1;

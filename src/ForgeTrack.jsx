@@ -1,4 +1,4 @@
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { getTrack } from "./forgeTracks";
 
 const ICON_PROPS = { width: 22, height: 22, viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: 2, strokeLinecap: "round", strokeLinejoin: "round" };
@@ -87,18 +87,12 @@ function openGuide(trackId, num) {
 
 export default function ForgeTrack() {
   const { trackId } = useParams();
-  const navigate = useNavigate();
   const track = getTrack(trackId);
 
   if (!track) {
     return (
       <div className="ft-shell">
         <style>{CSS}</style>
-        <header className="ft-topbar">
-          <button type="button" className="ft-back-link" onClick={() => navigate("/library")}>
-            ← Library
-          </button>
-        </header>
         <div className="ft-stage">
           <p className="ft-missing">Track not found.</p>
         </div>
@@ -110,11 +104,7 @@ export default function ForgeTrack() {
     <div className="ft-shell">
       <style>{CSS}</style>
       <header className="ft-topbar">
-        <button type="button" className="ft-back-link" onClick={() => navigate("/library")}>
-          ← Library
-        </button>
         <span className="ft-topbar-title">FORGE</span>
-        <span className="ft-topbar-slot" />
       </header>
 
       <div className="ft-stage">
@@ -188,19 +178,8 @@ const CSS = `
   max-width: 1040px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   padding: 22px 24px 0;
-}
-.ft-back-link {
-  font-family: 'Fredoka', sans-serif;
-  font-weight: 700;
-  font-size: 14px;
-  color: #2E2617;
-  background: #F2A65A;
-  border: none;
-  border-radius: 999px;
-  padding: 8px 16px;
-  cursor: pointer;
 }
 .ft-topbar-title {
   font-family: 'Quicksand', sans-serif;
@@ -210,7 +189,6 @@ const CSS = `
   text-transform: uppercase;
   color: #B0A48C;
 }
-.ft-topbar-slot { width: 90px; }
 
 .ft-stage {
   flex: 1;

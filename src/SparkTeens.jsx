@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { getLesson } from "./sparkTeensTracks";
 import SparkIcon from "./slides/SparkIcons";
 
@@ -147,7 +147,6 @@ function renderSlide(slide) {
 }
 
 export default function SparkTeens() {
-  const navigate = useNavigate();
   const { lessonId } = useParams();
   const [slideIdx, setSlideIdx] = useState(0);
   const lesson = getLesson(lessonId);
@@ -156,11 +155,6 @@ export default function SparkTeens() {
     return (
       <div className="spkt-shell">
         <style>{CSS}</style>
-        <header className="spkt-topbar">
-          <button type="button" className="spkt-back-link" onClick={() => navigate("/library/spark")}>
-            ← Trial Class
-          </button>
-        </header>
         <div className="spkt-stage">
           <p className="spkt-missing">This lesson isn't ready yet.</p>
         </div>
@@ -177,11 +171,7 @@ export default function SparkTeens() {
     <div className="spkt-shell">
       <style>{CSS}</style>
       <header className="spkt-topbar">
-        <button type="button" className="spkt-back-link" onClick={() => navigate("/library/spark")}>
-          ← Trial Class
-        </button>
         <span className="spkt-topbar-title">{lesson.code} · {lesson.title}</span>
-        <span className="spkt-topbar-slot" />
       </header>
 
       <div className="spkt-stage">
@@ -233,23 +223,11 @@ const CSS = `
   max-width: 1140px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   padding: 18px 24px 0;
   flex-shrink: 0;
 }
-.spkt-back-link {
-  font-family: 'Fredoka', sans-serif;
-  font-weight: 700;
-  font-size: 14px;
-  color: #4A3B12;
-  background: #FFDD7A;
-  border: none;
-  border-radius: 999px;
-  padding: 8px 16px;
-  cursor: pointer;
-}
-.spkt-topbar-title { font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 16px; color: #4A3B12; text-align: center; flex: 1; }
-.spkt-topbar-slot { width: 110px; }
+.spkt-topbar-title { font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 16px; color: #4A3B12; text-align: center; }
 
 .spkt-missing { font-family: 'Quicksand', sans-serif; color: #8A7233; text-align: center; margin-top: 60px; }
 

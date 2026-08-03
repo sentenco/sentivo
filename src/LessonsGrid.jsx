@@ -108,7 +108,7 @@ function EmptyState({ level, track }) {
   );
 }
 
-export default function LessonsGrid({ level = "A1", ageTrack = "kids", onBack, onBackToLevel, isPro = false }) {
+export default function LessonsGrid({ level = "A1", ageTrack = "kids", onBackToLevel, isPro = false }) {
   const [lessons, setLessons] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -216,10 +216,6 @@ export default function LessonsGrid({ level = "A1", ageTrack = "kids", onBack, o
     <div className={`lg-wrap${isPro ? " lg-pro" : ""}`}>
       {/* ── Top bar ── */}
       <div className="lg-topbar">
-        <button className="lg-back" onClick={onBack}>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
-          Curriculum
-        </button>
         <div className="lg-breadcrumb">
           Curriculum &rsaquo;{" "}
           <button className="lg-breadcrumb-btn" onClick={onBackToLevel} style={{ color: lv.color }}>
@@ -335,14 +331,6 @@ const styles = `
   flex-shrink: 0;
 }
 .lg-pro .lg-topbar { background: rgba(247,245,239,0.8); }
-
-.lg-back {
-  display: flex; align-items: center; gap: 7px;
-  font-family: 'Quicksand', sans-serif; font-size: 13px; font-weight: 700;
-  color: #5A4E6A; background: none; border: none; cursor: pointer; padding: 0;
-}
-.lg-back:hover { color: #FF7A59; }
-.lg-pro .lg-back { color: #6B6458; }
 
 .lg-breadcrumb { font-size: 12px; font-weight: 600; color: #8A7B8A; }
 .lg-breadcrumb-btn { background: none; border: none; cursor: pointer; font-family: 'Quicksand', sans-serif; font-size: 12px; font-weight: 700; padding: 0; }

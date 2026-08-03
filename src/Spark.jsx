@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { getLesson } from "./sparkTracks";
 import SparkIcon from "./slides/SparkIcons";
 import ImagePlaceholder from "./slides/ImagePlaceholder";
@@ -299,7 +299,6 @@ function renderSlide(slide, lesson) {
 }
 
 export default function Spark() {
-  const navigate = useNavigate();
   const { lessonId } = useParams();
   const [slideIdx, setSlideIdx] = useState(0);
   const lesson = getLesson(lessonId);
@@ -308,11 +307,6 @@ export default function Spark() {
     return (
       <div className="spk-shell">
         <style>{CSS}</style>
-        <header className="spk-topbar">
-          <button type="button" className="spk-back-link" onClick={() => navigate("/library/spark")}>
-            ← Trial Class
-          </button>
-        </header>
         <div className="spk-stage">
           <p className="spk-missing">This lesson isn't ready yet.</p>
         </div>
@@ -329,11 +323,7 @@ export default function Spark() {
     <div className="spk-shell">
       <style>{CSS}</style>
       <header className="spk-topbar">
-        <button type="button" className="spk-back-link" onClick={() => navigate("/library/spark")}>
-          ← Trial Class
-        </button>
         <span className="spk-topbar-title">{lesson.code} · {lesson.title}</span>
-        <span className="spk-topbar-slot" />
       </header>
 
       <div className="spk-stage">
@@ -385,20 +375,9 @@ const CSS = `
   max-width: 1140px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   padding: 18px 24px 0;
   flex-shrink: 0;
-}
-.spk-back-link {
-  font-family: 'Fredoka', sans-serif;
-  font-weight: 700;
-  font-size: 14px;
-  color: #4A3B12;
-  background: #FFDD7A;
-  border: none;
-  border-radius: 999px;
-  padding: 8px 16px;
-  cursor: pointer;
 }
 .spk-topbar-title {
   font-family: 'Fredoka', sans-serif;
@@ -406,9 +385,7 @@ const CSS = `
   font-size: 16px;
   color: #4A3B12;
   text-align: center;
-  flex: 1;
 }
-.spk-topbar-slot { width: 110px; }
 
 .spk-missing { font-family: 'Quicksand', sans-serif; color: #8A7233; text-align: center; margin-top: 60px; }
 

@@ -1,4 +1,3 @@
-import { useNavigate } from "react-router-dom";
 import DESIGNS, { NOTEBOOK_STAGE_MARGIN } from "./notebookDesigns";
 
 // Opens the writable notebook as a standalone popup -- matching the
@@ -34,17 +33,11 @@ function openNotebook(design) {
 }
 
 export default function NotebookHub() {
-  const navigate = useNavigate();
-
   return (
     <div className="nbh-shell">
       <style>{CSS}</style>
       <header className="nbh-topbar">
-        <button type="button" className="nbh-back-link" onClick={() => navigate("/library")}>
-          ← Library
-        </button>
         <span className="nbh-topbar-title">Digital Notebook</span>
-        <span className="nbh-topbar-slot" />
       </header>
 
       <div className="nbh-page">
@@ -96,23 +89,12 @@ const CSS = `
 .nbh-topbar {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   padding: 16px 28px;
   border-bottom: 1px solid #E7EDEA;
   background: #FFFFFF;
 }
-.nbh-back-link {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 700;
-  font-size: 13px;
-  color: #1E8F76;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 6px 4px;
-}
 .nbh-topbar-title { font-family: 'Fredoka', sans-serif; font-size: 15px; font-weight: 600; color: #1B2B27; }
-.nbh-topbar-slot { width: 70px; }
 
 .nbh-page { padding: 24px; }
 

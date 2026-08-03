@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { getLesson } from "./shiftTracks";
 
 const SLIDE_LABELS = {
@@ -261,7 +261,6 @@ function renderSlide(slideType, lesson) {
 }
 
 export default function Shift() {
-  const navigate = useNavigate();
   const { trackId, lessonNum } = useParams();
   const [slideIdx, setSlideIdx] = useState(0);
   const lesson = getLesson(trackId, Number(lessonNum));
@@ -270,11 +269,6 @@ export default function Shift() {
     return (
       <div className="sh-shell">
         <style>{CSS}</style>
-        <header className="sh-topbar">
-          <button type="button" className="sh-back-link" onClick={() => navigate(`/library/shift/${trackId}`)}>
-            ← Lessons
-          </button>
-        </header>
         <div className="sh-stage">
           <p className="sh-missing">This lesson isn't ready yet.</p>
         </div>
@@ -290,11 +284,7 @@ export default function Shift() {
     <div className="sh-shell">
       <style>{CSS}</style>
       <header className="sh-topbar">
-        <button type="button" className="sh-back-link" onClick={() => navigate(`/library/shift/${trackId}`)}>
-          ← Lessons
-        </button>
         <span className="sh-topbar-title">{lesson.code} · {lesson.title}</span>
-        <span className="sh-topbar-slot" />
       </header>
 
       <div className="sh-stage">
@@ -347,20 +337,9 @@ const CSS = `
   max-width: 1140px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   padding: 18px 24px 0;
   flex-shrink: 0;
-}
-.sh-back-link {
-  font-family: 'Fredoka', sans-serif;
-  font-weight: 700;
-  font-size: 14px;
-  color: #4A211B;
-  background: #FFB3A6;
-  border: none;
-  border-radius: 999px;
-  padding: 8px 16px;
-  cursor: pointer;
 }
 .sh-topbar-title {
   font-family: 'Fredoka', sans-serif;
@@ -368,9 +347,7 @@ const CSS = `
   font-size: 16px;
   color: #4A211B;
   text-align: center;
-  flex: 1;
 }
-.sh-topbar-slot { width: 90px; }
 
 .sh-missing {
   font-family: 'Quicksand', sans-serif;

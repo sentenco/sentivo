@@ -1,4 +1,4 @@
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { getLesson } from "./ascendTracks";
 
 const SLIDE_LABELS = {
@@ -61,7 +61,6 @@ function SlideSection({ num, slideType, entry }) {
 }
 
 export default function AscendGuide() {
-  const navigate = useNavigate();
   const { trackId, lessonNum } = useParams();
   const lesson = getLesson(trackId, Number(lessonNum));
 
@@ -69,11 +68,6 @@ export default function AscendGuide() {
     return (
       <div className="ag-shell">
         <style>{CSS}</style>
-        <header className="ag-topbar">
-          <button type="button" className="ag-back-link" onClick={() => navigate(`/library/ascend/${trackId}`)}>
-            ← Lessons
-          </button>
-        </header>
         <div className="ag-stage">
           <p className="ag-missing">This lesson isn't ready yet.</p>
         </div>
@@ -88,9 +82,6 @@ export default function AscendGuide() {
     <div className="ag-shell">
       <style>{CSS}</style>
       <header className="ag-topbar">
-        <button type="button" className="ag-back-link" onClick={() => navigate(`/library/ascend/${trackId}`)}>
-          ← Lessons
-        </button>
         <span className="ag-topbar-title">Teacher Guide</span>
       </header>
 
@@ -130,24 +121,12 @@ const CSS = `
   max-width: 640px;
   display: flex;
   align-items: center;
-  gap: 14px;
+  justify-content: center;
   padding: 20px 24px 0;
   position: sticky;
   top: 0;
   background: #FBFEFC;
   z-index: 5;
-}
-.ag-back-link {
-  font-family: 'Fredoka', sans-serif;
-  font-weight: 700;
-  font-size: 13px;
-  color: #17352E;
-  background: #3FCDAF;
-  border: none;
-  border-radius: 999px;
-  padding: 7px 14px;
-  cursor: pointer;
-  white-space: nowrap;
 }
 .ag-topbar-title {
   font-family: 'Quicksand', sans-serif;

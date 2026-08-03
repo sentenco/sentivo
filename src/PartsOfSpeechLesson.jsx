@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { getLessonByCode } from "./posTracks";
 
 function buildLessonSlides(lesson) {
@@ -228,7 +228,6 @@ function renderSlide(slideType, topic, lesson) {
 }
 
 export default function PartsOfSpeechLesson() {
-  const navigate = useNavigate();
   const { code } = useParams();
   const [slideIdx, setSlideIdx] = useState(0);
   const found = getLessonByCode(code);
@@ -237,11 +236,6 @@ export default function PartsOfSpeechLesson() {
     return (
       <div className="posl-shell">
         <style>{CSS}</style>
-        <header className="posl-topbar">
-          <button type="button" className="posl-back-link" onClick={() => navigate("/library/grammar/parts-of-speech")}>
-            ← Parts of Speech
-          </button>
-        </header>
         <div className="posl-stage">
           <p className="posl-missing">This lesson isn't ready yet.</p>
         </div>
@@ -259,11 +253,7 @@ export default function PartsOfSpeechLesson() {
     <div className="posl-shell">
       <style>{CSS}</style>
       <header className="posl-topbar">
-        <button type="button" className="posl-back-link" onClick={() => navigate("/library/grammar/parts-of-speech")}>
-          ← Parts of Speech
-        </button>
         <span className="posl-topbar-title">{lesson.code} · {lesson.title}</span>
-        <span className="posl-topbar-slot" />
       </header>
 
       <div className="posl-stage">
@@ -315,20 +305,9 @@ const CSS = `
   max-width: 1120px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   padding: 14px 24px 0;
   flex-shrink: 0;
-}
-.posl-back-link {
-  font-family: 'Fredoka', sans-serif;
-  font-weight: 700;
-  font-size: 13px;
-  color: #163A66;
-  background: #AFCFF7;
-  border: none;
-  border-radius: 999px;
-  padding: 7px 14px;
-  cursor: pointer;
 }
 .posl-topbar-title {
   font-family: 'Quicksand', sans-serif;
@@ -337,7 +316,6 @@ const CSS = `
   letter-spacing: 0.5px;
   color: #4A6690;
 }
-.posl-topbar-slot { width: 90px; }
 
 .posl-stage {
   flex: 1;

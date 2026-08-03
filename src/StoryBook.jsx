@@ -1,5 +1,4 @@
 import { useMemo, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import ImagePlaceholder from "./slides/ImagePlaceholder";
 import defaultBook from "./storybookData";
 
@@ -221,7 +220,6 @@ function renderPage(pageType, chapter, imageAspect) {
 }
 
 export default function StoryBook({ book = defaultBook }) {
-  const navigate = useNavigate();
   const [view, setView] = useState("cover"); // cover | toc | chapter
   const [chapterIdx, setChapterIdx] = useState(0);
   const [pageIdx, setPageIdx] = useState(0);
@@ -261,9 +259,6 @@ export default function StoryBook({ book = defaultBook }) {
     <div className="sb-shell">
       <style>{CSS}</style>
       <header className="sb-topbar">
-        <button type="button" className="sb-back-link" onClick={() => navigate("/library")}>
-          ← Library
-        </button>
         <button type="button" className="sb-topbar-title" onClick={() => setView("cover")}>
           {book.title}
         </button>
@@ -368,7 +363,7 @@ const CSS = `
   justify-content: space-between;
   padding: 22px 24px 0;
 }
-.sb-back-link, .sb-toc-link {
+.sb-toc-link {
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;
   font-size: 13.5px;

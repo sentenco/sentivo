@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { getLessonByCode } from "./vtTracks";
 import VTTimeline from "./VTTimeline";
 
@@ -256,7 +256,6 @@ function renderSlide(slideType, tense, lesson) {
 }
 
 export default function VerbTensesLesson() {
-  const navigate = useNavigate();
   const { code } = useParams();
   const [slideIdx, setSlideIdx] = useState(0);
   const found = getLessonByCode(code);
@@ -265,11 +264,6 @@ export default function VerbTensesLesson() {
     return (
       <div className="vtl-shell">
         <style>{CSS}</style>
-        <header className="vtl-topbar">
-          <button type="button" className="vtl-back-link" onClick={() => navigate("/library/grammar/verb-tenses")}>
-            ← Verb Tenses
-          </button>
-        </header>
         <div className="vtl-stage">
           <p className="vtl-missing">This lesson isn't ready yet.</p>
         </div>
@@ -287,11 +281,7 @@ export default function VerbTensesLesson() {
     <div className="vtl-shell">
       <style>{CSS}</style>
       <header className="vtl-topbar">
-        <button type="button" className="vtl-back-link" onClick={() => navigate("/library/grammar/verb-tenses")}>
-          ← Verb Tenses
-        </button>
         <span className="vtl-topbar-title">{lesson.code} · {lesson.title}</span>
-        <span className="vtl-topbar-slot" />
       </header>
 
       <div className="vtl-stage">
@@ -343,20 +333,9 @@ const CSS = `
   max-width: 1120px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   padding: 14px 24px 0;
   flex-shrink: 0;
-}
-.vtl-back-link {
-  font-family: 'Fredoka', sans-serif;
-  font-weight: 700;
-  font-size: 13px;
-  color: #2B2560;
-  background: #B7B0F5;
-  border: none;
-  border-radius: 999px;
-  padding: 7px 14px;
-  cursor: pointer;
 }
 .vtl-topbar-title {
   font-family: 'Quicksand', sans-serif;
@@ -365,7 +344,6 @@ const CSS = `
   letter-spacing: 0.5px;
   color: #5B5590;
 }
-.vtl-topbar-slot { width: 90px; }
 
 .vtl-stage {
   flex: 1;

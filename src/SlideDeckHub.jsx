@@ -62,11 +62,7 @@ export default function SlideDeckHub() {
     <div className="sdh-shell">
       <style>{CSS}</style>
       <header className="sdh-topbar">
-        <button type="button" className="sdh-back-link" onClick={() => navigate("/library")}>
-          ← Library
-        </button>
         <span className="sdh-topbar-title">Slide Deck Builder</span>
-        <span className="sdh-topbar-slot" />
       </header>
 
       <div className="sdh-page">
@@ -166,23 +162,12 @@ const CSS = `
 .sdh-topbar {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   padding: 16px 28px;
   border-bottom: 1px solid #F5E3D6;
   background: #FFFFFF;
 }
-.sdh-back-link {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 700;
-  font-size: 13px;
-  color: #E5623A;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 6px 4px;
-}
 .sdh-topbar-title { font-family: 'Fredoka', sans-serif; font-size: 15px; font-weight: 600; color: #2B2A1E; }
-.sdh-topbar-slot { width: 70px; }
 
 .sdh-page { padding: 24px; }
 

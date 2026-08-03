@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { supabase } from "./supabaseClient";
 import { useAuth } from "./AuthContext";
 import { newSlide, newTextElement, newImageElement } from "./slideDeckTypes";
@@ -27,7 +27,6 @@ function openPresenter(deckId) {
 
 export default function SlideDeckEditor() {
   const { deckId } = useParams();
-  const navigate = useNavigate();
   const { user, loading: authLoading } = useAuth();
 
   const [deckTitle, setDeckTitle] = useState("");
@@ -314,7 +313,6 @@ export default function SlideDeckEditor() {
       <style>{CSS}</style>
 
       <div className="sde-toolbar" onClick={(e) => e.stopPropagation()}>
-        <button type="button" className="sde-back-link" onClick={() => navigate("/library/slides")}>← Decks</button>
         <input
           className="sde-deck-title"
           value={deckTitle}
@@ -509,7 +507,6 @@ const CSS = `
   background: #FFFFFF;
   border-bottom: 1px solid #EAE7EF;
 }
-.sde-back-link { font-weight: 700; font-size: 13px; color: var(--coral); background: none; border: none; cursor: pointer; flex-shrink: 0; }
 .sde-deck-title {
   flex: 1;
   min-width: 0;

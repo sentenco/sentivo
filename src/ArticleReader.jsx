@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { getArticle } from "./articlesData";
 
 const EDITION_KEYS = ["plain", "polished", "precise"];
@@ -80,7 +80,6 @@ function Paragraph({ parts, blockIdx, openKey, setOpenKey, references, year, onC
 }
 
 export default function ArticleReader() {
-  const navigate = useNavigate();
   const { slug } = useParams();
   const article = getArticle(slug);
   const [edition, setEdition] = useState("polished");
@@ -90,11 +89,6 @@ export default function ArticleReader() {
     return (
       <div className="ar-shell">
         <style>{CSS}</style>
-        <header className="ar-topbar">
-          <button type="button" className="ar-back-link" onClick={() => navigate("/library?cat=Articles")}>
-            ← Articles
-          </button>
-        </header>
         <div className="ar-missing">
           <p>This article isn't published yet.</p>
         </div>
@@ -118,11 +112,6 @@ export default function ArticleReader() {
   return (
     <div className="ar-shell" onClick={() => setOpenKey(null)}>
       <style>{CSS}</style>
-      <header className="ar-topbar">
-        <button type="button" className="ar-back-link" onClick={() => navigate("/library?cat=Articles")}>
-          ← Articles
-        </button>
-      </header>
 
       <div className="ar-article">
         <h1 className="ar-title">{article.title}</h1>
@@ -226,26 +215,6 @@ const CSS = `
   box-sizing: border-box;
 }
 .ar-shell * { box-sizing: border-box; }
-
-.ar-topbar {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  padding: 16px 24px;
-  border-bottom: 1px solid var(--hair);
-  background: var(--card);
-}
-.ar-back-link {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 700;
-  font-size: 13px;
-  color: var(--ink);
-  background: var(--paper);
-  border: 1px solid var(--hair);
-  border-radius: 999px;
-  padding: 7px 15px;
-  cursor: pointer;
-}
 
 .ar-missing { max-width: 640px; margin: 60px auto; text-align: center; color: var(--muted); font-family: 'Quicksand', sans-serif; }
 

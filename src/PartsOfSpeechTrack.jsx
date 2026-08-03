@@ -1,4 +1,3 @@
-import { useNavigate } from "react-router-dom";
 import TOPICS from "./posTracks";
 
 // Parts of Speech lessons open as a standalone popup player, matching the
@@ -19,17 +18,11 @@ function openLesson(code) {
 }
 
 export default function PartsOfSpeechTrack() {
-  const navigate = useNavigate();
-
   return (
     <div className="pos-shell">
       <style>{CSS}</style>
       <header className="pos-topbar">
-        <button type="button" className="pos-back-link" onClick={() => navigate("/library")}>
-          ← Library
-        </button>
         <span className="pos-topbar-title">Parts of Speech</span>
-        <span className="pos-topbar-slot" />
       </header>
 
       <div className="pos-stage">
@@ -81,19 +74,8 @@ const CSS = `
   max-width: 1040px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   padding: 22px 24px 0;
-}
-.pos-back-link {
-  font-family: 'Fredoka', sans-serif;
-  font-weight: 700;
-  font-size: 14px;
-  color: #163A66;
-  background: #AFCFF7;
-  border: none;
-  border-radius: 999px;
-  padding: 8px 16px;
-  cursor: pointer;
 }
 .pos-topbar-title {
   font-family: 'Quicksand', sans-serif;
@@ -103,7 +85,6 @@ const CSS = `
   text-transform: uppercase;
   color: #6A93C9;
 }
-.pos-topbar-slot { width: 90px; }
 
 .pos-stage {
   flex: 1;

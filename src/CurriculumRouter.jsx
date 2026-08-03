@@ -16,10 +16,6 @@ import LessonsGrid from "./LessonsGrid";
 export default function CurriculumRouter({ isPro = false, level = null, track = null }) {
   const navigate = useNavigate();
 
-  function goOverview() {
-    navigate("/library/curriculum");
-  }
-
   function goLevel(lvl) {
     navigate(`/library/curriculum/${lvl}`);
   }
@@ -33,7 +29,6 @@ export default function CurriculumRouter({ isPro = false, level = null, track = 
       <LessonsGrid
         level={level}
         ageTrack={track}
-        onBack={goOverview}
         onBackToLevel={() => goLevel(level)}
         isPro={isPro}
       />
@@ -44,7 +39,6 @@ export default function CurriculumRouter({ isPro = false, level = null, track = 
     return (
       <LevelPage
         level={level}
-        onBack={goOverview}
         onSelectTrack={goLessons}
         isPro={isPro}
       />

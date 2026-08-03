@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { getLesson } from "./sparkAdultsTracks";
 
 const WHEEL_COLORS = ["#8B2E3F", "#C8863A", "#1F6F5C", "#3B5B8C", "#6B4226"];
@@ -270,7 +270,6 @@ function renderSlide(slide, lesson) {
 }
 
 export default function SparkAdults() {
-  const navigate = useNavigate();
   const { lessonId } = useParams();
   const [slideIdx, setSlideIdx] = useState(0);
   const lesson = getLesson(lessonId);
@@ -279,11 +278,6 @@ export default function SparkAdults() {
     return (
       <div className="spa-shell">
         <style>{CSS}</style>
-        <header className="spa-topbar">
-          <button type="button" className="spa-back-link" onClick={() => navigate("/library/spark")}>
-            ← Trial Class
-          </button>
-        </header>
         <div className="spa-stage">
           <p className="spa-missing">This lesson isn't ready yet.</p>
         </div>
@@ -300,11 +294,7 @@ export default function SparkAdults() {
     <div className="spa-shell">
       <style>{CSS}</style>
       <header className="spa-topbar">
-        <button type="button" className="spa-back-link" onClick={() => navigate("/library/spark")}>
-          ← Trial Class
-        </button>
         <span className="spa-topbar-title">{lesson.code}</span>
-        <span className="spa-topbar-slot" />
       </header>
 
       <div className="spa-stage">
@@ -356,20 +346,9 @@ const CSS = `
   max-width: 1080px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   padding: 20px 28px 0;
   flex-shrink: 0;
-}
-.spa-back-link {
-  font-family: 'Inter', sans-serif;
-  font-weight: 600;
-  font-size: 13px;
-  color: #3A2416;
-  background: #FBEFDB;
-  border: none;
-  border-radius: 6px;
-  padding: 8px 16px;
-  cursor: pointer;
 }
 .spa-topbar-title {
   font-family: 'Inter', sans-serif;
@@ -379,7 +358,6 @@ const CSS = `
   text-transform: uppercase;
   color: #7A4A1F;
 }
-.spa-topbar-slot { width: 100px; }
 
 .spa-missing { font-family: 'Inter', sans-serif; color: #8B8171; text-align: center; margin-top: 60px; }
 

@@ -1,4 +1,4 @@
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { getLesson } from "./sparkTracks";
 
 const QUESTION_SLIDES = [
@@ -86,7 +86,6 @@ function SlideSection({ num, slide }) {
 }
 
 export default function SparkGuide() {
-  const navigate = useNavigate();
   const { lessonId } = useParams();
   const lesson = getLesson(lessonId);
 
@@ -94,11 +93,6 @@ export default function SparkGuide() {
     return (
       <div className="spkg-shell">
         <style>{CSS}</style>
-        <header className="spkg-topbar">
-          <button type="button" className="spkg-back-link" onClick={() => navigate("/library/spark")}>
-            ← Trial Class
-          </button>
-        </header>
         <div className="spkg-stage">
           <p className="spkg-missing">This lesson isn't ready yet.</p>
         </div>
@@ -110,9 +104,6 @@ export default function SparkGuide() {
     <div className="spkg-shell">
       <style>{CSS}</style>
       <header className="spkg-topbar">
-        <button type="button" className="spkg-back-link" onClick={() => navigate("/library/spark")}>
-          ← Trial Class
-        </button>
         <span className="spkg-topbar-title">Teacher Guide</span>
       </header>
 
@@ -164,24 +155,12 @@ const CSS = `
   max-width: 640px;
   display: flex;
   align-items: center;
-  gap: 14px;
+  justify-content: center;
   padding: 20px 24px 0;
   position: sticky;
   top: 0;
   background: #FFFDF6;
   z-index: 5;
-}
-.spkg-back-link {
-  font-family: 'Fredoka', sans-serif;
-  font-weight: 700;
-  font-size: 13px;
-  color: #4A3B12;
-  background: #FFDD7A;
-  border: none;
-  border-radius: 999px;
-  padding: 7px 14px;
-  cursor: pointer;
-  white-space: nowrap;
 }
 .spkg-topbar-title {
   font-family: 'Quicksand', sans-serif;

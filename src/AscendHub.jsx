@@ -1,4 +1,3 @@
-import { useNavigate } from "react-router-dom";
 import TRACKS from "./ascendTracks";
 import ImagePlaceholder from "./slides/ImagePlaceholder";
 import ascend1CoverImg from "./assets/ascend/track1-cover.jpeg";
@@ -24,18 +23,13 @@ function groupByCategory(tracks) {
 }
 
 export default function AscendHub() {
-  const navigate = useNavigate();
   const categories = groupByCategory(TRACKS);
 
   return (
     <div className="ah-shell">
       <style>{CSS}</style>
       <header className="ah-topbar">
-        <button type="button" className="ah-back-link" onClick={() => navigate("/library")}>
-          ← Library
-        </button>
         <span className="ah-topbar-title">ASCEND</span>
-        <span className="ah-topbar-slot" />
       </header>
 
       <div className="ah-stage">
@@ -115,19 +109,8 @@ const CSS = `
   max-width: 1040px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   padding: 22px 24px 0;
-}
-.ah-back-link {
-  font-family: 'Fredoka', sans-serif;
-  font-weight: 700;
-  font-size: 14px;
-  color: #17352E;
-  background: #3FCDAF;
-  border: none;
-  border-radius: 999px;
-  padding: 8px 16px;
-  cursor: pointer;
 }
 .ah-topbar-title {
   font-family: 'Quicksand', sans-serif;
@@ -137,7 +120,6 @@ const CSS = `
   text-transform: uppercase;
   color: #8AAFA5;
 }
-.ah-topbar-slot { width: 90px; }
 
 .ah-stage {
   flex: 1;

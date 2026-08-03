@@ -1,4 +1,3 @@
-import { useNavigate } from "react-router-dom";
 import { getGroups } from "./vtTracks";
 import VTTimeline from "./VTTimeline";
 
@@ -21,18 +20,13 @@ function openLesson(code) {
 }
 
 export default function VerbTensesTrack() {
-  const navigate = useNavigate();
   const groups = getGroups();
 
   return (
     <div className="vt-shell">
       <style>{CSS}</style>
       <header className="vt-topbar">
-        <button type="button" className="vt-back-link" onClick={() => navigate("/library")}>
-          ← Library
-        </button>
         <span className="vt-topbar-title">Verb Tenses</span>
-        <span className="vt-topbar-slot" />
       </header>
 
       <div className="vt-stage">
@@ -92,19 +86,8 @@ const CSS = `
   max-width: 1040px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   padding: 22px 24px 0;
-}
-.vt-back-link {
-  font-family: 'Fredoka', sans-serif;
-  font-weight: 700;
-  font-size: 14px;
-  color: #2B2560;
-  background: #B7B0F5;
-  border: none;
-  border-radius: 999px;
-  padding: 8px 16px;
-  cursor: pointer;
 }
 .vt-topbar-title {
   font-family: 'Quicksand', sans-serif;
@@ -114,7 +97,6 @@ const CSS = `
   text-transform: uppercase;
   color: #8A82C9;
 }
-.vt-topbar-slot { width: 90px; }
 
 .vt-stage {
   flex: 1;

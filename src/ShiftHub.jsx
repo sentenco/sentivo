@@ -1,4 +1,3 @@
-import { useNavigate } from "react-router-dom";
 import TRACKS from "./shiftTracks";
 import ImagePlaceholder from "./slides/ImagePlaceholder";
 
@@ -8,17 +7,11 @@ import ImagePlaceholder from "./slides/ImagePlaceholder";
 const COVERS = {};
 
 export default function ShiftHub() {
-  const navigate = useNavigate();
-
   return (
     <div className="shh-shell">
       <style>{CSS}</style>
       <header className="shh-topbar">
-        <button type="button" className="shh-back-link" onClick={() => navigate("/library")}>
-          ← Library
-        </button>
         <span className="shh-topbar-title">SHIFT</span>
-        <span className="shh-topbar-slot" />
       </header>
 
       <div className="shh-stage">
@@ -88,19 +81,8 @@ const CSS = `
   max-width: 1040px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   padding: 22px 24px 0;
-}
-.shh-back-link {
-  font-family: 'Fredoka', sans-serif;
-  font-weight: 700;
-  font-size: 14px;
-  color: #4A211B;
-  background: #FFB3A6;
-  border: none;
-  border-radius: 999px;
-  padding: 8px 16px;
-  cursor: pointer;
 }
 .shh-topbar-title {
   font-family: 'Quicksand', sans-serif;
@@ -110,7 +92,6 @@ const CSS = `
   text-transform: uppercase;
   color: #C98F84;
 }
-.shh-topbar-slot { width: 90px; }
 
 .shh-stage {
   flex: 1;

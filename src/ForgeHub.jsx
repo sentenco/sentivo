@@ -1,4 +1,3 @@
-import { useNavigate } from "react-router-dom";
 import TRACKS from "./forgeTracks";
 import ImagePlaceholder from "./slides/ImagePlaceholder";
 
@@ -14,17 +13,11 @@ function slideCount(lesson) {
 }
 
 export default function ForgeHub() {
-  const navigate = useNavigate();
-
   return (
     <div className="fh-shell">
       <style>{CSS}</style>
       <header className="fh-topbar">
-        <button type="button" className="fh-back-link" onClick={() => navigate("/library")}>
-          ← Library
-        </button>
         <span className="fh-topbar-title">FORGE</span>
-        <span className="fh-topbar-slot" />
       </header>
 
       <div className="fh-stage">
@@ -95,19 +88,8 @@ const CSS = `
   max-width: 1040px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   padding: 22px 24px 0;
-}
-.fh-back-link {
-  font-family: 'Fredoka', sans-serif;
-  font-weight: 700;
-  font-size: 14px;
-  color: #2E2617;
-  background: #F2A65A;
-  border: none;
-  border-radius: 999px;
-  padding: 8px 16px;
-  cursor: pointer;
 }
 .fh-topbar-title {
   font-family: 'Quicksand', sans-serif;
@@ -117,7 +99,6 @@ const CSS = `
   text-transform: uppercase;
   color: #B0A48C;
 }
-.fh-topbar-slot { width: 90px; }
 
 .fh-stage {
   flex: 1;
