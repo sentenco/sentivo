@@ -237,12 +237,12 @@ const CSS = `
 .app-title {
   flex-shrink: 0;
   font-family: 'Playfair Display', serif;
-  font-weight: 900;
-  font-size: clamp(24px, 3.4vh, 32px);
-  line-height: 1.1;
-  letter-spacing: -0.01em;
+  font-weight: 700;
+  font-size: clamp(22px, 3vh, 28px);
+  line-height: 1.22;
+  letter-spacing: 0;
   text-align: center;
-  text-transform: uppercase;
+  text-transform: none;
   margin: clamp(14px, 2.2vh, 20px) 24px clamp(8px, 1.2vh, 12px);
 }
 .app-title em { font-style: italic; font-weight: 700; }
@@ -264,8 +264,8 @@ const CSS = `
   min-height: 0;
   overflow: hidden;
   font-family: 'Source Serif 4', serif;
-  font-size: clamp(15px, 1.9vh, 18px);
-  line-height: 1.55;
+  font-size: clamp(14px, 1.7vh, 16.5px);
+  line-height: 1.5;
   color: #262626;
   columns: 2;
   column-gap: 28px;
@@ -338,7 +338,7 @@ const CSS = `
   color: #A39B87;
 }
 
-@media (max-width: 640px) {
+@media (max-width: 480px) {
   .app-title { font-size: 20px; }
   .app-columns { columns: 1; padding: 0 20px; }
 }

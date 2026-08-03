@@ -8,18 +8,21 @@ const EDITION_KEYS = ["plain", "polished", "precise"];
 // matching the FORGE/ASCEND/Verb Tenses chrome-less window.open pattern.
 // This page (ArticleReader) stays the teacher's reference copy, with the
 // discussion guide and citations; the popup is what gets shared on screen.
+// Fixed portrait size (not scaled to the screen) so the banner, title, and
+// 2-column layout always render exactly as designed, not cropped/collapsed
+// differently on smaller screens.
 function openPlayer(slug) {
+  const w = 680;
+  const h = 960;
   const screenW = window.screen.availWidth || 1600;
   const screenH = window.screen.availHeight || 900;
-  const w = Math.min(680, screenW - 40);
-  const h = Math.min(960, screenH - 80);
   const left = Math.max(0, Math.floor((screenW - w) / 2));
   const top = Math.max(0, Math.floor((screenH - h) / 2));
 
   window.open(
     `/library/articles/${slug}/player`,
     "sentivoArticlePlayer",
-    `width=${w},height=${h},left=${left},top=${top},toolbar=no,location=no,menubar=no,status=no,scrollbars=yes,resizable=yes`
+    `width=${w},height=${h},left=${left},top=${top},toolbar=no,location=no,menubar=no,status=no,scrollbars=yes,resizable=no`
   );
 }
 
