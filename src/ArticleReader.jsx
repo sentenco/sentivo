@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { getArticle } from "./articlesData";
+import editorialBanner from "./assets/brand/editorial-banner.jpg";
 
 const EDITION_KEYS = ["plain", "polished", "precise"];
 
@@ -113,6 +114,10 @@ export default function ArticleReader() {
     <div className="ar-shell" onClick={() => setOpenKey(null)}>
       <style>{CSS}</style>
 
+      <div className="ar-banner">
+        <img src={editorialBanner} alt="Sentivo Editorial" />
+      </div>
+
       <div className="ar-article">
         <h1 className="ar-title">{article.title}</h1>
 
@@ -217,6 +222,14 @@ const CSS = `
 .ar-shell * { box-sizing: border-box; }
 
 .ar-missing { max-width: 640px; margin: 60px auto; text-align: center; color: var(--muted); font-family: 'Quicksand', sans-serif; }
+
+.ar-banner {
+  width: 100%;
+  height: clamp(140px, 22vw, 240px);
+  overflow: hidden;
+  background: var(--ink);
+}
+.ar-banner img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
 
 .ar-article { max-width: 720px; margin: 0 auto; padding: 34px 24px 60px; }
 
