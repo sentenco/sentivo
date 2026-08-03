@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { getArticle } from "./articlesData";
+import editorialBanner from "./assets/brand/editorial-banner.jpg";
 
 const EDITION_KEYS = ["plain", "polished", "precise"];
 
@@ -110,8 +111,14 @@ export default function ArticlePlayerPage() {
       </div>
 
       <div className="app-page">
-        <div className="app-hero">
-          {article.image ? <img src={article.image} alt="" /> : article.emoji}
+        <div className={`app-hero ${article.showEditorialBanner ? "app-hero--banner" : ""}`}>
+          {article.showEditorialBanner ? (
+            <img src={editorialBanner} alt="Sentivo Editorial" />
+          ) : article.image ? (
+            <img src={article.image} alt="" />
+          ) : (
+            article.emoji
+          )}
         </div>
 
         <h1 className="app-title"><StyledTitle title={article.title} /></h1>
@@ -220,6 +227,11 @@ const CSS = `
   overflow: hidden;
 }
 .app-hero img { width: 100%; height: 100%; object-fit: contain; }
+.app-hero--banner {
+  height: clamp(90px, 13vh, 150px);
+  background: #FBFAF7;
+  filter: none;
+}
 
 .app-title {
   flex-shrink: 0;

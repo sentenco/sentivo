@@ -146,6 +146,7 @@ export const ARTICLES = [
     publishedAt: "2026-07-29",
     emoji: "🧪",
     image: spudcellsImg,
+    showEditorialBanner: true,
     variant: "planet",
     topicLabel: "Nature & Science",
     topicTitle: "Nature, Science & Planet",
