@@ -1,9 +1,10 @@
 import { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { getArticle } from "./articlesData";
 import editorialBanner from "./assets/brand/editorial-banner.jpg";
 
 const EDITION_KEYS = ["plain", "polished", "precise"];
+const NAV_CATEGORIES = ["Articles", "Reading", "Grammar", "Vocabulary", "Writing", "Listening", "Speaking"];
 
 // Opens the clean, student-facing reading view as a standalone popup --
 // matching the FORGE/ASCEND/Verb Tenses chrome-less window.open pattern.
@@ -80,8 +81,32 @@ function Paragraph({ parts, blockIdx, openKey, setOpenKey, references, year, onC
   );
 }
 
+function SiteNav({ navigate }) {
+  return (
+    <header className="ar-nav">
+      <button type="button" className="ar-nav-brand" onClick={() => navigate("/library")}>
+        <img src="/logo-sentivo.png" alt="" className="ar-nav-logo" />entivo
+      </button>
+      <div className="ar-nav-tabs">
+        <button type="button" className="ar-nav-tab" onClick={() => navigate("/library?cat=All")}>Today</button>
+        {NAV_CATEGORIES.map((cat) => (
+          <button
+            key={cat}
+            type="button"
+            className="ar-nav-tab"
+            onClick={() => navigate(`/library?cat=${encodeURIComponent(cat)}`)}
+          >
+            {cat}
+          </button>
+        ))}
+      </div>
+    </header>
+  );
+}
+
 export default function ArticleReader() {
   const { slug } = useParams();
+  const navigate = useNavigate();
   const article = getArticle(slug);
   const [edition, setEdition] = useState("polished");
   const [openKey, setOpenKey] = useState(null);
@@ -90,6 +115,7 @@ export default function ArticleReader() {
     return (
       <div className="ar-shell">
         <style>{CSS}</style>
+        <SiteNav navigate={navigate} />
         <div className="ar-missing">
           <p>This article isn't published yet.</p>
         </div>
@@ -113,6 +139,8 @@ export default function ArticleReader() {
   return (
     <div className="ar-shell" onClick={() => setOpenKey(null)}>
       <style>{CSS}</style>
+
+      <SiteNav navigate={navigate} />
 
       <div className="ar-banner">
         <img src={editorialBanner} alt="Sentivo Editorial" />
@@ -213,6 +241,7 @@ const CSS = `
   --coral-soft: rgba(255,107,74,0.12);
   --navy-soft: rgba(27,42,74,0.07);
   --hair: rgba(27,42,74,0.12);
+  --content-w: 760px;
   width: 100%;
   min-height: 100vh;
   background: var(--paper);
@@ -223,15 +252,51 @@ const CSS = `
 
 .ar-missing { max-width: 640px; margin: 60px auto; text-align: center; color: var(--muted); font-family: 'Quicksand', sans-serif; }
 
-.ar-banner {
-  width: 100%;
-  height: clamp(140px, 22vw, 240px);
-  overflow: hidden;
-  background: var(--ink);
+.ar-nav { background: var(--card); border-bottom: 1px solid var(--hair); }
+.ar-nav-brand {
+  display: flex;
+  align-items: center;
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 700;
+  font-size: 19px;
+  color: var(--ink);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 14px 40px 8px;
 }
-.ar-banner img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
+.ar-nav-logo { height: 28px; width: auto; display: block; margin-right: -4px; }
+.ar-nav-tabs {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  padding: 2px 40px 10px;
+  font-family: 'Quicksand', sans-serif;
+  overflow-x: auto;
+}
+.ar-nav-tab {
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  color: var(--ink-soft);
+  background: none;
+  border: none;
+  padding: 7px 15px;
+  border-radius: 999px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.ar-nav-tab:hover { color: var(--coral-dark); background: var(--coral-soft); }
 
-.ar-article { max-width: 720px; margin: 0 auto; padding: 34px 24px 60px; }
+.ar-banner {
+  max-width: var(--content-w);
+  margin: 0 auto;
+  overflow: hidden;
+}
+.ar-banner img { width: 100%; height: auto; display: block; }
+
+.ar-article { max-width: var(--content-w); margin: 0 auto; padding: 34px 24px 60px; }
 
 .ar-title {
   font-family: 'Fredoka', sans-serif;
