@@ -2108,6 +2108,7 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .gaz-thumb--planet { background: linear-gradient(135deg, rgba(255,107,74,0.2), transparent); }
 .gaz-thumb--daily { background: linear-gradient(135deg, rgba(224,80,47,0.18), transparent); }
 .gaz-thumb--culture { background: linear-gradient(135deg, rgba(27,42,74,0.14), rgba(255,107,74,0.14)); }
+.gaz-thumb--law { background: linear-gradient(135deg, rgba(27,42,74,0.26), rgba(90,107,146,0.12)); }
 .gaz-story-body { min-width: 0; align-self: center; }
 .gaz-story-kicker { font-family: 'Quicksand', sans-serif; font-weight: 800; font-size: clamp(10px, 0.9vw, 11.5px); letter-spacing: 0.07em; text-transform: uppercase; color: var(--coral); margin-bottom: 6px; }
 .gaz-story-title {

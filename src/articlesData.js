@@ -18,6 +18,7 @@ export const ARTICLE_TOPICS = [
   { label: "Culture & Fun", title: "Culture, Stories & Fun" },
   { label: "Society & Issues", title: "People, Society & Issues" },
   { label: "Travel & Places", title: "Places, Travel & Journeys" },
+  { label: "Law", title: "Crime, Law & Justice" },
 ];
 
 export const ARTICLES = [
@@ -1804,6 +1805,637 @@ export const ARTICLES = [
       {
         q: "If you planned a 'slow travel' trip, where would you go, and what would you do there?",
         follow: ["What local food or experience would you want to try?"],
+      },
+    ],
+  },
+  {
+    slug: "no-witness-still-guilty",
+    ready: true,
+    publishedAt: "2026-08-03",
+    emoji: "🔍",
+    variant: "law",
+    topicLabel: "Law",
+    topicTitle: "Crime, Law & Justice",
+    title: "No Witness, Still Guilty?",
+    dek: "When courts lean on clues instead of eyewitnesses, the stakes for careful reasoning — and fairness — become even higher.",
+    editions: {
+      plain: {
+        label: "Plain Edition",
+        range: "A1–A2",
+        readTime: "2 min read",
+        wordCount: 163,
+        blocks: [
+          { type: "p", parts: [
+            { t: "We often think a judge only says “guilty” when someone saw the crime happen. But that is not always true. In real courts, a person can be found guilty without any eyewitness. Instead, the court looks at other clues." },
+          ] },
+          { type: "p", parts: [
+            { t: "These clues can be small things: where a person was, what they did, or objects found later. One clue alone does not prove much. But many clues together can tell a clear story." },
+          ] },
+          { type: "p", parts: [
+            { t: "The law says these clues must be true facts, not guesses. There must be more than one clue. And the clues must not fit any other explanation." },
+          ] },
+          { type: "p", parts: [
+            { t: "In a real case, called People v. Solangon, the court used only this kind of proof. There was no eyewitness. But the clues fit together so well that the court said the person was guilty." },
+          ] },
+          { type: "p", parts: [
+            { t: "This shows something important: courts must think like careful detectives. They should never guess. If the clues do not fit together perfectly, a person should not be called guilty." },
+          ] },
+        ],
+      },
+      polished: {
+        label: "Polished Edition",
+        range: "B1–B2",
+        readTime: "3 min read",
+        wordCount: 285,
+        blocks: [
+          { type: "p", parts: [
+            { t: "We like to believe that a guilty verdict always comes after someone points at the accused and says, “I saw it.” Real cases are rarely that simple. In Philippine criminal law, a person can be convicted based on " },
+            { g: "circumstantial evidence", pos: "noun", def: "indirect facts that suggest guilt without directly proving it" },
+            { t: " alone, as long as the proven facts form a tight, logical chain that points to guilt " },
+            { g: "beyond reasonable doubt", pos: "phrase", def: "so certain that no reasonable person would still doubt it" },
+            { t: "." },
+            { c: 1 },
+          ] },
+          { type: "p", parts: [
+            { t: "That is both necessary and dangerous. Necessary, because many crimes happen in private, with no eyewitness willing or able to speak. Dangerous, because the court is now trusting logic instead of direct human memory. Circumstantial evidence — location, behavior, records, timing, physical traces — can be incredibly strong when the pieces fit together" },
+            { c: 2 },
+            { t: ". But when they do not fit, the risk of error grows quietly in the background." },
+          ] },
+          { type: "p", parts: [
+            { t: "In People v. Solangon, the Supreme Court upheld a conviction based on circumstantial evidence, showing that a well-built chain of facts can carry the same weight as a single eyewitness" },
+            { c: 3 },
+            { t: ". If every link in the chain is solid, the picture becomes very hard to ignore — but the same logic also reminds us what happens if just one link is weak." },
+          ] },
+          { type: "p", parts: [
+            { t: "Courts, and future lawyers, should treat these cases with extra discipline. The law already demands more than one circumstance, proof for each fact, and proof that excludes other reasonable explanations" },
+            { c: 1 },
+            { t: ". That is a good start. But the system also needs a culture that respects real doubt when a chain of facts feels forced rather than proven." },
+          ] },
+          { type: "p", parts: [
+            { t: "As legal systems grow more complex, “no witness, still guilty” will likely become more common. The real challenge is making sure no one becomes “no witness, wrongly guilty” — because the chain of facts was built on assumption, not true proof." },
+          ] },
+        ],
+      },
+      precise: {
+        label: "Precise Edition",
+        range: "C1–C2",
+        readTime: "3 min read",
+        wordCount: 297,
+        blocks: [
+          { type: "p", parts: [
+            { t: "There persists a comforting assumption that a guilty verdict is contingent upon direct testimony — that someone must point to the accused and declare, “I saw it.” Reality rarely accommodates such simplicity. Under Philippine criminal law, a conviction may rest entirely upon " },
+            { g: "circumstantial evidence", pos: "noun", def: "indirect facts from which guilt can reasonably be inferred, rather than direct proof" },
+            { t: ", provided the established facts cohere into a tight, logical chain establishing guilt " },
+            { g: "beyond reasonable doubt", pos: "phrase", def: "to a degree of certainty that leaves no room for rational doubt" },
+            { t: "." },
+            { c: 1 },
+          ] },
+          { type: "p", parts: [
+            { t: "This arrangement is at once indispensable and precarious. Indispensable, because many offenses transpire away from witnesses willing or able to testify. Precarious, because the court must now place its trust in inference rather than direct human recollection. Circumstantial indicators — location, conduct, records, timing, physical traces — can, in aggregate, constitute compelling proof" },
+            { c: 2 },
+            { t: ". Yet where those indicators fail to align, the likelihood of error accumulates quietly, often imperceptibly." },
+          ] },
+          { type: "p", parts: [
+            { t: "In People v. Solangon, the Supreme Court affirmed a conviction grounded solely in circumstantial evidence, demonstrating that a rigorously constructed chain of facts can carry evidentiary weight comparable to that of a single eyewitness" },
+            { c: 3 },
+            { t: ". Where every link withstands scrutiny, the resulting picture becomes difficult to dismiss — though the same logic underscores the fragility introduced by even one unsubstantiated link." },
+          ] },
+          { type: "p", parts: [
+            { t: "Courts, and the legal professionals who will one day argue before them, ought to approach such cases with heightened rigor. The law already requires multiple circumstances, independently proven facts, and the exclusion of other reasonable hypotheses" },
+            { c: 1 },
+            { t: ". That standard is a reasonable baseline, yet the broader legal culture must also cultivate a willingness to credit genuine doubt when an evidentiary chain appears contrived rather than substantiated." },
+          ] },
+          { type: "p", parts: [
+            { t: "As legal systems grow increasingly intricate, convictions of the “no witness, still guilty” variety are likely to proliferate. The enduring challenge is ensuring that no defendant becomes “no witness, wrongly guilty” — convicted not on demonstrated fact, but on an inferential chain built upon assumption." },
+          ] },
+        ],
+      },
+    },
+    references: [
+      { domain: "peoplelaw.ph", name: "PeopleLaw", headline: "G.R. No. 241946 - People of the Philippines" },
+      { domain: "lawyersphilippines.org", name: "Lawyers Philippines", headline: "Circumstantial evidence" },
+      { domain: "peoplelaw.ph", name: "PeopleLaw", headline: "People of the Philippines v. Solangon" },
+    ],
+    discussionGuide: [
+      {
+        q: "Do you think it's fair for a court to convict someone using only indirect evidence, with no eyewitness? Why or why not?",
+        follow: ["Would your opinion change if the crime happened somewhere very private, with no possible witnesses?"],
+      },
+      {
+        q: "The writer compares this kind of reasoning to detective work. What other jobs or situations need this same kind of careful, logical thinking?",
+        follow: ["Do you enjoy solving puzzles or mysteries yourself?"],
+      },
+      {
+        q: "Why do you think the law requires so many strict conditions before circumstantial evidence can lead to a guilty verdict?",
+        follow: ["What might go wrong if the rules were less strict?"],
+      },
+    ],
+  },
+  {
+    slug: "one-post-one-crime",
+    ready: true,
+    publishedAt: "2026-08-03",
+    emoji: "📱",
+    variant: "law",
+    topicLabel: "Law",
+    topicTitle: "Crime, Law & Justice",
+    title: "One Post, One Crime",
+    dek: "Social media is no longer just a place to talk; it is also a place where the law listens, collects evidence, and decides responsibility.",
+    editions: {
+      plain: {
+        label: "Plain Edition",
+        range: "A1–A2",
+        readTime: "2 min read",
+        wordCount: 166,
+        blocks: [
+          { type: "p", parts: [
+            { t: "Can one social media post really become a crime? It sounds strange, but yes — a single post can sometimes lead to a real criminal case." },
+          ] },
+          { type: "p", parts: [
+            { t: "Some posts can be cyberlibel, threats, or online harassment. Because of this, courts must find out one important thing: who really made the post?" },
+          ] },
+          { type: "p", parts: [
+            { t: "Courts now look for proof about who owned the account, who used the phone or computer, and what the digital records show. This helps them find the right person, not just anyone connected to the account." },
+          ] },
+          { type: "p", parts: [
+            { t: "In one case, a message on Facebook was used as proof in a serious crime. That case shows how fast an online message can become real legal evidence." },
+          ] },
+          { type: "p", parts: [
+            { t: "But social media is messy. People share accounts. Accounts get hacked. People post angry words they do not truly mean." },
+          ] },
+          { type: "p", parts: [
+            { t: "Because of this, courts must be very careful. A single post should not mean automatic guilt. Courts must be sure about who really wrote it, and why, before calling it a crime." },
+          ] },
+        ],
+      },
+      polished: {
+        label: "Polished Edition",
+        range: "B1–B2",
+        readTime: "3 min read",
+        wordCount: 268,
+        blocks: [
+          { type: "p", parts: [
+            { t: "It feels strange at first: can one social media post really lead to a criminal case? In the age of screenshots and public arguments, the answer is yes — a single post can become serious evidence, or even the center of a crime" },
+            { c: 1 },
+            { t: ". Cyberlibel, extortion, harassment, and online threats can all begin with what looks like “just a post.”" },
+          ] },
+          { type: "p", parts: [
+            { t: "The Supreme Court's recent guidance on proving " },
+            { g: "authorship", pos: "noun", def: "proof of who actually wrote or posted something" },
+            { t: " makes one thing clear: the law is catching up to how people actually live online" },
+            { c: 3 },
+            { t: ". Courts now ask who controlled the account, who had access to the device, and what digital records show. This step matters — before punishing someone for what they posted, the court must be sure it has the right person." },
+          ] },
+          { type: "p", parts: [
+            { t: "One case shows how quickly online behavior becomes legal reality: a Facebook message asking for money helped prove the intent behind a crime and identify the person behind the account" },
+            { c: 2 },
+            { t: ". What can feel like casual, private messaging in daily life becomes formal evidence once it is printed, saved, and shown in court." },
+          ] },
+          { type: "p", parts: [
+            { t: "Still, social media is messy. Accounts are shared with family members, hacked by strangers, or even faked. Emotions run high online, and the full context of a post can easily get lost. Treating every angry post as a crime would silence normal speech — but ignoring truly harmful posts would leave real victims unprotected." },
+          ] },
+          { type: "p", parts: [
+            { t: "“One post, one crime” should never mean “one screenshot, automatic guilt.” Courts must keep a high standard of proof for authorship and intent, especially now that reputations, relationships, and even freedom can depend on words once seen as casual online talk" },
+            { c: 3 },
+            { t: "." },
+          ] },
+        ],
+      },
+      precise: {
+        label: "Precise Edition",
+        range: "C1–C2",
+        readTime: "3 min read",
+        wordCount: 266,
+        blocks: [
+          { type: "p", parts: [
+            { t: "It appears counterintuitive at first: can a single social media post genuinely precipitate a criminal case? In an era defined by screenshots and public discourse, the answer is unequivocally yes — a lone post can constitute substantive evidence, or even the crux of a criminal matter" },
+            { c: 1 },
+            { t: ". Cyberlibel, extortion, harassment, and online threats may all originate from what appears to be merely “a post.”" },
+          ] },
+          { type: "p", parts: [
+            { t: "The Supreme Court's recent guidance on establishing " },
+            { g: "authorship", pos: "noun", def: "conclusive proof of who created or posted a given piece of content" },
+            { t: " signals that jurisprudence is adapting to contemporary digital life" },
+            { c: 3 },
+            { t: ". Courts now scrutinize who exercised control over the account, who had access to the device in question, and what digital records reveal. This evidentiary threshold is essential — before any individual is penalized for online conduct, the court must be confident it has identified the correct actor." },
+          ] },
+          { type: "p", parts: [
+            { t: "One illustrative case demonstrates how expeditiously online conduct crystallizes into legal reality: a Facebook-based extortion demand helped establish both intent and the identity of the account's operator" },
+            { c: 2 },
+            { t: ". Communication that feels informal and ephemeral in daily life becomes formal evidentiary material the moment it is preserved and adduced in court." },
+          ] },
+          { type: "p", parts: [
+            { t: "Nonetheless, the digital sphere remains inherently disordered. Accounts are shared among family members, compromised by third parties, or fabricated outright. Emotional volatility pervades online discourse, and contextual nuance is easily lost. Criminalizing every intemperate post would chill legitimate expression; disregarding genuinely harmful conduct would leave victims without recourse." },
+          ] },
+          { type: "p", parts: [
+            { t: "“One post, one crime” must never collapse into “one screenshot, automatic culpability.” The justice system is obligated to maintain a rigorous evidentiary standard for authorship and intent, particularly as reputations, relationships, and personal liberty increasingly hinge on discourse once dismissed as casual" },
+            { c: 3 },
+            { t: "." },
+          ] },
+        ],
+      },
+    },
+    references: [
+      { domain: "supremecourtph.org", name: "Supreme Court PH", headline: "Supreme Court PH's post" },
+      { domain: "lawyerly.ph", name: "Lawyerly", headline: "Cyber Libel: Liability for Posting in Social Media" },
+      { domain: "supremecourtph.org", name: "Supreme Court PH", headline: "Supreme Court Guideposts for Social Media Authorship" },
+    ],
+    discussionGuide: [
+      {
+        q: "Do you think a person should be punished for something they posted online, even if they say they were joking or angry?",
+        follow: ["Where do you think the line should be between a joke and a real threat?"],
+      },
+      {
+        q: "Why is it sometimes hard to prove who really wrote a social media post?",
+        follow: ["Have you ever shared a social media account with a family member or friend?"],
+      },
+      {
+        q: "The writer says treating every angry post as a crime would 'silence normal speech.' Do you agree with this concern?",
+        follow: ["Do you think people should be more careful about what they post, knowing it could be used in court?"],
+      },
+    ],
+  },
+  {
+    slug: "defense-or-violence",
+    ready: true,
+    publishedAt: "2026-08-03",
+    emoji: "⚖️",
+    variant: "law",
+    topicLabel: "Law",
+    topicTitle: "Crime, Law & Justice",
+    title: "The Line Between Defense and Violence",
+    dek: "Self-defense protects people, but it should never become a free pass for uncontrolled force.",
+    editions: {
+      plain: {
+        label: "Plain Edition",
+        range: "A1–A2",
+        readTime: "2 min read",
+        wordCount: 159,
+        blocks: [
+          { type: "p", parts: [
+            { t: "If someone attacks you, can you fight back? In some cases, yes. The law calls this self-defense." },
+          ] },
+          { type: "p", parts: [
+            { t: "But self-defense has rules. Three things must be true: someone attacked you first, your response was necessary, and you did not start the problem yourself." },
+          ] },
+          { type: "p", parts: [
+            { t: "In real life, this is hard. People feel scared or angry in the moment. Later, a court must decide calmly if the response matched the danger." },
+          ] },
+          { type: "p", parts: [
+            { t: "For example: if someone only slaps you, but you use a weapon and seriously hurt them, that is probably too much force. The law may not call that self-defense anymore." },
+          ] },
+          { type: "p", parts: [
+            { t: "These rules are not just small details. They protect people from fake self-defense claims. They also stop people from starting a fight and then saying it was “self-defense.”" },
+          ] },
+          { type: "p", parts: [
+            { t: "Self-defense is important. It protects real victims. But it only works well when the rules stay strict. If the rules become too loose, people could use “self-defense” as an excuse for real violence." },
+          ] },
+        ],
+      },
+      polished: {
+        label: "Polished Edition",
+        range: "B1–B2",
+        readTime: "3 min read",
+        wordCount: 256,
+        blocks: [
+          { type: "p", parts: [
+            { t: "Self-defense is one of the most human ideas in law: if someone attacks you, you may fight back. Philippine law protects this through a " },
+            { g: "justifying circumstance", pos: "noun", def: "a legal reason that removes criminal blame for an act that would otherwise be a crime" },
+            { t: " that can remove criminal blame when unlawful aggression, reasonable necessity, and lack of provocation all exist together" },
+            { c: 1 },
+            { t: ". The problem is that real life does not slow down for careful legal thinking." },
+          ] },
+          { type: "p", parts: [
+            { t: "In the moment, people feel afraid, angry, or shocked. Afterward, courts must calmly decide whether the reaction matched the danger. One real case reminds us that self-defense does not survive without clear proof of an attack and a response that fits it" },
+            { c: 2 },
+            { t: ". A simple example often used: if someone is only slapped, but answers with deadly force, that “defense” becomes very hard to justify." },
+          ] },
+          { type: "p", parts: [
+            { t: "The law's conditions for self-defense are not just technical rules — they are moral limits. Unlawful " },
+            { g: "aggression", pos: "noun", def: "a real, active attack or serious threat, not just words or a bad feeling" },
+            { t: " protects against fake self-defense claims where no real threat existed. Reasonable necessity forces us to ask: was that level of force truly needed to stop the harm?" },
+            { c: 3 },
+            { t: " And having no provocation stops people from starting a bad situation and then claiming protection from it." },
+          ] },
+          { type: "p", parts: [
+            { t: "As legal ideas keep changing, some may argue for wider self-defense rights, as a way to give people more power to protect themselves. But widening the idea too far risks turning fear into an excuse for real violence." },
+          ] },
+          { type: "p", parts: [
+            { t: "Self-defense keeps its value only when it stays strict. It should protect people who truly had no better choice — not people who made the conflict worse, or answered a small wrong with a deadly reply" },
+            { c: 1 },
+            { t: "." },
+          ] },
+        ],
+      },
+      precise: {
+        label: "Precise Edition",
+        range: "C1–C2",
+        readTime: "2 min read",
+        wordCount: 249,
+        blocks: [
+          { type: "p", parts: [
+            { t: "Self-defense represents one of the most intuitively human doctrines in law: an entitlement to resist when attacked. Philippine law codifies this through a " },
+            { g: "justifying circumstance", pos: "noun", def: "a recognized legal ground that eliminates criminal liability for conduct that would otherwise constitute an offense" },
+            { t: " that extinguishes criminal liability where unlawful aggression, reasonable necessity, and the absence of sufficient provocation coincide" },
+            { c: 1 },
+            { t: ". The complication is that lived experience rarely accommodates the deliberative pace of legal analysis." },
+          ] },
+          { type: "p", parts: [
+            { t: "In the immediate moment, individuals are governed by fear, anger, or shock. Only afterward must courts dispassionately assess whether the response was commensurate with the threat. Precedent affirms that the defense cannot survive absent clear proof of both aggression and proportionality" },
+            { c: 2 },
+            { t: ". A frequently cited illustration suffices: where an individual is merely slapped yet responds with lethal force, such a “defense” becomes exceedingly difficult to sustain." },
+          ] },
+          { type: "p", parts: [
+            { t: "The statutory conditions governing self-defense are not mere technicalities; they constitute moral boundaries. Unlawful " },
+            { g: "aggression", pos: "noun", def: "an actual, imminent attack or serious threat — not mere words or subjective apprehension" },
+            { t: " forecloses spurious claims of self-defense where no genuine threat existed. Reasonable necessity compels an inquiry into whether that degree of force was truly indispensable to averting harm" },
+            { c: 3 },
+            { t: ". And the absence of provocation prevents an individual from precipitating a confrontation and subsequently invoking its protection." },
+          ] },
+          { type: "p", parts: [
+            { t: "As legal discourse evolves, some advocate for an expanded conception of self-defense, framed as empowering individuals to protect themselves more freely. Yet an overly permissive standard risks transmuting fear into a categorical license for violence." },
+          ] },
+          { type: "p", parts: [
+            { t: "Self-defense retains its normative value only insofar as it remains rigorously constrained — shielding those who genuinely possessed no viable alternative, rather than those who escalated conflict or answered a trivial provocation with lethal retaliation" },
+            { c: 1 },
+            { t: "." },
+          ] },
+        ],
+      },
+    },
+    references: [
+      { domain: "lawfirmphilippines.com", name: "Law Firm Philippines", headline: "Self-Defense - Law Firm in Philippines" },
+      { domain: "philippinelawblog.com", name: "Philippine Law Blog", headline: "Philippine self-defense law requires unlawful aggression" },
+      { domain: "revisedpenalcode.ph", name: "Revised Penal Code", headline: "Philippines Revised penal code" },
+    ],
+    discussionGuide: [
+      {
+        q: "Do you think the rules for self-defense in the article are fair? Why or why not?",
+        follow: ["Can you think of a situation where you might need to defend yourself?"],
+      },
+      {
+        q: "The article gives an example: someone is slapped, but responds with a weapon. Why does the law see this as 'too much force'?",
+        follow: ["How do you think a court decides how much force is 'enough'?"],
+      },
+      {
+        q: "The writer worries that a wider idea of self-defense could become 'an excuse for real violence.' Do you agree with this worry?",
+        follow: ["Should the rules ever be less strict? In what situation?"],
+      },
+    ],
+  },
+  {
+    slug: "one-testimony-then-another",
+    ready: true,
+    publishedAt: "2026-08-03",
+    emoji: "🗣️",
+    variant: "law",
+    topicLabel: "Law",
+    topicTitle: "Crime, Law & Justice",
+    title: "One Testimony, Then Another",
+    dek: "When witnesses change their stories, courts walk a narrow path between protecting truth and preventing manipulation.",
+    editions: {
+      plain: {
+        label: "Plain Edition",
+        range: "A1–A2",
+        readTime: "2 min read",
+        wordCount: 171,
+        blocks: [
+          { type: "p", parts: [
+            { t: "Sometimes, a witness in a court case suddenly says, “I want to change my story.” This is called a recantation." },
+          ] },
+          { type: "p", parts: [
+            { t: "This moment feels very tense. The new story could be the truth. Or it could be a lie, made because of fear or pressure." },
+          ] },
+          { type: "p", parts: [
+            { t: "Because of this, courts do not simply believe the new story right away. They ask: why did the story change? Is the new version believable? Does it match the other proof in the case?" },
+          ] },
+          { type: "p", parts: [
+            { t: "Real cases show that courts study these changes very carefully before deciding what to believe." },
+          ] },
+          { type: "p", parts: [
+            { t: "Courts must be careful in two ways. First, they must remember that real witnesses can feel scared or pressured to change their story. Second, they must remember that some people change their story on purpose, to help the accused person avoid punishment." },
+          ] },
+          { type: "p", parts: [
+            { t: "The goal is balance. A court should not believe every new story blindly. But a court should not ignore a new story either. Judges must explain clearly why they believe one version more than the other." },
+          ] },
+        ],
+      },
+      polished: {
+        label: "Polished Edition",
+        range: "B1–B2",
+        readTime: "3 min read",
+        wordCount: 257,
+        blocks: [
+          { type: "p", parts: [
+            { t: "Few moments in a trial feel as tense as when a witness suddenly says, “I want to change my statement.” This is called " },
+            { g: "recantation", pos: "noun", def: "when a witness takes back an earlier statement and offers a new version" },
+            { t: ", and it can flip a case on its head, especially when that witness was central to the story" },
+            { c: 1 },
+            { t: ". But the law cannot simply treat every new story as the real truth." },
+          ] },
+          { type: "p", parts: [
+            { t: "Courts know this well. That is why judges ask why the testimony changed, whether the new version is believable, and how well it fits with all the other evidence" },
+            { c: 2 },
+            { t: ". In real cases, the Supreme Court has treated retraction as a serious issue — one that may matter, but never automatically." },
+          ] },
+          { type: "p", parts: [
+            { t: "This caution makes sense, because recantations can come from very different places. On one hand, witnesses can be pressured, threatened, or misled, and changing a statement may be their only way to finally tell the truth. On the other hand, a new story can also be used to protect the accused, or to quietly disrupt justice" },
+            { c: 3 },
+            { t: "." },
+          ] },
+          { type: "p", parts: [
+            { t: "A justice system that trusts every new story without question invites manipulation. But a system that refuses to listen to any retraction risks trapping itself in old mistakes. The real balance sits in clear, transparent reasoning — where judges explain openly why they believed one version over the other, and which independent facts supported that choice" },
+            { c: 2 },
+            { t: "." },
+          ] },
+          { type: "p", parts: [
+            { t: "“One testimony, then another” is not just courtroom drama. It is a test of how deeply a court respects both truth and human pressure — and judges should be expected to show their reasoning clearly, especially when a story changes." },
+          ] },
+        ],
+      },
+      precise: {
+        label: "Precise Edition",
+        range: "C1–C2",
+        readTime: "2 min read",
+        wordCount: 234,
+        blocks: [
+          { type: "p", parts: [
+            { t: "Few moments within a trial generate as much tension as a witness's sudden declaration: “I wish to amend my statement.” This phenomenon, termed " },
+            { g: "recantation", pos: "noun", def: "the formal withdrawal of a prior statement in favor of a revised account" },
+            { t: ", can upend a case entirely, particularly where that witness occupied a central evidentiary role" },
+            { c: 1 },
+            { t: ". Yet the law cannot treat every revised account as inherently truthful." },
+          ] },
+          { type: "p", parts: [
+            { t: "Courts are acutely aware of this. Judges therefore interrogate why the testimony shifted, whether the revised version is credible, and how consistently it aligns with the remaining body of evidence" },
+            { c: 2 },
+            { t: ". Jurisprudence has consistently treated retraction as a serious, though never dispositive, consideration." },
+          ] },
+          { type: "p", parts: [
+            { t: "This caution is warranted, given that recantations emerge from disparate origins. On one hand, witnesses may be coerced, threatened, or misled, such that a revised statement represents their sole avenue toward truth. On the other, a new account may equally serve to shield the accused or subtly subvert the administration of justice" },
+            { c: 3 },
+            { t: "." },
+          ] },
+          { type: "p", parts: [
+            { t: "A judicial system that credits every revised narrative without scrutiny invites manipulation; one that categorically disregards retraction risks perpetuating prior error. The requisite equilibrium resides in transparent, well-reasoned adjudication — wherein judges articulate explicitly why one account was credited over another, and which independent facts substantiated that determination" },
+            { c: 2 },
+            { t: "." },
+          ] },
+          { type: "p", parts: [
+            { t: "“One testimony, then another” transcends mere courtroom drama; it constitutes a rigorous test of a court's fidelity to both truth and the realities of human coercion — and judges ought to be held to a standard of transparent, articulated reasoning whenever testimony shifts." },
+          ] },
+        ],
+      },
+    },
+    references: [
+      { domain: "witnesslawupdates.com", name: "Witness Law Updates", headline: "What Happens if a Witness Changes their Story in ..." },
+      { domain: "credibilitylaw.org", name: "Credibility Law", headline: "Evaluating the Credibility of a Witness Who Changes Their ..." },
+      { domain: "benchbookjudges.ph", name: "Benchbook for Judges", headline: "EVIDENCE - BENCHBOOK FOR TRIAL COURT JUDGES" },
+    ],
+    discussionGuide: [
+      {
+        q: "Why do you think a witness might change their story in real life?",
+        follow: ["Can you think of a good reason and a bad reason for changing a story?"],
+      },
+      {
+        q: "The article says courts should show both understanding and doubt at the same time. Why do you think both are needed here?",
+        follow: [],
+      },
+      {
+        q: "Do you think judges should always have to explain, in detail, why they believed one version of a story over another?",
+        follow: ["How might this help prevent mistakes in the justice system?"],
+      },
+    ],
+  },
+  {
+    slug: "guilty-without-touching-weapon",
+    ready: true,
+    publishedAt: "2026-08-03",
+    emoji: "🤝",
+    variant: "law",
+    topicLabel: "Law",
+    topicTitle: "Crime, Law & Justice",
+    title: "Guilty Without Touching the Weapon",
+    dek: "Modern criminal law rightly looks beyond the hand that holds the weapon — and asks who else helped make the crime possible.",
+    editions: {
+      plain: {
+        label: "Plain Edition",
+        range: "A1–A2",
+        readTime: "2 min read",
+        wordCount: 169,
+        blocks: [
+          { type: "p", parts: [
+            { t: "It is easy to blame only the person who actually did the crime — the person who used the weapon or sent the harmful message. But the law says other people can be guilty too." },
+          ] },
+          { type: "p", parts: [
+            { t: "People who planned the crime, gave encouragement, or quietly helped can also be punished. Their hands may be “clean,” but their role was still important." },
+          ] },
+          { type: "p", parts: [
+            { t: "For example, a person who plans a crime, gives the weapon, or pushes someone else to act can still be guilty — even without touching the weapon at all." },
+          ] },
+          { type: "p", parts: [
+            { t: "This idea makes sense. Crimes are often a team effort. If only the final actor is punished, other people can hide safely behind them." },
+          ] },
+          { type: "p", parts: [
+            { t: "But the law must still be careful. Not everyone connected to a crime should be blamed. The law asks: did this person's actions really help make the crime possible? Did they share the same bad intention?" },
+          ] },
+          { type: "p", parts: [
+            { t: "If yes, then being “guilty without touching the weapon” is fair. If no, punishing that person would go too far." },
+          ] },
+        ],
+      },
+      polished: {
+        label: "Polished Edition",
+        range: "B1–B2",
+        readTime: "3 min read",
+        wordCount: 252,
+        blocks: [
+          { type: "p", parts: [
+            { t: "It is easy to focus only on the person who actually pulls the trigger, swings the weapon, or sends the harmful message. But criminal law has long recognized that responsibility does not end with the final actor. Planners, encouragers, and quiet helpers can carry real blame too" },
+            { c: 1 },
+            { t: "." },
+          ] },
+          { type: "p", parts: [
+            { t: "The Revised Penal Code makes this clear: criminal " },
+            { g: "liability", pos: "noun", def: "legal responsibility for an action or crime" },
+            { t: " can reach people who commit, cooperate with, or even push others toward an offense" },
+            { c: 1 },
+            { t: ". A person who arranges the meeting, supplies the weapon, designs the plan, or pressures someone else to act may still be punished — even if their own hands stay technically clean" },
+            { c: 2 },
+            { t: "." },
+          ] },
+          { type: "p", parts: [
+            { t: "This idea is not only reasonable — it is necessary. Crimes are often team efforts. If only the visible actor is treated as guilty, it rewards those who quietly hide behind others and treat people like tools. At the same time, the law must be careful not to punish people whose role was too small or too far from the actual crime" },
+            { c: 3 },
+            { t: "." },
+          ] },
+          { type: "p", parts: [
+            { t: "The clearest test is simple: did this person's actions truly make the crime possible, or more likely to happen? Did they share the same bad intention behind it?" },
+            { c: 2 },
+            { t: " If the answer is yes, then being “guilty without touching the weapon” is a fair conclusion, not an unfair stretch of the law." },
+          ] },
+          { type: "p", parts: [
+            { t: "This topic matters because it shows that justice is not fooled by appearances. The law should reach the hidden planner as well as the visible actor — while always demanding careful proof before it expands blame that far" },
+            { c: 1 },
+            { t: "." },
+          ] },
+        ],
+      },
+      precise: {
+        label: "Precise Edition",
+        range: "C1–C2",
+        readTime: "3 min read",
+        wordCount: 250,
+        blocks: [
+          { type: "p", parts: [
+            { t: "It is tempting to attribute culpability solely to the individual who physically executes the offense — the one who pulls the trigger or transmits the harmful message. Criminal law, however, has long recognized that responsibility extends beyond the final actor. Planners, instigators, and unobtrusive collaborators may bear substantive blame as well" },
+            { c: 1 },
+            { t: "." },
+          ] },
+          { type: "p", parts: [
+            { t: "The Revised Penal Code articulates this expressly: criminal " },
+            { g: "liability", pos: "noun", def: "legal accountability for one's role in an offense, whether direct or indirect" },
+            { t: " may extend to those who commit, cooperate in, or induce the commission of an offense" },
+            { c: 1 },
+            { t: ". An individual who arranges the encounter, furnishes the weapon, devises the scheme, or coerces another into action may still incur punishment, notwithstanding hands that remain nominally unsullied" },
+            { c: 2 },
+            { t: "." },
+          ] },
+          { type: "p", parts: [
+            { t: "This principle is not merely defensible; it is indispensable. Criminal enterprises are frequently collaborative undertakings. Confining guilt to the visible actor would reward those who conceal themselves behind intermediaries and instrumentalize other human beings. Simultaneously, the law must guard against extending liability to individuals whose involvement was too attenuated or peripheral to satisfy the requisite threshold of participation" },
+            { c: 3 },
+            { t: "." },
+          ] },
+          { type: "p", parts: [
+            { t: "The most incisive test is elegantly simple: did this individual's conduct meaningfully enable or render more probable the commission of the offense? Did they share the underlying criminal intent?" },
+            { c: 2 },
+            { t: " Where the answer is affirmative, “guilt without touching the weapon” constitutes a just conclusion rather than an unwarranted expansion of liability." },
+          ] },
+          { type: "p", parts: [
+            { t: "This principle carries weight because it demonstrates that justice is not deceived by appearances. The law ought to reach the concealed architect no less than the visible actor — while consistently demanding rigorous proof before liability is extended that far" },
+            { c: 1 },
+            { t: "." },
+          ] },
+        ],
+      },
+    },
+    references: [
+      { domain: "actrevpenalcode.ph", name: "ACT Revised Penal Code", headline: "Revised Penal Code" },
+      { domain: "criminalliability.ph", name: "Criminal Liability PH", headline: "Persons Criminally Liable and Degree of Participation" },
+      { domain: "revisedpenalcode.ph", name: "Revised Penal Code", headline: "Criminal liability shall be incurred" },
+    ],
+    discussionGuide: [
+      {
+        q: "Do you think someone who only planned a crime should be punished as much as the person who actually did it?",
+        follow: ["Why or why not?"],
+      },
+      {
+        q: "The article says crimes are often 'team efforts.' Can you think of an example — real or from a movie — where more than one person was responsible for a crime?",
+        follow: [],
+      },
+      {
+        q: "Where do you think the law should draw the line, so that someone with only a small, distant connection to a crime isn't unfairly blamed?",
+        follow: ["What would 'too small a role' look like to you?"],
       },
     ],
   },
