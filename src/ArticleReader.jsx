@@ -87,19 +87,20 @@ function SiteNav({ navigate }) {
       <button type="button" className="ar-nav-brand" onClick={() => navigate("/library")}>
         <img src="/logo-sentivo.png" alt="" className="ar-nav-logo" />entivo
       </button>
-      <div className="ar-nav-tabs">
+      <nav className="ar-nav-tabs">
         <button type="button" className="ar-nav-tab" onClick={() => navigate("/library?cat=All")}>Today</button>
         {NAV_CATEGORIES.map((cat) => (
           <button
             key={cat}
             type="button"
-            className="ar-nav-tab"
+            className={`ar-nav-tab ${cat === "Articles" ? "is-active" : ""}`}
             onClick={() => navigate(`/library?cat=${encodeURIComponent(cat)}`)}
           >
             {cat}
           </button>
         ))}
-      </div>
+      </nav>
+      <button type="button" className="ar-nav-login" onClick={() => navigate("/library")}>Log in</button>
     </header>
   );
 }
@@ -252,10 +253,20 @@ const CSS = `
 
 .ar-missing { max-width: 640px; margin: 60px auto; text-align: center; color: var(--muted); font-family: 'Quicksand', sans-serif; }
 
-.ar-nav { background: var(--card); border-bottom: 1px solid var(--hair); }
+.ar-nav {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  padding: 12px 40px;
+  background: var(--card);
+  box-shadow: 0 1px 0 var(--hair), 0 4px 14px rgba(27,42,74,0.05);
+  position: relative;
+  z-index: 1;
+}
 .ar-nav-brand {
   display: flex;
   align-items: center;
+  flex-shrink: 0;
   font-family: 'Fredoka', sans-serif;
   font-weight: 700;
   font-size: 19px;
@@ -263,31 +274,57 @@ const CSS = `
   background: none;
   border: none;
   cursor: pointer;
-  padding: 14px 40px 8px;
+  padding: 0;
 }
-.ar-nav-logo { height: 28px; width: auto; display: block; margin-right: -4px; }
+.ar-nav-logo { height: 30px; width: auto; display: block; margin-right: -4px; }
 .ar-nav-tabs {
+  flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 2px;
-  padding: 2px 40px 10px;
+  gap: 4px;
   font-family: 'Quicksand', sans-serif;
   overflow-x: auto;
 }
 .ar-nav-tab {
-  font-size: 12.5px;
+  font-size: 13px;
   font-weight: 700;
   letter-spacing: 0.01em;
   color: var(--ink-soft);
   background: none;
   border: none;
-  padding: 7px 15px;
+  padding: 8px 16px;
   border-radius: 999px;
   cursor: pointer;
   white-space: nowrap;
+  transition: background 0.15s ease, color 0.15s ease;
 }
 .ar-nav-tab:hover { color: var(--coral-dark); background: var(--coral-soft); }
+.ar-nav-tab.is-active { background: var(--ink); color: #FFFFFF; }
+.ar-nav-tab.is-active:hover { background: var(--ink); color: #FFFFFF; }
+.ar-nav-login {
+  flex-shrink: 0;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ink);
+  background: none;
+  border: 1.5px solid var(--ink);
+  border-radius: 999px;
+  padding: 7px 18px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.ar-nav-login:hover { background: var(--ink); color: #FFFFFF; }
+
+@media (max-width: 1000px) {
+  .ar-nav-tabs { justify-content: flex-start; }
+}
+
+@media (max-width: 640px) {
+  .ar-nav { padding: 10px 18px; gap: 14px; }
+  .ar-nav-login { display: none; }
+}
 
 .ar-banner {
   max-width: var(--content-w);
