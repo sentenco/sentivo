@@ -80,6 +80,9 @@ export default function ArticlePlayerPage() {
   }
 
   const ed = article.editions[edition];
+  const publishedLabel = article.publishedAt
+    ? new Date(`${article.publishedAt}T00:00:00`).toLocaleDateString(undefined, { month: "long", day: "numeric", year: "numeric" })
+    : null;
 
   return (
     <div className="app-shell" onClick={() => setOpenKey(null)}>
@@ -112,6 +115,8 @@ export default function ArticlePlayerPage() {
         <h1 className="app-title"><StyledTitle title={article.title} /></h1>
 
         <div className="app-byline">
+          {publishedLabel && <span>{publishedLabel}</span>}
+          {publishedLabel && <span className="app-dot">·</span>}
           <span>{article.topicTitle}</span>
         </div>
 
@@ -206,7 +211,6 @@ const CSS = `
   filter: none;
 }
 .app-hero--banner img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
-.app-hero { border-bottom: 3px solid #1B2A4A; }
 
 .app-title {
   flex-shrink: 0;
@@ -245,6 +249,7 @@ const CSS = `
   columns: 2;
   column-gap: 28px;
   column-fill: auto;
+  column-rule: 1px solid #E2DED5;
   text-align: justify;
   padding: 0 24px;
 }
