@@ -116,7 +116,7 @@ export default function ArticleReader() {
         </button>
         <span className="ar-crumb">Teacher's guide · {article.topicTitle}</span>
         <button type="button" className="ar-present-btn" onClick={() => openPlayer(article.slug)}>
-          🖥️ Present to class
+          🖥️ Open Editorial View
         </button>
       </header>
 
