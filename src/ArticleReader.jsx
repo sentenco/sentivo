@@ -241,7 +241,7 @@ const CSS = `
   --coral-soft: rgba(255,107,74,0.12);
   --navy-soft: rgba(27,42,74,0.07);
   --hair: rgba(27,42,74,0.12);
-  --content-w: min(88vw, 1040px);
+  --content-w: min(92vw, 1200px);
   width: 100%;
   min-height: 100vh;
   background: var(--paper);
@@ -293,6 +293,7 @@ const CSS = `
   max-width: var(--content-w);
   margin: 0 auto;
   overflow: hidden;
+  border: 2px solid var(--ink);
 }
 .ar-banner img { width: 100%; height: auto; display: block; }
 
