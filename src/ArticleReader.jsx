@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { getArticle } from "./articlesData";
+import { useAuth } from "./AuthContext";
 import editorialBanner from "./assets/brand/editorial-banner.jpg";
 
 const EDITION_KEYS = ["plain", "polished", "precise"];
@@ -81,7 +82,19 @@ function Paragraph({ parts, blockIdx, openKey, setOpenKey, references, year, onC
   );
 }
 
+function NavUserIcon() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+      <circle cx="12" cy="8" r="4" />
+      <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" />
+    </svg>
+  );
+}
+
 function SiteNav({ navigate }) {
+  const { user, signOut } = useAuth();
+  const [menuOpen, setMenuOpen] = useState(false);
+
   return (
     <header className="ar-nav">
       <button type="button" className="ar-nav-brand" onClick={() => navigate("/library")}>
@@ -100,7 +113,26 @@ function SiteNav({ navigate }) {
           </button>
         ))}
       </nav>
-      <button type="button" className="ar-nav-login" onClick={() => navigate("/library")}>Log in</button>
+      {!user ? (
+        <button type="button" className="ar-nav-login" onClick={() => navigate("/library")}>Log in</button>
+      ) : (
+        <div className="ar-nav-account">
+          <button
+            type="button"
+            className="ar-nav-avatar"
+            onClick={(e) => { e.stopPropagation(); setMenuOpen((m) => !m); }}
+            aria-label="Account menu"
+          >
+            <NavUserIcon />
+          </button>
+          {menuOpen && (
+            <div className="ar-nav-menu">
+              <button type="button" onClick={() => navigate("/library")}>My account</button>
+              <button type="button" className="ar-nav-logout" onClick={() => { signOut(); setMenuOpen(false); }}>Log out</button>
+            </div>
+          )}
+        </div>
+      )}
     </header>
   );
 }
@@ -229,7 +261,7 @@ export default function ArticleReader() {
 }
 
 const CSS = `
-@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&family=Quicksand:wght@500;600;700&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&family=Quicksand:wght@500;600;700&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&family=Playfair+Display:wght@700;900&display=swap');
 
 .ar-shell {
   --ink: #1B2A4A;
@@ -317,6 +349,47 @@ const CSS = `
 }
 .ar-nav-login:hover { background: var(--ink); color: #FFFFFF; }
 
+.ar-nav-account { position: relative; flex-shrink: 0; }
+.ar-nav-avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: none;
+  background: var(--ink);
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.ar-nav-menu {
+  position: absolute;
+  top: 42px;
+  right: 0;
+  background: var(--card);
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(27,42,74,0.18);
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  min-width: 160px;
+  z-index: 10;
+}
+.ar-nav-menu button {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 600;
+  font-size: 13px;
+  color: var(--ink);
+  background: none;
+  border: none;
+  text-align: left;
+  padding: 9px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.ar-nav-menu button:hover { background: var(--coral-soft); }
+.ar-nav-menu .ar-nav-logout { color: var(--coral-dark); margin-top: 2px; border-top: 1px solid var(--hair); padding-top: 10px; border-radius: 0 0 8px 8px; }
+
 @media (max-width: 1000px) {
   .ar-nav-tabs { justify-content: flex-start; }
 }
@@ -336,12 +409,12 @@ const CSS = `
 .ar-article { max-width: var(--content-w); margin: 0 auto; padding: 0 24px 60px; }
 
 .ar-title {
-  font-family: 'Fredoka', sans-serif;
-  font-weight: 700;
-  font-size: 34px;
-  line-height: 1.15;
+  font-family: 'Playfair Display', serif;
+  font-weight: 900;
+  font-size: 36px;
+  line-height: 1.18;
   margin: 0 auto 22px;
-  max-width: 640px;
+  max-width: 680px;
   text-align: center;
   text-wrap: balance;
 }
