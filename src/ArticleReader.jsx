@@ -241,7 +241,7 @@ const CSS = `
   --coral-soft: rgba(255,107,74,0.12);
   --navy-soft: rgba(27,42,74,0.07);
   --hair: rgba(27,42,74,0.12);
-  --content-w: 760px;
+  --content-w: min(88vw, 1040px);
   width: 100%;
   min-height: 100vh;
   background: var(--paper);
