@@ -26,7 +26,7 @@ function Gloss({ word, pos, def, glossKey, openKey, setOpenKey }) {
   );
 }
 
-function Paragraph({ parts, blockIdx, openKey, setOpenKey, onCiteClick }) {
+function Paragraph({ parts, blockIdx, openKey, setOpenKey }) {
   return (
     <p>
       {parts.map((part, i) => {
@@ -44,11 +44,7 @@ function Paragraph({ parts, blockIdx, openKey, setOpenKey, onCiteClick }) {
           );
         }
         if (part.c !== undefined) {
-          return (
-            <sup key={i} className="app-cite" onClick={(e) => { e.stopPropagation(); onCiteClick(part.c); }}>
-              [{part.c}]
-            </sup>
-          );
+          return <sup key={i} className="app-cite">[{part.c}]</sup>;
         }
         return <span key={i}>{part.t}</span>;
       })}
@@ -84,14 +80,6 @@ export default function ArticlePlayerPage() {
   }
 
   const ed = article.editions[edition];
-  const publishedLabel = article.publishedAt
-    ? new Date(`${article.publishedAt}T00:00:00`).toLocaleDateString(undefined, { month: "long", day: "numeric", year: "numeric" })
-    : null;
-
-  function scrollToRef(n) {
-    const el = document.getElementById(`app-ref-${n}`);
-    if (el) el.scrollIntoView({ behavior: "smooth", block: "center" });
-  }
 
   return (
     <div className="app-shell" onClick={() => setOpenKey(null)}>
@@ -124,13 +112,7 @@ export default function ArticlePlayerPage() {
         <h1 className="app-title"><StyledTitle title={article.title} /></h1>
 
         <div className="app-byline">
-          <span>Sentivo Editorial</span>
-          {publishedLabel && <span className="app-dot">·</span>}
-          {publishedLabel && <span>{publishedLabel}</span>}
-          <span className="app-dot">·</span>
           <span>{article.topicTitle}</span>
-          <span className="app-dot">·</span>
-          <span>{ed.readTime}</span>
         </div>
 
         <div className="app-columns">
@@ -144,18 +126,9 @@ export default function ArticlePlayerPage() {
                 blockIdx={i}
                 openKey={openKey}
                 setOpenKey={setOpenKey}
-                onCiteClick={scrollToRef}
               />
             )
           )}
-        </div>
-
-        <div className="app-references">
-          {article.references.map((r, i) => (
-            <span className="app-ref" id={`app-ref-${i + 1}`} key={i}>
-              [{i + 1}] {r.domain}
-            </span>
-          ))}
         </div>
       </div>
     </div>
@@ -233,11 +206,12 @@ const CSS = `
   filter: none;
 }
 .app-hero--banner img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
+.app-hero { border-bottom: 3px solid #1B2A4A; }
 
 .app-title {
   flex-shrink: 0;
   font-family: 'Playfair Display', serif;
-  font-weight: 700;
+  font-weight: 900;
   font-size: clamp(22px, 3vh, 28px);
   line-height: 1.22;
   letter-spacing: 0;
@@ -251,7 +225,8 @@ const CSS = `
   flex-shrink: 0;
   font-family: 'Source Serif 4', serif;
   font-size: 12px;
-  letter-spacing: 0.04em;
+  font-weight: 600;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: #8A8578;
   text-align: center;
@@ -269,7 +244,7 @@ const CSS = `
   color: #262626;
   columns: 2;
   column-gap: 28px;
-  column-rule: 1px solid #E2DED5;
+  column-fill: auto;
   text-align: justify;
   padding: 0 24px;
 }
@@ -310,7 +285,6 @@ const CSS = `
   font-weight: 700;
   vertical-align: super;
   margin-left: 1px;
-  cursor: pointer;
 }
 
 .app-pullquote {
@@ -322,20 +296,6 @@ const CSS = `
   color: #171717;
   margin: 6px 0 24px;
   break-inside: avoid;
-}
-
-.app-references {
-  flex-shrink: 0;
-  margin: 0 auto;
-  padding: 10px 24px;
-  border-top: 1px solid #EAE7E0;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 3px 14px;
-  justify-content: center;
-  font-family: 'Source Serif 4', serif;
-  font-size: 11px;
-  color: #A39B87;
 }
 
 @media (max-width: 480px) {
