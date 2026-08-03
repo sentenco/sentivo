@@ -5,7 +5,7 @@ import { useAuth } from "./AuthContext";
 import editorialBanner from "./assets/brand/editorial-banner.jpg";
 
 const EDITION_KEYS = ["plain", "polished", "precise"];
-const NAV_CATEGORIES = ["Articles", "Reading", "Grammar", "Vocabulary", "Writing", "Listening", "Speaking"];
+const NAV_CATEGORIES = ["Articles", "Speaking", "Reading", "Grammar", "Vocabulary", "Writing", "Listening"];
 
 // Opens the clean, student-facing reading view as a standalone popup --
 // matching the FORGE/ASCEND/Verb Tenses chrome-less window.open pattern.

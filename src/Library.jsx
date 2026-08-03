@@ -19,7 +19,7 @@ import { ARTICLES, ARTICLE_TOPICS } from "./articlesData";
 import VocabularyGames from "./VocabularyGames";
 import WritingActivities from "./WritingActivities";
 
-const CATEGORIES = ["Articles", "Reading", "Grammar", "Vocabulary", "Writing", "Listening", "Speaking"];
+const CATEGORIES = ["Articles", "Speaking", "Reading", "Grammar", "Vocabulary", "Writing", "Listening"];
 
 // "Today" launch date -- the day count in the Today masthead (Vol. 1, No. X)
 // counts up from here, like a real newspaper's running issue number.
