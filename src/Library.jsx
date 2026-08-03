@@ -1551,7 +1551,7 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .gc-brief-col:hover .col-explain { opacity: 1; visibility: visible; transform: translateY(0); }
 
 /* ── Teacher tools: Parts of Speech + Grammar Checker ── */
-.gc-toolsrow { display: grid; grid-template-columns: minmax(240px, 380px) 1fr; gap: 16px; margin: 14px 0 2px; }
+.gc-toolsrow { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin: 14px 0 2px; }
 .gc-widget--grammar { border-top: 3px solid var(--navy); }
 
 .gc-grammar-form { display: flex; flex-direction: column; gap: 8px; }
