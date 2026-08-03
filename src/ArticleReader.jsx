@@ -47,7 +47,7 @@ function Gloss({ word, pos, def, glossKey, openKey, setOpenKey }) {
   );
 }
 
-function Paragraph({ parts, blockIdx, openKey, setOpenKey, onCiteClick }) {
+function Paragraph({ parts, blockIdx, openKey, setOpenKey }) {
   return (
     <p>
       {parts.map((part, i) => {
@@ -65,11 +65,9 @@ function Paragraph({ parts, blockIdx, openKey, setOpenKey, onCiteClick }) {
           );
         }
         if (part.c !== undefined) {
-          return (
-            <sup key={i} className="ar-cite" onClick={(e) => { e.stopPropagation(); onCiteClick(part.c); }}>
-              [{part.c}]
-            </sup>
-          );
+          // Numbered [1][2][3] markers are dropped from the reading body --
+          // sources are still listed in APA-style form under References.
+          return null;
         }
         return <span key={i}>{part.t}</span>;
       })}
@@ -104,11 +102,9 @@ export default function ArticleReader() {
   const publishedLabel = article.publishedAt
     ? new Date(`${article.publishedAt}T00:00:00`).toLocaleDateString(undefined, { month: "long", day: "numeric", year: "numeric" })
     : null;
-
-  function scrollToRef(n) {
-    const el = document.getElementById(`ar-ref-${n}`);
-    if (el) el.scrollIntoView({ behavior: "smooth", block: "center" });
-  }
+  const publishedYear = article.publishedAt
+    ? new Date(`${article.publishedAt}T00:00:00`).getFullYear()
+    : null;
 
   return (
     <div className="ar-shell" onClick={() => setOpenKey(null)}>
@@ -127,11 +123,15 @@ export default function ArticleReader() {
         <div className="ar-masthead">
           <span className="ar-eyebrow">{article.topicTitle}</span>
           <span className="ar-dot">·</span>
-          <span className="ar-time">📖 {ed.readTime} · {ed.wordCount} words</span>
+          <span className="ar-time">{ed.readTime} · {ed.wordCount} words</span>
         </div>
 
         <h1 className="ar-title">{article.title}</h1>
         <p className="ar-dek">{article.dek}</p>
+
+        <div className="ar-hero">
+          {article.image ? <img src={article.image} alt="" /> : <span className="ar-hero-emoji">{article.emoji}</span>}
+        </div>
 
         <div className="ar-switch">
           {EDITION_KEYS.map((k) => (
@@ -141,21 +141,14 @@ export default function ArticleReader() {
               className={`ar-ed-btn ${edition === k ? "is-active" : ""}`}
               onClick={() => setEdition(k)}
             >
-              <span className="ar-ed-name">{article.editions[k].label}</span>
+              <span className="ar-ed-name">{article.editions[k].label.replace(/ Edition$/, "")}</span>
               <span className="ar-ed-range">{article.editions[k].range}</span>
             </button>
           ))}
         </div>
         <p className="ar-ed-hint">Same story, three reading levels — switch editions to match your class.</p>
 
-        <div className="ar-byline">
-          <span className="ar-byline-avatar">SE</span>
-          <span>Sentivo Editorial{publishedLabel ? ` · Published ${publishedLabel}` : ""}</span>
-        </div>
-
-        <div className="ar-hero">
-          {article.image ? <img src={article.image} alt="" /> : <span className="ar-hero-emoji">{article.emoji}</span>}
-        </div>
+        {publishedLabel && <p className="ar-published">Published {publishedLabel}</p>}
 
         <div className="ar-body">
           {ed.blocks.map((block, i) =>
@@ -168,7 +161,6 @@ export default function ArticleReader() {
                 blockIdx={i}
                 openKey={openKey}
                 setOpenKey={setOpenKey}
-                onCiteClick={scrollToRef}
               />
             )
           )}
@@ -176,12 +168,9 @@ export default function ArticleReader() {
           <div className="ar-references">
             <div className="ar-refs-title">References</div>
             {article.references.map((r, i) => (
-              <div className="ar-ref-row" id={`ar-ref-${i + 1}`} key={i}>
-                <span className="ar-ref-num">{i + 1}</span>
-                <span className="ar-ref-domain">{r.domain}</span>
-                <span className="ar-ref-dash">—</span>
-                <span className="ar-ref-headline">{r.headline}</span>
-              </div>
+              <p className="ar-ref-row" key={i}>
+                {r.domain}.{publishedYear ? ` (${publishedYear}).` : ""} {r.headline}.
+              </p>
             ))}
           </div>
         </div>
@@ -207,18 +196,16 @@ const CSS = `
 @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&family=Quicksand:wght@500;600;700&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap');
 
 .ar-shell {
-  --ink: #2B2A4A;
-  --paper: #FBF8F1;
+  --ink: #1B2A4A;
+  --paper: #F6F7FA;
   --card: #FFFFFF;
-  --ink-soft: #57544A;
-  --muted: #8A8577;
-  --rust: #7C5CFC;
-  --rust-soft: rgba(124,92,252,0.12);
-  --ochre: #C97A2E;
-  --ochre-soft: rgba(201,122,46,0.14);
-  --dusk: #0F9E90;
-  --dusk-soft: rgba(15,158,144,0.12);
-  --hair: rgba(43,42,74,0.12);
+  --ink-soft: #4A5578;
+  --muted: #7A84A0;
+  --coral: #FF6B4A;
+  --coral-dark: #E0502F;
+  --coral-soft: rgba(255,107,74,0.12);
+  --navy-soft: rgba(27,42,74,0.07);
+  --hair: rgba(27,42,74,0.12);
   width: 100%;
   min-height: 100vh;
   background: var(--paper);
@@ -260,7 +247,7 @@ const CSS = `
   font-weight: 700;
   font-size: 13px;
   color: #FFFFFF;
-  background: var(--rust);
+  background: var(--coral);
   border: none;
   border-radius: 999px;
   padding: 8px 16px;
@@ -271,17 +258,28 @@ const CSS = `
 
 .ar-article { max-width: 720px; margin: 0 auto; padding: 34px 24px 60px; }
 
-.ar-masthead { display: flex; align-items: center; gap: 8px; margin-bottom: 16px; font-family: 'Quicksand', sans-serif; }
-.ar-eyebrow { font-weight: 800; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--dusk); }
+.ar-masthead {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+  font-family: 'Quicksand', sans-serif;
+  text-align: center;
+}
+.ar-eyebrow { font-weight: 800; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink); }
 .ar-dot { color: var(--hair); }
-.ar-time { font-size: 11.5px; color: var(--muted); margin-left: auto; }
+.ar-time { font-size: 11.5px; color: var(--muted); }
 
 .ar-title {
   font-family: 'Fredoka', sans-serif;
   font-weight: 700;
   font-size: 34px;
   line-height: 1.15;
-  margin: 0 0 10px;
+  margin: 0 auto 10px;
+  max-width: 640px;
+  text-align: center;
   text-wrap: balance;
 }
 .ar-dek {
@@ -289,18 +287,44 @@ const CSS = `
   font-size: 16.5px;
   color: var(--ink-soft);
   line-height: 1.5;
-  margin: 0 0 20px;
-  max-width: 640px;
+  margin: 0 auto 26px;
+  max-width: 560px;
+  text-align: center;
+}
+
+.ar-hero {
+  aspect-ratio: 3 / 2;
+  max-height: 340px;
+  max-width: 520px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, var(--coral-soft) 0%, var(--navy-soft) 100%);
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 28px;
+  overflow: hidden;
+}
+.ar-hero img { width: 100%; height: 100%; object-fit: contain; }
+.ar-hero-emoji {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.6);
+  box-shadow: 0 10px 24px rgba(27,42,74,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 58px;
 }
 
 .ar-switch {
-  display: inline-flex;
+  display: flex;
+  justify-content: center;
   gap: 4px;
   background: var(--paper);
   border: 1px solid var(--hair);
   border-radius: 14px;
   padding: 4px;
-  margin-bottom: 8px;
+  margin: 0 auto 8px;
+  max-width: fit-content;
 }
 .ar-ed-btn {
   appearance: none;
@@ -310,59 +334,29 @@ const CSS = `
   font-family: 'Quicksand', sans-serif;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   gap: 2px;
-  padding: 8px 16px;
+  padding: 8px 18px;
   border-radius: 10px;
   transition: background .15s ease;
 }
 .ar-ed-btn:hover { background: var(--hair); }
 .ar-ed-name { font-weight: 800; font-size: 13px; color: var(--ink-soft); }
 .ar-ed-range { font-size: 10px; font-weight: 700; letter-spacing: 0.04em; color: var(--muted); }
-.ar-ed-btn.is-active { background: var(--rust); }
+.ar-ed-btn.is-active { background: var(--coral); }
 .ar-ed-btn.is-active .ar-ed-name { color: #fff; }
 .ar-ed-btn.is-active .ar-ed-range { color: rgba(255,255,255,0.75); }
-.ar-ed-hint { font-family: 'Quicksand', sans-serif; font-size: 12px; color: var(--muted); margin: 0 0 22px; }
+.ar-ed-hint { font-family: 'Quicksand', sans-serif; font-size: 12px; color: var(--muted); text-align: center; margin: 0 0 14px; }
 
-.ar-byline {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+.ar-published {
   font-family: 'Quicksand', sans-serif;
   font-size: 12.5px;
+  font-weight: 600;
   color: var(--muted);
+  text-align: center;
   padding-bottom: 22px;
-  margin-bottom: 26px;
+  margin: 0 0 26px;
   border-bottom: 1px solid var(--hair);
-}
-.ar-byline-avatar {
-  width: 26px; height: 26px; border-radius: 50%;
-  background: var(--rust-soft); color: var(--rust);
-  display: flex; align-items: center; justify-content: center;
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 800; font-size: 11px;
-}
-
-.ar-hero {
-  aspect-ratio: 3 / 2;
-  max-height: 380px;
-  border-radius: 14px;
-  background: linear-gradient(135deg, var(--rust-soft) 0%, var(--dusk-soft) 100%);
-  display: flex; align-items: center; justify-content: center;
-  margin-bottom: 30px;
-  overflow: hidden;
-}
-.ar-hero img { width: 100%; height: 100%; object-fit: contain; }
-.ar-hero-emoji {
-  width: 130px;
-  height: 130px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.55);
-  box-shadow: 0 10px 24px rgba(0,0,0,0.08);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 58px;
 }
 
 .ar-body {
@@ -385,7 +379,7 @@ const CSS = `
   left: 50%;
   transform: translateX(-50%) translateY(4px);
   background: var(--ink);
-  color: var(--paper);
+  color: #FFFFFF;
   font-family: 'Quicksand', sans-serif;
   font-size: 12.5px;
   line-height: 1.4;
@@ -398,54 +392,48 @@ const CSS = `
   pointer-events: none;
   transition: opacity .12s ease, transform .12s ease;
   z-index: 5;
-  box-shadow: 0 10px 24px rgba(0,0,0,0.22);
+  box-shadow: 0 10px 24px rgba(27,42,74,0.28);
 }
 .ar-tip b { font-weight: 800; }
 .ar-pos { display: inline-block; font-style: italic; font-weight: 600; opacity: 0.65; margin-left: 4px; }
 .ar-gloss.is-open .ar-tip { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); pointer-events: auto; }
-
-.ar-cite {
-  font-size: 11px;
-  color: var(--dusk);
-  font-weight: 800;
-  vertical-align: super;
-  margin-left: 1px;
-  cursor: pointer;
-}
 
 .ar-pullquote {
   font-family: 'Source Serif 4', Georgia, serif;
   font-style: italic;
   font-size: 22px;
   line-height: 1.45;
-  color: var(--rust);
-  border-left: 3px solid var(--rust);
+  color: var(--coral-dark);
+  border-left: 3px solid var(--coral);
   padding: 2px 0 2px 20px;
   margin: 30px 0;
 }
 
 .ar-references { margin-top: 34px; padding-top: 20px; border-top: 1px solid var(--hair); font-family: 'Quicksand', sans-serif; }
 .ar-refs-title { font-weight: 800; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin: 0 0 12px; }
-.ar-ref-row { display: flex; gap: 8px; align-items: baseline; padding: 6px 0; font-size: 13px; }
-.ar-ref-num { font-weight: 800; color: var(--dusk); min-width: 16px; }
-.ar-ref-domain { font-weight: 700; color: var(--ink); }
-.ar-ref-dash { color: var(--muted); }
-.ar-ref-headline { color: var(--ink-soft); }
+.ar-ref-row {
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--ink-soft);
+  margin: 0 0 8px;
+  padding-left: 20px;
+  text-indent: -20px;
+}
 
 .ar-teacher {
   max-width: 100%;
   margin-top: 30px;
-  background: var(--dusk-soft);
+  background: var(--navy-soft);
   border-radius: 14px;
   padding: 20px 24px;
   font-family: 'Quicksand', sans-serif;
 }
-.ar-teacher-eyebrow { font-weight: 800; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--dusk); margin-bottom: 4px; }
+.ar-teacher-eyebrow { font-weight: 800; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--coral-dark); margin-bottom: 4px; }
 .ar-teacher-title { font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 18px; margin: 0 0 16px; }
 .ar-tq-item { margin-bottom: 16px; }
 .ar-tq-item:last-child { margin-bottom: 0; }
 .ar-tq-main { display: flex; gap: 8px; font-weight: 700; font-size: 14.5px; line-height: 1.45; margin: 0 0 6px; }
-.ar-tq-num { color: var(--dusk); flex-shrink: 0; }
+.ar-tq-num { color: var(--coral-dark); flex-shrink: 0; }
 .ar-tq-follow { font-size: 13px; color: var(--ink-soft); line-height: 1.4; padding-left: 22px; margin: 4px 0 0; position: relative; }
 .ar-tq-follow::before { content: "↳"; color: var(--muted); position: absolute; left: 0; }
 
