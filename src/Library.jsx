@@ -138,16 +138,15 @@ function WordLookup() {
     setStatus("loading");
     setResult(null);
     try {
-      const res = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${encodeURIComponent(word)}`);
+      const res = await fetch("/api/dictionary-lookup", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ word }),
+      });
       if (id !== requestId.current) return;
-      if (!res.ok) throw new Error("not found");
-      const data = await res.json();
-      const meanings = (data[0]?.meanings || []).slice(0, 3).map((m) => ({
-        pos: m.partOfSpeech,
-        def: m.definitions?.[0]?.definition,
-      }));
-      if (!meanings.length) throw new Error("no meanings");
-      setResult({ word: data[0].word || word, meanings });
+      const data = await res.json().catch(() => null);
+      if (!res.ok || !data?.meanings?.length) throw new Error("not found");
+      setResult({ word: data.word || word, meanings: data.meanings });
       setStatus("done");
     } catch {
       if (id !== requestId.current) return;
