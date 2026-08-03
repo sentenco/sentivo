@@ -220,8 +220,8 @@ const CSS = `
   flex-shrink: 0;
   font-family: 'Playfair Display', serif;
   font-weight: 900;
-  font-size: clamp(22px, 3vh, 28px);
-  line-height: 1.22;
+  font-size: clamp(32px, 4.6vh, 42px);
+  line-height: 1.16;
   letter-spacing: 0;
   text-align: center;
   text-transform: none;
@@ -301,7 +301,7 @@ const CSS = `
 }
 
 @media (max-width: 480px) {
-  .app-title { font-size: 20px; }
+  .app-title { font-size: 28px; }
   .app-columns { columns: 1; padding: 0 20px; }
 }
 `;
