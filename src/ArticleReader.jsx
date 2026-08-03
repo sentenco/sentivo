@@ -293,11 +293,10 @@ const CSS = `
   max-width: var(--content-w);
   margin: 0 auto;
   overflow: hidden;
-  border: 2px solid var(--ink);
 }
 .ar-banner img { width: 100%; height: auto; display: block; }
 
-.ar-article { max-width: var(--content-w); margin: 0 auto; padding: 34px 24px 60px; }
+.ar-article { max-width: var(--content-w); margin: 0 auto; padding: 0 24px 60px; }
 
 .ar-title {
   font-family: 'Fredoka', sans-serif;
@@ -499,6 +498,6 @@ const CSS = `
 
 @media (max-width: 640px) {
   .ar-title { font-size: 26px; }
-  .ar-article { padding: 24px 18px 40px; }
+  .ar-article { padding: 0 18px 40px; }
 }
 `;
