@@ -228,10 +228,11 @@ const CSS = `
 }
 .app-hero img { width: 100%; height: 100%; object-fit: contain; }
 .app-hero--banner {
-  height: clamp(90px, 13vh, 150px);
+  height: clamp(150px, 18vh, 220px);
   background: #FBFAF7;
   filter: none;
 }
+.app-hero--banner img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
 
 .app-title {
   flex-shrink: 0;
