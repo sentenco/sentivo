@@ -8,6 +8,16 @@ import aiWorkflowsImg from "./assets/articles/ai-workflows.jpeg";
 import fourDayWorkweekImg from "./assets/articles/four-day-workweek.jpeg";
 import skillsMoveUsImg from "./assets/articles/skills-move-us.jpeg";
 import wisdomFlexingImg from "./assets/articles/wisdom-flexing.jpeg";
+import microCommunitiesImg from "./assets/articles/micro-communities-social-media.jpeg";
+import hiddenSeasonTravelImg from "./assets/articles/hidden-season-travel.jpeg";
+import selfCareMonthImg from "./assets/articles/self-care-month-2026.jpeg";
+import toddlerFoodStudyImg from "./assets/articles/toddler-food-study.jpeg";
+import aiToolsWorkPartnersImg from "./assets/articles/ai-tools-work-partners.jpeg";
+import globalEngagementSlipsImg from "./assets/articles/global-engagement-slips.jpeg";
+import strengthenedShsCurriculumImg from "./assets/articles/strengthened-shs-curriculum.jpeg";
+import sportsNewStyleStageImg from "./assets/articles/sports-new-style-stage.jpeg";
+import socialMediaSubstanceImg from "./assets/articles/social-media-substance-over-noise.jpeg";
+import slowTravelSurgesImg from "./assets/articles/slow-travel-surges.jpeg";
 import noWitnessImg from "./assets/articles/no-witness-still-guilty.jpeg";
 import onePostOneCrimeImg from "./assets/articles/one-post-one-crime.jpeg";
 import defenseOrViolenceImg from "./assets/articles/defense-or-violence.jpeg";
@@ -712,6 +722,7 @@ export const ARTICLES = [
   {
     slug: "micro-communities-social-media",
     ready: true,
+    image: microCommunitiesImg,
     publishedAt: "2026-07-29",
     emoji: "💬",
     variant: "culture",
@@ -820,6 +831,7 @@ export const ARTICLES = [
   {
     slug: "hidden-season-travel",
     ready: true,
+    image: hiddenSeasonTravelImg,
     publishedAt: "2026-07-29",
     emoji: "🧳",
     variant: "planet",
@@ -932,6 +944,7 @@ export const ARTICLES = [
   {
     slug: "self-care-month-2026",
     ready: true,
+    image: selfCareMonthImg,
     publishedAt: "2026-07-30",
     emoji: "💧",
     variant: "daily",
@@ -1044,6 +1057,7 @@ export const ARTICLES = [
   {
     slug: "toddler-food-study",
     ready: true,
+    image: toddlerFoodStudyImg,
     publishedAt: "2026-07-30",
     emoji: "🥫",
     variant: "planet",
@@ -1154,6 +1168,7 @@ export const ARTICLES = [
   {
     slug: "ai-tools-work-partners",
     ready: true,
+    image: aiToolsWorkPartnersImg,
     publishedAt: "2026-07-30",
     emoji: "🛠️",
     variant: "tech",
@@ -1266,6 +1281,7 @@ export const ARTICLES = [
   {
     slug: "global-engagement-slips",
     ready: true,
+    image: globalEngagementSlipsImg,
     publishedAt: "2026-07-30",
     emoji: "📉",
     variant: "work",
@@ -1374,6 +1390,7 @@ export const ARTICLES = [
   {
     slug: "strengthened-shs-curriculum",
     ready: true,
+    image: strengthenedShsCurriculumImg,
     publishedAt: "2026-07-30",
     emoji: "🏫",
     variant: "work",
@@ -1484,6 +1501,7 @@ export const ARTICLES = [
   {
     slug: "sports-new-style-stage",
     ready: true,
+    image: sportsNewStyleStageImg,
     publishedAt: "2026-07-30",
     emoji: "🎾",
     variant: "culture",
@@ -1594,6 +1612,7 @@ export const ARTICLES = [
   {
     slug: "social-media-substance-over-noise",
     ready: true,
+    image: socialMediaSubstanceImg,
     publishedAt: "2026-07-30",
     emoji: "🧵",
     variant: "culture",
@@ -1704,6 +1723,7 @@ export const ARTICLES = [
   {
     slug: "slow-travel-surges",
     ready: true,
+    image: slowTravelSurgesImg,
     publishedAt: "2026-07-30",
     emoji: "🐌",
     variant: "planet",
