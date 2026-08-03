@@ -2042,7 +2042,7 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   width: 100%;
 }
 .gaz-lead-kicker { font-family: 'Quicksand', sans-serif; font-weight: 800; font-size: clamp(9.5px, 0.8vw, 11.5px); letter-spacing: 0.1em; text-transform: uppercase; color: var(--coral); margin-bottom: 8px; }
-.gaz-lead-title { font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: clamp(21px, 2.4vw, 32px); line-height: 1.16; margin: 0 0 10px; color: var(--ink); text-wrap: balance; }
+.gaz-lead-title { font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: clamp(28px, 3.4vw, 44px); line-height: 1.12; margin: 0 0 10px; color: var(--ink); text-wrap: balance; }
 .gaz-lead-dek {
   font-family: 'Quicksand', sans-serif;
   font-size: clamp(12.5px, 1.05vw, 15.5px);
@@ -2114,12 +2114,12 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .gaz-story-title {
   font-family: 'Fredoka', sans-serif;
   font-weight: 600;
-  font-size: clamp(17px, 1.7vw, 21px);
-  line-height: 1.28;
+  font-size: clamp(22px, 2.3vw, 28px);
+  line-height: 1.22;
   margin: 0 0 8px;
   color: var(--ink);
   display: -webkit-box;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
