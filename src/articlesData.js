@@ -121,9 +121,9 @@ export const ARTICLES = [
       },
     },
     references: [
-      { domain: "youtube.com", headline: "Filipinos take proactive steps in health, AIA study finds" },
-      { domain: "mysanitas.com", headline: "Emotional Well-Being in 2026: Simple habits for your mind" },
-      { domain: "nisbenefits.com", headline: "4 Employee Wellness Trends You Can't Ignore in 2026" },
+      { domain: "youtube.com", name: "YouTube", headline: "Filipinos take proactive steps in health, AIA study finds" },
+      { domain: "mysanitas.com", name: "MySanitas", headline: "Emotional Well-Being in 2026: Simple habits for your mind" },
+      { domain: "nisbenefits.com", name: "NIS Benefits", headline: "4 Employee Wellness Trends You Can't Ignore in 2026" },
     ],
     discussionGuide: [
       {
@@ -234,9 +234,9 @@ export const ARTICLES = [
       },
     },
     references: [
-      { domain: "wikipedia.org", headline: "2026 in science" },
-      { domain: "distance.physiology.med.ufl.edu", headline: "7 Medical Sciences Trends Shaping Healthcare in 2026" },
-      { domain: "time.com", headline: "The Science and Health Breakthroughs Shaping a New Era" },
+      { domain: "wikipedia.org", name: "Wikipedia", headline: "2026 in science" },
+      { domain: "distance.physiology.med.ufl.edu", name: "University of Florida", headline: "7 Medical Sciences Trends Shaping Healthcare in 2026" },
+      { domain: "time.com", name: "Time", headline: "The Science and Health Breakthroughs Shaping a New Era" },
     ],
     discussionGuide: [
       {
@@ -347,9 +347,9 @@ export const ARTICLES = [
       },
     },
     references: [
-      { domain: "youtube.com", headline: "Top 6 AI Trends That Will Define 2026 (backed by data)" },
-      { domain: "ozvid.com", headline: "Generative AI Trends Revolutionizing Mobile and Web Apps in 2026" },
-      { domain: "onlim.com", headline: "5 relevant AI trends for 2026" },
+      { domain: "youtube.com", name: "YouTube", headline: "Top 6 AI Trends That Will Define 2026 (backed by data)" },
+      { domain: "ozvid.com", name: "Ozvid", headline: "Generative AI Trends Revolutionizing Mobile and Web Apps in 2026" },
+      { domain: "onlim.com", name: "Onlim", headline: "5 relevant AI trends for 2026" },
     ],
     discussionGuide: [
       {
@@ -460,9 +460,9 @@ export const ARTICLES = [
       },
     },
     references: [
-      { domain: "oasisafricawellness.co.ke", headline: "July 2026 Wellness Brief: What's Actually Changing in Workplace Wellbeing" },
-      { domain: "navigatewell.com", headline: "5 Workplace Wellbeing Trends Shaping 2026" },
-      { domain: "nisbenefits.com", headline: "4 Employee Wellness Trends You Can't Ignore in 2026" },
+      { domain: "oasisafricawellness.co.ke", name: "Oasis Africa Wellness", headline: "July 2026 Wellness Brief: What's Actually Changing in Workplace Wellbeing" },
+      { domain: "navigatewell.com", name: "NavigateWell", headline: "5 Workplace Wellbeing Trends Shaping 2026" },
+      { domain: "nisbenefits.com", name: "NIS Benefits", headline: "4 Employee Wellness Trends You Can't Ignore in 2026" },
     ],
     discussionGuide: [
       {
@@ -573,9 +573,9 @@ export const ARTICLES = [
       },
     },
     references: [
-      { domain: "unesco.org", headline: "Education transforms lives" },
-      { domain: "oecd.org", headline: "Future of Education and Skills 2030/2040" },
-      { domain: "banyantree.in", headline: "7 Essential Learning Skills Schools Must Teach in 2026" },
+      { domain: "unesco.org", name: "UNESCO", headline: "Education transforms lives" },
+      { domain: "oecd.org", name: "OECD", headline: "Future of Education and Skills 2030/2040" },
+      { domain: "banyantree.in", name: "Banyan Tree", headline: "7 Essential Learning Skills Schools Must Teach in 2026" },
     ],
     discussionGuide: [
       {
@@ -684,9 +684,9 @@ export const ARTICLES = [
       },
     },
     references: [
-      { domain: "webershandwick.com", headline: "Predicting the Unpredictable: The Top 10 Cultural Trends and Moments of 2026" },
-      { domain: "betches.com", headline: "The Official 2026 Pop Culture Ins & Outs" },
-      { domain: "linkedin.com", headline: "7 Media Trends That Will Redefine Entertainment In 2026" },
+      { domain: "webershandwick.com", name: "Weber Shandwick", headline: "Predicting the Unpredictable: The Top 10 Cultural Trends and Moments of 2026" },
+      { domain: "betches.com", name: "Betches", headline: "The Official 2026 Pop Culture Ins & Outs" },
+      { domain: "linkedin.com", name: "LinkedIn", headline: "7 Media Trends That Will Redefine Entertainment In 2026" },
     ],
     discussionGuide: [
       {
@@ -792,9 +792,9 @@ export const ARTICLES = [
       },
     },
     references: [
-      { domain: "sproutsocial.com", headline: "7 social media trends you need to know in 2026" },
-      { domain: "mmmake.com", headline: "Social media trends 2026: From micro communities to social SEO" },
-      { domain: "nu.edu", headline: "Social Media Trends in 2026: What's Next" },
+      { domain: "sproutsocial.com", name: "Sprout Social", headline: "7 social media trends you need to know in 2026" },
+      { domain: "mmmake.com", name: "MMMake", headline: "Social media trends 2026: From micro communities to social SEO" },
+      { domain: "nu.edu", name: "National University", headline: "Social Media Trends in 2026: What's Next" },
     ],
     discussionGuide: [
       {
@@ -904,9 +904,9 @@ export const ARTICLES = [
       },
     },
     references: [
-      { domain: "explore.co.uk", headline: "Travel Trends 2026 | Annual Report On Where People Go" },
-      { domain: "cntraveler.com", headline: "The Biggest Travel Trends of 2026" },
-      { domain: "travelagewest.com", headline: "Top Summer Travel Trends for 2026" },
+      { domain: "explore.co.uk", name: "Explore Worldwide", headline: "Travel Trends 2026 | Annual Report On Where People Go" },
+      { domain: "cntraveler.com", name: "Condé Nast Traveler", headline: "The Biggest Travel Trends of 2026" },
+      { domain: "travelagewest.com", name: "TravelAge West", headline: "Top Summer Travel Trends for 2026" },
     ],
     discussionGuide: [
       {
@@ -1016,9 +1016,9 @@ export const ARTICLES = [
       },
     },
     references: [
-      { domain: "who.int", headline: "Self-Care Month 2026" },
-      { domain: "doctoranywhere.ph", headline: "How to Build a Wellness Routine That Actually Sticks in 2026" },
-      { domain: "uphealthsystem.com", headline: "Healthy Habits to Start in 2026 for Better Overall Health" },
+      { domain: "who.int", name: "World Health Organization", headline: "Self-Care Month 2026" },
+      { domain: "doctoranywhere.ph", name: "Doctor Anywhere", headline: "How to Build a Wellness Routine That Actually Sticks in 2026" },
+      { domain: "uphealthsystem.com", name: "UP Health System", headline: "Healthy Habits to Start in 2026 for Better Overall Health" },
     ],
     discussionGuide: [
       {
@@ -1126,9 +1126,9 @@ export const ARTICLES = [
       },
     },
     references: [
-      { domain: "sciencedaily.com", headline: "ScienceDaily: Your source for the latest research news" },
-      { domain: "sciencedaily.com", headline: "Health & Medicine News" },
-      { domain: "abs-cbn.com", headline: "Health & Science News | ABS-CBN Latest Updates" },
+      { domain: "sciencedaily.com", name: "ScienceDaily", headline: "ScienceDaily: Your source for the latest research news" },
+      { domain: "sciencedaily.com", name: "ScienceDaily", headline: "Health & Medicine News" },
+      { domain: "abs-cbn.com", name: "ABS-CBN", headline: "Health & Science News | ABS-CBN Latest Updates" },
     ],
     discussionGuide: [
       {
@@ -1238,9 +1238,9 @@ export const ARTICLES = [
       },
     },
     references: [
-      { domain: "campaignme.com", headline: "AI platform updates you need to know from July 2026" },
-      { domain: "microsoft.com", headline: "What's next in AI: 7 trends to watch in 2026" },
-      { domain: "marketingprofs.com", headline: "AI Update, July 10, 2026: AI News and Views From the Past Week" },
+      { domain: "campaignme.com", name: "Campaign Middle East", headline: "AI platform updates you need to know from July 2026" },
+      { domain: "microsoft.com", name: "Microsoft", headline: "What's next in AI: 7 trends to watch in 2026" },
+      { domain: "marketingprofs.com", name: "MarketingProfs", headline: "AI Update, July 10, 2026: AI News and Views From the Past Week" },
     ],
     discussionGuide: [
       {
@@ -1346,9 +1346,9 @@ export const ARTICLES = [
       },
     },
     references: [
-      { domain: "gallup.com", headline: "State of the Global Workplace 2026" },
-      { domain: "shrm.org", headline: "2026 Top Five Workplace Issues" },
-      { domain: "zoom.com", headline: "12 must-know hybrid work trends in 2026" },
+      { domain: "gallup.com", name: "Gallup", headline: "State of the Global Workplace 2026" },
+      { domain: "shrm.org", name: "SHRM", headline: "2026 Top Five Workplace Issues" },
+      { domain: "zoom.com", name: "Zoom", headline: "12 must-know hybrid work trends in 2026" },
     ],
     discussionGuide: [
       {
@@ -1456,9 +1456,9 @@ export const ARTICLES = [
       },
     },
     references: [
-      { domain: "abs-cbn.com", headline: "DepEd rolls out 'strengthened' senior high curriculum" },
-      { domain: "facebook.com", headline: "DepEd: gadget use during class hours prohibited except for educational or emergency purposes" },
-      { domain: "unesco.org", headline: "Education transforms lives" },
+      { domain: "abs-cbn.com", name: "ABS-CBN", headline: "DepEd rolls out 'strengthened' senior high curriculum" },
+      { domain: "facebook.com", name: "Facebook", headline: "DepEd: gadget use during class hours prohibited except for educational or emergency purposes" },
+      { domain: "unesco.org", name: "UNESCO", headline: "Education transforms lives" },
     ],
     discussionGuide: [
       {
@@ -1566,9 +1566,9 @@ export const ARTICLES = [
       },
     },
     references: [
-      { domain: "webershandwick.com", headline: "Predicting the Unpredictable: The Top 10 Cultural Trends and Moments of 2026" },
-      { domain: "forbes.com", headline: "7 Cultural Trends Shaping Business in 2026 and Beyond" },
-      { domain: "britannica.com", headline: "Major Events of 2026 | Pop Culture, Current Events & Trends" },
+      { domain: "webershandwick.com", name: "Weber Shandwick", headline: "Predicting the Unpredictable: The Top 10 Cultural Trends and Moments of 2026" },
+      { domain: "forbes.com", name: "Forbes", headline: "7 Cultural Trends Shaping Business in 2026 and Beyond" },
+      { domain: "britannica.com", name: "Britannica", headline: "Major Events of 2026 | Pop Culture, Current Events & Trends" },
     ],
     discussionGuide: [
       {
@@ -1676,9 +1676,9 @@ export const ARTICLES = [
       },
     },
     references: [
-      { domain: "ogilvy.com", headline: "Social Trends 2026: Social With Substance and the Return of Real" },
-      { domain: "sproutsocial.com", headline: "7 social media trends you need to know in 2026" },
-      { domain: "nu.edu", headline: "Social Media Trends in 2026: What's Next" },
+      { domain: "ogilvy.com", name: "Ogilvy", headline: "Social Trends 2026: Social With Substance and the Return of Real" },
+      { domain: "sproutsocial.com", name: "Sprout Social", headline: "7 social media trends you need to know in 2026" },
+      { domain: "nu.edu", name: "National University", headline: "Social Media Trends in 2026: What's Next" },
     ],
     discussionGuide: [
       {
@@ -1788,9 +1788,9 @@ export const ARTICLES = [
       },
     },
     references: [
-      { domain: "google.com", headline: "2026 travel trends and top destinations for summer" },
-      { domain: "latimes.com", headline: "2026 Travel Trends: Why the World's Most Elite Travelers Are Escaping Into Silence" },
-      { domain: "odysseys-unlimited.com", headline: "11 Travel Trends to Watch For in 2026" },
+      { domain: "google.com", name: "Google", headline: "2026 travel trends and top destinations for summer" },
+      { domain: "latimes.com", name: "Los Angeles Times", headline: "2026 Travel Trends: Why the World's Most Elite Travelers Are Escaping Into Silence" },
+      { domain: "odysseys-unlimited.com", name: "Odysseys Unlimited", headline: "11 Travel Trends to Watch For in 2026" },
     ],
     discussionGuide: [
       {

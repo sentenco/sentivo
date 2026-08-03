@@ -47,7 +47,7 @@ function Gloss({ word, pos, def, glossKey, openKey, setOpenKey }) {
   );
 }
 
-function Paragraph({ parts, blockIdx, openKey, setOpenKey }) {
+function Paragraph({ parts, blockIdx, openKey, setOpenKey, references, year, onCiteClick }) {
   return (
     <p>
       {parts.map((part, i) => {
@@ -65,9 +65,13 @@ function Paragraph({ parts, blockIdx, openKey, setOpenKey }) {
           );
         }
         if (part.c !== undefined) {
-          // Numbered [1][2][3] markers are dropped from the reading body --
-          // sources are still listed in APA-style form under References.
-          return null;
+          const ref = references[part.c - 1];
+          if (!ref) return null;
+          return (
+            <span key={i} className="ar-cite" onClick={(e) => { e.stopPropagation(); onCiteClick(part.c); }}>
+              ({ref.name}{year ? `, ${year}` : ""})
+            </span>
+          );
         }
         return <span key={i}>{part.t}</span>;
       })}
@@ -106,6 +110,11 @@ export default function ArticleReader() {
     ? new Date(`${article.publishedAt}T00:00:00`).getFullYear()
     : null;
 
+  function scrollToRef(n) {
+    const el = document.getElementById(`ar-ref-${n}`);
+    if (el) el.scrollIntoView({ behavior: "smooth", block: "center" });
+  }
+
   return (
     <div className="ar-shell" onClick={() => setOpenKey(null)}>
       <style>{CSS}</style>
@@ -113,25 +122,16 @@ export default function ArticleReader() {
         <button type="button" className="ar-back-link" onClick={() => navigate("/library?cat=Articles")}>
           ← Articles
         </button>
-        <span className="ar-crumb">Teacher's guide · {article.topicTitle}</span>
-        <button type="button" className="ar-present-btn" onClick={() => openPlayer(article.slug)}>
-          🖥️ Open Editorial View
-        </button>
       </header>
 
       <div className="ar-article">
-        <div className="ar-masthead">
-          <span className="ar-eyebrow">{article.topicTitle}</span>
-          <span className="ar-dot">·</span>
-          <span className="ar-time">{ed.readTime} · {ed.wordCount} words</span>
-        </div>
-
         <h1 className="ar-title">{article.title}</h1>
-        <p className="ar-dek">{article.dek}</p>
 
         <div className="ar-hero">
           {article.image ? <img src={article.image} alt="" /> : <span className="ar-hero-emoji">{article.emoji}</span>}
         </div>
+
+        <p className="ar-dek">{article.dek}</p>
 
         <div className="ar-switch">
           {EDITION_KEYS.map((k) => (
@@ -148,7 +148,17 @@ export default function ArticleReader() {
         </div>
         <p className="ar-ed-hint">Same story, three reading levels — switch editions to match your class.</p>
 
-        {publishedLabel && <p className="ar-published">Published {publishedLabel}</p>}
+        <div className="ar-meta-row">
+          <span>{article.topicTitle}</span>
+          <span className="ar-dot">·</span>
+          <span>{ed.readTime} · {ed.wordCount} words</span>
+          {publishedLabel && <span className="ar-dot">·</span>}
+          {publishedLabel && <span>Published {publishedLabel}</span>}
+        </div>
+
+        <button type="button" className="ar-present-btn" onClick={() => openPlayer(article.slug)}>
+          🖥️ Open Editorial View
+        </button>
 
         <div className="ar-body">
           {ed.blocks.map((block, i) =>
@@ -161,6 +171,9 @@ export default function ArticleReader() {
                 blockIdx={i}
                 openKey={openKey}
                 setOpenKey={setOpenKey}
+                references={article.references}
+                year={publishedYear}
+                onCiteClick={scrollToRef}
               />
             )
           )}
@@ -168,8 +181,8 @@ export default function ArticleReader() {
           <div className="ar-references">
             <div className="ar-refs-title">References</div>
             {article.references.map((r, i) => (
-              <p className="ar-ref-row" key={i}>
-                {r.domain}.{publishedYear ? ` (${publishedYear}).` : ""} {r.headline}.
+              <p className="ar-ref-row" id={`ar-ref-${i + 1}`} key={i}>
+                {r.name}.{publishedYear ? ` (${publishedYear}).` : ""} {r.headline}.
               </p>
             ))}
           </div>
@@ -233,63 +246,20 @@ const CSS = `
   padding: 7px 15px;
   cursor: pointer;
 }
-.ar-crumb {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 800;
-  font-size: 10.5px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--muted);
-  flex: 1;
-}
-.ar-present-btn {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 700;
-  font-size: 13px;
-  color: #FFFFFF;
-  background: var(--coral);
-  border: none;
-  border-radius: 999px;
-  padding: 8px 16px;
-  cursor: pointer;
-}
 
 .ar-missing { max-width: 640px; margin: 60px auto; text-align: center; color: var(--muted); font-family: 'Quicksand', sans-serif; }
 
 .ar-article { max-width: 720px; margin: 0 auto; padding: 34px 24px 60px; }
-
-.ar-masthead {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 16px;
-  font-family: 'Quicksand', sans-serif;
-  text-align: center;
-}
-.ar-eyebrow { font-weight: 800; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink); }
-.ar-dot { color: var(--hair); }
-.ar-time { font-size: 11.5px; color: var(--muted); }
 
 .ar-title {
   font-family: 'Fredoka', sans-serif;
   font-weight: 700;
   font-size: 34px;
   line-height: 1.15;
-  margin: 0 auto 10px;
+  margin: 0 auto 22px;
   max-width: 640px;
   text-align: center;
   text-wrap: balance;
-}
-.ar-dek {
-  font-family: 'Quicksand', sans-serif;
-  font-size: 16.5px;
-  color: var(--ink-soft);
-  line-height: 1.5;
-  margin: 0 auto 26px;
-  max-width: 560px;
-  text-align: center;
 }
 
 .ar-hero {
@@ -299,7 +269,7 @@ const CSS = `
   border-radius: 14px;
   background: linear-gradient(135deg, var(--coral-soft) 0%, var(--navy-soft) 100%);
   display: flex; align-items: center; justify-content: center;
-  margin: 0 auto 28px;
+  margin: 0 auto 22px;
   overflow: hidden;
 }
 .ar-hero img { width: 100%; height: 100%; object-fit: contain; }
@@ -315,11 +285,21 @@ const CSS = `
   font-size: 58px;
 }
 
+.ar-dek {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 16.5px;
+  color: var(--ink-soft);
+  line-height: 1.5;
+  margin: 0 auto 26px;
+  max-width: 560px;
+  text-align: center;
+}
+
 .ar-switch {
   display: flex;
   justify-content: center;
   gap: 4px;
-  background: var(--paper);
+  background: var(--card);
   border: 1px solid var(--hair);
   border-radius: 14px;
   padding: 4px;
@@ -346,17 +326,37 @@ const CSS = `
 .ar-ed-btn.is-active { background: var(--coral); }
 .ar-ed-btn.is-active .ar-ed-name { color: #fff; }
 .ar-ed-btn.is-active .ar-ed-range { color: rgba(255,255,255,0.75); }
-.ar-ed-hint { font-family: 'Quicksand', sans-serif; font-size: 12px; color: var(--muted); text-align: center; margin: 0 0 14px; }
+.ar-ed-hint { font-family: 'Quicksand', sans-serif; font-size: 12px; color: var(--muted); text-align: center; margin: 0 0 18px; }
 
-.ar-published {
+.ar-meta-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
   font-family: 'Quicksand', sans-serif;
-  font-size: 12.5px;
   font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
   color: var(--muted);
   text-align: center;
-  padding-bottom: 22px;
-  margin: 0 0 26px;
-  border-bottom: 1px solid var(--hair);
+  margin: 0 0 20px;
+}
+.ar-dot { color: var(--hair); }
+
+.ar-present-btn {
+  display: block;
+  margin: 0 auto 34px;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 700;
+  font-size: 13.5px;
+  color: #FFFFFF;
+  background: var(--coral);
+  border: none;
+  border-radius: 999px;
+  padding: 10px 20px;
+  cursor: pointer;
 }
 
 .ar-body {
@@ -365,6 +365,8 @@ const CSS = `
   line-height: 1.72;
   color: var(--ink);
   text-align: justify;
+  padding-top: 22px;
+  border-top: 1px solid var(--hair);
 }
 .ar-body p { margin: 0 0 20px; }
 
@@ -397,6 +399,16 @@ const CSS = `
 .ar-tip b { font-weight: 800; }
 .ar-pos { display: inline-block; font-style: italic; font-weight: 600; opacity: 0.65; margin-left: 4px; }
 .ar-gloss.is-open .ar-tip { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); pointer-events: auto; }
+
+.ar-cite {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--coral-dark);
+  cursor: pointer;
+  white-space: nowrap;
+  margin-left: 4px;
+}
 
 .ar-pullquote {
   font-family: 'Source Serif 4', Georgia, serif;
