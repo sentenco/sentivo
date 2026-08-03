@@ -8,6 +8,11 @@ import aiWorkflowsImg from "./assets/articles/ai-workflows.jpeg";
 import fourDayWorkweekImg from "./assets/articles/four-day-workweek.jpeg";
 import skillsMoveUsImg from "./assets/articles/skills-move-us.jpeg";
 import wisdomFlexingImg from "./assets/articles/wisdom-flexing.jpeg";
+import noWitnessImg from "./assets/articles/no-witness-still-guilty.jpeg";
+import onePostOneCrimeImg from "./assets/articles/one-post-one-crime.jpeg";
+import defenseOrViolenceImg from "./assets/articles/defense-or-violence.jpeg";
+import oneTestimonyImg from "./assets/articles/one-testimony-then-another.jpeg";
+import guiltyWithoutWeaponImg from "./assets/articles/guilty-without-touching-weapon.jpeg";
 
 export const ARTICLE_TOPICS = [
   { label: "Daily Life", title: "Wellbeing & Daily Life" },
@@ -1813,6 +1818,7 @@ export const ARTICLES = [
     ready: true,
     publishedAt: "2026-08-03",
     emoji: "🔍",
+    image: noWitnessImg,
     variant: "law",
     topicLabel: "Law",
     topicTitle: "Crime, Law & Justice",
@@ -1936,6 +1942,7 @@ export const ARTICLES = [
     ready: true,
     publishedAt: "2026-08-03",
     emoji: "📱",
+    image: onePostOneCrimeImg,
     variant: "law",
     topicLabel: "Law",
     topicTitle: "Crime, Law & Justice",
@@ -2060,6 +2067,7 @@ export const ARTICLES = [
     ready: true,
     publishedAt: "2026-08-03",
     emoji: "⚖️",
+    image: defenseOrViolenceImg,
     variant: "law",
     topicLabel: "Law",
     topicTitle: "Crime, Law & Justice",
@@ -2188,6 +2196,7 @@ export const ARTICLES = [
     ready: true,
     publishedAt: "2026-08-03",
     emoji: "🗣️",
+    image: oneTestimonyImg,
     variant: "law",
     topicLabel: "Law",
     topicTitle: "Crime, Law & Justice",
@@ -2312,6 +2321,7 @@ export const ARTICLES = [
     ready: true,
     publishedAt: "2026-08-03",
     emoji: "🤝",
+    image: guiltyWithoutWeaponImg,
     variant: "law",
     topicLabel: "Law",
     topicTitle: "Crime, Law & Justice",
