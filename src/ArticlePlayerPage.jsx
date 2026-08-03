@@ -1,9 +1,11 @@
-import { useState } from "react";
+import { useState, useRef, useLayoutEffect } from "react";
 import { useParams } from "react-router-dom";
 import { getArticle } from "./articlesData";
 import editorialBanner from "./assets/brand/editorial-banner.jpg";
 
 const EDITION_KEYS = ["plain", "polished", "precise"];
+const MAX_FONT_SIZE = 16.5;
+const MIN_FONT_SIZE = 10.5;
 
 function Gloss({ word, pos, def, glossKey, openKey, setOpenKey }) {
   const isOpen = openKey === glossKey;
@@ -44,7 +46,7 @@ function Paragraph({ parts, blockIdx, openKey, setOpenKey }) {
           );
         }
         if (part.c !== undefined) {
-          return <sup key={i} className="app-cite">[{part.c}]</sup>;
+          return null;
         }
         return <span key={i}>{part.t}</span>;
       })}
@@ -69,6 +71,22 @@ export default function ArticlePlayerPage() {
   const article = getArticle(slug);
   const [edition, setEdition] = useState("polished");
   const [openKey, setOpenKey] = useState(null);
+  const columnsRef = useRef(null);
+
+  // Shrinks the article font-size until the text fits within the fixed
+  // page's two columns (no horizontal spillover into a hidden 3rd column),
+  // instead of relying on a single fixed size that might clip longer
+  // editions or overflow shorter windows.
+  useLayoutEffect(() => {
+    const el = columnsRef.current;
+    if (!el) return;
+    let size = MAX_FONT_SIZE;
+    el.style.fontSize = `${size}px`;
+    while (el.scrollWidth > el.clientWidth + 1 && size > MIN_FONT_SIZE) {
+      size -= 0.5;
+      el.style.fontSize = `${size}px`;
+    }
+  });
 
   if (!article || !article.ready) {
     return (
@@ -120,7 +138,7 @@ export default function ArticlePlayerPage() {
           <span>{article.topicTitle}</span>
         </div>
 
-        <div className="app-columns">
+        <div className="app-columns" ref={columnsRef}>
           {ed.blocks.map((block, i) =>
             block.type === "quote" ? (
               <blockquote key={i} className="app-pullquote">“{block.text}”</blockquote>
@@ -243,7 +261,7 @@ const CSS = `
   min-height: 0;
   overflow: hidden;
   font-family: 'Source Serif 4', serif;
-  font-size: clamp(14px, 1.7vh, 16.5px);
+  font-size: 16.5px;
   line-height: 1.5;
   color: #262626;
   columns: 2;
@@ -283,14 +301,6 @@ const CSS = `
 .app-tip b { font-weight: 700; }
 .app-pos { display: inline-block; font-style: italic; opacity: 0.65; margin-left: 4px; }
 .app-gloss.is-open .app-tip { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); pointer-events: auto; }
-
-.app-cite {
-  font-size: 10px;
-  color: #8A8578;
-  font-weight: 700;
-  vertical-align: super;
-  margin-left: 1px;
-}
 
 .app-pullquote {
   font-family: 'Playfair Display', serif;
