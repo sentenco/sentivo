@@ -157,7 +157,7 @@ function WordLookup() {
 
   return (
     <div className="gc-lookup">
-      <div className="gc-widget-title">Parts of Speech</div>
+      <div className="gc-widget-title">Dictionary</div>
       <form className="gc-lookup-form" onSubmit={lookup}>
         <input
           className="gc-lookup-input"
