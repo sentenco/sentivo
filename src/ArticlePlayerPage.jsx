@@ -207,7 +207,7 @@ const CSS = `
   max-width: 640px;
   width: 100%;
   margin: 0 auto;
-  padding: 0;
+  padding: 0 0 16px;
   overflow: hidden;
 }
 
@@ -269,7 +269,8 @@ const CSS = `
   column-fill: auto;
   column-rule: 1px solid #E2DED5;
   text-align: justify;
-  padding: 0 24px;
+  padding: 0 24px 10px;
+  border-bottom: 1px solid #E2DED5;
 }
 .app-columns p { margin: 0 0 12px; break-inside: avoid; }
 
