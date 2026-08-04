@@ -2219,9 +2219,7 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   width: 100%;
   max-width: 1320px;
   margin: -10px auto 0;
-  background:
-    repeating-linear-gradient(180deg, rgba(255,255,255,0.5) 0px, rgba(255,255,255,0.5) 1px, transparent 1px, transparent 64px),
-    linear-gradient(180deg, #EDF1F5 0%, #E2E8EE 100%);
+  background: linear-gradient(180deg, #FBF5EC 0%, #F3E9D9 100%);
   border-radius: 22px;
   padding: clamp(26px, 3.6vw, 48px) clamp(20px, 3.2vw, 40px) clamp(30px, 4vw, 52px);
 }
