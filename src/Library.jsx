@@ -334,6 +334,112 @@ function ReadyWidget({ icon, title, description }) {
   );
 }
 
+function SpeakingBanner({ name }) {
+  const banners = {
+    // Forge: a hammer striking a glowing word-block on an anvil — building
+    // vocabulary through repetition, one strike at a time.
+    forge: (
+      <>
+        <defs>
+          <linearGradient id="spkb-forge-bg" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stopColor="#FDF1DE" />
+            <stop offset="1" stopColor="#FBE0B4" />
+          </linearGradient>
+          <linearGradient id="spkb-forge-glow" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stopColor="#FFC55C" />
+            <stop offset="1" stopColor="#E8A33D" />
+          </linearGradient>
+          <linearGradient id="spkb-forge-metal" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stopColor="#8A8578" />
+            <stop offset="1" stopColor="#5C5850" />
+          </linearGradient>
+          <filter id="spkb-forge-shadow" x="-40%" y="-40%" width="180%" height="180%">
+            <feDropShadow dx="0" dy="6" stdDeviation="6" floodColor="#96631C" floodOpacity="0.25" />
+          </filter>
+        </defs>
+        <rect width="320" height="140" fill="url(#spkb-forge-bg)" />
+        <g filter="url(#spkb-forge-shadow)">
+          <rect x="112" y="96" width="96" height="20" rx="6" fill="url(#spkb-forge-metal)" />
+          <rect x="146" y="112" width="28" height="14" rx="3" fill="#463F35" />
+          <rect x="140" y="72" width="40" height="26" rx="7" fill="url(#spkb-forge-glow)" />
+        </g>
+        <g stroke="#E8A33D" strokeWidth="3" strokeLinecap="round" opacity="0.85">
+          <line x1="150" y1="60" x2="144" y2="46" />
+          <line x1="160" y1="56" x2="160" y2="40" />
+          <line x1="170" y1="60" x2="177" y2="47" />
+        </g>
+        <g transform="rotate(-32 214 58)">
+          <rect x="206" y="18" width="16" height="52" rx="6" fill="#8A5A2E" />
+          <rect x="194" y="12" width="40" height="22" rx="6" fill="url(#spkb-forge-metal)" />
+        </g>
+      </>
+    ),
+    // Shift: a clock racing against itself, corrected mid-tick — fast
+    // tense choice and self-repair under time pressure.
+    shift: (
+      <>
+        <defs>
+          <linearGradient id="spkb-shift-bg" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stopColor="#FDEDEA" />
+            <stop offset="1" stopColor="#F8D2C8" />
+          </linearGradient>
+          <filter id="spkb-shift-shadow" x="-40%" y="-40%" width="180%" height="180%">
+            <feDropShadow dx="0" dy="6" stdDeviation="6" floodColor="#9C2F26" floodOpacity="0.22" />
+          </filter>
+        </defs>
+        <rect width="320" height="140" fill="url(#spkb-shift-bg)" />
+        <path d="M160 20 A50 50 0 1 1 116 96" fill="none" stroke="#F0A99A" strokeWidth="4" strokeLinecap="round" strokeDasharray="2 10" />
+        <g filter="url(#spkb-shift-shadow)">
+          <circle cx="160" cy="70" r="44" fill="#FFFFFF" />
+        </g>
+        <circle cx="160" cy="70" r="44" fill="none" stroke="#D4453A" strokeWidth="3" />
+        <g stroke="#2B2A4A" strokeLinecap="round">
+          <line x1="160" y1="70" x2="160" y2="42" strokeWidth="4" />
+          <line x1="160" y1="70" x2="182" y2="82" strokeWidth="4" />
+        </g>
+        <circle cx="160" cy="70" r="4.5" fill="#D4453A" />
+        <g filter="url(#spkb-shift-shadow)">
+          <circle cx="198" cy="100" r="18" fill="#D4453A" />
+        </g>
+        <path d="M190 100 l6 7 12 -14" fill="none" stroke="#FFFFFF" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round" />
+      </>
+    ),
+    // Ascend: steps climbing toward a small flag — precision and
+    // structure earned one level at a time.
+    ascend: (
+      <>
+        <defs>
+          <linearGradient id="spkb-asc-bg" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stopColor="#E9F5EF" />
+            <stop offset="1" stopColor="#CDEBDD" />
+          </linearGradient>
+          <linearGradient id="spkb-asc-step" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stopColor="#48AC8C" />
+            <stop offset="1" stopColor="#2E8F7A" />
+          </linearGradient>
+          <filter id="spkb-asc-shadow" x="-40%" y="-40%" width="180%" height="180%">
+            <feDropShadow dx="0" dy="5" stdDeviation="5" floodColor="#1E5E4F" floodOpacity="0.22" />
+          </filter>
+        </defs>
+        <rect width="320" height="140" fill="url(#spkb-asc-bg)" />
+        <g filter="url(#spkb-asc-shadow)">
+          <rect x="86" y="104" width="46" height="20" rx="4" fill="url(#spkb-asc-step)" />
+          <rect x="132" y="86" width="46" height="38" rx="4" fill="url(#spkb-asc-step)" />
+          <rect x="178" y="64" width="46" height="60" rx="4" fill="url(#spkb-asc-step)" />
+        </g>
+        <path d="M201 64 V30" stroke="#1E5E4F" strokeWidth="3" strokeLinecap="round" />
+        <path d="M201 30 l24 9 -24 9 Z" fill="#48AC8C" />
+        <path d="M100 96 Q150 60 195 34" fill="none" stroke="#8FD1A8" strokeWidth="2.5" strokeDasharray="4 6" />
+      </>
+    ),
+  };
+  return (
+    <svg className="spklab-banner" viewBox="0 0 320 140" xmlns="http://www.w3.org/2000/svg">
+      {banners[name] || <rect width="320" height="140" fill="#EDE7F6" />}
+    </svg>
+  );
+}
+
 function ArticlesFeature({ navigate }) {
   const [activeTopic, setActiveTopic] = useState("All");
   const filtered = activeTopic === "All" ? ARTICLES : ARTICLES.filter((a) => a.topicLabel === activeTopic);
@@ -1214,6 +1320,7 @@ export default function Library() {
             <div className="spklab-lane"></div>
             <div className="spklab-grid">
               <a href="/library/forge" className="spklab-card spklab-card--forge">
+                <SpeakingBanner name="forge" />
                 <div className="spklab-body">
                   <div className="spklab-label">Gap identified</div>
                   <p className="spklab-gap">Thin working vocabulary</p>
@@ -1223,6 +1330,7 @@ export default function Library() {
                 </div>
               </a>
               <a href="/library/shift" className="spklab-card spklab-card--shift">
+                <SpeakingBanner name="shift" />
                 <div className="spklab-body">
                   <div className="spklab-label">Gap identified</div>
                   <p className="spklab-gap">Slow tense self-repair</p>
@@ -1232,6 +1340,7 @@ export default function Library() {
                 </div>
               </a>
               <a href="/library/ascend" className="spklab-card spklab-card--ascend">
+                <SpeakingBanner name="ascend" />
                 <div className="spklab-body">
                   <div className="spklab-label">Gap identified</div>
                   <p className="spklab-gap">Imprecise, unstructured speech</p>
@@ -1924,13 +2033,10 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   position: relative;
   transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
-.spklab-card:hover { transform: translateY(-3px); box-shadow: 0 16px 34px rgba(34,48,27,0.18); }
-.spklab-card::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 6px; }
-.spklab-card--forge::before { background: #E8A33D; }
-.spklab-card--shift::before { background: #D4453A; }
-.spklab-card--ascend::before { background: #2E8F7A; }
+.spklab-card:hover { transform: translateY(-4px); box-shadow: 0 18px 36px rgba(34,48,27,0.18); }
+.spklab-banner { display: block; width: 100%; height: auto; }
 
-.spklab-body { padding: 24px 20px 22px; }
+.spklab-body { padding: 20px 20px 22px; }
 .spklab-label { font-family: 'SF Mono', 'Menlo', Consolas, monospace; font-size: 9.5px; letter-spacing: 0.08em; text-transform: uppercase; color: #9AA0A6; margin-bottom: 3px; }
 .spklab-gap { font-family: 'Quicksand', sans-serif; font-weight: 700; font-size: 13.5px; margin: 0 0 14px; }
 .spklab-card--forge .spklab-gap { color: #96631C; }
