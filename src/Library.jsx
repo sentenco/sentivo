@@ -1260,14 +1260,18 @@ export default function Library() {
               <h1><span className="dyn-landing-pill">🎧 Sound Booth</span></h1>
             </div>
             <div className="dyn-landing-row"></div>
-            {genericContent}
+            <div className="dyn-landing-soon">
+              <span className="dyn-landing-soon-icon">🎧</span>
+              <p className="dyn-landing-soon-title">Coming soon</p>
+              <p className="dyn-landing-soon-desc">Listening lessons are on the way — check back soon.</p>
+            </div>
           </div>
         ) : (
           genericContent
         )}
         </div>
 
-        {category !== "Speaking" && category !== "Grammar" && category !== "Articles" && category !== "Reading" && category !== "Vocabulary" && category !== "Writing" && !(category === "All" && !query.trim() && !showAllToday) && (
+        {category !== "Speaking" && category !== "Grammar" && category !== "Articles" && category !== "Reading" && category !== "Vocabulary" && category !== "Writing" && category !== "Listening" && !(category === "All" && !query.trim() && !showAllToday) && (
         <div className="pagination">
           <button disabled={safePage === 1} onClick={() => changePage(safePage - 1)}>&larr; Prev</button>
           <span className="page-indicator">Page {safePage} of {totalPages}</span>
@@ -1867,6 +1871,11 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .dyn-landing-row::after { right: 0; }
 .dyn-landing .cover-grid { justify-content: center; }
 .dyn-landing .empty-msg { color: #2B2A4A; }
+
+.dyn-landing-soon { display: flex; flex-direction: column; align-items: center; text-align: center; padding: clamp(30px, 5vw, 54px) 20px; }
+.dyn-landing-soon-icon { font-size: 40px; opacity: 0.5; margin-bottom: 14px; }
+.dyn-landing-soon-title { font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 20px; color: #2B2A4A; margin: 0 0 8px; }
+.dyn-landing-soon-desc { font-family: 'Quicksand', sans-serif; font-size: 14px; color: #6B6580; margin: 0; }
 
 .spklab-page {
   width: 100%;
