@@ -48,8 +48,7 @@ const GAME_TYPES = [
 
 function GameBanner({ name }) {
   const banners = {
-    // Two overlapping circles (a Venn diagram) — the overlap, where the
-    // meanings coincide, glows brighter than either circle alone.
+    // Just the equal sign — the mark, not a diagram of it.
     synonyms: (
       <>
         <defs>
@@ -57,30 +56,23 @@ function GameBanner({ name }) {
             <stop offset="0" stopColor="#FFE3EC" />
             <stop offset="1" stopColor="#FFC9DC" />
           </linearGradient>
-          <linearGradient id="vgb-syn-lens" x1="0" y1="0" x2="0" y2="1">
+          <linearGradient id="vgb-syn-mark" x1="0" y1="0" x2="0" y2="1">
             <stop offset="0" stopColor="#FF7FA8" />
             <stop offset="1" stopColor="#D6396F" />
           </linearGradient>
           <filter id="vgb-syn-shadow" x="-40%" y="-40%" width="180%" height="180%">
             <feDropShadow dx="0" dy="5" stdDeviation="6" floodColor="#B0285A" floodOpacity="0.22" />
           </filter>
-          <clipPath id="vgb-syn-clip"><circle cx="128" cy="70" r="52" /></clipPath>
         </defs>
         <rect width="320" height="140" fill="url(#vgb-syn-bg)" />
         <g filter="url(#vgb-syn-shadow)">
-          <circle cx="128" cy="70" r="52" fill="#FFFFFF" />
-          <circle cx="192" cy="70" r="52" fill="#FFFFFF" />
+          <rect x="112" y="52" width="96" height="16" rx="8" fill="url(#vgb-syn-mark)" />
+          <rect x="112" y="82" width="96" height="16" rx="8" fill="url(#vgb-syn-mark)" />
         </g>
-        <g clipPath="url(#vgb-syn-clip)">
-          <circle cx="192" cy="70" r="52" fill="url(#vgb-syn-lens)" />
-        </g>
-        <rect x="142" y="58" width="36" height="7" rx="3.5" fill="#FFFFFF" />
-        <rect x="142" y="75" width="36" height="7" rx="3.5" fill="#FFFFFF" />
       </>
     ),
-    // A modernized yin-yang built from the same rose + violet pairing as
-    // the Synonyms card, so the two read as one coordinated theme — two
-    // halves of one whole meaning-pair, opposite but matched.
+    // A classic black-and-white yin-yang — opposite, but two halves of
+    // one whole meaning-pair.
     antonyms: (
       <>
         <defs>
@@ -88,24 +80,17 @@ function GameBanner({ name }) {
             <stop offset="0" stopColor="#EEE9FC" />
             <stop offset="1" stopColor="#DCD1F7" />
           </linearGradient>
-          <linearGradient id="vgb-ant-violet" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stopColor="#9481EE" />
-            <stop offset="1" stopColor="#5B3FD6" />
-          </linearGradient>
-          <linearGradient id="vgb-ant-rose" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stopColor="#FF7FA8" />
-            <stop offset="1" stopColor="#D6396F" />
-          </linearGradient>
           <filter id="vgb-ant-shadow" x="-40%" y="-40%" width="180%" height="180%">
             <feDropShadow dx="0" dy="6" stdDeviation="7" floodColor="#4B3690" floodOpacity="0.22" />
           </filter>
         </defs>
         <rect width="320" height="140" fill="url(#vgb-ant-bg)" />
         <g filter="url(#vgb-ant-shadow)">
-          <circle cx="160" cy="70" r="50" fill="url(#vgb-ant-violet)" />
-          <path d="M160 20 A50 50 0 0 1 160 120 A25 25 0 0 1 160 70 A25 25 0 0 0 160 20 Z" fill="url(#vgb-ant-rose)" />
-          <circle cx="160" cy="45" r="8" fill="url(#vgb-ant-violet)" />
-          <circle cx="160" cy="95" r="8" fill="url(#vgb-ant-rose)" />
+          <circle cx="160" cy="70" r="50" fill="#1B1B22" />
+          <path d="M160 20 A50 50 0 0 1 160 120 A25 25 0 0 1 160 70 A25 25 0 0 0 160 20 Z" fill="#FFFFFF" />
+          <circle cx="160" cy="70" r="50" fill="none" stroke="#1B1B22" strokeWidth="2" />
+          <circle cx="160" cy="45" r="8" fill="#1B1B22" />
+          <circle cx="160" cy="95" r="8" fill="#FFFFFF" />
         </g>
       </>
     ),
