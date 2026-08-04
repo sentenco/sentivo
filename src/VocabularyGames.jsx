@@ -46,6 +46,62 @@ const GAME_TYPES = [
   },
 ];
 
+function GameBanner({ name }) {
+  const banners = {
+    synonyms: (
+      <>
+        <rect width="320" height="120" fill="#FDEAF0" />
+        <rect x="34" y="40" width="94" height="34" rx="17" fill="#FFFFFF" />
+        <rect x="52" y="53" width="58" height="8" rx="4" fill="#F3A9C4" />
+        <rect x="192" y="40" width="94" height="34" rx="17" fill="#FFFFFF" />
+        <rect x="210" y="53" width="58" height="8" rx="4" fill="#F3A9C4" />
+        <path d="M128 57 Q160 30 192 57" fill="none" stroke="#D6396F" strokeWidth="3" strokeLinecap="round" />
+        <path d="M128 57 Q160 84 192 57" fill="none" stroke="#D6396F" strokeWidth="3" strokeLinecap="round" />
+        <circle cx="160" cy="57" r="5" fill="#D6396F" />
+      </>
+    ),
+    antonyms: (
+      <>
+        <rect width="320" height="120" fill="#EFEAFB" />
+        <rect x="30" y="38" width="86" height="34" rx="17" fill="#FF8FB3" />
+        <rect x="204" y="38" width="86" height="34" rx="17" fill="#7C5CFC" />
+        <path d="M124 55 H196" stroke="#4E3AA6" strokeWidth="3" strokeLinecap="round" />
+        <path d="M124 55 l14 -10 M124 55 l14 10" fill="none" stroke="#4E3AA6" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M196 55 l-14 -10 M196 55 l-14 10" fill="none" stroke="#4E3AA6" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+        <circle cx="73" cy="55" r="7" fill="#FFFFFF" opacity="0.8" />
+        <circle cx="247" cy="55" r="7" fill="#FFFFFF" opacity="0.8" />
+      </>
+    ),
+    wordSort: (
+      <>
+        <rect width="320" height="120" fill="#E4F5EB" />
+        <path d="M56 66 h84 l-10 36 a8 8 0 0 1 -8 6 h-58 a8 8 0 0 1 -8 -6 Z" fill="#FFFFFF" stroke="#8FD1A8" strokeWidth="3" />
+        <path d="M180 66 h84 l-10 36 a8 8 0 0 1 -8 6 h-58 a8 8 0 0 1 -8 -6 Z" fill="#FFFFFF" stroke="#8FD1A8" strokeWidth="3" />
+        <rect x="82" y="24" width="26" height="26" rx="7" fill="#1F9D6E" transform="rotate(-8 95 37)" />
+        <rect x="126" y="18" width="26" height="26" rx="7" fill="#34D399" transform="rotate(10 139 31)" />
+        <rect x="196" y="20" width="26" height="26" rx="7" fill="#1F9D6E" transform="rotate(6 209 33)" />
+        <path d="M95 46 Q80 58 74 74" fill="none" stroke="#8FD1A8" strokeWidth="2.5" strokeDasharray="4 4" />
+        <path d="M209 46 Q222 58 226 74" fill="none" stroke="#8FD1A8" strokeWidth="2.5" strokeDasharray="4 4" />
+      </>
+    ),
+    oddOneOut: (
+      <>
+        <rect width="320" height="120" fill="#FCEEE0" />
+        <circle cx="66" cy="60" r="20" fill="#FFFFFF" stroke="#F2C6A0" strokeWidth="3" />
+        <circle cx="126" cy="60" r="20" fill="#FFFFFF" stroke="#F2C6A0" strokeWidth="3" />
+        <circle cx="252" cy="60" r="20" fill="#FFFFFF" stroke="#F2C6A0" strokeWidth="3" />
+        <path d="M186 40 L206 76 L166 76 Z" fill="#D97706" />
+        <circle cx="186" cy="60" r="30" fill="none" stroke="#D97706" strokeWidth="3" strokeDasharray="5 6" />
+      </>
+    ),
+  };
+  return (
+    <svg className="vg-banner" viewBox="0 0 320 120" xmlns="http://www.w3.org/2000/svg">
+      {banners[name] || <rect width="320" height="120" fill="#EDE7F6" />}
+    </svg>
+  );
+}
+
 const AUDIENCES = ["Kids", "Teens", "Adults"];
 
 const TOPICS = [
@@ -214,9 +270,12 @@ export default function VocabularyGames() {
         <div className="vg-block-grid">
           {GAME_TYPES.map((g) => (
             <button key={g.key} type="button" className={`vg-block vg-block--${g.hue}`} onClick={() => setGameKey(g.key)}>
-              <h3 className="vg-block-title">{g.title}</h3>
-              <p className="vg-block-blurb">{g.blurb}</p>
-              <span className="vg-block-cta">See categories →</span>
+              <GameBanner name={g.key} />
+              <div className="vg-block-body">
+                <h3 className="vg-block-title">{g.title}</h3>
+                <p className="vg-block-blurb">{g.blurb}</p>
+                <span className="vg-block-cta">See categories →</span>
+              </div>
             </button>
           ))}
         </div>
@@ -283,35 +342,31 @@ const CSS = `
 .vg-row::before { left: 0; }
 .vg-row::after { right: 0; }
 
-.vg-block-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 280px)); gap: 20px; justify-content: center; width: 100%; }
+.vg-block-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 300px)); gap: 20px; justify-content: center; width: 100%; }
 .vg-block {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: stretch;
   text-align: left;
   background: #FFFFFF;
   border: none;
-  border-radius: 16px;
-  padding: 24px 22px 22px 26px;
+  border-radius: 18px;
+  padding: 0;
   cursor: pointer;
-  position: relative;
   overflow: hidden;
   box-shadow: 0 10px 26px rgba(43,42,74,0.08);
   transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
-.vg-block::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 5px; }
-.vg-block:hover { transform: translateY(-3px); box-shadow: 0 16px 32px rgba(43,42,74,0.14); }
-.vg-block--pink::before { background: #D6396F; }
-.vg-block--purple::before { background: #7C5CFC; }
-.vg-block--green::before { background: #1F9D6E; }
-.vg-block--orange::before { background: #D97706; }
-.vg-block-title { font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 19px; margin: 0 0 6px; color: #2B2A4A; }
-.vg-block-blurb { font-size: 13px; color: #6B6580; margin: 0 0 18px; line-height: 1.5; }
-.vg-block-cta { font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 12.5px; padding: 9px 0; border-radius: 8px; text-align: center; width: 100%; color: #FFFFFF; }
-.vg-block--pink .vg-block-cta { background: #D6396F; }
-.vg-block--purple .vg-block-cta { background: #7C5CFC; }
-.vg-block--green .vg-block-cta { background: #1F9D6E; }
-.vg-block--orange .vg-block-cta { background: #D97706; }
+.vg-block:hover { transform: translateY(-3px); box-shadow: 0 18px 34px rgba(43,42,74,0.14); }
+.vg-banner { display: block; width: 100%; height: auto; }
+.vg-block-body { padding: 18px 20px 20px; }
+.vg-block-title { font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 18px; margin: 0 0 6px; color: #2B2A4A; }
+.vg-block-blurb { font-size: 13px; color: #6B6580; margin: 0 0 16px; line-height: 1.5; }
+.vg-block-cta { font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 12.5px; }
+.vg-block--pink .vg-block-cta { color: #D6396F; }
+.vg-block--purple .vg-block-cta { color: #7C5CFC; }
+.vg-block--green .vg-block-cta { color: #1F9D6E; }
+.vg-block--orange .vg-block-cta { color: #D97706; }
 
 .vg-audience-group { width: 100%; margin-bottom: 28px; }
 .vg-audience-group:last-child { margin-bottom: 0; }
