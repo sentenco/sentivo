@@ -407,7 +407,7 @@ const CSS = `
 .vg-row::before { left: 0; }
 .vg-row::after { right: 0; }
 
-.vg-block-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 300px)); gap: 20px; justify-content: center; width: 100%; }
+.vg-block-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; max-width: 660px; margin: 0 auto; width: 100%; }
 .vg-block {
   display: flex;
   flex-direction: column;
