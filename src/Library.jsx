@@ -156,8 +156,7 @@ function WordLookup() {
 
   return (
     <div className="gc-lookup">
-      <div className="gc-widget-title">Gloss</div>
-      <p className="gc-widget-note gc-widget-note--tool">Look up any word instantly.</p>
+      <div className="gc-widget-title">Dictionary</div>
       <form className="gc-lookup-form" onSubmit={lookup}>
         <input
           className="gc-lookup-input"
@@ -225,8 +224,7 @@ function GrammarChecker() {
 
   return (
     <div className="gc-grammar">
-      <div className="gc-widget-title">Sentry</div>
-      <p className="gc-widget-note gc-widget-note--tool">Check your sentences for mistakes.</p>
+      <div className="gc-widget-title">Grammar Checker</div>
       <form className="gc-grammar-form" onSubmit={check}>
         <textarea
           className="gc-grammar-input"
@@ -1423,7 +1421,6 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 
 .gc-widget-title { font-family: 'Fredoka', sans-serif; font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 6px; }
 .gc-widget-note { font-family: 'Quicksand', sans-serif; font-size: 11.5px; line-height: 1.55; color: var(--muted); margin-top: 8px; }
-.gc-widget-note--tool { margin: -2px 0 10px; }
 
 .gc-lookup-form { display: flex; align-items: center; gap: 6px; }
 .gc-lookup-input {
