@@ -188,7 +188,7 @@ export default function StoryMakingActivity({ item, onBack, backLabel = "← Top
           <span className="sm-count" data-full={sentenceCount >= 5}>{sentenceCount} / 5 sentences</span>
         </div>
 
-        <h1 className="sm-title">{item.title}</h1>
+        <h1 className="sm-title">{round.title || item.title}</h1>
         <span className="sm-focus">{item.focus}</span>
         {rounds.length > 1 && (
           <span className="sm-round-tag">{roundIndex === 0 ? "Story 1 of 2" : "Story 2 of 2 · Bonus"}</span>

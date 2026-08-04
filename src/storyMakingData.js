@@ -1,6 +1,7 @@
 // Writing category, Story Making activity: 2 activities per audience/level combo.
 // Shape: { title, focus, rounds: [round1, round2] }
-// Each round: { scene, image, words, prompt, sample }
+// Each round: { title, scene, image, words, prompt, sample } — every round
+// has its own title since round 2's picture is a different scene entirely.
 // "scene" keys into the placeholder illustrations in StoryMakingActivity.jsx,
 // used until "image" (a real generated picture) is wired in. Round 2 is the
 // bonus story for students who finish round 1 quickly.
@@ -11,6 +12,7 @@ const STORY_MAKING_SETS = {
       focus: "Simple past, sequencing (first, then, after)",
       rounds: [
         {
+          title: "A Day at the Park",
           scene: "park",
           image: null,
           words: ["park", "sun", "friends", "ball", "ice cream", "laugh"],
@@ -18,6 +20,7 @@ const STORY_MAKING_SETS = {
           sample: "Last Saturday, the sun was shining at the park. I met my friends near the big tree. First, we played with a ball for an hour. After that, we bought ice cream from a small cart. We sat on the grass and laughed all afternoon.",
         },
         {
+          title: "The Zoo Trip",
           scene: "bonus",
           image: null,
           words: ["zoo", "elephant", "camera", "excited", "feed", "laugh"],
@@ -31,6 +34,7 @@ const STORY_MAKING_SETS = {
       focus: "Simple past, adjectives, feelings",
       rounds: [
         {
+          title: "The Lost Puppy",
           scene: "lostPuppy",
           image: null,
           words: ["puppy", "street", "scared", "boy", "help", "home"],
@@ -38,6 +42,7 @@ const STORY_MAKING_SETS = {
           sample: "A small puppy was walking alone on the street. It looked scared and tired. A kind boy saw the puppy and stopped to help. He gave it some water and checked its collar. Then he walked the puppy safely back home.",
         },
         {
+          title: "The New Student",
           scene: "bonus",
           image: null,
           words: ["new student", "shy", "lunch", "invite", "friend", "smile"],
@@ -53,6 +58,7 @@ const STORY_MAKING_SETS = {
       focus: "Past continuous + simple past, sequencing",
       rounds: [
         {
+          title: "The Surprise Party",
           scene: "party",
           image: null,
           words: ["surprise", "balloons", "cake", "friends", "gift", "laugh"],
@@ -60,6 +66,7 @@ const STORY_MAKING_SETS = {
           sample: "While Maya was walking home, her friends were hiding behind the door with a surprise. The room was full of colorful balloons and a big cake. When she opened the door, everyone shouted and laughed. Her best friend handed her a small gift. It turned out to be the best birthday she ever had.",
         },
         {
+          title: "The School Play",
           scene: "bonus",
           image: null,
           words: ["school play", "backstage", "forgot", "lines", "audience", "applause"],
@@ -73,6 +80,7 @@ const STORY_MAKING_SETS = {
       focus: "Past tense narrative, descriptive detail",
       rounds: [
         {
+          title: "Rainy Day Adventure",
           scene: "rain",
           image: null,
           words: ["rain", "umbrella", "puddle", "boots", "run", "laugh"],
@@ -80,6 +88,7 @@ const STORY_MAKING_SETS = {
           sample: "The rain started suddenly while we were walking to school. I opened my umbrella, but the wind turned it inside out. My sister jumped straight into a deep puddle in her yellow boots. We had to run the rest of the way, completely soaked. By the time we arrived, we couldn't stop laughing.",
         },
         {
+          title: "The Broken Bike",
           scene: "bonus",
           image: null,
           words: ["bike", "flat tire", "stranded", "stranger", "fix", "grateful"],
@@ -95,6 +104,7 @@ const STORY_MAKING_SETS = {
       focus: "Simple past, everyday vocabulary",
       rounds: [
         {
+          title: "The New Neighbor",
           scene: "neighbor",
           image: null,
           words: ["neighbor", "moving truck", "boxes", "coffee", "smile", "welcome"],
@@ -102,6 +112,7 @@ const STORY_MAKING_SETS = {
           sample: "A moving truck stopped in front of the house next door yesterday. Our new neighbor carried box after box into her new home. In the afternoon, I brought her a cup of coffee. She smiled and thanked me for the warm welcome. We talked on the porch for almost an hour.",
         },
         {
+          title: "The Coffee Shop Spill",
           scene: "bonus",
           image: null,
           words: ["coffee shop", "stranger", "laptop", "spilled", "apologize", "conversation"],
@@ -115,6 +126,7 @@ const STORY_MAKING_SETS = {
       focus: "Simple past, shopping vocabulary",
       rounds: [
         {
+          title: "A Trip to the Market",
           scene: "market",
           image: null,
           words: ["market", "vegetables", "basket", "seller", "price", "bag"],
@@ -122,6 +134,7 @@ const STORY_MAKING_SETS = {
           sample: "On Sunday morning, I walked to the local market to buy fresh vegetables. I filled my basket with tomatoes, onions, and peppers. The seller told me a fair price for everything. I paid and packed it all into my bag. It was a simple trip, but I enjoyed every minute of it.",
         },
         {
+          title: "The Lost Wallet",
           scene: "bonus",
           image: null,
           words: ["wallet", "lost", "worried", "stranger", "return", "thankful"],
@@ -137,6 +150,7 @@ const STORY_MAKING_SETS = {
       focus: "Past tense, workplace vocabulary, connectors",
       rounds: [
         {
+          title: "The Job Interview",
           scene: "interview",
           image: null,
           words: ["interview", "nervous", "suit", "questions", "handshake", "confident"],
@@ -144,6 +158,7 @@ const STORY_MAKING_SETS = {
           sample: "David put on his best suit for the interview, even though he felt nervous. The manager asked several questions about his previous experience. Although his hands were shaking, he answered clearly and honestly. At the end, they shared a firm handshake. He left the office feeling far more confident than when he arrived.",
         },
         {
+          title: "The Delayed Flight",
           scene: "bonus",
           image: null,
           words: ["business trip", "delayed flight", "meeting", "laptop", "reschedule", "relieved"],
@@ -157,6 +172,7 @@ const STORY_MAKING_SETS = {
       focus: "Past tense narrative, cause and effect",
       rounds: [
         {
+          title: "Missed Flight",
           scene: "airport",
           image: null,
           words: ["airport", "delay", "luggage", "gate", "worried", "rebook"],
@@ -164,6 +180,7 @@ const STORY_MAKING_SETS = {
           sample: "Traffic on the way to the airport caused a long delay. By the time I checked my luggage, I only had ten minutes left. I ran through the terminal, but the gate had already closed. I felt worried as I watched my flight leave without me. Luckily, an airline agent helped me rebook a seat on the next flight.",
         },
         {
+          title: "The Difficult Call",
           scene: "bonus",
           image: null,
           words: ["client", "complaint", "frustrated", "solution", "calm", "resolved"],
