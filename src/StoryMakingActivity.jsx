@@ -183,57 +183,58 @@ export default function StoryMakingActivity({ item, onBack, backLabel = "← Top
       )}
 
       <div className="sm-card">
-        <div className="sm-bar">
-          <span className="sm-eyebrow">Sentivo · Story Making</span>
-          <span className="sm-count" data-full={sentenceCount >= 5}>{sentenceCount} / 5 sentences</span>
-        </div>
-
-        <h1 className="sm-title">{round.title || item.title}</h1>
-        <span className="sm-focus">{item.focus}</span>
-        {rounds.length > 1 && (
-          <span className="sm-round-tag">{roundIndex === 0 ? "Story 1 of 2" : "Story 2 of 2 · Bonus"}</span>
-        )}
-
-        <div className="sm-layout">
+        <div className="sm-picture-pane">
           {round.image ? (
             <img className="sm-scene" src={round.image} alt="" />
           ) : (
             <StoryScene name={round.scene} />
           )}
-          <div className="sm-side">
-            <p className="sm-prompt">{round.prompt}</p>
-            <div className="sm-words">
-              {round.words.map((w) => (
-                <span className="sm-word" key={w}>{w}</span>
-              ))}
-            </div>
-          </div>
         </div>
 
-        <textarea
-          className="sm-textarea"
-          placeholder="Write your 5-sentence story here…"
-          value={draft}
-          onChange={(e) => setDraft(e.target.value)}
-          rows={5}
-        />
-
-        {revealed && (
-          <div className="sm-sample">
-            <span className="sm-label">Sample story</span>
-            <p className="sm-sample-text">{round.sample}</p>
+        <div className="sm-content-pane">
+          <div className="sm-bar">
+            <span className="sm-eyebrow">Sentivo · Story Making</span>
+            <span className="sm-count" data-full={sentenceCount >= 5}>{sentenceCount} / 5 sentences</span>
           </div>
-        )}
 
-        <div className="sm-nav">
-          <button type="button" className="sm-btn" onClick={restart}>Restart ↻</button>
-          {revealed && !isLastRound ? (
-            <button type="button" className="sm-btn sm-btn--primary" onClick={nextRound}>Bonus story →</button>
-          ) : (
-            <button type="button" className="sm-btn sm-btn--primary" onClick={() => setRevealed(true)} disabled={revealed}>
-              {revealed ? "Sample shown" : "Show sample →"}
-            </button>
+          <h1 className="sm-title">{round.title || item.title}</h1>
+          <span className="sm-focus">{item.focus}</span>
+          {rounds.length > 1 && (
+            <span className="sm-round-tag">{roundIndex === 0 ? "Story 1 of 2" : "Story 2 of 2 · Bonus"}</span>
           )}
+
+          <p className="sm-prompt">{round.prompt}</p>
+          <div className="sm-words">
+            {round.words.map((w) => (
+              <span className="sm-word" key={w}>{w}</span>
+            ))}
+          </div>
+
+          <textarea
+            className="sm-textarea"
+            placeholder="Write your 5-sentence story here…"
+            value={draft}
+            onChange={(e) => setDraft(e.target.value)}
+            rows={5}
+          />
+
+          {revealed && (
+            <div className="sm-sample">
+              <span className="sm-label">Sample story</span>
+              <p className="sm-sample-text">{round.sample}</p>
+            </div>
+          )}
+
+          <div className="sm-nav">
+            <button type="button" className="sm-btn" onClick={restart}>Restart ↻</button>
+            {revealed && !isLastRound ? (
+              <button type="button" className="sm-btn sm-btn--primary" onClick={nextRound}>Bonus story →</button>
+            ) : (
+              <button type="button" className="sm-btn sm-btn--primary" onClick={() => setRevealed(true)} disabled={revealed}>
+                {revealed ? "Sample shown" : "Show sample →"}
+              </button>
+            )}
+          </div>
         </div>
       </div>
     </div>
@@ -271,12 +272,19 @@ const CSS = `
 
 .sm-card {
   width: 100%;
-  max-width: 680px;
+  max-width: 980px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   background: #FFFFFF;
   border-radius: 24px;
+  overflow: hidden;
   box-shadow: 0 20px 44px rgba(197,105,42,0.16);
-  padding: clamp(26px, 4.4vw, 40px);
 }
+
+.sm-picture-pane { position: relative; background: #F3EEE6; min-height: 320px; }
+.sm-scene { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+
+.sm-content-pane { padding: clamp(24px, 3.2vw, 36px); display: flex; flex-direction: column; min-width: 0; }
 
 .sm-bar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
 .sm-eyebrow {
@@ -307,11 +315,8 @@ const CSS = `
 }
 .sm-focus + .sm-round-tag { margin-bottom: 18px; }
 
-.sm-layout { display: grid; grid-template-columns: 180px 1fr; gap: 18px; align-items: start; margin: 14px 0 16px; }
-.sm-scene { width: 100%; aspect-ratio: 8 / 5; object-fit: cover; border-radius: 16px; display: block; box-shadow: 0 8px 18px rgba(43,42,74,0.10); }
-.sm-side { display: flex; flex-direction: column; gap: 12px; }
-.sm-prompt { font-size: 13.5px; color: #5C6873; line-height: 1.5; margin: 0; }
-.sm-words { display: flex; flex-wrap: wrap; gap: 8px; }
+.sm-prompt { font-size: 13.5px; color: #5C6873; line-height: 1.5; margin: 0 0 12px; }
+.sm-words { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
 .sm-word {
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;
@@ -324,6 +329,8 @@ const CSS = `
 
 .sm-textarea {
   width: 100%;
+  flex: 1;
+  min-height: 120px;
   border: 1px solid #EBC6A6;
   border-radius: 14px;
   padding: 14px 16px;
@@ -360,7 +367,8 @@ const CSS = `
 }
 .sm-btn--primary:active { transform: translateY(3px); box-shadow: 0 3px 0 #9C4E1C; }
 
-@media (max-width: 480px) {
-  .sm-layout { grid-template-columns: 1fr; }
+@media (max-width: 760px) {
+  .sm-card { grid-template-columns: 1fr; }
+  .sm-picture-pane { min-height: 0; aspect-ratio: 16 / 9; }
 }
 `;
