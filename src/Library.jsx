@@ -1214,38 +1214,29 @@ export default function Library() {
             <div className="spklab-lane"></div>
             <div className="spklab-grid">
               <a href="/library/forge" className="spklab-card spklab-card--forge">
-                <div className="spklab-card-head"><span>Case 01</span><span className="spklab-tag">Level A2</span></div>
                 <div className="spklab-body">
                   <div className="spklab-label">Gap identified</div>
                   <p className="spklab-gap">Thin working vocabulary</p>
                   <h3 className="spklab-name">Forge</h3>
                   <p className="spklab-desc">Build real vocabulary through pictures, gaps, echoes, and question chains.</p>
-                  <div className="spklab-readout"><span>Track</span><b>A Day at Work</b></div>
-                  <div className="spklab-readout"><span>Dosage</span><b>10 lessons</b></div>
                   <span className="spklab-cta">Open Forge →</span>
                 </div>
               </a>
               <a href="/library/shift" className="spklab-card spklab-card--shift">
-                <div className="spklab-card-head"><span>Case 02</span><span className="spklab-tag">Level A2-B1</span></div>
                 <div className="spklab-body">
                   <div className="spklab-label">Gap identified</div>
                   <p className="spklab-gap">Slow tense self-repair</p>
                   <h3 className="spklab-name">Shift</h3>
                   <p className="spklab-desc">Fast tense choice and self-repair under pressure, for students who already know the grammar.</p>
-                  <div className="spklab-readout"><span>Track</span><b>Tense Control Reset</b></div>
-                  <div className="spklab-readout"><span>Dosage</span><b>10 lessons</b></div>
                   <span className="spklab-cta">Open Shift →</span>
                 </div>
               </a>
               <a href="/library/ascend" className="spklab-card spklab-card--ascend">
-                <div className="spklab-card-head"><span>Case 03</span><span className="spklab-tag">Level C1</span></div>
                 <div className="spklab-body">
                   <div className="spklab-label">Gap identified</div>
                   <p className="spklab-gap">Imprecise, unstructured speech</p>
                   <h3 className="spklab-name">Ascend</h3>
                   <p className="spklab-desc">Precision, structure, and diplomatic control for students who already sound fluent.</p>
-                  <div className="spklab-readout"><span>Track</span><b>Business + AI</b></div>
-                  <div className="spklab-readout"><span>Dosage</span><b>10 lessons</b></div>
                   <span className="spklab-cta">Open Ascend →</span>
                 </div>
               </a>
@@ -1389,9 +1380,7 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   width: 100%;
   max-width: 1220px;
   margin: 0 auto;
-  background:
-    repeating-linear-gradient(180deg, rgba(255,255,255,0.5) 0px, rgba(255,255,255,0.5) 1px, transparent 1px, transparent 64px),
-    linear-gradient(180deg, #F4F6FA 0%, #E7EAF2 100%);
+  background: linear-gradient(180deg, #F4F6FA 0%, #E7EAF2 100%);
   border-radius: 22px;
   padding: clamp(22px, 3vw, 40px) clamp(20px, 3vw, 36px);
 }
@@ -1831,19 +1820,13 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   align-items: center;
 }
 .dyn-landing--vocab {
-  background:
-    repeating-linear-gradient(180deg, rgba(255,255,255,0.5) 0px, rgba(255,255,255,0.5) 1px, transparent 1px, transparent 64px),
-    linear-gradient(180deg, #FDF0F5 0%, #FADCE7 100%);
+  background: linear-gradient(180deg, #FBF3E3 0%, #F3E4C0 100%);
 }
 .dyn-landing--writing {
-  background:
-    repeating-linear-gradient(180deg, rgba(255,255,255,0.5) 0px, rgba(255,255,255,0.5) 1px, transparent 1px, transparent 64px),
-    linear-gradient(180deg, #FBEDE3 0%, #F5D5BC 100%);
+  background: linear-gradient(180deg, #F2F7F1 0%, #E3EDE1 100%);
 }
 .dyn-landing--listening {
-  background:
-    repeating-linear-gradient(180deg, rgba(255,255,255,0.5) 0px, rgba(255,255,255,0.5) 1px, transparent 1px, transparent 64px),
-    linear-gradient(180deg, #F0EDFC 0%, #DFD8F7 100%);
+  background: linear-gradient(180deg, #FDF1EC 0%, #F8DDCF 100%);
 }
 .dyn-landing-hero { text-align: center; }
 .dyn-landing-eyebrow {
@@ -1854,9 +1837,9 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   text-transform: uppercase;
   margin-bottom: 10px;
 }
-.dyn-landing--vocab .dyn-landing-eyebrow { color: #A24E71; }
-.dyn-landing--writing .dyn-landing-eyebrow { color: #A15A2E; }
-.dyn-landing--listening .dyn-landing-eyebrow { color: #5D4E9E; }
+.dyn-landing--vocab .dyn-landing-eyebrow { color: #96721B; }
+.dyn-landing--writing .dyn-landing-eyebrow { color: #3F7A4E; }
+.dyn-landing--listening .dyn-landing-eyebrow { color: #C1573A; }
 .dyn-landing-pill {
   display: inline-flex;
   align-items: center;
@@ -1869,17 +1852,17 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   padding: 6px 22px 9px;
   border-radius: 999px;
 }
-.dyn-landing--vocab .dyn-landing-pill { background: rgba(210,74,124,0.14); }
-.dyn-landing--writing .dyn-landing-pill { background: rgba(197,105,42,0.16); }
-.dyn-landing--listening .dyn-landing-pill { background: rgba(93,78,158,0.14); }
+.dyn-landing--vocab .dyn-landing-pill { background: rgba(184,140,26,0.16); }
+.dyn-landing--writing .dyn-landing-pill { background: rgba(63,122,78,0.14); }
+.dyn-landing--listening .dyn-landing-pill { background: rgba(224,106,74,0.16); }
 .dyn-landing-row { position: relative; height: 2px; width: 100%; max-width: 1040px; margin: clamp(22px, 2.8vw, 32px) 0; }
-.dyn-landing--vocab .dyn-landing-row { background: #F3C3D6; }
-.dyn-landing--writing .dyn-landing-row { background: #EBC6A6; }
-.dyn-landing--listening .dyn-landing-row { background: #CCC0EF; }
+.dyn-landing--vocab .dyn-landing-row { background: #E8D6A0; }
+.dyn-landing--writing .dyn-landing-row { background: #C3DCC0; }
+.dyn-landing--listening .dyn-landing-row { background: #F0C3AE; }
 .dyn-landing-row::before, .dyn-landing-row::after { content: ""; position: absolute; top: -3px; width: 8px; height: 8px; border-radius: 50%; }
-.dyn-landing--vocab .dyn-landing-row::before, .dyn-landing--vocab .dyn-landing-row::after { background: #D24A7C; }
-.dyn-landing--writing .dyn-landing-row::before, .dyn-landing--writing .dyn-landing-row::after { background: #C5692A; }
-.dyn-landing--listening .dyn-landing-row::before, .dyn-landing--listening .dyn-landing-row::after { background: #6E5DC6; }
+.dyn-landing--vocab .dyn-landing-row::before, .dyn-landing--vocab .dyn-landing-row::after { background: #B88C1A; }
+.dyn-landing--writing .dyn-landing-row::before, .dyn-landing--writing .dyn-landing-row::after { background: #3F7A4E; }
+.dyn-landing--listening .dyn-landing-row::before, .dyn-landing--listening .dyn-landing-row::after { background: #C1573A; }
 .dyn-landing-row::before { left: 0; }
 .dyn-landing-row::after { right: 0; }
 .dyn-landing .cover-grid { justify-content: center; }
@@ -1888,9 +1871,7 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .spklab-page {
   width: 100%;
   max-width: 1080px;
-  background:
-    repeating-linear-gradient(180deg, rgba(255,255,255,0.5) 0px, rgba(255,255,255,0.5) 1px, transparent 1px, transparent 64px),
-    linear-gradient(180deg, #EEF3EA 0%, #E4ECDF 100%);
+  background: linear-gradient(180deg, #EEF3EA 0%, #E4ECDF 100%);
   border-radius: 22px;
   padding: clamp(26px, 3.6vw, 48px) clamp(20px, 3.2vw, 40px);
 }
@@ -1940,19 +1921,7 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .spklab-card--shift::before { background: #D4453A; }
 .spklab-card--ascend::before { background: #2E8F7A; }
 
-.spklab-card-head {
-  display: flex; justify-content: space-between; align-items: center;
-  padding: 12px 18px 12px 22px;
-  color: #FFFFFF;
-  font-family: 'SF Mono', 'Menlo', Consolas, monospace;
-  font-size: 10.5px; letter-spacing: 0.06em; text-transform: uppercase;
-}
-.spklab-card--forge .spklab-card-head { background: #E8A33D; }
-.spklab-card--shift .spklab-card-head { background: #D4453A; }
-.spklab-card--ascend .spklab-card-head { background: #2E8F7A; }
-.spklab-tag { display: inline-block; padding: 3px 9px; border-radius: 999px; background: rgba(255,255,255,0.28); font-weight: 700; }
-
-.spklab-body { padding: 20px 20px 22px; }
+.spklab-body { padding: 24px 20px 22px; }
 .spklab-label { font-family: 'SF Mono', 'Menlo', Consolas, monospace; font-size: 9.5px; letter-spacing: 0.08em; text-transform: uppercase; color: #9AA0A6; margin-bottom: 3px; }
 .spklab-gap { font-family: 'Quicksand', sans-serif; font-weight: 700; font-size: 13.5px; margin: 0 0 14px; }
 .spklab-card--forge .spklab-gap { color: #96631C; }
@@ -1960,9 +1929,6 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .spklab-card--ascend .spklab-gap { color: #1E7261; }
 .spklab-name { font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: clamp(22px, 2.1vw, 26px); color: #161B20; margin: 0 0 8px; }
 .spklab-desc { font-family: 'Quicksand', sans-serif; font-size: 12.5px; line-height: 1.5; color: #5C6873; margin: 0 0 16px; }
-.spklab-readout { display: flex; justify-content: space-between; font-family: 'SF Mono', 'Menlo', Consolas, monospace; font-size: 10.5px; color: #8A9280; border-top: 1px dashed #E7EAE2; padding-top: 8px; margin-top: 2px; }
-.spklab-readout + .spklab-readout { border-top: none; padding-top: 2px; }
-.spklab-readout b { color: #2B333B; }
 .spklab-cta {
   display: block; text-align: center; margin-top: 14px;
   font-family: 'Quicksand', sans-serif; font-weight: 700; font-size: 12.5px;
@@ -2133,9 +2099,7 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   width: 100%;
   max-width: 1080px;
   margin: 0 auto;
-  background:
-    repeating-linear-gradient(180deg, rgba(255,255,255,0.5) 0px, rgba(255,255,255,0.5) 1px, transparent 1px, transparent 64px),
-    linear-gradient(180deg, #F3EEE1 0%, #EAE1CC 100%);
+  background: linear-gradient(180deg, #F3EEE1 0%, #EAE1CC 100%);
   border-radius: 22px;
   padding: clamp(26px, 3.6vw, 48px) clamp(20px, 3.2vw, 40px);
 }

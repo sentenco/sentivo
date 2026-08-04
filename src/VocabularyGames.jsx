@@ -242,9 +242,7 @@ const CSS = `
   display: flex;
   flex-direction: column;
   align-items: center;
-  background:
-    repeating-linear-gradient(180deg, rgba(255,255,255,0.5) 0px, rgba(255,255,255,0.5) 1px, transparent 1px, transparent 64px),
-    linear-gradient(180deg, #FDF0F5 0%, #FADCE7 100%);
+  background: linear-gradient(180deg, #FBF3E3 0%, #F3E4C0 100%);
 }
 
 .vg-back {
@@ -252,7 +250,7 @@ const CSS = `
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;
   font-size: 13px;
-  color: #A24E71;
+  color: #96721B;
   background: none;
   border: none;
   cursor: pointer;
@@ -266,7 +264,7 @@ const CSS = `
   font-size: 11px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: #A24E71;
+  color: #96721B;
   margin-bottom: 12px;
 }
 .vg-pill {
@@ -275,14 +273,14 @@ const CSS = `
   font-weight: 700;
   font-size: clamp(24px, 3.4vw, 34px);
   color: #2B2A4A;
-  background: rgba(210,74,124,0.14);
+  background: rgba(184,140,26,0.16);
   border-radius: 999px;
   padding: 8px 26px;
 }
 .vg-blurb { font-size: 14px; color: #6B5A66; margin: 14px 0 0; }
 
-.vg-row { position: relative; height: 2px; width: 100%; max-width: 700px; margin: clamp(22px, 2.8vw, 32px) 0; background: #F3C3D6; }
-.vg-row::before, .vg-row::after { content: ""; position: absolute; top: -3px; width: 8px; height: 8px; border-radius: 50%; background: #D24A7C; }
+.vg-row { position: relative; height: 2px; width: 100%; max-width: 700px; margin: clamp(22px, 2.8vw, 32px) 0; background: #E8D6A0; }
+.vg-row::before, .vg-row::after { content: ""; position: absolute; top: -3px; width: 8px; height: 8px; border-radius: 50%; background: #B88C1A; }
 .vg-row::before { left: 0; }
 .vg-row::after { right: 0; }
 
