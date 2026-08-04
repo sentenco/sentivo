@@ -5,8 +5,9 @@ function countSentences(text) {
   return matches ? matches.length : (text.trim() ? 1 : 0);
 }
 
-// Flat, rounded-shape illustrations for each story prompt. Kept in one
-// consistent palette/style so new scenes are easy to add later.
+// Flat, rounded-shape illustrations used until a real generated picture is
+// wired in via round.image. "bonus" is a neutral placeholder shared by every
+// round-2 slot that doesn't have bespoke art yet.
 function StoryScene({ name }) {
   const scenes = {
     park: (
@@ -135,6 +136,15 @@ function StoryScene({ name }) {
         <circle cx="230" cy="55" r="10" fill="#FFFFFF" opacity="0.7" />
       </>
     ),
+    bonus: (
+      <>
+        <rect width="320" height="200" rx="20" fill="#F3EEE6" />
+        <rect x="60" y="52" width="200" height="130" rx="12" fill="#FFFFFF" stroke="#E0D6C4" strokeWidth="3" />
+        <circle cx="106" cy="94" r="14" fill="#FFD37A" />
+        <path d="M76 156 L130 108 L166 140 L200 104 L244 156 Z" fill="#C7DAB0" />
+        <path d="M60 182 h200" stroke="#E0D6C4" strokeWidth="3" strokeDasharray="1 8" strokeLinecap="round" />
+      </>
+    ),
   };
 
   return (
@@ -145,11 +155,21 @@ function StoryScene({ name }) {
 }
 
 export default function StoryMakingActivity({ item, onBack, backLabel = "← Topics" }) {
+  const rounds = item.rounds && item.rounds.length ? item.rounds : [item];
+  const [roundIndex, setRoundIndex] = useState(0);
   const [draft, setDraft] = useState("");
   const [revealed, setRevealed] = useState(false);
+  const round = rounds[roundIndex];
+  const isLastRound = roundIndex === rounds.length - 1;
   const sentenceCount = useMemo(() => countSentences(draft), [draft]);
 
   function restart() {
+    setDraft("");
+    setRevealed(false);
+  }
+
+  function nextRound() {
+    setRoundIndex((i) => i + 1);
     setDraft("");
     setRevealed(false);
   }
@@ -170,13 +190,20 @@ export default function StoryMakingActivity({ item, onBack, backLabel = "← Top
 
         <h1 className="sm-title">{item.title}</h1>
         <span className="sm-focus">{item.focus}</span>
+        {rounds.length > 1 && (
+          <span className="sm-round-tag">{roundIndex === 0 ? "Story 1 of 2" : "Story 2 of 2 · Bonus"}</span>
+        )}
 
         <div className="sm-layout">
-          <StoryScene name={item.scene} />
+          {round.image ? (
+            <img className="sm-scene" src={round.image} alt="" />
+          ) : (
+            <StoryScene name={round.scene} />
+          )}
           <div className="sm-side">
-            <p className="sm-prompt">{item.prompt}</p>
+            <p className="sm-prompt">{round.prompt}</p>
             <div className="sm-words">
-              {item.words.map((w) => (
+              {round.words.map((w) => (
                 <span className="sm-word" key={w}>{w}</span>
               ))}
             </div>
@@ -194,15 +221,19 @@ export default function StoryMakingActivity({ item, onBack, backLabel = "← Top
         {revealed && (
           <div className="sm-sample">
             <span className="sm-label">Sample story</span>
-            <p className="sm-sample-text">{item.sample}</p>
+            <p className="sm-sample-text">{round.sample}</p>
           </div>
         )}
 
         <div className="sm-nav">
           <button type="button" className="sm-btn" onClick={restart}>Restart ↻</button>
-          <button type="button" className="sm-btn sm-btn--primary" onClick={() => setRevealed(true)} disabled={revealed}>
-            {revealed ? "Sample shown" : "Show sample →"}
-          </button>
+          {revealed && !isLastRound ? (
+            <button type="button" className="sm-btn sm-btn--primary" onClick={nextRound}>Bonus story →</button>
+          ) : (
+            <button type="button" className="sm-btn sm-btn--primary" onClick={() => setRevealed(true)} disabled={revealed}>
+              {revealed ? "Sample shown" : "Show sample →"}
+            </button>
+          )}
         </div>
       </div>
     </div>
@@ -262,10 +293,22 @@ const CSS = `
 .sm-count[data-full="true"] { color: #1F9D6E; }
 
 .sm-title { font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: clamp(22px, 3.6vw, 28px); color: #2B2A4A; margin: 0 0 6px; }
-.sm-focus { display: inline-block; font-size: 12.5px; color: #7A7391; margin-bottom: 18px; }
+.sm-focus { display: inline-block; font-size: 12.5px; color: #7A7391; margin-right: 10px; }
+.sm-round-tag {
+  display: inline-block;
+  font-size: 10.5px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #1F9D6E;
+  background: #E4F8EC;
+  border-radius: 999px;
+  padding: 3px 10px;
+}
+.sm-focus + .sm-round-tag { margin-bottom: 18px; }
 
-.sm-layout { display: grid; grid-template-columns: 180px 1fr; gap: 18px; align-items: start; margin-bottom: 16px; }
-.sm-scene { width: 100%; border-radius: 16px; display: block; box-shadow: 0 8px 18px rgba(43,42,74,0.10); }
+.sm-layout { display: grid; grid-template-columns: 180px 1fr; gap: 18px; align-items: start; margin: 14px 0 16px; }
+.sm-scene { width: 100%; aspect-ratio: 8 / 5; object-fit: cover; border-radius: 16px; display: block; box-shadow: 0 8px 18px rgba(43,42,74,0.10); }
 .sm-side { display: flex; flex-direction: column; gap: 12px; }
 .sm-prompt { font-size: 13.5px; color: #5C6873; line-height: 1.5; margin: 0; }
 .sm-words { display: flex; flex-wrap: wrap; gap: 8px; }
