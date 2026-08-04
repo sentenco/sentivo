@@ -5,6 +5,11 @@
 // "scene" keys into the placeholder illustrations in StoryMakingActivity.jsx,
 // used until "image" (a real generated picture) is wired in. Round 2 is the
 // bonus story for students who finish round 1 quickly.
+import parkImg from "./assets/story-making/park.jpg";
+import parkZooImg from "./assets/story-making/park-zoo.jpg";
+import lostPuppyImg from "./assets/story-making/lost-puppy.jpg";
+import newStudentImg from "./assets/story-making/new-student.jpg";
+
 const STORY_MAKING_SETS = {
   "teens-beginner": [
     {
@@ -14,7 +19,7 @@ const STORY_MAKING_SETS = {
         {
           title: "A Day at the Park",
           scene: "park",
-          image: null,
+          image: parkImg,
           words: ["park", "sun", "friends", "ball", "ice cream", "laugh"],
           prompt: "Look at the picture and use the words to write a short story — 5 sentences.",
           sample: "Last Saturday, the sun was shining at the park. I met my friends near the big tree. First, we played with a ball for an hour. After that, we bought ice cream from a small cart. We sat on the grass and laughed all afternoon.",
@@ -22,7 +27,7 @@ const STORY_MAKING_SETS = {
         {
           title: "The Zoo Trip",
           scene: "bonus",
-          image: null,
+          image: parkZooImg,
           words: ["zoo", "elephant", "camera", "excited", "feed", "laugh"],
           prompt: "Finished already? Look at this picture and write another 5-sentence story.",
           sample: "Our class went to the zoo on Friday morning. Everyone was excited to see the elephants. First, we watched the zookeeper feed them fruit and vegetables. Then we took photos with my camera near the fence. We laughed all the way back to the bus.",
@@ -36,7 +41,7 @@ const STORY_MAKING_SETS = {
         {
           title: "The Lost Puppy",
           scene: "lostPuppy",
-          image: null,
+          image: lostPuppyImg,
           words: ["puppy", "street", "scared", "boy", "help", "home"],
           prompt: "Look at the picture and use the words to write a short story — 5 sentences.",
           sample: "A small puppy was walking alone on the street. It looked scared and tired. A kind boy saw the puppy and stopped to help. He gave it some water and checked its collar. Then he walked the puppy safely back home.",
@@ -44,7 +49,7 @@ const STORY_MAKING_SETS = {
         {
           title: "The New Student",
           scene: "bonus",
-          image: null,
+          image: newStudentImg,
           words: ["new student", "shy", "lunch", "invite", "friend", "smile"],
           prompt: "Finished already? Look at this picture and write another 5-sentence story.",
           sample: "A new student sat alone at lunch on her first day. She looked shy and didn't talk to anyone. Mia noticed her and invited her to sit with our group. We asked her questions about her old school. By the end of lunch, she was smiling and laughing with her new friends.",
