@@ -1,25 +1,23 @@
 import { useState } from "react";
-import DictoglossActivity from "./DictoglossActivity";
 import ProofreadingActivity from "./ProofreadingActivity";
-import DICTOGLOSS_SETS from "./dictoglossData";
+import StoryMakingActivity from "./StoryMakingActivity";
 import PROOFREADING_SETS from "./proofreadingData";
+import STORY_MAKING_SETS from "./storyMakingData";
 
 const ACTIVITY_TYPES = [
   {
-    key: "dictogloss",
-    title: "Dictogloss",
-    icon: "🎧",
-    blurb: "Listen, take notes, and rebuild the text from memory.",
-    hue: "orange",
-    sets: DICTOGLOSS_SETS,
-  },
-  {
     key: "proofreading",
     title: "Proofreading",
-    icon: "🖊️",
     blurb: "Find and fix the mistakes, then compare with the answer key.",
     hue: "brown",
     sets: PROOFREADING_SETS,
+  },
+  {
+    key: "storyMaking",
+    title: "Story Making",
+    blurb: "Look at the picture, use the words, and write a 5-sentence story.",
+    hue: "violet",
+    sets: STORY_MAKING_SETS,
   },
 ];
 
@@ -29,6 +27,46 @@ const COMBOS = [
   { key: "adults-beginner", audience: "Adults", level: "Beginner" },
   { key: "adults-intermediate", audience: "Adults", level: "Intermediate" },
 ];
+
+function ProofreadingBanner() {
+  return (
+    <svg className="wa-banner" viewBox="0 0 320 120" xmlns="http://www.w3.org/2000/svg">
+      <rect width="320" height="120" fill="#FBEDE3" />
+      <rect x="36" y="18" width="150" height="84" rx="10" fill="#FFFFFF" />
+      <rect x="52" y="36" width="118" height="8" rx="4" fill="#F0B79A" />
+      <line x1="52" y1="40" x2="170" y2="40" stroke="#D6483A" strokeWidth="2.5" />
+      <rect x="52" y="54" width="90" height="8" rx="4" fill="#F0B79A" />
+      <line x1="52" y1="58" x2="142" y2="58" stroke="#D6483A" strokeWidth="2.5" />
+      <rect x="52" y="76" width="110" height="8" rx="4" fill="#BFE4CC" />
+      <path d="M56 80 l8 8 l16 -16" fill="none" stroke="#2F9E5B" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+      <g transform="translate(215,26) rotate(28)">
+        <rect x="0" y="0" width="14" height="70" rx="4" fill="#C5692A" />
+        <path d="M0 0 L14 0 L7 -16 Z" fill="#8A4A1A" />
+      </g>
+      <circle cx="270" cy="86" r="20" fill="#F6D8C8" opacity="0.7" />
+    </svg>
+  );
+}
+
+function StoryMakingBanner() {
+  return (
+    <svg className="wa-banner" viewBox="0 0 320 120" xmlns="http://www.w3.org/2000/svg">
+      <rect width="320" height="120" fill="#ECE9FA" />
+      <rect x="36" y="20" width="110" height="80" rx="10" fill="#FFFFFF" />
+      <rect x="46" y="30" width="90" height="60" rx="6" fill="#DCEEDD" />
+      <circle cx="112" cy="46" r="9" fill="#FFC857" />
+      <path d="M46 90 Q70 66 96 86 T136 90 Z" fill="#7FBF8C" />
+      <rect x="164" y="34" width="118" height="8" rx="4" fill="#C9C2E6" />
+      <rect x="164" y="52" width="98" height="8" rx="4" fill="#C9C2E6" />
+      <rect x="164" y="70" width="108" height="8" rx="4" fill="#C9C2E6" />
+      <rect x="164" y="88" width="66" height="8" rx="4" fill="#C9C2E6" />
+      <g transform="translate(255,90) rotate(-20)">
+        <rect x="0" y="0" width="12" height="46" rx="3" fill="#7C5CFC" />
+        <path d="M0 0 L12 0 L6 -12 Z" fill="#4E3AA6" />
+      </g>
+    </svg>
+  );
+}
 
 export default function WritingActivities() {
   const [typeKey, setTypeKey] = useState(null);
@@ -41,7 +79,7 @@ export default function WritingActivities() {
   const topic = topicIndex !== null ? topics[topicIndex] : null;
 
   if (type && combo && topic) {
-    const Player = type.key === "dictogloss" ? DictoglossActivity : ProofreadingActivity;
+    const Player = type.key === "storyMaking" ? StoryMakingActivity : ProofreadingActivity;
     return (
       <Player
         item={topic}
@@ -57,7 +95,7 @@ export default function WritingActivities() {
         <style>{CSS}</style>
         <button type="button" className="wa-back" onClick={() => setComboKey(null)}>← Levels</button>
         <div className="wa-hero">
-          <span className="wa-pill">{type.icon} {type.title} · {combo.audience} {combo.level}</span>
+          <span className="wa-pill">{type.title} · {combo.audience} {combo.level}</span>
         </div>
         <div className="wa-cat-grid">
           {topics.map((t, i) => (
@@ -79,7 +117,7 @@ export default function WritingActivities() {
         <style>{CSS}</style>
         <button type="button" className="wa-back" onClick={() => setTypeKey(null)}>← Activities</button>
         <div className="wa-hero">
-          <span className="wa-pill">{type.icon} {type.title}</span>
+          <span className="wa-pill">{type.title}</span>
           <p className="wa-blurb">{type.blurb}</p>
         </div>
         <div className="wa-cat-grid">
@@ -102,10 +140,12 @@ export default function WritingActivities() {
       <div className="wa-block-grid">
         {ACTIVITY_TYPES.map((t) => (
           <button key={t.key} type="button" className={`wa-block wa-block--${t.hue}`} onClick={() => setTypeKey(t.key)}>
-            <span className="wa-block-icon">{t.icon}</span>
-            <h3 className="wa-block-title">{t.title}</h3>
-            <p className="wa-block-blurb">{t.blurb}</p>
-            <span className="wa-block-cta">See levels →</span>
+            {t.key === "proofreading" ? <ProofreadingBanner /> : <StoryMakingBanner />}
+            <div className="wa-block-body">
+              <h3 className="wa-block-title">{t.title}</h3>
+              <p className="wa-block-blurb">{t.blurb}</p>
+              <span className="wa-block-cta">See levels →</span>
+            </div>
           </button>
         ))}
       </div>
@@ -145,27 +185,29 @@ const CSS = `
 }
 .wa-blurb { font-size: 14px; color: #6B5A66; margin: 14px 0 0; }
 
-.wa-block-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 320px)); gap: 20px; justify-content: center; width: 100%; }
+.wa-block-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 360px)); gap: 22px; justify-content: center; width: 100%; }
 .wa-block {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: stretch;
   text-align: left;
+  background: #FFFFFF;
   border: none;
   border-radius: 20px;
-  padding: 26px 24px;
+  padding: 0;
   cursor: pointer;
-  color: #FFFFFF;
-  box-shadow: 0 16px 32px rgba(43,42,74,0.16);
+  overflow: hidden;
+  box-shadow: 0 12px 28px rgba(43,42,74,0.10);
   transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
-.wa-block:hover { transform: translateY(-3px); }
-.wa-block--orange { background: linear-gradient(135deg, #F2A365 0%, #C5692A 100%); }
-.wa-block--brown { background: linear-gradient(135deg, #B98A63 0%, #83593A 100%); }
-.wa-block-icon { font-size: 26px; margin-bottom: 10px; }
-.wa-block-title { font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 19px; margin: 0 0 6px; }
-.wa-block-blurb { font-size: 13px; opacity: 0.92; margin: 0 0 18px; line-height: 1.5; }
+.wa-block:hover { transform: translateY(-4px); box-shadow: 0 20px 38px rgba(43,42,74,0.16); }
+.wa-banner { display: block; width: 100%; height: auto; }
+.wa-block-body { padding: 20px 22px 22px; }
+.wa-block-title { font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 20px; margin: 0 0 6px; color: #2B2A4A; }
+.wa-block-blurb { font-size: 13px; color: #6B6580; margin: 0 0 18px; line-height: 1.5; }
 .wa-block-cta { font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 12.5px; }
+.wa-block--brown .wa-block-cta { color: #C5692A; }
+.wa-block--violet .wa-block-cta { color: #6E5DC6; }
 
 .wa-cat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 240px)); gap: 16px; justify-content: center; width: 100%; }
 .wa-cat-card {
