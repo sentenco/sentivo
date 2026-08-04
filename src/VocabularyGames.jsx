@@ -214,7 +214,6 @@ export default function VocabularyGames() {
         <div className="vg-block-grid">
           {GAME_TYPES.map((g) => (
             <button key={g.key} type="button" className={`vg-block vg-block--${g.hue}`} onClick={() => setGameKey(g.key)}>
-              <span className="vg-block-icon">{g.icon}</span>
               <h3 className="vg-block-title">{g.title}</h3>
               <p className="vg-block-blurb">{g.blurb}</p>
               <span className="vg-block-cta">See categories →</span>
@@ -242,7 +241,7 @@ const CSS = `
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: linear-gradient(180deg, #FBF3E3 0%, #F3E4C0 100%);
+  background: linear-gradient(180deg, #FCF9F1 0%, #F5EDD8 100%);
 }
 
 .vg-back {
@@ -290,23 +289,29 @@ const CSS = `
   flex-direction: column;
   align-items: flex-start;
   text-align: left;
+  background: #FFFFFF;
   border: none;
-  border-radius: 20px;
-  padding: 26px 24px;
+  border-radius: 16px;
+  padding: 24px 22px 22px 26px;
   cursor: pointer;
-  color: #FFFFFF;
-  box-shadow: 0 16px 32px rgba(43,42,74,0.16);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 26px rgba(43,42,74,0.08);
   transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
-.vg-block:hover { transform: translateY(-3px); }
-.vg-block--pink { background: linear-gradient(135deg, #FF8FB3 0%, #D6396F 100%); }
-.vg-block--purple { background: linear-gradient(135deg, #A78BFA 0%, #7C5CFC 100%); }
-.vg-block--green { background: linear-gradient(135deg, #34D399 0%, #1F9D6E 100%); }
-.vg-block--orange { background: linear-gradient(135deg, #FBBF24 0%, #D97706 100%); }
-.vg-block-icon { font-size: 26px; margin-bottom: 10px; }
-.vg-block-title { font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 19px; margin: 0 0 6px; }
-.vg-block-blurb { font-size: 13px; opacity: 0.92; margin: 0 0 18px; line-height: 1.5; }
-.vg-block-cta { font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 12.5px; }
+.vg-block::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 5px; }
+.vg-block:hover { transform: translateY(-3px); box-shadow: 0 16px 32px rgba(43,42,74,0.14); }
+.vg-block--pink::before { background: #D6396F; }
+.vg-block--purple::before { background: #7C5CFC; }
+.vg-block--green::before { background: #1F9D6E; }
+.vg-block--orange::before { background: #D97706; }
+.vg-block-title { font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 19px; margin: 0 0 6px; color: #2B2A4A; }
+.vg-block-blurb { font-size: 13px; color: #6B6580; margin: 0 0 18px; line-height: 1.5; }
+.vg-block-cta { font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 12.5px; padding: 9px 0; border-radius: 8px; text-align: center; width: 100%; color: #FFFFFF; }
+.vg-block--pink .vg-block-cta { background: #D6396F; }
+.vg-block--purple .vg-block-cta { background: #7C5CFC; }
+.vg-block--green .vg-block-cta { background: #1F9D6E; }
+.vg-block--orange .vg-block-cta { background: #D97706; }
 
 .vg-audience-group { width: 100%; margin-bottom: 28px; }
 .vg-audience-group:last-child { margin-bottom: 0; }

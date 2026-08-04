@@ -1820,13 +1820,13 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   align-items: center;
 }
 .dyn-landing--vocab {
-  background: linear-gradient(180deg, #FBF3E3 0%, #F3E4C0 100%);
+  background: linear-gradient(180deg, #FCF9F1 0%, #F5EDD8 100%);
 }
 .dyn-landing--writing {
-  background: linear-gradient(180deg, #F2F7F1 0%, #E3EDE1 100%);
+  background: linear-gradient(180deg, #F3FAF8 0%, #E4F1EC 100%);
 }
 .dyn-landing--listening {
-  background: linear-gradient(180deg, #FDF1EC 0%, #F8DDCF 100%);
+  background: linear-gradient(180deg, #FDF4F0 0%, #F9E4DA 100%);
 }
 .dyn-landing-hero { text-align: center; }
 .dyn-landing-eyebrow {
