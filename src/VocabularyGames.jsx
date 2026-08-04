@@ -48,56 +48,135 @@ const GAME_TYPES = [
 
 function GameBanner({ name }) {
   const banners = {
+    // Two overlapping circles (a Venn diagram) — the overlap, where the
+    // meanings coincide, glows brighter than either circle alone.
     synonyms: (
       <>
-        <rect width="320" height="120" fill="#FDEAF0" />
-        <rect x="34" y="40" width="94" height="34" rx="17" fill="#FFFFFF" />
-        <rect x="52" y="53" width="58" height="8" rx="4" fill="#F3A9C4" />
-        <rect x="192" y="40" width="94" height="34" rx="17" fill="#FFFFFF" />
-        <rect x="210" y="53" width="58" height="8" rx="4" fill="#F3A9C4" />
-        <path d="M128 57 Q160 30 192 57" fill="none" stroke="#D6396F" strokeWidth="3" strokeLinecap="round" />
-        <path d="M128 57 Q160 84 192 57" fill="none" stroke="#D6396F" strokeWidth="3" strokeLinecap="round" />
-        <circle cx="160" cy="57" r="5" fill="#D6396F" />
+        <defs>
+          <linearGradient id="vgb-syn-bg" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stopColor="#FFE3EC" />
+            <stop offset="1" stopColor="#FFC9DC" />
+          </linearGradient>
+          <linearGradient id="vgb-syn-lens" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stopColor="#FF7FA8" />
+            <stop offset="1" stopColor="#D6396F" />
+          </linearGradient>
+          <filter id="vgb-syn-shadow" x="-40%" y="-40%" width="180%" height="180%">
+            <feDropShadow dx="0" dy="5" stdDeviation="6" floodColor="#B0285A" floodOpacity="0.22" />
+          </filter>
+          <clipPath id="vgb-syn-clip"><circle cx="128" cy="70" r="52" /></clipPath>
+        </defs>
+        <rect width="320" height="140" fill="url(#vgb-syn-bg)" />
+        <g filter="url(#vgb-syn-shadow)">
+          <circle cx="128" cy="70" r="52" fill="#FFFFFF" />
+          <circle cx="192" cy="70" r="52" fill="#FFFFFF" />
+        </g>
+        <g clipPath="url(#vgb-syn-clip)">
+          <circle cx="192" cy="70" r="52" fill="url(#vgb-syn-lens)" />
+        </g>
+        <path d="M160 54 l6 12 13 2 -9.5 9 2 13 -11.5 -6 -11.5 6 2 -13 -9.5 -9 13 -2 Z" fill="#FFFFFF" />
       </>
     ),
+    // A modernized yin-yang: two interlocking commas, warm vs. cool, each
+    // holding a small seed of the other — opposite, but two halves of one
+    // whole meaning-pair.
     antonyms: (
       <>
-        <rect width="320" height="120" fill="#EFEAFB" />
-        <rect x="30" y="38" width="86" height="34" rx="17" fill="#FF8FB3" />
-        <rect x="204" y="38" width="86" height="34" rx="17" fill="#7C5CFC" />
-        <path d="M124 55 H196" stroke="#4E3AA6" strokeWidth="3" strokeLinecap="round" />
-        <path d="M124 55 l14 -10 M124 55 l14 10" fill="none" stroke="#4E3AA6" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
-        <path d="M196 55 l-14 -10 M196 55 l-14 10" fill="none" stroke="#4E3AA6" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
-        <circle cx="73" cy="55" r="7" fill="#FFFFFF" opacity="0.8" />
-        <circle cx="247" cy="55" r="7" fill="#FFFFFF" opacity="0.8" />
+        <defs>
+          <linearGradient id="vgb-ant-bg" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stopColor="#EEE9FC" />
+            <stop offset="1" stopColor="#DCD1F7" />
+          </linearGradient>
+          <linearGradient id="vgb-ant-cool" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stopColor="#9481EE" />
+            <stop offset="1" stopColor="#5B3FD6" />
+          </linearGradient>
+          <linearGradient id="vgb-ant-warm" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stopColor="#FFA773" />
+            <stop offset="1" stopColor="#E8672E" />
+          </linearGradient>
+          <filter id="vgb-ant-shadow" x="-40%" y="-40%" width="180%" height="180%">
+            <feDropShadow dx="0" dy="6" stdDeviation="7" floodColor="#4B3690" floodOpacity="0.22" />
+          </filter>
+        </defs>
+        <rect width="320" height="140" fill="url(#vgb-ant-bg)" />
+        <g filter="url(#vgb-ant-shadow)">
+          <circle cx="160" cy="70" r="50" fill="url(#vgb-ant-cool)" />
+          <path d="M160 20 A50 50 0 0 1 160 120 A25 25 0 0 1 160 70 A25 25 0 0 0 160 20 Z" fill="url(#vgb-ant-warm)" />
+          <circle cx="160" cy="45" r="8" fill="url(#vgb-ant-cool)" />
+          <circle cx="160" cy="95" r="8" fill="url(#vgb-ant-warm)" />
+        </g>
       </>
     ),
+    // A hopper of mixed tiles funnels down into two color-sorted bins —
+    // the physical act of sorting, not just an icon of it.
     wordSort: (
       <>
-        <rect width="320" height="120" fill="#E4F5EB" />
-        <path d="M56 66 h84 l-10 36 a8 8 0 0 1 -8 6 h-58 a8 8 0 0 1 -8 -6 Z" fill="#FFFFFF" stroke="#8FD1A8" strokeWidth="3" />
-        <path d="M180 66 h84 l-10 36 a8 8 0 0 1 -8 6 h-58 a8 8 0 0 1 -8 -6 Z" fill="#FFFFFF" stroke="#8FD1A8" strokeWidth="3" />
-        <rect x="82" y="24" width="26" height="26" rx="7" fill="#1F9D6E" transform="rotate(-8 95 37)" />
-        <rect x="126" y="18" width="26" height="26" rx="7" fill="#34D399" transform="rotate(10 139 31)" />
-        <rect x="196" y="20" width="26" height="26" rx="7" fill="#1F9D6E" transform="rotate(6 209 33)" />
-        <path d="M95 46 Q80 58 74 74" fill="none" stroke="#8FD1A8" strokeWidth="2.5" strokeDasharray="4 4" />
-        <path d="M209 46 Q222 58 226 74" fill="none" stroke="#8FD1A8" strokeWidth="2.5" strokeDasharray="4 4" />
+        <defs>
+          <linearGradient id="vgb-sort-bg" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stopColor="#E3F6EC" />
+            <stop offset="1" stopColor="#C9ECDA" />
+          </linearGradient>
+          <linearGradient id="vgb-sort-binL" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stopColor="#3FC28C" />
+            <stop offset="1" stopColor="#1F9D6E" />
+          </linearGradient>
+          <linearGradient id="vgb-sort-binR" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stopColor="#20A578" />
+            <stop offset="1" stopColor="#0F7A54" />
+          </linearGradient>
+          <filter id="vgb-sort-shadow" x="-40%" y="-40%" width="180%" height="180%">
+            <feDropShadow dx="0" dy="5" stdDeviation="5" floodColor="#0F6B48" floodOpacity="0.2" />
+          </filter>
+        </defs>
+        <rect width="320" height="140" fill="url(#vgb-sort-bg)" />
+        <path d="M118 28 H202 L172 66 H148 Z" fill="#FFFFFF" opacity="0.85" stroke="#8FD1A8" strokeWidth="2" />
+        <g filter="url(#vgb-sort-shadow)">
+          <rect x="70" y="90" width="72" height="34" rx="8" fill="url(#vgb-sort-binL)" />
+          <rect x="178" y="90" width="72" height="34" rx="8" fill="url(#vgb-sort-binR)" />
+        </g>
+        <rect x="132" y="16" width="24" height="24" rx="6" fill="#FFB648" transform="rotate(-10 144 28)" />
+        <rect x="168" y="10" width="22" height="22" rx="6" fill="#FF8A6B" transform="rotate(8 179 21)" />
+        <path d="M155 70 Q120 82 100 92" fill="none" stroke="#8FD1A8" strokeWidth="2.5" strokeDasharray="4 5" />
+        <path d="M165 70 Q205 82 222 92" fill="none" stroke="#8FD1A8" strokeWidth="2.5" strokeDasharray="4 5" />
+        <rect x="86" y="98" width="18" height="18" rx="5" fill="#FFB648" transform="rotate(-6 95 107)" />
+        <rect x="204" y="98" width="18" height="18" rx="5" fill="#FF8A6B" transform="rotate(6 213 107)" />
       </>
     ),
+    // A magnifying glass catches the one shape that breaks the pattern —
+    // the exact moment of noticing.
     oddOneOut: (
       <>
-        <rect width="320" height="120" fill="#FCEEE0" />
-        <circle cx="66" cy="60" r="20" fill="#FFFFFF" stroke="#F2C6A0" strokeWidth="3" />
-        <circle cx="126" cy="60" r="20" fill="#FFFFFF" stroke="#F2C6A0" strokeWidth="3" />
-        <circle cx="252" cy="60" r="20" fill="#FFFFFF" stroke="#F2C6A0" strokeWidth="3" />
-        <path d="M186 40 L206 76 L166 76 Z" fill="#D97706" />
-        <circle cx="186" cy="60" r="30" fill="none" stroke="#D97706" strokeWidth="3" strokeDasharray="5 6" />
+        <defs>
+          <linearGradient id="vgb-odd-bg" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stopColor="#FDEFDD" />
+            <stop offset="1" stopColor="#FBDDBB" />
+          </linearGradient>
+          <radialGradient id="vgb-odd-glass" cx="0.35" cy="0.3" r="0.8">
+            <stop offset="0" stopColor="#FFFFFF" stopOpacity="0.9" />
+            <stop offset="1" stopColor="#FFF6EA" stopOpacity="0.35" />
+          </radialGradient>
+          <filter id="vgb-odd-shadow" x="-60%" y="-60%" width="220%" height="220%">
+            <feDropShadow dx="0" dy="6" stdDeviation="6" floodColor="#9A5A16" floodOpacity="0.25" />
+          </filter>
+        </defs>
+        <rect width="320" height="140" fill="url(#vgb-odd-bg)" />
+        <g opacity="0.5" fill="#E3B27E">
+          <circle cx="58" cy="48" r="10" /><circle cx="92" cy="32" r="10" /><circle cx="58" cy="100" r="10" />
+          <circle cx="94" cy="118" r="10" /><circle cx="252" cy="42" r="10" /><circle cx="256" cy="102" r="10" />
+        </g>
+        <rect x="150" y="50" width="32" height="32" rx="7" fill="#E8871A" transform="rotate(45 166 66)" />
+        <g filter="url(#vgb-odd-shadow)">
+          <circle cx="166" cy="66" r="34" fill="url(#vgb-odd-glass)" stroke="#8A4A1A" strokeWidth="6" />
+          <rect x="187" y="88" width="15" height="46" rx="7.5" fill="#6B3D14" transform="rotate(42 194.5 111)" />
+        </g>
+        <path d="M148 50 a24 24 0 0 1 24 -14" fill="none" stroke="#FFFFFF" strokeWidth="4" strokeLinecap="round" opacity="0.65" />
       </>
     ),
   };
   return (
-    <svg className="vg-banner" viewBox="0 0 320 120" xmlns="http://www.w3.org/2000/svg">
-      {banners[name] || <rect width="320" height="120" fill="#EDE7F6" />}
+    <svg className="vg-banner" viewBox="0 0 320 140" xmlns="http://www.w3.org/2000/svg">
+      {banners[name] || <rect width="320" height="140" fill="#EDE7F6" />}
     </svg>
   );
 }
