@@ -185,7 +185,7 @@ const CSS = `
 }
 .wa-blurb { font-size: 14px; color: #6B5A66; margin: 14px 0 0; }
 
-.wa-block-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 360px)); gap: 22px; justify-content: center; width: 100%; }
+.wa-block-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; max-width: 760px; margin: 0 auto; width: 100%; }
 .wa-block {
   display: flex;
   flex-direction: column;
