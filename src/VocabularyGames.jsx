@@ -276,11 +276,14 @@ export default function VocabularyGames() {
                     <button
                       key={c.key}
                       type="button"
-                      className={`vg-cat-card ${c.ready ? "" : "vg-cat-card--soon"}`}
+                      className={`vg-cat-card vg-cat-card--${game.hue} ${c.ready ? "" : "vg-cat-card--soon"}`}
                       onClick={() => c.ready && openCategoryPlayer(gameKey, c.key)}
                       disabled={!c.ready}
                     >
-                      <span className="vg-cat-tag">{c.ready ? "Ready" : "Coming soon"}</span>
+                      <div className="vg-cat-top">
+                        <span className="vg-cat-icon">{game.icon}</span>
+                        <span className="vg-cat-tag">{c.ready ? "Ready" : "Coming soon"}</span>
+                      </div>
                       <span className="vg-cat-title">{c.title}</span>
                       <span className="vg-cat-blurb">{c.blurb}</span>
                       {c.ready && <span className="vg-cat-cta">Play →</span>}
@@ -295,11 +298,14 @@ export default function VocabularyGames() {
                 <button
                   key={c.key}
                   type="button"
-                  className={`vg-cat-card ${c.ready ? "" : "vg-cat-card--soon"}`}
+                  className={`vg-cat-card vg-cat-card--${game.hue} ${c.ready ? "" : "vg-cat-card--soon"}`}
                   onClick={() => c.ready && openCategoryPlayer(gameKey, c.key)}
                   disabled={!c.ready}
                 >
-                  <span className="vg-cat-tag">{c.ready ? "Ready" : "Coming soon"}</span>
+                  <div className="vg-cat-top">
+                    <span className="vg-cat-icon">{game.icon}</span>
+                    <span className="vg-cat-tag">{c.ready ? "Ready" : "Coming soon"}</span>
+                  </div>
                   {c.level && <span className="vg-cat-level">{c.level}</span>}
                   <span className="vg-cat-title">{c.title}</span>
                   <span className="vg-cat-blurb">{c.blurb}</span>
@@ -428,38 +434,68 @@ const CSS = `
 .vg-audience-tag--teens { color: #1F9D6E; background: rgba(52,211,153,0.16); }
 .vg-audience-tag--adults { color: #4C3F91; background: rgba(124,92,252,0.14); }
 
-.vg-cat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 240px)); gap: 16px; justify-content: center; width: 100%; }
+.vg-cat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 260px)); gap: 18px; justify-content: center; width: 100%; }
 .vg-cat-card {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   text-align: left;
   background: #FFFFFF;
-  border: 1px solid #F5D3E1;
-  border-radius: 16px;
-  padding: 18px;
+  border: 1px solid var(--vgc-border, #F5D3E1);
+  border-radius: 18px;
+  padding: 18px 18px 16px;
   cursor: pointer;
-  box-shadow: 0 10px 22px rgba(210,74,124,0.10);
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  box-shadow: 0 10px 22px var(--vgc-shadow, rgba(210,74,124,0.10));
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
 }
-.vg-cat-card:hover:not(:disabled) { transform: translateY(-3px); box-shadow: 0 16px 30px rgba(210,74,124,0.18); }
-.vg-cat-card--soon { opacity: 0.6; cursor: default; }
+.vg-cat-card:hover:not(:disabled) { transform: translateY(-3px); box-shadow: 0 16px 32px var(--vgc-shadow-hover, rgba(210,74,124,0.18)); border-color: var(--vgc-accent, #D6396F); }
+.vg-cat-card--soon { opacity: 0.55; cursor: default; }
+.vg-cat-card--soon:hover { transform: none; }
+
+.vg-cat-card--pink   { --vgc-accent: #D6396F; --vgc-icon-bg: rgba(214,57,111,0.12); --vgc-border: #F5D3E1; --vgc-shadow: rgba(210,74,124,0.10); --vgc-shadow-hover: rgba(210,74,124,0.18); }
+.vg-cat-card--purple { --vgc-accent: #7C5CFC; --vgc-icon-bg: rgba(124,92,252,0.14); --vgc-border: #E3D9FB; --vgc-shadow: rgba(90,60,200,0.10); --vgc-shadow-hover: rgba(90,60,200,0.18); }
+.vg-cat-card--green  { --vgc-accent: #1F9D6E; --vgc-icon-bg: rgba(31,157,110,0.14); --vgc-border: #CBEDDD; --vgc-shadow: rgba(15,120,80,0.10); --vgc-shadow-hover: rgba(15,120,80,0.18); }
+.vg-cat-card--orange { --vgc-accent: #D97706; --vgc-icon-bg: rgba(217,119,6,0.14); --vgc-border: #F7DFBC; --vgc-shadow: rgba(180,100,10,0.10); --vgc-shadow-hover: rgba(180,100,10,0.18); }
+
+.vg-cat-top { display: flex; align-items: center; justify-content: space-between; width: 100%; margin-bottom: 12px; }
+.vg-cat-icon {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  background: var(--vgc-icon-bg, rgba(214,57,111,0.12));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+}
+.vg-cat-card--soon .vg-cat-icon { background: rgba(154,147,168,0.14); filter: grayscale(1); opacity: 0.7; }
 .vg-cat-tag {
   font-size: 9.5px;
   font-weight: 800;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #D6396F;
-  background: rgba(214,57,111,0.10);
+  color: var(--vgc-accent, #D6396F);
+  background: var(--vgc-icon-bg, rgba(214,57,111,0.10));
   border-radius: 999px;
   padding: 4px 10px;
-  margin-bottom: 10px;
 }
 .vg-cat-card--soon .vg-cat-tag { color: #9A93A8; background: rgba(154,147,168,0.12); }
 .vg-cat-level { font-size: 10.5px; font-weight: 700; color: #9A93A8; margin-bottom: 6px; }
-.vg-cat-title { font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 15.5px; color: #2B2A4A; margin-bottom: 4px; }
-.vg-cat-blurb { font-size: 12px; color: #7A7391; margin-bottom: 12px; }
-.vg-cat-cta { font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 12px; color: #D6396F; }
+.vg-cat-title { font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 16.5px; color: #2B2A4A; margin-bottom: 6px; line-height: 1.25; }
+.vg-cat-blurb { font-size: 12.5px; color: #7A7391; line-height: 1.45; margin-bottom: 18px; }
+.vg-cat-cta {
+  margin-top: auto;
+  align-self: flex-start;
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  color: #FFFFFF;
+  background: var(--vgc-accent, #D6396F);
+  border-radius: 999px;
+  padding: 7px 15px;
+}
 
 @media (max-width: 560px) {
   .vg-block-grid, .vg-cat-grid { grid-template-columns: 1fr; }

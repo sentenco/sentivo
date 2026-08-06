@@ -6,6 +6,7 @@ export const ACTIVITY_TYPES = [
   {
     key: "proofreading",
     title: "Proofreading",
+    icon: "✅",
     blurb: "Find and fix the mistakes, then compare with the answer key.",
     hue: "brown",
     sets: PROOFREADING_SETS,
@@ -13,6 +14,7 @@ export const ACTIVITY_TYPES = [
   {
     key: "storyMaking",
     title: "Story Making",
+    icon: "📖",
     blurb: "Look at the picture, use the words, and write a 5-sentence story.",
     hue: "violet",
     sets: STORY_MAKING_SETS,
@@ -124,8 +126,11 @@ export default function WritingActivities() {
         </div>
         <div className="wa-cat-grid">
           {topics.map((t, i) => (
-            <button key={t.title} type="button" className="wa-cat-card" onClick={() => openTopicPlayer(typeKey, comboKey, i)}>
-              <span className="wa-cat-tag">Ready</span>
+            <button key={t.title} type="button" className={`wa-cat-card wa-cat-card--${type.hue}`} onClick={() => openTopicPlayer(typeKey, comboKey, i)}>
+              <div className="wa-cat-top">
+                <span className="wa-cat-icon">{type.icon}</span>
+                <span className="wa-cat-tag">Ready</span>
+              </div>
               <span className="wa-cat-title">{t.title}</span>
               <span className="wa-cat-blurb">{t.focus}</span>
               <span className="wa-cat-cta">Start →</span>
@@ -146,8 +151,11 @@ export default function WritingActivities() {
         </div>
         <div className="wa-cat-grid">
           {COMBOS.map((c) => (
-            <button key={c.key} type="button" className="wa-cat-card" onClick={() => openCombo(c.key)}>
-              <span className="wa-cat-tag">{c.audience}</span>
+            <button key={c.key} type="button" className={`wa-cat-card wa-cat-card--${type.hue}`} onClick={() => openCombo(c.key)}>
+              <div className="wa-cat-top">
+                <span className="wa-cat-icon">{type.icon}</span>
+                <span className="wa-cat-tag">{c.audience}</span>
+              </div>
               <span className="wa-cat-title">{c.level}</span>
               <span className="wa-cat-blurb">2 activities</span>
               <span className="wa-cat-cta">Choose →</span>
@@ -220,35 +228,60 @@ const CSS = `
 .wa-block--brown .wa-block-cta { color: #C5692A; }
 .wa-block--violet .wa-block-cta { color: #6E5DC6; }
 
-.wa-cat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 240px)); gap: 16px; justify-content: center; width: 100%; }
+.wa-cat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 260px)); gap: 18px; justify-content: center; width: 100%; }
 .wa-cat-card {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   text-align: left;
   background: #FFFFFF;
-  border: 1px solid #EBC6A6;
-  border-radius: 16px;
-  padding: 18px;
+  border: 1px solid var(--wac-border, #EBC6A6);
+  border-radius: 18px;
+  padding: 18px 18px 16px;
   cursor: pointer;
-  box-shadow: 0 10px 22px rgba(197,105,42,0.10);
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  box-shadow: 0 10px 22px var(--wac-shadow, rgba(197,105,42,0.10));
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
 }
-.wa-cat-card:hover { transform: translateY(-3px); box-shadow: 0 16px 30px rgba(197,105,42,0.18); }
+.wa-cat-card:hover { transform: translateY(-3px); box-shadow: 0 16px 32px var(--wac-shadow-hover, rgba(197,105,42,0.18)); border-color: var(--wac-accent, #C5692A); }
+
+.wa-cat-card--brown  { --wac-accent: #C5692A; --wac-icon-bg: rgba(197,105,42,0.12); --wac-border: #EBC6A6; --wac-shadow: rgba(197,105,42,0.10); --wac-shadow-hover: rgba(197,105,42,0.18); }
+.wa-cat-card--violet { --wac-accent: #6E5DC6; --wac-icon-bg: rgba(110,93,198,0.14); --wac-border: #D9D2F3; --wac-shadow: rgba(90,70,190,0.10); --wac-shadow-hover: rgba(90,70,190,0.18); }
+
+.wa-cat-top { display: flex; align-items: center; justify-content: space-between; width: 100%; margin-bottom: 12px; }
+.wa-cat-icon {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  background: var(--wac-icon-bg, rgba(197,105,42,0.12));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+}
 .wa-cat-tag {
   font-size: 9.5px;
   font-weight: 800;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #C5692A;
-  background: rgba(197,105,42,0.10);
+  color: var(--wac-accent, #C5692A);
+  background: var(--wac-icon-bg, rgba(197,105,42,0.10));
   border-radius: 999px;
   padding: 4px 10px;
-  margin-bottom: 10px;
 }
-.wa-cat-title { font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 15.5px; color: #2B2A4A; margin-bottom: 4px; }
-.wa-cat-blurb { font-size: 12px; color: #7A7391; margin-bottom: 12px; }
-.wa-cat-cta { font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 12px; color: #C5692A; }
+.wa-cat-title { font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 16.5px; color: #2B2A4A; margin-bottom: 6px; line-height: 1.25; }
+.wa-cat-blurb { font-size: 12.5px; color: #7A7391; line-height: 1.45; margin-bottom: 18px; }
+.wa-cat-cta {
+  margin-top: auto;
+  align-self: flex-start;
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  color: #FFFFFF;
+  background: var(--wac-accent, #C5692A);
+  border-radius: 999px;
+  padding: 7px 15px;
+}
 
 @media (max-width: 560px) {
   .wa-block-grid, .wa-cat-grid { grid-template-columns: 1fr; }
