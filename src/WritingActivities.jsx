@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ProofreadingActivity from "./ProofreadingActivity";
 import StoryMakingActivity from "./StoryMakingActivity";
 import PROOFREADING_SETS from "./proofreadingData";
@@ -73,6 +73,33 @@ export default function WritingActivities() {
   const [comboKey, setComboKey] = useState(null);
   const [topicIndex, setTopicIndex] = useState(null);
 
+  // Browser back/forward drives navigation instead of an in-page back
+  // button — each drill-down pushes a history entry, popping it here
+  // unwinds the matching piece of state.
+  useEffect(() => {
+    function onPopState(e) {
+      const depth = e.state?.waDepth || 0;
+      if (depth < 3) setTopicIndex(null);
+      if (depth < 2) setComboKey(null);
+      if (depth < 1) setTypeKey(null);
+    }
+    window.addEventListener("popstate", onPopState);
+    return () => window.removeEventListener("popstate", onPopState);
+  }, []);
+
+  function openType(key) {
+    window.history.pushState({ waDepth: 1 }, "");
+    setTypeKey(key);
+  }
+  function openCombo(key) {
+    window.history.pushState({ waDepth: 2 }, "");
+    setComboKey(key);
+  }
+  function openTopic(i) {
+    window.history.pushState({ waDepth: 3 }, "");
+    setTopicIndex(i);
+  }
+
   const type = ACTIVITY_TYPES.find((t) => t.key === typeKey);
   const combo = COMBOS.find((c) => c.key === comboKey);
   const topics = type && combo ? type.sets[combo.key] : [];
@@ -80,26 +107,19 @@ export default function WritingActivities() {
 
   if (type && combo && topic) {
     const Player = type.key === "storyMaking" ? StoryMakingActivity : ProofreadingActivity;
-    return (
-      <Player
-        item={topic}
-        onBack={() => setTopicIndex(null)}
-        backLabel="← Topics"
-      />
-    );
+    return <Player item={topic} />;
   }
 
   if (type && combo) {
     return (
       <div className="wa-panel">
         <style>{CSS}</style>
-        <button type="button" className="wa-back" onClick={() => setComboKey(null)}>← Levels</button>
         <div className="wa-hero">
           <span className="wa-pill">{type.title} · {combo.audience} {combo.level}</span>
         </div>
         <div className="wa-cat-grid">
           {topics.map((t, i) => (
-            <button key={t.title} type="button" className="wa-cat-card" onClick={() => setTopicIndex(i)}>
+            <button key={t.title} type="button" className="wa-cat-card" onClick={() => openTopic(i)}>
               <span className="wa-cat-tag">Ready</span>
               <span className="wa-cat-title">{t.title}</span>
               <span className="wa-cat-blurb">{t.focus}</span>
@@ -115,14 +135,13 @@ export default function WritingActivities() {
     return (
       <div className="wa-panel">
         <style>{CSS}</style>
-        <button type="button" className="wa-back" onClick={() => setTypeKey(null)}>← Activities</button>
         <div className="wa-hero">
           <span className="wa-pill">{type.title}</span>
           <p className="wa-blurb">{type.blurb}</p>
         </div>
         <div className="wa-cat-grid">
           {COMBOS.map((c) => (
-            <button key={c.key} type="button" className="wa-cat-card" onClick={() => setComboKey(c.key)}>
+            <button key={c.key} type="button" className="wa-cat-card" onClick={() => openCombo(c.key)}>
               <span className="wa-cat-tag">{c.audience}</span>
               <span className="wa-cat-title">{c.level}</span>
               <span className="wa-cat-blurb">2 activities</span>
@@ -139,7 +158,7 @@ export default function WritingActivities() {
       <style>{CSS}</style>
       <div className="wa-block-grid">
         {ACTIVITY_TYPES.map((t) => (
-          <button key={t.key} type="button" className={`wa-block wa-block--${t.hue}`} onClick={() => setTypeKey(t.key)}>
+          <button key={t.key} type="button" className={`wa-block wa-block--${t.hue}`} onClick={() => openType(t.key)}>
             {t.key === "proofreading" ? <ProofreadingBanner /> : <StoryMakingBanner />}
             <div className="wa-block-body">
               <h3 className="wa-block-title">{t.title}</h3>
@@ -158,19 +177,6 @@ const CSS = `
 
 .wa-panel { width: 100%; font-family: 'Quicksand', sans-serif; position: relative; }
 .wa-panel * { box-sizing: border-box; }
-
-.wa-back {
-  align-self: flex-start;
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 700;
-  font-size: 13px;
-  color: #A15A2E;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0 0 16px;
-  display: block;
-}
 
 .wa-hero { text-align: center; margin-bottom: 24px; }
 .wa-pill {

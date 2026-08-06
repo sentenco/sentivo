@@ -154,7 +154,7 @@ function StoryScene({ name }) {
   );
 }
 
-export default function StoryMakingActivity({ item, onBack, backLabel = "← Topics" }) {
+export default function StoryMakingActivity({ item }) {
   const rounds = item.rounds && item.rounds.length ? item.rounds : [item];
   const [roundIndex, setRoundIndex] = useState(0);
   const [draft, setDraft] = useState("");
@@ -177,10 +177,6 @@ export default function StoryMakingActivity({ item, onBack, backLabel = "← Top
   return (
     <div className="sm-shell">
       <style>{CSS}</style>
-
-      {onBack && (
-        <button type="button" className="sm-back" onClick={onBack}>{backLabel}</button>
-      )}
 
       <div className="sm-card">
         <div className="sm-picture-pane">
@@ -255,20 +251,6 @@ const CSS = `
   font-family: 'Quicksand', sans-serif;
 }
 .sm-shell * { box-sizing: border-box; }
-
-.sm-back {
-  position: absolute;
-  top: clamp(8px, 2vw, 20px);
-  left: clamp(8px, 2vw, 20px);
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 700;
-  font-size: 13px;
-  color: #A15A2E;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 6px 4px;
-}
 
 .sm-card {
   width: 100%;

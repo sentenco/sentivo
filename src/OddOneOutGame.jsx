@@ -17,7 +17,7 @@ const FOLLOW_UPS = [
 
 // Odd One Out: tap the 1 word (of 4) that doesn't belong.
 // Item shape: { words: [4], odd }
-export default function OddOneOutGame({ title, items, onBack, backLabel = "← Games" }) {
+export default function OddOneOutGame({ title, items }) {
   const [phase, setPhase] = useState("start"); // "start" | "playing" | "done"
   const [index, setIndex] = useState(0);
   const [score, setScore] = useState(0);
@@ -61,10 +61,6 @@ export default function OddOneOutGame({ title, items, onBack, backLabel = "← G
   return (
     <div className="oo-shell">
       <style>{CSS}</style>
-
-      {onBack && (
-        <button type="button" className="oo-back" onClick={onBack}>{backLabel}</button>
-      )}
 
       {phase === "start" && (
         <div className="oo-card oo-start">
@@ -151,20 +147,6 @@ const CSS = `
   font-family: 'Quicksand', sans-serif;
 }
 .oo-shell * { box-sizing: border-box; }
-
-.oo-back {
-  position: absolute;
-  top: clamp(8px, 2vw, 20px);
-  left: clamp(8px, 2vw, 20px);
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 700;
-  font-size: 13px;
-  color: #B4650F;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 6px 4px;
-}
 
 .oo-card {
   width: 100%;

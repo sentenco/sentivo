@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import WordChoiceGame from "./WordChoiceGame";
 import WordSortGame from "./WordSortGame";
 import SYNONYMS_SET from "./synonymsGameData";
@@ -222,6 +222,28 @@ export default function VocabularyGames() {
   const [gameKey, setGameKey] = useState(null);
   const [categoryKey, setCategoryKey] = useState(null);
 
+  // Browser back/forward drives navigation instead of an in-page back
+  // button — each drill-down pushes a history entry, popping it here
+  // unwinds the matching piece of state.
+  useEffect(() => {
+    function onPopState(e) {
+      const depth = e.state?.vgDepth || 0;
+      if (depth < 2) setCategoryKey(null);
+      if (depth < 1) setGameKey(null);
+    }
+    window.addEventListener("popstate", onPopState);
+    return () => window.removeEventListener("popstate", onPopState);
+  }, []);
+
+  function openGame(key) {
+    window.history.pushState({ vgDepth: 1 }, "");
+    setGameKey(key);
+  }
+  function openCategory(key) {
+    window.history.pushState({ vgDepth: 2 }, "");
+    setCategoryKey(key);
+  }
+
   const game = GAME_TYPES.find((g) => g.key === gameKey);
   const categories = gameKey ? CATEGORIES_BY_GAME[gameKey] : [];
   const category = categories.find((c) => c.key === categoryKey);
@@ -233,8 +255,6 @@ export default function VocabularyGames() {
         categoryA={category.pack.categoryA}
         categoryB={category.pack.categoryB}
         items={category.pack.items}
-        onBack={() => setCategoryKey(null)}
-        backLabel="← Categories"
       />
     );
   }
@@ -244,8 +264,6 @@ export default function VocabularyGames() {
       <OddOneOutGame
         title={`${category.audience} · ${category.title}`}
         items={category.items}
-        onBack={() => setCategoryKey(null)}
-        backLabel="← Categories"
       />
     );
   }
@@ -256,8 +274,6 @@ export default function VocabularyGames() {
         title={`${game.title} · ${category.title}`}
         instruction={game.instruction}
         data={category.data}
-        onBack={() => setCategoryKey(null)}
-        backLabel="← Categories"
       />
     );
   }
@@ -267,7 +283,6 @@ export default function VocabularyGames() {
       <div className="vg-shell">
         <style>{CSS}</style>
         <div className="vg-page">
-          <button type="button" className="vg-back" onClick={() => setGameKey(null)}>← Games</button>
           <div className="vg-hero">
             <span className="vg-eyebrow">Sentivo · Vocabulary</span>
             <h1><span className="vg-pill">{game.icon} {game.title}</span></h1>
@@ -285,7 +300,7 @@ export default function VocabularyGames() {
                       key={c.key}
                       type="button"
                       className={`vg-cat-card ${c.ready ? "" : "vg-cat-card--soon"}`}
-                      onClick={() => c.ready && setCategoryKey(c.key)}
+                      onClick={() => c.ready && openCategory(c.key)}
                       disabled={!c.ready}
                     >
                       <span className="vg-cat-tag">{c.ready ? "Ready" : "Coming soon"}</span>
@@ -304,7 +319,7 @@ export default function VocabularyGames() {
                   key={c.key}
                   type="button"
                   className={`vg-cat-card ${c.ready ? "" : "vg-cat-card--soon"}`}
-                  onClick={() => c.ready && setCategoryKey(c.key)}
+                  onClick={() => c.ready && openCategory(c.key)}
                   disabled={!c.ready}
                 >
                   <span className="vg-cat-tag">{c.ready ? "Ready" : "Coming soon"}</span>
@@ -334,7 +349,7 @@ export default function VocabularyGames() {
 
         <div className="vg-block-grid">
           {GAME_TYPES.map((g) => (
-            <button key={g.key} type="button" className={`vg-block vg-block--${g.hue}`} onClick={() => setGameKey(g.key)}>
+            <button key={g.key} type="button" className={`vg-block vg-block--${g.hue}`} onClick={() => openGame(g.key)}>
               <GameBanner name={g.key} />
               <div className="vg-block-body">
                 <h3 className="vg-block-title">{g.title}</h3>
@@ -366,18 +381,6 @@ const CSS = `
   flex-direction: column;
   align-items: center;
   background: linear-gradient(180deg, #FCF9F1 0%, #F5EDD8 100%);
-}
-
-.vg-back {
-  align-self: flex-start;
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 700;
-  font-size: 13px;
-  color: #96721B;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0 0 12px;
 }
 
 .vg-hero { text-align: center; }

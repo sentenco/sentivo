@@ -13,7 +13,7 @@ function shuffled(arr) {
 // pass a title, instruction line, and a data set shaped like
 // [{ word, choices: [4], correct }]. Used for Synonyms, Antonyms, and any
 // future word-choice game under Vocabulary.
-export default function WordChoiceGame({ title, instruction, data, onBack, backLabel = "← Games" }) {
+export default function WordChoiceGame({ title, instruction, data }) {
   const [phase, setPhase] = useState("start"); // "start" | "playing" | "done"
   const [index, setIndex] = useState(0);
   const [score, setScore] = useState(0);
@@ -50,10 +50,6 @@ export default function WordChoiceGame({ title, instruction, data, onBack, backL
   return (
     <div className="syn-shell">
       <style>{CSS}</style>
-
-      {onBack && (
-        <button type="button" className="syn-back" onClick={onBack}>{backLabel}</button>
-      )}
 
       {phase === "start" && (
         <div className="syn-card syn-start">
@@ -139,20 +135,6 @@ const CSS = `
   font-family: 'Quicksand', sans-serif;
 }
 .syn-shell * { box-sizing: border-box; }
-
-.syn-back {
-  position: absolute;
-  top: clamp(8px, 2vw, 20px);
-  left: clamp(8px, 2vw, 20px);
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 700;
-  font-size: 13px;
-  color: #7C5CFC;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 6px 4px;
-}
 
 .syn-card {
   width: 100%;

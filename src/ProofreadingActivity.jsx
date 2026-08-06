@@ -4,7 +4,7 @@ const STEPS = ["warmup", "mistakes", "corrected", "followup"];
 
 // Proofreading: staged teacher-led flow -- warm-up, text with mistakes,
 // corrected reveal, speaking follow-up. No scoring; teacher-paced.
-export default function ProofreadingActivity({ item, onBack, backLabel = "← Topics" }) {
+export default function ProofreadingActivity({ item }) {
   const [step, setStep] = useState(0);
   const kind = STEPS[step];
 
@@ -15,10 +15,6 @@ export default function ProofreadingActivity({ item, onBack, backLabel = "← To
   return (
     <div className="pf-shell">
       <style>{CSS}</style>
-
-      {onBack && (
-        <button type="button" className="pf-back" onClick={onBack}>{backLabel}</button>
-      )}
 
       <div className="pf-card">
         <div className="pf-bar">
@@ -84,20 +80,6 @@ const CSS = `
   font-family: 'Quicksand', sans-serif;
 }
 .pf-shell * { box-sizing: border-box; }
-
-.pf-back {
-  position: absolute;
-  top: clamp(8px, 2vw, 20px);
-  left: clamp(8px, 2vw, 20px);
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 700;
-  font-size: 13px;
-  color: #A15A2E;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 6px 4px;
-}
 
 .pf-card {
   width: 100%;

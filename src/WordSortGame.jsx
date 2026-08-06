@@ -17,7 +17,7 @@ const FOLLOW_UPS = [
 
 // Word Sort: tap the word into the correct of 2 category boxes.
 // Pack shape: { title, categoryA, categoryB, items: [{ word, category }] }
-export default function WordSortGame({ title, categoryA, categoryB, items, onBack, backLabel = "← Games" }) {
+export default function WordSortGame({ title, categoryA, categoryB, items }) {
   const [phase, setPhase] = useState("start"); // "start" | "playing" | "done"
   const [index, setIndex] = useState(0);
   const [score, setScore] = useState(0);
@@ -62,10 +62,6 @@ export default function WordSortGame({ title, categoryA, categoryB, items, onBac
   return (
     <div className="ws-shell">
       <style>{CSS}</style>
-
-      {onBack && (
-        <button type="button" className="ws-back" onClick={onBack}>{backLabel}</button>
-      )}
 
       {phase === "start" && (
         <div className="ws-card ws-start">
@@ -151,20 +147,6 @@ const CSS = `
   font-family: 'Quicksand', sans-serif;
 }
 .ws-shell * { box-sizing: border-box; }
-
-.ws-back {
-  position: absolute;
-  top: clamp(8px, 2vw, 20px);
-  left: clamp(8px, 2vw, 20px);
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 700;
-  font-size: 13px;
-  color: #1F9D6E;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 6px 4px;
-}
 
 .ws-card {
   width: 100%;
