@@ -1,5 +1,5 @@
 import { useState, useRef, useLayoutEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useSearchParams } from "react-router-dom";
 import { getArticle } from "./articlesData";
 import editorialBanner from "./assets/brand/editorial-banner.jpg";
 
@@ -69,7 +69,9 @@ function StyledTitle({ title }) {
 export default function ArticlePlayerPage() {
   const { slug } = useParams();
   const article = getArticle(slug);
-  const [edition, setEdition] = useState("polished");
+  const [searchParams] = useSearchParams();
+  const editionParam = searchParams.get("edition");
+  const [edition, setEdition] = useState(EDITION_KEYS.includes(editionParam) ? editionParam : "polished");
   const [openKey, setOpenKey] = useState(null);
   const columnsRef = useRef(null);
 

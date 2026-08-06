@@ -14,7 +14,7 @@ const NAV_CATEGORIES = ["Articles", "Speaking", "Reading", "Grammar", "Vocabular
 // Fixed portrait size (not scaled to the screen) so the banner, title, and
 // 2-column layout always render exactly as designed, not cropped/collapsed
 // differently on smaller screens.
-function openPlayer(slug) {
+function openPlayer(slug, edition) {
   const w = 680;
   const h = 960;
   const screenW = window.screen.availWidth || 1600;
@@ -23,7 +23,7 @@ function openPlayer(slug) {
   const top = Math.max(0, Math.floor((screenH - h) / 2));
 
   window.open(
-    `/library/articles/${slug}/player`,
+    `/library/articles/${slug}/player?edition=${edition}`,
     "sentivoArticlePlayer",
     `width=${w},height=${h},left=${left},top=${top},toolbar=no,location=no,menubar=no,status=no,scrollbars=yes,resizable=no`
   );
@@ -211,7 +211,7 @@ export default function ArticleReader() {
           {publishedLabel && <span>Published {publishedLabel}</span>}
         </div>
 
-        <button type="button" className="ar-present-btn" onClick={() => openPlayer(article.slug)}>
+        <button type="button" className="ar-present-btn" onClick={() => openPlayer(article.slug, edition)}>
           🖥️ Open Editorial View
         </button>
 
