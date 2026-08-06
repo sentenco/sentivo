@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { ACTIVITY_TYPES, COMBOS } from "./WritingActivities";
 import ProofreadingActivity from "./ProofreadingActivity";
 import StoryMakingActivity from "./StoryMakingActivity";
+import PlayerChrome from "./PlayerChrome";
 
 // Standalone popup player for one Writing topic — opened via window.open
 // from WritingActivities, matching the Editorial View / lesson-player
@@ -15,17 +16,19 @@ export default function WritingPlayerPage() {
 
   if (!type || !combo || !topic) {
     return (
-      <div style={{ minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "sans-serif", color: "#5C6873" }}>
-        This activity isn't available.
-      </div>
+      <PlayerChrome eyebrow="Writing">
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "sans-serif", color: "#5C6873" }}>
+          This activity isn't available.
+        </div>
+      </PlayerChrome>
     );
   }
 
   const Player = type.key === "storyMaking" ? StoryMakingActivity : ProofreadingActivity;
 
   return (
-    <div style={{ minHeight: "100vh", background: "#FFFFFF" }}>
+    <PlayerChrome eyebrow="Writing">
       <Player item={topic} />
-    </div>
+    </PlayerChrome>
   );
 }

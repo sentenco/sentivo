@@ -3,6 +3,7 @@ import { GAME_TYPES, CATEGORIES_BY_GAME } from "./VocabularyGames";
 import WordChoiceGame from "./WordChoiceGame";
 import WordSortGame from "./WordSortGame";
 import OddOneOutGame from "./OddOneOutGame";
+import PlayerChrome from "./PlayerChrome";
 
 // Standalone popup player for one Word Bank category — opened via
 // window.open from VocabularyGames, matching the Editorial View /
@@ -15,14 +16,16 @@ export default function VocabularyPlayerPage() {
 
   if (!game || !category) {
     return (
-      <div style={{ minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "sans-serif", color: "#5C6873" }}>
-        This activity isn't available.
-      </div>
+      <PlayerChrome eyebrow="Vocabulary">
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "sans-serif", color: "#5C6873" }}>
+          This activity isn't available.
+        </div>
+      </PlayerChrome>
     );
   }
 
   return (
-    <div style={{ minHeight: "100vh", background: "#FFFFFF" }}>
+    <PlayerChrome eyebrow="Vocabulary">
       {game.kind === "sort" ? (
         <WordSortGame
           title={category.title}
@@ -42,6 +45,6 @@ export default function VocabularyPlayerPage() {
           data={category.data}
         />
       )}
-    </div>
+    </PlayerChrome>
   );
 }
