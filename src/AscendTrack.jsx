@@ -120,31 +120,33 @@ export default function AscendTrack() {
           <p className="as-hero-blurb">{track.blurb}</p>
         </div>
 
-        <div className="as-lessons-grid">
+        <div className="as-path">
           {track.lessons.map((lesson, i) => {
             const num = i + 1;
             if (!lesson) {
               return (
-                <div key={num} className="as-lesson-tile as-lesson-tile--locked">
-                  <div className="as-lesson-top">
-                    <span className="as-lesson-badge as-lesson-badge--locked">L{num}</span>
+                <div key={num} className="as-row as-row--locked">
+                  <div className="as-row-marker"><span className="as-row-num as-row-num--locked">{num}</span></div>
+                  <div className="as-row-icon as-row-icon--locked">···</div>
+                  <div className="as-row-body">
+                    <p className="as-row-title as-row-title--locked">Coming soon</p>
                   </div>
-                  <div className="as-lesson-icon as-lesson-icon--locked">···</div>
-                  <p className="as-lesson-title2 as-lesson-title2--locked">Coming soon</p>
                 </div>
               );
             }
             return (
-              <div key={num} className="as-lesson-tile as-lesson-tile--live">
-                <div className="as-lesson-top">
-                  <span className="as-lesson-badge">L{num}</span>
-                  <span className="as-lesson-tagtext">{lesson.tag}</span>
+              <div key={num} className="as-row as-row--live">
+                <div className="as-row-marker"><span className="as-row-num">{num}</span></div>
+                <div className="as-row-icon"><TypeIcon type={lesson.type} /></div>
+                <div className="as-row-body">
+                  <div className="as-row-topline">
+                    <span className="as-row-tag">{lesson.tag}</span>
+                    <span className="as-row-meta">{slideCount(lesson)} slides</span>
+                  </div>
+                  <h3 className="as-row-title">{lesson.title}</h3>
+                  <p className="as-row-desc">{lesson.subtitle}</p>
                 </div>
-                <div className="as-lesson-icon"><TypeIcon type={lesson.type} /></div>
-                <h3 className="as-lesson-title2">{lesson.title}</h3>
-                <p className="as-lesson-desc">{lesson.subtitle}</p>
-                <span className="as-lesson-meta">{slideCount(lesson)} slides</span>
-                <div className="as-lesson-foot">
+                <div className="as-row-actions">
                   <button type="button" className="as-lesson-guidebtn" onClick={() => openGuide(track.id, num)}>
                     Guide
                   </button>
@@ -195,8 +197,8 @@ const CSS = `
 .as-stage {
   flex: 1;
   width: 100%;
-  max-width: 960px;
-  padding: 40px 24px 60px;
+  max-width: 880px;
+  padding: 44px 28px 64px;
 }
 
 .as-missing {
@@ -206,7 +208,7 @@ const CSS = `
   margin-top: 60px;
 }
 
-.as-hero { margin-bottom: 36px; }
+.as-hero { margin-bottom: 38px; }
 .as-hero-tags { display: flex; gap: 8px; margin-bottom: 14px; }
 .as-tag {
   font-family: 'Quicksand', sans-serif;
@@ -222,150 +224,147 @@ const CSS = `
 .as-hero-title {
   font-family: 'Fredoka', sans-serif;
   font-weight: 700;
-  font-size: 40px;
+  font-size: 42px;
   color: #17352E;
-  margin: 0 0 10px;
+  margin: 0 0 12px;
 }
 .as-hero-blurb {
   font-family: 'Quicksand', sans-serif;
   font-weight: 500;
-  font-size: 16px;
+  font-size: 16.5px;
   color: #5C8177;
   margin: 0;
-  max-width: 560px;
-  line-height: 1.5;
+  max-width: 620px;
+  line-height: 1.55;
 }
 
-.as-lessons-grid {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 14px;
+.as-path { position: relative; display: flex; flex-direction: column; gap: 16px; }
+.as-path::before {
+  content: "";
+  position: absolute;
+  left: 23px;
+  top: 30px;
+  bottom: 30px;
+  width: 2px;
+  background: #D3EFE6;
+  z-index: 0;
 }
 
-.as-lesson-tile {
+.as-row {
+  position: relative;
+  z-index: 1;
   display: flex;
-  flex-direction: column;
-  gap: 9px;
+  align-items: center;
+  gap: 18px;
   background: #FFFFFF;
   border: 1px solid #D3EFE6;
-  border-radius: 14px;
-  padding: 13px 13px 12px;
-  min-height: 210px;
-  text-align: left;
-  font-family: inherit;
+  border-radius: 16px;
+  padding: 16px 22px 16px 12px;
   box-shadow: 0 10px 24px rgba(20,80,65,0.08);
 }
+.as-row--locked { opacity: 0.55; box-shadow: none; }
+.as-row--live { transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease; }
+.as-row--live:hover { border-color: #3FCDAF; box-shadow: 0 16px 32px rgba(20,80,65,0.16); transform: translateY(-1px); }
 
-.as-lesson-tile--locked {
-  opacity: 0.5;
-  box-shadow: none;
-}
-.as-lesson-tile--live {
-  transition: border-color 0.15s ease, box-shadow 0.15s ease;
-}
-.as-lesson-tile--live:hover {
-  border-color: #3FCDAF;
-  box-shadow: 0 14px 30px rgba(20,80,65,0.16);
-}
-
-.as-lesson-top { display: flex; align-items: center; justify-content: space-between; gap: 6px; }
-.as-lesson-badge {
+.as-row-marker { flex-shrink: 0; width: 48px; display: flex; align-items: center; justify-content: center; }
+.as-row-num {
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  background: #FFFFFF;
+  border: 2px solid #3FCDAF;
+  color: #128571;
   font-family: 'Fredoka', sans-serif;
   font-weight: 700;
-  font-size: 11.5px;
-  color: #128571;
-  background: rgba(18,133,113,0.14);
-  border-radius: 999px;
-  padding: 3px 9px;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.as-lesson-badge--locked { color: #8AAFA5; background: #E9F7F2; }
-.as-lesson-tagtext {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 600;
-  font-size: 9.5px;
-  letter-spacing: 0.3px;
-  text-transform: uppercase;
-  color: #8AAFA5;
-}
+.as-row-num--locked { border-color: #D3EFE6; color: #8AAFA5; }
 
-.as-lesson-icon {
-  width: 100%;
-  height: 46px;
+.as-row-icon {
+  flex-shrink: 0;
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
   background: #E9F7F2;
-  border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
   color: #128571;
 }
-.as-lesson-icon--locked { color: #B7D9CF; font-family: 'Quicksand', sans-serif; letter-spacing: 3px; }
+.as-row-icon--locked { color: #B7D9CF; font-family: 'Quicksand', sans-serif; letter-spacing: 3px; }
 
-.as-lesson-title2 {
-  font-family: 'Fredoka', sans-serif;
-  font-weight: 700;
-  font-size: 14px;
-  color: #17352E;
-  line-height: 1.25;
-  margin: 0;
-}
-.as-lesson-title2--locked { color: #8AAFA5; margin-top: auto; }
-.as-lesson-desc {
+.as-row-body { flex: 1; min-width: 0; }
+.as-row-topline { display: flex; align-items: center; gap: 10px; margin-bottom: 4px; }
+.as-row-tag {
   font-family: 'Quicksand', sans-serif;
-  font-weight: 500;
-  font-size: 11.5px;
-  color: #5C8177;
-  line-height: 1.35;
-  margin: 0;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-.as-lesson-meta {
-  margin-top: auto;
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 500;
+  font-weight: 600;
   font-size: 9.5px;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+  color: #128571;
+  background: rgba(18,133,113,0.14);
+  border-radius: 999px;
+  padding: 2px 9px;
+}
+.as-row-meta {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 500;
+  font-size: 10.5px;
   color: #8AAFA5;
 }
-.as-lesson-foot {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-top: 8px;
-  border-top: 1px solid #E3F3ED;
-  gap: 6px;
+.as-row-title {
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 700;
+  font-size: 17px;
+  color: #17352E;
+  line-height: 1.25;
+  margin: 0 0 3px;
 }
+.as-row-title--locked { color: #8AAFA5; margin: 0; }
+.as-row-desc {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 500;
+  font-size: 13px;
+  color: #5C8177;
+  line-height: 1.4;
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.as-row-actions { flex-shrink: 0; display: flex; align-items: center; gap: 8px; }
 .as-lesson-guidebtn {
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;
-  font-size: 10.5px;
+  font-size: 11px;
   color: #128571;
   background: #E9F7F2;
   border: 1px solid #D3EFE6;
   border-radius: 999px;
-  padding: 5px 10px;
+  padding: 7px 13px;
   white-space: nowrap;
   cursor: pointer;
 }
 .as-lesson-startbtn {
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;
-  font-size: 11px;
+  font-size: 12px;
   color: #17352E;
   background: #3FCDAF;
   border: none;
   border-radius: 999px;
-  padding: 5px 11px;
+  padding: 7px 15px;
   white-space: nowrap;
   cursor: pointer;
 }
 
-@media (max-width: 900px) {
-  .as-lessons-grid { grid-template-columns: repeat(3, 1fr); }
-}
-@media (max-width: 560px) {
-  .as-lessons-grid { grid-template-columns: repeat(2, 1fr); }
+@media (max-width: 640px) {
+  .as-row { flex-wrap: wrap; padding: 16px; }
+  .as-row-actions { width: 100%; padding-left: 74px; }
+  .as-row-desc { white-space: normal; }
 }
 `;

@@ -34,11 +34,13 @@ export default function AscendHub() {
 
       <div className="ah-stage">
         <div className="ah-hero">
+          <span className="ah-hero-eyebrow">Gap identified · Imprecise, unstructured speech</span>
           <h1 className="ah-hero-title">ASCEND</h1>
           <p className="ah-hero-blurb">
             Every ASCEND track is tailored to one learner profile. Pick the track built for your student.
           </p>
         </div>
+        <div className="ah-lane"></div>
 
         {categories.map(({ category, tracks }) => (
           <section className="ah-category" key={category}>
@@ -56,13 +58,18 @@ export default function AscendHub() {
                       )}
                     </div>
                     <div className="ah-track-body">
-                      <div className="ah-track-tags">
-                        <span className="ah-tag">{track.theme}</span>
-                        <span className="ah-tag ah-tag--level">{track.level}</span>
+                      <div>
+                        <div className="ah-track-tags">
+                          <span className="ah-tag">{track.theme}</span>
+                          <span className="ah-tag ah-tag--level">{track.level}</span>
+                        </div>
+                        <h3 className="ah-track-title">{track.title}</h3>
+                        <p className="ah-track-desc">{track.blurb}</p>
                       </div>
-                      <h3 className="ah-track-title">{track.title}</h3>
-                      <p className="ah-track-desc">{track.blurb}</p>
-                      <span className="ah-track-meta">{authored} of {track.lessons.length} lessons ready</span>
+                      <div className="ah-track-foot">
+                        <span className="ah-track-meta">{authored} of {track.lessons.length} lessons ready</span>
+                        <span className="ah-track-cta">Open track →</span>
+                      </div>
                     </div>
                   </a>
                 );
@@ -79,8 +86,10 @@ export default function AscendHub() {
                 <span className="ah-ghost-icon">+</span>
               </div>
               <div className="ah-track-body">
-                <h3 className="ah-track-title ah-track-title--ghost">More categories coming</h3>
-                <p className="ah-track-desc">New profiles get added here as they're built.</p>
+                <div>
+                  <h3 className="ah-track-title ah-track-title--ghost">More categories coming</h3>
+                  <p className="ah-track-desc">New profiles get added here as they're built.</p>
+                </div>
               </div>
             </div>
           </div>
@@ -106,7 +115,7 @@ const CSS = `
 
 .ah-topbar {
   width: 100%;
-  max-width: 1040px;
+  max-width: 1120px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -124,29 +133,46 @@ const CSS = `
 .ah-stage {
   flex: 1;
   width: 100%;
-  max-width: 960px;
-  padding: 40px 24px 60px;
+  max-width: 1080px;
+  padding: 44px 28px 64px;
 }
 
-.ah-hero { margin-bottom: 36px; }
+.ah-hero { max-width: 620px; }
+.ah-hero-eyebrow {
+  display: inline-block;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 700;
+  font-size: 11.5px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #128571;
+  background: rgba(18,133,113,0.12);
+  border-radius: 999px;
+  padding: 6px 14px;
+  margin-bottom: 16px;
+}
 .ah-hero-title {
   font-family: 'Fredoka', sans-serif;
   font-weight: 700;
-  font-size: 40px;
+  font-size: 46px;
   color: #17352E;
-  margin: 0 0 10px;
+  margin: 0 0 12px;
 }
 .ah-hero-blurb {
   font-family: 'Quicksand', sans-serif;
   font-weight: 500;
-  font-size: 16px;
+  font-size: 16.5px;
   color: #5C8177;
   margin: 0;
-  max-width: 560px;
-  line-height: 1.5;
+  line-height: 1.55;
 }
 
-.ah-category { margin-bottom: 36px; }
+.ah-lane { position: relative; height: 2px; background: #D3EFE6; margin: 30px 0 34px; }
+.ah-lane::before, .ah-lane::after { content: ""; position: absolute; top: -3px; width: 8px; height: 8px; border-radius: 50%; background: #3FCDAF; }
+.ah-lane::before { left: 0; }
+.ah-lane::after { right: 0; }
+
+.ah-category { margin-bottom: 34px; }
 .ah-category:last-child { margin-bottom: 0; }
 .ah-category-title {
   font-family: 'Quicksand', sans-serif;
@@ -155,43 +181,43 @@ const CSS = `
   letter-spacing: 2px;
   text-transform: uppercase;
   color: #128571;
-  margin: 0 0 14px;
+  margin: 0 0 16px;
 }
 
 .ah-tracks-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 18px;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 22px;
 }
 
 .ah-track-card {
   display: flex;
-  flex-direction: column;
+  align-items: stretch;
   background: #FFFFFF;
   border: 1px solid #D3EFE6;
-  border-radius: 16px;
+  border-radius: 18px;
   overflow: hidden;
   text-align: left;
   font-family: inherit;
   text-decoration: none;
-  box-shadow: 0 10px 24px rgba(20,80,65,0.08);
+  box-shadow: 0 12px 28px rgba(20,80,65,0.08);
   transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
 }
 .ah-track-card:hover {
   border-color: #3FCDAF;
-  box-shadow: 0 16px 32px rgba(20,80,65,0.16);
+  box-shadow: 0 18px 36px rgba(20,80,65,0.16);
   transform: translateY(-2px);
 }
 
 .ah-track-cover {
-  width: 100%;
-  aspect-ratio: 16 / 10;
+  width: 168px;
+  flex-shrink: 0;
   background: #E9F7F2;
 }
 .ah-track-cover-img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
-.ah-track-body { display: flex; flex-direction: column; gap: 8px; padding: 14px 16px 16px; }
-.ah-track-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.ah-track-body { flex: 1; min-width: 0; display: flex; flex-direction: column; justify-content: space-between; gap: 14px; padding: 20px 22px; }
+.ah-track-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
 .ah-tag {
   font-family: 'Quicksand', sans-serif;
   font-weight: 600;
@@ -207,25 +233,38 @@ const CSS = `
 .ah-track-title {
   font-family: 'Fredoka', sans-serif;
   font-weight: 700;
-  font-size: 19px;
+  font-size: 21px;
   color: #17352E;
-  margin: 0;
+  margin: 0 0 6px;
 }
 .ah-track-desc {
   font-family: 'Quicksand', sans-serif;
   font-weight: 500;
-  font-size: 12.5px;
+  font-size: 13px;
   color: #5C8177;
-  line-height: 1.4;
+  line-height: 1.5;
   margin: 0;
 }
+.ah-track-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding-top: 12px;
+  border-top: 1px solid #E3F3ED;
+}
 .ah-track-meta {
-  margin-top: auto;
-  padding-top: 4px;
   font-family: 'Quicksand', sans-serif;
   font-weight: 600;
-  font-size: 11px;
+  font-size: 11.5px;
+  color: #5C8177;
+}
+.ah-track-cta {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 700;
+  font-size: 12.5px;
   color: #128571;
+  white-space: nowrap;
 }
 
 .ah-track-card--ghost {
@@ -237,7 +276,7 @@ const CSS = `
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 2px dashed #D3EFE6;
+  border-right: 2px dashed #D3EFE6;
   background: transparent;
 }
 .ah-ghost-icon {
@@ -247,10 +286,9 @@ const CSS = `
 }
 .ah-track-title--ghost { color: #8AAFA5; }
 
-@media (max-width: 820px) {
-  .ah-tracks-grid { grid-template-columns: repeat(2, 1fr); }
-}
-@media (max-width: 560px) {
-  .ah-tracks-grid { grid-template-columns: 1fr; }
+@media (max-width: 640px) {
+  .ah-track-card { flex-direction: column; }
+  .ah-track-cover { width: 100%; aspect-ratio: 16 / 9; }
+  .ah-track-cover--ghost { border-right: none; border-bottom: 2px dashed #D3EFE6; }
 }
 `;

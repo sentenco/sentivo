@@ -16,11 +16,13 @@ export default function ShiftHub() {
 
       <div className="shh-stage">
         <div className="shh-hero">
+          <span className="shh-hero-eyebrow">Gap identified · Slow tense self-repair</span>
           <h1 className="shh-hero-title">SHIFT</h1>
           <p className="shh-hero-blurb">
             Every SHIFT track is tailored to one diagnosed tense-accuracy gap. Pick the track built for your student.
           </p>
         </div>
+        <div className="shh-lane"></div>
 
         <div className="shh-tracks-grid">
           {TRACKS.map((track) => {
@@ -35,13 +37,18 @@ export default function ShiftHub() {
                   )}
                 </div>
                 <div className="shh-track-body">
-                  <div className="shh-track-tags">
-                    <span className="shh-tag">{track.gapFocus}</span>
-                    <span className="shh-tag shh-tag--level">{track.level}</span>
+                  <div>
+                    <div className="shh-track-tags">
+                      <span className="shh-tag">{track.gapFocus}</span>
+                      <span className="shh-tag shh-tag--level">{track.level}</span>
+                    </div>
+                    <h3 className="shh-track-title">{track.title}</h3>
+                    <p className="shh-track-desc">{track.blurb}</p>
                   </div>
-                  <h3 className="shh-track-title">{track.title}</h3>
-                  <p className="shh-track-desc">{track.blurb}</p>
-                  <span className="shh-track-meta">{authored} of {track.lessons.length} lessons ready</span>
+                  <div className="shh-track-foot">
+                    <span className="shh-track-meta">{authored} of {track.lessons.length} lessons ready</span>
+                    <span className="shh-track-cta">Open track →</span>
+                  </div>
                 </div>
               </a>
             );
@@ -52,8 +59,10 @@ export default function ShiftHub() {
               <span className="shh-ghost-icon">+</span>
             </div>
             <div className="shh-track-body">
-              <h3 className="shh-track-title shh-track-title--ghost">More tracks coming</h3>
-              <p className="shh-track-desc">New diagnosed gaps get added here as they're built.</p>
+              <div>
+                <h3 className="shh-track-title shh-track-title--ghost">More tracks coming</h3>
+                <p className="shh-track-desc">New diagnosed gaps get added here as they're built.</p>
+              </div>
             </div>
           </div>
         </div>
@@ -78,7 +87,7 @@ const CSS = `
 
 .shh-topbar {
   width: 100%;
-  max-width: 1040px;
+  max-width: 1120px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -96,62 +105,79 @@ const CSS = `
 .shh-stage {
   flex: 1;
   width: 100%;
-  max-width: 960px;
-  padding: 40px 24px 60px;
+  max-width: 1080px;
+  padding: 44px 28px 64px;
 }
 
-.shh-hero { margin-bottom: 36px; }
+.shh-hero { max-width: 620px; }
+.shh-hero-eyebrow {
+  display: inline-block;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 700;
+  font-size: 11.5px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #E1483B;
+  background: rgba(225,72,59,0.1);
+  border-radius: 999px;
+  padding: 6px 14px;
+  margin-bottom: 16px;
+}
 .shh-hero-title {
   font-family: 'Fredoka', sans-serif;
   font-weight: 700;
-  font-size: 40px;
+  font-size: 46px;
   color: #4A211B;
-  margin: 0 0 10px;
+  margin: 0 0 12px;
 }
 .shh-hero-blurb {
   font-family: 'Quicksand', sans-serif;
   font-weight: 500;
-  font-size: 16px;
+  font-size: 16.5px;
   color: #8C5C52;
   margin: 0;
-  max-width: 560px;
-  line-height: 1.5;
+  line-height: 1.55;
 }
+
+.shh-lane { position: relative; height: 2px; background: #FFD2C8; margin: 30px 0 34px; }
+.shh-lane::before, .shh-lane::after { content: ""; position: absolute; top: -3px; width: 8px; height: 8px; border-radius: 50%; background: #E1483B; }
+.shh-lane::before { left: 0; }
+.shh-lane::after { right: 0; }
 
 .shh-tracks-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 18px;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 22px;
 }
 
 .shh-track-card {
   display: flex;
-  flex-direction: column;
+  align-items: stretch;
   background: #FFFFFF;
   border: 1px solid #FFD2C8;
-  border-radius: 16px;
+  border-radius: 18px;
   overflow: hidden;
   text-align: left;
   font-family: inherit;
   text-decoration: none;
-  box-shadow: 0 10px 24px rgba(160,50,35,0.06);
+  box-shadow: 0 12px 28px rgba(160,50,35,0.07);
   transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
 }
 .shh-track-card:hover {
   border-color: #E1483B;
-  box-shadow: 0 16px 32px rgba(160,50,35,0.12);
+  box-shadow: 0 18px 36px rgba(160,50,35,0.14);
   transform: translateY(-2px);
 }
 
 .shh-track-cover {
-  width: 100%;
-  aspect-ratio: 16 / 10;
+  width: 168px;
+  flex-shrink: 0;
   background: #FFEDE9;
 }
 .shh-track-cover-img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
-.shh-track-body { display: flex; flex-direction: column; gap: 8px; padding: 14px 16px 16px; }
-.shh-track-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.shh-track-body { flex: 1; min-width: 0; display: flex; flex-direction: column; justify-content: space-between; gap: 14px; padding: 20px 22px; }
+.shh-track-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
 .shh-tag {
   font-family: 'Quicksand', sans-serif;
   font-weight: 600;
@@ -167,25 +193,38 @@ const CSS = `
 .shh-track-title {
   font-family: 'Fredoka', sans-serif;
   font-weight: 700;
-  font-size: 19px;
+  font-size: 21px;
   color: #4A211B;
-  margin: 0;
+  margin: 0 0 6px;
 }
 .shh-track-desc {
   font-family: 'Quicksand', sans-serif;
   font-weight: 500;
-  font-size: 12.5px;
+  font-size: 13px;
   color: #8C5C52;
-  line-height: 1.4;
+  line-height: 1.5;
   margin: 0;
 }
+.shh-track-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding-top: 12px;
+  border-top: 1px solid #FFE4DD;
+}
 .shh-track-meta {
-  margin-top: auto;
-  padding-top: 4px;
   font-family: 'Quicksand', sans-serif;
   font-weight: 600;
-  font-size: 11px;
+  font-size: 11.5px;
+  color: #8C5C52;
+}
+.shh-track-cta {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 700;
+  font-size: 12.5px;
   color: #E1483B;
+  white-space: nowrap;
 }
 
 .shh-track-card--ghost { opacity: 0.6; cursor: default; pointer-events: none; }
@@ -193,16 +232,15 @@ const CSS = `
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 2px dashed #FFD2C8;
+  border-right: 2px dashed #FFD2C8;
   background: transparent;
 }
 .shh-ghost-icon { font-family: 'Fredoka', sans-serif; font-size: 34px; color: #F0AFA5; }
 .shh-track-title--ghost { color: #C98F84; }
 
-@media (max-width: 820px) {
-  .shh-tracks-grid { grid-template-columns: repeat(2, 1fr); }
-}
-@media (max-width: 560px) {
-  .shh-tracks-grid { grid-template-columns: 1fr; }
+@media (max-width: 640px) {
+  .shh-track-card { flex-direction: column; }
+  .shh-track-cover { width: 100%; aspect-ratio: 16 / 9; }
+  .shh-track-cover--ghost { border-right: none; border-bottom: 2px dashed #FFD2C8; }
 }
 `;
