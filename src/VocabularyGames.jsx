@@ -1,15 +1,12 @@
 import { useState, useEffect } from "react";
-import WordChoiceGame from "./WordChoiceGame";
-import WordSortGame from "./WordSortGame";
 import SYNONYMS_SET from "./synonymsGameData";
 import ANTONYMS_SET from "./antonymsGameData";
 import SYNONYMS_TOPICS from "./synonymsTopics";
 import ANTONYMS_TOPICS from "./antonymsTopics";
 import WORD_SORT_PACKS from "./wordSortPacks";
-import OddOneOutGame from "./OddOneOutGame";
 import ODD_ONE_OUT_PACKS from "./oddOneOutData";
 
-const GAME_TYPES = [
+export const GAME_TYPES = [
   {
     key: "synonyms",
     title: "Synonyms",
@@ -179,7 +176,7 @@ const TOPICS = [
   { key: "homeAndDailyLife", title: "Home & Daily Life" },
 ];
 
-const CATEGORIES_BY_GAME = {
+export const CATEGORIES_BY_GAME = {
   synonyms: [
     { key: "sample", title: "Sample Set", blurb: "10 starter words to try the game.", ready: true, data: SYNONYMS_SET },
     ...TOPICS.map((t) => ({
@@ -218,9 +215,25 @@ const CATEGORIES_BY_GAME = {
   })),
 };
 
+// Opens one category's game as its own standalone popup window, matching
+// the Editorial View / lesson-player pattern elsewhere in the app.
+function openCategoryPlayer(gameKey, categoryKey) {
+  const screenW = window.screen.availWidth || 1600;
+  const screenH = window.screen.availHeight || 900;
+  const w = Math.min(720, screenW - 40);
+  const h = Math.min(680, screenH - 80);
+  const left = Math.max(0, Math.floor((screenW - w) / 2));
+  const top = Math.max(0, Math.floor((screenH - h) / 2));
+
+  window.open(
+    `/library/vocabulary/${gameKey}/${categoryKey}/player`,
+    "sentivoVocabularyPlayer",
+    `width=${w},height=${h},left=${left},top=${top},toolbar=no,location=no,menubar=no,status=no,scrollbars=yes,resizable=yes`
+  );
+}
+
 export default function VocabularyGames() {
   const [gameKey, setGameKey] = useState(null);
-  const [categoryKey, setCategoryKey] = useState(null);
 
   // Browser back/forward drives navigation instead of an in-page back
   // button — each drill-down pushes a history entry, popping it here
@@ -228,7 +241,6 @@ export default function VocabularyGames() {
   useEffect(() => {
     function onPopState(e) {
       const depth = e.state?.vgDepth || 0;
-      if (depth < 2) setCategoryKey(null);
       if (depth < 1) setGameKey(null);
     }
     window.addEventListener("popstate", onPopState);
@@ -239,44 +251,9 @@ export default function VocabularyGames() {
     window.history.pushState({ vgDepth: 1 }, "");
     setGameKey(key);
   }
-  function openCategory(key) {
-    window.history.pushState({ vgDepth: 2 }, "");
-    setCategoryKey(key);
-  }
 
   const game = GAME_TYPES.find((g) => g.key === gameKey);
   const categories = gameKey ? CATEGORIES_BY_GAME[gameKey] : [];
-  const category = categories.find((c) => c.key === categoryKey);
-
-  if (game && category && category.ready && game.kind === "sort") {
-    return (
-      <WordSortGame
-        title={category.title}
-        categoryA={category.pack.categoryA}
-        categoryB={category.pack.categoryB}
-        items={category.pack.items}
-      />
-    );
-  }
-
-  if (game && category && category.ready && game.kind === "oddOneOut") {
-    return (
-      <OddOneOutGame
-        title={`${category.audience} · ${category.title}`}
-        items={category.items}
-      />
-    );
-  }
-
-  if (game && category && category.ready) {
-    return (
-      <WordChoiceGame
-        title={`${game.title} · ${category.title}`}
-        instruction={game.instruction}
-        data={category.data}
-      />
-    );
-  }
 
   if (game) {
     return (
@@ -300,7 +277,7 @@ export default function VocabularyGames() {
                       key={c.key}
                       type="button"
                       className={`vg-cat-card ${c.ready ? "" : "vg-cat-card--soon"}`}
-                      onClick={() => c.ready && openCategory(c.key)}
+                      onClick={() => c.ready && openCategoryPlayer(gameKey, c.key)}
                       disabled={!c.ready}
                     >
                       <span className="vg-cat-tag">{c.ready ? "Ready" : "Coming soon"}</span>
@@ -319,7 +296,7 @@ export default function VocabularyGames() {
                   key={c.key}
                   type="button"
                   className={`vg-cat-card ${c.ready ? "" : "vg-cat-card--soon"}`}
-                  onClick={() => c.ready && openCategory(c.key)}
+                  onClick={() => c.ready && openCategoryPlayer(gameKey, c.key)}
                   disabled={!c.ready}
                 >
                   <span className="vg-cat-tag">{c.ready ? "Ready" : "Coming soon"}</span>

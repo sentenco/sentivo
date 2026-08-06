@@ -9,6 +9,8 @@ import TeacherGuide from './TeacherGuide.jsx'
 import StoryBook from './StoryBook.jsx'
 import ArticleReader from './ArticleReader.jsx'
 import ArticlePlayerPage from './ArticlePlayerPage.jsx'
+import VocabularyPlayerPage from './VocabularyPlayerPage.jsx'
+import WritingPlayerPage from './WritingPlayerPage.jsx'
 import NotebookHub from './NotebookHub.jsx'
 import NotebookPage from './NotebookPage.jsx'
 import WheelPage from './WheelPage.jsx'
@@ -66,6 +68,8 @@ createRoot(document.getElementById('root')).render(
             <Route path="/library/stress" element={<Flashcards />} />
             <Route path="/library/articles/:slug" element={<ArticleReader />} />
             <Route path="/library/articles/:slug/player" element={<ArticlePlayerPage />} />
+            <Route path="/library/vocabulary/:gameKey/:categoryKey/player" element={<VocabularyPlayerPage />} />
+            <Route path="/library/writing/:typeKey/:comboKey/:topicIndex/player" element={<WritingPlayerPage />} />
             <Route path="/library/notebook" element={<NotebookHub />} />
             <Route path="/library/notebook/:design" element={<NotebookPage />} />
             <Route path="/library/wheel" element={<WheelPage />} />

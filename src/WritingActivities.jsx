@@ -1,10 +1,8 @@
 import { useState, useEffect } from "react";
-import ProofreadingActivity from "./ProofreadingActivity";
-import StoryMakingActivity from "./StoryMakingActivity";
 import PROOFREADING_SETS from "./proofreadingData";
 import STORY_MAKING_SETS from "./storyMakingData";
 
-const ACTIVITY_TYPES = [
+export const ACTIVITY_TYPES = [
   {
     key: "proofreading",
     title: "Proofreading",
@@ -21,7 +19,7 @@ const ACTIVITY_TYPES = [
   },
 ];
 
-const COMBOS = [
+export const COMBOS = [
   { key: "teens-beginner", audience: "Teens", level: "Beginner" },
   { key: "teens-intermediate", audience: "Teens", level: "Intermediate" },
   { key: "adults-beginner", audience: "Adults", level: "Beginner" },
@@ -68,10 +66,28 @@ function StoryMakingBanner() {
   );
 }
 
+// Opens one topic's activity as its own standalone popup window, matching
+// the Editorial View / lesson-player pattern elsewhere in the app.
+// Story Making's picture panel needs a wider window than Proofreading's
+// single card.
+function openTopicPlayer(typeKey, comboKey, topicIndex) {
+  const screenW = window.screen.availWidth || 1600;
+  const screenH = window.screen.availHeight || 900;
+  const w = Math.min(typeKey === "storyMaking" ? 1000 : 720, screenW - 40);
+  const h = Math.min(700, screenH - 80);
+  const left = Math.max(0, Math.floor((screenW - w) / 2));
+  const top = Math.max(0, Math.floor((screenH - h) / 2));
+
+  window.open(
+    `/library/writing/${typeKey}/${comboKey}/${topicIndex}/player`,
+    "sentivoWritingPlayer",
+    `width=${w},height=${h},left=${left},top=${top},toolbar=no,location=no,menubar=no,status=no,scrollbars=yes,resizable=yes`
+  );
+}
+
 export default function WritingActivities() {
   const [typeKey, setTypeKey] = useState(null);
   const [comboKey, setComboKey] = useState(null);
-  const [topicIndex, setTopicIndex] = useState(null);
 
   // Browser back/forward drives navigation instead of an in-page back
   // button — each drill-down pushes a history entry, popping it here
@@ -79,7 +95,6 @@ export default function WritingActivities() {
   useEffect(() => {
     function onPopState(e) {
       const depth = e.state?.waDepth || 0;
-      if (depth < 3) setTopicIndex(null);
       if (depth < 2) setComboKey(null);
       if (depth < 1) setTypeKey(null);
     }
@@ -95,20 +110,10 @@ export default function WritingActivities() {
     window.history.pushState({ waDepth: 2 }, "");
     setComboKey(key);
   }
-  function openTopic(i) {
-    window.history.pushState({ waDepth: 3 }, "");
-    setTopicIndex(i);
-  }
 
   const type = ACTIVITY_TYPES.find((t) => t.key === typeKey);
   const combo = COMBOS.find((c) => c.key === comboKey);
   const topics = type && combo ? type.sets[combo.key] : [];
-  const topic = topicIndex !== null ? topics[topicIndex] : null;
-
-  if (type && combo && topic) {
-    const Player = type.key === "storyMaking" ? StoryMakingActivity : ProofreadingActivity;
-    return <Player item={topic} />;
-  }
 
   if (type && combo) {
     return (
@@ -119,7 +124,7 @@ export default function WritingActivities() {
         </div>
         <div className="wa-cat-grid">
           {topics.map((t, i) => (
-            <button key={t.title} type="button" className="wa-cat-card" onClick={() => openTopic(i)}>
+            <button key={t.title} type="button" className="wa-cat-card" onClick={() => openTopicPlayer(typeKey, comboKey, i)}>
               <span className="wa-cat-tag">Ready</span>
               <span className="wa-cat-title">{t.title}</span>
               <span className="wa-cat-blurb">{t.focus}</span>
