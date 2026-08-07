@@ -1,7 +1,6 @@
 import { useState, useRef, useLayoutEffect } from "react";
 import { useParams, useSearchParams } from "react-router-dom";
 import { getArticle } from "./articlesData";
-import editorialBanner from "./assets/brand/editorial-banner.jpg";
 
 const EDITION_KEYS = ["plain", "polished", "precise"];
 const MAX_FONT_SIZE = 16.5;
@@ -122,8 +121,16 @@ export default function ArticlePlayerPage() {
       </div>
 
       <div className="app-page">
-        <div className="app-hero">
-          <img src={editorialBanner} alt="Sentivo Editorial" />
+        <div className="app-masthead">
+          <img className="app-masthead-logo" src="/logo-sentivo.png" alt="" />
+          <div className="app-masthead-kicker-row">
+            <span className="app-masthead-rule" />
+            <span className="app-masthead-kicker">The Sentivo</span>
+            <span className="app-masthead-rule" />
+          </div>
+          <div className="app-masthead-word">Gazette</div>
+          <div className="app-masthead-underline" />
+          <div className="app-masthead-tagline">News, Ideas &amp; Perspectives</div>
         </div>
 
         <h1 className="app-title"><StyledTitle title={article.title} /></h1>
@@ -174,26 +181,45 @@ const CSS = `
 .app-editions {
   flex-shrink: 0;
   display: flex;
+  align-items: center;
   justify-content: center;
-  gap: 4px;
-  padding: 8px;
-  background: #FFFFFF;
-  border-bottom: 1px solid #EAE7E0;
+  gap: 0;
+  padding: 13px 8px;
+  background: #1B2A4A;
 }
 .app-ed-btn {
+  position: relative;
   font-family: 'Source Serif 4', serif;
   font-size: 10.5px;
-  font-weight: 600;
-  letter-spacing: 0.06em;
+  font-weight: 700;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: #8A8578;
+  color: rgba(255,255,255,0.45);
   background: none;
-  border: 1px solid transparent;
-  border-radius: 999px;
-  padding: 4px 12px;
+  border: none;
+  padding: 6px 16px;
   cursor: pointer;
 }
-.app-ed-btn.is-active { color: #171717; border-color: #171717; }
+.app-ed-btn:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 20%;
+  bottom: 20%;
+  width: 1px;
+  background: rgba(255,255,255,0.18);
+}
+.app-ed-btn.is-active { color: #FFFFFF; }
+.app-ed-btn.is-active::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -3px;
+  transform: translateX(-50%);
+  width: 56%;
+  height: 2px;
+  background: #FF6B4A;
+}
 
 .app-page {
   flex: 1;
@@ -207,16 +233,42 @@ const CSS = `
   overflow: hidden;
 }
 
-.app-hero {
+.app-masthead {
   flex-shrink: 0;
-  height: clamp(150px, 18vh, 220px);
-  background: #FBFAF7;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
+  text-align: center;
+  padding: clamp(16px, 2.6vh, 26px) 24px clamp(10px, 1.6vh, 16px);
 }
-.app-hero img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
+.app-masthead-logo { height: clamp(20px, 2.6vh, 26px); width: auto; display: inline-block; margin-bottom: 8px; }
+.app-masthead-kicker-row { display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 2px; }
+.app-masthead-rule { flex: 0 1 44px; height: 1px; background: #1B2A4A; opacity: 0.45; }
+.app-masthead-kicker {
+  font-family: 'Source Serif 4', serif;
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: #1B2A4A;
+}
+.app-masthead-word {
+  font-family: 'Playfair Display', serif;
+  font-weight: 900;
+  font-size: clamp(42px, 7.2vh, 68px);
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: #1B2A4A;
+  line-height: 1;
+  margin: 2px 0 10px;
+}
+.app-masthead-underline { width: clamp(150px, 28%, 240px); height: 2px; background: #FF6B4A; margin: 0 auto 8px; }
+.app-masthead-tagline {
+  font-family: 'Source Serif 4', serif;
+  font-weight: 600;
+  font-size: 10.5px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: #1B2A4A;
+  opacity: 0.75;
+}
 
 .app-title {
   flex-shrink: 0;
