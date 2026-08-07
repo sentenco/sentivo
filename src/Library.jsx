@@ -318,8 +318,7 @@ function TodayHero() {
         <h1 className="td-hero-title">
           {editing ? (
             <span className="td-hero-editing">
-              {greeting},<br />
-              Teacher{" "}
+              {greeting}, Teacher{" "}
               <input
                 autoFocus
                 className="td-hero-input"
@@ -335,7 +334,7 @@ function TodayHero() {
             </span>
           ) : (
             <button type="button" className="td-hero-btn" onClick={startEditing} title="Click to edit your name">
-              {greeting},<br /><span className="who">{name ? `Teacher ${name}` : "Teacher"}</span>
+              {greeting}, <span className="who">{name ? `Teacher ${name}` : "Teacher"}</span>
             </button>
           )}
         </h1>
@@ -794,7 +793,7 @@ function openWheel() {
   );
 }
 
-function TodayFeature({ tools, onSeeAllLessons, navigate }) {
+function TodayFeature({ tools, navigate }) {
   const today = new Date();
   const dayIndex = daysSince(today);
   const total = DAILY_CORRECTIONS.length;
@@ -829,7 +828,9 @@ function TodayFeature({ tools, onSeeAllLessons, navigate }) {
             <div className={`td-brief-card hue-${b.hue === "grammar" ? "coral" : b.hue === "vocab" ? "gold" : "teal"}`} key={b.id}>
               <div className="td-brief-label">{b.category}</div>
               <p className="td-brief-line"><CorrectionLine segments={b.sentence} /></p>
-              {b.explain.map((line, i) => <p className="td-brief-explain" key={i}>{line}</p>)}
+              <div className="td-brief-pop">
+                {b.explain.map((line, i) => <p key={i}>{line}</p>)}
+              </div>
             </div>
           ))}
         </div>
@@ -863,7 +864,6 @@ function TodayFeature({ tools, onSeeAllLessons, navigate }) {
           <div className="gc-reclessons">
             <div className="gc-rl-head">
               <span className="gc-rl-title">Recommended Lessons</span>
-              <button type="button" className="gc-rl-seeall" onClick={onSeeAllLessons}>See all →</button>
             </div>
             <div className="gc-rl-grid">
               {recommended.map((t) => {
@@ -1649,7 +1649,7 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 }
 .td-hero-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center right; }
 .td-hero-left { position: relative; z-index: 1; max-width: 480px; padding: 32px 0 32px 34px; }
-.td-hero-title { font-family: 'Fredoka', sans-serif; font-size: clamp(26px, 3.4vw, 34px); font-weight: 600; margin: 0; line-height: 1.2; color: var(--ink); }
+.td-hero-title { font-family: 'Fredoka', sans-serif; font-size: clamp(28px, 3.8vw, 38px); font-weight: 600; margin: 0; line-height: 1.2; color: var(--ink); }
 .td-hero-title .who { color: var(--coral); }
 .td-hero-btn { display: block; background: none; border: none; padding: 0; margin: 0; text-align: left; font: inherit; color: inherit; cursor: pointer; }
 .td-hero-editing { display: inline-block; }
@@ -1668,7 +1668,14 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .td-chip-icon svg { width: 13px; height: 13px; }
 
 /* ── Daily correction ── */
-.td-correction-card { background: var(--card); border-radius: 24px; padding: 26px 30px; box-shadow: 0 8px 24px rgba(43,42,74,0.05); }
+.td-correction-card {
+  position: relative;
+  background: linear-gradient(160deg, #FFFCFA 0%, #FFF2E9 100%);
+  border: 1.5px solid rgba(43,42,74,0.14);
+  border-radius: 24px;
+  padding: 26px 30px;
+  box-shadow: 0 10px 30px rgba(255,107,74,0.10);
+}
 .td-dc-label { font-family: 'Quicksand', sans-serif; font-size: 12px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--coral); margin-bottom: 12px; }
 .td-dc-headline { font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: clamp(19px, 2.2vw, 24px); line-height: 1.4; margin: 0 0 12px; color: var(--ink); text-wrap: balance; }
 .td-dc-quote { color: var(--coral); margin-right: 5px; }
@@ -1677,20 +1684,42 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .td-dc-explain { font-family: 'Quicksand', sans-serif; font-size: 14px; line-height: 1.55; color: var(--ink-soft, #4C4A3E); max-width: 640px; margin: 0 0 4px; }
 
 /* ── Two more corrections ── */
-.td-briefs { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+.td-briefs { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
 .td-brief-card {
+  position: relative;
   background: var(--card);
   border-top: 3px solid var(--accent, var(--coral));
-  border-radius: 16px;
-  padding: 16px 18px;
+  border-radius: 14px;
+  padding: 12px 14px;
   box-shadow: 0 6px 16px rgba(43,42,74,0.06);
+  cursor: default;
 }
 .td-brief-card.hue-coral { --accent: var(--coral); }
 .td-brief-card.hue-gold { --accent: var(--navy); }
 .td-brief-card.hue-teal { --accent: var(--navy-soft); }
-.td-brief-label { font-family: 'Quicksand', sans-serif; font-size: 10.5px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent, var(--coral)); margin-bottom: 6px; }
-.td-brief-line { font-family: 'Fredoka', sans-serif; font-size: 14.5px; font-weight: 600; line-height: 1.35; color: var(--ink); margin: 0 0 6px; }
-.td-brief-explain { font-family: 'Quicksand', sans-serif; font-size: 12px; line-height: 1.5; color: var(--muted); margin: 0; }
+.td-brief-label { font-family: 'Quicksand', sans-serif; font-size: 10px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent, var(--coral)); margin-bottom: 4px; }
+.td-brief-line { font-family: 'Fredoka', sans-serif; font-size: 13.5px; font-weight: 600; line-height: 1.3; color: var(--ink); margin: 0; }
+.td-brief-pop {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  right: 0;
+  background: var(--card);
+  border: 1px solid var(--hair);
+  border-radius: 12px;
+  padding: 10px 12px;
+  box-shadow: 0 12px 28px rgba(43,42,74,0.18);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-4px);
+  transition: opacity 0.15s ease, transform 0.15s ease, visibility 0.15s;
+  z-index: 30;
+  pointer-events: none;
+}
+.td-brief-pop p { font-family: 'Quicksand', sans-serif; font-size: 12.5px; line-height: 1.4; color: #4C4A3E; margin: 0; }
+.td-brief-pop p + p { margin-top: 4px; }
+.td-brief-card:hover { z-index: 20; }
+.td-brief-card:hover .td-brief-pop { opacity: 1; visibility: visible; transform: translateY(0); }
 
 /* ── Toolkit ── */
 .td-section-label { font-family: 'Quicksand', sans-serif; font-size: 12px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
@@ -1776,11 +1805,13 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   .td-body { grid-template-columns: 1fr; }
   .gc-sidebar { display: none; }
   .td-chip-row { display: flex; }
-  .td-briefs { grid-template-columns: 1fr; }
-  .td-util-row { grid-template-columns: 1fr; }
 }
 @media (max-width: 560px) {
   .td-actions-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 480px) {
+  .td-briefs { grid-template-columns: 1fr; }
+  .td-util-row { grid-template-columns: 1fr; }
 }
 
 /* ── Responsive: narrower / non-maximized browser windows ── */
@@ -1803,8 +1834,6 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   margin-bottom: 10px;
 }
 .gc-rl-title { font-family: 'Fredoka', sans-serif; font-size: 15px; font-weight: 700; color: var(--ink); }
-.gc-rl-seeall { font-family: 'Quicksand', sans-serif; font-size: 12px; font-weight: 700; color: var(--coral); background: none; border: none; cursor: pointer; padding: 4px 2px; }
-.gc-rl-seeall:hover { text-decoration: underline; }
 
 .gc-rl-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
 .gc-rl-card {
