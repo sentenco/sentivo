@@ -14,6 +14,12 @@ import storybook6CoverImg from "./assets/storybook6/cover.jpeg";
 import storybook7CoverImg from "./assets/storybook7/cover.jpeg";
 import storybook8CoverImg from "./assets/storybook8/cover.jpeg";
 import forge1CoverImg from "./assets/forge/track1-cover.jpeg";
+import todayHeroImg from "./assets/today/greeting-bg.jpg";
+import todaySalaryIcon from "./assets/today/icon-salary.jpg";
+import todayWheelIcon from "./assets/today/icon-wheel.jpg";
+import todayNotebookIcon from "./assets/today/icon-notebook.jpg";
+import todayDeckIcon from "./assets/today/icon-deck.jpg";
+import todayQuoteBanner from "./assets/today/quote-banner.jpg";
 import DAILY_CORRECTIONS from "./dailyCorrections";
 import { ARTICLES, ARTICLE_TOPICS } from "./articlesData";
 import VocabularyGames from "./VocabularyGames";
@@ -155,32 +161,37 @@ function WordLookup() {
   }
 
   return (
-    <div className="gc-lookup">
-      <div className="gc-widget-title">Dictionary</div>
-      <form className="gc-lookup-form" onSubmit={lookup}>
+    <div className="td-util-card">
+      <div className="td-util-head">
+        <span className="td-util-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="7" /><path d="m21 21-4.3-4.3" /></svg>
+        </span>
+        <span className="td-util-title">Dictionary</span>
+      </div>
+      <form className="td-lookup-form" onSubmit={lookup}>
         <input
-          className="gc-lookup-input"
+          className="td-lookup-input"
           type="text"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder="Search a word…"
         />
-        <button type="submit" className="gc-lookup-btn" aria-label="Search" disabled={status === "loading"}>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round">
+        <button type="submit" className="td-lookup-btn" aria-label="Search" disabled={status === "loading"}>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round">
             <circle cx="11" cy="11" r="7" />
             <path d="M21 21l-4.3-4.3" />
           </svg>
         </button>
       </form>
-      {status === "loading" && <div className="gc-lookup-status">Looking up…</div>}
-      {status === "error" && <div className="gc-lookup-status gc-lookup-status--error">No results for "{query.trim()}"</div>}
+      {status === "loading" && <div className="td-lookup-status">Looking up…</div>}
+      {status === "error" && <div className="td-lookup-status td-lookup-status--error">No results for "{query.trim()}"</div>}
       {status === "done" && result && (
-        <div className="gc-lookup-result">
-          <div className="gc-lookup-word">{result.word}</div>
+        <div className="td-lookup-result">
+          <div className="td-lookup-word">{result.word}</div>
           {result.meanings.map((m, i) => (
-            <div className="gc-lookup-meaning" key={i}>
-              <span className="gc-lookup-pos">{m.pos}</span>
-              {m.def && <span className="gc-lookup-def">{m.def}</span>}
+            <div className="td-lookup-meaning" key={i}>
+              <span className="td-lookup-pos">{m.pos}</span>
+              {m.def && <span className="td-lookup-def">{m.def}</span>}
             </div>
           ))}
         </div>
@@ -223,34 +234,41 @@ function GrammarChecker() {
   }
 
   return (
-    <div className="gc-grammar">
-      <div className="gc-widget-title">Grammar Checker</div>
-      <form className="gc-grammar-form" onSubmit={check}>
+    <div className="td-util-card">
+      <div className="td-util-head">
+        <span className="td-util-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m18 2 4 4-13 13H5v-4Z" /></svg>
+        </span>
+        <span className="td-util-title">Grammar Checker</span>
+      </div>
+      <form className="td-grammar-form" onSubmit={check}>
         <textarea
-          className="gc-grammar-input"
+          className="td-grammar-input"
           value={text}
           onChange={(e) => setText(e.target.value)}
           placeholder="Paste a sentence or paragraph to check…"
           rows={3}
         />
-        <button type="submit" className="gc-grammar-btn" disabled={status === "loading" || !text.trim()}>
-          {status === "loading" ? "Checking…" : "Check grammar"}
-        </button>
+        <div className="td-grammar-foot">
+          <button type="submit" className="td-grammar-btn" disabled={status === "loading" || !text.trim()}>
+            {status === "loading" ? "Checking…" : "Check grammar"}
+          </button>
+        </div>
       </form>
-      {status === "error" && <div className="gc-lookup-status gc-lookup-status--error">{errorMsg}</div>}
+      {status === "error" && <div className="td-lookup-status td-lookup-status--error">{errorMsg}</div>}
       {status === "done" && corrections && (
         corrections.length === 0 ? (
-          <div className="gc-grammar-clean">No issues found — looks good.</div>
+          <div className="td-grammar-clean">No issues found — looks good.</div>
         ) : (
-          <div className="gc-grammar-results">
+          <div className="td-grammar-results">
             {corrections.map((c, i) => (
-              <div className="gc-grammar-item" key={i}>
-                <div className="gc-grammar-diff">
-                  <span className="gc-grammar-wrong">{c.original}</span>
-                  <span className="gc-grammar-arrow">→</span>
-                  <span className="gc-grammar-right">{c.corrected}</span>
+              <div className="td-grammar-item" key={i}>
+                <div className="td-grammar-diff">
+                  <span className="td-grammar-wrong">{c.original}</span>
+                  <span className="td-grammar-arrow">→</span>
+                  <span className="td-grammar-right">{c.corrected}</span>
                 </div>
-                {c.explanation && <p className="gc-grammar-explain">{c.explanation}</p>}
+                {c.explanation && <p className="td-grammar-explain">{c.explanation}</p>}
               </div>
             ))}
           </div>
@@ -260,19 +278,29 @@ function GrammarChecker() {
   );
 }
 
-function TeacherGreeting() {
+function TodayHero() {
   const [name, setName] = useState(() => {
     return localStorage.getItem("sentivo_teacher_name") || "";
   });
   const [editing, setEditing] = useState(false);
   const [draft, setDraft] = useState(name);
+  const [now, setNow] = useState(new Date());
 
   useEffect(() => {
     localStorage.setItem("sentivo_teacher_name", name);
   }, [name]);
 
-  const hour = new Date().getHours();
+  useEffect(() => {
+    const id = setInterval(() => setNow(new Date()), 30000);
+    return () => clearInterval(id);
+  }, []);
+
+  const hour = now.getHours();
   const greeting = hour < 12 ? "Good morning" : hour < 17 ? "Good afternoon" : "Good evening";
+  const h12 = ((hour + 11) % 12) + 1;
+  const mm = String(now.getMinutes()).padStart(2, "0");
+  const ampm = hour >= 12 ? "PM" : "AM";
+  const dateLabel = now.toLocaleDateString(undefined, { weekday: "short", month: "short", day: "numeric" });
 
   function startEditing() {
     setDraft(name);
@@ -284,52 +312,45 @@ function TeacherGreeting() {
   }
 
   return (
-    <div className="gc-greeting">
-      <span className="gc-eyebrow-top">Sentivo · Today</span>
-      {editing ? (
-        <span className="gc-greeting-line gc-greeting-line--editing">
-          {greeting}, Teacher{" "}
-          <input
-            autoFocus
-            className="gc-greeting-input"
-            value={draft}
-            onChange={(e) => setDraft(e.target.value)}
-            onBlur={save}
-            onKeyDown={(e) => {
-              if (e.key === "Enter") save();
-              if (e.key === "Escape") { setDraft(name); setEditing(false); }
-            }}
-            placeholder="your name"
-          />
-        </span>
-      ) : (
-        <button type="button" className="gc-greeting-line gc-greeting-btn" onClick={startEditing} title="Click to edit your name">
-          {greeting}{name ? `, Teacher ${name}` : ", Teacher"}
-        </button>
-      )}
-      <div className="gc-spectrum" />
-    </div>
-  );
-}
-
-function ComingSoonWidget({ icon, title, description }) {
-  return (
-    <div className="gc-coming-soon">
-      <span className="gc-cs-icon" aria-hidden="true">{icon}</span>
-      <div className="gc-widget-title">{title}</div>
-      <p className="gc-widget-note">{description}</p>
-      <span className="gc-soon-tag">Coming soon</span>
-    </div>
-  );
-}
-
-function ReadyWidget({ icon, title, description }) {
-  return (
-    <div className="gc-coming-soon">
-      <span className="gc-cs-icon" aria-hidden="true">{icon}</span>
-      <div className="gc-widget-title">{title}</div>
-      <p className="gc-widget-note">{description}</p>
-      <span className="gc-soon-tag gc-ready-tag">Open →</span>
+    <div className="td-hero">
+      <img className="td-hero-bg" src={todayHeroImg} alt="" />
+      <div className="td-hero-left">
+        <h1 className="td-hero-title">
+          {editing ? (
+            <span className="td-hero-editing">
+              {greeting},<br />
+              Teacher{" "}
+              <input
+                autoFocus
+                className="td-hero-input"
+                value={draft}
+                onChange={(e) => setDraft(e.target.value)}
+                onBlur={save}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") save();
+                  if (e.key === "Escape") { setDraft(name); setEditing(false); }
+                }}
+                placeholder="your name"
+              />
+            </span>
+          ) : (
+            <button type="button" className="td-hero-btn" onClick={startEditing} title="Click to edit your name">
+              {greeting},<br /><span className="who">{name ? `Teacher ${name}` : "Teacher"}</span>
+            </button>
+          )}
+        </h1>
+        <p className="td-hero-sub">Let's make today a great teaching day.</p>
+        <div className="td-chip-row">
+          <span className="td-chip">
+            <span className="td-chip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="5" width="18" height="16" rx="2" /><path d="M8 3v4M16 3v4M3 10h18" /></svg></span>
+            {dateLabel}
+          </span>
+          <span className="td-chip">
+            <span className="td-chip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="9" /><path d="M12 7v5l3 2" /></svg></span>
+            {h12}:{mm} {ampm}
+          </span>
+        </div>
+      </div>
     </div>
   );
 }
@@ -788,70 +809,54 @@ function TodayFeature({ tools, onSeeAllLessons, navigate }) {
 
   return (
     <div className="gc-dashboard">
-      <TeacherGreeting />
-      <div className="gc-dashboard-body">
-      <div className="gc-main">
-        <div className="gc-eyebrow">Daily Correction</div>
-        <h2 className="gc-headline">
-          <span className="corr-quote">&#10078;</span>
-          <CorrectionLine segments={headline.sentence} />
-        </h2>
-        {headline.explain.map((line, i) => (
-          <p className="gc-explain" key={i}>{line}</p>
-        ))}
+      <div className="td-body">
+      <div className="td-main">
+        <TodayHero />
 
-        <div className="gc-briefs">
+        <div className="td-correction-card">
+          <div className="td-dc-label">Daily Correction</div>
+          <h2 className="td-dc-headline">
+            <span className="td-dc-quote">&#10078;</span>
+            <CorrectionLine segments={headline.sentence} />
+          </h2>
+          {headline.explain.map((line, i) => (
+            <p className="td-dc-explain" key={i}>{line}</p>
+          ))}
+        </div>
+
+        <div className="td-briefs">
           {briefs.map((b) => (
-            <div className={`gc-brief-col hue-${b.hue === "grammar" ? "coral" : b.hue === "vocab" ? "gold" : "teal"}`} key={b.id}>
-              <div className="col-h">{b.category}</div>
-              <div className="col-line"><CorrectionLine segments={b.sentence} /></div>
-              <div className="col-explain">
-                {b.explain.map((line, i) => <p key={i}>{line}</p>)}
-              </div>
+            <div className={`td-brief-card hue-${b.hue === "grammar" ? "coral" : b.hue === "vocab" ? "gold" : "teal"}`} key={b.id}>
+              <div className="td-brief-label">{b.category}</div>
+              <p className="td-brief-line"><CorrectionLine segments={b.sentence} /></p>
+              {b.explain.map((line, i) => <p className="td-brief-explain" key={i}>{line}</p>)}
             </div>
           ))}
         </div>
 
-        <div className="gc-toolsrow">
-          <div className="gc-widget gc-widget--lookup">
-            <WordLookup />
+        <div className="td-section-label">Your Toolkit</div>
+        <div className="td-actions-grid">
+          <div className="td-action-card is-soon">
+            <div className="td-action-icon"><img src={todaySalaryIcon} alt="" /></div>
+            <div className="td-action-title">Salary Tracker</div>
           </div>
-          <div className="gc-widget gc-widget--grammar">
-            <GrammarChecker />
-          </div>
+          <button type="button" className="td-action-card" onClick={openWheel}>
+            <div className="td-action-icon"><img src={todayWheelIcon} alt="" /></div>
+            <div className="td-action-title">Spin the Wheel</div>
+          </button>
+          <button type="button" className="td-action-card" onClick={() => navigate("/library/notebook")}>
+            <div className="td-action-icon"><img src={todayNotebookIcon} alt="" /></div>
+            <div className="td-action-title">Digital Notebook</div>
+          </button>
+          <button type="button" className="td-action-card" onClick={() => navigate("/library/slides")}>
+            <div className="td-action-icon"><img src={todayDeckIcon} alt="" /></div>
+            <div className="td-action-title">Slide Builder</div>
+          </button>
         </div>
 
-        <div className="gc-boxrow">
-          <div className="gc-widget gc-widget--salary gc-widget--boxed">
-            <ComingSoonWidget icon="🧾" title="Salary Tracker" description="Track your pay per class, all in one place." />
-          </div>
-          <div
-            className="gc-widget gc-widget--deck gc-widget--boxed gc-widget--clickable"
-            role="button"
-            tabIndex={0}
-            onClick={() => navigate("/library/slides")}
-            onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") navigate("/library/slides"); }}
-          >
-            <ReadyWidget icon="🎞️" title="Slide Deck Builder" description="Build a slide deck and present it live." />
-          </div>
-          <div
-            className="gc-widget gc-widget--notebook gc-widget--boxed gc-widget--clickable"
-            role="button"
-            tabIndex={0}
-            onClick={() => navigate("/library/notebook")}
-            onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") navigate("/library/notebook"); }}
-          >
-            <ReadyWidget icon="📝" title="Digital Notebook" description="Write live on a designed page while you teach." />
-          </div>
-          <div
-            className="gc-widget gc-widget--wheel gc-widget--boxed gc-widget--clickable"
-            role="button"
-            tabIndex={0}
-            onClick={openWheel}
-            onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") openWheel(); }}
-          >
-            <ReadyWidget icon="🎡" title="Spin the Wheel" description="Randomly pick a student or topic on the spot." />
-          </div>
+        <div className="td-util-row">
+          <GrammarChecker />
+          <WordLookup />
         </div>
 
         {recommended.length > 0 && (
@@ -879,6 +884,10 @@ function TodayFeature({ tools, onSeeAllLessons, navigate }) {
             </div>
           </div>
         )}
+
+        <div className="td-quote-banner">
+          <img src={todayQuoteBanner} alt="Every lesson is a chance to make a difference." />
+        </div>
       </div>
 
       <aside className="gc-sidebar">
@@ -1595,90 +1604,26 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .gc-dashboard {
   --coral: #FF6B4A;
   --coral-dark: #E0502F;
+  --coral-pale: #FDECE5;
   --navy: #1B2A4A;
   --navy-soft: #5A6B92;
   width: 100%;
   max-width: 1220px;
   margin: 0 auto;
-  background: linear-gradient(180deg, #F4F6FA 0%, #E7EAF2 100%);
-  border-radius: 22px;
-  padding: clamp(22px, 3vw, 40px) clamp(20px, 3vw, 36px);
 }
-.gc-dashboard-body {
+.td-page { width: 100%; }
+.td-body {
   display: grid;
   grid-template-columns: 1fr 280px;
   align-items: start;
-  gap: 28px;
+  gap: 24px;
 }
-.gc-main { min-width: 0; }
-.gc-eyebrow-top {
-  display: block;
-  text-align: center;
-  font-family: 'SF Mono', 'Menlo', Consolas, monospace;
-  font-size: clamp(10.5px, 0.9vw, 11px);
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: #4C6E8F;
-  margin-bottom: 10px;
-}
+.td-main { min-width: 0; display: flex; flex-direction: column; gap: 18px; }
 
 .gc-sidebar { display: flex; flex-direction: column; gap: 12px; position: sticky; top: 0; }
 .gc-widget { background: var(--card); border: 1px solid var(--hair); border-radius: 16px; padding: 14px; box-shadow: 0 6px 18px rgba(43,42,74,0.06); }
 .gc-widget--clock { border-top: 3px solid var(--navy); }
 .gc-widget--calendar { border-top: 3px solid var(--coral); }
-.gc-widget--lookup { border-top: 3px solid var(--coral); }
-
-.gc-widget-title { font-family: 'Fredoka', sans-serif; font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 6px; }
-.gc-widget-note { font-family: 'Quicksand', sans-serif; font-size: 11.5px; line-height: 1.55; color: var(--muted); margin-top: 8px; }
-
-.gc-lookup-form { display: flex; align-items: center; gap: 6px; }
-.gc-lookup-input {
-  flex: 1;
-  min-width: 0;
-  font-family: 'Quicksand', sans-serif;
-  font-size: 12.5px;
-  color: var(--ink);
-  background: #F5F6FA;
-  border: 1px solid var(--hair);
-  border-radius: 999px;
-  padding: 7px 12px;
-  outline: none;
-}
-.gc-lookup-input:focus { border-color: var(--coral); }
-.gc-lookup-input::placeholder { color: var(--muted); }
-.gc-lookup-btn {
-  flex-shrink: 0;
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  border: none;
-  background: var(--coral);
-  color: #FFFFFF;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-}
-.gc-lookup-btn:disabled { opacity: 0.6; cursor: default; }
-.gc-lookup-status { font-family: 'Quicksand', sans-serif; font-size: 11.5px; color: var(--muted); margin-top: 8px; }
-.gc-lookup-status--error { color: var(--coral); }
-.gc-lookup-result { margin-top: 10px; }
-.gc-lookup-word { font-family: 'Fredoka', sans-serif; font-size: 15px; font-weight: 700; color: var(--ink); text-transform: capitalize; margin-bottom: 5px; }
-.gc-lookup-meaning { display: flex; align-items: baseline; gap: 6px; margin-top: 5px; }
-.gc-lookup-meaning:first-of-type { margin-top: 0; }
-.gc-lookup-pos {
-  flex-shrink: 0;
-  font-family: 'Quicksand', sans-serif;
-  font-size: 9.5px;
-  font-weight: 800;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  color: var(--navy);
-  background: rgba(27,42,74,0.08);
-  border-radius: 999px;
-  padding: 2px 8px;
-}
-.gc-lookup-def { font-family: 'Quicksand', sans-serif; font-size: 11.5px; line-height: 1.4; color: var(--ink-soft, var(--ink)); }
 
 .gc-clock { text-align: center; }
 .gc-clock-time { font-family: 'Fredoka', sans-serif; font-variant-numeric: tabular-nums; font-size: 26px; font-weight: 600; color: var(--ink); letter-spacing: 0.01em; }
@@ -1693,169 +1638,149 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .gc-cal-cell.is-empty { visibility: hidden; }
 .gc-cal-cell.is-today { background: var(--coral); color: #FFFFFF; font-weight: 800; box-shadow: 0 0 0 1.5px var(--coral-dark) inset; }
 
-.gc-greeting { text-align: center; margin-top: 0; margin-bottom: 14px; }
-.gc-greeting-line { font-family: 'Fredoka', sans-serif; font-size: clamp(26px, 3.6vw, 36px); font-weight: 700; letter-spacing: -0.01em; color: var(--ink); }
-.gc-greeting-btn { background: none; border: none; cursor: pointer; padding: 2px 6px; border-radius: 6px; }
-.gc-greeting-btn:hover { background: rgba(34,58,51,0.06); }
-.gc-greeting-input { font: inherit; color: inherit; border: none; border-bottom: 2px solid var(--coral); background: transparent; outline: none; width: 9ch; text-align: center; }
-.gc-spectrum {
+/* ── Hero greeting ── */
+.td-hero {
   position: relative;
-  height: 15px;
-  margin-top: 12px;
-  background: linear-gradient(to bottom, transparent calc(50% - 0.5px), var(--hair) calc(50% - 0.5px), var(--hair) calc(50% + 0.5px), transparent calc(50% + 0.5px));
-}
-.gc-spectrum::before { content: "\\2766"; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); background: var(--paper); padding: 0 12px; color: var(--navy); font-size: 14px; line-height: 1; }
-
-.gc-headline { font-family: 'Fredoka', sans-serif; font-size: clamp(19px, 2.1vw, 23px); font-weight: 600; line-height: 1.3; margin: 0 0 5px; color: var(--ink); text-wrap: balance; }
-.corr-quote { color: var(--navy-soft); margin-right: 3px; }
-.corr-wrong { color: #9B9382; font-weight: 400; text-decoration: line-through; text-decoration-color: #B9AF9C; margin-right: 5px; }
-.corr-right { color: var(--coral); font-weight: 700; }
-.gc-explain { font-family: 'Quicksand', sans-serif; font-size: 14px; line-height: 1.45; color: #4C4A3E; max-width: 640px; margin: 0 0 2px; }
-.gc-explain + .gc-explain { margin-top: 2px; }
-
-.gc-eyebrow { font-family: 'Quicksand', sans-serif; font-size: 12px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: var(--coral); margin: 0 0 8px; }
-
-.gc-briefs { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin: 12px 0 2px; }
-.gc-brief-col {
-  position: relative;
-  z-index: 1;
-  background: #FFFFFF;
-  border: 1px solid transparent;
-  border-top: 3px solid transparent;
-  border-radius: 14px;
-  padding: 14px 16px;
-  box-shadow: 0 6px 16px rgba(43,42,74,0.08);
-  transition: transform .15s ease, box-shadow .15s ease;
-}
-.gc-brief-col:hover { transform: translateY(-2px); box-shadow: 0 10px 22px rgba(43,42,74,0.14); z-index: 50; }
-.gc-brief-col.hue-coral { border-top-color: var(--coral); }
-.gc-brief-col.hue-gold { border-top-color: var(--navy); }
-.gc-brief-col.hue-teal { border-top-color: var(--navy-soft); }
-.gc-brief-col .col-h { font-family: 'Quicksand', sans-serif; font-size: 11px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 5px; }
-.gc-brief-col.hue-coral .col-h { color: var(--coral); }
-.gc-brief-col.hue-gold .col-h { color: var(--navy); }
-.gc-brief-col.hue-teal .col-h { color: var(--navy-soft); }
-.gc-brief-col .col-line { font-family: 'Fredoka', sans-serif; font-size: 14.5px; font-weight: 600; line-height: 1.3; color: var(--ink); }
-
-.col-explain {
-  position: absolute;
-  top: calc(100% + 8px);
-  left: 0;
-  right: 0;
-  background: var(--card);
-  border: 1px solid var(--hair);
-  border-radius: 12px;
-  padding: 10px 12px;
-  box-shadow: 0 12px 28px rgba(43,42,74,0.18);
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(-4px);
-  transition: opacity .15s ease, transform .15s ease, visibility .15s;
-  z-index: 30;
-  pointer-events: none;
-}
-.col-explain p { font-family: 'Quicksand', sans-serif; font-size: 12.5px; line-height: 1.4; color: #4C4A3E; margin: 0; }
-.col-explain p + p { margin-top: 4px; }
-.gc-brief-col:hover .col-explain { opacity: 1; visibility: visible; transform: translateY(0); }
-
-/* ── Teacher tools: Parts of Speech + Grammar Checker ── */
-.gc-toolsrow { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin: 14px 0 2px; }
-.gc-widget--grammar { border-top: 3px solid var(--navy); }
-
-.gc-grammar-form { display: flex; flex-direction: column; gap: 8px; }
-.gc-grammar-input {
-  width: 100%;
-  min-height: 60px;
-  resize: vertical;
-  font-family: 'Quicksand', sans-serif;
-  font-size: 12.5px;
-  color: var(--ink);
-  background: #F5F6FA;
-  border: 1px solid var(--hair);
-  border-radius: 12px;
-  padding: 9px 12px;
-  outline: none;
-}
-.gc-grammar-input:focus { border-color: var(--navy); }
-.gc-grammar-input::placeholder { color: var(--muted); }
-.gc-grammar-btn {
-  align-self: flex-end;
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 700;
-  font-size: 12px;
-  color: #FFFFFF;
-  background: var(--navy);
-  border: none;
-  border-radius: 999px;
-  padding: 7px 16px;
-  cursor: pointer;
-}
-.gc-grammar-btn:disabled { opacity: 0.5; cursor: default; }
-.gc-grammar-clean { font-family: 'Quicksand', sans-serif; font-size: 12px; color: var(--muted); margin-top: 10px; }
-.gc-grammar-results { display: flex; flex-direction: column; gap: 10px; margin-top: 10px; }
-.gc-grammar-item { border-top: 1px solid var(--hair); padding-top: 8px; }
-.gc-grammar-item:first-child { border-top: none; padding-top: 0; }
-.gc-grammar-diff { display: flex; align-items: baseline; flex-wrap: wrap; gap: 6px; font-family: 'Quicksand', sans-serif; font-size: 12.5px; }
-.gc-grammar-wrong { color: #9B9382; text-decoration: line-through; text-decoration-color: #B9AF9C; }
-.gc-grammar-arrow { color: var(--muted); }
-.gc-grammar-right { color: var(--coral); font-weight: 700; }
-.gc-grammar-explain { font-family: 'Quicksand', sans-serif; font-size: 11.5px; line-height: 1.4; color: var(--ink-soft, var(--ink)); margin: 3px 0 0; }
-
-/* ── Gradient feature cards ── */
-.gc-boxrow { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 12px; }
-.gc-boxrow > .gc-widget { min-width: 0; }
-.gc-widget--boxed {
-  position: relative;
-  border: none;
-  border-radius: 18px;
-  padding: 14px 16px 13px;
-  box-shadow: 0 12px 24px rgba(43,42,74,0.16);
+  border-radius: 28px;
   overflow: hidden;
-  color: #FFFFFF;
-}
-.gc-widget--boxed::after {
-  content: "";
-  position: absolute;
-  top: -30%;
-  right: -18%;
-  width: 65%;
-  padding-bottom: 65%;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.10);
-  pointer-events: none;
-}
-.gc-widget--salary.gc-widget--boxed { background: linear-gradient(135deg, #3A4A6F 0%, #1B2A4A 100%); }
-.gc-widget--deck.gc-widget--boxed { background: linear-gradient(135deg, #FF9A6B 0%, #E0502F 100%); }
-.gc-widget--notebook.gc-widget--boxed { background: linear-gradient(135deg, #3A4A6F 0%, #1B2A4A 100%); }
-.gc-widget--wheel.gc-widget--boxed { background: linear-gradient(135deg, #FF9A6B 0%, #E0502F 100%); }
-.gc-widget--clickable { cursor: pointer; transition: transform 0.15s ease, box-shadow 0.15s ease; }
-.gc-widget--clickable:hover { transform: translateY(-2px); box-shadow: 0 16px 30px rgba(43,42,74,0.22); }
-.gc-coming-soon { position: relative; display: flex; flex-direction: column; align-items: flex-start; }
-.gc-cs-icon {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
+  min-height: 240px;
   display: flex;
   align-items: center;
-  justify-content: center;
-  font-size: 15px;
-  background: rgba(255,255,255,0.22);
-  margin-bottom: 6px;
 }
-.gc-widget--boxed .gc-widget-title { color: #FFFFFF; font-family: 'Fredoka', sans-serif; font-size: 14.5px; margin-bottom: 2px; }
-.gc-widget--boxed .gc-widget-note { color: rgba(255,255,255,0.85); margin-top: 1px; font-size: 10.5px; line-height: 1.35; }
-.gc-soon-tag {
-  display: inline-block;
-  font-family: 'Quicksand', sans-serif;
-  font-size: 9px;
-  font-weight: 800;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: #FFFFFF;
-  background: rgba(255,255,255,0.22);
+.td-hero-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center right; }
+.td-hero-left { position: relative; z-index: 1; max-width: 480px; padding: 32px 0 32px 34px; }
+.td-hero-title { font-family: 'Fredoka', sans-serif; font-size: clamp(26px, 3.4vw, 34px); font-weight: 600; margin: 0; line-height: 1.2; color: var(--ink); }
+.td-hero-title .who { color: var(--coral); }
+.td-hero-btn { display: block; background: none; border: none; padding: 0; margin: 0; text-align: left; font: inherit; color: inherit; cursor: pointer; }
+.td-hero-editing { display: inline-block; }
+.td-hero-input { font: inherit; color: var(--coral); border: none; border-bottom: 2px solid var(--coral); background: transparent; outline: none; width: 9ch; }
+.td-hero-sub { font-family: 'Quicksand', sans-serif; font-size: 14.5px; color: var(--ink-soft, var(--muted)); margin: 10px 0 18px; }
+.td-chip-row { display: none; gap: 10px; flex-wrap: wrap; }
+.td-chip {
+  display: inline-flex; align-items: center; gap: 9px;
+  background: var(--card);
   border-radius: 999px;
-  padding: 4px 11px;
-  margin-top: 7px;
+  padding: 8px 16px 8px 8px;
+  font-family: 'Quicksand', sans-serif; font-size: 13px; font-weight: 700; color: var(--ink);
+  box-shadow: 0 4px 14px rgba(43,42,74,0.10);
+}
+.td-chip-icon { width: 26px; height: 26px; border-radius: 50%; background: var(--ink); color: #fff; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.td-chip-icon svg { width: 13px; height: 13px; }
+
+/* ── Daily correction ── */
+.td-correction-card { background: var(--card); border-radius: 24px; padding: 26px 30px; box-shadow: 0 8px 24px rgba(43,42,74,0.05); }
+.td-dc-label { font-family: 'Quicksand', sans-serif; font-size: 12px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--coral); margin-bottom: 12px; }
+.td-dc-headline { font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: clamp(19px, 2.2vw, 24px); line-height: 1.4; margin: 0 0 12px; color: var(--ink); text-wrap: balance; }
+.td-dc-quote { color: var(--coral); margin-right: 5px; }
+.corr-wrong { color: #9B9382; font-weight: 400; text-decoration: line-through; text-decoration-color: #B9AF9C; margin-right: 6px; }
+.corr-right { color: var(--coral); font-weight: 700; }
+.td-dc-explain { font-family: 'Quicksand', sans-serif; font-size: 14px; line-height: 1.55; color: var(--ink-soft, #4C4A3E); max-width: 640px; margin: 0 0 4px; }
+
+/* ── Two more corrections ── */
+.td-briefs { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+.td-brief-card {
+  background: var(--card);
+  border-top: 3px solid var(--accent, var(--coral));
+  border-radius: 16px;
+  padding: 16px 18px;
+  box-shadow: 0 6px 16px rgba(43,42,74,0.06);
+}
+.td-brief-card.hue-coral { --accent: var(--coral); }
+.td-brief-card.hue-gold { --accent: var(--navy); }
+.td-brief-card.hue-teal { --accent: var(--navy-soft); }
+.td-brief-label { font-family: 'Quicksand', sans-serif; font-size: 10.5px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent, var(--coral)); margin-bottom: 6px; }
+.td-brief-line { font-family: 'Fredoka', sans-serif; font-size: 14.5px; font-weight: 600; line-height: 1.35; color: var(--ink); margin: 0 0 6px; }
+.td-brief-explain { font-family: 'Quicksand', sans-serif; font-size: 12px; line-height: 1.5; color: var(--muted); margin: 0; }
+
+/* ── Toolkit ── */
+.td-section-label { font-family: 'Quicksand', sans-serif; font-size: 12px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+.td-actions-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+.td-action-card {
+  display: flex; align-items: center; gap: 12px;
+  background: var(--card); border: none; border-radius: 18px; padding: 12px 14px;
+  box-shadow: 0 8px 24px rgba(43,42,74,0.05);
+  font: inherit; text-align: left; cursor: pointer; color: inherit;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.td-action-card:not(.is-soon):hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(43,42,74,0.10); }
+.td-action-icon { width: 40px; height: 40px; border-radius: 12px; overflow: hidden; flex-shrink: 0; display: flex; align-items: center; justify-content: center; background: #F5F6FA; }
+.td-action-icon img { width: 100%; height: 100%; object-fit: contain; }
+.td-action-title { font-family: 'Fredoka', sans-serif; font-size: 13px; font-weight: 600; line-height: 1.25; color: var(--ink); }
+.td-action-card.is-soon { opacity: 0.7; cursor: default; }
+
+/* ── Grammar Checker + Dictionary ── */
+.td-util-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.td-util-card { background: var(--card); border-radius: 22px; padding: 22px 24px; box-shadow: 0 8px 24px rgba(43,42,74,0.05); }
+.td-util-head { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+.td-util-icon { width: 36px; height: 36px; border-radius: 11px; background: var(--coral-pale); color: var(--coral-dark); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.td-util-icon svg { width: 16px; height: 16px; }
+.td-util-title { font-family: 'Fredoka', sans-serif; font-size: 15px; font-weight: 600; color: var(--ink); }
+
+.td-lookup-form { display: flex; align-items: center; gap: 8px; }
+.td-lookup-input {
+  flex: 1; min-width: 0;
+  font-family: 'Quicksand', sans-serif; font-size: 13.5px; color: var(--ink);
+  background: #F5F6FA; border: 1.5px solid var(--hair); border-radius: 999px;
+  padding: 11px 16px; outline: none;
+}
+.td-lookup-input:focus { border-color: var(--coral); }
+.td-lookup-input::placeholder { color: var(--muted); }
+.td-lookup-btn {
+  flex-shrink: 0; width: 38px; height: 38px; border-radius: 50%; border: none;
+  background: var(--coral); color: #FFFFFF; display: flex; align-items: center; justify-content: center; cursor: pointer;
+}
+.td-lookup-btn:disabled { opacity: 0.6; cursor: default; }
+.td-lookup-status { font-family: 'Quicksand', sans-serif; font-size: 12px; color: var(--muted); margin-top: 10px; }
+.td-lookup-status--error { color: var(--coral); }
+.td-lookup-result { margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--hair); }
+.td-lookup-word { font-family: 'Fredoka', sans-serif; font-size: 16px; font-weight: 700; color: var(--ink); text-transform: capitalize; margin-bottom: 6px; }
+.td-lookup-meaning { display: flex; align-items: baseline; gap: 7px; margin-top: 6px; }
+.td-lookup-meaning:first-of-type { margin-top: 0; }
+.td-lookup-pos {
+  flex-shrink: 0; font-family: 'Quicksand', sans-serif; font-size: 9.5px; font-weight: 800;
+  letter-spacing: 0.05em; text-transform: uppercase; color: var(--navy);
+  background: rgba(27,42,74,0.08); border-radius: 999px; padding: 2px 8px;
+}
+.td-lookup-def { font-family: 'Quicksand', sans-serif; font-size: 12px; line-height: 1.4; color: var(--ink-soft, var(--ink)); }
+
+.td-grammar-form { display: flex; flex-direction: column; gap: 10px; }
+.td-grammar-input {
+  width: 100%; min-height: 88px; resize: vertical;
+  font-family: 'Quicksand', sans-serif; font-size: 13.5px; color: var(--ink);
+  background: #F5F6FA; border: 1.5px solid var(--hair); border-radius: 16px; padding: 12px 14px; outline: none;
+}
+.td-grammar-input:focus { border-color: var(--coral); }
+.td-grammar-input::placeholder { color: var(--muted); }
+.td-grammar-foot { display: flex; align-items: center; justify-content: flex-end; }
+.td-grammar-btn {
+  font-family: 'Quicksand', sans-serif; font-weight: 700; font-size: 13px; color: #FFFFFF;
+  background: var(--coral); border: none; border-radius: 999px; padding: 10px 20px; cursor: pointer;
+}
+.td-grammar-btn:disabled { opacity: 0.5; cursor: default; }
+.td-grammar-clean { font-family: 'Quicksand', sans-serif; font-size: 12.5px; color: var(--muted); margin-top: 12px; }
+.td-grammar-results { display: flex; flex-direction: column; gap: 10px; margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--hair); }
+.td-grammar-item { border-top: 1px solid var(--hair); padding-top: 10px; }
+.td-grammar-item:first-child { border-top: none; padding-top: 0; }
+.td-grammar-diff { display: flex; align-items: baseline; flex-wrap: wrap; gap: 6px; font-family: 'Quicksand', sans-serif; font-size: 12.5px; }
+.td-grammar-wrong { color: #9B9382; text-decoration: line-through; text-decoration-color: #B9AF9C; }
+.td-grammar-arrow { color: var(--muted); }
+.td-grammar-right { color: var(--coral); font-weight: 700; }
+.td-grammar-explain { font-family: 'Quicksand', sans-serif; font-size: 11.5px; line-height: 1.4; color: var(--ink-soft, var(--ink)); margin: 4px 0 0; }
+
+/* ── Quote banner ── */
+.td-quote-banner { border-radius: 24px; overflow: hidden; line-height: 0; }
+.td-quote-banner img { width: 100%; height: auto; display: block; }
+
+/* ── Responsive: full sidebar vs. compact chips ── */
+@media (max-width: 860px) {
+  .td-body { grid-template-columns: 1fr; }
+  .gc-sidebar { display: none; }
+  .td-chip-row { display: flex; }
+  .td-briefs { grid-template-columns: 1fr; }
+  .td-util-row { grid-template-columns: 1fr; }
+}
+@media (max-width: 560px) {
+  .td-actions-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 /* ── Responsive: narrower / non-maximized browser windows ── */
@@ -1863,20 +1788,10 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   .gc-topbar, .gc-sections, .gc-editions { padding-left: 20px; padding-right: 20px; }
   .gc-sections { justify-content: flex-start; }
   .gc-dashboard { max-width: 720px; }
-  .gc-dashboard-body { grid-template-columns: 1fr; }
-  .gc-sidebar { flex-direction: row; gap: 14px; }
-  .gc-sidebar > .gc-widget { flex: 1; min-width: 0; }
 }
 @media (max-width: 900px) {
   .gc-topbar, .gc-sections, .gc-editions { padding-left: 14px; padding-right: 14px; }
   .gc-search input { width: 110px; }
-  .gc-boxrow { grid-template-columns: repeat(2, 1fr); }
-  .gc-sidebar { flex-direction: column; }
-}
-@media (max-width: 560px) {
-  .gc-boxrow { grid-template-columns: 1fr; }
-  .gc-briefs { grid-template-columns: 1fr; }
-  .gc-toolsrow { grid-template-columns: 1fr; }
 }
 
 /* ── Recommended Lessons: newspaper section front ── */
