@@ -660,7 +660,7 @@ function GrammarBanner({ name }) {
 const GRAMMAR_MODULES = [
   { num: "BED 01", banner: "partsOfSpeech", title: "Parts of Speech", spec: "8 word classes across 6 topics. One Lesson, one Assessment each. A1–C2.", href: "/library/grammar/parts-of-speech", ready: true, hue: "leaf" },
   { num: "BED 02", banner: "verbTenses", title: "Verb Tenses", spec: "All 12 English tenses. One Discussion, one Test lesson each. A1–C2.", href: "/library/grammar/verb-tenses", ready: true, hue: "gold" },
-  { num: "BED 03", banner: "sentenceStructure", title: "Sentence Structure", spec: "Clauses, word order, and how simple sentences become complex ones.", href: null, ready: false, hue: "soil" },
+  { num: "BED 03", banner: "sentenceStructure", title: "Sentence Patterns", spec: "The 7 core patterns — SV to SVOC — across 6 lessons, each with practice and a built-in assessment. A1–C2.", href: "/library/grammar/sentence-patterns", ready: true, hue: "soil" },
 ];
 const GRAMMAR_PER_PAGE = 8;
 
