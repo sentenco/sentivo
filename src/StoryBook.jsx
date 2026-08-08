@@ -2,7 +2,15 @@ import { useMemo, useState } from "react";
 import ImagePlaceholder from "./slides/ImagePlaceholder";
 import defaultBook from "./storybookData";
 
-const PAGE_TYPES = ["intro", "story", "questions", "truefalse", "build0", "build1", "build2", "build3", "build4", "mysentence"];
+// Page count per chapter varies by book -- Kids stories use 3 Build-a-Sentence
+// items, Teens/Adults use 5 -- so the page list is derived from each chapter's
+// actual buildSentence length rather than a fixed constant.
+function getPageTypes(chapter) {
+  const types = ["intro", "story", "questions", "truefalse"];
+  chapter.buildSentence.forEach((_, i) => types.push(`build${i}`));
+  types.push("mysentence");
+  return types;
+}
 const PAGE_LABELS = {
   intro: "Chapter",
   story: "Story",
@@ -271,8 +279,9 @@ export default function StoryBook({ book = defaultBook }) {
   const CHAPTERS = book.chapters;
 
   const chapter = CHAPTERS[chapterIdx];
-  const pageType = PAGE_TYPES[pageIdx];
-  const totalPages = PAGE_TYPES.length;
+  const pageTypes = useMemo(() => getPageTypes(chapter), [chapter]);
+  const pageType = pageTypes[pageIdx];
+  const totalPages = pageTypes.length;
   const isFirstPage = chapterIdx === 0 && pageIdx === 0;
   const isLastPage = chapterIdx === CHAPTERS.length - 1 && pageIdx === totalPages - 1;
 
@@ -371,7 +380,7 @@ export default function StoryBook({ book = defaultBook }) {
                 ← Previous
               </button>
               <div className="sb-nav-dots">
-                {PAGE_TYPES.map((_, i) => (
+                {pageTypes.map((_, i) => (
                   <span key={i} className={`sb-nav-dot ${i === pageIdx ? "is-active" : ""}`} />
                 ))}
               </div>
