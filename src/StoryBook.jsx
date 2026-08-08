@@ -162,6 +162,16 @@ function BuildSentencePage({ chapter, index }) {
             {w.text}
           </button>
         ))}
+        <button
+          type="button"
+          className="sb-build-copy-btn"
+          disabled={built.length === 0}
+          onClick={copySentence}
+          title="Copy sentence"
+          aria-label="Copy sentence"
+        >
+          {copied ? "✓" : "⧉"}
+        </button>
       </div>
       <div className="sb-word-tray">
         {tray.map((w) => (
@@ -173,9 +183,6 @@ function BuildSentencePage({ chapter, index }) {
       <div className="sb-build-check-row">
         <button type="button" className="sb-check-btn" disabled={!allPlaced || checked} onClick={() => setChecked(true)}>
           ✓ Check
-        </button>
-        <button type="button" className="sb-copy-btn" disabled={built.length === 0} onClick={copySentence}>
-          {copied ? "✓ Copied" : "⧉ Copy sentence"}
         </button>
         {checked && (
           <>
@@ -637,10 +644,11 @@ const CSS = `
 
 /* ── Build-a-sentence ── */
 .sb-build-row {
+  position: relative;
   min-height: 44px;
   border: 3px dashed #DADCE3;
   border-radius: 12px;
-  padding: 8px 10px;
+  padding: 8px 40px 8px 10px;
   display: flex;
   flex-wrap: wrap;
   gap: 7px;
@@ -650,6 +658,25 @@ const CSS = `
 }
 .sb-build-row.is-correct { border-color: #3B9A6B; border-style: solid; background: #E4F6EC; }
 .sb-build-row.is-wrong { border-color: #E0637A; border-style: solid; background: #FDEBEF; }
+.sb-build-copy-btn {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: #fff;
+  border: 1.5px solid #DADCE3;
+  color: #1B2A4A;
+  font-size: 13px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+}
+.sb-build-copy-btn:disabled { opacity: 0.35; cursor: default; }
 .sb-build-empty { font-family: 'Quicksand', sans-serif; font-size: 15px; color: #C2C6D2; }
 .sb-word-tray { display: flex; flex-wrap: wrap; gap: 8px; min-height: 34px; justify-content: center; }
 .sb-word-chip {
