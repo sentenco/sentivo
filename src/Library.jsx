@@ -727,6 +727,10 @@ const BOOK_MOTIF_COLORS = ["#E8A33D", "#16BFAE", "#7C5CFC", "#4C7FE0", "#E0637A"
 // shop, health, free time, food). No Kids-track story exists yet.
 const BOOK_AGE_TRACK = {
   "storybook-13": "Kids",
+  "storybook-14": "Kids",
+  "storybook-15": "Kids",
+  "storybook-16": "Kids",
+  "storybook-17": "Kids",
   storybook: "Teens",
   "storybook-2": "Teens",
   "storybook-3": "Teens",
@@ -2537,6 +2541,10 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .cover--rose { background: linear-gradient(160deg, #F5D9DE 0%, #DFA0AE 100%); }
 .cover--cinnamon { background: linear-gradient(160deg, #EAD2B8 0%, #C6935F 100%); }
 .cover--sand { background: linear-gradient(160deg, #F2E6D3 0%, #D9BE93 100%); }
+.cover--periwinkle { background: linear-gradient(160deg, #DCE0FB 0%, #ABB4F0 100%); }
+.cover--butter { background: linear-gradient(160deg, #FBF1C7 0%, #EDD98A 100%); }
+.cover--sage { background: linear-gradient(160deg, #E1EAD9 0%, #B9CDA6 100%); }
+.cover--berry { background: linear-gradient(160deg, #FADCE3 0%, #E893A8 100%); }
 
 .theme-pro .cover--coral { background: #fff; border-top: 4px solid #D85A30; }
 .theme-pro .cover--teal { background: #fff; border-top: 4px solid #0F6E56; }
@@ -2551,6 +2559,10 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .theme-pro .cover--rose { background: #fff; border-top: 4px solid #B85C6F; }
 .theme-pro .cover--cinnamon { background: #fff; border-top: 4px solid #935E30; }
 .theme-pro .cover--sand { background: #fff; border-top: 4px solid #A6813D; }
+.theme-pro .cover--periwinkle { background: #fff; border-top: 4px solid #5B63C4; }
+.theme-pro .cover--butter { background: #fff; border-top: 4px solid #B89A3A; }
+.theme-pro .cover--sage { background: #fff; border-top: 4px solid #5E7D49; }
+.theme-pro .cover--berry { background: #fff; border-top: 4px solid #C24F6B; }
 
 .premium-badge {
   position: absolute;

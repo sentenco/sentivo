@@ -29,6 +29,10 @@ import storybook10 from './storybookData10.js'
 import storybook11 from './storybookData11.js'
 import storybook12 from './storybookData12.js'
 import storybook13 from './storybookData13.js'
+import storybook14 from './storybookData14.js'
+import storybook15 from './storybookData15.js'
+import storybook16 from './storybookData16.js'
+import storybook17 from './storybookData17.js'
 import Forge from './Forge.jsx'
 import ForgeHub from './ForgeHub.jsx'
 import ForgeTrack from './ForgeTrack.jsx'
@@ -92,6 +96,10 @@ createRoot(document.getElementById('root')).render(
             <Route path="/library/storybook-11" element={<StoryBook book={storybook11} />} />
             <Route path="/library/storybook-12" element={<StoryBook book={storybook12} />} />
             <Route path="/library/storybook-13" element={<StoryBook book={storybook13} />} />
+            <Route path="/library/storybook-14" element={<StoryBook book={storybook14} />} />
+            <Route path="/library/storybook-15" element={<StoryBook book={storybook15} />} />
+            <Route path="/library/storybook-16" element={<StoryBook book={storybook16} />} />
+            <Route path="/library/storybook-17" element={<StoryBook book={storybook17} />} />
             <Route path="/library/forge" element={<ForgeHub />} />
             <Route path="/library/forge/:trackId" element={<ForgeTrack />} />
             <Route path="/library/forge/:trackId/:lessonNum" element={<Forge />} />
