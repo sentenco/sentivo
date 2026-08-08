@@ -39,8 +39,12 @@ export const CHAPTERS = [
       { text: "The writer works hard from morning until evening.", answer: true },
       { text: "The writer wants to only sit and look at the phone forever.", answer: false },
       { text: "The writer feels excited about free time at the end.", answer: true },
+      { text: "Leo says free time is for rest and fun.", answer: true },
+      { text: "The writer never wants to try new things.", answer: false },
     ],
     buildSentence: [
+      { target: "I feel tired.", jumbled: ["feel", "tired.", "I"] },
+      { target: "I write a small list.", jumbled: ["write", "a", "small", "list.", "I"] },
       {
         target: "Free time is a small gift after a busy day at work.",
         jumbled: ["time", "Free", "a", "is", "gift", "small", "a", "after", "day", "busy", "work.", "at"],
@@ -73,15 +77,19 @@ export const CHAPTERS = [
       { text: "The writer wants a calm evening at home.", answer: true },
       { text: "The writer reads work emails all night.", answer: false },
       { text: "The writer feels calm because they give themselves time to rest.", answer: true },
+      { text: "The writer washes the dishes after dinner.", answer: true },
+      { text: "The writer looks at the phone all night.", answer: false },
     ],
     buildSentence: [
-      {
-        target: "I make a cup of tea and sit in my favourite chair by the window.",
-        jumbled: ["a", "make", "cup", "I", "of", "and", "tea", "in", "sit", "favourite", "my", "chair", "the", "by", "window."],
-      },
+      { target: "I wash the dishes.", jumbled: ["wash", "the", "dishes.", "I"] },
+      { target: "The street is calm.", jumbled: ["street", "is", "calm.", "The"] },
       {
         target: "Instead, I open a simple book and read a few quiet pages.",
         jumbled: ["I", "Instead,", "open", "simple", "a", "book", "read", "and", "few", "a", "pages.", "quiet"],
+      },
+      {
+        target: "I make a cup of tea and sit in my favourite chair by the window.",
+        jumbled: ["a", "make", "cup", "I", "of", "and", "tea", "in", "sit", "favourite", "my", "chair", "the", "by", "window."],
       },
       {
         target: "As I sit in the warm light, I feel calm because I give myself time to rest.",
@@ -107,15 +115,19 @@ export const CHAPTERS = [
       { text: "The writer takes a walk in the park in the evening.", answer: true },
       { text: "The writer thinks about work during the whole walk.", answer: false },
       { text: "The writer feels fresh and happy after the walk.", answer: true },
+      { text: "Children play with a ball in the park.", answer: true },
+      { text: "The writer stays inside all evening.", answer: false },
     ],
     buildSentence: [
-      {
-        target: "The park is near my home, so I walk there in just a few minutes.",
-        jumbled: ["park", "near", "is", "The", "home,", "my", "walk", "so", "there", "I", "just", "in", "few", "a", "minutes."],
-      },
+      { target: "I put on comfortable shoes.", jumbled: ["put", "on", "comfortable", "shoes.", "I"] },
+      { target: "Children play with a ball.", jumbled: ["play", "with", "a", "ball.", "Children"] },
       {
         target: "I breathe the fresh air and feel my body become light and free.",
         jumbled: ["breathe", "I", "the", "air", "fresh", "feel", "and", "body", "my", "become", "light", "free.", "and"],
+      },
+      {
+        target: "The park is near my home, so I walk there in just a few minutes.",
+        jumbled: ["park", "near", "is", "The", "home,", "my", "walk", "so", "there", "I", "just", "in", "few", "a", "minutes."],
       },
       {
         target: "When I walk home, I feel fresh and happy because a simple walk lifts my mood.",
@@ -141,15 +153,19 @@ export const CHAPTERS = [
       { text: "The writer watches a movie on Friday night.", answer: true },
       { text: "The movie is boring and the writer turns it off.", answer: false },
       { text: "The writer feels relaxed because a good movie is a nice hobby.", answer: true },
+      { text: "The writer makes popcorn.", answer: true },
+      { text: "The writer forgets to watch the whole movie.", answer: false },
     ],
     buildSentence: [
-      {
-        target: "I make some popcorn in a bowl and pour a cool glass of juice.",
-        jumbled: ["some", "make", "popcorn", "I", "a", "in", "and", "bowl", "pour", "cool", "a", "of", "glass", "juice."],
-      },
+      { target: "I choose a fun movie.", jumbled: ["choose", "a", "fun", "movie.", "I"] },
+      { target: "I laugh at the funny parts.", jumbled: ["laugh", "at", "the", "funny", "parts.", "I"] },
       {
         target: "The story is exciting, and I forget about my busy week at work.",
         jumbled: ["story", "is", "The", "exciting,", "I", "and", "about", "forget", "busy", "my", "at", "week", "work."],
+      },
+      {
+        target: "I make some popcorn in a bowl and pour a cool glass of juice.",
+        jumbled: ["some", "make", "popcorn", "I", "a", "in", "and", "bowl", "pour", "cool", "a", "of", "glass", "juice."],
       },
       {
         target: "As I turn off the screen, I feel relaxed because a good movie is a nice, easy hobby.",
@@ -175,15 +191,19 @@ export const CHAPTERS = [
       { text: "The writer tries cooking as a new hobby.", answer: true },
       { text: "The writer buys only sweets at the market.", answer: false },
       { text: "The writer feels proud because they cooked with their own hands.", answer: true },
+      { text: "The writer wears a clean apron.", answer: true },
+      { text: "The writer refuses to follow the recipe.", answer: false },
     ],
     buildSentence: [
-      {
-        target: "I go to the market and buy fresh vegetables, rice, and chicken.",
-        jumbled: ["go", "to", "I", "market", "the", "buy", "and", "vegetables,", "fresh", "rice,", "chicken.", "and"],
-      },
+      { target: "I taste the food.", jumbled: ["taste", "the", "food.", "I"] },
+      { target: "I wear a clean apron.", jumbled: ["wear", "a", "clean", "apron.", "I"] },
       {
         target: "I follow a simple recipe on my phone, step by step.",
         jumbled: ["follow", "I", "a", "recipe", "simple", "my", "on", "phone,", "by", "step", "step."],
+      },
+      {
+        target: "I go to the market and buy fresh vegetables, rice, and chicken.",
+        jumbled: ["go", "to", "I", "market", "the", "buy", "and", "vegetables,", "fresh", "rice,", "chicken.", "and"],
       },
       {
         target: "As I enjoy my meal, I feel proud because I made something good with my own hands.",
@@ -209,15 +229,19 @@ export const CHAPTERS = [
       { text: "The writer listens to music to relax the mind.", answer: true },
       { text: "Music makes the writer feel more stressed.", answer: false },
       { text: "The writer feels peaceful as the music plays.", answer: true },
+      { text: "The writer taps their feet to fast songs.", answer: true },
+      { text: "The writer never sings along.", answer: false },
     ],
     buildSentence: [
-      {
-        target: "I sit on my sofa, close my eyes, and play my favourite songs.",
-        jumbled: ["on", "sit", "I", "sofa,", "my", "close", "eyes,", "my", "play", "and", "favourite", "my", "songs."],
-      },
+      { target: "I close my eyes.", jumbled: ["close", "my", "eyes.", "I"] },
+      { target: "I tap my feet.", jumbled: ["tap", "my", "feet.", "I"] },
       {
         target: "Music helps me forget my stress from the busy day at work.",
         jumbled: ["helps", "Music", "me", "my", "forget", "from", "stress", "busy", "the", "at", "day", "work."],
+      },
+      {
+        target: "I sit on my sofa, close my eyes, and play my favourite songs.",
+        jumbled: ["on", "sit", "I", "sofa,", "my", "close", "eyes,", "my", "play", "and", "favourite", "my", "songs."],
       },
       {
         target: "As the music plays, I feel peaceful because it fills my heart with good feelings.",
@@ -243,8 +267,12 @@ export const CHAPTERS = [
       { text: "The writer meets Leo for coffee on Saturday.", answer: true },
       { text: "The writer and Leo do not talk to each other.", answer: false },
       { text: "The writer feels happy because good friends make free time special.", answer: true },
+      { text: "Leo tells a funny story.", answer: true },
+      { text: "The writer talks to the phone instead of Leo.", answer: false },
     ],
     buildSentence: [
+      { target: "Leo orders tea.", jumbled: ["orders", "tea.", "Leo"] },
+      { target: "Leo tells a funny story.", jumbled: ["tells", "a", "funny", "story.", "Leo"] },
       {
         target: "We choose a small café near the park with big, sunny windows.",
         jumbled: ["choose", "We", "a", "café", "small", "the", "near", "park", "big,", "with", "windows.", "sunny"],
@@ -277,8 +305,12 @@ export const CHAPTERS = [
       { text: "The writer tries an art class.", answer: true },
       { text: "The writer gives up because the first drawing is not good.", answer: false },
       { text: "The writer feels happy because they learn something new.", answer: true },
+      { text: "The writer feels a little nervous on the first day.", answer: true },
+      { text: "The teacher tells the writer to give up.", answer: false },
     ],
     buildSentence: [
+      { target: "The teacher is kind.", jumbled: ["teacher", "is", "kind.", "The"] },
+      { target: "I feel a little nervous.", jumbled: ["feel", "a", "little", "nervous.", "I"] },
       {
         target: "I find a small art class in a building near my office.",
         jumbled: ["find", "I", "a", "art", "small", "in", "class", "a", "building", "my", "near", "office."],
@@ -311,8 +343,12 @@ export const CHAPTERS = [
       { text: "The writer wakes up late on Saturday morning.", answer: true },
       { text: "The writer works and checks emails all weekend.", answer: false },
       { text: "The writer feels rested at the end of the weekend.", answer: true },
+      { text: "The writer meets Leo on Sunday.", answer: true },
+      { text: "The writer cleans nothing all weekend.", answer: false },
     ],
     buildSentence: [
+      { target: "I clean my home.", jumbled: ["clean", "my", "home.", "I"] },
+      { target: "I meet Leo on Sunday.", jumbled: ["meet", "Leo", "on", "Sunday.", "I"] },
       {
         target: "On Saturday morning, I wake up late and drink my coffee in bed.",
         jumbled: ["Saturday", "On", "morning,", "wake", "I", "late", "up", "and", "my", "drink", "in", "coffee", "bed."],
@@ -345,15 +381,19 @@ export const CHAPTERS = [
       { text: "In the past, the writer only worked and looked at the phone.", answer: true },
       { text: "The writer feels more empty and bored now.", answer: false },
       { text: "The writer feels proud and thankful at the end.", answer: true },
+      { text: "The writer's friends say they look happy now.", answer: true },
+      { text: "The writer's mind feels more stressed now.", answer: false },
     ],
     buildSentence: [
-      {
-        target: "Now I walk, cook, read, and listen to music in my free time.",
-        jumbled: ["I", "Now", "cook,", "walk,", "read,", "listen", "and", "music", "to", "my", "in", "time.", "free"],
-      },
+      { target: "My mind feels calm.", jumbled: ["mind", "feels", "calm.", "My"] },
+      { target: "I feel happier now.", jumbled: ["feel", "happier", "now.", "I"] },
       {
         target: "I understand now that free time is important for a good life.",
         jumbled: ["understand", "I", "now", "free", "that", "is", "time", "for", "important", "a", "life.", "good"],
+      },
+      {
+        target: "Now I walk, cook, read, and listen to music in my free time.",
+        jumbled: ["I", "Now", "cook,", "walk,", "read,", "listen", "and", "music", "to", "my", "in", "time.", "free"],
       },
       {
         target: "As I look at my new hobbies, I feel proud and thankful because my life after work is full and happy.",

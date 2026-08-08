@@ -721,9 +721,76 @@ function GrammarFeature({ navigate }) {
 
 const BOOK_MOTIF_COLORS = ["#E8A33D", "#16BFAE", "#7C5CFC", "#4C7FE0", "#E0637A", "#E89E2E", "#0F9E90", "#A9754D"];
 
-function BookshelfFeature({ items, navigate }) {
+// Age track per book -- local lookup since the Supabase "tools" row only
+// carries CEFR level, not age. Books 1-6 are the Teens-narrator series
+// (school friends), Books 7-12 are the Adults-narrator series (office,
+// shop, health, free time, food). No Kids-track story exists yet.
+const BOOK_AGE_TRACK = {
+  storybook: "Teens",
+  "storybook-2": "Teens",
+  "storybook-3": "Teens",
+  "storybook-4": "Teens",
+  "storybook-5": "Teens",
+  "storybook-6": "Teens",
+  "storybook-7": "Adults",
+  "storybook-8": "Adults",
+  "storybook-9": "Adults",
+  "storybook-10": "Adults",
+  "storybook-11": "Adults",
+  "storybook-12": "Adults",
+};
+const READING_LEVELS = ["A1", "A2", "B1", "B2", "C1", "C2"];
+const READING_AGE_TRACKS = ["Kids", "Teens", "Adults"];
+
+function BookshelfRows({ books, navigate, colorOffset }) {
   const rows = [];
-  for (let i = 0; i < items.length; i += 4) rows.push(items.slice(i, i + 4));
+  for (let i = 0; i < books.length; i += 4) rows.push(books.slice(i, i + 4));
+
+  return rows.map((row, ri) => (
+    <div key={ri} className="bkshf-shelf-group">
+      <div className="bkshf-shelf-row">
+        {row.map((c, i) => {
+          const color = BOOK_MOTIF_COLORS[(colorOffset + ri * 4 + i) % BOOK_MOTIF_COLORS.length];
+          const cover = STORY_COVERS[c.id];
+          return (
+            <a
+              key={c.id}
+              href={`/library/${c.id}`}
+              className="bkshf-book"
+              onClick={(e) => { e.preventDefault(); navigate(`/library/${c.id}`); }}
+            >
+              {cover ? (
+                <>
+                  <img className="bkshf-book-img" src={cover} alt={c.title} />
+                  <div className="bkshf-book-scrim" />
+                  <h3 className="bkshf-book-title bkshf-book-title--onimg">{c.title}</h3>
+                </>
+              ) : (
+                <div className="bkshf-book-flat" style={{ background: `${color}1F` }}>
+                  <span className="bkshf-book-motif" style={{ "--motif-color": `${color}33` }} />
+                  <span className="bkshf-ribbon" style={{ background: color }} />
+                  <h3 className="bkshf-book-title">{c.title}</h3>
+                </div>
+              )}
+            </a>
+          );
+        })}
+      </div>
+      <div className="bkshf-shelf-ledge" />
+    </div>
+  ));
+}
+
+function BookshelfFeature({ items, navigate }) {
+  const [level, setLevel] = useState("A1");
+  const levelItems = items.filter((c) => (c.level || "A1") === level);
+  let colorOffset = 0;
+  const groups = READING_AGE_TRACKS.map((track) => {
+    const books = levelItems.filter((c) => (BOOK_AGE_TRACK[c.id] || "Teens") === track);
+    const group = { track, books, colorOffset };
+    colorOffset += books.length;
+    return group;
+  }).filter((g) => g.books.length > 0);
 
   return (
     <div className="bkshf-page">
@@ -731,43 +798,34 @@ function BookshelfFeature({ items, navigate }) {
         <span className="bkshf-eyebrow">Sentivo · Reading</span>
         <h1><span className="bkshf-nameplate-pill">📖 Library</span></h1>
       </div>
+
+      <div className="bkshf-level-tabs">
+        {READING_LEVELS.map((lvl) => (
+          <button
+            key={lvl}
+            type="button"
+            className={`bkshf-level-tab ${level === lvl ? "is-active" : ""}`}
+            onClick={() => setLevel(lvl)}
+          >
+            {lvl}
+          </button>
+        ))}
+      </div>
+
       <div className="bkshf-row"></div>
 
-      {items.length === 0 ? (
-        <p className="empty-msg">No stories yet.</p>
+      {groups.length === 0 ? (
+        <div className="bkshf-empty">
+          <span className="bkshf-empty-icon">📚</span>
+          <p className="bkshf-empty-title">No {level} stories yet</p>
+          <p className="bkshf-empty-desc">Check back soon -- more levels are on the way.</p>
+        </div>
       ) : (
         <div className="bkshf-shelves">
-          {rows.map((row, ri) => (
-            <div key={ri} className="bkshf-shelf-group">
-              <div className="bkshf-shelf-row">
-                {row.map((c, i) => {
-                  const color = BOOK_MOTIF_COLORS[(ri * 4 + i) % BOOK_MOTIF_COLORS.length];
-                  const cover = STORY_COVERS[c.id];
-                  return (
-                    <a
-                      key={c.id}
-                      href={`/library/${c.id}`}
-                      className="bkshf-book"
-                      onClick={(e) => { e.preventDefault(); navigate(`/library/${c.id}`); }}
-                    >
-                      {cover ? (
-                        <>
-                          <img className="bkshf-book-img" src={cover} alt={c.title} />
-                          <div className="bkshf-book-scrim" />
-                          <h3 className="bkshf-book-title bkshf-book-title--onimg">{c.title}</h3>
-                        </>
-                      ) : (
-                        <div className="bkshf-book-flat" style={{ background: `${color}1F` }}>
-                          <span className="bkshf-book-motif" style={{ "--motif-color": `${color}33` }} />
-                          <span className="bkshf-ribbon" style={{ background: color }} />
-                          <h3 className="bkshf-book-title">{c.title}</h3>
-                        </div>
-                      )}
-                    </a>
-                  );
-                })}
-              </div>
-              <div className="bkshf-shelf-ledge" style={ri === rows.length - 1 ? { marginBottom: 0 } : undefined} />
+          {groups.map((g) => (
+            <div key={g.track} className="bkshf-age-group">
+              <div className="bkshf-age-label">{g.track}</div>
+              <BookshelfRows books={g.books} navigate={navigate} colorOffset={g.colorOffset} />
             </div>
           ))}
         </div>
@@ -2362,6 +2420,44 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .bkshf-row::before, .bkshf-row::after { content: ""; position: absolute; top: -3px; width: 8px; height: 8px; border-radius: 50%; background: #92A6B7; }
 .bkshf-row::before { left: 0; }
 .bkshf-row::after { right: 0; }
+
+.bkshf-level-tabs { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; margin-top: clamp(18px, 2.4vw, 26px); }
+.bkshf-level-tab {
+  font-family: 'SF Mono', 'Menlo', Consolas, monospace;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  color: #5A6B7B;
+  background: rgba(185,133,82,0.10);
+  border: 1.5px solid rgba(185,133,82,0.22);
+  border-radius: 999px;
+  padding: 7px 16px;
+  cursor: pointer;
+}
+.bkshf-level-tab.is-active { background: #22303B; border-color: #22303B; color: #FFFFFF; }
+
+.bkshf-empty { text-align: center; padding: 40px 20px 20px; }
+.bkshf-empty-icon { font-size: 34px; display: block; margin-bottom: 10px; }
+.bkshf-empty-title { font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 17px; color: #22303B; margin: 0 0 4px; }
+.bkshf-empty-desc { font-family: 'Quicksand', sans-serif; font-size: 14px; color: #6B7E8F; margin: 0; }
+
+.bkshf-age-group { margin-bottom: clamp(20px, 2.6vw, 30px); }
+.bkshf-age-group:last-child { margin-bottom: 0; }
+.bkshf-age-label {
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 700;
+  font-size: clamp(15px, 1.4vw, 18px);
+  color: #22303B;
+  text-align: center;
+  margin-bottom: 14px;
+  padding-bottom: 8px;
+  border-bottom: 1px dashed rgba(90,107,123,0.28);
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 4px;
+  padding-right: 4px;
+}
 
 .bkshf-shelves { padding: 0; }
 .bkshf-shelf-group { width: fit-content; margin: 0 auto; }

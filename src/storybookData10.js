@@ -42,15 +42,19 @@ export const CHAPTERS = [
       { text: "The writer wakes up with a sore throat.", answer: true },
       { text: "The writer goes to a shop near the apartment.", answer: false },
       { text: "The writer feels calm at the end because help is coming.", answer: true },
+      { text: "The receptionist gives the writer a form.", answer: true },
+      { text: "The writer feels perfectly fine in the morning.", answer: false },
     ],
     buildSentence: [
-      {
-        target: "This morning, I wake up with a sore throat and a heavy head.",
-        jumbled: ["and", "a", "up", "This", "heavy", "sore", "I", "morning,", "throat", "wake", "with", "head.", "a"],
-      },
+      { target: "I drink some water.", jumbled: ["drink", "some", "water.", "I"] },
+      { target: "She smiles at me.", jumbled: ["smiles", "at", "me.", "She"] },
       {
         target: "Then I decide to visit the small clinic near my apartment.",
         jumbled: ["the", "apartment.", "I", "decide", "visit", "small", "clinic", "my", "near", "Then", "to"],
+      },
+      {
+        target: "This morning, I wake up with a sore throat and a heavy head.",
+        jumbled: ["and", "a", "up", "This", "heavy", "sore", "I", "morning,", "throat", "wake", "with", "head.", "a"],
       },
       {
         target: "As I sit in the quiet room, I still feel sick, but I also feel calm because I know help is coming.",
@@ -76,8 +80,12 @@ export const CHAPTERS = [
       { text: "The form asks for the writer's name, age, and phone number.", answer: true },
       { text: "This is the writer's tenth visit to the clinic.", answer: false },
       { text: "The writer feels calm because the receptionist is kind.", answer: true },
+      { text: "The writer writes with a black pen.", answer: true },
+      { text: "The receptionist refuses to help the writer.", answer: false },
     ],
     buildSentence: [
+      { target: "I write my details.", jumbled: ["write", "my", "details.", "I"] },
+      { target: "This is my first time.", jumbled: ["is", "my", "first", "time.", "This"] },
       {
         target: "The form asks for my name, my age, and my phone number.",
         jumbled: ["form", "asks", "The", "my", "for", "name,", "age,", "my", "my", "and", "number.", "phone"],
@@ -110,15 +118,19 @@ export const CHAPTERS = [
       { text: "The waiting room is clean and quiet.", answer: true },
       { text: "The writer waits for many hours.", answer: false },
       { text: "The writer feels okay because the doctor will help soon.", answer: true },
+      { text: "A nurse calls another patient.", answer: true },
+      { text: "The writer refuses to wait and leaves.", answer: false },
     ],
     buildSentence: [
-      {
-        target: "On the wall, there is a clock, some health posters, and a big plant.",
-        jumbled: ["the", "On", "there", "wall,", "a", "is", "clock,", "health", "some", "and", "posters,", "big", "a", "plant."],
-      },
+      { target: "The room is clean.", jumbled: ["room", "is", "clean.", "The"] },
+      { target: "A nurse calls a patient.", jumbled: ["nurse", "calls", "a", "patient.", "A"] },
       {
         target: "I read a health poster about washing hands and drinking clean water.",
         jumbled: ["a", "read", "health", "I", "about", "poster", "hands", "washing", "drinking", "and", "water.", "clean"],
+      },
+      {
+        target: "On the wall, there is a clock, some health posters, and a big plant.",
+        jumbled: ["the", "On", "there", "wall,", "a", "is", "clock,", "health", "some", "and", "posters,", "big", "a", "plant."],
       },
       {
         target: "As I wait quietly, I feel okay because I know the doctor will help me soon.",
@@ -144,15 +156,19 @@ export const CHAPTERS = [
       { text: "Dr. Santos is a kind doctor.", answer: true },
       { text: "The writer feels very nervous with the doctor.", answer: false },
       { text: "The writer feels calm because the doctor is friendly.", answer: true },
+      { text: "The nurse calls the writer into the room.", answer: true },
+      { text: "Dr. Santos ignores the writer's form.", answer: false },
     ],
     buildSentence: [
-      {
-        target: "She smiles and says, “Hello, my name is Dr. Santos, please sit down.”",
-        jumbled: ["smiles", "She", "says,", "and", "my", "“Hello,", "is", "name", "Santos,", "Dr.", "sit", "please", "down.”"],
-      },
+      { target: "I stand up.", jumbled: ["stand", "up.", "I"] },
+      { target: "She reads my form.", jumbled: ["reads", "my", "form.", "She"] },
       {
         target: "Then she asks, “How are you feeling today, and what is the problem?”",
         jumbled: ["she", "Then", "asks,", "are", "“How", "feeling", "you", "and", "today,", "is", "what", "problem?”", "the"],
+      },
+      {
+        target: "She smiles and says, “Hello, my name is Dr. Santos, please sit down.”",
+        jumbled: ["smiles", "She", "says,", "and", "my", "“Hello,", "is", "name", "Santos,", "Dr.", "sit", "please", "down.”"],
       },
       {
         target: "As I sit with Dr. Santos, I feel calm because she is friendly and kind.",
@@ -178,15 +194,19 @@ export const CHAPTERS = [
       { text: "The writer has a sore throat and a headache.", answer: true },
       { text: "The doctor does not listen to the writer.", answer: false },
       { text: "The writer feels relieved because the doctor understands.", answer: true },
+      { text: "The writer has a fever and a cough.", answer: true },
+      { text: "The doctor never writes any notes.", answer: false },
     ],
     buildSentence: [
-      {
-        target: "I say, “Since this morning, I have a sore throat and a headache.”",
-        jumbled: ["say,", "I", "this", "“Since", "I", "morning,", "a", "have", "throat", "sore", "a", "and", "headache.”"],
-      },
+      { target: "I cough sometimes.", jumbled: ["cough", "sometimes.", "I"] },
+      { target: "I feel a little hot.", jumbled: ["feel", "a", "little", "hot.", "I"] },
       {
         target: "She listens carefully and writes some notes on her computer.",
         jumbled: ["listens", "She", "and", "carefully", "some", "writes", "notes", "her", "on", "computer."],
+      },
+      {
+        target: "I say, “Since this morning, I have a sore throat and a headache.”",
+        jumbled: ["say,", "I", "this", "“Since", "I", "morning,", "a", "have", "throat", "sore", "a", "and", "headache.”"],
       },
       {
         target: "As I describe my symptoms, I feel relieved because the doctor understands my problem clearly.",
@@ -212,8 +232,12 @@ export const CHAPTERS = [
       { text: "The doctor checks the writer's throat with a light.", answer: true },
       { text: "The doctor says the problem is very serious.", answer: false },
       { text: "The writer feels relieved at the end of the check-up.", answer: true },
+      { text: "Dr. Santos listens with a stethoscope.", answer: true },
+      { text: "Dr. Santos says nothing about the fever.", answer: false },
     ],
     buildSentence: [
+      { target: "Her hands are gentle.", jumbled: ["hands", "are", "gentle.", "Her"] },
+      { target: "I open my mouth wide.", jumbled: ["open", "my", "mouth", "wide.", "I"] },
       {
         target: "She puts a small thermometer under my arm to check my temperature.",
         jumbled: ["puts", "She", "a", "thermometer", "small", "my", "under", "to", "arm", "my", "check", "temperature."],
@@ -246,12 +270,13 @@ export const CHAPTERS = [
       { text: "The doctor gives the writer a prescription for medicine.", answer: true },
       { text: "The doctor says to drink cold drinks.", answer: false },
       { text: "The writer feels hopeful because they know how to get better.", answer: true },
+      { text: "Dr. Santos tells the writer to rest at home.", answer: true },
+      { text: "The writer has many questions for the doctor.", answer: false },
     ],
     buildSentence: [
-      {
-        target: "Take this medicine two times a day, after your meals.",
-        jumbled: ["this", "Take", "two", "medicine", "a", "times", "after", "day,", "meals.", "your"],
-      },
+      { target: "I listen carefully.", jumbled: ["listen", "carefully.", "I"] },
+      { target: "I repeat the instructions.", jumbled: ["repeat", "the", "instructions.", "I"] },
+      { target: "Take this medicine two times a day, after your meals.", jumbled: ["this", "Take", "two", "medicine", "a", "times", "after", "day,", "meals.", "your"] },
       {
         target: "She also tells me to drink a lot of warm water and rest at home.",
         jumbled: ["also", "tells", "She", "to", "me", "a", "drink", "of", "lot", "water", "warm", "rest", "and", "home.", "at"],
@@ -280,8 +305,12 @@ export const CHAPTERS = [
       { text: "The pharmacist wears a white coat.", answer: true },
       { text: "The writer does not pay for the medicine.", answer: false },
       { text: "The writer feels ready to get better at the end.", answer: true },
+      { text: "The pharmacist gives throat lozenges too.", answer: true },
+      { text: "The pharmacist cannot find the medicine.", answer: false },
     ],
     buildSentence: [
+      { target: "He smiles at me.", jumbled: ["smiles", "at", "me.", "He"] },
+      { target: "He reads the paper.", jumbled: ["reads", "the", "paper.", "He"] },
       {
         target: "I give him the prescription from Dr. Santos and wait for a minute.",
         jumbled: ["him", "give", "the", "I", "from", "prescription", "Santos", "Dr.", "wait", "and", "a", "for", "minute."],
@@ -314,15 +343,19 @@ export const CHAPTERS = [
       { text: "The writer takes the first tablet after eating lunch.", answer: true },
       { text: "The writer uses the phone all afternoon.", answer: false },
       { text: "The writer feels calm because they are taking care of themselves.", answer: true },
+      { text: "The writer changes into soft, warm clothes.", answer: true },
+      { text: "The writer's throat feels worse after resting.", answer: false },
     ],
     buildSentence: [
-      {
-        target: "I drink a big glass of warm water, just like the doctor tells me.",
-        jumbled: ["a", "drink", "big", "I", "of", "glass", "water,", "warm", "like", "just", "doctor", "the", "me.", "tells"],
-      },
+      { target: "I take off my shoes.", jumbled: ["take", "off", "my", "shoes.", "I"] },
+      { target: "I lie down on my bed.", jumbled: ["lie", "down", "on", "my", "bed.", "I"] },
       {
         target: "I make a cup of warm tea with honey to help my sore throat.",
         jumbled: ["a", "make", "cup", "I", "warm", "of", "with", "tea", "to", "honey", "my", "help", "throat.", "sore"],
+      },
+      {
+        target: "I drink a big glass of warm water, just like the doctor tells me.",
+        jumbled: ["a", "drink", "big", "I", "of", "glass", "water,", "warm", "like", "just", "doctor", "the", "me.", "tells"],
       },
       {
         target: "As I rest at home, I feel calm because I am taking good care of myself.",
@@ -348,8 +381,12 @@ export const CHAPTERS = [
       { text: "The writer feels much better after a few days.", answer: true },
       { text: "The writer still has a fever and a sore throat.", answer: false },
       { text: "The writer feels happy and thankful at the end.", answer: true },
+      { text: "The writer's throat does not hurt anymore.", answer: true },
+      { text: "The writer forgets to finish the medicine.", answer: false },
     ],
     buildSentence: [
+      { target: "My head feels clear.", jumbled: ["head", "feels", "clear.", "My"] },
+      { target: "I finish all my medicine.", jumbled: ["finish", "all", "my", "medicine.", "I"] },
       {
         target: "After a few days of medicine and rest, I wake up and feel much better.",
         jumbled: ["a", "After", "days", "few", "medicine", "of", "rest,", "and", "wake", "I", "and", "up", "much", "feel", "better."],

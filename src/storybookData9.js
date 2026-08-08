@@ -38,12 +38,12 @@ export const CHAPTERS = [
       { text: "The writer drinks water before looking at the phone.", answer: true },
       { text: "The writer eats breakfast very fast.", answer: false },
       { text: "The short walk helps the writer feel more awake.", answer: true },
+      { text: "The writer stretches arms, back, and legs.", answer: true },
+      { text: "The writer skips breakfast.", answer: false },
     ],
     buildSentence: [
-      {
-        target: "Before I look at my phone, I drink a glass of water from the bottle on my table.",
-        jumbled: ["I", "of", "from", "the", "look", "a", "phone,", "my", "Before", "bottle", "at", "water", "on", "drink", "table.", "I", "glass", "my"],
-      },
+      { target: "I wake up at six thirty.", jumbled: ["wake", "up", "at", "six", "thirty.", "I"] },
+      { target: "I stretch my arms and legs.", jumbled: ["stretch", "my", "arms", "and", "legs.", "I"] },
       {
         target: "After that, I go to the kitchen and make a simple breakfast with eggs, bread, and fruit.",
         jumbled: ["breakfast", "a", "fruit.", "with", "kitchen", "and", "simple", "I", "that,", "eggs,", "the", "After", "go", "bread,", "to", "and", "make"],
@@ -51,6 +51,10 @@ export const CHAPTERS = [
       {
         target: "Before I leave for work, I smile because my body feels light and my mind feels clear.",
         jumbled: ["my", "light", "Before", "my", "because", "mind", "work,", "body", "smile", "clear.", "I", "feels", "and", "feels", "I", "leave", "for"],
+      },
+      {
+        target: "Before I look at my phone, I drink a glass of water from the bottle on my table.",
+        jumbled: ["I", "of", "from", "the", "look", "a", "phone,", "my", "Before", "bottle", "at", "water", "on", "drink", "table.", "I", "glass", "my"],
       },
     ],
     mySentencePrompt: "Write or say one sentence about a healthy morning habit.",
@@ -72,15 +76,19 @@ export const CHAPTERS = [
       { text: "The writer cooks the eggs with a little oil.", answer: true },
       { text: "The writer eats breakfast while looking at the phone.", answer: false },
       { text: "The writer feels full of energy at the end.", answer: true },
+      { text: "The writer cuts a banana and an apple.", answer: true },
+      { text: "The writer skips the toast.", answer: false },
     ],
     buildSentence: [
-      {
-        target: "I cook two eggs slowly in a small pan with only a little oil.",
-        jumbled: ["two", "cook", "eggs", "I", "in", "slowly", "a", "pan", "small", "only", "with", "a", "oil.", "little"],
-      },
+      { target: "I wash my hands.", jumbled: ["wash", "my", "hands.", "I"] },
+      { target: "I cut a banana.", jumbled: ["cut", "a", "banana.", "I"] },
       {
         target: "Then I sit down at the table and eat my breakfast without my phone.",
         jumbled: ["I", "Then", "down", "sit", "the", "at", "table", "eat", "and", "breakfast", "my", "my", "phone.", "without"],
+      },
+      {
+        target: "I cook two eggs slowly in a small pan with only a little oil.",
+        jumbled: ["two", "cook", "eggs", "I", "in", "slowly", "a", "pan", "small", "only", "with", "a", "oil.", "little"],
       },
       {
         target: "When I finish, I feel full of energy and ready for a busy day.",
@@ -106,8 +114,12 @@ export const CHAPTERS = [
       { text: "The writer walks in a small green park.", answer: true },
       { text: "The writer uses the phone during the whole walk.", answer: false },
       { text: "The writer feels calm and happy after the walk.", answer: true },
+      { text: "The writer swings their arms while walking.", answer: true },
+      { text: "The writer sees no trees or birds.", answer: false },
     ],
     buildSentence: [
+      { target: "The morning air is cool.", jumbled: ["morning", "air", "is", "cool.", "The"] },
+      { target: "I see the tall trees.", jumbled: ["see", "the", "tall", "trees.", "I"] },
       {
         target: "I walk down my street and turn into the small green park nearby.",
         jumbled: ["down", "walk", "my", "I", "and", "street", "into", "turn", "small", "the", "park", "green", "nearby."],
@@ -140,15 +152,16 @@ export const CHAPTERS = [
       { text: "The writer keeps the bottle on the desk.", answer: true },
       { text: "The writer drinks a sugary drink at lunch.", answer: false },
       { text: "The writer feels proud about drinking enough water.", answer: true },
+      { text: "The writer fills a big bottle in the morning.", answer: true },
+      { text: "The writer forgets to drink water all day.", answer: false },
     ],
     buildSentence: [
+      { target: "My head feels clear.", jumbled: ["head", "feels", "clear.", "My"] },
+      { target: "I fill a big bottle.", jumbled: ["fill", "a", "big", "bottle.", "I"] },
+      { target: "At lunch, I drink water instead of a sweet, sugary drink.", jumbled: ["lunch,", "At", "drink", "I", "instead", "water", "a", "of", "sugary", "sweet,", "drink."] },
       {
         target: "I keep the bottle on my desk so I can see it all the time.",
         jumbled: ["the", "keep", "bottle", "I", "my", "on", "desk", "I", "so", "see", "can", "all", "it", "time.", "the"],
-      },
-      {
-        target: "At lunch, I drink water instead of a sweet, sugary drink.",
-        jumbled: ["lunch,", "At", "drink", "I", "instead", "water", "a", "of", "sugary", "sweet,", "drink."],
       },
       {
         target: "By the end of the day, I feel proud because I drink enough water for my health.",
@@ -174,15 +187,19 @@ export const CHAPTERS = [
       { text: "The writer makes a healthy lunch with rice and vegetables.", answer: true },
       { text: "The writer eats fast food for lunch today.", answer: false },
       { text: "The writer feels good after the healthy lunch.", answer: true },
+      { text: "The writer adds chicken and salad to the plate.", answer: true },
+      { text: "The writer feels heavy and tired after lunch.", answer: false },
     ],
     buildSentence: [
-      {
-        target: "I cook some rice and add many colourful vegetables to my plate.",
-        jumbled: ["some", "cook", "rice", "I", "add", "and", "colourful", "many", "to", "vegetables", "plate.", "my"],
-      },
+      { target: "The plate looks bright.", jumbled: ["plate", "looks", "bright.", "The"] },
+      { target: "I feel hungry at noon.", jumbled: ["feel", "hungry", "at", "noon.", "I"] },
       {
         target: "I sit down at the table and eat slowly without hurrying.",
         jumbled: ["down", "sit", "I", "the", "at", "table", "eat", "and", "slowly", "hurrying.", "without"],
+      },
+      {
+        target: "I cook some rice and add many colourful vegetables to my plate.",
+        jumbled: ["some", "cook", "rice", "I", "add", "and", "colourful", "many", "to", "vegetables", "plate.", "my"],
       },
       {
         target: "When I finish, I feel good because a healthy lunch gives my body real energy.",
@@ -208,15 +225,19 @@ export const CHAPTERS = [
       { text: "The writer takes a short rest in the afternoon.", answer: true },
       { text: "The writer drinks a lot of coffee to feel awake.", answer: false },
       { text: "The writer feels calm and awake at the end.", answer: true },
+      { text: "The writer takes slow, deep breaths.", answer: true },
+      { text: "The writer drinks more coffee to rest.", answer: false },
     ],
     buildSentence: [
-      {
-        target: "Instead of drinking more coffee, I decide to take a short rest.",
-        jumbled: ["of", "Instead", "more", "drinking", "coffee,", "decide", "I", "take", "to", "short", "a", "rest."],
-      },
+      { target: "I close my eyes.", jumbled: ["close", "my", "eyes.", "I"] },
+      { target: "I feel a little tired.", jumbled: ["feel", "a", "little", "tired.", "I"] },
       {
         target: "I take slow, deep breaths and let my shoulders relax down.",
         jumbled: ["slow,", "take", "deep", "I", "and", "breaths", "my", "let", "relax", "shoulders", "down."],
+      },
+      {
+        target: "Instead of drinking more coffee, I decide to take a short rest.",
+        jumbled: ["of", "Instead", "more", "drinking", "coffee,", "decide", "I", "take", "to", "short", "a", "rest."],
       },
       {
         target: "When I go back to work, I feel calm, awake, and ready to continue.",
@@ -242,8 +263,12 @@ export const CHAPTERS = [
       { text: "Maya does easy exercise with the writer.", answer: true },
       { text: "They do very hard exercise and cannot talk.", answer: false },
       { text: "The writer feels proud at the end.", answer: true },
+      { text: "They stretch their arms, legs, and backs.", answer: true },
+      { text: "Maya says hard exercise is always better.", answer: false },
     ],
     buildSentence: [
+      { target: "I put on comfortable clothes.", jumbled: ["put", "on", "comfortable", "clothes.", "I"] },
+      { target: "We stretch our arms and legs.", jumbled: ["stretch", "our", "arms", "and", "legs.", "We"] },
       {
         target: "My friend Maya comes to my apartment, and we walk to the park together.",
         jumbled: ["friend", "My", "comes", "Maya", "my", "to", "apartment,", "we", "and", "to", "walk", "park", "the", "together."],
@@ -276,12 +301,12 @@ export const CHAPTERS = [
       { text: "The writer makes a warm cup of tea in the evening.", answer: true },
       { text: "The writer looks at bright screens before bed.", answer: false },
       { text: "The writer feels relaxed and ready to sleep.", answer: true },
+      { text: "The writer reads a few pages of a book.", answer: true },
+      { text: "The writer keeps the phone nearby all evening.", answer: false },
     ],
     buildSentence: [
-      {
-        target: "I make a warm cup of tea and sit near the window with a soft light.",
-        jumbled: ["a", "make", "warm", "I", "of", "cup", "and", "tea", "near", "sit", "window", "the", "a", "with", "light.", "soft"],
-      },
+      { target: "I read a few pages.", jumbled: ["read", "a", "few", "pages.", "I"] },
+      { target: "I take a warm shower.", jumbled: ["take", "a", "warm", "shower.", "I"] },
       {
         target: "Then I write three good things about my day in a small notebook.",
         jumbled: ["I", "Then", "write", "good", "three", "about", "things", "day", "my", "a", "in", "notebook.", "small"],
@@ -289,6 +314,10 @@ export const CHAPTERS = [
       {
         target: "When I sit quietly in my calm home, I feel relaxed and ready to sleep.",
         jumbled: ["I", "sit", "quietly", "When", "my", "in", "home,", "calm", "feel", "I", "relaxed", "ready", "and", "sleep.", "to"],
+      },
+      {
+        target: "I make a warm cup of tea and sit near the window with a soft light.",
+        jumbled: ["a", "make", "warm", "I", "of", "cup", "and", "tea", "near", "sit", "window", "the", "a", "with", "light.", "soft"],
       },
     ],
     mySentencePrompt: "Write or say one sentence about a calm evening habit.",
@@ -310,8 +339,12 @@ export const CHAPTERS = [
       { text: "The writer goes to bed at the same time every night.", answer: true },
       { text: "The writer keeps the phone right next to the bed.", answer: false },
       { text: "The writer feels fresh and thankful in the morning.", answer: true },
+      { text: "The writer makes the room dark, quiet, and cool.", answer: true },
+      { text: "The writer thinks about work problems before sleep.", answer: false },
     ],
     buildSentence: [
+      { target: "I close my eyes.", jumbled: ["close", "my", "eyes.", "I"] },
+      { target: "My body feels heavy.", jumbled: ["body", "feels", "heavy.", "My"] },
       {
         target: "Before sleep, I make my room dark, quiet, and cool.",
         jumbled: ["sleep,", "Before", "make", "I", "room", "my", "quiet,", "dark,", "cool.", "and"],
@@ -344,15 +377,19 @@ export const CHAPTERS = [
       { text: "In the past, the writer felt tired and stressed.", answer: true },
       { text: "The writer feels worse after the new routine.", answer: false },
       { text: "The writer feels proud and thankful at the end.", answer: true },
+      { text: "The writer sleeps well at night now.", answer: true },
+      { text: "The writer's friends say nothing has changed.", answer: false },
     ],
     buildSentence: [
-      {
-        target: "Now I wake up early, drink water, and eat healthy food each morning.",
-        jumbled: ["I", "Now", "wake", "early,", "up", "water,", "drink", "eat", "and", "food", "healthy", "morning.", "each"],
-      },
+      { target: "I sleep well now.", jumbled: ["sleep", "well", "now.", "I"] },
+      { target: "My mind feels clear.", jumbled: ["mind", "feels", "clear.", "My"] },
       {
         target: "My friends say, “You look happy and full of energy these days.”",
         jumbled: ["friends", "My", "say,", "look", "“You", "and", "happy", "of", "full", "days.”", "energy", "these"],
+      },
+      {
+        target: "Now I wake up early, drink water, and eat healthy food each morning.",
+        jumbled: ["I", "Now", "wake", "early,", "up", "water,", "drink", "eat", "and", "food", "healthy", "morning.", "each"],
       },
       {
         target: "As I look at my healthy routine, I feel proud and thankful because I take good care of myself.",

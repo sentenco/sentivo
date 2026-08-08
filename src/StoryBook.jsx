@@ -2,7 +2,7 @@ import { useMemo, useState } from "react";
 import ImagePlaceholder from "./slides/ImagePlaceholder";
 import defaultBook from "./storybookData";
 
-const PAGE_TYPES = ["intro", "story", "questions", "truefalse", "build0", "build1", "build2", "mysentence"];
+const PAGE_TYPES = ["intro", "story", "questions", "truefalse", "build0", "build1", "build2", "build3", "build4", "mysentence"];
 const PAGE_LABELS = {
   intro: "Chapter",
   story: "Story",
@@ -11,6 +11,8 @@ const PAGE_LABELS = {
   build0: "Build-a-Sentence",
   build1: "Build-a-Sentence",
   build2: "Build-a-Sentence",
+  build3: "Build-a-Sentence",
+  build4: "Build-a-Sentence",
   mysentence: "My Sentence",
 };
 
@@ -139,7 +141,7 @@ function BuildSentencePage({ chapter, index }) {
   return (
     <div className="sb-page">
       <h3 className="sb-page-title">
-        Build-a-Sentence <span className="sb-page-title-sub">({index + 1} of 3)</span>
+        Build-a-Sentence <span className="sb-page-title-sub">({index + 1} of {chapter.buildSentence.length})</span>
       </h3>
       <p className="sb-page-hint">Tap the words in the correct order to build a sentence from the story.</p>
       <div className={`sb-build-row ${checked ? (isCorrect ? "is-correct" : "is-wrong") : ""}`}>
@@ -178,6 +180,18 @@ function BuildSentencePage({ chapter, index }) {
 
 function MySentencePage({ chapter }) {
   const [value, setValue] = useState("");
+  const [copied, setCopied] = useState(false);
+
+  async function copySentence() {
+    try {
+      await navigator.clipboard.writeText(value);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 1800);
+    } catch {
+      // clipboard unavailable -- silently ignore, teacher can select+copy manually
+    }
+  }
+
   return (
     <div className="sb-page">
       <h3 className="sb-page-title">My Sentence</h3>
@@ -192,6 +206,12 @@ function MySentencePage({ chapter }) {
         onChange={(e) => setValue(e.target.value)}
         rows={3}
       />
+      <div className="sb-my-sentence-foot">
+        <span className="sb-my-sentence-note">For the teacher: copy the student's sentence to save or check it.</span>
+        <button type="button" className="sb-copy-btn" disabled={!value.trim()} onClick={copySentence}>
+          {copied ? "✓ Copied" : "⧉ Copy sentence"}
+        </button>
+      </div>
     </div>
   );
 }
@@ -212,6 +232,10 @@ function renderPage(pageType, chapter, imageAspect) {
       return <BuildSentencePage chapter={chapter} index={1} />;
     case "build2":
       return <BuildSentencePage chapter={chapter} index={2} />;
+    case "build3":
+      return <BuildSentencePage chapter={chapter} index={3} />;
+    case "build4":
+      return <BuildSentencePage chapter={chapter} index={4} />;
     case "mysentence":
       return <MySentencePage chapter={chapter} />;
     default:
@@ -669,6 +693,21 @@ const CSS = `
   outline: none;
 }
 .sb-my-sentence-input:focus { border-color: #D85A30; }
+.sb-my-sentence-foot { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-top: 2px; }
+.sb-my-sentence-note { font-family: 'Quicksand', sans-serif; font-size: 13px; color: #94A0B8; }
+.sb-copy-btn {
+  flex-shrink: 0;
+  background: #fff;
+  color: #1B2A4A;
+  border: 2px solid #DADCE3;
+  border-radius: 999px;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  padding: 8px 16px;
+  cursor: pointer;
+}
+.sb-copy-btn:disabled { opacity: 0.4; cursor: default; }
 
 /* ── Nav row ── */
 .sb-nav-row { display: flex; align-items: center; justify-content: space-between; margin-top: 18px; }

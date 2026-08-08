@@ -36,15 +36,19 @@ export const CHAPTERS = [
       { text: "The writer walks to the bus stop near the street.", answer: true },
       { text: "The desk is next to a small door.", answer: false },
       { text: "The writer feels calm and ready at the end.", answer: true },
+      { text: "The writer drinks coffee in the kitchen.", answer: true },
+      { text: "The bus is empty in the morning.", answer: false },
     ],
     buildSentence: [
-      {
-        target: "At seven o'clock, I leave my apartment and walk to the bus stop near my street.",
-        jumbled: ["my", "bus", "leave", "seven", "I", "stop", "walk", "near", "my", "o'clock,", "apartment", "and", "the", "street.", "to", "At"],
-      },
+      { target: "I wake up at six.", jumbled: ["wake", "up", "at", "six.", "I"] },
+      { target: "I make a cup of coffee.", jumbled: ["make", "a", "cup", "of", "coffee.", "I"] },
       {
         target: "When I arrive at the office building, I take the lift to the fifth floor.",
         jumbled: ["office", "the", "the", "take", "I", "fifth", "When", "building,", "arrive", "at", "floor.", "to", "lift", "I", "the"],
+      },
+      {
+        target: "At seven o'clock, I leave my apartment and walk to the bus stop near my street.",
+        jumbled: ["my", "bus", "leave", "seven", "I", "stop", "walk", "near", "my", "o'clock,", "apartment", "and", "the", "street.", "to", "At"],
       },
       {
         target: "As I start my work for the day, I feel calm, awake, and ready for the office.",
@@ -70,8 +74,12 @@ export const CHAPTERS = [
       { text: "The writer stays in bed for one minute after the alarm.", answer: true },
       { text: "The writer forgets to check the bag.", answer: false },
       { text: "The writer feels fresh and ready at the end.", answer: true },
+      { text: "The writer eats oatmeal with fruit.", answer: true },
+      { text: "The writer wears shorts for the cool morning.", answer: false },
     ],
     buildSentence: [
+      { target: "My alarm rings at six.", jumbled: ["alarm", "rings", "at", "six.", "My"] },
+      { target: "I look in the mirror.", jumbled: ["look", "in", "the", "mirror.", "I"] },
       {
         target: "The sky is grey, so I choose a warm jacket for the cool morning.",
         jumbled: ["sky", "grey,", "is", "The", "choose", "so", "a", "I", "jacket", "warm", "cool", "the", "for", "morning."],
@@ -104,19 +112,23 @@ export const CHAPTERS = [
       { text: "The writer taps a card to pay for the bus.", answer: true },
       { text: "The writer keeps the seat when the old man gets on.", answer: false },
       { text: "The writer feels awake and ready at the end.", answer: true },
+      { text: "An old man gets on the bus.", answer: true },
+      { text: "No one waits at the bus stop.", answer: false },
     ],
     buildSentence: [
+      { target: "I stand in line.", jumbled: ["stand", "in", "line.", "I"] },
+      { target: "He says, “Thank you.”", jumbled: ["says,", "He", "“Thank", "you.”"] },
       {
         target: "When the bus comes, the doors open, and I tap my card to pay.",
         jumbled: ["bus", "the", "When", "comes,", "doors", "the", "open,", "I", "and", "my", "tap", "to", "card", "pay."],
       },
       {
-        target: "At one stop, an old man gets on, so I stand up and give him my seat.",
-        jumbled: ["one", "At", "an", "stop,", "man", "old", "on,", "gets", "I", "so", "up", "stand", "give", "and", "seat.", "my", "him"],
-      },
-      {
         target: "As I step off the bus, I feel awake and ready to start my work.",
         jumbled: ["step", "I", "off", "As", "bus,", "the", "feel", "I", "awake", "ready", "and", "start", "to", "work.", "my"],
+      },
+      {
+        target: "At one stop, an old man gets on, so I stand up and give him my seat.",
+        jumbled: ["one", "At", "an", "stop,", "man", "old", "on,", "gets", "I", "so", "up", "stand", "give", "and", "seat.", "my", "him"],
       },
     ],
     mySentencePrompt: "Write or say one sentence about how you travel to work or school.",
@@ -138,8 +150,12 @@ export const CHAPTERS = [
       { text: "The writer opens email first at the desk.", answer: true },
       { text: "Ms. Reyes is the writer's coworker at the next desk.", answer: false },
       { text: "The writer feels focused and ready at the end.", answer: true },
+      { text: "Dan sits next to the writer.", answer: true },
+      { text: "The writer skips writing a task list.", answer: false },
     ],
     buildSentence: [
+      { target: "I say good morning.", jumbled: ["say", "good", "morning.", "I"] },
+      { target: "I make a cup of tea.", jumbled: ["make", "a", "cup", "of", "tea.", "I"] },
       {
         target: "I walk to my desk, sit down, and turn on my computer screen.",
         jumbled: ["to", "walk", "desk,", "my", "I", "down,", "sit", "and", "on", "turn", "computer", "my", "screen."],
@@ -172,8 +188,12 @@ export const CHAPTERS = [
       { text: "The writer has three tasks to finish.", answer: true },
       { text: "The writer makes many mistakes in the report.", answer: false },
       { text: "The writer feels proud after finishing the morning work.", answer: true },
+      { text: "The writer calls a customer.", answer: true },
+      { text: "The writer ignores Dan's question.", answer: false },
     ],
     buildSentence: [
+      { target: "I send two emails.", jumbled: ["send", "two", "emails.", "I"] },
+      { target: "I write a short report.", jumbled: ["write", "a", "short", "report.", "I"] },
       {
         target: "I type carefully and check my words so there are no mistakes.",
         jumbled: ["carefully", "type", "I", "check", "and", "words", "my", "there", "so", "no", "are", "mistakes."],
@@ -206,15 +226,19 @@ export const CHAPTERS = [
       { text: "Dan invites the writer to eat lunch with the coworkers.", answer: true },
       { text: "The writer eats lunch alone at the desk.", answer: false },
       { text: "The writer feels relaxed and happy at the end.", answer: true },
+      { text: "Ms. Reyes tells a funny story.", answer: true },
+      { text: "The writer buys noodles for lunch.", answer: false },
     ],
     buildSentence: [
-      {
-        target: "I say yes, and we walk together to the small canteen on the ground floor.",
-        jumbled: ["yes,", "say", "I", "we", "and", "together", "walk", "small", "to", "the", "canteen", "ground", "on", "the", "floor."],
-      },
+      { target: "It is time for lunch.", jumbled: ["is", "time", "for", "lunch.", "It"] },
+      { target: "Everyone at the table laughs.", jumbled: ["at", "the", "table", "laughs.", "Everyone"] },
       {
         target: "We sit at a table near the window and talk about our weekend plans.",
         jumbled: ["at", "sit", "a", "We", "near", "table", "the", "and", "window", "about", "talk", "weekend", "our", "plans."],
+      },
+      {
+        target: "I say yes, and we walk together to the small canteen on the ground floor.",
+        jumbled: ["yes,", "say", "I", "we", "and", "together", "walk", "small", "to", "the", "canteen", "ground", "on", "the", "floor."],
       },
       {
         target: "As I finish my lunch, I feel relaxed and happy to work with kind people.",
@@ -240,8 +264,12 @@ export const CHAPTERS = [
       { text: "The afternoon is very busy at the office.", answer: true },
       { text: "The writer sits quietly and does no work in the meeting.", answer: false },
       { text: "The writer feels tired but proud at the end.", answer: true },
+      { text: "Ms. Reyes asks the writer to share ideas.", answer: true },
+      { text: "The writer refuses to help Dan carry boxes.", answer: false },
     ],
     buildSentence: [
+      { target: "My phone rings.", jumbled: ["phone", "rings.", "My"] },
+      { target: "Dan helps me carry boxes.", jumbled: ["helps", "me", "carry", "boxes.", "Dan"] },
       {
         target: "I take a deep breath and start with the most important task first.",
         jumbled: ["a", "take", "deep", "I", "and", "breath", "start", "the", "with", "important", "most", "first.", "task"],
@@ -274,8 +302,12 @@ export const CHAPTERS = [
       { text: "The writer's computer screen goes dark.", answer: true },
       { text: "The writer loses all the work forever.", answer: false },
       { text: "The writer feels calm at the end.", answer: true },
+      { text: "Dan asks if the writer is okay.", answer: true },
+      { text: "Mr. Tan cannot find the problem.", answer: false },
     ],
     buildSentence: [
+      { target: "I feel worried.", jumbled: ["feel", "worried.", "I"] },
+      { target: "Mr. Tan checks the cables.", jumbled: ["checks", "the", "cables.", "Mr.", "Tan"] },
       {
         target: "Dan sees my face and asks, “Are you okay? What is the problem?”",
         jumbled: ["my", "sees", "face", "Dan", "asks,", "and", "you", "“Are", "okay?", "is", "What", "problem?”", "the"],
@@ -308,8 +340,12 @@ export const CHAPTERS = [
       { text: "The writer finishes every task today.", answer: true },
       { text: "The writer leaves the desk messy and full of papers.", answer: false },
       { text: "The writer feels satisfied at the end.", answer: true },
+      { text: "The writer says goodbye to Dan and Ms. Reyes.", answer: true },
+      { text: "The sky is dark blue outside.", answer: false },
     ],
     buildSentence: [
+      { target: "I tidy my desk.", jumbled: ["tidy", "my", "desk.", "I"] },
+      { target: "The sky is orange.", jumbled: ["sky", "is", "orange.", "The"] },
       {
         target: "I save all my files and close the programs on my computer.",
         jumbled: ["all", "save", "files", "my", "I", "close", "and", "programs", "the", "my", "on", "computer."],
@@ -342,8 +378,12 @@ export const CHAPTERS = [
       { text: "On Monday, the writer felt a little nervous.", answer: true },
       { text: "Ms. Reyes says the writer did bad work this week.", answer: false },
       { text: "The writer feels proud and thankful at the end.", answer: true },
+      { text: "Dan helped the writer carry boxes.", answer: true },
+      { text: "The writer feels sad at the end of the week.", answer: false },
     ],
     buildSentence: [
+      { target: "I feel light and free.", jumbled: ["feel", "light", "and", "free.", "I"] },
+      { target: "The office feels like home.", jumbled: ["office", "feels", "like", "home.", "The"] },
       {
         target: "This week, I wrote reports, answered calls, and joined an important meeting.",
         jumbled: ["week,", "This", "wrote", "I", "answered", "reports,", "calls,", "and", "an", "joined", "meeting.", "important"],

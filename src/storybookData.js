@@ -46,19 +46,23 @@ export const CHAPTERS = [
       { text: "Paul’s alarm rings at eight o’clock.", answer: false },
       { text: "Ethan sends a message to Paul.", answer: true },
       { text: "They walk to school after breakfast.", answer: true },
+      { text: "Mia drinks hot chocolate in the kitchen.", answer: true },
+      { text: "They eat cereal for breakfast.", answer: false },
     ],
     buildSentence: [
+      { target: "Mia drinks hot chocolate.", jumbled: ["hot", "drinks", "Mia", "chocolate."] },
+      { target: "Ethan sends me a message.", jumbled: ["a", "sends", "message.", "me", "Ethan"] },
       {
         target: "In the morning, my alarm rings at six thirty.",
         jumbled: ["morning,", "rings", "thirty.", "In", "my", "six", "at", "alarm"],
       },
       {
-        target: "I open my eyes and see my phone on the small table.",
-        jumbled: ["see", "open", "eyes", "my", "small", "phone", "I", "the", "on", "table", "and", "my"],
-      },
-      {
         target: "After breakfast, we walk to school and feel ready for the day.",
         jumbled: ["school", "day.", "After", "the", "breakfast,", "ready", "we", "walk", "and", "to", "feel", "for"],
+      },
+      {
+        target: "I open my eyes and see my phone on the small table.",
+        jumbled: ["see", "open", "eyes", "my", "small", "phone", "I", "the", "on", "table", "and", "my"],
       },
     ],
     mySentencePrompt: "Write or say one sentence about your morning.",
@@ -80,19 +84,23 @@ export const CHAPTERS = [
       { text: "Paul sits alone during break time.", answer: false },
       { text: "Ethan buys a sandwich and water.", answer: true },
       { text: "Angel talks about music class.", answer: false },
+      { text: "Mia shares her apple with Paul.", answer: true },
+      { text: "The bell doesn’t ring again.", answer: false },
     ],
     buildSentence: [
+      { target: "Our classroom is noisy.", jumbled: ["is", "classroom", "noisy.", "Our"] },
+      { target: "Angel tells us about her practice.", jumbled: ["us", "her", "about", "tells", "practice.", "Angel"] },
       {
         target: "At school, I sit with Mia during break time.",
         jumbled: ["break", "At", "school,", "time.", "Mia", "sit", "I", "with", "during"],
       },
       {
-        target: "Ethan buys a sandwich and a bottle of water from the small canteen.",
-        jumbled: ["a", "bottle", "buys", "canteen.", "Ethan", "and", "water", "sandwich", "of", "from", "the", "a", "small"],
-      },
-      {
         target: "When the bell rings again, we go back to class together.",
         jumbled: ["class", "we", "back", "the", "go", "together.", "rings", "When", "to", "bell", "again,"],
+      },
+      {
+        target: "Ethan buys a sandwich and a bottle of water from the small canteen.",
+        jumbled: ["a", "bottle", "buys", "canteen.", "Ethan", "and", "water", "sandwich", "of", "from", "the", "a", "small"],
       },
     ],
     mySentencePrompt: "Write or say one sentence about your break time.",
@@ -114,19 +122,20 @@ export const CHAPTERS = [
       { text: "They sit near the school garden.", answer: true },
       { text: "Paul likes noodles more than rice and chicken.", answer: false },
       { text: "Angel drinks juice.", answer: true },
+      { text: "Ethan likes noodles more than rice and chicken.", answer: true },
+      { text: "They eat lunch inside the classroom.", answer: false },
     ],
     buildSentence: [
-      {
-        target: "At lunch time, we sit at the same table near the school garden.",
-        jumbled: ["the", "At", "school", "same", "lunch", "near", "garden.", "table", "the", "we", "sit", "at", "time,"],
-      },
+      { target: "Angel drinks juice.", jumbled: ["juice.", "Angel", "drinks"] },
+      { target: "Paul likes rice and chicken.", jumbled: ["and", "likes", "chicken.", "rice", "Paul"] },
+      { target: "After lunch, everyone feels full and happy.", jumbled: ["and", "After", "happy.", "everyone", "full", "lunch,", "feels"] },
       {
         target: "Mia opens her lunch box and shows us her favorite sandwich.",
         jumbled: ["lunch", "sandwich.", "opens", "her", "Mia", "her", "shows", "and", "box", "us", "favorite"],
       },
       {
-        target: "After lunch, everyone feels full and happy.",
-        jumbled: ["and", "After", "happy.", "everyone", "full", "lunch,", "feels"],
+        target: "At lunch time, we sit at the same table near the school garden.",
+        jumbled: ["the", "At", "school", "same", "lunch", "near", "garden.", "table", "the", "we", "sit", "at", "time,"],
       },
     ],
     mySentencePrompt: "Write or say one sentence about your favorite lunch.",
@@ -148,8 +157,16 @@ export const CHAPTERS = [
       { text: "Paul waits at the school gate.", answer: true },
       { text: "Mia wants to go skateboarding.", answer: false },
       { text: "They go to a small shop first.", answer: true },
+      { text: "Ethan likes skateboarding at the park.", answer: true },
+      { text: "Angel wants to go straight home.", answer: false },
     ],
     buildSentence: [
+      { target: "Mia goes home early.", jumbled: ["home", "goes", "early.", "Mia"] },
+      { target: "Angel asks for cold drinks.", jumbled: ["cold", "asks", "drinks.", "Angel", "for"] },
+      {
+        target: "After that, we say goodbye and follow our own plans.",
+        jumbled: ["and", "plans.", "our", "we", "goodbye", "After", "own", "follow", "that,", "say"],
+      },
       {
         target: "When classes end, I wait for my friends at the school gate.",
         jumbled: ["for", "school", "I", "gate.", "the", "my", "at", "wait", "When", "classes", "end,", "friends"],
@@ -157,10 +174,6 @@ export const CHAPTERS = [
       {
         target: "Ethan wants to go to the park because he likes skateboarding there.",
         jumbled: ["there.", "the", "to", "likes", "because", "skateboarding", "Ethan", "wants", "he", "park", "go", "to"],
-      },
-      {
-        target: "After that, we say goodbye and follow our own plans.",
-        jumbled: ["and", "plans.", "our", "we", "goodbye", "After", "own", "follow", "that,", "say"],
       },
     ],
     mySentencePrompt: "Write or say one sentence about your plan after school.",
@@ -182,8 +195,12 @@ export const CHAPTERS = [
       { text: "The weather is sunny after school.", answer: false },
       { text: "Ethan has a blue umbrella.", answer: true },
       { text: "Their shoes stay completely dry.", answer: false },
+      { text: "Everyone runs to the front hall.", answer: true },
+      { text: "Mia stands far away from Paul.", answer: false },
     ],
     buildSentence: [
+      { target: "The rain starts suddenly.", jumbled: ["starts", "rain", "suddenly.", "The"] },
+      { target: "Angel likes the fresh air.", jumbled: ["the", "likes", "fresh", "air.", "Angel"] },
       {
         target: "This afternoon, dark clouds fill the sky above our school.",
         jumbled: ["the", "our", "dark", "school.", "clouds", "This", "fill", "sky", "afternoon,", "above"],
@@ -216,15 +233,19 @@ export const CHAPTERS = [
       { text: "Paul stays for the art club.", answer: true },
       { text: "Ethan joins the club and draws all afternoon.", answer: false },
       { text: "Paul feels proud of his drawing.", answer: true },
+      { text: "Angel says Paul’s tree is nice and colorful.", answer: true },
+      { text: "The art room is very noisy.", answer: false },
     ],
     buildSentence: [
-      {
-        target: "On Wednesday, I stay at school for the art club after class.",
-        jumbled: ["On", "school", "stay", "the", "for", "Wednesday,", "class.", "after", "art", "I", "at", "club"],
-      },
+      { target: "The room is quiet.", jumbled: ["room", "is", "quiet.", "The"] },
+      { target: "Angel says my tree is nice.", jumbled: ["says", "tree", "my", "nice.", "Angel", "is"] },
       {
         target: "Mia sits beside me because she also likes drawing.",
         jumbled: ["also", "because", "me", "Mia", "likes", "beside", "she", "drawing.", "sits"],
+      },
+      {
+        target: "On Wednesday, I stay at school for the art club after class.",
+        jumbled: ["On", "school", "stay", "the", "for", "Wednesday,", "class.", "after", "art", "I", "at", "club"],
       },
       {
         target: "Before going home, I put my drawing in my bag and feel proud.",
@@ -250,19 +271,17 @@ export const CHAPTERS = [
       { text: "Paul goes to school on Saturday morning.", answer: false },
       { text: "Ethan sends a photo of new football shoes.", answer: true },
       { text: "Angel helps clean the kitchen.", answer: false },
+      { text: "Paul’s father makes pancakes.", answer: true },
+      { text: "Mia plays basketball on Saturday.", answer: false },
     ],
     buildSentence: [
-      {
-        target: "On Saturday, I wake up a little late.",
-        jumbled: ["wake", "up", "little", "late.", "I", "a", "On", "Saturday,"],
-      },
+      { target: "Mia reads a comic book.", jumbled: ["a", "reads", "comic", "book.", "Mia"] },
+      { target: "Angel helps clean the living room.", jumbled: ["the", "clean", "helps", "living", "room.", "Angel"] },
+      { target: "On Saturday, I wake up a little late.", jumbled: ["wake", "up", "little", "late.", "I", "a", "On", "Saturday,"] },
+      { target: "I play a mobile game and listen to music.", jumbled: ["to", "a", "and", "listen", "I", "mobile", "game", "music.", "play"] },
       {
         target: "My father makes pancakes, and the sweet smell fills the kitchen.",
         jumbled: ["father", "smell", "sweet", "the", "makes", "pancakes,", "and", "fills", "kitchen.", "My", "the"],
-      },
-      {
-        target: "I play a mobile game and listen to music.",
-        jumbled: ["to", "a", "and", "listen", "I", "mobile", "game", "music.", "play"],
       },
     ],
     mySentencePrompt: "Write or say one sentence about your Saturday.",
@@ -284,15 +303,16 @@ export const CHAPTERS = [
       { text: "It is Angel’s birthday.", answer: false },
       { text: "Paul keeps a birthday card in his notebook.", answer: true },
       { text: "Mia finds colorful pens in the gift bag.", answer: true },
+      { text: "Ethan gives Angel a small pink gift bag.", answer: true },
+      { text: "Mia feels sad during lunch.", answer: false },
     ],
     buildSentence: [
+      { target: "It is Mia’s birthday.", jumbled: ["is", "Mia’s", "birthday.", "It"] },
+      { target: "Ethan gives Angel a gift bag.", jumbled: ["a", "gives", "gift", "bag.", "Ethan", "Angel"] },
+      { target: "We call Mia to our table and sing for her.", jumbled: ["Mia", "table", "sing", "her.", "and", "call", "our", "We", "for", "to"] },
       {
         target: "Today is Mia’s birthday, and we want to do something nice for her.",
         jumbled: ["want", "Today", "birthday,", "is", "something", "and", "for", "nice", "Mia’s", "her.", "we", "to", "do"],
-      },
-      {
-        target: "We call Mia to our table and sing for her.",
-        jumbled: ["Mia", "table", "sing", "her.", "and", "call", "our", "We", "for", "to"],
       },
       {
         target: "She looks surprised, opens the gift bag, and finds a set of colorful pens.",
@@ -318,15 +338,16 @@ export const CHAPTERS = [
       { text: "The class project is about healthy habits.", answer: true },
       { text: "Mia writes the title with neat letters.", answer: false },
       { text: "Paul glues the pictures in the right place.", answer: true },
+      { text: "Ethan writes the title with neat letters.", answer: true },
+      { text: "Angel talks about video games for the poster.", answer: false },
     ],
     buildSentence: [
+      { target: "Ethan writes the title.", jumbled: ["the", "writes", "title.", "Ethan"] },
+      { target: "Angel gives us good ideas.", jumbled: ["good", "gives", "ideas.", "Angel", "us"] },
+      { target: "Mia draws fruit and water bottles in bright colors.", jumbled: ["in", "colors.", "draws", "bright", "fruit", "water", "Mia", "and", "bottles"] },
       {
         target: "This week, our class makes a simple project about healthy habits.",
         jumbled: ["project", "habits.", "healthy", "makes", "week,", "simple", "our", "class", "a", "about", "This"],
-      },
-      {
-        target: "Mia draws fruit and water bottles in bright colors.",
-        jumbled: ["in", "colors.", "draws", "bright", "fruit", "water", "Mia", "and", "bottles"],
       },
       {
         target: "At the end of class, our poster looks clean, colorful, and complete.",
@@ -352,19 +373,20 @@ export const CHAPTERS = [
       { text: "The teacher puts the projects on the wall.", answer: true },
       { text: "Angel is sad in front of the poster.", answer: false },
       { text: "Paul feels thankful on the way home.", answer: true },
+      { text: "Ethan looks proud in front of the poster.", answer: true },
+      { text: "They forget about the rainy walk.", answer: false },
     ],
     buildSentence: [
+      { target: "Ethan looks very proud.", jumbled: ["looks", "very", "proud.", "Ethan"] },
+      { target: "Angel gives Mia a high five.", jumbled: ["Mia", "gives", "a", "high", "five.", "Angel"] },
+      { target: "Our teacher puts the class projects on the wall.", jumbled: ["wall.", "the", "projects", "puts", "the", "teacher", "on", "Our", "class"] },
       {
-        target: "Our teacher puts the class projects on the wall.",
-        jumbled: ["wall.", "the", "projects", "puts", "the", "teacher", "on", "Our", "class"],
+        target: "I feel thankful for my friends and our good days together.",
+        jumbled: ["days", "our", "and", "my", "thankful", "I", "together.", "good", "feel", "friends", "for"],
       },
       {
         target: "The teacher says our work is neat, colorful, and easy to understand.",
         jumbled: ["teacher", "says", "our", "work", "and", "easy", "The", "colorful,", "understand.", "neat,", "is", "to"],
-      },
-      {
-        target: "I feel thankful for my friends and our good days together.",
-        jumbled: ["days", "our", "and", "my", "thankful", "I", "together.", "good", "feel", "friends", "for"],
       },
     ],
     mySentencePrompt: "Write or say one sentence about your friends.",

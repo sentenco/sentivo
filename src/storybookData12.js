@@ -40,8 +40,12 @@ export const CHAPTERS = [
       { text: "The writer goes to a small café near the apartment.", answer: true },
       { text: "The writer chooses pizza and juice.", answer: false },
       { text: "The writer feels calm after lunch.", answer: true },
+      { text: "The writer chooses chicken soup and bread.", answer: true },
+      { text: "The writer eats inside a quiet, empty café.", answer: false },
     ],
     buildSentence: [
+      { target: "The weather is warm.", jumbled: ["weather", "is", "warm.", "The"] },
+      { target: "I smell coffee and bread.", jumbled: ["smell", "coffee", "and", "bread.", "I"] },
       {
         target: "On Saturday afternoon, I walk to a small café near my apartment.",
         jumbled: ["small", "Saturday", "apartment.", "near", "walk", "a", "On", "my", "I", "afternoon,", "café", "to"],
@@ -74,15 +78,19 @@ export const CHAPTERS = [
       { text: "The writer goes to the market on Sunday morning.", answer: true },
       { text: "The writer buys only sweets and chocolate.", answer: false },
       { text: "The writer feels glad because they have good food for the week.", answer: true },
+      { text: "The writer buys red apples and bananas.", answer: true },
+      { text: "The market has no fish or vegetables.", answer: false },
     ],
     buildSentence: [
-      {
-        target: "I see fresh fruit, green vegetables, fish, and warm bread on the tables.",
-        jumbled: ["fresh", "see", "fruit,", "I", "vegetables,", "green", "and", "fish,", "bread", "warm", "the", "on", "tables."],
-      },
+      { target: "I buy red apples.", jumbled: ["buy", "red", "apples.", "I"] },
+      { target: "I count my money.", jumbled: ["count", "my", "money.", "I"] },
       {
         target: "A kind seller says, “These tomatoes are very fresh today.”",
         jumbled: ["kind", "A", "says,", "seller", "tomatoes", "“These", "very", "are", "today.”", "fresh"],
+      },
+      {
+        target: "I see fresh fruit, green vegetables, fish, and warm bread on the tables.",
+        jumbled: ["fresh", "see", "fruit,", "I", "vegetables,", "green", "and", "fish,", "bread", "warm", "the", "on", "tables."],
       },
       {
         target: "As I walk home with my full bags, I feel glad because I have good food for the week.",
@@ -108,8 +116,12 @@ export const CHAPTERS = [
       { text: "The writer cooks a simple and healthy meal at home.", answer: true },
       { text: "The writer buys the meal from a restaurant.", answer: false },
       { text: "The writer feels proud because they cooked the meal alone.", answer: true },
+      { text: "The writer wears an apron.", answer: true },
+      { text: "The writer never tastes the food.", answer: false },
     ],
     buildSentence: [
+      { target: "I put on an apron.", jumbled: ["put", "on", "an", "apron.", "I"] },
+      { target: "I taste the food.", jumbled: ["taste", "the", "food.", "I"] },
       {
         target: "First, I cut the onions, tomatoes, and vegetables into small pieces.",
         jumbled: ["I", "First,", "cut", "onions,", "the", "and", "tomatoes,", "into", "vegetables", "pieces.", "small"],
@@ -142,8 +154,12 @@ export const CHAPTERS = [
       { text: "The writer eats breakfast at a nearby café.", answer: true },
       { text: "The writer orders pizza and cold water.", answer: false },
       { text: "The writer feels happy because a café breakfast is a nice treat.", answer: true },
+      { text: "The writer orders eggs, toast, and coffee.", answer: true },
+      { text: "No waiter helps the writer at the café.", answer: false },
     ],
     buildSentence: [
+      { target: "The café is warm.", jumbled: ["café", "is", "warm.", "The"] },
+      { target: "The coffee smells wonderful.", jumbled: ["coffee", "smells", "wonderful.", "The"] },
       {
         target: "I sit at a table by the window and look at the menu.",
         jumbled: ["sit", "I", "at", "a", "by", "table", "the", "window", "look", "and", "the", "at", "menu."],
@@ -176,15 +192,19 @@ export const CHAPTERS = [
       { text: "The writer tries a new restaurant this weekend.", answer: true },
       { text: "The restaurant is dark and dirty.", answer: false },
       { text: "The writer feels happy because trying new places is fun.", answer: true },
+      { text: "Ana suggests the noodle soup and spring rolls.", answer: true },
+      { text: "The writer refuses to go into the restaurant.", answer: false },
     ],
     buildSentence: [
-      {
-        target: "My friend Ana tells me about a nice place that serves warm noodle soup.",
-        jumbled: ["friend", "My", "tells", "Ana", "me", "a", "about", "place", "nice", "serves", "that", "noodle", "warm", "soup."],
-      },
+      { target: "A waiter smiles at us.", jumbled: ["smiles", "at", "us.", "A", "waiter"] },
+      { target: "I feel a little nervous.", jumbled: ["feel", "a", "little", "nervous.", "I"] },
       {
         target: "We sit at a table and read the big, colourful menu.",
         jumbled: ["sit", "We", "at", "a", "and", "table", "read", "big,", "the", "menu.", "colourful"],
+      },
+      {
+        target: "My friend Ana tells me about a nice place that serves warm noodle soup.",
+        jumbled: ["friend", "My", "tells", "Ana", "me", "a", "about", "place", "nice", "serves", "that", "noodle", "warm", "soup."],
       },
       {
         target: "As we wait for our food, I feel happy because trying new places is fun.",
@@ -210,15 +230,19 @@ export const CHAPTERS = [
       { text: "The writer orders noodle soup and a glass of water.", answer: true },
       { text: "The writer cannot say anything to the waiter.", answer: false },
       { text: "The writer feels proud because they ordered clearly.", answer: true },
+      { text: "Ana orders spring rolls too.", answer: true },
+      { text: "The waiter refuses to write the order.", answer: false },
     ],
     buildSentence: [
-      {
-        target: "I say, “I would like the noodle soup and a glass of water, please.”",
-        jumbled: ["say,", "I", "would", "“I", "the", "like", "soup", "noodle", "a", "and", "of", "glass", "please.”", "water,"],
-      },
+      { target: "The waiter smiles.", jumbled: ["waiter", "smiles.", "The"] },
+      { target: "I look at the menu.", jumbled: ["look", "at", "the", "menu.", "I"] },
       {
         target: "The waiter writes our order carefully on his small notepad.",
         jumbled: ["waiter", "The", "writes", "order", "our", "on", "carefully", "small", "his", "notepad."],
+      },
+      {
+        target: "I say, “I would like the noodle soup and a glass of water, please.”",
+        jumbled: ["say,", "I", "would", "“I", "the", "like", "soup", "noodle", "a", "and", "of", "glass", "please.”", "water,"],
       },
       {
         target: "As the waiter walks away, I feel proud because I ordered my food clearly in English.",
@@ -244,8 +268,12 @@ export const CHAPTERS = [
       { text: "The soup is warm and the noodles are soft.", answer: true },
       { text: "The writer eats alone and does not talk.", answer: false },
       { text: "The writer feels grateful because good food and a good friend go together.", answer: true },
+      { text: "Ana tells a funny story.", answer: true },
+      { text: "The writer eats in a big hurry.", answer: false },
     ],
     buildSentence: [
+      { target: "I laugh so much.", jumbled: ["laugh", "so", "much.", "I"] },
+      { target: "Ana tells a funny story.", jumbled: ["tells", "a", "funny", "story.", "Ana"] },
       {
         target: "The noodle soup smells wonderful, and the spring rolls look golden and crispy.",
         jumbled: ["soup", "noodle", "The", "smells", "and", "wonderful,", "spring", "the", "look", "rolls", "golden", "crispy.", "and"],
@@ -278,8 +306,12 @@ export const CHAPTERS = [
       { text: "The writer asks the waiter for the bill.", answer: true },
       { text: "The writer and Ana leave without paying.", answer: false },
       { text: "The writer feels good because they shared a nice meal.", answer: true },
+      { text: "Ana suggests sharing the bill.", answer: true },
+      { text: "The writer forgets to leave a tip.", answer: false },
     ],
     buildSentence: [
+      { target: "I add a little tip.", jumbled: ["add", "a", "little", "tip.", "I"] },
+      { target: "The waiter brings the bill.", jumbled: ["waiter", "brings", "the", "bill.", "The"] },
       {
         target: "I say, “Excuse me, can we have the bill, please?”",
         jumbled: ["say,", "I", "me,", "“Excuse", "we", "can", "the", "have", "please?”", "bill,"],
@@ -312,15 +344,19 @@ export const CHAPTERS = [
       { text: "The writer cooks a special dinner at home.", answer: true },
       { text: "The writer eats the special dinner alone.", answer: false },
       { text: "The writer feels happy because they shared good food with a friend.", answer: true },
+      { text: "Ana says the food smells wonderful.", answer: true },
+      { text: "The writer forgets to set the table.", answer: false },
     ],
     buildSentence: [
-      {
-        target: "I go to the market and buy fresh fish, vegetables, rice, and fruit.",
-        jumbled: ["go", "I", "to", "market", "the", "buy", "and", "fish,", "fresh", "vegetables,", "and", "rice,", "fruit."],
-      },
+      { target: "We eat sweet fruit.", jumbled: ["eat", "sweet", "fruit.", "We"] },
+      { target: "I invite my friend Ana.", jumbled: ["invite", "my", "friend", "Ana.", "I"] },
       {
         target: "I set the table with clean plates, glasses, and a small candle.",
         jumbled: ["set", "I", "the", "with", "table", "plates,", "clean", "glasses,", "and", "small", "a", "candle."],
+      },
+      {
+        target: "I go to the market and buy fresh fish, vegetables, rice, and fruit.",
+        jumbled: ["go", "I", "to", "market", "the", "buy", "and", "fish,", "fresh", "vegetables,", "and", "rice,", "fruit."],
       },
       {
         target: "As we finish our special dinner, I feel happy because I shared good food with a good friend.",
@@ -346,15 +382,19 @@ export const CHAPTERS = [
       { text: "In the past, the writer ate fast food alone in front of the phone.", answer: true },
       { text: "The writer stops cooking and eating out.", answer: false },
       { text: "The writer feels proud and thankful at the end.", answer: true },
+      { text: "The writer's friends say the food looks good.", answer: true },
+      { text: "The writer never tries new dishes now.", answer: false },
     ],
     buildSentence: [
-      {
-        target: "Now I shop at the market, cook at home, and eat out with friends.",
-        jumbled: ["I", "Now", "shop", "the", "at", "market,", "at", "cook", "home,", "eat", "and", "out", "friends.", "with"],
-      },
+      { target: "I try new dishes.", jumbled: ["try", "new", "dishes.", "I"] },
+      { target: "I feel proud now.", jumbled: ["feel", "proud", "now.", "I"] },
       {
         target: "Food is not only for my stomach; it is also for happy moments.",
         jumbled: ["is", "Food", "only", "not", "my", "for", "stomach;", "is", "it", "for", "also", "moments.", "happy"],
+      },
+      {
+        target: "Now I shop at the market, cook at home, and eat out with friends.",
+        jumbled: ["I", "Now", "shop", "the", "at", "market,", "at", "cook", "home,", "eat", "and", "out", "friends.", "with"],
       },
       {
         target: "As I think about my food journey, I feel proud and thankful because good food fills my life with joy.",
