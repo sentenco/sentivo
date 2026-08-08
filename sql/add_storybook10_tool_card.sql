@@ -17,7 +17,7 @@ insert into tools (
   'storybook-10',
   'Feeling Better Again',
   '10-Chapter Story',
-  'A1',
+  'A2',
   'free',
   'book',
   'sky',

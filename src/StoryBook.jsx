@@ -116,6 +116,17 @@ function BuildSentencePage({ chapter, index }) {
   const [tray, setTray] = useState(() => shuffle(words.map((text, i) => ({ text, id: i }))));
   const [built, setBuilt] = useState([]);
   const [checked, setChecked] = useState(false);
+  const [copied, setCopied] = useState(false);
+
+  async function copySentence() {
+    try {
+      await navigator.clipboard.writeText(built.map((w) => w.text).join(" "));
+      setCopied(true);
+      setTimeout(() => setCopied(false), 1800);
+    } catch {
+      // clipboard unavailable -- silently ignore, teacher can select+copy manually
+    }
+  }
 
   function tapTray(word) {
     if (checked) return;
@@ -162,6 +173,9 @@ function BuildSentencePage({ chapter, index }) {
       <div className="sb-build-check-row">
         <button type="button" className="sb-check-btn" disabled={!allPlaced || checked} onClick={() => setChecked(true)}>
           ✓ Check
+        </button>
+        <button type="button" className="sb-copy-btn" disabled={built.length === 0} onClick={copySentence}>
+          {copied ? "✓ Copied" : "⧉ Copy sentence"}
         </button>
         {checked && (
           <>

@@ -15,7 +15,7 @@ insert into tools (
   'storybook-9',
   'A Healthier Me',
   '10-Chapter Story',
-  'A1',
+  'A2',
   'free',
   'book',
   'mint',

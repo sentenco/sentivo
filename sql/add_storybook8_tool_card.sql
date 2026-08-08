@@ -15,7 +15,7 @@ insert into tools (
   'storybook-8',
   'A Good Week at the Shop',
   '10-Chapter Story',
-  'A1',
+  'A2',
   'free',
   'book',
   'clay',

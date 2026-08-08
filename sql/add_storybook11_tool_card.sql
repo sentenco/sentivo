@@ -16,7 +16,7 @@ insert into tools (
   'storybook-11',
   'A Happier Free Time',
   '10-Chapter Story',
-  'A1',
+  'A2',
   'free',
   'book',
   'rose',

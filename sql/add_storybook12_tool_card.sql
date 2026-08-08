@@ -16,7 +16,7 @@ insert into tools (
   'storybook-12',
   'Food Brings Me Joy',
   '10-Chapter Story',
-  'A1',
+  'A2',
   'free',
   'book',
   'cinnamon',
