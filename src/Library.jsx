@@ -36,6 +36,12 @@ function daysSince(date) {
   return Math.floor((startOfToday - GAZETTE_LAUNCH) / 86400000);
 }
 
+// Same idea as daysSince, but steps forward again at noon -- used to reshuffle
+// Recommended Lessons twice a day (12am and 12pm) instead of once.
+function halfDaysSince(date) {
+  return daysSince(date) * 2 + (date.getHours() >= 12 ? 1 : 0);
+}
+
 function gcd(a, b) {
   return b === 0 ? a : gcd(b, a % b);
 }
@@ -74,6 +80,14 @@ function CorrectionLine({ segments }) {
     if ("right" in seg) return <span key={i} className="corr-right">{seg.right}</span>;
     return <React.Fragment key={i}>{seg.text}</React.Fragment>;
   });
+}
+
+function PencilIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="m18 2 4 4-13 13H5v-4Z" />
+    </svg>
+  );
 }
 
 function DigitalClock() {
@@ -763,9 +777,11 @@ function TodayFeature({ tools, navigate }) {
   const headline = DAILY_CORRECTIONS[headlineIdx];
   const briefIdxs = pickDeterministic(total, headlineIdx, 2);
   const briefs = briefIdxs.map((i) => DAILY_CORRECTIONS[i]);
+  const dateLabel = today.toLocaleDateString(undefined, { month: "short", day: "numeric" });
 
+  const halfDayIndex = halfDaysSince(today);
   const recommended = tools.length
-    ? pickDeterministic(tools.length, dayIndex, Math.min(3, tools.length)).map((i) => tools[i])
+    ? pickDeterministic(tools.length, halfDayIndex, Math.min(3, tools.length)).map((i) => tools[i])
     : [];
 
   return (
@@ -775,14 +791,22 @@ function TodayFeature({ tools, navigate }) {
         <TodayHero />
 
         <div className="td-correction-card">
-          <div className="td-dc-label">Daily Correction</div>
+          <div className="td-dc-top">
+            <div className="td-dc-label">
+              <span className="td-dc-badge"><PencilIcon /></span>
+              Daily Correction
+            </div>
+            <span className="td-dc-date">{dateLabel}</span>
+          </div>
           <h2 className="td-dc-headline">
             <span className="td-dc-quote">&#10078;</span>
             <CorrectionLine segments={headline.sentence} />
           </h2>
-          {headline.explain.map((line, i) => (
-            <p className="td-dc-explain" key={i}>{line}</p>
-          ))}
+          <div className="td-dc-why">
+            {headline.explain.map((line, i) => (
+              <p className="td-dc-explain" key={i}>{line}</p>
+            ))}
+          </div>
         </div>
 
         <div className="td-briefs">
@@ -790,7 +814,7 @@ function TodayFeature({ tools, navigate }) {
             <div className={`td-brief-card hue-${b.hue === "grammar" ? "coral" : b.hue === "vocab" ? "gold" : "teal"}`} key={b.id}>
               <div className="td-brief-label">{b.category}</div>
               <p className="td-brief-line"><CorrectionLine segments={b.sentence} /></p>
-              <div className="td-brief-pop">
+              <div className="td-brief-why">
                 {b.explain.map((line, i) => <p key={i}>{line}</p>)}
               </div>
             </div>
@@ -821,6 +845,7 @@ function TodayFeature({ tools, navigate }) {
           <div className="gc-reclessons">
             <div className="gc-rl-head">
               <span className="gc-rl-title">Recommended Lessons</span>
+              <span className="gc-rl-hint">Refreshes at noon &amp; midnight</span>
             </div>
             <div className="gc-rl-grid">
               {recommended.map((t) => {
@@ -1840,56 +1865,44 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 /* ── Daily correction ── */
 .td-correction-card {
   position: relative;
-  background: linear-gradient(160deg, #FFFCFA 0%, #FFF2E9 100%);
-  border: 1.5px solid rgba(43,42,74,0.14);
-  border-radius: 24px;
+  background: var(--card);
+  border: 1px solid var(--hair);
+  border-top: 4px solid var(--coral);
+  border-radius: 20px;
   padding: 26px 30px;
-  box-shadow: 0 10px 30px rgba(255,107,74,0.10);
+  box-shadow: 0 10px 30px rgba(43,42,74,0.07);
 }
-.td-dc-label { font-family: 'Quicksand', sans-serif; font-size: 12px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--coral); margin-bottom: 12px; }
-.td-dc-headline { font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: clamp(19px, 2.2vw, 24px); line-height: 1.4; margin: 0 0 12px; color: var(--ink); text-wrap: balance; }
+.td-dc-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
+.td-dc-label { display: flex; align-items: center; gap: 8px; font-family: 'Quicksand', sans-serif; font-size: 12px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--coral); }
+.td-dc-badge { display: flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 50%; background: var(--coral-pale); color: var(--coral); flex-shrink: 0; }
+.td-dc-badge svg { width: 11px; height: 11px; }
+.td-dc-date { font-family: 'Quicksand', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: var(--muted); }
+.td-dc-headline { font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: clamp(19px, 2.2vw, 24px); line-height: 1.4; margin: 0 0 16px; color: var(--ink); text-wrap: balance; }
 .td-dc-quote { color: var(--coral); margin-right: 5px; }
 .corr-wrong { color: #9B9382; font-weight: 400; text-decoration: line-through; text-decoration-color: #B9AF9C; margin-right: 6px; }
 .corr-right { color: var(--coral); font-weight: 700; }
-.td-dc-explain { font-family: 'Quicksand', sans-serif; font-size: 14px; line-height: 1.55; color: var(--ink-soft, #4C4A3E); max-width: 640px; margin: 0 0 4px; }
+.td-dc-why { background: var(--coral-pale); border-radius: 14px; padding: 12px 16px; }
+.td-dc-explain { font-family: 'Quicksand', sans-serif; font-size: 13.5px; line-height: 1.55; color: var(--ink-soft, #4C4A3E); max-width: 640px; margin: 0; }
+.td-dc-explain + .td-dc-explain { margin-top: 4px; }
 
 /* ── Two more corrections ── */
 .td-briefs { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
 .td-brief-card {
-  position: relative;
   background: var(--card);
+  border: 1px solid var(--hair);
   border-top: 3px solid var(--accent, var(--coral));
   border-radius: 14px;
   padding: 12px 14px;
-  box-shadow: 0 6px 16px rgba(43,42,74,0.06);
-  cursor: default;
+  box-shadow: 0 6px 16px rgba(43,42,74,0.05);
 }
 .td-brief-card.hue-coral { --accent: var(--coral); }
-.td-brief-card.hue-gold { --accent: var(--navy); }
-.td-brief-card.hue-teal { --accent: var(--navy-soft); }
+.td-brief-card.hue-gold { --accent: var(--marigold, var(--navy)); }
+.td-brief-card.hue-teal { --accent: var(--dusk, var(--navy-soft)); }
 .td-brief-label { font-family: 'Quicksand', sans-serif; font-size: 10px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent, var(--coral)); margin-bottom: 4px; }
-.td-brief-line { font-family: 'Fredoka', sans-serif; font-size: 13.5px; font-weight: 600; line-height: 1.3; color: var(--ink); margin: 0; }
-.td-brief-pop {
-  position: absolute;
-  top: calc(100% + 8px);
-  left: 0;
-  right: 0;
-  background: var(--card);
-  border: 1px solid var(--hair);
-  border-radius: 12px;
-  padding: 10px 12px;
-  box-shadow: 0 12px 28px rgba(43,42,74,0.18);
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(-4px);
-  transition: opacity 0.15s ease, transform 0.15s ease, visibility 0.15s;
-  z-index: 30;
-  pointer-events: none;
-}
-.td-brief-pop p { font-family: 'Quicksand', sans-serif; font-size: 12.5px; line-height: 1.4; color: #4C4A3E; margin: 0; }
-.td-brief-pop p + p { margin-top: 4px; }
-.td-brief-card:hover { z-index: 20; }
-.td-brief-card:hover .td-brief-pop { opacity: 1; visibility: visible; transform: translateY(0); }
+.td-brief-line { font-family: 'Fredoka', sans-serif; font-size: 13.5px; font-weight: 600; line-height: 1.3; color: var(--ink); margin: 0 0 8px; }
+.td-brief-why { border-top: 1px solid var(--hair); padding-top: 7px; }
+.td-brief-why p { font-family: 'Quicksand', sans-serif; font-size: 11.5px; line-height: 1.4; color: var(--muted); margin: 0; }
+.td-brief-why p + p { margin-top: 3px; }
 
 /* ── Toolkit ── */
 .td-section-label { font-family: 'Quicksand', sans-serif; font-size: 12px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
@@ -1939,39 +1952,40 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .gc-reclessons { margin-top: 18px; }
 .gc-rl-head {
   display: flex;
-  align-items: center;
+  align-items: baseline;
   justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 6px;
   margin-bottom: 10px;
 }
 .gc-rl-title { font-family: 'Fredoka', sans-serif; font-size: 15px; font-weight: 700; color: var(--ink); }
+.gc-rl-hint { font-family: 'Quicksand', sans-serif; font-size: 11px; font-weight: 600; color: var(--muted); }
 
 .gc-rl-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
 .gc-rl-card {
   position: relative;
   min-width: 0;
-  overflow: hidden;
   display: flex;
   flex-direction: column;
   gap: 4px;
   background: var(--card);
   border: 1px solid var(--hair);
+  border-top: 3px solid var(--accent, var(--coral));
   border-radius: 16px;
-  padding: 12px 12px 10px;
+  padding: 14px 14px 12px;
   text-decoration: none;
   transition: transform 0.18s ease, box-shadow 0.18s ease;
 }
-.gc-rl-card::after { content: ""; position: absolute; left: 0; right: 100%; bottom: 0; height: 3px; transition: right 0.28s ease; }
-.gc-rl-card.hue-coral::after { background: var(--coral); }
-.gc-rl-card.hue-gold::after { background: var(--navy); }
-.gc-rl-card.hue-teal::after { background: var(--navy-soft); }
+.gc-rl-card.hue-coral { --accent: var(--coral); }
+.gc-rl-card.hue-gold { --accent: var(--marigold, var(--navy)); }
+.gc-rl-card.hue-teal { --accent: var(--dusk, var(--navy-soft)); }
 .gc-rl-card:hover { transform: translateY(-3px); box-shadow: 0 12px 26px rgba(34,58,51,0.14); }
-.gc-rl-card:hover::after { right: 0; }
 
-.gc-rl-icon { width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; }
-.gc-rl-card.hue-teal .gc-rl-icon { background: rgba(90,107,146,0.14); }
-.gc-rl-card.hue-gold .gc-rl-icon { background: rgba(27,42,74,0.1); }
+.gc-rl-icon { width: 32px; height: 32px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 15px; }
+.gc-rl-card.hue-teal .gc-rl-icon { background: rgba(22,191,174,0.14); }
+.gc-rl-card.hue-gold .gc-rl-icon { background: rgba(255,182,72,0.2); }
 .gc-rl-card.hue-coral .gc-rl-icon { background: rgba(255,107,74,0.14); }
-.gc-rl-name { font-family: 'Fredoka', sans-serif; font-size: 15px; font-weight: 600; line-height: 1.3; color: var(--ink); margin-top: 2px; }
+.gc-rl-name { font-family: 'Fredoka', sans-serif; font-size: 15px; font-weight: 600; line-height: 1.3; color: var(--ink); margin-top: 4px; }
 .gc-rl-meta { font-family: 'Quicksand', sans-serif; font-size: 10px; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase; color: var(--muted); }
 .gc-rl-meta .prem { color: var(--coral); }
 .gc-rl-cta {
@@ -1982,6 +1996,7 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   font-weight: 800;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+  color: var(--accent, var(--coral));
   opacity: 0;
   transform: translateY(3px);
   transition: opacity 0.18s ease, transform 0.18s ease;
@@ -1989,15 +2004,12 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   align-items: center;
   gap: 4px;
 }
-.gc-rl-card.hue-coral .gc-rl-cta { color: var(--coral); }
-.gc-rl-card.hue-gold .gc-rl-cta { color: var(--navy); }
-.gc-rl-card.hue-teal .gc-rl-cta { color: var(--navy-soft); }
 .gc-rl-cta .arr { transition: transform 0.18s ease; }
 .gc-rl-card:hover .gc-rl-cta { opacity: 1; transform: translateY(0); }
 .gc-rl-card:hover .gc-rl-cta .arr { transform: translateX(3px); }
 
 @media (prefers-reduced-motion: reduce) {
-  .gc-rl-card, .gc-rl-card::after, .gc-rl-cta, .gc-rl-cta .arr { transition: none; }
+  .gc-rl-card, .gc-rl-cta, .gc-rl-cta .arr { transition: none; }
   .gc-rl-card:hover { transform: none; }
   .gc-rl-cta { opacity: 1; transform: none; }
 }
