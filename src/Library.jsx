@@ -74,6 +74,19 @@ const CATEGORY_ICON = {
   Writing: "✍️", Listening: "🎧", Speaking: "🗣️",
 };
 
+// Grammar and Vocabulary are fully hardcoded pages (no rows in the `tools`
+// table to recommend), so Recommended Lessons rotates through real, known-
+// working routes for those two instead of querying `tools`.
+const GRAMMAR_LESSONS = [
+  { id: "grammar-verb-tenses", title: "Verb Tenses", href: "/library/grammar/verb-tenses" },
+  { id: "grammar-sentence-patterns", title: "Sentence Patterns", href: "/library/grammar/sentence-patterns" },
+  { id: "grammar-parts-of-speech", title: "Parts of Speech", href: "/library/grammar/parts-of-speech" },
+];
+const VOCAB_LESSONS = [
+  { id: "vocab-synonyms", title: "Synonyms", href: "/library/vocabulary/synonyms/sample/player" },
+  { id: "vocab-antonyms", title: "Antonyms", href: "/library/vocabulary/antonyms/sample/player" },
+];
+
 function CorrectionLine({ segments }) {
   return segments.map((seg, i) => {
     if ("wrong" in seg) return <span key={i} className="corr-wrong">{seg.wrong}</span>;
@@ -558,7 +571,7 @@ function GrammarFeature({ navigate }) {
               <div className="gdn-bed-body">
                 <h3 className="gdn-bed-title">{m.title}</h3>
                 <p className="gdn-bed-spec">{m.spec}</p>
-                <span className="gdn-bed-cta">Tend this bed →</span>
+                <span className="gdn-bed-cta">Open →</span>
               </div>
             </a>
           ) : (
@@ -780,9 +793,21 @@ function TodayFeature({ tools, navigate }) {
   const dateLabel = today.toLocaleDateString(undefined, { month: "short", day: "numeric" });
 
   const halfDayIndex = halfDaysSince(today);
-  const recommended = tools.length
-    ? pickDeterministic(tools.length, halfDayIndex, Math.min(3, tools.length)).map((i) => tools[i])
+  const readingTools = tools.filter((t) => t.category === "Reading");
+  const readingPick = readingTools.length
+    ? pickDeterministic(readingTools.length, halfDayIndex, 1).map((i) => {
+        const t = readingTools[i];
+        const href = t.content_type === "forge-track" ? `/library/forge/${t.id}` : `/library/${t.id}`;
+        return { id: t.id, title: t.title, category: "Reading", level: t.level, access: t.access, href };
+      })
     : [];
+  const grammarPick = pickDeterministic(GRAMMAR_LESSONS.length, halfDayIndex + 5, 1).map((i) => ({
+    ...GRAMMAR_LESSONS[i], category: "Grammar", level: null, access: "free",
+  }));
+  const vocabPick = pickDeterministic(VOCAB_LESSONS.length, halfDayIndex + 11, 1).map((i) => ({
+    ...VOCAB_LESSONS[i], category: "Vocabulary", level: null, access: "free",
+  }));
+  const recommended = [...readingPick, ...grammarPick, ...vocabPick];
 
   return (
     <div className="gc-dashboard">
@@ -814,7 +839,7 @@ function TodayFeature({ tools, navigate }) {
             <div className={`td-brief-card hue-${b.hue === "grammar" ? "coral" : b.hue === "vocab" ? "gold" : "teal"}`} key={b.id}>
               <div className="td-brief-label">{b.category}</div>
               <p className="td-brief-line"><CorrectionLine segments={b.sentence} /></p>
-              <div className="td-brief-why">
+              <div className="td-brief-pop">
                 {b.explain.map((line, i) => <p key={i}>{line}</p>)}
               </div>
             </div>
@@ -845,14 +870,12 @@ function TodayFeature({ tools, navigate }) {
           <div className="gc-reclessons">
             <div className="gc-rl-head">
               <span className="gc-rl-title">Recommended Lessons</span>
-              <span className="gc-rl-hint">Refreshes at noon &amp; midnight</span>
             </div>
             <div className="gc-rl-grid">
               {recommended.map((t) => {
-                const href = t.content_type === "forge-track" ? `/library/forge/${t.id}` : `/library/${t.id}`;
                 const hue = CATEGORY_HUE[t.category] || "gold";
                 return (
-                  <a href={href} className={`gc-rl-card hue-${hue}`} key={t.id}>
+                  <a href={t.href} className={`gc-rl-card hue-${hue}`} key={t.id}>
                     <span className="gc-rl-icon">{CATEGORY_ICON[t.category] || "📘"}</span>
                     <span className="gc-rl-name">{t.title}</span>
                     <span className="gc-rl-meta">
@@ -1888,21 +1911,41 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 /* ── Two more corrections ── */
 .td-briefs { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
 .td-brief-card {
+  position: relative;
   background: var(--card);
   border: 1px solid var(--hair);
   border-top: 3px solid var(--accent, var(--coral));
   border-radius: 14px;
   padding: 12px 14px;
   box-shadow: 0 6px 16px rgba(43,42,74,0.05);
+  cursor: default;
 }
 .td-brief-card.hue-coral { --accent: var(--coral); }
 .td-brief-card.hue-gold { --accent: var(--marigold, var(--navy)); }
 .td-brief-card.hue-teal { --accent: var(--dusk, var(--navy-soft)); }
 .td-brief-label { font-family: 'Quicksand', sans-serif; font-size: 10px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent, var(--coral)); margin-bottom: 4px; }
-.td-brief-line { font-family: 'Fredoka', sans-serif; font-size: 13.5px; font-weight: 600; line-height: 1.3; color: var(--ink); margin: 0 0 8px; }
-.td-brief-why { border-top: 1px solid var(--hair); padding-top: 7px; }
-.td-brief-why p { font-family: 'Quicksand', sans-serif; font-size: 11.5px; line-height: 1.4; color: var(--muted); margin: 0; }
-.td-brief-why p + p { margin-top: 3px; }
+.td-brief-line { font-family: 'Fredoka', sans-serif; font-size: 13.5px; font-weight: 600; line-height: 1.3; color: var(--ink); margin: 0; }
+.td-brief-pop {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  right: 0;
+  background: var(--card);
+  border: 1px solid var(--hair);
+  border-radius: 12px;
+  padding: 10px 12px;
+  box-shadow: 0 12px 28px rgba(43,42,74,0.18);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-4px);
+  transition: opacity 0.15s ease, transform 0.15s ease, visibility 0.15s;
+  z-index: 30;
+  pointer-events: none;
+}
+.td-brief-pop p { font-family: 'Quicksand', sans-serif; font-size: 12.5px; line-height: 1.4; color: #4C4A3E; margin: 0; }
+.td-brief-pop p + p { margin-top: 4px; }
+.td-brief-card:hover { z-index: 20; }
+.td-brief-card:hover .td-brief-pop { opacity: 1; visibility: visible; transform: translateY(0); }
 
 /* ── Toolkit ── */
 .td-section-label { font-family: 'Quicksand', sans-serif; font-size: 12px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
@@ -1959,7 +2002,6 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   margin-bottom: 10px;
 }
 .gc-rl-title { font-family: 'Fredoka', sans-serif; font-size: 15px; font-weight: 700; color: var(--ink); }
-.gc-rl-hint { font-family: 'Quicksand', sans-serif; font-size: 11px; font-weight: 600; color: var(--muted); }
 
 .gc-rl-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
 .gc-rl-card {
@@ -2419,7 +2461,8 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .gdn-beds { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(14px, 1.8vw, 22px); }
 .gdn-bed {
   position: relative;
-  display: block;
+  display: flex;
+  flex-direction: column;
   background: #FFFFFF;
   border-radius: 16px;
   overflow: hidden;
@@ -2429,15 +2472,16 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 .gdn-bed:hover { transform: translateY(-4px); box-shadow: 0 18px 36px rgba(51,41,26,0.18); }
-.gdn-bed-banner { display: block; width: 100%; height: auto; }
+.gdn-bed-banner { display: block; width: 100%; height: auto; flex-shrink: 0; }
 
-.gdn-bed-body { padding: 20px 20px 22px; }
+.gdn-bed-body { display: flex; flex-direction: column; flex: 1; padding: 20px 20px 22px; }
 .gdn-bed-title { font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: clamp(19px, 1.9vw, 22px); margin: 0 0 8px; color: #221B10; }
-.gdn-bed-spec { font-family: 'Quicksand', sans-serif; font-size: 12.5px; color: #6B5C3E; line-height: 1.5; margin: 0 0 18px; min-height: 42px; }
+.gdn-bed-spec { font-family: 'Quicksand', sans-serif; font-size: 12.5px; color: #6B5C3E; line-height: 1.5; margin: 0 0 18px; }
 .gdn-bed-cta {
   display: block; text-align: center;
   font-family: 'Quicksand', sans-serif; font-size: 12.5px; font-weight: 700;
   color: #FFFFFF; border-radius: 8px; padding: 10px 0;
+  margin-top: auto;
 }
 .gdn-bed--leaf .gdn-bed-cta { background: var(--leaf); }
 .gdn-bed--gold .gdn-bed-cta { background: var(--gold); }
