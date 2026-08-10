@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getNotebookDesign, NOTEBOOK_STAGE_MARGIN } from "./notebookDesigns";
 
@@ -30,14 +30,35 @@ export default function NotebookPage() {
   const design = getNotebookDesign(designKey);
   const nextId = useRef(2);
   const inputRefs = useRef(new Map());
+  const pendingCaret = useRef(null);
 
   const [lines, setLines] = useState(() => [makeLine(1, { color: design?.ink || "#1A1A1A" })]);
   const [activeId, setActiveId] = useState(1);
   const [paper, setPaper] = useState("blank");
 
-  useEffect(() => {
-    inputRefs.current.get(activeId)?.focus();
+  // Focus (and, after a split/merge, place the caret) whenever the active
+  // line changes -- runs before paint so there's no visible jump.
+  useLayoutEffect(() => {
+    const el = inputRefs.current.get(activeId);
+    if (!el) return;
+    el.focus();
+    if (pendingCaret.current && pendingCaret.current.id === activeId) {
+      const pos = pendingCaret.current.pos;
+      el.setSelectionRange(pos, pos);
+      pendingCaret.current = null;
+    }
   }, [activeId]);
+
+  // Auto-grow every textarea to fit its (possibly wrapped) content -- runs
+  // before paint on every text/format change so lines never overlap.
+  useLayoutEffect(() => {
+    lines.forEach((line) => {
+      const el = inputRefs.current.get(line.id);
+      if (!el) return;
+      el.style.height = "auto";
+      el.style.height = `${el.scrollHeight}px`;
+    });
+  }, [lines]);
 
   if (!design) {
     return (
@@ -61,27 +82,41 @@ export default function NotebookPage() {
 
   function handleLineKeyDown(e, id) {
     const idx = lines.findIndex((l) => l.id === id);
-    if (e.key === "Enter") {
+    const el = e.target;
+
+    // Plain Enter splits the line at the caret, like Word/Docs: text before
+    // the caret stays put, text after it moves to a new line below.
+    // Shift+Enter is left alone so it inserts a normal soft line break.
+    if (e.key === "Enter" && !e.shiftKey) {
       e.preventDefault();
       const current = lines[idx];
-      const newLine = { ...current, id: nextId.current++, text: "" };
+      const caret = el.selectionStart;
+      const before = current.text.slice(0, caret);
+      const after = current.text.slice(caret);
+      const newLine = { ...current, id: nextId.current++, text: after };
+      pendingCaret.current = { id: newLine.id, pos: 0 };
       setLines((ls) => {
         const next = [...ls];
+        next[idx] = { ...next[idx], text: before };
         next.splice(idx + 1, 0, newLine);
         return next;
       });
       setActiveId(newLine.id);
-    } else if (e.key === "Backspace" && lines[idx].text === "" && lines.length > 1) {
+    } else if (e.key === "Backspace" && el.selectionStart === 0 && el.selectionEnd === 0 && idx > 0) {
+      // Backspace at the very start of a line merges it into the end of
+      // the previous line, carrying its text (and the caret) along.
       e.preventDefault();
-      const fallback = lines[idx - 1] || lines[idx + 1];
-      setLines((ls) => ls.filter((l) => l.id !== id));
-      setActiveId(fallback.id);
-    } else if (e.key === "ArrowUp" && idx > 0) {
-      e.preventDefault();
-      setActiveId(lines[idx - 1].id);
-    } else if (e.key === "ArrowDown" && idx < lines.length - 1) {
-      e.preventDefault();
-      setActiveId(lines[idx + 1].id);
+      const prev = lines[idx - 1];
+      const current = lines[idx];
+      const mergedText = prev.text + current.text;
+      pendingCaret.current = { id: prev.id, pos: prev.text.length };
+      setLines((ls) => {
+        const next = ls.filter((l) => l.id !== current.id);
+        const prevIdx = next.findIndex((l) => l.id === prev.id);
+        next[prevIdx] = { ...next[prevIdx], text: mergedText };
+        return next;
+      });
+      setActiveId(prev.id);
     }
   }
 
@@ -195,9 +230,9 @@ export default function NotebookPage() {
             {lines.map((line) => {
               const face = FONT_FACES.find((f) => f.key === line.fontFamily) || FONT_FACES[0];
               return (
-                <input
+                <textarea
                   key={line.id}
-                  type="text"
+                  rows={1}
                   className={`nbp-line ${activeId === line.id ? "is-active" : ""}`}
                   value={line.text}
                   ref={(el) => {
@@ -394,12 +429,18 @@ const CSS = `
 .nbp-line {
   width: 100%;
   flex-shrink: 0;
+  display: block;
   border: none;
   outline: none;
   background: transparent;
   line-height: 1.5;
   padding: 1px 3px;
   border-radius: 4px;
+  resize: none;
+  overflow: hidden;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  font-family: inherit;
 }
 .nbp-line.is-active { background: rgba(30,143,118,0.07); }
 
