@@ -744,7 +744,9 @@ const BOOK_AGE_TRACK = {
   "storybook-11": "Adults",
   "storybook-12": "Adults",
 };
-const READING_LEVELS = ["A1", "A2", "B1", "B2", "C1", "C2"];
+// Reading stops at B2 -- C1/C2 learners are expected to work on Speaking
+// instead, so no story content will ever exist for those levels.
+const READING_LEVELS = ["A1", "A2", "B1", "B2"];
 const READING_AGE_TRACKS = ["Kids", "Teens", "Adults"];
 
 function BookshelfRows({ books, navigate, colorOffset }) {
