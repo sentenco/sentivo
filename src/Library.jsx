@@ -1394,11 +1394,19 @@ export default function Library() {
             <img src="/logo-sentivo.png" alt="" className="gc-header-logo" />entivo
           </a>
           <div className="gc-topbar-actions">
-            <label className="gc-search">
-              <svg viewBox="0 0 20 20" aria-hidden="true">
-                <circle cx="9" cy="9" r="6.2" fill="none" stroke="currentColor" strokeWidth="1.6" />
-                <line x1="13.6" y1="13.6" x2="18" y2="18" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
-              </svg>
+            <div className="gc-search">
+              <button
+                type="button"
+                className="gc-search-icon-btn"
+                onClick={() => navigate("/library/search")}
+                title="Dictionary, Grammar & Translator"
+                aria-label="Open Dictionary, Grammar & Translator"
+              >
+                <svg viewBox="0 0 20 20" aria-hidden="true">
+                  <circle cx="9" cy="9" r="6.2" fill="none" stroke="currentColor" strokeWidth="1.6" />
+                  <line x1="13.6" y1="13.6" x2="18" y2="18" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
+                </svg>
+              </button>
               <input
                 type="text"
                 placeholder="Search the library…"
@@ -1409,7 +1417,7 @@ export default function Library() {
                   if (isCurriculum) goToSidebar("library");
                 }}
               />
-            </label>
+            </div>
             {!user ? (
               <>
                 <button className="gc-btn" onClick={() => setAuthMode("login")}>Log in</button>
@@ -1640,6 +1648,8 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .gc-topbar-actions { display: flex; align-items: center; gap: 12px; }
 .gc-search { display: flex; align-items: center; gap: 6px; padding: 7px 12px; border: 1px solid rgba(34,58,51,0.3); border-radius: 999px; background: var(--card); color: var(--muted); }
 .gc-search svg { width: 14px; height: 14px; flex-shrink: 0; }
+.gc-search-icon-btn { display: flex; align-items: center; justify-content: center; padding: 0; border: none; background: none; color: inherit; cursor: pointer; border-radius: 50%; }
+.gc-search-icon-btn:hover { color: var(--ink); }
 .gc-search input { border: none; background: transparent; outline: none; font-family: 'Quicksand', sans-serif; font-size: 13.5px; color: var(--ink); width: 170px; }
 .gc-search input::placeholder { color: #9B9382; }
 .gc-btn { font-family: 'Quicksand', sans-serif; font-size: 13.5px; font-weight: 700; padding: 8px 18px; border-radius: 999px; border: 1.5px solid var(--ink); color: var(--ink); background: transparent; cursor: pointer; text-decoration: none; }

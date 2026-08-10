@@ -7,6 +7,7 @@ import Flashcards from './Flashcards.jsx'
 import LessonPlayerPage from './LessonPlayerPage.jsx'
 import TeacherGuide from './TeacherGuide.jsx'
 import StoryBook from './StoryBook.jsx'
+import SearchLookup from './SearchLookup.jsx'
 import ArticleReader from './ArticleReader.jsx'
 import ArticlePlayerPage from './ArticlePlayerPage.jsx'
 import VocabularyPlayerPage from './VocabularyPlayerPage.jsx'
@@ -110,6 +111,7 @@ createRoot(document.getElementById('root')).render(
             <Route path="/library/storybook-20" element={<StoryBook book={storybook20} />} />
             <Route path="/library/storybook-21" element={<StoryBook book={storybook21} />} />
             <Route path="/library/storybook-22" element={<StoryBook book={storybook22} />} />
+            <Route path="/library/search" element={<SearchLookup />} />
             <Route path="/library/forge" element={<ForgeHub />} />
             <Route path="/library/forge/:trackId" element={<ForgeTrack />} />
             <Route path="/library/forge/:trackId/:lessonNum" element={<Forge />} />
