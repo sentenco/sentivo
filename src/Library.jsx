@@ -790,7 +790,6 @@ function TodayFeature({ tools, navigate }) {
   const headline = DAILY_CORRECTIONS[headlineIdx];
   const briefIdxs = pickDeterministic(total, headlineIdx, 2);
   const briefs = briefIdxs.map((i) => DAILY_CORRECTIONS[i]);
-  const dateLabel = today.toLocaleDateString(undefined, { month: "short", day: "numeric" });
 
   const halfDayIndex = halfDaysSince(today);
   const readingTools = tools.filter((t) => t.category === "Reading");
@@ -816,12 +815,9 @@ function TodayFeature({ tools, navigate }) {
         <TodayHero />
 
         <div className="td-correction-card">
-          <div className="td-dc-top">
-            <div className="td-dc-label">
-              <span className="td-dc-badge"><PencilIcon /></span>
-              Daily Correction
-            </div>
-            <span className="td-dc-date">{dateLabel}</span>
+          <div className="td-dc-label">
+            <span className="td-dc-badge"><PencilIcon /></span>
+            Daily Correction
           </div>
           <h2 className="td-dc-headline">
             <span className="td-dc-quote">&#10078;</span>
@@ -1895,11 +1891,9 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   padding: 26px 30px;
   box-shadow: 0 10px 30px rgba(43,42,74,0.07);
 }
-.td-dc-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
-.td-dc-label { display: flex; align-items: center; gap: 8px; font-family: 'Quicksand', sans-serif; font-size: 12px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--coral); }
+.td-dc-label { display: flex; align-items: center; gap: 8px; margin-bottom: 16px; font-family: 'Quicksand', sans-serif; font-size: 12px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--coral); }
 .td-dc-badge { display: flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 50%; background: var(--coral-pale); color: var(--coral); flex-shrink: 0; }
 .td-dc-badge svg { width: 11px; height: 11px; }
-.td-dc-date { font-family: 'Quicksand', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: var(--muted); }
 .td-dc-headline { font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: clamp(19px, 2.2vw, 24px); line-height: 1.4; margin: 0 0 16px; color: var(--ink); text-wrap: balance; }
 .td-dc-quote { color: var(--coral); margin-right: 5px; }
 .corr-wrong { color: #9B9382; font-weight: 400; text-decoration: line-through; text-decoration-color: #B9AF9C; margin-right: 6px; }

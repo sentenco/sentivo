@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getNotebookDesign, NOTEBOOK_STAGE_MARGIN } from "./notebookDesigns";
 
@@ -7,27 +7,37 @@ const INK_COLORS = ["#1A1A1A", "#E4322B", "#2B6FE0", "#F2C230"];
 const FONT_FACES = [
   { key: "hand", label: "Handwriting", family: "'Caveat', cursive" },
   { key: "print", label: "Print", family: "'Quicksand', sans-serif" },
+  { key: "bold", label: "Bold Print", family: "'Fredoka', sans-serif" },
 ];
+
+function makeLine(id, overrides = {}) {
+  return {
+    id,
+    text: "",
+    fontSize: 22,
+    fontFamily: "hand",
+    align: "left",
+    color: "#1A1A1A",
+    bold: false,
+    italic: false,
+    underline: false,
+    ...overrides,
+  };
+}
 
 export default function NotebookPage() {
   const { design: designKey } = useParams();
   const design = getNotebookDesign(designKey);
-  const editableRef = useRef(null);
+  const nextId = useRef(2);
+  const inputRefs = useRef(new Map());
 
-  const [fontSize, setFontSize] = useState(22);
-  const [fontFace, setFontFace] = useState("hand");
-  const [align, setAlign] = useState("left");
+  const [lines, setLines] = useState(() => [makeLine(1, { color: design?.ink || "#1A1A1A" })]);
+  const [activeId, setActiveId] = useState(1);
   const [paper, setPaper] = useState("blank");
 
-  function exec(command, value = null) {
-    editableRef.current?.focus();
-    document.execCommand(command, false, value);
-  }
-
-  function handleClear() {
-    if (editableRef.current) editableRef.current.innerHTML = "";
-    editableRef.current?.focus();
-  }
+  useEffect(() => {
+    inputRefs.current.get(activeId)?.focus();
+  }, [activeId]);
 
   if (!design) {
     return (
@@ -38,14 +48,55 @@ export default function NotebookPage() {
     );
   }
 
-  const face = FONT_FACES.find((f) => f.key === fontFace) || FONT_FACES[0];
+  const activeIndex = lines.findIndex((l) => l.id === activeId);
+  const activeLine = lines[activeIndex] || lines[0];
+
+  function updateActiveLine(patch) {
+    setLines((ls) => ls.map((l) => (l.id === activeId ? { ...l, ...patch } : l)));
+  }
+
+  function updateLineText(id, text) {
+    setLines((ls) => ls.map((l) => (l.id === id ? { ...l, text } : l)));
+  }
+
+  function handleLineKeyDown(e, id) {
+    const idx = lines.findIndex((l) => l.id === id);
+    if (e.key === "Enter") {
+      e.preventDefault();
+      const current = lines[idx];
+      const newLine = { ...current, id: nextId.current++, text: "" };
+      setLines((ls) => {
+        const next = [...ls];
+        next.splice(idx + 1, 0, newLine);
+        return next;
+      });
+      setActiveId(newLine.id);
+    } else if (e.key === "Backspace" && lines[idx].text === "" && lines.length > 1) {
+      e.preventDefault();
+      const fallback = lines[idx - 1] || lines[idx + 1];
+      setLines((ls) => ls.filter((l) => l.id !== id));
+      setActiveId(fallback.id);
+    } else if (e.key === "ArrowUp" && idx > 0) {
+      e.preventDefault();
+      setActiveId(lines[idx - 1].id);
+    } else if (e.key === "ArrowDown" && idx < lines.length - 1) {
+      e.preventDefault();
+      setActiveId(lines[idx + 1].id);
+    }
+  }
+
+  function handleClear() {
+    const fresh = makeLine(nextId.current++, { color: design.ink });
+    setLines([fresh]);
+    setActiveId(fresh.id);
+  }
 
   return (
     <div className="nbp-shell" style={{ background: design.frame }}>
       <style>{CSS}</style>
 
       <div className="nbp-toolbar-wrap">
-        <div className="nbp-toolbar-handle">✏️ Tools</div>
+        <div className="nbp-toolbar-handle">✏️ Tools · line {activeIndex + 1}</div>
         <div className="nbp-toolbar-panel">
           <div className="nbp-tool-group">
             <label className="nbp-tool-label">Size</label>
@@ -53,14 +104,14 @@ export default function NotebookPage() {
               type="range"
               min="14"
               max="44"
-              value={fontSize}
-              onChange={(e) => setFontSize(Number(e.target.value))}
+              value={activeLine.fontSize}
+              onChange={(e) => updateActiveLine({ fontSize: Number(e.target.value) })}
               className="nbp-slider"
             />
           </div>
 
           <div className="nbp-tool-group">
-            <select className="nbp-select" value={fontFace} onChange={(e) => setFontFace(e.target.value)}>
+            <select className="nbp-select" value={activeLine.fontFamily} onChange={(e) => updateActiveLine({ fontFamily: e.target.value })}>
               {FONT_FACES.map((f) => (
                 <option key={f.key} value={f.key}>{f.label}</option>
               ))}
@@ -68,9 +119,21 @@ export default function NotebookPage() {
           </div>
 
           <div className="nbp-tool-group">
-            <button type="button" className="nbp-btn" onMouseDown={(e) => e.preventDefault()} onClick={() => exec("bold")}><b>B</b></button>
-            <button type="button" className="nbp-btn" onMouseDown={(e) => e.preventDefault()} onClick={() => exec("italic")}><i>I</i></button>
-            <button type="button" className="nbp-btn" onMouseDown={(e) => e.preventDefault()} onClick={() => exec("underline")}><u>U</u></button>
+            <button
+              type="button"
+              className={`nbp-btn ${activeLine.bold ? "is-active" : ""}`}
+              onClick={() => updateActiveLine({ bold: !activeLine.bold })}
+            ><b>B</b></button>
+            <button
+              type="button"
+              className={`nbp-btn ${activeLine.italic ? "is-active" : ""}`}
+              onClick={() => updateActiveLine({ italic: !activeLine.italic })}
+            ><i>I</i></button>
+            <button
+              type="button"
+              className={`nbp-btn ${activeLine.underline ? "is-active" : ""}`}
+              onClick={() => updateActiveLine({ underline: !activeLine.underline })}
+            ><u>U</u></button>
           </div>
 
           <div className="nbp-tool-group">
@@ -78,9 +141,8 @@ export default function NotebookPage() {
               <button
                 key={a}
                 type="button"
-                className={`nbp-btn nbp-align-btn ${align === a ? "is-active" : ""}`}
-                onMouseDown={(e) => e.preventDefault()}
-                onClick={() => { setAlign(a); exec("justify" + a[0].toUpperCase() + a.slice(1)); }}
+                className={`nbp-btn nbp-align-btn ${activeLine.align === a ? "is-active" : ""}`}
+                onClick={() => updateActiveLine({ align: a })}
                 title={a}
               >
                 {a === "left" ? "⯇" : a === "center" ? "≡" : a === "right" ? "⯈" : "☰"}
@@ -93,10 +155,9 @@ export default function NotebookPage() {
               <button
                 key={c}
                 type="button"
-                className="nbp-swatch"
+                className={`nbp-swatch ${activeLine.color === c ? "is-active" : ""}`}
                 style={{ background: c }}
-                onMouseDown={(e) => e.preventDefault()}
-                onClick={() => exec("foreColor", c)}
+                onClick={() => updateActiveLine({ color: c })}
                 aria-label={`Color ${c}`}
               />
             ))}
@@ -123,21 +184,43 @@ export default function NotebookPage() {
           }}
         >
           <div
-            ref={editableRef}
-            className={`nbp-editable nbp-paper--${paper}`}
-            contentEditable
-            suppressContentEditableWarning
+            className={`nbp-lines nbp-paper--${paper}`}
             style={{
               top: `${design.safeArea.top}%`,
               right: `${design.safeArea.right}%`,
               bottom: `${design.safeArea.bottom}%`,
               left: `${design.safeArea.left}%`,
-              fontSize: `${fontSize}px`,
-              fontFamily: face.family,
-              textAlign: align,
-              color: design.ink,
             }}
-          />
+          >
+            {lines.map((line) => {
+              const face = FONT_FACES.find((f) => f.key === line.fontFamily) || FONT_FACES[0];
+              return (
+                <input
+                  key={line.id}
+                  type="text"
+                  className={`nbp-line ${activeId === line.id ? "is-active" : ""}`}
+                  value={line.text}
+                  placeholder="Write here…"
+                  ref={(el) => {
+                    if (el) inputRefs.current.set(line.id, el);
+                    else inputRefs.current.delete(line.id);
+                  }}
+                  onFocus={() => setActiveId(line.id)}
+                  onChange={(e) => updateLineText(line.id, e.target.value)}
+                  onKeyDown={(e) => handleLineKeyDown(e, line.id)}
+                  style={{
+                    fontSize: `${line.fontSize}px`,
+                    fontFamily: face.family,
+                    textAlign: line.align,
+                    color: line.color,
+                    fontWeight: line.bold ? 700 : 400,
+                    fontStyle: line.italic ? "italic" : "normal",
+                    textDecoration: line.underline ? "underline" : "none",
+                  }}
+                />
+              );
+            })}
+          </div>
         </div>
       </div>
     </div>
@@ -189,6 +272,7 @@ const CSS = `
   user-select: none;
   cursor: default;
   transition: opacity 0.15s ease;
+  white-space: nowrap;
 }
 .nbp-toolbar-wrap:hover .nbp-toolbar-handle { opacity: 0; height: 0; padding-top: 0; padding-bottom: 0; overflow: hidden; }
 
@@ -252,7 +336,7 @@ const CSS = `
   padding: 0 6px;
 }
 .nbp-btn:hover { background: #E1F0EA; }
-.nbp-align-btn.is-active { background: #1E8F76; color: #FFFFFF; border-color: #1E8F76; }
+.nbp-btn.is-active { background: #1E8F76; color: #FFFFFF; border-color: #1E8F76; }
 
 .nbp-swatch {
   width: 20px;
@@ -262,6 +346,7 @@ const CSS = `
   cursor: pointer;
   padding: 0;
 }
+.nbp-swatch.is-active { border-color: #1E8F76; box-shadow: 0 0 0 2px rgba(30,143,118,0.25); }
 
 .nbp-clear-btn {
   font-family: 'Quicksand', sans-serif;
@@ -300,33 +385,31 @@ const CSS = `
   box-shadow: 0 20px 46px rgba(0,0,0,0.28);
 }
 
-.nbp-editable {
+.nbp-lines {
   position: absolute;
   overflow-y: auto;
-  outline: none;
-  line-height: 1.5;
-  word-wrap: break-word;
-}
-.nbp-editable:empty::before {
-  content: "Start writing…";
-  opacity: 0.35;
+  display: flex;
+  flex-direction: column;
 }
 
-.nbp-paper--ruled {
-  background-image: repeating-linear-gradient(
-    to bottom,
-    transparent 0,
-    transparent calc(1.5em - 1px),
-    rgba(0,0,0,0.14) calc(1.5em - 1px),
-    rgba(0,0,0,0.14) 1.5em
-  );
-  background-attachment: local;
+.nbp-line {
+  width: 100%;
+  flex-shrink: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  line-height: 1.5;
+  padding: 1px 3px;
+  border-radius: 4px;
 }
+.nbp-line::placeholder { opacity: 0.32; }
+.nbp-line.is-active { background: rgba(30,143,118,0.07); }
+
+.nbp-paper--ruled .nbp-line { border-bottom: 1px solid rgba(0,0,0,0.16); }
 .nbp-paper--grid {
   background-image:
     repeating-linear-gradient(to bottom, transparent 0, transparent 23px, rgba(0,0,0,0.10) 23px, rgba(0,0,0,0.10) 24px),
     repeating-linear-gradient(to right, transparent 0, transparent 23px, rgba(0,0,0,0.10) 23px, rgba(0,0,0,0.10) 24px);
-  background-attachment: local;
 }
 
 @media (max-width: 560px) {
