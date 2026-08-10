@@ -5,12 +5,12 @@
 
 const MAX_INPUT_LENGTH = 2000;
 
-const SYSTEM_PROMPT = `You are a translator for an ESL teaching platform used by English teachers and their students. Translate the given text into the requested target language. Detect the source language automatically — the input may be in English or in the student's own language. Keep the translation natural and idiomatic, not word-for-word.
+const SYSTEM_PROMPT = `You are a translator for an ESL teaching platform used by English teachers and their students. Translate the given text from the specified source language into the specified target language. Keep the translation natural and idiomatic, not word-for-word.
 
 Respond with ONLY valid JSON in this exact shape, no other text, no markdown fences:
-{"translation": "...", "sourceLang": "..."}
+{"translation": "..."}
 
-"sourceLang" is the name of the language you detected the input to be written in (e.g. "English", "Filipino"). If the input is empty or not real text, respond with {"translation": "", "sourceLang": ""}.`;
+If the input is empty or not real text, respond with {"translation": ""}.`;
 
 export default async function handler(req, res) {
   if (req.method !== "POST") {
@@ -19,9 +19,14 @@ export default async function handler(req, res) {
   }
 
   const text = typeof req.body?.text === "string" ? req.body.text.trim() : "";
+  const sourceLang = typeof req.body?.sourceLang === "string" ? req.body.sourceLang.trim() : "";
   const targetLang = typeof req.body?.targetLang === "string" ? req.body.targetLang.trim() : "";
   if (!text) {
     res.status(400).json({ error: "No text provided." });
+    return;
+  }
+  if (!sourceLang) {
+    res.status(400).json({ error: "No source language provided." });
     return;
   }
   if (!targetLang) {
@@ -51,7 +56,7 @@ export default async function handler(req, res) {
         model: "claude-haiku-4-5",
         max_tokens: 1024,
         system: SYSTEM_PROMPT,
-        messages: [{ role: "user", content: `Translate this into ${targetLang}:\n\n${text}` }],
+        messages: [{ role: "user", content: `Translate this text from ${sourceLang} to ${targetLang}:\n\n${text}` }],
       }),
     });
 
@@ -83,7 +88,7 @@ export default async function handler(req, res) {
       return;
     }
 
-    res.status(200).json({ translation: parsed.translation, sourceLang: parsed.sourceLang || "" });
+    res.status(200).json({ translation: parsed.translation });
   } catch (err) {
     console.error("Translate error:", err);
     res.status(500).json({ error: "Something went wrong. Try again in a moment." });

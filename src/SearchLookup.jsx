@@ -8,6 +8,7 @@ const MODES = [
 ];
 
 const TRANSLATE_LANGUAGES = ["Filipino", "English", "Spanish", "Chinese", "Japanese", "Korean", "Vietnamese", "Polish", "Hebrew"];
+const SOURCE_LANG_STORAGE_KEY = "sentivo_translate_source_lang";
 const LANG_STORAGE_KEY = "sentivo_translate_target_lang";
 const HISTORY_STORAGE_KEY = "sentivo_lookup_history";
 const MAX_HISTORY = 30;
@@ -119,12 +120,12 @@ function ResultCard({ entry, onReverse }) {
           <div className="sl-translation-row">
             <div className="sl-translation">{entry.data.translation}</div>
             <div className="sl-translation-actions">
-              {entry.data.sourceLang && (
+              {entry.sourceLang && (
                 <button
                   type="button"
                   className="sl-reverse-btn"
                   onClick={() => onReverse(entry)}
-                  title={`Translate back to ${entry.data.sourceLang}`}
+                  title={`Translate back to ${entry.sourceLang}`}
                   aria-label="Reverse translation"
                 >
                   ⇄
@@ -142,7 +143,7 @@ function ResultCard({ entry, onReverse }) {
             </div>
           </div>
           <div className="sl-translation-meta">
-            {entry.data.sourceLang && <span>{entry.data.sourceLang} → </span>}
+            {entry.sourceLang && <span>{entry.sourceLang} → </span>}
             <span>{entry.targetLang}</span>
           </div>
         </div>
@@ -161,6 +162,7 @@ export default function SearchLookup() {
   );
   const [inputText, setInputText] = useState("");
   const [historyOpen, setHistoryOpen] = useState(false);
+  const [sourceLang, setSourceLang] = useState(() => localStorage.getItem(SOURCE_LANG_STORAGE_KEY) || "English");
   const [targetLang, setTargetLang] = useState(() => localStorage.getItem(LANG_STORAGE_KEY) || "Filipino");
   const [history, setHistory] = useState(loadHistory);
   const idRef = useRef(0);
@@ -168,8 +170,17 @@ export default function SearchLookup() {
   const autoRanRef = useRef(false);
 
   useEffect(() => {
+    localStorage.setItem(SOURCE_LANG_STORAGE_KEY, sourceLang);
+  }, [sourceLang]);
+
+  useEffect(() => {
     localStorage.setItem(LANG_STORAGE_KEY, targetLang);
   }, [targetLang]);
+
+  function swapLanguages() {
+    setSourceLang(targetLang);
+    setTargetLang(sourceLang);
+  }
 
   useEffect(() => {
     inputRef.current?.focus();
@@ -196,21 +207,31 @@ export default function SearchLookup() {
   }
 
   function handleReverse(entry) {
-    const detected = entry.data?.sourceLang;
-    if (!detected) return;
-    const matched = TRANSLATE_LANGUAGES.find((l) => l.toLowerCase() === detected.toLowerCase());
-    if (matched) setTargetLang(matched);
+    if (!entry.sourceLang || !entry.targetLang) return;
+    const newSource = entry.targetLang;
+    const newTarget = entry.sourceLang;
+    setSourceLang(newSource);
+    setTargetLang(newTarget);
     setMode("translator");
-    runQuery("translator", entry.data.translation, matched || detected);
+    runQuery("translator", entry.data.translation, newSource, newTarget);
   }
 
-  async function runQuery(runMode, rawQuery, lang) {
+  async function runQuery(runMode, rawQuery, srcLang, tgtLang) {
     const trimmed = rawQuery.trim();
     if (!trimmed) return;
     const id = ++idRef.current;
     setHistoryOpen(true);
     setHistory((h) => [
-      { id, mode: runMode, query: trimmed, targetLang: runMode === "translator" ? lang : null, status: "loading", data: null, error: "" },
+      {
+        id,
+        mode: runMode,
+        query: trimmed,
+        sourceLang: runMode === "translator" ? srcLang : null,
+        targetLang: runMode === "translator" ? tgtLang : null,
+        status: "loading",
+        data: null,
+        error: "",
+      },
       ...h,
     ]);
 
@@ -237,11 +258,11 @@ export default function SearchLookup() {
         const res = await fetch("/api/translate", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ text: trimmed, targetLang: lang }),
+          body: JSON.stringify({ text: trimmed, sourceLang: srcLang, targetLang: tgtLang }),
         });
         const data = await res.json().catch(() => null);
         if (!res.ok || !data?.translation) throw new Error(data?.error || "Translation failed.");
-        updateEntry(id, { status: "done", data: { translation: data.translation, sourceLang: data.sourceLang || "" } });
+        updateEntry(id, { status: "done", data: { translation: data.translation } });
       }
     } catch (err) {
       updateEntry(id, { status: "error", error: err.message || "Something went wrong." });
@@ -254,7 +275,7 @@ export default function SearchLookup() {
     if (autoRanRef.current) return;
     if (!initialQuery) return;
     autoRanRef.current = true;
-    runQuery(mode, initialQuery, targetLang);
+    runQuery(mode, initialQuery, sourceLang, targetLang);
     navigate(`/library/search?mode=${mode}`, { replace: true });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -262,7 +283,7 @@ export default function SearchLookup() {
   function handleSubmit(e) {
     e.preventDefault();
     if (!inputText.trim()) return;
-    runQuery(mode, inputText, targetLang);
+    runQuery(mode, inputText, sourceLang, targetLang);
     setInputText("");
   }
 
@@ -306,16 +327,31 @@ export default function SearchLookup() {
         </div>
 
         {mode === "translator" && (
-          <label className="sl-lang-row">
-            <span className="sl-lang-label">Translate to</span>
-            <span className="sl-lang-select-wrap">
-              <select className="sl-lang-select" value={targetLang} onChange={(e) => setTargetLang(e.target.value)}>
-                {TRANSLATE_LANGUAGES.map((lang) => (
-                  <option key={lang} value={lang}>{lang}</option>
-                ))}
-              </select>
-            </span>
-          </label>
+          <div className="sl-lang-pair">
+            <label className="sl-lang-col">
+              <span className="sl-lang-label">From</span>
+              <span className="sl-lang-select-wrap">
+                <select className="sl-lang-select" value={sourceLang} onChange={(e) => setSourceLang(e.target.value)}>
+                  {TRANSLATE_LANGUAGES.map((lang) => (
+                    <option key={lang} value={lang}>{lang}</option>
+                  ))}
+                </select>
+              </span>
+            </label>
+            <button type="button" className="sl-lang-swap" onClick={swapLanguages} title="Swap languages" aria-label="Swap languages">
+              ⇄
+            </button>
+            <label className="sl-lang-col">
+              <span className="sl-lang-label">To</span>
+              <span className="sl-lang-select-wrap">
+                <select className="sl-lang-select" value={targetLang} onChange={(e) => setTargetLang(e.target.value)}>
+                  {TRANSLATE_LANGUAGES.map((lang) => (
+                    <option key={lang} value={lang}>{lang}</option>
+                  ))}
+                </select>
+              </span>
+            </label>
+          </div>
         )}
 
         <form className={`sl-query-form sl-query-form--${mode}`} onSubmit={handleSubmit}>
@@ -483,21 +519,48 @@ const CSS = `
 .sl-mode-btn--grammar.is-active { background: #7C5CFC; color: #fff; border-color: #7C5CFC; }
 .sl-mode-btn--translator.is-active { background: #FF8A4C; color: #fff; border-color: #FF8A4C; }
 
-.sl-lang-row {
+.sl-lang-pair {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: end;
+  gap: 10px;
+  max-width: 440px;
+  margin: 0 auto 14px;
+}
+.sl-lang-col {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  min-width: 0;
+}
+.sl-lang-label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #8B84A3;
+}
+.sl-lang-swap {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  margin-bottom: 14px;
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+  border: 1.5px solid rgba(255,138,76,0.35);
+  border-radius: 50%;
+  background: #fff;
+  color: #FF8A4C;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.15s;
 }
-.sl-lang-label {
-  font-size: 13px;
-  font-weight: 700;
-  color: #8B84A3;
-}
-.sl-lang-select-wrap { position: relative; display: inline-flex; }
+.sl-lang-swap:hover { background: rgba(255,138,76,0.1); }
+.sl-lang-swap:active { transform: rotate(180deg); }
+.sl-lang-select-wrap { position: relative; display: flex; width: 100%; }
 .sl-lang-select {
   appearance: none;
+  width: 100%;
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;
   font-size: 13.5px;
