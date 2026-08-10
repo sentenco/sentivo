@@ -33,6 +33,11 @@ import storybook14 from './storybookData14.js'
 import storybook15 from './storybookData15.js'
 import storybook16 from './storybookData16.js'
 import storybook17 from './storybookData17.js'
+import storybook18 from './storybookData18.js'
+import storybook19 from './storybookData19.js'
+import storybook20 from './storybookData20.js'
+import storybook21 from './storybookData21.js'
+import storybook22 from './storybookData22.js'
 import Forge from './Forge.jsx'
 import ForgeHub from './ForgeHub.jsx'
 import ForgeTrack from './ForgeTrack.jsx'
@@ -100,6 +105,11 @@ createRoot(document.getElementById('root')).render(
             <Route path="/library/storybook-15" element={<StoryBook book={storybook15} />} />
             <Route path="/library/storybook-16" element={<StoryBook book={storybook16} />} />
             <Route path="/library/storybook-17" element={<StoryBook book={storybook17} />} />
+            <Route path="/library/storybook-18" element={<StoryBook book={storybook18} />} />
+            <Route path="/library/storybook-19" element={<StoryBook book={storybook19} />} />
+            <Route path="/library/storybook-20" element={<StoryBook book={storybook20} />} />
+            <Route path="/library/storybook-21" element={<StoryBook book={storybook21} />} />
+            <Route path="/library/storybook-22" element={<StoryBook book={storybook22} />} />
             <Route path="/library/forge" element={<ForgeHub />} />
             <Route path="/library/forge/:trackId" element={<ForgeTrack />} />
             <Route path="/library/forge/:trackId/:lessonNum" element={<Forge />} />

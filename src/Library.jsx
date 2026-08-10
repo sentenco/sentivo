@@ -731,6 +731,11 @@ const BOOK_AGE_TRACK = {
   "storybook-15": "Kids",
   "storybook-16": "Kids",
   "storybook-17": "Kids",
+  "storybook-18": "Kids",
+  "storybook-19": "Kids",
+  "storybook-20": "Kids",
+  "storybook-21": "Teens",
+  "storybook-22": "Teens",
   storybook: "Teens",
   "storybook-2": "Teens",
   "storybook-3": "Teens",
@@ -2547,6 +2552,11 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .cover--butter { background: linear-gradient(160deg, #FBF1C7 0%, #EDD98A 100%); }
 .cover--sage { background: linear-gradient(160deg, #E1EAD9 0%, #B9CDA6 100%); }
 .cover--berry { background: linear-gradient(160deg, #FADCE3 0%, #E893A8 100%); }
+.cover--orchid { background: linear-gradient(160deg, #EBDCF0 0%, #C9A0D9 100%); }
+.cover--ocean { background: linear-gradient(160deg, #C9DDF5 0%, #7FA8E0 100%); }
+.cover--honey { background: linear-gradient(160deg, #F7E3B5 0%, #E0B84D 100%); }
+.cover--fern { background: linear-gradient(160deg, #DCEBD4 0%, #9FC488 100%); }
+.cover--flamingo { background: linear-gradient(160deg, #FCDCE0 0%, #F0899E 100%); }
 
 .theme-pro .cover--coral { background: #fff; border-top: 4px solid #D85A30; }
 .theme-pro .cover--teal { background: #fff; border-top: 4px solid #0F6E56; }
@@ -2565,6 +2575,11 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .theme-pro .cover--butter { background: #fff; border-top: 4px solid #B89A3A; }
 .theme-pro .cover--sage { background: #fff; border-top: 4px solid #5E7D49; }
 .theme-pro .cover--berry { background: #fff; border-top: 4px solid #C24F6B; }
+.theme-pro .cover--orchid { background: #fff; border-top: 4px solid #9860B5; }
+.theme-pro .cover--ocean { background: #fff; border-top: 4px solid #3E6FB0; }
+.theme-pro .cover--honey { background: #fff; border-top: 4px solid #B8862E; }
+.theme-pro .cover--fern { background: #fff; border-top: 4px solid #5C8A48; }
+.theme-pro .cover--flamingo { background: #fff; border-top: 4px solid #D9556F; }
 
 .premium-badge {
   position: absolute;
