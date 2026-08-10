@@ -2,9 +2,9 @@ import { useEffect, useRef, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 
 const MODES = [
-  { key: "dictionary", label: "Dictionary", placeholder: "Type a word…", multiline: false },
-  { key: "grammar", label: "Grammar", placeholder: "Paste a sentence or paragraph to check…", multiline: true },
-  { key: "translator", label: "Translator", placeholder: "Type text to translate…", multiline: true },
+  { key: "dictionary", label: "Dictionary", placeholder: "Type a word…", multiline: false, color: "#16BFAE" },
+  { key: "grammar", label: "Grammar", placeholder: "Paste a sentence or paragraph to check…", multiline: true, color: "#7C5CFC" },
+  { key: "translator", label: "Translator", placeholder: "Type text to translate…", multiline: true, color: "#FF8A4C" },
 ];
 
 const TRANSLATE_LANGUAGES = ["Filipino", "English", "Spanish", "Chinese", "Japanese", "Korean", "Vietnamese", "Polish", "Hebrew"];
@@ -31,15 +31,43 @@ function SendIcon() {
   );
 }
 
+function ModeIcon({ mode }) {
+  if (mode === "dictionary") {
+    return (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v15H6.5A2.5 2.5 0 0 0 4 19.5v-15Z" />
+        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+      </svg>
+    );
+  }
+  if (mode === "grammar") {
+    return (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="m18 2 4 4-13 13H5v-4Z" />
+      </svg>
+    );
+  }
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <circle cx="12" cy="12" r="10" />
+      <path d="M2 12h20" />
+      <path d="M12 2a15 15 0 0 1 0 20 15 15 0 0 1 0-20Z" />
+    </svg>
+  );
+}
+
 function ResultCard({ entry }) {
   const modeInfo = MODES.find((m) => m.key === entry.mode);
   return (
-    <div className="sl-card">
+    <div className={`sl-card sl-card--${entry.mode}`}>
       <div className="sl-card-head">
-        <span className={`sl-card-tag sl-card-tag--${entry.mode}`}>{modeInfo.label}</span>
+        <span className={`sl-card-tag sl-card-tag--${entry.mode}`}>
+          <ModeIcon mode={entry.mode} />
+          {modeInfo.label}
+        </span>
         <span className="sl-card-query">{entry.query}</span>
       </div>
-      {entry.status === "loading" && <div className="sl-card-status">Working…</div>}
+      {entry.status === "loading" && <div className="sl-card-status"><span className="sl-spinner" />Working…</div>}
       {entry.status === "error" && <div className="sl-card-status sl-card-status--error">{entry.error}</div>}
       {entry.status === "done" && entry.mode === "dictionary" && (
         <div className="sl-card-body">
@@ -53,7 +81,7 @@ function ResultCard({ entry }) {
       )}
       {entry.status === "done" && entry.mode === "grammar" && (
         entry.data.corrections.length === 0 ? (
-          <div className="sl-card-body sl-clean">No issues found — looks good.</div>
+          <div className="sl-card-body sl-clean">✓ No issues found — looks good.</div>
         ) : (
           <div className="sl-card-body">
             {entry.data.corrections.map((c, i) => (
@@ -202,6 +230,12 @@ export default function SearchLookup() {
         </button>
       </div>
 
+      <div className="sl-hero">
+        <span className="sl-eyebrow">Teacher Toolkit</span>
+        <h1 className="sl-heading">Look something up</h1>
+        <p className="sl-subheading">Check a word, fix a sentence, or translate for your students.</p>
+      </div>
+
       <div className="sl-panel">
         <div className="sl-modes" role="tablist">
           {MODES.map((m) => (
@@ -210,9 +244,10 @@ export default function SearchLookup() {
               type="button"
               role="tab"
               aria-selected={mode === m.key}
-              className={`sl-mode-btn ${mode === m.key ? "is-active" : ""}`}
+              className={`sl-mode-btn sl-mode-btn--${m.key} ${mode === m.key ? "is-active" : ""}`}
               onClick={() => setMode(m.key)}
             >
+              <ModeIcon mode={m.key} />
               {m.label}
             </button>
           ))}
@@ -221,15 +256,17 @@ export default function SearchLookup() {
         {mode === "translator" && (
           <label className="sl-lang-row">
             <span className="sl-lang-label">Translate to</span>
-            <select className="sl-lang-select" value={targetLang} onChange={(e) => setTargetLang(e.target.value)}>
-              {TRANSLATE_LANGUAGES.map((lang) => (
-                <option key={lang} value={lang}>{lang}</option>
-              ))}
-            </select>
+            <span className="sl-lang-select-wrap">
+              <select className="sl-lang-select" value={targetLang} onChange={(e) => setTargetLang(e.target.value)}>
+                {TRANSLATE_LANGUAGES.map((lang) => (
+                  <option key={lang} value={lang}>{lang}</option>
+                ))}
+              </select>
+            </span>
           </label>
         )}
 
-        <form className="sl-query-form" onSubmit={handleSubmit}>
+        <form className={`sl-query-form sl-query-form--${mode}`} onSubmit={handleSubmit}>
           {activeMode.multiline ? (
             <textarea
               ref={inputRef}
@@ -250,22 +287,27 @@ export default function SearchLookup() {
               placeholder={activeMode.placeholder}
             />
           )}
-          <button type="submit" className="sl-submit-btn" disabled={!inputText.trim()} aria-label="Send">
+          <button type="submit" className={`sl-submit-btn sl-submit-btn--${mode}`} disabled={!inputText.trim()} aria-label="Send">
             <SendIcon />
           </button>
         </form>
       </div>
 
       <div className="sl-history">
-        {history.length > 0 && (
-          <button type="button" className="sl-clear-history" onClick={clearHistory}>Clear history</button>
+        <div className="sl-history-head">
+          <span className="sl-history-label">Recent lookups{history.length > 0 ? ` · ${history.length}` : ""}</span>
+          {history.length > 0 && (
+            <button type="button" className="sl-clear-history" onClick={clearHistory}>Clear</button>
+          )}
+        </div>
+        {history.length === 0 ? (
+          <div className="sl-empty">
+            <span className={`sl-empty-icon sl-empty-icon--${mode}`}><ModeIcon mode={mode} /></span>
+            <p>Your {activeMode.label.toLowerCase()} results will show up here.</p>
+          </div>
+        ) : (
+          history.map((entry) => <ResultCard key={entry.id} entry={entry} />)
         )}
-        {history.length === 0 && (
-          <p className="sl-empty">Your {activeMode.label.toLowerCase()} results will show up here.</p>
-        )}
-        {history.map((entry) => (
-          <ResultCard key={entry.id} entry={entry} />
-        ))}
       </div>
     </div>
   );
@@ -277,7 +319,11 @@ const CSS = `
 .sl-shell {
   width: 100%;
   min-height: 100vh;
-  background: #FFFFFF;
+  background:
+    radial-gradient(640px 420px at 12% -8%, rgba(255,107,74,0.07), transparent 60%),
+    radial-gradient(520px 420px at 104% 6%, rgba(124,92,252,0.05), transparent 60%),
+    radial-gradient(560px 480px at 50% 106%, rgba(22,191,174,0.05), transparent 60%),
+    #FFFDFB;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -306,18 +352,57 @@ const CSS = `
 }
 .sl-brand-logo { height: 24px; width: auto; display: block; margin-right: -3px; }
 
+.sl-hero {
+  width: 100%;
+  max-width: 640px;
+  padding: 30px 24px 6px;
+  text-align: center;
+}
+.sl-eyebrow {
+  display: inline-block;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #FF6B4A;
+  background: rgba(255,107,74,0.09);
+  border-radius: 999px;
+  padding: 5px 14px;
+  margin-bottom: 14px;
+}
+.sl-heading {
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 700;
+  font-size: 30px;
+  color: #2B2A4A;
+  margin: 0 0 8px;
+  letter-spacing: -0.01em;
+}
+.sl-subheading {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 600;
+  font-size: 14.5px;
+  color: #8B84A3;
+  margin: 0;
+}
+
 .sl-panel {
   width: 100%;
   max-width: 640px;
-  padding: 22px 24px 0;
+  padding: 26px 24px 0;
 }
 
 .sl-modes {
   display: flex;
   gap: 8px;
-  margin-bottom: 14px;
+  margin-bottom: 16px;
+  justify-content: center;
 }
 .sl-mode-btn {
+  display: flex;
+  align-items: center;
+  gap: 7px;
   font-family: 'Fredoka', sans-serif;
   font-weight: 600;
   font-size: 13.5px;
@@ -325,38 +410,43 @@ const CSS = `
   background: #fff;
   border: 1px solid rgba(43,42,74,0.11);
   border-radius: 999px;
-  padding: 8px 18px;
+  padding: 9px 18px;
   cursor: pointer;
-  transition: background 0.15s, color 0.15s, border-color 0.15s;
+  transition: background 0.15s, color 0.15s, border-color 0.15s, transform 0.1s;
 }
-.sl-mode-btn.is-active {
-  background: #FF6B4A;
-  color: #fff;
-  border-color: #FF6B4A;
-}
+.sl-mode-btn svg { width: 14px; height: 14px; }
+.sl-mode-btn:hover:not(.is-active) { border-color: rgba(43,42,74,0.24); }
+.sl-mode-btn--dictionary.is-active { background: #16BFAE; color: #fff; border-color: #16BFAE; }
+.sl-mode-btn--grammar.is-active { background: #7C5CFC; color: #fff; border-color: #7C5CFC; }
+.sl-mode-btn--translator.is-active { background: #FF8A4C; color: #fff; border-color: #FF8A4C; }
 
 .sl-lang-row {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
-  margin-bottom: 12px;
+  margin-bottom: 14px;
 }
 .sl-lang-label {
   font-size: 13px;
-  font-weight: 600;
+  font-weight: 700;
   color: #8B84A3;
 }
+.sl-lang-select-wrap { position: relative; display: inline-flex; }
 .sl-lang-select {
+  appearance: none;
   font-family: 'Quicksand', sans-serif;
-  font-weight: 600;
+  font-weight: 700;
   font-size: 13.5px;
   color: #2B2A4A;
-  background: #fff;
-  border: 1px solid rgba(43,42,74,0.11);
-  border-radius: 10px;
-  padding: 6px 10px;
+  background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none' stroke='%23FF8A4C' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 8 4 4 4-4'/%3E%3C/svg%3E") no-repeat right 10px center;
+  background-size: 12px;
+  border: 1.5px solid rgba(255,138,76,0.35);
+  border-radius: 999px;
+  padding: 7px 30px 7px 14px;
   cursor: pointer;
 }
+.sl-lang-select:hover { border-color: rgba(255,138,76,0.6); }
 
 .sl-query-form {
   display: flex;
@@ -364,10 +454,15 @@ const CSS = `
   align-items: flex-end;
   background: #fff;
   border: 1px solid rgba(43,42,74,0.11);
+  border-top: 3px solid #2B2A4A;
   border-radius: 18px;
-  padding: 10px 10px 10px 16px;
-  box-shadow: 0 8px 24px rgba(43,42,74,0.05);
+  padding: 12px 12px 12px 18px;
+  box-shadow: 0 10px 28px rgba(43,42,74,0.07);
+  transition: border-top-color 0.15s;
 }
+.sl-query-form--dictionary { border-top-color: #16BFAE; }
+.sl-query-form--grammar { border-top-color: #7C5CFC; }
+.sl-query-form--translator { border-top-color: #FF8A4C; }
 .sl-query-input {
   flex: 1;
   border: none;
@@ -391,22 +486,40 @@ const CSS = `
   border: none;
   border-radius: 50%;
   color: #fff;
-  background: #FF6B4A;
+  background: #2B2A4A;
   cursor: pointer;
+  transition: background 0.15s, transform 0.1s;
 }
+.sl-submit-btn--dictionary:not(:disabled) { background: #16BFAE; }
+.sl-submit-btn--grammar:not(:disabled) { background: #7C5CFC; }
+.sl-submit-btn--translator:not(:disabled) { background: #FF8A4C; }
+.sl-submit-btn:hover:not(:disabled) { filter: brightness(0.92); }
+.sl-submit-btn:active:not(:disabled) { transform: scale(0.92); }
 .sl-submit-btn svg { width: 17px; height: 17px; }
 .sl-submit-btn:disabled { background: #EFE9E5; color: #B9AF9C; cursor: default; }
 
 .sl-history {
   width: 100%;
   max-width: 640px;
-  padding: 22px 24px 60px;
+  padding: 30px 24px 60px;
   display: flex;
   flex-direction: column;
   gap: 14px;
 }
+.sl-history-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(43,42,74,0.11);
+}
+.sl-history-label {
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 600;
+  font-size: 13px;
+  color: #8B84A3;
+}
 .sl-clear-history {
-  align-self: flex-end;
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;
   font-size: 12px;
@@ -417,20 +530,44 @@ const CSS = `
   padding: 0;
 }
 .sl-clear-history:hover { color: #FF6B4A; }
+
 .sl-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
   text-align: center;
   color: #8B84A3;
   font-size: 13.5px;
-  margin-top: 20px;
+  padding: 34px 20px;
+  border: 1.5px dashed rgba(43,42,74,0.14);
+  border-radius: 18px;
 }
+.sl-empty p { margin: 0; }
+.sl-empty-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+}
+.sl-empty-icon svg { width: 20px; height: 20px; }
+.sl-empty-icon--dictionary { background: rgba(22,191,174,0.12); color: #16BFAE; }
+.sl-empty-icon--grammar { background: rgba(124,92,252,0.12); color: #7C5CFC; }
+.sl-empty-icon--translator { background: rgba(255,138,76,0.14); color: #FF8A4C; }
 
 .sl-card {
   background: #fff;
   border: 1px solid rgba(43,42,74,0.11);
-  border-radius: 16px;
+  border-left: 4px solid #2B2A4A;
+  border-radius: 14px;
   padding: 16px 18px;
   box-shadow: 0 8px 24px rgba(43,42,74,0.05);
 }
+.sl-card--dictionary { border-left-color: #16BFAE; }
+.sl-card--grammar { border-left-color: #7C5CFC; }
+.sl-card--translator { border-left-color: #FF8A4C; }
 .sl-card-head {
   display: flex;
   align-items: center;
@@ -439,16 +576,20 @@ const CSS = `
   flex-wrap: wrap;
 }
 .sl-card-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
   font-family: 'Fredoka', sans-serif;
   font-weight: 700;
   font-size: 11px;
   letter-spacing: 0.03em;
   text-transform: uppercase;
   color: #fff;
-  background: #FF6B4A;
+  background: #2B2A4A;
   border-radius: 999px;
-  padding: 3px 10px;
+  padding: 3px 10px 3px 8px;
 }
+.sl-card-tag svg { width: 10px; height: 10px; }
 .sl-card-tag--dictionary { background: #16BFAE; }
 .sl-card-tag--grammar { background: #7C5CFC; }
 .sl-card-tag--translator { background: #FF8A4C; }
@@ -458,8 +599,17 @@ const CSS = `
   font-size: 14.5px;
   color: #2B2A4A;
 }
-.sl-card-status { font-size: 13px; color: #8B84A3; }
+.sl-card-status { display: flex; align-items: center; gap: 8px; font-size: 13px; color: #8B84A3; }
 .sl-card-status--error { color: #C24E3A; }
+.sl-spinner {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid rgba(43,42,74,0.15);
+  border-top-color: #8B84A3;
+  animation: sl-spin 0.7s linear infinite;
+}
+@keyframes sl-spin { to { transform: rotate(360deg); } }
 
 .sl-card-body { display: flex; flex-direction: column; gap: 10px; }
 .sl-clean { color: #16BFAE; font-weight: 600; font-size: 13.5px; }
@@ -486,6 +636,8 @@ const CSS = `
 .sl-translation-meta { margin-top: 6px; font-size: 12px; color: #8B84A3; }
 
 @media (max-width: 640px) {
-  .sl-topbar, .sl-panel, .sl-history { padding-left: 16px; padding-right: 16px; }
+  .sl-topbar, .sl-hero, .sl-panel, .sl-history { padding-left: 16px; padding-right: 16px; }
+  .sl-heading { font-size: 25px; }
+  .sl-modes { flex-wrap: wrap; }
 }
 `;
