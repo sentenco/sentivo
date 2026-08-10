@@ -1863,7 +1863,7 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 }
 .td-hero-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center right; }
 .td-hero-left { position: relative; z-index: 1; max-width: 480px; padding: 32px 0 32px 34px; }
-.td-hero-title { font-family: 'Fredoka', sans-serif; font-size: clamp(28px, 3.8vw, 38px); font-weight: 600; margin: 0; line-height: 1.2; color: var(--ink); }
+.td-hero-title { font-family: 'Fredoka', sans-serif; font-size: 28px; font-weight: 600; margin: 0; line-height: 1.2; color: var(--ink); }
 .td-hero-title .who { color: var(--coral); }
 .td-hero-btn { display: block; background: none; border: none; padding: 0; margin: 0; text-align: left; font: inherit; color: inherit; cursor: pointer; }
 .td-hero-editing { display: inline-block; }
@@ -1894,7 +1894,7 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .td-dc-label { display: flex; align-items: center; gap: 8px; margin-bottom: 16px; font-family: 'Quicksand', sans-serif; font-size: 12px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--coral); }
 .td-dc-badge { display: flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 50%; background: var(--coral-pale); color: var(--coral); flex-shrink: 0; }
 .td-dc-badge svg { width: 11px; height: 11px; }
-.td-dc-headline { font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: clamp(19px, 2.2vw, 24px); line-height: 1.4; margin: 0 0 16px; color: var(--ink); text-wrap: balance; }
+.td-dc-headline { font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 19px; line-height: 1.4; margin: 0 0 16px; color: var(--ink); text-wrap: balance; }
 .td-dc-quote { color: var(--coral); margin-right: 5px; }
 .corr-wrong { color: #9B9382; font-weight: 400; text-decoration: line-through; text-decoration-color: #B9AF9C; margin-right: 6px; }
 .corr-right { color: var(--coral); font-weight: 700; }
