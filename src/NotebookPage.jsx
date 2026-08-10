@@ -200,7 +200,6 @@ export default function NotebookPage() {
                   type="text"
                   className={`nbp-line ${activeId === line.id ? "is-active" : ""}`}
                   value={line.text}
-                  placeholder="Write here…"
                   ref={(el) => {
                     if (el) inputRefs.current.set(line.id, el);
                     else inputRefs.current.delete(line.id);
@@ -402,7 +401,6 @@ const CSS = `
   padding: 1px 3px;
   border-radius: 4px;
 }
-.nbp-line::placeholder { opacity: 0.32; }
 .nbp-line.is-active { background: rgba(30,143,118,0.07); }
 
 .nbp-paper--ruled .nbp-line { border-bottom: 1px solid rgba(0,0,0,0.16); }
