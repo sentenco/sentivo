@@ -754,6 +754,21 @@ const BOOK_AGE_TRACK = {
 const READING_LEVELS = ["A1", "A2", "B1", "B2"];
 const READING_AGE_TRACKS = ["Kids", "Teens", "Adults"];
 
+const SEARCH_MODES = [
+  { key: "dictionary", label: "Dictionary" },
+  { key: "grammar", label: "Grammar" },
+  { key: "translator", label: "Translator" },
+];
+
+function SendIcon() {
+  return (
+    <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
+      <path d="M10 15.5V5.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+      <path d="M5.5 10 10 5.5 14.5 10" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
 function BookshelfRows({ books, navigate, colorOffset }) {
   const rows = [];
   for (let i = 0; i < books.length; i += 4) rows.push(books.slice(i, i + 4));
@@ -1162,6 +1177,10 @@ export default function Library() {
   const { user, signOut } = useAuth();
   const [authMode, setAuthMode] = useState(null);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [searchModeMenuOpen, setSearchModeMenuOpen] = useState(false);
+  const [searchMode, setSearchMode] = useState(null);
+  const [promptQuery, setPromptQuery] = useState("");
+  const searchWrapRef = useRef(null);
   const navigate = useNavigate();
   const location = useLocation();
   const params = useParams();
@@ -1175,6 +1194,35 @@ export default function Library() {
     } else {
       navigate("/library");
     }
+  }
+
+  useEffect(() => {
+    function handleOutsideClick(e) {
+      if (searchWrapRef.current && !searchWrapRef.current.contains(e.target)) {
+        setSearchModeMenuOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleOutsideClick);
+    return () => document.removeEventListener("mousedown", handleOutsideClick);
+  }, []);
+
+  function pickSearchMode(key) {
+    setSearchMode(key);
+    setSearchModeMenuOpen(false);
+    setPromptQuery("");
+  }
+
+  function clearSearchMode() {
+    setSearchMode(null);
+    setPromptQuery("");
+  }
+
+  function submitSearchMode() {
+    const q = promptQuery.trim();
+    if (!q || !searchMode) return;
+    navigate(`/library/search?mode=${searchMode}&q=${encodeURIComponent(q)}`);
+    setPromptQuery("");
+    setSearchMode(null);
   }
 
   const gridWrapRef = useRef(null);
@@ -1394,29 +1442,75 @@ export default function Library() {
             <img src="/logo-sentivo.png" alt="" className="gc-header-logo" />entivo
           </a>
           <div className="gc-topbar-actions">
-            <div className="gc-search">
-              <button
-                type="button"
-                className="gc-search-icon-btn"
-                onClick={() => navigate("/library/search")}
-                title="Dictionary, Grammar & Translator"
-                aria-label="Open Dictionary, Grammar & Translator"
-              >
-                <svg viewBox="0 0 20 20" aria-hidden="true">
-                  <circle cx="9" cy="9" r="6.2" fill="none" stroke="currentColor" strokeWidth="1.6" />
-                  <line x1="13.6" y1="13.6" x2="18" y2="18" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
-                </svg>
-              </button>
+            <div className="gc-search" ref={searchWrapRef}>
+              <div className="gc-search-icon-wrap">
+                <button
+                  type="button"
+                  className="gc-search-icon-btn"
+                  onClick={() => setSearchModeMenuOpen((o) => !o)}
+                  title="Dictionary, Grammar & Translator"
+                  aria-label="Open Dictionary, Grammar & Translator"
+                  aria-expanded={searchModeMenuOpen}
+                >
+                  <svg viewBox="0 0 20 20" aria-hidden="true">
+                    <circle cx="9" cy="9" r="6.2" fill="none" stroke="currentColor" strokeWidth="1.6" />
+                    <line x1="13.6" y1="13.6" x2="18" y2="18" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
+                  </svg>
+                </button>
+                {searchModeMenuOpen && (
+                  <div className="gc-search-mode-menu">
+                    {SEARCH_MODES.map((m) => (
+                      <button
+                        key={m.key}
+                        type="button"
+                        className="gc-search-mode-item"
+                        onClick={() => pickSearchMode(m.key)}
+                      >
+                        {m.label}
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </div>
+              {searchMode && (
+                <span className="gc-search-pill">
+                  {SEARCH_MODES.find((m) => m.key === searchMode)?.label}
+                  <button type="button" className="gc-search-pill-x" onClick={clearSearchMode} aria-label="Clear mode">×</button>
+                </span>
+              )}
               <input
                 type="text"
-                placeholder="Search the library…"
-                value={query}
+                placeholder={searchMode ? `Ask ${SEARCH_MODES.find((m) => m.key === searchMode)?.label}…` : "Search the library…"}
+                value={searchMode ? promptQuery : query}
                 onChange={(e) => {
-                  setQuery(e.target.value);
-                  setPage(1);
-                  if (isCurriculum) goToSidebar("library");
+                  if (searchMode) {
+                    setPromptQuery(e.target.value);
+                  } else {
+                    setQuery(e.target.value);
+                    setPage(1);
+                    if (isCurriculum) goToSidebar("library");
+                  }
+                }}
+                onKeyDown={(e) => {
+                  if (searchMode && e.key === "Enter") {
+                    e.preventDefault();
+                    submitSearchMode();
+                  } else if (searchMode && e.key === "Escape") {
+                    clearSearchMode();
+                  }
                 }}
               />
+              {searchMode && (
+                <button
+                  type="button"
+                  className="gc-search-send-btn"
+                  onClick={submitSearchMode}
+                  disabled={!promptQuery.trim()}
+                  aria-label="Submit"
+                >
+                  <SendIcon />
+                </button>
+              )}
             </div>
             {!user ? (
               <>
@@ -1648,8 +1742,67 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .gc-topbar-actions { display: flex; align-items: center; gap: 12px; }
 .gc-search { display: flex; align-items: center; gap: 6px; padding: 7px 12px; border: 1px solid rgba(34,58,51,0.3); border-radius: 999px; background: var(--card); color: var(--muted); }
 .gc-search svg { width: 14px; height: 14px; flex-shrink: 0; }
+.gc-search-icon-wrap { position: relative; display: flex; flex-shrink: 0; }
 .gc-search-icon-btn { display: flex; align-items: center; justify-content: center; padding: 0; border: none; background: none; color: inherit; cursor: pointer; border-radius: 50%; }
 .gc-search-icon-btn:hover { color: var(--ink); }
+.gc-search-mode-menu {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+  background: var(--card);
+  border: 1px solid var(--hair);
+  border-radius: 14px;
+  box-shadow: 0 12px 28px rgba(43,42,74,0.14);
+  padding: 6px;
+  display: flex;
+  flex-direction: column;
+  min-width: 140px;
+  z-index: 40;
+}
+.gc-search-mode-item {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  color: var(--ink);
+  background: none;
+  border: none;
+  border-radius: 9px;
+  padding: 8px 10px;
+  text-align: left;
+  cursor: pointer;
+}
+.gc-search-mode-item:hover { background: rgba(255,107,74,0.1); color: var(--coral); }
+.gc-search-pill {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  flex-shrink: 0;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  color: #fff;
+  background: var(--coral);
+  border-radius: 999px;
+  padding: 4px 6px 4px 12px;
+}
+.gc-search-pill-x { border: none; background: none; color: #fff; opacity: 0.85; cursor: pointer; font-size: 13px; line-height: 1; padding: 2px 4px; }
+.gc-search-pill-x:hover { opacity: 1; }
+.gc-search-send-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  border: none;
+  border-radius: 50%;
+  background: var(--coral);
+  color: #fff;
+  cursor: pointer;
+  padding: 0;
+}
+.gc-search-send-btn svg { width: 13px; height: 13px; }
+.gc-search-send-btn:disabled { background: #E8C9BC; cursor: default; }
 .gc-search input { border: none; background: transparent; outline: none; font-family: 'Quicksand', sans-serif; font-size: 13.5px; color: var(--ink); width: 170px; }
 .gc-search input::placeholder { color: #9B9382; }
 .gc-btn { font-family: 'Quicksand', sans-serif; font-size: 13.5px; font-weight: 700; padding: 8px 18px; border-radius: 999px; border: 1.5px solid var(--ink); color: var(--ink); background: transparent; cursor: pointer; text-decoration: none; }
