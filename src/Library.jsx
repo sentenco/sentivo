@@ -769,6 +769,31 @@ function SendIcon() {
   );
 }
 
+function ModeIcon({ mode }) {
+  if (mode === "dictionary") {
+    return (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v15H6.5A2.5 2.5 0 0 0 4 19.5v-15Z" />
+        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+      </svg>
+    );
+  }
+  if (mode === "grammar") {
+    return (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="m18 2 4 4-13 13H5v-4Z" />
+      </svg>
+    );
+  }
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <circle cx="12" cy="12" r="10" />
+      <path d="M2 12h20" />
+      <path d="M12 2a15 15 0 0 1 0 20 15 15 0 0 1 0-20Z" />
+    </svg>
+  );
+}
+
 function BookshelfRows({ books, navigate, colorOffset }) {
   const rows = [];
   for (let i = 0; i < books.length; i += 4) rows.push(books.slice(i, i + 4));
@@ -1442,7 +1467,7 @@ export default function Library() {
             <img src="/logo-sentivo.png" alt="" className="gc-header-logo" />entivo
           </a>
           <div className="gc-topbar-actions">
-            <div className="gc-search" ref={searchWrapRef}>
+            <div className={`gc-search ${searchMode ? "has-mode" : ""}`} ref={searchWrapRef}>
               <div className="gc-search-icon-wrap">
                 <button
                   type="button"
@@ -1459,13 +1484,15 @@ export default function Library() {
                 </button>
                 {searchModeMenuOpen && (
                   <div className="gc-search-mode-menu">
+                    <div className="gc-search-mode-heading">Look something up</div>
                     {SEARCH_MODES.map((m) => (
                       <button
                         key={m.key}
                         type="button"
-                        className="gc-search-mode-item"
+                        className={`gc-search-mode-item gc-search-mode-item--${m.key}`}
                         onClick={() => pickSearchMode(m.key)}
                       >
+                        <span className="gc-search-mode-icon"><ModeIcon mode={m.key} /></span>
                         {m.label}
                       </button>
                     ))}
@@ -1473,7 +1500,8 @@ export default function Library() {
                 )}
               </div>
               {searchMode && (
-                <span className="gc-search-pill">
+                <span className={`gc-search-pill gc-search-pill--${searchMode}`}>
+                  <ModeIcon mode={searchMode} />
                   {SEARCH_MODES.find((m) => m.key === searchMode)?.label}
                   <button type="button" className="gc-search-pill-x" onClick={clearSearchMode} aria-label="Clear mode">×</button>
                 </span>
@@ -1740,42 +1768,96 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 }
 .gc-header-logo { height: 32px; width: auto; display: block; margin-right: -5px; }
 .gc-topbar-actions { display: flex; align-items: center; gap: 12px; }
-.gc-search { display: flex; align-items: center; gap: 6px; padding: 7px 12px; border: 1px solid rgba(34,58,51,0.3); border-radius: 999px; background: var(--card); color: var(--muted); }
+.gc-search {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 14px;
+  border: 1px solid var(--hair);
+  border-radius: 999px;
+  background: var(--card);
+  color: var(--muted);
+  transition: border-color 0.15s, box-shadow 0.15s, background 0.15s;
+}
+.gc-search:hover { border-color: rgba(43,42,74,0.2); }
+.gc-search:focus-within { border-color: rgba(255,107,74,0.55); box-shadow: 0 0 0 4px rgba(255,107,74,0.1); background: #fff; }
+.gc-search.has-mode { background: #fff; border-color: rgba(43,42,74,0.16); }
 .gc-search svg { width: 14px; height: 14px; flex-shrink: 0; }
 .gc-search-icon-wrap { position: relative; display: flex; flex-shrink: 0; }
-.gc-search-icon-btn { display: flex; align-items: center; justify-content: center; padding: 0; border: none; background: none; color: inherit; cursor: pointer; border-radius: 50%; }
-.gc-search-icon-btn:hover { color: var(--ink); }
+.gc-search-icon-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  padding: 0;
+  border: none;
+  background: none;
+  color: inherit;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: background 0.15s, color 0.15s;
+}
+.gc-search-icon-btn:hover { color: var(--coral); background: rgba(255,107,74,0.1); }
 .gc-search-mode-menu {
   position: absolute;
-  top: calc(100% + 10px);
-  left: 0;
+  top: calc(100% + 12px);
+  left: -6px;
   background: var(--card);
   border: 1px solid var(--hair);
-  border-radius: 14px;
-  box-shadow: 0 12px 28px rgba(43,42,74,0.14);
-  padding: 6px;
+  border-radius: 16px;
+  box-shadow: 0 16px 32px rgba(43,42,74,0.16);
+  padding: 8px;
   display: flex;
   flex-direction: column;
-  min-width: 140px;
+  min-width: 190px;
   z-index: 40;
 }
-.gc-search-mode-item {
+.gc-search-mode-heading {
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;
-  font-size: 13px;
+  font-size: 10.5px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding: 6px 10px 8px;
+}
+.gc-search-mode-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 700;
+  font-size: 13.5px;
   color: var(--ink);
   background: none;
   border: none;
-  border-radius: 9px;
+  border-radius: 10px;
   padding: 8px 10px;
   text-align: left;
   cursor: pointer;
 }
-.gc-search-mode-item:hover { background: rgba(255,107,74,0.1); color: var(--coral); }
+.gc-search-mode-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+.gc-search-mode-icon svg { width: 14px; height: 14px; }
+.gc-search-mode-item--dictionary .gc-search-mode-icon { background: rgba(22,191,174,0.14); color: #16BFAE; }
+.gc-search-mode-item--grammar .gc-search-mode-icon { background: rgba(124,92,252,0.14); color: #7C5CFC; }
+.gc-search-mode-item--translator .gc-search-mode-icon { background: rgba(255,138,76,0.16); color: #FF8A4C; }
+.gc-search-mode-item:hover { background: rgba(43,42,74,0.05); }
+.gc-search-mode-item--dictionary:hover { color: #16BFAE; }
+.gc-search-mode-item--grammar:hover { color: #7C5CFC; }
+.gc-search-mode-item--translator:hover { color: #FF8A4C; }
 .gc-search-pill {
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 6px;
   flex-shrink: 0;
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;
@@ -1783,9 +1865,13 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   color: #fff;
   background: var(--coral);
   border-radius: 999px;
-  padding: 4px 6px 4px 12px;
+  padding: 5px 6px 5px 11px;
 }
-.gc-search-pill-x { border: none; background: none; color: #fff; opacity: 0.85; cursor: pointer; font-size: 13px; line-height: 1; padding: 2px 4px; }
+.gc-search-pill svg { width: 11px; height: 11px; }
+.gc-search-pill--dictionary { background: #16BFAE; }
+.gc-search-pill--grammar { background: #7C5CFC; }
+.gc-search-pill--translator { background: #FF8A4C; }
+.gc-search-pill-x { border: none; background: none; color: #fff; opacity: 0.8; cursor: pointer; font-size: 13px; line-height: 1; padding: 2px 4px; }
 .gc-search-pill-x:hover { opacity: 1; }
 .gc-search-send-btn {
   display: flex;
@@ -1799,11 +1885,15 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   background: var(--coral);
   color: #fff;
   cursor: pointer;
+  transition: transform 0.1s, background 0.15s;
   padding: 0;
 }
+.gc-search-send-btn:hover:not(:disabled) { background: #E85436; }
+.gc-search-send-btn:active:not(:disabled) { transform: scale(0.92); }
 .gc-search-send-btn svg { width: 13px; height: 13px; }
 .gc-search-send-btn:disabled { background: #E8C9BC; cursor: default; }
-.gc-search input { border: none; background: transparent; outline: none; font-family: 'Quicksand', sans-serif; font-size: 13.5px; color: var(--ink); width: 170px; }
+.gc-search input { border: none; background: transparent; outline: none; font-family: 'Quicksand', sans-serif; font-size: 13.5px; color: var(--ink); width: 190px; transition: width 0.15s; }
+.gc-search.has-mode input { width: 150px; }
 .gc-search input::placeholder { color: #9B9382; }
 .gc-btn { font-family: 'Quicksand', sans-serif; font-size: 13.5px; font-weight: 700; padding: 8px 18px; border-radius: 999px; border: 1.5px solid var(--ink); color: var(--ink); background: transparent; cursor: pointer; text-decoration: none; }
 .gc-btn.primary { background: var(--ink); color: var(--card); }
