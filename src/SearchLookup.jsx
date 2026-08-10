@@ -220,7 +220,6 @@ export default function SearchLookup() {
     const trimmed = rawQuery.trim();
     if (!trimmed) return;
     const id = ++idRef.current;
-    setHistoryOpen(true);
     setHistory((h) => [
       {
         id,

@@ -130,154 +130,6 @@ function MiniCalendar() {
   );
 }
 
-function WordLookup() {
-  const [query, setQuery] = useState("");
-  const [status, setStatus] = useState("idle"); // idle | loading | done | error
-  const [result, setResult] = useState(null);
-  const requestId = useRef(0);
-
-  async function lookup(e) {
-    e.preventDefault();
-    const word = query.trim();
-    if (!word) return;
-    const id = ++requestId.current;
-    setStatus("loading");
-    setResult(null);
-    try {
-      const res = await fetch("/api/dictionary-lookup", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ word }),
-      });
-      if (id !== requestId.current) return;
-      const data = await res.json().catch(() => null);
-      if (!res.ok || !data?.meanings?.length) throw new Error("not found");
-      setResult({ word: data.word || word, meanings: data.meanings });
-      setStatus("done");
-    } catch {
-      if (id !== requestId.current) return;
-      setStatus("error");
-    }
-  }
-
-  return (
-    <div className="td-util-card">
-      <div className="td-util-head">
-        <span className="td-util-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="7" /><path d="m21 21-4.3-4.3" /></svg>
-        </span>
-        <span className="td-util-title">Dictionary</span>
-      </div>
-      <form className="td-lookup-form" onSubmit={lookup}>
-        <input
-          className="td-lookup-input"
-          type="text"
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          placeholder="Search a word…"
-        />
-        <button type="submit" className="td-lookup-btn" aria-label="Search" disabled={status === "loading"}>
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round">
-            <circle cx="11" cy="11" r="7" />
-            <path d="M21 21l-4.3-4.3" />
-          </svg>
-        </button>
-      </form>
-      {status === "loading" && <div className="td-lookup-status">Looking up…</div>}
-      {status === "error" && <div className="td-lookup-status td-lookup-status--error">No results for "{query.trim()}"</div>}
-      {status === "done" && result && (
-        <div className="td-lookup-result">
-          <div className="td-lookup-word">{result.word}</div>
-          {result.meanings.map((m, i) => (
-            <div className="td-lookup-meaning" key={i}>
-              <span className="td-lookup-pos">{m.pos}</span>
-              {m.def && <span className="td-lookup-def">{m.def}</span>}
-            </div>
-          ))}
-        </div>
-      )}
-    </div>
-  );
-}
-
-function GrammarChecker() {
-  const [text, setText] = useState("");
-  const [status, setStatus] = useState("idle"); // idle | loading | done | error
-  const [corrections, setCorrections] = useState(null);
-  const [errorMsg, setErrorMsg] = useState("");
-  const requestId = useRef(0);
-
-  async function check(e) {
-    e.preventDefault();
-    const input = text.trim();
-    if (!input) return;
-    const id = ++requestId.current;
-    setStatus("loading");
-    setCorrections(null);
-    setErrorMsg("");
-    try {
-      const res = await fetch("/api/grammar-check", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ text: input }),
-      });
-      if (id !== requestId.current) return;
-      const data = await res.json().catch(() => null);
-      if (!res.ok) throw new Error(data?.error || "Something went wrong.");
-      setCorrections(Array.isArray(data?.corrections) ? data.corrections : []);
-      setStatus("done");
-    } catch (err) {
-      if (id !== requestId.current) return;
-      setErrorMsg(err.message || "Couldn't check that text. Try again.");
-      setStatus("error");
-    }
-  }
-
-  return (
-    <div className="td-util-card">
-      <div className="td-util-head">
-        <span className="td-util-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m18 2 4 4-13 13H5v-4Z" /></svg>
-        </span>
-        <span className="td-util-title">Grammar Checker</span>
-      </div>
-      <form className="td-grammar-form" onSubmit={check}>
-        <textarea
-          className="td-grammar-input"
-          value={text}
-          onChange={(e) => setText(e.target.value)}
-          placeholder="Paste a sentence or paragraph to check…"
-          rows={3}
-        />
-        <div className="td-grammar-foot">
-          <button type="submit" className="td-grammar-btn" disabled={status === "loading" || !text.trim()}>
-            {status === "loading" ? "Checking…" : "Check grammar"}
-          </button>
-        </div>
-      </form>
-      {status === "error" && <div className="td-lookup-status td-lookup-status--error">{errorMsg}</div>}
-      {status === "done" && corrections && (
-        corrections.length === 0 ? (
-          <div className="td-grammar-clean">No issues found — looks good.</div>
-        ) : (
-          <div className="td-grammar-results">
-            {corrections.map((c, i) => (
-              <div className="td-grammar-item" key={i}>
-                <div className="td-grammar-diff">
-                  <span className="td-grammar-wrong">{c.original}</span>
-                  <span className="td-grammar-arrow">→</span>
-                  <span className="td-grammar-right">{c.corrected}</span>
-                </div>
-                {c.explanation && <p className="td-grammar-explain">{c.explanation}</p>}
-              </div>
-            ))}
-          </div>
-        )
-      )}
-    </div>
-  );
-}
-
 function TodayHero() {
   const [name, setName] = useState(() => {
     return localStorage.getItem("sentivo_teacher_name") || "";
@@ -963,11 +815,6 @@ function TodayFeature({ tools, navigate }) {
             <div className="td-action-icon"><img src={todayDeckIcon} alt="" /></div>
             <div className="td-action-title">Slide Builder</div>
           </button>
-        </div>
-
-        <div className="td-util-row">
-          <GrammarChecker />
-          <WordLookup />
         </div>
 
         {recommended.length > 0 && (
@@ -2060,65 +1907,6 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .td-action-title { font-family: 'Fredoka', sans-serif; font-size: 13px; font-weight: 600; line-height: 1.25; color: var(--ink); }
 .td-action-card.is-soon { opacity: 0.7; cursor: default; }
 
-/* ── Grammar Checker + Dictionary ── */
-.td-util-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
-.td-util-card { background: var(--card); border-radius: 22px; padding: 22px 24px; box-shadow: 0 8px 24px rgba(43,42,74,0.05); }
-.td-util-head { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
-.td-util-icon { width: 36px; height: 36px; border-radius: 11px; background: var(--coral-pale); color: var(--coral-dark); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-.td-util-icon svg { width: 16px; height: 16px; }
-.td-util-title { font-family: 'Fredoka', sans-serif; font-size: 15px; font-weight: 600; color: var(--ink); }
-
-.td-lookup-form { display: flex; align-items: center; gap: 8px; }
-.td-lookup-input {
-  flex: 1; min-width: 0;
-  font-family: 'Quicksand', sans-serif; font-size: 13.5px; color: var(--ink);
-  background: #F5F6FA; border: 1.5px solid var(--hair); border-radius: 999px;
-  padding: 11px 16px; outline: none;
-}
-.td-lookup-input:focus { border-color: var(--coral); }
-.td-lookup-input::placeholder { color: var(--muted); }
-.td-lookup-btn {
-  flex-shrink: 0; width: 38px; height: 38px; border-radius: 50%; border: none;
-  background: var(--coral); color: #FFFFFF; display: flex; align-items: center; justify-content: center; cursor: pointer;
-}
-.td-lookup-btn:disabled { opacity: 0.6; cursor: default; }
-.td-lookup-status { font-family: 'Quicksand', sans-serif; font-size: 12px; color: var(--muted); margin-top: 10px; }
-.td-lookup-status--error { color: var(--coral); }
-.td-lookup-result { margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--hair); }
-.td-lookup-word { font-family: 'Fredoka', sans-serif; font-size: 16px; font-weight: 700; color: var(--ink); text-transform: capitalize; margin-bottom: 6px; }
-.td-lookup-meaning { display: flex; align-items: baseline; gap: 7px; margin-top: 6px; }
-.td-lookup-meaning:first-of-type { margin-top: 0; }
-.td-lookup-pos {
-  flex-shrink: 0; font-family: 'Quicksand', sans-serif; font-size: 9.5px; font-weight: 800;
-  letter-spacing: 0.05em; text-transform: uppercase; color: var(--navy);
-  background: rgba(27,42,74,0.08); border-radius: 999px; padding: 2px 8px;
-}
-.td-lookup-def { font-family: 'Quicksand', sans-serif; font-size: 12px; line-height: 1.4; color: var(--ink-soft, var(--ink)); }
-
-.td-grammar-form { display: flex; flex-direction: column; gap: 10px; }
-.td-grammar-input {
-  width: 100%; min-height: 88px; resize: vertical;
-  font-family: 'Quicksand', sans-serif; font-size: 13.5px; color: var(--ink);
-  background: #F5F6FA; border: 1.5px solid var(--hair); border-radius: 16px; padding: 12px 14px; outline: none;
-}
-.td-grammar-input:focus { border-color: var(--coral); }
-.td-grammar-input::placeholder { color: var(--muted); }
-.td-grammar-foot { display: flex; align-items: center; justify-content: flex-end; }
-.td-grammar-btn {
-  font-family: 'Quicksand', sans-serif; font-weight: 700; font-size: 13px; color: #FFFFFF;
-  background: var(--coral); border: none; border-radius: 999px; padding: 10px 20px; cursor: pointer;
-}
-.td-grammar-btn:disabled { opacity: 0.5; cursor: default; }
-.td-grammar-clean { font-family: 'Quicksand', sans-serif; font-size: 12.5px; color: var(--muted); margin-top: 12px; }
-.td-grammar-results { display: flex; flex-direction: column; gap: 10px; margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--hair); }
-.td-grammar-item { border-top: 1px solid var(--hair); padding-top: 10px; }
-.td-grammar-item:first-child { border-top: none; padding-top: 0; }
-.td-grammar-diff { display: flex; align-items: baseline; flex-wrap: wrap; gap: 6px; font-family: 'Quicksand', sans-serif; font-size: 12.5px; }
-.td-grammar-wrong { color: #9B9382; text-decoration: line-through; text-decoration-color: #B9AF9C; }
-.td-grammar-arrow { color: var(--muted); }
-.td-grammar-right { color: var(--coral); font-weight: 700; }
-.td-grammar-explain { font-family: 'Quicksand', sans-serif; font-size: 11.5px; line-height: 1.4; color: var(--ink-soft, var(--ink)); margin: 4px 0 0; }
-
 /* ── Quote banner ── */
 .td-quote-banner { border-radius: 24px; overflow: hidden; line-height: 0; }
 .td-quote-banner img { width: 100%; height: auto; display: block; }
@@ -2134,7 +1922,6 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 }
 @media (max-width: 480px) {
   .td-briefs { grid-template-columns: 1fr; }
-  .td-util-row { grid-template-columns: 1fr; }
 }
 
 /* ── Responsive: narrower / non-maximized browser windows ── */
