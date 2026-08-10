@@ -1508,7 +1508,7 @@ export default function Library() {
               )}
               <input
                 type="text"
-                placeholder={searchMode ? `Ask ${SEARCH_MODES.find((m) => m.key === searchMode)?.label}…` : "Search the library…"}
+                placeholder={searchMode ? `Ask ${SEARCH_MODES.find((m) => m.key === searchMode)?.label}…` : "Search library…"}
                 value={searchMode ? promptQuery : query}
                 onChange={(e) => {
                   if (searchMode) {
@@ -1892,8 +1892,8 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .gc-search-send-btn:active:not(:disabled) { transform: scale(0.92); }
 .gc-search-send-btn svg { width: 13px; height: 13px; }
 .gc-search-send-btn:disabled { background: #E8C9BC; cursor: default; }
-.gc-search input { border: none; background: transparent; outline: none; font-family: 'Quicksand', sans-serif; font-size: 13.5px; color: var(--ink); width: 190px; transition: width 0.15s; }
-.gc-search.has-mode input { width: 150px; }
+.gc-search input { border: none; background: transparent; outline: none; font-family: 'Quicksand', sans-serif; font-size: 13.5px; color: var(--ink); width: 220px; transition: width 0.15s; }
+.gc-search.has-mode input { width: 170px; }
 .gc-search input::placeholder { color: #9B9382; }
 .gc-btn { font-family: 'Quicksand', sans-serif; font-size: 13.5px; font-weight: 700; padding: 8px 18px; border-radius: 999px; border: 1.5px solid var(--ink); color: var(--ink); background: transparent; cursor: pointer; text-decoration: none; }
 .gc-btn.primary { background: var(--ink); color: var(--card); }
@@ -2145,7 +2145,7 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 }
 @media (max-width: 900px) {
   .gc-topbar, .gc-sections, .gc-editions { padding-left: 14px; padding-right: 14px; }
-  .gc-search input { width: 110px; }
+  .gc-search input { width: 130px; }
 }
 
 /* ── Recommended Lessons: newspaper section front ── */
