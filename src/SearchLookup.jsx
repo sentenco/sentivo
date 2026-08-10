@@ -64,7 +64,7 @@ function ModeIcon({ mode }) {
   );
 }
 
-function ResultCard({ entry }) {
+function ResultCard({ entry, onReverse }) {
   const modeInfo = MODES.find((m) => m.key === entry.mode);
   const [copied, setCopied] = useState(false);
 
@@ -118,15 +118,28 @@ function ResultCard({ entry }) {
         <div className="sl-card-body">
           <div className="sl-translation-row">
             <div className="sl-translation">{entry.data.translation}</div>
-            <button
-              type="button"
-              className="sl-copy-btn"
-              onClick={copyTranslation}
-              title="Copy translation"
-              aria-label="Copy translation"
-            >
-              {copied ? "✓" : "⧉"}
-            </button>
+            <div className="sl-translation-actions">
+              {entry.data.sourceLang && (
+                <button
+                  type="button"
+                  className="sl-reverse-btn"
+                  onClick={() => onReverse(entry)}
+                  title={`Translate back to ${entry.data.sourceLang}`}
+                  aria-label="Reverse translation"
+                >
+                  ⇄
+                </button>
+              )}
+              <button
+                type="button"
+                className="sl-copy-btn"
+                onClick={copyTranslation}
+                title="Copy translation"
+                aria-label="Copy translation"
+              >
+                {copied ? "✓" : "⧉"}
+              </button>
+            </div>
           </div>
           <div className="sl-translation-meta">
             {entry.data.sourceLang && <span>{entry.data.sourceLang} → </span>}
@@ -180,6 +193,15 @@ export default function SearchLookup() {
   function clearHistory() {
     setHistory([]);
     localStorage.removeItem(HISTORY_STORAGE_KEY);
+  }
+
+  function handleReverse(entry) {
+    const detected = entry.data?.sourceLang;
+    if (!detected) return;
+    const matched = TRANSLATE_LANGUAGES.find((l) => l.toLowerCase() === detected.toLowerCase());
+    if (matched) setTargetLang(matched);
+    setMode("translator");
+    runQuery("translator", entry.data.translation, matched || detected);
   }
 
   async function runQuery(runMode, rawQuery, lang) {
@@ -345,7 +367,7 @@ export default function SearchLookup() {
               <p>Your {activeMode.label.toLowerCase()} results will show up here.</p>
             </div>
           ) : (
-            history.map((entry) => <ResultCard key={entry.id} entry={entry} />)
+            history.map((entry) => <ResultCard key={entry.id} entry={entry} onReverse={handleReverse} />)
           )
         )}
       </div>
@@ -685,7 +707,8 @@ const CSS = `
 
 .sl-translation-row { display: flex; align-items: flex-start; gap: 10px; }
 .sl-translation { flex: 1; font-size: 15px; color: #2B2A4A; font-weight: 600; line-height: 1.5; }
-.sl-copy-btn {
+.sl-translation-actions { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
+.sl-copy-btn, .sl-reverse-btn {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -696,10 +719,10 @@ const CSS = `
   border-radius: 50%;
   background: rgba(255,138,76,0.08);
   color: #FF8A4C;
-  font-size: 12px;
+  font-size: 13px;
   cursor: pointer;
 }
-.sl-copy-btn:hover { background: rgba(255,138,76,0.16); }
+.sl-copy-btn:hover, .sl-reverse-btn:hover { background: rgba(255,138,76,0.16); }
 .sl-translation-meta { margin-top: 6px; font-size: 12px; color: #8B84A3; }
 
 @media (max-width: 640px) {
