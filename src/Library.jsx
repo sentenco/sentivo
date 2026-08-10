@@ -756,7 +756,7 @@ const READING_AGE_TRACKS = ["Kids", "Teens", "Adults"];
 
 const SEARCH_MODES = [
   { key: "dictionary", label: "Dictionary" },
-  { key: "grammar", label: "Grammar" },
+  { key: "grammar", label: "Grammar Checker" },
   { key: "translator", label: "Translator" },
 ];
 

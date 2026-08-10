@@ -3,7 +3,7 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 
 const MODES = [
   { key: "dictionary", label: "Dictionary", placeholder: "Type a word…", multiline: false, color: "#16BFAE" },
-  { key: "grammar", label: "Grammar", placeholder: "Paste a sentence or paragraph to check…", multiline: true, color: "#7C5CFC" },
+  { key: "grammar", label: "Grammar Checker", placeholder: "Paste a sentence or paragraph to check…", multiline: true, color: "#7C5CFC" },
   { key: "translator", label: "Translator", placeholder: "Type text to translate…", multiline: true, color: "#FF8A4C" },
 ];
 
@@ -27,6 +27,14 @@ function SendIcon() {
     <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
       <path d="M10 15.5V5.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
       <path d="M5.5 10 10 5.5 14.5 10" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+function ChevronIcon() {
+  return (
+    <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
+      <path d="m6 8 4 4 4-4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );
 }
@@ -58,6 +66,15 @@ function ModeIcon({ mode }) {
 
 function ResultCard({ entry }) {
   const modeInfo = MODES.find((m) => m.key === entry.mode);
+  const [copied, setCopied] = useState(false);
+
+  function copyTranslation() {
+    if (!entry.data?.translation) return;
+    navigator.clipboard.writeText(entry.data.translation);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 1500);
+  }
+
   return (
     <div className={`sl-card sl-card--${entry.mode}`}>
       <div className="sl-card-head">
@@ -99,7 +116,18 @@ function ResultCard({ entry }) {
       )}
       {entry.status === "done" && entry.mode === "translator" && (
         <div className="sl-card-body">
-          <div className="sl-translation">{entry.data.translation}</div>
+          <div className="sl-translation-row">
+            <div className="sl-translation">{entry.data.translation}</div>
+            <button
+              type="button"
+              className="sl-copy-btn"
+              onClick={copyTranslation}
+              title="Copy translation"
+              aria-label="Copy translation"
+            >
+              {copied ? "✓" : "⧉"}
+            </button>
+          </div>
           <div className="sl-translation-meta">
             {entry.data.sourceLang && <span>{entry.data.sourceLang} → </span>}
             <span>{entry.targetLang}</span>
@@ -119,6 +147,7 @@ export default function SearchLookup() {
     MODES.some((m) => m.key === requestedMode) ? requestedMode : "dictionary"
   );
   const [inputText, setInputText] = useState("");
+  const [historyOpen, setHistoryOpen] = useState(false);
   const [targetLang, setTargetLang] = useState(() => localStorage.getItem(LANG_STORAGE_KEY) || "Filipino");
   const [history, setHistory] = useState(loadHistory);
   const idRef = useRef(0);
@@ -157,6 +186,7 @@ export default function SearchLookup() {
     const trimmed = rawQuery.trim();
     if (!trimmed) return;
     const id = ++idRef.current;
+    setHistoryOpen(true);
     setHistory((h) => [
       { id, mode: runMode, query: trimmed, targetLang: runMode === "translator" ? lang : null, status: "loading", data: null, error: "" },
       ...h,
@@ -295,18 +325,28 @@ export default function SearchLookup() {
 
       <div className="sl-history">
         <div className="sl-history-head">
-          <span className="sl-history-label">Recent lookups{history.length > 0 ? ` · ${history.length}` : ""}</span>
+          <button
+            type="button"
+            className={`sl-history-toggle ${historyOpen ? "is-open" : ""}`}
+            onClick={() => setHistoryOpen((o) => !o)}
+            aria-expanded={historyOpen}
+          >
+            <ChevronIcon />
+            Recent lookups{history.length > 0 ? ` · ${history.length}` : ""}
+          </button>
           {history.length > 0 && (
             <button type="button" className="sl-clear-history" onClick={clearHistory}>Clear</button>
           )}
         </div>
-        {history.length === 0 ? (
-          <div className="sl-empty">
-            <span className={`sl-empty-icon sl-empty-icon--${mode}`}><ModeIcon mode={mode} /></span>
-            <p>Your {activeMode.label.toLowerCase()} results will show up here.</p>
-          </div>
-        ) : (
-          history.map((entry) => <ResultCard key={entry.id} entry={entry} />)
+        {historyOpen && (
+          history.length === 0 ? (
+            <div className="sl-empty">
+              <span className={`sl-empty-icon sl-empty-icon--${mode}`}><ModeIcon mode={mode} /></span>
+              <p>Your {activeMode.label.toLowerCase()} results will show up here.</p>
+            </div>
+          ) : (
+            history.map((entry) => <ResultCard key={entry.id} entry={entry} />)
+          )
         )}
       </div>
     </div>
@@ -343,14 +383,15 @@ const CSS = `
   flex-shrink: 0;
   font-family: 'Fredoka', sans-serif;
   font-weight: 700;
-  font-size: 16px;
+  font-size: 22px;
+  letter-spacing: 0.01em;
   color: #2B2A4A;
   background: none;
   border: none;
   cursor: pointer;
   padding: 0;
 }
-.sl-brand-logo { height: 24px; width: auto; display: block; margin-right: -3px; }
+.sl-brand-logo { height: 32px; width: auto; display: block; margin-right: -5px; }
 
 .sl-hero {
   width: 100%;
@@ -513,12 +554,22 @@ const CSS = `
   padding-bottom: 10px;
   border-bottom: 1px solid rgba(43,42,74,0.11);
 }
-.sl-history-label {
+.sl-history-toggle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
   font-family: 'Fredoka', sans-serif;
   font-weight: 600;
   font-size: 13px;
   color: #8B84A3;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
 }
+.sl-history-toggle:hover { color: #2B2A4A; }
+.sl-history-toggle svg { width: 13px; height: 13px; transition: transform 0.15s; }
+.sl-history-toggle.is-open svg { transform: rotate(180deg); }
 .sl-clear-history {
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;
@@ -632,7 +683,23 @@ const CSS = `
 .sl-right { color: #16BFAE; font-weight: 600; }
 .sl-explain { margin: 4px 0 0; font-size: 12.5px; color: #6B7280; }
 
-.sl-translation { font-size: 15px; color: #2B2A4A; font-weight: 600; line-height: 1.5; }
+.sl-translation-row { display: flex; align-items: flex-start; gap: 10px; }
+.sl-translation { flex: 1; font-size: 15px; color: #2B2A4A; font-weight: 600; line-height: 1.5; }
+.sl-copy-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  flex-shrink: 0;
+  border: 1px solid rgba(255,138,76,0.3);
+  border-radius: 50%;
+  background: rgba(255,138,76,0.08);
+  color: #FF8A4C;
+  font-size: 12px;
+  cursor: pointer;
+}
+.sl-copy-btn:hover { background: rgba(255,138,76,0.16); }
 .sl-translation-meta { margin-top: 6px; font-size: 12px; color: #8B84A3; }
 
 @media (max-width: 640px) {
