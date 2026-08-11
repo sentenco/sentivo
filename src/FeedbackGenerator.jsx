@@ -130,8 +130,33 @@ const TRANSITIONS = [
   "Something worth practicing before next time:",
 ];
 
+const STRENGTH_TEMPLATES = [
+  (label, items) => `${label} was a strength — you ${items}.`,
+  (label, items) => `In terms of ${label.toLowerCase()}, you ${items}.`,
+  (label, items) => `When it comes to ${label.toLowerCase()}, you ${items}.`,
+  (label, items) => `On the ${label.toLowerCase()} side, you ${items}.`,
+  (label, items) => `For ${label.toLowerCase()}, you ${items}.`,
+];
+
+const IMPROVE_TEMPLATES = [
+  (label, items) => `For ${label.toLowerCase()}, try to ${items}.`,
+  (label, items) => `With ${label.toLowerCase()}, it would help to ${items}.`,
+  (label, items) => `A good focus for ${label.toLowerCase()} is to ${items}.`,
+  (label, items) => `On the ${label.toLowerCase()} side, aim to ${items}.`,
+  (label, items) => `Let's work on ${label.toLowerCase()} — try to ${items}.`,
+];
+
 function pickRandom(arr) {
   return arr[Math.floor(Math.random() * arr.length)];
+}
+
+function shuffle(arr) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
 }
 
 function joinList(items) {
@@ -144,21 +169,36 @@ function itemKey(catKey, item) {
   return `${catKey}::${item}`;
 }
 
-function buildFeedback({ studentName, selectedStrengths, selectedImprovements }) {
+function signatureLine(rawName) {
+  const trimmed = (rawName || "").trim();
+  if (!trimmed) return "";
+  const stripped = trimmed.replace(/^teacher\s+/i, "");
+  return `— Teacher ${stripped}`;
+}
+
+function buildFeedback({ studentName, teacherName, selectedStrengths, selectedImprovements }) {
   const name = studentName.trim() || "there";
   const greeting = pickRandom(greetingPool(name));
   const closing = pickRandom(closingPool(name));
 
+  const strengthTemplates = shuffle(STRENGTH_TEMPLATES);
+  let sIdx = 0;
   const strengthSentences = STRENGTH_CATEGORIES.map((cat) => {
     const picked = cat.items.filter((item) => selectedStrengths.has(itemKey(cat.key, item)));
     if (!picked.length) return null;
-    return `In ${cat.label}, you ${joinList(picked)}.`;
+    const template = strengthTemplates[sIdx % strengthTemplates.length];
+    sIdx++;
+    return template(cat.label, joinList(picked));
   }).filter(Boolean);
 
+  const improveTemplates = shuffle(IMPROVE_TEMPLATES);
+  let iIdx = 0;
   const improvementSentences = IMPROVEMENT_CATEGORIES.map((cat) => {
     const picked = cat.items.filter((item) => selectedImprovements.has(itemKey(cat.key, item)));
     if (!picked.length) return null;
-    return `For ${cat.label}, try to ${joinList(picked)}.`;
+    const template = improveTemplates[iIdx % improveTemplates.length];
+    iIdx++;
+    return template(cat.label, joinList(picked));
   }).filter(Boolean);
 
   const paragraphs = [greeting];
@@ -174,6 +214,9 @@ function buildFeedback({ studentName, selectedStrengths, selectedImprovements })
   }
 
   paragraphs.push(closing);
+
+  const signature = signatureLine(teacherName);
+  if (signature) paragraphs.push(signature);
 
   return paragraphs.join("\n\n");
 }
@@ -230,7 +273,7 @@ export default function FeedbackGenerator() {
   }
 
   function handleGenerate() {
-    const text = buildFeedback({ studentName, selectedStrengths, selectedImprovements });
+    const text = buildFeedback({ studentName, teacherName, selectedStrengths, selectedImprovements });
     setGeneratedText(text);
     setCopied(false);
   }
