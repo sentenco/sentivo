@@ -13,6 +13,7 @@ import ArticlePlayerPage from './ArticlePlayerPage.jsx'
 import VocabularyPlayerPage from './VocabularyPlayerPage.jsx'
 import WritingPlayerPage from './WritingPlayerPage.jsx'
 import NotebookHub from './NotebookHub.jsx'
+import FeedbackGenerator from './FeedbackGenerator.jsx'
 import NotebookPage from './NotebookPage.jsx'
 import WheelPage from './WheelPage.jsx'
 import SlideDeckHub from './SlideDeckHub.jsx'
@@ -84,6 +85,7 @@ createRoot(document.getElementById('root')).render(
             <Route path="/library/vocabulary/:gameKey/:categoryKey/player" element={<VocabularyPlayerPage />} />
             <Route path="/library/writing/:typeKey/:comboKey/:topicIndex/player" element={<WritingPlayerPage />} />
             <Route path="/library/notebook" element={<NotebookHub />} />
+            <Route path="/library/feedback" element={<FeedbackGenerator />} />
             <Route path="/library/notebook/:design" element={<NotebookPage />} />
             <Route path="/library/wheel" element={<WheelPage />} />
             <Route path="/library/slides" element={<SlideDeckHub />} />

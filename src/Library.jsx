@@ -15,7 +15,6 @@ import storybook7CoverImg from "./assets/storybook7/cover.jpeg";
 import storybook8CoverImg from "./assets/storybook8/cover.jpeg";
 import forge1CoverImg from "./assets/forge/track1-cover.jpeg";
 import todayHeroImg from "./assets/today/greeting-bg.jpg";
-import todaySalaryIcon from "./assets/today/icon-salary.jpg";
 import todayWheelIcon from "./assets/today/icon-wheel.jpg";
 import todayNotebookIcon from "./assets/today/icon-notebook.jpg";
 import todayDeckIcon from "./assets/today/icon-deck.jpg";
@@ -99,6 +98,15 @@ function PencilIcon() {
   return (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
       <path d="m18 2 4 4-13 13H5v-4Z" />
+    </svg>
+  );
+}
+
+function FeedbackIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M9 2h6a1 1 0 0 1 1 1v1h1.5A1.5 1.5 0 0 1 19 5.5v15A1.5 1.5 0 0 1 17.5 22h-11A1.5 1.5 0 0 1 5 20.5v-15A1.5 1.5 0 0 1 6.5 4H8V3a1 1 0 0 1 1-1Z" />
+      <path d="m8.5 13 2.2 2.2L15.5 10.5" />
     </svg>
   );
 }
@@ -782,6 +790,22 @@ function openWheel() {
   );
 }
 
+// Same popup pattern for the post-lesson Feedback Generator.
+function openFeedbackGenerator() {
+  const screenW = window.screen.availWidth || 1400;
+  const screenH = window.screen.availHeight || 900;
+  const w = Math.min(960, screenW - 40);
+  const h = Math.min(760, screenH - 80);
+  const left = Math.max(0, Math.floor((screenW - w) / 2));
+  const top = Math.max(0, Math.floor((screenH - h) / 2));
+
+  window.open(
+    "/library/feedback",
+    "sentivoFeedback",
+    `width=${w},height=${h},left=${left},top=${top},toolbar=no,location=no,menubar=no,status=no,scrollbars=yes,resizable=yes`
+  );
+}
+
 function TodayFeature({ tools, navigate }) {
   const today = new Date();
   const dayIndex = daysSince(today);
@@ -844,10 +868,10 @@ function TodayFeature({ tools, navigate }) {
 
         <div className="td-section-label">Your Toolkit</div>
         <div className="td-actions-grid">
-          <div className="td-action-card is-soon">
-            <div className="td-action-icon"><img src={todaySalaryIcon} alt="" /></div>
-            <div className="td-action-title">Salary Tracker</div>
-          </div>
+          <button type="button" className="td-action-card" onClick={openFeedbackGenerator}>
+            <div className="td-action-icon td-action-icon--svg"><FeedbackIcon /></div>
+            <div className="td-action-title">Lesson Feedback</div>
+          </button>
           <button type="button" className="td-action-card" onClick={openWheel}>
             <div className="td-action-icon"><img src={todayWheelIcon} alt="" /></div>
             <div className="td-action-title">Spin the Wheel</div>
@@ -1954,6 +1978,8 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .td-action-card:not(.is-soon):hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(43,42,74,0.10); }
 .td-action-icon { width: 40px; height: 40px; border-radius: 12px; overflow: hidden; flex-shrink: 0; display: flex; align-items: center; justify-content: center; background: #F5F6FA; }
 .td-action-icon img { width: 100%; height: 100%; object-fit: contain; }
+.td-action-icon--svg { background: rgba(255,107,74,0.12); color: var(--coral); }
+.td-action-icon--svg svg { width: 20px; height: 20px; }
 .td-action-title { font-family: 'Fredoka', sans-serif; font-size: 13px; font-weight: 600; line-height: 1.25; color: var(--ink); }
 .td-action-card.is-soon { opacity: 0.7; cursor: default; }
 
