@@ -188,30 +188,60 @@ function teacherDisplayName(rawName) {
   return `Teacher ${trimmed.replace(/^teacher\s+/i, "")}`;
 }
 
-function buildFeedback({ studentName, teacherName, selectedStrengths, selectedImprovements, note }) {
+function categoryHasInput(cat, selectedStrengths, selectedImprovements, notes) {
+  const hasChip =
+    cat.strengths.some((item) => selectedStrengths.has(itemKey(cat.key, item))) ||
+    cat.improvements.some((item) => selectedImprovements.has(itemKey(cat.key, item)));
+  const hasNote = ((notes[cat.key] || "").trim().length > 0);
+  return hasChip || hasNote;
+}
+
+function buildFeedback({ studentName, teacherName, selectedStrengths, selectedImprovements, notes }) {
   const name = studentName.trim() || "there";
   const greeting = pickRandom(greetingPool(name));
   const closing = pickRandom(closingPool(name));
 
   const strengthTemplates = shuffle(STRENGTH_TEMPLATES);
-  let sIdx = 0;
-  const strengthSentences = CATEGORIES.map((cat) => {
-    const picked = cat.strengths.filter((item) => selectedStrengths.has(itemKey(cat.key, item)));
-    if (!picked.length) return null;
-    const template = strengthTemplates[sIdx % strengthTemplates.length];
-    sIdx++;
-    return template(cat.label, joinList(picked));
-  }).filter(Boolean);
-
   const improveTemplates = shuffle(IMPROVE_TEMPLATES);
+  let sIdx = 0;
   let iIdx = 0;
-  const improvementSentences = CATEGORIES.map((cat) => {
-    const picked = cat.improvements.filter((item) => selectedImprovements.has(itemKey(cat.key, item)));
-    if (!picked.length) return null;
-    const template = improveTemplates[iIdx % improveTemplates.length];
-    iIdx++;
-    return template(cat.label, joinList(picked));
-  }).filter(Boolean);
+
+  const strengthSentences = [];
+  const improvementSentences = [];
+  const noteOnlySentences = [];
+
+  CATEGORIES.forEach((cat) => {
+    const pickedS = cat.strengths.filter((item) => selectedStrengths.has(itemKey(cat.key, item)));
+    const pickedI = cat.improvements.filter((item) => selectedImprovements.has(itemKey(cat.key, item)));
+    const noteText = (notes[cat.key] || "").trim();
+    let noteAttached = false;
+
+    if (pickedS.length) {
+      const template = strengthTemplates[sIdx % strengthTemplates.length];
+      sIdx++;
+      let sentence = template(cat.label, joinList(pickedS));
+      if (noteText) {
+        sentence += ` ${noteText}`;
+        noteAttached = true;
+      }
+      strengthSentences.push(sentence);
+    }
+
+    if (pickedI.length) {
+      const template = improveTemplates[iIdx % improveTemplates.length];
+      iIdx++;
+      let sentence = template(cat.label, joinList(pickedI));
+      if (noteText && !noteAttached) {
+        sentence += ` ${noteText}`;
+        noteAttached = true;
+      }
+      improvementSentences.push(sentence);
+    }
+
+    if (noteText && !noteAttached) {
+      noteOnlySentences.push(noteText);
+    }
+  });
 
   const paragraphs = [greeting];
 
@@ -225,8 +255,8 @@ function buildFeedback({ studentName, teacherName, selectedStrengths, selectedIm
     paragraphs.push(`${pickRandom(TRANSITIONS)} ${improvementSentences.join(" ")}`);
   }
 
-  if (note && note.trim()) {
-    paragraphs.push(note.trim());
+  if (noteOnlySentences.length) {
+    paragraphs.push(noteOnlySentences.join(" "));
   }
 
   paragraphs.push(closing);
@@ -259,32 +289,21 @@ function ChipList({ catKey, items, selected, onToggle, tone }) {
   );
 }
 
-function CategoryRow({ category, selectedStrengths, selectedImprovements, onToggleStrength, onToggleImprovement }) {
-  return (
-    <div className="fbg-cat-block">
-      <div className="fbg-cat-block-label">
-        <span className="fbg-cat-icon" aria-hidden="true">{CATEGORY_ICONS[category.key]}</span>
-        {category.label}
-      </div>
-      <div className="fbg-cat-cols">
-        <ChipList catKey={category.key} items={category.strengths} selected={selectedStrengths} onToggle={onToggleStrength} tone="strength" />
-        <ChipList catKey={category.key} items={category.improvements} selected={selectedImprovements} onToggle={onToggleImprovement} tone="improve" />
-      </div>
-    </div>
-  );
-}
-
 export default function FeedbackGenerator() {
   const [teacherName, setTeacherName] = useState(() => localStorage.getItem(TEACHER_NAME_KEY) || "");
   const [studentName, setStudentName] = useState("");
   const [selectedStrengths, setSelectedStrengths] = useState(() => new Set());
   const [selectedImprovements, setSelectedImprovements] = useState(() => new Set());
-  const [note, setNote] = useState("");
+  const [notes, setNotes] = useState({});
+  const [step, setStep] = useState(0);
   const [generatedText, setGeneratedText] = useState("");
   const [copied, setCopied] = useState(false);
 
-  const hasAnySelection = selectedStrengths.size > 0 || selectedImprovements.size > 0;
-  const hasAnyContent = hasAnySelection || studentName.trim() || note.trim();
+  const totalCategorySteps = CATEGORIES.length;
+  const reviewStep = totalCategorySteps + 1;
+  const isNamesStep = step === 0;
+  const isReviewStep = step === reviewStep;
+  const currentCategory = !isNamesStep && !isReviewStep ? CATEGORIES[step - 1] : null;
 
   function toggleStrength(key) {
     setSelectedStrengths((prev) => {
@@ -302,8 +321,20 @@ export default function FeedbackGenerator() {
     });
   }
 
+  function setNoteFor(catKey, value) {
+    setNotes((prev) => ({ ...prev, [catKey]: value }));
+  }
+
+  function goNext() {
+    setStep((s) => Math.min(s + 1, reviewStep));
+  }
+
+  function goBack() {
+    setStep((s) => Math.max(s - 1, 0));
+  }
+
   function handleGenerate() {
-    const text = buildFeedback({ studentName, teacherName, selectedStrengths, selectedImprovements, note });
+    const text = buildFeedback({ studentName, teacherName, selectedStrengths, selectedImprovements, notes });
     setGeneratedText(text);
     setCopied(false);
   }
@@ -314,120 +345,202 @@ export default function FeedbackGenerator() {
     setTimeout(() => setCopied(false), 1800);
   }
 
-  function handleClear() {
+  function handleRestart() {
     setSelectedStrengths(new Set());
     setSelectedImprovements(new Set());
+    setNotes({});
     setStudentName("");
-    setNote("");
     setGeneratedText("");
     setCopied(false);
+    setStep(0);
   }
 
   const studentTrimmed = studentName.trim();
   const teacherDisplay = teacherDisplayName(teacherName);
+  const currentSatisfied = currentCategory
+    ? categoryHasInput(currentCategory, selectedStrengths, selectedImprovements, notes)
+    : true;
 
   return (
     <div className="fbg-shell">
       <style>{CSS}</style>
-      <header className="fbg-topbar">
-        <span className="fbg-badge">📋</span>
-        <div>
-          <h1 className="fbg-title">Lesson Feedback</h1>
-          <p className="fbg-sub">Check off what applies, then generate a ready-to-share paragraph.</p>
-        </div>
-      </header>
-
-      <div className="fbg-body">
-        <div className="fbg-form">
-          <div className="fbg-names">
-            <label className="fbg-field">
-              <span className="fbg-label">Your name</span>
-              <input
-                type="text"
-                className="fbg-input"
-                value={teacherName}
-                onChange={(e) => { setTeacherName(e.target.value); localStorage.setItem(TEACHER_NAME_KEY, e.target.value); }}
-                placeholder="Teacher name"
-              />
-            </label>
-            <label className="fbg-field">
-              <span className="fbg-label">Student name</span>
-              <input
-                type="text"
-                className="fbg-input"
-                value={studentName}
-                onChange={(e) => setStudentName(e.target.value)}
-                placeholder="Who was this lesson for?"
-              />
-            </label>
+      <div className="fbg-wizard">
+        <header className="fbg-topbar">
+          <span className="fbg-badge">📋</span>
+          <div className="fbg-topbar-text">
+            <h1 className="fbg-title">Lesson Feedback</h1>
+            <p className="fbg-sub">One category at a time — pick what applies, or add a quick note.</p>
           </div>
-
-          <div className="fbg-cols-head">
-            <span className="fbg-cols-head-item fbg-cols-head-item--strength">✓ What went well</span>
-            <span className="fbg-cols-head-item fbg-cols-head-item--improve">→ What to work on</span>
-          </div>
-
-          {CATEGORIES.map((cat) => (
-            <CategoryRow
-              key={cat.key}
-              category={cat}
-              selectedStrengths={selectedStrengths}
-              selectedImprovements={selectedImprovements}
-              onToggleStrength={toggleStrength}
-              onToggleImprovement={toggleImprovement}
-            />
-          ))}
-
-          <label className="fbg-field fbg-note-field">
-            <span className="fbg-label">Anything else? <span className="fbg-optional">(optional)</span></span>
-            <textarea
-              className="fbg-textarea"
-              rows={2}
-              value={note}
-              onChange={(e) => setNote(e.target.value)}
-              placeholder="Add anything specific we didn't cover above — it'll be woven into the message."
-            />
-          </label>
-
-          {hasAnyContent && (
-            <button type="button" className="fbg-clear-btn" onClick={handleClear}>Clear all</button>
+          {step > 0 && (
+            <button type="button" className="fbg-restart-btn" onClick={handleRestart}>↺ Start over</button>
           )}
-        </div>
+        </header>
 
-        <div className="fbg-preview-col">
-          <div className="fbg-preview-card">
-            <div className="fbg-preview-accent" />
-            <div className="fbg-preview-head">
-              <div>
-                <span className="fbg-preview-label">Preview</span>
-                {hasAnySelection && (
-                  <span className="fbg-selection-count">
-                    {selectedStrengths.size} went well · {selectedImprovements.size} to work on
-                  </span>
-                )}
-              </div>
-              <div className="fbg-preview-actions">
-                <button type="button" className="fbg-generate-btn" onClick={handleGenerate}>
-                  {generatedText ? "🔁 Regenerate" : "✨ Generate feedback"}
+        {step > 0 && (
+          <div className="fbg-stepper">
+            {CATEGORIES.map((cat, idx) => {
+              const nodeStep = idx + 1;
+              const complete = categoryHasInput(cat, selectedStrengths, selectedImprovements, notes);
+              const isCurrent = step === nodeStep;
+              return (
+                <button
+                  type="button"
+                  key={cat.key}
+                  className={`fbg-step-node${isCurrent ? " is-current" : ""}${complete ? " is-complete" : ""}`}
+                  onClick={() => setStep(nodeStep)}
+                >
+                  <span className="fbg-step-circle">{complete && !isCurrent ? "✓" : CATEGORY_ICONS[cat.key]}</span>
+                  <span className="fbg-step-node-label">{cat.label.split(" ")[0]}</span>
                 </button>
-                {generatedText && (
-                  <button type="button" className="fbg-copy-btn" onClick={handleCopy}>
-                    {copied ? "✓ Copied" : "⧉ Copy"}
-                  </button>
-                )}
-              </div>
+              );
+            })}
+            <div className={`fbg-step-node${isReviewStep ? " is-current" : ""}`}>
+              <span className="fbg-step-circle">🎉</span>
+              <span className="fbg-step-node-label">Review</span>
             </div>
-            {(studentTrimmed || teacherDisplay) && (
-              <div className="fbg-preview-meta">
-                {studentTrimmed && <span>To {studentTrimmed}</span>}
-                {studentTrimmed && teacherDisplay && <span className="fbg-preview-meta-sep">·</span>}
-                {teacherDisplay && <span>From {teacherDisplay}</span>}
-              </div>
-            )}
-            <pre className="fbg-preview">
-              {generatedText || "Check off some qualities on the left, then generate feedback…"}
-            </pre>
           </div>
+        )}
+
+        <div className="fbg-step-card">
+          {isNamesStep && (
+            <>
+              <div className="fbg-step-heading">
+                <span className="fbg-step-heading-icon">👋</span>
+                <div className="fbg-step-heading-text">
+                  <h2>Let's get started</h2>
+                  <p>Who is this feedback for?</p>
+                </div>
+              </div>
+              <div className="fbg-names">
+                <label className="fbg-field">
+                  <span className="fbg-label">Your name</span>
+                  <input
+                    type="text"
+                    className="fbg-input"
+                    value={teacherName}
+                    onChange={(e) => { setTeacherName(e.target.value); localStorage.setItem(TEACHER_NAME_KEY, e.target.value); }}
+                    placeholder="Teacher name"
+                  />
+                </label>
+                <label className="fbg-field">
+                  <span className="fbg-label">Student name</span>
+                  <input
+                    type="text"
+                    className="fbg-input"
+                    value={studentName}
+                    onChange={(e) => setStudentName(e.target.value)}
+                    placeholder="Who was this lesson for?"
+                  />
+                </label>
+              </div>
+              <div className="fbg-step-nav">
+                <span />
+                <button type="button" className="fbg-btn-next" onClick={goNext}>Continue →</button>
+              </div>
+            </>
+          )}
+
+          {currentCategory && (
+            <>
+              <div className="fbg-step-heading">
+                <span className="fbg-step-heading-icon">{CATEGORY_ICONS[currentCategory.key]}</span>
+                <div className="fbg-step-heading-text">
+                  <h2>{currentCategory.label}</h2>
+                  <p>Pick anything that applies, or add a quick note below.</p>
+                </div>
+              </div>
+
+              <div className="fbg-cols-head">
+                <span className="fbg-cols-head-item fbg-cols-head-item--strength">✓ What went well</span>
+                <span className="fbg-cols-head-item fbg-cols-head-item--improve">→ What to work on</span>
+              </div>
+              <div className="fbg-cat-cols">
+                <ChipList catKey={currentCategory.key} items={currentCategory.strengths} selected={selectedStrengths} onToggle={toggleStrength} tone="strength" />
+                <ChipList catKey={currentCategory.key} items={currentCategory.improvements} selected={selectedImprovements} onToggle={toggleImprovement} tone="improve" />
+              </div>
+
+              <label className="fbg-field fbg-note-field">
+                <span className="fbg-label">
+                  Anything else about {currentCategory.label.toLowerCase()}? <span className="fbg-optional">(optional if you picked a quality)</span>
+                </span>
+                <textarea
+                  className="fbg-textarea"
+                  rows={2}
+                  value={notes[currentCategory.key] || ""}
+                  onChange={(e) => setNoteFor(currentCategory.key, e.target.value)}
+                  placeholder={`Add a specific note about ${currentCategory.label.toLowerCase()}…`}
+                />
+              </label>
+
+              <div className={`fbg-step-hint${currentSatisfied ? " is-satisfied" : ""}`}>
+                {currentSatisfied ? "✓ Nice — ready for the next category" : "Pick at least one quality above, or add a note below"}
+              </div>
+
+              <div className="fbg-step-nav">
+                <button type="button" className="fbg-btn-back" onClick={goBack}>← Back</button>
+                <button type="button" className="fbg-btn-next" onClick={goNext} disabled={!currentSatisfied}>
+                  {step === totalCategorySteps ? "Review →" : "Next →"}
+                </button>
+              </div>
+            </>
+          )}
+
+          {isReviewStep && !generatedText && (
+            <>
+              <div className="fbg-step-heading">
+                <span className="fbg-step-heading-icon">🎉</span>
+                <div className="fbg-step-heading-text">
+                  <h2>Ready to generate</h2>
+                  <p>Here's a quick summary — tap Edit to change anything.</p>
+                </div>
+              </div>
+              <div className="fbg-review-list">
+                {CATEGORIES.map((cat, idx) => {
+                  const stCount = cat.strengths.filter((item) => selectedStrengths.has(itemKey(cat.key, item))).length;
+                  const imCount = cat.improvements.filter((item) => selectedImprovements.has(itemKey(cat.key, item))).length;
+                  const hasNote = (notes[cat.key] || "").trim().length > 0;
+                  return (
+                    <div className="fbg-review-row" key={cat.key}>
+                      <div className="fbg-review-row-main">
+                        <span className="fbg-cat-icon" aria-hidden="true">{CATEGORY_ICONS[cat.key]}</span>
+                        <span className="fbg-review-row-label">{cat.label}</span>
+                        <span className="fbg-review-row-counts">
+                          {stCount} went well · {imCount} to work on{hasNote ? " · note added" : ""}
+                        </span>
+                      </div>
+                      <button type="button" className="fbg-review-edit" onClick={() => setStep(idx + 1)}>Edit</button>
+                    </div>
+                  );
+                })}
+              </div>
+              <div className="fbg-step-nav">
+                <button type="button" className="fbg-btn-back" onClick={goBack}>← Back</button>
+                <button type="button" className="fbg-generate-btn" onClick={handleGenerate}>✨ Generate feedback</button>
+              </div>
+            </>
+          )}
+
+          {isReviewStep && generatedText && (
+            <div className="fbg-preview-card">
+              <div className="fbg-preview-accent" />
+              <div className="fbg-preview-head">
+                <span className="fbg-preview-label">Preview</span>
+                <div className="fbg-preview-actions">
+                  <button type="button" className="fbg-generate-btn" onClick={handleGenerate}>🔁 Regenerate</button>
+                  <button type="button" className="fbg-copy-btn" onClick={handleCopy}>{copied ? "✓ Copied" : "⧉ Copy"}</button>
+                </div>
+              </div>
+              {(studentTrimmed || teacherDisplay) && (
+                <div className="fbg-preview-meta">
+                  {studentTrimmed && <span>To {studentTrimmed}</span>}
+                  {studentTrimmed && teacherDisplay && <span className="fbg-preview-meta-sep">·</span>}
+                  {teacherDisplay && <span>From {teacherDisplay}</span>}
+                </div>
+              )}
+              <pre className="fbg-preview">{generatedText}</pre>
+              <button type="button" className="fbg-edit-answers-btn" onClick={() => setGeneratedText("")}>← Edit answers</button>
+            </div>
+          )}
         </div>
       </div>
     </div>
@@ -445,11 +558,14 @@ const CSS = `
     #FFFDFB;
   color: #2B2A4A;
   font-family: 'Quicksand', sans-serif;
-  padding: 28px 24px;
+  padding: 28px 20px;
 }
 .fbg-shell * { box-sizing: border-box; }
 
-.fbg-topbar { display: flex; align-items: flex-start; gap: 14px; max-width: 1180px; margin: 0 auto 24px; }
+.fbg-wizard { max-width: 640px; margin: 0 auto; }
+
+.fbg-topbar { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 18px; }
+.fbg-topbar-text { flex: 1; }
 .fbg-badge {
   display: flex; align-items: center; justify-content: center;
   width: 44px; height: 44px; border-radius: 14px; flex-shrink: 0;
@@ -457,29 +573,63 @@ const CSS = `
   box-shadow: 0 8px 18px rgba(255,107,74,0.32);
   font-size: 20px;
 }
-.fbg-title { font-family: 'Fredoka', sans-serif; font-size: 23px; font-weight: 700; margin: 0 0 3px; letter-spacing: -0.01em; }
-.fbg-sub { font-size: 13.5px; color: #8B84A3; margin: 0; }
-
-.fbg-body {
-  max-width: 1180px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1.4fr 1fr;
-  gap: 20px;
-  align-items: start;
+.fbg-title { font-family: 'Fredoka', sans-serif; font-size: 22px; font-weight: 700; margin: 0 0 3px; letter-spacing: -0.01em; }
+.fbg-sub { font-size: 13px; color: #8B84A3; margin: 0; }
+.fbg-restart-btn {
+  align-self: flex-start;
+  font-family: 'Quicksand', sans-serif; font-weight: 700; font-size: 11.5px;
+  color: #8B84A3; background: none; border: none; cursor: pointer; padding: 6px 0; white-space: nowrap;
 }
+.fbg-restart-btn:hover { color: #C24E3A; }
 
-.fbg-form {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
+.fbg-stepper { display: flex; align-items: flex-start; justify-content: center; gap: 0; margin-bottom: 20px; }
+.fbg-step-node {
+  display: flex; flex-direction: column; align-items: center; gap: 5px;
+  position: relative; flex: 1; background: none; border: none; cursor: pointer; padding: 0;
+}
+.fbg-step-node:not(:last-child)::after {
+  content: ""; position: absolute; top: 17px; left: 50%; width: 100%; height: 2px;
+  background: rgba(43,42,74,0.12); z-index: 0;
+}
+.fbg-step-node.is-complete:not(:last-child)::after { background: #2FA66B; }
+.fbg-step-circle {
+  position: relative; z-index: 1; width: 34px; height: 34px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center; font-size: 14px;
+  background: #fff; border: 2px solid rgba(43,42,74,0.14); color: #8B84A3;
+  transition: all 0.15s;
+}
+.fbg-step-node.is-current .fbg-step-circle {
+  border-color: #FF6B4A;
+  background: linear-gradient(135deg, #FF6B4A, #FF9466);
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(255,107,74,0.35);
+  transform: scale(1.08);
+}
+.fbg-step-node.is-complete .fbg-step-circle { border-color: #2FA66B; background: rgba(47,166,107,0.12); color: #1F7A4C; }
+.fbg-step-node-label { font-size: 10px; font-weight: 700; color: #8B84A3; text-align: center; }
+.fbg-step-node.is-current .fbg-step-node-label { color: #FF6B4A; }
+
+.fbg-step-card {
   background: #fff;
   border: 1px solid rgba(43,42,74,0.08);
   border-radius: 22px;
-  padding: 22px;
+  padding: 24px;
   box-shadow: 0 16px 40px rgba(43,42,74,0.07);
+  min-height: 380px;
+  display: flex;
+  flex-direction: column;
 }
-.fbg-names { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+.fbg-step-heading { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; }
+.fbg-step-heading-icon {
+  width: 44px; height: 44px; border-radius: 14px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center; font-size: 21px;
+  background: rgba(255,107,74,0.10);
+}
+.fbg-step-heading-text h2 { font-family: 'Fredoka', sans-serif; font-size: 18px; font-weight: 700; margin: 0; }
+.fbg-step-heading-text p { font-size: 12.5px; color: #8B84A3; margin: 2px 0 0; }
+
+.fbg-names { display: flex; flex-direction: column; gap: 14px; }
 .fbg-field { display: flex; flex-direction: column; gap: 5px; }
 .fbg-label { font-family: 'Quicksand', sans-serif; font-weight: 700; font-size: 12px; color: #5A5876; }
 .fbg-optional { font-weight: 500; color: #B0ABC2; text-transform: none; }
@@ -493,53 +643,33 @@ const CSS = `
   padding: 10px 12px;
   outline: none;
 }
-.fbg-textarea { resize: vertical; min-height: 60px; font-family: inherit; }
+.fbg-textarea { resize: vertical; min-height: 56px; font-family: inherit; }
 .fbg-input:focus, .fbg-textarea:focus { border-color: #FF6B4A; }
 .fbg-input::placeholder, .fbg-textarea::placeholder { color: #B0ABC2; }
 
-.fbg-cols-head {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-}
+.fbg-cols-head { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 10px; }
 .fbg-cols-head-item {
   display: flex; align-items: center; gap: 6px;
   font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 12.5px;
-  padding: 7px 13px;
-  border-radius: 999px;
-  width: fit-content;
+  padding: 7px 13px; border-radius: 999px; width: fit-content;
 }
 .fbg-cols-head-item--strength { background: rgba(47,166,107,0.11); color: #1F7A4C; }
 .fbg-cols-head-item--improve { background: rgba(224,138,60,0.11); color: #A8611E; }
 
-.fbg-cat-block {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  background: #FBF9F6;
-  border: 1px solid rgba(43,42,74,0.06);
-  border-radius: 16px;
-  padding: 14px 16px 16px;
-}
-.fbg-cat-block-label {
-  display: flex; align-items: center; gap: 7px;
-  font-size: 12px; font-weight: 700; letter-spacing: 0.02em; text-transform: uppercase; color: #A6A1BD;
-}
-.fbg-cat-icon { font-size: 14px; }
-.fbg-cat-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: start; }
+.fbg-cat-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; align-items: start; margin-bottom: 16px; }
 .fbg-chip-row { display: flex; flex-wrap: wrap; align-content: flex-start; gap: 6px; }
+.fbg-cat-icon { font-size: 14px; }
 
 .fbg-chip {
   font-family: 'Quicksand', sans-serif;
   font-size: 12.5px;
   font-weight: 600;
   color: #5A5876;
-  background: #fff;
+  background: #F8F7FB;
   border: 1.5px solid rgba(43,42,74,0.1);
   border-radius: 999px;
   padding: 6px 12px;
   cursor: pointer;
-  box-shadow: 0 1px 2px rgba(43,42,74,0.03);
   transition: background 0.12s, border-color 0.12s, color 0.12s, box-shadow 0.12s, transform 0.12s;
 }
 .fbg-chip:hover { border-color: rgba(43,42,74,0.22); transform: translateY(-1px); box-shadow: 0 4px 10px rgba(43,42,74,0.08); }
@@ -556,77 +686,68 @@ const CSS = `
 .fbg-chip--strength.is-active::before { content: "✓ "; }
 .fbg-chip--improve.is-active::before { content: "→ "; }
 
-.fbg-note-field { padding-top: 2px; }
+.fbg-note-field { margin-bottom: 10px; }
 
-.fbg-clear-btn {
-  align-self: flex-start;
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 700;
-  font-size: 11.5px;
-  color: #8B84A3;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-}
-.fbg-clear-btn:hover { color: #C24E3A; }
+.fbg-step-hint { font-size: 12px; font-weight: 600; color: #C24E3A; margin-bottom: 4px; }
+.fbg-step-hint.is-satisfied { color: #2FA66B; }
 
-.fbg-preview-col {
-  position: sticky;
-  top: 24px;
+.fbg-step-nav { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: auto; padding-top: 16px; }
+.fbg-btn-back {
+  background: none; border: 1.5px solid rgba(43,42,74,0.14); color: #5A5876;
+  border-radius: 999px; padding: 9px 18px; font-weight: 700; font-size: 12.5px;
+  font-family: 'Quicksand', sans-serif; cursor: pointer; transition: border-color 0.15s;
 }
-.fbg-preview-card {
-  position: relative;
-  overflow: hidden;
-  background: #fff;
-  border: 1px solid rgba(43,42,74,0.08);
-  border-radius: 22px;
-  box-shadow: 0 16px 40px rgba(43,42,74,0.08);
-  padding: 20px 22px 22px;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
+.fbg-btn-back:hover { border-color: rgba(43,42,74,0.3); }
+.fbg-btn-next {
+  background: linear-gradient(135deg, #FF6B4A, #FF8A63); color: #fff; border: none;
+  border-radius: 999px; padding: 9px 22px; font-weight: 700; font-size: 12.5px;
+  font-family: 'Quicksand', sans-serif; cursor: pointer;
+  box-shadow: 0 6px 16px rgba(255,107,74,0.28);
+  transition: filter 0.15s, transform 0.15s, opacity 0.15s, box-shadow 0.15s;
 }
+.fbg-btn-next:hover:not(:disabled) { filter: brightness(0.95); transform: translateY(-1px); }
+.fbg-btn-next:disabled { opacity: 0.4; cursor: not-allowed; box-shadow: none; }
+
+.fbg-review-list { display: flex; flex-direction: column; gap: 8px; margin-bottom: 8px; }
+.fbg-review-row {
+  display: flex; align-items: center; justify-content: space-between; gap: 10px;
+  background: #FBF9F6; border: 1px solid rgba(43,42,74,0.06); border-radius: 14px;
+  padding: 10px 14px;
+}
+.fbg-review-row-main { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.fbg-review-row-label { font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 13px; }
+.fbg-review-row-counts { font-size: 11.5px; color: #8B84A3; font-weight: 600; }
+.fbg-review-edit {
+  background: none; border: none; color: #FF6B4A; font-weight: 700; font-size: 12px;
+  cursor: pointer; font-family: 'Quicksand', sans-serif; padding: 4px 8px; flex-shrink: 0;
+}
+.fbg-review-edit:hover { text-decoration: underline; }
+
+.fbg-preview-card { position: relative; overflow: hidden; }
 .fbg-preview-accent {
-  position: absolute; top: 0; left: 0; right: 0; height: 5px;
+  position: absolute; top: -24px; left: -24px; right: -24px; height: 5px;
   background: linear-gradient(90deg, #FF6B4A, #FFB199);
 }
-.fbg-preview-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; flex-wrap: wrap; margin-top: 4px; }
+.fbg-preview-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; margin-top: 6px; }
 .fbg-preview-label {
-  display: block;
-  font-family: 'Fredoka', sans-serif;
-  font-weight: 600;
-  font-size: 12px;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: #8B84A3;
+  font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 12px;
+  letter-spacing: 0.06em; text-transform: uppercase; color: #8B84A3;
 }
-.fbg-selection-count { display: block; font-size: 11.5px; font-weight: 600; color: #B0ABC2; margin-top: 2px; }
 .fbg-preview-actions { display: flex; gap: 8px; }
 .fbg-generate-btn, .fbg-copy-btn {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 700;
-  font-size: 12.5px;
-  color: #fff;
-  border: none;
-  border-radius: 999px;
-  padding: 9px 16px;
-  cursor: pointer;
-  transition: filter 0.15s, transform 0.15s, box-shadow 0.15s;
-  white-space: nowrap;
+  font-family: 'Quicksand', sans-serif; font-weight: 700; font-size: 12.5px; color: #fff;
+  border: none; border-radius: 999px; padding: 9px 16px; cursor: pointer;
+  transition: filter 0.15s, transform 0.15s; white-space: nowrap;
 }
-.fbg-generate-btn {
-  background: linear-gradient(135deg, #FF6B4A, #FF8A63);
-  box-shadow: 0 6px 16px rgba(255,107,74,0.28);
-}
+.fbg-generate-btn { background: linear-gradient(135deg, #FF6B4A, #FF8A63); box-shadow: 0 6px 16px rgba(255,107,74,0.28); }
 .fbg-copy-btn { background: #2B2A4A; }
 .fbg-generate-btn:hover, .fbg-copy-btn:hover { filter: brightness(0.95); transform: translateY(-1px); }
 
-.fbg-preview-meta { font-size: 12px; font-weight: 600; color: #8B84A3; display: flex; gap: 6px; }
+.fbg-preview-meta { font-size: 12px; font-weight: 600; color: #8B84A3; display: flex; gap: 6px; margin-top: 10px; }
 .fbg-preview-meta-sep { color: #D8D3E6; }
 
 .fbg-preview {
-  margin: 12px 0 0;
+  margin: 12px 0 14px;
   white-space: pre-wrap;
   word-wrap: break-word;
   font-family: 'Quicksand', sans-serif;
@@ -637,14 +758,16 @@ const CSS = `
   border: 1px solid rgba(43,42,74,0.06);
   border-radius: 14px;
   padding: 16px 18px;
-  min-height: 300px;
+  min-height: 220px;
 }
+.fbg-edit-answers-btn {
+  background: none; border: none; color: #8B84A3; font-weight: 700; font-size: 12px;
+  cursor: pointer; font-family: 'Quicksand', sans-serif; padding: 0; align-self: flex-start;
+}
+.fbg-edit-answers-btn:hover { color: #FF6B4A; }
 
-@media (max-width: 760px) {
-  .fbg-body { grid-template-columns: 1fr; }
-  .fbg-names { grid-template-columns: 1fr; }
-  .fbg-cols-head { grid-template-columns: 1fr; gap: 6px; }
-  .fbg-cat-cols { grid-template-columns: 1fr; gap: 10px; }
-  .fbg-preview-col { position: static; }
+@media (max-width: 600px) {
+  .fbg-names, .fbg-cat-cols, .fbg-cols-head { grid-template-columns: 1fr; }
+  .fbg-step-node-label { display: none; }
 }
 `;
