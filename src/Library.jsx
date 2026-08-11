@@ -794,8 +794,8 @@ function openWheel() {
 function openFeedbackGenerator() {
   const screenW = window.screen.availWidth || 1400;
   const screenH = window.screen.availHeight || 900;
-  const w = Math.min(960, screenW - 40);
-  const h = Math.min(760, screenH - 80);
+  const w = Math.min(1180, screenW - 40);
+  const h = Math.min(820, screenH - 80);
   const left = Math.max(0, Math.floor((screenW - w) / 2));
   const top = Math.max(0, Math.floor((screenH - h) / 2));
 

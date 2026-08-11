@@ -2,100 +2,105 @@ import { useState } from "react";
 
 const TEACHER_NAME_KEY = "sentivo_teacher_name";
 
-const STRENGTH_CATEGORIES = [
+const CATEGORIES = [
   {
     key: "grammar",
     label: "Grammar",
-    items: [
+    strengths: [
       "used correct verb tenses",
       "built accurate, well-formed sentences",
       "used articles and prepositions correctly",
       "asked well-structured questions",
+      "used correct word order",
+      "applied new grammar rules correctly",
+    ],
+    improvements: [
+      "review subject-verb agreement",
+      "practice past tense forms",
+      "work on word order in questions",
+      "review article usage (a / an / the)",
+      "practice using prepositions correctly",
+      "review singular and plural forms",
     ],
   },
   {
     key: "vocabulary",
     label: "Vocabulary",
-    items: [
+    strengths: [
       "used new vocabulary confidently",
       "chose precise, natural word choices",
       "used topic-related words well",
+      "used a wide range of vocabulary",
+      "used expressions and idioms naturally",
+      "explained unfamiliar words in English",
+    ],
+    improvements: [
+      "expand everyday vocabulary range",
+      "practice using new words in context",
+      "work on word collocations",
+      "reduce reliance on repetitive words",
+      "review commonly confused word pairs",
+      "practice paraphrasing unfamiliar words",
     ],
   },
   {
     key: "fluency",
     label: "Pronunciation & Fluency",
-    items: [
+    strengths: [
       "spoke clearly and confidently",
       "had smooth, natural pacing",
       "pronounced tricky sounds well",
+      "used natural intonation",
+      "spoke with very little hesitation",
+      "linked words smoothly when speaking",
+    ],
+    improvements: [
+      "slow down for clearer pronunciation",
+      "practice stress on longer words",
+      "reduce hesitation while speaking",
+      "work on intonation and rhythm",
+      "practice specific problem sounds",
+      "practice speaking in longer, connected sentences",
     ],
   },
   {
     key: "listening",
     label: "Listening & Comprehension",
-    items: [
+    strengths: [
       "understood instructions quickly",
       "followed the conversation easily",
       "picked up on context clues well",
+      "responded appropriately to questions",
+      "understood natural, fast speech well",
+      "caught small details in listening tasks",
+    ],
+    improvements: [
+      "listen for key details more carefully",
+      "practice following longer instructions",
+      "work on understanding faster speech",
+      "practice listening without relying on text",
+      "review commonly misheard words",
+      "practice summarizing what was heard",
     ],
   },
   {
     key: "participation",
     label: "Participation & Effort",
-    items: [
+    strengths: [
       "stayed engaged the whole lesson",
       "asked great questions",
       "tried new expressions without hesitation",
       "put in strong effort throughout",
+      "volunteered answers confidently",
+      "stayed positive with corrections and feedback",
     ],
-  },
-];
-
-const IMPROVEMENT_CATEGORIES = [
-  {
-    key: "grammar",
-    label: "Grammar",
-    items: [
-      "review subject-verb agreement",
-      "practice past tense forms",
-      "work on word order in questions",
-      "review article usage (a / an / the)",
-    ],
-  },
-  {
-    key: "vocabulary",
-    label: "Vocabulary",
-    items: [
-      "expand everyday vocabulary range",
-      "practice using new words in context",
-      "work on word collocations",
-    ],
-  },
-  {
-    key: "fluency",
-    label: "Pronunciation & Fluency",
-    items: [
-      "slow down for clearer pronunciation",
-      "practice stress on longer words",
-      "reduce hesitation while speaking",
-    ],
-  },
-  {
-    key: "listening",
-    label: "Listening & Comprehension",
-    items: [
-      "listen for key details more carefully",
-      "practice following longer instructions",
-    ],
-  },
-  {
-    key: "participation",
-    label: "Confidence & Participation",
-    items: [
+    improvements: [
       "speak up with more confidence",
       "try responding without translating first",
       "practice thinking directly in English",
+      "participate more actively in discussions",
+      "take more risks with new language",
+      "ask for help when something is unclear",
     ],
   },
 ];
@@ -183,8 +188,8 @@ function buildFeedback({ studentName, teacherName, selectedStrengths, selectedIm
 
   const strengthTemplates = shuffle(STRENGTH_TEMPLATES);
   let sIdx = 0;
-  const strengthSentences = STRENGTH_CATEGORIES.map((cat) => {
-    const picked = cat.items.filter((item) => selectedStrengths.has(itemKey(cat.key, item)));
+  const strengthSentences = CATEGORIES.map((cat) => {
+    const picked = cat.strengths.filter((item) => selectedStrengths.has(itemKey(cat.key, item)));
     if (!picked.length) return null;
     const template = strengthTemplates[sIdx % strengthTemplates.length];
     sIdx++;
@@ -193,8 +198,8 @@ function buildFeedback({ studentName, teacherName, selectedStrengths, selectedIm
 
   const improveTemplates = shuffle(IMPROVE_TEMPLATES);
   let iIdx = 0;
-  const improvementSentences = IMPROVEMENT_CATEGORIES.map((cat) => {
-    const picked = cat.items.filter((item) => selectedImprovements.has(itemKey(cat.key, item)));
+  const improvementSentences = CATEGORIES.map((cat) => {
+    const picked = cat.improvements.filter((item) => selectedImprovements.has(itemKey(cat.key, item)));
     if (!picked.length) return null;
     const template = improveTemplates[iIdx % improveTemplates.length];
     iIdx++;
@@ -221,26 +226,35 @@ function buildFeedback({ studentName, teacherName, selectedStrengths, selectedIm
   return paragraphs.join("\n\n");
 }
 
-function CategoryBlock({ category, selected, onToggle, tone }) {
+function ChipList({ catKey, items, selected, onToggle, tone }) {
   return (
-    <div className="fbg-cat">
-      <div className="fbg-cat-label">{category.label}</div>
-      <div className="fbg-chip-row">
-        {category.items.map((item) => {
-          const key = itemKey(category.key, item);
-          const active = selected.has(key);
-          return (
-            <button
-              key={key}
-              type="button"
-              className={`fbg-chip fbg-chip--${tone}${active ? " is-active" : ""}`}
-              onClick={() => onToggle(key)}
-              aria-pressed={active}
-            >
-              {item}
-            </button>
-          );
-        })}
+    <div className="fbg-chip-row">
+      {items.map((item) => {
+        const key = itemKey(catKey, item);
+        const active = selected.has(key);
+        return (
+          <button
+            key={key}
+            type="button"
+            className={`fbg-chip fbg-chip--${tone}${active ? " is-active" : ""}`}
+            onClick={() => onToggle(key)}
+            aria-pressed={active}
+          >
+            {item}
+          </button>
+        );
+      })}
+    </div>
+  );
+}
+
+function CategoryRow({ category, selectedStrengths, selectedImprovements, onToggleStrength, onToggleImprovement }) {
+  return (
+    <div className="fbg-cat-block">
+      <div className="fbg-cat-block-label">{category.label}</div>
+      <div className="fbg-cat-cols">
+        <ChipList catKey={category.key} items={category.strengths} selected={selectedStrengths} onToggle={onToggleStrength} tone="strength" />
+        <ChipList catKey={category.key} items={category.improvements} selected={selectedImprovements} onToggle={onToggleImprovement} tone="improve" />
       </div>
     </div>
   );
@@ -328,25 +342,27 @@ export default function FeedbackGenerator() {
             </label>
           </div>
 
-          <section className="fbg-section">
-            <div className="fbg-section-head fbg-section-head--strength">
+          <div className="fbg-cols-head">
+            <span className="fbg-cols-head-item">
               <span className="fbg-section-dot fbg-section-dot--strength" />
               What went well
-            </div>
-            {STRENGTH_CATEGORIES.map((cat) => (
-              <CategoryBlock key={cat.key} category={cat} selected={selectedStrengths} onToggle={toggleStrength} tone="strength" />
-            ))}
-          </section>
-
-          <section className="fbg-section">
-            <div className="fbg-section-head fbg-section-head--improve">
+            </span>
+            <span className="fbg-cols-head-item">
               <span className="fbg-section-dot fbg-section-dot--improve" />
               What to work on
-            </div>
-            {IMPROVEMENT_CATEGORIES.map((cat) => (
-              <CategoryBlock key={cat.key} category={cat} selected={selectedImprovements} onToggle={toggleImprovement} tone="improve" />
-            ))}
-          </section>
+            </span>
+          </div>
+
+          {CATEGORIES.map((cat) => (
+            <CategoryRow
+              key={cat.key}
+              category={cat}
+              selectedStrengths={selectedStrengths}
+              selectedImprovements={selectedImprovements}
+              onToggleStrength={toggleStrength}
+              onToggleImprovement={toggleImprovement}
+            />
+          ))}
 
           {(hasAnySelection || studentName.trim()) && (
             <button type="button" className="fbg-clear-btn" onClick={handleClear}>Clear all</button>
@@ -388,7 +404,7 @@ const CSS = `
 }
 .fbg-shell * { box-sizing: border-box; }
 
-.fbg-topbar { display: flex; align-items: flex-start; gap: 12px; max-width: 1040px; margin: 0 auto 22px; }
+.fbg-topbar { display: flex; align-items: flex-start; gap: 12px; max-width: 1180px; margin: 0 auto 22px; }
 .fbg-badge {
   display: flex; align-items: center; justify-content: center;
   width: 40px; height: 40px; border-radius: 12px; flex-shrink: 0;
@@ -398,10 +414,10 @@ const CSS = `
 .fbg-sub { font-size: 13px; color: #8B84A3; margin: 0; }
 
 .fbg-body {
-  max-width: 1040px;
+  max-width: 1180px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 1.25fr 1fr;
+  grid-template-columns: 1.4fr 1fr;
   gap: 18px;
   align-items: start;
 }
@@ -432,9 +448,14 @@ const CSS = `
 .fbg-input:focus { border-color: #FF6B4A; }
 .fbg-input::placeholder { color: #B0ABC2; }
 
-.fbg-section { display: flex; flex-direction: column; gap: 10px; padding-top: 4px; border-top: 1px solid rgba(43,42,74,0.08); }
-.fbg-section:first-of-type { border-top: none; padding-top: 0; }
-.fbg-section-head {
+.fbg-cols-head {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(43,42,74,0.1);
+}
+.fbg-cols-head-item {
   display: flex; align-items: center; gap: 8px;
   font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 13.5px;
 }
@@ -442,9 +463,11 @@ const CSS = `
 .fbg-section-dot--strength { background: #2FA66B; }
 .fbg-section-dot--improve { background: #E08A3C; }
 
-.fbg-cat { display: flex; flex-direction: column; gap: 6px; }
-.fbg-cat-label { font-size: 11.5px; font-weight: 700; letter-spacing: 0.03em; text-transform: uppercase; color: #A6A1BD; }
-.fbg-chip-row { display: flex; flex-wrap: wrap; gap: 6px; }
+.fbg-cat-block { display: flex; flex-direction: column; gap: 8px; padding-top: 10px; border-top: 1px solid rgba(43,42,74,0.06); }
+.fbg-cat-block:first-of-type { border-top: none; padding-top: 0; }
+.fbg-cat-block-label { font-size: 11.5px; font-weight: 700; letter-spacing: 0.03em; text-transform: uppercase; color: #A6A1BD; }
+.fbg-cat-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: start; }
+.fbg-chip-row { display: flex; flex-wrap: wrap; align-content: flex-start; gap: 6px; }
 
 .fbg-chip {
   font-family: 'Quicksand', sans-serif;
@@ -526,6 +549,8 @@ const CSS = `
 @media (max-width: 760px) {
   .fbg-body { grid-template-columns: 1fr; }
   .fbg-names { grid-template-columns: 1fr; }
+  .fbg-cols-head { grid-template-columns: 1fr; gap: 4px; }
+  .fbg-cat-cols { grid-template-columns: 1fr; gap: 10px; }
   .fbg-preview-col { position: static; }
 }
 `;
