@@ -2,6 +2,14 @@ import { useState } from "react";
 
 const TEACHER_NAME_KEY = "sentivo_teacher_name";
 
+const CATEGORY_ICONS = {
+  grammar: "📝",
+  vocabulary: "📚",
+  fluency: "🗣️",
+  listening: "👂",
+  participation: "🙌",
+};
+
 const CATEGORIES = [
   {
     key: "grammar",
@@ -174,14 +182,13 @@ function itemKey(catKey, item) {
   return `${catKey}::${item}`;
 }
 
-function signatureLine(rawName) {
+function teacherDisplayName(rawName) {
   const trimmed = (rawName || "").trim();
   if (!trimmed) return "";
-  const stripped = trimmed.replace(/^teacher\s+/i, "");
-  return `— Teacher ${stripped}`;
+  return `Teacher ${trimmed.replace(/^teacher\s+/i, "")}`;
 }
 
-function buildFeedback({ studentName, teacherName, selectedStrengths, selectedImprovements }) {
+function buildFeedback({ studentName, teacherName, selectedStrengths, selectedImprovements, note }) {
   const name = studentName.trim() || "there";
   const greeting = pickRandom(greetingPool(name));
   const closing = pickRandom(closingPool(name));
@@ -218,10 +225,14 @@ function buildFeedback({ studentName, teacherName, selectedStrengths, selectedIm
     paragraphs.push(`${pickRandom(TRANSITIONS)} ${improvementSentences.join(" ")}`);
   }
 
+  if (note && note.trim()) {
+    paragraphs.push(note.trim());
+  }
+
   paragraphs.push(closing);
 
-  const signature = signatureLine(teacherName);
-  if (signature) paragraphs.push(signature);
+  const signature = teacherDisplayName(teacherName);
+  if (signature) paragraphs.push(`— ${signature}`);
 
   return paragraphs.join("\n\n");
 }
@@ -251,7 +262,10 @@ function ChipList({ catKey, items, selected, onToggle, tone }) {
 function CategoryRow({ category, selectedStrengths, selectedImprovements, onToggleStrength, onToggleImprovement }) {
   return (
     <div className="fbg-cat-block">
-      <div className="fbg-cat-block-label">{category.label}</div>
+      <div className="fbg-cat-block-label">
+        <span className="fbg-cat-icon" aria-hidden="true">{CATEGORY_ICONS[category.key]}</span>
+        {category.label}
+      </div>
       <div className="fbg-cat-cols">
         <ChipList catKey={category.key} items={category.strengths} selected={selectedStrengths} onToggle={onToggleStrength} tone="strength" />
         <ChipList catKey={category.key} items={category.improvements} selected={selectedImprovements} onToggle={onToggleImprovement} tone="improve" />
@@ -265,10 +279,12 @@ export default function FeedbackGenerator() {
   const [studentName, setStudentName] = useState("");
   const [selectedStrengths, setSelectedStrengths] = useState(() => new Set());
   const [selectedImprovements, setSelectedImprovements] = useState(() => new Set());
+  const [note, setNote] = useState("");
   const [generatedText, setGeneratedText] = useState("");
   const [copied, setCopied] = useState(false);
 
   const hasAnySelection = selectedStrengths.size > 0 || selectedImprovements.size > 0;
+  const hasAnyContent = hasAnySelection || studentName.trim() || note.trim();
 
   function toggleStrength(key) {
     setSelectedStrengths((prev) => {
@@ -287,7 +303,7 @@ export default function FeedbackGenerator() {
   }
 
   function handleGenerate() {
-    const text = buildFeedback({ studentName, teacherName, selectedStrengths, selectedImprovements });
+    const text = buildFeedback({ studentName, teacherName, selectedStrengths, selectedImprovements, note });
     setGeneratedText(text);
     setCopied(false);
   }
@@ -302,9 +318,13 @@ export default function FeedbackGenerator() {
     setSelectedStrengths(new Set());
     setSelectedImprovements(new Set());
     setStudentName("");
+    setNote("");
     setGeneratedText("");
     setCopied(false);
   }
+
+  const studentTrimmed = studentName.trim();
+  const teacherDisplay = teacherDisplayName(teacherName);
 
   return (
     <div className="fbg-shell">
@@ -343,14 +363,8 @@ export default function FeedbackGenerator() {
           </div>
 
           <div className="fbg-cols-head">
-            <span className="fbg-cols-head-item">
-              <span className="fbg-section-dot fbg-section-dot--strength" />
-              What went well
-            </span>
-            <span className="fbg-cols-head-item">
-              <span className="fbg-section-dot fbg-section-dot--improve" />
-              What to work on
-            </span>
+            <span className="fbg-cols-head-item fbg-cols-head-item--strength">✓ What went well</span>
+            <span className="fbg-cols-head-item fbg-cols-head-item--improve">→ What to work on</span>
           </div>
 
           {CATEGORIES.map((cat) => (
@@ -364,28 +378,56 @@ export default function FeedbackGenerator() {
             />
           ))}
 
-          {(hasAnySelection || studentName.trim()) && (
+          <label className="fbg-field fbg-note-field">
+            <span className="fbg-label">Anything else? <span className="fbg-optional">(optional)</span></span>
+            <textarea
+              className="fbg-textarea"
+              rows={2}
+              value={note}
+              onChange={(e) => setNote(e.target.value)}
+              placeholder="Add anything specific we didn't cover above — it'll be woven into the message."
+            />
+          </label>
+
+          {hasAnyContent && (
             <button type="button" className="fbg-clear-btn" onClick={handleClear}>Clear all</button>
           )}
         </div>
 
         <div className="fbg-preview-col">
-          <div className="fbg-preview-head">
-            <span className="fbg-preview-label">Preview</span>
-            <div className="fbg-preview-actions">
-              <button type="button" className="fbg-generate-btn" onClick={handleGenerate}>
-                {generatedText ? "🔁 Regenerate" : "✨ Generate feedback"}
-              </button>
-              {generatedText && (
-                <button type="button" className="fbg-copy-btn" onClick={handleCopy}>
-                  {copied ? "✓ Copied" : "⧉ Copy"}
+          <div className="fbg-preview-card">
+            <div className="fbg-preview-accent" />
+            <div className="fbg-preview-head">
+              <div>
+                <span className="fbg-preview-label">Preview</span>
+                {hasAnySelection && (
+                  <span className="fbg-selection-count">
+                    {selectedStrengths.size} went well · {selectedImprovements.size} to work on
+                  </span>
+                )}
+              </div>
+              <div className="fbg-preview-actions">
+                <button type="button" className="fbg-generate-btn" onClick={handleGenerate}>
+                  {generatedText ? "🔁 Regenerate" : "✨ Generate feedback"}
                 </button>
-              )}
+                {generatedText && (
+                  <button type="button" className="fbg-copy-btn" onClick={handleCopy}>
+                    {copied ? "✓ Copied" : "⧉ Copy"}
+                  </button>
+                )}
+              </div>
             </div>
+            {(studentTrimmed || teacherDisplay) && (
+              <div className="fbg-preview-meta">
+                {studentTrimmed && <span>To {studentTrimmed}</span>}
+                {studentTrimmed && teacherDisplay && <span className="fbg-preview-meta-sep">·</span>}
+                {teacherDisplay && <span>From {teacherDisplay}</span>}
+              </div>
+            )}
+            <pre className="fbg-preview">
+              {generatedText || "Check off some qualities on the left, then generate feedback…"}
+            </pre>
           </div>
-          <pre className="fbg-preview">
-            {generatedText || "Check off some qualities on the left, then generate feedback…"}
-          </pre>
         </div>
       </div>
     </div>
@@ -397,28 +439,33 @@ const CSS = `
 
 .fbg-shell {
   min-height: 100vh;
-  background: #FFFDFB;
+  background:
+    radial-gradient(1100px 560px at 88% -12%, rgba(255,107,74,0.10), transparent 60%),
+    radial-gradient(900px 480px at -8% 112%, rgba(47,166,107,0.07), transparent 60%),
+    #FFFDFB;
   color: #2B2A4A;
   font-family: 'Quicksand', sans-serif;
-  padding: 24px;
+  padding: 28px 24px;
 }
 .fbg-shell * { box-sizing: border-box; }
 
-.fbg-topbar { display: flex; align-items: flex-start; gap: 12px; max-width: 1180px; margin: 0 auto 22px; }
+.fbg-topbar { display: flex; align-items: flex-start; gap: 14px; max-width: 1180px; margin: 0 auto 24px; }
 .fbg-badge {
   display: flex; align-items: center; justify-content: center;
-  width: 40px; height: 40px; border-radius: 12px; flex-shrink: 0;
-  background: rgba(255,107,74,0.12); font-size: 19px;
+  width: 44px; height: 44px; border-radius: 14px; flex-shrink: 0;
+  background: linear-gradient(135deg, #FF6B4A, #FF9466);
+  box-shadow: 0 8px 18px rgba(255,107,74,0.32);
+  font-size: 20px;
 }
-.fbg-title { font-family: 'Fredoka', sans-serif; font-size: 21px; font-weight: 700; margin: 0 0 2px; }
-.fbg-sub { font-size: 13px; color: #8B84A3; margin: 0; }
+.fbg-title { font-family: 'Fredoka', sans-serif; font-size: 23px; font-weight: 700; margin: 0 0 3px; letter-spacing: -0.01em; }
+.fbg-sub { font-size: 13.5px; color: #8B84A3; margin: 0; }
 
 .fbg-body {
   max-width: 1180px;
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1.4fr 1fr;
-  gap: 18px;
+  gap: 20px;
   align-items: start;
 }
 
@@ -427,45 +474,58 @@ const CSS = `
   flex-direction: column;
   gap: 16px;
   background: #fff;
-  border: 1px solid rgba(43,42,74,0.11);
-  border-radius: 18px;
-  padding: 20px;
-  box-shadow: 0 8px 24px rgba(43,42,74,0.05);
+  border: 1px solid rgba(43,42,74,0.08);
+  border-radius: 22px;
+  padding: 22px;
+  box-shadow: 0 16px 40px rgba(43,42,74,0.07);
 }
 .fbg-names { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 .fbg-field { display: flex; flex-direction: column; gap: 5px; }
 .fbg-label { font-family: 'Quicksand', sans-serif; font-weight: 700; font-size: 12px; color: #5A5876; }
-.fbg-input {
+.fbg-optional { font-weight: 500; color: #B0ABC2; text-transform: none; }
+.fbg-input, .fbg-textarea {
   font-family: 'Quicksand', sans-serif;
   font-size: 13.5px;
   color: #2B2A4A;
   background: #F8F7FB;
   border: 1.5px solid rgba(43,42,74,0.1);
-  border-radius: 10px;
-  padding: 9px 11px;
+  border-radius: 12px;
+  padding: 10px 12px;
   outline: none;
 }
-.fbg-input:focus { border-color: #FF6B4A; }
-.fbg-input::placeholder { color: #B0ABC2; }
+.fbg-textarea { resize: vertical; min-height: 60px; font-family: inherit; }
+.fbg-input:focus, .fbg-textarea:focus { border-color: #FF6B4A; }
+.fbg-input::placeholder, .fbg-textarea::placeholder { color: #B0ABC2; }
 
 .fbg-cols-head {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 16px;
-  padding-bottom: 8px;
-  border-bottom: 1px solid rgba(43,42,74,0.1);
 }
 .fbg-cols-head-item {
-  display: flex; align-items: center; gap: 8px;
-  font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 13.5px;
+  display: flex; align-items: center; gap: 6px;
+  font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 12.5px;
+  padding: 7px 13px;
+  border-radius: 999px;
+  width: fit-content;
 }
-.fbg-section-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
-.fbg-section-dot--strength { background: #2FA66B; }
-.fbg-section-dot--improve { background: #E08A3C; }
+.fbg-cols-head-item--strength { background: rgba(47,166,107,0.11); color: #1F7A4C; }
+.fbg-cols-head-item--improve { background: rgba(224,138,60,0.11); color: #A8611E; }
 
-.fbg-cat-block { display: flex; flex-direction: column; gap: 8px; padding-top: 10px; border-top: 1px solid rgba(43,42,74,0.06); }
-.fbg-cat-block:first-of-type { border-top: none; padding-top: 0; }
-.fbg-cat-block-label { font-size: 11.5px; font-weight: 700; letter-spacing: 0.03em; text-transform: uppercase; color: #A6A1BD; }
+.fbg-cat-block {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: #FBF9F6;
+  border: 1px solid rgba(43,42,74,0.06);
+  border-radius: 16px;
+  padding: 14px 16px 16px;
+}
+.fbg-cat-block-label {
+  display: flex; align-items: center; gap: 7px;
+  font-size: 12px; font-weight: 700; letter-spacing: 0.02em; text-transform: uppercase; color: #A6A1BD;
+}
+.fbg-cat-icon { font-size: 14px; }
 .fbg-cat-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: start; }
 .fbg-chip-row { display: flex; flex-wrap: wrap; align-content: flex-start; gap: 6px; }
 
@@ -474,16 +534,29 @@ const CSS = `
   font-size: 12.5px;
   font-weight: 600;
   color: #5A5876;
-  background: #F8F7FB;
+  background: #fff;
   border: 1.5px solid rgba(43,42,74,0.1);
   border-radius: 999px;
   padding: 6px 12px;
   cursor: pointer;
-  transition: background 0.12s, border-color 0.12s, color 0.12s;
+  box-shadow: 0 1px 2px rgba(43,42,74,0.03);
+  transition: background 0.12s, border-color 0.12s, color 0.12s, box-shadow 0.12s, transform 0.12s;
 }
-.fbg-chip:hover { border-color: rgba(43,42,74,0.22); }
-.fbg-chip--strength.is-active { background: rgba(47,166,107,0.14); border-color: #2FA66B; color: #1F7A4C; }
-.fbg-chip--improve.is-active { background: rgba(224,138,60,0.14); border-color: #E08A3C; color: #A8611E; }
+.fbg-chip:hover { border-color: rgba(43,42,74,0.22); transform: translateY(-1px); box-shadow: 0 4px 10px rgba(43,42,74,0.08); }
+.fbg-chip--strength.is-active {
+  background: linear-gradient(180deg, rgba(47,166,107,0.16), rgba(47,166,107,0.09));
+  border-color: #2FA66B; color: #1F7A4C;
+  box-shadow: 0 3px 10px rgba(47,166,107,0.16);
+}
+.fbg-chip--improve.is-active {
+  background: linear-gradient(180deg, rgba(224,138,60,0.16), rgba(224,138,60,0.09));
+  border-color: #E08A3C; color: #A8611E;
+  box-shadow: 0 3px 10px rgba(224,138,60,0.16);
+}
+.fbg-chip--strength.is-active::before { content: "✓ "; }
+.fbg-chip--improve.is-active::before { content: "→ "; }
+
+.fbg-note-field { padding-top: 2px; }
 
 .fbg-clear-btn {
   align-self: flex-start;
@@ -501,12 +574,26 @@ const CSS = `
 .fbg-preview-col {
   position: sticky;
   top: 24px;
+}
+.fbg-preview-card {
+  position: relative;
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid rgba(43,42,74,0.08);
+  border-radius: 22px;
+  box-shadow: 0 16px 40px rgba(43,42,74,0.08);
+  padding: 20px 22px 22px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 4px;
 }
-.fbg-preview-head { display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap; }
+.fbg-preview-accent {
+  position: absolute; top: 0; left: 0; right: 0; height: 5px;
+  background: linear-gradient(90deg, #FF6B4A, #FFB199);
+}
+.fbg-preview-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; flex-wrap: wrap; margin-top: 4px; }
 .fbg-preview-label {
+  display: block;
   font-family: 'Fredoka', sans-serif;
   font-weight: 600;
   font-size: 12px;
@@ -514,42 +601,49 @@ const CSS = `
   text-transform: uppercase;
   color: #8B84A3;
 }
+.fbg-selection-count { display: block; font-size: 11.5px; font-weight: 600; color: #B0ABC2; margin-top: 2px; }
 .fbg-preview-actions { display: flex; gap: 8px; }
 .fbg-generate-btn, .fbg-copy-btn {
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;
   font-size: 12.5px;
   color: #fff;
-  background: #FF6B4A;
   border: none;
   border-radius: 999px;
-  padding: 8px 16px;
+  padding: 9px 16px;
   cursor: pointer;
-  transition: filter 0.15s;
+  transition: filter 0.15s, transform 0.15s, box-shadow 0.15s;
   white-space: nowrap;
 }
+.fbg-generate-btn {
+  background: linear-gradient(135deg, #FF6B4A, #FF8A63);
+  box-shadow: 0 6px 16px rgba(255,107,74,0.28);
+}
 .fbg-copy-btn { background: #2B2A4A; }
-.fbg-generate-btn:hover, .fbg-copy-btn:hover { filter: brightness(0.93); }
+.fbg-generate-btn:hover, .fbg-copy-btn:hover { filter: brightness(0.95); transform: translateY(-1px); }
+
+.fbg-preview-meta { font-size: 12px; font-weight: 600; color: #8B84A3; display: flex; gap: 6px; }
+.fbg-preview-meta-sep { color: #D8D3E6; }
 
 .fbg-preview {
-  margin: 0;
+  margin: 12px 0 0;
   white-space: pre-wrap;
   word-wrap: break-word;
   font-family: 'Quicksand', sans-serif;
   font-size: 13.5px;
-  line-height: 1.65;
+  line-height: 1.7;
   color: #2B2A4A;
-  background: #fff;
-  border: 1.5px dashed rgba(43,42,74,0.16);
-  border-radius: 16px;
-  padding: 18px;
-  min-height: 320px;
+  background: #FFFCFA;
+  border: 1px solid rgba(43,42,74,0.06);
+  border-radius: 14px;
+  padding: 16px 18px;
+  min-height: 300px;
 }
 
 @media (max-width: 760px) {
   .fbg-body { grid-template-columns: 1fr; }
   .fbg-names { grid-template-columns: 1fr; }
-  .fbg-cols-head { grid-template-columns: 1fr; gap: 4px; }
+  .fbg-cols-head { grid-template-columns: 1fr; gap: 6px; }
   .fbg-cat-cols { grid-template-columns: 1fr; gap: 10px; }
   .fbg-preview-col { position: static; }
 }
