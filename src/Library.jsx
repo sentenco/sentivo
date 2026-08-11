@@ -784,18 +784,7 @@ function openWheel() {
 
 // Same popup pattern for the post-lesson Feedback Generator.
 function openFeedbackGenerator() {
-  const screenW = window.screen.availWidth || 1400;
-  const screenH = window.screen.availHeight || 900;
-  const w = Math.min(760, screenW - 40);
-  const h = Math.min(820, screenH - 80);
-  const left = Math.max(0, Math.floor((screenW - w) / 2));
-  const top = Math.max(0, Math.floor((screenH - h) / 2));
-
-  window.open(
-    "/library/feedback",
-    "sentivoFeedback",
-    `width=${w},height=${h},left=${left},top=${top},toolbar=no,location=no,menubar=no,status=no,scrollbars=yes,resizable=yes`
-  );
+  window.open("/library/feedback", "_blank");
 }
 
 function TodayFeature({ tools, navigate }) {
