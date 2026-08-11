@@ -182,6 +182,13 @@ function itemKey(catKey, item) {
   return `${catKey}::${item}`;
 }
 
+function normalizeSentence(text) {
+  const trimmed = text.trim();
+  if (!trimmed) return trimmed;
+  const capitalized = trimmed.charAt(0).toUpperCase() + trimmed.slice(1);
+  return /[.!?]["')\]]?$/.test(capitalized) ? capitalized : `${capitalized}.`;
+}
+
 function teacherDisplayName(rawName) {
   const trimmed = (rawName || "").trim();
   if (!trimmed) return "";
@@ -221,7 +228,7 @@ function buildFeedback({ studentName, teacherName, selectedStrengths, selectedIm
       sIdx++;
       let sentence = template(cat.label, joinList(pickedS));
       if (noteText) {
-        sentence += ` ${noteText}`;
+        sentence += ` ${normalizeSentence(noteText)}`;
         noteAttached = true;
       }
       strengthSentences.push(sentence);
@@ -232,14 +239,14 @@ function buildFeedback({ studentName, teacherName, selectedStrengths, selectedIm
       iIdx++;
       let sentence = template(cat.label, joinList(pickedI));
       if (noteText && !noteAttached) {
-        sentence += ` ${noteText}`;
+        sentence += ` ${normalizeSentence(noteText)}`;
         noteAttached = true;
       }
       improvementSentences.push(sentence);
     }
 
     if (noteText && !noteAttached) {
-      noteOnlySentences.push(noteText);
+      noteOnlySentences.push(normalizeSentence(noteText));
     }
   });
 
@@ -419,6 +426,7 @@ export default function FeedbackGenerator() {
                     className="fbg-input"
                     value={teacherName}
                     onChange={(e) => { setTeacherName(e.target.value); localStorage.setItem(TEACHER_NAME_KEY, e.target.value); }}
+                    onKeyDown={(e) => { if (e.key === "Enter") goNext(); }}
                     placeholder="Teacher name"
                   />
                 </label>
@@ -429,6 +437,7 @@ export default function FeedbackGenerator() {
                     className="fbg-input"
                     value={studentName}
                     onChange={(e) => setStudentName(e.target.value)}
+                    onKeyDown={(e) => { if (e.key === "Enter") goNext(); }}
                     placeholder="Who was this lesson for?"
                   />
                 </label>
