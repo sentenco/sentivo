@@ -254,28 +254,20 @@ function itemKey(catKey, item) {
   return `${catKey}::${item}`;
 }
 
-function normalizeSentence(text) {
-  const trimmed = text.trim();
-  if (!trimmed) return trimmed;
-  const capitalized = trimmed.charAt(0).toUpperCase() + trimmed.slice(1);
-  return /[.!?]["')\]]?$/.test(capitalized) ? capitalized : `${capitalized}.`;
-}
-
 function teacherDisplayName(rawName) {
   const trimmed = (rawName || "").trim();
   if (!trimmed) return "";
   return `Teacher ${trimmed.replace(/^teacher\s+/i, "")}`;
 }
 
-function categoryHasInput(cat, selectedStrengths, selectedImprovements, notes) {
-  const hasChip =
+function categoryHasInput(cat, selectedStrengths, selectedImprovements) {
+  return (
     cat.strengths.some((item) => selectedStrengths.has(itemKey(cat.key, item))) ||
-    cat.improvements.some((item) => selectedImprovements.has(itemKey(cat.key, item)));
-  const hasNote = ((notes[cat.key] || "").trim().length > 0);
-  return hasChip || hasNote;
+    cat.improvements.some((item) => selectedImprovements.has(itemKey(cat.key, item)))
+  );
 }
 
-function buildFeedback({ studentName, teacherName, selectedStrengths, selectedImprovements, notes }) {
+function buildFeedback({ studentName, teacherName, selectedStrengths, selectedImprovements }) {
   const name = studentName.trim() || "there";
   const greeting = pickRandom(greetingPool(name));
   const closing = pickRandom(closingPool(name));
@@ -287,38 +279,21 @@ function buildFeedback({ studentName, teacherName, selectedStrengths, selectedIm
 
   const strengthSentences = [];
   const improvementSentences = [];
-  const noteOnlySentences = [];
 
   CATEGORIES.forEach((cat) => {
     const pickedS = cat.strengths.filter((item) => selectedStrengths.has(itemKey(cat.key, item)));
     const pickedI = cat.improvements.filter((item) => selectedImprovements.has(itemKey(cat.key, item)));
-    const noteText = (notes[cat.key] || "").trim();
-    let noteAttached = false;
 
     if (pickedS.length) {
       const template = strengthTemplates[sIdx % strengthTemplates.length];
       sIdx++;
-      let sentence = template(cat.label, joinList(pickedS));
-      if (noteText) {
-        sentence += ` ${normalizeSentence(noteText)}`;
-        noteAttached = true;
-      }
-      strengthSentences.push(sentence);
+      strengthSentences.push(template(cat.label, joinList(pickedS)));
     }
 
     if (pickedI.length) {
       const template = improveTemplates[iIdx % improveTemplates.length];
       iIdx++;
-      let sentence = template(cat.label, joinList(pickedI));
-      if (noteText && !noteAttached) {
-        sentence += ` ${normalizeSentence(noteText)}`;
-        noteAttached = true;
-      }
-      improvementSentences.push(sentence);
-    }
-
-    if (noteText && !noteAttached) {
-      noteOnlySentences.push(normalizeSentence(noteText));
+      improvementSentences.push(template(cat.label, joinList(pickedI)));
     }
   });
 
@@ -332,10 +307,6 @@ function buildFeedback({ studentName, teacherName, selectedStrengths, selectedIm
 
   if (improvementSentences.length) {
     paragraphs.push(`${pickRandom(TRANSITIONS)} ${improvementSentences.join(" ")}`);
-  }
-
-  if (noteOnlySentences.length) {
-    paragraphs.push(noteOnlySentences.join(" "));
   }
 
   paragraphs.push(closing);
@@ -373,7 +344,6 @@ export default function FeedbackGenerator() {
   const [studentName, setStudentName] = useState("");
   const [selectedStrengths, setSelectedStrengths] = useState(() => new Set());
   const [selectedImprovements, setSelectedImprovements] = useState(() => new Set());
-  const [notes, setNotes] = useState({});
   const [step, setStep] = useState(0);
   const [generatedText, setGeneratedText] = useState("");
   const [copied, setCopied] = useState(false);
@@ -401,10 +371,6 @@ export default function FeedbackGenerator() {
     });
   }
 
-  function setNoteFor(catKey, value) {
-    setNotes((prev) => ({ ...prev, [catKey]: value }));
-  }
-
   function goNext() {
     setStep((s) => Math.min(s + 1, reviewStep));
   }
@@ -414,7 +380,7 @@ export default function FeedbackGenerator() {
   }
 
   function handleGenerate() {
-    const text = buildFeedback({ studentName, teacherName, selectedStrengths, selectedImprovements, notes });
+    const text = buildFeedback({ studentName, teacherName, selectedStrengths, selectedImprovements });
     setGeneratedText(text);
     setCopied(false);
   }
@@ -428,7 +394,6 @@ export default function FeedbackGenerator() {
   function handleRestart() {
     setSelectedStrengths(new Set());
     setSelectedImprovements(new Set());
-    setNotes({});
     setStudentName("");
     setGeneratedText("");
     setCopied(false);
@@ -438,7 +403,7 @@ export default function FeedbackGenerator() {
   const studentTrimmed = studentName.trim();
   const teacherDisplay = teacherDisplayName(teacherName);
   const currentSatisfied = currentCategory
-    ? categoryHasInput(currentCategory, selectedStrengths, selectedImprovements, notes)
+    ? categoryHasInput(currentCategory, selectedStrengths, selectedImprovements)
     : true;
 
   return (
@@ -449,18 +414,15 @@ export default function FeedbackGenerator() {
           <span className="fbg-badge">📋</span>
           <div className="fbg-topbar-text">
             <h1 className="fbg-title">Lesson Feedback</h1>
-            <p className="fbg-sub">One category at a time — pick what applies, or add a quick note.</p>
+            <p className="fbg-sub">One category at a time — pick what applies.</p>
           </div>
-          {step > 0 && (
-            <button type="button" className="fbg-restart-btn" onClick={handleRestart}>↺ Start over</button>
-          )}
         </header>
 
         {step > 0 && (
           <div className="fbg-stepper">
             {CATEGORIES.map((cat, idx) => {
               const nodeStep = idx + 1;
-              const complete = categoryHasInput(cat, selectedStrengths, selectedImprovements, notes);
+              const complete = categoryHasInput(cat, selectedStrengths, selectedImprovements);
               const isCurrent = step === nodeStep;
               const CatIcon = CATEGORY_ICONS[cat.key];
               return (
@@ -529,7 +491,7 @@ export default function FeedbackGenerator() {
                 <span className="fbg-step-heading-icon"><CurrentCategoryIcon /></span>
                 <div className="fbg-step-heading-text">
                   <h2>{currentCategory.label}</h2>
-                  <p>Pick anything that applies, or add a quick note below.</p>
+                  <p>Pick anything that applies.</p>
                 </div>
               </div>
 
@@ -542,21 +504,8 @@ export default function FeedbackGenerator() {
                 <ChipList catKey={currentCategory.key} items={currentCategory.improvements} selected={selectedImprovements} onToggle={toggleImprovement} tone="improve" />
               </div>
 
-              <label className="fbg-field fbg-note-field">
-                <span className="fbg-label">
-                  Anything else about {currentCategory.label.toLowerCase()}? <span className="fbg-optional">(optional if you picked a quality)</span>
-                </span>
-                <textarea
-                  className="fbg-textarea"
-                  rows={2}
-                  value={notes[currentCategory.key] || ""}
-                  onChange={(e) => setNoteFor(currentCategory.key, e.target.value)}
-                  placeholder={`Add a specific note about ${currentCategory.label.toLowerCase()}…`}
-                />
-              </label>
-
               <div className={`fbg-step-hint${currentSatisfied ? " is-satisfied" : ""}`}>
-                {currentSatisfied ? "✓ Nice — ready for the next category" : "Pick at least one quality above, or add a note below"}
+                {currentSatisfied ? "✓ Nice — ready for the next category" : "Pick at least one quality above"}
               </div>
 
               <div className="fbg-step-nav">
@@ -581,7 +530,6 @@ export default function FeedbackGenerator() {
                 {CATEGORIES.map((cat, idx) => {
                   const stCount = cat.strengths.filter((item) => selectedStrengths.has(itemKey(cat.key, item))).length;
                   const imCount = cat.improvements.filter((item) => selectedImprovements.has(itemKey(cat.key, item))).length;
-                  const hasNote = (notes[cat.key] || "").trim().length > 0;
                   const RowIcon = CATEGORY_ICONS[cat.key];
                   return (
                     <div className="fbg-review-row" key={cat.key}>
@@ -589,7 +537,7 @@ export default function FeedbackGenerator() {
                         <span className="fbg-cat-icon" aria-hidden="true"><RowIcon /></span>
                         <span className="fbg-review-row-label">{cat.label}</span>
                         <span className="fbg-review-row-counts">
-                          {stCount} went well · {imCount} to work on{hasNote ? " · note added" : ""}
+                          {stCount} went well · {imCount} to work on
                         </span>
                       </div>
                       <button type="button" className="fbg-review-edit" onClick={() => setStep(idx + 1)}>Edit</button>
@@ -622,7 +570,10 @@ export default function FeedbackGenerator() {
                 </div>
               )}
               <pre className="fbg-preview">{generatedText}</pre>
-              <button type="button" className="fbg-edit-answers-btn" onClick={() => setGeneratedText("")}>← Edit answers</button>
+              <div className="fbg-preview-footer">
+                <button type="button" className="fbg-edit-answers-btn" onClick={() => setGeneratedText("")}>← Edit answers</button>
+                <button type="button" className="fbg-restart-btn" onClick={handleRestart}>↺ Start over</button>
+              </div>
             </div>
           )}
         </div>
@@ -659,13 +610,6 @@ const CSS = `
 }
 .fbg-title { font-family: 'Fredoka', sans-serif; font-size: 22px; font-weight: 700; margin: 0 0 3px; letter-spacing: -0.01em; }
 .fbg-sub { font-size: 13px; color: #8B84A3; margin: 0; }
-.fbg-restart-btn {
-  align-self: flex-start;
-  font-family: 'Quicksand', sans-serif; font-weight: 700; font-size: 11.5px;
-  color: #8B84A3; background: none; border: none; cursor: pointer; padding: 6px 0; white-space: nowrap;
-}
-.fbg-restart-btn:hover { color: #C24E3A; }
-
 .fbg-stepper { display: flex; align-items: flex-start; justify-content: center; gap: 0; margin-bottom: 20px; }
 .fbg-step-node {
   display: flex; flex-direction: column; align-items: center; gap: 5px;
@@ -718,8 +662,7 @@ const CSS = `
 .fbg-names { display: flex; flex-direction: column; gap: 14px; }
 .fbg-field { display: flex; flex-direction: column; gap: 5px; }
 .fbg-label { font-family: 'Quicksand', sans-serif; font-weight: 700; font-size: 12px; color: #5A5876; }
-.fbg-optional { font-weight: 500; color: #B0ABC2; text-transform: none; }
-.fbg-input, .fbg-textarea {
+.fbg-input {
   font-family: 'Quicksand', sans-serif;
   font-size: 13.5px;
   color: #2B2A4A;
@@ -729,9 +672,8 @@ const CSS = `
   padding: 10px 12px;
   outline: none;
 }
-.fbg-textarea { resize: vertical; min-height: 56px; font-family: inherit; }
-.fbg-input:focus, .fbg-textarea:focus { border-color: #FF6B4A; }
-.fbg-input::placeholder, .fbg-textarea::placeholder { color: #B0ABC2; }
+.fbg-input:focus { border-color: #FF6B4A; }
+.fbg-input::placeholder { color: #B0ABC2; }
 
 .fbg-cols-head { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 10px; }
 .fbg-cols-head-item {
@@ -772,8 +714,6 @@ const CSS = `
 }
 .fbg-chip--strength.is-active::before { content: "✓ "; }
 .fbg-chip--improve.is-active::before { content: "→ "; }
-
-.fbg-note-field { margin-bottom: 10px; }
 
 .fbg-step-hint { font-size: 12px; font-weight: 600; color: #C24E3A; margin-bottom: 4px; }
 .fbg-step-hint.is-satisfied { color: #2FA66B; }
@@ -847,11 +787,17 @@ const CSS = `
   padding: 16px 18px;
   min-height: 220px;
 }
+.fbg-preview-footer { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
 .fbg-edit-answers-btn {
   background: none; border: none; color: #8B84A3; font-weight: 700; font-size: 12px;
-  cursor: pointer; font-family: 'Quicksand', sans-serif; padding: 0; align-self: flex-start;
+  cursor: pointer; font-family: 'Quicksand', sans-serif; padding: 0;
 }
 .fbg-edit-answers-btn:hover { color: #FF6B4A; }
+.fbg-restart-btn {
+  background: none; border: none; color: #8B84A3; font-weight: 700; font-size: 12px;
+  cursor: pointer; font-family: 'Quicksand', sans-serif; padding: 0; white-space: nowrap;
+}
+.fbg-restart-btn:hover { color: #C24E3A; }
 
 @media (max-width: 600px) {
   .fbg-names, .fbg-cat-cols, .fbg-cols-head { grid-template-columns: 1fr; }
