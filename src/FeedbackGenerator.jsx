@@ -82,106 +82,585 @@ const CATEGORY_ICONS = {
   participation: ParticipationIcon,
 };
 
+const LEVELS = [
+  { code: "A1", label: "A1", name: "Beginner" },
+  { code: "A2", label: "A2", name: "Elementary" },
+  { code: "B1", label: "B1", name: "Intermediate" },
+  { code: "B2", label: "B2", name: "Upper-Int." },
+  { code: "C1", label: "C1", name: "Advanced" },
+  { code: "C2", label: "C2", name: "Proficient" },
+];
+
 const CATEGORIES = [
   {
     key: "grammar",
     label: "Grammar",
-    strengths: [
-      "used correct verb tenses",
-      "built accurate, well-formed sentences",
-      "used articles and prepositions correctly",
-      "asked well-structured questions",
-      "used correct word order",
-      "applied new grammar rules correctly",
-    ],
-    improvements: [
-      "review subject-verb agreement",
-      "practice past tense forms",
-      "work on word order in questions",
-      "review article usage (a / an / the)",
-      "practice using prepositions correctly",
-      "review singular and plural forms",
-    ],
+    levels: {
+      A1: {
+        strengths: [
+          "used basic present tense correctly (am / is / are)",
+          "used simple plural forms correctly",
+          "asked simple yes/no questions",
+          "used this/that/these/those correctly",
+          "put words in the right basic order",
+          "used simple possessives (my/your/his/her)",
+        ],
+        improvements: [
+          "review am/is/are forms",
+          "practice basic plural endings",
+          "work on simple word order",
+          "review this/that/these/those",
+          "practice basic question forms",
+          "review simple possessive pronouns",
+        ],
+      },
+      A2: {
+        strengths: [
+          "used past simple tense correctly",
+          "used \"going to\" for future plans",
+          "used comparative adjectives correctly",
+          "used basic connectors (and, but, because)",
+          "used simple prepositions of time and place",
+          "formed questions in the past tense",
+        ],
+        improvements: [
+          "review past simple verb forms",
+          "practice \"going to\" for future plans",
+          "work on comparative adjectives",
+          "review prepositions of time and place",
+          "practice forming past tense questions",
+          "review basic connectors (and, but, because)",
+        ],
+      },
+      B1: {
+        strengths: [
+          "used the present perfect correctly",
+          "used first conditional sentences well",
+          "used modal verbs like should and must appropriately",
+          "reported what someone said accurately",
+          "used a good range of linking words",
+          "used past continuous alongside past simple",
+        ],
+        improvements: [
+          "review present perfect usage",
+          "practice first conditional sentences",
+          "work on modal verbs (should, must, have to)",
+          "review reported speech basics",
+          "practice linking ideas with more variety",
+          "review past continuous vs. past simple",
+        ],
+      },
+      B2: {
+        strengths: [
+          "used second and third conditionals accurately",
+          "used passive voice naturally",
+          "used relative clauses to add detail",
+          "used a wide range of modal verbs for nuance",
+          "structured complex sentences clearly",
+          "used a variety of tenses accurately in one passage",
+        ],
+        improvements: [
+          "review second and third conditionals",
+          "practice passive voice constructions",
+          "work on relative clauses",
+          "review modal verbs for speculation and deduction",
+          "practice combining ideas into complex sentences",
+          "review tense consistency across longer passages",
+        ],
+      },
+      C1: {
+        strengths: [
+          "used mixed conditionals with precision",
+          "used advanced passive constructions naturally",
+          "used inversion for emphasis effectively",
+          "handled complex subordinate clauses accurately",
+          "used a sophisticated range of grammatical structures",
+          "self-corrected minor errors while speaking",
+        ],
+        improvements: [
+          "review mixed conditional forms",
+          "practice advanced passive constructions",
+          "work on inversion for emphasis",
+          "review complex subordinate clauses",
+          "practice varying sentence structure for style",
+          "reduce minor slips in longer, complex sentences",
+        ],
+      },
+      C2: {
+        strengths: [
+          "used nuanced grammatical structures with near-native accuracy",
+          "controlled register through grammar choices effectively",
+          "used rare and complex structures naturally",
+          "maintained flawless accuracy across long, complex speech",
+          "used subtle grammatical nuance to convey precise meaning",
+          "adapted grammar fluidly to different contexts and registers",
+        ],
+        improvements: [
+          "refine control of rare, complex structures",
+          "polish register-appropriate grammar choices",
+          "review subtle nuances in advanced structures",
+          "maintain accuracy over very long, complex speech",
+          "fine-tune stylistic grammar choices",
+          "review the few remaining native-like subtleties",
+        ],
+      },
+    },
   },
   {
     key: "vocabulary",
     label: "Vocabulary",
-    strengths: [
-      "used new vocabulary confidently",
-      "chose precise, natural word choices",
-      "used topic-related words well",
-      "used a wide range of vocabulary",
-      "used expressions and idioms naturally",
-      "explained unfamiliar words in English",
-    ],
-    improvements: [
-      "expand everyday vocabulary range",
-      "practice using new words in context",
-      "work on word collocations",
-      "reduce reliance on repetitive words",
-      "review commonly confused word pairs",
-      "practice paraphrasing unfamiliar words",
-    ],
+    levels: {
+      A1: {
+        strengths: [
+          "used basic everyday words correctly",
+          "used numbers and colors correctly",
+          "named family members correctly",
+          "used simple greetings appropriately",
+          "used basic classroom and object vocabulary",
+          "used simple adjectives (big, small, happy, sad)",
+        ],
+        improvements: [
+          "review basic everyday vocabulary",
+          "practice numbers and colors",
+          "review family member vocabulary",
+          "practice simple greetings",
+          "review basic object vocabulary",
+          "practice simple adjectives",
+        ],
+      },
+      A2: {
+        strengths: [
+          "used everyday topic vocabulary (food, travel, shopping)",
+          "used basic adjectives to describe things",
+          "used simple time expressions correctly",
+          "used vocabulary for daily routines",
+          "used basic weather vocabulary",
+          "used simple vocabulary to describe people",
+        ],
+        improvements: [
+          "expand everyday topic vocabulary",
+          "practice describing things with adjectives",
+          "review time expressions",
+          "expand daily routine vocabulary",
+          "practice weather vocabulary",
+          "expand vocabulary for describing people",
+        ],
+      },
+      B1: {
+        strengths: [
+          "used vocabulary to express opinions clearly",
+          "used feelings and emotions vocabulary well",
+          "used topic-specific vocabulary (work, hobbies, health)",
+          "used a good variety of everyday expressions",
+          "used vocabulary to describe past experiences",
+          "used simple idiomatic expressions naturally",
+        ],
+        improvements: [
+          "expand vocabulary for expressing opinions",
+          "practice feelings and emotions vocabulary",
+          "expand topic-specific vocabulary",
+          "reduce repetition by varying word choice",
+          "practice vocabulary for describing experiences",
+          "practice simple idiomatic expressions",
+        ],
+      },
+      B2: {
+        strengths: [
+          "used abstract vocabulary confidently",
+          "used idiomatic expressions naturally",
+          "varied word choice to avoid repetition",
+          "used precise vocabulary for nuanced meaning",
+          "used vocabulary to discuss current events and issues",
+          "used collocations correctly (make a decision, take a risk)",
+        ],
+        improvements: [
+          "expand abstract vocabulary range",
+          "practice using idiomatic expressions naturally",
+          "work on varying word choice",
+          "practice using more precise vocabulary",
+          "expand vocabulary around current events and issues",
+          "review common collocations",
+        ],
+      },
+      C1: {
+        strengths: [
+          "used sophisticated, precise vocabulary",
+          "used nuanced word choice to convey subtle meaning",
+          "used academic vocabulary appropriately",
+          "used a wide range of idiomatic and figurative language",
+          "paraphrased effectively using varied vocabulary",
+          "used vocabulary to convey tone and attitude",
+        ],
+        improvements: [
+          "refine precision in advanced vocabulary",
+          "practice conveying subtle shades of meaning",
+          "expand academic vocabulary range",
+          "practice varied idiomatic and figurative language",
+          "practice paraphrasing with more variety",
+          "fine-tune vocabulary for tone and attitude",
+        ],
+      },
+      C2: {
+        strengths: [
+          "used vocabulary with near-native precision",
+          "showed strong awareness of connotation and nuance",
+          "used rare and formal vocabulary appropriately",
+          "adapted vocabulary fluidly across registers",
+          "used sophisticated wordplay and stylistic variety",
+          "conveyed subtle, precise meaning effortlessly",
+        ],
+        improvements: [
+          "refine subtle connotations in rare vocabulary",
+          "polish register-appropriate word choice",
+          "continue building highly specialized vocabulary",
+          "fine-tune the last few native-like nuances",
+          "review rare stylistic and idiomatic choices",
+          "maintain precision in very long, complex discourse",
+        ],
+      },
+    },
   },
   {
     key: "fluency",
     label: "Pronunciation & Fluency",
-    strengths: [
-      "spoke clearly and confidently",
-      "had smooth, natural pacing",
-      "pronounced tricky sounds well",
-      "used natural intonation",
-      "spoke with very little hesitation",
-      "linked words smoothly when speaking",
-    ],
-    improvements: [
-      "slow down for clearer pronunciation",
-      "practice stress on longer words",
-      "reduce hesitation while speaking",
-      "work on intonation and rhythm",
-      "practice specific problem sounds",
-      "practice speaking in longer, connected sentences",
-    ],
+    levels: {
+      A1: {
+        strengths: [
+          "pronounced basic sounds clearly",
+          "said simple words and phrases understandably",
+          "copied model pronunciation well",
+          "spoke slowly but clearly",
+          "pronounced familiar words correctly",
+          "attempted new sounds with effort",
+        ],
+        improvements: [
+          "practice basic sound pronunciation",
+          "work on saying simple words clearly",
+          "practice repeating model pronunciation",
+          "build confidence speaking slowly and clearly",
+          "review pronunciation of familiar words",
+          "keep practicing new, unfamiliar sounds",
+        ],
+      },
+      A2: {
+        strengths: [
+          "spoke short sentences with reasonable rhythm",
+          "used basic word stress correctly",
+          "spoke with growing confidence",
+          "pronounced everyday vocabulary clearly",
+          "read short texts aloud clearly",
+          "used rising and falling intonation for questions",
+        ],
+        improvements: [
+          "practice rhythm in short sentences",
+          "work on basic word stress",
+          "build more speaking confidence",
+          "practice pronunciation of everyday vocabulary",
+          "practice reading aloud clearly",
+          "practice intonation for questions",
+        ],
+      },
+      B1: {
+        strengths: [
+          "spoke in connected, flowing sentences",
+          "used sentence stress to highlight key words",
+          "spoke with fewer unnatural pauses",
+          "maintained a steady pace in longer answers",
+          "pronounced multi-syllable words correctly",
+          "linked words smoothly in speech",
+        ],
+        improvements: [
+          "practice connecting ideas smoothly in speech",
+          "work on sentence stress for key words",
+          "reduce hesitation in longer answers",
+          "practice maintaining a steady speaking pace",
+          "practice multi-syllable word stress",
+          "practice linking words in connected speech",
+        ],
+      },
+      B2: {
+        strengths: [
+          "used natural rhythm in extended speech",
+          "used intonation to convey meaning and attitude",
+          "spoke fluently with very few pauses",
+          "pronounced complex vocabulary accurately",
+          "adjusted pace naturally for emphasis",
+          "sounded confident in extended discussion",
+        ],
+        improvements: [
+          "refine rhythm in extended speech",
+          "practice using intonation to convey attitude",
+          "reduce remaining hesitation in discussion",
+          "practice pronunciation of complex vocabulary",
+          "work on natural pacing for emphasis",
+          "build more confidence in extended discussion",
+        ],
+      },
+      C1: {
+        strengths: [
+          "used near-native intonation patterns",
+          "used stress and pausing for emphasis effectively",
+          "spoke fluently and effortlessly for extended periods",
+          "handled complex vocabulary with clear pronunciation",
+          "adapted tone naturally to context",
+          "sounded highly natural in spontaneous speech",
+        ],
+        improvements: [
+          "refine intonation for subtle emphasis",
+          "polish pausing and stress patterns",
+          "maintain fluency over very long stretches",
+          "fine-tune pronunciation of rare vocabulary",
+          "practice adapting tone across contexts",
+          "reduce the last traces of hesitation",
+        ],
+      },
+      C2: {
+        strengths: [
+          "spoke with fully natural, native-like fluency",
+          "used prosody with sophisticated precision",
+          "conveyed subtle meaning through intonation alone",
+          "sounded completely natural in any speaking context",
+          "handled rapid, spontaneous speech effortlessly",
+          "used stylistic variation in tone skillfully",
+        ],
+        improvements: [
+          "refine the subtlest native-like prosody cues",
+          "polish stylistic tone variation",
+          "continue building effortless spontaneity",
+          "maintain precision in very rapid speech",
+          "fine-tune the last nuances of natural rhythm",
+          "review rare stress patterns in complex speech",
+        ],
+      },
+    },
   },
   {
     key: "listening",
     label: "Listening & Comprehension",
-    strengths: [
-      "understood instructions quickly",
-      "followed the conversation easily",
-      "picked up on context clues well",
-      "responded appropriately to questions",
-      "understood natural, fast speech well",
-      "caught small details in listening tasks",
-    ],
-    improvements: [
-      "listen for key details more carefully",
-      "practice following longer instructions",
-      "work on understanding faster speech",
-      "practice listening without relying on text",
-      "review commonly misheard words",
-      "practice summarizing what was heard",
-    ],
+    levels: {
+      A1: {
+        strengths: [
+          "understood simple classroom instructions",
+          "recognized familiar words when heard",
+          "understood basic greetings and questions",
+          "followed short, simple audio with support",
+          "matched spoken words to pictures correctly",
+          "understood numbers and letters when spoken",
+        ],
+        improvements: [
+          "practice following simple instructions",
+          "review recognizing familiar words by ear",
+          "practice understanding basic greetings and questions",
+          "build listening stamina with short audio",
+          "practice matching spoken words to meaning",
+          "practice recognizing numbers and letters by ear",
+        ],
+      },
+      A2: {
+        strengths: [
+          "understood short, simple conversations",
+          "followed instructions with more than one step",
+          "understood familiar topics when spoken slowly",
+          "picked out key words in short audio",
+          "understood simple questions without repetition",
+          "followed short stories with visual support",
+        ],
+        improvements: [
+          "practice understanding short conversations",
+          "work on following multi-step instructions",
+          "practice listening at a natural pace",
+          "practice picking out key words",
+          "reduce need for repeated questions",
+          "practice following short stories by ear",
+        ],
+      },
+      B1: {
+        strengths: [
+          "understood everyday conversations at normal speed",
+          "followed the main idea of longer audio",
+          "understood conversations on familiar topics",
+          "picked up key details in spoken passages",
+          "followed simple opinions and viewpoints",
+          "understood most of a short talk or podcast",
+        ],
+        improvements: [
+          "practice understanding conversations at natural speed",
+          "work on following longer audio for main ideas",
+          "practice listening for key details",
+          "practice following spoken opinions and viewpoints",
+          "build stamina with longer listening passages",
+          "practice summarizing what was heard",
+        ],
+      },
+      B2: {
+        strengths: [
+          "followed extended discussions on familiar topics",
+          "understood implied meaning in conversations",
+          "followed unfamiliar topics with general understanding",
+          "understood different accents reasonably well",
+          "picked up on tone and attitude when listening",
+          "followed fast-paced natural conversation",
+        ],
+        improvements: [
+          "practice following extended discussions",
+          "work on understanding implied meaning",
+          "build comprehension of unfamiliar topics",
+          "practice listening to different accents",
+          "practice picking up on tone and attitude",
+          "build stamina with fast-paced conversation",
+        ],
+      },
+      C1: {
+        strengths: [
+          "understood fast, natural speech easily",
+          "followed nuanced arguments in spoken discussion",
+          "understood implicit meaning and subtext",
+          "followed a wide range of accents confidently",
+          "understood humor and wordplay when spoken",
+          "followed complex, abstract discussions",
+        ],
+        improvements: [
+          "refine understanding of very fast natural speech",
+          "practice following nuanced spoken arguments",
+          "practice picking up on implicit meaning",
+          "build confidence with less familiar accents",
+          "practice understanding humor and wordplay",
+          "practice following complex, abstract discussions",
+        ],
+      },
+      C2: {
+        strengths: [
+          "understood any spoken content with near-native ease",
+          "caught subtle humor, irony, and nuance effortlessly",
+          "followed rapid, unscripted speech with full comprehension",
+          "understood specialized or technical spoken content",
+          "picked up on the finest shades of meaning",
+          "followed native speakers across all accents and registers",
+        ],
+        improvements: [
+          "maintain precision with highly specialized content",
+          "continue refining awareness of the subtlest nuance",
+          "build familiarity with less common accents",
+          "review comprehension in noisy or difficult conditions",
+          "maintain focus during very long native-paced discussion",
+          "keep sharpening perception of rare idiomatic speech",
+        ],
+      },
+    },
   },
   {
     key: "participation",
     label: "Participation & Effort",
-    strengths: [
-      "stayed engaged the whole lesson",
-      "asked great questions",
-      "tried new expressions without hesitation",
-      "put in strong effort throughout",
-      "volunteered answers confidently",
-      "stayed positive with corrections and feedback",
-    ],
-    improvements: [
-      "speak up with more confidence",
-      "try responding without translating first",
-      "practice thinking directly in English",
-      "participate more actively in discussions",
-      "take more risks with new language",
-      "ask for help when something is unclear",
-    ],
+    levels: {
+      A1: {
+        strengths: [
+          "tried to speak even with very basic words",
+          "stayed engaged during simple activities",
+          "copied and repeated words bravely",
+          "followed along with simple classroom routines",
+          "stayed positive when learning something new",
+          "used gestures to communicate when needed",
+        ],
+        improvements: [
+          "encourage more attempts to speak, even with mistakes",
+          "build comfort repeating new words aloud",
+          "encourage staying focused during activities",
+          "build confidence following classroom routines",
+          "encourage a positive attitude toward mistakes",
+          "encourage using words instead of gestures when possible",
+        ],
+      },
+      A2: {
+        strengths: [
+          "attempted full sentences during practice",
+          "asked simple questions when confused",
+          "stayed engaged for the whole lesson",
+          "tried new words without being asked",
+          "worked well with a partner or in a group",
+          "showed enthusiasm for the topic",
+        ],
+        improvements: [
+          "encourage attempting full sentences more often",
+          "build confidence asking questions when confused",
+          "encourage staying engaged throughout",
+          "encourage trying new vocabulary independently",
+          "build confidence working with a partner or group",
+          "encourage more enthusiasm for new topics",
+        ],
+      },
+      B1: {
+        strengths: [
+          "shared personal opinions during discussion",
+          "asked follow-up questions to clarify",
+          "stayed engaged throughout longer activities",
+          "volunteered answers without being asked",
+          "helped classmates during group work",
+          "took initiative to practice outside class",
+        ],
+        improvements: [
+          "encourage sharing opinions more confidently",
+          "encourage asking clarifying questions",
+          "build stamina for longer activities",
+          "encourage volunteering answers more often",
+          "encourage supporting classmates during group work",
+          "encourage practicing more outside class",
+        ],
+      },
+      B2: {
+        strengths: [
+          "contributed thoughtful ideas to discussions",
+          "debated respectfully and persuasively",
+          "took a leadership role in group work",
+          "gave constructive feedback to classmates",
+          "stayed engaged even during challenging topics",
+          "showed initiative in choosing what to discuss",
+        ],
+        improvements: [
+          "encourage contributing more thoughtful ideas",
+          "build confidence debating and persuading",
+          "encourage taking initiative in group settings",
+          "encourage giving more constructive feedback",
+          "build resilience with challenging topics",
+          "encourage more initiative in class discussions",
+        ],
+      },
+      C1: {
+        strengths: [
+          "contributed sophisticated arguments in discussion",
+          "facilitated discussion among classmates",
+          "challenged ideas constructively and respectfully",
+          "brought fresh perspectives to the topic",
+          "engaged critically with complex material",
+          "supported less confident classmates",
+        ],
+        improvements: [
+          "encourage even deeper critical engagement",
+          "build confidence facilitating group discussion",
+          "encourage constructive challenge of others' ideas",
+          "encourage bringing more original perspectives",
+          "encourage more consistent critical engagement",
+          "encourage more mentoring of classmates",
+        ],
+      },
+      C2: {
+        strengths: [
+          "led sophisticated discussions with ease",
+          "engaged with nuance and intellectual depth",
+          "balanced confidence with openness to other views",
+          "brought expert-level insight to discussions",
+          "adapted communication style skillfully to the audience",
+          "modeled excellent participation for the class",
+        ],
+        improvements: [
+          "continue refining discussion leadership",
+          "maintain openness to differing perspectives",
+          "continue bringing expert-level insight",
+          "keep adapting style to different audiences",
+          "maintain the consistently high level of engagement",
+          "continue modeling strong participation",
+        ],
+      },
+    },
   },
 ];
 
@@ -260,14 +739,19 @@ function teacherDisplayName(rawName) {
   return `Teacher ${trimmed.replace(/^teacher\s+/i, "")}`;
 }
 
-function categoryHasInput(cat, selectedStrengths, selectedImprovements) {
+function levelItems(cat, level) {
+  return (level && cat.levels[level]) || { strengths: [], improvements: [] };
+}
+
+function categoryHasInput(cat, level, selectedStrengths, selectedImprovements) {
+  const { strengths, improvements } = levelItems(cat, level);
   return (
-    cat.strengths.some((item) => selectedStrengths.has(itemKey(cat.key, item))) ||
-    cat.improvements.some((item) => selectedImprovements.has(itemKey(cat.key, item)))
+    strengths.some((item) => selectedStrengths.has(itemKey(cat.key, item))) ||
+    improvements.some((item) => selectedImprovements.has(itemKey(cat.key, item)))
   );
 }
 
-function buildFeedback({ studentName, teacherName, selectedStrengths, selectedImprovements }) {
+function buildFeedback({ studentName, teacherName, level, selectedStrengths, selectedImprovements }) {
   const name = studentName.trim() || "there";
   const greeting = pickRandom(greetingPool(name));
   const closing = pickRandom(closingPool(name));
@@ -281,8 +765,9 @@ function buildFeedback({ studentName, teacherName, selectedStrengths, selectedIm
   const improvementSentences = [];
 
   CATEGORIES.forEach((cat) => {
-    const pickedS = cat.strengths.filter((item) => selectedStrengths.has(itemKey(cat.key, item)));
-    const pickedI = cat.improvements.filter((item) => selectedImprovements.has(itemKey(cat.key, item)));
+    const { strengths, improvements } = levelItems(cat, level);
+    const pickedS = strengths.filter((item) => selectedStrengths.has(itemKey(cat.key, item)));
+    const pickedI = improvements.filter((item) => selectedImprovements.has(itemKey(cat.key, item)));
 
     if (pickedS.length) {
       const template = strengthTemplates[sIdx % strengthTemplates.length];
@@ -342,6 +827,7 @@ function ChipList({ catKey, items, selected, onToggle, tone }) {
 export default function FeedbackGenerator() {
   const [teacherName, setTeacherName] = useState(() => localStorage.getItem(TEACHER_NAME_KEY) || "");
   const [studentName, setStudentName] = useState("");
+  const [level, setLevel] = useState("");
   const [selectedStrengths, setSelectedStrengths] = useState(() => new Set());
   const [selectedImprovements, setSelectedImprovements] = useState(() => new Set());
   const [step, setStep] = useState(0);
@@ -354,6 +840,7 @@ export default function FeedbackGenerator() {
   const isReviewStep = step === reviewStep;
   const currentCategory = !isNamesStep && !isReviewStep ? CATEGORIES[step - 1] : null;
   const CurrentCategoryIcon = currentCategory ? CATEGORY_ICONS[currentCategory.key] : null;
+  const currentLevelItems = currentCategory ? levelItems(currentCategory, level) : null;
 
   function toggleStrength(key) {
     setSelectedStrengths((prev) => {
@@ -371,7 +858,16 @@ export default function FeedbackGenerator() {
     });
   }
 
+  function handleSelectLevel(code) {
+    if (code !== level) {
+      setSelectedStrengths(new Set());
+      setSelectedImprovements(new Set());
+    }
+    setLevel(code);
+  }
+
   function goNext() {
+    if (isNamesStep && !level) return;
     setStep((s) => Math.min(s + 1, reviewStep));
   }
 
@@ -380,7 +876,7 @@ export default function FeedbackGenerator() {
   }
 
   function handleGenerate() {
-    const text = buildFeedback({ studentName, teacherName, selectedStrengths, selectedImprovements });
+    const text = buildFeedback({ studentName, teacherName, level, selectedStrengths, selectedImprovements });
     setGeneratedText(text);
     setCopied(false);
   }
@@ -395,6 +891,7 @@ export default function FeedbackGenerator() {
     setSelectedStrengths(new Set());
     setSelectedImprovements(new Set());
     setStudentName("");
+    setLevel("");
     setGeneratedText("");
     setCopied(false);
     setStep(0);
@@ -403,7 +900,7 @@ export default function FeedbackGenerator() {
   const studentTrimmed = studentName.trim();
   const teacherDisplay = teacherDisplayName(teacherName);
   const currentSatisfied = currentCategory
-    ? categoryHasInput(currentCategory, selectedStrengths, selectedImprovements)
+    ? categoryHasInput(currentCategory, level, selectedStrengths, selectedImprovements)
     : true;
 
   return (
@@ -422,7 +919,7 @@ export default function FeedbackGenerator() {
           <div className="fbg-stepper">
             {CATEGORIES.map((cat, idx) => {
               const nodeStep = idx + 1;
-              const complete = categoryHasInput(cat, selectedStrengths, selectedImprovements);
+              const complete = categoryHasInput(cat, level, selectedStrengths, selectedImprovements);
               const isCurrent = step === nodeStep;
               const CatIcon = CATEGORY_ICONS[cat.key];
               return (
@@ -477,10 +974,29 @@ export default function FeedbackGenerator() {
                     placeholder="Who was this lesson for?"
                   />
                 </label>
+                <div className="fbg-field">
+                  <span className="fbg-label">Student level</span>
+                  <div className="fbg-level-row">
+                    {LEVELS.map((lvl) => (
+                      <button
+                        type="button"
+                        key={lvl.code}
+                        className={`fbg-level-chip${level === lvl.code ? " is-active" : ""}`}
+                        onClick={() => handleSelectLevel(lvl.code)}
+                      >
+                        <span className="fbg-level-code">{lvl.label}</span>
+                        <span className="fbg-level-name">{lvl.name}</span>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              </div>
+              <div className={`fbg-step-hint${level ? " is-satisfied" : ""}`}>
+                {level ? "✓ Nice — ready to continue" : "Pick the student's level to continue"}
               </div>
               <div className="fbg-step-nav">
                 <span />
-                <button type="button" className="fbg-btn-next" onClick={goNext}>Continue →</button>
+                <button type="button" className="fbg-btn-next" onClick={goNext} disabled={!level}>Continue →</button>
               </div>
             </>
           )}
@@ -490,7 +1006,7 @@ export default function FeedbackGenerator() {
               <div className="fbg-step-heading">
                 <span className="fbg-step-heading-icon"><CurrentCategoryIcon /></span>
                 <div className="fbg-step-heading-text">
-                  <h2>{currentCategory.label}</h2>
+                  <h2>{currentCategory.label} <span className="fbg-step-heading-level">{level}</span></h2>
                   <p>Pick anything that applies.</p>
                 </div>
               </div>
@@ -500,8 +1016,8 @@ export default function FeedbackGenerator() {
                 <span className="fbg-cols-head-item fbg-cols-head-item--improve">→ What to work on</span>
               </div>
               <div className="fbg-cat-cols">
-                <ChipList catKey={currentCategory.key} items={currentCategory.strengths} selected={selectedStrengths} onToggle={toggleStrength} tone="strength" />
-                <ChipList catKey={currentCategory.key} items={currentCategory.improvements} selected={selectedImprovements} onToggle={toggleImprovement} tone="improve" />
+                <ChipList catKey={currentCategory.key} items={currentLevelItems.strengths} selected={selectedStrengths} onToggle={toggleStrength} tone="strength" />
+                <ChipList catKey={currentCategory.key} items={currentLevelItems.improvements} selected={selectedImprovements} onToggle={toggleImprovement} tone="improve" />
               </div>
 
               <div className={`fbg-step-hint${currentSatisfied ? " is-satisfied" : ""}`}>
@@ -528,8 +1044,9 @@ export default function FeedbackGenerator() {
               </div>
               <div className="fbg-review-list">
                 {CATEGORIES.map((cat, idx) => {
-                  const stCount = cat.strengths.filter((item) => selectedStrengths.has(itemKey(cat.key, item))).length;
-                  const imCount = cat.improvements.filter((item) => selectedImprovements.has(itemKey(cat.key, item))).length;
+                  const { strengths, improvements } = levelItems(cat, level);
+                  const stCount = strengths.filter((item) => selectedStrengths.has(itemKey(cat.key, item))).length;
+                  const imCount = improvements.filter((item) => selectedImprovements.has(itemKey(cat.key, item))).length;
                   const RowIcon = CATEGORY_ICONS[cat.key];
                   return (
                     <div className="fbg-review-row" key={cat.key}>
@@ -562,11 +1079,13 @@ export default function FeedbackGenerator() {
                   <button type="button" className="fbg-copy-btn" onClick={handleCopy}>{copied ? "✓ Copied" : "⧉ Copy"}</button>
                 </div>
               </div>
-              {(studentTrimmed || teacherDisplay) && (
+              {(studentTrimmed || teacherDisplay || level) && (
                 <div className="fbg-preview-meta">
                   {studentTrimmed && <span>To {studentTrimmed}</span>}
                   {studentTrimmed && teacherDisplay && <span className="fbg-preview-meta-sep">·</span>}
                   {teacherDisplay && <span>From {teacherDisplay}</span>}
+                  {(studentTrimmed || teacherDisplay) && level && <span className="fbg-preview-meta-sep">·</span>}
+                  {level && <span>Level {level}</span>}
                 </div>
               )}
               <pre className="fbg-preview">{generatedText}</pre>
@@ -656,7 +1175,12 @@ const CSS = `
   background: rgba(255,107,74,0.10); color: #FF6B4A;
 }
 .fbg-step-heading-icon svg { width: 22px; height: 22px; }
-.fbg-step-heading-text h2 { font-family: 'Fredoka', sans-serif; font-size: 18px; font-weight: 700; margin: 0; }
+.fbg-step-heading-text h2 { font-family: 'Fredoka', sans-serif; font-size: 18px; font-weight: 700; margin: 0; display: flex; align-items: center; gap: 8px; }
+.fbg-step-heading-level {
+  font-family: 'Quicksand', sans-serif; font-size: 11px; font-weight: 700;
+  color: #FF6B4A; background: rgba(255,107,74,0.1); border-radius: 999px;
+  padding: 2px 9px;
+}
 .fbg-step-heading-text p { font-size: 12.5px; color: #8B84A3; margin: 2px 0 0; }
 
 .fbg-names { display: flex; flex-direction: column; gap: 14px; }
@@ -674,6 +1198,28 @@ const CSS = `
 }
 .fbg-input:focus { border-color: #FF6B4A; }
 .fbg-input::placeholder { color: #B0ABC2; }
+
+.fbg-level-row { display: flex; flex-wrap: wrap; gap: 8px; }
+.fbg-level-chip {
+  display: flex; flex-direction: column; align-items: flex-start; gap: 1px;
+  font-family: 'Quicksand', sans-serif;
+  background: #F8F7FB;
+  border: 1.5px solid rgba(43,42,74,0.1);
+  border-radius: 12px;
+  padding: 7px 12px;
+  cursor: pointer;
+  transition: background 0.12s, border-color 0.12s, box-shadow 0.12s, transform 0.12s;
+}
+.fbg-level-chip:hover { border-color: rgba(43,42,74,0.22); transform: translateY(-1px); }
+.fbg-level-code { font-weight: 700; font-size: 13px; color: #2B2A4A; }
+.fbg-level-name { font-weight: 600; font-size: 10.5px; color: #8B84A3; }
+.fbg-level-chip.is-active {
+  background: linear-gradient(180deg, rgba(255,107,74,0.14), rgba(255,107,74,0.07));
+  border-color: #FF6B4A;
+  box-shadow: 0 3px 10px rgba(255,107,74,0.18);
+}
+.fbg-level-chip.is-active .fbg-level-code { color: #C24E3A; }
+.fbg-level-chip.is-active .fbg-level-name { color: #C24E3A; }
 
 .fbg-cols-head { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 10px; }
 .fbg-cols-head-item {
