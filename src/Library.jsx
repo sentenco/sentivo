@@ -346,7 +346,6 @@ function ArticlesFeature({ navigate }) {
     ? filtered.reduce((newest, a) => (!newest || new Date(a.publishedAt) > new Date(newest.publishedAt) ? a : newest), null)
     : null;
   const briefs = filtered.filter((a) => a !== lead);
-  const dateline = new Date().toLocaleDateString(undefined, { weekday: "long", month: "long", day: "numeric", year: "numeric" });
 
   return (
     <div className="gaz-page">
@@ -360,7 +359,6 @@ function ArticlesFeature({ navigate }) {
         <h1 className="gaz-masthead-word">Gazette</h1>
         <div className="gaz-masthead-underline" />
         <div className="gaz-masthead-tagline">News, Ideas &amp; Perspectives</div>
-        <div className="gaz-dateline">{dateline}</div>
       </div>
       <div className="gaz-rule-thick" />
       <div className="gaz-rule-thin" />
@@ -2322,7 +2320,6 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   opacity: 0.6;
   margin-bottom: 12px;
 }
-.gaz-dateline { font-family: 'Quicksand', sans-serif; font-size: 10.5px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; }
 .gaz-rule-thick { height: 3px; background: var(--ink); margin-bottom: 2px; }
 .gaz-rule-thin { height: 1px; background: #D6DAE6; }
 
