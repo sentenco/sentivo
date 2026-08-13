@@ -2469,6 +2469,996 @@ export const ARTICLES = [
       },
     ],
   },
+  {
+    slug: "cost-of-living-reshapes-daily-life",
+    ready: true,
+    publishedAt: "2026-08-04",
+    emoji: "💸",
+    variant: "daily",
+    topicLabel: "Daily Life",
+    topicTitle: "Wellbeing & Daily Life",
+    title: "The Cost of Living Is Reshaping Ordinary Life",
+    dek: "In different countries, rising household pressure is quietly changing how families shop, cook, save, and think about security.",
+    editions: {
+      plain: {
+        label: "Plain Edition",
+        range: "A1–A2",
+        readTime: "2 min read",
+        wordCount: 182,
+        blocks: [
+          { type: "p", parts: [
+            { t: "Prices are going up in many countries in 2026. Food, transport, and bills all cost more money. In Britain, the government is planning new ways to help people with the cost of living. In the United States, many people worry that prices will stay high for a long time." },
+          ] },
+          { type: "p", parts: [
+            { t: "Because of this, families are making small changes. They shop more carefully and compare prices at the supermarket. Some people plan meals before they go shopping, so they do not buy things they do not need. Others take the bus or walk more instead of driving." },
+          ] },
+          { type: "p", parts: [
+            { t: "These changes are not only about money. They are also about feelings. When people worry about money every day, they can feel more stress. This stress can affect sleep, mood, and family life." },
+          ] },
+          { type: "p", parts: [
+            { t: "This story is useful for English learners because it teaches words like budget, routine, and savings. It also shows that families around the world face similar problems, even when the details are different from country to country." },
+          ] },
+        ],
+      },
+      polished: {
+        label: "Polished Edition",
+        range: "B1–B2",
+        readTime: "4 min read",
+        wordCount: 375,
+        blocks: [
+          { type: "p", parts: [
+            { t: "Around the world, daily life in 2026 is being shaped not only by major events but by small decisions inside the home. Reuters reported that Britain's new government promised measures to tackle the cost of living, while economists said " },
+            { g: "inflation", pos: "noun", def: "a general, ongoing rise in the price of goods and services" },
+            { t: " concerns were still affecting expectations in the United States." },
+            { c: 1 },
+            { t: " These stories sound economic, but their real meaning is deeply personal. When prices stay high, people do not simply read the news — they change routines." },
+          ] },
+          { type: "p", parts: [
+            { t: "In many households, this means comparing supermarket prices more carefully, delaying purchases, using transport differently, or planning meals around cost rather than taste alone." },
+            { c: 2 },
+            { t: " Even small changes can add up into a new way of life. When families become more cautious about money, daily habits often become more " },
+            { g: "deliberate", pos: "adjective", def: "done carefully and on purpose, not by accident" },
+            { t: ". A cost-of-living story, then, is also a story about emotional energy, family priorities, and how people define comfort in uncertain times." },
+          ] },
+          { type: "p", parts: [
+            { t: "This is the kind of topic Sentivo can make more useful than ordinary reporting. Instead of simply noting that governments promise relief, an editorial-style article can show how economic pressure moves from policy into kitchens, classrooms, and weekend plans." },
+            { c: 3 },
+            { t: " That approach gives readers not only information but recognition — they see their own routines reflected in a larger global pattern." },
+          ] },
+          { type: "p", parts: [
+            { t: "For ESL readers, the story also offers practical language for budget, routine, savings, and " },
+            { g: "household", pos: "noun", def: "all the people who live together in one home" },
+            { t: " decisions. It is globally relevant because even when the details differ by country, the human experience feels familiar." },
+          ] },
+          { type: "p", parts: [
+            { t: "News becomes more meaningful when readers can connect world developments to the ordinary choices they make every day." },
+          ] },
+        ],
+      },
+      precise: {
+        label: "Precise Edition",
+        range: "C1–C2",
+        readTime: "4 min read",
+        wordCount: 372,
+        blocks: [
+          { type: "p", parts: [
+            { t: "Across the globe, daily life in 2026 is being shaped not merely by major events but by an accumulation of modest decisions made within the home. Reuters reported that Britain's new government pledged measures to address the cost of living, while economists noted that inflationary pressures continued to weigh on expectations in the United States." },
+            { c: 1 },
+            { t: " Such stories may read as economic, yet their true significance is intensely personal: when prices remain elevated, people do not merely absorb the news — they " },
+            { g: "recalibrate", pos: "verb", def: "adjust or change something so it works better in a new situation" },
+            { t: " their routines." },
+          ] },
+          { type: "p", parts: [
+            { t: "In many households, this manifests as more meticulous price comparison, deferred purchases, altered transport habits, or meal planning organized around cost rather than preference alone." },
+            { c: 2 },
+            { t: " Even incremental adjustments can accumulate into an entirely new mode of living. As families grow more " },
+            { g: "circumspect", pos: "adjective", def: "careful and thoughtful before doing or saying something, especially to avoid risks" },
+            { t: " about money, daily habits often become correspondingly more deliberate — a cost-of-living narrative is, at its core, a narrative about emotional bandwidth, familial priorities, and the ways people define security amid uncertainty." },
+          ] },
+          { type: "p", parts: [
+            { t: "This is precisely the terrain Sentivo can render more illuminating than conventional reporting. Rather than simply registering that governments promise relief, an editorial treatment can trace how economic pressure migrates from policy into kitchens, classrooms, and weekend plans." },
+            { c: 3 },
+            { t: " Such an approach affords readers not only information but recognition, allowing them to see their own routines reflected within a broader global pattern." },
+          ] },
+          { type: "p", parts: [
+            { t: "For ESL readers, the story likewise furnishes practical vocabulary for budget, routine, savings, and household decision-making. Its relevance is global precisely because, however the particulars diverge by country, the underlying human experience remains strikingly " },
+            { g: "familiar", pos: "adjective", def: "well known to you, easy to recognize" },
+            { t: "." },
+          ] },
+          { type: "p", parts: [
+            { t: "News acquires deeper resonance when readers can connect global developments to the mundane choices they navigate daily." },
+          ] },
+        ],
+      },
+    },
+    references: [
+      { domain: "reuters.com", name: "Reuters", headline: "UK PM Burnham promises cost of living measures, new 10-year plan" },
+      { domain: "reuters.com", name: "Reuters", headline: "Economists in Reuters poll expect Fed to hold rates steady through 2026" },
+      { domain: "reutersinstitute.politics.ox.ac.uk", name: "Reuters Institute (Oxford)", headline: "Overview and key findings of the 2026 Digital News Report" },
+    ],
+    discussionGuide: [
+      {
+        q: "Have prices gone up for things you buy regularly? What have you changed because of it?",
+        follow: ["What is one habit you don't want to give up, even if it costs more?"],
+      },
+      {
+        q: "The article says people are 'planning meals around cost rather than taste alone.' Do you think this is a good trade-off? Why or why not?",
+        follow: [],
+      },
+      {
+        q: "Why do you think money stress can affect sleep and mood, not just spending?",
+        follow: ["What helps you feel calmer when you're worried about money?"],
+      },
+    ],
+  },
+  {
+    slug: "rubin-observatory-decade-sky-movie",
+    ready: true,
+    publishedAt: "2026-08-04",
+    emoji: "🔭",
+    variant: "planet",
+    topicLabel: "Nature & Science",
+    topicTitle: "Nature, Science & Planet",
+    title: "Chile's New Space Camera Gives the Cosmos a New Rhythm",
+    dek: "A giant observatory in Chile is beginning a decade-long mission that could change how ordinary people imagine the universe.",
+    editions: {
+      plain: {
+        label: "Plain Edition",
+        range: "A1–A2",
+        readTime: "2 min read",
+        wordCount: 176,
+        blocks: [
+          { type: "p", parts: [
+            { t: "In July 2026, scientists in Chile turned on a huge new telescope called the Rubin Observatory. It is in a very dark part of the sky, high in the mountains. The telescope's job is big: it will take pictures of the whole universe, again and again, for ten years." },
+          ] },
+          { type: "p", parts: [
+            { t: "Scientists say this is like making the first movie of the universe. Instead of one photo, the telescope will make thousands of pictures over time. This will help scientists see things that change slowly, like moving asteroids or exploding stars." },
+          ] },
+          { type: "p", parts: [
+            { t: "This kind of science is different from fast technology news. It does not give quick answers. It asks people to be patient and wait for knowledge to grow slowly, year after year." },
+          ] },
+          { type: "p", parts: [
+            { t: "Chile is important for this project because the sky there is very dark and clear. This makes it one of the best places on Earth to study space. The story shows how science, geography, and teamwork between countries can work together." },
+          ] },
+        ],
+      },
+      polished: {
+        label: "Polished Edition",
+        range: "B1–B2",
+        readTime: "4 min read",
+        wordCount: 362,
+        blocks: [
+          { type: "p", parts: [
+            { t: "In July 2026, Reuters reported that Chile's Rubin Observatory had begun a decade-long mission to film the universe." },
+            { c: 1 },
+            { t: " The basic fact is impressive enough: a giant observatory under dark skies in Chile will build what has been described as the first movie of the universe. But beyond the technical achievement, the story has a powerful cultural effect — it changes the scale of everyday imagination." },
+          ] },
+          { type: "p", parts: [
+            { t: "Astronomy stories matter because they stretch people's sense of time and place." },
+            { c: 2 },
+            { t: " A long-term mission like this does not offer instant results in the way social media or consumer tech often does. Instead, it asks the public to value patience, observation, and slow " },
+            { g: "accumulation", pos: "noun", def: "the gradual gathering or building up of something over time" },
+            { t: " of knowledge. That makes it a refreshing kind of global story in 2026, a year often defined by speed and overload." },
+          ] },
+          { type: "p", parts: [
+            { t: "There is also something editorially rich in the location itself. Chile has become central to humanity's view of the night sky because geography, climate, and " },
+            { g: "infrastructure", pos: "noun", def: "the basic physical systems (like roads, power, and buildings) that support a place or project" },
+            { t: " meet there in a rare way. So this is not only a science story — it is a place story, a collaboration story, and a story about how knowledge is built across borders." },
+          ] },
+          { type: "p", parts: [
+            { t: "For readers, the observatory's mission offers an easy but profound question: what does it mean to watch the universe continuously over many years?" },
+            { c: 3 },
+            { t: " Sentivo can make that question accessible to non-specialists by keeping the language clear and the focus human." },
+          ] },
+          { type: "p", parts: [
+            { t: "Science becomes more memorable when it is not only about data, but about the wonder of seeing the sky as a living " },
+            { g: "timeline", pos: "noun", def: "a way of showing events in the order they happen over time" },
+            { t: " rather than a static picture." },
+          ] },
+        ],
+      },
+      precise: {
+        label: "Precise Edition",
+        range: "C1–C2",
+        readTime: "4 min read",
+        wordCount: 371,
+        blocks: [
+          { type: "p", parts: [
+            { t: "In July 2026, Reuters reported that Chile's Rubin Observatory had embarked on a decade-long mission to " },
+            { g: "chronicle", pos: "verb", def: "to record events in the order they happened, over a long time" },
+            { t: " the universe." },
+            { c: 1 },
+            { t: " The bare fact is striking enough: an immense observatory beneath the darkest skies in Chile will assemble what has been described as the first movie of the cosmos. Yet beyond the technical feat, the story exerts a subtler cultural effect — it recalibrates the very scale of everyday imagination." },
+          ] },
+          { type: "p", parts: [
+            { t: "Astronomy narratives matter precisely because they stretch our sense of time and place." },
+            { c: 2 },
+            { t: " A long-term undertaking of this kind offers none of the instant gratification typical of social media or consumer technology. Instead, it demands that the public value patience, observation, and the gradual " },
+            { g: "accretion", pos: "noun", def: "a gradual increase or growth by the slow addition of layers or parts" },
+            { t: " of knowledge — a welcome counterpoint in a year often defined by velocity and informational overload." },
+          ] },
+          { type: "p", parts: [
+            { t: "There is likewise something editorially rich in the site itself. Chile has become central to humanity's contemplation of the night sky because geography, climate, and infrastructure converge there in a rare " },
+            { g: "confluence", pos: "noun", def: "the coming together of two or more things, especially in a way that produces something notable" },
+            { t: ". This, then, is not solely a science story; it is equally a story of place, of international collaboration, and of how knowledge is constructed across borders." },
+          ] },
+          { type: "p", parts: [
+            { t: "For readers, the observatory's mission poses a deceptively simple yet profound question: what does it mean to observe the universe continuously across many years?" },
+            { c: 3 },
+            { t: " Sentivo can render that question accessible to non-specialists by keeping the language lucid and the focus resolutely human." },
+          ] },
+          { type: "p", parts: [
+            { t: "Science becomes more indelible when it concerns not merely data, but the wonder of beholding the sky as a living timeline rather than a static image." },
+          ] },
+        ],
+      },
+    },
+    references: [
+      { domain: "reuters.com", name: "Reuters", headline: "Chile's Rubin Observatory begins decade-long mission to film the universe" },
+      { domain: "sciencedaily.com", name: "ScienceDaily", headline: "ScienceDaily: Your source for the latest research news" },
+      { domain: "reutersinstitute.politics.ox.ac.uk", name: "Reuters Institute (Oxford)", headline: "Overview and key findings of the 2026 Digital News Report" },
+    ],
+    discussionGuide: [
+      {
+        q: "The article calls this project 'the first movie of the universe.' What do you think scientists hope to learn by watching the sky over many years instead of taking just one picture?",
+        follow: [],
+      },
+      {
+        q: "Why do you think patience is important in science, even in a world that often wants fast results?",
+        follow: ["Can you think of another example where slow, careful work matters more than speed?"],
+      },
+      {
+        q: "Would you like to visit a place like Chile's dark-sky region? Why or why not?",
+        follow: [],
+      },
+    ],
+  },
+  {
+    slug: "ai-becoming-public-utility",
+    ready: true,
+    publishedAt: "2026-08-04",
+    emoji: "🌐",
+    variant: "tech",
+    topicLabel: "Digital & Tech",
+    topicTitle: "Digital Life & Future Tech",
+    title: "AI Is Becoming a Public Utility Question",
+    dek: "Around the world, artificial intelligence is no longer just a product story but a debate about rules, access, and public responsibility.",
+    editions: {
+      plain: {
+        label: "Plain Edition",
+        range: "A1–A2",
+        readTime: "2 min read",
+        wordCount: 181,
+        blocks: [
+          { type: "p", parts: [
+            { t: "In 2026, more people are talking about artificial intelligence (AI) in a new way. It is not only about new apps or gadgets. It is becoming a question about rules and fairness." },
+          ] },
+          { type: "p", parts: [
+            { t: "Leaders at the United Nations warned that AI is growing faster than governments can control it. Countries are meeting to talk about how to work together on AI rules." },
+          ] },
+          { type: "p", parts: [
+            { t: "This matters because AI is now part of work, school, and daily communication. When a tool becomes this important, people start to ask: who controls it? Who can use it? Is it fair for everyone?" },
+          ] },
+          { type: "p", parts: [
+            { t: "There is also a fairness question between countries. If some countries build strong AI and others must depend on foreign tools, this could create new gaps between rich and poor nations." },
+          ] },
+          { type: "p", parts: [
+            { t: "This story helps readers think about AI as more than a new product. It is becoming part of how society works, like electricity or public transport, and that means decisions about it affect almost everyone." },
+          ] },
+        ],
+      },
+      polished: {
+        label: "Polished Edition",
+        range: "B1–B2",
+        readTime: "4 min read",
+        wordCount: 368,
+        blocks: [
+          { type: "p", parts: [
+            { t: "In 2026, artificial intelligence is starting to look less like a niche technology and more like a public infrastructure question." },
+            { c: 1 },
+            { t: " UN leaders have warned that AI is developing faster than oversight can keep up, while international discussions in places like Shanghai show countries trying to coordinate rules and cooperation. This shift matters because once a tool becomes central to work, education, and communication, people stop asking only what it can do — they begin asking who controls it and who gets access." },
+          ] },
+          { type: "p", parts: [
+            { t: "That change in framing is important for journalism. Tech reporting often focuses on launches, features, and company rivalry. But the more durable story may be whether AI behaves more like electricity, transport, or public media: something society depends on and therefore needs to " },
+            { g: "govern", pos: "verb", def: "to officially control and make decisions about something, especially a country or system" },
+            { t: " carefully." },
+            { c: 2 },
+            { t: " This does not mean AI must be state-run — it means the public stakes are rising." },
+          ] },
+          { type: "p", parts: [
+            { t: "There is also a global fairness angle. If some countries build strong AI systems while others depend entirely on foreign platforms, differences in language access, data control, and digital " },
+            { g: "sovereignty", pos: "noun", def: "the power of a country or group to govern itself and make its own decisions" },
+            { t: " may deepen." },
+            { c: 3 },
+            { t: " That is why international cooperation discussions matter, even when they seem distant from everyday users. Decisions made in policy rooms can shape what tools classrooms, offices, and families eventually use." },
+          ] },
+          { type: "p", parts: [
+            { t: "For Sentivo, this makes AI coverage richer and more global. Instead of merely reporting the newest model, an editorial article can ask what kind of shared digital future is being built." },
+          ] },
+          { type: "p", parts: [
+            { t: "Readers stay interested when technology is framed not only as " },
+            { g: "novelty", pos: "noun", def: "the quality of being new and interesting, often something not seen before" },
+            { t: ", but as a social system that may soon affect nearly everyone." },
+          ] },
+        ],
+      },
+      precise: {
+        label: "Precise Edition",
+        range: "C1–C2",
+        readTime: "4 min read",
+        wordCount: 374,
+        blocks: [
+          { type: "p", parts: [
+            { t: "In 2026, artificial intelligence is increasingly resembling not a niche technology but a question of public infrastructure." },
+            { c: 1 },
+            { t: " UN leaders have cautioned that AI's development is outpacing the mechanisms meant to oversee it, while international discussions in venues such as Shanghai reveal countries attempting to coordinate governance and cooperation. This reframing matters because once a tool becomes " },
+            { g: "indispensable", pos: "adjective", def: "so important that you cannot live or work without it" },
+            { t: " to labor, education, and communication, the public no longer asks merely what it can accomplish — it begins to interrogate who controls it and who is granted access." },
+          ] },
+          { type: "p", parts: [
+            { t: "That shift in framing carries consequences for journalism. Technology coverage has traditionally gravitated toward launches, features, and corporate rivalry. Yet the more enduring narrative may concern whether AI comes to resemble electricity, transport, or public media — an entity upon which society depends and must therefore " },
+            { g: "regulate", pos: "verb", def: "to control something using official rules, especially to make it safe or fair" },
+            { t: " judiciously." },
+            { c: 2 },
+            { t: " This need not imply state ownership; it signals, rather, that the public stakes are escalating." },
+          ] },
+          { type: "p", parts: [
+            { t: "There is likewise a global equity dimension. Should certain nations develop formidable AI capacities while others remain wholly reliant on foreign platforms, disparities in linguistic access, data sovereignty, and digital autonomy may well " },
+            { g: "widen", pos: "verb", def: "to become larger or more different; here, for a gap or difference to grow" },
+            { t: "." },
+            { c: 3 },
+            { t: " This is precisely why international cooperative discussions matter, however remote they may seem from ordinary users — decisions reached in policy chambers can determine which tools classrooms, offices, and households ultimately employ." },
+          ] },
+          { type: "p", parts: [
+            { t: "For Sentivo, this lends AI coverage greater richness and global reach. Rather than merely reporting on the newest model, an editorial piece can interrogate what manner of shared digital future is being constructed." },
+          ] },
+          { type: "p", parts: [
+            { t: "Readers remain engaged when technology is cast not solely as novelty, but as a social system poised to affect nearly everyone." },
+          ] },
+        ],
+      },
+    },
+    references: [
+      { domain: "reuters.com", name: "Reuters", headline: "UN's Guterres warns AI outpacing oversight, urges global action" },
+      { domain: "news.un.org", name: "UN News", headline: "Global push for AI governance amid warnings of 'catastrophic harm'" },
+      { domain: "reutersinstitute.politics.ox.ac.uk", name: "Reuters Institute (Oxford)", headline: "Journalism, media, and technology trends and predictions 2026" },
+    ],
+    discussionGuide: [
+      {
+        q: "The article compares AI to electricity or public transport. Do you agree that AI should be treated like a public service? Why or why not?",
+        follow: [],
+      },
+      {
+        q: "Why might it matter if some countries build strong AI systems while others depend on foreign tools?",
+        follow: ["Can you think of another technology where this kind of gap already exists?"],
+      },
+      {
+        q: "Who do you think should be responsible for making AI safe and fair — governments, companies, or both? Why?",
+        follow: [],
+      },
+    ],
+  },
+  {
+    slug: "uk-youth-training-economic-strategy",
+    ready: true,
+    publishedAt: "2026-08-04",
+    emoji: "🧰",
+    variant: "work",
+    topicLabel: "Work & Business",
+    topicTitle: "Worklife, Business & Careers",
+    title: "Youth Training Is Becoming an Economic Strategy",
+    dek: "Britain's new training plans show that education policy is increasingly being treated as labor-market infrastructure.",
+    editions: {
+      plain: {
+        label: "Plain Edition",
+        range: "A1–A2",
+        readTime: "2 min read",
+        wordCount: 178,
+        blocks: [
+          { type: "p", parts: [
+            { t: "In 2026, the British government announced a new plan for young people's job training. The plan wants schools and training programs to match the jobs that are actually available near them." },
+          ] },
+          { type: "p", parts: [
+            { t: "This is because AI and new technology are changing many jobs. The government wants young people to learn skills that match real jobs in their area, not just general subjects." },
+          ] },
+          { type: "p", parts: [
+            { t: "Different places need different skills. A city with a busy port may need different workers than a city with banks or factories. The plan tries to connect education directly to local jobs." },
+          ] },
+          { type: "p", parts: [
+            { t: "This shows that education and business are becoming more connected. Schools, companies, and the government are all responding to the same problem: fast changes in technology and uncertainty about future jobs." },
+          ] },
+          { type: "p", parts: [
+            { t: "For readers, this story is a chance to compare how their own country prepares young people for work, and to think about which skills will matter most in the future." },
+          ] },
+        ],
+      },
+      polished: {
+        label: "Polished Edition",
+        range: "B1–B2",
+        readTime: "4 min read",
+        wordCount: 366,
+        blocks: [
+          { type: "p", parts: [
+            { t: "When governments talk about youth training in 2026, they are increasingly talking about economic resilience as well." },
+            { c: 1 },
+            { t: " Reuters reported that Britain planned to align technical education and training more closely with local employment needs as AI reshapes the jobs market. This is more than a school reform — it is a statement that future labor markets may depend on how well countries connect learning to real regional demand." },
+          ] },
+          { type: "p", parts: [
+            { t: "That idea has broad appeal because it feels practical. Rather than assuming all education should follow one national template, the approach recognizes that jobs vary by place." },
+            { c: 2 },
+            { t: " A port city, a finance hub, and an industrial region may each need different pipelines of talent. Good training policy, then, becomes a way of mapping education onto economic geography." },
+          ] },
+          { type: "p", parts: [
+            { t: "Editorially, the story matters because it shows how business and education are " },
+            { g: "converging", pos: "verb", def: "coming together from different directions to meet at one point" },
+            { t: ". Employers, policymakers, and schools are all responding to the same pressure: rapid technological change and uncertainty about which skills will matter most." },
+            { c: 3 },
+            { t: " The result is a world where curriculum is no longer just an academic matter — it is also a labor-market tool." },
+          ] },
+          { type: "p", parts: [
+            { t: "For Sentivo readers, this kind of article can make a familiar topic feel sharper. Instead of saying only that training is important, it can show why countries now treat it as part of national " },
+            { g: "competitiveness", pos: "noun", def: "the ability of a country or company to succeed against others" },
+            { t: "." },
+          ] },
+          { type: "p", parts: [
+            { t: "That gives the piece a global relevance that goes beyond Britain and invites readers to compare how their own countries prepare young people for work." },
+          ] },
+        ],
+      },
+      precise: {
+        label: "Precise Edition",
+        range: "C1–C2",
+        readTime: "4 min read",
+        wordCount: 373,
+        blocks: [
+          { type: "p", parts: [
+            { t: "When governments address youth training in 2026, they are increasingly invoking economic resilience in the same breath." },
+            { c: 1 },
+            { t: " Reuters reported that Britain intended to align technical education and training more closely with local employment demand as AI reconfigures the labor market. This constitutes more than a mere school reform; it represents a declaration that future labor markets may hinge on how adeptly countries tether learning to genuine regional demand." },
+          ] },
+          { type: "p", parts: [
+            { t: "That proposition holds broad appeal precisely because it feels pragmatic. Rather than presuming that all education should follow a single national template, the approach acknowledges that employment " },
+            { g: "varies", pos: "verb", def: "changes or is different depending on the situation" },
+            { t: " by locale." },
+            { c: 2 },
+            { t: " A port city, a financial hub, and an industrial region may each require distinct pipelines of talent. Sound training policy thus becomes a means of mapping education onto economic geography." },
+          ] },
+          { type: "p", parts: [
+            { t: "Editorially, the narrative matters because it reveals how commerce and education are converging. Employers, policymakers, and schools alike are responding to an identical pressure: rapid technological " },
+            { g: "upheaval", pos: "noun", def: "a sudden, big change that causes confusion or disorder" },
+            { t: " and uncertainty over which competencies will ultimately prove indispensable." },
+            { c: 3 },
+            { t: " The result is a landscape in which curriculum is no longer a purely academic matter but also a labor-market instrument." },
+          ] },
+          { type: "p", parts: [
+            { t: "For Sentivo readers, such an article can render a familiar topic considerably sharper. Rather than merely asserting that training matters, it can illuminate why nations now treat it as integral to national " },
+            { g: "competitiveness", pos: "noun", def: "a country's or company's ability to succeed in comparison with others" },
+            { t: "." },
+          ] },
+          { type: "p", parts: [
+            { t: "This lends the piece a global relevance that transcends Britain, inviting readers to compare how their own countries equip young people for the world of work." },
+          ] },
+        ],
+      },
+    },
+    references: [
+      { domain: "reuters.com", name: "Reuters", headline: "UK's Burnham outlines youth training overhaul as AI reshapes jobs market" },
+      { domain: "reuters.com", name: "Reuters", headline: "Reuters NEXT Asia brings policymakers, business leaders together in Singapore" },
+      { domain: "reutersinstitute.politics.ox.ac.uk", name: "Reuters Institute (Oxford)", headline: "Journalism, media, and technology trends and predictions 2026" },
+    ],
+    discussionGuide: [
+      {
+        q: "Do you think job training should be different depending on the city or region a student lives in? Why or why not?",
+        follow: [],
+      },
+      {
+        q: "How is AI changing the kinds of skills that are useful in your own field or interest?",
+        follow: ["What skill do you think will matter most in five years?"],
+      },
+      {
+        q: "Should schools focus more on general knowledge or specific job skills? What are the trade-offs?",
+        follow: [],
+      },
+    ],
+  },
+  {
+    slug: "study-abroad-gets-strategic",
+    ready: true,
+    publishedAt: "2026-08-04",
+    emoji: "🎒",
+    variant: "work",
+    topicLabel: "Study & Skills",
+    topicTitle: "Study, School & Skills",
+    title: "Study Abroad Choices Are Becoming More Strategic",
+    dek: "Indian students looking toward Europe show how international education is increasingly shaped by cost, visas, and long-term calculation.",
+    editions: {
+      plain: {
+        label: "Plain Edition",
+        range: "A1–A2",
+        readTime: "2 min read",
+        wordCount: 177,
+        blocks: [
+          { type: "p", parts: [
+            { t: "In 2026, many students in India are changing their minds about where to study. In the past, many wanted to study in the United States. Now, more students are thinking about Europe instead." },
+          ] },
+          { type: "p", parts: [
+            { t: "One big reason is money. University in Europe often costs much less than in the United States. Visa rules in some countries have also become harder, so families are looking for easier and cheaper choices." },
+          ] },
+          { type: "p", parts: [
+            { t: "This means students are planning more carefully. They are not only thinking about which country sounds exciting. They are thinking about cost, rules, and what happens after they finish studying." },
+          ] },
+          { type: "p", parts: [
+            { t: "This change shows something bigger. Around the world, families are comparing countries the way they compare risk — thinking about the future, not only about dreams." },
+          ] },
+          { type: "p", parts: [
+            { t: "For readers, this is a chance to talk about where students from their own country like to study, and why some places become more or less popular over time." },
+          ] },
+        ],
+      },
+      polished: {
+        label: "Polished Edition",
+        range: "B1–B2",
+        readTime: "4 min read",
+        wordCount: 364,
+        blocks: [
+          { type: "p", parts: [
+            { t: "In 2026, studying abroad is looking less like a dream decision and more like a strategic one." },
+            { c: 1 },
+            { t: " Reuters reported that many Indian students were cooling on the 'American Dream' and considering Europe instead, partly because EU tuition can be far lower than tuition in the United States. Visa rules in other major destinations have also become stricter, reshaping what families see as realistic. This makes international education feel more like planning than aspiration." },
+          ] },
+          { type: "p", parts: [
+            { t: "That shift matters because it changes the tone of education itself." },
+            { c: 2 },
+            { t: " For many years, global study narratives focused heavily on prestige and destination image. Now, practical questions about affordability, policy, and " },
+            { g: "return on investment", pos: "phrase", def: "the value or benefit you get back compared to what you spent" },
+            { t: " are coming forward more openly. Students still want opportunity, but they are measuring it more carefully." },
+          ] },
+          { type: "p", parts: [
+            { t: "Editorially, this creates a richer kind of study story. The interesting part is not simply that Europe is gaining appeal — it is that mobility patterns reflect a broader mood of caution and calculation across the world." },
+            { c: 3 },
+            { t: " Education choices reveal how families read the future. When they compare countries, they are also comparing " },
+            { g: "risk", pos: "noun", def: "the possibility that something bad or costly could happen" },
+            { t: "." },
+          ] },
+          { type: "p", parts: [
+            { t: "For Sentivo, this offers a strong international angle with immediate classroom value. Readers can discuss where students go, why certain places rise or fall in " },
+            { g: "attractiveness", pos: "noun", def: "the quality of being appealing or desirable to people" },
+            { t: ", and how global movement changes with policy." },
+          ] },
+          { type: "p", parts: [
+            { t: "The result is a study-and-skills article that feels global, contemporary, and connected to ordinary decision-making." },
+          ] },
+        ],
+      },
+      precise: {
+        label: "Precise Edition",
+        range: "C1–C2",
+        readTime: "4 min read",
+        wordCount: 371,
+        blocks: [
+          { type: "p", parts: [
+            { t: "In 2026, studying abroad increasingly resembles a strategic calculation rather than an aspirational dream." },
+            { c: 1 },
+            { t: " Reuters reported that many Indian students were growing disenchanted with the 'American Dream,' turning instead toward Europe, partly because EU tuition can be substantially lower than its American counterpart. Visa regulations in other major destinations have likewise grown more stringent, reshaping what families regard as feasible. Consequently, international education now feels considerably more like planning than aspiration." },
+          ] },
+          { type: "p", parts: [
+            { t: "This shift matters because it alters the very tenor of education itself." },
+            { c: 2 },
+            { t: " For years, global study narratives fixated on prestige and destination image. Now, pragmatic questions concerning affordability, policy, and " },
+            { g: "return on investment", pos: "phrase", def: "the benefit gained relative to the cost paid, often used about money or time spent" },
+            { t: " surface far more openly. Students still covet opportunity, but they are appraising it with markedly greater rigor." },
+          ] },
+          { type: "p", parts: [
+            { t: "Editorially, this yields a richer study narrative. The compelling element is not merely that Europe is gaining favor, but that mobility patterns reflect a broader climate of caution and calculation worldwide." },
+            { c: 3 },
+            { t: " Education choices reveal how families interpret the future; in comparing countries, they are simultaneously " },
+            { g: "weighing", pos: "verb", def: "carefully considering something, especially advantages and disadvantages" },
+            { t: " risk." },
+          ] },
+          { type: "p", parts: [
+            { t: "For Sentivo, this furnishes a robust international angle with immediate classroom relevance. Readers can debate where students migrate, why certain destinations rise or wane in appeal, and how global mobility " },
+            { g: "fluctuates", pos: "verb", def: "changes often, going up and down or back and forth" },
+            { t: " with policy." },
+          ] },
+          { type: "p", parts: [
+            { t: "The outcome is a study-and-skills article that feels global, contemporary, and tethered to ordinary decision-making." },
+          ] },
+        ],
+      },
+    },
+    references: [
+      { domain: "reuters.com", name: "Reuters", headline: "Indian students cool on 'American Dream' as EU opens its doors" },
+      { domain: "reutersinstitute.politics.ox.ac.uk", name: "Reuters Institute (Oxford)", headline: "Overview and key findings of the 2026 Digital News Report" },
+      { domain: "reutersinstitute.politics.ox.ac.uk", name: "Reuters Institute (Oxford)", headline: "Journalism, media, and technology trends and predictions 2026" },
+    ],
+    discussionGuide: [
+      {
+        q: "If you were choosing a country to study in, what would matter most to you: cost, visa rules, or the country's reputation? Why?",
+        follow: [],
+      },
+      {
+        q: "Why do you think more students are thinking about study abroad as a financial decision, not just a dream?",
+        follow: ["Do you think this is a positive change or a sad one?"],
+      },
+      {
+        q: "Which countries are popular study destinations for students from your country? Has this changed in recent years?",
+        follow: [],
+      },
+    ],
+  },
+  {
+    slug: "global-entertainment-needs-local-accent",
+    ready: true,
+    publishedAt: "2026-08-04",
+    emoji: "🎬",
+    variant: "culture",
+    topicLabel: "Culture & Fun",
+    topicTitle: "Culture, Stories & Fun",
+    title: "Global Entertainment Still Needs a Local Accent",
+    dek: "Even in an age of massive worldwide audiences, producers say culture works best when it keeps its local texture.",
+    editions: {
+      plain: {
+        label: "Plain Edition",
+        range: "A1–A2",
+        readTime: "2 min read",
+        wordCount: 174,
+        blocks: [
+          { type: "p", parts: [
+            { t: "In 2026, a lot of shows and movies are watched by people all over the world. This makes some people ask: is global entertainment losing its local flavor?" },
+          ] },
+          { type: "p", parts: [
+            { t: "A producer named Marco Bassetti said that entertainment still needs local culture, even when the audience is global. He believes that details like humor, style, and feelings from a specific place make stories special." },
+          ] },
+          { type: "p", parts: [
+            { t: "People often enjoy shows that use popular, familiar formats. But they also want to feel something real and specific, not something that feels the same everywhere." },
+          ] },
+          { type: "p", parts: [
+            { t: "This means 'local' is not a weakness. It can actually be the reason a show or movie feels original and interesting." },
+          ] },
+          { type: "p", parts: [
+            { t: "This story is a good way to talk about culture, identity, and why some shows or movies feel special while others feel forgettable." },
+          ] },
+        ],
+      },
+      polished: {
+        label: "Polished Edition",
+        range: "B1–B2",
+        readTime: "3 min read",
+        wordCount: 352,
+        blocks: [
+          { type: "p", parts: [
+            { t: "A revealing cultural question of 2026 is whether global entertainment is becoming too smooth." },
+            { c: 1 },
+            { t: " Reuters quoted producer Marco Bassetti arguing that global entertainment still depends on local culture, even when audiences have become worldwide. That observation matters because today's platforms push toward scale and broad appeal, yet people still respond deeply to voice, place, and detail that feel " },
+            { g: "rooted", pos: "adjective", def: "firmly connected to a particular place, culture, or tradition" },
+            { t: " rather than generic." },
+          ] },
+          { type: "p", parts: [
+            { t: "This tension is visible in everything from ceremonies to streaming hits." },
+            { c: 2 },
+            { t: " Audiences may enjoy globally recognizable formats, but many still want a sense of cultural texture: specific humor, specific style, specific emotional codes. In that sense, 'local' is not a limitation — it is often the source of " },
+            { g: "originality", pos: "noun", def: "the quality of being new, unusual, or different from anything else" },
+            { t: "." },
+          ] },
+          { type: "p", parts: [
+            { t: "For editorial writing, that makes the story especially useful." },
+            { c: 3 },
+            { t: " Instead of asking only which shows are big, Sentivo can ask why some cultural products travel while still feeling distinct. That turns entertainment news into a more thoughtful conversation about identity, translation, and the global appetite for difference." },
+          ] },
+          { type: "p", parts: [
+            { t: "Readers are likely to find this stimulating because it connects culture they consume every day to a larger pattern. It also helps explain why some international events or productions feel " },
+            { g: "memorable", pos: "adjective", def: "easy to remember because it is special or unusual" },
+            { t: " while others feel empty." },
+          ] },
+          { type: "p", parts: [
+            { t: "Culture often becomes strongest not when it tries to belong everywhere, but when it knows where it comes from." },
+          ] },
+        ],
+      },
+      precise: {
+        label: "Precise Edition",
+        range: "C1–C2",
+        readTime: "3 min read",
+        wordCount: 359,
+        blocks: [
+          { type: "p", parts: [
+            { t: "A revealing cultural question of 2026 concerns whether global entertainment is growing excessively " },
+            { g: "homogenized", pos: "adjective", def: "made the same throughout, with differences removed" },
+            { t: "." },
+            { c: 1 },
+            { t: " Reuters quoted producer Marco Bassetti contending that global entertainment remains contingent upon local culture, notwithstanding the emergence of worldwide audiences. That observation matters because contemporary platforms gravitate toward scale and broad appeal, and yet audiences continue to respond profoundly to voice, place, and detail that feel rooted rather than generic." },
+          ] },
+          { type: "p", parts: [
+            { t: "This tension manifests across everything from award ceremonies to streaming hits." },
+            { c: 2 },
+            { t: " Audiences may relish globally recognizable formats, yet many still crave a sense of cultural texture — specific humor, specific style, specific emotional codes. In this respect, 'local' is not a constraint; it is frequently the very " },
+            { g: "wellspring", pos: "noun", def: "a continuing source of something, especially something positive like inspiration" },
+            { t: " of originality." },
+          ] },
+          { type: "p", parts: [
+            { t: "For editorial writing, this renders the story especially generative." },
+            { c: 3 },
+            { t: " Rather than inquiring merely which productions are commercially dominant, Sentivo can interrogate why certain cultural exports travel while retaining their distinctiveness. This transforms entertainment coverage into a more contemplative conversation about identity, translation, and the global appetite for difference." },
+          ] },
+          { type: "p", parts: [
+            { t: "Readers are likely to find this compelling, as it connects culture consumed daily to a broader pattern, while also illuminating why certain international productions prove " },
+            { g: "indelible", pos: "adjective", def: "impossible to forget or remove; leaving a lasting impression" },
+            { t: " while others feel forgettable." },
+          ] },
+          { type: "p", parts: [
+            { t: "Culture, ultimately, tends to prove strongest not when it strives to belong everywhere, but when it remains anchored to its origins." },
+          ] },
+        ],
+      },
+    },
+    references: [
+      { domain: "reuters.com", name: "Reuters", headline: "Marco Bassetti on why global entertainment still depends on local culture" },
+      { domain: "webershandwick.com", name: "Weber Shandwick", headline: "Predicting the Unpredictable: The Top 10 Cultural Trends and Moments of 2026" },
+      { domain: "reutersinstitute.politics.ox.ac.uk", name: "Reuters Institute (Oxford)", headline: "Journalism, media, and technology trends and predictions 2026" },
+    ],
+    discussionGuide: [
+      {
+        q: "Can you think of a movie, show, or song that felt 'local' but became popular worldwide? What made it special?",
+        follow: [],
+      },
+      {
+        q: "Do you agree that entertainment can lose something when it tries to appeal to everyone? Why or why not?",
+        follow: [],
+      },
+      {
+        q: "What is something from your own culture — food, humor, music, style — that you think would be interesting to a global audience?",
+        follow: ["What would be hard to translate or explain to someone from another country?"],
+      },
+    ],
+  },
+  {
+    slug: "asean-social-protection-region",
+    ready: true,
+    publishedAt: "2026-08-04",
+    emoji: "🤲",
+    variant: "culture",
+    topicLabel: "Society & Issues",
+    topicTitle: "People, Society & Issues",
+    title: "Social Protection Is Becoming a Regional Conversation",
+    dek: "Southeast Asia's new focus on inclusive social protection suggests that care systems are becoming a bigger part of regional identity.",
+    editions: {
+      plain: {
+        label: "Plain Edition",
+        range: "A1–A2",
+        readTime: "2 min read",
+        wordCount: 179,
+        blocks: [
+          { type: "p", parts: [
+            { t: "In July 2026, the Philippines hosted a meeting with other countries in Southeast Asia. The topic was 'social protection' — this means help for people during hard times, like poverty, disaster, or losing a job." },
+          ] },
+          { type: "p", parts: [
+            { t: "This meeting was not only about one country. It showed that countries in the region want to work together on these problems. Different countries face different risks, but they are trying to find shared solutions." },
+          ] },
+          { type: "p", parts: [
+            { t: "Social protection can sound like a boring government word, but it is really about real life. It is about who gets help when something bad happens, like a storm, an illness, or losing income." },
+          ] },
+          { type: "p", parts: [
+            { t: "News often shows conflict and crisis. But this story shows something different: how communities and governments quietly prepare for problems before they happen." },
+          ] },
+          { type: "p", parts: [
+            { t: "This is a good topic for talking about fairness, care, and how societies support people who need help." },
+          ] },
+        ],
+      },
+      polished: {
+        label: "Polished Edition",
+        range: "B1–B2",
+        readTime: "4 min read",
+        wordCount: 361,
+        blocks: [
+          { type: "p", parts: [
+            { t: "When the Philippines announced an ASEAN meeting on inclusive, adaptive social protection in July 2026, the story signaled more than a single event." },
+            { c: 1 },
+            { t: " It suggested that questions of care, " },
+            { g: "vulnerability", pos: "noun", def: "the state of being easily harmed or affected by something difficult" },
+            { t: ", and resilience are becoming regional priorities. Social protection can sound bureaucratic, but it deals with concrete realities: who gets help during poverty, disaster, disability, or sudden loss of income. Those are human questions before they are policy questions." },
+          ] },
+          { type: "p", parts: [
+            { t: "What makes the story editorially strong is its scale." },
+            { c: 2 },
+            { t: " It is not simply about one program in one country — it is about how a region imagines shared responsibility under pressure. Southeast Asian countries face different risks and capacities, yet they increasingly need common frameworks for recovery, inclusion, and " },
+            { g: "adaptation", pos: "noun", def: "the process of changing to deal better with a new situation" },
+            { t: ". Regional conversation itself becomes a kind of social infrastructure." },
+          ] },
+          { type: "p", parts: [
+            { t: "This broader framing matters for readers because it shows society not only as conflict, but as coordination." },
+            { c: 3 },
+            { t: " News often highlights crisis after crisis, but another important question is how communities and institutions quietly prepare for future strain. A good society article can make those slower, less visible efforts feel just as important as breaking events." },
+          ] },
+          { type: "p", parts: [
+            { t: "For Sentivo, this is a strong example of how to keep public-affairs coverage human and " },
+            { g: "nonpartisan", pos: "adjective", def: "not supporting or favoring any particular political side" },
+            { t: "." },
+          ] },
+          { type: "p", parts: [
+            { t: "The piece can stay accessible while still asking meaningful questions about fairness, preparedness, and care — one way to help readers stay globally informed without being overwhelmed by only conflict-driven news." },
+          ] },
+        ],
+      },
+      precise: {
+        label: "Precise Edition",
+        range: "C1–C2",
+        readTime: "4 min read",
+        wordCount: 369,
+        blocks: [
+          { type: "p", parts: [
+            { t: "When the Philippines announced an ASEAN meeting on inclusive, adaptive social protection in July 2026, the story signified considerably more than a solitary event." },
+            { c: 1 },
+            { t: " It intimated that questions of care, vulnerability, and resilience are becoming regional priorities. Social protection may sound bureaucratic, yet it addresses concrete realities: who receives assistance amid poverty, disaster, disability, or sudden loss of income — human questions that precede policy questions." },
+          ] },
+          { type: "p", parts: [
+            { t: "What renders the story editorially compelling is its scope." },
+            { c: 2 },
+            { t: " It concerns not merely a single program within a single nation, but how an entire region envisions shared responsibility under " },
+            { g: "duress", pos: "noun", def: "difficult conditions, pressure, or threats that force someone to act" },
+            { t: ". Southeast Asian countries confront disparate risks and capacities, yet increasingly require common frameworks for recovery, inclusion, and adaptation. Regional dialogue itself becomes a form of social infrastructure." },
+          ] },
+          { type: "p", parts: [
+            { t: "This broader framing matters for readers because it depicts society not solely as conflict, but as coordination." },
+            { c: 3 },
+            { t: " News frequently foregrounds crisis after crisis, yet another consequential question concerns how communities and institutions quietly prepare for future strain. A well-crafted society article can render those slower, less visible efforts as consequential as breaking events." },
+          ] },
+          { type: "p", parts: [
+            { t: "For Sentivo, this constitutes a strong " },
+            { g: "exemplar", pos: "noun", def: "a typical or excellent example of something" },
+            { t: " of how to sustain public-affairs coverage that remains human and nonpartisan." },
+          ] },
+          { type: "p", parts: [
+            { t: "The piece can remain accessible while still posing meaningful questions about fairness, preparedness, and care — one means of helping readers stay globally informed without being " },
+            { g: "inundated", pos: "adjective", def: "overwhelmed with a large amount of something" },
+            { t: " by conflict-driven news alone." },
+          ] },
+        ],
+      },
+    },
+    references: [
+      { domain: "asean2026.gov.ph", name: "ASEAN 2026 (Philippines)", headline: "DSWD to host ASEAN high-level meeting to promote inclusive, adaptive social protection" },
+      { domain: "nextstage-consulting.com", name: "NextStage Consulting", headline: "10 Trends That Will Shape Social Good in 2026" },
+      { domain: "reutersinstitute.politics.ox.ac.uk", name: "Reuters Institute (Oxford)", headline: "Overview and key findings of the 2026 Digital News Report" },
+    ],
+    discussionGuide: [
+      {
+        q: "What does 'social protection' mean to you? Can you give an example from your own country?",
+        follow: [],
+      },
+      {
+        q: "Why do you think countries in the same region might want to work together on problems like disasters or poverty, instead of handling them alone?",
+        follow: [],
+      },
+      {
+        q: "The article says news often focuses on crisis, not preparation. Can you think of a time when quiet preparation was just as important as a big event?",
+        follow: ["Why do you think stories like this get less attention than crisis stories?"],
+      },
+    ],
+  },
+  {
+    slug: "chile-sky-destination",
+    ready: true,
+    publishedAt: "2026-08-04",
+    emoji: "🌌",
+    variant: "planet",
+    topicLabel: "Travel & Places",
+    topicTitle: "Places, Travel & Journeys",
+    title: "Chile, Not Just Europe, Is Becoming a Sky Destination",
+    dek: "New astronomy infrastructure is also turning place itself into a story, with Chile gaining fresh importance as a travel and wonder site.",
+    editions: {
+      plain: {
+        label: "Plain Edition",
+        range: "A1–A2",
+        readTime: "2 min read",
+        wordCount: 178,
+        blocks: [
+          { type: "p", parts: [
+            { t: "Chile's new Rubin Observatory is a science story, but it is also a travel story. The telescope is in a very dark, dry part of Chile called Coquimbo." },
+          ] },
+          { type: "p", parts: [
+            { t: "This place is special because the sky there is very clear at night. This is why scientists chose it for such a big project. But it also makes people want to visit and see the sky for themselves." },
+          ] },
+          { type: "p", parts: [
+            { t: "Travel is not always about beaches or big cities. Sometimes a place becomes interesting because of what it means, not only what tourists can do there." },
+          ] },
+          { type: "p", parts: [
+            { t: "Because of projects like this, more people may start to think of Chile as a place connected to space and discovery, not only mountains and wine." },
+          ] },
+          { type: "p", parts: [
+            { t: "This story is a fun way to talk about travel, science, and how a place's meaning can change over time." },
+          ] },
+        ],
+      },
+      polished: {
+        label: "Polished Edition",
+        range: "B1–B2",
+        readTime: "4 min read",
+        wordCount: 358,
+        blocks: [
+          { type: "p", parts: [
+            { t: "Chile's Rubin Observatory is a science story, but it is also a place story." },
+            { c: 1 },
+            { t: " When Reuters described the observatory beginning its mission under some of the world's darkest skies in Chile's Coquimbo region, it also highlighted why certain landscapes matter globally. Travel is not always about leisure first — sometimes it begins with the imagination of a place before the desire to visit it." },
+          ] },
+          { type: "p", parts: [
+            { t: "In that sense, Chile is benefiting from a type of destination identity that combines geography, science, and " },
+            { g: "awe", pos: "noun", def: "a feeling of wonder and respect, often for something very big or impressive" },
+            { t: "." },
+            { c: 2 },
+            { t: " The Andes, dry climate, and dark skies make the region useful for astronomy, but they also make it symbolically powerful for readers. A global audience may begin seeing Chile not only as a country on a map, but as a window into the universe." },
+          ] },
+          { type: "p", parts: [
+            { t: "This is a valuable editorial angle because it broadens what travel writing can be." },
+            { c: 3 },
+            { t: " Instead of focusing only on beaches, restaurants, or luxury, a Sentivo article can explore how scientific importance changes how places are imagined. The destination becomes meaningful not merely for what tourists do there, but for what humanity learns there." },
+          ] },
+          { type: "p", parts: [
+            { t: "That approach can make travel content feel fresher and more " },
+            { g: "intelligent", pos: "adjective", def: "showing careful thought and understanding, not shallow or simple" },
+            { t: ". It still centers place, but it avoids cliché." },
+          ] },
+          { type: "p", parts: [
+            { t: "Readers get both discovery and atmosphere, along with a reminder that some of the world's most compelling destinations are important not because they entertain us, but because they help us see farther." },
+          ] },
+        ],
+      },
+      precise: {
+        label: "Precise Edition",
+        range: "C1–C2",
+        readTime: "4 min read",
+        wordCount: 369,
+        blocks: [
+          { type: "p", parts: [
+            { t: "Chile's Rubin Observatory constitutes a science story, yet it is equally a story of place." },
+            { c: 1 },
+            { t: " When Reuters described the observatory commencing its mission beneath some of the world's darkest skies in Chile's Coquimbo region, it simultaneously illuminated why certain landscapes carry global significance. Travel is not invariably a matter of leisure first — it sometimes originates in the imagination of a place, preceding any desire to visit it." },
+          ] },
+          { type: "p", parts: [
+            { t: "In this respect, Chile benefits from a destination identity that fuses geography, science, and awe." },
+            { c: 2 },
+            { t: " The Andes, arid climate, and unpolluted night skies render the region invaluable for astronomy, while simultaneously endowing it with symbolic potency for readers. A global audience may come to regard Chile not merely as a country upon a map, but as an " },
+            { g: "aperture", pos: "noun", def: "an opening, especially one that lets light through, like a small window" },
+            { t: " onto the universe." },
+          ] },
+          { type: "p", parts: [
+            { t: "This constitutes a valuable editorial angle because it expands the very possibilities of travel writing." },
+            { c: 3 },
+            { t: " Rather than confining itself to beaches, restaurants, or luxury, a Sentivo article can explore how scientific significance reshapes how places are imagined. The destination becomes meaningful not solely for what tourists undertake there, but for what humanity " },
+            { g: "discerns", pos: "verb", def: "notices or understands something, often something not obvious" },
+            { t: " there." },
+          ] },
+          { type: "p", parts: [
+            { t: "That approach can render travel content feel considerably fresher and more discerning, still centering place while eschewing " },
+            { g: "cliché", pos: "noun", def: "an idea or phrase that has been used so often it has become boring or meaningless" },
+            { t: "." },
+          ] },
+          { type: "p", parts: [
+            { t: "Readers thereby obtain both discovery and atmosphere, alongside a reminder that some of the world's most compelling destinations matter not because they entertain us, but because they help us perceive farther." },
+          ] },
+        ],
+      },
+    },
+    references: [
+      { domain: "reuters.com", name: "Reuters", headline: "Chile's Rubin Observatory begins decade-long mission to film the universe" },
+      { domain: "reutersinstitute.politics.ox.ac.uk", name: "Reuters Institute (Oxford)", headline: "Overview and key findings of the 2026 Digital News Report" },
+      { domain: "reuters.com", name: "Reuters", headline: "Reuters NEXT Asia brings policymakers, business leaders together in Singapore" },
+    ],
+    discussionGuide: [
+      {
+        q: "Would you want to travel somewhere just to see a dark, clear night sky? Why or why not?",
+        follow: [],
+      },
+      {
+        q: "The article says travel is 'not always about leisure first' — sometimes it starts with imagination. Can you think of a place you want to visit because of what it means, not just what you can do there?",
+        follow: [],
+      },
+      {
+        q: "How do you think a place's reputation can change over time — for example, because of a new discovery, project, or event?",
+        follow: ["Can you think of a real example from your own country or region?"],
+      },
+    ],
+  },
 ];
 
 export function getArticle(slug) {
