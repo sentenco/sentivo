@@ -3459,6 +3459,996 @@ export const ARTICLES = [
       },
     ],
   },
+  {
+    slug: "self-care-basics-return-2026",
+    ready: true,
+    publishedAt: "2026-08-05",
+    emoji: "🌿",
+    variant: "daily",
+    topicLabel: "Daily Life",
+    topicTitle: "Wellbeing & Daily Life",
+    title: "Why Simple Self-Care Keeps Returning in 2026",
+    dek: "In a world full of pressure, global health messages are circling back to basic habits that people can actually sustain.",
+    editions: {
+      plain: {
+        label: "Plain Edition",
+        range: "A1–A2",
+        readTime: "2 min read",
+        wordCount: 179,
+        blocks: [
+          { type: "p", parts: [
+            { t: "In 2026, health experts keep giving the same simple advice: eat well, exercise, sleep enough, and pay attention to your body and mind. The World Health Organization's Self-Care Month message repeats these basic ideas every year." },
+          ] },
+          { type: "p", parts: [
+            { t: "At first, this advice can feel boring, because we have heard it many times before. But maybe that is exactly the point. In a busy, noisy world, simple habits are often the hardest ones to actually keep." },
+          ] },
+          { type: "p", parts: [
+            { t: "People cannot always control big things like the economy or fast-changing technology. But they can choose to drink water, take a short walk, or go to bed on time. These small choices give people a feeling of control." },
+          ] },
+          { type: "p", parts: [
+            { t: "The best advice about self-care does not ask for a perfect new life. It suggests small, realistic steps. This makes the advice easier to trust and easier to actually use." },
+          ] },
+          { type: "p", parts: [
+            { t: "This story is a good reminder that world news is not only about big events. Sometimes it is also about the small, daily choices that help people feel steady." },
+          ] },
+        ],
+      },
+      polished: {
+        label: "Polished Edition",
+        range: "B1–B2",
+        readTime: "4 min read",
+        wordCount: 364,
+        blocks: [
+          { type: "p", parts: [
+            { t: "One striking feature of 2026 is how often health advice returns to the basics." },
+            { c: 1 },
+            { t: " The World Health Organization's Self-Care Month message highlights familiar actions such as eating healthily, exercising, sleeping enough, and staying aware of one's own body and mind. At first, this can seem repetitive. But perhaps that is the point: in an overstimulated world, the simplest advice may now be the hardest to follow." },
+          ] },
+          { type: "p", parts: [
+            { t: "Part of the appeal of self-care stories is that they offer control." },
+            { c: 2 },
+            { t: " People cannot always change the economy, global crises, or fast-moving technology, but they can decide when to walk, rest, or drink water. That gives daily-life journalism a useful role: it can remind readers that global change and personal routine are not separate worlds." },
+          ] },
+          { type: "p", parts: [
+            { t: "At the same time, self-care coverage becomes stronger when it avoids empty " },
+            { g: "positivity", pos: "noun", def: "the quality of being hopeful and confident, sometimes used to mean forced or unrealistic cheerfulness" },
+            { t: "." },
+            { c: 3 },
+            { t: " Readers do not need more lectures about perfect habits. They need realistic guidance that respects how hard consistency can be. This is why the best articles on wellness in 2026 are often modest in tone: they suggest small actions, not total reinvention. That makes them more believable and more useful." },
+          ] },
+          { type: "p", parts: [
+            { t: "For Sentivo, this kind of story can work especially well as editorial service journalism. It is global, relatable, and discussion-ready without becoming " },
+            { g: "preachy", pos: "adjective", def: "trying too hard to teach or lecture people about how to behave" },
+            { t: "." },
+          ] },
+          { type: "p", parts: [
+            { t: "It also reminds readers that 'world news' is not only about distant institutions. Sometimes it is also about the quiet, daily choices that help people stay " },
+            { g: "steady", pos: "adjective", def: "calm, stable, and not easily upset or changed" },
+            { t: " while the wider world keeps moving." },
+          ] },
+        ],
+      },
+      precise: {
+        label: "Precise Edition",
+        range: "C1–C2",
+        readTime: "4 min read",
+        wordCount: 371,
+        blocks: [
+          { type: "p", parts: [
+            { t: "One striking feature of 2026 is the frequency with which health guidance circles back to fundamentals." },
+            { c: 1 },
+            { t: " The World Health Organization's Self-Care Month message underscores familiar practices — eating healthily, exercising, sleeping adequately, and remaining attentive to one's own body and mind. At first blush, this may seem repetitive. Yet perhaps that is precisely the point: in an overstimulated world, the simplest counsel may now be the hardest to " },
+            { g: "heed", pos: "verb", def: "to pay careful attention to advice and act on it" },
+            { t: "." },
+          ] },
+          { type: "p", parts: [
+            { t: "Part of the appeal of self-care narratives lies in the sense of agency they confer." },
+            { c: 2 },
+            { t: " People cannot always alter the economy, global crises, or rapidly evolving technology, but they can determine when to walk, rest, or hydrate. This lends daily-life journalism a meaningful function: it can remind readers that global upheaval and personal routine are not " },
+            { g: "discrete", pos: "adjective", def: "separate and distinct from each other" },
+            { t: " worlds." },
+          ] },
+          { type: "p", parts: [
+            { t: "Simultaneously, self-care coverage grows more robust when it eschews hollow positivity." },
+            { c: 3 },
+            { t: " Readers require no further sermonizing about flawless habits; they need realistic guidance that acknowledges how arduous consistency can be. This is why the most compelling wellness writing of 2026 tends toward modesty of tone: it proposes incremental adjustments rather than wholesale reinvention, rendering it considerably more credible and useful." },
+          ] },
+          { type: "p", parts: [
+            { t: "For Sentivo, this genre of story can function especially well as editorial service journalism — global, relatable, and conducive to discussion without descending into moralizing." },
+          ] },
+          { type: "p", parts: [
+            { t: "It further reminds readers that 'world news' need not concern only distant institutions; sometimes it concerns the quiet, daily choices that help people remain " },
+            { g: "grounded", pos: "adjective", def: "emotionally stable and sensible, not easily overwhelmed" },
+            { t: " amid a restlessly shifting world." },
+          ] },
+        ],
+      },
+    },
+    references: [
+      { domain: "who.int", name: "World Health Organization", headline: "Self-Care Month 2026" },
+      { domain: "doctoranywhere.ph", name: "DoctorAnywhere Philippines", headline: "How to Build a Wellness Routine That Actually Sticks in 2026" },
+      { domain: "uphealthsystem.com", name: "UP Health System", headline: "Healthy Habits to Start in 2026 for Better Overall Health" },
+    ],
+    discussionGuide: [
+      {
+        q: "The article says simple health advice can be 'the hardest to follow.' Why do you think that is?",
+        follow: [],
+      },
+      {
+        q: "What is one small daily habit that helps you feel more in control, even when bigger things feel out of your control?",
+        follow: ["How did you start that habit?"],
+      },
+      {
+        q: "Do you agree that people are tired of 'perfect' advice about health and productivity? Why or why not?",
+        follow: [],
+      },
+    ],
+  },
+  {
+    slug: "lunar-quarantine-return-to-earth",
+    ready: true,
+    publishedAt: "2026-08-05",
+    emoji: "🌕",
+    variant: "planet",
+    topicLabel: "Nature & Science",
+    topicTitle: "Nature, Science & Planet",
+    title: "Science Keeps Asking What We Should Bring Back to Earth",
+    dek: "New discussions about lunar quarantine show that exploration is no longer only about going farther, but also about returning safely.",
+    editions: {
+      plain: {
+        label: "Plain Edition",
+        range: "A1–A2",
+        readTime: "2 min read",
+        wordCount: 174,
+        blocks: [
+          { type: "p", parts: [
+            { t: "In July 2026, scientists talked about a new idea: a special quarantine building for samples from the Moon. This means checking anything brought back from space very carefully before it reaches Earth." },
+          ] },
+          { type: "p", parts: [
+            { t: "The idea is simple, even if it sounds like science fiction. If future space missions bring back something unknown, scientists want a safe way to check it first. This helps reduce unexpected risks." },
+          ] },
+          { type: "p", parts: [
+            { t: "In the past, space stories were often about going far away and exploring new places. Now, more stories are about responsibility: what happens after we explore, and how we bring things back safely." },
+          ] },
+          { type: "p", parts: [
+            { t: "This is similar to how doctors, engineers, and computer experts also plan for problems before they happen. Space science is learning to think the same way." },
+          ] },
+          { type: "p", parts: [
+            { t: "This story shows that science is not only about big, exciting discoveries. It is also about careful planning, even for things that probably will not happen." },
+          ] },
+        ],
+      },
+      polished: {
+        label: "Polished Edition",
+        range: "B1–B2",
+        readTime: "4 min read",
+        wordCount: 366,
+        blocks: [
+          { type: "p", parts: [
+            { t: "One of the more surprising science ideas circulating in July 2026 is the proposal for a lunar quarantine facility." },
+            { c: 1 },
+            { t: " Researchers say samples from Mars, the Moon, and beyond may need to be examined before they are brought fully back to Earth. The reasoning is simple even if it sounds dramatic: if future missions ever return unfamiliar biological material, scientists want systems in place to reduce unpredictable risk. Exploration, in other words, now includes responsibility on the return journey." },
+          ] },
+          { type: "p", parts: [
+            { t: "This kind of story works well editorially because it reveals how science is changing in tone." },
+            { c: 2 },
+            { t: " Older space stories often centered on distance, ambition, and competition. Newer ones more often include questions of " },
+            { g: "stewardship", pos: "noun", def: "the careful and responsible management of something valuable" },
+            { t: ", contamination, and global responsibility. The frontier still inspires wonder, but it also requires procedures. That combination makes modern science feel both grand and careful." },
+          ] },
+          { type: "p", parts: [
+            { t: "There is also a useful lesson here for general readers. Scientific progress is not only about breakthrough moments." },
+            { c: 3 },
+            { t: " It is also about planning for low-probability, high-impact scenarios before they become urgent. That is the same logic used in public health, transport safety, and " },
+            { g: "cybersecurity", pos: "noun", def: "the protection of computer systems and data from theft or damage" },
+            { t: ". Space science, then, is quietly borrowing the mindset of risk management." },
+          ] },
+          { type: "p", parts: [
+            { t: "For Sentivo, this is exactly the kind of 'new but understandable' article that can spark curiosity. The story sounds almost like science fiction, yet it comes from real scientific discussion." },
+          ] },
+          { type: "p", parts: [
+            { t: "That mix of wonder and caution helps global readers feel that science is not a distant field. It is a way of thinking about the future before the future " },
+            { g: "arrives", pos: "verb", def: "comes or happens, especially something expected" },
+            { t: "." },
+          ] },
+        ],
+      },
+      precise: {
+        label: "Precise Edition",
+        range: "C1–C2",
+        readTime: "4 min read",
+        wordCount: 379,
+        blocks: [
+          { type: "p", parts: [
+            { t: "One of the more unexpected scientific proposals circulating in July 2026 concerns a lunar " },
+            { g: "quarantine", pos: "noun", def: "a period of isolation to prevent something possibly harmful from spreading" },
+            { t: " facility." },
+            { c: 1 },
+            { t: " Researchers contend that samples from Mars, the Moon, and beyond may require examination before being fully repatriated to Earth. The rationale is straightforward, however dramatic it may sound: should future missions ever return unfamiliar biological material, scientists wish to have systems in place to mitigate unpredictable risk. Exploration, in other words, now encompasses responsibility on the return journey." },
+          ] },
+          { type: "p", parts: [
+            { t: "This narrative proves editorially rich because it reveals a shift in science's prevailing tone." },
+            { c: 2 },
+            { t: " Earlier space narratives frequently centered on distance, ambition, and rivalry. More recent ones increasingly incorporate questions of stewardship, contamination, and global accountability. The frontier still inspires wonder, yet it now demands procedure — a combination that renders contemporary science both grand and " },
+            { g: "meticulous", pos: "adjective", def: "showing great attention to detail; very careful and precise" },
+            { t: "." },
+          ] },
+          { type: "p", parts: [
+            { t: "There is likewise an instructive lesson here for lay readers. Scientific progress does not consist solely of breakthrough moments." },
+            { c: 3 },
+            { t: " It equally entails planning for low-probability, high-impact scenarios well before they become urgent — the very logic underpinning public health, transport safety, and cybersecurity. Space science, then, is quietly assimilating the mindset of risk management." },
+          ] },
+          { type: "p", parts: [
+            { t: "For Sentivo, this constitutes precisely the sort of 'novel yet accessible' article capable of igniting curiosity. The narrative reads almost like science fiction, yet it emerges from genuine scientific deliberation." },
+          ] },
+          { type: "p", parts: [
+            { t: "That fusion of wonder and prudence helps a global readership perceive science not as a remote discipline, but as a mode of contemplating the future before it arrives." },
+          ] },
+        ],
+      },
+    },
+    references: [
+      { domain: "sciencedaily.com", name: "ScienceDaily", headline: "Scientists Want to Quarantine Alien Life on the Moon Before It Reaches Earth" },
+      { domain: "sciencedaily.com", name: "ScienceDaily", headline: "Scientific Conduct News" },
+      { domain: "reuters.com", name: "Reuters", headline: "Science News — Today's Latest Science Headlines" },
+    ],
+    discussionGuide: [
+      {
+        q: "Why do you think scientists want to check space samples carefully before bringing them fully to Earth?",
+        follow: [],
+      },
+      {
+        q: "The article compares this idea to public health and cybersecurity. Can you think of another area of life where people plan for problems before they happen?",
+        follow: [],
+      },
+      {
+        q: "Do you think this kind of planning is a smart use of time and money, even if the risk is very small? Why or why not?",
+        follow: [],
+      },
+    ],
+  },
+  {
+    slug: "ai-search-becomes-assistant",
+    ready: true,
+    publishedAt: "2026-08-05",
+    emoji: "🧭",
+    variant: "tech",
+    topicLabel: "Digital & Tech",
+    topicTitle: "Digital Life & Future Tech",
+    title: "Search Is Quietly Becoming an Assistant",
+    dek: "As AI enters search more deeply, the internet may feel less like a library and more like a helper with opinions.",
+    editions: {
+      plain: {
+        label: "Plain Edition",
+        range: "A1–A2",
+        readTime: "2 min read",
+        wordCount: 179,
+        blocks: [
+          { type: "p", parts: [
+            { t: "Searching online is something almost everyone does every day. In 2026, this simple habit is changing in a big way. Google says new AI features will let people use 'agents' just by asking a question." },
+          ] },
+          { type: "p", parts: [
+            { t: "This sounds easy and helpful, and for many people it will be. But it also changes how the internet feels. In the past, search showed you many links, and you chose where to click." },
+          ] },
+          { type: "p", parts: [
+            { t: "Now, AI search can read information for you and give you one clear answer. This saves time, but it also means people may compare fewer sources than before." },
+          ] },
+          { type: "p", parts: [
+            { t: "This is not a bad thing by itself. Many people feel tired from too much information and want simple guidance. But it is different from before, because an assistant does not just show information — it explains it." },
+          ] },
+          { type: "p", parts: [
+            { t: "This story matters because search is such a common habit. When a small daily habit changes, it can slowly change how people read, learn, and trust information." },
+          ] },
+        ],
+      },
+      polished: {
+        label: "Polished Edition",
+        range: "B1–B2",
+        readTime: "4 min read",
+        wordCount: 359,
+        blocks: [
+          { type: "p", parts: [
+            { t: "Search is one of the most familiar habits of digital life, which is why its recent transformation matters so much." },
+            { c: 1 },
+            { t: " Google says new AI features will allow people to use agents by simply asking a question. That sounds convenient, and for many users it will be. But it also changes the emotional feel of the internet." },
+          ] },
+          { type: "p", parts: [
+            { t: "For years, search mostly pointed outward, sending people toward a range of sources." },
+            { c: 2 },
+            { t: " AI-powered search can increasingly pull information inward, summarizing, sorting, and sometimes acting on the user's behalf. This saves time, but it also reduces the " },
+            { g: "friction", pos: "noun", def: "here, small difficulties or extra effort that slow something down" },
+            { t: " that once forced people to compare sources more actively. The internet becomes easier to use, yet perhaps less exploratory." },
+          ] },
+          { type: "p", parts: [
+            { t: "This is not automatically a negative change. Many users are overwhelmed by too much information and would welcome better guidance." },
+            { c: 3 },
+            { t: " Still, editorially, the bigger story is about how knowledge feels when delivered through a system that speaks with growing " },
+            { g: "confidence", pos: "noun", def: "a feeling or appearance of certainty about something" },
+            { t: ". An assistant is not the same as an index." },
+          ] },
+          { type: "p", parts: [
+            { t: "That distinction is exactly why this topic deserves space in a global publication like Sentivo. The question is not only what the tool can do, but how it may change reading, researching, and trusting information across countries and classrooms." },
+          ] },
+          { type: "p", parts: [
+            { t: "When a basic internet habit changes, the world changes " },
+            { g: "quietly", pos: "adverb", def: "in a way that is calm and does not attract much attention" },
+            { t: " with it." },
+          ] },
+        ],
+      },
+      precise: {
+        label: "Precise Edition",
+        range: "C1–C2",
+        readTime: "4 min read",
+        wordCount: 373,
+        blocks: [
+          { type: "p", parts: [
+            { t: "Search constitutes one of the most familiar habits of digital life, which is precisely why its recent transformation carries such weight." },
+            { c: 1 },
+            { t: " Google reports that new AI features will enable users to deploy agents simply by posing a question. That sounds convenient, and for many users it will indeed prove so. Yet it also alters the emotional texture of the internet." },
+          ] },
+          { type: "p", parts: [
+            { t: "For years, search predominantly directed users outward, dispatching them toward a range of sources." },
+            { c: 2 },
+            { t: " AI-powered search increasingly draws information inward — summarizing, sorting, and occasionally acting on the user's behalf. This conserves time, yet it also diminishes the friction that once compelled users to compare sources more " },
+            { g: "actively", pos: "adverb", def: "in a way that involves energy and effort, not passively" },
+            { t: ". The internet grows easier to navigate, yet perhaps less exploratory." },
+          ] },
+          { type: "p", parts: [
+            { t: "This is not inherently a detrimental shift. Many users, overwhelmed by informational excess, would welcome superior guidance." },
+            { c: 3 },
+            { t: " Still, editorially, the more consequential narrative concerns how knowledge feels when delivered through a system that speaks with mounting " },
+            { g: "authority", pos: "noun", def: "the quality of seeming confident, knowledgeable, and worth trusting" },
+            { t: ". An assistant is not " },
+            { g: "synonymous", pos: "adjective", def: "having the same or a very similar meaning as something else" },
+            { t: " with an index." },
+          ] },
+          { type: "p", parts: [
+            { t: "That distinction is precisely why this subject merits space in a global publication such as Sentivo. The question is not merely what the tool can accomplish, but how it may transform reading, research, and the trust placed in information across countries and classrooms." },
+          ] },
+          { type: "p", parts: [
+            { t: "When a foundational internet habit shifts, the world shifts quietly alongside it." },
+          ] },
+        ],
+      },
+    },
+    references: [
+      { domain: "google.com", name: "Google", headline: "A new era for AI Search" },
+      { domain: "reutersinstitute.politics.ox.ac.uk", name: "Reuters Institute (Oxford)", headline: "Journalism, media, and technology trends and predictions 2026" },
+      { domain: "microsoft.com", name: "Microsoft", headline: "What's next in AI: 7 trends to watch in 2026" },
+    ],
+    discussionGuide: [
+      {
+        q: "Do you usually click on several search results, or do you trust the first answer you see? Has this changed recently?",
+        follow: [],
+      },
+      {
+        q: "The article says an 'assistant is not the same as an index.' What do you think this means?",
+        follow: ["Do you think this difference matters for students?"],
+      },
+      {
+        q: "What are the benefits and risks of letting AI summarize information for you instead of reading multiple sources yourself?",
+        follow: [],
+      },
+    ],
+  },
+  {
+    slug: "hotels-show-travel-demand-resilience",
+    ready: true,
+    publishedAt: "2026-08-05",
+    emoji: "🏨",
+    variant: "work",
+    topicLabel: "Work & Business",
+    topicTitle: "Worklife, Business & Careers",
+    title: "Hotels Show That Travel Demand Still Has Money",
+    dek: "Strong hotel forecasts suggest that even under pressure, global consumers keep protecting the trips they care about most.",
+    editions: {
+      plain: {
+        label: "Plain Edition",
+        range: "A1–A2",
+        readTime: "2 min read",
+        wordCount: 173,
+        blocks: [
+          { type: "p", parts: [
+            { t: "In late July 2026, hotel company Hilton raised its forecast for how much money it expects to make this year. This is surprising because parts of the travel industry are having a hard time due to problems in some regions." },
+          ] },
+          { type: "p", parts: [
+            { t: "The reason is that luxury hotels are still very popular. This shows that people have not stopped traveling. Instead, they are choosing more carefully what kind of travel they spend money on." },
+          ] },
+          { type: "p", parts: [
+            { t: "This tells us something about how people think about money. When money feels tight, people may cut some costs, but they often protect experiences that feel special, like rest, celebration, or an important trip." },
+          ] },
+          { type: "p", parts: [
+            { t: "This is more than just a business story about numbers. It is also a human story about what people refuse to give up, even during difficult times." },
+          ] },
+          { type: "p", parts: [
+            { t: "Business news becomes more interesting when it shows not only where money is going, but what people still believe is worth spending it on." },
+          ] },
+        ],
+      },
+      polished: {
+        label: "Polished Edition",
+        range: "B1–B2",
+        readTime: "4 min read",
+        wordCount: 366,
+        blocks: [
+          { type: "p", parts: [
+            { t: "One revealing business story from late July 2026 came from the hotel sector." },
+            { c: 1 },
+            { t: " Reuters reported that Hilton raised its annual room-revenue growth forecast because of strong luxury hotel demand, even while parts of the travel market faced pressure from regional instability. This suggests that demand has not disappeared — it has become more " },
+            { g: "selective", pos: "adjective", def: "careful about choosing only some things, not everything" },
+            { t: "." },
+          ] },
+          { type: "p", parts: [
+            { t: "That distinction matters because it says something broader about consumer behavior." },
+            { c: 2 },
+            { t: " People may cut back in some areas, but many still protect certain experiences, especially travel tied to rest, status, or major life events. In economic terms, this is a business story. In human terms, it is about what people refuse to give up when money feels tighter." },
+          ] },
+          { type: "p", parts: [
+            { t: "For an editorial publication, that angle is more interesting than the earnings figure alone." },
+            { c: 3 },
+            { t: " Revenue forecasts tell only part of the story. The deeper question is what kinds of consumption remain emotionally " },
+            { g: "valuable", pos: "adjective", def: "important or worth a lot, not always in money" },
+            { t: " in uncertain times. Travel often survives not because it is cheap, but because it represents reward, escape, or identity." },
+          ] },
+          { type: "p", parts: [
+            { t: "This is the sort of work-and-business coverage that can feel fresh to Sentivo readers. It keeps the economic signal but translates it into everyday meaning." },
+          ] },
+          { type: "p", parts: [
+            { t: "Global business news becomes more compelling when it shows not just where money is moving, but what people still believe is worth " },
+            { g: "spending", pos: "verb", def: "using money to pay for things" },
+            { t: " it on." },
+          ] },
+        ],
+      },
+      precise: {
+        label: "Precise Edition",
+        range: "C1–C2",
+        readTime: "4 min read",
+        wordCount: 374,
+        blocks: [
+          { type: "p", parts: [
+            { t: "One revealing business narrative from late July 2026 emerged from the hotel sector." },
+            { c: 1 },
+            { t: " Reuters reported that Hilton raised its annual room-revenue growth forecast owing to robust luxury hotel demand, even as segments of the travel market faced pressure from regional instability. This suggests that demand has not evaporated — it has grown more " },
+            { g: "discriminating", pos: "adjective", def: "showing careful judgment when choosing between things" },
+            { t: "." },
+          ] },
+          { type: "p", parts: [
+            { t: "That distinction matters because it illuminates something broader about consumer behavior." },
+            { c: 2 },
+            { t: " Individuals may " },
+            { g: "retrench", pos: "verb", def: "reduce spending or activity, especially to save money" },
+            { t: " in certain areas, yet many continue to safeguard particular experiences, especially travel bound up with rest, status, or major life milestones. In economic terms, this constitutes a business story; in human terms, it concerns what people refuse to relinquish when finances grow tighter." },
+          ] },
+          { type: "p", parts: [
+            { t: "For an editorial publication, that angle proves considerably more compelling than the earnings figure alone." },
+            { c: 3 },
+            { t: " Revenue forecasts convey only part of the story; the deeper inquiry concerns what forms of consumption remain emotionally valuable amid uncertainty. Travel frequently endures not because it is inexpensive, but because it embodies reward, escape, or identity." },
+          ] },
+          { type: "p", parts: [
+            { t: "This constitutes precisely the sort of work-and-business coverage capable of feeling fresh to Sentivo readers, retaining the economic signal while translating it into everyday significance." },
+          ] },
+          { type: "p", parts: [
+            { t: "Global business news grows more compelling when it reveals not merely where capital is flowing, but what people still deem worth " },
+            { g: "allocating", pos: "verb", def: "giving or setting aside a resource, like money or time, for a particular purpose" },
+            { t: " it toward." },
+          ] },
+        ],
+      },
+    },
+    references: [
+      { domain: "reuters.com", name: "Reuters", headline: "Hilton raises annual room revenue growth forecast on strong luxury hotel demand" },
+      { domain: "reuters.com", name: "Reuters", headline: "Resilient tourists help US travel firms absorb Middle East shock" },
+      { domain: "reutersinstitute.politics.ox.ac.uk", name: "Reuters Institute (Oxford)", headline: "Journalism, media, and technology trends and predictions 2026" },
+    ],
+    discussionGuide: [
+      {
+        q: "Can you think of an experience — travel or otherwise — that you would keep spending money on even if you were trying to save money elsewhere?",
+        follow: [],
+      },
+      {
+        q: "Why do you think luxury travel can stay strong even when other parts of an economy struggle?",
+        follow: [],
+      },
+      {
+        q: "The article says travel can represent 'reward, escape, or identity.' Which of these matters most to you when you travel? Why?",
+        follow: [],
+      },
+    ],
+  },
+  {
+    slug: "education-funding-future-capacity",
+    ready: true,
+    publishedAt: "2026-08-05",
+    emoji: "🏛️",
+    variant: "work",
+    topicLabel: "Study & Skills",
+    topicTitle: "Study, School & Skills",
+    title: "Education Funding Stories Are Really About Future Capacity",
+    dek: "New funding and reform moves in Nigeria and beyond show how schooling is increasingly treated as long-range national infrastructure.",
+    editions: {
+      plain: {
+        label: "Plain Edition",
+        range: "A1–A2",
+        readTime: "2 min read",
+        wordCount: 180,
+        blocks: [
+          { type: "p", parts: [
+            { t: "In 2026, Nigeria started a big education program. It costs $552 million and is supported by the World Bank and another group called the Global Partnership for Education. The goal is to help more children go to school and learn well." },
+          ] },
+          { type: "p", parts: [
+            { t: "At the same time, UNESCO, a United Nations group for education, asked more countries to try 'debt-for-education swaps.' This means a country can reduce some of its debt if it agrees to spend more money on education instead." },
+          ] },
+          { type: "p", parts: [
+            { t: "These stories may sound technical, but they are really about the future. A school is not only a place to learn subjects. It is also where countries prepare future workers and citizens." },
+          ] },
+          { type: "p", parts: [
+            { t: "When governments spend money on schools, teachers, and access to education, they are also preparing their country to handle change in the future." },
+          ] },
+          { type: "p", parts: [
+            { t: "This story is useful because it shows education happening in different parts of the world, not only in famous education systems. It helps readers see learning as something connected to a country's whole future." },
+          ] },
+        ],
+      },
+      polished: {
+        label: "Polished Edition",
+        range: "B1–B2",
+        readTime: "4 min read",
+        wordCount: 373,
+        blocks: [
+          { type: "p", parts: [
+            { t: "Education funding stories can seem technical at first, but they often point to much bigger national priorities." },
+            { c: 1 },
+            { t: " Reuters reported that Nigeria launched a $552 million basic education program backed by the World Bank and the Global Partnership for Education, while UNESCO urged wider use of debt-for-education swaps internationally. Both developments suggest that education is being framed not as a side issue, but as essential capacity-building." },
+          ] },
+          { type: "p", parts: [
+            { t: "This framing is important for how readers understand study and skills. A school system is not only a place where students learn subjects." },
+            { c: 2 },
+            { t: " It is also where countries prepare future workers, citizens, and problem-solvers. When governments invest in access, teaching quality, and system strength, they are also investing in their ability to " },
+            { g: "adapt", pos: "verb", def: "to change in order to deal successfully with a new situation" },
+            { t: " later." },
+          ] },
+          { type: "p", parts: [
+            { t: "That long view gives the topic strong editorial value." },
+            { c: 3 },
+            { t: " Rather than treating education funding as dry " },
+            { g: "bureaucracy", pos: "noun", def: "the official, often complicated, system of running a government or organization" },
+            { t: ", Sentivo can present it as a story about what societies believe their future depends on. This makes readers more likely to care because the subject becomes concrete: today's classrooms are tomorrow's capacity." },
+          ] },
+          { type: "p", parts: [
+            { t: "For a globally minded publication, stories like this help widen the map beyond the usual education centers. They allow readers to see how different countries are trying to build " },
+            { g: "opportunity", pos: "noun", def: "a chance to do something or improve a situation" },
+            { t: " through learning." },
+          ] },
+          { type: "p", parts: [
+            { t: "That is exactly the kind of international awareness Sentivo can cultivate: education not as a local routine only, but as part of how nations imagine their next decade." },
+          ] },
+        ],
+      },
+      precise: {
+        label: "Precise Edition",
+        range: "C1–C2",
+        readTime: "4 min read",
+        wordCount: 380,
+        blocks: [
+          { type: "p", parts: [
+            { t: "Education funding narratives may appear technical at first glance, yet they frequently signal far larger national priorities." },
+            { c: 1 },
+            { t: " Reuters reported that Nigeria launched a $552 million basic education program backed by the World Bank and the Global Partnership for Education, while UNESCO urged broader adoption of debt-for-education swaps internationally. Both developments suggest that education is being framed not as a peripheral concern, but as essential capacity-building." },
+          ] },
+          { type: "p", parts: [
+            { t: "This framing matters considerably for how readers comprehend study and skills. A school system is not merely a venue where students absorb subjects." },
+            { c: 2 },
+            { t: " It is equally where nations cultivate future workers, citizens, and problem-solvers. When governments invest in access, instructional quality, and systemic resilience, they are simultaneously investing in their capacity to adapt " },
+            { g: "henceforth", pos: "adverb", def: "from this time onward, in the future" },
+            { t: "." },
+          ] },
+          { type: "p", parts: [
+            { t: "That extended horizon lends the topic considerable editorial value." },
+            { c: 3 },
+            { t: " Rather than treating education funding as arid bureaucracy, Sentivo can present it as a narrative about what societies believe their future " },
+            { g: "hinges", pos: "verb", def: "depends completely on something" },
+            { t: " upon. This renders readers more inclined to care, since the subject becomes concrete: today's classrooms constitute tomorrow's capacity." },
+          ] },
+          { type: "p", parts: [
+            { t: "For a globally attuned publication, such stories help broaden the map beyond the customary education centers, permitting readers to observe how disparate countries strive to construct opportunity through learning." },
+          ] },
+          { type: "p", parts: [
+            { t: "That is precisely the sort of international awareness Sentivo can cultivate: education construed not merely as local routine, but as integral to how nations envision their next decade." },
+          ] },
+        ],
+      },
+    },
+    references: [
+      { domain: "reuters.com", name: "Reuters", headline: "Nigeria launches $552 million education drive backed by World Bank, GPE" },
+      { domain: "reuters.com", name: "Reuters", headline: "UNESCO urges wider use of debt-for-education swaps" },
+      { domain: "unesco.org", name: "UNESCO", headline: "Education transforms lives" },
+    ],
+    discussionGuide: [
+      {
+        q: "Why do you think education is sometimes described as a country's 'future capacity,' not just a school subject?",
+        follow: [],
+      },
+      {
+        q: "What does a 'debt-for-education swap' seem to mean, based on the article? Why might this help some countries?",
+        follow: [],
+      },
+      {
+        q: "Can you think of an example from your own country where investment in education changed opportunities for young people?",
+        follow: [],
+      },
+    ],
+  },
+  {
+    slug: "culture-wants-more-meaning-2026",
+    ready: true,
+    publishedAt: "2026-08-05",
+    emoji: "🧠",
+    variant: "culture",
+    topicLabel: "Culture & Fun",
+    topicTitle: "Culture, Stories & Fun",
+    title: "The Biggest Cultural Trend May Be Wanting More Meaning",
+    dek: "As content multiplies, one of the clearest signals of 2026 is that many audiences want culture with more depth.",
+    editions: {
+      plain: {
+        label: "Plain Edition",
+        range: "A1–A2",
+        readTime: "2 min read",
+        wordCount: 180,
+        blocks: [
+          { type: "p", parts: [
+            { t: "In 2026, many people seem tired of fast, shallow content online. Trend experts say people want culture that feels slower, deeper, and smarter. This includes long articles, book references, small online communities, and being proud of loving a specific hobby." },
+          ] },
+          { type: "p", parts: [
+            { t: "This change makes sense. Experts say people feel stressed by fast political, economic, and technology changes. In a world that feels unstable, culture that rewards attention and thinking can feel comforting, not boring." },
+          ] },
+          { type: "p", parts: [
+            { t: "This does not mean people want less fun. It means the idea of 'fun' is changing. Many people now want entertainment that also makes them think or feel something real." },
+          ] },
+          { type: "p", parts: [
+            { t: "For a publication like Sentivo, this is good news. It means readers may want articles that both inform and entertain, not only one or the other." },
+          ] },
+          { type: "p", parts: [
+            { t: "This topic is useful because it lets writers ask a bigger question: what do popular trends tell us about how people feel right now?" },
+          ] },
+        ],
+      },
+      polished: {
+        label: "Polished Edition",
+        range: "B1–B2",
+        readTime: "4 min read",
+        wordCount: 365,
+        blocks: [
+          { type: "p", parts: [
+            { t: "A notable shift in 2026 culture is that people seem increasingly tired of endless surface-level content." },
+            { c: 1 },
+            { t: " Trend watchers describe a move toward slower, deeper, and more knowledge-rich cultural expression. That includes long-form writing, literary references, niche communities, and a growing respect for 'nerding out' in public. What looks at first like a small internet mood may actually reflect a wider hunger for meaning." },
+          ] },
+          { type: "p", parts: [
+            { t: "This change makes sense in the current media environment." },
+            { c: 2 },
+            { t: " The Reuters Institute says news and media audiences are reacting with " },
+            { g: "unease", pos: "noun", def: "a feeling of worry or discomfort" },
+            { t: " to rapid political, economic, and technological turbulence. In a world that often feels unstable and overproduced, cultural forms that reward attention and thought may start to feel more valuable. Depth becomes not only tasteful, but comforting." },
+          ] },
+          { type: "p", parts: [
+            { t: "That does not mean mass entertainment is disappearing. It means the definition of what feels exciting may be broadening." },
+            { c: 3 },
+            { t: " Audiences still want fun, but many also want intelligence, context, and emotional " },
+            { g: "weight", pos: "noun", def: "here, importance or seriousness, not physical heaviness" },
+            { t: ". For a publication like Sentivo, that is encouraging news: readers may be more ready than ever for articles that inform while entertaining." },
+          ] },
+          { type: "p", parts: [
+            { t: "This topic is useful because it gives culture writing a bigger purpose. Rather than merely listing trends, an editorial article can ask what those trends " },
+            { g: "reveal", pos: "verb", def: "to make known something that was hidden or not obvious" },
+            { t: " about how people feel now." },
+          ] },
+          { type: "p", parts: [
+            { t: "Culture becomes not just leisure content, but a map of collective mood." },
+          ] },
+        ],
+      },
+      precise: {
+        label: "Precise Edition",
+        range: "C1–C2",
+        readTime: "4 min read",
+        wordCount: 376,
+        blocks: [
+          { type: "p", parts: [
+            { t: "A notable shift in 2026 culture is a growing weariness with endless surface-level content." },
+            { c: 1 },
+            { t: " Trend observers describe a movement toward slower, deeper, and more knowledge-rich cultural expression, encompassing long-form writing, literary allusion, niche communities, and a growing esteem for openly 'nerding out.' What initially resembles a minor internet mood may in fact reflect a broader " },
+            { g: "yearning", pos: "noun", def: "a strong feeling of wanting or missing something" },
+            { t: " for meaning." },
+          ] },
+          { type: "p", parts: [
+            { t: "This shift is coherent within the current media environment." },
+            { c: 2 },
+            { t: " The Reuters Institute reports that news and media audiences are responding with disquiet to rapid political, economic, and technological " },
+            { g: "upheaval", pos: "noun", def: "a sudden, big change that causes disruption" },
+            { t: ". In a world that often feels unstable and overproduced, cultural forms that reward attention and reflection may increasingly feel valuable — depth becomes not merely tasteful, but consoling." },
+          ] },
+          { type: "p", parts: [
+            { t: "This does not portend the disappearance of mass entertainment; rather, it suggests that the definition of excitement is " },
+            { g: "broadening", pos: "verb", def: "becoming wider or including more things" },
+            { t: "." },
+            { c: 3 },
+            { t: " Audiences still crave enjoyment, yet many equally seek intelligence, context, and emotional weight. For a publication such as Sentivo, this is encouraging: readers may be more receptive than ever to articles that inform while entertaining." },
+          ] },
+          { type: "p", parts: [
+            { t: "This topic proves useful because it endows culture writing with a larger purpose. Rather than merely cataloguing trends, an editorial piece can interrogate what those trends disclose about the prevailing collective mood." },
+          ] },
+          { type: "p", parts: [
+            { t: "Culture thereby becomes not merely leisure content, but a cartography of collective sentiment." },
+          ] },
+        ],
+      },
+    },
+    references: [
+      { domain: "webershandwick.com", name: "Weber Shandwick", headline: "Predicting the Unpredictable: The Top 10 Cultural Trends and Moments of 2026" },
+      { domain: "reutersinstitute.politics.ox.ac.uk", name: "Reuters Institute (Oxford)", headline: "Overview and key findings of the 2026 Digital News Report" },
+      { domain: "reutersinstitute.politics.ox.ac.uk", name: "Reuters Institute (Oxford)", headline: "Journalism, media, and technology trends and predictions 2026" },
+    ],
+    discussionGuide: [
+      {
+        q: "Do you feel tired of fast, short content online? What kind of content do you actually enjoy spending time on?",
+        follow: [],
+      },
+      {
+        q: "The article says 'nerding out' in public is becoming more respected. Do you agree? Can you think of an example?",
+        follow: [],
+      },
+      {
+        q: "Why might people want culture with more 'depth' during uncertain or stressful times?",
+        follow: [],
+      },
+    ],
+  },
+  {
+    slug: "trust-online-becomes-social-question",
+    ready: true,
+    publishedAt: "2026-08-05",
+    emoji: "🧩",
+    variant: "culture",
+    topicLabel: "Society & Issues",
+    topicTitle: "People, Society & Issues",
+    title: "The New Social Question Is Who We Trust Online",
+    dek: "As news habits fragment across platforms, trust is becoming one of the most important global issues hiding inside everyday scrolling.",
+    editions: {
+      plain: {
+        label: "Plain Edition",
+        range: "A1–A2",
+        readTime: "2 min read",
+        wordCount: 178,
+        blocks: [
+          { type: "p", parts: [
+            { t: "In 2026, more people get news from social media and video apps than from TV or news websites. A big report from the Reuters Institute found this pattern happening around the world." },
+          ] },
+          { type: "p", parts: [
+            { t: "This is a big change. In the past, many people got news from the same few sources. Now, people get information from many different creators, feeds, and algorithms. This makes it harder for people to share the same understanding of events." },
+          ] },
+          { type: "p", parts: [
+            { t: "Because of this, trust has become more personal. People do not only ask, 'Is this information available?' They also ask, 'Do I trust the person or platform sharing it?'" },
+          ] },
+          { type: "p", parts: [
+            { t: "This matters because trust affects how people talk about health, education, technology, and other important topics. If trust becomes weaker, it becomes harder for communities to agree on anything." },
+          ] },
+          { type: "p", parts: [
+            { t: "This story is relatable because everyone already lives inside it. Almost everyone scrolls, compares information, and sometimes feels unsure what to believe." },
+          ] },
+        ],
+      },
+      polished: {
+        label: "Polished Edition",
+        range: "B1–B2",
+        readTime: "4 min read",
+        wordCount: 367,
+        blocks: [
+          { type: "p", parts: [
+            { t: "One of the most important social stories of 2026 may not look dramatic at first." },
+            { c: 1 },
+            { t: " It is the growing fragmentation of how people get information. The Reuters Institute's 2026 Digital News Report says social media and video networks are now the most widely used weekly sources of news globally, ahead of television and news organizations' own online properties. That shift changes not only media business models, but public trust itself." },
+          ] },
+          { type: "p", parts: [
+            { t: "When people learn about the world from scattered creators, feeds, clips, and algorithms, shared understanding can become harder to maintain." },
+            { c: 2 },
+            { t: " Audiences may feel informed while actually living inside very different information worlds. This makes trust less automatic and more personal. People increasingly ask not only whether information is available, but whether the person or platform delivering it feels " },
+            { g: "credible", pos: "adjective", def: "able to be believed or trusted" },
+            { t: "." },
+          ] },
+          { type: "p", parts: [
+            { t: "That is why this is really a society issue, not only a media issue." },
+            { c: 3 },
+            { t: " Trust shapes how communities discuss health, education, technology, and public problems. If trust weakens, collective decision-making becomes harder. That gives publications like Sentivo a meaningful role: not merely to report, but to help readers rebuild habits of clear, careful understanding." },
+          ] },
+          { type: "p", parts: [
+            { t: "This story can be especially stimulating because everyone already lives inside it. Readers know what it feels like to scroll, compare, doubt, and " },
+            { g: "react", pos: "verb", def: "to respond to something, often quickly or emotionally" },
+            { t: "." },
+          ] },
+          { type: "p", parts: [
+            { t: "Turning that everyday behavior into a social question helps make global media change feel personal, current, and worth paying attention to." },
+          ] },
+        ],
+      },
+      precise: {
+        label: "Precise Edition",
+        range: "C1–C2",
+        readTime: "4 min read",
+        wordCount: 375,
+        blocks: [
+          { type: "p", parts: [
+            { t: "One of the more consequential social narratives of 2026 may not initially appear dramatic." },
+            { c: 1 },
+            { t: " It concerns the growing fragmentation of how individuals obtain information. The Reuters Institute's 2026 Digital News Report indicates that social media and video networks now constitute the most widely used weekly sources of news globally, surpassing television and news organizations' own online properties. That shift transforms not only media business models, but public trust itself." },
+          ] },
+          { type: "p", parts: [
+            { t: "When individuals apprehend the world through scattered creators, feeds, clips, and algorithms, shared understanding grows harder to sustain." },
+            { c: 2 },
+            { t: " Audiences may feel informed while, in reality, inhabiting markedly divergent informational worlds. This renders trust less automatic and more personal — people increasingly interrogate not merely whether information exists, but whether its purveyor feels " },
+            { g: "credible", pos: "adjective", def: "able to be believed; trustworthy" },
+            { t: "." },
+          ] },
+          { type: "p", parts: [
+            { t: "This is precisely why the matter constitutes a societal issue rather than merely a media one." },
+            { c: 3 },
+            { t: " Trust shapes how communities deliberate on health, education, technology, and public dilemmas; should it erode, collective decision-making grows correspondingly more arduous. This confers upon publications like Sentivo a meaningful role: not solely to report, but to help readers " },
+            { g: "cultivate", pos: "verb", def: "to develop or improve something carefully over time" },
+            { t: " habits of clear, careful comprehension." },
+          ] },
+          { type: "p", parts: [
+            { t: "This narrative proves especially compelling precisely because everyone already inhabits it. Readers recognize what it feels like to scroll, compare, doubt, and react." },
+          ] },
+          { type: "p", parts: [
+            { t: "Transposing that quotidian behavior into a societal question renders global media transformation feel personal, current, and eminently worth one's attention." },
+          ] },
+        ],
+      },
+    },
+    references: [
+      { domain: "reutersinstitute.politics.ox.ac.uk", name: "Reuters Institute (Oxford)", headline: "Overview and key findings of the 2026 Digital News Report" },
+      { domain: "globalnation.inquirer.net", name: "Inquirer Global Nation", headline: "Social networks, online video outweigh traditional media in 2026" },
+      { domain: "cmbrinkmann.com", name: "C.M. Brinkmann", headline: "News Get 'Platformized'; Media Literacy Is As Important As Ever" },
+    ],
+    discussionGuide: [
+      {
+        q: "Where do you usually get your news — social media, TV, websites, or somewhere else? Has this changed in the last few years?",
+        follow: [],
+      },
+      {
+        q: "The article says people now ask 'Do I trust the person sharing this?' instead of just 'Is this true?' Why might that be a risky way to judge information?",
+        follow: [],
+      },
+      {
+        q: "What is one way you personally check if information online is trustworthy?",
+        follow: [],
+      },
+    ],
+  },
+  {
+    slug: "quiet-travel-changing-tourism",
+    ready: true,
+    publishedAt: "2026-08-05",
+    emoji: "🏕️",
+    variant: "planet",
+    topicLabel: "Travel & Places",
+    topicTitle: "Places, Travel & Journeys",
+    title: "Quiet Travel Shows How Tourism Desire Is Changing",
+    dek: "More travelers are choosing silence, space, and slower rhythms, suggesting that the dream trip of 2026 is less crowded and less loud.",
+    editions: {
+      plain: {
+        label: "Plain Edition",
+        range: "A1–A2",
+        readTime: "2 min read",
+        wordCount: 179,
+        blocks: [
+          { type: "p", parts: [
+            { t: "In 2026, more travelers want something different from their trips: quiet. A travel report described wealthy travelers choosing remote places with little or no phone signal, just to feel true silence." },
+          ] },
+          { type: "p", parts: [
+            { t: "Other travel trend reports also show that people want slower trips with real experiences, instead of rushing to see as many places as possible." },
+          ] },
+          { type: "p", parts: [
+            { t: "This tells us something about how people feel right now. In a busy, noisy world, quiet does not feel boring — it feels like relief. Some travelers do not want the destination with the most activities. They want the one that lets their mind rest." },
+          ] },
+          { type: "p", parts: [
+            { t: "This is an interesting way to think about travel writing. Instead of only listing popular places, we can ask: what do people's travel choices tell us about how they feel?" },
+          ] },
+          { type: "p", parts: [
+            { t: "This story is a nice way to talk about travel, feelings, and how the idea of a 'good trip' keeps changing." },
+          ] },
+        ],
+      },
+      polished: {
+        label: "Polished Edition",
+        range: "B1–B2",
+        readTime: "4 min read",
+        wordCount: 364,
+        blocks: [
+          { type: "p", parts: [
+            { t: "Travel trends in 2026 suggest a noticeable change in what many people want from a destination." },
+            { c: 1 },
+            { t: " A Los Angeles Times feature described elite travelers turning toward remote places, silence, and even poor phone signal as part of the appeal. Travel trend reports also point to slower, experience-based travel choices rather than rushed sightseeing alone. Together, these signals suggest that modern tourism desire is shifting from accumulation to atmosphere." },
+          ] },
+          { type: "p", parts: [
+            { t: "That shift says something important about the wider mood of the year." },
+            { c: 2 },
+            { t: " In an overloaded world, people increasingly value quiet not as emptiness, but as relief. Travel becomes a way to escape not only location, but " },
+            { g: "intensity", pos: "noun", def: "a very strong or extreme level of something, like emotion or pressure" },
+            { t: ". The best destination is not always the one with the most attractions — sometimes it is the one that gives the mind room to settle." },
+          ] },
+          { type: "p", parts: [
+            { t: "This is exactly the kind of travel story that works well in editorial form." },
+            { c: 3 },
+            { t: " Rather than merely naming trending destinations, the article can ask what those preferences reveal about the people choosing them. A travel trend becomes a social mood " },
+            { g: "indicator", pos: "noun", def: "a sign or signal that shows what is happening or how something is changing" },
+            { t: ". That makes the piece feel more thoughtful and more globally resonant." },
+          ] },
+          { type: "p", parts: [
+            { t: "For Sentivo readers, this approach also keeps travel coverage fresh. It shows places through values rather than only attractions." },
+          ] },
+          { type: "p", parts: [
+            { t: "The result is a story about movement, desire, fatigue, and imagination all at once — which is often what the most " },
+            { g: "memorable", pos: "adjective", def: "easy to remember because it is special or unusual" },
+            { t: " travel writing has been all along." },
+          ] },
+        ],
+      },
+      precise: {
+        label: "Precise Edition",
+        range: "C1–C2",
+        readTime: "4 min read",
+        wordCount: 374,
+        blocks: [
+          { type: "p", parts: [
+            { t: "Travel trends in 2026 suggest a discernible shift in what many people seek from a destination." },
+            { c: 1 },
+            { t: " A Los Angeles Times feature depicted elite travelers gravitating toward remote locales, silence, and even poor phone signal as constitutive of the appeal. Travel trend reports likewise point toward slower, experience-based travel choices rather than rushed sightseeing alone. Together, these signals suggest that contemporary tourism desire is shifting from accumulation toward atmosphere." },
+          ] },
+          { type: "p", parts: [
+            { t: "That shift illuminates something significant about the broader mood of the year." },
+            { c: 2 },
+            { t: " In an overloaded world, people increasingly prize quiet not as absence, but as respite. Travel becomes a means of escaping not merely location, but intensity — the optimal destination is not invariably the one boasting the most attractions, but sometimes the one affording the mind room to " },
+            { g: "settle", pos: "verb", def: "to become calm and stop being anxious or restless" },
+            { t: "." },
+          ] },
+          { type: "p", parts: [
+            { t: "This exemplifies precisely the sort of travel narrative that flourishes in editorial form." },
+            { c: 3 },
+            { t: " Rather than merely enumerating trending destinations, the piece can interrogate what those preferences reveal about the individuals selecting them — a travel trend thereby becomes a social-mood " },
+            { g: "barometer", pos: "noun", def: "something that shows or measures changes in a situation or mood" },
+            { t: ", rendering the piece more contemplative and globally resonant." },
+          ] },
+          { type: "p", parts: [
+            { t: "For Sentivo readers, this approach likewise keeps travel coverage vital, depicting places through values rather than attractions alone." },
+          ] },
+          { type: "p", parts: [
+            { t: "The result is a narrative concerning movement, desire, fatigue, and imagination all at once — precisely what the most indelible travel writing has always entailed." },
+          ] },
+        ],
+      },
+    },
+    references: [
+      { domain: "latimes.com", name: "Los Angeles Times", headline: "2026 Travel Trends: Why the World's Most Elite Travelers Are Escaping Into Silence" },
+      { domain: "cntraveler.com", name: "Condé Nast Traveler", headline: "2026 travel trends: slower, quieter, more intentional trips" },
+      { domain: "reutersinstitute.politics.ox.ac.uk", name: "Reuters Institute (Oxford)", headline: "Journalism, media, and technology trends and predictions 2026" },
+    ],
+    discussionGuide: [
+      {
+        q: "Would you enjoy a trip with no phone signal? Why or why not?",
+        follow: [],
+      },
+      {
+        q: "The article says some travelers want atmosphere more than activities. What matters more to you when you travel: doing a lot, or feeling a certain way?",
+        follow: [],
+      },
+      {
+        q: "Why do you think quiet and slowness feel valuable to some people right now?",
+        follow: [],
+      },
+    ],
+  },
 ];
 
 export function getArticle(slug) {
