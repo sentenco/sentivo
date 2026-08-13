@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { getArticle } from "./articlesData";
 import { useAuth } from "./AuthContext";
-import editorialBanner from "./assets/brand/editorial-banner.jpg";
 
 const EDITION_KEYS = ["plain", "polished", "precise"];
 const NAV_CATEGORIES = ["Articles", "Speaking", "Reading", "Grammar", "Vocabulary", "Writing", "Listening"];
@@ -175,8 +174,16 @@ export default function ArticleReader() {
 
       <SiteNav navigate={navigate} />
 
-      <div className="ar-banner">
-        <img src={editorialBanner} alt="Sentivo Editorial" />
+      <div className="ar-masthead">
+        <img className="ar-masthead-logo" src="/logo-sentivo.png" alt="" />
+        <div className="ar-masthead-kicker-row">
+          <span className="ar-masthead-rule" />
+          <span className="ar-masthead-kicker">The Sentivo</span>
+          <span className="ar-masthead-rule" />
+        </div>
+        <div className="ar-masthead-word">Gazette</div>
+        <div className="ar-masthead-underline" />
+        <div className="ar-masthead-tagline">News, Ideas &amp; Perspectives</div>
       </div>
 
       <div className="ar-article">
@@ -399,12 +406,43 @@ const CSS = `
   .ar-nav-login { display: none; }
 }
 
-.ar-banner {
+.ar-masthead {
   max-width: var(--content-w);
   margin: 0 auto;
-  overflow: hidden;
+  text-align: center;
+  padding: 28px 24px 18px;
 }
-.ar-banner img { width: 100%; height: auto; display: block; }
+.ar-masthead-logo { height: 24px; width: auto; display: inline-block; margin-bottom: 8px; }
+.ar-masthead-kicker-row { display: flex; align-items: center; justify-content: center; gap: 14px; margin-bottom: 3px; }
+.ar-masthead-rule { flex: 0 1 56px; height: 1px; background: #1B2A4A; opacity: 0.4; }
+.ar-masthead-kicker {
+  font-family: 'Source Serif 4', serif;
+  font-weight: 700;
+  font-size: 11.5px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: #1B2A4A;
+}
+.ar-masthead-word {
+  font-family: 'Playfair Display', serif;
+  font-weight: 900;
+  font-size: clamp(32px, 4.5vw, 46px);
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: #1B2A4A;
+  line-height: 1;
+  margin: 2px 0 8px;
+}
+.ar-masthead-underline { width: clamp(110px, 16%, 170px); height: 3px; background: #FF6B4A; margin: 0 auto 8px; }
+.ar-masthead-tagline {
+  font-family: 'Source Serif 4', serif;
+  font-weight: 600;
+  font-size: 10.5px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: #1B2A4A;
+  opacity: 0.65;
+}
 
 .ar-article { max-width: var(--content-w); margin: 0 auto; padding: 0 24px 60px; }
 

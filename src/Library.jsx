@@ -351,8 +351,15 @@ function ArticlesFeature({ navigate }) {
   return (
     <div className="gaz-page">
       <div className="gaz-masthead">
-        <span className="gaz-eyebrow">Sentivo · Articles</span>
-        <h1 className="gaz-nameplate">The Sentivo Gazette</h1>
+        <img className="gaz-masthead-logo" src="/logo-sentivo.png" alt="" />
+        <div className="gaz-masthead-kicker-row">
+          <span className="gaz-masthead-rule" />
+          <span className="gaz-masthead-kicker">The Sentivo</span>
+          <span className="gaz-masthead-rule" />
+        </div>
+        <h1 className="gaz-masthead-word">Gazette</h1>
+        <div className="gaz-masthead-underline" />
+        <div className="gaz-masthead-tagline">News, Ideas &amp; Perspectives</div>
         <div className="gaz-dateline">{dateline}</div>
       </div>
       <div className="gaz-rule-thick" />
@@ -1609,7 +1616,7 @@ export default function Library() {
 }
 
 const CSS = `
-@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&family=Quicksand:wght@500;600;700&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&family=Inter:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&family=Quicksand:wght@500;600;700&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@700;900&display=swap');
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
@@ -2282,22 +2289,38 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   border-radius: 22px;
   padding: clamp(26px, 3.6vw, 48px) clamp(20px, 3.2vw, 40px) clamp(30px, 4vw, 52px);
 }
-.gaz-masthead { text-align: center; padding-bottom: 6px; }
-.gaz-eyebrow {
-  display: block;
-  font-family: 'SF Mono', 'Menlo', Consolas, monospace;
-  font-size: clamp(10.5px, 0.9vw, 11px);
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-bottom: 10px;
-}
-.gaz-nameplate {
-  font-family: 'Fredoka', sans-serif;
+.gaz-masthead { text-align: center; padding-bottom: 10px; }
+.gaz-masthead-logo { height: 26px; width: auto; display: inline-block; margin-bottom: 9px; }
+.gaz-masthead-kicker-row { display: flex; align-items: center; justify-content: center; gap: 16px; margin-bottom: 3px; }
+.gaz-masthead-rule { flex: 0 1 64px; height: 1px; background: var(--ink); opacity: 0.4; }
+.gaz-masthead-kicker {
+  font-family: 'Source Serif 4', serif;
   font-weight: 700;
-  font-size: clamp(28px, 2.6vw, 38px);
-  margin: 0 0 4px;
+  font-size: 12px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
   color: var(--ink);
+}
+.gaz-masthead-word {
+  font-family: 'Playfair Display', serif;
+  font-weight: 900;
+  font-size: clamp(34px, 4.8vw, 48px);
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: var(--ink);
+  line-height: 1;
+  margin: 3px 0 9px;
+}
+.gaz-masthead-underline { width: clamp(110px, 16%, 170px); height: 3px; background: var(--coral); margin: 0 auto 9px; }
+.gaz-masthead-tagline {
+  font-family: 'Source Serif 4', serif;
+  font-weight: 600;
+  font-size: 11px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--ink);
+  opacity: 0.6;
+  margin-bottom: 12px;
 }
 .gaz-dateline { font-family: 'Quicksand', sans-serif; font-size: 10.5px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; }
 .gaz-rule-thick { height: 3px; background: var(--ink); margin-bottom: 2px; }
