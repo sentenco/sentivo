@@ -753,17 +753,26 @@ const CSS = `
 
 .cm-nav-tabs {
   display: flex; align-items: center; justify-content: center; gap: 0;
-  padding: 4px 28px; font-family: 'Quicksand', sans-serif;
+  padding: 4px 6px; font-family: 'Quicksand', sans-serif;
   overflow-x: auto; background: var(--card); border-bottom: 1px solid var(--hair);
 }
 .cm-nav-tab {
-  font-size: 12.5px; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase;
-  padding: 8px 16px; color: var(--ink); border: none; background: none; cursor: pointer;
-  white-space: nowrap; text-decoration: none;
+  font-size: 9.5px; font-weight: 800; letter-spacing: 0; text-transform: uppercase;
+  padding: 6px 5px; color: var(--ink); border: none; background: none; cursor: pointer;
+  white-space: nowrap; text-decoration: none; flex-shrink: 1;
 }
 .cm-nav-tab:not(:last-child) { border-right: 1px solid var(--hair); }
 .cm-nav-tab:hover { color: var(--coral); }
 .cm-nav-tab.is-active { background: var(--ink); color: #fff; border-radius: 999px; }
+
+@media (min-width: 680px) {
+  .cm-nav-tabs { padding: 4px 12px; }
+  .cm-nav-tab { font-size: 11px; letter-spacing: 0.02em; padding: 7px 8px; }
+}
+@media (min-width: 900px) {
+  .cm-nav-tabs { padding: 4px 28px; }
+  .cm-nav-tab { font-size: 12.5px; letter-spacing: 0.05em; padding: 8px 16px; }
+}
 
 .cm-page { padding: 24px; }
 .cm-stage { max-width: 640px; margin: 0 auto; display: flex; flex-direction: column; gap: 16px; }
