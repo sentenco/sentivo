@@ -215,6 +215,16 @@ export default function Community() {
   const [uploadingImage, setUploadingImage] = useState(false);
   const [uploadingFile, setUploadingFile] = useState(false);
   const [uploadError, setUploadError] = useState(null);
+  const [composerOpen, setComposerOpen] = useState(false);
+
+  function closeComposer() {
+    setComposerOpen(false);
+    setDraft("");
+    setPostType(null);
+    setUploadedImage(null);
+    setUploadedFile(null);
+    setUploadError(null);
+  }
 
   const [expanded, setExpanded] = useState(new Set());
   const [commentsByPost, setCommentsByPost] = useState({});
@@ -361,11 +371,7 @@ export default function Community() {
       .single();
     setPosting(false);
     if (!error && data) {
-      setDraft("");
-      setPostType(null);
-      setUploadedImage(null);
-      setUploadedFile(null);
-      setUploadError(null);
+      closeComposer();
       setPosts((prev) => [data, ...prev]);
     }
   }
@@ -478,10 +484,19 @@ export default function Community() {
               <p>Sign in to post and comment.</p>
               <button type="button" className="cm-btn" onClick={() => setAuthMode("login")}>Log in</button>
             </div>
+          ) : !composerOpen ? (
+            <button type="button" className="cm-composer cm-composer--collapsed" onClick={() => setComposerOpen(true)}>
+              <Avatar name={myName} email={user.email} />
+              <span className="cm-composer-pill">
+                What's on your mind{myName ? `, ${myName}` : ""}?
+              </span>
+              <span className="cm-composer-collapsed-hint">Share a tip, ask a question, or add a resource</span>
+            </button>
           ) : (
-            <div className="cm-composer">
+            <div className="cm-composer cm-composer--open">
               <Avatar name={myName} email={user.email} />
               <div className="cm-composer-body">
+                <span className="cm-composer-eyebrow">What's this about?</span>
                 <div className="cm-type-picker">
                   {POST_TYPES.map(({ key, label, Icon }) => (
                     <button
@@ -496,8 +511,9 @@ export default function Community() {
                   ))}
                 </div>
                 <textarea
+                  autoFocus
                   className="cm-composer-input"
-                  placeholder="Share something with other teachers…"
+                  placeholder="What's on your mind?"
                   value={draft}
                   onChange={(e) => setDraft(e.target.value)}
                   rows={3}
@@ -537,9 +553,12 @@ export default function Community() {
                     )}
                     {(uploadingImage || uploadingFile) && <span className="cm-uploading-hint">Uploading…</span>}
                   </div>
-                  <button type="button" className="cm-btn" disabled={!draft.trim() || posting} onClick={submitPost}>
-                    {posting ? "Posting…" : "Post"}
-                  </button>
+                  <div className="cm-composer-actions">
+                    <button type="button" className="cm-composer-cancel" onClick={closeComposer}>Cancel</button>
+                    <button type="button" className="cm-btn" disabled={!draft.trim() || posting} onClick={submitPost}>
+                      {posting ? "Posting…" : "Post"}
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -739,18 +758,42 @@ const CSS = `
 }
 
 .cm-composer {
-  display: flex; gap: 12px;
-  background: var(--card); border: 1px solid var(--hair); border-radius: 16px; padding: 16px;
-  box-shadow: 0 8px 22px rgba(43,42,74,0.05);
+  display: flex; gap: 12px; width: 100%;
+  background: var(--card); border: 1px solid var(--hair); border-top: 3px solid var(--coral);
+  border-radius: 16px; padding: 16px;
+  box-shadow: 0 8px 22px rgba(43,42,74,0.06);
 }
-.cm-composer-body { flex: 1; display: flex; flex-direction: column; gap: 10px; }
+.cm-composer--collapsed {
+  align-items: center; text-align: left; font: inherit; cursor: pointer;
+  flex-wrap: wrap; row-gap: 2px;
+}
+.cm-composer--collapsed:hover { border-top-color: var(--coral); box-shadow: 0 10px 26px rgba(43,42,74,0.09); }
+.cm-composer-pill {
+  font-family: 'Quicksand', sans-serif; font-weight: 700; font-size: 14.5px; color: var(--ink);
+}
+.cm-composer-collapsed-hint {
+  width: 100%; margin-left: 52px;
+  font-family: 'Quicksand', sans-serif; font-size: 12px; color: var(--muted);
+}
+.cm-composer--open { align-items: flex-start; }
+.cm-composer-body { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 10px; }
+.cm-composer-eyebrow {
+  font-family: 'Quicksand', sans-serif; font-size: 10.5px; font-weight: 800; letter-spacing: 0.06em;
+  text-transform: uppercase; color: var(--muted);
+}
 .cm-composer-input {
-  width: 100%; resize: vertical; min-height: 60px;
+  width: 100%; resize: vertical; min-height: 74px;
   border: 1px solid var(--hair); border-radius: 12px; padding: 10px 12px;
-  font: inherit; font-size: 14px; color: var(--ink); background: #FDFCFA;
+  font: inherit; font-size: 14.5px; color: var(--ink); background: #FDFCFA;
 }
 .cm-composer-input:focus { outline: none; border-color: var(--coral); }
-.cm-composer-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.cm-composer-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.cm-composer-actions { display: flex; align-items: center; gap: 10px; }
+.cm-composer-cancel {
+  font-family: 'Quicksand', sans-serif; font-weight: 700; font-size: 13px; color: var(--muted);
+  background: none; border: none; cursor: pointer; padding: 6px 4px;
+}
+.cm-composer-cancel:hover { color: var(--ink); }
 
 .cm-composer-attach-btns { display: flex; align-items: center; gap: 6px; }
 .cm-attach-btn {
