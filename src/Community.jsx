@@ -7,6 +7,7 @@ import { timeAgo } from "./slideDeckTypes";
 import communityBannerImg from "./assets/community/banner.jpg";
 
 const ADMIN_EMAIL = "caldrin1999@gmail.com";
+const NAV_CATEGORIES = ["Articles", "Speaking", "Reading", "Grammar", "Vocabulary", "Writing", "Listening"];
 const AVATAR_HUES = ["#FF6B4A", "#7C5CFC", "#16BFAE", "#E0A72E", "#FF8A4C"];
 
 // ESL-teaching conversation starters -- one per day, same deterministic
@@ -454,6 +455,21 @@ export default function Community() {
         <h1 className="cm-topbar-title">Teacher Community</h1>
       </header>
 
+      <nav className="cm-nav-tabs">
+        <button type="button" className="cm-nav-tab" onClick={() => navigate("/library")}>Today</button>
+        {NAV_CATEGORIES.map((cat) => (
+          <button
+            key={cat}
+            type="button"
+            className="cm-nav-tab"
+            onClick={() => navigate(`/library?cat=${encodeURIComponent(cat)}`)}
+          >
+            {cat}
+          </button>
+        ))}
+        <button type="button" className="cm-nav-tab is-active">Community</button>
+      </nav>
+
       <div className="cm-page">
         <div className="cm-stage">
           <div className="cm-banner-block">
@@ -734,6 +750,20 @@ const CSS = `
 }
 .cm-brand-logo { height: 24px; width: auto; display: block; margin-right: -3px; }
 .cm-topbar-title { font-family: 'Fredoka', sans-serif; font-size: 16px; font-weight: 600; color: var(--ink); letter-spacing: 0.015em; margin: 0; }
+
+.cm-nav-tabs {
+  display: flex; align-items: center; justify-content: center; gap: 0;
+  padding: 4px 28px; font-family: 'Quicksand', sans-serif;
+  overflow-x: auto; background: var(--card); border-bottom: 1px solid var(--hair);
+}
+.cm-nav-tab {
+  font-size: 12.5px; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase;
+  padding: 8px 16px; color: var(--ink); border: none; background: none; cursor: pointer;
+  white-space: nowrap; text-decoration: none;
+}
+.cm-nav-tab:not(:last-child) { border-right: 1px solid var(--hair); }
+.cm-nav-tab:hover { color: var(--coral); }
+.cm-nav-tab.is-active { background: var(--ink); color: #fff; border-radius: 999px; }
 
 .cm-page { padding: 24px; }
 .cm-stage { max-width: 640px; margin: 0 auto; display: flex; flex-direction: column; gap: 16px; }
