@@ -157,13 +157,27 @@ function MiniCalendar() {
   );
 }
 
-function TodayHero() {
+function heroInitials(name, email) {
+  const source = name?.trim() || email?.split("@")[0] || "";
+  const parts = source.replace(/[._-]+/g, " ").trim().split(/\s+/).filter(Boolean);
+  if (parts.length === 0) return "T";
+  return (parts[0][0] + (parts[1]?.[0] || "")).toUpperCase();
+}
+
+function TodayHero({ navigate }) {
+  const { user } = useAuth();
   const [name, setName] = useState(() => {
     return localStorage.getItem("sentivo_teacher_name") || "";
   });
   const [editing, setEditing] = useState(false);
   const [draft, setDraft] = useState(name);
   const [now, setNow] = useState(new Date());
+
+  const [composerOpen, setComposerOpen] = useState(false);
+  const [postDraft, setPostDraft] = useState("");
+  const [posting, setPosting] = useState(false);
+  const [justPosted, setJustPosted] = useState(false);
+  const [authMode, setAuthMode] = useState(null);
 
   useEffect(() => {
     localStorage.setItem("sentivo_teacher_name", name);
@@ -176,10 +190,6 @@ function TodayHero() {
 
   const hour = now.getHours();
   const greeting = hour < 12 ? "Good morning" : hour < 17 ? "Good afternoon" : "Good evening";
-  const h12 = ((hour + 11) % 12) + 1;
-  const mm = String(now.getMinutes()).padStart(2, "0");
-  const ampm = hour >= 12 ? "PM" : "AM";
-  const dateLabel = now.toLocaleDateString(undefined, { weekday: "short", month: "short", day: "numeric" });
 
   function startEditing() {
     setDraft(name);
@@ -188,6 +198,30 @@ function TodayHero() {
   function save() {
     setName(draft.trim());
     setEditing(false);
+  }
+
+  function openComposer() {
+    if (!user) { setAuthMode("login"); return; }
+    setComposerOpen(true);
+  }
+  function closeComposer() {
+    setComposerOpen(false);
+    setPostDraft("");
+  }
+  async function submitPost() {
+    const content = postDraft.trim();
+    if (!content || !user || posting) return;
+    setPosting(true);
+    const { error } = await supabase
+      .from("community_posts")
+      .insert({ author_id: user.id, author_email: user.email, content, status: "pending" });
+    setPosting(false);
+    if (!error) {
+      setPostDraft("");
+      setComposerOpen(false);
+      setJustPosted(true);
+      setTimeout(() => setJustPosted(false), 5000);
+    }
   }
 
   return (
@@ -218,17 +252,43 @@ function TodayHero() {
           )}
         </h1>
         <p className="td-hero-sub">Let's make today a great teaching day.</p>
-        <div className="td-chip-row">
-          <span className="td-chip">
-            <span className="td-chip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="5" width="18" height="16" rx="2" /><path d="M8 3v4M16 3v4M3 10h18" /></svg></span>
-            {dateLabel}
-          </span>
-          <span className="td-chip">
-            <span className="td-chip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="9" /><path d="M12 7v5l3 2" /></svg></span>
-            {h12}:{mm} {ampm}
-          </span>
+
+        <div className="td-composer">
+          <div className="td-composer-avatar">{heroInitials(name, user?.email)}</div>
+          {!composerOpen ? (
+            <button type="button" className="td-composer-pill" onClick={openComposer}>
+              What's on your mind{name ? `, ${name}` : ""}?
+            </button>
+          ) : (
+            <div className="td-composer-box">
+              <textarea
+                autoFocus
+                className="td-composer-input"
+                value={postDraft}
+                onChange={(e) => setPostDraft(e.target.value)}
+                placeholder="Share something with other teachers…"
+                rows={3}
+                maxLength={2000}
+              />
+              <div className="td-composer-actions">
+                <span className="td-composer-hint">Reviewed before it goes live</span>
+                <div className="td-composer-btns">
+                  <button type="button" className="td-composer-cancel" onClick={closeComposer}>Cancel</button>
+                  <button type="button" className="td-composer-post" disabled={!postDraft.trim() || posting} onClick={submitPost}>
+                    {posting ? "Posting…" : "Post"}
+                  </button>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
+        {justPosted && <p className="td-composer-confirm">Posted — awaiting approval.</p>}
+        <button type="button" className="td-composer-viewlink" onClick={() => navigate("/library/community")}>
+          See what other teachers are sharing →
+        </button>
       </div>
+
+      {authMode && <AuthForm mode={authMode} onClose={() => setAuthMode(null)} />}
     </div>
   );
 }
@@ -792,53 +852,6 @@ function openFeedbackGenerator() {
   window.open("/library/feedback", "_blank");
 }
 
-function CommunityWidget({ navigate }) {
-  const { user } = useAuth();
-  const isAdmin = user?.email?.toLowerCase() === "caldrin1999@gmail.com";
-  const [latest, setLatest] = useState(null);
-  const [pendingCount, setPendingCount] = useState(0);
-
-  useEffect(() => {
-    let active = true;
-    async function load() {
-      const { data } = await supabase
-        .from("community_posts")
-        .select("content, author_email, created_at")
-        .eq("status", "approved")
-        .order("created_at", { ascending: false })
-        .limit(1);
-      if (active) setLatest((data && data[0]) || null);
-      if (isAdmin) {
-        const { count } = await supabase
-          .from("community_posts")
-          .select("id", { count: "exact", head: true })
-          .eq("status", "pending");
-        if (active) setPendingCount(count || 0);
-      }
-    }
-    load();
-    return () => { active = false; };
-  }, [isAdmin]);
-
-  return (
-    <button type="button" className="td-community-card" onClick={() => navigate("/library/community")}>
-      <div className="td-community-icon">💬</div>
-      <div className="td-community-body">
-        <div className="td-community-title">
-          Teacher Community
-          {isAdmin && pendingCount > 0 && <span className="td-community-badge">{pendingCount} pending</span>}
-        </div>
-        <p className="td-community-preview">
-          {latest
-            ? `“${latest.content.length > 90 ? `${latest.content.slice(0, 90)}…` : latest.content}”`
-            : "Share a tip or ask a question with other teachers."}
-        </p>
-      </div>
-      <span className="td-community-cta">Open <span className="arr">→</span></span>
-    </button>
-  );
-}
-
 function TodayFeature({ tools, navigate }) {
   const today = new Date();
   const dayIndex = daysSince(today);
@@ -869,7 +882,7 @@ function TodayFeature({ tools, navigate }) {
     <div className="gc-dashboard">
       <div className="td-body">
       <div className="td-main">
-        <TodayHero />
+        <TodayHero navigate={navigate} />
 
         <div className="td-correction-card">
           <div className="td-dc-label">
@@ -918,8 +931,6 @@ function TodayFeature({ tools, navigate }) {
             <div className="td-action-title">Slide Builder</div>
           </button>
         </div>
-
-        <CommunityWidget navigate={navigate} />
 
         {recommended.length > 0 && (
           <div className="gc-reclessons">
@@ -1921,24 +1932,54 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   align-items: center;
 }
 .td-hero-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center right; }
-.td-hero-left { position: relative; z-index: 1; max-width: 480px; padding: 32px 0 32px 34px; }
+.td-hero-left { position: relative; z-index: 1; max-width: 480px; min-width: 0; padding: 32px 0 32px 34px; }
 .td-hero-title { font-family: 'Fredoka', sans-serif; font-size: 28px; font-weight: 600; margin: 0; line-height: 1.2; color: var(--ink); }
 .td-hero-title .who { color: var(--coral); }
 .td-hero-btn { display: block; background: none; border: none; padding: 0; margin: 0; text-align: left; font: inherit; color: inherit; cursor: pointer; }
 .td-hero-editing { display: inline-block; }
 .td-hero-input { font: inherit; color: var(--coral); border: none; border-bottom: 2px solid var(--coral); background: transparent; outline: none; width: 9ch; }
 .td-hero-sub { font-family: 'Quicksand', sans-serif; font-size: 14.5px; color: var(--ink-soft, var(--muted)); margin: 10px 0 18px; }
-.td-chip-row { display: none; gap: 10px; flex-wrap: wrap; }
-.td-chip {
-  display: inline-flex; align-items: center; gap: 9px;
-  background: var(--card);
-  border-radius: 999px;
-  padding: 8px 16px 8px 8px;
-  font-family: 'Quicksand', sans-serif; font-size: 13px; font-weight: 700; color: var(--ink);
-  box-shadow: 0 4px 14px rgba(43,42,74,0.10);
+
+/* ── Hero "what's on your mind" composer ── */
+.td-composer { display: flex; align-items: center; gap: 10px; max-width: 400px; }
+.td-composer-avatar {
+  flex-shrink: 0; width: 38px; height: 38px; border-radius: 50%;
+  background: var(--coral); color: #fff; font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 13px;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 12px rgba(43,42,74,0.12);
 }
-.td-chip-icon { width: 26px; height: 26px; border-radius: 50%; background: var(--ink); color: #fff; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-.td-chip-icon svg { width: 13px; height: 13px; }
+.td-composer-pill {
+  flex: 1; min-width: 0; text-align: left; font-family: 'Quicksand', sans-serif; font-size: 13.5px; font-weight: 600; color: var(--muted);
+  background: var(--card); border: none; border-radius: 999px; padding: 11px 18px; cursor: pointer;
+  box-shadow: 0 4px 14px rgba(43,42,74,0.10);
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.td-composer-pill:hover { color: var(--ink); }
+.td-composer-box {
+  flex: 1; min-width: 0; background: var(--card); border-radius: 16px; padding: 12px;
+  box-shadow: 0 6px 20px rgba(43,42,74,0.12);
+  display: flex; flex-direction: column; gap: 8px;
+}
+.td-composer-input {
+  width: 100%; resize: vertical; min-height: 54px; border: none; outline: none;
+  font: inherit; font-family: 'Quicksand', sans-serif; font-size: 13.5px; color: var(--ink); background: transparent;
+}
+.td-composer-actions { display: flex; flex-direction: column; align-items: stretch; gap: 8px; }
+.td-composer-hint { font-family: 'Quicksand', sans-serif; font-size: 10.5px; color: var(--muted); }
+.td-composer-btns { display: flex; justify-content: flex-end; gap: 8px; flex-wrap: wrap; }
+.td-composer-cancel, .td-composer-post {
+  font-family: 'Quicksand', sans-serif; font-weight: 700; font-size: 12.5px;
+  border: none; border-radius: 999px; padding: 7px 16px; cursor: pointer;
+}
+.td-composer-cancel { background: none; color: var(--muted); }
+.td-composer-post { background: var(--coral); color: #fff; }
+.td-composer-post:disabled { opacity: 0.45; cursor: default; }
+.td-composer-confirm { font-family: 'Quicksand', sans-serif; font-size: 12px; font-weight: 700; color: var(--coral); margin: 8px 0 0; }
+.td-composer-viewlink {
+  display: block; background: none; border: none; padding: 0; margin: 8px 0 0; cursor: pointer;
+  font-family: 'Quicksand', sans-serif; font-size: 12px; font-weight: 700; color: var(--ink-soft, var(--muted));
+}
+.td-composer-viewlink:hover { color: var(--coral); }
 
 /* ── Daily correction ── */
 .td-correction-card {
@@ -2016,33 +2057,6 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .td-action-title { font-family: 'Fredoka', sans-serif; font-size: 13px; font-weight: 600; line-height: 1.25; color: var(--ink); }
 .td-action-card.is-soon { opacity: 0.7; cursor: default; }
 
-/* ── Community widget ── */
-.td-community-card {
-  display: flex; align-items: center; gap: 14px; width: 100%;
-  background: var(--card); border: none; border-radius: 18px; padding: 16px 18px;
-  box-shadow: 0 8px 24px rgba(43,42,74,0.05);
-  font: inherit; text-align: left; cursor: pointer; color: inherit;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
-}
-.td-community-card:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(43,42,74,0.10); }
-.td-community-icon {
-  flex-shrink: 0; width: 44px; height: 44px; border-radius: 12px;
-  background: var(--coral-pale); display: flex; align-items: center; justify-content: center; font-size: 20px;
-}
-.td-community-body { flex: 1; min-width: 0; }
-.td-community-title { display: flex; align-items: center; gap: 8px; font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 14.5px; color: var(--ink); }
-.td-community-badge {
-  font-family: 'Quicksand', sans-serif; font-size: 10px; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase;
-  color: #fff; background: var(--coral); border-radius: 999px; padding: 3px 9px;
-}
-.td-community-preview {
-  font-family: 'Quicksand', sans-serif; font-size: 12.5px; color: var(--muted);
-  margin: 3px 0 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
-}
-.td-community-cta { flex-shrink: 0; font-family: 'Quicksand', sans-serif; font-weight: 700; font-size: 12.5px; color: var(--coral); }
-.td-community-cta .arr { display: inline-block; transition: transform 0.15s ease; }
-.td-community-card:hover .arr { transform: translateX(3px); }
-
 /* ── Quote banner ── */
 .td-quote-banner { border-radius: 24px; overflow: hidden; line-height: 0; }
 .td-quote-banner img { width: 100%; height: auto; display: block; }
@@ -2051,7 +2065,6 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 @media (max-width: 860px) {
   .td-body { grid-template-columns: 1fr; }
   .gc-sidebar { display: none; }
-  .td-chip-row { display: flex; }
 }
 @media (max-width: 560px) {
   .td-actions-grid { grid-template-columns: repeat(2, 1fr); }
