@@ -170,13 +170,6 @@ const HERO_TAGLINES = [
   "Today's a good day to inspire someone.",
 ];
 
-function heroInitials(name, email) {
-  const source = name?.trim() || email?.split("@")[0] || "";
-  const parts = source.replace(/[._-]+/g, " ").trim().split(/\s+/).filter(Boolean);
-  if (parts.length === 0) return "T";
-  return (parts[0][0] + (parts[1]?.[0] || "")).toUpperCase();
-}
-
 function TodayHero({ navigate }) {
   const { user } = useAuth();
   const [name, setName] = useState(() => {
@@ -269,7 +262,6 @@ function TodayHero({ navigate }) {
         <p className="td-hero-sub">{tagline}</p>
 
         <div className="td-composer">
-          <div className="td-composer-avatar">{heroInitials(name, user?.email)}</div>
           {!composerOpen ? (
             <button type="button" className="td-composer-pill" onClick={openComposer}>
               What's on your mind{name ? `, ${name}` : ""}?
@@ -1956,18 +1948,12 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .td-hero-sub { font-family: 'Quicksand', sans-serif; font-size: 14.5px; color: var(--ink-soft, var(--muted)); margin: 10px 0 14px; }
 
 /* ── Hero "what's on your mind" composer ── */
-.td-composer { display: flex; align-items: center; gap: 8px; max-width: 240px; }
-.td-composer-avatar {
-  flex-shrink: 0; width: 38px; height: 38px; border-radius: 50%;
-  background: var(--coral); color: #fff; font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 13px;
-  display: flex; align-items: center; justify-content: center;
-  box-shadow: 0 4px 12px rgba(43,42,74,0.12);
-}
+.td-composer { display: flex; max-width: 200px; }
 .td-composer-pill {
   flex: 1; min-width: 0; text-align: left; font-family: 'Quicksand', sans-serif; font-size: 13.5px; font-weight: 600; color: var(--muted);
-  background: var(--card); border: none; border-radius: 999px; padding: 11px 18px; cursor: pointer;
+  background: var(--card); border: none; border-radius: 16px; padding: 11px 16px; cursor: pointer;
   box-shadow: 0 4px 14px rgba(43,42,74,0.10);
-  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  white-space: normal; line-height: 1.3;
 }
 .td-composer-pill:hover { color: var(--ink); }
 .td-composer-box {
