@@ -170,6 +170,77 @@ const HERO_TAGLINES = [
   "Today's a good day to inspire someone.",
 ];
 
+const TD_AVATAR_HUES = ["#FF6B4A", "#7C5CFC", "#16BFAE", "#E0A72E", "#FF8A4C"];
+
+function tdAvatarHue(email) {
+  if (!email) return TD_AVATAR_HUES[0];
+  let hash = 0;
+  for (let i = 0; i < email.length; i++) hash = (hash * 31 + email.charCodeAt(i)) >>> 0;
+  return TD_AVATAR_HUES[hash % TD_AVATAR_HUES.length];
+}
+
+function tdInitials(name, email) {
+  const source = (name && name.trim()) || (email ? email.split("@")[0] : "") || "";
+  const parts = source.replace(/[._-]+/g, " ").trim().split(/\s+/).filter(Boolean);
+  if (parts.length === 0) return "T";
+  return (parts[0][0] + (parts[1]?.[0] || "")).toUpperCase();
+}
+
+function TdBulbIcon() {
+  return (
+    <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M10 2.3a5.4 5.4 0 0 0-3 9.9c.6.4 1 1.2 1 1.9v.4h4v-.4c0-.7.4-1.5 1-1.9a5.4 5.4 0 0 0-3-9.9Z" />
+      <path d="M8 17.7h4M8.7 15.2h2.6" />
+    </svg>
+  );
+}
+function TdQuestionIcon() {
+  return (
+    <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M7.4 7.3a2.6 2.6 0 1 1 3.9 2.3c-.8.5-1.3 1-1.3 1.9v.3" />
+      <circle cx="10" cy="14.8" r="0.9" fill="currentColor" stroke="none" />
+    </svg>
+  );
+}
+function TdLinkIcon() {
+  return (
+    <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M8.3 11.7a3 3 0 0 0 4.2 0l2.2-2.2a3 3 0 0 0-4.2-4.2l-1 1" />
+      <path d="M11.7 8.3a3 3 0 0 0-4.2 0L5.3 10.5a3 3 0 0 0 4.2 4.2l1-1" />
+    </svg>
+  );
+}
+function TdImageIcon() {
+  return (
+    <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <rect x="2.3" y="3.5" width="15.4" height="13" rx="2" />
+      <circle cx="7" cy="8" r="1.3" />
+      <path d="M3 14.5l4.3-4.3 3 3 2-2 4.7 4.7" />
+    </svg>
+  );
+}
+function TdFileIcon() {
+  return (
+    <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M5.3 2.5h6l3.4 3.4v11.1a1 1 0 0 1-1 1H5.3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1Z" />
+      <path d="M11.3 2.5v3.4h3.4" />
+    </svg>
+  );
+}
+function TdCloseIcon() {
+  return (
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" aria-hidden="true">
+      <path d="M4 4l8 8M12 4l-8 8" />
+    </svg>
+  );
+}
+
+const TD_POST_TYPES = [
+  { key: "tip", label: "Tip", Icon: TdBulbIcon },
+  { key: "question", label: "Question", Icon: TdQuestionIcon },
+  { key: "resource", label: "Resource", Icon: TdLinkIcon },
+];
+
 function TodayHero({ navigate }) {
   const { user } = useAuth();
   const [name, setName] = useState(() => {
@@ -181,6 +252,12 @@ function TodayHero({ navigate }) {
 
   const [composerOpen, setComposerOpen] = useState(false);
   const [postDraft, setPostDraft] = useState("");
+  const [postType, setPostType] = useState(null);
+  const [uploadedImage, setUploadedImage] = useState(null);
+  const [uploadedFile, setUploadedFile] = useState(null);
+  const [uploadingImage, setUploadingImage] = useState(false);
+  const [uploadingFile, setUploadingFile] = useState(false);
+  const [uploadError, setUploadError] = useState(null);
   const [posting, setPosting] = useState(false);
   const [justPosted, setJustPosted] = useState(false);
   const [authMode, setAuthMode] = useState(null);
@@ -215,18 +292,60 @@ function TodayHero({ navigate }) {
   function closeComposer() {
     setComposerOpen(false);
     setPostDraft("");
+    setPostType(null);
+    setUploadedImage(null);
+    setUploadedFile(null);
+    setUploadError(null);
   }
+
+  async function handleImageUpload(e) {
+    const file = e.target.files?.[0];
+    e.target.value = "";
+    if (!file || !user) return;
+    setUploadError(null);
+    setUploadingImage(true);
+    const path = `${user.id}/${crypto.randomUUID()}-${file.name}`;
+    const { error } = await supabase.storage.from("community-uploads").upload(path, file);
+    setUploadingImage(false);
+    if (error) { setUploadError(error.message || "Image upload failed."); return; }
+    const { data: pub } = supabase.storage.from("community-uploads").getPublicUrl(path);
+    setUploadedImage({ url: pub.publicUrl });
+  }
+
+  async function handleFileUpload(e) {
+    const file = e.target.files?.[0];
+    e.target.value = "";
+    if (!file || !user) return;
+    setUploadError(null);
+    setUploadingFile(true);
+    const path = `${user.id}/${crypto.randomUUID()}-${file.name}`;
+    const { error } = await supabase.storage.from("community-uploads").upload(path, file);
+    setUploadingFile(false);
+    if (error) { setUploadError(error.message || "File upload failed."); return; }
+    const { data: pub } = supabase.storage.from("community-uploads").getPublicUrl(path);
+    setUploadedFile({ url: pub.publicUrl, name: file.name });
+  }
+
   async function submitPost() {
     const content = postDraft.trim();
     if (!content || !user || posting) return;
     setPosting(true);
     const { error } = await supabase
       .from("community_posts")
-      .insert({ author_id: user.id, author_email: user.email, author_name: name.trim() || null, content, status: "approved" });
+      .insert({
+        author_id: user.id,
+        author_email: user.email,
+        author_name: name.trim() || null,
+        content,
+        post_type: postType,
+        image_url: uploadedImage?.url || null,
+        file_url: uploadedFile?.url || null,
+        file_name: uploadedFile?.name || null,
+        status: "approved",
+      });
     setPosting(false);
     if (!error) {
-      setPostDraft("");
-      setComposerOpen(false);
+      closeComposer();
       setJustPosted(true);
       setTimeout(() => setJustPosted(false), 5000);
     }
@@ -261,13 +380,32 @@ function TodayHero({ navigate }) {
         </h1>
         <p className="td-hero-sub">{tagline}</p>
 
-        <div className="td-composer">
+        <div className={`td-composer${composerOpen ? " is-open" : ""}`}>
           {!composerOpen ? (
             <button type="button" className="td-composer-pill" onClick={openComposer}>
               What's on your mind{name ? `, ${name}` : ""}?
             </button>
           ) : (
             <div className="td-composer-box">
+              <div className="td-composer-head">
+                <div className="td-composer-avatar" style={{ background: tdAvatarHue(user?.email) }}>
+                  {tdInitials(name, user?.email)}
+                </div>
+                <span className="td-composer-eyebrow">What's this about?</span>
+              </div>
+              <div className="td-composer-types">
+                {TD_POST_TYPES.map(({ key, label, Icon }) => (
+                  <button
+                    key={key}
+                    type="button"
+                    className={`td-composer-type-pill${postType === key ? " is-active" : ""}`}
+                    onClick={() => setPostType(postType === key ? null : key)}
+                  >
+                    <Icon />
+                    {label}
+                  </button>
+                ))}
+              </div>
               <textarea
                 autoFocus
                 className="td-composer-input"
@@ -277,11 +415,46 @@ function TodayHero({ navigate }) {
                 rows={3}
                 maxLength={2000}
               />
+
+              {uploadedImage && (
+                <div className="td-attach-preview">
+                  <img src={uploadedImage.url} alt="" />
+                  <button type="button" className="td-attach-remove" title="Remove image" onClick={() => setUploadedImage(null)}>
+                    <TdCloseIcon />
+                  </button>
+                </div>
+              )}
+              {uploadedFile && (
+                <div className="td-attach-file-chip">
+                  <TdFileIcon />
+                  <span>{uploadedFile.name}</span>
+                  <button type="button" className="td-attach-remove" title="Remove file" onClick={() => setUploadedFile(null)}>
+                    <TdCloseIcon />
+                  </button>
+                </div>
+              )}
+              {uploadError && <p className="td-upload-error">{uploadError}</p>}
+
               <div className="td-composer-btns">
-                <button type="button" className="td-composer-cancel" onClick={closeComposer}>Cancel</button>
-                <button type="button" className="td-composer-post" disabled={!postDraft.trim() || posting} onClick={submitPost}>
-                  {posting ? "Posting…" : "Post"}
-                </button>
+                <div className="td-composer-attach-btns">
+                  <label className="td-attach-btn" title="Add an image">
+                    <TdImageIcon />
+                    <input type="file" accept="image/*" hidden onChange={handleImageUpload} disabled={uploadingImage} />
+                  </label>
+                  {postType === "resource" && (
+                    <label className="td-attach-btn" title="Add a file">
+                      <TdFileIcon />
+                      <input type="file" hidden onChange={handleFileUpload} disabled={uploadingFile} />
+                    </label>
+                  )}
+                  {(uploadingImage || uploadingFile) && <span className="td-uploading-hint">Uploading…</span>}
+                </div>
+                <div className="td-composer-post-row">
+                  <button type="button" className="td-composer-cancel" onClick={closeComposer}>Cancel</button>
+                  <button type="button" className="td-composer-post" disabled={!postDraft.trim() || posting} onClick={submitPost}>
+                    {posting ? "Posting…" : "Post"}
+                  </button>
+                </div>
               </div>
             </div>
           )}
@@ -1946,6 +2119,7 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 
 /* ── Hero "what's on your mind" composer ── */
 .td-composer { display: flex; max-width: 200px; }
+.td-composer.is-open { max-width: 360px; }
 .td-composer-pill {
   flex: 1; min-width: 0; text-align: left; font-family: 'Quicksand', sans-serif; font-size: 13.5px; font-weight: 600; color: var(--muted);
   background: var(--card); border: none; border-radius: 16px; padding: 11px 16px; cursor: pointer;
@@ -1954,15 +2128,60 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 }
 .td-composer-pill:hover { color: var(--ink); }
 .td-composer-box {
-  flex: 1; min-width: 0; background: var(--card); border-radius: 16px; padding: 12px;
-  box-shadow: 0 6px 20px rgba(43,42,74,0.12);
-  display: flex; flex-direction: column; gap: 8px;
+  flex: 1; min-width: 0; background: var(--card); border-radius: 16px; border-top: 3px solid var(--coral); padding: 14px;
+  box-shadow: 0 8px 24px rgba(43,42,74,0.14);
+  display: flex; flex-direction: column; gap: 9px;
 }
+.td-composer-head { display: flex; align-items: center; gap: 8px; }
+.td-composer-avatar {
+  flex-shrink: 0; width: 26px; height: 26px; border-radius: 50%;
+  color: #fff; font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 10.5px;
+  display: flex; align-items: center; justify-content: center;
+}
+.td-composer-eyebrow {
+  font-family: 'Quicksand', sans-serif; font-size: 10px; font-weight: 800; letter-spacing: 0.05em;
+  text-transform: uppercase; color: var(--muted);
+}
+.td-composer-types { display: flex; flex-wrap: wrap; gap: 6px; }
+.td-composer-type-pill {
+  display: flex; align-items: center; gap: 5px;
+  background: #FDFCFA; border: 1px solid var(--hair, rgba(43,42,74,0.11)); border-radius: 999px;
+  padding: 5px 10px 5px 8px; cursor: pointer;
+  font-family: 'Quicksand', sans-serif; font-weight: 700; font-size: 11px; color: var(--muted);
+}
+.td-composer-type-pill svg { width: 12px; height: 12px; }
+.td-composer-type-pill:hover { border-color: var(--coral); color: var(--coral); }
+.td-composer-type-pill.is-active { background: var(--coral); border-color: var(--coral); color: #fff; }
 .td-composer-input {
   width: 100%; resize: vertical; min-height: 54px; border: none; outline: none;
   font: inherit; font-family: 'Quicksand', sans-serif; font-size: 13.5px; color: var(--ink); background: transparent;
 }
-.td-composer-btns { display: flex; justify-content: flex-end; gap: 8px; flex-wrap: wrap; }
+.td-attach-preview { position: relative; width: fit-content; }
+.td-attach-preview img { max-width: 140px; max-height: 100px; border-radius: 10px; display: block; object-fit: cover; }
+.td-attach-file-chip {
+  position: relative; display: flex; align-items: center; gap: 6px; width: fit-content;
+  background: #FDFCFA; border: 1px solid var(--hair, rgba(43,42,74,0.11)); border-radius: 10px; padding: 6px 26px 6px 8px;
+  font-family: 'Quicksand', sans-serif; font-size: 11.5px; color: var(--ink);
+}
+.td-attach-file-chip svg { width: 13px; height: 13px; color: var(--muted); flex-shrink: 0; }
+.td-attach-remove {
+  position: absolute; top: -6px; right: -6px; width: 18px; height: 18px; border-radius: 50%;
+  background: var(--ink); color: #fff; border: none; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+}
+.td-attach-remove svg { width: 9px; height: 9px; }
+.td-upload-error { font-family: 'Quicksand', sans-serif; font-size: 11px; color: #C0392B; margin: 0; }
+.td-composer-btns { display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap; }
+.td-composer-attach-btns { display: flex; align-items: center; gap: 5px; }
+.td-attach-btn {
+  display: flex; align-items: center; justify-content: center;
+  width: 28px; height: 28px; border-radius: 9px; cursor: pointer;
+  color: var(--muted); border: 1px solid var(--hair, rgba(43,42,74,0.11));
+}
+.td-attach-btn:hover { color: var(--coral); border-color: var(--coral); }
+.td-attach-btn svg { width: 14px; height: 14px; }
+.td-uploading-hint { font-family: 'Quicksand', sans-serif; font-size: 10px; color: var(--muted); }
+.td-composer-post-row { display: flex; gap: 8px; }
 .td-composer-cancel, .td-composer-post {
   font-family: 'Quicksand', sans-serif; font-weight: 700; font-size: 12.5px;
   border: none; border-radius: 999px; padding: 7px 16px; cursor: pointer;
