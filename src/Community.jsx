@@ -179,7 +179,7 @@ export default function Community() {
   const composerRef = useRef(null);
   const prompt = todaysPrompt();
   const teacherCount = new Set(posts.map((p) => p.author_id)).size;
-  const tipsShared = posts.length;
+  const tipsShared = posts.filter((p) => p.post_type === "tip").length;
   const dayStreak = computeDayStreak(posts);
 
   function usePrompt() {
@@ -540,7 +540,7 @@ const CSS = `
   padding: 0;
 }
 .cm-brand-logo { height: 24px; width: auto; display: block; margin-right: -3px; }
-.cm-topbar-title { font-family: 'Fredoka', sans-serif; font-size: 15px; font-weight: 700; color: var(--ink); margin: 0; }
+.cm-topbar-title { font-family: 'Fredoka', sans-serif; font-size: 16px; font-weight: 600; color: var(--ink); letter-spacing: 0.015em; margin: 0; }
 
 .cm-page { padding: 24px; }
 .cm-stage { max-width: 640px; margin: 0 auto; display: flex; flex-direction: column; gap: 16px; }
