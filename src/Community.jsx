@@ -6,16 +6,25 @@ import AuthForm from "./AuthForm";
 import { timeAgo } from "./slideDeckTypes";
 
 const ADMIN_EMAIL = "caldrin1999@gmail.com";
+const AVATAR_HUES = ["#FF6B4A", "#7C5CFC", "#16BFAE", "#E0A72E", "#FF8A4C"];
 
-function displayName(email) {
+function avatarHue(email) {
+  if (!email) return AVATAR_HUES[0];
+  let hash = 0;
+  for (let i = 0; i < email.length; i++) hash = (hash * 31 + email.charCodeAt(i)) >>> 0;
+  return AVATAR_HUES[hash % AVATAR_HUES.length];
+}
+
+function displayName(name, email) {
+  if (name && name.trim()) return name.trim();
   if (!email) return "Teacher";
   const raw = email.split("@")[0].replace(/[._-]+/g, " ").trim();
   return raw.replace(/\b\w/g, (c) => c.toUpperCase());
 }
 
-function initials(email) {
-  const name = displayName(email);
-  const parts = name.split(" ").filter(Boolean);
+function initials(name, email) {
+  const full = displayName(name, email);
+  const parts = full.split(" ").filter(Boolean);
   return (parts[0]?.[0] || "T") + (parts[1]?.[0] || "");
 }
 
@@ -46,10 +55,19 @@ function CommentIcon() {
   );
 }
 
+function Avatar({ name, email, size }) {
+  return (
+    <div className={`cm-avatar${size ? ` cm-avatar--${size}` : ""}`} style={{ background: avatarHue(email) }}>
+      {initials(name, email)}
+    </div>
+  );
+}
+
 export default function Community() {
   const navigate = useNavigate();
   const { user, loading: authLoading } = useAuth();
   const isAdmin = user?.email?.toLowerCase() === ADMIN_EMAIL;
+  const [myName] = useState(() => localStorage.getItem("sentivo_teacher_name") || "");
 
   const [authMode, setAuthMode] = useState(null);
   const [posts, setPosts] = useState([]);
@@ -69,7 +87,7 @@ export default function Community() {
     setLoadingPosts(true);
     const { data, error } = await supabase
       .from("community_posts")
-      .select("id, author_id, author_email, content, created_at")
+      .select("id, author_id, author_email, author_name, content, created_at")
       .order("created_at", { ascending: false });
     setPosts(error ? [] : data || []);
     setLoadingPosts(false);
@@ -108,7 +126,7 @@ export default function Community() {
     setPosting(true);
     const { data, error } = await supabase
       .from("community_posts")
-      .insert({ author_id: user.id, author_email: user.email, content, status: "approved" })
+      .insert({ author_id: user.id, author_email: user.email, author_name: myName.trim() || null, content, status: "approved" })
       .select()
       .single();
     setPosting(false);
@@ -143,7 +161,7 @@ export default function Community() {
   async function loadComments(postId) {
     const { data, error } = await supabase
       .from("community_comments")
-      .select("id, post_id, author_id, author_email, content, created_at")
+      .select("id, post_id, author_id, author_email, author_name, content, created_at")
       .eq("post_id", postId)
       .order("created_at", { ascending: true });
     setCommentsByPost((prev) => ({ ...prev, [postId]: error ? [] : data || [] }));
@@ -167,7 +185,7 @@ export default function Community() {
     if (!content || !user) return;
     const { data, error } = await supabase
       .from("community_comments")
-      .insert({ post_id: postId, author_id: user.id, author_email: user.email, content, status: "approved" })
+      .insert({ post_id: postId, author_id: user.id, author_email: user.email, author_name: myName.trim() || null, content, status: "approved" })
       .select()
       .single();
     if (!error && data) {
@@ -199,13 +217,9 @@ export default function Community() {
 
       <div className="cm-page">
         <div className="cm-stage">
-          <div className="cm-hero">
-            <span className="cm-hero-badge">💬</span>
-            <span className="cm-eyebrow">Sentivo · Today</span>
-            <h1 className="cm-hero-title">Teacher Community</h1>
-            <p className="cm-hero-blurb">
-              Share a tip, ask a question, or say hello to other Sentivo teachers.
-            </p>
+          <div className="cm-pagehead">
+            <h1 className="cm-pagehead-title">Teacher Community</h1>
+            <p className="cm-pagehead-blurb">Share a tip, ask a question, or say hello to other teachers.</p>
           </div>
 
           {authLoading ? null : !user ? (
@@ -215,7 +229,7 @@ export default function Community() {
             </div>
           ) : (
             <div className="cm-composer">
-              <div className="cm-avatar">{initials(user.email)}</div>
+              <Avatar name={myName} email={user.email} />
               <div className="cm-composer-body">
                 <textarea
                   className="cm-composer-input"
@@ -250,10 +264,11 @@ export default function Community() {
                 return (
                   <div className="cm-post" key={p.id}>
                     <div className="cm-post-head">
-                      <div className="cm-avatar cm-avatar--sm">{initials(p.author_email)}</div>
-                      <div>
-                        <div className="cm-post-author">{displayName(p.author_email)}</div>
-                        <div className="cm-post-time">{timeAgo(p.created_at)}</div>
+                      <Avatar name={p.author_name} email={p.author_email} size="sm" />
+                      <div className="cm-post-headline">
+                        <span className="cm-post-author">{displayName(p.author_name, p.author_email)}</span>
+                        <span className="cm-post-dot">·</span>
+                        <span className="cm-post-time">{timeAgo(p.created_at)}</span>
                       </div>
                       {canManage && (
                         <button type="button" className="cm-icon-btn" title="Delete post" onClick={() => deletePost(p.id)}>
@@ -277,10 +292,10 @@ export default function Community() {
                       <div className="cm-comments">
                         {comments.map((c) => (
                           <div className="cm-comment" key={c.id}>
-                            <div className="cm-avatar cm-avatar--xs">{initials(c.author_email)}</div>
+                            <Avatar name={c.author_name} email={c.author_email} size="xs" />
                             <div className="cm-comment-body">
                               <div className="cm-comment-meta">
-                                <span className="cm-comment-author">{displayName(c.author_email)}</span>
+                                <span className="cm-comment-author">{displayName(c.author_name, c.author_email)}</span>
                                 <span className="cm-comment-time">{timeAgo(c.created_at)}</span>
                               </div>
                               <p className="cm-comment-text">{c.content}</p>
@@ -337,7 +352,7 @@ const CSS = `
   --muted: #8B84A3;
   --coral: #FF6B4A;
   --coral-pale: #FDECE5;
-  --hair: rgba(43,42,74,0.11);
+  --hair: rgba(43,42,74,0.09);
   min-height: 100vh;
   background: #FBFAF7;
   color: var(--ink);
@@ -372,18 +387,11 @@ const CSS = `
 .cm-topbar-spacer { width: 90px; }
 
 .cm-page { padding: 24px; }
-.cm-stage { max-width: 680px; margin: 0 auto; display: flex; flex-direction: column; gap: 18px; }
+.cm-stage { max-width: 640px; margin: 0 auto; display: flex; flex-direction: column; gap: 16px; }
 
-.cm-hero { text-align: center; margin: 12px 0 8px; }
-.cm-hero-badge {
-  display: flex; align-items: center; justify-content: center;
-  width: 44px; height: 44px; margin: 0 auto 12px;
-  border-radius: 50%; background: var(--coral-pale);
-  font-size: 20px;
-}
-.cm-eyebrow { display: block; font-size: 11px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--coral); margin-bottom: 6px; }
-.cm-hero-title { font-family: 'Fredoka', sans-serif; font-size: 26px; font-weight: 600; margin: 0 0 8px; color: var(--ink); }
-.cm-hero-blurb { font-size: 14px; line-height: 1.5; color: var(--muted); max-width: 480px; margin: 0 auto; }
+.cm-pagehead { padding: 4px 2px 2px; }
+.cm-pagehead-title { font-family: 'Fredoka', sans-serif; font-size: 24px; font-weight: 600; margin: 0 0 4px; color: var(--ink); }
+.cm-pagehead-blurb { font-size: 13.5px; line-height: 1.5; color: var(--muted); margin: 0; }
 
 .cm-signin-card {
   background: var(--card); border: 1px solid var(--hair); border-radius: 16px;
@@ -407,7 +415,7 @@ const CSS = `
 
 .cm-avatar {
   flex-shrink: 0; width: 40px; height: 40px; border-radius: 50%;
-  background: var(--coral); color: #fff; font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 14px;
+  color: #fff; font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 14px;
   display: flex; align-items: center; justify-content: center;
 }
 .cm-avatar--sm { width: 34px; height: 34px; font-size: 12.5px; }
@@ -421,22 +429,24 @@ const CSS = `
 .cm-btn:disabled { opacity: 0.45; cursor: default; }
 .cm-btn--sm { padding: 6px 14px; font-size: 12.5px; }
 
-.cm-feed { display: flex; flex-direction: column; gap: 14px; }
+.cm-feed { display: flex; flex-direction: column; gap: 12px; }
 .cm-empty { text-align: center; color: var(--muted); font-size: 13.5px; padding: 20px 0; }
 
 .cm-post {
   background: var(--card); border: 1px solid var(--hair); border-radius: 16px; padding: 16px;
-  box-shadow: 0 6px 18px rgba(43,42,74,0.05);
+  box-shadow: 0 4px 14px rgba(43,42,74,0.04);
 }
 .cm-post-head { display: flex; align-items: center; gap: 10px; }
-.cm-post-author { font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 13.5px; color: var(--ink); }
-.cm-post-time { font-size: 11.5px; color: var(--muted); }
-.cm-post-text { font-size: 14px; line-height: 1.55; color: var(--ink); margin: 10px 0 12px; white-space: pre-wrap; }
+.cm-post-headline { display: flex; align-items: baseline; gap: 6px; min-width: 0; }
+.cm-post-author { font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 13.5px; color: var(--ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.cm-post-dot { color: var(--muted); font-size: 12px; }
+.cm-post-time { font-size: 12px; color: var(--muted); white-space: nowrap; }
+.cm-post-text { font-size: 14.5px; line-height: 1.6; color: var(--ink); margin: 10px 0 10px; white-space: pre-wrap; }
 
-.cm-post-actions { display: flex; align-items: center; gap: 6px; padding-top: 4px; border-top: 1px solid var(--hair); margin-top: 2px; }
+.cm-post-actions { display: flex; align-items: center; gap: 4px; }
 .cm-action-btn {
   display: flex; align-items: center; gap: 6px;
-  background: none; border: none; padding: 8px 10px; margin-top: 4px; border-radius: 10px; cursor: pointer;
+  background: none; border: none; padding: 6px 10px; margin-left: -10px; border-radius: 10px; cursor: pointer;
   font-family: 'Quicksand', sans-serif; font-weight: 700; font-size: 12.5px; color: var(--muted);
 }
 .cm-action-btn svg { width: 17px; height: 17px; }
@@ -453,7 +463,7 @@ const CSS = `
 .cm-icon-btn--xs { width: 22px; height: 22px; }
 .cm-icon-btn--xs svg { width: 12px; height: 12px; }
 
-.cm-comments { margin-top: 8px; padding-top: 12px; border-top: 1px solid var(--hair); display: flex; flex-direction: column; gap: 10px; }
+.cm-comments { margin-top: 6px; padding-top: 12px; border-top: 1px solid var(--hair); display: flex; flex-direction: column; gap: 10px; }
 .cm-comment { display: flex; align-items: flex-start; gap: 8px; }
 .cm-comment-body { flex: 1; }
 .cm-comment-meta { display: flex; align-items: center; gap: 8px; margin-bottom: 2px; }

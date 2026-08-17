@@ -222,7 +222,7 @@ function TodayHero({ navigate }) {
     setPosting(true);
     const { error } = await supabase
       .from("community_posts")
-      .insert({ author_id: user.id, author_email: user.email, content, status: "approved" });
+      .insert({ author_id: user.id, author_email: user.email, author_name: name.trim() || null, content, status: "approved" });
     setPosting(false);
     if (!error) {
       setPostDraft("");
