@@ -222,7 +222,7 @@ function TodayHero({ navigate }) {
     setPosting(true);
     const { error } = await supabase
       .from("community_posts")
-      .insert({ author_id: user.id, author_email: user.email, content, status: "pending" });
+      .insert({ author_id: user.id, author_email: user.email, content, status: "approved" });
     setPosting(false);
     if (!error) {
       setPostDraft("");
@@ -277,19 +277,16 @@ function TodayHero({ navigate }) {
                 rows={3}
                 maxLength={2000}
               />
-              <div className="td-composer-actions">
-                <span className="td-composer-hint">Reviewed before it goes live</span>
-                <div className="td-composer-btns">
-                  <button type="button" className="td-composer-cancel" onClick={closeComposer}>Cancel</button>
-                  <button type="button" className="td-composer-post" disabled={!postDraft.trim() || posting} onClick={submitPost}>
-                    {posting ? "Posting…" : "Post"}
-                  </button>
-                </div>
+              <div className="td-composer-btns">
+                <button type="button" className="td-composer-cancel" onClick={closeComposer}>Cancel</button>
+                <button type="button" className="td-composer-post" disabled={!postDraft.trim() || posting} onClick={submitPost}>
+                  {posting ? "Posting…" : "Post"}
+                </button>
               </div>
             </div>
           )}
         </div>
-        {justPosted && <p className="td-composer-confirm">Posted — awaiting approval.</p>}
+        {justPosted && <p className="td-composer-confirm">Posted!</p>}
         <button type="button" className="td-composer-viewlink" onClick={() => navigate("/library/community")}>
           Community →
         </button>
@@ -1965,8 +1962,6 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   width: 100%; resize: vertical; min-height: 54px; border: none; outline: none;
   font: inherit; font-family: 'Quicksand', sans-serif; font-size: 13.5px; color: var(--ink); background: transparent;
 }
-.td-composer-actions { display: flex; flex-direction: column; align-items: stretch; gap: 8px; }
-.td-composer-hint { font-family: 'Quicksand', sans-serif; font-size: 10.5px; color: var(--muted); }
 .td-composer-btns { display: flex; justify-content: flex-end; gap: 8px; flex-wrap: wrap; }
 .td-composer-cancel, .td-composer-post {
   font-family: 'Quicksand', sans-serif; font-weight: 700; font-size: 12.5px;

@@ -30,6 +30,22 @@ function TrashIcon() {
   );
 }
 
+function HeartIcon({ filled }) {
+  return (
+    <svg viewBox="0 0 20 20" fill={filled ? "currentColor" : "none"} stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M10 17.2s-6.6-4.1-8.6-8.1C.3 6.4 1.7 3.4 4.6 2.7c1.8-.4 3.6.4 4.6 2 .9-1.6 2.8-2.4 4.6-2 2.9.7 4.3 3.7 3.2 6.4-2 4-8.6 8.1-8.6 8.1Z" />
+    </svg>
+  );
+}
+
+function CommentIcon() {
+  return (
+    <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M2.5 9.8c0-3.9 3.4-7 7.5-7s7.5 3.1 7.5 7-3.4 7-7.5 7c-.9 0-1.7-.1-2.5-.4L3.3 17l1-3.2c-1.1-1.1-1.8-2.5-1.8-4Z" />
+    </svg>
+  );
+}
+
 export default function Community() {
   const navigate = useNavigate();
   const { user, loading: authLoading } = useAuth();
@@ -43,33 +59,46 @@ export default function Community() {
 
   const [expanded, setExpanded] = useState(new Set());
   const [commentsByPost, setCommentsByPost] = useState({});
+  const [commentCounts, setCommentCounts] = useState({});
   const [commentDrafts, setCommentDrafts] = useState({});
-  const [pendingComments, setPendingComments] = useState([]);
+
+  const [likeCounts, setLikeCounts] = useState({});
+  const [likedByMe, setLikedByMe] = useState(new Set());
 
   async function loadPosts() {
     setLoadingPosts(true);
     const { data, error } = await supabase
       .from("community_posts")
-      .select("id, author_id, author_email, content, status, created_at")
+      .select("id, author_id, author_email, content, created_at")
       .order("created_at", { ascending: false });
     setPosts(error ? [] : data || []);
     setLoadingPosts(false);
   }
 
-  async function loadPendingComments() {
-    if (!isAdmin) { setPendingComments([]); return; }
-    const { data, error } = await supabase
-      .from("community_comments")
-      .select("id, post_id, author_email, content, status, created_at")
-      .eq("status", "pending")
-      .order("created_at", { ascending: true });
-    setPendingComments(error ? [] : data || []);
+  async function loadCommentCounts() {
+    const { data } = await supabase.from("community_comments").select("post_id");
+    const counts = {};
+    (data || []).forEach((c) => { counts[c.post_id] = (counts[c.post_id] || 0) + 1; });
+    setCommentCounts(counts);
+  }
+
+  async function loadLikes() {
+    const { data } = await supabase.from("community_likes").select("post_id, user_id");
+    const counts = {};
+    const mine = new Set();
+    (data || []).forEach((l) => {
+      counts[l.post_id] = (counts[l.post_id] || 0) + 1;
+      if (l.user_id === user?.id) mine.add(l.post_id);
+    });
+    setLikeCounts(counts);
+    setLikedByMe(mine);
   }
 
   useEffect(() => {
     if (!user) { setPosts([]); setLoadingPosts(false); return; }
     loadPosts();
-    loadPendingComments();
+    loadCommentCounts();
+    loadLikes();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user]);
 
@@ -79,7 +108,7 @@ export default function Community() {
     setPosting(true);
     const { data, error } = await supabase
       .from("community_posts")
-      .insert({ author_id: user.id, author_email: user.email, content, status: "pending" })
+      .insert({ author_id: user.id, author_email: user.email, content, status: "approved" })
       .select()
       .single();
     setPosting(false);
@@ -89,26 +118,32 @@ export default function Community() {
     }
   }
 
-  async function approvePost(id) {
-    const { error } = await supabase.from("community_posts").update({ status: "approved" }).eq("id", id);
-    if (!error) setPosts((prev) => prev.map((p) => (p.id === id ? { ...p, status: "approved" } : p)));
-  }
-
-  async function rejectPost(id) {
-    const { error } = await supabase.from("community_posts").delete().eq("id", id);
-    if (!error) setPosts((prev) => prev.filter((p) => p.id !== id));
-  }
-
   async function deletePost(id) {
     if (!window.confirm("Delete this post? This can't be undone.")) return;
     const { error } = await supabase.from("community_posts").delete().eq("id", id);
     if (!error) setPosts((prev) => prev.filter((p) => p.id !== id));
   }
 
+  async function toggleLike(postId) {
+    if (!user) return;
+    const alreadyLiked = likedByMe.has(postId);
+    setLikedByMe((prev) => {
+      const next = new Set(prev);
+      alreadyLiked ? next.delete(postId) : next.add(postId);
+      return next;
+    });
+    setLikeCounts((prev) => ({ ...prev, [postId]: (prev[postId] || 0) + (alreadyLiked ? -1 : 1) }));
+    if (alreadyLiked) {
+      await supabase.from("community_likes").delete().eq("post_id", postId).eq("user_id", user.id);
+    } else {
+      await supabase.from("community_likes").insert({ post_id: postId, user_id: user.id });
+    }
+  }
+
   async function loadComments(postId) {
     const { data, error } = await supabase
       .from("community_comments")
-      .select("id, post_id, author_id, author_email, content, status, created_at")
+      .select("id, post_id, author_id, author_email, content, created_at")
       .eq("post_id", postId)
       .order("created_at", { ascending: true });
     setCommentsByPost((prev) => ({ ...prev, [postId]: error ? [] : data || [] }));
@@ -132,43 +167,24 @@ export default function Community() {
     if (!content || !user) return;
     const { data, error } = await supabase
       .from("community_comments")
-      .insert({ post_id: postId, author_id: user.id, author_email: user.email, content, status: "pending" })
+      .insert({ post_id: postId, author_id: user.id, author_email: user.email, content, status: "approved" })
       .select()
       .single();
     if (!error && data) {
       setCommentsByPost((prev) => ({ ...prev, [postId]: [...(prev[postId] || []), data] }));
       setCommentDrafts((prev) => ({ ...prev, [postId]: "" }));
-    }
-  }
-
-  async function approveComment(id, postId) {
-    const { error } = await supabase.from("community_comments").update({ status: "approved" }).eq("id", id);
-    if (!error) {
-      setCommentsByPost((prev) => ({
-        ...prev,
-        [postId]: (prev[postId] || []).map((c) => (c.id === id ? { ...c, status: "approved" } : c)),
-      }));
-      setPendingComments((prev) => prev.filter((c) => c.id !== id));
-    }
-  }
-
-  async function rejectComment(id, postId) {
-    const { error } = await supabase.from("community_comments").delete().eq("id", id);
-    if (!error) {
-      setCommentsByPost((prev) => ({ ...prev, [postId]: (prev[postId] || []).filter((c) => c.id !== id) }));
-      setPendingComments((prev) => prev.filter((c) => c.id !== id));
+      setCommentCounts((prev) => ({ ...prev, [postId]: (prev[postId] || 0) + 1 }));
     }
   }
 
   async function deleteComment(id, postId) {
     if (!window.confirm("Delete this comment?")) return;
     const { error } = await supabase.from("community_comments").delete().eq("id", id);
-    if (!error) setCommentsByPost((prev) => ({ ...prev, [postId]: (prev[postId] || []).filter((c) => c.id !== id) }));
+    if (!error) {
+      setCommentsByPost((prev) => ({ ...prev, [postId]: (prev[postId] || []).filter((c) => c.id !== id) }));
+      setCommentCounts((prev) => ({ ...prev, [postId]: Math.max(0, (prev[postId] || 1) - 1) }));
+    }
   }
-
-  const approvedPosts = posts.filter((p) => p.status === "approved");
-  const myPendingPosts = user ? posts.filter((p) => p.status === "pending" && p.author_id === user.id) : [];
-  const adminPendingPosts = isAdmin ? posts.filter((p) => p.status === "pending") : [];
 
   return (
     <div className="cm-shell">
@@ -188,7 +204,7 @@ export default function Community() {
             <span className="cm-eyebrow">Sentivo · Today</span>
             <h1 className="cm-hero-title">Teacher Community</h1>
             <p className="cm-hero-blurb">
-              Share a tip, ask a question, or say hello to other Sentivo teachers. Posts are reviewed before they go live.
+              Share a tip, ask a question, or say hello to other Sentivo teachers.
             </p>
           </div>
 
@@ -198,79 +214,39 @@ export default function Community() {
               <button type="button" className="cm-btn" onClick={() => setAuthMode("login")}>Log in</button>
             </div>
           ) : (
-            <>
-              <div className="cm-composer">
-                <div className="cm-avatar">{initials(user.email)}</div>
-                <div className="cm-composer-body">
-                  <textarea
-                    className="cm-composer-input"
-                    placeholder="Share something with other teachers…"
-                    value={draft}
-                    onChange={(e) => setDraft(e.target.value)}
-                    rows={3}
-                    maxLength={2000}
-                  />
-                  <div className="cm-composer-row">
-                    <span className="cm-composer-hint">Posts are reviewed before they appear publicly.</span>
-                    <button type="button" className="cm-btn" disabled={!draft.trim() || posting} onClick={submitPost}>
-                      {posting ? "Posting…" : "Post"}
-                    </button>
-                  </div>
+            <div className="cm-composer">
+              <div className="cm-avatar">{initials(user.email)}</div>
+              <div className="cm-composer-body">
+                <textarea
+                  className="cm-composer-input"
+                  placeholder="Share something with other teachers…"
+                  value={draft}
+                  onChange={(e) => setDraft(e.target.value)}
+                  rows={3}
+                  maxLength={2000}
+                />
+                <div className="cm-composer-row">
+                  <button type="button" className="cm-btn" disabled={!draft.trim() || posting} onClick={submitPost}>
+                    {posting ? "Posting…" : "Post"}
+                  </button>
                 </div>
               </div>
-
-              {myPendingPosts.length > 0 && (
-                <div className="cm-mine-pending">
-                  <div className="cm-section-label">Awaiting approval</div>
-                  {myPendingPosts.map((p) => (
-                    <div className="cm-pending-row" key={p.id}>
-                      <p className="cm-pending-text">{p.content}</p>
-                      <span className="cm-pending-tag">Pending</span>
-                    </div>
-                  ))}
-                </div>
-              )}
-
-              {isAdmin && (adminPendingPosts.length > 0 || pendingComments.length > 0) && (
-                <div className="cm-modqueue">
-                  <div className="cm-section-label">Moderation queue</div>
-                  {adminPendingPosts.map((p) => (
-                    <div className="cm-mod-row" key={p.id}>
-                      <div className="cm-mod-meta">{displayName(p.author_email)} · {timeAgo(p.created_at)}</div>
-                      <p className="cm-mod-text">{p.content}</p>
-                      <div className="cm-mod-actions">
-                        <button type="button" className="cm-btn cm-btn--sm" onClick={() => approvePost(p.id)}>Approve</button>
-                        <button type="button" className="cm-btn cm-btn--sm cm-btn--ghost" onClick={() => rejectPost(p.id)}>Reject</button>
-                      </div>
-                    </div>
-                  ))}
-                  {pendingComments.map((c) => (
-                    <div className="cm-mod-row" key={c.id}>
-                      <div className="cm-mod-meta">{displayName(c.author_email)} · comment · {timeAgo(c.created_at)}</div>
-                      <p className="cm-mod-text">{c.content}</p>
-                      <div className="cm-mod-actions">
-                        <button type="button" className="cm-btn cm-btn--sm" onClick={() => approveComment(c.id, c.post_id)}>Approve</button>
-                        <button type="button" className="cm-btn cm-btn--sm cm-btn--ghost" onClick={() => rejectComment(c.id, c.post_id)}>Reject</button>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              )}
-            </>
+            </div>
           )}
 
           <div className="cm-feed">
             {loadingPosts ? (
               <p className="cm-empty">Loading…</p>
-            ) : approvedPosts.length === 0 ? (
+            ) : posts.length === 0 ? (
               <p className="cm-empty">No posts yet. Be the first to share something!</p>
             ) : (
-              approvedPosts.map((p) => {
+              posts.map((p) => {
                 const isOpen = expanded.has(p.id);
-                const comments = (commentsByPost[p.id] || []).filter(
-                  (c) => c.status === "approved" || c.author_id === user?.id || isAdmin
-                );
+                const comments = commentsByPost[p.id] || [];
                 const canManage = user && (p.author_id === user.id || isAdmin);
+                const liked = likedByMe.has(p.id);
+                const likeCount = likeCounts[p.id] || 0;
+                const commentCount = commentCounts[p.id] || 0;
                 return (
                   <div className="cm-post" key={p.id}>
                     <div className="cm-post-head">
@@ -286,9 +262,14 @@ export default function Community() {
                       )}
                     </div>
                     <p className="cm-post-text">{p.content}</p>
-                    <div className="cm-post-foot">
-                      <button type="button" className="cm-link-btn" onClick={() => toggleExpand(p.id)}>
-                        {isOpen ? "Hide comments" : "Comments"}
+                    <div className="cm-post-actions">
+                      <button type="button" className={`cm-action-btn${liked ? " is-liked" : ""}`} onClick={() => toggleLike(p.id)}>
+                        <HeartIcon filled={liked} />
+                        {likeCount > 0 && <span>{likeCount}</span>}
+                      </button>
+                      <button type="button" className="cm-action-btn" onClick={() => toggleExpand(p.id)}>
+                        <CommentIcon />
+                        {commentCount > 0 && <span>{commentCount}</span>}
                       </button>
                     </div>
 
@@ -301,7 +282,6 @@ export default function Community() {
                               <div className="cm-comment-meta">
                                 <span className="cm-comment-author">{displayName(c.author_email)}</span>
                                 <span className="cm-comment-time">{timeAgo(c.created_at)}</span>
-                                {c.status === "pending" && <span className="cm-pending-tag">Pending</span>}
                               </div>
                               <p className="cm-comment-text">{c.content}</p>
                             </div>
@@ -423,8 +403,7 @@ const CSS = `
   font: inherit; font-size: 14px; color: var(--ink); background: #FDFCFA;
 }
 .cm-composer-input:focus { outline: none; border-color: var(--coral); }
-.cm-composer-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
-.cm-composer-hint { font-size: 11.5px; color: var(--muted); }
+.cm-composer-row { display: flex; align-items: center; justify-content: flex-end; gap: 12px; }
 
 .cm-avatar {
   flex-shrink: 0; width: 40px; height: 40px; border-radius: 50%;
@@ -441,25 +420,6 @@ const CSS = `
 }
 .cm-btn:disabled { opacity: 0.45; cursor: default; }
 .cm-btn--sm { padding: 6px 14px; font-size: 12.5px; }
-.cm-btn--ghost { background: none; color: var(--muted); border: 1px solid var(--hair); }
-
-.cm-section-label { font-size: 11px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
-
-.cm-mine-pending, .cm-modqueue {
-  background: var(--card); border: 1px solid var(--hair); border-radius: 16px; padding: 14px 16px;
-}
-.cm-pending-row { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; padding: 6px 0; }
-.cm-pending-text { font-size: 13.5px; color: var(--ink); line-height: 1.4; margin: 0; }
-.cm-pending-tag {
-  flex-shrink: 0; font-size: 10px; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase;
-  color: var(--coral); background: var(--coral-pale); border-radius: 999px; padding: 3px 9px;
-}
-
-.cm-mod-row { padding: 10px 0; border-top: 1px solid var(--hair); }
-.cm-mod-row:first-of-type { border-top: none; padding-top: 2px; }
-.cm-mod-meta { font-size: 11.5px; color: var(--muted); margin-bottom: 4px; }
-.cm-mod-text { font-size: 13.5px; color: var(--ink); line-height: 1.4; margin: 0 0 8px; }
-.cm-mod-actions { display: flex; gap: 8px; }
 
 .cm-feed { display: flex; flex-direction: column; gap: 14px; }
 .cm-empty { text-align: center; color: var(--muted); font-size: 13.5px; padding: 20px 0; }
@@ -471,13 +431,17 @@ const CSS = `
 .cm-post-head { display: flex; align-items: center; gap: 10px; }
 .cm-post-author { font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 13.5px; color: var(--ink); }
 .cm-post-time { font-size: 11.5px; color: var(--muted); }
-.cm-post-text { font-size: 14px; line-height: 1.55; color: var(--ink); margin: 10px 0 8px; white-space: pre-wrap; }
-.cm-post-foot { display: flex; }
-.cm-link-btn {
-  background: none; border: none; padding: 0; cursor: pointer;
+.cm-post-text { font-size: 14px; line-height: 1.55; color: var(--ink); margin: 10px 0 12px; white-space: pre-wrap; }
+
+.cm-post-actions { display: flex; align-items: center; gap: 6px; padding-top: 4px; border-top: 1px solid var(--hair); margin-top: 2px; }
+.cm-action-btn {
+  display: flex; align-items: center; gap: 6px;
+  background: none; border: none; padding: 8px 10px; margin-top: 4px; border-radius: 10px; cursor: pointer;
   font-family: 'Quicksand', sans-serif; font-weight: 700; font-size: 12.5px; color: var(--muted);
 }
-.cm-link-btn:hover { color: var(--coral); }
+.cm-action-btn svg { width: 17px; height: 17px; }
+.cm-action-btn:hover { background: var(--coral-pale); color: var(--coral); }
+.cm-action-btn.is-liked { color: var(--coral); }
 
 .cm-icon-btn {
   margin-left: auto; flex-shrink: 0; width: 28px; height: 28px; border-radius: 50%;
@@ -489,7 +453,7 @@ const CSS = `
 .cm-icon-btn--xs { width: 22px; height: 22px; }
 .cm-icon-btn--xs svg { width: 12px; height: 12px; }
 
-.cm-comments { margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--hair); display: flex; flex-direction: column; gap: 10px; }
+.cm-comments { margin-top: 8px; padding-top: 12px; border-top: 1px solid var(--hair); display: flex; flex-direction: column; gap: 10px; }
 .cm-comment { display: flex; align-items: flex-start; gap: 8px; }
 .cm-comment-body { flex: 1; }
 .cm-comment-meta { display: flex; align-items: center; gap: 8px; margin-bottom: 2px; }
