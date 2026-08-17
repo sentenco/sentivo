@@ -118,6 +118,35 @@ function FlameIcon() {
   );
 }
 
+function QuestionIcon() {
+  return (
+    <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M7.4 7.3a2.6 2.6 0 1 1 3.9 2.3c-.8.5-1.3 1-1.3 1.9v.3" />
+      <circle cx="10" cy="14.8" r="0.9" fill="currentColor" stroke="none" />
+    </svg>
+  );
+}
+
+function DotsIcon() {
+  return (
+    <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+      <circle cx="4.8" cy="10" r="1.6" />
+      <circle cx="10" cy="10" r="1.6" />
+      <circle cx="15.2" cy="10" r="1.6" />
+    </svg>
+  );
+}
+
+const POST_TYPES = [
+  { key: "tip", label: "Tip", Icon: BulbIcon },
+  { key: "question", label: "Question", Icon: QuestionIcon },
+  { key: "other", label: "Something else", Icon: DotsIcon },
+];
+
+function postTypeMeta(key) {
+  return POST_TYPES.find((t) => t.key === key) || null;
+}
+
 function Avatar({ name, email, size }) {
   return (
     <div className={`cm-avatar${size ? ` cm-avatar--${size}` : ""}`} style={{ background: avatarHue(email) }}>
@@ -136,6 +165,7 @@ export default function Community() {
   const [posts, setPosts] = useState([]);
   const [loadingPosts, setLoadingPosts] = useState(true);
   const [draft, setDraft] = useState("");
+  const [postType, setPostType] = useState(null);
   const [posting, setPosting] = useState(false);
 
   const [expanded, setExpanded] = useState(new Set());
@@ -165,7 +195,7 @@ export default function Community() {
     setLoadingPosts(true);
     const { data, error } = await supabase
       .from("community_posts")
-      .select("id, author_id, author_email, author_name, content, created_at")
+      .select("id, author_id, author_email, author_name, content, post_type, created_at")
       .order("created_at", { ascending: false });
     setPosts(error ? [] : data || []);
     setLoadingPosts(false);
@@ -204,12 +234,13 @@ export default function Community() {
     setPosting(true);
     const { data, error } = await supabase
       .from("community_posts")
-      .insert({ author_id: user.id, author_email: user.email, author_name: myName.trim() || null, content, status: "approved" })
+      .insert({ author_id: user.id, author_email: user.email, author_name: myName.trim() || null, content, post_type: postType, status: "approved" })
       .select()
       .single();
     setPosting(false);
     if (!error && data) {
       setDraft("");
+      setPostType(null);
       setPosts((prev) => [data, ...prev]);
     }
   }
@@ -289,40 +320,33 @@ export default function Community() {
         <button type="button" className="cm-brand" onClick={() => navigate("/library")} title="Back to Library">
           <img src="/logo-sentivo.png" alt="" className="cm-brand-logo" />entivo
         </button>
-        <span className="cm-topbar-title">Community</span>
-        <span className="cm-topbar-spacer" aria-hidden="true" />
+        <h1 className="cm-topbar-title">Teacher Community</h1>
       </header>
 
       <div className="cm-page">
         <div className="cm-stage">
-          <div className="cm-banner">
+          <div className="cm-banner-block">
             <img
               className="cm-banner-img"
               src={communityBannerImg}
               alt="Illustration of teachers around the world connecting over Sentivo"
             />
-          </div>
-
-          <div className="cm-pagehead">
-            <h1 className="cm-pagehead-title">Teacher Community</h1>
-            <p className="cm-pagehead-blurb">Share a tip, ask a question, or say hello to other teachers.</p>
-          </div>
-
-          <div className="cm-stats">
-            <div className="cm-stat">
-              <PeopleIcon />
-              <div className="cm-stat-num">{teacherCount}</div>
-              <div className="cm-stat-label">Teachers</div>
-            </div>
-            <div className="cm-stat">
-              <BulbIcon />
-              <div className="cm-stat-num">{tipsShared}</div>
-              <div className="cm-stat-label">Tips Shared</div>
-            </div>
-            <div className="cm-stat">
-              <FlameIcon />
-              <div className="cm-stat-num">{dayStreak}</div>
-              <div className="cm-stat-label">Day Streak</div>
+            <div className="cm-stats">
+              <div className="cm-stat">
+                <PeopleIcon />
+                <div className="cm-stat-num">{teacherCount}</div>
+                <div className="cm-stat-label">Teachers</div>
+              </div>
+              <div className="cm-stat">
+                <BulbIcon />
+                <div className="cm-stat-num">{tipsShared}</div>
+                <div className="cm-stat-label">Tips Shared</div>
+              </div>
+              <div className="cm-stat">
+                <FlameIcon />
+                <div className="cm-stat-num">{dayStreak}</div>
+                <div className="cm-stat-label">Day Streak</div>
+              </div>
             </div>
           </div>
 
@@ -343,6 +367,19 @@ export default function Community() {
             <div className="cm-composer">
               <Avatar name={myName} email={user.email} />
               <div className="cm-composer-body">
+                <div className="cm-type-picker">
+                  {POST_TYPES.map(({ key, label, Icon }) => (
+                    <button
+                      key={key}
+                      type="button"
+                      className={`cm-type-pill${postType === key ? " is-active" : ""}`}
+                      onClick={() => setPostType(postType === key ? null : key)}
+                    >
+                      <Icon />
+                      {label}
+                    </button>
+                  ))}
+                </div>
                 <textarea
                   ref={composerRef}
                   className="cm-composer-input"
@@ -374,6 +411,7 @@ export default function Community() {
                 const liked = likedByMe.has(p.id);
                 const likeCount = likeCounts[p.id] || 0;
                 const commentCount = commentCounts[p.id] || 0;
+                const type = postTypeMeta(p.post_type);
                 return (
                   <div className="cm-post" key={p.id}>
                     <div className="cm-post-head">
@@ -382,6 +420,12 @@ export default function Community() {
                         <span className="cm-post-author">{displayName(p.author_name, p.author_email)}</span>
                         <span className="cm-post-dot">·</span>
                         <span className="cm-post-time">{timeAgo(p.created_at)}</span>
+                        {type && (
+                          <span className={`cm-post-tag cm-post-tag--${type.key}`}>
+                            <type.Icon />
+                            {type.label}
+                          </span>
+                        )}
                       </div>
                       {canManage && (
                         <button type="button" className="cm-icon-btn" title="Delete post" onClick={() => deletePost(p.id)}>
@@ -496,23 +540,18 @@ const CSS = `
   padding: 0;
 }
 .cm-brand-logo { height: 24px; width: auto; display: block; margin-right: -3px; }
-.cm-topbar-title { font-family: 'Fredoka', sans-serif; font-size: 14px; font-weight: 600; color: var(--muted); }
-.cm-topbar-spacer { width: 90px; }
+.cm-topbar-title { font-family: 'Fredoka', sans-serif; font-size: 15px; font-weight: 700; color: var(--ink); margin: 0; }
 
 .cm-page { padding: 24px; }
 .cm-stage { max-width: 640px; margin: 0 auto; display: flex; flex-direction: column; gap: 16px; }
 
-.cm-banner { border-radius: 16px; overflow: hidden; box-shadow: 0 4px 14px rgba(43,42,74,0.04); }
-.cm-banner-img { width: 100%; aspect-ratio: 3 / 1; object-fit: cover; display: block; }
-
-.cm-pagehead { padding: 4px 2px 2px; }
-.cm-pagehead-title { font-family: 'Fredoka', sans-serif; font-size: 24px; font-weight: 600; margin: 0 0 4px; color: var(--ink); }
-.cm-pagehead-blurb { font-size: 13.5px; line-height: 1.5; color: var(--muted); margin: 0; }
-
-.cm-stats {
-  display: flex; background: var(--card); border: 1px solid var(--hair); border-radius: 16px;
+.cm-banner-block {
+  border-radius: 16px; overflow: hidden; border: 1px solid var(--hair);
   box-shadow: 0 4px 14px rgba(43,42,74,0.04);
 }
+.cm-banner-img { width: 100%; aspect-ratio: 3 / 1; object-fit: cover; display: block; }
+
+.cm-stats { display: flex; background: var(--card); border-top: 1px solid var(--hair); }
 .cm-stat { flex: 1; text-align: center; padding: 14px 6px; }
 .cm-stat + .cm-stat { border-left: 1px solid var(--hair); }
 .cm-stat svg { width: 18px; height: 18px; color: var(--coral); }
@@ -558,6 +597,17 @@ const CSS = `
 .cm-composer-input:focus { outline: none; border-color: var(--coral); }
 .cm-composer-row { display: flex; align-items: center; justify-content: flex-end; gap: 12px; }
 
+.cm-type-picker { display: flex; flex-wrap: wrap; gap: 8px; }
+.cm-type-pill {
+  display: flex; align-items: center; gap: 6px;
+  background: #FDFCFA; border: 1px solid var(--hair); border-radius: 999px;
+  padding: 6px 12px 6px 10px; cursor: pointer;
+  font-family: 'Quicksand', sans-serif; font-weight: 700; font-size: 12px; color: var(--muted);
+}
+.cm-type-pill svg { width: 14px; height: 14px; }
+.cm-type-pill:hover { border-color: var(--coral); color: var(--coral); }
+.cm-type-pill.is-active { background: var(--coral); border-color: var(--coral); color: #fff; }
+
 .cm-avatar {
   flex-shrink: 0; width: 40px; height: 40px; border-radius: 50%;
   color: #fff; font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 14px;
@@ -582,11 +632,21 @@ const CSS = `
   box-shadow: 0 4px 14px rgba(43,42,74,0.04);
 }
 .cm-post-head { display: flex; align-items: center; gap: 10px; }
-.cm-post-headline { display: flex; align-items: baseline; gap: 6px; min-width: 0; }
+.cm-post-headline { display: flex; align-items: center; flex-wrap: wrap; row-gap: 4px; gap: 6px; min-width: 0; }
 .cm-post-author { font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 13.5px; color: var(--ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .cm-post-dot { color: var(--muted); font-size: 12px; }
 .cm-post-time { font-size: 12px; color: var(--muted); white-space: nowrap; }
 .cm-post-text { font-size: 14.5px; line-height: 1.6; color: var(--ink); margin: 10px 0 10px; white-space: pre-wrap; }
+
+.cm-post-tag {
+  display: flex; align-items: center; gap: 4px;
+  font-family: 'Quicksand', sans-serif; font-weight: 700; font-size: 10.5px;
+  border-radius: 999px; padding: 2px 9px 2px 7px; margin-left: 2px;
+}
+.cm-post-tag svg { width: 11px; height: 11px; }
+.cm-post-tag--tip { background: #FCEFD6; color: #A5730F; }
+.cm-post-tag--question { background: var(--coral-pale); color: var(--coral); }
+.cm-post-tag--other { background: #E7E4F4; color: #6E5FC4; }
 
 .cm-post-actions { display: flex; align-items: center; gap: 4px; }
 .cm-action-btn {
