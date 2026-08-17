@@ -792,6 +792,53 @@ function openFeedbackGenerator() {
   window.open("/library/feedback", "_blank");
 }
 
+function CommunityWidget({ navigate }) {
+  const { user } = useAuth();
+  const isAdmin = user?.email?.toLowerCase() === "caldrin1999@gmail.com";
+  const [latest, setLatest] = useState(null);
+  const [pendingCount, setPendingCount] = useState(0);
+
+  useEffect(() => {
+    let active = true;
+    async function load() {
+      const { data } = await supabase
+        .from("community_posts")
+        .select("content, author_email, created_at")
+        .eq("status", "approved")
+        .order("created_at", { ascending: false })
+        .limit(1);
+      if (active) setLatest((data && data[0]) || null);
+      if (isAdmin) {
+        const { count } = await supabase
+          .from("community_posts")
+          .select("id", { count: "exact", head: true })
+          .eq("status", "pending");
+        if (active) setPendingCount(count || 0);
+      }
+    }
+    load();
+    return () => { active = false; };
+  }, [isAdmin]);
+
+  return (
+    <button type="button" className="td-community-card" onClick={() => navigate("/library/community")}>
+      <div className="td-community-icon">💬</div>
+      <div className="td-community-body">
+        <div className="td-community-title">
+          Teacher Community
+          {isAdmin && pendingCount > 0 && <span className="td-community-badge">{pendingCount} pending</span>}
+        </div>
+        <p className="td-community-preview">
+          {latest
+            ? `“${latest.content.length > 90 ? `${latest.content.slice(0, 90)}…` : latest.content}”`
+            : "Share a tip or ask a question with other teachers."}
+        </p>
+      </div>
+      <span className="td-community-cta">Open <span className="arr">→</span></span>
+    </button>
+  );
+}
+
 function TodayFeature({ tools, navigate }) {
   const today = new Date();
   const dayIndex = daysSince(today);
@@ -871,6 +918,8 @@ function TodayFeature({ tools, navigate }) {
             <div className="td-action-title">Slide Builder</div>
           </button>
         </div>
+
+        <CommunityWidget navigate={navigate} />
 
         {recommended.length > 0 && (
           <div className="gc-reclessons">
@@ -1966,6 +2015,33 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .td-action-icon img { width: 100%; height: 100%; object-fit: contain; }
 .td-action-title { font-family: 'Fredoka', sans-serif; font-size: 13px; font-weight: 600; line-height: 1.25; color: var(--ink); }
 .td-action-card.is-soon { opacity: 0.7; cursor: default; }
+
+/* ── Community widget ── */
+.td-community-card {
+  display: flex; align-items: center; gap: 14px; width: 100%;
+  background: var(--card); border: none; border-radius: 18px; padding: 16px 18px;
+  box-shadow: 0 8px 24px rgba(43,42,74,0.05);
+  font: inherit; text-align: left; cursor: pointer; color: inherit;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.td-community-card:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(43,42,74,0.10); }
+.td-community-icon {
+  flex-shrink: 0; width: 44px; height: 44px; border-radius: 12px;
+  background: var(--coral-pale); display: flex; align-items: center; justify-content: center; font-size: 20px;
+}
+.td-community-body { flex: 1; min-width: 0; }
+.td-community-title { display: flex; align-items: center; gap: 8px; font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 14.5px; color: var(--ink); }
+.td-community-badge {
+  font-family: 'Quicksand', sans-serif; font-size: 10px; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase;
+  color: #fff; background: var(--coral); border-radius: 999px; padding: 3px 9px;
+}
+.td-community-preview {
+  font-family: 'Quicksand', sans-serif; font-size: 12.5px; color: var(--muted);
+  margin: 3px 0 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.td-community-cta { flex-shrink: 0; font-family: 'Quicksand', sans-serif; font-weight: 700; font-size: 12.5px; color: var(--coral); }
+.td-community-cta .arr { display: inline-block; transition: transform 0.15s ease; }
+.td-community-card:hover .arr { transform: translateX(3px); }
 
 /* ── Quote banner ── */
 .td-quote-banner { border-radius: 24px; overflow: hidden; line-height: 0; }
