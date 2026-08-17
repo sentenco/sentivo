@@ -1,12 +1,47 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "./supabaseClient";
 import { useAuth } from "./AuthContext";
 import AuthForm from "./AuthForm";
 import { timeAgo } from "./slideDeckTypes";
+import communityBannerImg from "./assets/community/banner.jpg";
 
 const ADMIN_EMAIL = "caldrin1999@gmail.com";
 const AVATAR_HUES = ["#FF6B4A", "#7C5CFC", "#16BFAE", "#E0A72E", "#FF8A4C"];
+
+// ESL-teaching conversation starters -- one per day, same deterministic
+// rotation pattern as the Today hero's tagline (Library.jsx HERO_TAGLINES).
+const ESL_PROMPTS = [
+  "What's one grammar mistake your students make again and again?",
+  "What's your go-to icebreaker for a shy class?",
+  "Which word do your students always mix up?",
+  "Share your best trick for teaching phrasal verbs.",
+  "What's a warm-up activity that never fails?",
+  "What's the most common pronunciation issue you correct?",
+  "How do you keep a low-level class engaged for a full hour?",
+];
+
+function todaysPrompt() {
+  const dayIndex = Math.floor(Date.now() / 86400000);
+  return ESL_PROMPTS[((dayIndex % ESL_PROMPTS.length) + ESL_PROMPTS.length) % ESL_PROMPTS.length];
+}
+
+// "Day streak" = consecutive days with at least one post, counting back from
+// today; if nobody has posted yet today, still counts back from yesterday
+// so the streak doesn't zero out until the day is fully over.
+function computeDayStreak(posts) {
+  if (!posts.length) return 0;
+  const days = new Set(posts.map((p) => new Date(p.created_at).toDateString()));
+  const cursor = new Date();
+  cursor.setHours(0, 0, 0, 0);
+  if (!days.has(cursor.toDateString())) cursor.setDate(cursor.getDate() - 1);
+  let streak = 0;
+  while (days.has(cursor.toDateString())) {
+    streak++;
+    cursor.setDate(cursor.getDate() - 1);
+  }
+  return streak;
+}
 
 function avatarHue(email) {
   if (!email) return AVATAR_HUES[0];
@@ -55,6 +90,34 @@ function CommentIcon() {
   );
 }
 
+function PeopleIcon() {
+  return (
+    <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <circle cx="7.3" cy="6.8" r="3" />
+      <path d="M1.8 17c0-3.1 2.4-5.2 5.5-5.2s5.5 2.1 5.5 5.2" />
+      <path d="M13 12.2c2.4.3 4.2 2.2 4.2 4.8" />
+      <circle cx="14.2" cy="7.3" r="2.1" />
+    </svg>
+  );
+}
+
+function BulbIcon() {
+  return (
+    <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M10 2.3a5.4 5.4 0 0 0-3 9.9c.6.4 1 1.2 1 1.9v.4h4v-.4c0-.7.4-1.5 1-1.9a5.4 5.4 0 0 0-3-9.9Z" />
+      <path d="M8 17.7h4M8.7 15.2h2.6" />
+    </svg>
+  );
+}
+
+function FlameIcon() {
+  return (
+    <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M10 2.2s3.3 3.5 3.3 6.8c0 1-.3 1.8-.8 2.5.9-.4 1.7-1.2 2-2.2.9 1.4 1.4 3 1.4 4.3a5.9 5.9 0 0 1-11.8 0c0-2.2 1-4.1 2.3-5.7-.1.6-.1 1.3.1 1.9.4-3.9 2-6.9 3.5-7.6Z" />
+    </svg>
+  );
+}
+
 function Avatar({ name, email, size }) {
   return (
     <div className={`cm-avatar${size ? ` cm-avatar--${size}` : ""}`} style={{ background: avatarHue(email) }}>
@@ -82,6 +145,21 @@ export default function Community() {
 
   const [likeCounts, setLikeCounts] = useState({});
   const [likedByMe, setLikedByMe] = useState(new Set());
+
+  const composerRef = useRef(null);
+  const prompt = todaysPrompt();
+  const teacherCount = new Set(posts.map((p) => p.author_id)).size;
+  const tipsShared = posts.length;
+  const dayStreak = computeDayStreak(posts);
+
+  function usePrompt() {
+    if (!user) { setAuthMode("login"); return; }
+    setDraft(prompt);
+    requestAnimationFrame(() => {
+      composerRef.current?.focus();
+      composerRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+    });
+  }
 
   async function loadPosts() {
     setLoadingPosts(true);
@@ -217,10 +295,44 @@ export default function Community() {
 
       <div className="cm-page">
         <div className="cm-stage">
+          <div className="cm-banner">
+            <img
+              className="cm-banner-img"
+              src={communityBannerImg}
+              alt="Illustration of teachers around the world connecting over Sentivo"
+            />
+          </div>
+
           <div className="cm-pagehead">
             <h1 className="cm-pagehead-title">Teacher Community</h1>
             <p className="cm-pagehead-blurb">Share a tip, ask a question, or say hello to other teachers.</p>
           </div>
+
+          <div className="cm-stats">
+            <div className="cm-stat">
+              <PeopleIcon />
+              <div className="cm-stat-num">{teacherCount}</div>
+              <div className="cm-stat-label">Teachers</div>
+            </div>
+            <div className="cm-stat">
+              <BulbIcon />
+              <div className="cm-stat-num">{tipsShared}</div>
+              <div className="cm-stat-label">Tips Shared</div>
+            </div>
+            <div className="cm-stat">
+              <FlameIcon />
+              <div className="cm-stat-num">{dayStreak}</div>
+              <div className="cm-stat-label">Day Streak</div>
+            </div>
+          </div>
+
+          <button type="button" className="cm-prompt" onClick={usePrompt}>
+            <div>
+              <span className="cm-prompt-eyebrow">Prompt of the day</span>
+              <p className="cm-prompt-text">{prompt}</p>
+            </div>
+            <span className="cm-prompt-dice" aria-hidden="true">&#8635;</span>
+          </button>
 
           {authLoading ? null : !user ? (
             <div className="cm-signin-card">
@@ -232,6 +344,7 @@ export default function Community() {
               <Avatar name={myName} email={user.email} />
               <div className="cm-composer-body">
                 <textarea
+                  ref={composerRef}
                   className="cm-composer-input"
                   placeholder="Share something with other teachers…"
                   value={draft}
@@ -389,9 +502,41 @@ const CSS = `
 .cm-page { padding: 24px; }
 .cm-stage { max-width: 640px; margin: 0 auto; display: flex; flex-direction: column; gap: 16px; }
 
+.cm-banner { border-radius: 16px; overflow: hidden; box-shadow: 0 4px 14px rgba(43,42,74,0.04); }
+.cm-banner-img { width: 100%; aspect-ratio: 3 / 1; object-fit: cover; display: block; }
+
 .cm-pagehead { padding: 4px 2px 2px; }
 .cm-pagehead-title { font-family: 'Fredoka', sans-serif; font-size: 24px; font-weight: 600; margin: 0 0 4px; color: var(--ink); }
 .cm-pagehead-blurb { font-size: 13.5px; line-height: 1.5; color: var(--muted); margin: 0; }
+
+.cm-stats {
+  display: flex; background: var(--card); border: 1px solid var(--hair); border-radius: 16px;
+  box-shadow: 0 4px 14px rgba(43,42,74,0.04);
+}
+.cm-stat { flex: 1; text-align: center; padding: 14px 6px; }
+.cm-stat + .cm-stat { border-left: 1px solid var(--hair); }
+.cm-stat svg { width: 18px; height: 18px; color: var(--coral); }
+.cm-stat-num {
+  font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 18px; color: var(--ink);
+  margin-top: 5px; font-variant-numeric: tabular-nums;
+}
+.cm-stat-label { font-size: 10px; font-weight: 700; letter-spacing: 0.03em; color: var(--muted); margin-top: 2px; }
+
+.cm-prompt {
+  display: flex; align-items: flex-start; justify-content: space-between; gap: 12px;
+  width: 100%; text-align: left; font: inherit; cursor: pointer;
+  background: var(--coral-pale); border: none; border-radius: 16px; padding: 16px 18px;
+}
+.cm-prompt-eyebrow {
+  display: block; font-family: 'Quicksand', sans-serif; font-size: 10px; font-weight: 800;
+  letter-spacing: 0.08em; text-transform: uppercase; color: var(--coral); margin-bottom: 6px;
+}
+.cm-prompt-text { font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 15px; color: var(--ink); margin: 0; line-height: 1.35; }
+.cm-prompt-dice {
+  flex-shrink: 0; width: 30px; height: 30px; border-radius: 50%; background: #fff; color: var(--coral);
+  display: flex; align-items: center; justify-content: center; font-size: 14px;
+  box-shadow: 0 4px 10px rgba(43,42,74,0.08);
+}
 
 .cm-signin-card {
   background: var(--card); border: 1px solid var(--hair); border-radius: 16px;
