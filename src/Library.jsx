@@ -157,6 +157,19 @@ function MiniCalendar() {
   );
 }
 
+const HERO_TAGLINES = [
+  "Let's make today a great teaching day.",
+  "Every lesson is a chance to make a difference.",
+  "Small steps today, big growth for your students.",
+  "Ready to inspire? Let's get started.",
+  "Great teachers make great days — starting now.",
+  "Your energy today shapes someone's tomorrow.",
+  "One more day to help a student shine.",
+  "Let's turn today's lesson into a spark.",
+  "Show up, teach well, make it count.",
+  "Today's a good day to inspire someone.",
+];
+
 function heroInitials(name, email) {
   const source = name?.trim() || email?.split("@")[0] || "";
   const parts = source.replace(/[._-]+/g, " ").trim().split(/\s+/).filter(Boolean);
@@ -190,6 +203,8 @@ function TodayHero({ navigate }) {
 
   const hour = now.getHours();
   const greeting = hour < 12 ? "Good morning" : hour < 17 ? "Good afternoon" : "Good evening";
+  const taglineIdx = ((daysSince(now) % HERO_TAGLINES.length) + HERO_TAGLINES.length) % HERO_TAGLINES.length;
+  const tagline = HERO_TAGLINES[taglineIdx];
 
   function startEditing() {
     setDraft(name);
@@ -251,7 +266,7 @@ function TodayHero({ navigate }) {
             </button>
           )}
         </h1>
-        <p className="td-hero-sub">Let's make today a great teaching day.</p>
+        <p className="td-hero-sub">{tagline}</p>
 
         <div className="td-composer">
           <div className="td-composer-avatar">{heroInitials(name, user?.email)}</div>
@@ -284,7 +299,7 @@ function TodayHero({ navigate }) {
         </div>
         {justPosted && <p className="td-composer-confirm">Posted — awaiting approval.</p>}
         <button type="button" className="td-composer-viewlink" onClick={() => navigate("/library/community")}>
-          See what other teachers are sharing →
+          Community →
         </button>
       </div>
 
@@ -1938,10 +1953,10 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .td-hero-btn { display: block; background: none; border: none; padding: 0; margin: 0; text-align: left; font: inherit; color: inherit; cursor: pointer; }
 .td-hero-editing { display: inline-block; }
 .td-hero-input { font: inherit; color: var(--coral); border: none; border-bottom: 2px solid var(--coral); background: transparent; outline: none; width: 9ch; }
-.td-hero-sub { font-family: 'Quicksand', sans-serif; font-size: 14.5px; color: var(--ink-soft, var(--muted)); margin: 10px 0 18px; }
+.td-hero-sub { font-family: 'Quicksand', sans-serif; font-size: 14.5px; color: var(--ink-soft, var(--muted)); margin: 10px 0 14px; }
 
 /* ── Hero "what's on your mind" composer ── */
-.td-composer { display: flex; align-items: center; gap: 10px; max-width: 400px; }
+.td-composer { display: flex; align-items: center; gap: 8px; max-width: 240px; }
 .td-composer-avatar {
   flex-shrink: 0; width: 38px; height: 38px; border-radius: 50%;
   background: var(--coral); color: #fff; font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 13px;
