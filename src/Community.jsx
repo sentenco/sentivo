@@ -136,6 +136,33 @@ function LinkIcon() {
   );
 }
 
+function ImageIcon() {
+  return (
+    <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <rect x="2.3" y="3.5" width="15.4" height="13" rx="2" />
+      <circle cx="7" cy="8" r="1.3" />
+      <path d="M3 14.5l4.3-4.3 3 3 2-2 4.7 4.7" />
+    </svg>
+  );
+}
+
+function FileIcon() {
+  return (
+    <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M5.3 2.5h6l3.4 3.4v11.1a1 1 0 0 1-1 1H5.3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1Z" />
+      <path d="M11.3 2.5v3.4h3.4" />
+    </svg>
+  );
+}
+
+function CloseIcon() {
+  return (
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" aria-hidden="true">
+      <path d="M4 4l8 8M12 4l-8 8" />
+    </svg>
+  );
+}
+
 function PinIcon() {
   return (
     <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -183,6 +210,11 @@ export default function Community() {
   const [draft, setDraft] = useState("");
   const [postType, setPostType] = useState(null);
   const [posting, setPosting] = useState(false);
+  const [uploadedImage, setUploadedImage] = useState(null);
+  const [uploadedFile, setUploadedFile] = useState(null);
+  const [uploadingImage, setUploadingImage] = useState(false);
+  const [uploadingFile, setUploadingFile] = useState(false);
+  const [uploadError, setUploadError] = useState(null);
 
   const [expanded, setExpanded] = useState(new Set());
   const [commentsByPost, setCommentsByPost] = useState({});
@@ -220,7 +252,7 @@ export default function Community() {
     setLoadingPosts(true);
     const { data, error } = await supabase
       .from("community_posts")
-      .select("id, author_id, author_email, author_name, content, post_type, prompt_date, created_at")
+      .select("id, author_id, author_email, author_name, content, post_type, prompt_date, image_url, file_url, file_name, created_at")
       .order("created_at", { ascending: false });
     const rows = error ? [] : data || [];
     setPosts(rows);
@@ -280,19 +312,60 @@ export default function Community() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user]);
 
+  async function handleImageUpload(e) {
+    const file = e.target.files?.[0];
+    e.target.value = "";
+    if (!file || !user) return;
+    setUploadError(null);
+    setUploadingImage(true);
+    const path = `${user.id}/${crypto.randomUUID()}-${file.name}`;
+    const { error } = await supabase.storage.from("community-uploads").upload(path, file);
+    setUploadingImage(false);
+    if (error) { setUploadError(error.message || "Image upload failed."); return; }
+    const { data: pub } = supabase.storage.from("community-uploads").getPublicUrl(path);
+    setUploadedImage({ url: pub.publicUrl });
+  }
+
+  async function handleFileUpload(e) {
+    const file = e.target.files?.[0];
+    e.target.value = "";
+    if (!file || !user) return;
+    setUploadError(null);
+    setUploadingFile(true);
+    const path = `${user.id}/${crypto.randomUUID()}-${file.name}`;
+    const { error } = await supabase.storage.from("community-uploads").upload(path, file);
+    setUploadingFile(false);
+    if (error) { setUploadError(error.message || "File upload failed."); return; }
+    const { data: pub } = supabase.storage.from("community-uploads").getPublicUrl(path);
+    setUploadedFile({ url: pub.publicUrl, name: file.name });
+  }
+
   async function submitPost() {
     const content = draft.trim();
     if (!content || !user || posting) return;
     setPosting(true);
     const { data, error } = await supabase
       .from("community_posts")
-      .insert({ author_id: user.id, author_email: user.email, author_name: myName.trim() || null, content, post_type: postType, status: "approved" })
+      .insert({
+        author_id: user.id,
+        author_email: user.email,
+        author_name: myName.trim() || null,
+        content,
+        post_type: postType,
+        image_url: uploadedImage?.url || null,
+        file_url: uploadedFile?.url || null,
+        file_name: uploadedFile?.name || null,
+        status: "approved",
+      })
       .select()
       .single();
     setPosting(false);
     if (!error && data) {
       setDraft("");
       setPostType(null);
+      setUploadedImage(null);
+      setUploadedFile(null);
+      setUploadError(null);
       setPosts((prev) => [data, ...prev]);
     }
   }
@@ -386,18 +459,15 @@ export default function Community() {
             <div className="cm-stats">
               <div className="cm-stat">
                 <PeopleIcon />
-                <div className="cm-stat-num">{teacherCount}</div>
-                <div className="cm-stat-label">Teachers</div>
+                <span className="cm-stat-text"><strong>{teacherCount}</strong> Teachers</span>
               </div>
               <div className="cm-stat">
                 <BulbIcon />
-                <div className="cm-stat-num">{tipsShared}</div>
-                <div className="cm-stat-label">Tips Shared</div>
+                <span className="cm-stat-text"><strong>{tipsShared}</strong> Tips Shared</span>
               </div>
               <div className="cm-stat">
                 <FlameIcon />
-                <div className="cm-stat-num">{dayStreak}</div>
-                <div className="cm-stat-label">Day Streak</div>
+                <span className="cm-stat-text"><strong>{dayStreak}</strong> Day Streak</span>
               </div>
             </div>
           </div>
@@ -433,7 +503,40 @@ export default function Community() {
                   rows={3}
                   maxLength={2000}
                 />
+
+                {uploadedImage && (
+                  <div className="cm-attach-preview">
+                    <img src={uploadedImage.url} alt="" />
+                    <button type="button" className="cm-attach-remove" title="Remove image" onClick={() => setUploadedImage(null)}>
+                      <CloseIcon />
+                    </button>
+                  </div>
+                )}
+                {uploadedFile && (
+                  <div className="cm-attach-file-chip">
+                    <FileIcon />
+                    <span>{uploadedFile.name}</span>
+                    <button type="button" className="cm-attach-remove" title="Remove file" onClick={() => setUploadedFile(null)}>
+                      <CloseIcon />
+                    </button>
+                  </div>
+                )}
+                {uploadError && <p className="cm-upload-error">{uploadError}</p>}
+
                 <div className="cm-composer-row">
+                  <div className="cm-composer-attach-btns">
+                    <label className="cm-attach-btn" title="Add an image">
+                      <ImageIcon />
+                      <input type="file" accept="image/*" hidden onChange={handleImageUpload} disabled={uploadingImage} />
+                    </label>
+                    {postType === "resource" && (
+                      <label className="cm-attach-btn" title="Add a file">
+                        <FileIcon />
+                        <input type="file" hidden onChange={handleFileUpload} disabled={uploadingFile} />
+                      </label>
+                    )}
+                    {(uploadingImage || uploadingFile) && <span className="cm-uploading-hint">Uploading…</span>}
+                  </div>
                   <button type="button" className="cm-btn" disabled={!draft.trim() || posting} onClick={submitPost}>
                     {posting ? "Posting…" : "Post"}
                   </button>
@@ -494,6 +597,17 @@ export default function Community() {
                       ) : null}
                     </div>
                     <p className="cm-post-text">{p.content}</p>
+                    {p.image_url && (
+                      <a href={p.image_url} target="_blank" rel="noreferrer" className="cm-post-image-link">
+                        <img src={p.image_url} alt="" className="cm-post-image" />
+                      </a>
+                    )}
+                    {p.file_url && (
+                      <a href={p.file_url} target="_blank" rel="noreferrer" className="cm-post-file">
+                        <FileIcon />
+                        <span>{p.file_name || "Attached file"}</span>
+                      </a>
+                    )}
                     <div className="cm-post-actions">
                       <button type="button" className={`cm-action-btn${liked ? " is-liked" : ""}`} onClick={() => toggleLike(p.id)}>
                         <HeartIcon filled={liked} />
@@ -612,15 +726,11 @@ const CSS = `
 .cm-banner-img { width: 100%; aspect-ratio: 3 / 1; object-fit: cover; display: block; }
 
 .cm-stats { display: flex; background: var(--card); border-top: 1px solid var(--hair); }
-.cm-stat { flex: 1; text-align: center; padding: 14px 6px; }
+.cm-stat { flex: 1; display: flex; align-items: center; justify-content: center; gap: 5px; padding: 9px 4px; min-width: 0; }
 .cm-stat + .cm-stat { border-left: 1px solid var(--hair); }
-.cm-stat svg { width: 18px; height: 18px; color: var(--coral); }
-.cm-stat-num {
-  font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 18px; color: var(--ink);
-  margin-top: 5px; font-variant-numeric: tabular-nums;
-}
-.cm-stat-label { font-size: 10px; font-weight: 700; letter-spacing: 0.03em; color: var(--muted); margin-top: 2px; }
-
+.cm-stat svg { width: 14px; height: 14px; color: var(--coral); flex-shrink: 0; }
+.cm-stat-text { font-family: 'Quicksand', sans-serif; font-size: 11px; color: var(--muted); line-height: 1.25; }
+.cm-stat-text strong { font-family: 'Fredoka', sans-serif; font-weight: 700; color: var(--ink); font-variant-numeric: tabular-nums; margin-right: 2px; }
 
 .cm-signin-card {
   background: var(--card); border: 1px solid var(--hair); border-radius: 16px;
@@ -640,7 +750,33 @@ const CSS = `
   font: inherit; font-size: 14px; color: var(--ink); background: #FDFCFA;
 }
 .cm-composer-input:focus { outline: none; border-color: var(--coral); }
-.cm-composer-row { display: flex; align-items: center; justify-content: flex-end; gap: 12px; }
+.cm-composer-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+
+.cm-composer-attach-btns { display: flex; align-items: center; gap: 6px; }
+.cm-attach-btn {
+  display: flex; align-items: center; justify-content: center;
+  width: 32px; height: 32px; border-radius: 10px; cursor: pointer;
+  color: var(--muted); border: 1px solid var(--hair);
+}
+.cm-attach-btn:hover { color: var(--coral); border-color: var(--coral); }
+.cm-attach-btn svg { width: 16px; height: 16px; }
+.cm-uploading-hint { font-family: 'Quicksand', sans-serif; font-size: 11px; color: var(--muted); }
+
+.cm-attach-preview { position: relative; width: fit-content; }
+.cm-attach-preview img { max-width: 160px; max-height: 120px; border-radius: 10px; display: block; object-fit: cover; }
+.cm-attach-file-chip {
+  position: relative; display: flex; align-items: center; gap: 8px; width: fit-content;
+  background: #FDFCFA; border: 1px solid var(--hair); border-radius: 10px; padding: 8px 30px 8px 10px;
+  font-family: 'Quicksand', sans-serif; font-size: 12.5px; color: var(--ink);
+}
+.cm-attach-file-chip svg { width: 15px; height: 15px; color: var(--muted); flex-shrink: 0; }
+.cm-attach-remove {
+  position: absolute; top: -6px; right: -6px; width: 20px; height: 20px; border-radius: 50%;
+  background: var(--ink); color: #fff; border: none; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+}
+.cm-attach-remove svg { width: 10px; height: 10px; }
+.cm-upload-error { font-family: 'Quicksand', sans-serif; font-size: 11.5px; color: #C0392B; margin: 0; }
 
 .cm-type-picker { display: flex; flex-wrap: wrap; gap: 8px; }
 .cm-type-pill {
@@ -697,6 +833,15 @@ const CSS = `
 .cm-post-dot { color: var(--muted); font-size: 12px; }
 .cm-post-time { font-size: 12px; color: var(--muted); white-space: nowrap; }
 .cm-post-text { font-size: 14.5px; line-height: 1.6; color: var(--ink); margin: 10px 0 10px; white-space: pre-wrap; }
+
+.cm-post-image-link { display: block; margin: 0 0 10px; }
+.cm-post-image { width: 100%; max-height: 320px; object-fit: cover; border-radius: 12px; display: block; }
+.cm-post-file {
+  display: flex; align-items: center; gap: 8px; width: fit-content;
+  background: var(--coral-pale); border-radius: 10px; padding: 8px 12px; margin: 0 0 10px;
+  font-family: 'Quicksand', sans-serif; font-size: 12.5px; font-weight: 700; color: var(--coral); text-decoration: none;
+}
+.cm-post-file svg { width: 15px; height: 15px; }
 
 .cm-post-tag {
   display: flex; align-items: center; gap: 4px;
