@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "./supabaseClient";
 import { useAuth } from "./AuthContext";
@@ -127,12 +127,28 @@ function QuestionIcon() {
   );
 }
 
-function DotsIcon() {
+function LinkIcon() {
+  return (
+    <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M8.3 11.7a3 3 0 0 0 4.2 0l2.2-2.2a3 3 0 0 0-4.2-4.2l-1 1" />
+      <path d="M11.7 8.3a3 3 0 0 0-4.2 0L5.3 10.5a3 3 0 0 0 4.2 4.2l1-1" />
+    </svg>
+  );
+}
+
+function PinIcon() {
   return (
     <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-      <circle cx="4.8" cy="10" r="1.6" />
-      <circle cx="10" cy="10" r="1.6" />
-      <circle cx="15.2" cy="10" r="1.6" />
+      <path d="M11.2 2.3a1 1 0 0 1 1.6-.2l5.1 5.1a1 1 0 0 1-.2 1.6l-2.9 1.5-.4 4.9a1 1 0 0 1-1.7.6l-2.9-2.9-4.3 4.3a.7.7 0 0 1-1-1l4.3-4.3-2.9-2.9a1 1 0 0 1 .6-1.7l4.9-.4Z" />
+    </svg>
+  );
+}
+
+function CheckBadgeIcon() {
+  return (
+    <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+      <circle cx="10" cy="10" r="9" />
+      <path d="M6.3 10.3l2.3 2.3 5-5" stroke="#fff" strokeWidth="1.7" fill="none" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );
 }
@@ -140,7 +156,7 @@ function DotsIcon() {
 const POST_TYPES = [
   { key: "tip", label: "Tip", Icon: BulbIcon },
   { key: "question", label: "Question", Icon: QuestionIcon },
-  { key: "other", label: "Something else", Icon: DotsIcon },
+  { key: "resource", label: "Resource", Icon: LinkIcon },
 ];
 
 function postTypeMeta(key) {
@@ -175,19 +191,28 @@ export default function Community() {
 
   const [likeCounts, setLikeCounts] = useState({});
   const [likedByMe, setLikedByMe] = useState(new Set());
+  const [unpinnedPrompts, setUnpinnedPrompts] = useState(() => {
+    try { return new Set(JSON.parse(localStorage.getItem("sentivo_unpinned_prompts") || "[]")); }
+    catch { return new Set(); }
+  });
 
-  const composerRef = useRef(null);
-  const prompt = todaysPrompt();
-  const teacherCount = new Set(posts.map((p) => p.author_id)).size;
+  const todayISO = new Date().toISOString().slice(0, 10);
+  const realPosts = posts.filter((p) => p.author_id);
+  const teacherCount = new Set(realPosts.map((p) => p.author_id)).size;
   const tipsShared = posts.filter((p) => p.post_type === "tip").length;
-  const dayStreak = computeDayStreak(posts);
+  const dayStreak = computeDayStreak(realPosts);
 
-  function usePrompt() {
-    if (!user) { setAuthMode("login"); return; }
-    setDraft(prompt);
-    requestAnimationFrame(() => {
-      composerRef.current?.focus();
-      composerRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+  const pinnedPost = posts.find(
+    (p) => p.post_type === "prompt" && p.prompt_date === todayISO && !unpinnedPrompts.has(p.id)
+  );
+  const feedPosts = pinnedPost ? [pinnedPost, ...posts.filter((p) => p.id !== pinnedPost.id)] : posts;
+
+  function unpinPrompt(id) {
+    setUnpinnedPrompts((prev) => {
+      const next = new Set(prev);
+      next.add(id);
+      localStorage.setItem("sentivo_unpinned_prompts", JSON.stringify([...next]));
+      return next;
     });
   }
 
@@ -195,10 +220,34 @@ export default function Community() {
     setLoadingPosts(true);
     const { data, error } = await supabase
       .from("community_posts")
-      .select("id, author_id, author_email, author_name, content, post_type, created_at")
+      .select("id, author_id, author_email, author_name, content, post_type, prompt_date, created_at")
       .order("created_at", { ascending: false });
-    setPosts(error ? [] : data || []);
+    const rows = error ? [] : data || [];
+    setPosts(rows);
     setLoadingPosts(false);
+    return rows;
+  }
+
+  // Makes sure a "Sentivo"-authored prompt post exists for today; if the
+  // unique index on (prompt_date) already has one (e.g. another tab beat us
+  // to it), the insert just fails and we silently keep the existing post.
+  async function ensureTodaysPrompt(existingPosts) {
+    const already = existingPosts.some((p) => p.post_type === "prompt" && p.prompt_date === todayISO);
+    if (already) return;
+    const { data, error } = await supabase
+      .from("community_posts")
+      .insert({
+        author_id: null,
+        author_email: null,
+        author_name: "Sentivo",
+        content: todaysPrompt(),
+        post_type: "prompt",
+        prompt_date: todayISO,
+        status: "approved",
+      })
+      .select()
+      .single();
+    if (!error && data) setPosts((prev) => [data, ...prev]);
   }
 
   async function loadCommentCounts() {
@@ -222,7 +271,10 @@ export default function Community() {
 
   useEffect(() => {
     if (!user) { setPosts([]); setLoadingPosts(false); return; }
-    loadPosts();
+    (async () => {
+      const rows = await loadPosts();
+      await ensureTodaysPrompt(rows);
+    })();
     loadCommentCounts();
     loadLikes();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -350,13 +402,6 @@ export default function Community() {
             </div>
           </div>
 
-          <button type="button" className="cm-prompt" onClick={usePrompt}>
-            <div>
-              <span className="cm-prompt-eyebrow">Prompt of the day</span>
-              <p className="cm-prompt-text">{prompt}</p>
-            </div>
-            <span className="cm-prompt-dice" aria-hidden="true">&#8635;</span>
-          </button>
 
           {authLoading ? null : !user ? (
             <div className="cm-signin-card">
@@ -381,7 +426,6 @@ export default function Community() {
                   ))}
                 </div>
                 <textarea
-                  ref={composerRef}
                   className="cm-composer-input"
                   placeholder="Share something with other teachers…"
                   value={draft}
@@ -401,23 +445,35 @@ export default function Community() {
           <div className="cm-feed">
             {loadingPosts ? (
               <p className="cm-empty">Loading…</p>
-            ) : posts.length === 0 ? (
+            ) : feedPosts.length === 0 ? (
               <p className="cm-empty">No posts yet. Be the first to share something!</p>
             ) : (
-              posts.map((p) => {
+              feedPosts.map((p) => {
                 const isOpen = expanded.has(p.id);
                 const comments = commentsByPost[p.id] || [];
+                const isPromptPost = p.post_type === "prompt";
+                const isPinnedNow = isPromptPost && p.id === pinnedPost?.id;
                 const canManage = user && (p.author_id === user.id || isAdmin);
                 const liked = likedByMe.has(p.id);
                 const likeCount = likeCounts[p.id] || 0;
                 const commentCount = commentCounts[p.id] || 0;
                 const type = postTypeMeta(p.post_type);
                 return (
-                  <div className="cm-post" key={p.id}>
+                  <div className={`cm-post${isPromptPost ? " cm-post--prompt" : ""}`} key={p.id}>
+                    {isPinnedNow && (
+                      <div className="cm-pinned-label"><PinIcon /> Pinned</div>
+                    )}
                     <div className="cm-post-head">
-                      <Avatar name={p.author_name} email={p.author_email} size="sm" />
+                      {isPromptPost ? (
+                        <div className="cm-avatar cm-avatar--sm cm-avatar--sentivo">
+                          <img src="/logo-sentivo.png" alt="" />
+                        </div>
+                      ) : (
+                        <Avatar name={p.author_name} email={p.author_email} size="sm" />
+                      )}
                       <div className="cm-post-headline">
-                        <span className="cm-post-author">{displayName(p.author_name, p.author_email)}</span>
+                        <span className="cm-post-author">{isPromptPost ? "Sentivo" : displayName(p.author_name, p.author_email)}</span>
+                        {isPromptPost && <span className="cm-official-badge"><CheckBadgeIcon /></span>}
                         <span className="cm-post-dot">·</span>
                         <span className="cm-post-time">{timeAgo(p.created_at)}</span>
                         {type && (
@@ -427,11 +483,15 @@ export default function Community() {
                           </span>
                         )}
                       </div>
-                      {canManage && (
+                      {canManage ? (
                         <button type="button" className="cm-icon-btn" title="Delete post" onClick={() => deletePost(p.id)}>
                           <TrashIcon />
                         </button>
-                      )}
+                      ) : isPinnedNow ? (
+                        <button type="button" className="cm-icon-btn" title="Unpin" onClick={() => unpinPrompt(p.id)}>
+                          <PinIcon />
+                        </button>
+                      ) : null}
                     </div>
                     <p className="cm-post-text">{p.content}</p>
                     <div className="cm-post-actions">
@@ -561,21 +621,6 @@ const CSS = `
 }
 .cm-stat-label { font-size: 10px; font-weight: 700; letter-spacing: 0.03em; color: var(--muted); margin-top: 2px; }
 
-.cm-prompt {
-  display: flex; align-items: flex-start; justify-content: space-between; gap: 12px;
-  width: 100%; text-align: left; font: inherit; cursor: pointer;
-  background: var(--coral-pale); border: none; border-radius: 16px; padding: 16px 18px;
-}
-.cm-prompt-eyebrow {
-  display: block; font-family: 'Quicksand', sans-serif; font-size: 10px; font-weight: 800;
-  letter-spacing: 0.08em; text-transform: uppercase; color: var(--coral); margin-bottom: 6px;
-}
-.cm-prompt-text { font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 15px; color: var(--ink); margin: 0; line-height: 1.35; }
-.cm-prompt-dice {
-  flex-shrink: 0; width: 30px; height: 30px; border-radius: 50%; background: #fff; color: var(--coral);
-  display: flex; align-items: center; justify-content: center; font-size: 14px;
-  box-shadow: 0 4px 10px rgba(43,42,74,0.08);
-}
 
 .cm-signin-card {
   background: var(--card); border: 1px solid var(--hair); border-radius: 16px;
@@ -631,6 +676,21 @@ const CSS = `
   background: var(--card); border: 1px solid var(--hair); border-radius: 16px; padding: 16px;
   box-shadow: 0 4px 14px rgba(43,42,74,0.04);
 }
+.cm-post--prompt {
+  background: linear-gradient(155deg, #FFF7F3 0%, #FDECE5 100%);
+  border: 1.5px solid var(--coral);
+  box-shadow: 0 6px 18px rgba(255,107,74,0.12);
+}
+.cm-pinned-label {
+  display: flex; align-items: center; gap: 4px;
+  font-family: 'Quicksand', sans-serif; font-weight: 800; font-size: 10.5px;
+  letter-spacing: 0.05em; text-transform: uppercase; color: var(--coral); margin-bottom: 10px;
+}
+.cm-pinned-label svg { width: 11px; height: 11px; }
+.cm-avatar--sentivo { background: #fff; border: 1.5px solid var(--coral); padding: 6px; }
+.cm-avatar--sentivo img { width: 100%; height: 100%; object-fit: contain; display: block; }
+.cm-official-badge { display: flex; flex-shrink: 0; color: var(--coral); }
+.cm-official-badge svg { width: 14px; height: 14px; display: block; }
 .cm-post-head { display: flex; align-items: center; gap: 10px; }
 .cm-post-headline { display: flex; align-items: center; flex-wrap: wrap; row-gap: 4px; gap: 6px; min-width: 0; }
 .cm-post-author { font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 13.5px; color: var(--ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
@@ -646,7 +706,7 @@ const CSS = `
 .cm-post-tag svg { width: 11px; height: 11px; }
 .cm-post-tag--tip { background: #FCEFD6; color: #A5730F; }
 .cm-post-tag--question { background: var(--coral-pale); color: var(--coral); }
-.cm-post-tag--other { background: #E7E4F4; color: #6E5FC4; }
+.cm-post-tag--resource { background: #E7E4F4; color: #6E5FC4; }
 
 .cm-post-actions { display: flex; align-items: center; gap: 4px; }
 .cm-action-btn {
