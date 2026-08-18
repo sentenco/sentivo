@@ -1881,14 +1881,13 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 /* ── Responsive: narrower / non-maximized browser windows ── */
 @media (max-width: 1300px) {
   .gc-topbar, .gc-sections, .gc-editions { padding-left: 20px; padding-right: 20px; }
-  .gc-sections { justify-content: flex-start; }
   .gc-dashboard { max-width: 720px; }
-  .gc-sec-tab { font-size: 11.5px; letter-spacing: 0.03em; padding: 8px 12px; }
+  .gc-sec-tab { font-size: 13px; letter-spacing: 0.04em; padding: 8px 14px; }
 }
 @media (max-width: 900px) {
   .gc-topbar, .gc-sections, .gc-editions { padding-left: 14px; padding-right: 14px; }
   .gc-search input { width: 130px; }
-  .gc-sec-tab { font-size: 9.5px; letter-spacing: 0; padding: 7px 6px; }
+  .gc-sec-tab { font-size: 10.5px; letter-spacing: 0.02em; padding: 7px 8px; }
 }
 
 /* ── Recommended Lessons: newspaper section front ── */
