@@ -201,6 +201,7 @@ export default function CommunityFeed({ afterStats } = {}) {
   const [commentsByPost, setCommentsByPost] = useState({});
   const [commentCounts, setCommentCounts] = useState({});
   const [commentDrafts, setCommentDrafts] = useState({});
+  const [commentErrors, setCommentErrors] = useState({});
 
   const [likeCounts, setLikeCounts] = useState({});
   const [likedByMe, setLikedByMe] = useState(new Set());
@@ -350,7 +351,9 @@ export default function CommunityFeed({ afterStats } = {}) {
       .select("id, post_id, author_id, author_email, author_name, author_years_teaching, content, created_at")
       .eq("post_id", postId)
       .order("created_at", { ascending: true });
+    if (error) console.error("loadComments failed:", error);
     setCommentsByPost((prev) => ({ ...prev, [postId]: error ? [] : data || [] }));
+    setCommentErrors((prev) => ({ ...prev, [postId]: error ? error.message : null }));
   }
 
   function toggleExpand(postId) {
@@ -369,6 +372,7 @@ export default function CommunityFeed({ afterStats } = {}) {
   async function submitComment(postId) {
     const content = (commentDrafts[postId] || "").trim();
     if (!content || !user) return;
+    setCommentErrors((prev) => ({ ...prev, [postId]: null }));
     const { data, error } = await supabase
       .from("community_comments")
       .insert({
@@ -386,6 +390,9 @@ export default function CommunityFeed({ afterStats } = {}) {
       setCommentsByPost((prev) => ({ ...prev, [postId]: [...(prev[postId] || []), data] }));
       setCommentDrafts((prev) => ({ ...prev, [postId]: "" }));
       setCommentCounts((prev) => ({ ...prev, [postId]: (prev[postId] || 0) + 1 }));
+    } else if (error) {
+      console.error("submitComment failed:", error);
+      setCommentErrors((prev) => ({ ...prev, [postId]: error.message }));
     }
   }
 
@@ -624,6 +631,7 @@ export default function CommunityFeed({ afterStats } = {}) {
                       </div>
                       );
                     })}
+                    {commentErrors[p.id] && <p className="cm-upload-error">{commentErrors[p.id]}</p>}
                     {user && (
                       <div className="cm-comment-composer">
                         <input
