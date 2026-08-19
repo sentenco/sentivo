@@ -705,36 +705,42 @@ function TodayFeature({ navigate }) {
       </div>
 
       <aside className="gc-sidebar">
-        <div className="gc-widget gc-widget--clock">
-          <DigitalClock />
-        </div>
-
-        <div className="td-correction-card">
-          <div className="td-dc-label">
-            <span className="td-dc-badge"><PencilIcon /></span>
-            Daily Correction
+        <div className="td-brief-panel">
+          <div className="td-brief-clock">
+            <DigitalClock />
           </div>
-          <h2 className="td-dc-headline">
-            <span className="td-dc-quote">&#10078;</span>
-            <CorrectionLine segments={headline.sentence} />
-          </h2>
-          <div className="td-dc-why">
-            {headline.explain.map((line, i) => (
-              <p className="td-dc-explain" key={i}>{line}</p>
+
+          <div className="td-brief-section">
+            <div className="td-dc-label">
+              <span className="td-dc-badge"><PencilIcon /></span>
+              Daily Correction
+            </div>
+            <h2 className="td-dc-headline">
+              <span className="td-dc-quote">&#10078;</span>
+              <CorrectionLine segments={headline.sentence} />
+            </h2>
+            <div className="td-dc-why">
+              {headline.explain.map((line, i) => (
+                <p className="td-dc-explain" key={i}>{line}</p>
+              ))}
+            </div>
+          </div>
+
+          <div className="td-brief-list">
+            <div className="td-brief-list-label">More corrections today</div>
+            {briefs.map((b) => (
+              <div className={`td-brief-row hue-${b.hue === "grammar" ? "coral" : b.hue === "vocab" ? "gold" : "teal"}`} key={b.id}>
+                <span className="td-brief-dot" />
+                <div className="td-brief-row-body">
+                  <div className="td-brief-label">{b.category}</div>
+                  <p className="td-brief-line"><CorrectionLine segments={b.sentence} /></p>
+                </div>
+                <div className="td-brief-pop">
+                  {b.explain.map((line, i) => <p key={i}>{line}</p>)}
+                </div>
+              </div>
             ))}
           </div>
-        </div>
-
-        <div className="td-briefs">
-          {briefs.map((b) => (
-            <div className={`td-brief-card hue-${b.hue === "grammar" ? "coral" : b.hue === "vocab" ? "gold" : "teal"}`} key={b.id}>
-              <div className="td-brief-label">{b.category}</div>
-              <p className="td-brief-line"><CorrectionLine segments={b.sentence} /></p>
-              <div className="td-brief-pop">
-                {b.explain.map((line, i) => <p key={i}>{line}</p>)}
-              </div>
-            </div>
-          ))}
         </div>
       </aside>
       </div>
@@ -1687,57 +1693,63 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 }
 .td-main { min-width: 0; display: flex; flex-direction: column; gap: 18px; }
 
-.gc-sidebar { display: flex; flex-direction: column; gap: 12px; position: sticky; top: 0; }
-.gc-widget { background: var(--card); border: 1px solid var(--hair); border-radius: 16px; padding: 14px; box-shadow: 0 6px 18px rgba(43,42,74,0.06); }
-.gc-widget--clock { border-top: 3px solid var(--navy); }
+.gc-sidebar { display: flex; flex-direction: column; position: sticky; top: 0; }
 
-.gc-clock { text-align: center; }
-.gc-clock-time { font-family: 'Fredoka', sans-serif; font-variant-numeric: tabular-nums; font-size: 26px; font-weight: 600; color: var(--ink); letter-spacing: 0.01em; }
-.gc-clock-sec { font-size: 18px; color: #9B9382; font-weight: 500; }
-.gc-clock-meta { display: flex; justify-content: center; gap: 8px; margin-top: 4px; font-family: 'Quicksand', sans-serif; font-size: 10px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
-
-/* ── Daily correction ── */
-.td-correction-card {
-  position: relative;
+/* ── Today's Brief: one unified sidebar panel (clock + correction + more) ── */
+.td-brief-panel {
   background: var(--card);
   border: 1px solid var(--hair);
-  border-top: 4px solid var(--coral);
-  border-radius: 20px;
-  padding: 26px 30px;
-  box-shadow: 0 10px 30px rgba(43,42,74,0.07);
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow: 0 14px 36px rgba(43,42,74,0.10);
 }
-.td-dc-label { display: flex; align-items: center; gap: 8px; margin-bottom: 16px; font-family: 'Quicksand', sans-serif; font-size: 12px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--coral); }
+
+.td-brief-clock {
+  position: relative;
+  background: linear-gradient(155deg, var(--navy) 0%, #24365E 100%);
+  padding: 18px 20px 16px;
+  text-align: center;
+}
+.td-brief-clock::after {
+  content: ""; position: absolute; left: 20px; right: 20px; bottom: 0; height: 3px;
+  background: var(--coral); border-radius: 2px 2px 0 0;
+}
+.gc-clock { text-align: center; }
+.gc-clock-time { font-family: 'Fredoka', sans-serif; font-variant-numeric: tabular-nums; font-size: 27px; font-weight: 600; color: #fff; letter-spacing: 0.02em; }
+.gc-clock-sec { font-size: 18px; color: rgba(255,255,255,0.5); font-weight: 500; }
+.gc-clock-meta { display: flex; justify-content: center; gap: 8px; margin-top: 4px; font-family: 'Quicksand', sans-serif; font-size: 10px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.55); }
+
+.td-brief-section { padding: 22px 20px 18px; }
+.td-dc-label { display: flex; align-items: center; gap: 8px; margin-bottom: 14px; font-family: 'Quicksand', sans-serif; font-size: 11.5px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--coral); }
 .td-dc-badge { display: flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 50%; background: var(--coral-pale); color: var(--coral); flex-shrink: 0; }
 .td-dc-badge svg { width: 11px; height: 11px; }
-.td-dc-headline { font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 19px; line-height: 1.4; margin: 0 0 16px; color: var(--ink); text-wrap: balance; }
+.td-dc-headline { font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 16.5px; line-height: 1.4; margin: 0 0 13px; color: var(--ink); text-wrap: balance; }
 .td-dc-quote { color: var(--coral); margin-right: 5px; }
 .corr-wrong { color: #9B9382; font-weight: 400; text-decoration: line-through; text-decoration-color: #B9AF9C; margin-right: 6px; }
 .corr-right { color: var(--coral); font-weight: 700; }
-.td-dc-why { background: var(--coral-pale); border-radius: 14px; padding: 12px 16px; }
-.td-dc-explain { font-family: 'Quicksand', sans-serif; font-size: 13.5px; line-height: 1.55; color: var(--ink-soft, #4C4A3E); max-width: 640px; margin: 0; }
+.td-dc-why { background: var(--coral-pale); border-radius: 14px; padding: 11px 14px; }
+.td-dc-explain { font-family: 'Quicksand', sans-serif; font-size: 12.5px; line-height: 1.55; color: var(--ink-soft, #4C4A3E); margin: 0; }
 .td-dc-explain + .td-dc-explain { margin-top: 4px; }
 
-/* ── Two more corrections ── */
-.td-briefs { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
-.td-brief-card {
-  position: relative;
-  background: var(--card);
-  border: 1px solid var(--hair);
-  border-top: 3px solid var(--accent, var(--coral));
-  border-radius: 14px;
-  padding: 12px 14px;
-  box-shadow: 0 6px 16px rgba(43,42,74,0.05);
-  cursor: default;
+/* ── More corrections: a compact divided list instead of separate cards ── */
+.td-brief-list { padding: 2px 20px 18px; border-top: 1px solid var(--hair); }
+.td-brief-list-label { font-family: 'Quicksand', sans-serif; font-size: 9.5px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin: 15px 0 2px; }
+.td-brief-row {
+  position: relative; display: flex; align-items: flex-start; gap: 10px;
+  padding: 10px 0; cursor: default;
 }
-.td-brief-card.hue-coral { --accent: var(--coral); }
-.td-brief-card.hue-gold { --accent: var(--marigold, var(--navy)); }
-.td-brief-card.hue-teal { --accent: var(--dusk, var(--navy-soft)); }
-.td-brief-label { font-family: 'Quicksand', sans-serif; font-size: 10px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent, var(--coral)); margin-bottom: 4px; }
-.td-brief-line { font-family: 'Fredoka', sans-serif; font-size: 13.5px; font-weight: 600; line-height: 1.3; color: var(--ink); margin: 0; }
+.td-brief-row + .td-brief-row { border-top: 1px solid var(--hair); }
+.td-brief-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent, var(--coral)); flex-shrink: 0; margin-top: 6px; }
+.td-brief-row.hue-coral { --accent: var(--coral); }
+.td-brief-row.hue-gold { --accent: var(--marigold, var(--navy)); }
+.td-brief-row.hue-teal { --accent: var(--dusk, var(--navy-soft)); }
+.td-brief-row-body { min-width: 0; }
+.td-brief-label { font-family: 'Quicksand', sans-serif; font-size: 9.5px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent, var(--coral)); margin-bottom: 3px; }
+.td-brief-line { font-family: 'Fredoka', sans-serif; font-size: 13px; font-weight: 600; line-height: 1.3; color: var(--ink); margin: 0; }
 .td-brief-pop {
   position: absolute;
-  top: calc(100% + 8px);
-  left: 0;
+  top: calc(100% - 4px);
+  left: 17px;
   right: 0;
   background: var(--card);
   border: 1px solid var(--hair);
@@ -1753,15 +1765,8 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 }
 .td-brief-pop p { font-family: 'Quicksand', sans-serif; font-size: 12.5px; line-height: 1.4; color: #4C4A3E; margin: 0; }
 .td-brief-pop p + p { margin-top: 4px; }
-.td-brief-card:hover { z-index: 20; }
-.td-brief-card:hover .td-brief-pop { opacity: 1; visibility: visible; transform: translateY(0); }
-
-/* ── Daily correction, compacted for the 280px sidebar column ── */
-.gc-sidebar .td-correction-card { padding: 20px 20px; border-radius: 16px; }
-.gc-sidebar .td-dc-headline { font-size: 16px; margin-bottom: 12px; }
-.gc-sidebar .td-dc-why { padding: 10px 12px; }
-.gc-sidebar .td-dc-explain { font-size: 12.5px; max-width: none; }
-.gc-sidebar .td-briefs { grid-template-columns: 1fr; gap: 10px; }
+.td-brief-row:hover { z-index: 20; }
+.td-brief-row:hover .td-brief-pop { opacity: 1; visibility: visible; transform: translateY(0); }
 
 /* ── Toolkit ── */
 .td-section-label { font-family: 'Quicksand', sans-serif; font-size: 12px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
