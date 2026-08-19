@@ -100,7 +100,7 @@ function SiteNav({ navigate }) {
         <img src="/logo-sentivo.png" alt="" className="ar-nav-logo" />entivo
       </button>
       <nav className="ar-nav-tabs">
-        <button type="button" className="ar-nav-tab" onClick={() => navigate("/library?cat=All")}>Today</button>
+        <button type="button" className="ar-nav-tab" onClick={() => navigate("/library?cat=All")}>Homeroom</button>
         {NAV_CATEGORIES.map((cat) => (
           <button
             key={cat}

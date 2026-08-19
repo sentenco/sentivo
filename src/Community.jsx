@@ -17,7 +17,7 @@ export default function Community() {
       </header>
 
       <nav className="cm-nav-tabs">
-        <button type="button" className="cm-nav-tab" onClick={() => navigate("/library")}>Today</button>
+        <button type="button" className="cm-nav-tab" onClick={() => navigate("/library")}>Homeroom</button>
         {NAV_CATEGORIES.map((cat) => (
           <button
             key={cat}

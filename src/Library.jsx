@@ -1312,7 +1312,7 @@ export default function Library() {
             className={`gc-sec-tab ${!isCurriculum && category === "All" ? "is-active" : ""}`}
             onClick={() => changeCategory("All")}
           >
-            Today
+            Homeroom
           </button>
           {CATEGORIES.map((cat) => (
             <button
