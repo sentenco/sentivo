@@ -133,13 +133,25 @@ export default function ProfileSettings({ onClose, onSaved }) {
     setSaving(true);
     setError(null);
     const trimmedName = name.trim();
-    const { error: saveError } = await supabase.from("profiles").upsert({
-      id: user.id,
+    const payload = {
       display_name: trimmedName || null,
       avatar_url: avatarUrl,
       country: country.trim() || null,
       years_teaching: yearsTeaching === "" ? null : Number(yearsTeaching),
-    });
+    };
+    // upsert() compiles to INSERT ... ON CONFLICT DO UPDATE, which needs
+    // both the insert and update RLS policies to pass together -- an
+    // explicit update-then-insert-if-missing avoids that combined check.
+    const { data: updated, error: updateError } = await supabase
+      .from("profiles")
+      .update(payload)
+      .eq("id", user.id)
+      .select("id");
+    let saveError = updateError;
+    if (!updateError && (!updated || updated.length === 0)) {
+      const { error: insertError } = await supabase.from("profiles").insert({ id: user.id, ...payload });
+      saveError = insertError;
+    }
     setSaving(false);
     if (saveError) { setError(saveError.message || "Couldn't save your profile."); return; }
     localStorage.setItem("sentivo_teacher_name", trimmedName);
