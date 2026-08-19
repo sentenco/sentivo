@@ -1749,13 +1749,13 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   background: var(--card);
   border: 1px solid var(--hair);
   border-radius: 22px;
-  overflow: hidden;
   box-shadow: 0 14px 36px rgba(43,42,74,0.10);
 }
 
 .td-brief-clock {
   position: relative;
   background: linear-gradient(155deg, var(--navy) 0%, #24365E 100%);
+  border-radius: 22px 22px 0 0;
   padding: 18px 20px 16px;
   text-align: center;
 }
