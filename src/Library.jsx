@@ -671,7 +671,7 @@ function TodayFeature({ navigate }) {
 
   const toolkit = (
     <>
-      <div className="td-section-label">Your Toolkit</div>
+      <div className="td-section-label">Teacher's Desk</div>
       <div className="td-actions-grid">
         <button type="button" className="td-action-card" onClick={openFeedbackGenerator}>
           <div className="td-action-icon"><img src={todayFeedbackIcon} alt="" /></div>
