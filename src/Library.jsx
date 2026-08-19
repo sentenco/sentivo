@@ -712,13 +712,9 @@ function TodayFeature({ navigate }) {
       <div className="td-section-label">Teacher's Desk</div>
 
       {!deskUnlocked && (
-        <div className="td-desk-locked">
-          <span className="td-desk-lock-icon"><LockIcon /></span>
-          <div>
-            <p className="td-desk-lock-title">Unlock today's Teacher's Desk</p>
-            <p className="td-desk-lock-sub">Post or comment 3 times in Homeroom today to unlock. You're at {deskProgress}/3 today.</p>
-          </div>
-        </div>
+        <p className="td-desk-lock-note">
+          <LockIcon /> Post or comment 3 times in Homeroom today to unlock. You're at {deskProgress}/3 today.
+        </p>
       )}
 
       <div className={`td-actions-grid${deskUnlocked ? "" : " is-locked"}`}>
@@ -1844,20 +1840,14 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 }
 .td-action-lock svg { width: 10px; height: 10px; }
 
-.td-actions-grid.is-locked { margin-top: 12px; }
+.td-actions-grid.is-locked { margin-top: 8px; }
 
-.td-desk-locked {
-  display: flex; align-items: center; gap: 14px;
-  background: var(--card); border: 1px dashed var(--hair); border-radius: 18px; padding: 16px 18px;
+.td-desk-lock-note {
+  display: flex; align-items: center; gap: 6px;
+  font-family: 'Quicksand', sans-serif; font-size: 12.5px; color: var(--muted);
+  margin: 0; line-height: 1.3;
 }
-.td-desk-lock-icon {
-  flex-shrink: 0; width: 38px; height: 38px; border-radius: 12px;
-  background: var(--coral-pale); color: var(--coral);
-  display: flex; align-items: center; justify-content: center;
-}
-.td-desk-lock-icon svg { width: 17px; height: 17px; }
-.td-desk-lock-title { font-family: 'Fredoka', sans-serif; font-size: 14px; font-weight: 600; color: var(--ink); margin: 0 0 3px; }
-.td-desk-lock-sub { font-family: 'Quicksand', sans-serif; font-size: 12.5px; color: var(--muted); margin: 0; line-height: 1.4; }
+.td-desk-lock-note svg { width: 13px; height: 13px; color: var(--coral); flex-shrink: 0; }
 
 /* ── Quote banner ── */
 .td-quote-banner { border-radius: 24px; overflow: hidden; line-height: 0; }
