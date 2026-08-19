@@ -1,10 +1,12 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import CommunityFeed from "./CommunityFeed.jsx";
 
 const NAV_CATEGORIES = ["Articles", "Speaking", "Reading", "Grammar", "Vocabulary", "Writing", "Listening"];
 
 export default function Community() {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const focusPostId = searchParams.get("post");
 
   return (
     <div className="cm-shell">
@@ -33,7 +35,7 @@ export default function Community() {
 
       <div className="cm-page">
         <div className="cm-stage">
-          <CommunityFeed />
+          <CommunityFeed focusPostId={focusPostId} />
         </div>
       </div>
     </div>

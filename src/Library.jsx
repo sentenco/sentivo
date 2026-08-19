@@ -4,6 +4,7 @@ import { useAuth } from "./AuthContext";
 import AuthForm from "./AuthForm";
 import ProfileSettings from "./ProfileSettings.jsx";
 import { supabase } from "./supabaseClient";
+import { timeAgo } from "./slideDeckTypes";
 import CurriculumRouter from "./CurriculumRouter";
 import ImagePlaceholder from "./slides/ImagePlaceholder";
 import storybookCoverImg from "./assets/storybook/cover.jpeg";
@@ -995,7 +996,9 @@ export default function Library() {
   const [authMode, setAuthMode] = useState(null);
   const [menuOpen, setMenuOpen] = useState(false);
   const [notifOpen, setNotifOpen] = useState(false);
+  const [notifications, setNotifications] = useState([]);
   const notifWrapRef = useRef(null);
+  const unreadNotifCount = notifications.filter((n) => !n.read_at).length;
   const [profileOpen, setProfileOpen] = useState(false);
   const [avatarUrl, setAvatarUrl] = useState(null);
   const [searchModeMenuOpen, setSearchModeMenuOpen] = useState(false);
@@ -1036,6 +1039,34 @@ export default function Library() {
       setAvatarUrl(data?.avatar_url || null);
     });
   }, [user]);
+
+  useEffect(() => {
+    if (!user) { setNotifications([]); return; }
+    supabase
+      .from("notifications")
+      .select("id, type, actor_name, post_id, read_at, created_at")
+      .eq("recipient_id", user.id)
+      .order("created_at", { ascending: false })
+      .limit(20)
+      .then(({ data }) => setNotifications(data || []));
+  }, [user]);
+
+  function openNotifPanel() {
+    setNotifOpen((wasOpen) => {
+      const nowOpen = !wasOpen;
+      if (nowOpen && unreadNotifCount > 0) {
+        const unreadIds = notifications.filter((n) => !n.read_at).map((n) => n.id);
+        setNotifications((prev) => prev.map((n) => (n.read_at ? n : { ...n, read_at: new Date().toISOString() })));
+        supabase.from("notifications").update({ read_at: new Date().toISOString() }).in("id", unreadIds);
+      }
+      return nowOpen;
+    });
+  }
+
+  function goToNotification(n) {
+    setNotifOpen(false);
+    navigate(n.post_id ? `/library/community?post=${n.post_id}` : "/library/community");
+  }
 
   function pickSearchMode(key) {
     setSearchMode(key);
@@ -1356,20 +1387,40 @@ export default function Library() {
                 <div className="notif-wrap" ref={notifWrapRef}>
                   <button
                     type="button"
-                    className="notif-btn"
-                    onClick={() => setNotifOpen((o) => !o)}
+                    className={`notif-btn${unreadNotifCount > 0 ? " has-unread" : ""}`}
+                    onClick={openNotifPanel}
                     aria-label="Notifications"
                     aria-expanded={notifOpen}
                   >
                     <BellIcon />
+                    {unreadNotifCount > 0 && <span className="notif-dot" />}
                   </button>
                   {notifOpen && (
                     <div className="notif-panel">
                       <div className="notif-panel-head">Notifications</div>
-                      <div className="notif-empty">
-                        <BellIcon />
-                        <p>You're all caught up.</p>
-                      </div>
+                      {notifications.length === 0 ? (
+                        <div className="notif-empty">
+                          <BellIcon />
+                          <p>You're all caught up.</p>
+                        </div>
+                      ) : (
+                        <div className="notif-list">
+                          {notifications.map((n) => (
+                            <button
+                              type="button"
+                              key={n.id}
+                              className={`notif-item${n.read_at ? "" : " is-unread"}`}
+                              onClick={() => goToNotification(n)}
+                            >
+                              <span className="notif-item-text">
+                                <strong>{n.actor_name || "Someone"}</strong>{" "}
+                                {n.type === "post_reply" ? "replied to your post" : "replied to your comment"}
+                              </span>
+                              <span className="notif-item-time">{timeAgo(n.created_at)}</span>
+                            </button>
+                          ))}
+                        </div>
+                      )}
                     </div>
                   )}
                 </div>
@@ -1914,15 +1965,20 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 
 .notif-wrap { position: relative; }
 .notif-btn {
-  width: 38px; height: 38px; border-radius: 50%;
+  position: relative; width: 38px; height: 38px; border-radius: 50%;
   border: 1px solid var(--hair); background: none; color: var(--muted);
   display: flex; align-items: center; justify-content: center; cursor: pointer;
   transition: background 0.15s, color 0.15s, border-color 0.15s;
 }
 .notif-btn svg { width: 19px; height: 19px; }
 .notif-btn:hover { color: var(--coral); border-color: var(--coral); background: rgba(255,107,74,0.08); }
+.notif-btn.has-unread { color: #1B2A4A; border-color: #1B2A4A; }
+.notif-dot {
+  position: absolute; top: 6px; right: 6px; width: 9px; height: 9px; border-radius: 50%;
+  background: var(--coral); border: 1.5px solid var(--card);
+}
 .notif-panel {
-  position: absolute; top: 46px; right: 0; width: 280px;
+  position: absolute; top: 46px; right: 0; width: 300px; max-height: 360px; overflow-y: auto;
   background: var(--card); border: 1px solid var(--hair); border-radius: 16px;
   box-shadow: 0 16px 32px rgba(43,42,74,0.16); padding: 6px; z-index: 20;
 }
@@ -1936,6 +1992,18 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 }
 .notif-empty svg { width: 26px; height: 26px; opacity: 0.4; }
 .notif-empty p { margin: 0; font-family: 'Quicksand', sans-serif; font-size: 12.5px; }
+.notif-list { display: flex; flex-direction: column; gap: 2px; }
+.notif-item {
+  display: flex; flex-direction: column; gap: 3px; text-align: left;
+  width: 100%; background: none; border: none; border-radius: 10px; cursor: pointer;
+  padding: 9px 12px; font: inherit;
+}
+.notif-item:hover { background: rgba(27,42,74,0.05); }
+.notif-item.is-unread { background: rgba(255,107,74,0.06); }
+.notif-item.is-unread:hover { background: rgba(255,107,74,0.11); }
+.notif-item-text { font-family: 'Quicksand', sans-serif; font-size: 12.5px; color: var(--ink); line-height: 1.4; }
+.notif-item-text strong { font-weight: 700; }
+.notif-item-time { font-family: 'Quicksand', sans-serif; font-size: 10.5px; color: var(--muted); }
 
 .account-wrap { position: relative; }
 .avatar-btn {

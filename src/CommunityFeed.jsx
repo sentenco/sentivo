@@ -167,7 +167,7 @@ function Avatar({ name, email, size }) {
 // Self-contained Community feed (banner, stats, composer, posts) -- shared by
 // the dedicated /library/community page and the Today page, which now
 // embeds this directly in place of the old greeting hero.
-export default function CommunityFeed({ afterStats } = {}) {
+export default function CommunityFeed({ afterStats, focusPostId } = {}) {
   const { user, loading: authLoading } = useAuth();
   const isAdmin = user?.email?.toLowerCase() === ADMIN_EMAIL;
   const [myName] = useState(() => localStorage.getItem("sentivo_teacher_name") || "");
@@ -264,6 +264,15 @@ export default function CommunityFeed({ afterStats } = {}) {
     loadPosts();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user, scope, profile]);
+
+  useEffect(() => {
+    if (!focusPostId || !posts.some((p) => p.id === focusPostId)) return;
+    setExpanded((prev) => (prev.has(focusPostId) ? prev : new Set(prev).add(focusPostId)));
+    if (!commentsByPost[focusPostId]) loadComments(focusPostId);
+    const el = document.getElementById(`cm-post-${focusPostId}`);
+    if (el) el.scrollIntoView({ behavior: "smooth", block: "center" });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [focusPostId, posts]);
 
   async function handleImageUpload(e) {
     const file = e.target.files?.[0];
@@ -367,6 +376,32 @@ export default function CommunityFeed({ afterStats } = {}) {
     });
   }
 
+  async function notifyOnComment(postId, newComment) {
+    const post = posts.find((p) => p.id === postId);
+    if (!post) return;
+    const actorName = displayName(newComment.author_name, newComment.author_email);
+    const recipients = new Map();
+    if (post.author_id && post.author_id !== user.id) {
+      recipients.set(post.author_id, "post_reply");
+    }
+    (commentsByPost[postId] || []).forEach((c) => {
+      if (c.author_id && c.author_id !== user.id && !recipients.has(c.author_id)) {
+        recipients.set(c.author_id, "comment_reply");
+      }
+    });
+    if (!recipients.size) return;
+    const rows = [...recipients.entries()].map(([recipient_id, type]) => ({
+      recipient_id,
+      actor_id: user.id,
+      actor_name: actorName,
+      type,
+      post_id: postId,
+      comment_id: newComment.id,
+    }));
+    const { error } = await supabase.from("notifications").insert(rows);
+    if (error) console.error("notifyOnComment failed:", error);
+  }
+
   async function submitComment(postId) {
     const content = (commentDrafts[postId] || "").trim();
     if (!content || !user) return;
@@ -388,6 +423,7 @@ export default function CommunityFeed({ afterStats } = {}) {
       setCommentsByPost((prev) => ({ ...prev, [postId]: [...(prev[postId] || []), data] }));
       setCommentDrafts((prev) => ({ ...prev, [postId]: "" }));
       setCommentCounts((prev) => ({ ...prev, [postId]: (prev[postId] || 0) + 1 }));
+      notifyOnComment(postId, data);
     } else if (error) {
       console.error("submitComment failed:", error);
       setCommentErrors((prev) => ({ ...prev, [postId]: error.message }));
@@ -548,7 +584,7 @@ export default function CommunityFeed({ afterStats } = {}) {
             const type = postTypeMeta(p.post_type);
             const badge = teachingBadge(p.author_years_teaching);
             return (
-              <div className="cm-post" key={p.id}>
+              <div className={`cm-post${p.id === focusPostId ? " is-focused" : ""}`} id={`cm-post-${p.id}`} key={p.id}>
                 <div className="cm-post-head">
                   <Avatar name={p.author_name} email={p.author_email} size="sm" />
                   <div className="cm-post-headline">
@@ -801,7 +837,9 @@ const CSS = `
   background: var(--card); border: 1px solid var(--hair); border-left: 3px solid var(--coral);
   border-radius: 4px 16px 16px 4px; padding: 16px;
   box-shadow: 0 4px 14px rgba(27,42,74,0.05);
+  transition: box-shadow 0.4s, border-color 0.4s;
 }
+.cm-post.is-focused { border-color: var(--navy); box-shadow: 0 0 0 3px rgba(27,42,74,0.14); }
 .cm-post-head { display: flex; align-items: center; gap: 10px; }
 .cm-post-headline { display: flex; align-items: center; flex-wrap: wrap; row-gap: 4px; gap: 6px; min-width: 0; }
 .cm-post-author { font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 13.5px; color: var(--ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
