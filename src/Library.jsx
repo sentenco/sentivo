@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { useNavigate, useParams, useLocation, useSearchParams } from "react-router-dom";
 import { useAuth } from "./AuthContext";
 import AuthForm from "./AuthForm";
+import ProfileSettings from "./ProfileSettings.jsx";
 import { supabase } from "./supabaseClient";
 import CurriculumRouter from "./CurriculumRouter";
 import ImagePlaceholder from "./slides/ImagePlaceholder";
@@ -930,6 +931,8 @@ export default function Library() {
   const { user, signOut } = useAuth();
   const [authMode, setAuthMode] = useState(null);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [profileOpen, setProfileOpen] = useState(false);
+  const [avatarUrl, setAvatarUrl] = useState(null);
   const [searchModeMenuOpen, setSearchModeMenuOpen] = useState(false);
   const [searchMode, setSearchMode] = useState(null);
   const [promptQuery, setPromptQuery] = useState("");
@@ -958,6 +961,13 @@ export default function Library() {
     document.addEventListener("mousedown", handleOutsideClick);
     return () => document.removeEventListener("mousedown", handleOutsideClick);
   }, []);
+
+  useEffect(() => {
+    if (!user) { setAvatarUrl(null); return; }
+    supabase.from("profiles").select("avatar_url").eq("id", user.id).maybeSingle().then(({ data }) => {
+      setAvatarUrl(data?.avatar_url || null);
+    });
+  }, [user]);
 
   function pickSearchMode(key) {
     setSearchMode(key);
@@ -1276,11 +1286,11 @@ export default function Library() {
             ) : (
               <div className="account-wrap">
                 <button className="avatar-btn" onClick={() => setMenuOpen((m) => !m)} aria-label="Account menu">
-                  <UserIcon />
+                  {avatarUrl ? <img src={avatarUrl} alt="" className="avatar-btn-img" /> : <UserIcon />}
                 </button>
                 {menuOpen && (
                   <div className="account-menu">
-                    <a href="#settings">Account settings</a>
+                    <button type="button" className="account-menu-link" onClick={() => { setProfileOpen(true); setMenuOpen(false); }}>Account settings</button>
                     <a href="#plan">Plan: Free &mdash; Upgrade</a>
                     <a href="mailto:hello@sentivo.com">Help &amp; Support</a>
                     <button className="logout-btn" onClick={() => { signOut(); setMenuOpen(false); }}>Log out</button>
@@ -1436,6 +1446,12 @@ export default function Library() {
       </div>
       </div>
       {authMode && <AuthForm mode={authMode} onClose={() => setAuthMode(null)} />}
+      {profileOpen && (
+        <ProfileSettings
+          onClose={() => setProfileOpen(false)}
+          onSaved={(newAvatarUrl) => setAvatarUrl(newAvatarUrl)}
+        />
+      )}
     </>
   );
 }
@@ -1805,6 +1821,8 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   cursor: pointer;
 }
 .theme-pro .avatar-btn { border-radius: 4px; background: #1B2A4A; }
+.avatar-btn-img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; display: block; }
+.theme-pro .avatar-btn-img { border-radius: 4px; }
 .account-menu {
   position: absolute;
   top: 46px;
@@ -1819,7 +1837,7 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   z-index: 10;
 }
 .theme-pro .account-menu { border-radius: 6px; border: 1px solid #DEDAD0; box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
-.account-menu a, .account-menu .logout-btn {
+.account-menu a, .account-menu .account-menu-link, .account-menu .logout-btn {
   font-family: 'Quicksand', sans-serif;
   font-weight: 600;
   font-size: 13px;
@@ -1831,10 +1849,11 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   border: none;
   text-align: left;
   cursor: pointer;
+  width: 100%;
 }
-.theme-pro .account-menu a, .theme-pro .account-menu .logout-btn { font-family: 'Inter', sans-serif; color: #1B2A4A; border-radius: 4px; }
-.account-menu a:hover, .account-menu .logout-btn:hover { background: #F4F0FF; }
-.theme-pro .account-menu a:hover, .theme-pro .account-menu .logout-btn:hover { background: #F0EBDD; }
+.theme-pro .account-menu a, .theme-pro .account-menu .account-menu-link, .theme-pro .account-menu .logout-btn { font-family: 'Inter', sans-serif; color: #1B2A4A; border-radius: 4px; }
+.account-menu a:hover, .account-menu .account-menu-link:hover, .account-menu .logout-btn:hover { background: #F4F0FF; }
+.theme-pro .account-menu a:hover, .theme-pro .account-menu .account-menu-link:hover, .theme-pro .account-menu .logout-btn:hover { background: #F0EBDD; }
 .account-menu .logout-btn { color: #B5483A; margin-top: 4px; border-top: 1px solid #eee; padding-top: 10px; }
 
 .content {
