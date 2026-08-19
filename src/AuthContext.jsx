@@ -22,8 +22,12 @@ export function AuthProvider({ children }) {
     };
   }, []);
 
-  async function signUp(email, password) {
-    const { error } = await supabase.auth.signUp({ email, password });
+  async function signUp(email, password, companyId) {
+    const { error } = await supabase.auth.signUp({
+      email,
+      password,
+      options: { data: { company_id: companyId || "" } },
+    });
     return error;
   }
 

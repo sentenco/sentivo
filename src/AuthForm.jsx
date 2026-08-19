@@ -1,13 +1,22 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useAuth } from "./AuthContext";
+import { supabase } from "./supabaseClient";
 
 export default function AuthForm({ mode, onClose }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [companyId, setCompanyId] = useState("");
+  const [companies, setCompanies] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const [isSignUp, setIsSignUp] = useState(mode === "signup");
   const { signUp, signIn } = useAuth();
+
+  useEffect(() => {
+    supabase.from("companies").select("id, name").order("name").then(({ data }) => {
+      setCompanies(data || []);
+    });
+  }, []);
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -15,7 +24,7 @@ export default function AuthForm({ mode, onClose }) {
     setLoading(true);
 
     const authError = isSignUp
-      ? await signUp(email, password)
+      ? await signUp(email, password, companyId)
       : await signIn(email, password);
 
     setLoading(false);
@@ -58,6 +67,18 @@ export default function AuthForm({ mode, onClose }) {
             />
           </label>
 
+          {isSignUp && (
+            <label>
+              I'm joining as
+              <select value={companyId} onChange={(e) => setCompanyId(e.target.value)}>
+                <option value="">A private teacher (no company)</option>
+                {companies.map((c) => (
+                  <option key={c.id} value={c.id}>{c.name}</option>
+                ))}
+              </select>
+            </label>
+          )}
+
           {error && <p className="auth-error">{error}</p>}
 
           <button type="submit" className="auth-submit" disabled={loading}>
@@ -90,11 +111,11 @@ export default function AuthForm({ mode, onClose }) {
         .auth-sub { font-size: 13.5px; color: #777; margin-bottom: 20px; }
         .auth-form { display: flex; flex-direction: column; gap: 14px; }
         .auth-form label { display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: 600; color: #444; }
-        .auth-form input {
+        .auth-form input, .auth-form select {
           padding: 10px 12px; border: 1px solid #DEDAD0; border-radius: 8px;
-          font-size: 14px; outline: none;
+          font-size: 14px; outline: none; font-family: inherit; background: white;
         }
-        .auth-form input:focus { border-color: #FF7A59; }
+        .auth-form input:focus, .auth-form select:focus { border-color: #FF7A59; }
         .auth-error { color: #C0392B; font-size: 13px; margin: 0; }
         .auth-submit {
           background: #FF7A59; color: white; border: none; border-radius: 8px;

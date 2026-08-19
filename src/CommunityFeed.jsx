@@ -171,6 +171,9 @@ export default function CommunityFeed({ afterStats } = {}) {
   const isAdmin = user?.email?.toLowerCase() === ADMIN_EMAIL;
   const [myName] = useState(() => localStorage.getItem("sentivo_teacher_name") || "");
 
+  const [profile, setProfile] = useState(null);
+  const [scope, setScope] = useState("universal");
+
   const [authMode, setAuthMode] = useState(null);
   const [posts, setPosts] = useState([]);
   const [loadingPosts, setLoadingPosts] = useState(true);
@@ -208,10 +211,14 @@ export default function CommunityFeed({ afterStats } = {}) {
 
   async function loadPosts() {
     setLoadingPosts(true);
-    const { data, error } = await supabase
+    let query = supabase
       .from("community_posts")
-      .select("id, author_id, author_email, author_name, content, post_type, prompt_date, image_url, file_url, file_name, created_at")
+      .select("id, author_id, author_email, author_name, content, post_type, prompt_date, company_id, image_url, file_url, file_name, created_at")
       .order("created_at", { ascending: false });
+    query = scope === "company" && profile?.company_id
+      ? query.eq("company_id", profile.company_id)
+      : query.is("company_id", null);
+    const { data, error } = await query;
     const rows = error ? [] : data || [];
     setPosts(rows);
     setLoadingPosts(false);
@@ -238,12 +245,25 @@ export default function CommunityFeed({ afterStats } = {}) {
   }
 
   useEffect(() => {
-    if (!user) { setPosts([]); setLoadingPosts(false); return; }
-    loadPosts();
+    if (!user) { setPosts([]); setLoadingPosts(false); setProfile(null); setScope("universal"); return; }
+    (async () => {
+      const { data } = await supabase
+        .from("profiles")
+        .select("company_id, companies(name)")
+        .eq("id", user.id)
+        .maybeSingle();
+      setProfile(data || null);
+    })();
     loadCommentCounts();
     loadLikes();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user]);
+
+  useEffect(() => {
+    if (!user) return;
+    loadPosts();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user, scope, profile]);
 
   async function handleImageUpload(e) {
     const file = e.target.files?.[0];
@@ -285,6 +305,7 @@ export default function CommunityFeed({ afterStats } = {}) {
         author_name: myName.trim() || null,
         content,
         post_type: postType,
+        company_id: scope === "company" ? profile?.company_id || null : null,
         image_url: uploadedImage?.url || null,
         file_url: uploadedFile?.url || null,
         file_name: uploadedFile?.name || null,
@@ -392,6 +413,25 @@ export default function CommunityFeed({ afterStats } = {}) {
         </div>
       </div>
 
+      {profile?.company_id && (
+        <div className="cm-scope-switch">
+          <button
+            type="button"
+            className={`cm-scope-pill${scope === "universal" ? " is-active" : ""}`}
+            onClick={() => setScope("universal")}
+          >
+            Universal
+          </button>
+          <button
+            type="button"
+            className={`cm-scope-pill${scope === "company" ? " is-active" : ""}`}
+            onClick={() => setScope("company")}
+          >
+            {profile.companies?.name || "My Company"}
+          </button>
+        </div>
+      )}
+
       {afterStats}
 
       {authLoading ? null : !user ? (
@@ -483,7 +523,9 @@ export default function CommunityFeed({ afterStats } = {}) {
         {loadingPosts ? (
           <p className="cm-empty">Loading…</p>
         ) : posts.length === 0 ? (
-          <p className="cm-empty">No posts yet. Be the first to share something!</p>
+          <p className="cm-empty">
+            No posts yet{profile?.company_id ? ` in ${scope === "company" ? (profile.companies?.name || "your company") : "Universal"}` : ""}. Be the first to share something!
+          </p>
         ) : (
           posts.map((p) => {
             const isOpen = expanded.has(p.id);
@@ -621,6 +663,17 @@ const CSS = `
 .cm-stat svg { width: 14px; height: 14px; color: var(--coral); flex-shrink: 0; }
 .cm-stat-text { font-family: 'Quicksand', sans-serif; font-size: 11px; color: var(--muted); line-height: 1.25; }
 .cm-stat-text strong { font-family: 'Fredoka', sans-serif; font-weight: 700; color: var(--ink); font-variant-numeric: tabular-nums; margin-right: 2px; }
+
+.cm-scope-switch {
+  display: flex; gap: 6px; background: var(--card); border: 1px solid var(--hair);
+  border-radius: 999px; padding: 4px; width: fit-content;
+}
+.cm-scope-pill {
+  font-family: 'Quicksand', sans-serif; font-weight: 700; font-size: 12.5px; color: var(--muted);
+  background: none; border: none; border-radius: 999px; padding: 7px 16px; cursor: pointer;
+}
+.cm-scope-pill:hover { color: var(--ink); }
+.cm-scope-pill.is-active { background: var(--ink); color: #fff; }
 
 .cm-signin-card {
   background: var(--card); border: 1px solid var(--hair); border-radius: 16px;
