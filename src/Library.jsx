@@ -36,12 +36,6 @@ function daysSince(date) {
   return Math.floor((startOfToday - GAZETTE_LAUNCH) / 86400000);
 }
 
-// Same idea as daysSince, but steps forward again at noon -- used to reshuffle
-// Recommended Lessons twice a day (12am and 12pm) instead of once.
-function halfDaysSince(date) {
-  return daysSince(date) * 2 + (date.getHours() >= 12 ? 1 : 0);
-}
-
 function gcd(a, b) {
   return b === 0 ? a : gcd(b, a % b);
 }
@@ -63,29 +57,6 @@ function pickDeterministic(total, seed, count) {
   }
   return out;
 }
-
-const CATEGORY_HUE = {
-  Reading: "teal", Writing: "teal",
-  Grammar: "gold", Vocabulary: "gold",
-  Listening: "coral", Speaking: "coral",
-};
-const CATEGORY_ICON = {
-  Reading: "📖", Grammar: "🔤", Vocabulary: "📚",
-  Writing: "✍️", Listening: "🎧", Speaking: "🗣️",
-};
-
-// Grammar and Vocabulary are fully hardcoded pages (no rows in the `tools`
-// table to recommend), so Recommended Lessons rotates through real, known-
-// working routes for those two instead of querying `tools`.
-const GRAMMAR_LESSONS = [
-  { id: "grammar-verb-tenses", title: "Verb Tenses", href: "/library/grammar/verb-tenses" },
-  { id: "grammar-sentence-patterns", title: "Sentence Patterns", href: "/library/grammar/sentence-patterns" },
-  { id: "grammar-parts-of-speech", title: "Parts of Speech", href: "/library/grammar/parts-of-speech" },
-];
-const VOCAB_LESSONS = [
-  { id: "vocab-synonyms", title: "Synonyms", href: "/library/vocabulary/synonyms/sample/player" },
-  { id: "vocab-antonyms", title: "Antonyms", href: "/library/vocabulary/antonyms/sample/player" },
-];
 
 function CorrectionLine({ segments }) {
   return segments.map((seg, i) => {
@@ -716,7 +687,7 @@ function openFeedbackGenerator() {
   window.open("/library/feedback", "_blank");
 }
 
-function TodayFeature({ tools, navigate }) {
+function TodayFeature({ navigate }) {
   const today = new Date();
   const dayIndex = daysSince(today);
   const total = DAILY_CORRECTIONS.length;
@@ -725,29 +696,42 @@ function TodayFeature({ tools, navigate }) {
   const briefIdxs = pickDeterministic(total, headlineIdx, 2);
   const briefs = briefIdxs.map((i) => DAILY_CORRECTIONS[i]);
 
-  const halfDayIndex = halfDaysSince(today);
-  const readingTools = tools.filter((t) => t.category === "Reading");
-  const readingPick = readingTools.length
-    ? pickDeterministic(readingTools.length, halfDayIndex, 1).map((i) => {
-        const t = readingTools[i];
-        const href = t.content_type === "forge-track" ? `/library/forge/${t.id}` : `/library/${t.id}`;
-        return { id: t.id, title: t.title, category: "Reading", level: t.level, access: t.access, href };
-      })
-    : [];
-  const grammarPick = pickDeterministic(GRAMMAR_LESSONS.length, halfDayIndex + 5, 1).map((i) => ({
-    ...GRAMMAR_LESSONS[i], category: "Grammar", level: null, access: "free",
-  }));
-  const vocabPick = pickDeterministic(VOCAB_LESSONS.length, halfDayIndex + 11, 1).map((i) => ({
-    ...VOCAB_LESSONS[i], category: "Vocabulary", level: null, access: "free",
-  }));
-  const recommended = [...readingPick, ...grammarPick, ...vocabPick];
+  const toolkit = (
+    <>
+      <div className="td-section-label">Your Toolkit</div>
+      <div className="td-actions-grid">
+        <button type="button" className="td-action-card" onClick={openFeedbackGenerator}>
+          <div className="td-action-icon"><img src={todayFeedbackIcon} alt="" /></div>
+          <div className="td-action-title">Lesson Feedback</div>
+        </button>
+        <button type="button" className="td-action-card" onClick={openWheel}>
+          <div className="td-action-icon"><img src={todayWheelIcon} alt="" /></div>
+          <div className="td-action-title">Spin the Wheel</div>
+        </button>
+        <button type="button" className="td-action-card" onClick={() => navigate("/library/notebook")}>
+          <div className="td-action-icon"><img src={todayNotebookIcon} alt="" /></div>
+          <div className="td-action-title">Digital Notebook</div>
+        </button>
+        <button type="button" className="td-action-card" onClick={() => navigate("/library/slides")}>
+          <div className="td-action-icon"><img src={todayDeckIcon} alt="" /></div>
+          <div className="td-action-title">Slide Builder</div>
+        </button>
+      </div>
+    </>
+  );
 
   return (
     <div className="gc-dashboard">
       <div className="td-body">
       <div className="td-main">
-        <CommunityFeed />
+        <CommunityFeed afterStats={toolkit} />
 
+        <div className="td-quote-banner">
+          <img src={todayQuoteBanner} alt="Every lesson is a chance to make a difference." />
+        </div>
+      </div>
+
+      <aside className="gc-sidebar">
         <div className="td-correction-card">
           <div className="td-dc-label">
             <span className="td-dc-badge"><PencilIcon /></span>
@@ -776,56 +760,6 @@ function TodayFeature({ tools, navigate }) {
           ))}
         </div>
 
-        <div className="td-section-label">Your Toolkit</div>
-        <div className="td-actions-grid">
-          <button type="button" className="td-action-card" onClick={openFeedbackGenerator}>
-            <div className="td-action-icon"><img src={todayFeedbackIcon} alt="" /></div>
-            <div className="td-action-title">Lesson Feedback</div>
-          </button>
-          <button type="button" className="td-action-card" onClick={openWheel}>
-            <div className="td-action-icon"><img src={todayWheelIcon} alt="" /></div>
-            <div className="td-action-title">Spin the Wheel</div>
-          </button>
-          <button type="button" className="td-action-card" onClick={() => navigate("/library/notebook")}>
-            <div className="td-action-icon"><img src={todayNotebookIcon} alt="" /></div>
-            <div className="td-action-title">Digital Notebook</div>
-          </button>
-          <button type="button" className="td-action-card" onClick={() => navigate("/library/slides")}>
-            <div className="td-action-icon"><img src={todayDeckIcon} alt="" /></div>
-            <div className="td-action-title">Slide Builder</div>
-          </button>
-        </div>
-
-        {recommended.length > 0 && (
-          <div className="gc-reclessons">
-            <div className="gc-rl-head">
-              <span className="gc-rl-title">Recommended Lessons</span>
-            </div>
-            <div className="gc-rl-grid">
-              {recommended.map((t) => {
-                const hue = CATEGORY_HUE[t.category] || "gold";
-                return (
-                  <a href={t.href} className={`gc-rl-card hue-${hue}`} key={t.id}>
-                    <span className="gc-rl-icon">{CATEGORY_ICON[t.category] || "📘"}</span>
-                    <span className="gc-rl-name">{t.title}</span>
-                    <span className="gc-rl-meta">
-                      {t.access === "premium" && <span className="prem">Premium · </span>}
-                      {t.level ? `${t.level} · ` : ""}{t.category}
-                    </span>
-                    <span className="gc-rl-cta">Open lesson <span className="arr">→</span></span>
-                  </a>
-                );
-              })}
-            </div>
-          </div>
-        )}
-
-        <div className="td-quote-banner">
-          <img src={todayQuoteBanner} alt="Every lesson is a chance to make a difference." />
-        </div>
-      </div>
-
-      <aside className="gc-sidebar">
         <div className="gc-widget gc-widget--clock">
           <DigitalClock />
         </div>
@@ -1443,7 +1377,7 @@ export default function Library() {
           toolsLoading ? (
             <p className="empty-msg">Loading today's edition…</p>
           ) : (
-            <TodayFeature tools={tools} onSeeAllLessons={() => setShowAllToday(true)} navigate={navigate} />
+            <TodayFeature navigate={navigate} />
           )
         ) : category === "Articles" ? (
           <ArticlesFeature navigate={navigate} />
@@ -1846,6 +1780,13 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .td-brief-card:hover { z-index: 20; }
 .td-brief-card:hover .td-brief-pop { opacity: 1; visibility: visible; transform: translateY(0); }
 
+/* ── Daily correction, compacted for the 280px sidebar column ── */
+.gc-sidebar .td-correction-card { padding: 20px 20px; border-radius: 16px; }
+.gc-sidebar .td-dc-headline { font-size: 16px; margin-bottom: 12px; }
+.gc-sidebar .td-dc-why { padding: 10px 12px; }
+.gc-sidebar .td-dc-explain { font-size: 12.5px; max-width: none; }
+.gc-sidebar .td-briefs { grid-template-columns: 1fr; gap: 10px; }
+
 /* ── Toolkit ── */
 .td-section-label { font-family: 'Quicksand', sans-serif; font-size: 12px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
 .td-actions-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
@@ -1888,71 +1829,6 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   .gc-topbar, .gc-sections, .gc-editions { padding-left: 14px; padding-right: 14px; }
   .gc-search input { width: 130px; }
   .gc-sec-tab { font-size: 10.5px; letter-spacing: 0.02em; padding: 7px 8px; }
-}
-
-/* ── Recommended Lessons: newspaper section front ── */
-.gc-reclessons { margin-top: 18px; }
-.gc-rl-head {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin-bottom: 10px;
-}
-.gc-rl-title { font-family: 'Fredoka', sans-serif; font-size: 15px; font-weight: 700; color: var(--ink); }
-
-.gc-rl-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
-.gc-rl-card {
-  position: relative;
-  min-width: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  background: var(--card);
-  border: 1px solid var(--hair);
-  border-top: 3px solid var(--accent, var(--coral));
-  border-radius: 16px;
-  padding: 14px 14px 12px;
-  text-decoration: none;
-  transition: transform 0.18s ease, box-shadow 0.18s ease;
-}
-.gc-rl-card.hue-coral { --accent: var(--coral); }
-.gc-rl-card.hue-gold { --accent: var(--marigold, var(--navy)); }
-.gc-rl-card.hue-teal { --accent: var(--dusk, var(--navy-soft)); }
-.gc-rl-card:hover { transform: translateY(-3px); box-shadow: 0 12px 26px rgba(34,58,51,0.14); }
-
-.gc-rl-icon { width: 32px; height: 32px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 15px; }
-.gc-rl-card.hue-teal .gc-rl-icon { background: rgba(22,191,174,0.14); }
-.gc-rl-card.hue-gold .gc-rl-icon { background: rgba(255,182,72,0.2); }
-.gc-rl-card.hue-coral .gc-rl-icon { background: rgba(255,107,74,0.14); }
-.gc-rl-name { font-family: 'Fredoka', sans-serif; font-size: 15px; font-weight: 600; line-height: 1.3; color: var(--ink); margin-top: 4px; }
-.gc-rl-meta { font-family: 'Quicksand', sans-serif; font-size: 10px; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase; color: var(--muted); }
-.gc-rl-meta .prem { color: var(--coral); }
-.gc-rl-cta {
-  margin-top: auto;
-  padding-top: 8px;
-  font-family: 'Quicksand', sans-serif;
-  font-size: 10.5px;
-  font-weight: 800;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--accent, var(--coral));
-  opacity: 0;
-  transform: translateY(3px);
-  transition: opacity 0.18s ease, transform 0.18s ease;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-}
-.gc-rl-cta .arr { transition: transform 0.18s ease; }
-.gc-rl-card:hover .gc-rl-cta { opacity: 1; transform: translateY(0); }
-.gc-rl-card:hover .gc-rl-cta .arr { transform: translateX(3px); }
-
-@media (prefers-reduced-motion: reduce) {
-  .gc-rl-card, .gc-rl-cta, .gc-rl-cta .arr { transition: none; }
-  .gc-rl-card:hover { transform: none; }
-  .gc-rl-cta { opacity: 1; transform: none; }
 }
 
 .account-wrap { position: relative; }
