@@ -677,11 +677,13 @@ function TodayFeature({ navigate }) {
 
   useEffect(() => {
     if (!user) { setPlan("free"); setPostCount(0); setCommentCount(0); return; }
+    const startOfToday = new Date();
+    startOfToday.setHours(0, 0, 0, 0);
     (async () => {
       const [{ data: profile }, { count: posts }, { count: comments }] = await Promise.all([
         supabase.from("profiles").select("plan").eq("id", user.id).maybeSingle(),
-        supabase.from("community_posts").select("id", { count: "exact", head: true }).eq("author_id", user.id),
-        supabase.from("community_comments").select("id", { count: "exact", head: true }).eq("author_id", user.id),
+        supabase.from("community_posts").select("id", { count: "exact", head: true }).eq("author_id", user.id).gte("created_at", startOfToday.toISOString()),
+        supabase.from("community_comments").select("id", { count: "exact", head: true }).eq("author_id", user.id).gte("created_at", startOfToday.toISOString()),
       ]);
       setPlan(profile?.plan || "free");
       setPostCount(posts || 0);
@@ -690,7 +692,8 @@ function TodayFeature({ navigate }) {
   }, [user]);
 
   // Teacher's Desk is free for everyone, but a free-plan teacher has to
-  // participate in Homeroom a little first -- paid plans skip this entirely.
+  // participate in Homeroom *today* to unlock it for today -- resets daily,
+  // paid plans skip this entirely.
   const deskUnlocked = plan !== "free" || postCount >= 3 || commentCount >= 3;
   const deskProgress = Math.max(postCount, commentCount);
 
@@ -702,7 +705,7 @@ function TodayFeature({ navigate }) {
   const briefIdxs = pickDeterministic(total, headlineIdx, 2);
   const briefs = briefIdxs.map((i) => DAILY_CORRECTIONS[i]);
 
-  const deskLockTitle = deskUnlocked ? undefined : `Post or comment 3 times in Homeroom to unlock. You're at ${deskProgress}/3.`;
+  const deskLockTitle = deskUnlocked ? undefined : `Post or comment 3 times in Homeroom today to unlock. You're at ${deskProgress}/3 today.`;
 
   const toolkit = (
     <>
@@ -712,8 +715,8 @@ function TodayFeature({ navigate }) {
         <div className="td-desk-locked">
           <span className="td-desk-lock-icon"><LockIcon /></span>
           <div>
-            <p className="td-desk-lock-title">Unlock your Teacher's Desk</p>
-            <p className="td-desk-lock-sub">Post or comment 3 times in Homeroom to unlock. You're at {deskProgress}/3.</p>
+            <p className="td-desk-lock-title">Unlock today's Teacher's Desk</p>
+            <p className="td-desk-lock-sub">Post or comment 3 times in Homeroom today to unlock. You're at {deskProgress}/3 today.</p>
           </div>
         </div>
       )}
