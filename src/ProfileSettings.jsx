@@ -24,6 +24,15 @@ function CloseIcon() {
   );
 }
 
+function SeedIcon() {
+  return (
+    <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <ellipse cx="10" cy="11.2" rx="3" ry="4" />
+      <path d="M10 7.2c0-2 1.5-3.2 3-3.5" />
+    </svg>
+  );
+}
+
 function SproutIcon() {
   return (
     <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -34,10 +43,22 @@ function SproutIcon() {
   );
 }
 
-function StarIcon() {
+function SaplingIcon() {
   return (
     <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <path d="M10 2.7l2.1 4.4 4.8.7-3.5 3.4.8 4.8-4.2-2.3-4.2 2.3.8-4.8-3.5-3.4 4.8-.7Z" />
+      <path d="M10 17V5.5" />
+      <path d="M10 11.5c0 0-3.2 0-3.2-3 0 0 3.2 0 3.2 3Z" />
+      <path d="M10 11.5c0 0 3.2 0 3.2-3 0 0-3.2 0-3.2 3Z" />
+      <path d="M10 8c0 0-2.3 0-2.3-2.2 0 0 2.3 0 2.3 2.2Z" />
+    </svg>
+  );
+}
+
+function TreeIcon() {
+  return (
+    <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M10 17v-4.3" />
+      <circle cx="10" cy="8" r="4.6" />
     </svg>
   );
 }
@@ -52,13 +73,18 @@ function TrophyIcon() {
   );
 }
 
-function teachingBadge(years) {
+// Five tiers, matching the user's grouping. Boundaries are chosen so every
+// year value falls in exactly one tier -- "5-10 Years" reads naturally as a
+// bucket label even though the previous tier's "3-5" already claims 5.
+export function teachingBadge(years) {
   if (years === null || years === undefined || years === "") return null;
   const n = Number(years);
   if (Number.isNaN(n) || n < 0) return null;
-  if (n < 2) return { Icon: SproutIcon, label: "New Teacher" };
-  if (n < 5) return { Icon: StarIcon, label: "Experienced Teacher" };
-  return { Icon: TrophyIcon, label: "Veteran Teacher" };
+  if (n < 1) return { Icon: SeedIcon, label: "Less than 1 Year", color: "#8A8271", pale: "#F1EDE3" };
+  if (n < 3) return { Icon: SproutIcon, label: "1–2 Years", color: "#2E8F7A", pale: "#E3F3EE" };
+  if (n < 6) return { Icon: SaplingIcon, label: "3–5 Years", color: "#A5730F", pale: "#FCEFD6" };
+  if (n <= 10) return { Icon: TreeIcon, label: "5–10 Years", color: "#FF6B4A", pale: "#FDECE5" };
+  return { Icon: TrophyIcon, label: "10+ Years", color: "#6E5FC4", pale: "#E7E4F4" };
 }
 
 export default function ProfileSettings({ onClose, onSaved }) {
@@ -194,7 +220,7 @@ export default function ProfileSettings({ onClose, onSaved }) {
               </div>
 
               {badge && (
-                <div className="ps-badge">
+                <div className="ps-badge" style={{ background: badge.pale, color: badge.color }}>
                   <span className="ps-badge-icon"><badge.Icon /></span>
                   {badge.label}
                 </div>
@@ -285,7 +311,7 @@ const CSS = `
 
 .ps-badge {
   display: flex; align-items: center; gap: 7px; width: fit-content;
-  background: var(--coral-pale); color: var(--coral); border-radius: 999px; padding: 7px 16px 7px 12px;
+  border-radius: 999px; padding: 7px 16px 7px 12px;
   font-family: 'Quicksand', sans-serif; font-size: 12.5px; font-weight: 700;
 }
 .ps-badge-icon { display: flex; }

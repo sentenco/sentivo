@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { supabase } from "./supabaseClient";
 import { useAuth } from "./AuthContext";
 import AuthForm from "./AuthForm";
+import { teachingBadge } from "./ProfileSettings.jsx";
 import { timeAgo } from "./slideDeckTypes";
 import communityBannerImg from "./assets/community/banner.jpg";
 
@@ -213,7 +214,7 @@ export default function CommunityFeed({ afterStats } = {}) {
     setLoadingPosts(true);
     let query = supabase
       .from("community_posts")
-      .select("id, author_id, author_email, author_name, content, post_type, prompt_date, company_id, image_url, file_url, file_name, created_at")
+      .select("id, author_id, author_email, author_name, content, post_type, prompt_date, company_id, author_years_teaching, image_url, file_url, file_name, created_at")
       .order("created_at", { ascending: false });
     query = scope === "company" && profile?.company_id
       ? query.eq("company_id", profile.company_id)
@@ -249,7 +250,7 @@ export default function CommunityFeed({ afterStats } = {}) {
     (async () => {
       const { data } = await supabase
         .from("profiles")
-        .select("company_id, companies(name)")
+        .select("company_id, years_teaching, companies(name)")
         .eq("id", user.id)
         .maybeSingle();
       setProfile(data || null);
@@ -306,6 +307,7 @@ export default function CommunityFeed({ afterStats } = {}) {
         content,
         post_type: postType,
         company_id: scope === "company" ? profile?.company_id || null : null,
+        author_years_teaching: profile?.years_teaching ?? null,
         image_url: uploadedImage?.url || null,
         file_url: uploadedFile?.url || null,
         file_name: uploadedFile?.name || null,
@@ -535,12 +537,19 @@ export default function CommunityFeed({ afterStats } = {}) {
             const likeCount = likeCounts[p.id] || 0;
             const commentCount = commentCounts[p.id] || 0;
             const type = postTypeMeta(p.post_type);
+            const badge = teachingBadge(p.author_years_teaching);
             return (
               <div className="cm-post" key={p.id}>
                 <div className="cm-post-head">
                   <Avatar name={p.author_name} email={p.author_email} size="sm" />
                   <div className="cm-post-headline">
                     <span className="cm-post-author">{displayName(p.author_name, p.author_email)}</span>
+                    {badge && (
+                      <span className="cm-badge-tag" style={{ background: badge.pale, color: badge.color }} title={badge.label}>
+                        <badge.Icon />
+                        {badge.label}
+                      </span>
+                    )}
                     <span className="cm-post-dot">·</span>
                     <span className="cm-post-time">{timeAgo(p.created_at)}</span>
                     {type && (
@@ -804,6 +813,13 @@ const CSS = `
 .cm-post-tag--tip { background: #FCEFD6; color: #A5730F; }
 .cm-post-tag--question { background: var(--coral-pale); color: var(--coral); }
 .cm-post-tag--resource { background: #E7E4F4; color: #6E5FC4; }
+
+.cm-badge-tag {
+  display: flex; align-items: center; gap: 4px;
+  font-family: 'Quicksand', sans-serif; font-weight: 700; font-size: 10.5px;
+  border-radius: 999px; padding: 2px 9px 2px 7px;
+}
+.cm-badge-tag svg { width: 11px; height: 11px; }
 
 .cm-post-actions { display: flex; align-items: center; gap: 4px; }
 .cm-action-btn {
