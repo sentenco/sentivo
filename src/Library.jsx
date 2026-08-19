@@ -702,29 +702,13 @@ function TodayFeature({ navigate }) {
   const briefIdxs = pickDeterministic(total, headlineIdx, 2);
   const briefs = briefIdxs.map((i) => DAILY_CORRECTIONS[i]);
 
+  const deskLockTitle = deskUnlocked ? undefined : `Post or comment 3 times in Homeroom to unlock. You're at ${deskProgress}/3.`;
+
   const toolkit = (
     <>
       <div className="td-section-label">Teacher's Desk</div>
-      {deskUnlocked ? (
-        <div className="td-actions-grid">
-          <button type="button" className="td-action-card" onClick={openFeedbackGenerator}>
-            <div className="td-action-icon"><img src={todayFeedbackIcon} alt="" /></div>
-            <div className="td-action-title">Lesson Feedback</div>
-          </button>
-          <button type="button" className="td-action-card" onClick={openWheel}>
-            <div className="td-action-icon"><img src={todayWheelIcon} alt="" /></div>
-            <div className="td-action-title">Spin the Wheel</div>
-          </button>
-          <button type="button" className="td-action-card" onClick={() => navigate("/library/notebook")}>
-            <div className="td-action-icon"><img src={todayNotebookIcon} alt="" /></div>
-            <div className="td-action-title">Digital Notebook</div>
-          </button>
-          <button type="button" className="td-action-card" onClick={() => navigate("/library/slides")}>
-            <div className="td-action-icon"><img src={todayDeckIcon} alt="" /></div>
-            <div className="td-action-title">Slide Builder</div>
-          </button>
-        </div>
-      ) : (
+
+      {!deskUnlocked && (
         <div className="td-desk-locked">
           <span className="td-desk-lock-icon"><LockIcon /></span>
           <div>
@@ -733,6 +717,29 @@ function TodayFeature({ navigate }) {
           </div>
         </div>
       )}
+
+      <div className={`td-actions-grid${deskUnlocked ? "" : " is-locked"}`}>
+        <button type="button" className="td-action-card" onClick={deskUnlocked ? openFeedbackGenerator : undefined} aria-disabled={!deskUnlocked} title={deskLockTitle}>
+          {!deskUnlocked && <span className="td-action-lock"><LockIcon /></span>}
+          <div className="td-action-icon"><img src={todayFeedbackIcon} alt="" /></div>
+          <div className="td-action-title">Lesson Feedback</div>
+        </button>
+        <button type="button" className="td-action-card" onClick={deskUnlocked ? openWheel : undefined} aria-disabled={!deskUnlocked} title={deskLockTitle}>
+          {!deskUnlocked && <span className="td-action-lock"><LockIcon /></span>}
+          <div className="td-action-icon"><img src={todayWheelIcon} alt="" /></div>
+          <div className="td-action-title">Spin the Wheel</div>
+        </button>
+        <button type="button" className="td-action-card" onClick={deskUnlocked ? () => navigate("/library/notebook") : undefined} aria-disabled={!deskUnlocked} title={deskLockTitle}>
+          {!deskUnlocked && <span className="td-action-lock"><LockIcon /></span>}
+          <div className="td-action-icon"><img src={todayNotebookIcon} alt="" /></div>
+          <div className="td-action-title">Digital Notebook</div>
+        </button>
+        <button type="button" className="td-action-card" onClick={deskUnlocked ? () => navigate("/library/slides") : undefined} aria-disabled={!deskUnlocked} title={deskLockTitle}>
+          {!deskUnlocked && <span className="td-action-lock"><LockIcon /></span>}
+          <div className="td-action-icon"><img src={todayDeckIcon} alt="" /></div>
+          <div className="td-action-title">Slide Builder</div>
+        </button>
+      </div>
     </>
   );
 
@@ -1826,6 +1833,15 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .td-action-icon img { width: 100%; height: 100%; object-fit: contain; }
 .td-action-title { font-family: 'Fredoka', sans-serif; font-size: 13px; font-weight: 600; line-height: 1.25; color: var(--ink); }
 .td-action-card.is-soon { opacity: 0.7; cursor: default; }
+.td-action-card[aria-disabled="true"] { position: relative; opacity: 0.55; cursor: not-allowed; }
+.td-action-card[aria-disabled="true"]:hover { transform: none; box-shadow: 0 8px 24px rgba(43,42,74,0.05); }
+.td-action-lock {
+  position: absolute; top: 8px; right: 8px; width: 20px; height: 20px; border-radius: 50%;
+  background: var(--ink); color: #fff; display: flex; align-items: center; justify-content: center;
+}
+.td-action-lock svg { width: 10px; height: 10px; }
+
+.td-actions-grid.is-locked { margin-top: 12px; }
 
 .td-desk-locked {
   display: flex; align-items: center; gap: 14px;
