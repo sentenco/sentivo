@@ -1346,7 +1346,7 @@ export default function Library() {
                 {menuOpen && (
                   <div className="account-menu">
                     <button type="button" className="account-menu-link" onClick={() => { setProfileOpen(true); setMenuOpen(false); }}>Profile</button>
-                    <a href="#plan">Subscription</a>
+                    <button type="button" className="account-menu-link" onClick={() => { navigate("/library/subscription"); setMenuOpen(false); }}>Subscription</button>
                     <a href="mailto:hello@sentivo.com">Help &amp; Support</a>
                     <button className="logout-btn" onClick={() => { signOut(); setMenuOpen(false); }}>Log out</button>
                   </div>

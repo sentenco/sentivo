@@ -9,6 +9,7 @@ import TeacherGuide from './TeacherGuide.jsx'
 import StoryBook from './StoryBook.jsx'
 import SearchLookup from './SearchLookup.jsx'
 import Community from './Community.jsx'
+import Subscription from './Subscription.jsx'
 import ArticleReader from './ArticleReader.jsx'
 import ArticlePlayerPage from './ArticlePlayerPage.jsx'
 import VocabularyPlayerPage from './VocabularyPlayerPage.jsx'
@@ -116,6 +117,7 @@ createRoot(document.getElementById('root')).render(
             <Route path="/library/storybook-22" element={<StoryBook book={storybook22} />} />
             <Route path="/library/search" element={<SearchLookup />} />
             <Route path="/library/community" element={<Community />} />
+            <Route path="/library/subscription" element={<Subscription />} />
             <Route path="/library/forge" element={<ForgeHub />} />
             <Route path="/library/forge/:trackId" element={<ForgeTrack />} />
             <Route path="/library/forge/:trackId/:lessonNum" element={<Forge />} />
