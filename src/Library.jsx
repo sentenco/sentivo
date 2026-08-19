@@ -75,6 +75,15 @@ function PencilIcon() {
   );
 }
 
+function LockIcon() {
+  return (
+    <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <rect x="4.5" y="9" width="11" height="8" rx="2" />
+      <path d="M6.8 9V6.3a3.2 3.2 0 0 1 6.4 0V9" />
+    </svg>
+  );
+}
+
 function DigitalClock() {
   const [now, setNow] = useState(new Date());
   useEffect(() => {
@@ -661,6 +670,30 @@ function openFeedbackGenerator() {
 }
 
 function TodayFeature({ navigate }) {
+  const { user } = useAuth();
+  const [plan, setPlan] = useState("free");
+  const [postCount, setPostCount] = useState(0);
+  const [commentCount, setCommentCount] = useState(0);
+
+  useEffect(() => {
+    if (!user) { setPlan("free"); setPostCount(0); setCommentCount(0); return; }
+    (async () => {
+      const [{ data: profile }, { count: posts }, { count: comments }] = await Promise.all([
+        supabase.from("profiles").select("plan").eq("id", user.id).maybeSingle(),
+        supabase.from("community_posts").select("id", { count: "exact", head: true }).eq("author_id", user.id),
+        supabase.from("community_comments").select("id", { count: "exact", head: true }).eq("author_id", user.id),
+      ]);
+      setPlan(profile?.plan || "free");
+      setPostCount(posts || 0);
+      setCommentCount(comments || 0);
+    })();
+  }, [user]);
+
+  // Teacher's Desk is free for everyone, but a free-plan teacher has to
+  // participate in Homeroom a little first -- paid plans skip this entirely.
+  const deskUnlocked = plan !== "free" || postCount >= 3 || commentCount >= 3;
+  const deskProgress = Math.max(postCount, commentCount);
+
   const today = new Date();
   const dayIndex = daysSince(today);
   const total = DAILY_CORRECTIONS.length;
@@ -672,24 +705,34 @@ function TodayFeature({ navigate }) {
   const toolkit = (
     <>
       <div className="td-section-label">Teacher's Desk</div>
-      <div className="td-actions-grid">
-        <button type="button" className="td-action-card" onClick={openFeedbackGenerator}>
-          <div className="td-action-icon"><img src={todayFeedbackIcon} alt="" /></div>
-          <div className="td-action-title">Lesson Feedback</div>
-        </button>
-        <button type="button" className="td-action-card" onClick={openWheel}>
-          <div className="td-action-icon"><img src={todayWheelIcon} alt="" /></div>
-          <div className="td-action-title">Spin the Wheel</div>
-        </button>
-        <button type="button" className="td-action-card" onClick={() => navigate("/library/notebook")}>
-          <div className="td-action-icon"><img src={todayNotebookIcon} alt="" /></div>
-          <div className="td-action-title">Digital Notebook</div>
-        </button>
-        <button type="button" className="td-action-card" onClick={() => navigate("/library/slides")}>
-          <div className="td-action-icon"><img src={todayDeckIcon} alt="" /></div>
-          <div className="td-action-title">Slide Builder</div>
-        </button>
-      </div>
+      {deskUnlocked ? (
+        <div className="td-actions-grid">
+          <button type="button" className="td-action-card" onClick={openFeedbackGenerator}>
+            <div className="td-action-icon"><img src={todayFeedbackIcon} alt="" /></div>
+            <div className="td-action-title">Lesson Feedback</div>
+          </button>
+          <button type="button" className="td-action-card" onClick={openWheel}>
+            <div className="td-action-icon"><img src={todayWheelIcon} alt="" /></div>
+            <div className="td-action-title">Spin the Wheel</div>
+          </button>
+          <button type="button" className="td-action-card" onClick={() => navigate("/library/notebook")}>
+            <div className="td-action-icon"><img src={todayNotebookIcon} alt="" /></div>
+            <div className="td-action-title">Digital Notebook</div>
+          </button>
+          <button type="button" className="td-action-card" onClick={() => navigate("/library/slides")}>
+            <div className="td-action-icon"><img src={todayDeckIcon} alt="" /></div>
+            <div className="td-action-title">Slide Builder</div>
+          </button>
+        </div>
+      ) : (
+        <div className="td-desk-locked">
+          <span className="td-desk-lock-icon"><LockIcon /></span>
+          <div>
+            <p className="td-desk-lock-title">Unlock your Teacher's Desk</p>
+            <p className="td-desk-lock-sub">Post or comment 3 times in Homeroom to unlock. You're at {deskProgress}/3.</p>
+          </div>
+        </div>
+      )}
     </>
   );
 
@@ -1783,6 +1826,19 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .td-action-icon img { width: 100%; height: 100%; object-fit: contain; }
 .td-action-title { font-family: 'Fredoka', sans-serif; font-size: 13px; font-weight: 600; line-height: 1.25; color: var(--ink); }
 .td-action-card.is-soon { opacity: 0.7; cursor: default; }
+
+.td-desk-locked {
+  display: flex; align-items: center; gap: 14px;
+  background: var(--card); border: 1px dashed var(--hair); border-radius: 18px; padding: 16px 18px;
+}
+.td-desk-lock-icon {
+  flex-shrink: 0; width: 38px; height: 38px; border-radius: 12px;
+  background: var(--coral-pale); color: var(--coral);
+  display: flex; align-items: center; justify-content: center;
+}
+.td-desk-lock-icon svg { width: 17px; height: 17px; }
+.td-desk-lock-title { font-family: 'Fredoka', sans-serif; font-size: 14px; font-weight: 600; color: var(--ink); margin: 0 0 3px; }
+.td-desk-lock-sub { font-family: 'Quicksand', sans-serif; font-size: 12.5px; color: var(--muted); margin: 0; line-height: 1.4; }
 
 /* ── Quote banner ── */
 .td-quote-banner { border-radius: 24px; overflow: hidden; line-height: 0; }
