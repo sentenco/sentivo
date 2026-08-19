@@ -100,34 +100,6 @@ function DigitalClock() {
   );
 }
 
-function MiniCalendar() {
-  const today = new Date();
-  const year = today.getFullYear();
-  const month = today.getMonth();
-  const firstDay = new Date(year, month, 1).getDay();
-  const daysInMonth = new Date(year, month + 1, 0).getDate();
-  const monthLabel = today.toLocaleDateString(undefined, { month: "long", year: "numeric" });
-  const cells = [];
-  for (let i = 0; i < firstDay; i++) cells.push(null);
-  for (let d = 1; d <= daysInMonth; d++) cells.push(d);
-
-  return (
-    <div className="gc-calendar">
-      <div className="gc-cal-month">{monthLabel}</div>
-      <div className="gc-cal-grid gc-cal-grid--head">
-        {["S", "M", "T", "W", "T", "F", "S"].map((d, i) => <span key={i}>{d}</span>)}
-      </div>
-      <div className="gc-cal-grid">
-        {cells.map((d, i) => (
-          <span key={i} className={`gc-cal-cell ${d === today.getDate() ? "is-today" : ""} ${d ? "" : "is-empty"}`}>
-            {d || ""}
-          </span>
-        ))}
-      </div>
-    </div>
-  );
-}
-
 function SpeakingBanner({ name }) {
   const banners = {
     // Forge: a hammer striking a glowing word-block on an anvil — building
@@ -732,6 +704,10 @@ function TodayFeature({ navigate }) {
       </div>
 
       <aside className="gc-sidebar">
+        <div className="gc-widget gc-widget--clock">
+          <DigitalClock />
+        </div>
+
         <div className="td-correction-card">
           <div className="td-dc-label">
             <span className="td-dc-badge"><PencilIcon /></span>
@@ -758,13 +734,6 @@ function TodayFeature({ navigate }) {
               </div>
             </div>
           ))}
-        </div>
-
-        <div className="gc-widget gc-widget--clock">
-          <DigitalClock />
-        </div>
-        <div className="gc-widget gc-widget--calendar">
-          <MiniCalendar />
         </div>
       </aside>
       </div>
@@ -1705,20 +1674,11 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .gc-sidebar { display: flex; flex-direction: column; gap: 12px; position: sticky; top: 0; }
 .gc-widget { background: var(--card); border: 1px solid var(--hair); border-radius: 16px; padding: 14px; box-shadow: 0 6px 18px rgba(43,42,74,0.06); }
 .gc-widget--clock { border-top: 3px solid var(--navy); }
-.gc-widget--calendar { border-top: 3px solid var(--coral); }
 
 .gc-clock { text-align: center; }
 .gc-clock-time { font-family: 'Fredoka', sans-serif; font-variant-numeric: tabular-nums; font-size: 26px; font-weight: 600; color: var(--ink); letter-spacing: 0.01em; }
 .gc-clock-sec { font-size: 18px; color: #9B9382; font-weight: 500; }
 .gc-clock-meta { display: flex; justify-content: center; gap: 8px; margin-top: 4px; font-family: 'Quicksand', sans-serif; font-size: 10px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
-
-.gc-cal-month { font-family: 'Fredoka', sans-serif; font-size: 13px; font-weight: 600; color: var(--ink); text-align: center; margin-bottom: 6px; }
-.gc-cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 3px; text-align: center; }
-.gc-cal-grid--head { margin-bottom: 4px; }
-.gc-cal-grid--head span { font-family: 'Quicksand', sans-serif; font-size: 9.5px; font-weight: 800; letter-spacing: 0.06em; color: #9B9382; text-transform: uppercase; }
-.gc-cal-cell { font-family: 'Quicksand', sans-serif; font-size: 12px; font-weight: 600; color: var(--ink); padding: 5px 0; border-radius: 6px; }
-.gc-cal-cell.is-empty { visibility: hidden; }
-.gc-cal-cell.is-today { background: var(--coral); color: #FFFFFF; font-weight: 800; box-shadow: 0 0 0 1.5px var(--coral-dark) inset; }
 
 /* ── Daily correction ── */
 .td-correction-card {
