@@ -22,7 +22,7 @@ const TIERS = [
       "Homeroom (Community, Daily Correction, clock)",
       "Articles (the Gazette)",
       "Full Community access, Universal and your company's",
-      "Teacher's Desk -- unlock daily by posting or commenting 3 times",
+      "Teacher's Desk (unlock daily with 3 posts or comments)",
     ],
   },
   {
@@ -36,13 +36,13 @@ const TIERS = [
     features: [
       "Everything in Free",
       "Speaking, Reading, Grammar, Vocabulary, Writing, Listening",
-      "Teacher's Desk unlocked automatically, no daily requirement",
+      "Teacher's Desk unlocked automatically",
     ],
   },
   {
     key: "pro_plus",
     name: "Pro+",
-    tagline: "Every level, plus AI tools for the moments you need an answer now.",
+    tagline: "Every level. AI tools built in.",
     price: "Coming soon",
     cta: "Upgrade to Pro+",
     accent: "navy",
@@ -61,7 +61,7 @@ export default function Subscription() {
   const [notice, setNotice] = useState(null);
 
   function handleUpgrade(tierName) {
-    setNotice(`${tierName} isn't open for billing yet -- check back soon.`);
+    setNotice(`${tierName} isn't open for billing yet. Check back soon.`);
   }
 
   return (
