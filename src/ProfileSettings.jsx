@@ -1,6 +1,11 @@
 import { useEffect, useState } from "react";
 import { useAuth } from "./AuthContext";
 import { supabase } from "./supabaseClient";
+import tier1Img from "./assets/community/badges/tier1-less-than-1yr.png";
+import tier2Img from "./assets/community/badges/tier2-1-2yrs.png";
+import tier3Img from "./assets/community/badges/tier3-3-5yrs.png";
+import tier4Img from "./assets/community/badges/tier4-5-10yrs.png";
+import tier5Img from "./assets/community/badges/tier5-10-plus-yrs.png";
 
 function initials(name) {
   const parts = (name || "").trim().split(/\s+/).filter(Boolean);
@@ -24,67 +29,29 @@ function CloseIcon() {
   );
 }
 
-function SeedIcon() {
-  return (
-    <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <ellipse cx="10" cy="11.2" rx="3" ry="4" />
-      <path d="M10 7.2c0-2 1.5-3.2 3-3.5" />
-    </svg>
-  );
-}
+// Five tiers, matching the user's grouping -- represented by real medal
+// artwork (generated externally, cropped into individual transparent PNGs)
+// instead of drawn icons. Each tier stores a representative "years" value
+// so the existing years_teaching column/range logic still works: picking a
+// badge just sets years_teaching to that tier's representative number,
+// there's no separate numeric input anymore.
+export const BADGE_TIERS = [
+  { key: "t1", years: 0, label: "Less than 1 Year", img: tier1Img },
+  { key: "t2", years: 1, label: "1–2 Years", img: tier2Img },
+  { key: "t3", years: 3, label: "3–5 Years", img: tier3Img },
+  { key: "t4", years: 6, label: "5–10 Years", img: tier4Img },
+  { key: "t5", years: 11, label: "10+ Years", img: tier5Img },
+];
 
-function SproutIcon() {
-  return (
-    <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <path d="M10 17V9.5" />
-      <path d="M10 9.8C10 9.8 5.8 9.8 5.8 5.5c0 0 4.2 0 4.2 4.3Z" />
-      <path d="M10 9.8c0 0 4.2 0 4.2-4.3 0 0-4.2 0-4.2 4.3Z" />
-    </svg>
-  );
-}
-
-function SaplingIcon() {
-  return (
-    <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <path d="M10 17V5.5" />
-      <path d="M10 11.5c0 0-3.2 0-3.2-3 0 0 3.2 0 3.2 3Z" />
-      <path d="M10 11.5c0 0 3.2 0 3.2-3 0 0-3.2 0-3.2 3Z" />
-      <path d="M10 8c0 0-2.3 0-2.3-2.2 0 0 2.3 0 2.3 2.2Z" />
-    </svg>
-  );
-}
-
-function TreeIcon() {
-  return (
-    <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <path d="M10 17v-4.3" />
-      <circle cx="10" cy="8" r="4.6" />
-    </svg>
-  );
-}
-
-function TrophyIcon() {
-  return (
-    <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <circle cx="10" cy="11.8" r="4.3" />
-      <path d="M7.6 8 5.2 3.3h3.1l1.7 3.5M12.4 8l2.4-4.7h-3.1l-1.7 3.5" />
-      <path d="M8.3 11.7 9.5 13l2.2-2.6" />
-    </svg>
-  );
-}
-
-// Five tiers, matching the user's grouping. Boundaries are chosen so every
-// year value falls in exactly one tier -- "5-10 Years" reads naturally as a
-// bucket label even though the previous tier's "3-5" already claims 5.
 export function teachingBadge(years) {
   if (years === null || years === undefined || years === "") return null;
   const n = Number(years);
   if (Number.isNaN(n) || n < 0) return null;
-  if (n < 1) return { Icon: SeedIcon, label: "Less than 1 Year", color: "#8A8271", pale: "#F1EDE3" };
-  if (n < 3) return { Icon: SproutIcon, label: "1–2 Years", color: "#2E8F7A", pale: "#E3F3EE" };
-  if (n < 6) return { Icon: SaplingIcon, label: "3–5 Years", color: "#A5730F", pale: "#FCEFD6" };
-  if (n <= 10) return { Icon: TreeIcon, label: "5–10 Years", color: "#FF6B4A", pale: "#FDECE5" };
-  return { Icon: TrophyIcon, label: "10+ Years", color: "#6E5FC4", pale: "#E7E4F4" };
+  if (n < 1) return BADGE_TIERS[0];
+  if (n < 3) return BADGE_TIERS[1];
+  if (n < 6) return BADGE_TIERS[2];
+  if (n <= 10) return BADGE_TIERS[3];
+  return BADGE_TIERS[4];
 }
 
 export default function ProfileSettings({ onClose, onSaved }) {
@@ -185,7 +152,10 @@ export default function ProfileSettings({ onClose, onSaved }) {
                 </span>
                 <input type="file" accept="image/*" hidden onChange={handleAvatarUpload} disabled={uploading} />
               </label>
-              <h2 className="ps-name-preview">Teacher {name.trim() || "…"}</h2>
+              <h2 className="ps-name-preview">
+                Teacher {name.trim() || "…"}
+                {badge && <img className="ps-name-badge" src={badge.img} alt={badge.label} title={badge.label} />}
+              </h2>
               <p className="ps-sub">{uploading ? "Uploading photo…" : "How other teachers see you in the Community"}</p>
             </div>
 
@@ -205,38 +175,35 @@ export default function ProfileSettings({ onClose, onSaved }) {
                 </div>
               </label>
 
-              <div className="ps-field-row">
-                <label className="ps-field">
-                  <span className="ps-label">Country</span>
-                  <input
-                    type="text"
-                    className="ps-input"
-                    value={country}
-                    onChange={(e) => setCountry(e.target.value)}
-                    placeholder="e.g. Philippines"
-                    maxLength={60}
-                  />
-                </label>
-                <label className="ps-field">
-                  <span className="ps-label">Years teaching ESL</span>
-                  <input
-                    type="number"
-                    className="ps-input"
-                    min="0"
-                    max="80"
-                    value={yearsTeaching}
-                    onChange={(e) => setYearsTeaching(e.target.value)}
-                    placeholder="e.g. 3"
-                  />
-                </label>
-              </div>
+              <label className="ps-field">
+                <span className="ps-label">Country</span>
+                <input
+                  type="text"
+                  className="ps-input"
+                  value={country}
+                  onChange={(e) => setCountry(e.target.value)}
+                  placeholder="e.g. Philippines"
+                  maxLength={60}
+                />
+              </label>
 
-              {badge && (
-                <div className="ps-badge" style={{ background: badge.pale, color: badge.color }}>
-                  <span className="ps-badge-icon"><badge.Icon /></span>
-                  {badge.label}
+              <div className="ps-field">
+                <span className="ps-label">Experience badge</span>
+                <div className="ps-badge-picker">
+                  {BADGE_TIERS.map((t) => (
+                    <button
+                      key={t.key}
+                      type="button"
+                      className={`ps-badge-option${badge?.key === t.key ? " is-selected" : ""}`}
+                      onClick={() => setYearsTeaching(t.years)}
+                      title={t.label}
+                    >
+                      <img src={t.img} alt={t.label} />
+                      <span>{t.label}</span>
+                    </button>
+                  ))}
                 </div>
-              )}
+              </div>
 
               {error && <p className="ps-error">{error}</p>}
 
@@ -301,13 +268,12 @@ const CSS = `
 .ps-avatar-overlay svg { width: 20px; height: 20px; }
 .ps-avatar-upload:hover .ps-avatar-overlay { opacity: 1; background: rgba(43,42,74,0.45); }
 
-.ps-name-preview { font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 21px; margin: 2px 0 0; color: var(--ink); }
+.ps-name-preview { display: flex; align-items: center; justify-content: center; gap: 8px; font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 21px; margin: 2px 0 0; color: var(--ink); }
+.ps-name-badge { height: 30px; width: auto; flex-shrink: 0; }
 .ps-sub { font-family: 'Quicksand', sans-serif; font-size: 12.5px; color: var(--muted); margin: 2px 0 0; }
 
-.ps-form { display: flex; flex-direction: column; gap: 14px; }
+.ps-form { display: flex; flex-direction: column; gap: 16px; }
 .ps-field { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
-.ps-field-row { display: flex; gap: 12px; }
-.ps-field-row .ps-field { flex: 1; min-width: 0; }
 .ps-label {
   font-family: 'Quicksand', sans-serif; font-size: 10.5px; font-weight: 800; letter-spacing: 0.06em;
   text-transform: uppercase; color: var(--muted);
@@ -321,13 +287,19 @@ const CSS = `
 .ps-name-prefix { font-family: 'Quicksand', sans-serif; font-size: 14px; font-weight: 700; color: var(--muted); flex-shrink: 0; }
 .ps-name-row .ps-input { flex: 1; min-width: 0; }
 
-.ps-badge {
-  display: flex; align-items: center; gap: 7px; width: fit-content;
-  border-radius: 999px; padding: 7px 16px 7px 12px;
-  font-family: 'Quicksand', sans-serif; font-size: 12.5px; font-weight: 700;
+.ps-badge-picker { display: flex; gap: 6px; }
+.ps-badge-option {
+  flex: 1; min-width: 0; display: flex; flex-direction: column; align-items: center; gap: 4px;
+  background: #FDFCFA; border: 1.5px solid var(--hair); border-radius: 12px; padding: 8px 4px 6px;
+  cursor: pointer;
 }
-.ps-badge-icon { display: flex; }
-.ps-badge-icon svg { width: 15px; height: 15px; }
+.ps-badge-option img { height: 40px; width: auto; }
+.ps-badge-option span {
+  font-family: 'Quicksand', sans-serif; font-size: 8.5px; font-weight: 700; color: var(--muted);
+  text-align: center; line-height: 1.2;
+}
+.ps-badge-option.is-selected { border-color: var(--coral); background: var(--coral-pale); box-shadow: 0 0 0 2px var(--coral-pale); }
+.ps-badge-option.is-selected span { color: var(--coral); }
 
 .ps-error { font-family: 'Quicksand', sans-serif; color: #C0392B; font-size: 12.5px; margin: 0; }
 .ps-save {

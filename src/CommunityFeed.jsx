@@ -560,10 +560,7 @@ export default function CommunityFeed({ afterStats } = {}) {
                   <div className="cm-post-headline">
                     <span className="cm-post-author">{displayName(p.author_name, p.author_email)}</span>
                     {badge && (
-                      <span className="cm-badge-tag" style={{ background: badge.pale, color: badge.color }} title={badge.label}>
-                        <badge.Icon />
-                        {badge.label}
-                      </span>
+                      <img className="cm-badge-icon" src={badge.img} alt={badge.label} title={badge.label} />
                     )}
                     <span className="cm-post-dot">·</span>
                     <span className="cm-post-time">{timeAgo(p.created_at)}</span>
@@ -614,10 +611,7 @@ export default function CommunityFeed({ afterStats } = {}) {
                           <div className="cm-comment-meta">
                             <span className="cm-comment-author">{displayName(c.author_name, c.author_email)}</span>
                             {commentBadge && (
-                              <span className="cm-badge-tag cm-badge-tag--xs" style={{ background: commentBadge.pale, color: commentBadge.color }} title={commentBadge.label}>
-                                <commentBadge.Icon />
-                                {commentBadge.label}
-                              </span>
+                              <img className="cm-badge-icon cm-badge-icon--xs" src={commentBadge.img} alt={commentBadge.label} title={commentBadge.label} />
                             )}
                             <span className="cm-comment-time">{timeAgo(c.created_at)}</span>
                           </div>
@@ -839,14 +833,8 @@ const CSS = `
 .cm-post-tag--question { background: var(--coral-pale); color: var(--coral); }
 .cm-post-tag--resource { background: #E7E4F4; color: #6E5FC4; }
 
-.cm-badge-tag {
-  display: flex; align-items: center; gap: 4px;
-  font-family: 'Quicksand', sans-serif; font-weight: 700; font-size: 10.5px;
-  border-radius: 999px; padding: 2px 9px 2px 7px;
-}
-.cm-badge-tag svg { width: 11px; height: 11px; }
-.cm-badge-tag--xs { font-size: 9.5px; padding: 1px 7px 1px 5px; }
-.cm-badge-tag--xs svg { width: 9px; height: 9px; }
+.cm-badge-icon { height: 22px; width: auto; display: block; }
+.cm-badge-icon--xs { height: 16px; }
 
 .cm-post-actions { display: flex; align-items: center; gap: 4px; }
 .cm-action-btn {
