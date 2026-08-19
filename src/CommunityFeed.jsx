@@ -186,10 +186,8 @@ export default function CommunityFeed({ afterStats } = {}) {
   const [uploadingImage, setUploadingImage] = useState(false);
   const [uploadingFile, setUploadingFile] = useState(false);
   const [uploadError, setUploadError] = useState(null);
-  const [composerOpen, setComposerOpen] = useState(false);
 
   function closeComposer() {
-    setComposerOpen(false);
     setDraft("");
     setPostType(null);
     setUploadedImage(null);
@@ -456,42 +454,38 @@ export default function CommunityFeed({ afterStats } = {}) {
           <p>Sign in to post and comment.</p>
           <button type="button" className="cm-btn" onClick={() => setAuthMode("login")}>Log in</button>
         </div>
-      ) : !composerOpen ? (
-        <button type="button" className="cm-composer cm-composer--collapsed" onClick={() => setComposerOpen(true)}>
-          <Avatar name={myName} email={user.email} />
-          <span className="cm-composer-pill">
-            What's on your mind{myName ? `, ${myName}` : ""}?
-          </span>
-          <span className="cm-composer-collapsed-hint">Share a tip, ask a question, or add a resource</span>
-        </button>
       ) : (
-        <div className="cm-composer cm-composer--open">
-          <Avatar name={myName} email={user.email} />
-          <div className="cm-composer-body">
-            <span className="cm-composer-eyebrow">What's this about?</span>
-            <div className="cm-type-picker">
-              {POST_TYPES.map(({ key, label, Icon }) => (
-                <button
-                  key={key}
-                  type="button"
-                  className={`cm-type-pill${postType === key ? " is-active" : ""}`}
-                  onClick={() => setPostType(postType === key ? null : key)}
-                >
-                  <Icon />
-                  {label}
-                </button>
-              ))}
+        <div className="cm-composer">
+          <div className="cm-composer-head">
+            <Avatar name={myName} email={user.email} />
+            <div className="cm-composer-head-text">
+              <p className="cm-composer-greeting">What's on your mind{myName ? `, ${myName}` : ""}?</p>
+              <div className="cm-type-picker">
+                {POST_TYPES.map(({ key, label, Icon }) => (
+                  <button
+                    key={key}
+                    type="button"
+                    className={`cm-type-pill${postType === key ? " is-active" : ""}`}
+                    onClick={() => setPostType(postType === key ? null : key)}
+                  >
+                    <Icon />
+                    {label}
+                  </button>
+                ))}
+              </div>
             </div>
-            <textarea
-              autoFocus
-              className="cm-composer-input"
-              placeholder="What's on your mind?"
-              value={draft}
-              onChange={(e) => setDraft(e.target.value)}
-              rows={3}
-              maxLength={2000}
-            />
+          </div>
 
+          <textarea
+            className="cm-composer-input"
+            placeholder="Share a tip, ask a question, or add a resource…"
+            value={draft}
+            onChange={(e) => setDraft(e.target.value)}
+            rows={3}
+            maxLength={2000}
+          />
+
+          <div className="cm-composer-foot">
             {uploadedImage && (
               <div className="cm-attach-preview">
                 <img src={uploadedImage.url} alt="" />
@@ -713,36 +707,26 @@ const CSS = `
 }
 
 .cm-composer {
-  display: flex; gap: 12px; width: 100%;
-  background: var(--card); border: 1px solid var(--hair); border-top: 3px solid var(--navy);
-  border-radius: 16px; padding: 16px;
-  box-shadow: 0 8px 22px rgba(43,42,74,0.06);
+  width: 100%; background: var(--card); border: 1px solid var(--hair); border-radius: 20px;
+  overflow: hidden; box-shadow: 0 8px 22px rgba(43,42,74,0.06);
 }
-.cm-composer--collapsed {
-  align-items: center; text-align: left; font: inherit; cursor: pointer;
-  flex-wrap: wrap; row-gap: 2px;
+.cm-composer-head {
+  display: flex; align-items: center; gap: 12px;
+  background: linear-gradient(155deg, var(--navy-pale) 0%, #F1EEFA 100%);
+  padding: 16px 18px;
 }
-.cm-composer--collapsed:hover { border-top-color: var(--navy); box-shadow: 0 10px 26px rgba(43,42,74,0.09); }
-.cm-composer-pill {
-  font-family: 'Quicksand', sans-serif; font-weight: 700; font-size: 14.5px; color: var(--ink);
-}
-.cm-composer-collapsed-hint {
-  width: 100%; margin-left: 52px;
-  font-family: 'Quicksand', sans-serif; font-size: 12px; color: var(--muted);
-}
-.cm-composer--open { align-items: flex-start; }
-.cm-composer-body { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 10px; }
-.cm-composer-eyebrow {
-  font-family: 'Quicksand', sans-serif; font-size: 10.5px; font-weight: 800; letter-spacing: 0.06em;
-  text-transform: uppercase; color: var(--muted);
+.cm-composer-head-text { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 8px; }
+.cm-composer-greeting {
+  font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 15px; color: var(--ink); margin: 0;
 }
 .cm-composer-input {
-  width: 100%; resize: vertical; min-height: 74px;
-  border: 1px solid var(--hair); border-radius: 12px; padding: 10px 12px;
-  font: inherit; font-size: 14.5px; color: var(--ink); background: #FDFCFA;
+  display: block; width: 100%; resize: vertical; min-height: 76px;
+  border: none; outline: none; padding: 16px 18px;
+  font: inherit; font-size: 14.5px; color: var(--ink); background: transparent;
 }
-.cm-composer-input:focus { outline: none; border-color: var(--navy); }
-.cm-composer-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.cm-composer-input::placeholder { color: var(--muted); }
+.cm-composer-foot { padding: 0 18px 16px; display: flex; flex-direction: column; gap: 10px; }
+.cm-composer-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; border-top: 1px solid var(--hair); padding-top: 12px; }
 .cm-composer-actions { display: flex; align-items: center; gap: 10px; }
 .cm-composer-cancel {
   font-family: 'Quicksand', sans-serif; font-weight: 700; font-size: 13px; color: var(--muted);
