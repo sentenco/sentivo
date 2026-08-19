@@ -976,6 +976,14 @@ function UserIcon() {
   );
 }
 
+function BellIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M14.857 17.082a23.848 23.848 0 0 0 5.454-1.31A8.967 8.967 0 0 1 18 9.75V9A6 6 0 0 0 6 9v.75a8.967 8.967 0 0 1-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 0 1-5.714 0m5.714 0a3 3 0 1 1-5.714 0" />
+    </svg>
+  );
+}
+
 export default function Library() {
   const isPro = true;
   const [searchParams, setSearchParams] = useSearchParams();
@@ -986,6 +994,8 @@ export default function Library() {
   const { user, signOut } = useAuth();
   const [authMode, setAuthMode] = useState(null);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [notifOpen, setNotifOpen] = useState(false);
+  const notifWrapRef = useRef(null);
   const [profileOpen, setProfileOpen] = useState(false);
   const [avatarUrl, setAvatarUrl] = useState(null);
   const [searchModeMenuOpen, setSearchModeMenuOpen] = useState(false);
@@ -1011,6 +1021,9 @@ export default function Library() {
     function handleOutsideClick(e) {
       if (searchWrapRef.current && !searchWrapRef.current.contains(e.target)) {
         setSearchModeMenuOpen(false);
+      }
+      if (notifWrapRef.current && !notifWrapRef.current.contains(e.target)) {
+        setNotifOpen(false);
       }
     }
     document.addEventListener("mousedown", handleOutsideClick);
@@ -1339,19 +1352,41 @@ export default function Library() {
                 <button className="gc-btn primary" onClick={() => setAuthMode("signup")}>Sign up</button>
               </>
             ) : (
-              <div className="account-wrap">
-                <button className="avatar-btn" onClick={() => setMenuOpen((m) => !m)} aria-label="Account menu">
-                  {avatarUrl ? <img src={avatarUrl} alt="" className="avatar-btn-img" /> : <UserIcon />}
-                </button>
-                {menuOpen && (
-                  <div className="account-menu">
-                    <button type="button" className="account-menu-link" onClick={() => { setProfileOpen(true); setMenuOpen(false); }}>Profile</button>
-                    <button type="button" className="account-menu-link" onClick={() => { navigate("/library/subscription"); setMenuOpen(false); }}>Subscription</button>
-                    <a href="mailto:hello@sentivo.com">Help &amp; Support</a>
-                    <button className="logout-btn" onClick={() => { signOut(); setMenuOpen(false); }}>Log out</button>
-                  </div>
-                )}
-              </div>
+              <>
+                <div className="notif-wrap" ref={notifWrapRef}>
+                  <button
+                    type="button"
+                    className="notif-btn"
+                    onClick={() => setNotifOpen((o) => !o)}
+                    aria-label="Notifications"
+                    aria-expanded={notifOpen}
+                  >
+                    <BellIcon />
+                  </button>
+                  {notifOpen && (
+                    <div className="notif-panel">
+                      <div className="notif-panel-head">Notifications</div>
+                      <div className="notif-empty">
+                        <BellIcon />
+                        <p>You're all caught up.</p>
+                      </div>
+                    </div>
+                  )}
+                </div>
+                <div className="account-wrap">
+                  <button className="avatar-btn" onClick={() => setMenuOpen((m) => !m)} aria-label="Account menu">
+                    {avatarUrl ? <img src={avatarUrl} alt="" className="avatar-btn-img" /> : <UserIcon />}
+                  </button>
+                  {menuOpen && (
+                    <div className="account-menu">
+                      <button type="button" className="account-menu-link" onClick={() => { setProfileOpen(true); setMenuOpen(false); }}>Profile</button>
+                      <button type="button" className="account-menu-link" onClick={() => { navigate("/library/subscription"); setMenuOpen(false); }}>Subscription</button>
+                      <a href="mailto:hello@sentivo.com">Help &amp; Support</a>
+                      <button className="logout-btn" onClick={() => { signOut(); setMenuOpen(false); }}>Log out</button>
+                    </div>
+                  )}
+                </div>
+              </>
             )}
           </div>
         </div>
@@ -1876,6 +1911,31 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   .gc-search input { width: 130px; }
   .gc-sec-tab { font-size: 10.5px; letter-spacing: 0.02em; padding: 7px 8px; }
 }
+
+.notif-wrap { position: relative; }
+.notif-btn {
+  width: 38px; height: 38px; border-radius: 50%;
+  border: 1px solid var(--hair); background: none; color: var(--muted);
+  display: flex; align-items: center; justify-content: center; cursor: pointer;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+.notif-btn svg { width: 19px; height: 19px; }
+.notif-btn:hover { color: var(--coral); border-color: var(--coral); background: rgba(255,107,74,0.08); }
+.notif-panel {
+  position: absolute; top: 46px; right: 0; width: 280px;
+  background: var(--card); border: 1px solid var(--hair); border-radius: 16px;
+  box-shadow: 0 16px 32px rgba(43,42,74,0.16); padding: 6px; z-index: 20;
+}
+.notif-panel-head {
+  font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 13px; color: var(--ink);
+  padding: 10px 12px 8px;
+}
+.notif-empty {
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  padding: 22px 16px 26px; color: var(--muted);
+}
+.notif-empty svg { width: 26px; height: 26px; opacity: 0.4; }
+.notif-empty p { margin: 0; font-family: 'Quicksand', sans-serif; font-size: 12.5px; }
 
 .account-wrap { position: relative; }
 .avatar-btn {
