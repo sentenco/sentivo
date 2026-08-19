@@ -588,7 +588,7 @@ export default function CommunityFeed({ afterStats } = {}) {
                     <HeartIcon filled={liked} />
                     {likeCount > 0 && <span>{likeCount}</span>}
                   </button>
-                  <button type="button" className="cm-action-btn" onClick={() => toggleExpand(p.id)}>
+                  <button type="button" className="cm-action-btn cm-action-btn--comment" onClick={() => toggleExpand(p.id)}>
                     <CommentIcon />
                     {commentCount > 0 && <span>{commentCount}</span>}
                   </button>
@@ -798,8 +798,9 @@ const CSS = `
 .cm-empty { text-align: center; color: var(--muted); font-size: 13.5px; padding: 20px 0; }
 
 .cm-post {
-  background: var(--card); border: 1px solid var(--hair); border-radius: 16px; padding: 16px;
-  box-shadow: 0 4px 14px rgba(43,42,74,0.04);
+  background: var(--card); border: 1px solid var(--hair); border-left: 3px solid var(--coral);
+  border-radius: 4px 16px 16px 4px; padding: 16px;
+  box-shadow: 0 4px 14px rgba(27,42,74,0.05);
 }
 .cm-post-head { display: flex; align-items: center; gap: 10px; }
 .cm-post-headline { display: flex; align-items: center; flex-wrap: wrap; row-gap: 4px; gap: 6px; min-width: 0; }
@@ -823,9 +824,9 @@ const CSS = `
   border-radius: 999px; padding: 2px 9px 2px 7px; margin-left: 2px;
 }
 .cm-post-tag svg { width: 11px; height: 11px; }
-.cm-post-tag--tip { background: #FCEFD6; color: #A5730F; }
-.cm-post-tag--question { background: var(--coral-pale); color: var(--coral); }
-.cm-post-tag--resource { background: #E7E4F4; color: #6E5FC4; }
+.cm-post-tag--tip { background: var(--coral-pale); color: var(--coral); }
+.cm-post-tag--question { background: var(--navy-pale); color: var(--navy); }
+.cm-post-tag--resource { background: var(--coral-pale); color: var(--coral); }
 
 .cm-badge-icon { height: 22px; width: auto; display: block; }
 .cm-badge-icon--xs { height: 16px; }
@@ -839,6 +840,7 @@ const CSS = `
 .cm-action-btn svg { width: 17px; height: 17px; }
 .cm-action-btn:hover { background: var(--coral-pale); color: var(--coral); }
 .cm-action-btn.is-liked { color: var(--coral); }
+.cm-action-btn--comment:hover { background: var(--navy-pale); color: var(--navy); }
 
 .cm-icon-btn {
   margin-left: auto; flex-shrink: 0; width: 28px; height: 28px; border-radius: 50%;
