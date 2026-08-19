@@ -69,9 +69,9 @@ export default function AuthForm({ mode, onClose }) {
 
           {isSignUp && (
             <label>
-              I'm joining as
+              Company
               <select value={companyId} onChange={(e) => setCompanyId(e.target.value)}>
-                <option value="">A private teacher (no company)</option>
+                <option value="">Private teacher</option>
                 {companies.map((c) => (
                   <option key={c.id} value={c.id}>{c.name}</option>
                 ))}
