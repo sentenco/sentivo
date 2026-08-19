@@ -347,7 +347,7 @@ export default function CommunityFeed({ afterStats } = {}) {
   async function loadComments(postId) {
     const { data, error } = await supabase
       .from("community_comments")
-      .select("id, post_id, author_id, author_email, author_name, content, created_at")
+      .select("id, post_id, author_id, author_email, author_name, author_years_teaching, content, created_at")
       .eq("post_id", postId)
       .order("created_at", { ascending: true });
     setCommentsByPost((prev) => ({ ...prev, [postId]: error ? [] : data || [] }));
@@ -371,7 +371,15 @@ export default function CommunityFeed({ afterStats } = {}) {
     if (!content || !user) return;
     const { data, error } = await supabase
       .from("community_comments")
-      .insert({ post_id: postId, author_id: user.id, author_email: user.email, author_name: myName.trim() || null, content, status: "approved" })
+      .insert({
+        post_id: postId,
+        author_id: user.id,
+        author_email: user.email,
+        author_name: myName.trim() || null,
+        author_years_teaching: profile?.years_teaching ?? null,
+        content,
+        status: "approved",
+      })
       .select()
       .single();
     if (!error && data) {
@@ -590,12 +598,20 @@ export default function CommunityFeed({ afterStats } = {}) {
 
                 {isOpen && (
                   <div className="cm-comments">
-                    {comments.map((c) => (
+                    {comments.map((c) => {
+                      const commentBadge = teachingBadge(c.author_years_teaching);
+                      return (
                       <div className="cm-comment" key={c.id}>
                         <Avatar name={c.author_name} email={c.author_email} size="xs" />
                         <div className="cm-comment-body">
                           <div className="cm-comment-meta">
                             <span className="cm-comment-author">{displayName(c.author_name, c.author_email)}</span>
+                            {commentBadge && (
+                              <span className="cm-badge-tag cm-badge-tag--xs" style={{ background: commentBadge.pale, color: commentBadge.color }} title={commentBadge.label}>
+                                <commentBadge.Icon />
+                                {commentBadge.label}
+                              </span>
+                            )}
                             <span className="cm-comment-time">{timeAgo(c.created_at)}</span>
                           </div>
                           <p className="cm-comment-text">{c.content}</p>
@@ -606,7 +622,8 @@ export default function CommunityFeed({ afterStats } = {}) {
                           </button>
                         )}
                       </div>
-                    ))}
+                      );
+                    })}
                     {user && (
                       <div className="cm-comment-composer">
                         <input
@@ -820,6 +837,8 @@ const CSS = `
   border-radius: 999px; padding: 2px 9px 2px 7px;
 }
 .cm-badge-tag svg { width: 11px; height: 11px; }
+.cm-badge-tag--xs { font-size: 9.5px; padding: 1px 7px 1px 5px; }
+.cm-badge-tag--xs svg { width: 9px; height: 9px; }
 
 .cm-post-actions { display: flex; align-items: center; gap: 4px; }
 .cm-action-btn {
