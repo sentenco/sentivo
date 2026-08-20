@@ -1107,8 +1107,12 @@ export default function Library() {
   }
 
   function pickSearchMode(key) {
-    setSearchMode(key);
     setSearchModeMenuOpen(false);
+    if (plan !== "pro_plus") {
+      navigate("/library/subscription");
+      return;
+    }
+    setSearchMode(key);
     setPromptQuery("");
   }
 
@@ -1369,6 +1373,7 @@ export default function Library() {
                       >
                         <span className="gc-search-mode-icon"><ModeIcon mode={m.key} /></span>
                         {m.label}
+                        {plan !== "pro_plus" && <span className="gc-search-mode-lock">Pro+</span>}
                       </button>
                     ))}
                   </div>
@@ -1783,6 +1788,11 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .gc-search-mode-item--dictionary:hover { color: #16BFAE; }
 .gc-search-mode-item--grammar:hover { color: #7C5CFC; }
 .gc-search-mode-item--translator:hover { color: #FF8A4C; }
+.gc-search-mode-lock {
+  margin-left: auto; font-family: 'Quicksand', sans-serif; font-weight: 800; font-size: 9.5px;
+  letter-spacing: 0.05em; color: #1B2A4A; background: #E9ECF3; padding: 2px 7px; border-radius: 999px;
+  flex-shrink: 0;
+}
 .gc-search-pill {
   display: flex;
   align-items: center;
