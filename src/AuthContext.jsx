@@ -3,6 +3,10 @@ import { supabase } from "./supabaseClient";
 
 const AuthContext = createContext();
 
+// Owner account is exempt from all plan gating everywhere in the app,
+// regardless of what profiles.plan actually holds in the database.
+const OWNER_EMAIL = "caldrin1999@gmail.com";
+
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -25,6 +29,7 @@ export function AuthProvider({ children }) {
 
   useEffect(() => {
     if (!user) { setPlan("free"); return; }
+    if (user.email?.toLowerCase() === OWNER_EMAIL) { setPlan("pro_plus"); return; }
     supabase.from("profiles").select("plan").eq("id", user.id).maybeSingle().then(({ data }) => {
       setPlan(data?.plan || "free");
     });

@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
+import { useAuth } from "./AuthContext";
 
 const MODES = [
   { key: "dictionary", label: "Dictionary", placeholder: "Type a word…", multiline: false, color: "#16BFAE" },
@@ -28,6 +29,15 @@ function SendIcon() {
     <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
       <path d="M10 15.5V5.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
       <path d="M5.5 10 10 5.5 14.5 10" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+function LockIcon() {
+  return (
+    <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <rect x="4.5" y="9" width="11" height="8" rx="2" />
+      <path d="M6.8 9V6.3a3.2 3.2 0 0 1 6.4 0V9" />
     </svg>
   );
 }
@@ -154,6 +164,7 @@ function ResultCard({ entry, onReverse }) {
 
 export default function SearchLookup() {
   const navigate = useNavigate();
+  const { plan } = useAuth();
   const [searchParams] = useSearchParams();
   const requestedMode = searchParams.get("mode");
   const initialQuery = searchParams.get("q") || "";
@@ -272,12 +283,12 @@ export default function SearchLookup() {
   // bar (?mode=&q=), then strip q from the URL so a reload doesn't resubmit it.
   useEffect(() => {
     if (autoRanRef.current) return;
-    if (!initialQuery) return;
+    if (!initialQuery || plan !== "pro_plus") return;
     autoRanRef.current = true;
     runQuery(mode, initialQuery, sourceLang, targetLang);
     navigate(`/library/search?mode=${mode}`, { replace: true });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [plan]);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -308,6 +319,16 @@ export default function SearchLookup() {
         <p className="sl-subheading">Check a word, fix a sentence, or translate for your students.</p>
       </div>
 
+      {plan !== "pro_plus" ? (
+        <div className="sl-locked">
+          <span className="sl-locked-icon"><LockIcon /></span>
+          <p className="sl-locked-eyebrow">Pro+ feature</p>
+          <h2 className="sl-locked-title">The Teacher Toolkit is part of Sentivo Pro+</h2>
+          <p className="sl-locked-desc">Upgrade to Pro+ to unlock the AI-powered Dictionary, Grammar Checker, and Translator, plus every CEFR level.</p>
+          <button type="button" className="sl-locked-cta" onClick={() => navigate("/library/subscription")}>Upgrade to Pro+</button>
+        </div>
+      ) : (
+      <>
       <div className="sl-panel">
         <div className="sl-modes" role="tablist">
           {MODES.map((m) => (
@@ -406,6 +427,8 @@ export default function SearchLookup() {
           )
         )}
       </div>
+      </>
+      )}
     </div>
   );
 }
@@ -484,6 +507,65 @@ const CSS = `
   color: #8B84A3;
   margin: 0;
 }
+
+.sl-locked {
+  width: 100%;
+  max-width: 400px;
+  margin: 20px auto 60px;
+  padding: 0 24px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+.sl-locked-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  margin-bottom: 8px;
+  background: #E9ECF3;
+  color: #1B2A4A;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.sl-locked-icon svg { width: 22px; height: 22px; }
+.sl-locked-eyebrow {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 800;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #1B2A4A;
+  margin: 0;
+}
+.sl-locked-title {
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 600;
+  font-size: 21px;
+  color: #2B2A4A;
+  margin: 4px 0 0;
+}
+.sl-locked-desc {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 13.5px;
+  color: #8B84A3;
+  line-height: 1.6;
+  margin: 4px 0 14px;
+}
+.sl-locked-cta {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 700;
+  font-size: 13.5px;
+  background: #1B2A4A;
+  color: #fff;
+  border: none;
+  border-radius: 999px;
+  padding: 10px 26px;
+  cursor: pointer;
+}
+.sl-locked-cta:hover { filter: brightness(1.25); }
 
 .sl-panel {
   width: 100%;

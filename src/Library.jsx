@@ -101,6 +101,21 @@ function CategoryLockedFeature({ category, navigate }) {
   );
 }
 
+function CurriculumLockedFeature({ navigate }) {
+  return (
+    <div className="cat-locked">
+      <span className="cat-locked-icon cat-locked-icon--navy"><LockIcon /></span>
+      <p className="cat-locked-eyebrow cat-locked-eyebrow--navy">Pro+ feature</p>
+      <h2 className="cat-locked-title">The full curriculum is part of Sentivo Pro+</h2>
+      <p className="cat-locked-desc">
+        Upgrade to Pro+ to unlock every CEFR level, A1 through C2, plus the AI-powered Dictionary, Grammar Checker, and Translator.
+      </p>
+      <button type="button" className="cat-locked-cta cat-locked-cta--navy" onClick={() => navigate("/library/subscription")}>Upgrade to Pro+</button>
+      <button type="button" className="cat-locked-link" onClick={() => navigate("/library/subscription")}>See all plans</button>
+    </div>
+  );
+}
+
 function DigitalClock() {
   const [now, setNow] = useState(new Date());
   useEffect(() => {
@@ -1507,11 +1522,15 @@ export default function Library() {
       <div className="body-wrap">
       {isCurriculum ? (
         <div className="content" style={{ padding: 0, maxWidth: "100%", overflow: "auto" }}>
-          <CurriculumRouter
-            isPro={isPro}
-            level={curriculumLevel}
-            track={curriculumTrack}
-          />
+          {plan === "pro_plus" ? (
+            <CurriculumRouter
+              isPro={isPro}
+              level={curriculumLevel}
+              track={curriculumTrack}
+            />
+          ) : (
+            <CurriculumLockedFeature navigate={navigate} />
+          )}
         </div>
       ) : (
       <main className={`content ${category === "Articles" ? "content--wide" : ""}`}>
@@ -2120,6 +2139,10 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   padding: 10px 26px; cursor: pointer;
 }
 .cat-locked-cta:hover { filter: brightness(0.94); }
+.cat-locked-icon--navy { background: #E9ECF3; color: #1B2A4A; }
+.cat-locked-eyebrow--navy { color: #1B2A4A; }
+.cat-locked-cta--navy { background: #1B2A4A; }
+.cat-locked-cta--navy:hover { filter: brightness(1.25); }
 .cat-locked-link {
   font-family: 'Quicksand', sans-serif; font-weight: 700; font-size: 12.5px; color: var(--muted);
   background: none; border: none; cursor: pointer; padding: 8px 4px; text-decoration: underline;
