@@ -124,6 +124,11 @@ export default function Subscription() {
             </div>
           ))}
         </div>
+
+        <p className="sub-legal-note">
+          By subscribing you agree to our <a href="/library/legal/terms">Terms of Service</a> and{" "}
+          <a href="/library/legal/refund">Refund & Cancellation Policy</a>.
+        </p>
       </div>
     </div>
   );
@@ -176,6 +181,9 @@ const CSS = `
 .sub-notice-close { background: none; border: none; color: var(--muted); font-size: 18px; cursor: pointer; line-height: 1; padding: 0; }
 
 .sub-tiers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; align-items: stretch; }
+.sub-legal-note { text-align: center; font-size: 12px; color: var(--muted); margin: 28px 0 0; }
+.sub-legal-note a { color: var(--muted); text-decoration: underline; }
+.sub-legal-note a:hover { color: var(--ink); }
 @media (max-width: 860px) { .sub-tiers { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; } }
 
 .sub-tier {
