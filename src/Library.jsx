@@ -86,6 +86,14 @@ function LockIcon() {
   );
 }
 
+function FileCabinetIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M3 7a2 2 0 0 1 2-2h4l2 2.5h8A2 2 0 0 1 21 9.5V17a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7Z" />
+    </svg>
+  );
+}
+
 function CategoryLockedFeature({ category, navigate }) {
   return (
     <div className="cat-locked">
@@ -776,6 +784,11 @@ function TodayFeature({ navigate }) {
           {!deskUnlocked && <span className="td-action-lock"><LockIcon /></span>}
           <div className="td-action-icon"><img src={todayDeckIcon} alt="" /></div>
           <div className="td-action-title">Slide Builder</div>
+        </button>
+        <button type="button" className="td-action-card" onClick={deskUnlocked ? () => navigate("/library/files") : undefined} aria-disabled={!deskUnlocked} title={deskLockTitle}>
+          {!deskUnlocked && <span className="td-action-lock"><LockIcon /></span>}
+          <div className="td-action-icon td-action-icon--vector"><FileCabinetIcon /></div>
+          <div className="td-action-title">File Cabinet</div>
         </button>
       </div>
     </>
@@ -1960,7 +1973,7 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 
 /* ── Toolkit ── */
 .td-section-label { font-family: 'Quicksand', sans-serif; font-size: 12px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
-.td-actions-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+.td-actions-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; }
 .td-action-card {
   display: flex; align-items: center; gap: 12px;
   background: var(--card); border: none; border-radius: 18px; padding: 12px 14px;
@@ -1971,6 +1984,8 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .td-action-card:not(.is-soon):hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(43,42,74,0.10); }
 .td-action-icon { width: 40px; height: 40px; border-radius: 12px; overflow: hidden; flex-shrink: 0; display: flex; align-items: center; justify-content: center; background: #F5F6FA; }
 .td-action-icon img { width: 100%; height: 100%; object-fit: contain; }
+.td-action-icon--vector { color: var(--navy); }
+.td-action-icon--vector svg { width: 20px; height: 20px; }
 .td-action-title { font-family: 'Fredoka', sans-serif; font-size: 13px; font-weight: 600; line-height: 1.25; color: var(--ink); }
 .td-action-card.is-soon { opacity: 0.7; cursor: default; }
 .td-action-card[aria-disabled="true"] { position: relative; opacity: 0.55; cursor: not-allowed; }
