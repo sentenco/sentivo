@@ -350,6 +350,7 @@ export default function CommunityFeed({ afterStats, focusPostId, onActivity } = 
       await supabase.from("community_likes").delete().eq("post_id", postId).eq("user_id", user.id);
     } else {
       await supabase.from("community_likes").insert({ post_id: postId, user_id: user.id });
+      onActivity?.("like");
     }
   }
 

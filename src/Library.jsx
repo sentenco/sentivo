@@ -675,34 +675,38 @@ function TodayFeature({ navigate }) {
   const [plan, setPlan] = useState("free");
   const [postCount, setPostCount] = useState(0);
   const [commentCount, setCommentCount] = useState(0);
+  const [likeCount, setLikeCount] = useState(0);
 
   useEffect(() => {
-    if (!user) { setPlan("free"); setPostCount(0); setCommentCount(0); return; }
+    if (!user) { setPlan("free"); setPostCount(0); setCommentCount(0); setLikeCount(0); return; }
     const startOfToday = new Date();
     startOfToday.setHours(0, 0, 0, 0);
     (async () => {
-      const [{ data: profile }, { count: posts }, { count: comments }] = await Promise.all([
+      const [{ data: profile }, { count: posts }, { count: comments }, { count: likes }] = await Promise.all([
         supabase.from("profiles").select("plan").eq("id", user.id).maybeSingle(),
         supabase.from("community_posts").select("id", { count: "exact", head: true }).eq("author_id", user.id).gte("created_at", startOfToday.toISOString()),
         supabase.from("community_comments").select("id", { count: "exact", head: true }).eq("author_id", user.id).gte("created_at", startOfToday.toISOString()),
+        supabase.from("community_likes").select("id", { count: "exact", head: true }).eq("user_id", user.id).gte("created_at", startOfToday.toISOString()),
       ]);
       setPlan(profile?.plan || "free");
       setPostCount(posts || 0);
       setCommentCount(comments || 0);
+      setLikeCount(likes || 0);
     })();
   }, [user]);
 
   function handleCommunityActivity(kind) {
     if (kind === "post") setPostCount((c) => c + 1);
     else if (kind === "comment") setCommentCount((c) => c + 1);
+    else if (kind === "like") setLikeCount((c) => c + 1);
   }
 
   // Teacher's Desk is free for everyone, but a free-plan teacher has to
   // participate in Homeroom *today* to unlock it for today -- resets daily,
-  // paid plans skip this entirely. Any 3 posts/comments combined count,
-  // not 3 of the same type.
-  const deskUnlocked = plan !== "free" || postCount + commentCount >= 3;
-  const deskProgress = postCount + commentCount;
+  // paid plans skip this entirely. Any 3 posts/comments/likes combined
+  // count, not 3 of the same type.
+  const deskUnlocked = plan !== "free" || postCount + commentCount + likeCount >= 3;
+  const deskProgress = postCount + commentCount + likeCount;
 
   const today = new Date();
   const dayIndex = daysSince(today);
@@ -712,7 +716,7 @@ function TodayFeature({ navigate }) {
   const briefIdxs = pickDeterministic(total, headlineIdx, 2);
   const briefs = briefIdxs.map((i) => DAILY_CORRECTIONS[i]);
 
-  const deskLockTitle = deskUnlocked ? undefined : `Post or comment 3 times in Homeroom today to unlock. You're at ${deskProgress}/3 today.`;
+  const deskLockTitle = deskUnlocked ? undefined : `Post, comment, or like 3 times in Homeroom today to unlock. You're at ${deskProgress}/3 today.`;
 
   const toolkit = (
     <>
@@ -720,7 +724,7 @@ function TodayFeature({ navigate }) {
 
       {!deskUnlocked && (
         <p className="td-desk-lock-note">
-          <LockIcon /> Post or comment 3 times in Homeroom today to unlock. You're at {deskProgress}/3 today.
+          <LockIcon /> Post, comment, or like 3 times in Homeroom today to unlock. You're at {deskProgress}/3 today.
         </p>
       )}
 

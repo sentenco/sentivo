@@ -22,7 +22,7 @@ const TIERS = [
       "Homeroom (Community, Daily Correction, clock)",
       "Articles (the Gazette)",
       "Full Community access, Universal and your company's",
-      "Teacher's Desk (unlock daily with 3 posts or comments)",
+      "Teacher's Desk (unlock daily with 3 posts, comments, or likes)",
     ],
   },
   {
