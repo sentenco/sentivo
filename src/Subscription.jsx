@@ -29,7 +29,10 @@ const TIERS = [
     key: "pro",
     name: "Pro",
     tagline: "Every category, unlocked.",
-    price: "Coming soon",
+    price: "₱299/mo",
+    originalPrice: "₱499/mo",
+    priceBadge: "Early Adopter Price",
+    priceNote: "Locks in your rate. Price rises once we're out of early access.",
     cta: "Upgrade to Pro",
     accent: "coral",
     highlighted: true,
@@ -43,7 +46,10 @@ const TIERS = [
     key: "pro_plus",
     name: "Pro+",
     tagline: "Every level. AI tools built in.",
-    price: "Coming soon",
+    price: "₱350/mo",
+    originalPrice: "₱599/mo",
+    priceBadge: "Early Adopter Price",
+    priceNote: "Locks in your rate. Price rises once we're out of early access.",
     cta: "Upgrade to Pro+",
     accent: "navy",
     features: [
@@ -94,7 +100,14 @@ export default function Subscription() {
               {t.highlighted && <span className="sub-tier-badge">Most popular</span>}
               <h3 className="sub-tier-name">{t.name}</h3>
               <p className="sub-tier-tagline">{t.tagline}</p>
-              <p className="sub-tier-price">{t.price}</p>
+              <div className="sub-tier-price-block">
+                {t.priceBadge && <span className="sub-tier-price-badge">{t.priceBadge}</span>}
+                <div className="sub-tier-price-row">
+                  {t.originalPrice && <span className="sub-tier-price-was">{t.originalPrice}</span>}
+                  <span className="sub-tier-price">{t.price}</span>
+                </div>
+                {t.priceNote && <p className="sub-tier-price-note">{t.priceNote}</p>}
+              </div>
               <ul className="sub-tier-features">
                 {t.features.map((f, i) => (
                   <li key={i}><span className="sub-check"><CheckIcon /></span>{f}</li>
@@ -172,8 +185,8 @@ const CSS = `
   display: flex; flex-direction: column;
   box-shadow: 0 10px 30px rgba(43,42,74,0.06);
 }
-.sub-tier--coral { --tier-accent: var(--coral); }
-.sub-tier--navy { --tier-accent: var(--navy); }
+.sub-tier--coral { --tier-accent: var(--coral); --tier-accent-pale: var(--coral-pale); }
+.sub-tier--navy { --tier-accent: var(--navy); --tier-accent-pale: var(--navy-pale); }
 .sub-tier.is-highlighted { box-shadow: 0 16px 40px rgba(255,107,74,0.16); transform: translateY(-4px); }
 
 .sub-tier-badge {
@@ -185,7 +198,16 @@ const CSS = `
 
 .sub-tier-name { font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 21px; margin: 4px 0 4px; color: var(--ink); }
 .sub-tier-tagline { font-size: 12.5px; color: var(--muted); margin: 0 0 16px; line-height: 1.4; min-height: 32px; }
-.sub-tier-price { font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 18px; color: var(--tier-accent, var(--coral)); margin: 0 0 20px; }
+.sub-tier-price-block { margin: 0 0 20px; }
+.sub-tier-price-badge {
+  display: inline-block; font-family: 'Quicksand', sans-serif; font-weight: 800; font-size: 9.5px;
+  letter-spacing: 0.06em; text-transform: uppercase; color: var(--tier-accent, var(--coral));
+  background: var(--tier-accent-pale, var(--coral-pale)); padding: 3px 9px; border-radius: 999px; margin: 0 0 8px;
+}
+.sub-tier-price-row { display: flex; align-items: baseline; gap: 8px; margin: 0; }
+.sub-tier-price-was { font-family: 'Quicksand', sans-serif; font-size: 13px; color: var(--muted); text-decoration: line-through; }
+.sub-tier-price { font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 18px; color: var(--tier-accent, var(--coral)); margin: 0; }
+.sub-tier-price-note { font-size: 11px; color: var(--muted); margin: 6px 0 0; line-height: 1.4; }
 
 .sub-tier-features { list-style: none; margin: 0 0 24px; padding: 0; display: flex; flex-direction: column; gap: 11px; flex: 1; }
 .sub-tier-features li { display: flex; align-items: flex-start; gap: 9px; font-size: 13.5px; line-height: 1.4; color: var(--ink); }
