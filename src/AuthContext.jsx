@@ -6,6 +6,7 @@ const AuthContext = createContext();
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [plan, setPlan] = useState("free");
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
@@ -21,6 +22,13 @@ export function AuthProvider({ children }) {
       listener.subscription.unsubscribe();
     };
   }, []);
+
+  useEffect(() => {
+    if (!user) { setPlan("free"); return; }
+    supabase.from("profiles").select("plan").eq("id", user.id).maybeSingle().then(({ data }) => {
+      setPlan(data?.plan || "free");
+    });
+  }, [user]);
 
   async function signUp(email, password, companyId) {
     const { error } = await supabase.auth.signUp({
@@ -41,7 +49,7 @@ export function AuthProvider({ children }) {
   }
 
   return (
-    <AuthContext.Provider value={{ user, loading, signUp, signIn, signOut }}>
+    <AuthContext.Provider value={{ user, loading, plan, signUp, signIn, signOut }}>
       {children}
     </AuthContext.Provider>
   );

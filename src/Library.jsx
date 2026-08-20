@@ -28,6 +28,7 @@ import WritingActivities from "./WritingActivities";
 import CommunityFeed from "./CommunityFeed.jsx";
 
 const CATEGORIES = ["Articles", "Speaking", "Reading", "Grammar", "Vocabulary", "Writing", "Listening"];
+const PRO_CATEGORIES = ["Speaking", "Reading", "Grammar", "Vocabulary", "Writing", "Listening"];
 
 // "Today" launch date -- the day count in the Today masthead (Vol. 1, No. X)
 // counts up from here, like a real newspaper's running issue number.
@@ -82,6 +83,21 @@ function LockIcon() {
       <rect x="4.5" y="9" width="11" height="8" rx="2" />
       <path d="M6.8 9V6.3a3.2 3.2 0 0 1 6.4 0V9" />
     </svg>
+  );
+}
+
+function CategoryLockedFeature({ category, navigate }) {
+  return (
+    <div className="cat-locked">
+      <span className="cat-locked-icon"><LockIcon /></span>
+      <p className="cat-locked-eyebrow">Pro feature</p>
+      <h2 className="cat-locked-title">{category} is part of Sentivo Pro</h2>
+      <p className="cat-locked-desc">
+        Upgrade to unlock every category, Speaking, Reading, Grammar, Vocabulary, Writing, and Listening, plus Teacher's Desk without the daily unlock.
+      </p>
+      <button type="button" className="cat-locked-cta" onClick={() => navigate("/library/subscription")}>Upgrade to Pro</button>
+      <button type="button" className="cat-locked-link" onClick={() => navigate("/library/subscription")}>See all plans</button>
+    </div>
   );
 }
 
@@ -671,24 +687,21 @@ function openFeedbackGenerator() {
 }
 
 function TodayFeature({ navigate }) {
-  const { user } = useAuth();
-  const [plan, setPlan] = useState("free");
+  const { user, plan } = useAuth();
   const [postCount, setPostCount] = useState(0);
   const [commentCount, setCommentCount] = useState(0);
   const [likeCount, setLikeCount] = useState(0);
 
   useEffect(() => {
-    if (!user) { setPlan("free"); setPostCount(0); setCommentCount(0); setLikeCount(0); return; }
+    if (!user) { setPostCount(0); setCommentCount(0); setLikeCount(0); return; }
     const startOfToday = new Date();
     startOfToday.setHours(0, 0, 0, 0);
     (async () => {
-      const [{ data: profile }, { count: posts }, { count: comments }, { count: likes }] = await Promise.all([
-        supabase.from("profiles").select("plan").eq("id", user.id).maybeSingle(),
+      const [{ count: posts }, { count: comments }, { count: likes }] = await Promise.all([
         supabase.from("community_posts").select("id", { count: "exact", head: true }).eq("author_id", user.id).gte("created_at", startOfToday.toISOString()),
         supabase.from("community_comments").select("id", { count: "exact", head: true }).eq("author_id", user.id).gte("created_at", startOfToday.toISOString()),
         supabase.from("community_likes").select("id", { count: "exact", head: true }).eq("user_id", user.id).gte("created_at", startOfToday.toISOString()),
       ]);
-      setPlan(profile?.plan || "free");
       setPostCount(posts || 0);
       setCommentCount(comments || 0);
       setLikeCount(likes || 0);
@@ -1002,7 +1015,7 @@ export default function Library() {
   const [page, setPage] = useState(() => Number(searchParams.get("page")) || 1);
   const [query, setQuery] = useState("");
   const [showAllToday, setShowAllToday] = useState(false);
-  const { user, signOut } = useAuth();
+  const { user, plan, signOut } = useAuth();
   const [authMode, setAuthMode] = useState(null);
   const [menuOpen, setMenuOpen] = useState(false);
   const [notifOpen, setNotifOpen] = useState(false);
@@ -1511,6 +1524,8 @@ export default function Library() {
           )
         ) : category === "Articles" ? (
           <ArticlesFeature navigate={navigate} />
+        ) : PRO_CATEGORIES.includes(category) && plan === "free" ? (
+          <CategoryLockedFeature category={category} navigate={navigate} />
         ) : category === "Grammar" ? (
           <GrammarFeature navigate={navigate} />
         ) : category === "Reading" ? (
@@ -2078,6 +2093,38 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .content--wide { max-width: 1600px; }
 
 .empty-msg { font-size: 14px; opacity: 0.6; padding: 30px 0; text-align: center; }
+
+.cat-locked {
+  max-width: 400px; margin: 64px auto; text-align: center;
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+}
+.cat-locked-icon {
+  width: 52px; height: 52px; border-radius: 50%; margin-bottom: 8px;
+  background: #FDECE5; color: #FF6B4A;
+  display: flex; align-items: center; justify-content: center;
+}
+.cat-locked-icon svg { width: 22px; height: 22px; }
+.cat-locked-eyebrow {
+  font-family: 'Quicksand', sans-serif; font-weight: 800; font-size: 11px; letter-spacing: 0.1em;
+  text-transform: uppercase; color: #FF6B4A; margin: 0;
+}
+.cat-locked-title {
+  font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 21px; color: var(--ink); margin: 4px 0 0;
+}
+.cat-locked-desc {
+  font-family: 'Quicksand', sans-serif; font-size: 13.5px; color: var(--muted); line-height: 1.6; margin: 4px 0 14px;
+}
+.cat-locked-cta {
+  font-family: 'Quicksand', sans-serif; font-weight: 700; font-size: 13.5px;
+  background: #FF6B4A; color: #fff; border: none; border-radius: 999px;
+  padding: 10px 26px; cursor: pointer;
+}
+.cat-locked-cta:hover { filter: brightness(0.94); }
+.cat-locked-link {
+  font-family: 'Quicksand', sans-serif; font-weight: 700; font-size: 12.5px; color: var(--muted);
+  background: none; border: none; cursor: pointer; padding: 8px 4px; text-decoration: underline;
+}
+.cat-locked-link:hover { color: var(--ink); }
 
 .grid-wrap {
   flex: 1;
