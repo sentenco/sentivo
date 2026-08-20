@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { useAuth } from "./AuthContext";
+import { supabase } from "./supabaseClient";
 
 const MODES = [
   { key: "dictionary", label: "Dictionary", placeholder: "Type a word…", multiline: false, color: "#16BFAE" },
@@ -227,6 +228,14 @@ export default function SearchLookup() {
     runQuery("translator", entry.data.translation, newSource, newTarget);
   }
 
+  async function authHeaders() {
+    const { data } = await supabase.auth.getSession();
+    const token = data?.session?.access_token;
+    return token
+      ? { "Content-Type": "application/json", Authorization: `Bearer ${token}` }
+      : { "Content-Type": "application/json" };
+  }
+
   async function runQuery(runMode, rawQuery, srcLang, tgtLang) {
     const trimmed = rawQuery.trim();
     if (!trimmed) return;
@@ -246,10 +255,11 @@ export default function SearchLookup() {
     ]);
 
     try {
+      const headers = await authHeaders();
       if (runMode === "dictionary") {
         const res = await fetch("/api/dictionary-lookup", {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
+          headers,
           body: JSON.stringify({ word: trimmed }),
         });
         const data = await res.json().catch(() => null);
@@ -258,7 +268,7 @@ export default function SearchLookup() {
       } else if (runMode === "grammar") {
         const res = await fetch("/api/grammar-check", {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
+          headers,
           body: JSON.stringify({ text: trimmed }),
         });
         const data = await res.json().catch(() => null);
@@ -267,7 +277,7 @@ export default function SearchLookup() {
       } else {
         const res = await fetch("/api/translate", {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
+          headers,
           body: JSON.stringify({ text: trimmed, sourceLang: srcLang, targetLang: tgtLang }),
         });
         const data = await res.json().catch(() => null);

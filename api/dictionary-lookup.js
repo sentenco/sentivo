@@ -5,6 +5,7 @@
 // grammar-check.js.
 
 import { createClient } from "@supabase/supabase-js";
+import { isProPlusRequest } from "./_authGate.js";
 
 const MAX_WORD_LENGTH = 50;
 
@@ -25,6 +26,11 @@ function supabaseServerClient() {
 export default async function handler(req, res) {
   if (req.method !== "POST") {
     res.status(405).json({ error: "Method not allowed." });
+    return;
+  }
+
+  if (!(await isProPlusRequest(req))) {
+    res.status(403).json({ error: "The Dictionary is a Sentivo Pro+ feature." });
     return;
   }
 

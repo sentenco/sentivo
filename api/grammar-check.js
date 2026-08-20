@@ -1,6 +1,8 @@
 // Vercel serverless function. Keeps the Anthropic API key server-side only —
 // never expose it via a VITE_ env var, which would bundle it into the client.
 
+import { isProPlusRequest } from "./_authGate.js";
+
 const MAX_INPUT_LENGTH = 4000;
 
 const SYSTEM_PROMPT = `You are a grammar and writing checker for English teachers preparing materials for adult ESL students. Given a passage of English text, find grammar, spelling, punctuation, and awkward-register errors. For each error, return the exact original snippet, a corrected version, and a short, plain-language explanation of why it was wrong (written for a teacher, not a linguist).
@@ -13,6 +15,11 @@ If there are no errors, respond with {"corrections": []}. Keep explanations unde
 export default async function handler(req, res) {
   if (req.method !== "POST") {
     res.status(405).json({ error: "Method not allowed." });
+    return;
+  }
+
+  if (!(await isProPlusRequest(req))) {
+    res.status(403).json({ error: "The Grammar Checker is a Sentivo Pro+ feature." });
     return;
   }
 

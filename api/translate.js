@@ -3,6 +3,8 @@
 // translation inputs are free-form sentences, unlike single dictionary words,
 // so there's little repeat-lookup benefit.
 
+import { isProPlusRequest } from "./_authGate.js";
+
 const MAX_INPUT_LENGTH = 2000;
 
 const SYSTEM_PROMPT = `You are a translator for an ESL teaching platform used by English teachers and their students. Translate the given text from the specified source language into the specified target language. Keep the translation natural and idiomatic, not word-for-word.
@@ -15,6 +17,11 @@ If the input is empty or not real text, respond with {"translation": ""}.`;
 export default async function handler(req, res) {
   if (req.method !== "POST") {
     res.status(405).json({ error: "Method not allowed." });
+    return;
+  }
+
+  if (!(await isProPlusRequest(req))) {
+    res.status(403).json({ error: "The Translator is a Sentivo Pro+ feature." });
     return;
   }
 
