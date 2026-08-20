@@ -167,7 +167,7 @@ function Avatar({ name, email, size }) {
 // Self-contained Community feed (banner, stats, composer, posts) -- shared by
 // the dedicated /library/community page and the Today page, which now
 // embeds this directly in place of the old greeting hero.
-export default function CommunityFeed({ afterStats, focusPostId } = {}) {
+export default function CommunityFeed({ afterStats, focusPostId, onActivity } = {}) {
   const { user, loading: authLoading } = useAuth();
   const isAdmin = user?.email?.toLowerCase() === ADMIN_EMAIL;
   const [myName] = useState(() => localStorage.getItem("sentivo_teacher_name") || "");
@@ -327,6 +327,7 @@ export default function CommunityFeed({ afterStats, focusPostId } = {}) {
     if (!error && data) {
       closeComposer();
       setPosts((prev) => [data, ...prev]);
+      onActivity?.("post");
     }
   }
 
@@ -424,6 +425,7 @@ export default function CommunityFeed({ afterStats, focusPostId } = {}) {
       setCommentDrafts((prev) => ({ ...prev, [postId]: "" }));
       setCommentCounts((prev) => ({ ...prev, [postId]: (prev[postId] || 0) + 1 }));
       notifyOnComment(postId, data);
+      onActivity?.("comment");
     } else if (error) {
       console.error("submitComment failed:", error);
       setCommentErrors((prev) => ({ ...prev, [postId]: error.message }));

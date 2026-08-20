@@ -692,11 +692,17 @@ function TodayFeature({ navigate }) {
     })();
   }, [user]);
 
+  function handleCommunityActivity(kind) {
+    if (kind === "post") setPostCount((c) => c + 1);
+    else if (kind === "comment") setCommentCount((c) => c + 1);
+  }
+
   // Teacher's Desk is free for everyone, but a free-plan teacher has to
   // participate in Homeroom *today* to unlock it for today -- resets daily,
-  // paid plans skip this entirely.
-  const deskUnlocked = plan !== "free" || postCount >= 3 || commentCount >= 3;
-  const deskProgress = Math.max(postCount, commentCount);
+  // paid plans skip this entirely. Any 3 posts/comments combined count,
+  // not 3 of the same type.
+  const deskUnlocked = plan !== "free" || postCount + commentCount >= 3;
+  const deskProgress = postCount + commentCount;
 
   const today = new Date();
   const dayIndex = daysSince(today);
@@ -747,7 +753,7 @@ function TodayFeature({ navigate }) {
     <div className="gc-dashboard">
       <div className="td-body">
       <div className="td-main">
-        <CommunityFeed afterStats={toolkit} />
+        <CommunityFeed afterStats={toolkit} onActivity={handleCommunityActivity} />
 
         <div className="td-quote-banner">
           <img src={todayQuoteBanner} alt="Every lesson is a chance to make a difference." />
