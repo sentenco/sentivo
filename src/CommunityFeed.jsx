@@ -603,7 +603,13 @@ export default function CommunityFeed({ afterStats, focusPostId, onActivity } = 
                 <div className="cm-post-head">
                   <Avatar name={p.author_name} email={p.author_email} size="sm" />
                   <div className="cm-post-headline">
-                    <span className="cm-post-author">{displayName(p.author_name, p.author_email)}</span>
+                    {p.author_id ? (
+                      <button type="button" className="cm-post-author cm-post-author--link" onClick={() => navigate(`/library/teacher/${p.author_id}`)}>
+                        {displayName(p.author_name, p.author_email)}
+                      </button>
+                    ) : (
+                      <span className="cm-post-author">{displayName(p.author_name, p.author_email)}</span>
+                    )}
                     {badge && (
                       <img className="cm-badge-icon" src={badge.img} alt={badge.label} title={badge.label} />
                     )}
@@ -660,7 +666,13 @@ export default function CommunityFeed({ afterStats, focusPostId, onActivity } = 
                         <Avatar name={c.author_name} email={c.author_email} size="xs" />
                         <div className="cm-comment-body">
                           <div className="cm-comment-meta">
-                            <span className="cm-comment-author">{displayName(c.author_name, c.author_email)}</span>
+                            {c.author_id ? (
+                              <button type="button" className="cm-comment-author cm-comment-author--link" onClick={() => navigate(`/library/teacher/${c.author_id}`)}>
+                                {displayName(c.author_name, c.author_email)}
+                              </button>
+                            ) : (
+                              <span className="cm-comment-author">{displayName(c.author_name, c.author_email)}</span>
+                            )}
                             {commentBadge && (
                               <img className="cm-badge-icon cm-badge-icon--xs" src={commentBadge.img} alt={commentBadge.label} title={commentBadge.label} />
                             )}
@@ -878,6 +890,8 @@ const CSS = `
 .cm-post-head { display: flex; align-items: center; gap: 10px; }
 .cm-post-headline { display: flex; align-items: center; flex-wrap: wrap; row-gap: 4px; gap: 6px; min-width: 0; }
 .cm-post-author { font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 13.5px; color: var(--ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.cm-post-author--link { background: none; border: none; padding: 0; cursor: pointer; }
+.cm-post-author--link:hover { color: var(--coral); text-decoration: underline; }
 .cm-post-dot { color: var(--muted); font-size: 12px; }
 .cm-post-time { font-size: 12px; color: var(--muted); white-space: nowrap; }
 .cm-post-text { font-size: 14.5px; line-height: 1.6; color: var(--ink); margin: 10px 0 10px; white-space: pre-wrap; }
@@ -936,6 +950,8 @@ const CSS = `
 .cm-comment-body { flex: 1; }
 .cm-comment-meta { display: flex; align-items: center; gap: 8px; margin-bottom: 2px; }
 .cm-comment-author { font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 12px; color: var(--ink); }
+.cm-comment-author--link { background: none; border: none; padding: 0; cursor: pointer; }
+.cm-comment-author--link:hover { color: var(--coral); text-decoration: underline; }
 .cm-comment-time { font-size: 10.5px; color: var(--muted); }
 .cm-comment-text { font-size: 13px; line-height: 1.45; color: var(--ink); margin: 0; }
 .cm-comment-composer { display: flex; gap: 8px; align-items: center; margin-top: 4px; }

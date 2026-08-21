@@ -73,13 +73,13 @@ export default function MentorDirectory() {
               const badge = teachingBadge(m.years_teaching);
               return (
                 <div className="md-card" key={m.id}>
-                  <div className="md-card-head">
+                  <button type="button" className="md-card-head" onClick={() => navigate(`/library/teacher/${m.id}`)}>
                     <span className="md-avatar">{m.avatar_url ? <img src={m.avatar_url} alt="" /> : initials(m.display_name)}</span>
                     <div className="md-card-head-text">
                       <p className="md-name">{m.display_name || "Teacher"}{badge && <img className="md-badge" src={badge.img} alt={badge.label} title={badge.label} />}</p>
                       <span className="md-specialty">{m.mentor_specialty}</span>
                     </div>
-                  </div>
+                  </button>
                   {m.mentor_bio && <p className="md-bio">{m.mentor_bio}</p>}
                   <div className="md-tags">
                     <span className="md-tag">{m.mentor_format === "1:1" ? "1:1" : m.mentor_format === "group" ? "Group" : "1:1 & Group"}</span>
@@ -160,7 +160,8 @@ const CSS = `
   border-radius: 18px; padding: 18px; display: flex; flex-direction: column;
   box-shadow: 0 8px 22px rgba(43,42,74,0.05);
 }
-.md-card-head { display: flex; align-items: center; gap: 10px; margin: 0 0 12px; }
+.md-card-head { display: flex; align-items: center; gap: 10px; margin: 0 0 12px; width: 100%; background: none; border: none; padding: 0; cursor: pointer; text-align: left; font: inherit; }
+.md-card-head:hover .md-name { color: var(--coral); }
 .md-avatar {
   flex-shrink: 0; width: 40px; height: 40px; border-radius: 50%; overflow: hidden;
   background: var(--navy); color: #fff; font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 13px;
