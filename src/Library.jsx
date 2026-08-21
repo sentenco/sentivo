@@ -1134,6 +1134,13 @@ export default function Library() {
       setUnreadMessageCount(count || 0);
     }
     loadUnreadMessages();
+    if (!user) return;
+    const channel = supabase
+      .channel(`unread-badge-${user.id}`)
+      .on("postgres_changes", { event: "INSERT", schema: "public", table: "messages" }, loadUnreadMessages)
+      .on("postgres_changes", { event: "UPDATE", schema: "public", table: "messages" }, loadUnreadMessages)
+      .subscribe();
+    return () => { supabase.removeChannel(channel); };
   }, [user]);
 
   function openNotifPanel() {
@@ -1478,8 +1485,8 @@ export default function Library() {
                   type="button"
                   className={`notif-btn${unreadMessageCount > 0 ? " has-unread" : ""}`}
                   onClick={() => navigate("/library/messages")}
-                  aria-label="Messages"
-                  title="Messages"
+                  aria-label="Small Talk"
+                  title="Small Talk"
                 >
                   <ChatIcon />
                   {unreadMessageCount > 0 && <span className="notif-dot" />}

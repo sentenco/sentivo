@@ -4,7 +4,7 @@ import { supabase } from "./supabaseClient";
 import { useAuth } from "./AuthContext";
 import { timeAgo } from "./slideDeckTypes";
 
-const POLL_MS = 8000;
+const POLL_MS = 30000; // fallback safety net; realtime handles the instant path
 
 function displayName(profile, fallbackEmail) {
   if (profile?.display_name?.trim()) return profile.display_name.trim();
@@ -59,6 +59,8 @@ export default function Messenger() {
   const [error, setError] = useState(null);
   const threadEndRef = useRef(null);
   const pollRef = useRef(null);
+  const activeIdRef = useRef(null);
+  useEffect(() => { activeIdRef.current = activeId; }, [activeId]);
 
   useEffect(() => {
     if (!user) { setLoadingList(false); return; }
@@ -81,6 +83,67 @@ export default function Messenger() {
     return () => clearInterval(poll);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeId]);
+
+  useEffect(() => {
+    if (!activeId || !user) return;
+    const channel = supabase
+      .channel(`messages-${activeId}`)
+      .on(
+        "postgres_changes",
+        { event: "INSERT", schema: "public", table: "messages", filter: `conversation_id=eq.${activeId}` },
+        (payload) => {
+          const row = payload.new;
+          setMessages((prev) => (prev.some((m) => m.id === row.id) ? prev : [...prev, row]));
+          if (row.sender_id !== user.id) {
+            supabase.from("messages").update({ read_at: new Date().toISOString() }).eq("id", row.id).then(() => {
+              setConversations((prev) => prev.map((c) => (c.id === activeId ? { ...c, unread: 0 } : c)));
+            });
+          }
+        }
+      )
+      .subscribe();
+    return () => { supabase.removeChannel(channel); };
+  }, [activeId, user]);
+
+  useEffect(() => {
+    if (!user) return;
+    const channel = supabase
+      .channel(`inbox-${user.id}`)
+      .on(
+        "postgres_changes",
+        { event: "INSERT", schema: "public", table: "messages" },
+        (payload) => {
+          const row = payload.new;
+          setConversations((prev) => {
+            if (!prev.some((c) => c.id === row.conversation_id)) return prev;
+            const updated = prev.map((c) => {
+              if (c.id !== row.conversation_id) return c;
+              const isOpen = c.id === activeIdRef.current;
+              const bumpUnread = row.sender_id !== user.id && !isOpen;
+              return { ...c, last_message_at: row.created_at, unread: bumpUnread ? (c.unread || 0) + 1 : c.unread };
+            });
+            return updated.sort((a, b) => new Date(b.last_message_at) - new Date(a.last_message_at));
+          });
+        }
+      )
+      .on(
+        "postgres_changes",
+        { event: "INSERT", schema: "public", table: "conversations" },
+        (payload) => {
+          const row = payload.new;
+          if (row.user_a_id !== user.id && row.user_b_id !== user.id) return;
+          setConversations((prev) => {
+            if (prev.some((c) => c.id === row.id)) return prev;
+            return [{ ...row, unread: 0 }, ...prev];
+          });
+          const otherId = row.user_a_id === user.id ? row.user_b_id : row.user_a_id;
+          loadProfiles([otherId]);
+        }
+      )
+      .subscribe();
+    return () => { supabase.removeChannel(channel); };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user]);
 
   useEffect(() => {
     threadEndRef.current?.scrollIntoView({ block: "end" });
@@ -211,11 +274,11 @@ export default function Messenger() {
         <button type="button" className="mg-brand" onClick={() => navigate("/library")} title="Back to Homeroom">
           <img src="/logo-sentivo.png" alt="" className="mg-brand-logo" />entivo
         </button>
-        <h1 className="mg-topbar-title">Messages</h1>
+        <h1 className="mg-topbar-title">Small Talk</h1>
       </div>
 
       {!user ? (
-        <p className="mg-signin">Sign in to use Messages.</p>
+        <p className="mg-signin">Sign in to use Small Talk.</p>
       ) : (
         <div className="mg-body">
           <div className={`mg-list ${activeId ? "mg-list--hidden-mobile" : ""}`}>
