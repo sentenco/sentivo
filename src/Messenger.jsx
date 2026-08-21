@@ -2,8 +2,10 @@ import { Fragment, useEffect, useRef, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { supabase } from "./supabaseClient";
 import { useAuth } from "./AuthContext";
+import ConfirmDialog from "./ConfirmDialog";
 
 const POLL_MS = 30000; // fallback safety net; realtime handles the instant path
+const QUICK_EMOJI = ["👍", "❤️", "😂", "😮", "😢", "🙏"];
 
 function displayName(profile, fallbackEmail) {
   if (profile?.display_name?.trim()) return profile.display_name.trim();
@@ -85,6 +87,43 @@ function CheckIcon() {
   );
 }
 
+function ReplyIcon() {
+  return (
+    <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M8 6 3.5 10 8 14" />
+      <path d="M3.5 10h8a5 5 0 0 1 5 5v1" />
+    </svg>
+  );
+}
+
+function SmileIcon() {
+  return (
+    <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <circle cx="10" cy="10" r="7" />
+      <path d="M7 11.5c.6 1 1.6 1.6 3 1.6s2.4-.6 3-1.6" />
+      <path d="M7.5 8h.01M12.5 8h.01" />
+    </svg>
+  );
+}
+
+function EditIcon() {
+  return (
+    <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M12.5 3.5 16 7l-8.5 8.5-4 1 1-4Z" />
+    </svg>
+  );
+}
+
+function TrashIcon() {
+  return (
+    <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M4 6h12" />
+      <path d="M7.5 6V4.5h5V6" />
+      <path d="M5.5 6 6.2 16h7.6l.7-10" />
+    </svg>
+  );
+}
+
 function EmptyChatIcon() {
   return (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -109,15 +148,33 @@ export default function Messenger() {
   const [error, setError] = useState(null);
   const [convSearch, setConvSearch] = useState("");
   const [listCollapsed, setListCollapsed] = useState(false);
+  const [replyTarget, setReplyTarget] = useState(null);
+  const [editingId, setEditingId] = useState(null);
+  const [editDraft, setEditDraft] = useState("");
+  const [deleteTarget, setDeleteTarget] = useState(null);
+  const [reactionsByMessage, setReactionsByMessage] = useState({});
+  const [reactionPickerFor, setReactionPickerFor] = useState(null);
   const threadEndRef = useRef(null);
   const pollRef = useRef(null);
   const activeIdRef = useRef(null);
   const composerRef = useRef(null);
+  const messageIdsRef = useRef(new Set());
   useEffect(() => { activeIdRef.current = activeId; }, [activeId]);
+  useEffect(() => { messageIdsRef.current = new Set(messages.map((m) => m.id)); }, [messages]);
 
   useEffect(() => {
-    if (!activeId) setListCollapsed(false);
+    if (!activeId) { setListCollapsed(false); setReplyTarget(null); setEditingId(null); }
   }, [activeId]);
+
+  useEffect(() => {
+    if (!reactionPickerFor) return;
+    function handleClick(e) {
+      if (e.target.closest(".mg-reaction-picker, .mg-react-trigger")) return;
+      setReactionPickerFor(null);
+    }
+    document.addEventListener("mousedown", handleClick);
+    return () => document.removeEventListener("mousedown", handleClick);
+  }, [reactionPickerFor]);
 
   useEffect(() => {
     const el = composerRef.current;
@@ -165,9 +222,41 @@ export default function Messenger() {
           }
         }
       )
+      .on(
+        "postgres_changes",
+        { event: "UPDATE", schema: "public", table: "messages", filter: `conversation_id=eq.${activeId}` },
+        (payload) => {
+          const row = payload.new;
+          setMessages((prev) => prev.map((m) => (m.id === row.id ? { ...m, ...row } : m)));
+        }
+      )
       .subscribe();
     return () => { supabase.removeChannel(channel); };
   }, [activeId, user]);
+
+  useEffect(() => {
+    if (!user) return;
+    const channel = supabase
+      .channel(`reactions-${user.id}`)
+      .on(
+        "postgres_changes",
+        { event: "*", schema: "public", table: "message_reactions" },
+        (payload) => {
+          const messageId = payload.new?.message_id || payload.old?.message_id;
+          if (!messageId || !messageIdsRef.current.has(messageId)) return;
+          setReactionsByMessage((prev) => {
+            const list = prev[messageId] || [];
+            if (payload.eventType === "DELETE") {
+              return { ...prev, [messageId]: list.filter((r) => r.id !== payload.old.id) };
+            }
+            const next = list.filter((r) => r.id !== payload.new.id);
+            return { ...prev, [messageId]: [...next, payload.new] };
+          });
+        }
+      )
+      .subscribe();
+    return () => { supabase.removeChannel(channel); };
+  }, [user]);
 
   useEffect(() => {
     if (!user) return;
@@ -258,12 +347,29 @@ export default function Messenger() {
   async function loadMessages(conversationId, silent) {
     const { data, error: msgError } = await supabase
       .from("messages")
-      .select("id, conversation_id, sender_id, content, created_at, read_at")
+      .select("id, conversation_id, sender_id, content, created_at, read_at, edited_at, deleted_at, reply_to_id")
       .eq("conversation_id", conversationId)
       .order("created_at", { ascending: true });
     if (msgError) { if (!silent) setError(msgError.message); return; }
-    setMessages(data || []);
-    const unreadIds = (data || []).filter((m) => m.sender_id !== user.id && !m.read_at).map((m) => m.id);
+    const rows = data || [];
+    setMessages(rows);
+
+    if (rows.length) {
+      const { data: reactions } = await supabase
+        .from("message_reactions")
+        .select("id, message_id, user_id, emoji")
+        .in("message_id", rows.map((m) => m.id));
+      const grouped = {};
+      (reactions || []).forEach((r) => {
+        if (!grouped[r.message_id]) grouped[r.message_id] = [];
+        grouped[r.message_id].push(r);
+      });
+      setReactionsByMessage(grouped);
+    } else {
+      setReactionsByMessage({});
+    }
+
+    const unreadIds = rows.filter((m) => m.sender_id !== user.id && !m.read_at).map((m) => m.id);
     if (unreadIds.length) {
       supabase.from("messages").update({ read_at: new Date().toISOString() }).in("id", unreadIds).then(() => {
         setConversations((prev) => prev.map((c) => (c.id === conversationId ? { ...c, unread: 0 } : c)));
@@ -301,20 +407,74 @@ export default function Messenger() {
     if (!content || !activeId || sending) return;
     setSending(true);
     setDraft("");
+    const replyToId = replyTarget?.id || null;
     const { data, error: sendError } = await supabase
       .from("messages")
-      .insert({ conversation_id: activeId, sender_id: user.id, content })
+      .insert({ conversation_id: activeId, sender_id: user.id, content, reply_to_id: replyToId })
       .select()
       .single();
     setSending(false);
     if (sendError) { setError(sendError.message); return; }
-    setMessages((prev) => [...prev, data]);
+    setReplyTarget(null);
+    setMessages((prev) => (prev.some((m) => m.id === data.id) ? prev : [...prev, data]));
     const now = new Date().toISOString();
     supabase.from("conversations").update({ last_message_at: now, last_message: content }).eq("id", activeId);
     setConversations((prev) => {
       const updated = prev.map((c) => (c.id === activeId ? { ...c, last_message_at: now, last_message: content } : c));
       return updated.sort((x, y) => new Date(y.last_message_at) - new Date(x.last_message_at));
     });
+  }
+
+  function startEdit(m) {
+    setEditingId(m.id);
+    setEditDraft(m.content);
+    setReactionPickerFor(null);
+  }
+
+  function cancelEdit() {
+    setEditingId(null);
+    setEditDraft("");
+  }
+
+  async function saveEdit() {
+    const content = editDraft.trim();
+    if (!content || !editingId) return;
+    const editedId = editingId;
+    const { error: editError } = await supabase.rpc("edit_message", { p_message_id: editedId, p_content: content });
+    if (editError) { setError(editError.message); return; }
+    setMessages((prev) => prev.map((m) => (m.id === editedId ? { ...m, content, edited_at: new Date().toISOString() } : m)));
+    setEditingId(null);
+    setEditDraft("");
+  }
+
+  async function handleDeleteMessage() {
+    if (!deleteTarget) return;
+    const target = deleteTarget;
+    setDeleteTarget(null);
+    const { error: deleteError } = await supabase.rpc("delete_message", { p_message_id: target.id });
+    if (deleteError) { setError(deleteError.message); return; }
+    setMessages((prev) => prev.map((m) => (m.id === target.id ? { ...m, deleted_at: new Date().toISOString(), content: "" } : m)));
+  }
+
+  async function toggleReaction(messageId, emoji) {
+    const existing = (reactionsByMessage[messageId] || []).find((r) => r.user_id === user.id);
+    setReactionPickerFor(null);
+    if (existing && existing.emoji === emoji) {
+      setReactionsByMessage((prev) => ({ ...prev, [messageId]: (prev[messageId] || []).filter((r) => r.id !== existing.id) }));
+      await supabase.from("message_reactions").delete().eq("id", existing.id);
+      return;
+    }
+    const { data } = await supabase
+      .from("message_reactions")
+      .upsert({ message_id: messageId, user_id: user.id, emoji }, { onConflict: "message_id,user_id" })
+      .select()
+      .single();
+    if (data) {
+      setReactionsByMessage((prev) => {
+        const others = (prev[messageId] || []).filter((r) => r.user_id !== user.id);
+        return { ...prev, [messageId]: [...others, data] };
+      });
+    }
   }
 
   function handleKeyDown(e) {
@@ -450,18 +610,101 @@ export default function Messenger() {
                           || (new Date(next.created_at) - new Date(m.created_at)) > 5 * 60 * 1000;
                         const isVeryLast = i === messages.length - 1;
                         const mine = m.sender_id === user.id;
+                        const isDeleted = !!m.deleted_at;
+                        const isEditing = editingId === m.id;
+                        const quoted = m.reply_to_id ? messages.find((x) => x.id === m.reply_to_id) : null;
+                        const reactionCounts = {};
+                        (reactionsByMessage[m.id] || []).forEach((r) => {
+                          if (!reactionCounts[r.emoji]) reactionCounts[r.emoji] = { count: 0, mine: false };
+                          reactionCounts[r.emoji].count += 1;
+                          if (r.user_id === user.id) reactionCounts[r.emoji].mine = true;
+                        });
+                        const hasReactions = Object.keys(reactionCounts).length > 0;
+                        const actionsBtns = !isDeleted && !isEditing && (
+                          <div className="mg-bubble-actions">
+                            <button type="button" onClick={() => setReplyTarget(m)} aria-label="Reply" title="Reply"><ReplyIcon /></button>
+                            <button
+                              type="button"
+                              className="mg-react-trigger"
+                              onClick={() => setReactionPickerFor(reactionPickerFor === m.id ? null : m.id)}
+                              aria-label="React"
+                              title="React"
+                            >
+                              <SmileIcon />
+                            </button>
+                            {mine && (
+                              <>
+                                <button type="button" onClick={() => startEdit(m)} aria-label="Edit" title="Edit"><EditIcon /></button>
+                                <button type="button" onClick={() => setDeleteTarget(m)} aria-label="Delete" title="Delete"><TrashIcon /></button>
+                              </>
+                            )}
+                          </div>
+                        );
                         return (
                           <Fragment key={m.id}>
                             {showDivider && (
                               <div className="mg-date-divider"><span>{dateDivider(m.created_at)}</span></div>
                             )}
-                            <div className={`mg-bubble-row ${mine ? "is-mine" : ""} ${isTight ? "is-tight" : ""}`}>
-                              <span className="mg-bubble">{m.content}</span>
+                            <div id={`msg-${m.id}`} className={`mg-bubble-row ${mine ? "is-mine" : ""} ${isTight ? "is-tight" : ""}`}>
+                              {mine && actionsBtns}
+                              <div className="mg-bubble-col">
+                                {isEditing ? (
+                                  <div className="mg-bubble mg-bubble--editing">
+                                    <textarea
+                                      value={editDraft}
+                                      onChange={(e) => setEditDraft(e.target.value)}
+                                      onKeyDown={(e) => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); saveEdit(); } if (e.key === "Escape") cancelEdit(); }}
+                                      rows={2}
+                                      autoFocus
+                                    />
+                                    <div className="mg-edit-actions">
+                                      <button type="button" onClick={cancelEdit}>Cancel</button>
+                                      <button type="button" onClick={saveEdit} disabled={!editDraft.trim()}>Save</button>
+                                    </div>
+                                  </div>
+                                ) : (
+                                  <span className={`mg-bubble ${isDeleted ? "mg-bubble--deleted" : ""}`}>
+                                    {quoted && !isDeleted && (
+                                      <span
+                                        className="mg-quote"
+                                        onClick={() => document.getElementById(`msg-${quoted.id}`)?.scrollIntoView({ behavior: "smooth", block: "center" })}
+                                      >
+                                        <strong>{quoted.sender_id === user.id ? "You" : activeName}</strong>
+                                        <span>{quoted.deleted_at ? "Message deleted" : quoted.content}</span>
+                                      </span>
+                                    )}
+                                    {isDeleted ? "Message deleted" : m.content}
+                                  </span>
+                                )}
+                                {hasReactions && !isDeleted && (
+                                  <div className={`mg-reactions ${mine ? "is-mine" : ""}`}>
+                                    {Object.entries(reactionCounts).map(([emoji, info]) => (
+                                      <button
+                                        type="button"
+                                        key={emoji}
+                                        className={`mg-reaction-pill ${info.mine ? "is-mine-reaction" : ""}`}
+                                        onClick={() => toggleReaction(m.id, emoji)}
+                                      >
+                                        {emoji} {info.count}
+                                      </button>
+                                    ))}
+                                  </div>
+                                )}
+                                {reactionPickerFor === m.id && (
+                                  <div className={`mg-reaction-picker ${mine ? "is-mine" : ""}`}>
+                                    {QUICK_EMOJI.map((e) => (
+                                      <button type="button" key={e} onClick={() => toggleReaction(m.id, e)}>{e}</button>
+                                    ))}
+                                  </div>
+                                )}
+                              </div>
+                              {!mine && actionsBtns}
                             </div>
-                            {isLastInGroup && (
+                            {isLastInGroup && !isEditing && (
                               <div className={`mg-bubble-meta ${mine ? "is-mine" : ""}`}>
                                 {shortTime(m.created_at)}
-                                {isVeryLast && mine && m.read_at && (
+                                {m.edited_at && !isDeleted && <span className="mg-edited-tag">edited</span>}
+                                {isVeryLast && mine && m.read_at && !isDeleted && (
                                   <span className="mg-seen"><CheckIcon /> Seen</span>
                                 )}
                               </div>
@@ -472,6 +715,16 @@ export default function Messenger() {
                     )}
                     <div ref={threadEndRef} />
                   </div>
+
+                  {replyTarget && (
+                    <div className="mg-reply-preview">
+                      <div className="mg-reply-preview-text">
+                        <strong>Replying to {replyTarget.sender_id === user.id ? "yourself" : activeName}</strong>
+                        <span>{replyTarget.deleted_at ? "Message deleted" : replyTarget.content}</span>
+                      </div>
+                      <button type="button" onClick={() => setReplyTarget(null)} aria-label="Cancel reply">&times;</button>
+                    </div>
+                  )}
 
                   <div className="mg-composer">
                     <textarea
@@ -493,6 +746,16 @@ export default function Messenger() {
           </div>
         </div>
       )}
+
+      <ConfirmDialog
+        open={!!deleteTarget}
+        title="Delete this message?"
+        message="It'll be removed for both of you. This can't be undone."
+        confirmLabel="Delete"
+        danger
+        onConfirm={handleDeleteMessage}
+        onCancel={() => setDeleteTarget(null)}
+      />
     </div>
   );
 }
@@ -625,20 +888,91 @@ const CSS = `
   font-size: 10.5px; font-weight: 600; letter-spacing: 0.03em; text-transform: uppercase; color: var(--muted);
   background: var(--navy-pale); padding: 4px 12px; border-radius: 999px;
 }
-.mg-bubble-row { display: flex; margin-top: 8px; }
+.mg-bubble-row { display: flex; align-items: flex-end; gap: 4px; margin-top: 8px; }
 .mg-bubble-row.is-tight { margin-top: 2px; }
 .mg-bubble-row.is-mine { justify-content: flex-end; }
+.mg-bubble-col { display: flex; flex-direction: column; gap: 4px; max-width: 68%; min-width: 0; }
+.mg-bubble-row.is-mine .mg-bubble-col { align-items: flex-end; }
 .mg-bubble {
-  max-width: 68%; padding: 10px 14px; border-radius: 17px 17px 17px 5px;
+  padding: 10px 14px; border-radius: 17px 17px 17px 5px;
   background: var(--navy-pale); color: var(--ink); font-size: 13.5px; line-height: 1.48; white-space: pre-wrap; word-break: break-word;
+  display: block;
 }
 .mg-bubble-row.is-mine .mg-bubble { background: var(--coral); color: #fff; border-radius: 17px 17px 5px 17px; }
+.mg-bubble--deleted { font-style: italic; opacity: 0.7; }
+
+.mg-quote {
+  display: block; margin-bottom: 6px; padding: 5px 9px; border-radius: 8px; cursor: pointer;
+  background: rgba(43,42,74,0.06); border-left: 2px solid var(--muted);
+  font-size: 11.5px; line-height: 1.35; white-space: normal;
+}
+.mg-bubble-row.is-mine .mg-bubble .mg-quote { background: rgba(255,255,255,0.18); border-left-color: rgba(255,255,255,0.6); }
+.mg-quote strong { display: block; font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 10.5px; margin-bottom: 1px; }
+.mg-quote span { display: block; opacity: 0.85; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+.mg-bubble--editing { background: var(--navy-pale); border-radius: 14px; padding: 8px; display: flex; flex-direction: column; gap: 6px; }
+.mg-bubble--editing textarea {
+  border: 1px solid var(--hair); border-radius: 10px; padding: 8px 10px; font: inherit; font-size: 13.5px;
+  color: var(--ink); resize: none; outline: none; background: #fff;
+}
+.mg-bubble--editing textarea:focus { border-color: var(--coral); }
+.mg-edit-actions { display: flex; justify-content: flex-end; gap: 8px; }
+.mg-edit-actions button {
+  border: none; background: none; font: inherit; font-size: 11.5px; font-weight: 600; cursor: pointer; padding: 3px 8px; border-radius: 6px;
+  color: var(--muted);
+}
+.mg-edit-actions button:last-child { color: var(--coral); }
+.mg-edit-actions button:last-child:disabled { opacity: 0.4; cursor: default; }
+.mg-edit-actions button:hover:not(:disabled) { background: rgba(43,42,74,0.06); }
+
+.mg-bubble-actions {
+  display: flex; align-items: center; gap: 2px; flex-shrink: 0; padding-bottom: 4px;
+  opacity: 0; transition: opacity 0.12s ease;
+}
+.mg-bubble-row:hover .mg-bubble-actions { opacity: 1; }
+.mg-bubble-actions button {
+  width: 24px; height: 24px; border-radius: 50%; border: none; background: var(--card); color: var(--muted);
+  display: flex; align-items: center; justify-content: center; cursor: pointer;
+  box-shadow: 0 1px 3px rgba(43,42,74,0.12);
+}
+.mg-bubble-actions button:hover { color: var(--coral); }
+.mg-bubble-actions svg { width: 12px; height: 12px; }
+
+.mg-reactions { display: flex; flex-wrap: wrap; gap: 4px; }
+.mg-reactions.is-mine { justify-content: flex-end; }
+.mg-reaction-pill {
+  display: inline-flex; align-items: center; gap: 3px; border: 1px solid var(--hair); background: var(--card);
+  border-radius: 999px; padding: 2px 7px; font-size: 11px; cursor: pointer; color: var(--ink); line-height: 1.5;
+}
+.mg-reaction-pill.is-mine-reaction { border-color: var(--coral); background: var(--coral-pale); }
+
+.mg-reaction-picker {
+  display: flex; gap: 2px; background: var(--card); border: 1px solid var(--hair); border-radius: 999px;
+  padding: 4px; box-shadow: 0 4px 14px rgba(43,42,74,0.16); align-self: flex-start;
+}
+.mg-reaction-picker.is-mine { align-self: flex-end; }
+.mg-reaction-picker button {
+  width: 26px; height: 26px; border: none; background: none; font-size: 15px; cursor: pointer; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+}
+.mg-reaction-picker button:hover { background: var(--navy-pale); }
+
 .mg-bubble-meta {
-  display: flex; align-items: center; gap: 5px; font-size: 10.5px; color: var(--muted); margin: 3px 2px 4px;
+  display: flex; align-items: center; gap: 6px; font-size: 10.5px; color: var(--muted); margin: 3px 2px 4px;
 }
 .mg-bubble-meta.is-mine { justify-content: flex-end; }
+.mg-edited-tag { font-style: italic; }
 .mg-seen { display: inline-flex; align-items: center; gap: 3px; color: var(--coral); font-weight: 600; }
 .mg-seen svg { width: 10px; height: 10px; }
+
+.mg-reply-preview {
+  display: flex; align-items: center; justify-content: space-between; gap: 10px;
+  padding: 8px 20px; background: var(--navy-pale); border-top: 1px solid var(--hair); flex-shrink: 0;
+}
+.mg-reply-preview-text { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
+.mg-reply-preview-text strong { font-family: 'Fredoka', sans-serif; font-size: 11px; font-weight: 600; color: var(--ink); }
+.mg-reply-preview-text span { font-size: 11.5px; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.mg-reply-preview button { flex-shrink: 0; background: none; border: none; color: var(--muted); font-size: 17px; cursor: pointer; line-height: 1; }
 
 .mg-composer { display: flex; align-items: flex-end; gap: 10px; padding: 14px 20px; border-top: 1px solid var(--hair); flex-shrink: 0; }
 .mg-composer-input {
@@ -664,5 +998,6 @@ const CSS = `
   .mg-thread--hidden-mobile { display: none; }
   .mg-back { display: flex; align-items: center; justify-content: center; }
   .mg-collapse-toggle { display: none; }
+  .mg-bubble-actions { opacity: 0.55; }
 }
 `;
