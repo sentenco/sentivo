@@ -4,6 +4,7 @@ import { supabase } from "./supabaseClient";
 import { useAuth } from "./AuthContext";
 import AuthForm from "./AuthForm";
 import { newDeckSlides, timeAgo } from "./slideDeckTypes";
+import ConfirmDialog from "./ConfirmDialog";
 
 export default function SlideDeckHub() {
   const navigate = useNavigate();
@@ -13,6 +14,7 @@ export default function SlideDeckHub() {
   const [creating, setCreating] = useState(false);
   const [authMode, setAuthMode] = useState(null);
   const [deletingId, setDeletingId] = useState(null);
+  const [deleteTarget, setDeleteTarget] = useState(null);
   const [tab, setTab] = useState("new");
 
   useEffect(() => {
@@ -49,9 +51,7 @@ export default function SlideDeckHub() {
     if (!error && data) navigate(`/library/slides/${data.id}/edit`);
   }
 
-  async function deleteDeck(id, e) {
-    e.stopPropagation();
-    if (!window.confirm("Delete this deck? This can't be undone.")) return;
+  async function deleteDeck(id) {
     setDeletingId(id);
     const { error } = await supabase.from("slide_decks").delete().eq("id", id);
     setDeletingId(null);
@@ -122,7 +122,7 @@ export default function SlideDeckHub() {
                         <button
                           type="button"
                           className="sdh-card-delete"
-                          onClick={(e) => deleteDeck(deck.id, e)}
+                          onClick={(e) => { e.stopPropagation(); setDeleteTarget(deck); }}
                           disabled={deletingId === deck.id}
                           aria-label="Delete deck"
                         >
@@ -144,6 +144,15 @@ export default function SlideDeckHub() {
       </div>
 
       {authMode && <AuthForm mode={authMode} onClose={() => setAuthMode(null)} />}
+
+      <ConfirmDialog
+        open={!!deleteTarget}
+        title="Delete this deck?"
+        message={deleteTarget ? `"${deleteTarget.title || "Untitled deck"}" will be gone for good.` : ""}
+        confirmLabel="Delete"
+        onConfirm={() => { deleteDeck(deleteTarget.id); setDeleteTarget(null); }}
+        onCancel={() => setDeleteTarget(null)}
+      />
     </div>
   );
 }

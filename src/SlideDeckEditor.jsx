@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { supabase } from "./supabaseClient";
 import { useAuth } from "./AuthContext";
 import { newSlide, newTextElement, newImageElement } from "./slideDeckTypes";
+import ConfirmDialog from "./ConfirmDialog";
 
 const IMAGE_BUCKET = "slide-images";
 const TEXT_COLORS = ["#1B2A4A", "#FF6B4A", "#5B6B85", "#1F9D6E", "#FFFFFF"];
@@ -32,6 +33,7 @@ export default function SlideDeckEditor() {
   const [deckTitle, setDeckTitle] = useState("");
   const [slides, setSlides] = useState([]);
   const [activeIndex, setActiveIndex] = useState(0);
+  const [deleteSlideIndex, setDeleteSlideIndex] = useState(null);
   const [loading, setLoading] = useState(true);
   const [notFound, setNotFound] = useState(false);
   const [status, setStatus] = useState("saved");
@@ -170,7 +172,6 @@ export default function SlideDeckEditor() {
 
   function deleteSlide(index) {
     if (slides.length <= 1) return;
-    if (!window.confirm("Delete this slide?")) return;
     setSlides((prev) => {
       const next = prev.filter((_, i) => i !== index);
       persist(deckTitle, next);
@@ -439,7 +440,7 @@ export default function SlideDeckEditor() {
               <span key={s.id} className="sde-dot-wrap">
                 <span className={i === activeIndex ? "is-active" : ""} onClick={() => setActiveIndex(i)} />
                 {n > 1 && (
-                  <button type="button" className="sde-dot-delete" title="Delete slide" onClick={(e) => { e.stopPropagation(); deleteSlide(i); }}>×</button>
+                  <button type="button" className="sde-dot-delete" title="Delete slide" onClick={(e) => { e.stopPropagation(); if (slides.length > 1) setDeleteSlideIndex(i); }}>×</button>
                 )}
               </span>
             ))}
@@ -471,6 +472,14 @@ export default function SlideDeckEditor() {
           </div>
         </div>
       )}
+
+      <ConfirmDialog
+        open={deleteSlideIndex !== null}
+        title="Delete this slide?"
+        confirmLabel="Delete"
+        onConfirm={() => { deleteSlide(deleteSlideIndex); setDeleteSlideIndex(null); }}
+        onCancel={() => setDeleteSlideIndex(null)}
+      />
     </div>
   );
 }

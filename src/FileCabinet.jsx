@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { supabase } from "./supabaseClient";
 import { useAuth } from "./AuthContext";
 import { timeAgo } from "./slideDeckTypes";
+import ConfirmDialog from "./ConfirmDialog";
 
 const ADMIN_EMAIL = "caldrin1999@gmail.com";
 const MAX_FILE_MB = 20;
@@ -92,6 +93,9 @@ export default function FileCabinet() {
   const [error, setError] = useState(null);
   const [sharingId, setSharingId] = useState(null);
   const [sharedIds, setSharedIds] = useState(new Set());
+  const [shareTarget, setShareTarget] = useState(null);
+  const [shareCaption, setShareCaption] = useState("");
+  const [deleteTarget, setDeleteTarget] = useState(null);
 
   useEffect(() => {
     if (!user) { setFiles([]); setLoading(false); return; }
@@ -174,7 +178,6 @@ export default function FileCabinet() {
   }
 
   async function handleDelete(f) {
-    if (!window.confirm(`Delete "${f.file_name}"? This can't be undone.`)) return;
     const { error: storageError } = await supabase.storage.from("teacher-files").remove([f.file_path]);
     if (storageError) { setError(storageError.message); return; }
     const { error: rowError } = await supabase.from("teacher_files").delete().eq("id", f.id);
@@ -182,7 +185,20 @@ export default function FileCabinet() {
     setFiles((prev) => prev.filter((x) => x.id !== f.id));
   }
 
-  async function handleShare(f) {
+  function openShareComposer(f) {
+    setShareTarget(f);
+    setShareCaption(`Sharing a resource: ${f.file_name}`);
+  }
+
+  function closeShareComposer() {
+    setShareTarget(null);
+    setShareCaption("");
+  }
+
+  async function confirmShare() {
+    const f = shareTarget;
+    const caption = shareCaption.trim();
+    if (!f || !caption) return;
     setError(null);
     setSharingId(f.id);
     try {
@@ -198,7 +214,7 @@ export default function FileCabinet() {
       const { error: postError } = await supabase.from("community_posts").insert({
         author_id: user.id,
         author_email: user.email,
-        content: `Sharing a resource: ${f.file_name}`,
+        content: caption,
         post_type: "resource",
         file_url: pub.publicUrl,
         file_name: f.file_name,
@@ -206,6 +222,7 @@ export default function FileCabinet() {
       });
       if (postError) throw postError;
       setSharedIds((prev) => new Set(prev).add(f.id));
+      closeShareComposer();
     } catch (err) {
       setError(err.message || "Couldn't share that file.");
     } finally {
@@ -285,7 +302,7 @@ export default function FileCabinet() {
                             <button
                               type="button"
                               className="fc-file-share"
-                              onClick={() => handleShare(f)}
+                              onClick={() => openShareComposer(f)}
                               disabled={sharingId === f.id || sharedIds.has(f.id)}
                             >
                               {sharedIds.has(f.id) ? "Shared ✓" : sharingId === f.id ? "Sharing…" : "Share to Community"}
@@ -294,7 +311,7 @@ export default function FileCabinet() {
                           <button type="button" className="fc-file-icon-btn" onClick={() => handleDownload(f)} title="Download" aria-label="Download">
                             <DownloadIcon />
                           </button>
-                          <button type="button" className="fc-file-icon-btn" onClick={() => handleDelete(f)} title="Delete" aria-label="Delete">
+                          <button type="button" className="fc-file-icon-btn" onClick={() => setDeleteTarget(f)} title="Delete" aria-label="Delete">
                             <TrashIcon />
                           </button>
                         </div>
@@ -307,6 +324,46 @@ export default function FileCabinet() {
           </>
         )}
       </div>
+
+      {shareTarget && (
+        <div className="fc-share-overlay" onClick={closeShareComposer}>
+          <div className="fc-share-modal" onClick={(e) => e.stopPropagation()}>
+            <h3 className="fc-share-title">Share to Community</h3>
+            <p className="fc-share-file">
+              <span className="fc-file-ext">{fileExt(shareTarget.file_name)}</span>
+              {shareTarget.file_name}
+            </p>
+            <textarea
+              className="fc-share-input"
+              value={shareCaption}
+              onChange={(e) => setShareCaption(e.target.value)}
+              placeholder="Say something about this resource…"
+              rows={3}
+              autoFocus
+            />
+            <div className="fc-share-actions">
+              <button type="button" className="fc-share-cancel" onClick={closeShareComposer}>Cancel</button>
+              <button
+                type="button"
+                className="fc-share-confirm"
+                onClick={confirmShare}
+                disabled={!shareCaption.trim() || sharingId === shareTarget.id}
+              >
+                {sharingId === shareTarget.id ? "Sharing…" : "Share"}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      <ConfirmDialog
+        open={!!deleteTarget}
+        title="Delete this file?"
+        message={deleteTarget ? `"${deleteTarget.file_name}" will be gone for good.` : ""}
+        confirmLabel="Delete"
+        onConfirm={() => { handleDelete(deleteTarget); setDeleteTarget(null); }}
+        onCancel={() => setDeleteTarget(null)}
+      />
     </div>
   );
 }
@@ -441,4 +498,40 @@ const CSS = `
   .fc-section-head { flex-wrap: wrap; }
   .fc-upload-btn { margin-left: 56px; }
 }
+
+.fc-share-overlay {
+  position: fixed; inset: 0; background: rgba(43,42,74,0.45);
+  display: flex; align-items: center; justify-content: center;
+  z-index: 1000; padding: 20px;
+}
+.fc-share-modal {
+  background: var(--card); border-radius: 22px; border-top: 4px solid var(--coral);
+  padding: 26px 26px 22px; max-width: 420px; width: 100%;
+  box-shadow: 0 24px 60px rgba(43,42,74,0.25);
+}
+.fc-share-title { font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 18px; margin: 0 0 14px; }
+.fc-share-file {
+  display: flex; align-items: center; gap: 8px; margin: 0 0 14px;
+  font-family: 'Quicksand', sans-serif; font-weight: 700; font-size: 12.5px; color: var(--ink);
+}
+.fc-share-input {
+  display: block; width: 100%; resize: vertical; min-height: 76px;
+  border: 1px solid var(--hair); border-radius: 14px; outline: none; padding: 12px 14px;
+  font: inherit; font-size: 13.5px; color: var(--ink); background: #FBFAF7; margin: 0 0 16px;
+}
+.fc-share-input:focus { border-color: var(--coral); }
+.fc-share-input::placeholder { color: var(--muted); }
+.fc-share-actions { display: flex; justify-content: flex-end; gap: 10px; }
+.fc-share-cancel {
+  font-family: 'Quicksand', sans-serif; font-weight: 700; font-size: 13px; color: var(--muted);
+  background: none; border: none; cursor: pointer; padding: 9px 8px;
+}
+.fc-share-cancel:hover { color: var(--ink); }
+.fc-share-confirm {
+  font-family: 'Quicksand', sans-serif; font-weight: 700; font-size: 13px;
+  background: var(--coral); color: #fff; border: none; border-radius: 999px;
+  padding: 9px 22px; cursor: pointer;
+}
+.fc-share-confirm:disabled { opacity: 0.5; cursor: default; }
+.fc-share-confirm:not(:disabled):hover { filter: brightness(0.94); }
 `;

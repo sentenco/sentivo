@@ -5,6 +5,7 @@ import AuthForm from "./AuthForm";
 import { teachingBadge } from "./ProfileSettings.jsx";
 import { timeAgo } from "./slideDeckTypes";
 import communityBannerImg from "./assets/community/banner.jpg";
+import ConfirmDialog from "./ConfirmDialog";
 
 const ADMIN_EMAIL = "caldrin1999@gmail.com";
 const AVATAR_HUES = ["#FF6B4A", "#7C5CFC", "#16BFAE", "#E0A72E", "#FF8A4C"];
@@ -173,6 +174,7 @@ export default function CommunityFeed({ afterStats, focusPostId, onActivity } = 
   const [myName] = useState(() => localStorage.getItem("sentivo_teacher_name") || "");
 
   const [profile, setProfile] = useState(null);
+  const [deleteTarget, setDeleteTarget] = useState(null);
   const [scope, setScope] = useState("universal");
 
   const [authMode, setAuthMode] = useState(null);
@@ -332,7 +334,6 @@ export default function CommunityFeed({ afterStats, focusPostId, onActivity } = 
   }
 
   async function deletePost(id) {
-    if (!window.confirm("Delete this post? This can't be undone.")) return;
     const { error } = await supabase.from("community_posts").delete().eq("id", id);
     if (!error) setPosts((prev) => prev.filter((p) => p.id !== id));
   }
@@ -434,7 +435,6 @@ export default function CommunityFeed({ afterStats, focusPostId, onActivity } = 
   }
 
   async function deleteComment(id, postId) {
-    if (!window.confirm("Delete this comment?")) return;
     const { error } = await supabase.from("community_comments").delete().eq("id", id);
     if (!error) {
       setCommentsByPost((prev) => ({ ...prev, [postId]: (prev[postId] || []).filter((c) => c.id !== id) }));
@@ -605,7 +605,7 @@ export default function CommunityFeed({ afterStats, focusPostId, onActivity } = 
                     )}
                   </div>
                   {canManage && (
-                    <button type="button" className="cm-icon-btn" title="Delete post" onClick={() => deletePost(p.id)}>
+                    <button type="button" className="cm-icon-btn" title="Delete post" onClick={() => setDeleteTarget({ type: "post", id: p.id })}>
                       <TrashIcon />
                     </button>
                   )}
@@ -651,7 +651,7 @@ export default function CommunityFeed({ afterStats, focusPostId, onActivity } = 
                           <p className="cm-comment-text">{c.content}</p>
                         </div>
                         {user && (c.author_id === user.id || isAdmin) && (
-                          <button type="button" className="cm-icon-btn cm-icon-btn--xs" title="Delete comment" onClick={() => deleteComment(c.id, p.id)}>
+                          <button type="button" className="cm-icon-btn cm-icon-btn--xs" title="Delete comment" onClick={() => setDeleteTarget({ type: "comment", id: c.id, postId: p.id })}>
                             <TrashIcon />
                           </button>
                         )}
@@ -689,6 +689,19 @@ export default function CommunityFeed({ afterStats, focusPostId, onActivity } = 
       </div>
 
       {authMode && <AuthForm mode={authMode} onClose={() => setAuthMode(null)} />}
+
+      <ConfirmDialog
+        open={!!deleteTarget}
+        title={deleteTarget?.type === "post" ? "Delete this post?" : "Delete this comment?"}
+        message="This can't be undone."
+        confirmLabel="Delete"
+        onConfirm={() => {
+          if (deleteTarget.type === "post") deletePost(deleteTarget.id);
+          else deleteComment(deleteTarget.id, deleteTarget.postId);
+          setDeleteTarget(null);
+        }}
+        onCancel={() => setDeleteTarget(null)}
+      />
     </div>
   );
 }
