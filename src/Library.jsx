@@ -1023,6 +1023,14 @@ function BellIcon() {
   );
 }
 
+function ChatIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M4 5.5A2.5 2.5 0 0 1 6.5 3h11A2.5 2.5 0 0 1 20 5.5v8a2.5 2.5 0 0 1-2.5 2.5H9l-4.5 4v-4H6.5A2.5 2.5 0 0 1 4 13.5v-8Z" />
+    </svg>
+  );
+}
+
 export default function Library() {
   const isPro = true;
   const [searchParams, setSearchParams] = useSearchParams();
@@ -1037,6 +1045,7 @@ export default function Library() {
   const [notifications, setNotifications] = useState([]);
   const notifWrapRef = useRef(null);
   const unreadNotifCount = notifications.filter((n) => !n.read_at).length;
+  const [unreadMessageCount, setUnreadMessageCount] = useState(0);
   const [profileOpen, setProfileOpen] = useState(false);
   const [avatarUrl, setAvatarUrl] = useState(null);
   const [searchModeMenuOpen, setSearchModeMenuOpen] = useState(false);
@@ -1087,6 +1096,26 @@ export default function Library() {
       .order("created_at", { ascending: false })
       .limit(20)
       .then(({ data }) => setNotifications(data || []));
+  }, [user]);
+
+  useEffect(() => {
+    if (!user) { setUnreadMessageCount(0); return; }
+    async function loadUnreadMessages() {
+      const { data: convos } = await supabase
+        .from("conversations")
+        .select("id")
+        .or(`user_a_id.eq.${user.id},user_b_id.eq.${user.id}`);
+      const ids = (convos || []).map((c) => c.id);
+      if (!ids.length) { setUnreadMessageCount(0); return; }
+      const { count } = await supabase
+        .from("messages")
+        .select("id", { count: "exact", head: true })
+        .in("conversation_id", ids)
+        .is("read_at", null)
+        .neq("sender_id", user.id);
+      setUnreadMessageCount(count || 0);
+    }
+    loadUnreadMessages();
   }, [user]);
 
   function openNotifPanel() {
@@ -1427,6 +1456,16 @@ export default function Library() {
               </>
             ) : (
               <>
+                <button
+                  type="button"
+                  className={`notif-btn${unreadMessageCount > 0 ? " has-unread" : ""}`}
+                  onClick={() => navigate("/library/messages")}
+                  aria-label="Messages"
+                  title="Messages"
+                >
+                  <ChatIcon />
+                  {unreadMessageCount > 0 && <span className="notif-dot" />}
+                </button>
                 <div className="notif-wrap" ref={notifWrapRef}>
                   <button
                     type="button"

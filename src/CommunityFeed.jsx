@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { supabase } from "./supabaseClient";
 import { useAuth } from "./AuthContext";
 import AuthForm from "./AuthForm";
@@ -54,6 +55,14 @@ function TrashIcon() {
       <path d="M5.5 4.5V3a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v1.5" />
       <path d="M6 7.5v4M10 7.5v4" />
       <path d="M3.5 4.5 4.1 13a1 1 0 0 0 1 .9h5.8a1 1 0 0 0 1-.9l0.6-8.5" />
+    </svg>
+  );
+}
+
+function MessageIcon() {
+  return (
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M2 3.8A1.5 1.5 0 0 1 3.5 2.3h9A1.5 1.5 0 0 1 14 3.8v5.2a1.5 1.5 0 0 1-1.5 1.5H6.5l-2.8 2.4V10.5h-0.2A1.5 1.5 0 0 1 2 9V3.8Z" />
     </svg>
   );
 }
@@ -169,6 +178,7 @@ function Avatar({ name, email, size }) {
 // the dedicated /library/community page and the Today page, which now
 // embeds this directly in place of the old greeting hero.
 export default function CommunityFeed({ afterStats, focusPostId, onActivity } = {}) {
+  const navigate = useNavigate();
   const { user, loading: authLoading } = useAuth();
   const isAdmin = user?.email?.toLowerCase() === ADMIN_EMAIL;
   const [myName] = useState(() => localStorage.getItem("sentivo_teacher_name") || "");
@@ -604,6 +614,11 @@ export default function CommunityFeed({ afterStats, focusPostId, onActivity } = 
                       </span>
                     )}
                   </div>
+                  {user && p.author_id && p.author_id !== user.id && (
+                    <button type="button" className="cm-icon-btn" title="Message" onClick={() => navigate(`/library/messages?to=${p.author_id}`)}>
+                      <MessageIcon />
+                    </button>
+                  )}
                   {canManage && (
                     <button type="button" className="cm-icon-btn" title="Delete post" onClick={() => setDeleteTarget({ type: "post", id: p.id })}>
                       <TrashIcon />
