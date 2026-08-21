@@ -709,18 +709,35 @@ function TodayFeature({ navigate }) {
 
   useEffect(() => {
     if (!user) { setPostCount(0); setCommentCount(0); setLikeCount(0); return; }
-    const startOfToday = new Date();
-    startOfToday.setHours(0, 0, 0, 0);
-    (async () => {
+    let cancelled = false;
+    let timer;
+
+    async function loadCounts() {
+      const startOfToday = new Date();
+      startOfToday.setHours(0, 0, 0, 0);
       const [{ count: posts }, { count: comments }, { count: likes }] = await Promise.all([
         supabase.from("community_posts").select("id", { count: "exact", head: true }).eq("author_id", user.id).gte("created_at", startOfToday.toISOString()),
         supabase.from("community_comments").select("id", { count: "exact", head: true }).eq("author_id", user.id).gte("created_at", startOfToday.toISOString()),
         supabase.from("community_likes").select("id", { count: "exact", head: true }).eq("user_id", user.id).gte("created_at", startOfToday.toISOString()),
       ]);
+      if (cancelled) return;
       setPostCount(posts || 0);
       setCommentCount(comments || 0);
       setLikeCount(likes || 0);
-    })();
+      scheduleNextRefresh();
+    }
+
+    // Re-fetch right at the next local midnight, then reschedule for the
+    // one after that -- otherwise a tab left open across midnight keeps
+    // showing yesterday's (now-expired) counts until someone reloads.
+    function scheduleNextRefresh() {
+      const nextMidnight = new Date();
+      nextMidnight.setHours(24, 0, 5, 0);
+      timer = setTimeout(loadCounts, nextMidnight.getTime() - Date.now());
+    }
+
+    loadCounts();
+    return () => { cancelled = true; clearTimeout(timer); };
   }, [user]);
 
   function handleCommunityActivity(kind) {
