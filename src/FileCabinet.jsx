@@ -8,8 +8,8 @@ const ADMIN_EMAIL = "caldrin1999@gmail.com";
 const MAX_FILE_MB = 20;
 
 const CATEGORIES = [
-  { key: "material", label: "Lesson Materials", hint: "Worksheets, slides, handouts, anything you use in class." },
   { key: "credential", label: "Credentials", hint: "Certificates, diplomas, TESOL/CELTA, teaching IDs. Private, only you and Sentivo staff can see these." },
+  { key: "material", label: "Lesson Materials", hint: "Worksheets, slides, handouts, anything you use in class." },
 ];
 
 function formatSize(bytes) {
