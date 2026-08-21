@@ -101,7 +101,7 @@ export const PRIVACY_CONTENT = {
       body: [
         "Account information: your email address, and any name, country, years-teaching, and profile photo you choose to add.",
         "Content you create: community posts, comments, likes, and any images or files you upload to the Community feed.",
-        "Private messages: the content of any 1:1 messages you send through Small Talk. These aren't end-to-end encrypted — the other participant can read them, and so can Sentivo, for support, moderation, or legal purposes.",
+        "Private messages: the content of any 1:1 messages you send through Convo. These aren't end-to-end encrypted — the other participant can read them, and so can Sentivo, for support, moderation, or legal purposes.",
         "File Cabinet uploads: lesson materials and credentials you choose to store, including anything you mark private.",
         "Mentor program information: if you apply to become a mentor, the details in your application, like your experience, specialty, and any documents you attach.",
         "Usage information: your subscription plan, and activity we use to unlock features, like your post/comment/like counts for the day.",

@@ -1485,8 +1485,8 @@ export default function Library() {
                   type="button"
                   className={`notif-btn${unreadMessageCount > 0 ? " has-unread" : ""}`}
                   onClick={() => navigate("/library/messages")}
-                  aria-label="Small Talk"
-                  title="Small Talk"
+                  aria-label="Convo"
+                  title="Convo"
                 >
                   <ChatIcon />
                   {unreadMessageCount > 0 && <span className="notif-dot" />}
