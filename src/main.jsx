@@ -75,12 +75,11 @@ import SparkTeensGuide from './SparkTeensGuide.jsx'
 import SparkAdults from './SparkAdults.jsx'
 import SparkAdultsGuide from './SparkAdultsGuide.jsx'
 import { AuthProvider } from './AuthContext.jsx'
-import SiteGate from './SiteGate.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <AuthProvider>
-      <SiteGate>
+      <>
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Library />} />
@@ -161,7 +160,7 @@ createRoot(document.getElementById('root')).render(
             <Route path="/teacher-guide/:level/:track" element={<TeacherGuide />} />
           </Routes>
         </BrowserRouter>
-      </SiteGate>
+      </>
     </AuthProvider>
   </StrictMode>,
 )
