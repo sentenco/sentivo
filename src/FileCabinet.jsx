@@ -62,6 +62,16 @@ function TrashIcon() {
   );
 }
 
+function DownloadIcon() {
+  return (
+    <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+      <path d="M8 2v7.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+      <path d="M4.5 6 8 9.5 11.5 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M3 12.5h10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+    </svg>
+  );
+}
+
 function UploadIcon() {
   return (
     <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
@@ -147,6 +157,20 @@ export default function FileCabinet() {
       return;
     }
     window.open(data.signedUrl, "_blank");
+  }
+
+  async function handleDownload(f) {
+    const { data, error: signError } = await supabase.storage.from("teacher-files").createSignedUrl(f.file_path, 60, { download: f.file_name });
+    if (signError || !data?.signedUrl) {
+      setError("Couldn't download that file. Try again.");
+      return;
+    }
+    const a = document.createElement("a");
+    a.href = data.signedUrl;
+    a.download = f.file_name;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
   }
 
   async function handleDelete(f) {
@@ -267,7 +291,10 @@ export default function FileCabinet() {
                               {sharedIds.has(f.id) ? "Shared ✓" : sharingId === f.id ? "Sharing…" : "Share to Community"}
                             </button>
                           )}
-                          <button type="button" className="fc-file-delete" onClick={() => handleDelete(f)} title="Delete" aria-label="Delete">
+                          <button type="button" className="fc-file-icon-btn" onClick={() => handleDownload(f)} title="Download" aria-label="Download">
+                            <DownloadIcon />
+                          </button>
+                          <button type="button" className="fc-file-icon-btn" onClick={() => handleDelete(f)} title="Delete" aria-label="Delete">
                             <TrashIcon />
                           </button>
                         </div>
@@ -403,12 +430,12 @@ const CSS = `
   padding: 5px 10px; cursor: pointer;
 }
 .fc-file-share:disabled { opacity: 0.6; cursor: default; }
-.fc-file-delete {
+.fc-file-icon-btn {
   flex-shrink: 0; width: 26px; height: 26px; border-radius: 50%; border: none; background: none;
   color: var(--muted); cursor: pointer; display: flex; align-items: center; justify-content: center;
 }
-.fc-file-delete:hover { background: var(--coral-pale); color: var(--coral); }
-.fc-file-delete svg { width: 13px; height: 13px; }
+.fc-file-icon-btn:hover { background: var(--accent-pale); color: var(--accent); }
+.fc-file-icon-btn svg { width: 13px; height: 13px; }
 
 @media (max-width: 560px) {
   .fc-section-head { flex-wrap: wrap; }
