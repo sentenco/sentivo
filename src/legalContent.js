@@ -4,7 +4,7 @@
 // not a substitute for review by a Philippine lawyer before Sentivo accepts
 // real payments.
 
-export const LEGAL_UPDATED = "August 20, 2026";
+export const LEGAL_UPDATED = "August 22, 2026";
 
 export const LEGAL_DOCS = [
   { key: "terms", label: "Terms of Service" },
@@ -101,6 +101,9 @@ export const PRIVACY_CONTENT = {
       body: [
         "Account information: your email address, and any name, country, years-teaching, and profile photo you choose to add.",
         "Content you create: community posts, comments, likes, and any images or files you upload to the Community feed.",
+        "Private messages: the content of any 1:1 messages you send through Small Talk. These aren't end-to-end encrypted — the other participant can read them, and so can Sentivo, for support, moderation, or legal purposes.",
+        "File Cabinet uploads: lesson materials and credentials you choose to store, including anything you mark private.",
+        "Mentor program information: if you apply to become a mentor, the details in your application, like your experience, specialty, and any documents you attach.",
         "Usage information: your subscription plan, and activity we use to unlock features, like your post/comment/like counts for the day.",
         "AI tool inputs: words, sentences, or passages you submit to the Dictionary, Grammar Checker, or Translator, so we can send them to our AI provider and return a result.",
       ],
@@ -133,7 +136,7 @@ export const PRIVACY_CONTENT = {
     {
       heading: "5. Data retention",
       body: [
-        "We keep your account information for as long as your account is active. If you delete your account, we'll delete or anonymize your personal information within a reasonable period, except where we need to keep it for legal or legitimate business reasons, like unresolved billing.",
+        "We keep your account information, messages, and File Cabinet uploads for as long as your account is active. If you delete your account, we'll delete or anonymize your personal information within a reasonable period, except where we need to keep it for legal or legitimate business reasons, like unresolved billing.",
       ],
     },
     {
