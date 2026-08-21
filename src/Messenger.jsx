@@ -59,6 +59,15 @@ function BackIcon() {
   );
 }
 
+function PanelIcon() {
+  return (
+    <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <rect x="2.5" y="4" width="15" height="12" rx="2.5" />
+      <path d="M8 4v12" />
+    </svg>
+  );
+}
+
 function SearchIcon() {
   return (
     <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -99,11 +108,16 @@ export default function Messenger() {
   const [sending, setSending] = useState(false);
   const [error, setError] = useState(null);
   const [convSearch, setConvSearch] = useState("");
+  const [listCollapsed, setListCollapsed] = useState(false);
   const threadEndRef = useRef(null);
   const pollRef = useRef(null);
   const activeIdRef = useRef(null);
   const composerRef = useRef(null);
   useEffect(() => { activeIdRef.current = activeId; }, [activeId]);
+
+  useEffect(() => {
+    if (!activeId) setListCollapsed(false);
+  }, [activeId]);
 
   useEffect(() => {
     const el = composerRef.current;
@@ -339,7 +353,7 @@ export default function Messenger() {
       ) : (
         <div className="mg-frame">
           <div className="mg-body">
-            <div className={`mg-list ${activeId ? "mg-list--hidden-mobile" : ""}`}>
+            <div className={`mg-list ${activeId ? "mg-list--hidden-mobile" : ""} ${listCollapsed ? "mg-list--collapsed" : ""}`}>
               <div className="mg-search">
                 <SearchIcon />
                 <input
@@ -399,6 +413,15 @@ export default function Messenger() {
                   <div className="mg-thread-head">
                     <button type="button" className="mg-back" onClick={() => setActiveId(null)} aria-label="Back to conversations">
                       <BackIcon />
+                    </button>
+                    <button
+                      type="button"
+                      className="mg-collapse-toggle"
+                      onClick={() => setListCollapsed((v) => !v)}
+                      aria-label={listCollapsed ? "Show conversation list" : "Hide conversation list"}
+                      title={listCollapsed ? "Show conversation list" : "Hide conversation list"}
+                    >
+                      <PanelIcon />
                     </button>
                     <span className="mg-avatar mg-avatar--sm">{activeProfile?.avatar_url ? <img src={activeProfile.avatar_url} alt="" /> : initials(activeName)}</span>
                     <span className="mg-thread-name">{activeName}</span>
@@ -520,7 +543,11 @@ const CSS = `
 .mg-list {
   width: 320px; flex-shrink: 0; border-right: 1px solid var(--hair);
   display: flex; flex-direction: column; min-height: 0; background: #FDFCFA;
+  transition: width 0.18s ease, border-color 0.18s ease;
+  overflow: hidden;
 }
+.mg-list--collapsed { width: 0; border-right-color: transparent; }
+.mg-list--collapsed > * { opacity: 0; pointer-events: none; }
 .mg-search {
   display: flex; align-items: center; gap: 8px; margin: 14px 14px 6px; padding: 8px 12px;
   background: #fff; border: 1px solid var(--hair); border-radius: 12px; flex-shrink: 0;
@@ -577,6 +604,13 @@ const CSS = `
 .mg-thread-head { display: flex; align-items: center; gap: 10px; padding: 14px 20px; border-bottom: 1px solid var(--hair); flex-shrink: 0; }
 .mg-back { display: none; background: none; border: none; color: var(--muted); cursor: pointer; padding: 4px; }
 .mg-back svg { width: 18px; height: 18px; }
+.mg-collapse-toggle {
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  background: none; border: none; color: var(--muted); cursor: pointer; padding: 5px; border-radius: 8px;
+  transition: background 0.12s ease, color 0.12s ease;
+}
+.mg-collapse-toggle:hover { background: rgba(43,42,74,0.06); color: var(--ink); }
+.mg-collapse-toggle svg { width: 18px; height: 18px; }
 .mg-thread-name { font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 14px; }
 
 .mg-error {
@@ -629,5 +663,6 @@ const CSS = `
   .mg-list--hidden-mobile { display: none; }
   .mg-thread--hidden-mobile { display: none; }
   .mg-back { display: flex; align-items: center; justify-content: center; }
+  .mg-collapse-toggle { display: none; }
 }
 `;
