@@ -13,6 +13,9 @@ import Subscription from './Subscription.jsx'
 import LegalPage from './LegalPage.jsx'
 import FileCabinet from './FileCabinet.jsx'
 import Messenger from './Messenger.jsx'
+import MentorDirectory from './MentorDirectory.jsx'
+import MentorApply from './MentorApply.jsx'
+import MentorAdmin from './MentorAdmin.jsx'
 import ArticleReader from './ArticleReader.jsx'
 import ArticlePlayerPage from './ArticlePlayerPage.jsx'
 import VocabularyPlayerPage from './VocabularyPlayerPage.jsx'
@@ -124,6 +127,9 @@ createRoot(document.getElementById('root')).render(
             <Route path="/library/legal/:doc" element={<LegalPage />} />
             <Route path="/library/files" element={<FileCabinet />} />
             <Route path="/library/messages" element={<Messenger />} />
+            <Route path="/library/mentors" element={<MentorDirectory />} />
+            <Route path="/library/mentors/apply" element={<MentorApply />} />
+            <Route path="/library/admin/mentors" element={<MentorAdmin />} />
             <Route path="/library/forge" element={<ForgeHub />} />
             <Route path="/library/forge/:trackId" element={<ForgeTrack />} />
             <Route path="/library/forge/:trackId/:lessonNum" element={<Forge />} />

@@ -225,7 +225,7 @@ export default function CommunityFeed({ afterStats, focusPostId, onActivity } = 
     setLoadingPosts(true);
     let query = supabase
       .from("community_posts")
-      .select("id, author_id, author_email, author_name, content, post_type, prompt_date, company_id, author_years_teaching, image_url, file_url, file_name, created_at")
+      .select("id, author_id, author_email, author_name, content, post_type, prompt_date, company_id, author_years_teaching, author_is_mentor, image_url, file_url, file_name, created_at")
       .order("created_at", { ascending: false });
     query = scope === "company" && profile?.company_id
       ? query.eq("company_id", profile.company_id)
@@ -261,7 +261,7 @@ export default function CommunityFeed({ afterStats, focusPostId, onActivity } = 
     (async () => {
       const { data } = await supabase
         .from("profiles")
-        .select("company_id, years_teaching, companies(name)")
+        .select("company_id, years_teaching, is_mentor, companies(name)")
         .eq("id", user.id)
         .maybeSingle();
       setProfile(data || null);
@@ -328,6 +328,7 @@ export default function CommunityFeed({ afterStats, focusPostId, onActivity } = 
         post_type: postType,
         company_id: scope === "company" ? profile?.company_id || null : null,
         author_years_teaching: profile?.years_teaching ?? null,
+        author_is_mentor: !!profile?.is_mentor,
         image_url: uploadedImage?.url || null,
         file_url: uploadedFile?.url || null,
         file_name: uploadedFile?.name || null,
@@ -368,7 +369,7 @@ export default function CommunityFeed({ afterStats, focusPostId, onActivity } = 
   async function loadComments(postId) {
     const { data, error } = await supabase
       .from("community_comments")
-      .select("id, post_id, author_id, author_email, author_name, author_years_teaching, content, created_at")
+      .select("id, post_id, author_id, author_email, author_name, author_years_teaching, author_is_mentor, content, created_at")
       .eq("post_id", postId)
       .order("created_at", { ascending: true });
     if (error) console.error("loadComments failed:", error);
@@ -427,6 +428,7 @@ export default function CommunityFeed({ afterStats, focusPostId, onActivity } = 
         author_email: user.email,
         author_name: myName.trim() || null,
         author_years_teaching: profile?.years_teaching ?? null,
+        author_is_mentor: !!profile?.is_mentor,
         content,
         status: "approved",
       })
@@ -605,6 +607,7 @@ export default function CommunityFeed({ afterStats, focusPostId, onActivity } = 
                     {badge && (
                       <img className="cm-badge-icon" src={badge.img} alt={badge.label} title={badge.label} />
                     )}
+                    {p.author_is_mentor && <span className="cm-mentor-tag">Mentor</span>}
                     <span className="cm-post-dot">·</span>
                     <span className="cm-post-time">{timeAgo(p.created_at)}</span>
                     {type && (
@@ -661,6 +664,7 @@ export default function CommunityFeed({ afterStats, focusPostId, onActivity } = 
                             {commentBadge && (
                               <img className="cm-badge-icon cm-badge-icon--xs" src={commentBadge.img} alt={commentBadge.label} title={commentBadge.label} />
                             )}
+                            {c.author_is_mentor && <span className="cm-mentor-tag cm-mentor-tag--xs">Mentor</span>}
                             <span className="cm-comment-time">{timeAgo(c.created_at)}</span>
                           </div>
                           <p className="cm-comment-text">{c.content}</p>
@@ -899,6 +903,12 @@ const CSS = `
 
 .cm-badge-icon { height: 22px; width: auto; display: block; }
 .cm-badge-icon--xs { height: 16px; }
+.cm-mentor-tag {
+  font-family: 'Quicksand', sans-serif; font-weight: 800; font-size: 9.5px; letter-spacing: 0.04em;
+  text-transform: uppercase; color: var(--navy); background: var(--navy-pale);
+  padding: 2px 7px; border-radius: 999px;
+}
+.cm-mentor-tag--xs { font-size: 8.5px; padding: 1px 6px; }
 
 .cm-post-actions { display: flex; align-items: center; gap: 4px; }
 .cm-action-btn {

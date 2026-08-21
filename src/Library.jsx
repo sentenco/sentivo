@@ -1039,6 +1039,7 @@ export default function Library() {
   const [query, setQuery] = useState("");
   const [showAllToday, setShowAllToday] = useState(false);
   const { user, plan, signOut } = useAuth();
+  const isAdmin = user?.email?.toLowerCase() === "caldrin1999@gmail.com";
   const [authMode, setAuthMode] = useState(null);
   const [menuOpen, setMenuOpen] = useState(false);
   const [notifOpen, setNotifOpen] = useState(false);
@@ -1515,6 +1516,10 @@ export default function Library() {
                       <button type="button" className="account-menu-link" onClick={() => { setProfileOpen(true); setMenuOpen(false); }}>Profile</button>
                       <button type="button" className="account-menu-link" onClick={() => { navigate("/library/files"); setMenuOpen(false); }}>File Cabinet</button>
                       <button type="button" className="account-menu-link" onClick={() => { navigate("/library/subscription"); setMenuOpen(false); }}>Subscription</button>
+                      <button type="button" className="account-menu-link" onClick={() => { navigate("/library/mentors"); setMenuOpen(false); }}>Find a Mentor</button>
+                      {isAdmin && (
+                        <button type="button" className="account-menu-link" onClick={() => { navigate("/library/admin/mentors"); setMenuOpen(false); }}>Mentor Applications</button>
+                      )}
                       <button type="button" className="account-menu-link" onClick={() => { navigate("/library/legal/terms"); setMenuOpen(false); }}>Terms & Privacy</button>
                       <a href="mailto:hello@sentivo.com">Help &amp; Support</a>
                       <button className="logout-btn" onClick={() => { signOut(); setMenuOpen(false); }}>Log out</button>

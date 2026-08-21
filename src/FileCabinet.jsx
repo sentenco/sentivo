@@ -96,6 +96,7 @@ export default function FileCabinet() {
   const [shareTarget, setShareTarget] = useState(null);
   const [shareCaption, setShareCaption] = useState("");
   const [deleteTarget, setDeleteTarget] = useState(null);
+  const [ownerNames, setOwnerNames] = useState({});
 
   useEffect(() => {
     if (!user) { setFiles([]); setLoading(false); return; }
@@ -114,6 +115,13 @@ export default function FileCabinet() {
       setError(loadError.message);
     } else {
       setFiles(data || []);
+      if (isAdmin && data?.length) {
+        const ownerIds = [...new Set(data.map((f) => f.owner_id))];
+        const { data: owners } = await supabase.from("profiles").select("id, display_name").in("id", ownerIds);
+        const names = {};
+        (owners || []).forEach((o) => { names[o.id] = o.display_name; });
+        setOwnerNames(names);
+      }
     }
     setLoading(false);
   }
@@ -296,6 +304,7 @@ export default function FileCabinet() {
                           <span className="fc-file-ext">{fileExt(f.file_name)}</span>
                           <button type="button" className="fc-file-name" onClick={() => handleOpen(f)} title="Open">
                             {f.file_name}
+                            {isAdmin && <span className="fc-file-owner"> · {ownerNames[f.owner_id] || "Unknown teacher"}</span>}
                           </button>
                           <span className="fc-file-meta">{formatSize(f.file_size)} · {timeAgo(f.created_at)}</span>
                           {cat.key === "material" && (
@@ -480,6 +489,7 @@ const CSS = `
   white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 }
 .fc-file-name:hover { color: var(--accent); }
+.fc-file-owner { color: var(--muted); font-weight: 600; }
 .fc-file-meta { flex-shrink: 0; font-size: 11px; color: var(--muted); white-space: nowrap; }
 .fc-file-share {
   flex-shrink: 0; font-family: 'Quicksand', sans-serif; font-weight: 700; font-size: 11px;
