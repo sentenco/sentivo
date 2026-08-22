@@ -40,7 +40,7 @@ export default function VocabularyPlayerPage() {
         />
       ) : (
         <WordChoiceGame
-          title={`${game.title} · ${category.title}`}
+          title={`${game.title} · ${category.title}${category.cefrGroup ? ` (${category.cefrGroup})` : ""}`}
           instruction={game.instruction}
           data={category.data}
         />

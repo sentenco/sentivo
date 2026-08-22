@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import SYNONYMS_SET from "./synonymsGameData";
 import ANTONYMS_SET from "./antonymsGameData";
 import SYNONYMS_TOPICS from "./synonymsTopics";
+import SYNONYMS_TOPICS_B1B2 from "./synonymsTopicsB1B2";
+import SYNONYMS_TOPICS_C1C2 from "./synonymsTopicsC1C2";
 import ANTONYMS_TOPICS from "./antonymsTopics";
 import WORD_SORT_PACKS from "./wordSortPacks";
 import ODD_ONE_OUT_PACKS from "./oddOneOutData";
@@ -165,6 +167,7 @@ function GameBanner({ name }) {
 }
 
 const AUDIENCES = ["Kids", "Teens", "Adults"];
+const LEVEL_GROUPS = ["A1-A2", "B1-B2", "C1-C2"];
 
 const TOPICS = [
   { key: "feelings", title: "Feelings & Emotions" },
@@ -178,13 +181,30 @@ const TOPICS = [
 
 export const CATEGORIES_BY_GAME = {
   synonyms: [
-    { key: "sample", title: "Sample Set", blurb: "10 starter words to try the game.", ready: true, data: SYNONYMS_SET },
+    { key: "sample-a1a2", title: "Sample Set", blurb: "10 starter words to try the game.", ready: true, data: SYNONYMS_SET, cefrGroup: "A1-A2" },
     ...TOPICS.map((t) => ({
-      key: t.key,
+      key: `${t.key}-a1a2`,
       title: t.title,
       blurb: "10 words on this topic.",
       ready: true,
       data: SYNONYMS_TOPICS[t.key],
+      cefrGroup: "A1-A2",
+    })),
+    ...TOPICS.map((t) => ({
+      key: `${t.key}-b1b2`,
+      title: t.title,
+      blurb: "10 words on this topic.",
+      ready: true,
+      data: SYNONYMS_TOPICS_B1B2[t.key],
+      cefrGroup: "B1-B2",
+    })),
+    ...TOPICS.map((t) => ({
+      key: `${t.key}-c1c2`,
+      title: t.title,
+      blurb: "10 words on this topic.",
+      ready: true,
+      data: SYNONYMS_TOPICS_C1C2[t.key],
+      cefrGroup: "C1-C2",
     })),
   ],
   antonyms: [
@@ -234,6 +254,7 @@ function openCategoryPlayer(gameKey, categoryKey) {
 
 export default function VocabularyGames() {
   const [gameKey, setGameKey] = useState(null);
+  const [levelTab, setLevelTab] = useState(LEVEL_GROUPS[0]);
 
   // Browser back/forward drives navigation instead of an in-page back
   // button — each drill-down pushes a history entry, popping it here
@@ -250,10 +271,13 @@ export default function VocabularyGames() {
   function openGame(key) {
     window.history.pushState({ vgDepth: 1 }, "");
     setGameKey(key);
+    setLevelTab(LEVEL_GROUPS[0]);
   }
 
   const game = GAME_TYPES.find((g) => g.key === gameKey);
   const categories = gameKey ? CATEGORIES_BY_GAME[gameKey] : [];
+  const hasLevelGroups = categories.some((c) => c.cefrGroup);
+  const levelCategories = hasLevelGroups ? categories.filter((c) => c.cefrGroup === levelTab) : [];
 
   if (game) {
     return (
@@ -267,7 +291,41 @@ export default function VocabularyGames() {
           </div>
           <div className="vg-row"></div>
 
-          {categories.some((c) => c.audience) ? (
+          {hasLevelGroups ? (
+            <>
+              <div className="vg-level-tabs">
+                {LEVEL_GROUPS.filter((lvl) => categories.some((c) => c.cefrGroup === lvl)).map((lvl) => (
+                  <button
+                    key={lvl}
+                    type="button"
+                    className={`vg-level-tab ${levelTab === lvl ? "is-active" : ""}`}
+                    onClick={() => setLevelTab(lvl)}
+                  >
+                    {lvl}
+                  </button>
+                ))}
+              </div>
+              <div className="vg-cat-grid">
+                {levelCategories.map((c) => (
+                  <button
+                    key={c.key}
+                    type="button"
+                    className={`vg-cat-card vg-cat-card--${game.hue} ${c.ready ? "" : "vg-cat-card--soon"}`}
+                    onClick={() => c.ready && openCategoryPlayer(gameKey, c.key)}
+                    disabled={!c.ready}
+                  >
+                    <div className="vg-cat-top">
+                      <span className="vg-cat-icon">{game.icon}</span>
+                      <span className="vg-cat-tag">{c.ready ? "Ready" : "Coming soon"}</span>
+                    </div>
+                    <span className="vg-cat-title">{c.title}</span>
+                    <span className="vg-cat-blurb">{c.blurb}</span>
+                    {c.ready && <span className="vg-cat-cta">Play →</span>}
+                  </button>
+                ))}
+              </div>
+            </>
+          ) : categories.some((c) => c.audience) ? (
             AUDIENCES.filter((aud) => categories.some((c) => c.audience === aud)).map((aud) => (
               <div key={aud} className="vg-audience-group">
                 <span className={`vg-audience-tag vg-audience-tag--${aud.toLowerCase()}`}>{aud}</span>
@@ -433,6 +491,22 @@ const CSS = `
 .vg-audience-tag--kids { color: #B4650F; background: rgba(251,191,36,0.20); }
 .vg-audience-tag--teens { color: #1F9D6E; background: rgba(52,211,153,0.16); }
 .vg-audience-tag--adults { color: #4C3F91; background: rgba(124,92,252,0.14); }
+
+.vg-level-tabs { display: flex; gap: 8px; margin-bottom: 24px; flex-wrap: wrap; justify-content: center; }
+.vg-level-tab {
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 600;
+  font-size: 13px;
+  color: #6B5A66;
+  background: #FFFFFF;
+  border: 1px solid #F5D3E1;
+  border-radius: 999px;
+  padding: 8px 20px;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+.vg-level-tab:hover { border-color: #D6396F; color: #D6396F; }
+.vg-level-tab.is-active { background: #D6396F; border-color: #D6396F; color: #FFFFFF; }
 
 .vg-cat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 260px)); gap: 18px; justify-content: center; width: 100%; }
 .vg-cat-card {
