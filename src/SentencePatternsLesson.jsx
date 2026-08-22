@@ -2,6 +2,32 @@ import { useState } from "react";
 import { useParams } from "react-router-dom";
 import LESSONS, { getLessonByCode } from "./spTracks";
 
+// What each letter in a pattern label (SV, SVOC, etc.) stands for, plus a
+// distinct color per role so the title-page legend reads at a glance --
+// used only on the cover's legend chips, not as a per-lesson theme color
+// (the course itself uses one shared chocolate-brown accent, matching the
+// "soil" color Grammar Garden already assigns this module).
+const ROLE_MEANINGS = {
+  S: { word: "Subject", color: "#E0567A" },
+  V: { word: "Verb", color: "#E8A33D" },
+  O: { word: "Object", color: "#4A90D9" },
+  C: { word: "Complement", color: "#9B5DE5" },
+  A: { word: "Adverbial", color: "#F26430" },
+};
+const ROLE_ORDER = ["S", "V", "O", "C", "A"];
+
+// Pulls the unique set of S/V/O/C/A letters actually used in this
+// lesson's pattern label(s), e.g. "SVA · SVOA" -> [S, V, A, O], in a
+// stable display order regardless of how the patterns themselves order
+// their letters.
+function lettersInPattern(patternLabel) {
+  const set = new Set();
+  for (const ch of patternLabel) {
+    if (ROLE_MEANINGS[ch]) set.add(ch);
+  }
+  return ROLE_ORDER.filter((l) => set.has(l));
+}
+
 function buildSlides(lesson) {
   const slides = ["cover", "warmup"];
   lesson.teach.forEach((_, i) => slides.push(`teach${i}`));
@@ -12,11 +38,19 @@ function buildSlides(lesson) {
 }
 
 function CoverSlide({ lesson }) {
+  const letters = lettersInPattern(lesson.patternLabel);
   return (
     <div className="spl-slide spl-slide--cover">
-      <span className="spl-pattern-badge">{lesson.patternLabel}</span>
-      <h2 className="spl-cover-title">{lesson.title}</h2>
-      <p className="spl-cover-sub">Lesson {lesson.number} of {LESSONS.length}</p>
+      <span className="spl-kind-badge">Lesson Time!</span>
+      <h2 className="spl-cover-title">{lesson.patternLabel}</h2>
+      <p className="spl-cover-sub">{lesson.title} · Lesson {lesson.number} of {LESSONS.length}</p>
+      <div className="spl-legend">
+        {letters.map((l) => (
+          <span key={l} className="spl-legend-chip" style={{ "--role-color": ROLE_MEANINGS[l].color }}>
+            <strong>{l}</strong> = {ROLE_MEANINGS[l].word}
+          </span>
+        ))}
+      </div>
     </div>
   );
 }
@@ -24,8 +58,10 @@ function CoverSlide({ lesson }) {
 function WarmupSlide({ lesson }) {
   return (
     <div className="spl-slide">
-      <h3 className="spl-h">Warm-up</h3>
-      <p className="spl-cover-question">“{lesson.leadIn}”</p>
+      <span className="spl-eyebrow">Warm-up</span>
+      <div className="spl-bubble spl-bubble--solo">
+        <p className="spl-bubble-text spl-bubble-text--big">“{lesson.leadIn}”</p>
+      </div>
     </div>
   );
 }
@@ -38,7 +74,9 @@ function TeachSlide({ lesson, index }) {
       <p className="spl-definition">{concept.definition}</p>
       <div className="spl-example-list">
         {concept.examples.map((ex, i) => (
-          <p key={i} className="spl-example">“{ex}”</p>
+          <div key={i} className="spl-bubble">
+            <p className="spl-bubble-text">{ex}</p>
+          </div>
         ))}
       </div>
     </div>
@@ -48,17 +86,17 @@ function TeachSlide({ lesson, index }) {
 function CompareSlide({ lesson }) {
   return (
     <div className="spl-slide">
-      <h3 className="spl-h">{lesson.compareLeftLabel} vs {lesson.compareRightLabel}</h3>
+      <h3 className="spl-h">{lesson.compareLeftLabel} <span className="spl-vs">vs</span> {lesson.compareRightLabel}</h3>
       <p className="spl-compare-note">{lesson.compareNote}</p>
       <div className="spl-compare-grid">
-        <span className="spl-compare-label">{lesson.compareLeftLabel}</span>
-        <span className="spl-compare-label">{lesson.compareRightLabel}</span>
-        {lesson.comparePairs.map((pair, i) => (
-          <div key={`pair-${i}`} className="spl-compare-row-pair">
-            <p className="spl-compare-cell">{pair.left}</p>
-            <p className="spl-compare-cell spl-compare-cell--right">{pair.right}</p>
-          </div>
-        ))}
+        <div className="spl-panel">
+          <span className="spl-compare-label">{lesson.compareLeftLabel}</span>
+          {lesson.comparePairs.map((pair, i) => <p key={`l-${i}`} className="spl-compare-line">{pair.left}</p>)}
+        </div>
+        <div className="spl-panel spl-panel--right">
+          <span className="spl-compare-label">{lesson.compareRightLabel}</span>
+          {lesson.comparePairs.map((pair, i) => <p key={`r-${i}`} className="spl-compare-line">{pair.right}</p>)}
+        </div>
       </div>
     </div>
   );
@@ -146,6 +184,7 @@ export default function SentencePatternsLesson() {
     <div className="spl-shell">
       <style>{CSS}</style>
       <header className="spl-topbar">
+        <span className="spl-brand"><img src="/logo-sentivo.png" alt="" className="spl-brand-logo" />entivo</span>
         <span className="spl-topbar-title">Lesson {lesson.number} · {lesson.title}</span>
       </header>
 
@@ -156,7 +195,7 @@ export default function SentencePatternsLesson() {
           </div>
           <div className="spl-nav-row">
             <button type="button" className="spl-nav-btn" onClick={() => setSlideIdx((i) => i - 1)} disabled={isFirst}>
-              ← Previous
+              ← Back
             </button>
             <div className="spl-nav-dots">
               {slideTypes.map((_, i) => (
@@ -179,17 +218,20 @@ export default function SentencePatternsLesson() {
 }
 
 const CSS = `
-@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Quicksand:wght@500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:wght@400;700&family=Fredoka:wght@700&display=swap');
 
 .spl-shell {
   width: 100%;
   height: 100vh;
-  background: radial-gradient(circle at 15% 0%, #F2ECE0 0%, #E9DFC9 50%, #DED0AE 100%);
+  background:
+    radial-gradient(#00000012 1.4px, transparent 1.5px) 0 0/16px 16px,
+    #FFF6E9;
   display: flex;
   flex-direction: column;
   align-items: center;
   box-sizing: border-box;
   overflow: hidden;
+  font-family: 'Comic Neue', cursive, sans-serif;
 }
 .spl-shell * { box-sizing: border-box; }
 
@@ -198,16 +240,27 @@ const CSS = `
   max-width: 1120px;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   padding: 14px 24px 0;
   flex-shrink: 0;
 }
+.spl-brand {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: 0.01em;
+  color: #2B2A4A;
+}
+.spl-brand-logo { height: 24px; width: auto; display: block; margin-right: -4px; }
 .spl-topbar-title {
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'Comic Neue', cursive, sans-serif;
   font-weight: 700;
   font-size: 12px;
   letter-spacing: 0.5px;
-  color: #7A6042;
+  color: #6B5B3D;
 }
 
 .spl-stage {
@@ -221,8 +274,8 @@ const CSS = `
 }
 
 .spl-missing {
-  font-family: 'Quicksand', sans-serif;
-  color: #7A6042;
+  font-family: 'Comic Neue', cursive, sans-serif;
+  color: #6B5B3D;
   text-align: center;
   margin-top: 60px;
 }
@@ -232,10 +285,10 @@ const CSS = `
   display: flex;
   flex-direction: column;
   background: #FFFFFF;
-  border: 1px solid #E4D6BF;
-  border-radius: 22px;
+  border: 4px solid #1A1A1A;
+  border-radius: 18px;
   padding: 20px 56px;
-  box-shadow: 0 20px 50px rgba(74,54,32,0.14);
+  box-shadow: 9px 9px 0 #1A1A1A;
   min-height: 0;
 }
 
@@ -248,130 +301,162 @@ const CSS = `
   text-align: center;
   min-height: 0;
   overflow-y: auto;
-  gap: 22px;
+  gap: 20px;
   padding: 8px 0;
 }
 
-.spl-slide { display: flex; flex-direction: column; align-items: center; gap: 18px; width: 100%; }
-.spl-slide--cover { gap: 16px; }
+.spl-slide { display: flex; flex-direction: column; align-items: center; gap: 16px; width: 100%; }
+.spl-slide--cover { gap: 14px; }
 .spl-slide--part { justify-content: flex-start; }
 
-.spl-pattern-badge {
-  font-family: 'Quicksand', sans-serif;
+.spl-eyebrow {
+  font-family: 'Comic Neue', cursive, sans-serif;
   font-weight: 700;
-  font-size: 13px;
-  letter-spacing: 0.8px;
+  font-size: 12px;
+  letter-spacing: 1.4px;
   text-transform: uppercase;
-  color: #B0662E;
-  background: rgba(176,102,46,0.12);
-  border-radius: 999px;
-  padding: 6px 16px;
-}
-.spl-cover-title {
-  font-family: 'Fredoka', sans-serif;
-  font-weight: 700;
-  font-size: 52px;
-  color: #4A3620;
-  margin: 0;
-  line-height: 1.05;
-}
-.spl-cover-sub {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 600;
-  font-size: 16px;
-  color: #8A6748;
-  margin: 0;
-}
-.spl-cover-question {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 700;
-  font-size: 32px;
-  font-style: italic;
-  color: #4A3620;
-  margin: 0;
-  max-width: 780px;
-  line-height: 1.3;
+  color: #8B5E34;
 }
 
-.spl-h {
-  font-family: 'Fredoka', sans-serif;
+.spl-kind-badge {
+  font-family: 'Bangers', cursive;
+  font-weight: 400;
+  font-size: 18px;
+  letter-spacing: 0.5px;
+  color: #FFFFFF;
+  background: #8B5E34;
+  border: 3px solid #1A1A1A;
+  border-radius: 999px;
+  padding: 4px 18px 6px;
+  transform: rotate(-3deg);
+  display: inline-block;
+}
+.spl-cover-title {
+  font-family: 'Bangers', cursive;
+  font-weight: 400;
+  font-size: 64px;
+  color: #1A1A1A;
+  margin: 4px 0 0;
+  line-height: 1;
+  letter-spacing: 1px;
+  text-shadow: 3px 3px 0 #8B5E34;
+}
+.spl-cover-sub {
+  font-family: 'Comic Neue', cursive, sans-serif;
   font-weight: 700;
-  font-size: 30px;
-  color: #4A3620;
+  font-size: 14px;
+  color: #8A7B5C;
   margin: 0;
+}
+
+.spl-legend { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-top: 4px; max-width: 640px; }
+.spl-legend-chip {
+  font-family: 'Comic Neue', cursive, sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  color: #1A1A1A;
+  background: #FFF6E9;
+  border: 2.5px solid var(--role-color);
+  border-radius: 999px;
+  padding: 6px 14px;
+}
+.spl-legend-chip strong { color: var(--role-color); font-family: 'Bangers', cursive; font-weight: 400; font-size: 16px; letter-spacing: 0.3px; }
+
+.spl-h {
+  font-family: 'Bangers', cursive;
+  font-weight: 400;
+  font-size: 32px;
+  color: #1A1A1A;
+  margin: 0;
+  letter-spacing: 0.5px;
+}
+.spl-vs {
+  display: inline-block;
+  background: #FFC300;
+  border: 2.5px solid #1A1A1A;
+  border-radius: 8px;
+  padding: 0 8px;
+  transform: rotate(-4deg);
+  font-size: 0.65em;
+  vertical-align: middle;
 }
 
 .spl-definition {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 600;
-  font-size: 24px;
-  color: #5C4630;
-  line-height: 1.5;
+  font-family: 'Comic Neue', cursive, sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  color: #3A3226;
+  line-height: 1.55;
   margin: 0;
-  max-width: 760px;
+  max-width: 700px;
 }
 
-.spl-example-list { display: flex; flex-direction: column; gap: 10px; width: 100%; max-width: 640px; }
-.spl-example {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 500;
+.spl-bubble {
+  position: relative;
+  background: #FFFFFF;
+  border: 3px solid #8B5E34;
+  border-radius: 18px;
+  padding: 12px 20px;
+  max-width: 560px;
+  align-self: center;
+}
+.spl-bubble--solo { max-width: 720px; }
+.spl-bubble-text {
+  font-family: 'Comic Neue', cursive, sans-serif;
+  font-weight: 700;
   font-size: 18px;
-  font-style: italic;
-  color: #4A3620;
-  background: #F7F1E6;
-  border-radius: 10px;
-  padding: 10px 16px;
+  color: #1A1A1A;
   margin: 0;
 }
+.spl-bubble-text--big { font-size: 24px; font-style: italic; }
+
+.spl-example-list { display: flex; flex-direction: column; gap: 12px; width: 100%; max-width: 620px; align-items: center; }
 
 .spl-compare-note {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 500;
-  font-size: 16px;
-  color: #7A6042;
-  margin: 0;
-  max-width: 640px;
-}
-.spl-compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 16px; width: 100%; max-width: 720px; }
-.spl-compare-label {
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'Comic Neue', cursive, sans-serif;
   font-weight: 700;
-  font-size: 12.5px;
-  text-transform: uppercase;
-  letter-spacing: 0.4px;
-  color: #B0662E;
-}
-.spl-compare-row-pair { display: contents; }
-.spl-compare-cell {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 500;
-  font-size: 16.5px;
-  color: #5C4630;
-  background: #F7F1E6;
-  border-radius: 10px;
-  padding: 10px 14px;
+  font-size: 15px;
+  color: #6B5B3D;
   margin: 0;
-  text-align: left;
+  max-width: 620px;
 }
-.spl-compare-cell--right { color: #4A3620; font-weight: 600; }
+.spl-compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; width: 100%; max-width: 700px; }
+.spl-panel { background: #FFF6E9; border: 3px solid #1A1A1A; border-radius: 14px; padding: 14px 16px; text-align: left; }
+.spl-panel--right { border-color: #8B5E34; }
+.spl-compare-label {
+  display: block;
+  font-family: 'Bangers', cursive;
+  font-weight: 400;
+  font-size: 15px;
+  letter-spacing: 0.3px;
+  color: #6B5B3D;
+  margin-bottom: 8px;
+}
+.spl-compare-line {
+  font-family: 'Comic Neue', cursive, sans-serif;
+  font-weight: 700;
+  font-size: 14.5px;
+  color: #1A1A1A;
+  margin: 0 0 8px;
+}
 
 .spl-list {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 500;
-  font-size: 16.5px;
-  color: #5C4630;
-  line-height: 1.55;
+  font-family: 'Comic Neue', cursive, sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  color: #3A3226;
+  line-height: 1.6;
   margin: 0;
   padding-left: 20px;
 }
-.spl-speaking-list { max-width: 720px; font-size: 19px; text-align: left; }
+.spl-speaking-list { max-width: 720px; font-size: 18px; text-align: left; }
 .spl-speaking-list li { margin-bottom: 8px; }
 
 .spl-recap-line {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 500;
-  font-size: 19px;
-  color: #5C4630;
+  font-family: 'Comic Neue', cursive, sans-serif;
+  font-weight: 700;
+  font-size: 17px;
+  color: #3A3226;
   line-height: 1.5;
   margin: 0;
   max-width: 700px;
@@ -380,62 +465,67 @@ const CSS = `
 .spl-quiz-list {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 12px;
   width: 100%;
   max-width: 840px;
   text-align: left;
 }
 .spl-quiz-item {
-  background: #F7F1E6;
-  border-radius: 12px;
+  background: #FFF6E9;
+  border: 3px solid #1A1A1A;
+  border-radius: 14px;
   padding: 14px 18px;
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 .spl-quiz-q {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 600;
-  font-size: 18px;
-  color: #4A3620;
+  font-family: 'Comic Neue', cursive, sans-serif;
+  font-weight: 700;
+  font-size: 17px;
+  color: #1A1A1A;
   margin: 0;
 }
 
 .spl-reveal-btn {
   align-self: flex-start;
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'Comic Neue', cursive, sans-serif;
   font-weight: 700;
-  font-size: 14px;
-  color: #B0662E;
-  background: #FFFFFF;
-  border: 1.5px solid #E4D6BF;
-  border-radius: 999px;
-  padding: 7px 16px;
+  font-size: 13.5px;
+  color: #1A1A1A;
+  background: #FFC300;
+  border: 2.5px solid #1A1A1A;
+  border-radius: 8px;
+  padding: 6px 14px;
   cursor: pointer;
+  box-shadow: 3px 3px 0 #1A1A1A;
 }
+.spl-reveal-btn:active { box-shadow: 0 0 0 #1A1A1A; transform: translate(3px, 3px); }
 .spl-reveal-correct {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 600;
-  font-size: 17px;
-  color: #1F6B41;
+  font-family: 'Comic Neue', cursive, sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  color: #1F8A63;
   margin: 0;
 }
 
-.spl-nav-row { display: flex; align-items: center; justify-content: space-between; padding-top: 14px; border-top: 1px solid #F2ECE0; flex-shrink: 0; }
+.spl-nav-row { display: flex; align-items: center; justify-content: space-between; padding-top: 14px; border-top: 3px dashed #E4D5B0; flex-shrink: 0; }
 .spl-nav-btn {
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'Comic Neue', cursive, sans-serif;
   font-weight: 700;
   font-size: 14px;
-  color: #4A3620;
-  background: #F7F1E6;
-  border: 1px solid #E4D6BF;
-  border-radius: 999px;
+  color: #1A1A1A;
+  background: #FFFFFF;
+  border: 2.5px solid #1A1A1A;
+  border-radius: 10px;
   padding: 9px 18px;
   cursor: pointer;
+  box-shadow: 4px 4px 0 #1A1A1A;
 }
-.spl-nav-btn--primary { background: #B0662E; color: #FFFFFF; border-color: #B0662E; }
-.spl-nav-btn:disabled { opacity: 0.35; cursor: default; }
-.spl-nav-dots { display: flex; flex-wrap: wrap; justify-content: center; gap: 5px; max-width: 340px; }
-.spl-nav-dot { width: 6px; height: 6px; border-radius: 999px; background: #E4D6BF; }
-.spl-nav-dot.is-active { width: 16px; background: #B0662E; }
+.spl-nav-btn:active:not(:disabled) { box-shadow: 0 0 0 #1A1A1A; transform: translate(4px, 4px); }
+.spl-nav-btn--primary { background: #FFC300; }
+.spl-nav-btn:disabled { opacity: 0.35; cursor: default; box-shadow: 4px 4px 0 #1A1A1A; }
+.spl-nav-dots { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; max-width: 340px; }
+.spl-nav-dot { width: 8px; height: 8px; border-radius: 50%; background: #FFFFFF; border: 2px solid #1A1A1A; }
+.spl-nav-dot.is-active { background: #8B5E34; }
 `;
