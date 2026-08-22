@@ -2556,7 +2556,7 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .gdn-sub { font-family: 'Comic Neue', cursive, sans-serif; font-weight: 700; font-size: clamp(13px, 1.1vw, 15px); color: #3A3226; margin: 0 auto; max-width: 460px; }
 .gdn-row { position: relative; height: 0; border-top: 3px dashed #E4D5B0; margin: clamp(26px, 3vw, 36px) 0; }
 
-.gdn-beds { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(16px, 2vw, 24px); }
+.gdn-beds { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: clamp(16px, 2vw, 24px); }
 .gdn-bed {
   position: relative;
   display: flex;
@@ -2608,7 +2608,13 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .gdn-bed--empty { cursor: default; opacity: 0.7; }
 .gdn-bed--empty .gdn-bed-cta { color: #6B5C3E; }
 
-@media (max-width: 700px) {
+@media (max-width: 900px) {
+  .gdn-beds { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (max-width: 620px) {
+  .gdn-beds { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 420px) {
   .gdn-beds { grid-template-columns: 1fr; }
 }
 
