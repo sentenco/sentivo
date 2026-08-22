@@ -345,115 +345,6 @@ function ArticlesFeature({ navigate, query }) {
   );
 }
 
-function GrammarBanner({ name }) {
-  const banners = {
-    // Parts of Speech: labeled plant markers in a bed — every word gets
-    // tagged with what kind of word it is.
-    partsOfSpeech: (
-      <>
-        <defs>
-          <linearGradient id="gdnb-pos-bg" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0" stopColor="#EBF5EC" />
-            <stop offset="1" stopColor="#D5EAD8" />
-          </linearGradient>
-          <linearGradient id="gdnb-pos-soil" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stopColor="#9E7A54" />
-            <stop offset="1" stopColor="#6B4E32" />
-          </linearGradient>
-          <filter id="gdnb-pos-shadow" x="-40%" y="-40%" width="180%" height="180%">
-            <feDropShadow dx="0" dy="5" stdDeviation="5" floodColor="#2E6E3D" floodOpacity="0.2" />
-          </filter>
-        </defs>
-        <rect width="320" height="140" fill="url(#gdnb-pos-bg)" />
-        <rect x="0" y="112" width="320" height="28" fill="url(#gdnb-pos-soil)" />
-        <g filter="url(#gdnb-pos-shadow)">
-          <rect x="95" y="86" width="8" height="30" rx="3" fill="#E3A73C" />
-          <rect x="86" y="72" width="26" height="16" rx="4" fill="#FFFFFF" />
-          <rect x="155" y="76" width="8" height="40" rx="3" fill="#4C9A5D" />
-          <rect x="144" y="58" width="30" height="18" rx="4" fill="#FFFFFF" />
-          <rect x="219" y="92" width="8" height="24" rx="3" fill="#D4453A" />
-          <rect x="209" y="78" width="28" height="16" rx="4" fill="#FFFFFF" />
-        </g>
-        <circle cx="99" cy="80" r="3" fill="#E3A73C" />
-        <circle cx="159" cy="66" r="3" fill="#4C9A5D" />
-        <circle cx="223" cy="86" r="3" fill="#D4453A" />
-        <path d="M60 112 Q60 96 74 92" fill="none" stroke="#4C9A5D" strokeWidth="3" strokeLinecap="round" />
-        <circle cx="74" cy="90" r="7" fill="#6EBB80" />
-        <path d="M260 112 Q260 92 248 86" fill="none" stroke="#4C9A5D" strokeWidth="3" strokeLinecap="round" />
-        <circle cx="248" cy="84" r="7" fill="#6EBB80" />
-      </>
-    ),
-    // Verb Tenses: the same plant across three growth stages, past to
-    // future, tracing one arc through time.
-    verbTenses: (
-      <>
-        <defs>
-          <linearGradient id="gdnb-vt-bg" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0" stopColor="#FBF3E1" />
-            <stop offset="1" stopColor="#F5E3BC" />
-          </linearGradient>
-          <linearGradient id="gdnb-vt-soil" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stopColor="#9E7A54" />
-            <stop offset="1" stopColor="#6B4E32" />
-          </linearGradient>
-          <filter id="gdnb-vt-shadow" x="-40%" y="-40%" width="180%" height="180%">
-            <feDropShadow dx="0" dy="5" stdDeviation="5" floodColor="#96631C" floodOpacity="0.2" />
-          </filter>
-        </defs>
-        <rect width="320" height="140" fill="url(#gdnb-vt-bg)" />
-        <path d="M60 46 Q160 -6 260 46" fill="none" stroke="#E3A73C" strokeWidth="2.5" strokeDasharray="2 8" strokeLinecap="round" />
-        <circle cx="260" cy="46" r="12" fill="#FFC55C" />
-        <rect x="0" y="112" width="320" height="28" fill="url(#gdnb-vt-soil)" />
-        <g filter="url(#gdnb-vt-shadow)">
-          <rect x="72" y="104" width="6" height="10" fill="#5C8A63" />
-          <circle cx="75" cy="100" r="7" fill="#7FBF8C" />
-          <rect x="156" y="90" width="7" height="24" fill="#4C9A5D" />
-          <path d="M159 90 Q145 82 148 68 Q159 72 159 90 Z" fill="#4C9A5D" />
-          <path d="M159 90 Q173 82 170 68 Q159 72 159 90 Z" fill="#5CAE6C" />
-          <rect x="238" y="70" width="8" height="44" fill="#2E6E3D" />
-          <path d="M242 70 Q222 60 226 40 Q242 46 242 70 Z" fill="#2E6E3D" />
-          <path d="M242 70 Q262 60 258 40 Q242 46 242 70 Z" fill="#4C9A5D" />
-          <circle cx="242" cy="38" r="9" fill="#FFFFFF" />
-          <circle cx="242" cy="38" r="4" fill="#E3A73C" />
-        </g>
-      </>
-    ),
-    // Sentence Structure: a lattice trellis holding up a climbing vine —
-    // clauses supported by a shared frame.
-    sentenceStructure: (
-      <>
-        <defs>
-          <linearGradient id="gdnb-ss-bg" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0" stopColor="#F2ECE0" />
-            <stop offset="1" stopColor="#E4D6BF" />
-          </linearGradient>
-          <filter id="gdnb-ss-shadow" x="-40%" y="-40%" width="180%" height="180%">
-            <feDropShadow dx="0" dy="4" stdDeviation="4" floodColor="#5C452F" floodOpacity="0.2" />
-          </filter>
-        </defs>
-        <rect width="320" height="140" fill="url(#gdnb-ss-bg)" />
-        <rect x="0" y="120" width="320" height="20" fill="#8A6748" />
-        <g filter="url(#gdnb-ss-shadow)" stroke="#8A6748" strokeWidth="7" strokeLinecap="round">
-          <line x1="120" y1="18" x2="120" y2="122" />
-          <line x1="200" y1="18" x2="200" y2="122" />
-          <line x1="90" y1="42" x2="230" y2="42" />
-          <line x1="90" y1="82" x2="230" y2="82" />
-        </g>
-        <path d="M120 122 C110 90 130 70 120 42 C112 20 128 10 130 4" fill="none" stroke="#4C9A5D" strokeWidth="4" strokeLinecap="round" />
-        <circle cx="126" cy="98" r="8" fill="#6EBB80" />
-        <circle cx="116" cy="60" r="8" fill="#5CAE6C" />
-        <circle cx="128" cy="24" r="9" fill="#7FBF8C" />
-        <circle cx="200" cy="70" r="7" fill="#4C9A5D" opacity="0.7" />
-      </>
-    ),
-  };
-  return (
-    <svg className="gdn-bed-banner" viewBox="0 0 320 140" xmlns="http://www.w3.org/2000/svg">
-      {banners[name] || <rect width="320" height="140" fill="#EDE7D9" />}
-    </svg>
-  );
-}
-
 const GRAMMAR_MODULES = [
   { num: "BED 01", banner: "partsOfSpeech", title: "Parts of Speech", spec: "8 word classes across 6 topics. One Lesson, one Assessment each. A1–C2.", href: "/library/grammar/parts-of-speech", ready: true, hue: "leaf" },
   { num: "BED 02", banner: "verbTenses", title: "Verb Tenses", spec: "All 12 English tenses. One Discussion, one Test lesson each. A1–C2.", href: "/library/grammar/verb-tenses", ready: true, hue: "gold" },
@@ -498,21 +389,13 @@ function GrammarFeature({ navigate, query }) {
               className={`gdn-bed gdn-bed--${m.hue}`}
               onClick={(e) => { e.preventDefault(); navigate(m.href); }}
             >
-              <GrammarBanner name={m.banner} />
-              <div className="gdn-bed-body">
-                <h3 className="gdn-bed-title">{m.title}</h3>
-                <p className="gdn-bed-spec">{m.spec}</p>
-                <span className="gdn-bed-cta">Open →</span>
-              </div>
+              <h3 className="gdn-bed-title">{m.title}</h3>
+              <span className="gdn-bed-cta">Open →</span>
             </a>
           ) : (
             <div key={m.num} className={`gdn-bed gdn-bed--${m.hue} gdn-bed--empty`}>
-              <GrammarBanner name={m.banner} />
-              <div className="gdn-bed-body">
-                <h3 className="gdn-bed-title">{m.title}</h3>
-                <p className="gdn-bed-spec">{m.spec}</p>
-                <span className="gdn-bed-cta">Coming soon</span>
-              </div>
+              <h3 className="gdn-bed-title">{m.title}</h3>
+              <span className="gdn-bed-cta">Coming soon</span>
             </div>
           )
         )}
@@ -2658,35 +2541,47 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .gdn-row::before { left: 0; }
 .gdn-row::after { right: 0; }
 
-.gdn-beds { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(14px, 1.8vw, 22px); }
+.gdn-beds { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(16px, 2vw, 24px); }
 .gdn-bed {
   position: relative;
   display: flex;
   flex-direction: column;
-  background: #FFFFFF;
-  border-radius: 16px;
-  overflow: hidden;
-  box-shadow: 0 10px 26px rgba(51,41,26,0.12);
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  min-height: 176px;
+  border-radius: 26px;
+  padding: 28px 22px;
+  text-align: center;
   text-decoration: none;
   cursor: pointer;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  box-shadow: 0 10px 0 rgba(0,0,0,0.12), 0 16px 30px rgba(51,41,26,0.16);
+  transition: transform 0.22s cubic-bezier(.34,1.56,.64,1), box-shadow 0.22s ease;
 }
-.gdn-bed:hover { transform: translateY(-4px); box-shadow: 0 18px 36px rgba(51,41,26,0.18); }
-.gdn-bed-banner { display: block; width: 100%; height: auto; flex-shrink: 0; }
+.gdn-bed:hover { transform: translateY(-5px) rotate(-1deg) scale(1.02); box-shadow: 0 12px 0 rgba(0,0,0,0.12), 0 22px 38px rgba(51,41,26,0.2); }
+.gdn-bed:active { transform: translateY(1px) scale(0.98); box-shadow: 0 4px 0 rgba(0,0,0,0.12), 0 8px 16px rgba(51,41,26,0.16); }
 
-.gdn-bed-body { display: flex; flex-direction: column; flex: 1; padding: 20px 20px 22px; }
-.gdn-bed-title { font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: clamp(19px, 1.9vw, 22px); margin: 0 0 8px; color: #221B10; }
-.gdn-bed-spec { font-family: 'Quicksand', sans-serif; font-size: 12.5px; color: #6B5C3E; line-height: 1.5; margin: 0 0 18px; }
-.gdn-bed-cta {
-  display: block; text-align: center;
-  font-family: 'Quicksand', sans-serif; font-size: 12.5px; font-weight: 700;
-  color: #FFFFFF; border-radius: 8px; padding: 10px 0;
-  margin-top: auto;
+.gdn-bed--leaf { background: linear-gradient(155deg, #7BCB8C 0%, var(--leaf) 100%); }
+.gdn-bed--gold { background: linear-gradient(155deg, #F3C878 0%, var(--gold) 100%); }
+.gdn-bed--soil { background: linear-gradient(155deg, #B1875E 0%, var(--soil) 100%); }
+
+.gdn-bed-title {
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 700;
+  font-size: clamp(21px, 2.3vw, 26px);
+  margin: 0;
+  color: #FFFFFF;
+  line-height: 1.2;
+  text-shadow: 0 2px 0 rgba(0,0,0,0.1);
 }
-.gdn-bed--leaf .gdn-bed-cta { background: var(--leaf); }
-.gdn-bed--gold .gdn-bed-cta { background: var(--gold); }
-.gdn-bed--soil .gdn-bed-cta { background: var(--soil); }
+.gdn-bed-cta {
+  display: inline-block;
+  font-family: 'Quicksand', sans-serif; font-size: 13.5px; font-weight: 800;
+  color: #221B10; background: #FFFFFF;
+  border-radius: 999px; padding: 9px 22px;
+}
 .gdn-bed--empty { cursor: default; opacity: 0.7; }
+.gdn-bed--empty .gdn-bed-cta { color: #6B5C3E; }
 
 @media (max-width: 700px) {
   .gdn-beds { grid-template-columns: 1fr; }
