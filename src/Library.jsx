@@ -350,6 +350,7 @@ const GRAMMAR_MODULES = [
   { num: "BED 02", banner: "verbTenses", title: "Verb Tenses", spec: "All 12 English tenses. One Discussion, one Test lesson each. A1–C2.", href: "/library/grammar/verb-tenses", ready: true, hue: "gold" },
   { num: "BED 03", banner: "sentenceStructure", title: "Sentence Patterns", spec: "The 7 core patterns — SV to SVOC — across 6 lessons, each with practice and a built-in assessment. A1–C2.", href: "/library/grammar/sentence-patterns", ready: true, hue: "soil" },
   { num: "BED 04", banner: "modals", title: "Modals", spec: "9 core modal verbs — can to shall — grouped by function across 7 lessons, each teach-practice-wrap in one sitting. A1–C2.", href: "/library/grammar/modals", ready: true, hue: "sky" },
+  { num: "BED 05", banner: "conditionals", title: "Conditionals", spec: "The 5 conditional types — Zero to Mixed — across 5 lessons, each teach-practice-wrap in one sitting. A1–C2.", href: "/library/grammar/conditionals", ready: true, hue: "berry" },
 ];
 const GRAMMAR_PER_PAGE = 8;
 
@@ -2512,6 +2513,7 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   --gold: #E3A73C; --gold-deep: #96631C;
   --soil: #8A6748; --soil-deep: #5C452F;
   --sky: #3E7CB8; --sky-deep: #275C8C;
+  --berry: #C2255C; --berry-deep: #8A1A41;
   width: 100%;
   max-width: 1080px;
   margin: 0 auto;
@@ -2584,6 +2586,7 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .gdn-bed--gold { background: linear-gradient(155deg, #F3C878 0%, var(--gold) 100%); }
 .gdn-bed--soil { background: linear-gradient(155deg, #B1875E 0%, var(--soil) 100%); }
 .gdn-bed--sky { background: linear-gradient(155deg, #7FB3E0 0%, var(--sky) 100%); }
+.gdn-bed--berry { background: linear-gradient(155deg, #EE7FA3 0%, var(--berry) 100%); }
 
 .gdn-bed-title {
   font-family: 'Bangers', cursive;
