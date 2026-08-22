@@ -2,58 +2,57 @@ import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { getLessonByCode } from "./posTracks";
 
-// One signature color per real part of speech, used sparingly -- as a
-// mark and an underline, never as a filled card background. Sub-forms of
-// the same POS (Action/Being verb, Coordinating/Subordinating
-// conjunction) share their parent's color; the two "contrast" topics
-// (Nouns vs Pronouns, Adjectives vs Adverbs) use two different colors on
-// purpose, so the contrast reads at a glance. Colors are muted jewel
-// tones, not pastel/candy, to sit quietly on paper.
+// Comic-book theme: "parts of SPEECH" taught through actual speech
+// bubbles, panel borders, and SFX-style call-outs. One bold signature
+// color per real part of speech. Sub-forms of the same POS (Action/Being
+// verb, Coordinating/Subordinating conjunction) share their parent's
+// color; the two "contrast" topics (Nouns vs Pronouns, Adjectives vs
+// Adverbs) use two different colors on purpose, so the contrast pops.
 const POS_COLORS = {
-  noun: "#B84A2E",
-  pronoun: "#8B4570",
-  verb: "#B8791A",
-  adjective: "#1F6E64",
-  adverb: "#2E6A8A",
-  preposition: "#4A4E9E",
-  conjunction: "#5B4B8A",
-  interjection: "#A62F55",
+  noun: "#ED1C24",
+  pronoun: "#FF3D8E",
+  verb: "#FF8A00",
+  adjective: "#2EC4B6",
+  adverb: "#00B4D8",
+  preposition: "#3A86FF",
+  conjunction: "#8338EC",
+  interjection: "#FFC300",
 };
 
-// Each part of speech also gets a small geometric mark instead of relying
-// on color alone -- echoes real grammar-teaching symbol systems
-// (Montessori grammar uses shapes per word class). The shapes are chosen
-// to reinforce family relationships: noun/pronoun share the circle family
-// (pronoun's is hollow, standing in for the noun), adjective/adverb share
-// the square family (adverb's is rotated into a diamond).
+// Small badge glyph per part of speech, worn like a pin -- shape
+// families reinforce relationships: noun/pronoun share the circle family
+// (pronoun's is hollow), adjective/adverb share the square family
+// (adverb's is rotated into a diamond).
 function PosMark({ posKey }) {
   const shapes = {
-    noun: <circle cx="10" cy="10" r="6.5" fill="currentColor" />,
-    pronoun: <circle cx="10" cy="10" r="6.5" fill="none" stroke="currentColor" strokeWidth="2.2" />,
-    verb: <path d="M5 3 L16.5 10 L5 17 Z" fill="currentColor" />,
-    adjective: <rect x="4" y="4" width="12" height="12" fill="currentColor" />,
-    adverb: <rect x="4.5" y="4.5" width="11" height="11" fill="currentColor" transform="rotate(45 10 10)" />,
+    noun: <circle cx="12" cy="12" r="7" fill="#fff" />,
+    pronoun: <circle cx="12" cy="12" r="7" fill="none" stroke="#fff" strokeWidth="3" />,
+    verb: <path d="M6 4 L20 12 L6 20 Z" fill="#fff" />,
+    adjective: <rect x="5" y="5" width="14" height="14" fill="#fff" />,
+    adverb: <rect x="5.5" y="5.5" width="13" height="13" fill="#fff" transform="rotate(45 12 12)" />,
     preposition: (
       <>
-        <line x1="4" y1="16" x2="16" y2="4" stroke="currentColor" strokeWidth="2" />
-        <circle cx="4" cy="16" r="2.3" fill="currentColor" />
-        <circle cx="16" cy="4" r="2.3" fill="currentColor" />
+        <line x1="5" y1="19" x2="19" y2="5" stroke="#fff" strokeWidth="2.6" />
+        <circle cx="5" cy="19" r="2.6" fill="#fff" />
+        <circle cx="19" cy="5" r="2.6" fill="#fff" />
       </>
     ),
-    conjunction: <path d="M10 3 V17 M3 10 H17" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" />,
+    conjunction: <path d="M12 4 V20 M4 12 H20" stroke="#fff" strokeWidth="3" strokeLinecap="round" />,
     interjection: (
-      <g stroke="currentColor" strokeWidth="2.2" strokeLinecap="round">
-        <line x1="10" y1="2" x2="10" y2="18" />
-        <line x1="2" y1="10" x2="18" y2="10" />
-        <line x1="4.6" y1="4.6" x2="15.4" y2="15.4" />
-        <line x1="15.4" y1="4.6" x2="4.6" y2="15.4" />
+      <g stroke="#fff" strokeWidth="2.6" strokeLinecap="round">
+        <line x1="12" y1="3" x2="12" y2="21" />
+        <line x1="3" y1="12" x2="21" y2="12" />
+        <line x1="5.5" y1="5.5" x2="18.5" y2="18.5" />
+        <line x1="18.5" y1="5.5" x2="5.5" y2="18.5" />
       </g>
     ),
   };
   return (
-    <svg className="posl-mark" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      {shapes[posKey] || shapes.noun}
-    </svg>
+    <span className="posl-badge">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        {shapes[posKey] || shapes.noun}
+      </svg>
+    </span>
   );
 }
 
@@ -73,12 +72,11 @@ function buildAssessmentSlides(lesson) {
 }
 
 // Turns "The boy **runs** fast." into the sentence with the target word
-// underlined in the concept's accent color, instead of bold+colored text
-// -- a mark, not a repaint, so only one visual device carries the color.
+// stamped in a little highlighter-marker sticker instead of plain text.
 function ExampleLine({ text }) {
   const parts = text.split(/(\*\*[^*]+\*\*)/g);
   return (
-    <p className="posl-example">
+    <p className="posl-bubble-text">
       {parts.map((part, i) =>
         part.startsWith("**") && part.endsWith("**") ? (
           <strong key={i} className="posl-target">{part.slice(2, -2)}</strong>
@@ -93,10 +91,9 @@ function ExampleLine({ text }) {
 function CoverSlide({ topic, lesson }) {
   return (
     <div className="posl-slide posl-slide--cover">
-      <span className="posl-kind-badge">{lesson.kind}</span>
+      <span className="posl-kind-badge">{lesson.kind === "Lesson" ? "Lesson!" : "Quiz Time!"}</span>
       <h2 className="posl-cover-title">{lesson.title}</h2>
       <p className="posl-cover-sub">Topic {topic.number} of 6</p>
-      <div className="posl-rule" />
       <p className="posl-cover-line">{lesson.kind === "Lesson" ? lesson.objective : lesson.testGoal}</p>
     </div>
   );
@@ -105,8 +102,10 @@ function CoverSlide({ topic, lesson }) {
 function WarmupSlide({ lesson }) {
   return (
     <div className="posl-slide">
-      <span className="posl-eyebrow">Warm-up</span>
-      <p className="posl-cover-question">“{lesson.leadIn}”</p>
+      <h3 className="posl-h">Warm-up!</h3>
+      <div className="posl-bubble posl-bubble--solo">
+        <p className="posl-bubble-text posl-bubble-text--big">“{lesson.leadIn}”</p>
+      </div>
     </div>
   );
 }
@@ -116,13 +115,17 @@ function ConceptSlide({ lesson, index }) {
   const accent = POS_COLORS[concept.color] || POS_COLORS.noun;
   return (
     <div className="posl-slide posl-concept" style={{ "--pos-accent": accent }}>
-      <div className="posl-concept-head">
+      <div className="posl-tag">
         <PosMark posKey={concept.color} />
-        <span className="posl-concept-name">{concept.name}</span>
+        <span className="posl-tag-name">{concept.name}</span>
       </div>
       <p className="posl-definition">{concept.definition}</p>
       <div className="posl-example-list">
-        {concept.examples.map((ex, i) => <ExampleLine key={i} text={ex} />)}
+        {concept.examples.map((ex, i) => (
+          <div key={i} className="posl-bubble">
+            <ExampleLine text={ex} />
+          </div>
+        ))}
       </div>
     </div>
   );
@@ -134,12 +137,14 @@ function MistakeSlide({ lesson, index }) {
   const accent = POS_COLORS[concept.color] || POS_COLORS.noun;
   return (
     <div className="posl-slide posl-mistake" style={{ "--pos-accent": accent }}>
-      <div className="posl-mistake-head">
+      <div className="posl-tag posl-tag--small">
         <PosMark posKey={concept.color} />
-        <span className="posl-eyebrow posl-eyebrow--muted">{concept.name} · common mistake</span>
+        <span className="posl-tag-name">{concept.name} watch-out</span>
       </div>
-      <p className="posl-mistake-wrong"><span className="posl-mark-x">✗</span>{mistake.wrong}</p>
-      <p className="posl-mistake-right"><span className="posl-mark-check">✓</span>{mistake.correct}</p>
+      <div className="posl-sfx posl-sfx--oops">Oops!</div>
+      <p className="posl-mistake-wrong">{mistake.wrong}</p>
+      <div className="posl-sfx posl-sfx--yes">Yes!</div>
+      <p className="posl-mistake-right">{mistake.correct}</p>
       <p className="posl-mistake-note">{mistake.note}</p>
     </div>
   );
@@ -148,17 +153,17 @@ function MistakeSlide({ lesson, index }) {
 function CompareSlide({ lesson }) {
   return (
     <div className="posl-slide">
-      <h3 className="posl-h">{lesson.compareLeftLabel} vs {lesson.compareRightLabel}</h3>
+      <h3 className="posl-h">{lesson.compareLeftLabel} <span className="posl-vs">vs</span> {lesson.compareRightLabel}</h3>
       <p className="posl-compare-note">{lesson.compareNote}</p>
       <div className="posl-compare-grid">
-        <span className="posl-compare-label">{lesson.compareLeftLabel}</span>
-        <span className="posl-compare-label posl-compare-label--right">{lesson.compareRightLabel}</span>
-        {lesson.comparePairs.map((pair, i) => (
-          <div key={`pair-${i}`} className="posl-compare-row-pair">
-            <p className="posl-compare-cell">{pair.left}</p>
-            <p className="posl-compare-cell posl-compare-cell--right">{pair.right}</p>
-          </div>
-        ))}
+        <div className="posl-panel">
+          <span className="posl-compare-label">{lesson.compareLeftLabel}</span>
+          {lesson.comparePairs.map((pair, i) => <p key={`l-${i}`} className="posl-compare-line">{pair.left}</p>)}
+        </div>
+        <div className="posl-panel posl-panel--right">
+          <span className="posl-compare-label">{lesson.compareRightLabel}</span>
+          {lesson.comparePairs.map((pair, i) => <p key={`r-${i}`} className="posl-compare-line">{pair.right}</p>)}
+        </div>
       </div>
     </div>
   );
@@ -203,8 +208,10 @@ function IndependentSlide({ lesson }) {
 function WrapupSlide({ topic, lesson }) {
   return (
     <div className="posl-slide">
-      <h3 className="posl-h">Wrap-up</h3>
-      <p className="posl-definition">{lesson.wrapup}</p>
+      <h3 className="posl-h">Wrap-up!</h3>
+      <div className="posl-bubble posl-bubble--solo">
+        <p className="posl-bubble-text posl-bubble-text--big">{lesson.wrapup}</p>
+      </div>
       <p className="posl-recap-line">Next: put it to the test in <strong>{topic.lessonB.code} · {topic.lessonB.title} (Assessment)</strong>.</p>
     </div>
   );
@@ -383,18 +390,20 @@ export default function PartsOfSpeechLesson() {
 }
 
 const CSS = `
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;0,700;1,500&family=Manrope:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:wght@400;700&display=swap');
 
 .posl-shell {
   width: 100%;
   height: 100vh;
-  background: #F7F2E7;
+  background:
+    radial-gradient(#00000012 1.4px, transparent 1.5px) 0 0/16px 16px,
+    #FFF6E9;
   display: flex;
   flex-direction: column;
   align-items: center;
   box-sizing: border-box;
   overflow: hidden;
-  font-family: 'Manrope', sans-serif;
+  font-family: 'Comic Neue', cursive, sans-serif;
 }
 .posl-shell * { box-sizing: border-box; }
 
@@ -408,27 +417,26 @@ const CSS = `
   flex-shrink: 0;
 }
 .posl-topbar-title {
-  font-family: 'Manrope', sans-serif;
+  font-family: 'Comic Neue', cursive, sans-serif;
   font-weight: 700;
-  font-size: 11px;
-  letter-spacing: 1.2px;
-  text-transform: uppercase;
-  color: #A99A78;
+  font-size: 12px;
+  letter-spacing: 0.5px;
+  color: #6B5B3D;
 }
 
 .posl-stage {
   flex: 1;
   width: 100%;
   max-width: 1080px;
-  padding: 18px 24px 24px;
+  padding: 16px 24px 24px;
   display: flex;
   flex-direction: column;
   min-height: 0;
 }
 
 .posl-missing {
-  font-family: 'Manrope', sans-serif;
-  color: #7A7168;
+  font-family: 'Comic Neue', cursive, sans-serif;
+  color: #6B5B3D;
   text-align: center;
   margin-top: 60px;
 }
@@ -437,11 +445,11 @@ const CSS = `
   flex: 1;
   display: flex;
   flex-direction: column;
-  background: #FFFEFA;
-  border: 1px solid #E7DCC2;
-  border-radius: 4px;
-  padding: 26px 64px;
-  box-shadow: 0 24px 60px rgba(36,32,35,0.10);
+  background: #FFFFFF;
+  border: 4px solid #1A1A1A;
+  border-radius: 18px;
+  padding: 22px 52px;
+  box-shadow: 9px 9px 0 #1A1A1A;
   min-height: 0;
 }
 
@@ -454,225 +462,254 @@ const CSS = `
   text-align: center;
   min-height: 0;
   overflow-y: auto;
-  gap: 22px;
+  gap: 18px;
   padding: 8px 0;
 }
 
-.posl-slide { display: flex; flex-direction: column; align-items: center; gap: 18px; width: 100%; }
-.posl-slide--cover { gap: 14px; }
+.posl-slide { display: flex; flex-direction: column; align-items: center; gap: 16px; width: 100%; }
+.posl-slide--cover { gap: 12px; }
 .posl-slide--part { justify-content: flex-start; }
 
-.posl-eyebrow {
-  font-family: 'Manrope', sans-serif;
-  font-weight: 700;
-  font-size: 12px;
-  letter-spacing: 1.6px;
-  text-transform: uppercase;
-  color: #A47C3C;
-}
-.posl-eyebrow--muted { color: #9A9084; letter-spacing: 1.2px; }
-
 .posl-kind-badge {
-  font-family: 'Manrope', sans-serif;
-  font-weight: 700;
-  font-size: 11px;
-  letter-spacing: 1.6px;
-  text-transform: uppercase;
-  color: #A47C3C;
+  font-family: 'Bangers', cursive;
+  font-weight: 400;
+  font-size: 20px;
+  letter-spacing: 0.5px;
+  color: #FFFFFF;
+  background: #ED1C24;
+  border: 3px solid #1A1A1A;
+  border-radius: 999px;
+  padding: 4px 20px 6px;
+  transform: rotate(-3deg);
+  display: inline-block;
 }
 .posl-cover-title {
-  font-family: 'Fraunces', Georgia, serif;
-  font-weight: 600;
-  font-size: 58px;
-  color: #242023;
-  margin: 0;
-  line-height: 1.05;
-  letter-spacing: -0.01em;
+  font-family: 'Bangers', cursive;
+  font-weight: 400;
+  font-size: 64px;
+  color: #1A1A1A;
+  margin: 4px 0 0;
+  line-height: 1;
+  letter-spacing: 0.5px;
+  text-shadow: 3px 3px 0 #FFC300;
 }
 .posl-cover-sub {
-  font-family: 'Manrope', sans-serif;
-  font-weight: 600;
-  font-size: 13.5px;
-  color: #A99A78;
+  font-family: 'Comic Neue', cursive, sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  color: #8A7B5C;
   margin: 0;
 }
-.posl-rule { width: 44px; height: 2px; background: #D8C592; margin: 6px 0; }
 .posl-cover-line {
-  font-family: 'Manrope', sans-serif;
-  font-weight: 500;
-  font-size: 17px;
-  color: #6A6259;
-  line-height: 1.6;
-  margin: 0;
-  max-width: 600px;
-}
-.posl-cover-question {
-  font-family: 'Fraunces', Georgia, serif;
-  font-style: italic;
-  font-weight: 500;
-  font-size: 32px;
-  color: #242023;
-  margin: 0;
-  max-width: 740px;
-  line-height: 1.35;
+  font-family: 'Comic Neue', cursive, sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  color: #3A3226;
+  line-height: 1.5;
+  margin: 6px 0 0;
+  max-width: 620px;
 }
 
 .posl-h {
-  font-family: 'Fraunces', Georgia, serif;
-  font-weight: 600;
-  font-size: 28px;
-  color: #242023;
+  font-family: 'Bangers', cursive;
+  font-weight: 400;
+  font-size: 36px;
+  color: #1A1A1A;
   margin: 0;
+  letter-spacing: 0.5px;
+}
+.posl-vs {
+  display: inline-block;
+  background: #FFC300;
+  border: 2.5px solid #1A1A1A;
+  border-radius: 8px;
+  padding: 0 8px;
+  transform: rotate(-4deg);
+  font-size: 0.65em;
+  vertical-align: middle;
 }
 
 .posl-definition {
-  font-family: 'Manrope', sans-serif;
-  font-weight: 500;
-  font-size: 21px;
-  color: #4A443D;
-  line-height: 1.55;
+  font-family: 'Comic Neue', cursive, sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  color: #3A3226;
+  line-height: 1.5;
   margin: 0;
-  max-width: 720px;
+  max-width: 680px;
 }
 
-/* ---- concept slide: mark + name, underlined target word, no fills ---- */
-.posl-concept { gap: 24px; }
-.posl-concept-head { display: flex; align-items: center; gap: 10px; color: var(--pos-accent); }
-.posl-mark { width: 22px; height: 22px; flex-shrink: 0; color: var(--pos-accent); }
-.posl-concept-name {
-  font-family: 'Fraunces', Georgia, serif;
-  font-weight: 600;
-  font-size: 30px;
-  color: var(--pos-accent);
-  letter-spacing: -0.01em;
+/* ---- speech bubbles: the literal "parts of SPEECH" device ---- */
+.posl-bubble {
+  position: relative;
+  background: #FFFFFF;
+  border: 3px solid var(--pos-accent, #1A1A1A);
+  border-radius: 18px;
+  padding: 12px 20px;
+  max-width: 560px;
+  align-self: flex-start;
+  margin-left: 22px;
 }
-.posl-example-list { display: flex; flex-direction: column; gap: 14px; width: 100%; max-width: 560px; }
-.posl-example {
-  font-family: 'Manrope', sans-serif;
-  font-weight: 500;
-  font-size: 19px;
-  color: #242023;
-  border-left: 2.5px solid var(--pos-accent);
-  padding: 2px 0 2px 18px;
+.posl-bubble::before {
+  content: "";
+  position: absolute;
+  left: -14px;
+  bottom: 10px;
+  width: 16px;
+  height: 16px;
+  background: #FFFFFF;
+  border-left: 3px solid var(--pos-accent, #1A1A1A);
+  border-bottom: 3px solid var(--pos-accent, #1A1A1A);
+  transform: rotate(45deg);
+  border-radius: 0 0 0 3px;
+}
+.posl-bubble--solo { align-self: center; margin-left: 0; max-width: 720px; }
+.posl-bubble--solo::before { left: 50%; bottom: -14px; transform: rotate(-45deg) translateX(-50%); border-left: none; border-right: 3px solid var(--pos-accent, #1A1A1A); }
+.posl-bubble-text {
+  font-family: 'Comic Neue', cursive, sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  color: #1A1A1A;
   margin: 0;
   text-align: left;
 }
+.posl-bubble-text--big { font-size: 24px; text-align: center; }
 .posl-target {
-  font-weight: 700;
-  color: #242023;
-  text-decoration: underline;
-  text-decoration-color: var(--pos-accent);
-  text-decoration-thickness: 2.5px;
-  text-underline-offset: 3px;
+  display: inline-block;
+  background: var(--pos-accent, #FFC300);
+  color: #FFFFFF;
+  padding: 1px 8px;
+  border-radius: 5px;
+  transform: rotate(-2deg);
+  margin: 0 1px;
 }
 
-/* ---- mistake slide: proofreading marks, no filled cards ---- */
-.posl-mistake { gap: 16px; }
-.posl-mistake-head { display: flex; align-items: center; gap: 9px; }
-.posl-mistake-head .posl-mark { width: 16px; height: 16px; color: var(--pos-accent); }
+.posl-example-list { display: flex; flex-direction: column; gap: 12px; width: 100%; max-width: 600px; align-items: center; }
+
+/* ---- concept tag ---- */
+.posl-tag { display: flex; align-items: center; gap: 10px; background: var(--pos-accent); border: 3px solid #1A1A1A; border-radius: 999px; padding: 6px 20px 6px 8px; transform: rotate(-2deg); }
+.posl-tag--small { transform: rotate(-1.5deg); padding: 5px 16px 5px 6px; }
+.posl-badge { width: 30px; height: 30px; flex-shrink: 0; border-radius: 50%; background: rgba(0,0,0,0.18); border: 2px solid #fff; display: flex; align-items: center; justify-content: center; }
+.posl-tag--small .posl-badge { width: 22px; height: 22px; }
+.posl-badge svg { width: 20px; height: 20px; }
+.posl-tag--small .posl-badge svg { width: 14px; height: 14px; }
+.posl-tag-name {
+  font-family: 'Bangers', cursive;
+  font-weight: 400;
+  font-size: 26px;
+  color: #FFFFFF;
+  letter-spacing: 0.5px;
+  text-shadow: 1px 1px 0 rgba(0,0,0,0.25);
+}
+.posl-tag--small .posl-tag-name { font-size: 18px; }
+
+/* ---- mistake slide: comic SFX call-outs ---- */
+.posl-mistake { gap: 10px; }
+.posl-sfx {
+  font-family: 'Bangers', cursive;
+  font-weight: 400;
+  font-size: 30px;
+  letter-spacing: 0.5px;
+  padding: 2px 22px 6px;
+  border: 3px solid #1A1A1A;
+  border-radius: 10px;
+  color: #fff;
+}
+.posl-sfx--oops { background: #ED1C24; transform: rotate(-3deg); }
+.posl-sfx--yes { background: #2EC4B6; transform: rotate(2deg); }
 .posl-mistake-wrong {
-  font-family: 'Manrope', sans-serif;
-  font-weight: 500;
-  font-size: 19px;
+  font-family: 'Comic Neue', cursive, sans-serif;
+  font-weight: 700;
+  font-size: 18px;
   color: #8A736C;
   text-decoration: line-through;
-  text-decoration-color: rgba(138,58,47,0.55);
+  text-decoration-color: #ED1C24;
+  text-decoration-thickness: 3px;
   margin: 0;
-  display: flex;
-  align-items: baseline;
-  gap: 10px;
 }
-.posl-mark-x { color: #A8382F; font-weight: 700; text-decoration: none; flex-shrink: 0; }
 .posl-mistake-right {
-  font-family: 'Manrope', sans-serif;
+  font-family: 'Comic Neue', cursive, sans-serif;
   font-weight: 700;
   font-size: 20px;
-  color: #242023;
+  color: #1A1A1A;
   margin: 0;
-  display: flex;
-  align-items: baseline;
-  gap: 10px;
 }
-.posl-mark-check { color: #2E7D4F; font-weight: 700; flex-shrink: 0; }
 .posl-mistake-note {
-  font-family: 'Fraunces', Georgia, serif;
-  font-style: italic;
-  font-weight: 500;
-  font-size: 15.5px;
-  color: #7A7168;
+  font-family: 'Comic Neue', cursive, sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  color: #8A7B5C;
   margin: 4px 0 0;
   max-width: 520px;
 }
 
 .posl-compare-note {
-  font-family: 'Manrope', sans-serif;
-  font-weight: 500;
-  font-size: 15.5px;
-  color: #7A7168;
+  font-family: 'Comic Neue', cursive, sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  color: #6B5B3D;
   margin: 0;
   max-width: 620px;
 }
-.posl-compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 28px; width: 100%; max-width: 680px; }
+.posl-compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; width: 100%; max-width: 700px; }
+.posl-panel { background: #FFF6E9; border: 3px solid #1A1A1A; border-radius: 14px; padding: 14px 16px; text-align: left; }
+.posl-panel--right { border-color: var(--pos-accent, #1A1A1A); }
 .posl-compare-label {
-  font-family: 'Manrope', sans-serif;
-  font-weight: 700;
-  font-size: 11.5px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  color: #A47C3C;
-  padding-bottom: 8px;
-  border-bottom: 1px solid #E7DCC2;
-  text-align: left;
-}
-.posl-compare-label--right { text-align: right; }
-.posl-compare-row-pair { display: contents; }
-.posl-compare-cell {
-  font-family: 'Manrope', sans-serif;
-  font-weight: 500;
+  display: block;
+  font-family: 'Bangers', cursive;
+  font-weight: 400;
   font-size: 16px;
-  color: #4A443D;
-  padding: 12px 0;
-  margin: 0;
-  text-align: left;
-  border-bottom: 1px solid #F0E9D6;
+  letter-spacing: 0.4px;
+  color: #6B5B3D;
+  margin-bottom: 8px;
 }
-.posl-compare-cell--right { color: #242023; font-weight: 700; text-align: right; }
+.posl-compare-line {
+  font-family: 'Comic Neue', cursive, sans-serif;
+  font-weight: 700;
+  font-size: 14.5px;
+  color: #1A1A1A;
+  margin: 0 0 8px;
+}
 
 .posl-list {
-  font-family: 'Manrope', sans-serif;
-  font-weight: 500;
-  font-size: 16.5px;
-  color: #4A443D;
+  font-family: 'Comic Neue', cursive, sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  color: #3A3226;
   line-height: 1.6;
   margin: 0;
   padding-left: 20px;
 }
-.posl-speaking-list { max-width: 680px; font-size: 18px; text-align: left; }
+.posl-speaking-list { max-width: 680px; font-size: 17px; text-align: left; }
 .posl-speaking-list li { margin-bottom: 9px; }
 
 .posl-recap-line {
-  font-family: 'Manrope', sans-serif;
-  font-weight: 500;
-  font-size: 18px;
-  color: #4A443D;
-  line-height: 1.55;
+  font-family: 'Comic Neue', cursive, sans-serif;
+  font-weight: 700;
+  font-size: 17px;
+  color: #3A3226;
+  line-height: 1.5;
   margin: 0;
   max-width: 680px;
 }
 
 .posl-part-badge {
-  font-family: 'Manrope', sans-serif;
-  font-weight: 700;
-  font-size: 12px;
-  letter-spacing: 1.4px;
-  text-transform: uppercase;
-  color: #A47C3C;
+  font-family: 'Bangers', cursive;
+  font-weight: 400;
+  font-size: 18px;
+  letter-spacing: 0.4px;
+  color: #FFFFFF;
+  background: #8338EC;
+  border: 3px solid #1A1A1A;
+  border-radius: 999px;
+  padding: 3px 18px 5px;
+  transform: rotate(-2deg);
 }
 .posl-part-desc {
-  font-family: 'Manrope', sans-serif;
-  font-weight: 500;
+  font-family: 'Comic Neue', cursive, sans-serif;
+  font-weight: 700;
   font-size: 14.5px;
-  color: #7A7168;
+  color: #6B5B3D;
   margin: 0;
 }
 
@@ -685,76 +722,80 @@ const CSS = `
   text-align: left;
 }
 .posl-quiz-item {
-  background: #FFFFFF;
-  border: 1px solid #EFE7D3;
-  border-radius: 3px;
-  padding: 15px 20px;
+  background: #FFF6E9;
+  border: 3px solid #1A1A1A;
+  border-radius: 14px;
+  padding: 14px 18px;
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 .posl-quiz-q {
-  font-family: 'Manrope', sans-serif;
-  font-weight: 600;
+  font-family: 'Comic Neue', cursive, sans-serif;
+  font-weight: 700;
   font-size: 17px;
-  color: #242023;
+  color: #1A1A1A;
   margin: 0;
 }
-.posl-quiz-q--error { color: #A8382F; text-decoration: line-through; text-decoration-color: rgba(168,56,47,0.4); }
+.posl-quiz-q--error { color: #ED1C24; text-decoration: line-through; }
 
 .posl-quiz-options { display: flex; flex-wrap: wrap; gap: 8px; }
 .posl-quiz-opt {
-  font-family: 'Manrope', sans-serif;
-  font-weight: 600;
-  font-size: 14.5px;
-  color: #242023;
-  background: #FFFEFA;
-  border: 1px solid #E7DCC2;
-  border-radius: 3px;
-  padding: 8px 14px;
+  font-family: 'Comic Neue', cursive, sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  color: #1A1A1A;
+  background: #FFFFFF;
+  border: 2.5px solid #1A1A1A;
+  border-radius: 8px;
+  padding: 7px 14px;
   cursor: pointer;
+  box-shadow: 3px 3px 0 #1A1A1A;
 }
+.posl-quiz-opt:active:not(:disabled) { box-shadow: 0 0 0 #1A1A1A; transform: translate(3px, 3px); }
 .posl-quiz-opt:disabled { cursor: default; }
-.posl-quiz-opt.is-correct { background: #F0F7F1; border-color: #2E7D4F; color: #1F5C39; }
-.posl-quiz-opt.is-wrong { background: #FBEFEC; border-color: #A8382F; color: #8A2E27; }
+.posl-quiz-opt.is-correct { background: #2EC4B6; color: #fff; }
+.posl-quiz-opt.is-wrong { background: #ED1C24; color: #fff; }
 
 .posl-reveal-btn {
   align-self: flex-start;
-  font-family: 'Manrope', sans-serif;
+  font-family: 'Comic Neue', cursive, sans-serif;
   font-weight: 700;
   font-size: 13.5px;
-  color: #A47C3C;
-  background: none;
-  border: 1px solid #D8C592;
-  border-radius: 3px;
+  color: #1A1A1A;
+  background: #FFC300;
+  border: 2.5px solid #1A1A1A;
+  border-radius: 8px;
   padding: 6px 14px;
   cursor: pointer;
+  box-shadow: 3px 3px 0 #1A1A1A;
 }
+.posl-reveal-btn:active { box-shadow: 0 0 0 #1A1A1A; transform: translate(3px, 3px); }
 .posl-reveal-correct {
-  font-family: 'Manrope', sans-serif;
+  font-family: 'Comic Neue', cursive, sans-serif;
   font-weight: 700;
   font-size: 16px;
-  color: #1F5C39;
+  color: #1F8A63;
   margin: 0;
 }
 
-.posl-nav-row { display: flex; align-items: center; justify-content: space-between; padding-top: 16px; border-top: 1px solid #EFE7D3; flex-shrink: 0; }
+.posl-nav-row { display: flex; align-items: center; justify-content: space-between; padding-top: 16px; border-top: 3px dashed #E4D5B0; flex-shrink: 0; }
 .posl-nav-btn {
-  font-family: 'Manrope', sans-serif;
+  font-family: 'Comic Neue', cursive, sans-serif;
   font-weight: 700;
-  font-size: 13.5px;
-  color: #4A443D;
-  background: none;
-  border: 1px solid #E7DCC2;
-  border-radius: 3px;
+  font-size: 14px;
+  color: #1A1A1A;
+  background: #FFFFFF;
+  border: 2.5px solid #1A1A1A;
+  border-radius: 10px;
   padding: 9px 18px;
   cursor: pointer;
+  box-shadow: 4px 4px 0 #1A1A1A;
 }
-.posl-nav-btn:hover:not(:disabled) { border-color: #A47C3C; color: #242023; }
-.posl-nav-btn--primary { background: #242023; color: #F7F2E7; border-color: #242023; }
-.posl-nav-btn--primary:hover:not(:disabled) { background: #3A342F; border-color: #3A342F; color: #F7F2E7; }
-.posl-nav-btn:disabled { opacity: 0.3; cursor: default; }
+.posl-nav-btn:active:not(:disabled) { box-shadow: 0 0 0 #1A1A1A; transform: translate(4px, 4px); }
+.posl-nav-btn--primary { background: #FFC300; }
+.posl-nav-btn:disabled { opacity: 0.35; cursor: default; box-shadow: 4px 4px 0 #1A1A1A; }
 .posl-nav-dots { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; max-width: 320px; }
-.posl-nav-dot { width: 5px; height: 5px; border-radius: 999px; background: #E7DCC2; }
-.posl-nav-dot.is-active { width: 15px; border-radius: 3px; background: #A47C3C; }
+.posl-nav-dot { width: 8px; height: 8px; border-radius: 50%; background: #FFFFFF; border: 2px solid #1A1A1A; }
+.posl-nav-dot.is-active { background: #FFC300; }
 `;
