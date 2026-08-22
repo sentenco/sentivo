@@ -28,14 +28,14 @@ export default function VocabularyPlayerPage() {
     <PlayerChrome eyebrow="Vocabulary">
       {game.kind === "sort" ? (
         <WordSortGame
-          title={category.title}
+          title={`${category.title}${category.cefrGroup ? ` (${category.cefrGroup})` : ""}`}
           categoryA={category.pack.categoryA}
           categoryB={category.pack.categoryB}
           items={category.pack.items}
         />
       ) : game.kind === "oddOneOut" ? (
         <OddOneOutGame
-          title={`${category.audience} · ${category.title}`}
+          title={`${category.title}${category.cefrGroup ? ` (${category.cefrGroup})` : ""}`}
           items={category.items}
         />
       ) : (

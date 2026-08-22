@@ -166,7 +166,6 @@ function GameBanner({ name }) {
   );
 }
 
-const AUDIENCES = ["Kids", "Teens", "Adults"];
 const LEVEL_GROUPS = ["A1-A2", "B1-B2", "C1-C2"];
 
 // Shared topic lists (key/title only), one per level -- used by both
@@ -270,15 +269,15 @@ export const CATEGORIES_BY_GAME = {
     key: p.key,
     title: p.title,
     blurb: `${p.categoryA} or ${p.categoryB}? 10 words to sort.`,
-    level: p.level,
+    cefrGroup: p.cefrGroup,
     ready: true,
     pack: p,
   })),
   oddOneOut: ODD_ONE_OUT_PACKS.map((p) => ({
     key: p.key,
     title: p.title,
-    blurb: "15 rounds, 1 odd word each.",
-    audience: p.audience,
+    blurb: "10 rounds, 1 odd word each.",
+    cefrGroup: p.cefrGroup,
     ready: true,
     items: p.items,
   })),
@@ -367,9 +366,8 @@ export default function VocabularyGames({ query }) {
                     <span className="vg-cat-icon">{c.game.icon}</span>
                     <span className="vg-cat-tag">{c.ready ? "Ready" : "Coming soon"}</span>
                   </div>
-                  {c.level && <span className="vg-cat-level">{c.level}</span>}
                   <span className="vg-cat-title">{c.title}</span>
-                  <span className="vg-cat-blurb">{c.game.title}{c.cefrGroup ? ` · ${c.cefrGroup}` : ""}{c.audience ? ` · ${c.audience}` : ""}</span>
+                  <span className="vg-cat-blurb">{c.game.title}{c.cefrGroup ? ` · ${c.cefrGroup}` : ""}</span>
                   {c.ready && <span className="vg-cat-cta">Play →</span>}
                 </button>
               ))}
@@ -426,31 +424,6 @@ export default function VocabularyGames({ query }) {
                 ))}
               </div>
             </>
-          ) : categories.some((c) => c.audience) ? (
-            AUDIENCES.filter((aud) => categories.some((c) => c.audience === aud)).map((aud) => (
-              <div key={aud} className="vg-audience-group">
-                <span className={`vg-audience-tag vg-audience-tag--${aud.toLowerCase()}`}>{aud}</span>
-                <div className="vg-cat-grid">
-                  {categories.filter((c) => c.audience === aud).map((c) => (
-                    <button
-                      key={c.key}
-                      type="button"
-                      className={`vg-cat-card vg-cat-card--${game.hue} ${c.ready ? "" : "vg-cat-card--soon"}`}
-                      onClick={() => c.ready && openCategoryPlayer(gameKey, c.key)}
-                      disabled={!c.ready}
-                    >
-                      <div className="vg-cat-top">
-                        <span className="vg-cat-icon">{game.icon}</span>
-                        <span className="vg-cat-tag">{c.ready ? "Ready" : "Coming soon"}</span>
-                      </div>
-                      <span className="vg-cat-title">{c.title}</span>
-                      <span className="vg-cat-blurb">{c.blurb}</span>
-                      {c.ready && <span className="vg-cat-cta">Play →</span>}
-                    </button>
-                  ))}
-                </div>
-              </div>
-            ))
           ) : (
             <div className="vg-cat-grid">
               {categories.map((c) => (
@@ -465,7 +438,6 @@ export default function VocabularyGames({ query }) {
                     <span className="vg-cat-icon">{game.icon}</span>
                     <span className="vg-cat-tag">{c.ready ? "Ready" : "Coming soon"}</span>
                   </div>
-                  {c.level && <span className="vg-cat-level">{c.level}</span>}
                   <span className="vg-cat-title">{c.title}</span>
                   <span className="vg-cat-blurb">{c.blurb}</span>
                   {c.ready && <span className="vg-cat-cta">Play →</span>}
@@ -578,21 +550,6 @@ const CSS = `
 .vg-block--green .vg-block-cta { color: #1F9D6E; }
 .vg-block--orange .vg-block-cta { color: #D97706; }
 
-.vg-audience-group { width: 100%; margin-bottom: 28px; }
-.vg-audience-group:last-child { margin-bottom: 0; }
-.vg-audience-tag {
-  display: inline-block;
-  font-family: 'Fredoka', sans-serif;
-  font-weight: 600;
-  font-size: 13px;
-  border-radius: 999px;
-  padding: 5px 16px;
-  margin-bottom: 14px;
-}
-.vg-audience-tag--kids { color: #B4650F; background: rgba(251,191,36,0.20); }
-.vg-audience-tag--teens { color: #1F9D6E; background: rgba(52,211,153,0.16); }
-.vg-audience-tag--adults { color: #4C3F91; background: rgba(124,92,252,0.14); }
-
 .vg-level-tabs { display: flex; gap: 8px; margin-bottom: 24px; flex-wrap: wrap; justify-content: center; }
 .vg-level-tab {
   font-family: 'Fredoka', sans-serif;
@@ -657,7 +614,6 @@ const CSS = `
   padding: 4px 10px;
 }
 .vg-cat-card--soon .vg-cat-tag { color: #9A93A8; background: rgba(154,147,168,0.12); }
-.vg-cat-level { font-size: 10.5px; font-weight: 700; color: #9A93A8; margin-bottom: 6px; }
 .vg-cat-title { font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 16.5px; color: #2B2A4A; margin-bottom: 6px; line-height: 1.25; }
 .vg-cat-blurb { font-size: 12.5px; color: #7A7391; line-height: 1.45; margin-bottom: 18px; }
 .vg-cat-cta {
