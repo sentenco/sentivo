@@ -352,6 +352,7 @@ const GRAMMAR_MODULES = [
   { num: "BED 04", banner: "modals", title: "Modals", spec: "9 core modal verbs — can to shall — grouped by function across 7 lessons, each teach-practice-wrap in one sitting. A1–C2.", href: "/library/grammar/modals", ready: true, hue: "sky" },
   { num: "BED 05", banner: "conditionals", title: "Conditionals", spec: "The 5 conditional types — Zero to Mixed — across 5 lessons, each teach-practice-wrap in one sitting. A1–C2.", href: "/library/grammar/conditionals", ready: true, hue: "berry" },
   { num: "BED 06", banner: "passiveVoice", title: "Passive Voice", spec: "Present to future passive, modal passive, and the by-agent, across 6 lessons, each teach-practice-wrap in one sitting. A1–C2.", href: "/library/grammar/passive-voice", ready: true, hue: "violet" },
+  { num: "BED 07", banner: "questionFormation", title: "Question Formation", spec: "Yes/no questions, wh-questions, question tags, and indirect questions, across 4 lessons, each teach-practice-wrap in one sitting. A1–C2.", href: "/library/grammar/question-formation", ready: true, hue: "teal" },
 ];
 const GRAMMAR_PER_PAGE = 8;
 
@@ -2516,6 +2517,7 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   --sky: #3E7CB8; --sky-deep: #275C8C;
   --berry: #C2255C; --berry-deep: #8A1A41;
   --violet: #6247AA; --violet-deep: #453177;
+  --teal: #0E7C86; --teal-deep: #0A5B62;
   width: 100%;
   max-width: 1080px;
   margin: 0 auto;
@@ -2590,6 +2592,7 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .gdn-bed--sky { background: linear-gradient(155deg, #7FB3E0 0%, var(--sky) 100%); }
 .gdn-bed--berry { background: linear-gradient(155deg, #EE7FA3 0%, var(--berry) 100%); }
 .gdn-bed--violet { background: linear-gradient(155deg, #A78BFA 0%, var(--violet) 100%); }
+.gdn-bed--teal { background: linear-gradient(155deg, #5FC4CC 0%, var(--teal) 100%); }
 
 .gdn-bed-title {
   font-family: 'Bangers', cursive;
