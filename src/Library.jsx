@@ -372,7 +372,8 @@ function GrammarFeature({ navigate, query }) {
     <div className="gdn-page">
       <div className="gdn-masthead">
         <span className="gdn-eyebrow">Sentivo · Grammar</span>
-        <h1 className="gdn-nameplate"><span className="gdn-nameplate-pill">🌱 The Grammar Garden</span></h1>
+        <span className="gdn-badge">Let's Grow!</span>
+        <h1 className="gdn-nameplate">🌱 The Grammar Garden</h1>
         <p className="gdn-sub">Language grows from the roots up — plant a rule, watch a sentence bloom.</p>
       </div>
       <div className="gdn-row"></div>
@@ -1673,7 +1674,7 @@ export default function Library() {
 }
 
 const CSS = `
-@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&family=Quicksand:wght@500;600;700&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&family=Quicksand:wght@500;600;700&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@700;900&family=Bangers&family=Comic+Neue:wght@400;700&display=swap');
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
@@ -2504,7 +2505,7 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .gaz-story-meta { font-family: 'Quicksand', sans-serif; font-size: clamp(10.5px, 0.9vw, 12px); color: var(--muted); }
 .gaz-soon { font-weight: 700; letter-spacing: 0.03em; text-transform: uppercase; font-size: clamp(8.5px, 0.7vw, 10px); }
 
-/* ---------- Grammar: The Grammar Garden ---------- */
+/* ---------- Grammar: The Grammar Garden (comic theme) ---------- */
 .gdn-page {
   --leaf: #4C9A5D; --leaf-deep: #2E6E3D;
   --gold: #E3A73C; --gold-deep: #96631C;
@@ -2512,34 +2513,49 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   width: 100%;
   max-width: 1080px;
   margin: 0 auto;
-  background: linear-gradient(180deg, #F3EEE1 0%, #EAE1CC 100%);
-  border-radius: 22px;
+  background:
+    radial-gradient(#00000012 1.4px, transparent 1.5px) 0 0/16px 16px,
+    #FFF6E9;
+  border: 4px solid #1A1A1A;
+  border-radius: 26px;
   padding: clamp(26px, 3.6vw, 48px) clamp(20px, 3.2vw, 40px);
+  box-shadow: 9px 9px 0 #1A1A1A;
 }
 .gdn-masthead { text-align: center; }
 .gdn-eyebrow {
-  font-family: 'SF Mono', 'Menlo', Consolas, monospace;
+  font-family: 'Comic Neue', cursive, sans-serif;
+  font-weight: 700;
   font-size: clamp(10.5px, 0.9vw, 11px);
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: #7A6944;
+  color: #6B5B3D;
 }
-.gdn-nameplate { margin: 10px 0 6px; }
-.gdn-nameplate-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  font-family: 'Fredoka', sans-serif;
-  font-weight: 700;
-  font-size: clamp(26px, 3.4vw, 36px);
-  letter-spacing: -0.01em;
-  color: #33291A;
+.gdn-badge {
+  display: inline-block;
+  font-family: 'Bangers', cursive;
+  font-weight: 400;
+  font-size: 16px;
+  letter-spacing: 0.4px;
+  color: #FFFFFF;
+  background: var(--leaf);
+  border: 3px solid #1A1A1A;
+  border-radius: 999px;
+  padding: 3px 16px 5px;
+  transform: rotate(-3deg);
+  margin: 10px 0 8px;
 }
-.gdn-sub { font-family: 'Quicksand', sans-serif; font-weight: 500; font-size: clamp(13px, 1.1vw, 15px); color: #6B5C3E; margin: 0 auto; max-width: 460px; }
-.gdn-row { position: relative; height: 2px; background: #DACCA6; margin: clamp(26px, 3vw, 36px) 0; }
-.gdn-row::before, .gdn-row::after { content: ""; position: absolute; top: -3px; width: 8px; height: 8px; border-radius: 50%; background: #B99B5F; }
-.gdn-row::before { left: 0; }
-.gdn-row::after { right: 0; }
+.gdn-nameplate {
+  font-family: 'Bangers', cursive;
+  font-weight: 400;
+  font-size: clamp(32px, 4.2vw, 46px);
+  letter-spacing: 0.4px;
+  color: #1A1A1A;
+  margin: 0 0 10px;
+  line-height: 1.05;
+  text-shadow: 3px 3px 0 var(--gold);
+}
+.gdn-sub { font-family: 'Comic Neue', cursive, sans-serif; font-weight: 700; font-size: clamp(13px, 1.1vw, 15px); color: #3A3226; margin: 0 auto; max-width: 460px; }
+.gdn-row { position: relative; height: 0; border-top: 3px dashed #E4D5B0; margin: clamp(26px, 3vw, 36px) 0; }
 
 .gdn-beds { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(16px, 2vw, 24px); }
 .gdn-bed {
@@ -2550,35 +2566,39 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   justify-content: center;
   gap: 20px;
   min-height: 176px;
-  border-radius: 26px;
+  border: 3.5px solid #1A1A1A;
+  border-radius: 22px;
   padding: 28px 22px;
   text-align: center;
   text-decoration: none;
   cursor: pointer;
-  box-shadow: 0 10px 0 rgba(0,0,0,0.12), 0 16px 30px rgba(51,41,26,0.16);
-  transition: transform 0.22s cubic-bezier(.34,1.56,.64,1), box-shadow 0.22s ease;
+  box-shadow: 7px 7px 0 #1A1A1A;
+  transition: transform 0.18s cubic-bezier(.34,1.56,.64,1), box-shadow 0.18s ease;
 }
-.gdn-bed:hover { transform: translateY(-5px) rotate(-1deg) scale(1.02); box-shadow: 0 12px 0 rgba(0,0,0,0.12), 0 22px 38px rgba(51,41,26,0.2); }
-.gdn-bed:active { transform: translateY(1px) scale(0.98); box-shadow: 0 4px 0 rgba(0,0,0,0.12), 0 8px 16px rgba(51,41,26,0.16); }
+.gdn-bed:hover { transform: translate(-2px, -4px) rotate(-1deg); box-shadow: 9px 11px 0 #1A1A1A; }
+.gdn-bed:active { transform: translate(3px, 3px); box-shadow: 4px 4px 0 #1A1A1A; }
 
 .gdn-bed--leaf { background: linear-gradient(155deg, #7BCB8C 0%, var(--leaf) 100%); }
 .gdn-bed--gold { background: linear-gradient(155deg, #F3C878 0%, var(--gold) 100%); }
 .gdn-bed--soil { background: linear-gradient(155deg, #B1875E 0%, var(--soil) 100%); }
 
 .gdn-bed-title {
-  font-family: 'Fredoka', sans-serif;
-  font-weight: 700;
-  font-size: clamp(21px, 2.3vw, 26px);
+  font-family: 'Bangers', cursive;
+  font-weight: 400;
+  font-size: clamp(22px, 2.6vw, 28px);
+  letter-spacing: 0.3px;
   margin: 0;
   color: #FFFFFF;
-  line-height: 1.2;
-  text-shadow: 0 2px 0 rgba(0,0,0,0.1);
+  line-height: 1.15;
+  text-shadow: 2px 2px 0 rgba(0,0,0,0.18);
 }
 .gdn-bed-cta {
   display: inline-block;
-  font-family: 'Quicksand', sans-serif; font-size: 13.5px; font-weight: 800;
-  color: #221B10; background: #FFFFFF;
-  border-radius: 999px; padding: 9px 22px;
+  font-family: 'Comic Neue', cursive, sans-serif; font-size: 13.5px; font-weight: 700;
+  color: #1A1A1A; background: #FFFFFF;
+  border: 2.5px solid #1A1A1A;
+  border-radius: 999px; padding: 7px 20px;
+  box-shadow: 3px 3px 0 #1A1A1A;
 }
 .gdn-bed--empty { cursor: default; opacity: 0.7; }
 .gdn-bed--empty .gdn-bed-cta { color: #6B5C3E; }
