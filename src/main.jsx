@@ -25,6 +25,7 @@ import NotebookHub from './NotebookHub.jsx'
 import FeedbackGenerator from './FeedbackGenerator.jsx'
 import NotebookPage from './NotebookPage.jsx'
 import WheelPage from './WheelPage.jsx'
+import TeacherBoard from './TeacherBoard.jsx'
 import SlideDeckHub from './SlideDeckHub.jsx'
 import SlideDeckEditor from './SlideDeckEditor.jsx'
 import SlideDeckPlayer from './SlideDeckPlayer.jsx'
@@ -154,6 +155,7 @@ createRoot(document.getElementById('root')).render(
             <Route path="/library/feedback" element={<FeedbackGenerator />} />
             <Route path="/library/notebook/:design" element={<NotebookPage />} />
             <Route path="/library/wheel" element={<WheelPage />} />
+            <Route path="/library/teacher-board" element={<TeacherBoard />} />
             <Route path="/library/slides" element={<SlideDeckHub />} />
             <Route path="/library/slides/:deckId/edit" element={<SlideDeckEditor />} />
             <Route path="/library/slides/:deckId/present" element={<SlideDeckPlayer />} />
