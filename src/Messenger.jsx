@@ -124,6 +124,26 @@ function TrashIcon() {
   );
 }
 
+function GroupIcon() {
+  return (
+    <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <circle cx="7.5" cy="7" r="2.6" />
+      <path d="M2.5 16c.5-3 2.4-4.5 5-4.5s4.5 1.5 5 4.5" />
+      <path d="M13 6.5a2.4 2.4 0 1 1 2 3.7" />
+      <path d="M14.5 11.7c1.9.4 3 1.7 3.4 4" />
+    </svg>
+  );
+}
+
+function PlusIcon() {
+  return (
+    <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" aria-hidden="true">
+      <path d="M10 4.5v11" />
+      <path d="M4.5 10h11" />
+    </svg>
+  );
+}
+
 function EmptyChatIcon() {
   return (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -154,11 +174,19 @@ export default function Messenger() {
   const [deleteTarget, setDeleteTarget] = useState(null);
   const [reactionsByMessage, setReactionsByMessage] = useState({});
   const [reactionPickerFor, setReactionPickerFor] = useState(null);
+  const [groupModalOpen, setGroupModalOpen] = useState(false);
+  const [groupName, setGroupName] = useState("");
+  const [memberQuery, setMemberQuery] = useState("");
+  const [memberResults, setMemberResults] = useState([]);
+  const [selectedMembers, setSelectedMembers] = useState([]);
+  const [creatingGroup, setCreatingGroup] = useState(false);
+  const [groupMembersById, setGroupMembersById] = useState({});
   const threadEndRef = useRef(null);
   const pollRef = useRef(null);
   const activeIdRef = useRef(null);
   const composerRef = useRef(null);
   const messageIdsRef = useRef(new Set());
+  const memberSearchTimer = useRef(null);
   useEffect(() => { activeIdRef.current = activeId; }, [activeId]);
   useEffect(() => { messageIdsRef.current = new Set(messages.map((m) => m.id)); }, [messages]);
 
@@ -175,6 +203,39 @@ export default function Messenger() {
     document.addEventListener("mousedown", handleClick);
     return () => document.removeEventListener("mousedown", handleClick);
   }, [reactionPickerFor]);
+
+  useEffect(() => {
+    clearTimeout(memberSearchTimer.current);
+    const q = memberQuery.trim();
+    if (!q) { setMemberResults([]); return; }
+    memberSearchTimer.current = setTimeout(async () => {
+      const { data } = await supabase
+        .from("profiles")
+        .select("id, display_name, avatar_url")
+        .ilike("display_name", `%${q}%`)
+        .limit(8);
+      const picked = new Set(selectedMembers.map((m) => m.id));
+      setMemberResults((data || []).filter((p) => p.id !== user?.id && !picked.has(p.id)));
+    }, 300);
+    return () => clearTimeout(memberSearchTimer.current);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [memberQuery]);
+
+  useEffect(() => {
+    const conv = conversations.find((c) => c.id === activeId);
+    if (!activeId || !conv?.is_group) return;
+    if (groupMembersById[activeId]) return;
+    supabase
+      .from("conversation_participants")
+      .select("user_id")
+      .eq("conversation_id", activeId)
+      .then(({ data }) => {
+        const ids = (data || []).map((r) => r.user_id);
+        setGroupMembersById((prev) => ({ ...prev, [activeId]: ids }));
+        loadProfiles(ids);
+      });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [activeId, conversations]);
 
   useEffect(() => {
     const el = composerRef.current;
@@ -293,6 +354,20 @@ export default function Messenger() {
           loadProfiles([otherId]);
         }
       )
+      .on(
+        "postgres_changes",
+        { event: "INSERT", schema: "public", table: "conversation_participants", filter: `user_id=eq.${user.id}` },
+        async (payload) => {
+          const conversationId = payload.new.conversation_id;
+          const { data: conv } = await supabase
+            .from("conversations")
+            .select("id, user_a_id, user_b_id, last_message_at, last_message, is_group, title")
+            .eq("id", conversationId)
+            .maybeSingle();
+          if (!conv) return;
+          setConversations((prev) => (prev.some((c) => c.id === conv.id) ? prev : [{ ...conv, unread: 0 }, ...prev]));
+        }
+      )
       .subscribe();
     return () => { supabase.removeChannel(channel); };
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -317,17 +392,32 @@ export default function Messenger() {
 
   async function loadConversations() {
     if (!user) return;
-    const { data, error: convError } = await supabase
+    const { data: direct, error: convError } = await supabase
       .from("conversations")
-      .select("id, user_a_id, user_b_id, last_message_at, last_message")
+      .select("id, user_a_id, user_b_id, last_message_at, last_message, is_group, title")
       .or(`user_a_id.eq.${user.id},user_b_id.eq.${user.id}`)
       .order("last_message_at", { ascending: false });
     if (convError) { console.error("loadConversations failed:", convError); setLoadingList(false); return; }
-    const rows = data || [];
+
+    const { data: memberships } = await supabase
+      .from("conversation_participants")
+      .select("conversation_id")
+      .eq("user_id", user.id);
+    const groupIds = (memberships || []).map((m) => m.conversation_id);
+    let groups = [];
+    if (groupIds.length) {
+      const { data: groupRows } = await supabase
+        .from("conversations")
+        .select("id, user_a_id, user_b_id, last_message_at, last_message, is_group, title")
+        .in("id", groupIds);
+      groups = groupRows || [];
+    }
+
+    const rows = [...(direct || []), ...groups].sort((a, b) => new Date(b.last_message_at) - new Date(a.last_message_at));
     setConversations(rows);
     setLoadingList(false);
 
-    const otherIds = rows.map((c) => (c.user_a_id === user.id ? c.user_b_id : c.user_a_id));
+    const otherIds = rows.filter((c) => !c.is_group).map((c) => (c.user_a_id === user.id ? c.user_b_id : c.user_a_id));
     if (otherIds.length) loadProfiles(otherIds);
 
     if (rows.length) {
@@ -400,6 +490,48 @@ export default function Messenger() {
     setConversations((prev) => [{ ...created, unread: 0 }, ...prev]);
     setActiveId(created.id);
     loadProfiles([otherUserId]);
+  }
+
+  function addMember(p) {
+    setSelectedMembers((prev) => (prev.some((m) => m.id === p.id) ? prev : [...prev, p]));
+    setMemberResults((prev) => prev.filter((r) => r.id !== p.id));
+    setMemberQuery("");
+  }
+
+  function removeMember(id) {
+    setSelectedMembers((prev) => prev.filter((m) => m.id !== id));
+  }
+
+  function closeGroupModal() {
+    setGroupModalOpen(false);
+    setGroupName("");
+    setMemberQuery("");
+    setMemberResults([]);
+    setSelectedMembers([]);
+  }
+
+  async function createGroup() {
+    const title = groupName.trim();
+    if (!title || selectedMembers.length < 2 || creatingGroup) return;
+    setCreatingGroup(true);
+    const { data: created, error: createError } = await supabase
+      .from("conversations")
+      .insert({ is_group: true, title, created_by: user.id })
+      .select("id, user_a_id, user_b_id, last_message_at, last_message, is_group, title")
+      .single();
+    if (createError) { setCreatingGroup(false); setError("Couldn't create that group."); return; }
+
+    const memberIds = [user.id, ...selectedMembers.map((m) => m.id)];
+    const { error: memberError } = await supabase
+      .from("conversation_participants")
+      .insert(memberIds.map((id) => ({ conversation_id: created.id, user_id: id })));
+    setCreatingGroup(false);
+    if (memberError) { setError("Group created, but adding members failed."); return; }
+
+    setGroupMembersById((prev) => ({ ...prev, [created.id]: memberIds }));
+    setConversations((prev) => [{ ...created, unread: 0 }, ...prev]);
+    setActiveId(created.id);
+    closeGroupModal();
   }
 
   async function sendMessage() {
@@ -487,12 +619,15 @@ export default function Messenger() {
   if (authLoading) return null;
 
   const activeConv = conversations.find((c) => c.id === activeId);
-  const activeOtherId = activeConv ? (activeConv.user_a_id === user?.id ? activeConv.user_b_id : activeConv.user_a_id) : null;
+  const activeOtherId = activeConv && !activeConv.is_group ? (activeConv.user_a_id === user?.id ? activeConv.user_b_id : activeConv.user_a_id) : null;
   const activeProfile = activeOtherId ? profiles[activeOtherId] : null;
   const activeName = activeProfile ? displayName(activeProfile) : "…";
+  const activeLabel = activeConv?.is_group ? activeConv.title : activeName;
+  const activeMemberIds = activeConv?.is_group ? (groupMembersById[activeConv.id] || []) : [];
 
   const filteredConversations = conversations.filter((c) => {
     if (!convSearch.trim()) return true;
+    if (c.is_group) return (c.title || "").toLowerCase().includes(convSearch.trim().toLowerCase());
     const otherId = c.user_a_id === user.id ? c.user_b_id : c.user_a_id;
     const name = profiles[otherId] ? displayName(profiles[otherId]) : "";
     return name.toLowerCase().includes(convSearch.trim().toLowerCase());
@@ -522,6 +657,9 @@ export default function Messenger() {
                   onChange={(e) => setConvSearch(e.target.value)}
                   placeholder="Search conversations"
                 />
+                <button type="button" className="mg-new-group-btn" onClick={() => setGroupModalOpen(true)} aria-label="New group" title="New group">
+                  <PlusIcon />
+                </button>
               </div>
               <div className="mg-conv-list">
                 {loadingList ? (
@@ -535,9 +673,9 @@ export default function Messenger() {
                   <p className="mg-empty-text">No matches for "{convSearch}".</p>
                 ) : (
                   filteredConversations.map((c) => {
-                    const otherId = c.user_a_id === user.id ? c.user_b_id : c.user_a_id;
-                    const p = profiles[otherId];
-                    const name = p ? displayName(p) : "…";
+                    const otherId = !c.is_group ? (c.user_a_id === user.id ? c.user_b_id : c.user_a_id) : null;
+                    const p = otherId ? profiles[otherId] : null;
+                    const name = c.is_group ? c.title : (p ? displayName(p) : "…");
                     const unread = c.unread > 0;
                     return (
                       <button
@@ -546,7 +684,9 @@ export default function Messenger() {
                         className={`mg-conv ${c.id === activeId ? "is-active" : ""} ${unread ? "is-unread" : ""}`}
                         onClick={() => setActiveId(c.id)}
                       >
-                        <span className="mg-avatar">{p?.avatar_url ? <img src={p.avatar_url} alt="" /> : initials(name)}</span>
+                        <span className={`mg-avatar ${c.is_group ? "mg-avatar--group" : ""}`}>
+                          {c.is_group ? <GroupIcon /> : (p?.avatar_url ? <img src={p.avatar_url} alt="" /> : initials(name))}
+                        </span>
                         <span className="mg-conv-text">
                           <span className="mg-conv-row">
                             <span className="mg-conv-name">{name}</span>
@@ -583,8 +723,13 @@ export default function Messenger() {
                     >
                       <PanelIcon />
                     </button>
-                    <span className="mg-avatar mg-avatar--sm">{activeProfile?.avatar_url ? <img src={activeProfile.avatar_url} alt="" /> : initials(activeName)}</span>
-                    <span className="mg-thread-name">{activeName}</span>
+                    <span className={`mg-avatar mg-avatar--sm ${activeConv?.is_group ? "mg-avatar--group" : ""}`}>
+                      {activeConv?.is_group ? <GroupIcon /> : (activeProfile?.avatar_url ? <img src={activeProfile.avatar_url} alt="" /> : initials(activeName))}
+                    </span>
+                    <span className="mg-thread-text">
+                      <span className="mg-thread-name">{activeLabel}</span>
+                      {activeConv?.is_group && <span className="mg-thread-sub">{activeMemberIds.length || "…"} members</span>}
+                    </span>
                   </div>
 
                   {error && (
@@ -597,7 +742,7 @@ export default function Messenger() {
                   <div className="mg-messages">
                     {messages.length === 0 ? (
                       <div className="mg-thread-empty mg-thread-empty--inline">
-                        <p>Say hello to {activeName}.</p>
+                        <p>Say hello to {activeLabel}.</p>
                       </div>
                     ) : (
                       messages.map((m, i) => {
@@ -620,6 +765,8 @@ export default function Messenger() {
                           if (r.user_id === user.id) reactionCounts[r.emoji].mine = true;
                         });
                         const hasReactions = Object.keys(reactionCounts).length > 0;
+                        const senderLabel = (senderId) => senderId === user.id ? "You" : (profiles[senderId] ? displayName(profiles[senderId]) : activeName);
+                        const showSenderName = activeConv?.is_group && !mine && (!prev || prev.sender_id !== m.sender_id || showDivider);
                         const actionsBtns = !isDeleted && !isEditing && (
                           <div className="mg-bubble-actions">
                             <button type="button" onClick={() => setReplyTarget(m)} aria-label="Reply" title="Reply"><ReplyIcon /></button>
@@ -648,6 +795,7 @@ export default function Messenger() {
                             <div id={`msg-${m.id}`} className={`mg-bubble-row ${mine ? "is-mine" : ""} ${isTight ? "is-tight" : ""}`}>
                               {mine && actionsBtns}
                               <div className="mg-bubble-col">
+                                {showSenderName && <span className="mg-sender-name">{senderLabel(m.sender_id)}</span>}
                                 {isEditing ? (
                                   <div className="mg-bubble mg-bubble--editing">
                                     <textarea
@@ -669,7 +817,7 @@ export default function Messenger() {
                                         className="mg-quote"
                                         onClick={() => document.getElementById(`msg-${quoted.id}`)?.scrollIntoView({ behavior: "smooth", block: "center" })}
                                       >
-                                        <strong>{quoted.sender_id === user.id ? "You" : activeName}</strong>
+                                        <strong>{senderLabel(quoted.sender_id)}</strong>
                                         <span>{quoted.deleted_at ? "Message deleted" : quoted.content}</span>
                                       </span>
                                     )}
@@ -719,7 +867,7 @@ export default function Messenger() {
                   {replyTarget && (
                     <div className="mg-reply-preview">
                       <div className="mg-reply-preview-text">
-                        <strong>Replying to {replyTarget.sender_id === user.id ? "yourself" : activeName}</strong>
+                        <strong>Replying to {replyTarget.sender_id === user.id ? "yourself" : (activeConv?.is_group ? (profiles[replyTarget.sender_id] ? displayName(profiles[replyTarget.sender_id]) : activeLabel) : activeName)}</strong>
                         <span>{replyTarget.deleted_at ? "Message deleted" : replyTarget.content}</span>
                       </div>
                       <button type="button" onClick={() => setReplyTarget(null)} aria-label="Cancel reply">&times;</button>
@@ -733,7 +881,7 @@ export default function Messenger() {
                       value={draft}
                       onChange={(e) => setDraft(e.target.value)}
                       onKeyDown={handleKeyDown}
-                      placeholder={`Message ${activeName}…`}
+                      placeholder={`Message ${activeLabel}…`}
                       rows={1}
                     />
                     <button type="button" className="mg-send-btn" onClick={sendMessage} disabled={!draft.trim() || sending} aria-label="Send">
@@ -756,6 +904,67 @@ export default function Messenger() {
         onConfirm={handleDeleteMessage}
         onCancel={() => setDeleteTarget(null)}
       />
+
+      {groupModalOpen && (
+        <div className="mg-group-overlay" onClick={closeGroupModal}>
+          <div className="mg-group-modal" onClick={(e) => e.stopPropagation()}>
+            <h3>New group</h3>
+            <label className="mg-group-label">Group name</label>
+            <input
+              type="text"
+              className="mg-group-input"
+              value={groupName}
+              onChange={(e) => setGroupName(e.target.value)}
+              placeholder="e.g. A2 Mentoring Circle"
+              maxLength={60}
+            />
+
+            <label className="mg-group-label">Add teachers</label>
+            {selectedMembers.length > 0 && (
+              <div className="mg-group-chips">
+                {selectedMembers.map((m) => (
+                  <span key={m.id} className="mg-group-chip">
+                    {displayName(m)}
+                    <button type="button" onClick={() => removeMember(m.id)} aria-label={`Remove ${displayName(m)}`}>&times;</button>
+                  </span>
+                ))}
+              </div>
+            )}
+            <input
+              type="text"
+              className="mg-group-input"
+              value={memberQuery}
+              onChange={(e) => setMemberQuery(e.target.value)}
+              placeholder="Search teachers by name"
+            />
+            {memberResults.length > 0 && (
+              <div className="mg-group-results">
+                {memberResults.map((p) => (
+                  <button type="button" key={p.id} className="mg-group-result" onClick={() => addMember(p)}>
+                    <span className="mg-avatar mg-avatar--sm">{p.avatar_url ? <img src={p.avatar_url} alt="" /> : initials(displayName(p))}</span>
+                    {displayName(p)}
+                  </button>
+                ))}
+              </div>
+            )}
+
+            <div className="mg-group-actions">
+              <button type="button" className="mg-group-cancel" onClick={closeGroupModal}>Cancel</button>
+              <button
+                type="button"
+                className="mg-group-create"
+                onClick={createGroup}
+                disabled={!groupName.trim() || selectedMembers.length < 2 || creatingGroup}
+              >
+                {creatingGroup ? "Creating…" : "Create group"}
+              </button>
+            </div>
+            {selectedMembers.length > 0 && selectedMembers.length < 2 && (
+              <p className="mg-group-hint">Add at least one more teacher. Groups need 3 people total.</p>
+            )}
+          </div>
+        </div>
+      )}
     </div>
   );
 }
@@ -820,6 +1029,11 @@ const CSS = `
   border: none; outline: none; background: none; font: inherit; font-size: 12.5px; color: var(--ink); width: 100%;
 }
 .mg-search input::placeholder { color: var(--muted); }
+.mg-new-group-btn {
+  flex-shrink: 0; width: 22px; height: 22px; border-radius: 50%; border: none;
+  background: var(--coral); color: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center;
+}
+.mg-new-group-btn svg { width: 12px; height: 12px; }
 .mg-conv-list { flex: 1; overflow-y: auto; padding: 6px 10px 10px; }
 .mg-empty-text { font-size: 13px; color: var(--muted); padding: 20px 14px; }
 .mg-empty-state {
@@ -843,6 +1057,8 @@ const CSS = `
 }
 .mg-avatar img { width: 100%; height: 100%; object-fit: cover; }
 .mg-avatar--sm { width: 32px; height: 32px; font-size: 11px; }
+.mg-avatar--group { background: var(--coral); }
+.mg-avatar--group svg { width: 55%; height: 55%; }
 .mg-conv-text { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
 .mg-conv-row { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; }
 .mg-conv-name { font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 13.5px; color: var(--ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
@@ -874,7 +1090,12 @@ const CSS = `
 }
 .mg-collapse-toggle:hover { background: rgba(43,42,74,0.06); color: var(--ink); }
 .mg-collapse-toggle svg { width: 18px; height: 18px; }
-.mg-thread-name { font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 14px; }
+.mg-thread-text { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
+.mg-thread-name { font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.mg-thread-sub { font-size: 10.5px; color: var(--muted); }
+.mg-sender-name {
+  font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 11px; color: var(--muted); margin: 0 2px 2px;
+}
 
 .mg-error {
   display: flex; align-items: center; justify-content: space-between; gap: 10px;
@@ -989,6 +1210,45 @@ const CSS = `
 .mg-send-btn:not(:disabled):hover { transform: scale(1.06); }
 .mg-send-btn:disabled { opacity: 0.35; cursor: default; }
 .mg-send-btn svg { width: 16px; height: 16px; }
+
+.mg-group-overlay {
+  position: fixed; inset: 0; background: rgba(43,42,74,0.35); backdrop-filter: blur(2px);
+  display: flex; align-items: center; justify-content: center; z-index: 100; padding: 20px;
+}
+.mg-group-modal {
+  width: 100%; max-width: 380px; background: var(--card); border-radius: 18px; padding: 22px;
+  box-shadow: 0 20px 50px rgba(27,42,74,0.25); max-height: 85vh; overflow-y: auto;
+}
+.mg-group-modal h3 { font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 17px; margin: 0 0 16px; color: var(--ink); }
+.mg-group-label { display: block; font-size: 11px; font-weight: 700; letter-spacing: 0.03em; text-transform: uppercase; color: var(--muted); margin: 14px 0 6px; }
+.mg-group-label:first-of-type { margin-top: 0; }
+.mg-group-input {
+  width: 100%; border: 1px solid var(--hair); border-radius: 10px; padding: 10px 12px;
+  font: inherit; font-size: 13.5px; color: var(--ink); outline: none; background: #FDFCFA;
+}
+.mg-group-input:focus { border-color: var(--coral); background: #fff; }
+.mg-group-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 8px; }
+.mg-group-chip {
+  display: inline-flex; align-items: center; gap: 5px; background: var(--coral-pale); color: var(--ink);
+  border-radius: 999px; padding: 4px 6px 4px 10px; font-size: 12px; font-weight: 600;
+}
+.mg-group-chip button { background: none; border: none; color: var(--muted); font-size: 14px; cursor: pointer; line-height: 1; padding: 2px; }
+.mg-group-results {
+  margin-top: 6px; border: 1px solid var(--hair); border-radius: 10px; overflow: hidden; max-height: 160px; overflow-y: auto;
+}
+.mg-group-result {
+  display: flex; align-items: center; gap: 8px; width: 100%; padding: 8px 10px; background: none; border: none;
+  cursor: pointer; text-align: left; font-size: 13px; color: var(--ink);
+}
+.mg-group-result:hover { background: var(--navy-pale); }
+.mg-group-actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 20px; }
+.mg-group-cancel { background: none; border: none; font: inherit; font-size: 13px; font-weight: 600; color: var(--muted); cursor: pointer; padding: 8px 12px; }
+.mg-group-create {
+  border: none; border-radius: 10px; padding: 8px 16px; font: inherit; font-size: 13px; font-weight: 700;
+  background: var(--coral); color: #fff; cursor: pointer;
+}
+.mg-group-create:disabled { opacity: 0.4; cursor: default; }
+.mg-group-hint { font-size: 11px; color: var(--muted); margin: 10px 0 0; }
 
 @media (max-width: 720px) {
   .mg-frame { padding: 0; }
