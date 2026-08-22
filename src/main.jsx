@@ -75,6 +75,14 @@ import storybook45 from './storybookData45.js'
 import storybook46 from './storybookData46.js'
 import storybook47 from './storybookData47.js'
 import storybook48 from './storybookData48.js'
+import storybook49 from './storybookData49.js'
+import storybook50 from './storybookData50.js'
+import storybook51 from './storybookData51.js'
+import storybook52 from './storybookData52.js'
+import storybook53 from './storybookData53.js'
+import storybook54 from './storybookData54.js'
+import storybook55 from './storybookData55.js'
+import storybook56 from './storybookData56.js'
 import Forge from './Forge.jsx'
 import ForgeHub from './ForgeHub.jsx'
 import ForgeTrack from './ForgeTrack.jsx'
@@ -173,6 +181,14 @@ createRoot(document.getElementById('root')).render(
             <Route path="/library/storybook-46" element={<StoryBook book={storybook46} />} />
             <Route path="/library/storybook-47" element={<StoryBook book={storybook47} />} />
             <Route path="/library/storybook-48" element={<StoryBook book={storybook48} />} />
+            <Route path="/library/storybook-49" element={<StoryBook book={storybook49} />} />
+            <Route path="/library/storybook-50" element={<StoryBook book={storybook50} />} />
+            <Route path="/library/storybook-51" element={<StoryBook book={storybook51} />} />
+            <Route path="/library/storybook-52" element={<StoryBook book={storybook52} />} />
+            <Route path="/library/storybook-53" element={<StoryBook book={storybook53} />} />
+            <Route path="/library/storybook-54" element={<StoryBook book={storybook54} />} />
+            <Route path="/library/storybook-55" element={<StoryBook book={storybook55} />} />
+            <Route path="/library/storybook-56" element={<StoryBook book={storybook56} />} />
             <Route path="/library/search" element={<SearchLookup />} />
             <Route path="/library/community" element={<Community />} />
             <Route path="/library/subscription" element={<Subscription />} />

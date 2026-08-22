@@ -555,6 +555,14 @@ const BOOK_AGE_TRACK = {
   "storybook-46": "Adults",
   "storybook-47": "Adults",
   "storybook-48": "Adults",
+  "storybook-49": "Teens",
+  "storybook-50": "Teens",
+  "storybook-51": "Teens",
+  "storybook-52": "Teens",
+  "storybook-53": "Teens",
+  "storybook-54": "Teens",
+  "storybook-55": "Teens",
+  "storybook-56": "Teens",
   storybook: "Teens",
   "storybook-2": "Teens",
   "storybook-3": "Teens",
@@ -2832,6 +2840,14 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .cover--wisteria { background: linear-gradient(160deg, #E3DCF2 0%, #9C8AD1 100%); }
 .cover--marigold { background: linear-gradient(160deg, #FBE2AE 0%, #E8A324 100%); }
 .cover--cream { background: linear-gradient(160deg, #FBF7EC 0%, #E5D9B6 100%); }
+.cover--emerald { background: linear-gradient(160deg, #CDEEDA 0%, #34A66B 100%); }
+.cover--burgundy { background: linear-gradient(160deg, #EAD0D6 0%, #8C3B4E 100%); }
+.cover--turquoise { background: linear-gradient(160deg, #C8F0EC 0%, #2FA79A 100%); }
+.cover--charcoal { background: linear-gradient(160deg, #DADCE0 0%, #5A6270 100%); }
+.cover--goldenrod { background: linear-gradient(160deg, #F9E7AE 0%, #D8A423 100%); }
+.cover--indigo { background: linear-gradient(160deg, #D8D6F5 0%, #5C50B0 100%); }
+.cover--papaya { background: linear-gradient(160deg, #FFDCC0 0%, #F0813F 100%); }
+.cover--linen { background: linear-gradient(160deg, #F7F1E6 0%, #D9C7A6 100%); }
 
 .theme-pro .cover--coral { background: #fff; border-top: 4px solid #D85A30; }
 .theme-pro .cover--teal { background: #fff; border-top: 4px solid #0F6E56; }
@@ -2881,6 +2897,14 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .theme-pro .cover--wisteria { background: #fff; border-top: 4px solid #6E5BA8; }
 .theme-pro .cover--marigold { background: #fff; border-top: 4px solid #B9800E; }
 .theme-pro .cover--cream { background: #fff; border-top: 4px solid #A6935F; }
+.theme-pro .cover--emerald { background: #fff; border-top: 4px solid #1F8552; }
+.theme-pro .cover--burgundy { background: #fff; border-top: 4px solid #6B2938; }
+.theme-pro .cover--turquoise { background: #fff; border-top: 4px solid #1F8479; }
+.theme-pro .cover--charcoal { background: #fff; border-top: 4px solid #414753; }
+.theme-pro .cover--goldenrod { background: #fff; border-top: 4px solid #A6820E; }
+.theme-pro .cover--indigo { background: #fff; border-top: 4px solid #453A8F; }
+.theme-pro .cover--papaya { background: #fff; border-top: 4px solid #C4611F; }
+.theme-pro .cover--linen { background: #fff; border-top: 4px solid #A68B5C; }
 
 .premium-badge {
   position: absolute;
