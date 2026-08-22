@@ -15,8 +15,8 @@ export default {
     definition: "The past continuous shows an action that was in progress at a past time.",
     timelineNote: "A long bar sits before now, often crossed by a short past event.",
     usages: [
-      { label: "Action in progress at a past time", example: "I was sleeping at 11 p.m." },
-      { label: "Background action", example: "I was cooking when she called." },
+      { label: "Action in progress at a past time", examples: ["I was sleeping at 11 p.m.", "They were eating dinner at 7.", "She was driving to work at 8 a.m."] },
+      { label: "Background action", examples: ["I was cooking when she called.", "We were watching TV when the power went out.", "He was walking home when it started to rain."] },
     ],
     form: {
       affirmative: ["Subject + was/were + verb-ing"],

@@ -15,9 +15,9 @@ export default {
     definition: "The present perfect links a past action to the present, especially when the exact finished time is not stated.",
     timelineNote: "A past point has an arrow pointing to the present.",
     usages: [
-      { label: "Life experience", example: "I have ridden a horse." },
-      { label: "Result now", example: "She has lost her keys." },
-      { label: "Unfinished time", example: "We have studied a lot this week." },
+      { label: "Life experience", examples: ["I have ridden a horse.", "She has traveled to five countries.", "We have never tried sushi."] },
+      { label: "Result now", examples: ["She has lost her keys.", "He has broken his phone.", "They have finished the project."] },
+      { label: "Unfinished time", examples: ["We have studied a lot this week.", "I have read three books this month.", "She has called me twice today."] },
     ],
     form: {
       affirmative: ["Subject + have/has + past participle"],

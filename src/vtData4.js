@@ -15,8 +15,8 @@ export default {
     definition: "This tense shows an activity that started in the past and continues to the present, or has recently stopped with present evidence.",
     timelineNote: "A long bar runs from the past to now.",
     usages: [
-      { label: "Duration until now", example: "I have been working here for two years." },
-      { label: "Recent activity with a visible result", example: "He has been running, so he is tired." },
+      { label: "Duration until now", examples: ["I have been working here for two years.", "She has been learning English since 2020.", "They have been living in Manila for six months."] },
+      { label: "Recent activity with a visible result", examples: ["He has been running, so he is tired.", "Her eyes are red because she has been crying.", "The ground is wet because it has been raining."] },
     ],
     form: {
       affirmative: ["Subject + have/has been + verb-ing"],

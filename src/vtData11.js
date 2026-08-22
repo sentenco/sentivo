@@ -15,8 +15,8 @@ export default {
     definition: "Future perfect describes an action that will be completed before a future deadline or point.",
     timelineNote: "A future completed point sits before another future point.",
     usages: [
-      { label: "Completed before a future time", example: "I will have finished the report by Friday." },
-      { label: "Total before a future point", example: "She will have lived here for ten years by 2030." },
+      { label: "Completed before a future time", examples: ["I will have finished the report by Friday.", "He will have graduated by next June.", "They will have painted the house by the weekend."] },
+      { label: "Total before a future point", examples: ["She will have lived here for ten years by 2030.", "By December, he will have worked here for a decade.", "By next year, we will have been married for twenty years."] },
     ],
     form: {
       affirmative: ["Subject + will have + past participle"],

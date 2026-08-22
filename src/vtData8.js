@@ -15,8 +15,8 @@ export default {
     definition: "This tense shows an activity that continued up to a past moment.",
     timelineNote: "A long bar ends at another past point.",
     usages: [
-      { label: "Duration before a past event", example: "I had been studying for two hours before dinner started." },
-      { label: "Cause/background before a past result", example: "He was tired because he had been running." },
+      { label: "Duration before a past event", examples: ["I had been studying for two hours before dinner started.", "She had been waiting for an hour before the bus came.", "They had been driving for six hours before they stopped."] },
+      { label: "Cause/background before a past result", examples: ["He was tired because he had been running.", "Her hands were dirty because she had been gardening.", "The kids were sleepy because they had been playing all day."] },
     ],
     form: {
       affirmative: ["Subject + had been + verb-ing"],

@@ -15,8 +15,8 @@ export default {
     definition: "The past simple shows completed actions in the past.",
     timelineNote: "One finished point sits before now.",
     usages: [
-      { label: "Finished past event", example: "I visited my grandmother yesterday." },
-      { label: "Sequence of past events", example: "I woke up, ate breakfast, and left." },
+      { label: "Finished past event", examples: ["I visited my grandmother yesterday.", "She called me last night.", "They moved to Cebu in 2019."] },
+      { label: "Sequence of past events", examples: ["I woke up, ate breakfast, and left.", "He opened the door, turned on the light, and sat down.", "She finished her homework, packed her bag, and went to bed."] },
     ],
     form: {
       affirmative: ["Subject + past verb"],

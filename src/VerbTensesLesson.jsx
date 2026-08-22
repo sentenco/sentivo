@@ -3,13 +3,28 @@ import { useParams } from "react-router-dom";
 import { getLessonByCode } from "./vtTracks";
 import VTTimeline from "./VTTimeline";
 
-const DISCUSSION_SLIDES = ["cover", "warmup", "definition", "timeline", "usages", "form", "signals", "ccq", "recap"];
+// Comic-book theme, matching the Parts of Speech course. One accent per
+// time-unit (Present/Past/Future) instead of per-tense, since 12 distinct
+// colors would be more noise than signal here -- the 3-unit grouping is
+// already the course's own natural structure (tense.groupTitle).
+function unitAccent(tense) {
+  if (tense.number <= 4) return "#2A9D8F"; // Present -- fresh/now
+  if (tense.number <= 8) return "#E76F51"; // Past -- warm/faded
+  return "#5E60CE"; // Future -- forward-looking
+}
+
+function buildDiscussionSlides(lesson) {
+  const slides = ["cover", "warmup", "definition", "timeline"];
+  lesson.usages.forEach((_, i) => slides.push(`usage${i}`));
+  slides.push("form", "signals", "ccq", "recap");
+  return slides;
+}
 const TEST_SLIDES = ["cover", "partA", "partB", "partC", "partD", "partE", "score"];
 
 function CoverSlide({ tense, lesson }) {
   return (
     <div className="vtl-slide vtl-slide--cover">
-      <span className="vtl-kind-badge">{lesson.kind}</span>
+      <span className="vtl-kind-badge">{lesson.kind === "Discussion" ? "Let's Talk!" : "Quiz Time!"}</span>
       <h2 className="vtl-cover-title">{lesson.title}</h2>
       <p className="vtl-cover-sub">Tense {tense.number} of 12 · {tense.groupTitle}</p>
       {lesson.kind !== "Discussion" && <p className="vtl-cover-line">{lesson.testGoal}</p>}
@@ -20,8 +35,10 @@ function CoverSlide({ tense, lesson }) {
 function WarmupSlide({ lesson }) {
   return (
     <div className="vtl-slide">
-      <h3 className="vtl-h">Warm-up</h3>
-      <p className="vtl-cover-question">“{lesson.leadIn}”</p>
+      <span className="vtl-eyebrow">Warm-up</span>
+      <div className="vtl-bubble vtl-bubble--solo">
+        <p className="vtl-bubble-text vtl-bubble-text--big">“{lesson.leadIn}”</p>
+      </div>
     </div>
   );
 }
@@ -45,15 +62,18 @@ function TimelineSlide({ tense, lesson }) {
   );
 }
 
-function UsagesSlide({ lesson }) {
+// One usage per slide, up to 3 examples each -- never all usages crammed
+// onto one screen.
+function UsageSlide({ lesson, index }) {
+  const usage = lesson.usages[index];
   return (
     <div className="vtl-slide">
-      <h3 className="vtl-h">Main usages</h3>
-      <div className="vtl-usage-list">
-        {lesson.usages.map((u, i) => (
-          <div key={i} className="vtl-usage-row">
-            <span className="vtl-usage-label">{u.label}</span>
-            <span className="vtl-usage-example">“{u.example}”</span>
+      <span className="vtl-usage-count">Usage {index + 1} of {lesson.usages.length}</span>
+      <h3 className="vtl-h">{usage.label}</h3>
+      <div className="vtl-example-list">
+        {usage.examples.map((ex, i) => (
+          <div key={i} className="vtl-bubble">
+            <p className="vtl-bubble-text">{ex}</p>
           </div>
         ))}
       </div>
@@ -238,21 +258,18 @@ function ScoreSlide({ tense, lesson }) {
 }
 
 function renderSlide(slideType, tense, lesson) {
-  switch (slideType) {
-    case "cover": return <CoverSlide tense={tense} lesson={lesson} />;
-    case "warmup": return <WarmupSlide lesson={lesson} />;
-    case "definition": return <DefinitionSlide lesson={lesson} />;
-    case "timeline": return <TimelineSlide tense={tense} lesson={lesson} />;
-    case "usages": return <UsagesSlide lesson={lesson} />;
-    case "form": return <FormSlide lesson={lesson} />;
-    case "signals": return <SignalsSlide lesson={lesson} />;
-    case "ccq": return <CcqSlide lesson={lesson} />;
-    case "recap": return <RecapSlide tense={tense} lesson={lesson} />;
-    case "partA": case "partB": case "partC": case "partD": case "partE":
-      return <PartSlide lesson={lesson} partKey={slideType.replace("part", "")} />;
-    case "score": return <ScoreSlide tense={tense} lesson={lesson} />;
-    default: return null;
-  }
+  if (slideType === "cover") return <CoverSlide tense={tense} lesson={lesson} />;
+  if (slideType === "warmup") return <WarmupSlide lesson={lesson} />;
+  if (slideType === "definition") return <DefinitionSlide lesson={lesson} />;
+  if (slideType === "timeline") return <TimelineSlide tense={tense} lesson={lesson} />;
+  if (slideType.startsWith("usage")) return <UsageSlide lesson={lesson} index={Number(slideType.replace("usage", ""))} />;
+  if (slideType === "form") return <FormSlide lesson={lesson} />;
+  if (slideType === "signals") return <SignalsSlide lesson={lesson} />;
+  if (slideType === "ccq") return <CcqSlide lesson={lesson} />;
+  if (slideType === "recap") return <RecapSlide tense={tense} lesson={lesson} />;
+  if (slideType.startsWith("part")) return <PartSlide lesson={lesson} partKey={slideType.replace("part", "")} />;
+  if (slideType === "score") return <ScoreSlide tense={tense} lesson={lesson} />;
+  return null;
 }
 
 export default function VerbTensesLesson() {
@@ -272,26 +289,28 @@ export default function VerbTensesLesson() {
   }
 
   const { tense, lesson } = found;
-  const slideTypes = lesson.kind === "Discussion" ? DISCUSSION_SLIDES : TEST_SLIDES;
+  const slideTypes = lesson.kind === "Discussion" ? buildDiscussionSlides(lesson) : TEST_SLIDES;
   const slideType = slideTypes[slideIdx];
   const isFirst = slideIdx === 0;
   const isLast = slideIdx === slideTypes.length - 1;
+  const accent = unitAccent(tense);
 
   return (
     <div className="vtl-shell">
       <style>{CSS}</style>
       <header className="vtl-topbar">
+        <span className="vtl-brand"><img src="/logo-sentivo.png" alt="" className="vtl-brand-logo" />entivo</span>
         <span className="vtl-topbar-title">{lesson.code} · {lesson.title}</span>
       </header>
 
       <div className="vtl-stage">
-        <div className="vtl-deck">
+        <div className="vtl-deck" style={{ "--unit-accent": accent }}>
           <div className="vtl-deck-body" key={slideIdx}>
             {renderSlide(slideType, tense, lesson)}
           </div>
           <div className="vtl-nav-row">
             <button type="button" className="vtl-nav-btn" onClick={() => setSlideIdx((i) => i - 1)} disabled={isFirst}>
-              ← Previous
+              ← Back
             </button>
             <div className="vtl-nav-dots">
               {slideTypes.map((_, i) => (
@@ -314,17 +333,20 @@ export default function VerbTensesLesson() {
 }
 
 const CSS = `
-@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Quicksand:wght@500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:wght@400;700&family=Fredoka:wght@700&display=swap');
 
 .vtl-shell {
   width: 100%;
   height: 100vh;
-  background: radial-gradient(circle at 15% 0%, #F1EFFC 0%, #E4E0FA 50%, #D8D2F6 100%);
+  background:
+    radial-gradient(#00000012 1.4px, transparent 1.5px) 0 0/16px 16px,
+    #FFF6E9;
   display: flex;
   flex-direction: column;
   align-items: center;
   box-sizing: border-box;
   overflow: hidden;
+  font-family: 'Comic Neue', cursive, sans-serif;
 }
 .vtl-shell * { box-sizing: border-box; }
 
@@ -333,16 +355,27 @@ const CSS = `
   max-width: 1120px;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   padding: 14px 24px 0;
   flex-shrink: 0;
 }
+.vtl-brand {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: 0.01em;
+  color: #2B2A4A;
+}
+.vtl-brand-logo { height: 24px; width: auto; display: block; margin-right: -4px; }
 .vtl-topbar-title {
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'Comic Neue', cursive, sans-serif;
   font-weight: 700;
   font-size: 12px;
   letter-spacing: 0.5px;
-  color: #5B5590;
+  color: #6B5B3D;
 }
 
 .vtl-stage {
@@ -356,8 +389,8 @@ const CSS = `
 }
 
 .vtl-missing {
-  font-family: 'Quicksand', sans-serif;
-  color: #6B5590;
+  font-family: 'Comic Neue', cursive, sans-serif;
+  color: #6B5B3D;
   text-align: center;
   margin-top: 60px;
 }
@@ -367,10 +400,10 @@ const CSS = `
   display: flex;
   flex-direction: column;
   background: #FFFFFF;
-  border: 1px solid #DAD4F5;
-  border-radius: 22px;
-  padding: 20px 56px;
-  box-shadow: 0 20px 50px rgba(43,37,96,0.12);
+  border: 4px solid #1A1A1A;
+  border-radius: 18px;
+  padding: 22px 52px;
+  box-shadow: 9px 9px 0 #1A1A1A;
   min-height: 0;
 }
 
@@ -383,266 +416,275 @@ const CSS = `
   text-align: center;
   min-height: 0;
   overflow-y: auto;
-  gap: 22px;
+  gap: 18px;
   padding: 8px 0;
 }
 
-.vtl-slide { display: flex; flex-direction: column; align-items: center; gap: 18px; width: 100%; }
-.vtl-slide--cover { gap: 16px; }
+.vtl-slide { display: flex; flex-direction: column; align-items: center; gap: 16px; width: 100%; }
+.vtl-slide--cover { gap: 12px; }
+.vtl-slide--part { justify-content: flex-start; }
+
+.vtl-eyebrow {
+  font-family: 'Comic Neue', cursive, sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  color: var(--unit-accent, #5E60CE);
+}
 
 .vtl-kind-badge {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 700;
-  font-size: 13px;
-  letter-spacing: 0.8px;
-  text-transform: uppercase;
-  color: #5B4FE0;
-  background: rgba(91,79,224,0.12);
+  font-family: 'Bangers', cursive;
+  font-weight: 400;
+  font-size: 20px;
+  letter-spacing: 0.5px;
+  color: #FFFFFF;
+  background: var(--unit-accent, #5E60CE);
+  border: 3px solid #1A1A1A;
   border-radius: 999px;
-  padding: 6px 16px;
+  padding: 4px 20px 6px;
+  transform: rotate(-3deg);
+  display: inline-block;
 }
 .vtl-cover-title {
-  font-family: 'Fredoka', sans-serif;
-  font-weight: 700;
-  font-size: 60px;
-  color: #2B2560;
-  margin: 0;
-  line-height: 1.05;
+  font-family: 'Bangers', cursive;
+  font-weight: 400;
+  font-size: 58px;
+  color: #1A1A1A;
+  margin: 4px 0 0;
+  line-height: 1;
+  letter-spacing: 0.5px;
+  text-shadow: 3px 3px 0 var(--unit-accent, #5E60CE);
 }
 .vtl-cover-sub {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 600;
-  font-size: 16px;
-  color: #8A82C9;
+  font-family: 'Comic Neue', cursive, sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  color: #8A7B5C;
   margin: 0;
 }
 .vtl-cover-line {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 600;
-  font-size: 20px;
-  color: #4B4380;
-  line-height: 1.5;
-  margin: 0;
-  max-width: 640px;
-}
-.vtl-cover-question {
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'Comic Neue', cursive, sans-serif;
   font-weight: 700;
-  font-size: 34px;
-  font-style: italic;
-  color: #2B2560;
-  margin: 0;
-  max-width: 780px;
-  line-height: 1.3;
-}
-.vtl-warmup-note {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 500;
-  font-size: 16px;
-  color: #8A82C9;
-  margin: 0;
+  font-size: 18px;
+  color: #3A3226;
+  line-height: 1.5;
+  margin: 6px 0 0;
+  max-width: 620px;
 }
 
 .vtl-h {
-  font-family: 'Fredoka', sans-serif;
-  font-weight: 700;
-  font-size: 32px;
-  color: #2B2560;
+  font-family: 'Bangers', cursive;
+  font-weight: 400;
+  font-size: 34px;
+  color: #1A1A1A;
   margin: 0;
+  letter-spacing: 0.5px;
 }
 
 .vtl-definition {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 600;
-  font-size: 26px;
-  color: #4B4380;
-  line-height: 1.5;
+  font-family: 'Comic Neue', cursive, sans-serif;
+  font-weight: 700;
+  font-size: 21px;
+  color: #3A3226;
+  line-height: 1.55;
   margin: 0;
-  max-width: 760px;
+  max-width: 700px;
 }
 
-.vtl-timeline-wrap { background: #F5F3FD; border-radius: 14px; padding: 22px; width: 100%; max-width: 620px; }
-.vtl-timeline-note {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 500;
+/* ---- speech bubbles, shared with the warm-up question and usage examples ---- */
+.vtl-bubble {
+  position: relative;
+  background: #FFFFFF;
+  border: 3px solid var(--unit-accent, #5E60CE);
+  border-radius: 18px;
+  padding: 12px 20px;
+  max-width: 560px;
+  align-self: center;
+}
+.vtl-bubble--solo { max-width: 720px; }
+.vtl-bubble-text {
+  font-family: 'Comic Neue', cursive, sans-serif;
+  font-weight: 700;
   font-size: 18px;
-  color: #6B5590;
+  color: #1A1A1A;
+  margin: 0;
+}
+.vtl-bubble-text--big { font-size: 24px; font-style: italic; }
+
+.vtl-usage-count {
+  font-family: 'Comic Neue', cursive, sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--unit-accent, #5E60CE);
+}
+.vtl-example-list { display: flex; flex-direction: column; gap: 12px; width: 100%; max-width: 620px; align-items: center; }
+
+.vtl-timeline-wrap { background: #FFF6E9; border: 3px solid #1A1A1A; border-radius: 14px; padding: 20px; width: 100%; max-width: 620px; }
+.vtl-timeline-note {
+  font-family: 'Comic Neue', cursive, sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  color: #6B5B3D;
   margin: 0;
   max-width: 620px;
 }
 
-.vtl-usage-list { display: flex; flex-direction: column; gap: 10px; width: 100%; max-width: 680px; }
-.vtl-usage-row {
-  display: flex;
-  align-items: baseline;
-  gap: 10px;
-  background: #F5F3FD;
-  border-radius: 10px;
-  padding: 12px 16px;
-  text-align: left;
-}
-.vtl-usage-label {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 700;
-  font-size: 14px;
-  color: #5B4FE0;
-  white-space: nowrap;
-}
-.vtl-usage-example {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 500;
-  font-size: 18px;
-  font-style: italic;
-  color: #2B2560;
-}
-
-.vtl-form-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; width: 100%; max-width: 760px; }
-.vtl-form-col { background: #F5F3FD; border-radius: 12px; padding: 14px 16px; display: flex; flex-direction: column; gap: 8px; text-align: left; }
+.vtl-form-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; width: 100%; max-width: 780px; }
+.vtl-form-col { background: #FFF6E9; border: 2.5px solid #1A1A1A; border-radius: 12px; padding: 14px 16px; display: flex; flex-direction: column; gap: 8px; text-align: left; }
 .vtl-form-label {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 700;
-  font-size: 12.5px;
-  text-transform: uppercase;
+  font-family: 'Bangers', cursive;
+  font-weight: 400;
+  font-size: 14px;
   letter-spacing: 0.4px;
-  color: #5B4FE0;
+  color: var(--unit-accent, #5E60CE);
 }
 .vtl-form-line {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 500;
-  font-size: 15.5px;
-  color: #2B2560;
+  font-family: 'Comic Neue', cursive, sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  color: #1A1A1A;
   margin: 0;
 }
 
 .vtl-two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 34px; width: 100%; max-width: 860px; text-align: left; }
 .vtl-two-col-half { display: flex; flex-direction: column; gap: 12px; align-items: flex-start; }
-.vtl-two-col-half .vtl-h { font-size: 22px; }
+.vtl-two-col-half .vtl-h { font-size: 24px; }
 
 .vtl-chip-row { display: flex; flex-wrap: wrap; gap: 8px; }
 .vtl-chip {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 600;
-  font-size: 15px;
-  color: #5B4FE0;
-  background: rgba(91,79,224,0.12);
+  font-family: 'Comic Neue', cursive, sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  color: #1A1A1A;
+  background: #FFF6E9;
+  border: 2px solid var(--unit-accent, #5E60CE);
   border-radius: 999px;
-  padding: 6px 14px;
+  padding: 5px 14px;
 }
 
 .vtl-list {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 500;
-  font-size: 16.5px;
-  color: #4B4380;
-  line-height: 1.55;
+  font-family: 'Comic Neue', cursive, sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  color: #3A3226;
+  line-height: 1.6;
   margin: 0;
   padding-left: 20px;
 }
 
 .vtl-recap-line {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 500;
-  font-size: 19px;
-  color: #4B4380;
+  font-family: 'Comic Neue', cursive, sans-serif;
+  font-weight: 700;
+  font-size: 17px;
+  color: #3A3226;
   line-height: 1.5;
   margin: 0;
   max-width: 700px;
 }
 
 .vtl-part-badge {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 700;
-  font-size: 13px;
-  letter-spacing: 0.8px;
-  text-transform: uppercase;
-  color: #5B4FE0;
-  background: rgba(91,79,224,0.12);
+  font-family: 'Bangers', cursive;
+  font-weight: 400;
+  font-size: 18px;
+  letter-spacing: 0.4px;
+  color: #FFFFFF;
+  background: var(--unit-accent, #5E60CE);
+  border: 3px solid #1A1A1A;
   border-radius: 999px;
-  padding: 6px 16px;
+  padding: 3px 18px 5px;
+  transform: rotate(-2deg);
 }
-
-.vtl-slide--part { justify-content: flex-start; }
 
 .vtl-quiz-list {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 12px;
   width: 100%;
   max-width: 840px;
   text-align: left;
 }
 .vtl-quiz-item {
-  background: #F5F3FD;
-  border-radius: 12px;
+  background: #FFF6E9;
+  border: 3px solid #1A1A1A;
+  border-radius: 14px;
   padding: 14px 18px;
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 .vtl-quiz-q {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 600;
-  font-size: 18px;
-  color: #2B2560;
+  font-family: 'Comic Neue', cursive, sans-serif;
+  font-weight: 700;
+  font-size: 17px;
+  color: #1A1A1A;
   margin: 0;
 }
-.vtl-quiz-q--error { color: #B0413E; text-decoration: line-through; text-decoration-color: rgba(176,65,62,0.4); }
+.vtl-quiz-q--error { color: #ED1C24; text-decoration: line-through; }
 
 .vtl-quiz-options { display: flex; flex-wrap: wrap; gap: 8px; }
 .vtl-quiz-opt {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 600;
-  font-size: 15px;
-  color: #2B2560;
+  font-family: 'Comic Neue', cursive, sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  color: #1A1A1A;
   background: #FFFFFF;
-  border: 1.5px solid #DAD4F5;
-  border-radius: 10px;
-  padding: 8px 14px;
+  border: 2.5px solid #1A1A1A;
+  border-radius: 8px;
+  padding: 7px 14px;
   cursor: pointer;
+  box-shadow: 3px 3px 0 #1A1A1A;
 }
+.vtl-quiz-opt:active:not(:disabled) { box-shadow: 0 0 0 #1A1A1A; transform: translate(3px, 3px); }
 .vtl-quiz-opt:disabled { cursor: default; }
-.vtl-quiz-opt.is-correct { background: #E6F6EC; border-color: #55B983; color: #1F6B41; }
-.vtl-quiz-opt.is-wrong { background: #FBEAEA; border-color: #D9807D; color: #A8382F; }
+.vtl-quiz-opt.is-correct { background: #2EC4B6; color: #fff; }
+.vtl-quiz-opt.is-wrong { background: #ED1C24; color: #fff; }
 
 .vtl-reveal-btn {
   align-self: flex-start;
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'Comic Neue', cursive, sans-serif;
   font-weight: 700;
-  font-size: 14px;
-  color: #5B4FE0;
-  background: #FFFFFF;
-  border: 1.5px solid #DAD4F5;
-  border-radius: 999px;
-  padding: 7px 16px;
+  font-size: 13.5px;
+  color: #1A1A1A;
+  background: #FFC300;
+  border: 2.5px solid #1A1A1A;
+  border-radius: 8px;
+  padding: 6px 14px;
   cursor: pointer;
+  box-shadow: 3px 3px 0 #1A1A1A;
 }
+.vtl-reveal-btn:active { box-shadow: 0 0 0 #1A1A1A; transform: translate(3px, 3px); }
 .vtl-reveal-block { display: flex; flex-direction: column; gap: 4px; }
 .vtl-reveal-block p, .vtl-reveal-correct {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 600;
-  font-size: 17px;
-  color: #1F6B41;
+  font-family: 'Comic Neue', cursive, sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  color: #1F8A63;
   margin: 0;
 }
 
-.vtl-speaking-list { max-width: 720px; font-size: 20px; }
+.vtl-speaking-list { max-width: 720px; font-size: 18px; }
 .vtl-speaking-list li { margin-bottom: 8px; }
 
-.vtl-nav-row { display: flex; align-items: center; justify-content: space-between; padding-top: 14px; border-top: 1px solid #EEECFB; flex-shrink: 0; }
+.vtl-nav-row { display: flex; align-items: center; justify-content: space-between; padding-top: 16px; border-top: 3px dashed #E4D5B0; flex-shrink: 0; }
 .vtl-nav-btn {
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'Comic Neue', cursive, sans-serif;
   font-weight: 700;
   font-size: 14px;
-  color: #2B2560;
-  background: #F5F3FD;
-  border: 1px solid #DAD4F5;
-  border-radius: 999px;
+  color: #1A1A1A;
+  background: #FFFFFF;
+  border: 2.5px solid #1A1A1A;
+  border-radius: 10px;
   padding: 9px 18px;
   cursor: pointer;
+  box-shadow: 4px 4px 0 #1A1A1A;
 }
-.vtl-nav-btn--primary { background: #5B4FE0; color: #FFFFFF; border-color: #5B4FE0; }
-.vtl-nav-btn:disabled { opacity: 0.35; cursor: default; }
-.vtl-nav-dots { display: flex; flex-wrap: wrap; justify-content: center; gap: 5px; max-width: 340px; }
-.vtl-nav-dot { width: 6px; height: 6px; border-radius: 999px; background: #DAD4F5; }
-.vtl-nav-dot.is-active { width: 16px; background: #5B4FE0; }
+.vtl-nav-btn:active:not(:disabled) { box-shadow: 0 0 0 #1A1A1A; transform: translate(4px, 4px); }
+.vtl-nav-btn--primary { background: #FFC300; }
+.vtl-nav-btn:disabled { opacity: 0.35; cursor: default; box-shadow: 4px 4px 0 #1A1A1A; }
+.vtl-nav-dots { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; max-width: 340px; }
+.vtl-nav-dot { width: 8px; height: 8px; border-radius: 50%; background: #FFFFFF; border: 2px solid #1A1A1A; }
+.vtl-nav-dot.is-active { background: var(--unit-accent, #5E60CE); }
 `;

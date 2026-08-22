@@ -15,8 +15,8 @@ export default {
     definition: "This tense shows how long an action will have continued before a future time.",
     timelineNote: "A long bar runs from an earlier time to a future point.",
     usages: [
-      { label: "Duration until a future point", example: "By June, I will have been working here for five years." },
-      { label: "Emphasis on the length of a future activity", example: "Next month, they will have been living in Manila for a year." },
+      { label: "Duration until a future point", examples: ["By June, I will have been working here for five years.", "By next year, she will have been teaching for a decade.", "By the time we land, we will have been flying for twelve hours."] },
+      { label: "Emphasis on the length of a future activity", examples: ["Next month, they will have been living in Manila for a year.", "By December, he will have been studying English for two years.", "By the end of the trip, we will have been traveling for three weeks."] },
     ],
     form: {
       affirmative: ["Subject + will have been + verb-ing"],

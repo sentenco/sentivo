@@ -15,9 +15,9 @@ export default {
     definition: "The present continuous shows actions in progress now or around now.",
     timelineNote: "A long bar crosses the present moment.",
     usages: [
-      { label: "Happening now", example: "I am studying now." },
-      { label: "Temporary situations", example: "She is staying with her aunt this week." },
-      { label: "Changing situations", example: "The weather is getting hotter." },
+      { label: "Happening now", examples: ["I am studying now.", "They are watching a movie.", "He is cooking dinner right now."] },
+      { label: "Temporary situations", examples: ["She is staying with her aunt this week.", "He is working from home this month.", "We are renting an apartment until we move."] },
+      { label: "Changing situations", examples: ["The weather is getting hotter.", "Prices are rising every year.", "Her English is improving quickly."] },
     ],
     form: {
       affirmative: ["Subject + am/is/are + verb-ing"],

@@ -15,9 +15,9 @@ export default {
     definition: "Future simple expresses future actions, especially predictions, promises, and decisions made at the moment of speaking.",
     timelineNote: "A point sits after now.",
     usages: [
-      { label: "Prediction", example: "It will rain tomorrow." },
-      { label: "Instant decision", example: "I'll answer the phone." },
-      { label: "Offer / promise", example: "I'll help you." },
+      { label: "Prediction", examples: ["It will rain tomorrow.", "Prices will go up next year.", "She will pass the exam."] },
+      { label: "Instant decision", examples: ["I'll answer the phone.", "I'll take the blue one.", "We'll walk instead of driving."] },
+      { label: "Offer / promise", examples: ["I'll help you.", "I'll call you when I arrive.", "She'll pick you up at six."] },
     ],
     form: {
       affirmative: ["Subject + will + base verb"],

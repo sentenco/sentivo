@@ -15,9 +15,9 @@ export default {
     definition: "The present simple shows regular actions, habits, facts, and schedules.",
     timelineNote: "Repeated dots across the present line show a repeated or general action.",
     usages: [
-      { label: "Habits and routines", example: "I walk to school every day." },
-      { label: "Facts and truths", example: "Water boils at 100 degrees." },
-      { label: "Schedules", example: "The class starts at 9 a.m." },
+      { label: "Habits and routines", examples: ["I walk to school every day.", "She drinks coffee every morning.", "We play tennis on weekends."] },
+      { label: "Facts and truths", examples: ["Water boils at 100 degrees.", "The sun rises in the east.", "Cats are mammals."] },
+      { label: "Schedules", examples: ["The class starts at 9 a.m.", "The train leaves at noon.", "The store closes at 8 p.m."] },
     ],
     form: {
       affirmative: ["I / You / We / They work.", "He / She works."],

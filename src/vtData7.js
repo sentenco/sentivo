@@ -15,8 +15,8 @@ export default {
     definition: "The past perfect shows the earlier of two past actions.",
     timelineNote: "One past point sits before another past point.",
     usages: [
-      { label: "Earlier past action", example: "I had finished my homework before my friend arrived." },
-      { label: "Reported experience before a past moment", example: "She had never seen snow before that trip." },
+      { label: "Earlier past action", examples: ["I had finished my homework before my friend arrived.", "She had left the office before the storm started.", "They had eaten dinner before the movie began."] },
+      { label: "Reported experience before a past moment", examples: ["She had never seen snow before that trip.", "He had never flown before that flight.", "We had never met before that party."] },
     ],
     form: {
       affirmative: ["Subject + had + past participle"],

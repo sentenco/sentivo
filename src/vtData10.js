@@ -15,8 +15,8 @@ export default {
     definition: "Future continuous describes an action that will be happening at a particular time in the future.",
     timelineNote: "A long bar crosses a future point.",
     usages: [
-      { label: "Action in progress in the future", example: "I will be studying at 8 p.m." },
-      { label: "Polite inquiry about plans", example: "Will you be using your laptop later?" },
+      { label: "Action in progress in the future", examples: ["I will be studying at 8 p.m.", "They will be traveling this time next week.", "She will be presenting at the conference tomorrow morning."] },
+      { label: "Polite inquiry about plans", examples: ["Will you be using your laptop later?", "Will you be joining us for dinner?", "Will you be needing the car tonight?"] },
     ],
     form: {
       affirmative: ["Subject + will be + verb-ing"],
