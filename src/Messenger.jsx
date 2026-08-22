@@ -181,17 +181,22 @@ export default function Messenger() {
   const [selectedMembers, setSelectedMembers] = useState([]);
   const [creatingGroup, setCreatingGroup] = useState(false);
   const [groupMembersById, setGroupMembersById] = useState({});
+  const [membersModalOpen, setMembersModalOpen] = useState(false);
+  const [addMemberQuery, setAddMemberQuery] = useState("");
+  const [addMemberResults, setAddMemberResults] = useState([]);
+  const [memberActionTarget, setMemberActionTarget] = useState(null);
   const threadEndRef = useRef(null);
   const pollRef = useRef(null);
   const activeIdRef = useRef(null);
   const composerRef = useRef(null);
   const messageIdsRef = useRef(new Set());
   const memberSearchTimer = useRef(null);
+  const addMemberSearchTimer = useRef(null);
   useEffect(() => { activeIdRef.current = activeId; }, [activeId]);
   useEffect(() => { messageIdsRef.current = new Set(messages.map((m) => m.id)); }, [messages]);
 
   useEffect(() => {
-    if (!activeId) { setListCollapsed(false); setReplyTarget(null); setEditingId(null); }
+    if (!activeId) { setListCollapsed(false); setReplyTarget(null); setEditingId(null); setMembersModalOpen(false); }
   }, [activeId]);
 
   useEffect(() => {
@@ -236,6 +241,58 @@ export default function Messenger() {
       });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeId, conversations]);
+
+  useEffect(() => {
+    clearTimeout(addMemberSearchTimer.current);
+    const q = addMemberQuery.trim();
+    if (!q) { setAddMemberResults([]); return; }
+    addMemberSearchTimer.current = setTimeout(async () => {
+      const { data } = await supabase
+        .from("profiles")
+        .select("id, display_name, avatar_url")
+        .ilike("display_name", `%${q}%`)
+        .limit(8);
+      const already = new Set(groupMembersById[activeId] || []);
+      setAddMemberResults((data || []).filter((p) => !already.has(p.id)));
+    }, 300);
+    return () => clearTimeout(addMemberSearchTimer.current);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [addMemberQuery]);
+
+  useEffect(() => {
+    if (!activeId || !user) return;
+    const channel = supabase
+      .channel(`participants-${activeId}`)
+      .on(
+        "postgres_changes",
+        { event: "INSERT", schema: "public", table: "conversation_participants", filter: `conversation_id=eq.${activeId}` },
+        (payload) => {
+          const newUserId = payload.new.user_id;
+          setGroupMembersById((prev) => {
+            const existing = prev[activeId] || [];
+            if (existing.includes(newUserId)) return prev;
+            return { ...prev, [activeId]: [...existing, newUserId] };
+          });
+          loadProfiles([newUserId]);
+        }
+      )
+      .on(
+        "postgres_changes",
+        { event: "DELETE", schema: "public", table: "conversation_participants", filter: `conversation_id=eq.${activeId}` },
+        (payload) => {
+          const removedUserId = payload.old.user_id;
+          setGroupMembersById((prev) => ({ ...prev, [activeId]: (prev[activeId] || []).filter((id) => id !== removedUserId) }));
+          if (removedUserId === user.id) {
+            setConversations((prev) => prev.filter((c) => c.id !== activeId));
+            setActiveId(null);
+            setMembersModalOpen(false);
+          }
+        }
+      )
+      .subscribe();
+    return () => { supabase.removeChannel(channel); };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [activeId, user]);
 
   useEffect(() => {
     const el = composerRef.current;
@@ -361,7 +418,7 @@ export default function Messenger() {
           const conversationId = payload.new.conversation_id;
           const { data: conv } = await supabase
             .from("conversations")
-            .select("id, user_a_id, user_b_id, last_message_at, last_message, is_group, title")
+            .select("id, user_a_id, user_b_id, last_message_at, last_message, is_group, title, created_by")
             .eq("id", conversationId)
             .maybeSingle();
           if (!conv) return;
@@ -394,7 +451,7 @@ export default function Messenger() {
     if (!user) return;
     const { data: direct, error: convError } = await supabase
       .from("conversations")
-      .select("id, user_a_id, user_b_id, last_message_at, last_message, is_group, title")
+      .select("id, user_a_id, user_b_id, last_message_at, last_message, is_group, title, created_by")
       .or(`user_a_id.eq.${user.id},user_b_id.eq.${user.id}`)
       .order("last_message_at", { ascending: false });
     if (convError) { console.error("loadConversations failed:", convError); setLoadingList(false); return; }
@@ -408,7 +465,7 @@ export default function Messenger() {
     if (groupIds.length) {
       const { data: groupRows } = await supabase
         .from("conversations")
-        .select("id, user_a_id, user_b_id, last_message_at, last_message, is_group, title")
+        .select("id, user_a_id, user_b_id, last_message_at, last_message, is_group, title, created_by")
         .in("id", groupIds);
       groups = groupRows || [];
     }
@@ -517,7 +574,7 @@ export default function Messenger() {
     const { data: created, error: createError } = await supabase
       .from("conversations")
       .insert({ is_group: true, title, created_by: user.id })
-      .select("id, user_a_id, user_b_id, last_message_at, last_message, is_group, title")
+      .select("id, user_a_id, user_b_id, last_message_at, last_message, is_group, title, created_by")
       .single();
     if (createError) { setCreatingGroup(false); setError("Couldn't create that group."); return; }
 
@@ -532,6 +589,37 @@ export default function Messenger() {
     setConversations((prev) => [{ ...created, unread: 0 }, ...prev]);
     setActiveId(created.id);
     closeGroupModal();
+  }
+
+  async function addGroupMember(p) {
+    if (!activeConv?.is_group) return;
+    const { error: err } = await supabase
+      .from("conversation_participants")
+      .insert({ conversation_id: activeConv.id, user_id: p.id });
+    if (err) { setError("Couldn't add that teacher."); return; }
+    setGroupMembersById((prev) => ({ ...prev, [activeConv.id]: [...(prev[activeConv.id] || []), p.id] }));
+    setProfiles((prev) => ({ ...prev, [p.id]: p }));
+    setAddMemberQuery("");
+    setAddMemberResults([]);
+  }
+
+  async function confirmMemberAction() {
+    if (!memberActionTarget || !activeConv) return;
+    const targetUserId = memberActionTarget.type === "leave" ? user.id : memberActionTarget.userId;
+    const { error: err } = await supabase
+      .from("conversation_participants")
+      .delete()
+      .eq("conversation_id", activeConv.id)
+      .eq("user_id", targetUserId);
+    const wasLeaving = memberActionTarget.type === "leave";
+    setMemberActionTarget(null);
+    if (err) { setError("That didn't work."); return; }
+    setGroupMembersById((prev) => ({ ...prev, [activeConv.id]: (prev[activeConv.id] || []).filter((id) => id !== targetUserId) }));
+    if (wasLeaving) {
+      setConversations((prev) => prev.filter((c) => c.id !== activeConv.id));
+      setActiveId(null);
+      setMembersModalOpen(false);
+    }
   }
 
   async function sendMessage() {
@@ -723,13 +811,24 @@ export default function Messenger() {
                     >
                       <PanelIcon />
                     </button>
-                    <span className={`mg-avatar mg-avatar--sm ${activeConv?.is_group ? "mg-avatar--group" : ""}`}>
-                      {activeConv?.is_group ? <GroupIcon /> : (activeProfile?.avatar_url ? <img src={activeProfile.avatar_url} alt="" /> : initials(activeName))}
-                    </span>
-                    <span className="mg-thread-text">
-                      <span className="mg-thread-name">{activeLabel}</span>
-                      {activeConv?.is_group && <span className="mg-thread-sub">{activeMemberIds.length || "…"} members</span>}
-                    </span>
+                    {activeConv?.is_group ? (
+                      <button type="button" className="mg-thread-identity" onClick={() => setMembersModalOpen(true)}>
+                        <span className="mg-avatar mg-avatar--sm mg-avatar--group"><GroupIcon /></span>
+                        <span className="mg-thread-text">
+                          <span className="mg-thread-name">{activeLabel}</span>
+                          <span className="mg-thread-sub">{activeMemberIds.length || "…"} members &middot; tap to manage</span>
+                        </span>
+                      </button>
+                    ) : (
+                      <>
+                        <span className="mg-avatar mg-avatar--sm">
+                          {activeProfile?.avatar_url ? <img src={activeProfile.avatar_url} alt="" /> : initials(activeName)}
+                        </span>
+                        <span className="mg-thread-text">
+                          <span className="mg-thread-name">{activeLabel}</span>
+                        </span>
+                      </>
+                    )}
                   </div>
 
                   {error && (
@@ -965,6 +1064,79 @@ export default function Messenger() {
           </div>
         </div>
       )}
+
+      {membersModalOpen && activeConv?.is_group && (
+        <div className="mg-group-overlay" onClick={() => setMembersModalOpen(false)}>
+          <div className="mg-group-modal" onClick={(e) => e.stopPropagation()}>
+            <h3>{activeConv.title}</h3>
+            <label className="mg-group-label">{activeMemberIds.length} members</label>
+            <div className="mg-member-list">
+              {activeMemberIds.map((id) => {
+                const p = profiles[id];
+                const realName = p ? displayName(p) : "…";
+                const isSelf = id === user.id;
+                const isCreator = id === activeConv.created_by;
+                const canRemove = isSelf || activeConv.created_by === user.id;
+                return (
+                  <div key={id} className="mg-member-row">
+                    <span className="mg-avatar mg-avatar--sm">{p?.avatar_url ? <img src={p.avatar_url} alt="" /> : initials(realName)}</span>
+                    <span className="mg-member-name">
+                      {isSelf ? "You" : realName}
+                      {isCreator && <span className="mg-member-tag">Creator</span>}
+                    </span>
+                    {canRemove && (
+                      <button
+                        type="button"
+                        className="mg-member-remove"
+                        onClick={() => setMemberActionTarget(isSelf ? { type: "leave" } : { type: "remove", userId: id, name: realName })}
+                      >
+                        {isSelf ? "Leave" : "Remove"}
+                      </button>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+
+            <label className="mg-group-label">Add teachers</label>
+            <input
+              type="text"
+              className="mg-group-input"
+              value={addMemberQuery}
+              onChange={(e) => setAddMemberQuery(e.target.value)}
+              placeholder="Search teachers by name"
+            />
+            {addMemberResults.length > 0 && (
+              <div className="mg-group-results">
+                {addMemberResults.map((p) => (
+                  <button type="button" key={p.id} className="mg-group-result" onClick={() => addGroupMember(p)}>
+                    <span className="mg-avatar mg-avatar--sm">{p.avatar_url ? <img src={p.avatar_url} alt="" /> : initials(displayName(p))}</span>
+                    {displayName(p)}
+                  </button>
+                ))}
+              </div>
+            )}
+
+            <div className="mg-group-actions">
+              <button type="button" className="mg-group-cancel" onClick={() => setMembersModalOpen(false)}>Close</button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      <ConfirmDialog
+        open={!!memberActionTarget}
+        title={memberActionTarget?.type === "leave" ? "Leave this group?" : `Remove ${memberActionTarget?.name}?`}
+        message={
+          memberActionTarget?.type === "leave"
+            ? "You'll stop seeing this conversation and won't be able to rejoin unless someone adds you back."
+            : "They'll lose access to this group's messages."
+        }
+        confirmLabel={memberActionTarget?.type === "leave" ? "Leave" : "Remove"}
+        danger
+        onConfirm={confirmMemberAction}
+        onCancel={() => setMemberActionTarget(null)}
+      />
     </div>
   );
 }
@@ -1090,6 +1262,11 @@ const CSS = `
 }
 .mg-collapse-toggle:hover { background: rgba(43,42,74,0.06); color: var(--ink); }
 .mg-collapse-toggle svg { width: 18px; height: 18px; }
+.mg-thread-identity {
+  display: flex; align-items: center; gap: 10px; min-width: 0; background: none; border: none; cursor: pointer;
+  padding: 2px 4px; margin: -2px -4px; border-radius: 8px; text-align: left;
+}
+.mg-thread-identity:hover { background: rgba(43,42,74,0.05); }
 .mg-thread-text { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
 .mg-thread-name { font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .mg-thread-sub { font-size: 10.5px; color: var(--muted); }
@@ -1249,6 +1426,16 @@ const CSS = `
 }
 .mg-group-create:disabled { opacity: 0.4; cursor: default; }
 .mg-group-hint { font-size: 11px; color: var(--muted); margin: 10px 0 0; }
+
+.mg-member-list { display: flex; flex-direction: column; gap: 2px; max-height: 180px; overflow-y: auto; margin-bottom: 4px; }
+.mg-member-row { display: flex; align-items: center; gap: 9px; padding: 6px 2px; }
+.mg-member-name { flex: 1; min-width: 0; font-size: 13px; color: var(--ink); display: flex; align-items: center; gap: 6px; }
+.mg-member-tag {
+  font-size: 9.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.03em; color: var(--navy);
+  background: var(--navy-pale); padding: 2px 6px; border-radius: 999px;
+}
+.mg-member-remove { flex-shrink: 0; background: none; border: none; font: inherit; font-size: 11.5px; font-weight: 600; color: var(--coral); cursor: pointer; padding: 4px 6px; }
+.mg-member-remove:hover { text-decoration: underline; }
 
 @media (max-width: 720px) {
   .mg-frame { padding: 0; }

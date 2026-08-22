@@ -20,15 +20,30 @@ create index if not exists conversation_participants_user_idx on conversation_pa
 
 alter table conversation_participants enable row level security;
 
+-- Checking "am I a member of this conversation" from inside
+-- conversation_participants' own select policy would make Postgres
+-- re-evaluate that same policy for the check itself, forever ("infinite
+-- recursion detected in policy"). Routing it through a SECURITY DEFINER
+-- function sidesteps that, since the function's internal query isn't
+-- subject to the RLS policy that calls it.
+create or replace function is_conversation_participant(p_conversation_id uuid, p_user_id uuid)
+returns boolean
+language sql
+security definer
+stable
+set search_path = public
+as $$
+  select exists (
+    select 1 from conversation_participants
+    where conversation_id = p_conversation_id and user_id = p_user_id
+  );
+$$;
+
+grant execute on function is_conversation_participant(uuid, uuid) to authenticated;
+
 drop policy if exists "conversation_participants_select" on conversation_participants;
 create policy "conversation_participants_select" on conversation_participants for select
-  using (
-    exists (
-      select 1 from conversation_participants cp
-      where cp.conversation_id = conversation_participants.conversation_id
-        and cp.user_id = auth.uid()
-    )
-  );
+  using (is_conversation_participant(conversation_participants.conversation_id, auth.uid()));
 
 -- v1 keeps group membership fixed at creation time (no add/remove members
 -- later), so only the creator can insert participant rows, and only while
