@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import SYNONYMS_SET from "./synonymsGameData";
 import ANTONYMS_SET from "./antonymsGameData";
 import SYNONYMS_TOPICS from "./synonymsTopics";
 import SYNONYMS_TOPICS_B1B2 from "./synonymsTopicsB1B2";
@@ -179,9 +178,31 @@ const TOPICS = [
   { key: "homeAndDailyLife", title: "Home & Daily Life" },
 ];
 
+// Synonyms-only topic lists for B1-B2 and C1-C2 -- deliberately different
+// topics from the A1-A2 list above (not just harder words under the same
+// names), shifting from concrete everyday life toward work/media/civic
+// themes (B1-B2) and abstract/academic/global themes (C1-C2).
+const SYNONYMS_TOPICS_LIST_B1B2 = [
+  { key: "workAndCareer", title: "Work & Career" },
+  { key: "mediaAndTechnology", title: "Media & Technology" },
+  { key: "healthAndWellbeing", title: "Health & Wellbeing" },
+  { key: "moneyAndShopping", title: "Money & Shopping" },
+  { key: "natureAndEnvironment", title: "Nature & Environment" },
+  { key: "opinionsAndDebate", title: "Opinions & Debate" },
+  { key: "communityAndSociety", title: "Community & Society" },
+];
+const SYNONYMS_TOPICS_LIST_C1C2 = [
+  { key: "businessAndEconomics", title: "Business & Economics" },
+  { key: "politicsAndGovernance", title: "Politics & Governance" },
+  { key: "scienceAndInnovation", title: "Science & Innovation" },
+  { key: "artsAndCulture", title: "Arts & Culture" },
+  { key: "ethicsAndPhilosophy", title: "Ethics & Philosophy" },
+  { key: "globalAffairs", title: "Global Affairs" },
+  { key: "psychologyAndBehavior", title: "Psychology & Behavior" },
+];
+
 export const CATEGORIES_BY_GAME = {
   synonyms: [
-    { key: "sample-a1a2", title: "Sample Set", blurb: "10 starter words to try the game.", ready: true, data: SYNONYMS_SET, cefrGroup: "A1-A2" },
     ...TOPICS.map((t) => ({
       key: `${t.key}-a1a2`,
       title: t.title,
@@ -190,7 +211,7 @@ export const CATEGORIES_BY_GAME = {
       data: SYNONYMS_TOPICS[t.key],
       cefrGroup: "A1-A2",
     })),
-    ...TOPICS.map((t) => ({
+    ...SYNONYMS_TOPICS_LIST_B1B2.map((t) => ({
       key: `${t.key}-b1b2`,
       title: t.title,
       blurb: "10 words on this topic.",
@@ -198,7 +219,7 @@ export const CATEGORIES_BY_GAME = {
       data: SYNONYMS_TOPICS_B1B2[t.key],
       cefrGroup: "B1-B2",
     })),
-    ...TOPICS.map((t) => ({
+    ...SYNONYMS_TOPICS_LIST_C1C2.map((t) => ({
       key: `${t.key}-c1c2`,
       title: t.title,
       blurb: "10 words on this topic.",
