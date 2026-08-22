@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import { ACTIVITY_TYPES, COMBOS } from "./WritingActivities";
+import { ACTIVITY_TYPES } from "./WritingActivities";
 import ProofreadingActivity from "./ProofreadingActivity";
 import StoryMakingActivity from "./StoryMakingActivity";
 import MessageReplyActivity from "./MessageReplyActivity";
@@ -17,13 +17,11 @@ const PLAYERS = {
 // from WritingActivities, matching the Editorial View / lesson-player
 // pattern (its own window, not embedded in the Library page).
 export default function WritingPlayerPage() {
-  const { typeKey, comboKey, topicIndex } = useParams();
+  const { typeKey, topicKey } = useParams();
   const type = ACTIVITY_TYPES.find((t) => t.key === typeKey);
-  const combo = COMBOS.find((c) => c.key === comboKey);
-  const topics = type && combo ? type.sets[combo.key] : [];
-  const topic = topics[Number(topicIndex)];
+  const topic = type ? type.sets.find((t) => t.key === topicKey) : null;
 
-  if (!type || !combo || !topic) {
+  if (!type || !topic) {
     return (
       <PlayerChrome eyebrow="Writing">
         <div style={{ display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "sans-serif", color: "#5C6873" }}>

@@ -39,12 +39,7 @@ export const ACTIVITY_TYPES = [
   },
 ];
 
-export const COMBOS = [
-  { key: "teens-beginner", audience: "Teens", level: "Beginner" },
-  { key: "teens-intermediate", audience: "Teens", level: "Intermediate" },
-  { key: "adults-beginner", audience: "Adults", level: "Beginner" },
-  { key: "adults-intermediate", audience: "Adults", level: "Intermediate" },
-];
+const LEVEL_GROUPS = ["A1-A2", "B1-B2", "C1-C2"];
 
 function ProofreadingBanner() {
   return (
@@ -132,7 +127,7 @@ const BANNERS = {
 // the Editorial View / lesson-player pattern elsewhere in the app.
 // Story Making's picture panel needs a wider window than Proofreading's
 // single card.
-function openTopicPlayer(typeKey, comboKey, topicIndex) {
+function openTopicPlayer(typeKey, topicKey) {
   const screenW = window.screen.availWidth || 1600;
   const screenH = window.screen.availHeight || 900;
   const w = Math.min(typeKey === "storyMaking" ? 1000 : 720, screenW - 40);
@@ -141,7 +136,7 @@ function openTopicPlayer(typeKey, comboKey, topicIndex) {
   const top = Math.max(0, Math.floor((screenH - h) / 2));
 
   window.open(
-    `/library/writing/${typeKey}/${comboKey}/${topicIndex}/player`,
+    `/library/writing/${typeKey}/${topicKey}/player`,
     "sentivoWritingPlayer",
     `width=${w},height=${h},left=${left},top=${top},toolbar=no,location=no,menubar=no,status=no,scrollbars=yes,resizable=yes`
   );
@@ -149,7 +144,7 @@ function openTopicPlayer(typeKey, comboKey, topicIndex) {
 
 export default function WritingActivities({ query }) {
   const [typeKey, setTypeKey] = useState(null);
-  const [comboKey, setComboKey] = useState(null);
+  const [levelTab, setLevelTab] = useState(LEVEL_GROUPS[0]);
   const q = query.trim().toLowerCase();
 
   // Browser back/forward drives navigation instead of an in-page back
@@ -158,7 +153,6 @@ export default function WritingActivities({ query }) {
   useEffect(() => {
     function onPopState(e) {
       const depth = e.state?.waDepth || 0;
-      if (depth < 2) setComboKey(null);
       if (depth < 1) setTypeKey(null);
     }
     window.addEventListener("popstate", onPopState);
@@ -168,27 +162,22 @@ export default function WritingActivities({ query }) {
   function openType(key) {
     window.history.pushState({ waDepth: 1 }, "");
     setTypeKey(key);
-  }
-  function openCombo(key) {
-    window.history.pushState({ waDepth: 2 }, "");
-    setComboKey(key);
+    setLevelTab(LEVEL_GROUPS[0]);
   }
 
   const type = ACTIVITY_TYPES.find((t) => t.key === typeKey);
-  const combo = COMBOS.find((c) => c.key === comboKey);
-  const topics = type && combo ? type.sets[combo.key] : [];
+  const topics = type ? type.sets : [];
+  const levelTopics = topics.filter((t) => t.cefrGroup === levelTab);
 
   // Search results: a flat list of matching topics across every activity
-  // type and audience/level combo, bypassing the normal "pick a type,
-  // then a combo" drill-down (and taking priority even mid-drill-down)
-  // so the header search box works no matter where in Writing you are.
+  // type and CEFR level, bypassing the normal "pick a type, then a level"
+  // drill-down (and taking priority even mid-drill-down) so the header
+  // search box works no matter where in Writing you are.
   if (q) {
     const matches = ACTIVITY_TYPES.flatMap((t) =>
-      COMBOS.flatMap((c) =>
-        (t.sets[c.key] || [])
-          .map((topic, i) => ({ topic, index: i, type: t, combo: c }))
-          .filter(({ topic }) => topic.title.toLowerCase().includes(q) || topic.focus.toLowerCase().includes(q))
-      )
+      t.sets
+        .filter((topic) => topic.title.toLowerCase().includes(q) || topic.focus.toLowerCase().includes(q))
+        .map((topic) => ({ topic, type: t }))
     );
 
     return (
@@ -201,48 +190,24 @@ export default function WritingActivities({ query }) {
           <p className="empty-msg">No Writing activities match "{query.trim()}".</p>
         ) : (
           <div className="wa-cat-grid">
-            {matches.map(({ topic, index, type: t, combo: c }) => (
+            {matches.map(({ topic, type: t }) => (
               <button
-                key={`${t.key}-${c.key}-${index}`}
+                key={`${t.key}-${topic.key}`}
                 type="button"
                 className={`wa-cat-card wa-cat-card--${t.hue}`}
-                onClick={() => openTopicPlayer(t.key, c.key, index)}
+                onClick={() => openTopicPlayer(t.key, topic.key)}
               >
                 <div className="wa-cat-top">
                   <span className="wa-cat-icon">{t.icon}</span>
                   <span className="wa-cat-tag">Ready</span>
                 </div>
                 <span className="wa-cat-title">{topic.title}</span>
-                <span className="wa-cat-blurb">{t.title} · {c.audience} {c.level}</span>
+                <span className="wa-cat-blurb">{t.title} · {topic.cefrGroup}</span>
                 <span className="wa-cat-cta">Start →</span>
               </button>
             ))}
           </div>
         )}
-      </div>
-    );
-  }
-
-  if (type && combo) {
-    return (
-      <div className="wa-panel">
-        <style>{CSS}</style>
-        <div className="wa-hero">
-          <span className="wa-pill">{type.title} · {combo.audience} {combo.level}</span>
-        </div>
-        <div className="wa-cat-grid">
-          {topics.map((t, i) => (
-            <button key={t.title} type="button" className={`wa-cat-card wa-cat-card--${type.hue}`} onClick={() => openTopicPlayer(typeKey, comboKey, i)}>
-              <div className="wa-cat-top">
-                <span className="wa-cat-icon">{type.icon}</span>
-                <span className="wa-cat-tag">Ready</span>
-              </div>
-              <span className="wa-cat-title">{t.title}</span>
-              <span className="wa-cat-blurb">{t.focus}</span>
-              <span className="wa-cat-cta">Start →</span>
-            </button>
-          ))}
-        </div>
       </div>
     );
   }
@@ -255,16 +220,28 @@ export default function WritingActivities({ query }) {
           <span className="wa-pill">{type.title}</span>
           <p className="wa-blurb">{type.blurb}</p>
         </div>
+        <div className={`wa-level-tabs wa-level-tabs--${type.hue}`}>
+          {LEVEL_GROUPS.map((lvl) => (
+            <button
+              key={lvl}
+              type="button"
+              className={`wa-level-tab ${levelTab === lvl ? "is-active" : ""}`}
+              onClick={() => setLevelTab(lvl)}
+            >
+              {lvl}
+            </button>
+          ))}
+        </div>
         <div className="wa-cat-grid">
-          {COMBOS.map((c) => (
-            <button key={c.key} type="button" className={`wa-cat-card wa-cat-card--${type.hue}`} onClick={() => openCombo(c.key)}>
+          {levelTopics.map((t) => (
+            <button key={t.key} type="button" className={`wa-cat-card wa-cat-card--${type.hue}`} onClick={() => openTopicPlayer(typeKey, t.key)}>
               <div className="wa-cat-top">
                 <span className="wa-cat-icon">{type.icon}</span>
-                <span className="wa-cat-tag">{c.audience}</span>
+                <span className="wa-cat-tag">Ready</span>
               </div>
-              <span className="wa-cat-title">{c.level}</span>
-              <span className="wa-cat-blurb">2 activities</span>
-              <span className="wa-cat-cta">Choose →</span>
+              <span className="wa-cat-title">{t.title}</span>
+              <span className="wa-cat-blurb">{t.focus}</span>
+              <span className="wa-cat-cta">Start →</span>
             </button>
           ))}
         </div>
@@ -338,6 +315,31 @@ const CSS = `
 .wa-block--violet .wa-block-cta { color: #6E5DC6; }
 .wa-block--coral .wa-block-cta { color: #D9542E; }
 .wa-block--teal .wa-block-cta { color: #1F9D8C; }
+
+.wa-level-tabs { display: flex; gap: 8px; margin-bottom: 24px; flex-wrap: wrap; justify-content: center; }
+.wa-level-tab {
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 600;
+  font-size: 13px;
+  color: #6B5A66;
+  background: #FFFFFF;
+  border: 1px solid #EBC6A6;
+  border-radius: 999px;
+  padding: 8px 20px;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+.wa-level-tab:hover { border-color: #C5692A; color: #C5692A; }
+.wa-level-tab.is-active { background: #C5692A; border-color: #C5692A; color: #FFFFFF; }
+.wa-level-tabs--violet .wa-level-tab { border-color: #D9D2F3; }
+.wa-level-tabs--violet .wa-level-tab:hover { border-color: #6E5DC6; color: #6E5DC6; }
+.wa-level-tabs--violet .wa-level-tab.is-active { background: #6E5DC6; border-color: #6E5DC6; color: #FFFFFF; }
+.wa-level-tabs--coral .wa-level-tab { border-color: #F3C4B0; }
+.wa-level-tabs--coral .wa-level-tab:hover { border-color: #D9542E; color: #D9542E; }
+.wa-level-tabs--coral .wa-level-tab.is-active { background: #D9542E; border-color: #D9542E; color: #FFFFFF; }
+.wa-level-tabs--teal .wa-level-tab { border-color: #BFE4DC; }
+.wa-level-tabs--teal .wa-level-tab:hover { border-color: #1F9D8C; color: #1F9D8C; }
+.wa-level-tabs--teal .wa-level-tab.is-active { background: #1F9D8C; border-color: #1F9D8C; color: #FFFFFF; }
 
 .wa-cat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 260px)); gap: 18px; justify-content: center; width: 100%; }
 .wa-cat-card {
