@@ -1443,6 +1443,20 @@ export default function Library() {
     </div>
   );
 
+  // Categories whose main view is a dedicated feature component/static
+  // markup rather than the generic tools grid -- none of them were wired
+  // to the header search box, so typing a query there did nothing while
+  // on those pages. Whenever there's an active query on one of these
+  // categories, fall back to the generic grid (already filtered by both
+  // category and query via `filtered` above) so search works everywhere.
+  const searchableCategories = ["Grammar", "Reading", "Speaking", "Vocabulary", "Writing", "Listening"];
+  const showSearchResults = query.trim().length > 0 && searchableCategories.includes(category);
+  const isGenericContentActive =
+    !(category === "All" && !query.trim() && !showAllToday) &&
+    category !== "Articles" &&
+    !(PRO_CATEGORIES.includes(category) && plan === "free") &&
+    (showSearchResults || !searchableCategories.includes(category));
+
   return (
     <>
     <div className={`page ${isPro ? "theme-pro" : "theme-fun"}`}>
@@ -1678,6 +1692,8 @@ export default function Library() {
           <ArticlesFeature navigate={navigate} />
         ) : PRO_CATEGORIES.includes(category) && plan === "free" ? (
           <CategoryLockedFeature category={category} navigate={navigate} />
+        ) : showSearchResults ? (
+          genericContent
         ) : category === "Grammar" ? (
           <GrammarFeature navigate={navigate} />
         ) : category === "Reading" ? (
@@ -1752,7 +1768,7 @@ export default function Library() {
         )}
         </div>
 
-        {category !== "Speaking" && category !== "Grammar" && category !== "Articles" && category !== "Reading" && category !== "Vocabulary" && category !== "Writing" && category !== "Listening" && !(category === "All" && !query.trim() && !showAllToday) && (
+        {isGenericContentActive && (
         <div className="pagination">
           <button disabled={safePage === 1} onClick={() => changePage(safePage - 1)}>&larr; Prev</button>
           <span className="page-indicator">Page {safePage} of {totalPages}</span>
