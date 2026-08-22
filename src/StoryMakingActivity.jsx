@@ -260,7 +260,7 @@ const CSS = `
   background: #FFFFFF;
   border-radius: 24px;
   overflow: hidden;
-  box-shadow: 0 20px 44px rgba(197,105,42,0.16);
+  box-shadow: 0 20px 44px rgba(110,93,198,0.16);
 }
 
 .sm-picture-pane { position: relative; background: #F3EEE6; min-height: 320px; }
@@ -274,8 +274,8 @@ const CSS = `
   font-weight: 800;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: #A15A2E;
-  background: rgba(197,105,42,0.10);
+  color: #4E3AA6;
+  background: rgba(110,93,198,0.10);
   border-radius: 999px;
   padding: 5px 14px;
 }
@@ -303,8 +303,8 @@ const CSS = `
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;
   font-size: 12.5px;
-  color: #A15A2E;
-  background: #FBEDE3;
+  color: #4E3AA6;
+  background: #EFEBFC;
   border-radius: 999px;
   padding: 6px 13px;
 }
@@ -313,7 +313,7 @@ const CSS = `
   width: 100%;
   flex: 1;
   min-height: 120px;
-  border: 1px solid #EBC6A6;
+  border: 1px solid #D9D2F3;
   border-radius: 14px;
   padding: 14px 16px;
   font-family: 'Quicksand', sans-serif;
@@ -321,9 +321,9 @@ const CSS = `
   color: #2B2A4A;
   line-height: 1.6;
   resize: vertical;
-  background: #FFFAF4;
+  background: #F8F6FE;
 }
-.sm-textarea:focus { outline: none; border-color: #C5692A; }
+.sm-textarea:focus { outline: none; border-color: #6E5DC6; }
 
 .sm-sample { margin-top: 16px; background: #E4F8EC; border-radius: 14px; padding: 16px 18px; }
 .sm-label { display: block; font-size: 12px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: #1F7A47; margin-bottom: 8px; }
@@ -344,10 +344,10 @@ const CSS = `
 .sm-btn:disabled { opacity: 0.5; cursor: default; }
 .sm-btn--primary {
   color: #FFFFFF;
-  background: linear-gradient(135deg, #E08A4F 0%, #C5692A 100%);
-  box-shadow: 0 6px 0 #9C4E1C;
+  background: linear-gradient(135deg, #8D7AE0 0%, #6E5DC6 100%);
+  box-shadow: 0 6px 0 #4E3AA6;
 }
-.sm-btn--primary:active { transform: translateY(3px); box-shadow: 0 3px 0 #9C4E1C; }
+.sm-btn--primary:active { transform: translateY(3px); box-shadow: 0 3px 0 #4E3AA6; }
 
 @media (max-width: 760px) {
   .sm-card { grid-template-columns: 1fr; }

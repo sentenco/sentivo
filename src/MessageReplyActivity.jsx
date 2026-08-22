@@ -111,7 +111,7 @@ const CSS = `
   max-width: 640px;
   background: #FFFFFF;
   border-radius: 24px;
-  box-shadow: 0 20px 44px rgba(197,105,42,0.16);
+  box-shadow: 0 20px 44px rgba(217,84,46,0.16);
   padding: clamp(28px, 5vw, 44px);
 }
 
@@ -121,8 +121,8 @@ const CSS = `
   font-weight: 800;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: #A15A2E;
-  background: rgba(197,105,42,0.10);
+  color: #A13B1E;
+  background: rgba(217,84,46,0.10);
   border-radius: 999px;
   padding: 5px 14px;
 }
@@ -137,7 +137,7 @@ const CSS = `
 .mr-bubble--mine { background: #FBE4DC; }
 .mr-bubble--sample { background: #E4F8EC; }
 .mr-bubble-meta { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
-.mr-from { font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 13px; color: #A15A2E; }
+.mr-from { font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 13px; color: #8A8398; }
 .mr-context { font-size: 11px; color: #9A93A8; }
 .mr-bubble-text { font-size: 14.5px; color: #2B2A4A; line-height: 1.55; margin: 0; }
 .mr-bubble--mine .mr-bubble-text { color: #A13B1E; }
@@ -152,8 +152,8 @@ const CSS = `
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;
   font-size: 12px;
-  color: #A15A2E;
-  background: #FBEDE3;
+  color: #A13B1E;
+  background: #FBE4DC;
   border-radius: 999px;
   padding: 6px 13px;
 }
@@ -161,7 +161,7 @@ const CSS = `
 .mr-textarea {
   width: 100%;
   min-height: 100px;
-  border: 1px solid #EBC6A6;
+  border: 1px solid #F3C4B0;
   border-radius: 14px;
   padding: 14px 16px;
   font-family: 'Quicksand', sans-serif;
@@ -169,9 +169,9 @@ const CSS = `
   color: #2B2A4A;
   line-height: 1.6;
   resize: vertical;
-  background: #FFFAF4;
+  background: #FDF3EF;
 }
-.mr-textarea:focus { outline: none; border-color: #C5692A; }
+.mr-textarea:focus { outline: none; border-color: #D9542E; }
 
 .mr-nav { display: flex; justify-content: space-between; margin-top: 22px; }
 .mr-btn {
@@ -188,8 +188,8 @@ const CSS = `
 .mr-btn:disabled { opacity: 0.5; cursor: default; }
 .mr-btn--primary {
   color: #FFFFFF;
-  background: linear-gradient(135deg, #E08A4F 0%, #C5692A 100%);
-  box-shadow: 0 6px 0 #9C4E1C;
+  background: linear-gradient(135deg, #E8825F 0%, #D9542E 100%);
+  box-shadow: 0 6px 0 #A13B1E;
 }
-.mr-btn--primary:active { transform: translateY(3px); box-shadow: 0 3px 0 #9C4E1C; }
+.mr-btn--primary:active { transform: translateY(3px); box-shadow: 0 3px 0 #A13B1E; }
 `;
