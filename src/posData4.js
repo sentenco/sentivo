@@ -8,19 +8,44 @@ export default {
     code: "4A",
     title: "Prepositions",
     kind: "Lesson",
-    objective: "Use common prepositions to show relationships of time, place, direction, or position.",
+    objective: "Use common prepositions to show relationships of time and place.",
     leadIn: "Where is your phone right now? Answer in one sentence.",
     concepts: [
       {
-        name: "Preposition",
-        definition: "A preposition shows the relationship between a noun (or pronoun) and other words in time, place, direction, or position.",
+        name: "Preposition of place",
+        color: "preposition",
+        definition: "Shows where something is.",
         examples: [
-          "The book is on the table.",
-          "We study in the morning.",
-          "The cat is under the chair.",
-          "She walked to the store.",
+          "The book is **on** the table.",
+          "The cat is **under** the chair.",
         ],
+        mistake: {
+          wrong: "The book is at the table.",
+          correct: "The book is on the table.",
+          note: "Use on for surfaces, in for enclosed spaces, at for exact points.",
+        },
       },
+      {
+        name: "Preposition of time",
+        color: "preposition",
+        definition: "Shows when something happens.",
+        examples: [
+          "We study **in** the morning.",
+          "The meeting is **at** 9 a.m.",
+        ],
+        mistake: {
+          wrong: "My birthday is at July.",
+          correct: "My birthday is in July.",
+          note: "Use in for months/years, on for days/dates, at for exact times.",
+        },
+      },
+    ],
+    compareLeftLabel: "Place",
+    compareRightLabel: "Time",
+    compareNote: "The same word can mean different things — in, on, and at all work for both place and time, just with different rules.",
+    comparePairs: [
+      { left: "in the box (place)", right: "in July (time)" },
+      { left: "at the door (place)", right: "at 9 a.m. (time)" },
     ],
     guided: [
       { prompt: "The book is ___ the table.", answer: "on" },
@@ -32,7 +57,7 @@ export default {
       "Choose the preposition that matches the picture.",
       "Write one sentence using the preposition “near.”",
     ],
-    wrapup: "Prepositions connect a noun to the rest of the sentence, often showing time, place, or direction.",
+    wrapup: "Prepositions show place or time. The same word — in, on, at — can mean either, depending on context.",
   },
 
   lessonB: {

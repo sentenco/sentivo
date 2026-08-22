@@ -13,22 +13,31 @@ export default {
     concepts: [
       {
         name: "Noun",
-        definition: "A noun names a person, place, thing, or idea.",
+        color: "noun",
+        definition: "Names a person, place, thing, or idea.",
         examples: [
-          "Maria is a teacher.",
-          "The dog is barking in the yard.",
-          "We visited a beautiful city.",
-          "Kindness makes people happy.",
+          "Maria is a **teacher**.",
+          "We walked through the **park**.",
         ],
+        mistake: {
+          wrong: "I have many informations.",
+          correct: "I have a lot of information.",
+          note: "\"Information\" is uncountable — it never takes an -s.",
+        },
       },
       {
         name: "Pronoun",
-        definition: "A pronoun replaces a noun so we don't have to repeat it.",
+        color: "pronoun",
+        definition: "Replaces a noun so you don't have to repeat it.",
         examples: [
-          "Maria is a teacher. She is kind.",
-          "The dog is barking. It is hungry.",
-          "Ben and Ana are friends. They play after school.",
+          "Maria is a teacher. **She** is kind.",
+          "The dog is barking. **It** is hungry.",
         ],
+        mistake: {
+          wrong: "Maria is a teacher. He is kind.",
+          correct: "Maria is a teacher. She is kind.",
+          note: "Match the pronoun to the noun's gender.",
+        },
       },
     ],
     compareLeftLabel: "With the noun repeated",
@@ -48,7 +57,7 @@ export default {
       "Circle the pronoun in: “He is my brother.”",
       "Replace the repeated noun: “Sara likes pizza. Sara eats it every Friday.”",
     ],
-    wrapup: "Nouns name people, places, things, and ideas. Pronouns replace nouns so we don't repeat them.",
+    wrapup: "Nouns name. Pronouns replace — so match gender and number.",
   },
 
   lessonB: {

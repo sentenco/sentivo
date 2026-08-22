@@ -13,21 +13,31 @@ export default {
     concepts: [
       {
         name: "Adjective",
-        definition: "An adjective describes a noun. It often answers “what kind” or “which one.”",
+        color: "adjective",
+        definition: "Describes a noun — what kind, or which one.",
         examples: [
-          "She has a beautiful dress.",
-          "The test was extremely easy.",
-          "That is a tall building.",
+          "She has a **beautiful** dress.",
+          "That is a **tall** building.",
         ],
+        mistake: {
+          wrong: "She sings beautiful.",
+          correct: "She sings beautifully.",
+          note: "After a verb, you almost always need the adverb form.",
+        },
       },
       {
         name: "Adverb",
-        definition: "An adverb describes a verb, an adjective, or another adverb. It often answers “how,” “when,” “where,” or “to what extent.”",
+        color: "adverb",
+        definition: "Describes a verb, adjective, or another adverb — how, when, or how much.",
         examples: [
-          "He runs quickly.",
-          "The car is very slow.",
-          "She sings beautifully.",
+          "He runs **quickly**.",
+          "She sings **beautifully**.",
         ],
+        mistake: {
+          wrong: "That is a real good idea.",
+          correct: "That is a really good idea.",
+          note: "\"Real\" is an adjective — you need \"really\" to modify another adjective.",
+        },
       },
     ],
     compareLeftLabel: "Adjective",
@@ -47,7 +57,7 @@ export default {
       "Decide if the underlined word describes a noun or a verb.",
       "Change “careful” into its adverb form.",
     ],
-    wrapup: "Adjectives describe nouns. Adverbs describe verbs, adjectives, or other adverbs — and often end in -ly.",
+    wrapup: "Adjectives describe nouns. Adverbs describe verbs — and often end in -ly.",
   },
 
   lessonB: {

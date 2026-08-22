@@ -13,21 +13,31 @@ export default {
     concepts: [
       {
         name: "Action verb",
-        definition: "An action verb shows something a person or thing does.",
+        color: "verb",
+        definition: "Shows something a person or thing does.",
         examples: [
-          "The boy runs fast.",
-          "They study every night.",
-          "Birds fly south in winter.",
+          "The boy **runs** fast.",
+          "Birds **fly** south in winter.",
         ],
+        mistake: {
+          wrong: "She go to school every day.",
+          correct: "She goes to school every day.",
+          note: "He/she/it needs an -s in the present tense.",
+        },
       },
       {
         name: "Being verb",
-        definition: "A being verb (like am, is, are) shows a state, not an action.",
+        color: "verb",
+        definition: "Shows a state, not an action — am, is, are.",
         examples: [
-          "She is happy.",
-          "We are ready.",
-          "I am a student.",
+          "She **is** happy.",
+          "I **am** a student.",
         ],
+        mistake: {
+          wrong: "She are happy.",
+          correct: "She is happy.",
+          note: "Match am/is/are to the subject: I am, she is, they are.",
+        },
       },
     ],
     compareLeftLabel: "Action verb",
@@ -47,7 +57,7 @@ export default {
       "Sort into action or being: jump, is, sing, am.",
       "Write one sentence using the being verb “is.”",
     ],
-    wrapup: "Verbs show action or being. Action verbs show what happens; being verbs show a state.",
+    wrapup: "Action verbs show doing. Being verbs show a state — and must match the subject.",
   },
 
   lessonB: {

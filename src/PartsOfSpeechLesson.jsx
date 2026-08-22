@@ -2,9 +2,29 @@ import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { getLessonByCode } from "./posTracks";
 
+// One signature color per real part of speech -- used only on that
+// concept's slide (and its mistake slide), never as a flat course-wide
+// theme. Sub-forms of the same POS (Action/Being verb, Coordinating/
+// Subordinating conjunction, etc.) share their parent's color; the two
+// "contrast" topics (Nouns vs Pronouns, Adjectives vs Adverbs) use two
+// different colors on purpose, to make the contrast visible at a glance.
+const POS_COLORS = {
+  noun: { accent: "#E8604C", tint: "#FDEAE6" },
+  pronoun: { accent: "#D65A9E", tint: "#FBEAF3" },
+  verb: { accent: "#E8871A", tint: "#FDF0DC" },
+  adjective: { accent: "#1F9D8C", tint: "#DFF3EF" },
+  adverb: { accent: "#2B8CA3", tint: "#E1F0F4" },
+  preposition: { accent: "#7C5CFC", tint: "#EFEAFE" },
+  conjunction: { accent: "#4C5FD9", tint: "#E8EAFB" },
+  interjection: { accent: "#E0447D", tint: "#FBE5EE" },
+};
+
 function buildLessonSlides(lesson) {
   const slides = ["cover", "warmup"];
-  lesson.concepts.forEach((_, i) => slides.push(`concept${i}`));
+  lesson.concepts.forEach((c, i) => {
+    slides.push(`concept${i}`);
+    if (c.mistake) slides.push(`mistake${i}`);
+  });
   if (lesson.concepts.length > 1) slides.push("compare");
   slides.push("guided", "independent", "wrapup");
   return slides;
@@ -12,6 +32,24 @@ function buildLessonSlides(lesson) {
 
 function buildAssessmentSlides(lesson) {
   return ["cover", ...lesson.sections.map((s) => `part${s.part}`), "score"];
+}
+
+// Turns "The boy **runs** fast." into the sentence with the target word
+// bolded and colored to the concept's signature accent, so the eye lands
+// on the one word that matters instead of reading the whole sentence.
+function ExampleLine({ text }) {
+  const parts = text.split(/(\*\*[^*]+\*\*)/g);
+  return (
+    <p className="posl-example">
+      {parts.map((part, i) =>
+        part.startsWith("**") && part.endsWith("**") ? (
+          <strong key={i} className="posl-target">{part.slice(2, -2)}</strong>
+        ) : (
+          <span key={i}>{part}</span>
+        )
+      )}
+    </p>
+  );
 }
 
 function CoverSlide({ topic, lesson }) {
@@ -36,15 +74,31 @@ function WarmupSlide({ lesson }) {
 
 function ConceptSlide({ lesson, index }) {
   const concept = lesson.concepts[index];
+  const palette = POS_COLORS[concept.color] || POS_COLORS.noun;
   return (
-    <div className="posl-slide">
-      <h3 className="posl-h">{concept.name}</h3>
-      <p className="posl-definition">{concept.definition}</p>
+    <div className="posl-slide posl-concept" style={{ "--pos-accent": palette.accent, "--pos-tint": palette.tint }}>
+      <span className="posl-tag">{concept.name}</span>
+      <p className="posl-definition posl-definition--tight">{concept.definition}</p>
       <div className="posl-example-list">
-        {concept.examples.map((ex, i) => (
-          <p key={i} className="posl-example">“{ex}”</p>
-        ))}
+        {concept.examples.map((ex, i) => <ExampleLine key={i} text={ex} />)}
       </div>
+    </div>
+  );
+}
+
+function MistakeSlide({ lesson, index }) {
+  const concept = lesson.concepts[index];
+  const mistake = concept.mistake;
+  const palette = POS_COLORS[concept.color] || POS_COLORS.noun;
+  return (
+    <div className="posl-slide posl-mistake" style={{ "--pos-accent": palette.accent }}>
+      <span className="posl-mistake-badge">⚠ Watch out — {concept.name}</span>
+      <div className="posl-mistake-pair">
+        <p className="posl-mistake-wrong">✗ {mistake.wrong}</p>
+        <span className="posl-mistake-arrow">→</span>
+        <p className="posl-mistake-right">✓ {mistake.correct}</p>
+      </div>
+      <p className="posl-mistake-note">{mistake.note}</p>
     </div>
   );
 }
@@ -218,6 +272,7 @@ function renderSlide(slideType, topic, lesson) {
   if (slideType === "cover") return <CoverSlide topic={topic} lesson={lesson} />;
   if (slideType === "warmup") return <WarmupSlide lesson={lesson} />;
   if (slideType.startsWith("concept")) return <ConceptSlide lesson={lesson} index={Number(slideType.replace("concept", ""))} />;
+  if (slideType.startsWith("mistake")) return <MistakeSlide lesson={lesson} index={Number(slideType.replace("mistake", ""))} />;
   if (slideType === "compare") return <CompareSlide lesson={lesson} />;
   if (slideType === "guided") return <GuidedSlide lesson={lesson} />;
   if (slideType === "independent") return <IndependentSlide lesson={lesson} />;
@@ -291,7 +346,7 @@ const CSS = `
 .posl-shell {
   width: 100%;
   height: 100vh;
-  background: radial-gradient(circle at 15% 0%, #EAF4FF 0%, #D9EAFE 50%, #C7DEFB 100%);
+  background: radial-gradient(circle at 15% 0%, #FBF8F1 0%, #F3EEE1 55%, #ECE2CC 100%);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -314,7 +369,7 @@ const CSS = `
   font-weight: 700;
   font-size: 12px;
   letter-spacing: 0.5px;
-  color: #4A6690;
+  color: #8A7A50;
 }
 
 .posl-stage {
@@ -329,7 +384,7 @@ const CSS = `
 
 .posl-missing {
   font-family: 'Quicksand', sans-serif;
-  color: #4A6690;
+  color: #6B6478;
   text-align: center;
   margin-top: 60px;
 }
@@ -338,11 +393,11 @@ const CSS = `
   flex: 1;
   display: flex;
   flex-direction: column;
-  background: #FFFFFF;
-  border: 1px solid #CBE0FA;
+  background: #FFFDF8;
+  border: 1px solid #E8DFC8;
   border-radius: 22px;
   padding: 20px 56px;
-  box-shadow: 0 20px 50px rgba(22,58,102,0.12);
+  box-shadow: 0 20px 50px rgba(32,32,46,0.12);
   min-height: 0;
 }
 
@@ -369,8 +424,8 @@ const CSS = `
   font-size: 13px;
   letter-spacing: 0.8px;
   text-transform: uppercase;
-  color: #2F80ED;
-  background: rgba(47,128,237,0.12);
+  color: #C99A3E;
+  background: rgba(201,154,62,0.14);
   border-radius: 999px;
   padding: 6px 16px;
 }
@@ -378,7 +433,7 @@ const CSS = `
   font-family: 'Fredoka', sans-serif;
   font-weight: 700;
   font-size: 52px;
-  color: #163A66;
+  color: #20202E;
   margin: 0;
   line-height: 1.05;
 }
@@ -386,14 +441,14 @@ const CSS = `
   font-family: 'Quicksand', sans-serif;
   font-weight: 600;
   font-size: 16px;
-  color: #6A93C9;
+  color: #948A6E;
   margin: 0;
 }
 .posl-cover-line {
   font-family: 'Quicksand', sans-serif;
   font-weight: 600;
   font-size: 20px;
-  color: #2C4568;
+  color: #4A4458;
   line-height: 1.5;
   margin: 0;
   max-width: 640px;
@@ -403,7 +458,7 @@ const CSS = `
   font-weight: 700;
   font-size: 32px;
   font-style: italic;
-  color: #163A66;
+  color: #20202E;
   margin: 0;
   max-width: 780px;
   line-height: 1.3;
@@ -413,7 +468,7 @@ const CSS = `
   font-family: 'Fredoka', sans-serif;
   font-weight: 700;
   font-size: 30px;
-  color: #163A66;
+  color: #20202E;
   margin: 0;
 }
 
@@ -421,30 +476,89 @@ const CSS = `
   font-family: 'Quicksand', sans-serif;
   font-weight: 600;
   font-size: 24px;
-  color: #2C4568;
+  color: #4A4458;
   line-height: 1.5;
   margin: 0;
   max-width: 760px;
 }
 
-.posl-example-list { display: flex; flex-direction: column; gap: 10px; width: 100%; max-width: 640px; }
+/* ---- concept slide: signature POS color, minimal text ---- */
+.posl-concept { gap: 22px; }
+.posl-tag {
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+  color: var(--pos-accent);
+  background: var(--pos-tint);
+  border-radius: 999px;
+  padding: 10px 28px;
+}
+.posl-definition--tight { font-size: 21px; max-width: 620px; }
+.posl-example-list { display: flex; flex-direction: column; gap: 10px; width: 100%; max-width: 600px; }
 .posl-example {
   font-family: 'Quicksand', sans-serif;
   font-weight: 500;
-  font-size: 18px;
-  font-style: italic;
-  color: #163A66;
-  background: #EEF5FE;
-  border-radius: 10px;
-  padding: 10px 16px;
+  font-size: 19px;
+  color: #4A4458;
+  background: var(--pos-tint);
+  border-radius: 12px;
+  padding: 14px 20px;
   margin: 0;
+}
+.posl-target { color: var(--pos-accent); font-weight: 700; }
+
+/* ---- mistake slide: fixed semantic red/green, not POS-colored ---- */
+.posl-mistake { gap: 20px; }
+.posl-mistake-badge {
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--pos-accent);
+  background: rgba(0,0,0,0.03);
+  border: 1.5px solid var(--pos-accent);
+  border-radius: 999px;
+  padding: 7px 18px;
+}
+.posl-mistake-pair { display: flex; flex-direction: column; align-items: center; gap: 8px; width: 100%; max-width: 640px; }
+.posl-mistake-wrong {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 600;
+  font-size: 19px;
+  color: #A8382F;
+  background: #FBEAEA;
+  text-decoration: line-through;
+  text-decoration-color: rgba(168,56,47,0.5);
+  border-radius: 12px;
+  padding: 12px 20px;
+  margin: 0;
+  width: 100%;
+}
+.posl-mistake-arrow { font-size: 18px; color: #B0A88E; }
+.posl-mistake-right {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 700;
+  font-size: 19px;
+  color: #1F6B41;
+  background: #E4F8EC;
+  border-radius: 12px;
+  padding: 12px 20px;
+  margin: 0;
+  width: 100%;
+}
+.posl-mistake-note {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 500;
+  font-size: 15px;
+  color: #6B6478;
+  margin: 0;
+  max-width: 560px;
 }
 
 .posl-compare-note {
   font-family: 'Quicksand', sans-serif;
   font-weight: 500;
   font-size: 16px;
-  color: #4A6690;
+  color: #6B6478;
   margin: 0;
   max-width: 640px;
 }
@@ -455,27 +569,27 @@ const CSS = `
   font-size: 12.5px;
   text-transform: uppercase;
   letter-spacing: 0.4px;
-  color: #2F80ED;
+  color: #C99A3E;
 }
 .posl-compare-row-pair { display: contents; }
 .posl-compare-cell {
   font-family: 'Quicksand', sans-serif;
   font-weight: 500;
   font-size: 16.5px;
-  color: #2C4568;
-  background: #EEF5FE;
+  color: #4A4458;
+  background: #F5F0E4;
   border-radius: 10px;
   padding: 10px 14px;
   margin: 0;
   text-align: left;
 }
-.posl-compare-cell--right { color: #163A66; font-weight: 600; }
+.posl-compare-cell--right { color: #20202E; font-weight: 600; }
 
 .posl-list {
   font-family: 'Quicksand', sans-serif;
   font-weight: 500;
   font-size: 16.5px;
-  color: #2C4568;
+  color: #4A4458;
   line-height: 1.55;
   margin: 0;
   padding-left: 20px;
@@ -487,7 +601,7 @@ const CSS = `
   font-family: 'Quicksand', sans-serif;
   font-weight: 500;
   font-size: 19px;
-  color: #2C4568;
+  color: #4A4458;
   line-height: 1.5;
   margin: 0;
   max-width: 700px;
@@ -499,8 +613,8 @@ const CSS = `
   font-size: 13px;
   letter-spacing: 0.8px;
   text-transform: uppercase;
-  color: #2F80ED;
-  background: rgba(47,128,237,0.12);
+  color: #C99A3E;
+  background: rgba(201,154,62,0.14);
   border-radius: 999px;
   padding: 6px 16px;
 }
@@ -508,7 +622,7 @@ const CSS = `
   font-family: 'Quicksand', sans-serif;
   font-weight: 500;
   font-size: 15px;
-  color: #4A6690;
+  color: #6B6478;
   margin: 0;
 }
 
@@ -521,7 +635,7 @@ const CSS = `
   text-align: left;
 }
 .posl-quiz-item {
-  background: #EEF5FE;
+  background: #F5F0E4;
   border-radius: 12px;
   padding: 14px 18px;
   display: flex;
@@ -532,7 +646,7 @@ const CSS = `
   font-family: 'Quicksand', sans-serif;
   font-weight: 600;
   font-size: 18px;
-  color: #163A66;
+  color: #20202E;
   margin: 0;
 }
 .posl-quiz-q--error { color: #B0413E; text-decoration: line-through; text-decoration-color: rgba(176,65,62,0.4); }
@@ -542,9 +656,9 @@ const CSS = `
   font-family: 'Quicksand', sans-serif;
   font-weight: 600;
   font-size: 15px;
-  color: #163A66;
+  color: #20202E;
   background: #FFFFFF;
-  border: 1.5px solid #CBE0FA;
+  border: 1.5px solid #E8DFC8;
   border-radius: 10px;
   padding: 8px 14px;
   cursor: pointer;
@@ -558,9 +672,9 @@ const CSS = `
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;
   font-size: 14px;
-  color: #2F80ED;
+  color: #C99A3E;
   background: #FFFFFF;
-  border: 1.5px solid #CBE0FA;
+  border: 1.5px solid #E8DFC8;
   border-radius: 999px;
   padding: 7px 16px;
   cursor: pointer;
@@ -573,21 +687,21 @@ const CSS = `
   margin: 0;
 }
 
-.posl-nav-row { display: flex; align-items: center; justify-content: space-between; padding-top: 14px; border-top: 1px solid #EAF2FC; flex-shrink: 0; }
+.posl-nav-row { display: flex; align-items: center; justify-content: space-between; padding-top: 14px; border-top: 1px solid #F0EADA; flex-shrink: 0; }
 .posl-nav-btn {
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;
   font-size: 14px;
-  color: #163A66;
-  background: #EEF5FE;
-  border: 1px solid #CBE0FA;
+  color: #20202E;
+  background: #F5F0E4;
+  border: 1px solid #E8DFC8;
   border-radius: 999px;
   padding: 9px 18px;
   cursor: pointer;
 }
-.posl-nav-btn--primary { background: #2F80ED; color: #FFFFFF; border-color: #2F80ED; }
+.posl-nav-btn--primary { background: #C99A3E; color: #FFFFFF; border-color: #C99A3E; }
 .posl-nav-btn:disabled { opacity: 0.35; cursor: default; }
 .posl-nav-dots { display: flex; flex-wrap: wrap; justify-content: center; gap: 5px; max-width: 340px; }
-.posl-nav-dot { width: 6px; height: 6px; border-radius: 999px; background: #CBE0FA; }
-.posl-nav-dot.is-active { width: 16px; background: #2F80ED; }
+.posl-nav-dot { width: 6px; height: 6px; border-radius: 999px; background: #E8DFC8; }
+.posl-nav-dot.is-active { width: 16px; background: #C99A3E; }
 `;

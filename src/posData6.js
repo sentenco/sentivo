@@ -8,19 +8,44 @@ export default {
     code: "6A",
     title: "Interjections",
     kind: "Lesson",
-    objective: "Recognize interjections as words that express sudden feeling or reaction, and use correct punctuation.",
+    objective: "Recognize strong and mild interjections, and use correct punctuation for each.",
     leadIn: "What do you say when you're suddenly surprised?",
     concepts: [
       {
-        name: "Interjection",
-        definition: "An interjection expresses a sudden feeling or reaction. It's often followed by an exclamation mark.",
+        name: "Strong interjection",
+        color: "interjection",
+        definition: "Expresses sudden, strong feeling — always with an exclamation mark.",
         examples: [
-          "Wow! That is amazing.",
-          "Ouch! My foot hurts.",
-          "Oh, I understand now.",
-          "Hey! Wait for me.",
+          "**Wow**! That is amazing.",
+          "**Ouch**! My foot hurts.",
         ],
+        mistake: {
+          wrong: "Wow, that is amazing.",
+          correct: "Wow! That is amazing.",
+          note: "A strong interjection needs an exclamation mark, not a comma.",
+        },
       },
+      {
+        name: "Mild interjection",
+        color: "interjection",
+        definition: "Expresses a softer feeling or pause — followed by a comma.",
+        examples: [
+          "**Oh**, I understand now.",
+          "**Well**, let's begin.",
+        ],
+        mistake: {
+          wrong: "Oh! I understand now.",
+          correct: "Oh, I understand now.",
+          note: "A mild interjection takes a comma — save ! for strong feeling.",
+        },
+      },
+    ],
+    compareLeftLabel: "Strong ( ! )",
+    compareRightLabel: "Mild ( , )",
+    compareNote: "Strong interjections get an exclamation mark. Mild ones just get a comma.",
+    comparePairs: [
+      { left: "Wow! I won!", right: "Oh, I see." },
+      { left: "Ouch! That hurts!", right: "Well, let's try again." },
     ],
     guided: [
       { prompt: "___! That is amazing. (surprise)", answer: "Wow" },
@@ -32,7 +57,7 @@ export default {
       "Choose the best interjection for: “___! I passed the test!”",
       "Add correct punctuation: “Oh I see.”",
     ],
-    wrapup: "Interjections show sudden feeling. A strong interjection usually ends with an exclamation mark.",
+    wrapup: "Interjections show feeling. Strong ones end with !, mild ones with a comma.",
   },
 
   lessonB: {

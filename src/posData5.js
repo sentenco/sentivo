@@ -8,19 +8,44 @@ export default {
     code: "5A",
     title: "Conjunctions",
     kind: "Lesson",
-    objective: "Use conjunctions to connect words, phrases, or clauses to add, contrast, or give reasons.",
+    objective: "Use coordinating and subordinating conjunctions to connect words, phrases, or clauses.",
     leadIn: "Name two foods you like, connected with “and.”",
     concepts: [
       {
-        name: "Conjunction",
-        definition: "A conjunction connects words, phrases, or clauses.",
+        name: "Coordinating conjunction",
+        color: "conjunction",
+        definition: "Joins two equal ideas — and, but, or, so.",
         examples: [
-          "I like apples and bananas.",
-          "She is tired, but she is happy.",
-          "Do you want tea or juice?",
-          "He stayed home because he was sick.",
+          "I like apples **and** bananas.",
+          "She is tired, **but** happy.",
         ],
+        mistake: {
+          wrong: "I like tea but coffee.",
+          correct: "I like tea and coffee.",
+          note: "\"But\" shows contrast — use \"and\" to simply add.",
+        },
       },
+      {
+        name: "Subordinating conjunction",
+        color: "conjunction",
+        definition: "Adds a reason or condition to the main idea — because, although, if.",
+        examples: [
+          "He stayed home **because** he was sick.",
+          "**Although** it rained, we went out.",
+        ],
+        mistake: {
+          wrong: "Although it was raining, but we went out.",
+          correct: "Although it was raining, we went out.",
+          note: "Don't pair \"although\" with \"but\" — pick one.",
+        },
+      },
+    ],
+    compareLeftLabel: "Coordinating (and / but / or / so)",
+    compareRightLabel: "Subordinating (because / although / if)",
+    compareNote: "Coordinating conjunctions join equal ideas; subordinating conjunctions make one idea depend on the other.",
+    comparePairs: [
+      { left: "She is tired, but happy.", right: "Although she is tired, she is happy." },
+      { left: "He stayed home, so he missed the game.", right: "He missed the game because he stayed home." },
     ],
     guided: [
       { prompt: "I like apples ___ bananas. (adding)", answer: "and" },
@@ -32,7 +57,7 @@ export default {
       "Choose: “Do you want tea ___ juice?” (or / and)",
       "Classify “and,” “but,” “because,” “so” by purpose: add, contrast, or reason.",
     ],
-    wrapup: "Conjunctions connect ideas — to add (and), to contrast (but), to choose (or), or to give a reason (because, so).",
+    wrapup: "Coordinating conjunctions join equals. Subordinating conjunctions add a reason or condition — and never pair with \"but.\"",
   },
 
   lessonB: {
