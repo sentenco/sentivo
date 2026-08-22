@@ -87,9 +87,10 @@ function openTopicPlayer(typeKey, comboKey, topicIndex) {
   );
 }
 
-export default function WritingActivities() {
+export default function WritingActivities({ query }) {
   const [typeKey, setTypeKey] = useState(null);
   const [comboKey, setComboKey] = useState(null);
+  const q = query.trim().toLowerCase();
 
   // Browser back/forward drives navigation instead of an in-page back
   // button — each drill-down pushes a history entry, popping it here
@@ -116,6 +117,51 @@ export default function WritingActivities() {
   const type = ACTIVITY_TYPES.find((t) => t.key === typeKey);
   const combo = COMBOS.find((c) => c.key === comboKey);
   const topics = type && combo ? type.sets[combo.key] : [];
+
+  // Search results: a flat list of matching topics across every activity
+  // type and audience/level combo, bypassing the normal "pick a type,
+  // then a combo" drill-down (and taking priority even mid-drill-down)
+  // so the header search box works no matter where in Writing you are.
+  if (q) {
+    const matches = ACTIVITY_TYPES.flatMap((t) =>
+      COMBOS.flatMap((c) =>
+        (t.sets[c.key] || [])
+          .map((topic, i) => ({ topic, index: i, type: t, combo: c }))
+          .filter(({ topic }) => topic.title.toLowerCase().includes(q) || topic.focus.toLowerCase().includes(q))
+      )
+    );
+
+    return (
+      <div className="wa-panel">
+        <style>{CSS}</style>
+        <div className="wa-hero">
+          <p className="wa-blurb">Results for "{query.trim()}"</p>
+        </div>
+        {matches.length === 0 ? (
+          <p className="empty-msg">No Writing activities match "{query.trim()}".</p>
+        ) : (
+          <div className="wa-cat-grid">
+            {matches.map(({ topic, index, type: t, combo: c }) => (
+              <button
+                key={`${t.key}-${c.key}-${index}`}
+                type="button"
+                className={`wa-cat-card wa-cat-card--${t.hue}`}
+                onClick={() => openTopicPlayer(t.key, c.key, index)}
+              >
+                <div className="wa-cat-top">
+                  <span className="wa-cat-icon">{t.icon}</span>
+                  <span className="wa-cat-tag">Ready</span>
+                </div>
+                <span className="wa-cat-title">{topic.title}</span>
+                <span className="wa-cat-blurb">{t.title} · {c.audience} {c.level}</span>
+                <span className="wa-cat-cta">Start →</span>
+              </button>
+            ))}
+          </div>
+        )}
+      </div>
+    );
+  }
 
   if (type && combo) {
     return (

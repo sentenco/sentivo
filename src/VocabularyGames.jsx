@@ -301,9 +301,10 @@ function openCategoryPlayer(gameKey, categoryKey) {
   );
 }
 
-export default function VocabularyGames() {
+export default function VocabularyGames({ query }) {
   const [gameKey, setGameKey] = useState(null);
   const [levelTab, setLevelTab] = useState(LEVEL_GROUPS[0]);
+  const q = query.trim().toLowerCase();
 
   // Browser back/forward drives navigation instead of an in-page back
   // button — each drill-down pushes a history entry, popping it here
@@ -327,6 +328,57 @@ export default function VocabularyGames() {
   const categories = gameKey ? CATEGORIES_BY_GAME[gameKey] : [];
   const hasLevelGroups = categories.some((c) => c.cefrGroup);
   const levelCategories = hasLevelGroups ? categories.filter((c) => c.cefrGroup === levelTab) : [];
+
+  // Search results: a flat list of matching categories across every game
+  // type, bypassing the normal "pick a type, then a category" drill-down
+  // (and taking priority even if already drilled into one) so the header
+  // search box works no matter where in Vocabulary you are.
+  if (q) {
+    const matches = GAME_TYPES.flatMap((g) =>
+      (CATEGORIES_BY_GAME[g.key] || [])
+        .filter((c) => c.title.toLowerCase().includes(q))
+        .map((c) => ({ ...c, game: g }))
+    );
+
+    return (
+      <div className="vg-shell">
+        <style>{CSS}</style>
+        <div className="vg-page">
+          <div className="vg-hero">
+            <span className="vg-eyebrow">Sentivo · Vocabulary</span>
+            <h1><span className="vg-pill">🗂️ Word Bank</span></h1>
+            <p className="vg-blurb">Results for "{query.trim()}"</p>
+          </div>
+          <div className="vg-row"></div>
+
+          {matches.length === 0 ? (
+            <p className="empty-msg">No Vocabulary categories match "{query.trim()}".</p>
+          ) : (
+            <div className="vg-cat-grid">
+              {matches.map((c) => (
+                <button
+                  key={`${c.game.key}-${c.key}`}
+                  type="button"
+                  className={`vg-cat-card vg-cat-card--${c.game.hue} ${c.ready ? "" : "vg-cat-card--soon"}`}
+                  onClick={() => c.ready && openCategoryPlayer(c.game.key, c.key)}
+                  disabled={!c.ready}
+                >
+                  <div className="vg-cat-top">
+                    <span className="vg-cat-icon">{c.game.icon}</span>
+                    <span className="vg-cat-tag">{c.ready ? "Ready" : "Coming soon"}</span>
+                  </div>
+                  {c.level && <span className="vg-cat-level">{c.level}</span>}
+                  <span className="vg-cat-title">{c.title}</span>
+                  <span className="vg-cat-blurb">{c.game.title}{c.cefrGroup ? ` · ${c.cefrGroup}` : ""}{c.audience ? ` · ${c.audience}` : ""}</span>
+                  {c.ready && <span className="vg-cat-cta">Play →</span>}
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
+      </div>
+    );
+  }
 
   if (game) {
     return (

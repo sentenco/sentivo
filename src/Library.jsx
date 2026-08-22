@@ -248,9 +248,13 @@ function SpeakingBanner({ name }) {
   );
 }
 
-function ArticlesFeature({ navigate }) {
+function ArticlesFeature({ navigate, query }) {
   const [activeTopic, setActiveTopic] = useState("All");
-  const filtered = activeTopic === "All" ? ARTICLES : ARTICLES.filter((a) => a.topicLabel === activeTopic);
+  const q = query.trim().toLowerCase();
+  const byTopic = activeTopic === "All" ? ARTICLES : ARTICLES.filter((a) => a.topicLabel === activeTopic);
+  const filtered = q
+    ? byTopic.filter((a) => a.title.toLowerCase().includes(q) || a.dek.toLowerCase().includes(q))
+    : byTopic;
   const lead = filtered.length
     ? filtered.reduce((newest, a) => (!newest || new Date(a.publishedAt) > new Date(newest.publishedAt) ? a : newest), null)
     : null;
@@ -312,7 +316,7 @@ function ArticlesFeature({ navigate }) {
           </div>
         </button>
       ) : (
-        <p className="gaz-empty">No articles in this category yet — check back soon.</p>
+        <p className="gaz-empty">{q ? `No articles match "${query.trim()}".` : "No articles in this category yet — check back soon."}</p>
       )}
 
       <div className="gaz-grid">
@@ -457,11 +461,21 @@ const GRAMMAR_MODULES = [
 ];
 const GRAMMAR_PER_PAGE = 8;
 
-function GrammarFeature({ navigate }) {
+const SPEAKING_TRACKS = [
+  { key: "forge", href: "/library/forge", hue: "forge", gap: "Thin working vocabulary", name: "Forge", desc: "Build real vocabulary through pictures, gaps, echoes, and question chains." },
+  { key: "shift", href: "/library/shift", hue: "shift", gap: "Slow tense self-repair", name: "Shift", desc: "Fast tense choice and self-repair under pressure, for students who already know the grammar." },
+  { key: "ascend", href: "/library/ascend", hue: "ascend", gap: "Imprecise, unstructured speech", name: "Ascend", desc: "Precision, structure, and diplomatic control for students who already sound fluent." },
+];
+
+function GrammarFeature({ navigate, query }) {
   const [page, setPage] = useState(1);
-  const totalPages = Math.max(1, Math.ceil(GRAMMAR_MODULES.length / GRAMMAR_PER_PAGE));
+  const q = query.trim().toLowerCase();
+  const modules = q
+    ? GRAMMAR_MODULES.filter((m) => m.title.toLowerCase().includes(q) || m.spec.toLowerCase().includes(q))
+    : GRAMMAR_MODULES;
+  const totalPages = Math.max(1, Math.ceil(modules.length / GRAMMAR_PER_PAGE));
   const safePage = Math.min(page, totalPages);
-  const pageItems = GRAMMAR_MODULES.slice((safePage - 1) * GRAMMAR_PER_PAGE, safePage * GRAMMAR_PER_PAGE);
+  const pageItems = modules.slice((safePage - 1) * GRAMMAR_PER_PAGE, safePage * GRAMMAR_PER_PAGE);
 
   return (
     <div className="gdn-page">
@@ -472,6 +486,9 @@ function GrammarFeature({ navigate }) {
       </div>
       <div className="gdn-row"></div>
 
+      {pageItems.length === 0 && (
+        <p className="empty-msg">No grammar modules match "{query.trim()}".</p>
+      )}
       <div className="gdn-beds">
         {pageItems.map((m) =>
           m.ready ? (
@@ -684,9 +701,13 @@ function BookshelfRows({ books, navigate, colorOffset }) {
   ));
 }
 
-function BookshelfFeature({ items, navigate }) {
+function BookshelfFeature({ items, navigate, query }) {
   const [level, setLevel] = useState("A1");
-  const levelItems = items.filter((c) => (c.level || "A1") === level);
+  const isSearching = query.trim().length > 0;
+  // A search should surface matches across every level, not just the
+  // currently selected level tab, so the level filter is skipped while
+  // `items` (already title-matched by the parent) has an active query.
+  const levelItems = isSearching ? items : items.filter((c) => (c.level || "A1") === level);
   let colorOffset = 0;
   const groups = READING_AGE_TRACKS.map((track) => {
     const books = levelItems.filter((c) => (BOOK_AGE_TRACK[c.id] || "Teens") === track);
@@ -702,26 +723,28 @@ function BookshelfFeature({ items, navigate }) {
         <h1><span className="bkshf-nameplate-pill">📖 Library</span></h1>
       </div>
 
-      <div className="bkshf-level-tabs">
-        {READING_LEVELS.map((lvl) => (
-          <button
-            key={lvl}
-            type="button"
-            className={`bkshf-level-tab ${level === lvl ? "is-active" : ""}`}
-            onClick={() => setLevel(lvl)}
-          >
-            {lvl}
-          </button>
-        ))}
-      </div>
+      {!isSearching && (
+        <div className="bkshf-level-tabs">
+          {READING_LEVELS.map((lvl) => (
+            <button
+              key={lvl}
+              type="button"
+              className={`bkshf-level-tab ${level === lvl ? "is-active" : ""}`}
+              onClick={() => setLevel(lvl)}
+            >
+              {lvl}
+            </button>
+          ))}
+        </div>
+      )}
 
       <div className="bkshf-row"></div>
 
       {groups.length === 0 ? (
         <div className="bkshf-empty">
           <span className="bkshf-empty-icon">📚</span>
-          <p className="bkshf-empty-title">No {level} stories yet</p>
-          <p className="bkshf-empty-desc">Check back soon -- more levels are on the way.</p>
+          <p className="bkshf-empty-title">{isSearching ? `No stories match "${query.trim()}"` : `No ${level} stories yet`}</p>
+          <p className="bkshf-empty-desc">{isSearching ? "Try a different search term." : "Check back soon -- more levels are on the way."}</p>
         </div>
       ) : (
         <div className="bkshf-shelves">
@@ -1443,20 +1466,6 @@ export default function Library() {
     </div>
   );
 
-  // Categories whose main view is a dedicated feature component/static
-  // markup rather than the generic tools grid -- none of them were wired
-  // to the header search box, so typing a query there did nothing while
-  // on those pages. Whenever there's an active query on one of these
-  // categories, fall back to the generic grid (already filtered by both
-  // category and query via `filtered` above) so search works everywhere.
-  const searchableCategories = ["Grammar", "Reading", "Speaking", "Vocabulary", "Writing", "Listening"];
-  const showSearchResults = query.trim().length > 0 && searchableCategories.includes(category);
-  const isGenericContentActive =
-    !(category === "All" && !query.trim() && !showAllToday) &&
-    category !== "Articles" &&
-    !(PRO_CATEGORIES.includes(category) && plan === "free") &&
-    (showSearchResults || !searchableCategories.includes(category));
-
   return (
     <>
     <div className={`page ${isPro ? "theme-pro" : "theme-fun"}`}>
@@ -1689,15 +1698,13 @@ export default function Library() {
             <TodayFeature navigate={navigate} />
           )
         ) : category === "Articles" ? (
-          <ArticlesFeature navigate={navigate} />
+          <ArticlesFeature navigate={navigate} query={query} />
         ) : PRO_CATEGORIES.includes(category) && plan === "free" ? (
           <CategoryLockedFeature category={category} navigate={navigate} />
-        ) : showSearchResults ? (
-          genericContent
         ) : category === "Grammar" ? (
-          <GrammarFeature navigate={navigate} />
+          <GrammarFeature navigate={navigate} query={query} />
         ) : category === "Reading" ? (
-          <BookshelfFeature items={filtered} navigate={navigate} />
+          <BookshelfFeature items={filtered} navigate={navigate} query={query} />
         ) : category === "Speaking" ? (
           <div className="spklab-page">
             <div className="spklab-hero">
@@ -1706,41 +1713,33 @@ export default function Library() {
               <p className="spklab-sub">Every Speaking course is built around one identified gap, not a general level.</p>
             </div>
             <div className="spklab-lane"></div>
-            <div className="spklab-grid">
-              <a href="/library/forge" className="spklab-card spklab-card--forge">
-                <SpeakingBanner name="forge" />
-                <div className="spklab-body">
-                  <div className="spklab-label">Gap identified</div>
-                  <p className="spklab-gap">Thin working vocabulary</p>
-                  <h3 className="spklab-name">Forge</h3>
-                  <p className="spklab-desc">Build real vocabulary through pictures, gaps, echoes, and question chains.</p>
-                  <span className="spklab-cta">Open Forge →</span>
+            {(() => {
+              const q = query.trim().toLowerCase();
+              const tracks = q
+                ? SPEAKING_TRACKS.filter((t) => t.name.toLowerCase().includes(q) || t.gap.toLowerCase().includes(q) || t.desc.toLowerCase().includes(q))
+                : SPEAKING_TRACKS;
+              return tracks.length === 0 ? (
+                <p className="empty-msg">No Speaking tracks match "{query.trim()}".</p>
+              ) : (
+                <div className="spklab-grid">
+                  {tracks.map((t) => (
+                    <a key={t.key} href={t.href} className={`spklab-card spklab-card--${t.hue}`}>
+                      <SpeakingBanner name={t.key} />
+                      <div className="spklab-body">
+                        <div className="spklab-label">Gap identified</div>
+                        <p className="spklab-gap">{t.gap}</p>
+                        <h3 className="spklab-name">{t.name}</h3>
+                        <p className="spklab-desc">{t.desc}</p>
+                        <span className="spklab-cta">Open {t.name} →</span>
+                      </div>
+                    </a>
+                  ))}
                 </div>
-              </a>
-              <a href="/library/shift" className="spklab-card spklab-card--shift">
-                <SpeakingBanner name="shift" />
-                <div className="spklab-body">
-                  <div className="spklab-label">Gap identified</div>
-                  <p className="spklab-gap">Slow tense self-repair</p>
-                  <h3 className="spklab-name">Shift</h3>
-                  <p className="spklab-desc">Fast tense choice and self-repair under pressure, for students who already know the grammar.</p>
-                  <span className="spklab-cta">Open Shift →</span>
-                </div>
-              </a>
-              <a href="/library/ascend" className="spklab-card spklab-card--ascend">
-                <SpeakingBanner name="ascend" />
-                <div className="spklab-body">
-                  <div className="spklab-label">Gap identified</div>
-                  <p className="spklab-gap">Imprecise, unstructured speech</p>
-                  <h3 className="spklab-name">Ascend</h3>
-                  <p className="spklab-desc">Precision, structure, and diplomatic control for students who already sound fluent.</p>
-                  <span className="spklab-cta">Open Ascend →</span>
-                </div>
-              </a>
-            </div>
+              );
+            })()}
           </div>
         ) : category === "Vocabulary" ? (
-          <VocabularyGames />
+          <VocabularyGames query={query} />
         ) : category === "Writing" ? (
           <div className="dyn-landing dyn-landing--writing">
             <div className="dyn-landing-hero">
@@ -1748,7 +1747,7 @@ export default function Library() {
               <h1><span className="dyn-landing-pill">✍️ Writing Desk</span></h1>
             </div>
             <div className="dyn-landing-row"></div>
-            <WritingActivities />
+            <WritingActivities query={query} />
           </div>
         ) : category === "Listening" ? (
           <div className="dyn-landing dyn-landing--listening">
@@ -1768,7 +1767,7 @@ export default function Library() {
         )}
         </div>
 
-        {isGenericContentActive && (
+        {category !== "Speaking" && category !== "Grammar" && category !== "Articles" && category !== "Reading" && category !== "Vocabulary" && category !== "Writing" && category !== "Listening" && !(category === "All" && !query.trim() && !showAllToday) && (
         <div className="pagination">
           <button disabled={safePage === 1} onClick={() => changePage(safePage - 1)}>&larr; Prev</button>
           <span className="page-indicator">Page {safePage} of {totalPages}</span>
