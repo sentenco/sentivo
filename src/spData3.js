@@ -11,12 +11,12 @@ export default {
     {
       name: "SVA — Subject + Verb + Adverbial",
       definition: "The adverbial usually answers where, when, or how. Some verbs — like be — often need one to complete the sentence.",
-      examples: ["My house is there.", "The children are outside.", "She arrived late.", "We live nearby."],
+      examples: ["My house is there.", "The children are outside.", "She arrived late."],
     },
     {
       name: "SVOA — Subject + Verb + Object + Adverbial",
       definition: "Same idea, but now there's an object first, and the adverbial — often a place — comes after it.",
-      examples: ["She put the book on the table.", "He placed the bag under the chair.", "We met our teacher in the library.", "They left the keys inside."],
+      examples: ["She put the book on the table.", "He placed the bag under the chair.", "We met our teacher in the library."],
     },
   ],
   compareLeftLabel: "SVA — no object",

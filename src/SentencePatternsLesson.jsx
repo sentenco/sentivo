@@ -3,11 +3,11 @@ import { useParams } from "react-router-dom";
 import LESSONS, { getLessonByCode } from "./spTracks";
 
 function buildSlides(lesson) {
-  const slides = ["cover", "objective", "warmup"];
+  const slides = ["cover", "warmup"];
   lesson.teach.forEach((_, i) => slides.push(`teach${i}`));
   if (lesson.comparePairs) slides.push("compare");
   if (lesson.guided) slides.push("guided");
-  slides.push("practice", "assessment", "answerkey", "wrapup");
+  slides.push("practice", "wrapup");
   return slides;
 }
 
@@ -17,15 +17,6 @@ function CoverSlide({ lesson }) {
       <span className="spl-pattern-badge">{lesson.patternLabel}</span>
       <h2 className="spl-cover-title">{lesson.title}</h2>
       <p className="spl-cover-sub">Lesson {lesson.number} of {LESSONS.length}</p>
-    </div>
-  );
-}
-
-function ObjectiveSlide({ lesson }) {
-  return (
-    <div className="spl-slide">
-      <h3 className="spl-h">Objective</h3>
-      <p className="spl-definition">{lesson.objective}</p>
     </div>
   );
 }
@@ -109,81 +100,6 @@ function PracticeSlide({ lesson }) {
   );
 }
 
-function McItem({ item, index }) {
-  const [picked, setPicked] = useState(null);
-  return (
-    <div className="spl-quiz-item">
-      <p className="spl-quiz-q">{index + 1}. {item.q}</p>
-      <div className="spl-quiz-options">
-        {item.options.map((opt, i) => {
-          const answered = picked !== null;
-          const isCorrect = i === item.correct;
-          const isPicked = i === picked;
-          const cls = answered && isCorrect ? "is-correct" : answered && isPicked ? "is-wrong" : "";
-          return (
-            <button
-              key={i}
-              type="button"
-              className={`spl-quiz-opt ${cls}`}
-              onClick={() => setPicked(i)}
-              disabled={answered}
-            >
-              {opt}
-            </button>
-          );
-        })}
-      </div>
-    </div>
-  );
-}
-
-function RevealAssessItem({ item, index }) {
-  const [shown, setShown] = useState(false);
-  return (
-    <div className="spl-quiz-item">
-      <p className="spl-quiz-q">{index + 1}. {item.q}</p>
-      {shown ? (
-        <p className="spl-reveal-correct">{item.answer}</p>
-      ) : (
-        <button type="button" className="spl-reveal-btn" onClick={() => setShown(true)}>Show answer</button>
-      )}
-    </div>
-  );
-}
-
-function AssessmentSlide({ lesson }) {
-  return (
-    <div className="spl-slide spl-slide--part">
-      <span className="spl-part-badge">Assessment</span>
-      <div className="spl-quiz-list">
-        {lesson.assessment.map((item, i) =>
-          item.type === "mc" ? (
-            <McItem key={i} item={item} index={i} />
-          ) : (
-            <RevealAssessItem key={i} item={item} index={i} />
-          )
-        )}
-      </div>
-    </div>
-  );
-}
-
-function AnswerKeySlide({ lesson }) {
-  return (
-    <div className="spl-slide spl-slide--part">
-      <span className="spl-part-badge">Answer key</span>
-      <div className="spl-answerkey-list">
-        {lesson.assessment.map((item, i) => (
-          <div key={i} className="spl-answerkey-row">
-            <p className="spl-answerkey-q">{i + 1}. {item.q}</p>
-            <p className="spl-answerkey-a">{item.type === "mc" ? item.options[item.correct] : item.answer}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
-
 function WrapupSlide({ lesson }) {
   return (
     <div className="spl-slide">
@@ -196,14 +112,11 @@ function WrapupSlide({ lesson }) {
 
 function renderSlide(slideType, lesson) {
   if (slideType === "cover") return <CoverSlide lesson={lesson} />;
-  if (slideType === "objective") return <ObjectiveSlide lesson={lesson} />;
   if (slideType === "warmup") return <WarmupSlide lesson={lesson} />;
   if (slideType.startsWith("teach")) return <TeachSlide lesson={lesson} index={Number(slideType.replace("teach", ""))} />;
   if (slideType === "compare") return <CompareSlide lesson={lesson} />;
   if (slideType === "guided") return <GuidedSlide lesson={lesson} />;
   if (slideType === "practice") return <PracticeSlide lesson={lesson} />;
-  if (slideType === "assessment") return <AssessmentSlide lesson={lesson} />;
-  if (slideType === "answerkey") return <AnswerKeySlide lesson={lesson} />;
   if (slideType === "wrapup") return <WrapupSlide lesson={lesson} />;
   return null;
 }
@@ -464,18 +377,6 @@ const CSS = `
   max-width: 700px;
 }
 
-.spl-part-badge {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 700;
-  font-size: 13px;
-  letter-spacing: 0.8px;
-  text-transform: uppercase;
-  color: #B0662E;
-  background: rgba(176,102,46,0.12);
-  border-radius: 999px;
-  padding: 6px 16px;
-}
-
 .spl-quiz-list {
   display: flex;
   flex-direction: column;
@@ -500,22 +401,6 @@ const CSS = `
   margin: 0;
 }
 
-.spl-quiz-options { display: flex; flex-wrap: wrap; gap: 8px; }
-.spl-quiz-opt {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 600;
-  font-size: 15px;
-  color: #4A3620;
-  background: #FFFFFF;
-  border: 1.5px solid #E4D6BF;
-  border-radius: 10px;
-  padding: 8px 14px;
-  cursor: pointer;
-}
-.spl-quiz-opt:disabled { cursor: default; }
-.spl-quiz-opt.is-correct { background: #E6F6EC; border-color: #55B983; color: #1F6B41; }
-.spl-quiz-opt.is-wrong { background: #FBEAEA; border-color: #D9807D; color: #A8382F; }
-
 .spl-reveal-btn {
   align-self: flex-start;
   font-family: 'Quicksand', sans-serif;
@@ -532,30 +417,6 @@ const CSS = `
   font-family: 'Quicksand', sans-serif;
   font-weight: 600;
   font-size: 17px;
-  color: #1F6B41;
-  margin: 0;
-}
-
-.spl-answerkey-list { display: flex; flex-direction: column; gap: 10px; width: 100%; max-width: 840px; text-align: left; }
-.spl-answerkey-row {
-  background: #F7F1E6;
-  border-radius: 12px;
-  padding: 12px 18px;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-.spl-answerkey-q {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 600;
-  font-size: 15.5px;
-  color: #4A3620;
-  margin: 0;
-}
-.spl-answerkey-a {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 700;
-  font-size: 15.5px;
   color: #1F6B41;
   margin: 0;
 }

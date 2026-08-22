@@ -11,12 +11,12 @@ export default {
     {
       name: "SV — Subject + Verb",
       definition: "The subject does the action, the verb names it, and that's the whole sentence — nothing else required.",
-      examples: ["Birds fly.", "The baby cried.", "She smiled.", "We arrived early."],
+      examples: ["Birds fly.", "The baby cried.", "She smiled."],
     },
     {
       name: "SVO — Subject + Verb + Object",
       definition: "The object sits right after the verb and receives the action. It answers the question “verb + what?” or “verb + whom?”",
-      examples: ["I like rice.", "She reads books.", "They watch TV.", "He called his mom."],
+      examples: ["I like rice.", "She reads books.", "They watch TV."],
     },
   ],
   compareLeftLabel: "SV — nothing after the verb",

@@ -11,12 +11,12 @@ export default {
     {
       name: "SVC — Subject + Verb + Complement",
       definition: "The verb is usually a linking verb — be, seem, become, look, feel. The complement doesn't receive an action; it describes or renames the subject.",
-      examples: ["John is tall.", "She is a teacher.", "The soup tastes good.", "They became friends."],
+      examples: ["John is tall.", "She is a teacher.", "The soup tastes good."],
     },
     {
       name: "Complement: noun or adjective",
       definition: "A complement can be an adjective (tall, good) or a noun (a teacher, friends) — either way, it circles back to describe the subject.",
-      examples: ["He seems tired. (adjective)", "This is my sister. (noun)", "The milk smells sour. (adjective)", "We remained calm. (adjective)"],
+      examples: ["He seems tired. (adjective)", "This is my sister. (noun)", "The milk smells sour. (adjective)"],
     },
   ],
   guided: [

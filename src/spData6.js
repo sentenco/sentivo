@@ -14,9 +14,9 @@ export default {
       examples: ["Birds fly. (SV)", "I like rice. (SVO)", "She is a teacher. (SVC)", "My house is there. (SVA)"],
     },
     {
-      name: "The trickier four",
+      name: "The trickier three",
       definition: "These combine an object with something extra — another object, a complement, or an adverbial.",
-      examples: ["She put the book on the table. (SVOA)", "John gave Jane a present. (SVOO)", "They elected her president. (SVOC)", "We found the movie boring. (SVOC)"],
+      examples: ["She put the book on the table. (SVOA)", "John gave Jane a present. (SVOO)", "They elected her president. (SVOC)"],
     },
   ],
   guided: [

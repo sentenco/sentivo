@@ -11,12 +11,12 @@ export default {
     {
       name: "SVOO — Subject + Verb + Indirect Object + Direct Object",
       definition: "The indirect object usually receives something — often a person. The direct object is the thing being given, sent, shown, or told.",
-      examples: ["John gave Jane a present.", "She sent me a message.", "They told us a story.", "My father bought me a bike."],
+      examples: ["John gave Jane a present.", "She sent me a message.", "They told us a story."],
     },
     {
       name: "Common SVOO verbs",
       definition: "Verbs like give, send, show, tell, and buy naturally take two objects — one for the receiver, one for the thing.",
-      examples: ["He showed her the photos.", "We taught them the rules.", "She offered him a seat.", "I lent my friend a book."],
+      examples: ["He showed her the photos.", "We taught them the rules.", "She offered him a seat."],
     },
   ],
   guided: [

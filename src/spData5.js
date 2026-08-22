@@ -11,12 +11,12 @@ export default {
     {
       name: "SVOC — Subject + Verb + Object + Complement",
       definition: "The complement gives more information about the object, not the subject. Common verbs: make, call, elect, find, consider.",
-      examples: ["John made Jane angry.", "They elected her president.", "The news made us happy.", "We found the movie boring."],
+      examples: ["John made Jane angry.", "They elected her president.", "The news made us happy."],
     },
     {
       name: "SVOC vs SVOA",
       definition: "They can look similar, but the final part does a different job: a complement describes the object, while an adverbial adds place, time, or manner.",
-      examples: ["We found the movie boring. (SVOC — describes the movie)", "We met our teacher in the library. (SVOA — where we met)", "They called him a hero. (SVOC — renames him)", "He placed the bag under the chair. (SVOA — where he placed it)"],
+      examples: ["We found the movie boring. (SVOC — describes the movie)", "We met our teacher in the library. (SVOA — where we met)"],
     },
   ],
   compareLeftLabel: "SVOC — describes the object",
