@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
-import ANTONYMS_SET from "./antonymsGameData";
 import SYNONYMS_TOPICS from "./synonymsTopics";
 import SYNONYMS_TOPICS_B1B2 from "./synonymsTopicsB1B2";
 import SYNONYMS_TOPICS_C1C2 from "./synonymsTopicsC1C2";
 import ANTONYMS_TOPICS from "./antonymsTopics";
+import ANTONYMS_TOPICS_B1B2 from "./antonymsTopicsB1B2";
+import ANTONYMS_TOPICS_C1C2 from "./antonymsTopicsC1C2";
 import WORD_SORT_PACKS from "./wordSortPacks";
 import ODD_ONE_OUT_PACKS from "./oddOneOutData";
 
@@ -168,23 +169,14 @@ function GameBanner({ name }) {
 const AUDIENCES = ["Kids", "Teens", "Adults"];
 const LEVEL_GROUPS = ["A1-A2", "B1-B2", "C1-C2"];
 
-const TOPICS = [
-  { key: "feelings", title: "Feelings & Emotions" },
-  { key: "dailyActions", title: "Daily Actions" },
-  { key: "describingPeople", title: "Describing People" },
-  { key: "describingThings", title: "Describing Things" },
-  { key: "schoolAndStudy", title: "School & Study" },
-  { key: "travelAndPlaces", title: "Travel & Places" },
-  { key: "homeAndDailyLife", title: "Home & Daily Life" },
-];
-
-// Synonyms-only topic lists, one per level -- deliberately different
-// topics between levels (not just harder words under the same names),
-// and deliberately NOT the shared `TOPICS` array above (that one stays
-// Antonyms-only) so editing Synonyms never affects Antonyms. A1-A2 stays
-// concrete/everyday, B1-B2 shifts to work/media/civic themes, C1-C2
-// shifts to abstract/academic/global themes. 10 topics per level.
-const SYNONYMS_TOPICS_LIST_A1A2 = [
+// Shared topic lists (key/title only), one per level -- used by both
+// Synonyms and Antonyms so the two games pair up under the same level
+// tabs and topic names; each game supplies its own word data per key.
+// Deliberately different topics between levels (not just harder words
+// under the same names): A1-A2 stays concrete/everyday, B1-B2 shifts to
+// work/media/civic themes, C1-C2 shifts to abstract/academic/global
+// themes. 10 topics per level.
+const VOCAB_TOPICS_LIST_A1A2 = [
   { key: "feelings", title: "Feelings & Emotions" },
   { key: "dailyActions", title: "Daily Actions" },
   { key: "describingPeople", title: "Describing People" },
@@ -196,7 +188,7 @@ const SYNONYMS_TOPICS_LIST_A1A2 = [
   { key: "weatherAndSeasons", title: "Weather & Seasons" },
   { key: "hobbiesAndFreeTime", title: "Hobbies & Free Time" },
 ];
-const SYNONYMS_TOPICS_LIST_B1B2 = [
+const VOCAB_TOPICS_LIST_B1B2 = [
   { key: "workAndCareer", title: "Work & Career" },
   { key: "mediaAndTechnology", title: "Media & Technology" },
   { key: "healthAndWellbeing", title: "Health & Wellbeing" },
@@ -208,7 +200,7 @@ const SYNONYMS_TOPICS_LIST_B1B2 = [
   { key: "travelAndTourism", title: "Travel & Tourism" },
   { key: "relationshipsAndFamily", title: "Relationships & Family" },
 ];
-const SYNONYMS_TOPICS_LIST_C1C2 = [
+const VOCAB_TOPICS_LIST_C1C2 = [
   { key: "businessAndEconomics", title: "Business & Economics" },
   { key: "politicsAndGovernance", title: "Politics & Governance" },
   { key: "scienceAndInnovation", title: "Science & Innovation" },
@@ -223,7 +215,7 @@ const SYNONYMS_TOPICS_LIST_C1C2 = [
 
 export const CATEGORIES_BY_GAME = {
   synonyms: [
-    ...SYNONYMS_TOPICS_LIST_A1A2.map((t) => ({
+    ...VOCAB_TOPICS_LIST_A1A2.map((t) => ({
       key: `${t.key}-a1a2`,
       title: t.title,
       blurb: "10 words on this topic.",
@@ -231,7 +223,7 @@ export const CATEGORIES_BY_GAME = {
       data: SYNONYMS_TOPICS[t.key],
       cefrGroup: "A1-A2",
     })),
-    ...SYNONYMS_TOPICS_LIST_B1B2.map((t) => ({
+    ...VOCAB_TOPICS_LIST_B1B2.map((t) => ({
       key: `${t.key}-b1b2`,
       title: t.title,
       blurb: "10 words on this topic.",
@@ -239,7 +231,7 @@ export const CATEGORIES_BY_GAME = {
       data: SYNONYMS_TOPICS_B1B2[t.key],
       cefrGroup: "B1-B2",
     })),
-    ...SYNONYMS_TOPICS_LIST_C1C2.map((t) => ({
+    ...VOCAB_TOPICS_LIST_C1C2.map((t) => ({
       key: `${t.key}-c1c2`,
       title: t.title,
       blurb: "10 words on this topic.",
@@ -249,13 +241,29 @@ export const CATEGORIES_BY_GAME = {
     })),
   ],
   antonyms: [
-    { key: "sample", title: "Sample Set", blurb: "10 starter words to try the game.", ready: true, data: ANTONYMS_SET },
-    ...TOPICS.map((t) => ({
-      key: t.key,
+    ...VOCAB_TOPICS_LIST_A1A2.map((t) => ({
+      key: `${t.key}-a1a2`,
       title: t.title,
       blurb: "10 words on this topic.",
       ready: true,
       data: ANTONYMS_TOPICS[t.key],
+      cefrGroup: "A1-A2",
+    })),
+    ...VOCAB_TOPICS_LIST_B1B2.map((t) => ({
+      key: `${t.key}-b1b2`,
+      title: t.title,
+      blurb: "10 words on this topic.",
+      ready: true,
+      data: ANTONYMS_TOPICS_B1B2[t.key],
+      cefrGroup: "B1-B2",
+    })),
+    ...VOCAB_TOPICS_LIST_C1C2.map((t) => ({
+      key: `${t.key}-c1c2`,
+      title: t.title,
+      blurb: "10 words on this topic.",
+      ready: true,
+      data: ANTONYMS_TOPICS_C1C2[t.key],
+      cefrGroup: "C1-C2",
     })),
   ],
   wordSort: WORD_SORT_PACKS.map((p) => ({
