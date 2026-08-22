@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import PROOFREADING_SETS from "./proofreadingData";
 import STORY_MAKING_SETS from "./storyMakingData";
+import MESSAGE_REPLY_SETS from "./messageReplyData";
+import REGISTER_REWRITE_SETS from "./registerRewriteData";
 
 export const ACTIVITY_TYPES = [
   {
@@ -18,6 +20,22 @@ export const ACTIVITY_TYPES = [
     blurb: "Look at the picture, use the words, and write a 5-sentence story.",
     hue: "violet",
     sets: STORY_MAKING_SETS,
+  },
+  {
+    key: "messageReply",
+    title: "Message Reply",
+    icon: "💬",
+    blurb: "Read the message, write a real reply, then compare with a sample.",
+    hue: "coral",
+    sets: MESSAGE_REPLY_SETS,
+  },
+  {
+    key: "registerRewrite",
+    title: "Register Rewrite",
+    icon: "🔁",
+    blurb: "Rewrite a message formally or casually, then compare with a sample.",
+    hue: "teal",
+    sets: REGISTER_REWRITE_SETS,
   },
 ];
 
@@ -67,6 +85,48 @@ function StoryMakingBanner() {
     </svg>
   );
 }
+
+function MessageReplyBanner() {
+  return (
+    <svg className="wa-banner" viewBox="0 0 320 120" xmlns="http://www.w3.org/2000/svg">
+      <rect width="320" height="120" fill="#FBE4DC" />
+      <rect x="30" y="18" width="150" height="40" rx="16" fill="#FFFFFF" />
+      <rect x="46" y="32" width="90" height="7" rx="3.5" fill="#E3B8A6" />
+      <rect x="46" y="43" width="60" height="7" rx="3.5" fill="#E3B8A6" />
+      <rect x="140" y="64" width="150" height="40" rx="16" fill="#D9542E" />
+      <rect x="156" y="78" width="100" height="7" rx="3.5" fill="#F6C6B6" />
+      <rect x="156" y="89" width="70" height="7" rx="3.5" fill="#F6C6B6" />
+      <circle cx="40" cy="90" r="14" fill="#FFFFFF" opacity="0.6" />
+    </svg>
+  );
+}
+
+function RegisterRewriteBanner() {
+  return (
+    <svg className="wa-banner" viewBox="0 0 320 120" xmlns="http://www.w3.org/2000/svg">
+      <rect width="320" height="120" fill="#DFF3EF" />
+      <rect x="26" y="16" width="110" height="88" rx="10" fill="#FFFFFF" />
+      <path d="M42 34 q10 -6 20 0" stroke="#BFE4DC" strokeWidth="4" fill="none" strokeLinecap="round" />
+      <path d="M42 50 q22 -8 44 2" stroke="#BFE4DC" strokeWidth="4" fill="none" strokeLinecap="round" />
+      <path d="M42 66 q16 -6 32 0" stroke="#BFE4DC" strokeWidth="4" fill="none" strokeLinecap="round" />
+      <path d="M42 82 q26 -8 52 2" stroke="#BFE4DC" strokeWidth="4" fill="none" strokeLinecap="round" />
+      <circle cx="160" cy="60" r="20" fill="#FFFFFF" />
+      <path d="M152 60 h16 M160 52 l8 8 l-8 8" fill="none" stroke="#1F9D8C" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+      <rect x="184" y="16" width="110" height="88" rx="10" fill="#1F9D8C" />
+      <rect x="200" y="34" width="78" height="6" rx="3" fill="#BFE9E1" />
+      <rect x="200" y="50" width="78" height="6" rx="3" fill="#BFE9E1" />
+      <rect x="200" y="66" width="60" height="6" rx="3" fill="#BFE9E1" />
+      <rect x="200" y="82" width="78" height="6" rx="3" fill="#BFE9E1" />
+    </svg>
+  );
+}
+
+const BANNERS = {
+  proofreading: ProofreadingBanner,
+  storyMaking: StoryMakingBanner,
+  messageReply: MessageReplyBanner,
+  registerRewrite: RegisterRewriteBanner,
+};
 
 // Opens one topic's activity as its own standalone popup window, matching
 // the Editorial View / lesson-player pattern elsewhere in the app.
@@ -216,16 +276,19 @@ export default function WritingActivities({ query }) {
     <div className="wa-panel">
       <style>{CSS}</style>
       <div className="wa-block-grid">
-        {ACTIVITY_TYPES.map((t) => (
+        {ACTIVITY_TYPES.map((t) => {
+          const Banner = BANNERS[t.key];
+          return (
           <button key={t.key} type="button" className={`wa-block wa-block--${t.hue}`} onClick={() => openType(t.key)}>
-            {t.key === "proofreading" ? <ProofreadingBanner /> : <StoryMakingBanner />}
+            <Banner />
             <div className="wa-block-body">
               <h3 className="wa-block-title">{t.title}</h3>
               <p className="wa-block-blurb">{t.blurb}</p>
               <span className="wa-block-cta">See levels →</span>
             </div>
           </button>
-        ))}
+          );
+        })}
       </div>
     </div>
   );
@@ -273,6 +336,8 @@ const CSS = `
 .wa-block-cta { font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 12.5px; }
 .wa-block--brown .wa-block-cta { color: #C5692A; }
 .wa-block--violet .wa-block-cta { color: #6E5DC6; }
+.wa-block--coral .wa-block-cta { color: #D9542E; }
+.wa-block--teal .wa-block-cta { color: #1F9D8C; }
 
 .wa-cat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 260px)); gap: 18px; justify-content: center; width: 100%; }
 .wa-cat-card {
@@ -292,6 +357,8 @@ const CSS = `
 
 .wa-cat-card--brown  { --wac-accent: #C5692A; --wac-icon-bg: rgba(197,105,42,0.12); --wac-border: #EBC6A6; --wac-shadow: rgba(197,105,42,0.10); --wac-shadow-hover: rgba(197,105,42,0.18); }
 .wa-cat-card--violet { --wac-accent: #6E5DC6; --wac-icon-bg: rgba(110,93,198,0.14); --wac-border: #D9D2F3; --wac-shadow: rgba(90,70,190,0.10); --wac-shadow-hover: rgba(90,70,190,0.18); }
+.wa-cat-card--coral  { --wac-accent: #D9542E; --wac-icon-bg: rgba(217,84,46,0.12); --wac-border: #F3C4B0; --wac-shadow: rgba(217,84,46,0.10); --wac-shadow-hover: rgba(217,84,46,0.18); }
+.wa-cat-card--teal   { --wac-accent: #1F9D8C; --wac-icon-bg: rgba(31,157,140,0.12); --wac-border: #BFE4DC; --wac-shadow: rgba(31,157,140,0.10); --wac-shadow-hover: rgba(31,157,140,0.18); }
 
 .wa-cat-top { display: flex; align-items: center; justify-content: space-between; width: 100%; margin-bottom: 12px; }
 .wa-cat-icon {

@@ -2,7 +2,16 @@ import { useParams } from "react-router-dom";
 import { ACTIVITY_TYPES, COMBOS } from "./WritingActivities";
 import ProofreadingActivity from "./ProofreadingActivity";
 import StoryMakingActivity from "./StoryMakingActivity";
+import MessageReplyActivity from "./MessageReplyActivity";
+import RegisterRewriteActivity from "./RegisterRewriteActivity";
 import PlayerChrome from "./PlayerChrome";
+
+const PLAYERS = {
+  proofreading: ProofreadingActivity,
+  storyMaking: StoryMakingActivity,
+  messageReply: MessageReplyActivity,
+  registerRewrite: RegisterRewriteActivity,
+};
 
 // Standalone popup player for one Writing topic — opened via window.open
 // from WritingActivities, matching the Editorial View / lesson-player
@@ -24,7 +33,7 @@ export default function WritingPlayerPage() {
     );
   }
 
-  const Player = type.key === "storyMaking" ? StoryMakingActivity : ProofreadingActivity;
+  const Player = PLAYERS[type.key];
 
   return (
     <PlayerChrome eyebrow="Writing">
