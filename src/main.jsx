@@ -130,6 +130,8 @@ import QuestionFormationTrack from './QuestionFormationTrack.jsx'
 import QuestionFormationLesson from './QuestionFormationLesson.jsx'
 import NounsArticlesTrack from './NounsArticlesTrack.jsx'
 import NounsArticlesLesson from './NounsArticlesLesson.jsx'
+import PronounsTrack from './PronounsTrack.jsx'
+import PronounsLesson from './PronounsLesson.jsx'
 import PartsOfSpeechTrack from './PartsOfSpeechTrack.jsx'
 import PartsOfSpeechLesson from './PartsOfSpeechLesson.jsx'
 import Shift from './Shift.jsx'
@@ -283,6 +285,8 @@ createRoot(document.getElementById('root')).render(
             <Route path="/library/grammar/question-formation/:code" element={<QuestionFormationLesson />} />
             <Route path="/library/grammar/nouns-articles-quantifiers" element={<NounsArticlesTrack />} />
             <Route path="/library/grammar/nouns-articles-quantifiers/:code" element={<NounsArticlesLesson />} />
+            <Route path="/library/grammar/pronouns-possessives" element={<PronounsTrack />} />
+            <Route path="/library/grammar/pronouns-possessives/:code" element={<PronounsLesson />} />
             <Route path="/library/shift" element={<ShiftHub />} />
             <Route path="/library/shift/:trackId" element={<ShiftTrack />} />
             <Route path="/library/shift/:trackId/:lessonNum" element={<Shift />} />
