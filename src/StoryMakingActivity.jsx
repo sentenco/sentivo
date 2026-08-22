@@ -185,12 +185,20 @@ export default function StoryMakingActivity({ item }) {
           ) : (
             <StoryScene name={round.scene} />
           )}
+          <svg className="sm-corner" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 0 H40 V40 Z" fill="#FFFFFF" fillOpacity="0.85" />
+            <path d="M0 0 H40 V40 Z" fill="none" stroke="#E0D6C4" strokeWidth="1" />
+          </svg>
         </div>
 
         <div className="sm-content-pane">
           <div className="sm-bar">
             <span className="sm-eyebrow">Sentivo · Story Making</span>
-            <span className="sm-count" data-full={sentenceCount >= 5}>{sentenceCount} / 5 sentences</span>
+            <div className="sm-count-dots" data-full={sentenceCount >= 5} aria-label={`${sentenceCount} of 5 sentences`}>
+              {Array.from({ length: 5 }).map((_, i) => (
+                <span key={i} className={`sm-count-dot ${i < sentenceCount ? "is-filled" : ""}`} />
+              ))}
+            </div>
           </div>
 
           <h1 className="sm-title">{round.title || item.title}</h1>
@@ -253,18 +261,32 @@ const CSS = `
 .sm-shell * { box-sizing: border-box; }
 
 .sm-card {
+  position: relative;
   width: 100%;
   max-width: 980px;
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  background: #FFFFFF;
+  background: #FFFDF8;
   border-radius: 24px;
   overflow: hidden;
-  box-shadow: 0 20px 44px rgba(110,93,198,0.16);
+  box-shadow: 0 24px 50px rgba(110,93,198,0.20);
+}
+.sm-card::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 26px;
+  margin-left: -13px;
+  background: linear-gradient(to right, rgba(43,42,74,0.10), rgba(43,42,74,0) 45%, rgba(43,42,74,0) 55%, rgba(43,42,74,0.10));
+  pointer-events: none;
+  z-index: 2;
 }
 
 .sm-picture-pane { position: relative; background: #F3EEE6; min-height: 320px; }
 .sm-scene { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+.sm-corner { position: absolute; top: 0; right: 0; width: 34px; height: 34px; filter: drop-shadow(-1px 1px 2px rgba(43,42,74,0.12)); }
 
 .sm-content-pane { padding: clamp(24px, 3.2vw, 36px); display: flex; flex-direction: column; min-width: 0; }
 
@@ -279,8 +301,10 @@ const CSS = `
   border-radius: 999px;
   padding: 5px 14px;
 }
-.sm-count { font-size: 11.5px; font-weight: 800; letter-spacing: 0.03em; color: #9A93A8; }
-.sm-count[data-full="true"] { color: #1F9D6E; }
+.sm-count-dots { display: flex; align-items: center; gap: 5px; }
+.sm-count-dot { width: 7px; height: 7px; border-radius: 50%; background: #E5DFF7; transition: background 0.2s ease, transform 0.2s ease; }
+.sm-count-dot.is-filled { background: #9A8AE0; transform: scale(1.15); }
+.sm-count-dots[data-full="true"] .sm-count-dot.is-filled { background: #1F9D6E; }
 
 .sm-title { font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: clamp(22px, 3.6vw, 28px); color: #2B2A4A; margin: 0 0 6px; }
 .sm-focus { display: inline-block; font-size: 12.5px; color: #7A7391; margin-right: 10px; }
@@ -298,30 +322,37 @@ const CSS = `
 .sm-focus + .sm-round-tag { margin-bottom: 18px; }
 
 .sm-prompt { font-size: 13.5px; color: #5C6873; line-height: 1.5; margin: 0 0 12px; }
-.sm-words { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+.sm-words { display: flex; flex-wrap: wrap; gap: 9px; margin-bottom: 18px; }
 .sm-word {
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;
   font-size: 12.5px;
   color: #4E3AA6;
-  background: #EFEBFC;
-  border-radius: 999px;
-  padding: 6px 13px;
+  background: #FFFFFF;
+  border: 1.5px solid #E5DFF7;
+  border-radius: 9px;
+  padding: 7px 12px;
+  box-shadow: 0 2px 0 #E5DFF7;
+  transform: rotate(var(--tilt, 0deg));
 }
+.sm-word:nth-child(3n+1) { --tilt: -3deg; }
+.sm-word:nth-child(3n+2) { --tilt: 2deg; }
+.sm-word:nth-child(3n+3) { --tilt: -1deg; }
 
 .sm-textarea {
   width: 100%;
   flex: 1;
-  min-height: 120px;
+  min-height: 130px;
   border: 1px solid #D9D2F3;
   border-radius: 14px;
-  padding: 14px 16px;
+  padding: 16px 16px 14px;
   font-family: 'Quicksand', sans-serif;
   font-size: 14.5px;
   color: #2B2A4A;
-  line-height: 1.6;
+  line-height: 28px;
   resize: vertical;
-  background: #F8F6FE;
+  background: #FFFDF8 repeating-linear-gradient(to bottom, transparent 0, transparent 27px, #EAE4F9 28px);
+  background-position: 0 4px;
 }
 .sm-textarea:focus { outline: none; border-color: #6E5DC6; }
 

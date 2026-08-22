@@ -20,16 +20,21 @@ export default function RegisterRewriteActivity({ item }) {
       <div className="rr-card">
         <div className="rr-bar">
           <span className="rr-eyebrow">Sentivo · Register Rewrite</span>
-          <span className="rr-direction" data-formal={toFormal}>
-            {toFormal ? "Casual → Formal" : "Formal → Casual"}
-          </span>
         </div>
 
         <h1 className="rr-title">{item.title}</h1>
         <span className="rr-focus">{item.focus}</span>
+
+        <div className="rr-direction-track" data-formal={toFormal}>
+          <span className="rr-direction-tag rr-direction-tag--from">{toFormal ? "Casual" : "Formal"}</span>
+          <span className="rr-direction-arrow">→</span>
+          <span className="rr-direction-tag rr-direction-tag--to">{toFormal ? "Formal" : "Casual"}</span>
+        </div>
+
         <p className="rr-context">{item.context}</p>
 
         <div className="rr-original">
+          <span className="rr-tape" />
           <span className="rr-label">Original</span>
           <p className="rr-original-text">{item.original}</p>
         </div>
@@ -102,24 +107,46 @@ const CSS = `
   border-radius: 999px;
   padding: 5px 14px;
 }
-.rr-direction {
+.rr-title { font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: clamp(22px, 3.6vw, 28px); color: #2B2A4A; margin: 0 0 10px; }
+.rr-focus { display: inline-block; font-size: 12.5px; color: #7A7391; }
+
+.rr-direction-track { display: flex; align-items: center; gap: 8px; margin: 14px 0 6px; }
+.rr-direction-tag {
   font-size: 11.5px;
   font-weight: 800;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: #1F9D6E;
-  background: #E4F8EC;
   border-radius: 999px;
   padding: 5px 12px;
 }
-.rr-direction[data-formal="false"] { color: #7C5CFC; background: #EFEAFE; }
+.rr-direction-tag--from { color: #ABA5B8; background: #F1EEF6; }
+.rr-direction-arrow { color: #C7C1D6; font-size: 13px; }
+.rr-direction-track[data-formal="true"] .rr-direction-tag--to { color: #1F9D6E; background: #E4F8EC; }
+.rr-direction-track[data-formal="false"] .rr-direction-tag--to { color: #7C5CFC; background: #EFEAFE; }
 
-.rr-title { font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: clamp(22px, 3.6vw, 28px); color: #2B2A4A; margin: 0 0 6px; }
-.rr-focus { display: inline-block; font-size: 12.5px; color: #7A7391; }
-.rr-context { font-size: 13px; color: #5C6873; margin: 6px 0 18px; }
+.rr-context { font-size: 13px; color: #5C6873; margin: 0 0 18px; }
 
-.rr-original { background: #F3EEE6; border-radius: 14px; padding: 16px 18px; margin-bottom: 18px; }
-.rr-original-text { font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 15.5px; color: #2B2A4A; line-height: 1.55; margin: 0; font-style: italic; }
+.rr-original {
+  position: relative;
+  background: #FFFDF8;
+  border: 1px solid #F0EADA;
+  border-radius: 10px;
+  padding: 20px 18px 16px;
+  margin: 0 0 20px 6px;
+  box-shadow: 0 8px 18px rgba(43,42,74,0.08);
+  transform: rotate(-1deg);
+}
+.rr-tape {
+  position: absolute;
+  top: -10px;
+  left: 28px;
+  width: 56px;
+  height: 20px;
+  background: rgba(31,157,140,0.28);
+  border: 1px solid rgba(31,157,140,0.15);
+  transform: rotate(-3deg);
+}
+.rr-original-text { font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 15.5px; color: #2B2A4A; line-height: 1.55; margin: 0; }
 .rr-label { display: block; font-size: 11px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: #8A8398; margin-bottom: 8px; }
 .rr-label--sample { color: #1F7A47; }
 
@@ -150,7 +177,7 @@ const CSS = `
 }
 .rr-textarea:focus { outline: none; border-color: #1F9D8C; }
 
-.rr-sample { margin-top: 16px; background: #E4F8EC; border-radius: 14px; padding: 16px 18px; }
+.rr-sample { margin-top: 16px; background: #E4F8EC; border-left: 3px solid #1F9D6E; border-radius: 4px 14px 14px 4px; padding: 16px 18px; }
 .rr-sample-text { font-size: 14.5px; color: #1F7A47; line-height: 1.6; margin: 0; }
 
 .rr-nav { display: flex; justify-content: space-between; margin-top: 22px; }
