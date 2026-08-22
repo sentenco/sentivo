@@ -22,15 +22,17 @@ export default function SentencePatternsTrack() {
     <div className="spt-shell">
       <style>{CSS}</style>
       <header className="spt-topbar">
+        <span className="spt-brand"><img src="/logo-sentivo.png" alt="" className="spt-brand-logo" />entivo</span>
         <span className="spt-topbar-title">Sentence Patterns</span>
       </header>
 
       <div className="spt-stage">
         <div className="spt-hero">
+          <span className="spt-hero-badge">Build a Sentence!</span>
           <h1 className="spt-hero-title">Sentence Patterns</h1>
           <p className="spt-hero-blurb">
             The 7 core English sentence patterns — SV, SVO, SVC, SVA, SVOA, SVOO, SVOC — across 6 lessons. Each one
-            teaches, practices, and assesses in a single sitting.
+            teaches the pattern, then walks through guided and production practice.
           </p>
         </div>
 
@@ -42,9 +44,11 @@ export default function SentencePatternsTrack() {
               className="spt-lesson-card"
               onClick={() => openLesson(lesson.code)}
             >
-              <span className="spt-lesson-num">Lesson {lesson.number}</span>
+              <div className="spt-lesson-top">
+                <span className="spt-lesson-num">Lesson {lesson.number}</span>
+                <span className="spt-lesson-pattern">{lesson.patternLabel}</span>
+              </div>
               <h3 className="spt-lesson-name">{lesson.title}</h3>
-              <span className="spt-lesson-pattern">{lesson.patternLabel}</span>
               <span className="spt-lesson-cta">Open lesson →</span>
             </button>
           ))}
@@ -55,16 +59,19 @@ export default function SentencePatternsTrack() {
 }
 
 const CSS = `
-@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Quicksand:wght@500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:wght@400;700&family=Fredoka:wght@700&display=swap');
 
 .spt-shell {
   width: 100%;
   min-height: 100vh;
-  background: radial-gradient(circle at 15% 0%, #F2ECE0 0%, #E9DFC9 50%, #DED0AE 100%);
+  background:
+    radial-gradient(#00000012 1.4px, transparent 1.5px) 0 0/16px 16px,
+    #FFF6E9;
   display: flex;
   flex-direction: column;
   align-items: center;
   box-sizing: border-box;
+  font-family: 'Comic Neue', cursive, sans-serif;
 }
 .spt-shell * { box-sizing: border-box; }
 
@@ -73,101 +80,134 @@ const CSS = `
   max-width: 1040px;
   display: flex;
   align-items: center;
-  justify-content: center;
-  padding: 22px 24px 0;
+  justify-content: space-between;
+  padding: 20px 24px 0;
 }
+.spt-brand {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  letter-spacing: 0.01em;
+  color: #2B2A4A;
+}
+.spt-brand-logo { height: 28px; width: auto; display: block; margin-right: -4px; }
 .spt-topbar-title {
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'Comic Neue', cursive, sans-serif;
   font-weight: 700;
   font-size: 12.5px;
-  letter-spacing: 1.5px;
+  letter-spacing: 1.2px;
   text-transform: uppercase;
-  color: #8A6748;
+  color: #6B5B3D;
 }
 
 .spt-stage {
   flex: 1;
   width: 100%;
   max-width: 980px;
-  padding: 40px 24px 60px;
+  padding: 36px 24px 60px;
 }
 
-.spt-hero { margin-bottom: 32px; }
+.spt-hero { margin-bottom: 34px; }
+.spt-hero-badge {
+  display: inline-block;
+  font-family: 'Bangers', cursive;
+  font-weight: 400;
+  font-size: 16px;
+  letter-spacing: 0.4px;
+  color: #FFFFFF;
+  background: #8B5E34;
+  border: 3px solid #1A1A1A;
+  border-radius: 999px;
+  padding: 3px 16px 5px;
+  transform: rotate(-3deg);
+  margin-bottom: 12px;
+}
 .spt-hero-title {
-  font-family: 'Fredoka', sans-serif;
-  font-weight: 700;
-  font-size: 40px;
-  color: #4A3620;
+  font-family: 'Bangers', cursive;
+  font-weight: 400;
+  font-size: 52px;
+  letter-spacing: 0.4px;
+  color: #1A1A1A;
   margin: 0 0 10px;
+  line-height: 1;
+  text-shadow: 3px 3px 0 #FFC300;
 }
 .spt-hero-blurb {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 500;
+  font-family: 'Comic Neue', cursive, sans-serif;
+  font-weight: 700;
   font-size: 16px;
-  color: #7A6042;
+  color: #3A3226;
   margin: 0;
   max-width: 640px;
-  line-height: 1.5;
+  line-height: 1.55;
 }
 
 .spt-lessons-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 14px;
+  gap: 18px;
 }
 
 .spt-lesson-card {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 8px;
+  gap: 10px;
   background: #FFFFFF;
-  border: 1px solid #E4D6BF;
-  border-radius: 14px;
-  padding: 16px 16px 14px;
-  box-shadow: 0 10px 24px rgba(74,54,32,0.08);
+  border: 3px solid #1A1A1A;
+  border-radius: 16px;
+  padding: 16px 18px;
+  box-shadow: 6px 6px 0 #1A1A1A;
   cursor: pointer;
   text-align: left;
   font: inherit;
+  transition: transform 0.16s cubic-bezier(.34,1.56,.64,1), box-shadow 0.16s ease;
 }
+.spt-lesson-card:hover { transform: translate(-2px, -3px); box-shadow: 8px 9px 0 #1A1A1A; }
+.spt-lesson-card:active { transform: translate(2px, 2px); box-shadow: 3px 3px 0 #1A1A1A; }
 
+.spt-lesson-top { display: flex; align-items: center; justify-content: space-between; width: 100%; }
 .spt-lesson-num {
-  font-family: 'Fredoka', sans-serif;
+  font-family: 'Comic Neue', cursive, sans-serif;
   font-weight: 700;
   font-size: 11px;
-  color: #8A6748;
-  background: rgba(138,103,72,0.12);
+  color: #FFFFFF;
+  background: #8B5E34;
+  border: 1.5px solid #1A1A1A;
   border-radius: 999px;
   padding: 3px 9px;
   white-space: nowrap;
 }
-
-.spt-lesson-name {
-  font-family: 'Fredoka', sans-serif;
-  font-weight: 700;
-  font-size: 18px;
-  color: #4A3620;
-  margin: 0;
-  line-height: 1.25;
+.spt-lesson-pattern {
+  font-family: 'Bangers', cursive;
+  font-weight: 400;
+  font-size: 16px;
+  letter-spacing: 0.3px;
+  color: #8B5E34;
 }
 
-.spt-lesson-pattern {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 700;
-  font-size: 12.5px;
-  letter-spacing: 0.4px;
-  color: #4C9A5D;
+.spt-lesson-name {
+  font-family: 'Bangers', cursive;
+  font-weight: 400;
+  font-size: 20px;
+  letter-spacing: 0.3px;
+  color: #1A1A1A;
+  margin: 0;
+  line-height: 1.2;
 }
 
 .spt-lesson-cta {
   margin-top: auto;
-  padding-top: 8px;
-  border-top: 1px solid #F2ECE0;
+  padding-top: 10px;
+  border-top: 2px dashed #EFE7D3;
   width: 100%;
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'Comic Neue', cursive, sans-serif;
   font-weight: 700;
   font-size: 13px;
-  color: #B0662E;
+  color: #8B5E34;
 }
 
 @media (max-width: 900px) {
