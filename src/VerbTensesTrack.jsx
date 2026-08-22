@@ -1,6 +1,11 @@
 import { getGroups } from "./vtTracks";
 import VTTimeline from "./VTTimeline";
 
+// Same per-unit accent as VerbTensesLesson.jsx (Present/Past/Future,
+// teal/terracotta/indigo) -- kept in sync by index since getGroups()
+// always returns the 3 units in that fixed order.
+const UNIT_ACCENTS = ["#2A9D8F", "#E76F51", "#5E60CE"];
+
 // Verb Tenses lessons open as a standalone popup player, matching the
 // FORGE/ASCEND chrome-less window.open pattern -- an independent window,
 // not embedded in the Library's tab/page flow.
@@ -26,11 +31,13 @@ export default function VerbTensesTrack() {
     <div className="vt-shell">
       <style>{CSS}</style>
       <header className="vt-topbar">
+        <span className="vt-brand"><img src="/logo-sentivo.png" alt="" className="vt-brand-logo" />entivo</span>
         <span className="vt-topbar-title">Verb Tenses</span>
       </header>
 
       <div className="vt-stage">
         <div className="vt-hero">
+          <span className="vt-hero-badge">Time Travel!</span>
           <h1 className="vt-hero-title">Verb Tenses</h1>
           <p className="vt-hero-blurb">
             The 12 basic English tenses, one pair of lessons each: a Discussion lesson to build the meaning, form, and
@@ -38,46 +45,52 @@ export default function VerbTensesTrack() {
           </p>
         </div>
 
-        {groups.map((group) => (
-          <div key={group.title} className="vt-group">
-            <h2 className="vt-group-title">{group.title}</h2>
-            <div className="vt-tenses-grid">
-              {group.tenses.map((tense) => (
-                <div key={tense.number} className="vt-tense-card">
-                  <div className="vt-tense-top">
-                    <span className="vt-tense-num">Tense {tense.number}</span>
-                    <div className="vt-tense-mini-timeline"><VTTimeline variant={tense.timelineVariant} /></div>
+        {groups.map((group, gi) => {
+          const accent = UNIT_ACCENTS[gi] || UNIT_ACCENTS[0];
+          return (
+            <div key={group.title} className="vt-group" style={{ "--unit-accent": accent }}>
+              <h2 className="vt-group-title">{group.title}</h2>
+              <div className="vt-tenses-grid">
+                {group.tenses.map((tense) => (
+                  <div key={tense.number} className="vt-tense-card">
+                    <div className="vt-tense-top">
+                      <span className="vt-tense-num">Tense {tense.number}</span>
+                      <div className="vt-tense-mini-timeline"><VTTimeline variant={tense.timelineVariant} /></div>
+                    </div>
+                    <h3 className="vt-tense-name">{tense.tenseName}</h3>
+                    <div className="vt-tense-foot">
+                      <button type="button" className="vt-lesson-btn vt-lesson-btn--a" onClick={() => openLesson(tense.lessonA.code)}>
+                        {tense.lessonA.code} · Discussion
+                      </button>
+                      <button type="button" className="vt-lesson-btn vt-lesson-btn--b" onClick={() => openLesson(tense.lessonB.code)}>
+                        {tense.lessonB.code} · Test
+                      </button>
+                    </div>
                   </div>
-                  <h3 className="vt-tense-name">{tense.tenseName}</h3>
-                  <div className="vt-tense-foot">
-                    <button type="button" className="vt-lesson-btn vt-lesson-btn--a" onClick={() => openLesson(tense.lessonA.code)}>
-                      {tense.lessonA.code} · Discussion
-                    </button>
-                    <button type="button" className="vt-lesson-btn vt-lesson-btn--b" onClick={() => openLesson(tense.lessonB.code)}>
-                      {tense.lessonB.code} · Test
-                    </button>
-                  </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </div>
   );
 }
 
 const CSS = `
-@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Quicksand:wght@500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:wght@400;700&family=Fredoka:wght@700&display=swap');
 
 .vt-shell {
   width: 100%;
   min-height: 100vh;
-  background: radial-gradient(circle at 15% 0%, #F1EFFC 0%, #E4E0FA 50%, #D8D2F6 100%);
+  background:
+    radial-gradient(#00000012 1.4px, transparent 1.5px) 0 0/16px 16px,
+    #FFF6E9;
   display: flex;
   flex-direction: column;
   align-items: center;
   box-sizing: border-box;
+  font-family: 'Comic Neue', cursive, sans-serif;
 }
 .vt-shell * { box-sizing: border-box; }
 
@@ -86,56 +99,91 @@ const CSS = `
   max-width: 1040px;
   display: flex;
   align-items: center;
-  justify-content: center;
-  padding: 22px 24px 0;
+  justify-content: space-between;
+  padding: 20px 24px 0;
 }
+.vt-brand {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  letter-spacing: 0.01em;
+  color: #2B2A4A;
+}
+.vt-brand-logo { height: 28px; width: auto; display: block; margin-right: -4px; }
 .vt-topbar-title {
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'Comic Neue', cursive, sans-serif;
   font-weight: 700;
   font-size: 12.5px;
-  letter-spacing: 1.5px;
+  letter-spacing: 1.2px;
   text-transform: uppercase;
-  color: #8A82C9;
+  color: #6B5B3D;
 }
 
 .vt-stage {
   flex: 1;
   width: 100%;
   max-width: 980px;
-  padding: 40px 24px 60px;
+  padding: 36px 24px 60px;
 }
 
-.vt-hero { margin-bottom: 32px; }
+.vt-hero { margin-bottom: 34px; }
+.vt-hero-badge {
+  display: inline-block;
+  font-family: 'Bangers', cursive;
+  font-weight: 400;
+  font-size: 16px;
+  letter-spacing: 0.4px;
+  color: #FFFFFF;
+  background: #5E60CE;
+  border: 3px solid #1A1A1A;
+  border-radius: 999px;
+  padding: 3px 16px 5px;
+  transform: rotate(-3deg);
+  margin-bottom: 12px;
+}
 .vt-hero-title {
-  font-family: 'Fredoka', sans-serif;
-  font-weight: 700;
-  font-size: 40px;
-  color: #2B2560;
+  font-family: 'Bangers', cursive;
+  font-weight: 400;
+  font-size: 52px;
+  letter-spacing: 0.4px;
+  color: #1A1A1A;
   margin: 0 0 10px;
+  line-height: 1;
+  text-shadow: 3px 3px 0 #E76F51;
 }
 .vt-hero-blurb {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 500;
+  font-family: 'Comic Neue', cursive, sans-serif;
+  font-weight: 700;
   font-size: 16px;
-  color: #5B5590;
+  color: #3A3226;
   margin: 0;
   max-width: 620px;
-  line-height: 1.5;
+  line-height: 1.55;
 }
 
-.vt-group { margin-bottom: 34px; }
+.vt-group { margin-bottom: 38px; }
 .vt-group-title {
-  font-family: 'Fredoka', sans-serif;
-  font-weight: 700;
-  font-size: 20px;
-  color: #2B2560;
-  margin: 0 0 14px;
+  display: inline-block;
+  font-family: 'Bangers', cursive;
+  font-weight: 400;
+  font-size: 24px;
+  letter-spacing: 0.4px;
+  color: #FFFFFF;
+  background: var(--unit-accent);
+  border: 3px solid #1A1A1A;
+  border-radius: 999px;
+  padding: 4px 20px 6px;
+  margin: 0 0 16px;
+  transform: rotate(-1deg);
 }
 
 .vt-tenses-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 14px;
+  gap: 16px;
 }
 
 .vt-tense-card {
@@ -143,19 +191,22 @@ const CSS = `
   flex-direction: column;
   gap: 8px;
   background: #FFFFFF;
-  border: 1px solid #DAD4F5;
-  border-radius: 14px;
+  border: 3px solid #1A1A1A;
+  border-radius: 16px;
   padding: 12px 12px 12px;
-  box-shadow: 0 10px 24px rgba(43,37,96,0.07);
+  box-shadow: 5px 5px 0 #1A1A1A;
+  transition: transform 0.16s cubic-bezier(.34,1.56,.64,1), box-shadow 0.16s ease;
 }
+.vt-tense-card:hover { transform: translate(-2px, -3px); box-shadow: 7px 8px 0 #1A1A1A; }
 
 .vt-tense-top { display: flex; align-items: center; justify-content: space-between; gap: 6px; }
 .vt-tense-num {
-  font-family: 'Fredoka', sans-serif;
+  font-family: 'Comic Neue', cursive, sans-serif;
   font-weight: 700;
   font-size: 11px;
-  color: #5B4FE0;
-  background: rgba(91,79,224,0.12);
+  color: #FFFFFF;
+  background: var(--unit-accent);
+  border: 1.5px solid #1A1A1A;
   border-radius: 999px;
   padding: 3px 9px;
   white-space: nowrap;
@@ -164,27 +215,30 @@ const CSS = `
 .vt-tense-mini-timeline .vt-timeline-svg { width: 100%; height: auto; display: block; }
 
 .vt-tense-name {
-  font-family: 'Fredoka', sans-serif;
-  font-weight: 700;
-  font-size: 15px;
-  color: #2B2560;
+  font-family: 'Bangers', cursive;
+  font-weight: 400;
+  font-size: 17px;
+  letter-spacing: 0.3px;
+  color: #1A1A1A;
   margin: 0;
-  line-height: 1.25;
+  line-height: 1.2;
 }
 
-.vt-tense-foot { display: flex; flex-direction: column; gap: 6px; margin-top: auto; padding-top: 6px; border-top: 1px solid #EEECFB; }
+.vt-tense-foot { display: flex; flex-direction: column; gap: 6px; margin-top: auto; padding-top: 8px; border-top: 2px dashed #EFE7D3; }
 .vt-lesson-btn {
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'Comic Neue', cursive, sans-serif;
   font-weight: 700;
   font-size: 11.5px;
-  border: none;
-  border-radius: 999px;
+  border: 2px solid #1A1A1A;
+  border-radius: 8px;
   padding: 7px 10px;
   cursor: pointer;
   text-align: center;
+  box-shadow: 2.5px 2.5px 0 #1A1A1A;
 }
-.vt-lesson-btn--a { color: #2B2560; background: #DAD4F5; }
-.vt-lesson-btn--b { color: #2B2560; background: #B7B0F5; }
+.vt-lesson-btn:active { box-shadow: 0 0 0 #1A1A1A; transform: translate(2.5px, 2.5px); }
+.vt-lesson-btn--a { color: #1A1A1A; background: #FFFFFF; }
+.vt-lesson-btn--b { color: #FFFFFF; background: var(--unit-accent); }
 
 @media (max-width: 900px) {
   .vt-tenses-grid { grid-template-columns: repeat(2, 1fr); }
