@@ -178,10 +178,24 @@ const TOPICS = [
   { key: "homeAndDailyLife", title: "Home & Daily Life" },
 ];
 
-// Synonyms-only topic lists for B1-B2 and C1-C2 -- deliberately different
-// topics from the A1-A2 list above (not just harder words under the same
-// names), shifting from concrete everyday life toward work/media/civic
-// themes (B1-B2) and abstract/academic/global themes (C1-C2).
+// Synonyms-only topic lists, one per level -- deliberately different
+// topics between levels (not just harder words under the same names),
+// and deliberately NOT the shared `TOPICS` array above (that one stays
+// Antonyms-only) so editing Synonyms never affects Antonyms. A1-A2 stays
+// concrete/everyday, B1-B2 shifts to work/media/civic themes, C1-C2
+// shifts to abstract/academic/global themes. 10 topics per level.
+const SYNONYMS_TOPICS_LIST_A1A2 = [
+  { key: "feelings", title: "Feelings & Emotions" },
+  { key: "dailyActions", title: "Daily Actions" },
+  { key: "describingPeople", title: "Describing People" },
+  { key: "describingThings", title: "Describing Things" },
+  { key: "schoolAndStudy", title: "School & Study" },
+  { key: "travelAndPlaces", title: "Travel & Places" },
+  { key: "homeAndDailyLife", title: "Home & Daily Life" },
+  { key: "foodAndCooking", title: "Food & Cooking" },
+  { key: "weatherAndSeasons", title: "Weather & Seasons" },
+  { key: "hobbiesAndFreeTime", title: "Hobbies & Free Time" },
+];
 const SYNONYMS_TOPICS_LIST_B1B2 = [
   { key: "workAndCareer", title: "Work & Career" },
   { key: "mediaAndTechnology", title: "Media & Technology" },
@@ -190,6 +204,9 @@ const SYNONYMS_TOPICS_LIST_B1B2 = [
   { key: "natureAndEnvironment", title: "Nature & Environment" },
   { key: "opinionsAndDebate", title: "Opinions & Debate" },
   { key: "communityAndSociety", title: "Community & Society" },
+  { key: "educationAndLearning", title: "Education & Learning" },
+  { key: "travelAndTourism", title: "Travel & Tourism" },
+  { key: "relationshipsAndFamily", title: "Relationships & Family" },
 ];
 const SYNONYMS_TOPICS_LIST_C1C2 = [
   { key: "businessAndEconomics", title: "Business & Economics" },
@@ -199,11 +216,14 @@ const SYNONYMS_TOPICS_LIST_C1C2 = [
   { key: "ethicsAndPhilosophy", title: "Ethics & Philosophy" },
   { key: "globalAffairs", title: "Global Affairs" },
   { key: "psychologyAndBehavior", title: "Psychology & Behavior" },
+  { key: "lawAndJustice", title: "Law & Justice" },
+  { key: "linguisticsAndCommunication", title: "Linguistics & Communication" },
+  { key: "academiaAndResearch", title: "Academia & Research" },
 ];
 
 export const CATEGORIES_BY_GAME = {
   synonyms: [
-    ...TOPICS.map((t) => ({
+    ...SYNONYMS_TOPICS_LIST_A1A2.map((t) => ({
       key: `${t.key}-a1a2`,
       title: t.title,
       blurb: "10 words on this topic.",
