@@ -1,15 +1,24 @@
 import { useState } from "react";
 
 // Message Reply: student reads an incoming text/email, writes a real
-// reply, then reveals a sample reply to compare -- no auto-grading, same
-// self-check pattern as Story Making.
+// reply, sends it into the thread as their own bubble, then reveals a
+// sample reply to compare -- no auto-grading, same self-check pattern as
+// Story Making, but the "send" step makes the thread feel like a real
+// conversation instead of a plain textarea exercise.
 export default function MessageReplyActivity({ item }) {
   const [draft, setDraft] = useState("");
+  const [sent, setSent] = useState(false);
   const [revealed, setRevealed] = useState(false);
 
   function restart() {
     setDraft("");
+    setSent(false);
     setRevealed(false);
+  }
+
+  function send() {
+    if (!draft.trim()) return;
+    setSent(true);
   }
 
   return (
@@ -33,34 +42,49 @@ export default function MessageReplyActivity({ item }) {
             <p className="mr-bubble-text">{item.incoming}</p>
           </div>
 
+          {sent && (
+            <div className="mr-bubble mr-bubble--out mr-bubble--mine">
+              <span className="mr-label mr-label--mine">You</span>
+              <p className="mr-bubble-text">{draft}</p>
+            </div>
+          )}
+
           {revealed && (
             <div className="mr-bubble mr-bubble--out mr-bubble--sample">
-              <span className="mr-label">Sample reply</span>
+              <span className="mr-label mr-label--sample">Sample reply</span>
               <p className="mr-bubble-text">{item.sample}</p>
             </div>
           )}
         </div>
 
-        <p className="mr-prompt">{item.prompt}</p>
-        <div className="mr-checklist">
-          {item.mustInclude.map((c) => (
-            <span className="mr-chip" key={c}>{c}</span>
-          ))}
-        </div>
+        {!sent && (
+          <>
+            <p className="mr-prompt">{item.prompt}</p>
+            <div className="mr-checklist">
+              {item.mustInclude.map((c) => (
+                <span className="mr-chip" key={c}>{c}</span>
+              ))}
+            </div>
 
-        <textarea
-          className="mr-textarea"
-          placeholder="Write your reply here…"
-          value={draft}
-          onChange={(e) => setDraft(e.target.value)}
-          rows={4}
-        />
+            <textarea
+              className="mr-textarea"
+              placeholder="Write your reply here…"
+              value={draft}
+              onChange={(e) => setDraft(e.target.value)}
+              rows={4}
+            />
+          </>
+        )}
 
         <div className="mr-nav">
           <button type="button" className="mr-btn" onClick={restart}>Restart ↻</button>
-          <button type="button" className="mr-btn mr-btn--primary" onClick={() => setRevealed(true)} disabled={revealed}>
-            {revealed ? "Sample shown" : "Show sample →"}
-          </button>
+          {!sent ? (
+            <button type="button" className="mr-btn mr-btn--primary" onClick={send} disabled={!draft.trim()}>Send →</button>
+          ) : !revealed ? (
+            <button type="button" className="mr-btn mr-btn--primary" onClick={() => setRevealed(true)}>Show sample →</button>
+          ) : (
+            <button type="button" className="mr-btn mr-btn--primary" disabled>Sample shown</button>
+          )}
         </div>
       </div>
     </div>
@@ -109,13 +133,18 @@ const CSS = `
 .mr-thread { display: flex; flex-direction: column; gap: 10px; margin-bottom: 18px; }
 .mr-bubble { max-width: 88%; border-radius: 16px; padding: 12px 16px; }
 .mr-bubble--in { align-self: flex-start; background: #F3EEE6; border-bottom-left-radius: 4px; }
-.mr-bubble--out { align-self: flex-end; background: #E4F8EC; border-bottom-right-radius: 4px; }
+.mr-bubble--out { align-self: flex-end; border-bottom-right-radius: 4px; }
+.mr-bubble--mine { background: #FBE4DC; }
+.mr-bubble--sample { background: #E4F8EC; }
 .mr-bubble-meta { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
 .mr-from { font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 13px; color: #A15A2E; }
 .mr-context { font-size: 11px; color: #9A93A8; }
 .mr-bubble-text { font-size: 14.5px; color: #2B2A4A; line-height: 1.55; margin: 0; }
+.mr-bubble--mine .mr-bubble-text { color: #A13B1E; }
 .mr-bubble--sample .mr-bubble-text { color: #1F7A47; }
-.mr-label { display: block; font-size: 11px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: #1F7A47; margin-bottom: 6px; }
+.mr-label { display: block; font-size: 11px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 6px; }
+.mr-label--mine { color: #A13B1E; }
+.mr-label--sample { color: #1F7A47; }
 
 .mr-prompt { font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 15.5px; color: #2B2A4A; margin: 0 0 10px; }
 .mr-checklist { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
