@@ -1,4 +1,4 @@
-// A1 Adults digital storybook, Book 7: "A Full and Good Week"
+// A2 Adults digital storybook, Book 7: "A Full and Good Week"
 // Static content -- no Supabase, mirrors the pattern in storybookData6.js.
 // Unlike Books 1-6 (teen narrators), this book's narrator is an adult
 // office worker and stays gender-neutral throughout, matching the source

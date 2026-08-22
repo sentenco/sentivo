@@ -1,4 +1,4 @@
-// A1 Adults digital storybook, Book 8: "A Good Week at the Shop"
+// A2 Adults digital storybook, Book 8: "A Good Week at the Shop"
 // Static content -- no Supabase, mirrors the pattern in storybookData7.js.
 // Like Book 7, this narrator is an adult worker and stays gender-neutral
 // throughout, matching the source text (no gendered pronoun is ever used

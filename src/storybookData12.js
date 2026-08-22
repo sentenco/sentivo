@@ -1,4 +1,4 @@
-// A1 Adults digital storybook, Book 12: "Food Brings Me Joy"
+// A2 Adults digital storybook, Book 12: "Food Brings Me Joy"
 // Static content -- no Supabase, mirrors the pattern in storybookData11.js.
 // Like Books 7-11, this narrator is an adult and stays gender-neutral
 // throughout, matching the source text. Unlike Leo (Book 11) and Maya

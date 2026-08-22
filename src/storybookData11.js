@@ -1,4 +1,4 @@
-// A1 Adults digital storybook, Book 11: "A Happier Free Time"
+// A2 Adults digital storybook, Book 11: "A Happier Free Time"
 // Static content -- no Supabase, mirrors the pattern in storybookData10.js.
 // Like Books 7-10, this narrator is an adult and stays gender-neutral
 // throughout, matching the source text. Friend Leo is ALSO never gendered

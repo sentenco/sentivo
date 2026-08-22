@@ -1,4 +1,4 @@
-// A1 Adults digital storybook, Book 9: "A Healthier Me"
+// A2 Adults digital storybook, Book 9: "A Healthier Me"
 // Static content -- no Supabase, mirrors the pattern in storybookData8.js.
 // Like Books 7-8, this narrator is an adult and stays gender-neutral
 // throughout, matching the source text (no gendered pronoun is ever used

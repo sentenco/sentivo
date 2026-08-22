@@ -1,4 +1,4 @@
-// A1 Adults digital storybook, Book 10: "Feeling Better Again"
+// A2 Adults digital storybook, Book 10: "Feeling Better Again"
 // Static content -- no Supabase, mirrors the pattern in storybookData9.js.
 // Like Books 7-9, this narrator is an adult and stays gender-neutral
 // throughout, matching the source text. The receptionist and Dr. Santos
