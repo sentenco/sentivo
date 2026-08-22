@@ -545,6 +545,8 @@ const BOOK_AGE_TRACK = {
   "storybook-36": "Teens",
   "storybook-37": "Teens",
   "storybook-38": "Teens",
+  "storybook-39": "Adults",
+  "storybook-40": "Adults",
   storybook: "Teens",
   "storybook-2": "Teens",
   "storybook-3": "Teens",
@@ -2812,6 +2814,8 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .cover--mauve { background: linear-gradient(160deg, #EAD9E5 0%, #B87FA6 100%); }
 .cover--pistachio { background: linear-gradient(160deg, #DCEFCB 0%, #8FC46A 100%); }
 .cover--terracotta { background: linear-gradient(160deg, #F2D3C0 0%, #C97355 100%); }
+.cover--steel { background: linear-gradient(160deg, #DCE3E8 0%, #8FA3B0 100%); }
+.cover--ivory { background: linear-gradient(160deg, #F5F0E1 0%, #D8C9A3 100%); }
 
 .theme-pro .cover--coral { background: #fff; border-top: 4px solid #D85A30; }
 .theme-pro .cover--teal { background: #fff; border-top: 4px solid #0F6E56; }
@@ -2851,6 +2855,8 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .theme-pro .cover--mauve { background: #fff; border-top: 4px solid #935F80; }
 .theme-pro .cover--pistachio { background: #fff; border-top: 4px solid #5E9A3E; }
 .theme-pro .cover--terracotta { background: #fff; border-top: 4px solid #A6543A; }
+.theme-pro .cover--steel { background: #fff; border-top: 4px solid #4E6577; }
+.theme-pro .cover--ivory { background: #fff; border-top: 4px solid #A68B4F; }
 
 .premium-badge {
   position: absolute;
