@@ -124,6 +124,8 @@ import ModalsTrack from './ModalsTrack.jsx'
 import ModalsLesson from './ModalsLesson.jsx'
 import ConditionalsTrack from './ConditionalsTrack.jsx'
 import ConditionalsLesson from './ConditionalsLesson.jsx'
+import PassiveVoiceTrack from './PassiveVoiceTrack.jsx'
+import PassiveVoiceLesson from './PassiveVoiceLesson.jsx'
 import PartsOfSpeechTrack from './PartsOfSpeechTrack.jsx'
 import PartsOfSpeechLesson from './PartsOfSpeechLesson.jsx'
 import Shift from './Shift.jsx'
@@ -271,6 +273,8 @@ createRoot(document.getElementById('root')).render(
             <Route path="/library/grammar/modals/:code" element={<ModalsLesson />} />
             <Route path="/library/grammar/conditionals" element={<ConditionalsTrack />} />
             <Route path="/library/grammar/conditionals/:code" element={<ConditionalsLesson />} />
+            <Route path="/library/grammar/passive-voice" element={<PassiveVoiceTrack />} />
+            <Route path="/library/grammar/passive-voice/:code" element={<PassiveVoiceLesson />} />
             <Route path="/library/shift" element={<ShiftHub />} />
             <Route path="/library/shift/:trackId" element={<ShiftTrack />} />
             <Route path="/library/shift/:trackId/:lessonNum" element={<Shift />} />
