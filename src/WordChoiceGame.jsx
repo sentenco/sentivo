@@ -142,7 +142,7 @@ const CSS = `
   background: #FFFFFF;
   border-radius: 24px;
   box-shadow: 0 20px 44px rgba(124,92,252,0.16);
-  padding: clamp(28px, 5vw, 44px);
+  padding: clamp(32px, 6vw, 52px);
   text-align: center;
 }
 
@@ -156,11 +156,11 @@ const CSS = `
   background: rgba(214,57,111,0.10);
   border-radius: 999px;
   padding: 5px 14px;
-  margin-bottom: 14px;
+  margin-bottom: 20px;
 }
 
-.syn-title { font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: clamp(30px, 5vw, 44px); color: #2B2A4A; margin: 0 0 10px; }
-.syn-blurb { font-size: 14.5px; line-height: 1.6; color: #7A7391; max-width: 400px; margin: 0 auto 26px; }
+.syn-title { font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: clamp(28px, 4.4vw, 40px); line-height: 1.3; color: #2B2A4A; margin: 0 0 16px; }
+.syn-blurb { font-size: 14.5px; line-height: 1.7; color: #7A7391; max-width: 400px; margin: 0 auto 32px; }
 
 .syn-btn {
   font-family: 'Fredoka', sans-serif;
@@ -178,24 +178,25 @@ const CSS = `
 }
 .syn-btn--primary:active { transform: translateY(3px); box-shadow: 0 3px 0 #5A3FD6; }
 
-.syn-bar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px; }
+.syn-bar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 26px; }
 .syn-progress { font-size: 11.5px; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase; color: #9A93A8; }
 .syn-score { font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 13px; color: #7C5CFC; background: rgba(124,92,252,0.10); padding: 5px 12px; border-radius: 999px; }
 
-.syn-instruction { font-size: 12.5px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: #B8AFCB; margin: 0 0 6px; }
-.syn-word { font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: clamp(34px, 6vw, 52px); color: #2B2A4A; margin: 0 0 26px; text-transform: capitalize; }
+.syn-instruction { font-size: 12.5px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: #B8AFCB; margin: 0 0 12px; }
+.syn-word { font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: clamp(32px, 5.6vw, 48px); line-height: 1.25; color: #2B2A4A; margin: 0 0 32px; text-transform: capitalize; }
 
-.syn-choices { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.syn-choices { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 .syn-choice {
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;
   font-size: 16px;
+  line-height: 1.4;
   color: #2B2A4A;
   text-transform: capitalize;
   background: #F5F3FF;
   border: 2px solid #EAE5FB;
   border-radius: 14px;
-  padding: 18px 12px;
+  padding: 20px 16px;
   cursor: pointer;
   transition: transform 0.1s ease, background 0.15s ease, border-color 0.15s ease;
 }
@@ -204,12 +205,12 @@ const CSS = `
 .syn-choice.is-correct { background: #E4F8EC; border-color: #4CBE7F; color: #1F7A47; }
 .syn-choice.is-incorrect { background: #FDEAEA; border-color: #E5645A; color: #B3392F; }
 
-.syn-footer { margin-top: 22px; display: flex; flex-direction: column; align-items: center; gap: 14px; }
-.syn-feedback { font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 15px; }
+.syn-footer { margin-top: 30px; display: flex; flex-direction: column; align-items: center; gap: 18px; }
+.syn-feedback { font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 15px; line-height: 1.5; }
 .syn-feedback.is-correct { color: #1F7A47; }
 .syn-feedback.is-incorrect { color: #B3392F; }
 
-.syn-done-emoji { font-size: 48px; margin-bottom: 4px; }
+.syn-done-emoji { font-size: 48px; margin-bottom: 10px; }
 
 @media (max-width: 480px) {
   .syn-choices { grid-template-columns: 1fr; }
