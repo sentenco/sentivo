@@ -356,7 +356,6 @@ const GRAMMAR_MODULES = [
   { num: "BED 08", banner: "nounsArticlesQuantifiers", title: "Nouns, Articles & Quantifiers", spec: "Countable vs uncountable, a/an vs the, zero article, and precise quantifiers, across 5 lessons, each teach-practice-wrap in one sitting. A1–C2.", href: "/library/grammar/nouns-articles-quantifiers", ready: true, hue: "coral" },
   { num: "BED 09", banner: "pronounsPossessives", title: "Pronouns & Possessives", spec: "Subject vs object pronouns, possessive adjectives vs pronouns, reflexive/intensive, demonstrative/indefinite, and possessive 's, across 5 lessons. A1–C2.", href: "/library/grammar/pronouns-possessives", ready: true, hue: "lime" },
 ];
-const GRAMMAR_PER_PAGE = 8;
 
 const SPEAKING_TRACKS = [
   { key: "forge", href: "/library/forge", hue: "forge", gap: "Thin working vocabulary", name: "Forge", desc: "Build real vocabulary through pictures, gaps, echoes, and question chains." },
@@ -365,14 +364,10 @@ const SPEAKING_TRACKS = [
 ];
 
 function GrammarFeature({ navigate, query }) {
-  const [page, setPage] = useState(1);
   const q = query.trim().toLowerCase();
   const modules = q
     ? GRAMMAR_MODULES.filter((m) => m.title.toLowerCase().includes(q) || m.spec.toLowerCase().includes(q))
     : GRAMMAR_MODULES;
-  const totalPages = Math.max(1, Math.ceil(modules.length / GRAMMAR_PER_PAGE));
-  const safePage = Math.min(page, totalPages);
-  const pageItems = modules.slice((safePage - 1) * GRAMMAR_PER_PAGE, safePage * GRAMMAR_PER_PAGE);
 
   return (
     <div className="gdn-page">
@@ -384,11 +379,11 @@ function GrammarFeature({ navigate, query }) {
       </div>
       <div className="gdn-row"></div>
 
-      {pageItems.length === 0 && (
+      {modules.length === 0 && (
         <p className="empty-msg">No grammar modules match "{query.trim()}".</p>
       )}
       <div className="gdn-beds">
-        {pageItems.map((m) =>
+        {modules.map((m) =>
           m.ready ? (
             <a
               key={m.num}
@@ -407,14 +402,6 @@ function GrammarFeature({ navigate, query }) {
           )
         )}
       </div>
-
-      {totalPages > 1 && (
-        <div className="pagination">
-          <button disabled={safePage === 1} onClick={() => setPage(safePage - 1)}>&larr; Prev</button>
-          <span className="page-indicator">Page {safePage} of {totalPages}</span>
-          <button disabled={safePage === totalPages} onClick={() => setPage(safePage + 1)}>Next &rarr;</button>
-        </div>
-      )}
     </div>
   );
 }
@@ -2577,7 +2564,7 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   align-items: center;
   justify-content: center;
   gap: 20px;
-  min-height: 176px;
+  aspect-ratio: 1 / 1;
   border: 3.5px solid #1A1A1A;
   border-radius: 22px;
   padding: 28px 22px;
