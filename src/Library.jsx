@@ -579,6 +579,14 @@ const BOOK_AGE_TRACK = {
   "storybook-70": "Teens",
   "storybook-71": "Teens",
   "storybook-72": "Teens",
+  "storybook-73": "Adults",
+  "storybook-74": "Adults",
+  "storybook-75": "Adults",
+  "storybook-76": "Adults",
+  "storybook-77": "Adults",
+  "storybook-78": "Adults",
+  "storybook-79": "Adults",
+  "storybook-80": "Adults",
   storybook: "Teens",
   "storybook-2": "Teens",
   "storybook-3": "Teens",
@@ -2880,6 +2888,14 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .cover--umber { background: linear-gradient(160deg, #DCC7B0 0%, #6B4A2F 100%); }
 .cover--vermilion { background: linear-gradient(160deg, #F5C0A8 0%, #C6391E 100%); }
 .cover--jade { background: linear-gradient(160deg, #B8E4D8 0%, #1F8067 100%); }
+.cover--onyx { background: linear-gradient(160deg, #B0B0B8 0%, #201F26 100%); }
+.cover--topaz { background: linear-gradient(160deg, #FCE4B0 0%, #D98E1E 100%); }
+.cover--amethyst { background: linear-gradient(160deg, #DFC7EE 0%, #7C3FA0 100%); }
+.cover--obsidian { background: linear-gradient(160deg, #8C8C96 0%, #17161C 100%); }
+.cover--alabaster { background: linear-gradient(160deg, #FAF7F0 0%, #D8CFC0 100%); }
+.cover--bronze { background: linear-gradient(160deg, #E0C09A 0%, #8C5A28 100%); }
+.cover--pewter { background: linear-gradient(160deg, #D4D6D8 0%, #6E7276 100%); }
+.cover--cinnabar { background: linear-gradient(160deg, #F5B8A0 0%, #B23A1E 100%); }
 
 .theme-pro .cover--coral { background: #fff; border-top: 4px solid #D85A30; }
 .theme-pro .cover--teal { background: #fff; border-top: 4px solid #0F6E56; }
@@ -2953,6 +2969,14 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .theme-pro .cover--umber { background: #fff; border-top: 4px solid #543A25; }
 .theme-pro .cover--vermilion { background: #fff; border-top: 4px solid #9E2E17; }
 .theme-pro .cover--jade { background: #fff; border-top: 4px solid #196651; }
+.theme-pro .cover--onyx { background: #fff; border-top: 4px solid #201F26; }
+.theme-pro .cover--topaz { background: #fff; border-top: 4px solid #B37619; }
+.theme-pro .cover--amethyst { background: #fff; border-top: 4px solid #632F80; }
+.theme-pro .cover--obsidian { background: #fff; border-top: 4px solid #17161C; }
+.theme-pro .cover--alabaster { background: #fff; border-top: 4px solid #A69880; }
+.theme-pro .cover--bronze { background: #fff; border-top: 4px solid #714822; }
+.theme-pro .cover--pewter { background: #fff; border-top: 4px solid #575B5E; }
+.theme-pro .cover--cinnabar { background: #fff; border-top: 4px solid #8F2C17; }
 
 .premium-badge {
   position: absolute;
