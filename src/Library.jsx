@@ -372,6 +372,17 @@ const GRAMMAR_MODULES = [
   { num: "BED 24", banner: "phrasalVerbs", title: "Phrasal Verbs — Separable vs Inseparable", spec: "Whether the object can go between the verb and particle, like 'turn off the light' vs 'look after the kids'.", href: "/library/grammar/phrasal-verbs", ready: true, hue: "magenta", icon: "🧩", tier: "extras" },
   { num: "BED 25", banner: "exclamations", title: "Exclamations", spec: "What a beautiful day! / How beautiful! — a sentence type of its own.", href: "/library/grammar/exclamations", ready: true, hue: "navy", icon: "❗", tier: "extras" },
   { num: "BED 26", banner: "emphasisDo", title: "Emphasis with Do/Does/Did", spec: "'I DO like it!' — using do-support in affirmative sentences purely for emphasis.", href: "/library/grammar/emphasis-do", ready: true, hue: "slate", icon: "🔊", tier: "extras" },
+  { num: "BED 27", banner: "subjectVerbAgreement", title: "Subject-Verb Agreement", spec: "5 real traps: compound subjects, or/nor, indefinite pronouns, and words that sneak between subject and verb.", href: "/library/grammar/subject-verb-agreement", ready: true, hue: "khaki", icon: "🤝", tier: "extras" },
+  { num: "BED 28", banner: "directIndirectObjects", title: "Direct & Indirect Objects", spec: "'Give me the book' vs 'give the book to me' — and the verbs that only allow one order.", href: "/library/grammar/direct-indirect-objects", ready: true, hue: "crimson", icon: "🎁", tier: "extras" },
+  { num: "BED 29", banner: "countableUncountableTraps", title: "Countable Nouns That Look Uncountable", spec: "News, advice, furniture never pluralize — but work and coffee sometimes do. A trap in both directions.", href: "/library/grammar/countable-uncountable-traps", ready: true, hue: "leaf", icon: "🪑", tier: "extras" },
+  { num: "BED 30", banner: "wouldRatherHadBetter", title: "Would Rather / Had Better", spec: "A calm preference vs an urgent warning — two similar 'd + base verb structures with very different stakes.", href: "/library/grammar/would-rather-had-better", ready: true, hue: "gold", icon: "⚠️", tier: "extras" },
+  { num: "BED 31", banner: "bothEitherNeither", title: "Both / Either / Neither", spec: "Both is always plural; either/neither are singular alone — until either...or/neither...nor agree with the nearer subject.", href: "/library/grammar/both-either-neither", ready: true, hue: "soil", icon: "🎯", tier: "extras" },
+  { num: "BED 32", banner: "questionTagsModals", title: "Question Tags with Modals & Rare Auxiliaries", spec: "True modals tag with themselves; have to and used to borrow do/does/did instead.", href: "/library/grammar/question-tags-modals", ready: true, hue: "sky", icon: "❓", tier: "extras" },
+  { num: "BED 33", banner: "fewLittleDeepDive", title: "A Few / Few / Little / A Little", spec: "The core flip, plus the idiom that breaks it — 'quite a few' actually means a lot.", href: "/library/grammar/few-little-deep-dive", ready: true, hue: "berry", icon: "🥄", tier: "extras" },
+  { num: "BED 34", banner: "gerundsPrepositionsTime", title: "Gerunds vs Infinitives After Prepositions of Time", spec: "Before/after/since take a gerund, but 'to' meaning 'in order to' is a different animal — the infinitive of purpose.", href: "/library/grammar/gerunds-prepositions-time", ready: true, hue: "violet", icon: "⏰", tier: "extras" },
+  { num: "BED 35", banner: "allWhole", title: "All / Whole", spec: "All sits before the article (all the day); whole sits after it (the whole day) — opposite sides of the same word.", href: "/library/grammar/all-whole", ready: true, hue: "teal", icon: "🍰", tier: "extras" },
+  { num: "BED 36", banner: "evenThoughIfSo", title: "Even Though / Even If / Even So", spec: "A fact vs a hypothetical vs a standalone linking word that starts a brand new sentence.", href: "/library/grammar/even-though-if-so", ready: true, hue: "coral", icon: "☂️", tier: "extras" },
+  { num: "BED 37", banner: "reflexiveVerbsNoSelf", title: "Reflexive Verbs That Don't Need \"-self\"", spec: "Concentrate, relax, wake up drop the reflexive in English — unlike hurt, introduce, and enjoy, which keep it.", href: "/library/grammar/reflexive-verbs-no-self", ready: true, hue: "lime", icon: "🪞", tier: "extras" },
 ];
 
 const SPEAKING_TRACKS = [
@@ -2779,6 +2790,8 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .gdn-supp-icon--magenta { background: color-mix(in srgb, var(--magenta) 22%, #FFF6E9); }
 .gdn-supp-icon--navy { background: color-mix(in srgb, var(--navy) 22%, #FFF6E9); }
 .gdn-supp-icon--slate { background: color-mix(in srgb, var(--slate) 22%, #FFF6E9); }
+.gdn-supp-icon--khaki { background: color-mix(in srgb, var(--khaki) 22%, #FFF6E9); }
+.gdn-supp-icon--crimson { background: color-mix(in srgb, var(--crimson) 22%, #FFF6E9); }
 
 .gdn-supp-text { flex: 1; min-width: 0; text-align: left; }
 .gdn-supp-title {

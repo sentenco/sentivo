@@ -154,6 +154,17 @@ import SoSuchLesson from './SoSuchLesson.jsx'
 import PhrasalVerbsLesson from './PhrasalVerbsLesson.jsx'
 import ExclamationsLesson from './ExclamationsLesson.jsx'
 import EmphasisDoLesson from './EmphasisDoLesson.jsx'
+import SubjectVerbAgreementLesson from './SubjectVerbAgreementLesson.jsx'
+import DirectIndirectObjectsLesson from './DirectIndirectObjectsLesson.jsx'
+import CountableUncountableTrapsLesson from './CountableUncountableTrapsLesson.jsx'
+import WouldRatherHadBetterLesson from './WouldRatherHadBetterLesson.jsx'
+import BothEitherNeitherLesson from './BothEitherNeitherLesson.jsx'
+import QuestionTagsModalsLesson from './QuestionTagsModalsLesson.jsx'
+import FewLittleDeepDiveLesson from './FewLittleDeepDiveLesson.jsx'
+import GerundsPrepositionsTimeLesson from './GerundsPrepositionsTimeLesson.jsx'
+import AllWholeLesson from './AllWholeLesson.jsx'
+import EvenThoughIfSoLesson from './EvenThoughIfSoLesson.jsx'
+import ReflexiveVerbsNoSelfLesson from './ReflexiveVerbsNoSelfLesson.jsx'
 import PartsOfSpeechTrack from './PartsOfSpeechTrack.jsx'
 import PartsOfSpeechLesson from './PartsOfSpeechLesson.jsx'
 import Shift from './Shift.jsx'
@@ -331,6 +342,17 @@ createRoot(document.getElementById('root')).render(
             <Route path="/library/grammar/phrasal-verbs" element={<PhrasalVerbsLesson />} />
             <Route path="/library/grammar/exclamations" element={<ExclamationsLesson />} />
             <Route path="/library/grammar/emphasis-do" element={<EmphasisDoLesson />} />
+            <Route path="/library/grammar/subject-verb-agreement" element={<SubjectVerbAgreementLesson />} />
+            <Route path="/library/grammar/direct-indirect-objects" element={<DirectIndirectObjectsLesson />} />
+            <Route path="/library/grammar/countable-uncountable-traps" element={<CountableUncountableTrapsLesson />} />
+            <Route path="/library/grammar/would-rather-had-better" element={<WouldRatherHadBetterLesson />} />
+            <Route path="/library/grammar/both-either-neither" element={<BothEitherNeitherLesson />} />
+            <Route path="/library/grammar/question-tags-modals" element={<QuestionTagsModalsLesson />} />
+            <Route path="/library/grammar/few-little-deep-dive" element={<FewLittleDeepDiveLesson />} />
+            <Route path="/library/grammar/gerunds-prepositions-time" element={<GerundsPrepositionsTimeLesson />} />
+            <Route path="/library/grammar/all-whole" element={<AllWholeLesson />} />
+            <Route path="/library/grammar/even-though-if-so" element={<EvenThoughIfSoLesson />} />
+            <Route path="/library/grammar/reflexive-verbs-no-self" element={<ReflexiveVerbsNoSelfLesson />} />
             <Route path="/library/shift" element={<ShiftHub />} />
             <Route path="/library/shift/:trackId" element={<ShiftTrack />} />
             <Route path="/library/shift/:trackId/:lessonNum" element={<Shift />} />
