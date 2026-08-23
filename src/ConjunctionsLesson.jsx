@@ -4,12 +4,16 @@ const LESSON = {
   title: "Conjunctions & Linking Words",
   formula: "FANBOYS join equals  ·  because/although/since join a dependent clause",
   leadIn: "Combine these two ideas into one sentence: 'It was raining.' + 'We went for a walk.'",
+  fanboys: [
+    { letter: "F", word: "For", usage: "Gives a reason, in a formal, almost literary way.", examples: ["She left early, for she had a flight to catch.", "He stayed quiet, for he had nothing to add."] },
+    { letter: "A", word: "And", usage: "Adds one idea to another.", examples: ["I bought bread, and I bought milk.", "She sings, and she dances."] },
+    { letter: "N", word: "Nor", usage: "Adds a second negative idea after a negative statement.", examples: ["I don't like coffee, nor do I like tea.", "He didn't call, nor did he text."] },
+    { letter: "B", word: "But", usage: "Shows a contrast between two ideas.", examples: ["I wanted to go, but I was too tired.", "She's small, but she's strong."] },
+    { letter: "O", word: "Or", usage: "Presents an alternative or a choice.", examples: ["We could stay in, or we could go out.", "You can pay now, or you can pay later."] },
+    { letter: "Y", word: "Yet", usage: "Shows a surprising contrast.", examples: ["It's expensive, yet it's worth it.", "He's quiet, yet he's confident."] },
+    { letter: "S", word: "So", usage: "Shows a result or consequence.", examples: ["It was raining, so we stayed inside.", "She studied hard, so she passed."] },
+  ],
   teach: [
-    {
-      name: "Coordinating Conjunctions — Joining Equals",
-      definition: "For, and, nor, but, or, yet, and so (FANBOYS) join two equal, independent ideas that could each stand alone as their own sentence.",
-      examples: ["I wanted to leave, but it was raining.", "She studies hard, so she gets good grades.", "We could stay in, or we could go out."],
-    },
     {
       name: "Subordinating Conjunctions — Adding a Dependent Clause",
       definition: "Because, although, since, while, and unless connect a main idea to a dependent clause that can't stand alone — the dependent clause explains a reason, contrast, time, or condition.",
@@ -29,15 +33,15 @@ const LESSON = {
     { prompt: "We'll cancel the picnic ___ it rains. (dependent clause, condition)", answer: "unless / if" },
   ],
   practice: [
-    "Write one sentence joining two equal ideas with a coordinating conjunction.",
+    "Write one sentence for each FANBOYS word — that's seven sentences, one per conjunction.",
     "Write one sentence with a subordinating conjunction explaining a reason.",
     "Write one sentence with a subordinating conjunction explaining a contrast.",
   ],
-  wrapup: "Coordinating conjunctions (FANBOYS) join two equal ideas that could each stand alone. Subordinating conjunctions attach a dependent clause that can't stand alone by itself.",
+  wrapup: "FANBOYS (for, and, nor, but, or, yet, so) join two equal ideas that could each stand alone. Subordinating conjunctions attach a dependent clause that can't stand alone by itself.",
 };
 
 function buildSlides(lesson) {
-  const slides = ["cover", "warmup"];
+  const slides = ["cover", "warmup", "fanboys"];
   lesson.teach.forEach((_, i) => slides.push(`teach${i}`));
   if (lesson.comparePairs) slides.push("compare");
   if (lesson.guided) slides.push("guided");
@@ -61,6 +65,29 @@ function WarmupSlide({ lesson }) {
       <span className="cjl-eyebrow">Warm-up</span>
       <div className="cjl-bubble cjl-bubble--solo">
         <p className="cjl-bubble-text cjl-bubble-text--big">“{lesson.leadIn}”</p>
+      </div>
+    </div>
+  );
+}
+
+function FanboysSlide({ lesson }) {
+  return (
+    <div className="cjl-slide cjl-slide--part">
+      <h3 className="cjl-h">FANBOYS — Coordinating Conjunctions</h3>
+      <p className="cjl-fanboys-intro">Each one joins two equal, independent ideas — but the reason you'd reach for it changes word by word.</p>
+      <div className="cjl-fanboys-list">
+        {lesson.fanboys.map((f) => (
+          <div key={f.letter} className="cjl-fanboys-item">
+            <div className="cjl-fanboys-head">
+              <span className="cjl-fanboys-letter">{f.letter}</span>
+              <span className="cjl-fanboys-word">{f.word}</span>
+              <span className="cjl-fanboys-usage">{f.usage}</span>
+            </div>
+            <div className="cjl-fanboys-examples">
+              {f.examples.map((ex, i) => <p key={i} className="cjl-fanboys-example">{ex}</p>)}
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );
@@ -150,6 +177,7 @@ function WrapupSlide({ lesson }) {
 function renderSlide(slideType, lesson) {
   if (slideType === "cover") return <CoverSlide lesson={lesson} />;
   if (slideType === "warmup") return <WarmupSlide lesson={lesson} />;
+  if (slideType === "fanboys") return <FanboysSlide lesson={lesson} />;
   if (slideType.startsWith("teach")) return <TeachSlide lesson={lesson} index={Number(slideType.replace("teach", ""))} />;
   if (slideType === "compare") return <CompareSlide lesson={lesson} />;
   if (slideType === "guided") return <GuidedSlide lesson={lesson} />;
@@ -383,6 +411,73 @@ const CSS = `
 .cjl-bubble-text--big { font-size: 24px; font-style: italic; }
 
 .cjl-example-list { display: flex; flex-direction: column; gap: 12px; width: 100%; max-width: 620px; align-items: center; }
+
+.cjl-fanboys-intro {
+  font-family: 'Comic Neue', cursive, sans-serif;
+  font-weight: 700;
+  font-size: 14.5px;
+  color: #6FA97D;
+  margin: 0;
+  max-width: 640px;
+  text-align: center;
+}
+.cjl-fanboys-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  max-width: 780px;
+  text-align: left;
+}
+.cjl-fanboys-item {
+  background: #F1F8EE;
+  border: 2.5px solid #1A1A1A;
+  border-radius: 12px;
+  padding: 10px 14px;
+}
+.cjl-fanboys-head {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 4px;
+}
+.cjl-fanboys-letter {
+  font-family: 'Bangers', cursive;
+  font-weight: 400;
+  font-size: 16px;
+  color: #FFFFFF;
+  background: #4C9A5D;
+  border: 2px solid #1A1A1A;
+  border-radius: 50%;
+  width: 22px;
+  height: 22px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.cjl-fanboys-word {
+  font-family: 'Bangers', cursive;
+  font-weight: 400;
+  font-size: 18px;
+  letter-spacing: 0.3px;
+  color: #1A1A1A;
+}
+.cjl-fanboys-usage {
+  font-family: 'Comic Neue', cursive, sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  color: #3F6B45;
+}
+.cjl-fanboys-examples { display: flex; flex-direction: column; gap: 2px; padding-left: 30px; }
+.cjl-fanboys-example {
+  font-family: 'Comic Neue', cursive, sans-serif;
+  font-weight: 700;
+  font-size: 13.5px;
+  color: #1A1A1A;
+  margin: 0;
+}
 
 .cjl-compare-note {
   font-family: 'Comic Neue', cursive, sans-serif;

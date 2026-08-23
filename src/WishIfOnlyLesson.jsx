@@ -1,0 +1,493 @@
+import { useState } from "react";
+
+const LESSON = {
+  title: "Wish & If Only",
+  formula: "wish/if only + past simple (present regret)  ·  wish/if only + past perfect (past regret)",
+  leadIn: "Name one thing you wish were different about today.",
+  teach: [
+    {
+      name: "Wishing About the Present",
+      definition: "Wish or if only plus the past simple expresses a desire for something different right now, even though the verb looks past tense.",
+      examples: ["I wish I had more time.", "If only I spoke French.", "She wishes she lived closer to her family."],
+    },
+    {
+      name: "Wishing About the Past",
+      definition: "Wish or if only plus the past perfect expresses regret about something that already happened and can't be changed.",
+      examples: ["I wish I had studied harder.", "If only I hadn't said that.", "He wishes he had taken the job."],
+    },
+  ],
+  compareLeftLabel: "Present wish — past simple",
+  compareRightLabel: "Past regret — past perfect",
+  compareNote: "The tense tells you which moment the wish is about — one step back for a present wish, two steps back for a regret about the past.",
+  comparePairs: [
+    { left: "I wish I had a car. (I don't have one now)", right: "I wish I had bought a car. (I didn't buy one back then)" },
+    { left: "If only she were here.", right: "If only she had come earlier." },
+  ],
+  guided: [
+    { prompt: "I wish I ___ (know) the answer right now.", answer: "knew" },
+    { prompt: "If only I ___ (study) harder before the exam. (regret about the past)", answer: "had studied" },
+    { prompt: "She wishes she ___ (live) somewhere warmer. (present)", answer: "lived" },
+  ],
+  practice: [
+    "Write one sentence wishing something were different right now.",
+    "Write one sentence regretting something from your past, using if only.",
+    "Compare the two — which tense did each one use?",
+  ],
+  wrapup: "Wish/if only + past simple expresses a present wish. Wish/if only + past perfect expresses regret about the past.",
+};
+
+function buildSlides(lesson) {
+  const slides = ["cover", "warmup"];
+  lesson.teach.forEach((_, i) => slides.push(`teach${i}`));
+  if (lesson.comparePairs) slides.push("compare");
+  if (lesson.guided) slides.push("guided");
+  slides.push("practice", "wrapup");
+  return slides;
+}
+
+function CoverSlide({ lesson }) {
+  return (
+    <div className="wil-slide wil-slide--cover">
+      <span className="wil-kind-badge">Lesson Time!</span>
+      <h2 className="wil-cover-title">{lesson.title}</h2>
+      <span className="wil-formula-chip">{lesson.formula}</span>
+    </div>
+  );
+}
+
+function WarmupSlide({ lesson }) {
+  return (
+    <div className="wil-slide">
+      <span className="wil-eyebrow">Warm-up</span>
+      <div className="wil-bubble wil-bubble--solo">
+        <p className="wil-bubble-text wil-bubble-text--big">“{lesson.leadIn}”</p>
+      </div>
+    </div>
+  );
+}
+
+function TeachSlide({ lesson, index }) {
+  const concept = lesson.teach[index];
+  return (
+    <div className="wil-slide">
+      <h3 className="wil-h">{concept.name}</h3>
+      <p className="wil-definition">{concept.definition}</p>
+      <div className="wil-example-list">
+        {concept.examples.map((ex, i) => (
+          <div key={i} className="wil-bubble">
+            <p className="wil-bubble-text">{ex}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function CompareSlide({ lesson }) {
+  return (
+    <div className="wil-slide">
+      <h3 className="wil-h">{lesson.compareLeftLabel} <span className="wil-vs">vs</span> {lesson.compareRightLabel}</h3>
+      <p className="wil-compare-note">{lesson.compareNote}</p>
+      <div className="wil-compare-grid">
+        <div className="wil-panel">
+          <span className="wil-compare-label">{lesson.compareLeftLabel}</span>
+          {lesson.comparePairs.map((pair, i) => <p key={`l-${i}`} className="wil-compare-line">{pair.left}</p>)}
+        </div>
+        <div className="wil-panel wil-panel--right">
+          <span className="wil-compare-label">{lesson.compareRightLabel}</span>
+          {lesson.comparePairs.map((pair, i) => <p key={`r-${i}`} className="wil-compare-line">{pair.right}</p>)}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function GuidedItem({ item }) {
+  const [shown, setShown] = useState(false);
+  return (
+    <div className="wil-quiz-item">
+      <p className="wil-quiz-q">{item.prompt}</p>
+      {shown ? (
+        <p className="wil-reveal-correct">{item.answer}</p>
+      ) : (
+        <button type="button" className="wil-reveal-btn" onClick={() => setShown(true)}>Show answer</button>
+      )}
+    </div>
+  );
+}
+
+function GuidedSlide({ lesson }) {
+  return (
+    <div className="wil-slide wil-slide--part">
+      <h3 className="wil-h">Guided practice</h3>
+      <div className="wil-quiz-list">
+        {lesson.guided.map((item, i) => <GuidedItem key={i} item={item} />)}
+      </div>
+    </div>
+  );
+}
+
+function PracticeSlide({ lesson }) {
+  return (
+    <div className="wil-slide wil-slide--part">
+      <h3 className="wil-h">Speaking &amp; writing practice</h3>
+      <ul className="wil-list wil-speaking-list">
+        {lesson.practice.map((line, i) => <li key={i}>{line}</li>)}
+      </ul>
+    </div>
+  );
+}
+
+function WrapupSlide({ lesson }) {
+  return (
+    <div className="wil-slide">
+      <h3 className="wil-h">Wrap-up</h3>
+      <p className="wil-definition">{lesson.wrapup}</p>
+    </div>
+  );
+}
+
+function renderSlide(slideType, lesson) {
+  if (slideType === "cover") return <CoverSlide lesson={lesson} />;
+  if (slideType === "warmup") return <WarmupSlide lesson={lesson} />;
+  if (slideType.startsWith("teach")) return <TeachSlide lesson={lesson} index={Number(slideType.replace("teach", ""))} />;
+  if (slideType === "compare") return <CompareSlide lesson={lesson} />;
+  if (slideType === "guided") return <GuidedSlide lesson={lesson} />;
+  if (slideType === "practice") return <PracticeSlide lesson={lesson} />;
+  if (slideType === "wrapup") return <WrapupSlide lesson={lesson} />;
+  return null;
+}
+
+export default function WishIfOnlyLesson() {
+  const [slideIdx, setSlideIdx] = useState(0);
+  const lesson = LESSON;
+  const slideTypes = buildSlides(lesson);
+  const slideType = slideTypes[slideIdx];
+  const isFirst = slideIdx === 0;
+  const isLast = slideIdx === slideTypes.length - 1;
+
+  return (
+    <div className="wil-shell">
+      <style>{CSS}</style>
+      <header className="wil-topbar">
+        <span className="wil-brand"><img src="/logo-sentivo.png" alt="" className="wil-brand-logo" />entivo</span>
+        <span className="wil-topbar-title">{lesson.title}</span>
+      </header>
+
+      <div className="wil-stage">
+        <div className="wil-deck">
+          <div className="wil-deck-body" key={slideIdx}>
+            {renderSlide(slideType, lesson)}
+          </div>
+          <div className="wil-nav-row">
+            <button type="button" className="wil-nav-btn" onClick={() => setSlideIdx((i) => i - 1)} disabled={isFirst}>
+              ← Back
+            </button>
+            <div className="wil-nav-dots">
+              {slideTypes.map((_, i) => (
+                <span key={i} className={`wil-nav-dot ${i === slideIdx ? "is-active" : ""}`} />
+              ))}
+            </div>
+            <button
+              type="button"
+              className="wil-nav-btn wil-nav-btn--primary"
+              onClick={() => setSlideIdx((i) => i + 1)}
+              disabled={isLast}
+            >
+              Next →
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+const CSS = `
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:wght@400;700&family=Fredoka:wght@700&display=swap');
+
+.wil-shell {
+  width: 100%;
+  height: 100vh;
+  background:
+    radial-gradient(#00000012 1.4px, transparent 1.5px) 0 0/16px 16px,
+    #ECF3FA;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  overflow: hidden;
+  font-family: 'Comic Neue', cursive, sans-serif;
+}
+.wil-shell * { box-sizing: border-box; }
+
+.wil-topbar {
+  width: 100%;
+  max-width: 1120px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 24px 0;
+  flex-shrink: 0;
+}
+.wil-brand {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: 0.01em;
+  color: #2B2A4A;
+}
+.wil-brand-logo { height: 24px; width: auto; display: block; margin-right: -4px; }
+.wil-topbar-title {
+  font-family: 'Comic Neue', cursive, sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.5px;
+  color: #275C8C;
+}
+
+.wil-stage {
+  flex: 1;
+  width: 100%;
+  max-width: 1120px;
+  padding: 16px 24px 20px;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.wil-deck {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: #FFFFFF;
+  border: 4px solid #1A1A1A;
+  border-radius: 18px;
+  padding: 20px 56px;
+  box-shadow: 9px 9px 0 #1A1A1A;
+  min-height: 0;
+}
+
+.wil-deck-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 0;
+  overflow-y: auto;
+  gap: 20px;
+  padding: 8px 0;
+}
+
+.wil-slide { display: flex; flex-direction: column; align-items: center; gap: 16px; width: 100%; }
+.wil-slide--cover { gap: 14px; }
+.wil-slide--part { justify-content: flex-start; }
+
+.wil-eyebrow {
+  font-family: 'Comic Neue', cursive, sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  color: #3E7CB8;
+}
+
+.wil-kind-badge {
+  font-family: 'Bangers', cursive;
+  font-weight: 400;
+  font-size: 18px;
+  letter-spacing: 0.5px;
+  color: #FFFFFF;
+  background: #3E7CB8;
+  border: 3px solid #1A1A1A;
+  border-radius: 999px;
+  padding: 4px 18px 6px;
+  transform: rotate(-3deg);
+  display: inline-block;
+}
+.wil-cover-title {
+  font-family: 'Bangers', cursive;
+  font-weight: 400;
+  font-size: 48px;
+  color: #1A1A1A;
+  margin: 4px 0 0;
+  line-height: 1.05;
+  letter-spacing: 1px;
+  text-shadow: 3px 3px 0 #3E7CB8;
+}
+
+.wil-formula-chip {
+  font-family: 'Comic Neue', cursive, sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  color: #275C8C;
+  background: #ECF3FA;
+  border: 2.5px solid #3E7CB8;
+  border-radius: 999px;
+  padding: 8px 20px;
+  margin-top: 4px;
+  max-width: 640px;
+}
+
+.wil-h {
+  font-family: 'Bangers', cursive;
+  font-weight: 400;
+  font-size: 32px;
+  color: #1A1A1A;
+  margin: 0;
+  letter-spacing: 0.5px;
+}
+.wil-vs {
+  display: inline-block;
+  background: #FFC300;
+  border: 2.5px solid #1A1A1A;
+  border-radius: 8px;
+  padding: 0 8px;
+  transform: rotate(-4deg);
+  font-size: 0.65em;
+  vertical-align: middle;
+}
+
+.wil-definition {
+  font-family: 'Comic Neue', cursive, sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  color: #16324D;
+  line-height: 1.55;
+  margin: 0;
+  max-width: 700px;
+}
+
+.wil-bubble {
+  position: relative;
+  background: #FFFFFF;
+  border: 3px solid #3E7CB8;
+  border-radius: 18px;
+  padding: 12px 20px;
+  max-width: 560px;
+  align-self: center;
+}
+.wil-bubble--solo { max-width: 720px; }
+.wil-bubble-text {
+  font-family: 'Comic Neue', cursive, sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  color: #1A1A1A;
+  margin: 0;
+}
+.wil-bubble-text--big { font-size: 24px; font-style: italic; }
+
+.wil-example-list { display: flex; flex-direction: column; gap: 12px; width: 100%; max-width: 620px; align-items: center; }
+
+.wil-compare-note {
+  font-family: 'Comic Neue', cursive, sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  color: #6C97BD;
+  margin: 0;
+  max-width: 620px;
+}
+.wil-compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; width: 100%; max-width: 700px; }
+.wil-panel { background: #ECF3FA; border: 3px solid #1A1A1A; border-radius: 14px; padding: 14px 16px; text-align: left; }
+.wil-panel--right { border-color: #3E7CB8; }
+.wil-compare-label {
+  display: block;
+  font-family: 'Bangers', cursive;
+  font-weight: 400;
+  font-size: 15px;
+  letter-spacing: 0.3px;
+  color: #275C8C;
+  margin-bottom: 8px;
+}
+.wil-compare-line {
+  font-family: 'Comic Neue', cursive, sans-serif;
+  font-weight: 700;
+  font-size: 14.5px;
+  color: #1A1A1A;
+  margin: 0 0 8px;
+}
+
+.wil-list {
+  font-family: 'Comic Neue', cursive, sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  color: #16324D;
+  line-height: 1.6;
+  margin: 0;
+  padding-left: 20px;
+}
+.wil-speaking-list { max-width: 720px; font-size: 18px; text-align: left; }
+.wil-speaking-list li { margin-bottom: 8px; }
+
+.wil-quiz-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  max-width: 840px;
+  text-align: left;
+}
+.wil-quiz-item {
+  background: #ECF3FA;
+  border: 3px solid #1A1A1A;
+  border-radius: 14px;
+  padding: 14px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.wil-quiz-q {
+  font-family: 'Comic Neue', cursive, sans-serif;
+  font-weight: 700;
+  font-size: 17px;
+  color: #1A1A1A;
+  margin: 0;
+}
+
+.wil-reveal-btn {
+  align-self: flex-start;
+  font-family: 'Comic Neue', cursive, sans-serif;
+  font-weight: 700;
+  font-size: 13.5px;
+  color: #1A1A1A;
+  background: #FFC300;
+  border: 2.5px solid #1A1A1A;
+  border-radius: 8px;
+  padding: 6px 14px;
+  cursor: pointer;
+  box-shadow: 3px 3px 0 #1A1A1A;
+}
+.wil-reveal-btn:active { box-shadow: 0 0 0 #1A1A1A; transform: translate(3px, 3px); }
+.wil-reveal-correct {
+  font-family: 'Comic Neue', cursive, sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  color: #1F8A63;
+  margin: 0;
+}
+
+.wil-nav-row { display: flex; align-items: center; justify-content: space-between; padding-top: 14px; border-top: 3px dashed #D3E3F1; flex-shrink: 0; }
+.wil-nav-btn {
+  font-family: 'Comic Neue', cursive, sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  color: #1A1A1A;
+  background: #FFFFFF;
+  border: 2.5px solid #1A1A1A;
+  border-radius: 10px;
+  padding: 9px 18px;
+  cursor: pointer;
+  box-shadow: 4px 4px 0 #1A1A1A;
+}
+.wil-nav-btn:active:not(:disabled) { box-shadow: 0 0 0 #1A1A1A; transform: translate(4px, 4px); }
+.wil-nav-btn--primary { background: #FFC300; }
+.wil-nav-btn:disabled { opacity: 0.35; cursor: default; box-shadow: 4px 4px 0 #1A1A1A; }
+.wil-nav-dots { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; max-width: 340px; }
+.wil-nav-dot { width: 8px; height: 8px; border-radius: 50%; background: #FFFFFF; border: 2px solid #1A1A1A; }
+.wil-nav-dot.is-active { background: #3E7CB8; }
+`;

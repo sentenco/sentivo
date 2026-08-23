@@ -145,6 +145,9 @@ import PrepositionsLesson from './PrepositionsLesson.jsx'
 import ConjunctionsLesson from './ConjunctionsLesson.jsx'
 import CausativeVerbsLesson from './CausativeVerbsLesson.jsx'
 import WordOrderLesson from './WordOrderLesson.jsx'
+import WishIfOnlyLesson from './WishIfOnlyLesson.jsx'
+import UsedToLesson from './UsedToLesson.jsx'
+import TooEnoughLesson from './TooEnoughLesson.jsx'
 import PartsOfSpeechTrack from './PartsOfSpeechTrack.jsx'
 import PartsOfSpeechLesson from './PartsOfSpeechLesson.jsx'
 import Shift from './Shift.jsx'
@@ -313,6 +316,9 @@ createRoot(document.getElementById('root')).render(
             <Route path="/library/grammar/conjunctions-linking-words" element={<ConjunctionsLesson />} />
             <Route path="/library/grammar/causative-verbs" element={<CausativeVerbsLesson />} />
             <Route path="/library/grammar/word-order-inversion" element={<WordOrderLesson />} />
+            <Route path="/library/grammar/wish-if-only" element={<WishIfOnlyLesson />} />
+            <Route path="/library/grammar/used-to" element={<UsedToLesson />} />
+            <Route path="/library/grammar/too-enough" element={<TooEnoughLesson />} />
             <Route path="/library/shift" element={<ShiftHub />} />
             <Route path="/library/shift/:trackId" element={<ShiftTrack />} />
             <Route path="/library/shift/:trackId/:lessonNum" element={<Shift />} />
