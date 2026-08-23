@@ -340,6 +340,15 @@ export const VOCAB_LESSONS = [
     href: "/library/vocabulary/lessons/word-families",
     ready: true,
   },
+  {
+    key: "confusable-pairs",
+    title: "Confusable Pairs",
+    icon: "⚖️",
+    hue: "sky",
+    blurb: "affect vs effect, loose vs lose — pick the right word for the sentence, then see the rule.",
+    href: "/library/vocabulary/lessons/confusable-pairs",
+    ready: true,
+  },
 ];
 
 function openLessonPlayer(href) {
@@ -737,6 +746,7 @@ const CSS = `
 .vg-cat-card--teal    { --vgc-accent: #0E6E7C; --vgc-icon-bg: rgba(14,110,124,0.14); --vgc-border: #BFE6E1; --vgc-shadow: rgba(14,110,124,0.10); --vgc-shadow-hover: rgba(14,110,124,0.16); }
 .vg-cat-card--seafoam { --vgc-accent: #1C8A68; --vgc-icon-bg: rgba(28,138,104,0.14); --vgc-border: #C3EEDD; --vgc-shadow: rgba(20,107,78,0.10); --vgc-shadow-hover: rgba(20,107,78,0.16); }
 .vg-cat-card--gold    { --vgc-accent: #A9720A; --vgc-icon-bg: rgba(255,203,76,0.24); --vgc-border: #FCE4B0; --vgc-shadow: rgba(154,90,22,0.10); --vgc-shadow-hover: rgba(154,90,22,0.16); }
+.vg-cat-card--sky     { --vgc-accent: #3E7CB8; --vgc-icon-bg: rgba(62,124,184,0.14); --vgc-border: #C7DCF0; --vgc-shadow: rgba(30,90,140,0.10); --vgc-shadow-hover: rgba(30,90,140,0.16); }
 
 .vg-cat-top { display: flex; align-items: center; justify-content: space-between; width: 100%; margin-bottom: 12px; }
 .vg-cat-icon {
