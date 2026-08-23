@@ -334,7 +334,7 @@ const CSS = `
 .gipl-cover-title {
   font-family: 'Bangers', cursive;
   font-weight: 400;
-  font-size: 34px;
+  font-size: 42px;
   color: #1A1A1A;
   margin: 4px 0 0;
   line-height: 1.15;

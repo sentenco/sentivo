@@ -334,7 +334,7 @@ const CSS = `
 .diol-cover-title {
   font-family: 'Bangers', cursive;
   font-weight: 400;
-  font-size: 50px;
+  font-size: 56px;
   color: #1A1A1A;
   margin: 4px 0 0;
   line-height: 1.1;
