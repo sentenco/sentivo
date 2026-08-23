@@ -1783,14 +1783,7 @@ export default function Library() {
         ) : category === "Vocabulary" ? (
           <VocabularyGames query={query} />
         ) : category === "Writing" ? (
-          <div className="dyn-landing dyn-landing--writing">
-            <div className="dyn-landing-hero">
-              <span className="dyn-landing-eyebrow">Sentivo · Writing</span>
-              <h1><span className="dyn-landing-pill">✍️ Writing Desk</span></h1>
-            </div>
-            <div className="dyn-landing-row"></div>
-            <WritingActivities query={query} />
-          </div>
+          <WritingActivities query={query} />
         ) : category === "Listening" ? (
           <div className="dyn-landing dyn-landing--listening">
             <div className="dyn-landing-hero">
