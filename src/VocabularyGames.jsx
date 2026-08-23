@@ -330,7 +330,7 @@ function openLessonPlayer(href) {
 }
 
 export default function VocabularyGames({ query }) {
-  const [mainTab, setMainTab] = useState("games");
+  const [mainTab, setMainTab] = useState("lessons");
   const [gameKey, setGameKey] = useState(null);
   const [levelTab, setLevelTab] = useState(LEVEL_GROUPS[0]);
   const q = query.trim().toLowerCase();
