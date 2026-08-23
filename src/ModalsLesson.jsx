@@ -337,9 +337,17 @@ const CSS = `
   font-family: 'Bangers', cursive;
   font-weight: 400;
   font-size: 32px;
-  color: #1A1A1A;
+  color: #FFFFFF;
   margin: 0;
   letter-spacing: 0.5px;
+  display: inline-block;
+  background: #2F9E44;
+  border: 3px solid #1A1A1A;
+  border-radius: 14px;
+  padding: 6px 22px 8px;
+  transform: rotate(-1.2deg);
+  box-shadow: 4px 4px 0 #1A1A1A;
+  text-shadow: 1px 1px 0 rgba(0,0,0,0.25);
 }
 .mdl-vs {
   display: inline-block;
