@@ -15,7 +15,7 @@ export const GAME_TYPES = [
     icon: "🟰",
     blurb: "Pick the word that means the same thing.",
     instruction: "Choose the synonym.",
-    hue: "pink",
+    hue: "coral",
     kind: "choice",
   },
   {
@@ -24,7 +24,7 @@ export const GAME_TYPES = [
     icon: "↔️",
     blurb: "Pick the word that means the opposite.",
     instruction: "Choose the antonym.",
-    hue: "purple",
+    hue: "teal",
     kind: "choice",
   },
   {
@@ -32,7 +32,7 @@ export const GAME_TYPES = [
     title: "Word Sort",
     icon: "🗃️",
     blurb: "Sort each word into the right category.",
-    hue: "green",
+    hue: "seafoam",
     kind: "sort",
   },
   {
@@ -40,7 +40,7 @@ export const GAME_TYPES = [
     title: "Odd One Out",
     icon: "🔎",
     blurb: "Tap the word that doesn't belong.",
-    hue: "orange",
+    hue: "gold",
     kind: "oddOneOut",
   },
 ];
@@ -52,15 +52,15 @@ function GameBanner({ name }) {
       <>
         <defs>
           <linearGradient id="vgb-syn-bg" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0" stopColor="#FFE3EC" />
-            <stop offset="1" stopColor="#FFC9DC" />
+            <stop offset="0" stopColor="#FFE1DA" />
+            <stop offset="1" stopColor="#FFC5B4" />
           </linearGradient>
           <linearGradient id="vgb-syn-mark" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stopColor="#FF7FA8" />
-            <stop offset="1" stopColor="#D6396F" />
+            <stop offset="0" stopColor="#FF9376" />
+            <stop offset="1" stopColor="#E85A3D" />
           </linearGradient>
           <filter id="vgb-syn-shadow" x="-40%" y="-40%" width="180%" height="180%">
-            <feDropShadow dx="0" dy="5" stdDeviation="6" floodColor="#B0285A" floodOpacity="0.22" />
+            <feDropShadow dx="0" dy="5" stdDeviation="6" floodColor="#C1451F" floodOpacity="0.22" />
           </filter>
         </defs>
         <rect width="320" height="140" fill="url(#vgb-syn-bg)" />
@@ -76,19 +76,19 @@ function GameBanner({ name }) {
       <>
         <defs>
           <linearGradient id="vgb-ant-bg" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0" stopColor="#EEE9FC" />
-            <stop offset="1" stopColor="#DCD1F7" />
+            <stop offset="0" stopColor="#E1F3F3" />
+            <stop offset="1" stopColor="#C5E8E6" />
           </linearGradient>
           <filter id="vgb-ant-shadow" x="-40%" y="-40%" width="180%" height="180%">
-            <feDropShadow dx="0" dy="6" stdDeviation="7" floodColor="#4B3690" floodOpacity="0.22" />
+            <feDropShadow dx="0" dy="6" stdDeviation="7" floodColor="#0E6E7C" floodOpacity="0.22" />
           </filter>
         </defs>
         <rect width="320" height="140" fill="url(#vgb-ant-bg)" />
         <g filter="url(#vgb-ant-shadow)">
-          <circle cx="160" cy="70" r="50" fill="#1B1B22" />
+          <circle cx="160" cy="70" r="50" fill="#0E6E7C" />
           <path d="M160 20 A50 50 0 0 1 160 120 A25 25 0 0 1 160 70 A25 25 0 0 0 160 20 Z" fill="#FFFFFF" />
-          <circle cx="160" cy="70" r="50" fill="none" stroke="#1B1B22" strokeWidth="2" />
-          <circle cx="160" cy="45" r="8" fill="#1B1B22" />
+          <circle cx="160" cy="70" r="50" fill="none" stroke="#0E6E7C" strokeWidth="2" />
+          <circle cx="160" cy="45" r="8" fill="#0E6E7C" />
           <circle cx="160" cy="95" r="8" fill="#FFFFFF" />
         </g>
       </>
@@ -99,19 +99,19 @@ function GameBanner({ name }) {
       <>
         <defs>
           <linearGradient id="vgb-sort-bg" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0" stopColor="#E3F6EC" />
-            <stop offset="1" stopColor="#C9ECDA" />
+            <stop offset="0" stopColor="#DFF7EF" />
+            <stop offset="1" stopColor="#C3EEDD" />
           </linearGradient>
           <linearGradient id="vgb-sort-binL" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stopColor="#3FC28C" />
-            <stop offset="1" stopColor="#1F9D6E" />
+            <stop offset="0" stopColor="#6FE0BE" />
+            <stop offset="1" stopColor="#4FD1A5" />
           </linearGradient>
           <linearGradient id="vgb-sort-binR" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stopColor="#20A578" />
-            <stop offset="1" stopColor="#0F7A54" />
+            <stop offset="0" stopColor="#3FBF8F" />
+            <stop offset="1" stopColor="#1C8A68" />
           </linearGradient>
           <filter id="vgb-sort-shadow" x="-40%" y="-40%" width="180%" height="180%">
-            <feDropShadow dx="0" dy="5" stdDeviation="5" floodColor="#0F6B48" floodOpacity="0.2" />
+            <feDropShadow dx="0" dy="5" stdDeviation="5" floodColor="#146B4E" floodOpacity="0.2" />
           </filter>
         </defs>
         <rect width="320" height="140" fill="url(#vgb-sort-bg)" />
@@ -120,12 +120,12 @@ function GameBanner({ name }) {
           <rect x="70" y="90" width="72" height="34" rx="8" fill="url(#vgb-sort-binL)" />
           <rect x="178" y="90" width="72" height="34" rx="8" fill="url(#vgb-sort-binR)" />
         </g>
-        <rect x="132" y="16" width="24" height="24" rx="6" fill="#FFB648" transform="rotate(-10 144 28)" />
-        <rect x="168" y="10" width="22" height="22" rx="6" fill="#FF8A6B" transform="rotate(8 179 21)" />
+        <rect x="132" y="16" width="24" height="24" rx="6" fill="#FFCB4C" transform="rotate(-10 144 28)" />
+        <rect x="168" y="10" width="22" height="22" rx="6" fill="#FF8F6B" transform="rotate(8 179 21)" />
         <path d="M155 70 Q120 82 100 92" fill="none" stroke="#8FD1A8" strokeWidth="2.5" strokeDasharray="4 5" />
         <path d="M165 70 Q205 82 222 92" fill="none" stroke="#8FD1A8" strokeWidth="2.5" strokeDasharray="4 5" />
-        <rect x="86" y="98" width="18" height="18" rx="5" fill="#FFB648" transform="rotate(-6 95 107)" />
-        <rect x="204" y="98" width="18" height="18" rx="5" fill="#FF8A6B" transform="rotate(6 213 107)" />
+        <rect x="86" y="98" width="18" height="18" rx="5" fill="#FFCB4C" transform="rotate(-6 95 107)" />
+        <rect x="204" y="98" width="18" height="18" rx="5" fill="#FF8F6B" transform="rotate(6 213 107)" />
       </>
     ),
     // A magnifying glass catches the one shape that breaks the pattern —
@@ -134,26 +134,26 @@ function GameBanner({ name }) {
       <>
         <defs>
           <linearGradient id="vgb-odd-bg" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0" stopColor="#FDEFDD" />
-            <stop offset="1" stopColor="#FBDDBB" />
+            <stop offset="0" stopColor="#FFF3D9" />
+            <stop offset="1" stopColor="#FCE4B0" />
           </linearGradient>
           <radialGradient id="vgb-odd-glass" cx="0.35" cy="0.3" r="0.8">
             <stop offset="0" stopColor="#FFFFFF" stopOpacity="0.9" />
             <stop offset="1" stopColor="#FFF6EA" stopOpacity="0.35" />
           </radialGradient>
           <filter id="vgb-odd-shadow" x="-60%" y="-60%" width="220%" height="220%">
-            <feDropShadow dx="0" dy="6" stdDeviation="6" floodColor="#9A5A16" floodOpacity="0.25" />
+            <feDropShadow dx="0" dy="6" stdDeviation="6" floodColor="#8A5A16" floodOpacity="0.25" />
           </filter>
         </defs>
         <rect width="320" height="140" fill="url(#vgb-odd-bg)" />
-        <g opacity="0.5" fill="#E3B27E">
+        <g opacity="0.5" fill="#E8C98A">
           <circle cx="58" cy="48" r="10" /><circle cx="92" cy="32" r="10" /><circle cx="58" cy="100" r="10" />
           <circle cx="94" cy="118" r="10" /><circle cx="252" cy="42" r="10" /><circle cx="256" cy="102" r="10" />
         </g>
-        <rect x="150" y="50" width="32" height="32" rx="7" fill="#E8871A" transform="rotate(45 166 66)" />
+        <rect x="150" y="50" width="32" height="32" rx="7" fill="#E8A81A" transform="rotate(45 166 66)" />
         <g filter="url(#vgb-odd-shadow)">
-          <circle cx="166" cy="66" r="34" fill="url(#vgb-odd-glass)" stroke="#8A4A1A" strokeWidth="6" />
-          <rect x="187" y="88" width="15" height="46" rx="7.5" fill="#6B3D14" transform="rotate(42 194.5 111)" />
+          <circle cx="166" cy="66" r="34" fill="url(#vgb-odd-glass)" stroke="#A9720A" strokeWidth="6" />
+          <rect x="187" y="88" width="15" height="46" rx="7.5" fill="#7A5108" transform="rotate(42 194.5 111)" />
         </g>
         <path d="M148 50 a24 24 0 0 1 24 -14" fill="none" stroke="#FFFFFF" strokeWidth="4" strokeLinecap="round" opacity="0.65" />
       </>
@@ -301,9 +301,34 @@ function openCategoryPlayer(gameKey, categoryKey) {
 }
 
 export default function VocabularyGames({ query }) {
+  const [mainTab, setMainTab] = useState("games");
   const [gameKey, setGameKey] = useState(null);
   const [levelTab, setLevelTab] = useState(LEVEL_GROUPS[0]);
   const q = query.trim().toLowerCase();
+
+  function selectMainTab(tab) {
+    setMainTab(tab);
+    setGameKey(null);
+  }
+
+  const tabBar = (
+    <div className="vg-maintabs">
+      <button
+        type="button"
+        className={`vg-maintab ${mainTab === "lessons" ? "is-active" : ""}`}
+        onClick={() => selectMainTab("lessons")}
+      >
+        Lessons
+      </button>
+      <button
+        type="button"
+        className={`vg-maintab ${mainTab === "games" ? "is-active" : ""}`}
+        onClick={() => selectMainTab("games")}
+      >
+        Games
+      </button>
+    </div>
+  );
 
   // Browser back/forward drives navigation instead of an in-page back
   // button — each drill-down pushes a history entry, popping it here
@@ -345,7 +370,7 @@ export default function VocabularyGames({ query }) {
         <div className="vg-page">
           <div className="vg-hero">
             <span className="vg-eyebrow">Sentivo · Vocabulary</span>
-            <h1><span className="vg-pill">🗂️ Word Bank</span></h1>
+            <h1><span className="vg-pill">🐬 Word Bank</span></h1>
             <p className="vg-blurb">Results for "{query.trim()}"</p>
           </div>
           <div className="vg-row"></div>
@@ -378,6 +403,28 @@ export default function VocabularyGames({ query }) {
     );
   }
 
+  if (mainTab === "lessons") {
+    return (
+      <div className="vg-shell">
+        <style>{CSS}</style>
+        <div className="vg-page">
+          <div className="vg-hero">
+            <span className="vg-eyebrow">Sentivo · Vocabulary</span>
+            <h1><span className="vg-pill">🐬 Word Bank</span></h1>
+            <p className="vg-blurb">Guided vocabulary lessons, alongside the games.</p>
+          </div>
+          {tabBar}
+          <div className="vg-row"></div>
+          <div className="vg-empty">
+            <span className="vg-empty-icon">🐚</span>
+            <h3 className="vg-empty-title">Lessons are diving in soon</h3>
+            <p className="vg-empty-text">We're building guided vocabulary lessons to go with the games. Check back soon.</p>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   if (game) {
     return (
       <div className="vg-shell">
@@ -388,6 +435,7 @@ export default function VocabularyGames({ query }) {
             <h1><span className="vg-pill">{game.icon} {game.title}</span></h1>
             <p className="vg-blurb">{game.blurb}</p>
           </div>
+          {tabBar}
           <div className="vg-row"></div>
 
           {hasLevelGroups ? (
@@ -456,9 +504,10 @@ export default function VocabularyGames({ query }) {
       <div className="vg-page">
         <div className="vg-hero">
           <span className="vg-eyebrow">Sentivo · Vocabulary</span>
-          <h1><span className="vg-pill">🗂️ Word Bank</span></h1>
+          <h1><span className="vg-pill">🐬 Word Bank</span></h1>
           <p className="vg-blurb">Quick one-on-one vocabulary games. Pick a type, then a category.</p>
         </div>
+        {tabBar}
         <div className="vg-row"></div>
 
         <div className="vg-block-grid">
@@ -479,9 +528,9 @@ export default function VocabularyGames({ query }) {
 }
 
 const CSS = `
-@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&family=Quicksand:wght@500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Grandstander:wght@600;700;800&family=Mulish:wght@500;600;700;800&display=swap');
 
-.vg-shell { width: 100%; font-family: 'Quicksand', sans-serif; }
+.vg-shell { width: 100%; font-family: 'Mulish', sans-serif; }
 .vg-shell * { box-sizing: border-box; }
 
 .vg-page {
@@ -489,42 +538,70 @@ const CSS = `
   width: 100%;
   max-width: 1080px;
   margin: 0 auto;
-  border-radius: 22px;
+  border-radius: 28px;
   padding: clamp(24px, 3.4vw, 40px) clamp(18px, 3vw, 32px) clamp(30px, 4vw, 44px);
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: linear-gradient(180deg, #FCF9F1 0%, #F5EDD8 100%);
+  background: linear-gradient(180deg, #EAF8F6 0%, #D6F1EC 100%);
+  overflow: hidden;
 }
+.vg-page::before, .vg-page::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.5);
+  pointer-events: none;
+}
+.vg-page::before { width: 60px; height: 60px; top: 18px; left: 6%; }
+.vg-page::after { width: 26px; height: 26px; top: 70px; left: 12%; }
 
-.vg-hero { text-align: center; }
+.vg-hero { text-align: center; position: relative; z-index: 1; }
 .vg-eyebrow {
   display: block;
-  font-family: 'SF Mono', 'Menlo', Consolas, monospace;
+  font-family: 'Mulish', sans-serif;
+  font-weight: 800;
   font-size: 11px;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: #96721B;
+  color: #0E6E7C;
   margin-bottom: 12px;
 }
 .vg-pill {
   display: inline-block;
-  font-family: 'Fredoka', sans-serif;
+  font-family: 'Grandstander', cursive;
   font-weight: 700;
   font-size: clamp(24px, 3.4vw, 34px);
-  color: #2B2A4A;
-  background: rgba(184,140,26,0.16);
+  color: #0E6E7C;
+  background: rgba(255,255,255,0.55);
   border-radius: 999px;
   padding: 8px 26px;
 }
-.vg-blurb { font-size: 14px; color: #6B5A66; margin: 14px 0 0; }
+.vg-blurb { font-family: 'Mulish', sans-serif; font-weight: 700; font-size: 14px; color: #3E8E92; margin: 14px 0 0; }
 
-.vg-row { position: relative; height: 2px; width: 100%; max-width: 700px; margin: clamp(22px, 2.8vw, 32px) 0; background: #E8D6A0; }
-.vg-row::before, .vg-row::after { content: ""; position: absolute; top: -3px; width: 8px; height: 8px; border-radius: 50%; background: #B88C1A; }
+.vg-maintabs { display: flex; gap: 10px; margin-top: 22px; position: relative; z-index: 1; }
+.vg-maintab {
+  font-family: 'Grandstander', cursive;
+  font-weight: 700;
+  font-size: 14px;
+  color: #0E6E7C;
+  background: #FFFFFF;
+  border: none;
+  border-radius: 999px;
+  padding: 10px 26px;
+  cursor: pointer;
+  box-shadow: 0 4px 0 #BFE6E1;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.vg-maintab:hover { transform: translateY(-1px); }
+.vg-maintab.is-active { color: #FFFFFF; background: #FF6F59; box-shadow: 0 4px 0 #D14E3B; }
+
+.vg-row { position: relative; height: 2px; width: 100%; max-width: 700px; margin: clamp(22px, 2.8vw, 32px) 0; background: #BFE6E1; z-index: 1; }
+.vg-row::before, .vg-row::after { content: ""; position: absolute; top: -4px; width: 10px; height: 10px; border-radius: 50%; background: #4FD1A5; }
 .vg-row::before { left: 0; }
 .vg-row::after { right: 0; }
 
-.vg-block-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; max-width: 660px; margin: 0 auto; width: 100%; }
+.vg-block-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; max-width: 660px; margin: 0 auto; width: 100%; position: relative; z-index: 1; }
 .vg-block {
   display: flex;
   flex-direction: column;
@@ -532,41 +609,41 @@ const CSS = `
   text-align: left;
   background: #FFFFFF;
   border: none;
-  border-radius: 18px;
+  border-radius: 20px;
   padding: 0;
   cursor: pointer;
   overflow: hidden;
-  box-shadow: 0 10px 26px rgba(43,42,74,0.08);
+  box-shadow: 0 10px 0 rgba(14,110,124,0.08);
   transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
-.vg-block:hover { transform: translateY(-3px); box-shadow: 0 18px 34px rgba(43,42,74,0.14); }
+.vg-block:hover { transform: translateY(-3px); box-shadow: 0 14px 0 rgba(14,110,124,0.1); }
 .vg-banner { display: block; width: 100%; height: auto; }
 .vg-block-body { padding: 18px 20px 20px; }
-.vg-block-title { font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 18px; margin: 0 0 6px; color: #2B2A4A; }
-.vg-block-blurb { font-size: 13px; color: #6B6580; margin: 0 0 16px; line-height: 1.5; }
-.vg-block-cta { font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 12.5px; }
-.vg-block--pink .vg-block-cta { color: #D6396F; }
-.vg-block--purple .vg-block-cta { color: #7C5CFC; }
-.vg-block--green .vg-block-cta { color: #1F9D6E; }
-.vg-block--orange .vg-block-cta { color: #D97706; }
+.vg-block-title { font-family: 'Grandstander', cursive; font-weight: 700; font-size: 18px; margin: 0 0 6px; color: #123B40; }
+.vg-block-blurb { font-size: 13px; color: #4F8B90; margin: 0 0 16px; line-height: 1.5; font-weight: 600; }
+.vg-block-cta { font-family: 'Grandstander', cursive; font-weight: 700; font-size: 12.5px; }
+.vg-block--coral .vg-block-cta { color: #E85A3D; }
+.vg-block--teal .vg-block-cta { color: #0E6E7C; }
+.vg-block--seafoam .vg-block-cta { color: #1C8A68; }
+.vg-block--gold .vg-block-cta { color: #A9720A; }
 
-.vg-level-tabs { display: flex; gap: 8px; margin-bottom: 24px; flex-wrap: wrap; justify-content: center; }
+.vg-level-tabs { display: flex; gap: 8px; margin-bottom: 24px; flex-wrap: wrap; justify-content: center; position: relative; z-index: 1; }
 .vg-level-tab {
-  font-family: 'Fredoka', sans-serif;
-  font-weight: 600;
+  font-family: 'Grandstander', cursive;
+  font-weight: 700;
   font-size: 13px;
-  color: #6B5A66;
+  color: #3E8E92;
   background: #FFFFFF;
-  border: 1px solid #F5D3E1;
+  border: 1px solid #BFE6E1;
   border-radius: 999px;
   padding: 8px 20px;
   cursor: pointer;
   transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
 }
-.vg-level-tab:hover { border-color: #D6396F; color: #D6396F; }
-.vg-level-tab.is-active { background: #D6396F; border-color: #D6396F; color: #FFFFFF; }
+.vg-level-tab:hover { border-color: #FF6F59; color: #E85A3D; }
+.vg-level-tab.is-active { background: #FF6F59; border-color: #FF6F59; color: #FFFFFF; }
 
-.vg-cat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 260px)); gap: 18px; justify-content: center; width: 100%; }
+.vg-cat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 260px)); gap: 18px; justify-content: center; width: 100%; position: relative; z-index: 1; }
 .vg-cat-card {
   position: relative;
   display: flex;
@@ -574,21 +651,21 @@ const CSS = `
   align-items: flex-start;
   text-align: left;
   background: #FFFFFF;
-  border: 1px solid var(--vgc-border, #F5D3E1);
-  border-radius: 18px;
+  border: 1px solid var(--vgc-border, #BFE6E1);
+  border-radius: 20px;
   padding: 18px 18px 16px;
   cursor: pointer;
-  box-shadow: 0 10px 22px var(--vgc-shadow, rgba(210,74,124,0.10));
+  box-shadow: 0 9px 0 var(--vgc-shadow, rgba(14,110,124,0.08));
   transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
 }
-.vg-cat-card:hover:not(:disabled) { transform: translateY(-3px); box-shadow: 0 16px 32px var(--vgc-shadow-hover, rgba(210,74,124,0.18)); border-color: var(--vgc-accent, #D6396F); }
+.vg-cat-card:hover:not(:disabled) { transform: translateY(-3px); box-shadow: 0 13px 0 var(--vgc-shadow-hover, rgba(14,110,124,0.1)); border-color: var(--vgc-accent, #0E6E7C); }
 .vg-cat-card--soon { opacity: 0.55; cursor: default; }
 .vg-cat-card--soon:hover { transform: none; }
 
-.vg-cat-card--pink   { --vgc-accent: #D6396F; --vgc-icon-bg: rgba(214,57,111,0.12); --vgc-border: #F5D3E1; --vgc-shadow: rgba(210,74,124,0.10); --vgc-shadow-hover: rgba(210,74,124,0.18); }
-.vg-cat-card--purple { --vgc-accent: #7C5CFC; --vgc-icon-bg: rgba(124,92,252,0.14); --vgc-border: #E3D9FB; --vgc-shadow: rgba(90,60,200,0.10); --vgc-shadow-hover: rgba(90,60,200,0.18); }
-.vg-cat-card--green  { --vgc-accent: #1F9D6E; --vgc-icon-bg: rgba(31,157,110,0.14); --vgc-border: #CBEDDD; --vgc-shadow: rgba(15,120,80,0.10); --vgc-shadow-hover: rgba(15,120,80,0.18); }
-.vg-cat-card--orange { --vgc-accent: #D97706; --vgc-icon-bg: rgba(217,119,6,0.14); --vgc-border: #F7DFBC; --vgc-shadow: rgba(180,100,10,0.10); --vgc-shadow-hover: rgba(180,100,10,0.18); }
+.vg-cat-card--coral   { --vgc-accent: #E85A3D; --vgc-icon-bg: rgba(232,90,61,0.14); --vgc-border: #FFD9CC; --vgc-shadow: rgba(200,70,45,0.10); --vgc-shadow-hover: rgba(200,70,45,0.16); }
+.vg-cat-card--teal    { --vgc-accent: #0E6E7C; --vgc-icon-bg: rgba(14,110,124,0.14); --vgc-border: #BFE6E1; --vgc-shadow: rgba(14,110,124,0.10); --vgc-shadow-hover: rgba(14,110,124,0.16); }
+.vg-cat-card--seafoam { --vgc-accent: #1C8A68; --vgc-icon-bg: rgba(28,138,104,0.14); --vgc-border: #C3EEDD; --vgc-shadow: rgba(20,107,78,0.10); --vgc-shadow-hover: rgba(20,107,78,0.16); }
+.vg-cat-card--gold    { --vgc-accent: #A9720A; --vgc-icon-bg: rgba(255,203,76,0.24); --vgc-border: #FCE4B0; --vgc-shadow: rgba(154,90,22,0.10); --vgc-shadow-hover: rgba(154,90,22,0.16); }
 
 .vg-cat-top { display: flex; align-items: center; justify-content: space-between; width: 100%; margin-bottom: 12px; }
 .vg-cat-icon {
@@ -596,37 +673,54 @@ const CSS = `
   height: 32px;
   flex-shrink: 0;
   border-radius: 10px;
-  background: var(--vgc-icon-bg, rgba(214,57,111,0.12));
+  background: var(--vgc-icon-bg, rgba(14,110,124,0.12));
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 15px;
 }
-.vg-cat-card--soon .vg-cat-icon { background: rgba(154,147,168,0.14); filter: grayscale(1); opacity: 0.7; }
+.vg-cat-card--soon .vg-cat-icon { background: rgba(79,139,144,0.14); filter: grayscale(1); opacity: 0.7; }
 .vg-cat-tag {
   font-size: 9.5px;
   font-weight: 800;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--vgc-accent, #D6396F);
-  background: var(--vgc-icon-bg, rgba(214,57,111,0.10));
+  color: var(--vgc-accent, #0E6E7C);
+  background: var(--vgc-icon-bg, rgba(14,110,124,0.10));
   border-radius: 999px;
   padding: 4px 10px;
 }
-.vg-cat-card--soon .vg-cat-tag { color: #9A93A8; background: rgba(154,147,168,0.12); }
-.vg-cat-title { font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 16.5px; color: #2B2A4A; margin-bottom: 6px; line-height: 1.25; }
-.vg-cat-blurb { font-size: 12.5px; color: #7A7391; line-height: 1.45; margin-bottom: 18px; }
+.vg-cat-card--soon .vg-cat-tag { color: #6B9EA1; background: rgba(79,139,144,0.12); }
+.vg-cat-title { font-family: 'Grandstander', cursive; font-weight: 700; font-size: 16.5px; color: #123B40; margin-bottom: 6px; line-height: 1.25; }
+.vg-cat-blurb { font-size: 12.5px; color: #4F8B90; line-height: 1.45; margin-bottom: 18px; font-weight: 600; }
 .vg-cat-cta {
   margin-top: auto;
   align-self: flex-start;
-  font-family: 'Fredoka', sans-serif;
+  font-family: 'Grandstander', cursive;
   font-weight: 700;
   font-size: 12px;
   color: #FFFFFF;
-  background: var(--vgc-accent, #D6396F);
+  background: var(--vgc-accent, #0E6E7C);
   border-radius: 999px;
   padding: 7px 15px;
 }
+
+.vg-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background: #FFFFFF;
+  border-radius: 24px;
+  padding: 40px 32px;
+  max-width: 380px;
+  box-shadow: 0 9px 0 rgba(14,110,124,0.08);
+  position: relative;
+  z-index: 1;
+}
+.vg-empty-icon { font-size: 34px; margin-bottom: 12px; }
+.vg-empty-title { font-family: 'Grandstander', cursive; font-weight: 700; font-size: 18px; color: #123B40; margin: 0 0 8px; }
+.vg-empty-text { font-size: 13px; color: #4F8B90; line-height: 1.55; margin: 0; font-weight: 600; }
 
 @media (max-width: 560px) {
   .vg-block-grid, .vg-cat-grid { grid-template-columns: 1fr; }
