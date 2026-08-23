@@ -358,6 +358,15 @@ export const VOCAB_LESSONS = [
     href: "/library/vocabulary/lessons/tricky-uncountables",
     ready: true,
   },
+  {
+    key: "collocations",
+    title: "Collocations",
+    icon: "🤝",
+    hue: "rose",
+    blurb: "make a decision, do homework, take a break — pick the verb that actually goes with it.",
+    href: "/library/vocabulary/lessons/collocations",
+    ready: true,
+  },
 ];
 
 function openLessonPlayer(href) {
@@ -757,6 +766,7 @@ const CSS = `
 .vg-cat-card--gold    { --vgc-accent: #A9720A; --vgc-icon-bg: rgba(255,203,76,0.24); --vgc-border: #FCE4B0; --vgc-shadow: rgba(154,90,22,0.10); --vgc-shadow-hover: rgba(154,90,22,0.16); }
 .vg-cat-card--sky     { --vgc-accent: #3E7CB8; --vgc-icon-bg: rgba(62,124,184,0.14); --vgc-border: #C7DCF0; --vgc-shadow: rgba(30,90,140,0.10); --vgc-shadow-hover: rgba(30,90,140,0.16); }
 .vg-cat-card--violet  { --vgc-accent: #6B5CA5; --vgc-icon-bg: rgba(107,92,165,0.14); --vgc-border: #DCD6F0; --vgc-shadow: rgba(70,55,130,0.10); --vgc-shadow-hover: rgba(70,55,130,0.16); }
+.vg-cat-card--rose    { --vgc-accent: #C2447A; --vgc-icon-bg: rgba(194,68,122,0.14); --vgc-border: #F4D2E2; --vgc-shadow: rgba(150,40,90,0.10); --vgc-shadow-hover: rgba(150,40,90,0.16); }
 
 .vg-cat-top { display: flex; align-items: center; justify-content: space-between; width: 100%; margin-bottom: 12px; }
 .vg-cat-icon {
