@@ -179,6 +179,7 @@ import HomophonesLesson from './HomophonesLesson.jsx'
 import NearSynonymNuanceLesson from './NearSynonymNuanceLesson.jsx'
 import WordFamiliesLesson from './WordFamiliesLesson.jsx'
 import ConfusablePairsLesson from './ConfusablePairsLesson.jsx'
+import TrickyUncountablesLesson from './TrickyUncountablesLesson.jsx'
 import PartsOfSpeechTrack from './PartsOfSpeechTrack.jsx'
 import PartsOfSpeechLesson from './PartsOfSpeechLesson.jsx'
 import Shift from './Shift.jsx'
@@ -214,6 +215,7 @@ createRoot(document.getElementById('root')).render(
             <Route path="/library/vocabulary/lessons/near-synonym-nuance" element={<NearSynonymNuanceLesson />} />
             <Route path="/library/vocabulary/lessons/word-families" element={<WordFamiliesLesson />} />
             <Route path="/library/vocabulary/lessons/confusable-pairs" element={<ConfusablePairsLesson />} />
+            <Route path="/library/vocabulary/lessons/tricky-uncountables" element={<TrickyUncountablesLesson />} />
             <Route path="/library/writing/:typeKey/:topicKey/player" element={<WritingPlayerPage />} />
             <Route path="/library/notebook" element={<NotebookHub />} />
             <Route path="/library/feedback" element={<FeedbackGenerator />} />
