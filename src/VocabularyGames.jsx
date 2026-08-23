@@ -320,6 +320,14 @@ export const VOCAB_LESSONS = [
     href: "/library/vocabulary/lessons/homophones",
     ready: true,
   },
+  {
+    key: "near-synonym-nuance",
+    title: "Near-Synonym Nuance",
+    icon: "🎚️",
+    blurb: "big, huge, enormous — same rough meaning, different strength. Rank them, then check.",
+    href: "/library/vocabulary/lessons/near-synonym-nuance",
+    ready: true,
+  },
 ];
 
 function openLessonPlayer(href) {

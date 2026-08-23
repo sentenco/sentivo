@@ -176,6 +176,7 @@ import PunctuationEssentialsTrack from './PunctuationEssentialsTrack.jsx'
 import PunctuationEssentialsLesson from './PunctuationEssentialsLesson.jsx'
 import StressShiftLesson from './StressShiftLesson.jsx'
 import HomophonesLesson from './HomophonesLesson.jsx'
+import NearSynonymNuanceLesson from './NearSynonymNuanceLesson.jsx'
 import PartsOfSpeechTrack from './PartsOfSpeechTrack.jsx'
 import PartsOfSpeechLesson from './PartsOfSpeechLesson.jsx'
 import Shift from './Shift.jsx'
@@ -208,6 +209,7 @@ createRoot(document.getElementById('root')).render(
             <Route path="/library/vocabulary/:gameKey/:categoryKey/player" element={<VocabularyPlayerPage />} />
             <Route path="/library/vocabulary/lessons/stress-shift" element={<StressShiftLesson />} />
             <Route path="/library/vocabulary/lessons/homophones" element={<HomophonesLesson />} />
+            <Route path="/library/vocabulary/lessons/near-synonym-nuance" element={<NearSynonymNuanceLesson />} />
             <Route path="/library/writing/:typeKey/:topicKey/player" element={<WritingPlayerPage />} />
             <Route path="/library/notebook" element={<NotebookHub />} />
             <Route path="/library/feedback" element={<FeedbackGenerator />} />
