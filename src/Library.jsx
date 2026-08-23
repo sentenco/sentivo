@@ -359,6 +359,7 @@ const GRAMMAR_MODULES = [
   { num: "BED 11", banner: "reportedSpeech", title: "Reported Speech", spec: "Backshift, say vs tell, time/place changes, reported questions, commands, and exceptions to backshift, across 5 lessons. A1–C2.", href: "/library/grammar/reported-speech", ready: true, hue: "navy" },
   { num: "BED 12", banner: "relativeClauses", title: "Relative Clauses", spec: "Who/which/that, whose/where/when, non-defining clauses, and reducing clauses to phrases, across 4 lessons. A1–C2.", href: "/library/grammar/relative-clauses", ready: true, hue: "slate" },
   { num: "BED 13", banner: "gerundsInfinitives", title: "Gerunds & Infinitives", spec: "Verbs that take a gerund, verbs that take an infinitive, verbs that take either, gerunds as nouns, and the infinitive of purpose, across 4 lessons. A1–C2.", href: "/library/grammar/gerunds-infinitives", ready: true, hue: "khaki" },
+  { num: "BED 14", banner: "prepositions", title: "Prepositions", spec: "Place, time, movement, prepositions after verbs and adjectives, and by/with/without, across 6 lessons. A1–C2.", href: "/library/grammar/prepositions", ready: true, hue: "crimson" },
 ];
 
 const SPEAKING_TRACKS = [
@@ -2517,6 +2518,7 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   --navy: #2C4870; --navy-deep: #1C304E;
   --slate: #55707F; --slate-deep: #3C5158;
   --khaki: #96762B; --khaki-deep: #6E5A1F;
+  --crimson: #B23A3A; --crimson-deep: #832929;
   width: 100%;
   max-width: 1080px;
   margin: 0 auto;
@@ -2598,6 +2600,7 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .gdn-bed--navy { background: linear-gradient(155deg, #6E88AC 0%, var(--navy) 100%); }
 .gdn-bed--slate { background: linear-gradient(155deg, #93ADB9 0%, var(--slate) 100%); }
 .gdn-bed--khaki { background: linear-gradient(155deg, #D3B85E 0%, var(--khaki) 100%); }
+.gdn-bed--crimson { background: linear-gradient(155deg, #E08A8A 0%, var(--crimson) 100%); }
 
 .gdn-bed-title {
   font-family: 'Bangers', cursive;

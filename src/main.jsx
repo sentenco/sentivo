@@ -140,6 +140,8 @@ import RelativeClausesTrack from './RelativeClausesTrack.jsx'
 import RelativeClausesLesson from './RelativeClausesLesson.jsx'
 import GerundsInfinitivesTrack from './GerundsInfinitivesTrack.jsx'
 import GerundsInfinitivesLesson from './GerundsInfinitivesLesson.jsx'
+import PrepositionsTrack from './PrepositionsTrack.jsx'
+import PrepositionsLesson from './PrepositionsLesson.jsx'
 import PartsOfSpeechTrack from './PartsOfSpeechTrack.jsx'
 import PartsOfSpeechLesson from './PartsOfSpeechLesson.jsx'
 import Shift from './Shift.jsx'
@@ -303,6 +305,8 @@ createRoot(document.getElementById('root')).render(
             <Route path="/library/grammar/relative-clauses/:code" element={<RelativeClausesLesson />} />
             <Route path="/library/grammar/gerunds-infinitives" element={<GerundsInfinitivesTrack />} />
             <Route path="/library/grammar/gerunds-infinitives/:code" element={<GerundsInfinitivesLesson />} />
+            <Route path="/library/grammar/prepositions" element={<PrepositionsTrack />} />
+            <Route path="/library/grammar/prepositions/:code" element={<PrepositionsLesson />} />
             <Route path="/library/shift" element={<ShiftHub />} />
             <Route path="/library/shift/:trackId" element={<ShiftTrack />} />
             <Route path="/library/shift/:trackId/:lessonNum" element={<Shift />} />
