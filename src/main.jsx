@@ -170,6 +170,8 @@ import GetPassiveBePassiveLesson from './GetPassiveBePassiveLesson.jsx'
 import IrregularForeignPluralsLesson from './IrregularForeignPluralsLesson.jsx'
 import MandativeSubjunctiveLesson from './MandativeSubjunctiveLesson.jsx'
 import WhomLesson from './WhomLesson.jsx'
+import ParallelStructureLesson from './ParallelStructureLesson.jsx'
+import NominalizationLesson from './NominalizationLesson.jsx'
 import PartsOfSpeechTrack from './PartsOfSpeechTrack.jsx'
 import PartsOfSpeechLesson from './PartsOfSpeechLesson.jsx'
 import Shift from './Shift.jsx'
@@ -363,6 +365,8 @@ createRoot(document.getElementById('root')).render(
             <Route path="/library/grammar/irregular-foreign-plurals" element={<IrregularForeignPluralsLesson />} />
             <Route path="/library/grammar/mandative-subjunctive" element={<MandativeSubjunctiveLesson />} />
             <Route path="/library/grammar/whom" element={<WhomLesson />} />
+            <Route path="/library/grammar/parallel-structure" element={<ParallelStructureLesson />} />
+            <Route path="/library/grammar/nominalization" element={<NominalizationLesson />} />
             <Route path="/library/shift" element={<ShiftHub />} />
             <Route path="/library/shift/:trackId" element={<ShiftTrack />} />
             <Route path="/library/shift/:trackId/:lessonNum" element={<Shift />} />

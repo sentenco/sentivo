@@ -388,6 +388,8 @@ const GRAMMAR_MODULES = [
   { num: "BED 40", banner: "irregularForeignPlurals", title: "Irregular & Foreign Plurals", spec: "Cactus/cacti, criterion/criteria, phenomenon/phenomena — even fluent speakers get these wrong.", href: "/library/grammar/irregular-foreign-plurals", ready: true, hue: "soil", icon: "🌵", tier: "extras" },
   { num: "BED 41", banner: "mandativeSubjunctive", title: "The Mandative Subjunctive", spec: "'I suggest he arrive early' — a verb form that quietly drops the -s and nobody notices.", href: "/library/grammar/mandative-subjunctive", ready: true, hue: "sky", icon: "📢", tier: "extras" },
   { num: "BED 42", banner: "whom", title: "Whom", spec: "Why English kept this fossil from Old English, and the practical rule for when you can just skip it.", href: "/library/grammar/whom", ready: true, hue: "berry", icon: "👻", tier: "extras" },
+  { num: "BED 43", banner: "parallelStructure", title: "Parallel Structure", spec: "'I like swimming, running, and to bike' should be '...and biking' — keeping list and comparison items matching.", href: "/library/grammar/parallel-structure", ready: true, hue: "violet", icon: "📏", tier: "extras" },
+  { num: "BED 44", banner: "nominalization", title: "Nominalization for Formal Writing", spec: "Decide becomes decision, different becomes difference — turning verbs and adjectives into nouns for a formal register.", href: "/library/grammar/nominalization", ready: true, hue: "teal", icon: "📜", tier: "extras" },
 ];
 
 const SPEAKING_TRACKS = [
