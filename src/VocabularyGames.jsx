@@ -166,6 +166,124 @@ function GameBanner({ name }) {
   );
 }
 
+function LessonBanner({ name }) {
+  const banners = {
+    // A little sound-bar rhythm with one bar standing tall and bright --
+    // stress landing on one syllable, the rest sitting quiet.
+    "stress-shift": (
+      <>
+        <defs>
+          <linearGradient id="vlb-stress-bg" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stopColor="#FFE1DA" />
+            <stop offset="1" stopColor="#FFC5B4" />
+          </linearGradient>
+          <linearGradient id="vlb-stress-bar" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stopColor="#FF9376" />
+            <stop offset="1" stopColor="#E85A3D" />
+          </linearGradient>
+          <filter id="vlb-stress-shadow" x="-40%" y="-40%" width="180%" height="180%">
+            <feDropShadow dx="0" dy="5" stdDeviation="6" floodColor="#C1451F" floodOpacity="0.22" />
+          </filter>
+        </defs>
+        <rect width="320" height="140" fill="url(#vlb-stress-bg)" />
+        <g filter="url(#vlb-stress-shadow)">
+          <rect x="96" y="82" width="26" height="30" rx="8" fill="#FFFFFF" opacity="0.85" />
+          <rect x="147" y="34" width="26" height="78" rx="8" fill="url(#vlb-stress-bar)" />
+          <rect x="198" y="70" width="26" height="42" rx="8" fill="#FFFFFF" opacity="0.85" />
+        </g>
+        <circle cx="160" cy="20" r="4" fill="#B8391F" opacity="0.5" />
+        <path d="M150 22 Q160 12 170 22" fill="none" stroke="#B8391F" strokeWidth="2.5" strokeLinecap="round" opacity="0.6" />
+      </>
+    ),
+    // An ear catching two identical sound arcs -- the same sound landing
+    // on two different spellings.
+    homophones: (
+      <>
+        <defs>
+          <linearGradient id="vlb-homo-bg" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stopColor="#FFF3D9" />
+            <stop offset="1" stopColor="#FCE4B0" />
+          </linearGradient>
+          <filter id="vlb-homo-shadow" x="-40%" y="-40%" width="180%" height="180%">
+            <feDropShadow dx="0" dy="5" stdDeviation="6" floodColor="#8A5A16" floodOpacity="0.22" />
+          </filter>
+        </defs>
+        <rect width="320" height="140" fill="url(#vlb-homo-bg)" />
+        <g filter="url(#vlb-homo-shadow)">
+          <path d="M150 40 C130 40 118 58 118 76 C118 96 132 106 138 118 L152 112 C146 100 138 92 138 76 C138 64 144 54 156 54 C168 54 176 64 176 76 C176 88 168 96 168 96 L180 104 C186 92 190 84 190 76 C190 54 174 40 150 40 Z" fill="#E8A81A" />
+        </g>
+        <path d="M198 60 Q212 76 198 92" fill="none" stroke="#A9720A" strokeWidth="4" strokeLinecap="round" opacity="0.55" />
+        <path d="M214 48 Q236 76 214 104" fill="none" stroke="#A9720A" strokeWidth="4" strokeLinecap="round" opacity="0.4" />
+        <circle cx="90" cy="46" r="9" fill="#FFFFFF" opacity="0.7" />
+        <circle cx="76" cy="98" r="6" fill="#FFFFFF" opacity="0.6" />
+      </>
+    ),
+    // A gradient scale with three dots climbing in size -- mild to
+    // strong, the whole idea of near-synonym intensity in one shape.
+    "near-synonym-nuance": (
+      <>
+        <defs>
+          <linearGradient id="vlb-nuance-bg" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stopColor="#DFF7EF" />
+            <stop offset="1" stopColor="#C3EEDD" />
+          </linearGradient>
+          <linearGradient id="vlb-nuance-track" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stopColor="#9FE0C4" />
+            <stop offset="1" stopColor="#1C8A68" />
+          </linearGradient>
+          <filter id="vlb-nuance-shadow" x="-40%" y="-40%" width="180%" height="180%">
+            <feDropShadow dx="0" dy="4" stdDeviation="5" floodColor="#146B4E" floodOpacity="0.22" />
+          </filter>
+        </defs>
+        <rect width="320" height="140" fill="url(#vlb-nuance-bg)" />
+        <rect x="70" y="72" width="180" height="10" rx="5" fill="url(#vlb-nuance-track)" opacity="0.9" />
+        <g filter="url(#vlb-nuance-shadow)">
+          <circle cx="90" cy="77" r="10" fill="#FFFFFF" />
+          <circle cx="160" cy="77" r="15" fill="#FFFFFF" />
+          <circle cx="230" cy="77" r="20" fill="#FFFFFF" />
+        </g>
+        <circle cx="90" cy="77" r="5" fill="#4FD1A5" />
+        <circle cx="160" cy="77" r="7.5" fill="#2FAE85" />
+        <circle cx="230" cy="77" r="10" fill="#146B4E" />
+      </>
+    ),
+    // One root circle branching up into four leaf-nodes -- a single
+    // family tree of word forms.
+    "word-families": (
+      <>
+        <defs>
+          <linearGradient id="vlb-family-bg" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stopColor="#E1F3F3" />
+            <stop offset="1" stopColor="#C5E8E6" />
+          </linearGradient>
+          <filter id="vlb-family-shadow" x="-40%" y="-40%" width="180%" height="180%">
+            <feDropShadow dx="0" dy="4" stdDeviation="5" floodColor="#0E6E7C" floodOpacity="0.22" />
+          </filter>
+        </defs>
+        <rect width="320" height="140" fill="url(#vlb-family-bg)" />
+        <g stroke="#7FC7C2" strokeWidth="3" fill="none" opacity="0.8">
+          <path d="M160 100 L110 46" />
+          <path d="M160 100 L148 40" />
+          <path d="M160 100 L192 40" />
+          <path d="M160 100 L210 46" />
+        </g>
+        <g filter="url(#vlb-family-shadow)">
+          <circle cx="160" cy="106" r="20" fill="#0E6E7C" />
+        </g>
+        <circle cx="110" cy="40" r="12" fill="#4FD1A5" />
+        <circle cx="148" cy="32" r="12" fill="#FF9376" />
+        <circle cx="192" cy="32" r="12" fill="#FFCB4C" />
+        <circle cx="210" cy="40" r="12" fill="#7C9CF5" />
+      </>
+    ),
+  };
+  return (
+    <svg className="vg-banner" viewBox="0 0 320 140" xmlns="http://www.w3.org/2000/svg">
+      {banners[name] || <rect width="320" height="140" fill="#EDE7F6" />}
+    </svg>
+  );
+}
+
 const LEVEL_GROUPS = ["A1-A2", "B1-B2", "C1-C2"];
 
 // Shared topic lists (key/title only), one per level -- used by both
@@ -307,7 +425,7 @@ export const VOCAB_LESSONS = [
   {
     key: "stress-shift",
     title: "Stress-Shift Word Pairs",
-    icon: "🗣️",
+    hue: "coral",
     blurb: "record vs record — same spelling, the stress moves and the meaning changes.",
     href: "/library/vocabulary/lessons/stress-shift",
     ready: true,
@@ -315,7 +433,7 @@ export const VOCAB_LESSONS = [
   {
     key: "homophones",
     title: "Homophones",
-    icon: "👂",
+    hue: "gold",
     blurb: "their, there, they're — they sound identical. Only the spelling tells them apart.",
     href: "/library/vocabulary/lessons/homophones",
     ready: true,
@@ -323,9 +441,17 @@ export const VOCAB_LESSONS = [
   {
     key: "near-synonym-nuance",
     title: "Near-Synonym Nuance",
-    icon: "🎚️",
+    hue: "seafoam",
     blurb: "big, huge, enormous — same rough meaning, different strength. Rank them, then check.",
     href: "/library/vocabulary/lessons/near-synonym-nuance",
+    ready: true,
+  },
+  {
+    key: "word-families",
+    title: "Word Families",
+    hue: "teal",
+    blurb: "decide, decision, decisive, decisively — one root, four jobs. Match them to their slot.",
+    href: "/library/vocabulary/lessons/word-families",
     ready: true,
   },
 ];
@@ -460,22 +586,21 @@ export default function VocabularyGames({ query }) {
           </div>
           {tabBar}
           <div className="vg-row"></div>
-          <div className="vg-cat-grid">
+          <div className="vg-block-grid">
             {VOCAB_LESSONS.map((l) => (
               <button
                 key={l.key}
                 type="button"
-                className={`vg-cat-card vg-cat-card--teal ${l.ready ? "" : "vg-cat-card--soon"}`}
+                className={`vg-block vg-block--${l.hue} ${l.ready ? "" : "vg-block--soon"}`}
                 onClick={() => l.ready && openLessonPlayer(l.href)}
                 disabled={!l.ready}
               >
-                <div className="vg-cat-top">
-                  <span className="vg-cat-icon">{l.icon}</span>
-                  <span className="vg-cat-tag">{l.ready ? "Ready" : "Coming soon"}</span>
+                <LessonBanner name={l.key} />
+                <div className="vg-block-body">
+                  <h3 className="vg-block-title">{l.title}</h3>
+                  <p className="vg-block-blurb">{l.blurb}</p>
+                  <span className="vg-block-cta">{l.ready ? "Learn →" : "Coming soon"}</span>
                 </div>
-                <span className="vg-cat-title">{l.title}</span>
-                <span className="vg-cat-blurb">{l.blurb}</span>
-                {l.ready && <span className="vg-cat-cta">Learn →</span>}
               </button>
             ))}
           </div>
@@ -676,6 +801,9 @@ const CSS = `
   transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 .vg-block:hover { transform: translateY(-3px); box-shadow: 0 14px 0 rgba(14,110,124,0.1); }
+.vg-block--soon { opacity: 0.55; cursor: default; }
+.vg-block--soon:hover { transform: none; }
+.vg-block--soon .vg-banner { filter: grayscale(1); }
 .vg-banner { display: block; width: 100%; height: auto; }
 .vg-block-body { padding: 18px 20px 20px; }
 .vg-block-title { font-family: 'Grandstander', cursive; font-weight: 700; font-size: 18px; margin: 0 0 6px; color: #123B40; }
