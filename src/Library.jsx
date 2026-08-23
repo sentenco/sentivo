@@ -2837,7 +2837,7 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 }
 
 /* ---------- Reading: Bookshelf ---------- */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,500;1,600&family=DM+Sans:wght@500;700&family=Source+Serif+4:ital,wght@0,500;1,500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600;1,700&family=DM+Sans:wght@500;700&display=swap');
 
 .bkshf-page {
   width: 100%;
@@ -2859,10 +2859,10 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   margin-bottom: 12px;
 }
 .bkshf-nameplate {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Cormorant Garamond', serif;
   font-style: italic;
-  font-weight: 600;
-  font-size: clamp(34px, 4vw, 48px);
+  font-weight: 700;
+  font-size: clamp(40px, 4.6vw, 56px);
   letter-spacing: 0.01em;
   color: #2A1D12;
   margin: 0;
@@ -2897,16 +2897,16 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 
 .bkshf-empty { text-align: center; padding: 40px 20px 20px; }
 .bkshf-empty-icon { font-size: 34px; display: block; margin-bottom: 10px; }
-.bkshf-empty-title { font-family: 'Playfair Display', serif; font-style: italic; font-weight: 600; font-size: 18px; color: #2A1D12; margin: 0 0 4px; }
+.bkshf-empty-title { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 700; font-size: 21px; color: #2A1D12; margin: 0 0 4px; }
 .bkshf-empty-desc { font-family: 'DM Sans', sans-serif; font-size: 14px; color: #8A7457; margin: 0; }
 
 .bkshf-age-group { margin-bottom: clamp(20px, 2.6vw, 30px); }
 .bkshf-age-group:last-child { margin-bottom: 0; }
 .bkshf-age-label {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Cormorant Garamond', serif;
   font-style: italic;
-  font-weight: 600;
-  font-size: clamp(17px, 1.5vw, 20px);
+  font-weight: 700;
+  font-size: clamp(20px, 1.8vw, 24px);
   color: #2A1D12;
   text-align: center;
   margin-bottom: 16px;
@@ -2949,15 +2949,15 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .bkshf-ribbon { position: absolute; top: 0; right: 14px; width: 11px; height: 20px; z-index: 1; clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 76%, 0 100%); opacity: 0.85; }
 .bkshf-book-title {
   position: relative; z-index: 1;
-  font-family: 'Source Serif 4', serif;
+  font-family: 'Cormorant Garamond', serif;
   font-style: italic;
-  font-weight: 500;
-  font-size: clamp(11.5px, 1.1vw, 13.5px);
+  font-weight: 600;
+  font-size: clamp(13px, 1.25vw, 15.5px);
   margin: 0;
   color: #2A1D12;
   line-height: 1.3;
 }
-.bkshf-book-title--onimg { position: absolute; z-index: 1; left: 10px; right: 10px; bottom: 9px; margin: 0; font-size: clamp(11.5px, 1.1vw, 13.5px); color: #FFF8ED; text-align: left; }
+.bkshf-book-title--onimg { position: absolute; z-index: 1; left: 10px; right: 10px; bottom: 9px; margin: 0; font-size: clamp(13px, 1.25vw, 15.5px); color: #FFF8ED; text-align: left; }
 
 .bkshf-shelf-ledge {
   width: calc(100% + 40px);
