@@ -334,7 +334,7 @@ const CSS = `
 .noml-cover-title {
   font-family: 'Bangers', cursive;
   font-weight: 400;
-  font-size: 36px;
+  font-size: 54px;
   color: #1A1A1A;
   margin: 4px 0 0;
   line-height: 1.05;
