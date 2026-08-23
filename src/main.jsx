@@ -136,6 +136,8 @@ import ComparativesTrack from './ComparativesTrack.jsx'
 import ComparativesLesson from './ComparativesLesson.jsx'
 import ReportedSpeechTrack from './ReportedSpeechTrack.jsx'
 import ReportedSpeechLesson from './ReportedSpeechLesson.jsx'
+import RelativeClausesTrack from './RelativeClausesTrack.jsx'
+import RelativeClausesLesson from './RelativeClausesLesson.jsx'
 import PartsOfSpeechTrack from './PartsOfSpeechTrack.jsx'
 import PartsOfSpeechLesson from './PartsOfSpeechLesson.jsx'
 import Shift from './Shift.jsx'
@@ -295,6 +297,8 @@ createRoot(document.getElementById('root')).render(
             <Route path="/library/grammar/comparatives-superlatives/:code" element={<ComparativesLesson />} />
             <Route path="/library/grammar/reported-speech" element={<ReportedSpeechTrack />} />
             <Route path="/library/grammar/reported-speech/:code" element={<ReportedSpeechLesson />} />
+            <Route path="/library/grammar/relative-clauses" element={<RelativeClausesTrack />} />
+            <Route path="/library/grammar/relative-clauses/:code" element={<RelativeClausesLesson />} />
             <Route path="/library/shift" element={<ShiftHub />} />
             <Route path="/library/shift/:trackId" element={<ShiftTrack />} />
             <Route path="/library/shift/:trackId/:lessonNum" element={<Shift />} />

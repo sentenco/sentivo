@@ -1,0 +1,498 @@
+import { useState } from "react";
+import { useParams } from "react-router-dom";
+import LESSONS, { getLessonByCode } from "./rcTracks";
+
+function buildSlides(lesson) {
+  const slides = ["cover", "warmup"];
+  lesson.teach.forEach((_, i) => slides.push(`teach${i}`));
+  if (lesson.comparePairs) slides.push("compare");
+  if (lesson.guided) slides.push("guided");
+  slides.push("practice", "wrapup");
+  return slides;
+}
+
+function CoverSlide({ lesson }) {
+  return (
+    <div className="rcl-slide rcl-slide--cover">
+      <span className="rcl-kind-badge">Lesson Time!</span>
+      <h2 className="rcl-cover-title">{lesson.title}</h2>
+      <p className="rcl-cover-sub">Lesson {lesson.number} of {LESSONS.length}</p>
+      <span className="rcl-formula-chip">{lesson.formula}</span>
+    </div>
+  );
+}
+
+function WarmupSlide({ lesson }) {
+  return (
+    <div className="rcl-slide">
+      <span className="rcl-eyebrow">Warm-up</span>
+      <div className="rcl-bubble rcl-bubble--solo">
+        <p className="rcl-bubble-text rcl-bubble-text--big">“{lesson.leadIn}”</p>
+      </div>
+    </div>
+  );
+}
+
+function TeachSlide({ lesson, index }) {
+  const concept = lesson.teach[index];
+  return (
+    <div className="rcl-slide">
+      <h3 className="rcl-h">{concept.name}</h3>
+      <p className="rcl-definition">{concept.definition}</p>
+      <div className="rcl-example-list">
+        {concept.examples.map((ex, i) => (
+          <div key={i} className="rcl-bubble">
+            <p className="rcl-bubble-text">{ex}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function CompareSlide({ lesson }) {
+  return (
+    <div className="rcl-slide">
+      <h3 className="rcl-h">{lesson.compareLeftLabel} <span className="rcl-vs">vs</span> {lesson.compareRightLabel}</h3>
+      <p className="rcl-compare-note">{lesson.compareNote}</p>
+      <div className="rcl-compare-grid">
+        <div className="rcl-panel">
+          <span className="rcl-compare-label">{lesson.compareLeftLabel}</span>
+          {lesson.comparePairs.map((pair, i) => <p key={`l-${i}`} className="rcl-compare-line">{pair.left}</p>)}
+        </div>
+        <div className="rcl-panel rcl-panel--right">
+          <span className="rcl-compare-label">{lesson.compareRightLabel}</span>
+          {lesson.comparePairs.map((pair, i) => <p key={`r-${i}`} className="rcl-compare-line">{pair.right}</p>)}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function GuidedItem({ item }) {
+  const [shown, setShown] = useState(false);
+  return (
+    <div className="rcl-quiz-item">
+      <p className="rcl-quiz-q">{item.prompt}</p>
+      {shown ? (
+        <p className="rcl-reveal-correct">{item.answer}</p>
+      ) : (
+        <button type="button" className="rcl-reveal-btn" onClick={() => setShown(true)}>Show answer</button>
+      )}
+    </div>
+  );
+}
+
+function GuidedSlide({ lesson }) {
+  return (
+    <div className="rcl-slide rcl-slide--part">
+      <h3 className="rcl-h">Guided practice</h3>
+      <div className="rcl-quiz-list">
+        {lesson.guided.map((item, i) => <GuidedItem key={i} item={item} />)}
+      </div>
+    </div>
+  );
+}
+
+function PracticeSlide({ lesson }) {
+  return (
+    <div className="rcl-slide rcl-slide--part">
+      <h3 className="rcl-h">Speaking &amp; writing practice</h3>
+      <ul className="rcl-list rcl-speaking-list">
+        {lesson.practice.map((line, i) => <li key={i}>{line}</li>)}
+      </ul>
+    </div>
+  );
+}
+
+function WrapupSlide({ lesson }) {
+  return (
+    <div className="rcl-slide">
+      <h3 className="rcl-h">Wrap-up</h3>
+      <p className="rcl-definition">{lesson.wrapup}</p>
+      {lesson.nextHint && <p className="rcl-recap-line">Next: <strong>{lesson.nextHint}</strong></p>}
+    </div>
+  );
+}
+
+function renderSlide(slideType, lesson) {
+  if (slideType === "cover") return <CoverSlide lesson={lesson} />;
+  if (slideType === "warmup") return <WarmupSlide lesson={lesson} />;
+  if (slideType.startsWith("teach")) return <TeachSlide lesson={lesson} index={Number(slideType.replace("teach", ""))} />;
+  if (slideType === "compare") return <CompareSlide lesson={lesson} />;
+  if (slideType === "guided") return <GuidedSlide lesson={lesson} />;
+  if (slideType === "practice") return <PracticeSlide lesson={lesson} />;
+  if (slideType === "wrapup") return <WrapupSlide lesson={lesson} />;
+  return null;
+}
+
+export default function RelativeClausesLesson() {
+  const { code } = useParams();
+  const [slideIdx, setSlideIdx] = useState(0);
+  const lesson = getLessonByCode(code);
+
+  if (!lesson) {
+    return (
+      <div className="rcl-shell">
+        <style>{CSS}</style>
+        <div className="rcl-stage">
+          <p className="rcl-missing">This lesson isn't ready yet.</p>
+        </div>
+      </div>
+    );
+  }
+
+  const slideTypes = buildSlides(lesson);
+  const slideType = slideTypes[slideIdx];
+  const isFirst = slideIdx === 0;
+  const isLast = slideIdx === slideTypes.length - 1;
+
+  return (
+    <div className="rcl-shell">
+      <style>{CSS}</style>
+      <header className="rcl-topbar">
+        <span className="rcl-brand"><img src="/logo-sentivo.png" alt="" className="rcl-brand-logo" />entivo</span>
+        <span className="rcl-topbar-title">Lesson {lesson.number} · {lesson.title}</span>
+      </header>
+
+      <div className="rcl-stage">
+        <div className="rcl-deck">
+          <div className="rcl-deck-body" key={slideIdx}>
+            {renderSlide(slideType, lesson)}
+          </div>
+          <div className="rcl-nav-row">
+            <button type="button" className="rcl-nav-btn" onClick={() => setSlideIdx((i) => i - 1)} disabled={isFirst}>
+              ← Back
+            </button>
+            <div className="rcl-nav-dots">
+              {slideTypes.map((_, i) => (
+                <span key={i} className={`rcl-nav-dot ${i === slideIdx ? "is-active" : ""}`} />
+              ))}
+            </div>
+            <button
+              type="button"
+              className="rcl-nav-btn rcl-nav-btn--primary"
+              onClick={() => setSlideIdx((i) => i + 1)}
+              disabled={isLast}
+            >
+              Next →
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+const CSS = `
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:wght@400;700&family=Fredoka:wght@700&display=swap');
+
+.rcl-shell {
+  width: 100%;
+  height: 100vh;
+  background:
+    radial-gradient(#00000012 1.4px, transparent 1.5px) 0 0/16px 16px,
+    #EFF3F4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  overflow: hidden;
+  font-family: 'Comic Neue', cursive, sans-serif;
+}
+.rcl-shell * { box-sizing: border-box; }
+
+.rcl-topbar {
+  width: 100%;
+  max-width: 1120px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 24px 0;
+  flex-shrink: 0;
+}
+.rcl-brand {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: 0.01em;
+  color: #2B2A4A;
+}
+.rcl-brand-logo { height: 24px; width: auto; display: block; margin-right: -4px; }
+.rcl-topbar-title {
+  font-family: 'Comic Neue', cursive, sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.5px;
+  color: #3E535F;
+}
+
+.rcl-stage {
+  flex: 1;
+  width: 100%;
+  max-width: 1120px;
+  padding: 16px 24px 20px;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.rcl-missing {
+  font-family: 'Comic Neue', cursive, sans-serif;
+  color: #3E535F;
+  text-align: center;
+  margin-top: 60px;
+}
+
+.rcl-deck {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: #FFFFFF;
+  border: 4px solid #1A1A1A;
+  border-radius: 18px;
+  padding: 20px 56px;
+  box-shadow: 9px 9px 0 #1A1A1A;
+  min-height: 0;
+}
+
+.rcl-deck-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 0;
+  overflow-y: auto;
+  gap: 20px;
+  padding: 8px 0;
+}
+
+.rcl-slide { display: flex; flex-direction: column; align-items: center; gap: 16px; width: 100%; }
+.rcl-slide--cover { gap: 14px; }
+.rcl-slide--part { justify-content: flex-start; }
+
+.rcl-eyebrow {
+  font-family: 'Comic Neue', cursive, sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  color: #55707F;
+}
+
+.rcl-kind-badge {
+  font-family: 'Bangers', cursive;
+  font-weight: 400;
+  font-size: 18px;
+  letter-spacing: 0.5px;
+  color: #FFFFFF;
+  background: #55707F;
+  border: 3px solid #1A1A1A;
+  border-radius: 999px;
+  padding: 4px 18px 6px;
+  transform: rotate(-3deg);
+  display: inline-block;
+}
+.rcl-cover-title {
+  font-family: 'Bangers', cursive;
+  font-weight: 400;
+  font-size: 48px;
+  color: #1A1A1A;
+  margin: 4px 0 0;
+  line-height: 1.05;
+  letter-spacing: 1px;
+  text-shadow: 3px 3px 0 #55707F;
+}
+.rcl-cover-sub {
+  font-family: 'Comic Neue', cursive, sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  color: #8CA0AB;
+  margin: 0;
+}
+
+.rcl-formula-chip {
+  font-family: 'Comic Neue', cursive, sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  color: #55707F;
+  background: #EFF3F4;
+  border: 2.5px solid #55707F;
+  border-radius: 999px;
+  padding: 8px 20px;
+  margin-top: 4px;
+  max-width: 640px;
+}
+
+.rcl-h {
+  font-family: 'Bangers', cursive;
+  font-weight: 400;
+  font-size: 32px;
+  color: #1A1A1A;
+  margin: 0;
+  letter-spacing: 0.5px;
+}
+.rcl-vs {
+  display: inline-block;
+  background: #FFC300;
+  border: 2.5px solid #1A1A1A;
+  border-radius: 8px;
+  padding: 0 8px;
+  transform: rotate(-4deg);
+  font-size: 0.65em;
+  vertical-align: middle;
+}
+
+.rcl-definition {
+  font-family: 'Comic Neue', cursive, sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  color: #22303A;
+  line-height: 1.55;
+  margin: 0;
+  max-width: 700px;
+}
+
+.rcl-bubble {
+  position: relative;
+  background: #FFFFFF;
+  border: 3px solid #55707F;
+  border-radius: 18px;
+  padding: 12px 20px;
+  max-width: 560px;
+  align-self: center;
+}
+.rcl-bubble--solo { max-width: 720px; }
+.rcl-bubble-text {
+  font-family: 'Comic Neue', cursive, sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  color: #1A1A1A;
+  margin: 0;
+}
+.rcl-bubble-text--big { font-size: 24px; font-style: italic; }
+
+.rcl-example-list { display: flex; flex-direction: column; gap: 12px; width: 100%; max-width: 620px; align-items: center; }
+
+.rcl-compare-note {
+  font-family: 'Comic Neue', cursive, sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  color: #8CA0AB;
+  margin: 0;
+  max-width: 620px;
+}
+.rcl-compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; width: 100%; max-width: 700px; }
+.rcl-panel { background: #EFF3F4; border: 3px solid #1A1A1A; border-radius: 14px; padding: 14px 16px; text-align: left; }
+.rcl-panel--right { border-color: #55707F; }
+.rcl-compare-label {
+  display: block;
+  font-family: 'Bangers', cursive;
+  font-weight: 400;
+  font-size: 15px;
+  letter-spacing: 0.3px;
+  color: #3E535F;
+  margin-bottom: 8px;
+}
+.rcl-compare-line {
+  font-family: 'Comic Neue', cursive, sans-serif;
+  font-weight: 700;
+  font-size: 14.5px;
+  color: #1A1A1A;
+  margin: 0 0 8px;
+}
+
+.rcl-list {
+  font-family: 'Comic Neue', cursive, sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  color: #22303A;
+  line-height: 1.6;
+  margin: 0;
+  padding-left: 20px;
+}
+.rcl-speaking-list { max-width: 720px; font-size: 18px; text-align: left; }
+.rcl-speaking-list li { margin-bottom: 8px; }
+
+.rcl-recap-line {
+  font-family: 'Comic Neue', cursive, sans-serif;
+  font-weight: 700;
+  font-size: 17px;
+  color: #22303A;
+  line-height: 1.5;
+  margin: 0;
+  max-width: 700px;
+}
+
+.rcl-quiz-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  max-width: 840px;
+  text-align: left;
+}
+.rcl-quiz-item {
+  background: #EFF3F4;
+  border: 3px solid #1A1A1A;
+  border-radius: 14px;
+  padding: 14px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.rcl-quiz-q {
+  font-family: 'Comic Neue', cursive, sans-serif;
+  font-weight: 700;
+  font-size: 17px;
+  color: #1A1A1A;
+  margin: 0;
+}
+
+.rcl-reveal-btn {
+  align-self: flex-start;
+  font-family: 'Comic Neue', cursive, sans-serif;
+  font-weight: 700;
+  font-size: 13.5px;
+  color: #1A1A1A;
+  background: #FFC300;
+  border: 2.5px solid #1A1A1A;
+  border-radius: 8px;
+  padding: 6px 14px;
+  cursor: pointer;
+  box-shadow: 3px 3px 0 #1A1A1A;
+}
+.rcl-reveal-btn:active { box-shadow: 0 0 0 #1A1A1A; transform: translate(3px, 3px); }
+.rcl-reveal-correct {
+  font-family: 'Comic Neue', cursive, sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  color: #1F8A63;
+  margin: 0;
+}
+
+.rcl-nav-row { display: flex; align-items: center; justify-content: space-between; padding-top: 14px; border-top: 3px dashed #DCE5E8; flex-shrink: 0; }
+.rcl-nav-btn {
+  font-family: 'Comic Neue', cursive, sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  color: #1A1A1A;
+  background: #FFFFFF;
+  border: 2.5px solid #1A1A1A;
+  border-radius: 10px;
+  padding: 9px 18px;
+  cursor: pointer;
+  box-shadow: 4px 4px 0 #1A1A1A;
+}
+.rcl-nav-btn:active:not(:disabled) { box-shadow: 0 0 0 #1A1A1A; transform: translate(4px, 4px); }
+.rcl-nav-btn--primary { background: #FFC300; }
+.rcl-nav-btn:disabled { opacity: 0.35; cursor: default; box-shadow: 4px 4px 0 #1A1A1A; }
+.rcl-nav-dots { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; max-width: 340px; }
+.rcl-nav-dot { width: 8px; height: 8px; border-radius: 50%; background: #FFFFFF; border: 2px solid #1A1A1A; }
+.rcl-nav-dot.is-active { background: #55707F; }
+`;
