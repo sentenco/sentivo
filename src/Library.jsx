@@ -383,6 +383,23 @@ const GRAMMAR_TABS = [
   { key: "extras", label: "Supplementary" },
 ];
 
+// Supplementary topics are single lessons with no hub page, so they open
+// straight into the same chrome-less popup player every other lesson uses.
+function openSupplementaryLesson(href) {
+  const screenW = window.screen.availWidth || 1600;
+  const screenH = window.screen.availHeight || 900;
+  const w = Math.min(1180, screenW - 40);
+  const h = Math.min(680, screenH - 80);
+  const left = Math.max(0, Math.floor((screenW - w) / 2));
+  const top = Math.max(0, Math.floor((screenH - h) / 2));
+
+  window.open(
+    href,
+    "sentivoSupplementary",
+    `width=${w},height=${h},left=${left},top=${top},toolbar=no,location=no,menubar=no,status=no,scrollbars=yes,resizable=yes`
+  );
+}
+
 function GrammarFeature({ navigate, query }) {
   const [tab, setTab] = useState("foundation");
   const q = query.trim().toLowerCase();
@@ -449,7 +466,7 @@ function GrammarFeature({ navigate, query }) {
                 key={m.num}
                 href={m.href}
                 className="gdn-supp-row"
-                onClick={(e) => { e.preventDefault(); navigate(m.href); }}
+                onClick={(e) => { e.preventDefault(); openSupplementaryLesson(m.href); }}
               >
                 <span className={`gdn-supp-icon gdn-supp-icon--${m.hue}`}>{m.icon}</span>
                 <span className="gdn-supp-text">
