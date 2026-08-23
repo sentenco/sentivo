@@ -300,6 +300,35 @@ function openCategoryPlayer(gameKey, categoryKey) {
   );
 }
 
+// One entry per Vocabulary Lesson deck -- distinct English word phenomena
+// (stress, homophones, false friends...), not the topic/game-category
+// data above. Each opens the same way Grammar's Supplementary lessons do.
+export const VOCAB_LESSONS = [
+  {
+    key: "stress-shift",
+    title: "Stress-Shift Word Pairs",
+    icon: "🗣️",
+    blurb: "record vs record — same spelling, the stress moves and the meaning changes.",
+    href: "/library/vocabulary/lessons/stress-shift",
+    ready: true,
+  },
+];
+
+function openLessonPlayer(href) {
+  const screenW = window.screen.availWidth || 1600;
+  const screenH = window.screen.availHeight || 900;
+  const w = Math.min(1120, screenW - 40);
+  const h = Math.min(680, screenH - 80);
+  const left = Math.max(0, Math.floor((screenW - w) / 2));
+  const top = Math.max(0, Math.floor((screenH - h) / 2));
+
+  window.open(
+    href,
+    "sentivoVocabLesson",
+    `width=${w},height=${h},left=${left},top=${top},toolbar=no,location=no,menubar=no,status=no,scrollbars=yes,resizable=yes`
+  );
+}
+
 export default function VocabularyGames({ query }) {
   const [mainTab, setMainTab] = useState("games");
   const [gameKey, setGameKey] = useState(null);
@@ -415,10 +444,24 @@ export default function VocabularyGames({ query }) {
           </div>
           {tabBar}
           <div className="vg-row"></div>
-          <div className="vg-empty">
-            <span className="vg-empty-icon">🐚</span>
-            <h3 className="vg-empty-title">Lessons are diving in soon</h3>
-            <p className="vg-empty-text">We're building guided vocabulary lessons to go with the games. Check back soon.</p>
+          <div className="vg-cat-grid">
+            {VOCAB_LESSONS.map((l) => (
+              <button
+                key={l.key}
+                type="button"
+                className={`vg-cat-card vg-cat-card--teal ${l.ready ? "" : "vg-cat-card--soon"}`}
+                onClick={() => l.ready && openLessonPlayer(l.href)}
+                disabled={!l.ready}
+              >
+                <div className="vg-cat-top">
+                  <span className="vg-cat-icon">{l.icon}</span>
+                  <span className="vg-cat-tag">{l.ready ? "Ready" : "Coming soon"}</span>
+                </div>
+                <span className="vg-cat-title">{l.title}</span>
+                <span className="vg-cat-blurb">{l.blurb}</span>
+                {l.ready && <span className="vg-cat-cta">Learn →</span>}
+              </button>
+            ))}
           </div>
         </div>
       </div>

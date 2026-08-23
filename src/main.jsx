@@ -174,6 +174,7 @@ import ParallelStructureLesson from './ParallelStructureLesson.jsx'
 import NominalizationLesson from './NominalizationLesson.jsx'
 import PunctuationEssentialsTrack from './PunctuationEssentialsTrack.jsx'
 import PunctuationEssentialsLesson from './PunctuationEssentialsLesson.jsx'
+import StressShiftLesson from './StressShiftLesson.jsx'
 import PartsOfSpeechTrack from './PartsOfSpeechTrack.jsx'
 import PartsOfSpeechLesson from './PartsOfSpeechLesson.jsx'
 import Shift from './Shift.jsx'
@@ -204,6 +205,7 @@ createRoot(document.getElementById('root')).render(
             <Route path="/library/articles/:slug" element={<ArticleReader />} />
             <Route path="/library/articles/:slug/player" element={<ArticlePlayerPage />} />
             <Route path="/library/vocabulary/:gameKey/:categoryKey/player" element={<VocabularyPlayerPage />} />
+            <Route path="/library/vocabulary/lessons/stress-shift" element={<StressShiftLesson />} />
             <Route path="/library/writing/:typeKey/:topicKey/player" element={<WritingPlayerPage />} />
             <Route path="/library/notebook" element={<NotebookHub />} />
             <Route path="/library/feedback" element={<FeedbackGenerator />} />
