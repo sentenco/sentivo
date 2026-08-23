@@ -2843,7 +2843,7 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   width: 100%;
   max-width: 1320px;
   margin: -10px auto 0;
-  background: radial-gradient(120% 100% at 50% -12%, #FAF2DF 0%, #F1E1BE 55%, #E7D2A2 100%);
+  background: radial-gradient(120% 100% at 50% -12%, #FEFDFA 0%, #F9F6EE 55%, #F3EEE1 100%);
   border-radius: 22px;
   padding: clamp(26px, 3.6vw, 48px) clamp(20px, 3.2vw, 40px) clamp(30px, 4vw, 52px);
 }
