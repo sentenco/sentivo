@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 const LESSON = {
-  title: "Conjunctions & Linking Words",
+  title: "Conjunctions",
   formula: "FANBOYS join equals  ·  because/although/since join a dependent clause",
   leadIn: "Combine these two ideas into one sentence: 'It was raining.' + 'We went for a walk.'",
   fanboys: [

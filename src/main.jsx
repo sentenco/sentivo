@@ -143,8 +143,10 @@ import GerundsInfinitivesLesson from './GerundsInfinitivesLesson.jsx'
 import PrepositionsTrack from './PrepositionsTrack.jsx'
 import PrepositionsLesson from './PrepositionsLesson.jsx'
 import ConjunctionsLesson from './ConjunctionsLesson.jsx'
+import LinkingWordsLesson from './LinkingWordsLesson.jsx'
 import CausativeVerbsLesson from './CausativeVerbsLesson.jsx'
 import WordOrderLesson from './WordOrderLesson.jsx'
+import InversionLesson from './InversionLesson.jsx'
 import WishIfOnlyLesson from './WishIfOnlyLesson.jsx'
 import UsedToLesson from './UsedToLesson.jsx'
 import TooEnoughLesson from './TooEnoughLesson.jsx'
@@ -313,9 +315,11 @@ createRoot(document.getElementById('root')).render(
             <Route path="/library/grammar/gerunds-infinitives/:code" element={<GerundsInfinitivesLesson />} />
             <Route path="/library/grammar/prepositions" element={<PrepositionsTrack />} />
             <Route path="/library/grammar/prepositions/:code" element={<PrepositionsLesson />} />
-            <Route path="/library/grammar/conjunctions-linking-words" element={<ConjunctionsLesson />} />
+            <Route path="/library/grammar/conjunctions" element={<ConjunctionsLesson />} />
+            <Route path="/library/grammar/linking-words" element={<LinkingWordsLesson />} />
             <Route path="/library/grammar/causative-verbs" element={<CausativeVerbsLesson />} />
-            <Route path="/library/grammar/word-order-inversion" element={<WordOrderLesson />} />
+            <Route path="/library/grammar/word-order" element={<WordOrderLesson />} />
+            <Route path="/library/grammar/inversion" element={<InversionLesson />} />
             <Route path="/library/grammar/wish-if-only" element={<WishIfOnlyLesson />} />
             <Route path="/library/grammar/used-to" element={<UsedToLesson />} />
             <Route path="/library/grammar/too-enough" element={<TooEnoughLesson />} />

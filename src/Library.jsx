@@ -360,16 +360,18 @@ const GRAMMAR_MODULES = [
   { num: "BED 12", banner: "relativeClauses", title: "Relative Clauses", spec: "Who/which/that, whose/where/when, non-defining clauses, and reducing clauses to phrases, across 4 lessons. A1–C2.", href: "/library/grammar/relative-clauses", ready: true, hue: "slate", tier: "foundation" },
   { num: "BED 13", banner: "gerundsInfinitives", title: "Gerunds & Infinitives", spec: "Verbs that take a gerund, verbs that take an infinitive, verbs that take either, gerunds as nouns, and the infinitive of purpose, across 4 lessons. A1–C2.", href: "/library/grammar/gerunds-infinitives", ready: true, hue: "khaki", tier: "foundation" },
   { num: "BED 14", banner: "prepositions", title: "Prepositions", spec: "Place, time, movement, prepositions after verbs and adjectives, and by/with/without, across 6 lessons. A1–C2.", href: "/library/grammar/prepositions", ready: true, hue: "crimson", tier: "foundation" },
-  { num: "BED 15", banner: "conjunctionsLinkingWords", title: "Conjunctions & Linking Words", spec: "Coordinating conjunctions (FANBOYS) join two equal ideas; subordinating conjunctions attach a dependent clause.", href: "/library/grammar/conjunctions-linking-words", ready: true, hue: "leaf", icon: "🔗", tier: "extras" },
-  { num: "BED 16", banner: "causativeVerbs", title: "Causative Verbs", spec: "Have/get + object + past participle for someone else doing it; make/let + person + verb for force vs permission.", href: "/library/grammar/causative-verbs", ready: true, hue: "gold", icon: "🔧", tier: "extras" },
-  { num: "BED 17", banner: "wordOrderInversion", title: "Word Order & Inversion", spec: "Adjective order (opinion before fact) and inversion for emphasis, like 'Never have I seen...'.", href: "/library/grammar/word-order-inversion", ready: true, hue: "soil", icon: "🔄", tier: "extras" },
-  { num: "BED 18", banner: "wishIfOnly", title: "Wish & If Only", spec: "Expressing regret or a desire for something different, related to but distinct from conditionals.", href: "/library/grammar/wish-if-only", ready: true, hue: "sky", icon: "🌠", tier: "extras" },
-  { num: "BED 19", banner: "usedTo", title: "Used To / Be Used To / Get Used To", spec: "Three similar-looking structures with completely different meanings — past habit vs familiarity vs adjusting.", href: "/library/grammar/used-to", ready: true, hue: "berry", icon: "⏳", tier: "extras" },
-  { num: "BED 20", banner: "tooEnough", title: "Too / Enough", spec: "Too goes before an adjective, enough goes after — a common position mix-up.", href: "/library/grammar/too-enough", ready: true, hue: "violet", icon: "⚖️", tier: "extras" },
-  { num: "BED 21", banner: "soSuch", title: "So / Such", spec: "So + adjective vs such + a/an + adjective + noun — a classic emphasis mix-up.", href: "/library/grammar/so-such", ready: false, hue: "teal", icon: "💥", tier: "extras" },
-  { num: "BED 22", banner: "phrasalVerbs", title: "Phrasal Verbs — Separable vs Inseparable", spec: "Whether the object can go between the verb and particle, like 'turn off the light' vs 'look after the kids'.", href: "/library/grammar/phrasal-verbs", ready: false, hue: "coral", icon: "🧩", tier: "extras" },
-  { num: "BED 23", banner: "exclamations", title: "Exclamations", spec: "What a beautiful day! / How beautiful! — a sentence type of its own.", href: "/library/grammar/exclamations", ready: false, hue: "lime", icon: "❗", tier: "extras" },
-  { num: "BED 24", banner: "emphasisDo", title: "Emphasis with Do/Does/Did", spec: "'I DO like it!' — using do-support in affirmative sentences purely for emphasis.", href: "/library/grammar/emphasis-do", ready: false, hue: "magenta", icon: "🔊", tier: "extras" },
+  { num: "BED 15", banner: "conjunctions", title: "Conjunctions", spec: "Coordinating conjunctions (FANBOYS) join two equal ideas; subordinating conjunctions attach a dependent clause.", href: "/library/grammar/conjunctions", ready: true, hue: "leaf", icon: "🔗", tier: "extras" },
+  { num: "BED 16", banner: "linkingWords", title: "Linking Words", spec: "However and therefore connect ideas across separate sentences, not within one — and need their own comma.", href: "/library/grammar/linking-words", ready: true, hue: "teal", icon: "🔀", tier: "extras" },
+  { num: "BED 17", banner: "causativeVerbs", title: "Causative Verbs", spec: "Have/get + object + past participle for someone else doing it; make/let + person + verb for force vs permission.", href: "/library/grammar/causative-verbs", ready: true, hue: "gold", icon: "🔧", tier: "extras" },
+  { num: "BED 18", banner: "wordOrder", title: "Word Order", spec: "OSASCOMP — Opinion, Size, Age, Shape, Color, Origin, Material, Purpose — the order adjectives stack before a noun.", href: "/library/grammar/word-order", ready: true, hue: "soil", icon: "🔤", tier: "extras" },
+  { num: "BED 19", banner: "inversion", title: "Inversion", spec: "Never have I seen... — flipping word order for emphasis, and dropping if in formal conditionals.", href: "/library/grammar/inversion", ready: true, hue: "coral", icon: "🔃", tier: "extras" },
+  { num: "BED 20", banner: "wishIfOnly", title: "Wish & If Only", spec: "Expressing regret or a desire for something different, related to but distinct from conditionals.", href: "/library/grammar/wish-if-only", ready: true, hue: "sky", icon: "🌠", tier: "extras" },
+  { num: "BED 21", banner: "usedTo", title: "Used To / Be Used To / Get Used To", spec: "Three similar-looking structures with completely different meanings — past habit vs familiarity vs adjusting.", href: "/library/grammar/used-to", ready: true, hue: "berry", icon: "⏳", tier: "extras" },
+  { num: "BED 22", banner: "tooEnough", title: "Too / Enough", spec: "Too goes before an adjective, enough goes after — a common position mix-up.", href: "/library/grammar/too-enough", ready: true, hue: "violet", icon: "⚖️", tier: "extras" },
+  { num: "BED 23", banner: "soSuch", title: "So / Such", spec: "So + adjective vs such + a/an + adjective + noun — a classic emphasis mix-up.", href: "/library/grammar/so-such", ready: false, hue: "lime", icon: "💥", tier: "extras" },
+  { num: "BED 24", banner: "phrasalVerbs", title: "Phrasal Verbs — Separable vs Inseparable", spec: "Whether the object can go between the verb and particle, like 'turn off the light' vs 'look after the kids'.", href: "/library/grammar/phrasal-verbs", ready: false, hue: "magenta", icon: "🧩", tier: "extras" },
+  { num: "BED 25", banner: "exclamations", title: "Exclamations", spec: "What a beautiful day! / How beautiful! — a sentence type of its own.", href: "/library/grammar/exclamations", ready: false, hue: "navy", icon: "❗", tier: "extras" },
+  { num: "BED 26", banner: "emphasisDo", title: "Emphasis with Do/Does/Did", spec: "'I DO like it!' — using do-support in affirmative sentences purely for emphasis.", href: "/library/grammar/emphasis-do", ready: false, hue: "slate", icon: "🔊", tier: "extras" },
 ];
 
 const SPEAKING_TRACKS = [
@@ -2775,6 +2777,8 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .gdn-supp-icon--coral { background: color-mix(in srgb, var(--coral) 22%, #FFF6E9); }
 .gdn-supp-icon--lime { background: color-mix(in srgb, var(--lime) 22%, #FFF6E9); }
 .gdn-supp-icon--magenta { background: color-mix(in srgb, var(--magenta) 22%, #FFF6E9); }
+.gdn-supp-icon--navy { background: color-mix(in srgb, var(--navy) 22%, #FFF6E9); }
+.gdn-supp-icon--slate { background: color-mix(in srgb, var(--slate) 22%, #FFF6E9); }
 
 .gdn-supp-text { flex: 1; min-width: 0; text-align: left; }
 .gdn-supp-title {

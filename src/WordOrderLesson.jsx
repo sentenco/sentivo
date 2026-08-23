@@ -1,44 +1,42 @@
 import { useState } from "react";
 
 const LESSON = {
-  title: "Word Order & Inversion",
-  formula: "opinion-size-age-color (adjective order)  ·  negative word + auxiliary + subject (inversion)",
-  leadIn: "Describe an object near you using at least two adjectives, in the right order.",
-  teach: [
-    {
-      name: "Adjective Order — Opinion Before Fact",
-      definition: "When stacking multiple adjectives before a noun, opinion words come first, followed by fact-based categories like size, age, and color, in that order.",
-      examples: ["A beautiful small old house.", "An ugly big red car.", "A lovely little brown dog."],
-    },
-    {
-      name: "Inversion for Emphasis",
-      definition: "Starting a sentence with a negative or limiting word flips the normal subject-verb order, for dramatic emphasis in more formal or literary English.",
-      examples: ["Never have I seen such a mess.", "Not only did she win, she broke the record.", "Rarely do we get a day off."],
-    },
+  title: "Word Order",
+  formula: "OSASCOMP: Opinion, Size, Age, Shape, Color, Origin, Material, Purpose",
+  leadIn: "Describe an object near you using three adjectives — don't worry about the order yet, just try it.",
+  osascomp: [
+    { letter: "O", word: "Opinion", usage: "What you think or feel about something — always comes first, before any factual description.", examples: ["a beautiful painting", "an ugly building"] },
+    { letter: "S", word: "Size", usage: "How big or small something is.", examples: ["a small dog", "a huge house"] },
+    { letter: "A", word: "Age", usage: "How old or new something is.", examples: ["an old car", "a young puppy"] },
+    { letter: "S", word: "Shape", usage: "The form or shape of something.", examples: ["a round table", "a square box"] },
+    { letter: "C", word: "Color", usage: "The color of something.", examples: ["a red apple", "a blue sky"] },
+    { letter: "O", word: "Origin", usage: "Where something comes from.", examples: ["a French cheese", "an Italian car"] },
+    { letter: "M", word: "Material", usage: "What something is made of.", examples: ["a wooden chair", "a leather jacket"] },
+    { letter: "P", word: "Purpose", usage: "What something is used for — sits right next to the noun, almost like part of it.", examples: ["a sleeping bag", "running shoes"] },
   ],
-  compareLeftLabel: "Normal order",
-  compareRightLabel: "Inverted for emphasis",
-  compareNote: "Inversion isn't required — it's a stylistic choice that adds emphasis and a more formal, dramatic tone to the exact same information.",
+  compareLeftLabel: "Correct — OSASCOMP order",
+  compareRightLabel: "Incorrect — random order",
+  compareNote: "Native speakers follow this sequence instinctively — a sentence with adjectives out of order sounds noticeably wrong, even if every word is correct.",
   comparePairs: [
-    { left: "I have never seen such a mess.", right: "Never have I seen such a mess." },
-    { left: "She didn't only win, she broke the record.", right: "Not only did she win, she broke the record." },
+    { left: "a beautiful small old Italian leather handbag", right: "an Italian leather old small beautiful handbag" },
+    { left: "a lovely round red French plate", right: "a French red round lovely plate" },
   ],
   guided: [
-    { prompt: "Put in order: 'ugly / old / big' + house.", answer: "ugly big old house (opinion → size → age)" },
-    { prompt: "___ have I tasted such delicious food. (inversion, negative emphasis)", answer: "Never" },
-    { prompt: "Not only ___ she finish first, she set a new record. (inversion)", answer: "did" },
+    { prompt: "Put in order: 'Italian / old / red' + car.", answer: "old red Italian car (age → color → origin)" },
+    { prompt: "Put in order: 'wooden / small / round' + table.", answer: "small round wooden table (size → shape → material)" },
+    { prompt: "Put in order: 'ugly / plastic / big' + toy.", answer: "ugly big plastic toy (opinion → size → material)" },
   ],
   practice: [
-    "Describe an object using three adjectives in the correct order.",
-    "Rewrite a normal sentence using never at the front, with inversion.",
-    "Rewrite a normal sentence using not only, with inversion.",
+    "Describe an object using at least 3 adjectives in the correct OSASCOMP order.",
+    "Write one sentence with 4 stacked adjectives, checking your order against OSASCOMP.",
+    "Scramble one of your own sentences, then fix it back to the right order.",
   ],
-  wrapup: "Adjective order follows opinion before fact — size, age, color, and beyond. Inversion moves a negative or limiting word to the front for dramatic emphasis.",
+  wrapup: "OSASCOMP — Opinion, Size, Age, Shape, Color, Origin, Material, Purpose — is the order adjectives stack in before a noun. Most sentences won't use all eight, but combining two or more always follows this sequence.",
 };
 
 function buildSlides(lesson) {
   const slides = ["cover", "warmup"];
-  lesson.teach.forEach((_, i) => slides.push(`teach${i}`));
+  lesson.osascomp.forEach((_, i) => slides.push(`osascomp${i}`));
   if (lesson.comparePairs) slides.push("compare");
   if (lesson.guided) slides.push("guided");
   slides.push("practice", "wrapup");
@@ -66,14 +64,18 @@ function WarmupSlide({ lesson }) {
   );
 }
 
-function TeachSlide({ lesson, index }) {
-  const concept = lesson.teach[index];
+function OsascompSlide({ lesson, index }) {
+  const o = lesson.osascomp[index];
   return (
     <div className="wol-slide">
-      <h3 className="wol-h">{concept.name}</h3>
-      <p className="wol-definition">{concept.definition}</p>
+      <span className="wol-osc-eyebrow">OSASCOMP {index + 1} of {lesson.osascomp.length}</span>
+      <div className="wol-osc-sticker">
+        <span className="wol-osc-sticker-letter">{o.letter}</span>
+        <h3 className="wol-osc-sticker-word">{o.word}</h3>
+      </div>
+      <p className="wol-definition">{o.usage}</p>
       <div className="wol-example-list">
-        {concept.examples.map((ex, i) => (
+        {o.examples.map((ex, i) => (
           <div key={i} className="wol-bubble">
             <p className="wol-bubble-text">{ex}</p>
           </div>
@@ -150,7 +152,7 @@ function WrapupSlide({ lesson }) {
 function renderSlide(slideType, lesson) {
   if (slideType === "cover") return <CoverSlide lesson={lesson} />;
   if (slideType === "warmup") return <WarmupSlide lesson={lesson} />;
-  if (slideType.startsWith("teach")) return <TeachSlide lesson={lesson} index={Number(slideType.replace("teach", ""))} />;
+  if (slideType.startsWith("osascomp")) return <OsascompSlide lesson={lesson} index={Number(slideType.replace("osascomp", ""))} />;
   if (slideType === "compare") return <CompareSlide lesson={lesson} />;
   if (slideType === "guided") return <GuidedSlide lesson={lesson} />;
   if (slideType === "practice") return <PracticeSlide lesson={lesson} />;
@@ -313,7 +315,7 @@ const CSS = `
 .wol-cover-title {
   font-family: 'Bangers', cursive;
   font-weight: 400;
-  font-size: 44px;
+  font-size: 48px;
   color: #1A1A1A;
   margin: 4px 0 0;
   line-height: 1.05;
@@ -324,14 +326,14 @@ const CSS = `
 .wol-formula-chip {
   font-family: 'Comic Neue', cursive, sans-serif;
   font-weight: 700;
-  font-size: 15px;
+  font-size: 14px;
   color: #5C452F;
   background: #F3EDE5;
   border: 2.5px solid #8A6748;
   border-radius: 999px;
-  padding: 8px 20px;
+  padding: 8px 18px;
   margin-top: 4px;
-  max-width: 640px;
+  max-width: 660px;
 }
 
 .wol-h {
@@ -361,6 +363,46 @@ const CSS = `
   line-height: 1.55;
   margin: 0;
   max-width: 700px;
+}
+
+.wol-osc-eyebrow {
+  font-family: 'Comic Neue', cursive, sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  color: #8A6748;
+}
+.wol-osc-sticker {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  transform: rotate(-2deg);
+}
+.wol-osc-sticker-letter {
+  font-family: 'Bangers', cursive;
+  font-weight: 400;
+  font-size: 34px;
+  color: #FFFFFF;
+  background: #8A6748;
+  border: 3px solid #1A1A1A;
+  border-radius: 50%;
+  width: 68px;
+  height: 68px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 5px 5px 0 #1A1A1A;
+}
+.wol-osc-sticker-word {
+  font-family: 'Bangers', cursive;
+  font-weight: 400;
+  font-size: 46px;
+  letter-spacing: 0.5px;
+  color: #1A1A1A;
+  margin: 0;
+  text-shadow: 3px 3px 0 #8A6748;
 }
 
 .wol-bubble {
