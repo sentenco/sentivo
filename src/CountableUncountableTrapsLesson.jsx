@@ -334,10 +334,10 @@ const CSS = `
 .cntl-cover-title {
   font-family: 'Bangers', cursive;
   font-weight: 400;
-  font-size: 38px;
+  font-size: 42px;
   color: #1A1A1A;
   margin: 4px 0 0;
-  line-height: 1.05;
+  line-height: 1.1;
   letter-spacing: 1px;
   text-shadow: 3px 3px 0 #4C9A5D;
 }

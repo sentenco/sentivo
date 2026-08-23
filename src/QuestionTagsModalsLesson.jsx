@@ -334,10 +334,10 @@ const CSS = `
 .qtml-cover-title {
   font-family: 'Bangers', cursive;
   font-weight: 400;
-  font-size: 34px;
+  font-size: 36px;
   color: #1A1A1A;
   margin: 4px 0 0;
-  line-height: 1.05;
+  line-height: 1.15;
   letter-spacing: 1px;
   text-shadow: 3px 3px 0 #3E7CB8;
 }
