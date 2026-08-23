@@ -42,9 +42,9 @@ const LESSON = {
 
 function buildSlides(lesson) {
   const slides = ["cover", "warmup"];
+  if (lesson.comparePairs) slides.push("compare");
   lesson.fanboys.forEach((_, i) => slides.push(`fanboys${i}`));
   lesson.teach.forEach((_, i) => slides.push(`teach${i}`));
-  if (lesson.comparePairs) slides.push("compare");
   if (lesson.guided) slides.push("guided");
   slides.push("practice", "wrapup");
   return slides;

@@ -5,11 +5,11 @@ import { POS_COLORS, PosMark } from "./posVisuals";
 
 function buildLessonSlides(lesson) {
   const slides = ["cover", "warmup"];
+  if (lesson.concepts.length > 1) slides.push("compare");
   lesson.concepts.forEach((c, i) => {
     slides.push(`concept${i}`);
     if (c.mistake) slides.push(`mistake${i}`);
   });
-  if (lesson.concepts.length > 1) slides.push("compare");
   slides.push("guided", "independent", "wrapup");
   return slides;
 }

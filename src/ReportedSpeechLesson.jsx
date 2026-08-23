@@ -4,8 +4,8 @@ import LESSONS, { getLessonByCode } from "./rsTracks";
 
 function buildSlides(lesson) {
   const slides = ["cover", "warmup"];
-  lesson.teach.forEach((_, i) => slides.push(`teach${i}`));
   if (lesson.comparePairs) slides.push("compare");
+  lesson.teach.forEach((_, i) => slides.push(`teach${i}`));
   if (lesson.guided) slides.push("guided");
   slides.push("practice", "wrapup");
   return slides;

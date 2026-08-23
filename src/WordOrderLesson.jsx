@@ -36,8 +36,8 @@ const LESSON = {
 
 function buildSlides(lesson) {
   const slides = ["cover", "warmup"];
-  lesson.osascomp.forEach((_, i) => slides.push(`osascomp${i}`));
   if (lesson.comparePairs) slides.push("compare");
+  lesson.osascomp.forEach((_, i) => slides.push(`osascomp${i}`));
   if (lesson.guided) slides.push("guided");
   slides.push("practice", "wrapup");
   return slides;
