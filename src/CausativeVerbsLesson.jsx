@@ -1,0 +1,493 @@
+import { useState } from "react";
+
+const LESSON = {
+  title: "Causative Verbs",
+  formula: "have/get + object + past participle (someone else does it)  ·  make/let + person + base verb (force/permission)",
+  leadIn: "Name one thing you had done for you recently, like a haircut or a repair.",
+  teach: [
+    {
+      name: "Have/Get Something Done — Someone Else Does It",
+      definition: "Have or get plus an object plus the past participle shows that someone else performed the action for you, not you yourself.",
+      examples: ["I had my hair cut yesterday.", "She got her car repaired.", "We're having the house painted."],
+    },
+    {
+      name: "Make/Let Someone Do Something — Force or Permission",
+      definition: "Make plus a person plus the base verb means forcing someone to act; let plus a person plus the base verb means allowing them to.",
+      examples: ["My mom made me clean my room.", "The teacher let us leave early.", "He made his brother apologize."],
+    },
+  ],
+  compareLeftLabel: "Make — forced",
+  compareRightLabel: "Let — allowed",
+  compareNote: "Make pushes someone into an action they might not have chosen. Let simply removes an obstacle and allows the action to happen.",
+  comparePairs: [
+    { left: "The coach made them run extra laps.", right: "The coach let them skip practice." },
+    { left: "She made him wait outside.", right: "She let him wait inside." },
+  ],
+  guided: [
+    { prompt: "I had my phone ___ (repair) at the shop yesterday.", answer: "repaired" },
+    { prompt: "My parents ___ me stay out late for the party. (permission)", answer: "let" },
+    { prompt: "The manager ___ everyone stay late to finish the project. (force)", answer: "made" },
+  ],
+  practice: [
+    "Write one sentence about something you had done for you, using have or get + past participle.",
+    "Write one sentence using make, showing someone was forced to do something.",
+    "Write one sentence using let, showing someone was given permission.",
+  ],
+  wrapup: "Have/get + object + past participle shows someone else did the action for you. Make forces an action; let permits it.",
+};
+
+function buildSlides(lesson) {
+  const slides = ["cover", "warmup"];
+  lesson.teach.forEach((_, i) => slides.push(`teach${i}`));
+  if (lesson.comparePairs) slides.push("compare");
+  if (lesson.guided) slides.push("guided");
+  slides.push("practice", "wrapup");
+  return slides;
+}
+
+function CoverSlide({ lesson }) {
+  return (
+    <div className="cvl-slide cvl-slide--cover">
+      <span className="cvl-kind-badge">Lesson Time!</span>
+      <h2 className="cvl-cover-title">{lesson.title}</h2>
+      <span className="cvl-formula-chip">{lesson.formula}</span>
+    </div>
+  );
+}
+
+function WarmupSlide({ lesson }) {
+  return (
+    <div className="cvl-slide">
+      <span className="cvl-eyebrow">Warm-up</span>
+      <div className="cvl-bubble cvl-bubble--solo">
+        <p className="cvl-bubble-text cvl-bubble-text--big">“{lesson.leadIn}”</p>
+      </div>
+    </div>
+  );
+}
+
+function TeachSlide({ lesson, index }) {
+  const concept = lesson.teach[index];
+  return (
+    <div className="cvl-slide">
+      <h3 className="cvl-h">{concept.name}</h3>
+      <p className="cvl-definition">{concept.definition}</p>
+      <div className="cvl-example-list">
+        {concept.examples.map((ex, i) => (
+          <div key={i} className="cvl-bubble">
+            <p className="cvl-bubble-text">{ex}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function CompareSlide({ lesson }) {
+  return (
+    <div className="cvl-slide">
+      <h3 className="cvl-h">{lesson.compareLeftLabel} <span className="cvl-vs">vs</span> {lesson.compareRightLabel}</h3>
+      <p className="cvl-compare-note">{lesson.compareNote}</p>
+      <div className="cvl-compare-grid">
+        <div className="cvl-panel">
+          <span className="cvl-compare-label">{lesson.compareLeftLabel}</span>
+          {lesson.comparePairs.map((pair, i) => <p key={`l-${i}`} className="cvl-compare-line">{pair.left}</p>)}
+        </div>
+        <div className="cvl-panel cvl-panel--right">
+          <span className="cvl-compare-label">{lesson.compareRightLabel}</span>
+          {lesson.comparePairs.map((pair, i) => <p key={`r-${i}`} className="cvl-compare-line">{pair.right}</p>)}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function GuidedItem({ item }) {
+  const [shown, setShown] = useState(false);
+  return (
+    <div className="cvl-quiz-item">
+      <p className="cvl-quiz-q">{item.prompt}</p>
+      {shown ? (
+        <p className="cvl-reveal-correct">{item.answer}</p>
+      ) : (
+        <button type="button" className="cvl-reveal-btn" onClick={() => setShown(true)}>Show answer</button>
+      )}
+    </div>
+  );
+}
+
+function GuidedSlide({ lesson }) {
+  return (
+    <div className="cvl-slide cvl-slide--part">
+      <h3 className="cvl-h">Guided practice</h3>
+      <div className="cvl-quiz-list">
+        {lesson.guided.map((item, i) => <GuidedItem key={i} item={item} />)}
+      </div>
+    </div>
+  );
+}
+
+function PracticeSlide({ lesson }) {
+  return (
+    <div className="cvl-slide cvl-slide--part">
+      <h3 className="cvl-h">Speaking &amp; writing practice</h3>
+      <ul className="cvl-list cvl-speaking-list">
+        {lesson.practice.map((line, i) => <li key={i}>{line}</li>)}
+      </ul>
+    </div>
+  );
+}
+
+function WrapupSlide({ lesson }) {
+  return (
+    <div className="cvl-slide">
+      <h3 className="cvl-h">Wrap-up</h3>
+      <p className="cvl-definition">{lesson.wrapup}</p>
+    </div>
+  );
+}
+
+function renderSlide(slideType, lesson) {
+  if (slideType === "cover") return <CoverSlide lesson={lesson} />;
+  if (slideType === "warmup") return <WarmupSlide lesson={lesson} />;
+  if (slideType.startsWith("teach")) return <TeachSlide lesson={lesson} index={Number(slideType.replace("teach", ""))} />;
+  if (slideType === "compare") return <CompareSlide lesson={lesson} />;
+  if (slideType === "guided") return <GuidedSlide lesson={lesson} />;
+  if (slideType === "practice") return <PracticeSlide lesson={lesson} />;
+  if (slideType === "wrapup") return <WrapupSlide lesson={lesson} />;
+  return null;
+}
+
+export default function CausativeVerbsLesson() {
+  const [slideIdx, setSlideIdx] = useState(0);
+  const lesson = LESSON;
+  const slideTypes = buildSlides(lesson);
+  const slideType = slideTypes[slideIdx];
+  const isFirst = slideIdx === 0;
+  const isLast = slideIdx === slideTypes.length - 1;
+
+  return (
+    <div className="cvl-shell">
+      <style>{CSS}</style>
+      <header className="cvl-topbar">
+        <span className="cvl-brand"><img src="/logo-sentivo.png" alt="" className="cvl-brand-logo" />entivo</span>
+        <span className="cvl-topbar-title">{lesson.title}</span>
+      </header>
+
+      <div className="cvl-stage">
+        <div className="cvl-deck">
+          <div className="cvl-deck-body" key={slideIdx}>
+            {renderSlide(slideType, lesson)}
+          </div>
+          <div className="cvl-nav-row">
+            <button type="button" className="cvl-nav-btn" onClick={() => setSlideIdx((i) => i - 1)} disabled={isFirst}>
+              ← Back
+            </button>
+            <div className="cvl-nav-dots">
+              {slideTypes.map((_, i) => (
+                <span key={i} className={`cvl-nav-dot ${i === slideIdx ? "is-active" : ""}`} />
+              ))}
+            </div>
+            <button
+              type="button"
+              className="cvl-nav-btn cvl-nav-btn--primary"
+              onClick={() => setSlideIdx((i) => i + 1)}
+              disabled={isLast}
+            >
+              Next →
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+const CSS = `
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:wght@400;700&family=Fredoka:wght@700&display=swap');
+
+.cvl-shell {
+  width: 100%;
+  height: 100vh;
+  background:
+    radial-gradient(#00000012 1.4px, transparent 1.5px) 0 0/16px 16px,
+    #FBF3E4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  overflow: hidden;
+  font-family: 'Comic Neue', cursive, sans-serif;
+}
+.cvl-shell * { box-sizing: border-box; }
+
+.cvl-topbar {
+  width: 100%;
+  max-width: 1120px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 24px 0;
+  flex-shrink: 0;
+}
+.cvl-brand {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: 0.01em;
+  color: #2B2A4A;
+}
+.cvl-brand-logo { height: 24px; width: auto; display: block; margin-right: -4px; }
+.cvl-topbar-title {
+  font-family: 'Comic Neue', cursive, sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.5px;
+  color: #96631C;
+}
+
+.cvl-stage {
+  flex: 1;
+  width: 100%;
+  max-width: 1120px;
+  padding: 16px 24px 20px;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.cvl-deck {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: #FFFFFF;
+  border: 4px solid #1A1A1A;
+  border-radius: 18px;
+  padding: 20px 56px;
+  box-shadow: 9px 9px 0 #1A1A1A;
+  min-height: 0;
+}
+
+.cvl-deck-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 0;
+  overflow-y: auto;
+  gap: 20px;
+  padding: 8px 0;
+}
+
+.cvl-slide { display: flex; flex-direction: column; align-items: center; gap: 16px; width: 100%; }
+.cvl-slide--cover { gap: 14px; }
+.cvl-slide--part { justify-content: flex-start; }
+
+.cvl-eyebrow {
+  font-family: 'Comic Neue', cursive, sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  color: #E3A73C;
+}
+
+.cvl-kind-badge {
+  font-family: 'Bangers', cursive;
+  font-weight: 400;
+  font-size: 18px;
+  letter-spacing: 0.5px;
+  color: #FFFFFF;
+  background: #E3A73C;
+  border: 3px solid #1A1A1A;
+  border-radius: 999px;
+  padding: 4px 18px 6px;
+  transform: rotate(-3deg);
+  display: inline-block;
+}
+.cvl-cover-title {
+  font-family: 'Bangers', cursive;
+  font-weight: 400;
+  font-size: 46px;
+  color: #1A1A1A;
+  margin: 4px 0 0;
+  line-height: 1.05;
+  letter-spacing: 1px;
+  text-shadow: 3px 3px 0 #E3A73C;
+}
+
+.cvl-formula-chip {
+  font-family: 'Comic Neue', cursive, sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  color: #96631C;
+  background: #FBF3E4;
+  border: 2.5px solid #E3A73C;
+  border-radius: 999px;
+  padding: 8px 20px;
+  margin-top: 4px;
+  max-width: 640px;
+}
+
+.cvl-h {
+  font-family: 'Bangers', cursive;
+  font-weight: 400;
+  font-size: 32px;
+  color: #1A1A1A;
+  margin: 0;
+  letter-spacing: 0.5px;
+}
+.cvl-vs {
+  display: inline-block;
+  background: #FFC300;
+  border: 2.5px solid #1A1A1A;
+  border-radius: 8px;
+  padding: 0 8px;
+  transform: rotate(-4deg);
+  font-size: 0.65em;
+  vertical-align: middle;
+}
+
+.cvl-definition {
+  font-family: 'Comic Neue', cursive, sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  color: #3D2E10;
+  line-height: 1.55;
+  margin: 0;
+  max-width: 700px;
+}
+
+.cvl-bubble {
+  position: relative;
+  background: #FFFFFF;
+  border: 3px solid #E3A73C;
+  border-radius: 18px;
+  padding: 12px 20px;
+  max-width: 560px;
+  align-self: center;
+}
+.cvl-bubble--solo { max-width: 720px; }
+.cvl-bubble-text {
+  font-family: 'Comic Neue', cursive, sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  color: #1A1A1A;
+  margin: 0;
+}
+.cvl-bubble-text--big { font-size: 24px; font-style: italic; }
+
+.cvl-example-list { display: flex; flex-direction: column; gap: 12px; width: 100%; max-width: 620px; align-items: center; }
+
+.cvl-compare-note {
+  font-family: 'Comic Neue', cursive, sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  color: #B7924E;
+  margin: 0;
+  max-width: 620px;
+}
+.cvl-compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; width: 100%; max-width: 700px; }
+.cvl-panel { background: #FBF3E4; border: 3px solid #1A1A1A; border-radius: 14px; padding: 14px 16px; text-align: left; }
+.cvl-panel--right { border-color: #E3A73C; }
+.cvl-compare-label {
+  display: block;
+  font-family: 'Bangers', cursive;
+  font-weight: 400;
+  font-size: 15px;
+  letter-spacing: 0.3px;
+  color: #96631C;
+  margin-bottom: 8px;
+}
+.cvl-compare-line {
+  font-family: 'Comic Neue', cursive, sans-serif;
+  font-weight: 700;
+  font-size: 14.5px;
+  color: #1A1A1A;
+  margin: 0 0 8px;
+}
+
+.cvl-list {
+  font-family: 'Comic Neue', cursive, sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  color: #3D2E10;
+  line-height: 1.6;
+  margin: 0;
+  padding-left: 20px;
+}
+.cvl-speaking-list { max-width: 720px; font-size: 18px; text-align: left; }
+.cvl-speaking-list li { margin-bottom: 8px; }
+
+.cvl-quiz-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  max-width: 840px;
+  text-align: left;
+}
+.cvl-quiz-item {
+  background: #FBF3E4;
+  border: 3px solid #1A1A1A;
+  border-radius: 14px;
+  padding: 14px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.cvl-quiz-q {
+  font-family: 'Comic Neue', cursive, sans-serif;
+  font-weight: 700;
+  font-size: 17px;
+  color: #1A1A1A;
+  margin: 0;
+}
+
+.cvl-reveal-btn {
+  align-self: flex-start;
+  font-family: 'Comic Neue', cursive, sans-serif;
+  font-weight: 700;
+  font-size: 13.5px;
+  color: #1A1A1A;
+  background: #FFC300;
+  border: 2.5px solid #1A1A1A;
+  border-radius: 8px;
+  padding: 6px 14px;
+  cursor: pointer;
+  box-shadow: 3px 3px 0 #1A1A1A;
+}
+.cvl-reveal-btn:active { box-shadow: 0 0 0 #1A1A1A; transform: translate(3px, 3px); }
+.cvl-reveal-correct {
+  font-family: 'Comic Neue', cursive, sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  color: #1F8A63;
+  margin: 0;
+}
+
+.cvl-nav-row { display: flex; align-items: center; justify-content: space-between; padding-top: 14px; border-top: 3px dashed #F3E1BE; flex-shrink: 0; }
+.cvl-nav-btn {
+  font-family: 'Comic Neue', cursive, sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  color: #1A1A1A;
+  background: #FFFFFF;
+  border: 2.5px solid #1A1A1A;
+  border-radius: 10px;
+  padding: 9px 18px;
+  cursor: pointer;
+  box-shadow: 4px 4px 0 #1A1A1A;
+}
+.cvl-nav-btn:active:not(:disabled) { box-shadow: 0 0 0 #1A1A1A; transform: translate(4px, 4px); }
+.cvl-nav-btn--primary { background: #FFC300; }
+.cvl-nav-btn:disabled { opacity: 0.35; cursor: default; box-shadow: 4px 4px 0 #1A1A1A; }
+.cvl-nav-dots { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; max-width: 340px; }
+.cvl-nav-dot { width: 8px; height: 8px; border-radius: 50%; background: #FFFFFF; border: 2px solid #1A1A1A; }
+.cvl-nav-dot.is-active { background: #E3A73C; }
+`;

@@ -142,6 +142,9 @@ import GerundsInfinitivesTrack from './GerundsInfinitivesTrack.jsx'
 import GerundsInfinitivesLesson from './GerundsInfinitivesLesson.jsx'
 import PrepositionsTrack from './PrepositionsTrack.jsx'
 import PrepositionsLesson from './PrepositionsLesson.jsx'
+import ConjunctionsLesson from './ConjunctionsLesson.jsx'
+import CausativeVerbsLesson from './CausativeVerbsLesson.jsx'
+import WordOrderLesson from './WordOrderLesson.jsx'
 import PartsOfSpeechTrack from './PartsOfSpeechTrack.jsx'
 import PartsOfSpeechLesson from './PartsOfSpeechLesson.jsx'
 import Shift from './Shift.jsx'
@@ -307,6 +310,9 @@ createRoot(document.getElementById('root')).render(
             <Route path="/library/grammar/gerunds-infinitives/:code" element={<GerundsInfinitivesLesson />} />
             <Route path="/library/grammar/prepositions" element={<PrepositionsTrack />} />
             <Route path="/library/grammar/prepositions/:code" element={<PrepositionsLesson />} />
+            <Route path="/library/grammar/conjunctions-linking-words" element={<ConjunctionsLesson />} />
+            <Route path="/library/grammar/causative-verbs" element={<CausativeVerbsLesson />} />
+            <Route path="/library/grammar/word-order-inversion" element={<WordOrderLesson />} />
             <Route path="/library/shift" element={<ShiftHub />} />
             <Route path="/library/shift/:trackId" element={<ShiftTrack />} />
             <Route path="/library/shift/:trackId/:lessonNum" element={<Shift />} />

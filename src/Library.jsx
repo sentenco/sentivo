@@ -360,9 +360,16 @@ const GRAMMAR_MODULES = [
   { num: "BED 12", banner: "relativeClauses", title: "Relative Clauses", spec: "Who/which/that, whose/where/when, non-defining clauses, and reducing clauses to phrases, across 4 lessons. A1–C2.", href: "/library/grammar/relative-clauses", ready: true, hue: "slate", tier: "foundation" },
   { num: "BED 13", banner: "gerundsInfinitives", title: "Gerunds & Infinitives", spec: "Verbs that take a gerund, verbs that take an infinitive, verbs that take either, gerunds as nouns, and the infinitive of purpose, across 4 lessons. A1–C2.", href: "/library/grammar/gerunds-infinitives", ready: true, hue: "khaki", tier: "foundation" },
   { num: "BED 14", banner: "prepositions", title: "Prepositions", spec: "Place, time, movement, prepositions after verbs and adjectives, and by/with/without, across 6 lessons. A1–C2.", href: "/library/grammar/prepositions", ready: true, hue: "crimson", tier: "foundation" },
-  { num: "BED 15", banner: "conjunctionsLinkingWords", title: "Conjunctions & Linking Words", spec: "Coordinating, subordinating, and correlative conjunctions, plus transition words like however and therefore.", href: "/library/grammar/conjunctions-linking-words", ready: false, hue: "leaf", tier: "extras" },
-  { num: "BED 16", banner: "causativeVerbs", title: "Causative Verbs", spec: "Have, get, make, and let — getting someone else to do something, or having something done to you.", href: "/library/grammar/causative-verbs", ready: false, hue: "gold", tier: "extras" },
-  { num: "BED 17", banner: "wordOrderInversion", title: "Word Order & Inversion", spec: "Adjective order, adverb placement, and inversion for emphasis — polish for advanced, natural-sounding English.", href: "/library/grammar/word-order-inversion", ready: false, hue: "soil", tier: "extras" },
+  { num: "BED 15", banner: "conjunctionsLinkingWords", title: "Conjunctions & Linking Words", spec: "Coordinating conjunctions (FANBOYS) join two equal ideas; subordinating conjunctions attach a dependent clause.", href: "/library/grammar/conjunctions-linking-words", ready: true, hue: "leaf", icon: "🔗", tier: "extras" },
+  { num: "BED 16", banner: "causativeVerbs", title: "Causative Verbs", spec: "Have/get + object + past participle for someone else doing it; make/let + person + verb for force vs permission.", href: "/library/grammar/causative-verbs", ready: true, hue: "gold", icon: "🔧", tier: "extras" },
+  { num: "BED 17", banner: "wordOrderInversion", title: "Word Order & Inversion", spec: "Adjective order (opinion before fact) and inversion for emphasis, like 'Never have I seen...'.", href: "/library/grammar/word-order-inversion", ready: true, hue: "soil", icon: "🔄", tier: "extras" },
+  { num: "BED 18", banner: "wishIfOnly", title: "Wish & If Only", spec: "Expressing regret or a desire for something different, related to but distinct from conditionals.", href: "/library/grammar/wish-if-only", ready: false, hue: "sky", icon: "🌠", tier: "extras" },
+  { num: "BED 19", banner: "usedTo", title: "Used To / Be Used To / Get Used To", spec: "Three similar-looking structures with completely different meanings — past habit vs familiarity vs adjusting.", href: "/library/grammar/used-to", ready: false, hue: "berry", icon: "⏳", tier: "extras" },
+  { num: "BED 20", banner: "tooEnough", title: "Too / Enough", spec: "Too goes before an adjective, enough goes after — a common position mix-up.", href: "/library/grammar/too-enough", ready: false, hue: "violet", icon: "⚖️", tier: "extras" },
+  { num: "BED 21", banner: "soSuch", title: "So / Such", spec: "So + adjective vs such + a/an + adjective + noun — a classic emphasis mix-up.", href: "/library/grammar/so-such", ready: false, hue: "teal", icon: "💥", tier: "extras" },
+  { num: "BED 22", banner: "phrasalVerbs", title: "Phrasal Verbs — Separable vs Inseparable", spec: "Whether the object can go between the verb and particle, like 'turn off the light' vs 'look after the kids'.", href: "/library/grammar/phrasal-verbs", ready: false, hue: "coral", icon: "🧩", tier: "extras" },
+  { num: "BED 23", banner: "exclamations", title: "Exclamations", spec: "What a beautiful day! / How beautiful! — a sentence type of its own.", href: "/library/grammar/exclamations", ready: false, hue: "lime", icon: "❗", tier: "extras" },
+  { num: "BED 24", banner: "emphasisDo", title: "Emphasis with Do/Does/Did", spec: "'I DO like it!' — using do-support in affirmative sentences purely for emphasis.", href: "/library/grammar/emphasis-do", ready: false, hue: "magenta", icon: "🔊", tier: "extras" },
 ];
 
 const SPEAKING_TRACKS = [
@@ -373,7 +380,7 @@ const SPEAKING_TRACKS = [
 
 const GRAMMAR_TABS = [
   { key: "foundation", label: "Foundation" },
-  { key: "extras", label: "Extras" },
+  { key: "extras", label: "Supplementary" },
 ];
 
 function GrammarFeature({ navigate, query }) {
@@ -413,26 +420,57 @@ function GrammarFeature({ navigate, query }) {
           {q ? `No grammar modules match "${query.trim()}".` : "New modules are on the way — check back soon."}
         </p>
       )}
-      <div className="gdn-beds">
-        {modules.map((m) =>
-          m.ready ? (
-            <a
-              key={m.num}
-              href={m.href}
-              className={`gdn-bed gdn-bed--${m.hue}`}
-              onClick={(e) => { e.preventDefault(); navigate(m.href); }}
-            >
-              <h3 className="gdn-bed-title">{m.title}</h3>
-              <span className="gdn-bed-cta">Open →</span>
-            </a>
-          ) : (
-            <div key={m.num} className={`gdn-bed gdn-bed--${m.hue} gdn-bed--empty`}>
-              <h3 className="gdn-bed-title">{m.title}</h3>
-              <span className="gdn-bed-cta">Coming soon</span>
-            </div>
-          )
-        )}
-      </div>
+      {tab === "foundation" ? (
+        <div className="gdn-beds">
+          {modules.map((m) =>
+            m.ready ? (
+              <a
+                key={m.num}
+                href={m.href}
+                className={`gdn-bed gdn-bed--${m.hue}`}
+                onClick={(e) => { e.preventDefault(); navigate(m.href); }}
+              >
+                <h3 className="gdn-bed-title">{m.title}</h3>
+                <span className="gdn-bed-cta">Open →</span>
+              </a>
+            ) : (
+              <div key={m.num} className={`gdn-bed gdn-bed--${m.hue} gdn-bed--empty`}>
+                <h3 className="gdn-bed-title">{m.title}</h3>
+                <span className="gdn-bed-cta">Coming soon</span>
+              </div>
+            )
+          )}
+        </div>
+      ) : (
+        <div className="gdn-supp-list">
+          {modules.map((m) =>
+            m.ready ? (
+              <a
+                key={m.num}
+                href={m.href}
+                className="gdn-supp-row"
+                onClick={(e) => { e.preventDefault(); navigate(m.href); }}
+              >
+                <span className={`gdn-supp-icon gdn-supp-icon--${m.hue}`}>{m.icon}</span>
+                <span className="gdn-supp-text">
+                  <h3 className="gdn-supp-title">{m.title}</h3>
+                  <p className="gdn-supp-spec">{m.spec}</p>
+                </span>
+                <span className="gdn-supp-cta">Open →</span>
+              </a>
+            ) : (
+              <div key={m.num} className="gdn-supp-row gdn-supp-row--empty">
+                <span className={`gdn-supp-icon gdn-supp-icon--${m.hue}`}>{m.icon}</span>
+                <span className="gdn-supp-text">
+                  <h3 className="gdn-supp-title">{m.title}</h3>
+                  <p className="gdn-supp-spec">{m.spec}</p>
+                </span>
+                <span className="gdn-supp-cta gdn-supp-cta--empty">Coming soon</span>
+              </div>
+            )
+          )}
+        </div>
+      )}
     </div>
   );
 }
@@ -2677,6 +2715,86 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 }
 @media (max-width: 420px) {
   .gdn-beds { grid-template-columns: 1fr; }
+}
+
+.gdn-supp-list { display: flex; flex-direction: column; gap: 12px; }
+.gdn-supp-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: #FFFFFF;
+  border: 3px solid #1A1A1A;
+  border-radius: 16px;
+  padding: 14px 20px;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 5px 5px 0 #1A1A1A;
+  transition: transform 0.15s cubic-bezier(.34,1.56,.64,1), box-shadow 0.15s ease;
+}
+.gdn-supp-row:hover { transform: translate(-2px, -2px); box-shadow: 7px 7px 0 #1A1A1A; }
+.gdn-supp-row:active { transform: translate(2px, 2px); box-shadow: 2px 2px 0 #1A1A1A; }
+.gdn-supp-row--empty { cursor: default; opacity: 0.65; }
+.gdn-supp-row--empty:hover { transform: none; box-shadow: 5px 5px 0 #1A1A1A; }
+
+.gdn-supp-icon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  font-size: 22px;
+  border: 2.5px solid #1A1A1A;
+  background: #FFF6E9;
+}
+.gdn-supp-icon--leaf { background: color-mix(in srgb, var(--leaf) 22%, #FFF6E9); }
+.gdn-supp-icon--gold { background: color-mix(in srgb, var(--gold) 22%, #FFF6E9); }
+.gdn-supp-icon--soil { background: color-mix(in srgb, var(--soil) 22%, #FFF6E9); }
+.gdn-supp-icon--sky { background: color-mix(in srgb, var(--sky) 22%, #FFF6E9); }
+.gdn-supp-icon--berry { background: color-mix(in srgb, var(--berry) 22%, #FFF6E9); }
+.gdn-supp-icon--violet { background: color-mix(in srgb, var(--violet) 22%, #FFF6E9); }
+.gdn-supp-icon--teal { background: color-mix(in srgb, var(--teal) 22%, #FFF6E9); }
+.gdn-supp-icon--coral { background: color-mix(in srgb, var(--coral) 22%, #FFF6E9); }
+.gdn-supp-icon--lime { background: color-mix(in srgb, var(--lime) 22%, #FFF6E9); }
+.gdn-supp-icon--magenta { background: color-mix(in srgb, var(--magenta) 22%, #FFF6E9); }
+
+.gdn-supp-text { flex: 1; min-width: 0; text-align: left; }
+.gdn-supp-title {
+  font-family: 'Bangers', cursive;
+  font-weight: 400;
+  font-size: 19px;
+  letter-spacing: 0.3px;
+  color: #1A1A1A;
+  margin: 0 0 3px;
+  line-height: 1.15;
+}
+.gdn-supp-spec {
+  font-family: 'Comic Neue', cursive, sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  color: #6B5B3D;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.gdn-supp-cta {
+  flex-shrink: 0;
+  font-family: 'Comic Neue', cursive, sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: #1A1A1A;
+  background: #FFF6E9;
+  border: 2px solid #1A1A1A;
+  border-radius: 999px;
+  padding: 6px 16px;
+  white-space: nowrap;
+}
+.gdn-supp-cta--empty { color: #6B5C3E; }
+
+@media (max-width: 560px) {
+  .gdn-supp-row { flex-wrap: wrap; }
+  .gdn-supp-cta { margin-left: 62px; }
 }
 
 /* ---------- Reading: Bookshelf ---------- */
