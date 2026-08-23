@@ -86,9 +86,9 @@ function NuanceSlide({ index }) {
   return (
     <div className="nsn-slide nsn-slide--part">
       <div className="nsn-header-row">
-        <span className={`nsn-type-badge nsn-type-badge--${set.hue}`}>{set.type}</span>
-        <h2 className="nsn-h">Set {index + 1} of {LESSON.sets.length}</h2>
+        <h2 className={`nsn-h nsn-h--${set.hue}`}>{set.type}</h2>
       </div>
+      <p className="nsn-set-label">Set {index + 1} of {LESSON.sets.length}</p>
       <p className="nsn-instruction">Tap the words in order: {set.axisLabel}</p>
 
       <div className="nsn-slots">
@@ -119,19 +119,29 @@ function NuanceSlide({ index }) {
       )}
 
       {checked && (
-        <>
-          <button type="button" className="nsn-reset-btn" onClick={reset}>Try Again ↻</button>
-          <div className="nsn-explain-list">
-            {set.words.map((w, i) => (
-              <div key={i} className="nsn-explain-item">
-                <span className="nsn-explain-word">{i + 1}. {w}</span>
-                <p className="nsn-explain-note">{set.notes[i]}</p>
-                <p className="nsn-explain-example">“{set.examples[i]}”</p>
-              </div>
-            ))}
-          </div>
-        </>
+        <button type="button" className="nsn-reset-btn" onClick={reset}>Try Again ↻</button>
       )}
+    </div>
+  );
+}
+
+function ExplainSlide({ index }) {
+  const set = LESSON.sets[index];
+  return (
+    <div className="nsn-slide">
+      <div className="nsn-header-row">
+        <h2 className={`nsn-h nsn-h--${set.hue}`}>{set.type}</h2>
+      </div>
+      <p className="nsn-set-label">Set {index + 1} of {LESSON.sets.length} · {set.axisLabel}</p>
+      <div className={`nsn-explain-row nsn-explain-row--${set.words.length}`}>
+        {set.words.map((w, i) => (
+          <div key={i} className={`nsn-explain-item nsn-explain-item--${set.hue}`}>
+            <p className="nsn-explain-word">{w}</p>
+            <p className="nsn-explain-note">{set.notes[i]}</p>
+            <p className="nsn-explain-example">“{set.examples[i]}”</p>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
@@ -177,7 +187,7 @@ function WrapupSlide() {
 
 function buildSlides() {
   const slides = ["cover"];
-  LESSON.sets.forEach((_, i) => slides.push(`set${i}`));
+  LESSON.sets.forEach((_, i) => slides.push(`set${i}`, `explain${i}`));
   const guidedChunks = Math.ceil(LESSON.guided.length / 3);
   for (let i = 0; i < guidedChunks; i++) slides.push(`guided${i}`);
   slides.push("wrapup");
@@ -186,6 +196,7 @@ function buildSlides() {
 
 function renderSlide(slideType) {
   if (slideType === "cover") return <CoverSlide />;
+  if (slideType.startsWith("explain")) return <ExplainSlide index={Number(slideType.replace("explain", ""))} />;
   if (slideType.startsWith("set")) return <NuanceSlide index={Number(slideType.replace("set", ""))} />;
   if (slideType.startsWith("guided")) return <GuidedSlide index={Number(slideType.replace("guided", ""))} />;
   if (slideType === "wrapup") return <WrapupSlide />;
@@ -323,18 +334,11 @@ const CSS = `
   padding: 8px 24px;
   box-shadow: 0 5px 0 #0A4F59;
 }
-.nsn-type-badge {
-  font-family: 'Mulish', sans-serif;
-  font-weight: 800;
-  font-size: 11px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  border-radius: 999px;
-  padding: 6px 14px;
-}
-.nsn-type-badge--coral { color: #8A2E1B; background: rgba(232,90,61,0.16); }
-.nsn-type-badge--seafoam { color: #123B2F; background: rgba(28,138,104,0.16); }
-.nsn-type-badge--gold { color: #6B4E08; background: rgba(255,203,76,0.30); }
+.nsn-h--coral { background: #E85A3D; box-shadow: 0 5px 0 #B8391F; }
+.nsn-h--seafoam { background: #1C8A68; box-shadow: 0 5px 0 #146B4E; }
+.nsn-h--gold { background: #D99A1B; box-shadow: 0 5px 0 #8F6108; }
+
+.nsn-set-label { font-size: 12px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: #8FB9BC; margin: 0; }
 
 .nsn-instruction { font-size: 14px; font-weight: 700; color: #4F8B90; margin: 0; }
 
@@ -400,11 +404,20 @@ const CSS = `
   cursor: pointer;
 }
 
-.nsn-explain-list { display: flex; flex-direction: column; gap: 10px; width: 100%; max-width: 640px; text-align: left; margin-top: 4px; }
-.nsn-explain-item { background: #EAF8F6; border-radius: 14px; padding: 12px 16px; }
-.nsn-explain-word { font-family: 'Grandstander', cursive; font-weight: 800; font-size: 15px; color: #123B40; text-transform: capitalize; }
-.nsn-explain-note { font-size: 13px; font-weight: 700; color: #123B40; margin: 4px 0 2px; }
+.nsn-explain-row { display: grid; gap: 16px; width: 100%; max-width: 820px; margin-top: 4px; }
+.nsn-explain-row--2 { grid-template-columns: 1fr 1fr; }
+.nsn-explain-row--3 { grid-template-columns: 1fr 1fr 1fr; }
+.nsn-explain-item { border-radius: 16px; padding: 16px 16px; text-align: left; display: flex; flex-direction: column; gap: 6px; }
+.nsn-explain-item--coral { background: #FFEDE7; }
+.nsn-explain-item--seafoam { background: #E3F6EC; }
+.nsn-explain-item--gold { background: #FFF3D9; }
+.nsn-explain-word { font-family: 'Grandstander', cursive; font-weight: 800; font-size: 18px; color: #123B40; text-transform: capitalize; margin: 0; }
+.nsn-explain-note { font-size: 13px; font-weight: 700; color: #123B40; margin: 2px 0 0; }
 .nsn-explain-example { font-size: 12.5px; font-weight: 600; font-style: italic; color: #4F8B90; margin: 0; }
+
+@media (max-width: 640px) {
+  .nsn-explain-row--2, .nsn-explain-row--3 { grid-template-columns: 1fr; }
+}
 
 .nsn-quiz-list { display: flex; flex-direction: column; gap: 12px; width: 100%; max-width: 760px; text-align: left; }
 .nsn-quiz-item { background: #EAF8F6; border-radius: 16px; padding: 14px 18px; display: flex; flex-direction: column; gap: 10px; }
