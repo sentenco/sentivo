@@ -26,9 +26,12 @@ export default {
     { left: "She climbed into the car.", right: "She walked along the beach." },
   ],
   guided: [
-    { prompt: "He drove ___ the tunnel to get to the city. (path, passing through)", answer: "through" },
     { prompt: "The kids jumped ___ the pool. (destination, entering)", answer: "into" },
+    { prompt: "She walked ___ the station. (destination)", answer: "to" },
+    { prompt: "The cat climbed ___ the roof. (destination)", answer: "onto" },
+    { prompt: "He drove ___ the tunnel to get to the city. (path, passing through)", answer: "through" },
     { prompt: "We walked ___ the old bridge every morning. (path)", answer: "across / past" },
+    { prompt: "They walked ___ the store without stopping. (path)", answer: "past" },
   ],
   practice: [
     "Describe a short journey using a destination preposition like to or into.",

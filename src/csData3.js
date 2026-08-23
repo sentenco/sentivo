@@ -27,8 +27,11 @@ export default {
   ],
   guided: [
     { prompt: "This coffee is ___ hot ___ that one. (equal)", answer: "as ... as" },
+    { prompt: "This test wasn't ___ hard ___ I expected. (not equal)", answer: "as ... as" },
+    { prompt: "He runs ___ fast ___ a professional athlete. (equal)", answer: "as ... as" },
     { prompt: "He is ___ (much/a bit) taller than his dad — almost the same height.", answer: "a bit" },
     { prompt: "This exam was ___ (much/a bit) harder than the last one — everyone failed.", answer: "much" },
+    { prompt: "Today is ___ (far/a bit) colder than yesterday — a huge difference.", answer: "far" },
   ],
   practice: [
     "Write one sentence using as...as to show two things are equal.",

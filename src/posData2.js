@@ -50,7 +50,10 @@ export default {
     guided: [
       { prompt: "The boy ___ (run) fast.", answer: "runs" },
       { prompt: "They ___ (study) every night.", answer: "study" },
+      { prompt: "Birds ___ (fly) south in winter.", answer: "fly" },
       { prompt: "She ___ (be) happy.", answer: "is" },
+      { prompt: "I ___ (be) a student.", answer: "am" },
+      { prompt: "They ___ (be) tired every night.", answer: "are" },
     ],
     independent: [
       "Underline the verb: “We are ready.”",

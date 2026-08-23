@@ -27,8 +27,11 @@ export default {
   ],
   guided: [
     { prompt: "The ___ (hard) you work, the ___ (good) your results. (cause and effect)", answer: "harder ... better" },
-    { prompt: "Complete the fixed expression: 'The sooner, the ___.'", answer: "better" },
     { prompt: "The ___ (early) you book, the ___ (cheap) the ticket.", answer: "earlier ... cheaper" },
+    { prompt: "The ___ (much) you practice, the ___ (good) you get.", answer: "more ... better" },
+    { prompt: "Complete the fixed expression: 'The sooner, the ___.'", answer: "better" },
+    { prompt: "Complete the fixed expression: 'The more, the ___.'", answer: "merrier" },
+    { prompt: "Complete the fixed expression: 'The bigger, the ___.'", answer: "better" },
   ],
   practice: [
     "Write one double comparative sentence about something in your own life.",

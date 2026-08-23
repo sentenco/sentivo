@@ -27,8 +27,11 @@ export default {
   ],
   guided: [
     { prompt: "This painting was created ___ a famous artist. (agent)", answer: "by" },
+    { prompt: "I go to work ___ bus. (method)", answer: "by" },
+    { prompt: "She contacted me ___ email. (method)", answer: "by" },
     { prompt: "She opened the letter ___ a knife. (instrument)", answer: "with" },
     { prompt: "He left the meeting ___ saying a word. (absence)", answer: "without" },
+    { prompt: "She cut the paper ___ scissors. (instrument)", answer: "with" },
   ],
   practice: [
     "Write one sentence using by to describe a method of transport or communication.",

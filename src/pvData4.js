@@ -27,8 +27,11 @@ export default {
   ],
   guided: [
     { prompt: "The new store ___ (open) next month. (planned already)", answer: "is going to be opened" },
+    { prompt: "The building ___ (demolish) next week. (already decided)", answer: "is going to be demolished" },
+    { prompt: "The contract ___ (sign) tomorrow. (already planned)", answer: "is going to be signed" },
     { prompt: "I'm sure the flight ___ (delay). (prediction)", answer: "will be delayed" },
     { prompt: "The award ___ (present) at the ceremony tonight.", answer: "will be presented" },
+    { prompt: "The bridge ___ (finish) next year.", answer: "will be finished" },
   ],
   practice: [
     "Write one prediction about the future using will be + past participle.",

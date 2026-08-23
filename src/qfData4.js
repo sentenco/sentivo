@@ -27,8 +27,11 @@ export default {
   ],
   guided: [
     { prompt: "Where is the bathroom? → Could you tell me ___?", answer: "where the bathroom is" },
-    { prompt: "Does the bus stop here? → Do you know ___?", answer: "if the bus stops here" },
     { prompt: "What time does it start? → I wonder ___.", answer: "what time it starts" },
+    { prompt: "Why did she leave early? → I wonder ___.", answer: "why she left early" },
+    { prompt: "Does the bus stop here? → Do you know ___?", answer: "if the bus stops here" },
+    { prompt: "Is the store open? → Could you tell me ___?", answer: "if the store is open" },
+    { prompt: "Did she call? → Do you know ___?", answer: "if she called" },
   ],
   practice: [
     "Turn a direct wh-question into a polite indirect question, using 'Could you tell me...?'.",

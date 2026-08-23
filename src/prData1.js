@@ -28,7 +28,10 @@ export default {
   guided: [
     { prompt: "The dog is sleeping ___ the sofa. (touching the surface)", answer: "on" },
     { prompt: "I left my umbrella ___ the car. (enclosed)", answer: "in" },
+    { prompt: "She lives ___ Manila. (enclosed — city)", answer: "in" },
     { prompt: "I'll wait for you ___ the bus stop. (exact point)", answer: "at" },
+    { prompt: "Meet me ___ the entrance. (exact point)", answer: "at" },
+    { prompt: "He's ___ bed, but the cat is ___ the bed. (fixed exceptions)", answer: "in ... on" },
   ],
   practice: [
     "Describe where three objects are around you right now, using in, on, and at.",

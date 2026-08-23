@@ -49,8 +49,11 @@ export default {
     ],
     guided: [
       { prompt: "The book is ___ the table.", answer: "on" },
-      { prompt: "We study ___ the morning.", answer: "in" },
       { prompt: "The cat is ___ the chair.", answer: "under" },
+      { prompt: "The keys are ___ my bag. (place)", answer: "in" },
+      { prompt: "We study ___ the morning.", answer: "in" },
+      { prompt: "The meeting is ___ 9 a.m. (time)", answer: "at" },
+      { prompt: "My birthday is ___ July. (time)", answer: "in" },
     ],
     independent: [
       "Fill in the blank: “She walked ___ the store.”",

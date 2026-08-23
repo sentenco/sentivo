@@ -27,8 +27,11 @@ export default {
   ],
   guided: [
     { prompt: "\"I'll do it now,\" he said. → He said he would do it ___.", answer: "then" },
-    { prompt: "\"I like these shoes,\" she said. → She said she liked ___ shoes.", answer: "those" },
     { prompt: "\"I'll see you tomorrow,\" he said. → He said he would see me ___.", answer: "the next day" },
+    { prompt: "\"I saw him yesterday,\" he said. → He said he had seen him ___.", answer: "the day before" },
+    { prompt: "\"I like these shoes,\" she said. → She said she liked ___ shoes.", answer: "those" },
+    { prompt: "\"Meet me here,\" he said. → He said to meet him ___.", answer: "there" },
+    { prompt: "\"I love this place,\" she said. → She said she loved ___ place.", answer: "that" },
   ],
   practice: [
     "Report a statement someone made about 'today,' shifting the time word.",

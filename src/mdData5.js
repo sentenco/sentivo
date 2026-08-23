@@ -27,8 +27,11 @@ export default {
   ],
   guided: [
     { prompt: "You look tired. You ___ get more sleep.", answer: "should" },
-    { prompt: "___ we start the meeting now? (formal suggestion)", answer: "Shall" },
     { prompt: "He ___ apologize for what he said.", answer: "should" },
+    { prompt: "She's been coughing all week — she ___ see a doctor.", answer: "should" },
+    { prompt: "___ we start the meeting now? (formal suggestion)", answer: "Shall" },
+    { prompt: "___ I open the window for you?", answer: "Shall" },
+    { prompt: "___ we order some coffee before the movie starts?", answer: "Shall" },
   ],
   practice: [
     "Give a friend advice using should.",

@@ -27,8 +27,11 @@ export default {
   ],
   guided: [
     { prompt: "___ (I/me) am going to the party tonight.", answer: "I" },
+    { prompt: "___ (He/Him) and I are best friends. (compound subject)", answer: "He" },
+    { prompt: "___ (They/Them) arrived late for the meeting.", answer: "They" },
     { prompt: "Can you help ___ (I/me) with this box?", answer: "me" },
-    { prompt: "___ (He/Him) and ___ (I/me) are best friends. (compound subject)", answer: "He ... I" },
+    { prompt: "The teacher gave the book to ___ (he/him).", answer: "him" },
+    { prompt: "We saw ___ (they/them) at the mall.", answer: "them" },
   ],
   practice: [
     "Write one sentence using a subject pronoun as the doer.",

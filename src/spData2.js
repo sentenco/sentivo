@@ -23,6 +23,9 @@ export default {
     { prompt: "John is tall. — what's the complement?", answer: "tall — it describes John." },
     { prompt: "The soup tastes good. — SVC or SVO?", answer: "SVC — “good” describes the soup, it doesn't receive an action." },
     { prompt: "She is a ___. (complete with a job)", answer: "Any job noun works — e.g. “She is a nurse.”" },
+    { prompt: "He seems tired. — is the complement an adjective or a noun?", answer: "adjective — “tired” describes he." },
+    { prompt: "This is my sister. — is the complement an adjective or a noun?", answer: "noun — “my sister” renames this." },
+    { prompt: "The milk smells sour. — what's the complement, and is it adjective or noun?", answer: "sour — an adjective complement." },
   ],
   practice: [
     "Complete with a suitable complement: “The movie was ___.”",

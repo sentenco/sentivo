@@ -27,8 +27,11 @@ export default {
   ],
   guided: [
     { prompt: "I need some ___ (information / informations) about the class.", answer: "information" },
-    { prompt: "There are five ___ (child / children) in the room.", answer: "children" },
     { prompt: "Can I have a glass of ___ (water / waters)?", answer: "water" },
+    { prompt: "She gave me some ___ (advice / advices) about the interview.", answer: "advice" },
+    { prompt: "There are five ___ (child / children) in the room.", answer: "children" },
+    { prompt: "I bought two ___ (box / boxes) of cereal.", answer: "boxes" },
+    { prompt: "We saw three ___ (mouse / mice) in the garden.", answer: "mice" },
   ],
   practice: [
     "List three countable nouns and their plural forms.",

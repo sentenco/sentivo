@@ -26,9 +26,12 @@ export default {
     { left: "Is this your seat?", right: "Is this seat yours?" },
   ],
   guided: [
-    { prompt: "That's not ___ (her/hers) umbrella, it's ___ (my/mine). (adjective then pronoun)", answer: "her ... mine" },
-    { prompt: "Is this jacket ___ (your/yours)?", answer: "yours" },
+    { prompt: "That's not ___ (her/hers) umbrella. (adjective + noun)", answer: "her" },
     { prompt: "___ (Our/Ours) team won the game.", answer: "Our" },
+    { prompt: "___ (Their/Theirs) house is huge.", answer: "Their" },
+    { prompt: "Is this jacket ___ (your/yours)?", answer: "yours" },
+    { prompt: "That's not her umbrella, it's ___ (my/mine).", answer: "mine" },
+    { prompt: "The huge house is ___ (their/theirs).", answer: "theirs" },
   ],
   practice: [
     "Write one sentence using a possessive adjective before a noun.",

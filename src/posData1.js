@@ -51,6 +51,9 @@ export default {
       { prompt: "Maria is a teacher. ___ is kind.", answer: "She" },
       { prompt: "The dog is barking. ___ is hungry.", answer: "It" },
       { prompt: "Ben and Ana are friends. ___ play after school.", answer: "They" },
+      { prompt: "Tom is my neighbor. ___ is very friendly.", answer: "He" },
+      { prompt: "The books are on the table. ___ are new.", answer: "They" },
+      { prompt: "Sara likes pizza. ___ eats it every Friday.", answer: "She" },
     ],
     independent: [
       "Underline the noun in: “The car is red.”",

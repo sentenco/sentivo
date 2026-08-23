@@ -6,7 +6,10 @@ function buildSlides(lesson) {
   const slides = ["cover", "warmup"];
   if (lesson.comparePairs) slides.push("predict", "compare");
   lesson.teach.forEach((_, i) => slides.push(`teach${i}`));
-  if (lesson.guided) slides.push("guided");
+  if (lesson.guided) {
+    const guidedChunks = Math.ceil(lesson.guided.length / 3);
+    for (let i = 0; i < guidedChunks; i++) slides.push(`guided${i}`);
+  }
   slides.push("practice", "wrapup");
   return slides;
 }
@@ -95,12 +98,14 @@ function GuidedItem({ item }) {
   );
 }
 
-function GuidedSlide({ lesson }) {
+function GuidedSlide({ lesson, index }) {
+  const chunk = lesson.guided.slice(index * 3, index * 3 + 3);
+  const totalChunks = Math.ceil(lesson.guided.length / 3);
   return (
     <div className="pvl-slide pvl-slide--part">
-      <h3 className="pvl-h">Guided practice</h3>
+      <h3 className="pvl-h">Guided practice{totalChunks > 1 ? ` (${index + 1} of ${totalChunks})` : ""}</h3>
       <div className="pvl-quiz-list">
-        {lesson.guided.map((item, i) => <GuidedItem key={i} item={item} />)}
+        {chunk.map((item, i) => <GuidedItem key={i} item={item} />)}
       </div>
     </div>
   );
@@ -133,7 +138,7 @@ function renderSlide(slideType, lesson) {
   if (slideType.startsWith("teach")) return <TeachSlide lesson={lesson} index={Number(slideType.replace("teach", ""))} />;
   if (slideType === "predict") return <PredictSlide lesson={lesson} />;
   if (slideType === "compare") return <CompareSlide lesson={lesson} />;
-  if (slideType === "guided") return <GuidedSlide lesson={lesson} />;
+  if (slideType.startsWith("guided")) return <GuidedSlide lesson={lesson} index={Number(slideType.replace("guided", ""))} />;
   if (slideType === "practice") return <PracticeSlide lesson={lesson} />;
   if (slideType === "wrapup") return <WrapupSlide lesson={lesson} />;
   return null;

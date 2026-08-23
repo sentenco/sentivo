@@ -28,7 +28,10 @@ export default {
   guided: [
     { prompt: "The ___ (dog/dog's) bowl is empty.", answer: "dog's" },
     { prompt: "The ___ (student/students') lockers are down the hall. (plural, regular)", answer: "students'" },
+    { prompt: "My ___ (sister/sister's) car is parked outside.", answer: "sister's" },
     { prompt: "The ___ (child/children's) playground was renovated. (irregular plural)", answer: "children's" },
+    { prompt: "___ (Tom and Jerry's/Tom's and Jerry's) house is for sale. (one shared house)", answer: "Tom and Jerry's" },
+    { prompt: "___ (Anna and Ben's/Anna's and Ben's) apartments are on different floors. (separate apartments)", answer: "Anna's and Ben's" },
   ],
   practice: [
     "Write one sentence with a singular possessive noun, like the dog's leash.",

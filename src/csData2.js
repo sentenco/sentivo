@@ -27,8 +27,11 @@ export default {
   ],
   guided: [
     { prompt: "This book is ___ (interesting) than the last one.", answer: "more interesting" },
+    { prompt: "This exam was ___ (difficult) than the last one.", answer: "more difficult" },
+    { prompt: "That was the ___ (expensive) restaurant in town.", answer: "most expensive" },
     { prompt: "That was the ___ (bad) day of my life.", answer: "worst" },
     { prompt: "She is ___ (good) at math than her brother.", answer: "better" },
+    { prompt: "It's a ___ (far) walk from here than I thought.", answer: "farther / further" },
   ],
   practice: [
     "Write one comparative sentence using a long adjective with more.",

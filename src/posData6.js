@@ -51,6 +51,9 @@ export default {
       { prompt: "___! That is amazing. (surprise)", answer: "Wow" },
       { prompt: "___! My foot hurts. (pain)", answer: "Ouch" },
       { prompt: "___! Wait for me. (getting attention)", answer: "Hey" },
+      { prompt: "___, I understand now. (realization)", answer: "Oh" },
+      { prompt: "___, let's begin. (pause)", answer: "Well" },
+      { prompt: "___, I didn't know that. (mild surprise)", answer: "Oh" },
     ],
     independent: [
       "Match the interjection to the feeling: “Ouch” → ?",

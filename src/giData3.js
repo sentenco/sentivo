@@ -27,8 +27,11 @@ export default {
   ],
   guided: [
     { prompt: "___ (Cook) is one of my favorite hobbies. (subject)", answer: "Cooking" },
-    { prompt: "She's excited about ___ (start) her new job. (after preposition)", answer: "starting" },
     { prompt: "___ (Travel) alone taught me a lot about myself. (subject)", answer: "Traveling" },
+    { prompt: "___ (Learn) a language takes time and patience. (subject)", answer: "Learning" },
+    { prompt: "She's excited about ___ (start) her new job. (after preposition)", answer: "starting" },
+    { prompt: "He's good at ___ (cook) — everyone loves his food. (after preposition)", answer: "cooking" },
+    { prompt: "I'm afraid of ___ (fly) — turbulence really scares me. (after preposition)", answer: "flying" },
   ],
   practice: [
     "Write one sentence that starts with a gerund as the subject.",

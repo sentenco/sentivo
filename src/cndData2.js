@@ -28,7 +28,10 @@ export default {
   guided: [
     { prompt: "If I ___ (finish) my homework early, I will watch a movie.", answer: "finish" },
     { prompt: "If you don't hurry, you ___ (miss) the bus. (certain result)", answer: "will miss" },
+    { prompt: "If she ___ (study) tonight, she will pass the test.", answer: "studies" },
     { prompt: "If the traffic is bad, we ___ be late. (less certain — use might)", answer: "might" },
+    { prompt: "If we leave now, we ___ catch the bus. (less certain — use could)", answer: "could" },
+    { prompt: "If it rains tomorrow, I ___ stay home. (less certain — use might)", answer: "might" },
   ],
   practice: [
     "Write one sentence about a real plan for this weekend, using if and will.",

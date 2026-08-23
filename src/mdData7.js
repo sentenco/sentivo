@@ -26,9 +26,12 @@ export default {
     { left: "I'll help you move this weekend.", right: "I would be happy to help you move this weekend." },
   ],
   guided: [
-    { prompt: "___ you like something to drink? (soft offer)", answer: "Would" },
     { prompt: "Don't worry, I ___ take care of it. (direct promise)", answer: "will (often contracted to I'll)" },
+    { prompt: "I ___ carry that box for you, it's too heavy. (direct offer)", answer: "will (often contracted to I'll)" },
+    { prompt: "I ___ call you the second I land. (direct promise)", answer: "will (often contracted to I'll)" },
+    { prompt: "___ you like something to drink? (soft offer)", answer: "Would" },
     { prompt: "I ___ love to come, thank you for asking.", answer: "would" },
+    { prompt: "___ you like a hand with those bags? (soft offer)", answer: "Would" },
   ],
   practice: [
     "Offer to help a classmate, using I'll.",

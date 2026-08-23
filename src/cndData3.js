@@ -27,8 +27,11 @@ export default {
   ],
   guided: [
     { prompt: "If I ___ (have) a car, I would drive to the beach.", answer: "had" },
-    { prompt: "If he ___ (be) more confident, he would apply for the job. (formal)", answer: "were" },
     { prompt: "If they knew the truth, they ___ (be) upset.", answer: "would be" },
+    { prompt: "If she ___ (live) closer, we would visit more often.", answer: "lived" },
+    { prompt: "If he ___ (be) more confident, he would apply for the job. (formal)", answer: "were" },
+    { prompt: "If she ___ (be) taller, she would join the team. (formal)", answer: "were" },
+    { prompt: "If I ___ (be) rich, I would buy a house. (formal)", answer: "were" },
   ],
   practice: [
     "Write one sentence imagining what you would do with more free time.",

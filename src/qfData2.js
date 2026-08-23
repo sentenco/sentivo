@@ -27,8 +27,11 @@ export default {
   ],
   guided: [
     { prompt: "___ do you go to work? (asking about place)", answer: "Where" },
-    { prompt: "___ broke the window? (asking about the doer — subject question)", answer: "Who" },
     { prompt: "___ are you leaving? (asking about time)", answer: "When" },
+    { prompt: "___ is she doing right now? (asking about the activity)", answer: "What" },
+    { prompt: "___ broke the window? (asking about the doer — subject question)", answer: "Who" },
+    { prompt: "___ happened at the meeting? (asking about the event — subject question)", answer: "What" },
+    { prompt: "___ team won the game? (asking about the doer — subject question)", answer: "Which" },
   ],
   practice: [
     "Write one wh-question asking about an object or detail, using do-support.",

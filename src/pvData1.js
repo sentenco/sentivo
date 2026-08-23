@@ -29,6 +29,9 @@ export default {
     { prompt: "Rice ___ (grow) in many countries. (passive)", answer: "is grown" },
     { prompt: "These cars ___ (build) in Japan. (passive)", answer: "are built" },
     { prompt: "This bread ___ (bake) fresh every morning. (passive)", answer: "is baked" },
+    { prompt: "Workers clean the office. → The office ___ (clean) every night. (passive)", answer: "is cleaned" },
+    { prompt: "The teacher checks the homework. → The homework ___ (check) every day. (passive)", answer: "is checked" },
+    { prompt: "They speak English in many countries. → English ___ (speak) in many countries. (passive)", answer: "is spoken" },
   ],
   practice: [
     "Rewrite one active sentence about your daily routine into the passive.",

@@ -29,8 +29,11 @@ const LESSON = {
   ],
   guided: [
     { prompt: "I wanted pizza, ___ I ordered pasta instead. (equal, contrasting)", answer: "but" },
+    { prompt: "She called, ___ he answered. (equal, adding)", answer: "and" },
+    { prompt: "I don't like coffee, ___ do I like tea. (equal, negative addition)", answer: "nor" },
     { prompt: "___ it was late, they kept working. (dependent clause, contrast)", answer: "Although" },
     { prompt: "We'll cancel the picnic ___ it rains. (dependent clause, condition)", answer: "unless / if" },
+    { prompt: "I stayed home ___ I was sick. (dependent clause, reason)", answer: "because" },
   ],
   practice: [
     "Write one sentence for each FANBOYS word — that's seven sentences, one per conjunction.",
@@ -45,7 +48,10 @@ function buildSlides(lesson) {
   if (lesson.comparePairs) slides.push("predict", "compare");
   lesson.fanboys.forEach((_, i) => slides.push(`fanboys${i}`));
   lesson.teach.forEach((_, i) => slides.push(`teach${i}`));
-  if (lesson.guided) slides.push("guided");
+  if (lesson.guided) {
+    const guidedChunks = Math.ceil(lesson.guided.length / 3);
+    for (let i = 0; i < guidedChunks; i++) slides.push(`guided${i}`);
+  }
   slides.push("practice", "wrapup");
   return slides;
 }
@@ -154,12 +160,14 @@ function GuidedItem({ item }) {
   );
 }
 
-function GuidedSlide({ lesson }) {
+function GuidedSlide({ lesson, index }) {
+  const chunk = lesson.guided.slice(index * 3, index * 3 + 3);
+  const totalChunks = Math.ceil(lesson.guided.length / 3);
   return (
     <div className="cjl-slide cjl-slide--part">
-      <h3 className="cjl-h">Guided practice</h3>
+      <h3 className="cjl-h">Guided practice{totalChunks > 1 ? ` (${index + 1} of ${totalChunks})` : ""}</h3>
       <div className="cjl-quiz-list">
-        {lesson.guided.map((item, i) => <GuidedItem key={i} item={item} />)}
+        {chunk.map((item, i) => <GuidedItem key={i} item={item} />)}
       </div>
     </div>
   );
@@ -192,7 +200,7 @@ function renderSlide(slideType, lesson) {
   if (slideType.startsWith("teach")) return <TeachSlide lesson={lesson} index={Number(slideType.replace("teach", ""))} />;
   if (slideType === "predict") return <PredictSlide lesson={lesson} />;
   if (slideType === "compare") return <CompareSlide lesson={lesson} />;
-  if (slideType === "guided") return <GuidedSlide lesson={lesson} />;
+  if (slideType.startsWith("guided")) return <GuidedSlide lesson={lesson} index={Number(slideType.replace("guided", ""))} />;
   if (slideType === "practice") return <PracticeSlide lesson={lesson} />;
   if (slideType === "wrapup") return <WrapupSlide lesson={lesson} />;
   return null;

@@ -28,7 +28,10 @@ export default {
   guided: [
     { prompt: "You're a teacher, ___?", answer: "aren't you" },
     { prompt: "She doesn't drive, ___?", answer: "does she" },
+    { prompt: "They can swim, ___?", answer: "can't they" },
     { prompt: "I'm late, ___? (exception)", answer: "aren't I" },
+    { prompt: "Close the door, ___? (imperative)", answer: "will you" },
+    { prompt: "Let's go, ___? (imperative)", answer: "shall we" },
   ],
   practice: [
     "Write one positive statement with a negative question tag.",

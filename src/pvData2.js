@@ -29,6 +29,9 @@ export default {
     { prompt: "The email ___ (send) an hour ago.", answer: "was sent" },
     { prompt: "The cookies ___ (eat) before dinner.", answer: "were eaten" },
     { prompt: "This painting ___ (paint) 200 years ago.", answer: "was painted" },
+    { prompt: "The car ___ (steal) from the parking lot. (irregular)", answer: "was stolen" },
+    { prompt: "This novel ___ (write) by a famous author. (irregular)", answer: "was written" },
+    { prompt: "The vase ___ (break) when it fell off the shelf. (irregular)", answer: "was broken" },
   ],
   practice: [
     "Write one passive sentence about something that happened to you in the past.",

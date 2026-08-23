@@ -27,8 +27,11 @@ export default {
   ],
   guided: [
     { prompt: "The woman ___ teaches us is very kind. (subject, referring to a person)", answer: "who" },
-    { prompt: "This is the restaurant ___ we ate last night. (object — can this be dropped?)", answer: "that / which (optional, can be dropped)" },
     { prompt: "The dog ___ is barking belongs to my neighbor. (subject, referring to a thing/animal)", answer: "which / that" },
+    { prompt: "The book ___ is on the table is mine. (subject, referring to a thing)", answer: "which / that" },
+    { prompt: "This is the restaurant ___ we ate last night. (object — can this be dropped?)", answer: "that / which (optional, can be dropped)" },
+    { prompt: "The movie ___ I watched was great. (object — can this be dropped?)", answer: "that / which (optional, can be dropped)" },
+    { prompt: "The people ___ we met were friendly. (object — can this be dropped?)", answer: "who / that (optional, can be dropped)" },
   ],
   practice: [
     "Write one sentence defining a person using who.",

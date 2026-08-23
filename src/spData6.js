@@ -20,6 +20,8 @@ export default {
     },
   ],
   guided: [
+    { prompt: "Birds fly. — which pattern?", answer: "SV — just subject and verb, nothing after." },
+    { prompt: "I like rice. — which pattern?", answer: "SVO — “rice” receives the action." },
     { prompt: "She is a teacher. — which pattern?", answer: "SVC — “a teacher” describes she." },
     { prompt: "John gave Jane a present. — which pattern?", answer: "SVOO — two objects: Jane and a present." },
     { prompt: "We found the movie boring. — which pattern?", answer: "SVOC — “boring” describes the movie." },

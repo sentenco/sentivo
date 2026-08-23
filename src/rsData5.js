@@ -27,8 +27,11 @@ export default {
   ],
   guided: [
     { prompt: "\"Two plus two is four,\" the teacher said. → The teacher said two plus two ___ four. (still true)", answer: "is" },
+    { prompt: "\"I work at a bank,\" he said. → He said he ___ at a bank. (still true)", answer: "works" },
+    { prompt: "\"Water boils at 100 degrees,\" the teacher said. → The teacher said water ___ at 100 degrees. (still true)", answer: "boils" },
     { prompt: "\"Don't swim there, it's dangerous,\" he said. → He ___ me not to swim there.", answer: "warned" },
     { prompt: "\"Let's watch a movie,\" she said. → She ___ watching a movie.", answer: "suggested" },
+    { prompt: "\"I'll definitely help,\" she said. → She ___ to help.", answer: "promised" },
   ],
   practice: [
     "Write one sentence reporting a fact that's still true, with no backshift.",

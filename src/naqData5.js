@@ -28,7 +28,10 @@ export default {
   guided: [
     { prompt: "I don't have ___ time today. (negative)", answer: "any" },
     { prompt: "Would you like ___ cake? (polite offer, question form)", answer: "some" },
+    { prompt: "I have ___ good news to share. (affirmative)", answer: "some" },
     { prompt: "There are ___ mistakes in this report. (no + noun, negative)", answer: "no" },
+    { prompt: "I have ___ money left. (no + noun, negative)", answer: "no" },
+    { prompt: "I don't have ___ money left. (not any — same meaning as no)", answer: "any" },
   ],
   practice: [
     "Write one affirmative sentence using some.",

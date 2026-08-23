@@ -27,8 +27,11 @@ export default {
   ],
   guided: [
     { prompt: "___ I use your phone for a second? (casual permission)", answer: "Can" },
-    { prompt: "___ you please turn down the music? (polite request)", answer: "Could" },
     { prompt: "___ I ask you a question, sir? (formal permission)", answer: "May" },
+    { prompt: "___ we leave early today? (casual permission)", answer: "Can / Could" },
+    { prompt: "___ you please turn down the music? (polite request)", answer: "Could" },
+    { prompt: "___ you give me a hand with this bag? (polite request)", answer: "Could / Would" },
+    { prompt: "___ you mind closing the window? (polite request)", answer: "Would" },
   ],
   practice: [
     "Ask permission to borrow something, using can.",

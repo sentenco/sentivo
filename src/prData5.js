@@ -27,8 +27,11 @@ export default {
   ],
   guided: [
     { prompt: "She's worried ___ her exam results.", answer: "about" },
+    { prompt: "I'm interested ___ art. (fixed pairing)", answer: "in" },
+    { prompt: "She's afraid ___ spiders. (fixed pairing)", answer: "of" },
     { prompt: "He's married ___ a teacher. (not 'with')", answer: "to" },
     { prompt: "This phone is different ___ the last model.", answer: "from" },
+    { prompt: "This method is similar ___ the old one. (not 'with')", answer: "to" },
   ],
   practice: [
     "Write one sentence using an adjective + preposition combo, like interested in or good at.",

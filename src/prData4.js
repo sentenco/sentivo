@@ -27,8 +27,11 @@ export default {
   ],
   guided: [
     { prompt: "This project depends ___ everyone doing their part.", answer: "on" },
+    { prompt: "Please listen ___ me. (fixed pairing)", answer: "to" },
+    { prompt: "She apologized ___ being late. (fixed pairing)", answer: "for" },
     { prompt: "I'm looking ___ my glasses — have you seen them? (searching)", answer: "for" },
     { prompt: "She looks ___ her grandmother every weekend. (takes care of)", answer: "after" },
+    { prompt: "I'll look ___ the report. (glance/check — different meaning from look for)", answer: "at" },
   ],
   practice: [
     "Write one sentence using a fixed verb + preposition combo, like depend on or listen to.",

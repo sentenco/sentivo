@@ -27,8 +27,11 @@ export default {
   ],
   guided: [
     { prompt: "I met ___ interesting person today. (first mention)", answer: "an" },
+    { prompt: "He works at ___ university. (a/an sound rule)", answer: "a" },
+    { prompt: "She bought ___ umbrella before it started raining. (first mention)", answer: "an" },
     { prompt: "I met a teacher yesterday. ___ teacher was very kind. (already known)", answer: "The" },
     { prompt: "Can you pass me ___ salt? (only one on the table)", answer: "the" },
+    { prompt: "___ sun rose over the mountains this morning. (unique — there's only one)", answer: "The" },
   ],
   practice: [
     "Write two sentences about an object — introduce it with a/an, then refer back to it with the.",

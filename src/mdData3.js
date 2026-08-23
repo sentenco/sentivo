@@ -27,8 +27,11 @@ export default {
   ],
   guided: [
     { prompt: "I'm not sure, but she ___ be running late.", answer: "might" },
-    { prompt: "He's shivering and his lips are blue — he ___ be freezing.", answer: "must" },
     { prompt: "That ___ be true, but I'm not certain.", answer: "could" },
+    { prompt: "He ___ be at the library — I'm not really sure.", answer: "may / might / could" },
+    { prompt: "He's shivering and his lips are blue — he ___ be freezing.", answer: "must" },
+    { prompt: "The ground is soaked and there are puddles everywhere — it ___ have rained last night.", answer: "must" },
+    { prompt: "She knows every detail about the trip — she ___ have read the itinerary already.", answer: "must" },
   ],
   practice: [
     "Make a guess about the weather tomorrow, using might.",

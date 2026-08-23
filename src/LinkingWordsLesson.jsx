@@ -25,8 +25,11 @@ const LESSON = {
   ],
   guided: [
     { prompt: "She was tired. ___, she kept working. (contrast)", answer: "However / Nevertheless" },
+    { prompt: "He's very talented. ___, he never practices. (contrast)", answer: "However / Nevertheless" },
+    { prompt: "I don't like the plan. ___, I'll go along with it. (contrast)", answer: "Nevertheless / However" },
     { prompt: "The store was closed. ___, we went home empty-handed. (result)", answer: "Therefore / As a result / Consequently" },
     { prompt: "He forgot his wallet; ___, he couldn't pay for lunch. (result, after a semicolon)", answer: "therefore / as a result" },
+    { prompt: "The flight was delayed. ___, we missed our connection. (result)", answer: "As a result / Consequently" },
   ],
   practice: [
     "Write two sentences connected by however or nevertheless, with correct punctuation.",
@@ -40,7 +43,10 @@ function buildSlides(lesson) {
   const slides = ["cover", "warmup"];
   if (lesson.comparePairs) slides.push("predict", "compare");
   lesson.teach.forEach((_, i) => slides.push(`teach${i}`));
-  if (lesson.guided) slides.push("guided");
+  if (lesson.guided) {
+    const guidedChunks = Math.ceil(lesson.guided.length / 3);
+    for (let i = 0; i < guidedChunks; i++) slides.push(`guided${i}`);
+  }
   slides.push("practice", "wrapup");
   return slides;
 }
@@ -128,12 +134,14 @@ function GuidedItem({ item }) {
   );
 }
 
-function GuidedSlide({ lesson }) {
+function GuidedSlide({ lesson, index }) {
+  const chunk = lesson.guided.slice(index * 3, index * 3 + 3);
+  const totalChunks = Math.ceil(lesson.guided.length / 3);
   return (
     <div className="lwl-slide lwl-slide--part">
-      <h3 className="lwl-h">Guided practice</h3>
+      <h3 className="lwl-h">Guided practice{totalChunks > 1 ? ` (${index + 1} of ${totalChunks})` : ""}</h3>
       <div className="lwl-quiz-list">
-        {lesson.guided.map((item, i) => <GuidedItem key={i} item={item} />)}
+        {chunk.map((item, i) => <GuidedItem key={i} item={item} />)}
       </div>
     </div>
   );
@@ -165,7 +173,7 @@ function renderSlide(slideType, lesson) {
   if (slideType.startsWith("teach")) return <TeachSlide lesson={lesson} index={Number(slideType.replace("teach", ""))} />;
   if (slideType === "predict") return <PredictSlide lesson={lesson} />;
   if (slideType === "compare") return <CompareSlide lesson={lesson} />;
-  if (slideType === "guided") return <GuidedSlide lesson={lesson} />;
+  if (slideType.startsWith("guided")) return <GuidedSlide lesson={lesson} index={Number(slideType.replace("guided", ""))} />;
   if (slideType === "practice") return <PracticeSlide lesson={lesson} />;
   if (slideType === "wrapup") return <WrapupSlide lesson={lesson} />;
   return null;

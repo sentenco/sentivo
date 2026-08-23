@@ -27,8 +27,11 @@ export default {
   ],
   guided: [
     { prompt: "The man who is waiting outside is my father. → The man ___ outside is my father.", answer: "waiting" },
-    { prompt: "The report that was finished yesterday is on your desk. → The report ___ yesterday is on your desk.", answer: "finished" },
     { prompt: "Students who are studying for finals should get enough sleep. → Students ___ for finals should get enough sleep.", answer: "studying" },
+    { prompt: "The kids who are playing outside are my students. → The kids ___ outside are my students.", answer: "playing" },
+    { prompt: "The report that was finished yesterday is on your desk. → The report ___ yesterday is on your desk.", answer: "finished" },
+    { prompt: "The car which was damaged in the storm is mine. → The car ___ in the storm is mine.", answer: "damaged" },
+    { prompt: "The players who were chosen for the team celebrated. → The players ___ for the team celebrated.", answer: "chosen" },
   ],
   practice: [
     "Write a full relative clause with -ing, then reduce it.",

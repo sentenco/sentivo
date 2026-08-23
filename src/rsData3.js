@@ -27,8 +27,11 @@ export default {
   ],
   guided: [
     { prompt: "\"Do you speak French?\" she asked. → She asked ___ I spoke French.", answer: "if / whether" },
-    { prompt: "\"Where is the station?\" he asked. → He asked ___ the station was.", answer: "where" },
     { prompt: "\"Are you ready?\" she asked. → She asked if I ___ ready.", answer: "was" },
+    { prompt: "\"Have you finished?\" she asked. → She asked ___ I had finished.", answer: "if / whether" },
+    { prompt: "\"Where is the station?\" he asked. → He asked ___ the station was.", answer: "where" },
+    { prompt: "\"What happened?\" she asked. → She asked ___ had happened.", answer: "what" },
+    { prompt: "\"Why are you late?\" he asked. → He asked ___ I was late.", answer: "why" },
   ],
   practice: [
     "Report a yes/no question someone asked you, using if or whether.",

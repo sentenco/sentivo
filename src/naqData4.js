@@ -28,7 +28,10 @@ export default {
   guided: [
     { prompt: "How ___ (much/many) sugar do you want in your coffee?", answer: "much" },
     { prompt: "I have ___ (a lot of/much) friends coming to the party. (everyday, positive)", answer: "a lot of" },
+    { prompt: "There aren't ___ (much/many) seats left in the theater.", answer: "many" },
     { prompt: "Don't worry, we still have ___ (little/a little) time to finish. (reassuring)", answer: "a little" },
+    { prompt: "She has ___ (few/a few) close friends here, but she's happy with that. (feels positive)", answer: "a few" },
+    { prompt: "We have ___ (little/a little) time before the deadline, and it's stressing everyone out. (feels negative)", answer: "little" },
   ],
   practice: [
     "Write one question using how much or how many.",

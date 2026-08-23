@@ -50,7 +50,10 @@ export default {
     guided: [
       { prompt: "I like apples ___ bananas. (adding)", answer: "and" },
       { prompt: "She is tired, ___ she is happy. (contrast)", answer: "but" },
+      { prompt: "I woke up late, ___ I missed the bus. (result)", answer: "so" },
       { prompt: "He stayed home ___ he was sick. (reason)", answer: "because" },
+      { prompt: "___ it rained, we went out. (condition/contrast)", answer: "Although" },
+      { prompt: "We'll go to the park ___ it doesn't rain. (condition)", answer: "if" },
     ],
     independent: [
       "Join: “I woke up late.” + “I missed the bus.” using “so.”",

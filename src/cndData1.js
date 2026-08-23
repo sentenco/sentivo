@@ -28,7 +28,10 @@ export default {
   guided: [
     { prompt: "If you ___ (heat) water to 100°C, it boils.", answer: "heat" },
     { prompt: "If people don't eat, they ___ (get) hungry.", answer: "get" },
+    { prompt: "If you don't sleep enough, you ___ (feel) tired the next day.", answer: "feel" },
     { prompt: "___ you mix red and white, you get pink. (if or when — either works)", answer: "If / When" },
+    { prompt: "___ ice melts, it turns into water. (if or when — either works)", answer: "If / When" },
+    { prompt: "___ you press this button, the light turns on. (if or when — either works)", answer: "If / When" },
   ],
   practice: [
     "Write one true fact using if, about science or nature.",

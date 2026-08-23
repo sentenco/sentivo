@@ -49,8 +49,11 @@ export default {
     ],
     guided: [
       { prompt: "She has a ___ (beauty) dress.", answer: "beautiful" },
-      { prompt: "He runs ___ (quick).", answer: "quickly" },
       { prompt: "The car is very ___ (slow).", answer: "slow" },
+      { prompt: "That is a ___ (tall) building.", answer: "tall" },
+      { prompt: "He runs ___ (quick).", answer: "quickly" },
+      { prompt: "She sings ___ (beauty).", answer: "beautifully" },
+      { prompt: "He drives ___ (care).", answer: "carefully" },
     ],
     independent: [
       "Label each word: “quick” and “quickly.”",

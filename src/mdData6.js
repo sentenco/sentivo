@@ -27,7 +27,10 @@ export default {
   ],
   guided: [
     { prompt: "The door is unlocked — someone ___ forgotten to lock it.", answer: "must have" },
+    { prompt: "Her hands are covered in paint — she ___ been working on the mural.", answer: "must have" },
+    { prompt: "The plants are all dead — nobody ___ watered them for weeks.", answer: "must have" },
     { prompt: "I'm not sure, but he ___ taken the wrong train.", answer: "might have" },
+    { prompt: "He didn't answer his phone — he ___ been in a meeting.", answer: "might have" },
     { prompt: "She was with us all evening, so she ___ sent that message.", answer: "can't have" },
   ],
   practice: [

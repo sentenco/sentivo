@@ -28,7 +28,10 @@ export default {
   guided: [
     { prompt: "If I ___ (know) about the party, I would have gone.", answer: "had known" },
     { prompt: "If he had studied medicine, he ___ (become) a doctor. (certain)", answer: "would have become" },
+    { prompt: "If she ___ (leave) earlier, she would have caught the train.", answer: "had left" },
     { prompt: "If we had left earlier, we ___ have avoided the traffic. (less certain — use might)", answer: "might" },
+    { prompt: "If she had left earlier, she ___ have caught the train. (less certain — use could)", answer: "could" },
+    { prompt: "If we had known, we ___ have helped. (less certain — use might)", answer: "might" },
   ],
   practice: [
     "Write one sentence about a real regret, using if and would have.",

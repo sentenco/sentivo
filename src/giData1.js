@@ -27,8 +27,11 @@ export default {
   ],
   guided: [
     { prompt: "I finished ___ (write) the essay before midnight.", answer: "writing" },
-    { prompt: "We plan ___ (visit) Japan next year.", answer: "to visit" },
     { prompt: "She avoided ___ (answer) the question directly.", answer: "answering" },
+    { prompt: "They avoided ___ (talk) about it directly.", answer: "talking" },
+    { prompt: "We plan ___ (visit) Japan next year.", answer: "to visit" },
+    { prompt: "She decided ___ (leave) early.", answer: "to leave" },
+    { prompt: "They promised ___ (help) with the move.", answer: "to help" },
   ],
   practice: [
     "Write one sentence using a verb that's always followed by a gerund.",

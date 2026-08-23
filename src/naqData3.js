@@ -27,8 +27,11 @@ export default {
   ],
   guided: [
     { prompt: "I need to go to ___ bed early tonight. (fixed expression)", answer: "(no article)" },
-    { prompt: "He grew up in ___ Netherlands. (plural-form country)", answer: "the" },
     { prompt: "___ cats sleep a lot. (general statement)", answer: "(no article)" },
+    { prompt: "___ music makes me happy. (general statement)", answer: "(no article)" },
+    { prompt: "He grew up in ___ Netherlands. (plural-form country)", answer: "the" },
+    { prompt: "He works in ___ Philippines. (plural-form country)", answer: "the" },
+    { prompt: "They visited ___ Amazon River. (natural landmark)", answer: "the" },
   ],
   practice: [
     "Write one general statement about animals or people, using no article.",

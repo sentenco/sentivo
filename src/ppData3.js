@@ -27,8 +27,11 @@ export default {
   ],
   guided: [
     { prompt: "I taught ___ (myself/me) how to cook. (reflexive)", answer: "myself" },
-    { prompt: "The manager ___ approved the request. (added only for emphasis)", answer: "himself / herself" },
     { prompt: "They enjoyed ___ (themselves/them) at the party. (reflexive)", answer: "themselves" },
+    { prompt: "She cut ___ (herself/her) while chopping vegetables. (reflexive)", answer: "herself" },
+    { prompt: "The manager ___ approved the request. (added only for emphasis)", answer: "himself / herself" },
+    { prompt: "I fixed the car ___. (added only for emphasis)", answer: "myself" },
+    { prompt: "We built this house ___. (added only for emphasis)", answer: "ourselves" },
   ],
   practice: [
     "Write one reflexive sentence where the action comes back to the subject.",

@@ -27,8 +27,11 @@ export default {
   ],
   guided: [
     { prompt: "The Mona Lisa was painted ___ Leonardo da Vinci. (agent matters)", answer: "by" },
-    { prompt: "My phone was stolen ___. (doer unknown — no agent needed)", answer: "(no by-phrase)" },
     { prompt: "This song was written ___ a famous singer. (agent matters)", answer: "by" },
+    { prompt: "The novel was written ___ Jane Austen. (agent matters)", answer: "by" },
+    { prompt: "My phone was stolen ___. (doer unknown — no agent needed)", answer: "(no by-phrase)" },
+    { prompt: "The bridge was built ___. (doer unimportant — no agent needed)", answer: "(no by-phrase)" },
+    { prompt: "Dinner is served ___ at 7pm. (doer obvious from context — no agent needed)", answer: "(no by-phrase)" },
   ],
   practice: [
     "Write one passive sentence about a famous piece of art or writing, including the agent.",

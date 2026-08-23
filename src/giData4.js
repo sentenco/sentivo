@@ -27,8 +27,11 @@ export default {
   ],
   guided: [
     { prompt: "I saved money ___ (buy) a new laptop. (purpose)", answer: "to buy" },
-    { prompt: "We're so ___ (excited) ___ (see) you again. (adjective + infinitive)", answer: "excited to see" },
     { prompt: "She left early ___ (avoid) the traffic. (purpose)", answer: "to avoid" },
+    { prompt: "He studies hard ___ (pass) the exam. (purpose)", answer: "to pass" },
+    { prompt: "We're so ___ (excited) ___ (see) you again. (adjective + infinitive)", answer: "excited to see" },
+    { prompt: "I'm ___ (happy) ___ (help) with the project. (adjective + infinitive)", answer: "happy to help" },
+    { prompt: "This is ___ (hard) ___ (believe). (adjective + infinitive)", answer: "hard to believe" },
   ],
   practice: [
     "Write one sentence using an infinitive of purpose to explain why you did something today.",

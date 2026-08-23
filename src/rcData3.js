@@ -27,8 +27,11 @@ export default {
   ],
   guided: [
     { prompt: "My mom, ___ is a nurse, works night shifts. (extra info)", answer: "who" },
-    { prompt: "This painting, ___ cost a fortune, hangs in the museum. (not 'that')", answer: "which" },
+    { prompt: "This book, ___ took me a year to write, is finally finished. (extra info)", answer: "which" },
+    { prompt: "Paris, ___ I studied abroad, is beautiful in spring. (extra info)", answer: "where" },
     { prompt: "Is 'that' allowed in: 'My car, that I bought new, broke down.'?", answer: "No — must be 'which,' since it's non-defining (has commas)" },
+    { prompt: "My sister, ___ is a doctor, lives nearby. (not 'that')", answer: "who" },
+    { prompt: "This car, ___ I bought last year, still runs well. (not 'that')", answer: "which" },
   ],
   practice: [
     "Write one non-defining sentence about a family member, using commas.",

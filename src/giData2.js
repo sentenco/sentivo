@@ -26,6 +26,9 @@ export default {
     { left: "She continued working. / She continued to work.", right: "He stopped drinking coffee. vs He stopped to drink coffee." },
   ],
   guided: [
+    { prompt: "It started ___ (rain) around noon. (either form works)", answer: "raining / to rain" },
+    { prompt: "She prefers ___ (walk) to work. (either form works)", answer: "walking / to walk" },
+    { prompt: "I love ___ (read) before bed. (either form works)", answer: "reading / to read" },
     { prompt: "I stopped ___ (eat) meat five years ago. (quit the habit)", answer: "eating" },
     { prompt: "Please remember ___ (lock) the door before you leave. (don't forget, future action)", answer: "to lock" },
     { prompt: "I'll never forget ___ (see) that view for the first time. (recalling a memory)", answer: "seeing" },

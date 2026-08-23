@@ -27,8 +27,11 @@ export default {
   ],
   guided: [
     { prompt: "\"Open your books,\" she said. → She told us ___ open our books.", answer: "to" },
-    { prompt: "\"Don't run,\" he said. → He told them ___ run.", answer: "not to" },
     { prompt: "\"Please call me,\" she said. → She asked me ___ her.", answer: "to call" },
+    { prompt: "\"Sit down,\" he said. → He told us ___ sit down.", answer: "to" },
+    { prompt: "\"Don't run,\" he said. → He told them ___ run.", answer: "not to" },
+    { prompt: "\"Don't be late,\" she said. → She told him ___ be late.", answer: "not to" },
+    { prompt: "\"Please don't shout,\" he said. → He asked me ___ shout.", answer: "not to" },
   ],
   practice: [
     "Report a positive command someone gave you, using told or asked.",

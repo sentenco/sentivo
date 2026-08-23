@@ -26,9 +26,12 @@ export default {
     { left: "You must show your ID at the door.", right: "You mustn't park in front of the exit." },
   ],
   guided: [
-    { prompt: "You ___ touch that wire — it's dangerous. (forbidden)", answer: "mustn't" },
     { prompt: "Everyone ___ wear a helmet on this site. (required)", answer: "must" },
+    { prompt: "We ___ leave right now or we'll miss the flight. (required)", answer: "must" },
+    { prompt: "All passengers ___ fasten their seatbelts before takeoff. (required)", answer: "must" },
+    { prompt: "You ___ touch that wire — it's dangerous. (forbidden)", answer: "mustn't" },
     { prompt: "Students ___ cheat during the exam. (forbidden)", answer: "mustn't" },
+    { prompt: "You ___ use your phone during the exam. (forbidden)", answer: "mustn't" },
   ],
   practice: [
     "Write one rule using must.",

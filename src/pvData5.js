@@ -27,8 +27,11 @@ export default {
   ],
   guided: [
     { prompt: "This document ___ (sign) before Friday. (obligation)", answer: "must be signed" },
+    { prompt: "The rules ___ (follow) at all times. (obligation)", answer: "must be followed" },
     { prompt: "The music ___ (turn) down if it's too loud. (possibility)", answer: "can be turned" },
+    { prompt: "This problem ___ (solve) with a bit of patience. (possibility)", answer: "can be solved" },
     { prompt: "The essay ___ (proofread) before you submit it. (advice)", answer: "should be proofread" },
+    { prompt: "The report ___ (finish) by Friday. (advice)", answer: "should be finished" },
   ],
   practice: [
     "Write one rule using must be + past participle.",

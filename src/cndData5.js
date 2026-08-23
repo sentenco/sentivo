@@ -27,8 +27,11 @@ export default {
   ],
   guided: [
     { prompt: "If I ___ (learn) to swim as a kid, I wouldn't be scared of the water now.", answer: "had learned" },
-    { prompt: "If he weren't so lazy, he ___ (finish) the project by now.", answer: "would have finished" },
     { prompt: "If they had moved abroad, they ___ (speak) another language today.", answer: "would speak" },
+    { prompt: "If she ___ (take) that job, she would be living in Tokyo today.", answer: "had taken" },
+    { prompt: "If he weren't so lazy, he ___ (finish) the project by now.", answer: "would have finished" },
+    { prompt: "If she ___ (be) so shy, she would have spoken up at the meeting.", answer: "weren't" },
+    { prompt: "If I ___ (hate) flying, I would have gone to the conference.", answer: "didn't hate" },
   ],
   practice: [
     "Write one sentence about how a past decision still affects your present, using a past condition and a present result.",

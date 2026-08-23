@@ -25,8 +25,11 @@ const LESSON = {
   ],
   guided: [
     { prompt: "I ___ (used to / am used to) smoke, but I quit five years ago. (past habit)", answer: "used to" },
+    { prompt: "We ___ (used to) live in a small apartment before we moved. (past habit)", answer: "used to" },
+    { prompt: "He ___ (used to) walk to school every day as a kid. (past habit)", answer: "used to" },
     { prompt: "After a few weeks, he ___ (get) used to the noise. (process of adjusting)", answer: "got" },
     { prompt: "She's ___ working night shifts now — it doesn't bother her. (familiar)", answer: "used to" },
+    { prompt: "It took a while, but I finally ___ used to the cold weather. (process of adjusting)", answer: "got" },
   ],
   practice: [
     "Write one sentence about a past habit, using used to.",
@@ -40,7 +43,10 @@ function buildSlides(lesson) {
   const slides = ["cover", "warmup"];
   if (lesson.comparePairs) slides.push("predict", "compare");
   lesson.teach.forEach((_, i) => slides.push(`teach${i}`));
-  if (lesson.guided) slides.push("guided");
+  if (lesson.guided) {
+    const guidedChunks = Math.ceil(lesson.guided.length / 3);
+    for (let i = 0; i < guidedChunks; i++) slides.push(`guided${i}`);
+  }
   slides.push("practice", "wrapup");
   return slides;
 }
@@ -128,12 +134,14 @@ function GuidedItem({ item }) {
   );
 }
 
-function GuidedSlide({ lesson }) {
+function GuidedSlide({ lesson, index }) {
+  const chunk = lesson.guided.slice(index * 3, index * 3 + 3);
+  const totalChunks = Math.ceil(lesson.guided.length / 3);
   return (
     <div className="ustl-slide ustl-slide--part">
-      <h3 className="ustl-h">Guided practice</h3>
+      <h3 className="ustl-h">Guided practice{totalChunks > 1 ? ` (${index + 1} of ${totalChunks})` : ""}</h3>
       <div className="ustl-quiz-list">
-        {lesson.guided.map((item, i) => <GuidedItem key={i} item={item} />)}
+        {chunk.map((item, i) => <GuidedItem key={i} item={item} />)}
       </div>
     </div>
   );
@@ -165,7 +173,7 @@ function renderSlide(slideType, lesson) {
   if (slideType.startsWith("teach")) return <TeachSlide lesson={lesson} index={Number(slideType.replace("teach", ""))} />;
   if (slideType === "predict") return <PredictSlide lesson={lesson} />;
   if (slideType === "compare") return <CompareSlide lesson={lesson} />;
-  if (slideType === "guided") return <GuidedSlide lesson={lesson} />;
+  if (slideType.startsWith("guided")) return <GuidedSlide lesson={lesson} index={Number(slideType.replace("guided", ""))} />;
   if (slideType === "practice") return <PracticeSlide lesson={lesson} />;
   if (slideType === "wrapup") return <WrapupSlide lesson={lesson} />;
   return null;

@@ -27,8 +27,11 @@ export default {
   ],
   guided: [
     { prompt: "You speak French. (turn into a question)", answer: "Do you speak French?" },
-    { prompt: "He is sleeping. (turn into a question)", answer: "Is he sleeping?" },
     { prompt: "They finished the project. (turn into a question, past simple)", answer: "Did they finish the project?" },
+    { prompt: "She likes tea. (turn into a question)", answer: "Does she like tea?" },
+    { prompt: "He is sleeping. (turn into a question)", answer: "Is he sleeping?" },
+    { prompt: "They have finished. (turn into a question)", answer: "Have they finished?" },
+    { prompt: "You can swim. (turn into a question)", answer: "Can you swim?" },
   ],
   practice: [
     "Write one yes/no question using do-support, about someone's daily routine.",

@@ -27,8 +27,11 @@ export default {
   ],
   guided: [
     { prompt: "The package ___ (deliver) already.", answer: "has been delivered" },
-    { prompt: "All the seats ___ (book) for tonight's show.", answer: "have been booked" },
     { prompt: "The problem ___ (fix). You can use the printer now.", answer: "has been fixed" },
+    { prompt: "The house ___ (sell) to a new family.", answer: "has been sold" },
+    { prompt: "All the seats ___ (book) for tonight's show.", answer: "have been booked" },
+    { prompt: "The keys ___ (find) under the couch.", answer: "have been found" },
+    { prompt: "The tickets ___ (sell) out for tonight's show.", answer: "have been sold" },
   ],
   practice: [
     "Write one sentence about something that has already been done today, using present perfect passive.",

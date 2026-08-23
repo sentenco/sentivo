@@ -27,7 +27,10 @@ export default {
   ],
   guided: [
     { prompt: "That's the boy ___ backpack is red. (possession)", answer: "whose" },
+    { prompt: "She's the teacher ___ class I love. (possession)", answer: "whose" },
+    { prompt: "This is the company ___ logo you designed. (possession)", answer: "whose" },
     { prompt: "This is the cafe ___ we had our first date. (place)", answer: "where" },
+    { prompt: "That's the town ___ I grew up. (place)", answer: "where" },
     { prompt: "I'll never forget the day ___ I graduated. (time)", answer: "when" },
   ],
   practice: [

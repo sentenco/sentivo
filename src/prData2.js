@@ -26,9 +26,12 @@ export default {
     { left: "She was born in the 90s.", right: "She was born on a Tuesday." },
   ],
   guided: [
-    { prompt: "The meeting is ___ 3pm. (exact time)", answer: "at" },
     { prompt: "We're going on vacation ___ August. (period)", answer: "in" },
     { prompt: "My birthday is ___ the 12th of May. (specific date)", answer: "on" },
+    { prompt: "We meet ___ the morning. (period)", answer: "in" },
+    { prompt: "The meeting is ___ 3pm. (exact time)", answer: "at" },
+    { prompt: "We exchange gifts ___ Christmas. (fixed exception)", answer: "at" },
+    { prompt: "I sleep ___ night, but I go out ___ the evening. (fixed exceptions)", answer: "at ... in" },
   ],
   practice: [
     "Write one sentence about a plan using in, for a month or year.",

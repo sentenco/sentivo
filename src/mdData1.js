@@ -26,9 +26,12 @@ export default {
     { left: "He can run fast.", right: "He could run fast when he was younger." },
   ],
   guided: [
-    { prompt: "I ___ drive when I was sixteen. (past, general ability)", answer: "could" },
     { prompt: "He ___ speak Japanese fluently. (present ability)", answer: "can" },
+    { prompt: "My brother ___ fix computers really well. (present ability)", answer: "can" },
+    { prompt: "I ___ hold my breath for a minute. (present ability)", answer: "can" },
+    { prompt: "I ___ drive when I was sixteen. (past, general ability)", answer: "could" },
     { prompt: "She ___ climb trees when she was a kid.", answer: "could" },
+    { prompt: "They ___ run much faster when they were younger.", answer: "could" },
   ],
   practice: [
     "Write one sentence about something you can do now.",

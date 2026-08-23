@@ -27,8 +27,11 @@ export default {
   ],
   guided: [
     { prompt: "___ (This/These) shoes right here are mine.", answer: "These" },
+    { prompt: "___ (That/Those) over there are your keys.", answer: "Those" },
+    { prompt: "___ (This/That) is my favorite book right here.", answer: "This" },
     { prompt: "___ ate the last cookie? (unspecified person, question)", answer: "Someone / Anyone" },
     { prompt: "There's ___ I can do about the weather. (unspecified thing, negative)", answer: "nothing" },
+    { prompt: "___ left their bag here. (unspecified person, affirmative)", answer: "Someone" },
   ],
   practice: [
     "Write one sentence with a demonstrative pronoun pointing at something near you.",

@@ -27,8 +27,11 @@ export default {
   ],
   guided: [
     { prompt: "\"I am leaving,\" he said. → He said he ___ leaving.", answer: "was" },
-    { prompt: "She ___ me she was tired. (needs a person)", answer: "told" },
     { prompt: "\"I will help you,\" she said. → She said she ___ help me.", answer: "would" },
+    { prompt: "\"I finished the report,\" he said. → He said he ___ finished the report.", answer: "had" },
+    { prompt: "She ___ me she was tired. (needs a person)", answer: "told" },
+    { prompt: "He ___ he was leaving. (no person needed)", answer: "said" },
+    { prompt: "She ___ us it was raining. (needs a person)", answer: "told" },
   ],
   practice: [
     "Report a statement a friend made to you recently, backshifting the tense.",

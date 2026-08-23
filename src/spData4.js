@@ -23,6 +23,9 @@ export default {
     { prompt: "John gave Jane a present. — which is the indirect object?", answer: "Jane — the person who receives it." },
     { prompt: "She sent me a message. — which is the direct object?", answer: "a message — the thing that was sent." },
     { prompt: "They told us ___. (complete with a direct object)", answer: "Any noun works — e.g. “a story.”" },
+    { prompt: "He showed her the photos. — which is the direct object?", answer: "the photos — the thing being shown." },
+    { prompt: "We taught them the rules. — which is the indirect object?", answer: "them — the people being taught." },
+    { prompt: "She offered him ___. (complete with a direct object)", answer: "Any noun works — e.g. “a seat.”" },
   ],
   practice: [
     "Rearrange into an SVOO sentence: bike / bought / me / my father.",
