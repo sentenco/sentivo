@@ -505,7 +505,7 @@ function GrammarFeature({ navigate, query }) {
   );
 }
 
-const BOOK_MOTIF_COLORS = ["#E8A33D", "#16BFAE", "#7C5CFC", "#4C7FE0", "#E0637A", "#E89E2E", "#0F9E90", "#A9754D"];
+const BOOK_MOTIF_COLORS = ["#FF5A5F", "#FFB020", "#2EC4B6", "#5B4EFF", "#FF8FA3", "#3DDC97", "#4EA8DE", "#B892FF"];
 
 // Age track per book -- local lookup since the Supabase "tools" row only
 // carries CEFR level, not age. Books 1-6 are the Teens-narrator series
@@ -638,46 +638,38 @@ function ModeIcon({ mode }) {
   );
 }
 
-function BookshelfRows({ books, navigate, colorOffset }) {
-  const rows = [];
-  for (let i = 0; i < books.length; i += 4) rows.push(books.slice(i, i + 4));
-
-  return rows.map((row, ri) => (
-    <div key={ri} className="bkshf-shelf-group">
-      <div className="bkshf-shelf-row">
-        {row.map((c, i) => {
-          const color = BOOK_MOTIF_COLORS[(colorOffset + ri * 4 + i) % BOOK_MOTIF_COLORS.length];
-          const cover = STORY_COVERS[c.id];
-          return (
-            <a
-              key={c.id}
-              href={`/library/${c.id}`}
-              className="bkshf-book"
-              onClick={(e) => { e.preventDefault(); navigate(`/library/${c.id}`); }}
-            >
-              {cover ? (
-                <>
-                  <img className="bkshf-book-img" src={cover} alt={c.title} />
-                  <div className="bkshf-book-scrim" />
-                  <h3 className="bkshf-book-title bkshf-book-title--onimg">{c.title}</h3>
-                </>
-              ) : (
-                <div className="bkshf-book-flat" style={{ background: `${color}1F` }}>
-                  <span className="bkshf-book-motif" style={{ "--motif-color": `${color}33` }} />
-                  <span className="bkshf-ribbon" style={{ background: color }} />
-                  <h3 className="bkshf-book-title">{c.title}</h3>
-                </div>
-              )}
-            </a>
-          );
-        })}
-      </div>
-      <div className="bkshf-shelf-ledge" />
+function OpenShelfRow({ books, navigate, colorOffset }) {
+  return (
+    <div className="oshlf-grid">
+      {books.map((c, i) => {
+        const cover = STORY_COVERS[c.id];
+        const color = BOOK_MOTIF_COLORS[(colorOffset + i) % BOOK_MOTIF_COLORS.length];
+        const initial = (c.title || "?").trim().charAt(0).toUpperCase();
+        return (
+          <a
+            key={c.id}
+            href={`/library/${c.id}`}
+            className="oshlf-book"
+            onClick={(e) => { e.preventDefault(); navigate(`/library/${c.id}`); }}
+          >
+            {cover ? (
+              <img className="oshlf-book-img" src={cover} alt={c.title} />
+            ) : (
+              <div className="oshlf-book-flat" style={{ background: color }}>
+                <span className="oshlf-book-monogram">{initial}</span>
+              </div>
+            )}
+            <div className="oshlf-book-scrim" />
+            <span className="oshlf-book-level">{c.level || "A1"}</span>
+            <h3 className="oshlf-book-title">{c.title}</h3>
+          </a>
+        );
+      })}
     </div>
-  ));
+  );
 }
 
-function BookshelfFeature({ items, navigate, query }) {
+function OpenShelfFeature({ items, navigate, query }) {
   const [level, setLevel] = useState("A1");
   const isSearching = query.trim().length > 0;
   // A search should surface matches across every level, not just the
@@ -693,19 +685,20 @@ function BookshelfFeature({ items, navigate, query }) {
   }).filter((g) => g.books.length > 0);
 
   return (
-    <div className="bkshf-page">
-      <div className="bkshf-masthead">
-        <span className="bkshf-eyebrow">Sentivo · Reading</span>
-        <h1><span className="bkshf-nameplate-pill">📖 Library</span></h1>
+    <div className="oshlf-page">
+      <div className="oshlf-masthead">
+        <span className="oshlf-eyebrow">Sentivo · Reading</span>
+        <h1 className="oshlf-nameplate">The Open Shelf</h1>
+        <p className="oshlf-tagline">Browse the collection, pick a level, start reading.</p>
       </div>
 
       {!isSearching && (
-        <div className="bkshf-level-tabs">
+        <div className="oshlf-level-tabs">
           {READING_LEVELS.map((lvl) => (
             <button
               key={lvl}
               type="button"
-              className={`bkshf-level-tab ${level === lvl ? "is-active" : ""}`}
+              className={`oshlf-level-tab ${level === lvl ? "is-active" : ""}`}
               onClick={() => setLevel(lvl)}
             >
               {lvl}
@@ -714,20 +707,22 @@ function BookshelfFeature({ items, navigate, query }) {
         </div>
       )}
 
-      <div className="bkshf-row"></div>
-
       {groups.length === 0 ? (
-        <div className="bkshf-empty">
-          <span className="bkshf-empty-icon">📚</span>
-          <p className="bkshf-empty-title">{isSearching ? `No stories match "${query.trim()}"` : `No ${level} stories yet`}</p>
-          <p className="bkshf-empty-desc">{isSearching ? "Try a different search term." : "Check back soon -- more levels are on the way."}</p>
+        <div className="oshlf-empty">
+          <span className="oshlf-empty-icon">📖</span>
+          <p className="oshlf-empty-title">{isSearching ? `No stories match "${query.trim()}"` : `No ${level} stories yet`}</p>
+          <p className="oshlf-empty-desc">{isSearching ? "Try a different search term." : "Check back soon — more levels are on the way."}</p>
         </div>
       ) : (
-        <div className="bkshf-shelves">
+        <div className="oshlf-shelves">
           {groups.map((g) => (
-            <div key={g.track} className="bkshf-age-group">
-              <div className="bkshf-age-label">{g.track}</div>
-              <BookshelfRows books={g.books} navigate={navigate} colorOffset={g.colorOffset} />
+            <div key={g.track} className="oshlf-shelf">
+              <div className="oshlf-shelf-head">
+                <h2 className="oshlf-shelf-label">{g.track}</h2>
+                <span className="oshlf-shelf-count">{g.books.length} {g.books.length === 1 ? "title" : "titles"}</span>
+              </div>
+              <div className="oshlf-shelf-line" />
+              <OpenShelfRow books={g.books} navigate={navigate} colorOffset={g.colorOffset} />
             </div>
           ))}
         </div>
@@ -1680,7 +1675,7 @@ export default function Library() {
         ) : category === "Grammar" ? (
           <GrammarFeature navigate={navigate} query={query} />
         ) : category === "Reading" ? (
-          <BookshelfFeature items={filtered} navigate={navigate} query={query} />
+          <OpenShelfFeature items={filtered} navigate={navigate} query={query} />
         ) : category === "Speaking" ? (
           <div className="spklab-page">
             <div className="spklab-hero">
@@ -2831,129 +2826,150 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   .gdn-supp-cta { margin-left: 62px; }
 }
 
-/* ---------- Reading: Bookshelf ---------- */
-.bkshf-page {
+/* ---------- Reading: The Open Shelf ---------- */
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Fraunces:ital,wght@0,400..600;1,400..600&display=swap');
+
+.oshlf-page {
   width: 100%;
   max-width: 1320px;
   margin: -10px auto 0;
-  background: linear-gradient(180deg, #FBF5EC 0%, #F3E9D9 100%);
-  border-radius: 22px;
-  padding: clamp(26px, 3.6vw, 48px) clamp(20px, 3.2vw, 40px) clamp(30px, 4vw, 52px);
+  background: #F5F3FF;
+  border-radius: 24px;
+  padding: clamp(28px, 3.6vw, 52px) clamp(20px, 3.2vw, 44px) clamp(34px, 4vw, 56px);
 }
-.bkshf-masthead { text-align: center; }
-.bkshf-eyebrow {
+.oshlf-masthead { text-align: center; }
+.oshlf-eyebrow {
   display: block;
-  font-family: 'SF Mono', 'Menlo', Consolas, monospace;
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-weight: 600;
   font-size: clamp(10.5px, 0.9vw, 11px);
-  letter-spacing: 0.14em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: #5A6B7B;
+  color: #7A73A6;
   margin-bottom: 10px;
 }
-.bkshf-nameplate-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  font-family: 'Fredoka', sans-serif;
-  font-weight: 700;
-  font-size: clamp(24px, 2.4vw, 30px);
-  letter-spacing: 0.08em;
-  color: #22303B;
-  background: rgba(185,133,82,0.18);
-  padding: 6px 22px 9px;
-  border-radius: 999px;
+.oshlf-nameplate {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-weight: 800;
+  font-size: clamp(32px, 4vw, 46px);
+  letter-spacing: -0.01em;
+  color: #1C1A2B;
+  margin: 0 0 8px;
+  line-height: 1.05;
 }
-.bkshf-row { position: relative; height: 2px; background: #C7D2DB; margin: clamp(26px, 3vw, 36px) 0; }
-.bkshf-row::before, .bkshf-row::after { content: ""; position: absolute; top: -3px; width: 8px; height: 8px; border-radius: 50%; background: #92A6B7; }
-.bkshf-row::before { left: 0; }
-.bkshf-row::after { right: 0; }
+.oshlf-tagline {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(14px, 1.2vw, 16px);
+  color: #6B6580;
+  margin: 0 auto;
+  max-width: 420px;
+}
 
-.bkshf-level-tabs { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; margin-top: clamp(18px, 2.4vw, 26px); }
-.bkshf-level-tab {
-  font-family: 'SF Mono', 'Menlo', Consolas, monospace;
+.oshlf-level-tabs { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; margin: clamp(22px, 2.8vw, 30px) 0 0; }
+.oshlf-level-tab {
+  font-family: 'Bricolage Grotesque', sans-serif;
   font-weight: 700;
-  font-size: 13px;
-  letter-spacing: 0.04em;
-  color: #5A6B7B;
-  background: rgba(185,133,82,0.10);
-  border: 1.5px solid rgba(185,133,82,0.22);
+  font-size: 13.5px;
+  letter-spacing: 0.02em;
+  color: #4F3FF0;
+  background: #FFFFFF;
+  border: none;
   border-radius: 999px;
-  padding: 7px 16px;
+  padding: 9px 20px;
   cursor: pointer;
+  box-shadow: 0 1px 0 rgba(28,26,43,0.06) inset, 0 2px 6px rgba(79,63,240,0.10);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease, color 0.15s ease;
 }
-.bkshf-level-tab.is-active { background: #22303B; border-color: #22303B; color: #FFFFFF; }
+.oshlf-level-tab:hover { transform: translateY(-1px); box-shadow: 0 4px 10px rgba(79,63,240,0.16); }
+.oshlf-level-tab.is-active { background: #4F3FF0; color: #FFFFFF; box-shadow: 0 4px 14px rgba(79,63,240,0.32); }
 
-.bkshf-empty { text-align: center; padding: 40px 20px 20px; }
-.bkshf-empty-icon { font-size: 34px; display: block; margin-bottom: 10px; }
-.bkshf-empty-title { font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 17px; color: #22303B; margin: 0 0 4px; }
-.bkshf-empty-desc { font-family: 'Quicksand', sans-serif; font-size: 14px; color: #6B7E8F; margin: 0; }
+.oshlf-empty { text-align: center; padding: 48px 20px 20px; }
+.oshlf-empty-icon { font-size: 36px; display: block; margin-bottom: 12px; }
+.oshlf-empty-title { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: 17px; color: #1C1A2B; margin: 0 0 4px; }
+.oshlf-empty-desc { font-family: 'Bricolage Grotesque', sans-serif; font-size: 14px; color: #7A73A6; margin: 0; }
 
-.bkshf-age-group { margin-bottom: clamp(20px, 2.6vw, 30px); }
-.bkshf-age-group:last-child { margin-bottom: 0; }
-.bkshf-age-label {
-  font-family: 'Fredoka', sans-serif;
-  font-weight: 700;
-  font-size: clamp(15px, 1.4vw, 18px);
-  color: #22303B;
-  text-align: center;
-  margin-bottom: 14px;
-  padding-bottom: 8px;
-  border-bottom: 1px dashed rgba(90,107,123,0.28);
-  width: fit-content;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 4px;
-  padding-right: 4px;
+.oshlf-shelves { display: flex; flex-direction: column; gap: clamp(32px, 4vw, 48px); margin-top: clamp(30px, 3.6vw, 44px); }
+
+.oshlf-shelf-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.oshlf-shelf-label {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-weight: 600;
+  font-size: clamp(19px, 1.9vw, 24px);
+  color: #1C1A2B;
+  margin: 0;
+}
+.oshlf-shelf-count {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-weight: 600;
+  font-size: 12.5px;
+  color: #9A93C2;
+  flex-shrink: 0;
+}
+.oshlf-shelf-line { height: 2px; background: linear-gradient(90deg, #4F3FF0 0%, rgba(79,63,240,0.08) 100%); border-radius: 2px; margin: 10px 0 22px; }
+
+.oshlf-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(clamp(120px, 15vw, 160px), 1fr));
+  gap: clamp(16px, 1.8vw, 22px);
 }
 
-.bkshf-shelves { padding: 0; }
-.bkshf-shelf-group { width: fit-content; margin: 0 auto; }
-.bkshf-shelf-row { display: flex; justify-content: center; align-items: flex-end; flex-wrap: nowrap; gap: 18px; }
-.bkshf-book {
+.oshlf-book {
   position: relative;
-  flex: 0 0 auto;
-  width: clamp(110px, 19vw, 190px);
   aspect-ratio: 2 / 3;
-  border-radius: 7px 7px 3px 3px;
+  border-radius: 12px;
   overflow: hidden;
   display: block;
   text-decoration: none;
-  box-shadow: 0 6px 12px rgba(31,36,48,0.10);
-  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(28,26,43,0.10);
+  transition: transform 0.2s cubic-bezier(.2,.8,.2,1), box-shadow 0.2s ease;
 }
-.bkshf-book-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-.bkshf-book-scrim { position: absolute; inset: 0; background: linear-gradient(0deg, rgba(0,0,0,0.68) 0%, rgba(0,0,0,0) 55%); }
-.bkshf-book-flat {
-  position: relative;
-  width: 100%; height: 100%;
-  padding: 12px 10px 9px;
-  display: flex; flex-direction: column;
-  overflow: hidden;
-}
-.bkshf-book-motif { position: absolute; right: -18px; bottom: -18px; width: 64px; height: 64px; border-radius: 50%; background: var(--motif-color, rgba(0,0,0,0.06)); }
-.bkshf-ribbon { position: absolute; top: 0; right: 12px; width: 12px; height: 18px; z-index: 1; clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 76%, 0 100%); }
-.bkshf-book-title {
-  position: relative; z-index: 1;
-  font-family: 'Fredoka', sans-serif;
-  font-weight: 600;
-  font-size: clamp(11px, 1.1vw, 13.5px);
-  margin: 3px 0 0;
-  color: var(--ink);
-  line-height: 1.25;
-  text-align: center;
-}
-.bkshf-book-title--onimg { position: absolute; z-index: 1; left: 8px; right: 8px; bottom: 7px; margin: 0; font-size: clamp(11px, 1.1vw, 13.5px); color: #FFFFFF; text-align: center; }
+.oshlf-book:hover { transform: translateY(-4px); box-shadow: 0 12px 22px rgba(28,26,43,0.18); }
 
-.bkshf-shelf-ledge {
-  width: calc(100% + 36px);
-  height: 9px;
-  border-radius: 0 0 3px 3px;
-  margin: 0 0 12px -18px;
-  background: linear-gradient(180deg, #B98552 0%, #8A5F35 100%);
-  box-shadow: 0 6px 9px rgba(74,54,35,0.22);
-  position: relative;
+.oshlf-book-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.oshlf-book-flat { position: absolute; inset: 0; display: flex; align-items: flex-end; justify-content: flex-end; overflow: hidden; }
+.oshlf-book-monogram {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-weight: 600;
+  font-size: clamp(64px, 11vw, 108px);
+  line-height: 1;
+  color: rgba(255,255,255,0.32);
+  margin: 0 -6px -14px 0;
+  user-select: none;
 }
-.bkshf-shelf-ledge::after { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 2px; background: rgba(255,255,255,0.3); }
+.oshlf-book-scrim { position: absolute; inset: 0; background: linear-gradient(0deg, rgba(20,18,35,0.82) 0%, rgba(20,18,35,0) 52%); }
+.oshlf-book-level {
+  position: absolute;
+  top: 8px; left: 8px;
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-weight: 700;
+  font-size: 10px;
+  letter-spacing: 0.04em;
+  color: #FFFFFF;
+  background: rgba(0,0,0,0.32);
+  padding: 3px 8px;
+  border-radius: 999px;
+  z-index: 1;
+}
+.oshlf-book-title {
+  position: absolute;
+  left: 10px; right: 10px; bottom: 9px;
+  margin: 0;
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(12px, 1.1vw, 14px);
+  line-height: 1.25;
+  color: #FFFFFF;
+  z-index: 1;
+}
+
+@media (max-width: 640px) {
+  .oshlf-shelf-head { flex-wrap: wrap; }
+}
 
 .cover {
   flex-shrink: 0;
