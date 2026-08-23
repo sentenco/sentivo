@@ -24,16 +24,19 @@ export default function OddOneOutGame({ title, items }) {
   const [picked, setPicked] = useState(null);
   const [runOrder, setRunOrder] = useState(items);
   const [followUp, setFollowUp] = useState(null);
+  const [options, setOptions] = useState([]);
 
   const n = runOrder.length;
   const item = runOrder[index];
 
   function start() {
-    setRunOrder(shuffled(items));
+    const order = shuffled(items);
+    setRunOrder(order);
     setIndex(0);
     setScore(0);
     setPicked(null);
     setFollowUp(null);
+    setOptions(shuffled(order[0].words));
     setPhase("playing");
   }
 
@@ -52,9 +55,11 @@ export default function OddOneOutGame({ title, items }) {
     if (index + 1 >= n) {
       setPhase("done");
     } else {
-      setIndex((i) => i + 1);
+      const nextIndex = index + 1;
+      setIndex(nextIndex);
       setPicked(null);
       setFollowUp(null);
+      setOptions(shuffled(runOrder[nextIndex].words));
     }
   }
 
@@ -81,7 +86,7 @@ export default function OddOneOutGame({ title, items }) {
           <p className="oo-instruction">Which word doesn't belong?</p>
 
           <div className="oo-tiles">
-            {item.words.map((word) => {
+            {options.map((word) => {
               const isPicked = picked === word;
               const isOdd = word === item.odd;
               let state = "";
