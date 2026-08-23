@@ -71,6 +71,21 @@ function PairSlide({ index }) {
   );
 }
 
+function PredictSlide({ index }) {
+  const p = LESSON.pairs[index];
+  return (
+    <div className="ssl-slide">
+      <h2 className="ssl-h">Think About It</h2>
+      <p className="ssl-predict-hint">Same spelling. Different meaning. Can you guess why?</p>
+      <div className="ssl-predict-row">
+        <span className="ssl-predict-word">{p.word}</span>
+        <span className="ssl-predict-vs">vs</span>
+        <span className="ssl-predict-word">{p.word}</span>
+      </div>
+    </div>
+  );
+}
+
 function GuidedItem({ item }) {
   const [shown, setShown] = useState(false);
   return (
@@ -110,13 +125,14 @@ function WrapupSlide() {
 
 function buildSlides() {
   const slides = ["cover"];
-  LESSON.pairs.forEach((_, i) => slides.push(`pair${i}`));
+  LESSON.pairs.forEach((_, i) => slides.push(`predict${i}`, `pair${i}`));
   slides.push("guided", "wrapup");
   return slides;
 }
 
 function renderSlide(slideType) {
   if (slideType === "cover") return <CoverSlide />;
+  if (slideType.startsWith("predict")) return <PredictSlide index={Number(slideType.replace("predict", ""))} />;
   if (slideType.startsWith("pair")) return <PairSlide index={Number(slideType.replace("pair", ""))} />;
   if (slideType === "guided") return <GuidedSlide />;
   if (slideType === "wrapup") return <WrapupSlide />;
@@ -285,6 +301,28 @@ const CSS = `
 }
 
 .ssl-word-plain { font-family: 'Grandstander', cursive; font-weight: 700; font-size: 15px; color: #8FB9BC; letter-spacing: 0.08em; text-transform: uppercase; margin: 0; }
+
+.ssl-predict-hint { font-size: 14px; font-weight: 700; color: #4F8B90; margin: 0; }
+.ssl-predict-row { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 18px; }
+.ssl-predict-word {
+  font-family: 'Grandstander', cursive;
+  font-weight: 800;
+  font-size: clamp(44px, 7.5vw, 68px);
+  line-height: 1;
+  color: #123B40;
+  background: rgba(14,110,124,0.12);
+  border-radius: 22px;
+  padding: 6px 30px;
+}
+.ssl-predict-vs {
+  font-family: 'Grandstander', cursive;
+  font-weight: 700;
+  font-size: 18px;
+  color: #FFFFFF;
+  background: #FF6F59;
+  border-radius: 999px;
+  padding: 6px 16px;
+}
 
 .ssl-pair-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; width: 100%; max-width: 780px; }
 .ssl-panel {
