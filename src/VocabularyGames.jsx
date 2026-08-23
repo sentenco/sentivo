@@ -856,4 +856,9 @@ const CSS = `
 @media (max-width: 560px) {
   .vg-block-grid, .vg-cat-grid { grid-template-columns: 1fr; }
 }
+
+@media (min-width: 1400px) {
+  .vg-page { max-width: 1400px; }
+  .vg-cat-grid { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+}
 `;
