@@ -312,6 +312,14 @@ export const VOCAB_LESSONS = [
     href: "/library/vocabulary/lessons/stress-shift",
     ready: true,
   },
+  {
+    key: "homophones",
+    title: "Homophones",
+    icon: "👂",
+    blurb: "their, there, they're — they sound identical. Only the spelling tells them apart.",
+    href: "/library/vocabulary/lessons/homophones",
+    ready: true,
+  },
 ];
 
 function openLessonPlayer(href) {
