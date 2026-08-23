@@ -41,7 +41,8 @@ const LESSON = {
 };
 
 function buildSlides(lesson) {
-  const slides = ["cover", "warmup", "fanboys"];
+  const slides = ["cover", "warmup"];
+  lesson.fanboys.forEach((_, i) => slides.push(`fanboys${i}`));
   lesson.teach.forEach((_, i) => slides.push(`teach${i}`));
   if (lesson.comparePairs) slides.push("compare");
   if (lesson.guided) slides.push("guided");
@@ -70,22 +71,20 @@ function WarmupSlide({ lesson }) {
   );
 }
 
-function FanboysSlide({ lesson }) {
+function FanboysSlide({ lesson, index }) {
+  const f = lesson.fanboys[index];
   return (
-    <div className="cjl-slide cjl-slide--part">
-      <h3 className="cjl-h">FANBOYS — Coordinating Conjunctions</h3>
-      <p className="cjl-fanboys-intro">Each one joins two equal, independent ideas — but the reason you'd reach for it changes word by word.</p>
-      <div className="cjl-fanboys-list">
-        {lesson.fanboys.map((f) => (
-          <div key={f.letter} className="cjl-fanboys-item">
-            <div className="cjl-fanboys-head">
-              <span className="cjl-fanboys-letter">{f.letter}</span>
-              <span className="cjl-fanboys-word">{f.word}</span>
-              <span className="cjl-fanboys-usage">{f.usage}</span>
-            </div>
-            <div className="cjl-fanboys-examples">
-              {f.examples.map((ex, i) => <p key={i} className="cjl-fanboys-example">{ex}</p>)}
-            </div>
+    <div className="cjl-slide">
+      <span className="cjl-fanboys-eyebrow">FANBOYS {index + 1} of {lesson.fanboys.length}</span>
+      <div className="cjl-fanboys-sticker">
+        <span className="cjl-fanboys-sticker-letter">{f.letter}</span>
+        <h3 className="cjl-fanboys-sticker-word">{f.word}</h3>
+      </div>
+      <p className="cjl-definition">{f.usage}</p>
+      <div className="cjl-example-list">
+        {f.examples.map((ex, i) => (
+          <div key={i} className="cjl-bubble">
+            <p className="cjl-bubble-text">{ex}</p>
           </div>
         ))}
       </div>
@@ -177,7 +176,7 @@ function WrapupSlide({ lesson }) {
 function renderSlide(slideType, lesson) {
   if (slideType === "cover") return <CoverSlide lesson={lesson} />;
   if (slideType === "warmup") return <WarmupSlide lesson={lesson} />;
-  if (slideType === "fanboys") return <FanboysSlide lesson={lesson} />;
+  if (slideType.startsWith("fanboys")) return <FanboysSlide lesson={lesson} index={Number(slideType.replace("fanboys", ""))} />;
   if (slideType.startsWith("teach")) return <TeachSlide lesson={lesson} index={Number(slideType.replace("teach", ""))} />;
   if (slideType === "compare") return <CompareSlide lesson={lesson} />;
   if (slideType === "guided") return <GuidedSlide lesson={lesson} />;
@@ -412,71 +411,44 @@ const CSS = `
 
 .cjl-example-list { display: flex; flex-direction: column; gap: 12px; width: 100%; max-width: 620px; align-items: center; }
 
-.cjl-fanboys-intro {
+.cjl-fanboys-eyebrow {
   font-family: 'Comic Neue', cursive, sans-serif;
   font-weight: 700;
-  font-size: 14.5px;
-  color: #6FA97D;
-  margin: 0;
-  max-width: 640px;
-  text-align: center;
+  font-size: 12px;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  color: #4C9A5D;
 }
-.cjl-fanboys-list {
+.cjl-fanboys-sticker {
   display: flex;
-  flex-direction: column;
-  gap: 10px;
-  width: 100%;
-  max-width: 780px;
-  text-align: left;
+  align-items: center;
+  gap: 14px;
+  transform: rotate(-2deg);
 }
-.cjl-fanboys-item {
-  background: #F1F8EE;
-  border: 2.5px solid #1A1A1A;
-  border-radius: 12px;
-  padding: 10px 14px;
-}
-.cjl-fanboys-head {
-  display: flex;
-  align-items: baseline;
-  gap: 8px;
-  flex-wrap: wrap;
-  margin-bottom: 4px;
-}
-.cjl-fanboys-letter {
+.cjl-fanboys-sticker-letter {
   font-family: 'Bangers', cursive;
   font-weight: 400;
-  font-size: 16px;
+  font-size: 34px;
   color: #FFFFFF;
   background: #4C9A5D;
-  border: 2px solid #1A1A1A;
+  border: 3px solid #1A1A1A;
   border-radius: 50%;
-  width: 22px;
-  height: 22px;
+  width: 68px;
+  height: 68px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  box-shadow: 5px 5px 0 #1A1A1A;
 }
-.cjl-fanboys-word {
+.cjl-fanboys-sticker-word {
   font-family: 'Bangers', cursive;
   font-weight: 400;
-  font-size: 18px;
-  letter-spacing: 0.3px;
-  color: #1A1A1A;
-}
-.cjl-fanboys-usage {
-  font-family: 'Comic Neue', cursive, sans-serif;
-  font-weight: 700;
-  font-size: 13px;
-  color: #3F6B45;
-}
-.cjl-fanboys-examples { display: flex; flex-direction: column; gap: 2px; padding-left: 30px; }
-.cjl-fanboys-example {
-  font-family: 'Comic Neue', cursive, sans-serif;
-  font-weight: 700;
-  font-size: 13.5px;
+  font-size: 52px;
+  letter-spacing: 0.5px;
   color: #1A1A1A;
   margin: 0;
+  text-shadow: 3px 3px 0 #4C9A5D;
 }
 
 .cjl-compare-note {
