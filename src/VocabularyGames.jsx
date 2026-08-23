@@ -367,6 +367,15 @@ export const VOCAB_LESSONS = [
     href: "/library/vocabulary/lessons/collocations",
     ready: true,
   },
+  {
+    key: "polysemy",
+    title: "Polysemy",
+    icon: "🧠",
+    hue: "amber",
+    blurb: "head, hand, foot — one word, several related meanings. Match the sentence to the sense.",
+    href: "/library/vocabulary/lessons/polysemy",
+    ready: true,
+  },
 ];
 
 function openLessonPlayer(href) {
@@ -767,6 +776,7 @@ const CSS = `
 .vg-cat-card--sky     { --vgc-accent: #3E7CB8; --vgc-icon-bg: rgba(62,124,184,0.14); --vgc-border: #C7DCF0; --vgc-shadow: rgba(30,90,140,0.10); --vgc-shadow-hover: rgba(30,90,140,0.16); }
 .vg-cat-card--violet  { --vgc-accent: #6B5CA5; --vgc-icon-bg: rgba(107,92,165,0.14); --vgc-border: #DCD6F0; --vgc-shadow: rgba(70,55,130,0.10); --vgc-shadow-hover: rgba(70,55,130,0.16); }
 .vg-cat-card--rose    { --vgc-accent: #C2447A; --vgc-icon-bg: rgba(194,68,122,0.14); --vgc-border: #F4D2E2; --vgc-shadow: rgba(150,40,90,0.10); --vgc-shadow-hover: rgba(150,40,90,0.16); }
+.vg-cat-card--amber   { --vgc-accent: #B85C1F; --vgc-icon-bg: rgba(184,92,31,0.14); --vgc-border: #F0D2B0; --vgc-shadow: rgba(140,70,20,0.10); --vgc-shadow-hover: rgba(140,70,20,0.16); }
 
 .vg-cat-top { display: flex; align-items: center; justify-content: space-between; width: 100%; margin-bottom: 12px; }
 .vg-cat-icon {
