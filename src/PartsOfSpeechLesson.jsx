@@ -5,7 +5,7 @@ import { POS_COLORS, PosMark } from "./posVisuals";
 
 function buildLessonSlides(lesson) {
   const slides = ["cover", "warmup"];
-  if (lesson.concepts.length > 1) slides.push("compare");
+  if (lesson.concepts.length > 1) slides.push("predict", "compare");
   lesson.concepts.forEach((c, i) => {
     slides.push(`concept${i}`);
     if (c.mistake) slides.push(`mistake${i}`);
@@ -93,6 +93,18 @@ function MistakeSlide({ lesson, index }) {
       <div className="posl-sfx posl-sfx--yes">Yes!</div>
       <p className="posl-mistake-right">{mistake.correct}</p>
       <p className="posl-mistake-note">{mistake.note}</p>
+    </div>
+  );
+}
+
+function PredictSlide({ lesson }) {
+  const left = lesson.compareLeftLabel.split(" — ")[0].trim();
+  const right = lesson.compareRightLabel.split(" — ")[0].trim();
+  return (
+    <div className="posl-slide">
+      <span className="posl-eyebrow">Think About It</span>
+      <h3 className="posl-h">{left} <span className="posl-vs">vs</span> {right}</h3>
+      <p className="posl-compare-note">What's the difference? Take a guess before we explain.</p>
     </div>
   );
 }
@@ -269,6 +281,7 @@ function renderSlide(slideType, topic, lesson) {
   if (slideType === "warmup") return <WarmupSlide lesson={lesson} />;
   if (slideType.startsWith("concept")) return <ConceptSlide lesson={lesson} index={Number(slideType.replace("concept", ""))} />;
   if (slideType.startsWith("mistake")) return <MistakeSlide lesson={lesson} index={Number(slideType.replace("mistake", ""))} />;
+  if (slideType === "predict") return <PredictSlide lesson={lesson} />;
   if (slideType === "compare") return <CompareSlide lesson={lesson} />;
   if (slideType === "guided") return <GuidedSlide lesson={lesson} />;
   if (slideType === "independent") return <IndependentSlide lesson={lesson} />;

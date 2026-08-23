@@ -38,7 +38,7 @@ const LESSON = {
 
 function buildSlides(lesson) {
   const slides = ["cover", "warmup"];
-  if (lesson.comparePairs) slides.push("compare");
+  if (lesson.comparePairs) slides.push("predict", "compare");
   lesson.teach.forEach((_, i) => slides.push(`teach${i}`));
   if (lesson.guided) slides.push("guided");
   slides.push("practice", "wrapup");
@@ -79,6 +79,18 @@ function TeachSlide({ lesson, index }) {
           </div>
         ))}
       </div>
+    </div>
+  );
+}
+
+function PredictSlide({ lesson }) {
+  const left = lesson.compareLeftLabel.split(" — ")[0].trim();
+  const right = lesson.compareRightLabel.split(" — ")[0].trim();
+  return (
+    <div className="ssl-slide">
+      <span className="ssl-eyebrow">Think About It</span>
+      <h3 className="ssl-h">{left} <span className="ssl-vs">vs</span> {right}</h3>
+      <p className="ssl-compare-note">What's the difference? Take a guess before we explain.</p>
     </div>
   );
 }
@@ -151,6 +163,7 @@ function renderSlide(slideType, lesson) {
   if (slideType === "cover") return <CoverSlide lesson={lesson} />;
   if (slideType === "warmup") return <WarmupSlide lesson={lesson} />;
   if (slideType.startsWith("teach")) return <TeachSlide lesson={lesson} index={Number(slideType.replace("teach", ""))} />;
+  if (slideType === "predict") return <PredictSlide lesson={lesson} />;
   if (slideType === "compare") return <CompareSlide lesson={lesson} />;
   if (slideType === "guided") return <GuidedSlide lesson={lesson} />;
   if (slideType === "practice") return <PracticeSlide lesson={lesson} />;

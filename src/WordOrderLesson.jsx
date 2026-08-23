@@ -36,7 +36,7 @@ const LESSON = {
 
 function buildSlides(lesson) {
   const slides = ["cover", "warmup"];
-  if (lesson.comparePairs) slides.push("compare");
+  if (lesson.comparePairs) slides.push("predict", "compare");
   lesson.osascomp.forEach((_, i) => slides.push(`osascomp${i}`));
   if (lesson.guided) slides.push("guided");
   slides.push("practice", "wrapup");
@@ -81,6 +81,18 @@ function OsascompSlide({ lesson, index }) {
           </div>
         ))}
       </div>
+    </div>
+  );
+}
+
+function PredictSlide({ lesson }) {
+  const left = lesson.compareLeftLabel.split(" — ")[0].trim();
+  const right = lesson.compareRightLabel.split(" — ")[0].trim();
+  return (
+    <div className="wol-slide">
+      <span className="wol-eyebrow">Think About It</span>
+      <h3 className="wol-h">{left} <span className="wol-vs">vs</span> {right}</h3>
+      <p className="wol-compare-note">What's the difference? Take a guess before we explain.</p>
     </div>
   );
 }
@@ -153,6 +165,7 @@ function renderSlide(slideType, lesson) {
   if (slideType === "cover") return <CoverSlide lesson={lesson} />;
   if (slideType === "warmup") return <WarmupSlide lesson={lesson} />;
   if (slideType.startsWith("osascomp")) return <OsascompSlide lesson={lesson} index={Number(slideType.replace("osascomp", ""))} />;
+  if (slideType === "predict") return <PredictSlide lesson={lesson} />;
   if (slideType === "compare") return <CompareSlide lesson={lesson} />;
   if (slideType === "guided") return <GuidedSlide lesson={lesson} />;
   if (slideType === "practice") return <PracticeSlide lesson={lesson} />;
