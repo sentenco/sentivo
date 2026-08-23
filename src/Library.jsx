@@ -346,20 +346,23 @@ function ArticlesFeature({ navigate, query }) {
 }
 
 const GRAMMAR_MODULES = [
-  { num: "BED 01", banner: "partsOfSpeech", title: "Parts of Speech", spec: "8 word classes across 6 topics. One Lesson, one Assessment each. A1–C2.", href: "/library/grammar/parts-of-speech", ready: true, hue: "leaf" },
-  { num: "BED 02", banner: "verbTenses", title: "Verb Tenses", spec: "All 12 English tenses. One Discussion, one Test lesson each. A1–C2.", href: "/library/grammar/verb-tenses", ready: true, hue: "gold" },
-  { num: "BED 03", banner: "sentenceStructure", title: "Sentence Patterns", spec: "The 7 core patterns — SV to SVOC — across 6 lessons, each with practice and a built-in assessment. A1–C2.", href: "/library/grammar/sentence-patterns", ready: true, hue: "soil" },
-  { num: "BED 04", banner: "modals", title: "Modals", spec: "9 core modal verbs — can to shall — grouped by function across 7 lessons, each teach-practice-wrap in one sitting. A1–C2.", href: "/library/grammar/modals", ready: true, hue: "sky" },
-  { num: "BED 05", banner: "conditionals", title: "Conditionals", spec: "The 5 conditional types — Zero to Mixed — across 5 lessons, each teach-practice-wrap in one sitting. A1–C2.", href: "/library/grammar/conditionals", ready: true, hue: "berry" },
-  { num: "BED 06", banner: "passiveVoice", title: "Passive Voice", spec: "Present to future passive, modal passive, and the by-agent, across 6 lessons, each teach-practice-wrap in one sitting. A1–C2.", href: "/library/grammar/passive-voice", ready: true, hue: "violet" },
-  { num: "BED 07", banner: "questionFormation", title: "Question Formation", spec: "Yes/no questions, wh-questions, question tags, and indirect questions, across 4 lessons, each teach-practice-wrap in one sitting. A1–C2.", href: "/library/grammar/question-formation", ready: true, hue: "teal" },
-  { num: "BED 08", banner: "nounsArticlesQuantifiers", title: "Nouns, Articles & Quantifiers", spec: "Countable vs uncountable, a/an vs the, zero article, and precise quantifiers, across 5 lessons, each teach-practice-wrap in one sitting. A1–C2.", href: "/library/grammar/nouns-articles-quantifiers", ready: true, hue: "coral" },
-  { num: "BED 09", banner: "pronounsPossessives", title: "Pronouns & Possessives", spec: "Subject vs object pronouns, possessive adjectives vs pronouns, reflexive/intensive, demonstrative/indefinite, and possessive 's, across 5 lessons. A1–C2.", href: "/library/grammar/pronouns-possessives", ready: true, hue: "lime" },
-  { num: "BED 10", banner: "comparativesSuperlatives", title: "Comparatives & Superlatives", spec: "Short and long adjectives, irregular forms, equal comparison, degree modifiers, and double comparatives, across 4 lessons. A1–C2.", href: "/library/grammar/comparatives-superlatives", ready: true, hue: "magenta" },
-  { num: "BED 11", banner: "reportedSpeech", title: "Reported Speech", spec: "Backshift, say vs tell, time/place changes, reported questions, commands, and exceptions to backshift, across 5 lessons. A1–C2.", href: "/library/grammar/reported-speech", ready: true, hue: "navy" },
-  { num: "BED 12", banner: "relativeClauses", title: "Relative Clauses", spec: "Who/which/that, whose/where/when, non-defining clauses, and reducing clauses to phrases, across 4 lessons. A1–C2.", href: "/library/grammar/relative-clauses", ready: true, hue: "slate" },
-  { num: "BED 13", banner: "gerundsInfinitives", title: "Gerunds & Infinitives", spec: "Verbs that take a gerund, verbs that take an infinitive, verbs that take either, gerunds as nouns, and the infinitive of purpose, across 4 lessons. A1–C2.", href: "/library/grammar/gerunds-infinitives", ready: true, hue: "khaki" },
-  { num: "BED 14", banner: "prepositions", title: "Prepositions", spec: "Place, time, movement, prepositions after verbs and adjectives, and by/with/without, across 6 lessons. A1–C2.", href: "/library/grammar/prepositions", ready: true, hue: "crimson" },
+  { num: "BED 01", banner: "partsOfSpeech", title: "Parts of Speech", spec: "8 word classes across 6 topics. One Lesson, one Assessment each. A1–C2.", href: "/library/grammar/parts-of-speech", ready: true, hue: "leaf", tier: "foundation" },
+  { num: "BED 02", banner: "verbTenses", title: "Verb Tenses", spec: "All 12 English tenses. One Discussion, one Test lesson each. A1–C2.", href: "/library/grammar/verb-tenses", ready: true, hue: "gold", tier: "foundation" },
+  { num: "BED 03", banner: "sentenceStructure", title: "Sentence Patterns", spec: "The 7 core patterns — SV to SVOC — across 6 lessons, each with practice and a built-in assessment. A1–C2.", href: "/library/grammar/sentence-patterns", ready: true, hue: "soil", tier: "foundation" },
+  { num: "BED 04", banner: "modals", title: "Modals", spec: "9 core modal verbs — can to shall — grouped by function across 7 lessons, each teach-practice-wrap in one sitting. A1–C2.", href: "/library/grammar/modals", ready: true, hue: "sky", tier: "foundation" },
+  { num: "BED 05", banner: "conditionals", title: "Conditionals", spec: "The 5 conditional types — Zero to Mixed — across 5 lessons, each teach-practice-wrap in one sitting. A1–C2.", href: "/library/grammar/conditionals", ready: true, hue: "berry", tier: "foundation" },
+  { num: "BED 06", banner: "passiveVoice", title: "Passive Voice", spec: "Present to future passive, modal passive, and the by-agent, across 6 lessons, each teach-practice-wrap in one sitting. A1–C2.", href: "/library/grammar/passive-voice", ready: true, hue: "violet", tier: "foundation" },
+  { num: "BED 07", banner: "questionFormation", title: "Question Formation", spec: "Yes/no questions, wh-questions, question tags, and indirect questions, across 4 lessons, each teach-practice-wrap in one sitting. A1–C2.", href: "/library/grammar/question-formation", ready: true, hue: "teal", tier: "foundation" },
+  { num: "BED 08", banner: "nounsArticlesQuantifiers", title: "Nouns, Articles & Quantifiers", spec: "Countable vs uncountable, a/an vs the, zero article, and precise quantifiers, across 5 lessons, each teach-practice-wrap in one sitting. A1–C2.", href: "/library/grammar/nouns-articles-quantifiers", ready: true, hue: "coral", tier: "foundation" },
+  { num: "BED 09", banner: "pronounsPossessives", title: "Pronouns & Possessives", spec: "Subject vs object pronouns, possessive adjectives vs pronouns, reflexive/intensive, demonstrative/indefinite, and possessive 's, across 5 lessons. A1–C2.", href: "/library/grammar/pronouns-possessives", ready: true, hue: "lime", tier: "foundation" },
+  { num: "BED 10", banner: "comparativesSuperlatives", title: "Comparatives & Superlatives", spec: "Short and long adjectives, irregular forms, equal comparison, degree modifiers, and double comparatives, across 4 lessons. A1–C2.", href: "/library/grammar/comparatives-superlatives", ready: true, hue: "magenta", tier: "foundation" },
+  { num: "BED 11", banner: "reportedSpeech", title: "Reported Speech", spec: "Backshift, say vs tell, time/place changes, reported questions, commands, and exceptions to backshift, across 5 lessons. A1–C2.", href: "/library/grammar/reported-speech", ready: true, hue: "navy", tier: "foundation" },
+  { num: "BED 12", banner: "relativeClauses", title: "Relative Clauses", spec: "Who/which/that, whose/where/when, non-defining clauses, and reducing clauses to phrases, across 4 lessons. A1–C2.", href: "/library/grammar/relative-clauses", ready: true, hue: "slate", tier: "foundation" },
+  { num: "BED 13", banner: "gerundsInfinitives", title: "Gerunds & Infinitives", spec: "Verbs that take a gerund, verbs that take an infinitive, verbs that take either, gerunds as nouns, and the infinitive of purpose, across 4 lessons. A1–C2.", href: "/library/grammar/gerunds-infinitives", ready: true, hue: "khaki", tier: "foundation" },
+  { num: "BED 14", banner: "prepositions", title: "Prepositions", spec: "Place, time, movement, prepositions after verbs and adjectives, and by/with/without, across 6 lessons. A1–C2.", href: "/library/grammar/prepositions", ready: true, hue: "crimson", tier: "foundation" },
+  { num: "BED 15", banner: "conjunctionsLinkingWords", title: "Conjunctions & Linking Words", spec: "Coordinating, subordinating, and correlative conjunctions, plus transition words like however and therefore.", href: "/library/grammar/conjunctions-linking-words", ready: false, hue: "leaf", tier: "extras" },
+  { num: "BED 16", banner: "causativeVerbs", title: "Causative Verbs", spec: "Have, get, make, and let — getting someone else to do something, or having something done to you.", href: "/library/grammar/causative-verbs", ready: false, hue: "gold", tier: "extras" },
+  { num: "BED 17", banner: "wordOrderInversion", title: "Word Order & Inversion", spec: "Adjective order, adverb placement, and inversion for emphasis — polish for advanced, natural-sounding English.", href: "/library/grammar/word-order-inversion", ready: false, hue: "soil", tier: "extras" },
 ];
 
 const SPEAKING_TRACKS = [
@@ -368,11 +371,18 @@ const SPEAKING_TRACKS = [
   { key: "ascend", href: "/library/ascend", hue: "ascend", gap: "Imprecise, unstructured speech", name: "Ascend", desc: "Precision, structure, and diplomatic control for students who already sound fluent." },
 ];
 
+const GRAMMAR_TABS = [
+  { key: "foundation", label: "Foundation" },
+  { key: "extras", label: "Extras" },
+];
+
 function GrammarFeature({ navigate, query }) {
+  const [tab, setTab] = useState("foundation");
   const q = query.trim().toLowerCase();
+  const tierModules = GRAMMAR_MODULES.filter((m) => m.tier === tab);
   const modules = q
-    ? GRAMMAR_MODULES.filter((m) => m.title.toLowerCase().includes(q) || m.spec.toLowerCase().includes(q))
-    : GRAMMAR_MODULES;
+    ? tierModules.filter((m) => m.title.toLowerCase().includes(q) || m.spec.toLowerCase().includes(q))
+    : tierModules;
 
   return (
     <div className="gdn-page">
@@ -382,10 +392,26 @@ function GrammarFeature({ navigate, query }) {
         <h1 className="gdn-nameplate">🌱 The Grammar Garden</h1>
         <p className="gdn-sub">Language grows from the roots up — plant a rule, watch a sentence bloom.</p>
       </div>
+
+      <div className="gdn-tabs">
+        {GRAMMAR_TABS.map((t) => (
+          <button
+            key={t.key}
+            type="button"
+            className={`gdn-tab ${tab === t.key ? "is-active" : ""}`}
+            onClick={() => setTab(t.key)}
+          >
+            {t.label}
+          </button>
+        ))}
+      </div>
+
       <div className="gdn-row"></div>
 
       {modules.length === 0 && (
-        <p className="empty-msg">No grammar modules match "{query.trim()}".</p>
+        <p className="empty-msg">
+          {q ? `No grammar modules match "${query.trim()}".` : "New modules are on the way — check back soon."}
+        </p>
       )}
       <div className="gdn-beds">
         {modules.map((m) =>
@@ -2564,6 +2590,26 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   text-shadow: 3px 3px 0 var(--gold);
 }
 .gdn-sub { font-family: 'Comic Neue', cursive, sans-serif; font-weight: 700; font-size: clamp(13px, 1.1vw, 15px); color: #3A3226; margin: 0 auto; max-width: 460px; }
+
+.gdn-tabs { display: flex; justify-content: center; gap: 10px; margin-top: clamp(20px, 2.6vw, 28px); }
+.gdn-tab {
+  font-family: 'Bangers', cursive;
+  font-weight: 400;
+  font-size: 16px;
+  letter-spacing: 0.4px;
+  color: #1A1A1A;
+  background: #FFFFFF;
+  border: 3px solid #1A1A1A;
+  border-radius: 999px;
+  padding: 6px 22px 8px;
+  cursor: pointer;
+  box-shadow: 4px 4px 0 #1A1A1A;
+  transition: transform 0.15s cubic-bezier(.34,1.56,.64,1), box-shadow 0.15s ease;
+}
+.gdn-tab:hover { transform: translate(-1px, -2px); box-shadow: 5px 6px 0 #1A1A1A; }
+.gdn-tab:active { transform: translate(2px, 2px); box-shadow: 2px 2px 0 #1A1A1A; }
+.gdn-tab.is-active { background: var(--leaf); color: #FFFFFF; }
+
 .gdn-row { position: relative; height: 0; border-top: 3px dashed #E4D5B0; margin: clamp(26px, 3vw, 36px) 0; }
 
 .gdn-beds { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: clamp(16px, 2vw, 24px); }
