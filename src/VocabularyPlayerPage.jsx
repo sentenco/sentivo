@@ -43,6 +43,7 @@ export default function VocabularyPlayerPage() {
           title={`${game.title} · ${category.title}${category.cefrGroup ? ` (${category.cefrGroup})` : ""}`}
           instruction={game.instruction}
           data={category.data}
+          hue={game.hue}
         />
       )}
     </PlayerChrome>

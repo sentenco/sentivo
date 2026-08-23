@@ -134,7 +134,7 @@ export default function WordSortGame({ title, categoryA, categoryB, items }) {
 }
 
 const CSS = `
-@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&family=Quicksand:wght@500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Grandstander:wght@600;700;800&family=Mulish:wght@500;600;700;800&display=swap');
 
 .ws-shell {
   position: relative;
@@ -144,7 +144,8 @@ const CSS = `
   align-items: center;
   justify-content: center;
   padding: clamp(16px, 3vw, 32px);
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'Mulish', sans-serif;
+  background: linear-gradient(180deg, #EAF8F6 0%, #D6F1EC 100%);
 }
 .ws-shell * { box-sizing: border-box; }
 
@@ -153,7 +154,7 @@ const CSS = `
   max-width: 560px;
   background: #FFFFFF;
   border-radius: 24px;
-  box-shadow: 0 20px 44px rgba(31,157,110,0.16);
+  box-shadow: 0 20px 0 rgba(20,107,78,0.1);
   padding: clamp(32px, 6vw, 52px);
   text-align: center;
 }
@@ -164,19 +165,19 @@ const CSS = `
   font-weight: 800;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: #1F9D6E;
-  background: rgba(31,157,110,0.10);
+  color: #1C8A68;
+  background: rgba(28,138,104,0.12);
   border-radius: 999px;
   padding: 5px 14px;
   margin-bottom: 20px;
 }
 
-.ws-title { font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: clamp(28px, 4.4vw, 40px); line-height: 1.3; color: #2B2A4A; margin: 0 0 16px; }
-.ws-blurb { font-size: 14.5px; line-height: 1.7; color: #7A7391; max-width: 400px; margin: 0 auto 32px; }
+.ws-title { font-family: 'Grandstander', cursive; font-weight: 700; font-size: clamp(28px, 4.4vw, 40px); line-height: 1.3; color: #123B40; margin: 0 0 16px; }
+.ws-blurb { font-size: 14.5px; line-height: 1.7; color: #4F8B90; font-weight: 600; max-width: 400px; margin: 0 auto 32px; }
 
 .ws-btn {
-  font-family: 'Fredoka', sans-serif;
-  font-weight: 600;
+  font-family: 'Grandstander', cursive;
+  font-weight: 700;
   font-size: 16px;
   border: none;
   border-radius: 14px;
@@ -185,41 +186,41 @@ const CSS = `
 }
 .ws-btn--primary {
   color: #FFFFFF;
-  background: linear-gradient(135deg, #34D399 0%, #1F9D6E 100%);
-  box-shadow: 0 6px 0 #147A54;
+  background: #1C8A68;
+  box-shadow: 0 6px 0 #146B4E;
 }
-.ws-btn--primary:active { transform: translateY(3px); box-shadow: 0 3px 0 #147A54; }
+.ws-btn--primary:active { transform: translateY(3px); box-shadow: 0 3px 0 #146B4E; }
 
 .ws-bar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 26px; }
-.ws-progress { font-size: 11.5px; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase; color: #9A93A8; }
-.ws-score { font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 13px; color: #1F9D6E; background: rgba(31,157,110,0.10); padding: 5px 12px; border-radius: 999px; }
+.ws-progress { font-size: 11.5px; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase; color: #6B9EA1; }
+.ws-score { font-family: 'Grandstander', cursive; font-weight: 700; font-size: 13px; color: #1C8A68; background: rgba(28,138,104,0.12); padding: 5px 12px; border-radius: 999px; }
 
-.ws-word { font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: clamp(32px, 5.6vw, 48px); line-height: 1.25; color: #2B2A4A; margin: 0 0 32px; text-transform: capitalize; }
+.ws-word { font-family: 'Grandstander', cursive; font-weight: 700; font-size: clamp(32px, 5.6vw, 48px); line-height: 1.25; color: #123B40; margin: 0 0 32px; text-transform: capitalize; }
 
 .ws-boxes { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 .ws-box {
-  font-family: 'Fredoka', sans-serif;
-  font-weight: 600;
+  font-family: 'Grandstander', cursive;
+  font-weight: 700;
   font-size: 19px;
   line-height: 1.4;
-  color: #2B2A4A;
-  background: #ECFDF5;
-  border: 2px dashed #6EE7B7;
+  color: #123B40;
+  background: #E3F6EC;
+  border: 2px dashed #7FD9B6;
   border-radius: 16px;
   padding: 32px 16px;
   cursor: pointer;
   transition: transform 0.1s ease, background 0.15s ease, border-color 0.15s ease;
 }
-.ws-box:hover:not(:disabled) { background: #D8FBEC; transform: translateY(-2px); }
+.ws-box:hover:not(:disabled) { background: #D3F0E0; transform: translateY(-2px); }
 .ws-box:disabled { cursor: default; }
 .ws-box.is-correct { background: #E4F8EC; border-color: #4CBE7F; border-style: solid; color: #1F7A47; }
 .ws-box.is-incorrect { background: #FDEAEA; border-color: #E5645A; border-style: solid; color: #B3392F; }
 
 .ws-footer { margin-top: 30px; display: flex; flex-direction: column; align-items: center; gap: 16px; }
-.ws-feedback { font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 15px; line-height: 1.5; }
+.ws-feedback { font-family: 'Grandstander', cursive; font-weight: 700; font-size: 15px; line-height: 1.5; }
 .ws-feedback.is-correct { color: #1F7A47; }
 .ws-feedback.is-incorrect { color: #B3392F; }
-.ws-followup { font-size: 13px; line-height: 1.6; color: #6B5A66; background: #FFF7ED; border-radius: 12px; padding: 10px 16px; max-width: 380px; }
+.ws-followup { font-size: 13px; line-height: 1.6; color: #4F8B90; font-weight: 600; background: #FFF3D9; border-radius: 12px; padding: 10px 16px; max-width: 380px; }
 
 .ws-done-emoji { font-size: 48px; margin-bottom: 10px; }
 

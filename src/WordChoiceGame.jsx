@@ -9,11 +9,19 @@ function shuffled(arr) {
   return a;
 }
 
+// Ocean Dive accent per game hue -- Synonyms (coral) and Antonyms (teal)
+// share this one engine, so the accent is a prop, not a fixed class.
+const HUES = {
+  coral: { accent: "#E85A3D", accentDark: "#B8391F", tint: "rgba(232,90,61,0.10)", border: "#FFD9CC" },
+  teal: { accent: "#0E6E7C", accentDark: "#0A4F59", tint: "rgba(14,110,124,0.10)", border: "#BFE6E1" },
+};
+
 // Generic one-on-one "pick the matching word" quiz engine. Data-driven --
 // pass a title, instruction line, and a data set shaped like
 // [{ word, choices: [4], correct }]. Used for Synonyms, Antonyms, and any
 // future word-choice game under Vocabulary.
-export default function WordChoiceGame({ title, instruction, data }) {
+export default function WordChoiceGame({ title, instruction, data, hue = "coral" }) {
+  const c = HUES[hue] || HUES.coral;
   const [phase, setPhase] = useState("start"); // "start" | "playing" | "done"
   const [index, setIndex] = useState(0);
   const [score, setScore] = useState(0);
@@ -48,7 +56,7 @@ export default function WordChoiceGame({ title, instruction, data }) {
   }
 
   return (
-    <div className="syn-shell">
+    <div className="syn-shell" style={{ "--acc": c.accent, "--acc-dark": c.accentDark, "--acc-tint": c.tint, "--acc-border": c.border }}>
       <style>{CSS}</style>
 
       {phase === "start" && (
@@ -122,7 +130,7 @@ export default function WordChoiceGame({ title, instruction, data }) {
 }
 
 const CSS = `
-@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&family=Quicksand:wght@500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Grandstander:wght@600;700;800&family=Mulish:wght@500;600;700;800&display=swap');
 
 .syn-shell {
   position: relative;
@@ -132,7 +140,8 @@ const CSS = `
   align-items: center;
   justify-content: center;
   padding: clamp(16px, 3vw, 32px);
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'Mulish', sans-serif;
+  background: linear-gradient(180deg, #EAF8F6 0%, #D6F1EC 100%);
 }
 .syn-shell * { box-sizing: border-box; }
 
@@ -141,7 +150,7 @@ const CSS = `
   max-width: 560px;
   background: #FFFFFF;
   border-radius: 24px;
-  box-shadow: 0 20px 44px rgba(124,92,252,0.16);
+  box-shadow: 0 20px 0 rgba(14,110,124,0.1);
   padding: clamp(32px, 6vw, 52px);
   text-align: center;
 }
@@ -152,19 +161,19 @@ const CSS = `
   font-weight: 800;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: #D6396F;
-  background: rgba(214,57,111,0.10);
+  color: var(--acc, #0E6E7C);
+  background: var(--acc-tint, rgba(14,110,124,0.10));
   border-radius: 999px;
   padding: 5px 14px;
   margin-bottom: 20px;
 }
 
-.syn-title { font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: clamp(28px, 4.4vw, 40px); line-height: 1.3; color: #2B2A4A; margin: 0 0 16px; }
-.syn-blurb { font-size: 14.5px; line-height: 1.7; color: #7A7391; max-width: 400px; margin: 0 auto 32px; }
+.syn-title { font-family: 'Grandstander', cursive; font-weight: 700; font-size: clamp(28px, 4.4vw, 40px); line-height: 1.3; color: #123B40; margin: 0 0 16px; }
+.syn-blurb { font-size: 14.5px; line-height: 1.7; color: #4F8B90; font-weight: 600; max-width: 400px; margin: 0 auto 32px; }
 
 .syn-btn {
-  font-family: 'Fredoka', sans-serif;
-  font-weight: 600;
+  font-family: 'Grandstander', cursive;
+  font-weight: 700;
   font-size: 16px;
   border: none;
   border-radius: 14px;
@@ -173,40 +182,40 @@ const CSS = `
 }
 .syn-btn--primary {
   color: #FFFFFF;
-  background: linear-gradient(135deg, #A78BFA 0%, #7C5CFC 100%);
-  box-shadow: 0 6px 0 #5A3FD6;
+  background: var(--acc, #E85A3D);
+  box-shadow: 0 6px 0 var(--acc-dark, #B8391F);
 }
-.syn-btn--primary:active { transform: translateY(3px); box-shadow: 0 3px 0 #5A3FD6; }
+.syn-btn--primary:active { transform: translateY(3px); box-shadow: 0 3px 0 var(--acc-dark, #B8391F); }
 
 .syn-bar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 26px; }
-.syn-progress { font-size: 11.5px; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase; color: #9A93A8; }
-.syn-score { font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 13px; color: #7C5CFC; background: rgba(124,92,252,0.10); padding: 5px 12px; border-radius: 999px; }
+.syn-progress { font-size: 11.5px; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase; color: #6B9EA1; }
+.syn-score { font-family: 'Grandstander', cursive; font-weight: 700; font-size: 13px; color: var(--acc, #0E6E7C); background: var(--acc-tint, rgba(14,110,124,0.10)); padding: 5px 12px; border-radius: 999px; }
 
-.syn-instruction { font-size: 12.5px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: #B8AFCB; margin: 0 0 12px; }
-.syn-word { font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: clamp(32px, 5.6vw, 48px); line-height: 1.25; color: #2B2A4A; margin: 0 0 32px; text-transform: capitalize; }
+.syn-instruction { font-size: 12.5px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: #8FB9BC; margin: 0 0 12px; }
+.syn-word { font-family: 'Grandstander', cursive; font-weight: 700; font-size: clamp(32px, 5.6vw, 48px); line-height: 1.25; color: #123B40; margin: 0 0 32px; text-transform: capitalize; }
 
 .syn-choices { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 .syn-choice {
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'Mulish', sans-serif;
   font-weight: 700;
   font-size: 16px;
   line-height: 1.4;
-  color: #2B2A4A;
+  color: #123B40;
   text-transform: capitalize;
-  background: #F5F3FF;
-  border: 2px solid #EAE5FB;
+  background: var(--acc-tint, rgba(14,110,124,0.10));
+  border: 2px solid var(--acc-border, #BFE6E1);
   border-radius: 14px;
   padding: 20px 16px;
   cursor: pointer;
   transition: transform 0.1s ease, background 0.15s ease, border-color 0.15s ease;
 }
-.syn-choice:hover:not(:disabled) { background: #EFEBFF; transform: translateY(-2px); }
+.syn-choice:hover:not(:disabled) { transform: translateY(-2px); }
 .syn-choice:disabled { cursor: default; }
 .syn-choice.is-correct { background: #E4F8EC; border-color: #4CBE7F; color: #1F7A47; }
 .syn-choice.is-incorrect { background: #FDEAEA; border-color: #E5645A; color: #B3392F; }
 
 .syn-footer { margin-top: 30px; display: flex; flex-direction: column; align-items: center; gap: 18px; }
-.syn-feedback { font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 15px; line-height: 1.5; }
+.syn-feedback { font-family: 'Grandstander', cursive; font-weight: 700; font-size: 15px; line-height: 1.5; }
 .syn-feedback.is-correct { color: #1F7A47; }
 .syn-feedback.is-incorrect { color: #B3392F; }
 
