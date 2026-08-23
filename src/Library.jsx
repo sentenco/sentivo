@@ -355,6 +355,7 @@ const GRAMMAR_MODULES = [
   { num: "BED 07", banner: "questionFormation", title: "Question Formation", spec: "Yes/no questions, wh-questions, question tags, and indirect questions, across 4 lessons, each teach-practice-wrap in one sitting. A1–C2.", href: "/library/grammar/question-formation", ready: true, hue: "teal" },
   { num: "BED 08", banner: "nounsArticlesQuantifiers", title: "Nouns, Articles & Quantifiers", spec: "Countable vs uncountable, a/an vs the, zero article, and precise quantifiers, across 5 lessons, each teach-practice-wrap in one sitting. A1–C2.", href: "/library/grammar/nouns-articles-quantifiers", ready: true, hue: "coral" },
   { num: "BED 09", banner: "pronounsPossessives", title: "Pronouns & Possessives", spec: "Subject vs object pronouns, possessive adjectives vs pronouns, reflexive/intensive, demonstrative/indefinite, and possessive 's, across 5 lessons. A1–C2.", href: "/library/grammar/pronouns-possessives", ready: true, hue: "lime" },
+  { num: "BED 10", banner: "comparativesSuperlatives", title: "Comparatives & Superlatives", spec: "Short and long adjectives, irregular forms, equal comparison, degree modifiers, and double comparatives, across 4 lessons. A1–C2.", href: "/library/grammar/comparatives-superlatives", ready: true, hue: "magenta" },
 ];
 
 const SPEAKING_TRACKS = [
@@ -2509,6 +2510,7 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   --teal: #0E7C86; --teal-deep: #0A5B62;
   --coral: #E1592A; --coral-deep: #A73E1B;
   --lime: #6B9E1E; --lime-deep: #4E7414;
+  --magenta: #A6238C; --magenta-deep: #781966;
   width: 100%;
   max-width: 1080px;
   margin: 0 auto;
@@ -2586,6 +2588,7 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .gdn-bed--teal { background: linear-gradient(155deg, #5FC4CC 0%, var(--teal) 100%); }
 .gdn-bed--coral { background: linear-gradient(155deg, #F0916A 0%, var(--coral) 100%); }
 .gdn-bed--lime { background: linear-gradient(155deg, #A6D14E 0%, var(--lime) 100%); }
+.gdn-bed--magenta { background: linear-gradient(155deg, #D66BC0 0%, var(--magenta) 100%); }
 
 .gdn-bed-title {
   font-family: 'Bangers', cursive;
