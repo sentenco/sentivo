@@ -368,10 +368,10 @@ const GRAMMAR_MODULES = [
   { num: "BED 20", banner: "wishIfOnly", title: "Wish & If Only", spec: "Expressing regret or a desire for something different, related to but distinct from conditionals.", href: "/library/grammar/wish-if-only", ready: true, hue: "sky", icon: "🌠", tier: "extras" },
   { num: "BED 21", banner: "usedTo", title: "Used To / Be Used To / Get Used To", spec: "Three similar-looking structures with completely different meanings — past habit vs familiarity vs adjusting.", href: "/library/grammar/used-to", ready: true, hue: "berry", icon: "⏳", tier: "extras" },
   { num: "BED 22", banner: "tooEnough", title: "Too / Enough", spec: "Too goes before an adjective, enough goes after — a common position mix-up.", href: "/library/grammar/too-enough", ready: true, hue: "violet", icon: "⚖️", tier: "extras" },
-  { num: "BED 23", banner: "soSuch", title: "So / Such", spec: "So + adjective vs such + a/an + adjective + noun — a classic emphasis mix-up.", href: "/library/grammar/so-such", ready: false, hue: "lime", icon: "💥", tier: "extras" },
-  { num: "BED 24", banner: "phrasalVerbs", title: "Phrasal Verbs — Separable vs Inseparable", spec: "Whether the object can go between the verb and particle, like 'turn off the light' vs 'look after the kids'.", href: "/library/grammar/phrasal-verbs", ready: false, hue: "magenta", icon: "🧩", tier: "extras" },
-  { num: "BED 25", banner: "exclamations", title: "Exclamations", spec: "What a beautiful day! / How beautiful! — a sentence type of its own.", href: "/library/grammar/exclamations", ready: false, hue: "navy", icon: "❗", tier: "extras" },
-  { num: "BED 26", banner: "emphasisDo", title: "Emphasis with Do/Does/Did", spec: "'I DO like it!' — using do-support in affirmative sentences purely for emphasis.", href: "/library/grammar/emphasis-do", ready: false, hue: "slate", icon: "🔊", tier: "extras" },
+  { num: "BED 23", banner: "soSuch", title: "So / Such", spec: "So + adjective vs such + a/an + adjective + noun — a classic emphasis mix-up.", href: "/library/grammar/so-such", ready: true, hue: "lime", icon: "💥", tier: "extras" },
+  { num: "BED 24", banner: "phrasalVerbs", title: "Phrasal Verbs — Separable vs Inseparable", spec: "Whether the object can go between the verb and particle, like 'turn off the light' vs 'look after the kids'.", href: "/library/grammar/phrasal-verbs", ready: true, hue: "magenta", icon: "🧩", tier: "extras" },
+  { num: "BED 25", banner: "exclamations", title: "Exclamations", spec: "What a beautiful day! / How beautiful! — a sentence type of its own.", href: "/library/grammar/exclamations", ready: true, hue: "navy", icon: "❗", tier: "extras" },
+  { num: "BED 26", banner: "emphasisDo", title: "Emphasis with Do/Does/Did", spec: "'I DO like it!' — using do-support in affirmative sentences purely for emphasis.", href: "/library/grammar/emphasis-do", ready: true, hue: "slate", icon: "🔊", tier: "extras" },
 ];
 
 const SPEAKING_TRACKS = [

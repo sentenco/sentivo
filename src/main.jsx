@@ -150,6 +150,10 @@ import InversionLesson from './InversionLesson.jsx'
 import WishIfOnlyLesson from './WishIfOnlyLesson.jsx'
 import UsedToLesson from './UsedToLesson.jsx'
 import TooEnoughLesson from './TooEnoughLesson.jsx'
+import SoSuchLesson from './SoSuchLesson.jsx'
+import PhrasalVerbsLesson from './PhrasalVerbsLesson.jsx'
+import ExclamationsLesson from './ExclamationsLesson.jsx'
+import EmphasisDoLesson from './EmphasisDoLesson.jsx'
 import PartsOfSpeechTrack from './PartsOfSpeechTrack.jsx'
 import PartsOfSpeechLesson from './PartsOfSpeechLesson.jsx'
 import Shift from './Shift.jsx'
@@ -323,6 +327,10 @@ createRoot(document.getElementById('root')).render(
             <Route path="/library/grammar/wish-if-only" element={<WishIfOnlyLesson />} />
             <Route path="/library/grammar/used-to" element={<UsedToLesson />} />
             <Route path="/library/grammar/too-enough" element={<TooEnoughLesson />} />
+            <Route path="/library/grammar/so-such" element={<SoSuchLesson />} />
+            <Route path="/library/grammar/phrasal-verbs" element={<PhrasalVerbsLesson />} />
+            <Route path="/library/grammar/exclamations" element={<ExclamationsLesson />} />
+            <Route path="/library/grammar/emphasis-do" element={<EmphasisDoLesson />} />
             <Route path="/library/shift" element={<ShiftHub />} />
             <Route path="/library/shift/:trackId" element={<ShiftTrack />} />
             <Route path="/library/shift/:trackId/:lessonNum" element={<Shift />} />
