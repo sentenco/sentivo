@@ -100,12 +100,14 @@ function GuidedItem({ item }) {
   );
 }
 
-function GuidedSlide() {
+function GuidedSlide({ index }) {
+  const chunk = LESSON.guided.slice(index * 3, index * 3 + 3);
+  const totalChunks = Math.ceil(LESSON.guided.length / 3);
   return (
     <div className="ssl-slide ssl-slide--part">
-      <h2 className="ssl-h">Guided Practice</h2>
+      <h2 className="ssl-h">Guided Practice{totalChunks > 1 ? ` (${index + 1} of ${totalChunks})` : ""}</h2>
       <div className="ssl-quiz-list">
-        {LESSON.guided.map((item, i) => <GuidedItem key={i} item={item} />)}
+        {chunk.map((item, i) => <GuidedItem key={i} item={item} />)}
       </div>
     </div>
   );
@@ -126,7 +128,9 @@ function WrapupSlide() {
 function buildSlides() {
   const slides = ["cover"];
   LESSON.pairs.forEach((_, i) => slides.push(`predict${i}`, `pair${i}`));
-  slides.push("guided", "wrapup");
+  const guidedChunks = Math.ceil(LESSON.guided.length / 3);
+  for (let i = 0; i < guidedChunks; i++) slides.push(`guided${i}`);
+  slides.push("wrapup");
   return slides;
 }
 
@@ -134,7 +138,7 @@ function renderSlide(slideType) {
   if (slideType === "cover") return <CoverSlide />;
   if (slideType.startsWith("predict")) return <PredictSlide index={Number(slideType.replace("predict", ""))} />;
   if (slideType.startsWith("pair")) return <PairSlide index={Number(slideType.replace("pair", ""))} />;
-  if (slideType === "guided") return <GuidedSlide />;
+  if (slideType.startsWith("guided")) return <GuidedSlide index={Number(slideType.replace("guided", ""))} />;
   if (slideType === "wrapup") return <WrapupSlide />;
   return null;
 }
