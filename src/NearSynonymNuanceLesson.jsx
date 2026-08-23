@@ -317,8 +317,20 @@ const CSS = `
   border-radius: 999px;
   padding: 6px 18px;
 }
-.nsn-cover-title { font-family: 'Grandstander', cursive; font-weight: 800; font-size: clamp(38px, 5vw, 48px); color: #123B40; margin: 4px 0 0; line-height: 1.15; }
-.nsn-cover-title--small { font-size: clamp(30px, 4vw, 40px); margin-top: 0; }
+.nsn-cover-title {
+  font-family: 'Grandstander', cursive;
+  font-weight: 800;
+  font-size: clamp(34px, 4.6vw, 44px);
+  color: #FFFFFF;
+  margin: 4px 0 0;
+  line-height: 1.3;
+  background: #0E6E7C;
+  border-radius: 24px;
+  padding: 12px 34px;
+  box-shadow: 0 8px 0 #0A4F59;
+  display: inline-block;
+}
+.nsn-cover-title--small { font-size: clamp(26px, 3.6vw, 34px); margin-top: 0; }
 .nsn-tagline { font-size: 15px; font-weight: 700; color: #4F8B90; max-width: 480px; margin: 0; }
 
 .nsn-header-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: center; }
@@ -344,32 +356,32 @@ const CSS = `
 
 .nsn-slots { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
 .nsn-slot {
-  min-width: 120px;
-  min-height: 50px;
-  border: 2px dashed #BFE6E1;
-  border-radius: 14px;
+  min-width: 150px;
+  min-height: 76px;
+  border: 3px dashed #BFE6E1;
+  border-radius: 18px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-family: 'Grandstander', cursive;
-  font-weight: 700;
-  font-size: 18px;
+  font-weight: 800;
+  font-size: clamp(26px, 4.4vw, 38px);
   color: #123B40;
-  padding: 8px 16px;
+  padding: 10px 20px;
   text-transform: capitalize;
 }
-.nsn-slot-num { color: #BFE6E1; font-weight: 800; font-size: 16px; }
+.nsn-slot-num { color: #BFE6E1; font-weight: 800; font-size: 22px; }
 .nsn-slot.is-correct { border-style: solid; border-color: #4CBE7F; background: #E4F8EC; color: #1F7A47; }
 .nsn-slot.is-incorrect { border-style: solid; border-color: #E5645A; background: #FDEAEA; color: #B3392F; }
 
 .nsn-pool { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
 .nsn-chip {
   font-family: 'Grandstander', cursive;
-  font-weight: 700;
-  font-size: 17px;
+  font-weight: 800;
+  font-size: clamp(24px, 4vw, 34px);
   border: none;
   border-radius: 999px;
-  padding: 12px 22px;
+  padding: 14px 28px;
   cursor: pointer;
   text-transform: capitalize;
 }

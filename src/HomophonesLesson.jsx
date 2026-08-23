@@ -323,8 +323,20 @@ const CSS = `
   border-radius: 999px;
   padding: 6px 18px;
 }
-.hpl-cover-title { font-family: 'Grandstander', cursive; font-weight: 800; font-size: clamp(40px, 5.6vw, 52px); color: #123B40; margin: 4px 0 0; line-height: 1.15; }
-.hpl-cover-title--small { font-size: clamp(30px, 4vw, 40px); margin-top: 0; }
+.hpl-cover-title {
+  font-family: 'Grandstander', cursive;
+  font-weight: 800;
+  font-size: clamp(36px, 5vw, 46px);
+  color: #FFFFFF;
+  margin: 4px 0 0;
+  line-height: 1.3;
+  background: #0E6E7C;
+  border-radius: 24px;
+  padding: 12px 34px;
+  box-shadow: 0 8px 0 #0A4F59;
+  display: inline-block;
+}
+.hpl-cover-title--small { font-size: clamp(26px, 3.6vw, 34px); margin-top: 0; }
 .hpl-tagline { font-size: 15px; font-weight: 700; color: #4F8B90; max-width: 480px; margin: 0; }
 
 .hpl-h {
