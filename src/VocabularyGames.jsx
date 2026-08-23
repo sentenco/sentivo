@@ -376,6 +376,24 @@ export const VOCAB_LESSONS = [
     href: "/library/vocabulary/lessons/polysemy",
     ready: true,
   },
+  {
+    key: "eponyms",
+    title: "Eponyms",
+    icon: "🏷️",
+    hue: "lime",
+    blurb: "sandwich, boycott, cardigan — words named after real people. Guess the origin.",
+    href: "/library/vocabulary/lessons/eponyms",
+    ready: true,
+  },
+  {
+    key: "portmanteau",
+    title: "Portmanteau Words",
+    icon: "🧩",
+    hue: "slate",
+    blurb: "brunch, smog, motel — two words blended into one. Guess the blend.",
+    href: "/library/vocabulary/lessons/portmanteau",
+    ready: true,
+  },
 ];
 
 function openLessonPlayer(href) {
@@ -777,6 +795,8 @@ const CSS = `
 .vg-cat-card--violet  { --vgc-accent: #6B5CA5; --vgc-icon-bg: rgba(107,92,165,0.14); --vgc-border: #DCD6F0; --vgc-shadow: rgba(70,55,130,0.10); --vgc-shadow-hover: rgba(70,55,130,0.16); }
 .vg-cat-card--rose    { --vgc-accent: #C2447A; --vgc-icon-bg: rgba(194,68,122,0.14); --vgc-border: #F4D2E2; --vgc-shadow: rgba(150,40,90,0.10); --vgc-shadow-hover: rgba(150,40,90,0.16); }
 .vg-cat-card--amber   { --vgc-accent: #B85C1F; --vgc-icon-bg: rgba(184,92,31,0.14); --vgc-border: #F0D2B0; --vgc-shadow: rgba(140,70,20,0.10); --vgc-shadow-hover: rgba(140,70,20,0.16); }
+.vg-cat-card--lime    { --vgc-accent: #6B9A2A; --vgc-icon-bg: rgba(107,154,42,0.14); --vgc-border: #DCEFC0; --vgc-shadow: rgba(70,110,20,0.10); --vgc-shadow-hover: rgba(70,110,20,0.16); }
+.vg-cat-card--slate   { --vgc-accent: #5A6B7A; --vgc-icon-bg: rgba(90,107,122,0.14); --vgc-border: #D6DEE4; --vgc-shadow: rgba(50,65,80,0.10); --vgc-shadow-hover: rgba(50,65,80,0.16); }
 
 .vg-cat-top { display: flex; align-items: center; justify-content: space-between; width: 100%; margin-bottom: 12px; }
 .vg-cat-icon {
