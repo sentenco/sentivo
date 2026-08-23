@@ -165,6 +165,11 @@ import GerundsPrepositionsTimeLesson from './GerundsPrepositionsTimeLesson.jsx'
 import AllWholeLesson from './AllWholeLesson.jsx'
 import EvenThoughIfSoLesson from './EvenThoughIfSoLesson.jsx'
 import ReflexiveVerbsNoSelfLesson from './ReflexiveVerbsNoSelfLesson.jsx'
+import CleftSentencesLesson from './CleftSentencesLesson.jsx'
+import GetPassiveBePassiveLesson from './GetPassiveBePassiveLesson.jsx'
+import IrregularForeignPluralsLesson from './IrregularForeignPluralsLesson.jsx'
+import MandativeSubjunctiveLesson from './MandativeSubjunctiveLesson.jsx'
+import WhomLesson from './WhomLesson.jsx'
 import PartsOfSpeechTrack from './PartsOfSpeechTrack.jsx'
 import PartsOfSpeechLesson from './PartsOfSpeechLesson.jsx'
 import Shift from './Shift.jsx'
@@ -353,6 +358,11 @@ createRoot(document.getElementById('root')).render(
             <Route path="/library/grammar/all-whole" element={<AllWholeLesson />} />
             <Route path="/library/grammar/even-though-if-so" element={<EvenThoughIfSoLesson />} />
             <Route path="/library/grammar/reflexive-verbs-no-self" element={<ReflexiveVerbsNoSelfLesson />} />
+            <Route path="/library/grammar/cleft-sentences" element={<CleftSentencesLesson />} />
+            <Route path="/library/grammar/get-passive-be-passive" element={<GetPassiveBePassiveLesson />} />
+            <Route path="/library/grammar/irregular-foreign-plurals" element={<IrregularForeignPluralsLesson />} />
+            <Route path="/library/grammar/mandative-subjunctive" element={<MandativeSubjunctiveLesson />} />
+            <Route path="/library/grammar/whom" element={<WhomLesson />} />
             <Route path="/library/shift" element={<ShiftHub />} />
             <Route path="/library/shift/:trackId" element={<ShiftTrack />} />
             <Route path="/library/shift/:trackId/:lessonNum" element={<Shift />} />

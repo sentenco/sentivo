@@ -383,6 +383,11 @@ const GRAMMAR_MODULES = [
   { num: "BED 35", banner: "allWhole", title: "All / Whole", spec: "All sits before the article (all the day); whole sits after it (the whole day) — opposite sides of the same word.", href: "/library/grammar/all-whole", ready: true, hue: "teal", icon: "🍰", tier: "extras" },
   { num: "BED 36", banner: "evenThoughIfSo", title: "Even Though / Even If / Even So", spec: "A fact vs a hypothetical vs a standalone linking word that starts a brand new sentence.", href: "/library/grammar/even-though-if-so", ready: true, hue: "coral", icon: "☂️", tier: "extras" },
   { num: "BED 37", banner: "reflexiveVerbsNoSelf", title: "Reflexive Verbs That Don't Need \"-self\"", spec: "Concentrate, relax, wake up drop the reflexive in English — unlike hurt, introduce, and enjoy, which keep it.", href: "/library/grammar/reflexive-verbs-no-self", ready: true, hue: "lime", icon: "🪞", tier: "extras" },
+  { num: "BED 38", banner: "cleftSentences", title: "Cleft Sentences", spec: "'It was Sarah who called' / 'What I need is sleep' — English's trick for spotlighting one word in a sentence.", href: "/library/grammar/cleft-sentences", ready: true, hue: "leaf", icon: "🔦", tier: "extras" },
+  { num: "BED 39", banner: "getPassiveBePassive", title: "Get-Passive vs Be-Passive", spec: "'He got fired' (dramatic, casual) vs 'he was fired' (neutral) — same passive idea, totally different feel.", href: "/library/grammar/get-passive-be-passive", ready: true, hue: "gold", icon: "⚡", tier: "extras" },
+  { num: "BED 40", banner: "irregularForeignPlurals", title: "Irregular & Foreign Plurals", spec: "Cactus/cacti, criterion/criteria, phenomenon/phenomena — even fluent speakers get these wrong.", href: "/library/grammar/irregular-foreign-plurals", ready: true, hue: "soil", icon: "🌵", tier: "extras" },
+  { num: "BED 41", banner: "mandativeSubjunctive", title: "The Mandative Subjunctive", spec: "'I suggest he arrive early' — a verb form that quietly drops the -s and nobody notices.", href: "/library/grammar/mandative-subjunctive", ready: true, hue: "sky", icon: "📢", tier: "extras" },
+  { num: "BED 42", banner: "whom", title: "Whom", spec: "Why English kept this fossil from Old English, and the practical rule for when you can just skip it.", href: "/library/grammar/whom", ready: true, hue: "berry", icon: "👻", tier: "extras" },
 ];
 
 const SPEAKING_TRACKS = [
@@ -413,13 +418,31 @@ function openSupplementaryLesson(href) {
   );
 }
 
+const SUPP_PAGE_SIZE = 10;
+
 function GrammarFeature({ navigate, query }) {
   const [tab, setTab] = useState("foundation");
+  const [suppPage, setSuppPage] = useState(0);
   const q = query.trim().toLowerCase();
   const tierModules = GRAMMAR_MODULES.filter((m) => m.tier === tab);
   const modules = q
     ? tierModules.filter((m) => m.title.toLowerCase().includes(q) || m.spec.toLowerCase().includes(q))
     : tierModules;
+
+  // Supplementary only -- Foundation's grid is small and fixed (14 modules),
+  // but Supplementary keeps growing, so it gets paginated 10 at a time.
+  // Pagination is skipped while searching so matches aren't hidden on page 2+.
+  const isPaginated = tab === "extras" && !q;
+  const suppPageCount = isPaginated ? Math.ceil(modules.length / SUPP_PAGE_SIZE) : 1;
+  const currentSuppPage = Math.min(suppPage, Math.max(0, suppPageCount - 1));
+  const pagedModules = isPaginated
+    ? modules.slice(currentSuppPage * SUPP_PAGE_SIZE, currentSuppPage * SUPP_PAGE_SIZE + SUPP_PAGE_SIZE)
+    : modules;
+
+  function selectTab(key) {
+    setTab(key);
+    setSuppPage(0);
+  }
 
   return (
     <div className="gdn-page">
@@ -436,7 +459,7 @@ function GrammarFeature({ navigate, query }) {
             key={t.key}
             type="button"
             className={`gdn-tab ${tab === t.key ? "is-active" : ""}`}
-            onClick={() => setTab(t.key)}
+            onClick={() => selectTab(t.key)}
           >
             {t.label}
           </button>
@@ -472,34 +495,69 @@ function GrammarFeature({ navigate, query }) {
           )}
         </div>
       ) : (
-        <div className="gdn-supp-list">
-          {modules.map((m) =>
-            m.ready ? (
-              <a
-                key={m.num}
-                href={m.href}
-                className="gdn-supp-row"
-                onClick={(e) => { e.preventDefault(); openSupplementaryLesson(m.href); }}
+        <>
+          <div className="gdn-supp-list">
+            {pagedModules.map((m) =>
+              m.ready ? (
+                <a
+                  key={m.num}
+                  href={m.href}
+                  className="gdn-supp-row"
+                  onClick={(e) => { e.preventDefault(); openSupplementaryLesson(m.href); }}
+                >
+                  <span className={`gdn-supp-icon gdn-supp-icon--${m.hue}`}>{m.icon}</span>
+                  <span className="gdn-supp-text">
+                    <h3 className="gdn-supp-title">{m.title}</h3>
+                    <p className="gdn-supp-spec">{m.spec}</p>
+                  </span>
+                  <span className="gdn-supp-cta">Open →</span>
+                </a>
+              ) : (
+                <div key={m.num} className="gdn-supp-row gdn-supp-row--empty">
+                  <span className={`gdn-supp-icon gdn-supp-icon--${m.hue}`}>{m.icon}</span>
+                  <span className="gdn-supp-text">
+                    <h3 className="gdn-supp-title">{m.title}</h3>
+                    <p className="gdn-supp-spec">{m.spec}</p>
+                  </span>
+                  <span className="gdn-supp-cta gdn-supp-cta--empty">Coming soon</span>
+                </div>
+              )
+            )}
+          </div>
+
+          {isPaginated && suppPageCount > 1 && (
+            <div className="gdn-supp-pager">
+              <button
+                type="button"
+                className="gdn-supp-pager-btn"
+                onClick={() => setSuppPage((p) => Math.max(0, p - 1))}
+                disabled={currentSuppPage === 0}
               >
-                <span className={`gdn-supp-icon gdn-supp-icon--${m.hue}`}>{m.icon}</span>
-                <span className="gdn-supp-text">
-                  <h3 className="gdn-supp-title">{m.title}</h3>
-                  <p className="gdn-supp-spec">{m.spec}</p>
-                </span>
-                <span className="gdn-supp-cta">Open →</span>
-              </a>
-            ) : (
-              <div key={m.num} className="gdn-supp-row gdn-supp-row--empty">
-                <span className={`gdn-supp-icon gdn-supp-icon--${m.hue}`}>{m.icon}</span>
-                <span className="gdn-supp-text">
-                  <h3 className="gdn-supp-title">{m.title}</h3>
-                  <p className="gdn-supp-spec">{m.spec}</p>
-                </span>
-                <span className="gdn-supp-cta gdn-supp-cta--empty">Coming soon</span>
+                ← Prev
+              </button>
+              <div className="gdn-supp-pager-dots">
+                {Array.from({ length: suppPageCount }, (_, i) => (
+                  <button
+                    key={i}
+                    type="button"
+                    className={`gdn-supp-pager-dot ${i === currentSuppPage ? "is-active" : ""}`}
+                    onClick={() => setSuppPage(i)}
+                  >
+                    {i + 1}
+                  </button>
+                ))}
               </div>
-            )
+              <button
+                type="button"
+                className="gdn-supp-pager-btn"
+                onClick={() => setSuppPage((p) => Math.min(suppPageCount - 1, p + 1))}
+                disabled={currentSuppPage === suppPageCount - 1}
+              >
+                Next →
+              </button>
+            </div>
           )}
-        </div>
+        </>
       )}
     </div>
   );
@@ -2835,6 +2893,40 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   .gdn-supp-row { flex-wrap: wrap; }
   .gdn-supp-cta { margin-left: 62px; }
 }
+
+.gdn-supp-pager { display: flex; align-items: center; justify-content: center; gap: 14px; margin-top: 22px; }
+.gdn-supp-pager-btn {
+  font-family: 'Bangers', cursive;
+  font-weight: 400;
+  font-size: 14px;
+  letter-spacing: 0.3px;
+  color: #1A1A1A;
+  background: #FFFFFF;
+  border: 2.5px solid #1A1A1A;
+  border-radius: 10px;
+  padding: 7px 16px;
+  cursor: pointer;
+  box-shadow: 3px 3px 0 #1A1A1A;
+}
+.gdn-supp-pager-btn:active:not(:disabled) { box-shadow: 0 0 0 #1A1A1A; transform: translate(3px, 3px); }
+.gdn-supp-pager-btn:disabled { opacity: 0.35; cursor: default; }
+.gdn-supp-pager-dots { display: flex; gap: 6px; }
+.gdn-supp-pager-dot {
+  font-family: 'Bangers', cursive;
+  font-weight: 400;
+  font-size: 13px;
+  color: #6B5C3E;
+  background: #FFFFFF;
+  border: 2px solid #1A1A1A;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.gdn-supp-pager-dot.is-active { background: var(--leaf); color: #FFFFFF; }
 
 /* ---------- Reading: Bookshelf ---------- */
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600;1,700&family=DM+Sans:wght@500;700&display=swap');
