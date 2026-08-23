@@ -172,6 +172,8 @@ import MandativeSubjunctiveLesson from './MandativeSubjunctiveLesson.jsx'
 import WhomLesson from './WhomLesson.jsx'
 import ParallelStructureLesson from './ParallelStructureLesson.jsx'
 import NominalizationLesson from './NominalizationLesson.jsx'
+import PunctuationEssentialsTrack from './PunctuationEssentialsTrack.jsx'
+import PunctuationEssentialsLesson from './PunctuationEssentialsLesson.jsx'
 import PartsOfSpeechTrack from './PartsOfSpeechTrack.jsx'
 import PartsOfSpeechLesson from './PartsOfSpeechLesson.jsx'
 import Shift from './Shift.jsx'
@@ -367,6 +369,8 @@ createRoot(document.getElementById('root')).render(
             <Route path="/library/grammar/whom" element={<WhomLesson />} />
             <Route path="/library/grammar/parallel-structure" element={<ParallelStructureLesson />} />
             <Route path="/library/grammar/nominalization" element={<NominalizationLesson />} />
+            <Route path="/library/grammar/punctuation-essentials" element={<PunctuationEssentialsTrack />} />
+            <Route path="/library/grammar/punctuation-essentials/:code" element={<PunctuationEssentialsLesson />} />
             <Route path="/library/shift" element={<ShiftHub />} />
             <Route path="/library/shift/:trackId" element={<ShiftTrack />} />
             <Route path="/library/shift/:trackId/:lessonNum" element={<Shift />} />
