@@ -142,13 +142,13 @@ export default function Relay() {
   return (
     <div className="rl-shell">
       <style>{CSS}</style>
-      <header className="rl-topbar">
-        <span className="rl-brand"><img src="/logo-sentivo.png" alt="" className="rl-brand-logo" />entivo</span>
-        <Stepper slideType={slideType} />
-      </header>
 
       <div className="rl-stage">
         <div className="rl-deck">
+          <div className="rl-deck-header">
+            <span className="rl-brand"><img src="/logo-sentivo.png" alt="" className="rl-brand-logo" />entivo</span>
+            <Stepper slideType={slideType} />
+          </div>
           <div className="rl-deck-body" key={slideIdx}>
             {renderSlide(slideType, lesson)}
           </div>
@@ -190,14 +190,15 @@ const CSS = `
 }
 .rl-shell * { box-sizing: border-box; }
 
-.rl-topbar {
-  width: 100%;
-  max-width: 1040px;
+.rl-deck-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  padding: 22px 24px 0;
+  padding: 16px 30px;
+  background: #F5FBFA;
+  border-bottom: 1px solid #EAF3FA;
+  flex-shrink: 0;
 }
 .rl-brand {
   display: flex;
@@ -205,10 +206,10 @@ const CSS = `
   flex-shrink: 0;
   font-family: 'Baloo 2', cursive;
   font-weight: 700;
-  font-size: 18px;
+  font-size: 17px;
   color: #10646B;
 }
-.rl-brand-logo { height: 24px; width: auto; display: block; margin-right: -4px; }
+.rl-brand-logo { height: 22px; width: auto; display: block; margin-right: -4px; }
 
 .rl-stepper {
   display: flex;
@@ -241,23 +242,22 @@ const CSS = `
   flex: 1;
   width: 100%;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
-  padding: 32px 24px 60px;
+  padding: 24px;
 }
 
 .rl-deck {
   position: relative;
-  width: 860px;
+  width: 780px;
   max-width: 100%;
-  height: 460px;
   background: #FFFFFF;
   border: 1px solid #D3EDE9;
   border-radius: 16px;
   box-shadow: 0 24px 60px rgba(16,100,107,0.14);
   display: flex;
   flex-direction: column;
-  padding: 22px 34px 26px;
+  overflow: hidden;
   animation: rl-slide-in 0.2s ease;
 }
 @keyframes rl-slide-in {
@@ -265,7 +265,7 @@ const CSS = `
   to { opacity: 1; transform: translateY(0); }
 }
 
-.rl-deck-body { flex: 1; min-height: 0; display: flex; }
+.rl-deck-body { min-height: 220px; display: flex; padding: 34px 34px 26px; }
 .rl-slide { display: flex; flex-direction: column; gap: 14px; height: 100%; width: 100%; }
 .rl-slide--centered { align-items: center; justify-content: center; text-align: center; }
 
@@ -372,7 +372,7 @@ const CSS = `
 }
 
 /* ── Nav row ── */
-.rl-nav-row { display: flex; align-items: center; justify-content: space-between; margin-top: 16px; padding-top: 14px; border-top: 1px solid #EAF3FA; }
+.rl-nav-row { display: flex; align-items: center; justify-content: space-between; padding: 14px 34px 20px; border-top: 1px solid #EAF3FA; flex-shrink: 0; }
 .rl-nav-btn {
   font-family: 'IBM Plex Sans', sans-serif;
   font-weight: 700;
