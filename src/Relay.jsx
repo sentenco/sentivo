@@ -250,8 +250,8 @@ const CSS = `
   to { opacity: 1; transform: translateY(0); }
 }
 
-.rl-deck-body { min-height: 260px; display: flex; padding: 36px 34px 28px; }
-.rl-slide { display: flex; flex-direction: column; gap: 14px; height: 100%; width: 100%; }
+.rl-deck-body { min-height: 260px; display: flex; align-items: center; justify-content: center; padding: 36px 34px 28px; }
+.rl-slide { display: flex; flex-direction: column; gap: 14px; width: 100%; }
 .rl-slide--centered { align-items: center; justify-content: center; text-align: center; }
 
 /* ── Highlighted heading, used on every slide ── */
