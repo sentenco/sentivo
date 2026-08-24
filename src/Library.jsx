@@ -142,112 +142,6 @@ function DigitalClock() {
   );
 }
 
-function SpeakingBanner({ name }) {
-  const banners = {
-    // Forge: a hammer striking a glowing word-block on an anvil — building
-    // vocabulary through repetition, one strike at a time.
-    forge: (
-      <>
-        <defs>
-          <linearGradient id="spkb-forge-bg" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0" stopColor="#FDF1DE" />
-            <stop offset="1" stopColor="#FBE0B4" />
-          </linearGradient>
-          <linearGradient id="spkb-forge-glow" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stopColor="#FFC55C" />
-            <stop offset="1" stopColor="#E8A33D" />
-          </linearGradient>
-          <linearGradient id="spkb-forge-metal" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stopColor="#8A8578" />
-            <stop offset="1" stopColor="#5C5850" />
-          </linearGradient>
-          <filter id="spkb-forge-shadow" x="-40%" y="-40%" width="180%" height="180%">
-            <feDropShadow dx="0" dy="6" stdDeviation="6" floodColor="#96631C" floodOpacity="0.25" />
-          </filter>
-        </defs>
-        <rect width="320" height="140" fill="url(#spkb-forge-bg)" />
-        <g filter="url(#spkb-forge-shadow)">
-          <rect x="112" y="96" width="96" height="20" rx="6" fill="url(#spkb-forge-metal)" />
-          <rect x="146" y="112" width="28" height="14" rx="3" fill="#463F35" />
-          <rect x="140" y="72" width="40" height="26" rx="7" fill="url(#spkb-forge-glow)" />
-        </g>
-        <g stroke="#E8A33D" strokeWidth="3" strokeLinecap="round" opacity="0.85">
-          <line x1="150" y1="60" x2="144" y2="46" />
-          <line x1="160" y1="56" x2="160" y2="40" />
-          <line x1="170" y1="60" x2="177" y2="47" />
-        </g>
-        <g transform="rotate(-32 214 58)">
-          <rect x="206" y="18" width="16" height="52" rx="6" fill="#8A5A2E" />
-          <rect x="194" y="12" width="40" height="22" rx="6" fill="url(#spkb-forge-metal)" />
-        </g>
-      </>
-    ),
-    // Shift: a clock racing against itself, corrected mid-tick — fast
-    // tense choice and self-repair under time pressure.
-    shift: (
-      <>
-        <defs>
-          <linearGradient id="spkb-shift-bg" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0" stopColor="#FDEDEA" />
-            <stop offset="1" stopColor="#F8D2C8" />
-          </linearGradient>
-          <filter id="spkb-shift-shadow" x="-40%" y="-40%" width="180%" height="180%">
-            <feDropShadow dx="0" dy="6" stdDeviation="6" floodColor="#9C2F26" floodOpacity="0.22" />
-          </filter>
-        </defs>
-        <rect width="320" height="140" fill="url(#spkb-shift-bg)" />
-        <path d="M160 20 A50 50 0 1 1 116 96" fill="none" stroke="#F0A99A" strokeWidth="4" strokeLinecap="round" strokeDasharray="2 10" />
-        <g filter="url(#spkb-shift-shadow)">
-          <circle cx="160" cy="70" r="44" fill="#FFFFFF" />
-        </g>
-        <circle cx="160" cy="70" r="44" fill="none" stroke="#D4453A" strokeWidth="3" />
-        <g stroke="#2B2A4A" strokeLinecap="round">
-          <line x1="160" y1="70" x2="160" y2="42" strokeWidth="4" />
-          <line x1="160" y1="70" x2="182" y2="82" strokeWidth="4" />
-        </g>
-        <circle cx="160" cy="70" r="4.5" fill="#D4453A" />
-        <g filter="url(#spkb-shift-shadow)">
-          <circle cx="198" cy="100" r="18" fill="#D4453A" />
-        </g>
-        <path d="M190 100 l6 7 12 -14" fill="none" stroke="#FFFFFF" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round" />
-      </>
-    ),
-    // Ascend: steps climbing toward a small flag — precision and
-    // structure earned one level at a time.
-    ascend: (
-      <>
-        <defs>
-          <linearGradient id="spkb-asc-bg" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0" stopColor="#E9F5EF" />
-            <stop offset="1" stopColor="#CDEBDD" />
-          </linearGradient>
-          <linearGradient id="spkb-asc-step" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stopColor="#48AC8C" />
-            <stop offset="1" stopColor="#2E8F7A" />
-          </linearGradient>
-          <filter id="spkb-asc-shadow" x="-40%" y="-40%" width="180%" height="180%">
-            <feDropShadow dx="0" dy="5" stdDeviation="5" floodColor="#1E5E4F" floodOpacity="0.22" />
-          </filter>
-        </defs>
-        <rect width="320" height="140" fill="url(#spkb-asc-bg)" />
-        <g filter="url(#spkb-asc-shadow)">
-          <rect x="86" y="104" width="46" height="20" rx="4" fill="url(#spkb-asc-step)" />
-          <rect x="132" y="86" width="46" height="38" rx="4" fill="url(#spkb-asc-step)" />
-          <rect x="178" y="64" width="46" height="60" rx="4" fill="url(#spkb-asc-step)" />
-        </g>
-        <path d="M201 64 V30" stroke="#1E5E4F" strokeWidth="3" strokeLinecap="round" />
-        <path d="M201 30 l24 9 -24 9 Z" fill="#48AC8C" />
-        <path d="M100 96 Q150 60 195 34" fill="none" stroke="#8FD1A8" strokeWidth="2.5" strokeDasharray="4 6" />
-      </>
-    ),
-  };
-  return (
-    <svg className="spklab-banner" viewBox="0 0 320 140" xmlns="http://www.w3.org/2000/svg">
-      {banners[name] || <rect width="320" height="140" fill="#EDE7F6" />}
-    </svg>
-  );
-}
-
 function ArticlesFeature({ navigate, query }) {
   const [activeTopic, setActiveTopic] = useState("All");
   const q = query.trim().toLowerCase();
@@ -1749,10 +1643,31 @@ export default function Library() {
           <BookshelfFeature items={filtered} navigate={navigate} query={query} />
         ) : category === "Speaking" ? (
           <div className="spklab-page">
+            <div className="spklab-bg">
+              <svg width="130" height="130" viewBox="0 0 64 64" className="spklab-bg-item spklab-bg-item--1">
+                <path d="M20 8 v14 a10 10 0 0 0 20 0 V8" fill="none" stroke="#10646B" strokeWidth="4" strokeLinecap="round" />
+                <circle cx="20" cy="8" r="3" fill="#10646B" />
+                <circle cx="40" cy="8" r="3" fill="#10646B" />
+                <path d="M30 32 v8 a10 10 0 0 0 10 10 h4" fill="none" stroke="#10646B" strokeWidth="4" strokeLinecap="round" />
+                <circle cx="48" cy="52" r="7" fill="none" stroke="#10646B" strokeWidth="4" />
+              </svg>
+              <svg width="150" height="60" viewBox="0 0 150 60" className="spklab-bg-item spklab-bg-item--2">
+                <path d="M0 30 h30 l8 -20 l12 36 l10 -28 l8 12 h82" fill="none" stroke="#E8544E" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+              <svg width="90" height="90" viewBox="0 0 64 64" className="spklab-bg-item spklab-bg-item--3">
+                <g transform="rotate(-30 32 32)">
+                  <rect x="14" y="24" width="36" height="16" rx="8" fill="#FFC857" />
+                  <path d="M32 24 v16" stroke="#EAFBF8" strokeWidth="2" />
+                </g>
+              </svg>
+              <svg width="70" height="70" viewBox="0 0 24 24" className="spklab-bg-item spklab-bg-item--4">
+                <path d="M11 3h2v8h8v2h-8v8h-2v-8H3v-2h8z" fill="#2AA8AE" />
+              </svg>
+            </div>
             <div className="spklab-hero">
               <span className="spklab-eyebrow">Sentivo · Speaking</span>
-              <h1 className="spklab-title">Diagnose the gap. Prescribe the track.</h1>
-              <p className="spklab-sub">Every Speaking course is built around one identified gap, not a general level.</p>
+              <h1 className="spklab-title">The Fluency Clinic</h1>
+              <p className="spklab-sub">Diagnose the gap. Prescribe the track.</p>
             </div>
             <div className="spklab-lane"></div>
             {(() => {
@@ -1766,10 +1681,14 @@ export default function Library() {
                 <div className="spklab-grid">
                   {tracks.map((t) => (
                     <a key={t.key} href={t.href} className={`spklab-card spklab-card--${t.hue}`}>
-                      <SpeakingBanner name={t.key} />
+                      <svg className="spklab-pin" viewBox="0 0 26 34">
+                        <path d="M13 0a9 9 0 0 0-9 9c0 6.5 9 16.5 9 16.5s9-10 9-16.5a9 9 0 0 0-9-9z" />
+                        <circle cx="13" cy="9" r="3.4" fill="#FFFFFF" />
+                      </svg>
                       <div className="spklab-body">
-                        <div className="spklab-label">Gap identified</div>
+                        <div className="spklab-label">Diagnosis</div>
                         <p className="spklab-gap">{t.gap}</p>
+                        <div className="spklab-rx-label">Rx</div>
                         <h3 className="spklab-name">{t.name}</h3>
                         <p className="spklab-desc">{t.desc}</p>
                         <span className="spklab-cta">Open {t.name} →</span>
@@ -1825,7 +1744,7 @@ export default function Library() {
 }
 
 const CSS = `
-@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&family=Quicksand:wght@500;600;700&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@700;900&family=Bangers&family=Comic+Neue:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&family=Quicksand:wght@500;600;700&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@700;900&family=Bangers&family=Comic+Neue:wght@400;700&family=Baloo+2:wght@600;700;800&family=IBM+Plex+Sans:wght@500;600;700;800&display=swap');
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
@@ -2421,72 +2340,108 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .dyn-landing-soon-title { font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 20px; color: #2B2A4A; margin: 0 0 8px; }
 .dyn-landing-soon-desc { font-family: 'Quicksand', sans-serif; font-size: 14px; color: #6B6580; margin: 0; }
 
+/* ---------- Speaking: The Fluency Clinic ---------- */
 .spklab-page {
   width: 100%;
   max-width: 1080px;
-  background: linear-gradient(180deg, #EEF3EA 0%, #E4ECDF 100%);
+  background: linear-gradient(160deg, #EAFBF8 0%, #DFF4FA 100%);
   border-radius: 22px;
   padding: clamp(26px, 3.6vw, 48px) clamp(20px, 3.2vw, 40px);
+  position: relative;
+  overflow: hidden;
 }
-.spklab-hero { text-align: center; max-width: 560px; margin: 0 auto; }
+.spklab-bg { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
+.spklab-bg-item { position: absolute; }
+.spklab-bg-item--1 { top: -20px; right: 4%; opacity: 0.14; }
+.spklab-bg-item--2 { top: 36%; left: -10px; opacity: 0.12; }
+.spklab-bg-item--3 { bottom: -16px; left: 8%; opacity: 0.13; }
+.spklab-bg-item--4 { bottom: 6%; right: 14%; opacity: 0.14; }
+.spklab-hero { text-align: center; max-width: 560px; margin: 0 auto; position: relative; z-index: 1; }
 .spklab-eyebrow {
-  font-family: 'SF Mono', 'Menlo', Consolas, monospace;
-  font-size: clamp(10.5px, 0.9vw, 11px);
-  letter-spacing: 0.14em;
+  display: block;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 800;
+  font-size: 11px;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: #5A6B4F;
+  color: #2AA8AE;
 }
 .spklab-title {
-  font-family: 'Fredoka', sans-serif;
+  font-family: 'Baloo 2', cursive;
   font-weight: 700;
-  font-size: clamp(26px, 3.6vw, 38px);
-  letter-spacing: -0.01em;
-  color: #22301B;
-  margin: 10px 0 10px;
+  font-size: clamp(32px, 4.4vw, 46px);
+  color: #10646B;
+  margin: 8px 0 8px;
+  line-height: 1.1;
 }
 .spklab-sub {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 500;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 600;
   font-size: clamp(13px, 1.1vw, 15px);
   line-height: 1.55;
-  color: #4E5C44;
+  color: #4B8B92;
   margin: 0 auto;
 }
-.spklab-lane { position: relative; height: 2px; background: #C9D4BE; margin: clamp(26px, 3vw, 36px) 0; }
-.spklab-lane::before, .spklab-lane::after { content: ""; position: absolute; top: -3px; width: 8px; height: 8px; border-radius: 50%; background: #8FA37E; }
+.spklab-lane { position: relative; height: 2px; background: #BFE6E1; margin: clamp(26px, 3vw, 36px) 0; z-index: 1; }
+.spklab-lane::before, .spklab-lane::after { content: ""; position: absolute; top: -3px; width: 8px; height: 8px; border-radius: 50%; background: #2AA8AE; }
 .spklab-lane::before { left: 0; }
 .spklab-lane::after { right: 0; }
 
-.spklab-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(14px, 1.8vw, 22px); }
+.spklab-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(14px, 1.8vw, 22px); position: relative; z-index: 1; }
 .spklab-card {
   display: block;
   text-decoration: none;
   background: #FFFFFF;
   border-radius: 16px;
-  overflow: hidden;
-  box-shadow: 0 10px 26px rgba(34,48,27,0.12);
+  overflow: visible;
+  box-shadow: 0 10px 22px rgba(16,100,107,0.14);
   position: relative;
   transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
-.spklab-card:hover { transform: translateY(-4px); box-shadow: 0 18px 36px rgba(34,48,27,0.18); }
-.spklab-banner { display: block; width: 100%; height: auto; }
+.spklab-card:hover { transform: translateY(-4px); box-shadow: 0 16px 30px rgba(16,100,107,0.2); }
+.spklab-pin { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); width: 26px; height: 34px; z-index: 2; }
+.spklab-card--forge .spklab-pin path:first-child { fill: #E8544E; }
+.spklab-card--shift .spklab-pin path:first-child { fill: #2AA8AE; }
+.spklab-card--ascend .spklab-pin path:first-child { fill: #FFC857; }
 
-.spklab-body { padding: 20px 20px 22px; }
-.spklab-label { font-family: 'SF Mono', 'Menlo', Consolas, monospace; font-size: 9.5px; letter-spacing: 0.08em; text-transform: uppercase; color: #9AA0A6; margin-bottom: 3px; }
-.spklab-gap { font-family: 'Quicksand', sans-serif; font-weight: 700; font-size: 13.5px; margin: 0 0 14px; }
-.spklab-card--forge .spklab-gap { color: #96631C; }
-.spklab-card--shift .spklab-gap { color: #A23A2F; }
-.spklab-card--ascend .spklab-gap { color: #1E7261; }
-.spklab-name { font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: clamp(22px, 2.1vw, 26px); color: #161B20; margin: 0 0 8px; }
-.spklab-desc { font-family: 'Quicksand', sans-serif; font-size: 12.5px; line-height: 1.5; color: #5C6873; margin: 0 0 16px; }
+.spklab-body { padding: 26px 20px 22px; }
+.spklab-label {
+  display: inline-block;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 800;
+  font-size: 9.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #E8544E;
+  background: rgba(232,84,78,0.12);
+  border-radius: 999px;
+  padding: 3px 10px;
+  margin-bottom: 8px;
+}
+.spklab-gap { font-family: 'IBM Plex Sans', sans-serif; font-weight: 700; font-size: 13.5px; margin: 0 0 12px; color: #10646B; }
+.spklab-rx-label {
+  display: inline-block;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 800;
+  font-size: 9.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #2AA8AE;
+  background: rgba(42,168,174,0.12);
+  border-radius: 999px;
+  padding: 3px 10px;
+  margin-bottom: 6px;
+}
+.spklab-name { font-family: 'Baloo 2', cursive; font-weight: 700; font-size: clamp(22px, 2.1vw, 26px); color: #10646B; margin: 0 0 8px; }
+.spklab-desc { font-family: 'IBM Plex Sans', sans-serif; font-size: 12.5px; line-height: 1.5; color: #5C8891; margin: 0 0 16px; }
 .spklab-cta {
   display: block; text-align: center; margin-top: 14px;
-  font-family: 'Quicksand', sans-serif; font-weight: 700; font-size: 12.5px;
+  font-family: 'IBM Plex Sans', sans-serif; font-weight: 700; font-size: 12.5px;
   color: #FFFFFF; border-radius: 8px; padding: 10px 0;
 }
-.spklab-card--forge .spklab-cta { background: #E8A33D; }
-.spklab-card--shift .spklab-cta { background: #D4453A; }
-.spklab-card--ascend .spklab-cta { background: #2E8F7A; }
+.spklab-card--forge .spklab-cta { background: #E8544E; }
+.spklab-card--shift .spklab-cta { background: #2AA8AE; }
+.spklab-card--ascend .spklab-cta { background: #C99A2E; }
 
 @media (max-width: 700px) {
   .spklab-grid { grid-template-columns: 1fr; }
