@@ -29,7 +29,7 @@ export default function AscendHub() {
           <span className="ah-hero-eyebrow">Diagnosis · Ideas lack structure and precision</span>
           <h1 className="ah-hero-title">ASCEND</h1>
           <p className="ah-hero-blurb">
-            ASCEND sharpens precision, structure, and diplomatic control in speech — for students who already sound fluent but whose ideas come out imprecise or poorly organized.
+            ASCEND sharpens precision, structure, and diplomatic control in speech. It's built for students who already sound fluent but whose ideas come out imprecise or poorly organized.
           </p>
         </div>
         <div className="ah-lane"></div>
