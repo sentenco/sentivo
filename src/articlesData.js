@@ -4449,6 +4449,1063 @@ export const ARTICLES = [
       },
     ],
   },
+  {
+    slug: "viral-maxxing-habits-2026",
+    ready: true,
+    publishedAt: "2026-08-06",
+    emoji: "🎯",
+    variant: "daily",
+    topicLabel: "Daily Life",
+    topicTitle: "Wellbeing & Daily Life",
+    title: "Are Viral 'Maxxing' Habits Helping or Hurting?",
+    dek: "A booming online trend promises self-improvement, but mental health experts say the pressure to optimize everything may backfire.",
+    editions: {
+      plain: {
+        label: "Plain Edition",
+        range: "A1–A2",
+        readTime: "2 min read",
+        wordCount: 186,
+        blocks: [
+          { type: "p", parts: [
+            { t: "In 2026, a new trend called 'maxxing' is popular online, especially with young people. Maxxing means trying to make one part of your life as good as possible. People talk about 'looksmaxxing' (looking better), 'healthmaxxing' (being healthier), and even 'sleepmaxxing' (sleeping better)." },
+          ] },
+          { type: "p", parts: [
+            { t: "At first, this sounds like a good idea. It can help people build good habits, like eating well or exercising. But some experts worry that trying to be perfect at everything can make people feel stressed instead of happy." },
+          ] },
+          { type: "p", parts: [
+            { t: "Videos about maxxing often make change look fast and easy. They show simple steps or before-and-after pictures. But real life is not always so simple. When people think they must improve every part of themselves, they can feel like they are never good enough." },
+          ] },
+          { type: "p", parts: [
+            { t: "Maxxing is not always bad. Some people really do feel better with more sleep or healthier food. The problem happens when these habits become too extreme." },
+          ] },
+          { type: "p", parts: [
+            { t: "This trend is easy to talk about because it asks an interesting question. When does trying to be better become too much pressure?" },
+          ] },
+        ],
+      },
+      polished: {
+        label: "Polished Edition",
+        range: "B1–B2",
+        readTime: "4 min read",
+        wordCount: 342,
+        blocks: [
+          { type: "p", parts: [
+            { t: "A fast-growing online trend called “maxxing” is shaping daily life for many young people in 2026." },
+            { c: 1 },
+            { t: " The term refers to trying to improve one part of life as much as possible, such as fitness, skincare, productivity, or diet. On social media, people now talk about “looksmaxxing,” “healthmaxxing,” and even “sleepmaxxing.” At first, this can sound positive because it encourages " },
+            { g: "discipline", pos: "noun", def: "controlled behavior that follows a plan or set of rules" },
+            { t: " and self-care. However, some mental health experts worry that constant self-optimization can become stressful instead of helpful." },
+          ] },
+          { type: "p", parts: [
+            { t: "One reason the trend is so powerful is that it feels practical. Videos often offer simple routines, product lists, or before-and-after examples that make improvement look easy and immediate. But experts say daily life is more complicated than a checklist." },
+            { c: 2 },
+            { t: " When people believe they should improve every part of themselves at once, they may feel guilty, anxious, or never good enough." },
+          ] },
+          { type: "p", parts: [
+            { t: "The discussion becomes even more interesting because the trend is not completely bad. Some people genuinely benefit from better sleep, healthier food, or stronger exercise habits. The problem comes when healthy routines become " },
+            { g: "obsessive", pos: "adjective", def: "done too much or thought about too much, in an unhealthy way" },
+            { t: " or unrealistic." },
+            { c: 3 },
+            { t: " Doctors have also warned that some online wellness trends can push people toward risky behavior, especially when advice is not based on real evidence." },
+          ] },
+          { type: "p", parts: [
+            { t: "For ESL learners, this story is ideal for discussion because both sides have reasonable points. Students can debate whether self-improvement culture is motivating or harmful, compare online trends in different countries, and practice language for advice, pressure, and personal goals." },
+          ] },
+          { type: "p", parts: [
+            { t: "The topic feels modern and relatable because it asks a question many learners already face: when does healthy ambition turn into unhealthy pressure?" },
+          ] },
+        ],
+      },
+      precise: {
+        label: "Precise Edition",
+        range: "C1–C2",
+        readTime: "4 min read",
+        wordCount: 331,
+        blocks: [
+          { type: "p", parts: [
+            { t: "A rapidly proliferating online trend known as “maxxing” is shaping the daily lives of many young people in 2026." },
+            { c: 1 },
+            { t: " The term denotes the pursuit of maximizing a single facet of one's life, whether fitness, skincare, productivity, or diet. Across social media, users now speak of “looksmaxxing,” “healthmaxxing,” and even “sleepmaxxing.” At first blush, this may seem " },
+            { g: "salutary", pos: "adjective", def: "producing good or beneficial effects, especially for health" },
+            { t: ", since it encourages discipline and self-care. Some mental health experts, however, caution that relentless self-optimization can prove stressful rather than beneficial." },
+          ] },
+          { type: "p", parts: [
+            { t: "Part of the trend's potency lies in its apparent practicality. Videos frequently offer streamlined routines, product recommendations, or before-and-after comparisons that render transformation seem effortless and immediate." },
+            { c: 2 },
+            { t: " Experts counter that daily life resists such tidy reduction. When individuals come to believe every dimension of the self warrants simultaneous improvement, they may find themselves beset by guilt, anxiety, or a persistent sense of inadequacy." },
+          ] },
+          { type: "p", parts: [
+            { t: "The discussion grows more nuanced once one concedes that the trend is not wholly detrimental. Some people genuinely benefit from improved sleep, healthier diets, or more rigorous exercise. Difficulties arise, however, once these routines curdle into " },
+            { g: "compulsion", pos: "noun", def: "a strong, often irresistible urge to do something repeatedly" },
+            { t: " or unrealistic expectation." },
+            { c: 3 },
+            { t: " Physicians have likewise warned that certain online wellness trends can nudge individuals toward risky behavior, particularly where the underlying advice lacks a credible evidentiary basis." },
+          ] },
+          { type: "p", parts: [
+            { t: "For ESL learners, this narrative offers fertile ground for debate, as both positions carry genuine merit. Students might interrogate whether self-improvement culture is ultimately motivating or corrosive, compare its manifestations across different countries, and practice the language of advice, pressure, and aspiration." },
+          ] },
+          { type: "p", parts: [
+            { t: "The topic feels distinctly contemporary because it poses a question many learners already confront: at what point does healthy ambition curdle into unhealthy compulsion?" },
+          ] },
+        ],
+      },
+    },
+    references: [
+      { domain: "cnbc.com", name: "CNBC", headline: "Why viral 'maxxing' trends concern some mental health experts" },
+      { domain: "vice.com", name: "Vice", headline: "4 Risky Wellness Trends Experts Say Aren't as Healthy as They Seem" },
+      { domain: "lung.org", name: "American Lung Association", headline: "Popular TikTok Trends to Avoid: The Dangers of Viral Health Trends" },
+    ],
+    discussionGuide: [
+      {
+        q: "Have you seen 'maxxing' videos online, like looksmaxxing or productivitymaxxing? What did you think of them?",
+        follow: ["Did you ever try any advice from one of these videos?"],
+      },
+      {
+        q: "The article says trying to improve every part of yourself at once can make people feel 'never good enough.' Do you agree?",
+        follow: [],
+      },
+      {
+        q: "Where do you think the line is between a healthy habit and an unhealthy obsession?",
+        follow: ["Can you give an example from your own life or someone you know?"],
+      },
+    ],
+  },
+  {
+    slug: "brain-cell-computers-ethics-2026",
+    ready: true,
+    publishedAt: "2026-08-06",
+    emoji: "🧠",
+    variant: "planet",
+    topicLabel: "Nature & Science",
+    topicTitle: "Nature, Science & Planet",
+    title: "Brain-Cell Computers Could Transform Science, or Trouble It",
+    dek: "Researchers are exploring computers built with human brain cells, but the idea is raising new ethical questions.",
+    editions: {
+      plain: {
+        label: "Plain Edition",
+        range: "A1–A2",
+        readTime: "2 min read",
+        wordCount: 172,
+        blocks: [
+          { type: "p", parts: [
+            { t: "One of the strangest science stories of 2026 is about computers made partly from human brain cells grown in a lab. Scientists call this a 'biocomputer.' It uses living material to do the work of a computer." },
+          ] },
+          { type: "p", parts: [
+            { t: "Researchers say biocomputers could one day work in new ways that use less energy than normal machines. This sounds exciting. But it also raises a big question. Should human brain cells be used this way?" },
+          ] },
+          { type: "p", parts: [
+            { t: "People also ask about the person who gave the cells. Did they agree to this use? Who is watching over this kind of research? These are not only science questions. They are also questions about right and wrong." },
+          ] },
+          { type: "p", parts: [
+            { t: "Scientists want better tools for medicine and technology. But many people feel uneasy when new inventions move faster than the rules that are supposed to keep them safe." },
+          ] },
+          { type: "p", parts: [
+            { t: "This story is a good example of how new science can be amazing and worrying at the same time." },
+          ] },
+        ],
+      },
+      polished: {
+        label: "Polished Edition",
+        range: "B1–B2",
+        readTime: "4 min read",
+        wordCount: 320,
+        blocks: [
+          { type: "p", parts: [
+            { t: "One of the strangest science stories of 2026 involves computers made partly from lab-grown human brain cells." },
+            { c: 1 },
+            { t: " Researchers say such biocomputers could one day process information in ways that are more energy-efficient or flexible than standard machines. A biocomputer is a system that uses living biological material to perform computing tasks. The science is exciting because it suggests new ways of solving problems, but it also raises serious " },
+            { g: "ethical", pos: "adjective", def: "connected to what is morally right or wrong" },
+            { t: " questions." },
+          ] },
+          { type: "p", parts: [
+            { t: "The main concern is not only technical. It is moral. If human brain cells are used in powerful new systems, people naturally ask whether the cells should be treated differently from ordinary lab material." },
+            { c: 2 },
+            { t: " Questions also arise about consent from donors, oversight, and what limits should exist before the field grows larger. A report on the topic said proposed safeguards are needed “to maintain public trust.”" },
+          ] },
+          { type: "p", parts: [
+            { t: "This story works especially well for debate because both enthusiasm and caution make sense. Scientists want better tools for medicine, research, and technology. But the public often worries when innovation moves faster than ethics." },
+            { c: 3 },
+            { t: " This tension is common in modern science: progress can offer real benefits while still making society uncomfortable." },
+          ] },
+          { type: "p", parts: [
+            { t: "For ESL learners, the topic brings together science, ethics, and future thinking. Students can discuss whether some inventions go too far, compare scientific limits in different cultures, and practice language for possibility, concern, and " },
+            { g: "regulation", pos: "noun", def: "official rules that control how something is done" },
+            { t: "." },
+          ] },
+          { type: "p", parts: [
+            { t: "The idea of a computer using living brain cells is memorable, and that alone can spark strong but thoughtful discussion." },
+          ] },
+        ],
+      },
+      precise: {
+        label: "Precise Edition",
+        range: "C1–C2",
+        readTime: "4 min read",
+        wordCount: 318,
+        blocks: [
+          { type: "p", parts: [
+            { t: "Among the more unsettling scientific developments of 2026 is the emergence of computers constructed in part from laboratory-grown human brain cells." },
+            { c: 1 },
+            { t: " Researchers contend that such biocomputers might one day process information with greater energy efficiency or adaptability than conventional machines. A biocomputer, broadly defined, is a system that harnesses living biological material to perform computational tasks. The science is compelling in its promise, yet it simultaneously provokes weighty " },
+            { g: "ethical", pos: "adjective", def: "relating to questions of moral right and wrong" },
+            { t: " questions." },
+          ] },
+          { type: "p", parts: [
+            { t: "The central concern extends beyond the merely technical into the moral. If human brain cells are incorporated into powerful new systems, it is only natural to ask whether such cells warrant a different standard of treatment than ordinary laboratory material." },
+            { c: 2 },
+            { t: " Further questions arise regarding donor consent, institutional oversight, and what limits ought to be established before the field expands further. One report on the subject noted that proposed safeguards are necessary “to maintain public trust.”" },
+          ] },
+          { type: "p", parts: [
+            { t: "This narrative lends itself well to debate, since both enthusiasm and caution are readily defensible positions. Scientists seek superior tools for medicine, research, and technology." },
+            { c: 3 },
+            { t: " Yet the public frequently grows uneasy when innovation " },
+            { g: "outpaces", pos: "verb", def: "moves faster than something else, leaving it behind" },
+            { t: " the ethical frameworks meant to govern it. This tension recurs throughout modern science: progress can confer genuine benefits while still unsettling society." },
+          ] },
+          { type: "p", parts: [
+            { t: "For ESL learners, the topic weaves together science, ethics, and speculation about the future. Students might debate whether certain inventions overstep reasonable bounds, compare scientific limits across cultures, and practice language of possibility, concern, and regulation." },
+          ] },
+          { type: "p", parts: [
+            { t: "The image of a computer powered by living brain cells is undeniably memorable, and that alone can ignite vigorous yet thoughtful discussion." },
+          ] },
+        ],
+      },
+    },
+    references: [
+      { domain: "scientificinquirer.com", name: "Scientific Inquirer", headline: "Brain-Cells-Based Computers Raise New Ethical Questions" },
+      { domain: "sciencedaily.com", name: "ScienceDaily", headline: "Scientific Conduct News" },
+      { domain: "reuters.com", name: "Reuters", headline: "Science News | Today's Latest Science Headlines" },
+    ],
+    discussionGuide: [
+      {
+        q: "Should human brain cells be used to build computers, even in a lab setting? Why or why not?",
+        follow: [],
+      },
+      {
+        q: "The article says rules for new science sometimes move slower than the science itself. Can you think of another example of this?",
+        follow: [],
+      },
+      {
+        q: "What questions would you want answered before you'd trust a technology like this?",
+        follow: ["Who should be responsible for answering them?"],
+      },
+    ],
+  },
+  {
+    slug: "ai-outpacing-oversight-2026",
+    ready: true,
+    publishedAt: "2026-08-06",
+    emoji: "🌐",
+    variant: "tech",
+    topicLabel: "Digital & Tech",
+    topicTitle: "Digital Life & Future Tech",
+    title: "AI Is Getting Smarter Faster Than Rules Can Follow",
+    dek: "Global leaders are warning that artificial intelligence is advancing so quickly that safety rules may struggle to keep up.",
+    editions: {
+      plain: {
+        label: "Plain Edition",
+        range: "A1–A2",
+        readTime: "2 min read",
+        wordCount: 179,
+        blocks: [
+          { type: "p", parts: [
+            { t: "Artificial intelligence, or AI, is not only a tech story anymore. In 2026, it has become a big world problem. The leader of the United Nations said AI is growing faster than the rules that are supposed to keep it safe." },
+          ] },
+          { type: "p", parts: [
+            { t: "This matters because AI is now part of school, media, business, and even children's daily lives. Most people agree that AI can be very useful. It can help with research and give people more information." },
+          ] },
+          { type: "p", parts: [
+            { t: "But there is a harder question. How much freedom should companies have while AI is still changing so fast? Some world leaders asked if AI can help everyone safely and fairly, without causing serious harm." },
+          ] },
+          { type: "p", parts: [
+            { t: "Some people say too many rules could slow down good progress. Other people say weak rules could cause problems like fake information, unfair systems, or risks to children." },
+          ] },
+          { type: "p", parts: [
+            { t: "This makes AI a great topic to discuss, because it is really about who decides how powerful technology should shape our future." },
+          ] },
+        ],
+      },
+      polished: {
+        label: "Polished Edition",
+        range: "B1–B2",
+        readTime: "4 min read",
+        wordCount: 335,
+        blocks: [
+          { type: "p", parts: [
+            { t: "Artificial intelligence is no longer just a tech industry story. In 2026, it has become a global governance issue." },
+            { c: 1 },
+            { t: " Reuters reported that UN Secretary-General António Guterres warned AI is developing faster than oversight can keep up. Oversight means the systems of monitoring, rules, and " },
+            { g: "accountability", pos: "noun", def: "being responsible for your actions and having to explain them" },
+            { t: " used to keep a powerful technology safe. This warning matters because AI is now spreading through education, media, business, and even children's digital experiences." },
+          ] },
+          { type: "p", parts: [
+            { t: "The debate is not about whether AI is useful. Most people agree that it can improve research, productivity, and access to information. The harder question is how much freedom companies should have while the technology is still changing so rapidly." },
+            { c: 2 },
+            { t: " UN reporting on a July summit asked whether AI can benefit all humanity “safely, fairly and without causing catastrophic harm.” That wording shows how seriously global institutions now view the issue." },
+          ] },
+          { type: "p", parts: [
+            { t: "This makes AI a perfect classroom debate topic. Some people argue that too many rules could slow innovation and prevent useful progress. Others say weak regulation could expose society to misinformation, unfair systems, privacy loss, or risks to children." },
+            { c: 3 },
+            { t: " Because AI tools are used across borders, the discussion also raises a practical question about whether global rules are possible at all." },
+          ] },
+          { type: "p", parts: [
+            { t: "For ESL students, the topic is timely and widely relevant. Learners can practice language for regulation, risk, and responsibility while discussing a technology they already encounter in daily life." },
+          ] },
+          { type: "p", parts: [
+            { t: "The issue is not only about machines. It is about who gets to decide how powerful digital tools should shape the future." },
+          ] },
+        ],
+      },
+      precise: {
+        label: "Precise Edition",
+        range: "C1–C2",
+        readTime: "4 min read",
+        wordCount: 328,
+        blocks: [
+          { type: "p", parts: [
+            { t: "Artificial intelligence has ceased to be merely a technology-sector story; by 2026, it has become a matter of global governance." },
+            { c: 1 },
+            { t: " Reuters reported that UN Secretary-General António Guterres warned that AI is advancing faster than oversight can accommodate. Oversight, in this context, denotes the systems of monitoring, regulation, and " },
+            { g: "accountability", pos: "noun", def: "the state of being answerable for one's actions or decisions" },
+            { t: " intended to keep a powerful technology safe. The warning carries weight precisely because AI now permeates education, media, commerce, and even children's digital lives." },
+          ] },
+          { type: "p", parts: [
+            { t: "The debate does not concern AI's usefulness, on which there is broad consensus; most acknowledge its capacity to enhance research, productivity, and access to information. The more difficult question is how much latitude companies should be granted while the technology continues to evolve so rapidly." },
+            { c: 2 },
+            { t: " UN reporting on a July summit posed the question of whether AI can benefit all of humanity “safely, fairly and without causing catastrophic harm,” phrasing that reveals just how gravely global institutions now regard the matter." },
+          ] },
+          { type: "p", parts: [
+            { t: "This renders AI an ideal subject for structured debate. Some contend that excessive regulation could stifle innovation and forestall genuine progress. Others counter that lax oversight could expose society to misinformation, inequitable systems, erosion of privacy, or risks to children." },
+            { c: 3 },
+            { t: " Because AI tools transcend national borders, the discussion also raises the practical question of whether any truly global regulatory framework is even attainable." },
+          ] },
+          { type: "p", parts: [
+            { t: "For ESL students, the topic is both timely and broadly resonant. Learners can practice the vocabulary of regulation, risk, and responsibility while engaging with a technology already woven into their daily lives." },
+          ] },
+          { type: "p", parts: [
+            { t: "Ultimately, the issue concerns not merely machines, but who is entrusted to decide how such formidable digital tools ought to shape the future." },
+          ] },
+        ],
+      },
+    },
+    references: [
+      { domain: "reuters.com", name: "Reuters", headline: "UN's Guterres warns AI outpacing oversight, urges global action" },
+      { domain: "news.un.org", name: "UN News", headline: "Global push for AI governance amid warnings of 'catastrophic harm'" },
+      { domain: "microsoft.com", name: "Microsoft", headline: "What's next in AI: 7 trends to watch in 2026" },
+    ],
+    discussionGuide: [
+      {
+        q: "Do you think there should be global rules for AI, the same for every country? Is that even possible?",
+        follow: [],
+      },
+      {
+        q: "The article talks about AI helping 'safely, fairly, and without causing catastrophic harm.' What do you think 'fairly' means in this context?",
+        follow: [],
+      },
+      {
+        q: "Should companies be allowed to move fast with new AI, or should they wait for rules first?",
+        follow: ["What might happen either way?"],
+      },
+    ],
+  },
+  {
+    slug: "microsoft-ai-layoffs-anxiety-2026",
+    ready: true,
+    publishedAt: "2026-08-06",
+    emoji: "📉",
+    variant: "work",
+    topicLabel: "Work & Business",
+    topicTitle: "Worklife, Business & Careers",
+    title: "AI Job Cuts Spark Fresh Anxiety at Microsoft",
+    dek: "Thousands of layoffs at Microsoft are fueling a wider debate about how AI is changing the future of work.",
+    editions: {
+      plain: {
+        label: "Plain Edition",
+        range: "A1–A2",
+        readTime: "2 min read",
+        wordCount: 176,
+        blocks: [
+          { type: "p", parts: [
+            { t: "In July 2026, Microsoft cut 4,800 jobs. The company also made changes to its Xbox video game team. This is about 2% of all Microsoft workers around the world." },
+          ] },
+          { type: "p", parts: [
+            { t: "Companies remove jobs for many reasons. But in 2026, people often connect job cuts to AI. AI tools can now do some tasks in writing, computer coding, and office work. This makes people ask a hard question. Is technology creating better jobs, or just replacing workers too fast?" },
+          ] },
+          { type: "p", parts: [
+            { t: "Some business leaders say AI can free workers from boring, repeated tasks. This can open the door to new kinds of jobs. Other people worry that companies use AI as an excuse to make teams smaller, before new jobs are really ready." },
+          ] },
+          { type: "p", parts: [
+            { t: "When workers feel unsure about their jobs, they may feel less confident and less motivated. So AI at work is not only about doing tasks faster. It is also about trust and feeling secure." },
+          ] },
+          { type: "p", parts: [
+            { t: "This story turns one company's news into a bigger question about the future of work everywhere." },
+          ] },
+        ],
+      },
+      polished: {
+        label: "Polished Edition",
+        range: "B1–B2",
+        readTime: "4 min read",
+        wordCount: 338,
+        blocks: [
+          { type: "p", parts: [
+            { t: "Microsoft's decision to cut 4,800 jobs in July 2026 has become one of the clearest symbols of anxiety around AI and employment." },
+            { c: 1 },
+            { t: " Reuters reported that the company would overhaul its Xbox unit while reducing about 2.1% of its global workforce. Layoffs happen for many reasons, but in 2026 they are often discussed alongside the rapid spread of AI tools. That link makes people ask a difficult question: is technology creating better work, or simply replacing workers faster than societies can adapt?" },
+          ] },
+          { type: "p", parts: [
+            { t: "The concern is understandable because AI is already reshaping tasks in writing, coding, customer support, and office administration. Some business leaders argue that automation can free employees from " },
+            { g: "repetitive", pos: "adjective", def: "done again and again in the same way" },
+            { t: " work and open new roles. Others worry that companies may use efficiency as a reason to shrink teams before new opportunities are ready." },
+            { c: 2 },
+            { t: " When people see a famous global company making cuts, the debate becomes more personal and immediate." },
+          ] },
+          { type: "p", parts: [
+            { t: "This story also connects to a wider workplace mood. Worker engagement is already low in many places, and anxiety about job security can make that worse." },
+            { c: 3 },
+            { t: " If employees feel uncertain about the value of their own skills, motivation and trust may decline. That means AI in business is not only about productivity. It is also about confidence, retraining, and social stability." },
+          ] },
+          { type: "p", parts: [
+            { t: "For ESL learners, the topic is especially useful because it combines business news with human impact. Students can debate whether companies have a duty to retrain workers, discuss which jobs may change most, and practice language about layoffs, automation, and responsibility." },
+          ] },
+          { type: "p", parts: [
+            { t: "The article is engaging because it takes a familiar company and turns it into a larger question about the future of work itself." },
+          ] },
+        ],
+      },
+      precise: {
+        label: "Precise Edition",
+        range: "C1–C2",
+        readTime: "4 min read",
+        wordCount: 330,
+        blocks: [
+          { type: "p", parts: [
+            { t: "Microsoft's decision to eliminate 4,800 positions in July 2026 has emerged as one of the starkest symbols of anxiety surrounding AI and employment." },
+            { c: 1 },
+            { t: " Reuters reported that the company would overhaul its Xbox division while trimming roughly 2.1% of its global workforce. Layoffs occur for myriad reasons, yet in 2026 they are frequently discussed in tandem with the rapid proliferation of AI tools. That association prompts a difficult question: is technology generating better work, or simply displacing workers faster than societies can adapt?" },
+          ] },
+          { type: "p", parts: [
+            { t: "The unease is understandable, given that AI already reshapes tasks in writing, coding, customer support, and office administration. Some business leaders contend that automation can liberate employees from " },
+            { g: "repetitive", pos: "adjective", def: "recurring in the same form; done over and over" },
+            { t: " labor and open new avenues of employment. Others suspect that companies invoke efficiency as a pretext for shrinking teams before replacement opportunities materialize." },
+            { c: 2 },
+            { t: " When a prominent global company announces cuts, the debate acquires a more personal and immediate character." },
+          ] },
+          { type: "p", parts: [
+            { t: "This narrative also intersects with a broader workplace malaise. Employee engagement is already tepid in many quarters, and anxiety over job security threatens to compound the problem." },
+            { c: 3 },
+            { t: " Should employees grow uncertain of their own skills' value, both motivation and institutional trust may " },
+            { g: "erode", pos: "verb", def: "to gradually wear away or weaken over time" },
+            { t: ". AI in business, then, is not solely a matter of productivity; it equally concerns confidence, retraining, and social stability." },
+          ] },
+          { type: "p", parts: [
+            { t: "For ESL learners, the topic proves especially valuable in that it fuses business news with human consequence. Students might debate whether corporations bear a duty to retrain displaced workers, discuss which professions face the greatest disruption, and practice the vocabulary of layoffs, automation, and accountability." },
+          ] },
+          { type: "p", parts: [
+            { t: "The article resonates because it transforms one company's headline into a far larger inquiry into the future of work itself." },
+          ] },
+        ],
+      },
+    },
+    references: [
+      { domain: "reuters.com", name: "Reuters", headline: "Microsoft to cut 4800 jobs, overhaul Xbox unit" },
+      { domain: "shrm.org", name: "SHRM", headline: "2026 Top Five Workplace Issues" },
+      { domain: "gallup.com", name: "Gallup", headline: "State of the Global Workplace 2026" },
+    ],
+    discussionGuide: [
+      {
+        q: "Do you think companies should be required to retrain workers whose jobs are affected by AI?",
+        follow: ["Who should pay for that retraining?"],
+      },
+      {
+        q: "The article says AI in business is 'not only about productivity, it is also about confidence.' What does that mean to you?",
+        follow: [],
+      },
+      {
+        q: "If your job could be partly done by AI, how would that make you feel?",
+        follow: ["What would you want your employer to do about it?"],
+      },
+    ],
+  },
+  {
+    slug: "school-gadget-limits-philippines-2026",
+    ready: true,
+    publishedAt: "2026-08-06",
+    emoji: "📵",
+    variant: "work",
+    topicLabel: "Study & Skills",
+    topicTitle: "Study, School & Skills",
+    title: "Should Schools Limit Student Gadgets During Class?",
+    dek: "New rules in the Philippines are reopening a familiar debate about technology, focus, and what good learning should look like.",
+    editions: {
+      plain: {
+        label: "Plain Edition",
+        range: "A1–A2",
+        readTime: "2 min read",
+        wordCount: 170,
+        blocks: [
+          { type: "p", parts: [
+            { t: "In July 2026, the Philippines made a new school rule. Students and teachers cannot use gadgets, like phones, during class. There is an exception for learning or emergencies." },
+          ] },
+          { type: "p", parts: [
+            { t: "This rule sounds strict. But it asks a question many countries think about too. Do phones and tablets help students learn, or do they take away their focus?" },
+          ] },
+          { type: "p", parts: [
+            { t: "People who like the rule say gadgets can distract students and make cheating easier. Without phones, students may listen better and talk to each other more." },
+          ] },
+          { type: "p", parts: [
+            { t: "But other people disagree. They say digital tools can help with research, notes, and creative school projects. A full ban might not prepare students for modern work and study." },
+          ] },
+          { type: "p", parts: [
+            { t: "This topic is not really about gadgets alone. It is about what kind of attention schools want to protect, and what future they want students to be ready for." },
+          ] },
+        ],
+      },
+      polished: {
+        label: "Polished Edition",
+        range: "B1–B2",
+        readTime: "4 min read",
+        wordCount: 322,
+        blocks: [
+          { type: "p", parts: [
+            { t: "A July 2026 education update from the Philippines says learners' and school personnel's gadgets are prohibited during class hours in public schools except for educational or emergency purposes." },
+            { c: 1 },
+            { t: " At first glance, the rule sounds strict. But it raises a classroom question many countries continue to face: do personal devices help learning more than they distract from it? Because phones and tablets are now part of daily student life, any rule about them quickly becomes controversial." },
+          ] },
+          { type: "p", parts: [
+            { t: "Supporters of limits say the benefits are clear. Devices can interrupt attention, encourage cheating, and pull students away from face-to-face interaction. In that view, stricter control helps students focus, listen better, and participate more actively." },
+            { c: 2 },
+            { t: " The argument is especially strong in schools where not every learner has equal access to quality devices or internet service." },
+          ] },
+          { type: "p", parts: [
+            { t: "Critics, however, may say gadget restrictions ignore how students actually learn in 2026." },
+            { c: 3 },
+            { t: " Digital tools can support research, note-taking, language practice, and creative projects. A complete ban, even with exceptions, may feel like a step backward if schools want to " },
+            { g: "prepare", pos: "verb", def: "to get someone ready for something in the future" },
+            { t: " students for modern work and study environments." },
+          ] },
+          { type: "p", parts: [
+            { t: "For ESL classrooms, this story offers familiar and engaging material. Students can debate whether phones belong in class, compare school rules across countries, and practice language for agreement, disagreement, and classroom behavior." },
+          ] },
+          { type: "p", parts: [
+            { t: "The issue remains interesting because it is not really only about gadgets. It is about what kind of attention schools want to protect and what kind of future they want to prepare students for." },
+          ] },
+        ],
+      },
+      precise: {
+        label: "Precise Edition",
+        range: "C1–C2",
+        readTime: "4 min read",
+        wordCount: 315,
+        blocks: [
+          { type: "p", parts: [
+            { t: "A July 2026 education directive from the Philippines stipulates that gadgets belonging to learners and school personnel alike are prohibited during class hours in public schools, save for educational or emergency purposes." },
+            { c: 1 },
+            { t: " At first glance, the rule appears stringent. Yet it raises a classroom question that many countries continue to confront: do personal devices facilitate learning more than they impede it? Because phones and tablets are now woven into the fabric of student life, any policy governing them swiftly becomes contentious." },
+          ] },
+          { type: "p", parts: [
+            { t: "Proponents of restriction contend the benefits are self-evident. Devices can fracture attention, facilitate " },
+            { g: "cheating", pos: "verb", def: "acting dishonestly to gain an advantage, especially on a test" },
+            { t: ", and draw students away from face-to-face interaction. On this view, stricter control helps students concentrate, listen more attentively, and participate more actively." },
+            { c: 2 },
+            { t: " The argument carries particular force in schools where access to quality devices or internet service remains uneven." },
+          ] },
+          { type: "p", parts: [
+            { t: "Critics, however, might counter that gadget restrictions overlook how students actually learn in 2026." },
+            { c: 3 },
+            { t: " Digital tools can bolster research, note-taking, language practice, and creative endeavor. A blanket ban, even one tempered by exceptions, may seem a retrograde step if schools aspire to prepare students for contemporary work and study environments." },
+          ] },
+          { type: "p", parts: [
+            { t: "For ESL classrooms, this narrative furnishes familiar and engaging material. Students might debate whether phones belong in class, compare institutional policies across countries, and practice the language of agreement, dissent, and classroom conduct." },
+          ] },
+          { type: "p", parts: [
+            { t: "The issue endures in interest because it is scarcely about gadgets alone; it concerns what manner of attention schools wish to safeguard, and what future they intend to ready their students for." },
+          ] },
+        ],
+      },
+    },
+    references: [
+      { domain: "facebook.com", name: "Department of Education (Philippines)", headline: "Gadget use during classes is prohibited except for educational or emergency purposes" },
+      { domain: "unesco.org", name: "UNESCO", headline: "Education transforms lives" },
+      { domain: "oecd.org", name: "OECD", headline: "Future of Education and Skills 2030/2040" },
+    ],
+    discussionGuide: [
+      {
+        q: "Does your school or workplace have rules about phones? Do you think they are fair?",
+        follow: [],
+      },
+      {
+        q: "The article says the argument for gadget rules is 'especially strong' in schools where not every student has equal access to devices. Why do you think that is?",
+        follow: [],
+      },
+      {
+        q: "Can you think of a way schools could get the benefits of technology without the distractions?",
+        follow: [],
+      },
+    ],
+  },
+  {
+    slug: "global-shows-local-authenticity-2026",
+    ready: true,
+    publishedAt: "2026-08-06",
+    emoji: "🎭",
+    variant: "culture",
+    topicLabel: "Culture & Fun",
+    topicTitle: "Culture, Stories & Fun",
+    title: "Can Global Shows Still Feel Truly Local?",
+    dek: "A World Cup ceremony producer says global entertainment depends on local culture, but not everyone agrees on what authenticity means.",
+    editions: {
+      plain: {
+        label: "Plain Edition",
+        range: "A1–A2",
+        readTime: "2 min read",
+        wordCount: 168,
+        blocks: [
+          { type: "p", parts: [
+            { t: "Big global shows keep getting bigger. This makes people ask an interesting question. Can a show made for the whole world still feel local and real?" },
+          ] },
+          { type: "p", parts: [
+            { t: "Marco Bassetti is producing shows for the World Cup. He says global entertainment still needs local culture. This sounds true. But it also opens a new question. How is culture shown when millions of people are watching at the same time?" },
+          ] },
+          { type: "p", parts: [
+            { t: "Some people think big global shows can share local traditions in a good way. Music, clothes, language, and dance can teach people about a place's history. Other people worry that local culture gets made simpler, so it is easier for outside viewers to enjoy." },
+          ] },
+          { type: "p", parts: [
+            { t: "This is why opening ceremonies get so much attention. They are not only performances. They also show who is included and how." },
+          ] },
+          { type: "p", parts: [
+            { t: "This topic works well for discussion because everyone can bring their own culture into the conversation." },
+          ] },
+        ],
+      },
+      polished: {
+        label: "Polished Edition",
+        range: "B1–B2",
+        readTime: "4 min read",
+        wordCount: 328,
+        blocks: [
+          { type: "p", parts: [
+            { t: "As global entertainment events grow larger, one cultural question keeps returning: can a show made for the whole world still feel local and authentic?" },
+            { c: 1 },
+            { t: " Reuters highlighted this issue through comments from Marco Bassetti, whose company is producing World Cup ceremonies. He argued that global entertainment still depends on local culture. That sounds reasonable, but it also opens a debate about how culture is presented when millions of viewers are watching." },
+          ] },
+          { type: "p", parts: [
+            { t: "Some people believe large global events can celebrate local identity in a meaningful way." },
+            { c: 2 },
+            { t: " Music, costume, language, and performance traditions can introduce audiences to a place's history and spirit. Others may worry that local culture becomes simplified or polished into something easier for outsiders to consume. In that view, " },
+            { g: "authenticity", pos: "noun", def: "the quality of being real, genuine, or true to its origins" },
+            { t: " can turn into branding." },
+          ] },
+          { type: "p", parts: [
+            { t: "This tension is one reason opening ceremonies and major entertainment spectacles attract so much discussion." },
+            { c: 3 },
+            { t: " They are not only performances. They are statements about who gets represented and how. Even when a show is visually impressive, viewers may still disagree about whether it feels honest, commercial, inclusive, or too carefully " },
+            { g: "managed", pos: "adjective", def: "controlled or organized very carefully, sometimes too much so" },
+            { t: "." },
+          ] },
+          { type: "p", parts: [
+            { t: "For ESL classes, the topic works very well because students can bring their own cultural knowledge into the conversation. They can discuss festivals or performances from their countries, debate what makes a show feel authentic, and practice language for culture, symbolism, and representation." },
+          ] },
+          { type: "p", parts: [
+            { t: "The article stimulates interest because it asks whether global popularity helps local culture travel, or changes it too much in the process." },
+          ] },
+        ],
+      },
+      precise: {
+        label: "Precise Edition",
+        range: "C1–C2",
+        readTime: "4 min read",
+        wordCount: 322,
+        blocks: [
+          { type: "p", parts: [
+            { t: "As global entertainment spectacles swell in scale, one cultural question resurfaces with regularity: can a production designed for the entire world still feel local and authentic?" },
+            { c: 1 },
+            { t: " Reuters foregrounded this issue through remarks from Marco Bassetti, whose company is producing the World Cup ceremonies. He maintained that global entertainment remains dependent on local culture, a claim that seems reasonable enough, yet also invites debate over how culture is rendered when millions of viewers are watching simultaneously." },
+          ] },
+          { type: "p", parts: [
+            { t: "Some contend that large-scale global events can honor local identity in a meaningful fashion." },
+            { c: 2 },
+            { t: " Music, costume, language, and performance traditions can acquaint audiences with a place's history and spirit. Others fear that local culture is instead simplified or " },
+            { g: "polished", pos: "adjective", def: "made smooth and refined, often to make something more appealing" },
+            { t: " into something more digestible for outside consumption. On this reading, " },
+            { g: "authenticity", pos: "noun", def: "the quality of being genuine or true to one's origins" },
+            { t: " risks curdling into mere branding." },
+          ] },
+          { type: "p", parts: [
+            { t: "This tension partly explains why opening ceremonies and other entertainment spectacles attract such sustained scrutiny." },
+            { c: 3 },
+            { t: " They function not merely as performances but as statements about who is represented and how. Even a visually arresting show may leave viewers divided over whether it feels honest, commercial, inclusive, or excessively stage-managed." },
+          ] },
+          { type: "p", parts: [
+            { t: "For ESL classes, the topic proves especially fruitful, since students can draw upon their own cultural knowledge in discussion. They might examine festivals or performances native to their countries, debate what constitutes authenticity in a show, and practice the vocabulary of culture, symbolism, and representation." },
+          ] },
+          { type: "p", parts: [
+            { t: "The article sustains interest by posing whether global popularity helps local culture travel, or instead transforms it beyond recognition in the process." },
+          ] },
+        ],
+      },
+    },
+    references: [
+      { domain: "reuters.com", name: "Reuters", headline: "Marco Bassetti on why global entertainment still depends on local culture" },
+      { domain: "webershandwick.com", name: "Weber Shandwick", headline: "Predicting the Unpredictable: The Top 10 Cultural Trends and Moments of 2026" },
+      { domain: "forbes.com", name: "Forbes", headline: "7 Cultural Trends Shaping Business in 2026 and Beyond" },
+    ],
+    discussionGuide: [
+      {
+        q: "Can you think of a festival or performance from your own country that has been shown to a global audience? Did it feel authentic to you?",
+        follow: [],
+      },
+      {
+        q: "The article says authenticity can 'turn into branding.' What do you think that means?",
+        follow: [],
+      },
+      {
+        q: "Should global shows try to represent many cultures at once, or focus deeply on just one?",
+        follow: [],
+      },
+    ],
+  },
+  {
+    slug: "social-media-substance-over-virality-2026",
+    ready: true,
+    publishedAt: "2026-08-06",
+    emoji: "💬",
+    variant: "culture",
+    topicLabel: "Society & Issues",
+    topicTitle: "People, Society & Issues",
+    title: "Should Social Media Reward Substance More Than Virality?",
+    dek: "New reports suggest audiences want more useful and meaningful content, but platforms still profit most from attention and speed.",
+    editions: {
+      plain: {
+        label: "Plain Edition",
+        range: "A1–A2",
+        readTime: "2 min read",
+        wordCount: 174,
+        blocks: [
+          { type: "p", parts: [
+            { t: "New reports from 2026 say people are tired of empty, noisy content on social media. They want posts that mean something. One report calls this a return to 'social with substance.'" },
+          ] },
+          { type: "p", parts: [
+            { t: "This sounds good. But it makes a hard question appear. Can apps that are built for fast attention really support slower, more thoughtful sharing?" },
+          ] },
+          { type: "p", parts: [
+            { t: "Many people search for advice, real explanations, and honest conversation, not just entertainment. This could make online spaces healthier. But social media apps still depend on likes, clicks, and fast sharing to make money. These systems often reward speed and emotion, not depth." },
+          ] },
+          { type: "p", parts: [
+            { t: "This creates a strange problem. People say they want better content. But their own habits do not always match what they say. Many people still click on dramatic or emotional posts, even while complaining about them." },
+          ] },
+          { type: "p", parts: [
+            { t: "So the real question is not only about the apps. It is also about what we, as users, choose to reward." },
+          ] },
+        ],
+      },
+      polished: {
+        label: "Polished Edition",
+        range: "B1–B2",
+        readTime: "4 min read",
+        wordCount: 330,
+        blocks: [
+          { type: "p", parts: [
+            { t: "A growing number of 2026 reports say social media users are tired of empty noise and increasingly value content with more substance." },
+            { c: 1 },
+            { t: " Ogilvy Social.Lab describes this as a return to “social with substance.” That sounds promising, yet it creates a difficult social question: can platforms built for attention truly support slower, more meaningful communication? The answer matters because social media now shapes how people learn, argue, and build community." },
+          ] },
+          { type: "p", parts: [
+            { t: "On one side, there is clear demand for useful, credible, and community-based posts." },
+            { c: 2 },
+            { t: " Users increasingly search for advice, explanations, and real conversation rather than passive entertainment. This could create healthier online spaces and give more power to thoughtful creators. On the other side, platforms still depend heavily on " },
+            { g: "engagement", pos: "noun", def: "the amount of attention, clicks, or interaction something receives online" },
+            { t: " metrics such as clicks, watch time, and rapid sharing. Those systems often reward speed and emotion rather than depth." },
+          ] },
+          { type: "p", parts: [
+            { t: "That contradiction makes the story especially debate-friendly. People may want better online culture, but their habits do not always support it." },
+            { c: 3 },
+            { t: " Many users still click on dramatic, simple, or highly emotional posts even while complaining about them. In that sense, the controversy is not only about what platforms choose. It is also about what society chooses to reward." },
+          ] },
+          { type: "p", parts: [
+            { t: "For ESL classrooms, this article works well because learners can connect it to their own online behavior. Students can debate whether algorithms should be changed, compare meaningful and viral content, and practice language for media criticism and digital responsibility." },
+          ] },
+          { type: "p", parts: [
+            { t: "The issue is engaging because it turns a common everyday habit into a deeper question about culture and choice." },
+          ] },
+        ],
+      },
+      precise: {
+        label: "Precise Edition",
+        range: "C1–C2",
+        readTime: "4 min read",
+        wordCount: 325,
+        blocks: [
+          { type: "p", parts: [
+            { t: "A growing body of 2026 reporting suggests that social media users have wearied of empty noise, and increasingly value content of greater substance." },
+            { c: 1 },
+            { t: " Ogilvy Social.Lab describes this as a return to “social with substance.” Promising as that sounds, it raises a thorny social question: can platforms engineered for attention genuinely accommodate slower, more meaningful communication? The stakes are considerable, given that social media now shapes how people learn, argue, and build community." },
+          ] },
+          { type: "p", parts: [
+            { t: "On one hand, demand for useful, credible, community-oriented content is unmistakable." },
+            { c: 2 },
+            { t: " Users increasingly seek advice, explanation, and genuine conversation rather than passive entertainment, which could foster healthier online spaces and empower more thoughtful creators. On the other hand, platforms remain heavily reliant on " },
+            { g: "engagement", pos: "noun", def: "the level of interaction, attention, or activity content receives online" },
+            { t: " metrics such as clicks, watch time, and rapid sharing, systems that tend to reward speed and emotion over depth." },
+          ] },
+          { type: "p", parts: [
+            { t: "This contradiction renders the story particularly conducive to debate. People may profess a desire for a richer online culture, yet their habits do not consistently bear this out." },
+            { c: 3 },
+            { t: " Many users continue to click on dramatic, simplistic, or highly emotional posts even as they lament them. In this sense, the controversy concerns not merely what platforms choose to promote, but what society itself chooses to reward." },
+          ] },
+          { type: "p", parts: [
+            { t: "For ESL classrooms, this article proves fertile ground, as learners can readily connect it to their own online conduct. Students might debate whether algorithms warrant reform, compare meaningful content against viral content, and practice the vocabulary of media criticism and digital responsibility." },
+          ] },
+          { type: "p", parts: [
+            { t: "The issue remains engaging precisely because it transforms an everyday habit into a deeper inquiry concerning culture and choice." },
+          ] },
+        ],
+      },
+    },
+    references: [
+      { domain: "ogilvy.com", name: "Ogilvy", headline: "Social Trends 2026: Social With Substance and the Return of Real" },
+      { domain: "sproutsocial.com", name: "Sprout Social", headline: "7 social media trends you need to know in 2026" },
+      { domain: "nu.edu", name: "National University", headline: "Social Media Trends in 2026: What's Next" },
+    ],
+    discussionGuide: [
+      {
+        q: "Do you think you personally reward 'substance' or 'virality' more with your own clicks and likes?",
+        follow: [],
+      },
+      {
+        q: "The article says people want better content but their habits don't always show it. Have you noticed this in yourself or others?",
+        follow: [],
+      },
+      {
+        q: "If you designed a social media app, how would you reward thoughtful posts over dramatic ones?",
+        follow: [],
+      },
+    ],
+  },
+  {
+    slug: "overtourism-quiet-luxury-travel-2026",
+    ready: true,
+    publishedAt: "2026-08-06",
+    emoji: "🏔️",
+    variant: "planet",
+    topicLabel: "Travel & Places",
+    topicTitle: "Places, Travel & Journeys",
+    title: "Is Overtourism Pushing Luxury Travelers Into Silence?",
+    dek: "A new travel feature says some tourists now want remote, quiet places and weak phone signal as an escape from crowded modern life.",
+    editions: {
+      plain: {
+        label: "Plain Edition",
+        range: "A1–A2",
+        readTime: "2 min read",
+        wordCount: 171,
+        blocks: [
+          { type: "p", parts: [
+            { t: "A travel report from July 2026 says some rich travelers are choosing something different. Instead of famous places full of tourists, they want remote places, silence, and even weak phone signal." },
+          ] },
+          { type: "p", parts: [
+            { t: "This is a reaction to 'overtourism.' Overtourism means too many visitors come to one place. This can hurt local life, buildings, and nature." },
+          ] },
+          { type: "p", parts: [
+            { t: "Some people think quiet travel is a healthier, kinder way to travel. Other people think it is only for rich travelers, and it does not really fix the bigger problem. If silence becomes something expensive, this trend might help some places while making other places feel special only for a few people." },
+          ] },
+          { type: "p", parts: [
+            { t: "This story also shows a bigger change. Many people now want slow travel, local food, and real experiences, instead of rushing to see famous places." },
+          ] },
+          { type: "p", parts: [
+            { t: "This makes a good discussion topic. Is escaping crowds a smart choice, or just a new kind of luxury?" },
+          ] },
+        ],
+      },
+      polished: {
+        label: "Polished Edition",
+        range: "B1–B2",
+        readTime: "4 min read",
+        wordCount: 320,
+        blocks: [
+          { type: "p", parts: [
+            { t: "A July 2026 travel feature suggests that some luxury travelers are turning away from famous landmarks and crowded destinations." },
+            { c: 1 },
+            { t: " Instead, they want remote places, silence, and even weak phone signal as part of the experience. The Los Angeles Times describes this movement as a reaction against overtourism and constant digital connection. Overtourism means so many visitors arrive in one place that local life, infrastructure, or the environment begins to suffer." },
+          ] },
+          { type: "p", parts: [
+            { t: "This makes for a strong discussion topic because the trend can be seen in two very different ways." },
+            { c: 2 },
+            { t: " Some people may view quieter travel as a healthier, more respectful alternative to mass tourism. Others may see it as a luxury escape available mainly to wealthy travelers, not a real solution to the wider problem. If silence and remoteness become premium products, the trend may reduce pressure in some places while creating new " },
+            { g: "exclusivity", pos: "noun", def: "the quality of being available or accessible only to a small, often wealthy, group" },
+            { t: " in others." },
+          ] },
+          { type: "p", parts: [
+            { t: "The story also reflects a broader change in what people want from travel." },
+            { c: 3 },
+            { t: " Many are choosing slow travel, local food, and more intentional experiences instead of rushing through famous sites. That shift may be good for some communities, but it can also change who gets to enjoy certain destinations and how local economies adapt." },
+          ] },
+          { type: "p", parts: [
+            { t: "For ESL learners, the topic offers excellent material for debate. Students can discuss whether tourism should be limited in popular places, compare urban and remote destinations, and talk about what makes travel fair or meaningful." },
+          ] },
+          { type: "p", parts: [
+            { t: "The article stimulates interest because it asks whether escaping crowds is a personal solution or simply a new form of luxury branding." },
+          ] },
+        ],
+      },
+      precise: {
+        label: "Precise Edition",
+        range: "C1–C2",
+        readTime: "4 min read",
+        wordCount: 315,
+        blocks: [
+          { type: "p", parts: [
+            { t: "A July 2026 travel feature suggests that certain luxury travelers are forsaking famous landmarks and crowded destinations in favor of something quite different." },
+            { c: 1 },
+            { t: " They now seek remote locales, silence, and even weak phone signal as constitutive elements of the experience itself. The Los Angeles Times frames this movement as a reaction against overtourism and incessant digital connectivity. Overtourism denotes a phenomenon whereby so many visitors converge on a single place that local life, infrastructure, or the environment begins to suffer." },
+          ] },
+          { type: "p", parts: [
+            { t: "This furnishes rich material for debate, since the trend admits of two quite divergent interpretations." },
+            { c: 2 },
+            { t: " Some regard quieter travel as a healthier, more respectful alternative to mass tourism. Others view it as a luxury escape accessible chiefly to wealthy travelers, offering no genuine remedy to the broader problem. Should silence and remoteness themselves become premium commodities, the trend might relieve pressure in certain places while manufacturing fresh " },
+            { g: "exclusivity", pos: "noun", def: "the state of being accessible only to a select, often privileged, few" },
+            { t: " elsewhere." },
+          ] },
+          { type: "p", parts: [
+            { t: "The story likewise reflects a wider shift in what travelers now seek." },
+            { c: 3 },
+            { t: " Many are opting for slow travel, local cuisine, and more deliberate experiences over hurried tours of famous sites. That shift may benefit certain communities, yet it can equally alter who gains access to particular destinations and how local economies must adapt." },
+          ] },
+          { type: "p", parts: [
+            { t: "For ESL learners, the topic furnishes excellent material for debate. Students might discuss whether tourism ought to be limited in popular destinations, compare urban against remote locales, and consider what renders travel fair or meaningful." },
+          ] },
+          { type: "p", parts: [
+            { t: "The article sustains interest by posing whether escaping the crowds constitutes a genuine personal solution, or merely a fresh iteration of luxury branding." },
+          ] },
+        ],
+      },
+    },
+    references: [
+      { domain: "latimes.com", name: "Los Angeles Times", headline: "2026 Travel Trends: Why the World's Most Elite Travelers Are Escaping Into Silence" },
+      { domain: "google.com", name: "Google", headline: "2026 travel trends and top destinations for summer" },
+      { domain: "odysseys-unlimited.com", name: "Odysseys Unlimited", headline: "11 Travel Trends to Watch For in 2026" },
+    ],
+    discussionGuide: [
+      {
+        q: "Would you rather visit a famous, busy destination or a quiet, remote one? Why?",
+        follow: [],
+      },
+      {
+        q: "The article says silence could become a 'luxury product.' What do you think about that idea?",
+        follow: [],
+      },
+      {
+        q: "What do you think tourists, local governments, or travel companies could do about overtourism?",
+        follow: [],
+      },
+    ],
+  },
+  {
+    slug: "dogs-and-humans-shaped-each-other",
+    ready: true,
+    publishedAt: "2026-08-17",
+    emoji: "🐕",
+    variant: "planet",
+    topicLabel: "Nature & Science",
+    topicTitle: "Nature, Science & Planet",
+    title: "Dogs and Humans Have Been Shaping Each Other for 15,000 Years",
+    dek: "New research on ancient dog DNA shows the bond between humans and dogs is older — and closer — than scientists once thought.",
+    editions: {
+      plain: {
+        label: "Plain Edition",
+        range: "A1–A2",
+        readTime: "1 min read",
+        wordCount: 128,
+        blocks: [
+          { type: "p", parts: [
+            { t: "Dogs and people have lived together for a very long time. New research says humans and dogs have changed each other for about 15,000 years. Scientists found dog bones that are 15,800 years old at a place in Turkey. These are the oldest dog bones ever found." },
+          ] },
+          { type: "p", parts: [
+            { t: "Long ago, dogs helped people hunt for food. As humans moved to new places, dogs changed too. Cold places had strong dogs that pulled sleds. Mountain places had dogs that could breathe well in thin air. Forest places had fast, light dogs for hunting." },
+          ] },
+          { type: "p", parts: [
+            { t: "People also buried dogs next to humans in old graves. Some of these graves are 14,000 years old. This shows dogs were not just workers. They were also loved members of the family." },
+          ] },
+        ],
+      },
+      polished: {
+        label: "Polished Edition",
+        range: "B1–B2",
+        readTime: "2 min read",
+        wordCount: 214,
+        blocks: [
+          { type: "p", parts: [
+            { t: "New research published in August 2026 shows that humans and dogs have been shaping each other for at least fifteen thousand years." },
+            { c: 1 },
+            { t: " Scientists studying ancient DNA found the " },
+            { g: "remains", pos: "noun", def: "the parts of a body or object left after time has passed" },
+            { t: " of a dog that lived around 15,800 years ago at a site in Turkey, making it the oldest confirmed dog skeleton discovered so far. The findings, published as two papers in the journal Nature, suggest dogs became close companions to humans earlier than many scientists had expected." },
+            { c: 2 },
+          ] },
+          { type: "p", parts: [
+            { t: "As human groups spread into new environments, dogs adapted right alongside them. Arctic communities bred strong, thick-coated dogs to pull sleds across snow and ice, while other groups relied on smaller, agile dogs suited to dense forest " },
+            { g: "terrain", pos: "noun", def: "the physical features of an area of land" },
+            { t: ". In some high mountain regions, dog populations even developed genetic traits that helped them cope with thin air, showing how closely dog evolution followed human movement around the world." },
+          ] },
+          { type: "quote", text: "For 15,000 years, humans and dogs have been changing each other." },
+          { type: "p", parts: [
+            { t: "Archaeologists have also found dogs buried carefully beside humans in graves as old as 14,000 years, sometimes far from where the dogs themselves were born." },
+            { c: 3 },
+            { t: " Researchers say this shows ancient communities valued dogs for practical work, companionship, and " },
+            { g: "symbolic", pos: "adjective", def: "representing an idea or feeling rather than serving a practical purpose" },
+            { t: " meaning — a bond that has clearly lasted into the present day." },
+          ] },
+        ],
+      },
+      precise: {
+        label: "Precise Edition",
+        range: "C1–C2",
+        readTime: "2 min read",
+        wordCount: 209,
+        blocks: [
+          { type: "p", parts: [
+            { t: "Research published in August 2026 indicates that humans and dogs have been reshaping one another for at least fifteen thousand years." },
+            { c: 1 },
+            { t: " Geneticists examining ancient DNA identified the " },
+            { g: "vestiges", pos: "noun", def: "traces or remaining signs of something that existed in the past" },
+            { t: " of a dog that lived roughly 15,800 years ago at a site in Turkey, constituting the oldest confirmed dog skeleton unearthed to date. The findings, published as two papers in the journal Nature, suggest that dogs became intimate companions to humans considerably earlier than most researchers had anticipated." },
+            { c: 2 },
+          ] },
+          { type: "p", parts: [
+            { t: "As human populations dispersed into new environments, dogs evolved in tandem. Arctic communities bred robust, thick-coated dogs to haul sleds across snow and ice, while other groups relied on smaller, nimble dogs suited to dense forest " },
+            { g: "topography", pos: "noun", def: "the physical arrangement and shape of the land in a particular area" },
+            { t: ". In certain high-altitude regions, dog populations even acquired genetic traits enabling them to withstand thin air, illustrating how closely canine evolution tracked human migration across the globe." },
+          ] },
+          { type: "quote", text: "For 15,000 years, humans and dogs have been changing each other." },
+          { type: "p", parts: [
+            { t: "Archaeologists have likewise unearthed dogs interred carefully beside humans in graves as old as 14,000 years, occasionally far from where the animals themselves were born." },
+            { c: 3 },
+            { t: " Researchers contend this demonstrates that ancient communities esteemed dogs for practical labor, companionship, and " },
+            { g: "reverence", pos: "noun", def: "deep respect or admiration, sometimes with a spiritual quality" },
+            { t: " — a bond that has plainly endured into the present." },
+          ] },
+        ],
+      },
+    },
+    references: [
+      { domain: "sciencedaily.com", name: "ScienceDaily", headline: "For 15,000 years, humans and dogs have been changing each other" },
+      { domain: "ucl.ac.uk", name: "UCL", headline: "Humans kept dogs 5,000 years earlier than thought" },
+      { domain: "earthsky.org", name: "EarthSky", headline: "Humans' deep connection to dogs spans more than 15,000 years" },
+    ],
+    discussionGuide: [
+      {
+        q: "Does it surprise you that dogs and humans have lived together for over 15,000 years? Why or why not?",
+        follow: ["What do you think dogs and early humans needed from each other?"],
+      },
+      {
+        q: "The article says dogs changed depending on where people lived — cold places, mountains, forests. Do you know a dog breed from your own country? What is it good at?",
+        follow: [],
+      },
+      {
+        q: "Why do you think ancient people buried dogs next to humans in graves?",
+        follow: ["What does this tell us about how people felt about their dogs?"],
+      },
+    ],
+  },
 ];
 
 export function getArticle(slug) {
