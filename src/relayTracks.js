@@ -9,6 +9,11 @@ import relayL2 from "./relayData2";
 import relayL3 from "./relayData3";
 import relayL4 from "./relayData4";
 import relayL5 from "./relayData5";
+import relayTeensL1 from "./relayTeensData";
+import relayTeensL2 from "./relayTeensData2";
+import relayTeensL3 from "./relayTeensData3";
+import relayTeensL4 from "./relayTeensData4";
+import relayTeensL5 from "./relayTeensData5";
 
 const TRACKS = [
   {
@@ -19,6 +24,15 @@ const TRACKS = [
     audience: "adults",
     blurb: "5 lessons that turn short, complete answers into real back-and-forth exchanges.",
     lessons: [relayL1, relayL2, relayL3, relayL4, relayL5],
+  },
+  {
+    id: "relay-teens-1",
+    title: "School & Friends",
+    focus: "Small Talk",
+    level: "A2",
+    audience: "teens",
+    blurb: "5 lessons that turn short, complete answers into real back-and-forth exchanges.",
+    lessons: [relayTeensL1, relayTeensL2, relayTeensL3, relayTeensL4, relayTeensL5],
   },
 ];
 
