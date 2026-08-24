@@ -2,21 +2,14 @@ import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { getLesson } from "./relayTracks";
 
-const SLIDE_LABELS = {
-  cover: "Cover",
-  warmup: "Warm-up",
-  bounce: "Bounce",
-  yourturn: "Your Turn",
-  pushit: "Push It",
-  end: "End",
-};
-
-function buildSlideTypes() {
-  return ["cover", "warmup", "bounce", "yourturn", "pushit", "end"];
+function buildSlideTypes(lesson) {
+  const bounceSlides = lesson.bounce.rounds.map((_, i) => `bounce-${i}`);
+  return ["cover", "warmup", ...bounceSlides, "yourturn", "pushit", "end"];
 }
 
-function showsBeatBadge(slideType) {
-  return ["bounce", "yourturn", "pushit"].includes(slideType);
+function slideLabel(slideType) {
+  if (slideType.startsWith("bounce-")) return "Bounce";
+  return { cover: "Cover", warmup: "Warm-up", yourturn: "Your Turn", pushit: "Push It", end: "End" }[slideType];
 }
 
 function TopStrip({ lesson, slideType }) {
@@ -26,34 +19,19 @@ function TopStrip({ lesson, slideType }) {
       <span className="rl-strip-dot">·</span>
       <span>{lesson.title}</span>
       <span className="rl-strip-dot">·</span>
-      <span>{lesson.technique}</span>
-      <span className="rl-strip-dot">·</span>
       <span className="rl-strip-tag">{lesson.tag}</span>
-      <span className="rl-strip-label">{SLIDE_LABELS[slideType]}</span>
-    </div>
-  );
-}
-
-function BeatBadge() {
-  return (
-    <div className="rl-badge">
-      <span className="rl-badge-label">The Rule</span>
-      <div className="rl-badge-list">
-        <span className="rl-badge-item">1 Answer</span>
-        <span className="rl-badge-item">2 Add</span>
-        <span className="rl-badge-item">3 Ask</span>
-      </div>
+      <span className="rl-strip-label">{slideLabel(slideType)}</span>
     </div>
   );
 }
 
 function CoverSlide({ lesson }) {
   return (
-    <div className="rl-slide rl-slide--cover">
-      <span className="rl-cover-kicker">{lesson.code} · {lesson.tag}</span>
-      <h1 className="rl-cover-title">{lesson.title}</h1>
-      <p className="rl-cover-subtitle">{lesson.subtitle}</p>
-      <span className="rl-cover-technique">{lesson.techniqueLine}</span>
+    <div className="rl-slide rl-slide--centered">
+      <span className="rl-kicker">{lesson.code} · {lesson.tag}</span>
+      <h1 className="rl-h rl-h--cover">{lesson.title}</h1>
+      <p className="rl-subtitle">{lesson.subtitle}</p>
+      <span className="rl-technique">{lesson.techniqueLine}</span>
     </div>
   );
 }
@@ -61,33 +39,23 @@ function CoverSlide({ lesson }) {
 function WarmupSlide({ lesson }) {
   return (
     <div className="rl-slide rl-slide--centered">
-      <h2 className="rl-heading">{lesson.warmup.heading}</h2>
-      <div className="rl-qlist">
-        {lesson.warmup.questions.map((q, i) => (
-          <p key={i}>{q}</p>
-        ))}
-      </div>
+      <h2 className="rl-question">{lesson.warmup.question}</h2>
     </div>
   );
 }
 
-function BounceSlide({ lesson }) {
-  const [idx, setIdx] = useState(0);
-  const rounds = lesson.bounce.rounds;
-  const round = rounds[idx];
-  const isFirst = idx === 0;
-  const isLast = idx === rounds.length - 1;
-
+function BounceSlide({ lesson, index }) {
+  const [helping, setHelping] = useState(false);
+  const round = lesson.bounce.rounds[index];
   return (
     <div className="rl-slide rl-slide--centered">
-      <h2 className="rl-heading">{lesson.bounce.heading}</h2>
-      <p className="rl-bounce-question">“{round.question}”</p>
-      <p className="rl-bounce-hint">If a beat's missing: {round.missingBeatHint}</p>
-      <div className="rl-game-stepper">
-        <button type="button" className="rl-game-btn" onClick={() => setIdx((i) => i - 1)} disabled={isFirst}>← Prev</button>
-        <span className="rl-game-count">{idx + 1} / {rounds.length}</span>
-        <button type="button" className="rl-game-btn" onClick={() => setIdx((i) => i + 1)} disabled={isLast}>Next →</button>
-      </div>
+      <span className="rl-eyebrow">Answer · Add · Ask</span>
+      <h2 className="rl-question">{round.question}</h2>
+      {helping ? (
+        <p className="rl-help-text">{round.missingBeatHint}</p>
+      ) : (
+        <button type="button" className="rl-help-btn" onClick={() => setHelping(true)}>Need help?</button>
+      )}
     </div>
   );
 }
@@ -95,12 +63,12 @@ function BounceSlide({ lesson }) {
 function YourTurnSlide({ lesson }) {
   const yt = lesson.yourTurn;
   return (
-    <div className="rl-slide">
-      <h2 className="rl-heading">Your Turn</h2>
-      <p className="rl-prompt">{yt.scenario}</p>
-      <div className="rl-roleplay">
-        <span className="rl-roleplay-role">{yt.teacherRole}</span>
-        <p className="rl-roleplay-opener">“{yt.opener}”</p>
+    <div className="rl-slide rl-slide--centered">
+      <h2 className="rl-h">Your Turn</h2>
+      <p className="rl-subtitle">{yt.scenario}</p>
+      <div className="rl-bubble">
+        <span className="rl-bubble-role">{yt.teacherRole}</span>
+        <p className="rl-bubble-text">“{yt.opener}”</p>
       </div>
     </div>
   );
@@ -108,9 +76,9 @@ function YourTurnSlide({ lesson }) {
 
 function PushItSlide({ lesson }) {
   return (
-    <div className="rl-slide">
-      <h2 className="rl-heading">Push It <span className="rl-optional">(optional)</span></h2>
-      <p className="rl-prompt">{lesson.pushIt.prompt}</p>
+    <div className="rl-slide rl-slide--centered">
+      <h2 className="rl-h">Push It <span className="rl-optional">(optional)</span></h2>
+      <p className="rl-subtitle">{lesson.pushIt.prompt}</p>
     </div>
   );
 }
@@ -118,20 +86,21 @@ function PushItSlide({ lesson }) {
 function EndSlide({ lesson }) {
   return (
     <div className="rl-slide rl-slide--centered">
-      <h2 className="rl-heading">{lesson.end.heading}</h2>
-      <p className="rl-end-line">{lesson.end.line}</p>
+      <h2 className="rl-h">{lesson.end.heading}</h2>
+      <p className="rl-subtitle">{lesson.end.line}</p>
     </div>
   );
 }
 
 function renderSlide(slideType, lesson) {
+  if (slideType.startsWith("bounce-")) {
+    return <BounceSlide lesson={lesson} index={Number(slideType.slice(7))} />;
+  }
   switch (slideType) {
     case "cover":
       return <CoverSlide lesson={lesson} />;
     case "warmup":
       return <WarmupSlide lesson={lesson} />;
-    case "bounce":
-      return <BounceSlide lesson={lesson} />;
     case "yourturn":
       return <YourTurnSlide lesson={lesson} />;
     case "pushit":
@@ -159,11 +128,10 @@ export default function Relay() {
     );
   }
 
-  const slideTypes = buildSlideTypes();
+  const slideTypes = buildSlideTypes(lesson);
   const slideType = slideTypes[slideIdx];
   const isFirst = slideIdx === 0;
   const isLast = slideIdx === slideTypes.length - 1;
-  const withBadge = showsBeatBadge(slideType);
 
   return (
     <div className="rl-shell">
@@ -175,8 +143,7 @@ export default function Relay() {
       <div className="rl-stage">
         <div className="rl-deck">
           <TopStrip lesson={lesson} slideType={slideType} />
-          {withBadge && <BeatBadge />}
-          <div className={`rl-deck-body ${withBadge ? "has-badge" : ""}`} key={slideIdx}>
+          <div className="rl-deck-body" key={slideIdx}>
             {renderSlide(slideType, lesson)}
           </div>
           <div className="rl-nav-row">
@@ -251,9 +218,9 @@ const CSS = `
 
 .rl-deck {
   position: relative;
-  width: 960px;
+  width: 860px;
   max-width: 100%;
-  height: 580px;
+  height: 460px;
   background: #FFFFFF;
   border: 1px solid #D3EDE9;
   border-radius: 16px;
@@ -261,7 +228,7 @@ const CSS = `
   display: flex;
   flex-direction: column;
   padding: 22px 34px 26px;
-  animation: rl-slide-in 0.24s ease;
+  animation: rl-slide-in 0.2s ease;
 }
 @keyframes rl-slide-in {
   from { opacity: 0; transform: translateY(8px); }
@@ -292,174 +259,117 @@ const CSS = `
 }
 .rl-strip-label { margin-left: auto; color: #9FC6C2; }
 
-/* ── "The Rule" reminder badge ── */
-.rl-badge {
-  position: absolute;
-  top: 76px;
-  right: 34px;
-  z-index: 4;
-  width: 128px;
-  background: #EAF3FA;
-  border: 1px solid #C9E0F0;
-  border-radius: 12px;
-  padding: 10px 12px 12px;
-  box-shadow: 0 10px 20px rgba(16,100,107,0.1);
-}
-.rl-badge-label {
-  display: block;
-  font-family: 'IBM Plex Sans', sans-serif;
-  font-weight: 800;
-  font-size: 10px;
-  letter-spacing: 0.4px;
-  text-transform: uppercase;
-  color: #3E7CB1;
-  margin-bottom: 6px;
-}
-.rl-badge-list { display: flex; flex-direction: column; gap: 4px; }
-.rl-badge-item {
-  font-family: 'IBM Plex Sans', sans-serif;
-  font-weight: 700;
-  font-size: 11.5px;
-  color: #10646B;
-}
+.rl-deck-body { flex: 1; min-height: 0; display: flex; }
+.rl-slide { display: flex; flex-direction: column; gap: 14px; height: 100%; width: 100%; }
+.rl-slide--centered { align-items: center; justify-content: center; text-align: center; }
 
-.rl-deck-body { flex: 1; min-height: 0; overflow-y: auto; }
-.rl-deck-body.has-badge { padding-right: 148px; }
-.rl-slide { display: flex; flex-direction: column; gap: 13px; height: 100%; }
-.rl-slide--centered { align-items: center; justify-content: center; text-align: center; gap: 18px; }
-.rl-heading {
+/* ── Highlighted heading, used on every slide ── */
+.rl-h {
+  display: inline-block;
   font-family: 'Baloo 2', cursive;
   font-weight: 700;
-  font-size: 30px;
-  color: #10646B;
+  font-size: 26px;
+  color: #FFFFFF;
+  background: #3E7CB1;
+  border-radius: 12px;
+  padding: 8px 22px;
   margin: 0;
+  line-height: 1.25;
 }
-.rl-optional { font-family: 'IBM Plex Sans', sans-serif; font-weight: 500; font-size: 16px; color: #9FC6C2; }
+.rl-h--cover { font-size: 38px; padding: 10px 28px; }
 
-/* ── Cover ── */
-.rl-slide--cover {
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  gap: 18px;
+/* ── Main question, used on Warm-up and Bounce -- bigger than a
+   regular heading so it's the clear focal point of the slide ── */
+.rl-question {
+  display: inline-block;
+  font-family: 'Baloo 2', cursive;
+  font-weight: 700;
+  font-size: 34px;
+  line-height: 1.25;
+  color: #FFFFFF;
+  background: #3E7CB1;
+  border-radius: 14px;
+  padding: 14px 30px;
+  margin: 0;
+  max-width: 640px;
 }
-.rl-cover-kicker {
+.rl-optional { font-family: 'IBM Plex Sans', sans-serif; font-weight: 500; font-size: 15px; color: rgba(255,255,255,0.75); margin-left: 2px; }
+
+.rl-kicker {
   font-family: 'IBM Plex Sans', sans-serif;
   font-weight: 800;
-  font-size: 13px;
+  font-size: 12.5px;
   letter-spacing: 0.6px;
   text-transform: uppercase;
   color: #3E7CB1;
 }
-.rl-cover-title {
-  font-family: 'Baloo 2', cursive;
-  font-weight: 700;
-  font-size: 48px;
-  color: #10646B;
-  margin: 0;
-}
-.rl-cover-subtitle {
+.rl-subtitle {
   font-family: 'IBM Plex Sans', sans-serif;
   font-weight: 500;
-  font-size: 17px;
+  font-size: 16px;
   color: #4B8B92;
   margin: 0;
+  max-width: 560px;
+  line-height: 1.5;
 }
-.rl-cover-technique {
+.rl-technique {
   font-family: 'IBM Plex Sans', sans-serif;
   font-weight: 700;
-  font-size: 14.5px;
+  font-size: 14px;
   color: #3E7CB1;
-  margin-top: 4px;
 }
 
-/* ── Warm-up ── */
-.rl-qlist { display: flex; flex-direction: column; gap: 12px; align-items: center; }
-.rl-qlist p {
-  margin: 0;
+.rl-eyebrow {
   font-family: 'IBM Plex Sans', sans-serif;
-  font-weight: 500;
-  font-size: 19px;
-  color: #1F4448;
-}
-
-/* ── Bounce ── */
-.rl-bounce-question {
-  font-family: 'Baloo 2', cursive;
-  font-weight: 700;
-  font-size: 26px;
-  color: #10646B;
-  margin: 0;
-  max-width: 620px;
-}
-.rl-bounce-hint {
-  font-family: 'IBM Plex Sans', sans-serif;
-  font-weight: 600;
-  font-style: italic;
-  font-size: 13.5px;
+  font-weight: 800;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
   color: #9FC6C2;
-  margin: 0;
-}
-.rl-game-stepper { display: flex; align-items: center; gap: 14px; margin-top: 6px; }
-.rl-game-btn {
-  font-family: 'IBM Plex Sans', sans-serif;
-  font-weight: 700;
-  font-size: 13px;
-  color: #1F4448;
-  background: #EAF3FA;
-  border: 1px solid #D3EDE9;
-  border-radius: 999px;
-  padding: 6px 14px;
-  cursor: pointer;
-}
-.rl-game-btn:disabled { opacity: 0.35; cursor: default; }
-.rl-game-count {
-  font-family: 'IBM Plex Sans', sans-serif;
-  font-weight: 600;
-  font-size: 12.5px;
-  color: #4B8B92;
 }
 
-/* ── Your Turn / Push It ── */
-.rl-prompt {
-  font-family: 'Baloo 2', cursive;
-  font-weight: 700;
-  font-size: 21px;
-  color: #10646B;
-  margin: 0;
-}
-.rl-roleplay {
+.rl-bubble {
   background: #EAF3FA;
-  border-left: 3px solid #3E7CB1;
-  border-radius: 0 12px 12px 0;
-  padding: 14px 18px;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
+  border: 1.5px solid #C9E0F0;
+  border-radius: 16px;
+  padding: 16px 24px;
+  max-width: 560px;
 }
-.rl-roleplay-role {
+.rl-bubble-role {
+  display: block;
   font-family: 'IBM Plex Sans', sans-serif;
   font-weight: 800;
   font-size: 10.5px;
   letter-spacing: 0.4px;
   text-transform: uppercase;
   color: #3E7CB1;
+  margin-bottom: 6px;
 }
-.rl-roleplay-opener {
+.rl-bubble-text {
   font-family: 'IBM Plex Sans', sans-serif;
   font-weight: 500;
   font-style: italic;
-  font-size: 17px;
-  color: #1F4448;
+  font-size: 19px;
+  color: #10646B;
   margin: 0;
 }
 
-/* ── End ── */
-.rl-end-line {
+.rl-help-btn {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  color: #3E7CB1;
+  background: #EAF3FA;
+  border: 1px solid #C9E0F0;
+  border-radius: 999px;
+  padding: 7px 16px;
+  cursor: pointer;
+}
+.rl-help-text {
   font-family: 'IBM Plex Sans', sans-serif;
   font-weight: 600;
-  font-size: 17px;
-  color: #4B8B92;
+  font-size: 14.5px;
+  color: #3E7CB1;
   margin: 0;
 }
 
@@ -483,8 +393,6 @@ const CSS = `
 .rl-nav-dot.is-active { width: 16px; background: #3E7CB1; }
 
 @media (max-width: 720px) {
-  .rl-deck { padding: 18px 20px 20px; height: auto; min-height: 580px; }
-  .rl-badge { display: none; }
-  .rl-deck-body.has-badge { padding-right: 0; }
+  .rl-deck { padding: 18px 20px 20px; height: auto; min-height: 460px; }
 }
 `;

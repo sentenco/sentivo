@@ -17,12 +17,7 @@ export default {
   techniqueLine: "Answer, Add, Ask — never stop at one.",
 
   warmup: {
-    heading: "Just answer naturally.",
-    questions: [
-      "Do you like your job?",
-      "Did you have a good weekend?",
-      "Is it far from here to your place?",
-    ],
+    question: "Do you like your job?",
   },
 
   bounce: {
@@ -64,14 +59,14 @@ export default {
     warmup: {
       goal: "Get the student to demonstrate the gap themselves, then name it.",
       say: [
-        "Quick questions — answer however feels natural, don't think about it.",
-        "Notice something — you answered every one of those and then stopped. That's exactly the habit we're fixing today.",
+        "Quick question — answer however feels natural, don't think about it.",
+        "Notice something — you answered and then stopped. That's exactly the habit we're fixing today.",
       ],
       do: [
-        "Ask each question and stop. Don't nudge for more, don't hint that more is coming.",
-        "After all three, point at the pattern directly — this is the ‘before’ the student needs to hear to buy into the drill.",
+        "Ask the question and stop. Don't nudge for more, don't hint that more is coming.",
+        "Right after, point at the pattern directly — this is the ‘before’ the student needs to hear to buy into the drill.",
       ],
-      timing: "2 min",
+      timing: "1 min",
     },
     bounce: {
       goal: "The core drill — student produces all 3 beats, live, every round.",
