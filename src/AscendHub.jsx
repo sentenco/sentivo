@@ -1,12 +1,4 @@
 import TRACKS from "./ascendTracks";
-import ImagePlaceholder from "./slides/ImagePlaceholder";
-import ascend1CoverImg from "./assets/ascend/track1-cover.jpeg";
-
-// Tracks without a real cover photo yet fall back to ImagePlaceholder
-// (same lookup pattern as FORGE's hub/Library covers).
-const COVERS = {
-  "ascend-1": ascend1CoverImg,
-};
 
 function groupByCategory(tracks) {
   const order = [];
@@ -34,7 +26,7 @@ export default function AscendHub() {
 
       <div className="ah-stage">
         <div className="ah-hero">
-          <span className="ah-hero-eyebrow">Gap identified · Imprecise, unstructured speech</span>
+          <span className="ah-hero-eyebrow">Diagnosis · Imprecise, unstructured speech</span>
           <h1 className="ah-hero-title">ASCEND</h1>
           <p className="ah-hero-blurb">
             Every ASCEND track is tailored to one learner profile. Pick the track built for your student.
@@ -50,13 +42,6 @@ export default function AscendHub() {
                 const authored = track.lessons.filter(Boolean).length;
                 return (
                   <a key={track.id} href={`/library/ascend/${track.id}`} className="ah-track-card">
-                    <div className="ah-track-cover">
-                      {COVERS[track.id] ? (
-                        <img className="ah-track-cover-img" src={COVERS[track.id]} alt={track.title} />
-                      ) : (
-                        <ImagePlaceholder note="Track cover photo" compact />
-                      )}
-                    </div>
                     <div className="ah-track-body">
                       <div>
                         <div className="ah-track-tags">
@@ -82,11 +67,9 @@ export default function AscendHub() {
           <h2 className="ah-category-title">Coming soon</h2>
           <div className="ah-tracks-grid">
             <div className="ah-track-card ah-track-card--ghost">
-              <div className="ah-track-cover ah-track-cover--ghost">
-                <span className="ah-ghost-icon">+</span>
-              </div>
               <div className="ah-track-body">
                 <div>
+                  <span className="ah-ghost-icon">+</span>
                   <h3 className="ah-track-title ah-track-title--ghost">More categories coming</h3>
                   <p className="ah-track-desc">New profiles get added here as they're built.</p>
                 </div>
@@ -100,12 +83,12 @@ export default function AscendHub() {
 }
 
 const CSS = `
-@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Quicksand:wght@500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=IBM+Plex+Sans:wght@500;600;700;800&display=swap');
 
 .ah-shell {
   width: 100%;
   min-height: 100vh;
-  background: radial-gradient(circle at 15% 0%, #EAFBF6 0%, #D6F2E9 55%, #C3E9DC 100%);
+  background: linear-gradient(160deg, #EAFBF8 0%, #DFF4FA 100%);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -122,12 +105,12 @@ const CSS = `
   padding: 22px 24px 0;
 }
 .ah-topbar-title {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 700;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 800;
   font-size: 12.5px;
   letter-spacing: 2px;
   text-transform: uppercase;
-  color: #8AAFA5;
+  color: #4B8B92;
 }
 
 .ah-stage {
@@ -140,108 +123,98 @@ const CSS = `
 .ah-hero { max-width: 620px; }
 .ah-hero-eyebrow {
   display: inline-block;
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 700;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 800;
   font-size: 11.5px;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: #128571;
-  background: rgba(18,133,113,0.12);
+  color: #A9720A;
+  background: rgba(232,168,61,0.20);
   border-radius: 999px;
   padding: 6px 14px;
   margin-bottom: 16px;
 }
 .ah-hero-title {
-  font-family: 'Fredoka', sans-serif;
+  font-family: 'Baloo 2', cursive;
   font-weight: 700;
   font-size: 46px;
-  color: #17352E;
+  color: #10646B;
   margin: 0 0 12px;
 }
 .ah-hero-blurb {
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'IBM Plex Sans', sans-serif;
   font-weight: 500;
   font-size: 16.5px;
-  color: #5C8177;
+  color: #4B8B92;
   margin: 0;
   line-height: 1.55;
 }
 
-.ah-lane { position: relative; height: 2px; background: #D3EFE6; margin: 30px 0 34px; }
-.ah-lane::before, .ah-lane::after { content: ""; position: absolute; top: -3px; width: 8px; height: 8px; border-radius: 50%; background: #3FCDAF; }
+.ah-lane { position: relative; height: 2px; background: #BFE6E1; margin: 30px 0 34px; }
+.ah-lane::before, .ah-lane::after { content: ""; position: absolute; top: -3px; width: 8px; height: 8px; border-radius: 50%; background: #E8A83D; }
 .ah-lane::before { left: 0; }
 .ah-lane::after { right: 0; }
 
 .ah-category { margin-bottom: 34px; }
 .ah-category:last-child { margin-bottom: 0; }
 .ah-category-title {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 700;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 800;
   font-size: 13px;
   letter-spacing: 2px;
   text-transform: uppercase;
-  color: #128571;
+  color: #A9720A;
   margin: 0 0 16px;
 }
 
 .ah-tracks-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 22px;
 }
 
 .ah-track-card {
   display: flex;
-  align-items: stretch;
   background: #FFFFFF;
-  border: 1px solid #D3EFE6;
-  border-radius: 18px;
+  border-radius: 16px;
+  border-top: 4px solid #E8A83D;
   overflow: hidden;
   text-align: left;
   font-family: inherit;
   text-decoration: none;
-  box-shadow: 0 12px 28px rgba(20,80,65,0.08);
-  transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
+  box-shadow: 0 10px 22px rgba(16,100,107,0.12);
+  transition: box-shadow 0.15s ease, transform 0.15s ease;
 }
 .ah-track-card:hover {
-  border-color: #3FCDAF;
-  box-shadow: 0 18px 36px rgba(20,80,65,0.16);
-  transform: translateY(-2px);
+  box-shadow: 0 16px 30px rgba(16,100,107,0.18);
+  transform: translateY(-3px);
 }
 
-.ah-track-cover {
-  width: 168px;
-  flex-shrink: 0;
-  background: #E9F7F2;
-}
-.ah-track-cover-img { width: 100%; height: 100%; object-fit: cover; display: block; }
-
-.ah-track-body { flex: 1; min-width: 0; display: flex; flex-direction: column; justify-content: space-between; gap: 14px; padding: 20px 22px; }
+.ah-track-body { flex: 1; min-width: 0; display: flex; flex-direction: column; justify-content: space-between; gap: 14px; padding: 22px 22px 20px; }
 .ah-track-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
 .ah-tag {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 600;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 700;
   font-size: 11px;
-  color: #128571;
-  background: rgba(18,133,113,0.14);
-  border: 1px solid rgba(18,133,113,0.4);
+  color: #A9720A;
+  background: rgba(232,168,61,0.18);
   border-radius: 999px;
   padding: 3px 10px;
 }
-.ah-tag--level { color: #5C8177; background: #E9F7F2; border-color: #D3EFE6; }
+.ah-tag--level { color: #4B8B92; background: rgba(42,168,174,0.12); }
 
 .ah-track-title {
-  font-family: 'Fredoka', sans-serif;
+  font-family: 'Baloo 2', cursive;
   font-weight: 700;
   font-size: 21px;
-  color: #17352E;
+  color: #10646B;
   margin: 0 0 6px;
 }
 .ah-track-desc {
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'IBM Plex Sans', sans-serif;
   font-weight: 500;
   font-size: 13px;
-  color: #5C8177;
+  color: #5C8891;
   line-height: 1.5;
   margin: 0;
 }
@@ -251,44 +224,41 @@ const CSS = `
   justify-content: space-between;
   gap: 10px;
   padding-top: 12px;
-  border-top: 1px solid #E3F3ED;
+  border-top: 1px solid #EAF8F6;
 }
 .ah-track-meta {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 600;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 700;
   font-size: 11.5px;
-  color: #5C8177;
+  color: #4B8B92;
 }
 .ah-track-cta {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 700;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 800;
   font-size: 12.5px;
-  color: #128571;
+  color: #A9720A;
   white-space: nowrap;
 }
 
 .ah-track-card--ghost {
-  opacity: 0.55;
+  opacity: 0.7;
   cursor: default;
   pointer-events: none;
+  border: 2px dashed #BFE6E1;
+  border-top: 2px dashed #BFE6E1;
+  box-shadow: none;
 }
-.ah-track-cover--ghost {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-right: 2px dashed #D3EFE6;
-  background: transparent;
-}
+.ah-track-card--ghost .ah-track-body { align-items: center; text-align: center; justify-content: center; }
 .ah-ghost-icon {
-  font-family: 'Fredoka', sans-serif;
-  font-size: 34px;
-  color: #A8D9CB;
+  display: block;
+  font-family: 'Baloo 2', cursive;
+  font-size: 30px;
+  color: #8FB9BC;
+  margin-bottom: 6px;
 }
-.ah-track-title--ghost { color: #8AAFA5; }
+.ah-track-title--ghost { color: #8FB9BC; }
 
 @media (max-width: 640px) {
-  .ah-track-card { flex-direction: column; }
-  .ah-track-cover { width: 100%; aspect-ratio: 16 / 9; }
-  .ah-track-cover--ghost { border-right: none; border-bottom: 2px dashed #D3EFE6; }
+  .ah-tracks-grid { grid-template-columns: 1fr; }
 }
 `;

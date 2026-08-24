@@ -1,10 +1,4 @@
 import TRACKS from "./shiftTracks";
-import ImagePlaceholder from "./slides/ImagePlaceholder";
-
-// No track has a hub cover photo yet -- every card falls back to
-// ImagePlaceholder until real art is generated per track (same lookup
-// pattern as ForgeHub/AscendHub).
-const COVERS = {};
 
 export default function ShiftHub() {
   return (
@@ -16,7 +10,7 @@ export default function ShiftHub() {
 
       <div className="shh-stage">
         <div className="shh-hero">
-          <span className="shh-hero-eyebrow">Gap identified · Slow tense self-repair</span>
+          <span className="shh-hero-eyebrow">Diagnosis · Slow tense self-repair</span>
           <h1 className="shh-hero-title">SHIFT</h1>
           <p className="shh-hero-blurb">
             Every SHIFT track is tailored to one diagnosed tense-accuracy gap. Pick the track built for your student.
@@ -29,13 +23,6 @@ export default function ShiftHub() {
             const authored = track.lessons.filter(Boolean).length;
             return (
               <a key={track.id} href={`/library/shift/${track.id}`} className="shh-track-card">
-                <div className="shh-track-cover">
-                  {COVERS[track.id] ? (
-                    <img className="shh-track-cover-img" src={COVERS[track.id]} alt={track.title} />
-                  ) : (
-                    <ImagePlaceholder note="Track cover photo" compact />
-                  )}
-                </div>
                 <div className="shh-track-body">
                   <div>
                     <div className="shh-track-tags">
@@ -55,11 +42,9 @@ export default function ShiftHub() {
           })}
 
           <div className="shh-track-card shh-track-card--ghost">
-            <div className="shh-track-cover shh-track-cover--ghost">
-              <span className="shh-ghost-icon">+</span>
-            </div>
             <div className="shh-track-body">
               <div>
+                <span className="shh-ghost-icon">+</span>
                 <h3 className="shh-track-title shh-track-title--ghost">More tracks coming</h3>
                 <p className="shh-track-desc">New diagnosed gaps get added here as they're built.</p>
               </div>
@@ -72,12 +57,12 @@ export default function ShiftHub() {
 }
 
 const CSS = `
-@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Quicksand:wght@500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=IBM+Plex+Sans:wght@500;600;700;800&display=swap');
 
 .shh-shell {
   width: 100%;
   min-height: 100vh;
-  background: radial-gradient(circle at 15% 0%, #FFF1EF 0%, #FFDBD5 55%, #FFC3BA 100%);
+  background: linear-gradient(160deg, #EAFBF8 0%, #DFF4FA 100%);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -94,12 +79,12 @@ const CSS = `
   padding: 22px 24px 0;
 }
 .shh-topbar-title {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 700;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 800;
   font-size: 12.5px;
   letter-spacing: 1.5px;
   text-transform: uppercase;
-  color: #C98F84;
+  color: #4B8B92;
 }
 
 .shh-stage {
@@ -112,96 +97,86 @@ const CSS = `
 .shh-hero { max-width: 620px; }
 .shh-hero-eyebrow {
   display: inline-block;
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 700;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 800;
   font-size: 11.5px;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: #E1483B;
-  background: rgba(225,72,59,0.1);
+  color: #2AA8AE;
+  background: rgba(42,168,174,0.12);
   border-radius: 999px;
   padding: 6px 14px;
   margin-bottom: 16px;
 }
 .shh-hero-title {
-  font-family: 'Fredoka', sans-serif;
+  font-family: 'Baloo 2', cursive;
   font-weight: 700;
   font-size: 46px;
-  color: #4A211B;
+  color: #10646B;
   margin: 0 0 12px;
 }
 .shh-hero-blurb {
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'IBM Plex Sans', sans-serif;
   font-weight: 500;
   font-size: 16.5px;
-  color: #8C5C52;
+  color: #4B8B92;
   margin: 0;
   line-height: 1.55;
 }
 
-.shh-lane { position: relative; height: 2px; background: #FFD2C8; margin: 30px 0 34px; }
-.shh-lane::before, .shh-lane::after { content: ""; position: absolute; top: -3px; width: 8px; height: 8px; border-radius: 50%; background: #E1483B; }
+.shh-lane { position: relative; height: 2px; background: #BFE6E1; margin: 30px 0 34px; }
+.shh-lane::before, .shh-lane::after { content: ""; position: absolute; top: -3px; width: 8px; height: 8px; border-radius: 50%; background: #2AA8AE; }
 .shh-lane::before { left: 0; }
 .shh-lane::after { right: 0; }
 
 .shh-tracks-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 22px;
 }
 
 .shh-track-card {
   display: flex;
-  align-items: stretch;
   background: #FFFFFF;
-  border: 1px solid #FFD2C8;
-  border-radius: 18px;
+  border-radius: 16px;
+  border-top: 4px solid #2AA8AE;
   overflow: hidden;
   text-align: left;
   font-family: inherit;
   text-decoration: none;
-  box-shadow: 0 12px 28px rgba(160,50,35,0.07);
-  transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
+  box-shadow: 0 10px 22px rgba(16,100,107,0.12);
+  transition: box-shadow 0.15s ease, transform 0.15s ease;
 }
 .shh-track-card:hover {
-  border-color: #E1483B;
-  box-shadow: 0 18px 36px rgba(160,50,35,0.14);
-  transform: translateY(-2px);
+  box-shadow: 0 16px 30px rgba(16,100,107,0.18);
+  transform: translateY(-3px);
 }
 
-.shh-track-cover {
-  width: 168px;
-  flex-shrink: 0;
-  background: #FFEDE9;
-}
-.shh-track-cover-img { width: 100%; height: 100%; object-fit: cover; display: block; }
-
-.shh-track-body { flex: 1; min-width: 0; display: flex; flex-direction: column; justify-content: space-between; gap: 14px; padding: 20px 22px; }
+.shh-track-body { flex: 1; min-width: 0; display: flex; flex-direction: column; justify-content: space-between; gap: 14px; padding: 22px 22px 20px; }
 .shh-track-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
 .shh-tag {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 600;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 700;
   font-size: 11px;
-  color: #E1483B;
-  background: rgba(225,72,59,0.1);
-  border: 1px solid rgba(225,72,59,0.35);
+  color: #2AA8AE;
+  background: rgba(42,168,174,0.10);
   border-radius: 999px;
   padding: 3px 10px;
 }
-.shh-tag--level { color: #8C5C52; background: #FFEDE9; border-color: #FFD2C8; }
+.shh-tag--level { color: #4B8B92; background: rgba(42,168,174,0.12); }
 
 .shh-track-title {
-  font-family: 'Fredoka', sans-serif;
+  font-family: 'Baloo 2', cursive;
   font-weight: 700;
   font-size: 21px;
-  color: #4A211B;
+  color: #10646B;
   margin: 0 0 6px;
 }
 .shh-track-desc {
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'IBM Plex Sans', sans-serif;
   font-weight: 500;
   font-size: 13px;
-  color: #8C5C52;
+  color: #5C8891;
   line-height: 1.5;
   margin: 0;
 }
@@ -211,36 +186,41 @@ const CSS = `
   justify-content: space-between;
   gap: 10px;
   padding-top: 12px;
-  border-top: 1px solid #FFE4DD;
+  border-top: 1px solid #EAF8F6;
 }
 .shh-track-meta {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 600;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 700;
   font-size: 11.5px;
-  color: #8C5C52;
+  color: #4B8B92;
 }
 .shh-track-cta {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 700;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 800;
   font-size: 12.5px;
-  color: #E1483B;
+  color: #2AA8AE;
   white-space: nowrap;
 }
 
-.shh-track-card--ghost { opacity: 0.6; cursor: default; pointer-events: none; }
-.shh-track-cover--ghost {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-right: 2px dashed #FFD2C8;
-  background: transparent;
+.shh-track-card--ghost {
+  opacity: 0.7;
+  cursor: default;
+  pointer-events: none;
+  border: 2px dashed #BFE6E1;
+  border-top: 2px dashed #BFE6E1;
+  box-shadow: none;
 }
-.shh-ghost-icon { font-family: 'Fredoka', sans-serif; font-size: 34px; color: #F0AFA5; }
-.shh-track-title--ghost { color: #C98F84; }
+.shh-track-card--ghost .shh-track-body { align-items: center; text-align: center; justify-content: center; }
+.shh-ghost-icon {
+  display: block;
+  font-family: 'Baloo 2', cursive;
+  font-size: 30px;
+  color: #8FB9BC;
+  margin-bottom: 6px;
+}
+.shh-track-title--ghost { color: #8FB9BC; }
 
 @media (max-width: 640px) {
-  .shh-track-card { flex-direction: column; }
-  .shh-track-cover { width: 100%; aspect-ratio: 16 / 9; }
-  .shh-track-cover--ghost { border-right: none; border-bottom: 2px dashed #FFD2C8; }
+  .shh-tracks-grid { grid-template-columns: 1fr; }
 }
 `;
