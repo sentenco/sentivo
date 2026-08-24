@@ -22,7 +22,7 @@ export default function RelayHub() {
           <span className="rlh-hero-eyebrow">Diagnosis · Conversation-ending answers</span>
           <h1 className="rlh-hero-title">RELAY</h1>
           <p className="rlh-hero-blurb">
-            Every RELAY track is tailored to one context. Pick the track built for your student.
+            RELAY drills the Answer, Add, Ask habit, turning short answers into real exchanges — for students whose responses are correct but end the conversation instead of continuing it.
           </p>
         </div>
         <div className="rlh-lane"></div>

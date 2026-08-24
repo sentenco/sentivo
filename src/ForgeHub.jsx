@@ -13,7 +13,7 @@ export default function ForgeHub() {
           <span className="fh-hero-eyebrow">Diagnosis · Vocabulary gaps under pressure</span>
           <h1 className="fh-hero-title">FORGE</h1>
           <p className="fh-hero-blurb">
-            Every FORGE track is tailored to one learner profile. Pick the track built for your student.
+            FORGE drills active vocabulary through pictures, gap-fills, and echo questions — for students who understand English but run out of words when they need them.
           </p>
         </div>
         <div className="fh-lane"></div>
