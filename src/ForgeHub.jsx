@@ -10,7 +10,7 @@ export default function ForgeHub() {
 
       <div className="fh-stage">
         <div className="fh-hero">
-          <span className="fh-hero-eyebrow">Diagnosis · Not enough words to say it</span>
+          <span className="fh-hero-eyebrow">Diagnosis · Vocabulary gaps under pressure</span>
           <h1 className="fh-hero-title">FORGE</h1>
           <p className="fh-hero-blurb">
             Every FORGE track is tailored to one learner profile. Pick the track built for your student.

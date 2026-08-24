@@ -288,12 +288,12 @@ const GRAMMAR_MODULES = [
 ];
 
 const SPEAKING_TRACKS = [
-  { key: "forge", href: "/library/forge", hue: "forge", gap: "Not enough words to say it", name: "Forge", desc: "Build real vocabulary through pictures, gaps, echoes, and question chains." },
-  { key: "shift", href: "/library/shift", hue: "shift", gap: "Slow to fix tense mistakes", name: "Shift", desc: "Fast tense choice and self-repair under pressure, for students who already know the grammar." },
-  { key: "ascend", href: "/library/ascend", hue: "ascend", gap: "Ideas come out jumbled", name: "Ascend", desc: "Precision, structure, and diplomatic control for students who already sound fluent." },
-  { key: "relay", href: "/library/relay", hue: "relay", gap: "Answers, then goes quiet", name: "Relay", desc: "Turn short, complete answers into real exchanges — add reasons, details, and questions that keep the conversation moving.", comingSoon: true },
-  { key: "stack", href: "/library/stack", hue: "stack", gap: "Too much to think about at once", name: "Stack", desc: "Isolate one variable at a time — pattern, tense, or vocabulary — then stack them until you can run it all at once.", comingSoon: true },
-  { key: "glide", href: "/library/glide", hue: "glide", gap: "Freezes when stuck for words", name: "Glide", desc: "Swap dead air and native-language filler sounds for natural stalling phrases that keep your speech flowing.", comingSoon: true },
+  { key: "forge", href: "/library/forge", hue: "forge", gap: "Vocabulary gaps under pressure", name: "Forge", desc: "Build real vocabulary through pictures, gaps, echoes, and question chains." },
+  { key: "shift", href: "/library/shift", hue: "shift", gap: "Delayed tense correction", name: "Shift", desc: "Fast tense choice and self-repair under pressure, for students who already know the grammar." },
+  { key: "ascend", href: "/library/ascend", hue: "ascend", gap: "Ideas lack structure and precision", name: "Ascend", desc: "Precision, structure, and diplomatic control for students who already sound fluent." },
+  { key: "relay", href: "/library/relay", hue: "relay", gap: "Conversation-ending answers", name: "Relay", desc: "Turn short, complete answers into real exchanges — add reasons, details, and questions that keep the conversation moving.", comingSoon: true },
+  { key: "stack", href: "/library/stack", hue: "stack", gap: "Skill overload under pressure", name: "Stack", desc: "Isolate one variable at a time — pattern, tense, or vocabulary — then stack them until you can run it all at once.", comingSoon: true },
+  { key: "glide", href: "/library/glide", hue: "glide", gap: "No strategy for filling gaps", name: "Glide", desc: "Swap dead air and native-language filler sounds for natural stalling phrases that keep your speech flowing.", comingSoon: true },
 ];
 
 // Small medical-tool glyph per track, shown inside the pin badge on each

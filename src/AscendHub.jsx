@@ -26,7 +26,7 @@ export default function AscendHub() {
 
       <div className="ah-stage">
         <div className="ah-hero">
-          <span className="ah-hero-eyebrow">Diagnosis · Ideas come out jumbled</span>
+          <span className="ah-hero-eyebrow">Diagnosis · Ideas lack structure and precision</span>
           <h1 className="ah-hero-title">ASCEND</h1>
           <p className="ah-hero-blurb">
             Every ASCEND track is tailored to one learner profile. Pick the track built for your student.

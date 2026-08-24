@@ -10,7 +10,7 @@ export default function ShiftHub() {
 
       <div className="shh-stage">
         <div className="shh-hero">
-          <span className="shh-hero-eyebrow">Diagnosis · Slow to fix tense mistakes</span>
+          <span className="shh-hero-eyebrow">Diagnosis · Delayed tense correction</span>
           <h1 className="shh-hero-title">SHIFT</h1>
           <p className="shh-hero-blurb">
             Every SHIFT track is tailored to one diagnosed tense-accuracy gap. Pick the track built for your student.
