@@ -5400,6 +5400,916 @@ export const ARTICLES = [
     ],
   },
   {
+    slug: "wellness-trends-health-risk-2026",
+    ready: true,
+    publishedAt: "2026-08-07",
+    emoji: "⚗️",
+    variant: "daily",
+    topicLabel: "Daily Life",
+    topicTitle: "Wellbeing & Daily Life",
+    title: "Wellness Trends Promise Health, But Experts See Risk",
+    dek: "From detoxes to biohacking, popular wellness habits are raising a difficult question: when does “healthy” stop being truly healthy?",
+    editions: {
+      plain: {
+        label: "Plain Edition",
+        range: "A1–A2",
+        readTime: "2 min read",
+        wordCount: 189,
+        blocks: [
+          { type: "p", parts: [
+            { t: "In 2026, the wellness industry offers many big promises. Online, people see detox programs, supplements, anti-aging routines, and 'natural' health methods. These trends look exciting because they offer hope and control. Many people want easy answers to stress, aging, or feeling tired." },
+          ] },
+          { type: "p", parts: [
+            { t: "But doctors say some popular wellness habits may not be safe. Experts warn about trends like raw milk, bee venom, and extreme detox diets. Just because something is called 'natural' does not mean it is safe or that it works." },
+          ] },
+          { type: "p", parts: [
+            { t: "At the same time, some people are trying 'biohacking.' This means using tools, supplements, or data to try to live longer or feel better. An investigation in Australia looked at this growing business." },
+          ] },
+          { type: "p", parts: [
+            { t: "This topic is good for discussion. People should be free to try habits that make them feel good. But health claims online can spread fast, and some are not true or are exaggerated. One expert said the wellness industry is 'mostly unregulated.'" },
+          ] },
+          { type: "p", parts: [
+            { t: "Students can talk about how to know if health advice online is safe to trust." },
+          ] },
+        ],
+      },
+      polished: {
+        label: "Polished Edition",
+        range: "B1–B2",
+        readTime: "4 min read",
+        wordCount: 330,
+        blocks: [
+          { type: "p", parts: [
+            { t: "The wellness industry in 2026 is full of big promises. Across social media and lifestyle websites, people are encouraged to try detox programs, supplements, anti-aging routines, and intense “natural” health methods." },
+            { c: 1 },
+            { t: " These trends often look appealing because they offer control and hope. Many people want simple answers to stress, aging, fatigue, or body image worries. Yet doctors and health experts say some popular habits may be riskier than they seem." },
+          ] },
+          { type: "p", parts: [
+            { t: "Several reports this year have pushed back on the idea that all wellness content is harmless. Experts warn against trends such as raw milk, bee venom therapy, and extreme detox practices. These methods may sound natural, but “natural” does not automatically mean safe or effective." },
+            { c: 2 },
+            { t: " At the same time, an investigation from Australia described a growing biohacking and anti-aging business that is raising hopes of extending human life. Biohacking means trying to change the body or mind through tools, supplements, data tracking, or experimental routines." },
+          ] },
+          { type: "p", parts: [
+            { t: "This creates a strong classroom debate. On one hand, people should be free to explore habits that help them feel better. On the other hand, health claims spread quickly online, and some are " },
+            { g: "exaggerated", pos: "adjective", def: "made to seem bigger, better, or more serious than is really true" },
+            { t: " or misleading." },
+            { c: 3 },
+            { t: " A Genetic Literacy Project viewpoint argued that the modern wellness industry has become “lucrative and mostly unregulated,” which shows why some experts want more oversight." },
+          ] },
+          { type: "p", parts: [
+            { t: "For intermediate learners, this topic offers useful vocabulary around evidence, claims, risk, and self-care. Students can discuss whether wellness culture empowers people or confuses them, and they can practice evaluating online advice more critically." },
+          ] },
+          { type: "p", parts: [
+            { t: "The article is discussion-friendly because it is not about one easy answer. It is about how people judge health information in a world full of persuasive trends." },
+          ] },
+        ],
+      },
+      precise: {
+        label: "Precise Edition",
+        range: "C1–C2",
+        readTime: "4 min read",
+        wordCount: 325,
+        blocks: [
+          { type: "p", parts: [
+            { t: "The wellness industry in 2026 traffics in grand promises. Across social media and lifestyle platforms, consumers are urged toward detox regimens, supplements, anti-aging routines, and intensive “natural” health practices." },
+            { c: 1 },
+            { t: " Such trends often prove appealing precisely because they offer a sense of control and hope. Many seek simple remedies for stress, aging, fatigue, or body-image anxieties. Yet physicians and health experts caution that some popular habits may be riskier than they appear." },
+          ] },
+          { type: "p", parts: [
+            { t: "Numerous reports this year have challenged the assumption that all wellness content is benign. Experts caution against trends such as raw milk consumption, bee venom therapy, and extreme detox regimens. Such methods may sound natural, but “natural” hardly guarantees safety or " },
+            { g: "efficacy", pos: "noun", def: "the ability of something to produce the intended result" },
+            { t: "." },
+            { c: 2 },
+            { t: " Meanwhile, an investigation from Australia chronicled a burgeoning biohacking and anti-aging industry that is stoking hopes of extending human lifespan. Biohacking denotes efforts to alter the body or mind through tools, supplements, data tracking, or experimental regimens." },
+          ] },
+          { type: "p", parts: [
+            { t: "This furnishes a rich classroom debate. On one hand, individuals should retain the liberty to explore habits that enhance their wellbeing. On the other, health claims propagate rapidly online, and some prove " },
+            { g: "exaggerated", pos: "adjective", def: "overstated or made to seem more significant than is actually true" },
+            { t: " or misleading." },
+            { c: 3 },
+            { t: " A Genetic Literacy Project viewpoint contended that the modern wellness industry has become “lucrative and mostly unregulated,” underscoring why some experts are calling for greater oversight." },
+          ] },
+          { type: "p", parts: [
+            { t: "For intermediate learners, this topic furnishes valuable vocabulary surrounding evidence, claims, risk, and self-care. Students might debate whether wellness culture empowers individuals or merely confuses them, while practicing a more critical evaluation of online advice." },
+          ] },
+          { type: "p", parts: [
+            { t: "The article proves conducive to discussion precisely because it resists any single tidy answer, concerning instead how people adjudicate health information amid a landscape saturated with persuasive trends." },
+          ] },
+        ],
+      },
+    },
+    references: [
+      { domain: "verywellhealth.com", name: "Verywell Health", headline: "5 Risky Wellness Trends Doctors Want You to Avoid" },
+      { domain: "abc.net.au", name: "ABC News Australia", headline: "Biohacking and anti-aging science are raising hopes of extending lifespan" },
+      { domain: "geneticliteracyproject.org", name: "Genetic Literacy Project", headline: "Viewpoint: Disinformation grift: The wellness industry is a lucrative and mostly unregulated industry" },
+    ],
+    discussionGuide: [
+      {
+        q: "Have you ever tried a wellness trend, like a detox or a supplement, because you saw it online?",
+        follow: ["Did it work the way you expected?"],
+      },
+      {
+        q: "The article says just because something is 'natural' does not mean it is safe. Do you agree?",
+        follow: [],
+      },
+      {
+        q: "How do you decide whether health advice online is trustworthy?",
+        follow: [],
+      },
+    ],
+  },
+  {
+    slug: "embryo-dna-editing-designer-baby-debate",
+    ready: true,
+    publishedAt: "2026-08-07",
+    emoji: "🧬",
+    variant: "planet",
+    topicLabel: "Nature & Science",
+    topicTitle: "Nature, Science & Planet",
+    title: "Embryo DNA Editing Revives the Designer Baby Debate",
+    dek: "New advances in gene editing promise medical progress, but they are also renewing fears about how far humans should go.",
+    editions: {
+      plain: {
+        label: "Plain Edition",
+        range: "A1–A2",
+        readTime: "2 min read",
+        wordCount: 183,
+        blocks: [
+          { type: "p", parts: [
+            { t: "Scientists can now edit the DNA inside human embryos. This means they can change small parts of a baby's genes before it is born. The goal is to stop serious diseases that come from families." },
+          ] },
+          { type: "p", parts: [
+            { t: "This news is exciting for medicine. It could help families avoid passing on illnesses to their children. But it also brings back an old worry: 'designer babies.' This means parents choosing traits like height, eye color, or intelligence, not just health." },
+          ] },
+          { type: "p", parts: [
+            { t: "Many people are asking where the line should be. Fixing a disease seems different from choosing a child's looks. But the technology could make both possible one day." },
+          ] },
+          { type: "p", parts: [
+            { t: "At the same time, world leaders are talking about rules for new technology like AI. The United Nations has asked for stronger global rules before powerful tools cause harm." },
+          ] },
+          { type: "p", parts: [
+            { t: "This topic connects science, ethics, and the future. It asks a big question: just because we can do something, should we?" },
+          ] },
+        ],
+      },
+      polished: {
+        label: "Polished Edition",
+        range: "B1–B2",
+        readTime: "4 min read",
+        wordCount: 321,
+        blocks: [
+          { type: "p", parts: [
+            { t: "Gene editing technology now allows scientists to alter DNA inside human embryos before birth. The main goal of this research is medical: preventing serious inherited diseases from being passed down through families." },
+            { c: 1 },
+            { t: " For families carrying genetic conditions, this could mean healthier children and an end to painful, often lifelong illnesses. But the same technology has reopened an old and uncomfortable debate about 'designer babies,' children whose traits, such as height, eye color, or even intelligence, are selected rather than left to chance." },
+          ] },
+          { type: "p", parts: [
+            { t: "The line between treating disease and enhancing traits is not always clear. Editing a gene to prevent a serious illness feels different, ethically, from editing a gene to influence appearance or ability. Yet as the underlying tools become more precise, both may eventually become technically possible, which is exactly what worries many " },
+            { g: "bioethicists", pos: "noun", def: "experts who study the moral questions raised by biology and medicine" },
+            { t: "." },
+          ] },
+          { type: "p", parts: [
+            { t: "This debate is unfolding alongside a broader, global conversation about powerful new technologies. United Nations leadership has issued urgent calls for stronger governance of tools like artificial intelligence, warning that innovation is " },
+            { g: "outpacing", pos: "verb", def: "moving faster than something else, so that it is left behind" },
+            { t: " oversight." },
+            { c: 2 },
+            { t: " Some experts argue that gene editing deserves the same kind of international attention, since decisions made now could shape human genetics for generations." },
+          ] },
+          { type: "p", parts: [
+            { t: "A separate UN report has pushed for global cooperation on emerging technology governance more broadly, reflecting growing anxiety that scientific capability is advancing faster than societies can agree on rules for using it responsibly." },
+            { c: 3 },
+          ] },
+          { type: "p", parts: [
+            { t: "For students, this topic offers a rare opportunity to connect science vocabulary with ethical reasoning: what should be allowed, who decides, and whether capability alone is ever a good enough reason to act." },
+          ] },
+        ],
+      },
+      precise: {
+        label: "Precise Edition",
+        range: "C1–C2",
+        readTime: "4 min read",
+        wordCount: 318,
+        blocks: [
+          { type: "p", parts: [
+            { t: "Advances in gene editing now permit scientists to alter DNA within human embryos prior to birth. The principal aim of this research remains medical: forestalling serious inherited diseases from propagating across generations." },
+            { c: 1 },
+            { t: " For families carrying genetic conditions, this could translate into healthier offspring and the eradication of painful, often lifelong illnesses. Yet the same technology has reignited an uneasy debate surrounding 'designer babies,' children whose traits, be it stature, eye color, or even cognitive capacity, are selected rather than left to happenstance." },
+          ] },
+          { type: "p", parts: [
+            { t: "The boundary between treating disease and enhancing traits is seldom unambiguous. Editing a gene to forestall serious illness feels ethically distinct from editing one to influence appearance or ability. Yet as the underlying tools grow more precise, both may eventually become technically feasible, a prospect that unsettles many " },
+            { g: "bioethicists", pos: "noun", def: "scholars who examine the moral dilemmas arising from biology and medicine" },
+            { t: "." },
+          ] },
+          { type: "p", parts: [
+            { t: "This debate unfolds alongside a broader, global reckoning with powerful emerging technologies. United Nations leadership has issued urgent calls for more robust governance of tools such as artificial intelligence, cautioning that innovation is " },
+            { g: "outpacing", pos: "verb", def: "advancing more rapidly than something else, leaving it behind" },
+            { t: " oversight." },
+            { c: 2 },
+            { t: " Some experts contend gene editing warrants comparable international scrutiny, given that decisions made now could shape human genetics for generations to come." },
+          ] },
+          { type: "p", parts: [
+            { t: "A separate UN report has pressed for global cooperation on emerging technology governance more broadly, reflecting mounting apprehension that scientific capability is outstripping societies' capacity to agree on rules for its responsible deployment." },
+            { c: 3 },
+          ] },
+          { type: "p", parts: [
+            { t: "For students, this topic furnishes a rare occasion to fuse scientific vocabulary with ethical reasoning: what ought to be permitted, who ought to decide, and whether mere capability ever suffices as justification to act." },
+          ] },
+        ],
+      },
+    },
+    references: [
+      { domain: "washingtonpost.com", name: "The Washington Post", headline: "DNA editing of human embryos reignites debate over designer babies" },
+      { domain: "news.un.org", name: "UN News", headline: "From AI to 'killer robots': UN chief issues urgent governance call" },
+      { domain: "news.un.org", name: "UN News", headline: "Global push for AI governance amid warnings of 'catastrophic harm'" },
+    ],
+    discussionGuide: [
+      {
+        q: "Is it acceptable to edit a baby's genes to prevent a disease? What about to choose their height or eye color?",
+        follow: ["Where would you draw the line?"],
+      },
+      {
+        q: "Who should decide the rules for powerful new science, scientists, governments, or everyone together?",
+        follow: [],
+      },
+      {
+        q: "The article asks: just because we can do something, should we? Can you think of another technology where this question matters?",
+        follow: [],
+      },
+    ],
+  },
+  {
+    slug: "ai-search-act-for-you-or-inform-you",
+    ready: true,
+    publishedAt: "2026-08-07",
+    emoji: "🔎",
+    variant: "tech",
+    topicLabel: "Digital & Tech",
+    topicTitle: "Digital Life & Future Tech",
+    title: "Should AI Search Act for You, or Just Inform You?",
+    dek: "New search tools can do more than answer questions, raising a debate about convenience, control, and trust online.",
+    editions: {
+      plain: {
+        label: "Plain Edition",
+        range: "A1–A2",
+        readTime: "2 min read",
+        wordCount: 178,
+        blocks: [
+          { type: "p", parts: [
+            { t: "Search engines are changing. In the past, you typed a question and got a list of links. Now, AI search tools can answer questions directly, and some can even take action for you, like booking something or filling out a form." },
+          ] },
+          { type: "p", parts: [
+            { t: "This is very convenient. You save time because the AI does more of the work. But it also raises new questions. If an AI takes action for you, do you still control the choice? Do you trust it to choose correctly?" },
+          ] },
+          { type: "p", parts: [
+            { t: "Big tech companies are building these tools quickly. They say this is 'a new era' for search. But experts warn that powerful AI tools are moving faster than the rules that guide them." },
+          ] },
+          { type: "p", parts: [
+            { t: "This creates a real debate. Should AI just give you information, and let you decide? Or is it fine for AI to act, as long as it saves time?" },
+          ] },
+          { type: "p", parts: [
+            { t: "People will answer this question differently depending on how much they trust technology." },
+          ] },
+        ],
+      },
+      polished: {
+        label: "Polished Edition",
+        range: "B1–B2",
+        readTime: "4 min read",
+        wordCount: 312,
+        blocks: [
+          { type: "p", parts: [
+            { t: "Search engines are undergoing a fundamental shift. For decades, typing a question produced a list of links to explore. Now, AI-powered search tools can answer questions directly, summarizing information instead of simply pointing to it. Some tools go further still, taking action on a user's behalf, like booking a reservation or filling out a form." },
+            { c: 1 },
+          ] },
+          { type: "p", parts: [
+            { t: "This shift is undeniably convenient. Users save time and effort because the AI handles more of the work itself. Yet it also raises uncomfortable questions about control and trust. If an AI system acts for you rather than simply informing you, how much genuine choice remains in the outcome? And how confident can users be that the AI is making the right call?" },
+          ] },
+          { type: "p", parts: [
+            { t: "Major technology companies are racing to build these capabilities. One recent announcement described the shift as ushering in “a new era for AI Search,” while another outlined AI trends " },
+            { g: "poised", pos: "adjective", def: "ready and likely to happen soon" },
+            { t: " to reshape daily digital life in the year ahead." },
+            { c: 2 },
+            { t: " But this rapid pace of development worries some observers. A recent warning from a global leader cautioned that artificial intelligence is advancing faster than the systems meant to " },
+            { g: "oversee", pos: "verb", def: "to watch over and make sure something is done correctly and safely" },
+            { t: " it, urging stronger global action." },
+            { c: 3 },
+          ] },
+          { type: "p", parts: [
+            { t: "This tension creates a genuine debate worth having in the classroom. Should AI search tools simply provide information and leave the decision entirely to the user? Or is it acceptable for AI to take action directly, provided it saves time and generally gets things right?" },
+          ] },
+          { type: "p", parts: [
+            { t: "People are likely to answer this question quite differently depending on how much they already trust technology, and how much control they are willing to give up in exchange for convenience." },
+          ] },
+        ],
+      },
+      precise: {
+        label: "Precise Edition",
+        range: "C1–C2",
+        readTime: "4 min read",
+        wordCount: 308,
+        blocks: [
+          { type: "p", parts: [
+            { t: "Search engines are undergoing a fundamental transformation. For decades, typing a query yielded a list of links to explore at one's own pace. Now, AI-powered search tools answer questions directly, synthesizing information rather than merely pointing toward it. Some tools venture further still, executing actions on a user's behalf, such as booking a reservation or completing a form." },
+            { c: 1 },
+          ] },
+          { type: "p", parts: [
+            { t: "This shift is undeniably convenient, sparing users considerable time and effort as the AI assumes more of the labor itself. Yet it also raises uncomfortable questions regarding control and trust. If an AI system acts on one's behalf rather than merely informing, how much genuine agency remains in the outcome? And how confident can users reasonably be that the AI is exercising sound judgment?" },
+          ] },
+          { type: "p", parts: [
+            { t: "Major technology firms are racing to build these capabilities. One recent announcement characterized the shift as ushering in “a new era for AI Search,” while another outlined trends " },
+            { g: "poised", pos: "adjective", def: "positioned and likely to occur imminently" },
+            { t: " to reshape daily digital life in the coming year." },
+            { c: 2 },
+            { t: " Yet this breakneck pace of development troubles some observers. A recent admonition from a global leader cautioned that artificial intelligence is advancing more rapidly than the systems meant to " },
+            { g: "oversee", pos: "verb", def: "to supervise and ensure something proceeds correctly and safely" },
+            { t: " it, urging more robust global action." },
+            { c: 3 },
+          ] },
+          { type: "p", parts: [
+            { t: "This tension furnishes a genuine debate worth pursuing in the classroom. Should AI search tools merely furnish information and leave the decision entirely to the user? Or is it permissible for AI to act directly, provided it saves time and generally proves reliable?" },
+          ] },
+          { type: "p", parts: [
+            { t: "People are apt to answer this question rather differently depending on how much trust they already extend to technology, and how much control they are prepared to relinquish in exchange for convenience." },
+          ] },
+        ],
+      },
+    },
+    references: [
+      { domain: "google.com", name: "Google", headline: "A new era for AI Search" },
+      { domain: "microsoft.com", name: "Microsoft", headline: "What's next in AI: 7 trends to watch in 2026" },
+      { domain: "reuters.com", name: "Reuters", headline: "UN's Guterres warns AI outpacing oversight, urges global action" },
+    ],
+    discussionGuide: [
+      {
+        q: "Would you let an AI tool book something or fill out a form for you automatically?",
+        follow: ["What would make you trust it enough to say yes?"],
+      },
+      {
+        q: "Do you think AI search should just give information, or is it fine for it to take action too?",
+        follow: [],
+      },
+      {
+        q: "The article says AI is moving faster than the rules meant to oversee it. Is that a problem, or just how new technology works?",
+        follow: [],
+      },
+    ],
+  },
+  {
+    slug: "workplaces-regulate-ai-before-reshapes-jobs",
+    ready: true,
+    publishedAt: "2026-08-07",
+    emoji: "🏢",
+    variant: "work",
+    topicLabel: "Work & Business",
+    topicTitle: "Worklife, Business & Careers",
+    title: "Should Workplaces Regulate AI Before It Reshapes Jobs?",
+    dek: "As companies adopt AI quickly, business leaders and employees are clashing over how much protection workers should have.",
+    editions: {
+      plain: {
+        label: "Plain Edition",
+        range: "A1–A2",
+        readTime: "2 min read",
+        wordCount: 181,
+        blocks: [
+          { type: "p", parts: [
+            { t: "Companies around the world are using AI more and more. AI can now help with writing, planning, customer service, and many other tasks. This is changing how people work, and it is changing quickly." },
+          ] },
+          { type: "p", parts: [
+            { t: "Business leaders often see AI as a way to work faster and save money. But many employees feel worried. They ask: will AI take my job? Will I need new skills to stay employed?" },
+          ] },
+          { type: "p", parts: [
+            { t: "Some experts say companies need clear rules about AI at work. These rules could protect workers, for example by requiring training or being honest about which jobs may change." },
+          ] },
+          { type: "p", parts: [
+            { t: "Other experts believe too many rules could slow down helpful progress. They say businesses need freedom to use new tools quickly." },
+          ] },
+          { type: "p", parts: [
+            { t: "This is one of the biggest workplace questions in 2026: how do we use AI in a way that is both fast and fair?" },
+          ] },
+        ],
+      },
+      polished: {
+        label: "Polished Edition",
+        range: "B1–B2",
+        readTime: "4 min read",
+        wordCount: 318,
+        blocks: [
+          { type: "p", parts: [
+            { t: "Companies worldwide are adopting artificial intelligence at a striking pace. AI tools now assist with writing, planning, customer service, data analysis, and countless other tasks that were once handled entirely by people. This is reshaping how work gets done, and the change is happening faster than many workplaces can fully absorb." },
+            { c: 1 },
+          ] },
+          { type: "p", parts: [
+            { t: "Business leaders often view AI primarily as an opportunity: a way to work more efficiently, cut costs, and stay competitive. Employees, however, frequently feel considerable anxiety. Common concerns include whether AI will eliminate their roles entirely, and whether they will need to acquire entirely new skills simply to remain employable." },
+            { c: 2 },
+          ] },
+          { type: "p", parts: [
+            { t: "Some experts argue that companies urgently need clear " },
+            { g: "policies", pos: "noun", def: "official plans or rules that guide how an organization acts" },
+            { t: " governing AI in the workplace. Such policies might protect workers by mandating retraining programs, or by requiring employers to be transparent about which roles are likely to change or disappear. Reports on workplace trends for 2026 suggest that employees increasingly expect this kind of honesty from employers navigating rapid technological change." },
+          ] },
+          { type: "p", parts: [
+            { t: "Other experts counter that excessive regulation could stifle genuinely useful progress, arguing that businesses need the flexibility to adopt beneficial tools quickly, without being slowed by cumbersome rules. Coverage of AI trends for the coming year highlights just how quickly this technology continues to evolve." },
+            { c: 3 },
+          ] },
+          { type: "p", parts: [
+            { t: "This tension represents one of the defining workplace questions of 2026: how can organizations harness AI's speed and efficiency while still treating employees fairly during a period of significant disruption?" },
+          ] },
+        ],
+      },
+      precise: {
+        label: "Precise Edition",
+        range: "C1–C2",
+        readTime: "4 min read",
+        wordCount: 315,
+        blocks: [
+          { type: "p", parts: [
+            { t: "Companies worldwide are adopting artificial intelligence at a striking clip. AI tools now assist with writing, planning, customer service, data analysis, and countless other tasks once handled entirely by people. This is reshaping the nature of work itself, and the transformation is unfolding faster than many workplaces can fully absorb." },
+            { c: 1 },
+          ] },
+          { type: "p", parts: [
+            { t: "Business leaders tend to regard AI primarily as opportunity: a means of working more efficiently, curbing costs, and remaining competitive. Employees, by contrast, frequently harbor considerable unease. Common anxieties include whether AI will eliminate their roles outright, and whether they must acquire wholly new competencies merely to remain employable." },
+            { c: 2 },
+          ] },
+          { type: "p", parts: [
+            { t: "Some experts contend that firms urgently require lucid " },
+            { g: "policies", pos: "noun", def: "formal plans or guidelines that steer how an organization conducts itself" },
+            { t: " governing AI's workplace deployment. Such policies might safeguard workers by mandating retraining initiatives, or by compelling employers toward transparency about which roles are likely to shift or vanish altogether. Reports on 2026 workplace trends suggest employees increasingly anticipate such candor from employers navigating rapid technological upheaval." },
+          ] },
+          { type: "p", parts: [
+            { t: "Other experts counter that excessive regulation risks stifling genuinely beneficial progress, arguing firms require the latitude to adopt useful tools swiftly, unencumbered by cumbersome strictures. Coverage of AI trends for the year ahead underscores just how rapidly this technology continues to evolve." },
+            { c: 3 },
+          ] },
+          { type: "p", parts: [
+            { t: "This tension epitomizes one of the defining workplace questions of 2026: how might organizations harness AI's velocity and efficiency while still treating employees equitably amid a period of considerable disruption?" },
+          ] },
+        ],
+      },
+    },
+    references: [
+      { domain: "leadershipcircle.com", name: "The Leadership Circle", headline: "Workplace Trends for 2026: Preparing for the New Labor Market" },
+      { domain: "shrm.org", name: "SHRM", headline: "2026 Top Five Workplace Issues" },
+      { domain: "microsoft.com", name: "Microsoft", headline: "What's next in AI: 7 trends to watch in 2026" },
+    ],
+    discussionGuide: [
+      {
+        q: "Are you worried that AI could change or replace jobs in your field?",
+        follow: ["What skills do you think will matter more because of AI?"],
+      },
+      {
+        q: "Should companies be required to tell employees when AI might change their role?",
+        follow: [],
+      },
+      {
+        q: "Do you agree that too many rules could slow down useful progress? Why or why not?",
+        follow: [],
+      },
+    ],
+  },
+  {
+    slug: "exam-scandals-india-fairness-questions",
+    ready: true,
+    publishedAt: "2026-08-07",
+    emoji: "📝",
+    variant: "work",
+    topicLabel: "Study & Skills",
+    topicTitle: "Study, School & Skills",
+    title: "Exam Scandals in India Trigger Questions About Fairness",
+    dek: "Student anger over leaked exam papers is pushing India to rethink how trust is built in high-stakes education systems.",
+    editions: {
+      plain: {
+        label: "Plain Edition",
+        range: "A1–A2",
+        readTime: "2 min read",
+        wordCount: 186,
+        blocks: [
+          { type: "p", parts: [
+            { t: "In India, millions of students take important exams every year. These exams can decide their future, like which university they attend or which job they can get." },
+          ] },
+          { type: "p", parts: [
+            { t: "Recently, some exam papers were leaked before the test. This means some students may have seen the questions early, which is very unfair to everyone else. Students became angry, and many protested." },
+          ] },
+          { type: "p", parts: [
+            { t: "Because of this anger, India's leader announced a new panel. This group will study the exam system and look for ways to fix it and stop cheating in the future." },
+          ] },
+          { type: "p", parts: [
+            { t: "This story is not just about India. It asks a bigger question: how can any country make sure exams are fair for everyone? Around the world, experts are also discussing what skills students will need by the years 2030 and 2040." },
+          ] },
+          { type: "p", parts: [
+            { t: "Fair testing and useful learning both matter for students everywhere." },
+          ] },
+        ],
+      },
+      polished: {
+        label: "Polished Edition",
+        range: "B1–B2",
+        readTime: "4 min read",
+        wordCount: 310,
+        blocks: [
+          { type: "p", parts: [
+            { t: "Every year, millions of students across India sit high-stakes exams that can shape the rest of their lives, determining which universities they can attend and which careers become realistically available to them. These exams carry enormous weight in a country where competition for top spots is intense." },
+            { c: 1 },
+          ] },
+          { type: "p", parts: [
+            { t: "Recently, however, trust in the system was badly shaken when exam papers were leaked ahead of scheduled tests. This meant some students may have had access to questions in advance, a serious " },
+            { g: "breach", pos: "noun", def: "a failure to follow a rule or keep something secure, often causing harm" },
+            { t: " of fairness for everyone else who prepared honestly. Public anger spread quickly, and student protests broke out in multiple regions." },
+            { c: 2 },
+          ] },
+          { type: "p", parts: [
+            { t: "In response to the pressure, India's prime minister announced the formation of a new panel tasked with overhauling the exam system. Its goal is to identify structural weaknesses and design safeguards that prevent future leaks, restoring confidence in a process that so many families depend on." },
+          ] },
+          { type: "p", parts: [
+            { t: "This controversy extends well beyond India's borders. It raises a universal question facing education systems everywhere: how can any country guarantee exams remain fair and secure for all students, regardless of background or connections? Meanwhile, international education bodies are engaged in a parallel conversation, one focused less on exam security and more on which skills students will actually need by 2030 and 2040." },
+            { c: 3 },
+          ] },
+          { type: "p", parts: [
+            { t: "Together, these two threads point to the same underlying concern: education systems must be both trustworthy and genuinely useful if they are to prepare students well." },
+          ] },
+        ],
+      },
+      precise: {
+        label: "Precise Edition",
+        range: "C1–C2",
+        readTime: "4 min read",
+        wordCount: 305,
+        blocks: [
+          { type: "p", parts: [
+            { t: "Each year, millions of students across India sit high-stakes examinations capable of shaping the entire trajectory of their lives, determining which universities they may attend and which careers become realistically attainable. These exams carry immense weight in a nation where competition for coveted places is fierce." },
+            { c: 1 },
+          ] },
+          { type: "p", parts: [
+            { t: "Recently, however, confidence in the system was gravely shaken when exam papers were leaked ahead of scheduled sittings. This meant certain students may have gained advance access to questions, a serious " },
+            { g: "breach", pos: "noun", def: "a violation of a rule or security measure, typically causing harm" },
+            { t: " of fairness toward everyone else who had prepared honestly. Public indignation spread rapidly, and student protests erupted across multiple regions." },
+            { c: 2 },
+          ] },
+          { type: "p", parts: [
+            { t: "In response to mounting pressure, India's prime minister announced the formation of a panel tasked with overhauling the examination system. Its remit is to identify structural vulnerabilities and design safeguards that forestall future leaks, restoring confidence in a process upon which countless families depend." },
+          ] },
+          { type: "p", parts: [
+            { t: "This controversy extends well beyond India's borders, raising a universal question confronting education systems everywhere: how might any nation guarantee that examinations remain fair and secure for every student, irrespective of background or connections? Meanwhile, international education bodies are engaged in a parallel discourse, concerned less with exam security than with which competencies students will genuinely require by 2030 and 2040." },
+            { c: 3 },
+          ] },
+          { type: "p", parts: [
+            { t: "Together, these two threads converge on the same underlying concern: education systems must prove both trustworthy and genuinely useful if they are to prepare students adequately." },
+          ] },
+        ],
+      },
+    },
+    references: [
+      { domain: "reuters.com", name: "Reuters", headline: "How an exam scandal in India sparked a student uprising" },
+      { domain: "reuters.com", name: "Reuters", headline: "India PM Modi announces panel to overhaul exam system after protests" },
+      { domain: "oecd.org", name: "OECD", headline: "Future of Education and Skills 2030/2040" },
+    ],
+    discussionGuide: [
+      {
+        q: "Have you ever taken an important exam that felt unfair, or heard of one?",
+        follow: ["What made it unfair?"],
+      },
+      {
+        q: "How can schools and governments make sure exams stay fair and secure?",
+        follow: [],
+      },
+      {
+        q: "The article mentions skills students will need by 2030 and 2040. What skills do you think will matter most in the future?",
+        follow: [],
+      },
+    ],
+  },
+  {
+    slug: "sports-become-fashion-what-gets-lost",
+    ready: true,
+    publishedAt: "2026-08-07",
+    emoji: "🏟️",
+    variant: "culture",
+    topicLabel: "Culture & Fun",
+    topicTitle: "Culture, Stories & Fun",
+    title: "When Sports Become Fashion, What Gets Lost?",
+    dek: "As stadiums turn into style stages, fans and brands are debating whether sport is gaining energy or losing focus.",
+    editions: {
+      plain: {
+        label: "Plain Edition",
+        range: "A1–A2",
+        readTime: "2 min read",
+        wordCount: 179,
+        blocks: [
+          { type: "p", parts: [
+            { t: "Sports and fashion are mixing more than ever in 2026. Fans now wear designer clothes to games. Athletes are treated like fashion stars, and brands make special clothing lines around big sports events." },
+          ] },
+          { type: "p", parts: [
+            { t: "Many people enjoy this. Fashion adds color, energy, and personality to sports. It brings in new fans who care about style, not just the game." },
+          ] },
+          { type: "p", parts: [
+            { t: "But other people worry something is being lost. If sports becomes mostly about looking good, does the real competition matter less? Some fans say the focus should stay on skill and effort, not outfits." },
+          ] },
+          { type: "p", parts: [
+            { t: "Culture experts say this mixing of sport and style is one of the biggest trends of the year. Big brands are paying close attention." },
+          ] },
+          { type: "p", parts: [
+            { t: "The question for fans is simple: is this change exciting, or does it take something important away from sport?" },
+          ] },
+        ],
+      },
+      polished: {
+        label: "Polished Edition",
+        range: "B1–B2",
+        readTime: "4 min read",
+        wordCount: 305,
+        blocks: [
+          { type: "p", parts: [
+            { t: "Sport and fashion are converging more visibly than ever in 2026. Fans increasingly show up to games in designer clothing, athletes are treated with the same attention as fashion icons, and major brands now design entire clothing lines around marquee sporting events. Stadiums, in some sense, have become style stages as much as competitive arenas." },
+            { c: 1 },
+          ] },
+          { type: "p", parts: [
+            { t: "Many observers welcome this shift. Fashion injects color, energy, and personality into sport, and it draws in new audiences who may care as much about self-expression as they do about the final score. Cultural forecasters have named this blending of sport and style among the defining trends of the year." },
+            { c: 2 },
+          ] },
+          { type: "p", parts: [
+            { t: "Yet other fans worry that something valuable is being " },
+            { g: "eclipsed", pos: "verb", def: "made less noticeable or important by something else that gets more attention" },
+            { t: " in the process. If sport becomes primarily about appearance, does genuine competition risk being pushed to the background? Purists argue that the focus should remain squarely on skill, strategy, and effort, not on outfits or brand partnerships." },
+          ] },
+          { type: "p", parts: [
+            { t: "Business analysts tracking cultural shifts for 2026 note that major brands are paying extremely close attention to this trend, treating the intersection of sport and fashion as a serious commercial opportunity rather than a passing fad." },
+            { c: 3 },
+          ] },
+          { type: "p", parts: [
+            { t: "For fans, the underlying question remains fairly simple: is this fusion of sport and style an exciting evolution, or does it quietly erode something essential about what sport is meant to be?" },
+          ] },
+        ],
+      },
+      precise: {
+        label: "Precise Edition",
+        range: "C1–C2",
+        readTime: "4 min read",
+        wordCount: 302,
+        blocks: [
+          { type: "p", parts: [
+            { t: "Sport and fashion are converging more conspicuously than ever in 2026. Spectators increasingly attend fixtures in designer attire, athletes are accorded the same attention as fashion icons, and major brands now design entire clothing lines around marquee sporting events. Stadiums, in some sense, have become style stages as much as competitive arenas." },
+            { c: 1 },
+          ] },
+          { type: "p", parts: [
+            { t: "Many observers welcome this convergence. Fashion injects color, energy, and personality into sport, drawing new audiences who may prize self-expression as highly as the final score. Cultural forecasters have identified this blending of sport and style among the year's defining trends." },
+            { c: 2 },
+          ] },
+          { type: "p", parts: [
+            { t: "Yet other fans fear something valuable is being " },
+            { g: "eclipsed", pos: "verb", def: "rendered less prominent or significant by something else that garners more attention" },
+            { t: " in the process. Should sport become primarily preoccupied with appearance, does genuine competition risk being relegated to the periphery? Purists contend the focus ought to remain squarely on skill, strategy, and effort, rather than outfits or brand partnerships." },
+          ] },
+          { type: "p", parts: [
+            { t: "Business analysts tracking cultural shifts for 2026 observe that major brands are attending closely to this trend, treating the intersection of sport and fashion as a serious commercial opportunity rather than a fleeting fad." },
+            { c: 3 },
+          ] },
+          { type: "p", parts: [
+            { t: "For fans, the underlying question remains fairly straightforward: does this fusion of sport and style constitute an exciting evolution, or does it quietly erode something essential about what sport is meant to embody?" },
+          ] },
+        ],
+      },
+    },
+    references: [
+      { domain: "webershandwick.com", name: "Weber Shandwick", headline: "Predicting the Unpredictable: The Top 10 Cultural Trends and Moments of 2026" },
+      { domain: "britannica.com", name: "Britannica", headline: "Major Events of 2026 | Pop Culture, Current Events & Trends" },
+      { domain: "forbes.com", name: "Forbes", headline: "7 Cultural Trends Shaping Business in 2026 and Beyond" },
+    ],
+    discussionGuide: [
+      {
+        q: "Do you notice sports and fashion mixing more these days? Can you think of an example?",
+        follow: [],
+      },
+      {
+        q: "Do you think this trend adds something good to sport, or takes something away?",
+        follow: ["Should the focus stay only on skill and competition?"],
+      },
+      {
+        q: "Why do you think brands care so much about this trend?",
+        follow: [],
+      },
+    ],
+  },
+  {
+    slug: "how-much-protection-should-communities-expect",
+    ready: true,
+    publishedAt: "2026-08-07",
+    emoji: "🤝",
+    variant: "culture",
+    topicLabel: "Society & Issues",
+    topicTitle: "People, Society & Issues",
+    title: "How Much Protection Should Communities Expect?",
+    dek: "ASEAN talks on social protection raise wider questions about how societies define responsibility, support, and fairness.",
+    editions: {
+      plain: {
+        label: "Plain Edition",
+        range: "A1–A2",
+        readTime: "2 min read",
+        wordCount: 180,
+        blocks: [
+          { type: "p", parts: [
+            { t: "Countries in Southeast Asia are talking about how to protect people better. This is called 'social protection.' It means help like healthcare, support for the elderly, and help for people during hard times like floods or job loss." },
+          ] },
+          { type: "p", parts: [
+            { t: "Recently, officials met to plan better social protection systems. They want these systems to be 'inclusive,' meaning they help everyone, and 'adaptive,' meaning they can respond quickly when something bad happens." },
+          ] },
+          { type: "p", parts: [
+            { t: "This raises a bigger question for every society: how much support should a community give its members? Some people believe government and society should provide strong support. Others believe people should mostly take care of themselves." },
+          ] },
+          { type: "p", parts: [
+            { t: "Groups that study social trends say this kind of thinking, real support instead of just nice words, is becoming more important around the world." },
+          ] },
+          { type: "p", parts: [
+            { t: "This topic connects to fairness, responsibility, and what people expect from each other." },
+          ] },
+        ],
+      },
+      polished: {
+        label: "Polished Edition",
+        range: "B1–B2",
+        readTime: "4 min read",
+        wordCount: 308,
+        blocks: [
+          { type: "p", parts: [
+            { t: "Countries across Southeast Asia are engaged in serious discussions about how to better protect vulnerable members of society. This concept, often called “social protection,” encompasses things like healthcare access, support for elderly citizens, and assistance for people facing hardship, whether from natural disasters, job loss, or illness." },
+            { c: 1 },
+          ] },
+          { type: "p", parts: [
+            { t: "Recently, regional officials convened to plan stronger, more coordinated social protection systems. Their stated goals are for these systems to be “inclusive,” meaning they genuinely reach everyone rather than just those easiest to serve, and “adaptive,” meaning they can respond quickly when crises strike rather than reacting slowly through outdated procedures." },
+          ] },
+          { type: "p", parts: [
+            { t: "This regional effort raises a deeper question relevant to virtually every society: how much support should a community reasonably provide its members? Some believe governments and communities bear a strong " },
+            { g: "obligation", pos: "noun", def: "a duty to do something because it is right or required" },
+            { t: " to provide robust support systems. Others argue that individuals should primarily be responsible for their own wellbeing, with community support serving only as a last resort." },
+            { c: 2 },
+          ] },
+          { type: "p", parts: [
+            { t: "Organizations that track social trends suggest that authentic, tangible support, rather than merely symbolic gestures or good intentions, is becoming an increasingly important expectation worldwide, particularly as economic pressures and climate-related disruptions grow more frequent." },
+            { c: 3 },
+          ] },
+          { type: "p", parts: [
+            { t: "Ultimately, this topic touches on fundamental questions of fairness, responsibility, and what members of a society reasonably owe one another, questions that rarely have a single, universally accepted answer." },
+          ] },
+        ],
+      },
+      precise: {
+        label: "Precise Edition",
+        range: "C1–C2",
+        readTime: "4 min read",
+        wordCount: 305,
+        blocks: [
+          { type: "p", parts: [
+            { t: "Countries across Southeast Asia are engaged in earnest deliberation over how to better safeguard vulnerable members of society. This concept, frequently termed “social protection,” encompasses healthcare access, support for elderly citizens, and assistance for those confronting hardship, whether stemming from natural disaster, job loss, or illness." },
+            { c: 1 },
+          ] },
+          { type: "p", parts: [
+            { t: "Recently, regional officials convened to devise stronger, more coordinated social protection systems. Their stated aims are for these systems to be “inclusive,” reaching everyone rather than merely those most readily served, and “adaptive,” capable of responding swiftly when crises strike rather than reacting sluggishly through antiquated procedures." },
+          ] },
+          { type: "p", parts: [
+            { t: "This regional effort raises a deeper question pertinent to virtually every society: how much support ought a community reasonably furnish its members? Some maintain that governments and communities bear a robust " },
+            { g: "obligation", pos: "noun", def: "a duty to act because it is morally right or formally required" },
+            { t: " to provide substantial support systems. Others contend individuals should bear primary responsibility for their own wellbeing, with communal support serving merely as a last resort." },
+            { c: 2 },
+          ] },
+          { type: "p", parts: [
+            { t: "Organizations that monitor social trends suggest authentic, tangible support, rather than merely symbolic gestures or benevolent intentions, is becoming an increasingly prevalent expectation worldwide, particularly as economic pressures and climate-related disruptions grow ever more frequent." },
+            { c: 3 },
+          ] },
+          { type: "p", parts: [
+            { t: "Ultimately, this topic touches upon fundamental questions of fairness, responsibility, and what members of a society reasonably owe one another, questions that seldom admit a single, universally accepted answer." },
+          ] },
+        ],
+      },
+    },
+    references: [
+      { domain: "asean2026.gov.ph", name: "ASEAN 2026", headline: "DSWD to host ASEAN high-level meeting to promote inclusive, adaptive social protection" },
+      { domain: "nextstage-consulting.com", name: "NextStage Consulting", headline: "10 Trends That Will Shape Social Good in 2026" },
+      { domain: "ogilvy.com", name: "Ogilvy", headline: "Social Trends 2026: Social With Substance and the Return of Real" },
+    ],
+    discussionGuide: [
+      {
+        q: "What kinds of social protection exist in your country, like healthcare or support during emergencies?",
+        follow: [],
+      },
+      {
+        q: "Do you think communities and governments owe strong support to their members, or should people mostly take care of themselves?",
+        follow: [],
+      },
+      {
+        q: "Why might 'adaptive' support, help that responds quickly during a crisis, be especially important today?",
+        follow: [],
+      },
+    ],
+  },
+  {
+    slug: "big-events-boost-travel-but-for-whom",
+    ready: true,
+    publishedAt: "2026-08-07",
+    emoji: "✈️",
+    variant: "planet",
+    topicLabel: "Travel & Places",
+    topicTitle: "Places, Travel & Journeys",
+    title: "Big Events Boost Travel, But for Whom?",
+    dek: "Travel forecasts show strong demand around major celebrations, yet rising costs are making some trips easier for some people than others.",
+    editions: {
+      plain: {
+        label: "Plain Edition",
+        range: "A1–A2",
+        readTime: "2 min read",
+        wordCount: 176,
+        blocks: [
+          { type: "p", parts: [
+            { t: "In 2026, big events like the World Cup and a major anniversary celebration are pulling huge numbers of travelers. Airports and hotels expect record crowds this year." },
+          ] },
+          { type: "p", parts: [
+            { t: "This is good news for travel companies. Even with high fuel prices, people still want to travel for special events. Tourists are also helping travel businesses recover from earlier problems in some regions." },
+          ] },
+          { type: "p", parts: [
+            { t: "But not everyone benefits equally. Prices for flights and hotels rise fast when demand is high. Luxury hotels are seeing especially strong growth, meaning wealthier travelers may find it easier to enjoy these events." },
+          ] },
+          { type: "p", parts: [
+            { t: "For families with less money, high prices can mean giving up a trip they hoped to take." },
+          ] },
+          { type: "p", parts: [
+            { t: "Big events are exciting for the world, but they raise a fair question: who really gets to be part of them?" },
+          ] },
+        ],
+      },
+      polished: {
+        label: "Polished Edition",
+        range: "B1–B2",
+        readTime: "4 min read",
+        wordCount: 303,
+        blocks: [
+          { type: "p", parts: [
+            { t: "In 2026, major global events, including the World Cup and a significant anniversary celebration, are drawing enormous numbers of travelers. Airports and hotels are bracing for record crowds, with industry forecasts predicting a sharp rise in travel demand even as fuel prices remain elevated." },
+            { c: 1 },
+          ] },
+          { type: "p", parts: [
+            { t: "This surge is welcome news for the travel industry. Tourists appear willing to absorb higher costs in order to participate in once-in-a-lifetime celebrations, and this " },
+            { g: "resilient", pos: "adjective", def: "able to keep going strongly even when conditions are difficult" },
+            { t: " demand is also helping travel businesses recover from disruptions caused by regional instability in recent years." },
+            { c: 2 },
+          ] },
+          { type: "p", parts: [
+            { t: "Yet the benefits of this travel boom are not shared equally. Prices for flights and accommodation tend to climb quickly whenever demand spikes, and luxury hotels in particular are reporting especially strong revenue growth, suggesting that wealthier travelers are finding it considerably easier to secure rooms and flights than everyone else." },
+            { c: 3 },
+          ] },
+          { type: "p", parts: [
+            { t: "For families with tighter budgets, these rising costs can mean abandoning a long-anticipated trip altogether, even for an event they have followed for years." },
+          ] },
+          { type: "p", parts: [
+            { t: "Major global events generate genuine excitement and bring people together across borders, but they also raise a fair and pointed question: as prices climb, who actually gets to take part, and who gets priced out?" },
+          ] },
+        ],
+      },
+      precise: {
+        label: "Precise Edition",
+        range: "C1–C2",
+        readTime: "4 min read",
+        wordCount: 300,
+        blocks: [
+          { type: "p", parts: [
+            { t: "In 2026, major global events, including the World Cup and a significant anniversary celebration, are drawing extraordinary numbers of travelers. Airports and hotels are bracing for record crowds, with industry forecasts predicting a sharp surge in travel demand even as fuel prices remain elevated." },
+            { c: 1 },
+          ] },
+          { type: "p", parts: [
+            { t: "This surge constitutes welcome news for the travel industry. Tourists appear willing to absorb higher costs to partake in once-in-a-lifetime celebrations, and this " },
+            { g: "resilient", pos: "adjective", def: "capable of persisting robustly even amid difficult conditions" },
+            { t: " demand is likewise helping travel enterprises recover from disruptions wrought by regional instability in recent years." },
+            { c: 2 },
+          ] },
+          { type: "p", parts: [
+            { t: "Yet the dividends of this travel boom are hardly distributed equally. Prices for flights and accommodation tend to climb precipitously whenever demand spikes, and luxury hotels in particular are reporting especially robust revenue growth, suggesting wealthier travelers are finding it considerably easier to secure rooms and flights than everyone else." },
+            { c: 3 },
+          ] },
+          { type: "p", parts: [
+            { t: "For families operating under tighter budgets, these escalating costs can mean forsaking a long-anticipated trip altogether, even for an event they have followed for years." },
+          ] },
+          { type: "p", parts: [
+            { t: "Major global events generate genuine excitement and unite people across borders, yet they also raise a fair and pointed question: as prices climb, who actually gets to partake, and who finds themselves priced out?" },
+          ] },
+        ],
+      },
+    },
+    references: [
+      { domain: "reuters.com", name: "Reuters", headline: "World Cup, 250th anniversary to help drive up July 4 travel even as high fuel prices bite" },
+      { domain: "reuters.com", name: "Reuters", headline: "Resilient tourists help US travel firms absorb Middle East shock" },
+      { domain: "reuters.com", name: "Reuters", headline: "Hilton raises annual room revenue growth forecast on strong luxury hotel demand" },
+    ],
+    discussionGuide: [
+      {
+        q: "Would you spend extra money to travel for a big event like the World Cup or an anniversary celebration?",
+        follow: [],
+      },
+      {
+        q: "The article says luxury hotels are growing fastest. What does that suggest about who benefits most from travel booms?",
+        follow: [],
+      },
+      {
+        q: "Is it fair that prices rise so much during big events? What could make travel more accessible for everyone?",
+        follow: [],
+      },
+    ],
+  },
+  {
     slug: "dogs-and-humans-shaped-each-other",
     ready: true,
     publishedAt: "2026-08-17",
