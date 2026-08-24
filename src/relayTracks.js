@@ -19,6 +19,21 @@ import relayTeensGamingL2 from "./relayTeensGamingData2";
 import relayTeensGamingL3 from "./relayTeensGamingData3";
 import relayTeensGamingL4 from "./relayTeensGamingData4";
 import relayTeensGamingL5 from "./relayTeensGamingData5";
+import relayTeensMoneyL1 from "./relayTeensMoneyData";
+import relayTeensMoneyL2 from "./relayTeensMoneyData2";
+import relayTeensMoneyL3 from "./relayTeensMoneyData3";
+import relayTeensMoneyL4 from "./relayTeensMoneyData4";
+import relayTeensMoneyL5 from "./relayTeensMoneyData5";
+import relayTeensTravelL1 from "./relayTeensTravelData";
+import relayTeensTravelL2 from "./relayTeensTravelData2";
+import relayTeensTravelL3 from "./relayTeensTravelData3";
+import relayTeensTravelL4 from "./relayTeensTravelData4";
+import relayTeensTravelL5 from "./relayTeensTravelData5";
+import relayTeensFutureL1 from "./relayTeensFutureData";
+import relayTeensFutureL2 from "./relayTeensFutureData2";
+import relayTeensFutureL3 from "./relayTeensFutureData3";
+import relayTeensFutureL4 from "./relayTeensFutureData4";
+import relayTeensFutureL5 from "./relayTeensFutureData5";
 
 const TRACKS = [
   {
@@ -47,6 +62,33 @@ const TRACKS = [
     audience: "teens",
     blurb: "5 lessons that turn short, complete answers into real back-and-forth exchanges.",
     lessons: [relayTeensGamingL1, relayTeensGamingL2, relayTeensGamingL3, relayTeensGamingL4, relayTeensGamingL5],
+  },
+  {
+    id: "relay-teens-money-1",
+    title: "Part-Time Jobs & Money",
+    focus: "Money & Work",
+    level: "A2",
+    audience: "teens",
+    blurb: "5 lessons that turn short, complete answers into real back-and-forth exchanges.",
+    lessons: [relayTeensMoneyL1, relayTeensMoneyL2, relayTeensMoneyL3, relayTeensMoneyL4, relayTeensMoneyL5],
+  },
+  {
+    id: "relay-teens-travel-1",
+    title: "Travel & Adventures",
+    focus: "Travel",
+    level: "A2",
+    audience: "teens",
+    blurb: "5 lessons that turn short, complete answers into real back-and-forth exchanges.",
+    lessons: [relayTeensTravelL1, relayTeensTravelL2, relayTeensTravelL3, relayTeensTravelL4, relayTeensTravelL5],
+  },
+  {
+    id: "relay-teens-future-1",
+    title: "Future Plans & Ambitions",
+    focus: "Future",
+    level: "A2",
+    audience: "teens",
+    blurb: "5 lessons that turn short, complete answers into real back-and-forth exchanges.",
+    lessons: [relayTeensFutureL1, relayTeensFutureL2, relayTeensFutureL3, relayTeensFutureL4, relayTeensFutureL5],
   },
 ];
 
