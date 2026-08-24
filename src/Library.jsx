@@ -291,6 +291,9 @@ const SPEAKING_TRACKS = [
   { key: "forge", href: "/library/forge", hue: "forge", gap: "Thin working vocabulary", name: "Forge", desc: "Build real vocabulary through pictures, gaps, echoes, and question chains." },
   { key: "shift", href: "/library/shift", hue: "shift", gap: "Slow tense self-repair", name: "Shift", desc: "Fast tense choice and self-repair under pressure, for students who already know the grammar." },
   { key: "ascend", href: "/library/ascend", hue: "ascend", gap: "Imprecise, unstructured speech", name: "Ascend", desc: "Precision, structure, and diplomatic control for students who already sound fluent." },
+  { key: "relay", href: "/library/relay", hue: "relay", gap: "Non-extending answers", name: "Relay", desc: "Turn short, complete answers into real exchanges — add reasons, details, and questions that keep the conversation moving.", comingSoon: true },
+  { key: "stack", href: "/library/stack", hue: "stack", gap: "Cognitive overload", name: "Stack", desc: "Isolate one variable at a time — pattern, tense, or vocabulary — then stack them until you can run it all at once.", comingSoon: true },
+  { key: "glide", href: "/library/glide", hue: "glide", gap: "Strategic filler deficit", name: "Glide", desc: "Swap dead air and native-language filler sounds for natural stalling phrases that keep your speech flowing.", comingSoon: true },
 ];
 
 // Small medical-tool glyph per track, shown inside the pin badge on each
@@ -318,6 +321,28 @@ const SPKLAB_PIN_ICONS = {
     <g transform="rotate(-30 12 12)">
       <rect x="5" y="9" width="14" height="6" rx="3" fill="none" stroke="#FFFFFF" strokeWidth="1.8" />
       <line x1="12" y1="9" x2="12" y2="15" stroke="#FFFFFF" strokeWidth="1.8" />
+    </g>
+  ),
+  relay: (
+    <path d="M2 13 H6 L8 7 L11 19 L13 8 L14.5 13 H22" fill="none" stroke="#FFFFFF" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+  ),
+  stack: (
+    <g>
+      <rect x="4" y="5" width="16" height="14" rx="2" fill="none" stroke="#FFFFFF" strokeWidth="1.5" />
+      <circle cx="8" cy="9" r="1.3" fill="#FFFFFF" />
+      <circle cx="12" cy="9" r="1.3" fill="#FFFFFF" />
+      <circle cx="16" cy="9" r="1.3" fill="#FFFFFF" />
+      <circle cx="8" cy="15" r="1.3" fill="#FFFFFF" />
+      <circle cx="12" cy="15" r="1.3" fill="#FFFFFF" />
+      <circle cx="16" cy="15" r="1.3" fill="#FFFFFF" />
+    </g>
+  ),
+  glide: (
+    <g transform="rotate(45 12 12)">
+      <rect x="4" y="9" width="16" height="6" rx="3" fill="none" stroke="#FFFFFF" strokeWidth="1.6" />
+      <circle cx="9" cy="12" r="0.9" fill="#FFFFFF" />
+      <circle cx="12" cy="12" r="0.9" fill="#FFFFFF" />
+      <circle cx="15" cy="12" r="0.9" fill="#FFFFFF" />
     </g>
   ),
 };
@@ -1708,20 +1733,27 @@ export default function Library() {
                 <p className="empty-msg">No Speaking tracks match "{query.trim()}".</p>
               ) : (
                 <div className="spklab-grid">
-                  {tracks.map((t) => (
-                    <a key={t.key} href={t.href} className={`spklab-card spklab-card--${t.hue}`}>
-                      <svg className="spklab-pin" viewBox="0 0 24 24">
-                        <circle cx="12" cy="12" r="12" />
-                        {SPKLAB_PIN_ICONS[t.key]}
-                      </svg>
-                      <div className="spklab-body">
-                        <h3 className="spklab-name">{t.name}</h3>
-                        <div className="spklab-label">Diagnosis</div>
-                        <p className="spklab-gap">{t.gap}</p>
-                        <span className="spklab-cta">Open {t.name} →</span>
-                      </div>
-                    </a>
-                  ))}
+                  {tracks.map((t) => {
+                    const Tag = t.comingSoon ? "div" : "a";
+                    return (
+                      <Tag
+                        key={t.key}
+                        {...(t.comingSoon ? {} : { href: t.href })}
+                        className={`spklab-card spklab-card--${t.hue}${t.comingSoon ? " spklab-card--soon" : ""}`}
+                      >
+                        <svg className="spklab-pin" viewBox="0 0 24 24">
+                          <circle cx="12" cy="12" r="12" />
+                          {SPKLAB_PIN_ICONS[t.key]}
+                        </svg>
+                        <div className="spklab-body">
+                          <h3 className="spklab-name">{t.name}</h3>
+                          <div className="spklab-label">Diagnosis</div>
+                          <p className="spklab-gap">{t.gap}</p>
+                          <span className="spklab-cta">{t.comingSoon ? "Coming soon" : `Open ${t.name} →`}</span>
+                        </div>
+                      </Tag>
+                    );
+                  })}
                 </div>
               );
             })()}
@@ -2437,6 +2469,9 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .spklab-card--forge .spklab-pin circle:first-child { fill: #E8544E; }
 .spklab-card--shift .spklab-pin circle:first-child { fill: #2AA8AE; }
 .spklab-card--ascend .spklab-pin circle:first-child { fill: #E8A83D; }
+.spklab-card--relay .spklab-pin circle:first-child { fill: #3E7CB1; }
+.spklab-card--stack .spklab-pin circle:first-child { fill: #8B6FC9; }
+.spklab-card--glide .spklab-pin circle:first-child { fill: #4FAE7A; }
 
 .spklab-body { padding: 30px 20px 22px; text-align: center; display: flex; flex-direction: column; align-items: center; flex: 1; width: 100%; }
 .spklab-name { font-family: 'Baloo 2', cursive; font-weight: 700; font-size: clamp(22px, 2.1vw, 26px); color: #10646B; margin: 0 0 10px; }
@@ -2462,6 +2497,12 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .spklab-card--forge .spklab-cta { background: #E8544E; }
 .spklab-card--shift .spklab-cta { background: #2AA8AE; }
 .spklab-card--ascend .spklab-cta { background: #C99A2E; }
+.spklab-card--relay .spklab-cta { background: #3E7CB1; }
+.spklab-card--stack .spklab-cta { background: #8B6FC9; }
+.spklab-card--glide .spklab-cta { background: #4FAE7A; }
+
+.spklab-card--soon { cursor: default; }
+.spklab-card--soon .spklab-cta { background: #C7DCDD; color: #4B8B92; }
 
 @media (max-width: 700px) {
   .spklab-grid { grid-template-columns: 1fr; }
