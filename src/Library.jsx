@@ -293,6 +293,35 @@ const SPEAKING_TRACKS = [
   { key: "ascend", href: "/library/ascend", hue: "ascend", gap: "Imprecise, unstructured speech", name: "Ascend", desc: "Precision, structure, and diplomatic control for students who already sound fluent." },
 ];
 
+// Small medical-tool glyph per track, shown inside the pin badge on each
+// Speaking card -- syringe/stethoscope/capsule rather than a generic
+// pushpin dot, keeping the Fluency Clinic motif on the thumbnail itself.
+const SPKLAB_PIN_ICONS = {
+  forge: (
+    <g transform="rotate(45 12 12)">
+      <rect x="2" y="10.5" width="3" height="3" fill="#FFFFFF" />
+      <rect x="5" y="9" width="10" height="6" rx="1.5" fill="#FFFFFF" />
+      <rect x="15" y="10.5" width="3" height="3" fill="#FFFFFF" />
+      <line x1="18" y1="12" x2="21.5" y2="12" stroke="#FFFFFF" strokeWidth="1.8" strokeLinecap="round" />
+    </g>
+  ),
+  shift: (
+    <>
+      <path d="M8 3 v5 a4 4 0 0 0 8 0 V3" fill="none" stroke="#FFFFFF" strokeWidth="1.8" strokeLinecap="round" />
+      <circle cx="8" cy="3" r="1.3" fill="#FFFFFF" />
+      <circle cx="16" cy="3" r="1.3" fill="#FFFFFF" />
+      <path d="M12 11 v3 a4 4 0 0 0 4 4 h1" fill="none" stroke="#FFFFFF" strokeWidth="1.8" strokeLinecap="round" />
+      <circle cx="18.5" cy="19" r="2.4" fill="none" stroke="#FFFFFF" strokeWidth="1.8" />
+    </>
+  ),
+  ascend: (
+    <g transform="rotate(-30 12 12)">
+      <rect x="5" y="9" width="14" height="6" rx="3" fill="none" stroke="#FFFFFF" strokeWidth="1.8" />
+      <line x1="12" y1="9" x2="12" y2="15" stroke="#FFFFFF" strokeWidth="1.8" />
+    </g>
+  ),
+};
+
 const GRAMMAR_TABS = [
   { key: "foundation", label: "Foundation" },
   { key: "extras", label: "Supplementary" },
@@ -1681,16 +1710,14 @@ export default function Library() {
                 <div className="spklab-grid">
                   {tracks.map((t) => (
                     <a key={t.key} href={t.href} className={`spklab-card spklab-card--${t.hue}`}>
-                      <svg className="spklab-pin" viewBox="0 0 26 34">
-                        <path d="M13 0a9 9 0 0 0-9 9c0 6.5 9 16.5 9 16.5s9-10 9-16.5a9 9 0 0 0-9-9z" />
-                        <circle cx="13" cy="9" r="3.4" fill="#FFFFFF" />
+                      <svg className="spklab-pin" viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="12" />
+                        {SPKLAB_PIN_ICONS[t.key]}
                       </svg>
                       <div className="spklab-body">
+                        <h3 className="spklab-name">{t.name}</h3>
                         <div className="spklab-label">Diagnosis</div>
                         <p className="spklab-gap">{t.gap}</p>
-                        <div className="spklab-rx-label">Rx</div>
-                        <h3 className="spklab-name">{t.name}</h3>
-                        <p className="spklab-desc">{t.desc}</p>
                         <span className="spklab-cta">Open {t.name} →</span>
                       </div>
                     </a>
@@ -2399,12 +2426,18 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 .spklab-card:hover { transform: translateY(-4px); box-shadow: 0 16px 30px rgba(16,100,107,0.2); }
-.spklab-pin { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); width: 26px; height: 34px; z-index: 2; }
-.spklab-card--forge .spklab-pin path:first-child { fill: #E8544E; }
-.spklab-card--shift .spklab-pin path:first-child { fill: #2AA8AE; }
-.spklab-card--ascend .spklab-pin path:first-child { fill: #FFC857; }
+.spklab-pin {
+  position: absolute; top: -16px; left: 50%; transform: translateX(-50%);
+  width: 34px; height: 34px; z-index: 2;
+  border-radius: 50%;
+  box-shadow: 0 4px 8px rgba(16,100,107,0.28);
+}
+.spklab-card--forge .spklab-pin circle:first-child { fill: #E8544E; }
+.spklab-card--shift .spklab-pin circle:first-child { fill: #2AA8AE; }
+.spklab-card--ascend .spklab-pin circle:first-child { fill: #E8A83D; }
 
-.spklab-body { padding: 26px 20px 22px; }
+.spklab-body { padding: 30px 20px 22px; text-align: center; }
+.spklab-name { font-family: 'Baloo 2', cursive; font-weight: 700; font-size: clamp(22px, 2.1vw, 26px); color: #10646B; margin: 0 0 10px; }
 .spklab-label {
   display: inline-block;
   font-family: 'IBM Plex Sans', sans-serif;
@@ -2418,24 +2451,9 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   padding: 3px 10px;
   margin-bottom: 8px;
 }
-.spklab-gap { font-family: 'IBM Plex Sans', sans-serif; font-weight: 700; font-size: 13.5px; margin: 0 0 12px; color: #10646B; }
-.spklab-rx-label {
-  display: inline-block;
-  font-family: 'IBM Plex Sans', sans-serif;
-  font-weight: 800;
-  font-size: 9.5px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: #2AA8AE;
-  background: rgba(42,168,174,0.12);
-  border-radius: 999px;
-  padding: 3px 10px;
-  margin-bottom: 6px;
-}
-.spklab-name { font-family: 'Baloo 2', cursive; font-weight: 700; font-size: clamp(22px, 2.1vw, 26px); color: #10646B; margin: 0 0 8px; }
-.spklab-desc { font-family: 'IBM Plex Sans', sans-serif; font-size: 12.5px; line-height: 1.5; color: #5C8891; margin: 0 0 16px; }
+.spklab-gap { font-family: 'IBM Plex Sans', sans-serif; font-weight: 700; font-size: 13.5px; margin: 0 0 18px; color: #10646B; }
 .spklab-cta {
-  display: block; text-align: center; margin-top: 14px;
+  display: block; text-align: center; margin-top: 0;
   font-family: 'IBM Plex Sans', sans-serif; font-weight: 700; font-size: 12.5px;
   color: #FFFFFF; border-radius: 8px; padding: 10px 0;
 }
