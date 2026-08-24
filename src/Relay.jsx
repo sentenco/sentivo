@@ -7,6 +7,32 @@ function buildSlideTypes(lesson) {
   return ["cover", "warmup", ...bounceSlides, "yourturn", "pushit", "end"];
 }
 
+const STAGES = [
+  { key: "cover", label: "Cover" },
+  { key: "warmup", label: "Warm-up" },
+  { key: "bounce", label: "Bounce" },
+  { key: "yourturn", label: "Your Turn" },
+  { key: "pushit", label: "Push It" },
+  { key: "end", label: "End" },
+];
+
+function stageKey(slideType) {
+  return slideType.startsWith("bounce-") ? "bounce" : slideType;
+}
+
+function Stepper({ slideType }) {
+  const active = stageKey(slideType);
+  return (
+    <div className="rl-stepper">
+      {STAGES.map((s) => (
+        <span key={s.key} className={`rl-stepper-item ${s.key === active ? "is-active" : ""}`}>
+          {s.label}
+        </span>
+      ))}
+    </div>
+  );
+}
+
 function CoverSlide({ lesson }) {
   return (
     <div className="rl-slide rl-slide--centered">
@@ -19,7 +45,6 @@ function CoverSlide({ lesson }) {
 function WarmupSlide({ lesson }) {
   return (
     <div className="rl-slide rl-slide--centered">
-      <span className="rl-eyebrow">Warm-up</span>
       <h2 className="rl-question">{lesson.warmup.question}</h2>
     </div>
   );
@@ -119,6 +144,7 @@ export default function Relay() {
       <style>{CSS}</style>
       <header className="rl-topbar">
         <span className="rl-brand"><img src="/logo-sentivo.png" alt="" className="rl-brand-logo" />entivo</span>
+        <Stepper slideType={slideType} />
       </header>
 
       <div className="rl-stage">
@@ -169,18 +195,40 @@ const CSS = `
   max-width: 1040px;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  gap: 16px;
   padding: 22px 24px 0;
 }
 .rl-brand {
   display: flex;
   align-items: center;
+  flex-shrink: 0;
   font-family: 'Baloo 2', cursive;
   font-weight: 700;
   font-size: 18px;
   color: #10646B;
 }
 .rl-brand-logo { height: 24px; width: auto; display: block; margin-right: -4px; }
+
+.rl-stepper {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+.rl-stepper-item {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 700;
+  font-size: 11.5px;
+  letter-spacing: 0.02em;
+  color: #9FC6C2;
+  background: transparent;
+  border-radius: 999px;
+  padding: 5px 11px;
+  white-space: nowrap;
+}
+.rl-stepper-item.is-active { color: #FFFFFF; background: #3E7CB1; }
 
 .rl-missing {
   font-family: 'IBM Plex Sans', sans-serif;
