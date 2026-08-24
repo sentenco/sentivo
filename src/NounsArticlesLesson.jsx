@@ -279,7 +279,7 @@ const CSS = `
   gap: 16px;
   margin: -20px -56px 16px;
   padding: 14px 56px;
-  background: #FDF0E9;
+  background: #FFFFFF;
   border-bottom: 1px solid #F6DCC7;
   flex-shrink: 0;
 }

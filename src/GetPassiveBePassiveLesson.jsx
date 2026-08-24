@@ -262,7 +262,7 @@ const CSS = `
   justify-content: space-between;
   gap: 16px;
   padding: 14px 56px;
-  background: #FCF5E6;
+  background: #FFFFFF;
   border-bottom: 3px dashed #F3E3C0;
   flex-shrink: 0;
 }

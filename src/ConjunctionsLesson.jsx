@@ -290,7 +290,7 @@ const CSS = `
   justify-content: space-between;
   gap: 16px;
   padding: 14px 56px;
-  background: #F1F8EE;
+  background: #FFFFFF;
   border-bottom: 3px dashed #D9EED4;
   flex-shrink: 0;
 }

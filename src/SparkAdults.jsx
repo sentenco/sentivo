@@ -407,7 +407,7 @@ const CSS = `
   justify-content: space-between;
   gap: 16px;
   padding: 16px 32px;
-  background: #FDF3DF;
+  background: #FFFFFF;
   border-bottom: 1px solid #EDD3A5;
   flex-shrink: 0;
 }

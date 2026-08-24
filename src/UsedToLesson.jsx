@@ -263,7 +263,7 @@ const CSS = `
   gap: 16px;
   margin: -20px -56px 18px;
   padding: 14px 32px;
-  background: #FDF0F5;
+  background: #FFFFFF;
   border-bottom: 2px solid #F5D3E0;
   flex-shrink: 0;
 }
