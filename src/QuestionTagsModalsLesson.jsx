@@ -179,6 +179,20 @@ function renderSlide(slideType, lesson) {
   return null;
 }
 
+function stageLabel(slideType) {
+  if (slideType.startsWith("teach")) return "Teach";
+  if (slideType.startsWith("guided")) return "Guided Practice";
+  switch (slideType) {
+    case "cover": return "Cover";
+    case "warmup": return "Warm-up";
+    case "predict": return "Think About It";
+    case "compare": return "Compare";
+    case "practice": return "Practice";
+    case "wrapup": return "Wrap-up";
+    default: return "";
+  }
+}
+
 export default function QuestionTagsModalsLesson() {
   const [slideIdx, setSlideIdx] = useState(0);
   const lesson = LESSON;
@@ -190,13 +204,13 @@ export default function QuestionTagsModalsLesson() {
   return (
     <div className="qtml-shell">
       <style>{CSS}</style>
-      <header className="qtml-topbar">
-        <span className="qtml-brand"><img src="/logo-sentivo.png" alt="" className="qtml-brand-logo" />entivo</span>
-        <span className="qtml-topbar-title">{lesson.title}</span>
-      </header>
 
       <div className="qtml-stage">
         <div className="qtml-deck">
+          <div className="qtml-deck-header">
+            <span className="qtml-brand"><img src="/logo-sentivo.png" alt="" className="qtml-brand-logo" />entivo</span>
+            <span className="qtml-stage-label">{stageLabel(slideType)}</span>
+          </div>
           <div className="qtml-deck-body" key={slideIdx}>
             {renderSlide(slideType, lesson)}
           </div>
@@ -242,13 +256,15 @@ const CSS = `
 }
 .qtml-shell * { box-sizing: border-box; }
 
-.qtml-topbar {
-  width: 100%;
-  max-width: 1120px;
+.qtml-deck-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 14px 24px 0;
+  gap: 16px;
+  margin: -20px -56px 18px;
+  padding: 14px 32px;
+  background: #EAF2FA;
+  border-bottom: 2px solid #D0E2F2;
   flex-shrink: 0;
 }
 .qtml-brand {
@@ -262,12 +278,15 @@ const CSS = `
   color: #2B2A4A;
 }
 .qtml-brand-logo { height: 24px; width: auto; display: block; margin-right: -4px; }
-.qtml-topbar-title {
+.qtml-stage-label {
   font-family: 'Comic Neue', cursive, sans-serif;
   font-weight: 700;
   font-size: 12px;
-  letter-spacing: 0.5px;
-  color: #275C8C;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #3E7CB8;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .qtml-stage {
@@ -290,6 +309,7 @@ const CSS = `
   padding: 20px 56px;
   box-shadow: 9px 9px 0 #1A1A1A;
   min-height: 0;
+  overflow: hidden;
 }
 
 .qtml-deck-body {

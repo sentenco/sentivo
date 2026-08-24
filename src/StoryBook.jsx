@@ -25,6 +25,25 @@ const PAGE_LABELS = {
   mysentence: "My Sentence",
 };
 
+// Card-header stage label -- pairs the brand with whichever page/slide type
+// is currently showing, using the same vocabulary as PAGE_LABELS above.
+function getStageLabel(view, pageType) {
+  if (view === "toc") return "Contents";
+  if (view === "chapter") return PAGE_LABELS[pageType] || "";
+  return "";
+}
+
+function BookHeader({ stage }) {
+  return (
+    <div className="sb-book-header">
+      <span className="sb-book-brand">
+        <img src="/logo-sentivo.png" alt="" className="sb-book-brand-logo" />entivo
+      </span>
+      {stage && <span className="sb-book-stage">{stage}</span>}
+    </div>
+  );
+}
+
 function shuffle(arr) {
   const a = [...arr];
   for (let i = a.length - 1; i > 0; i--) {
@@ -315,8 +334,8 @@ export default function StoryBook({ book = defaultBook }) {
     <div className="sb-shell">
       <style>{CSS}</style>
       <header className="sb-topbar">
-        <button type="button" className="sb-nav-brand" onClick={() => navigate("/library")} title="Back to Library">
-          <img src="/logo-sentivo.png" alt="" className="sb-brand-logo" />entivo
+        <button type="button" className="sb-nav-back" onClick={() => navigate("/library")} title="Back to Library">
+          ‹ Library
         </button>
         <button type="button" className="sb-topbar-title" onClick={() => setView("cover")}>
           {book.title}
@@ -347,6 +366,7 @@ export default function StoryBook({ book = defaultBook }) {
 
         {view === "toc" && (
           <div className="sb-book sb-toc">
+            <BookHeader stage={getStageLabel("toc")} />
             <h2 className="sb-toc-heading">Table of Contents</h2>
             <ol className="sb-toc-list">
               {CHAPTERS.map((c) => {
@@ -367,8 +387,8 @@ export default function StoryBook({ book = defaultBook }) {
 
         {view === "chapter" && (
           <div className="sb-book">
+            <BookHeader stage={getStageLabel("chapter", pageType)} />
             <div className="sb-page-header">
-              <span className="sb-page-header-label">{PAGE_LABELS[pageType]}</span>
               <span className="sb-page-header-counter">Chapter {chapter.number} of {CHAPTERS.length}</span>
             </div>
             <div className="sb-progress-track">
@@ -422,20 +442,18 @@ const CSS = `
   justify-content: space-between;
   padding: 22px 24px 0;
 }
-.sb-nav-brand {
-  display: flex;
-  align-items: center;
+.sb-nav-back {
   flex-shrink: 0;
-  font-family: 'Fredoka', sans-serif;
+  font-family: 'Quicksand', sans-serif;
   font-weight: 700;
-  font-size: 16px;
-  color: #1B2A4A;
+  font-size: 14px;
+  color: #7C8598;
   background: none;
   border: none;
   cursor: pointer;
   padding: 0;
 }
-.sb-brand-logo { height: 24px; width: auto; display: block; margin-right: -3px; }
+.sb-nav-back:hover { color: #1B2A4A; }
 .sb-toc-link {
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;
@@ -469,6 +487,39 @@ const CSS = `
   align-items: flex-start;
   justify-content: center;
   padding: 36px 24px 60px;
+}
+
+/* ── Book card header: brand on the left, current page/stage on the
+   right. First thing inside the card so the Sentivo identity travels
+   with the book rather than living in the outer topbar. ── */
+.sb-book-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin: -30px -36px 18px;
+  padding: 16px 36px;
+  border-bottom: 1px solid #EAE6DC;
+  flex-shrink: 0;
+}
+.sb-book-brand {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  color: #1B2A4A;
+}
+.sb-book-brand-logo { height: 22px; width: auto; display: block; margin-right: -3px; }
+.sb-book-stage {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #94A0B8;
+  white-space: nowrap;
 }
 
 /* Landscape book card -- every page (cover, characters, contents, chapter
@@ -584,15 +635,7 @@ const CSS = `
 .sb-toc-arrow { color: #D85A30; font-weight: 700; }
 
 /* ── Chapter page chrome ── */
-.sb-page-header { display: flex; align-items: center; justify-content: space-between; }
-.sb-page-header-label {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 700;
-  font-size: 12px;
-  letter-spacing: 0.6px;
-  text-transform: uppercase;
-  color: #D85A30;
-}
+.sb-page-header { display: flex; align-items: center; justify-content: flex-end; }
 .sb-page-header-counter {
   font-family: 'Quicksand', sans-serif;
   font-weight: 600;
@@ -799,5 +842,6 @@ const CSS = `
 
 @media (max-width: 520px) {
   .sb-book { padding: 22px 18px; }
+  .sb-book-header { margin: -22px -18px 14px; padding: 12px 18px; }
 }
 `;

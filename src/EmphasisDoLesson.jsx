@@ -179,6 +179,21 @@ function renderSlide(slideType, lesson) {
   return null;
 }
 
+const STAGE_LABELS = {
+  cover: "Cover",
+  warmup: "Warm-up",
+  predict: "Think About It",
+  compare: "Compare",
+  practice: "Practice",
+  wrapup: "Wrap-up",
+};
+
+function stageLabel(slideType) {
+  if (slideType.startsWith("teach")) return "Teach";
+  if (slideType.startsWith("guided")) return "Guided Practice";
+  return STAGE_LABELS[slideType] || "";
+}
+
 export default function EmphasisDoLesson() {
   const [slideIdx, setSlideIdx] = useState(0);
   const lesson = LESSON;
@@ -190,13 +205,12 @@ export default function EmphasisDoLesson() {
   return (
     <div className="edl-shell">
       <style>{CSS}</style>
-      <header className="edl-topbar">
-        <span className="edl-brand"><img src="/logo-sentivo.png" alt="" className="edl-brand-logo" />entivo</span>
-        <span className="edl-topbar-title">{lesson.title}</span>
-      </header>
-
       <div className="edl-stage">
         <div className="edl-deck">
+          <div className="edl-deck-header">
+            <span className="edl-brand"><img src="/logo-sentivo.png" alt="" className="edl-brand-logo" />entivo</span>
+            <span className="edl-stage-label">{stageLabel(slideType)}</span>
+          </div>
           <div className="edl-deck-body" key={slideIdx}>
             {renderSlide(slideType, lesson)}
           </div>
@@ -242,13 +256,14 @@ const CSS = `
 }
 .edl-shell * { box-sizing: border-box; }
 
-.edl-topbar {
-  width: 100%;
-  max-width: 1120px;
+.edl-deck-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 14px 24px 0;
+  gap: 16px;
+  padding: 14px 56px;
+  background: #EFF3F4;
+  border-bottom: 3px dashed #DCE5E8;
   flex-shrink: 0;
 }
 .edl-brand {
@@ -262,12 +277,15 @@ const CSS = `
   color: #2B2A4A;
 }
 .edl-brand-logo { height: 24px; width: auto; display: block; margin-right: -4px; }
-.edl-topbar-title {
+.edl-stage-label {
   font-family: 'Comic Neue', cursive, sans-serif;
   font-weight: 700;
   font-size: 12px;
-  letter-spacing: 0.5px;
-  color: #3E535F;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #8CA0AB;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .edl-stage {
@@ -287,9 +305,9 @@ const CSS = `
   background: #FFFFFF;
   border: 4px solid #1A1A1A;
   border-radius: 18px;
-  padding: 20px 56px;
   box-shadow: 9px 9px 0 #1A1A1A;
   min-height: 0;
+  overflow: hidden;
 }
 
 .edl-deck-body {
@@ -302,7 +320,7 @@ const CSS = `
   min-height: 0;
   overflow-y: auto;
   gap: 20px;
-  padding: 8px 0;
+  padding: 20px 56px;
 }
 
 .edl-slide { display: flex; flex-direction: column; align-items: center; gap: 16px; width: 100%; }
@@ -500,7 +518,7 @@ const CSS = `
   margin: 0;
 }
 
-.edl-nav-row { display: flex; align-items: center; justify-content: space-between; padding-top: 14px; border-top: 3px dashed #DCE5E8; flex-shrink: 0; }
+.edl-nav-row { display: flex; align-items: center; justify-content: space-between; padding: 14px 56px 20px; border-top: 3px dashed #DCE5E8; flex-shrink: 0; }
 .edl-nav-btn {
   font-family: 'Comic Neue', cursive, sans-serif;
   font-weight: 700;

@@ -60,6 +60,26 @@ function poolFor(fam) {
   return shuffled(CATS.map((cat) => ({ word: fam.forms[cat], cat })));
 }
 
+const STAGES = [
+  { key: "cover", label: "Cover" },
+  { key: "family", label: "Sort the Family" },
+  { key: "explain", label: "Explain" },
+  { key: "guided", label: "Guided Practice" },
+  { key: "wrapup", label: "Wrap-up" },
+];
+
+function stageKey(slideType) {
+  if (slideType.startsWith("family")) return "family";
+  if (slideType.startsWith("explain")) return "explain";
+  if (slideType.startsWith("guided")) return "guided";
+  return slideType;
+}
+
+function StageLabel({ slideType }) {
+  const stage = STAGES.find((s) => s.key === stageKey(slideType));
+  return <span className="wfl-stage-label">{stage.label}</span>;
+}
+
 function CoverSlide() {
   return (
     <div className="wfl-slide wfl-slide--cover">
@@ -254,13 +274,13 @@ export default function WordFamiliesLesson() {
   return (
     <div className="wfl-shell">
       <style>{CSS}</style>
-      <header className="wfl-topbar">
-        <span className="wfl-brand"><img src="/logo-sentivo.png" alt="" className="wfl-brand-logo" />entivo</span>
-        <span className="wfl-topbar-title">{LESSON.title}</span>
-      </header>
 
       <div className="wfl-stage">
         <div className="wfl-deck">
+          <div className="wfl-deck-header">
+            <span className="wfl-brand"><img src="/logo-sentivo.png" alt="" className="wfl-brand-logo" />entivo</span>
+            <StageLabel slideType={slideType} />
+          </div>
           <div className="wfl-deck-body" key={slideIdx}>
             {renderSlide(slideType)}
           </div>
@@ -304,18 +324,19 @@ const CSS = `
 }
 .wfl-shell * { box-sizing: border-box; }
 
-.wfl-topbar {
-  width: 100%;
-  max-width: 1120px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 14px 24px 0;
-  flex-shrink: 0;
-}
 .wfl-brand { display: flex; align-items: center; flex-shrink: 0; font-family: 'Grandstander', cursive; font-weight: 700; font-size: 18px; color: #123B40; }
 .wfl-brand-logo { height: 24px; width: auto; display: block; margin-right: -4px; }
-.wfl-topbar-title { font-family: 'Mulish', sans-serif; font-weight: 800; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #0E6E7C; }
+
+.wfl-stage-label {
+  font-family: 'Mulish', sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #4F8B90;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
 
 .wfl-stage { flex: 1; width: 100%; max-width: 1120px; padding: 16px 24px 20px; display: flex; flex-direction: column; min-height: 0; }
 
@@ -325,9 +346,20 @@ const CSS = `
   flex-direction: column;
   background: #FFFFFF;
   border-radius: 26px;
-  padding: 24px 48px;
   box-shadow: 0 20px 0 rgba(14,110,124,0.08);
   min-height: 0;
+  overflow: hidden;
+}
+
+.wfl-deck-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 48px;
+  background: #EAF8F6;
+  border-bottom: 1px solid #D6F1EC;
+  flex-shrink: 0;
 }
 
 .wfl-deck-body {
@@ -340,7 +372,7 @@ const CSS = `
   min-height: 0;
   overflow-y: auto;
   gap: 16px;
-  padding: 8px 0;
+  padding: 24px 48px 8px;
 }
 
 .wfl-slide { display: flex; flex-direction: column; align-items: center; gap: 16px; width: 100%; }
@@ -483,7 +515,7 @@ const CSS = `
 
 .wfl-wrap-icon { font-size: 40px; }
 
-.wfl-nav-row { display: flex; align-items: center; justify-content: space-between; padding-top: 16px; margin-top: auto; border-top: 2px solid #EAF8F6; flex-shrink: 0; }
+.wfl-nav-row { display: flex; align-items: center; justify-content: space-between; padding: 16px 48px 24px; margin-top: auto; border-top: 2px solid #EAF8F6; flex-shrink: 0; }
 .wfl-nav-btn {
   font-family: 'Grandstander', cursive;
   font-weight: 700;

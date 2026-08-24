@@ -132,6 +132,18 @@ function WrapupSlide({ lesson }) {
   );
 }
 
+function stageLabel(slideType) {
+  if (slideType === "cover") return "Cover";
+  if (slideType === "warmup") return "Warm-up";
+  if (slideType.startsWith("teach")) return "Teach";
+  if (slideType === "predict") return "Think About It";
+  if (slideType === "compare") return "Compare";
+  if (slideType.startsWith("guided")) return "Guided Practice";
+  if (slideType === "practice") return "Practice";
+  if (slideType === "wrapup") return "Wrap-up";
+  return "";
+}
+
 function renderSlide(slideType, lesson) {
   if (slideType === "cover") return <CoverSlide lesson={lesson} />;
   if (slideType === "warmup") return <WarmupSlide lesson={lesson} />;
@@ -168,13 +180,12 @@ export default function ComparativesLesson() {
   return (
     <div className="csl-shell">
       <style>{CSS}</style>
-      <header className="csl-topbar">
-        <span className="csl-brand"><img src="/logo-sentivo.png" alt="" className="csl-brand-logo" />entivo</span>
-        <span className="csl-topbar-title">Lesson {lesson.number} · {lesson.title}</span>
-      </header>
-
       <div className="csl-stage">
         <div className="csl-deck">
+          <div className="csl-deck-header">
+            <span className="csl-brand"><img src="/logo-sentivo.png" alt="" className="csl-brand-logo" />entivo</span>
+            <span className="csl-stage-label">{stageLabel(slideType)}</span>
+          </div>
           <div className="csl-deck-body" key={slideIdx}>
             {renderSlide(slideType, lesson)}
           </div>
@@ -220,15 +231,6 @@ const CSS = `
 }
 .csl-shell * { box-sizing: border-box; }
 
-.csl-topbar {
-  width: 100%;
-  max-width: 1120px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 14px 24px 0;
-  flex-shrink: 0;
-}
 .csl-brand {
   display: flex;
   align-items: center;
@@ -240,13 +242,6 @@ const CSS = `
   color: #2B2A4A;
 }
 .csl-brand-logo { height: 24px; width: auto; display: block; margin-right: -4px; }
-.csl-topbar-title {
-  font-family: 'Comic Neue', cursive, sans-serif;
-  font-weight: 700;
-  font-size: 12px;
-  letter-spacing: 0.5px;
-  color: #8A1B72;
-}
 
 .csl-stage {
   flex: 1;
@@ -275,6 +270,28 @@ const CSS = `
   padding: 20px 56px;
   box-shadow: 9px 9px 0 #1A1A1A;
   min-height: 0;
+}
+
+.csl-deck-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin: -20px -56px 16px;
+  padding: 14px 56px;
+  background: #FBF0F8;
+  border-bottom: 1px solid #F3D6EC;
+  flex-shrink: 0;
+}
+.csl-stage-label {
+  font-family: 'Comic Neue', cursive, sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #8A1B72;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .csl-deck-body {

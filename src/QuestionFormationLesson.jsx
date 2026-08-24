@@ -132,6 +132,18 @@ function WrapupSlide({ lesson }) {
   );
 }
 
+function stageLabel(slideType) {
+  if (slideType === "cover") return "Cover";
+  if (slideType === "warmup") return "Warm-up";
+  if (slideType === "predict") return "Think About It";
+  if (slideType === "compare") return "Compare";
+  if (slideType.startsWith("teach")) return "Teach";
+  if (slideType.startsWith("guided")) return "Guided Practice";
+  if (slideType === "practice") return "Practice";
+  if (slideType === "wrapup") return "Wrap-up";
+  return "";
+}
+
 function renderSlide(slideType, lesson) {
   if (slideType === "cover") return <CoverSlide lesson={lesson} />;
   if (slideType === "warmup") return <WarmupSlide lesson={lesson} />;
@@ -168,13 +180,12 @@ export default function QuestionFormationLesson() {
   return (
     <div className="qfl-shell">
       <style>{CSS}</style>
-      <header className="qfl-topbar">
-        <span className="qfl-brand"><img src="/logo-sentivo.png" alt="" className="qfl-brand-logo" />entivo</span>
-        <span className="qfl-topbar-title">Lesson {lesson.number} · {lesson.title}</span>
-      </header>
-
       <div className="qfl-stage">
         <div className="qfl-deck">
+          <div className="qfl-deck-header">
+            <span className="qfl-brand"><img src="/logo-sentivo.png" alt="" className="qfl-brand-logo" />entivo</span>
+            <span className="qfl-stage-label">{stageLabel(slideType)}</span>
+          </div>
           <div className="qfl-deck-body" key={slideIdx}>
             {renderSlide(slideType, lesson)}
           </div>
@@ -220,15 +231,6 @@ const CSS = `
 }
 .qfl-shell * { box-sizing: border-box; }
 
-.qfl-topbar {
-  width: 100%;
-  max-width: 1120px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 14px 24px 0;
-  flex-shrink: 0;
-}
 .qfl-brand {
   display: flex;
   align-items: center;
@@ -240,13 +242,6 @@ const CSS = `
   color: #2B2A4A;
 }
 .qfl-brand-logo { height: 24px; width: auto; display: block; margin-right: -4px; }
-.qfl-topbar-title {
-  font-family: 'Comic Neue', cursive, sans-serif;
-  font-weight: 700;
-  font-size: 12px;
-  letter-spacing: 0.5px;
-  color: #0E5C63;
-}
 
 .qfl-stage {
   flex: 1;
@@ -275,6 +270,28 @@ const CSS = `
   padding: 20px 56px;
   box-shadow: 9px 9px 0 #1A1A1A;
   min-height: 0;
+}
+
+.qfl-deck-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin: -20px -56px 16px;
+  padding: 14px 56px;
+  background: #EAF7F7;
+  border-bottom: 1px solid #CFEFEF;
+  flex-shrink: 0;
+}
+.qfl-stage-label {
+  font-family: 'Comic Neue', cursive, sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #0E5C63;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .qfl-deck-body {

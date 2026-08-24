@@ -179,6 +179,20 @@ function renderSlide(slideType, lesson) {
   return null;
 }
 
+function stageLabel(slideType) {
+  if (slideType.startsWith("teach")) return "Teach";
+  if (slideType.startsWith("guided")) return "Guided Practice";
+  switch (slideType) {
+    case "cover": return "Cover";
+    case "warmup": return "Warm-up";
+    case "predict": return "Think About It";
+    case "compare": return "Compare";
+    case "practice": return "Practice";
+    case "wrapup": return "Wrap-up";
+    default: return "";
+  }
+}
+
 export default function TooEnoughLesson() {
   const [slideIdx, setSlideIdx] = useState(0);
   const lesson = LESSON;
@@ -190,13 +204,13 @@ export default function TooEnoughLesson() {
   return (
     <div className="tel-shell">
       <style>{CSS}</style>
-      <header className="tel-topbar">
-        <span className="tel-brand"><img src="/logo-sentivo.png" alt="" className="tel-brand-logo" />entivo</span>
-        <span className="tel-topbar-title">{lesson.title}</span>
-      </header>
 
       <div className="tel-stage">
         <div className="tel-deck">
+          <div className="tel-deck-header">
+            <span className="tel-brand"><img src="/logo-sentivo.png" alt="" className="tel-brand-logo" />entivo</span>
+            <span className="tel-stage-label">{stageLabel(slideType)}</span>
+          </div>
           <div className="tel-deck-body" key={slideIdx}>
             {renderSlide(slideType, lesson)}
           </div>
@@ -242,13 +256,15 @@ const CSS = `
 }
 .tel-shell * { box-sizing: border-box; }
 
-.tel-topbar {
-  width: 100%;
-  max-width: 1120px;
+.tel-deck-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 14px 24px 0;
+  gap: 16px;
+  margin: -20px -56px 18px;
+  padding: 14px 32px;
+  background: #F4F0FB;
+  border-bottom: 2px solid #E1D8F5;
   flex-shrink: 0;
 }
 .tel-brand {
@@ -262,12 +278,15 @@ const CSS = `
   color: #2B2A4A;
 }
 .tel-brand-logo { height: 24px; width: auto; display: block; margin-right: -4px; }
-.tel-topbar-title {
+.tel-stage-label {
   font-family: 'Comic Neue', cursive, sans-serif;
   font-weight: 700;
   font-size: 12px;
-  letter-spacing: 0.5px;
-  color: #453177;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #6247AA;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .tel-stage {
@@ -290,6 +309,7 @@ const CSS = `
   padding: 20px 56px;
   box-shadow: 9px 9px 0 #1A1A1A;
   min-height: 0;
+  overflow: hidden;
 }
 
 .tel-deck-body {

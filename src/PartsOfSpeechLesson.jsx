@@ -280,6 +280,21 @@ function ScoreSlide({ topic, lesson }) {
   );
 }
 
+function stageLabel(slideType) {
+  if (slideType === "cover") return "Cover";
+  if (slideType === "warmup") return "Warm-up";
+  if (slideType.startsWith("concept")) return "Teach";
+  if (slideType.startsWith("mistake")) return "Watch Out";
+  if (slideType === "predict") return "Think About It";
+  if (slideType === "compare") return "Compare";
+  if (slideType.startsWith("guided")) return "Guided Practice";
+  if (slideType === "independent") return "Independent Practice";
+  if (slideType === "wrapup") return "Wrap-up";
+  if (slideType.startsWith("part")) return `Part ${slideType.replace("part", "")}`;
+  if (slideType === "score") return "Score";
+  return "";
+}
+
 function renderSlide(slideType, topic, lesson) {
   if (slideType === "cover") return <CoverSlide topic={topic} lesson={lesson} />;
   if (slideType === "warmup") return <WarmupSlide lesson={lesson} />;
@@ -320,13 +335,12 @@ export default function PartsOfSpeechLesson() {
   return (
     <div className="posl-shell">
       <style>{CSS}</style>
-      <header className="posl-topbar">
-        <span className="posl-brand"><img src="/logo-sentivo.png" alt="" className="posl-brand-logo" />entivo</span>
-        <span className="posl-topbar-title">{lesson.code} · {lesson.title}</span>
-      </header>
-
       <div className="posl-stage">
         <div className="posl-deck">
+          <div className="posl-deck-header">
+            <span className="posl-brand"><img src="/logo-sentivo.png" alt="" className="posl-brand-logo" />entivo</span>
+            <span className="posl-stage-label">{stageLabel(slideType)}</span>
+          </div>
           <div className="posl-deck-body" key={slideIdx}>
             {renderSlide(slideType, topic, lesson)}
           </div>
@@ -372,15 +386,6 @@ const CSS = `
 }
 .posl-shell * { box-sizing: border-box; }
 
-.posl-topbar {
-  width: 100%;
-  max-width: 1080px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 14px 24px 0;
-  flex-shrink: 0;
-}
 .posl-brand {
   display: flex;
   align-items: center;
@@ -392,13 +397,6 @@ const CSS = `
   color: #2B2A4A;
 }
 .posl-brand-logo { height: 24px; width: auto; display: block; margin-right: -4px; }
-.posl-topbar-title {
-  font-family: 'Comic Neue', cursive, sans-serif;
-  font-weight: 700;
-  font-size: 12px;
-  letter-spacing: 0.5px;
-  color: #6B5B3D;
-}
 
 .posl-stage {
   flex: 1;
@@ -427,6 +425,29 @@ const CSS = `
   padding: 22px 52px;
   box-shadow: 9px 9px 0 #1A1A1A;
   min-height: 0;
+  overflow: hidden;
+}
+
+.posl-deck-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin: -22px -52px 16px;
+  padding: 14px 52px;
+  background: #FFF6E9;
+  border-bottom: 1px solid #E4D5B0;
+  flex-shrink: 0;
+}
+.posl-stage-label {
+  font-family: 'Comic Neue', cursive, sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #6B5B3D;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .posl-deck-body {

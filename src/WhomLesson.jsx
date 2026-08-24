@@ -179,6 +179,20 @@ function renderSlide(slideType, lesson) {
   return null;
 }
 
+function stageLabel(slideType) {
+  if (slideType.startsWith("teach")) return "Teach";
+  if (slideType.startsWith("guided")) return "Guided Practice";
+  switch (slideType) {
+    case "cover": return "Cover";
+    case "warmup": return "Warm-up";
+    case "predict": return "Think About It";
+    case "compare": return "Compare";
+    case "practice": return "Practice";
+    case "wrapup": return "Wrap-up";
+    default: return "";
+  }
+}
+
 export default function WhomLesson() {
   const [slideIdx, setSlideIdx] = useState(0);
   const lesson = LESSON;
@@ -190,13 +204,13 @@ export default function WhomLesson() {
   return (
     <div className="whml-shell">
       <style>{CSS}</style>
-      <header className="whml-topbar">
-        <span className="whml-brand"><img src="/logo-sentivo.png" alt="" className="whml-brand-logo" />entivo</span>
-        <span className="whml-topbar-title">{lesson.title}</span>
-      </header>
 
       <div className="whml-stage">
         <div className="whml-deck">
+          <div className="whml-deck-header">
+            <span className="whml-brand"><img src="/logo-sentivo.png" alt="" className="whml-brand-logo" />entivo</span>
+            <span className="whml-stage-label">{stageLabel(slideType)}</span>
+          </div>
           <div className="whml-deck-body" key={slideIdx}>
             {renderSlide(slideType, lesson)}
           </div>
@@ -242,13 +256,15 @@ const CSS = `
 }
 .whml-shell * { box-sizing: border-box; }
 
-.whml-topbar {
-  width: 100%;
-  max-width: 1120px;
+.whml-deck-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 14px 24px 0;
+  gap: 16px;
+  margin: -20px -56px 18px;
+  padding: 14px 32px;
+  background: #FCEEF2;
+  border-bottom: 2px solid #F5D3E0;
   flex-shrink: 0;
 }
 .whml-brand {
@@ -262,12 +278,15 @@ const CSS = `
   color: #2B2A4A;
 }
 .whml-brand-logo { height: 24px; width: auto; display: block; margin-right: -4px; }
-.whml-topbar-title {
+.whml-stage-label {
   font-family: 'Comic Neue', cursive, sans-serif;
   font-weight: 700;
   font-size: 12px;
-  letter-spacing: 0.5px;
-  color: #8A1A41;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #C2255C;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .whml-stage {
@@ -290,6 +309,7 @@ const CSS = `
   padding: 20px 56px;
   box-shadow: 9px 9px 0 #1A1A1A;
   min-height: 0;
+  overflow: hidden;
 }
 
 .whml-deck-body {

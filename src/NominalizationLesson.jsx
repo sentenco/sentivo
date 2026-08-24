@@ -179,6 +179,20 @@ function renderSlide(slideType, lesson) {
   return null;
 }
 
+function stageLabel(slideType) {
+  if (slideType.startsWith("teach")) return "Teach";
+  if (slideType.startsWith("guided")) return "Guided Practice";
+  switch (slideType) {
+    case "cover": return "Cover";
+    case "warmup": return "Warm-up";
+    case "predict": return "Think About It";
+    case "compare": return "Compare";
+    case "practice": return "Practice";
+    case "wrapup": return "Wrap-up";
+    default: return "";
+  }
+}
+
 export default function NominalizationLesson() {
   const [slideIdx, setSlideIdx] = useState(0);
   const lesson = LESSON;
@@ -190,13 +204,13 @@ export default function NominalizationLesson() {
   return (
     <div className="noml-shell">
       <style>{CSS}</style>
-      <header className="noml-topbar">
-        <span className="noml-brand"><img src="/logo-sentivo.png" alt="" className="noml-brand-logo" />entivo</span>
-        <span className="noml-topbar-title">{lesson.title}</span>
-      </header>
 
       <div className="noml-stage">
         <div className="noml-deck">
+          <div className="noml-deck-header">
+            <span className="noml-brand"><img src="/logo-sentivo.png" alt="" className="noml-brand-logo" />entivo</span>
+            <span className="noml-stage-label">{stageLabel(slideType)}</span>
+          </div>
           <div className="noml-deck-body" key={slideIdx}>
             {renderSlide(slideType, lesson)}
           </div>
@@ -242,13 +256,15 @@ const CSS = `
 }
 .noml-shell * { box-sizing: border-box; }
 
-.noml-topbar {
-  width: 100%;
-  max-width: 1120px;
+.noml-deck-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 14px 24px 0;
+  gap: 16px;
+  margin: -20px -56px 18px;
+  padding: 14px 32px;
+  background: #E9F5F5;
+  border-bottom: 2px solid #CDE7E8;
   flex-shrink: 0;
 }
 .noml-brand {
@@ -262,12 +278,15 @@ const CSS = `
   color: #2B2A4A;
 }
 .noml-brand-logo { height: 24px; width: auto; display: block; margin-right: -4px; }
-.noml-topbar-title {
+.noml-stage-label {
   font-family: 'Comic Neue', cursive, sans-serif;
   font-weight: 700;
   font-size: 12px;
-  letter-spacing: 0.5px;
-  color: #0A5B62;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #0E7C86;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .noml-stage {
@@ -290,6 +309,7 @@ const CSS = `
   padding: 20px 56px;
   box-shadow: 9px 9px 0 #1A1A1A;
   min-height: 0;
+  overflow: hidden;
 }
 
 .noml-deck-body {

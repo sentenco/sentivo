@@ -132,6 +132,18 @@ function WrapupSlide({ lesson }) {
   );
 }
 
+function stageLabel(slideType) {
+  if (slideType === "cover") return "Cover";
+  if (slideType === "warmup") return "Warm-up";
+  if (slideType === "predict") return "Think About It";
+  if (slideType === "compare") return "Compare";
+  if (slideType.startsWith("teach")) return "Teach";
+  if (slideType.startsWith("guided")) return "Guided Practice";
+  if (slideType === "practice") return "Practice";
+  if (slideType === "wrapup") return "Wrap-up";
+  return "";
+}
+
 function renderSlide(slideType, lesson) {
   if (slideType === "cover") return <CoverSlide lesson={lesson} />;
   if (slideType === "warmup") return <WarmupSlide lesson={lesson} />;
@@ -168,13 +180,12 @@ export default function GerundsInfinitivesLesson() {
   return (
     <div className="gil-shell">
       <style>{CSS}</style>
-      <header className="gil-topbar">
-        <span className="gil-brand"><img src="/logo-sentivo.png" alt="" className="gil-brand-logo" />entivo</span>
-        <span className="gil-topbar-title">Lesson {lesson.number} · {lesson.title}</span>
-      </header>
-
       <div className="gil-stage">
         <div className="gil-deck">
+          <div className="gil-deck-header">
+            <span className="gil-brand"><img src="/logo-sentivo.png" alt="" className="gil-brand-logo" />entivo</span>
+            <span className="gil-stage-label">{stageLabel(slideType)}</span>
+          </div>
           <div className="gil-deck-body" key={slideIdx}>
             {renderSlide(slideType, lesson)}
           </div>
@@ -220,15 +231,6 @@ const CSS = `
 }
 .gil-shell * { box-sizing: border-box; }
 
-.gil-topbar {
-  width: 100%;
-  max-width: 1120px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 14px 24px 0;
-  flex-shrink: 0;
-}
 .gil-brand {
   display: flex;
   align-items: center;
@@ -240,13 +242,6 @@ const CSS = `
   color: #2B2A4A;
 }
 .gil-brand-logo { height: 24px; width: auto; display: block; margin-right: -4px; }
-.gil-topbar-title {
-  font-family: 'Comic Neue', cursive, sans-serif;
-  font-weight: 700;
-  font-size: 12px;
-  letter-spacing: 0.5px;
-  color: #6E5A1F;
-}
 
 .gil-stage {
   flex: 1;
@@ -275,6 +270,28 @@ const CSS = `
   padding: 20px 56px;
   box-shadow: 9px 9px 0 #1A1A1A;
   min-height: 0;
+}
+
+.gil-deck-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin: -20px -56px 16px;
+  padding: 14px 56px;
+  background: #FBF7EA;
+  border-bottom: 1px solid #EFE3BE;
+  flex-shrink: 0;
+}
+.gil-stage-label {
+  font-family: 'Comic Neue', cursive, sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #6E5A1F;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .gil-deck-body {

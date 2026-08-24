@@ -179,6 +179,20 @@ function renderSlide(slideType, lesson) {
   return null;
 }
 
+function stageLabel(slideType) {
+  if (slideType.startsWith("teach")) return "Teach";
+  if (slideType.startsWith("guided")) return "Guided Practice";
+  switch (slideType) {
+    case "cover": return "Cover";
+    case "warmup": return "Warm-up";
+    case "predict": return "Think About It";
+    case "compare": return "Compare";
+    case "practice": return "Practice";
+    case "wrapup": return "Wrap-up";
+    default: return "";
+  }
+}
+
 export default function MandativeSubjunctiveLesson() {
   const [slideIdx, setSlideIdx] = useState(0);
   const lesson = LESSON;
@@ -190,13 +204,13 @@ export default function MandativeSubjunctiveLesson() {
   return (
     <div className="mdsl-shell">
       <style>{CSS}</style>
-      <header className="mdsl-topbar">
-        <span className="mdsl-brand"><img src="/logo-sentivo.png" alt="" className="mdsl-brand-logo" />entivo</span>
-        <span className="mdsl-topbar-title">{lesson.title}</span>
-      </header>
 
       <div className="mdsl-stage">
         <div className="mdsl-deck">
+          <div className="mdsl-deck-header">
+            <span className="mdsl-brand"><img src="/logo-sentivo.png" alt="" className="mdsl-brand-logo" />entivo</span>
+            <span className="mdsl-stage-label">{stageLabel(slideType)}</span>
+          </div>
           <div className="mdsl-deck-body" key={slideIdx}>
             {renderSlide(slideType, lesson)}
           </div>
@@ -242,13 +256,15 @@ const CSS = `
 }
 .mdsl-shell * { box-sizing: border-box; }
 
-.mdsl-topbar {
-  width: 100%;
-  max-width: 1120px;
+.mdsl-deck-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 14px 24px 0;
+  gap: 16px;
+  margin: -20px -56px 18px;
+  padding: 14px 32px;
+  background: #EAF2FA;
+  border-bottom: 2px solid #D0E2F2;
   flex-shrink: 0;
 }
 .mdsl-brand {
@@ -262,12 +278,15 @@ const CSS = `
   color: #2B2A4A;
 }
 .mdsl-brand-logo { height: 24px; width: auto; display: block; margin-right: -4px; }
-.mdsl-topbar-title {
+.mdsl-stage-label {
   font-family: 'Comic Neue', cursive, sans-serif;
   font-weight: 700;
   font-size: 12px;
-  letter-spacing: 0.5px;
-  color: #275C8C;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #3E7CB8;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .mdsl-stage {
@@ -290,6 +309,7 @@ const CSS = `
   padding: 20px 56px;
   box-shadow: 9px 9px 0 #1A1A1A;
   min-height: 0;
+  overflow: hidden;
 }
 
 .mdsl-deck-body {

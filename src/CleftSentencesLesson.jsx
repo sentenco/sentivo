@@ -179,6 +179,21 @@ function renderSlide(slideType, lesson) {
   return null;
 }
 
+const STAGE_LABELS = {
+  cover: "Cover",
+  warmup: "Warm-up",
+  predict: "Think About It",
+  compare: "Compare",
+  practice: "Practice",
+  wrapup: "Wrap-up",
+};
+
+function stageLabel(slideType) {
+  if (slideType.startsWith("teach")) return "Teach";
+  if (slideType.startsWith("guided")) return "Guided Practice";
+  return STAGE_LABELS[slideType] || "";
+}
+
 export default function CleftSentencesLesson() {
   const [slideIdx, setSlideIdx] = useState(0);
   const lesson = LESSON;
@@ -190,13 +205,12 @@ export default function CleftSentencesLesson() {
   return (
     <div className="cflt-shell">
       <style>{CSS}</style>
-      <header className="cflt-topbar">
-        <span className="cflt-brand"><img src="/logo-sentivo.png" alt="" className="cflt-brand-logo" />entivo</span>
-        <span className="cflt-topbar-title">{lesson.title}</span>
-      </header>
-
       <div className="cflt-stage">
         <div className="cflt-deck">
+          <div className="cflt-deck-header">
+            <span className="cflt-brand"><img src="/logo-sentivo.png" alt="" className="cflt-brand-logo" />entivo</span>
+            <span className="cflt-stage-label">{stageLabel(slideType)}</span>
+          </div>
           <div className="cflt-deck-body" key={slideIdx}>
             {renderSlide(slideType, lesson)}
           </div>
@@ -242,13 +256,14 @@ const CSS = `
 }
 .cflt-shell * { box-sizing: border-box; }
 
-.cflt-topbar {
-  width: 100%;
-  max-width: 1120px;
+.cflt-deck-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 14px 24px 0;
+  gap: 16px;
+  padding: 14px 56px;
+  background: #EFF7F0;
+  border-bottom: 3px dashed #D6E8D9;
   flex-shrink: 0;
 }
 .cflt-brand {
@@ -262,12 +277,15 @@ const CSS = `
   color: #2B2A4A;
 }
 .cflt-brand-logo { height: 24px; width: auto; display: block; margin-right: -4px; }
-.cflt-topbar-title {
+.cflt-stage-label {
   font-family: 'Comic Neue', cursive, sans-serif;
   font-weight: 700;
   font-size: 12px;
-  letter-spacing: 0.5px;
-  color: #2E6E3D;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #8FBB98;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .cflt-stage {
@@ -287,9 +305,9 @@ const CSS = `
   background: #FFFFFF;
   border: 4px solid #1A1A1A;
   border-radius: 18px;
-  padding: 20px 56px;
   box-shadow: 9px 9px 0 #1A1A1A;
   min-height: 0;
+  overflow: hidden;
 }
 
 .cflt-deck-body {
@@ -302,7 +320,7 @@ const CSS = `
   min-height: 0;
   overflow-y: auto;
   gap: 20px;
-  padding: 8px 0;
+  padding: 20px 56px;
 }
 
 .cflt-slide { display: flex; flex-direction: column; align-items: center; gap: 16px; width: 100%; }
@@ -500,7 +518,7 @@ const CSS = `
   margin: 0;
 }
 
-.cflt-nav-row { display: flex; align-items: center; justify-content: space-between; padding-top: 14px; border-top: 3px dashed #D6E8D9; flex-shrink: 0; }
+.cflt-nav-row { display: flex; align-items: center; justify-content: space-between; padding: 14px 56px 20px; border-top: 3px dashed #D6E8D9; flex-shrink: 0; }
 .cflt-nav-btn {
   font-family: 'Comic Neue', cursive, sans-serif;
   font-weight: 700;

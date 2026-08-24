@@ -178,6 +178,20 @@ function renderSlide(slideType, lesson) {
   return null;
 }
 
+function stageLabel(slideType) {
+  if (slideType.startsWith("trap")) return "Teach";
+  if (slideType.startsWith("guided")) return "Guided Practice";
+  switch (slideType) {
+    case "cover": return "Cover";
+    case "warmup": return "Warm-up";
+    case "predict": return "Think About It";
+    case "compare": return "Compare";
+    case "practice": return "Practice";
+    case "wrapup": return "Wrap-up";
+    default: return "";
+  }
+}
+
 export default function SubjectVerbAgreementLesson() {
   const [slideIdx, setSlideIdx] = useState(0);
   const lesson = LESSON;
@@ -189,13 +203,13 @@ export default function SubjectVerbAgreementLesson() {
   return (
     <div className="sval-shell">
       <style>{CSS}</style>
-      <header className="sval-topbar">
-        <span className="sval-brand"><img src="/logo-sentivo.png" alt="" className="sval-brand-logo" />entivo</span>
-        <span className="sval-topbar-title">{lesson.title}</span>
-      </header>
 
       <div className="sval-stage">
         <div className="sval-deck">
+          <div className="sval-deck-header">
+            <span className="sval-brand"><img src="/logo-sentivo.png" alt="" className="sval-brand-logo" />entivo</span>
+            <span className="sval-stage-label">{stageLabel(slideType)}</span>
+          </div>
           <div className="sval-deck-body" key={slideIdx}>
             {renderSlide(slideType, lesson)}
           </div>
@@ -241,13 +255,15 @@ const CSS = `
 }
 .sval-shell * { box-sizing: border-box; }
 
-.sval-topbar {
-  width: 100%;
-  max-width: 1120px;
+.sval-deck-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 14px 24px 0;
+  gap: 16px;
+  margin: -20px -56px 18px;
+  padding: 14px 32px;
+  background: #F7F2E4;
+  border-bottom: 2px solid #E8DFC5;
   flex-shrink: 0;
 }
 .sval-brand {
@@ -261,12 +277,15 @@ const CSS = `
   color: #2B2A4A;
 }
 .sval-brand-logo { height: 24px; width: auto; display: block; margin-right: -4px; }
-.sval-topbar-title {
+.sval-stage-label {
   font-family: 'Comic Neue', cursive, sans-serif;
   font-weight: 700;
   font-size: 12px;
-  letter-spacing: 0.5px;
-  color: #6E5A1F;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #96762B;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .sval-stage {
@@ -289,6 +308,7 @@ const CSS = `
   padding: 20px 56px;
   box-shadow: 9px 9px 0 #1A1A1A;
   min-height: 0;
+  overflow: hidden;
 }
 
 .sval-deck-body {

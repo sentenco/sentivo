@@ -258,6 +258,19 @@ function FeedbackSlide() {
   );
 }
 
+const STAGE_LABELS = {
+  cover: "Cover",
+  list: "Discussion",
+  wheel: "Wheel",
+  boardingpass: "Boarding Pass",
+  menu: "Menu",
+  feedback: "Feedback",
+};
+
+function stageLabel(slide) {
+  return STAGE_LABELS[slide.kind] || "Activity";
+}
+
 function renderSlide(slide, lesson) {
   switch (slide.kind) {
     case "cover": return <CoverSlide lesson={lesson} slide={slide} />;
@@ -299,6 +312,10 @@ export default function SparkAdults() {
 
       <div className="spa-stage">
         <div className="spa-deck">
+          <div className="spa-deck-header">
+            <span className="spa-brand"><img src="/logo-sentivo.png" alt="" className="spa-brand-logo" />entivo</span>
+            <span className="spa-stage-label">{stageLabel(slide)}</span>
+          </div>
           <div className="spa-deck-body" key={slideIdx}>
             {renderSlide(slide, lesson)}
           </div>
@@ -381,10 +398,42 @@ const CSS = `
   box-shadow: 0 24px 60px rgba(139,60,20,0.18);
   display: flex;
   flex-direction: column;
-  padding: 48px 64px;
+  overflow: hidden;
 }
 
-.spa-deck-body { flex: 1; min-height: 0; overflow-y: auto; display: flex; }
+.spa-deck-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 32px;
+  background: #FDF3DF;
+  border-bottom: 1px solid #EDD3A5;
+  flex-shrink: 0;
+}
+.spa-brand {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  font-family: 'Source Serif 4', serif;
+  font-weight: 700;
+  font-size: 17px;
+  color: #7A4A1F;
+}
+.spa-brand-logo { height: 22px; width: auto; display: block; margin-right: -4px; }
+
+.spa-stage-label {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #8B6A3F;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.spa-deck-body { flex: 1; min-height: 0; overflow-y: auto; display: flex; padding: 48px 64px; }
 
 .spa-slide { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 22px; width: 100%; margin: auto; }
 
@@ -644,7 +693,7 @@ const CSS = `
 }
 
 /* Nav */
-.spa-nav-row { display: flex; align-items: center; justify-content: space-between; padding-top: 20px; border-top: 1px solid #EDD3A5; flex-shrink: 0; }
+.spa-nav-row { display: flex; align-items: center; justify-content: space-between; padding: 20px 64px 48px; border-top: 1px solid #EDD3A5; flex-shrink: 0; }
 .spa-nav-btn {
   font-family: 'Inter', sans-serif;
   font-weight: 600;

@@ -179,6 +179,20 @@ function renderSlide(slideType, lesson) {
   return null;
 }
 
+function stageLabel(slideType) {
+  if (slideType.startsWith("teach")) return "Teach";
+  if (slideType.startsWith("guided")) return "Guided Practice";
+  switch (slideType) {
+    case "cover": return "Cover";
+    case "warmup": return "Warm-up";
+    case "predict": return "Think About It";
+    case "compare": return "Compare";
+    case "practice": return "Practice";
+    case "wrapup": return "Wrap-up";
+    default: return "";
+  }
+}
+
 export default function ReflexiveVerbsNoSelfLesson() {
   const [slideIdx, setSlideIdx] = useState(0);
   const lesson = LESSON;
@@ -190,13 +204,13 @@ export default function ReflexiveVerbsNoSelfLesson() {
   return (
     <div className="rvsl-shell">
       <style>{CSS}</style>
-      <header className="rvsl-topbar">
-        <span className="rvsl-brand"><img src="/logo-sentivo.png" alt="" className="rvsl-brand-logo" />entivo</span>
-        <span className="rvsl-topbar-title">{lesson.title}</span>
-      </header>
 
       <div className="rvsl-stage">
         <div className="rvsl-deck">
+          <div className="rvsl-deck-header">
+            <span className="rvsl-brand"><img src="/logo-sentivo.png" alt="" className="rvsl-brand-logo" />entivo</span>
+            <span className="rvsl-stage-label">{stageLabel(slideType)}</span>
+          </div>
           <div className="rvsl-deck-body" key={slideIdx}>
             {renderSlide(slideType, lesson)}
           </div>
@@ -242,13 +256,15 @@ const CSS = `
 }
 .rvsl-shell * { box-sizing: border-box; }
 
-.rvsl-topbar {
-  width: 100%;
-  max-width: 1120px;
+.rvsl-deck-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 14px 24px 0;
+  gap: 16px;
+  margin: -20px -56px 18px;
+  padding: 14px 32px;
+  background: #F2F8E4;
+  border-bottom: 2px solid #DEEBC7;
   flex-shrink: 0;
 }
 .rvsl-brand {
@@ -262,12 +278,15 @@ const CSS = `
   color: #2B2A4A;
 }
 .rvsl-brand-logo { height: 24px; width: auto; display: block; margin-right: -4px; }
-.rvsl-topbar-title {
+.rvsl-stage-label {
   font-family: 'Comic Neue', cursive, sans-serif;
   font-weight: 700;
   font-size: 12px;
-  letter-spacing: 0.5px;
-  color: #4E7414;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #6B9E1E;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .rvsl-stage {
@@ -290,6 +309,7 @@ const CSS = `
   padding: 20px 56px;
   box-shadow: 9px 9px 0 #1A1A1A;
   min-height: 0;
+  overflow: hidden;
 }
 
 .rvsl-deck-body {

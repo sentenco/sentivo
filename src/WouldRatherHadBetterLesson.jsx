@@ -179,6 +179,20 @@ function renderSlide(slideType, lesson) {
   return null;
 }
 
+function stageLabel(slideType) {
+  if (slideType.startsWith("teach")) return "Teach";
+  if (slideType.startsWith("guided")) return "Guided Practice";
+  switch (slideType) {
+    case "cover": return "Cover";
+    case "warmup": return "Warm-up";
+    case "predict": return "Think About It";
+    case "compare": return "Compare";
+    case "practice": return "Practice";
+    case "wrapup": return "Wrap-up";
+    default: return "";
+  }
+}
+
 export default function WouldRatherHadBetterLesson() {
   const [slideIdx, setSlideIdx] = useState(0);
   const lesson = LESSON;
@@ -190,13 +204,13 @@ export default function WouldRatherHadBetterLesson() {
   return (
     <div className="wrhl-shell">
       <style>{CSS}</style>
-      <header className="wrhl-topbar">
-        <span className="wrhl-brand"><img src="/logo-sentivo.png" alt="" className="wrhl-brand-logo" />entivo</span>
-        <span className="wrhl-topbar-title">{lesson.title}</span>
-      </header>
 
       <div className="wrhl-stage">
         <div className="wrhl-deck">
+          <div className="wrhl-deck-header">
+            <span className="wrhl-brand"><img src="/logo-sentivo.png" alt="" className="wrhl-brand-logo" />entivo</span>
+            <span className="wrhl-stage-label">{stageLabel(slideType)}</span>
+          </div>
           <div className="wrhl-deck-body" key={slideIdx}>
             {renderSlide(slideType, lesson)}
           </div>
@@ -242,13 +256,15 @@ const CSS = `
 }
 .wrhl-shell * { box-sizing: border-box; }
 
-.wrhl-topbar {
-  width: 100%;
-  max-width: 1120px;
+.wrhl-deck-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 14px 24px 0;
+  gap: 16px;
+  margin: -20px -56px 18px;
+  padding: 14px 32px;
+  background: #FCF5E6;
+  border-bottom: 2px solid #F3E3C0;
   flex-shrink: 0;
 }
 .wrhl-brand {
@@ -262,12 +278,15 @@ const CSS = `
   color: #2B2A4A;
 }
 .wrhl-brand-logo { height: 24px; width: auto; display: block; margin-right: -4px; }
-.wrhl-topbar-title {
+.wrhl-stage-label {
   font-family: 'Comic Neue', cursive, sans-serif;
   font-weight: 700;
   font-size: 12px;
-  letter-spacing: 0.5px;
-  color: #96631C;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #E3A73C;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .wrhl-stage {
@@ -290,6 +309,7 @@ const CSS = `
   padding: 20px 56px;
   box-shadow: 9px 9px 0 #1A1A1A;
   min-height: 0;
+  overflow: hidden;
 }
 
 .wrhl-deck-body {

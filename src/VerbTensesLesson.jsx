@@ -257,6 +257,21 @@ function ScoreSlide({ tense, lesson }) {
   );
 }
 
+function stageLabel(slideType) {
+  if (slideType === "cover") return "Cover";
+  if (slideType === "warmup") return "Warm-up";
+  if (slideType === "definition") return "Definition";
+  if (slideType === "timeline") return "Timeline";
+  if (slideType.startsWith("usage")) return "Usage";
+  if (slideType === "form") return "Form";
+  if (slideType === "signals") return "Signal Words";
+  if (slideType === "ccq") return "Check Questions";
+  if (slideType === "recap") return "Recap";
+  if (slideType.startsWith("part")) return `Part ${slideType.replace("part", "")}`;
+  if (slideType === "score") return "Score";
+  return "";
+}
+
 function renderSlide(slideType, tense, lesson) {
   if (slideType === "cover") return <CoverSlide tense={tense} lesson={lesson} />;
   if (slideType === "warmup") return <WarmupSlide lesson={lesson} />;
@@ -298,13 +313,12 @@ export default function VerbTensesLesson() {
   return (
     <div className="vtl-shell">
       <style>{CSS}</style>
-      <header className="vtl-topbar">
-        <span className="vtl-brand"><img src="/logo-sentivo.png" alt="" className="vtl-brand-logo" />entivo</span>
-        <span className="vtl-topbar-title">{lesson.code} · {lesson.title}</span>
-      </header>
-
       <div className="vtl-stage">
         <div className="vtl-deck" style={{ "--unit-accent": accent }}>
+          <div className="vtl-deck-header">
+            <span className="vtl-brand"><img src="/logo-sentivo.png" alt="" className="vtl-brand-logo" />entivo</span>
+            <span className="vtl-stage-label">{stageLabel(slideType)}</span>
+          </div>
           <div className="vtl-deck-body" key={slideIdx}>
             {renderSlide(slideType, tense, lesson)}
           </div>
@@ -350,15 +364,6 @@ const CSS = `
 }
 .vtl-shell * { box-sizing: border-box; }
 
-.vtl-topbar {
-  width: 100%;
-  max-width: 1120px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 14px 24px 0;
-  flex-shrink: 0;
-}
 .vtl-brand {
   display: flex;
   align-items: center;
@@ -370,13 +375,6 @@ const CSS = `
   color: #2B2A4A;
 }
 .vtl-brand-logo { height: 24px; width: auto; display: block; margin-right: -4px; }
-.vtl-topbar-title {
-  font-family: 'Comic Neue', cursive, sans-serif;
-  font-weight: 700;
-  font-size: 12px;
-  letter-spacing: 0.5px;
-  color: #6B5B3D;
-}
 
 .vtl-stage {
   flex: 1;
@@ -405,6 +403,28 @@ const CSS = `
   padding: 22px 52px;
   box-shadow: 9px 9px 0 #1A1A1A;
   min-height: 0;
+}
+
+.vtl-deck-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin: -22px -52px 16px;
+  padding: 14px 52px;
+  background: #FFF6E9;
+  border-bottom: 1px solid #E4D5B0;
+  flex-shrink: 0;
+}
+.vtl-stage-label {
+  font-family: 'Comic Neue', cursive, sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #6B5B3D;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .vtl-deck-body {

@@ -179,6 +179,21 @@ function renderSlide(slideType, lesson) {
   return null;
 }
 
+const STAGE_LABELS = {
+  cover: "Cover",
+  warmup: "Warm-up",
+  predict: "Think About It",
+  compare: "Compare",
+  practice: "Practice",
+  wrapup: "Wrap-up",
+};
+
+function stageLabel(slideType) {
+  if (slideType.startsWith("teach")) return "Teach";
+  if (slideType.startsWith("guided")) return "Guided Practice";
+  return STAGE_LABELS[slideType] || "";
+}
+
 export default function GetPassiveBePassiveLesson() {
   const [slideIdx, setSlideIdx] = useState(0);
   const lesson = LESSON;
@@ -190,13 +205,12 @@ export default function GetPassiveBePassiveLesson() {
   return (
     <div className="gpl-shell">
       <style>{CSS}</style>
-      <header className="gpl-topbar">
-        <span className="gpl-brand"><img src="/logo-sentivo.png" alt="" className="gpl-brand-logo" />entivo</span>
-        <span className="gpl-topbar-title">{lesson.title}</span>
-      </header>
-
       <div className="gpl-stage">
         <div className="gpl-deck">
+          <div className="gpl-deck-header">
+            <span className="gpl-brand"><img src="/logo-sentivo.png" alt="" className="gpl-brand-logo" />entivo</span>
+            <span className="gpl-stage-label">{stageLabel(slideType)}</span>
+          </div>
           <div className="gpl-deck-body" key={slideIdx}>
             {renderSlide(slideType, lesson)}
           </div>
@@ -242,13 +256,14 @@ const CSS = `
 }
 .gpl-shell * { box-sizing: border-box; }
 
-.gpl-topbar {
-  width: 100%;
-  max-width: 1120px;
+.gpl-deck-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 14px 24px 0;
+  gap: 16px;
+  padding: 14px 56px;
+  background: #FCF5E6;
+  border-bottom: 3px dashed #F3E3C0;
   flex-shrink: 0;
 }
 .gpl-brand {
@@ -262,12 +277,15 @@ const CSS = `
   color: #2B2A4A;
 }
 .gpl-brand-logo { height: 24px; width: auto; display: block; margin-right: -4px; }
-.gpl-topbar-title {
+.gpl-stage-label {
   font-family: 'Comic Neue', cursive, sans-serif;
   font-weight: 700;
   font-size: 12px;
-  letter-spacing: 0.5px;
-  color: #96631C;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #C9A15E;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .gpl-stage {
@@ -287,9 +305,9 @@ const CSS = `
   background: #FFFFFF;
   border: 4px solid #1A1A1A;
   border-radius: 18px;
-  padding: 20px 56px;
   box-shadow: 9px 9px 0 #1A1A1A;
   min-height: 0;
+  overflow: hidden;
 }
 
 .gpl-deck-body {
@@ -302,7 +320,7 @@ const CSS = `
   min-height: 0;
   overflow-y: auto;
   gap: 20px;
-  padding: 8px 0;
+  padding: 20px 56px;
 }
 
 .gpl-slide { display: flex; flex-direction: column; align-items: center; gap: 16px; width: 100%; }
@@ -500,7 +518,7 @@ const CSS = `
   margin: 0;
 }
 
-.gpl-nav-row { display: flex; align-items: center; justify-content: space-between; padding-top: 14px; border-top: 3px dashed #F3E3C0; flex-shrink: 0; }
+.gpl-nav-row { display: flex; align-items: center; justify-content: space-between; padding: 14px 56px 20px; border-top: 3px dashed #F3E3C0; flex-shrink: 0; }
 .gpl-nav-btn {
   font-family: 'Comic Neue', cursive, sans-serif;
   font-weight: 700;

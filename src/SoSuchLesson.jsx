@@ -179,6 +179,20 @@ function renderSlide(slideType, lesson) {
   return null;
 }
 
+function stageLabel(slideType) {
+  if (slideType.startsWith("teach")) return "Teach";
+  if (slideType.startsWith("guided")) return "Guided Practice";
+  switch (slideType) {
+    case "cover": return "Cover";
+    case "warmup": return "Warm-up";
+    case "predict": return "Think About It";
+    case "compare": return "Compare";
+    case "practice": return "Practice";
+    case "wrapup": return "Wrap-up";
+    default: return "";
+  }
+}
+
 export default function SoSuchLesson() {
   const [slideIdx, setSlideIdx] = useState(0);
   const lesson = LESSON;
@@ -190,13 +204,13 @@ export default function SoSuchLesson() {
   return (
     <div className="ssl-shell">
       <style>{CSS}</style>
-      <header className="ssl-topbar">
-        <span className="ssl-brand"><img src="/logo-sentivo.png" alt="" className="ssl-brand-logo" />entivo</span>
-        <span className="ssl-topbar-title">{lesson.title}</span>
-      </header>
 
       <div className="ssl-stage">
         <div className="ssl-deck">
+          <div className="ssl-deck-header">
+            <span className="ssl-brand"><img src="/logo-sentivo.png" alt="" className="ssl-brand-logo" />entivo</span>
+            <span className="ssl-stage-label">{stageLabel(slideType)}</span>
+          </div>
           <div className="ssl-deck-body" key={slideIdx}>
             {renderSlide(slideType, lesson)}
           </div>
@@ -242,13 +256,15 @@ const CSS = `
 }
 .ssl-shell * { box-sizing: border-box; }
 
-.ssl-topbar {
-  width: 100%;
-  max-width: 1120px;
+.ssl-deck-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 14px 24px 0;
+  gap: 16px;
+  margin: -20px -56px 18px;
+  padding: 14px 32px;
+  background: #F5F9E9;
+  border-bottom: 2px solid #E4EFCB;
   flex-shrink: 0;
 }
 .ssl-brand {
@@ -262,12 +278,15 @@ const CSS = `
   color: #2B2A4A;
 }
 .ssl-brand-logo { height: 24px; width: auto; display: block; margin-right: -4px; }
-.ssl-topbar-title {
+.ssl-stage-label {
   font-family: 'Comic Neue', cursive, sans-serif;
   font-weight: 700;
   font-size: 12px;
-  letter-spacing: 0.5px;
-  color: #4E6B13;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #6B9E1E;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .ssl-stage {
@@ -290,6 +309,7 @@ const CSS = `
   padding: 20px 56px;
   box-shadow: 9px 9px 0 #1A1A1A;
   min-height: 0;
+  overflow: hidden;
 }
 
 .ssl-deck-body {

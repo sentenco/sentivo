@@ -179,6 +179,21 @@ function renderSlide(slideType, lesson) {
   return null;
 }
 
+const STAGE_LABELS = {
+  cover: "Cover",
+  warmup: "Warm-up",
+  predict: "Think About It",
+  compare: "Compare",
+  practice: "Practice",
+  wrapup: "Wrap-up",
+};
+
+function stageLabel(slideType) {
+  if (slideType.startsWith("teach")) return "Teach";
+  if (slideType.startsWith("guided")) return "Guided Practice";
+  return STAGE_LABELS[slideType] || "";
+}
+
 export default function CountableUncountableTrapsLesson() {
   const [slideIdx, setSlideIdx] = useState(0);
   const lesson = LESSON;
@@ -190,13 +205,12 @@ export default function CountableUncountableTrapsLesson() {
   return (
     <div className="cntl-shell">
       <style>{CSS}</style>
-      <header className="cntl-topbar">
-        <span className="cntl-brand"><img src="/logo-sentivo.png" alt="" className="cntl-brand-logo" />entivo</span>
-        <span className="cntl-topbar-title">{lesson.title}</span>
-      </header>
-
       <div className="cntl-stage">
         <div className="cntl-deck">
+          <div className="cntl-deck-header">
+            <span className="cntl-brand"><img src="/logo-sentivo.png" alt="" className="cntl-brand-logo" />entivo</span>
+            <span className="cntl-stage-label">{stageLabel(slideType)}</span>
+          </div>
           <div className="cntl-deck-body" key={slideIdx}>
             {renderSlide(slideType, lesson)}
           </div>
@@ -242,13 +256,14 @@ const CSS = `
 }
 .cntl-shell * { box-sizing: border-box; }
 
-.cntl-topbar {
-  width: 100%;
-  max-width: 1120px;
+.cntl-deck-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 14px 24px 0;
+  gap: 16px;
+  padding: 14px 56px;
+  background: #EFF7F0;
+  border-bottom: 3px dashed #D6E8D9;
   flex-shrink: 0;
 }
 .cntl-brand {
@@ -262,12 +277,15 @@ const CSS = `
   color: #2B2A4A;
 }
 .cntl-brand-logo { height: 24px; width: auto; display: block; margin-right: -4px; }
-.cntl-topbar-title {
+.cntl-stage-label {
   font-family: 'Comic Neue', cursive, sans-serif;
   font-weight: 700;
   font-size: 12px;
-  letter-spacing: 0.5px;
-  color: #2E6E3D;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #8FBB98;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .cntl-stage {
@@ -287,9 +305,9 @@ const CSS = `
   background: #FFFFFF;
   border: 4px solid #1A1A1A;
   border-radius: 18px;
-  padding: 20px 56px;
   box-shadow: 9px 9px 0 #1A1A1A;
   min-height: 0;
+  overflow: hidden;
 }
 
 .cntl-deck-body {
@@ -302,7 +320,7 @@ const CSS = `
   min-height: 0;
   overflow-y: auto;
   gap: 20px;
-  padding: 8px 0;
+  padding: 20px 56px;
 }
 
 .cntl-slide { display: flex; flex-direction: column; align-items: center; gap: 16px; width: 100%; }
@@ -500,7 +518,7 @@ const CSS = `
   margin: 0;
 }
 
-.cntl-nav-row { display: flex; align-items: center; justify-content: space-between; padding-top: 14px; border-top: 3px dashed #D6E8D9; flex-shrink: 0; }
+.cntl-nav-row { display: flex; align-items: center; justify-content: space-between; padding: 14px 56px 20px; border-top: 3px dashed #D6E8D9; flex-shrink: 0; }
 .cntl-nav-btn {
   font-family: 'Comic Neue', cursive, sans-serif;
   font-weight: 700;

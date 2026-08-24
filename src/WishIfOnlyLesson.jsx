@@ -179,6 +179,20 @@ function renderSlide(slideType, lesson) {
   return null;
 }
 
+function stageLabel(slideType) {
+  if (slideType.startsWith("teach")) return "Teach";
+  if (slideType.startsWith("guided")) return "Guided Practice";
+  switch (slideType) {
+    case "cover": return "Cover";
+    case "warmup": return "Warm-up";
+    case "predict": return "Think About It";
+    case "compare": return "Compare";
+    case "practice": return "Practice";
+    case "wrapup": return "Wrap-up";
+    default: return "";
+  }
+}
+
 export default function WishIfOnlyLesson() {
   const [slideIdx, setSlideIdx] = useState(0);
   const lesson = LESSON;
@@ -190,13 +204,13 @@ export default function WishIfOnlyLesson() {
   return (
     <div className="wil-shell">
       <style>{CSS}</style>
-      <header className="wil-topbar">
-        <span className="wil-brand"><img src="/logo-sentivo.png" alt="" className="wil-brand-logo" />entivo</span>
-        <span className="wil-topbar-title">{lesson.title}</span>
-      </header>
 
       <div className="wil-stage">
         <div className="wil-deck">
+          <div className="wil-deck-header">
+            <span className="wil-brand"><img src="/logo-sentivo.png" alt="" className="wil-brand-logo" />entivo</span>
+            <span className="wil-stage-label">{stageLabel(slideType)}</span>
+          </div>
           <div className="wil-deck-body" key={slideIdx}>
             {renderSlide(slideType, lesson)}
           </div>
@@ -242,13 +256,15 @@ const CSS = `
 }
 .wil-shell * { box-sizing: border-box; }
 
-.wil-topbar {
-  width: 100%;
-  max-width: 1120px;
+.wil-deck-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 14px 24px 0;
+  gap: 16px;
+  margin: -20px -56px 18px;
+  padding: 14px 32px;
+  background: #ECF3FA;
+  border-bottom: 2px solid #D3E3F1;
   flex-shrink: 0;
 }
 .wil-brand {
@@ -262,12 +278,15 @@ const CSS = `
   color: #2B2A4A;
 }
 .wil-brand-logo { height: 24px; width: auto; display: block; margin-right: -4px; }
-.wil-topbar-title {
+.wil-stage-label {
   font-family: 'Comic Neue', cursive, sans-serif;
   font-weight: 700;
   font-size: 12px;
-  letter-spacing: 0.5px;
-  color: #275C8C;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #3E7CB8;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .wil-stage {
@@ -290,6 +309,7 @@ const CSS = `
   padding: 20px 56px;
   box-shadow: 9px 9px 0 #1A1A1A;
   min-height: 0;
+  overflow: hidden;
 }
 
 .wil-deck-body {

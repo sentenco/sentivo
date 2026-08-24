@@ -179,6 +179,20 @@ function renderSlide(slideType, lesson) {
   return null;
 }
 
+function stageLabel(slideType) {
+  if (slideType.startsWith("teach")) return "Teach";
+  if (slideType.startsWith("guided")) return "Guided Practice";
+  switch (slideType) {
+    case "cover": return "Cover";
+    case "warmup": return "Warm-up";
+    case "predict": return "Think About It";
+    case "compare": return "Compare";
+    case "practice": return "Practice";
+    case "wrapup": return "Wrap-up";
+    default: return "";
+  }
+}
+
 export default function PhrasalVerbsLesson() {
   const [slideIdx, setSlideIdx] = useState(0);
   const lesson = LESSON;
@@ -190,13 +204,13 @@ export default function PhrasalVerbsLesson() {
   return (
     <div className="phvl-shell">
       <style>{CSS}</style>
-      <header className="phvl-topbar">
-        <span className="phvl-brand"><img src="/logo-sentivo.png" alt="" className="phvl-brand-logo" />entivo</span>
-        <span className="phvl-topbar-title">{lesson.title}</span>
-      </header>
 
       <div className="phvl-stage">
         <div className="phvl-deck">
+          <div className="phvl-deck-header">
+            <span className="phvl-brand"><img src="/logo-sentivo.png" alt="" className="phvl-brand-logo" />entivo</span>
+            <span className="phvl-stage-label">{stageLabel(slideType)}</span>
+          </div>
           <div className="phvl-deck-body" key={slideIdx}>
             {renderSlide(slideType, lesson)}
           </div>
@@ -242,13 +256,15 @@ const CSS = `
 }
 .phvl-shell * { box-sizing: border-box; }
 
-.phvl-topbar {
-  width: 100%;
-  max-width: 1120px;
+.phvl-deck-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 14px 24px 0;
+  gap: 16px;
+  margin: -20px -56px 18px;
+  padding: 14px 32px;
+  background: #FBF0F8;
+  border-bottom: 2px solid #F3D6EC;
   flex-shrink: 0;
 }
 .phvl-brand {
@@ -262,12 +278,15 @@ const CSS = `
   color: #2B2A4A;
 }
 .phvl-brand-logo { height: 24px; width: auto; display: block; margin-right: -4px; }
-.phvl-topbar-title {
+.phvl-stage-label {
   font-family: 'Comic Neue', cursive, sans-serif;
   font-weight: 700;
   font-size: 12px;
-  letter-spacing: 0.5px;
-  color: #8A1B72;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #A6238C;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .phvl-stage {
@@ -290,6 +309,7 @@ const CSS = `
   padding: 20px 56px;
   box-shadow: 9px 9px 0 #1A1A1A;
   min-height: 0;
+  overflow: hidden;
 }
 
 .phvl-deck-body {

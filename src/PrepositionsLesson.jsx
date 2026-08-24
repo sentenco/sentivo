@@ -132,6 +132,18 @@ function WrapupSlide({ lesson }) {
   );
 }
 
+function stageLabel(slideType) {
+  if (slideType === "cover") return "Cover";
+  if (slideType === "warmup") return "Warm-up";
+  if (slideType === "predict") return "Think About It";
+  if (slideType === "compare") return "Compare";
+  if (slideType.startsWith("teach")) return "Teach";
+  if (slideType.startsWith("guided")) return "Guided Practice";
+  if (slideType === "practice") return "Practice";
+  if (slideType === "wrapup") return "Wrap-up";
+  return "";
+}
+
 function renderSlide(slideType, lesson) {
   if (slideType === "cover") return <CoverSlide lesson={lesson} />;
   if (slideType === "warmup") return <WarmupSlide lesson={lesson} />;
@@ -168,13 +180,12 @@ export default function PrepositionsLesson() {
   return (
     <div className="prl-shell">
       <style>{CSS}</style>
-      <header className="prl-topbar">
-        <span className="prl-brand"><img src="/logo-sentivo.png" alt="" className="prl-brand-logo" />entivo</span>
-        <span className="prl-topbar-title">Lesson {lesson.number} · {lesson.title}</span>
-      </header>
-
       <div className="prl-stage">
         <div className="prl-deck">
+          <div className="prl-deck-header">
+            <span className="prl-brand"><img src="/logo-sentivo.png" alt="" className="prl-brand-logo" />entivo</span>
+            <span className="prl-stage-label">{stageLabel(slideType)}</span>
+          </div>
           <div className="prl-deck-body" key={slideIdx}>
             {renderSlide(slideType, lesson)}
           </div>
@@ -220,15 +231,6 @@ const CSS = `
 }
 .prl-shell * { box-sizing: border-box; }
 
-.prl-topbar {
-  width: 100%;
-  max-width: 1120px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 14px 24px 0;
-  flex-shrink: 0;
-}
 .prl-brand {
   display: flex;
   align-items: center;
@@ -240,13 +242,6 @@ const CSS = `
   color: #2B2A4A;
 }
 .prl-brand-logo { height: 24px; width: auto; display: block; margin-right: -4px; }
-.prl-topbar-title {
-  font-family: 'Comic Neue', cursive, sans-serif;
-  font-weight: 700;
-  font-size: 12px;
-  letter-spacing: 0.5px;
-  color: #7A2828;
-}
 
 .prl-stage {
   flex: 1;
@@ -275,6 +270,28 @@ const CSS = `
   padding: 20px 56px;
   box-shadow: 9px 9px 0 #1A1A1A;
   min-height: 0;
+}
+
+.prl-deck-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin: -20px -56px 16px;
+  padding: 14px 56px;
+  background: #FBEEEE;
+  border-bottom: 1px solid #F3D9D9;
+  flex-shrink: 0;
+}
+.prl-stage-label {
+  font-family: 'Comic Neue', cursive, sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #7A2828;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .prl-deck-body {

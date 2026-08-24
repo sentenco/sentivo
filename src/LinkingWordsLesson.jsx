@@ -179,6 +179,20 @@ function renderSlide(slideType, lesson) {
   return null;
 }
 
+function stageLabel(slideType) {
+  if (slideType.startsWith("teach")) return "Teach";
+  if (slideType.startsWith("guided")) return "Guided Practice";
+  switch (slideType) {
+    case "cover": return "Cover";
+    case "warmup": return "Warm-up";
+    case "predict": return "Think About It";
+    case "compare": return "Compare";
+    case "practice": return "Practice";
+    case "wrapup": return "Wrap-up";
+    default: return "";
+  }
+}
+
 export default function LinkingWordsLesson() {
   const [slideIdx, setSlideIdx] = useState(0);
   const lesson = LESSON;
@@ -190,13 +204,13 @@ export default function LinkingWordsLesson() {
   return (
     <div className="lwl-shell">
       <style>{CSS}</style>
-      <header className="lwl-topbar">
-        <span className="lwl-brand"><img src="/logo-sentivo.png" alt="" className="lwl-brand-logo" />entivo</span>
-        <span className="lwl-topbar-title">{lesson.title}</span>
-      </header>
 
       <div className="lwl-stage">
         <div className="lwl-deck">
+          <div className="lwl-deck-header">
+            <span className="lwl-brand"><img src="/logo-sentivo.png" alt="" className="lwl-brand-logo" />entivo</span>
+            <span className="lwl-stage-label">{stageLabel(slideType)}</span>
+          </div>
           <div className="lwl-deck-body" key={slideIdx}>
             {renderSlide(slideType, lesson)}
           </div>
@@ -242,13 +256,15 @@ const CSS = `
 }
 .lwl-shell * { box-sizing: border-box; }
 
-.lwl-topbar {
-  width: 100%;
-  max-width: 1120px;
+.lwl-deck-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 14px 24px 0;
+  gap: 16px;
+  margin: -20px -56px 18px;
+  padding: 14px 32px;
+  background: #EAF7F7;
+  border-bottom: 2px solid #CFEFEF;
   flex-shrink: 0;
 }
 .lwl-brand {
@@ -262,12 +278,15 @@ const CSS = `
   color: #2B2A4A;
 }
 .lwl-brand-logo { height: 24px; width: auto; display: block; margin-right: -4px; }
-.lwl-topbar-title {
+.lwl-stage-label {
   font-family: 'Comic Neue', cursive, sans-serif;
   font-weight: 700;
   font-size: 12px;
-  letter-spacing: 0.5px;
-  color: #0E5C63;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #4C9AA1;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .lwl-stage {
@@ -290,6 +309,7 @@ const CSS = `
   padding: 20px 56px;
   box-shadow: 9px 9px 0 #1A1A1A;
   min-height: 0;
+  overflow: hidden;
 }
 
 .lwl-deck-body {

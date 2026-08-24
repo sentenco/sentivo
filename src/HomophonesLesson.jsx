@@ -107,6 +107,26 @@ function shuffled(arr) {
 
 const PILL_HUES = ["hpl-pill--teal", "hpl-pill--coral", "hpl-pill--seafoam", "hpl-pill--gold"];
 
+const STAGES = [
+  { key: "cover", label: "Cover" },
+  { key: "predict", label: "Predict" },
+  { key: "reveal", label: "Reveal" },
+  { key: "guided", label: "Guided Practice" },
+  { key: "wrapup", label: "Wrap-up" },
+];
+
+function stageKey(slideType) {
+  if (slideType.startsWith("predict")) return "predict";
+  if (slideType.startsWith("reveal")) return "reveal";
+  if (slideType.startsWith("guided")) return "guided";
+  return slideType;
+}
+
+function StageLabel({ slideType }) {
+  const stage = STAGES.find((s) => s.key === stageKey(slideType));
+  return <span className="hpl-stage-label">{stage.label}</span>;
+}
+
 function CoverSlide() {
   return (
     <div className="hpl-slide hpl-slide--cover">
@@ -219,13 +239,13 @@ export default function HomophonesLesson() {
   return (
     <div className="hpl-shell">
       <style>{CSS}</style>
-      <header className="hpl-topbar">
-        <span className="hpl-brand"><img src="/logo-sentivo.png" alt="" className="hpl-brand-logo" />entivo</span>
-        <span className="hpl-topbar-title">{LESSON.title}</span>
-      </header>
 
       <div className="hpl-stage">
         <div className="hpl-deck">
+          <div className="hpl-deck-header">
+            <span className="hpl-brand"><img src="/logo-sentivo.png" alt="" className="hpl-brand-logo" />entivo</span>
+            <StageLabel slideType={slideType} />
+          </div>
           <div className="hpl-deck-body" key={slideIdx}>
             {renderSlide(slideType)}
           </div>
@@ -269,18 +289,19 @@ const CSS = `
 }
 .hpl-shell * { box-sizing: border-box; }
 
-.hpl-topbar {
-  width: 100%;
-  max-width: 1120px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 14px 24px 0;
-  flex-shrink: 0;
-}
 .hpl-brand { display: flex; align-items: center; flex-shrink: 0; font-family: 'Grandstander', cursive; font-weight: 700; font-size: 18px; color: #123B40; }
 .hpl-brand-logo { height: 24px; width: auto; display: block; margin-right: -4px; }
-.hpl-topbar-title { font-family: 'Mulish', sans-serif; font-weight: 800; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #0E6E7C; }
+
+.hpl-stage-label {
+  font-family: 'Mulish', sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #4F8B90;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
 
 .hpl-stage { flex: 1; width: 100%; max-width: 1120px; padding: 16px 24px 20px; display: flex; flex-direction: column; min-height: 0; }
 
@@ -290,9 +311,20 @@ const CSS = `
   flex-direction: column;
   background: #FFFFFF;
   border-radius: 26px;
-  padding: 24px 48px;
   box-shadow: 0 20px 0 rgba(14,110,124,0.08);
   min-height: 0;
+  overflow: hidden;
+}
+
+.hpl-deck-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 48px;
+  background: #EAF8F6;
+  border-bottom: 1px solid #D6F1EC;
+  flex-shrink: 0;
 }
 
 .hpl-deck-body {
@@ -305,7 +337,7 @@ const CSS = `
   min-height: 0;
   overflow-y: auto;
   gap: 18px;
-  padding: 8px 0;
+  padding: 24px 48px 8px;
 }
 
 .hpl-slide { display: flex; flex-direction: column; align-items: center; gap: 16px; width: 100%; }
@@ -415,7 +447,7 @@ const CSS = `
 
 .hpl-wrap-icon { font-size: 40px; }
 
-.hpl-nav-row { display: flex; align-items: center; justify-content: space-between; padding-top: 16px; margin-top: auto; border-top: 2px solid #EAF8F6; flex-shrink: 0; }
+.hpl-nav-row { display: flex; align-items: center; justify-content: space-between; padding: 16px 48px 24px; margin-top: auto; border-top: 2px solid #EAF8F6; flex-shrink: 0; }
 .hpl-nav-btn {
   font-family: 'Grandstander', cursive;
   font-weight: 700;

@@ -136,6 +136,18 @@ function WrapupSlide({ lesson }) {
   );
 }
 
+function stageLabel(slideType) {
+  if (slideType === "cover") return "Cover";
+  if (slideType === "warmup") return "Warm-up";
+  if (slideType === "predict") return "Think About It";
+  if (slideType === "compare") return "Compare";
+  if (slideType.startsWith("teach")) return "Teach";
+  if (slideType.startsWith("guided")) return "Guided Practice";
+  if (slideType === "practice") return "Practice";
+  if (slideType === "wrapup") return "Wrap-up";
+  return "";
+}
+
 function renderSlide(slideType, lesson) {
   if (slideType === "cover") return <CoverSlide lesson={lesson} />;
   if (slideType === "warmup") return <WarmupSlide lesson={lesson} />;
@@ -172,13 +184,12 @@ export default function ModalsLesson() {
   return (
     <div className="mdl-shell">
       <style>{CSS}</style>
-      <header className="mdl-topbar">
-        <span className="mdl-brand"><img src="/logo-sentivo.png" alt="" className="mdl-brand-logo" />entivo</span>
-        <span className="mdl-topbar-title">Lesson {lesson.number} · {lesson.title}</span>
-      </header>
-
       <div className="mdl-stage">
         <div className="mdl-deck">
+          <div className="mdl-deck-header">
+            <span className="mdl-brand"><img src="/logo-sentivo.png" alt="" className="mdl-brand-logo" />entivo</span>
+            <span className="mdl-stage-label">{stageLabel(slideType)}</span>
+          </div>
           <div className="mdl-deck-body" key={slideIdx}>
             {renderSlide(slideType, lesson)}
           </div>
@@ -224,15 +235,6 @@ const CSS = `
 }
 .mdl-shell * { box-sizing: border-box; }
 
-.mdl-topbar {
-  width: 100%;
-  max-width: 1120px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 14px 24px 0;
-  flex-shrink: 0;
-}
 .mdl-brand {
   display: flex;
   align-items: center;
@@ -244,13 +246,6 @@ const CSS = `
   color: #2B2A4A;
 }
 .mdl-brand-logo { height: 24px; width: auto; display: block; margin-right: -4px; }
-.mdl-topbar-title {
-  font-family: 'Comic Neue', cursive, sans-serif;
-  font-weight: 700;
-  font-size: 12px;
-  letter-spacing: 0.5px;
-  color: #3F6B3D;
-}
 
 .mdl-stage {
   flex: 1;
@@ -279,6 +274,28 @@ const CSS = `
   padding: 20px 56px;
   box-shadow: 9px 9px 0 #1A1A1A;
   min-height: 0;
+}
+
+.mdl-deck-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin: -20px -56px 16px;
+  padding: 14px 56px;
+  background: #F2FBEF;
+  border-bottom: 1px solid #D9EED4;
+  flex-shrink: 0;
+}
+.mdl-stage-label {
+  font-family: 'Comic Neue', cursive, sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #3F6B3D;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .mdl-deck-body {

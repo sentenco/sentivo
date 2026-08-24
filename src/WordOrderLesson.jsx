@@ -181,6 +181,20 @@ function renderSlide(slideType, lesson) {
   return null;
 }
 
+function stageLabel(slideType) {
+  if (slideType.startsWith("osascomp")) return "Teach";
+  if (slideType.startsWith("guided")) return "Guided Practice";
+  switch (slideType) {
+    case "cover": return "Cover";
+    case "warmup": return "Warm-up";
+    case "predict": return "Think About It";
+    case "compare": return "Compare";
+    case "practice": return "Practice";
+    case "wrapup": return "Wrap-up";
+    default: return "";
+  }
+}
+
 export default function WordOrderLesson() {
   const [slideIdx, setSlideIdx] = useState(0);
   const lesson = LESSON;
@@ -192,13 +206,13 @@ export default function WordOrderLesson() {
   return (
     <div className="wol-shell">
       <style>{CSS}</style>
-      <header className="wol-topbar">
-        <span className="wol-brand"><img src="/logo-sentivo.png" alt="" className="wol-brand-logo" />entivo</span>
-        <span className="wol-topbar-title">{lesson.title}</span>
-      </header>
 
       <div className="wol-stage">
         <div className="wol-deck">
+          <div className="wol-deck-header">
+            <span className="wol-brand"><img src="/logo-sentivo.png" alt="" className="wol-brand-logo" />entivo</span>
+            <span className="wol-stage-label">{stageLabel(slideType)}</span>
+          </div>
           <div className="wol-deck-body" key={slideIdx}>
             {renderSlide(slideType, lesson)}
           </div>
@@ -244,13 +258,15 @@ const CSS = `
 }
 .wol-shell * { box-sizing: border-box; }
 
-.wol-topbar {
-  width: 100%;
-  max-width: 1120px;
+.wol-deck-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 14px 24px 0;
+  gap: 16px;
+  margin: -20px -56px 18px;
+  padding: 14px 32px;
+  background: #F3EDE5;
+  border-bottom: 2px solid #E4D8C7;
   flex-shrink: 0;
 }
 .wol-brand {
@@ -264,12 +280,15 @@ const CSS = `
   color: #2B2A4A;
 }
 .wol-brand-logo { height: 24px; width: auto; display: block; margin-right: -4px; }
-.wol-topbar-title {
+.wol-stage-label {
   font-family: 'Comic Neue', cursive, sans-serif;
   font-weight: 700;
   font-size: 12px;
-  letter-spacing: 0.5px;
-  color: #5C452F;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #8A6748;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .wol-stage {
@@ -292,6 +311,7 @@ const CSS = `
   padding: 20px 56px;
   box-shadow: 9px 9px 0 #1A1A1A;
   min-height: 0;
+  overflow: hidden;
 }
 
 .wol-deck-body {

@@ -285,6 +285,20 @@ function FeedbackSlide({ slide }) {
   );
 }
 
+const STAGE_LABELS = {
+  cover: "Cover",
+  question: "Warm-up",
+  flipcards: "Flip Cards",
+  sort: "Sort",
+  mystery: "Mystery Box",
+  findshow: "Find & Show",
+  feedback: "Feedback",
+};
+
+function stageLabel(slide) {
+  return STAGE_LABELS[slide.kind] || "Activity";
+}
+
 function renderSlide(slide, lesson) {
   switch (slide.kind) {
     case "cover": return <CoverSlide lesson={lesson} />;
@@ -328,6 +342,10 @@ export default function Spark() {
 
       <div className="spk-stage">
         <div className="spk-deck">
+          <div className="spk-deck-header">
+            <span className="spk-brand"><img src="/logo-sentivo.png" alt="" className="spk-brand-logo" />entivo</span>
+            <span className="spk-stage-label">{stageLabel(slide)}</span>
+          </div>
           <div className="spk-deck-body" key={slideIdx}>
             {renderSlide(slide, lesson)}
           </div>
@@ -411,10 +429,42 @@ const CSS = `
   box-shadow: 0 24px 60px rgba(180,140,0,0.16);
   display: flex;
   flex-direction: column;
-  padding: 26px 48px;
+  overflow: hidden;
 }
 
-.spk-deck-body { flex: 1; min-height: 0; overflow-y: auto; display: flex; }
+.spk-deck-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 32px;
+  background: #FFF9E5;
+  border-bottom: 1px solid #FFE28A;
+  flex-shrink: 0;
+}
+.spk-brand {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 700;
+  font-size: 17px;
+  color: #4A3B12;
+}
+.spk-brand-logo { height: 22px; width: auto; display: block; margin-right: -4px; }
+
+.spk-stage-label {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #C98A00;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.spk-deck-body { flex: 1; min-height: 0; overflow-y: auto; display: flex; padding: 26px 48px; }
 
 .spk-slide {
   display: flex;
@@ -705,7 +755,7 @@ const CSS = `
   margin: 0;
 }
 /* Nav */
-.spk-nav-row { display: flex; align-items: center; justify-content: space-between; padding-top: 14px; border-top: 1px solid #FFF3D0; flex-shrink: 0; }
+.spk-nav-row { display: flex; align-items: center; justify-content: space-between; padding: 14px 48px 20px; border-top: 1px solid #FFF3D0; flex-shrink: 0; }
 .spk-nav-btn {
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;
