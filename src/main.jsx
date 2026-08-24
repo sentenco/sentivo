@@ -112,6 +112,10 @@ import Forge from './Forge.jsx'
 import ForgeHub from './ForgeHub.jsx'
 import ForgeTrack from './ForgeTrack.jsx'
 import ForgeGuide from './ForgeGuide.jsx'
+import Relay from './Relay.jsx'
+import RelayHub from './RelayHub.jsx'
+import RelayTrack from './RelayTrack.jsx'
+import RelayGuide from './RelayGuide.jsx'
 import Ascend from './Ascend.jsx'
 import AscendHub from './AscendHub.jsx'
 import AscendTrack from './AscendTrack.jsx'
@@ -327,6 +331,10 @@ createRoot(document.getElementById('root')).render(
             <Route path="/library/forge/:trackId" element={<ForgeTrack />} />
             <Route path="/library/forge/:trackId/:lessonNum" element={<Forge />} />
             <Route path="/library/forge/:trackId/:lessonNum/guide" element={<ForgeGuide />} />
+            <Route path="/library/relay" element={<RelayHub />} />
+            <Route path="/library/relay/:trackId" element={<RelayTrack />} />
+            <Route path="/library/relay/:trackId/:lessonNum" element={<Relay />} />
+            <Route path="/library/relay/:trackId/:lessonNum/guide" element={<RelayGuide />} />
             <Route path="/library/ascend" element={<AscendHub />} />
             <Route path="/library/ascend/:trackId" element={<AscendTrack />} />
             <Route path="/library/ascend/:trackId/:lessonNum" element={<Ascend />} />
