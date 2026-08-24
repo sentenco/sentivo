@@ -2,7 +2,7 @@ import { useState } from "react";
 
 const LESSON = {
   title: "Tricky Uncountables",
-  tagline: "No plural, no \"a/an\" — these nouns break the rule you'd expect.",
+  tagline: "No plural, no \"a/an\": these nouns break the rule you'd expect.",
   items: [
     { word: "information", correct: "a piece of information", wrong: ["an information", "many informations"],
       note: "Information has no plural. Use “a piece of information” for one item, or “some information” for an amount.",
@@ -164,7 +164,7 @@ function WrapupSlide() {
       <span className="tul-wrap-icon">🧺</span>
       <h2 className="tul-h">Lesson Complete</h2>
       <h1 className="tul-cover-title tul-cover-title--small">10 Uncountables Caught!</h1>
-      <p className="tul-tagline">You spotted the right usage for 10 nouns that don't take a plural. No -s, no "a/an" — just the right partitive.</p>
+      <p className="tul-tagline">You spotted the right usage for 10 nouns that don't take a plural. No -s, no "a/an": just the right partitive.</p>
       <button type="button" className="tul-nav-btn tul-nav-btn--primary" onClick={() => window.close()}>Close ✕</button>
     </div>
   );

@@ -16,18 +16,18 @@ const LESSON = {
       examples: ["Quite a few people showed up. (actually means a lot!)", "Little by little, she improved. (gradually)", "Just a little bit more, please. (a small extra amount)"],
     },
   ],
-  compareLeftLabel: "Few / Little — almost none",
-  compareRightLabel: "Quite a few — actually a lot",
-  compareNote: "Quite a few is the trickiest phrase here — despite starting with 'few,' it means a surprisingly large number, the opposite of what you'd expect.",
+  compareLeftLabel: "Few / Little: almost none",
+  compareRightLabel: "Quite a few: actually a lot",
+  compareNote: "Quite a few is the trickiest phrase here: despite starting with 'few,' it means a surprisingly large number, the opposite of what you'd expect.",
   comparePairs: [
     { left: "Few people came. (a disappointing turnout)", right: "Quite a few people came. (more than expected)" },
     { left: "I have little experience with this.", right: "Little by little, I'm gaining experience." },
   ],
   guided: [
-    { prompt: "We have ___ (few/a few) time left — we should hurry. (almost none)", answer: "few" },
+    { prompt: "We have ___ (few/a few) time left; we should hurry. (almost none)", answer: "few" },
     { prompt: "I have ___ (few/a few) friends coming over tonight, should be fun. (a small number, positive)", answer: "a few" },
     { prompt: "She has ___ (few/little) patience for excuses. (almost none, uncountable)", answer: "little" },
-    { prompt: "___ people actually showed up to the meeting — way more than we expected!", answer: "Quite a few" },
+    { prompt: "___ people actually showed up to the meeting, way more than we expected!", answer: "Quite a few" },
     { prompt: "___ by little, his English is improving.", answer: "Little" },
     { prompt: "Can I have just ___ (a little/little) more time to finish?", answer: "a little" },
   ],
@@ -36,7 +36,7 @@ const LESSON = {
     "Write one sentence using quite a few to mean 'a lot,' correctly.",
     "Write one sentence using little by little to describe a gradual change.",
   ],
-  wrapup: "Few and little (without 'a') sound negative, almost none. A few and a little sound positive, a small real amount. Quite a few is the exception — it actually means a lot.",
+  wrapup: "Few and little (without 'a') sound negative, almost none. A few and a little sound positive, a small real amount. Quite a few is the exception: it actually means a lot.",
 };
 
 function buildSlides(lesson) {
@@ -90,8 +90,8 @@ function TeachSlide({ lesson, index }) {
 }
 
 function PredictSlide({ lesson }) {
-  const left = lesson.compareLeftLabel.split(" — ")[0].trim();
-  const right = lesson.compareRightLabel.split(" — ")[0].trim();
+  const left = lesson.compareLeftLabel.split(": ")[0].trim();
+  const right = lesson.compareRightLabel.split(": ")[0].trim();
   return (
     <div className="fll-slide">
       <span className="fll-eyebrow">Think About It</span>

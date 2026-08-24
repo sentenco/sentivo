@@ -6,19 +6,19 @@ const LESSON = {
   leadIn: "Have you ever said “informations” or “an advice” by accident? What sounded off about it?",
   teach: [
     {
-      name: "Feels Countable, Isn't — Always Uncountable",
+      name: "Feels Countable, Isn't: Always Uncountable",
       definition: "These nouns describe a category or mass, not individual countable units, even though English speakers often want to add an -s out of habit.",
       examples: ["I heard some interesting news. (not 'a news')", "She gave me good advice. (not 'an advice')", "We bought new furniture. (not 'a furniture')"],
     },
     {
       name: "Feels Uncountable, Has a Rare Countable Use",
-      definition: "A few normally uncountable nouns can become countable in a specific, narrower sense — usually meaning a type or an individual instance of something.",
+      definition: "A few normally uncountable nouns can become countable in a specific, narrower sense: usually meaning a type or an individual instance of something.",
       examples: ["This gallery shows several works by Picasso. (individual pieces of art)", "I'll have a coffee, please. (a cup of coffee)", "They published two papers this year. (academic articles)"],
     },
   ],
   compareLeftLabel: "Always uncountable",
   compareRightLabel: "Sometimes countable",
-  compareNote: "The trap runs both ways — some nouns you'd expect to count (news, furniture) never take a plural, while a few you'd expect to stay uncountable (coffee, work) can, in a narrower sense.",
+  compareNote: "The trap runs both ways: some nouns you'd expect to count (news, furniture) never take a plural, while a few you'd expect to stay uncountable (coffee, work) can, in a narrower sense.",
   comparePairs: [
     { left: "The news was shocking. (never 'news were')", right: "I'll order two coffees. (individual cups)" },
     { left: "This furniture is old. (never 'furnitures')", right: "She has three published works. (art pieces)" },
@@ -32,11 +32,11 @@ const LESSON = {
     { prompt: "She's writing her third academic ___ (paper/papers) this year.", answer: "paper" },
   ],
   practice: [
-    "Write one sentence using news, advice, or furniture correctly — remember, no plural.",
+    "Write one sentence using news, advice, or furniture correctly (remember, no plural).",
     "Write one sentence using work or coffee in its rare countable form.",
     "Explain to a partner why 'informations' is always wrong.",
   ],
-  wrapup: "A handful of nouns that feel countable — news, advice, furniture, information — are always uncountable. A few uncountable nouns — work, coffee, paper — can become countable in a narrower sense, like an art piece or a cup.",
+  wrapup: "A handful of nouns that feel countable (news, advice, furniture, information) are always uncountable. A few uncountable nouns (work, coffee, paper) can become countable in a narrower sense, like an art piece or a cup.",
 };
 
 function buildSlides(lesson) {
@@ -90,8 +90,8 @@ function TeachSlide({ lesson, index }) {
 }
 
 function PredictSlide({ lesson }) {
-  const left = lesson.compareLeftLabel.split(" — ")[0].trim();
-  const right = lesson.compareRightLabel.split(" — ")[0].trim();
+  const left = lesson.compareLeftLabel.split(": ")[0].trim();
+  const right = lesson.compareRightLabel.split(": ")[0].trim();
   return (
     <div className="cntl-slide">
       <span className="cntl-eyebrow">Think About It</span>

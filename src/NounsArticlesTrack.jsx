@@ -31,7 +31,7 @@ export default function NounsArticlesTrack() {
           <span className="naqt-hero-badge">Count It Right!</span>
           <h1 className="naqt-hero-title">Nouns, Articles &amp; Quantifiers</h1>
           <p className="naqt-hero-blurb">
-            Countable vs uncountable, a/an vs the, zero article, and the quantifiers that trip students up —
+            Countable vs uncountable, a/an vs the, zero article, and the quantifiers that trip students up:
             5 lessons covering the words that shape almost every sentence.
           </p>
         </div>

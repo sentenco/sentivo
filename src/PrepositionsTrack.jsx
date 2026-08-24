@@ -31,7 +31,7 @@ export default function PrepositionsTrack() {
           <span className="prt-hero-badge">In, On, or At?</span>
           <h1 className="prt-hero-title">Prepositions</h1>
           <p className="prt-hero-blurb">
-            Place, time, movement, the fixed pairings verbs and adjectives demand, and by/with/without — 6
+            Place, time, movement, the fixed pairings verbs and adjectives demand, and by/with/without: 6
             lessons, one rule per slide.
           </p>
         </div>

@@ -2,7 +2,7 @@ import { useState } from "react";
 
 const LESSON = {
   title: "Portmanteau Words",
-  tagline: "Two words blend into one — new sound, new meaning.",
+  tagline: "Two words blend into one: new sound, new meaning.",
   items: [
     { word: "brunch",
       correct: "breakfast + lunch",
@@ -43,7 +43,7 @@ const LESSON = {
       correct: "friend + enemy",
       wrong: ["friend + rival", "familiar + enemy"],
       story: "Someone who acts friendly but is also a rival or not fully trusted.",
-      example: "They're frenemies — friendly in public, competitive in private." },
+      example: "They're frenemies: friendly in public, competitive in private." },
     { word: "staycation",
       correct: "stay + vacation",
       wrong: ["stay + holiday", "static + vacation"],

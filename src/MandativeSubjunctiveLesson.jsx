@@ -7,18 +7,18 @@ const LESSON = {
   teach: [
     {
       name: "The Base-Form Subjunctive After Suggestion Verbs",
-      definition: "After verbs like suggest, recommend, insist, and demand, the following clause uses the bare base form of the verb — no -s for he/she/it, and no change in the past.",
+      definition: "After verbs like suggest, recommend, insist, and demand, the following clause uses the bare base form of the verb: no -s for he/she/it, and no change in the past.",
       examples: ["I suggest he arrive early.", "The doctor recommended she rest.", "They insisted he apologize."],
     },
     {
       name: "The Subjunctive After \"It's Essential/Important That...\"",
-      definition: "The same base-form pattern shows up after certain adjective-plus-that constructions, not just after verbs — the urgency triggers the same grammar.",
+      definition: "The same base-form pattern shows up after certain adjective-plus-that constructions, not just after verbs: the urgency triggers the same grammar.",
       examples: ["It's essential that she be informed.", "It's important that he attend the meeting.", "It's vital that we act now."],
     },
   ],
   compareLeftLabel: "Normal present tense",
-  compareRightLabel: "Subjunctive — no -s, stays base form",
-  compareNote: "The subjunctive quietly breaks the usual agreement rule — no -s for he/she/it, and 'be' instead of 'is/are' — because the action is being urged or required, not stated as fact.",
+  compareRightLabel: "Subjunctive: no -s, stays base form",
+  compareNote: "The subjunctive quietly breaks the usual agreement rule (no -s for he/she/it, and 'be' instead of 'is/are') because the action is being urged or required, not stated as fact.",
   comparePairs: [
     { left: "He arrives early every day. (fact)", right: "I suggest he arrive early tomorrow. (subjunctive)" },
     { left: "She is informed about the plan. (fact)", right: "It's essential that she be informed. (subjunctive)" },
@@ -34,9 +34,9 @@ const LESSON = {
   practice: [
     "Write one sentence using suggest or recommend with the subjunctive.",
     "Write one sentence using 'It's essential/important that...' with the subjunctive.",
-    "Say the same sentence out loud two ways — with and without the subjunctive — and notice the -s disappear.",
+    "Say the same sentence out loud two ways (with and without the subjunctive) and notice the -s disappear.",
   ],
-  wrapup: "After verbs like suggest, recommend, and insist, and after 'it's essential/important that,' English quietly drops the usual -s and uses the base form of the verb — the mandative subjunctive.",
+  wrapup: "After verbs like suggest, recommend, and insist, and after 'it's essential/important that,' English quietly drops the usual -s and uses the base form of the verb: the mandative subjunctive.",
 };
 
 function buildSlides(lesson) {
@@ -90,8 +90,8 @@ function TeachSlide({ lesson, index }) {
 }
 
 function PredictSlide({ lesson }) {
-  const left = lesson.compareLeftLabel.split(" — ")[0].trim();
-  const right = lesson.compareRightLabel.split(" — ")[0].trim();
+  const left = lesson.compareLeftLabel.split(": ")[0].trim();
+  const right = lesson.compareRightLabel.split(": ")[0].trim();
   return (
     <div className="mdsl-slide">
       <span className="mdsl-eyebrow">Think About It</span>

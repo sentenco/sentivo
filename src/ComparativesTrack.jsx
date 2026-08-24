@@ -32,7 +32,7 @@ export default function ComparativesTrack() {
           <h1 className="cst-hero-title">Comparatives &amp; Superlatives</h1>
           <p className="cst-hero-blurb">
             Short adjectives, long adjectives, irregular forms, equal comparison, degree modifiers, and double
-            comparatives — 4 lessons, one rule per slide, no cramming.
+            comparatives: 4 lessons, one rule per slide, no cramming.
           </p>
         </div>
 

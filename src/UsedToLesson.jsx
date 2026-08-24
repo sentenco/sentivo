@@ -6,18 +6,18 @@ const LESSON = {
   leadIn: "Name one thing you used to do as a kid that you don't do anymore.",
   teach: [
     {
-      name: "Used To — A Past Habit",
+      name: "Used To: A Past Habit",
       definition: "Used to plus the base verb describes something that regularly happened in the past but doesn't happen now.",
       examples: ["I used to play soccer every weekend.", "She used to live in Paris.", "We used to walk to school."],
     },
     {
-      name: "Be/Get Used To — Familiarity, Not the Past",
+      name: "Be/Get Used To: Familiarity, Not the Past",
       definition: "Be used to plus -ing shows something feels normal or familiar now; get used to plus -ing shows the process of becoming familiar with it.",
       examples: ["I'm used to waking up early now.", "It took months, but she got used to the new job.", "He's still getting used to driving on the left."],
     },
   ],
-  compareLeftLabel: "Used to — a past habit",
-  compareRightLabel: "Be/Get used to — familiarity now",
+  compareLeftLabel: "Used to: a past habit",
+  compareRightLabel: "Be/Get used to: familiarity now",
   compareNote: "Used to always points to the past and never takes -ing. Be/get used to are about the present, and always take the -ing form.",
   comparePairs: [
     { left: "I used to hate coffee. (a past habit, now changed)", right: "I'm used to drinking coffee every morning. (a current habit that feels normal)" },
@@ -28,7 +28,7 @@ const LESSON = {
     { prompt: "We ___ (used to) live in a small apartment before we moved. (past habit)", answer: "used to" },
     { prompt: "He ___ (used to) walk to school every day as a kid. (past habit)", answer: "used to" },
     { prompt: "After a few weeks, he ___ (get) used to the noise. (process of adjusting)", answer: "got" },
-    { prompt: "She's ___ working night shifts now — it doesn't bother her. (familiar)", answer: "used to" },
+    { prompt: "She's ___ working night shifts now. It doesn't bother her. (familiar)", answer: "used to" },
     { prompt: "It took a while, but I finally ___ used to the cold weather. (process of adjusting)", answer: "got" },
   ],
   practice: [
@@ -36,7 +36,7 @@ const LESSON = {
     "Write one sentence about something that feels normal to you now, using be used to.",
     "Write one sentence about something you're still adjusting to, using get used to.",
   ],
-  wrapup: "Used to describes a past habit and never takes -ing. Be used to describes current familiarity, and get used to describes the process of becoming familiar — both take -ing.",
+  wrapup: "Used to describes a past habit and never takes -ing. Be used to describes current familiarity, and get used to describes the process of becoming familiar: both take -ing.",
 };
 
 function buildSlides(lesson) {
@@ -90,8 +90,8 @@ function TeachSlide({ lesson, index }) {
 }
 
 function PredictSlide({ lesson }) {
-  const left = lesson.compareLeftLabel.split(" — ")[0].trim();
-  const right = lesson.compareRightLabel.split(" — ")[0].trim();
+  const left = lesson.compareLeftLabel.split(": ")[0].trim();
+  const right = lesson.compareRightLabel.split(": ")[0].trim();
   return (
     <div className="ustl-slide">
       <span className="ustl-eyebrow">Think About It</span>

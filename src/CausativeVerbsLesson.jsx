@@ -6,18 +6,18 @@ const LESSON = {
   leadIn: "Name one thing you had done for you recently, like a haircut or a repair.",
   teach: [
     {
-      name: "Have/Get Something Done — Someone Else Does It",
+      name: "Have/Get Something Done: Someone Else Does It",
       definition: "Have or get plus an object plus the past participle shows that someone else performed the action for you, not you yourself.",
       examples: ["I had my hair cut yesterday.", "She got her car repaired.", "We're having the house painted."],
     },
     {
-      name: "Make/Let Someone Do Something — Force or Permission",
+      name: "Make/Let Someone Do Something: Force or Permission",
       definition: "Make plus a person plus the base verb means forcing someone to act; let plus a person plus the base verb means allowing them to.",
       examples: ["My mom made me clean my room.", "The teacher let us leave early.", "He made his brother apologize."],
     },
   ],
-  compareLeftLabel: "Make — forced",
-  compareRightLabel: "Let — allowed",
+  compareLeftLabel: "Make: forced",
+  compareRightLabel: "Let: allowed",
   compareNote: "Make pushes someone into an action they might not have chosen. Let simply removes an obstacle and allows the action to happen.",
   comparePairs: [
     { left: "The coach made them run extra laps.", right: "The coach let them skip practice." },
@@ -90,8 +90,8 @@ function TeachSlide({ lesson, index }) {
 }
 
 function PredictSlide({ lesson }) {
-  const left = lesson.compareLeftLabel.split(" — ")[0].trim();
-  const right = lesson.compareRightLabel.split(" — ")[0].trim();
+  const left = lesson.compareLeftLabel.split(": ")[0].trim();
+  const right = lesson.compareRightLabel.split(": ")[0].trim();
   return (
     <div className="cvl-slide">
       <span className="cvl-eyebrow">Think About It</span>

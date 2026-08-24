@@ -47,7 +47,7 @@ export const GAME_TYPES = [
 
 function GameBanner({ name }) {
   const banners = {
-    // Just the equal sign — the mark, not a diagram of it.
+    // Just the equal sign: the mark, not a diagram of it.
     synonyms: (
       <>
         <defs>
@@ -70,7 +70,7 @@ function GameBanner({ name }) {
         </g>
       </>
     ),
-    // A classic black-and-white yin-yang — opposite, but two halves of
+    // A classic black-and-white yin-yang, opposite but two halves of
     // one whole meaning-pair.
     antonyms: (
       <>
@@ -93,7 +93,7 @@ function GameBanner({ name }) {
         </g>
       </>
     ),
-    // A hopper of mixed tiles funnels down into two color-sorted bins —
+    // A hopper of mixed tiles funnels down into two color-sorted bins:
     // the physical act of sorting, not just an icon of it.
     wordSort: (
       <>
@@ -128,7 +128,7 @@ function GameBanner({ name }) {
         <rect x="204" y="98" width="18" height="18" rx="5" fill="#FF8F6B" transform="rotate(6 213 107)" />
       </>
     ),
-    // A magnifying glass catches the one shape that breaks the pattern —
+    // A magnifying glass catches the one shape that breaks the pattern:
     // the exact moment of noticing.
     oddOneOut: (
       <>
@@ -309,7 +309,7 @@ export const VOCAB_LESSONS = [
     title: "Stress-Shift Word Pairs",
     icon: "🗣️",
     hue: "coral",
-    blurb: "record vs record — same spelling, the stress moves and the meaning changes.",
+    blurb: "record vs record: same spelling, the stress moves and the meaning changes.",
     href: "/library/vocabulary/lessons/stress-shift",
     ready: true,
   },
@@ -318,7 +318,7 @@ export const VOCAB_LESSONS = [
     title: "Homophones",
     icon: "👂",
     hue: "gold",
-    blurb: "their, there, they're — they sound identical. Only the spelling tells them apart.",
+    blurb: "their, there, they're: they sound identical. Only the spelling tells them apart.",
     href: "/library/vocabulary/lessons/homophones",
     ready: true,
   },
@@ -327,7 +327,7 @@ export const VOCAB_LESSONS = [
     title: "Near-Synonym Nuance",
     icon: "🎚️",
     hue: "seafoam",
-    blurb: "big, huge, enormous — same rough meaning, different strength. Rank them, then check.",
+    blurb: "big, huge, enormous: same rough meaning, different strength. Rank them, then check.",
     href: "/library/vocabulary/lessons/near-synonym-nuance",
     ready: true,
   },
@@ -336,7 +336,7 @@ export const VOCAB_LESSONS = [
     title: "Word Families",
     icon: "🌳",
     hue: "teal",
-    blurb: "decide, decision, decisive, decisively — one root, four jobs. Match them to their slot.",
+    blurb: "decide, decision, decisive, decisively: one root, four jobs. Match them to their slot.",
     href: "/library/vocabulary/lessons/word-families",
     ready: true,
   },
@@ -345,7 +345,7 @@ export const VOCAB_LESSONS = [
     title: "Confusable Pairs",
     icon: "⚖️",
     hue: "sky",
-    blurb: "affect vs effect, loose vs lose — pick the right word for the sentence, then see the rule.",
+    blurb: "affect vs effect, loose vs lose: pick the right word for the sentence, then see the rule.",
     href: "/library/vocabulary/lessons/confusable-pairs",
     ready: true,
   },
@@ -354,7 +354,7 @@ export const VOCAB_LESSONS = [
     title: "Tricky Uncountables",
     icon: "🧺",
     hue: "violet",
-    blurb: "information, advice, furniture — no plural, no \"a/an\". Pick the right usage.",
+    blurb: "information, advice, furniture: no plural, no \"a/an\". Pick the right usage.",
     href: "/library/vocabulary/lessons/tricky-uncountables",
     ready: true,
   },
@@ -363,7 +363,7 @@ export const VOCAB_LESSONS = [
     title: "Collocations",
     icon: "🤝",
     hue: "rose",
-    blurb: "make a decision, do homework, take a break — pick the verb that actually goes with it.",
+    blurb: "make a decision, do homework, take a break: pick the verb that actually goes with it.",
     href: "/library/vocabulary/lessons/collocations",
     ready: true,
   },
@@ -372,7 +372,7 @@ export const VOCAB_LESSONS = [
     title: "Polysemy",
     icon: "🧠",
     hue: "amber",
-    blurb: "head, hand, foot — one word, several related meanings. Match the sentence to the sense.",
+    blurb: "head, hand, foot: one word, several related meanings. Match the sentence to the sense.",
     href: "/library/vocabulary/lessons/polysemy",
     ready: true,
   },
@@ -381,7 +381,7 @@ export const VOCAB_LESSONS = [
     title: "Eponyms",
     icon: "🏷️",
     hue: "lime",
-    blurb: "sandwich, boycott, cardigan — words named after real people. Guess the origin.",
+    blurb: "sandwich, boycott, cardigan: words named after real people. Guess the origin.",
     href: "/library/vocabulary/lessons/eponyms",
     ready: true,
   },
@@ -390,7 +390,7 @@ export const VOCAB_LESSONS = [
     title: "Portmanteau Words",
     icon: "🧩",
     hue: "slate",
-    blurb: "brunch, smog, motel — two words blended into one. Guess the blend.",
+    blurb: "brunch, smog, motel: two words blended into one. Guess the blend.",
     href: "/library/vocabulary/lessons/portmanteau",
     ready: true,
   },
@@ -442,7 +442,7 @@ export default function VocabularyGames({ query }) {
   );
 
   // Browser back/forward drives navigation instead of an in-page back
-  // button — each drill-down pushes a history entry, popping it here
+  // button. Each drill-down pushes a history entry, and popping it here
   // unwinds the matching piece of state.
   useEffect(() => {
     function onPopState(e) {

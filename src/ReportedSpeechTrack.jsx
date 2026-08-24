@@ -32,7 +32,7 @@ export default function ReportedSpeechTrack() {
           <h1 className="rst-hero-title">Reported Speech</h1>
           <p className="rst-hero-blurb">
             Backshift, say vs tell, time and place changes, reported questions, commands, and the exceptions
-            that break the rules — 5 lessons, one rule per slide.
+            that break the rules: 5 lessons, one rule per slide.
           </p>
         </div>
 

@@ -31,7 +31,7 @@ export default function RelativeClausesTrack() {
           <span className="rct-hero-badge">Which One?</span>
           <h1 className="rct-hero-title">Relative Clauses</h1>
           <p className="rct-hero-blurb">
-            Who, which, that, whose, where, when, the comma rule, and shrinking a clause down to a phrase — 4
+            Who, which, that, whose, where, when, the comma rule, and shrinking a clause down to a phrase: 4
             lessons, one rule per slide.
           </p>
         </div>

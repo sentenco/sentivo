@@ -31,7 +31,7 @@ export default function SentencePatternsTrack() {
           <span className="spt-hero-badge">Build a Sentence!</span>
           <h1 className="spt-hero-title">Sentence Patterns</h1>
           <p className="spt-hero-blurb">
-            The 7 core English sentence patterns — SV, SVO, SVC, SVA, SVOA, SVOO, SVOC — across 6 lessons. Each one
+            The 7 core English sentence patterns (SV, SVO, SVC, SVA, SVOA, SVOO, SVOC) across 6 lessons. Each one
             teaches the pattern, then walks through guided and production practice.
           </p>
         </div>

@@ -5,13 +5,13 @@ const LESSON = {
   tagline: "Same rough meaning, different degree, tone, or manner. Order matters.",
   sets: [
     { type: "Intensity", hue: "coral", axisLabel: "mild → strong", words: ["big", "huge", "enormous"],
-      notes: ["Larger than average — the everyday, neutral word.", "Noticeably larger than “big” — used for real emphasis.", "Extremely large — often used to show surprise."],
+      notes: ["Larger than average: the everyday, neutral word.", "Noticeably larger than “big”: used for real emphasis.", "Extremely large: often used to show surprise."],
       examples: ["We need a big table for the party.", "They live in a huge house.", "The elephant was enormous."] },
     { type: "Intensity", hue: "coral", axisLabel: "mild → strong", words: ["glad", "happy", "thrilled"],
-      notes: ["A mild, polite kind of pleased — often about one specific fact.", "The everyday word for feeling good.", "Extremely excited and happy — a strong reaction."],
+      notes: ["A mild, polite kind of pleased: often about one specific fact.", "The everyday word for feeling good.", "Extremely excited and happy: a strong reaction."],
       examples: ["I'm glad you called.", "She's happy with her new job.", "He was thrilled to win the award."] },
     { type: "Intensity", hue: "coral", axisLabel: "mild → strong", words: ["tired", "drained", "exhausted"],
-      notes: ["The normal, everyday word for needing rest.", "Tired in a deeper way, often emotionally too.", "Completely out of energy — the strongest word for tired."],
+      notes: ["The normal, everyday word for needing rest.", "Tired in a deeper way, often emotionally too.", "Completely out of energy: the strongest word for tired."],
       examples: ["I'm tired after work.", "The meeting left her feeling drained.", "After the marathon, he was exhausted."] },
     { type: "Manner", hue: "seafoam", axisLabel: "quiet → loud", words: ["whispered", "said", "shouted"],
       notes: ["Spoken very quietly, often so others can't hear.", "The neutral, everyday word for speaking.", "Spoken loudly, often with strong emotion."],
@@ -23,19 +23,19 @@ const LESSON = {
       notes: ["A quiet, gentle laugh, often to yourself.", "The normal, everyday word for laughing.", "A loud, hearty burst of laughter."],
       examples: ["He chuckled at the joke.", "The kids laughed at the clown.", "The whole room guffawed at his story."] },
     { type: "Connotation", hue: "gold", axisLabel: "positive → negative", words: ["slim", "thin", "skinny"],
-      notes: ["A flattering, positive way to describe someone thin.", "A neutral, factual word — no strong feeling either way.", "A casual word that can sound negative or critical."],
+      notes: ["A flattering, positive way to describe someone thin.", "A neutral, factual word: no strong feeling either way.", "A casual word that can sound negative or critical."],
       examples: ["She has a slim figure.", "He's quite thin for his height.", "The kids teased him for being skinny."] },
     { type: "Connotation", hue: "gold", axisLabel: "positive → negative", words: ["frugal", "cheap", "stingy"],
-      notes: ["A positive word — careful and smart with money.", "An informal, slightly negative word — unwilling to spend.", "A strongly negative word — selfish with money."],
+      notes: ["A positive word: careful and smart with money.", "An informal, slightly negative word: unwilling to spend.", "A strongly negative word: selfish with money."],
       examples: ["She's frugal and always saves for the future.", "He's too cheap to buy a proper gift.", "Everyone thinks their boss is stingy."] },
     { type: "Connotation", hue: "gold", axisLabel: "positive → negative", words: ["smart", "clever", "cunning"],
-      notes: ["A plain, positive word for intelligent.", "A positive word that suggests quick, creative thinking.", "A negative word — smart in a sly or deceptive way."],
+      notes: ["A plain, positive word for intelligent.", "A positive word that suggests quick, creative thinking.", "A negative word: smart in a sly or deceptive way."],
       examples: ["She's a smart student.", "He found a clever solution to the problem.", "The fox is known for being cunning."] },
   ],
   guided: [
-    { prompt: "It wasn't just tired — she was completely ___.", answer: "exhausted" },
+    { prompt: "It wasn't just tired. She was completely ___.", answer: "exhausted" },
     { prompt: "He didn't just laugh, he ___ so loudly the whole room turned.", answer: "guffawed" },
-    { prompt: "She's not cheap, she's just ___ with her money — she always plans ahead.", answer: "frugal" },
+    { prompt: "She's not cheap, she's just ___ with her money. She always plans ahead.", answer: "frugal" },
     { prompt: "The fox tricked the farmer with a ___ plan.", answer: "cunning" },
     { prompt: "He wasn't just walking, he was ___ down the hallway, clearly upset.", answer: "marching" },
   ],
@@ -199,7 +199,7 @@ function WrapupSlide() {
       <span className="nsn-wrap-icon">🎚️</span>
       <h2 className="nsn-h">Lesson Complete</h2>
       <h1 className="nsn-cover-title nsn-cover-title--small">9 Scales Sorted!</h1>
-      <p className="nsn-tagline">You ranked 9 near-synonym sets by intensity, manner, and tone. Same rough meaning, different shade — pick the word that actually fits.</p>
+      <p className="nsn-tagline">You ranked 9 near-synonym sets by intensity, manner, and tone. Same rough meaning, different shade: pick the word that actually fits.</p>
       <button type="button" className="nsn-nav-btn nsn-nav-btn--primary" onClick={() => window.close()}>Close ✕</button>
     </div>
   );

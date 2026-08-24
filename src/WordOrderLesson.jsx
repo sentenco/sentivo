@@ -3,20 +3,20 @@ import { useState } from "react";
 const LESSON = {
   title: "Word Order",
   formula: "OSASCOMP: Opinion, Size, Age, Shape, Color, Origin, Material, Purpose",
-  leadIn: "Describe an object near you using three adjectives — don't worry about the order yet, just try it.",
+  leadIn: "Describe an object near you using three adjectives. Don't worry about the order yet, just try it.",
   osascomp: [
-    { letter: "O", word: "Opinion", usage: "What you think or feel about something — always comes first, before any factual description.", examples: ["a beautiful painting", "an ugly building"] },
+    { letter: "O", word: "Opinion", usage: "What you think or feel about something. It always comes first, before any factual description.", examples: ["a beautiful painting", "an ugly building"] },
     { letter: "S", word: "Size", usage: "How big or small something is.", examples: ["a small dog", "a huge house"] },
     { letter: "A", word: "Age", usage: "How old or new something is.", examples: ["an old car", "a young puppy"] },
     { letter: "S", word: "Shape", usage: "The form or shape of something.", examples: ["a round table", "a square box"] },
     { letter: "C", word: "Color", usage: "The color of something.", examples: ["a red apple", "a blue sky"] },
     { letter: "O", word: "Origin", usage: "Where something comes from.", examples: ["a French cheese", "an Italian car"] },
     { letter: "M", word: "Material", usage: "What something is made of.", examples: ["a wooden chair", "a leather jacket"] },
-    { letter: "P", word: "Purpose", usage: "What something is used for — sits right next to the noun, almost like part of it.", examples: ["a sleeping bag", "running shoes"] },
+    { letter: "P", word: "Purpose", usage: "What something is used for. It sits right next to the noun, almost like part of it.", examples: ["a sleeping bag", "running shoes"] },
   ],
-  compareLeftLabel: "Correct — OSASCOMP order",
-  compareRightLabel: "Incorrect — random order",
-  compareNote: "Native speakers follow this sequence instinctively — a sentence with adjectives out of order sounds noticeably wrong, even if every word is correct.",
+  compareLeftLabel: "Correct: OSASCOMP order",
+  compareRightLabel: "Incorrect: random order",
+  compareNote: "Native speakers follow this sequence instinctively: a sentence with adjectives out of order sounds noticeably wrong, even if every word is correct.",
   comparePairs: [
     { left: "a beautiful small old Italian leather handbag", right: "an Italian leather old small beautiful handbag" },
     { left: "a lovely round red French plate", right: "a French red round lovely plate" },
@@ -34,7 +34,7 @@ const LESSON = {
     "Write one sentence with 4 stacked adjectives, checking your order against OSASCOMP.",
     "Scramble one of your own sentences, then fix it back to the right order.",
   ],
-  wrapup: "OSASCOMP — Opinion, Size, Age, Shape, Color, Origin, Material, Purpose — is the order adjectives stack in before a noun. Most sentences won't use all eight, but combining two or more always follows this sequence.",
+  wrapup: "OSASCOMP (Opinion, Size, Age, Shape, Color, Origin, Material, Purpose) is the order adjectives stack in before a noun. Most sentences won't use all eight, but combining two or more always follows this sequence.",
 };
 
 function buildSlides(lesson) {
@@ -92,8 +92,8 @@ function OsascompSlide({ lesson, index }) {
 }
 
 function PredictSlide({ lesson }) {
-  const left = lesson.compareLeftLabel.split(" — ")[0].trim();
-  const right = lesson.compareRightLabel.split(" — ")[0].trim();
+  const left = lesson.compareLeftLabel.split(": ")[0].trim();
+  const right = lesson.compareRightLabel.split(": ")[0].trim();
   return (
     <div className="wol-slide">
       <span className="wol-eyebrow">Think About It</span>

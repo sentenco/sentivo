@@ -17,11 +17,11 @@ const LESSON = {
     },
   ],
   compareLeftLabel: "Neutral statement",
-  compareRightLabel: "Emphatic — contradicting a doubt",
+  compareRightLabel: "Emphatic: contradicting a doubt",
   compareNote: "The neutral version just states a fact. The emphatic version pushes back against something someone else said or assumed.",
   comparePairs: [
     { left: "I like your cooking.", right: "I do like your cooking! I just ate a big lunch." },
-    { left: "She finished the project.", right: "She did finish the project — check your email." },
+    { left: "She finished the project.", right: "She did finish the project. Check your email." },
   ],
   guided: [
     { prompt: "\"You don't care.\" \"I ___ care!\" (emphasis)", answer: "do" },
@@ -36,7 +36,7 @@ const LESSON = {
     "Write one short dialogue where someone doubts something and the other person uses does or did to push back.",
     "Say one true thing about yourself out loud, adding stress on do/does/did for emphasis.",
   ],
-  wrapup: "Do, does, and did can be added to an affirmative sentence purely for emphasis — especially useful for pushing back against a doubt or denial.",
+  wrapup: "Do, does, and did can be added to an affirmative sentence purely for emphasis, especially useful for pushing back against a doubt or denial.",
 };
 
 function buildSlides(lesson) {
@@ -90,8 +90,8 @@ function TeachSlide({ lesson, index }) {
 }
 
 function PredictSlide({ lesson }) {
-  const left = lesson.compareLeftLabel.split(" — ")[0].trim();
-  const right = lesson.compareRightLabel.split(" — ")[0].trim();
+  const left = lesson.compareLeftLabel.split(": ")[0].trim();
+  const right = lesson.compareRightLabel.split(": ")[0].trim();
   return (
     <div className="edl-slide">
       <span className="edl-eyebrow">Think About It</span>

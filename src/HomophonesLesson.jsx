@@ -205,7 +205,7 @@ function WrapupSlide() {
       <span className="hpl-wrap-icon">👂</span>
       <h2 className="hpl-h">Lesson Complete</h2>
       <h1 className="hpl-cover-title hpl-cover-title--small">10 Sound-Alikes Sorted!</h1>
-      <p className="hpl-tagline">You spotted the real spellings across 10 homophone sets and practiced picking the right one in context. Same sound, different job — check the spelling.</p>
+      <p className="hpl-tagline">You spotted the real spellings across 10 homophone sets and practiced picking the right one in context. Same sound, different job: check the spelling.</p>
       <button type="button" className="hpl-nav-btn hpl-nav-btn--primary" onClick={() => window.close()}>Close ✕</button>
     </div>
   );

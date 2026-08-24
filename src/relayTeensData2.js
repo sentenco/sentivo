@@ -1,4 +1,4 @@
-// RELAY Lesson 2 — "Friends & Hangouts" — Small talk — Teens
+// RELAY Lesson 2: "Friends & Hangouts" | Small talk | Teens
 
 export default {
   id: "relay-teens-2",
@@ -33,7 +33,7 @@ export default {
   },
 
   pushIt: {
-    prompt: "One harder one — “Is it better to have a few close friends or a lot of friends?” Still three beats.",
+    prompt: "One harder one: “Is it better to have a few close friends or a lot of friends?” Still three beats.",
   },
 
   end: {
@@ -43,7 +43,7 @@ export default {
 
   teacherGuide: {
     cover: {
-      goal: "Same rule, new topic — keep the reminder short.",
+      goal: "Same rule, new topic: keep the reminder short.",
       say: ["Same rule: Answer, Add, Ask. Today's topic is friends and hanging out."],
       do: ["Keep this under a minute."],
       timing: "1 min",
@@ -51,28 +51,28 @@ export default {
     warmup: {
       goal: "Check whether the habit is holding up on a new topic.",
       say: [
-        "Quick question — answer however feels natural.",
+        "Quick question. Answer however feels natural.",
         "Notice whether you added more this time, or stopped again.",
       ],
       do: ["Ask the question and stop. Don't nudge for more."],
       timing: "1 min",
     },
     bounce: {
-      goal: "The core drill — student produces all 3 beats, live, every round.",
+      goal: "The core drill: student produces all 3 beats, live, every round.",
       say: [
-        "Same style — answer, add, ask — every time.",
+        "Same style: answer, add, ask, every time.",
         "If you stop after one, I'll just say which beat is missing and you try that same answer again.",
       ],
       do: [
         "Ask each question, let them respond fully before any feedback.",
-        "If a beat's missing, name only the missing beat — never supply your own version.",
+        "If a beat's missing, name only the missing beat: never supply your own version.",
         "Let them redo their own answer, not repeat yours.",
       ],
       timing: "8 min",
     },
     yourturn: {
-      goal: "Unaided diagnostic — sustain a real exchange without prompting.",
-      say: ["Now a real one — I'm a friend you just ran into at the mall. Keep it going."],
+      goal: "Unaided diagnostic: sustain a real exchange without prompting.",
+      say: ["Now a real one. I'm a friend you just ran into at the mall. Keep it going."],
       do: [
         "Stay in character, don't break to coach mid-scene.",
         "Count how many turns they sustain before it stalls.",
@@ -81,14 +81,14 @@ export default {
     },
     pushit: {
       goal: "Optional stretch if time allows.",
-      say: ["One more, tougher topic — still three beats."],
+      say: ["One more, tougher topic, still three beats."],
       do: ["Skip if short on time."],
       timing: "2 min (optional)",
     },
     end: {
       goal: "Close warmly, no score to deliver.",
-      say: ["Nice work today — see you next lesson."],
-      do: ["No scorecard, no homework this lesson — just end on the win."],
+      say: ["Nice work today. See you next lesson."],
+      do: ["No scorecard, no homework this lesson: just end on the win."],
       timing: "1 min",
     },
   },

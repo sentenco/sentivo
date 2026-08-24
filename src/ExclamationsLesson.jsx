@@ -3,21 +3,21 @@ import { useState } from "react";
 const LESSON = {
   title: "Exclamations",
   formula: "What (a/an) + adjective + noun!  ·  How + adjective/adverb!",
-  leadIn: "Look outside or around the room — react to something you see, starting with 'What a...!' or 'How...!'",
+  leadIn: "Look outside or around the room. React to something you see, starting with 'What a...!' or 'How...!'",
   teach: [
     {
-      name: "What — Before a Noun",
+      name: "What: Before a Noun",
       definition: "What starts an exclamation about a noun, with a or an before a singular countable noun.",
       examples: ["What a beautiful day!", "What an amazing goal!", "What nonsense!"],
     },
     {
-      name: "How — Before an Adjective or Adverb",
+      name: "How: Before an Adjective or Adverb",
       definition: "How starts an exclamation about a quality or an action, with no noun involved.",
       examples: ["How beautiful!", "How strange!", "How quickly she runs!"],
     },
   ],
-  compareLeftLabel: "What — needs a noun",
-  compareRightLabel: "How — no noun needed",
+  compareLeftLabel: "What: needs a noun",
+  compareRightLabel: "How: no noun needed",
   compareNote: "If you're reacting to a thing, use what plus a/an plus the noun. If you're reacting to a quality or an action alone, use how.",
   comparePairs: [
     { left: "What a lovely garden!", right: "How lovely!" },
@@ -90,8 +90,8 @@ function TeachSlide({ lesson, index }) {
 }
 
 function PredictSlide({ lesson }) {
-  const left = lesson.compareLeftLabel.split(" — ")[0].trim();
-  const right = lesson.compareRightLabel.split(" — ")[0].trim();
+  const left = lesson.compareLeftLabel.split(": ")[0].trim();
+  const right = lesson.compareRightLabel.split(": ")[0].trim();
   return (
     <div className="excl-slide">
       <span className="excl-eyebrow">Think About It</span>

@@ -32,7 +32,7 @@ export default function ConditionalsTrack() {
           <span className="cnt-hero-badge">What If...?</span>
           <h1 className="cnt-hero-title">Conditionals</h1>
           <p className="cnt-hero-blurb">
-            The 5 conditional types — Zero, First, Second, Third, and Mixed — across 5 lessons. Each one teaches
+            The 5 conditional types (Zero, First, Second, Third, and Mixed) across 5 lessons. Each one teaches
             the formula, then walks through guided and production practice.
           </p>
         </div>

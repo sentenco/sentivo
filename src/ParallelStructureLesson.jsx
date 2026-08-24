@@ -2,12 +2,12 @@ import { useState } from "react";
 
 const LESSON = {
   title: "Parallel Structure",
-  formula: "match the form: all -ing, all to + verb, or all one word class — never mixed",
+  formula: "match the form: all -ing, all to + verb, or all one word class, never mixed",
   leadIn: "Read this out loud: “I like swimming, running, and to bike.” Does something feel off about the last item?",
   teach: [
     {
       name: "Parallel Structure in Lists",
-      definition: "Items in a list joined by and, or, or commas should all take the same grammatical form — all gerunds, all infinitives, or all the same word class.",
+      definition: "Items in a list joined by and, or, or commas should all take the same grammatical form: all gerunds, all infinitives, or all the same word class.",
       examples: ["I like swimming, running, and biking. (not 'to bike')", "She is smart, funny, and kind. (all adjectives)", "The plan is to save money, to invest wisely, and to retire early. (all infinitives)"],
     },
     {
@@ -17,7 +17,7 @@ const LESSON = {
     },
   ],
   compareLeftLabel: "Broken parallel structure",
-  compareRightLabel: "Fixed — matching forms",
+  compareRightLabel: "Fixed: matching forms",
   compareNote: "The fix is almost always the same: find the first item's grammatical form, then make every other item in the list or pair match it exactly.",
   comparePairs: [
     { left: "I like swimming, running, and to bike.", right: "I like swimming, running, and biking." },
@@ -36,7 +36,7 @@ const LESSON = {
     "Write one sentence with a broken parallel structure, then fix it.",
     "Write one sentence using a correlative pair (either...or, not only...but also) with matching forms on both sides.",
   ],
-  wrapup: "When items are joined in a list, comparison, or correlative pair, they all need to share the same grammatical form — mixing gerunds, infinitives, and plain verbs in the same list breaks the rhythm and the rule.",
+  wrapup: "When items are joined in a list, comparison, or correlative pair, they all need to share the same grammatical form: mixing gerunds, infinitives, and plain verbs in the same list breaks the rhythm and the rule.",
 };
 
 function buildSlides(lesson) {
@@ -90,8 +90,8 @@ function TeachSlide({ lesson, index }) {
 }
 
 function PredictSlide({ lesson }) {
-  const left = lesson.compareLeftLabel.split(" — ")[0].trim();
-  const right = lesson.compareRightLabel.split(" — ")[0].trim();
+  const left = lesson.compareLeftLabel.split(": ")[0].trim();
+  const right = lesson.compareRightLabel.split(": ")[0].trim();
   return (
     <div className="psl-slide">
       <span className="psl-eyebrow">Think About It</span>

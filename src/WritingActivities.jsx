@@ -148,7 +148,7 @@ export default function WritingActivities({ query }) {
   const q = query.trim().toLowerCase();
 
   // Browser back/forward drives navigation instead of an in-page back
-  // button — each drill-down pushes a history entry, popping it here
+  // button. Each drill-down pushes a history entry, and popping it here
   // unwinds the matching piece of state.
   useEffect(() => {
     function onPopState(e) {

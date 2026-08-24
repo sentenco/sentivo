@@ -7,18 +7,18 @@ const LESSON = {
   teach: [
     {
       name: "English Verbs That Drop the Reflexive",
-      definition: "Many languages require a reflexive pronoun for actions someone does to themselves, but English treats these as simple, object-free actions — no myself, yourself, etc. needed.",
+      definition: "Many languages require a reflexive pronoun for actions someone does to themselves, but English treats these as simple, object-free actions: no myself, yourself, etc. needed.",
       examples: ["I need to concentrate. (not 'concentrate myself')", "Please relax. (not 'relax yourself')", "She woke up late. (not 'woke herself up')"],
     },
     {
       name: "When English Still Needs It",
-      definition: "A smaller set of English verbs genuinely do need the reflexive pronoun — mixing these up with the drop-it group is the real source of the confusion.",
+      definition: "A smaller set of English verbs genuinely do need the reflexive pronoun. Mixing these up with the drop-it group is the real source of the confusion.",
       examples: ["He hurt himself while skiing.", "Introduce yourself to the class.", "They really enjoyed themselves at the party."],
     },
   ],
   compareLeftLabel: "Drops the reflexive",
   compareRightLabel: "Keeps the reflexive",
-  compareNote: "There's no shortcut rule — concentrate, relax, wake up, hurry, feel, behave, sit down, and get up all drop it, while hurt, introduce, enjoy, and a few others genuinely need it. Learn them as two separate lists.",
+  compareNote: "There's no shortcut rule: concentrate, relax, wake up, hurry, feel, behave, sit down, and get up all drop it, while hurt, introduce, enjoy, and a few others genuinely need it. Learn them as two separate lists.",
   comparePairs: [
     { left: "I woke up at 7. (no reflexive)", right: "I really enjoyed myself. (needs the reflexive)" },
     { left: "Please relax, everything is fine. (no reflexive)", right: "He hurt himself while skiing. (needs the reflexive)" },
@@ -36,7 +36,7 @@ const LESSON = {
     "Write one sentence using hurt, introduce, or enjoy correctly, with the reflexive pronoun.",
     "Ask a partner to guess whether a verb needs -self or not, and check the answer together.",
   ],
-  wrapup: "A group of everyday English verbs — concentrate, relax, wake up, hurry — never take a reflexive pronoun, unlike in many other languages. A smaller group — hurt, introduce, enjoy — genuinely needs it. There's no shortcut, just two lists to learn.",
+  wrapup: "A group of everyday English verbs (concentrate, relax, wake up, hurry) never take a reflexive pronoun, unlike in many other languages. A smaller group (hurt, introduce, enjoy) genuinely needs it. There's no shortcut, just two lists to learn.",
 };
 
 function buildSlides(lesson) {
@@ -90,8 +90,8 @@ function TeachSlide({ lesson, index }) {
 }
 
 function PredictSlide({ lesson }) {
-  const left = lesson.compareLeftLabel.split(" — ")[0].trim();
-  const right = lesson.compareRightLabel.split(" — ")[0].trim();
+  const left = lesson.compareLeftLabel.split(": ")[0].trim();
+  const right = lesson.compareRightLabel.split(": ")[0].trim();
   return (
     <div className="rvsl-slide">
       <span className="rvsl-eyebrow">Think About It</span>

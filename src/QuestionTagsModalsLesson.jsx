@@ -7,17 +7,17 @@ const LESSON = {
   teach: [
     {
       name: "Modal Verb Tags",
-      definition: "Modals like must, might, could, should, will, and would form question tags the same way as any auxiliary — just flip the polarity and repeat the modal.",
+      definition: "Modals like must, might, could, should, will, and would form question tags the same way as any auxiliary: just flip the polarity and repeat the modal.",
       examples: ["You must be tired, mustn't you?", "She should call him, shouldn't she?", "They will help, won't they?"],
     },
     {
-      name: "Have To, Used To & Ought To — Treated Like Main Verbs",
+      name: "Have To, Used To & Ought To: Treated Like Main Verbs",
       definition: "Have to and used to aren't true auxiliaries, so their tags borrow do/does/did, just like a regular verb. Ought to is the one exception that keeps its own form.",
       examples: ["She has to leave, doesn't she?", "You used to live here, didn't you?", "We ought to go, oughtn't we?"],
     },
   ],
-  compareLeftLabel: "True modal — tags with itself",
-  compareRightLabel: "Have to / Used to — tags with do/does/did",
+  compareLeftLabel: "True modal: tags with itself",
+  compareRightLabel: "Have to / Used to: tags with do/does/did",
   compareNote: "A true modal repeats itself in the tag. Have to and used to look like modals but act like regular verbs, so their tags borrow do-support instead.",
   comparePairs: [
     { left: "You must be exhausted, mustn't you?", right: "You have to leave early, don't you?" },
@@ -90,8 +90,8 @@ function TeachSlide({ lesson, index }) {
 }
 
 function PredictSlide({ lesson }) {
-  const left = lesson.compareLeftLabel.split(" — ")[0].trim();
-  const right = lesson.compareRightLabel.split(" — ")[0].trim();
+  const left = lesson.compareLeftLabel.split(": ")[0].trim();
+  const right = lesson.compareRightLabel.split(": ")[0].trim();
   return (
     <div className="qtml-slide">
       <span className="qtml-eyebrow">Think About It</span>

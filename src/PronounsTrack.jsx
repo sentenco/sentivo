@@ -31,7 +31,7 @@ export default function PronounsTrack() {
           <span className="ppt-hero-badge">Who Owns What?</span>
           <h1 className="ppt-hero-title">Pronouns &amp; Possessives</h1>
           <p className="ppt-hero-blurb">
-            I vs me, my vs mine, myself vs himself, this vs that, and the apostrophe that shows ownership — 5
+            I vs me, my vs mine, myself vs himself, this vs that, and the apostrophe that shows ownership: 5
             lessons covering the small words that carry a lot of weight.
           </p>
         </div>

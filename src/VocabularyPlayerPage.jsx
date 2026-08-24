@@ -5,7 +5,7 @@ import WordSortGame from "./WordSortGame";
 import OddOneOutGame from "./OddOneOutGame";
 import PlayerChrome from "./PlayerChrome";
 
-// Standalone popup player for one Word Bank category — opened via
+// Standalone popup player for one Word Bank category, opened via
 // window.open from VocabularyGames, matching the Editorial View /
 // lesson-player pattern (its own window, not embedded in the Library page).
 export default function VocabularyPlayerPage() {

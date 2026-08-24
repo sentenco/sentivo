@@ -31,7 +31,7 @@ export default function QuestionFormationTrack() {
           <span className="qft-hero-badge">Ask Away!</span>
           <h1 className="qft-hero-title">Question Formation</h1>
           <p className="qft-hero-blurb">
-            Yes/no questions, wh-questions, question tags, and indirect questions — 4 lessons covering how a
+            Yes/no questions, wh-questions, question tags, and indirect questions: 4 lessons covering how a
             question actually gets built, and the exceptions that trip students up.
           </p>
         </div>

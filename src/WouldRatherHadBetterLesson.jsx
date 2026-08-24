@@ -6,19 +6,19 @@ const LESSON = {
   leadIn: "Would you rather stay in tonight, or go out? And what's something you'd better not forget to do today?",
   teach: [
     {
-      name: "Would Rather — Preference",
-      definition: "Would rather + base verb states a preference between options, with no real urgency — swap in would rather not for the negative.",
+      name: "Would Rather: Preference",
+      definition: "Would rather + base verb states a preference between options, with no real urgency. Swap in would rather not for the negative.",
       examples: ["I'd rather stay home tonight.", "She would rather walk than drive.", "I'd rather not talk about it."],
     },
     {
-      name: "Had Better — Urgent Advice or Warning",
-      definition: "Had better + base verb gives urgent advice or a warning, implying something bad will happen if it's ignored — stronger than should.",
+      name: "Had Better: Urgent Advice or Warning",
+      definition: "Had better + base verb gives urgent advice or a warning, implying something bad will happen if it's ignored. It's stronger than should.",
       examples: ["You'd better hurry, the train leaves soon.", "We'd better call a doctor.", "You'd better not be late."],
     },
   ],
-  compareLeftLabel: "Would rather — a calm preference",
-  compareRightLabel: "Had better — an urgent warning",
-  compareNote: "Both look similar — a contracted 'd + base verb — but would rather just states what you prefer, while had better warns of a real consequence if you don't act.",
+  compareLeftLabel: "Would rather: a calm preference",
+  compareRightLabel: "Had better: an urgent warning",
+  compareNote: "Both look similar (a contracted 'd + base verb), but would rather just states what you prefer, while had better warns of a real consequence if you don't act.",
   comparePairs: [
     { left: "I'd rather have tea than coffee.", right: "You'd better drink some water, you look dehydrated." },
     { left: "She'd rather stay in tonight.", right: "She'd better finish that report tonight." },
@@ -90,8 +90,8 @@ function TeachSlide({ lesson, index }) {
 }
 
 function PredictSlide({ lesson }) {
-  const left = lesson.compareLeftLabel.split(" — ")[0].trim();
-  const right = lesson.compareRightLabel.split(" — ")[0].trim();
+  const left = lesson.compareLeftLabel.split(": ")[0].trim();
+  const right = lesson.compareRightLabel.split(": ")[0].trim();
   return (
     <div className="wrhl-slide">
       <span className="wrhl-eyebrow">Think About It</span>

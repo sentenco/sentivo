@@ -16,9 +16,9 @@ const LESSON = {
       examples: ["different → difference", "significant → significance", "aware → awareness"],
     },
   ],
-  compareLeftLabel: "Verb / adjective — direct, personal",
-  compareRightLabel: "Nominalization — formal, objective",
-  compareNote: "Nominalizing turns an action or quality into a 'thing' you can discuss — swapping 'we decided' for 'the decision was made' shifts the focus from who did it to the fact itself, which is exactly what formal writing wants.",
+  compareLeftLabel: "Verb / adjective: direct, personal",
+  compareRightLabel: "Nominalization: formal, objective",
+  compareNote: "Nominalizing turns an action or quality into a 'thing' you can discuss: swapping 'we decided' for 'the decision was made' shifts the focus from who did it to the fact itself, which is exactly what formal writing wants.",
   comparePairs: [
     { left: "We decided to expand the business.", right: "The decision to expand the business was made." },
     { left: "The results were significant.", right: "The significance of the results was clear." },
@@ -36,7 +36,7 @@ const LESSON = {
     "Write one formal sentence using a nominalized adjective, like difference or awareness.",
     "Take one of your own casual sentences and rewrite it formally using nominalization.",
   ],
-  wrapup: "Nominalization turns a verb or adjective into a noun — decide into decision, different into difference — letting formal and academic writing name an action or quality as a thing, rather than describing it directly.",
+  wrapup: "Nominalization turns a verb or adjective into a noun (decide into decision, different into difference), letting formal and academic writing name an action or quality as a thing, rather than describing it directly.",
 };
 
 function buildSlides(lesson) {
@@ -90,8 +90,8 @@ function TeachSlide({ lesson, index }) {
 }
 
 function PredictSlide({ lesson }) {
-  const left = lesson.compareLeftLabel.split(" — ")[0].trim();
-  const right = lesson.compareRightLabel.split(" — ")[0].trim();
+  const left = lesson.compareLeftLabel.split(": ")[0].trim();
+  const right = lesson.compareRightLabel.split(": ")[0].trim();
   return (
     <div className="noml-slide">
       <span className="noml-eyebrow">Think About It</span>

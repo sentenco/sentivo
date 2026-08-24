@@ -6,18 +6,18 @@ const LESSON = {
   leadIn: "Finish this sentence two ways: 'The movie was ___' and 'It was ___ movie.'",
   teach: [
     {
-      name: "So — Before an Adjective Alone",
+      name: "So: Before an Adjective Alone",
       definition: "So goes directly before an adjective (or adverb) with no noun attached, for emphasis.",
       examples: ["The movie was so boring.", "She talks so quickly.", "I'm so tired today."],
     },
     {
-      name: "Such — Before a Noun Phrase",
+      name: "Such: Before a Noun Phrase",
       definition: "Such goes before a/an plus an adjective plus a noun, when there's a noun in the sentence.",
       examples: ["It was such a boring movie.", "She's such a fast talker.", "That's such a great idea."],
     },
   ],
-  compareLeftLabel: "So — no noun",
-  compareRightLabel: "Such — with a noun",
+  compareLeftLabel: "So: no noun",
+  compareRightLabel: "Such: with a noun",
   compareNote: "If there's a noun in the sentence, use such (with a/an before a singular noun). If there's no noun, just the adjective alone, use so.",
   comparePairs: [
     { left: "The food was so spicy.", right: "It was such spicy food." },
@@ -90,8 +90,8 @@ function TeachSlide({ lesson, index }) {
 }
 
 function PredictSlide({ lesson }) {
-  const left = lesson.compareLeftLabel.split(" — ")[0].trim();
-  const right = lesson.compareRightLabel.split(" — ")[0].trim();
+  const left = lesson.compareLeftLabel.split(": ")[0].trim();
+  const right = lesson.compareRightLabel.split(": ")[0].trim();
   return (
     <div className="ssl-slide">
       <span className="ssl-eyebrow">Think About It</span>

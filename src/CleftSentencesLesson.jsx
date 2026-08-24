@@ -6,19 +6,19 @@ const LESSON = {
   leadIn: "Say the same fact two different ways: “My sister cooked dinner.” Now make “my sister” the most important word in the sentence.",
   teach: [
     {
-      name: "It-Clefts — Spotlight with \"It was...\"",
+      name: "It-Clefts: Spotlight with \"It was...\"",
       definition: "It + be + the emphasized element + who/that + the rest of the sentence. This structure exists purely to put the spotlight on one specific word or phrase.",
       examples: ["It was Sarah who called.", "It was yesterday that we met.", "It's the price that worries me."],
     },
     {
-      name: "Wh-Clefts — Spotlight with \"What...\"",
-      definition: "What + clause + be + the emphasized element. This version builds the spotlight from the other end — starting with what, then revealing the important part at the end.",
+      name: "Wh-Clefts: Spotlight with \"What...\"",
+      definition: "What + clause + be + the emphasized element. This version builds the spotlight from the other end: starting with what, then revealing the important part at the end.",
       examples: ["What I need is sleep.", "What surprised us was his reaction.", "What she wants is a new job."],
     },
   ],
-  compareLeftLabel: "It-cleft — spotlights with \"It was...\"",
-  compareRightLabel: "Wh-cleft — spotlights with \"What...\"",
-  compareNote: "Both structures exist purely to emphasize one piece of information — they just build the spotlight from opposite ends of the sentence.",
+  compareLeftLabel: "It-cleft: spotlights with \"It was...\"",
+  compareRightLabel: "Wh-cleft: spotlights with \"What...\"",
+  compareNote: "Both structures exist purely to emphasize one piece of information: they just build the spotlight from opposite ends of the sentence.",
   comparePairs: [
     { left: "It was the manager who called the meeting.", right: "What the manager did was call the meeting." },
     { left: "It was money that motivated him.", right: "What motivated him was money." },
@@ -34,9 +34,9 @@ const LESSON = {
   practice: [
     "Write one it-cleft sentence emphasizing who did something.",
     "Write one wh-cleft sentence emphasizing what someone wants or needs.",
-    "Take a plain sentence and rewrite it twice — once as an it-cleft, once as a wh-cleft.",
+    "Take a plain sentence and rewrite it twice: once as an it-cleft, once as a wh-cleft.",
   ],
-  wrapup: "It-clefts and wh-clefts both exist to shine a spotlight on one specific piece of information — it-clefts start with 'It was...', wh-clefts start with 'What...'.",
+  wrapup: "It-clefts and wh-clefts both exist to shine a spotlight on one specific piece of information: it-clefts start with 'It was...', wh-clefts start with 'What...'.",
 };
 
 function buildSlides(lesson) {
@@ -90,8 +90,8 @@ function TeachSlide({ lesson, index }) {
 }
 
 function PredictSlide({ lesson }) {
-  const left = lesson.compareLeftLabel.split(" — ")[0].trim();
-  const right = lesson.compareRightLabel.split(" — ")[0].trim();
+  const left = lesson.compareLeftLabel.split(": ")[0].trim();
+  const right = lesson.compareRightLabel.split(": ")[0].trim();
   return (
     <div className="cflt-slide">
       <span className="cflt-eyebrow">Think About It</span>

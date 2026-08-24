@@ -6,18 +6,18 @@ const LESSON = {
   leadIn: "Think of a time you did something even though it was hard. Now imagine a situation where you'd do something even if it were hard.",
   teach: [
     {
-      name: "Even Though vs Even If — A Fact or a Hypothetical?",
+      name: "Even Though vs Even If: A Fact or a Hypothetical?",
       definition: "Even though introduces a fact that's already true, adding surprise to the contrast. Even if introduces a hypothetical condition that may or may not happen.",
       examples: ["Even though it was raining, we went for a walk. (it really was raining)", "Even if it rains, we'll go for a walk. (we don't know yet)", "Even though she's busy, she always answers my calls."],
     },
     {
-      name: "Even So — A Linking Word, Not a Conjunction",
-      definition: "Even so means 'despite that' or 'nevertheless' — it links two separate sentences, standing on its own at the start of the second one, unlike even though and even if.",
+      name: "Even So: A Linking Word, Not a Conjunction",
+      definition: "Even so means 'despite that' or 'nevertheless': it links two separate sentences, standing on its own at the start of the second one, unlike even though and even if.",
       examples: ["It was raining hard. Even so, we went for a walk.", "The test was difficult. Even so, most students passed.", "He was exhausted. Even so, he kept working."],
     },
   ],
-  compareLeftLabel: "Even Though / Even If — join one sentence",
-  compareRightLabel: "Even So — starts a new sentence",
+  compareLeftLabel: "Even Though / Even If: join one sentence",
+  compareRightLabel: "Even So: starts a new sentence",
   compareNote: "Even though and even if attach a dependent clause to the main clause in a single sentence. Even so does a similar job but as a standalone linking word connecting two full sentences.",
   comparePairs: [
     { left: "Even though it was expensive, she bought it.", right: "It was expensive. Even so, she bought it." },
@@ -90,8 +90,8 @@ function TeachSlide({ lesson, index }) {
 }
 
 function PredictSlide({ lesson }) {
-  const left = lesson.compareLeftLabel.split(" — ")[0].trim();
-  const right = lesson.compareRightLabel.split(" — ")[0].trim();
+  const left = lesson.compareLeftLabel.split(": ")[0].trim();
+  const right = lesson.compareRightLabel.split(": ")[0].trim();
   return (
     <div className="etil-slide">
       <span className="etil-eyebrow">Think About It</span>

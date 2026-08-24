@@ -31,7 +31,7 @@ export default function PunctuationEssentialsTrack() {
           <span className="puet-hero-badge">Mark It Right!</span>
           <h1 className="puet-hero-title">Punctuation Essentials</h1>
           <p className="puet-hero-blurb">
-            Commas, apostrophes, semicolons and colons, and quotation marks — 5 lessons, one mark at a time.
+            Commas, apostrophes, semicolons and colons, and quotation marks: 5 lessons, one mark at a time.
           </p>
         </div>
 

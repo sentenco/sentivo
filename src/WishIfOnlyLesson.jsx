@@ -16,9 +16,9 @@ const LESSON = {
       examples: ["I wish I had studied harder.", "If only I hadn't said that.", "He wishes he had taken the job."],
     },
   ],
-  compareLeftLabel: "Present wish — past simple",
-  compareRightLabel: "Past regret — past perfect",
-  compareNote: "The tense tells you which moment the wish is about — one step back for a present wish, two steps back for a regret about the past.",
+  compareLeftLabel: "Present wish: past simple",
+  compareRightLabel: "Past regret: past perfect",
+  compareNote: "The tense tells you which moment the wish is about: one step back for a present wish, two steps back for a regret about the past.",
   comparePairs: [
     { left: "I wish I had a car. (I don't have one now)", right: "I wish I had bought a car. (I didn't buy one back then)" },
     { left: "If only she were here.", right: "If only she had come earlier." },
@@ -34,7 +34,7 @@ const LESSON = {
   practice: [
     "Write one sentence wishing something were different right now.",
     "Write one sentence regretting something from your past, using if only.",
-    "Compare the two — which tense did each one use?",
+    "Compare the two. Which tense did each one use?",
   ],
   wrapup: "Wish/if only + past simple expresses a present wish. Wish/if only + past perfect expresses regret about the past.",
 };
@@ -90,8 +90,8 @@ function TeachSlide({ lesson, index }) {
 }
 
 function PredictSlide({ lesson }) {
-  const left = lesson.compareLeftLabel.split(" — ")[0].trim();
-  const right = lesson.compareRightLabel.split(" — ")[0].trim();
+  const left = lesson.compareLeftLabel.split(": ")[0].trim();
+  const right = lesson.compareRightLabel.split(": ")[0].trim();
   return (
     <div className="wil-slide">
       <span className="wil-eyebrow">Think About It</span>

@@ -49,7 +49,7 @@ export default function PartsOfSpeechTrack() {
           <span className="pos-hero-badge">Grammar Comics!</span>
           <h1 className="pos-hero-title">Parts of Speech</h1>
           <p className="pos-hero-blurb">
-            The 8 traditional parts of speech, taught across 6 topics — one pair of lessons each: a Lesson to build the
+            The 8 traditional parts of speech, taught across 6 topics, one pair of lessons each: a Lesson to build the
             meaning and use, then an Assessment to check it sticks.
           </p>
         </div>

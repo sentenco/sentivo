@@ -16,11 +16,11 @@ const LESSON = {
     { word: "export", syllables: ["ex", "port"], noun: { def: "A product sold to another country.", example: "Coffee is one of the country's biggest exports." }, verb: { def: "To send goods to another country to be sold.", example: "The company exports furniture worldwide." } },
   ],
   guided: [
-    { prompt: "She wants to ___ her final project to the board next week.", answer: "present — stress the 2nd syllable (pre-SENT), verb" },
-    { prompt: "This factory can ___ over 500 cars a day.", answer: "produce — stress the 2nd syllable (pro-DUCE), verb" },
-    { prompt: "He kept the concert ticket as a ___ of that amazing night.", answer: "record — stress the 1st syllable (RE-cord), noun" },
-    { prompt: "I ___ that the meeting will be cancelled.", answer: "suspect — stress the 2nd syllable (sus-PECT), verb" },
-    { prompt: "You'll need a valid ___ to enter the building.", answer: "permit — stress the 1st syllable (PER-mit), noun" },
+    { prompt: "She wants to ___ her final project to the board next week.", answer: "present: stress the 2nd syllable (pre-SENT), verb" },
+    { prompt: "This factory can ___ over 500 cars a day.", answer: "produce: stress the 2nd syllable (pro-DUCE), verb" },
+    { prompt: "He kept the concert ticket as a ___ of that amazing night.", answer: "record: stress the 1st syllable (RE-cord), noun" },
+    { prompt: "I ___ that the meeting will be cancelled.", answer: "suspect: stress the 2nd syllable (sus-PECT), verb" },
+    { prompt: "You'll need a valid ___ to enter the building.", answer: "permit: stress the 1st syllable (PER-mit), noun" },
   ],
 };
 
@@ -139,7 +139,7 @@ function WrapupSlide() {
       <span className="ssl-wrap-icon">🌊</span>
       <h2 className="ssl-h">Lesson Complete</h2>
       <h1 className="ssl-cover-title ssl-cover-title--small">10 Words Down!</h1>
-      <p className="ssl-tagline">You explored 10 stress-shift pairs and practiced spotting them in context. Stress moves, meaning follows — keep an ear out for it.</p>
+      <p className="ssl-tagline">You explored 10 stress-shift pairs and practiced spotting them in context. Stress moves, meaning follows: keep an ear out for it.</p>
       <button type="button" className="ssl-nav-btn ssl-nav-btn--primary" onClick={() => window.close()}>Close ✕</button>
     </div>
   );

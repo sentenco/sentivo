@@ -7,22 +7,22 @@ const LESSON = {
   traps: [
     { tag: "S+V", word: "Basic Agreement", usage: "A singular subject (he, she, it, or any singular noun) takes a verb with -s in the present tense; a plural subject drops it.", examples: ["She walks to school.", "The students walk to school."] },
     { tag: "AND", word: "Compound Subjects with And", usage: "Two subjects joined by and act as one plural subject, even if each one is singular on its own.", examples: ["Tom and Jerry are best friends.", "Rice and beans are on the menu."] },
-    { tag: "OR", word: "Compound Subjects with Or/Nor", usage: "With or or nor, the verb agrees with whichever subject is closer to it — not the first one.", examples: ["Neither the teacher nor the students are ready.", "Either my parents or my sister is picking me up."] },
+    { tag: "OR", word: "Compound Subjects with Or/Nor", usage: "With or or nor, the verb agrees with whichever subject is closer to it, not the first one.", examples: ["Neither the teacher nor the students are ready.", "Either my parents or my sister is picking me up."] },
     { tag: "ANY1", word: "Indefinite Pronouns", usage: "Everyone, everybody, someone, anybody, nobody, and each are always singular, even though they sound like they mean 'many people.'", examples: ["Everyone is welcome.", "Each of the players has a locker."] },
-    { tag: "GAP", word: "Ignore the Words In Between", usage: "A phrase sitting between the subject and the verb — usually starting with of, with, or including — doesn't change the agreement. Match the verb to the real subject, not the nearest noun.", examples: ["The box of chocolates is on the table.", "One of my friends is a doctor."] },
+    { tag: "GAP", word: "Ignore the Words In Between", usage: "A phrase sitting between the subject and the verb, usually starting with of, with, or including, doesn't change the agreement. Match the verb to the real subject, not the nearest noun.", examples: ["The box of chocolates is on the table.", "One of my friends is a doctor."] },
   ],
-  compareLeftLabel: "And — always plural",
-  compareRightLabel: "Or / Nor — agrees with the nearer subject",
-  compareNote: "And always makes a plural subject. Or and nor don't combine the subjects — the verb just matches whichever one sits closest to it.",
+  compareLeftLabel: "And: always plural",
+  compareRightLabel: "Or / Nor: agrees with the nearer subject",
+  compareNote: "And always makes a plural subject. Or and nor don't combine the subjects: the verb just matches whichever one sits closest to it.",
   comparePairs: [
     { left: "My mom and dad are both teachers.", right: "Neither my mom nor my dad is a teacher." },
     { left: "The dog and the cat are asleep.", right: "Either the dog or the cats are making that noise." },
   ],
   guided: [
     { prompt: "She ___ (walk) to school every day. (basic agreement)", answer: "walks" },
-    { prompt: "Tom and Jerry ___ (be) best friends. (and — always plural)", answer: "are" },
-    { prompt: "Neither the teacher nor the students ___ (be) ready. (or/nor — nearer subject)", answer: "are" },
-    { prompt: "Either my parents or my sister ___ (be) picking me up. (or/nor — nearer subject)", answer: "is" },
+    { prompt: "Tom and Jerry ___ (be) best friends. (and, always plural)", answer: "are" },
+    { prompt: "Neither the teacher nor the students ___ (be) ready. (or/nor, nearer subject)", answer: "are" },
+    { prompt: "Either my parents or my sister ___ (be) picking me up. (or/nor, nearer subject)", answer: "is" },
     { prompt: "Everyone ___ (be) welcome at the party. (indefinite pronoun)", answer: "is" },
     { prompt: "The box of chocolates ___ (be) on the table. (ignore the words in between)", answer: "is" },
   ],
@@ -89,8 +89,8 @@ function TrapSlide({ lesson, index }) {
 }
 
 function PredictSlide({ lesson }) {
-  const left = lesson.compareLeftLabel.split(" — ")[0].trim();
-  const right = lesson.compareRightLabel.split(" — ")[0].trim();
+  const left = lesson.compareLeftLabel.split(": ")[0].trim();
+  const right = lesson.compareRightLabel.split(": ")[0].trim();
   return (
     <div className="sval-slide">
       <span className="sval-eyebrow">Think About It</span>

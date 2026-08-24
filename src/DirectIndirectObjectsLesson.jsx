@@ -6,19 +6,19 @@ const LESSON = {
   leadIn: "Say one sentence about something you gave someone recently, two different ways.",
   teach: [
     {
-      name: "No Preposition — Indirect Object First",
-      definition: "With verbs like give, tell, show, and send, the indirect object (usually a person) can sit directly after the verb, before the direct object — no preposition needed.",
+      name: "No Preposition: Indirect Object First",
+      definition: "With verbs like give, tell, show, and send, the indirect object (usually a person) can sit directly after the verb, before the direct object, with no preposition needed.",
       examples: ["Give me the book.", "She told him the truth.", "I sent her an email."],
     },
     {
-      name: "With a Preposition — Direct Object First",
-      definition: "The same idea can be said the other way around: direct object first, then to or for plus the indirect object. A few verbs — explain, describe, suggest — only allow this second form.",
+      name: "With a Preposition: Direct Object First",
+      definition: "The same idea can be said the other way around: direct object first, then to or for plus the indirect object. A few verbs (explain, describe, suggest) only allow this second form.",
       examples: ["Give the book to me.", "She explained the problem to him.", "He bought a gift for his sister."],
     },
   ],
-  compareLeftLabel: "No preposition — person first",
-  compareRightLabel: "With preposition — thing first",
-  compareNote: "Most verbs allow both orders, but a few — explain, describe, suggest, announce — only work with the preposition. You can't say 'explain me the problem.'",
+  compareLeftLabel: "No preposition: person first",
+  compareRightLabel: "With preposition: thing first",
+  compareNote: "Most verbs allow both orders, but a few (explain, describe, suggest, announce) only work with the preposition. You can't say 'explain me the problem.'",
   comparePairs: [
     { left: "Give me the book.", right: "Give the book to me." },
     { left: "She told him the truth.", right: "She told the truth to him." },
@@ -29,14 +29,14 @@ const LESSON = {
     { prompt: "I sent ___ an email. (no preposition)", answer: "her" },
     { prompt: "Give the book ___ me. (with preposition)", answer: "to" },
     { prompt: "He bought a gift ___ his sister. (with preposition)", answer: "for" },
-    { prompt: "You can't say 'explain me the problem' — you must say 'Explain the problem ___ me.'", answer: "to" },
+    { prompt: "You can't say 'explain me the problem.' You must say 'Explain the problem ___ me.'", answer: "to" },
   ],
   practice: [
     "Write one sentence using the no-preposition order with give or tell.",
     "Rewrite it using the with-preposition order instead.",
-    "Write one sentence with explain or suggest — remember, these only take the preposition form.",
+    "Write one sentence with explain or suggest (remember, these only take the preposition form).",
   ],
-  wrapup: "Many verbs let you drop the preposition and put the person right after the verb, or add to/for and put the thing first. A handful of verbs — explain, describe, suggest — only work with the preposition.",
+  wrapup: "Many verbs let you drop the preposition and put the person right after the verb, or add to/for and put the thing first. A handful of verbs (explain, describe, suggest) only work with the preposition.",
 };
 
 function buildSlides(lesson) {
@@ -90,8 +90,8 @@ function TeachSlide({ lesson, index }) {
 }
 
 function PredictSlide({ lesson }) {
-  const left = lesson.compareLeftLabel.split(" — ")[0].trim();
-  const right = lesson.compareRightLabel.split(" — ")[0].trim();
+  const left = lesson.compareLeftLabel.split(": ")[0].trim();
+  const right = lesson.compareRightLabel.split(": ")[0].trim();
   return (
     <div className="diol-slide">
       <span className="diol-eyebrow">Think About It</span>

@@ -1,5 +1,5 @@
 // Shared branded shell for standalone activity popups (Vocabulary games,
-// Writing activities) — a real header with the Sentivo logo instead of a
+// Writing activities): a real header with the Sentivo logo instead of a
 // bare white page, matching the site's actual wordmark (same markup as
 // Library.jsx's .gc-header-brand).
 export default function PlayerChrome({ eyebrow, children }) {

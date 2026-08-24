@@ -5,7 +5,7 @@ const CAT_LABELS = { verb: "Verb", noun: "Noun", adjective: "Adjective", adverb:
 
 const LESSON = {
   title: "Word Families",
-  tagline: "One root, four jobs — verb, noun, adjective, adverb.",
+  tagline: "One root, four jobs: verb, noun, adjective, adverb.",
   families: [
     { root: "decide", forms: { verb: "decide", noun: "decision", adjective: "decisive", adverb: "decisively" },
       notes: { verb: "To make a choice.", noun: "The choice you made.", adjective: "Able to decide quickly and confidently.", adverb: "In a decisive way." },
@@ -40,7 +40,7 @@ const LESSON = {
   ],
   guided: [
     { prompt: "It was a difficult ___ to make. (decide)", answer: "decision" },
-    { prompt: "She's one of the most ___ people I know — always full of new ideas. (create)", answer: "creative" },
+    { prompt: "She's one of the most ___ people I know, always full of new ideas. (create)", answer: "creative" },
     { prompt: "He answered the question very ___, with lots of useful facts. (inform)", answer: "informatively" },
     { prompt: "They ___ launched the product last month. (success)", answer: "successfully" },
     { prompt: "Good ___ is the key to any healthy relationship. (communicate)", answer: "communication" },
@@ -153,7 +153,7 @@ function FamilySlide({ index }) {
               onClick={() => clickSlot(cat)}
             >
               <span className="wfl-cell-label">{CAT_LABELS[cat]}</span>
-              <span className="wfl-cell-word">{item ? item.word : "—"}</span>
+              <span className="wfl-cell-word">{item ? item.word : "·"}</span>
             </button>
           );
         })}

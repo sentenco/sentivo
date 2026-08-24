@@ -31,7 +31,7 @@ export default function ModalsTrack() {
           <span className="mdt-hero-badge">Say It Right!</span>
           <h1 className="mdt-hero-title">Modals</h1>
           <p className="mdt-hero-blurb">
-            The 9 core modal verbs — can, could, may, might, will, would, must, shall, should — grouped by what
+            The 9 core modal verbs (can, could, may, might, will, would, must, shall, should) grouped by what
             they actually do: ability, permission, possibility, obligation, advice, and deduction, across 7 lessons.
           </p>
         </div>

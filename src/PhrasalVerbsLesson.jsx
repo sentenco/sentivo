@@ -1,24 +1,24 @@
 import { useState } from "react";
 
 const LESSON = {
-  title: "Phrasal Verbs — Separable vs Inseparable",
+  title: "Phrasal Verbs: Separable vs Inseparable",
   formula: "separable: verb + particle + object OR verb + object + particle  ·  inseparable: verb + particle + object only",
   leadIn: "Think of one thing you need to turn off before bed tonight.",
   teach: [
     {
-      name: "Separable Phrasal Verbs — The Object Can Move",
-      definition: "With separable phrasal verbs, the object can go either after the whole phrase or between the verb and the particle — and with pronouns, it must go in the middle.",
+      name: "Separable Phrasal Verbs: The Object Can Move",
+      definition: "With separable phrasal verbs, the object can go either after the whole phrase or between the verb and the particle. With pronouns, it must go in the middle.",
       examples: ["Turn off the light. / Turn the light off.", "She picked up her keys. / She picked her keys up.", "Turn it off. (not 'turn off it')"],
     },
     {
-      name: "Inseparable Phrasal Verbs — The Object Can't Move",
-      definition: "With inseparable phrasal verbs, the object always stays after the whole phrase — it can never go in the middle.",
+      name: "Inseparable Phrasal Verbs: The Object Can't Move",
+      definition: "With inseparable phrasal verbs, the object always stays after the whole phrase: it can never go in the middle.",
       examples: ["She looks after her little brother. (not 'looks her little brother after')", "He ran into an old friend.", "I'm looking for my keys."],
     },
   ],
-  compareLeftLabel: "Separable — object can move",
-  compareRightLabel: "Inseparable — object stays after",
-  compareNote: "There's no shortcut to know which is which — it has to be learned phrasal verb by phrasal verb. But the pronoun test always works: try it or him — if that sounds wrong in the middle, the verb is inseparable.",
+  compareLeftLabel: "Separable: object can move",
+  compareRightLabel: "Inseparable: object stays after",
+  compareNote: "There's no shortcut to know which is which. It has to be learned phrasal verb by phrasal verb. But the pronoun test always works: try it or him. If that sounds wrong in the middle, the verb is inseparable.",
   comparePairs: [
     { left: "Turn it off. (separable, pronoun must be in the middle)", right: "Look after it. (inseparable, pronoun stays after)" },
     { left: "She picked it up.", right: "He ran into it." },
@@ -27,14 +27,14 @@ const LESSON = {
     { prompt: "Please turn ___ the TV ___. (separable, can split)", answer: "turn the TV off / turn off the TV" },
     { prompt: "Can you turn ___ off? (pronoun, must be in the middle)", answer: "it" },
     { prompt: "She picked ___ her keys ___ before leaving. (separable, can split)", answer: "picked her keys up / picked up her keys" },
-    { prompt: "She looks ___ her grandmother every weekend. (inseparable — can't split)", answer: "after" },
-    { prompt: "He ran ___ an old friend at the mall. (inseparable — can't split)", answer: "into" },
-    { prompt: "I'm looking ___ my glasses — have you seen them? (inseparable)", answer: "for" },
+    { prompt: "She looks ___ her grandmother every weekend. (inseparable, can't split)", answer: "after" },
+    { prompt: "He ran ___ an old friend at the mall. (inseparable, can't split)", answer: "into" },
+    { prompt: "I'm looking ___ my glasses. Have you seen them? (inseparable)", answer: "for" },
   ],
   practice: [
     "Write one sentence with a separable phrasal verb, splitting the verb and particle.",
     "Write one sentence with an inseparable phrasal verb.",
-    "Take one of your separable sentences and replace the object with a pronoun — where does it go?",
+    "Take one of your separable sentences and replace the object with a pronoun. Where does it go?",
   ],
   wrapup: "Separable phrasal verbs let the object move between the verb and particle (and pronouns must go there). Inseparable phrasal verbs always keep the object after the whole phrase.",
 };
@@ -90,8 +90,8 @@ function TeachSlide({ lesson, index }) {
 }
 
 function PredictSlide({ lesson }) {
-  const left = lesson.compareLeftLabel.split(" — ")[0].trim();
-  const right = lesson.compareRightLabel.split(" — ")[0].trim();
+  const left = lesson.compareLeftLabel.split(": ")[0].trim();
+  const right = lesson.compareRightLabel.split(": ")[0].trim();
   return (
     <div className="phvl-slide">
       <span className="phvl-eyebrow">Think About It</span>

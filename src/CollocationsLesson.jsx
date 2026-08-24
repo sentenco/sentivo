@@ -4,7 +4,7 @@ const VERBS = ["make", "do", "take", "have"];
 
 const LESSON = {
   title: "Collocations",
-  tagline: "Words that just go together — pick the right partner verb.",
+  tagline: "Words that just go together: pick the right partner verb.",
   items: [
     { noun: "a decision", correct: "make",
       note: "English pairs “make” with things you create or produce, like a decision, a plan, or a choice.",
@@ -165,7 +165,7 @@ function WrapupSlide() {
       <span className="cll-wrap-icon">🤝</span>
       <h2 className="cll-h">Lesson Complete</h2>
       <h1 className="cll-cover-title cll-cover-title--small">10 Collocations Locked In!</h1>
-      <p className="cll-tagline">You matched 10 nouns to their natural verb partner. Not a grammar rule — just how native speakers actually say it.</p>
+      <p className="cll-tagline">You matched 10 nouns to their natural verb partner. Not a grammar rule, just how native speakers actually say it.</p>
       <button type="button" className="cll-nav-btn cll-nav-btn--primary" onClick={() => window.close()}>Close ✕</button>
     </div>
   );

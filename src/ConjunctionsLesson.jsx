@@ -15,13 +15,13 @@ const LESSON = {
   ],
   teach: [
     {
-      name: "Subordinating Conjunctions — Adding a Dependent Clause",
-      definition: "Because, although, since, while, and unless connect a main idea to a dependent clause that can't stand alone — the dependent clause explains a reason, contrast, time, or condition.",
+      name: "Subordinating Conjunctions: Adding a Dependent Clause",
+      definition: "Because, although, since, while, and unless connect a main idea to a dependent clause that can't stand alone: the dependent clause explains a reason, contrast, time, or condition.",
       examples: ["I stayed home because I was sick.", "Although it was raining, we went for a walk.", "Unless you hurry, you'll miss the bus."],
     },
   ],
-  compareLeftLabel: "Coordinating — both sides stand alone",
-  compareRightLabel: "Subordinating — one side depends on the other",
+  compareLeftLabel: "Coordinating: both sides stand alone",
+  compareRightLabel: "Subordinating: one side depends on the other",
   compareNote: "Try splitting the sentence in two. If both halves make complete sense on their own, it's coordinating. If one half sounds incomplete alone, it's subordinating.",
   comparePairs: [
     { left: "I was tired, but I finished the report. (both complete alone)", right: "Although I was tired, I finished the report. (first half incomplete alone)" },
@@ -36,7 +36,7 @@ const LESSON = {
     { prompt: "I stayed home ___ I was sick. (dependent clause, reason)", answer: "because" },
   ],
   practice: [
-    "Write one sentence for each FANBOYS word — that's seven sentences, one per conjunction.",
+    "Write one sentence for each FANBOYS word (that's seven sentences, one per conjunction).",
     "Write one sentence with a subordinating conjunction explaining a reason.",
     "Write one sentence with a subordinating conjunction explaining a contrast.",
   ],
@@ -116,8 +116,8 @@ function TeachSlide({ lesson, index }) {
 }
 
 function PredictSlide({ lesson }) {
-  const left = lesson.compareLeftLabel.split(" — ")[0].trim();
-  const right = lesson.compareRightLabel.split(" — ")[0].trim();
+  const left = lesson.compareLeftLabel.split(": ")[0].trim();
+  const right = lesson.compareRightLabel.split(": ")[0].trim();
   return (
     <div className="cjl-slide">
       <span className="cjl-eyebrow">Think About It</span>

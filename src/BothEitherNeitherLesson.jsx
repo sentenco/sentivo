@@ -6,19 +6,19 @@ const LESSON = {
   leadIn: "Think of two restaurants you like equally. Say one sentence using both, and one using either.",
   teach: [
     {
-      name: "Both, Either, Neither — Agreement",
+      name: "Both, Either, Neither: Agreement",
       definition: "Both always takes a plural verb. Either and neither, even though they refer to two things, are grammatically singular and take a singular verb on their own.",
       examples: ["Both restaurants are excellent.", "Either option is fine with me.", "Neither answer is correct."],
     },
     {
-      name: "Either...Or / Neither...Nor — Correlative Pairs",
-      definition: "These pairs link two choices together — either...or presents a positive choice, neither...nor presents a double negative. The verb agrees with the closer subject.",
+      name: "Either...Or / Neither...Nor: Correlative Pairs",
+      definition: "These pairs link two choices together: either...or presents a positive choice, neither...nor presents a double negative. The verb agrees with the closer subject.",
       examples: ["Either Tom or his sister is coming.", "Neither the teacher nor the students were ready.", "You can either call or text me."],
     },
   ],
-  compareLeftLabel: "Both — always plural",
-  compareRightLabel: "Either / Neither — singular alone",
-  compareNote: "Both covers two things together, so the verb is plural. Either and neither pick just one of the two (or neither), so the verb stays singular — unless they're part of a pair, where the verb agrees with the nearer subject.",
+  compareLeftLabel: "Both: always plural",
+  compareRightLabel: "Either / Neither: singular alone",
+  compareNote: "Both covers two things together, so the verb is plural. Either and neither pick just one of the two (or neither), so the verb stays singular, unless they're part of a pair, where the verb agrees with the nearer subject.",
   comparePairs: [
     { left: "Both of my parents are teachers.", right: "Either of my parents is available to help." },
     { left: "Both answers are correct.", right: "Neither answer is correct." },
@@ -29,7 +29,7 @@ const LESSON = {
     { prompt: "Neither option ___ (be) perfect.", answer: "is" },
     { prompt: "Either Tom or his sisters ___ (be) coming to the party. (agrees with the nearer subject)", answer: "are" },
     { prompt: "Neither the manager nor the staff ___ (be) available today. (agrees with the nearer subject)", answer: "is" },
-    { prompt: "You can ___ (either/neither) call or text me — whichever is easier.", answer: "either" },
+    { prompt: "You can ___ (either/neither) call or text me, whichever is easier.", answer: "either" },
   ],
   practice: [
     "Write one sentence using both with a plural verb.",
@@ -90,8 +90,8 @@ function TeachSlide({ lesson, index }) {
 }
 
 function PredictSlide({ lesson }) {
-  const left = lesson.compareLeftLabel.split(" — ")[0].trim();
-  const right = lesson.compareRightLabel.split(" — ")[0].trim();
+  const left = lesson.compareLeftLabel.split(": ")[0].trim();
+  const right = lesson.compareRightLabel.split(": ")[0].trim();
   return (
     <div className="benl-slide">
       <span className="benl-eyebrow">Think About It</span>

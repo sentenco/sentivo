@@ -18,7 +18,7 @@ const LESSON = {
   ],
   compareLeftLabel: "Negative emphasis",
   compareRightLabel: "Formal conditional (no if)",
-  compareNote: "Both invert the normal word order, but for different reasons — one adds dramatic emphasis, the other is just a more formal way to say if.",
+  compareNote: "Both invert the normal word order, but for different reasons: one adds dramatic emphasis, the other is just a more formal way to say if.",
   comparePairs: [
     { left: "Never have I felt so proud.", right: "Had I known, I wouldn't have come." },
     { left: "Rarely does he complain.", right: "Should you have questions, ask me." },
@@ -90,8 +90,8 @@ function TeachSlide({ lesson, index }) {
 }
 
 function PredictSlide({ lesson }) {
-  const left = lesson.compareLeftLabel.split(" — ")[0].trim();
-  const right = lesson.compareRightLabel.split(" — ")[0].trim();
+  const left = lesson.compareLeftLabel.split(": ")[0].trim();
+  const right = lesson.compareRightLabel.split(": ")[0].trim();
   return (
     <div className="ivl-slide">
       <span className="ivl-eyebrow">Think About It</span>

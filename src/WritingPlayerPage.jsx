@@ -13,7 +13,7 @@ const PLAYERS = {
   registerRewrite: RegisterRewriteActivity,
 };
 
-// Standalone popup player for one Writing topic — opened via window.open
+// Standalone popup player for one Writing topic, opened via window.open
 // from WritingActivities, matching the Editorial View / lesson-player
 // pattern (its own window, not embedded in the Library page).
 export default function WritingPlayerPage() {

@@ -7,18 +7,18 @@ const LESSON = {
   teach: [
     {
       name: "Preposition of Time + Gerund",
-      definition: "Before, after, since, and other prepositions of time are followed by the -ing form, because a preposition is always followed by a noun or gerund — never a base verb.",
+      definition: "Before, after, since, and other prepositions of time are followed by the -ing form, because a preposition is always followed by a noun or gerund: never a base verb.",
       examples: ["Wash your hands before eating.", "She felt relieved after finishing the exam.", "I haven't seen him since graduating."],
     },
     {
-      name: "To + Infinitive of Purpose — A Different 'To'",
-      definition: "When to means 'in order to' and explains why, it's the infinitive marker, not a preposition — so it takes the base verb, not -ing.",
+      name: "To + Infinitive of Purpose: A Different 'To'",
+      definition: "When to means 'in order to' and explains why, it's the infinitive marker, not a preposition, so it takes the base verb, not -ing.",
       examples: ["She woke up early to catch the sunrise.", "He studies every night to improve his grades.", "I called to ask a question."],
     },
   ],
-  compareLeftLabel: "Before / After / Since — preposition + gerund",
-  compareRightLabel: "To — infinitive of purpose + base verb",
-  compareNote: "Both can explain the order of events or the reason for an action, but only real prepositions of time take the gerund. To meaning 'in order to' is a different animal — the infinitive marker — and needs the base verb.",
+  compareLeftLabel: "Before / After / Since: preposition + gerund",
+  compareRightLabel: "To: infinitive of purpose + base verb",
+  compareNote: "Both can explain the order of events or the reason for an action, but only real prepositions of time take the gerund. To meaning 'in order to' is a different animal, the infinitive marker, and needs the base verb.",
   comparePairs: [
     { left: "Before leaving, she locked the door.", right: "She locked the door to keep it safe." },
     { left: "After finishing the exam, he relaxed.", right: "He studied hard to finish the exam early." },
@@ -36,7 +36,7 @@ const LESSON = {
     "Write one sentence using to plus a base verb to explain a purpose.",
     "Explain out loud why 'to' isn't always a preposition.",
   ],
-  wrapup: "Real prepositions of time — before, after, since — take the gerund. To meaning 'in order to' is the infinitive marker, not a preposition, so it takes the base verb instead.",
+  wrapup: "Real prepositions of time (before, after, since) take the gerund. To meaning 'in order to' is the infinitive marker, not a preposition, so it takes the base verb instead.",
 };
 
 function buildSlides(lesson) {
@@ -90,8 +90,8 @@ function TeachSlide({ lesson, index }) {
 }
 
 function PredictSlide({ lesson }) {
-  const left = lesson.compareLeftLabel.split(" — ")[0].trim();
-  const right = lesson.compareRightLabel.split(" — ")[0].trim();
+  const left = lesson.compareLeftLabel.split(": ")[0].trim();
+  const right = lesson.compareRightLabel.split(": ")[0].trim();
   return (
     <div className="gipl-slide">
       <span className="gipl-eyebrow">Think About It</span>

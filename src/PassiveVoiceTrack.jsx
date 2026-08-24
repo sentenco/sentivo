@@ -32,7 +32,7 @@ export default function PassiveVoiceTrack() {
           <span className="pvt-hero-badge">Flip the Focus!</span>
           <h1 className="pvt-hero-title">Passive Voice</h1>
           <p className="pvt-hero-blurb">
-            From basics to the by-agent — 6 lessons covering present, past, perfect, future, and modal passive
+            From basics to the by-agent: 6 lessons covering present, past, perfect, future, and modal passive
             forms, plus when passive is actually the right choice.
           </p>
         </div>

@@ -2,22 +2,22 @@ import { useState } from "react";
 
 const LESSON = {
   title: "Linking Words",
-  formula: "however/nevertheless (contrast)  ·  therefore/as a result (consequence) — new sentence, comma after",
+  formula: "however/nevertheless (contrast)  ·  therefore/as a result (consequence): new sentence, comma after",
   leadIn: "Finish this sentence with a linking word: 'It was raining heavily. ___, we decided to go for a walk anyway.'",
   teach: [
     {
-      name: "Contrast — However, Nevertheless",
+      name: "Contrast: However, Nevertheless",
       definition: "Unlike but, these linking words usually start their own sentence (after a period or semicolon) and are followed by a comma.",
       examples: ["It was raining. However, we went for a walk.", "She was exhausted; nevertheless, she finished the race.", "He's very shy. On the other hand, his sister is quite outgoing."],
     },
     {
-      name: "Result — Therefore, As a Result",
+      name: "Result: Therefore, As a Result",
       definition: "These linking words show a consequence, also starting a new sentence or following a semicolon, followed by a comma.",
       examples: ["He didn't study. Therefore, he failed the test.", "The bridge was closed; as a result, traffic was terrible.", "She worked hard all year. Consequently, she got a promotion."],
     },
   ],
-  compareLeftLabel: "Linking word — between sentences",
-  compareRightLabel: "Conjunction — within one sentence",
+  compareLeftLabel: "Linking word: between sentences",
+  compareRightLabel: "Conjunction: within one sentence",
   compareNote: "A conjunction like but joins two clauses directly into one sentence. A linking word like however connects two separate sentences (or clauses after a semicolon), and needs its own comma.",
   comparePairs: [
     { left: "It was raining, but we went for a walk. (one sentence)", right: "It was raining. However, we went for a walk. (two sentences)" },
@@ -34,9 +34,9 @@ const LESSON = {
   practice: [
     "Write two sentences connected by however or nevertheless, with correct punctuation.",
     "Write two sentences connected by therefore or as a result, with correct punctuation.",
-    "Compare one of your sentences with a similar one using a coordinating conjunction instead — what's different?",
+    "Compare one of your sentences with a similar one using a coordinating conjunction instead. What's different?",
   ],
-  wrapup: "Linking words like however and therefore connect ideas across separate sentences (or after a semicolon), always followed by a comma — unlike conjunctions, which join clauses within one sentence.",
+  wrapup: "Linking words like however and therefore connect ideas across separate sentences (or after a semicolon), always followed by a comma. Conjunctions, by contrast, join clauses within one sentence.",
 };
 
 function buildSlides(lesson) {
@@ -90,8 +90,8 @@ function TeachSlide({ lesson, index }) {
 }
 
 function PredictSlide({ lesson }) {
-  const left = lesson.compareLeftLabel.split(" — ")[0].trim();
-  const right = lesson.compareRightLabel.split(" — ")[0].trim();
+  const left = lesson.compareLeftLabel.split(": ")[0].trim();
+  const right = lesson.compareRightLabel.split(": ")[0].trim();
   return (
     <div className="lwl-slide">
       <span className="lwl-eyebrow">Think About It</span>

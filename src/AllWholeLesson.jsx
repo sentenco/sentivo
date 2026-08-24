@@ -6,19 +6,19 @@ const LESSON = {
   leadIn: "Think of a day you worked non-stop, start to finish. Describe it using all day, then again using the whole day.",
   teach: [
     {
-      name: "All — Comes Before the Determiner",
-      definition: "All sits before an article, possessive, or demonstrative — or before a plural noun with no determiner at all — and works with both countable and uncountable nouns.",
+      name: "All: Comes Before the Determiner",
+      definition: "All sits before an article, possessive, or demonstrative (or before a plural noun with no determiner at all), and works with both countable and uncountable nouns.",
       examples: ["All the students passed.", "All my life, I've lived here.", "All day, she worked without a break."],
     },
     {
-      name: "Whole — Comes After the Determiner",
-      definition: "Whole always needs a determiner right before it, and sits after it, closer to the noun — and it's only used with singular countable nouns.",
+      name: "Whole: Comes After the Determiner",
+      definition: "Whole always needs a determiner right before it, and sits after it, closer to the noun. It's only used with singular countable nouns.",
       examples: ["The whole class passed.", "My whole life, I've lived here.", "The whole day, she worked without a break."],
     },
   ],
-  compareLeftLabel: "All — before the determiner",
-  compareRightLabel: "Whole — after the determiner",
-  compareNote: "Both can mean the same thing, but they sit on opposite sides of the article or possessive — all the day is wrong; it's either all day or the whole day.",
+  compareLeftLabel: "All: before the determiner",
+  compareRightLabel: "Whole: after the determiner",
+  compareNote: "Both can mean the same thing, but they sit on opposite sides of the article or possessive: all the day is wrong; it's either all day or the whole day.",
   comparePairs: [
     { left: "All the cake is gone.", right: "The whole cake is gone." },
     { left: "All my family came.", right: "My whole family came." },
@@ -34,7 +34,7 @@ const LESSON = {
   practice: [
     "Write one sentence using all before a determiner.",
     "Write one sentence using whole after a determiner, describing the same idea.",
-    "Try saying 'all the day' out loud — why does it sound wrong?",
+    "Try saying 'all the day' out loud. Why does it sound wrong?",
   ],
   wrapup: "All comes before the determiner (all the day, all my life). Whole comes after it (the whole day, my whole life) and only works with singular countable nouns.",
 };
@@ -90,8 +90,8 @@ function TeachSlide({ lesson, index }) {
 }
 
 function PredictSlide({ lesson }) {
-  const left = lesson.compareLeftLabel.split(" — ")[0].trim();
-  const right = lesson.compareRightLabel.split(" — ")[0].trim();
+  const left = lesson.compareLeftLabel.split(": ")[0].trim();
+  const right = lesson.compareRightLabel.split(": ")[0].trim();
   return (
     <div className="awl-slide">
       <span className="awl-eyebrow">Think About It</span>

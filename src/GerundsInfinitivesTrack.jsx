@@ -32,7 +32,7 @@ export default function GerundsInfinitivesTrack() {
           <h1 className="git-hero-title">Gerunds &amp; Infinitives</h1>
           <p className="git-hero-blurb">
             Verbs that demand one or the other, verbs that take either (and a few that flip meaning), gerunds as
-            nouns, and the infinitive of purpose — 4 lessons, one rule per slide.
+            nouns, and the infinitive of purpose: 4 lessons, one rule per slide.
           </p>
         </div>
 

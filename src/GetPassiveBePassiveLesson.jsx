@@ -3,22 +3,22 @@ import { useState } from "react";
 const LESSON = {
   title: "Get-Passive vs Be-Passive",
   formula: "be + past participle (neutral)  ·  get + past participle (casual, dramatic, often sudden)",
-  leadIn: "Think of something surprising that happened to you recently — good or bad. How would you tell a close friend about it?",
+  leadIn: "Think of something surprising that happened to you recently, good or bad. How would you tell a close friend about it?",
   teach: [
     {
-      name: "Be-Passive — Neutral, Standard",
-      definition: "The regular passive — be + past participle — used in neutral, formal, or written English, with no extra emotional weight attached.",
+      name: "Be-Passive: Neutral, Standard",
+      definition: "The regular passive (be + past participle), used in neutral, formal, or written English, with no extra emotional weight attached.",
       examples: ["He was fired.", "The window was broken.", "The report was finished on time."],
     },
     {
-      name: "Get-Passive — Casual, Dramatic, Often Sudden",
-      definition: "Get + past participle describes the same kind of event but adds informality and a sense that something happened to someone suddenly — often unlucky or surprising.",
+      name: "Get-Passive: Casual, Dramatic, Often Sudden",
+      definition: "Get + past participle describes the same kind of event but adds informality and a sense that something happened to someone suddenly, often unlucky or surprising.",
       examples: ["He got fired.", "The window got broken.", "She got promoted out of nowhere."],
     },
   ],
-  compareLeftLabel: "Be-passive — neutral",
-  compareRightLabel: "Get-passive — casual, dramatic",
-  compareNote: "Both describe the same event, but get-passive adds emotional weight — surprise, bad luck, or informality — that be-passive doesn't carry.",
+  compareLeftLabel: "Be-passive: neutral",
+  compareRightLabel: "Get-passive: casual, dramatic",
+  compareNote: "Both describe the same event, but get-passive adds emotional weight (surprise, bad luck, or informality) that be-passive doesn't carry.",
   comparePairs: [
     { left: "The car was stolen.", right: "The car got stolen right outside my house!" },
     { left: "He was promoted.", right: "He got promoted, can you believe it?" },
@@ -27,16 +27,16 @@ const LESSON = {
     { prompt: "The report ___ (be) finished by Friday. (neutral, formal)", answer: "was" },
     { prompt: "The window ___ (be) broken during the storm. (neutral)", answer: "was" },
     { prompt: "The meeting ___ (be) postponed until next week. (neutral)", answer: "was" },
-    { prompt: "He ___ (get) fired last week — I still can't believe it! (casual, dramatic)", answer: "got" },
+    { prompt: "He ___ (get) fired last week. I still can't believe it! (casual, dramatic)", answer: "got" },
     { prompt: "My phone ___ (get) stolen on the train. (casual, sudden)", answer: "got" },
     { prompt: "She ___ (get) promoted out of nowhere. (casual, surprising)", answer: "got" },
   ],
   practice: [
     "Write one be-passive sentence about a formal or neutral event.",
     "Write one get-passive sentence about something sudden or surprising that happened to you.",
-    "Rewrite one of your sentences the other way — swap be for get, or get for be — and notice how the tone changes.",
+    "Rewrite one of your sentences the other way, swapping be for get or get for be, and notice how the tone changes.",
   ],
-  wrapup: "Be-passive is the neutral, standard choice. Get-passive tells the same story with more emotional punch — often something sudden, unlucky, or informal.",
+  wrapup: "Be-passive is the neutral, standard choice. Get-passive tells the same story with more emotional punch, often something sudden, unlucky, or informal.",
 };
 
 function buildSlides(lesson) {
@@ -90,8 +90,8 @@ function TeachSlide({ lesson, index }) {
 }
 
 function PredictSlide({ lesson }) {
-  const left = lesson.compareLeftLabel.split(" — ")[0].trim();
-  const right = lesson.compareRightLabel.split(" — ")[0].trim();
+  const left = lesson.compareLeftLabel.split(": ")[0].trim();
+  const right = lesson.compareRightLabel.split(": ")[0].trim();
   return (
     <div className="gpl-slide">
       <span className="gpl-eyebrow">Think About It</span>

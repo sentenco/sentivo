@@ -6,19 +6,19 @@ const LESSON = {
   leadIn: "Describe something that's too expensive for you to buy right now, and something that's cheap enough.",
   teach: [
     {
-      name: "Too — Before the Adjective, Meaning Excessive",
+      name: "Too: Before the Adjective, Meaning Excessive",
       definition: "Too goes directly before an adjective and shows there's more of something than needed, usually causing a problem.",
       examples: ["This coffee is too hot to drink.", "The test was too difficult for most students.", "It's too late to call her now."],
     },
     {
-      name: "Enough — After the Adjective, Meaning Sufficient",
+      name: "Enough: After the Adjective, Meaning Sufficient",
       definition: "Enough goes directly after an adjective (but before a noun) and shows there's a sufficient amount for something to happen.",
       examples: ["The coffee is cool enough to drink.", "She's old enough to drive.", "We don't have enough time to finish."],
     },
   ],
-  compareLeftLabel: "Too + adjective — excessive, a problem",
-  compareRightLabel: "Adjective + enough — sufficient, okay",
-  compareNote: "Too and enough often describe the exact same situation from opposite sides — one says there's too much of a problem, the other says there's just the right amount.",
+  compareLeftLabel: "Too + adjective: excessive, a problem",
+  compareRightLabel: "Adjective + enough: sufficient, okay",
+  compareNote: "Too and enough often describe the exact same situation from opposite sides: one says there's too much of a problem, the other says there's just the right amount.",
   comparePairs: [
     { left: "This box is too heavy to carry.", right: "This box isn't light enough to carry alone." },
     { left: "He's too young to drive.", right: "He isn't old enough to drive." },
@@ -36,7 +36,7 @@ const LESSON = {
     "Write one sentence using adjective + enough to describe something sufficient.",
     "Rewrite one of your too sentences using enough instead, keeping a similar meaning.",
   ],
-  wrapup: "Too goes before an adjective and means excessive. Enough goes after an adjective and means sufficient — they often describe the same situation from opposite angles.",
+  wrapup: "Too goes before an adjective and means excessive. Enough goes after an adjective and means sufficient. Together, they often describe the same situation from opposite angles.",
 };
 
 function buildSlides(lesson) {
@@ -90,8 +90,8 @@ function TeachSlide({ lesson, index }) {
 }
 
 function PredictSlide({ lesson }) {
-  const left = lesson.compareLeftLabel.split(" — ")[0].trim();
-  const right = lesson.compareRightLabel.split(" — ")[0].trim();
+  const left = lesson.compareLeftLabel.split(": ")[0].trim();
+  const right = lesson.compareRightLabel.split(": ")[0].trim();
   return (
     <div className="tel-slide">
       <span className="tel-eyebrow">Think About It</span>

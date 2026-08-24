@@ -7,20 +7,20 @@ const LESSON = {
   teach: [
     {
       name: "Whom as the Object",
-      definition: "Whom replaces who when it's the object of a verb or preposition — the person something is done to, not the person doing it.",
+      definition: "Whom replaces who when it's the object of a verb or preposition: the person something is done to, not the person doing it.",
       examples: ["Whom did you call?", "To whom should I address this letter?", "The man whom I met was kind."],
     },
     {
-      name: "The Practical Rule — When You Can Skip It",
+      name: "The Practical Rule: When You Can Skip It",
       definition: "In everyday spoken English, who is now widely accepted even in object position. Whom mostly survives in formal writing and fixed phrases like 'to whom it may concern.'",
       examples: ["Who did you call? (everyday, accepted)", "Whom did you call? (formal, correct)", "To whom it may concern, (fixed formal phrase)"],
     },
   ],
-  compareLeftLabel: "Who — subject, and everyday object use",
-  compareRightLabel: "Whom — formal object use",
+  compareLeftLabel: "Who: subject, and everyday object use",
+  compareRightLabel: "Whom: formal object use",
   compareNote: "The test: if you can answer the question with him/her (object pronoun), use whom. If you'd answer with he/she (subject pronoun), use who. In casual speech, who covers both anyway.",
   comparePairs: [
-    { left: "Who called you? (He called me — subject)", right: "Whom did you call? (I called him — object)" },
+    { left: "Who called you? (He called me, subject)", right: "Whom did you call? (I called him, object)" },
     { left: "Who is that? (subject)", right: "To whom does this belong? (object, after preposition)" },
   ],
   guided: [
@@ -36,7 +36,7 @@ const LESSON = {
     "Write one sentence using whom as the object, after a verb or preposition.",
     "Try the him/her test on one of your own sentences to check you picked correctly.",
   ],
-  wrapup: "Whom is the object form of who — use it when you'd answer with him or her. It's fading from casual speech, but still expected in formal writing.",
+  wrapup: "Whom is the object form of who: use it when you'd answer with him or her. It's fading from casual speech, but still expected in formal writing.",
 };
 
 function buildSlides(lesson) {
@@ -90,8 +90,8 @@ function TeachSlide({ lesson, index }) {
 }
 
 function PredictSlide({ lesson }) {
-  const left = lesson.compareLeftLabel.split(" — ")[0].trim();
-  const right = lesson.compareRightLabel.split(" — ")[0].trim();
+  const left = lesson.compareLeftLabel.split(": ")[0].trim();
+  const right = lesson.compareRightLabel.split(": ")[0].trim();
   return (
     <div className="whml-slide">
       <span className="whml-eyebrow">Think About It</span>

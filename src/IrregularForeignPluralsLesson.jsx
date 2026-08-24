@@ -7,18 +7,18 @@ const LESSON = {
   teach: [
     {
       name: "Latin & Greek Plurals",
-      definition: "Many English words borrowed from Latin or Greek keep their original plural pattern instead of just adding -s — once you know the pattern, it applies to a whole family of words.",
+      definition: "Many English words borrowed from Latin or Greek keep their original plural pattern instead of just adding -s: once you know the pattern, it applies to a whole family of words.",
       examples: ["cactus → cacti", "criterion → criteria", "phenomenon → phenomena"],
     },
     {
       name: "True Irregulars",
-      definition: "A small set of very common nouns change form completely, with no pattern connecting them to any other word — they simply have to be memorized one by one.",
+      definition: "A small set of very common nouns change form completely, with no pattern connecting them to any other word: they simply have to be memorized one by one.",
       examples: ["child → children", "mouse → mice", "person → people"],
     },
   ],
   compareLeftLabel: "Foreign-pattern plurals",
   compareRightLabel: "True irregulars",
-  compareNote: "Foreign-pattern plurals follow a predictable rule once you know the source language. True irregulars just have to be memorized — there's no pattern to fall back on.",
+  compareNote: "Foreign-pattern plurals follow a predictable rule once you know the source language. True irregulars just have to be memorized: there's no pattern to fall back on.",
   comparePairs: [
     { left: "One cactus, two cacti.", right: "One child, two children." },
     { left: "One phenomenon, two phenomena.", right: "One mouse, two mice." },
@@ -36,7 +36,7 @@ const LESSON = {
     "Write one sentence using a true irregular plural, like children or mice.",
     "Look up one more foreign-pattern plural you didn't know, and write a sentence with it.",
   ],
-  wrapup: "Some plurals follow a foreign-language pattern (cactus/cacti, criterion/criteria). Others are true irregulars with no pattern at all — both groups just have to be learned by heart.",
+  wrapup: "Some plurals follow a foreign-language pattern (cactus/cacti, criterion/criteria). Others are true irregulars with no pattern at all. Both groups just have to be learned by heart.",
 };
 
 function buildSlides(lesson) {
@@ -90,8 +90,8 @@ function TeachSlide({ lesson, index }) {
 }
 
 function PredictSlide({ lesson }) {
-  const left = lesson.compareLeftLabel.split(" — ")[0].trim();
-  const right = lesson.compareRightLabel.split(" — ")[0].trim();
+  const left = lesson.compareLeftLabel.split(": ")[0].trim();
+  const right = lesson.compareRightLabel.split(": ")[0].trim();
   return (
     <div className="ifpl-slide">
       <span className="ifpl-eyebrow">Think About It</span>

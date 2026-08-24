@@ -56,11 +56,11 @@ const LESSON = {
     ] },
   ],
   guided: [
-    { prompt: "The company opened a new ___ in Cebu. (branch)", answer: "branch — a local office" },
-    { prompt: "He needed to ___ his fear of public speaking. (face)", answer: "face — to confront" },
-    { prompt: "The hikers finally reached the ___ of the mountain. (foot)", answer: "foot — the base" },
-    { prompt: "Can someone give me a ___ carrying these bags? (hand)", answer: "hand — help" },
-    { prompt: "Let's get to the ___ of this misunderstanding. (root)", answer: "root — the cause" },
+    { prompt: "The company opened a new ___ in Cebu. (branch)", answer: "branch: a local office" },
+    { prompt: "He needed to ___ his fear of public speaking. (face)", answer: "face: to confront" },
+    { prompt: "The hikers finally reached the ___ of the mountain. (foot)", answer: "foot: the base" },
+    { prompt: "Can someone give me a ___ carrying these bags? (hand)", answer: "hand: help" },
+    { prompt: "Let's get to the ___ of this misunderstanding. (root)", answer: "root: the cause" },
   ],
 };
 
@@ -163,7 +163,7 @@ function MatchSlide({ index }) {
           return (
             <button key={i} type="button" className={`pol-slot ${state}`} onClick={() => clickSlot(i)}>
               <span className="pol-slot-sentence">“{s.sentence}”</span>
-              <span className="pol-slot-def">{placed ? placed.def : "— tap to fill —"}</span>
+              <span className="pol-slot-def">{placed ? placed.def : "(tap to fill)"}</span>
             </button>
           );
         })}

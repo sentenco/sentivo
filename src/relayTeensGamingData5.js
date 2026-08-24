@@ -1,4 +1,4 @@
-// RELAY Lesson 5 — "Screen Time & Balance" — Gaming & Online Life — Teens
+// RELAY Lesson 5: "Screen Time & Balance" | Gaming & Online Life | Teens
 
 export default {
   id: "relay-teens-gaming-5",
@@ -29,11 +29,11 @@ export default {
   yourTurn: {
     scenario: "Your parent asks you to take a break from your screen. Keep the conversation going for at least 4 turns.",
     teacherRole: "A parent asking you to take a screen break",
-    opener: "Hey, you've been on that a while — want to take a break?",
+    opener: "Hey, you've been on that a while. Want to take a break?",
   },
 
   pushIt: {
-    prompt: "One harder one — “Do you think screen time limits are fair?” Still three beats.",
+    prompt: "One harder one: “Do you think screen time limits are fair?” Still three beats.",
   },
 
   end: {
@@ -43,7 +43,7 @@ export default {
 
   teacherGuide: {
     cover: {
-      goal: "Same rule, new topic — keep the reminder short.",
+      goal: "Same rule, new topic: keep the reminder short.",
       say: ["Same rule: Answer, Add, Ask. Today's topic is screen time and balance."],
       do: ["Keep this under a minute."],
       timing: "1 min",
@@ -51,28 +51,28 @@ export default {
     warmup: {
       goal: "Check whether the habit is holding up on a new topic.",
       say: [
-        "Quick question — answer however feels natural.",
+        "Quick question. Answer however feels natural.",
         "Notice whether you added more this time, or stopped again.",
       ],
       do: ["Ask the question and stop. Don't nudge for more."],
       timing: "1 min",
     },
     bounce: {
-      goal: "The core drill — student produces all 3 beats, live, every round.",
+      goal: "The core drill: student produces all 3 beats, live, every round.",
       say: [
-        "Same style — answer, add, ask — every time.",
+        "Same style: answer, add, ask, every time.",
         "If you stop after one, I'll just say which beat is missing and you try that same answer again.",
       ],
       do: [
         "Ask each question, let them respond fully before any feedback.",
-        "If a beat's missing, name only the missing beat — never supply your own version.",
+        "If a beat's missing, name only the missing beat: never supply your own version.",
         "Let them redo their own answer, not repeat yours.",
       ],
       timing: "8 min",
     },
     yourturn: {
-      goal: "Unaided diagnostic — sustain a real exchange without prompting.",
-      say: ["Now a real one — I'm a parent asking you to take a screen break. Keep it going."],
+      goal: "Unaided diagnostic: sustain a real exchange without prompting.",
+      say: ["Now a real one. I'm a parent asking you to take a screen break. Keep it going."],
       do: [
         "Stay in character, don't break to coach mid-scene.",
         "Count how many turns they sustain before it stalls.",
@@ -81,14 +81,14 @@ export default {
     },
     pushit: {
       goal: "Optional stretch if time allows.",
-      say: ["One more, tougher topic — still three beats."],
+      say: ["One more, tougher topic, still three beats."],
       do: ["Skip if short on time."],
       timing: "2 min (optional)",
     },
     end: {
-      goal: "Close warmly — this is the last lesson in the track.",
-      say: ["Nice work today — that wraps up this track. You've built a real habit here."],
-      do: ["No scorecard, no homework — just end on the win."],
+      goal: "Close warmly: this is the last lesson in the track.",
+      say: ["Nice work today. That wraps up this track. You've built a real habit here."],
+      do: ["No scorecard, no homework: just end on the win."],
       timing: "1 min",
     },
   },
