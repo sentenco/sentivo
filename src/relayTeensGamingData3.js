@@ -12,6 +12,7 @@ export default {
 
   warmup: {
     question: "Do you watch people stream or play games online?",
+    sampleAnswer: "Yes, I do. → I watch a streamer almost every day. → Do you watch any streamers?",
   },
 
   bounce: {

@@ -18,6 +18,7 @@ export default {
 
   warmup: {
     question: "Do you like your job?",
+    sampleAnswer: "Yes, I do. → I really like my coworkers. → Do you like your job too?",
   },
 
   bounce: {

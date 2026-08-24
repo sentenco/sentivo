@@ -12,6 +12,7 @@ export default {
 
   warmup: {
     question: "Do you have plans this weekend?",
+    sampleAnswer: "Yes, I do. → I'm going hiking with a friend. → Do you have any plans?",
   },
 
   bounce: {

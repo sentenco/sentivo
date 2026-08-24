@@ -12,6 +12,7 @@ export default {
 
   warmup: {
     question: "Do you like your coworkers?",
+    sampleAnswer: "Yes, I do. → We get along really well. → Do you like the people you work with?",
   },
 
   bounce: {

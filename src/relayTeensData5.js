@@ -12,6 +12,7 @@ export default {
 
   warmup: {
     question: "Do you have any siblings?",
+    sampleAnswer: "Yes, I do. → I have a younger brother. → Do you have any siblings?",
   },
 
   bounce: {

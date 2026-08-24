@@ -12,6 +12,7 @@ export default {
 
   warmup: {
     question: "Do you watch a lot of shows?",
+    sampleAnswer: "Yes, I do. → I watch a new episode every night. → Do you watch a lot of shows?",
   },
 
   bounce: {

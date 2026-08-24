@@ -12,6 +12,7 @@ export default {
 
   warmup: {
     question: "Do you live with your family?",
+    sampleAnswer: "Yes, I do. → I live with my parents and my sister. → Do you live with your family too?",
   },
 
   bounce: {

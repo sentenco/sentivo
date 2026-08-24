@@ -12,6 +12,7 @@ export default {
 
   warmup: {
     question: "Do you have friends you only know online?",
+    sampleAnswer: "Yes, I do. → I met them through a game. → Do you have any online friends?",
   },
 
   bounce: {

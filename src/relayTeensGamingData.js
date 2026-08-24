@@ -12,6 +12,7 @@ export default {
 
   warmup: {
     question: "Do you play video games?",
+    sampleAnswer: "Yes, I do. → I mostly play on my phone. → Do you play any games?",
   },
 
   bounce: {

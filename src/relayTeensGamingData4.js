@@ -12,6 +12,7 @@ export default {
 
   warmup: {
     question: "Do you play team games?",
+    sampleAnswer: "Yes, I do. → I play with a group of friends online. → Do you play any team games?",
   },
 
   bounce: {

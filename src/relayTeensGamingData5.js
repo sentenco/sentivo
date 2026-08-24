@@ -12,6 +12,7 @@ export default {
 
   warmup: {
     question: "Do you think you spend too much time on screens?",
+    sampleAnswer: "Yes, probably. → I lose track of time when I'm gaming. → Do you think you spend too much time on screens?",
   },
 
   bounce: {

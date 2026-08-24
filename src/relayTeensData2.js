@@ -12,6 +12,7 @@ export default {
 
   warmup: {
     question: "Do you hang out with friends a lot?",
+    sampleAnswer: "Yes, I do. → We usually hang out after school. → Do you hang out with your friends a lot?",
   },
 
   bounce: {

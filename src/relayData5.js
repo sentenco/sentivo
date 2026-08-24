@@ -12,6 +12,7 @@ export default {
 
   warmup: {
     question: "Do you like cooking?",
+    sampleAnswer: "Yes, I do. → I love trying new recipes. → Do you like cooking?",
   },
 
   bounce: {
