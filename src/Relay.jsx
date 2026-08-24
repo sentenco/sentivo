@@ -20,17 +20,9 @@ function stageKey(slideType) {
   return slideType.startsWith("bounce-") ? "bounce" : slideType;
 }
 
-function Stepper({ slideType }) {
-  const active = stageKey(slideType);
-  return (
-    <div className="rl-stepper">
-      {STAGES.map((s) => (
-        <span key={s.key} className={`rl-stepper-item ${s.key === active ? "is-active" : ""}`}>
-          {s.label}
-        </span>
-      ))}
-    </div>
-  );
+function StageLabel({ slideType }) {
+  const stage = STAGES.find((s) => s.key === stageKey(slideType));
+  return <span className="rl-stage-label">{stage.label}</span>;
 }
 
 function CoverSlide({ lesson }) {
@@ -147,7 +139,7 @@ export default function Relay() {
         <div className="rl-deck">
           <div className="rl-deck-header">
             <span className="rl-brand"><img src="/logo-sentivo.png" alt="" className="rl-brand-logo" />entivo</span>
-            <Stepper slideType={slideType} />
+            <StageLabel slideType={slideType} />
           </div>
           <div className="rl-deck-body" key={slideIdx}>
             {renderSlide(slideType, lesson)}
@@ -211,25 +203,18 @@ const CSS = `
 }
 .rl-brand-logo { height: 22px; width: auto; display: block; margin-right: -4px; }
 
-.rl-stepper {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  flex-wrap: wrap;
-  justify-content: flex-end;
-}
-.rl-stepper-item {
+.rl-stage-label {
   font-family: 'IBM Plex Sans', sans-serif;
   font-weight: 700;
-  font-size: 11.5px;
+  font-size: 12px;
   letter-spacing: 0.02em;
-  color: #9FC6C2;
-  background: transparent;
+  color: #FFFFFF;
+  background: #3E7CB1;
   border-radius: 999px;
-  padding: 5px 11px;
+  padding: 6px 14px;
   white-space: nowrap;
+  flex-shrink: 0;
 }
-.rl-stepper-item.is-active { color: #FFFFFF; background: #3E7CB1; }
 
 .rl-missing {
   font-family: 'IBM Plex Sans', sans-serif;
