@@ -207,11 +207,11 @@ const CSS = `
   font-family: 'IBM Plex Sans', sans-serif;
   font-weight: 700;
   font-size: 12px;
-  letter-spacing: 0.02em;
-  color: #FFFFFF;
-  background: #3E7CB1;
-  border-radius: 999px;
-  padding: 6px 14px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #4B8B92;
+  background: transparent;
+  padding: 6px 0;
   white-space: nowrap;
   flex-shrink: 0;
 }
@@ -250,7 +250,7 @@ const CSS = `
   to { opacity: 1; transform: translateY(0); }
 }
 
-.rl-deck-body { min-height: 220px; display: flex; padding: 34px 34px 26px; }
+.rl-deck-body { min-height: 380px; display: flex; padding: 44px 34px 34px; }
 .rl-slide { display: flex; flex-direction: column; gap: 14px; height: 100%; width: 100%; }
 .rl-slide--centered { align-items: center; justify-content: center; text-align: center; }
 
