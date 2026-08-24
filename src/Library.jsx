@@ -2416,7 +2416,9 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 
 .spklab-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(14px, 1.8vw, 22px); position: relative; z-index: 1; }
 .spklab-card {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
   text-decoration: none;
   background: #FFFFFF;
   border-radius: 16px;
@@ -2436,7 +2438,7 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .spklab-card--shift .spklab-pin circle:first-child { fill: #2AA8AE; }
 .spklab-card--ascend .spklab-pin circle:first-child { fill: #E8A83D; }
 
-.spklab-body { padding: 30px 20px 22px; text-align: center; }
+.spklab-body { padding: 30px 20px 22px; text-align: center; display: flex; flex-direction: column; align-items: center; flex: 1; width: 100%; }
 .spklab-name { font-family: 'Baloo 2', cursive; font-weight: 700; font-size: clamp(22px, 2.1vw, 26px); color: #10646B; margin: 0 0 10px; }
 .spklab-label {
   display: inline-block;
@@ -2453,7 +2455,7 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 }
 .spklab-gap { font-family: 'IBM Plex Sans', sans-serif; font-weight: 700; font-size: 13.5px; margin: 0 0 18px; color: #10646B; }
 .spklab-cta {
-  display: block; text-align: center; margin-top: 0;
+  display: block; text-align: center; margin-top: auto; width: 100%;
   font-family: 'IBM Plex Sans', sans-serif; font-weight: 700; font-size: 12.5px;
   color: #FFFFFF; border-radius: 8px; padding: 10px 0;
 }
