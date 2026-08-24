@@ -12,6 +12,7 @@ const TRACKS = [
     title: "Everyday Conversations",
     focus: "Small Talk",
     level: "A2",
+    audience: "adults",
     blurb: "10 lessons that turn short, complete answers into real back-and-forth exchanges.",
     lessons: [relayL1, null, null, null, null, null, null, null, null, null],
   },

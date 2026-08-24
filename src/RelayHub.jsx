@@ -1,6 +1,15 @@
+import { useState } from "react";
 import TRACKS from "./relayTracks";
 
+const AUDIENCES = [
+  { key: "teens", label: "Teens" },
+  { key: "adults", label: "Adults" },
+];
+
 export default function RelayHub() {
+  const [audience, setAudience] = useState("adults");
+  const tracks = TRACKS.filter((t) => t.audience === audience);
+
   return (
     <div className="rlh-shell">
       <style>{CSS}</style>
@@ -18,8 +27,21 @@ export default function RelayHub() {
         </div>
         <div className="rlh-lane"></div>
 
+        <div className="rlh-audience-tabs">
+          {AUDIENCES.map((a) => (
+            <button
+              key={a.key}
+              type="button"
+              className={`rlh-audience-tab ${audience === a.key ? "is-active" : ""}`}
+              onClick={() => setAudience(a.key)}
+            >
+              {a.label}
+            </button>
+          ))}
+        </div>
+
         <div className="rlh-tracks-grid">
-          {TRACKS.map((track) => {
+          {tracks.map((track) => {
             const authored = track.lessons.filter(Boolean).length;
             return (
               <a key={track.id} href={`/library/relay/${track.id}`} className="rlh-track-card">
@@ -128,6 +150,22 @@ const CSS = `
 .rlh-lane::before, .rlh-lane::after { content: ""; position: absolute; top: -3px; width: 8px; height: 8px; border-radius: 50%; background: #3E7CB1; }
 .rlh-lane::before { left: 0; }
 .rlh-lane::after { right: 0; }
+
+.rlh-audience-tabs { display: flex; gap: 8px; margin-bottom: 24px; }
+.rlh-audience-tab {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 700;
+  font-size: 13.5px;
+  color: #3E7CB1;
+  background: #FFFFFF;
+  border: 1.5px solid #C9E0F0;
+  border-radius: 999px;
+  padding: 8px 20px;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+.rlh-audience-tab:hover { border-color: #3E7CB1; }
+.rlh-audience-tab.is-active { background: #3E7CB1; border-color: #3E7CB1; color: #FFFFFF; }
 
 .rlh-tracks-grid {
   display: grid;
