@@ -6,7 +6,7 @@ export default {
   title: "The Rematch",
   type: "Rematch",
   tag: "Finale",
-  subtitle: "Same question as Lesson 1 — answered with everything you've built.",
+  subtitle: "Same question as Lesson 1, answered with everything you've built.",
   slideOrder: ["cover", "round1", "round2", "thankyou"],
 
   round1: {

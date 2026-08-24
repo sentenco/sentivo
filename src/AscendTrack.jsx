@@ -1,49 +1,5 @@
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { getTrack } from "./ascendTracks";
-
-const ICON_PROPS = { width: 22, height: 22, viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: 2, strokeLinecap: "round", strokeLinejoin: "round" };
-
-function TypeIcon({ type }) {
-  switch (type) {
-    case "Upgrade":
-      return (
-        <svg {...ICON_PROPS}>
-          <path d="M4 17 10 11 14 15 20 8" /><path d="M20 8h-5" /><path d="M20 8v5" />
-        </svg>
-      );
-    case "Frame":
-      return (
-        <svg {...ICON_PROPS}>
-          <rect x="4" y="4" width="16" height="16" rx="2" />
-          <path d="M4 9h16" opacity="0.5" /><path d="M9 9v11" opacity="0.5" />
-        </svg>
-      );
-    case "Counter":
-      return (
-        <svg {...ICON_PROPS}>
-          <path d="M5 5l7 7-7 7" /><path d="M19 5l-7 7 7 7" opacity="0.5" />
-        </svg>
-      );
-    case "Reversal":
-      return (
-        <svg {...ICON_PROPS}>
-          <path d="M4 7h11l-3-3" /><path d="M20 17H9l3 3" />
-        </svg>
-      );
-    case "Rematch":
-      return (
-        <svg {...ICON_PROPS}>
-          <circle cx="12" cy="12" r="8" /><circle cx="12" cy="12" r="4" /><circle cx="12" cy="12" r="0.6" fill="currentColor" />
-        </svg>
-      );
-    default:
-      return (
-        <svg {...ICON_PROPS}>
-          <circle cx="12" cy="12" r="9" />
-        </svg>
-      );
-  }
-}
 
 function slideCount(lesson) {
   return lesson.slideOrder.length;
@@ -69,10 +25,6 @@ function openLesson(trackId, num) {
 
 // Teacher Guide opens as its own separate popup, triggered by its own
 // explicit click -- not paired automatically with the student window.
-// (The curriculum tried auto-opening a student+teacher pair from one
-// click twice and reverted it as unreliable; a dedicated button avoids
-// that failure mode.) Portrait-ish sizing since it's a long scrollable
-// reference document meant to be read, not projected.
 function openGuide(trackId, num) {
   const screenW = window.screen.availWidth || 1600;
   const screenH = window.screen.availHeight || 900;
@@ -90,6 +42,7 @@ function openGuide(trackId, num) {
 
 export default function AscendTrack() {
   const { trackId } = useParams();
+  const navigate = useNavigate();
   const track = getTrack(trackId);
 
   if (!track) {
@@ -106,38 +59,37 @@ export default function AscendTrack() {
   return (
     <div className="as-shell">
       <style>{CSS}</style>
-      <header className="as-topbar">
-        <span className="as-topbar-title">ASCEND</span>
-      </header>
-
       <div className="as-stage">
+        <div className="as-topbar">
+          <button type="button" className="as-brand" onClick={() => navigate("/library")} title="Back to Homeroom">
+            <img src="/logo-sentivo.png" alt="" className="as-brand-logo" />entivo
+          </button>
+        </div>
+
         <div className="as-hero">
           <div className="as-hero-tags">
             <span className="as-tag">{track.theme}</span>
             <span className="as-tag as-tag--level">{track.level}</span>
           </div>
           <h1 className="as-hero-title">{track.title}</h1>
-          <p className="as-hero-blurb">{track.blurb}</p>
         </div>
 
-        <div className="as-path">
+        <div className="as-lesson-list">
           {track.lessons.map((lesson, i) => {
             const num = i + 1;
             if (!lesson) {
               return (
                 <div key={num} className="as-row as-row--locked">
-                  <div className="as-row-marker"><span className="as-row-num as-row-num--locked">{num}</span></div>
-                  <div className="as-row-icon as-row-icon--locked">···</div>
+                  <div className="as-row-badge as-row-badge--locked">{num}</div>
                   <div className="as-row-body">
-                    <p className="as-row-title as-row-title--locked">Coming soon</p>
+                    <h3 className="as-row-title">Coming soon</h3>
                   </div>
                 </div>
               );
             }
             return (
-              <div key={num} className="as-row as-row--live">
-                <div className="as-row-marker"><span className="as-row-num">{num}</span></div>
-                <div className="as-row-icon"><TypeIcon type={lesson.type} /></div>
+              <a key={num} className="as-row" href="#" onClick={(e) => { e.preventDefault(); openLesson(track.id, num); }}>
+                <div className="as-row-badge">{String(num).padStart(2, "0")}</div>
                 <div className="as-row-body">
                   <div className="as-row-topline">
                     <span className="as-row-tag">{lesson.tag}</span>
@@ -147,14 +99,14 @@ export default function AscendTrack() {
                   <p className="as-row-desc">{lesson.subtitle}</p>
                 </div>
                 <div className="as-row-actions">
-                  <button type="button" className="as-lesson-guidebtn" onClick={() => openGuide(track.id, num)}>
+                  <button type="button" className="as-btn-guide" onClick={(e) => { e.preventDefault(); e.stopPropagation(); openGuide(track.id, num); }}>
                     Guide
                   </button>
-                  <button type="button" className="as-lesson-startbtn" onClick={() => openLesson(track.id, num)}>
+                  <button type="button" className="as-btn-start" onClick={(e) => { e.preventDefault(); e.stopPropagation(); openLesson(track.id, num); }}>
                     Start →
                   </button>
                 </div>
-              </div>
+              </a>
             );
           })}
         </div>
@@ -164,207 +116,137 @@ export default function AscendTrack() {
 }
 
 const CSS = `
-@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Quicksand:wght@500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=IBM+Plex+Sans:wght@500;600;700;800&display=swap');
 
 .as-shell {
   width: 100%;
   min-height: 100vh;
-  background: radial-gradient(circle at 15% 0%, #EAFBF6 0%, #D6F2E9 55%, #C3E9DC 100%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  background-color: #DEF3FB;
+  background-image:
+    radial-gradient(circle at 6% 8%, rgba(242,153,74,0.18), transparent 30%),
+    radial-gradient(circle at 96% 14%, rgba(42,168,174,0.20), transparent 34%),
+    radial-gradient(circle at 18% 96%, rgba(42,168,174,0.20), transparent 28%),
+    radial-gradient(circle at 88% 90%, rgba(242,153,74,0.18), transparent 26%),
+    radial-gradient(rgba(16,100,107,0.10) 1.4px, transparent 1.4px),
+    linear-gradient(165deg, #EAFBF8 0%, #DEF3FB 100%);
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, repeat, no-repeat;
+  background-size: auto, auto, auto, auto, 28px 28px, auto;
+  background-attachment: fixed;
   box-sizing: border-box;
 }
 .as-shell * { box-sizing: border-box; }
 
-.as-topbar {
-  width: 100%;
-  max-width: 1040px;
-  display: flex;
+.as-stage { width: 100%; max-width: 880px; margin: 0 auto; padding: 26px 28px 64px; }
+
+.as-missing { font-family: 'IBM Plex Sans', sans-serif; color: #4B8B92; text-align: center; margin-top: 60px; }
+
+.as-topbar { display: flex; align-items: center; padding-bottom: 30px; }
+.as-brand {
+  display: inline-flex;
   align-items: center;
-  justify-content: center;
-  padding: 22px 24px 0;
+  gap: 2px;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 800;
+  font-size: 19px;
+  color: #10646B;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  background: none;
+  padding: 0;
 }
-.as-topbar-title {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 700;
-  font-size: 12.5px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: #8AAFA5;
-}
+.as-brand-logo { height: 30px; width: auto; display: block; margin-right: -4px; }
 
-.as-stage {
-  flex: 1;
-  width: 100%;
-  max-width: 880px;
-  padding: 44px 28px 64px;
-}
-
-.as-missing {
-  font-family: 'Quicksand', sans-serif;
-  color: #6B8C82;
-  text-align: center;
-  margin-top: 60px;
-}
-
-.as-hero { margin-bottom: 38px; }
-.as-hero-tags { display: flex; gap: 8px; margin-bottom: 14px; }
+.as-hero { text-align: center; margin-bottom: 40px; }
+.as-hero-tags { display: flex; justify-content: center; gap: 8px; margin-bottom: 16px; }
 .as-tag {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 600;
-  font-size: 12.5px;
-  color: #128571;
-  background: rgba(18,133,113,0.14);
-  border: 1px solid rgba(18,133,113,0.4);
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 700;
+  font-size: 11.5px;
+  color: #10646B;
+  background: rgba(42,168,174,0.14);
   border-radius: 999px;
   padding: 4px 12px;
 }
-.as-tag--level { color: #5C8177; background: #E9F7F2; border-color: #D3EFE6; }
+.as-tag--level { color: #FFFFFF; background: #F2994A; }
 .as-hero-title {
-  font-family: 'Fredoka', sans-serif;
-  font-weight: 700;
+  font-family: 'Baloo 2', cursive;
+  font-weight: 800;
   font-size: 42px;
-  color: #17352E;
-  margin: 0 0 12px;
-}
-.as-hero-blurb {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 500;
-  font-size: 16.5px;
-  color: #5C8177;
+  color: #10646B;
   margin: 0;
-  max-width: 620px;
-  line-height: 1.55;
+  text-shadow:
+    1.2px 1.2px 0 rgba(242,153,74,0.32),
+    2.4px 2.4px 0 rgba(242,153,74,0.32),
+    3.6px 3.6px 0 rgba(242,153,74,0.32),
+    4px 8px 18px rgba(16,100,107,0.2);
 }
 
-.as-path { position: relative; display: flex; flex-direction: column; gap: 16px; }
-.as-path::before {
-  content: "";
-  position: absolute;
-  left: 23px;
-  top: 30px;
-  bottom: 30px;
-  width: 2px;
-  background: #D3EFE6;
-  z-index: 0;
-}
-
+.as-lesson-list { display: flex; flex-direction: column; gap: 14px; }
 .as-row {
-  position: relative;
-  z-index: 1;
   display: flex;
   align-items: center;
   gap: 18px;
   background: #FFFFFF;
-  border: 1px solid #D3EFE6;
-  border-radius: 16px;
-  padding: 16px 22px 16px 12px;
-  box-shadow: 0 10px 24px rgba(20,80,65,0.08);
+  border-radius: 18px;
+  padding: 14px 20px 14px 14px;
+  box-shadow: 0 10px 22px rgba(16,100,107,0.1);
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.15s ease;
 }
+.as-row:hover { transform: translateY(-2px); }
 .as-row--locked { opacity: 0.55; box-shadow: none; }
-.as-row--live { transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease; }
-.as-row--live:hover { border-color: #3FCDAF; box-shadow: 0 16px 32px rgba(20,80,65,0.16); transform: translateY(-1px); }
 
-.as-row-marker { flex-shrink: 0; width: 48px; display: flex; align-items: center; justify-content: center; }
-.as-row-num {
-  width: 32px;
-  height: 32px;
-  border-radius: 999px;
-  background: #FFFFFF;
-  border: 2px solid #3FCDAF;
-  color: #128571;
-  font-family: 'Fredoka', sans-serif;
-  font-weight: 700;
-  font-size: 13px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.as-row-num--locked { border-color: #D3EFE6; color: #8AAFA5; }
-
-.as-row-icon {
+.as-row-badge {
   flex-shrink: 0;
-  width: 56px;
-  height: 56px;
-  border-radius: 14px;
-  background: #E9F7F2;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #F2994A 0%, #D97D2E 100%);
+  color: #FFFFFF;
+  font-family: 'Baloo 2', cursive;
+  font-weight: 700;
+  font-size: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #128571;
 }
-.as-row-icon--locked { color: #B7D9CF; font-family: 'Quicksand', sans-serif; letter-spacing: 3px; }
+.as-row-badge--locked { background: #CDEBEA; color: #4B8B92; }
 
 .as-row-body { flex: 1; min-width: 0; }
-.as-row-topline { display: flex; align-items: center; gap: 10px; margin-bottom: 4px; }
+.as-row-topline { display: flex; align-items: center; gap: 8px; margin-bottom: 3px; }
 .as-row-tag {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 600;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 800;
   font-size: 9.5px;
-  letter-spacing: 0.3px;
   text-transform: uppercase;
-  color: #128571;
-  background: rgba(18,133,113,0.14);
+  letter-spacing: 0.03em;
+  color: #D97D2E;
+  background: rgba(242,153,74,0.14);
   border-radius: 999px;
   padding: 2px 9px;
 }
-.as-row-meta {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 500;
-  font-size: 10.5px;
-  color: #8AAFA5;
-}
-.as-row-title {
-  font-family: 'Fredoka', sans-serif;
-  font-weight: 700;
-  font-size: 17px;
-  color: #17352E;
-  line-height: 1.25;
-  margin: 0 0 3px;
-}
-.as-row-title--locked { color: #8AAFA5; margin: 0; }
-.as-row-desc {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 500;
-  font-size: 13px;
-  color: #5C8177;
-  line-height: 1.4;
-  margin: 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
+.as-row-meta { font-family: 'IBM Plex Sans', sans-serif; font-weight: 600; font-size: 10.5px; color: #4B8B92; }
+.as-row-title { font-family: 'Baloo 2', cursive; font-weight: 700; font-size: 17px; margin: 0 0 2px; color: #10646B; }
+.as-row-desc { font-family: 'IBM Plex Sans', sans-serif; font-size: 12.5px; color: #4B8B92; margin: 0; }
 
-.as-row-actions { flex-shrink: 0; display: flex; align-items: center; gap: 8px; }
-.as-lesson-guidebtn {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 700;
+.as-row-actions { flex-shrink: 0; display: flex; gap: 8px; }
+.as-btn-guide, .as-btn-start {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 800;
   font-size: 11px;
-  color: #128571;
-  background: #E9F7F2;
-  border: 1px solid #D3EFE6;
   border-radius: 999px;
-  padding: 7px 13px;
+  padding: 8px 14px;
   white-space: nowrap;
-  cursor: pointer;
-}
-.as-lesson-startbtn {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 700;
-  font-size: 12px;
-  color: #17352E;
-  background: #3FCDAF;
   border: none;
-  border-radius: 999px;
-  padding: 7px 15px;
-  white-space: nowrap;
   cursor: pointer;
 }
+.as-btn-guide { background: rgba(42,168,174,0.14); color: #10646B; }
+.as-btn-start { background: #F2994A; color: #FFFFFF; }
 
 @media (max-width: 640px) {
   .as-row { flex-wrap: wrap; padding: 16px; }
-  .as-row-actions { width: 100%; padding-left: 74px; }
-  .as-row-desc { white-space: normal; }
+  .as-row-actions { width: 100%; padding-left: 64px; }
 }
 `;

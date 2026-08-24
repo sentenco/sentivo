@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import TRACKS from "./ascendTracks";
 
 function groupByCategory(tracks) {
@@ -15,24 +16,27 @@ function groupByCategory(tracks) {
 }
 
 export default function AscendHub() {
+  const navigate = useNavigate();
   const categories = groupByCategory(TRACKS);
 
   return (
     <div className="ah-shell">
       <style>{CSS}</style>
-      <header className="ah-topbar">
-        <span className="ah-topbar-title">ASCEND</span>
-      </header>
-
       <div className="ah-stage">
+        <div className="ah-topbar">
+          <button type="button" className="ah-brand" onClick={() => navigate("/library")} title="Back to Homeroom">
+            <img src="/logo-sentivo.png" alt="" className="ah-brand-logo" />entivo
+          </button>
+        </div>
+
         <div className="ah-hero">
-          <span className="ah-hero-eyebrow">Diagnosis · Ideas lack structure and precision</span>
-          <h1 className="ah-hero-title">ASCEND</h1>
+          <h1 className="ah-hero-title">Ascend</h1>
           <p className="ah-hero-blurb">
-            ASCEND sharpens precision, structure, and diplomatic control in speech. It's built for students who already sound fluent but whose ideas come out imprecise or poorly organized.
+            Ascend sharpens precision, structure, and diplomatic control in speech. Built for students who already sound fluent but whose ideas come out imprecise or poorly organized.
           </p>
         </div>
-        <div className="ah-lane"></div>
+
+        <div className="ah-dot-lane"></div>
 
         {categories.map(({ category, tracks }) => (
           <section className="ah-category" key={category}>
@@ -42,17 +46,18 @@ export default function AscendHub() {
                 const authored = track.lessons.filter(Boolean).length;
                 return (
                   <a key={track.id} href={`/library/ascend/${track.id}`} className="ah-track-card">
+                    <div className="ah-track-ribbon">
+                      <span className="ah-track-num">Track {String(TRACKS.indexOf(track) + 1).padStart(2, "0")}</span>
+                      <span className="ah-track-level-pill">{track.level}</span>
+                    </div>
                     <div className="ah-track-body">
-                      <div>
-                        <div className="ah-track-tags">
-                          <span className="ah-tag">{track.theme}</span>
-                          <span className="ah-tag ah-tag--level">{track.level}</span>
-                        </div>
-                        <h3 className="ah-track-title">{track.title}</h3>
-                        <p className="ah-track-desc">{track.blurb}</p>
+                      <div className="ah-track-tags">
+                        <span className="ah-track-tag">{track.theme}</span>
                       </div>
+                      <h3 className="ah-track-title">{track.title}</h3>
+                      <p className="ah-track-desc">{track.blurb}</p>
                       <div className="ah-track-foot">
-                        <span className="ah-track-meta">{authored} of {track.lessons.length} lessons ready</span>
+                        <span className="ah-track-meta">{authored} of {track.lessons.length} ready</span>
                         <span className="ah-track-cta">Open track →</span>
                       </div>
                     </div>
@@ -67,13 +72,9 @@ export default function AscendHub() {
           <h2 className="ah-category-title">Coming soon</h2>
           <div className="ah-tracks-grid">
             <div className="ah-track-card ah-track-card--ghost">
-              <div className="ah-track-body">
-                <div>
-                  <span className="ah-ghost-icon">+</span>
-                  <h3 className="ah-track-title ah-track-title--ghost">More categories coming</h3>
-                  <p className="ah-track-desc">New profiles get added here as they're built.</p>
-                </div>
-              </div>
+              <span className="ah-ghost-plus">+</span>
+              <div className="ah-ghost-label">More categories coming</div>
+              <div className="ah-ghost-sub">New profiles get added here as they're built.</div>
             </div>
           </div>
         </section>
@@ -88,82 +89,92 @@ const CSS = `
 .ah-shell {
   width: 100%;
   min-height: 100vh;
-  background: linear-gradient(160deg, #EAFBF8 0%, #DFF4FA 100%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  background-color: #DEF3FB;
+  background-image:
+    radial-gradient(circle at 6% 8%, rgba(242,153,74,0.18), transparent 30%),
+    radial-gradient(circle at 96% 14%, rgba(42,168,174,0.20), transparent 34%),
+    radial-gradient(circle at 18% 96%, rgba(42,168,174,0.20), transparent 28%),
+    radial-gradient(circle at 88% 90%, rgba(242,153,74,0.18), transparent 26%),
+    radial-gradient(rgba(16,100,107,0.10) 1.4px, transparent 1.4px),
+    linear-gradient(165deg, #EAFBF8 0%, #DEF3FB 100%);
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, repeat, no-repeat;
+  background-size: auto, auto, auto, auto, 28px 28px, auto;
+  background-attachment: fixed;
   box-sizing: border-box;
 }
 .ah-shell * { box-sizing: border-box; }
 
-.ah-topbar {
-  width: 100%;
-  max-width: 1120px;
-  display: flex;
+.ah-stage { width: 100%; max-width: 1080px; margin: 0 auto; padding: 26px 28px 64px; }
+
+.ah-topbar { display: flex; align-items: center; padding-bottom: 34px; }
+.ah-brand {
+  display: inline-flex;
   align-items: center;
-  justify-content: center;
-  padding: 22px 24px 0;
-}
-.ah-topbar-title {
+  gap: 2px;
   font-family: 'IBM Plex Sans', sans-serif;
   font-weight: 800;
-  font-size: 12.5px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: #4B8B92;
+  font-size: 19px;
+  color: #10646B;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  background: none;
+  padding: 0;
 }
+.ah-brand-logo { height: 30px; width: auto; display: block; margin-right: -4px; }
 
-.ah-stage {
-  flex: 1;
-  width: 100%;
-  max-width: 1080px;
-  padding: 44px 28px 64px;
-}
-
-.ah-hero { max-width: 620px; }
-.ah-hero-eyebrow {
-  display: inline-block;
-  font-family: 'IBM Plex Sans', sans-serif;
-  font-weight: 800;
-  font-size: 11.5px;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: #A9720A;
-  background: rgba(232,168,61,0.20);
-  border-radius: 999px;
-  padding: 6px 14px;
-  margin-bottom: 16px;
-}
+.ah-hero { max-width: 620px; margin: 0 auto 40px; text-align: center; }
 .ah-hero-title {
   font-family: 'Baloo 2', cursive;
-  font-weight: 700;
-  font-size: 46px;
+  font-weight: 800;
+  font-size: 56px;
   color: #10646B;
-  margin: 0 0 12px;
+  margin: 0 0 16px;
+  letter-spacing: -0.01em;
+  text-shadow:
+    1.5px 1.5px 0 rgba(242,153,74,0.35),
+    3px 3px 0 rgba(242,153,74,0.35),
+    4.5px 4.5px 0 rgba(242,153,74,0.35),
+    5px 10px 22px rgba(16,100,107,0.22);
 }
 .ah-hero-blurb {
   font-family: 'IBM Plex Sans', sans-serif;
   font-weight: 500;
   font-size: 16.5px;
+  line-height: 1.6;
   color: #4B8B92;
-  margin: 0;
-  line-height: 1.55;
+  margin: 0 auto;
+  max-width: 520px;
 }
 
-.ah-lane { position: relative; height: 2px; background: #BFE6E1; margin: 30px 0 34px; }
-.ah-lane::before, .ah-lane::after { content: ""; position: absolute; top: -3px; width: 8px; height: 8px; border-radius: 50%; background: #E8A83D; }
-.ah-lane::before { left: 0; }
-.ah-lane::after { right: 0; }
+.ah-dot-lane {
+  position: relative;
+  height: 2px;
+  background: #CDEBEA;
+  margin: 0 auto 44px;
+  max-width: 340px;
+}
+.ah-dot-lane::before, .ah-dot-lane::after {
+  content: "";
+  position: absolute;
+  top: -4px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #F2994A;
+}
+.ah-dot-lane::before { left: 0; }
+.ah-dot-lane::after { right: 0; }
 
-.ah-category { margin-bottom: 34px; }
+.ah-category { margin-bottom: 40px; }
 .ah-category:last-child { margin-bottom: 0; }
 .ah-category-title {
   font-family: 'IBM Plex Sans', sans-serif;
   font-weight: 800;
   font-size: 13px;
-  letter-spacing: 2px;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: #A9720A;
+  color: #D97D2E;
   margin: 0 0 16px;
 }
 
@@ -175,88 +186,80 @@ const CSS = `
 
 .ah-track-card {
   display: flex;
+  flex-direction: column;
   background: #FFFFFF;
-  border-radius: 16px;
-  border-top: 4px solid #E8A83D;
+  border-radius: 22px;
   overflow: hidden;
-  text-align: left;
-  font-family: inherit;
   text-decoration: none;
-  box-shadow: 0 10px 22px rgba(16,100,107,0.12);
-  transition: box-shadow 0.15s ease, transform 0.15s ease;
+  color: inherit;
+  box-shadow: 0 14px 30px rgba(16,100,107,0.14);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
-.ah-track-card:hover {
-  box-shadow: 0 16px 30px rgba(16,100,107,0.18);
-  transform: translateY(-3px);
+.ah-track-card:hover { transform: translateY(-4px) rotate(-0.4deg); box-shadow: 0 20px 40px rgba(16,100,107,0.2); }
+
+.ah-track-ribbon {
+  background: linear-gradient(120deg, #F2994A 0%, #D97D2E 100%);
+  padding: 16px 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.ah-track-num { font-family: 'Baloo 2', cursive; font-weight: 700; font-size: 20px; color: #FFFFFF; }
+.ah-track-level-pill {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 800;
+  font-size: 11px;
+  color: #D97D2E;
+  background: #FFFFFF;
+  border-radius: 999px;
+  padding: 4px 12px;
 }
 
-.ah-track-body { flex: 1; min-width: 0; display: flex; flex-direction: column; justify-content: space-between; gap: 14px; padding: 22px 22px 20px; }
-.ah-track-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
-.ah-tag {
+.ah-track-body { padding: 22px 22px 20px; flex: 1; display: flex; flex-direction: column; gap: 14px; }
+.ah-track-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.ah-track-tag {
   font-family: 'IBM Plex Sans', sans-serif;
   font-weight: 700;
   font-size: 11px;
-  color: #A9720A;
-  background: rgba(232,168,61,0.18);
-  border-radius: 999px;
-  padding: 3px 10px;
-}
-.ah-tag--level { color: #4B8B92; background: rgba(42,168,174,0.12); }
-
-.ah-track-title {
-  font-family: 'Baloo 2', cursive;
-  font-weight: 700;
-  font-size: 21px;
   color: #10646B;
-  margin: 0 0 6px;
+  background: rgba(42,168,174,0.14);
+  border-radius: 999px;
+  padding: 4px 11px;
 }
-.ah-track-desc {
-  font-family: 'IBM Plex Sans', sans-serif;
-  font-weight: 500;
-  font-size: 13px;
-  color: #5C8891;
-  line-height: 1.5;
-  margin: 0;
-}
+.ah-track-title { font-family: 'Baloo 2', cursive; font-weight: 700; font-size: 22px; color: #10646B; margin: 0; }
+.ah-track-desc { font-family: 'IBM Plex Sans', sans-serif; font-weight: 500; font-size: 13.5px; line-height: 1.55; color: #4B8B92; margin: 0; }
+
 .ah-track-foot {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 10px;
-  padding-top: 12px;
-  border-top: 1px solid #EAF8F6;
+  padding-top: 14px;
+  border-top: 1px dashed #CDEBEA;
 }
-.ah-track-meta {
-  font-family: 'IBM Plex Sans', sans-serif;
-  font-weight: 700;
-  font-size: 11.5px;
-  color: #4B8B92;
-}
+.ah-track-meta { font-family: 'IBM Plex Sans', sans-serif; font-weight: 700; font-size: 11px; color: #4B8B92; }
 .ah-track-cta {
   font-family: 'IBM Plex Sans', sans-serif;
   font-weight: 800;
   font-size: 12.5px;
-  color: #A9720A;
-  white-space: nowrap;
+  color: #FFFFFF;
+  background: #F2994A;
+  border-radius: 999px;
+  padding: 8px 16px;
 }
 
 .ah-track-card--ghost {
-  opacity: 0.7;
-  cursor: default;
-  pointer-events: none;
-  border: 2px dashed #BFE6E1;
-  border-top: 2px dashed #BFE6E1;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 260px;
   box-shadow: none;
+  border: 2px dashed #CDEBEA;
+  background: transparent;
+  padding: 22px;
 }
-.ah-track-card--ghost .ah-track-body { align-items: center; text-align: center; justify-content: center; }
-.ah-ghost-icon {
-  display: block;
-  font-family: 'Baloo 2', cursive;
-  font-size: 30px;
-  color: #8FB9BC;
-  margin-bottom: 6px;
-}
-.ah-track-title--ghost { color: #8FB9BC; }
+.ah-ghost-plus { font-family: 'Baloo 2', cursive; font-size: 34px; font-weight: 700; color: #4B8B92; opacity: 0.5; display: block; margin-bottom: 8px; }
+.ah-ghost-label { font-family: 'Baloo 2', cursive; font-weight: 700; font-size: 17px; color: #4B8B92; opacity: 0.7; }
+.ah-ghost-sub { font-family: 'IBM Plex Sans', sans-serif; font-size: 12.5px; margin-top: 6px; color: #4B8B92; opacity: 0.6; }
 
 @media (max-width: 640px) {
   .ah-tracks-grid { grid-template-columns: 1fr; }

@@ -35,7 +35,7 @@ const TRACKS = [
     title: "Law & Advocacy",
     theme: "Law & Advocacy",
     level: "C1",
-    blurb: "5 lessons of precision, framing, and diplomatic control — built for legal English. Lesson 5 replays Lesson 1's question so you can hear the difference for yourself.",
+    blurb: "5 lessons of precision, framing, and diplomatic control, built for legal English. Lesson 5 replays Lesson 1's question so you can hear the difference for yourself.",
     lessons: [ascendLawL1, ascendLawL2, ascendLawL3, ascendLawL4, ascendLawL5],
   },
   {
@@ -44,7 +44,7 @@ const TRACKS = [
     title: "Contract Negotiation",
     theme: "Contract Negotiation",
     level: "C1",
-    blurb: "5 lessons of precision, framing, and diplomatic control — built for deal-making. Lesson 5 replays Lesson 1's question so you can hear the difference for yourself.",
+    blurb: "5 lessons of precision, framing, and diplomatic control, built for deal-making. Lesson 5 replays Lesson 1's question so you can hear the difference for yourself.",
     lessons: [ascendNegotiationL1, ascendNegotiationL2, ascendNegotiationL3, ascendNegotiationL4, ascendNegotiationL5],
   },
   {
@@ -53,7 +53,7 @@ const TRACKS = [
     title: "Corporate Governance & Risk",
     theme: "Corporate Governance & Risk",
     level: "C1",
-    blurb: "5 lessons of precision, framing, and diplomatic control — built for the legal-vs-commercial tension in governance and risk. Lesson 5 replays Lesson 1's question so you can hear the difference for yourself.",
+    blurb: "5 lessons of precision, framing, and diplomatic control, built for the legal-vs-commercial tension in governance and risk. Lesson 5 replays Lesson 1's question so you can hear the difference for yourself.",
     lessons: [ascendGovernanceL1, ascendGovernanceL2, ascendGovernanceL3, ascendGovernanceL4, ascendGovernanceL5],
   },
 ];

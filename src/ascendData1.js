@@ -6,7 +6,7 @@ export default {
   title: "The Upgrade Reveal",
   type: "Upgrade",
   tag: "Baseline",
-  subtitle: "Find the exact words you're missing — then use them.",
+  subtitle: "Find the exact words you're missing, then use them.",
   slideOrder: ["cover", "warmup", "gimmick", "levelup", "closing"],
 
   warmup: {

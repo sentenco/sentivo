@@ -6,7 +6,7 @@ export default {
   title: "The 90-Second Case",
   type: "Frame",
   tag: "Framing",
-  subtitle: "Structure a persuasive case on demand — not a rambling opinion.",
+  subtitle: "Structure a persuasive case on demand, not a rambling opinion.",
   slideOrder: ["cover", "warmup", "gimmick", "levelup", "closing"],
 
   warmup: {

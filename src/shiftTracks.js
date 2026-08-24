@@ -21,7 +21,7 @@ const TRACKS = [
     title: "Tense Control Reset",
     gapFocus: "Spontaneous Tense Accuracy",
     level: "A2-B1",
-    blurb: "10 lessons built to fix wrong-tense-under-pressure in live speech — not a vocabulary gap. Come back after Lesson 10 to see the exact score change since Lesson 1.",
+    blurb: "10 lessons built to fix wrong-tense-under-pressure in live speech, not a vocabulary gap. Come back after Lesson 10 to see the exact score change since Lesson 1.",
     lessons: [shiftL1, shiftL2, shiftL3, shiftL4, shiftL5, shiftL6, shiftL7, shiftL8, shiftL9, shiftL10],
   },
 ];

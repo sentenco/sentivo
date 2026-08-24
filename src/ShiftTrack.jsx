@@ -1,25 +1,5 @@
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { getTrack } from "./shiftTracks";
-
-const ICON_PROPS = { width: 22, height: 22, viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: 2, strokeLinecap: "round", strokeLinejoin: "round" };
-
-function ClockIcon() {
-  return (
-    <svg {...ICON_PROPS}>
-      <circle cx="12" cy="12" r="9" />
-      <path d="M12 7v5l3 2" />
-    </svg>
-  );
-}
-
-function LockIcon() {
-  return (
-    <svg {...ICON_PROPS}>
-      <rect x="5" y="11" width="14" height="9" rx="2" />
-      <path d="M8 11V7a4 4 0 0 1 8 0v4" />
-    </svg>
-  );
-}
 
 // SHIFT lessons open as a standalone popup player, matching the FORGE/ASCEND
 // chrome-less window.open pattern -- an independent window, not embedded in
@@ -58,6 +38,7 @@ function openGuide(trackId, num) {
 
 export default function ShiftTrack() {
   const { trackId } = useParams();
+  const navigate = useNavigate();
   const track = getTrack(trackId);
 
   if (!track) {
@@ -74,38 +55,37 @@ export default function ShiftTrack() {
   return (
     <div className="sht-shell">
       <style>{CSS}</style>
-      <header className="sht-topbar">
-        <span className="sht-topbar-title">SHIFT</span>
-      </header>
-
       <div className="sht-stage">
+        <div className="sht-topbar">
+          <button type="button" className="sht-brand" onClick={() => navigate("/library")} title="Back to Homeroom">
+            <img src="/logo-sentivo.png" alt="" className="sht-brand-logo" />entivo
+          </button>
+        </div>
+
         <div className="sht-hero">
           <div className="sht-hero-tags">
             <span className="sht-tag">{track.gapFocus}</span>
             <span className="sht-tag sht-tag--level">{track.level}</span>
           </div>
           <h1 className="sht-hero-title">{track.title}</h1>
-          <p className="sht-hero-blurb">{track.blurb}</p>
         </div>
 
-        <div className="sht-path">
+        <div className="sht-lesson-list">
           {track.lessons.map((lesson, i) => {
             const num = i + 1;
             if (!lesson) {
               return (
                 <div key={num} className="sht-row sht-row--locked">
-                  <div className="sht-row-marker"><span className="sht-row-num sht-row-num--locked">{num}</span></div>
-                  <div className="sht-row-icon sht-row-icon--locked"><LockIcon /></div>
+                  <div className="sht-row-badge sht-row-badge--locked">{num}</div>
                   <div className="sht-row-body">
-                    <p className="sht-row-title sht-row-title--locked">Coming soon</p>
+                    <h3 className="sht-row-title">Coming soon</h3>
                   </div>
                 </div>
               );
             }
             return (
-              <div key={num} className="sht-row sht-row--live">
-                <div className="sht-row-marker"><span className="sht-row-num">{num}</span></div>
-                <div className="sht-row-icon"><ClockIcon /></div>
+              <a key={num} className="sht-row" href="#" onClick={(e) => { e.preventDefault(); openLesson(track.id, num); }}>
+                <div className="sht-row-badge">{String(num).padStart(2, "0")}</div>
                 <div className="sht-row-body">
                   <div className="sht-row-topline">
                     <span className="sht-row-tag">{lesson.tag}</span>
@@ -115,14 +95,14 @@ export default function ShiftTrack() {
                   <p className="sht-row-desc">{lesson.theme}</p>
                 </div>
                 <div className="sht-row-actions">
-                  <button type="button" className="sht-lesson-guidebtn" onClick={() => openGuide(track.id, num)}>
-                    📋 Guide
+                  <button type="button" className="sht-btn-guide" onClick={(e) => { e.preventDefault(); e.stopPropagation(); openGuide(track.id, num); }}>
+                    Guide
                   </button>
-                  <button type="button" className="sht-lesson-startbtn" onClick={() => openLesson(track.id, num)}>
+                  <button type="button" className="sht-btn-start" onClick={(e) => { e.preventDefault(); e.stopPropagation(); openLesson(track.id, num); }}>
                     Start →
                   </button>
                 </div>
-              </div>
+              </a>
             );
           })}
         </div>
@@ -132,207 +112,137 @@ export default function ShiftTrack() {
 }
 
 const CSS = `
-@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Quicksand:wght@500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=IBM+Plex+Sans:wght@500;600;700;800&display=swap');
 
 .sht-shell {
   width: 100%;
   min-height: 100vh;
-  background: radial-gradient(circle at 15% 0%, #FFF1EF 0%, #FFDBD5 50%, #FFC3BA 100%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  background-color: #DEF3FB;
+  background-image:
+    radial-gradient(circle at 6% 8%, rgba(214,51,108,0.16), transparent 30%),
+    radial-gradient(circle at 96% 14%, rgba(42,168,174,0.20), transparent 34%),
+    radial-gradient(circle at 18% 96%, rgba(42,168,174,0.20), transparent 28%),
+    radial-gradient(circle at 88% 90%, rgba(214,51,108,0.16), transparent 26%),
+    radial-gradient(rgba(16,100,107,0.10) 1.4px, transparent 1.4px),
+    linear-gradient(165deg, #EAFBF8 0%, #DEF3FB 100%);
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, repeat, no-repeat;
+  background-size: auto, auto, auto, auto, 28px 28px, auto;
+  background-attachment: fixed;
   box-sizing: border-box;
 }
 .sht-shell * { box-sizing: border-box; }
 
-.sht-topbar {
-  width: 100%;
-  max-width: 1040px;
-  display: flex;
+.sht-stage { width: 100%; max-width: 880px; margin: 0 auto; padding: 26px 28px 64px; }
+
+.sht-missing { font-family: 'IBM Plex Sans', sans-serif; color: #4B8B92; text-align: center; margin-top: 60px; }
+
+.sht-topbar { display: flex; align-items: center; padding-bottom: 30px; }
+.sht-brand {
+  display: inline-flex;
   align-items: center;
-  justify-content: center;
-  padding: 22px 24px 0;
+  gap: 2px;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 800;
+  font-size: 19px;
+  color: #10646B;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  background: none;
+  padding: 0;
 }
-.sht-topbar-title {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 700;
-  font-size: 12.5px;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  color: #C98F84;
-}
+.sht-brand-logo { height: 30px; width: auto; display: block; margin-right: -4px; }
 
-.sht-stage {
-  flex: 1;
-  width: 100%;
-  max-width: 880px;
-  padding: 44px 28px 64px;
-}
-
-.sht-missing {
-  font-family: 'Quicksand', sans-serif;
-  color: #8C5C52;
-  text-align: center;
-  margin-top: 60px;
-}
-
-.sht-hero { margin-bottom: 38px; }
-.sht-hero-tags { display: flex; gap: 8px; margin-bottom: 14px; }
+.sht-hero { text-align: center; margin-bottom: 40px; }
+.sht-hero-tags { display: flex; justify-content: center; gap: 8px; margin-bottom: 16px; }
 .sht-tag {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 600;
-  font-size: 12.5px;
-  color: #E1483B;
-  background: rgba(225,72,59,0.1);
-  border: 1px solid rgba(225,72,59,0.35);
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 700;
+  font-size: 11.5px;
+  color: #10646B;
+  background: rgba(42,168,174,0.14);
   border-radius: 999px;
   padding: 4px 12px;
 }
-.sht-tag--level { color: #8C5C52; background: #FFEDE9; border-color: #FFD2C8; }
+.sht-tag--level { color: #FFFFFF; background: #D6336C; }
 .sht-hero-title {
-  font-family: 'Fredoka', sans-serif;
-  font-weight: 700;
+  font-family: 'Baloo 2', cursive;
+  font-weight: 800;
   font-size: 42px;
-  color: #4A211B;
-  margin: 0 0 12px;
-}
-.sht-hero-blurb {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 500;
-  font-size: 16.5px;
-  color: #8C5C52;
+  color: #10646B;
   margin: 0;
-  max-width: 620px;
-  line-height: 1.55;
+  text-shadow:
+    1.2px 1.2px 0 rgba(214,51,108,0.28),
+    2.4px 2.4px 0 rgba(214,51,108,0.28),
+    3.6px 3.6px 0 rgba(214,51,108,0.28),
+    4px 8px 18px rgba(16,100,107,0.2);
 }
 
-.sht-path { position: relative; display: flex; flex-direction: column; gap: 16px; }
-.sht-path::before {
-  content: "";
-  position: absolute;
-  left: 23px;
-  top: 30px;
-  bottom: 30px;
-  width: 2px;
-  background: #FFD2C8;
-  z-index: 0;
-}
-
+.sht-lesson-list { display: flex; flex-direction: column; gap: 14px; }
 .sht-row {
-  position: relative;
-  z-index: 1;
   display: flex;
   align-items: center;
   gap: 18px;
   background: #FFFFFF;
-  border: 1px solid #FFD2C8;
-  border-radius: 16px;
-  padding: 16px 22px 16px 12px;
-  box-shadow: 0 10px 24px rgba(160,50,35,0.07);
+  border-radius: 18px;
+  padding: 14px 20px 14px 14px;
+  box-shadow: 0 10px 22px rgba(16,100,107,0.1);
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.15s ease;
 }
-.sht-row--locked { opacity: 0.6; box-shadow: none; }
-.sht-row--live { transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease; }
-.sht-row--live:hover { border-color: #E1483B; box-shadow: 0 16px 32px rgba(160,50,35,0.12); transform: translateY(-1px); }
+.sht-row:hover { transform: translateY(-2px); }
+.sht-row--locked { opacity: 0.55; box-shadow: none; }
 
-.sht-row-marker { flex-shrink: 0; width: 48px; display: flex; align-items: center; justify-content: center; }
-.sht-row-num {
-  width: 32px;
-  height: 32px;
-  border-radius: 999px;
-  background: #FFFFFF;
-  border: 2px solid #E1483B;
-  color: #E1483B;
-  font-family: 'Fredoka', sans-serif;
-  font-weight: 700;
-  font-size: 13px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.sht-row-num--locked { border-color: #FFD2C8; color: #C98F84; }
-
-.sht-row-icon {
+.sht-row-badge {
   flex-shrink: 0;
-  width: 56px;
-  height: 56px;
-  border-radius: 14px;
-  background: #FFEDE9;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #D6336C 0%, #B0275A 100%);
+  color: #FFFFFF;
+  font-family: 'Baloo 2', cursive;
+  font-weight: 700;
+  font-size: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #E1483B;
 }
-.sht-row-icon--locked { color: #E8BBB3; }
+.sht-row-badge--locked { background: #CDEBEA; color: #4B8B92; }
 
 .sht-row-body { flex: 1; min-width: 0; }
-.sht-row-topline { display: flex; align-items: center; gap: 10px; margin-bottom: 4px; }
+.sht-row-topline { display: flex; align-items: center; gap: 8px; margin-bottom: 3px; }
 .sht-row-tag {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 600;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 800;
   font-size: 9.5px;
-  letter-spacing: 0.3px;
   text-transform: uppercase;
-  color: #E1483B;
-  background: rgba(225,72,59,0.14);
+  letter-spacing: 0.03em;
+  color: #D6336C;
+  background: rgba(214,51,108,0.12);
   border-radius: 999px;
   padding: 2px 9px;
 }
-.sht-row-meta {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 500;
-  font-size: 10.5px;
-  color: #C98F84;
-}
-.sht-row-title {
-  font-family: 'Fredoka', sans-serif;
-  font-weight: 700;
-  font-size: 17px;
-  color: #4A211B;
-  line-height: 1.25;
-  margin: 0 0 3px;
-}
-.sht-row-title--locked { color: #C98F84; margin: 0; }
-.sht-row-desc {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 500;
-  font-size: 13px;
-  color: #8C5C52;
-  line-height: 1.4;
-  margin: 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
+.sht-row-meta { font-family: 'IBM Plex Sans', sans-serif; font-weight: 600; font-size: 10.5px; color: #4B8B92; }
+.sht-row-title { font-family: 'Baloo 2', cursive; font-weight: 700; font-size: 17px; margin: 0 0 2px; color: #10646B; }
+.sht-row-desc { font-family: 'IBM Plex Sans', sans-serif; font-size: 12.5px; color: #4B8B92; margin: 0; }
 
-.sht-row-actions { flex-shrink: 0; display: flex; align-items: center; gap: 8px; }
-.sht-lesson-guidebtn {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 700;
+.sht-row-actions { flex-shrink: 0; display: flex; gap: 8px; }
+.sht-btn-guide, .sht-btn-start {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 800;
   font-size: 11px;
-  color: #E1483B;
-  background: #FFEDE9;
-  border: 1px solid #FFD2C8;
   border-radius: 999px;
-  padding: 7px 13px;
+  padding: 8px 14px;
   white-space: nowrap;
-  cursor: pointer;
-}
-.sht-lesson-startbtn {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 700;
-  font-size: 12px;
-  color: #FFFFFF;
-  background: #E1483B;
   border: none;
-  border-radius: 999px;
-  padding: 7px 15px;
-  white-space: nowrap;
   cursor: pointer;
 }
+.sht-btn-guide { background: rgba(42,168,174,0.14); color: #10646B; }
+.sht-btn-start { background: #D6336C; color: #FFFFFF; }
 
 @media (max-width: 640px) {
   .sht-row { flex-wrap: wrap; padding: 16px; }
-  .sht-row-actions { width: 100%; padding-left: 74px; }
-  .sht-row-desc { white-space: normal; }
+  .sht-row-actions { width: 100%; padding-left: 64px; }
 }
 `;

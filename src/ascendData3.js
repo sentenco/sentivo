@@ -6,7 +6,7 @@ export default {
   title: "Concede-then-Counter",
   type: "Counter",
   tag: "Diplomacy",
-  subtitle: "Disagree without sounding blunt — acknowledge, then pivot.",
+  subtitle: "Disagree without sounding blunt, acknowledge, then pivot.",
   slideOrder: ["cover", "warmup", "gimmick", "levelup", "closing"],
 
   warmup: {

@@ -6,7 +6,7 @@ export default {
   title: "The Upgrade Reveal",
   type: "Upgrade",
   tag: "Baseline",
-  subtitle: "Find the precise negotiating language you're missing — then use it.",
+  subtitle: "Find the precise negotiating language you're missing, then use it.",
   slideOrder: ["cover", "warmup", "gimmick", "levelup", "closing"],
 
   warmup: { kind: "questions", questions: [

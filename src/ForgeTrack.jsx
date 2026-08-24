@@ -1,49 +1,5 @@
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { getTrack } from "./forgeTracks";
-
-const ICON_PROPS = { width: 22, height: 22, viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: 2, strokeLinecap: "round", strokeLinejoin: "round" };
-
-function TechniqueIcon({ technique }) {
-  switch (technique) {
-    case "Fill the Gap":
-      return (
-        <svg {...ICON_PROPS}>
-          <path d="M4 8h4" /><path d="M12 8h8" strokeDasharray="2 2.5" /><path d="M4 16h16" />
-        </svg>
-      );
-    case "Echoing":
-      return (
-        <svg {...ICON_PROPS}>
-          <path d="M4 5h13a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H10l-4 4v-4H4a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z" />
-          <path d="M8 10a4 4 0 0 1 8 0" opacity="0.5" />
-        </svg>
-      );
-    case "Question Chain":
-      return (
-        <svg {...ICON_PROPS}>
-          <circle cx="7" cy="8" r="3" /><circle cx="17" cy="16" r="3" />
-          <path d="M9.5 9.5 14.5 14.5" strokeDasharray="1 2.5" />
-        </svg>
-      );
-    default:
-      return (
-        <svg {...ICON_PROPS}>
-          <rect x="3" y="5" width="18" height="14" rx="2" />
-          <circle cx="8.5" cy="10" r="1.5" />
-          <path d="M21 15l-5-4-4 3-3-2-6 5" />
-        </svg>
-      );
-  }
-}
-
-function LockIcon() {
-  return (
-    <svg {...ICON_PROPS}>
-      <rect x="5" y="11" width="14" height="9" rx="2" />
-      <path d="M8 11V7a4 4 0 0 1 8 0v4" />
-    </svg>
-  );
-}
 
 function slideCount(lesson) {
   if (lesson.format === "picture") return 7 + lesson.words.length + (lesson.homeworkCheck ? 1 : 0);
@@ -87,6 +43,7 @@ function openGuide(trackId, num) {
 
 export default function ForgeTrack() {
   const { trackId } = useParams();
+  const navigate = useNavigate();
   const track = getTrack(trackId);
 
   if (!track) {
@@ -103,11 +60,13 @@ export default function ForgeTrack() {
   return (
     <div className="ft-shell">
       <style>{CSS}</style>
-      <header className="ft-topbar">
-        <span className="ft-topbar-title">FORGE</span>
-      </header>
-
       <div className="ft-stage">
+        <div className="ft-topbar">
+          <button type="button" className="ft-brand" onClick={() => navigate("/library")} title="Back to Homeroom">
+            <img src="/logo-sentivo.png" alt="" className="ft-brand-logo" />entivo
+          </button>
+        </div>
+
         <div className="ft-hero">
           <div className="ft-hero-tags">
             <span className="ft-tag">{track.occupation}</span>
@@ -115,27 +74,24 @@ export default function ForgeTrack() {
             <span className="ft-tag ft-tag--level">{track.level}</span>
           </div>
           <h1 className="ft-hero-title">{track.title}</h1>
-          <p className="ft-hero-blurb">{track.blurb}</p>
         </div>
 
-        <div className="ft-path">
+        <div className="ft-lesson-list">
           {track.lessons.map((lesson, i) => {
             const num = i + 1;
             if (!lesson) {
               return (
                 <div key={num} className="ft-row ft-row--locked">
-                  <div className="ft-row-marker"><span className="ft-row-num ft-row-num--locked">{num}</span></div>
-                  <div className="ft-row-icon ft-row-icon--locked"><LockIcon /></div>
+                  <div className="ft-row-badge ft-row-badge--locked">{num}</div>
                   <div className="ft-row-body">
-                    <p className="ft-row-title ft-row-title--locked">Coming soon</p>
+                    <h3 className="ft-row-title">Coming soon</h3>
                   </div>
                 </div>
               );
             }
             return (
-              <div key={num} className="ft-row ft-row--live">
-                <div className="ft-row-marker"><span className="ft-row-num">{num}</span></div>
-                <div className="ft-row-icon"><TechniqueIcon technique={lesson.technique} /></div>
+              <a key={num} className="ft-row" href="#" onClick={(e) => { e.preventDefault(); openLesson(track.id, num); }}>
+                <div className="ft-row-badge">{String(num).padStart(2, "0")}</div>
                 <div className="ft-row-body">
                   <div className="ft-row-topline">
                     <span className="ft-row-tag">{lesson.tag}</span>
@@ -145,14 +101,14 @@ export default function ForgeTrack() {
                   <p className="ft-row-desc">{lesson.subtitle}</p>
                 </div>
                 <div className="ft-row-actions">
-                  <button type="button" className="ft-lesson-guidebtn" onClick={() => openGuide(track.id, num)}>
-                    📋 Guide
+                  <button type="button" className="ft-btn-guide" onClick={(e) => { e.preventDefault(); e.stopPropagation(); openGuide(track.id, num); }}>
+                    Guide
                   </button>
-                  <button type="button" className="ft-lesson-startbtn" onClick={() => openLesson(track.id, num)}>
+                  <button type="button" className="ft-btn-start" onClick={(e) => { e.preventDefault(); e.stopPropagation(); openLesson(track.id, num); }}>
                     Start →
                   </button>
                 </div>
-              </div>
+              </a>
             );
           })}
         </div>
@@ -162,207 +118,137 @@ export default function ForgeTrack() {
 }
 
 const CSS = `
-@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Quicksand:wght@500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=IBM+Plex+Sans:wght@500;600;700;800&display=swap');
 
 .ft-shell {
   width: 100%;
   min-height: 100vh;
-  background: radial-gradient(circle at 15% 0%, #FFF6E6 0%, #FBE7C6 50%, #F6D9AC 100%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  background-color: #DEF3FB;
+  background-image:
+    radial-gradient(circle at 6% 8%, rgba(232,84,78,0.16), transparent 30%),
+    radial-gradient(circle at 96% 14%, rgba(42,168,174,0.20), transparent 34%),
+    radial-gradient(circle at 18% 96%, rgba(42,168,174,0.20), transparent 28%),
+    radial-gradient(circle at 88% 90%, rgba(232,84,78,0.16), transparent 26%),
+    radial-gradient(rgba(16,100,107,0.10) 1.4px, transparent 1.4px),
+    linear-gradient(165deg, #EAFBF8 0%, #DEF3FB 100%);
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, repeat, no-repeat;
+  background-size: auto, auto, auto, auto, 28px 28px, auto;
+  background-attachment: fixed;
   box-sizing: border-box;
 }
 .ft-shell * { box-sizing: border-box; }
 
-.ft-topbar {
-  width: 100%;
-  max-width: 1040px;
-  display: flex;
+.ft-stage { width: 100%; max-width: 880px; margin: 0 auto; padding: 26px 28px 64px; }
+
+.ft-missing { font-family: 'IBM Plex Sans', sans-serif; color: #4B8B92; text-align: center; margin-top: 60px; }
+
+.ft-topbar { display: flex; align-items: center; padding-bottom: 30px; }
+.ft-brand {
+  display: inline-flex;
   align-items: center;
-  justify-content: center;
-  padding: 22px 24px 0;
+  gap: 2px;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 800;
+  font-size: 19px;
+  color: #10646B;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  background: none;
+  padding: 0;
 }
-.ft-topbar-title {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 700;
-  font-size: 12.5px;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  color: #B0A48C;
-}
+.ft-brand-logo { height: 30px; width: auto; display: block; margin-right: -4px; }
 
-.ft-stage {
-  flex: 1;
-  width: 100%;
-  max-width: 880px;
-  padding: 44px 28px 64px;
-}
-
-.ft-missing {
-  font-family: 'Quicksand', sans-serif;
-  color: #8B7F68;
-  text-align: center;
-  margin-top: 60px;
-}
-
-.ft-hero { margin-bottom: 38px; }
-.ft-hero-tags { display: flex; gap: 8px; margin-bottom: 14px; }
+.ft-hero { text-align: center; margin-bottom: 40px; }
+.ft-hero-tags { display: flex; justify-content: center; gap: 8px; margin-bottom: 16px; }
 .ft-tag {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 600;
-  font-size: 12.5px;
-  color: #C97A2E;
-  background: rgba(242,166,90,0.12);
-  border: 1px solid rgba(242,166,90,0.4);
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 700;
+  font-size: 11.5px;
+  color: #10646B;
+  background: rgba(42,168,174,0.14);
   border-radius: 999px;
   padding: 4px 12px;
 }
-.ft-tag--level { color: #8B7F68; background: #FBF1DF; border-color: #EDDFC3; }
+.ft-tag--level { color: #FFFFFF; background: #E8544E; }
 .ft-hero-title {
-  font-family: 'Fredoka', sans-serif;
-  font-weight: 700;
+  font-family: 'Baloo 2', cursive;
+  font-weight: 800;
   font-size: 42px;
-  color: #2E2617;
-  margin: 0 0 12px;
-}
-.ft-hero-blurb {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 500;
-  font-size: 16.5px;
-  color: #6B5F49;
+  color: #10646B;
   margin: 0;
-  max-width: 620px;
-  line-height: 1.55;
+  text-shadow:
+    1.2px 1.2px 0 rgba(232,84,78,0.28),
+    2.4px 2.4px 0 rgba(232,84,78,0.28),
+    3.6px 3.6px 0 rgba(232,84,78,0.28),
+    4px 8px 18px rgba(16,100,107,0.2);
 }
 
-.ft-path { position: relative; display: flex; flex-direction: column; gap: 16px; }
-.ft-path::before {
-  content: "";
-  position: absolute;
-  left: 23px;
-  top: 30px;
-  bottom: 30px;
-  width: 2px;
-  background: #EAD9B8;
-  z-index: 0;
-}
-
+.ft-lesson-list { display: flex; flex-direction: column; gap: 14px; }
 .ft-row {
-  position: relative;
-  z-index: 1;
   display: flex;
   align-items: center;
   gap: 18px;
   background: #FFFFFF;
-  border: 1px solid #EAD9B8;
-  border-radius: 16px;
-  padding: 16px 22px 16px 12px;
-  box-shadow: 0 10px 24px rgba(43,35,20,0.06);
+  border-radius: 18px;
+  padding: 14px 20px 14px 14px;
+  box-shadow: 0 10px 22px rgba(16,100,107,0.1);
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.15s ease;
 }
-.ft-row--locked { opacity: 0.6; box-shadow: none; }
-.ft-row--live { transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease; }
-.ft-row--live:hover { border-color: #F2A65A; box-shadow: 0 16px 32px rgba(43,35,20,0.1); transform: translateY(-1px); }
+.ft-row:hover { transform: translateY(-2px); }
+.ft-row--locked { opacity: 0.55; box-shadow: none; }
 
-.ft-row-marker { flex-shrink: 0; width: 48px; display: flex; align-items: center; justify-content: center; }
-.ft-row-num {
-  width: 32px;
-  height: 32px;
-  border-radius: 999px;
-  background: #FFFFFF;
-  border: 2px solid #F2A65A;
-  color: #C97A2E;
-  font-family: 'Fredoka', sans-serif;
-  font-weight: 700;
-  font-size: 13px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.ft-row-num--locked { border-color: #EAD9B8; color: #B0A48C; }
-
-.ft-row-icon {
+.ft-row-badge {
   flex-shrink: 0;
-  width: 56px;
-  height: 56px;
-  border-radius: 14px;
-  background: #FBF1DF;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #E8544E 0%, #C93F3A 100%);
+  color: #FFFFFF;
+  font-family: 'Baloo 2', cursive;
+  font-weight: 700;
+  font-size: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #C97A2E;
 }
-.ft-row-icon--locked { color: #C2B393; }
+.ft-row-badge--locked { background: #CDEBEA; color: #4B8B92; }
 
 .ft-row-body { flex: 1; min-width: 0; }
-.ft-row-topline { display: flex; align-items: center; gap: 10px; margin-bottom: 4px; }
+.ft-row-topline { display: flex; align-items: center; gap: 8px; margin-bottom: 3px; }
 .ft-row-tag {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 600;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 800;
   font-size: 9.5px;
-  letter-spacing: 0.3px;
   text-transform: uppercase;
-  color: #C97A2E;
-  background: rgba(242,166,90,0.16);
+  letter-spacing: 0.03em;
+  color: #E8544E;
+  background: rgba(232,84,78,0.12);
   border-radius: 999px;
   padding: 2px 9px;
 }
-.ft-row-meta {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 500;
-  font-size: 10.5px;
-  color: #8B7F68;
-}
-.ft-row-title {
-  font-family: 'Fredoka', sans-serif;
-  font-weight: 700;
-  font-size: 17px;
-  color: #2E2617;
-  line-height: 1.25;
-  margin: 0 0 3px;
-}
-.ft-row-title--locked { color: #B0A48C; margin: 0; }
-.ft-row-desc {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 500;
-  font-size: 13px;
-  color: #6B5F49;
-  line-height: 1.4;
-  margin: 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
+.ft-row-meta { font-family: 'IBM Plex Sans', sans-serif; font-weight: 600; font-size: 10.5px; color: #4B8B92; }
+.ft-row-title { font-family: 'Baloo 2', cursive; font-weight: 700; font-size: 17px; margin: 0 0 2px; color: #10646B; }
+.ft-row-desc { font-family: 'IBM Plex Sans', sans-serif; font-size: 12.5px; color: #4B8B92; margin: 0; }
 
-.ft-row-actions { flex-shrink: 0; display: flex; align-items: center; gap: 8px; }
-.ft-lesson-guidebtn {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 700;
+.ft-row-actions { flex-shrink: 0; display: flex; gap: 8px; }
+.ft-btn-guide, .ft-btn-start {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 800;
   font-size: 11px;
-  color: #C97A2E;
-  background: #FBF1DF;
-  border: 1px solid #EAD9B8;
   border-radius: 999px;
-  padding: 7px 13px;
+  padding: 8px 14px;
   white-space: nowrap;
-  cursor: pointer;
-}
-.ft-lesson-startbtn {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 700;
-  font-size: 12px;
-  color: #2E2617;
-  background: #F2A65A;
   border: none;
-  border-radius: 999px;
-  padding: 7px 15px;
-  white-space: nowrap;
   cursor: pointer;
 }
+.ft-btn-guide { background: rgba(42,168,174,0.14); color: #10646B; }
+.ft-btn-start { background: #E8544E; color: #FFFFFF; }
 
 @media (max-width: 640px) {
   .ft-row { flex-wrap: wrap; padding: 16px; }
-  .ft-row-actions { width: 100%; padding-left: 74px; }
-  .ft-row-desc { white-space: normal; }
+  .ft-row-actions { width: 100%; padding-left: 64px; }
 }
 `;

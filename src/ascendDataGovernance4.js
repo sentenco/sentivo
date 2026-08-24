@@ -6,7 +6,7 @@ export default {
   title: "The Reversal",
   type: "Reversal",
   tag: "Pressure Test",
-  subtitle: "Argue one side, then the other — on demand, no script.",
+  subtitle: "Argue one side, then the other, on demand, no script.",
   slideOrder: ["cover", "warmup", "gimmick", "levelup", "closing"],
 
   warmup: {

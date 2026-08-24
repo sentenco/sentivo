@@ -51,7 +51,7 @@ export default {
   technique: "Say the Picture",
   format: "picture",
   tag: "Baseline",
-  subtitle: "Talk about your day — morning to evening.",
+  subtitle: "Talk about your day, morning to evening.",
   techniqueLine: "Say the Picture — look, then talk.",
   words: WORDS,
 

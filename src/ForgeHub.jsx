@@ -1,40 +1,46 @@
+import { useNavigate } from "react-router-dom";
 import TRACKS from "./forgeTracks";
 
 export default function ForgeHub() {
+  const navigate = useNavigate();
+
   return (
     <div className="fh-shell">
       <style>{CSS}</style>
-      <header className="fh-topbar">
-        <span className="fh-topbar-title">FORGE</span>
-      </header>
-
       <div className="fh-stage">
+        <div className="fh-topbar">
+          <button type="button" className="fh-brand" onClick={() => navigate("/library")} title="Back to Homeroom">
+            <img src="/logo-sentivo.png" alt="" className="fh-brand-logo" />entivo
+          </button>
+        </div>
+
         <div className="fh-hero">
-          <span className="fh-hero-eyebrow">Diagnosis · Vocabulary gaps under pressure</span>
-          <h1 className="fh-hero-title">FORGE</h1>
+          <h1 className="fh-hero-title">Forge</h1>
           <p className="fh-hero-blurb">
-            FORGE drills active vocabulary through pictures, gap-fills, and echo questions. It's built for students who understand English but run out of words when they need them.
+            Forge drills active vocabulary through forced retrieval, not recognition. Built for students who understand English but run out of words when they actually need them.
           </p>
         </div>
-        <div className="fh-lane"></div>
+
+        <div className="fh-dot-lane"></div>
 
         <div className="fh-tracks-grid">
           {TRACKS.map((track) => {
             const authored = track.lessons.filter(Boolean).length;
             return (
               <a key={track.id} href={`/library/forge/${track.id}`} className="fh-track-card">
+                <div className="fh-track-ribbon">
+                  <span className="fh-track-num">Track {String(TRACKS.indexOf(track) + 1).padStart(2, "0")}</span>
+                  <span className="fh-track-level-pill">{track.level}</span>
+                </div>
                 <div className="fh-track-body">
-                  <div>
-                    <div className="fh-track-tags">
-                      <span className="fh-tag">{track.occupation}</span>
-                      <span className="fh-tag">{track.interest}</span>
-                      <span className="fh-tag fh-tag--level">{track.level}</span>
-                    </div>
-                    <h3 className="fh-track-title">{track.title}</h3>
-                    <p className="fh-track-desc">{track.blurb}</p>
+                  <div className="fh-track-tags">
+                    <span className="fh-track-tag">{track.occupation}</span>
+                    <span className="fh-track-tag">{track.interest}</span>
                   </div>
+                  <h3 className="fh-track-title">{track.title}</h3>
+                  <p className="fh-track-desc">{track.blurb}</p>
                   <div className="fh-track-foot">
-                    <span className="fh-track-meta">{authored} of {track.lessons.length} lessons ready</span>
+                    <span className="fh-track-meta">{authored} of {track.lessons.length} ready</span>
                     <span className="fh-track-cta">Open track →</span>
                   </div>
                 </div>
@@ -43,13 +49,9 @@ export default function ForgeHub() {
           })}
 
           <div className="fh-track-card fh-track-card--ghost">
-            <div className="fh-track-body">
-              <div>
-                <span className="fh-ghost-icon">+</span>
-                <h3 className="fh-track-title fh-track-title--ghost">More tracks coming</h3>
-                <p className="fh-track-desc">New profiles get added here as they're built.</p>
-              </div>
-            </div>
+            <span className="fh-ghost-plus">+</span>
+            <div className="fh-ghost-label">More tracks coming</div>
+            <div className="fh-ghost-sub">New profiles get added here as they're built.</div>
           </div>
         </div>
       </div>
@@ -63,72 +65,87 @@ const CSS = `
 .fh-shell {
   width: 100%;
   min-height: 100vh;
-  background: linear-gradient(160deg, #EAFBF8 0%, #DFF4FA 100%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  background-color: #DEF3FB;
+  background-image:
+    radial-gradient(circle at 6% 8%, rgba(232,84,78,0.16), transparent 30%),
+    radial-gradient(circle at 96% 14%, rgba(42,168,174,0.20), transparent 34%),
+    radial-gradient(circle at 18% 96%, rgba(42,168,174,0.20), transparent 28%),
+    radial-gradient(circle at 88% 90%, rgba(232,84,78,0.16), transparent 26%),
+    radial-gradient(rgba(16,100,107,0.10) 1.4px, transparent 1.4px),
+    linear-gradient(165deg, #EAFBF8 0%, #DEF3FB 100%);
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, repeat, no-repeat;
+  background-size: auto, auto, auto, auto, 28px 28px, auto;
+  background-attachment: fixed;
   box-sizing: border-box;
 }
 .fh-shell * { box-sizing: border-box; }
 
-.fh-topbar {
-  width: 100%;
-  max-width: 1120px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 22px 24px 0;
-}
-.fh-topbar-title {
-  font-family: 'IBM Plex Sans', sans-serif;
-  font-weight: 800;
-  font-size: 12.5px;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  color: #4B8B92;
-}
-
 .fh-stage {
-  flex: 1;
   width: 100%;
   max-width: 1080px;
-  padding: 44px 28px 64px;
+  margin: 0 auto;
+  padding: 26px 28px 64px;
 }
 
-.fh-hero { max-width: 620px; }
-.fh-hero-eyebrow {
-  display: inline-block;
+.fh-topbar { display: flex; align-items: center; padding-bottom: 34px; }
+.fh-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
   font-family: 'IBM Plex Sans', sans-serif;
   font-weight: 800;
-  font-size: 11.5px;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: #E8544E;
-  background: rgba(232,84,78,0.12);
-  border-radius: 999px;
-  padding: 6px 14px;
-  margin-bottom: 16px;
+  font-size: 19px;
+  color: #10646B;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  background: none;
+  padding: 0;
 }
+.fh-brand-logo { height: 30px; width: auto; display: block; margin-right: -4px; }
+
+.fh-hero { max-width: 620px; margin: 0 auto; text-align: center; }
 .fh-hero-title {
   font-family: 'Baloo 2', cursive;
-  font-weight: 700;
-  font-size: 46px;
+  font-weight: 800;
+  font-size: 56px;
   color: #10646B;
-  margin: 0 0 12px;
+  margin: 0 0 16px;
+  letter-spacing: -0.01em;
+  text-shadow:
+    1.5px 1.5px 0 rgba(232,84,78,0.30),
+    3px 3px 0 rgba(232,84,78,0.30),
+    4.5px 4.5px 0 rgba(232,84,78,0.30),
+    5px 10px 22px rgba(16,100,107,0.22);
 }
 .fh-hero-blurb {
   font-family: 'IBM Plex Sans', sans-serif;
   font-weight: 500;
   font-size: 16.5px;
+  line-height: 1.6;
   color: #4B8B92;
-  margin: 0;
-  line-height: 1.55;
+  margin: 0 auto;
+  max-width: 520px;
 }
 
-.fh-lane { position: relative; height: 2px; background: #BFE6E1; margin: 30px 0 34px; }
-.fh-lane::before, .fh-lane::after { content: ""; position: absolute; top: -3px; width: 8px; height: 8px; border-radius: 50%; background: #2AA8AE; }
-.fh-lane::before { left: 0; }
-.fh-lane::after { right: 0; }
+.fh-dot-lane {
+  position: relative;
+  height: 2px;
+  background: #CDEBEA;
+  margin: 34px auto 40px;
+  max-width: 340px;
+}
+.fh-dot-lane::before, .fh-dot-lane::after {
+  content: "";
+  position: absolute;
+  top: -4px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #E8544E;
+}
+.fh-dot-lane::before { left: 0; }
+.fh-dot-lane::after { right: 0; }
 
 .fh-tracks-grid {
   display: grid;
@@ -138,89 +155,80 @@ const CSS = `
 
 .fh-track-card {
   display: flex;
+  flex-direction: column;
   background: #FFFFFF;
-  border-radius: 16px;
-  border-top: 4px solid #E8544E;
+  border-radius: 22px;
   overflow: hidden;
-  text-align: left;
-  font-family: inherit;
   text-decoration: none;
-  box-shadow: 0 10px 22px rgba(16,100,107,0.12);
-  transition: box-shadow 0.15s ease, transform 0.15s ease;
+  color: inherit;
+  box-shadow: 0 14px 30px rgba(16,100,107,0.14);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
-.fh-track-card:hover {
-  box-shadow: 0 16px 30px rgba(16,100,107,0.18);
-  transform: translateY(-3px);
+.fh-track-card:hover { transform: translateY(-4px) rotate(-0.4deg); box-shadow: 0 20px 40px rgba(16,100,107,0.2); }
+
+.fh-track-ribbon {
+  background: linear-gradient(120deg, #E8544E 0%, #C93F3A 100%);
+  padding: 16px 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.fh-track-num { font-family: 'Baloo 2', cursive; font-weight: 700; font-size: 20px; color: #FFFFFF; }
+.fh-track-level-pill {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 800;
+  font-size: 11px;
+  color: #C93F3A;
+  background: #FFFFFF;
+  border-radius: 999px;
+  padding: 4px 12px;
 }
 
-.fh-track-body { flex: 1; min-width: 0; display: flex; flex-direction: column; justify-content: space-between; gap: 14px; padding: 22px 22px 20px; }
-.fh-track-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
-.fh-tag {
+.fh-track-body { padding: 22px 22px 20px; flex: 1; display: flex; flex-direction: column; gap: 14px; }
+.fh-track-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.fh-track-tag {
   font-family: 'IBM Plex Sans', sans-serif;
   font-weight: 700;
   font-size: 11px;
-  color: #E8544E;
-  background: rgba(232,84,78,0.10);
-  border-radius: 999px;
-  padding: 3px 10px;
-}
-.fh-tag--level { color: #4B8B92; background: rgba(42,168,174,0.12); }
-
-.fh-track-title {
-  font-family: 'Baloo 2', cursive;
-  font-weight: 700;
-  font-size: 21px;
   color: #10646B;
-  margin: 0 0 6px;
+  background: rgba(42,168,174,0.14);
+  border-radius: 999px;
+  padding: 4px 11px;
 }
-.fh-track-desc {
-  font-family: 'IBM Plex Sans', sans-serif;
-  font-weight: 500;
-  font-size: 13px;
-  color: #5C8891;
-  line-height: 1.5;
-  margin: 0;
-}
+.fh-track-title { font-family: 'Baloo 2', cursive; font-weight: 700; font-size: 22px; color: #10646B; margin: 0; }
+.fh-track-desc { font-family: 'IBM Plex Sans', sans-serif; font-weight: 500; font-size: 13.5px; line-height: 1.55; color: #4B8B92; margin: 0; }
+
 .fh-track-foot {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 10px;
-  padding-top: 12px;
-  border-top: 1px solid #EAF8F6;
+  padding-top: 14px;
+  border-top: 1px dashed #CDEBEA;
 }
-.fh-track-meta {
-  font-family: 'IBM Plex Sans', sans-serif;
-  font-weight: 700;
-  font-size: 11.5px;
-  color: #4B8B92;
-}
+.fh-track-meta { font-family: 'IBM Plex Sans', sans-serif; font-weight: 700; font-size: 11px; color: #4B8B92; }
 .fh-track-cta {
   font-family: 'IBM Plex Sans', sans-serif;
   font-weight: 800;
   font-size: 12.5px;
-  color: #E8544E;
-  white-space: nowrap;
+  color: #FFFFFF;
+  background: #E8544E;
+  border-radius: 999px;
+  padding: 8px 16px;
 }
 
 .fh-track-card--ghost {
-  opacity: 0.7;
-  cursor: default;
-  pointer-events: none;
-  border-top-color: #BFE6E1;
-  border: 2px dashed #BFE6E1;
-  border-top: 2px dashed #BFE6E1;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 260px;
   box-shadow: none;
+  border: 2px dashed #CDEBEA;
+  background: transparent;
+  padding: 22px;
 }
-.fh-track-card--ghost .fh-track-body { align-items: center; text-align: center; justify-content: center; }
-.fh-ghost-icon {
-  display: block;
-  font-family: 'Baloo 2', cursive;
-  font-size: 30px;
-  color: #8FB9BC;
-  margin-bottom: 6px;
-}
-.fh-track-title--ghost { color: #8FB9BC; }
+.fh-ghost-plus { font-family: 'Baloo 2', cursive; font-size: 34px; font-weight: 700; color: #4B8B92; opacity: 0.5; display: block; margin-bottom: 8px; }
+.fh-ghost-label { font-family: 'Baloo 2', cursive; font-weight: 700; font-size: 17px; color: #4B8B92; opacity: 0.7; }
+.fh-ghost-sub { font-family: 'IBM Plex Sans', sans-serif; font-size: 12.5px; margin-top: 6px; color: #4B8B92; opacity: 0.6; }
 
 @media (max-width: 640px) {
   .fh-tracks-grid { grid-template-columns: 1fr; }
