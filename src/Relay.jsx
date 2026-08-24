@@ -62,10 +62,19 @@ function CoverSlide({ lesson }) {
 }
 
 function WarmupSlide({ lesson }) {
+  const [showingSample, setShowingSample] = useState(false);
+  const sample = lesson.warmup.sampleAnswer;
   return (
     <div className="rl-slide rl-slide--centered">
       <span className="rl-eyebrow">Warm-up</span>
       <h2 className="rl-question"><PulseIcon />{lesson.warmup.question}</h2>
+      {sample && (
+        showingSample ? (
+          <p className="rl-help-text">{sample}</p>
+        ) : (
+          <button type="button" className="rl-help-btn" onClick={() => setShowingSample(true)}>Show a sample answer</button>
+        )
+      )}
     </div>
   );
 }

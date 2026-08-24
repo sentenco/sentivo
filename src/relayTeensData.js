@@ -12,6 +12,7 @@ export default {
 
   warmup: {
     question: "Do you like your school?",
+    sampleAnswer: "Yes, I do. → My favorite part is art class. → What's your favorite class?",
   },
 
   bounce: {
