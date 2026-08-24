@@ -7,30 +7,10 @@ function buildSlideTypes(lesson) {
   return ["cover", "warmup", ...bounceSlides, "yourturn", "pushit", "end"];
 }
 
-function slideLabel(slideType) {
-  if (slideType.startsWith("bounce-")) return "Bounce";
-  return { cover: "Cover", warmup: "Warm-up", yourturn: "Your Turn", pushit: "Push It", end: "End" }[slideType];
-}
-
-function TopStrip({ lesson, slideType }) {
-  return (
-    <div className="rl-strip">
-      <span>{lesson.code}</span>
-      <span className="rl-strip-dot">·</span>
-      <span>{lesson.title}</span>
-      <span className="rl-strip-dot">·</span>
-      <span className="rl-strip-tag">{lesson.tag}</span>
-      <span className="rl-strip-label">{slideLabel(slideType)}</span>
-    </div>
-  );
-}
-
 function CoverSlide({ lesson }) {
   return (
     <div className="rl-slide rl-slide--centered">
-      <span className="rl-kicker">{lesson.code} · {lesson.tag}</span>
       <h1 className="rl-h rl-h--cover">{lesson.title}</h1>
-      <p className="rl-subtitle">{lesson.subtitle}</p>
       <span className="rl-technique">{lesson.techniqueLine}</span>
     </div>
   );
@@ -39,6 +19,7 @@ function CoverSlide({ lesson }) {
 function WarmupSlide({ lesson }) {
   return (
     <div className="rl-slide rl-slide--centered">
+      <span className="rl-eyebrow">Warm-up</span>
       <h2 className="rl-question">{lesson.warmup.question}</h2>
     </div>
   );
@@ -137,12 +118,11 @@ export default function Relay() {
     <div className="rl-shell">
       <style>{CSS}</style>
       <header className="rl-topbar">
-        <span className="rl-topbar-title">{lesson.code} · {lesson.title}</span>
+        <span className="rl-brand"><img src="/logo-sentivo.png" alt="" className="rl-brand-logo" />entivo</span>
       </header>
 
       <div className="rl-stage">
         <div className="rl-deck">
-          <TopStrip lesson={lesson} slideType={slideType} />
           <div className="rl-deck-body" key={slideIdx}>
             {renderSlide(slideType, lesson)}
           </div>
@@ -192,13 +172,15 @@ const CSS = `
   justify-content: center;
   padding: 22px 24px 0;
 }
-.rl-topbar-title {
+.rl-brand {
+  display: flex;
+  align-items: center;
   font-family: 'Baloo 2', cursive;
   font-weight: 700;
-  font-size: 16px;
+  font-size: 18px;
   color: #10646B;
-  text-align: center;
 }
+.rl-brand-logo { height: 24px; width: auto; display: block; margin-right: -4px; }
 
 .rl-missing {
   font-family: 'IBM Plex Sans', sans-serif;
@@ -234,30 +216,6 @@ const CSS = `
   from { opacity: 0; transform: translateY(8px); }
   to { opacity: 1; transform: translateY(0); }
 }
-
-.rl-strip {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-family: 'IBM Plex Sans', sans-serif;
-  font-weight: 700;
-  font-size: 12.5px;
-  letter-spacing: 0.3px;
-  text-transform: uppercase;
-  color: #3E7CB1;
-  padding-bottom: 12px;
-  border-bottom: 1px solid #EAF3FA;
-  margin-bottom: 16px;
-}
-.rl-strip-dot { color: #B7CFCC; }
-.rl-strip-tag {
-  background: rgba(62,124,177,0.14);
-  color: #3E7CB1;
-  padding: 2px 9px;
-  border-radius: 999px;
-  font-size: 11px;
-}
-.rl-strip-label { margin-left: auto; color: #9FC6C2; }
 
 .rl-deck-body { flex: 1; min-height: 0; display: flex; }
 .rl-slide { display: flex; flex-direction: column; gap: 14px; height: 100%; width: 100%; }
@@ -295,14 +253,6 @@ const CSS = `
 }
 .rl-optional { font-family: 'IBM Plex Sans', sans-serif; font-weight: 500; font-size: 15px; color: rgba(255,255,255,0.75); margin-left: 2px; }
 
-.rl-kicker {
-  font-family: 'IBM Plex Sans', sans-serif;
-  font-weight: 800;
-  font-size: 12.5px;
-  letter-spacing: 0.6px;
-  text-transform: uppercase;
-  color: #3E7CB1;
-}
 .rl-subtitle {
   font-family: 'IBM Plex Sans', sans-serif;
   font-weight: 500;

@@ -9,12 +9,12 @@
 export default {
   id: "relay-1",
   code: "L1",
-  title: "Keep It Going",
+  title: "Small Talk",
   technique: "Answer, Add, Ask",
   format: "bounce",
   tag: "Baseline",
   subtitle: "Turn a one-word answer into a real exchange.",
-  techniqueLine: "Answer, Add, Ask — never stop at one.",
+  techniqueLine: "Answer, Add, Ask",
 
   warmup: {
     question: "Do you like your job?",
