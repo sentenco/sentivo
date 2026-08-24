@@ -37,6 +37,7 @@ function CoverSlide({ lesson }) {
 function WarmupSlide({ lesson }) {
   return (
     <div className="rl-slide rl-slide--centered">
+      <span className="rl-eyebrow">Warm-up</span>
       <h2 className="rl-question">{lesson.warmup.question}</h2>
     </div>
   );
@@ -251,7 +252,7 @@ const CSS = `
 }
 
 .rl-deck-body { min-height: 260px; display: flex; align-items: center; justify-content: center; padding: 36px 34px 28px; }
-.rl-slide { display: flex; flex-direction: column; gap: 14px; width: 100%; }
+.rl-slide { display: flex; flex-direction: column; gap: 14px; width: 100%; margin-top: 22px; }
 .rl-slide--centered { align-items: center; justify-content: center; text-align: center; }
 
 /* ── Highlighted heading, used on every slide ── */
