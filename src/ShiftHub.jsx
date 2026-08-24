@@ -66,10 +66,10 @@ const CSS = `
   min-height: 100vh;
   background-color: #DEF3FB;
   background-image:
-    radial-gradient(circle at 6% 8%, rgba(214,51,108,0.16), transparent 30%),
+    radial-gradient(circle at 6% 8%, rgba(217,164,4,0.18), transparent 30%),
     radial-gradient(circle at 96% 14%, rgba(42,168,174,0.20), transparent 34%),
     radial-gradient(circle at 18% 96%, rgba(42,168,174,0.20), transparent 28%),
-    radial-gradient(circle at 88% 90%, rgba(214,51,108,0.16), transparent 26%),
+    radial-gradient(circle at 88% 90%, rgba(217,164,4,0.18), transparent 26%),
     radial-gradient(rgba(16,100,107,0.10) 1.4px, transparent 1.4px),
     linear-gradient(165deg, #EAFBF8 0%, #DEF3FB 100%);
   background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, repeat, no-repeat;
@@ -107,9 +107,9 @@ const CSS = `
   margin: 0 0 16px;
   letter-spacing: -0.01em;
   text-shadow:
-    1.5px 1.5px 0 rgba(214,51,108,0.30),
-    3px 3px 0 rgba(214,51,108,0.30),
-    4.5px 4.5px 0 rgba(214,51,108,0.30),
+    1.5px 1.5px 0 rgba(217,164,4,0.35),
+    3px 3px 0 rgba(217,164,4,0.35),
+    4.5px 4.5px 0 rgba(217,164,4,0.35),
     5px 10px 22px rgba(16,100,107,0.22);
 }
 .shh-hero-blurb {
@@ -136,7 +136,7 @@ const CSS = `
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background: #D6336C;
+  background: #D9A404;
 }
 .shh-dot-lane::before { left: 0; }
 .shh-dot-lane::after { right: 0; }
@@ -161,18 +161,18 @@ const CSS = `
 .shh-track-card:hover { transform: translateY(-4px) rotate(-0.4deg); box-shadow: 0 20px 40px rgba(16,100,107,0.2); }
 
 .shh-track-ribbon {
-  background: linear-gradient(120deg, #D6336C 0%, #B0275A 100%);
+  background: linear-gradient(120deg, #F0C33C 0%, #D9A404 100%);
   padding: 16px 22px;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-.shh-track-num { font-family: 'Baloo 2', cursive; font-weight: 700; font-size: 20px; color: #FFFFFF; }
+.shh-track-num { font-family: 'Baloo 2', cursive; font-weight: 700; font-size: 20px; color: #10646B; }
 .shh-track-level-pill {
   font-family: 'IBM Plex Sans', sans-serif;
   font-weight: 800;
   font-size: 11px;
-  color: #B0275A;
+  color: #D9A404;
   background: #FFFFFF;
   border-radius: 999px;
   padding: 4px 12px;
@@ -204,8 +204,8 @@ const CSS = `
   font-family: 'IBM Plex Sans', sans-serif;
   font-weight: 800;
   font-size: 12.5px;
-  color: #FFFFFF;
-  background: #D6336C;
+  color: #10646B;
+  background: #F0C33C;
   border-radius: 999px;
   padding: 8px 16px;
 }

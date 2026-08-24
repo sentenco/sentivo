@@ -2467,8 +2467,8 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   box-shadow: 0 4px 8px rgba(16,100,107,0.28);
 }
 .spklab-card--forge .spklab-pin circle:first-child { fill: #E8544E; }
-.spklab-card--shift .spklab-pin circle:first-child { fill: #2AA8AE; }
-.spklab-card--ascend .spklab-pin circle:first-child { fill: #E8A83D; }
+.spklab-card--shift .spklab-pin circle:first-child { fill: #F0C33C; }
+.spklab-card--ascend .spklab-pin circle:first-child { fill: #F2994A; }
 .spklab-card--relay .spklab-pin circle:first-child { fill: #3E7CB1; }
 .spklab-card--stack .spklab-pin circle:first-child { fill: #8B6FC9; }
 .spklab-card--glide .spklab-pin circle:first-child { fill: #4FAE7A; }
@@ -2495,8 +2495,8 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   color: #FFFFFF; border-radius: 8px; padding: 10px 0;
 }
 .spklab-card--forge .spklab-cta { background: #E8544E; }
-.spklab-card--shift .spklab-cta { background: #2AA8AE; }
-.spklab-card--ascend .spklab-cta { background: #C99A2E; }
+.spklab-card--shift .spklab-cta { background: #D9A404; }
+.spklab-card--ascend .spklab-cta { background: #D97D2E; }
 .spklab-card--relay .spklab-cta { background: #3E7CB1; }
 .spklab-card--stack .spklab-cta { background: #8B6FC9; }
 .spklab-card--glide .spklab-cta { background: #4FAE7A; }
