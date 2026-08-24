@@ -7,7 +7,7 @@ const AUDIENCES = [
 ];
 
 export default function RelayHub() {
-  const [audience, setAudience] = useState("adults");
+  const [audience, setAudience] = useState("teens");
   const tracks = TRACKS.filter((t) => t.audience === audience);
 
   return (

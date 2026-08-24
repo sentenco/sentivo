@@ -5,6 +5,9 @@
 // here. Mirrors forgeTracks.js.
 
 import relayL1 from "./relayData";
+import relayL2 from "./relayData2";
+import relayL3 from "./relayData3";
+import relayL4 from "./relayData4";
 
 const TRACKS = [
   {
@@ -14,7 +17,7 @@ const TRACKS = [
     level: "A2",
     audience: "adults",
     blurb: "10 lessons that turn short, complete answers into real back-and-forth exchanges.",
-    lessons: [relayL1, null, null, null, null, null, null, null, null, null],
+    lessons: [relayL1, relayL2, relayL3, relayL4, null, null, null, null, null, null],
   },
 ];
 
