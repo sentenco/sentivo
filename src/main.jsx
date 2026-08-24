@@ -120,6 +120,8 @@ import Ascend from './Ascend.jsx'
 import AscendHub from './AscendHub.jsx'
 import AscendTrack from './AscendTrack.jsx'
 import AscendGuide from './AscendGuide.jsx'
+import StackHub from './StackHub.jsx'
+import GlideHub from './GlideHub.jsx'
 import VerbTensesTrack from './VerbTensesTrack.jsx'
 import VerbTensesLesson from './VerbTensesLesson.jsx'
 import SentencePatternsTrack from './SentencePatternsTrack.jsx'
@@ -339,6 +341,8 @@ createRoot(document.getElementById('root')).render(
             <Route path="/library/ascend/:trackId" element={<AscendTrack />} />
             <Route path="/library/ascend/:trackId/:lessonNum" element={<Ascend />} />
             <Route path="/library/ascend/:trackId/:lessonNum/guide" element={<AscendGuide />} />
+            <Route path="/library/stack" element={<StackHub />} />
+            <Route path="/library/glide" element={<GlideHub />} />
             <Route path="/library/grammar/parts-of-speech" element={<PartsOfSpeechTrack />} />
             <Route path="/library/grammar/parts-of-speech/:code" element={<PartsOfSpeechLesson />} />
             <Route path="/library/grammar/verb-tenses" element={<VerbTensesTrack />} />
