@@ -14,6 +14,11 @@ import relayTeensL2 from "./relayTeensData2";
 import relayTeensL3 from "./relayTeensData3";
 import relayTeensL4 from "./relayTeensData4";
 import relayTeensL5 from "./relayTeensData5";
+import relayTeensGamingL1 from "./relayTeensGamingData";
+import relayTeensGamingL2 from "./relayTeensGamingData2";
+import relayTeensGamingL3 from "./relayTeensGamingData3";
+import relayTeensGamingL4 from "./relayTeensGamingData4";
+import relayTeensGamingL5 from "./relayTeensGamingData5";
 
 const TRACKS = [
   {
@@ -33,6 +38,15 @@ const TRACKS = [
     audience: "teens",
     blurb: "5 lessons that turn short, complete answers into real back-and-forth exchanges.",
     lessons: [relayTeensL1, relayTeensL2, relayTeensL3, relayTeensL4, relayTeensL5],
+  },
+  {
+    id: "relay-teens-gaming-1",
+    title: "Gaming & Online Life",
+    focus: "Gaming",
+    level: "A2",
+    audience: "teens",
+    blurb: "5 lessons that turn short, complete answers into real back-and-forth exchanges.",
+    lessons: [relayTeensGamingL1, relayTeensGamingL2, relayTeensGamingL3, relayTeensGamingL4, relayTeensGamingL5],
   },
 ];
 
