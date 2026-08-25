@@ -266,20 +266,20 @@ const CSS = `
   margin: 18px 18px 0; background: #1B2A4A; border-radius: 18px; padding: 16px 20px 14px;
   position: relative; overflow: hidden; box-shadow: 0 12px 24px rgba(27,42,74,0.2);
 }
-.sh-hero-blob { position: absolute; width: 150px; height: 150px; border-radius: 50%; background: #FF6B4A; opacity: 0.16; top: -60px; right: -40px; }
+.sh-hero-blob { position: absolute; width: 150px; height: 150px; border-radius: 50%; background: #F5C518; opacity: 0.18; top: -60px; right: -40px; }
 .sh-hero-title { font-weight: 700; font-size: 14px; color: #FFFFFF; position: relative; }
 .sh-hero-sub { font-size: 11.5px; color: #B9C3DC; margin-top: 2px; position: relative; }
 
 .sh-progress-row { display: flex; gap: 4px; padding: 14px 22px 4px; }
 .sh-seg { flex: 1; height: 3px; border-radius: 999px; background: #EDE1DB; transition: background 0.25s ease; }
 .sh-seg.is-done { background: #2F9E58; }
-.sh-seg.is-current { background: #FF6B4A; }
+.sh-seg.is-current { background: #E8B400; }
 
 .sh-avatar {
   width: 30px; height: 30px; border-radius: 50%; flex-shrink: 0; display: flex; align-items: center;
   justify-content: center; font-size: 15px; background: #E7EBF3;
 }
-.sh-avatar--me { background: #FDECE5; }
+.sh-avatar--me { background: #FFF4D6; }
 .sh-avatar--lg { width: 44px; height: 44px; font-size: 20px; margin-bottom: 10px; }
 .sh-avatar--lg.is-wrong { background: #FBE4E9; }
 
@@ -293,7 +293,7 @@ const CSS = `
   font-family: 'Fraunces', serif; font-weight: 500;
 }
 .sh-bubble--them { background: #E7EBF3; color: #1B2A4A; border-bottom-left-radius: 4px; }
-.sh-bubble--me { background: #FDECE5; color: #1B2A4A; font-weight: 600; border-bottom-right-radius: 4px; }
+.sh-bubble--me { background: #FFF4D6; color: #1B2A4A; font-weight: 600; border-bottom-right-radius: 4px; }
 
 .sh-slide {
   background: #FFFFFF; margin: 14px auto; border-radius: 18px; display: flex; flex-direction: column;
@@ -305,15 +305,15 @@ const CSS = `
 
 .sh-compose { background: #FFFFFF; border-top: 1px solid #EDE1DB; padding: 16px 22px 20px; margin: 0 18px 18px; border-radius: 0 0 18px 18px; }
 .sh-clue-row { text-align: center; margin-bottom: 10px; }
-.sh-clue-btn { font-family: 'Inter', sans-serif; font-size: 11.5px; font-weight: 700; color: #E0502F; background: none; border: none; cursor: pointer; padding: 0; }
-.sh-clue-box { margin-top: 6px; font-size: 12px; color: #1B2A4A; background: #FDECE5; border-radius: 8px; padding: 8px 10px; display: inline-block; }
+.sh-clue-btn { font-family: 'Inter', sans-serif; font-size: 11.5px; font-weight: 700; color: #8A6D1F; background: none; border: none; cursor: pointer; padding: 0; }
+.sh-clue-box { margin-top: 6px; font-size: 12px; color: #1B2A4A; background: #FFF4D6; border-radius: 8px; padding: 8px 10px; display: inline-block; }
 .sh-clue-box b { font-weight: 800; }
 .sh-type-label { display: block; text-align: center; font-size: 11px; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; color: #5A6B92; margin-bottom: 8px; }
 .sh-type-input {
   width: 100%; font-family: 'Inter', sans-serif; font-size: 14px; color: #1B2A4A; text-align: center;
   background: #FBF4F1; border: 1.5px solid #EDE1DB; border-radius: 12px; padding: 10px 14px; outline: none; margin-bottom: 12px;
 }
-.sh-type-input:focus { border-color: #FF6B4A; }
+.sh-type-input:focus { border-color: #E8B400; }
 .sh-teacher-buttons { display: flex; gap: 8px; justify-content: center; }
 .sh-choice-btn {
   font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 700; border-radius: 999px; padding: 9px 20px; cursor: pointer;
@@ -323,7 +323,7 @@ const CSS = `
 .sh-choice-btn--good { background: #E7F5EC; border-color: #2F9E58; color: #2F9E58; }
 
 .sh-prompt-stage { padding: 26px 26px 24px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 14px; }
-.sh-prompt-eyebrow { font-size: 11px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: #E0502F; background: #FDECE5; border-radius: 999px; padding: 4px 14px; }
+.sh-prompt-eyebrow { font-size: 11px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: #8A6D1F; background: #FFF4D6; border-radius: 999px; padding: 4px 14px; }
 .sh-prompt-text { font-family: 'Fraunces', serif; font-weight: 600; font-size: 19px; line-height: 1.45; color: #1B2A4A; max-width: 460px; margin: 0; }
 .sh-continue-btn { margin-top: 4px; }
 
