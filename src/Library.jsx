@@ -1799,7 +1799,7 @@ export default function Library() {
 }
 
 const CSS = `
-@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&family=Quicksand:wght@500;600;700&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@700;900&family=Bangers&family=Comic+Neue:wght@400;700&family=Baloo+2:wght@600;700;800&family=IBM+Plex+Sans:wght@500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&family=Quicksand:wght@500;600;700&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@700;900&family=Bangers&family=Comic+Neue:wght@400;700&family=Baloo+2:wght@600;700;800&family=IBM+Plex+Sans:wght@500;600;700;800&family=Lilita+One&family=Nunito:wght@600;700;800&display=swap');
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
@@ -2937,16 +2937,14 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .gdn-supp-pager-dot.is-active { background: var(--leaf); color: #FFFFFF; }
 
 /* ---------- Reading: Bookshelf (Adventure Trail theme) ---------- */
-@import url('https://fonts.googleapis.com/css2?family=Lilita+One&family=Nunito:wght@600;700;800&display=swap');
-
 .bkshf-page {
   width: 100%;
   max-width: 1320px;
   margin: -10px auto 0;
-  background: linear-gradient(165deg, #FFE3B3 0%, #BFE6F2 100%);
+  background: linear-gradient(165deg, #B8E6B0 0%, #A8D8DC 55%, #BFE6F2 100%);
   background-image:
     radial-gradient(circle, rgba(255,255,255,0.5) 1.5px, transparent 1.5px),
-    linear-gradient(165deg, #FFE3B3 0%, #BFE6F2 100%);
+    linear-gradient(165deg, #B8E6B0 0%, #A8D8DC 55%, #BFE6F2 100%);
   background-size: 26px 26px, 100% 100%;
   border-radius: 26px;
   padding: clamp(26px, 3.6vw, 48px) clamp(20px, 3.2vw, 40px) clamp(30px, 4vw, 52px);
