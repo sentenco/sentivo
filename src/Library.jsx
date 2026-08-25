@@ -156,19 +156,19 @@ function ArticlesFeature({ navigate, query }) {
 
   return (
     <div className="gaz-page">
-      <div className="gaz-masthead">
-        <img className="gaz-masthead-logo" src="/logo-sentivo.png" alt="" />
-        <div className="gaz-masthead-kicker-row">
-          <span className="gaz-masthead-rule" />
-          <span className="gaz-masthead-kicker">The Sentivo</span>
-          <span className="gaz-masthead-rule" />
+      <div className="gaz-hero">
+        <div className="gaz-hero-blob" />
+        <div className="gaz-masthead">
+          <div className="gaz-masthead-kicker-row">
+            <span className="gaz-masthead-rule" />
+            <span className="gaz-masthead-kicker">The Sentivo</span>
+            <span className="gaz-masthead-rule" />
+          </div>
+          <h1 className="gaz-masthead-word">Gazette</h1>
+          <div className="gaz-masthead-underline" />
+          <div className="gaz-masthead-tagline">News, Ideas &amp; Perspectives</div>
         </div>
-        <h1 className="gaz-masthead-word">Gazette</h1>
-        <div className="gaz-masthead-underline" />
-        <div className="gaz-masthead-tagline">News, Ideas &amp; Perspectives</div>
       </div>
-      <div className="gaz-rule-thick" />
-      <div className="gaz-rule-thin" />
       <nav className="gaz-topics">
         <button
           type="button"
@@ -189,7 +189,6 @@ function ArticlesFeature({ navigate, query }) {
           </button>
         ))}
       </nav>
-      <div className="gaz-rule-thin" />
 
       {lead ? (
         <button type="button" className="gaz-lead" onClick={() => navigate(`/library/articles/${lead.slug}`)}>
@@ -1801,7 +1800,7 @@ export default function Library() {
 }
 
 const CSS = `
-@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&family=Quicksand:wght@500;600;700&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@700;900&family=Bangers&family=Comic+Neue:wght@400;700&family=Baloo+2:wght@600;700;800&family=IBM+Plex+Sans:wght@500;600;700;800&family=Lilita+One&family=Nunito:wght@600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&family=Quicksand:wght@500;600;700&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@700;900&family=Bangers&family=Comic+Neue:wght@400;700&family=Baloo+2:wght@600;700;800&family=IBM+Plex+Sans:wght@500;600;700;800&family=Lilita+One&family=Nunito:wght@600;700;800&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap');
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
@@ -2513,21 +2512,40 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  background: linear-gradient(180deg, #FBFCFE 0%, #F3F5FA 100%);
+  background: #FBF4F1;
   border-radius: 22px;
-  padding: clamp(26px, 3.6vw, 48px) clamp(20px, 3.2vw, 40px) clamp(30px, 4vw, 52px);
+  padding: clamp(20px, 2.6vw, 32px) clamp(20px, 3.2vw, 40px) clamp(30px, 4vw, 52px);
 }
-.gaz-masthead { text-align: center; padding-bottom: 10px; }
-.gaz-masthead-logo { height: 26px; width: auto; display: inline-block; margin-bottom: 9px; }
+
+.gaz-hero {
+  background: #1B2A4A;
+  border-radius: 22px;
+  padding: clamp(24px, 3vw, 34px) clamp(20px, 3vw, 36px) clamp(20px, 2.6vw, 28px);
+  margin-bottom: 18px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 18px 36px rgba(27,42,74,0.2);
+}
+.gaz-hero-blob {
+  position: absolute;
+  width: 240px; height: 240px;
+  border-radius: 50%;
+  background: #FF6B4A;
+  opacity: 0.16;
+  top: -100px; right: -80px;
+  pointer-events: none;
+}
+
+.gaz-masthead { text-align: center; position: relative; }
 .gaz-masthead-kicker-row { display: flex; align-items: center; justify-content: center; gap: 16px; margin-bottom: 3px; }
-.gaz-masthead-rule { flex: 0 1 64px; height: 1px; background: var(--ink); opacity: 0.4; }
+.gaz-masthead-rule { flex: 0 1 64px; height: 1px; background: rgba(255,255,255,0.3); }
 .gaz-masthead-kicker {
   font-family: 'Source Serif 4', serif;
   font-weight: 700;
   font-size: 12px;
   letter-spacing: 0.32em;
   text-transform: uppercase;
-  color: var(--ink);
+  color: #B9C3DC;
 }
 .gaz-masthead-word {
   font-family: 'Playfair Display', serif;
@@ -2535,63 +2553,62 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   font-size: clamp(34px, 4.8vw, 48px);
   letter-spacing: 0.01em;
   text-transform: uppercase;
-  color: var(--ink);
+  color: #FFFFFF;
   line-height: 1;
   margin: 3px 0 9px;
 }
-.gaz-masthead-underline { width: clamp(110px, 16%, 170px); height: 3px; background: var(--coral); margin: 0 auto 9px; }
+.gaz-masthead-underline { width: clamp(110px, 16%, 170px); height: 3px; background: #FF6B4A; margin: 0 auto 9px; }
 .gaz-masthead-tagline {
   font-family: 'Source Serif 4', serif;
   font-weight: 600;
   font-size: 11px;
   letter-spacing: 0.28em;
   text-transform: uppercase;
-  color: var(--ink);
-  opacity: 0.6;
-  margin-bottom: 12px;
+  color: #8894B5;
 }
-.gaz-rule-thick { height: 3px; background: var(--ink); margin-bottom: 2px; }
-.gaz-rule-thin { height: 1px; background: #D6DAE6; }
 
-.gaz-topics { display: flex; justify-content: center; flex-wrap: wrap; padding: 7px 0; }
+.gaz-topics { display: flex; justify-content: center; flex-wrap: wrap; padding: 4px 0 14px; border-bottom: 1px solid #EDE1DB; margin-bottom: 16px; }
 .gaz-topic {
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-weight: 800;
   font-size: 10px;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: var(--ink-soft);
+  color: #5A6B92;
   padding: 6px 16px;
   background: none;
   border: none;
-  border-right: 1px solid #D6DAE6;
+  border-right: 1px solid #EDE1DB;
   cursor: pointer;
 }
-.gaz-topic:hover { color: var(--coral); }
+.gaz-topic:hover { color: #FF6B4A; }
 .gaz-topic:last-child { border-right: none; }
-.gaz-topic.is-active { color: var(--coral); }
-.gaz-empty { font-family: 'Quicksand', sans-serif; font-size: 13px; color: var(--muted); text-align: center; padding: 30px 0; }
+.gaz-topic.is-active { color: #E0502F; }
+.gaz-empty { font-family: 'Inter', sans-serif; font-size: 13px; color: #5A6B92; text-align: center; padding: 30px 0; }
 
 .gaz-lead {
   display: grid;
   grid-template-columns: 1fr 360px;
-  gap: clamp(26px, 3vw, 42px);
+  gap: clamp(22px, 2.6vw, 36px);
   align-items: center;
-  padding: clamp(14px, 1.6vw, 22px) 0 clamp(12px, 1.4vw, 18px);
-  border-bottom: 1px solid #D6DAE6;
+  padding: clamp(18px, 2vw, 26px);
+  background: #FFFFFF;
+  border-radius: 18px;
+  box-shadow: 0 10px 26px rgba(27,42,74,0.08);
+  border-left: 4px solid #FF6B4A;
   cursor: pointer;
-  background: none;
-  border-left: none; border-right: none; border-top: none;
+  border-top: none; border-right: none; border-bottom: none;
   text-align: left;
   width: 100%;
+  margin-bottom: 16px;
 }
-.gaz-lead-kicker { font-family: 'Quicksand', sans-serif; font-weight: 800; font-size: clamp(9.5px, 0.8vw, 11.5px); letter-spacing: 0.1em; text-transform: uppercase; color: var(--coral); margin-bottom: 8px; }
-.gaz-lead-title { font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: clamp(21px, 2.4vw, 32px); line-height: 1.16; margin: 0 0 10px; color: var(--ink); text-wrap: balance; }
+.gaz-lead-kicker { font-family: 'Inter', sans-serif; font-weight: 800; font-size: clamp(9.5px, 0.8vw, 11.5px); letter-spacing: 0.1em; text-transform: uppercase; color: #E0502F; margin-bottom: 8px; }
+.gaz-lead-title { font-family: 'Fraunces', serif; font-weight: 600; font-size: clamp(21px, 2.4vw, 32px); line-height: 1.2; margin: 0 0 10px; color: #1B2A4A; text-wrap: balance; }
 .gaz-lead-dek {
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: clamp(12.5px, 1.05vw, 15.5px);
-  color: var(--ink-soft);
-  line-height: 1.45;
+  color: #5A6B92;
+  line-height: 1.5;
   margin: 0 0 12px;
   max-width: 640px;
   display: -webkit-box;
@@ -2599,14 +2616,14 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
-.gaz-lead-meta { display: flex; align-items: center; gap: 7px; font-family: 'Quicksand', sans-serif; font-size: clamp(10.5px, 0.85vw, 12px); color: var(--muted); }
-.gaz-byline { font-weight: 700; color: var(--ink-soft); }
-.gaz-editions { color: var(--coral); font-weight: 700; }
+.gaz-lead-meta { display: flex; align-items: center; gap: 7px; font-family: 'Inter', sans-serif; font-size: clamp(10.5px, 0.85vw, 12px); color: #5A6B92; }
+.gaz-byline { font-weight: 700; color: #1B2A4A; }
+.gaz-editions { color: #E0502F; font-weight: 700; }
 .gaz-lead-art {
   aspect-ratio: 3 / 2;
   max-height: 260px;
-  border-radius: 8px;
-  background: linear-gradient(135deg, #DDE1EB 0%, #C7CCDA 100%);
+  border-radius: 12px;
+  background: linear-gradient(135deg, #FDECE5 0%, #FBF4F1 100%);
   display: flex; align-items: center; justify-content: center;
   overflow: hidden;
 }
@@ -2615,8 +2632,8 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   width: clamp(80px, 9vw, 120px);
   height: clamp(80px, 9vw, 120px);
   border-radius: 50%;
-  background: rgba(255,255,255,0.55);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  background: rgba(255,255,255,0.7);
+  box-shadow: 0 8px 20px rgba(27,42,74,0.1);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2629,7 +2646,7 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   display: flex;
   gap: clamp(14px, 1.6vw, 20px);
   padding: clamp(16px, 1.8vw, 22px) 0;
-  border-top: 1px solid #D6DAE6;
+  border-top: 1px solid #EDE1DB;
   background: none;
   border-left: none; border-right: none; border-bottom: none;
   text-align: left;
@@ -2642,7 +2659,7 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   position: absolute;
   top: 14px; bottom: 14px; right: calc(clamp(28px, 3.6vw, 52px) / -2);
   width: 1px;
-  background: #D6DAE6;
+  background: #EDE1DB;
 }
 .gaz-story--soon { cursor: default; opacity: 0.55; }
 .gaz-thumb { width: clamp(140px, 15vw, 200px); aspect-ratio: 3 / 2; flex-shrink: 0; align-self: flex-start; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: clamp(26px, 2.6vw, 36px); overflow: hidden; }
@@ -2654,20 +2671,20 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .gaz-thumb--culture { background: linear-gradient(135deg, rgba(27,42,74,0.14), rgba(255,107,74,0.14)); }
 .gaz-thumb--law { background: linear-gradient(135deg, rgba(27,42,74,0.26), rgba(90,107,146,0.12)); }
 .gaz-story-body { min-width: 0; align-self: center; }
-.gaz-story-kicker { font-family: 'Quicksand', sans-serif; font-weight: 800; font-size: clamp(10px, 0.9vw, 11.5px); letter-spacing: 0.07em; text-transform: uppercase; color: var(--coral); margin-bottom: 6px; }
+.gaz-story-kicker { font-family: 'Inter', sans-serif; font-weight: 800; font-size: clamp(10px, 0.9vw, 11.5px); letter-spacing: 0.07em; text-transform: uppercase; color: #E0502F; margin-bottom: 6px; }
 .gaz-story-title {
-  font-family: 'Fredoka', sans-serif;
+  font-family: 'Fraunces', serif;
   font-weight: 600;
   font-size: clamp(17px, 1.7vw, 21px);
-  line-height: 1.28;
+  line-height: 1.3;
   margin: 0 0 8px;
-  color: var(--ink);
+  color: #1B2A4A;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
-.gaz-story-meta { font-family: 'Quicksand', sans-serif; font-size: clamp(10.5px, 0.9vw, 12px); color: var(--muted); }
+.gaz-story-meta { font-family: 'Inter', sans-serif; font-size: clamp(10.5px, 0.9vw, 12px); color: #5A6B92; }
 .gaz-soon { font-weight: 700; letter-spacing: 0.03em; text-transform: uppercase; font-size: clamp(8.5px, 0.7vw, 10px); }
 
 /* ---------- Grammar: The Grammar Garden (comic theme) ---------- */
