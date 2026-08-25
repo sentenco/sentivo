@@ -193,7 +193,6 @@ export default function Shift() {
         <div className="sh-panel">
           <TopBar />
           <div className="sh-hero">
-            <div className="sh-hero-blob" />
             <div className="sh-hero-title">{lesson.scene.title}</div>
             <div className="sh-hero-sub">{lesson.scene.context}</div>
           </div>
@@ -263,12 +262,11 @@ const CSS = `
 }
 
 .sh-hero {
-  margin: 18px 18px 0; background: #1B2A4A; border-radius: 18px; padding: 16px 20px 14px;
-  position: relative; overflow: hidden; box-shadow: 0 12px 24px rgba(27,42,74,0.2);
+  margin: 18px 18px 0; background: linear-gradient(120deg, #F5C518 0%, #E8B400 100%); border-radius: 18px; padding: 16px 20px 14px;
+  position: relative; overflow: hidden; box-shadow: 0 12px 24px rgba(232,180,0,0.28);
 }
-.sh-hero-blob { position: absolute; width: 150px; height: 150px; border-radius: 50%; background: #F5C518; opacity: 0.18; top: -60px; right: -40px; }
-.sh-hero-title { font-weight: 700; font-size: 14px; color: #FFFFFF; position: relative; }
-.sh-hero-sub { font-size: 11.5px; color: #B9C3DC; margin-top: 2px; position: relative; }
+.sh-hero-title { font-weight: 800; font-size: 14px; color: #1B2A4A; position: relative; }
+.sh-hero-sub { font-size: 11.5px; color: rgba(27,42,74,0.72); margin-top: 2px; position: relative; }
 
 .sh-progress-row { display: flex; gap: 4px; padding: 14px 22px 4px; }
 .sh-seg { flex: 1; height: 3px; border-radius: 999px; background: #EDE1DB; transition: background 0.25s ease; }
