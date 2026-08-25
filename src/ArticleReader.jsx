@@ -174,79 +174,85 @@ export default function ArticleReader() {
 
       <SiteNav navigate={navigate} />
 
-      <div className="ar-masthead">
-        <img className="ar-masthead-logo" src="/logo-sentivo.png" alt="" />
-        <div className="ar-masthead-kicker-row">
-          <span className="ar-masthead-rule" />
-          <span className="ar-masthead-kicker">The Sentivo</span>
-          <span className="ar-masthead-rule" />
-        </div>
-        <div className="ar-masthead-word">Gazette</div>
-        <div className="ar-masthead-underline" />
-        <div className="ar-masthead-tagline">News, Ideas &amp; Perspectives</div>
-      </div>
-
       <div className="ar-article">
-        <h1 className="ar-title">{article.title}</h1>
-
         <div className="ar-hero">
-          {article.image ? <img src={article.image} alt="" /> : <span className="ar-hero-emoji">{article.emoji}</span>}
+          <div className="ar-hero-blob" />
+          <div className="ar-masthead">
+            <div className="ar-masthead-kicker-row">
+              <span className="ar-masthead-rule" />
+              <span className="ar-masthead-kicker">The Sentivo</span>
+              <span className="ar-masthead-rule" />
+            </div>
+            <div className="ar-masthead-word">Gazette</div>
+            <div className="ar-masthead-underline" />
+            <div className="ar-masthead-tagline">News, Ideas &amp; Perspectives</div>
+          </div>
         </div>
 
-        <p className="ar-dek">{article.dek}</p>
+        <div className="ar-cover-card">
+          <h1 className="ar-title">{article.title}</h1>
 
-        <div className="ar-switch">
-          {EDITION_KEYS.map((k) => (
-            <button
-              key={k}
-              type="button"
-              className={`ar-ed-btn ${edition === k ? "is-active" : ""}`}
-              onClick={() => setEdition(k)}
-            >
-              <span className="ar-ed-name">{article.editions[k].label.replace(/ Edition$/, "")}</span>
-              <span className="ar-ed-range">{article.editions[k].range}</span>
-            </button>
-          ))}
-        </div>
-        <p className="ar-ed-hint">Same story, three reading levels — switch editions to match your class.</p>
+          <div className="ar-cover-art">
+            {article.image ? <img src={article.image} alt="" /> : <span className="ar-cover-art-emoji">{article.emoji}</span>}
+          </div>
 
-        <div className="ar-meta-row">
-          <span>{article.topicTitle}</span>
-          <span className="ar-dot">·</span>
-          <span>{ed.readTime} · {ed.wordCount} words</span>
-          {publishedLabel && <span className="ar-dot">·</span>}
-          {publishedLabel && <span>Published {publishedLabel}</span>}
-        </div>
+          <p className="ar-dek">{article.dek}</p>
 
-        <button type="button" className="ar-present-btn" onClick={() => openPlayer(article.slug, edition)}>
-          🖥️ Open Editorial View
-        </button>
-
-        <div className="ar-body">
-          {ed.blocks.map((block, i) =>
-            block.type === "quote" ? (
-              <blockquote key={i} className="ar-pullquote">“{block.text}”</blockquote>
-            ) : (
-              <Paragraph
-                key={i}
-                parts={block.parts}
-                blockIdx={i}
-                openKey={openKey}
-                setOpenKey={setOpenKey}
-                references={article.references}
-                year={publishedYear}
-                onCiteClick={scrollToRef}
-              />
-            )
-          )}
-
-          <div className="ar-references">
-            <div className="ar-refs-title">References</div>
-            {article.references.map((r, i) => (
-              <p className="ar-ref-row" id={`ar-ref-${i + 1}`} key={i}>
-                {r.name}.{publishedYear ? ` (${publishedYear}).` : ""} {r.headline}.
-              </p>
+          <div className="ar-switch">
+            {EDITION_KEYS.map((k) => (
+              <button
+                key={k}
+                type="button"
+                className={`ar-ed-btn ${edition === k ? "is-active" : ""}`}
+                onClick={() => setEdition(k)}
+              >
+                <span className="ar-ed-name">{article.editions[k].label.replace(/ Edition$/, "")}</span>
+                <span className="ar-ed-range">{article.editions[k].range}</span>
+              </button>
             ))}
+          </div>
+          <p className="ar-ed-hint">Same story, three reading levels — switch editions to match your class.</p>
+        </div>
+
+        <div className="ar-body-card">
+          <div className="ar-meta-row">
+            <span>{article.topicTitle}</span>
+            <span className="ar-dot">·</span>
+            <span>{ed.readTime} · {ed.wordCount} words</span>
+            {publishedLabel && <span className="ar-dot">·</span>}
+            {publishedLabel && <span>Published {publishedLabel}</span>}
+          </div>
+
+          <button type="button" className="ar-present-btn" onClick={() => openPlayer(article.slug, edition)}>
+            🖥️ Open Editorial View
+          </button>
+
+          <div className="ar-body">
+            {ed.blocks.map((block, i) =>
+              block.type === "quote" ? (
+                <blockquote key={i} className="ar-pullquote">“{block.text}”</blockquote>
+              ) : (
+                <Paragraph
+                  key={i}
+                  parts={block.parts}
+                  blockIdx={i}
+                  openKey={openKey}
+                  setOpenKey={setOpenKey}
+                  references={article.references}
+                  year={publishedYear}
+                  onCiteClick={scrollToRef}
+                />
+              )
+            )}
+
+            <div className="ar-references">
+              <div className="ar-refs-title">References</div>
+              {article.references.map((r, i) => (
+                <p className="ar-ref-row" id={`ar-ref-${i + 1}`} key={i}>
+                  {r.name}.{publishedYear ? ` (${publishedYear}).` : ""} {r.headline}.
+                </p>
+              ))}
+            </div>
           </div>
         </div>
 
@@ -268,19 +274,21 @@ export default function ArticleReader() {
 }
 
 const CSS = `
-@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&family=Quicksand:wght@500;600;700&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&family=Playfair+Display:wght@700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&family=Quicksand:wght@500;600;700&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&family=Playfair+Display:wght@700;900&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap');
 
 .ar-shell {
   --ink: #1B2A4A;
-  --paper: #F6F7FA;
+  --paper: #FBF4F1;
   --card: #FFFFFF;
   --ink-soft: #4A5578;
   --muted: #7A84A0;
   --coral: #FF6B4A;
   --coral-dark: #E0502F;
+  --coral-pale: #FDECE5;
   --coral-soft: rgba(255,107,74,0.12);
   --navy-soft: rgba(27,42,74,0.07);
   --hair: rgba(27,42,74,0.12);
+  --line: #EDE1DB;
   --content-w: min(92vw, 1200px);
   width: 100%;
   min-height: 100vh;
@@ -406,22 +414,35 @@ const CSS = `
   .ar-nav-login { display: none; }
 }
 
-.ar-masthead {
+.ar-hero {
   max-width: var(--content-w);
-  margin: 0 auto;
-  text-align: center;
-  padding: 28px 24px 18px;
+  margin: 0 auto 18px;
+  background: var(--ink);
+  border-radius: 22px;
+  padding: clamp(24px, 3vw, 34px) 24px clamp(20px, 2.6vw, 28px);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 18px 36px rgba(27,42,74,0.2);
 }
-.ar-masthead-logo { height: 24px; width: auto; display: inline-block; margin-bottom: 8px; }
+.ar-hero-blob {
+  position: absolute;
+  width: 240px; height: 240px;
+  border-radius: 50%;
+  background: var(--coral);
+  opacity: 0.16;
+  top: -100px; right: -80px;
+  pointer-events: none;
+}
+.ar-masthead { text-align: center; position: relative; }
 .ar-masthead-kicker-row { display: flex; align-items: center; justify-content: center; gap: 14px; margin-bottom: 3px; }
-.ar-masthead-rule { flex: 0 1 56px; height: 1px; background: #1B2A4A; opacity: 0.4; }
+.ar-masthead-rule { flex: 0 1 56px; height: 1px; background: rgba(255,255,255,0.3); }
 .ar-masthead-kicker {
   font-family: 'Source Serif 4', serif;
   font-weight: 700;
   font-size: 11.5px;
   letter-spacing: 0.32em;
   text-transform: uppercase;
-  color: #1B2A4A;
+  color: #B9C3DC;
 }
 .ar-masthead-word {
   font-family: 'Playfair Display', serif;
@@ -429,50 +450,58 @@ const CSS = `
   font-size: clamp(32px, 4.5vw, 46px);
   letter-spacing: 0.01em;
   text-transform: uppercase;
-  color: #1B2A4A;
+  color: #FFFFFF;
   line-height: 1;
   margin: 2px 0 8px;
 }
-.ar-masthead-underline { width: clamp(110px, 16%, 170px); height: 3px; background: #FF6B4A; margin: 0 auto 8px; }
+.ar-masthead-underline { width: clamp(110px, 16%, 170px); height: 3px; background: var(--coral); margin: 0 auto 8px; }
 .ar-masthead-tagline {
   font-family: 'Source Serif 4', serif;
   font-weight: 600;
   font-size: 10.5px;
   letter-spacing: 0.28em;
   text-transform: uppercase;
-  color: #1B2A4A;
-  opacity: 0.65;
+  color: #8894B5;
 }
 
 .ar-article { max-width: var(--content-w); margin: 0 auto; padding: 0 24px 60px; }
 
+.ar-cover-card, .ar-body-card {
+  background: var(--card);
+  border-radius: 18px;
+  padding: clamp(22px, 2.8vw, 32px) clamp(20px, 2.6vw, 30px);
+  box-shadow: 0 10px 26px rgba(27,42,74,0.08);
+  margin-bottom: 18px;
+}
+.ar-cover-card { text-align: center; border-top: 4px solid var(--coral); }
+
 .ar-title {
-  font-family: 'Playfair Display', serif;
-  font-weight: 900;
-  font-size: 36px;
-  line-height: 1.18;
+  font-family: 'Fraunces', serif;
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 1.22;
   margin: 0 auto 22px;
   max-width: 680px;
   text-align: center;
   text-wrap: balance;
 }
 
-.ar-hero {
+.ar-cover-art {
   aspect-ratio: 3 / 2;
   max-height: 340px;
   max-width: 520px;
   border-radius: 14px;
-  background: linear-gradient(135deg, var(--coral-soft) 0%, var(--navy-soft) 100%);
+  background: linear-gradient(135deg, var(--coral-pale) 0%, var(--paper) 100%);
   display: flex; align-items: center; justify-content: center;
   margin: 0 auto 22px;
   overflow: hidden;
 }
-.ar-hero img { width: 100%; height: 100%; object-fit: contain; }
-.ar-hero-emoji {
+.ar-cover-art img { width: 100%; height: 100%; object-fit: contain; }
+.ar-cover-art-emoji {
   width: 130px;
   height: 130px;
   border-radius: 50%;
-  background: rgba(255,255,255,0.6);
+  background: rgba(255,255,255,0.8);
   box-shadow: 0 10px 24px rgba(27,42,74,0.1);
   display: flex;
   align-items: center;
@@ -494,8 +523,8 @@ const CSS = `
   display: flex;
   justify-content: center;
   gap: 4px;
-  background: var(--card);
-  border: 1px solid var(--hair);
+  background: var(--paper);
+  border: 1px solid var(--line);
   border-radius: 14px;
   padding: 4px;
   margin: 0 auto 8px;
@@ -629,14 +658,15 @@ const CSS = `
 
 .ar-teacher {
   max-width: 100%;
-  margin-top: 30px;
-  background: var(--navy-soft);
+  margin-top: 0;
+  background: var(--coral-pale);
+  border-left: 4px solid var(--coral);
   border-radius: 14px;
   padding: 20px 24px;
   font-family: 'Quicksand', sans-serif;
 }
 .ar-teacher-eyebrow { font-weight: 800; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--coral-dark); margin-bottom: 4px; }
-.ar-teacher-title { font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 18px; margin: 0 0 16px; }
+.ar-teacher-title { font-family: 'Fraunces', serif; font-weight: 600; font-size: 18px; margin: 0 0 16px; color: var(--ink); }
 .ar-tq-item { margin-bottom: 16px; }
 .ar-tq-item:last-child { margin-bottom: 0; }
 .ar-tq-main { display: flex; gap: 8px; font-weight: 700; font-size: 14.5px; line-height: 1.45; margin: 0 0 6px; }
