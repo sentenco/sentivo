@@ -703,6 +703,8 @@ function BookshelfFeature({ items, navigate, query }) {
 
   return (
     <div className="bkshf-page">
+      <div className="bkshf-blob bkshf-blob--1" />
+      <div className="bkshf-blob bkshf-blob--2" />
       <div className="bkshf-masthead">
         <span className="bkshf-eyebrow">Sentivo · Reading</span>
         <h1 className="bkshf-nameplate">Library</h1>
@@ -2941,15 +2943,22 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   width: 100%;
   max-width: 1320px;
   margin: -10px auto 0;
-  background: linear-gradient(165deg, #6EC6E8 0%, #EAF7FC 100%);
-  background-image:
-    radial-gradient(circle, rgba(255,255,255,0.5) 1.5px, transparent 1.5px),
-    linear-gradient(165deg, #6EC6E8 0%, #EAF7FC 100%);
-  background-size: 26px 26px, 100% 100%;
+  background: #FFE08A;
   border-radius: 26px;
+  position: relative;
+  overflow: hidden;
   padding: clamp(26px, 3.6vw, 48px) clamp(20px, 3.2vw, 40px) clamp(30px, 4vw, 52px);
 }
-.bkshf-masthead { text-align: center; }
+.bkshf-blob {
+  position: absolute;
+  background: rgba(255,255,255,0.4);
+  z-index: 0;
+  pointer-events: none;
+}
+.bkshf-blob--1 { width: 260px; height: 200px; top: -70px; left: -50px; border-radius: 42% 58% 65% 35% / 45% 45% 55% 55%; }
+.bkshf-blob--2 { width: 300px; height: 220px; top: -30px; right: -90px; border-radius: 58% 42% 35% 65% / 55% 45% 55% 45%; }
+
+.bkshf-masthead { text-align: center; position: relative; z-index: 1; }
 .bkshf-eyebrow {
   display: inline-block;
   font-family: 'Nunito', sans-serif;
@@ -2984,13 +2993,14 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 
 .bkshf-row {
   position: relative;
+  z-index: 1;
   height: 3px;
   background: repeating-linear-gradient(90deg, #4E7099 0, #4E7099 8px, transparent 8px, transparent 16px);
   opacity: 0.5;
   margin: clamp(26px, 3vw, 36px) 0;
 }
 
-.bkshf-level-tabs { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-top: clamp(18px, 2.4vw, 26px); }
+.bkshf-level-tabs { position: relative; z-index: 1; display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-top: clamp(18px, 2.4vw, 26px); }
 .bkshf-level-tab {
   font-family: 'Nunito', sans-serif;
   font-weight: 800;
@@ -3007,9 +3017,9 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 }
 .bkshf-level-tab::before { content: "⭐"; position: absolute; left: 12px; font-size: 12px; }
 .bkshf-level-tab:hover { transform: translateY(-1px); }
-.bkshf-level-tab.is-active { background: #F0B429; border-color: #C98F0E; box-shadow: 0 4px 0 rgba(0,0,0,0.14); }
+.bkshf-level-tab.is-active { background: #1F3A5F; border-color: #1F3A5F; color: #FFFDF8; box-shadow: 0 4px 0 rgba(0,0,0,0.14); }
 
-.bkshf-empty { text-align: center; padding: 40px 20px 20px; }
+.bkshf-empty { position: relative; z-index: 1; text-align: center; padding: 40px 20px 20px; }
 .bkshf-empty-icon { font-size: 34px; display: block; margin-bottom: 10px; }
 .bkshf-empty-title { font-family: 'Lilita One', cursive; font-weight: 400; font-size: 24px; color: #1F3A5F; margin: 0 0 4px; }
 .bkshf-empty-desc { font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 14px; color: #4E7099; margin: 0; }
@@ -3031,7 +3041,7 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   padding: 7px 22px;
 }
 
-.bkshf-shelves { padding: 0; }
+.bkshf-shelves { position: relative; z-index: 1; padding: 0; }
 .bkshf-shelf-group { width: fit-content; margin: 0 auto; }
 .bkshf-shelf-row { display: flex; justify-content: center; align-items: flex-end; flex-wrap: nowrap; gap: 20px; }
 .bkshf-book {
