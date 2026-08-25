@@ -157,7 +157,6 @@ export default function Shift() {
     return (
       <div className="sh-shell">
         <style>{CSS}</style>
-        <TopBar />
         <div className="sh-stage">
           <p className="sh-missing">This lesson isn't ready yet.</p>
         </div>
@@ -178,10 +177,10 @@ export default function Shift() {
   return (
     <div className="sh-shell">
       <style>{CSS}</style>
-      <TopBar />
 
       <div className="sh-stage">
         <div className="sh-panel">
+          <TopBar />
           <div className="sh-hero">
             <div className="sh-hero-blob" />
             <div className="sh-hero-title">{lesson.scene.title}</div>
@@ -232,17 +231,20 @@ const CSS = `
   color: #1B2A4A;
   font-family: 'Inter', sans-serif;
   box-sizing: border-box;
-  padding: 24px 20px 60px;
+  padding: 24px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .sh-shell * { box-sizing: border-box; }
 
 .sh-missing { text-align: center; color: #5A6B92; margin-top: 60px; }
 
-.sh-topbar { max-width: 640px; margin: 0 auto 14px; display: flex; align-items: center; gap: 6px; padding: 0 4px; }
-.sh-brand-logo { height: 22px; width: auto; display: block; }
-.sh-brand-name { font-weight: 800; font-size: 15px; color: #1B2A4A; }
+.sh-topbar { display: flex; align-items: center; gap: 6px; padding: 16px 18px 0; }
+.sh-brand-logo { height: 20px; width: auto; display: block; }
+.sh-brand-name { font-weight: 800; font-size: 14px; color: #1B2A4A; }
 
-.sh-stage { max-width: 640px; margin: 0 auto; }
+.sh-stage { width: 100%; max-width: 640px; margin: 0 auto; }
 
 .sh-panel {
   background: #FBF4F1; border-radius: 26px; overflow: hidden;

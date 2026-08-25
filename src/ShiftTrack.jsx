@@ -3,12 +3,14 @@ import { getTrack } from "./shiftTracks";
 
 // SHIFT lessons open as a standalone popup player, matching the FORGE/ASCEND
 // chrome-less window.open pattern -- an independent window, not embedded in
-// the Library's tab/page flow.
+// the Library's tab/page flow. Sized to fit the player's own card (a narrow,
+// tall panel, not the old wide fixed-aspect deck) rather than a fixed
+// landscape size -- the card scrolls internally for longer chain history.
 function openLesson(trackId, num) {
   const screenW = window.screen.availWidth || 1600;
   const screenH = window.screen.availHeight || 900;
-  const w = Math.min(1180, screenW - 40);
-  const h = Math.min(700, screenH - 80);
+  const w = Math.min(720, screenW - 40);
+  const h = Math.min(840, screenH - 60);
   const left = Math.max(0, Math.floor((screenW - w) / 2));
   const top = Math.max(0, Math.floor((screenH - h) / 2));
 
