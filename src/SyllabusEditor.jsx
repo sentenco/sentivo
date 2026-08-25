@@ -35,7 +35,6 @@ export default function SyllabusEditor() {
 
   const [genCount, setGenCount] = useState(10);
   const [genFocus, setGenFocus] = useState("balanced");
-  const [genPreference, setGenPreference] = useState("");
   const [generating, setGenerating] = useState(false);
   const [genPanelOpen, setGenPanelOpen] = useState(false);
   const [confirmRegenerate, setConfirmRegenerate] = useState(false);
@@ -85,7 +84,6 @@ export default function SyllabusEditor() {
       ageTrack,
       count: genCount,
       focusKey: genFocus,
-      preference: genPreference,
     });
     setGenerating(false);
     setGenPanelOpen(false);
@@ -186,21 +184,11 @@ export default function SyllabusEditor() {
                   {SYLLABUS_FOCUS_PRESETS.map((p) => <option key={p.key} value={p.key}>{p.label}</option>)}
                 </select>
               </label>
-              <label className="syl-gen-label syl-gen-label--grow">
-                Student's interests (optional)
-                <input
-                  type="text"
-                  className="syl-gen-pref-input"
-                  placeholder="e.g. gaming, travel, business"
-                  value={genPreference}
-                  onChange={(e) => setGenPreference(e.target.value)}
-                />
-              </label>
               <button type="button" className="syl-btn syl-btn--primary" onClick={handleGenerateClick} disabled={generating}>
                 {generating ? "Generating…" : "Generate draft"}
               </button>
               <p className="syl-gen-hint">
-                Grammar and vocabulary are always included at a level-appropriate baseline. The rest follows the focus you pick above, and matches the student's interests where a track or book actually fits. Replaces the current session list below.
+                Grammar and vocabulary are always included at a level-appropriate baseline. The rest follows the focus you pick above. Replaces the current session list below.
               </p>
             </div>
           )}
@@ -298,12 +286,7 @@ const CSS = `
   display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
 }
 .syl-gen-label { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 700; color: #2B2650; }
-.syl-gen-label--grow { flex: 1; min-width: 220px; }
 .syl-gen-input { width: 60px; padding: 7px 10px; border-radius: 8px; border: 1.5px solid #E5E0F7; font-family: 'IBM Plex Sans', sans-serif; font-weight: 700; }
-.syl-gen-pref-input {
-  flex: 1; min-width: 160px; padding: 7px 10px; border-radius: 8px; border: 1.5px solid #E5E0F7;
-  font-family: 'IBM Plex Sans', sans-serif; font-weight: 600; font-size: 13px;
-}
 .syl-gen-hint { flex-basis: 100%; font-size: 12px; color: #6B639C; margin: 0; }
 
 .syl-sessions { display: flex; flex-direction: column; gap: 10px; }

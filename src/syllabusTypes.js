@@ -87,30 +87,10 @@ function buildVocabSessions(count) {
   });
 }
 
-// ---------- Speaking (Relay/Shift/Ascend, picked by level, then by topic) ----------
+// ---------- Speaking (Relay/Shift/Ascend, picked by level) ----------
 // Forge is deliberately excluded -- its content is mid-rebuild as of
 // 2026-08-25, see project_speaking_trio_rebuild_plan.md. Re-add once the
 // new lessons land.
-function scoreTrackAgainstPreference(track, keywords) {
-  if (keywords.length === 0) return 0;
-  const haystack = `${track.focus || ""} ${track.theme || ""} ${track.title || ""} ${track.blurb || ""}`.toLowerCase();
-  return keywords.reduce((score, kw) => (haystack.includes(kw) ? score + 1 : score), 0);
-}
-
-function pickTrack(tracks, keywords) {
-  if (tracks.length === 0) return null;
-  let best = tracks[0];
-  let bestScore = -1;
-  for (const t of tracks) {
-    const score = scoreTrackAgainstPreference(t, keywords);
-    if (score > bestScore) {
-      best = t;
-      bestScore = score;
-    }
-  }
-  return best;
-}
-
 function speakingSystemForLevel(level, ageTrack) {
   if (level === "A2") return { tracks: RELAY_TRACKS.filter((t) => t.audience === ageTrack), system: "Relay" };
   if (level === "B1" || level === "B2") return { tracks: SHIFT_TRACKS, system: "Shift" };
@@ -118,7 +98,7 @@ function speakingSystemForLevel(level, ageTrack) {
   return { tracks: [], system: null };
 }
 
-function buildSpeakingSessions(count, level, ageTrack, preferenceKeywords) {
+function buildSpeakingSessions(count, level, ageTrack) {
   const { tracks, system } = speakingSystemForLevel(level, ageTrack);
   if (tracks.length === 0 || count === 0) {
     return count === 0 ? [] : [newSession({
@@ -128,8 +108,7 @@ function buildSpeakingSessions(count, level, ageTrack, preferenceKeywords) {
       source: "placeholder",
     })];
   }
-  const primary = pickTrack(tracks, preferenceKeywords);
-  const ordered = [primary, ...tracks.filter((t) => t !== primary)];
+  const ordered = tracks;
   const sessions = [];
   let trackIdx = 0;
   let lessonIdx = 0;
@@ -155,7 +134,7 @@ function buildSpeakingSessions(count, level, ageTrack, preferenceKeywords) {
 }
 
 // ---------- Reading (storybooks from the `tools` table, content_type='story') ----------
-async function buildReadingSessions(count, level, preferenceKeywords) {
+async function buildReadingSessions(count, level) {
   if (count === 0) return [];
   const { data, error } = await supabase
     .from("tools")
@@ -173,16 +152,8 @@ async function buildReadingSessions(count, level, preferenceKeywords) {
     })];
   }
 
-  const scored = data.map((book) => ({
-    book,
-    score: preferenceKeywords.reduce((s, kw) => {
-      const haystack = `${book.title || ""} ${book.tagline || ""}`.toLowerCase();
-      return haystack.includes(kw) ? s + 1 : s;
-    }, 0),
-  })).sort((a, b) => b.score - a.score);
-
   return Array.from({ length: count }, (_, i) => {
-    const book = scored[i % scored.length].book;
+    const book = data[i % data.length];
     return newSession({ title: `Read: ${book.title}`, notes: book.tagline || "", skill: "reading", source: "reading" });
   });
 }
@@ -193,14 +164,6 @@ function buildWritingSessions(count) {
     const activity = ACTIVITY_TYPES[i % ACTIVITY_TYPES.length];
     return newSession({ title: activity.title, notes: activity.blurb || "", skill: "writing", source: "writing" });
   });
-}
-
-function parseKeywords(preference) {
-  return (preference || "")
-    .toLowerCase()
-    .split(/[,\s]+/)
-    .map((w) => w.trim())
-    .filter((w) => w.length > 2);
 }
 
 // Evenly interleaves session groups by skill so the syllabus rotates
@@ -231,13 +194,12 @@ function interleave(groups) {
 }
 
 // The one place the generator talks to content. Given level + age track +
-// a total session count + a skill-focus preset + a free-text topic
-// preference, this returns a full ordered session list: grammar/vocab at
-// a fixed level-driven floor (non-negotiable), the remainder split across
-// speaking/reading/writing by the chosen focus preset, with topic
-// preference only ever picking *which* track/book fills a slot, never
-// creating or resizing one.
-export async function generateSyllabusSessions({ level, ageTrack, count, focusKey = "balanced", preference = "" }) {
+// a total session count + a skill-focus preset, this returns a full
+// ordered session list: grammar/vocab at a fixed level-driven floor
+// (non-negotiable), the remainder split across speaking/reading/writing
+// by the chosen focus preset (this preset IS the "lesson preference" --
+// e.g. "mostly speaking" -- there's no separate topic-interest layer).
+export async function generateSyllabusSessions({ level, ageTrack, count, focusKey = "balanced" }) {
   const floorPct = LEVEL_FLOOR[level] ?? 0.35;
   const floorTotal = Math.round(count * floorPct);
   const grammarCount = Math.ceil(floorTotal * 0.6);
@@ -250,16 +212,12 @@ export async function generateSyllabusSessions({ level, ageTrack, count, focusKe
   const readingCount = Math.round((remainder * preset.weights.reading) / weightSum);
   const writingCount = Math.max(0, remainder - speakingCount - readingCount);
 
-  const keywords = parseKeywords(preference);
-
-  const [readingSessions] = await Promise.all([
-    buildReadingSessions(readingCount, level, keywords),
-  ]);
+  const readingSessions = await buildReadingSessions(readingCount, level);
 
   const groups = {
     grammar: buildGrammarSessions(grammarCount),
     vocabulary: buildVocabSessions(vocabCount),
-    speaking: buildSpeakingSessions(speakingCount, level, ageTrack, keywords),
+    speaking: buildSpeakingSessions(speakingCount, level, ageTrack),
     reading: readingSessions,
     writing: buildWritingSessions(writingCount),
   };
