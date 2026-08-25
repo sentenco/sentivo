@@ -119,10 +119,10 @@ const CSS = `
   min-height: 100vh;
   background-color: #DEF3FB;
   background-image:
-    radial-gradient(circle at 6% 8%, rgba(217,164,4,0.18), transparent 30%),
+    radial-gradient(circle at 6% 8%, rgba(232,180,0,0.18), transparent 30%),
     radial-gradient(circle at 96% 14%, rgba(42,168,174,0.20), transparent 34%),
     radial-gradient(circle at 18% 96%, rgba(42,168,174,0.20), transparent 28%),
-    radial-gradient(circle at 88% 90%, rgba(217,164,4,0.18), transparent 26%),
+    radial-gradient(circle at 88% 90%, rgba(232,180,0,0.18), transparent 26%),
     radial-gradient(rgba(16,100,107,0.10) 1.4px, transparent 1.4px),
     linear-gradient(165deg, #EAFBF8 0%, #DEF3FB 100%);
   background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, repeat, no-repeat;
@@ -164,7 +164,7 @@ const CSS = `
   border-radius: 999px;
   padding: 4px 12px;
 }
-.sht-tag--level { color: #10646B; background: #F0C33C; }
+.sht-tag--level { color: #10646B; background: #F5C518; }
 .sht-hero-title {
   font-family: 'Baloo 2', cursive;
   font-weight: 800;
@@ -172,9 +172,9 @@ const CSS = `
   color: #10646B;
   margin: 0;
   text-shadow:
-    1.2px 1.2px 0 rgba(217,164,4,0.32),
-    2.4px 2.4px 0 rgba(217,164,4,0.32),
-    3.6px 3.6px 0 rgba(217,164,4,0.32),
+    1.2px 1.2px 0 rgba(232,180,0,0.32),
+    2.4px 2.4px 0 rgba(232,180,0,0.32),
+    3.6px 3.6px 0 rgba(232,180,0,0.32),
     4px 8px 18px rgba(16,100,107,0.2);
 }
 
@@ -199,7 +199,7 @@ const CSS = `
   width: 46px;
   height: 46px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #F0C33C 0%, #D9A404 100%);
+  background: linear-gradient(135deg, #F5C518 0%, #E8B400 100%);
   color: #10646B;
   font-family: 'Baloo 2', cursive;
   font-weight: 700;
@@ -218,8 +218,8 @@ const CSS = `
   font-size: 9.5px;
   text-transform: uppercase;
   letter-spacing: 0.03em;
-  color: #D9A404;
-  background: rgba(217,164,4,0.14);
+  color: #10646B;
+  background: rgba(232,180,0,0.16);
   border-radius: 999px;
   padding: 2px 9px;
 }
@@ -239,7 +239,7 @@ const CSS = `
   cursor: pointer;
 }
 .sht-btn-guide { background: rgba(42,168,174,0.14); color: #10646B; }
-.sht-btn-start { background: #F0C33C; color: #10646B; }
+.sht-btn-start { background: #F5C518; color: #10646B; }
 
 @media (max-width: 640px) {
   .sht-row { flex-wrap: wrap; padding: 16px; }
