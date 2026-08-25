@@ -2943,7 +2943,7 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   width: 100%;
   max-width: 1320px;
   margin: -10px auto 0;
-  background: #FFE08A;
+  background: #FFE6A0;
   border-radius: 26px;
   position: relative;
   overflow: hidden;
@@ -2951,7 +2951,7 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 }
 .bkshf-blob {
   position: absolute;
-  background: rgba(255,255,255,0.4);
+  background: rgba(255,255,255,0.55);
   z-index: 0;
   pointer-events: none;
 }
