@@ -71,12 +71,14 @@ export default function SyllabusHub() {
     <div className="syh-shell">
       <style>{CSS}</style>
 
+      <div className="syh-topbar">
+        <button type="button" className="syh-brand" onClick={() => navigate("/library")} title="Back to Homeroom">
+          <img src="/logo-sentivo.png" alt="" className="syh-brand-logo" />entivo
+        </button>
+      </div>
+
       <div className="syh-header">
         <div className="syh-header-inner">
-          <button type="button" className="syh-brand" onClick={() => navigate("/library")} title="Back to Homeroom">
-            <img src="/logo-sentivo.png" alt="" className="syh-brand-logo" />entivo
-          </button>
-
           <div className="syh-hero">
             <span className="syh-eyebrow">Sentivo · Homeroom</span>
             <h1 className="syh-hero-title">Syllabus Generator</h1>
@@ -173,15 +175,16 @@ const CSS = `
 .syh-shell { min-height: 100vh; background: #FBF4F1; font-family: 'Inter', sans-serif; color: #1B2A4A; }
 .syh-shell * { box-sizing: border-box; }
 
-.syh-header { background: #1B2A4A; padding: 20px 24px 40px; }
-.syh-header-inner { max-width: 900px; margin: 0 auto; }
+.syh-topbar { background: #FBF4F1; padding: 20px 24px 4px; }
 .syh-brand {
   display: inline-flex; align-items: center; gap: 2px;
   font-family: 'Inter', sans-serif; font-weight: 800; font-size: 19px;
-  color: #FFFFFF; text-decoration: none; cursor: pointer; border: none; background: none; padding: 0;
-  margin-bottom: 30px;
+  color: #1B2A4A; text-decoration: none; cursor: pointer; border: none; background: none; padding: 0;
 }
 .syh-brand-logo { height: 30px; width: auto; display: block; margin-right: -4px; }
+
+.syh-header { background: #1B2A4A; padding: 16px 24px 40px; }
+.syh-header-inner { max-width: 900px; margin: 0 auto; }
 
 .syh-hero { text-align: center; }
 .syh-eyebrow {

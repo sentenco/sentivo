@@ -185,19 +185,19 @@ export default function SyllabusEditor() {
     <div className="syl-shell">
       <style>{CSS}</style>
 
-      <div className="syl-header no-print">
-        <div className="syl-topbar">
-          <button type="button" className="syl-brand" onClick={() => navigate("/library/syllabus")} title="Back to your syllabi">
-            <img src="/logo-sentivo.png" alt="" className="syl-brand-logo" />entivo
-          </button>
-          <div className="syl-topbar-actions">
-            <span className="syl-saved-note">{saving ? "Saving…" : savedAt ? "Saved" : ""}</span>
-            <button type="button" className="syl-btn syl-btn--ghost-dark" onClick={() => setFollowUpPanelOpen((o) => !o)}>Generate follow-up</button>
-            <button type="button" className="syl-btn syl-btn--ghost-dark" onClick={() => window.print()}>Print</button>
-            <button type="button" className="syl-btn syl-btn--primary" onClick={save} disabled={saving}>Save</button>
-          </div>
+      <div className="syl-topbar no-print">
+        <button type="button" className="syl-brand" onClick={() => navigate("/library/syllabus")} title="Back to your syllabi">
+          <img src="/logo-sentivo.png" alt="" className="syl-brand-logo" />entivo
+        </button>
+        <div className="syl-topbar-actions">
+          <span className="syl-saved-note">{saving ? "Saving…" : savedAt ? "Saved" : ""}</span>
+          <button type="button" className="syl-btn syl-btn--ghost" onClick={() => setFollowUpPanelOpen((o) => !o)}>Generate follow-up</button>
+          <button type="button" className="syl-btn syl-btn--ghost" onClick={() => window.print()}>Print</button>
+          <button type="button" className="syl-btn syl-btn--primary" onClick={save} disabled={saving}>Save</button>
         </div>
+      </div>
 
+      <div className="syl-header no-print">
         <input
           className="syl-title-input"
           value={title}
@@ -321,22 +321,22 @@ const CSS = `
 .syl-shell * { box-sizing: border-box; }
 .syl-signin { text-align: center; margin-top: 80px; color: #5A6B92; font-family: 'Inter', sans-serif; }
 
-.syl-header { background: #1B2A4A; padding: 20px 28px 26px; color: #FFFFFF; }
-.syl-topbar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
+.syl-topbar { display: flex; align-items: center; justify-content: space-between; padding: 20px 28px; background: #FBF4F1; }
 .syl-brand {
   display: inline-flex; align-items: center; gap: 2px;
   font-family: 'Inter', sans-serif; font-weight: 800; font-size: 18px;
-  color: #FFFFFF; text-decoration: none; cursor: pointer; border: none; background: none; padding: 0;
+  color: #1B2A4A; text-decoration: none; cursor: pointer; border: none; background: none; padding: 0;
 }
 .syl-brand-logo { height: 26px; width: auto; display: block; margin-right: -4px; }
 .syl-topbar-actions { display: flex; align-items: center; gap: 8px; }
-.syl-saved-note { font-size: 12px; color: #B9C3DC; font-weight: 700; }
+.syl-saved-note { font-size: 12px; color: #5A6B92; font-weight: 700; }
+
+.syl-header { background: #1B2A4A; padding: 20px 28px 26px; color: #FFFFFF; }
 
 .syl-btn { font-weight: 700; font-size: 13px; border-radius: 999px; padding: 9px 18px; cursor: pointer; border: none; white-space: nowrap; }
 .syl-btn--primary { background: #FF6B4A; color: #FFFFFF; }
 .syl-btn--primary:disabled { opacity: 0.6; cursor: default; }
-.syl-btn--ghost-dark { background: rgba(255,255,255,0.14); color: #FFFFFF; border: none; }
-.syl-btn--ghost { background: #FBF4F1; color: #E0502F; border: 1.5px solid #EDE1DB; }
+.syl-btn--ghost { background: #FDECE5; color: #E0502F; border: none; }
 
 .syl-title-input {
   width: 100%; border: none; outline: none; background: transparent;
