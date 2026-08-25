@@ -2495,7 +2495,7 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   color: #FFFFFF; border-radius: 8px; padding: 10px 0;
 }
 .spklab-card--forge .spklab-cta { background: #E8544E; }
-.spklab-card--shift .spklab-cta { background: #E8B400; color: #10646B; }
+.spklab-card--shift .spklab-cta { background: #E8B400; text-shadow: 0 1px 3px rgba(120,80,0,0.5); }
 .spklab-card--ascend .spklab-cta { background: #D97D2E; }
 .spklab-card--relay .spklab-cta { background: #3E7CB1; }
 .spklab-card--stack .spklab-cta { background: #8B6FC9; }

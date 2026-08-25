@@ -200,7 +200,8 @@ const CSS = `
   height: 46px;
   border-radius: 50%;
   background: linear-gradient(135deg, #F5C518 0%, #E8B400 100%);
-  color: #10646B;
+  color: #FFFFFF;
+  text-shadow: 0 1px 3px rgba(120,80,0,0.5);
   font-family: 'Baloo 2', cursive;
   font-weight: 700;
   font-size: 16px;
@@ -239,7 +240,7 @@ const CSS = `
   cursor: pointer;
 }
 .sht-btn-guide { background: rgba(42,168,174,0.14); color: #10646B; }
-.sht-btn-start { background: #F5C518; color: #10646B; }
+.sht-btn-start { background: #E8B400; color: #FFFFFF; text-shadow: 0 1px 3px rgba(120,80,0,0.5); }
 
 @media (max-width: 640px) {
   .sht-row { flex-wrap: wrap; padding: 16px; }

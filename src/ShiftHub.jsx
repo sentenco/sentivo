@@ -167,7 +167,7 @@ const CSS = `
   align-items: center;
   justify-content: space-between;
 }
-.shh-track-num { font-family: 'Baloo 2', cursive; font-weight: 700; font-size: 20px; color: #10646B; }
+.shh-track-num { font-family: 'Baloo 2', cursive; font-weight: 700; font-size: 20px; color: #FFFFFF; text-shadow: 0 1px 3px rgba(120,80,0,0.5); }
 .shh-track-level-pill {
   font-family: 'IBM Plex Sans', sans-serif;
   font-weight: 800;
@@ -204,8 +204,9 @@ const CSS = `
   font-family: 'IBM Plex Sans', sans-serif;
   font-weight: 800;
   font-size: 12.5px;
-  color: #10646B;
-  background: #F5C518;
+  color: #FFFFFF;
+  text-shadow: 0 1px 3px rgba(120,80,0,0.5);
+  background: #E8B400;
   border-radius: 999px;
   padding: 8px 16px;
 }
