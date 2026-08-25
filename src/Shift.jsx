@@ -30,14 +30,26 @@ function ProgressRow({ total, doneCount, currentIdx }) {
   );
 }
 
-function HistoryLog({ rows, roles }) {
+const ME_EMOJI = "🙂";
+
+function Avatar({ emoji, side, size }) {
+  return <div className={`sh-avatar sh-avatar--${side}${size ? ` sh-avatar--${size}` : ""}`}>{emoji}</div>;
+}
+
+function HistoryLog({ rows, themEmoji }) {
   if (rows.length === 0) return null;
   return (
     <div className="sh-history">
       {rows.map((row, i) => (
         <div className="sh-hist-row" key={i}>
-          <div className="sh-hist-q"><span className="sh-hist-label">{roles.them}</span><span className="sh-hist-text">{row.q}</span></div>
-          <div className="sh-hist-a"><span className="sh-hist-text">{row.a}</span><span className="sh-hist-label sh-hist-label--me">{roles.me}</span></div>
+          <div className="sh-bubble-line sh-bubble-line--them">
+            <Avatar emoji={themEmoji} side="them" />
+            <div className="sh-bubble sh-bubble--them">{row.q}</div>
+          </div>
+          <div className="sh-bubble-line sh-bubble-line--me">
+            <div className="sh-bubble sh-bubble--me">{row.a}</div>
+            <Avatar emoji={ME_EMOJI} side="me" />
+          </div>
         </div>
       ))}
     </div>
@@ -56,10 +68,9 @@ function ChainStage({ lesson, chainIdx, history, onAdvance }) {
 
   if (isDone) return null;
 
-  const label = display ? lesson.roles.me : lesson.roles.them;
-  const labelClass = display
-    ? `sh-speaker-label sh-speaker-label--me${display.isRight ? "" : " is-wrong"}`
-    : "sh-speaker-label";
+  const avatarEmoji = display ? ME_EMOJI : lesson.themEmoji;
+  const avatarSide = display ? "me" : "them";
+  const avatarWrong = display && !display.isRight;
   const lineText = display ? display.text : step.question;
   const lineClass = display && !display.isRight ? "sh-line is-wrong" : "sh-line";
 
@@ -84,9 +95,9 @@ function ChainStage({ lesson, chainIdx, history, onAdvance }) {
 
   return (
     <>
-      <HistoryLog rows={history} roles={lesson.roles} />
+      <HistoryLog rows={history} themEmoji={lesson.themEmoji} />
       <div className="sh-slide">
-        <span className={labelClass}>{label}</span>
+        <div className={`sh-avatar sh-avatar--${avatarSide} sh-avatar--lg${avatarWrong ? " is-wrong" : ""}`}>{avatarEmoji}</div>
         <div className={lineClass}>{lineText}</div>
       </div>
 
@@ -264,27 +275,31 @@ const CSS = `
 .sh-seg.is-done { background: #2F9E58; }
 .sh-seg.is-current { background: #FF6B4A; }
 
-.sh-history { display: flex; flex-direction: column; gap: 12px; padding: 16px 22px 4px; }
-.sh-hist-row { display: flex; flex-direction: column; gap: 6px; padding-bottom: 12px; border-bottom: 1px solid #EDE1DB; }
-.sh-hist-q, .sh-hist-a { display: flex; align-items: baseline; gap: 8px; font-size: 16px; }
-.sh-hist-q { justify-content: flex-start; }
-.sh-hist-a { justify-content: flex-end; text-align: right; }
-.sh-hist-label { font-size: 11px; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase; flex-shrink: 0; color: #5A6B92; }
-.sh-hist-label--me { color: #E0502F; }
-.sh-hist-text { color: #5A6B92; font-family: 'Fraunces', serif; font-weight: 500; }
-.sh-hist-a .sh-hist-text { color: #1B2A4A; font-weight: 600; }
+.sh-avatar {
+  width: 30px; height: 30px; border-radius: 50%; flex-shrink: 0; display: flex; align-items: center;
+  justify-content: center; font-size: 15px; background: #E7EBF3;
+}
+.sh-avatar--me { background: #FDECE5; }
+.sh-avatar--lg { width: 44px; height: 44px; font-size: 20px; margin-bottom: 10px; }
+.sh-avatar--lg.is-wrong { background: #FBE4E9; }
+
+.sh-history { display: flex; flex-direction: column; gap: 10px; padding: 16px 22px 4px; }
+.sh-hist-row { display: flex; flex-direction: column; gap: 6px; padding-bottom: 10px; border-bottom: 1px solid #EDE1DB; }
+.sh-bubble-line { display: flex; align-items: flex-end; gap: 8px; }
+.sh-bubble-line--them { justify-content: flex-start; }
+.sh-bubble-line--me { justify-content: flex-end; }
+.sh-bubble {
+  font-size: 15px; line-height: 1.4; padding: 8px 13px; border-radius: 14px; max-width: 78%;
+  font-family: 'Fraunces', serif; font-weight: 500;
+}
+.sh-bubble--them { background: #E7EBF3; color: #1B2A4A; border-bottom-left-radius: 4px; }
+.sh-bubble--me { background: #FDECE5; color: #1B2A4A; font-weight: 600; border-bottom-right-radius: 4px; }
 
 .sh-slide {
   background: #FFFFFF; margin: 14px auto; border-radius: 18px; display: flex; flex-direction: column;
   align-items: center; justify-content: center; padding: 16px 22px; text-align: center;
   box-shadow: 0 8px 18px rgba(27,42,74,0.06); width: fit-content; max-width: calc(100% - 36px);
 }
-.sh-speaker-label {
-  font-size: 10px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 8px;
-  padding: 3px 12px; border-radius: 999px; background: #E7EBF3; color: #5A6B92;
-}
-.sh-speaker-label--me { background: #FDECE5; color: #E0502F; }
-.sh-speaker-label--me.is-wrong { background: #FBE4E9; color: #D6536D; }
 .sh-line { font-family: 'Fraunces', serif; font-weight: 600; font-size: clamp(17px, 2.4vw, 20px); line-height: 1.35; color: #1B2A4A; max-width: 400px; }
 .sh-line.is-wrong { color: #7A2438; }
 
@@ -313,6 +328,6 @@ const CSS = `
 .sh-continue-btn { margin-top: 4px; }
 
 @media (max-width: 520px) {
-  .sh-hist-q, .sh-hist-a { font-size: 14px; }
+  .sh-bubble { font-size: 13.5px; }
 }
 `;
