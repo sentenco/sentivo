@@ -2941,10 +2941,10 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   width: 100%;
   max-width: 1320px;
   margin: -10px auto 0;
-  background: linear-gradient(165deg, #B8E6B0 0%, #A8D8DC 55%, #BFE6F2 100%);
+  background: linear-gradient(165deg, #6EC6E8 0%, #EAF7FC 100%);
   background-image:
     radial-gradient(circle, rgba(255,255,255,0.5) 1.5px, transparent 1.5px),
-    linear-gradient(165deg, #B8E6B0 0%, #A8D8DC 55%, #BFE6F2 100%);
+    linear-gradient(165deg, #6EC6E8 0%, #EAF7FC 100%);
   background-size: 26px 26px, 100% 100%;
   border-radius: 26px;
   padding: clamp(26px, 3.6vw, 48px) clamp(20px, 3.2vw, 40px) clamp(30px, 4vw, 52px);
