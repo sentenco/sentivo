@@ -60,6 +60,13 @@ export default function SyllabusEditor() {
   const [followUpLevel, setFollowUpLevel] = useState(level);
   const [followingUp, setFollowingUp] = useState(false);
 
+  const [reqPanelOpen, setReqPanelOpen] = useState(false);
+  const [reqTopic, setReqTopic] = useState("");
+  const [reqLanguage, setReqLanguage] = useState("");
+  const [reqDuration, setReqDuration] = useState("25");
+  const [reqNotes, setReqNotes] = useState("");
+  const [reqCopied, setReqCopied] = useState(false);
+
   useEffect(() => {
     if (!user) return;
     let isMounted = true;
@@ -157,6 +164,50 @@ export default function SyllabusEditor() {
     setFollowingUp(false);
     setFollowUpPanelOpen(false);
     if (!error && data) navigate(`/library/syllabus/${data.id}/edit`);
+  }
+
+  function buildRequestText() {
+    const ageLabel = SYLLABUS_AGE_TRACKS.find((t) => t.key === ageTrack)?.label || "";
+    const lines = [
+      "Custom Lesson Request",
+      `Student: ${studentName || "(not set)"}`,
+      `Topic: ${reqTopic.trim()}`,
+      `Level: ${level}${ageLabel ? ` · ${ageLabel}` : ""}`,
+      `Duration: ${reqDuration} minutes`,
+      `Student's language: ${reqLanguage.trim()}`,
+    ];
+    if (reqNotes.trim()) lines.push(`Notes: ${reqNotes.trim()}`);
+    lines.push("", "Sent at least 2 hours before the lesson.");
+    return lines.join("\n");
+  }
+
+  async function handleCopyRequest() {
+    const text = buildRequestText();
+    try {
+      await navigator.clipboard.writeText(text);
+    } catch {
+      // Clipboard access can fail (permissions, browser context); the
+      // placeholder session below is the part that actually matters --
+      // don't let a clipboard error block it.
+    }
+    setReqCopied(true);
+    setSessions((prev) => [
+      ...prev,
+      newSession({
+        title: reqTopic.trim() || "Custom lesson",
+        notes: `For a ${reqLanguage.trim()} speaker · Requested via Messenger`,
+        skill: "custom",
+        requested: true,
+      }),
+    ]);
+    window.setTimeout(() => {
+      setReqCopied(false);
+      setReqPanelOpen(false);
+      setReqTopic("");
+      setReqLanguage("");
+      setReqNotes("");
+      setReqDuration("25");
+    }, 1400);
   }
 
   function updateSession(sid, field, value) {
@@ -263,7 +314,70 @@ export default function SyllabusEditor() {
             <button type="button" className="syl-btn syl-btn--ghost" onClick={() => setGenPanelOpen((o) => !o)}>
               Generate from curriculum
             </button>
+            <button type="button" className="syl-btn syl-btn--ghost" onClick={() => setReqPanelOpen((o) => !o)}>
+              Request custom lesson
+            </button>
           </div>
+
+          {reqPanelOpen && (
+            <div className="syl-req-panel no-print">
+              <p className="syl-req-lead-time">⏰ Send this at least 2 hours before the lesson.</p>
+              <label className="syl-req-field">
+                Topic
+                <textarea
+                  className="syl-req-textarea"
+                  rows={2}
+                  value={reqTopic}
+                  onChange={(e) => setReqTopic(e.target.value)}
+                  placeholder="e.g. Real estate and sales, studying in the US"
+                />
+              </label>
+              <div className="syl-req-row">
+                <label className="syl-req-field">
+                  Student's language
+                  <input
+                    type="text"
+                    className="syl-req-input"
+                    value={reqLanguage}
+                    onChange={(e) => setReqLanguage(e.target.value)}
+                    placeholder="e.g. Hebrew"
+                  />
+                </label>
+                <label className="syl-req-field syl-req-field--narrow">
+                  Duration (min)
+                  <input
+                    type="number"
+                    min="5"
+                    max="120"
+                    className="syl-req-input"
+                    value={reqDuration}
+                    onChange={(e) => setReqDuration(e.target.value)}
+                  />
+                </label>
+              </div>
+              <label className="syl-req-field">
+                Notes (optional)
+                <textarea
+                  className="syl-req-textarea"
+                  rows={2}
+                  value={reqNotes}
+                  onChange={(e) => setReqNotes(e.target.value)}
+                  placeholder="Anything else worth knowing"
+                />
+              </label>
+              <button
+                type="button"
+                className="syl-btn syl-btn--primary"
+                onClick={handleCopyRequest}
+                disabled={!reqTopic.trim() || !reqLanguage.trim()}
+              >
+                {reqCopied ? "✓ Copied — paste it into Messenger" : "Copy request"}
+              </button>
+              <p className="syl-req-hint">
+                Copies a formatted request (student, topic, level, duration, language) and adds a placeholder session to the plan below, marked "Awaiting delivery" until you mark it delivered.
+              </p>
+            </div>
+          )}
 
           {genPanelOpen && (
             <div className="syl-gen-panel no-print">
@@ -302,6 +416,7 @@ export default function SyllabusEditor() {
                     {s.skill && s.skill !== "custom" && (
                       <span className={`syl-skill-tag syl-skill-tag--${s.skill}`}>{SKILL_LABELS[s.skill] || s.skill}</span>
                     )}
+                    {s.requested && <span className="syl-pending-tag">⏳ Awaiting delivery</span>}
                     {s.completed && <span className="syl-done-tag">Completed</span>}
                   </div>
                   <input
@@ -318,6 +433,17 @@ export default function SyllabusEditor() {
                   />
                 </div>
                 <div className="syl-session-actions no-print">
+                  {s.requested && (
+                    <button
+                      type="button"
+                      className="syl-icon-btn syl-icon-btn--delivered"
+                      onClick={() => updateSession(s.id, "requested", false)}
+                      aria-label="Mark as delivered"
+                      title="Mark as delivered"
+                    >
+                      📥
+                    </button>
+                  )}
                   <button
                     type="button"
                     className={`syl-icon-btn${s.completed ? " syl-icon-btn--done" : ""}`}
@@ -421,7 +547,7 @@ const CSS = `
 .syl-page { padding: 28px 20px 60px; }
 .syl-stage { max-width: 760px; margin: 0 auto; background: #FFFFFF; border-radius: 20px; padding: 30px 32px 34px; box-shadow: 0 10px 30px rgba(27,42,74,0.08); }
 
-.syl-toolbar { display: flex; align-items: center; margin-bottom: 20px; }
+.syl-toolbar { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; }
 
 .syl-gen-panel {
   background: #FBF4F1; border-radius: 14px; padding: 18px 20px; margin-bottom: 24px;
@@ -430,6 +556,22 @@ const CSS = `
 .syl-gen-label { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 700; color: #1B2A4A; }
 .syl-gen-input { width: 60px; padding: 7px 10px; border-radius: 8px; border: 1.5px solid #EDE1DB; font-family: 'Inter', sans-serif; font-weight: 700; }
 .syl-gen-hint { flex-basis: 100%; font-size: 12px; color: #5A6B92; margin: 0; }
+
+.syl-req-panel {
+  background: #FBF4F1; border-radius: 14px; padding: 18px 20px; margin-bottom: 24px;
+  display: flex; flex-direction: column; gap: 12px;
+}
+.syl-req-lead-time { margin: 0; font-size: 12.5px; font-weight: 700; color: #E0502F; }
+.syl-req-row { display: flex; gap: 12px; flex-wrap: wrap; }
+.syl-req-field { display: flex; flex-direction: column; gap: 5px; font-size: 12px; font-weight: 700; color: #1B2A4A; flex: 1; min-width: 180px; }
+.syl-req-field--narrow { flex: 0 0 110px; min-width: 0; }
+.syl-req-input, .syl-req-textarea {
+  font-family: 'Inter', sans-serif; font-weight: 600; font-size: 13px; color: #1B2A4A;
+  background: #FFFFFF; border: 1.5px solid #EDE1DB; border-radius: 10px; padding: 8px 10px;
+  outline: none; resize: vertical;
+}
+.syl-req-input:focus, .syl-req-textarea:focus { border-color: #FF6B4A; }
+.syl-req-hint { margin: 0; font-size: 12px; color: #5A6B92; }
 
 .syl-timeline { position: relative; }
 .syl-timeline::before { content: ""; position: absolute; left: 15px; top: 8px; bottom: 8px; width: 2px; background: #EDE1DB; }
@@ -453,6 +595,7 @@ const CSS = `
 .syl-skill-tag--articles { background: #E9F3FB; color: #1F6FB0; }
 .syl-skill-tag--listening { background: #F4EDE3; color: #8A5A2A; }
 .syl-done-tag { font-size: 9.5px; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase; border-radius: 999px; padding: 2px 8px; background: #E7F5EC; color: #2F9E58; }
+.syl-pending-tag { font-size: 9.5px; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase; border-radius: 999px; padding: 2px 8px; background: #FFF4D6; color: #8A6D1F; }
 .syl-t-row--done .syl-t-body { opacity: 0.6; }
 .syl-t-row--done .syl-session-title { text-decoration: line-through; }
 .syl-session-title, .syl-session-notes {
@@ -470,6 +613,7 @@ const CSS = `
 .syl-icon-btn:disabled { opacity: 0.35; cursor: default; }
 .syl-icon-btn--danger { color: #D14B4B; background: #FBEBEB; }
 .syl-icon-btn--done { background: #2F9E58; color: #FFFFFF; }
+.syl-icon-btn--delivered { background: #FFF4D6; }
 
 .syl-add-btn {
   margin-top: 14px; align-self: flex-start; background: none; border: 1.5px dashed #EDE1DB;

@@ -59,6 +59,7 @@ export function newSession(overrides = {}) {
     skill: "custom",
     source: "custom",
     completed: false,
+    requested: false,
     ...overrides,
   };
 }
