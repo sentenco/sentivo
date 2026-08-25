@@ -18,7 +18,6 @@ import storybook8CoverImg from "./assets/storybook8/cover.jpeg";
 import forge1CoverImg from "./assets/forge/track1-cover.jpeg";
 import todayWheelIcon from "./assets/today/icon-wheel.jpg";
 import todayNotebookIcon from "./assets/today/icon-notebook.jpg";
-import todayDeckIcon from "./assets/today/icon-deck.jpg";
 import todayFeedbackIcon from "./assets/today/icon-feedback.jpg";
 import todayQuoteBanner from "./assets/today/quote-banner.jpg";
 import DAILY_CORRECTIONS from "./dailyCorrections";
@@ -858,10 +857,16 @@ function TodayFeature({ navigate }) {
           <div className="td-action-icon"><img src={todayNotebookIcon} alt="" /></div>
           <div className="td-action-title">Digital Notebook</div>
         </button>
-        <button type="button" className="td-action-card" onClick={deskUnlocked ? () => navigate("/library/slides") : undefined} aria-disabled={!deskUnlocked} title={deskLockTitle}>
+        <button type="button" className="td-action-card" onClick={deskUnlocked ? () => navigate("/library/syllabus") : undefined} aria-disabled={!deskUnlocked} title={deskLockTitle}>
           {!deskUnlocked && <span className="td-action-lock"><LockIcon /></span>}
-          <div className="td-action-icon"><img src={todayDeckIcon} alt="" /></div>
-          <div className="td-action-title">Slide Builder</div>
+          <div className="td-action-icon">
+            <svg viewBox="0 0 40 40" width="26" height="26" fill="none" aria-hidden="true">
+              <rect x="9" y="6" width="22" height="28" rx="3" fill="#EFEBFB" stroke="#6B5CE0" strokeWidth="2" />
+              <path d="M15 4h10v5a1 1 0 0 1-1 1H16a1 1 0 0 1-1-1V4Z" fill="#6B5CE0" />
+              <path d="M14 17h12M14 22h12M14 27h8" stroke="#6B5CE0" strokeWidth="2" strokeLinecap="round" />
+            </svg>
+          </div>
+          <div className="td-action-title">Syllabus Generator</div>
         </button>
       </div>
     </>

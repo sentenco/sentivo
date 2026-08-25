@@ -27,6 +27,8 @@ import NotebookPage from './NotebookPage.jsx'
 import WheelPage from './WheelPage.jsx'
 import TeacherBoard from './TeacherBoard.jsx'
 import SlideDeckHub from './SlideDeckHub.jsx'
+import SyllabusHub from './SyllabusHub.jsx'
+import SyllabusEditor from './SyllabusEditor.jsx'
 import SlideDeckEditor from './SlideDeckEditor.jsx'
 import SlideDeckPlayer from './SlideDeckPlayer.jsx'
 import storybook2 from './storybookData2.js'
@@ -239,6 +241,8 @@ createRoot(document.getElementById('root')).render(
             <Route path="/library/slides" element={<SlideDeckHub />} />
             <Route path="/library/slides/:deckId/edit" element={<SlideDeckEditor />} />
             <Route path="/library/slides/:deckId/present" element={<SlideDeckPlayer />} />
+            <Route path="/library/syllabus" element={<SyllabusHub />} />
+            <Route path="/library/syllabus/:id/edit" element={<SyllabusEditor />} />
             <Route path="/library/storybook" element={<StoryBook />} />
             <Route path="/library/storybook-2" element={<StoryBook book={storybook2} />} />
             <Route path="/library/storybook-3" element={<StoryBook book={storybook3} />} />
