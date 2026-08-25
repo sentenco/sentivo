@@ -43,6 +43,8 @@ export default function SyllabusEditor() {
   const [title, setTitle] = useState("Untitled syllabus");
   const [level, setLevel] = useState("A1");
   const [ageTrack, setAgeTrack] = useState("kids");
+  const [studentName, setStudentName] = useState("");
+  const [studentNotes, setStudentNotes] = useState("");
   const [sessions, setSessions] = useState([]);
   const [offsets, setOffsets] = useState({});
   const [saving, setSaving] = useState(false);
@@ -65,7 +67,7 @@ export default function SyllabusEditor() {
       setLoading(true);
       const { data, error } = await supabase
         .from("syllabi")
-        .select("id, title, level, age_track, sessions, offsets")
+        .select("id, title, level, age_track, student_name, student_notes, sessions, offsets")
         .eq("id", id)
         .eq("user_id", user.id)
         .maybeSingle();
@@ -77,6 +79,8 @@ export default function SyllabusEditor() {
         setLevel(data.level || "A1");
         setFollowUpLevel(data.level || "A1");
         setAgeTrack(data.age_track || "kids");
+        setStudentName(data.student_name || "");
+        setStudentNotes(data.student_notes || "");
         setSessions(data.sessions && data.sessions.length > 0 ? data.sessions : [newSession()]);
         setOffsets(data.offsets || {});
       }
@@ -91,7 +95,7 @@ export default function SyllabusEditor() {
     setSaving(true);
     const { error } = await supabase
       .from("syllabi")
-      .update({ title, level, age_track: ageTrack, sessions, offsets, updated_at: new Date().toISOString() })
+      .update({ title, level, age_track: ageTrack, student_name: studentName, student_notes: studentNotes, sessions, offsets, updated_at: new Date().toISOString() })
       .eq("id", id)
       .eq("user_id", user.id);
     setSaving(false);
@@ -143,6 +147,8 @@ export default function SyllabusEditor() {
         title: `${title} (follow-up)`,
         level: followUpLevel,
         age_track: ageTrack,
+        student_name: studentName,
+        student_notes: studentNotes,
         sessions: result.sessions,
         offsets: result.offsets,
       })
@@ -208,6 +214,12 @@ export default function SyllabusEditor() {
               placeholder="Untitled syllabus"
             />
             <div className="syl-meta-row">
+              <input
+                className="syl-pill-input"
+                value={studentName}
+                onChange={(e) => setStudentName(e.target.value)}
+                placeholder="Student name"
+              />
               <select className="syl-pill-select" value={level} onChange={(e) => { setLevel(e.target.value); setFollowUpLevel(e.target.value); }}>
                 {SYLLABUS_LEVELS.map((lv) => <option key={lv} value={lv}>{lv}</option>)}
               </select>
@@ -215,11 +227,19 @@ export default function SyllabusEditor() {
                 {SYLLABUS_AGE_TRACKS.map((t) => <option key={t.key} value={t.key}>{t.label}</option>)}
               </select>
               <span className="syl-pill-static">{sessions.length} {sessions.length === 1 ? "session" : "sessions"}</span>
+              <input
+                className="syl-pill-input"
+                value={studentNotes}
+                onChange={(e) => setStudentNotes(e.target.value)}
+                placeholder="Contact / booking ID (optional)"
+              />
             </div>
           </div>
         </div>
       </div>
-      <div className="syl-meta-print print-only">{title} — {level} · {SYLLABUS_AGE_TRACKS.find((t) => t.key === ageTrack)?.label}</div>
+      <div className="syl-meta-print print-only">
+        {title} — {level} · {SYLLABUS_AGE_TRACKS.find((t) => t.key === ageTrack)?.label}{studentName ? ` · For: ${studentName}` : ""}
+      </div>
 
       {followUpPanelOpen && (
         <div className="syl-followup-bar no-print">
@@ -275,12 +295,15 @@ export default function SyllabusEditor() {
 
           <div className="syl-timeline">
             {sessions.map((s, i) => (
-              <div className="syl-t-row" key={s.id}>
-                <span className="syl-t-dot" style={{ background: SKILL_COLORS[s.skill] || "#5A6B92" }}>{i + 1}</span>
+              <div className={`syl-t-row${s.completed ? " syl-t-row--done" : ""}`} key={s.id}>
+                <span className="syl-t-dot" style={{ background: SKILL_COLORS[s.skill] || "#5A6B92" }}>{s.completed ? "✓" : i + 1}</span>
                 <div className="syl-t-body">
-                  {s.skill && s.skill !== "custom" && (
-                    <span className={`syl-skill-tag syl-skill-tag--${s.skill}`}>{SKILL_LABELS[s.skill] || s.skill}</span>
-                  )}
+                  <div className="syl-t-tags">
+                    {s.skill && s.skill !== "custom" && (
+                      <span className={`syl-skill-tag syl-skill-tag--${s.skill}`}>{SKILL_LABELS[s.skill] || s.skill}</span>
+                    )}
+                    {s.completed && <span className="syl-done-tag">Completed</span>}
+                  </div>
                   <input
                     className="syl-session-title"
                     value={s.title}
@@ -295,6 +318,15 @@ export default function SyllabusEditor() {
                   />
                 </div>
                 <div className="syl-session-actions no-print">
+                  <button
+                    type="button"
+                    className={`syl-icon-btn${s.completed ? " syl-icon-btn--done" : ""}`}
+                    onClick={() => updateSession(s.id, "completed", !s.completed)}
+                    aria-label={s.completed ? "Mark not completed" : "Mark completed"}
+                    title={s.completed ? "Mark not completed" : "Mark completed"}
+                  >
+                    ✓
+                  </button>
                   <button type="button" className="syl-icon-btn" onClick={() => moveSession(i, -1)} disabled={i === 0} aria-label="Move up">↑</button>
                   <button type="button" className="syl-icon-btn" onClick={() => moveSession(i, 1)} disabled={i === sessions.length - 1} aria-label="Move down">↓</button>
                   <button type="button" className="syl-icon-btn syl-icon-btn--danger" onClick={() => removeSession(s.id)} aria-label="Remove session">×</button>
@@ -367,6 +399,12 @@ const CSS = `
   background: rgba(255,255,255,0.16); border: none; border-radius: 999px; padding: 6px 14px; cursor: pointer;
 }
 .syl-pill-static { font-family: 'Inter', sans-serif; font-weight: 700; font-size: 12.5px; color: #B9C3DC; padding: 6px 4px; }
+.syl-pill-input {
+  font-family: 'Inter', sans-serif; font-weight: 700; font-size: 12.5px; color: #FFFFFF;
+  background: rgba(255,255,255,0.16); border: none; border-radius: 999px; padding: 6px 14px;
+  outline: none; min-width: 140px;
+}
+.syl-pill-input::placeholder { color: rgba(255,255,255,0.55); font-weight: 600; }
 
 .syl-select {
   font-family: 'Inter', sans-serif; font-weight: 700; font-size: 13px; color: #1B2A4A;
@@ -402,9 +440,10 @@ const CSS = `
   display: flex; align-items: center; justify-content: center; margin-top: 2px;
 }
 .syl-t-body { flex: 1; min-width: 0; background: #FBF4F1; border-radius: 12px; padding: 12px 14px; display: flex; flex-direction: column; gap: 2px; }
+.syl-t-tags { display: flex; align-items: center; gap: 6px; margin-bottom: 4px; }
 .syl-skill-tag {
-  align-self: flex-start; font-size: 9.5px; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase;
-  border-radius: 999px; padding: 2px 8px; margin-bottom: 4px;
+  font-size: 9.5px; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase;
+  border-radius: 999px; padding: 2px 8px;
 }
 .syl-skill-tag--grammar { background: #E7ECFB; color: #3550B0; }
 .syl-skill-tag--vocabulary { background: #FBEAF0; color: #B0355C; }
@@ -413,6 +452,9 @@ const CSS = `
 .syl-skill-tag--writing { background: #EFEBFB; color: #6B5CE0; }
 .syl-skill-tag--articles { background: #E9F3FB; color: #1F6FB0; }
 .syl-skill-tag--listening { background: #F4EDE3; color: #8A5A2A; }
+.syl-done-tag { font-size: 9.5px; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase; border-radius: 999px; padding: 2px 8px; background: #E7F5EC; color: #2F9E58; }
+.syl-t-row--done .syl-t-body { opacity: 0.6; }
+.syl-t-row--done .syl-session-title { text-decoration: line-through; }
 .syl-session-title, .syl-session-notes {
   border: none; outline: none; background: transparent; font-family: 'Inter', sans-serif; width: 100%; padding: 2px 0;
 }
@@ -427,6 +469,7 @@ const CSS = `
 }
 .syl-icon-btn:disabled { opacity: 0.35; cursor: default; }
 .syl-icon-btn--danger { color: #D14B4B; background: #FBEBEB; }
+.syl-icon-btn--done { background: #2F9E58; color: #FFFFFF; }
 
 .syl-add-btn {
   margin-top: 14px; align-self: flex-start; background: none; border: 1.5px dashed #EDE1DB;

@@ -25,11 +25,10 @@ export const SYLLABUS_FOCUS_OPTIONS = [
   { key: "speaking", label: "Speaking" },
   { key: "reading", label: "Reading" },
   { key: "writing", label: "Writing" },
-  { key: "listening", label: "Listening" },
   { key: "articles", label: "Articles" },
 ];
 
-const FOCUS_POOL = ["grammar", "vocabulary", "speaking", "reading", "writing", "listening", "articles"];
+const FOCUS_POOL = ["grammar", "vocabulary", "speaking", "reading", "writing", "articles"];
 
 // Grammar + Vocabulary are the non-negotiable floor -- this fraction of the
 // total sessions is grammar/vocab no matter what focus is picked. It
@@ -59,6 +58,7 @@ export function newSession(overrides = {}) {
     notes: "",
     skill: "custom",
     source: "custom",
+    completed: false,
     ...overrides,
   };
 }
@@ -251,20 +251,6 @@ function buildArticleSessions(count, startIndex) {
   return { sessions, endIndex: startIndex + count };
 }
 
-// ---------- Listening ----------
-// No Listening content exists in the app yet (as of 2026-08-25), so this
-// always returns honest placeholders rather than pretending. Revisit once
-// a real Listening pack ships.
-function buildListeningSessions(count) {
-  if (count === 0) return [];
-  return Array.from({ length: count }, () => newSession({
-    title: "No Listening content built yet",
-    notes: "Fill in with your own listening practice for now.",
-    skill: "listening",
-    source: "placeholder",
-  }));
-}
-
 function computeCounts(count, level, focusKey) {
   const floorPct = LEVEL_FLOOR[level] ?? 0.35;
   const floorTotal = Math.round(count * floorPct);
@@ -309,7 +295,6 @@ function computeCounts(count, level, focusKey) {
     speaking: remainderCounts.speaking,
     reading: remainderCounts.reading,
     writing: remainderCounts.writing,
-    listening: remainderCounts.listening,
     articles: remainderCounts.articles,
   };
 }
@@ -319,7 +304,7 @@ function computeCounts(count, level, focusKey) {
 // frequent skill first so it sets the base rhythm and rarer skills slot
 // into the remaining gaps.
 function interleave(groups) {
-  const order = ["grammar", "vocabulary", "speaking", "reading", "writing", "articles", "listening"];
+  const order = ["grammar", "vocabulary", "speaking", "reading", "writing", "articles"];
   const total = order.reduce((sum, key) => sum + (groups[key]?.length || 0), 0);
   const result = new Array(total).fill(null);
   const filled = new Array(total).fill(false);
@@ -377,7 +362,6 @@ export async function generateSyllabusSessions({ level, ageTrack, count, focusKe
   const articlesResult = buildArticleSessions(counts.articles, offsets.articles);
   const readingResult = await buildReadingSessions(counts.reading, level, ageTrack, offsets.reading);
   const speakingResult = buildSpeakingSessions(counts.speaking, level, ageTrack, offsets.speakingTrackIdx, offsets.speakingLessonIdx);
-  const listeningSessions = buildListeningSessions(counts.listening);
 
   const groups = {
     grammar: grammarResult.sessions,
@@ -386,7 +370,6 @@ export async function generateSyllabusSessions({ level, ageTrack, count, focusKe
     reading: readingResult.sessions,
     writing: writingResult.sessions,
     articles: articlesResult.sessions,
-    listening: listeningSessions,
   };
 
   const endOffsets = {

@@ -25,6 +25,7 @@ export default function SyllabusHub() {
   const [authMode, setAuthMode] = useState(null);
   const [deletingId, setDeletingId] = useState(null);
   const [deleteTarget, setDeleteTarget] = useState(null);
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
     if (!user) {
@@ -37,7 +38,7 @@ export default function SyllabusHub() {
       setLoading(true);
       const { data, error } = await supabase
         .from("syllabi")
-        .select("id, title, level, age_track, sessions, updated_at")
+        .select("id, title, level, age_track, student_name, sessions, updated_at")
         .eq("user_id", user.id)
         .order("updated_at", { ascending: false });
       if (!isMounted) return;
@@ -66,6 +67,15 @@ export default function SyllabusHub() {
     setDeletingId(null);
     if (!error) setSyllabi((prev) => prev.filter((s) => s.id !== id));
   }
+
+  const query = search.trim().toLowerCase();
+  const filteredSyllabi = query
+    ? syllabi.filter((syl) =>
+        (syl.title || "").toLowerCase().includes(query) ||
+        (syl.student_name || "").toLowerCase().includes(query) ||
+        (syl.level || "").toLowerCase().includes(query)
+      )
+    : syllabi;
 
   return (
     <div className="syh-shell">
@@ -106,15 +116,26 @@ export default function SyllabusHub() {
               <span className="syh-new-label">{creating ? "Creating…" : "New syllabus"}</span>
             </button>
 
-            <div className="syh-list-label">My syllabi{syllabi.length > 0 ? ` (${syllabi.length})` : ""}</div>
+            {syllabi.length > 0 && (
+              <input
+                type="text"
+                className="syh-search"
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                placeholder="Search by student name, title, or level…"
+              />
+            )}
+
+            <div className="syh-list-label">My syllabi{filteredSyllabi.length > 0 ? ` (${filteredSyllabi.length})` : ""}</div>
             <div className="syh-grid">
               {loading ? (
                 <div className="syh-empty">Loading your syllabi…</div>
-              ) : syllabi.length === 0 ? (
-                <div className="syh-empty">No syllabi yet, start one above.</div>
+              ) : filteredSyllabi.length === 0 ? (
+                <div className="syh-empty">{query ? "No syllabi match your search." : "No syllabi yet, start one above."}</div>
               ) : (
-                syllabi.map((syl) => {
+                filteredSyllabi.map((syl) => {
                   const sessionList = syl.sessions || [];
+                  const doneCount = sessionList.filter((s) => s.completed).length;
                   return (
                     <button
                       type="button"
@@ -133,6 +154,7 @@ export default function SyllabusHub() {
                       </button>
                       {syl.level && <span className="syh-card-level">{syl.level}{syl.age_track ? ` · ${syl.age_track}` : ""}</span>}
                       <span className="syh-card-title">{syl.title || "Untitled syllabus"}</span>
+                      {syl.student_name && <span className="syh-card-student">👤 {syl.student_name}</span>}
                       {sessionList.length > 0 && (
                         <span className="syh-card-strip">
                           {sessionList.map((s, i) => (
@@ -141,7 +163,7 @@ export default function SyllabusHub() {
                         </span>
                       )}
                       <span className="syh-card-meta">
-                        {sessionList.length} {sessionList.length === 1 ? "session" : "sessions"} · {timeAgo(syl.updated_at)}
+                        {sessionList.length > 0 ? `${doneCount}/${sessionList.length} sessions done` : "No sessions yet"} · {timeAgo(syl.updated_at)}
                       </span>
                     </button>
                   );
@@ -220,6 +242,14 @@ const CSS = `
 .syh-new-card:disabled { opacity: 0.7; cursor: default; }
 .syh-new-icon { font-size: 20px; line-height: 1; }
 
+.syh-search {
+  width: 100%; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 13.5px; color: #1B2A4A;
+  background: #FFFFFF; border: 1.5px solid #EDE1DB; border-radius: 12px; padding: 11px 16px; margin-bottom: 20px;
+  outline: none;
+}
+.syh-search::placeholder { color: #A8A0B0; font-weight: 500; }
+.syh-search:focus { border-color: #FF6B4A; }
+
 .syh-list-label { font-weight: 700; font-size: 11.5px; letter-spacing: 0.08em; text-transform: uppercase; color: #5A6B92; margin-bottom: 14px; }
 
 .syh-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; }
@@ -234,6 +264,7 @@ const CSS = `
 .syh-card:hover { transform: translateY(-3px); box-shadow: 0 14px 26px rgba(27,42,74,0.14); }
 .syh-card-level { font-weight: 800; font-size: 10.5px; letter-spacing: 0.06em; text-transform: uppercase; color: #FF6B4A; margin-bottom: 6px; }
 .syh-card-title { font-family: 'Fraunces', serif; font-weight: 600; font-size: 18px; color: #1B2A4A; line-height: 1.25; }
+.syh-card-student { font-size: 12.5px; font-weight: 600; color: #5A6B92; margin-top: 4px; }
 .syh-card-strip { display: flex; flex-wrap: wrap; gap: 3px; margin: 10px 0; }
 .syh-card-strip span { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
 .syh-card-meta { font-size: 12px; color: #5A6B92; margin-top: auto; }
