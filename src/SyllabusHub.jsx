@@ -70,13 +70,12 @@ export default function SyllabusHub() {
   return (
     <div className="syh-shell">
       <style>{CSS}</style>
-      <div className="syh-page">
-        <div className="syh-stage">
-          <div className="syh-topbar">
-            <button type="button" className="syh-brand" onClick={() => navigate("/library")} title="Back to Homeroom">
-              <img src="/logo-sentivo.png" alt="" className="syh-brand-logo" />entivo
-            </button>
-          </div>
+
+      <div className="syh-header">
+        <div className="syh-header-inner">
+          <button type="button" className="syh-brand" onClick={() => navigate("/library")} title="Back to Homeroom">
+            <img src="/logo-sentivo.png" alt="" className="syh-brand-logo" />entivo
+          </button>
 
           <div className="syh-hero">
             <span className="syh-eyebrow">Sentivo · Homeroom</span>
@@ -85,7 +84,11 @@ export default function SyllabusHub() {
               Generate a draft schedule from the curriculum, then edit, reorder, or swap sessions until it fits your class.
             </p>
           </div>
+        </div>
+      </div>
 
+      <div className="syh-page">
+        <div className="syh-stage">
           {authLoading ? null : !user ? (
             <div className="syh-locked">
               <span className="syh-locked-icon">🔒</span>
@@ -170,24 +173,26 @@ const CSS = `
 .syh-shell { min-height: 100vh; background: #FBF4F1; font-family: 'Inter', sans-serif; color: #1B2A4A; }
 .syh-shell * { box-sizing: border-box; }
 
-.syh-page { padding: 24px; }
-.syh-stage { max-width: 900px; margin: 0 auto; }
-
-.syh-topbar { display: flex; align-items: center; padding-bottom: 28px; }
+.syh-header { background: #1B2A4A; padding: 20px 24px 40px; }
+.syh-header-inner { max-width: 900px; margin: 0 auto; }
 .syh-brand {
   display: inline-flex; align-items: center; gap: 2px;
   font-family: 'Inter', sans-serif; font-weight: 800; font-size: 19px;
-  color: #1B2A4A; text-decoration: none; cursor: pointer; border: none; background: none; padding: 0;
+  color: #FFFFFF; text-decoration: none; cursor: pointer; border: none; background: none; padding: 0;
+  margin-bottom: 30px;
 }
 .syh-brand-logo { height: 30px; width: auto; display: block; margin-right: -4px; }
 
-.syh-hero { text-align: center; margin-bottom: 34px; }
+.syh-hero { text-align: center; }
 .syh-eyebrow {
   display: inline-block; font-weight: 700; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
-  color: #E0502F; background: #FDECE5; border-radius: 999px; padding: 5px 14px; margin-bottom: 14px;
+  color: #FF6B4A; background: rgba(255,107,74,0.18); border-radius: 999px; padding: 5px 14px; margin-bottom: 14px;
 }
-.syh-hero-title { font-family: 'Fraunces', serif; font-weight: 600; font-size: clamp(32px, 3.8vw, 42px); margin: 0 0 10px; color: #1B2A4A; letter-spacing: -0.01em; }
-.syh-hero-blurb { font-size: 15px; color: #5A6B92; margin: 0 auto; max-width: 520px; line-height: 1.55; }
+.syh-hero-title { font-family: 'Fraunces', serif; font-weight: 600; font-size: clamp(32px, 3.8vw, 42px); margin: 0 0 10px; color: #FFFFFF; letter-spacing: -0.01em; }
+.syh-hero-blurb { font-size: 15px; color: #B9C3DC; margin: 0 auto; max-width: 520px; line-height: 1.55; }
+
+.syh-page { padding: 28px 24px 24px; }
+.syh-stage { max-width: 900px; margin: 0 auto; }
 
 .syh-locked { text-align: center; padding: 50px 20px; background: #FFFFFF; border-radius: 20px; }
 .syh-locked-icon { font-size: 34px; display: block; margin-bottom: 12px; }
