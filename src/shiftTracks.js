@@ -12,7 +12,7 @@ const TRACKS = [
     title: "Restaurant",
     gapFocus: "Spontaneous Tense Accuracy",
     level: "A2-B1",
-    audience: ["teens", "adults"],
+    audience: ["adults"],
     blurb: "Five restaurant scenes, five role pairs, one tense-accuracy skill trained live in conversation, not in isolated drills.",
     lessons: [restaurant1, null, null, null, null],
   },
