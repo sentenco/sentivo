@@ -118,7 +118,7 @@ export default function SyllabusEditor() {
   async function createFollowUp() {
     if (!user || followingUp) return;
     setFollowingUp(true);
-    const startOffsets = offsetsForFollowUp(offsets, level, followUpLevel);
+    const startOffsets = offsetsForFollowUp(offsets, level, followUpLevel, ageTrack);
     const result = await generateSyllabusSessions({
       level: followUpLevel,
       ageTrack,

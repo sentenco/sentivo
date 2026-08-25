@@ -2,6 +2,7 @@ import { supabase } from "./supabaseClient";
 import { VOCAB_LESSONS } from "./VocabularyGames";
 import { ACTIVITY_TYPES } from "./WritingActivities";
 import { ARTICLES } from "./articlesData";
+import { BOOK_AGE_TRACK } from "./Library";
 import RELAY_TRACKS from "./relayTracks";
 import ASCEND_TRACKS from "./ascendTracks";
 import SHIFT_TRACKS from "./shiftTracks";
@@ -122,7 +123,15 @@ function buildVocabSessions(count, startIndex) {
 function speakingSystemForLevel(level, ageTrack) {
   if (level === "A2") return { tracks: RELAY_TRACKS.filter((t) => t.audience === ageTrack), system: "Relay" };
   if (level === "B1" || level === "B2") return { tracks: SHIFT_TRACKS, system: "Shift" };
-  if (level === "C1" || level === "C2") return { tracks: ASCEND_TRACKS, system: "Ascend" };
+  if (level === "C1" || level === "C2") {
+    // Ascend's C1-C2 tracks (Business + AI, Law & Advocacy, Corporate
+    // Governance & Risk) are adult-professional content by subject matter,
+    // not appropriate for Kids/Teens even though the track data itself
+    // has no age field. Kids/Teens at C1-C2 get the honest placeholder
+    // instead of business/law material.
+    if (ageTrack !== "adults") return { tracks: [], system: null };
+    return { tracks: ASCEND_TRACKS, system: "Ascend" };
+  }
   return { tracks: [], system: null };
 }
 
@@ -165,7 +174,7 @@ function buildSpeakingSessions(count, level, ageTrack, startTrackIdx, startLesso
 // ---------- Reading (storybooks from the `tools` table, content_type='story') ----------
 // Level-specific pool, so the offset only carries over between two
 // syllabi generated at the SAME level -- see resetOffsetsForLevel below.
-async function buildReadingSessions(count, level, startIndex) {
+async function buildReadingSessions(count, level, ageTrack, startIndex) {
   if (count === 0) return { sessions: [], endIndex: startIndex };
   const { data, error } = await supabase
     .from("tools")
@@ -186,19 +195,47 @@ async function buildReadingSessions(count, level, startIndex) {
     };
   }
 
+  // Storybooks have an age track (Kids/Teens/Adults, title case) even
+  // though the `tools` table itself doesn't store it -- prefer books that
+  // actually match this syllabus's age track, falling back to the full
+  // same-level list only if none match, rather than an empty placeholder
+  // when perfectly good same-level content exists for a different age.
+  const ageLabel = SYLLABUS_AGE_TRACKS.find((t) => t.key === ageTrack)?.label || "Teens";
+  const ageMatched = data.filter((book) => (BOOK_AGE_TRACK[book.id] || "Teens") === ageLabel);
+  const pool = ageMatched.length > 0 ? ageMatched : data;
+
   const sessions = Array.from({ length: count }, (_, i) => {
-    const book = data[(startIndex + i) % data.length];
+    const book = pool[(startIndex + i) % pool.length];
     return newSession({ title: `Read: ${book.title}`, notes: book.tagline || "", skill: "reading", source: "reading" });
   });
   return { sessions, endIndex: startIndex + count };
 }
 
 // ---------- Writing (Scrapbook Studio activity types, round robin) ----------
-function buildWritingSessions(count, startIndex) {
-  const sessions = Array.from({ length: count }, (_, i) => {
-    const activity = ACTIVITY_TYPES[(startIndex + i) % ACTIVITY_TYPES.length];
-    return newSession({ title: activity.title, notes: activity.blurb || "", skill: "writing", source: "writing" });
-  });
+// Each activity type's own item set is level-banded (cefrGroup: A1-A2 /
+// B1-B2 / C1-C2, 10 items per band), so a session doesn't just name the
+// activity type, it picks a specific level-appropriate item within it.
+function cefrGroupForLevel(level) {
+  if (level === "A1" || level === "A2") return "A1-A2";
+  if (level === "B1" || level === "B2") return "B1-B2";
+  return "C1-C2";
+}
+
+function buildWritingSessions(count, level, startIndex) {
+  const group = cefrGroupForLevel(level);
+  const sessions = [];
+  for (let i = 0; i < count; i++) {
+    const idx = startIndex + i;
+    const activity = ACTIVITY_TYPES[idx % ACTIVITY_TYPES.length];
+    const items = (activity.sets || []).filter((s) => s.cefrGroup === group);
+    const item = items.length > 0 ? items[Math.floor(idx / ACTIVITY_TYPES.length) % items.length] : null;
+    sessions.push(newSession({
+      title: item ? `${activity.title}: ${item.title}` : activity.title,
+      notes: (item && item.focus) || activity.blurb || "",
+      skill: "writing",
+      source: "writing",
+    }));
+  }
   return { sessions, endIndex: startIndex + count };
 }
 
@@ -309,10 +346,12 @@ function interleave(groups) {
 // can't sensibly continue from where they left off -- Grammar/Vocabulary/
 // Writing/Articles are level-agnostic continuous courses and DO carry
 // over.
-export function offsetsForFollowUp(parentOffsets, parentLevel, newLevel) {
+export function offsetsForFollowUp(parentOffsets, parentLevel, newLevel, ageTrack) {
   const base = parentOffsets || emptyOffsets();
   if (newLevel === parentLevel) return { ...base };
-  const { system: newSystemName } = speakingSystemForLevel(newLevel, "kids"); // ageTrack doesn't affect which system, only which tracks
+  // Ascend eligibility depends on ageTrack (adults only) as well as level,
+  // so the real ageTrack has to be passed through here, not a placeholder.
+  const { system: newSystemName } = speakingSystemForLevel(newLevel, ageTrack);
   const sameSpeakingSystem = newSystemName && newSystemName === base.speakingSystem;
   return {
     ...base,
@@ -334,9 +373,9 @@ export async function generateSyllabusSessions({ level, ageTrack, count, focusKe
 
   const grammarResult = buildGrammarSessions(counts.grammar, offsets.grammar);
   const vocabResult = buildVocabSessions(counts.vocabulary, offsets.vocabulary);
-  const writingResult = buildWritingSessions(counts.writing, offsets.writing);
+  const writingResult = buildWritingSessions(counts.writing, level, offsets.writing);
   const articlesResult = buildArticleSessions(counts.articles, offsets.articles);
-  const readingResult = await buildReadingSessions(counts.reading, level, offsets.reading);
+  const readingResult = await buildReadingSessions(counts.reading, level, ageTrack, offsets.reading);
   const speakingResult = buildSpeakingSessions(counts.speaking, level, ageTrack, offsets.speakingTrackIdx, offsets.speakingLessonIdx);
   const listeningSessions = buildListeningSessions(counts.listening);
 

@@ -519,7 +519,7 @@ const BOOK_MOTIF_COLORS = ["#E8A33D", "#16BFAE", "#7C5CFC", "#4C7FE0", "#E0637A"
 // carries CEFR level, not age. Books 1-6 are the Teens-narrator series
 // (school friends), Books 7-12 are the Adults-narrator series (office,
 // shop, health, free time, food). No Kids-track story exists yet.
-const BOOK_AGE_TRACK = {
+export const BOOK_AGE_TRACK = {
   "storybook-13": "Kids",
   "storybook-14": "Kids",
   "storybook-15": "Kids",
