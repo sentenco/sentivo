@@ -1,6 +1,7 @@
 import { supabase } from "./supabaseClient";
 import { VOCAB_LESSONS } from "./VocabularyGames";
 import { ACTIVITY_TYPES } from "./WritingActivities";
+import { ARTICLES } from "./articlesData";
 import RELAY_TRACKS from "./relayTracks";
 import ASCEND_TRACKS from "./ascendTracks";
 import SHIFT_TRACKS from "./shiftTracks";
@@ -12,16 +13,29 @@ export const SYLLABUS_AGE_TRACKS = [
   { key: "adults", label: "Adults" },
 ];
 
-export const SYLLABUS_FOCUS_PRESETS = [
-  { key: "balanced", label: "Balanced", weights: { speaking: 1, reading: 1, writing: 1 } },
-  { key: "speaking", label: "Mostly speaking", weights: { speaking: 3, reading: 1, writing: 1 } },
-  { key: "literacy", label: "Mostly reading & writing", weights: { speaking: 1, reading: 2, writing: 2 } },
+// One choice per real content category, plus Balanced. No "Mostly" prefix
+// on the labels -- picking a category as the focus already implies "mostly
+// this one." Grammar/Vocabulary can be picked as a focus too, on top of
+// their non-negotiable floor below, not instead of it.
+export const SYLLABUS_FOCUS_OPTIONS = [
+  { key: "balanced", label: "Balanced" },
+  { key: "grammar", label: "Grammar" },
+  { key: "vocabulary", label: "Vocabulary" },
+  { key: "speaking", label: "Speaking" },
+  { key: "reading", label: "Reading" },
+  { key: "writing", label: "Writing" },
+  { key: "listening", label: "Listening" },
+  { key: "articles", label: "Articles" },
 ];
 
+const FOCUS_POOL = ["grammar", "vocabulary", "speaking", "reading", "writing", "listening", "articles"];
+
 // Grammar + Vocabulary are the non-negotiable floor -- this fraction of the
-// total sessions is grammar/vocab no matter what the student prefers. It
+// total sessions is grammar/vocab no matter what focus is picked. It
 // shrinks as level rises (more foundation needed early, less later) but
 // never hits zero, even a C2 student still needs precision-level grammar.
+// Picking "Grammar" or "Vocabulary" as the focus adds MORE on top of this
+// floor, it never reduces it.
 const LEVEL_FLOOR = {
   A1: 0.55,
   A2: 0.50,
@@ -30,6 +44,12 @@ const LEVEL_FLOOR = {
   C1: 0.20,
   C2: 0.15,
 };
+
+const LEVEL_ORDER = ["A1", "A2", "B1", "B2", "C1", "C2"];
+export function nextLevel(level) {
+  const i = LEVEL_ORDER.indexOf(level);
+  return i >= 0 && i < LEVEL_ORDER.length - 1 ? LEVEL_ORDER[i + 1] : null;
+}
 
 export function newSession(overrides = {}) {
   return {
@@ -46,10 +66,16 @@ export function newSyllabusSessions() {
   return [newSession()];
 }
 
+function emptyOffsets() {
+  return { grammar: 0, vocabulary: 0, writing: 0, articles: 0, reading: 0, speakingSystem: null, speakingTrackIdx: 0, speakingLessonIdx: 0 };
+}
+
 // ---------- Grammar (Foundation modules, fixed pedagogical order) ----------
 // Mirrors the BED-numbered module list in Library.jsx's Grammar Garden --
 // foundation tier first (the 14 core modules), supplementary after, so a
 // syllabus always teaches the core grammar points before the deep cuts.
+// Not level-specific (the modules themselves span A1-C2), so this list
+// carries over unchanged across a follow-up syllabus at any level.
 const GRAMMAR_MODULES = [
   { title: "Parts of Speech", href: "/library/grammar/parts-of-speech", tier: "foundation" },
   { title: "Verb Tenses", href: "/library/grammar/verb-tenses", tier: "foundation" },
@@ -72,19 +98,21 @@ const GRAMMAR_MODULES = [
   { title: "Subject-Verb Agreement", href: "/library/grammar/subject-verb-agreement", tier: "supplementary" },
 ];
 
-function buildGrammarSessions(count) {
-  return Array.from({ length: count }, (_, i) => {
-    const mod = GRAMMAR_MODULES[i % GRAMMAR_MODULES.length];
+function buildGrammarSessions(count, startIndex) {
+  const sessions = Array.from({ length: count }, (_, i) => {
+    const mod = GRAMMAR_MODULES[(startIndex + i) % GRAMMAR_MODULES.length];
     return newSession({ title: mod.title, notes: mod.href, skill: "grammar", source: "grammar" });
   });
+  return { sessions, endIndex: startIndex + count };
 }
 
 // ---------- Vocabulary (Word Bank lessons, fixed order) ----------
-function buildVocabSessions(count) {
-  return Array.from({ length: count }, (_, i) => {
-    const lesson = VOCAB_LESSONS[i % VOCAB_LESSONS.length];
+function buildVocabSessions(count, startIndex) {
+  const sessions = Array.from({ length: count }, (_, i) => {
+    const lesson = VOCAB_LESSONS[(startIndex + i) % VOCAB_LESSONS.length];
     return newSession({ title: lesson.title, notes: lesson.blurb || "", skill: "vocabulary", source: "vocabulary" });
   });
+  return { sessions, endIndex: startIndex + count };
 }
 
 // ---------- Speaking (Relay/Shift/Ascend, picked by level) ----------
@@ -98,22 +126,23 @@ function speakingSystemForLevel(level, ageTrack) {
   return { tracks: [], system: null };
 }
 
-function buildSpeakingSessions(count, level, ageTrack) {
+function buildSpeakingSessions(count, level, ageTrack, startTrackIdx, startLessonIdx) {
   const { tracks, system } = speakingSystemForLevel(level, ageTrack);
   if (tracks.length === 0 || count === 0) {
-    return count === 0 ? [] : [newSession({
+    const sessions = Array.from({ length: count }, () => newSession({
       title: "No structured speaking track for this level yet",
       notes: "Fill in with your own speaking practice, or check Forge/Relay/Shift/Ascend directly for what's closest.",
       skill: "speaking",
       source: "placeholder",
-    })];
+    }));
+    return { sessions, system, trackIdx: startTrackIdx, lessonIdx: startLessonIdx };
   }
-  const ordered = tracks;
   const sessions = [];
-  let trackIdx = 0;
-  let lessonIdx = 0;
-  while (sessions.length < count) {
-    const track = ordered[trackIdx % ordered.length];
+  let trackIdx = startTrackIdx % tracks.length;
+  let lessonIdx = startLessonIdx;
+  let guard = 0;
+  while (sessions.length < count && guard < tracks.length * 30) {
+    const track = tracks[trackIdx];
     const lesson = track.lessons[lessonIdx];
     if (lesson) {
       sessions.push(newSession({
@@ -126,16 +155,18 @@ function buildSpeakingSessions(count, level, ageTrack) {
     lessonIdx += 1;
     if (lessonIdx >= track.lessons.length) {
       lessonIdx = 0;
-      trackIdx += 1;
+      trackIdx = (trackIdx + 1) % tracks.length;
     }
-    if (trackIdx > ordered.length * 3) break; // safety valve, avoid infinite loop on empty tracks
+    guard += 1;
   }
-  return sessions;
+  return { sessions, system, trackIdx, lessonIdx };
 }
 
 // ---------- Reading (storybooks from the `tools` table, content_type='story') ----------
-async function buildReadingSessions(count, level) {
-  if (count === 0) return [];
+// Level-specific pool, so the offset only carries over between two
+// syllabi generated at the SAME level -- see resetOffsetsForLevel below.
+async function buildReadingSessions(count, level, startIndex) {
+  if (count === 0) return { sessions: [], endIndex: startIndex };
   const { data, error } = await supabase
     .from("tools")
     .select("id, title, level, tagline, content_type, category")
@@ -144,26 +175,106 @@ async function buildReadingSessions(count, level) {
     .eq("level", level);
 
   if (error || !data || data.length === 0) {
-    return [newSession({
-      title: "No storybooks found at this level yet",
-      notes: "Pick a title from the Reading library manually.",
-      skill: "reading",
-      source: "placeholder",
-    })];
+    return {
+      sessions: Array.from({ length: count }, () => newSession({
+        title: "No storybooks found at this level yet",
+        notes: "Pick a title from the Reading library manually.",
+        skill: "reading",
+        source: "placeholder",
+      })),
+      endIndex: startIndex,
+    };
   }
 
-  return Array.from({ length: count }, (_, i) => {
-    const book = data[i % data.length];
+  const sessions = Array.from({ length: count }, (_, i) => {
+    const book = data[(startIndex + i) % data.length];
     return newSession({ title: `Read: ${book.title}`, notes: book.tagline || "", skill: "reading", source: "reading" });
   });
+  return { sessions, endIndex: startIndex + count };
 }
 
 // ---------- Writing (Scrapbook Studio activity types, round robin) ----------
-function buildWritingSessions(count) {
-  return Array.from({ length: count }, (_, i) => {
-    const activity = ACTIVITY_TYPES[i % ACTIVITY_TYPES.length];
+function buildWritingSessions(count, startIndex) {
+  const sessions = Array.from({ length: count }, (_, i) => {
+    const activity = ACTIVITY_TYPES[(startIndex + i) % ACTIVITY_TYPES.length];
     return newSession({ title: activity.title, notes: activity.blurb || "", skill: "writing", source: "writing" });
   });
+  return { sessions, endIndex: startIndex + count };
+}
+
+// ---------- Articles (Sentivo Gazette, chronological order) ----------
+// Not level-specific -- each article has its own Plain/Polished/Precise
+// editions, so the syllabus just names the article and the teacher picks
+// the right edition when they actually run the session.
+function buildArticleSessions(count, startIndex) {
+  const sessions = Array.from({ length: count }, (_, i) => {
+    const article = ARTICLES[(startIndex + i) % ARTICLES.length];
+    return newSession({ title: `Article: ${article.title}`, notes: article.dek || "", skill: "articles", source: "articles" });
+  });
+  return { sessions, endIndex: startIndex + count };
+}
+
+// ---------- Listening ----------
+// No Listening content exists in the app yet (as of 2026-08-25), so this
+// always returns honest placeholders rather than pretending. Revisit once
+// a real Listening pack ships.
+function buildListeningSessions(count) {
+  if (count === 0) return [];
+  return Array.from({ length: count }, () => newSession({
+    title: "No Listening content built yet",
+    notes: "Fill in with your own listening practice for now.",
+    skill: "listening",
+    source: "placeholder",
+  }));
+}
+
+function computeCounts(count, level, focusKey) {
+  const floorPct = LEVEL_FLOOR[level] ?? 0.35;
+  const floorTotal = Math.round(count * floorPct);
+  const floorGrammar = Math.ceil(floorTotal * 0.6);
+  const floorVocab = Math.max(0, floorTotal - floorGrammar);
+  const remainder = Math.max(0, count - floorGrammar - floorVocab);
+
+  const weights = {};
+  if (FOCUS_POOL.includes(focusKey)) {
+    FOCUS_POOL.forEach((k) => { weights[k] = k === focusKey ? 4 : 1; });
+  } else {
+    // balanced: grammar/vocabulary already have their floor, no extra share
+    FOCUS_POOL.forEach((k) => { weights[k] = (k === "grammar" || k === "vocabulary") ? 0 : 1; });
+  }
+  const weightSum = FOCUS_POOL.reduce((s, k) => s + weights[k], 0) || 1;
+
+  // Process highest-weight categories first, so the focused category
+  // always gets its full rounded share -- otherwise several low-weight
+  // categories each rounding 0.5 up to 1 could consume the whole budget
+  // before the actual focus (processed last in a fixed order) got a turn,
+  // leaving it at zero despite having the highest weight.
+  const processOrder = [...FOCUS_POOL].sort((a, b) => weights[b] - weights[a]);
+  const remainderCounts = {};
+  let allocated = 0;
+  processOrder.forEach((k, i) => {
+    if (i === processOrder.length - 1) {
+      remainderCounts[k] = Math.max(0, remainder - allocated);
+    } else {
+      // Clamp each share so independent rounding can't push the running
+      // total past `remainder` -- otherwise several 0.5-rounds-up shares
+      // can each round up and the total overshoots the requested count.
+      const raw = Math.round((remainder * weights[k]) / weightSum);
+      const c = Math.max(0, Math.min(raw, remainder - allocated));
+      remainderCounts[k] = c;
+      allocated += c;
+    }
+  });
+
+  return {
+    grammar: floorGrammar + remainderCounts.grammar,
+    vocabulary: floorVocab + remainderCounts.vocabulary,
+    speaking: remainderCounts.speaking,
+    reading: remainderCounts.reading,
+    writing: remainderCounts.writing,
+    listening: remainderCounts.listening,
+    articles: remainderCounts.articles,
+  };
 }
 
 // Evenly interleaves session groups by skill so the syllabus rotates
@@ -171,7 +282,7 @@ function buildWritingSessions(count) {
 // frequent skill first so it sets the base rhythm and rarer skills slot
 // into the remaining gaps.
 function interleave(groups) {
-  const order = ["grammar", "vocabulary", "speaking", "reading", "writing"];
+  const order = ["grammar", "vocabulary", "speaking", "reading", "writing", "articles", "listening"];
   const total = order.reduce((sum, key) => sum + (groups[key]?.length || 0), 0);
   const result = new Array(total).fill(null);
   const filled = new Array(total).fill(false);
@@ -193,36 +304,64 @@ function interleave(groups) {
   return result.filter(Boolean);
 }
 
+// If the level changes between a syllabus and its follow-up, the
+// level-specific pools (Reading's storybooks, Speaking's track system)
+// can't sensibly continue from where they left off -- Grammar/Vocabulary/
+// Writing/Articles are level-agnostic continuous courses and DO carry
+// over.
+export function offsetsForFollowUp(parentOffsets, parentLevel, newLevel) {
+  const base = parentOffsets || emptyOffsets();
+  if (newLevel === parentLevel) return { ...base };
+  const { system: newSystemName } = speakingSystemForLevel(newLevel, "kids"); // ageTrack doesn't affect which system, only which tracks
+  const sameSpeakingSystem = newSystemName && newSystemName === base.speakingSystem;
+  return {
+    ...base,
+    reading: 0,
+    speakingTrackIdx: sameSpeakingSystem ? base.speakingTrackIdx : 0,
+    speakingLessonIdx: sameSpeakingSystem ? base.speakingLessonIdx : 0,
+    speakingSystem: sameSpeakingSystem ? base.speakingSystem : null,
+  };
+}
+
 // The one place the generator talks to content. Given level + age track +
-// a total session count + a skill-focus preset, this returns a full
-// ordered session list: grammar/vocab at a fixed level-driven floor
-// (non-negotiable), the remainder split across speaking/reading/writing
-// by the chosen focus preset (this preset IS the "lesson preference" --
-// e.g. "mostly speaking" -- there's no separate topic-interest layer).
-export async function generateSyllabusSessions({ level, ageTrack, count, focusKey = "balanced" }) {
-  const floorPct = LEVEL_FLOOR[level] ?? 0.35;
-  const floorTotal = Math.round(count * floorPct);
-  const grammarCount = Math.ceil(floorTotal * 0.6);
-  const vocabCount = Math.max(0, floorTotal - grammarCount);
-  const remainder = Math.max(0, count - grammarCount - vocabCount);
+// a total session count + a focus category (one of SYLLABUS_FOCUS_OPTIONS)
+// + starting offsets (for a follow-up syllabus, so it continues instead of
+// repeating), returns the ordered session list plus the offsets to store
+// for whatever follow-up comes after THIS one.
+export async function generateSyllabusSessions({ level, ageTrack, count, focusKey = "balanced", startOffsets = null }) {
+  const offsets = startOffsets || emptyOffsets();
+  const counts = computeCounts(count, level, focusKey);
 
-  const preset = SYLLABUS_FOCUS_PRESETS.find((p) => p.key === focusKey) || SYLLABUS_FOCUS_PRESETS[0];
-  const weightSum = preset.weights.speaking + preset.weights.reading + preset.weights.writing;
-  const speakingCount = Math.round((remainder * preset.weights.speaking) / weightSum);
-  const readingCount = Math.round((remainder * preset.weights.reading) / weightSum);
-  const writingCount = Math.max(0, remainder - speakingCount - readingCount);
-
-  const readingSessions = await buildReadingSessions(readingCount, level);
+  const grammarResult = buildGrammarSessions(counts.grammar, offsets.grammar);
+  const vocabResult = buildVocabSessions(counts.vocabulary, offsets.vocabulary);
+  const writingResult = buildWritingSessions(counts.writing, offsets.writing);
+  const articlesResult = buildArticleSessions(counts.articles, offsets.articles);
+  const readingResult = await buildReadingSessions(counts.reading, level, offsets.reading);
+  const speakingResult = buildSpeakingSessions(counts.speaking, level, ageTrack, offsets.speakingTrackIdx, offsets.speakingLessonIdx);
+  const listeningSessions = buildListeningSessions(counts.listening);
 
   const groups = {
-    grammar: buildGrammarSessions(grammarCount),
-    vocabulary: buildVocabSessions(vocabCount),
-    speaking: buildSpeakingSessions(speakingCount, level, ageTrack),
-    reading: readingSessions,
-    writing: buildWritingSessions(writingCount),
+    grammar: grammarResult.sessions,
+    vocabulary: vocabResult.sessions,
+    speaking: speakingResult.sessions,
+    reading: readingResult.sessions,
+    writing: writingResult.sessions,
+    articles: articlesResult.sessions,
+    listening: listeningSessions,
   };
 
-  return interleave(groups);
+  const endOffsets = {
+    grammar: grammarResult.endIndex,
+    vocabulary: vocabResult.endIndex,
+    writing: writingResult.endIndex,
+    articles: articlesResult.endIndex,
+    reading: readingResult.endIndex,
+    speakingSystem: speakingResult.system,
+    speakingTrackIdx: speakingResult.trackIdx,
+    speakingLessonIdx: speakingResult.lessonIdx,
+  };
+
+  return { sessions: interleave(groups), offsets: endOffsets };
 }
 
 export function timeAgo(iso) {

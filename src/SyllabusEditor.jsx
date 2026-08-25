@@ -5,9 +5,11 @@ import { useAuth } from "./AuthContext";
 import {
   SYLLABUS_LEVELS,
   SYLLABUS_AGE_TRACKS,
-  SYLLABUS_FOCUS_PRESETS,
+  SYLLABUS_FOCUS_OPTIONS,
   newSession,
   generateSyllabusSessions,
+  offsetsForFollowUp,
+  nextLevel,
 } from "./syllabusTypes";
 import ConfirmDialog from "./ConfirmDialog";
 
@@ -17,6 +19,8 @@ const SKILL_LABELS = {
   speaking: "Speaking",
   reading: "Reading",
   writing: "Writing",
+  articles: "Articles",
+  listening: "Listening",
 };
 
 export default function SyllabusEditor() {
@@ -30,6 +34,7 @@ export default function SyllabusEditor() {
   const [level, setLevel] = useState("A1");
   const [ageTrack, setAgeTrack] = useState("kids");
   const [sessions, setSessions] = useState([]);
+  const [offsets, setOffsets] = useState({});
   const [saving, setSaving] = useState(false);
   const [savedAt, setSavedAt] = useState(null);
 
@@ -39,6 +44,10 @@ export default function SyllabusEditor() {
   const [genPanelOpen, setGenPanelOpen] = useState(false);
   const [confirmRegenerate, setConfirmRegenerate] = useState(false);
 
+  const [followUpPanelOpen, setFollowUpPanelOpen] = useState(false);
+  const [followUpLevel, setFollowUpLevel] = useState(level);
+  const [followingUp, setFollowingUp] = useState(false);
+
   useEffect(() => {
     if (!user) return;
     let isMounted = true;
@@ -46,7 +55,7 @@ export default function SyllabusEditor() {
       setLoading(true);
       const { data, error } = await supabase
         .from("syllabi")
-        .select("id, title, level, age_track, sessions")
+        .select("id, title, level, age_track, sessions, offsets")
         .eq("id", id)
         .eq("user_id", user.id)
         .maybeSingle();
@@ -56,8 +65,10 @@ export default function SyllabusEditor() {
       } else {
         setTitle(data.title || "Untitled syllabus");
         setLevel(data.level || "A1");
+        setFollowUpLevel(data.level || "A1");
         setAgeTrack(data.age_track || "kids");
         setSessions(data.sessions && data.sessions.length > 0 ? data.sessions : [newSession()]);
+        setOffsets(data.offsets || {});
       }
       setLoading(false);
     }
@@ -70,7 +81,7 @@ export default function SyllabusEditor() {
     setSaving(true);
     const { error } = await supabase
       .from("syllabi")
-      .update({ title, level, age_track: ageTrack, sessions, updated_at: new Date().toISOString() })
+      .update({ title, level, age_track: ageTrack, sessions, offsets, updated_at: new Date().toISOString() })
       .eq("id", id)
       .eq("user_id", user.id);
     setSaving(false);
@@ -79,7 +90,7 @@ export default function SyllabusEditor() {
 
   async function runGenerate() {
     setGenerating(true);
-    const generated = await generateSyllabusSessions({
+    const result = await generateSyllabusSessions({
       level,
       ageTrack,
       count: genCount,
@@ -87,11 +98,12 @@ export default function SyllabusEditor() {
     });
     setGenerating(false);
     setGenPanelOpen(false);
-    if (generated.length === 0) {
+    if (result.sessions.length === 0) {
       window.alert(`Couldn't generate anything for ${level} ${ageTrack}. Add sessions manually below instead.`);
       return;
     }
-    setSessions(generated);
+    setSessions(result.sessions);
+    setOffsets(result.offsets);
   }
 
   function handleGenerateClick() {
@@ -101,6 +113,34 @@ export default function SyllabusEditor() {
     } else {
       runGenerate();
     }
+  }
+
+  async function createFollowUp() {
+    if (!user || followingUp) return;
+    setFollowingUp(true);
+    const startOffsets = offsetsForFollowUp(offsets, level, followUpLevel);
+    const result = await generateSyllabusSessions({
+      level: followUpLevel,
+      ageTrack,
+      count: sessions.length || 10,
+      focusKey: genFocus,
+      startOffsets,
+    });
+    const { data, error } = await supabase
+      .from("syllabi")
+      .insert({
+        user_id: user.id,
+        title: `${title} (follow-up)`,
+        level: followUpLevel,
+        age_track: ageTrack,
+        sessions: result.sessions,
+        offsets: result.offsets,
+      })
+      .select()
+      .single();
+    setFollowingUp(false);
+    setFollowUpPanelOpen(false);
+    if (!error && data) navigate(`/library/syllabus/${data.id}/edit`);
   }
 
   function updateSession(sid, field, value) {
@@ -129,6 +169,8 @@ export default function SyllabusEditor() {
   if (!user) return <p className="syl-signin">Sign in to edit this syllabus.</p>;
   if (notFound) return <p className="syl-signin">Syllabus not found.</p>;
 
+  const higherLevel = nextLevel(level);
+
   return (
     <div className="syl-shell">
       <style>{CSS}</style>
@@ -139,10 +181,27 @@ export default function SyllabusEditor() {
         </button>
         <div className="syl-topbar-actions">
           <span className="syl-saved-note">{saving ? "Saving…" : savedAt ? "Saved" : ""}</span>
+          <button type="button" className="syl-btn syl-btn--ghost" onClick={() => setFollowUpPanelOpen((o) => !o)}>Generate follow-up</button>
           <button type="button" className="syl-btn syl-btn--ghost" onClick={() => window.print()}>Print</button>
           <button type="button" className="syl-btn syl-btn--primary" onClick={save} disabled={saving}>Save</button>
         </div>
       </div>
+
+      {followUpPanelOpen && (
+        <div className="syl-followup-bar no-print">
+          <span className="syl-followup-label">Continue at</span>
+          <select className="syl-select" value={followUpLevel} onChange={(e) => setFollowUpLevel(e.target.value)}>
+            <option value={level}>{level} (same level)</option>
+            {higherLevel && <option value={higherLevel}>{higherLevel} (level up)</option>}
+          </select>
+          <button type="button" className="syl-btn syl-btn--primary" onClick={createFollowUp} disabled={followingUp}>
+            {followingUp ? "Creating…" : "Create follow-up syllabus"}
+          </button>
+          <p className="syl-followup-hint">
+            Picks up where this syllabus's Grammar, Vocabulary, Writing, and Articles left off. Speaking and Reading restart if the level changes, since their content is level-specific.
+          </p>
+        </div>
+      )}
 
       <div className="syl-page">
         <div className="syl-stage">
@@ -153,7 +212,7 @@ export default function SyllabusEditor() {
             placeholder="Untitled syllabus"
           />
           <div className="syl-meta-row no-print">
-            <select className="syl-select" value={level} onChange={(e) => setLevel(e.target.value)}>
+            <select className="syl-select" value={level} onChange={(e) => { setLevel(e.target.value); setFollowUpLevel(e.target.value); }}>
               {SYLLABUS_LEVELS.map((lv) => <option key={lv} value={lv}>{lv}</option>)}
             </select>
             <select className="syl-select" value={ageTrack} onChange={(e) => setAgeTrack(e.target.value)}>
@@ -181,14 +240,14 @@ export default function SyllabusEditor() {
               <label className="syl-gen-label">
                 Focus
                 <select className="syl-select" value={genFocus} onChange={(e) => setGenFocus(e.target.value)}>
-                  {SYLLABUS_FOCUS_PRESETS.map((p) => <option key={p.key} value={p.key}>{p.label}</option>)}
+                  {SYLLABUS_FOCUS_OPTIONS.map((p) => <option key={p.key} value={p.key}>{p.label}</option>)}
                 </select>
               </label>
               <button type="button" className="syl-btn syl-btn--primary" onClick={handleGenerateClick} disabled={generating}>
                 {generating ? "Generating…" : "Generate draft"}
               </button>
               <p className="syl-gen-hint">
-                Grammar and vocabulary are always included at a level-appropriate baseline. The rest follows the focus you pick above. Replaces the current session list below.
+                Grammar and vocabulary are always included at a level-appropriate baseline, on top of whatever focus you pick. Replaces the current session list below.
               </p>
             </div>
           )}
@@ -264,6 +323,13 @@ const CSS = `
 .syl-btn--primary:disabled { opacity: 0.6; cursor: default; }
 .syl-btn--ghost { background: #F4F2FC; color: #6B5CE0; border: 1.5px solid #E5E0F7; }
 
+.syl-followup-bar {
+  max-width: 760px; margin: 20px auto 0; background: #EFEBFB; border-radius: 14px; padding: 16px 20px;
+  display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+}
+.syl-followup-label { font-size: 13px; font-weight: 800; color: #2B2650; }
+.syl-followup-hint { flex-basis: 100%; font-size: 12px; color: #6B639C; margin: 0; }
+
 .syl-page { padding: 28px 20px 60px; }
 .syl-stage { max-width: 760px; margin: 0 auto; background: #FFFFFF; border-radius: 20px; padding: 34px 32px; box-shadow: 0 10px 30px rgba(43,38,80,0.08); }
 
@@ -309,6 +375,8 @@ const CSS = `
 .syl-skill-tag--speaking { background: #FDF1DE; color: #B0791F; }
 .syl-skill-tag--reading { background: #E4F6EE; color: #1F8A5B; }
 .syl-skill-tag--writing { background: #EFEBFB; color: #6B5CE0; }
+.syl-skill-tag--articles { background: #E9F3FB; color: #1F6FB0; }
+.syl-skill-tag--listening { background: #F4EDE3; color: #8A5A2A; }
 .syl-session-title, .syl-session-notes {
   border: none; outline: none; background: transparent; font-family: 'IBM Plex Sans', sans-serif; width: 100%; padding: 2px 0;
 }
