@@ -706,11 +706,7 @@ function BookshelfFeature({ items, navigate, query }) {
       <div className="bkshf-masthead">
         <span className="bkshf-eyebrow">Sentivo · Reading</span>
         <h1 className="bkshf-nameplate">Library</h1>
-        <div className="bkshf-ornament">
-          <span className="bkshf-ornament-line" />
-          <span className="bkshf-ornament-dot" />
-          <span className="bkshf-ornament-line" />
-        </div>
+        <p className="bkshf-tagline">Pick a level, grab a book, start the quest.</p>
       </div>
 
       {!isSearching && (
@@ -734,7 +730,7 @@ function BookshelfFeature({ items, navigate, query }) {
         <div className="bkshf-empty">
           <span className="bkshf-empty-icon">📚</span>
           <p className="bkshf-empty-title">{isSearching ? `No stories match "${query.trim()}"` : `No ${level} stories yet`}</p>
-          <p className="bkshf-empty-desc">{isSearching ? "Try a different search term." : "Check back soon -- more levels are on the way."}</p>
+          <p className="bkshf-empty-desc">{isSearching ? "Try a different search term." : "Check back soon, more levels are on the way."}</p>
         </div>
       ) : (
         <div className="bkshf-shelves">
@@ -2940,87 +2936,101 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 }
 .gdn-supp-pager-dot.is-active { background: var(--leaf); color: #FFFFFF; }
 
-/* ---------- Reading: Bookshelf ---------- */
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600;1,700&family=DM+Sans:wght@500;700&display=swap');
+/* ---------- Reading: Bookshelf (Adventure Trail theme) ---------- */
+@import url('https://fonts.googleapis.com/css2?family=Lilita+One&family=Nunito:wght@600;700;800&display=swap');
 
 .bkshf-page {
   width: 100%;
   max-width: 1320px;
   margin: -10px auto 0;
-  background: radial-gradient(120% 100% at 50% -12%, #FEFDFA 0%, #F9F6EE 55%, #F3EEE1 100%);
-  border-radius: 22px;
+  background: linear-gradient(165deg, #FFE3B3 0%, #BFE6F2 100%);
+  background-image:
+    radial-gradient(circle, rgba(255,255,255,0.5) 1.5px, transparent 1.5px),
+    linear-gradient(165deg, #FFE3B3 0%, #BFE6F2 100%);
+  background-size: 26px 26px, 100% 100%;
+  border-radius: 26px;
   padding: clamp(26px, 3.6vw, 48px) clamp(20px, 3.2vw, 40px) clamp(30px, 4vw, 52px);
 }
 .bkshf-masthead { text-align: center; }
 .bkshf-eyebrow {
-  display: block;
-  font-family: 'DM Sans', sans-serif;
-  font-weight: 700;
+  display: inline-block;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 800;
   font-size: clamp(10.5px, 0.9vw, 11px);
-  letter-spacing: 0.16em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: #8A7457;
-  margin-bottom: 12px;
+  color: #FFFFFF;
+  background: #14B8A6;
+  border-radius: 999px;
+  padding: 5px 14px;
+  margin-bottom: 16px;
 }
 .bkshf-nameplate {
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
-  font-weight: 700;
+  font-family: 'Lilita One', cursive;
+  font-weight: 400;
   font-size: clamp(40px, 4.6vw, 56px);
   letter-spacing: 0.01em;
-  color: #2A1D12;
+  color: #1F3A5F;
   margin: 0;
-  line-height: 1.05;
+  line-height: 1;
+  text-shadow: 3px 3px 0 #FF6B5B;
+  -webkit-text-stroke: 1.5px #1F3A5F;
 }
-.bkshf-ornament { display: flex; align-items: center; justify-content: center; gap: 10px; margin: 14px 0 0; }
-.bkshf-ornament-line { width: 46px; height: 1px; background: linear-gradient(90deg, transparent, #6E2A34); }
-.bkshf-ornament-line:last-child { background: linear-gradient(90deg, #6E2A34, transparent); }
-.bkshf-ornament-dot { width: 5px; height: 5px; border-radius: 50%; background: #6E2A34; }
-
-.bkshf-row { position: relative; height: 1px; background: rgba(110,42,52,0.16); margin: clamp(26px, 3vw, 36px) 0; }
-.bkshf-row::before, .bkshf-row::after { content: ""; position: absolute; top: -2.5px; width: 6px; height: 6px; border-radius: 50%; background: rgba(110,42,52,0.32); }
-.bkshf-row::before { left: 0; }
-.bkshf-row::after { right: 0; }
-
-.bkshf-level-tabs { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; margin-top: clamp(18px, 2.4vw, 26px); }
-.bkshf-level-tab {
-  font-family: 'DM Sans', sans-serif;
+.bkshf-tagline {
+  font-family: 'Nunito', sans-serif;
   font-weight: 700;
-  font-size: 13px;
-  letter-spacing: 0.03em;
-  color: #6E2A34;
-  background: #FFFFFF;
-  border: 1.5px solid rgba(110,42,52,0.18);
-  border-radius: 999px;
-  padding: 7px 18px;
+  font-size: 14px;
+  color: #4E7099;
+  margin: 14px 0 0;
+}
+
+.bkshf-row {
+  position: relative;
+  height: 3px;
+  background: repeating-linear-gradient(90deg, #4E7099 0, #4E7099 8px, transparent 8px, transparent 16px);
+  opacity: 0.5;
+  margin: clamp(26px, 3vw, 36px) 0;
+}
+
+.bkshf-level-tabs { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-top: clamp(18px, 2.4vw, 26px); }
+.bkshf-level-tab {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 800;
+  font-size: 13.5px;
+  color: #1F3A5F;
+  background: #FFFDF8;
+  border: 2.5px solid transparent;
+  border-radius: 14px;
+  padding: 9px 18px 9px 32px;
   cursor: pointer;
+  position: relative;
+  box-shadow: 0 4px 0 rgba(0,0,0,0.08);
   transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
-.bkshf-level-tab:hover { transform: translateY(-1px); box-shadow: 0 3px 8px rgba(110,42,52,0.14); }
-.bkshf-level-tab.is-active { background: #6E2A34; border-color: #6E2A34; color: #FFF6E6; box-shadow: 0 4px 12px rgba(110,42,52,0.28); }
+.bkshf-level-tab::before { content: "⭐"; position: absolute; left: 12px; font-size: 12px; }
+.bkshf-level-tab:hover { transform: translateY(-1px); }
+.bkshf-level-tab.is-active { background: #F0B429; border-color: #C98F0E; box-shadow: 0 4px 0 rgba(0,0,0,0.14); }
 
 .bkshf-empty { text-align: center; padding: 40px 20px 20px; }
 .bkshf-empty-icon { font-size: 34px; display: block; margin-bottom: 10px; }
-.bkshf-empty-title { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 700; font-size: 21px; color: #2A1D12; margin: 0 0 4px; }
-.bkshf-empty-desc { font-family: 'DM Sans', sans-serif; font-size: 14px; color: #8A7457; margin: 0; }
+.bkshf-empty-title { font-family: 'Lilita One', cursive; font-weight: 400; font-size: 24px; color: #1F3A5F; margin: 0 0 4px; }
+.bkshf-empty-desc { font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 14px; color: #4E7099; margin: 0; }
 
 .bkshf-age-group { margin-bottom: clamp(20px, 2.6vw, 30px); }
 .bkshf-age-group:last-child { margin-bottom: 0; }
 .bkshf-age-label {
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
-  font-weight: 700;
-  font-size: clamp(20px, 1.8vw, 24px);
-  color: #2A1D12;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 800;
+  font-size: clamp(15px, 1.4vw, 16px);
+  color: #FFFFFF;
+  background: #FF6B5B;
   text-align: center;
-  margin-bottom: 16px;
-  padding-bottom: 8px;
-  border-bottom: 1px solid rgba(110,42,52,0.22);
+  margin-bottom: 18px;
+  border-radius: 999px;
   width: fit-content;
   margin-left: auto;
   margin-right: auto;
-  padding-left: 6px;
-  padding-right: 6px;
+  padding: 7px 22px;
 }
 
 .bkshf-shelves { padding: 0; }
@@ -3031,15 +3041,18 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   flex: 0 0 auto;
   width: clamp(110px, 19vw, 190px);
   aspect-ratio: 2 / 3;
-  border-radius: 4px 7px 7px 4px;
+  border-radius: 8px;
   overflow: hidden;
   display: block;
   text-decoration: none;
   box-shadow: 0 8px 16px rgba(42,29,18,0.16);
   cursor: pointer;
+  transform: rotate(var(--tilt, 0deg));
   transition: transform 0.2s cubic-bezier(.2,.8,.2,1), box-shadow 0.2s ease;
 }
-.bkshf-book:hover { transform: translateY(-5px); box-shadow: 0 14px 24px rgba(42,29,18,0.24); }
+.bkshf-shelf-row .bkshf-book:nth-child(4n+1) { --tilt: -2deg; }
+.bkshf-shelf-row .bkshf-book:nth-child(4n+3) { --tilt: 2deg; }
+.bkshf-book:hover { transform: translateY(-5px) rotate(var(--tilt, 0deg)); box-shadow: 0 14px 24px rgba(42,29,18,0.24); }
 .bkshf-book-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 .bkshf-book-scrim { position: absolute; inset: 0; background: linear-gradient(0deg, rgba(24,15,8,0.72) 0%, rgba(24,15,8,0) 55%); }
 .bkshf-book-flat {
@@ -3053,9 +3066,8 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .bkshf-ribbon { position: absolute; top: 0; right: 14px; width: 11px; height: 20px; z-index: 1; clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 76%, 0 100%); opacity: 0.85; }
 .bkshf-book-title {
   position: relative; z-index: 1;
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
-  font-weight: 600;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 800;
   font-size: clamp(13px, 1.25vw, 15.5px);
   margin: 0;
   color: #2A1D12;
