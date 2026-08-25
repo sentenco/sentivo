@@ -1,8 +1,16 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import TRACKS from "./shiftTracks";
 
+const AUDIENCES = [
+  { key: "teens", label: "Teens" },
+  { key: "adults", label: "Adults" },
+];
+
 export default function ShiftHub() {
   const navigate = useNavigate();
+  const [audience, setAudience] = useState("teens");
+  const tracks = TRACKS.filter((t) => t.audience.includes(audience));
 
   return (
     <div className="shh-shell">
@@ -23,13 +31,26 @@ export default function ShiftHub() {
 
         <div className="shh-dot-lane"></div>
 
+        <div className="shh-audience-tabs">
+          {AUDIENCES.map((a) => (
+            <button
+              key={a.key}
+              type="button"
+              className={`shh-audience-tab ${audience === a.key ? "is-active" : ""}`}
+              onClick={() => setAudience(a.key)}
+            >
+              {a.label}
+            </button>
+          ))}
+        </div>
+
         <div className="shh-tracks-grid">
-          {TRACKS.map((track) => {
+          {tracks.map((track) => {
             const authored = track.lessons.filter(Boolean).length;
             return (
               <a key={track.id} href={`/library/shift/${track.id}`} className="shh-track-card">
                 <div className="shh-track-ribbon">
-                  <span className="shh-track-num">Track {String(TRACKS.indexOf(track) + 1).padStart(2, "0")}</span>
+                  <span className="shh-track-num">Track {String(tracks.indexOf(track) + 1).padStart(2, "0")}</span>
                   <span className="shh-track-level-pill">{track.level}</span>
                 </div>
                 <div className="shh-track-body">
@@ -140,6 +161,22 @@ const CSS = `
 }
 .shh-dot-lane::before { left: 0; }
 .shh-dot-lane::after { right: 0; }
+
+.shh-audience-tabs { display: flex; justify-content: center; gap: 8px; margin-bottom: 32px; }
+.shh-audience-tab {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 700;
+  font-size: 13.5px;
+  color: #10646B;
+  background: #FFFFFF;
+  border: 1.5px solid #F5D98A;
+  border-radius: 999px;
+  padding: 8px 20px;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+.shh-audience-tab:hover { border-color: #E8B400; }
+.shh-audience-tab.is-active { background: #E8B400; border-color: #E8B400; color: #FFFFFF; }
 
 .shh-tracks-grid {
   display: grid;
