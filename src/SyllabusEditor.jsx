@@ -23,6 +23,16 @@ const SKILL_LABELS = {
   listening: "Listening",
 };
 
+const SKILL_COLORS = {
+  grammar: "#3550B0",
+  vocabulary: "#B0355C",
+  speaking: "#B0791F",
+  reading: "#1F8A5B",
+  writing: "#6B5CE0",
+  articles: "#1F6FB0",
+  listening: "#8A5A2A",
+};
+
 export default function SyllabusEditor() {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -175,17 +185,36 @@ export default function SyllabusEditor() {
     <div className="syl-shell">
       <style>{CSS}</style>
 
-      <div className="syl-topbar no-print">
-        <button type="button" className="syl-brand" onClick={() => navigate("/library/syllabus")} title="Back to your syllabi">
-          <img src="/logo-sentivo.png" alt="" className="syl-brand-logo" />entivo
-        </button>
-        <div className="syl-topbar-actions">
-          <span className="syl-saved-note">{saving ? "Saving…" : savedAt ? "Saved" : ""}</span>
-          <button type="button" className="syl-btn syl-btn--ghost" onClick={() => setFollowUpPanelOpen((o) => !o)}>Generate follow-up</button>
-          <button type="button" className="syl-btn syl-btn--ghost" onClick={() => window.print()}>Print</button>
-          <button type="button" className="syl-btn syl-btn--primary" onClick={save} disabled={saving}>Save</button>
+      <div className="syl-header no-print">
+        <div className="syl-topbar">
+          <button type="button" className="syl-brand" onClick={() => navigate("/library/syllabus")} title="Back to your syllabi">
+            <img src="/logo-sentivo.png" alt="" className="syl-brand-logo" />entivo
+          </button>
+          <div className="syl-topbar-actions">
+            <span className="syl-saved-note">{saving ? "Saving…" : savedAt ? "Saved" : ""}</span>
+            <button type="button" className="syl-btn syl-btn--ghost-dark" onClick={() => setFollowUpPanelOpen((o) => !o)}>Generate follow-up</button>
+            <button type="button" className="syl-btn syl-btn--ghost-dark" onClick={() => window.print()}>Print</button>
+            <button type="button" className="syl-btn syl-btn--primary" onClick={save} disabled={saving}>Save</button>
+          </div>
+        </div>
+
+        <input
+          className="syl-title-input"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          placeholder="Untitled syllabus"
+        />
+        <div className="syl-meta-row">
+          <select className="syl-pill-select" value={level} onChange={(e) => { setLevel(e.target.value); setFollowUpLevel(e.target.value); }}>
+            {SYLLABUS_LEVELS.map((lv) => <option key={lv} value={lv}>{lv}</option>)}
+          </select>
+          <select className="syl-pill-select" value={ageTrack} onChange={(e) => setAgeTrack(e.target.value)}>
+            {SYLLABUS_AGE_TRACKS.map((t) => <option key={t.key} value={t.key}>{t.label}</option>)}
+          </select>
+          <span className="syl-pill-static">{sessions.length} {sessions.length === 1 ? "session" : "sessions"}</span>
         </div>
       </div>
+      <div className="syl-meta-print print-only">{title} — {level} · {SYLLABUS_AGE_TRACKS.find((t) => t.key === ageTrack)?.label}</div>
 
       {followUpPanelOpen && (
         <div className="syl-followup-bar no-print">
@@ -205,24 +234,11 @@ export default function SyllabusEditor() {
 
       <div className="syl-page">
         <div className="syl-stage">
-          <input
-            className="syl-title-input"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            placeholder="Untitled syllabus"
-          />
-          <div className="syl-meta-row no-print">
-            <select className="syl-select" value={level} onChange={(e) => { setLevel(e.target.value); setFollowUpLevel(e.target.value); }}>
-              {SYLLABUS_LEVELS.map((lv) => <option key={lv} value={lv}>{lv}</option>)}
-            </select>
-            <select className="syl-select" value={ageTrack} onChange={(e) => setAgeTrack(e.target.value)}>
-              {SYLLABUS_AGE_TRACKS.map((t) => <option key={t.key} value={t.key}>{t.label}</option>)}
-            </select>
+          <div className="syl-toolbar no-print">
             <button type="button" className="syl-btn syl-btn--ghost" onClick={() => setGenPanelOpen((o) => !o)}>
               Generate from curriculum
             </button>
           </div>
-          <div className="syl-meta-print print-only">{level} · {SYLLABUS_AGE_TRACKS.find((t) => t.key === ageTrack)?.label}</div>
 
           {genPanelOpen && (
             <div className="syl-gen-panel no-print">
@@ -252,11 +268,11 @@ export default function SyllabusEditor() {
             </div>
           )}
 
-          <div className="syl-sessions">
+          <div className="syl-timeline">
             {sessions.map((s, i) => (
-              <div className="syl-session-row" key={s.id}>
-                <span className="syl-session-num">{i + 1}</span>
-                <div className="syl-session-body">
+              <div className="syl-t-row" key={s.id}>
+                <span className="syl-t-dot" style={{ background: SKILL_COLORS[s.skill] || "#5A6B92" }}>{i + 1}</span>
+                <div className="syl-t-body">
                   {s.skill && s.skill !== "custom" && (
                     <span className={`syl-skill-tag syl-skill-tag--${s.skill}`}>{SKILL_LABELS[s.skill] || s.skill}</span>
                   )}
@@ -299,76 +315,81 @@ export default function SyllabusEditor() {
 }
 
 const CSS = `
-@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=IBM+Plex+Sans:wght@500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&display=swap');
 
-.syl-shell { min-height: 100vh; background: #F4F2FC; font-family: 'IBM Plex Sans', sans-serif; color: #2B2650; }
+.syl-shell { min-height: 100vh; background: #FBF4F1; font-family: 'Inter', sans-serif; color: #1B2A4A; }
 .syl-shell * { box-sizing: border-box; }
-.syl-signin { text-align: center; margin-top: 80px; color: #6B639C; font-family: 'IBM Plex Sans', sans-serif; }
+.syl-signin { text-align: center; margin-top: 80px; color: #5A6B92; font-family: 'Inter', sans-serif; }
 
-.syl-topbar {
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 16px 28px; background: #FFFFFF; border-bottom: 1px solid #E5E0F7;
-}
+.syl-header { background: #1B2A4A; padding: 20px 28px 26px; color: #FFFFFF; }
+.syl-topbar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
 .syl-brand {
   display: inline-flex; align-items: center; gap: 2px;
-  font-family: 'IBM Plex Sans', sans-serif; font-weight: 800; font-size: 18px;
-  color: #2B2650; text-decoration: none; cursor: pointer; border: none; background: none; padding: 0;
+  font-family: 'Inter', sans-serif; font-weight: 800; font-size: 18px;
+  color: #FFFFFF; text-decoration: none; cursor: pointer; border: none; background: none; padding: 0;
 }
 .syl-brand-logo { height: 26px; width: auto; display: block; margin-right: -4px; }
-.syl-topbar-actions { display: flex; align-items: center; gap: 10px; }
-.syl-saved-note { font-size: 12px; color: #6B639C; font-weight: 700; }
+.syl-topbar-actions { display: flex; align-items: center; gap: 8px; }
+.syl-saved-note { font-size: 12px; color: #B9C3DC; font-weight: 700; }
 
-.syl-btn { font-weight: 800; font-size: 13px; border-radius: 999px; padding: 9px 18px; cursor: pointer; border: none; white-space: nowrap; }
-.syl-btn--primary { background: #6B5CE0; color: #FFFFFF; }
+.syl-btn { font-weight: 700; font-size: 13px; border-radius: 999px; padding: 9px 18px; cursor: pointer; border: none; white-space: nowrap; }
+.syl-btn--primary { background: #FF6B4A; color: #FFFFFF; }
 .syl-btn--primary:disabled { opacity: 0.6; cursor: default; }
-.syl-btn--ghost { background: #F4F2FC; color: #6B5CE0; border: 1.5px solid #E5E0F7; }
-
-.syl-followup-bar {
-  max-width: 760px; margin: 20px auto 0; background: #EFEBFB; border-radius: 14px; padding: 16px 20px;
-  display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
-}
-.syl-followup-label { font-size: 13px; font-weight: 800; color: #2B2650; }
-.syl-followup-hint { flex-basis: 100%; font-size: 12px; color: #6B639C; margin: 0; }
-
-.syl-page { padding: 28px 20px 60px; }
-.syl-stage { max-width: 760px; margin: 0 auto; background: #FFFFFF; border-radius: 20px; padding: 34px 32px; box-shadow: 0 10px 30px rgba(43,38,80,0.08); }
+.syl-btn--ghost-dark { background: rgba(255,255,255,0.14); color: #FFFFFF; border: none; }
+.syl-btn--ghost { background: #FBF4F1; color: #E0502F; border: 1.5px solid #EDE1DB; }
 
 .syl-title-input {
   width: 100%; border: none; outline: none; background: transparent;
-  font-family: 'Baloo 2', cursive; font-weight: 800; font-size: 30px; color: #2B2650;
-  margin-bottom: 14px; padding: 0;
+  font-family: 'Fraunces', serif; font-weight: 600; font-size: 32px; color: #FFFFFF;
+  margin-bottom: 14px; padding: 0; letter-spacing: -0.01em;
 }
-.syl-title-input::placeholder { color: #C7C0EA; }
+.syl-title-input::placeholder { color: rgba(255,255,255,0.4); }
 
-.syl-meta-row { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }
+.syl-meta-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
 .syl-meta-print { display: none; }
-.syl-select {
-  font-family: 'IBM Plex Sans', sans-serif; font-weight: 700; font-size: 13px; color: #2B2650;
-  background: #F4F2FC; border: 1.5px solid #E5E0F7; border-radius: 10px; padding: 8px 12px; cursor: pointer;
+.syl-pill-select {
+  font-family: 'Inter', sans-serif; font-weight: 700; font-size: 12.5px; color: #FFFFFF;
+  background: rgba(255,255,255,0.16); border: none; border-radius: 999px; padding: 6px 14px; cursor: pointer;
 }
+.syl-pill-static { font-family: 'Inter', sans-serif; font-weight: 700; font-size: 12.5px; color: #B9C3DC; padding: 6px 4px; }
+
+.syl-select {
+  font-family: 'Inter', sans-serif; font-weight: 700; font-size: 13px; color: #1B2A4A;
+  background: #FBF4F1; border: 1.5px solid #EDE1DB; border-radius: 10px; padding: 8px 12px; cursor: pointer;
+}
+
+.syl-followup-bar {
+  max-width: 760px; margin: 20px auto 0; background: #FFFFFF; border-radius: 14px; padding: 16px 20px;
+  display: flex; align-items: center; gap: 12px; flex-wrap: wrap; box-shadow: 0 8px 18px rgba(27,42,74,0.06);
+}
+.syl-followup-label { font-size: 13px; font-weight: 800; color: #1B2A4A; }
+.syl-followup-hint { flex-basis: 100%; font-size: 12px; color: #5A6B92; margin: 0; }
+
+.syl-page { padding: 28px 20px 60px; }
+.syl-stage { max-width: 760px; margin: 0 auto; background: #FFFFFF; border-radius: 20px; padding: 30px 32px 34px; box-shadow: 0 10px 30px rgba(27,42,74,0.08); }
+
+.syl-toolbar { display: flex; align-items: center; margin-bottom: 20px; }
 
 .syl-gen-panel {
-  background: #F4F2FC; border-radius: 14px; padding: 18px 20px; margin-bottom: 24px;
+  background: #FBF4F1; border-radius: 14px; padding: 18px 20px; margin-bottom: 24px;
   display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
 }
-.syl-gen-label { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 700; color: #2B2650; }
-.syl-gen-input { width: 60px; padding: 7px 10px; border-radius: 8px; border: 1.5px solid #E5E0F7; font-family: 'IBM Plex Sans', sans-serif; font-weight: 700; }
-.syl-gen-hint { flex-basis: 100%; font-size: 12px; color: #6B639C; margin: 0; }
+.syl-gen-label { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 700; color: #1B2A4A; }
+.syl-gen-input { width: 60px; padding: 7px 10px; border-radius: 8px; border: 1.5px solid #EDE1DB; font-family: 'Inter', sans-serif; font-weight: 700; }
+.syl-gen-hint { flex-basis: 100%; font-size: 12px; color: #5A6B92; margin: 0; }
 
-.syl-sessions { display: flex; flex-direction: column; gap: 10px; }
-.syl-session-row {
-  display: flex; align-items: center; gap: 14px;
-  background: #F9F8FE; border-radius: 12px; padding: 12px 14px;
+.syl-timeline { position: relative; }
+.syl-timeline::before { content: ""; position: absolute; left: 15px; top: 8px; bottom: 8px; width: 2px; background: #EDE1DB; }
+.syl-t-row { position: relative; display: flex; align-items: flex-start; gap: 14px; padding: 7px 0; }
+.syl-t-dot {
+  position: relative; z-index: 1; flex-shrink: 0; width: 32px; height: 32px; border-radius: 50%;
+  color: #FFFFFF; font-weight: 800; font-size: 12px;
+  display: flex; align-items: center; justify-content: center; margin-top: 2px;
 }
-.syl-session-num {
-  flex-shrink: 0; width: 26px; height: 26px; border-radius: 50%;
-  background: #6B5CE0; color: #FFFFFF; font-weight: 800; font-size: 12px;
-  display: flex; align-items: center; justify-content: center;
-}
-.syl-session-body { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 3px; }
+.syl-t-body { flex: 1; min-width: 0; background: #FBF4F1; border-radius: 12px; padding: 12px 14px; display: flex; flex-direction: column; gap: 2px; }
 .syl-skill-tag {
   align-self: flex-start; font-size: 9.5px; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase;
-  border-radius: 999px; padding: 2px 8px; margin-bottom: 2px;
+  border-radius: 999px; padding: 2px 8px; margin-bottom: 4px;
 }
 .syl-skill-tag--grammar { background: #E7ECFB; color: #3550B0; }
 .syl-skill-tag--vocabulary { background: #FBEAF0; color: #B0355C; }
@@ -378,23 +399,23 @@ const CSS = `
 .syl-skill-tag--articles { background: #E9F3FB; color: #1F6FB0; }
 .syl-skill-tag--listening { background: #F4EDE3; color: #8A5A2A; }
 .syl-session-title, .syl-session-notes {
-  border: none; outline: none; background: transparent; font-family: 'IBM Plex Sans', sans-serif; width: 100%; padding: 2px 0;
+  border: none; outline: none; background: transparent; font-family: 'Inter', sans-serif; width: 100%; padding: 2px 0;
 }
-.syl-session-title { font-weight: 700; font-size: 14.5px; color: #2B2650; }
-.syl-session-notes { font-size: 12.5px; color: #6B639C; }
-.syl-session-title::placeholder, .syl-session-notes::placeholder { color: #C7C0EA; }
+.syl-session-title { font-weight: 700; font-size: 14.5px; color: #1B2A4A; }
+.syl-session-notes { font-size: 12.5px; color: #5A6B92; }
+.syl-session-title::placeholder, .syl-session-notes::placeholder { color: #C7B7AE; }
 
-.syl-session-actions { flex-shrink: 0; display: flex; gap: 4px; }
+.syl-session-actions { flex-shrink: 0; display: flex; gap: 4px; margin-top: 2px; }
 .syl-icon-btn {
-  width: 26px; height: 26px; border-radius: 8px; border: none; background: #EFEBFB; color: #6B5CE0;
+  width: 26px; height: 26px; border-radius: 8px; border: none; background: #FDECE5; color: #E0502F;
   cursor: pointer; font-size: 13px; font-weight: 800;
 }
 .syl-icon-btn:disabled { opacity: 0.35; cursor: default; }
 .syl-icon-btn--danger { color: #D14B4B; background: #FBEBEB; }
 
 .syl-add-btn {
-  margin-top: 14px; align-self: flex-start; background: none; border: 1.5px dashed #D8D2F5;
-  color: #6B5CE0; font-weight: 700; font-size: 13.5px; border-radius: 10px; padding: 10px 16px; cursor: pointer;
+  margin-top: 14px; align-self: flex-start; background: none; border: 1.5px dashed #EDE1DB;
+  color: #E0502F; font-weight: 700; font-size: 13.5px; border-radius: 10px; padding: 10px 16px; cursor: pointer;
 }
 
 .print-only { display: none; }
@@ -405,7 +426,8 @@ const CSS = `
   .syl-shell { background: #FFFFFF; }
   .syl-page { padding: 0; }
   .syl-stage { box-shadow: none; max-width: 100%; padding: 0; }
-  .syl-meta-print { font-family: 'IBM Plex Sans', sans-serif; font-weight: 700; font-size: 13px; color: #6B639C; margin-bottom: 18px; }
-  .syl-session-row { background: none; border-bottom: 1px solid #E5E0F7; border-radius: 0; padding: 10px 0; }
+  .syl-meta-print { font-family: 'Fraunces', serif; font-weight: 600; font-size: 20px; color: #1B2A4A; margin: 24px 20px 18px; }
+  .syl-t-body { background: none; border-bottom: 1px solid #EDE1DB; border-radius: 0; padding: 10px 0; }
+  .syl-timeline::before { display: none; }
 }
 `;

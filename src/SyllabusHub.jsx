@@ -6,6 +6,16 @@ import AuthForm from "./AuthForm";
 import { newSyllabusSessions, timeAgo } from "./syllabusTypes";
 import ConfirmDialog from "./ConfirmDialog";
 
+const SKILL_COLORS = {
+  grammar: "#3550B0",
+  vocabulary: "#B0355C",
+  speaking: "#B0791F",
+  reading: "#1F8A5B",
+  writing: "#6B5CE0",
+  articles: "#1F6FB0",
+  listening: "#8A5A2A",
+};
+
 export default function SyllabusHub() {
   const navigate = useNavigate();
   const { user, loading: authLoading } = useAuth();
@@ -100,29 +110,39 @@ export default function SyllabusHub() {
                 ) : syllabi.length === 0 ? (
                   <div className="syh-empty">No syllabi yet, start one above.</div>
                 ) : (
-                  syllabi.map((syl) => (
-                    <button
-                      type="button"
-                      key={syl.id}
-                      className="syh-card"
-                      onClick={() => navigate(`/library/syllabus/${syl.id}/edit`)}
-                    >
+                  syllabi.map((syl) => {
+                    const sessionList = syl.sessions || [];
+                    return (
                       <button
                         type="button"
-                        className="syh-card-delete"
-                        onClick={(e) => { e.stopPropagation(); setDeleteTarget(syl); }}
-                        disabled={deletingId === syl.id}
-                        aria-label="Delete syllabus"
+                        key={syl.id}
+                        className="syh-card"
+                        onClick={() => navigate(`/library/syllabus/${syl.id}/edit`)}
                       >
-                        ×
+                        <button
+                          type="button"
+                          className="syh-card-delete"
+                          onClick={(e) => { e.stopPropagation(); setDeleteTarget(syl); }}
+                          disabled={deletingId === syl.id}
+                          aria-label="Delete syllabus"
+                        >
+                          ×
+                        </button>
+                        {syl.level && <span className="syh-card-level">{syl.level}{syl.age_track ? ` · ${syl.age_track}` : ""}</span>}
+                        <span className="syh-card-title">{syl.title || "Untitled syllabus"}</span>
+                        {sessionList.length > 0 && (
+                          <span className="syh-card-strip">
+                            {sessionList.map((s, i) => (
+                              <span key={i} style={{ background: SKILL_COLORS[s.skill] || "#E5D8D2" }} />
+                            ))}
+                          </span>
+                        )}
+                        <span className="syh-card-meta">
+                          {sessionList.length} {sessionList.length === 1 ? "session" : "sessions"} · {timeAgo(syl.updated_at)}
+                        </span>
                       </button>
-                      <span className="syh-card-icon">📋</span>
-                      <span className="syh-card-title">{syl.title || "Untitled syllabus"}</span>
-                      <span className="syh-card-meta">
-                        {syl.level ? `${syl.level} · ` : ""}{(syl.sessions || []).length} {(syl.sessions || []).length === 1 ? "session" : "sessions"} · {timeAgo(syl.updated_at)}
-                      </span>
-                    </button>
-                  ))
+                    );
+                  })
                 )}
               </div>
             </>
@@ -145,9 +165,9 @@ export default function SyllabusHub() {
 }
 
 const CSS = `
-@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=IBM+Plex+Sans:wght@500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&display=swap');
 
-.syh-shell { min-height: 100vh; background: #F4F2FC; font-family: 'IBM Plex Sans', sans-serif; color: #2B2650; }
+.syh-shell { min-height: 100vh; background: #FBF4F1; font-family: 'Inter', sans-serif; color: #1B2A4A; }
 .syh-shell * { box-sizing: border-box; }
 
 .syh-page { padding: 24px; }
@@ -156,57 +176,59 @@ const CSS = `
 .syh-topbar { display: flex; align-items: center; padding-bottom: 28px; }
 .syh-brand {
   display: inline-flex; align-items: center; gap: 2px;
-  font-family: 'IBM Plex Sans', sans-serif; font-weight: 800; font-size: 19px;
-  color: #2B2650; text-decoration: none; cursor: pointer; border: none; background: none; padding: 0;
+  font-family: 'Inter', sans-serif; font-weight: 800; font-size: 19px;
+  color: #1B2A4A; text-decoration: none; cursor: pointer; border: none; background: none; padding: 0;
 }
 .syh-brand-logo { height: 30px; width: auto; display: block; margin-right: -4px; }
 
 .syh-hero { text-align: center; margin-bottom: 34px; }
 .syh-eyebrow {
-  display: inline-block; font-weight: 800; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
-  color: #FFFFFF; background: #6B5CE0; border-radius: 999px; padding: 5px 14px; margin-bottom: 14px;
+  display: inline-block; font-weight: 700; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+  color: #E0502F; background: #FDECE5; border-radius: 999px; padding: 5px 14px; margin-bottom: 14px;
 }
-.syh-hero-title { font-family: 'Baloo 2', cursive; font-weight: 800; font-size: clamp(30px, 3.6vw, 40px); margin: 0 0 10px; color: #2B2650; }
-.syh-hero-blurb { font-size: 15px; color: #6B639C; margin: 0 auto; max-width: 520px; line-height: 1.55; }
+.syh-hero-title { font-family: 'Fraunces', serif; font-weight: 600; font-size: clamp(32px, 3.8vw, 42px); margin: 0 0 10px; color: #1B2A4A; letter-spacing: -0.01em; }
+.syh-hero-blurb { font-size: 15px; color: #5A6B92; margin: 0 auto; max-width: 520px; line-height: 1.55; }
 
 .syh-locked { text-align: center; padding: 50px 20px; background: #FFFFFF; border-radius: 20px; }
 .syh-locked-icon { font-size: 34px; display: block; margin-bottom: 12px; }
-.syh-locked-title { font-family: 'Baloo 2', cursive; font-size: 20px; margin: 0 0 8px; color: #2B2650; }
-.syh-locked-blurb { font-size: 13.5px; color: #6B639C; margin: 0 0 20px; }
+.syh-locked-title { font-family: 'Fraunces', serif; font-weight: 600; font-size: 21px; margin: 0 0 8px; color: #1B2A4A; }
+.syh-locked-blurb { font-size: 13.5px; color: #5A6B92; margin: 0 0 20px; }
 .syh-locked-actions { display: flex; justify-content: center; gap: 10px; }
-.syh-btn { font-weight: 800; font-size: 13.5px; border-radius: 999px; padding: 10px 22px; cursor: pointer; border: none; }
-.syh-btn--primary { background: #6B5CE0; color: #FFFFFF; }
-.syh-btn--ghost { background: transparent; color: #6B5CE0; border: 1.5px solid #D8D2F5; }
+.syh-btn { font-weight: 700; font-size: 13.5px; border-radius: 999px; padding: 10px 22px; cursor: pointer; border: none; }
+.syh-btn--primary { background: #FF6B4A; color: #FFFFFF; }
+.syh-btn--ghost { background: transparent; color: #E0502F; border: 1.5px solid #F0DED7; }
 
 .syh-new-card {
   display: flex; align-items: center; justify-content: center; gap: 10px;
   width: 100%; padding: 18px; border-radius: 16px; margin-bottom: 30px;
-  background: #6B5CE0; border: none; cursor: pointer;
-  font-family: 'IBM Plex Sans', sans-serif; font-weight: 800; font-size: 15px; color: #FFFFFF;
-  box-shadow: 0 10px 20px rgba(107,92,224,0.28);
+  background: #FF6B4A; border: none; cursor: pointer;
+  font-family: 'Inter', sans-serif; font-weight: 700; font-size: 15px; color: #FFFFFF;
+  box-shadow: 0 10px 20px rgba(255,107,74,0.28);
   transition: transform 0.15s ease;
 }
 .syh-new-card:hover { transform: translateY(-2px); }
 .syh-new-card:disabled { opacity: 0.7; cursor: default; }
 .syh-new-icon { font-size: 20px; line-height: 1; }
 
-.syh-list-label { font-weight: 800; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #6B639C; margin-bottom: 14px; }
+.syh-list-label { font-weight: 700; font-size: 11.5px; letter-spacing: 0.08em; text-transform: uppercase; color: #5A6B92; margin-bottom: 14px; }
 
 .syh-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; }
-.syh-empty { grid-column: 1 / -1; text-align: center; padding: 30px; color: #6B639C; font-size: 14px; }
+.syh-empty { grid-column: 1 / -1; text-align: center; padding: 30px; color: #5A6B92; font-size: 14px; }
 
 .syh-card {
-  position: relative; text-align: left; background: #FFFFFF; border-radius: 16px; padding: 20px 18px;
-  border: none; cursor: pointer; box-shadow: 0 8px 18px rgba(43,38,80,0.08);
+  position: relative; text-align: left; background: #FFFFFF; border-radius: 16px; padding: 20px 18px 18px;
+  border: none; border-left: 5px solid #FF6B4A; cursor: pointer; box-shadow: 0 8px 18px rgba(27,42,74,0.08);
   transition: transform 0.15s ease, box-shadow 0.15s ease;
-  display: flex; flex-direction: column; gap: 8px;
+  display: flex; flex-direction: column;
 }
-.syh-card:hover { transform: translateY(-3px); box-shadow: 0 14px 26px rgba(43,38,80,0.14); }
-.syh-card-icon { font-size: 24px; }
-.syh-card-title { font-family: 'Baloo 2', cursive; font-weight: 700; font-size: 16px; color: #2B2650; }
-.syh-card-meta { font-size: 12px; color: #6B639C; }
+.syh-card:hover { transform: translateY(-3px); box-shadow: 0 14px 26px rgba(27,42,74,0.14); }
+.syh-card-level { font-weight: 800; font-size: 10.5px; letter-spacing: 0.06em; text-transform: uppercase; color: #FF6B4A; margin-bottom: 6px; }
+.syh-card-title { font-family: 'Fraunces', serif; font-weight: 600; font-size: 18px; color: #1B2A4A; line-height: 1.25; }
+.syh-card-strip { display: flex; flex-wrap: wrap; gap: 3px; margin: 10px 0; }
+.syh-card-strip span { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+.syh-card-meta { font-size: 12px; color: #5A6B92; margin-top: auto; }
 .syh-card-delete {
   position: absolute; top: 10px; right: 10px; width: 24px; height: 24px; border-radius: 50%;
-  background: #F4F2FC; color: #6B639C; border: none; cursor: pointer; font-size: 15px; line-height: 1;
+  background: #FBF4F1; color: #5A6B92; border: none; cursor: pointer; font-size: 15px; line-height: 1;
 }
 `;
