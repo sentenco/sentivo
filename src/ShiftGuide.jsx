@@ -2,20 +2,14 @@ import { useParams } from "react-router-dom";
 import { getLesson } from "./shiftTracks";
 
 const SLIDE_LABELS = {
-  cover: "Cover",
-  warmup: "Target Warm-up",
-  contrast: "Meaning Contrast",
-  makeit: "Make It",
-  trigger: "Trigger Frame",
-  interrupt: "Interrupt & Repair",
-  samestory: "Same Story, New Lens",
-  clockturn: "Clock Turn",
-  pressure: "Pressure Check",
-  scorecard: "Scorecard",
-  retention: "Retention Exit Task",
+  scenarioSet: "Scenario Set",
+  chain: "Cold Chain",
+  retell: "Unaided Retell",
+  transfer: "Transfer",
+  wrap: "Wrap",
 };
 
-const SLIDE_TYPES = ["cover", "warmup", "contrast", "makeit", "trigger", "interrupt", "samestory", "clockturn", "pressure", "scorecard", "retention"];
+const SLIDE_TYPES = ["scenarioSet", "chain", "retell", "transfer", "wrap"];
 
 function SlideSection({ num, slideType, entry }) {
   if (!entry) {
@@ -89,7 +83,7 @@ export default function ShiftGuide() {
         <div className="shg-hero">
           <span className="shg-hero-kicker">{lesson.code} · {lesson.tenses} · {lesson.tag}</span>
           <h1 className="shg-hero-title">{lesson.title}</h1>
-          <p className="shg-hero-blurb">{lesson.theme}</p>
+          <p className="shg-hero-blurb">{lesson.scene.context}</p>
         </div>
 
         <div className="shg-sections">

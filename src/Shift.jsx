@@ -2,273 +2,162 @@ import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { getLesson } from "./shiftTracks";
 
-const SLIDE_LABELS = {
-  cover: "Cover",
-  warmup: "Target Warm-up",
-  contrast: "Meaning Contrast",
-  makeit: "Make It",
-  trigger: "Trigger Frame",
-  interrupt: "Interrupt & Repair",
-  samestory: "Same Story, New Lens",
-  clockturn: "Clock Turn",
-  pressure: "Pressure Check",
-  scorecard: "Scorecard",
-  retention: "Retention Exit Task",
-};
+// SHIFT player, rebuilt around a single mechanic: a connected chain of
+// in-character exchanges where the target tense stays hidden from the
+// student. The teacher (not speech recognition) types what the student
+// actually said out loud and marks it correct or wrong -- that judgment is
+// what advances the scene. See shiftRestaurant1.js for the lesson shape.
 
-const SLIDE_TYPES = ["cover", "warmup", "contrast", "makeit", "trigger", "interrupt", "samestory", "clockturn", "pressure", "scorecard", "retention"];
-
-const SCORE_ROWS = [
-  { label: "Tense Selection", max: 6 },
-  { label: "Form Accuracy", max: 4 },
-  { label: "Repair Speed", max: 4 },
-  { label: "Pressure Stability", max: 4 },
-];
-const SCORE_MAX = 18;
-
-function TopStrip({ lesson, slideType }) {
+function TopBar() {
   return (
-    <div className="sh-strip">
-      <span>{lesson.code}</span>
-      <span className="sh-strip-dot">·</span>
-      <span>{lesson.tenses}</span>
-      <span className="sh-strip-dot">·</span>
-      <span className="sh-strip-tag">{lesson.tag}</span>
-      <span className="sh-strip-label">{SLIDE_LABELS[slideType]}</span>
+    <div className="sh-topbar">
+      <img src="/logo-sentivo.png" alt="" className="sh-brand-logo" />
+      <span className="sh-brand-name">entivo</span>
     </div>
   );
 }
 
-function CoverSlide({ lesson }) {
+function ProgressRow({ total, doneCount, currentIdx }) {
   return (
-    <div className="sh-slide sh-slide--cover">
-      <span className="sh-cover-kicker">{lesson.code} · {lesson.tag}</span>
-      <h1 className="sh-cover-title">{lesson.title}</h1>
-      <p className="sh-cover-theme">{lesson.theme}</p>
+    <div className="sh-progress-row">
+      {Array.from({ length: total }, (_, i) => (
+        <div
+          key={i}
+          className={`sh-seg ${i < doneCount ? "is-done" : i === currentIdx ? "is-current" : ""}`}
+        />
+      ))}
     </div>
   );
 }
 
-function WarmupSlide({ lesson }) {
-  const w = lesson.warmup;
+function HistoryLog({ rows, roles }) {
+  if (rows.length === 0) return null;
   return (
-    <div className="sh-slide sh-slide--centered">
-      <span className="sh-badge">⏱ Target Warm-up</span>
-      <p className="sh-bigline">{w.onScreen}</p>
-    </div>
-  );
-}
-
-function ContrastSlide({ lesson }) {
-  const c = lesson.contrast;
-  return (
-    <div className="sh-slide sh-slide--centered">
-      <span className="sh-badge">Meaning Contrast</span>
-      <div className="sh-examples">
-        {c.examples.map((ex, i) => <p key={i} className="sh-example-line">{ex}</p>)}
-      </div>
-      <p className="sh-prompt">{c.prompt}</p>
-      {c.keyPoint && <p className="sh-note">{c.keyPoint}</p>}
-    </div>
-  );
-}
-
-function MakeItSlide({ lesson }) {
-  const m = lesson.makeIt;
-  return (
-    <div className="sh-slide sh-slide--centered">
-      <span className="sh-badge">Make It</span>
-      <p className="sh-form-rule">{m.onScreen}</p>
-      <div className="sh-models">
-        {m.models.map((mo, i) => <p key={i} className="sh-model-line">{mo}</p>)}
-      </div>
-      {m.note && <p className="sh-note">{m.note}</p>}
-    </div>
-  );
-}
-
-function TriggerSlide({ lesson }) {
-  const t = lesson.trigger;
-  return (
-    <div className="sh-slide">
-      <span className="sh-badge sh-badge--self">Trigger Frame — answer fast</span>
-      <ol className="sh-prompt-list">
-        {t.prompts.map((p, i) => <li key={i}>{p}</li>)}
-      </ol>
-      {t.cue && <p className="sh-note">{t.cue}</p>}
-    </div>
-  );
-}
-
-function InterruptSlide({ lesson }) {
-  const it = lesson.interrupt;
-  return (
-    <div className="sh-slide sh-slide--centered">
-      <span className="sh-badge">Interrupt &amp; Repair</span>
-      <p className="sh-bigline">{it.onScreen}</p>
-      {it.cueWords && it.cueWords.length > 0 && (
-        <div className="sh-chips">
-          {it.cueWords.map((w, i) => <span key={i} className="sh-chip">{w}</span>)}
+    <div className="sh-history">
+      {rows.map((row, i) => (
+        <div className="sh-hist-row" key={i}>
+          <div className="sh-hist-q"><span className="sh-hist-label">{roles.them}</span><span className="sh-hist-text">{row.q}</span></div>
+          <div className="sh-hist-a"><span className="sh-hist-text">{row.a}</span><span className="sh-hist-label sh-hist-label--me">{roles.me}</span></div>
         </div>
-      )}
+      ))}
     </div>
   );
 }
 
-function SameStorySlide({ lesson }) {
-  const s = lesson.samestory;
-  return (
-    <div className="sh-slide sh-slide--centered">
-      <span className="sh-badge">Same Story, New Lens</span>
-      {s.rounds ? (
-        <ol className="sh-round-list">
-          {s.rounds.map((r, i) => <li key={i}>{r}</li>)}
-        </ol>
-      ) : (
-        <p className="sh-bigline">{s.task}</p>
-      )}
-      {(s.purpose || s.example) && <p className="sh-note">{s.purpose || s.example}</p>}
-    </div>
-  );
-}
+function ChainStage({ lesson, chainIdx, history, onAdvance }) {
+  const [attempt, setAttempt] = useState(0);
+  const [clueOpen, setClueOpen] = useState(false);
+  const [typed, setTyped] = useState("");
+  const [display, setDisplay] = useState(null); // { text, isRight } | null, the most recent submitted attempt
+  const [advancing, setAdvancing] = useState(false); // true only during the pause after a correct answer
 
-function ClockTurnSlide({ lesson }) {
-  const c = lesson.clockturn;
-  return (
-    <div className="sh-slide sh-slide--centered">
-      <span className="sh-badge">Clock Turn</span>
-      <p className="sh-base-sentence">{c.baseSentence}</p>
-      <div className="sh-cue-chain">
-        {c.cueChain.map((cue, i) => (
-          <span key={i} className="sh-cue-step">
-            {cue}
-            {i < c.cueChain.length - 1 && <span className="sh-cue-arrow">→</span>}
-          </span>
-        ))}
-      </div>
-    </div>
-  );
-}
+  const step = lesson.chain[chainIdx];
+  const isDone = chainIdx >= lesson.chain.length;
 
-function PressureSlide({ lesson }) {
-  const p = lesson.pressure;
-  return (
-    <div className="sh-slide">
-      <span className="sh-badge sh-badge--self">Pressure Check — no notes</span>
-      <ol className="sh-prompt-list">
-        {p.prompts.map((pr, i) => <li key={i}>{pr}</li>)}
-      </ol>
-      {p.rule && <p className="sh-note">{p.rule}</p>}
-    </div>
-  );
-}
+  if (isDone) return null;
 
-function downloadScorecard(lesson, scores, total) {
-  const lines = [
-    `SHIFT ${lesson.code} · ${lesson.title}`,
-    `Tenses: ${lesson.tenses}`,
-    "",
-    "SCORECARD",
-    ...SCORE_ROWS.map((row) => `${row.label}: ${scores[row.label] || 0} / ${row.max}`),
-    `Total: ${total} / ${SCORE_MAX}`,
-    "",
-    `Date: ${new Date().toLocaleDateString()}`,
-  ];
-  const blob = new Blob([lines.join("\n")], { type: "text/plain" });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement("a");
-  a.href = url;
-  a.download = `shift-${lesson.id}-scorecard.txt`;
-  a.click();
-  URL.revokeObjectURL(url);
-}
+  const label = display ? lesson.roles.me : lesson.roles.them;
+  const labelClass = display
+    ? `sh-speaker-label sh-speaker-label--me${display.isRight ? "" : " is-wrong"}`
+    : "sh-speaker-label";
+  const lineText = display ? display.text : step.question;
+  const lineClass = display && !display.isRight ? "sh-line is-wrong" : "sh-line";
 
-function ScorecardSlide({ lesson }) {
-  const [scores, setScores] = useState(() => Object.fromEntries(SCORE_ROWS.map((row) => [row.label, ""])));
-  const total = SCORE_ROWS.reduce((sum, row) => {
-    const v = Number(scores[row.label]);
-    return sum + (Number.isFinite(v) ? v : 0);
-  }, 0);
-
-  function setScore(label, max, raw) {
-    const v = raw === "" ? "" : Math.max(0, Math.min(max, Number(raw) || 0));
-    setScores((prev) => ({ ...prev, [label]: v }));
+  function submit(isRight) {
+    const text = typed.trim() || "(no answer typed)";
+    setDisplay({ text, isRight });
+    if (isRight) {
+      setAdvancing(true);
+      window.setTimeout(() => {
+        onAdvance(step.question, text);
+        setAttempt(0);
+        setClueOpen(false);
+        setTyped("");
+        setDisplay(null);
+        setAdvancing(false);
+      }, 900);
+    } else {
+      setAttempt((a) => a + 1);
+      setTyped("");
+    }
   }
 
   return (
-    <div className="sh-slide sh-slide--scorecard">
-      <div className="sh-sheet">
-        <div className="sh-sheet-head">
-          <span className="sh-sheet-title">Scorecard</span>
-          <span className="sh-sheet-tag">{lesson.tag}</span>
-        </div>
-        <p className="sh-candoline">“{lesson.scorecard.canDoLine}”</p>
-        <div className="sh-sheet-rows">
-          {SCORE_ROWS.map((row, i) => (
-            <div key={row.label} className={`sh-score-row ${i % 2 === 1 ? "is-alt" : ""}`}>
-              <span className="sh-score-label">{row.label}</span>
-              <input
-                type="number"
-                className="sh-score-input"
-                min={0}
-                max={row.max}
-                value={scores[row.label]}
-                onChange={(e) => setScore(row.label, row.max, e.target.value)}
-                placeholder="0"
-              />
-              <span className="sh-score-max">/ {row.max}</span>
-            </div>
-          ))}
-          <div className="sh-score-row sh-score-row--total">
-            <span className="sh-score-label">Total</span>
-            <span className="sh-score-total">{total}</span>
-            <span className="sh-score-max">/ {SCORE_MAX}</span>
+    <>
+      <HistoryLog rows={history} roles={lesson.roles} />
+      <div className="sh-slide">
+        <span className={labelClass}>{label}</span>
+        <div className={lineClass}>{lineText}</div>
+      </div>
+
+      {!advancing && (
+        <div className="sh-compose">
+          <div className="sh-clue-row">
+            <button type="button" className="sh-clue-btn" onClick={() => setClueOpen((o) => !o)}>
+              💡 Show clue
+            </button>
+            {clueOpen && (
+              <div className="sh-clue-box" dangerouslySetInnerHTML={{ __html: step.clue }} />
+            )}
+          </div>
+          <label className="sh-type-label">What did the student say?</label>
+          <input
+            type="text"
+            className="sh-type-input"
+            value={typed}
+            onChange={(e) => setTyped(e.target.value)}
+            placeholder="Type it as you hear it..."
+          />
+          <div className="sh-teacher-buttons">
+            <button type="button" className="sh-choice-btn sh-choice-btn--bad" onClick={() => submit(false)}>
+              {attempt > 0 ? "Still wrong" : "✗ Wrong tense"}
+            </button>
+            <button type="button" className="sh-choice-btn sh-choice-btn--good" onClick={() => submit(true)}>
+              ✓ Correct
+            </button>
           </div>
         </div>
-        {lesson.scorecard.compareLine && <p className="sh-candoline">{lesson.scorecard.compareLine}</p>}
-        <button type="button" className="sh-download-btn" onClick={() => downloadScorecard(lesson, scores, total)}>
-          ⬇ Download result
-        </button>
-      </div>
-    </div>
+      )}
+    </>
   );
 }
 
-function RetentionSlide({ lesson }) {
+function PromptStage({ eyebrow, prompt, ctaLabel, onContinue }) {
   return (
-    <div className="sh-slide sh-slide--centered">
-      <span className="sh-badge">Retention Exit Task</span>
-      <p className="sh-bigline">{lesson.retention.homework}</p>
+    <div className="sh-prompt-stage">
+      <span className="sh-prompt-eyebrow">{eyebrow}</span>
+      <p className="sh-prompt-text">{prompt}</p>
+      <button type="button" className="sh-choice-btn sh-choice-btn--good sh-continue-btn" onClick={onContinue}>
+        {ctaLabel} →
+      </button>
     </div>
   );
 }
 
-function renderSlide(slideType, lesson) {
-  switch (slideType) {
-    case "cover": return <CoverSlide lesson={lesson} />;
-    case "warmup": return <WarmupSlide lesson={lesson} />;
-    case "contrast": return <ContrastSlide lesson={lesson} />;
-    case "makeit": return <MakeItSlide lesson={lesson} />;
-    case "trigger": return <TriggerSlide lesson={lesson} />;
-    case "interrupt": return <InterruptSlide lesson={lesson} />;
-    case "samestory": return <SameStorySlide lesson={lesson} />;
-    case "clockturn": return <ClockTurnSlide lesson={lesson} />;
-    case "pressure": return <PressureSlide lesson={lesson} />;
-    case "scorecard": return <ScorecardSlide lesson={lesson} />;
-    case "retention": return <RetentionSlide lesson={lesson} />;
-    default: return null;
-  }
+function WrapStage({ prompt }) {
+  return (
+    <div className="sh-prompt-stage">
+      <span className="sh-prompt-eyebrow">Wrap</span>
+      <p className="sh-prompt-text">{prompt}</p>
+      <button type="button" className="sh-choice-btn sh-choice-btn--good sh-continue-btn" onClick={() => window.close()}>
+        Finish lesson
+      </button>
+    </div>
+  );
 }
 
 export default function Shift() {
   const { trackId, lessonNum } = useParams();
-  const [slideIdx, setSlideIdx] = useState(0);
   const lesson = getLesson(trackId, Number(lessonNum));
+  const [stage, setStage] = useState("cover");
+  const [chainIdx, setChainIdx] = useState(0);
+  const [history, setHistory] = useState([]);
 
   if (!lesson) {
     return (
       <div className="sh-shell">
         <style>{CSS}</style>
+        <TopBar />
         <div className="sh-stage">
           <p className="sh-missing">This lesson isn't ready yet.</p>
         </div>
@@ -276,41 +165,55 @@ export default function Shift() {
     );
   }
 
-  const slideType = SLIDE_TYPES[slideIdx];
-  const isFirst = slideIdx === 0;
-  const isLast = slideIdx === SLIDE_TYPES.length - 1;
+  function advanceChain(question, answer) {
+    setHistory((prev) => [...prev, { q: question, a: answer }]);
+    const next = chainIdx + 1;
+    if (next >= lesson.chain.length) {
+      setStage("retell");
+    } else {
+      setChainIdx(next);
+    }
+  }
 
   return (
     <div className="sh-shell">
       <style>{CSS}</style>
-      <header className="sh-topbar">
-        <span className="sh-topbar-title">{lesson.code} · {lesson.title}</span>
-      </header>
+      <TopBar />
 
       <div className="sh-stage">
-        <div className="sh-deck">
-          <TopStrip lesson={lesson} slideType={slideType} />
-          <div className="sh-deck-body" key={slideIdx}>
-            {renderSlide(slideType, lesson)}
+        <div className="sh-panel">
+          <div className="sh-hero">
+            <div className="sh-hero-blob" />
+            <div className="sh-hero-title">{lesson.scene.title}</div>
+            <div className="sh-hero-sub">{lesson.scene.context}</div>
           </div>
-          <div className="sh-nav-row">
-            <button type="button" className="sh-nav-btn" onClick={() => setSlideIdx((i) => i - 1)} disabled={isFirst}>
-              ← Previous
-            </button>
-            <div className="sh-nav-dots">
-              {SLIDE_TYPES.map((_, i) => (
-                <span key={i} className={`sh-nav-dot ${i === slideIdx ? "is-active" : ""}`} />
-              ))}
-            </div>
-            <button
-              type="button"
-              className="sh-nav-btn sh-nav-btn--primary"
-              onClick={() => setSlideIdx((i) => i + 1)}
-              disabled={isLast}
-            >
-              Next →
-            </button>
-          </div>
+
+          {stage !== "cover" && (
+            <ProgressRow total={lesson.chain.length} doneCount={history.length} currentIdx={chainIdx} />
+          )}
+
+          {stage === "cover" && (
+            <PromptStage
+              eyebrow={`${lesson.code} · ${lesson.tenses}`}
+              prompt={lesson.scenarioSet.say}
+              ctaLabel="Begin"
+              onContinue={() => setStage("chain")}
+            />
+          )}
+
+          {stage === "chain" && (
+            <ChainStage lesson={lesson} chainIdx={chainIdx} history={history} onAdvance={advanceChain} />
+          )}
+
+          {stage === "retell" && (
+            <PromptStage eyebrow="Unaided Retell" prompt={lesson.retell.prompt} ctaLabel="Continue to Transfer" onContinue={() => setStage("transfer")} />
+          )}
+
+          {stage === "transfer" && (
+            <PromptStage eyebrow="Transfer" prompt={lesson.transfer.question} ctaLabel="Continue to Wrap" onContinue={() => setStage("wrap")} />
+          )}
+
+          {stage === "wrap" && <WrapStage prompt={lesson.wrap.prompt} />}
         </div>
       </div>
     </div>
@@ -318,349 +221,96 @@ export default function Shift() {
 }
 
 const CSS = `
-@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Quicksand:wght@500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root { color-scheme: light; }
 
 .sh-shell {
   width: 100%;
-  height: 100vh;
-  background: radial-gradient(circle at 15% 0%, #FFF1EF 0%, #FFDBD5 55%, #FFC3BA 100%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  min-height: 100vh;
+  background: #F4EDE8;
+  color: #1B2A4A;
+  font-family: 'Inter', sans-serif;
   box-sizing: border-box;
-  overflow: hidden;
+  padding: 24px 20px 60px;
 }
 .sh-shell * { box-sizing: border-box; }
 
-.sh-topbar {
-  width: 100%;
-  max-width: 1140px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 18px 24px 0;
-  flex-shrink: 0;
-}
-.sh-topbar-title {
-  font-family: 'Fredoka', sans-serif;
-  font-weight: 700;
-  font-size: 16px;
-  color: #4A211B;
-  text-align: center;
+.sh-missing { text-align: center; color: #5A6B92; margin-top: 60px; }
+
+.sh-topbar { max-width: 640px; margin: 0 auto 14px; display: flex; align-items: center; gap: 6px; padding: 0 4px; }
+.sh-brand-logo { height: 22px; width: auto; display: block; }
+.sh-brand-name { font-weight: 800; font-size: 15px; color: #1B2A4A; }
+
+.sh-stage { max-width: 640px; margin: 0 auto; }
+
+.sh-panel {
+  background: #FBF4F1; border-radius: 26px; overflow: hidden;
+  box-shadow: 0 20px 44px rgba(27,42,74,0.16); border: 1px solid #EDE1DB;
 }
 
-.sh-missing {
-  font-family: 'Quicksand', sans-serif;
-  color: #8C5C52;
-  text-align: center;
-  margin-top: 60px;
+.sh-hero {
+  margin: 18px 18px 0; background: #1B2A4A; border-radius: 18px; padding: 16px 20px 14px;
+  position: relative; overflow: hidden; box-shadow: 0 12px 24px rgba(27,42,74,0.2);
 }
+.sh-hero-blob { position: absolute; width: 150px; height: 150px; border-radius: 50%; background: #FF6B4A; opacity: 0.16; top: -60px; right: -40px; }
+.sh-hero-title { font-weight: 700; font-size: 14px; color: #FFFFFF; position: relative; }
+.sh-hero-sub { font-size: 11.5px; color: #B9C3DC; margin-top: 2px; position: relative; }
 
-.sh-stage {
-  flex: 1;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 16px 24px 24px;
-  min-height: 0;
-}
+.sh-progress-row { display: flex; gap: 4px; padding: 14px 22px 4px; }
+.sh-seg { flex: 1; height: 3px; border-radius: 999px; background: #EDE1DB; transition: background 0.25s ease; }
+.sh-seg.is-done { background: #2F9E58; }
+.sh-seg.is-current { background: #FF6B4A; }
 
-.sh-deck {
-  position: relative;
-  width: 1140px;
-  max-width: 100%;
-  height: 100%;
-  max-height: 620px;
-  background: #FFFFFF;
-  border: 1px solid #FFD2C8;
-  border-radius: 20px;
-  box-shadow: 0 24px 60px rgba(160,50,35,0.16);
-  display: flex;
-  flex-direction: column;
-  padding: 22px 44px 26px;
-}
+.sh-history { display: flex; flex-direction: column; gap: 12px; padding: 16px 22px 4px; }
+.sh-hist-row { display: flex; flex-direction: column; gap: 6px; padding-bottom: 12px; border-bottom: 1px solid #EDE1DB; }
+.sh-hist-q, .sh-hist-a { display: flex; align-items: baseline; gap: 8px; font-size: 16px; }
+.sh-hist-q { justify-content: flex-start; }
+.sh-hist-a { justify-content: flex-end; text-align: right; }
+.sh-hist-label { font-size: 11px; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase; flex-shrink: 0; color: #5A6B92; }
+.sh-hist-label--me { color: #E0502F; }
+.sh-hist-text { color: #5A6B92; font-family: 'Fraunces', serif; font-weight: 500; }
+.sh-hist-a .sh-hist-text { color: #1B2A4A; font-weight: 600; }
 
-.sh-strip {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 600;
-  font-size: 12.5px;
-  letter-spacing: 0.3px;
-  text-transform: uppercase;
-  color: #E1483B;
-  padding-bottom: 12px;
-  border-bottom: 1px solid #FFE4DD;
-  margin-bottom: 16px;
-  flex-shrink: 0;
+.sh-slide {
+  background: #FFFFFF; margin: 14px auto; border-radius: 18px; display: flex; flex-direction: column;
+  align-items: center; justify-content: center; padding: 16px 22px; text-align: center;
+  box-shadow: 0 8px 18px rgba(27,42,74,0.06); width: fit-content; max-width: calc(100% - 36px);
 }
-.sh-strip-dot { color: #FFC3BA; }
-.sh-strip-tag { background: rgba(225,72,59,0.12); color: #E1483B; padding: 2px 9px; border-radius: 999px; font-size: 11px; }
-.sh-strip-label { margin-left: auto; color: #C98F84; }
+.sh-speaker-label {
+  font-size: 10px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 8px;
+  padding: 3px 12px; border-radius: 999px; background: #E7EBF3; color: #5A6B92;
+}
+.sh-speaker-label--me { background: #FDECE5; color: #E0502F; }
+.sh-speaker-label--me.is-wrong { background: #FBE4E9; color: #D6536D; }
+.sh-line { font-family: 'Fraunces', serif; font-weight: 600; font-size: clamp(17px, 2.4vw, 20px); line-height: 1.35; color: #1B2A4A; max-width: 400px; }
+.sh-line.is-wrong { color: #7A2438; }
 
-.sh-deck-body { flex: 1; min-height: 0; overflow-y: auto; display: flex; }
-.sh-slide { display: flex; flex-direction: column; gap: 14px; width: 100%; }
-.sh-slide--centered { align-items: center; justify-content: center; text-align: center; gap: 20px; margin: auto; }
+.sh-compose { background: #FFFFFF; border-top: 1px solid #EDE1DB; padding: 16px 22px 20px; margin: 0 18px 18px; border-radius: 0 0 18px 18px; }
+.sh-clue-row { text-align: center; margin-bottom: 10px; }
+.sh-clue-btn { font-family: 'Inter', sans-serif; font-size: 11.5px; font-weight: 700; color: #E0502F; background: none; border: none; cursor: pointer; padding: 0; }
+.sh-clue-box { margin-top: 6px; font-size: 12px; color: #1B2A4A; background: #FDECE5; border-radius: 8px; padding: 8px 10px; display: inline-block; }
+.sh-clue-box b { font-weight: 800; }
+.sh-type-label { display: block; text-align: center; font-size: 11px; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; color: #5A6B92; margin-bottom: 8px; }
+.sh-type-input {
+  width: 100%; font-family: 'Inter', sans-serif; font-size: 14px; color: #1B2A4A; text-align: center;
+  background: #FBF4F1; border: 1.5px solid #EDE1DB; border-radius: 12px; padding: 10px 14px; outline: none; margin-bottom: 12px;
+}
+.sh-type-input:focus { border-color: #FF6B4A; }
+.sh-teacher-buttons { display: flex; gap: 8px; justify-content: center; }
+.sh-choice-btn {
+  font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 700; border-radius: 999px; padding: 9px 20px; cursor: pointer;
+  border: 1.5px solid #EDE1DB; background: #FFFFFF; color: #1B2A4A;
+}
+.sh-choice-btn--bad:hover { border-color: #D6536D; color: #D6536D; }
+.sh-choice-btn--good { background: #E7F5EC; border-color: #2F9E58; color: #2F9E58; }
 
-.sh-badge {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 700;
-  font-size: 13px;
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
-  color: #E1483B;
-  background: rgba(225,72,59,0.1);
-  border: 1.5px solid rgba(225,72,59,0.3);
-  border-radius: 999px;
-  padding: 5px 14px;
-}
-.sh-badge--self { align-self: flex-start; }
+.sh-prompt-stage { padding: 26px 26px 24px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 14px; }
+.sh-prompt-eyebrow { font-size: 11px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: #E0502F; background: #FDECE5; border-radius: 999px; padding: 4px 14px; }
+.sh-prompt-text { font-family: 'Fraunces', serif; font-weight: 600; font-size: 19px; line-height: 1.45; color: #1B2A4A; max-width: 460px; margin: 0; }
+.sh-continue-btn { margin-top: 4px; }
 
-/* Cover */
-.sh-slide--cover { align-items: center; justify-content: center; text-align: center; gap: 14px; margin: auto; }
-.sh-cover-kicker {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 700;
-  font-size: 13px;
-  letter-spacing: 0.6px;
-  text-transform: uppercase;
-  color: #E1483B;
+@media (max-width: 520px) {
+  .sh-hist-q, .sh-hist-a { font-size: 14px; }
 }
-.sh-cover-title {
-  font-family: 'Fredoka', sans-serif;
-  font-weight: 700;
-  font-size: 50px;
-  color: #4A211B;
-  margin: 0;
-  line-height: 1.1;
-  max-width: 900px;
-}
-.sh-cover-theme {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 500;
-  font-style: italic;
-  font-size: 17px;
-  color: #8C5C52;
-  margin: 0;
-  max-width: 640px;
-}
-
-/* Shared big text styles */
-.sh-bigline {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 700;
-  font-size: 28px;
-  line-height: 1.4;
-  color: #4A211B;
-  margin: 0;
-  max-width: 800px;
-}
-.sh-note {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 500;
-  font-style: italic;
-  font-size: 15px;
-  color: #B36A5E;
-  margin: 0;
-  max-width: 640px;
-}
-.sh-prompt {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 600;
-  font-size: 18px;
-  color: #4A211B;
-  margin: 0;
-}
-
-/* Contrast */
-.sh-examples { display: flex; flex-direction: column; gap: 8px; }
-.sh-example-line {
-  font-family: 'Fredoka', sans-serif;
-  font-weight: 600;
-  font-size: 22px;
-  color: #4A211B;
-  margin: 0;
-}
-
-/* Make It */
-.sh-form-rule {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 600;
-  font-size: 17px;
-  color: #8C5C52;
-  margin: 0;
-  max-width: 700px;
-}
-.sh-models { display: flex; flex-direction: column; gap: 6px; }
-.sh-model-line {
-  font-family: 'Fredoka', sans-serif;
-  font-weight: 600;
-  font-size: 22px;
-  color: #4A211B;
-  margin: 0;
-}
-
-/* Trigger / Pressure prompt lists */
-.sh-prompt-list {
-  margin: 0;
-  padding-left: 22px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-.sh-prompt-list li {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 600;
-  font-size: 19px;
-  color: #4A211B;
-  line-height: 1.4;
-}
-
-/* Interrupt chips */
-.sh-chips { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; max-width: 640px; }
-.sh-chip {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 600;
-  font-size: 14px;
-  color: #E1483B;
-  background: rgba(225,72,59,0.1);
-  border: 1.5px solid rgba(225,72,59,0.3);
-  border-radius: 999px;
-  padding: 6px 14px;
-}
-
-/* Same story rounds */
-.sh-round-list {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  counter-reset: round;
-}
-.sh-round-list li {
-  font-family: 'Fredoka', sans-serif;
-  font-weight: 600;
-  font-size: 22px;
-  color: #4A211B;
-  counter-increment: round;
-}
-.sh-round-list li::before {
-  content: "Round " counter(round) " — ";
-  color: #E1483B;
-}
-
-/* Clock turn */
-.sh-base-sentence {
-  font-family: 'Fredoka', sans-serif;
-  font-weight: 700;
-  font-size: 30px;
-  color: #4A211B;
-  margin: 0;
-}
-.sh-cue-chain { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; align-items: center; max-width: 800px; }
-.sh-cue-step {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 600;
-  font-size: 16px;
-  color: #4A211B;
-  background: #FFEDE9;
-  border-radius: 999px;
-  padding: 6px 14px;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-.sh-cue-arrow { color: #E1483B; }
-
-/* Scorecard */
-.sh-slide--scorecard { align-items: center; justify-content: flex-start; }
-.sh-sheet {
-  width: 100%;
-  max-width: 420px;
-  background: #FFEDE9;
-  border: 1px solid #FFD2C8;
-  border-radius: 16px;
-  padding: 16px 24px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  margin: 0 auto;
-}
-.sh-sheet-head { display: flex; align-items: center; justify-content: space-between; }
-.sh-sheet-title { font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 20px; color: #4A211B; }
-.sh-sheet-tag {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 700;
-  font-size: 11px;
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
-  color: #E1483B;
-  background: rgba(225,72,59,0.14);
-  padding: 4px 11px;
-  border-radius: 999px;
-}
-.sh-candoline {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 500;
-  font-style: italic;
-  font-size: 13px;
-  line-height: 1.4;
-  color: #8C5C52;
-  margin: 0;
-}
-.sh-sheet-rows { display: flex; flex-direction: column; gap: 4px; }
-.sh-score-row { display: flex; align-items: center; gap: 10px; border-radius: 8px; padding: 5px 12px; }
-.sh-score-row.is-alt { background: #FFE0D6; }
-.sh-score-row--total { background: rgba(225,72,59,0.14); margin-top: 4px; }
-.sh-score-label { font-family: 'Quicksand', sans-serif; font-weight: 600; font-size: 13.5px; color: #4A211B; flex: 1; }
-.sh-score-input {
-  width: 46px;
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 700;
-  font-size: 14px;
-  color: #4A211B;
-  background: #FFFFFF;
-  border: 1px solid #FFD2C8;
-  border-radius: 6px;
-  padding: 3px 6px;
-  text-align: center;
-}
-.sh-score-total { font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 17px; color: #E1483B; }
-.sh-score-max { font-family: 'Quicksand', sans-serif; font-size: 12.5px; color: #C98F84; }
-.sh-download-btn {
-  align-self: center;
-  margin-top: 4px;
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 700;
-  font-size: 13px;
-  color: #4A211B;
-  background: #FFB3A6;
-  border: none;
-  border-radius: 999px;
-  padding: 8px 18px;
-  cursor: pointer;
-}
-
-/* Nav row */
-.sh-nav-row { display: flex; align-items: center; justify-content: space-between; padding-top: 14px; border-top: 1px solid #FFE4DD; flex-shrink: 0; }
-.sh-nav-btn {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 700;
-  font-size: 14px;
-  color: #4A211B;
-  background: #FFEDE9;
-  border: 1px solid #FFD2C8;
-  border-radius: 999px;
-  padding: 8px 16px;
-  cursor: pointer;
-}
-.sh-nav-btn--primary { background: #E1483B; color: #FFFFFF; border-color: #E1483B; }
-.sh-nav-btn:disabled { opacity: 0.35; cursor: default; }
-.sh-nav-dots { display: flex; flex-wrap: wrap; justify-content: center; gap: 5px; max-width: 400px; }
-.sh-nav-dot { width: 6px; height: 6px; border-radius: 999px; background: #FFD2C8; }
-.sh-nav-dot.is-active { width: 16px; background: #E1483B; }
 `;

@@ -89,10 +89,10 @@ export default function ShiftTrack() {
                 <div className="sht-row-body">
                   <div className="sht-row-topline">
                     <span className="sht-row-tag">{lesson.tag}</span>
-                    <span className="sht-row-meta">11 slides</span>
+                    <span className="sht-row-meta">{lesson.tenses}</span>
                   </div>
                   <h3 className="sht-row-title">{lesson.title}</h3>
-                  <p className="sht-row-desc">{lesson.theme}</p>
+                  <p className="sht-row-desc">{lesson.scene.context}</p>
                 </div>
                 <div className="sht-row-actions">
                   <button type="button" className="sht-btn-guide" onClick={(e) => { e.preventDefault(); e.stopPropagation(); openGuide(track.id, num); }}>
