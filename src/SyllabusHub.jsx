@@ -71,14 +71,15 @@ export default function SyllabusHub() {
     <div className="syh-shell">
       <style>{CSS}</style>
 
-      <div className="syh-topbar">
-        <button type="button" className="syh-brand" onClick={() => navigate("/library")} title="Back to Homeroom">
-          <img src="/logo-sentivo.png" alt="" className="syh-brand-logo" />entivo
-        </button>
-      </div>
+      <div className="syh-stage">
+        <div className="syh-topbar">
+          <button type="button" className="syh-brand" onClick={() => navigate("/library")} title="Back to Homeroom">
+            <img src="/logo-sentivo.png" alt="" className="syh-brand-logo" />entivo
+          </button>
+        </div>
 
-      <div className="syh-header">
-        <div className="syh-header-inner">
+        <div className="syh-header">
+          <div className="syh-header-blob" />
           <div className="syh-hero">
             <span className="syh-eyebrow">Sentivo · Homeroom</span>
             <h1 className="syh-hero-title">Syllabus Generator</h1>
@@ -87,72 +88,68 @@ export default function SyllabusHub() {
             </p>
           </div>
         </div>
-      </div>
 
-      <div className="syh-page">
-        <div className="syh-stage">
-          {authLoading ? null : !user ? (
-            <div className="syh-locked">
-              <span className="syh-locked-icon">🔒</span>
-              <h2 className="syh-locked-title">Log in to build and save a syllabus</h2>
-              <p className="syh-locked-blurb">Your syllabi are saved to your account so you can come back and edit them anytime.</p>
-              <div className="syh-locked-actions">
-                <button type="button" className="syh-btn syh-btn--primary" onClick={() => setAuthMode("login")}>Log in</button>
-                <button type="button" className="syh-btn syh-btn--ghost" onClick={() => setAuthMode("signup")}>Sign up</button>
-              </div>
+        {authLoading ? null : !user ? (
+          <div className="syh-locked">
+            <span className="syh-locked-icon">🔒</span>
+            <h2 className="syh-locked-title">Log in to build and save a syllabus</h2>
+            <p className="syh-locked-blurb">Your syllabi are saved to your account so you can come back and edit them anytime.</p>
+            <div className="syh-locked-actions">
+              <button type="button" className="syh-btn syh-btn--primary" onClick={() => setAuthMode("login")}>Log in</button>
+              <button type="button" className="syh-btn syh-btn--ghost" onClick={() => setAuthMode("signup")}>Sign up</button>
             </div>
-          ) : (
-            <>
-              <button type="button" className="syh-new-card" onClick={createSyllabus} disabled={creating}>
-                <span className="syh-new-icon">+</span>
-                <span className="syh-new-label">{creating ? "Creating…" : "New syllabus"}</span>
-              </button>
+          </div>
+        ) : (
+          <>
+            <button type="button" className="syh-new-card" onClick={createSyllabus} disabled={creating}>
+              <span className="syh-new-icon">+</span>
+              <span className="syh-new-label">{creating ? "Creating…" : "New syllabus"}</span>
+            </button>
 
-              <div className="syh-list-label">My syllabi{syllabi.length > 0 ? ` (${syllabi.length})` : ""}</div>
-              <div className="syh-grid">
-                {loading ? (
-                  <div className="syh-empty">Loading your syllabi…</div>
-                ) : syllabi.length === 0 ? (
-                  <div className="syh-empty">No syllabi yet, start one above.</div>
-                ) : (
-                  syllabi.map((syl) => {
-                    const sessionList = syl.sessions || [];
-                    return (
+            <div className="syh-list-label">My syllabi{syllabi.length > 0 ? ` (${syllabi.length})` : ""}</div>
+            <div className="syh-grid">
+              {loading ? (
+                <div className="syh-empty">Loading your syllabi…</div>
+              ) : syllabi.length === 0 ? (
+                <div className="syh-empty">No syllabi yet, start one above.</div>
+              ) : (
+                syllabi.map((syl) => {
+                  const sessionList = syl.sessions || [];
+                  return (
+                    <button
+                      type="button"
+                      key={syl.id}
+                      className="syh-card"
+                      onClick={() => navigate(`/library/syllabus/${syl.id}/edit`)}
+                    >
                       <button
                         type="button"
-                        key={syl.id}
-                        className="syh-card"
-                        onClick={() => navigate(`/library/syllabus/${syl.id}/edit`)}
+                        className="syh-card-delete"
+                        onClick={(e) => { e.stopPropagation(); setDeleteTarget(syl); }}
+                        disabled={deletingId === syl.id}
+                        aria-label="Delete syllabus"
                       >
-                        <button
-                          type="button"
-                          className="syh-card-delete"
-                          onClick={(e) => { e.stopPropagation(); setDeleteTarget(syl); }}
-                          disabled={deletingId === syl.id}
-                          aria-label="Delete syllabus"
-                        >
-                          ×
-                        </button>
-                        {syl.level && <span className="syh-card-level">{syl.level}{syl.age_track ? ` · ${syl.age_track}` : ""}</span>}
-                        <span className="syh-card-title">{syl.title || "Untitled syllabus"}</span>
-                        {sessionList.length > 0 && (
-                          <span className="syh-card-strip">
-                            {sessionList.map((s, i) => (
-                              <span key={i} style={{ background: SKILL_COLORS[s.skill] || "#E5D8D2" }} />
-                            ))}
-                          </span>
-                        )}
-                        <span className="syh-card-meta">
-                          {sessionList.length} {sessionList.length === 1 ? "session" : "sessions"} · {timeAgo(syl.updated_at)}
-                        </span>
+                        ×
                       </button>
-                    );
-                  })
-                )}
-              </div>
-            </>
-          )}
-        </div>
+                      {syl.level && <span className="syh-card-level">{syl.level}{syl.age_track ? ` · ${syl.age_track}` : ""}</span>}
+                      <span className="syh-card-title">{syl.title || "Untitled syllabus"}</span>
+                      {sessionList.length > 0 && (
+                        <span className="syh-card-strip">
+                          {sessionList.map((s, i) => (
+                            <span key={i} style={{ background: SKILL_COLORS[s.skill] || "#E5D8D2" }} />
+                          ))}
+                        </span>
+                      )}
+                      <span className="syh-card-meta">
+                        {sessionList.length} {sessionList.length === 1 ? "session" : "sessions"} · {timeAgo(syl.updated_at)}
+                      </span>
+                    </button>
+                  );
+                })
+              )}
+            </div>
+          </>
+        )}
       </div>
 
       {authMode && <AuthForm mode={authMode} onClose={() => setAuthMode(null)} />}
@@ -175,27 +172,32 @@ const CSS = `
 .syh-shell { min-height: 100vh; background: #FBF4F1; font-family: 'Inter', sans-serif; color: #1B2A4A; }
 .syh-shell * { box-sizing: border-box; }
 
-.syh-topbar { background: #FBF4F1; padding: 20px 24px 4px; }
+.syh-stage { max-width: 900px; margin: 0 auto; padding: 24px 24px 28px; }
+
+.syh-topbar { display: flex; align-items: center; margin-bottom: 20px; }
 .syh-brand {
   display: inline-flex; align-items: center; gap: 2px;
   font-family: 'Inter', sans-serif; font-weight: 800; font-size: 19px;
   color: #1B2A4A; text-decoration: none; cursor: pointer; border: none; background: none; padding: 0;
 }
-.syh-brand-logo { height: 30px; width: auto; display: block; margin-right: -4px; }
+.syh-brand-logo { height: 28px; width: auto; display: block; margin-right: -4px; }
 
-.syh-header { background: #1B2A4A; padding: 16px 24px 40px; }
-.syh-header-inner { max-width: 900px; margin: 0 auto; }
+.syh-header {
+  background: #1B2A4A; border-radius: 22px; padding: 32px 26px 36px; margin-bottom: 28px;
+  position: relative; overflow: hidden; box-shadow: 0 18px 36px rgba(27,42,74,0.2);
+}
+.syh-header-blob {
+  position: absolute; width: 240px; height: 240px; border-radius: 50%;
+  background: #FF6B4A; opacity: 0.16; top: -100px; right: -80px; pointer-events: none;
+}
 
-.syh-hero { text-align: center; }
+.syh-hero { text-align: center; position: relative; }
 .syh-eyebrow {
   display: inline-block; font-weight: 700; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
   color: #FF6B4A; background: rgba(255,107,74,0.18); border-radius: 999px; padding: 5px 14px; margin-bottom: 14px;
 }
-.syh-hero-title { font-family: 'Fraunces', serif; font-weight: 600; font-size: clamp(32px, 3.8vw, 42px); margin: 0 0 10px; color: #FFFFFF; letter-spacing: -0.01em; }
-.syh-hero-blurb { font-size: 15px; color: #B9C3DC; margin: 0 auto; max-width: 520px; line-height: 1.55; }
-
-.syh-page { padding: 28px 24px 24px; }
-.syh-stage { max-width: 900px; margin: 0 auto; }
+.syh-hero-title { font-family: 'Fraunces', serif; font-weight: 600; font-size: clamp(30px, 3.6vw, 40px); margin: 0 0 10px; color: #FFFFFF; letter-spacing: -0.01em; }
+.syh-hero-blurb { font-size: 15px; color: #B9C3DC; margin: 0 auto; max-width: 480px; line-height: 1.55; }
 
 .syh-locked { text-align: center; padding: 50px 20px; background: #FFFFFF; border-radius: 20px; }
 .syh-locked-icon { font-size: 34px; display: block; margin-bottom: 12px; }

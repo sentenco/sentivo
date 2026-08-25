@@ -185,33 +185,38 @@ export default function SyllabusEditor() {
     <div className="syl-shell">
       <style>{CSS}</style>
 
-      <div className="syl-topbar no-print">
-        <button type="button" className="syl-brand" onClick={() => navigate("/library/syllabus")} title="Back to your syllabi">
-          <img src="/logo-sentivo.png" alt="" className="syl-brand-logo" />entivo
-        </button>
-        <div className="syl-topbar-actions">
-          <span className="syl-saved-note">{saving ? "Saving…" : savedAt ? "Saved" : ""}</span>
-          <button type="button" className="syl-btn syl-btn--ghost" onClick={() => setFollowUpPanelOpen((o) => !o)}>Generate follow-up</button>
-          <button type="button" className="syl-btn syl-btn--ghost" onClick={() => window.print()}>Print</button>
-          <button type="button" className="syl-btn syl-btn--primary" onClick={save} disabled={saving}>Save</button>
+      <div className="syl-frame no-print">
+        <div className="syl-topbar">
+          <button type="button" className="syl-brand" onClick={() => navigate("/library/syllabus")} title="Back to your syllabi">
+            <img src="/logo-sentivo.png" alt="" className="syl-brand-logo" />entivo
+          </button>
+          <div className="syl-topbar-actions">
+            <span className="syl-saved-note">{saving ? "Saving…" : savedAt ? "Saved" : ""}</span>
+            <button type="button" className="syl-btn syl-btn--ghost" onClick={() => setFollowUpPanelOpen((o) => !o)}>Generate follow-up</button>
+            <button type="button" className="syl-btn syl-btn--ghost" onClick={() => window.print()}>Print</button>
+            <button type="button" className="syl-btn syl-btn--primary" onClick={save} disabled={saving}>Save</button>
+          </div>
         </div>
-      </div>
 
-      <div className="syl-header no-print">
-        <input
-          className="syl-title-input"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          placeholder="Untitled syllabus"
-        />
-        <div className="syl-meta-row">
-          <select className="syl-pill-select" value={level} onChange={(e) => { setLevel(e.target.value); setFollowUpLevel(e.target.value); }}>
-            {SYLLABUS_LEVELS.map((lv) => <option key={lv} value={lv}>{lv}</option>)}
-          </select>
-          <select className="syl-pill-select" value={ageTrack} onChange={(e) => setAgeTrack(e.target.value)}>
-            {SYLLABUS_AGE_TRACKS.map((t) => <option key={t.key} value={t.key}>{t.label}</option>)}
-          </select>
-          <span className="syl-pill-static">{sessions.length} {sessions.length === 1 ? "session" : "sessions"}</span>
+        <div className="syl-header">
+          <div className="syl-header-blob" />
+          <div className="syl-header-content">
+            <input
+              className="syl-title-input"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              placeholder="Untitled syllabus"
+            />
+            <div className="syl-meta-row">
+              <select className="syl-pill-select" value={level} onChange={(e) => { setLevel(e.target.value); setFollowUpLevel(e.target.value); }}>
+                {SYLLABUS_LEVELS.map((lv) => <option key={lv} value={lv}>{lv}</option>)}
+              </select>
+              <select className="syl-pill-select" value={ageTrack} onChange={(e) => setAgeTrack(e.target.value)}>
+                {SYLLABUS_AGE_TRACKS.map((t) => <option key={t.key} value={t.key}>{t.label}</option>)}
+              </select>
+              <span className="syl-pill-static">{sessions.length} {sessions.length === 1 ? "session" : "sessions"}</span>
+            </div>
+          </div>
         </div>
       </div>
       <div className="syl-meta-print print-only">{title} — {level} · {SYLLABUS_AGE_TRACKS.find((t) => t.key === ageTrack)?.label}</div>
@@ -321,7 +326,9 @@ const CSS = `
 .syl-shell * { box-sizing: border-box; }
 .syl-signin { text-align: center; margin-top: 80px; color: #5A6B92; font-family: 'Inter', sans-serif; }
 
-.syl-topbar { display: flex; align-items: center; justify-content: space-between; padding: 20px 28px; background: #FBF4F1; }
+.syl-frame { max-width: 900px; margin: 0 auto; padding: 24px 24px 0; }
+
+.syl-topbar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
 .syl-brand {
   display: inline-flex; align-items: center; gap: 2px;
   font-family: 'Inter', sans-serif; font-weight: 800; font-size: 18px;
@@ -331,7 +338,15 @@ const CSS = `
 .syl-topbar-actions { display: flex; align-items: center; gap: 8px; }
 .syl-saved-note { font-size: 12px; color: #5A6B92; font-weight: 700; }
 
-.syl-header { background: #1B2A4A; padding: 20px 28px 26px; color: #FFFFFF; }
+.syl-header {
+  background: #1B2A4A; border-radius: 22px; padding: 28px 30px 30px; color: #FFFFFF;
+  position: relative; overflow: hidden; box-shadow: 0 18px 36px rgba(27,42,74,0.2);
+}
+.syl-header-blob {
+  position: absolute; width: 220px; height: 220px; border-radius: 50%;
+  background: #FF6B4A; opacity: 0.16; top: -90px; right: -70px; pointer-events: none;
+}
+.syl-header-content { position: relative; }
 
 .syl-btn { font-weight: 700; font-size: 13px; border-radius: 999px; padding: 9px 18px; cursor: pointer; border: none; white-space: nowrap; }
 .syl-btn--primary { background: #FF6B4A; color: #FFFFFF; }
