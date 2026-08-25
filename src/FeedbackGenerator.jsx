@@ -907,13 +907,14 @@ export default function FeedbackGenerator() {
     <div className="fbg-shell">
       <style>{CSS}</style>
       <div className="fbg-wizard">
-        <header className="fbg-topbar">
-          <span className="fbg-badge">📋</span>
-          <div className="fbg-topbar-text">
+        <div className="fbg-header">
+          <div className="fbg-header-blob" />
+          <div className="fbg-hero">
+            <span className="fbg-eyebrow">Sentivo · Homeroom</span>
             <h1 className="fbg-title">Lesson Feedback</h1>
             <p className="fbg-sub">One category at a time — pick what applies.</p>
           </div>
-        </header>
+        </div>
 
         {step > 0 && (
           <div className="fbg-stepper">
@@ -1102,33 +1103,35 @@ export default function FeedbackGenerator() {
 }
 
 const CSS = `
-@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&family=Quicksand:wght@500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&display=swap');
 
 .fbg-shell {
   min-height: 100vh;
-  background:
-    radial-gradient(1100px 560px at 88% -12%, rgba(255,107,74,0.10), transparent 60%),
-    radial-gradient(900px 480px at -8% 112%, rgba(47,166,107,0.07), transparent 60%),
-    #FFFDFB;
-  color: #2B2A4A;
-  font-family: 'Quicksand', sans-serif;
+  background: #FBF4F1;
+  color: #1B2A4A;
+  font-family: 'Inter', sans-serif;
   padding: 28px 20px;
 }
 .fbg-shell * { box-sizing: border-box; }
 
 .fbg-wizard { max-width: 640px; margin: 0 auto; }
 
-.fbg-topbar { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 18px; }
-.fbg-topbar-text { flex: 1; }
-.fbg-badge {
-  display: flex; align-items: center; justify-content: center;
-  width: 44px; height: 44px; border-radius: 14px; flex-shrink: 0;
-  background: linear-gradient(135deg, #FF6B4A, #FF9466);
-  box-shadow: 0 8px 18px rgba(255,107,74,0.32);
-  font-size: 20px;
+.fbg-header {
+  background: #1B2A4A; border-radius: 22px; padding: 26px 24px 28px; margin-bottom: 22px;
+  position: relative; overflow: hidden; box-shadow: 0 18px 36px rgba(27,42,74,0.2);
 }
-.fbg-title { font-family: 'Fredoka', sans-serif; font-size: 22px; font-weight: 700; margin: 0 0 3px; letter-spacing: -0.01em; }
-.fbg-sub { font-size: 13px; color: #8B84A3; margin: 0; }
+.fbg-header-blob {
+  position: absolute; width: 200px; height: 200px; border-radius: 50%;
+  background: #FF6B4A; opacity: 0.16; top: -80px; right: -60px; pointer-events: none;
+}
+.fbg-hero { position: relative; }
+.fbg-eyebrow {
+  display: inline-block; font-weight: 700; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase;
+  color: #FF6B4A; background: rgba(255,107,74,0.18); border-radius: 999px; padding: 4px 12px; margin-bottom: 10px;
+}
+.fbg-title { font-family: 'Fraunces', serif; font-size: 24px; font-weight: 600; margin: 0 0 5px; letter-spacing: -0.01em; color: #FFFFFF; }
+.fbg-sub { font-size: 13px; color: #B9C3DC; margin: 0; }
+
 .fbg-stepper { display: flex; align-items: flex-start; justify-content: center; gap: 0; margin-bottom: 20px; }
 .fbg-step-node {
   display: flex; flex-direction: column; align-items: center; gap: 5px;
@@ -1136,33 +1139,33 @@ const CSS = `
 }
 .fbg-step-node:not(:last-child)::after {
   content: ""; position: absolute; top: 17px; left: 50%; width: 100%; height: 2px;
-  background: rgba(43,42,74,0.12); z-index: 0;
+  background: #EDE1DB; z-index: 0;
 }
 .fbg-step-node.is-complete:not(:last-child)::after { background: #2FA66B; }
 .fbg-step-circle {
   position: relative; z-index: 1; width: 34px; height: 34px; border-radius: 50%;
   display: flex; align-items: center; justify-content: center; font-size: 14px;
-  background: #fff; border: 2px solid rgba(43,42,74,0.14); color: #8B84A3;
+  background: #fff; border: 2px solid #EDE1DB; color: #5A6B92;
   transition: all 0.15s;
 }
 .fbg-step-circle svg { width: 16px; height: 16px; }
 .fbg-step-node.is-current .fbg-step-circle {
   border-color: #FF6B4A;
-  background: linear-gradient(135deg, #FF6B4A, #FF9466);
+  background: #FF6B4A;
   color: #fff;
   box-shadow: 0 4px 12px rgba(255,107,74,0.35);
   transform: scale(1.08);
 }
 .fbg-step-node.is-complete .fbg-step-circle { border-color: #2FA66B; background: rgba(47,166,107,0.12); color: #1F7A4C; }
-.fbg-step-node-label { font-size: 10px; font-weight: 700; color: #8B84A3; text-align: center; }
+.fbg-step-node-label { font-size: 10px; font-weight: 700; color: #5A6B92; text-align: center; }
 .fbg-step-node.is-current .fbg-step-node-label { color: #FF6B4A; }
 
 .fbg-step-card {
   background: #fff;
-  border: 1px solid rgba(43,42,74,0.08);
-  border-radius: 22px;
+  border: 1px solid #EDE1DB;
+  border-radius: 20px;
   padding: 24px;
-  box-shadow: 0 16px 40px rgba(43,42,74,0.07);
+  box-shadow: 0 10px 30px rgba(27,42,74,0.08);
   min-height: 380px;
   display: flex;
   flex-direction: column;
@@ -1172,59 +1175,59 @@ const CSS = `
 .fbg-step-heading-icon {
   width: 44px; height: 44px; border-radius: 14px; flex-shrink: 0;
   display: flex; align-items: center; justify-content: center; font-size: 21px;
-  background: rgba(255,107,74,0.10); color: #FF6B4A;
+  background: #FDECE5; color: #FF6B4A;
 }
 .fbg-step-heading-icon svg { width: 22px; height: 22px; }
-.fbg-step-heading-text h2 { font-family: 'Fredoka', sans-serif; font-size: 18px; font-weight: 700; margin: 0; display: flex; align-items: center; gap: 8px; }
+.fbg-step-heading-text h2 { font-family: 'Fraunces', serif; font-size: 18px; font-weight: 600; margin: 0; display: flex; align-items: center; gap: 8px; color: #1B2A4A; }
 .fbg-step-heading-level {
-  font-family: 'Quicksand', sans-serif; font-size: 11px; font-weight: 700;
-  color: #FF6B4A; background: rgba(255,107,74,0.1); border-radius: 999px;
+  font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 700;
+  color: #E0502F; background: #FDECE5; border-radius: 999px;
   padding: 2px 9px;
 }
-.fbg-step-heading-text p { font-size: 12.5px; color: #8B84A3; margin: 2px 0 0; }
+.fbg-step-heading-text p { font-size: 12.5px; color: #5A6B92; margin: 2px 0 0; }
 
 .fbg-names { display: flex; flex-direction: column; gap: 14px; }
 .fbg-field { display: flex; flex-direction: column; gap: 5px; }
-.fbg-label { font-family: 'Quicksand', sans-serif; font-weight: 700; font-size: 12px; color: #5A5876; }
+.fbg-label { font-family: 'Inter', sans-serif; font-weight: 700; font-size: 12px; color: #5A6B92; }
 .fbg-input {
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 13.5px;
-  color: #2B2A4A;
-  background: #F8F7FB;
-  border: 1.5px solid rgba(43,42,74,0.1);
+  color: #1B2A4A;
+  background: #FBF4F1;
+  border: 1.5px solid #EDE1DB;
   border-radius: 12px;
   padding: 10px 12px;
   outline: none;
 }
 .fbg-input:focus { border-color: #FF6B4A; }
-.fbg-input::placeholder { color: #B0ABC2; }
+.fbg-input::placeholder { color: #A8A0B0; }
 
 .fbg-level-row { display: flex; flex-wrap: wrap; gap: 8px; }
 .fbg-level-chip {
   display: flex; flex-direction: column; align-items: flex-start; gap: 1px;
-  font-family: 'Quicksand', sans-serif;
-  background: #F8F7FB;
-  border: 1.5px solid rgba(43,42,74,0.1);
+  font-family: 'Inter', sans-serif;
+  background: #FBF4F1;
+  border: 1.5px solid #EDE1DB;
   border-radius: 12px;
   padding: 7px 12px;
   cursor: pointer;
   transition: background 0.12s, border-color 0.12s, box-shadow 0.12s, transform 0.12s;
 }
-.fbg-level-chip:hover { border-color: rgba(43,42,74,0.22); transform: translateY(-1px); }
-.fbg-level-code { font-weight: 700; font-size: 13px; color: #2B2A4A; }
-.fbg-level-name { font-weight: 600; font-size: 10.5px; color: #8B84A3; }
+.fbg-level-chip:hover { border-color: #D8C7BC; transform: translateY(-1px); }
+.fbg-level-code { font-weight: 700; font-size: 13px; color: #1B2A4A; }
+.fbg-level-name { font-weight: 600; font-size: 10.5px; color: #5A6B92; }
 .fbg-level-chip.is-active {
-  background: linear-gradient(180deg, rgba(255,107,74,0.14), rgba(255,107,74,0.07));
+  background: #FDECE5;
   border-color: #FF6B4A;
   box-shadow: 0 3px 10px rgba(255,107,74,0.18);
 }
-.fbg-level-chip.is-active .fbg-level-code { color: #C24E3A; }
-.fbg-level-chip.is-active .fbg-level-name { color: #C24E3A; }
+.fbg-level-chip.is-active .fbg-level-code { color: #E0502F; }
+.fbg-level-chip.is-active .fbg-level-name { color: #E0502F; }
 
 .fbg-cols-head { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 10px; }
 .fbg-cols-head-item {
   display: flex; align-items: center; gap: 6px;
-  font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 12.5px;
+  font-family: 'Inter', sans-serif; font-weight: 700; font-size: 12.5px;
   padding: 7px 13px; border-radius: 999px; width: fit-content;
 }
 .fbg-cols-head-item--strength { background: rgba(47,166,107,0.11); color: #1F7A4C; }
@@ -1232,29 +1235,29 @@ const CSS = `
 
 .fbg-cat-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; align-items: start; margin-bottom: 16px; }
 .fbg-chip-row { display: flex; flex-wrap: wrap; align-content: flex-start; gap: 6px; }
-.fbg-cat-icon { display: inline-flex; color: #8B84A3; }
+.fbg-cat-icon { display: inline-flex; color: #5A6B92; }
 .fbg-cat-icon svg { width: 15px; height: 15px; }
 
 .fbg-chip {
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 12.5px;
   font-weight: 600;
-  color: #5A5876;
-  background: #F8F7FB;
-  border: 1.5px solid rgba(43,42,74,0.1);
+  color: #5A6B92;
+  background: #FBF4F1;
+  border: 1.5px solid #EDE1DB;
   border-radius: 999px;
   padding: 6px 12px;
   cursor: pointer;
   transition: background 0.12s, border-color 0.12s, color 0.12s, box-shadow 0.12s, transform 0.12s;
 }
-.fbg-chip:hover { border-color: rgba(43,42,74,0.22); transform: translateY(-1px); box-shadow: 0 4px 10px rgba(43,42,74,0.08); }
+.fbg-chip:hover { border-color: #D8C7BC; transform: translateY(-1px); box-shadow: 0 4px 10px rgba(27,42,74,0.08); }
 .fbg-chip--strength.is-active {
-  background: linear-gradient(180deg, rgba(47,166,107,0.16), rgba(47,166,107,0.09));
+  background: rgba(47,166,107,0.14);
   border-color: #2FA66B; color: #1F7A4C;
   box-shadow: 0 3px 10px rgba(47,166,107,0.16);
 }
 .fbg-chip--improve.is-active {
-  background: linear-gradient(180deg, rgba(224,138,60,0.16), rgba(224,138,60,0.09));
+  background: rgba(224,138,60,0.14);
   border-color: #E08A3C; color: #A8611E;
   box-shadow: 0 3px 10px rgba(224,138,60,0.16);
 }
@@ -1266,15 +1269,15 @@ const CSS = `
 
 .fbg-step-nav { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: auto; padding-top: 16px; }
 .fbg-btn-back {
-  background: none; border: 1.5px solid rgba(43,42,74,0.14); color: #5A5876;
+  background: none; border: 1.5px solid #EDE1DB; color: #5A6B92;
   border-radius: 999px; padding: 9px 18px; font-weight: 700; font-size: 12.5px;
-  font-family: 'Quicksand', sans-serif; cursor: pointer; transition: border-color 0.15s;
+  font-family: 'Inter', sans-serif; cursor: pointer; transition: border-color 0.15s;
 }
-.fbg-btn-back:hover { border-color: rgba(43,42,74,0.3); }
+.fbg-btn-back:hover { border-color: #D8C7BC; }
 .fbg-btn-next {
-  background: linear-gradient(135deg, #FF6B4A, #FF8A63); color: #fff; border: none;
+  background: #FF6B4A; color: #fff; border: none;
   border-radius: 999px; padding: 9px 22px; font-weight: 700; font-size: 12.5px;
-  font-family: 'Quicksand', sans-serif; cursor: pointer;
+  font-family: 'Inter', sans-serif; cursor: pointer;
   box-shadow: 0 6px 16px rgba(255,107,74,0.28);
   transition: filter 0.15s, transform 0.15s, opacity 0.15s, box-shadow 0.15s;
 }
@@ -1284,64 +1287,64 @@ const CSS = `
 .fbg-review-list { display: flex; flex-direction: column; gap: 8px; margin-bottom: 8px; }
 .fbg-review-row {
   display: flex; align-items: center; justify-content: space-between; gap: 10px;
-  background: #FBF9F6; border: 1px solid rgba(43,42,74,0.06); border-radius: 14px;
+  background: #FBF4F1; border: 1px solid #EDE1DB; border-radius: 14px;
   padding: 10px 14px;
 }
 .fbg-review-row-main { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-.fbg-review-row-label { font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 13px; }
-.fbg-review-row-counts { font-size: 11.5px; color: #8B84A3; font-weight: 600; }
+.fbg-review-row-label { font-family: 'Fraunces', serif; font-weight: 600; font-size: 13px; color: #1B2A4A; }
+.fbg-review-row-counts { font-size: 11.5px; color: #5A6B92; font-weight: 600; }
 .fbg-review-edit {
   background: none; border: none; color: #FF6B4A; font-weight: 700; font-size: 12px;
-  cursor: pointer; font-family: 'Quicksand', sans-serif; padding: 4px 8px; flex-shrink: 0;
+  cursor: pointer; font-family: 'Inter', sans-serif; padding: 4px 8px; flex-shrink: 0;
 }
 .fbg-review-edit:hover { text-decoration: underline; }
 
 .fbg-preview-card { position: relative; overflow: hidden; }
 .fbg-preview-accent {
   position: absolute; top: -24px; left: -24px; right: -24px; height: 5px;
-  background: linear-gradient(90deg, #FF6B4A, #FFB199);
+  background: #FF6B4A;
 }
 .fbg-preview-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; margin-top: 6px; }
 .fbg-preview-label {
-  font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 12px;
-  letter-spacing: 0.06em; text-transform: uppercase; color: #8B84A3;
+  font-family: 'Inter', sans-serif; font-weight: 700; font-size: 12px;
+  letter-spacing: 0.06em; text-transform: uppercase; color: #5A6B92;
 }
 .fbg-preview-actions { display: flex; gap: 8px; }
 .fbg-generate-btn, .fbg-copy-btn {
-  font-family: 'Quicksand', sans-serif; font-weight: 700; font-size: 12.5px; color: #fff;
+  font-family: 'Inter', sans-serif; font-weight: 700; font-size: 12.5px; color: #fff;
   border: none; border-radius: 999px; padding: 9px 16px; cursor: pointer;
   transition: filter 0.15s, transform 0.15s; white-space: nowrap;
 }
-.fbg-generate-btn { background: linear-gradient(135deg, #FF6B4A, #FF8A63); box-shadow: 0 6px 16px rgba(255,107,74,0.28); }
-.fbg-copy-btn { background: #2B2A4A; }
+.fbg-generate-btn { background: #FF6B4A; box-shadow: 0 6px 16px rgba(255,107,74,0.28); }
+.fbg-copy-btn { background: #1B2A4A; }
 .fbg-generate-btn:hover, .fbg-copy-btn:hover { filter: brightness(0.95); transform: translateY(-1px); }
 
-.fbg-preview-meta { font-size: 12px; font-weight: 600; color: #8B84A3; display: flex; gap: 6px; margin-top: 10px; }
-.fbg-preview-meta-sep { color: #D8D3E6; }
+.fbg-preview-meta { font-size: 12px; font-weight: 600; color: #5A6B92; display: flex; gap: 6px; margin-top: 10px; }
+.fbg-preview-meta-sep { color: #D8C7BC; }
 
 .fbg-preview {
   margin: 12px 0 14px;
   white-space: pre-wrap;
   word-wrap: break-word;
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 13.5px;
   line-height: 1.7;
-  color: #2B2A4A;
-  background: #FFFCFA;
-  border: 1px solid rgba(43,42,74,0.06);
+  color: #1B2A4A;
+  background: #FBF4F1;
+  border: 1px solid #EDE1DB;
   border-radius: 14px;
   padding: 16px 18px;
   min-height: 220px;
 }
 .fbg-preview-footer { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
 .fbg-edit-answers-btn {
-  background: none; border: none; color: #8B84A3; font-weight: 700; font-size: 12px;
-  cursor: pointer; font-family: 'Quicksand', sans-serif; padding: 0;
+  background: none; border: none; color: #5A6B92; font-weight: 700; font-size: 12px;
+  cursor: pointer; font-family: 'Inter', sans-serif; padding: 0;
 }
 .fbg-edit-answers-btn:hover { color: #FF6B4A; }
 .fbg-restart-btn {
-  background: none; border: none; color: #8B84A3; font-weight: 700; font-size: 12px;
-  cursor: pointer; font-family: 'Quicksand', sans-serif; padding: 0; white-space: nowrap;
+  background: none; border: none; color: #5A6B92; font-weight: 700; font-size: 12px;
+  cursor: pointer; font-family: 'Inter', sans-serif; padding: 0; white-space: nowrap;
 }
 .fbg-restart-btn:hover { color: #C24E3A; }
 

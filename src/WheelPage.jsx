@@ -41,6 +41,8 @@ export default function WheelPage() {
     setWinnerIndex(null);
   }
 
+  const winnerFontSize = result ? Math.max(18, Math.min(44, 620 / Math.max(result.length, 8))) : 44;
+
   function spin() {
     if (spinning || n < 2) return;
     setSpinning(true);
@@ -77,7 +79,7 @@ export default function WheelPage() {
 
         <div className="wp-panel">
           <div className="wp-panel-head">
-            <span className="wp-eyebrow">Sentivo · Today</span>
+            <span className="wp-eyebrow">Sentivo · Homeroom</span>
             <h1 className="wp-title">Spin the Wheel</h1>
             <p className="wp-blurb">Paste your list, one item per line. Each line becomes a slice.</p>
           </div>
@@ -99,7 +101,7 @@ export default function WheelPage() {
         {result && (
           <div className="wp-winner-banner">
             <span className="wp-winner-tag">Winner</span>
-            <span className="wp-winner-name">🎉 {result}</span>
+            <span className="wp-winner-name" style={{ fontSize: `${winnerFontSize}px` }}>🎉 {result}</span>
           </div>
         )}
 
@@ -131,7 +133,7 @@ export default function WheelPage() {
                       <path
                         d={slicePath(cx, cy, r, start, end)}
                         fill={COLORS[i % COLORS.length]}
-                        stroke={isWinner ? "#FFD23F" : "#FFFFFF"}
+                        stroke={isWinner ? "#FF6B4A" : "#FFFFFF"}
                         strokeWidth={isWinner ? 5 : 2}
                       />
                       <text
@@ -169,7 +171,7 @@ export default function WheelPage() {
 }
 
 const CSS = `
-@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&family=Quicksand:wght@500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&display=swap');
 
 .wp-shell {
   width: 100%;
@@ -177,8 +179,8 @@ const CSS = `
   overflow: hidden;
   box-sizing: border-box;
   display: flex;
-  background: #FFF7F9;
-  font-family: 'Quicksand', sans-serif;
+  background: #FBF4F1;
+  font-family: 'Inter', sans-serif;
 }
 .wp-shell * { box-sizing: border-box; }
 
@@ -200,7 +202,7 @@ const CSS = `
   justify-content: center;
   gap: 8px;
   background: #FFFFFF;
-  border-right: 1px solid #FBE1E7;
+  border-right: 1px solid #EDE1DB;
   cursor: default;
   transition: opacity 0.15s ease;
 }
@@ -212,7 +214,7 @@ const CSS = `
   font-weight: 800;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: #D6395F;
+  color: #FF6B4A;
 }
 .wp-panel-zone:hover .wp-panel-tab { opacity: 0; pointer-events: none; }
 
@@ -225,8 +227,8 @@ const CSS = `
   overflow-y: auto;
   padding: 26px 24px;
   background: #FFFFFF;
-  border-right: 1px solid #FBE1E7;
-  box-shadow: 12px 0 30px rgba(43,42,74,0.14);
+  border-right: 1px solid #EDE1DB;
+  box-shadow: 12px 0 30px rgba(27,42,74,0.14);
   display: flex;
   flex-direction: column;
   transform: translateX(-100%);
@@ -247,35 +249,35 @@ const CSS = `
   font-weight: 800;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: #D6395F;
-  background: rgba(214,57,95,0.1);
+  color: #FF6B4A;
+  background: #FDECE5;
   border-radius: 999px;
   padding: 4px 12px;
   margin-bottom: 10px;
 }
-.wp-title { font-family: 'Fredoka', sans-serif; font-size: 22px; font-weight: 600; color: #2B2A4A; margin: 0 0 6px; }
-.wp-blurb { font-size: 12.5px; line-height: 1.5; color: #6B6480; margin: 0; }
+.wp-title { font-family: 'Fraunces', serif; font-size: 22px; font-weight: 600; color: #1B2A4A; margin: 0 0 6px; }
+.wp-blurb { font-size: 12.5px; line-height: 1.5; color: #5A6B92; margin: 0; }
 
-.wp-label { font-size: 11px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: #8A8398; margin-bottom: 6px; }
+.wp-label { font-size: 11px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: #5A6B92; margin-bottom: 6px; }
 
 .wp-textarea {
   flex: 1;
   min-height: 200px;
   resize: none;
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 14px;
   font-weight: 600;
-  color: #2B2A4A;
-  background: #FFF7F9;
-  border: 1px solid #FBE1E7;
+  color: #1B2A4A;
+  background: #FBF4F1;
+  border: 1px solid #EDE1DB;
   border-radius: 12px;
   padding: 12px 14px;
   line-height: 1.7;
   outline: none;
 }
-.wp-textarea:focus { border-color: #D6395F; }
+.wp-textarea:focus { border-color: #FF6B4A; }
 
-.wp-count { font-size: 11.5px; color: #8A8398; margin: 8px 0 16px; }
+.wp-count { font-size: 11.5px; color: #5A6B92; margin: 8px 0 16px; }
 
 .wp-stage {
   flex: 1;
@@ -297,31 +299,28 @@ const CSS = `
   flex-direction: column;
   align-items: center;
   gap: 4px;
-  background: #FFFFFF;
-  border: 3px solid #FFD23F;
+  background: #1B2A4A;
+  border: none;
   border-radius: 24px;
   padding: 14px 36px;
-  box-shadow: 0 18px 40px rgba(43,42,74,0.28);
+  box-shadow: 0 18px 40px rgba(27,42,74,0.32);
   animation: wp-pop-in 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
-  max-width: min(80vw, 560px);
+  max-width: min(85vw, 620px);
 }
 .wp-winner-tag {
   font-size: 11px;
   font-weight: 800;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: #D6395F;
+  color: #FF6B4A;
 }
 .wp-winner-name {
-  font-family: 'Fredoka', sans-serif;
-  font-size: clamp(26px, 4.4vw, 44px);
-  font-weight: 700;
-  color: #2B2A4A;
+  font-family: 'Fraunces', serif;
+  font-weight: 600;
+  color: #FFFFFF;
   text-align: center;
-  line-height: 1.15;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  line-height: 1.2;
+  overflow-wrap: break-word;
   max-width: 100%;
 }
 
@@ -347,7 +346,7 @@ const CSS = `
   height: 0;
   border-left: 16px solid transparent;
   border-right: 16px solid transparent;
-  border-top: 26px solid #2B2A4A;
+  border-top: 26px solid #1B2A4A;
   z-index: 20;
   filter: drop-shadow(0 3px 4px rgba(0,0,0,0.25));
 }
@@ -356,27 +355,27 @@ const CSS = `
   width: 100%;
   height: 100%;
   border-radius: 50%;
-  box-shadow: 0 18px 40px rgba(43,42,74,0.22);
+  box-shadow: 0 18px 40px rgba(27,42,74,0.22);
   border: 6px solid #FFFFFF;
   overflow: hidden;
 }
 
 .wp-svg { width: 100%; height: 100%; display: block; }
-.wp-slice-label { font-family: 'Quicksand', sans-serif; font-weight: 700; pointer-events: none; }
-.wp-slice-winner path { filter: drop-shadow(0 0 6px rgba(255,210,63,0.9)); }
+.wp-slice-label { font-family: 'Inter', sans-serif; font-weight: 700; pointer-events: none; }
+.wp-slice-winner path { filter: drop-shadow(0 0 6px rgba(255,107,74,0.9)); }
 
 .wp-empty-disc {
   width: 100%;
   height: 100%;
   border-radius: 50%;
-  background: #F1F0F7;
+  background: #F5F1ED;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   padding: 40px;
   font-size: 14px;
-  color: #8A8398;
+  color: #5A6B92;
   font-weight: 600;
 }
 
@@ -397,15 +396,15 @@ const CSS = `
   align-items: center;
   justify-content: center;
   gap: 2px;
-  font-family: 'Fredoka', sans-serif;
-  color: #2B2A4A;
-  box-shadow: 0 6px 16px rgba(43,42,74,0.28), inset 0 0 0 3px #FBE1E7;
+  font-family: 'Fraunces', serif;
+  color: #1B2A4A;
+  box-shadow: 0 6px 16px rgba(27,42,74,0.28), inset 0 0 0 3px #FDECE5;
   cursor: pointer;
   transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 .wp-hub:hover:not(:disabled) {
   transform: translate(-50%, -50%) scale(1.05);
-  box-shadow: 0 8px 20px rgba(43,42,74,0.34), inset 0 0 0 3px #FBE1E7;
+  box-shadow: 0 8px 20px rgba(27,42,74,0.34), inset 0 0 0 3px #FDECE5;
 }
 .wp-hub:active:not(:disabled) {
   transform: translate(-50%, -50%) scale(0.97);
@@ -429,6 +428,5 @@ const CSS = `
 
 @media (max-width: 760px) {
   .wp-winner-banner { top: 12px; padding: 10px 20px; }
-  .wp-winner-name { font-size: clamp(20px, 6vw, 30px); }
 }
 `;
