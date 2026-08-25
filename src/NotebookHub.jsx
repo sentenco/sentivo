@@ -60,49 +60,48 @@ export default function NotebookHub() {
   return (
     <div className="nbh-shell">
       <style>{CSS}</style>
-      <header className="nbh-topbar">
-        <button type="button" className="nbh-brand" onClick={() => navigate("/library")} title="Back to Library">
-          <img src="/logo-sentivo.png" alt="" className="nbh-brand-logo" />entivo
-        </button>
-        <span className="nbh-topbar-title">Digital Notebook</span>
-        <span className="nbh-topbar-spacer" aria-hidden="true" />
-      </header>
 
-      <div className="nbh-page">
-        <div className="nbh-stage">
+      <div className="nbh-stage">
+        <div className="nbh-topbar">
+          <button type="button" className="nbh-brand" onClick={() => navigate("/library")} title="Back to Library">
+            <img src="/logo-sentivo.png" alt="" className="nbh-brand-logo" />entivo
+          </button>
+          <span className="nbh-topbar-title">Digital Notebook</span>
+        </div>
+
+        <div className="nbh-header">
+          <div className="nbh-header-blob" />
           <div className="nbh-hero">
-            <span className="nbh-hero-badge">📓</span>
-            <span className="nbh-eyebrow">Sentivo · Today</span>
+            <span className="nbh-eyebrow">Sentivo · Homeroom</span>
             <h1 className="nbh-hero-title">Pick a page</h1>
             <p className="nbh-hero-blurb">
               Choose a design, then write live on it in its own window while you teach. Nothing is saved — it clears when the window closes.
             </p>
           </div>
+        </div>
 
-          <div className="nbh-grid">
-            {DESIGNS.map((d) => (
-              <button
-                key={d.key}
-                type="button"
-                className="nbh-card"
-                style={{ "--accent": CARD_ACCENT[d.key] || "#1E8F76" }}
-                onClick={() => openNotebook(d)}
-              >
-                <div className="nbh-card-thumb">
-                  <img src={d.image} alt={`${d.label} notebook design`} />
-                </div>
-                <div className="nbh-card-accent" />
-                <div className="nbh-card-body">
-                  <h3 className="nbh-card-title">{d.label}</h3>
-                  <p className="nbh-card-blurb">{d.blurb}</p>
-                  <span className="nbh-card-cta">
-                    Open in new window
-                    <PopOutIcon />
-                  </span>
-                </div>
-              </button>
-            ))}
-          </div>
+        <div className="nbh-grid">
+          {DESIGNS.map((d) => (
+            <button
+              key={d.key}
+              type="button"
+              className="nbh-card"
+              style={{ "--accent": CARD_ACCENT[d.key] || "#1B2A4A" }}
+              onClick={() => openNotebook(d)}
+            >
+              <div className="nbh-card-thumb">
+                <img src={d.image} alt={`${d.label} notebook design`} />
+              </div>
+              <div className="nbh-card-body">
+                <h3 className="nbh-card-title">{d.label}</h3>
+                <p className="nbh-card-blurb">{d.blurb}</p>
+                <span className="nbh-card-cta">
+                  Open in new window
+                  <PopOutIcon />
+                </span>
+              </div>
+            </button>
+          ))}
         </div>
       </div>
     </div>
@@ -110,158 +109,63 @@ export default function NotebookHub() {
 }
 
 const CSS = `
-@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&family=Quicksand:wght@500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&display=swap');
 
-.nbh-shell {
-  min-height: 100vh;
-  background: #FFFFFF;
-  color: #1B2B27;
-  font-family: 'Quicksand', sans-serif;
-}
+.nbh-shell { min-height: 100vh; background: #FBF4F1; font-family: 'Inter', sans-serif; color: #1B2A4A; }
 .nbh-shell * { box-sizing: border-box; }
 
-.nbh-topbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  padding: 14px 28px;
-  border-bottom: 1px solid #E7EDEA;
-  background: #FFFFFF;
-}
+.nbh-stage { max-width: 1040px; margin: 0 auto; padding: 24px 24px 40px; }
+
+.nbh-topbar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
 .nbh-brand {
-  display: flex;
-  align-items: center;
-  flex-shrink: 0;
-  font-family: 'Fredoka', sans-serif;
-  font-weight: 700;
-  font-size: 16px;
-  color: #1B2B27;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0;
+  display: inline-flex; align-items: center; gap: 2px;
+  font-family: 'Inter', sans-serif; font-weight: 800; font-size: 19px;
+  color: #1B2A4A; text-decoration: none; cursor: pointer; border: none; background: none; padding: 0;
 }
-.nbh-brand-logo { height: 24px; width: auto; display: block; margin-right: -3px; }
-.nbh-topbar-title { font-family: 'Fredoka', sans-serif; font-size: 14px; font-weight: 600; color: #5A6E68; }
-.nbh-topbar-spacer { width: 90px; }
+.nbh-brand-logo { height: 28px; width: auto; display: block; margin-right: -4px; }
+.nbh-topbar-title { font-family: 'Inter', sans-serif; font-weight: 700; font-size: 12.5px; letter-spacing: 0.04em; text-transform: uppercase; color: #5A6B92; }
 
-.nbh-page { padding: 24px; }
-
-.nbh-stage {
-  max-width: 1080px;
-  margin: 0 auto;
-  padding: clamp(32px, 4.5vw, 56px) clamp(20px, 4vw, 44px);
-  border-radius: 26px;
-  background:
-    repeating-linear-gradient(180deg, rgba(255,255,255,0.55) 0px, rgba(255,255,255,0.55) 1px, transparent 1px, transparent 56px),
-    linear-gradient(160deg, #E9F8F1 0%, #D3EEE3 55%, #C7E8DC 100%);
+.nbh-header {
+  background: #1B2A4A; border-radius: 22px; padding: 32px 26px 36px; margin-bottom: 28px;
+  position: relative; overflow: hidden; box-shadow: 0 18px 36px rgba(27,42,74,0.2);
+}
+.nbh-header-blob {
+  position: absolute; width: 240px; height: 240px; border-radius: 50%;
+  background: #FF6B4A; opacity: 0.16; top: -100px; right: -80px; pointer-events: none;
 }
 
-.nbh-hero { text-align: center; margin-bottom: 40px; }
-.nbh-hero-badge {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 44px;
-  height: 44px;
-  margin: 0 auto 14px;
-  border-radius: 50%;
-  background: #FFFFFF;
-  box-shadow: 0 8px 20px rgba(30,143,118,0.16);
-  font-size: 20px;
-}
+.nbh-hero { text-align: center; position: relative; }
 .nbh-eyebrow {
-  display: inline-block;
-  font-family: 'Quicksand', sans-serif;
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: #1E8F76;
-  background: rgba(63,205,175,0.18);
-  border-radius: 999px;
-  padding: 5px 14px;
-  margin-bottom: 14px;
+  display: inline-block; font-weight: 700; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+  color: #FF6B4A; background: rgba(255,107,74,0.18); border-radius: 999px; padding: 5px 14px; margin-bottom: 14px;
 }
-.nbh-hero-title {
-  font-family: 'Fredoka', sans-serif;
-  font-size: clamp(27px, 3.6vw, 36px);
-  font-weight: 700;
-  letter-spacing: -0.01em;
-  margin: 0 0 10px;
-}
-.nbh-hero-blurb {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 1.6;
-  color: #4C625C;
-  max-width: 560px;
-  margin: 0 auto;
-}
+.nbh-hero-title { font-family: 'Fraunces', serif; font-weight: 600; font-size: clamp(30px, 3.6vw, 40px); margin: 0 0 10px; color: #FFFFFF; letter-spacing: -0.01em; }
+.nbh-hero-blurb { font-size: 15px; color: #B9C3DC; margin: 0 auto; max-width: 520px; line-height: 1.55; }
 
 .nbh-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 26px 22px;
+  gap: 20px;
 }
 
 .nbh-card {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  text-align: left;
-  background: #FFFFFF;
-  border: 1px solid #E1F0EA;
-  border-radius: 18px;
-  overflow: hidden;
-  cursor: pointer;
-  padding: 0;
-  box-shadow: 0 10px 24px rgba(30,143,118,0.10);
+  position: relative; display: flex; flex-direction: column; text-align: left;
+  background: #FFFFFF; border: none; border-top: 4px solid var(--accent); border-radius: 16px;
+  overflow: hidden; cursor: pointer; padding: 0;
+  box-shadow: 0 8px 18px rgba(27,42,74,0.08);
   transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
-.nbh-card::before, .nbh-card::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: 18px;
-  background: #FFFFFF;
-  border: 1px solid #E1F0EA;
-  z-index: -1;
-}
-.nbh-card::before { transform: translate(5px, 6px); opacity: 0.75; }
-.nbh-card::after { transform: translate(10px, 12px); opacity: 0.45; }
-.nbh-card:hover { transform: translateY(-4px); box-shadow: 0 18px 34px rgba(30,143,118,0.2); }
+.nbh-card:hover { transform: translateY(-3px); box-shadow: 0 14px 26px rgba(27,42,74,0.14); }
 
-.nbh-card-thumb {
-  height: 176px;
-  background: #F1F6F4;
-  overflow: hidden;
-}
+.nbh-card-thumb { height: 176px; background: #FBF4F1; overflow: hidden; }
 .nbh-card-thumb img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
-.nbh-card-accent { height: 4px; background: var(--accent); }
 
 .nbh-card-body { padding: 16px 18px 18px; display: flex; flex-direction: column; gap: 6px; }
-.nbh-card-title { font-family: 'Fredoka', sans-serif; font-size: 16px; font-weight: 600; margin: 0; color: #1B2B27; }
-.nbh-card-blurb {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 500;
-  font-size: 12.5px;
-  line-height: 1.5;
-  color: #5A6E68;
-  margin: 0;
-}
+.nbh-card-title { font-family: 'Fraunces', serif; font-size: 17px; font-weight: 600; margin: 0; color: #1B2A4A; }
+.nbh-card-blurb { font-size: 12.5px; line-height: 1.5; color: #5A6B92; margin: 0; }
 .nbh-card-cta {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  margin-top: 8px;
-  font-family: 'Quicksand', sans-serif;
-  font-size: 11.5px;
-  font-weight: 700;
-  letter-spacing: 0.03em;
-  color: var(--accent);
+  display: flex; align-items: center; gap: 5px; margin-top: 8px;
+  font-size: 11.5px; font-weight: 700; letter-spacing: 0.03em; color: var(--accent);
 }
 .nbh-card-cta svg { width: 12px; height: 12px; flex-shrink: 0; }
 
@@ -270,8 +174,7 @@ const CSS = `
 }
 @media (max-width: 600px) {
   .nbh-grid { grid-template-columns: 1fr; }
-  .nbh-page { padding: 12px; }
-  .nbh-stage { padding: 28px 16px 36px; }
-  .nbh-topbar-spacer { display: none; }
+  .nbh-stage { padding: 16px 16px 28px; }
+  .nbh-topbar-title { display: none; }
 }
 `;
