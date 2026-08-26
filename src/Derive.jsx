@@ -142,19 +142,21 @@ export default function Derive() {
             <span className="dv-slide-count">{slideIdx + 1} / {totalSlides}</span>
           </div>
 
-          {isCover && <CoverSlide title={title} />}
-          {isFamily && <FamilySlide family={family} />}
-          {isSentence && (
-            <SentenceSlide
-              key={sentenceIdx}
-              sentence={sentences[sentenceIdx]}
-              family={family}
-              slideNum={sentenceIdx + 1}
-              totalSentences={sentences.length}
-              onCorrect={markCorrect}
-            />
-          )}
-          {isEnd && <EndSlide root={root} family={family} onFinish={() => window.close()} />}
+          <div className="dv-deck-body" key={slideIdx}>
+            {isCover && <CoverSlide title={title} />}
+            {isFamily && <FamilySlide family={family} />}
+            {isSentence && (
+              <SentenceSlide
+                key={sentenceIdx}
+                sentence={sentences[sentenceIdx]}
+                family={family}
+                slideNum={sentenceIdx + 1}
+                totalSentences={sentences.length}
+                onCorrect={markCorrect}
+              />
+            )}
+            {isEnd && <EndSlide root={root} family={family} onFinish={() => window.close()} />}
+          </div>
 
           <div className="dv-footer-nav">
             <button type="button" className={`dv-nav-btn${atStart ? " is-disabled" : ""}`} onClick={goPrev} disabled={atStart}>
@@ -203,23 +205,27 @@ const CSS = `
   box-shadow: 0 18px 40px rgba(36,20,34,0.14);
 }
 
-.dv-header { display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; border-bottom: 1px solid #F2DCE9; }
+.dv-header { display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; border-bottom: 1px solid #F2DCE9; flex-shrink: 0; }
 .dv-brand { display: flex; align-items: center; gap: 6px; }
 .dv-brand-logo { height: 18px; width: auto; display: block; }
 .dv-brand-name { font-weight: 800; font-size: 13px; color: #1B2A4A; }
 .dv-slide-count { font-family: 'Inter', sans-serif; font-size: 10.5px; font-weight: 700; color: #B23370; background: #FBE0EE; border-radius: 999px; padding: 3px 10px; }
 
+/* ---- Shared deck body: fixed min-height so every slide type renders at
+   the same card size, matching Relay's tuned 260px value ---- */
+.dv-deck-body { min-height: 260px; display: flex; align-items: center; justify-content: center; padding: 28px 26px; }
+
 /* ---- Cover ---- */
-.dv-cover { padding: 54px 24px; text-align: center; }
+.dv-cover { text-align: center; width: 100%; }
 .dv-cover-title { font-family: 'Baloo 2', cursive; font-weight: 800; font-size: 26px; color: #1B2A4A; margin: 0; letter-spacing: -0.01em; text-wrap: balance; }
 
 /* ---- Word Family ---- */
-.dv-fam-slide { padding: 44px 22px; text-align: center; }
+.dv-fam-slide { text-align: center; width: 100%; }
 .dv-fam-label { font-size: 10.5px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #B23370; margin: 0 0 14px; }
 .dv-fam-root { font-family: 'Baloo 2', cursive; font-weight: 700; font-size: 20px; color: #1B2A4A; margin: 0; }
 
 /* ---- Sentence + word bank ---- */
-.dv-sent-slide { padding: 30px 22px 24px; }
+.dv-sent-slide { width: 100%; }
 .dv-sent-label { font-size: 10px; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase; color: #5A6B92; text-align: center; margin: 0 0 14px; }
 .dv-sentence { font-family: 'Fraunces', serif; font-weight: 600; font-size: 16.5px; line-height: 1.5; color: #1B2A4A; text-align: center; margin: 0 0 22px; }
 .dv-blank { display: inline-block; min-width: 84px; border-bottom: 2.5px solid #D6478C; padding: 0 4px; }
@@ -235,7 +241,7 @@ const CSS = `
 .dv-chip.is-wrong { border-color: #D6536D; color: #D6536D; }
 
 /* ---- End ---- */
-.dv-end-slide { padding: 40px 24px; text-align: center; }
+.dv-end-slide { text-align: center; width: 100%; }
 .dv-end-label { font-size: 10.5px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #B23370; margin: 0 0 12px; }
 .dv-end-title { font-family: 'Baloo 2', cursive; font-weight: 800; font-size: 22px; color: #1B2A4A; margin: 0 0 14px; }
 .dv-end-family { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; margin: 0 0 22px; }
