@@ -2464,7 +2464,7 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   box-shadow: 0 4px 8px rgba(16,100,107,0.28);
 }
 .spklab-card--forge .spklab-pin circle:first-child { fill: #E8544E; }
-.spklab-card--shift .spklab-pin circle:first-child { fill: #FFDE70; }
+.spklab-card--shift .spklab-pin circle:first-child { fill: #E8B400; }
 .spklab-card--ascend .spklab-pin circle:first-child { fill: #F2994A; }
 .spklab-card--relay .spklab-pin circle:first-child { fill: #3E7CB1; }
 .spklab-card--stack .spklab-pin circle:first-child { fill: #8B6FC9; }
@@ -2492,7 +2492,7 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   color: #FFFFFF; border-radius: 8px; padding: 10px 0;
 }
 .spklab-card--forge .spklab-cta { background: #E8544E; }
-.spklab-card--shift .spklab-cta { background: #FFDE70; color: #FFFFFF; text-shadow: 0 1px 3px rgba(120,80,0,0.5); }
+.spklab-card--shift .spklab-cta { background: #E8B400; text-shadow: 0 1px 3px rgba(120,80,0,0.5); }
 .spklab-card--ascend .spklab-cta { background: #D97D2E; }
 .spklab-card--relay .spklab-cta { background: #3E7CB1; }
 .spklab-card--stack .spklab-cta { background: #8B6FC9; }
