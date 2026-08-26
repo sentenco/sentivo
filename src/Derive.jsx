@@ -45,7 +45,7 @@ function FamilySlide({ family }) {
   );
 }
 
-function SentenceSlide({ sentence, family, slideNum, totalSentences, onCorrect }) {
+function SentenceSlide({ sentence, family, slideNum, totalSentences }) {
   const [selected, setSelected] = useState(null);
   const [isRight, setIsRight] = useState(false);
 
@@ -54,7 +54,6 @@ function SentenceSlide({ sentence, family, slideNum, totalSentences, onCorrect }
     setSelected(word);
     if (word === sentence.answer) {
       setIsRight(true);
-      onCorrect();
     }
   }
 
@@ -102,7 +101,6 @@ export default function Derive() {
   const { trackId, lessonNum } = useParams();
   const lesson = getLesson(trackId, Number(lessonNum));
   const [slideIdx, setSlideIdx] = useState(0);
-  const [correctSet, setCorrectSet] = useState(() => new Set());
 
   if (!lesson) {
     return (
@@ -123,22 +121,14 @@ export default function Derive() {
   const isSentence = !isCover && !isFamily && !isEnd;
   const sentenceIdx = slideIdx - 2;
 
-  const canGoNext = isSentence ? correctSet.has(sentenceIdx) : true;
   const atStart = slideIdx === 0;
   const atEnd = slideIdx === totalSlides - 1;
 
   function goNext() {
-    if (!atEnd && canGoNext) setSlideIdx((i) => i + 1);
+    if (!atEnd) setSlideIdx((i) => i + 1);
   }
   function goPrev() {
     if (!atStart) setSlideIdx((i) => i - 1);
-  }
-  function markCorrect() {
-    setCorrectSet((prev) => {
-      const next = new Set(prev);
-      next.add(sentenceIdx);
-      return next;
-    });
   }
 
   return (
@@ -161,7 +151,6 @@ export default function Derive() {
                 family={family}
                 slideNum={sentenceIdx + 1}
                 totalSentences={sentences.length}
-                onCorrect={markCorrect}
               />
             )}
             {isEnd && <EndSlide root={root} family={family} onFinish={() => window.close()} />}
@@ -176,7 +165,7 @@ export default function Derive() {
                 <span key={i} className={`dv-dot${i < slideIdx ? " done" : i === slideIdx ? " current" : ""}`} />
               ))}
             </span>
-            <button type="button" className={`dv-nav-btn${(!canGoNext || atEnd) ? " is-disabled" : ""}`} onClick={goNext} disabled={!canGoNext || atEnd}>
+            <button type="button" className={`dv-nav-btn${atEnd ? " is-disabled" : ""}`} onClick={goNext} disabled={atEnd}>
               Next →
             </button>
           </div>
