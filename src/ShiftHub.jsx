@@ -128,9 +128,9 @@ const CSS = `
   margin: 0 0 16px;
   letter-spacing: -0.01em;
   text-shadow:
-    1.5px 1.5px 0 rgba(232,180,0,0.35),
-    3px 3px 0 rgba(232,180,0,0.35),
-    4.5px 4.5px 0 rgba(232,180,0,0.35),
+    1.5px 1.5px 0 rgba(255,207,61,0.35),
+    3px 3px 0 rgba(255,207,61,0.35),
+    4.5px 4.5px 0 rgba(255,207,61,0.35),
     5px 10px 22px rgba(16,100,107,0.22);
 }
 .shh-hero-blurb {
@@ -157,7 +157,7 @@ const CSS = `
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background: #E8B400;
+  background: #FFCF3D;
 }
 .shh-dot-lane::before { left: 0; }
 .shh-dot-lane::after { right: 0; }
@@ -169,14 +169,14 @@ const CSS = `
   font-size: 13.5px;
   color: #10646B;
   background: #FFFFFF;
-  border: 1.5px solid #F5D98A;
+  border: 1.5px solid #FFE9A8;
   border-radius: 999px;
   padding: 8px 20px;
   cursor: pointer;
   transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
 }
-.shh-audience-tab:hover { border-color: #E8B400; }
-.shh-audience-tab.is-active { background: #E8B400; border-color: #E8B400; color: #FFFFFF; }
+.shh-audience-tab:hover { border-color: #FFCF3D; }
+.shh-audience-tab.is-active { background: #FFCF3D; border-color: #FFCF3D; color: #10646B; }
 
 .shh-tracks-grid {
   display: grid;
@@ -198,13 +198,13 @@ const CSS = `
 .shh-track-card:hover { transform: translateY(-4px) rotate(-0.4deg); box-shadow: 0 20px 40px rgba(16,100,107,0.2); }
 
 .shh-track-ribbon {
-  background: linear-gradient(120deg, #F5C518 0%, #E8B400 100%);
+  background: linear-gradient(120deg, #FFDE70 0%, #FFCF3D 100%);
   padding: 16px 22px;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-.shh-track-num { font-family: 'Baloo 2', cursive; font-weight: 700; font-size: 20px; color: #FFFFFF; text-shadow: 0 1px 3px rgba(120,80,0,0.5); }
+.shh-track-num { font-family: 'Baloo 2', cursive; font-weight: 700; font-size: 20px; color: #10646B; }
 .shh-track-level-pill {
   font-family: 'IBM Plex Sans', sans-serif;
   font-weight: 800;
@@ -241,9 +241,8 @@ const CSS = `
   font-family: 'IBM Plex Sans', sans-serif;
   font-weight: 800;
   font-size: 12.5px;
-  color: #FFFFFF;
-  text-shadow: 0 1px 3px rgba(120,80,0,0.5);
-  background: #E8B400;
+  color: #10646B;
+  background: #FFCF3D;
   border-radius: 999px;
   padding: 8px 16px;
 }

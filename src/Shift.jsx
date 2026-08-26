@@ -262,8 +262,8 @@ const CSS = `
 }
 
 .sh-hero {
-  margin: 18px 18px 0; background: linear-gradient(120deg, #F5C518 0%, #E8B400 100%); border-radius: 18px; padding: 16px 20px 14px;
-  position: relative; overflow: hidden; box-shadow: 0 12px 24px rgba(232,180,0,0.28);
+  margin: 18px 18px 0; background: linear-gradient(120deg, #FFDE70 0%, #FFCF3D 100%); border-radius: 18px; padding: 16px 20px 14px;
+  position: relative; overflow: hidden; box-shadow: 0 12px 24px rgba(255,207,61,0.28);
 }
 .sh-hero-title { font-weight: 800; font-size: 14px; color: #1B2A4A; position: relative; }
 .sh-hero-sub { font-size: 11.5px; color: rgba(27,42,74,0.72); margin-top: 2px; position: relative; }
@@ -271,7 +271,7 @@ const CSS = `
 .sh-progress-row { display: flex; gap: 4px; padding: 14px 22px 4px; }
 .sh-seg { flex: 1; height: 3px; border-radius: 999px; background: #EDE1DB; transition: background 0.25s ease; }
 .sh-seg.is-done { background: #2F9E58; }
-.sh-seg.is-current { background: #E8B400; }
+.sh-seg.is-current { background: #1B2A4A; }
 
 .sh-avatar {
   width: 30px; height: 30px; border-radius: 50%; flex-shrink: 0; display: flex; align-items: center;
@@ -311,14 +311,14 @@ const CSS = `
   width: 100%; font-family: 'Inter', sans-serif; font-size: 14px; color: #1B2A4A; text-align: center;
   background: #FBF4F1; border: 1.5px solid #EDE1DB; border-radius: 12px; padding: 10px 14px; outline: none; margin-bottom: 12px;
 }
-.sh-type-input:focus { border-color: #E8B400; }
+.sh-type-input:focus { border-color: #1B2A4A; }
 .sh-teacher-buttons { display: flex; gap: 8px; justify-content: center; }
 .sh-choice-btn {
   font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 700; border-radius: 999px; padding: 9px 20px; cursor: pointer;
   border: 1.5px solid #EDE1DB; background: #FFFFFF; color: #1B2A4A;
 }
 .sh-choice-btn--bad:hover { border-color: #D6536D; color: #D6536D; }
-.sh-choice-btn--good { background: #E7F5EC; border-color: #2F9E58; color: #2F9E58; }
+.sh-choice-btn--good { background: #1B2A4A; border-color: #1B2A4A; color: #FFFFFF; }
 
 .sh-prompt-stage { padding: 26px 26px 24px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 14px; }
 .sh-prompt-eyebrow { font-size: 11px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: #8A6D1F; background: #FFF4D6; border-radius: 999px; padding: 4px 14px; }

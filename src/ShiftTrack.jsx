@@ -166,7 +166,7 @@ const CSS = `
   border-radius: 999px;
   padding: 4px 12px;
 }
-.sht-tag--level { color: #10646B; background: #F5C518; }
+.sht-tag--level { color: #10646B; background: #FFDE70; }
 .sht-hero-title {
   font-family: 'Baloo 2', cursive;
   font-weight: 800;
@@ -174,9 +174,9 @@ const CSS = `
   color: #10646B;
   margin: 0;
   text-shadow:
-    1.2px 1.2px 0 rgba(232,180,0,0.32),
-    2.4px 2.4px 0 rgba(232,180,0,0.32),
-    3.6px 3.6px 0 rgba(232,180,0,0.32),
+    1.2px 1.2px 0 rgba(255,207,61,0.32),
+    2.4px 2.4px 0 rgba(255,207,61,0.32),
+    3.6px 3.6px 0 rgba(255,207,61,0.32),
     4px 8px 18px rgba(16,100,107,0.2);
 }
 
@@ -201,9 +201,8 @@ const CSS = `
   width: 46px;
   height: 46px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #F5C518 0%, #E8B400 100%);
-  color: #FFFFFF;
-  text-shadow: 0 1px 3px rgba(120,80,0,0.5);
+  background: linear-gradient(135deg, #FFDE70 0%, #FFCF3D 100%);
+  color: #10646B;
   font-family: 'Baloo 2', cursive;
   font-weight: 700;
   font-size: 16px;
@@ -222,7 +221,7 @@ const CSS = `
   text-transform: uppercase;
   letter-spacing: 0.03em;
   color: #10646B;
-  background: rgba(232,180,0,0.16);
+  background: rgba(255,207,61,0.22);
   border-radius: 999px;
   padding: 2px 9px;
 }
@@ -242,7 +241,7 @@ const CSS = `
   cursor: pointer;
 }
 .sht-btn-guide { background: rgba(42,168,174,0.14); color: #10646B; }
-.sht-btn-start { background: #E8B400; color: #FFFFFF; text-shadow: 0 1px 3px rgba(120,80,0,0.5); }
+.sht-btn-start { background: #FFCF3D; color: #10646B; }
 
 @media (max-width: 640px) {
   .sht-row { flex-wrap: wrap; padding: 16px; }
