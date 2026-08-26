@@ -34,6 +34,11 @@ import sports2 from "./shiftSports2";
 import sports3 from "./shiftSports3";
 import sports4 from "./shiftSports4";
 import sports5 from "./shiftSports5";
+import movies1 from "./shiftMovies1";
+import movies2 from "./shiftMovies2";
+import movies3 from "./shiftMovies3";
+import movies4 from "./shiftMovies4";
+import movies5 from "./shiftMovies5";
 import interview1 from "./shiftInterview1";
 import interview2 from "./shiftInterview2";
 import interview3 from "./shiftInterview3";
@@ -100,6 +105,15 @@ const TRACKS = [
     audience: ["teens"],
     blurb: "Five team scenes, five sideline moments, one tense-accuracy skill trained live in conversation, not in isolated drills.",
     lessons: [sports1, sports2, sports3, sports4, sports5],
+  },
+  {
+    id: "movies",
+    title: "Movies",
+    gapFocus: "Spontaneous Tense Accuracy",
+    level: "A2-B1",
+    audience: ["teens"],
+    blurb: "Five movie-night scenes, one friend, one tense-accuracy skill trained live in conversation, not in isolated drills.",
+    lessons: [movies1, movies2, movies3, movies4, movies5],
   },
   {
     id: "restaurant",
