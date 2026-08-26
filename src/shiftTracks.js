@@ -14,6 +14,11 @@ import family2 from "./shiftFamily2";
 import family3 from "./shiftFamily3";
 import family4 from "./shiftFamily4";
 import family5 from "./shiftFamily5";
+import school1 from "./shiftSchool1";
+import school2 from "./shiftSchool2";
+import school3 from "./shiftSchool3";
+import school4 from "./shiftSchool4";
+import school5 from "./shiftSchool5";
 
 const TRACKS = [
   {
@@ -24,6 +29,15 @@ const TRACKS = [
     audience: ["teens"],
     blurb: "Five family scenes, five role pairs, one tense-accuracy skill trained live in conversation, not in isolated drills.",
     lessons: [family1, family2, family3, family4, family5],
+  },
+  {
+    id: "school",
+    title: "School Day",
+    gapFocus: "Spontaneous Tense Accuracy",
+    level: "A2-B1",
+    audience: ["teens"],
+    blurb: "Five school scenes, five role pairs, one tense-accuracy skill trained live in conversation, not in isolated drills.",
+    lessons: [school1, school2, school3, school4, school5],
   },
   {
     id: "restaurant",
