@@ -291,7 +291,7 @@ const SPEAKING_TRACKS = [
   { key: "shift", href: "/library/shift", hue: "shift", gap: "Delayed tense correction", name: "Shift", desc: "Fast tense choice and self-repair under pressure, for students who already know the grammar." },
   { key: "ascend", href: "/library/ascend", hue: "ascend", gap: "Ideas lack structure and precision", name: "Ascend", desc: "Precision, structure, and diplomatic control for students who already sound fluent." },
   { key: "relay", href: "/library/relay", hue: "relay", gap: "Conversation-ending answers", name: "Relay", desc: "Turn short, complete answers into real exchanges — add reasons, details, and questions that keep the conversation moving." },
-  { key: "glide", href: "/library/glide", hue: "glide", gap: "No strategy for filling gaps", name: "Glide", desc: "Swap dead air and native-language filler sounds for natural stalling phrases that keep your speech flowing." },
+  { key: "bridge", href: "/library/bridge", hue: "bridge", gap: "No strategy for filling gaps", name: "Bridge", desc: "Swap dead air and native-language filler sounds for natural stalling phrases that carry you across a stuck moment." },
   { key: "derive", href: "/library/derive", hue: "derive", gap: "Wrong word-family form", name: "Derive", desc: "Choose the right word-family member on demand, developing instead of development, decide instead of decision." },
   { key: "sequence", href: "/library/sequence", hue: "sequence", gap: "Words out of order", name: "Sequence", desc: "Take words a student already knows and put them in the order that actually makes a sentence." },
 ];
@@ -326,7 +326,7 @@ const SPKLAB_PIN_ICONS = {
   relay: (
     <path d="M2 13 H6 L8 7 L11 19 L13 8 L14.5 13 H22" fill="none" stroke="#FFFFFF" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
   ),
-  glide: (
+  bridge: (
     <g transform="rotate(45 12 12)">
       <rect x="4" y="9" width="16" height="6" rx="3" fill="none" stroke="#FFFFFF" strokeWidth="1.6" />
       <circle cx="9" cy="12" r="0.9" fill="#FFFFFF" />
@@ -2473,7 +2473,7 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .spklab-card--shift .spklab-pin circle:first-child { fill: #E8B400; }
 .spklab-card--ascend .spklab-pin circle:first-child { fill: #F2994A; }
 .spklab-card--relay .spklab-pin circle:first-child { fill: #3E7CB1; }
-.spklab-card--glide .spklab-pin circle:first-child { fill: #4FAE7A; }
+.spklab-card--bridge .spklab-pin circle:first-child { fill: #4FAE7A; }
 .spklab-card--derive .spklab-pin circle:first-child { fill: #D6478C; }
 .spklab-card--sequence .spklab-pin circle:first-child { fill: #5C6BC0; }
 
@@ -2502,7 +2502,7 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .spklab-card--shift .spklab-cta { background: #E8B400; text-shadow: 0 1px 3px rgba(120,80,0,0.5); }
 .spklab-card--ascend .spklab-cta { background: #D97D2E; }
 .spklab-card--relay .spklab-cta { background: #3E7CB1; }
-.spklab-card--glide .spklab-cta { background: #4FAE7A; }
+.spklab-card--bridge .spklab-cta { background: #4FAE7A; }
 .spklab-card--derive .spklab-cta { background: #D6478C; }
 .spklab-card--sequence .spklab-cta { background: #5C6BC0; }
 
