@@ -9,7 +9,7 @@ const AUDIENCES = [
 
 export default function ShiftHub() {
   const navigate = useNavigate();
-  const [audience, setAudience] = useState("adults");
+  const [audience, setAudience] = useState("teens");
   const tracks = TRACKS.filter((t) => t.audience.includes(audience));
 
   return (

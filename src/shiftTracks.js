@@ -9,8 +9,22 @@ import restaurant2 from "./shiftRestaurant2";
 import restaurant3 from "./shiftRestaurant3";
 import restaurant4 from "./shiftRestaurant4";
 import restaurant5 from "./shiftRestaurant5";
+import family1 from "./shiftFamily1";
+import family2 from "./shiftFamily2";
+import family3 from "./shiftFamily3";
+import family4 from "./shiftFamily4";
+import family5 from "./shiftFamily5";
 
 const TRACKS = [
+  {
+    id: "family",
+    title: "Family & Home Life",
+    gapFocus: "Spontaneous Tense Accuracy",
+    level: "A2-B1",
+    audience: ["teens"],
+    blurb: "Five family scenes, five role pairs, one tense-accuracy skill trained live in conversation, not in isolated drills.",
+    lessons: [family1, family2, family3, family4, family5],
+  },
   {
     id: "restaurant",
     title: "Restaurant",
