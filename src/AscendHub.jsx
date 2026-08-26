@@ -1,23 +1,53 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import TRACKS from "./ascendTracks";
 
-function groupByCategory(tracks) {
-  const order = [];
-  const groups = {};
-  tracks.forEach((track) => {
-    const cat = track.category || "Other";
-    if (!groups[cat]) {
-      groups[cat] = [];
-      order.push(cat);
-    }
-    groups[cat].push(track);
-  });
-  return order.map((cat) => ({ category: cat, tracks: groups[cat] }));
+const LEVELS = [
+  { key: "a2b1", label: "A2 → B1" },
+  { key: "b2c1", label: "B2 → C1" },
+];
+
+const AUDIENCES = [
+  { key: "teens", label: "Teens" },
+  { key: "adults", label: "Adults" },
+];
+
+function TrackCard({ track, index }) {
+  const authored = track.lessons.filter(Boolean).length;
+  return (
+    <a href={`/library/ascend/${track.id}`} className="ah-track-card">
+      <div className="ah-track-ribbon">
+        <span className="ah-track-num">Track {String(index + 1).padStart(2, "0")}</span>
+        <span className="ah-track-level-pill">{track.level}</span>
+      </div>
+      <div className="ah-track-body">
+        <div className="ah-track-tags">
+          <span className="ah-track-tag">{track.theme}</span>
+        </div>
+        <h3 className="ah-track-title">{track.title}</h3>
+        <p className="ah-track-desc">{track.blurb}</p>
+        <div className="ah-track-foot">
+          <span className="ah-track-meta">{authored} of {track.lessons.length} ready</span>
+          <span className="ah-track-cta">Open track →</span>
+        </div>
+      </div>
+    </a>
+  );
+}
+
+function GhostCard() {
+  return (
+    <div className="ah-track-card ah-track-card--ghost">
+      <span className="ah-ghost-plus">+</span>
+      <div className="ah-ghost-label">Coming soon</div>
+      <div className="ah-ghost-sub">Tracks for this level and audience are on the way.</div>
+    </div>
+  );
 }
 
 export default function AscendHub() {
   const navigate = useNavigate();
-  const categories = groupByCategory(TRACKS);
+  const [level, setLevel] = useState("a2b1");
 
   return (
     <div className="ah-shell">
@@ -32,52 +62,40 @@ export default function AscendHub() {
         <div className="ah-hero">
           <h1 className="ah-hero-title">Ascend</h1>
           <p className="ah-hero-blurb">
-            Ascend sharpens precision, structure, and diplomatic control in speech. Built for students who already sound fluent but whose ideas come out imprecise or poorly organized.
+            Ascend levels up word choice and sentence construction live in conversation. Built for students who already get their point across but reach for the plain version instead of the precise one.
           </p>
         </div>
 
         <div className="ah-dot-lane"></div>
 
-        {categories.map(({ category, tracks }) => (
-          <section className="ah-category" key={category}>
-            <h2 className="ah-category-title">{category}</h2>
-            <div className="ah-tracks-grid">
-              {tracks.map((track) => {
-                const authored = track.lessons.filter(Boolean).length;
-                return (
-                  <a key={track.id} href={`/library/ascend/${track.id}`} className="ah-track-card">
-                    <div className="ah-track-ribbon">
-                      <span className="ah-track-num">Track {String(TRACKS.indexOf(track) + 1).padStart(2, "0")}</span>
-                      <span className="ah-track-level-pill">{track.level}</span>
-                    </div>
-                    <div className="ah-track-body">
-                      <div className="ah-track-tags">
-                        <span className="ah-track-tag">{track.theme}</span>
-                      </div>
-                      <h3 className="ah-track-title">{track.title}</h3>
-                      <p className="ah-track-desc">{track.blurb}</p>
-                      <div className="ah-track-foot">
-                        <span className="ah-track-meta">{authored} of {track.lessons.length} ready</span>
-                        <span className="ah-track-cta">Open track →</span>
-                      </div>
-                    </div>
-                  </a>
-                );
-              })}
-            </div>
-          </section>
-        ))}
+        <div className="ah-level-tabs">
+          {LEVELS.map((l) => (
+            <button
+              key={l.key}
+              type="button"
+              className={`ah-level-tab ${level === l.key ? "is-active" : ""}`}
+              onClick={() => setLevel(l.key)}
+            >
+              {l.label}
+            </button>
+          ))}
+        </div>
 
-        <section className="ah-category">
-          <h2 className="ah-category-title">Coming soon</h2>
-          <div className="ah-tracks-grid">
-            <div className="ah-track-card ah-track-card--ghost">
-              <span className="ah-ghost-plus">+</span>
-              <div className="ah-ghost-label">More categories coming</div>
-              <div className="ah-ghost-sub">New profiles get added here as they're built.</div>
-            </div>
-          </div>
-        </section>
+        <div className="ah-columns">
+          {AUDIENCES.map((a) => {
+            const tracks = TRACKS.filter((t) => t.levelBand === level && t.audience && t.audience.includes(a.key));
+            return (
+              <div className="ah-column" key={a.key}>
+                <h2 className="ah-column-head">{a.label}</h2>
+                <div className="ah-column-tracks">
+                  {tracks.length > 0
+                    ? tracks.map((track, i) => <TrackCard key={track.id} track={track} index={i} />)
+                    : <GhostCard />}
+                </div>
+              </div>
+            );
+          })}
+        </div>
       </div>
     </div>
   );
@@ -104,7 +122,7 @@ const CSS = `
 }
 .ah-shell * { box-sizing: border-box; }
 
-.ah-stage { width: 100%; max-width: 1080px; margin: 0 auto; padding: 26px 28px 64px; }
+.ah-stage { width: 100%; max-width: 1400px; margin: 0 auto; padding: 26px 28px 64px; }
 
 .ah-topbar { display: flex; align-items: center; padding-bottom: 34px; }
 .ah-brand {
@@ -123,7 +141,7 @@ const CSS = `
 }
 .ah-brand-logo { height: 30px; width: auto; display: block; margin-right: -4px; }
 
-.ah-hero { max-width: 620px; margin: 0 auto 40px; text-align: center; }
+.ah-hero { max-width: 620px; margin: 0 auto; text-align: center; }
 .ah-hero-title {
   font-family: 'Baloo 2', cursive;
   font-weight: 800;
@@ -151,7 +169,7 @@ const CSS = `
   position: relative;
   height: 2px;
   background: #CDEBEA;
-  margin: 0 auto 44px;
+  margin: 34px auto 32px;
   max-width: 340px;
 }
 .ah-dot-lane::before, .ah-dot-lane::after {
@@ -166,9 +184,30 @@ const CSS = `
 .ah-dot-lane::before { left: 0; }
 .ah-dot-lane::after { right: 0; }
 
-.ah-category { margin-bottom: 40px; }
-.ah-category:last-child { margin-bottom: 0; }
-.ah-category-title {
+.ah-level-tabs { display: flex; justify-content: center; gap: 8px; margin-bottom: 40px; }
+.ah-level-tab {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 700;
+  font-size: 13.5px;
+  color: #D97D2E;
+  background: #FFFFFF;
+  border: 1.5px solid #F6D9BB;
+  border-radius: 999px;
+  padding: 8px 22px;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+.ah-level-tab:hover { border-color: #F2994A; }
+.ah-level-tab.is-active { background: #F2994A; border-color: #F2994A; color: #FFFFFF; }
+
+.ah-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 36px;
+  align-items: start;
+}
+
+.ah-column-head {
   font-family: 'IBM Plex Sans', sans-serif;
   font-weight: 800;
   font-size: 13px;
@@ -176,12 +215,14 @@ const CSS = `
   text-transform: uppercase;
   color: #D97D2E;
   margin: 0 0 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px dashed #CDEBEA;
 }
 
-.ah-tracks-grid {
+.ah-column-tracks {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 22px;
+  grid-template-columns: 1fr;
+  gap: 20px;
 }
 
 .ah-track-card {
@@ -251,7 +292,7 @@ const CSS = `
   align-items: center;
   justify-content: center;
   text-align: center;
-  min-height: 260px;
+  min-height: 220px;
   box-shadow: none;
   border: 2px dashed #CDEBEA;
   background: transparent;
@@ -261,7 +302,7 @@ const CSS = `
 .ah-ghost-label { font-family: 'Baloo 2', cursive; font-weight: 700; font-size: 17px; color: #4B8B92; opacity: 0.7; }
 .ah-ghost-sub { font-family: 'IBM Plex Sans', sans-serif; font-size: 12.5px; margin-top: 6px; color: #4B8B92; opacity: 0.6; }
 
-@media (max-width: 640px) {
-  .ah-tracks-grid { grid-template-columns: 1fr; }
+@media (max-width: 760px) {
+  .ah-columns { grid-template-columns: 1fr; gap: 32px; }
 }
 `;
