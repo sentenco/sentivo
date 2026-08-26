@@ -1,10 +1,10 @@
-// SHIFT, Family & Home Life Track, Lesson 1: "Chore Check-In"
+// SHIFT, Family & Home Life Track, Lesson 1: "Chore Time"
 // Mom & teen. Present Simple (habit/routine) vs Present Continuous (right now / fixed plan for later).
 
 export default {
   id: "family-1",
   code: "L1",
-  title: "Chore Check-In",
+  title: "Chore Time",
   tenses: "Present Simple vs Present Continuous",
   tag: "Family",
   roles: { them: "Mom", me: "You" },
