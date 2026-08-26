@@ -19,6 +19,16 @@ import school2 from "./shiftSchool2";
 import school3 from "./shiftSchool3";
 import school4 from "./shiftSchool4";
 import school5 from "./shiftSchool5";
+import friends1 from "./shiftFriends1";
+import friends2 from "./shiftFriends2";
+import friends3 from "./shiftFriends3";
+import friends4 from "./shiftFriends4";
+import friends5 from "./shiftFriends5";
+import gaming1 from "./shiftGaming1";
+import gaming2 from "./shiftGaming2";
+import gaming3 from "./shiftGaming3";
+import gaming4 from "./shiftGaming4";
+import gaming5 from "./shiftGaming5";
 
 const TRACKS = [
   {
@@ -38,6 +48,24 @@ const TRACKS = [
     audience: ["teens"],
     blurb: "Five school scenes, five role pairs, one tense-accuracy skill trained live in conversation, not in isolated drills.",
     lessons: [school1, school2, school3, school4, school5],
+  },
+  {
+    id: "friends",
+    title: "Friend Group Hangout",
+    gapFocus: "Spontaneous Tense Accuracy",
+    level: "A2-B1",
+    audience: ["teens"],
+    blurb: "Five friend-group scenes, five moments together, one tense-accuracy skill trained live in conversation, not in isolated drills.",
+    lessons: [friends1, friends2, friends3, friends4, friends5],
+  },
+  {
+    id: "gaming",
+    title: "Online & Gaming",
+    gapFocus: "Spontaneous Tense Accuracy",
+    level: "A2-B1",
+    audience: ["teens"],
+    blurb: "Five teammate scenes, five gaming moments, one tense-accuracy skill trained live in conversation, not in isolated drills.",
+    lessons: [gaming1, gaming2, gaming3, gaming4, gaming5],
   },
   {
     id: "restaurant",
