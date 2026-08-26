@@ -291,7 +291,6 @@ const SPEAKING_TRACKS = [
   { key: "shift", href: "/library/shift", hue: "shift", gap: "Delayed tense correction", name: "Shift", desc: "Fast tense choice and self-repair under pressure, for students who already know the grammar." },
   { key: "ascend", href: "/library/ascend", hue: "ascend", gap: "Ideas lack structure and precision", name: "Ascend", desc: "Precision, structure, and diplomatic control for students who already sound fluent." },
   { key: "relay", href: "/library/relay", hue: "relay", gap: "Conversation-ending answers", name: "Relay", desc: "Turn short, complete answers into real exchanges — add reasons, details, and questions that keep the conversation moving." },
-  { key: "stack", href: "/library/stack", hue: "stack", gap: "Skill overload under pressure", name: "Stack", desc: "Isolate one variable at a time, pattern, tense, or vocabulary, then stack them until you can run it all at once." },
   { key: "glide", href: "/library/glide", hue: "glide", gap: "No strategy for filling gaps", name: "Glide", desc: "Swap dead air and native-language filler sounds for natural stalling phrases that keep your speech flowing." },
 ];
 
@@ -324,17 +323,6 @@ const SPKLAB_PIN_ICONS = {
   ),
   relay: (
     <path d="M2 13 H6 L8 7 L11 19 L13 8 L14.5 13 H22" fill="none" stroke="#FFFFFF" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-  ),
-  stack: (
-    <g>
-      <rect x="4" y="5" width="16" height="14" rx="2" fill="none" stroke="#FFFFFF" strokeWidth="1.5" />
-      <circle cx="8" cy="9" r="1.3" fill="#FFFFFF" />
-      <circle cx="12" cy="9" r="1.3" fill="#FFFFFF" />
-      <circle cx="16" cy="9" r="1.3" fill="#FFFFFF" />
-      <circle cx="8" cy="15" r="1.3" fill="#FFFFFF" />
-      <circle cx="12" cy="15" r="1.3" fill="#FFFFFF" />
-      <circle cx="16" cy="15" r="1.3" fill="#FFFFFF" />
-    </g>
   ),
   glide: (
     <g transform="rotate(45 12 12)">
@@ -2467,7 +2455,6 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .spklab-card--shift .spklab-pin circle:first-child { fill: #E8B400; }
 .spklab-card--ascend .spklab-pin circle:first-child { fill: #F2994A; }
 .spklab-card--relay .spklab-pin circle:first-child { fill: #3E7CB1; }
-.spklab-card--stack .spklab-pin circle:first-child { fill: #8B6FC9; }
 .spklab-card--glide .spklab-pin circle:first-child { fill: #4FAE7A; }
 
 .spklab-body { padding: 30px 20px 22px; text-align: center; display: flex; flex-direction: column; align-items: center; flex: 1; width: 100%; }
@@ -2495,7 +2482,6 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .spklab-card--shift .spklab-cta { background: #E8B400; text-shadow: 0 1px 3px rgba(120,80,0,0.5); }
 .spklab-card--ascend .spklab-cta { background: #D97D2E; }
 .spklab-card--relay .spklab-cta { background: #3E7CB1; }
-.spklab-card--stack .spklab-cta { background: #8B6FC9; }
 .spklab-card--glide .spklab-cta { background: #4FAE7A; }
 
 .spklab-card--soon { cursor: default; }
