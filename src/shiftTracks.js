@@ -34,6 +34,26 @@ import sports2 from "./shiftSports2";
 import sports3 from "./shiftSports3";
 import sports4 from "./shiftSports4";
 import sports5 from "./shiftSports5";
+import interview1 from "./shiftInterview1";
+import interview2 from "./shiftInterview2";
+import interview3 from "./shiftInterview3";
+import interview4 from "./shiftInterview4";
+import interview5 from "./shiftInterview5";
+import banking1 from "./shiftBanking1";
+import banking2 from "./shiftBanking2";
+import banking3 from "./shiftBanking3";
+import banking4 from "./shiftBanking4";
+import banking5 from "./shiftBanking5";
+import doctor1 from "./shiftDoctor1";
+import doctor2 from "./shiftDoctor2";
+import doctor3 from "./shiftDoctor3";
+import doctor4 from "./shiftDoctor4";
+import doctor5 from "./shiftDoctor5";
+import airport1 from "./shiftAirport1";
+import airport2 from "./shiftAirport2";
+import airport3 from "./shiftAirport3";
+import airport4 from "./shiftAirport4";
+import airport5 from "./shiftAirport5";
 
 const TRACKS = [
   {
@@ -89,6 +109,42 @@ const TRACKS = [
     audience: ["adults"],
     blurb: "Five restaurant scenes, five role pairs, one tense-accuracy skill trained live in conversation, not in isolated drills.",
     lessons: [restaurant1, restaurant2, restaurant3, restaurant4, restaurant5],
+  },
+  {
+    id: "interview",
+    title: "Job Interview",
+    gapFocus: "Spontaneous Tense Accuracy",
+    level: "A2-B1",
+    audience: ["adults"],
+    blurb: "Five career-arc scenes, from first interview to your 90-day review, one tense-accuracy skill trained live in conversation, not in isolated drills.",
+    lessons: [interview1, interview2, interview3, interview4, interview5],
+  },
+  {
+    id: "banking",
+    title: "Banking & Finance",
+    gapFocus: "Spontaneous Tense Accuracy",
+    level: "A2-B1",
+    audience: ["adults"],
+    blurb: "Five banking scenes, five real money moments, one tense-accuracy skill trained live in conversation, not in isolated drills.",
+    lessons: [banking1, banking2, banking3, banking4, banking5],
+  },
+  {
+    id: "doctor",
+    title: "Doctor's Office",
+    gapFocus: "Spontaneous Tense Accuracy",
+    level: "A2-B1",
+    audience: ["adults"],
+    blurb: "Five appointment scenes, five checkup moments, one tense-accuracy skill trained live in conversation, not in isolated drills.",
+    lessons: [doctor1, doctor2, doctor3, doctor4, doctor5],
+  },
+  {
+    id: "airport",
+    title: "Airport",
+    gapFocus: "Spontaneous Tense Accuracy",
+    level: "A2-B1",
+    audience: ["adults"],
+    blurb: "Five travel scenes, five airport moments, one tense-accuracy skill trained live in conversation, not in isolated drills.",
+    lessons: [airport1, airport2, airport3, airport4, airport5],
   },
 ];
 
