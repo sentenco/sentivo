@@ -287,12 +287,12 @@ const GRAMMAR_MODULES = [
 ];
 
 const SPEAKING_TRACKS = [
-  { key: "forge", href: "/library/forge", hue: "forge", gap: "Vocabulary gaps under pressure", name: "Forge", desc: "Build real vocabulary through pictures, gaps, echoes, and question chains." },
-  { key: "shift", href: "/library/shift", hue: "shift", gap: "Delayed tense correction", name: "Shift", desc: "Fast tense choice and self-repair under pressure, for students who already know the grammar." },
-  { key: "ascend", href: "/library/ascend", hue: "ascend", gap: "Ideas lack structure and precision", name: "Ascend", desc: "Precision, structure, and diplomatic control for students who already sound fluent." },
-  { key: "relay", href: "/library/relay", hue: "relay", gap: "Conversation-ending answers", name: "Relay", desc: "Turn short, complete answers into real exchanges — add reasons, details, and questions that keep the conversation moving." },
-  { key: "bridge", href: "/library/bridge", hue: "bridge", gap: "No strategy for filling gaps", name: "Bridge", desc: "Swap dead air and native-language filler sounds for natural stalling phrases that carry you across a stuck moment." },
-  { key: "derive", href: "/library/derive", hue: "derive", gap: "Wrong word-family form", name: "Derive", desc: "Choose the right word-family member on demand, developing instead of development, decide instead of decision." },
+  { key: "forge", href: "/library/forge", hue: "forge", gap: "Runs out of words under pressure", name: "Forge", desc: "Build real vocabulary through pictures, gaps, echoes, and question chains." },
+  { key: "shift", href: "/library/shift", hue: "shift", gap: "Catches the wrong tense too late", name: "Shift", desc: "Fast tense choice and self-repair under pressure, for students who already know the grammar." },
+  { key: "ascend", href: "/library/ascend", hue: "ascend", gap: "Correct sentences, weak word choice", name: "Ascend", desc: "Precision, structure, and diplomatic control for students who already sound fluent." },
+  { key: "relay", href: "/library/relay", hue: "relay", gap: "Answers that end the conversation", name: "Relay", desc: "Turn short, complete answers into real exchanges — add reasons, details, and questions that keep the conversation moving." },
+  { key: "bridge", href: "/library/bridge", hue: "bridge", gap: "Goes silent instead of stalling", name: "Bridge", desc: "Swap dead air and native-language filler sounds for natural stalling phrases that carry you across a stuck moment." },
+  { key: "derive", href: "/library/derive", hue: "derive", gap: "Picks the wrong word-family form", name: "Derive", desc: "Choose the right word-family member on demand, developing instead of development, decide instead of decision." },
   { key: "sequence", href: "/library/sequence", hue: "sequence", gap: "Words out of order", name: "Sequence", desc: "Take words a student already knows and put them in the order that actually makes a sentence." },
 ];
 
