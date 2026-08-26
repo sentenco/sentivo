@@ -292,6 +292,8 @@ const SPEAKING_TRACKS = [
   { key: "ascend", href: "/library/ascend", hue: "ascend", gap: "Ideas lack structure and precision", name: "Ascend", desc: "Precision, structure, and diplomatic control for students who already sound fluent." },
   { key: "relay", href: "/library/relay", hue: "relay", gap: "Conversation-ending answers", name: "Relay", desc: "Turn short, complete answers into real exchanges — add reasons, details, and questions that keep the conversation moving." },
   { key: "glide", href: "/library/glide", hue: "glide", gap: "No strategy for filling gaps", name: "Glide", desc: "Swap dead air and native-language filler sounds for natural stalling phrases that keep your speech flowing." },
+  { key: "derive", href: "/library/derive", hue: "derive", gap: "Wrong word-family form", name: "Derive", desc: "Choose the right word-family member on demand, developing instead of development, decide instead of decision." },
+  { key: "sequence", href: "/library/sequence", hue: "sequence", gap: "Words out of order", name: "Sequence", desc: "Take words a student already knows and put them in the order that actually makes a sentence." },
 ];
 
 // Small medical-tool glyph per track, shown inside the pin badge on each
@@ -330,6 +332,22 @@ const SPKLAB_PIN_ICONS = {
       <circle cx="9" cy="12" r="0.9" fill="#FFFFFF" />
       <circle cx="12" cy="12" r="0.9" fill="#FFFFFF" />
       <circle cx="15" cy="12" r="0.9" fill="#FFFFFF" />
+    </g>
+  ),
+  derive: (
+    <g>
+      <path d="M9 3 h6" stroke="#FFFFFF" strokeWidth="1.6" strokeLinecap="round" />
+      <path d="M10 3 v11 a2 2 0 0 0 4 0 V3" fill="none" stroke="#FFFFFF" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+      <line x1="10" y1="10" x2="14" y2="10" stroke="#FFFFFF" strokeWidth="1.4" strokeLinecap="round" />
+    </g>
+  ),
+  sequence: (
+    <g>
+      <rect x="2.5" y="9" width="5" height="6" rx="1.5" fill="none" stroke="#FFFFFF" strokeWidth="1.6" />
+      <rect x="9.5" y="9" width="5" height="6" rx="1.5" fill="none" stroke="#FFFFFF" strokeWidth="1.6" />
+      <rect x="16.5" y="9" width="5" height="6" rx="1.5" fill="none" stroke="#FFFFFF" strokeWidth="1.6" />
+      <line x1="7.5" y1="12" x2="9.5" y2="12" stroke="#FFFFFF" strokeWidth="1.6" strokeLinecap="round" />
+      <line x1="14.5" y1="12" x2="16.5" y2="12" stroke="#FFFFFF" strokeWidth="1.6" strokeLinecap="round" />
     </g>
   ),
 };
@@ -2456,6 +2474,8 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .spklab-card--ascend .spklab-pin circle:first-child { fill: #F2994A; }
 .spklab-card--relay .spklab-pin circle:first-child { fill: #3E7CB1; }
 .spklab-card--glide .spklab-pin circle:first-child { fill: #4FAE7A; }
+.spklab-card--derive .spklab-pin circle:first-child { fill: #D6478C; }
+.spklab-card--sequence .spklab-pin circle:first-child { fill: #5C6BC0; }
 
 .spklab-body { padding: 30px 20px 22px; text-align: center; display: flex; flex-direction: column; align-items: center; flex: 1; width: 100%; }
 .spklab-name { font-family: 'Baloo 2', cursive; font-weight: 700; font-size: clamp(22px, 2.1vw, 26px); color: #10646B; margin: 0 0 10px; }
@@ -2483,6 +2503,8 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .spklab-card--ascend .spklab-cta { background: #D97D2E; }
 .spklab-card--relay .spklab-cta { background: #3E7CB1; }
 .spklab-card--glide .spklab-cta { background: #4FAE7A; }
+.spklab-card--derive .spklab-cta { background: #D6478C; }
+.spklab-card--sequence .spklab-cta { background: #5C6BC0; }
 
 .spklab-card--soon { cursor: default; }
 .spklab-card--soon .spklab-cta { background: #C7DCDD; color: #4B8B92; }
