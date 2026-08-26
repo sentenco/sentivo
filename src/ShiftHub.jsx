@@ -100,7 +100,7 @@ const CSS = `
 }
 .shh-shell * { box-sizing: border-box; }
 
-.shh-stage { width: 100%; max-width: 1080px; margin: 0 auto; padding: 26px 28px 64px; }
+.shh-stage { width: 100%; max-width: 1400px; margin: 0 auto; padding: 26px 28px 64px; }
 
 .shh-topbar { display: flex; align-items: center; padding-bottom: 34px; }
 .shh-brand {
@@ -180,7 +180,7 @@ const CSS = `
 
 .shh-tracks-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 22px;
 }
 

@@ -100,7 +100,7 @@ const CSS = `
 }
 .rlh-shell * { box-sizing: border-box; }
 
-.rlh-stage { width: 100%; max-width: 1080px; margin: 0 auto; padding: 26px 28px 64px; }
+.rlh-stage { width: 100%; max-width: 1400px; margin: 0 auto; padding: 26px 28px 64px; }
 
 .rlh-topbar { display: flex; align-items: center; padding-bottom: 34px; }
 .rlh-brand {
@@ -180,7 +180,7 @@ const CSS = `
 
 .rlh-tracks-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 22px;
 }
 
