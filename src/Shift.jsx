@@ -30,25 +30,28 @@ function ProgressRow({ total, doneCount, currentIdx }) {
   );
 }
 
-const ME_EMOJI = "🙂";
-
-function Avatar({ emoji, side, size }) {
-  return <div className={`sh-avatar sh-avatar--${side}${size ? ` sh-avatar--${size}` : ""}`}>{emoji}</div>;
+function Avatar({ side, size, wrong }) {
+  const src = side === "me" ? "/shift-avatar-me.png" : "/shift-avatar-them.png";
+  return (
+    <div className={`sh-avatar sh-avatar--${side}${size ? ` sh-avatar--${size}` : ""}${wrong ? " is-wrong" : ""}`}>
+      <img src={src} alt="" className="sh-avatar-img" />
+    </div>
+  );
 }
 
-function HistoryLog({ rows, themEmoji }) {
+function HistoryLog({ rows }) {
   if (rows.length === 0) return null;
   return (
     <div className="sh-history">
       {rows.map((row, i) => (
         <div className="sh-hist-row" key={i}>
           <div className="sh-bubble-line sh-bubble-line--them">
-            <Avatar emoji={themEmoji} side="them" />
+            <Avatar side="them" />
             <div className="sh-bubble sh-bubble--them">{row.q}</div>
           </div>
           <div className="sh-bubble-line sh-bubble-line--me">
             <div className="sh-bubble sh-bubble--me">{row.a}</div>
-            <Avatar emoji={ME_EMOJI} side="me" />
+            <Avatar side="me" />
           </div>
         </div>
       ))}
@@ -68,7 +71,6 @@ function ChainStage({ lesson, chainIdx, history, onAdvance }) {
 
   if (isDone) return null;
 
-  const avatarEmoji = display ? ME_EMOJI : lesson.themEmoji;
   const avatarSide = display ? "me" : "them";
   const avatarWrong = display && !display.isRight;
   const lineText = display ? display.text : step.question;
@@ -95,9 +97,9 @@ function ChainStage({ lesson, chainIdx, history, onAdvance }) {
 
   return (
     <>
-      <HistoryLog rows={history} themEmoji={lesson.themEmoji} />
+      <HistoryLog rows={history} />
       <div className="sh-slide">
-        <div className={`sh-avatar sh-avatar--${avatarSide} sh-avatar--lg${avatarWrong ? " is-wrong" : ""}`}>{avatarEmoji}</div>
+        <Avatar side={avatarSide} size="lg" wrong={avatarWrong} />
         <div className={lineClass}>{lineText}</div>
       </div>
 
@@ -275,11 +277,12 @@ const CSS = `
 
 .sh-avatar {
   width: 30px; height: 30px; border-radius: 50%; flex-shrink: 0; display: flex; align-items: center;
-  justify-content: center; font-size: 15px; background: #E7EBF3;
+  justify-content: center; overflow: hidden; background: #E7EBF3;
 }
+.sh-avatar-img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .sh-avatar--me { background: #FFF4D6; }
-.sh-avatar--lg { width: 44px; height: 44px; font-size: 20px; margin-bottom: 10px; }
-.sh-avatar--lg.is-wrong { background: #FBE4E9; }
+.sh-avatar--lg { width: 44px; height: 44px; margin-bottom: 10px; }
+.sh-avatar--lg.is-wrong { box-shadow: 0 0 0 3px rgba(214,83,109,0.55); }
 
 .sh-history { display: flex; flex-direction: column; gap: 10px; padding: 16px 22px 4px; }
 .sh-hist-row { display: flex; flex-direction: column; gap: 6px; padding-bottom: 10px; border-bottom: 1px solid #EDE1DB; }
