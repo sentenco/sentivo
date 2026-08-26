@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useParams } from "react-router-dom";
-import { getLesson } from "./deriveTracks";
+import { getLesson, getTrack } from "./deriveTracks";
 
 // DERIVE player: a real slide deck (Previous/Next navigation, not a live
 // evolving card like Shift). One word family per lesson. Cover -> Word
@@ -19,27 +19,64 @@ function TopBar() {
   );
 }
 
-function CoverSlide({ title }) {
+// Faint branching line-art in the corners, echoing the root->forms idea
+// behind the deck. Purely decorative, matches Relay's BgDecor pattern.
+function BgDecor() {
+  return (
+    <div className="dv-bg" aria-hidden="true">
+      <svg className="dv-bg-item dv-bg-item--1" width="150" height="120" viewBox="0 0 150 120" fill="none">
+        <path d="M10 100 L10 60 M10 60 L40 30 M10 60 L10 20 M10 60 L-20 40" stroke="#D6478C" strokeWidth="2.5" strokeLinecap="round" />
+        <circle cx="10" cy="100" r="4" fill="#D6478C" />
+        <circle cx="40" cy="30" r="4" fill="#D6478C" />
+        <circle cx="10" cy="20" r="4" fill="#D6478C" />
+      </svg>
+      <svg className="dv-bg-item dv-bg-item--2" width="130" height="110" viewBox="0 0 130 110" fill="none">
+        <path d="M10 90 L10 55 M10 55 L38 25 M10 55 L10 15" stroke="#B23370" strokeWidth="2.5" strokeLinecap="round" />
+        <circle cx="10" cy="90" r="4" fill="#B23370" />
+        <circle cx="38" cy="25" r="4" fill="#B23370" />
+      </svg>
+    </div>
+  );
+}
+
+function CoverSlide({ title, trackTitle, subtitle }) {
   return (
     <div className="dv-cover">
+      <p className="dv-cover-kicker">{trackTitle}</p>
       <h2 className="dv-h dv-h--cover">{title}</h2>
+      <p className="dv-cover-sub">{subtitle}</p>
     </div>
   );
 }
 
 function FamilySlide({ family }) {
   const [root, ...rest] = family;
+  const n = rest.length;
   return (
     <div className="dv-fam-slide">
       <p className="dv-fam-label">Today's Family</p>
-      <div className="dv-fam-chain">
-        <span className="dv-h dv-h--fam">{root}</span>
-        {rest.map((w) => (
-          <span key={w} className="dv-fam-item">
-            <span className="dv-fam-arrow">→</span>
-            <span className="dv-fam-word">{w}</span>
-          </span>
-        ))}
+      <div className="dv-tree">
+        <span className="dv-h dv-h--fam dv-tree-root">{root}</span>
+        <svg className="dv-tree-lines" viewBox="0 0 100 100" preserveAspectRatio="none">
+          {rest.map((_, i) => {
+            const y = n === 1 ? 50 : (i / (n - 1)) * 100;
+            return (
+              <path
+                key={i}
+                d={`M0 50 C 40 50, 40 ${y}, 100 ${y}`}
+                stroke="#EBB8D4"
+                strokeWidth="1.5"
+                fill="none"
+                vectorEffect="non-scaling-stroke"
+              />
+            );
+          })}
+        </svg>
+        <div className="dv-tree-branches">
+          {rest.map((w) => (
+            <span key={w} className="dv-branch-chip">{w}</span>
+          ))}
+        </div>
       </div>
     </div>
   );
@@ -62,11 +99,15 @@ function SentenceSlide({ sentence, family, slideNum, totalSentences }) {
   return (
     <div className="dv-sent-slide">
       <p className="dv-sent-label">Sentence {slideNum} of {totalSentences}</p>
-      <p className="dv-sentence">
-        &ldquo;{before}
+      <div className="dv-quote-card">
+        <span className="dv-quote-mark" aria-hidden="true">&ldquo;</span>
+        <p className="dv-sentence">
+          {before}
         <span className={`dv-blank${isRight ? " filled" : ""}`}>{isRight ? sentence.answer : "    "}</span>
-        {after}&rdquo;
-      </p>
+        {after}
+        </p>
+        <span className="dv-quote-mark dv-quote-mark--end" aria-hidden="true">&ldquo;</span>
+      </div>
       <p className="dv-bank-label">Word Bank</p>
       <div className="dv-bank">
         {family.map((word) => {
@@ -100,12 +141,14 @@ function EndSlide({ root, family, onFinish }) {
 export default function Derive() {
   const { trackId, lessonNum } = useParams();
   const lesson = getLesson(trackId, Number(lessonNum));
+  const track = getTrack(trackId);
   const [slideIdx, setSlideIdx] = useState(0);
 
   if (!lesson) {
     return (
       <div className="dv-shell">
         <style>{CSS}</style>
+        <BgDecor />
         <div className="dv-stage">
           <p className="dv-missing">This lesson isn't ready yet.</p>
         </div>
@@ -134,6 +177,7 @@ export default function Derive() {
   return (
     <div className="dv-shell">
       <style>{CSS}</style>
+      <BgDecor />
       <div className="dv-stage">
         <div className="dv-panel">
           <div className="dv-header">
@@ -142,7 +186,13 @@ export default function Derive() {
           </div>
 
           <div className="dv-deck-body" key={slideIdx}>
-            {isCover && <CoverSlide title={title} />}
+            {isCover && (
+              <CoverSlide
+                title={title}
+                trackTitle={track ? `${track.title} · Track 01` : ""}
+                subtitle={`One root, ${family.length - 1} forms, ${sentences.length} sentences.`}
+              />
+            )}
             {isFamily && <FamilySlide family={family} />}
             {isSentence && (
               <SentenceSlide
@@ -181,9 +231,10 @@ const CSS = `
 :root { color-scheme: light; }
 
 .dv-shell {
+  position: relative;
   width: 100%;
   min-height: 100vh;
-  background: #FDF6FA;
+  background: linear-gradient(160deg, #FDF3F8 0%, #FBE3EF 100%);
   color: #241422;
   font-family: 'Inter', sans-serif;
   box-sizing: border-box;
@@ -191,12 +242,18 @@ const CSS = `
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
 }
 .dv-shell * { box-sizing: border-box; }
 
+.dv-bg { position: absolute; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+.dv-bg-item { position: absolute; opacity: 0.14; }
+.dv-bg-item--1 { top: 8%; left: 3%; }
+.dv-bg-item--2 { bottom: 6%; right: 4%; transform: scaleX(-1); }
+
 .dv-missing { text-align: center; color: #86677E; margin-top: 60px; }
 
-.dv-stage { width: 100%; max-width: 780px; margin: 0 auto; }
+.dv-stage { position: relative; z-index: 1; width: 100%; max-width: 780px; margin: 0 auto; }
 
 .dv-panel {
   background: #FFFCF7; border-radius: 16px; overflow: hidden;
@@ -237,21 +294,34 @@ const CSS = `
 
 /* ---- Cover ---- */
 .dv-cover { text-align: center; width: 100%; }
+.dv-cover-kicker { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #86677E; margin: 0 0 16px; min-height: 1em; }
+.dv-cover-sub { font-family: 'Fraunces', serif; font-style: italic; font-size: 14.5px; color: #5A6B92; margin: 18px 0 0; }
 
-/* ---- Word Family ---- */
+/* ---- Word Family: root -> branches diagram ---- */
 .dv-fam-slide { text-align: center; width: 100%; }
-.dv-fam-label { font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #B23370; margin: 0 0 18px; }
-.dv-fam-chain { display: flex; align-items: center; justify-content: center; gap: 14px; flex-wrap: wrap; }
-.dv-fam-item { display: flex; align-items: center; gap: 14px; }
-.dv-fam-arrow { font-size: 20px; color: #E4AECB; }
-.dv-fam-word { font-family: 'Baloo 2', cursive; font-weight: 700; font-size: 22px; color: #1B2A4A; }
+.dv-fam-label { font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #B23370; margin: 0 0 22px; }
+.dv-tree { display: flex; align-items: center; justify-content: center; gap: 0; }
+.dv-tree-root { flex-shrink: 0; }
+.dv-tree-lines { width: 64px; height: 170px; flex-shrink: 0; }
+.dv-tree-branches { display: flex; flex-direction: column; justify-content: space-between; gap: 10px; min-height: 170px; padding: 4px 0; }
+.dv-branch-chip {
+  font-family: 'Baloo 2', cursive; font-weight: 700; font-size: 17px; color: #1B2A4A;
+  background: #FFFFFF; border: 1.5px solid #F2DCE9; border-radius: 10px; padding: 9px 18px;
+  box-shadow: 0 4px 10px rgba(178,51,112,0.08); text-align: left;
+}
 
 /* ---- Sentence + word bank ---- */
 .dv-sent-slide { width: 100%; }
 .dv-sent-label { font-size: 11px; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase; color: #5A6B92; text-align: center; margin: 0 0 16px; }
-.dv-sentence { font-family: 'Fraunces', serif; font-weight: 600; font-size: 19px; line-height: 1.55; color: #1B2A4A; text-align: center; margin: 0 auto 26px; max-width: 560px; }
-.dv-blank { display: inline-block; min-width: 100px; border-bottom: 2.5px solid #D6478C; padding: 0 4px; }
-.dv-blank.filled { border-bottom-color: #2F9E58; font-weight: 700; color: #2F9E58; }
+.dv-quote-card {
+  position: relative; background: #F6D9E9; border: 1px solid #EBB8D4; border-radius: 16px;
+  padding: 26px 46px; margin: 0 auto 26px; max-width: 600px;
+}
+.dv-quote-mark { position: absolute; top: 4px; left: 16px; font-family: 'Fraunces', serif; font-size: 52px; color: #EBB8D4; line-height: 1; user-select: none; }
+.dv-quote-mark--end { left: auto; right: 16px; top: auto; bottom: -10px; transform: rotate(180deg); }
+.dv-sentence { font-family: 'Fraunces', serif; font-weight: 600; font-size: 19px; line-height: 1.55; color: #1B2A4A; text-align: center; margin: 0; position: relative; z-index: 1; }
+.dv-blank { display: inline-block; min-width: 100px; border-bottom: 2.5px dashed #D6478C; padding: 0 4px; }
+.dv-blank.filled { border-bottom: 2.5px solid #2F9E58; font-weight: 700; color: #2F9E58; }
 
 .dv-bank-label { font-size: 11px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: #86677E; text-align: center; margin: 0 0 12px; }
 .dv-bank { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
