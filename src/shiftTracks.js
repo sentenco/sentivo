@@ -29,6 +29,11 @@ import gaming2 from "./shiftGaming2";
 import gaming3 from "./shiftGaming3";
 import gaming4 from "./shiftGaming4";
 import gaming5 from "./shiftGaming5";
+import sports1 from "./shiftSports1";
+import sports2 from "./shiftSports2";
+import sports3 from "./shiftSports3";
+import sports4 from "./shiftSports4";
+import sports5 from "./shiftSports5";
 
 const TRACKS = [
   {
@@ -66,6 +71,15 @@ const TRACKS = [
     audience: ["teens"],
     blurb: "Five teammate scenes, five gaming moments, one tense-accuracy skill trained live in conversation, not in isolated drills.",
     lessons: [gaming1, gaming2, gaming3, gaming4, gaming5],
+  },
+  {
+    id: "sports",
+    title: "Sports Team",
+    gapFocus: "Spontaneous Tense Accuracy",
+    level: "A2-B1",
+    audience: ["teens"],
+    blurb: "Five team scenes, five sideline moments, one tense-accuracy skill trained live in conversation, not in isolated drills.",
+    lessons: [sports1, sports2, sports3, sports4, sports5],
   },
   {
     id: "restaurant",
