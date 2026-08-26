@@ -124,6 +124,8 @@ import AscendTrack from './AscendTrack.jsx'
 import AscendGuide from './AscendGuide.jsx'
 import BridgeHub from './BridgeHub.jsx'
 import DeriveHub from './DeriveHub.jsx'
+import DeriveTrack from './DeriveTrack.jsx'
+import Derive from './Derive.jsx'
 import SequenceHub from './SequenceHub.jsx'
 import VerbTensesTrack from './VerbTensesTrack.jsx'
 import VerbTensesLesson from './VerbTensesLesson.jsx'
@@ -348,6 +350,8 @@ createRoot(document.getElementById('root')).render(
             <Route path="/library/ascend/:trackId/:lessonNum/guide" element={<AscendGuide />} />
             <Route path="/library/bridge" element={<BridgeHub />} />
             <Route path="/library/derive" element={<DeriveHub />} />
+            <Route path="/library/derive/:trackId" element={<DeriveTrack />} />
+            <Route path="/library/derive/:trackId/:lessonNum" element={<Derive />} />
             <Route path="/library/sequence" element={<SequenceHub />} />
             <Route path="/library/grammar/parts-of-speech" element={<PartsOfSpeechTrack />} />
             <Route path="/library/grammar/parts-of-speech/:code" element={<PartsOfSpeechLesson />} />

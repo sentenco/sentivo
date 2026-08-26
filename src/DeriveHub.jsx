@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import TRACKS from "./deriveTracks";
 
 export default function DeriveHub() {
   const navigate = useNavigate();
@@ -23,10 +24,33 @@ export default function DeriveHub() {
         <div className="dvh-dot-lane"></div>
 
         <div className="dvh-tracks-grid">
+          {TRACKS.map((track, i) => {
+            const authored = track.lessons.filter(Boolean).length;
+            return (
+              <a key={track.id} href={`/library/derive/${track.id}`} className="dvh-track-card">
+                <div className="dvh-track-ribbon">
+                  <span className="dvh-track-num">Track {String(i + 1).padStart(2, "0")}</span>
+                  <span className="dvh-track-level-pill">{track.level}</span>
+                </div>
+                <div className="dvh-track-body">
+                  <div className="dvh-track-tags">
+                    <span className="dvh-track-tag">Word-Family Selection</span>
+                  </div>
+                  <h3 className="dvh-track-title">{track.title}</h3>
+                  <p className="dvh-track-desc">{track.blurb}</p>
+                  <div className="dvh-track-foot">
+                    <span className="dvh-track-meta">{authored} of {track.lessons.length} ready</span>
+                    <span className="dvh-track-cta">Open track →</span>
+                  </div>
+                </div>
+              </a>
+            );
+          })}
+
           <div className="dvh-track-card dvh-track-card--ghost">
             <span className="dvh-ghost-plus">+</span>
-            <div className="dvh-ghost-label">Tracks coming soon</div>
-            <div className="dvh-ghost-sub">Derive is still being built, no tracks are ready yet.</div>
+            <div className="dvh-ghost-label">More tracks coming</div>
+            <div className="dvh-ghost-sub">New word families get added here as they're built.</div>
           </div>
         </div>
       </div>
@@ -121,6 +145,69 @@ const CSS = `
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 22px;
+}
+
+.dvh-track-card {
+  display: flex;
+  flex-direction: column;
+  background: #FFFFFF;
+  border-radius: 22px;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  box-shadow: 0 14px 30px rgba(16,100,107,0.14);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.dvh-track-card:hover { transform: translateY(-4px) rotate(-0.4deg); box-shadow: 0 20px 40px rgba(16,100,107,0.2); }
+
+.dvh-track-ribbon {
+  background: linear-gradient(120deg, #D6478C 0%, #B23370 100%);
+  padding: 16px 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.dvh-track-num { font-family: 'Baloo 2', cursive; font-weight: 700; font-size: 20px; color: #FFFFFF; }
+.dvh-track-level-pill {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 800;
+  font-size: 11px;
+  color: #B23370;
+  background: #FFFFFF;
+  border-radius: 999px;
+  padding: 4px 12px;
+}
+
+.dvh-track-body { padding: 22px 22px 20px; flex: 1; display: flex; flex-direction: column; gap: 14px; }
+.dvh-track-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.dvh-track-tag {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 700;
+  font-size: 11px;
+  color: #10646B;
+  background: rgba(42,168,174,0.14);
+  border-radius: 999px;
+  padding: 4px 11px;
+}
+.dvh-track-title { font-family: 'Baloo 2', cursive; font-weight: 700; font-size: 22px; color: #10646B; margin: 0; }
+.dvh-track-desc { font-family: 'IBM Plex Sans', sans-serif; font-weight: 500; font-size: 13.5px; line-height: 1.55; color: #4B8B92; margin: 0; }
+
+.dvh-track-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 14px;
+  border-top: 1px dashed #CDEBEA;
+}
+.dvh-track-meta { font-family: 'IBM Plex Sans', sans-serif; font-weight: 700; font-size: 11px; color: #4B8B92; }
+.dvh-track-cta {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 800;
+  font-size: 12.5px;
+  color: #FFFFFF;
+  background: #D6478C;
+  border-radius: 999px;
+  padding: 8px 16px;
 }
 
 .dvh-track-card--ghost {
