@@ -22,16 +22,25 @@ function TopBar() {
 function CoverSlide({ title }) {
   return (
     <div className="dv-cover">
-      <h2 className="dv-cover-title">{title}</h2>
+      <h2 className="dv-h dv-h--cover">{title}</h2>
     </div>
   );
 }
 
 function FamilySlide({ family }) {
+  const [root, ...rest] = family;
   return (
     <div className="dv-fam-slide">
       <p className="dv-fam-label">Today's Family</p>
-      <p className="dv-fam-root">{family.join(" → ")}</p>
+      <div className="dv-fam-chain">
+        <span className="dv-h dv-h--fam">{root}</span>
+        {rest.map((w) => (
+          <span key={w} className="dv-fam-item">
+            <span className="dv-fam-arrow">→</span>
+            <span className="dv-fam-word">{w}</span>
+          </span>
+        ))}
+      </div>
     </div>
   );
 }
@@ -80,7 +89,7 @@ function EndSlide({ root, family, onFinish }) {
   return (
     <div className="dv-end-slide">
       <p className="dv-end-label">Family Complete</p>
-      <h2 className="dv-end-title">You used every form of {label}</h2>
+      <h2 className="dv-h dv-h--end">You used every form of {label}</h2>
       <div className="dv-end-family">
         {family.map((w) => <span key={w} className="dv-end-chip">{w}</span>)}
       </div>
@@ -198,14 +207,15 @@ const CSS = `
 
 .dv-missing { text-align: center; color: #86677E; margin-top: 60px; }
 
-.dv-stage { width: 100%; max-width: 480px; margin: 0 auto; }
+.dv-stage { width: 100%; max-width: 780px; margin: 0 auto; }
 
 .dv-panel {
-  background: #FFFCF7; border-radius: 22px; overflow: hidden;
-  box-shadow: 0 18px 40px rgba(36,20,34,0.14);
+  background: #FFFCF7; border-radius: 16px; overflow: hidden;
+  border: 1px solid #F2DCE9;
+  box-shadow: 0 30px 70px rgba(178,51,112,0.18), 0 2px 0 rgba(255,255,255,0.6) inset;
 }
 
-.dv-header { display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; border-bottom: 1px solid #F2DCE9; flex-shrink: 0; }
+.dv-header { display: flex; align-items: center; justify-content: space-between; padding: 16px 30px; border-bottom: 1px solid #F2DCE9; flex-shrink: 0; }
 .dv-brand { display: flex; align-items: center; gap: 6px; }
 .dv-brand-logo { height: 18px; width: auto; display: block; }
 .dv-brand-name { font-weight: 800; font-size: 13px; color: #1B2A4A; }
@@ -213,28 +223,51 @@ const CSS = `
 
 /* ---- Shared deck body: fixed min-height so every slide type renders at
    the same card size, matching Relay's tuned 260px value ---- */
-.dv-deck-body { min-height: 260px; display: flex; align-items: center; justify-content: center; padding: 28px 26px; }
+.dv-deck-body { min-height: 260px; display: flex; align-items: center; justify-content: center; padding: 36px 34px 28px; }
+
+/* ---- Highlighted heading, used on Cover / Word Family / End -- same
+   gradient-pill treatment as Relay's .rl-h, in Derive's rose palette ---- */
+.dv-h {
+  display: inline-flex;
+  align-items: center;
+  font-family: 'Baloo 2', cursive;
+  font-weight: 700;
+  font-size: 26px;
+  color: #FFFFFF;
+  background: linear-gradient(135deg, #D6478C 0%, #B23370 100%);
+  border-radius: 12px;
+  padding: 8px 22px;
+  margin: 0;
+  line-height: 1.25;
+  box-shadow: 0 10px 22px rgba(178,51,112,0.32);
+  text-wrap: balance;
+}
+.dv-h--cover { font-size: 36px; padding: 10px 28px; }
+.dv-h--fam { font-size: 22px; padding: 9px 22px; }
+.dv-h--end { font-size: 24px; padding: 9px 24px; }
 
 /* ---- Cover ---- */
 .dv-cover { text-align: center; width: 100%; }
-.dv-cover-title { font-family: 'Baloo 2', cursive; font-weight: 800; font-size: 26px; color: #1B2A4A; margin: 0; letter-spacing: -0.01em; text-wrap: balance; }
 
 /* ---- Word Family ---- */
 .dv-fam-slide { text-align: center; width: 100%; }
-.dv-fam-label { font-size: 10.5px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #B23370; margin: 0 0 14px; }
-.dv-fam-root { font-family: 'Baloo 2', cursive; font-weight: 700; font-size: 20px; color: #1B2A4A; margin: 0; }
+.dv-fam-label { font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #B23370; margin: 0 0 18px; }
+.dv-fam-chain { display: flex; align-items: center; justify-content: center; gap: 14px; flex-wrap: wrap; }
+.dv-fam-item { display: flex; align-items: center; gap: 14px; }
+.dv-fam-arrow { font-size: 20px; color: #E4AECB; }
+.dv-fam-word { font-family: 'Baloo 2', cursive; font-weight: 700; font-size: 22px; color: #1B2A4A; }
 
 /* ---- Sentence + word bank ---- */
 .dv-sent-slide { width: 100%; }
-.dv-sent-label { font-size: 10px; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase; color: #5A6B92; text-align: center; margin: 0 0 14px; }
-.dv-sentence { font-family: 'Fraunces', serif; font-weight: 600; font-size: 16.5px; line-height: 1.5; color: #1B2A4A; text-align: center; margin: 0 0 22px; }
-.dv-blank { display: inline-block; min-width: 84px; border-bottom: 2.5px solid #D6478C; padding: 0 4px; }
+.dv-sent-label { font-size: 11px; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase; color: #5A6B92; text-align: center; margin: 0 0 16px; }
+.dv-sentence { font-family: 'Fraunces', serif; font-weight: 600; font-size: 19px; line-height: 1.55; color: #1B2A4A; text-align: center; margin: 0 auto 26px; max-width: 560px; }
+.dv-blank { display: inline-block; min-width: 100px; border-bottom: 2.5px solid #D6478C; padding: 0 4px; }
 .dv-blank.filled { border-bottom-color: #2F9E58; font-weight: 700; color: #2F9E58; }
 
-.dv-bank-label { font-size: 10px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: #86677E; text-align: center; margin: 0 0 10px; }
-.dv-bank { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+.dv-bank-label { font-size: 11px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: #86677E; text-align: center; margin: 0 0 12px; }
+.dv-bank { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
 .dv-chip {
-  font-family: 'Fraunces', serif; font-weight: 600; font-size: 13.5px; padding: 8px 16px; border-radius: 999px;
+  font-family: 'Fraunces', serif; font-weight: 600; font-size: 15px; padding: 10px 20px; border-radius: 999px;
   background: #FFFFFF; border: 1.5px solid #EDE1DB; color: #1B2A4A; cursor: pointer;
 }
 .dv-chip.is-correct { background: #1B2A4A; border-color: #1B2A4A; color: #fff; }
@@ -242,18 +275,17 @@ const CSS = `
 
 /* ---- End ---- */
 .dv-end-slide { text-align: center; width: 100%; }
-.dv-end-label { font-size: 10.5px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #B23370; margin: 0 0 12px; }
-.dv-end-title { font-family: 'Baloo 2', cursive; font-weight: 800; font-size: 22px; color: #1B2A4A; margin: 0 0 14px; }
-.dv-end-family { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; margin: 0 0 22px; }
-.dv-end-chip { font-family: 'Fraunces', serif; font-weight: 700; font-size: 12.5px; padding: 6px 13px; border-radius: 999px; background: #1B2A4A; color: #fff; }
+.dv-end-label { font-size: 10.5px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #B23370; margin: 0 0 14px; }
+.dv-end-family { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin: 22px 0; }
+.dv-end-chip { font-family: 'Fraunces', serif; font-weight: 700; font-size: 13px; padding: 7px 15px; border-radius: 999px; background: #1B2A4A; color: #fff; }
 
 .dv-btn { font-family: 'Inter', sans-serif; font-weight: 700; font-size: 13px; border-radius: 999px; padding: 10px 22px; border: none; cursor: pointer; background: #1B2A4A; color: #fff; }
 
 /* ---- Footer nav ---- */
-.dv-footer-nav { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 14px 18px; border-top: 1px solid #F2DCE9; }
-.dv-nav-btn { font-family: 'Inter', sans-serif; font-weight: 700; font-size: 11.5px; color: #5A6B92; background: none; border: none; cursor: pointer; padding: 4px 6px; }
+.dv-footer-nav { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 14px 34px 20px; border-top: 1px solid #F2DCE9; }
+.dv-nav-btn { font-family: 'Inter', sans-serif; font-weight: 700; font-size: 12.5px; color: #5A6B92; background: none; border: none; cursor: pointer; padding: 4px 6px; }
 .dv-nav-btn.is-disabled { opacity: 0.3; cursor: default; }
-.dv-dots { display: flex; align-items: center; gap: 5px; flex-wrap: wrap; justify-content: center; max-width: 220px; }
+.dv-dots { display: flex; align-items: center; gap: 5px; flex-wrap: wrap; justify-content: center; max-width: 400px; }
 .dv-dot { width: 6px; height: 6px; border-radius: 50%; background: #EDE1DB; flex: none; }
 .dv-dot.done { background: #2F9E58; }
 .dv-dot.current { background: #1B2A4A; }
