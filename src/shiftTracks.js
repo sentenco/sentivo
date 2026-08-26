@@ -5,6 +5,10 @@
 // their content is added here.
 
 import restaurant1 from "./shiftRestaurant1";
+import restaurant2 from "./shiftRestaurant2";
+import restaurant3 from "./shiftRestaurant3";
+import restaurant4 from "./shiftRestaurant4";
+import restaurant5 from "./shiftRestaurant5";
 
 const TRACKS = [
   {
@@ -14,7 +18,7 @@ const TRACKS = [
     level: "A2-B1",
     audience: ["adults"],
     blurb: "Five restaurant scenes, five role pairs, one tense-accuracy skill trained live in conversation, not in isolated drills.",
-    lessons: [restaurant1, null, null, null, null],
+    lessons: [restaurant1, restaurant2, restaurant3, restaurant4, restaurant5],
   },
 ];
 
