@@ -62,7 +62,7 @@ export default function AscendHub() {
         <div className="ah-hero">
           <h1 className="ah-hero-title">Ascend</h1>
           <p className="ah-hero-blurb">
-            Ascend levels up word choice and sentence construction live in conversation. Built for students who already get their point across but reach for the plain version instead of the precise one.
+            Ascend is built for the transition points, A2 to B1, B2 to C1, where grammar isn't the gap anymore. Every lesson pushes a plain word, phrase, or sentence toward a stronger one, live in conversation.
           </p>
         </div>
 
