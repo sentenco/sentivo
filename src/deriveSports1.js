@@ -1,0 +1,21 @@
+// DERIVE, Sports & Activities Track, Lesson 1: "Train"
+// One word family drilled across the whole lesson. 8 gap-fill sentences,
+// 2 per form (4 forms x 2 = 8), each form the correct answer exactly twice.
+
+export default {
+  id: "derive-sports-1",
+  code: "L1",
+  title: "Word Family: Train",
+  root: "train",
+  family: ["train", "training", "trained", "trainer"],
+  sentences: [
+    { text: "We ___ every day after school.", answer: "train" },
+    { text: "Our ___ gave us a new drill today.", answer: "trainer" },
+    { text: "She ___ for months before the tournament.", answer: "trained" },
+    { text: "The team is ___ hard for the finals.", answer: "training" },
+    { text: "Athletes ___ their whole lives for this moment.", answer: "train" },
+    { text: "The gym hired a new ___ this month.", answer: "trainer" },
+    { text: "He's ___ well enough to compete now.", answer: "trained" },
+    { text: "Morning ___ starts at six sharp.", answer: "training" },
+  ],
+};
