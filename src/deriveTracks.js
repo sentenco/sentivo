@@ -19,36 +19,66 @@ import school2 from "./deriveSchool2";
 import school3 from "./deriveSchool3";
 import school4 from "./deriveSchool4";
 import school5 from "./deriveSchool5";
+import school6 from "./deriveSchool6";
+import school7 from "./deriveSchool7";
+import school8 from "./deriveSchool8";
+import school9 from "./deriveSchool9";
+import school10 from "./deriveSchool10";
 
 import friends1 from "./deriveFriends1";
 import friends2 from "./deriveFriends2";
 import friends3 from "./deriveFriends3";
 import friends4 from "./deriveFriends4";
 import friends5 from "./deriveFriends5";
+import friends6 from "./deriveFriends6";
+import friends7 from "./deriveFriends7";
+import friends8 from "./deriveFriends8";
+import friends9 from "./deriveFriends9";
+import friends10 from "./deriveFriends10";
 
 import online1 from "./deriveOnline1";
 import online2 from "./deriveOnline2";
 import online3 from "./deriveOnline3";
 import online4 from "./deriveOnline4";
 import online5 from "./deriveOnline5";
+import online6 from "./deriveOnline6";
+import online7 from "./deriveOnline7";
+import online8 from "./deriveOnline8";
+import online9 from "./deriveOnline9";
+import online10 from "./deriveOnline10";
 
 import sports1 from "./deriveSports1";
 import sports2 from "./deriveSports2";
 import sports3 from "./deriveSports3";
 import sports4 from "./deriveSports4";
 import sports5 from "./deriveSports5";
+import sports6 from "./deriveSports6";
+import sports7 from "./deriveSports7";
+import sports8 from "./deriveSports8";
+import sports9 from "./deriveSports9";
+import sports10 from "./deriveSports10";
 
 import family1 from "./deriveFamily1";
 import family2 from "./deriveFamily2";
 import family3 from "./deriveFamily3";
 import family4 from "./deriveFamily4";
 import family5 from "./deriveFamily5";
+import family6 from "./deriveFamily6";
+import family7 from "./deriveFamily7";
+import family8 from "./deriveFamily8";
+import family9 from "./deriveFamily9";
+import family10 from "./deriveFamily10";
 
 import movies1 from "./deriveMovies1";
 import movies2 from "./deriveMovies2";
 import movies3 from "./deriveMovies3";
 import movies4 from "./deriveMovies4";
 import movies5 from "./deriveMovies5";
+import movies6 from "./deriveMovies6";
+import movies7 from "./deriveMovies7";
+import movies8 from "./deriveMovies8";
+import movies9 from "./deriveMovies9";
+import movies10 from "./deriveMovies10";
 
 import finance1 from "./deriveFinance1";
 import finance2 from "./deriveFinance2";
@@ -120,7 +150,7 @@ const TRACKS = [
     level: "A2-B1",
     audience: ["teens"],
     blurb: "Word families for classroom life, one root per lesson, drilled until every form sticks.",
-    lessons: [school1, school2, school3, school4, school5],
+    lessons: [school1, school2, school3, school4, school5, school6, school7, school8, school9, school10],
   },
   {
     id: "friends",
@@ -128,7 +158,7 @@ const TRACKS = [
     level: "A2-B1",
     audience: ["teens"],
     blurb: "Word families for friendships and group dynamics, one root per lesson, drilled until every form sticks.",
-    lessons: [friends1, friends2, friends3, friends4, friends5],
+    lessons: [friends1, friends2, friends3, friends4, friends5, friends6, friends7, friends8, friends9, friends10],
   },
   {
     id: "online",
@@ -136,7 +166,7 @@ const TRACKS = [
     level: "A2-B1",
     audience: ["teens"],
     blurb: "Word families for gaming and social media, one root per lesson, drilled until every form sticks.",
-    lessons: [online1, online2, online3, online4, online5],
+    lessons: [online1, online2, online3, online4, online5, online6, online7, online8, online9, online10],
   },
   {
     id: "sports",
@@ -144,7 +174,7 @@ const TRACKS = [
     level: "A2-B1",
     audience: ["teens"],
     blurb: "Word families for training and team life, one root per lesson, drilled until every form sticks.",
-    lessons: [sports1, sports2, sports3, sports4, sports5],
+    lessons: [sports1, sports2, sports3, sports4, sports5, sports6, sports7, sports8, sports9, sports10],
   },
   {
     id: "family",
@@ -152,7 +182,7 @@ const TRACKS = [
     level: "A2-B1",
     audience: ["teens"],
     blurb: "Word families for life at home, one root per lesson, drilled until every form sticks.",
-    lessons: [family1, family2, family3, family4, family5],
+    lessons: [family1, family2, family3, family4, family5, family6, family7, family8, family9, family10],
   },
   {
     id: "movies",
@@ -160,7 +190,7 @@ const TRACKS = [
     level: "A2-B1",
     audience: ["teens"],
     blurb: "Word families for film and entertainment, one root per lesson, drilled until every form sticks.",
-    lessons: [movies1, movies2, movies3, movies4, movies5],
+    lessons: [movies1, movies2, movies3, movies4, movies5, movies6, movies7, movies8, movies9, movies10],
   },
   {
     id: "finance",
