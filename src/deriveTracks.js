@@ -44,6 +44,12 @@ import family3 from "./deriveFamily3";
 import family4 from "./deriveFamily4";
 import family5 from "./deriveFamily5";
 
+import movies1 from "./deriveMovies1";
+import movies2 from "./deriveMovies2";
+import movies3 from "./deriveMovies3";
+import movies4 from "./deriveMovies4";
+import movies5 from "./deriveMovies5";
+
 const TRACKS = [
   {
     id: "career",
@@ -92,6 +98,14 @@ const TRACKS = [
     audience: ["teens"],
     blurb: "Word families for life at home, one root per lesson, drilled until every form sticks.",
     lessons: [family1, family2, family3, family4, family5],
+  },
+  {
+    id: "movies",
+    title: "Movies & Entertainment",
+    level: "A2-B1",
+    audience: ["teens"],
+    blurb: "Word families for film and entertainment, one root per lesson, drilled until every form sticks.",
+    lessons: [movies1, movies2, movies3, movies4, movies5],
   },
 ];
 
