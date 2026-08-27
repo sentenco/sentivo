@@ -64,10 +64,15 @@ export default function DeriveTrack() {
               );
             }
             const word = lesson.root.charAt(0).toUpperCase() + lesson.root.slice(1);
+            const isAdvanced = num > 10;
             return (
               <a key={num} className="dvt-box" href="#" onClick={(e) => { e.preventDefault(); openLesson(track.id, num); }}>
-                <span className="dvt-box-num">{String(num).padStart(2, "0")}</span>
+                <span className="dvt-box-top">
+                  <span className="dvt-box-num">{String(num).padStart(2, "0")}</span>
+                  <span className={`dvt-box-dot${isAdvanced ? " dvt-box-dot--advanced" : ""}`} title={isAdvanced ? "Advanced vocabulary" : "Common vocabulary"} />
+                </span>
                 <span className="dvt-box-word">{word}</span>
+                <span className="dvt-box-forms">{lesson.family.length} forms</span>
               </a>
             );
           })}
@@ -154,13 +159,13 @@ const CSS = `
   background: #FFFFFF;
   border: 1.5px solid #E7EEF0;
   border-radius: 16px;
-  padding: 18px 14px 16px;
+  padding: 20px 14px 16px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  min-height: 104px;
+  gap: 4px;
+  min-height: 108px;
   cursor: pointer;
   text-align: center;
   text-decoration: none;
@@ -168,20 +173,29 @@ const CSS = `
   box-shadow: 0 8px 18px rgba(16,100,107,0.08);
   transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
 }
-.dvt-box:hover { transform: translateY(-3px); box-shadow: 0 14px 26px rgba(178,51,112,0.16); border-color: #F6C9DF; }
+.dvt-box:hover { transform: translateY(-4px); box-shadow: 0 16px 30px rgba(178,51,112,0.22); border-color: transparent; }
 .dvt-box--locked { opacity: 0.5; cursor: default; box-shadow: none; }
 .dvt-box--locked:hover { transform: none; box-shadow: none; border-color: #E7EEF0; }
 
+.dvt-box-top { position: absolute; top: 10px; left: 10px; right: 10px; display: flex; align-items: center; justify-content: space-between; }
 .dvt-box-num {
-  position: absolute;
-  top: 10px;
-  left: 12px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #F6D9E9;
+  color: #B23370;
   font-family: 'Baloo 2', cursive;
   font-weight: 700;
-  font-size: 10.5px;
-  color: #4B8B92;
-  opacity: 0.55;
+  font-size: 9.5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.dvt-box-word { font-family: 'Baloo 2', cursive; font-weight: 700; font-size: 19px; color: #10646B; }
-.dvt-box--locked .dvt-box-word { font-size: 14px; font-weight: 600; color: #4B8B92; }
+.dvt-box--locked .dvt-box-num { background: #E7EEF0; color: #4B8B92; }
+.dvt-box-dot { width: 7px; height: 7px; border-radius: 50%; background: #2F9E58; flex-shrink: 0; }
+.dvt-box-dot--advanced { background: #E8B400; }
+
+.dvt-box-word { font-family: 'Baloo 2', cursive; font-weight: 700; font-size: 19px; color: #10646B; margin-top: 8px; }
+.dvt-box--locked .dvt-box-word { font-size: 14px; font-weight: 600; color: #4B8B92; margin-top: 0; }
+.dvt-box-forms { font-family: 'IBM Plex Sans', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 0.03em; text-transform: uppercase; color: #4B8B92; opacity: 0.75; }
 `;
