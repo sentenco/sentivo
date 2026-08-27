@@ -1,8 +1,16 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import TRACKS from "./deriveTracks";
 
+const AUDIENCES = [
+  { key: "teens", label: "Teens" },
+  { key: "adults", label: "Adults" },
+];
+
 export default function DeriveHub() {
   const navigate = useNavigate();
+  const [audience, setAudience] = useState("teens");
+  const tracks = TRACKS.filter((t) => t.audience.includes(audience));
 
   return (
     <div className="dvh-shell">
@@ -23,8 +31,21 @@ export default function DeriveHub() {
 
         <div className="dvh-dot-lane"></div>
 
+        <div className="dvh-audience-tabs">
+          {AUDIENCES.map((a) => (
+            <button
+              key={a.key}
+              type="button"
+              className={`dvh-audience-tab ${audience === a.key ? "is-active" : ""}`}
+              onClick={() => setAudience(a.key)}
+            >
+              {a.label}
+            </button>
+          ))}
+        </div>
+
         <div className="dvh-tracks-grid">
-          {TRACKS.map((track, i) => {
+          {tracks.map((track, i) => {
             const authored = track.lessons.filter(Boolean).length;
             return (
               <a key={track.id} href={`/library/derive/${track.id}`} className="dvh-track-card">
@@ -140,6 +161,22 @@ const CSS = `
 }
 .dvh-dot-lane::before { left: 0; }
 .dvh-dot-lane::after { right: 0; }
+
+.dvh-audience-tabs { display: flex; justify-content: center; gap: 8px; margin-bottom: 32px; }
+.dvh-audience-tab {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 700;
+  font-size: 13.5px;
+  color: #10646B;
+  background: #FFFFFF;
+  border: 1.5px solid #F6C9DF;
+  border-radius: 999px;
+  padding: 8px 20px;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+.dvh-audience-tab:hover { border-color: #D6478C; }
+.dvh-audience-tab.is-active { background: #D6478C; border-color: #D6478C; color: #FFFFFF; }
 
 .dvh-tracks-grid {
   display: grid;

@@ -19,6 +19,7 @@ const TRACKS = [
     id: "career",
     title: "Career & Work",
     level: "A2-B1",
+    audience: ["adults"],
     blurb: "Word families every professional context uses, one root per lesson, drilled until every form clicks.",
     lessons: [career1, career2, career3, career4, career5, career6, career7, career8, career9, career10],
   },
