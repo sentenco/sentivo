@@ -1,13 +1,13 @@
-// DERIVE, Online & Gaming Track, Lesson 12: "Strategize" (advanced vocabulary)
+// DERIVE, Online & Gaming Track, Lesson 12: "Strategy" (advanced vocabulary)
 // One word family drilled across the whole lesson. 10 gap-fill sentences,
 // 2 per form (5 forms x 2 = 10), each form the correct answer exactly twice.
 
 export default {
   id: "derive-online-12",
   code: "L12",
-  title: "Word Family: Strategize",
-  root: "strategize",
-  family: ["strategize", "strategizing", "strategized", "strategy", "strategic"],
+  title: "Word Family: Strategy",
+  root: "strategy",
+  family: ["strategy", "strategize", "strategizing", "strategized", "strategic"],
   sentences: [
     { text: "The team took a break to ___ before the final round.", answer: "strategize" },
     { text: "Their ___ focused on defense first.", answer: "strategy" },

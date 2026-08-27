@@ -1,13 +1,13 @@
-// DERIVE, Family & Home Life Track, Lesson 11: "Prioritize" (advanced vocabulary)
+// DERIVE, Family & Home Life Track, Lesson 11: "Priority" (advanced vocabulary)
 // One word family drilled across the whole lesson. 10 gap-fill sentences,
 // 2 per form (5 forms x 2 = 10), each form the correct answer exactly twice.
 
 export default {
   id: "derive-family-11",
   code: "L11",
-  title: "Word Family: Prioritize",
-  root: "prioritize",
-  family: ["prioritize", "prioritizing", "prioritized", "priority", "prioritization"],
+  title: "Word Family: Priority",
+  root: "priority",
+  family: ["priority", "prioritize", "prioritizing", "prioritized", "prioritization"],
   sentences: [
     { text: "Parents often have to ___ family time over work.", answer: "prioritize" },
     { text: "Her family has always been her top ___.", answer: "priority" },

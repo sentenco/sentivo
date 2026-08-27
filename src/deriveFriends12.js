@@ -1,13 +1,13 @@
-// DERIVE, Friend Group & Social Life Track, Lesson 12: "Empathize" (advanced vocabulary)
+// DERIVE, Friend Group & Social Life Track, Lesson 12: "Empathy" (advanced vocabulary)
 // One word family drilled across the whole lesson. 10 gap-fill sentences,
 // 2 per form (5 forms x 2 = 10), each form the correct answer exactly twice.
 
 export default {
   id: "derive-friends-12",
   code: "L12",
-  title: "Word Family: Empathize",
-  root: "empathize",
-  family: ["empathize", "empathizing", "empathized", "empathy", "empathetic"],
+  title: "Word Family: Empathy",
+  root: "empathy",
+  family: ["empathy", "empathize", "empathizing", "empathized", "empathetic"],
   sentences: [
     { text: "It helps to ___ with a friend going through a hard time.", answer: "empathize" },
     { text: "She showed real ___ when he shared his news.", answer: "empathy" },

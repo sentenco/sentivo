@@ -1,13 +1,13 @@
-// DERIVE, Friend Group & Social Life Track, Lesson 15: "Sympathize" (advanced vocabulary)
+// DERIVE, Friend Group & Social Life Track, Lesson 15: "Sympathy" (advanced vocabulary)
 // One word family drilled across the whole lesson. 10 gap-fill sentences,
 // 2 per form (5 forms x 2 = 10), each form the correct answer exactly twice.
 
 export default {
   id: "derive-friends-15",
   code: "L15",
-  title: "Word Family: Sympathize",
-  root: "sympathize",
-  family: ["sympathize", "sympathizing", "sympathized", "sympathy", "sympathetic"],
+  title: "Word Family: Sympathy",
+  root: "sympathy",
+  family: ["sympathy", "sympathize", "sympathizing", "sympathized", "sympathetic"],
   sentences: [
     { text: "It's natural to ___ with a friend who's struggling.", answer: "sympathize" },
     { text: "She sent a card to show her ___.", answer: "sympathy" },
