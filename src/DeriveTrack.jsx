@@ -52,35 +52,22 @@ export default function DeriveTrack() {
           <h1 className="dvt-hero-title">{track.title}</h1>
         </div>
 
-        <div className="dvt-lesson-list">
+        <div className="dvt-lesson-grid">
           {track.lessons.map((lesson, i) => {
             const num = i + 1;
             if (!lesson) {
               return (
-                <div key={num} className="dvt-row dvt-row--locked">
-                  <div className="dvt-row-badge dvt-row-badge--locked">{num}</div>
-                  <div className="dvt-row-body">
-                    <h3 className="dvt-row-title">Coming soon</h3>
-                  </div>
+                <div key={num} className="dvt-box dvt-box--locked">
+                  <span className="dvt-box-num">{String(num).padStart(2, "0")}</span>
+                  <span className="dvt-box-word">Coming soon</span>
                 </div>
               );
             }
+            const word = lesson.root.charAt(0).toUpperCase() + lesson.root.slice(1);
             return (
-              <a key={num} className="dvt-row" href="#" onClick={(e) => { e.preventDefault(); openLesson(track.id, num); }}>
-                <div className="dvt-row-badge">{String(num).padStart(2, "0")}</div>
-                <div className="dvt-row-body">
-                  <div className="dvt-row-topline">
-                    <span className="dvt-row-tag">Family</span>
-                    <span className="dvt-row-meta">{lesson.family.join(" → ")}</span>
-                  </div>
-                  <h3 className="dvt-row-title">{lesson.title}</h3>
-                  <p className="dvt-row-desc">{lesson.sentences.length} sentences, every form used twice.</p>
-                </div>
-                <div className="dvt-row-actions">
-                  <button type="button" className="dvt-btn-start" onClick={(e) => { e.preventDefault(); e.stopPropagation(); openLesson(track.id, num); }}>
-                    Start &rarr;
-                  </button>
-                </div>
+              <a key={num} className="dvt-box" href="#" onClick={(e) => { e.preventDefault(); openLesson(track.id, num); }}>
+                <span className="dvt-box-num">{String(num).padStart(2, "0")}</span>
+                <span className="dvt-box-word">{word}</span>
               </a>
             );
           })}
@@ -157,71 +144,44 @@ const CSS = `
     4px 8px 18px rgba(16,100,107,0.2);
 }
 
-.dvt-lesson-list { display: flex; flex-direction: column; gap: 14px; }
-.dvt-row {
-  display: flex;
-  align-items: center;
-  gap: 18px;
-  background: #FFFFFF;
-  border-radius: 18px;
-  padding: 14px 20px 14px 14px;
-  box-shadow: 0 10px 22px rgba(16,100,107,0.1);
-  text-decoration: none;
-  color: inherit;
-  transition: transform 0.15s ease;
+.dvt-lesson-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 16px;
 }
-.dvt-row:hover { transform: translateY(-2px); }
-.dvt-row--locked { opacity: 0.55; box-shadow: none; }
-
-.dvt-row-badge {
-  flex-shrink: 0;
-  width: 46px;
-  height: 46px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #D6478C 0%, #B23370 100%);
-  color: #FFFFFF;
-  font-family: 'Baloo 2', cursive;
-  font-weight: 700;
-  font-size: 16px;
+.dvt-box {
+  position: relative;
+  background: #FFFFFF;
+  border: 1.5px solid #E7EEF0;
+  border-radius: 16px;
+  padding: 18px 14px 16px;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-}
-.dvt-row-badge--locked { background: #CDEBEA; color: #4B8B92; }
-
-.dvt-row-body { flex: 1; min-width: 0; }
-.dvt-row-topline { display: flex; align-items: center; gap: 8px; margin-bottom: 3px; flex-wrap: wrap; }
-.dvt-row-tag {
-  font-family: 'IBM Plex Sans', sans-serif;
-  font-weight: 800;
-  font-size: 9.5px;
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
-  color: #10646B;
-  background: rgba(214,71,140,0.14);
-  border-radius: 999px;
-  padding: 2px 9px;
-}
-.dvt-row-meta { font-family: 'IBM Plex Sans', sans-serif; font-weight: 600; font-size: 10.5px; color: #4B8B92; }
-.dvt-row-title { font-family: 'Baloo 2', cursive; font-weight: 700; font-size: 17px; margin: 0 0 2px; color: #10646B; }
-.dvt-row-desc { font-family: 'IBM Plex Sans', sans-serif; font-size: 12.5px; color: #4B8B92; margin: 0; }
-
-.dvt-row-actions { flex-shrink: 0; display: flex; gap: 8px; }
-.dvt-btn-start {
-  font-family: 'IBM Plex Sans', sans-serif;
-  font-weight: 800;
-  font-size: 11px;
-  border-radius: 999px;
-  padding: 8px 14px;
-  white-space: nowrap;
-  border: none;
+  gap: 10px;
+  min-height: 104px;
   cursor: pointer;
-  background: #D6478C;
-  color: #FFFFFF;
+  text-align: center;
+  text-decoration: none;
+  color: inherit;
+  box-shadow: 0 8px 18px rgba(16,100,107,0.08);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
 }
+.dvt-box:hover { transform: translateY(-3px); box-shadow: 0 14px 26px rgba(178,51,112,0.16); border-color: #F6C9DF; }
+.dvt-box--locked { opacity: 0.5; cursor: default; box-shadow: none; }
+.dvt-box--locked:hover { transform: none; box-shadow: none; border-color: #E7EEF0; }
 
-@media (max-width: 640px) {
-  .dvt-row { flex-wrap: wrap; padding: 16px; }
-  .dvt-row-actions { width: 100%; padding-left: 64px; }
+.dvt-box-num {
+  position: absolute;
+  top: 10px;
+  left: 12px;
+  font-family: 'Baloo 2', cursive;
+  font-weight: 700;
+  font-size: 10.5px;
+  color: #4B8B92;
+  opacity: 0.55;
 }
+.dvt-box-word { font-family: 'Baloo 2', cursive; font-weight: 700; font-size: 19px; color: #10646B; }
+.dvt-box--locked .dvt-box-word { font-size: 14px; font-weight: 600; color: #4B8B92; }
 `;
