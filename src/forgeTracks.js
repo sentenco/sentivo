@@ -11,6 +11,14 @@ import health5 from "./forgeHealth5";
 import health6 from "./forgeHealth6";
 import health7 from "./forgeHealth7";
 import health8 from "./forgeHealth8";
+import friends1 from "./forgeFriends1";
+import friends2 from "./forgeFriends2";
+import friends3 from "./forgeFriends3";
+import friends4 from "./forgeFriends4";
+import friends5 from "./forgeFriends5";
+import friends6 from "./forgeFriends6";
+import friends7 from "./forgeFriends7";
+import friends8 from "./forgeFriends8";
 
 const TRACKS = [
   {
@@ -20,6 +28,14 @@ const TRACKS = [
     audience: ["adults"],
     blurb: "Real situations around clinics, pharmacies, and wellness, one root situation per lesson, word banks you'll actually reach for.",
     lessons: [health1, health2, health3, health4, health5, health6, health7, health8],
+  },
+  {
+    id: "friends",
+    title: "Friends & Social Life",
+    level: "A2-B1",
+    audience: ["teens"],
+    blurb: "Real situations with friends, from making plans to saying goodbye, one root situation per lesson, word banks you'll actually reach for.",
+    lessons: [friends1, friends2, friends3, friends4, friends5, friends6, friends7, friends8],
   },
 ];
 
