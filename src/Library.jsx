@@ -1724,7 +1724,7 @@ export default function Library() {
             <div className="spklab-hero">
               <span className="spklab-eyebrow">Sentivo · Speaking</span>
               <h1 className="spklab-title">The Fluency Clinic</h1>
-              <p className="spklab-sub">Diagnose the gap. Prescribe the track.</p>
+              <p className="spklab-sub">Diagnose the gap. Prescribe the modality.</p>
             </div>
             <div className="spklab-lane"></div>
             {(() => {
