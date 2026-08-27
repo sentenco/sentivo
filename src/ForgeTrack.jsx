@@ -2,41 +2,24 @@ import { useParams, useNavigate } from "react-router-dom";
 import { getTrack } from "./forgeTracks";
 
 function slideCount(lesson) {
-  if (lesson.format === "picture") return 7 + lesson.words.length + (lesson.homeworkCheck ? 1 : 0);
-  return 10;
+  const wordIntroSlides = Math.ceil(lesson.words.length / 3);
+  return 1 + (lesson.hasCallback ? 1 : 0) + wordIntroSlides + lesson.words.length + 2;
 }
 
 // FORGE lessons open as a standalone popup player, matching the curriculum's
-// chrome-less window.open pattern in LessonsGrid.jsx -- an independent
-// window, not embedded in the Library's tab/page flow.
+// chrome-less window.open pattern -- an independent window, not embedded in
+// the Library's tab/page flow.
 function openLesson(trackId, num) {
   const screenW = window.screen.availWidth || 1600;
   const screenH = window.screen.availHeight || 900;
-  const w = Math.min(1040, screenW - 40);
-  const h = Math.min(780, screenH - 80);
+  const w = Math.min(860, screenW - 40);
+  const h = Math.min(660, screenH - 80);
   const left = Math.max(0, Math.floor((screenW - w) / 2));
   const top = Math.max(0, Math.floor((screenH - h) / 2));
 
   window.open(
     `/library/forge/${trackId}/${num}`,
     "sentivoForgePlayer",
-    `width=${w},height=${h},left=${left},top=${top},toolbar=no,location=no,menubar=no,status=no,scrollbars=yes,resizable=yes`
-  );
-}
-
-// Teacher Guide opens as its own separate popup, triggered by its own
-// explicit click -- not paired automatically with the student window.
-function openGuide(trackId, num) {
-  const screenW = window.screen.availWidth || 1600;
-  const screenH = window.screen.availHeight || 900;
-  const w = Math.min(640, screenW - 40);
-  const h = Math.min(840, screenH - 40);
-  const left = Math.max(0, Math.floor((screenW - w) / 2));
-  const top = Math.max(0, Math.floor((screenH - h) / 2));
-
-  window.open(
-    `/library/forge/${trackId}/${num}/guide`,
-    "sentivoForgeGuide",
     `width=${w},height=${h},left=${left},top=${top},toolbar=no,location=no,menubar=no,status=no,scrollbars=yes,resizable=yes`
   );
 }
@@ -69,8 +52,7 @@ export default function ForgeTrack() {
 
         <div className="ft-hero">
           <div className="ft-hero-tags">
-            <span className="ft-tag">{track.occupation}</span>
-            <span className="ft-tag">{track.interest}</span>
+            <span className="ft-tag">Working Vocabulary</span>
             <span className="ft-tag ft-tag--level">{track.level}</span>
           </div>
           <h1 className="ft-hero-title">{track.title}</h1>
@@ -94,16 +76,12 @@ export default function ForgeTrack() {
                 <div className="ft-row-badge">{String(num).padStart(2, "0")}</div>
                 <div className="ft-row-body">
                   <div className="ft-row-topline">
-                    <span className="ft-row-tag">{lesson.tag}</span>
-                    <span className="ft-row-meta">{slideCount(lesson)} slides</span>
+                    <span className="ft-row-tag">{lesson.hasCallback ? "Callback" : "New situation"}</span>
+                    <span className="ft-row-meta">{lesson.words.length} words &middot; {slideCount(lesson)} slides</span>
                   </div>
-                  <h3 className="ft-row-title">{lesson.title}</h3>
-                  <p className="ft-row-desc">{lesson.subtitle}</p>
+                  <h3 className="ft-row-title">{lesson.situation}</h3>
                 </div>
                 <div className="ft-row-actions">
-                  <button type="button" className="ft-btn-guide" onClick={(e) => { e.preventDefault(); e.stopPropagation(); openGuide(track.id, num); }}>
-                    Guide
-                  </button>
                   <button type="button" className="ft-btn-start" onClick={(e) => { e.preventDefault(); e.stopPropagation(); openLesson(track.id, num); }}>
                     Start →
                   </button>
@@ -170,7 +148,7 @@ const CSS = `
   border-radius: 999px;
   padding: 4px 12px;
 }
-.ft-tag--level { color: #FFFFFF; background: #E8544E; }
+.ft-tag--level { color: #10646B; background: #F6D4D2; }
 .ft-hero-title {
   font-family: 'Baloo 2', cursive;
   font-weight: 800;
@@ -217,24 +195,23 @@ const CSS = `
 .ft-row-badge--locked { background: #CDEBEA; color: #4B8B92; }
 
 .ft-row-body { flex: 1; min-width: 0; }
-.ft-row-topline { display: flex; align-items: center; gap: 8px; margin-bottom: 3px; }
+.ft-row-topline { display: flex; align-items: center; gap: 8px; margin-bottom: 3px; flex-wrap: wrap; }
 .ft-row-tag {
   font-family: 'IBM Plex Sans', sans-serif;
   font-weight: 800;
   font-size: 9.5px;
   text-transform: uppercase;
   letter-spacing: 0.03em;
-  color: #E8544E;
+  color: #C93F3A;
   background: rgba(232,84,78,0.12);
   border-radius: 999px;
   padding: 2px 9px;
 }
 .ft-row-meta { font-family: 'IBM Plex Sans', sans-serif; font-weight: 600; font-size: 10.5px; color: #4B8B92; }
-.ft-row-title { font-family: 'Baloo 2', cursive; font-weight: 700; font-size: 17px; margin: 0 0 2px; color: #10646B; }
-.ft-row-desc { font-family: 'IBM Plex Sans', sans-serif; font-size: 12.5px; color: #4B8B92; margin: 0; }
+.ft-row-title { font-family: 'Baloo 2', cursive; font-weight: 700; font-size: 17px; margin: 0; color: #10646B; }
 
 .ft-row-actions { flex-shrink: 0; display: flex; gap: 8px; }
-.ft-btn-guide, .ft-btn-start {
+.ft-btn-start {
   font-family: 'IBM Plex Sans', sans-serif;
   font-weight: 800;
   font-size: 11px;
@@ -243,9 +220,9 @@ const CSS = `
   white-space: nowrap;
   border: none;
   cursor: pointer;
+  background: #E8544E;
+  color: #FFFFFF;
 }
-.ft-btn-guide { background: rgba(42,168,174,0.14); color: #10646B; }
-.ft-btn-start { background: #E8544E; color: #FFFFFF; }
 
 @media (max-width: 640px) {
   .ft-row { flex-wrap: wrap; padding: 16px; }

@@ -1,29 +1,25 @@
-// FORGE tracks: each track is a 10-lesson speaking course tailored to one
-// learner profile (occupation + interest). A track's Library card links to
-// its overview page (ForgeTrack.jsx), which lists Lessons 1-10; only
-// authored lessons are clickable, the rest show as "Coming soon" until
-// their content is added here.
+// FORGE tracks: each track is a category (a life domain), containing 8
+// lessons, one per real-life situation within that category. Each lesson
+// drills a 6-word bank through Callback (lessons 2+ only) -> Word Bank ->
+// Personal Connection (one question per word) -> Storytelling -> Wrap-up.
 
-import forgeL1 from "./forgeData";
-import forgeL2 from "./forgeData2";
-import forgeL3 from "./forgeData3";
-import forgeL4 from "./forgeData4";
-import forgeL5 from "./forgeData5";
-import forgeL6 from "./forgeData6";
-import forgeL7 from "./forgeData7";
-import forgeL8 from "./forgeData8";
-import forgeL9 from "./forgeData9";
-import forgeL10 from "./forgeData10";
+import health1 from "./forgeHealth1";
+import health2 from "./forgeHealth2";
+import health3 from "./forgeHealth3";
+import health4 from "./forgeHealth4";
+import health5 from "./forgeHealth5";
+import health6 from "./forgeHealth6";
+import health7 from "./forgeHealth7";
+import health8 from "./forgeHealth8";
 
 const TRACKS = [
   {
-    id: "forge-1",
-    title: "A Day at Work",
-    occupation: "Software Engineer",
-    interest: "Tech",
-    level: "A2",
-    blurb: "10 lessons built around your job and your world. Come back after Lesson 10 to see how far you've come.",
-    lessons: [forgeL1, forgeL2, forgeL3, forgeL4, forgeL5, forgeL6, forgeL7, forgeL8, forgeL9, forgeL10],
+    id: "health",
+    title: "Health",
+    level: "A2-B1",
+    audience: ["adults"],
+    blurb: "Real situations around clinics, pharmacies, and wellness, one root situation per lesson, word banks you'll actually reach for.",
+    lessons: [health1, health2, health3, health4, health5, health6, health7, health8],
   },
 ];
 

@@ -113,7 +113,6 @@ import storybook80 from './storybookData80.js'
 import Forge from './Forge.jsx'
 import ForgeHub from './ForgeHub.jsx'
 import ForgeTrack from './ForgeTrack.jsx'
-import ForgeGuide from './ForgeGuide.jsx'
 import Relay from './Relay.jsx'
 import RelayHub from './RelayHub.jsx'
 import RelayTrack from './RelayTrack.jsx'
@@ -339,7 +338,6 @@ createRoot(document.getElementById('root')).render(
             <Route path="/library/forge" element={<ForgeHub />} />
             <Route path="/library/forge/:trackId" element={<ForgeTrack />} />
             <Route path="/library/forge/:trackId/:lessonNum" element={<Forge />} />
-            <Route path="/library/forge/:trackId/:lessonNum/guide" element={<ForgeGuide />} />
             <Route path="/library/relay" element={<RelayHub />} />
             <Route path="/library/relay/:trackId" element={<RelayTrack />} />
             <Route path="/library/relay/:trackId/:lessonNum" element={<Relay />} />

@@ -1,8 +1,16 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import TRACKS from "./forgeTracks";
 
+const AUDIENCES = [
+  { key: "teens", label: "Teens" },
+  { key: "adults", label: "Adults" },
+];
+
 export default function ForgeHub() {
   const navigate = useNavigate();
+  const [audience, setAudience] = useState("teens");
+  const tracks = TRACKS.filter((t) => t.audience.includes(audience));
 
   return (
     <div className="fh-shell">
@@ -17,25 +25,37 @@ export default function ForgeHub() {
         <div className="fh-hero">
           <h1 className="fh-hero-title">Forge</h1>
           <p className="fh-hero-blurb">
-            Forge drills active vocabulary through forced retrieval, not recognition. Built for students who understand English but run out of words when they actually need them.
+            Forge builds real, working vocabulary through the situations you'll actually be in, one category at a time.
           </p>
         </div>
 
         <div className="fh-dot-lane"></div>
 
+        <div className="fh-audience-tabs">
+          {AUDIENCES.map((a) => (
+            <button
+              key={a.key}
+              type="button"
+              className={`fh-audience-tab ${audience === a.key ? "is-active" : ""}`}
+              onClick={() => setAudience(a.key)}
+            >
+              {a.label}
+            </button>
+          ))}
+        </div>
+
         <div className="fh-tracks-grid">
-          {TRACKS.map((track) => {
+          {tracks.map((track, i) => {
             const authored = track.lessons.filter(Boolean).length;
             return (
               <a key={track.id} href={`/library/forge/${track.id}`} className="fh-track-card">
                 <div className="fh-track-ribbon">
-                  <span className="fh-track-num">Track {String(TRACKS.indexOf(track) + 1).padStart(2, "0")}</span>
+                  <span className="fh-track-num">Track {String(i + 1).padStart(2, "0")}</span>
                   <span className="fh-track-level-pill">{track.level}</span>
                 </div>
                 <div className="fh-track-body">
                   <div className="fh-track-tags">
-                    <span className="fh-track-tag">{track.occupation}</span>
-                    <span className="fh-track-tag">{track.interest}</span>
+                    <span className="fh-track-tag">Working Vocabulary</span>
                   </div>
                   <h3 className="fh-track-title">{track.title}</h3>
                   <p className="fh-track-desc">{track.blurb}</p>
@@ -50,8 +70,8 @@ export default function ForgeHub() {
 
           <div className="fh-track-card fh-track-card--ghost">
             <span className="fh-ghost-plus">+</span>
-            <div className="fh-ghost-label">More tracks coming</div>
-            <div className="fh-ghost-sub">New profiles get added here as they're built.</div>
+            <div className="fh-ghost-label">More categories coming</div>
+            <div className="fh-ghost-sub">New life domains get added here as they're built.</div>
           </div>
         </div>
       </div>
@@ -146,6 +166,22 @@ const CSS = `
 }
 .fh-dot-lane::before { left: 0; }
 .fh-dot-lane::after { right: 0; }
+
+.fh-audience-tabs { display: flex; justify-content: center; gap: 8px; margin-bottom: 32px; }
+.fh-audience-tab {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 700;
+  font-size: 13.5px;
+  color: #10646B;
+  background: #FFFFFF;
+  border: 1.5px solid #F6D4D2;
+  border-radius: 999px;
+  padding: 8px 20px;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+.fh-audience-tab:hover { border-color: #E8544E; }
+.fh-audience-tab.is-active { background: #E8544E; border-color: #E8544E; color: #FFFFFF; }
 
 .fh-tracks-grid {
   display: grid;
