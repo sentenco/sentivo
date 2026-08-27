@@ -4,6 +4,15 @@
 // its overview page (DeriveTrack.jsx), which lists its lessons.
 
 import career1 from "./deriveCareer1";
+import career2 from "./deriveCareer2";
+import career3 from "./deriveCareer3";
+import career4 from "./deriveCareer4";
+import career5 from "./deriveCareer5";
+import career6 from "./deriveCareer6";
+import career7 from "./deriveCareer7";
+import career8 from "./deriveCareer8";
+import career9 from "./deriveCareer9";
+import career10 from "./deriveCareer10";
 
 const TRACKS = [
   {
@@ -11,7 +20,7 @@ const TRACKS = [
     title: "Career & Work",
     level: "A2-B1",
     blurb: "Word families every professional context uses, one root per lesson, drilled until every form clicks.",
-    lessons: [career1],
+    lessons: [career1, career2, career3, career4, career5, career6, career7, career8, career9, career10],
   },
 ];
 
