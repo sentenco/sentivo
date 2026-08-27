@@ -1,14 +1,13 @@
 import { useState } from "react";
 import { useParams } from "react-router-dom";
-import { getLesson, getTrack } from "./deriveTracks";
+import { getLesson } from "./deriveTracks";
 
 // DERIVE player: a real slide deck (Previous/Next navigation, not a live
 // evolving card like Shift). One word family per lesson. Cover -> Word
 // Family -> one gap-fill sentence slide per item (2 per form) -> End.
 // The word bank is the teacher's click-to-mark input: the student says the
 // answer out loud first, the teacher clicks whichever chip matches what
-// they heard. Next only unlocks on a sentence slide once it's answered
-// correctly; Previous is always free to revisit earlier slides.
+// they heard. Previous/Next are both always free to click.
 
 function TopBar() {
   return (
@@ -39,12 +38,13 @@ function BgDecor() {
   );
 }
 
-function CoverSlide({ title, trackTitle, subtitle }) {
+function CoverSlide({ root }) {
+  const label = root.charAt(0).toUpperCase() + root.slice(1);
   return (
     <div className="dv-cover">
-      <p className="dv-cover-kicker">{trackTitle}</p>
-      <h2 className="dv-h dv-h--cover">{title}</h2>
-      <p className="dv-cover-sub">{subtitle}</p>
+      <p className="dv-cover-kicker">Word Family</p>
+      <h2 className="dv-h dv-h--cover">{label}</h2>
+      <p className="dv-cover-instruction">Choose the correct form to complete each sentence.</p>
     </div>
   );
 }
@@ -124,12 +124,15 @@ function SentenceSlide({ sentence, family, slideNum, totalSentences }) {
   );
 }
 
-function EndSlide({ root, family, onFinish }) {
-  const label = root.charAt(0).toUpperCase() + root.slice(1);
+function EndSlide({ family, onFinish }) {
   return (
     <div className="dv-end-slide">
-      <p className="dv-end-label">Family Complete</p>
-      <h2 className="dv-h dv-h--end">You used every form of {label}</h2>
+      <div className="dv-end-badge" aria-hidden="true">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+          <path d="M5 13l4 4L19 7" stroke="#FFFFFF" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      </div>
+      <h2 className="dv-h dv-h--end">Thanks for practicing. Goodbye!</h2>
       <div className="dv-end-family">
         {family.map((w) => <span key={w} className="dv-end-chip">{w}</span>)}
       </div>
@@ -141,7 +144,6 @@ function EndSlide({ root, family, onFinish }) {
 export default function Derive() {
   const { trackId, lessonNum } = useParams();
   const lesson = getLesson(trackId, Number(lessonNum));
-  const track = getTrack(trackId);
   const [slideIdx, setSlideIdx] = useState(0);
 
   if (!lesson) {
@@ -156,7 +158,7 @@ export default function Derive() {
     );
   }
 
-  const { root, family, sentences, title } = lesson;
+  const { root, family, sentences } = lesson;
   const totalSlides = sentences.length + 3; // cover + family + sentences + end
   const isCover = slideIdx === 0;
   const isFamily = slideIdx === 1;
@@ -186,13 +188,7 @@ export default function Derive() {
           </div>
 
           <div className="dv-deck-body" key={slideIdx}>
-            {isCover && (
-              <CoverSlide
-                title={title}
-                trackTitle={track ? `${track.title} · Track 01` : ""}
-                subtitle={`One root, ${family.length - 1} forms, ${sentences.length} sentences.`}
-              />
-            )}
+            {isCover && <CoverSlide root={root} />}
             {isFamily && <FamilySlide family={family} />}
             {isSentence && (
               <SentenceSlide
@@ -203,7 +199,7 @@ export default function Derive() {
                 totalSentences={sentences.length}
               />
             )}
-            {isEnd && <EndSlide root={root} family={family} onFinish={() => window.close()} />}
+            {isEnd && <EndSlide family={family} onFinish={() => window.close()} />}
           </div>
 
           <div className="dv-footer-nav">
@@ -294,8 +290,8 @@ const CSS = `
 
 /* ---- Cover ---- */
 .dv-cover { text-align: center; width: 100%; }
-.dv-cover-kicker { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #86677E; margin: 0 0 16px; min-height: 1em; }
-.dv-cover-sub { font-family: 'Fraunces', serif; font-style: italic; font-size: 14.5px; color: #5A6B92; margin: 18px 0 0; }
+.dv-cover-kicker { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #86677E; margin: 0 0 16px; }
+.dv-cover-instruction { font-family: 'Fraunces', serif; font-style: italic; font-size: 14.5px; color: #5A6B92; margin: 18px 0 0; }
 
 /* ---- Word Family: root -> branches diagram ---- */
 .dv-fam-slide { text-align: center; width: 100%; }
@@ -334,7 +330,12 @@ const CSS = `
 
 /* ---- End ---- */
 .dv-end-slide { text-align: center; width: 100%; }
-.dv-end-label { font-size: 10.5px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #B23370; margin: 0 0 14px; }
+.dv-end-badge {
+  width: 46px; height: 46px; border-radius: 50%; margin: 0 auto 16px;
+  background: linear-gradient(135deg, #2F9E58 0%, #227A43 100%);
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 10px 20px rgba(47,158,88,0.32);
+}
 .dv-end-family { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin: 22px 0; }
 .dv-end-chip { font-family: 'Fraunces', serif; font-weight: 700; font-size: 13px; padding: 7px 15px; border-radius: 999px; background: #1B2A4A; color: #fff; }
 
