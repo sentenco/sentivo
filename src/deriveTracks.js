@@ -50,6 +50,61 @@ import movies3 from "./deriveMovies3";
 import movies4 from "./deriveMovies4";
 import movies5 from "./deriveMovies5";
 
+import finance1 from "./deriveFinance1";
+import finance2 from "./deriveFinance2";
+import finance3 from "./deriveFinance3";
+import finance4 from "./deriveFinance4";
+import finance5 from "./deriveFinance5";
+import finance6 from "./deriveFinance6";
+import finance7 from "./deriveFinance7";
+import finance8 from "./deriveFinance8";
+import finance9 from "./deriveFinance9";
+import finance10 from "./deriveFinance10";
+
+import health1 from "./deriveHealth1";
+import health2 from "./deriveHealth2";
+import health3 from "./deriveHealth3";
+import health4 from "./deriveHealth4";
+import health5 from "./deriveHealth5";
+import health6 from "./deriveHealth6";
+import health7 from "./deriveHealth7";
+import health8 from "./deriveHealth8";
+import health9 from "./deriveHealth9";
+import health10 from "./deriveHealth10";
+
+import travel1 from "./deriveTravel1";
+import travel2 from "./deriveTravel2";
+import travel3 from "./deriveTravel3";
+import travel4 from "./deriveTravel4";
+import travel5 from "./deriveTravel5";
+import travel6 from "./deriveTravel6";
+import travel7 from "./deriveTravel7";
+import travel8 from "./deriveTravel8";
+import travel9 from "./deriveTravel9";
+import travel10 from "./deriveTravel10";
+
+import home1 from "./deriveHome1";
+import home2 from "./deriveHome2";
+import home3 from "./deriveHome3";
+import home4 from "./deriveHome4";
+import home5 from "./deriveHome5";
+import home6 from "./deriveHome6";
+import home7 from "./deriveHome7";
+import home8 from "./deriveHome8";
+import home9 from "./deriveHome9";
+import home10 from "./deriveHome10";
+
+import legal1 from "./deriveLegal1";
+import legal2 from "./deriveLegal2";
+import legal3 from "./deriveLegal3";
+import legal4 from "./deriveLegal4";
+import legal5 from "./deriveLegal5";
+import legal6 from "./deriveLegal6";
+import legal7 from "./deriveLegal7";
+import legal8 from "./deriveLegal8";
+import legal9 from "./deriveLegal9";
+import legal10 from "./deriveLegal10";
+
 const TRACKS = [
   {
     id: "career",
@@ -106,6 +161,46 @@ const TRACKS = [
     audience: ["teens"],
     blurb: "Word families for film and entertainment, one root per lesson, drilled until every form sticks.",
     lessons: [movies1, movies2, movies3, movies4, movies5],
+  },
+  {
+    id: "finance",
+    title: "Finance & Banking",
+    level: "A2-B1",
+    audience: ["adults"],
+    blurb: "Word families for money and banking, one root per lesson, drilled until every form sticks.",
+    lessons: [finance1, finance2, finance3, finance4, finance5, finance6, finance7, finance8, finance9, finance10],
+  },
+  {
+    id: "health",
+    title: "Health & Wellness",
+    level: "A2-B1",
+    audience: ["adults"],
+    blurb: "Word families for clinics and everyday health, one root per lesson, drilled until every form sticks.",
+    lessons: [health1, health2, health3, health4, health5, health6, health7, health8, health9, health10],
+  },
+  {
+    id: "travel",
+    title: "Travel & Tourism",
+    level: "A2-B1",
+    audience: ["adults"],
+    blurb: "Word families for trips and travel logistics, one root per lesson, drilled until every form sticks.",
+    lessons: [travel1, travel2, travel3, travel4, travel5, travel6, travel7, travel8, travel9, travel10],
+  },
+  {
+    id: "home",
+    title: "Home & Property",
+    level: "A2-B1",
+    audience: ["adults"],
+    blurb: "Word families for renting, owning, and maintaining a home, one root per lesson, drilled until every form sticks.",
+    lessons: [home1, home2, home3, home4, home5, home6, home7, home8, home9, home10],
+  },
+  {
+    id: "legal",
+    title: "Legal & Civic Life",
+    level: "A2-B1",
+    audience: ["adults"],
+    blurb: "Word families for courts, elections, and civic duties, one root per lesson, drilled until every form sticks.",
+    lessons: [legal1, legal2, legal3, legal4, legal5, legal6, legal7, legal8, legal9, legal10],
   },
 ];
 
