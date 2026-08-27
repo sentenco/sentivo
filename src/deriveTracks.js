@@ -50,7 +50,7 @@ const TRACKS = [
     title: "Career & Work",
     level: "A2-B1",
     audience: ["adults"],
-    blurb: "Word families every professional context uses, one root per lesson, drilled until every form clicks.",
+    blurb: "Word families every professional context uses, one root per lesson, drilled until every form sticks.",
     lessons: [career1, career2, career3, career4, career5, career6, career7, career8, career9, career10],
   },
   {
@@ -58,7 +58,7 @@ const TRACKS = [
     title: "School Life",
     level: "A2-B1",
     audience: ["teens"],
-    blurb: "Word families for classroom life, one root per lesson, drilled until every form clicks.",
+    blurb: "Word families for classroom life, one root per lesson, drilled until every form sticks.",
     lessons: [school1, school2, school3, school4, school5],
   },
   {
@@ -66,7 +66,7 @@ const TRACKS = [
     title: "Friend Group & Social Life",
     level: "A2-B1",
     audience: ["teens"],
-    blurb: "Word families for friendships and group dynamics, one root per lesson, drilled until every form clicks.",
+    blurb: "Word families for friendships and group dynamics, one root per lesson, drilled until every form sticks.",
     lessons: [friends1, friends2, friends3, friends4, friends5],
   },
   {
@@ -74,7 +74,7 @@ const TRACKS = [
     title: "Online & Gaming",
     level: "A2-B1",
     audience: ["teens"],
-    blurb: "Word families for gaming and social media, one root per lesson, drilled until every form clicks.",
+    blurb: "Word families for gaming and social media, one root per lesson, drilled until every form sticks.",
     lessons: [online1, online2, online3, online4, online5],
   },
   {
@@ -82,7 +82,7 @@ const TRACKS = [
     title: "Sports & Activities",
     level: "A2-B1",
     audience: ["teens"],
-    blurb: "Word families for training and team life, one root per lesson, drilled until every form clicks.",
+    blurb: "Word families for training and team life, one root per lesson, drilled until every form sticks.",
     lessons: [sports1, sports2, sports3, sports4, sports5],
   },
   {
@@ -90,7 +90,7 @@ const TRACKS = [
     title: "Family & Home Life",
     level: "A2-B1",
     audience: ["teens"],
-    blurb: "Word families for life at home, one root per lesson, drilled until every form clicks.",
+    blurb: "Word families for life at home, one root per lesson, drilled until every form sticks.",
     lessons: [family1, family2, family3, family4, family5],
   },
 ];
