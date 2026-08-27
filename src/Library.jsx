@@ -287,7 +287,7 @@ const GRAMMAR_MODULES = [
 ];
 
 const SPEAKING_TRACKS = [
-  { key: "forge", href: "/library/forge", hue: "forge", gap: "Runs out of words under pressure", name: "Forge", desc: "Build real vocabulary through pictures, gaps, echoes, and question chains." },
+  { key: "forge", href: "/library/forge", hue: "forge", gap: "Limited working vocabulary", name: "Forge", desc: "Build real vocabulary through pictures, gaps, echoes, and question chains." },
   { key: "shift", href: "/library/shift", hue: "shift", gap: "Slips into the wrong tense", name: "Shift", desc: "Fast tense choice and self-repair under pressure, for students who already know the grammar." },
   { key: "ascend", href: "/library/ascend", hue: "ascend", gap: "Correct sentences, weak word choice", name: "Ascend", desc: "Push a plain-but-correct sentence toward a stronger one, built for the A2-B1 and B2-C1 transition points." },
   { key: "relay", href: "/library/relay", hue: "relay", gap: "Answers that end the conversation", name: "Relay", desc: "Turn short, complete answers into real exchanges — add reasons, details, and questions that keep the conversation moving." },
