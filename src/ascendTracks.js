@@ -18,8 +18,20 @@ import ascendGovernanceL2 from "./ascendDataGovernance2";
 import ascendGovernanceL3 from "./ascendDataGovernance3";
 import ascendGovernanceL4 from "./ascendDataGovernance4";
 import ascendGovernanceL5 from "./ascendDataGovernance5";
+import ascendDayL1 from "./ascendDay1";
 
 const TRACKS = [
+  {
+    id: "ascend-day",
+    category: "Everyday Life",
+    title: "Talking About Your Day",
+    theme: "Everyday Life",
+    level: "A2-B1",
+    levelBand: "a2b1",
+    audience: ["teens"],
+    blurb: "Say it plain, then say it stronger. Real everyday moments pushed toward more precise, natural English.",
+    lessons: [ascendDayL1],
+  },
   {
     id: "ascend-1",
     category: "Business",

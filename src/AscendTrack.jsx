@@ -2,6 +2,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { getTrack } from "./ascendTracks";
 
 function slideCount(lesson) {
+  if (lesson.mechanic === "push") return 1 + lesson.prompts.length + lesson.recall.length + 1;
   return lesson.slideOrder.length;
 }
 

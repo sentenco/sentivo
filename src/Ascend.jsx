@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { getLesson, getTrack } from "./ascendTracks";
+import AscendPush from "./AscendPush.jsx";
 
 const SLIDE_LABELS = {
   cover: "Cover",
@@ -338,6 +339,10 @@ export default function Ascend() {
         </div>
       </div>
     );
+  }
+
+  if (lesson.mechanic === "push") {
+    return <AscendPush lesson={lesson} track={track} />;
   }
 
   const slideTypes = buildSlideTypes(lesson);
