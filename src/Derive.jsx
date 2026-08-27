@@ -203,16 +203,16 @@ export default function Derive() {
           </div>
 
           <div className="dv-footer-nav">
-            <button type="button" className={`dv-nav-btn${atStart ? " is-disabled" : ""}`} onClick={goPrev} disabled={atStart}>
-              ← Previous
+            <button type="button" className="dv-bubble dv-bubble--prev" onClick={goPrev} disabled={atStart}>
+              Previous
             </button>
             <span className="dv-dots">
               {Array.from({ length: totalSlides }, (_, i) => (
                 <span key={i} className={`dv-dot${i < slideIdx ? " done" : i === slideIdx ? " current" : ""}`} />
               ))}
             </span>
-            <button type="button" className={`dv-nav-btn${atEnd ? " is-disabled" : ""}`} onClick={goNext} disabled={atEnd}>
-              Next →
+            <button type="button" className="dv-bubble dv-bubble--next" onClick={goNext} disabled={atEnd}>
+              Next
             </button>
           </div>
         </div>
@@ -341,10 +341,25 @@ const CSS = `
 
 .dv-btn { font-family: 'Inter', sans-serif; font-weight: 700; font-size: 13px; border-radius: 999px; padding: 10px 22px; border: none; cursor: pointer; background: #1B2A4A; color: #fff; }
 
-/* ---- Footer nav ---- */
-.dv-footer-nav { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 14px 34px 20px; border-top: 1px solid #F2DCE9; }
-.dv-nav-btn { font-family: 'Inter', sans-serif; font-weight: 700; font-size: 12.5px; color: #5A6B92; background: none; border: none; cursor: pointer; padding: 4px 6px; }
-.dv-nav-btn.is-disabled { opacity: 0.3; cursor: default; }
+/* ---- Footer nav: bubble buttons, no arrows, depth via a solid drop
+   edge plus a soft diffuse shadow, matching the approved mockup ---- */
+.dv-footer-nav { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 16px 30px 20px; border-top: 1px solid #F2DCE9; }
+.dv-bubble {
+  font-family: 'Inter', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.01em;
+  border: none; cursor: pointer; border-radius: 999px; padding: 11px 24px;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+.dv-bubble--prev {
+  color: #1B2A4A; background: #FFFFFF; border: 1.5px solid #F2DCE9;
+  box-shadow: 0 3px 0 #F2DCE9, 0 8px 16px rgba(178,51,112,0.08);
+}
+.dv-bubble--prev:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 5px 0 #F2DCE9, 0 12px 20px rgba(178,51,112,0.12); }
+.dv-bubble--next {
+  color: #FFFFFF; background: linear-gradient(135deg, #D6478C 0%, #B23370 100%);
+  box-shadow: 0 3px 0 #8F2758, 0 10px 20px rgba(178,51,112,0.34);
+}
+.dv-bubble--next:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 5px 0 #8F2758, 0 14px 24px rgba(178,51,112,0.4); }
+.dv-bubble:disabled { opacity: 0.4; cursor: default; transform: none; box-shadow: none; }
 .dv-dots { display: flex; align-items: center; gap: 5px; flex-wrap: wrap; justify-content: center; max-width: 400px; }
 .dv-dot { width: 6px; height: 6px; border-radius: 50%; background: #EDE1DB; flex: none; }
 .dv-dot.done { background: #2F9E58; }
