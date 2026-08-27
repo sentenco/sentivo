@@ -221,7 +221,7 @@ const CSS = `
 
 .ah-column-tracks {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 20px;
 }
 
