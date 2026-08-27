@@ -1,13 +1,13 @@
-// DERIVE, Friend Group & Social Life Track, Lesson 3: "Apologize"
+// DERIVE, Friend Group & Social Life Track, Lesson 3: "Apology"
 // One word family drilled across the whole lesson. 10 gap-fill sentences,
 // 2 per form (5 forms x 2 = 10), each form the correct answer exactly twice.
 
 export default {
   id: "derive-friends-3",
   code: "L3",
-  title: "Word Family: Apologize",
-  root: "apologize",
-  family: ["apologize", "apologizing", "apologized", "apology", "apologetic"],
+  title: "Word Family: Apology",
+  root: "apology",
+  family: ["apology", "apologize", "apologizing", "apologized", "apologetic"],
   sentences: [
     { text: "You should ___ for being late.", answer: "apologize" },
     { text: "She accepted his ___ right away.", answer: "apology" },
