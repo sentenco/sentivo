@@ -43,8 +43,6 @@ export default function SyllabusEditor() {
   const [title, setTitle] = useState("Untitled syllabus");
   const [level, setLevel] = useState("A1");
   const [ageTrack, setAgeTrack] = useState("kids");
-  const [studentName, setStudentName] = useState("");
-  const [studentNotes, setStudentNotes] = useState("");
   const [sessions, setSessions] = useState([]);
   const [offsets, setOffsets] = useState({});
   const [saving, setSaving] = useState(false);
@@ -74,7 +72,7 @@ export default function SyllabusEditor() {
       setLoading(true);
       const { data, error } = await supabase
         .from("syllabi")
-        .select("id, title, level, age_track, student_name, student_notes, sessions, offsets")
+        .select("id, title, level, age_track, sessions, offsets")
         .eq("id", id)
         .eq("user_id", user.id)
         .maybeSingle();
@@ -86,8 +84,6 @@ export default function SyllabusEditor() {
         setLevel(data.level || "A1");
         setFollowUpLevel(data.level || "A1");
         setAgeTrack(data.age_track || "kids");
-        setStudentName(data.student_name || "");
-        setStudentNotes(data.student_notes || "");
         setSessions(data.sessions && data.sessions.length > 0 ? data.sessions : [newSession()]);
         setOffsets(data.offsets || {});
       }
@@ -102,7 +98,7 @@ export default function SyllabusEditor() {
     setSaving(true);
     const { error } = await supabase
       .from("syllabi")
-      .update({ title, level, age_track: ageTrack, student_name: studentName, student_notes: studentNotes, sessions, offsets, updated_at: new Date().toISOString() })
+      .update({ title, level, age_track: ageTrack, sessions, offsets, updated_at: new Date().toISOString() })
       .eq("id", id)
       .eq("user_id", user.id);
     setSaving(false);
@@ -154,8 +150,6 @@ export default function SyllabusEditor() {
         title: `${title} (follow-up)`,
         level: followUpLevel,
         age_track: ageTrack,
-        student_name: studentName,
-        student_notes: studentNotes,
         sessions: result.sessions,
         offsets: result.offsets,
       })
@@ -170,7 +164,6 @@ export default function SyllabusEditor() {
     const ageLabel = SYLLABUS_AGE_TRACKS.find((t) => t.key === ageTrack)?.label || "";
     const lines = [
       "Custom Lesson Request",
-      `Student: ${studentName || "(not set)"}`,
       `Topic: ${reqTopic.trim()}`,
       `Level: ${level}${ageLabel ? ` · ${ageLabel}` : ""}`,
       `Duration: ${reqDuration} minutes`,
@@ -265,12 +258,6 @@ export default function SyllabusEditor() {
               placeholder="Untitled syllabus"
             />
             <div className="syl-meta-row">
-              <input
-                className="syl-pill-input"
-                value={studentName}
-                onChange={(e) => setStudentName(e.target.value)}
-                placeholder="Student name"
-              />
               <select className="syl-pill-select" value={level} onChange={(e) => { setLevel(e.target.value); setFollowUpLevel(e.target.value); }}>
                 {SYLLABUS_LEVELS.map((lv) => <option key={lv} value={lv}>{lv}</option>)}
               </select>
@@ -278,18 +265,12 @@ export default function SyllabusEditor() {
                 {SYLLABUS_AGE_TRACKS.map((t) => <option key={t.key} value={t.key}>{t.label}</option>)}
               </select>
               <span className="syl-pill-static">{sessions.length} {sessions.length === 1 ? "session" : "sessions"}</span>
-              <input
-                className="syl-pill-input"
-                value={studentNotes}
-                onChange={(e) => setStudentNotes(e.target.value)}
-                placeholder="Contact / booking ID (optional)"
-              />
             </div>
           </div>
         </div>
       </div>
       <div className="syl-meta-print print-only">
-        {title} — {level} · {SYLLABUS_AGE_TRACKS.find((t) => t.key === ageTrack)?.label}{studentName ? ` · For: ${studentName}` : ""}
+        {title} — {level} · {SYLLABUS_AGE_TRACKS.find((t) => t.key === ageTrack)?.label}
       </div>
 
       {followUpPanelOpen && (
@@ -525,12 +506,6 @@ const CSS = `
   background: rgba(255,255,255,0.16); border: none; border-radius: 999px; padding: 6px 14px; cursor: pointer;
 }
 .syl-pill-static { font-family: 'Inter', sans-serif; font-weight: 700; font-size: 12.5px; color: #B9C3DC; padding: 6px 4px; }
-.syl-pill-input {
-  font-family: 'Inter', sans-serif; font-weight: 700; font-size: 12.5px; color: #FFFFFF;
-  background: rgba(255,255,255,0.16); border: none; border-radius: 999px; padding: 6px 14px;
-  outline: none; min-width: 140px;
-}
-.syl-pill-input::placeholder { color: rgba(255,255,255,0.55); font-weight: 600; }
 
 .syl-select {
   font-family: 'Inter', sans-serif; font-weight: 700; font-size: 13px; color: #1B2A4A;
