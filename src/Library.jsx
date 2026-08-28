@@ -6,6 +6,7 @@ import ProfileSettings from "./ProfileSettings.jsx";
 import { supabase } from "./supabaseClient";
 import { timeAgo } from "./slideDeckTypes";
 import CurriculumRouter from "./CurriculumRouter";
+import SparkHub from "./SparkHub";
 import ImagePlaceholder from "./slides/ImagePlaceholder";
 import storybookCoverImg from "./assets/storybook/cover.jpeg";
 import storybook2CoverImg from "./assets/storybook2/cover.png";
@@ -1150,6 +1151,7 @@ export default function Library() {
   const isCurriculum = location.pathname.startsWith("/library/curriculum");
   const curriculumLevel = params.level || null;
   const curriculumTrack = params.track || null;
+  const isSpark = location.pathname === "/library/spark";
 
   function goToSidebar(sidebar, level = null) {
     if (sidebar === "curriculum") {
@@ -1648,7 +1650,7 @@ export default function Library() {
         </div>
 
         <div className="gc-editions">
-          <a href="/library/spark" className="gc-ed-spark">
+          <a href="/library/spark" className={`gc-ed-spark ${isSpark ? "is-active" : ""}`}>
             <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z"/></svg>
             Spark Class
           </a>
@@ -1673,7 +1675,11 @@ export default function Library() {
       </header>
 
       <div className="body-wrap">
-      {isCurriculum ? (
+      {isSpark ? (
+        <div className="content" style={{ padding: 0, maxWidth: "100%", overflow: "auto" }}>
+          <SparkHub />
+        </div>
+      ) : isCurriculum ? (
         <div className="content" style={{ padding: 0, maxWidth: "100%", overflow: "auto" }}>
           {plan === "pro_plus" ? (
             <CurriculumRouter
@@ -2026,6 +2032,7 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   color: #1B2A4A; background: #EDF0F7; border: 1.5px solid #C7D0E3;
 }
 .gc-ed-spark:hover { background: #DCE2F0; }
+.gc-ed-spark.is-active { background: #1B2A4A; color: #fff; border-color: #1B2A4A; }
 .gc-ed-kids {
   display: inline-flex; align-items: center; gap: 6px;
   font-size: 12px; font-weight: 800; letter-spacing: 0.02em; padding: 5px 13px;

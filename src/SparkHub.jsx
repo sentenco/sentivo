@@ -114,21 +114,21 @@ const AUDIENCES = {
   kids: {
     label: "Kids",
     lessons: KIDS_LESSONS,
-    blurb: "Three 20-minute trial classes for kids — playful, picture-first, and built to get a new student talking in the first two minutes.",
+    blurb: "Three 20-minute trial classes for kids, playful and picture-first, built to get a new student talking in the first two minutes.",
     lessonPath: (id) => `/library/spark/${id}`,
     guidePath: (id) => `/library/spark/${id}/guide`,
   },
   teens: {
     label: "Teens",
     lessons: TEENS_LESSONS,
-    blurb: "Three 20-minute trial classes for teens — conversation-game mini-lessons about football, school, and friends that turn a short answer into real speaking practice.",
+    blurb: "Three 20-minute trial classes for teens, conversation-game mini-lessons about football, school, and friends that turn a short answer into real speaking practice.",
     lessonPath: (id) => `/library/spark/teens/${id}`,
     guidePath: (id) => `/library/spark/teens/${id}/guide`,
   },
   adults: {
     label: "Adults",
     lessons: ADULTS_LESSONS,
-    blurb: "Three independent 20-minute trial classes for adults — each with its own topic and its own signature gimmick, so a learner never sees the same lesson twice.",
+    blurb: "Three independent 20-minute trial classes for adults, each with its own topic and its own signature gimmick, so a learner never sees the same lesson twice.",
     lessonPath: (id) => `/library/spark/adults/${id}`,
     guidePath: (id) => `/library/spark/adults/${id}/guide`,
   },
@@ -141,13 +141,17 @@ export default function SparkHub() {
   return (
     <div className="spkh-shell">
       <style>{CSS}</style>
-      <header className="spkh-topbar">
-        <span className="spkh-topbar-title">SPARK · Trial Class</span>
-      </header>
+      <div className="spkh-blob spkh-blob--a" />
+      <div className="spkh-blob spkh-blob--b" />
 
       <div className="spkh-stage">
-        <div className="spkh-hero">
-          <h1 className="spkh-hero-title">SPARK</h1>
+        <div className="spkh-hero-band">
+          <div className="spkh-hero-kicker-row">
+            <span className="spkh-hero-rule" />
+            <span className="spkh-hero-kicker">Trial classes, kids, teens &amp; adults</span>
+            <span className="spkh-hero-rule" />
+          </div>
+          <h1 className="spkh-title">Spark</h1>
           <p className="spkh-hero-blurb">{config.blurb}</p>
 
           <div className="spkh-audience-toggle">
@@ -176,10 +180,10 @@ export default function SparkHub() {
               <p className="spkh-lesson-desc">{lesson.coreAim}</p>
               <div className="spkh-lesson-foot">
                 <button type="button" className="spkh-lesson-guidebtn" onClick={() => openGuide(config.guidePath(lesson.id))}>
-                  📋 Guide
+                  Guide
                 </button>
                 <button type="button" className="spkh-lesson-startbtn" onClick={() => openLesson(config.lessonPath(lesson.id))}>
-                  Start →
+                  Start &rarr;
                 </button>
               </div>
             </div>
@@ -197,69 +201,75 @@ export default function SparkHub() {
 }
 
 const CSS = `
-@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Quicksand:wght@500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@800;900&family=Source+Serif+4:wght@500;600;700&family=Inter:wght@500;600;700;800&display=swap');
 
 .spkh-shell {
+  min-height: 100%;
   width: 100%;
-  min-height: 100vh;
-  background: radial-gradient(circle at 15% 0%, #FFFBEA 0%, #FFF0BE 50%, #FFE28A 100%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  box-sizing: border-box;
+  flex-shrink: 0;
+  background: #FFFCF6;
+  color: #1B2A4A;
+  font-family: 'Inter', sans-serif;
+  position: relative;
+  overflow: hidden;
 }
 .spkh-shell * { box-sizing: border-box; }
 
-.spkh-topbar {
-  width: 100%;
-  max-width: 1040px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 22px 24px 0;
+.spkh-blob { position: absolute; border-radius: 50%; pointer-events: none; z-index: 0; }
+.spkh-blob--a { width: 420px; height: 420px; top: -180px; right: -140px; background: rgba(255,107,74,0.08); }
+.spkh-blob--b { width: 460px; height: 460px; bottom: -220px; left: -160px; background: rgba(27,42,74,0.06); }
+
+.spkh-stage { position: relative; z-index: 1; max-width: 1040px; margin: 0 auto; padding: 30px 40px 70px; }
+
+.spkh-hero-band {
+  background: #FFE6DD;
+  border-radius: 16px;
+  padding: 22px 32px 24px;
+  text-align: center;
+  margin-bottom: 32px;
 }
-.spkh-topbar-title {
-  font-family: 'Quicksand', sans-serif;
+.spkh-hero-kicker-row { display: flex; align-items: center; justify-content: center; gap: 14px; margin-bottom: 4px; }
+.spkh-hero-rule { flex: 0 1 48px; height: 1px; background: rgba(27,42,74,0.22); }
+.spkh-hero-kicker {
+  font-family: 'Source Serif 4', serif;
   font-weight: 700;
-  font-size: 12.5px;
-  letter-spacing: 1.5px;
+  font-size: 10.5px;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: #C98A00;
+  color: #E0502F;
 }
-
-.spkh-stage { flex: 1; width: 100%; max-width: 960px; padding: 40px 24px 60px; }
-
-.spkh-hero { margin-bottom: 30px; }
-.spkh-hero-title {
-  font-family: 'Fredoka', sans-serif;
-  font-weight: 700;
-  font-size: 44px;
-  color: #4A3B12;
-  margin: 0 0 10px;
+.spkh-title {
+  font-family: 'Playfair Display', serif;
+  font-weight: 900;
+  font-size: clamp(28px, 4vw, 38px);
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: #1B2A4A;
+  margin: 4px 0 12px;
+  line-height: 1;
 }
 .spkh-hero-blurb {
-  font-family: 'Quicksand', sans-serif;
+  font-size: 13.5px;
   font-weight: 500;
-  font-size: 16px;
-  color: #8A7233;
-  margin: 0 0 18px;
-  max-width: 640px;
-  line-height: 1.5;
+  color: #6B6E96;
+  margin: 0 auto 18px;
+  max-width: 560px;
+  line-height: 1.6;
 }
 
-.spkh-audience-toggle { display: inline-flex; background: #FFF3D0; border-radius: 999px; padding: 4px; gap: 4px; }
+.spkh-audience-toggle { display: inline-flex; background: #fff; border-radius: 999px; padding: 4px; gap: 4px; }
 .spkh-audience-btn {
-  font-family: 'Fredoka', sans-serif;
-  font-weight: 700;
-  font-size: 14px;
-  color: #8A7233;
+  font-family: 'Source Serif 4', serif;
+  font-weight: 600;
+  font-size: 13px;
+  color: #6B6E96;
   background: transparent;
   border: none;
   border-radius: 999px;
-  padding: 8px 22px;
+  padding: 7px 20px;
   cursor: pointer;
 }
-.spkh-audience-btn.is-active { background: #FFB800; color: #4A3B12; }
+.spkh-audience-btn.is-active { background: #FF6B4A; color: #fff; }
 
 .spkh-lessons-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
 
@@ -268,55 +278,57 @@ const CSS = `
   flex-direction: column;
   gap: 9px;
   background: #FFFFFF;
-  border: 1px solid #FFE28A;
+  border: 1px solid #EDE6F4;
   border-radius: 16px;
   padding: 16px 16px 14px;
   min-height: 230px;
-  box-shadow: 0 10px 24px rgba(180,140,0,0.07);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(27,42,74,0.06);
 }
+.spkh-lesson-card::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 5px; background: #FF6B4A; }
+.spkh-lesson-card--ghost::before { background: transparent; }
 
 .spkh-lesson-top { display: flex; align-items: center; justify-content: space-between; }
 .spkh-lesson-badge {
-  font-family: 'Fredoka', sans-serif;
-  font-weight: 700;
+  font-family: 'Source Serif 4', serif;
+  font-weight: 600;
   font-size: 11.5px;
-  color: #C98A00;
-  background: #FFF3D0;
+  color: #E0502F;
+  background: #FFE6DD;
   border-radius: 999px;
   padding: 3px 9px;
 }
 .spkh-lesson-length {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 600;
+  font-weight: 700;
   font-size: 10.5px;
-  color: #C98A00;
+  color: #6B6E96;
 }
 
 .spkh-lesson-icon {
   width: 100%;
   height: 50px;
-  background: #FFF3D0;
+  background: #FFE6DD;
   border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #C98A00;
+  color: #FF6B4A;
 }
-.spkh-lesson-icon--ghost { color: #FFDD7A; font-family: 'Fredoka', sans-serif; font-size: 26px; background: transparent; border: 2px dashed #FFE28A; }
+.spkh-lesson-icon--ghost { color: #D9CFE0; font-family: 'Source Serif 4', serif; font-size: 26px; background: transparent; border: 2px dashed #EDE6F4; }
 
 .spkh-lesson-title {
-  font-family: 'Fredoka', sans-serif;
-  font-weight: 700;
-  font-size: 16px;
-  color: #4A3B12;
+  font-family: 'Source Serif 4', serif;
+  font-weight: 600;
+  font-size: 15.5px;
+  color: #1B2A4A;
   margin: 0;
 }
-.spkh-lesson-title--ghost { color: #C98A00; }
+.spkh-lesson-title--ghost { color: #A6A2C0; }
 .spkh-lesson-desc {
-  font-family: 'Quicksand', sans-serif;
   font-weight: 500;
   font-size: 12px;
-  color: #8A7233;
+  color: #6B6E96;
   line-height: 1.4;
   margin: 0;
 }
@@ -327,27 +339,25 @@ const CSS = `
   align-items: center;
   justify-content: space-between;
   padding-top: 8px;
-  border-top: 1px solid #FFF3D0;
+  border-top: 1px solid #EDE6F4;
   gap: 6px;
 }
 .spkh-lesson-guidebtn {
-  font-family: 'Quicksand', sans-serif;
   font-weight: 700;
   font-size: 10.5px;
-  color: #C98A00;
-  background: #FFF3D0;
-  border: 1px solid #FFDD7A;
+  color: #1B2A4A;
+  background: #F3F0FB;
+  border: 1px solid #EDE6F4;
   border-radius: 999px;
   padding: 5px 10px;
   white-space: nowrap;
   cursor: pointer;
 }
 .spkh-lesson-startbtn {
-  font-family: 'Quicksand', sans-serif;
   font-weight: 700;
   font-size: 11px;
-  color: #4A3B12;
-  background: #FFB800;
+  color: #fff;
+  background: #FF6B4A;
   border: none;
   border-radius: 999px;
   padding: 5px 11px;

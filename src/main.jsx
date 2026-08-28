@@ -207,7 +207,6 @@ import ShiftHub from './ShiftHub.jsx'
 import ShiftTrack from './ShiftTrack.jsx'
 import ShiftGuide from './ShiftGuide.jsx'
 import Spark from './Spark.jsx'
-import SparkHub from './SparkHub.jsx'
 import SparkGuide from './SparkGuide.jsx'
 import SparkTeens from './SparkTeens.jsx'
 import SparkTeensGuide from './SparkTeensGuide.jsx'
@@ -427,7 +426,7 @@ createRoot(document.getElementById('root')).render(
             <Route path="/library/shift/:trackId" element={<ShiftTrack />} />
             <Route path="/library/shift/:trackId/:lessonNum" element={<Shift />} />
             <Route path="/library/shift/:trackId/:lessonNum/guide" element={<ShiftGuide />} />
-            <Route path="/library/spark" element={<SparkHub />} />
+            <Route path="/library/spark" element={<Library />} />
             <Route path="/library/spark/teens/:lessonId" element={<SparkTeens />} />
             <Route path="/library/spark/teens/:lessonId/guide" element={<SparkTeensGuide />} />
             <Route path="/library/spark/adults/:lessonId" element={<SparkAdults />} />
