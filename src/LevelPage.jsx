@@ -3,8 +3,9 @@ import React, { useEffect } from "react";
 const LEVEL_DATA = {
   A1: {
     name: "Foundation",
-    color: "#D85A30",
-    light: "#FAECE7",
+    accent: "coral",
+    color: "#FF5A36",
+    light: "#FFE2D6",
     cefr: "Kids · CEFR A1",
     description:
       "The starting point for young learners. A1 builds two things at once: the alphabet and phonics needed to read and write simple words, and the everyday phrases needed to start speaking English right away.",
@@ -16,8 +17,9 @@ const LEVEL_DATA = {
   },
   A2: {
     name: "Growing Up",
-    color: "#0F6E56",
-    light: "#E1F5EE",
+    accent: "green",
+    color: "#0EBE84",
+    light: "#CFF6E6",
     cefr: "Kids · CEFR A2",
     description:
       "Once the alphabet and phonics are secure, A2 expands into longer, connected sentences and more independent everyday situations, with the foundation from A1 as the base.",
@@ -60,65 +62,70 @@ const UNITS = {
   ],
 };
 
-export default function LevelPage({ level = "A1", isPro = false }) {
+export default function LevelPage({ level = "A1" }) {
   const data = LEVEL_DATA[level] || LEVEL_DATA.A1;
   const units = UNITS[level] || UNITS.A1;
 
   useEffect(() => {
     const styleId = "lp-styles";
-    if (!document.getElementById(styleId)) {
-      const tag = document.createElement("style");
-      tag.id = styleId;
-      tag.textContent = styles;
-      document.head.appendChild(tag);
-    }
+    const existing = document.getElementById(styleId);
+    if (existing) existing.remove();
+    const tag = document.createElement("style");
+    tag.id = styleId;
+    tag.textContent = styles;
+    document.head.appendChild(tag);
   }, []);
 
   return (
-    <div className={`lp-wrap${isPro ? " lp-pro" : ""}`}>
-      <div className="lp-topbar">
-        <div className="lp-breadcrumb">
-          Kids Curriculum <span className="lp-crumb-sep">&rsaquo;</span> <span style={{ color: data.color }}>{level} &middot; {data.name}</span>
-        </div>
-      </div>
+    <div className="lp-wrap">
+      <div className="lp-blob lp-blob--a" />
+      <div className="lp-blob lp-blob--b" />
 
-      <div className="lp-hero" style={{ "--lv-color": data.color, "--lv-light": data.light }}>
-        <div className="lp-hero-left">
-          <div className="lp-cefr-tag">{data.cefr}</div>
-          <div className="lp-level-code">{level}</div>
-          <div className="lp-level-name">{data.name}</div>
-          <p className="lp-description">{data.description}</p>
+      <div className="lp-stage">
+        <div className="lp-topbar">
+          <div className="lp-breadcrumb">
+            Kids Curriculum <span className="lp-crumb-sep">&rsaquo;</span> <span style={{ color: data.color }}>{level} &middot; {data.name}</span>
+          </div>
         </div>
-        <div className="lp-hero-right">
-          <div className="lp-goals-label">Can-do goals</div>
-          <ul className="lp-goals">
-            {data.goals.map((g, i) => (
-              <li key={i} className="lp-goal">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                {g}
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
 
-      <div className="lp-units-section">
-        <div className="lp-units-hd">
-          <h2 className="lp-units-title">12 units</h2>
-          <p className="lp-units-sub">Each unit has 5 teaching lessons plus a summative test, blending vocabulary, grammar, reading, writing, and speaking together in every lesson.</p>
+        <div className={`lp-hero lp-hero--${data.accent}`}>
+          <div className="lp-hero-left">
+            <div className="lp-cefr-tag" style={{ color: data.color, background: data.light }}>{data.cefr}</div>
+            <div className="lp-level-code" style={{ color: data.color }}>{level}</div>
+            <div className="lp-level-name">{data.name}</div>
+            <p className="lp-description">{data.description}</p>
+          </div>
+          <div className="lp-hero-right">
+            <div className="lp-goals-label">Can-do goals</div>
+            <ul className="lp-goals">
+              {data.goals.map((g, i) => (
+                <li key={i} className="lp-goal">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke={data.color} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  {g}
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
-        <div className="lp-units-grid">
-          {units.map((u) => (
-            <div key={u.num} className="lp-unit-card" style={{ "--lv-color": data.color, "--lv-light": data.light }}>
-              <div className="lp-unit-top">
-                <span className="lp-unit-num">Unit {u.num}</span>
-                <span className="lp-unit-soon">Coming soon</span>
+
+        <div className="lp-units-section">
+          <div className="lp-units-hd">
+            <h2 className="lp-units-title">12 units</h2>
+            <p className="lp-units-sub">Each unit has 5 teaching lessons plus a summative test, blending vocabulary, grammar, reading, writing, and speaking together in every lesson.</p>
+          </div>
+          <div className="lp-units-grid">
+            {units.map((u) => (
+              <div key={u.num} className="lp-unit-card">
+                <div className="lp-unit-top">
+                  <span className="lp-unit-num" style={{ color: data.color, background: data.light }}>Unit {u.num}</span>
+                  <span className="lp-unit-soon">Coming soon</span>
+                </div>
+                <h3 className="lp-unit-title">{u.title}</h3>
+                <p className="lp-unit-focus">{u.focus}</p>
+                <span className="lp-unit-thread" style={{ color: data.color }}>{u.thread}</span>
               </div>
-              <h3 className="lp-unit-title">{u.title}</h3>
-              <p className="lp-unit-focus">{u.focus}</p>
-              <span className="lp-unit-thread">{u.thread}</span>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </div>
@@ -126,184 +133,95 @@ export default function LevelPage({ level = "A1", isPro = false }) {
 }
 
 const styles = `
-@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Quicksand:wght@500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@500;600;700&family=Inter:wght@500;600;700;800&display=swap');
 
 .lp-wrap {
   min-height: 100%;
-  background: radial-gradient(circle at 10% 0%, #FFF3D6 0%, #FFEFEA 45%, #F4F0FF 100%);
-  font-family: 'Quicksand', sans-serif;
+  background: #FFFCF6;
+  color: #23264A;
+  font-family: 'Inter', sans-serif;
+  position: relative;
+  overflow: hidden;
 }
-.lp-pro { background: #F7F5EF; }
+.lp-wrap * { box-sizing: border-box; }
 
-.lp-topbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 16px 48px;
-  border-bottom: 1px solid rgba(0,0,0,0.06);
-  background: rgba(255,255,255,0.55);
-  backdrop-filter: blur(8px);
-}
-.lp-pro .lp-topbar { background: rgba(247,245,239,0.8); }
+.lp-blob { position: absolute; border-radius: 50%; pointer-events: none; z-index: 0; }
+.lp-blob--a { width: 420px; height: 420px; top: -180px; right: -140px; background: rgba(255,90,54,0.08); }
+.lp-blob--b { width: 460px; height: 460px; bottom: -220px; left: -160px; background: rgba(14,190,132,0.08); }
 
-.lp-breadcrumb {
-  font-size: 12px;
-  font-weight: 600;
-  color: #8A7B8A;
-}
-.lp-crumb-sep { color: #C7BEC7; }
-.lp-pro .lp-breadcrumb { color: #8A8070; }
+.lp-stage { position: relative; z-index: 1; max-width: 1040px; margin: 0 auto; padding: 26px 40px 70px; }
+
+.lp-topbar { margin-bottom: 26px; }
+.lp-breadcrumb { font-size: 12px; font-weight: 600; color: #6B6E96; }
+.lp-crumb-sep { color: #C7C4DC; }
 
 .lp-hero {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 32px;
-  padding: 36px 48px;
-  border-bottom: 1px solid rgba(0,0,0,0.06);
+  background: #fff;
+  border: 1px solid #EDE6F4;
+  border-radius: 20px;
+  padding: 34px 36px;
+  margin-bottom: 40px;
+  position: relative;
+  overflow: hidden;
 }
+.lp-hero::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 6px; }
+.lp-hero--coral::before { background: #FF5A36; }
+.lp-hero--green::before { background: #0EBE84; }
 @media (max-width: 800px) { .lp-hero { grid-template-columns: 1fr; } }
 
 .lp-hero-left { display: flex; flex-direction: column; gap: 10px; }
 .lp-cefr-tag {
   display: inline-block;
-  background: var(--lv-light);
-  color: var(--lv-color);
   font-size: 10px;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;
   padding: 4px 10px;
-  border-radius: 999px;
+  border-radius: 6px;
   align-self: flex-start;
 }
-.lp-pro .lp-cefr-tag { border-radius: 3px; }
 
 .lp-level-code {
-  font-family: 'Fredoka', sans-serif;
-  font-size: 52px;
-  font-weight: 700;
-  color: var(--lv-color);
+  font-family: 'Source Serif 4', serif;
+  font-size: 48px;
+  font-weight: 600;
   line-height: 1;
 }
-.lp-pro .lp-level-code { font-family: 'Source Serif 4', serif; }
 
 .lp-level-name {
-  font-family: 'Fredoka', sans-serif;
-  font-size: 22px;
+  font-family: 'Source Serif 4', serif;
+  font-size: 20px;
   font-weight: 600;
-  color: #2B2330;
-  margin-top: -4px;
+  color: #23264A;
+  margin-top: -2px;
 }
-.lp-pro .lp-level-name { font-family: 'Source Serif 4', serif; color: #1B2A4A; }
 
-.lp-description {
-  font-size: 13px;
-  font-weight: 500;
-  color: #5A4E6A;
-  line-height: 1.65;
-}
-.lp-pro .lp-description { color: #6B6458; }
+.lp-description { font-size: 13px; font-weight: 500; color: #6B6E96; line-height: 1.65; }
 
 .lp-hero-right { display: flex; flex-direction: column; gap: 14px; }
+.lp-goals-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #6B6E96; }
+.lp-goals { list-style: none; display: flex; flex-direction: column; gap: 8px; margin: 0; padding: 0; }
+.lp-goal { display: flex; align-items: flex-start; gap: 9px; font-size: 13px; font-weight: 600; color: #23264A; line-height: 1.45; }
+.lp-goal svg { flex-shrink: 0; margin-top: 2px; }
 
-.lp-goals-label {
-  font-size: 10px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: #A89BAA;
-}
-.lp-pro .lp-goals-label { color: #8A8070; }
-
-.lp-goals { list-style: none; display: flex; flex-direction: column; gap: 8px; }
-.lp-goal {
-  display: flex;
-  align-items: flex-start;
-  gap: 9px;
-  font-size: 13px;
-  font-weight: 600;
-  color: #3D3552;
-  line-height: 1.45;
-}
-.lp-goal svg { flex-shrink: 0; margin-top: 2px; color: var(--lv-color); }
-.lp-pro .lp-goal { color: #1B2A4A; }
-
-.lp-units-section { padding: 36px 48px 60px; }
 .lp-units-hd { margin-bottom: 20px; max-width: 640px; }
-.lp-units-title {
-  font-family: 'Fredoka', sans-serif;
-  font-size: 22px;
-  font-weight: 700;
-  color: #2B2330;
-  margin-bottom: 4px;
-}
-.lp-pro .lp-units-title { font-family: 'Source Serif 4', serif; color: #1B2A4A; }
-.lp-units-sub { font-size: 13px; color: #8A7B8A; font-weight: 500; line-height: 1.6; }
-.lp-pro .lp-units-sub { color: #6B6458; }
+.lp-units-title { font-family: 'Source Serif 4', serif; font-size: 22px; font-weight: 600; color: #23264A; margin-bottom: 6px; }
+.lp-units-sub { font-size: 13px; color: #6B6E96; font-weight: 500; line-height: 1.6; }
 
-.lp-units-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-}
+.lp-units-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
 @media (max-width: 900px) { .lp-units-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 600px) { .lp-units-grid { grid-template-columns: 1fr; } }
 
-.lp-unit-card {
-  background: #fff;
-  border-radius: 14px;
-  padding: 18px 18px 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  border: 1.5px solid rgba(0,0,0,0.06);
-  opacity: 0.92;
-}
-.lp-pro .lp-unit-card { border-radius: 4px; border: 1px solid #DEDAD0; opacity: 1; }
+.lp-unit-card { background: #fff; border-radius: 12px; padding: 16px 17px; border: 1px solid #EDE6F4; }
 
-.lp-unit-top { display: flex; align-items: center; justify-content: space-between; }
-.lp-unit-num {
-  font-size: 11px;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--lv-color);
-  background: var(--lv-light);
-  padding: 3px 9px;
-  border-radius: 999px;
-}
-.lp-pro .lp-unit-num { border-radius: 3px; }
-.lp-unit-soon {
-  font-size: 10px;
-  font-weight: 700;
-  color: #A89BAA;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-.lp-pro .lp-unit-soon { color: #8A8070; }
+.lp-unit-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+.lp-unit-num { font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; padding: 3px 9px; border-radius: 6px; }
+.lp-unit-soon { font-size: 9.5px; font-weight: 700; color: #A6A2C0; text-transform: uppercase; letter-spacing: 0.04em; }
 
-.lp-unit-title {
-  font-family: 'Fredoka', sans-serif;
-  font-size: 16px;
-  font-weight: 700;
-  color: #2B2330;
-  margin: 2px 0 0;
-}
-.lp-pro .lp-unit-title { font-family: 'Source Serif 4', serif; color: #1B2A4A; }
-
-.lp-unit-focus {
-  font-size: 12.5px;
-  font-weight: 500;
-  color: #5A4E6A;
-  line-height: 1.5;
-  margin: 0;
-}
-.lp-pro .lp-unit-focus { color: #6B6458; }
-
-.lp-unit-thread {
-  font-size: 11px;
-  font-weight: 700;
-  color: var(--lv-color);
-  margin-top: 4px;
-}
+.lp-unit-title { font-family: 'Source Serif 4', serif; font-size: 15px; font-weight: 600; color: #23264A; margin: 0 0 4px; }
+.lp-unit-focus { font-size: 12px; font-weight: 500; color: #6B6E96; line-height: 1.5; margin: 0 0 8px; }
+.lp-unit-thread { font-size: 10.5px; font-weight: 700; }
 `;
