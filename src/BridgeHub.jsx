@@ -73,7 +73,8 @@ export default function BridgeHub() {
         </div>
 
         <div className="brh-tracks-grid">
-          {tracks.length > 0 ? tracks.map((track) => <TrackCard key={track.id} track={track} />) : <GhostCard />}
+          {tracks.map((track) => <TrackCard key={track.id} track={track} />)}
+          <GhostCard />
         </div>
       </div>
     </div>
@@ -181,7 +182,7 @@ const CSS = `
 
 .brh-tracks-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 340px));
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 22px;
 }
 
