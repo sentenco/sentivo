@@ -108,7 +108,7 @@ function CurriculumLockedFeature({ navigate }) {
       <p className="cat-locked-eyebrow cat-locked-eyebrow--navy">Pro+ feature</p>
       <h2 className="cat-locked-title">The full curriculum is part of Sentivo Pro+</h2>
       <p className="cat-locked-desc">
-        Upgrade to Pro+ to unlock every CEFR level, A1 through C2, plus the AI-powered Dictionary, Grammar Checker, and Translator.
+        Upgrade to Pro+ to unlock the full A1 and A2 curriculum, plus the AI-powered Dictionary, Grammar Checker, and Translator.
       </p>
       <button type="button" className="cat-locked-cta cat-locked-cta--navy" onClick={() => navigate("/library/subscription")}>Upgrade to Pro+</button>
       <button type="button" className="cat-locked-link" onClick={() => navigate("/library/subscription")}>See all plans</button>
@@ -1648,19 +1648,19 @@ export default function Library() {
         </div>
 
         <div className="gc-editions">
+          <a href="/library/spark" className="gc-ed-spark">Spark Class</a>
           <button
-            className={`gc-ed-tab ${isCurriculum && !curriculumLevel ? "is-active" : ""}`}
+            className={`gc-ed-kids ${isCurriculum && !curriculumLevel ? "is-active" : ""}`}
             onClick={() => goToSidebar("curriculum", null)}
           >
-            Overview
+            Kids Curriculum
           </button>
-          <a href="/library/spark" className="gc-ed-spark">Spark Class</a>
-          {["A1", "A2", "B1", "B2", "C1", "C2"].map((lvl) => (
+          {["A1", "A2"].map((lvl) => (
             <button
               key={lvl}
               className={`gc-ed-tab ${isCurriculum && curriculumLevel === lvl ? "is-active" : ""}`}
               onClick={() => goToSidebar("curriculum", lvl)}
-              title={{ "A1": "A1 — Beginner", "A2": "A2 — Elementary", "B1": "B1 — Intermediate", "B2": "B2 — Upper Int.", "C1": "C1 — Advanced", "C2": "C2 — Proficient" }[lvl]}
+              title={{ "A1": "A1 — Beginner", "A2": "A2 — Elementary" }[lvl]}
             >
               {lvl}
             </button>
@@ -2015,8 +2015,19 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .gc-sec-tab.is-active { border-bottom-color: transparent; background: var(--ink); color: #FFFFFF; border-radius: 999px; }
 
 .gc-editions { display: flex; align-items: center; justify-content: center; gap: 11px; padding: 5px 40px; border-bottom: 1px solid var(--hair); font-family: 'Quicksand', sans-serif; background: rgba(34,58,51,0.035); }
-.gc-ed-spark { font-size: 12px; font-weight: 800; letter-spacing: 0.02em; padding: 5px 13px; border-radius: 999px; color: var(--muted); text-decoration: none; }
-.gc-ed-spark:hover { color: var(--coral); }
+.gc-ed-spark {
+  font-size: 12px; font-weight: 800; letter-spacing: 0.02em; padding: 5px 13px;
+  border-radius: 999px; text-decoration: none;
+  color: #8A5A00; background: #FFF3D0; border: 1.5px solid #FFD666;
+}
+.gc-ed-spark:hover { background: #FFE9A8; }
+.gc-ed-kids {
+  font-size: 12px; font-weight: 800; letter-spacing: 0.02em; padding: 5px 13px;
+  border-radius: 999px; cursor: pointer;
+  color: var(--coral); background: none; border: 1.5px solid var(--coral);
+}
+.gc-ed-kids:hover { background: rgba(255,107,74,0.08); }
+.gc-ed-kids.is-active { background: var(--coral); color: #fff; }
 .gc-ed-tab { font-size: 12px; font-weight: 800; letter-spacing: 0.02em; padding: 5px 13px; border-radius: 999px; color: var(--muted); background: none; border: none; cursor: pointer; }
 .gc-ed-tab:hover { color: var(--coral); }
 .gc-ed-tab.is-active { background: var(--ink); color: var(--card); }
