@@ -213,6 +213,7 @@ const CSS = `
   align-items: center;
   justify-content: space-between;
   padding-top: 14px;
+  margin-top: auto;
   border-top: 1px dashed #CDEBEA;
 }
 .brh-track-meta { font-family: 'IBM Plex Sans', sans-serif; font-weight: 700; font-size: 11px; color: #4B8B92; }
