@@ -122,6 +122,9 @@ import AscendHub from './AscendHub.jsx'
 import AscendTrack from './AscendTrack.jsx'
 import AscendGuide from './AscendGuide.jsx'
 import BridgeHub from './BridgeHub.jsx'
+import BridgeTrack from './BridgeTrack.jsx'
+import Bridge from './Bridge.jsx'
+import BridgeGuide from './BridgeGuide.jsx'
 import DeriveHub from './DeriveHub.jsx'
 import DeriveTrack from './DeriveTrack.jsx'
 import Derive from './Derive.jsx'
@@ -350,6 +353,9 @@ createRoot(document.getElementById('root')).render(
             <Route path="/library/ascend/:trackId/:lessonNum" element={<Ascend />} />
             <Route path="/library/ascend/:trackId/:lessonNum/guide" element={<AscendGuide />} />
             <Route path="/library/bridge" element={<BridgeHub />} />
+            <Route path="/library/bridge/:trackId" element={<BridgeTrack />} />
+            <Route path="/library/bridge/:trackId/:lessonNum" element={<Bridge />} />
+            <Route path="/library/bridge/:trackId/:lessonNum/guide" element={<BridgeGuide />} />
             <Route path="/library/derive" element={<DeriveHub />} />
             <Route path="/library/derive/:trackId" element={<DeriveTrack />} />
             <Route path="/library/derive/:trackId/:lessonNum" element={<Derive />} />
