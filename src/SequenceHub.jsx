@@ -1,7 +1,44 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import TRACKS from "./sequenceTracks";
+
+const AUDIENCES = [
+  { key: "teens", label: "Teens" },
+  { key: "adults", label: "Adults" },
+];
+
+function TrackCard({ track }) {
+  const authored = track.lessons.filter(Boolean).length;
+  return (
+    <a href={`/library/sequence/${track.id}`} className="sqh-track-card">
+      <div className="sqh-track-ribbon">
+        <span className="sqh-track-title">{track.title}</span>
+      </div>
+      <div className="sqh-track-body">
+        <p className="sqh-track-desc">{track.blurb}</p>
+        <div className="sqh-track-foot">
+          <span className="sqh-track-meta">{authored} of {track.lessons.length} ready</span>
+          <span className="sqh-track-cta">Open track →</span>
+        </div>
+      </div>
+    </a>
+  );
+}
+
+function GhostCard() {
+  return (
+    <div className="sqh-track-card sqh-track-card--ghost">
+      <span className="sqh-ghost-plus">+</span>
+      <div className="sqh-ghost-label">More tracks coming</div>
+      <div className="sqh-ghost-sub">Tracks for this audience are on the way.</div>
+    </div>
+  );
+}
 
 export default function SequenceHub() {
   const navigate = useNavigate();
+  const [audience, setAudience] = useState("teens");
+  const tracks = TRACKS.filter((t) => t.audience.includes(audience));
 
   return (
     <div className="sqh-shell">
@@ -22,12 +59,21 @@ export default function SequenceHub() {
 
         <div className="sqh-dot-lane"></div>
 
+        <div className="sqh-audience-tabs">
+          {AUDIENCES.map((a) => (
+            <button
+              key={a.key}
+              type="button"
+              className={`sqh-audience-tab ${audience === a.key ? "is-active" : ""}`}
+              onClick={() => setAudience(a.key)}
+            >
+              {a.label}
+            </button>
+          ))}
+        </div>
+
         <div className="sqh-tracks-grid">
-          <div className="sqh-track-card sqh-track-card--ghost">
-            <span className="sqh-ghost-plus">+</span>
-            <div className="sqh-ghost-label">Tracks coming soon</div>
-            <div className="sqh-ghost-sub">Sequence is still being built, no tracks are ready yet.</div>
-          </div>
+          {tracks.length > 0 ? tracks.map((track) => <TrackCard key={track.id} track={track} />) : <GhostCard />}
         </div>
       </div>
     </div>
@@ -102,7 +148,7 @@ const CSS = `
   position: relative;
   height: 2px;
   background: #CDEBEA;
-  margin: 34px auto 40px;
+  margin: 34px auto 32px;
   max-width: 340px;
 }
 .sqh-dot-lane::before, .sqh-dot-lane::after {
@@ -117,21 +163,75 @@ const CSS = `
 .sqh-dot-lane::before { left: 0; }
 .sqh-dot-lane::after { right: 0; }
 
+.sqh-audience-tabs { display: flex; justify-content: center; gap: 8px; margin-bottom: 40px; }
+.sqh-audience-tab {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 700;
+  font-size: 13.5px;
+  color: #4C58A8;
+  background: #FFFFFF;
+  border: 1.5px solid #D6D9F5;
+  border-radius: 999px;
+  padding: 8px 22px;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+.sqh-audience-tab:hover { border-color: #5C6BC0; }
+.sqh-audience-tab.is-active { background: #5C6BC0; border-color: #5C6BC0; color: #FFFFFF; }
+
 .sqh-tracks-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 22px;
 }
 
-.sqh-track-card--ghost {
+.sqh-track-card {
   display: flex;
   flex-direction: column;
+  background: #FFFFFF;
+  border-radius: 22px;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  box-shadow: 0 14px 30px rgba(16,100,107,0.14);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.sqh-track-card:hover { transform: translateY(-4px) rotate(-0.4deg); box-shadow: 0 20px 40px rgba(16,100,107,0.2); }
+
+.sqh-track-ribbon {
+  background: linear-gradient(120deg, #5C6BC0 0%, #3F4C9E 100%);
+  padding: 20px 22px;
+}
+.sqh-track-title { font-family: 'Baloo 2', cursive; font-weight: 700; font-size: 22px; color: #FFFFFF; }
+
+.sqh-track-body { padding: 22px 22px 20px; flex: 1; display: flex; flex-direction: column; gap: 14px; }
+.sqh-track-desc { font-family: 'IBM Plex Sans', sans-serif; font-weight: 500; font-size: 13.5px; line-height: 1.55; color: #4B8B92; margin: 0; }
+
+.sqh-track-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 14px;
+  border-top: 1px dashed #CDEBEA;
+}
+.sqh-track-meta { font-family: 'IBM Plex Sans', sans-serif; font-weight: 700; font-size: 11px; color: #4B8B92; }
+.sqh-track-cta {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 800;
+  font-size: 12.5px;
+  color: #FFFFFF;
+  background: #5C6BC0;
+  border-radius: 999px;
+  padding: 8px 16px;
+}
+
+.sqh-track-card--ghost {
   align-items: center;
   justify-content: center;
   text-align: center;
   min-height: 260px;
+  box-shadow: none;
   border: 2px dashed #CDEBEA;
-  border-radius: 22px;
   background: transparent;
   padding: 22px;
 }

@@ -126,6 +126,9 @@ import DeriveHub from './DeriveHub.jsx'
 import DeriveTrack from './DeriveTrack.jsx'
 import Derive from './Derive.jsx'
 import SequenceHub from './SequenceHub.jsx'
+import SequenceTrack from './SequenceTrack.jsx'
+import Sequence from './Sequence.jsx'
+import SequenceGuide from './SequenceGuide.jsx'
 import VerbTensesTrack from './VerbTensesTrack.jsx'
 import VerbTensesLesson from './VerbTensesLesson.jsx'
 import SentencePatternsTrack from './SentencePatternsTrack.jsx'
@@ -351,6 +354,9 @@ createRoot(document.getElementById('root')).render(
             <Route path="/library/derive/:trackId" element={<DeriveTrack />} />
             <Route path="/library/derive/:trackId/:lessonNum" element={<Derive />} />
             <Route path="/library/sequence" element={<SequenceHub />} />
+            <Route path="/library/sequence/:trackId" element={<SequenceTrack />} />
+            <Route path="/library/sequence/:trackId/:lessonNum" element={<Sequence />} />
+            <Route path="/library/sequence/:trackId/:lessonNum/guide" element={<SequenceGuide />} />
             <Route path="/library/grammar/parts-of-speech" element={<PartsOfSpeechTrack />} />
             <Route path="/library/grammar/parts-of-speech/:code" element={<PartsOfSpeechLesson />} />
             <Route path="/library/grammar/verb-tenses" element={<VerbTensesTrack />} />
