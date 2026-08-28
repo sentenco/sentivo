@@ -222,7 +222,7 @@ const CSS = `
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  padding: 30px 16px 60px;
+  padding: 36px;
   box-sizing: border-box;
 }
 .asp-shell * { box-sizing: border-box; }

@@ -9,11 +9,15 @@ function slideCount(lesson) {
 // ASCEND lessons open as a standalone popup player, matching FORGE's
 // chrome-less window.open pattern (itself mirroring LessonsGrid.jsx's
 // curriculum player) -- an independent window, not embedded in the Library.
-function openLesson(trackId, num) {
+// The Push mechanic's portrait deck is much smaller than the old landscape
+// player, so it gets a snugger default window (still resizable) instead of
+// the wide old-mechanic size.
+function openLesson(trackId, num, lesson) {
   const screenW = window.screen.availWidth || 1600;
   const screenH = window.screen.availHeight || 900;
-  const w = Math.min(1220, screenW - 40);
-  const h = Math.min(680, screenH - 80);
+  const isPush = lesson && lesson.mechanic === "push";
+  const w = Math.min(isPush ? 540 : 1220, screenW - 40);
+  const h = Math.min(isPush ? 660 : 680, screenH - 80);
   const left = Math.max(0, Math.floor((screenW - w) / 2));
   const top = Math.max(0, Math.floor((screenH - h) / 2));
 
@@ -89,7 +93,7 @@ export default function AscendTrack() {
               );
             }
             return (
-              <a key={num} className="as-row" href="#" onClick={(e) => { e.preventDefault(); openLesson(track.id, num); }}>
+              <a key={num} className="as-row" href="#" onClick={(e) => { e.preventDefault(); openLesson(track.id, num, lesson); }}>
                 <div className="as-row-badge">{String(num).padStart(2, "0")}</div>
                 <div className="as-row-body">
                   <div className="as-row-topline">
@@ -103,7 +107,7 @@ export default function AscendTrack() {
                   <button type="button" className="as-btn-guide" onClick={(e) => { e.preventDefault(); e.stopPropagation(); openGuide(track.id, num); }}>
                     Guide
                   </button>
-                  <button type="button" className="as-btn-start" onClick={(e) => { e.preventDefault(); e.stopPropagation(); openLesson(track.id, num); }}>
+                  <button type="button" className="as-btn-start" onClick={(e) => { e.preventDefault(); e.stopPropagation(); openLesson(track.id, num, lesson); }}>
                     Start →
                   </button>
                 </div>
