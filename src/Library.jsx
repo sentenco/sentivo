@@ -1648,11 +1648,15 @@ export default function Library() {
         </div>
 
         <div className="gc-editions">
-          <a href="/library/spark" className="gc-ed-spark">Spark Class</a>
+          <a href="/library/spark" className="gc-ed-spark">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z"/></svg>
+            Spark Class
+          </a>
           <button
             className={`gc-ed-kids ${isCurriculum && !curriculumLevel ? "is-active" : ""}`}
             onClick={() => goToSidebar("curriculum", null)}
           >
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M12 7c-1.6-1.1-4.2-1.6-6.5-1.2v12.5c2.3-.4 4.9.1 6.5 1.2m0-12.5c1.6-1.1 4.2-1.6 6.5-1.2v12.5c-2.3-.4-4.9.1-6.5 1.2M12 7v11"/></svg>
             Kids Curriculum
           </button>
           {["A1", "A2"].map((lvl) => (
@@ -2016,12 +2020,14 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 
 .gc-editions { display: flex; align-items: center; justify-content: center; gap: 11px; padding: 5px 40px; border-bottom: 1px solid var(--hair); font-family: 'Quicksand', sans-serif; background: rgba(34,58,51,0.035); }
 .gc-ed-spark {
+  display: inline-flex; align-items: center; gap: 6px;
   font-size: 12px; font-weight: 800; letter-spacing: 0.02em; padding: 5px 13px;
   border-radius: 999px; text-decoration: none;
-  color: #8A5A00; background: #FFF3D0; border: 1.5px solid #FFD666;
+  color: #1B2A4A; background: #EDF0F7; border: 1.5px solid #C7D0E3;
 }
-.gc-ed-spark:hover { background: #FFE9A8; }
+.gc-ed-spark:hover { background: #DCE2F0; }
 .gc-ed-kids {
+  display: inline-flex; align-items: center; gap: 6px;
   font-size: 12px; font-weight: 800; letter-spacing: 0.02em; padding: 5px 13px;
   border-radius: 999px; cursor: pointer;
   color: var(--coral); background: none; border: 1.5px solid var(--coral);
