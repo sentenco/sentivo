@@ -2,148 +2,67 @@ import React, { useEffect } from "react";
 
 const LEVEL_DATA = {
   A1: {
-    name: "Beginner",
+    name: "Foundation",
     color: "#D85A30",
     light: "#FAECE7",
-    cefr: "Basic User",
+    cefr: "Kids · CEFR A1",
     description:
-      "At A1, learners can understand and use familiar everyday expressions and very basic phrases. They can introduce themselves and others, and ask and answer simple questions about personal details.",
+      "The starting point for young learners. A1 builds two things at once: the alphabet and phonics needed to read and write simple words, and the everyday phrases needed to start speaking English right away.",
     goals: [
-      "Use basic greetings and introductions",
-      "Give simple personal information — name, age, country, phone",
-      "Talk in simple sentences about family, daily routine, home, food, shopping, hobbies, and weather",
+      "Recognize all 26 letters and basic phonics sounds",
+      "Read and write simple words like cat, dog, and pen",
+      "Use greetings, numbers, colors, and simple sentences like \"I am\" and \"I like\"",
     ],
   },
   A2: {
-    name: "Elementary",
+    name: "Growing Up",
     color: "#0F6E56",
     light: "#E1F5EE",
-    cefr: "Basic User",
+    cefr: "Kids · CEFR A2",
     description:
-      "At A2, learners can understand sentences and frequently used expressions in areas of immediate relevance — personal and family information, shopping, local geography, employment.",
+      "Once the alphabet and phonics are secure, A2 expands into longer, connected sentences and more independent everyday situations, with the foundation from A1 as the base.",
     goals: [
-      "Talk about daily routines, school and work, and simple past events",
-      "Handle common situations like shopping, eating out, and travel",
-      "Describe people, places, and experiences in simple linked sentences",
-    ],
-  },
-  B1: {
-    name: "Intermediate",
-    color: "#534AB7",
-    light: "#EEEDFE",
-    cefr: "Independent User",
-    description:
-      "At B1, learners can understand the main points of clear standard input on familiar matters in work, school, and leisure. They can deal with most travel situations and produce simple connected text.",
-    goals: [
-      "Manage everyday conversations with detail and opinion",
-      "Handle common work and school situations in English",
-      "Discuss plans, preferences, and experiences with reasons",
-    ],
-  },
-  B2: {
-    name: "Upper Intermediate",
-    color: "#BA7517",
-    light: "#FAEEDA",
-    cefr: "Independent User",
-    description:
-      "At B2, learners can understand the main ideas of complex text on both concrete and abstract topics. They can interact with fluency and spontaneity with native speakers.",
-    goals: [
-      "Participate in extended discussions on a variety of topics",
-      "Understand and summarize longer texts and media",
-      "Present arguments, advantages and disadvantages, and detailed opinions",
-    ],
-  },
-  C1: {
-    name: "Advanced",
-    color: "#0F6E56",
-    light: "#E1F5EE",
-    cefr: "Proficient User",
-    description:
-      "At C1, learners can understand a wide range of demanding, longer texts and recognize implicit meaning. They can express ideas fluently and spontaneously without much searching for expressions.",
-    goals: [
-      "Engage with complex, nuanced topics and texts",
-      "Produce well-structured, detailed spoken and written work",
-      "Adapt language appropriately to different formal and informal contexts",
-    ],
-  },
-  C2: {
-    name: "Proficient",
-    color: "#534AB7",
-    light: "#EEEDFE",
-    cefr: "Proficient User",
-    description:
-      "At C2, learners can understand with ease virtually everything heard or read. They can summarize information from different sources and express themselves spontaneously, fluently, and precisely.",
-    goals: [
-      "Use English flexibly and confidently in any context",
-      "Interpret and produce sophisticated texts and discourse",
-      "Control tone, style, and nuance at a very fine level",
+      "Talk about past events using simple past tense",
+      "Handle everyday situations like shopping and finding places",
+      "Describe routines, plans, and feelings in connected sentences",
     ],
   },
 };
 
-const AGE_TRACKS = [
-  {
-    key: "kids",
-    label: "Kids",
-    age: "Ages 6–12",
-    tagline: "Visual · Game-based · Encouraging",
-    desc: "Short, playful lessons with lots of visual aids, repetition, and positive reinforcement. Perfect for young learners building their first English foundation.",
-    bg: "#FFF3D6",
-    accent: "#D85A30",
-    icon: (
-      <svg viewBox="0 0 48 48" width="44" height="44" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <circle cx="24" cy="18" r="9" />
-        <path d="M8 44c0-8.8 7.2-16 16-16s16 7.2 16 16" />
-        <path d="M18 12c1.5-4 7-6 10-3" />
-        <circle cx="20" cy="18" r="1.5" fill="currentColor" />
-        <circle cx="28" cy="18" r="1.5" fill="currentColor" />
-        <path d="M20 23q4 3 8 0" />
-      </svg>
-    ),
-  },
-  {
-    key: "teens",
-    label: "Teens",
-    age: "Ages 13–17",
-    tagline: "Relevant · Engaging · Real-world",
-    desc: "Topics that actually matter to teenagers — school life, friendships, social media, pop culture, and future plans. Lessons that feel like real conversations.",
-    bg: "#F4F0FF",
-    accent: "#534AB7",
-    icon: (
-      <svg viewBox="0 0 48 48" width="44" height="44" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <circle cx="24" cy="16" r="9" />
-        <path d="M9 44c0-8.3 6.7-15 15-15s15 6.7 15 15" />
-        <circle cx="21" cy="16" r="1.5" fill="currentColor" />
-        <circle cx="27" cy="16" r="1.5" fill="currentColor" />
-        <path d="M21 21q3 2 6 0" />
-        <path d="M30 7c3-1 6 1 5 4" />
-      </svg>
-    ),
-  },
-  {
-    key: "adults",
-    label: "Adults",
-    age: "Ages 18+",
-    tagline: "Practical · Professional · Goal-oriented",
-    desc: "Lessons built around real-world adult needs — workplace communication, academic English, daily errands, travel, and social interaction.",
-    bg: "#E1F5EE",
-    accent: "#0F6E56",
-    icon: (
-      <svg viewBox="0 0 48 48" width="44" height="44" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <circle cx="24" cy="15" r="9" />
-        <path d="M9 44c0-8.3 6.7-15 15-15s15 6.7 15 15" />
-        <circle cx="21" cy="15" r="1.5" fill="currentColor" />
-        <circle cx="27" cy="15" r="1.5" fill="currentColor" />
-        <path d="M21 20q3 2 6 0" />
-        <rect x="19" y="29" width="10" height="7" rx="2" />
-        <path d="M22 33h4" />
-      </svg>
-    ),
-  },
-];
+const UNITS = {
+  A1: [
+    { num: 1, title: "Hello, Alphabet!", focus: "Greetings, \"What's your name?\"", thread: "Letters A to I" },
+    { num: 2, title: "Numbers & Letters", focus: "Counting 1 to 10", thread: "Letters J to R, letter sounds" },
+    { num: 3, title: "Colors & Sounds", focus: "Colors, \"This is a...\"", thread: "Letters S to Z, first blending" },
+    { num: 4, title: "All About Me", focus: "Name, age, feelings, \"I am...\"", thread: "Simple words: cat, dog, pen" },
+    { num: 5, title: "My Family", focus: "Family members, \"This is my...\"", thread: "Sight words: mom, dad, sister" },
+    { num: 6, title: "My Body", focus: "Body parts, simple descriptions", thread: "Word family: at, og" },
+    { num: 7, title: "My School", focus: "Classroom objects and language", thread: "Sight words: pen, book, bag" },
+    { num: 8, title: "Food I Like", focus: "Food vocabulary, \"I like / I don't like\"", thread: "Word family: in, op" },
+    { num: 9, title: "Animals", focus: "Animal names, \"It's a...\"", thread: "Sight words: cat, dog, big, small" },
+    { num: 10, title: "My House", focus: "Rooms, \"It's in the...\"", thread: "Word family: ed, ig" },
+    { num: 11, title: "Toys & Play", focus: "Toys, simple present (\"I play...\")", thread: "Sight words: toy, ball, fun" },
+    { num: 12, title: "My Day", focus: "Daily routine, review", thread: "Cumulative phonics review" },
+  ],
+  A2: [
+    { num: 1, title: "My Weekend", focus: "Talking about what you did", thread: "Past simple, regular verbs" },
+    { num: 2, title: "Yesterday & Today", focus: "Recounting recent events", thread: "Past simple, irregular verbs" },
+    { num: 3, title: "Weather & Seasons", focus: "Describing weather and seasons", thread: "\"There is / there are\"" },
+    { num: 4, title: "Around Town", focus: "Places in the community", thread: "Prepositions of place" },
+    { num: 5, title: "Let's Go Shopping", focus: "Asking for and buying things", thread: "Quantities and prices" },
+    { num: 6, title: "Jobs People Do", focus: "Community helpers", thread: "\"He / she is a...\"" },
+    { num: 7, title: "My Favorite Story", focus: "Retelling a story", thread: "Narrative sequencing" },
+    { num: 8, title: "Sports & Hobbies", focus: "Abilities, likes and dislikes", thread: "\"I can / can't...\", because" },
+    { num: 9, title: "How Do You Feel?", focus: "Emotions, simple problem solving", thread: "Giving reasons and advice" },
+    { num: 10, title: "Helping at Home", focus: "Chores and requests", thread: "\"I have to...\", \"Can you...?\"" },
+    { num: 11, title: "My Future Plans", focus: "Talking about intentions", thread: "\"Going to\" future" },
+    { num: 12, title: "All About My Year", focus: "Review and capstone", thread: "Cumulative grammar review" },
+  ],
+};
 
-export default function LevelPage({ level = "A1", onSelectTrack, isPro = false }) {
+export default function LevelPage({ level = "A1", isPro = false }) {
   const data = LEVEL_DATA[level] || LEVEL_DATA.A1;
+  const units = UNITS[level] || UNITS.A1;
 
   useEffect(() => {
     const styleId = "lp-styles";
@@ -157,14 +76,12 @@ export default function LevelPage({ level = "A1", onSelectTrack, isPro = false }
 
   return (
     <div className={`lp-wrap${isPro ? " lp-pro" : ""}`}>
-      {/* ── Back + breadcrumb ── */}
       <div className="lp-topbar">
         <div className="lp-breadcrumb">
-          Curriculum &rsaquo; <span style={{ color: data.color }}>{level} — {data.name}</span>
+          Kids Curriculum <span className="lp-crumb-sep">&rsaquo;</span> <span style={{ color: data.color }}>{level} &middot; {data.name}</span>
         </div>
       </div>
 
-      {/* ── Level hero ── */}
       <div className="lp-hero" style={{ "--lv-color": data.color, "--lv-light": data.light }}>
         <div className="lp-hero-left">
           <div className="lp-cefr-tag">{data.cefr}</div>
@@ -185,36 +102,21 @@ export default function LevelPage({ level = "A1", onSelectTrack, isPro = false }
         </div>
       </div>
 
-      {/* ── Age track selector ── */}
-      <div className="lp-tracks-section">
-        <div className="lp-tracks-hd">
-          <h2 className="lp-tracks-title">Choose an age track</h2>
-          <p className="lp-tracks-sub">Same CEFR goals, different topics and activities for each group.</p>
+      <div className="lp-units-section">
+        <div className="lp-units-hd">
+          <h2 className="lp-units-title">12 units</h2>
+          <p className="lp-units-sub">Each unit has 5 teaching lessons plus a summative test, blending vocabulary, grammar, reading, writing, and speaking together in every lesson.</p>
         </div>
-        <div className="lp-tracks-grid">
-          {AGE_TRACKS.map((t) => (
-            <div
-              key={t.key}
-              className="lp-track-card"
-              style={{ "--tr-bg": t.bg, "--tr-accent": t.accent }}
-              onClick={() => onSelectTrack && onSelectTrack(t.key)}
-              role="button"
-              tabIndex={0}
-              onKeyDown={(e) => e.key === "Enter" && onSelectTrack && onSelectTrack(t.key)}
-            >
-              <div className="lp-track-top">
-                <div className="lp-track-icon" style={{ color: t.accent }}>{t.icon}</div>
-                <div>
-                  <div className="lp-track-label">{t.label}</div>
-                  <div className="lp-track-age">{t.age}</div>
-                </div>
+        <div className="lp-units-grid">
+          {units.map((u) => (
+            <div key={u.num} className="lp-unit-card" style={{ "--lv-color": data.color, "--lv-light": data.light }}>
+              <div className="lp-unit-top">
+                <span className="lp-unit-num">Unit {u.num}</span>
+                <span className="lp-unit-soon">Coming soon</span>
               </div>
-              <div className="lp-track-tagline">{t.tagline}</div>
-              <p className="lp-track-desc">{t.desc}</p>
-              <div className="lp-track-cta" style={{ color: t.accent }}>
-                View {level} {t.label} lessons
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-              </div>
+              <h3 className="lp-unit-title">{u.title}</h3>
+              <p className="lp-unit-focus">{u.focus}</p>
+              <span className="lp-unit-thread">{u.thread}</span>
             </div>
           ))}
         </div>
@@ -249,6 +151,7 @@ const styles = `
   font-weight: 600;
   color: #8A7B8A;
 }
+.lp-crumb-sep { color: #C7BEC7; }
 .lp-pro .lp-breadcrumb { color: #8A8070; }
 
 .lp-hero {
@@ -325,86 +228,82 @@ const styles = `
 .lp-goal svg { flex-shrink: 0; margin-top: 2px; color: var(--lv-color); }
 .lp-pro .lp-goal { color: #1B2A4A; }
 
-.lp-tracks-section { padding: 36px 48px 60px; }
-.lp-tracks-hd { margin-bottom: 20px; }
-.lp-tracks-title {
+.lp-units-section { padding: 36px 48px 60px; }
+.lp-units-hd { margin-bottom: 20px; max-width: 640px; }
+.lp-units-title {
   font-family: 'Fredoka', sans-serif;
   font-size: 22px;
   font-weight: 700;
   color: #2B2330;
   margin-bottom: 4px;
 }
-.lp-pro .lp-tracks-title { font-family: 'Source Serif 4', serif; color: #1B2A4A; }
-.lp-tracks-sub { font-size: 13px; color: #8A7B8A; font-weight: 500; }
+.lp-pro .lp-units-title { font-family: 'Source Serif 4', serif; color: #1B2A4A; }
+.lp-units-sub { font-size: 13px; color: #8A7B8A; font-weight: 500; line-height: 1.6; }
+.lp-pro .lp-units-sub { color: #6B6458; }
 
-.lp-tracks-grid {
+.lp-units-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 16px;
 }
-@media (max-width: 800px) { .lp-tracks-grid { grid-template-columns: 1fr; } }
+@media (max-width: 900px) { .lp-units-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .lp-units-grid { grid-template-columns: 1fr; } }
 
-.lp-track-card {
-  background: var(--tr-bg);
+.lp-unit-card {
+  background: #fff;
   border-radius: 14px;
-  padding: 22px 20px;
+  padding: 18px 18px 16px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  cursor: pointer;
+  gap: 6px;
   border: 1.5px solid rgba(0,0,0,0.06);
-  transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
-  box-shadow: 0 4px 0 rgba(0,0,0,0.04), 0 8px 20px rgba(0,0,0,0.07);
-  outline: none;
+  opacity: 0.92;
 }
-.lp-track-card:hover {
-  transform: translateY(-3px);
-  border-color: var(--tr-accent);
-  box-shadow: 0 8px 0 rgba(0,0,0,0.06), 0 16px 32px rgba(0,0,0,0.12);
-}
-.lp-track-card:focus-visible { box-shadow: 0 0 0 3px var(--tr-accent); }
-.lp-pro .lp-track-card { border-radius: 4px; background: #fff; border: 1px solid #DEDAD0; }
+.lp-pro .lp-unit-card { border-radius: 4px; border: 1px solid #DEDAD0; opacity: 1; }
 
-.lp-track-top { display: flex; align-items: center; gap: 14px; }
-.lp-track-icon { flex-shrink: 0; }
-.lp-track-label {
-  font-family: 'Fredoka', sans-serif;
-  font-size: 20px;
-  font-weight: 700;
-  color: #2B2330;
-}
-.lp-pro .lp-track-label { font-family: 'Source Serif 4', serif; color: #1B2A4A; }
-.lp-track-age {
+.lp-unit-top { display: flex; align-items: center; justify-content: space-between; }
+.lp-unit-num {
   font-size: 11px;
-  font-weight: 700;
+  font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  color: var(--tr-accent);
-}
-.lp-track-tagline {
-  font-size: 11px;
-  font-weight: 700;
-  color: var(--tr-accent);
-  background: rgba(255,255,255,0.6);
-  padding: 4px 10px;
+  color: var(--lv-color);
+  background: var(--lv-light);
+  padding: 3px 9px;
   border-radius: 999px;
-  align-self: flex-start;
 }
-.lp-pro .lp-track-tagline { border-radius: 3px; }
-.lp-track-desc {
-  font-size: 13px;
+.lp-pro .lp-unit-num { border-radius: 3px; }
+.lp-unit-soon {
+  font-size: 10px;
+  font-weight: 700;
+  color: #A89BAA;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.lp-pro .lp-unit-soon { color: #8A8070; }
+
+.lp-unit-title {
+  font-family: 'Fredoka', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #2B2330;
+  margin: 2px 0 0;
+}
+.lp-pro .lp-unit-title { font-family: 'Source Serif 4', serif; color: #1B2A4A; }
+
+.lp-unit-focus {
+  font-size: 12.5px;
   font-weight: 500;
   color: #5A4E6A;
-  line-height: 1.6;
-  flex: 1;
+  line-height: 1.5;
+  margin: 0;
 }
-.lp-pro .lp-track-desc { color: #6B6458; }
-.lp-track-cta {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 12px;
+.lp-pro .lp-unit-focus { color: #6B6458; }
+
+.lp-unit-thread {
+  font-size: 11px;
   font-weight: 700;
+  color: var(--lv-color);
   margin-top: 4px;
 }
 `;
