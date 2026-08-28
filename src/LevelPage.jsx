@@ -22,6 +22,7 @@ const LEVEL_DATA = {
     color: "#1B2A4A",
     light: "#FFE6DD",
     cefr: "Kids · CEFR A2",
+    banner: "/curriculum/a2-banner.png",
     description:
       "Once the alphabet and phonics are secure, A2 expands into longer, connected sentences and more independent everyday situations, with the foundation from A1 as the base.",
     goals: [
