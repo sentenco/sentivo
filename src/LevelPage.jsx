@@ -158,12 +158,18 @@ export default function LevelPage({ level = "A1" }) {
             {units.map((u) => (
               <div key={u.num} className="lp-unit-card">
                 <div className="lp-unit-top">
-                  <span className="lp-unit-num" style={{ color: data.color, background: data.light }}>Unit {u.num}</span>
+                  <span className="lp-unit-circle" style={{ background: data.color }}>{u.num}</span>
                   <span className="lp-unit-soon">Coming soon</span>
                 </div>
                 <h3 className="lp-unit-title">{u.title}</h3>
                 <p className="lp-unit-focus">{u.focus}</p>
-                <span className="lp-unit-thread" style={{ color: data.color }}>{u.thread}</span>
+                <div className="lp-unit-foot">
+                  <span className="lp-unit-thread" style={{ color: data.color }}>{u.thread}</span>
+                  <button type="button" className="lp-unit-open" disabled>
+                    Open
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                  </button>
+                </div>
               </div>
             ))}
           </div>
@@ -278,13 +284,45 @@ const styles = `
 @media (max-width: 900px) { .lp-units-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 600px) { .lp-units-grid { grid-template-columns: 1fr; } }
 
-.lp-unit-card { background: #fff; border-radius: 12px; padding: 16px 17px; border: 1px solid #EDE6F4; }
+.lp-unit-card {
+  background: #fff;
+  border-radius: 14px;
+  padding: 18px 18px 16px;
+  border: 1px solid #EDE6F4;
+  box-shadow: 0 4px 14px rgba(27,42,74,0.05);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.lp-unit-card:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(27,42,74,0.09); }
 
-.lp-unit-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
-.lp-unit-num { font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; padding: 3px 9px; border-radius: 6px; }
+.lp-unit-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+.lp-unit-circle {
+  width: 30px; height: 30px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: #fff; font-family: 'Source Serif 4', serif; font-weight: 600; font-size: 13.5px;
+  flex-shrink: 0;
+}
 .lp-unit-soon { font-size: 9.5px; font-weight: 700; color: #A6A2C0; text-transform: uppercase; letter-spacing: 0.04em; }
 
-.lp-unit-title { font-family: 'Source Serif 4', serif; font-size: 15px; font-weight: 600; color: #23264A; margin: 0 0 4px; }
-.lp-unit-focus { font-size: 12px; font-weight: 500; color: #6B6E96; line-height: 1.5; margin: 0 0 8px; }
-.lp-unit-thread { font-size: 10.5px; font-weight: 700; }
+.lp-unit-title { font-family: 'Source Serif 4', serif; font-size: 15.5px; font-weight: 600; color: #23264A; margin: 0 0 5px; }
+.lp-unit-focus { font-size: 12px; font-weight: 500; color: #6B6E96; line-height: 1.5; margin: 0 0 14px; }
+
+.lp-unit-foot {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding-top: 12px;
+  border-top: 1px solid #F3F0FB;
+}
+.lp-unit-thread { font-size: 10px; font-weight: 700; line-height: 1.3; }
+.lp-unit-open {
+  display: inline-flex; align-items: center; gap: 4px;
+  font-family: 'Source Serif 4', serif; font-weight: 600; font-size: 11.5px;
+  color: #A6A2C0; background: #F7F5FB; border: 1px solid #EDE6F4;
+  border-radius: 999px; padding: 5px 12px;
+  cursor: not-allowed; flex-shrink: 0;
+}
 `;
