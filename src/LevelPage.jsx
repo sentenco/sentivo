@@ -4,8 +4,8 @@ const LEVEL_DATA = {
   A1: {
     name: "Foundation",
     accent: "coral",
-    color: "#FF5A36",
-    light: "#FFE2D6",
+    color: "#FF6B4A",
+    light: "#FFE6DD",
     cefr: "Kids · CEFR A1",
     description:
       "The starting point for young learners. A1 builds two things at once: the alphabet and phonics needed to read and write simple words, and the everyday phrases needed to start speaking English right away.",
@@ -17,9 +17,9 @@ const LEVEL_DATA = {
   },
   A2: {
     name: "Growing Up",
-    accent: "green",
-    color: "#0EBE84",
-    light: "#CFF6E6",
+    accent: "navy",
+    color: "#1B2A4A",
+    light: "#FFE6DD",
     cefr: "Kids · CEFR A2",
     description:
       "Once the alphabet and phonics are secure, A2 expands into longer, connected sentences and more independent everyday situations, with the foundation from A1 as the base.",
@@ -148,8 +148,8 @@ const styles = `
 .lp-wrap * { box-sizing: border-box; }
 
 .lp-blob { position: absolute; border-radius: 50%; pointer-events: none; z-index: 0; }
-.lp-blob--a { width: 420px; height: 420px; top: -180px; right: -140px; background: rgba(255,90,54,0.08); }
-.lp-blob--b { width: 460px; height: 460px; bottom: -220px; left: -160px; background: rgba(14,190,132,0.08); }
+.lp-blob--a { width: 420px; height: 420px; top: -180px; right: -140px; background: rgba(255,107,74,0.08); }
+.lp-blob--b { width: 460px; height: 460px; bottom: -220px; left: -160px; background: rgba(27,42,74,0.06); }
 
 .lp-stage { position: relative; z-index: 1; max-width: 1040px; margin: 0 auto; padding: 26px 40px 70px; }
 
@@ -170,8 +170,8 @@ const styles = `
   overflow: hidden;
 }
 .lp-hero::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 6px; }
-.lp-hero--coral::before { background: #FF5A36; }
-.lp-hero--green::before { background: #0EBE84; }
+.lp-hero--coral::before { background: #FF6B4A; }
+.lp-hero--navy::before { background: #1B2A4A; }
 @media (max-width: 800px) { .lp-hero { grid-template-columns: 1fr; } }
 
 .lp-hero-left { display: flex; flex-direction: column; gap: 10px; }
