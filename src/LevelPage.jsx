@@ -160,54 +160,54 @@ const styles = `
 .lp-hero {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 32px;
+  gap: 28px;
   background: #fff;
   border: 1px solid #EDE6F4;
-  border-radius: 20px;
-  padding: 34px 36px;
-  margin-bottom: 40px;
+  border-radius: 16px;
+  padding: 20px 26px;
+  margin-bottom: 26px;
   position: relative;
   overflow: hidden;
 }
-.lp-hero::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 6px; }
+.lp-hero::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 5px; }
 .lp-hero--coral::before { background: #FF6B4A; }
 .lp-hero--navy::before { background: #1B2A4A; }
 @media (max-width: 800px) { .lp-hero { grid-template-columns: 1fr; } }
 
-.lp-hero-left { display: flex; flex-direction: column; gap: 10px; }
+.lp-hero-left { display: flex; flex-direction: column; gap: 5px; }
 .lp-cefr-tag {
   display: inline-block;
   font-size: 10px;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  padding: 4px 10px;
+  padding: 3px 9px;
   border-radius: 6px;
   align-self: flex-start;
+  margin-bottom: 2px;
 }
 
 .lp-level-code {
   font-family: 'Source Serif 4', serif;
-  font-size: 48px;
+  font-size: 32px;
   font-weight: 600;
   line-height: 1;
 }
 
 .lp-level-name {
   font-family: 'Source Serif 4', serif;
-  font-size: 20px;
+  font-size: 15px;
   font-weight: 600;
   color: #23264A;
-  margin-top: -2px;
 }
 
-.lp-description { font-size: 13px; font-weight: 500; color: #6B6E96; line-height: 1.65; }
+.lp-description { font-size: 12px; font-weight: 500; color: #6B6E96; line-height: 1.5; }
 
-.lp-hero-right { display: flex; flex-direction: column; gap: 14px; }
-.lp-goals-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #6B6E96; }
-.lp-goals { list-style: none; display: flex; flex-direction: column; gap: 8px; margin: 0; padding: 0; }
-.lp-goal { display: flex; align-items: flex-start; gap: 9px; font-size: 13px; font-weight: 600; color: #23264A; line-height: 1.45; }
-.lp-goal svg { flex-shrink: 0; margin-top: 2px; }
+.lp-hero-right { display: flex; flex-direction: column; gap: 8px; }
+.lp-goals-label { font-size: 9.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #6B6E96; }
+.lp-goals { list-style: none; display: flex; flex-direction: column; gap: 6px; margin: 0; padding: 0; }
+.lp-goal { display: flex; align-items: flex-start; gap: 8px; font-size: 12px; font-weight: 600; color: #23264A; line-height: 1.4; }
+.lp-goal svg { flex-shrink: 0; margin-top: 2px; width: 13px; height: 13px; }
 
 .lp-units-hd { margin-bottom: 20px; max-width: 640px; }
 .lp-units-title { font-family: 'Source Serif 4', serif; font-size: 22px; font-weight: 600; color: #23264A; margin-bottom: 6px; }

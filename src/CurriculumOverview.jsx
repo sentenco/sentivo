@@ -143,6 +143,8 @@ const styles = `
   cursor: pointer;
   position: relative;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
   box-shadow: 0 4px 16px rgba(27,42,74,0.06);
   transition: transform 0.16s ease, box-shadow 0.16s ease, border-color 0.16s ease;
   outline: none;
@@ -163,7 +165,7 @@ const styles = `
 .co-level-name { font-family: 'Source Serif 4', serif; font-weight: 600; font-size: 18px; margin-bottom: 12px; }
 .co-level-desc { font-size: 13.5px; font-weight: 500; color: #6B6E96; line-height: 1.65; margin: 0 0 22px; }
 
-.co-level-foot { display: flex; align-items: center; justify-content: space-between; border-top: 1px solid #EDE6F4; padding-top: 16px; }
+.co-level-foot { display: flex; align-items: center; justify-content: space-between; border-top: 1px solid #EDE6F4; padding-top: 16px; margin-top: auto; }
 .co-level-units { font-size: 12px; font-weight: 700; color: #6B6E96; }
 .co-level-units b { color: #1B2A4A; font-family: 'Source Serif 4', serif; font-size: 14px; }
 .co-level-cta { font-size: 12.5px; font-weight: 700; display: inline-flex; align-items: center; gap: 5px; }
