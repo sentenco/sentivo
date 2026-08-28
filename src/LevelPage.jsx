@@ -88,14 +88,14 @@ export default function LevelPage({ level = "A1" }) {
           </div>
         </div>
 
-        <div className={`lp-hero lp-hero--${data.accent}`}>
-          <div className="lp-hero-left">
+        <div className="lp-hero">
+          <div className={`lp-hero-card lp-hero-card--${data.accent}`}>
             <div className="lp-cefr-tag" style={{ color: data.color, background: data.light }}>{data.cefr}</div>
             <div className="lp-level-code" style={{ color: data.color }}>{level}</div>
             <div className="lp-level-name">{data.name}</div>
             <p className="lp-description">{data.description}</p>
           </div>
-          <div className="lp-hero-right">
+          <div className={`lp-hero-card lp-hero-card--${data.accent}`}>
             <div className="lp-goals-label">Can-do goals</div>
             <ul className="lp-goals">
               {data.goals.map((g, i) => (
@@ -160,21 +160,25 @@ const styles = `
 .lp-hero {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 28px;
+  gap: 18px;
+  margin-bottom: 26px;
+}
+@media (max-width: 800px) { .lp-hero { grid-template-columns: 1fr; } }
+
+.lp-hero-card {
   background: #fff;
   border: 1px solid #EDE6F4;
   border-radius: 16px;
-  padding: 20px 26px;
-  margin-bottom: 26px;
+  padding: 20px 24px;
   position: relative;
   overflow: hidden;
+  box-shadow: 0 4px 16px rgba(27,42,74,0.07);
 }
-.lp-hero::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 5px; }
-.lp-hero--coral::before { background: #FF6B4A; }
-.lp-hero--navy::before { background: #1B2A4A; }
-@media (max-width: 800px) { .lp-hero { grid-template-columns: 1fr; } }
+.lp-hero-card::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 5px; }
+.lp-hero-card--coral::before { background: #FF6B4A; }
+.lp-hero-card--navy::before { background: #1B2A4A; }
 
-.lp-hero-left { display: flex; flex-direction: column; gap: 5px; }
+.lp-hero-card:first-child { display: flex; flex-direction: column; gap: 5px; }
 .lp-cefr-tag {
   display: inline-block;
   font-size: 10px;
@@ -203,7 +207,7 @@ const styles = `
 
 .lp-description { font-size: 12px; font-weight: 500; color: #6B6E96; line-height: 1.5; }
 
-.lp-hero-right { display: flex; flex-direction: column; gap: 8px; }
+.lp-hero-card:last-child { display: flex; flex-direction: column; gap: 8px; }
 .lp-goals-label { font-size: 9.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #6B6E96; }
 .lp-goals { list-style: none; display: flex; flex-direction: column; gap: 6px; margin: 0; padding: 0; }
 .lp-goal { display: flex; align-items: flex-start; gap: 8px; font-size: 12px; font-weight: 600; color: #23264A; line-height: 1.4; }
