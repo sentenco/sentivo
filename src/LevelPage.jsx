@@ -137,6 +137,8 @@ const styles = `
 
 .lp-wrap {
   min-height: 100%;
+  width: 100%;
+  flex-shrink: 0;
   background: #FFFCF6;
   color: #23264A;
   font-family: 'Inter', sans-serif;
