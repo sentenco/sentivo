@@ -129,7 +129,7 @@ function WriteCard({ letters, color, onZoom }) {
 
 const SORT_ITEMS = [
   { id: "apple", letter: "A", src: `${IMG}/apple.jpg`, label: "apple" },
-  { id: "ant", letter: "A", src: null, label: "ant" },
+  { id: "ant", letter: "A", src: `${IMG}/ant.jpg`, label: "ant" },
   { id: "bear", letter: "B", src: `${IMG}/bear.jpg`, label: "bear" },
   { id: "ball", letter: "B", src: `${IMG}/ball.jpg`, label: "ball" },
   { id: "cup", letter: "C", src: `${IMG}/cup.jpg`, label: "cup" },
@@ -416,7 +416,7 @@ function buildSlides({ onZoom }) {
           <h2 className="slide-h">A is for...</h2>
           <div className="word-cards" style={{ marginTop: 18 }}>
             <WordCard src={`${IMG}/apple.jpg`} word="Apple" label="red apple" onZoom={onZoom} rot={-2} />
-            <WordCard src={null} word="Ant" label="ant" onZoom={onZoom} rot={1.5} />
+            <WordCard src={`${IMG}/ant.jpg`} word="Ant" label="ant" onZoom={onZoom} rot={1.5} />
             <WordCard src={`${IMG}/airplane.jpg`} word="Airplane" label="airplane" onZoom={onZoom} rot={-1} />
           </div>
         </>
