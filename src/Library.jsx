@@ -1151,6 +1151,7 @@ export default function Library() {
   const isCurriculum = location.pathname.startsWith("/library/curriculum");
   const curriculumLevel = params.level || null;
   const curriculumTrack = params.track || null;
+  const curriculumUnit = params.unitNum || null;
   const isSpark = location.pathname === "/library/spark";
 
   function goToSidebar(sidebar, level = null) {
@@ -1686,6 +1687,7 @@ export default function Library() {
               isPro={isPro}
               level={curriculumLevel}
               track={curriculumTrack}
+              unit={curriculumUnit}
             />
           ) : (
             <CurriculumLockedFeature navigate={navigate} />

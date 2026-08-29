@@ -225,6 +225,7 @@ createRoot(document.getElementById('root')).render(
             <Route path="/library/curriculum" element={<Library />} />
             <Route path="/library/curriculum/:level" element={<Library />} />
             <Route path="/library/curriculum/:level/:track" element={<Library />} />
+            <Route path="/library/curriculum/:level/unit/:unitNum" element={<Library />} />
             <Route path="/library/stress" element={<Flashcards />} />
             <Route path="/library/articles/:slug" element={<ArticleReader />} />
             <Route path="/library/articles/:slug/player" element={<ArticlePlayerPage />} />

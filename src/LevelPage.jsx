@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const LEVEL_DATA = {
   A1: {
@@ -64,9 +65,13 @@ const UNITS = {
   ],
 };
 
+const READY_UNITS = { A1: [1] };
+
 export default function LevelPage({ level = "A1" }) {
+  const navigate = useNavigate();
   const data = LEVEL_DATA[level] || LEVEL_DATA.A1;
   const units = UNITS[level] || UNITS.A1;
+  const readyUnits = READY_UNITS[level] || [];
 
   useEffect(() => {
     const styleId = "lp-styles";
@@ -155,23 +160,31 @@ export default function LevelPage({ level = "A1" }) {
             <p className="lp-units-sub">Each unit has 5 teaching lessons plus a summative test, blending vocabulary, grammar, reading, writing, and speaking together in every lesson.</p>
           </div>
           <div className="lp-units-grid">
-            {units.map((u) => (
-              <div key={u.num} className="lp-unit-card">
-                <div className="lp-unit-top">
-                  <span className="lp-unit-circle" style={{ background: data.color }}>{u.num}</span>
-                  <span className="lp-unit-soon">Coming soon</span>
+            {units.map((u) => {
+              const isReady = readyUnits.includes(u.num);
+              return (
+                <div key={u.num} className={`lp-unit-card ${isReady ? "lp-unit-card--ready" : ""}`}>
+                  <div className="lp-unit-top">
+                    <span className="lp-unit-circle" style={{ background: data.color }}>{u.num}</span>
+                    {!isReady && <span className="lp-unit-soon">Coming soon</span>}
+                  </div>
+                  <h3 className="lp-unit-title">{u.title}</h3>
+                  <p className="lp-unit-focus">{u.focus}</p>
+                  <div className="lp-unit-foot">
+                    <span className="lp-unit-thread" style={{ color: data.color }}>{u.thread}</span>
+                    <button
+                      type="button"
+                      className="lp-unit-open"
+                      disabled={!isReady}
+                      onClick={() => isReady && navigate(`/library/curriculum/${level}/unit/${u.num}`)}
+                    >
+                      Open
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </button>
+                  </div>
                 </div>
-                <h3 className="lp-unit-title">{u.title}</h3>
-                <p className="lp-unit-focus">{u.focus}</p>
-                <div className="lp-unit-foot">
-                  <span className="lp-unit-thread" style={{ color: data.color }}>{u.thread}</span>
-                  <button type="button" className="lp-unit-open" disabled>
-                    Open
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                  </button>
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </div>
@@ -325,4 +338,9 @@ const styles = `
   border-radius: 999px; padding: 5px 12px;
   cursor: not-allowed; flex-shrink: 0;
 }
+.lp-unit-card--ready { border-color: #EEC9BA; }
+.lp-unit-card--ready .lp-unit-open {
+  color: #fff; background: #FF6B4A; border-color: #FF6B4A; cursor: pointer;
+}
+.lp-unit-card--ready .lp-unit-open:hover { background: #E0502F; }
 `;

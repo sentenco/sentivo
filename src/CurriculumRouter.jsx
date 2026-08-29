@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import CurriculumOverview from "./CurriculumOverview";
 import LevelPage from "./LevelPage";
 import LessonsGrid from "./LessonsGrid";
+import UnitPage from "./UnitPage";
 
 /**
  * CurriculumRouter
@@ -13,7 +14,7 @@ import LessonsGrid from "./LessonsGrid";
  * forward and page refresh both land you back exactly where you were.
  */
 
-export default function CurriculumRouter({ isPro = false, level = null, track = null }) {
+export default function CurriculumRouter({ isPro = false, level = null, track = null, unit = null }) {
   const navigate = useNavigate();
 
   function goLevel(lvl) {
@@ -22,6 +23,16 @@ export default function CurriculumRouter({ isPro = false, level = null, track = 
 
   function goLessons(trk) {
     navigate(`/library/curriculum/${level}/${trk}`);
+  }
+
+  if (level && unit) {
+    return (
+      <UnitPage
+        level={level}
+        unitNum={unit}
+        onBack={() => goLevel(level)}
+      />
+    );
   }
 
   if (level && track) {
