@@ -7,6 +7,7 @@ import { supabase } from "./supabaseClient";
 import { timeAgo } from "./slideDeckTypes";
 import CurriculumRouter from "./CurriculumRouter";
 import SparkHub from "./SparkHub";
+import ArticleReader from "./ArticleReader.jsx";
 import ImagePlaceholder from "./slides/ImagePlaceholder";
 import storybookCoverImg from "./assets/storybook/cover.jpeg";
 import storybook2CoverImg from "./assets/storybook2/cover.png";
@@ -1153,6 +1154,7 @@ export default function Library() {
   const curriculumTrack = params.track || null;
   const curriculumUnit = params.unitNum || null;
   const isSpark = location.pathname === "/library/spark";
+  const isArticleReader = location.pathname.startsWith("/library/articles/") && !!params.slug;
 
   function goToSidebar(sidebar, level = null) {
     if (sidebar === "curriculum") {
@@ -1634,7 +1636,7 @@ export default function Library() {
 
         <div className="gc-sections">
           <button
-            className={`gc-sec-tab ${!isCurriculum && category === "All" ? "is-active" : ""}`}
+            className={`gc-sec-tab ${!isCurriculum && !isArticleReader && category === "All" ? "is-active" : ""}`}
             onClick={() => changeCategory("All")}
           >
             Homeroom
@@ -1642,7 +1644,7 @@ export default function Library() {
           {CATEGORIES.map((cat) => (
             <button
               key={cat}
-              className={`gc-sec-tab ${!isCurriculum && category === cat ? "is-active" : ""}`}
+              className={`gc-sec-tab ${!isCurriculum && (isArticleReader ? cat === "Articles" : category === cat) ? "is-active" : ""}`}
               onClick={() => changeCategory(cat)}
             >
               {cat}
@@ -1676,7 +1678,11 @@ export default function Library() {
       </header>
 
       <div className="body-wrap">
-      {isSpark ? (
+      {isArticleReader ? (
+        <div className="content" style={{ padding: 0, maxWidth: "100%", overflow: "auto" }}>
+          <ArticleReader />
+        </div>
+      ) : isSpark ? (
         <div className="content" style={{ padding: 0, maxWidth: "100%", overflow: "auto" }}>
           <SparkHub />
         </div>

@@ -1,10 +1,8 @@
 import { useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { getArticle } from "./articlesData";
-import { useAuth } from "./AuthContext";
 
 const EDITION_KEYS = ["plain", "polished", "precise"];
-const NAV_CATEGORIES = ["Articles", "Speaking", "Reading", "Grammar", "Vocabulary", "Writing", "Listening"];
 
 // Opens the clean, student-facing reading view as a standalone popup --
 // matching the FORGE/ASCEND/Verb Tenses chrome-less window.open pattern.
@@ -81,64 +79,8 @@ function Paragraph({ parts, blockIdx, openKey, setOpenKey, references, year, onC
   );
 }
 
-function NavUserIcon() {
-  return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-      <circle cx="12" cy="8" r="4" />
-      <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" />
-    </svg>
-  );
-}
-
-function SiteNav({ navigate }) {
-  const { user, signOut } = useAuth();
-  const [menuOpen, setMenuOpen] = useState(false);
-
-  return (
-    <header className="ar-nav">
-      <button type="button" className="ar-nav-brand" onClick={() => navigate("/library")}>
-        <img src="/logo-sentivo.png" alt="" className="ar-nav-logo" />entivo
-      </button>
-      <nav className="ar-nav-tabs">
-        <button type="button" className="ar-nav-tab" onClick={() => navigate("/library?cat=All")}>Homeroom</button>
-        {NAV_CATEGORIES.map((cat) => (
-          <button
-            key={cat}
-            type="button"
-            className={`ar-nav-tab ${cat === "Articles" ? "is-active" : ""}`}
-            onClick={() => navigate(`/library?cat=${encodeURIComponent(cat)}`)}
-          >
-            {cat}
-          </button>
-        ))}
-      </nav>
-      {!user ? (
-        <button type="button" className="ar-nav-login" onClick={() => navigate("/library")}>Log in</button>
-      ) : (
-        <div className="ar-nav-account">
-          <button
-            type="button"
-            className="ar-nav-avatar"
-            onClick={(e) => { e.stopPropagation(); setMenuOpen((m) => !m); }}
-            aria-label="Account menu"
-          >
-            <NavUserIcon />
-          </button>
-          {menuOpen && (
-            <div className="ar-nav-menu">
-              <button type="button" onClick={() => navigate("/library")}>My account</button>
-              <button type="button" className="ar-nav-logout" onClick={() => { signOut(); setMenuOpen(false); }}>Log out</button>
-            </div>
-          )}
-        </div>
-      )}
-    </header>
-  );
-}
-
 export default function ArticleReader() {
   const { slug } = useParams();
-  const navigate = useNavigate();
   const article = getArticle(slug);
   const [edition, setEdition] = useState("polished");
   const [openKey, setOpenKey] = useState(null);
@@ -147,7 +89,6 @@ export default function ArticleReader() {
     return (
       <div className="ar-shell">
         <style>{CSS}</style>
-        <SiteNav navigate={navigate} />
         <div className="ar-missing">
           <p>This article isn't published yet.</p>
         </div>
@@ -171,8 +112,6 @@ export default function ArticleReader() {
   return (
     <div className="ar-shell" onClick={() => setOpenKey(null)}>
       <style>{CSS}</style>
-
-      <SiteNav navigate={navigate} />
 
       <div className="ar-article">
         <div className="ar-hero">
@@ -211,7 +150,7 @@ export default function ArticleReader() {
               </button>
             ))}
           </div>
-          <p className="ar-ed-hint">Same story, three reading levels — switch editions to match your class.</p>
+          <p className="ar-ed-hint">Same story, three reading levels. Switch editions to match your class.</p>
         </div>
 
         <div className="ar-body-card">
@@ -300,120 +239,6 @@ const CSS = `
 
 .ar-missing { max-width: 640px; margin: 60px auto; text-align: center; color: var(--muted); font-family: 'Quicksand', sans-serif; }
 
-.ar-nav {
-  display: flex;
-  align-items: center;
-  gap: 28px;
-  padding: 12px 40px;
-  background: var(--card);
-  box-shadow: 0 1px 0 var(--hair), 0 4px 14px rgba(27,42,74,0.05);
-  position: relative;
-  z-index: 1;
-}
-.ar-nav-brand {
-  display: flex;
-  align-items: center;
-  flex-shrink: 0;
-  font-family: 'Fredoka', sans-serif;
-  font-weight: 700;
-  font-size: 19px;
-  color: var(--ink);
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-}
-.ar-nav-logo { height: 30px; width: auto; display: block; margin-right: -4px; }
-.ar-nav-tabs {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 4px;
-  font-family: 'Quicksand', sans-serif;
-  overflow-x: auto;
-}
-.ar-nav-tab {
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 0.01em;
-  color: var(--ink-soft);
-  background: none;
-  border: none;
-  padding: 8px 16px;
-  border-radius: 999px;
-  cursor: pointer;
-  white-space: nowrap;
-  transition: background 0.15s ease, color 0.15s ease;
-}
-.ar-nav-tab:hover { color: var(--coral-dark); background: var(--coral-soft); }
-.ar-nav-tab.is-active { background: var(--ink); color: #FFFFFF; }
-.ar-nav-tab.is-active:hover { background: var(--ink); color: #FFFFFF; }
-.ar-nav-login {
-  flex-shrink: 0;
-  font-family: 'Quicksand', sans-serif;
-  font-size: 13px;
-  font-weight: 700;
-  color: var(--ink);
-  background: none;
-  border: 1.5px solid var(--ink);
-  border-radius: 999px;
-  padding: 7px 18px;
-  cursor: pointer;
-  white-space: nowrap;
-}
-.ar-nav-login:hover { background: var(--ink); color: #FFFFFF; }
-
-.ar-nav-account { position: relative; flex-shrink: 0; }
-.ar-nav-avatar {
-  width: 34px;
-  height: 34px;
-  border-radius: 50%;
-  border: none;
-  background: var(--ink);
-  color: #FFFFFF;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-}
-.ar-nav-menu {
-  position: absolute;
-  top: 42px;
-  right: 0;
-  background: var(--card);
-  border-radius: 12px;
-  box-shadow: 0 8px 24px rgba(27,42,74,0.18);
-  padding: 8px;
-  display: flex;
-  flex-direction: column;
-  min-width: 160px;
-  z-index: 10;
-}
-.ar-nav-menu button {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 600;
-  font-size: 13px;
-  color: var(--ink);
-  background: none;
-  border: none;
-  text-align: left;
-  padding: 9px 12px;
-  border-radius: 8px;
-  cursor: pointer;
-}
-.ar-nav-menu button:hover { background: var(--coral-soft); }
-.ar-nav-menu .ar-nav-logout { color: var(--coral-dark); margin-top: 2px; border-top: 1px solid var(--hair); padding-top: 10px; border-radius: 0 0 8px 8px; }
-
-@media (max-width: 1000px) {
-  .ar-nav-tabs { justify-content: flex-start; }
-}
-
-@media (max-width: 640px) {
-  .ar-nav { padding: 10px 18px; gap: 14px; }
-  .ar-nav-login { display: none; }
-}
-
 .ar-hero {
   max-width: var(--content-w);
   margin: 0 auto 18px;
@@ -464,7 +289,7 @@ const CSS = `
   color: #8894B5;
 }
 
-.ar-article { max-width: var(--content-w); margin: 0 auto; padding: 0 24px 60px; }
+.ar-article { max-width: var(--content-w); margin: 0 auto; padding: 26px 24px 60px; }
 
 .ar-cover-card, .ar-body-card {
   background: var(--card);
@@ -676,6 +501,6 @@ const CSS = `
 
 @media (max-width: 640px) {
   .ar-title { font-size: 26px; }
-  .ar-article { padding: 0 18px 40px; }
+  .ar-article { padding: 20px 18px 40px; }
 }
 `;

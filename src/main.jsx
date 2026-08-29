@@ -17,7 +17,6 @@ import MentorDirectory from './MentorDirectory.jsx'
 import MentorApply from './MentorApply.jsx'
 import MentorAdmin from './MentorAdmin.jsx'
 import TeacherProfile from './TeacherProfile.jsx'
-import ArticleReader from './ArticleReader.jsx'
 import ArticlePlayerPage from './ArticlePlayerPage.jsx'
 import VocabularyPlayerPage from './VocabularyPlayerPage.jsx'
 import HelloAlphabetLesson from './HelloAlphabetLesson.jsx'
@@ -231,7 +230,7 @@ createRoot(document.getElementById('root')).render(
             <Route path="/library/curriculum/A1/unit/1/lesson/1" element={<HelloAlphabetLesson />} />
             <Route path="/library/curriculum/A1/unit/1/lesson/1/guide" element={<HelloAlphabetGuide />} />
             <Route path="/library/stress" element={<Flashcards />} />
-            <Route path="/library/articles/:slug" element={<ArticleReader />} />
+            <Route path="/library/articles/:slug" element={<Library />} />
             <Route path="/library/articles/:slug/player" element={<ArticlePlayerPage />} />
             <Route path="/library/vocabulary/:gameKey/:categoryKey/player" element={<VocabularyPlayerPage />} />
             <Route path="/library/vocabulary/lessons/stress-shift" element={<StressShiftLesson />} />
