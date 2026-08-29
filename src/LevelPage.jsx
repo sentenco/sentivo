@@ -65,7 +65,10 @@ const UNITS = {
   ],
 };
 
-const READY_UNITS = { A1: [1] };
+const READY_UNITS = {
+  A1: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+  A2: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+};
 
 export default function LevelPage({ level = "A1" }) {
   const navigate = useNavigate();
@@ -164,23 +167,26 @@ export default function LevelPage({ level = "A1" }) {
               const isReady = readyUnits.includes(u.num);
               return (
                 <div key={u.num} className={`lp-unit-card ${isReady ? "lp-unit-card--ready" : ""}`}>
-                  <div className="lp-unit-top">
-                    <span className="lp-unit-circle" style={{ background: data.color }}>{u.num}</span>
-                    {!isReady && <span className="lp-unit-soon">Coming soon</span>}
+                  <div className="lp-unit-ribbon" style={{ background: data.color }}>
+                    <span className="lp-unit-ribbon-label">Unit {u.num}</span>
+                    <span className="lp-unit-ribbon-num">{u.num}</span>
                   </div>
-                  <h3 className="lp-unit-title">{u.title}</h3>
-                  <p className="lp-unit-focus">{u.focus}</p>
-                  <div className="lp-unit-foot">
-                    <span className="lp-unit-thread" style={{ color: data.color }}>{u.thread}</span>
-                    <button
-                      type="button"
-                      className="lp-unit-open"
-                      disabled={!isReady}
-                      onClick={() => isReady && navigate(`/library/curriculum/${level}/unit/${u.num}`)}
-                    >
-                      Open
-                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                    </button>
+                  <div className="lp-unit-body">
+                    {!isReady && <span className="lp-unit-soon">Coming soon</span>}
+                    <h3 className="lp-unit-title">{u.title}</h3>
+                    <p className="lp-unit-focus">{u.focus}</p>
+                    <div className="lp-unit-foot">
+                      <span className="lp-unit-thread" style={{ color: data.color }}>{u.thread}</span>
+                      <button
+                        type="button"
+                        className="lp-unit-open"
+                        disabled={!isReady}
+                        onClick={() => isReady && navigate(`/library/curriculum/${level}/unit/${u.num}`)}
+                      >
+                        Open
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                      </button>
+                    </div>
                   </div>
                 </div>
               );
@@ -299,24 +305,30 @@ const styles = `
 
 .lp-unit-card {
   background: #fff;
-  border-radius: 14px;
-  padding: 18px 18px 16px;
+  border-radius: 16px;
+  overflow: hidden;
   border: 1px solid #EDE6F4;
   box-shadow: 0 4px 14px rgba(27,42,74,0.05);
   display: flex;
   flex-direction: column;
   transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
-.lp-unit-card:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(27,42,74,0.09); }
+.lp-unit-card:hover { transform: translateY(-3px); box-shadow: 0 12px 26px rgba(27,42,74,0.1); }
 
-.lp-unit-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
-.lp-unit-circle {
-  width: 30px; height: 30px; border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  color: #fff; font-family: 'Source Serif 4', serif; font-weight: 600; font-size: 13.5px;
-  flex-shrink: 0;
+.lp-unit-ribbon {
+  position: relative;
+  padding: 14px 18px 30px;
+  display: flex; align-items: center; justify-content: space-between;
+  overflow: hidden;
 }
-.lp-unit-soon { font-size: 9.5px; font-weight: 700; color: #A6A2C0; text-transform: uppercase; letter-spacing: 0.04em; }
+.lp-unit-ribbon-label { font-family: 'Inter', sans-serif; font-weight: 800; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.9); }
+.lp-unit-ribbon-num {
+  font-family: 'Source Serif 4', serif; font-weight: 600; font-size: 34px; color: rgba(255,255,255,0.55);
+  line-height: 1;
+}
+
+.lp-unit-body { padding: 16px 18px 16px; display: flex; flex-direction: column; flex: 1; margin-top: -16px; background: #fff; border-radius: 14px 14px 0 0; position: relative; }
+.lp-unit-soon { font-size: 9.5px; font-weight: 700; color: #A6A2C0; text-transform: uppercase; letter-spacing: 0.04em; display: block; margin-bottom: 6px; }
 
 .lp-unit-title { font-family: 'Source Serif 4', serif; font-size: 15.5px; font-weight: 600; color: #23264A; margin: 0 0 5px; }
 .lp-unit-focus { font-size: 12px; font-weight: 500; color: #6B6E96; line-height: 1.5; margin: 0 0 14px; }
@@ -338,7 +350,6 @@ const styles = `
   border-radius: 999px; padding: 5px 12px;
   cursor: not-allowed; flex-shrink: 0;
 }
-.lp-unit-card--ready { border-color: #EEC9BA; }
 .lp-unit-card--ready .lp-unit-open {
   color: #fff; background: #FF6B4A; border-color: #FF6B4A; cursor: pointer;
 }
