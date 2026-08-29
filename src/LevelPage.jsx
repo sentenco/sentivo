@@ -1,80 +1,11 @@
-import React, { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-
-const LEVEL_DATA = {
-  A1: {
-    name: "Discover",
-    accent: "coral",
-    color: "#FF6B4A",
-    light: "#FFE6DD",
-    cefr: "Kids · CEFR A1",
-    banner: "/curriculum/a1-banner.png",
-    description:
-      "The starting point for young learners. A1 builds two things at once: the alphabet and phonics needed to read and write simple words, and the everyday phrases needed to start speaking English right away.",
-    goals: [
-      "Recognize all 26 letters and basic phonics sounds",
-      "Read and write simple words like cat, dog, and pen",
-      "Use greetings, numbers, colors, and simple sentences like \"I am\" and \"I like\"",
-    ],
-  },
-  A2: {
-    name: "Soar",
-    accent: "navy",
-    color: "#1B2A4A",
-    light: "#FFE6DD",
-    cefr: "Kids · CEFR A2",
-    banner: "/curriculum/a2-banner.png",
-    description:
-      "Once the alphabet and phonics are secure, A2 expands into longer, connected sentences and more independent everyday situations, with the foundation from A1 as the base.",
-    goals: [
-      "Talk about past events using simple past tense",
-      "Handle everyday situations like shopping and finding places",
-      "Describe routines, plans, and feelings in connected sentences",
-    ],
-  },
-};
-
-const UNITS = {
-  A1: [
-    { num: 1, title: "Hello, Alphabet!", focus: "Greetings, \"What's your name?\"", thread: "Letters A to I" },
-    { num: 2, title: "Numbers & Letters", focus: "Counting 1 to 10", thread: "Letters J to R, letter sounds" },
-    { num: 3, title: "Colors & Sounds", focus: "Colors, \"This is a...\"", thread: "Letters S to Z, first blending" },
-    { num: 4, title: "All About Me", focus: "Name, age, feelings, \"I am...\"", thread: "Simple words: cat, dog, pen" },
-    { num: 5, title: "My Family", focus: "Family members, \"This is my...\"", thread: "Sight words: mom, dad, sister" },
-    { num: 6, title: "My Body", focus: "Body parts, simple descriptions", thread: "Word family: at, og" },
-    { num: 7, title: "My School", focus: "Classroom objects and language", thread: "Sight words: pen, book, bag" },
-    { num: 8, title: "Food I Like", focus: "Food vocabulary, \"I like / I don't like\"", thread: "Word family: in, op" },
-    { num: 9, title: "Animals", focus: "Animal names, \"It's a...\"", thread: "Sight words: cat, dog, big, small" },
-    { num: 10, title: "My House", focus: "Rooms, \"It's in the...\"", thread: "Word family: ed, ig" },
-    { num: 11, title: "Toys & Play", focus: "Toys, simple present (\"I play...\")", thread: "Sight words: toy, ball, fun" },
-    { num: 12, title: "My Day", focus: "Daily routine, review", thread: "Cumulative phonics review" },
-  ],
-  A2: [
-    { num: 1, title: "My Weekend", focus: "Talking about what you did", thread: "Past simple, regular verbs" },
-    { num: 2, title: "Yesterday & Today", focus: "Recounting recent events", thread: "Past simple, irregular verbs" },
-    { num: 3, title: "Weather & Seasons", focus: "Describing weather and seasons", thread: "\"There is / there are\"" },
-    { num: 4, title: "Around Town", focus: "Places in the community", thread: "Prepositions of place" },
-    { num: 5, title: "Let's Go Shopping", focus: "Asking for and buying things", thread: "Quantities and prices" },
-    { num: 6, title: "Jobs People Do", focus: "Community helpers", thread: "\"He / she is a...\"" },
-    { num: 7, title: "My Favorite Story", focus: "Retelling a story", thread: "Narrative sequencing" },
-    { num: 8, title: "Sports & Hobbies", focus: "Abilities, likes and dislikes", thread: "\"I can / can't...\", because" },
-    { num: 9, title: "How Do You Feel?", focus: "Emotions, simple problem solving", thread: "Giving reasons and advice" },
-    { num: 10, title: "Helping at Home", focus: "Chores and requests", thread: "\"I have to...\", \"Can you...?\"" },
-    { num: 11, title: "My Future Plans", focus: "Talking about intentions", thread: "\"Going to\" future" },
-    { num: 12, title: "All About My Year", focus: "Review and capstone", thread: "Cumulative grammar review" },
-  ],
-};
-
-const READY_UNITS = {
-  A1: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
-  A2: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
-};
+import React, { useEffect, useState } from "react";
+import { LEVEL_DATA, UNITS, READY_UNITS } from "./kidsCurriculumData";
 
 export default function LevelPage({ level = "A1" }) {
-  const navigate = useNavigate();
   const data = LEVEL_DATA[level] || LEVEL_DATA.A1;
   const units = UNITS[level] || UNITS.A1;
   const readyUnits = READY_UNITS[level] || [];
+  const [openUnit, setOpenUnit] = useState(null);
 
   useEffect(() => {
     const styleId = "lp-styles";
@@ -157,41 +88,64 @@ export default function LevelPage({ level = "A1" }) {
           </ul>
         </div>
 
-        <div className="lp-units-section">
-          <div className="lp-units-hd">
-            <h2 className="lp-units-title">12 units</h2>
-            <p className="lp-units-sub">Each unit has 5 teaching lessons plus a summative test, blending vocabulary, grammar, reading, writing, and speaking together in every lesson.</p>
+        <div className="lp-toc">
+          <div className="lp-toc-header" style={{ background: data.color }}>
+            <div className="lp-toc-eyebrow-row">
+              <span className="lp-toc-eyebrow-rule" />
+              <span className="lp-toc-eyebrow">Kids Curriculum &middot; {level} {data.name}</span>
+            </div>
+            <h2 className="lp-toc-title">Table of Contents</h2>
+            <p className="lp-toc-sub">12 units &middot; 72 lessons</p>
           </div>
-          <div className="lp-units-grid">
+
+          <ul className="lp-toc-list">
             {units.map((u) => {
               const isReady = readyUnits.includes(u.num);
+              const isOpen = isReady && openUnit === u.num;
               return (
-                <div key={u.num} className={`lp-unit-card ${isReady ? "lp-unit-card--ready" : ""}`}>
-                  <div className="lp-unit-ribbon" style={{ background: data.color }}>
-                    <span className="lp-unit-ribbon-label">Unit {u.num}</span>
-                    <span className="lp-unit-ribbon-num">{u.num}</span>
-                  </div>
-                  <div className="lp-unit-body">
-                    {!isReady && <span className="lp-unit-soon">Coming soon</span>}
-                    <h3 className="lp-unit-title">{u.title}</h3>
-                    <p className="lp-unit-focus">{u.focus}</p>
-                    <div className="lp-unit-foot">
-                      <span className="lp-unit-thread" style={{ color: data.color }}>{u.thread}</span>
-                      <button
-                        type="button"
-                        className="lp-unit-open"
-                        disabled={!isReady}
-                        onClick={() => isReady && navigate(`/library/curriculum/${level}/unit/${u.num}`)}
-                      >
-                        Open
-                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                      </button>
+                <li key={u.num} className={`lp-toc-item ${isOpen ? "is-open" : ""} ${!isReady ? "is-locked" : ""}`}>
+                  <div
+                    className="lp-toc-row"
+                    onClick={() => isReady && setOpenUnit(isOpen ? null : u.num)}
+                  >
+                    <span className="lp-toc-unit-label" style={{ color: data.color, background: data.light }}>
+                      Unit {String(u.num).padStart(2, "0")}
+                    </span>
+                    <div className="lp-toc-main">
+                      <div className="lp-toc-title-row">
+                        <span className="lp-toc-item-title">{u.title}</span>
+                        <span className="lp-toc-leader" />
+                        <span className="lp-toc-page-tag">{isReady ? "6 lessons" : "Coming soon"}</span>
+                      </div>
+                      <div className="lp-toc-focus">{u.focus} &middot; {u.thread}</div>
                     </div>
+                    {isReady && (
+                      <span className="lp-toc-chevron" style={isOpen ? { background: data.color, color: "#fff" } : {}}>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+                      </span>
+                    )}
                   </div>
-                </div>
+
+                  {isReady && (
+                    <div className="lp-toc-panel">
+                      <div className="lp-toc-panel-inner">
+                        {u.lessons.map((l) => (
+                          <div key={l.num} className={`lp-toc-lesson-row ${l.isTest ? "is-test" : ""}`}>
+                            <span className="lp-toc-lesson-bullet">{l.isTest ? "T" : l.num}</span>
+                            <div className="lp-toc-lesson-main">
+                              <span className="lp-toc-lesson-title">{l.title}</span>
+                              <span className="lp-toc-lesson-focus">{l.focus}</span>
+                            </div>
+                            <span className="lp-toc-lesson-tag">{l.isTest ? "Test" : "Lesson"}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </li>
               );
             })}
-          </div>
+          </ul>
         </div>
       </div>
     </div>
@@ -295,63 +249,75 @@ const styles = `
 .lp-goal:last-child { border-bottom: none; }
 .lp-goal-check { width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
 
-.lp-units-hd { margin-bottom: 20px; max-width: 640px; }
-.lp-units-title { font-family: 'Source Serif 4', serif; font-size: 22px; font-weight: 600; color: #23264A; margin-bottom: 6px; }
-.lp-units-sub { font-size: 13px; color: #6B6E96; font-weight: 500; line-height: 1.6; }
-
-.lp-units-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
-@media (max-width: 900px) { .lp-units-grid { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 600px) { .lp-units-grid { grid-template-columns: 1fr; } }
-
-.lp-unit-card {
+.lp-toc {
   background: #fff;
-  border-radius: 16px;
+  border-radius: 20px;
   overflow: hidden;
+  box-shadow: 0 18px 40px rgba(27,42,74,0.12);
   border: 1px solid #EDE6F4;
-  box-shadow: 0 4px 14px rgba(27,42,74,0.05);
-  display: flex;
-  flex-direction: column;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
-}
-.lp-unit-card:hover { transform: translateY(-3px); box-shadow: 0 12px 26px rgba(27,42,74,0.1); }
-
-.lp-unit-ribbon {
-  position: relative;
-  padding: 14px 18px 30px;
-  display: flex; align-items: center; justify-content: space-between;
-  overflow: hidden;
-}
-.lp-unit-ribbon-label { font-family: 'Inter', sans-serif; font-weight: 800; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.9); }
-.lp-unit-ribbon-num {
-  font-family: 'Source Serif 4', serif; font-weight: 600; font-size: 34px; color: rgba(255,255,255,0.55);
-  line-height: 1;
 }
 
-.lp-unit-body { padding: 16px 18px 16px; display: flex; flex-direction: column; flex: 1; margin-top: -16px; background: #fff; border-radius: 14px 14px 0 0; position: relative; }
-.lp-unit-soon { font-size: 9.5px; font-weight: 700; color: #A6A2C0; text-transform: uppercase; letter-spacing: 0.04em; display: block; margin-bottom: 6px; }
+.lp-toc-header { padding: 30px 40px 26px; position: relative; overflow: hidden; }
+.lp-toc-header::before {
+  content: ""; position: absolute; top: -60px; right: -40px; width: 220px; height: 220px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,255,255,0.18), transparent 70%);
+  pointer-events: none;
+}
+.lp-toc-eyebrow-row { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; position: relative; z-index: 1; }
+.lp-toc-eyebrow-rule { flex: 0 1 34px; height: 1px; background: rgba(255,255,255,0.35); }
+.lp-toc-eyebrow { font-family: 'Source Serif 4', serif; font-weight: 700; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.8); }
+.lp-toc-title { font-family: 'Source Serif 4', serif; font-weight: 600; font-size: 28px; margin: 0; color: #fff; position: relative; z-index: 1; }
+.lp-toc-sub { font-size: 12.5px; color: rgba(255,255,255,0.65); margin-top: 6px; position: relative; z-index: 1; }
 
-.lp-unit-title { font-family: 'Source Serif 4', serif; font-size: 15.5px; font-weight: 600; color: #23264A; margin: 0 0 5px; }
-.lp-unit-focus { font-size: 12px; font-weight: 500; color: #6B6E96; line-height: 1.5; margin: 0 0 14px; }
+.lp-toc-list { list-style: none; margin: 0; padding: 10px 40px 34px; }
+.lp-toc-item { border-bottom: 1px solid #F0EBFA; }
+.lp-toc-item:last-child { border-bottom: none; }
 
-.lp-unit-foot {
-  margin-top: auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 8px;
-  padding-top: 12px;
-  border-top: 1px solid #F3F0FB;
+.lp-toc-row {
+  display: flex; align-items: center; gap: 16px;
+  padding: 15px 8px;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background 0.15s ease;
 }
-.lp-unit-thread { font-size: 10px; font-weight: 700; line-height: 1.3; }
-.lp-unit-open {
-  display: inline-flex; align-items: center; gap: 4px;
-  font-family: 'Source Serif 4', serif; font-weight: 600; font-size: 11.5px;
-  color: #A6A2C0; background: #F7F5FB; border: 1px solid #EDE6F4;
-  border-radius: 999px; padding: 5px 12px;
-  cursor: not-allowed; flex-shrink: 0;
+.lp-toc-row:hover { background: #FAF7FC; }
+.lp-toc-item.is-open .lp-toc-row { background: #FAF7FC; }
+.lp-toc-item.is-locked .lp-toc-row { cursor: default; opacity: 0.5; }
+
+.lp-toc-unit-label {
+  flex-shrink: 0;
+  font-family: 'Source Serif 4', serif; font-weight: 700; font-size: 12px; letter-spacing: 0.03em;
+  padding: 5px 10px; border-radius: 7px;
+  width: 68px; text-align: center;
 }
-.lp-unit-card--ready .lp-unit-open {
-  color: #fff; background: #FF6B4A; border-color: #FF6B4A; cursor: pointer;
+.lp-toc-main { flex: 1; min-width: 0; }
+.lp-toc-title-row { display: flex; align-items: baseline; gap: 10px; }
+.lp-toc-item-title { font-family: 'Source Serif 4', serif; font-weight: 600; font-size: 16px; color: #23264A; white-space: nowrap; }
+.lp-toc-leader { flex: 1; border-bottom: 1.5px dotted #D8D2E8; margin-bottom: 5px; }
+.lp-toc-page-tag { font-size: 11px; font-weight: 700; color: #6B6E96; white-space: nowrap; }
+.lp-toc-focus { font-size: 12px; color: #6B6E96; margin-top: 3px; }
+
+.lp-toc-chevron {
+  flex-shrink: 0; width: 26px; height: 26px; border-radius: 50%;
+  color: #6B6E96; display: flex; align-items: center; justify-content: center;
+  transition: transform 0.2s ease, color 0.15s ease, background 0.15s ease;
 }
-.lp-unit-card--ready .lp-unit-open:hover { background: #E0502F; }
+.lp-toc-item.is-open .lp-toc-chevron { transform: rotate(180deg); }
+
+.lp-toc-panel { max-height: 0; overflow: hidden; transition: max-height 0.25s ease; }
+.lp-toc-item.is-open .lp-toc-panel { max-height: 600px; }
+.lp-toc-panel-inner { padding: 4px 8px 18px 84px; }
+.lp-toc-lesson-row { display: flex; align-items: center; gap: 12px; padding: 9px 0; }
+.lp-toc-lesson-bullet {
+  flex-shrink: 0; width: 21px; height: 21px; border-radius: 50%;
+  background: #fff; border: 1.5px solid #FF6B4A; color: #E0502F;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Source Serif 4', serif; font-weight: 700; font-size: 10px;
+}
+.lp-toc-lesson-row.is-test .lp-toc-lesson-bullet { border-color: #C98A00; color: #A87A1E; background: #FBF0DC; }
+.lp-toc-lesson-main { flex: 1; min-width: 0; display: flex; align-items: baseline; gap: 8px; }
+.lp-toc-lesson-title { font-family: 'Source Serif 4', serif; font-weight: 600; font-size: 13.5px; color: #23264A; white-space: nowrap; }
+.lp-toc-lesson-focus { font-size: 11.5px; color: #6B6E96; }
+.lp-toc-lesson-tag { font-size: 9px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; color: #C7A8B8; margin-left: auto; flex-shrink: 0; }
+.lp-toc-lesson-row.is-test .lp-toc-lesson-tag { color: #A87A1E; }
 `;
