@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 
 const LEVEL_DATA = {
   A1: {
-    name: "Foundation",
+    name: "Discover",
     accent: "coral",
     color: "#FF6B4A",
     light: "#FFE6DD",
@@ -17,7 +17,7 @@ const LEVEL_DATA = {
     ],
   },
   A2: {
-    name: "Growing Up",
+    name: "Soar",
     accent: "navy",
     color: "#1B2A4A",
     light: "#FFE6DD",

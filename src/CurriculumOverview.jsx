@@ -3,14 +3,14 @@ import React, { useEffect } from "react";
 const LEVELS = [
   {
     code: "A1",
-    name: "Foundation",
+    name: "Discover",
     tag: "Start here",
     accent: "coral",
     description: "Letters, phonics, and the first words and phrases to say hello, count, and talk about everyday life.",
   },
   {
     code: "A2",
-    name: "Growing Up",
+    name: "Soar",
     tag: "Next step",
     accent: "navy",
     description: "Longer sentences, more tenses, and the independence to handle everyday situations with confidence.",
