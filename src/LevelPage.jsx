@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { LEVEL_DATA, UNITS, READY_UNITS } from "./kidsCurriculumData";
 
+const READY_LESSONS = { A1: { 1: [1] } };
+
 export default function LevelPage({ level = "A1" }) {
+  const navigate = useNavigate();
   const data = LEVEL_DATA[level] || LEVEL_DATA.A1;
   const units = UNITS[level] || UNITS.A1;
   const readyUnits = READY_UNITS[level] || [];
@@ -129,16 +133,30 @@ export default function LevelPage({ level = "A1" }) {
                   {isReady && (
                     <div className="lp-toc-panel">
                       <div className="lp-toc-panel-inner">
-                        {u.lessons.map((l) => (
-                          <div key={l.num} className={`lp-toc-lesson-row ${l.isTest ? "is-test" : ""}`}>
-                            <span className="lp-toc-lesson-bullet">{l.isTest ? "T" : l.num}</span>
-                            <div className="lp-toc-lesson-main">
-                              <span className="lp-toc-lesson-title">{l.title}</span>
-                              <span className="lp-toc-lesson-focus">{l.focus}</span>
+                        {u.lessons.map((l) => {
+                          const lessonReady = ((READY_LESSONS[level] || {})[u.num] || []).includes(l.num);
+                          return (
+                            <div
+                              key={l.num}
+                              className={`lp-toc-lesson-row ${l.isTest ? "is-test" : ""} ${lessonReady ? "is-ready" : ""}`}
+                              onClick={() => lessonReady && navigate(`/library/curriculum/${level}/unit/${u.num}/lesson/${l.num}`)}
+                            >
+                              <span className="lp-toc-lesson-bullet">{l.isTest ? "T" : l.num}</span>
+                              <div className="lp-toc-lesson-main">
+                                <span className="lp-toc-lesson-title">{l.title}</span>
+                                <span className="lp-toc-lesson-focus">{l.focus}</span>
+                              </div>
+                              {lessonReady ? (
+                                <span className="lp-toc-lesson-open">
+                                  Open
+                                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                </span>
+                              ) : (
+                                <span className="lp-toc-lesson-tag">{l.isTest ? "Test" : "Lesson"}</span>
+                              )}
                             </div>
-                            <span className="lp-toc-lesson-tag">{l.isTest ? "Test" : "Lesson"}</span>
-                          </div>
-                        ))}
+                          );
+                        })}
                       </div>
                     </div>
                   )}
@@ -307,7 +325,9 @@ const styles = `
 .lp-toc-panel { max-height: 0; overflow: hidden; transition: max-height 0.25s ease; }
 .lp-toc-item.is-open .lp-toc-panel { max-height: 600px; }
 .lp-toc-panel-inner { padding: 4px 8px 18px 84px; }
-.lp-toc-lesson-row { display: flex; align-items: center; gap: 12px; padding: 9px 0; }
+.lp-toc-lesson-row { display: flex; align-items: center; gap: 12px; padding: 9px 8px; border-radius: 8px; margin: 0 -8px; }
+.lp-toc-lesson-row.is-ready { cursor: pointer; transition: background 0.15s ease; }
+.lp-toc-lesson-row.is-ready:hover { background: #FFF3EF; }
 .lp-toc-lesson-bullet {
   flex-shrink: 0; width: 21px; height: 21px; border-radius: 50%;
   background: #fff; border: 1.5px solid #FF6B4A; color: #E0502F;
@@ -320,4 +340,9 @@ const styles = `
 .lp-toc-lesson-focus { font-size: 11.5px; color: #6B6E96; }
 .lp-toc-lesson-tag { font-size: 9px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; color: #C7A8B8; margin-left: auto; flex-shrink: 0; }
 .lp-toc-lesson-row.is-test .lp-toc-lesson-tag { color: #A87A1E; }
+.lp-toc-lesson-open {
+  display: inline-flex; align-items: center; gap: 4px; margin-left: auto; flex-shrink: 0;
+  font-family: 'Source Serif 4', serif; font-weight: 600; font-size: 11px;
+  color: #fff; background: #FF6B4A; border-radius: 999px; padding: 4px 11px;
+}
 `;
