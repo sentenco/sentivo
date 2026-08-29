@@ -1,11 +1,31 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { LEVEL_DATA, UNITS, READY_UNITS } from "./kidsCurriculumData";
 
 const READY_LESSONS = { A1: { 1: [1] } };
 
+function openPopup(path, name, w, h) {
+  const screenW = window.screen.availWidth || 1600;
+  const screenH = window.screen.availHeight || 900;
+  const width = Math.min(w, screenW - 40);
+  const height = Math.min(h, screenH - 80);
+  const left = Math.max(0, Math.floor((screenW - width) / 2));
+  const top = Math.max(0, Math.floor((screenH - height) / 2));
+  window.open(
+    path,
+    name,
+    `width=${width},height=${height},left=${left},top=${top},toolbar=no,location=no,menubar=no,status=no,scrollbars=yes,resizable=yes`
+  );
+}
+
+function openLessonPopup(path) {
+  openPopup(path, "sentivoLessonPlayer", 820, 860);
+}
+
+function openGuidePopup(path) {
+  openPopup(`${path}/guide`, "sentivoTeacherGuide", 560, 640);
+}
+
 export default function LevelPage({ level = "A1" }) {
-  const navigate = useNavigate();
   const data = LEVEL_DATA[level] || LEVEL_DATA.A1;
   const units = UNITS[level] || UNITS.A1;
   const readyUnits = READY_UNITS[level] || [];
@@ -135,11 +155,11 @@ export default function LevelPage({ level = "A1" }) {
                       <div className="lp-toc-panel-inner">
                         {u.lessons.map((l) => {
                           const lessonReady = ((READY_LESSONS[level] || {})[u.num] || []).includes(l.num);
+                          const lessonPath = `/library/curriculum/${level}/unit/${u.num}/lesson/${l.num}`;
                           return (
                             <div
                               key={l.num}
                               className={`lp-toc-lesson-row ${l.isTest ? "is-test" : ""} ${lessonReady ? "is-ready" : ""}`}
-                              onClick={() => lessonReady && navigate(`/library/curriculum/${level}/unit/${u.num}/lesson/${l.num}`)}
                             >
                               <span className="lp-toc-lesson-bullet">{l.isTest ? "T" : l.num}</span>
                               <div className="lp-toc-lesson-main">
@@ -147,10 +167,16 @@ export default function LevelPage({ level = "A1" }) {
                                 <span className="lp-toc-lesson-focus">{l.focus}</span>
                               </div>
                               {lessonReady ? (
-                                <span className="lp-toc-lesson-open">
-                                  Open
-                                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                                </span>
+                                <div className="lp-toc-lesson-actions">
+                                  <button type="button" className="lp-toc-lesson-guide" onClick={() => openGuidePopup(lessonPath)}>
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20M4 4.5A2.5 2.5 0 0 1 6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5z"/></svg>
+                                    Guide
+                                  </button>
+                                  <button type="button" className="lp-toc-lesson-open" onClick={() => openLessonPopup(lessonPath)}>
+                                    Open
+                                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                  </button>
+                                </div>
                               ) : (
                                 <span className="lp-toc-lesson-tag">{l.isTest ? "Test" : "Lesson"}</span>
                               )}
@@ -326,8 +352,7 @@ const styles = `
 .lp-toc-item.is-open .lp-toc-panel { max-height: 600px; }
 .lp-toc-panel-inner { padding: 4px 8px 18px 84px; }
 .lp-toc-lesson-row { display: flex; align-items: center; gap: 12px; padding: 9px 8px; border-radius: 8px; margin: 0 -8px; }
-.lp-toc-lesson-row.is-ready { cursor: pointer; transition: background 0.15s ease; }
-.lp-toc-lesson-row.is-ready:hover { background: #FFF3EF; }
+.lp-toc-lesson-row.is-ready:hover { background: #FFF9F7; }
 .lp-toc-lesson-bullet {
   flex-shrink: 0; width: 21px; height: 21px; border-radius: 50%;
   background: #fff; border: 1.5px solid #FF6B4A; color: #E0502F;
@@ -340,9 +365,17 @@ const styles = `
 .lp-toc-lesson-focus { font-size: 11.5px; color: #6B6E96; }
 .lp-toc-lesson-tag { font-size: 9px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; color: #C7A8B8; margin-left: auto; flex-shrink: 0; }
 .lp-toc-lesson-row.is-test .lp-toc-lesson-tag { color: #A87A1E; }
+.lp-toc-lesson-actions { display: flex; align-items: center; gap: 6px; margin-left: auto; flex-shrink: 0; }
+.lp-toc-lesson-guide {
+  display: inline-flex; align-items: center; gap: 4px; cursor: pointer; border: 1px solid #EDE6F4;
+  font-family: 'Source Serif 4', serif; font-weight: 600; font-size: 11px;
+  color: #6B6E96; background: #fff; border-radius: 999px; padding: 4px 11px;
+}
+.lp-toc-lesson-guide:hover { background: #F7F5FB; }
 .lp-toc-lesson-open {
-  display: inline-flex; align-items: center; gap: 4px; margin-left: auto; flex-shrink: 0;
+  display: inline-flex; align-items: center; gap: 4px; cursor: pointer; border: none;
   font-family: 'Source Serif 4', serif; font-weight: 600; font-size: 11px;
   color: #fff; background: #FF6B4A; border-radius: 999px; padding: 4px 11px;
 }
+.lp-toc-lesson-open:hover { background: #E0502F; }
 `;
