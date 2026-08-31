@@ -174,22 +174,20 @@ export const LESSON_GUIDE = [
     "Let the student answer with their own name.",
   ] },
   { stage: "Meet A, B, C", time: "~1.5 min", note: "Point to each letter and say its name together before moving on." },
-  { stage: "Meet A, B, C", time: "~1.5 min", note: [
-    "Ask \"Where is A?\" and have the student point to it on their screen.",
-    "Repeat for B and C, mixing up the order each time.",
-    "Let the student take a turn asking you \"Where is ___?\"",
-  ] },
   { stage: "My Name Is...", time: "~4 min", note: [
     "Introduce Anna, point out she starts with A.",
     "Introduce Bob, point out he starts with B.",
     "Introduce Carol, point out she starts with C.",
     "Practice \"My name is ___\" together for each character.",
   ] },
+  { stage: "Meet Anna, Bob & Carol", time: "~1 min", note: "Model Anna's line first, then let the student answer with their own name." },
+  { stage: "Meet Anna, Bob & Carol", time: "~1 min", note: "Same pattern, now as Bob." },
+  { stage: "Meet Anna, Bob & Carol", time: "~1 min", note: "Same pattern, now as Carol." },
   { stage: "A, B, C Is for...", time: "~1.5 min", note: "Say each word slowly: \"A is for ant. A is for apple. A is for alligator.\"" },
   { stage: "A, B, C Is for...", time: "~1.5 min", note: "Say each word slowly: \"B is for ball. B is for banana. B is for bear.\"" },
   { stage: "A, B, C Is for...", time: "~2 min", note: "Say each word slowly: \"C is for cat. C is for car. C is for cookie.\"" },
   { stage: "Look & Say", time: "~5 min", note: "Point to each picture in any order. Let the student name the letter and say the word before you move on." },
-  { stage: "Meet & Greet", time: "~3 min", note: "A real back-and-forth: model the full line first, then let the student answer with their own name and letter." },
+  { stage: "Let's Practice!", time: "~3 min", note: "A quick check of the full greeting pattern: model the line first, then let the student answer using their own name and the first letter of it." },
   { stage: "Show What You Know", time: "~2 min", note: "Free recall, don't reveal answers. Point to each letter, then ask \"What's your name?\" one more time as the final challenge." },
   { stage: "Wrap-Up", time: null, note: null },
 ];
@@ -265,22 +263,7 @@ function buildSlides({ onZoom }) {
         </>
       ),
     },
-    // 5: Where Is It?
-    {
-      stage: "Meet A, B, C",
-      time: "~1.5 min",
-      body: (
-        <>
-          <span className="title-highlight"><h2 className="slide-h sub">Where Is It?</h2></span>
-          <div className="row" style={{ marginTop: 14, gap: 34 }}>
-            <LetterTile letters="Cc" color={LETTER_COLOR.C} size={106} fontSize={42} onZoom={onZoom} />
-            <LetterTile letters="Aa" color={LETTER_COLOR.A} size={106} fontSize={42} onZoom={onZoom} />
-            <LetterTile letters="Bb" color={LETTER_COLOR.B} size={106} fontSize={42} onZoom={onZoom} />
-          </div>
-        </>
-      ),
-    },
-    // 6: My Name Is... Anna, Bob, Carol
+    // 5: My Name Is... Anna, Bob, Carol
     {
       stage: "My Name Is...",
       time: "~4 min",
@@ -290,12 +273,72 @@ function buildSlides({ onZoom }) {
           <div className="word-row">
             <NameCard name="Anna" letter="A" src={null} onZoom={onZoom} />
             <NameCard name="Bob" letter="B" src={`${IMG}/bob.jpg`} onZoom={onZoom} />
-            <NameCard name="Carol" letter="C" src={`${IMG}/carol.jpg`} onZoom={onZoom} />
+            <NameCard name="Carol" letter="C" src={`${IMG}/carol.avif`} onZoom={onZoom} />
           </div>
         </>
       ),
     },
-    // 7: A is for...
+    // 6: Meet Anna!
+    {
+      stage: "Meet Anna, Bob & Carol",
+      time: "~1 min",
+      body: (
+        <>
+          <span className="title-highlight"><h2 className="slide-h sub">Meet Anna!</h2></span>
+          <div className="bubble-col" style={{ maxWidth: 420 }}>
+            <div className="brow">
+              <div className="avatar" style={{ background: LETTER_COLOR.A }}>A</div>
+              <div className="bubble left">Hello! My name is Anna. What's your name?</div>
+            </div>
+            <div className="brow me">
+              <div className="avatar coral">S</div>
+              <div className="bubble right">Hello, Anna! My name is <span className="fill">[Student's name]</span>.</div>
+            </div>
+          </div>
+        </>
+      ),
+    },
+    // 7: Meet Bob!
+    {
+      stage: "Meet Anna, Bob & Carol",
+      time: "~1 min",
+      body: (
+        <>
+          <span className="title-highlight"><h2 className="slide-h sub">Meet Bob!</h2></span>
+          <div className="bubble-col" style={{ maxWidth: 420 }}>
+            <div className="brow">
+              <div className="avatar" style={{ background: LETTER_COLOR.B }}>B</div>
+              <div className="bubble left">Hello! My name is Bob. What's your name?</div>
+            </div>
+            <div className="brow me">
+              <div className="avatar coral">S</div>
+              <div className="bubble right">Hello, Bob! My name is <span className="fill">[Student's name]</span>.</div>
+            </div>
+          </div>
+        </>
+      ),
+    },
+    // 8: Meet Carol!
+    {
+      stage: "Meet Anna, Bob & Carol",
+      time: "~1 min",
+      body: (
+        <>
+          <span className="title-highlight"><h2 className="slide-h sub">Meet Carol!</h2></span>
+          <div className="bubble-col" style={{ maxWidth: 420 }}>
+            <div className="brow">
+              <div className="avatar" style={{ background: LETTER_COLOR.C }}>C</div>
+              <div className="bubble left">Hello! My name is Carol. What's your name?</div>
+            </div>
+            <div className="brow me">
+              <div className="avatar coral">S</div>
+              <div className="bubble right">Hello, Carol! My name is <span className="fill">[Student's name]</span>.</div>
+            </div>
+          </div>
+        </>
+      ),
+    },
+    // 9: A is for...
     {
       stage: "A, B, C Is for...",
       time: "~1.5 min",
@@ -310,7 +353,7 @@ function buildSlides({ onZoom }) {
         </>
       ),
     },
-    // 8: B is for...
+    // 10: B is for...
     {
       stage: "A, B, C Is for...",
       time: "~1.5 min",
@@ -325,7 +368,7 @@ function buildSlides({ onZoom }) {
         </>
       ),
     },
-    // 9: C is for...
+    // 11: C is for...
     {
       stage: "A, B, C Is for...",
       time: "~2 min",
@@ -335,12 +378,12 @@ function buildSlides({ onZoom }) {
           <div className="word-row">
             <WordCard src={`${IMG}/cat.jpg`} word="Cat" label="cat" onZoom={onZoom} />
             <WordCard src={`${IMG}/car.avif`} word="Car" label="car" onZoom={onZoom} />
-            <WordCard src={null} word="Cookie" label="cookie" onZoom={onZoom} />
+            <WordCard src={`${IMG}/cookie.webp`} word="Cookie" label="cookie" onZoom={onZoom} />
           </div>
         </>
       ),
     },
-    // 10: Look & Say
+    // 12: Look & Say
     {
       stage: "Look & Say",
       time: "~5 min",
@@ -364,19 +407,19 @@ function buildSlides({ onZoom }) {
               <span className="look-letter" style={{ background: LETTER_COLOR.C }}>C</span>
               <Pic src={`${IMG}/cat.jpg`} label="cat" size={78} onZoom={onZoom} />
               <Pic src={`${IMG}/car.avif`} label="car" size={78} onZoom={onZoom} />
-              <Pic src={null} label="cookie" size={78} onZoom={onZoom} />
+              <Pic src={`${IMG}/cookie.webp`} label="cookie" size={78} onZoom={onZoom} />
             </div>
           </div>
         </>
       ),
     },
-    // 11: Meet & Greet
+    // 13: Let's Practice!
     {
-      stage: "Meet & Greet",
+      stage: "Let's Practice!",
       time: "~3 min",
       body: (
         <>
-          <span className="title-highlight"><h2 className="slide-h sub">Meet & Greet</h2></span>
+          <span className="title-highlight"><h2 className="slide-h sub">Let's Practice!</h2></span>
           <div className="bubble-col" style={{ maxWidth: 460 }}>
             <div className="brow">
               <div className="avatar navy">T</div>
@@ -390,7 +433,7 @@ function buildSlides({ onZoom }) {
         </>
       ),
     },
-    // 12: Show What You Know
+    // 14: Show What You Know
     {
       stage: "Show What You Know",
       time: "~2 min",
@@ -405,7 +448,7 @@ function buildSlides({ onZoom }) {
         </>
       ),
     },
-    // 13: Great Job
+    // 15: Great Job
     {
       stage: "Wrap-Up",
       time: null,
@@ -478,10 +521,10 @@ export const styles = `
 .dot.on { width: 22px; border-radius: 5px; background: var(--coral); }
 
 .title-highlight { position: relative; display: inline-block; }
-.title-highlight::before { content: ""; position: absolute; left: -12px; right: -12px; top: 34%; bottom: 18%; background: var(--coral-light); transform: rotate(-1.4deg); border-radius: 4px; z-index: 0; }
+.title-highlight::before { content: ""; position: absolute; left: -12px; right: -12px; top: 34%; bottom: 18%; background: #FFD066; opacity: 0.85; transform: rotate(-1.4deg); border-radius: 4px; z-index: 0; }
 .slide-h { font-family: 'Baloo 2', sans-serif; font-weight: 800; font-size: 48px; color: var(--navy); margin: 0; text-align: center; position: relative; z-index: 1; line-height: 1.05; }
 .slide-h.sub { font-size: 40px; }
-.slide-p { font-family: 'Quicksand', sans-serif; font-size: 14px; color: var(--ink-soft); font-weight: 600; text-align: center; max-width: 520px; margin: 0; position: relative; z-index: 1; }
+.slide-p { font-family: 'Quicksand', sans-serif; font-size: 17px; color: var(--ink-soft); font-weight: 600; text-align: center; max-width: 540px; margin: 0; position: relative; z-index: 1; }
 
 .center-col { display: flex; flex-direction: column; align-items: center; gap: 16px; }
 .row { display: flex; gap: 28px; align-items: center; justify-content: center; position: relative; z-index: 1; }
@@ -494,13 +537,13 @@ export const styles = `
 
 .word-row { display: flex; gap: 22px; position: relative; z-index: 1; }
 .wc { display: flex; flex-direction: column; align-items: center; gap: 10px; }
-.pic { position: relative; cursor: zoom-in; overflow: hidden; flex-shrink: 0; border-radius: 28px; box-shadow: 0 0 0 6px #fff, 0 10px 22px rgba(27,42,74,0.16); transition: transform 0.15s ease; }
+.pic { position: relative; cursor: zoom-in; overflow: hidden; flex-shrink: 0; border-radius: 28px; background: #fff; box-shadow: 0 0 0 6px #fff, 0 10px 22px rgba(27,42,74,0.16); transition: transform 0.15s ease; }
 .pic:hover { transform: scale(1.04); }
-.pic img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.pic img { display: block; width: 100%; height: 100%; object-fit: contain; }
 .pic-ph { width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px; color: var(--coral-deep); background: var(--coral-light); }
 .pic-ph span { font-size: 10px; font-weight: 700; text-align: center; padding: 0 8px; }
-.word { font-family: 'Baloo 2', sans-serif; font-weight: 700; font-size: 16px; color: var(--navy); }
-.name-tag { font-size: 10.5px; font-weight: 700; padding: 3px 11px; border-radius: 999px; }
+.word { font-family: 'Baloo 2', sans-serif; font-weight: 700; font-size: 19px; color: var(--navy); }
+.name-tag { font-size: 12px; font-weight: 700; padding: 4px 12px; border-radius: 999px; }
 
 .bubble-col { display: flex; flex-direction: column; gap: 12px; position: relative; z-index: 1; }
 .brow { display: flex; align-items: center; gap: 10px; }
@@ -508,7 +551,7 @@ export const styles = `
 .avatar { width: 34px; height: 34px; border-radius: 50%; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-family: 'Baloo 2', sans-serif; font-weight: 700; font-size: 12px; color: #fff; }
 .avatar.navy { background: var(--navy); }
 .avatar.coral { background: var(--coral); }
-.bubble { background: #fff; border-radius: 18px; padding: 12px 16px; font-weight: 700; font-size: 14px; color: var(--ink); box-shadow: 0 6px 14px rgba(27,42,74,0.08); }
+.bubble { background: #fff; border-radius: 18px; padding: 13px 18px; font-weight: 700; font-size: 16px; color: var(--ink); box-shadow: 0 6px 14px rgba(27,42,74,0.08); }
 .bubble.left { border-radius: 18px 18px 18px 4px; }
 .bubble.right { border-radius: 18px 18px 4px 18px; }
 .bubble .fill { color: var(--coral-deep); }
