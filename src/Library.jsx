@@ -253,6 +253,13 @@ const CUSTOM_LESSONS = [
     level: "Comprehension: Intermediate · Production: Advanced Beginner",
     desc: "12 real estate words across People, Property, and Money, with a listening dialogue and simple-sentence practice.",
   },
+  {
+    slug: "be-verbs-and-will",
+    title: "Be-verbs & Will",
+    tag: "Grammar",
+    level: "Beginner",
+    desc: "Three core patterns in one sitting: be + adjective, be + v-ing, and will + v1, each with a rule box and fill-in-blank practice.",
+  },
 ];
 
 function openCustomLessonPopup(path, name, w, h) {
