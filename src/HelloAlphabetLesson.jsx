@@ -70,10 +70,10 @@ function WordCard({ src, word, label, onZoom }) {
   );
 }
 
-function NameCard({ name, letter, onZoom }) {
+function NameCard({ name, letter, src, onZoom }) {
   return (
     <div className="wc">
-      <Pic src={null} label={`a friendly character named ${name}`} onZoom={onZoom} />
+      <Pic src={src} label={`a friendly character named ${name}`} onZoom={onZoom} />
       <div className="word">{name}</div>
       <span className="name-tag" style={{ background: `${LETTER_COLOR[letter]}22`, color: LETTER_COLOR[letter] }}>Starts with {letter}</span>
     </div>
@@ -288,9 +288,9 @@ function buildSlides({ onZoom }) {
         <>
           <span className="title-highlight"><h2 className="slide-h sub">My Name Is...</h2></span>
           <div className="word-row">
-            <NameCard name="Anna" letter="A" onZoom={onZoom} />
-            <NameCard name="Bob" letter="B" onZoom={onZoom} />
-            <NameCard name="Carol" letter="C" onZoom={onZoom} />
+            <NameCard name="Anna" letter="A" src={null} onZoom={onZoom} />
+            <NameCard name="Bob" letter="B" src={`${IMG}/bob.jpg`} onZoom={onZoom} />
+            <NameCard name="Carol" letter="C" src={`${IMG}/carol.jpg`} onZoom={onZoom} />
           </div>
         </>
       ),
@@ -305,7 +305,7 @@ function buildSlides({ onZoom }) {
           <div className="word-row">
             <WordCard src={`${IMG}/ant.jpg`} word="Ant" label="ant" onZoom={onZoom} />
             <WordCard src={`${IMG}/apple.jpg`} word="Apple" label="red apple" onZoom={onZoom} />
-            <WordCard src={null} word="Alligator" label="alligator" onZoom={onZoom} />
+            <WordCard src={`${IMG}/alligator.jpg`} word="Alligator" label="alligator" onZoom={onZoom} />
           </div>
         </>
       ),
@@ -347,16 +347,25 @@ function buildSlides({ onZoom }) {
       body: (
         <>
           <span className="title-highlight"><h2 className="slide-h sub">Look & Say!</h2></span>
-          <div className="look-grid">
-            <Pic src={`${IMG}/ant.jpg`} label="" size="100%" onZoom={onZoom} />
-            <Pic src={`${IMG}/apple.jpg`} label="" size="100%" onZoom={onZoom} />
-            <Pic src={null} label="alligator" size="100%" onZoom={onZoom} />
-            <Pic src={`${IMG}/ball.jpg`} label="" size="100%" onZoom={onZoom} />
-            <Pic src={`${IMG}/banana.jpg`} label="" size="100%" onZoom={onZoom} />
-            <Pic src={`${IMG}/bear.jpg`} label="" size="100%" onZoom={onZoom} />
-            <Pic src={`${IMG}/cat.jpg`} label="" size="100%" onZoom={onZoom} />
-            <Pic src={`${IMG}/car.avif`} label="" size="100%" onZoom={onZoom} />
-            <Pic src={null} label="cookie" size="100%" onZoom={onZoom} />
+          <div className="look-groups">
+            <div className="look-row">
+              <span className="look-letter" style={{ background: LETTER_COLOR.A }}>A</span>
+              <Pic src={`${IMG}/ant.jpg`} label="ant" size={78} onZoom={onZoom} />
+              <Pic src={`${IMG}/apple.jpg`} label="apple" size={78} onZoom={onZoom} />
+              <Pic src={`${IMG}/alligator.jpg`} label="alligator" size={78} onZoom={onZoom} />
+            </div>
+            <div className="look-row">
+              <span className="look-letter" style={{ background: LETTER_COLOR.B }}>B</span>
+              <Pic src={`${IMG}/ball.jpg`} label="ball" size={78} onZoom={onZoom} />
+              <Pic src={`${IMG}/banana.jpg`} label="banana" size={78} onZoom={onZoom} />
+              <Pic src={`${IMG}/bear.jpg`} label="bear" size={78} onZoom={onZoom} />
+            </div>
+            <div className="look-row">
+              <span className="look-letter" style={{ background: LETTER_COLOR.C }}>C</span>
+              <Pic src={`${IMG}/cat.jpg`} label="cat" size={78} onZoom={onZoom} />
+              <Pic src={`${IMG}/car.avif`} label="car" size={78} onZoom={onZoom} />
+              <Pic src={null} label="cookie" size={78} onZoom={onZoom} />
+            </div>
           </div>
         </>
       ),
@@ -504,8 +513,9 @@ export const styles = `
 .bubble.right { border-radius: 18px 18px 4px 18px; }
 .bubble .fill { color: var(--coral-deep); }
 
-.look-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; position: relative; z-index: 1; max-width: 400px; margin: 0 auto; }
-.look-grid .pic { width: 100%; aspect-ratio: 1; }
+.look-groups { display: flex; flex-direction: column; gap: 18px; position: relative; z-index: 1; }
+.look-row { display: flex; align-items: center; gap: 18px; }
+.look-letter { width: 50px; height: 50px; border-radius: 16px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-family: 'Baloo 2', sans-serif; font-weight: 800; font-size: 22px; color: #fff; box-shadow: 0 4px 10px rgba(27,42,74,0.15); }
 
 .zoom-overlay { position: fixed; inset: 0; background: rgba(27,42,74,0.72); display: flex; align-items: center; justify-content: center; z-index: 999; }
 .zoom-overlay-inner { position: relative; background: #fff; border-radius: 28px; padding: 34px; box-shadow: 0 30px 60px rgba(0,0,0,0.32); display: flex; align-items: center; justify-content: center; }
