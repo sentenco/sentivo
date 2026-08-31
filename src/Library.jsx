@@ -260,6 +260,13 @@ const CUSTOM_LESSONS = [
     level: "Beginner",
     desc: "Three core patterns in one sitting: be + adjective, be + v-ing, and will + v1, each with a rule box and fill-in-blank practice.",
   },
+  {
+    slug: "present-simple-vs-progressive",
+    title: "Present Simple vs Progressive",
+    tag: "Grammar",
+    level: "Beginner to Elementary",
+    desc: "Usage rules and signal words for both tenses, plus a mixed activity that combines them in the same set of sentences.",
+  },
 ];
 
 function openCustomLessonPopup(path, name, w, h) {
