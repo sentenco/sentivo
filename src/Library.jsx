@@ -29,8 +29,8 @@ import VocabularyGames from "./VocabularyGames";
 import WritingActivities from "./WritingActivities";
 import CommunityFeed from "./CommunityFeed.jsx";
 
-const CATEGORIES = ["Articles", "Reading", "Speaking", "Grammar", "Vocabulary", "Writing", "Listening"];
-const PRO_CATEGORIES = ["Reading", "Speaking", "Grammar", "Vocabulary", "Writing", "Listening"];
+const CATEGORIES = ["Articles", "Reading", "Speaking", "Grammar", "Vocabulary", "Writing", "Customized Lessons"];
+const PRO_CATEGORIES = ["Reading", "Speaking", "Grammar", "Vocabulary", "Writing", "Customized Lessons"];
 
 // "Today" launch date -- the day count in the Today masthead (Vol. 1, No. X)
 // counts up from here, like a real newspaper's running issue number.
@@ -95,7 +95,7 @@ function CategoryLockedFeature({ category, navigate }) {
       <p className="cat-locked-eyebrow">Pro feature</p>
       <h2 className="cat-locked-title">{category} is part of Sentivo Pro</h2>
       <p className="cat-locked-desc">
-        Upgrade to unlock every category, Speaking, Reading, Grammar, Vocabulary, Writing, and Listening, plus Teacher's Desk without the daily unlock.
+        Upgrade to unlock every category, Speaking, Reading, Grammar, Vocabulary, Writing, and Customized Lessons, plus Teacher's Desk without the daily unlock.
       </p>
       <button type="button" className="cat-locked-cta" onClick={() => navigate("/library/subscription")}>Upgrade to Pro</button>
       <button type="button" className="cat-locked-link" onClick={() => navigate("/library/subscription")}>See all plans</button>
@@ -1706,7 +1706,7 @@ export default function Library() {
         </div>
       ) : (
       <main className={`content ${category === "Articles" ? "content--wide" : ""}`}>
-                <div className={`grid-wrap ${category === "All" && !query.trim() && !showAllToday ? "grid-wrap--today" : (category === "Articles" || category === "Grammar" || category === "Reading" || category === "Speaking" || category === "Vocabulary" || category === "Writing" || category === "Listening") ? "grid-wrap--top" : ""}`} ref={gridWrapRef}>
+                <div className={`grid-wrap ${category === "All" && !query.trim() && !showAllToday ? "grid-wrap--today" : (category === "Articles" || category === "Grammar" || category === "Reading" || category === "Speaking" || category === "Vocabulary" || category === "Writing" || category === "Customized Lessons") ? "grid-wrap--top" : ""}`} ref={gridWrapRef}>
         {category === "All" && !query.trim() && !showAllToday ? (
           toolsLoading ? (
             <p className="empty-msg">Loading today's edition…</p>
@@ -1788,17 +1788,31 @@ export default function Library() {
           <VocabularyGames query={query} />
         ) : category === "Writing" ? (
           <WritingActivities query={query} />
-        ) : category === "Listening" ? (
-          <div className="dyn-landing dyn-landing--listening">
+        ) : category === "Customized Lessons" ? (
+          <div className="dyn-landing dyn-landing--custom">
             <div className="dyn-landing-hero">
-              <span className="dyn-landing-eyebrow">Sentivo · Listening</span>
-              <h1><span className="dyn-landing-pill">🎧 Sound Booth</span></h1>
+              <span className="dyn-landing-eyebrow">Sentivo · Customized Lessons</span>
+              <h1><span className="dyn-landing-pill">Custom Lessons</span></h1>
+              <p className="cl-sub">A lesson built around one student's real need: their job, their upcoming trip, the exact words they asked for, in the language they actually speak.</p>
             </div>
             <div className="dyn-landing-row"></div>
+
+            <div className="cl-cta">
+              <div className="cl-cta-text">
+                <h2>Request a custom lesson</h2>
+                <p>Open a student's syllabus and use "Request custom lesson" to send the topic, level, duration, and language. Once it's built, it shows up here.</p>
+              </div>
+              <button type="button" className="cl-cta-btn" onClick={() => navigate("/library/syllabus")}>
+                Go to Syllabus Generator
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </button>
+            </div>
+
+            <div className="cl-gallery-hd">Published custom lessons</div>
             <div className="dyn-landing-soon">
-              <span className="dyn-landing-soon-icon">🎧</span>
-              <p className="dyn-landing-soon-title">Coming soon</p>
-              <p className="dyn-landing-soon-desc">Listening lessons are on the way — check back soon.</p>
+              <span className="dyn-landing-soon-icon">✨</span>
+              <p className="dyn-landing-soon-title">Nothing published yet</p>
+              <p className="dyn-landing-soon-desc">Once a requested lesson is built, it will appear here for everyone to browse.</p>
             </div>
           </div>
         ) : (
@@ -1806,7 +1820,7 @@ export default function Library() {
         )}
         </div>
 
-        {category !== "Speaking" && category !== "Grammar" && category !== "Articles" && category !== "Reading" && category !== "Vocabulary" && category !== "Writing" && category !== "Listening" && !(category === "All" && !query.trim() && !showAllToday) && (
+        {category !== "Speaking" && category !== "Grammar" && category !== "Articles" && category !== "Reading" && category !== "Vocabulary" && category !== "Writing" && category !== "Customized Lessons" && !(category === "All" && !query.trim() && !showAllToday) && (
         <div className="pagination">
           <button disabled={safePage === 1} onClick={() => changePage(safePage - 1)}>&larr; Prev</button>
           <span className="page-indicator">Page {safePage} of {totalPages}</span>
@@ -2391,8 +2405,8 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .dyn-landing--writing {
   background: linear-gradient(180deg, #F3FAF8 0%, #E4F1EC 100%);
 }
-.dyn-landing--listening {
-  background: linear-gradient(180deg, #FDF4F0 0%, #F9E4DA 100%);
+.dyn-landing--custom {
+  background: linear-gradient(180deg, #F2F4FA 0%, #E4E9F5 100%);
 }
 .dyn-landing-hero { text-align: center; }
 .dyn-landing-eyebrow {
@@ -2405,7 +2419,7 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 }
 .dyn-landing--vocab .dyn-landing-eyebrow { color: #96721B; }
 .dyn-landing--writing .dyn-landing-eyebrow { color: #3F7A4E; }
-.dyn-landing--listening .dyn-landing-eyebrow { color: #C1573A; }
+.dyn-landing--custom .dyn-landing-eyebrow { color: #1B2A4A; }
 .dyn-landing-pill {
   display: inline-flex;
   align-items: center;
@@ -2420,15 +2434,15 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 }
 .dyn-landing--vocab .dyn-landing-pill { background: rgba(184,140,26,0.16); }
 .dyn-landing--writing .dyn-landing-pill { background: rgba(63,122,78,0.14); }
-.dyn-landing--listening .dyn-landing-pill { background: rgba(224,106,74,0.16); }
+.dyn-landing--custom .dyn-landing-pill { background: rgba(27,42,74,0.1); }
 .dyn-landing-row { position: relative; height: 2px; width: 100%; max-width: 1040px; margin: clamp(22px, 2.8vw, 32px) 0; }
 .dyn-landing--vocab .dyn-landing-row { background: #E8D6A0; }
 .dyn-landing--writing .dyn-landing-row { background: #C3DCC0; }
-.dyn-landing--listening .dyn-landing-row { background: #F0C3AE; }
+.dyn-landing--custom .dyn-landing-row { background: #C7D0E5; }
 .dyn-landing-row::before, .dyn-landing-row::after { content: ""; position: absolute; top: -3px; width: 8px; height: 8px; border-radius: 50%; }
 .dyn-landing--vocab .dyn-landing-row::before, .dyn-landing--vocab .dyn-landing-row::after { background: #B88C1A; }
 .dyn-landing--writing .dyn-landing-row::before, .dyn-landing--writing .dyn-landing-row::after { background: #3F7A4E; }
-.dyn-landing--listening .dyn-landing-row::before, .dyn-landing--listening .dyn-landing-row::after { background: #C1573A; }
+.dyn-landing--custom .dyn-landing-row::before, .dyn-landing--custom .dyn-landing-row::after { background: #1B2A4A; }
 .dyn-landing-row::before { left: 0; }
 .dyn-landing-row::after { right: 0; }
 .dyn-landing .cover-grid { justify-content: center; }
@@ -2438,6 +2452,24 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .dyn-landing-soon-icon { font-size: 40px; opacity: 0.5; margin-bottom: 14px; }
 .dyn-landing-soon-title { font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 20px; color: #2B2A4A; margin: 0 0 8px; }
 .dyn-landing-soon-desc { font-family: 'Quicksand', sans-serif; font-size: 14px; color: #6B6580; margin: 0; }
+
+.cl-sub { font-family: 'Quicksand', sans-serif; font-size: 14px; font-weight: 600; color: #5A6B92; max-width: 560px; margin: 10px auto 0; line-height: 1.6; }
+.cl-cta {
+  display: flex; align-items: center; justify-content: space-between; gap: 24px;
+  background: #fff; border: 1px solid #DDE3F0; border-radius: 18px;
+  padding: 24px 28px; margin: 0 auto 34px; max-width: 900px;
+  box-shadow: 0 10px 26px rgba(27,42,74,0.08);
+}
+.cl-cta-text h2 { font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 18px; color: #1B2A4A; margin: 0 0 6px; }
+.cl-cta-text p { font-family: 'Quicksand', sans-serif; font-size: 13px; font-weight: 600; color: #6B6580; margin: 0; max-width: 480px; line-height: 1.55; }
+.cl-cta-btn {
+  display: inline-flex; align-items: center; gap: 8px; flex-shrink: 0;
+  font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 13.5px; color: #fff;
+  background: #FF6B4A; border: none; border-radius: 999px; padding: 12px 22px; cursor: pointer;
+  box-shadow: 0 6px 16px rgba(255,107,74,0.32);
+}
+.cl-cta-btn:hover { background: #E0502F; }
+.cl-gallery-hd { font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 16px; color: #1B2A4A; max-width: 900px; margin: 0 auto 14px; }
 
 /* ---------- Speaking: The Fluency Clinic ---------- */
 .spklab-page {
