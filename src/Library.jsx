@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useNavigate, useParams, useLocation, useSearchParams } from "react-router-dom";
+import { useNavigate, useParams, useLocation, useSearchParams, Link } from "react-router-dom";
 import { useAuth } from "./AuthContext";
 import AuthForm from "./AuthForm";
 import ProfileSettings from "./ProfileSettings.jsx";
@@ -193,7 +193,7 @@ function ArticlesFeature({ navigate, query }) {
       </nav>
 
       {lead ? (
-        <button type="button" className="gaz-lead" onClick={() => navigate(`/library/articles/${lead.slug}`)}>
+        <Link to={`/library/articles/${lead.slug}`} className="gaz-lead">
           <div>
             <div className="gaz-lead-kicker">{activeTopic === "All" ? "Lead Story · " : ""}{lead.topicTitle}</div>
             <h2 className="gaz-lead-title">{lead.title}</h2>
@@ -209,32 +209,37 @@ function ArticlesFeature({ navigate, query }) {
           <div className="gaz-lead-art">
             {lead.image ? <img src={lead.image} alt="" /> : <span className="gaz-lead-art-emoji">{lead.emoji}</span>}
           </div>
-        </button>
+        </Link>
       ) : (
         <p className="gaz-empty">{q ? `No articles match "${query.trim()}".` : "No articles in this category yet — check back soon."}</p>
       )}
 
       <div className="gaz-grid">
-        {briefs.map((a) => (
-          <button
-            key={a.slug}
-            type="button"
-            className={`gaz-story ${a.ready ? "" : "gaz-story--soon"}`}
-            onClick={() => a.ready && navigate(`/library/articles/${a.slug}`)}
-            disabled={!a.ready}
-          >
-            <div className={`gaz-thumb gaz-thumb--${a.variant}`}>
-              {a.image ? <img src={a.image} alt="" /> : a.emoji}
-            </div>
-            <div className="gaz-story-body">
-              <div className="gaz-story-kicker">{a.topicLabel}</div>
-              <h3 className="gaz-story-title">{a.title}</h3>
-              <div className="gaz-story-meta">
-                {a.ready ? <span className="gaz-editions">📚 3 Ed.</span> : <span className="gaz-soon">Coming soon</span>}
+        {briefs.map((a) => {
+          const body = (
+            <>
+              <div className={`gaz-thumb gaz-thumb--${a.variant}`}>
+                {a.image ? <img src={a.image} alt="" /> : a.emoji}
               </div>
+              <div className="gaz-story-body">
+                <div className="gaz-story-kicker">{a.topicLabel}</div>
+                <h3 className="gaz-story-title">{a.title}</h3>
+                <div className="gaz-story-meta">
+                  {a.ready ? <span className="gaz-editions">📚 3 Ed.</span> : <span className="gaz-soon">Coming soon</span>}
+                </div>
+              </div>
+            </>
+          );
+          return a.ready ? (
+            <Link key={a.slug} to={`/library/articles/${a.slug}`} className="gaz-story">
+              {body}
+            </Link>
+          ) : (
+            <div key={a.slug} className="gaz-story gaz-story--soon">
+              {body}
             </div>
-          </button>
-        ))}
+          );
+        })}
       </div>
     </div>
   );
@@ -2641,6 +2646,8 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   text-align: left;
   width: 100%;
   margin-bottom: 16px;
+  text-decoration: none;
+  color: inherit;
 }
 .gaz-lead-kicker { font-family: 'Inter', sans-serif; font-weight: 800; font-size: clamp(9.5px, 0.8vw, 11.5px); letter-spacing: 0.1em; text-transform: uppercase; color: #E0502F; margin-bottom: 8px; }
 .gaz-lead-title { font-family: 'Fraunces', serif; font-weight: 600; font-size: clamp(21px, 2.4vw, 32px); line-height: 1.2; margin: 0 0 10px; color: #1B2A4A; text-wrap: balance; }
@@ -2693,6 +2700,7 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   cursor: pointer;
   font: inherit;
   color: inherit;
+  text-decoration: none;
 }
 .gaz-story:not(:nth-child(2n))::after {
   content: "";
