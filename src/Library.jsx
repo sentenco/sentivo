@@ -245,6 +245,30 @@ function ArticlesFeature({ navigate, query }) {
   );
 }
 
+const CUSTOM_LESSONS = [
+  {
+    slug: "real-estate-vocabulary",
+    title: "Real Estate Vocabulary",
+    tag: "Vocabulary",
+    level: "Comprehension: Intermediate · Production: Advanced Beginner",
+    desc: "12 real estate words across People, Property, and Money, with a listening dialogue and simple-sentence practice.",
+  },
+];
+
+function openCustomLessonPopup(path, name, w, h) {
+  const screenW = window.screen.availWidth || 1600;
+  const screenH = window.screen.availHeight || 900;
+  const width = Math.min(w, screenW - 40);
+  const height = Math.min(h, screenH - 80);
+  const left = Math.max(0, Math.floor((screenW - width) / 2));
+  const top = Math.max(0, Math.floor((screenH - height) / 2));
+  window.open(
+    path,
+    name,
+    `width=${width},height=${height},left=${left},top=${top},toolbar=no,location=no,menubar=no,status=no,scrollbars=yes,resizable=yes`
+  );
+}
+
 const LISTEN_TRAVEL = [
   { num: 1, type: "Gist 1", title: "Flight Delay Announcement", target: "Main idea in a predictable public announcement" },
   { num: 2, type: "Gist 2", title: "Hotel Problem at Check-in", target: "Main idea and purpose in a short travel problem dialogue" },
@@ -1856,10 +1880,30 @@ export default function Library() {
             </div>
 
             <div className="cl-gallery-hd">Published custom lessons</div>
-            <div className="dyn-landing-soon">
-              <span className="dyn-landing-soon-icon">✨</span>
-              <p className="dyn-landing-soon-title">Nothing published yet</p>
-              <p className="dyn-landing-soon-desc">Once a requested lesson is built, it will appear here for everyone to browse.</p>
+            <div className="cl-gallery-grid">
+              {CUSTOM_LESSONS.map((l) => {
+                const path = `/library/customized-lessons/${l.slug}`;
+                return (
+                  <div key={l.slug} className="cl-lesson-card">
+                    <div className="cl-lesson-body">
+                      <span className="cl-lesson-tag">{l.tag}</span>
+                      <h3 className="cl-lesson-title">{l.title}</h3>
+                      <p className="cl-lesson-level">{l.level}</p>
+                      <p className="cl-lesson-desc">{l.desc}</p>
+                    </div>
+                    <div className="cl-lesson-actions">
+                      <button type="button" className="cl-lesson-guide" onClick={() => openCustomLessonPopup(`${path}/guide`, "sentivoCustomGuide", 560, 640)}>
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20M4 4.5A2.5 2.5 0 0 1 6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5z" /></svg>
+                        Guide
+                      </button>
+                      <button type="button" className="cl-lesson-open" onClick={() => openCustomLessonPopup(path, "sentivoCustomLesson", 840, 860)}>
+                        Open
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+                      </button>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
           </div>
         ) : (
@@ -2525,6 +2569,34 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 }
 .cl-cta-btn:hover { background: #E0502F; }
 .cl-gallery-hd { font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 16px; color: #1B2A4A; max-width: 900px; margin: 0 auto 14px; }
+
+.cl-gallery-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px;
+  max-width: 900px; margin: 0 auto;
+}
+.cl-lesson-card {
+  display: flex; flex-direction: column; background: #fff; border: 1px solid #E4E8F2; border-radius: 16px;
+  padding: 18px 18px 16px; box-shadow: 0 4px 14px rgba(27,42,74,0.06);
+}
+.cl-lesson-body { flex: 1; }
+.cl-lesson-tag {
+  display: inline-block; font-family: 'Quicksand', sans-serif; font-weight: 700; font-size: 10.5px;
+  letter-spacing: 0.06em; text-transform: uppercase; color: #FF6B4A; background: rgba(255,107,74,0.1);
+  border-radius: 999px; padding: 4px 10px; margin-bottom: 10px;
+}
+.cl-lesson-title { font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 17px; color: #1B2A4A; margin: 0 0 6px; }
+.cl-lesson-level { font-family: 'Quicksand', sans-serif; font-weight: 700; font-size: 11.5px; color: #6B6580; margin: 0 0 8px; }
+.cl-lesson-desc { font-family: 'Quicksand', sans-serif; font-size: 13px; font-weight: 600; color: #6B6580; line-height: 1.55; margin: 0; }
+.cl-lesson-actions { display: flex; gap: 8px; margin-top: 16px; }
+.cl-lesson-guide, .cl-lesson-open {
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+  font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 12.5px;
+  border-radius: 999px; padding: 9px 14px; cursor: pointer; border: none;
+}
+.cl-lesson-guide { background: rgba(27,42,74,0.08); color: #1B2A4A; }
+.cl-lesson-guide:hover { background: rgba(27,42,74,0.14); }
+.cl-lesson-open { flex: 1; background: #1B2A4A; color: #fff; }
+.cl-lesson-open:hover { background: #12203D; }
 
 .dyn-landing--listen { background: linear-gradient(180deg, #F0F6F4 0%, #DEF0EA 100%); }
 .dyn-landing--listen .dyn-landing-eyebrow { color: #157A5A; }

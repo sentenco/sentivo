@@ -21,6 +21,8 @@ import ArticlePlayerPage from './ArticlePlayerPage.jsx'
 import VocabularyPlayerPage from './VocabularyPlayerPage.jsx'
 import HelloAlphabetLesson from './HelloAlphabetLesson.jsx'
 import HelloAlphabetGuide from './HelloAlphabetGuide.jsx'
+import RealEstateVocabLesson from './RealEstateVocabLesson.jsx'
+import RealEstateVocabGuide from './RealEstateVocabGuide.jsx'
 import WritingPlayerPage from './WritingPlayerPage.jsx'
 import NotebookHub from './NotebookHub.jsx'
 import FeedbackGenerator from './FeedbackGenerator.jsx'
@@ -229,6 +231,8 @@ createRoot(document.getElementById('root')).render(
             <Route path="/library/curriculum/:level/unit/:unitNum" element={<Library />} />
             <Route path="/library/curriculum/A1/unit/1/lesson/1" element={<HelloAlphabetLesson />} />
             <Route path="/library/curriculum/A1/unit/1/lesson/1/guide" element={<HelloAlphabetGuide />} />
+            <Route path="/library/customized-lessons/real-estate-vocabulary" element={<RealEstateVocabLesson />} />
+            <Route path="/library/customized-lessons/real-estate-vocabulary/guide" element={<RealEstateVocabGuide />} />
             <Route path="/library/stress" element={<Flashcards />} />
             <Route path="/library/articles/:slug" element={<Library />} />
             <Route path="/library/articles/:slug/player" element={<ArticlePlayerPage />} />
