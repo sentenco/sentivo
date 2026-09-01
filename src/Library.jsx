@@ -28,6 +28,13 @@ import { ARTICLES, ARTICLE_TOPICS } from "./articlesData";
 import VocabularyGames from "./VocabularyGames";
 import WritingActivities from "./WritingActivities";
 import CommunityFeed from "./CommunityFeed.jsx";
+import FORGE_TRACKS from "./forgeTracks";
+import SHIFT_TRACKS from "./shiftTracks";
+import ASCEND_TRACKS from "./ascendTracks";
+import RELAY_TRACKS from "./relayTracks";
+import BRIDGE_TRACKS from "./bridgeTracks";
+import DERIVE_TRACKS from "./deriveTracks";
+import SEQUENCE_TRACKS from "./sequenceTracks";
 
 const CATEGORIES = ["Articles", "Reading", "Speaking", "Grammar", "Vocabulary", "Writing", "Listening"];
 const PRO_CATEGORIES = ["Reading", "Speaking", "Grammar", "Vocabulary", "Writing", "Listening", "Customized Lessons"];
@@ -340,6 +347,25 @@ const SPEAKING_TRACKS = [
   { key: "derive", href: "/library/derive", hue: "derive", gap: "Picks the wrong word-family form", name: "Derive", desc: "Choose the right word-family member on demand, developing instead of development, decide instead of decision." },
   { key: "sequence", href: "/library/sequence", hue: "sequence", gap: "Words out of order", name: "Sequence", desc: "Take words a student already knows and put them in the order that actually makes a sentence." },
 ];
+
+// Each modality is its own hub with its own set of tracks (Forge/Ascend/etc.
+// all route to /library/{modality}/{trackId}), so a plain-text search has to
+// flatten every modality's actual tracks into one list -- searching just the
+// 7 top-level SPEAKING_TRACKS diagnosis cards above would never surface a
+// real topic like "school" or "travel", since those words live one level
+// down inside each modality's own track data, not in the diagnosis blurbs.
+const SPEAKING_MODALITY_TRACKS = {
+  forge: FORGE_TRACKS,
+  shift: SHIFT_TRACKS,
+  ascend: ASCEND_TRACKS,
+  relay: RELAY_TRACKS,
+  bridge: BRIDGE_TRACKS,
+  derive: DERIVE_TRACKS,
+  sequence: SEQUENCE_TRACKS,
+};
+const SPEAKING_SEARCH_INDEX = SPEAKING_TRACKS.flatMap((modality) =>
+  (SPEAKING_MODALITY_TRACKS[modality.key] || []).map((track) => ({ modality, track }))
+);
 
 // Small medical-tool glyph per track, shown inside the pin badge on each
 // Speaking card -- syringe/stethoscope/capsule rather than a generic
@@ -1777,14 +1803,44 @@ export default function Library() {
             <div className="spklab-lane"></div>
             {(() => {
               const q = query.trim().toLowerCase();
-              const tracks = q
-                ? SPEAKING_TRACKS.filter((t) => t.name.toLowerCase().includes(q) || t.gap.toLowerCase().includes(q) || t.desc.toLowerCase().includes(q))
-                : SPEAKING_TRACKS;
-              return tracks.length === 0 ? (
-                <p className="empty-msg">No Speaking tracks match "{query.trim()}".</p>
-              ) : (
+
+              if (q) {
+                // Search drills into every modality's actual tracks (not just
+                // the 7 diagnosis cards) so a real topic like "school" or
+                // "travel" can be found, matching the Vocabulary/Writing
+                // pattern of flattening sub-navigation while searching.
+                const results = SPEAKING_SEARCH_INDEX.filter(
+                  ({ modality, track }) =>
+                    track.title.toLowerCase().includes(q) ||
+                    (track.blurb || "").toLowerCase().includes(q) ||
+                    (track.category || track.theme || "").toLowerCase().includes(q) ||
+                    modality.name.toLowerCase().includes(q)
+                );
+                return results.length === 0 ? (
+                  <p className="empty-msg">No Speaking tracks match "{query.trim()}".</p>
+                ) : (
+                  <div className="spklab-grid">
+                    {results.map(({ modality, track }) => (
+                      <a key={`${modality.key}-${track.id}`} href={`${modality.href}/${track.id}`} className={`spklab-card spklab-card--${modality.hue}`}>
+                        <svg className="spklab-pin" viewBox="0 0 24 24">
+                          <circle cx="12" cy="12" r="12" />
+                          {SPKLAB_PIN_ICONS[modality.key]}
+                        </svg>
+                        <div className="spklab-body">
+                          <h3 className="spklab-name">{track.title}</h3>
+                          <div className="spklab-label">{modality.name}{track.level ? ` · ${track.level}` : ""}</div>
+                          <p className="spklab-gap">{track.blurb}</p>
+                          <span className="spklab-cta">Open {modality.name} →</span>
+                        </div>
+                      </a>
+                    ))}
+                  </div>
+                );
+              }
+
+              return (
                 <div className="spklab-grid">
-                  {tracks.map((t) => {
+                  {SPEAKING_TRACKS.map((t) => {
                     const Tag = t.comingSoon ? "div" : "a";
                     return (
                       <Tag
