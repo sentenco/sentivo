@@ -281,12 +281,12 @@ const SLIDES = [
 export const styles = `
 @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Quicksand:wght@500;600;700&display=swap');
 
-.psp-wrap { min-height: 100vh; width: 100%; background: #EEF1F6; color: #1B2A4A; font-family: 'Quicksand', sans-serif; padding: 1cm; box-sizing: border-box; display: flex; align-items: center; justify-content: center; }
+.psp-wrap { min-height: 100vh; width: 100%; background: #EEF1F6; color: #1B2A4A; font-family: 'Quicksand', sans-serif; padding: 16px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; }
 .psp-wrap * { box-sizing: border-box; }
 .psp-single { flex-shrink: 0; }
 
 .psp-slide {
-  position: relative; width: 740px; height: 580px; flex-shrink: 0;
+  position: relative; width: min(740px, calc(100vw - 32px)); height: min(580px, calc(100vh - 32px)); flex-shrink: 0;
   display: flex; flex-direction: column; overflow: hidden;
   background: #fff;
   border-radius: 22px;
@@ -342,4 +342,14 @@ export const styles = `
 
 .psp-qlist { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; max-width: 480px; }
 .psp-qlist li { font-size: 14px; font-weight: 600; color: #3A4568; background: #FAFBFD; border: 1px solid #E4E9F5; border-radius: 10px; padding: 12px 16px; }
+
+@media (max-width: 640px) {
+  .psp-header { padding: 14px 18px; }
+  .psp-body { padding: 16px 18px; gap: 8px; }
+  .psp-footer { padding: 12px 16px; }
+  .psp-h1 { font-size: 24px; }
+  .psp-h2 { font-size: 20px; }
+  .psp-blank-grid, .psp-compare-grid { grid-template-columns: 1fr; max-width: 100%; }
+  .psp-example-label { width: 76px; }
+}
 `;

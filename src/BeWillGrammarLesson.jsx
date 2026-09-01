@@ -267,12 +267,12 @@ const SLIDES = [
 export const styles = `
 @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Quicksand:wght@500;600;700&display=swap');
 
-.gbw-wrap { min-height: 100vh; width: 100%; background: #EEF1F6; color: #1B2A4A; font-family: 'Quicksand', sans-serif; padding: 1cm; box-sizing: border-box; display: flex; align-items: center; justify-content: center; }
+.gbw-wrap { min-height: 100vh; width: 100%; background: #EEF1F6; color: #1B2A4A; font-family: 'Quicksand', sans-serif; padding: 16px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; }
 .gbw-wrap * { box-sizing: border-box; }
 .gbw-single { flex-shrink: 0; }
 
 .gbw-slide {
-  position: relative; width: 740px; height: 580px; flex-shrink: 0;
+  position: relative; width: min(740px, calc(100vw - 32px)); height: min(580px, calc(100vh - 32px)); flex-shrink: 0;
   display: flex; flex-direction: column; overflow: hidden;
   background: #fff;
   border-radius: 22px;
@@ -319,4 +319,13 @@ export const styles = `
 
 .gbw-qlist { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; max-width: 460px; }
 .gbw-qlist li { font-size: 14px; font-weight: 600; color: #3A4568; background: #FAFBFD; border: 1px solid #E4E9F5; border-radius: 10px; padding: 12px 16px; }
+
+@media (max-width: 640px) {
+  .gbw-header { padding: 14px 18px; }
+  .gbw-body { padding: 18px 20px; gap: 10px; }
+  .gbw-footer { padding: 12px 16px; }
+  .gbw-h1 { font-size: 26px; }
+  .gbw-h2 { font-size: 21px; }
+  .gbw-example-grid, .gbw-blank-grid { grid-template-columns: 1fr; max-width: 100%; }
+}
 `;

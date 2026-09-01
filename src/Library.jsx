@@ -1186,6 +1186,7 @@ export default function Library() {
   const [category, setCategory] = useState(() => searchParams.get("cat") || "All");
   const [page, setPage] = useState(() => Number(searchParams.get("page")) || 1);
   const [query, setQuery] = useState("");
+  const [clTab, setClTab] = useState("All");
   const [showAllToday, setShowAllToday] = useState(false);
   const { user, plan, signOut } = useAuth();
   const isAdmin = user?.email?.toLowerCase() === "caldrin1999@gmail.com";
@@ -1894,8 +1895,15 @@ export default function Library() {
             </div>
 
             <div className="cl-gallery-hd">Published custom lessons</div>
+            <div className="cl-tabs">
+              {["All", ...Array.from(new Set(CUSTOM_LESSONS.map((l) => l.tag)))].map((t) => (
+                <button key={t} type="button" className={`cl-tab ${clTab === t ? "is-active" : ""}`} onClick={() => setClTab(t)}>
+                  {t}
+                </button>
+              ))}
+            </div>
             <div className="cl-gallery-grid">
-              {CUSTOM_LESSONS.map((l) => {
+              {CUSTOM_LESSONS.filter((l) => clTab === "All" || l.tag === clTab).map((l) => {
                 const path = `/library/customized-lessons/${l.slug}`;
                 return (
                   <div key={l.slug} className="cl-lesson-card">
@@ -2583,6 +2591,14 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 }
 .cl-cta-btn:hover { background: #E0502F; }
 .cl-gallery-hd { font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 16px; color: #1B2A4A; max-width: 900px; margin: 0 auto 14px; }
+
+.cl-tabs { display: flex; flex-wrap: wrap; gap: 8px; max-width: 900px; margin: 0 auto 18px; }
+.cl-tab {
+  font-family: 'Quicksand', sans-serif; font-weight: 700; font-size: 12.5px; color: #6B6580;
+  background: #fff; border: 1px solid #E4E8F2; border-radius: 999px; padding: 8px 16px; cursor: pointer;
+}
+.cl-tab:hover { border-color: #C7D0E5; }
+.cl-tab.is-active { background: #1B2A4A; border-color: #1B2A4A; color: #fff; }
 
 .cl-gallery-grid {
   display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px;
