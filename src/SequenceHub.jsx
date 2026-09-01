@@ -7,14 +7,19 @@ const AUDIENCES = [
   { key: "adults", label: "Adults" },
 ];
 
-function TrackCard({ track }) {
+function TrackCard({ track, index }) {
   const authored = track.lessons.filter(Boolean).length;
   return (
     <a href={`/library/sequence/${track.id}`} className="sqh-track-card">
       <div className="sqh-track-ribbon">
-        <span className="sqh-track-title">{track.title}</span>
+        <span className="sqh-track-num">Track {String(index + 1).padStart(2, "0")}</span>
+        <span className="sqh-track-level-pill">{track.level}</span>
       </div>
       <div className="sqh-track-body">
+        <div className="sqh-track-tags">
+          <span className="sqh-track-tag">Word Order Drill</span>
+        </div>
+        <h3 className="sqh-track-title">{track.title}</h3>
         <p className="sqh-track-desc">{track.blurb}</p>
         <div className="sqh-track-foot">
           <span className="sqh-track-meta">{authored} of {track.lessons.length} ready</span>
@@ -73,7 +78,7 @@ export default function SequenceHub() {
         </div>
 
         <div className="sqh-tracks-grid">
-          {tracks.length > 0 ? tracks.map((track) => <TrackCard key={track.id} track={track} />) : <GhostCard />}
+          {tracks.length > 0 ? tracks.map((track, i) => <TrackCard key={track.id} track={track} index={i} />) : <GhostCard />}
         </div>
       </div>
     </div>
@@ -200,12 +205,35 @@ const CSS = `
 
 .sqh-track-ribbon {
   background: linear-gradient(120deg, #5C6BC0 0%, #3F4C9E 100%);
-  padding: 20px 22px;
+  padding: 16px 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
-.sqh-track-title { font-family: 'Baloo 2', cursive; font-weight: 700; font-size: 22px; color: #FFFFFF; }
+.sqh-track-num { font-family: 'Baloo 2', cursive; font-weight: 700; font-size: 20px; color: #FFFFFF; }
+.sqh-track-level-pill {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 800;
+  font-size: 11px;
+  color: #3F4C9E;
+  background: #FFFFFF;
+  border-radius: 999px;
+  padding: 4px 12px;
+}
 
 .sqh-track-body { padding: 22px 22px 20px; flex: 1; display: flex; flex-direction: column; gap: 14px; }
-.sqh-track-desc { font-family: 'IBM Plex Sans', sans-serif; font-weight: 500; font-size: 13.5px; line-height: 1.55; color: #4B8B92; margin: 0; }
+.sqh-track-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.sqh-track-tag {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 700;
+  font-size: 11px;
+  color: #3F4C9E;
+  background: rgba(92,107,192,0.14);
+  border-radius: 999px;
+  padding: 4px 11px;
+}
+.sqh-track-title { font-family: 'Baloo 2', cursive; font-weight: 700; font-size: 22px; line-height: 1.25; color: #262A4A; margin: 0; min-height: 55px; }
+.sqh-track-desc { font-family: 'IBM Plex Sans', sans-serif; font-weight: 500; font-size: 13.5px; line-height: 1.55; color: #4B8B92; margin: 0; min-height: 63px; }
 
 .sqh-track-foot {
   display: flex;
