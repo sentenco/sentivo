@@ -6310,113 +6310,6 @@ export const ARTICLES = [
     ],
   },
   {
-    slug: "dogs-and-humans-shaped-each-other",
-    ready: true,
-    publishedAt: "2026-08-17",
-    emoji: "🐕",
-    variant: "planet",
-    topicLabel: "Nature & Science",
-    topicTitle: "Nature, Science & Planet",
-    title: "Dogs and Humans Have Been Shaping Each Other for 15,000 Years",
-    dek: "New research on ancient dog DNA shows the bond between humans and dogs is older — and closer — than scientists once thought.",
-    editions: {
-      plain: {
-        label: "Plain Edition",
-        range: "A1–A2",
-        readTime: "1 min read",
-        wordCount: 128,
-        blocks: [
-          { type: "p", parts: [
-            { t: "Dogs and people have lived together for a very long time. New research says humans and dogs have changed each other for about 15,000 years. Scientists found dog bones that are 15,800 years old at a place in Turkey. These are the oldest dog bones ever found." },
-          ] },
-          { type: "p", parts: [
-            { t: "Long ago, dogs helped people hunt for food. As humans moved to new places, dogs changed too. Cold places had strong dogs that pulled sleds. Mountain places had dogs that could breathe well in thin air. Forest places had fast, light dogs for hunting." },
-          ] },
-          { type: "p", parts: [
-            { t: "People also buried dogs next to humans in old graves. Some of these graves are 14,000 years old. This shows dogs were not just workers. They were also loved members of the family." },
-          ] },
-        ],
-      },
-      polished: {
-        label: "Polished Edition",
-        range: "B1–B2",
-        readTime: "2 min read",
-        wordCount: 214,
-        blocks: [
-          { type: "p", parts: [
-            { t: "New research published in August 2026 shows that humans and dogs have been shaping each other for at least fifteen thousand years." },
-            { c: 1 },
-            { t: " Scientists studying ancient DNA found the " },
-            { g: "remains", pos: "noun", def: "the parts of a body or object left after time has passed" },
-            { t: " of a dog that lived around 15,800 years ago at a site in Turkey, making it the oldest confirmed dog skeleton discovered so far. The findings, published as two papers in the journal Nature, suggest dogs became close companions to humans earlier than many scientists had expected." },
-            { c: 2 },
-          ] },
-          { type: "p", parts: [
-            { t: "As human groups spread into new environments, dogs adapted right alongside them. Arctic communities bred strong, thick-coated dogs to pull sleds across snow and ice, while other groups relied on smaller, agile dogs suited to dense forest " },
-            { g: "terrain", pos: "noun", def: "the physical features of an area of land" },
-            { t: ". In some high mountain regions, dog populations even developed genetic traits that helped them cope with thin air, showing how closely dog evolution followed human movement around the world." },
-          ] },
-          { type: "quote", text: "For 15,000 years, humans and dogs have been changing each other." },
-          { type: "p", parts: [
-            { t: "Archaeologists have also found dogs buried carefully beside humans in graves as old as 14,000 years, sometimes far from where the dogs themselves were born." },
-            { c: 3 },
-            { t: " Researchers say this shows ancient communities valued dogs for practical work, companionship, and " },
-            { g: "symbolic", pos: "adjective", def: "representing an idea or feeling rather than serving a practical purpose" },
-            { t: " meaning — a bond that has clearly lasted into the present day." },
-          ] },
-        ],
-      },
-      precise: {
-        label: "Precise Edition",
-        range: "C1–C2",
-        readTime: "2 min read",
-        wordCount: 209,
-        blocks: [
-          { type: "p", parts: [
-            { t: "Research published in August 2026 indicates that humans and dogs have been reshaping one another for at least fifteen thousand years." },
-            { c: 1 },
-            { t: " Geneticists examining ancient DNA identified the " },
-            { g: "vestiges", pos: "noun", def: "traces or remaining signs of something that existed in the past" },
-            { t: " of a dog that lived roughly 15,800 years ago at a site in Turkey, constituting the oldest confirmed dog skeleton unearthed to date. The findings, published as two papers in the journal Nature, suggest that dogs became intimate companions to humans considerably earlier than most researchers had anticipated." },
-            { c: 2 },
-          ] },
-          { type: "p", parts: [
-            { t: "As human populations dispersed into new environments, dogs evolved in tandem. Arctic communities bred robust, thick-coated dogs to haul sleds across snow and ice, while other groups relied on smaller, nimble dogs suited to dense forest " },
-            { g: "topography", pos: "noun", def: "the physical arrangement and shape of the land in a particular area" },
-            { t: ". In certain high-altitude regions, dog populations even acquired genetic traits enabling them to withstand thin air, illustrating how closely canine evolution tracked human migration across the globe." },
-          ] },
-          { type: "quote", text: "For 15,000 years, humans and dogs have been changing each other." },
-          { type: "p", parts: [
-            { t: "Archaeologists have likewise unearthed dogs interred carefully beside humans in graves as old as 14,000 years, occasionally far from where the animals themselves were born." },
-            { c: 3 },
-            { t: " Researchers contend this demonstrates that ancient communities esteemed dogs for practical labor, companionship, and " },
-            { g: "reverence", pos: "noun", def: "deep respect or admiration, sometimes with a spiritual quality" },
-            { t: " — a bond that has plainly endured into the present." },
-          ] },
-        ],
-      },
-    },
-    references: [
-      { domain: "sciencedaily.com", name: "ScienceDaily", headline: "For 15,000 years, humans and dogs have been changing each other" },
-      { domain: "ucl.ac.uk", name: "UCL", headline: "Humans kept dogs 5,000 years earlier than thought" },
-      { domain: "earthsky.org", name: "EarthSky", headline: "Humans' deep connection to dogs spans more than 15,000 years" },
-    ],
-    discussionGuide: [
-      {
-        q: "Does it surprise you that dogs and humans have lived together for over 15,000 years? Why or why not?",
-        follow: ["What do you think dogs and early humans needed from each other?"],
-      },
-      {
-        q: "The article says dogs changed depending on where people lived — cold places, mountains, forests. Do you know a dog breed from your own country? What is it good at?",
-        follow: [],
-      },
-      {
-        q: "Why do you think ancient people buried dogs next to humans in graves?",
-        follow: ["What does this tell us about how people felt about their dogs?"],
-      },
-    ],
-  },
-  {
     slug: "zimbabwe-dinosaur-discovery",
     ready: true,
     publishedAt: "2026-08-09",
@@ -6537,6 +6430,113 @@ export const ARTICLES = [
       {
         q: "Why is it important for scientists in different countries to study a discovery like this together?",
         follow: ["Can you think of another field where international teamwork matters just as much?"],
+      },
+    ],
+  },
+  {
+    slug: "dogs-and-humans-shaped-each-other",
+    ready: true,
+    publishedAt: "2026-08-17",
+    emoji: "🐕",
+    variant: "planet",
+    topicLabel: "Nature & Science",
+    topicTitle: "Nature, Science & Planet",
+    title: "Dogs and Humans Have Been Shaping Each Other for 15,000 Years",
+    dek: "New research on ancient dog DNA shows the bond between humans and dogs is older — and closer — than scientists once thought.",
+    editions: {
+      plain: {
+        label: "Plain Edition",
+        range: "A1–A2",
+        readTime: "1 min read",
+        wordCount: 128,
+        blocks: [
+          { type: "p", parts: [
+            { t: "Dogs and people have lived together for a very long time. New research says humans and dogs have changed each other for about 15,000 years. Scientists found dog bones that are 15,800 years old at a place in Turkey. These are the oldest dog bones ever found." },
+          ] },
+          { type: "p", parts: [
+            { t: "Long ago, dogs helped people hunt for food. As humans moved to new places, dogs changed too. Cold places had strong dogs that pulled sleds. Mountain places had dogs that could breathe well in thin air. Forest places had fast, light dogs for hunting." },
+          ] },
+          { type: "p", parts: [
+            { t: "People also buried dogs next to humans in old graves. Some of these graves are 14,000 years old. This shows dogs were not just workers. They were also loved members of the family." },
+          ] },
+        ],
+      },
+      polished: {
+        label: "Polished Edition",
+        range: "B1–B2",
+        readTime: "2 min read",
+        wordCount: 214,
+        blocks: [
+          { type: "p", parts: [
+            { t: "New research published in August 2026 shows that humans and dogs have been shaping each other for at least fifteen thousand years." },
+            { c: 1 },
+            { t: " Scientists studying ancient DNA found the " },
+            { g: "remains", pos: "noun", def: "the parts of a body or object left after time has passed" },
+            { t: " of a dog that lived around 15,800 years ago at a site in Turkey, making it the oldest confirmed dog skeleton discovered so far. The findings, published as two papers in the journal Nature, suggest dogs became close companions to humans earlier than many scientists had expected." },
+            { c: 2 },
+          ] },
+          { type: "p", parts: [
+            { t: "As human groups spread into new environments, dogs adapted right alongside them. Arctic communities bred strong, thick-coated dogs to pull sleds across snow and ice, while other groups relied on smaller, agile dogs suited to dense forest " },
+            { g: "terrain", pos: "noun", def: "the physical features of an area of land" },
+            { t: ". In some high mountain regions, dog populations even developed genetic traits that helped them cope with thin air, showing how closely dog evolution followed human movement around the world." },
+          ] },
+          { type: "quote", text: "For 15,000 years, humans and dogs have been changing each other." },
+          { type: "p", parts: [
+            { t: "Archaeologists have also found dogs buried carefully beside humans in graves as old as 14,000 years, sometimes far from where the dogs themselves were born." },
+            { c: 3 },
+            { t: " Researchers say this shows ancient communities valued dogs for practical work, companionship, and " },
+            { g: "symbolic", pos: "adjective", def: "representing an idea or feeling rather than serving a practical purpose" },
+            { t: " meaning — a bond that has clearly lasted into the present day." },
+          ] },
+        ],
+      },
+      precise: {
+        label: "Precise Edition",
+        range: "C1–C2",
+        readTime: "2 min read",
+        wordCount: 209,
+        blocks: [
+          { type: "p", parts: [
+            { t: "Research published in August 2026 indicates that humans and dogs have been reshaping one another for at least fifteen thousand years." },
+            { c: 1 },
+            { t: " Geneticists examining ancient DNA identified the " },
+            { g: "vestiges", pos: "noun", def: "traces or remaining signs of something that existed in the past" },
+            { t: " of a dog that lived roughly 15,800 years ago at a site in Turkey, constituting the oldest confirmed dog skeleton unearthed to date. The findings, published as two papers in the journal Nature, suggest that dogs became intimate companions to humans considerably earlier than most researchers had anticipated." },
+            { c: 2 },
+          ] },
+          { type: "p", parts: [
+            { t: "As human populations dispersed into new environments, dogs evolved in tandem. Arctic communities bred robust, thick-coated dogs to haul sleds across snow and ice, while other groups relied on smaller, nimble dogs suited to dense forest " },
+            { g: "topography", pos: "noun", def: "the physical arrangement and shape of the land in a particular area" },
+            { t: ". In certain high-altitude regions, dog populations even acquired genetic traits enabling them to withstand thin air, illustrating how closely canine evolution tracked human migration across the globe." },
+          ] },
+          { type: "quote", text: "For 15,000 years, humans and dogs have been changing each other." },
+          { type: "p", parts: [
+            { t: "Archaeologists have likewise unearthed dogs interred carefully beside humans in graves as old as 14,000 years, occasionally far from where the animals themselves were born." },
+            { c: 3 },
+            { t: " Researchers contend this demonstrates that ancient communities esteemed dogs for practical labor, companionship, and " },
+            { g: "reverence", pos: "noun", def: "deep respect or admiration, sometimes with a spiritual quality" },
+            { t: " — a bond that has plainly endured into the present." },
+          ] },
+        ],
+      },
+    },
+    references: [
+      { domain: "sciencedaily.com", name: "ScienceDaily", headline: "For 15,000 years, humans and dogs have been changing each other" },
+      { domain: "ucl.ac.uk", name: "UCL", headline: "Humans kept dogs 5,000 years earlier than thought" },
+      { domain: "earthsky.org", name: "EarthSky", headline: "Humans' deep connection to dogs spans more than 15,000 years" },
+    ],
+    discussionGuide: [
+      {
+        q: "Does it surprise you that dogs and humans have lived together for over 15,000 years? Why or why not?",
+        follow: ["What do you think dogs and early humans needed from each other?"],
+      },
+      {
+        q: "The article says dogs changed depending on where people lived — cold places, mountains, forests. Do you know a dog breed from your own country? What is it good at?",
+        follow: [],
+      },
+      {
+        q: "Why do you think ancient people buried dogs next to humans in graves?",
+        follow: ["What does this tell us about how people felt about their dogs?"],
       },
     ],
   },
