@@ -7,6 +7,10 @@ import ascendBusinessL1 from "./ascendBusiness1";
 import ascendLawL1 from "./ascendLaw1";
 import ascendNegotiationL1 from "./ascendNegotiation1";
 import ascendGovernanceL1 from "./ascendGovernance1";
+import ascendSocialL1 from "./ascendSocial1";
+import ascendEnvironmentL1 from "./ascendEnvironment1";
+import ascendFutureL1 from "./ascendFuture1";
+import ascendTechEthicsL1 from "./ascendTechEthics1";
 
 const TRACKS = [
   {
@@ -107,6 +111,50 @@ const TRACKS = [
     audience: ["adults"],
     blurb: "Say it plain, then say it stronger. Governance and risk talk pushed toward more precise, C1-level English.",
     lessons: [ascendGovernanceL1],
+  },
+  {
+    id: "ascend-social",
+    category: "Social Media & Digital Identity",
+    title: "Life Online",
+    theme: "Social Media & Digital Identity",
+    level: "B2-C1",
+    levelBand: "b2c1",
+    audience: ["teens"],
+    blurb: "Say it plain, then say it stronger. Opinions about life online pushed toward more precise, C1-level English.",
+    lessons: [ascendSocialL1],
+  },
+  {
+    id: "ascend-environment",
+    category: "Environment & Sustainability",
+    title: "Our Changing Planet",
+    theme: "Environment & Sustainability",
+    level: "B2-C1",
+    levelBand: "b2c1",
+    audience: ["teens"],
+    blurb: "Say it plain, then say it stronger. Opinions on the environment pushed toward more precise, C1-level English.",
+    lessons: [ascendEnvironmentL1],
+  },
+  {
+    id: "ascend-future",
+    category: "Education & Future Ambitions",
+    title: "Thinking About the Future",
+    theme: "Education & Future Ambitions",
+    level: "B2-C1",
+    levelBand: "b2c1",
+    audience: ["teens"],
+    blurb: "Say it plain, then say it stronger. Talk about the future pushed toward more precise, C1-level English.",
+    lessons: [ascendFutureL1],
+  },
+  {
+    id: "ascend-tech-ethics",
+    category: "Technology & Ethics",
+    title: "Technology & Right and Wrong",
+    theme: "Technology & Ethics",
+    level: "B2-C1",
+    levelBand: "b2c1",
+    audience: ["teens"],
+    blurb: "Say it plain, then say it stronger. Ethical questions pushed toward more precise, C1-level English.",
+    lessons: [ascendTechEthicsL1],
   },
 ];
 
