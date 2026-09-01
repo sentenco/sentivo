@@ -252,7 +252,7 @@ const C1C2 = [
     incoming: "I need to reschedule our 10am meeting tomorrow due to a conflict. Could we find another time this week?",
     mustInclude: ["Acknowledge the request", "Propose 2 alternative times", "Stay flexible"],
     prompt: "Reply to Ms. Okafor's email.",
-    sample: "Hi Ms. Okafor, of course, no problem. I'm available Wednesday at 2pm or Thursday at 11am — please let me know whichever works best for you, and I'll update the calendar accordingly.",
+    sample: "Hi Ms. Okafor, of course, no problem. I'm available Wednesday at 2pm or Thursday at 11am, please let me know whichever works best for you, and I'll update the calendar accordingly.",
   },
   {
     key: "jobOfferNegotiation",

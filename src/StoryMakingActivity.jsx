@@ -179,6 +179,7 @@ export default function StoryMakingActivity({ item }) {
       <style>{CSS}</style>
 
       <div className="sm-card">
+        <span className="sm-tape" />
         <div className="sm-picture-pane">
           {round.image ? (
             <img className="sm-scene" src={round.image} alt="" />
@@ -246,7 +247,7 @@ export default function StoryMakingActivity({ item }) {
 }
 
 const CSS = `
-@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&family=Quicksand:wght@500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Karla:wght@500;600;700;800&display=swap');
 
 .sm-shell {
   position: relative;
@@ -256,9 +257,16 @@ const CSS = `
   align-items: center;
   justify-content: center;
   padding: clamp(16px, 3vw, 32px);
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'Karla', sans-serif;
+  background: linear-gradient(160deg, #FFF8EF 0%, #FFF1E6 100%);
+  overflow: hidden;
 }
 .sm-shell * { box-sizing: border-box; }
+.sm-shell::before, .sm-shell::after {
+  content: ""; position: absolute; border-radius: 50%; pointer-events: none;
+}
+.sm-shell::before { width: 150px; height: 150px; background: rgba(62,157,191,0.14); top: -40px; left: -30px; }
+.sm-shell::after { width: 110px; height: 110px; background: rgba(111,207,151,0.14); bottom: -20px; right: 6%; }
 
 .sm-card {
   position: relative;
@@ -266,22 +274,16 @@ const CSS = `
   max-width: 980px;
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  background: #FFFDF8;
-  border-radius: 24px;
+  background: #FFFFFF;
+  border-radius: 22px;
   overflow: hidden;
-  box-shadow: 0 24px 50px rgba(110,93,198,0.20);
+  box-shadow: 0 24px 50px rgba(42,110,133,0.20);
+  z-index: 1;
 }
-.sm-card::before {
-  content: "";
-  position: absolute;
-  left: 50%;
-  top: 0;
-  bottom: 0;
-  width: 26px;
-  margin-left: -13px;
-  background: linear-gradient(to right, rgba(43,42,74,0.10), rgba(43,42,74,0) 45%, rgba(43,42,74,0) 55%, rgba(43,42,74,0.10));
-  pointer-events: none;
-  z-index: 2;
+.sm-tape {
+  position: absolute; top: -12px; left: 50%; transform: translateX(-50%) rotate(-3deg);
+  width: 68px; height: 22px; opacity: 0.9; z-index: 3;
+  background: repeating-linear-gradient(45deg, #6EC3E0, #6EC3E0 6px, #A6DCEC 6px, #A6DCEC 12px);
 }
 
 .sm-picture-pane { position: relative; background: #F3EEE6; min-height: 320px; }
@@ -292,24 +294,26 @@ const CSS = `
 
 .sm-bar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
 .sm-eyebrow {
+  font-family: 'Karla', sans-serif;
   font-size: 11px;
   font-weight: 800;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: #4E3AA6;
-  background: rgba(110,93,198,0.10);
+  color: #2A6E85;
+  background: rgba(62,157,191,0.14);
   border-radius: 999px;
   padding: 5px 14px;
 }
 .sm-count-dots { display: flex; align-items: center; gap: 5px; }
-.sm-count-dot { width: 7px; height: 7px; border-radius: 50%; background: #E5DFF7; transition: background 0.2s ease, transform 0.2s ease; }
-.sm-count-dot.is-filled { background: #9A8AE0; transform: scale(1.15); }
+.sm-count-dot { width: 7px; height: 7px; border-radius: 50%; background: #D6EDF4; transition: background 0.2s ease, transform 0.2s ease; }
+.sm-count-dot.is-filled { background: #3E9DBF; transform: scale(1.15); }
 .sm-count-dots[data-full="true"] .sm-count-dot.is-filled { background: #1F9D6E; }
 
-.sm-title { font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: clamp(22px, 3.6vw, 28px); color: #2B2A4A; margin: 0 0 6px; }
-.sm-focus { display: inline-block; font-size: 12.5px; color: #7A7391; margin-right: 10px; }
+.sm-title { font-family: 'Caveat', cursive; font-weight: 700; font-size: clamp(28px, 4.2vw, 36px); color: #4A3F3A; margin: 0 0 4px; }
+.sm-focus { display: inline-block; font-size: 12.5px; font-weight: 600; color: #A9836F; margin-right: 10px; }
 .sm-round-tag {
   display: inline-block;
+  font-family: 'Karla', sans-serif;
   font-size: 10.5px;
   font-weight: 800;
   letter-spacing: 0.04em;
@@ -321,18 +325,18 @@ const CSS = `
 }
 .sm-focus + .sm-round-tag { margin-bottom: 18px; }
 
-.sm-prompt { font-size: 13.5px; color: #5C6873; line-height: 1.5; margin: 0 0 12px; }
+.sm-prompt { font-size: 13.5px; font-weight: 500; color: #A9836F; line-height: 1.5; margin: 0 0 12px; }
 .sm-words { display: flex; flex-wrap: wrap; gap: 9px; margin-bottom: 18px; }
 .sm-word {
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'Karla', sans-serif;
   font-weight: 700;
   font-size: 12.5px;
-  color: #4E3AA6;
+  color: #2A6E85;
   background: #FFFFFF;
-  border: 1.5px solid #E5DFF7;
+  border: 1.5px solid #C7E6EE;
   border-radius: 9px;
   padding: 7px 12px;
-  box-shadow: 0 2px 0 #E5DFF7;
+  box-shadow: 0 2px 0 #C7E6EE;
   transform: rotate(var(--tilt, 0deg));
 }
 .sm-word:nth-child(3n+1) { --tilt: -3deg; }
@@ -343,42 +347,42 @@ const CSS = `
   width: 100%;
   flex: 1;
   min-height: 130px;
-  border: 1px solid #D9D2F3;
+  border: 1px solid #C7E6EE;
   border-radius: 14px;
   padding: 16px 16px 14px;
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'Karla', sans-serif;
   font-size: 14.5px;
-  color: #2B2A4A;
+  color: #4A3F3A;
   line-height: 28px;
   resize: vertical;
-  background: #FFFDF8 repeating-linear-gradient(to bottom, transparent 0, transparent 27px, #EAE4F9 28px);
+  background: #FFFDF8 repeating-linear-gradient(to bottom, transparent 0, transparent 27px, #E1F1F6 28px);
   background-position: 0 4px;
 }
-.sm-textarea:focus { outline: none; border-color: #6E5DC6; }
+.sm-textarea:focus { outline: none; border-color: #3E9DBF; }
 
 .sm-sample { margin-top: 16px; background: #E4F8EC; border-radius: 14px; padding: 16px 18px; }
 .sm-label { display: block; font-size: 12px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: #1F7A47; margin-bottom: 8px; }
-.sm-sample-text { font-size: 14.5px; color: #1F7A47; line-height: 1.6; margin: 0; }
+.sm-sample-text { font-family: 'Karla', sans-serif; font-size: 14.5px; color: #1F7A47; line-height: 1.6; margin: 0; }
 
 .sm-nav { display: flex; justify-content: space-between; margin-top: 22px; }
 .sm-btn {
-  font-family: 'Fredoka', sans-serif;
-  font-weight: 600;
-  font-size: 15px;
+  font-family: 'Karla', sans-serif;
+  font-weight: 800;
+  font-size: 14px;
   border: none;
   border-radius: 14px;
   padding: 12px 24px;
   cursor: pointer;
-  background: #F5EDE6;
-  color: #7A6B4E;
+  background: #FBEDE3;
+  color: #A9836F;
 }
 .sm-btn:disabled { opacity: 0.5; cursor: default; }
 .sm-btn--primary {
   color: #FFFFFF;
-  background: linear-gradient(135deg, #8D7AE0 0%, #6E5DC6 100%);
-  box-shadow: 0 6px 0 #4E3AA6;
+  background: linear-gradient(135deg, #6EC3E0 0%, #2A6E85 100%);
+  box-shadow: 0 6px 0 #1D4E5F;
 }
-.sm-btn--primary:active { transform: translateY(3px); box-shadow: 0 3px 0 #4E3AA6; }
+.sm-btn--primary:active { transform: translateY(3px); box-shadow: 0 3px 0 #1D4E5F; }
 
 @media (max-width: 760px) {
   .sm-card { grid-template-columns: 1fr; }
