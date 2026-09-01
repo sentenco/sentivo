@@ -3,6 +3,10 @@ import ascendSchoolL1 from "./ascendSchool1";
 import ascendFamilyL1 from "./ascendFamily1";
 import ascendSportsL1 from "./ascendSports1";
 import ascendMoviesL1 from "./ascendMovies1";
+import ascendBusinessL1 from "./ascendBusiness1";
+import ascendLawL1 from "./ascendLaw1";
+import ascendNegotiationL1 from "./ascendNegotiation1";
+import ascendGovernanceL1 from "./ascendGovernance1";
 
 const TRACKS = [
   {
@@ -59,6 +63,50 @@ const TRACKS = [
     audience: ["teens"],
     blurb: "Say it plain, then say it stronger. Real entertainment moments pushed toward more precise, natural English.",
     lessons: [ascendMoviesL1],
+  },
+  {
+    id: "ascend-business",
+    category: "Business & AI",
+    title: "Technology & the Modern Workplace",
+    theme: "Business & AI",
+    level: "B2-C1",
+    levelBand: "b2c1",
+    audience: ["adults"],
+    blurb: "Say it plain, then say it stronger. Professional opinions pushed toward more precise, C1-level English.",
+    lessons: [ascendBusinessL1],
+  },
+  {
+    id: "ascend-law",
+    category: "Law & Advocacy",
+    title: "Arguing for Change",
+    theme: "Law & Advocacy",
+    level: "B2-C1",
+    levelBand: "b2c1",
+    audience: ["adults"],
+    blurb: "Say it plain, then say it stronger. Arguments and positions pushed toward more precise, C1-level English.",
+    lessons: [ascendLawL1],
+  },
+  {
+    id: "ascend-negotiation",
+    category: "Negotiation & Contracts",
+    title: "Getting to an Agreement",
+    theme: "Negotiation & Contracts",
+    level: "B2-C1",
+    levelBand: "b2c1",
+    audience: ["adults"],
+    blurb: "Say it plain, then say it stronger. Negotiation talk pushed toward more precise, C1-level English.",
+    lessons: [ascendNegotiationL1],
+  },
+  {
+    id: "ascend-governance",
+    category: "Corporate Governance & Risk",
+    title: "Accountability & Risk",
+    theme: "Corporate Governance & Risk",
+    level: "B2-C1",
+    levelBand: "b2c1",
+    audience: ["adults"],
+    blurb: "Say it plain, then say it stronger. Governance and risk talk pushed toward more precise, C1-level English.",
+    lessons: [ascendGovernanceL1],
   },
 ];
 
