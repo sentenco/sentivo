@@ -51,6 +51,38 @@ import gaming5 from "./forgeGaming5";
 import gaming6 from "./forgeGaming6";
 import gaming7 from "./forgeGaming7";
 import gaming8 from "./forgeGaming8";
+import career1 from "./forgeCareer1";
+import career2 from "./forgeCareer2";
+import career3 from "./forgeCareer3";
+import career4 from "./forgeCareer4";
+import career5 from "./forgeCareer5";
+import career6 from "./forgeCareer6";
+import career7 from "./forgeCareer7";
+import career8 from "./forgeCareer8";
+import finance1 from "./forgeFinance1";
+import finance2 from "./forgeFinance2";
+import finance3 from "./forgeFinance3";
+import finance4 from "./forgeFinance4";
+import finance5 from "./forgeFinance5";
+import finance6 from "./forgeFinance6";
+import finance7 from "./forgeFinance7";
+import finance8 from "./forgeFinance8";
+import housing1 from "./forgeHousing1";
+import housing2 from "./forgeHousing2";
+import housing3 from "./forgeHousing3";
+import housing4 from "./forgeHousing4";
+import housing5 from "./forgeHousing5";
+import housing6 from "./forgeHousing6";
+import housing7 from "./forgeHousing7";
+import housing8 from "./forgeHousing8";
+import travel1 from "./forgeTravel1";
+import travel2 from "./forgeTravel2";
+import travel3 from "./forgeTravel3";
+import travel4 from "./forgeTravel4";
+import travel5 from "./forgeTravel5";
+import travel6 from "./forgeTravel6";
+import travel7 from "./forgeTravel7";
+import travel8 from "./forgeTravel8";
 
 const TRACKS = [
   {
@@ -100,6 +132,38 @@ const TRACKS = [
     audience: ["teens"],
     blurb: "Real situations online, from squad games to streamers, one root situation per lesson, word banks you'll actually reach for.",
     lessons: [gaming1, gaming2, gaming3, gaming4, gaming5, gaming6, gaming7, gaming8],
+  },
+  {
+    id: "career",
+    title: "Career & Job Search",
+    level: "A2-B1",
+    audience: ["adults"],
+    blurb: "Real situations from job interviews to work-life balance, one root situation per lesson, word banks you'll actually reach for.",
+    lessons: [career1, career2, career3, career4, career5, career6, career7, career8],
+  },
+  {
+    id: "finance",
+    title: "Finance & Banking",
+    level: "A2-B1",
+    audience: ["adults"],
+    blurb: "Real situations with money, from opening an account to planning a big purchase, one root situation per lesson, word banks you'll actually reach for.",
+    lessons: [finance1, finance2, finance3, finance4, finance5, finance6, finance7, finance8],
+  },
+  {
+    id: "housing",
+    title: "Housing & Apartment Life",
+    level: "A2-B1",
+    audience: ["adults"],
+    blurb: "Real situations around renting and home life, from apartment hunting to moving day, one root situation per lesson, word banks you'll actually reach for.",
+    lessons: [housing1, housing2, housing3, housing4, housing5, housing6, housing7, housing8],
+  },
+  {
+    id: "travel",
+    title: "Travel & Transportation",
+    level: "A2-B1",
+    audience: ["adults"],
+    blurb: "Real situations on the move, from booking a flight to coming home, one root situation per lesson, word banks you'll actually reach for.",
+    lessons: [travel1, travel2, travel3, travel4, travel5, travel6, travel7, travel8],
   },
 ];
 
