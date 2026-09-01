@@ -1782,27 +1782,6 @@ export default function Library() {
           <BookshelfFeature items={filtered} navigate={navigate} query={query} />
         ) : category === "Speaking" ? (
           <div className="spklab-page">
-            <div className="spklab-bg">
-              <svg width="130" height="130" viewBox="0 0 64 64" className="spklab-bg-item spklab-bg-item--1">
-                <path d="M20 8 v14 a10 10 0 0 0 20 0 V8" fill="none" stroke="#10646B" strokeWidth="4" strokeLinecap="round" />
-                <circle cx="20" cy="8" r="3" fill="#10646B" />
-                <circle cx="40" cy="8" r="3" fill="#10646B" />
-                <path d="M30 32 v8 a10 10 0 0 0 10 10 h4" fill="none" stroke="#10646B" strokeWidth="4" strokeLinecap="round" />
-                <circle cx="48" cy="52" r="7" fill="none" stroke="#10646B" strokeWidth="4" />
-              </svg>
-              <svg width="150" height="60" viewBox="0 0 150 60" className="spklab-bg-item spklab-bg-item--2">
-                <path d="M0 30 h30 l8 -20 l12 36 l10 -28 l8 12 h82" fill="none" stroke="#E8544E" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-              <svg width="90" height="90" viewBox="0 0 64 64" className="spklab-bg-item spklab-bg-item--3">
-                <g transform="rotate(-30 32 32)">
-                  <rect x="14" y="24" width="36" height="16" rx="8" fill="#FFC857" />
-                  <path d="M32 24 v16" stroke="#EAFBF8" strokeWidth="2" />
-                </g>
-              </svg>
-              <svg width="70" height="70" viewBox="0 0 24 24" className="spklab-bg-item spklab-bg-item--4">
-                <path d="M11 3h2v8h8v2h-8v8h-2v-8H3v-2h8z" fill="#2AA8AE" />
-              </svg>
-            </div>
             <div className="spklab-hero">
               <span className="spklab-eyebrow">Sentivo · Speaking</span>
               <h1 className="spklab-title">The Fluency Clinic</h1>
@@ -2660,18 +2639,14 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .spklab-page {
   width: 100%;
   max-width: 1080px;
-  background: linear-gradient(160deg, #EAFBF8 0%, #DFF4FA 100%);
+  background-image: url('/fluency-clinic-bg.png');
+  background-size: cover;
+  background-position: center;
   border-radius: 22px;
   padding: clamp(26px, 3.6vw, 48px) clamp(20px, 3.2vw, 40px);
   position: relative;
   overflow: hidden;
 }
-.spklab-bg { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
-.spklab-bg-item { position: absolute; }
-.spklab-bg-item--1 { top: -20px; right: 4%; opacity: 0.14; }
-.spklab-bg-item--2 { top: 36%; left: -10px; opacity: 0.12; }
-.spklab-bg-item--3 { bottom: -16px; left: 8%; opacity: 0.13; }
-.spklab-bg-item--4 { bottom: 6%; right: 14%; opacity: 0.14; }
 .spklab-hero { text-align: center; max-width: 560px; margin: 0 auto; position: relative; z-index: 1; }
 .spklab-eyebrow {
   display: block;
