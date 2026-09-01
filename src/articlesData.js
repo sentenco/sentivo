@@ -6434,6 +6434,850 @@ export const ARTICLES = [
     ],
   },
   {
+    slug: "storm-warning-changes-daily-life",
+    ready: true,
+    publishedAt: "2026-08-12",
+    emoji: "⛈️",
+    variant: "daily",
+    topicLabel: "Daily Life",
+    topicTitle: "Wellbeing & Daily Life",
+    title: "What a Storm Warning Changes Before the Rain Starts",
+    dek: "In places like Central Luzon, weather alerts change everyday routines long before any floodwater appears.",
+    editions: {
+      plain: {
+        label: "Plain Edition",
+        range: "A1–A2",
+        readTime: "1 min read",
+        wordCount: 158,
+        blocks: [
+          { type: "p", parts: [
+            { t: "When a storm warning goes out, life changes right away, even before bad weather starts. In the Philippines, a low-pressure area near Luzon made people plan ahead. Parents changed school plans. Workers thought about their trip home. Families checked food and water at home." },
+          ] },
+          { type: "p", parts: [
+            { t: "This happens in many countries, not only the Philippines. Different places prepare for storms in different ways. The real story is not only about wind and rain. It is about how people work together quickly when normal life gets interrupted." },
+          ] },
+          { type: "p", parts: [
+            { t: "People often talk about the storm itself. But there is also quiet work before it: planning, checking supplies, and staying calm. This work does not make the news, but it keeps people safe." },
+          ] },
+          { type: "p", parts: [
+            { t: "For learners, this topic uses easy, useful words like 'warning,' 'prepare,' and 'delay.' It shows that weather is not only a forecast. It changes how a whole day gets planned." },
+          ] },
+        ],
+      },
+      polished: {
+        label: "Polished Edition",
+        range: "B1–B2",
+        readTime: "3 min read",
+        wordCount: 402,
+        blocks: [
+          { type: "p", parts: [
+            { t: "When a storm warning is issued, daily life changes almost immediately, even before the weather itself turns severe." },
+            { c: 1 },
+            { t: " In the Philippines, reports of a low-pressure area and wind signals over parts of Luzon reminded residents that preparedness has become part of the routine. Parents " },
+            { g: "adjust", pos: "verb", def: "change something slightly so it works better in a new situation" },
+            { t: " school plans, commuters rethink their trips, and families begin checking supplies." },
+            { c: 1 },
+          ] },
+          { type: "p", parts: [
+            { t: "This is where local weather news becomes globally interesting." },
+            { c: 2 },
+            { t: " Readers everywhere know what it feels like to live with uncertain weather, but every region handles risk differently. In Central Luzon, the story is not only about a storm system moving through. It is about how communities " },
+            { g: "coordinate", pos: "verb", def: "organize people or things so they work well together" },
+            { t: " quickly once ordinary life gets interrupted." },
+            { c: 2 },
+          ] },
+          { type: "quote", text: "The real story is the invisible work before the rain." },
+          { type: "p", parts: [
+            { t: "Much of the coverage around a storm focuses on its dramatic arrival, but the more useful story is how people adapt in advance." },
+            { c: 1 },
+            { t: " That includes officials issuing warnings early, schools deciding whether to suspend classes, and households running through a simple mental " },
+            { g: "checklist", pos: "noun", def: "a list of things to check or do, used to make sure nothing is forgotten" },
+            { t: " before conditions worsen." },
+            { c: 3 },
+          ] },
+          { type: "p", parts: [
+            { t: "For readers learning English, the topic is easy to relate to no matter where they live. Weather is not only a forecast; it is a force that quietly reorganizes an entire day, from the first alert to the last all-clear." },
+          ] },
+        ],
+      },
+      precise: {
+        label: "Precise Edition",
+        range: "C1–C2",
+        readTime: "3 min read",
+        wordCount: 396,
+        blocks: [
+          { type: "p", parts: [
+            { t: "When a storm warning is issued, daily life shifts almost instantaneously, well before conditions themselves turn severe." },
+            { c: 1 },
+            { t: " In the Philippines, reports of a low-pressure area and wind signals over parts of Luzon reminded residents that preparedness has become woven into routine. Parents " },
+            { g: "recalibrate", pos: "verb", def: "adjust or reconsider something carefully in light of new information" },
+            { t: " school plans, commuters reconsider their trips, and households begin inventorying supplies." },
+            { c: 1 },
+          ] },
+          { type: "p", parts: [
+            { t: "This is precisely where local weather coverage becomes globally compelling." },
+            { c: 2 },
+            { t: " Readers everywhere recognize the unease of living with unpredictable weather, yet every region manages risk differently. In Central Luzon, the story extends beyond a storm system passing through; it concerns how communities " },
+            { g: "mobilize", pos: "verb", def: "organize and prepare people or resources quickly for action" },
+            { t: " swiftly once ordinary life is disrupted." },
+            { c: 2 },
+          ] },
+          { type: "quote", text: "The real story is the invisible work before the rain." },
+          { type: "p", parts: [
+            { t: "Much coverage of a storm dwells on its dramatic arrival, yet the more instructive story lies in anticipatory adaptation." },
+            { c: 1 },
+            { t: " This encompasses officials issuing early warnings, schools weighing whether to suspend classes, and households working through a mental " },
+            { g: "inventory", pos: "noun", def: "a careful, itemized review of available resources or things to check" },
+            { t: " before conditions deteriorate." },
+            { c: 3 },
+          ] },
+          { type: "p", parts: [
+            { t: "For English learners, the topic remains relatable regardless of geography. Weather is never merely a forecast; it is a force that quietly reorganizes an entire day, from the initial alert to the eventual all-clear." },
+          ] },
+        ],
+      },
+    },
+    references: [
+      { domain: "abs-cbn.com", name: "ABS-CBN", headline: "Tropical Cyclone Update and Class Suspension Coverage" },
+      { domain: "inquirer.net", name: "Philippine Daily Inquirer", headline: "Latest Philippines Headlines, Breaking News" },
+      { domain: "inquirer.net", name: "Philippine Daily Inquirer", headline: "Central Luzon Weather and Storm Coverage Archives" },
+    ],
+    discussionGuide: [
+      {
+        q: "What do you and your family usually do to prepare when a storm warning is announced?",
+        follow: ["What's the first thing you check or buy?"],
+      },
+      {
+        q: "The article says the 'real story' is the invisible work before the rain. What kinds of preparation do you think go unnoticed?",
+        follow: [],
+      },
+      {
+        q: "Why might two regions handle the same kind of storm warning very differently?",
+        follow: ["What resources or systems make a community better prepared?"],
+      },
+    ],
+  },
+  {
+    slug: "solar-eclipse-more-than-sky-event",
+    ready: true,
+    publishedAt: "2026-08-12",
+    emoji: "🌒",
+    variant: "planet",
+    topicLabel: "Nature & Science",
+    topicTitle: "Nature, Science & Planet",
+    title: "The Solar Eclipse Is More Than a Sky Event",
+    dek: "August's total solar eclipse is a rare reminder that science, culture, and shared attention can still bring people together.",
+    editions: {
+      plain: {
+        label: "Plain Edition",
+        range: "A1–A2",
+        readTime: "1 min read",
+        wordCount: 149,
+        blocks: [
+          { type: "p", parts: [
+            { t: "On August 12, 2026, there was a total solar eclipse. This means the moon covered the sun for a short time. Sky events like this are special because people all over the world can watch, without needing to speak the same language." },
+          ] },
+          { type: "p", parts: [
+            { t: "An eclipse feels different from most science news. You do not need special training to feel it. The sky gets dark in the middle of the day, and everyone notices right away." },
+          ] },
+          { type: "p", parts: [
+            { t: "One sky event can make people curious about many things: the sun, the moon, telescopes, and how scientists study space. It is a small moment that opens the door to bigger questions." },
+          ] },
+          { type: "p", parts: [
+            { t: "For learners, this topic is easy to talk about. Students can describe what happens during an eclipse, say where it was visible, and talk about how people got ready to watch it." },
+          ] },
+        ],
+      },
+      polished: {
+        label: "Polished Edition",
+        range: "B1–B2",
+        readTime: "3 min read",
+        wordCount: 394,
+        blocks: [
+          { type: "p", parts: [
+            { t: "On August 12, 2026, the calendar marked a total solar eclipse, and that gives science an unusual public spotlight." },
+            { c: 1 },
+            { t: " Sky events are often memorable because they cross borders without needing translation. People in different countries can all look up and know they are witnessing the same " },
+            { g: "temporary", pos: "adjective", def: "lasting for only a short time" },
+            { t: " change at once." },
+            { c: 1 },
+          ] },
+          { type: "p", parts: [
+            { t: "That shared experience is what makes astronomy so powerful as a public story." },
+            { c: 2 },
+            { t: " Unlike many scientific developments, an eclipse is visible, immediate, and " },
+            { g: "intuitive", pos: "adjective", def: "understood naturally, without needing to think hard or study first" },
+            { t: ". Readers do not need advanced training to feel the significance of daylight fading in the middle of the day." },
+            { c: 2 },
+          ] },
+          { type: "quote", text: "A single sky event can turn into a doorway to bigger questions." },
+          { type: "p", parts: [
+            { t: "An eclipse can also connect to broader curiosity about the sky. Watching the moon's shadow cross the sun can lead people to think about climate, timekeeping, observatories, and how science helps explain the world around us." },
+            { c: 1 },
+            { t: " In that sense, the eclipse functions as both a spectacle and a " },
+            { g: "gateway", pos: "noun", def: "something that leads to or makes possible further experience or understanding" },
+            { t: "." },
+            { c: 2 },
+          ] },
+          { type: "p", parts: [
+            { t: "For learners, it is a strong topic because it combines simple language with a real scientific phenomenon. Students can describe what happens, compare where eclipses are visible, and talk about how people prepare to watch them." },
+            { c: 1 },
+          ] },
+        ],
+      },
+      precise: {
+        label: "Precise Edition",
+        range: "C1–C2",
+        readTime: "3 min read",
+        wordCount: 389,
+        blocks: [
+          { type: "p", parts: [
+            { t: "On August 12, 2026, the calendar marked a total solar eclipse, affording science an unusual measure of public attention." },
+            { c: 1 },
+            { t: " Celestial events are frequently memorable precisely because they transcend borders without requiring translation. Observers across different countries can simultaneously witness the same " },
+            { g: "transient", pos: "adjective", def: "lasting only briefly before passing or changing" },
+            { t: " change overhead." },
+            { c: 1 },
+          ] },
+          { type: "p", parts: [
+            { t: "That shared experience is precisely what renders astronomy such a potent public narrative." },
+            { c: 2 },
+            { t: " Unlike many scientific developments, an eclipse is visible, immediate, and " },
+            { g: "instinctive", pos: "adjective", def: "understood naturally, without conscious reasoning or prior study" },
+            { t: " in its impact. Onlookers require no specialized training to register the significance of daylight dimming at midday." },
+            { c: 2 },
+          ] },
+          { type: "quote", text: "A single sky event can turn into a doorway to bigger questions." },
+          { type: "p", parts: [
+            { t: "An eclipse can further connect to broader curiosity about the cosmos. Observing the moon's shadow traverse the sun may prompt reflection on climate, timekeeping, observatories, and the explanatory power of science more generally." },
+            { c: 1 },
+            { t: " In that respect, the eclipse functions simultaneously as spectacle and " },
+            { g: "conduit", pos: "noun", def: "something that serves as a channel or pathway leading to something else" },
+            { t: "." },
+            { c: 2 },
+          ] },
+          { type: "p", parts: [
+            { t: "For learners, this is a compelling topic because it pairs accessible language with a genuine scientific phenomenon. Students can describe the event, compare regions of visibility, and discuss the preparations people undertake to observe it." },
+            { c: 1 },
+          ] },
+        ],
+      },
+    },
+    references: [
+      { domain: "timeanddate.com", name: "timeanddate.com", headline: "August 2026 Total Solar Eclipse: Where and When to See It" },
+      { domain: "reuters.com", name: "Reuters", headline: "Chile's Rubin Observatory Begins Decade-Long Mission to Film the Universe" },
+      { domain: "sciencedaily.com", name: "ScienceDaily", headline: "ScienceDaily: Your Source for the Latest Research News" },
+    ],
+    discussionGuide: [
+      {
+        q: "Have you ever seen a solar or lunar eclipse? What was it like?",
+        follow: ["If not, would you travel somewhere to see one?"],
+      },
+      {
+        q: "The article says an eclipse is a 'shared experience' that crosses borders. Can you think of another natural event that does this?",
+        follow: [],
+      },
+      {
+        q: "Why do you think people feel a strong emotional reaction to eclipses, even though scientists can predict them exactly?",
+        follow: ["Does knowing the science in advance make the moment less special, in your opinion?"],
+      },
+    ],
+  },
+  {
+    slug: "flight-disruptions-fragile-work",
+    ready: true,
+    publishedAt: "2026-08-12",
+    emoji: "✈️",
+    variant: "work",
+    topicLabel: "Work & Business",
+    topicTitle: "Worklife, Business & Careers",
+    title: "Flight Disruptions Show How Fragile Work Can Be",
+    dek: "A strike threat at a major Canadian airline is a reminder that modern work systems can be interrupted in a single day.",
+    editions: {
+      plain: {
+        label: "Plain Edition",
+        range: "A1–A2",
+        readTime: "1 min read",
+        wordCount: 155,
+        blocks: [
+          { type: "p", parts: [
+            { t: "A Canadian airline, WestJet, had a strike threat this summer. Flight attendants said they might stop working. Many flights were canceled. This is more than an airline problem." },
+          ] },
+          { type: "p", parts: [
+            { t: "When flights stop, the problem grows bigger. Passengers miss other flights. Businesses cannot travel for meetings. Airports become full of people waiting." },
+          ] },
+          { type: "p", parts: [
+            { t: "This shows that modern work depends on many small parts working together. If one part stops, like airline staff, the effect spreads fast to many people." },
+          ] },
+          { type: "p", parts: [
+            { t: "For learners, this topic uses useful words like 'strike,' 'cancel,' and 'delay.' It also shows that a work problem is not only about money. It is also about missed weddings, meetings, and plans." },
+          ] },
+        ],
+      },
+      polished: {
+        label: "Polished Edition",
+        range: "B1–B2",
+        readTime: "3 min read",
+        wordCount: 399,
+        blocks: [
+          { type: "p", parts: [
+            { t: "A strike threat at WestJet, a major Canadian airline, is more than an aviation story." },
+            { c: 1 },
+            { t: " It is a reminder that work systems depend on coordination, timing, and labor relations that can change quickly. When flights are canceled, the effects spread far beyond the airline itself: passengers miss connections, businesses delay trips, and airports grow " },
+            { g: "congested", pos: "adjective", def: "crowded and difficult to move through because too many people or things are in one place" },
+            { t: "." },
+            { c: 1 },
+          ] },
+          { type: "p", parts: [
+            { t: "That makes this a valuable work-and-business topic, because it reveals how fragile modern service economies can be." },
+            { c: 2 },
+            { t: " A disruption in one sector can " },
+            { g: "ripple", pos: "verb", def: "spread outward gradually, affecting more and more things or people" },
+            { t: " through tourism, logistics, and customer planning almost immediately. Readers may think of labor disputes as abstract, but this one becomes visible in real time." },
+            { c: 1 },
+          ] },
+          { type: "quote", text: "A cancellation is not only a business problem; it is also a missed wedding, a delayed meeting, a lost day of pay." },
+          { type: "p", parts: [
+            { t: "The human side of disruption is easy to overlook in headlines focused on numbers and negotiations." },
+            { c: 2 },
+            { t: " But for the traveler stranded at a gate, the story is far more personal, and that gives the article emotional depth as well as practical relevance." },
+            { c: 3 },
+          ] },
+          { type: "p", parts: [
+            { t: "For learners, the topic is easy to grasp because it uses everyday travel and work language. It shows how a single labor dispute can make the hidden machinery of the modern economy suddenly visible." },
+            { c: 1 },
+          ] },
+        ],
+      },
+      precise: {
+        label: "Precise Edition",
+        range: "C1–C2",
+        readTime: "3 min read",
+        wordCount: 393,
+        blocks: [
+          { type: "p", parts: [
+            { t: "A strike threat at WestJet, a major Canadian carrier, transcends the realm of mere aviation news." },
+            { c: 1 },
+            { t: " It underscores how work systems hinge on coordination, timing, and labor relations that can shift abruptly. When flights are grounded, repercussions extend well beyond the airline itself: passengers miss connections, enterprises postpone travel, and airports grow " },
+            { g: "unwieldy", pos: "adjective", def: "difficult to manage or handle because of size, complexity, or crowding" },
+            { t: "." },
+            { c: 1 },
+          ] },
+          { type: "p", parts: [
+            { t: "This renders the episode a valuable case study in labor and commerce, exposing how fragile modern service economies can prove to be." },
+            { c: 2 },
+            { t: " A disruption in a single sector can " },
+            { g: "reverberate", pos: "verb", def: "spread and continue to have an effect, especially in a way that is felt strongly" },
+            { t: " across tourism, logistics, and client planning almost instantaneously. Labor disputes are frequently perceived as abstract, yet this one becomes conspicuously visible in real time." },
+            { c: 1 },
+          ] },
+          { type: "quote", text: "A cancellation is not only a business problem; it is also a missed wedding, a delayed meeting, a lost day of pay." },
+          { type: "p", parts: [
+            { t: "The human dimension of disruption is easily obscured by headlines fixated on figures and negotiations." },
+            { c: 2 },
+            { t: " Yet for the traveler stranded at a gate, the narrative is decidedly more personal, lending the story both emotional weight and practical significance." },
+            { c: 3 },
+          ] },
+          { type: "p", parts: [
+            { t: "For learners, the topic remains accessible because it draws on everyday travel and workplace vocabulary. It illustrates how a single labor dispute can render the hidden machinery of the modern economy abruptly conspicuous." },
+            { c: 1 },
+          ] },
+        ],
+      },
+    },
+    references: [
+      { domain: "globalnews.ca", name: "Global News", headline: "WestJet Braces for Potential Flight Attendants Strike" },
+      { domain: "globalnews.ca", name: "Global News", headline: "WestJet Cancels Dozens of Flights Across Canada" },
+      { domain: "reuters.com", name: "Reuters", headline: "Hilton Raises Annual Room Revenue Growth Forecast on Strong Luxury Hotel Demand" },
+    ],
+    discussionGuide: [
+      {
+        q: "Has a strike, cancellation, or delay ever disrupted a trip or plan of yours? What happened?",
+        follow: ["How did you or the people around you adapt?"],
+      },
+      {
+        q: "The article says a cancellation can mean a 'missed wedding' or 'lost day of pay.' Why do you think it's important to think about disruptions this way, not just as numbers?",
+        follow: [],
+      },
+      {
+        q: "Why do you think a problem at one airline can affect so many other industries so quickly?",
+        follow: ["Can you think of another job or system where a small disruption could cause a big ripple effect?"],
+      },
+    ],
+  },
+  {
+    slug: "holiday-weekend-new-shape",
+    ready: true,
+    publishedAt: "2026-08-13",
+    emoji: "🎉",
+    variant: "daily",
+    topicLabel: "Daily Life",
+    topicTitle: "Wellbeing & Daily Life",
+    title: "The New Shape of a Holiday Weekend",
+    dek: "Small observance days now shape shopping, travel, and family plans more than many people notice.",
+    editions: {
+      plain: {
+        label: "Plain Edition",
+        range: "A1–A2",
+        readTime: "1 min read",
+        wordCount: 151,
+        blocks: [
+          { type: "p", parts: [
+            { t: "August has many small holidays, like Friendship Day, Cat Day, and Dog Day. These days seem small and fun. But they can change what people buy, post online, or plan with family." },
+          ] },
+          { type: "p", parts: [
+            { t: "A small holiday can turn into a busy weekend. People make plans to meet friends, buy gifts, or post pictures of their pets. Stores and restaurants notice this too." },
+          ] },
+          { type: "p", parts: [
+            { t: "This shows that modern life is often organized around small shared moments, not only big official holidays. These days give people a reason to connect." },
+          ] },
+          { type: "p", parts: [
+            { t: "For learners, this topic is light and easy to talk about. Students can compare which special days matter in their own country, and which ones they only see online." },
+          ] },
+        ],
+      },
+      polished: {
+        label: "Polished Edition",
+        range: "B1–B2",
+        readTime: "3 min read",
+        wordCount: 388,
+        blocks: [
+          { type: "p", parts: [
+            { t: "In August 2026, calendars are crowded with observances that quietly affect everyday behavior, from National Friendship Day to International Cat Day and International Dog Day." },
+            { c: 1 },
+            { t: " These dates may look playful, but they " },
+            { g: "influence", pos: "verb", def: "have an effect on how someone thinks, acts, or decides something" },
+            { t: " what people buy, post, gift, and plan. A holiday weekend can become a small economy of meals, visits, and social media moments." },
+            { c: 1 },
+          ] },
+          { type: "p", parts: [
+            { t: "This makes the topic more than a list of dates." },
+            { c: 2 },
+            { t: " It is really about how modern life gets organized around small shared moments. Businesses notice these patterns, families plan around them, and communities use them to signal care or " },
+            { g: "identity", pos: "noun", def: "the qualities and characteristics that make a person or group who they are" },
+            { t: "." },
+            { c: 2 },
+          ] },
+          { type: "quote", text: "A celebration day is not just a date on paper; it changes traffic, shopping, food, and conversation." },
+          { type: "p", parts: [
+            { t: "A single observance can shape an entire weekend, from the moment someone sees a reminder online to the meal or gathering it eventually inspires." },
+            { c: 2 },
+            { t: " That timing effect is what gives a simple calendar story real " },
+            { g: "editorial", pos: "adjective", def: "relating to the content and ideas a publication chooses to cover" },
+            { t: " value." },
+            { c: 1 },
+          ] },
+          { type: "p", parts: [
+            { t: "The story is also interesting because it reveals how much modern life is shaped by symbolic moments. Readers can compare which observances matter in their own countries and which ones feel purely digital." },
+          ] },
+        ],
+      },
+      precise: {
+        label: "Precise Edition",
+        range: "C1–C2",
+        readTime: "3 min read",
+        wordCount: 384,
+        blocks: [
+          { type: "p", parts: [
+            { t: "In August 2026, calendars are saturated with observances that subtly shape everyday behavior, from National Friendship Day to International Cat Day and International Dog Day." },
+            { c: 1 },
+            { t: " These dates may appear frivolous, yet they " },
+            { g: "condition", pos: "verb", def: "gradually shape or influence how someone behaves or thinks" },
+            { t: " what people purchase, post, gift, and plan. A holiday weekend can coalesce into a modest economy of meals, gatherings, and social media moments." },
+            { c: 1 },
+          ] },
+          { type: "p", parts: [
+            { t: "This renders the topic considerably more than a mere inventory of dates." },
+            { c: 2 },
+            { t: " It concerns, fundamentally, how modern existence is organized around small, shared moments. Businesses register these patterns, families plan around them, and communities deploy them to signal care or " },
+            { g: "affiliation", pos: "noun", def: "a sense of connection or belonging to a particular group or cause" },
+            { t: "." },
+            { c: 2 },
+          ] },
+          { type: "quote", text: "A celebration day is not just a date on paper; it changes traffic, shopping, food, and conversation." },
+          { type: "p", parts: [
+            { t: "A single observance can shape an entire weekend, from the moment a reminder surfaces online to the gathering it ultimately inspires." },
+            { c: 2 },
+            { t: " This timing effect is precisely what lends a seemingly trivial calendar story genuine " },
+            { g: "editorial", pos: "adjective", def: "relating to the content and ideas a publication chooses to cover" },
+            { t: " merit." },
+            { c: 1 },
+          ] },
+          { type: "p", parts: [
+            { t: "The story is likewise compelling in that it reveals the extent to which modern life is governed by symbolic moments. Readers might compare which observances resonate within their own countries and which register as purely digital constructs." },
+          ] },
+        ],
+      },
+    },
+    references: [
+      { domain: "checkiday.com", name: "Checkiday", headline: "August 2026 Holidays and Observances" },
+      { domain: "sproutsocial.com", name: "Sprout Social", headline: "The Ultimate Social Media Holiday Calendar for 2026" },
+      { domain: "un.org", name: "United Nations", headline: "International Days and Weeks" },
+    ],
+    discussionGuide: [
+      {
+        q: "Do you celebrate or notice small observance days like Friendship Day or Dog Day? Which ones matter to you?",
+        follow: ["Do you think these days are more real or more 'just for social media'?"],
+      },
+      {
+        q: "The article says a small holiday can 'become a mini economy.' Can you give an example of a small day that affects shopping or plans in your country?",
+        follow: [],
+      },
+      {
+        q: "Why do you think people enjoy having small, shared moments to celebrate, even if the 'holiday' itself feels invented?",
+        follow: [],
+      },
+    ],
+  },
+  {
+    slug: "cities-watching-water-systems",
+    ready: true,
+    publishedAt: "2026-08-13",
+    emoji: "💧",
+    variant: "planet",
+    topicLabel: "Nature & Science",
+    topicTitle: "Nature, Science & Planet",
+    title: "Why Cities Are Watching Their Water Systems More Closely",
+    dek: "Cyberattacks on infrastructure show that science, engineering, and public safety are now tightly connected.",
+    editions: {
+      plain: {
+        label: "Plain Edition",
+        range: "A1–A2",
+        readTime: "1 min read",
+        wordCount: 147,
+        blocks: [
+          { type: "p", parts: [
+            { t: "A new kind of safety story is happening in 2026: cyberattacks on water systems. In Minnesota, reports said water facilities were targeted by attackers online. Water sounds simple, but the systems behind it are complex and important." },
+          ] },
+          { type: "p", parts: [
+            { t: "This story sits between science and safety. People usually think cyberattacks only happen to computers or phones. But attacks like this can affect real, physical things, like clean water." },
+          ] },
+          { type: "p", parts: [
+            { t: "Most people do not think about water treatment until something threatens it. Stories like this help people understand why watching and protecting these systems matters every day." },
+          ] },
+          { type: "p", parts: [
+            { t: "For learners, this topic uses useful words like 'infrastructure,' 'target,' and 'protect.' It shows how a hidden system suddenly becomes something everyone should notice." },
+          ] },
+        ],
+      },
+      polished: {
+        label: "Polished Edition",
+        range: "B1–B2",
+        readTime: "3 min read",
+        wordCount: 391,
+        blocks: [
+          { type: "p", parts: [
+            { t: "A new kind of public safety story is unfolding in 2026: cyberattacks on water systems." },
+            { c: 1 },
+            { t: " Reports from Minnesota described water facilities appearing to be targeted in coordinated attacks, and that kind of news turns a technical issue into a civic one. Water may sound ordinary, but the systems behind it are highly complex and deeply important." },
+            { c: 1 },
+          ] },
+          { type: "p", parts: [
+            { t: "This is a strong science-and-society topic because it sits at the meeting point of engineering, risk, and public trust." },
+            { c: 1 },
+            { t: " People often think of cyber threats as digital only, but attacks on " },
+            { g: "infrastructure", pos: "noun", def: "the basic physical systems, like water, power, or transport, that a society needs to function" },
+            { t: " can affect basic services in the physical world." },
+          ] },
+          { type: "quote", text: "Readers may not think about water treatment until something threatens it." },
+          { type: "p", parts: [
+            { t: "An article like this helps readers see why monitoring, maintenance, and cybersecurity are now treated as part of the same conversation, rather than separate specialties." },
+            { g: "monitoring", pos: "noun", def: "the ongoing act of watching and checking something to notice changes or problems" },
+            { t: " systems that once ran quietly in the background are now central to how cities plan for safety." },
+          ] },
+          { type: "p", parts: [
+            { t: "For ESL learners, the topic is both topical and easy to discuss. They can use vocabulary like 'infrastructure,' 'target,' 'coordination,' and 'protection' while talking about a system most people never think about until it is threatened." },
+          ] },
+        ],
+      },
+      precise: {
+        label: "Precise Edition",
+        range: "C1–C2",
+        readTime: "3 min read",
+        wordCount: 387,
+        blocks: [
+          { type: "p", parts: [
+            { t: "A novel category of public safety concern is unfolding in 2026: cyberattacks directed at water systems." },
+            { c: 1 },
+            { t: " Reports from Minnesota described water facilities apparently targeted in coordinated attacks, transforming a technical matter into a distinctly civic one. Water may sound unremarkable, but the systems sustaining it are highly intricate and deeply consequential." },
+            { c: 1 },
+          ] },
+          { type: "p", parts: [
+            { t: "This constitutes a compelling science-and-society topic, situated at the confluence of engineering, risk, and public trust." },
+            { c: 1 },
+            { t: " Cyber threats are commonly perceived as purely digital, yet attacks on " },
+            { g: "infrastructure", pos: "noun", def: "the basic physical systems, like water, power, or transport, that a society needs to function" },
+            { t: " can compromise essential services in the physical world." },
+          ] },
+          { type: "quote", text: "Readers may not think about water treatment until something threatens it." },
+          { type: "p", parts: [
+            { t: "A piece of this kind helps readers grasp why monitoring, maintenance, and cybersecurity are now regarded as facets of a single conversation rather than " },
+            { g: "discrete", pos: "adjective", def: "separate and distinct from other things, not connected or combined" },
+            { t: " specialties. Systems that once operated quietly in the background have become central to how cities plan for resilience." },
+          ] },
+          { type: "p", parts: [
+            { t: "For English learners, the topic is both timely and readily discussable. They can deploy vocabulary such as 'infrastructure,' 'target,' 'coordination,' and 'protection' while examining a system most people overlook until it comes under threat." },
+          ] },
+        ],
+      },
+    },
+    references: [
+      { domain: "globalnews.ca", name: "Global News", headline: "Minnesota Water Facilities Targeted by Coordinated Cyberattacks" },
+      { domain: "reuters.com", name: "Reuters", headline: "Science News | Today's Latest Science Headlines" },
+      { domain: "sciencedaily.com", name: "ScienceDaily", headline: "ScienceDaily: Your Source for the Latest Research News" },
+    ],
+    discussionGuide: [
+      {
+        q: "Before reading this, had you ever thought about the safety of a system like your local water supply?",
+        follow: ["What other 'invisible' systems do you rely on every day without thinking about them?"],
+      },
+      {
+        q: "The article says cyberattacks are usually thought of as 'digital only.' Why do you think an attack on physical infrastructure feels more alarming?",
+        follow: [],
+      },
+      {
+        q: "Who do you think should be responsible for protecting infrastructure like water systems: governments, private companies, or both?",
+        follow: ["What makes that a difficult question to answer?"],
+      },
+    ],
+  },
+  {
+    slug: "ai-tools-enter-classroom",
+    ready: true,
+    publishedAt: "2026-08-13",
+    emoji: "🎓",
+    variant: "tech",
+    topicLabel: "Digital & Tech",
+    topicTitle: "Digital Life & Future Tech",
+    title: "When AI Tools Enter the Classroom",
+    dek: "New education-facing AI products are changing how teachers prepare lessons and how students practice skills.",
+    editions: {
+      plain: {
+        label: "Plain Edition",
+        range: "A1–A2",
+        readTime: "1 min read",
+        wordCount: 153,
+        blocks: [
+          { type: "p", parts: [
+            { t: "AI is not only used in offices now. It is also entering classrooms. New AI tools help teachers plan lessons and help students practice skills." },
+          ] },
+          { type: "p", parts: [
+            { t: "This is important because classrooms are where young people learn digital habits for the future. If AI helps teachers save time and explain things clearly, that is useful." },
+          ] },
+          { type: "p", parts: [
+            { t: "But there is also a risk. If students use AI too much, they might take shortcuts instead of thinking for themselves. That balance is what makes this topic interesting." },
+          ] },
+          { type: "p", parts: [
+            { t: "For learners, this topic feels very real, because many students already use AI to study. They can talk about what feels helpful, and what might weaken real learning." },
+          ] },
+        ],
+      },
+      polished: {
+        label: "Polished Edition",
+        range: "B1–B2",
+        readTime: "3 min read",
+        wordCount: 397,
+        blocks: [
+          { type: "p", parts: [
+            { t: "The new wave of AI tools is reaching classrooms as well as offices." },
+            { c: 1 },
+            { t: " Reporting on 2026 tech trends suggests that AI tools are increasingly being used for learning, training, and content support, which makes education one of the most important places to watch technology change." },
+            { c: 1 },
+          ] },
+          { type: "p", parts: [
+            { t: "This topic matters because classrooms are not just users of new technology; they are where future digital habits are formed." },
+            { c: 1 },
+            { t: " If AI helps teachers save time, explain concepts, or " },
+            { g: "adapt", pos: "verb", def: "change something to make it more suitable for a new purpose or situation" },
+            { t: " material to different students, it can be genuinely useful." },
+          ] },
+          { type: "quote", text: "A feature about AI in school works best when it includes both opportunity and caution." },
+          { type: "p", parts: [
+            { t: "But if it encourages shortcuts or weakens critical thinking, the trade-off becomes serious." },
+            { c: 2 },
+            { t: " That balance between " },
+            { g: "convenience", pos: "noun", def: "the quality of being easy, quick, or effortless to use" },
+            { t: " and genuine learning is what makes the subject both practical and worth watching closely." },
+            { c: 2 },
+          ] },
+          { type: "p", parts: [
+            { t: "For learners, this is a highly relevant topic because many already use AI to study or draft work. They can talk about help, habits, honesty, and skill-building in clear English, reflecting on a change they are already living through." },
+            { c: 1 },
+          ] },
+        ],
+      },
+      precise: {
+        label: "Precise Edition",
+        range: "C1–C2",
+        readTime: "3 min read",
+        wordCount: 392,
+        blocks: [
+          { type: "p", parts: [
+            { t: "The latest wave of AI tools is permeating classrooms as readily as offices." },
+            { c: 1 },
+            { t: " Coverage of 2026 technology trends indicates that AI tools are increasingly deployed for instruction, training, and content development, rendering education one of the most consequential domains in which to observe technological change." },
+            { c: 1 },
+          ] },
+          { type: "p", parts: [
+            { t: "This matters because classrooms are not merely consumers of emerging technology; they are the very sites where future digital habits take shape." },
+            { c: 1 },
+            { t: " Where AI enables teachers to conserve time, elucidate concepts, or " },
+            { g: "tailor", pos: "verb", def: "adjust or customize something to suit a particular need or person" },
+            { t: " material to individual students, its utility is genuine." },
+          ] },
+          { type: "quote", text: "A feature about AI in school works best when it includes both opportunity and caution." },
+          { type: "p", parts: [
+            { t: "Yet where it fosters shortcuts or erodes critical thinking, the trade-off becomes considerable." },
+            { c: 2 },
+            { t: " That equilibrium between " },
+            { g: "expedience", pos: "noun", def: "the quality of being convenient and practical, sometimes at the cost of doing things more carefully" },
+            { t: " and authentic learning is precisely what renders the subject both consequential and worth monitoring closely." },
+            { c: 2 },
+          ] },
+          { type: "p", parts: [
+            { t: "For learners, this topic carries particular relevance, given that many already rely on AI to study or draft work. They can examine assistance, habit, integrity, and skill development in precise English, reflecting on a transformation they are already navigating." },
+            { c: 1 },
+          ] },
+        ],
+      },
+    },
+    references: [
+      { domain: "cgspam.org", name: "CGS", headline: "Weekly Digest on AI and Emerging Technologies" },
+      { domain: "reutersinstitute.politics.ox.ac.uk", name: "Reuters Institute", headline: "Journalism, Media, and Technology Trends and Predictions 2026" },
+      { domain: "news.un.org", name: "UN News", headline: "Global Push for AI Governance Amid Warnings of 'Catastrophic Harm'" },
+    ],
+    discussionGuide: [
+      {
+        q: "Have you or someone you know used an AI tool to help study, write, or prepare for class? What was that experience like?",
+        follow: ["Did it feel like it helped your learning, or replaced part of it?"],
+      },
+      {
+        q: "The article says a good article about AI in school needs both 'opportunity and caution.' What's one opportunity, and one thing to be cautious about?",
+        follow: [],
+      },
+      {
+        q: "Where do you think the line should be between using AI to learn faster and using it to avoid learning?",
+        follow: [],
+      },
+    ],
+  },
+  {
+    slug: "small-businesses-need-bank-support",
+    ready: true,
+    publishedAt: "2026-08-13",
+    emoji: "🏦",
+    variant: "work",
+    topicLabel: "Work & Business",
+    topicTitle: "Worklife, Business & Careers",
+    title: "Small Businesses Still Need Bank Support",
+    dek: "Credit access remains a major issue for small and medium enterprises, especially when economic conditions are uncertain.",
+    editions: {
+      plain: {
+        label: "Plain Edition",
+        range: "A1–A2",
+        readTime: "1 min read",
+        wordCount: 146,
+        blocks: [
+          { type: "p", parts: [
+            { t: "A quiet but important business story in the Philippines is about small businesses and bank loans. Banks are still working to give more credit and support to small companies." },
+          ] },
+          { type: "p", parts: [
+            { t: "This matters because small businesses often feel money problems first. If prices go up or fewer customers come, small shops feel it fast." },
+          ] },
+          { type: "p", parts: [
+            { t: "A loan from a bank is not just a number. It can mean new stock for a shop, more workers, a repair, or simply surviving a slow month." },
+          ] },
+          { type: "p", parts: [
+            { t: "For learners, this topic teaches useful words like 'credit,' 'support,' and 'expansion.' It shows how small businesses carry a big part of the everyday economy." },
+          ] },
+        ],
+      },
+      polished: {
+        label: "Polished Edition",
+        range: "B1–B2",
+        readTime: "3 min read",
+        wordCount: 385,
+        blocks: [
+          { type: "p", parts: [
+            { t: "A quieter but important business story in the Philippines is the continued focus on lending and financial support for small and medium enterprises, often called SMEs." },
+            { c: 1 },
+            { t: " Reports show that credit standards and lending support are still treated as core issues for smaller businesses, which matters because small businesses are often the first to feel pressure when demand slows or costs rise." },
+            { c: 1 },
+          ] },
+          { type: "p", parts: [
+            { t: "This topic is useful because it connects finance to everyday " },
+            { g: "entrepreneurship", pos: "noun", def: "the activity of starting and running your own business, often with financial risk" },
+            { t: "." },
+            { c: 1 },
+            { t: " Many readers understand big corporations, but smaller firms are the ones more likely to struggle with cash flow, payroll, and expansion. When banks support SMEs responsibly, they help local economies stay active." },
+          ] },
+          { type: "quote", text: "A loan is not just a number; it can mean new stock, more staff, or survival during a slow month." },
+          { type: "p", parts: [
+            { t: "That kind of concrete detail is what makes business writing feel real rather than abstract." },
+            { c: 1 },
+            { t: " A single line of credit can determine whether a small shop stays open through a difficult season or has to close its doors." },
+          ] },
+          { type: "p", parts: [
+            { t: "For learners, this is strong material because it introduces useful words like 'credit,' 'support,' 'expansion,' and 'standards.' The article is informative because it explains financial behavior, and interesting because it shows how small firms carry a lot of the real economy on their shoulders." },
+            { c: 1 },
+          ] },
+        ],
+      },
+      precise: {
+        label: "Precise Edition",
+        range: "C1–C2",
+        readTime: "3 min read",
+        wordCount: 380,
+        blocks: [
+          { type: "p", parts: [
+            { t: "A quieter yet substantial business story in the Philippines concerns the continued emphasis on lending and financial support for small and medium enterprises, or SMEs." },
+            { c: 1 },
+            { t: " Reports indicate that credit standards and lending support remain core preoccupations for smaller businesses, a matter of consequence given that such firms are typically the first to register strain when demand slackens or costs escalate." },
+            { c: 1 },
+          ] },
+          { type: "p", parts: [
+            { t: "This topic proves useful because it links finance to everyday " },
+            { g: "entrepreneurship", pos: "noun", def: "the activity of starting and running your own business, often with financial risk" },
+            { t: "." },
+            { c: 1 },
+            { t: " Readers are generally familiar with large corporations, yet smaller firms are considerably more prone to struggle with cash flow, payroll, and expansion. Responsible SME lending, in turn, helps sustain local economies." },
+          ] },
+          { type: "quote", text: "A loan is not just a number; it can mean new stock, more staff, or survival during a slow month." },
+          { type: "p", parts: [
+            { t: "Such concrete detail is precisely what renders business writing feel tangible rather than " },
+            { g: "abstract", pos: "adjective", def: "existing as an idea rather than a physical or concrete thing" },
+            { t: "." },
+            { c: 1 },
+            { t: " A single line of credit can determine whether a small shop weathers a difficult season or is forced to close." },
+          ] },
+          { type: "p", parts: [
+            { t: "For learners, this constitutes valuable material, introducing vocabulary such as 'credit,' 'support,' 'expansion,' and 'standards.' The piece is informative in explaining financial behavior, and compelling in demonstrating how small firms shoulder a considerable share of the real economy." },
+            { c: 1 },
+          ] },
+        ],
+      },
+    },
+    references: [
+      { domain: "philstar.com", name: "The Philippine Star", headline: "China Bank Savings Pushes Financial Support for SMEs" },
+      { domain: "reuters.com", name: "Reuters", headline: "Reuters NEXT Asia Brings Policymakers, Business Leaders Together in Singapore" },
+      { domain: "inquirer.net", name: "Philippine Daily Inquirer", headline: "Latest Philippines Headlines, Breaking News" },
+    ],
+    discussionGuide: [
+      {
+        q: "Do you know a small business, maybe run by family or a neighbor? What challenges have you seen it face?",
+        follow: ["Has that business ever needed a loan or outside support?"],
+      },
+      {
+        q: "The article says a loan 'can mean new stock, more staff, or survival.' Why do you think it's useful to think about business finance this concretely?",
+        follow: [],
+      },
+      {
+        q: "Why might small businesses be more affected by rising costs or falling demand than large companies?",
+        follow: [],
+      },
+    ],
+  },
+  {
     slug: "dogs-and-humans-shaped-each-other",
     ready: true,
     publishedAt: "2026-08-17",
