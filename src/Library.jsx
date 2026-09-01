@@ -29,8 +29,8 @@ import VocabularyGames from "./VocabularyGames";
 import WritingActivities from "./WritingActivities";
 import CommunityFeed from "./CommunityFeed.jsx";
 
-const CATEGORIES = ["Articles", "Reading", "Speaking", "Grammar", "Vocabulary", "Writing"];
-const PRO_CATEGORIES = ["Reading", "Speaking", "Grammar", "Vocabulary", "Writing", "Customized Lessons"];
+const CATEGORIES = ["Articles", "Reading", "Speaking", "Grammar", "Vocabulary", "Writing", "Listening"];
+const PRO_CATEGORIES = ["Reading", "Speaking", "Grammar", "Vocabulary", "Writing", "Listening", "Customized Lessons"];
 
 // "Today" launch date -- the day count in the Today masthead (Vol. 1, No. X)
 // counts up from here, like a real newspaper's running issue number.
@@ -95,7 +95,7 @@ function CategoryLockedFeature({ category, navigate }) {
       <p className="cat-locked-eyebrow">Pro feature</p>
       <h2 className="cat-locked-title">{category} is part of Sentivo Pro</h2>
       <p className="cat-locked-desc">
-        Upgrade to unlock every category, Speaking, Reading, Grammar, Vocabulary, and Writing, plus Teacher's Desk without the daily unlock.
+        Upgrade to unlock every category, Speaking, Reading, Grammar, Vocabulary, Writing, and Listening, plus Teacher's Desk without the daily unlock.
       </p>
       <button type="button" className="cat-locked-cta" onClick={() => navigate("/library/subscription")}>Upgrade to Pro</button>
       <button type="button" className="cat-locked-link" onClick={() => navigate("/library/subscription")}>See all plans</button>
@@ -1752,7 +1752,7 @@ export default function Library() {
         </div>
       ) : (
       <main className={`content ${category === "Articles" ? "content--wide" : ""}`}>
-                <div className={`grid-wrap ${category === "All" && !query.trim() && !showAllToday ? "grid-wrap--today" : (category === "Articles" || category === "Grammar" || category === "Reading" || category === "Speaking" || category === "Vocabulary" || category === "Writing" || category === "Customized Lessons") ? "grid-wrap--top" : ""}`} ref={gridWrapRef}>
+                <div className={`grid-wrap ${category === "All" && !query.trim() && !showAllToday ? "grid-wrap--today" : (category === "Articles" || category === "Grammar" || category === "Reading" || category === "Speaking" || category === "Vocabulary" || category === "Writing" || category === "Listening" || category === "Customized Lessons") ? "grid-wrap--top" : ""}`} ref={gridWrapRef}>
         {category === "All" && !query.trim() && !showAllToday ? (
           toolsLoading ? (
             <p className="empty-msg">Loading today's edition…</p>
@@ -1813,6 +1813,21 @@ export default function Library() {
           <VocabularyGames query={query} />
         ) : category === "Writing" ? (
           <WritingActivities query={query} />
+        ) : category === "Listening" ? (
+          <div className="dyn-landing dyn-landing--listen">
+            <div className="dyn-landing-hero">
+              <span className="dyn-landing-eyebrow">Sentivo · Listening</span>
+              <h1><span className="dyn-landing-pill">LISTEN</span></h1>
+              <p className="cl-sub">Pre-listening, while-listening, post-listening lessons built for real listening skill, not just answer-hunting.</p>
+            </div>
+            <div className="dyn-landing-row"></div>
+
+            <div className="dyn-landing-soon">
+              <span className="dyn-landing-soon-icon">🎧</span>
+              <p className="dyn-landing-soon-title">Nothing published yet</p>
+              <p className="dyn-landing-soon-desc">Listening lessons are being rebuilt. Check back soon.</p>
+            </div>
+          </div>
         ) : category === "Customized Lessons" ? (
           <div className="dyn-landing dyn-landing--custom">
             <div className="dyn-landing-hero">
@@ -1872,7 +1887,7 @@ export default function Library() {
         )}
         </div>
 
-        {category !== "Speaking" && category !== "Grammar" && category !== "Articles" && category !== "Reading" && category !== "Vocabulary" && category !== "Writing" && category !== "Customized Lessons" && !(category === "All" && !query.trim() && !showAllToday) && (
+        {category !== "Speaking" && category !== "Grammar" && category !== "Articles" && category !== "Reading" && category !== "Vocabulary" && category !== "Writing" && category !== "Listening" && category !== "Customized Lessons" && !(category === "All" && !query.trim() && !showAllToday) && (
         <div className="pagination">
           <button disabled={safePage === 1} onClick={() => changePage(safePage - 1)}>&larr; Prev</button>
           <span className="page-indicator">Page {safePage} of {totalPages}</span>
@@ -2468,6 +2483,9 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .dyn-landing--custom {
   background: linear-gradient(180deg, #F2F4FA 0%, #E4E9F5 100%);
 }
+.dyn-landing--listen {
+  background: linear-gradient(180deg, #F0F6F4 0%, #DEF0EA 100%);
+}
 .dyn-landing-hero { text-align: center; }
 .dyn-landing-eyebrow {
   display: block;
@@ -2480,6 +2498,7 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .dyn-landing--vocab .dyn-landing-eyebrow { color: #96721B; }
 .dyn-landing--writing .dyn-landing-eyebrow { color: #3F7A4E; }
 .dyn-landing--custom .dyn-landing-eyebrow { color: #1B2A4A; }
+.dyn-landing--listen .dyn-landing-eyebrow { color: #157A5A; }
 .dyn-landing-pill {
   display: inline-flex;
   align-items: center;
@@ -2495,14 +2514,17 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .dyn-landing--vocab .dyn-landing-pill { background: rgba(184,140,26,0.16); }
 .dyn-landing--writing .dyn-landing-pill { background: rgba(63,122,78,0.14); }
 .dyn-landing--custom .dyn-landing-pill { background: rgba(27,42,74,0.1); }
+.dyn-landing--listen .dyn-landing-pill { background: rgba(21,122,90,0.14); color: #157A5A; }
 .dyn-landing-row { position: relative; height: 2px; width: 100%; max-width: 1040px; margin: clamp(22px, 2.8vw, 32px) 0; }
 .dyn-landing--vocab .dyn-landing-row { background: #E8D6A0; }
 .dyn-landing--writing .dyn-landing-row { background: #C3DCC0; }
 .dyn-landing--custom .dyn-landing-row { background: #C7D0E5; }
+.dyn-landing--listen .dyn-landing-row { background: #B7DED0; }
 .dyn-landing-row::before, .dyn-landing-row::after { content: ""; position: absolute; top: -3px; width: 8px; height: 8px; border-radius: 50%; }
 .dyn-landing--vocab .dyn-landing-row::before, .dyn-landing--vocab .dyn-landing-row::after { background: #B88C1A; }
 .dyn-landing--writing .dyn-landing-row::before, .dyn-landing--writing .dyn-landing-row::after { background: #3F7A4E; }
 .dyn-landing--custom .dyn-landing-row::before, .dyn-landing--custom .dyn-landing-row::after { background: #1B2A4A; }
+.dyn-landing--listen .dyn-landing-row::before, .dyn-landing--listen .dyn-landing-row::after { background: #157A5A; }
 .dyn-landing-row::before { left: 0; }
 .dyn-landing-row::after { right: 0; }
 .dyn-landing .cover-grid { justify-content: center; }
