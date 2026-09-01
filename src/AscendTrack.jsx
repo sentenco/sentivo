@@ -2,22 +2,17 @@ import { useParams, useNavigate } from "react-router-dom";
 import { getTrack } from "./ascendTracks";
 
 function slideCount(lesson) {
-  if (lesson.mechanic === "push") return 1 + lesson.prompts.length + lesson.recall.length + 1;
-  return lesson.slideOrder.length;
+  return 1 + lesson.prompts.length + lesson.recall.length + 1;
 }
 
 // ASCEND lessons open as a standalone popup player, matching FORGE's
 // chrome-less window.open pattern (itself mirroring LessonsGrid.jsx's
 // curriculum player) -- an independent window, not embedded in the Library.
-// The Push mechanic's portrait deck is much smaller than the old landscape
-// player, so it gets a snugger default window (still resizable) instead of
-// the wide old-mechanic size.
-function openLesson(trackId, num, lesson) {
+function openLesson(trackId, num) {
   const screenW = window.screen.availWidth || 1600;
   const screenH = window.screen.availHeight || 900;
-  const isPush = lesson && lesson.mechanic === "push";
-  const w = Math.min(isPush ? 540 : 1220, screenW - 40);
-  const h = Math.min(isPush ? 660 : 680, screenH - 80);
+  const w = Math.min(540, screenW - 40);
+  const h = Math.min(660, screenH - 80);
   const left = Math.max(0, Math.floor((screenW - w) / 2));
   const top = Math.max(0, Math.floor((screenH - h) / 2));
 
@@ -93,7 +88,7 @@ export default function AscendTrack() {
               );
             }
             return (
-              <a key={num} className="as-row" href="#" onClick={(e) => { e.preventDefault(); openLesson(track.id, num, lesson); }}>
+              <a key={num} className="as-row" href="#" onClick={(e) => { e.preventDefault(); openLesson(track.id, num); }}>
                 <div className="as-row-badge">{String(num).padStart(2, "0")}</div>
                 <div className="as-row-body">
                   <div className="as-row-topline">
@@ -107,7 +102,7 @@ export default function AscendTrack() {
                   <button type="button" className="as-btn-guide" onClick={(e) => { e.preventDefault(); e.stopPropagation(); openGuide(track.id, num); }}>
                     Guide
                   </button>
-                  <button type="button" className="as-btn-start" onClick={(e) => { e.preventDefault(); e.stopPropagation(); openLesson(track.id, num, lesson); }}>
+                  <button type="button" className="as-btn-start" onClick={(e) => { e.preventDefault(); e.stopPropagation(); openLesson(track.id, num); }}>
                     Start →
                   </button>
                 </div>
