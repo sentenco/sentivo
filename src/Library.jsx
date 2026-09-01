@@ -29,8 +29,8 @@ import VocabularyGames from "./VocabularyGames";
 import WritingActivities from "./WritingActivities";
 import CommunityFeed from "./CommunityFeed.jsx";
 
-const CATEGORIES = ["Articles", "Reading", "Speaking", "Grammar", "Vocabulary", "Writing", "Listening"];
-const PRO_CATEGORIES = ["Reading", "Speaking", "Grammar", "Vocabulary", "Writing", "Listening", "Customized Lessons"];
+const CATEGORIES = ["Articles", "Reading", "Speaking", "Grammar", "Vocabulary", "Writing"];
+const PRO_CATEGORIES = ["Reading", "Speaking", "Grammar", "Vocabulary", "Writing", "Customized Lessons"];
 
 // "Today" launch date -- the day count in the Today masthead (Vol. 1, No. X)
 // counts up from here, like a real newspaper's running issue number.
@@ -95,7 +95,7 @@ function CategoryLockedFeature({ category, navigate }) {
       <p className="cat-locked-eyebrow">Pro feature</p>
       <h2 className="cat-locked-title">{category} is part of Sentivo Pro</h2>
       <p className="cat-locked-desc">
-        Upgrade to unlock every category, Speaking, Reading, Grammar, Vocabulary, Writing, and Listening, plus Teacher's Desk without the daily unlock.
+        Upgrade to unlock every category, Speaking, Reading, Grammar, Vocabulary, and Writing, plus Teacher's Desk without the daily unlock.
       </p>
       <button type="button" className="cat-locked-cta" onClick={() => navigate("/library/subscription")}>Upgrade to Pro</button>
       <button type="button" className="cat-locked-link" onClick={() => navigate("/library/subscription")}>See all plans</button>
@@ -282,19 +282,6 @@ function openCustomLessonPopup(path, name, w, h) {
     `width=${width},height=${height},left=${left},top=${top},toolbar=no,location=no,menubar=no,status=no,scrollbars=yes,resizable=yes`
   );
 }
-
-const LISTEN_TRAVEL = [
-  { num: 1, type: "Gist 1", title: "Flight Delay Announcement", target: "Main idea in a predictable public announcement" },
-  { num: 2, type: "Gist 2", title: "Hotel Problem at Check-in", target: "Main idea and purpose in a short travel problem dialogue" },
-  { num: 3, type: "Detail 1", title: "Train Ticket Office", target: "Catching key facts in a travel booking context" },
-  { num: 4, type: "Detail 2", title: "Lost Luggage Desk", target: "Catching multiple key facts in a denser travel problem context" },
-  { num: 5, type: "Sequence 1", title: "Checking In at the Airport", target: "Ordering steps in a familiar travel routine" },
-  { num: 6, type: "Sequence 2", title: "Missing the Bus", target: "Ordering events in a slightly more complex travel incident" },
-  { num: 7, type: "Inference 1", title: "Waiting at the Gate", target: "Inferring feeling and attitude in a travel delay context" },
-  { num: 8, type: "Inference 2", title: "Late Checkout Request", target: "Inferring intention and implied meaning in a service interaction" },
-  { num: 9, type: "Response 1", title: "Travel Situations and Responses", target: "Listening and choosing an appropriate response" },
-  { num: 10, type: "Response 2", title: "Travel Problems, Respond Naturally", target: "Listening and producing an appropriate response with less support" },
-];
 
 const GRAMMAR_MODULES = [
   { num: "BED 01", banner: "partsOfSpeech", title: "Parts of Speech", spec: "8 word classes across 6 topics. One Lesson, one Assessment each. A1–C2.", href: "/library/grammar/parts-of-speech", ready: true, hue: "leaf", tier: "foundation" },
@@ -1765,7 +1752,7 @@ export default function Library() {
         </div>
       ) : (
       <main className={`content ${category === "Articles" ? "content--wide" : ""}`}>
-                <div className={`grid-wrap ${category === "All" && !query.trim() && !showAllToday ? "grid-wrap--today" : (category === "Articles" || category === "Grammar" || category === "Reading" || category === "Speaking" || category === "Vocabulary" || category === "Writing" || category === "Listening" || category === "Customized Lessons") ? "grid-wrap--top" : ""}`} ref={gridWrapRef}>
+                <div className={`grid-wrap ${category === "All" && !query.trim() && !showAllToday ? "grid-wrap--today" : (category === "Articles" || category === "Grammar" || category === "Reading" || category === "Speaking" || category === "Vocabulary" || category === "Writing" || category === "Customized Lessons") ? "grid-wrap--top" : ""}`} ref={gridWrapRef}>
         {category === "All" && !query.trim() && !showAllToday ? (
           toolsLoading ? (
             <p className="empty-msg">Loading today's edition…</p>
@@ -1826,33 +1813,6 @@ export default function Library() {
           <VocabularyGames query={query} />
         ) : category === "Writing" ? (
           <WritingActivities query={query} />
-        ) : category === "Listening" ? (
-          <div className="dyn-landing dyn-landing--listen">
-            <div className="dyn-landing-hero">
-              <span className="dyn-landing-eyebrow">Sentivo · Listening</span>
-              <h1><span className="dyn-landing-pill">LISTEN</span></h1>
-              <p className="cl-sub">Pre-listening, while-listening, post-listening. Every lesson keeps the full script hidden until after the first real attempt, with a teacher-guide layer behind every slide.</p>
-            </div>
-            <div className="dyn-landing-row"></div>
-
-            <div className="ls-pack-hd">
-              <h2>Travel</h2>
-              <span className="ls-pack-tag">High A2 to low B1 &middot; 10 lessons &middot; 25 min each</span>
-            </div>
-            <div className="ls-pack-grid">
-              {LISTEN_TRAVEL.map((l) => (
-                <div key={l.num} className="ls-lesson-card">
-                  <span className="ls-lesson-num">{l.num}</span>
-                  <div className="ls-lesson-body">
-                    <span className="ls-lesson-type">{l.type}</span>
-                    <h3 className="ls-lesson-title">{l.title}</h3>
-                    <p className="ls-lesson-target">{l.target}</p>
-                  </div>
-                  <span className="ls-lesson-soon">Coming soon</span>
-                </div>
-              ))}
-            </div>
-          </div>
         ) : category === "Customized Lessons" ? (
           <div className="dyn-landing dyn-landing--custom">
             <div className="dyn-landing-hero">
@@ -1912,7 +1872,7 @@ export default function Library() {
         )}
         </div>
 
-        {category !== "Speaking" && category !== "Grammar" && category !== "Articles" && category !== "Reading" && category !== "Vocabulary" && category !== "Writing" && category !== "Listening" && category !== "Customized Lessons" && !(category === "All" && !query.trim() && !showAllToday) && (
+        {category !== "Speaking" && category !== "Grammar" && category !== "Articles" && category !== "Reading" && category !== "Vocabulary" && category !== "Writing" && category !== "Customized Lessons" && !(category === "All" && !query.trim() && !showAllToday) && (
         <div className="pagination">
           <button disabled={safePage === 1} onClick={() => changePage(safePage - 1)}>&larr; Prev</button>
           <span className="page-indicator">Page {safePage} of {totalPages}</span>
@@ -2606,34 +2566,6 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .cl-lesson-guide:hover { background: rgba(27,42,74,0.14); }
 .cl-lesson-open { flex: 1; background: #1B2A4A; color: #fff; }
 .cl-lesson-open:hover { background: #12203D; }
-
-.dyn-landing--listen { background: linear-gradient(180deg, #F0F6F4 0%, #DEF0EA 100%); }
-.dyn-landing--listen .dyn-landing-eyebrow { color: #157A5A; }
-.dyn-landing--listen .dyn-landing-pill { background: rgba(21,122,90,0.14); color: #157A5A; }
-.dyn-landing--listen .dyn-landing-row { background: #B7DED0; }
-.dyn-landing--listen .dyn-landing-row::before, .dyn-landing--listen .dyn-landing-row::after { background: #157A5A; }
-
-.ls-pack-hd { display: flex; align-items: baseline; gap: 12px; max-width: 900px; margin: 0 auto 16px; }
-.ls-pack-hd h2 { font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 19px; color: #1B2A4A; margin: 0; }
-.ls-pack-tag { font-family: 'Quicksand', sans-serif; font-size: 12px; font-weight: 700; color: #157A5A; }
-
-.ls-pack-grid { display: flex; flex-direction: column; gap: 10px; max-width: 900px; margin: 0 auto; }
-.ls-lesson-card {
-  display: flex; align-items: center; gap: 16px;
-  background: #fff; border: 1px solid #D6E7E1; border-radius: 14px;
-  padding: 14px 18px; box-shadow: 0 4px 12px rgba(21,122,90,0.06);
-}
-.ls-lesson-num {
-  flex-shrink: 0; width: 30px; height: 30px; border-radius: 50%;
-  background: #DEF0EA; color: #157A5A;
-  display: flex; align-items: center; justify-content: center;
-  font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 13px;
-}
-.ls-lesson-body { flex: 1; min-width: 0; }
-.ls-lesson-type { font-family: 'Quicksand', sans-serif; font-weight: 800; font-size: 10px; text-transform: uppercase; letter-spacing: 0.05em; color: #157A5A; }
-.ls-lesson-title { font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 14.5px; color: #1B2A4A; margin: 2px 0 3px; }
-.ls-lesson-target { font-family: 'Quicksand', sans-serif; font-size: 12px; color: #6B6580; margin: 0; }
-.ls-lesson-soon { flex-shrink: 0; font-family: 'Quicksand', sans-serif; font-size: 10.5px; font-weight: 700; color: #A6A2C0; text-transform: uppercase; letter-spacing: 0.03em; }
 
 /* ---------- Speaking: The Fluency Clinic ---------- */
 .spklab-page {
