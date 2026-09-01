@@ -14,8 +14,8 @@ function slideCount(lesson) {
 function openLesson(trackId, num) {
   const screenW = window.screen.availWidth || 1600;
   const screenH = window.screen.availHeight || 900;
-  const w = Math.min(540, screenW - 40);
-  const h = Math.min(740, screenH - 80);
+  const w = Math.min(536, screenW - 40);
+  const h = Math.min(619, screenH - 80);
   const left = Math.max(0, Math.floor((screenW - w) / 2));
   const top = Math.max(0, Math.floor((screenH - h) / 2));
 
