@@ -14,12 +14,14 @@ function buildSlides(lesson) {
     if (!p.isCallback) slides.push({ type: "example", patternIdx: pi });
     p.questions.forEach((_, qi) => slides.push({ type: "question", patternIdx: pi, qIdx: qi }));
   });
+  slides.push({ type: "capstone" });
   slides.push({ type: "wrap" });
   return slides;
 }
 
 function stageLabel(slide, lesson) {
   if (slide.type === "cover") return "Cover";
+  if (slide.type === "capstone") return "Put It Together";
   if (slide.type === "wrap") return "Wrap-up";
   const p = lesson.patterns[slide.patternIdx];
   const pnum = slide.patternIdx + 1;
@@ -121,20 +123,25 @@ export default function Sequence() {
             {slide.type === "question" && (() => {
               const p = lesson.patterns[slide.patternIdx];
               const item = p.questions[slide.qIdx];
+              const isUnaided = slide.qIdx === p.questions.length - 1;
               return (
                 <div className="sq-slide" key={slideIdx}>
                   <div className="sq-slide-flag">
-                    Pattern {slide.patternIdx + 1}{p.isCallback ? " · Callback" : ""} &middot; Question {slide.qIdx + 1}
+                    Pattern {slide.patternIdx + 1}{p.isCallback ? " · Callback" : ""} &middot; Question {slide.qIdx + 1}{isUnaided ? " · Unaided" : ""}
                   </div>
                   <div className="sq-q-text sq-h">{item.q}</div>
-                  <div className="sq-guide-row">
-                    {p.slots.map((s, i) => (
-                      <span key={s}>
-                        {i > 0 && <span className="sq-guide-arrow">→</span>}
-                        <span className="sq-guide-chip">{s}</span>
-                      </span>
-                    ))}
-                  </div>
+                  {isUnaided ? (
+                    <p className="sq-unaided-hint">No shape guide this time. Build it from memory.</p>
+                  ) : (
+                    <div className="sq-guide-row">
+                      {p.slots.map((s, i) => (
+                        <span key={s}>
+                          {i > 0 && <span className="sq-guide-arrow">→</span>}
+                          <span className="sq-guide-chip">{s}</span>
+                        </span>
+                      ))}
+                    </div>
+                  )}
                   {answerRevealed ? (
                     <div className="sq-answer-block"><PartsList parts={item.parts} /></div>
                   ) : (
@@ -145,6 +152,14 @@ export default function Sequence() {
                 </div>
               );
             })()}
+
+            {slide.type === "capstone" && (
+              <div className="sq-slide" key={slideIdx}>
+                <div className="sq-slide-flag">Put It Together</div>
+                <div className="sq-q-text sq-h">Tell me more about this: {lesson.situation}.</div>
+                <p className="sq-capstone-hint">Speak freely, no shape guide. Try to naturally use pieces from both patterns you practiced today.</p>
+              </div>
+            )}
 
             {slide.type === "wrap" && (
               <div className="sq-slide" key={slideIdx}>
@@ -291,6 +306,9 @@ const CSS = `
   border-radius: 999px; padding: 6px 13px;
 }
 .sq-guide-arrow { color: #6B70A0; font-size: 12px; margin: 0 6px; }
+
+.sq-unaided-hint { font-size: 11.5px; font-weight: 700; font-style: italic; color: #6B70A0; margin: 0 0 18px; }
+.sq-capstone-hint { font-size: 13px; font-weight: 600; color: #6B70A0; max-width: 320px; margin: 0 auto; line-height: 1.55; }
 
 .sq-reveal-btn {
   font-family: 'IBM Plex Sans', sans-serif; font-weight: 700; font-size: 11.5px;

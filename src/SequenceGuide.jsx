@@ -19,6 +19,14 @@ function PartsRow({ parts }) {
   );
 }
 
+// Detail slot types (everything but "Core") from both of this lesson's
+// patterns, deduped -- what the teacher should listen for during the
+// open capstone response.
+function capstoneListenFor(lesson) {
+  const all = lesson.patterns.flatMap((p) => p.slots.filter((s) => s !== "Core"));
+  return Array.from(new Set(all));
+}
+
 function PatternCard({ pattern, index }) {
   return (
     <div className="sqg-pattern-card">
@@ -80,6 +88,20 @@ export default function SequenceGuide() {
         </div>
 
         {lesson.patterns.map((p, i) => <PatternCard pattern={p} index={i} key={i} />)}
+
+        <div className="sqg-capstone-card">
+          <div className="sqg-pattern-head">
+            <span className="sqg-capstone-badge">Put It Together</span>
+          </div>
+          <div className="sqg-row-label">No fixed answer, fully open production</div>
+          <div className="sqg-row-q">"Tell me more about this: {lesson.situation}."</div>
+          <div className="sqg-row-label" style={{ marginTop: 12 }}>Listen for natural use of</div>
+          <div className="sqg-piece-row">
+            {capstoneListenFor(lesson).map((s) => (
+              <span key={s} className="sqg-listen-chip">{s}</span>
+            ))}
+          </div>
+        </div>
 
         <p className="sqg-note">"Show hidden answer" is off by default on the student's screen &mdash; only reveal it yourself as a last resort. Ask the question, let them attempt it, and only guide them toward the missing piece if they're stuck.</p>
       </div>
@@ -153,6 +175,24 @@ const CSS = `
 .sqg-piece-label {
   font-size: 9px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.03em;
   color: #fff; background: #5C6BC0; border-radius: 999px; padding: 3px 8px;
+}
+
+.sqg-capstone-card {
+  background: #fff;
+  border-radius: 18px;
+  border: 1.5px dashed rgba(92,107,192,0.3);
+  box-shadow: 0 10px 26px rgba(38,42,74,0.08);
+  padding: 22px 24px;
+  margin-bottom: 18px;
+}
+.sqg-capstone-badge {
+  font-size: 10.5px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.04em;
+  color: #fff; background: linear-gradient(135deg, #5C6BC0, #3F4C9E);
+  border-radius: 999px; padding: 5px 13px;
+}
+.sqg-listen-chip {
+  font-size: 11.5px; font-weight: 700; color: #3F4C9E;
+  background: #E4E6F7; border: 1.5px solid #C9CDF0; border-radius: 999px; padding: 4px 12px;
 }
 
 .sqg-q-list { display: flex; flex-direction: column; gap: 10px; }
