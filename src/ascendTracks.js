@@ -1,21 +1,75 @@
 import ascendDayL1 from "./ascendDay1";
+import ascendDayL2 from "./ascendDay2";
+import ascendDayL3 from "./ascendDay3";
+import ascendDayL4 from "./ascendDay4";
 import ascendSchoolL1 from "./ascendSchool1";
+import ascendSchoolL2 from "./ascendSchool2";
+import ascendSchoolL3 from "./ascendSchool3";
+import ascendSchoolL4 from "./ascendSchool4";
 import ascendFamilyL1 from "./ascendFamily1";
+import ascendFamilyL2 from "./ascendFamily2";
+import ascendFamilyL3 from "./ascendFamily3";
+import ascendFamilyL4 from "./ascendFamily4";
 import ascendSportsL1 from "./ascendSports1";
+import ascendSportsL2 from "./ascendSports2";
+import ascendSportsL3 from "./ascendSports3";
+import ascendSportsL4 from "./ascendSports4";
 import ascendMoviesL1 from "./ascendMovies1";
+import ascendMoviesL2 from "./ascendMovies2";
+import ascendMoviesL3 from "./ascendMovies3";
+import ascendMoviesL4 from "./ascendMovies4";
 import ascendBusinessL1 from "./ascendBusiness1";
+import ascendBusinessL2 from "./ascendBusiness2";
+import ascendBusinessL3 from "./ascendBusiness3";
+import ascendBusinessL4 from "./ascendBusiness4";
 import ascendLawL1 from "./ascendLaw1";
+import ascendLawL2 from "./ascendLaw2";
+import ascendLawL3 from "./ascendLaw3";
+import ascendLawL4 from "./ascendLaw4";
 import ascendNegotiationL1 from "./ascendNegotiation1";
+import ascendNegotiationL2 from "./ascendNegotiation2";
+import ascendNegotiationL3 from "./ascendNegotiation3";
+import ascendNegotiationL4 from "./ascendNegotiation4";
 import ascendGovernanceL1 from "./ascendGovernance1";
+import ascendGovernanceL2 from "./ascendGovernance2";
+import ascendGovernanceL3 from "./ascendGovernance3";
+import ascendGovernanceL4 from "./ascendGovernance4";
 import ascendSocialL1 from "./ascendSocial1";
+import ascendSocialL2 from "./ascendSocial2";
+import ascendSocialL3 from "./ascendSocial3";
+import ascendSocialL4 from "./ascendSocial4";
 import ascendEnvironmentL1 from "./ascendEnvironment1";
+import ascendEnvironmentL2 from "./ascendEnvironment2";
+import ascendEnvironmentL3 from "./ascendEnvironment3";
+import ascendEnvironmentL4 from "./ascendEnvironment4";
 import ascendFutureL1 from "./ascendFuture1";
+import ascendFutureL2 from "./ascendFuture2";
+import ascendFutureL3 from "./ascendFuture3";
+import ascendFutureL4 from "./ascendFuture4";
 import ascendTechEthicsL1 from "./ascendTechEthics1";
+import ascendTechEthicsL2 from "./ascendTechEthics2";
+import ascendTechEthicsL3 from "./ascendTechEthics3";
+import ascendTechEthicsL4 from "./ascendTechEthics4";
 import ascendRoutineL1 from "./ascendRoutine1";
+import ascendRoutineL2 from "./ascendRoutine2";
+import ascendRoutineL3 from "./ascendRoutine3";
+import ascendRoutineL4 from "./ascendRoutine4";
 import ascendHealthL1 from "./ascendHealth1";
+import ascendHealthL2 from "./ascendHealth2";
+import ascendHealthL3 from "./ascendHealth3";
+import ascendHealthL4 from "./ascendHealth4";
 import ascendMoneyL1 from "./ascendMoney1";
+import ascendMoneyL2 from "./ascendMoney2";
+import ascendMoneyL3 from "./ascendMoney3";
+import ascendMoneyL4 from "./ascendMoney4";
 import ascendHomeL1 from "./ascendHome1";
+import ascendHomeL2 from "./ascendHome2";
+import ascendHomeL3 from "./ascendHome3";
+import ascendHomeL4 from "./ascendHome4";
 import ascendTravelL1 from "./ascendTravel1";
+import ascendTravelL2 from "./ascendTravel2";
+import ascendTravelL3 from "./ascendTravel3";
+import ascendTravelL4 from "./ascendTravel4";
 
 const TRACKS = [
   {
@@ -27,7 +81,7 @@ const TRACKS = [
     levelBand: "a2b1",
     audience: ["teens"],
     blurb: "Say it plain, then say it stronger. Real everyday moments pushed toward more precise, natural English.",
-    lessons: [ascendDayL1],
+    lessons: [ascendDayL1, ascendDayL2, ascendDayL3, ascendDayL4],
   },
   {
     id: "ascend-school",
@@ -38,7 +92,7 @@ const TRACKS = [
     levelBand: "a2b1",
     audience: ["teens"],
     blurb: "Say it plain, then say it stronger. Real school moments pushed toward more precise, natural English.",
-    lessons: [ascendSchoolL1],
+    lessons: [ascendSchoolL1, ascendSchoolL2, ascendSchoolL3, ascendSchoolL4],
   },
   {
     id: "ascend-family",
@@ -49,7 +103,7 @@ const TRACKS = [
     levelBand: "a2b1",
     audience: ["teens"],
     blurb: "Say it plain, then say it stronger. Real family moments pushed toward more precise, natural English.",
-    lessons: [ascendFamilyL1],
+    lessons: [ascendFamilyL1, ascendFamilyL2, ascendFamilyL3, ascendFamilyL4],
   },
   {
     id: "ascend-sports",
@@ -60,7 +114,7 @@ const TRACKS = [
     levelBand: "a2b1",
     audience: ["teens"],
     blurb: "Say it plain, then say it stronger. Real sports moments pushed toward more precise, natural English.",
-    lessons: [ascendSportsL1],
+    lessons: [ascendSportsL1, ascendSportsL2, ascendSportsL3, ascendSportsL4],
   },
   {
     id: "ascend-movies",
@@ -71,7 +125,7 @@ const TRACKS = [
     levelBand: "a2b1",
     audience: ["teens"],
     blurb: "Say it plain, then say it stronger. Real entertainment moments pushed toward more precise, natural English.",
-    lessons: [ascendMoviesL1],
+    lessons: [ascendMoviesL1, ascendMoviesL2, ascendMoviesL3, ascendMoviesL4],
   },
   {
     id: "ascend-business",
@@ -82,7 +136,7 @@ const TRACKS = [
     levelBand: "b2c1",
     audience: ["adults"],
     blurb: "Say it plain, then say it stronger. Professional opinions pushed toward more precise, C1-level English.",
-    lessons: [ascendBusinessL1],
+    lessons: [ascendBusinessL1, ascendBusinessL2, ascendBusinessL3, ascendBusinessL4],
   },
   {
     id: "ascend-law",
@@ -93,7 +147,7 @@ const TRACKS = [
     levelBand: "b2c1",
     audience: ["adults"],
     blurb: "Say it plain, then say it stronger. Arguments and positions pushed toward more precise, C1-level English.",
-    lessons: [ascendLawL1],
+    lessons: [ascendLawL1, ascendLawL2, ascendLawL3, ascendLawL4],
   },
   {
     id: "ascend-negotiation",
@@ -104,7 +158,7 @@ const TRACKS = [
     levelBand: "b2c1",
     audience: ["adults"],
     blurb: "Say it plain, then say it stronger. Negotiation talk pushed toward more precise, C1-level English.",
-    lessons: [ascendNegotiationL1],
+    lessons: [ascendNegotiationL1, ascendNegotiationL2, ascendNegotiationL3, ascendNegotiationL4],
   },
   {
     id: "ascend-governance",
@@ -115,7 +169,7 @@ const TRACKS = [
     levelBand: "b2c1",
     audience: ["adults"],
     blurb: "Say it plain, then say it stronger. Governance and risk talk pushed toward more precise, C1-level English.",
-    lessons: [ascendGovernanceL1],
+    lessons: [ascendGovernanceL1, ascendGovernanceL2, ascendGovernanceL3, ascendGovernanceL4],
   },
   {
     id: "ascend-social",
@@ -126,7 +180,7 @@ const TRACKS = [
     levelBand: "b2c1",
     audience: ["teens"],
     blurb: "Say it plain, then say it stronger. Opinions about life online pushed toward more precise, C1-level English.",
-    lessons: [ascendSocialL1],
+    lessons: [ascendSocialL1, ascendSocialL2, ascendSocialL3, ascendSocialL4],
   },
   {
     id: "ascend-environment",
@@ -137,7 +191,7 @@ const TRACKS = [
     levelBand: "b2c1",
     audience: ["teens"],
     blurb: "Say it plain, then say it stronger. Opinions on the environment pushed toward more precise, C1-level English.",
-    lessons: [ascendEnvironmentL1],
+    lessons: [ascendEnvironmentL1, ascendEnvironmentL2, ascendEnvironmentL3, ascendEnvironmentL4],
   },
   {
     id: "ascend-future",
@@ -148,7 +202,7 @@ const TRACKS = [
     levelBand: "b2c1",
     audience: ["teens"],
     blurb: "Say it plain, then say it stronger. Talk about the future pushed toward more precise, C1-level English.",
-    lessons: [ascendFutureL1],
+    lessons: [ascendFutureL1, ascendFutureL2, ascendFutureL3, ascendFutureL4],
   },
   {
     id: "ascend-tech-ethics",
@@ -159,7 +213,7 @@ const TRACKS = [
     levelBand: "b2c1",
     audience: ["teens"],
     blurb: "Say it plain, then say it stronger. Ethical questions pushed toward more precise, C1-level English.",
-    lessons: [ascendTechEthicsL1],
+    lessons: [ascendTechEthicsL1, ascendTechEthicsL2, ascendTechEthicsL3, ascendTechEthicsL4],
   },
   {
     id: "ascend-routine",
@@ -170,7 +224,7 @@ const TRACKS = [
     levelBand: "a2b1",
     audience: ["adults"],
     blurb: "Say it plain, then say it stronger. Real everyday moments pushed toward more precise, natural English.",
-    lessons: [ascendRoutineL1],
+    lessons: [ascendRoutineL1, ascendRoutineL2, ascendRoutineL3, ascendRoutineL4],
   },
   {
     id: "ascend-health",
@@ -181,7 +235,7 @@ const TRACKS = [
     levelBand: "a2b1",
     audience: ["adults"],
     blurb: "Say it plain, then say it stronger. Real health moments pushed toward more precise, natural English.",
-    lessons: [ascendHealthL1],
+    lessons: [ascendHealthL1, ascendHealthL2, ascendHealthL3, ascendHealthL4],
   },
   {
     id: "ascend-money",
@@ -192,7 +246,7 @@ const TRACKS = [
     levelBand: "a2b1",
     audience: ["adults"],
     blurb: "Say it plain, then say it stronger. Real money moments pushed toward more precise, natural English.",
-    lessons: [ascendMoneyL1],
+    lessons: [ascendMoneyL1, ascendMoneyL2, ascendMoneyL3, ascendMoneyL4],
   },
   {
     id: "ascend-home",
@@ -203,7 +257,7 @@ const TRACKS = [
     levelBand: "a2b1",
     audience: ["adults"],
     blurb: "Say it plain, then say it stronger. Real home moments pushed toward more precise, natural English.",
-    lessons: [ascendHomeL1],
+    lessons: [ascendHomeL1, ascendHomeL2, ascendHomeL3, ascendHomeL4],
   },
   {
     id: "ascend-travel",
@@ -214,7 +268,7 @@ const TRACKS = [
     levelBand: "a2b1",
     audience: ["adults"],
     blurb: "Say it plain, then say it stronger. Real travel moments pushed toward more precise, natural English.",
-    lessons: [ascendTravelL1],
+    lessons: [ascendTravelL1, ascendTravelL2, ascendTravelL3, ascendTravelL4],
   },
 ];
 
