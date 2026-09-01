@@ -277,7 +277,7 @@ const CSS = `
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 24px;
+  padding: 1cm;
 }
 
 .rl-deck {

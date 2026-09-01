@@ -267,8 +267,8 @@ const CSS = `
   border-radius: 999px;
   padding: 4px 11px;
 }
-.ah-track-title { font-family: 'Baloo 2', cursive; font-weight: 700; font-size: 22px; color: #10646B; margin: 0; }
-.ah-track-desc { font-family: 'IBM Plex Sans', sans-serif; font-weight: 500; font-size: 13.5px; line-height: 1.55; color: #4B8B92; margin: 0; }
+.ah-track-title { font-family: 'Baloo 2', cursive; font-weight: 700; font-size: 22px; line-height: 1.25; color: #10646B; margin: 0; min-height: 55px; }
+.ah-track-desc { font-family: 'IBM Plex Sans', sans-serif; font-weight: 500; font-size: 13.5px; line-height: 1.55; color: #4B8B92; margin: 0; min-height: 63px; }
 
 .ah-track-foot {
   display: flex;

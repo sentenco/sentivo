@@ -234,7 +234,7 @@ const CSS = `
   color: #241422;
   font-family: 'Inter', sans-serif;
   box-sizing: border-box;
-  padding: 24px 20px;
+  padding: 1cm;
   display: flex;
   align-items: center;
   justify-content: center;

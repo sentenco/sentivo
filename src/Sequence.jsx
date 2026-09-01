@@ -189,7 +189,7 @@ const CSS = `
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  padding: 30px 16px 60px;
+  padding: 1cm;
   box-sizing: border-box;
 }
 .sq-shell * { box-sizing: border-box; }

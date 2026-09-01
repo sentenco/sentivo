@@ -169,7 +169,7 @@ const CSS = `
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  padding: 36px;
+  padding: 1cm;
   box-sizing: border-box;
 }
 .br-shell * { box-sizing: border-box; }
