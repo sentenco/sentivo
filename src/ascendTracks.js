@@ -11,6 +11,11 @@ import ascendSocialL1 from "./ascendSocial1";
 import ascendEnvironmentL1 from "./ascendEnvironment1";
 import ascendFutureL1 from "./ascendFuture1";
 import ascendTechEthicsL1 from "./ascendTechEthics1";
+import ascendRoutineL1 from "./ascendRoutine1";
+import ascendHealthL1 from "./ascendHealth1";
+import ascendMoneyL1 from "./ascendMoney1";
+import ascendHomeL1 from "./ascendHome1";
+import ascendTravelL1 from "./ascendTravel1";
 
 const TRACKS = [
   {
@@ -155,6 +160,61 @@ const TRACKS = [
     audience: ["teens"],
     blurb: "Say it plain, then say it stronger. Ethical questions pushed toward more precise, C1-level English.",
     lessons: [ascendTechEthicsL1],
+  },
+  {
+    id: "ascend-routine",
+    category: "Daily Routine & Work-Life",
+    title: "Talking About Your Day",
+    theme: "Daily Routine & Work-Life",
+    level: "A2-B1",
+    levelBand: "a2b1",
+    audience: ["adults"],
+    blurb: "Say it plain, then say it stronger. Real everyday moments pushed toward more precise, natural English.",
+    lessons: [ascendRoutineL1],
+  },
+  {
+    id: "ascend-health",
+    category: "Health & Wellness",
+    title: "Talking About Your Health",
+    theme: "Health & Wellness",
+    level: "A2-B1",
+    levelBand: "a2b1",
+    audience: ["adults"],
+    blurb: "Say it plain, then say it stronger. Real health moments pushed toward more precise, natural English.",
+    lessons: [ascendHealthL1],
+  },
+  {
+    id: "ascend-money",
+    category: "Money & Shopping",
+    title: "Talking About Money",
+    theme: "Money & Shopping",
+    level: "A2-B1",
+    levelBand: "a2b1",
+    audience: ["adults"],
+    blurb: "Say it plain, then say it stronger. Real money moments pushed toward more precise, natural English.",
+    lessons: [ascendMoneyL1],
+  },
+  {
+    id: "ascend-home",
+    category: "Home & Neighborhood",
+    title: "Talking About Home",
+    theme: "Home & Neighborhood",
+    level: "A2-B1",
+    levelBand: "a2b1",
+    audience: ["adults"],
+    blurb: "Say it plain, then say it stronger. Real home moments pushed toward more precise, natural English.",
+    lessons: [ascendHomeL1],
+  },
+  {
+    id: "ascend-travel",
+    category: "Travel & Getting Around",
+    title: "Talking About Travel",
+    theme: "Travel & Getting Around",
+    level: "A2-B1",
+    levelBand: "a2b1",
+    audience: ["adults"],
+    blurb: "Say it plain, then say it stronger. Real travel moments pushed toward more precise, natural English.",
+    lessons: [ascendTravelL1],
   },
 ];
 
