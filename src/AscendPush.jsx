@@ -104,12 +104,14 @@ export default function AscendPush({ lesson, track }) {
   const [slideIdx, setSlideIdx] = useState(0);
   const [water, setWater] = useState(0);
   const [note, setNote] = useState("");
+  const [wateredSlides, setWateredSlides] = useState(() => new Set());
 
   const slides = buildSlides(lesson);
   const slide = slides[slideIdx];
   const isFirst = slideIdx === 0;
   const isLast = slideIdx === slides.length - 1;
   const stage = growthStage(water);
+  const alreadyWatered = wateredSlides.has(slideIdx);
 
   function goPrev() {
     if (!isFirst) setSlideIdx((i) => i - 1);
@@ -118,8 +120,10 @@ export default function AscendPush({ lesson, track }) {
     if (!isLast) { setNote(""); setSlideIdx((i) => i + 1); }
   }
   function levelUp(message) {
+    if (wateredSlides.has(slideIdx)) return;
     setWater((w) => w + 1);
     setNote(message);
+    setWateredSlides((prev) => new Set(prev).add(slideIdx));
   }
 
   let nextLabel = "Continue →";
@@ -161,8 +165,8 @@ export default function AscendPush({ lesson, track }) {
                 <div className="asp-cta-line">Now, level it up!</div>
                 <div className="asp-write-row"><input className="asp-write-input" type="text" placeholder="Type here" /></div>
                 <div className="asp-mark-row">
-                  <button type="button" className="asp-mbtn asp-mbtn--level" onClick={() => levelUp("Watered. Push again, or move on when ready.")}>
-                    Leveled Up ✓
+                  <button type="button" className="asp-mbtn asp-mbtn--level" onClick={() => levelUp("Watered. Move on when ready.")} disabled={alreadyWatered}>
+                    {alreadyWatered ? "Watered ✓" : "Leveled Up ✓"}
                   </button>
                 </div>
                 <div className="asp-water-note">{note}</div>
@@ -176,8 +180,8 @@ export default function AscendPush({ lesson, track }) {
                 <div className="asp-cta-line is-recall">Answer it again.</div>
                 <div className="asp-write-row"><input className="asp-write-input" type="text" placeholder="Type here" /></div>
                 <div className="asp-mark-row">
-                  <button type="button" className="asp-mbtn asp-mbtn--remembered" onClick={() => levelUp("It stuck. Nice work.")}>
-                    Remembered It ✓
+                  <button type="button" className="asp-mbtn asp-mbtn--remembered" onClick={() => levelUp("It stuck. Nice work.")} disabled={alreadyWatered}>
+                    {alreadyWatered ? "Remembered ✓" : "Remembered It ✓"}
                   </button>
                 </div>
                 <div className="asp-water-note">{note}</div>
@@ -321,6 +325,7 @@ const CSS = `
 .asp-mbtn--level:hover { transform: translateY(-1px); }
 .asp-mbtn--remembered { background: linear-gradient(135deg, #3E9B5C, #2C7A46); color: #fff; box-shadow: 0 3px 0 #235E36; }
 .asp-mbtn--remembered:hover { transform: translateY(-1px); }
+.asp-mbtn:disabled { opacity: 0.5; cursor: default; transform: none; }
 
 .asp-water-note { margin-top: 8px; font-size: 10.5px; font-weight: 700; color: #4B8B92; min-height: 15px; line-height: 1.4; }
 
