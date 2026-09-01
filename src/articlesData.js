@@ -6416,6 +6416,130 @@ export const ARTICLES = [
       },
     ],
   },
+  {
+    slug: "zimbabwe-dinosaur-discovery",
+    ready: true,
+    publishedAt: "2026-08-09",
+    emoji: "🦕",
+    variant: "planet",
+    topicLabel: "Nature & Science",
+    topicTitle: "Nature, Science & Planet",
+    title: "Zimbabwe Dinosaur Discovery Rewrites Ancient Life Story",
+    dek: "Scientists in Zimbabwe have identified a 210-million-year-old dinosaur, adding a major African chapter to the story of prehistoric life.",
+    editions: {
+      plain: {
+        label: "Plain Edition",
+        range: "A1–A2",
+        readTime: "1 min read",
+        wordCount: 152,
+        blocks: [
+          { type: "p", parts: [
+            { t: "Scientists in Zimbabwe found a very old dinosaur. It lived about 210 million years ago. This is one of the oldest dinosaur fossils ever found in Africa. A fossil is a piece of an animal or plant from long ago, kept safe inside rock." },
+          ] },
+          { type: "p", parts: [
+            { t: "This dinosaur lived at the very start of dinosaur history. At that time, Earth looked very different. The land was not shaped like it is today, and many animals we know now did not exist yet." },
+          ] },
+          { type: "p", parts: [
+            { t: "Finding old fossils like this helps scientists understand how the first dinosaurs looked and lived. It also helps them learn how animals changed over millions of years." },
+          ] },
+          { type: "p", parts: [
+            { t: "Scientists from different countries often study discoveries like this together. It shows that important science does not only happen in big, famous places. Sometimes, it happens in the ground beneath our feet." },
+          ] },
+        ],
+      },
+      polished: {
+        label: "Polished Edition",
+        range: "B1–B2",
+        readTime: "3 min read",
+        wordCount: 398,
+        blocks: [
+          { type: "p", parts: [
+            { t: "In July 2026, scientists announced an important dinosaur discovery in Zimbabwe: a " },
+            { g: "specimen", pos: "noun", def: "a single example of something, collected and studied by scientists" },
+            { t: " around 210 million years old." },
+            { c: 1 },
+            { t: " A fossil is the preserved remains or traces of a plant or animal from long ago, usually kept inside rock. Finds like this matter because each one helps researchers understand how animals lived and changed over deep time." },
+            { c: 1 },
+          ] },
+          { type: "p", parts: [
+            { t: "This particular fossil comes from very early in dinosaur history, a " },
+            { g: "era", pos: "noun", def: "a long period of time known for particular events or features" },
+            { t: " when the group was still new to the planet. At that time, Earth's continents were arranged differently, climates were different, and many species that later disappeared were still alive." },
+            { c: 2 },
+          ] },
+          { type: "quote", text: "One skeleton can reshape how scientists picture an entire lost world." },
+          { type: "p", parts: [
+            { t: "Zimbabwe already has a reputation among " },
+            { g: "paleontologists", pos: "noun", def: "scientists who study fossils and ancient life" },
+            { t: " for holding valuable fossil sites, but a find this old can still surprise researchers." },
+            { c: 2 },
+            { t: " Because a single skeleton can shift ideas about migration, adaptation, and extinction, discoveries like this often lead to bigger revisions in how scientists picture a whole era, not just one animal." },
+            { c: 3 },
+          ] },
+          { type: "p", parts: [
+            { t: "Stories like this also highlight how international science really is. A discovery may happen in one country, but researchers, museums, and students elsewhere study what it means. Fossil news has a special appeal because it mixes careful evidence with imagination: people naturally wonder what the animal looked like and how it moved." },
+            { c: 1 },
+          ] },
+        ],
+      },
+      precise: {
+        label: "Precise Edition",
+        range: "C1–C2",
+        readTime: "3 min read",
+        wordCount: 391,
+        blocks: [
+          { type: "p", parts: [
+            { t: "In July 2026, researchers announced a significant dinosaur discovery in Zimbabwe: a " },
+            { g: "specimen", pos: "noun", def: "a single example of something, collected and studied by scientists" },
+            { t: " dated to roughly 210 million years ago." },
+            { c: 1 },
+            { t: " A fossil constitutes the preserved remains or traces of an organism from the deep past, typically entombed within rock. Discoveries of this kind matter because each one refines researchers' understanding of how animal life developed and diversified over immense stretches of time." },
+            { c: 1 },
+          ] },
+          { type: "p", parts: [
+            { t: "This particular fossil hails from a formative " },
+            { g: "epoch", pos: "noun", def: "a distinct period of time marked by notable developments or characteristics" },
+            { t: " in dinosaur history, when the group had only recently emerged. At that juncture, Earth's continents were configured differently, climates diverged sharply from today's, and numerous species that would later vanish still roamed the planet." },
+            { c: 2 },
+          ] },
+          { type: "quote", text: "One skeleton can reshape how scientists picture an entire lost world." },
+          { type: "p", parts: [
+            { t: "Zimbabwe already commands a reputation among " },
+            { g: "paleontologists", pos: "noun", def: "scientists who study fossils and ancient life" },
+            { t: " for hosting valuable fossil sites, yet a find of this antiquity can still catch researchers off guard." },
+            { c: 2 },
+            { t: " Because a single skeleton can " },
+            { g: "recalibrate", pos: "verb", def: "adjust or reconsider something carefully in light of new information" },
+            { t: " prevailing ideas about migration, adaptation, and extinction, discoveries of this magnitude often prompt broader revisions to how an entire era is understood, not merely how one animal is classified." },
+            { c: 3 },
+          ] },
+          { type: "p", parts: [
+            { t: "Episodes like this also underscore the inherently international character of scientific inquiry. A discovery may occur within one nation's borders, but researchers, museums, and students elsewhere engage with its implications. Fossil discoveries hold particular appeal because they fuse rigorous evidence with imaginative reconstruction: observers naturally speculate about an animal's appearance, movement, and habitat." },
+            { c: 1 },
+          ] },
+        ],
+      },
+    },
+    references: [
+      { domain: "abs-cbn.com", name: "ABS-CBN", headline: "Health & Science News | ABS-CBN Latest Updates" },
+      { domain: "reuters.com", name: "Reuters", headline: "Science News | Today's Latest Science Headlines" },
+      { domain: "sciencedaily.com", name: "ScienceDaily", headline: "ScienceDaily: Your source for the latest research news" },
+    ],
+    discussionGuide: [
+      {
+        q: "Why do you think a 210-million-year-old fossil is especially valuable to scientists, compared to a more recent one?",
+        follow: ["What could one skeleton teach us that many smaller fossils couldn't?"],
+      },
+      {
+        q: "The article says fossil discoveries mix 'careful evidence with imagination.' What do you think that means?",
+        follow: [],
+      },
+      {
+        q: "Why is it important for scientists in different countries to study a discovery like this together?",
+        follow: ["Can you think of another field where international teamwork matters just as much?"],
+      },
+    ],
+  },
 ];
 
 export function getArticle(slug) {
