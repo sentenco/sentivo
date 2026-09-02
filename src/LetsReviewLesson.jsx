@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 
 const IMG1 = "/curriculum/u1-l1";
 const IMG2 = "/curriculum/u1-l2";
+const IMG3 = "/curriculum/u1-l3";
 
 const LETTER_COLOR = {
   A: "#F2A900", B: "#2E97C7", C: "#22A67E",
@@ -331,7 +332,7 @@ function buildSlides({ onZoom }) {
               <Pic src={`${IMG2}/fish.avif`} label="fish" size={70} onZoom={onZoom} />
             </div>
             <div className="look-row">
-              <Pic src={null} label="goat" size={70} onZoom={onZoom} />
+              <Pic src={`${IMG3}/goat.avif`} label="goat" size={70} onZoom={onZoom} />
               <Pic src={`${IMG1}/ball.jpg`} label="ball" size={70} onZoom={onZoom} />
               <Pic src={`${IMG2}/egg.jpg`} label="egg" size={70} onZoom={onZoom} />
             </div>

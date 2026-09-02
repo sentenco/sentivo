@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 
 const IMG1 = "/curriculum/u1-l1";
 const IMG2 = "/curriculum/u1-l2";
+const IMG3 = "/curriculum/u1-l3";
 
 const LETTER_COLOR = {
   A: "#F2A900", B: "#2E97C7", C: "#22A67E",
@@ -259,7 +260,7 @@ function buildSlides({ onZoom }) {
           <div className="row">
             <Pic src={`${IMG2}/dog.jpg`} label="dog" size={90} onZoom={onZoom} />
             <Pic src={`${IMG1}/apple.jpg`} label="apple" size={90} onZoom={onZoom} />
-            <Pic src={null} label="goat" size={90} onZoom={onZoom} />
+            <Pic src={`${IMG3}/goat.avif`} label="goat" size={90} onZoom={onZoom} />
           </div>
           <p className="slide-p">Say the word, then the letter. "Dog, D."</p>
         </>

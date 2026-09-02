@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 
 const IMG1 = "/curriculum/u1-l1";
 const IMG2 = "/curriculum/u1-l2";
+const IMG3 = "/curriculum/u1-l3";
 
 const LETTER_COLOR = {
   A: "#F2A900", B: "#2E97C7", C: "#22A67E",
@@ -256,7 +257,7 @@ function buildSlides({ onZoom }) {
           <div className="row" style={{ marginTop: 6 }}>
             <Pic src={`${IMG1}/banana.jpg`} label="banana" size={72} onZoom={onZoom} />
             <Pic src={`${IMG2}/elephant.jpg`} label="elephant" size={72} onZoom={onZoom} />
-            <Pic src={null} label="goat" size={72} onZoom={onZoom} />
+            <Pic src={`${IMG3}/goat.avif`} label="goat" size={72} onZoom={onZoom} />
           </div>
         </>
       ),
@@ -272,7 +273,7 @@ function buildSlides({ onZoom }) {
             <div className="look-row">
               <Pic src={`${IMG1}/cat.jpg`} label="cat" size={70} onZoom={onZoom} />
               <Pic src={`${IMG2}/frog.jpg`} label="frog" size={70} onZoom={onZoom} />
-              <Pic src={null} label="house" size={70} onZoom={onZoom} />
+              <Pic src={`${IMG3}/house.jpeg`} label="house" size={70} onZoom={onZoom} />
             </div>
           </div>
           <p className="slide-p">What do you see? What letter? What is it?</p>
