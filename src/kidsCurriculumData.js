@@ -50,7 +50,7 @@ export const UNITS = {
       lessons: buildLessons(1, [
         { title: "Hello, Alphabet!", focus: "Letters A, B, C. \"Hello! My name is...\"", short: "A-C" },
         { title: "How Are You?", focus: "\"How are you?\" and letters D, E, F", short: "D-F" },
-        { title: "Almost There!", focus: "Letters G, H, I. \"Nice to meet you.\"", short: "G-I" },
+        { title: "Almost There!", focus: "\"Nice to meet you!\" and letters G, H, I", short: "G-I" },
       ]),
     },
     {
