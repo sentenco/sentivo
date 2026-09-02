@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { LEVEL_DATA, UNITS, READY_UNITS } from "./kidsCurriculumData";
 
-const READY_LESSONS = { A1: { 1: [1] } };
+const READY_LESSONS = { A1: { 1: [1, 2] } };
 
 function openPopup(path, name, w, h) {
   const screenW = window.screen.availWidth || 1600;
