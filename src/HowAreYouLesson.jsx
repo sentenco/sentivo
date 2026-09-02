@@ -460,7 +460,7 @@ function buildSlides({ onZoom }) {
     // 14: Show What You Know
     {
       stage: "Show What You Know",
-      time: "~1.5 min",
+      time: "~1 min",
       body: (
         <>
           <span className="title-highlight"><h2 className="slide-h sub">Show What You Know!</h2></span>
@@ -469,6 +469,22 @@ function buildSlides({ onZoom }) {
             <LetterTile letters="Ee" color={LETTER_COLOR.E} onZoom={onZoom} />
             <LetterTile letters="Ff" color={LETTER_COLOR.F} onZoom={onZoom} />
           </div>
+        </>
+      ),
+    },
+    // 14b: Picture Check! (recall without the letter shown)
+    {
+      stage: "Show What You Know",
+      time: "~0.5 min",
+      body: (
+        <>
+          <span className="title-highlight"><h2 className="slide-h sub">What Letter?</h2></span>
+          <div className="row">
+            <Pic src={`${IMG}/elephant.jpg`} label="elephant" size={90} onZoom={onZoom} />
+            <Pic src={`${IMG}/frog.jpg`} label="frog" size={90} onZoom={onZoom} />
+            <Pic src={`${IMG}/doll.png`} label="doll" size={90} onZoom={onZoom} />
+          </div>
+          <p className="slide-p">No letters this time. Can you say the word and the letter?</p>
         </>
       ),
     },

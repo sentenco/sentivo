@@ -291,6 +291,18 @@ function buildSlides({ onZoom }) {
         </div>
       ),
     },
+    // 7b: HIGHLIGHT Rainbow Word Builder Round 2
+    {
+      stage: "HIGHLIGHT: Rainbow Word Builder",
+      time: "~2 min",
+      body: (
+        <div className="center-col">
+          <span className="title-highlight"><h2 className="slide-h sub">🌈 One More Rainbow Word!</h2></span>
+          <BlendRow parts={["M", "A", "T"]} result="MAT" color={COLOR_HEX.Orange} onZoom={onZoom} />
+          <ColorSwatch name="Orange" hex={COLOR_HEX.Orange} size={60} onZoom={onZoom} />
+        </div>
+      ),
+    },
     // 8: Final Review Challenge
     {
       stage: "Final Review Challenge",

@@ -243,6 +243,23 @@ function buildSlides({ onZoom }) {
         </>
       ),
     },
+    // 3b: What Do You See? continued (fresh set)
+    {
+      stage: "What Do You See?",
+      time: "~2 min",
+      body: (
+        <>
+          <span className="title-highlight"><h2 className="slide-h sub">What Else Do You See?</h2></span>
+          <CountGroup n={9} icon="⭐" size={38} onZoom={onZoom} />
+          <div className="bubble-col" style={{ maxWidth: 380, marginTop: 6 }}>
+            <div className="brow">
+              <div className="avatar navy">T</div>
+              <div className="bubble left">What about this one? How many?</div>
+            </div>
+          </div>
+        </>
+      ),
+    },
     // 4: Letter Detective
     {
       stage: "Letter Detective",
@@ -272,6 +289,23 @@ function buildSlides({ onZoom }) {
         <>
           <span className="title-highlight"><h2 className="slide-h sub">Your Turn to Ask!</h2></span>
           <CountGroup n={8} icon="🎈" size={40} onZoom={onZoom} />
+          <div className="bubble-col" style={{ maxWidth: 380, marginTop: 6 }}>
+            <div className="brow me">
+              <div className="avatar coral">S</div>
+              <div className="bubble right">How many?</div>
+            </div>
+          </div>
+        </>
+      ),
+    },
+    // 5b: Your Turn to Ask! continued
+    {
+      stage: "Your Turn to Ask!",
+      time: "~2 min",
+      body: (
+        <>
+          <span className="title-highlight"><h2 className="slide-h sub">Ask Again!</h2></span>
+          <CountGroup n={5} icon="🍎" size={48} onZoom={onZoom} />
           <div className="bubble-col" style={{ maxWidth: 380, marginTop: 6 }}>
             <div className="brow me">
               <div className="avatar coral">S</div>
@@ -315,6 +349,21 @@ function buildSlides({ onZoom }) {
             </div>
           </div>
         </>
+      ),
+    },
+    // 7b: HIGHLIGHT You're the Teacher! Round 2
+    {
+      stage: "HIGHLIGHT: You're the Teacher!",
+      time: "~2 min",
+      body: (
+        <div className="center-col">
+          <span className="title-highlight"><h2 className="slide-h sub">One More Round!</h2></span>
+          <div className="letter-row">
+            <LetterTile letters="Oo" color={LETTER_COLOR.O} size={54} fontSize={20} onZoom={onZoom} />
+            <LetterTile letters="3" color={NUMBER_COLOR[3]} size={54} fontSize={22} onZoom={onZoom} />
+          </div>
+          <p className="slide-p">Pick another card and ask again!</p>
+        </div>
       ),
     },
     // 8: Free Challenge

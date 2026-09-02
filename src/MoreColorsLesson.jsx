@@ -385,6 +385,39 @@ function buildSlides({ onZoom }) {
         </div>
       ),
     },
+    // 11b: HIGHLIGHT Color Shop! Round 2 (choose)
+    {
+      stage: "HIGHLIGHT: Color Shop!",
+      time: "~1.5 min",
+      body: (
+        <>
+          <span className="title-highlight"><h2 className="slide-h sub">🛍️ Shopping Again!</h2></span>
+          <div className="word-row">
+            <ColorSwatch name="Brown" hex={COLOR_HEX.Brown} size={70} onZoom={onZoom} />
+            <ColorSwatch name="Red" hex={COLOR_HEX.Red} size={70} onZoom={onZoom} />
+            <ColorSwatch name="Green" hex={COLOR_HEX.Green} size={70} onZoom={onZoom} />
+          </div>
+          <div className="bubble-col" style={{ maxWidth: 380, marginTop: 6 }}>
+            <div className="brow">
+              <div className="avatar navy">T</div>
+              <div className="bubble left">What color do you want this time?</div>
+            </div>
+          </div>
+        </>
+      ),
+    },
+    // 11c: HIGHLIGHT Color Shop! Round 2 (bonus letter)
+    {
+      stage: "HIGHLIGHT: Color Shop!",
+      time: "~1 min",
+      body: (
+        <div className="center-col">
+          <span className="title-highlight"><h2 className="slide-h sub">Bonus Letter!</h2></span>
+          <LetterTile letters="V" color={LETTER_COLOR.V} size={90} fontSize={38} onZoom={onZoom} />
+          <p className="slide-p">What letter is this?</p>
+        </div>
+      ),
+    },
     // 12: Color & Letter Check
     {
       stage: "Color & Letter Check",

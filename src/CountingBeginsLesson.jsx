@@ -415,6 +415,38 @@ function buildSlides({ onZoom }) {
         </>
       ),
     },
+    // 12b: HIGHLIGHT How Many? Round 2 (peek)
+    {
+      stage: "HIGHLIGHT: How Many?",
+      time: "~1 min",
+      body: (
+        <>
+          <span className="title-highlight"><h2 className="slide-h sub">Look Again!</h2></span>
+          <CountGroup n={5} icon="🎈" size={50} onZoom={onZoom} />
+          <p className="slide-p" style={{ marginTop: 4 }}>Remember how many you see... then we hide it!</p>
+        </>
+      ),
+    },
+    // 12c: HIGHLIGHT How Many? Round 2 (recall) + letter challenge
+    {
+      stage: "HIGHLIGHT: How Many?",
+      time: "~1 min",
+      body: (
+        <>
+          <span className="title-highlight"><h2 className="slide-h sub">How Many This Time?</h2></span>
+          <div className="bubble-col" style={{ maxWidth: 380 }}>
+            <div className="brow">
+              <div className="avatar navy">T</div>
+              <div className="bubble left">How many balloons were there?</div>
+            </div>
+          </div>
+          <div className="row" style={{ marginTop: 8 }}>
+            <LetterTile letters="L" color={LETTER_COLOR.L} size={70} fontSize={28} onZoom={onZoom} />
+          </div>
+          <p className="slide-p">Now, what letter is this?</p>
+        </>
+      ),
+    },
     // 13: Count & Say Goodbye (1-5)
     {
       stage: "Count & Say Goodbye",

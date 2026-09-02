@@ -258,10 +258,30 @@ function buildSlides({ onZoom }) {
         </>
       ),
     },
+    // 3b: Color Talk continued
+    {
+      stage: "Color Talk",
+      time: "~2 min",
+      body: (
+        <>
+          <span className="title-highlight"><h2 className="slide-h sub">More Color Talk!</h2></span>
+          <div className="word-row">
+            <ColorSwatch name="?" hex={COLOR_HEX.Purple} onZoom={onZoom} />
+            <ColorSwatch name="?" hex={COLOR_HEX.Brown} onZoom={onZoom} />
+          </div>
+          <div className="bubble-col" style={{ maxWidth: 380, marginTop: 6 }}>
+            <div className="brow">
+              <div className="avatar navy">T</div>
+              <div className="bubble left">What about these? Which one do you like?</div>
+            </div>
+          </div>
+        </>
+      ),
+    },
     // 4: Letter Hunt
     {
       stage: "Letter Hunt",
-      time: "~4 min",
+      time: "~2 min",
       body: (
         <>
           <span className="title-highlight"><h2 className="slide-h sub">Letter Hunt!</h2></span>
@@ -274,6 +294,27 @@ function buildSlides({ onZoom }) {
             <div className="brow">
               <div className="avatar navy">T</div>
               <div className="bubble left">Can you find W?</div>
+            </div>
+          </div>
+        </>
+      ),
+    },
+    // 4b: Letter Hunt continued
+    {
+      stage: "Letter Hunt",
+      time: "~2 min",
+      body: (
+        <>
+          <span className="title-highlight"><h2 className="slide-h sub">Hunt Again!</h2></span>
+          <div className="letter-row">
+            <LetterTile letters="T" color={LETTER_COLOR.T} size={60} fontSize={24} onZoom={onZoom} />
+            <LetterTile letters="X" color={LETTER_COLOR.X} size={60} fontSize={24} onZoom={onZoom} />
+            <LetterTile letters="Z" color={LETTER_COLOR.Z} size={60} fontSize={24} onZoom={onZoom} />
+          </div>
+          <div className="bubble-col" style={{ maxWidth: 380, marginTop: 6 }}>
+            <div className="brow">
+              <div className="avatar navy">T</div>
+              <div className="bubble left">Now can you find Z?</div>
             </div>
           </div>
         </>
@@ -318,6 +359,32 @@ function buildSlides({ onZoom }) {
         <div className="center-col">
           <span className="title-highlight"><h2 className="slide-h sub">Name Your Picture!</h2></span>
           <BlendRow parts={["s", "u", "n"]} result="sun" onZoom={onZoom} />
+        </div>
+      ),
+    },
+    // 7b: HIGHLIGHT Build My Picture! Round 2 (describe)
+    {
+      stage: "HIGHLIGHT: Build My Picture!",
+      time: "~1.5 min",
+      body: (
+        <>
+          <span className="title-highlight"><h2 className="slide-h sub">🎨 Build Another Picture!</h2></span>
+          <div className="word-row">
+            <ColorSwatch name="Green" hex={COLOR_HEX.Green} size={70} onZoom={onZoom} />
+            <Pic src={null} label="tree" size={70} onZoom={onZoom} />
+          </div>
+          <p className="slide-p">Choose a new color and shape. "Green tree."</p>
+        </>
+      ),
+    },
+    // 7c: HIGHLIGHT Build My Picture! Round 2 (blend)
+    {
+      stage: "HIGHLIGHT: Build My Picture!",
+      time: "~1.5 min",
+      body: (
+        <div className="center-col">
+          <span className="title-highlight"><h2 className="slide-h sub">Name It Again!</h2></span>
+          <BlendRow parts={["t", "o", "p"]} result="top" onZoom={onZoom} />
         </div>
       ),
     },

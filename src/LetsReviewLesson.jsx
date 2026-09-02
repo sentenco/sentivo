@@ -418,6 +418,43 @@ function buildSlides({ onZoom }) {
         </>
       ),
     },
+    // 10b: Mystery Picture Round 2
+    {
+      stage: "Mystery Picture!",
+      time: "~1.3 min",
+      body: (
+        <>
+          <span className="title-highlight"><h2 className="slide-h sub">One More Mystery!</h2></span>
+          <div className="row">
+            <LetterTile letters="B" color={LETTER_COLOR.B} size={90} fontSize={36} onZoom={onZoom} />
+            <BlankTile size={90} />
+            <BlankTile size={90} />
+          </div>
+          <div className="bubble-col" style={{ maxWidth: 380, marginTop: 8 }}>
+            <div className="brow">
+              <div className="avatar navy">T</div>
+              <div className="bubble left">What letter? What could it be?</div>
+            </div>
+          </div>
+        </>
+      ),
+    },
+    // 10c: Mystery Picture Round 2 reveal
+    {
+      stage: "Mystery Picture!",
+      time: "~1.3 min",
+      body: (
+        <>
+          <span className="title-highlight"><h2 className="slide-h sub">It's a Bag!</h2></span>
+          <div className="row" style={{ marginBottom: 10 }}>
+            <LetterTile letters="B" color={LETTER_COLOR.B} size={54} fontSize={22} onZoom={onZoom} />
+            <LetterTile letters="A" color={LETTER_COLOR.A} size={54} fontSize={22} onZoom={onZoom} />
+            <LetterTile letters="G" color={LETTER_COLOR.G} size={54} fontSize={22} onZoom={onZoom} />
+          </div>
+          <Pic src={null} label="bag" size={130} onZoom={onZoom} />
+        </>
+      ),
+    },
     // 11: My A-I Challenge (letters)
     {
       stage: "My A-I Challenge",

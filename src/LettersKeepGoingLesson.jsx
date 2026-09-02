@@ -409,6 +409,37 @@ function buildSlides({ onZoom }) {
         </>
       ),
     },
+    // 12b: HIGHLIGHT How Many Monsters? Round 2
+    {
+      stage: "HIGHLIGHT: How Many Monsters?",
+      time: "~1 min",
+      body: (
+        <>
+          <span className="title-highlight"><h2 className="slide-h sub">How Many This Time?</h2></span>
+          <CountGroup n={9} icon="👹" size={40} onZoom={onZoom} />
+        </>
+      ),
+    },
+    // 12c: HIGHLIGHT continued Round 2 (silly wrong answer)
+    {
+      stage: "HIGHLIGHT: How Many Monsters?",
+      time: "~1 min",
+      body: (
+        <>
+          <span className="title-highlight"><h2 className="slide-h sub">Oops, Really?</h2></span>
+          <div className="bubble-col" style={{ maxWidth: 400 }}>
+            <div className="brow">
+              <div className="avatar navy">T</div>
+              <div className="bubble left">Hmm... seven monsters?</div>
+            </div>
+            <div className="brow me">
+              <div className="avatar coral">S</div>
+              <div className="bubble right">No! Nine!</div>
+            </div>
+          </div>
+        </>
+      ),
+    },
     // 13: Quick review P-Q-R
     {
       stage: "Quick Count & Goodbye",

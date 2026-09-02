@@ -383,6 +383,21 @@ function buildSlides({ onZoom }) {
         </>
       ),
     },
+    // 11b: HIGHLIGHT Color Detective Round 2 (letter clue)
+    {
+      stage: "HIGHLIGHT: Color Detective",
+      time: "~1 min",
+      body: (
+        <>
+          <span className="title-highlight"><h2 className="slide-h sub">Find the Green Letter!</h2></span>
+          <div className="letter-row">
+            <LetterTile letters="T" color={COLOR_HEX.Red} size={70} fontSize={28} onZoom={onZoom} />
+            <LetterTile letters="U" color={COLOR_HEX.Green} size={70} fontSize={28} onZoom={onZoom} />
+            <LetterTile letters="S" color={COLOR_HEX.Yellow} size={70} fontSize={28} onZoom={onZoom} />
+          </div>
+        </>
+      ),
+    },
     // 12: Color & Letter Check (colors)
     {
       stage: "Color & Letter Check",

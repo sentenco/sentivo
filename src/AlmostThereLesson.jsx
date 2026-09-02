@@ -414,6 +414,34 @@ function buildSlides({ onZoom }) {
         </>
       ),
     },
+    // 12b: Who Am I? Round 2 (clue)
+    {
+      stage: "Who Am I?",
+      time: "~1 min",
+      body: (
+        <>
+          <span className="title-highlight"><h2 className="slide-h sub">Who Am I? Again!</h2></span>
+          <LetterTile letters="Ii" color={LETTER_COLOR.I} size={90} fontSize={36} onZoom={onZoom} />
+          <div className="bubble-col" style={{ maxWidth: 420, marginTop: 10 }}>
+            <div className="brow">
+              <div className="avatar navy">T</div>
+              <div className="bubble left">I start with I. I'm cold and round. I-i-i...</div>
+            </div>
+          </div>
+        </>
+      ),
+    },
+    // 12c: Who Am I? Round 2 (reveal)
+    {
+      stage: "Who Am I?",
+      time: "~1 min",
+      body: (
+        <>
+          <span className="title-highlight"><h2 className="slide-h sub">It's an Igloo!</h2></span>
+          <Pic src={`${IMG}/igloo.jpg`} label="igloo" size={140} onZoom={onZoom} />
+        </>
+      ),
+    },
     // 13: Say Goodbye (practice)
     {
       stage: "Say Goodbye",
@@ -441,7 +469,7 @@ function buildSlides({ onZoom }) {
     // 14: Say Goodbye (review)
     {
       stage: "Say Goodbye",
-      time: "~1.5 min",
+      time: "~1 min",
       body: (
         <>
           <span className="title-highlight"><h2 className="slide-h sub">Show What You Know!</h2></span>
@@ -450,6 +478,22 @@ function buildSlides({ onZoom }) {
             <LetterTile letters="Hh" color={LETTER_COLOR.H} onZoom={onZoom} />
             <LetterTile letters="Ii" color={LETTER_COLOR.I} onZoom={onZoom} />
           </div>
+        </>
+      ),
+    },
+    // 14b: Picture Check! (recall without the letter shown)
+    {
+      stage: "Say Goodbye",
+      time: "~0.5 min",
+      body: (
+        <>
+          <span className="title-highlight"><h2 className="slide-h sub">What Letter?</h2></span>
+          <div className="row">
+            <Pic src={`${IMG}/grapes.jpg`} label="grapes" size={90} onZoom={onZoom} />
+            <Pic src={`${IMG}/hat.avif`} label="hat" size={90} onZoom={onZoom} />
+            <Pic src={`${IMG}/insect.jpeg`} label="insect" size={90} onZoom={onZoom} />
+          </div>
+          <p className="slide-p">No letters this time. Can you say the word and the letter?</p>
         </>
       ),
     },

@@ -362,6 +362,17 @@ function buildSlides({ onZoom }) {
         </div>
       ),
     },
+    // 12b: HIGHLIGHT Word Builder! (MAT)
+    {
+      stage: "HIGHLIGHT: Word Builder!",
+      time: "~1 min",
+      body: (
+        <div className="center-col">
+          <span className="title-highlight"><h2 className="slide-h sub">Build One More!</h2></span>
+          <BlendRow parts={["M", "A", "T"]} result="MAT" onZoom={onZoom} />
+        </div>
+      ),
+    },
     // 13: Y-Z & Blend Check (letters)
     {
       stage: "Y-Z & Blend Check",

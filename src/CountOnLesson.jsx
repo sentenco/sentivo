@@ -400,6 +400,31 @@ function buildSlides({ onZoom }) {
         </div>
       ),
     },
+    // 12b: HIGHLIGHT Feed the Monster Round 2 (number)
+    {
+      stage: "HIGHLIGHT: Feed the Monster!",
+      time: "~1 min",
+      body: (
+        <>
+          <span className="title-highlight"><h2 className="slide-h sub">👹 Still Hungry!</h2></span>
+          <LetterTile letters="6" color={NUMBER_COLOR[6]} size={64} fontSize={26} onZoom={onZoom} />
+          <CountGroup n={6} icon="🍪" size={40} onZoom={onZoom} />
+          <p className="slide-p">Count the food, then feed the monster!</p>
+        </>
+      ),
+    },
+    // 12c: HIGHLIGHT Feed the Monster Round 2 (letter)
+    {
+      stage: "HIGHLIGHT: Feed the Monster!",
+      time: "~1 min",
+      body: (
+        <div className="center-col">
+          <span className="title-highlight"><h2 className="slide-h sub">Quick! Before It's Eaten!</h2></span>
+          <LetterTile letters="M" color={LETTER_COLOR.M} size={90} fontSize={38} onZoom={onZoom} />
+          <p className="slide-p">What letter is this?</p>
+        </div>
+      ),
+    },
     // 13: Count 1-10
     {
       stage: "Count 1-10 & Goodbye",

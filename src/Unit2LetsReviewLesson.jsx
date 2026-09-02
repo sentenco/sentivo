@@ -354,6 +354,21 @@ function buildSlides({ onZoom }) {
         </div>
       ),
     },
+    // 9b: HIGHLIGHT Adventure Stop 4 (mixed)
+    {
+      stage: "HIGHLIGHT: Number & Letter Adventure",
+      time: "~1 min",
+      body: (
+        <div className="center-col">
+          <span className="title-highlight"><h2 className="slide-h sub">Adventure Stop 4!</h2></span>
+          <div className="letter-row">
+            <LetterTile letters="Mm" color={LETTER_COLOR.M} size={54} fontSize={20} onZoom={onZoom} />
+            <LetterTile letters="6" color={NUMBER_COLOR[6]} size={54} fontSize={22} onZoom={onZoom} />
+          </div>
+          <p className="slide-p">One last stop! Name the letter and the number.</p>
+        </div>
+      ),
+    },
     // 10: Final Challenge
     {
       stage: "Final Challenge",

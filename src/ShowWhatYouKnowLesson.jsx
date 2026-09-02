@@ -282,10 +282,31 @@ function buildSlides({ onZoom }) {
         </>
       ),
     },
+    // 4b: Letter Talk continued (fresh set)
+    {
+      stage: "Letter Talk",
+      time: "~2 min",
+      body: (
+        <>
+          <span className="title-highlight"><h2 className="slide-h sub">More Letter Talk!</h2></span>
+          <div className="letter-row">
+            <LetterTile letters="Aa" color={LETTER_COLOR.A} size={54} fontSize={20} onZoom={onZoom} />
+            <LetterTile letters="Dd" color={LETTER_COLOR.D} size={54} fontSize={20} onZoom={onZoom} />
+            <LetterTile letters="Ff" color={LETTER_COLOR.F} size={54} fontSize={20} onZoom={onZoom} />
+            <LetterTile letters="Hh" color={LETTER_COLOR.H} size={54} fontSize={20} onZoom={onZoom} />
+          </div>
+          <div className="row" style={{ marginTop: 6 }}>
+            <Pic src={`${IMG1}/apple.jpg`} label="apple" size={72} onZoom={onZoom} />
+            <Pic src={`${IMG2}/duck.png`} label="duck" size={72} onZoom={onZoom} />
+            <Pic src={`${IMG3}/hen.jpg`} label="hen" size={72} onZoom={onZoom} />
+          </div>
+        </>
+      ),
+    },
     // 5: Look, Think & Say
     {
       stage: "Look, Think & Say",
-      time: "~4 min",
+      time: "~2 min",
       body: (
         <>
           <span className="title-highlight"><h2 className="slide-h sub">Look, Think & Say!</h2></span>
@@ -294,6 +315,24 @@ function buildSlides({ onZoom }) {
               <Pic src={`${IMG1}/cat.jpg`} label="cat" size={70} onZoom={onZoom} />
               <Pic src={`${IMG2}/frog.jpg`} label="frog" size={70} onZoom={onZoom} />
               <Pic src={`${IMG3}/house.jpeg`} label="house" size={70} onZoom={onZoom} />
+            </div>
+          </div>
+          <p className="slide-p">What do you see? What letter? What is it?</p>
+        </>
+      ),
+    },
+    // 5b: Look, Think & Say continued (fresh set)
+    {
+      stage: "Look, Think & Say",
+      time: "~2 min",
+      body: (
+        <>
+          <span className="title-highlight"><h2 className="slide-h sub">One More Look!</h2></span>
+          <div className="look-groups">
+            <div className="look-row">
+              <Pic src={`${IMG1}/ball.jpg`} label="ball" size={70} onZoom={onZoom} />
+              <Pic src={`${IMG2}/egg.jpg`} label="egg" size={70} onZoom={onZoom} />
+              <Pic src={`${IMG3}/icecream.jpg`} label="icecream" size={70} onZoom={onZoom} />
             </div>
           </div>
           <p className="slide-p">What do you see? What letter? What is it?</p>
@@ -345,6 +384,26 @@ function buildSlides({ onZoom }) {
           <span className="title-highlight"><h2 className="slide-h sub">Switch!</h2></span>
           <p className="slide-p">Now the teacher goes first. Answer everything on your own!</p>
         </div>
+      ),
+    },
+    // 8b: Show What You Know! (one more switch)
+    {
+      stage: "Show What You Know!",
+      time: "~1.5 min",
+      body: (
+        <>
+          <span className="title-highlight"><h2 className="slide-h sub">Once More!</h2></span>
+          <div className="bubble-col" style={{ maxWidth: 460 }}>
+            <div className="brow">
+              <div className="avatar navy">T</div>
+              <div className="bubble left">How are you today?</div>
+            </div>
+            <div className="brow me">
+              <div className="avatar coral">S</div>
+              <div className="bubble right"><span className="fill"></span></div>
+            </div>
+          </div>
+        </>
       ),
     },
     // 9: My A-I Challenge
