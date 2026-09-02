@@ -21,10 +21,6 @@ function openLessonPopup(path) {
   openPopup(path, "sentivoLessonPlayer", 820, 860);
 }
 
-function openGuidePopup(path) {
-  openPopup(`${path}/guide`, "sentivoTeacherGuide", 560, 640);
-}
-
 export default function LevelPage({ level = "A1" }) {
   const data = LEVEL_DATA[level] || LEVEL_DATA.A1;
   const units = UNITS[level] || UNITS.A1;
@@ -168,10 +164,6 @@ export default function LevelPage({ level = "A1" }) {
                               </div>
                               {lessonReady ? (
                                 <div className="lp-toc-lesson-actions">
-                                  <button type="button" className="lp-toc-lesson-guide" onClick={() => openGuidePopup(lessonPath)}>
-                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20M4 4.5A2.5 2.5 0 0 1 6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5z"/></svg>
-                                    Guide
-                                  </button>
                                   <button type="button" className="lp-toc-lesson-open" onClick={() => openLessonPopup(lessonPath)}>
                                     Open
                                     <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -366,12 +358,6 @@ const styles = `
 .lp-toc-lesson-tag { font-size: 9px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; color: #C7A8B8; margin-left: auto; flex-shrink: 0; }
 .lp-toc-lesson-row.is-test .lp-toc-lesson-tag { color: #A87A1E; }
 .lp-toc-lesson-actions { display: flex; align-items: center; gap: 6px; margin-left: auto; flex-shrink: 0; }
-.lp-toc-lesson-guide {
-  display: inline-flex; align-items: center; gap: 4px; cursor: pointer; border: 1px solid #EDE6F4;
-  font-family: 'Source Serif 4', serif; font-weight: 600; font-size: 11px;
-  color: #6B6E96; background: #fff; border-radius: 999px; padding: 4px 11px;
-}
-.lp-toc-lesson-guide:hover { background: #F7F5FB; }
 .lp-toc-lesson-open {
   display: inline-flex; align-items: center; gap: 4px; cursor: pointer; border: none;
   font-family: 'Source Serif 4', serif; font-weight: 600; font-size: 11px;

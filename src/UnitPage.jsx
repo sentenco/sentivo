@@ -8,18 +8,18 @@ const UNIT_COLOR = { A1: { accent: "#FF6B4A", light: "#FFE6DD" }, A2: { accent: 
 // LevelPage.jsx's READY_UNITS. Everything else stays disabled/"Coming soon".
 const READY_LESSONS = { A1: { 1: [1, 2] } };
 
-function openLessonPopup(level, unitNum, lessonNum, view) {
+function openLessonPopup(level, unitNum, lessonNum) {
   const screenW = window.screen.availWidth || 1600;
   const screenH = window.screen.availHeight || 900;
-  const w = Math.min(view === "guide" ? 780 : 780, screenW - 40);
+  const w = Math.min(780, screenW - 40);
   const h = Math.min(620, screenH - 80);
   const left = Math.max(0, Math.floor((screenW - w) / 2));
   const top = Math.max(0, Math.floor((screenH - h) / 2));
-  const path = `/library/curriculum/${level}/unit/${unitNum}/lesson/${lessonNum}${view === "guide" ? "/guide" : ""}`;
+  const path = `/library/curriculum/${level}/unit/${unitNum}/lesson/${lessonNum}`;
 
   window.open(
     path,
-    `sentivoKidsLesson${view === "guide" ? "Guide" : ""}`,
+    "sentivoKidsLesson",
     `width=${w},height=${h},left=${left},top=${top},toolbar=no,location=no,menubar=no,status=no,scrollbars=yes,resizable=yes`
   );
 }
@@ -84,10 +84,7 @@ export default function UnitPage({ level = "A1", unitNum = "1", onBack }) {
                   <span className="up-lesson-tag">{l.isTest ? "Summative test" : "Lesson"}</span>
                   {isReady ? (
                     <div className="up-lesson-actions">
-                      <button type="button" className="up-lesson-guide" onClick={() => openLessonPopup(level, unitNum, l.num, "guide")}>
-                        Guide
-                      </button>
-                      <button type="button" className="up-lesson-open up-lesson-open--ready" onClick={() => openLessonPopup(level, unitNum, l.num, "student")}>
+                      <button type="button" className="up-lesson-open up-lesson-open--ready" onClick={() => openLessonPopup(level, unitNum, l.num)}>
                         Open
                         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                       </button>
@@ -183,11 +180,6 @@ const styles = `
   border-radius: 999px; padding: 4px 11px; cursor: not-allowed; flex-shrink: 0;
 }
 .up-lesson-actions { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
-.up-lesson-guide {
-  font-family: 'Source Serif 4', serif; font-weight: 600; font-size: 11px;
-  color: var(--accent, #FF6B4A); background: none; border: 1px solid var(--accent, #FF6B4A);
-  border-radius: 999px; padding: 4px 11px; cursor: pointer;
-}
 .up-lesson-open--ready {
   color: #fff; background: var(--accent, #FF6B4A); border-color: var(--accent, #FF6B4A);
   cursor: pointer;
