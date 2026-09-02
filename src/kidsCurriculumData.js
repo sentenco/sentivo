@@ -49,7 +49,7 @@ export const UNITS = {
       num: 1, title: "Hello, Alphabet!", focus: "Greetings, \"What's your name?\"", thread: "Letters A to I",
       lessons: buildLessons(1, [
         { title: "Hello, Alphabet!", focus: "Letters A, B, C. \"Hello! My name is...\"", short: "A-C" },
-        { title: "More Letters!", focus: "Letters D, E, F. \"How are you?\"", short: "D-F" },
+        { title: "How Are You?", focus: "\"How are you?\" and letters D, E, F", short: "D-F" },
         { title: "Almost There!", focus: "Letters G, H, I. \"Nice to meet you.\"", short: "G-I" },
       ]),
     },

@@ -3,6 +3,27 @@ import { UNITS } from "./kidsCurriculumData";
 
 const UNIT_COLOR = { A1: { accent: "#FF6B4A", light: "#FFE6DD" }, A2: { accent: "#1B2A4A", light: "#FFE6DD" } };
 
+// Which lessons have a real player built -- add a unit's entry here (and
+// build its route in main.jsx) as each one actually ships, same pattern as
+// LevelPage.jsx's READY_UNITS. Everything else stays disabled/"Coming soon".
+const READY_LESSONS = { A1: { 1: [1, 2] } };
+
+function openLessonPopup(level, unitNum, lessonNum, view) {
+  const screenW = window.screen.availWidth || 1600;
+  const screenH = window.screen.availHeight || 900;
+  const w = Math.min(view === "guide" ? 780 : 780, screenW - 40);
+  const h = Math.min(620, screenH - 80);
+  const left = Math.max(0, Math.floor((screenW - w) / 2));
+  const top = Math.max(0, Math.floor((screenH - h) / 2));
+  const path = `/library/curriculum/${level}/unit/${unitNum}/lesson/${lessonNum}${view === "guide" ? "/guide" : ""}`;
+
+  window.open(
+    path,
+    `sentivoKidsLesson${view === "guide" ? "Guide" : ""}`,
+    `width=${w},height=${h},left=${left},top=${top},toolbar=no,location=no,menubar=no,status=no,scrollbars=yes,resizable=yes`
+  );
+}
+
 export default function UnitPage({ level = "A1", unitNum = "1", onBack }) {
   const unit = (UNITS[level] || []).find((u) => u.num === Number(unitNum));
   const color = UNIT_COLOR[level] || UNIT_COLOR.A1;
@@ -50,22 +71,37 @@ export default function UnitPage({ level = "A1", unitNum = "1", onBack }) {
         </div>
 
         <div className="up-lessons-grid">
-          {unit.lessons.map((l) => (
-            <div key={l.num} className={`up-lesson-card ${l.isTest ? "up-lesson-card--test" : ""}`} style={{ "--accent": color.accent }}>
-              <span className="up-lesson-watermark">{l.isTest ? "T" : l.num}</span>
-              <span className="up-lesson-label">{l.isTest ? "Test" : `Lesson ${l.num}`}</span>
-              <span className="up-lesson-soon">Coming soon</span>
-              <h3 className="up-lesson-title">{l.title}</h3>
-              <p className="up-lesson-focus">{l.focus}</p>
-              <div className="up-lesson-foot">
-                <span className="up-lesson-tag">{l.isTest ? "Summative test" : "Lesson"}</span>
-                <button type="button" className="up-lesson-open" disabled>
-                  Open
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                </button>
+          {unit.lessons.map((l) => {
+            const isReady = (READY_LESSONS[level]?.[Number(unitNum)] || []).includes(l.num);
+            return (
+              <div key={l.num} className={`up-lesson-card ${l.isTest ? "up-lesson-card--test" : ""}`} style={{ "--accent": color.accent }}>
+                <span className="up-lesson-watermark">{l.isTest ? "T" : l.num}</span>
+                <span className="up-lesson-label">{l.isTest ? "Test" : `Lesson ${l.num}`}</span>
+                {!isReady && <span className="up-lesson-soon">Coming soon</span>}
+                <h3 className="up-lesson-title">{l.title}</h3>
+                <p className="up-lesson-focus">{l.focus}</p>
+                <div className="up-lesson-foot">
+                  <span className="up-lesson-tag">{l.isTest ? "Summative test" : "Lesson"}</span>
+                  {isReady ? (
+                    <div className="up-lesson-actions">
+                      <button type="button" className="up-lesson-guide" onClick={() => openLessonPopup(level, unitNum, l.num, "guide")}>
+                        Guide
+                      </button>
+                      <button type="button" className="up-lesson-open up-lesson-open--ready" onClick={() => openLessonPopup(level, unitNum, l.num, "student")}>
+                        Open
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                      </button>
+                    </div>
+                  ) : (
+                    <button type="button" className="up-lesson-open" disabled>
+                      Open
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </button>
+                  )}
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </div>
@@ -145,5 +181,15 @@ const styles = `
   font-family: 'Source Serif 4', serif; font-weight: 600; font-size: 11px;
   color: #A6A2C0; background: #F7F5FB; border: 1px solid #EDE6F4;
   border-radius: 999px; padding: 4px 11px; cursor: not-allowed; flex-shrink: 0;
+}
+.up-lesson-actions { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
+.up-lesson-guide {
+  font-family: 'Source Serif 4', serif; font-weight: 600; font-size: 11px;
+  color: var(--accent, #FF6B4A); background: none; border: 1px solid var(--accent, #FF6B4A);
+  border-radius: 999px; padding: 4px 11px; cursor: pointer;
+}
+.up-lesson-open--ready {
+  color: #fff; background: var(--accent, #FF6B4A); border-color: var(--accent, #FF6B4A);
+  cursor: pointer;
 }
 `;
