@@ -195,7 +195,7 @@ export const LESSON_GUIDE = [
   { stage: "Meet V, W, X", time: "~3 min", note: "Show uppercase and lowercase forms of V, W, X. Have the student identify and repeat each letter." },
   { stage: "V is for...", time: "~1.5 min", note: "Say each word slowly: \"V is for van. V is for vase. V is for volcano.\"" },
   { stage: "W is for...", time: "~1.5 min", note: "Say each word slowly: \"W is for watermelon. W is for watch. W is for web.\"" },
-  { stage: "X is for...", time: "~1.5 min", note: "Say each word slowly: \"X is for x-ray. X is for xylophone. X is for Xmas.\"" },
+  { stage: "X is for...", time: "~1.5 min", note: "Say each word slowly: \"X is for x-ray. X is for xylophone.\"" },
   { stage: "Color & Say", time: "~2.5 min", note: "Mix the old and new colors. Show different colored objects and ask \"What color?\" Include quick recognition of V-X." },
   { stage: "Look & Match", time: "~4 min", note: "Show V-X with simple picture examples, then show them in different colors and ask \"What letter?\" and \"What color?\"" },
   { stage: "HIGHLIGHT: Color Shop!", time: "~2.5 min", note: "Create a pretend online shop with colorful objects. Ask \"What color do you want?\" Student chooses an object/color and says it." },
@@ -310,7 +310,6 @@ function buildSlides({ onZoom }) {
           <div className="word-row">
             <WordCard src={`${IMG}/xray.avif`} word="X-ray" label="x-ray" onZoom={onZoom} />
             <WordCard src={`${IMG}/xylophone.avif`} word="Xylophone" label="xylophone" onZoom={onZoom} />
-            <WordCard src={null} word="Xmas" label="xmas tree" onZoom={onZoom} />
           </div>
         </>
       ),
