@@ -31,6 +31,12 @@ import LettersKeepGoingLesson from './LettersKeepGoingLesson.jsx'
 import Unit2LetsReviewLesson from './Unit2LetsReviewLesson.jsx'
 import Unit2ShowWhatYouKnowLesson from './Unit2ShowWhatYouKnowLesson.jsx'
 import Unit2TestLesson from './Unit2TestLesson.jsx'
+import ColorfulLettersLesson from './ColorfulLettersLesson.jsx'
+import MoreColorsLesson from './MoreColorsLesson.jsx'
+import BlendingBeginsLesson from './BlendingBeginsLesson.jsx'
+import Unit3LetsReviewLesson from './Unit3LetsReviewLesson.jsx'
+import Unit3ShowWhatYouKnowLesson from './Unit3ShowWhatYouKnowLesson.jsx'
+import Unit3TestLesson from './Unit3TestLesson.jsx'
 import RealEstateVocabLesson from './RealEstateVocabLesson.jsx'
 import RealEstateVocabGuide from './RealEstateVocabGuide.jsx'
 import BeWillGrammarLesson from './BeWillGrammarLesson.jsx'
@@ -255,6 +261,12 @@ createRoot(document.getElementById('root')).render(
             <Route path="/library/curriculum/A1/unit/2/lesson/4" element={<Unit2LetsReviewLesson />} />
             <Route path="/library/curriculum/A1/unit/2/lesson/5" element={<Unit2ShowWhatYouKnowLesson />} />
             <Route path="/library/curriculum/A1/unit/2/lesson/6" element={<Unit2TestLesson />} />
+            <Route path="/library/curriculum/A1/unit/3/lesson/1" element={<ColorfulLettersLesson />} />
+            <Route path="/library/curriculum/A1/unit/3/lesson/2" element={<MoreColorsLesson />} />
+            <Route path="/library/curriculum/A1/unit/3/lesson/3" element={<BlendingBeginsLesson />} />
+            <Route path="/library/curriculum/A1/unit/3/lesson/4" element={<Unit3LetsReviewLesson />} />
+            <Route path="/library/curriculum/A1/unit/3/lesson/5" element={<Unit3ShowWhatYouKnowLesson />} />
+            <Route path="/library/curriculum/A1/unit/3/lesson/6" element={<Unit3TestLesson />} />
             <Route path="/library/customized-lessons/real-estate-vocabulary" element={<RealEstateVocabLesson />} />
             <Route path="/library/customized-lessons/real-estate-vocabulary/guide" element={<RealEstateVocabGuide />} />
             <Route path="/library/customized-lessons/be-verbs-and-will" element={<BeWillGrammarLesson />} />
