@@ -159,7 +159,6 @@ export default function LettersKeepGoingLesson() {
             </div>
             <div className="stage-chip">
               <span className="stage-name">{s.stage}</span>
-              {s.time && <span className="stage-time">{s.time}</span>}
             </div>
           </div>
 
