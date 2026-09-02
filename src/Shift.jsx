@@ -135,6 +135,22 @@ function ChainStage({ lesson, chainIdx, history, onAdvance }) {
   );
 }
 
+function HistoryModal({ rows, onClose }) {
+  return (
+    <div className="sh-hist-overlay" onClick={onClose}>
+      <div className="sh-hist-modal" onClick={(e) => e.stopPropagation()}>
+        <div className="sh-hist-modal-head">
+          <span>Your conversation</span>
+          <button type="button" className="sh-hist-close" onClick={onClose}>✕</button>
+        </div>
+        <div className="sh-hist-modal-body">
+          <HistoryLog rows={rows} />
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function PromptStage({ eyebrow, prompt, ctaLabel, onContinue }) {
   return (
     <div className="sh-prompt-stage">
@@ -165,6 +181,7 @@ export default function Shift() {
   const [stage, setStage] = useState("cover");
   const [chainIdx, setChainIdx] = useState(0);
   const [history, setHistory] = useState([]);
+  const [showHistory, setShowHistory] = useState(false);
 
   if (!lesson) {
     return (
@@ -203,6 +220,14 @@ export default function Shift() {
             <ProgressRow total={lesson.chain.length} doneCount={history.length} currentIdx={chainIdx} />
           )}
 
+          {stage !== "cover" && stage !== "chain" && history.length > 0 && (
+            <div className="sh-review-row">
+              <button type="button" className="sh-review-btn" onClick={() => setShowHistory(true)}>
+                💬 Review your conversation
+              </button>
+            </div>
+          )}
+
           {stage === "cover" && (
             <PromptStage
               eyebrow={`${lesson.code} · ${lesson.tenses}`}
@@ -227,6 +252,8 @@ export default function Shift() {
           {stage === "wrap" && <WrapStage prompt={lesson.wrap.prompt} />}
         </div>
       </div>
+
+      {showHistory && <HistoryModal rows={history} onClose={() => setShowHistory(false)} />}
     </div>
   );
 }
@@ -322,6 +349,29 @@ const CSS = `
 }
 .sh-choice-btn--bad:hover { border-color: #D6536D; color: #D6536D; }
 .sh-choice-btn--good { background: #1B2A4A; border-color: #1B2A4A; color: #FFFFFF; }
+
+.sh-review-row { display: flex; justify-content: center; padding: 10px 22px 0; }
+.sh-review-btn {
+  font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 700; color: #1B2A4A;
+  background: #FFF4D6; border: 1.5px solid #FFE18F; border-radius: 999px; padding: 8px 16px; cursor: pointer;
+  display: inline-flex; align-items: center; gap: 6px;
+}
+.sh-review-btn:hover { background: #FFE9AE; }
+
+.sh-hist-overlay {
+  position: fixed; inset: 0; background: rgba(27,42,74,0.55); display: flex; align-items: center; justify-content: center;
+  z-index: 999; padding: 24px;
+}
+.sh-hist-modal {
+  background: #FBF4F1; border-radius: 22px; max-width: 480px; width: 100%; max-height: 80vh; display: flex; flex-direction: column;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.32); overflow: hidden;
+}
+.sh-hist-modal-head {
+  display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; background: #FFFFFF; border-bottom: 1px solid #EDE1DB;
+  font-family: 'Inter', sans-serif; font-weight: 800; font-size: 13px; color: #1B2A4A;
+}
+.sh-hist-close { background: none; border: none; cursor: pointer; font-size: 16px; color: #5A6B92; line-height: 1; padding: 4px; }
+.sh-hist-modal-body { overflow-y: auto; padding: 4px 0 12px; }
 
 .sh-prompt-stage { padding: 26px 26px 24px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 14px; }
 .sh-prompt-eyebrow { font-size: 11px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: #8A6D1F; background: #FFF4D6; border-radius: 999px; padding: 4px 14px; }
