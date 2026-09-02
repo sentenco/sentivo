@@ -84,7 +84,7 @@ function StoryMakingBanner() {
 function MessageReplyBanner() {
   return (
     <svg className="wa-banner" viewBox="0 0 320 120" xmlns="http://www.w3.org/2000/svg">
-      <rect width="320" height="120" fill="#FFE1DA" />
+      <rect width="320" height="120" fill="#FFC3B0" />
       <rect x="30" y="18" width="150" height="40" rx="16" fill="#FFFFFF" />
       <rect x="46" y="32" width="90" height="7" rx="3.5" fill="#F5C4B8" />
       <rect x="46" y="43" width="60" height="7" rx="3.5" fill="#F5C4B8" />
