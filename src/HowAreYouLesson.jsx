@@ -5,7 +5,7 @@ const IMG = "/curriculum/u1-l2";
 const LETTER_COLOR = { D: "#E0567A", E: "#8E6FCE", F: "#2BAFAF" };
 const REVIEW_COLOR = { A: "#F2A900", B: "#2E97C7", C: "#22A67E" };
 const EMOTION_COLOR = { Happy: "#F2A900", Sad: "#4A90C2", Tired: "#9B7FD4" };
-const EMOTION_EMOJI = { Happy: "😊", Sad: "😢", Tired: "😴" };
+const EMOTION_IMG = { Happy: `${IMG}/happy.png`, Sad: `${IMG}/sad.png`, Tired: `${IMG}/tired.png` };
 
 const CLOUD_VARIANTS = [
   { a: { bottom: 90, right: -20 }, b: { top: 90, left: -25 } },
@@ -75,11 +75,11 @@ function WordCard({ src, word, label, onZoom }) {
 
 function EmotionCard({ name, onZoom }) {
   const color = EMOTION_COLOR[name];
-  const big = <div className="emo-tile zoom-emo-tile" style={{ background: `${color}22`, borderColor: color }}><span>{EMOTION_EMOJI[name]}</span></div>;
+  const big = <div className="emo-tile zoom-emo-tile" style={{ borderColor: color }}><img src={EMOTION_IMG[name]} alt={name} /></div>;
   return (
     <div className="wc">
-      <div className="emo-tile" style={{ background: `${color}18`, borderColor: color }} onClick={() => onZoom(big)}>
-        <span>{EMOTION_EMOJI[name]}</span>
+      <div className="emo-tile" style={{ borderColor: color }} onClick={() => onZoom(big)}>
+        <img src={EMOTION_IMG[name]} alt={name} />
       </div>
       <div className="word">{name}</div>
     </div>
@@ -290,9 +290,9 @@ function buildSlides({ onZoom }) {
         <>
           <span className="title-highlight"><h2 className="slide-h sub">D is for...</h2></span>
           <div className="word-row">
-            <WordCard src={null} word="Dog" label="dog" onZoom={onZoom} />
-            <WordCard src={null} word="Duck" label="duck" onZoom={onZoom} />
-            <WordCard src={null} word="Doll" label="doll" onZoom={onZoom} />
+            <WordCard src={`${IMG}/dog.jpg`} word="Dog" label="dog" onZoom={onZoom} />
+            <WordCard src={`${IMG}/duck.png`} word="Duck" label="duck" onZoom={onZoom} />
+            <WordCard src={`${IMG}/doll.png`} word="Doll" label="doll" onZoom={onZoom} />
           </div>
         </>
       ),
@@ -305,9 +305,9 @@ function buildSlides({ onZoom }) {
         <>
           <span className="title-highlight"><h2 className="slide-h sub">E is for...</h2></span>
           <div className="word-row">
-            <WordCard src={null} word="Egg" label="egg" onZoom={onZoom} />
-            <WordCard src={null} word="Elephant" label="elephant" onZoom={onZoom} />
-            <WordCard src={null} word="Ear" label="ear" onZoom={onZoom} />
+            <WordCard src={`${IMG}/egg.jpg`} word="Egg" label="egg" onZoom={onZoom} />
+            <WordCard src={`${IMG}/elephant.jpg`} word="Elephant" label="elephant" onZoom={onZoom} />
+            <WordCard src={`${IMG}/ear.jpg`} word="Ear" label="ear" onZoom={onZoom} />
           </div>
         </>
       ),
@@ -320,9 +320,9 @@ function buildSlides({ onZoom }) {
         <>
           <span className="title-highlight"><h2 className="slide-h sub">F is for...</h2></span>
           <div className="word-row">
-            <WordCard src={null} word="Fish" label="fish" onZoom={onZoom} />
-            <WordCard src={null} word="Frog" label="frog" onZoom={onZoom} />
-            <WordCard src={null} word="Flower" label="flower" onZoom={onZoom} />
+            <WordCard src={`${IMG}/fish.avif`} word="Fish" label="fish" onZoom={onZoom} />
+            <WordCard src={`${IMG}/frog.jpg`} word="Frog" label="frog" onZoom={onZoom} />
+            <WordCard src={`${IMG}/flower.jpg`} word="Flower" label="flower" onZoom={onZoom} />
           </div>
         </>
       ),
@@ -337,21 +337,21 @@ function buildSlides({ onZoom }) {
           <div className="look-groups">
             <div className="look-row">
               <span className="look-letter" style={{ background: LETTER_COLOR.D }}>D</span>
-              <Pic src={null} label="dog" size={78} onZoom={onZoom} />
-              <Pic src={null} label="duck" size={78} onZoom={onZoom} />
-              <Pic src={null} label="doll" size={78} onZoom={onZoom} />
+              <Pic src={`${IMG}/dog.jpg`} label="dog" size={78} onZoom={onZoom} />
+              <Pic src={`${IMG}/duck.png`} label="duck" size={78} onZoom={onZoom} />
+              <Pic src={`${IMG}/doll.png`} label="doll" size={78} onZoom={onZoom} />
             </div>
             <div className="look-row">
               <span className="look-letter" style={{ background: LETTER_COLOR.E }}>E</span>
-              <Pic src={null} label="egg" size={78} onZoom={onZoom} />
-              <Pic src={null} label="elephant" size={78} onZoom={onZoom} />
-              <Pic src={null} label="ear" size={78} onZoom={onZoom} />
+              <Pic src={`${IMG}/egg.jpg`} label="egg" size={78} onZoom={onZoom} />
+              <Pic src={`${IMG}/elephant.jpg`} label="elephant" size={78} onZoom={onZoom} />
+              <Pic src={`${IMG}/ear.jpg`} label="ear" size={78} onZoom={onZoom} />
             </div>
             <div className="look-row">
               <span className="look-letter" style={{ background: LETTER_COLOR.F }}>F</span>
-              <Pic src={null} label="fish" size={78} onZoom={onZoom} />
-              <Pic src={null} label="frog" size={78} onZoom={onZoom} />
-              <Pic src={null} label="flower" size={78} onZoom={onZoom} />
+              <Pic src={`${IMG}/fish.avif`} label="fish" size={78} onZoom={onZoom} />
+              <Pic src={`${IMG}/frog.jpg`} label="frog" size={78} onZoom={onZoom} />
+              <Pic src={`${IMG}/flower.jpg`} label="flower" size={78} onZoom={onZoom} />
             </div>
           </div>
         </>
@@ -366,7 +366,7 @@ function buildSlides({ onZoom }) {
           <span className="title-highlight"><h2 className="slide-h sub">Happy!</h2></span>
           <div className="bubble-col" style={{ maxWidth: 420 }}>
             <div className="brow">
-              <div className="avatar" style={{ background: EMOTION_COLOR.Happy }}>{EMOTION_EMOJI.Happy}</div>
+              <div className="avatar avatar--img"><img src={EMOTION_IMG.Happy} alt="Happy" /></div>
               <div className="bubble left">How are you?</div>
             </div>
             <div className="brow me">
@@ -386,7 +386,7 @@ function buildSlides({ onZoom }) {
           <span className="title-highlight"><h2 className="slide-h sub">Sad!</h2></span>
           <div className="bubble-col" style={{ maxWidth: 420 }}>
             <div className="brow">
-              <div className="avatar" style={{ background: EMOTION_COLOR.Sad }}>{EMOTION_EMOJI.Sad}</div>
+              <div className="avatar avatar--img"><img src={EMOTION_IMG.Sad} alt="Sad" /></div>
               <div className="bubble left">How are you?</div>
             </div>
             <div className="brow me">
@@ -406,7 +406,7 @@ function buildSlides({ onZoom }) {
           <span className="title-highlight"><h2 className="slide-h sub">Tired!</h2></span>
           <div className="bubble-col" style={{ maxWidth: 420 }}>
             <div className="brow">
-              <div className="avatar" style={{ background: EMOTION_COLOR.Tired }}>{EMOTION_EMOJI.Tired}</div>
+              <div className="avatar avatar--img"><img src={EMOTION_IMG.Tired} alt="Tired" /></div>
               <div className="bubble left">How are you?</div>
             </div>
             <div className="brow me">
@@ -551,19 +551,21 @@ export const styles = `
 
 .emo-tile {
   width: 116px; height: 116px; border-radius: 28px; flex-shrink: 0; cursor: zoom-in;
-  display: flex; align-items: center; justify-content: center; font-size: 60px;
+  display: flex; align-items: center; justify-content: center; overflow: hidden;
   background: #fff; border: 3px solid; box-shadow: 0 0 0 6px #fff, 0 10px 22px rgba(27,42,74,0.16);
   transition: transform 0.15s ease;
 }
+.emo-tile img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .emo-tile:hover { transform: scale(1.04); }
-.zoom-emo-tile { width: 260px; height: 260px; border-radius: 46px; border-width: 5px; font-size: 140px; display: flex; align-items: center; justify-content: center; }
+.zoom-emo-tile { width: 260px; height: 260px; border-radius: 46px; border-width: 5px; }
 
 .bubble-col { display: flex; flex-direction: column; gap: 12px; position: relative; z-index: 1; }
 .brow { display: flex; align-items: center; gap: 10px; }
 .brow.me { flex-direction: row-reverse; align-self: flex-end; }
-.avatar { width: 34px; height: 34px; border-radius: 50%; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-family: 'Baloo 2', sans-serif; font-weight: 700; font-size: 12px; color: #fff; }
+.avatar { width: 34px; height: 34px; border-radius: 50%; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-family: 'Baloo 2', sans-serif; font-weight: 700; font-size: 12px; color: #fff; overflow: hidden; }
 .avatar.navy { background: var(--navy); }
 .avatar.coral { background: var(--coral); }
+.avatar--img img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .bubble { background: #fff; border-radius: 18px; padding: 13px 18px; font-weight: 700; font-size: 16px; color: var(--ink); box-shadow: 0 6px 14px rgba(27,42,74,0.08); }
 .bubble.left { border-radius: 18px 18px 18px 4px; }
 .bubble.right { border-radius: 18px 18px 4px 18px; }
