@@ -158,9 +158,11 @@ function ArticlesFeature({ navigate, query }) {
   const filtered = q
     ? byTopic.filter((a) => a.title.toLowerCase().includes(q) || a.dek.toLowerCase().includes(q))
     : byTopic;
-  const lead = filtered.length
-    ? filtered.reduce((newest, a) => (!newest || new Date(a.publishedAt) > new Date(newest.publishedAt) ? a : newest), null)
-    : null;
+  // The lead is whichever article was added to ARTICLES most recently (the
+  // last entry in the array), not whichever has the newest publishedAt --
+  // those can diverge, since articles get inserted as they're written, not
+  // strictly in date order.
+  const lead = filtered.length ? filtered[filtered.length - 1] : null;
   const briefs = filtered.filter((a) => a !== lead);
 
   return (
