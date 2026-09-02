@@ -22,6 +22,9 @@ import VocabularyPlayerPage from './VocabularyPlayerPage.jsx'
 import HelloAlphabetLesson from './HelloAlphabetLesson.jsx'
 import HowAreYouLesson from './HowAreYouLesson.jsx'
 import AlmostThereLesson from './AlmostThereLesson.jsx'
+import LetsReviewLesson from './LetsReviewLesson.jsx'
+import ShowWhatYouKnowLesson from './ShowWhatYouKnowLesson.jsx'
+import Unit1TestLesson from './Unit1TestLesson.jsx'
 import RealEstateVocabLesson from './RealEstateVocabLesson.jsx'
 import RealEstateVocabGuide from './RealEstateVocabGuide.jsx'
 import BeWillGrammarLesson from './BeWillGrammarLesson.jsx'
@@ -237,6 +240,9 @@ createRoot(document.getElementById('root')).render(
             <Route path="/library/curriculum/A1/unit/1/lesson/1" element={<HelloAlphabetLesson />} />
             <Route path="/library/curriculum/A1/unit/1/lesson/2" element={<HowAreYouLesson />} />
             <Route path="/library/curriculum/A1/unit/1/lesson/3" element={<AlmostThereLesson />} />
+            <Route path="/library/curriculum/A1/unit/1/lesson/4" element={<LetsReviewLesson />} />
+            <Route path="/library/curriculum/A1/unit/1/lesson/5" element={<ShowWhatYouKnowLesson />} />
+            <Route path="/library/curriculum/A1/unit/1/lesson/6" element={<Unit1TestLesson />} />
             <Route path="/library/customized-lessons/real-estate-vocabulary" element={<RealEstateVocabLesson />} />
             <Route path="/library/customized-lessons/real-estate-vocabulary/guide" element={<RealEstateVocabGuide />} />
             <Route path="/library/customized-lessons/be-verbs-and-will" element={<BeWillGrammarLesson />} />
