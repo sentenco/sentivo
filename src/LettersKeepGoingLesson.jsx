@@ -284,9 +284,9 @@ function buildSlides({ onZoom }) {
         <>
           <span className="title-highlight"><h2 className="slide-h sub">P is for...</h2></span>
           <div className="word-row">
-            <WordCard src={null} word="Panda" label="panda" onZoom={onZoom} />
-            <WordCard src={null} word="Pizza" label="pizza" onZoom={onZoom} />
-            <WordCard src={null} word="Pencil" label="pencil" onZoom={onZoom} />
+            <WordCard src={`${IMG}/panda.jpg`} word="Panda" label="panda" onZoom={onZoom} />
+            <WordCard src={`${IMG}/pizza.avif`} word="Pizza" label="pizza" onZoom={onZoom} />
+            <WordCard src={`${IMG}/pencil.jpeg`} word="Pencil" label="pencil" onZoom={onZoom} />
           </div>
         </>
       ),
@@ -299,9 +299,9 @@ function buildSlides({ onZoom }) {
         <>
           <span className="title-highlight"><h2 className="slide-h sub">Q is for...</h2></span>
           <div className="word-row">
-            <WordCard src={null} word="Queen" label="queen" onZoom={onZoom} />
-            <WordCard src={null} word="Quail" label="quail" onZoom={onZoom} />
-            <WordCard src={null} word="Quilt" label="quilt" onZoom={onZoom} />
+            <WordCard src={`${IMG}/queen.jpg`} word="Queen" label="queen" onZoom={onZoom} />
+            <WordCard src={`${IMG}/quail.jpeg`} word="Quail" label="quail" onZoom={onZoom} />
+            <WordCard src={`${IMG}/quilt.avif`} word="Quilt" label="quilt" onZoom={onZoom} />
           </div>
         </>
       ),
@@ -314,9 +314,9 @@ function buildSlides({ onZoom }) {
         <>
           <span className="title-highlight"><h2 className="slide-h sub">R is for...</h2></span>
           <div className="word-row">
-            <WordCard src={null} word="Rabbit" label="rabbit" onZoom={onZoom} />
-            <WordCard src={null} word="Rainbow" label="rainbow" onZoom={onZoom} />
-            <WordCard src={null} word="Ring" label="ring" onZoom={onZoom} />
+            <WordCard src={`${IMG}/rabbit.avif`} word="Rabbit" label="rabbit" onZoom={onZoom} />
+            <WordCard src={`${IMG}/rainbow.jpg`} word="Rainbow" label="rainbow" onZoom={onZoom} />
+            <WordCard src={`${IMG}/ring.avif`} word="Ring" label="ring" onZoom={onZoom} />
           </div>
         </>
       ),
@@ -365,13 +365,13 @@ function buildSlides({ onZoom }) {
           <div className="look-groups">
             <div className="look-row">
               <span className="look-letter" style={{ background: LETTER_COLOR.P }}>P</span>
-              <Pic src={null} label="panda" size={70} onZoom={onZoom} />
-              <Pic src={null} label="pizza" size={70} onZoom={onZoom} />
+              <Pic src={`${IMG}/panda.jpg`} label="panda" size={70} onZoom={onZoom} />
+              <Pic src={`${IMG}/pizza.avif`} label="pizza" size={70} onZoom={onZoom} />
             </div>
             <div className="look-row">
               <span className="look-letter" style={{ background: LETTER_COLOR.R }}>R</span>
-              <Pic src={null} label="rabbit" size={70} onZoom={onZoom} />
-              <Pic src={null} label="rainbow" size={70} onZoom={onZoom} />
+              <Pic src={`${IMG}/rabbit.avif`} label="rabbit" size={70} onZoom={onZoom} />
+              <Pic src={`${IMG}/rainbow.jpg`} label="rainbow" size={70} onZoom={onZoom} />
             </div>
           </div>
         </>

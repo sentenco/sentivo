@@ -285,9 +285,9 @@ function buildSlides({ onZoom }) {
         <>
           <span className="title-highlight"><h2 className="slide-h sub">M is for...</h2></span>
           <div className="word-row">
-            <WordCard src={null} word="Moon" label="moon" onZoom={onZoom} />
-            <WordCard src={null} word="Monkey" label="monkey" onZoom={onZoom} />
-            <WordCard src={null} word="Milk" label="milk" onZoom={onZoom} />
+            <WordCard src={`${IMG}/moon.jpeg`} word="Moon" label="moon" onZoom={onZoom} />
+            <WordCard src={`${IMG}/monkey.avif`} word="Monkey" label="monkey" onZoom={onZoom} />
+            <WordCard src={`${IMG}/milk.avif`} word="Milk" label="milk" onZoom={onZoom} />
           </div>
         </>
       ),
@@ -300,9 +300,9 @@ function buildSlides({ onZoom }) {
         <>
           <span className="title-highlight"><h2 className="slide-h sub">N is for...</h2></span>
           <div className="word-row">
-            <WordCard src={null} word="Nose" label="nose" onZoom={onZoom} />
-            <WordCard src={null} word="Nest" label="nest" onZoom={onZoom} />
-            <WordCard src={null} word="Nut" label="nut" onZoom={onZoom} />
+            <WordCard src={`${IMG}/nose.avif`} word="Nose" label="nose" onZoom={onZoom} />
+            <WordCard src={`${IMG}/nest.avif`} word="Nest" label="nest" onZoom={onZoom} />
+            <WordCard src={`${IMG}/nut.avif`} word="Nut" label="nut" onZoom={onZoom} />
           </div>
         </>
       ),
@@ -315,9 +315,9 @@ function buildSlides({ onZoom }) {
         <>
           <span className="title-highlight"><h2 className="slide-h sub">O is for...</h2></span>
           <div className="word-row">
-            <WordCard src={null} word="Orange" label="orange" onZoom={onZoom} />
-            <WordCard src={null} word="Owl" label="owl" onZoom={onZoom} />
-            <WordCard src={null} word="Octopus" label="octopus" onZoom={onZoom} />
+            <WordCard src={`${IMG}/orange.jpg`} word="Orange" label="orange" onZoom={onZoom} />
+            <WordCard src={`${IMG}/owl.jpeg`} word="Owl" label="owl" onZoom={onZoom} />
+            <WordCard src={`${IMG}/octopus.avif`} word="Octopus" label="octopus" onZoom={onZoom} />
           </div>
         </>
       ),

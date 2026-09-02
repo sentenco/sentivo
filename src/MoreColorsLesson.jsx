@@ -195,7 +195,7 @@ export const LESSON_GUIDE = [
   { stage: "Meet V, W, X", time: "~3 min", note: "Show uppercase and lowercase forms of V, W, X. Have the student identify and repeat each letter." },
   { stage: "V is for...", time: "~1.5 min", note: "Say each word slowly: \"V is for van. V is for vase. V is for volcano.\"" },
   { stage: "W is for...", time: "~1.5 min", note: "Say each word slowly: \"W is for watermelon. W is for watch. W is for web.\"" },
-  { stage: "X is for...", time: "~1.5 min", note: "Say each word slowly: \"X is for x-ray. X is for xylophone. X is for box.\"" },
+  { stage: "X is for...", time: "~1.5 min", note: "Say each word slowly: \"X is for x-ray. X is for xylophone. X is for Xmas.\"" },
   { stage: "Color & Say", time: "~2.5 min", note: "Mix the old and new colors. Show different colored objects and ask \"What color?\" Include quick recognition of V-X." },
   { stage: "Look & Match", time: "~4 min", note: "Show V-X with simple picture examples, then show them in different colors and ask \"What letter?\" and \"What color?\"" },
   { stage: "HIGHLIGHT: Color Shop!", time: "~2.5 min", note: "Create a pretend online shop with colorful objects. Ask \"What color do you want?\" Student chooses an object/color and says it." },
@@ -278,9 +278,9 @@ function buildSlides({ onZoom }) {
         <>
           <span className="title-highlight"><h2 className="slide-h sub">V is for...</h2></span>
           <div className="word-row">
-            <WordCard src={null} word="Van" label="van" onZoom={onZoom} />
-            <WordCard src={null} word="Vase" label="vase" onZoom={onZoom} />
-            <WordCard src={null} word="Volcano" label="volcano" onZoom={onZoom} />
+            <WordCard src={`${IMG}/van.avif`} word="Van" label="van" onZoom={onZoom} />
+            <WordCard src={`${IMG}/vase.avif`} word="Vase" label="vase" onZoom={onZoom} />
+            <WordCard src={`${IMG}/volcano.jpeg`} word="Volcano" label="volcano" onZoom={onZoom} />
           </div>
         </>
       ),
@@ -293,9 +293,9 @@ function buildSlides({ onZoom }) {
         <>
           <span className="title-highlight"><h2 className="slide-h sub">W is for...</h2></span>
           <div className="word-row">
-            <WordCard src={null} word="Watermelon" label="watermelon" onZoom={onZoom} />
-            <WordCard src={null} word="Watch" label="watch" onZoom={onZoom} />
-            <WordCard src={null} word="Web" label="web" onZoom={onZoom} />
+            <WordCard src={`${IMG}/watermelon.avif`} word="Watermelon" label="watermelon" onZoom={onZoom} />
+            <WordCard src={`${IMG}/watch.avif`} word="Watch" label="watch" onZoom={onZoom} />
+            <WordCard src={`${IMG}/web.avif`} word="Web" label="web" onZoom={onZoom} />
           </div>
         </>
       ),
@@ -308,9 +308,9 @@ function buildSlides({ onZoom }) {
         <>
           <span className="title-highlight"><h2 className="slide-h sub">X is for...</h2></span>
           <div className="word-row">
-            <WordCard src={null} word="X-ray" label="x-ray" onZoom={onZoom} />
-            <WordCard src={null} word="Xylophone" label="xylophone" onZoom={onZoom} />
-            <WordCard src={null} word="Box" label="box" onZoom={onZoom} />
+            <WordCard src={`${IMG}/xray.avif`} word="X-ray" label="x-ray" onZoom={onZoom} />
+            <WordCard src={`${IMG}/xylophone.avif`} word="Xylophone" label="xylophone" onZoom={onZoom} />
+            <WordCard src={null} word="Xmas" label="xmas tree" onZoom={onZoom} />
           </div>
         </>
       ),
@@ -341,11 +341,11 @@ function buildSlides({ onZoom }) {
           <div className="look-groups">
             <div className="look-row">
               <span className="look-letter" style={{ background: LETTER_COLOR.V }}>V</span>
-              <Pic src={null} label="van" size={70} onZoom={onZoom} />
+              <Pic src={`${IMG}/van.avif`} label="van" size={70} onZoom={onZoom} />
             </div>
             <div className="look-row">
               <LetterTile letters="W" color={COLOR_HEX.Orange} size={50} fontSize={20} onZoom={onZoom} />
-              <Pic src={null} label="watermelon" size={70} onZoom={onZoom} />
+              <Pic src={`${IMG}/watermelon.avif`} label="watermelon" size={70} onZoom={onZoom} />
             </div>
           </div>
         </>
