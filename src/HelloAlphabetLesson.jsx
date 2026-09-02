@@ -95,6 +95,26 @@ export default function HelloAlphabetLesson() {
   }, []);
 
   useEffect(() => {
+    if (!window.opener) return;
+    const wrap = document.querySelector(".hal-wrap");
+    const slide = document.querySelector(".slide");
+    if (!wrap || !slide) return;
+    const pad = parseFloat(getComputedStyle(wrap).paddingLeft) || 0;
+    const targetW = Math.ceil(slide.offsetWidth + pad * 2);
+    const targetH = Math.ceil(slide.offsetHeight + pad * 2);
+    const chromeW = window.outerWidth - window.innerWidth;
+    const chromeH = window.outerHeight - window.innerHeight;
+    const screenW = window.screen.availWidth || 1600;
+    const screenH = window.screen.availHeight || 900;
+    const outerW = Math.min(targetW + chromeW, screenW);
+    const outerH = Math.min(targetH + chromeH, screenH);
+    window.resizeTo(outerW, outerH);
+    const left = Math.max(0, Math.floor((screenW - outerW) / 2));
+    const top = Math.max(0, Math.floor((screenH - outerH) / 2));
+    window.moveTo(left, top);
+  }, []);
+
+  useEffect(() => {
     if (zoom) {
       document.body.style.overflow = "hidden";
       return () => { document.body.style.overflow = ""; };
