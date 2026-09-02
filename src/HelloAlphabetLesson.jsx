@@ -242,7 +242,7 @@ function buildSlides({ onZoom }) {
             </div>
             <div className="brow me">
               <div className="avatar coral">S</div>
-              <div className="bubble right">My name is <span className="fill">[Student's name]</span>.</div>
+              <div className="bubble right">My name is <span className="fill"></span>.</div>
             </div>
           </div>
         </>
@@ -271,9 +271,9 @@ function buildSlides({ onZoom }) {
         <>
           <span className="title-highlight"><h2 className="slide-h sub">My Name Is...</h2></span>
           <div className="word-row">
-            <NameCard name="Anna" letter="A" src={null} onZoom={onZoom} />
-            <NameCard name="Bob" letter="B" src={`${IMG}/bob.jpg`} onZoom={onZoom} />
-            <NameCard name="Carol" letter="C" src={`${IMG}/carol.avif`} onZoom={onZoom} />
+            <NameCard name="Anna" letter="A" src={`${IMG}/anna.png`} onZoom={onZoom} />
+            <NameCard name="Bob" letter="B" src={`${IMG}/bob.png`} onZoom={onZoom} />
+            <NameCard name="Carol" letter="C" src={`${IMG}/carol.png`} onZoom={onZoom} />
           </div>
         </>
       ),
@@ -292,7 +292,7 @@ function buildSlides({ onZoom }) {
             </div>
             <div className="brow me">
               <div className="avatar coral">S</div>
-              <div className="bubble right">Hello, Anna! My name is <span className="fill">[Student's name]</span>.</div>
+              <div className="bubble right">Hello, Anna! My name is <span className="fill"></span>.</div>
             </div>
           </div>
         </>
@@ -312,7 +312,7 @@ function buildSlides({ onZoom }) {
             </div>
             <div className="brow me">
               <div className="avatar coral">S</div>
-              <div className="bubble right">Hello, Bob! My name is <span className="fill">[Student's name]</span>.</div>
+              <div className="bubble right">Hello, Bob! My name is <span className="fill"></span>.</div>
             </div>
           </div>
         </>
@@ -332,7 +332,7 @@ function buildSlides({ onZoom }) {
             </div>
             <div className="brow me">
               <div className="avatar coral">S</div>
-              <div className="bubble right">Hello, Carol! My name is <span className="fill">[Student's name]</span>.</div>
+              <div className="bubble right">Hello, Carol! My name is <span className="fill"></span>.</div>
             </div>
           </div>
         </>
@@ -423,11 +423,11 @@ function buildSlides({ onZoom }) {
           <div className="bubble-col" style={{ maxWidth: 460 }}>
             <div className="brow">
               <div className="avatar navy">T</div>
-              <div className="bubble left">Hello! My name is <span className="fill">[Teacher]</span>. My name starts with <span className="fill">[T]</span>.</div>
+              <div className="bubble left">Hello! My name is <span className="fill"></span>. My name starts with <span className="fill"></span>.</div>
             </div>
             <div className="brow me">
               <div className="avatar coral">S</div>
-              <div className="bubble right">Hello! My name is <span className="fill">[Student's name]</span>. My name starts with <span className="fill">[S]</span>.</div>
+              <div className="bubble right">Hello! My name is <span className="fill"></span>. My name starts with <span className="fill"></span>.</div>
             </div>
           </div>
         </>
@@ -554,7 +554,7 @@ export const styles = `
 .bubble { background: #fff; border-radius: 18px; padding: 13px 18px; font-weight: 700; font-size: 16px; color: var(--ink); box-shadow: 0 6px 14px rgba(27,42,74,0.08); }
 .bubble.left { border-radius: 18px 18px 18px 4px; }
 .bubble.right { border-radius: 18px 18px 4px 18px; }
-.bubble .fill { color: var(--coral-deep); }
+.bubble .fill { display: inline-block; min-width: 64px; border-bottom: 2.5px solid var(--coral-deep); vertical-align: -2px; }
 
 .look-groups { display: flex; flex-direction: column; gap: 18px; position: relative; z-index: 1; }
 .look-row { display: flex; align-items: center; gap: 18px; }
