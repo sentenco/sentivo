@@ -293,15 +293,10 @@ const CSS = `
   position: relative;
   border-radius: 28px;
   padding: clamp(24px, 3.4vw, 40px) clamp(18px, 3vw, 32px) clamp(30px, 4vw, 44px);
-  background: linear-gradient(160deg, #FFF8EF 0%, #FFF1E6 100%);
+  background: url('/writing-scrapbook-bg.jpg') center top / cover no-repeat, linear-gradient(160deg, #FFF8EF 0%, #FFF1E6 100%);
   overflow: hidden;
 }
 .wa-panel * { box-sizing: border-box; }
-.wa-panel::before, .wa-panel::after {
-  content: ""; position: absolute; border-radius: 50%; pointer-events: none;
-}
-.wa-panel::before { width: 150px; height: 150px; background: rgba(255,138,117,0.14); top: -40px; left: -30px; }
-.wa-panel::after { width: 110px; height: 110px; background: rgba(111,207,151,0.16); bottom: -20px; right: 6%; }
 
 .wa-hero { text-align: center; position: relative; z-index: 1; }
 .wa-eyebrow {
