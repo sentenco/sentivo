@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 
+const IMG = "/curriculum/u7-l1";
+
 const CLOUD_VARIANTS = [
   { a: { bottom: 90, right: -20 }, b: { top: 90, left: -25 } },
   { a: { top: -30, left: 120 }, b: { bottom: -20, right: 90 } },
@@ -318,7 +320,7 @@ function buildSlides({ onZoom }) {
           <div className="word-row">
             <WordCard src={null} word="Pen" label="pen" onZoom={onZoom} />
             <WordCard src={null} word="Book" label="book" onZoom={onZoom} />
-            <WordCard src={null} word="Bag" label="bag" onZoom={onZoom} />
+            <WordCard src={`${IMG}/bag.avif`} word="Bag" label="bag" onZoom={onZoom} />
             <WordCard src={null} word="Desk" label="desk" onZoom={onZoom} />
             <WordCard src={null} word="Chair" label="chair" onZoom={onZoom} />
             <WordCard src={null} word="Board" label="board" onZoom={onZoom} />

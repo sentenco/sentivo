@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 
+const IMG = "/curriculum/u7-l1";
+
 const CLOUD_VARIANTS = [
   { a: { bottom: 90, right: -20 }, b: { top: 90, left: -25 } },
   { a: { top: -30, left: 120 }, b: { bottom: -20, right: 90 } },
@@ -180,7 +182,7 @@ function buildSlides({ onZoom }) {
       body: (
         <>
           <span className="title-highlight"><h2 className="slide-h sub">What's in Your Bag?</h2></span>
-          <Pic src={null} label="a school bag" size={110} onZoom={onZoom} />
+          <Pic src={`${IMG}/bag.avif`} label="a school bag" size={110} onZoom={onZoom} />
           <div className="bubble-col" style={{ maxWidth: 420 }}>
             <div className="brow">
               <div className="avatar navy">T</div>

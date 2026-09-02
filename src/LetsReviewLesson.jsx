@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 const IMG1 = "/curriculum/u1-l1";
 const IMG2 = "/curriculum/u1-l2";
 const IMG3 = "/curriculum/u1-l3";
+const IMG4 = "/curriculum/u1-l4";
 
 const LETTER_COLOR = {
   A: "#F2A900", B: "#2E97C7", C: "#22A67E",
@@ -450,7 +451,7 @@ function buildSlides({ onZoom }) {
             <LetterTile letters="A" color={LETTER_COLOR.A} size={54} fontSize={22} onZoom={onZoom} />
             <LetterTile letters="G" color={LETTER_COLOR.G} size={54} fontSize={22} onZoom={onZoom} />
           </div>
-          <Pic src={null} label="bag" size={130} onZoom={onZoom} />
+          <Pic src={`${IMG4}/bag.avif`} label="bag" size={130} onZoom={onZoom} />
         </>
       ),
     },

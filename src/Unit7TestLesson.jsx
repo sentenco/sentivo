@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 
+const IMG = "/curriculum/u7-l1";
+
 const CLOUD_VARIANTS = [
   { a: { bottom: 90, right: -20 }, b: { top: 90, left: -25 } },
   { a: { top: -30, left: 120 }, b: { bottom: -20, right: 90 } },
@@ -205,7 +207,7 @@ function buildSlides({ onZoom }) {
           <div className="word-row">
             <Pic src={null} label="pen" size={78} onZoom={onZoom} />
             <Pic src={null} label="book" size={78} onZoom={onZoom} />
-            <Pic src={null} label="bag" size={78} onZoom={onZoom} />
+            <Pic src={`${IMG}/bag.avif`} label="bag" size={78} onZoom={onZoom} />
           </div>
         </>
       ),
