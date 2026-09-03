@@ -215,7 +215,7 @@ function buildSlides({ onZoom }) {
         </>
       ),
     },
-    // 4: It's a...
+    // 4: It's a... (round 1)
     {
       stage: "It's a...",
       body: (
@@ -230,7 +230,22 @@ function buildSlides({ onZoom }) {
         </div>
       ),
     },
-    // 5: Animal Sounds
+    // 4b: It's a... (round 2)
+    {
+      stage: "It's a...",
+      body: (
+        <div className="center-col">
+          <Pic src={`${IMG}/cat.jpg`} label="cat" size={110} onZoom={onZoom} />
+          <div className="bubble-col" style={{ maxWidth: 380 }}>
+            <div className="brow me">
+              <div className="avatar coral">S</div>
+              <div className="bubble right">It's a cat!</div>
+            </div>
+          </div>
+        </div>
+      ),
+    },
+    // 5: Animal Sounds (round 1)
     {
       stage: "Animal Sounds",
       body: (
@@ -249,13 +264,40 @@ function buildSlides({ onZoom }) {
         </div>
       ),
     },
-    // 6: Animal Hide-and-Seek
+    // 5b: Animal Sounds (round 2)
+    {
+      stage: "Animal Sounds",
+      body: (
+        <div className="center-col">
+          <div className="bubble-col" style={{ maxWidth: 380 }}>
+            <div className="brow">
+              <div className="avatar navy">T</div>
+              <div className="bubble left">Woof! Woof!</div>
+            </div>
+            <div className="brow me">
+              <div className="avatar coral">S</div>
+              <div className="bubble right">It's a dog!</div>
+            </div>
+          </div>
+        </div>
+      ),
+    },
+    // 6: Animal Hide-and-Seek (round 1)
     {
       stage: "Animal Hide-and-Seek",
       body: (
         <div className="center-col">
           <span className="title-highlight"><h2 className="slide-h sub">Who Is Hiding?</h2></span>
           <Pic src={`${IMG}/fish.avif`} label="fish" size={110} onZoom={onZoom} />
+        </div>
+      ),
+    },
+    // 6b: Animal Hide-and-Seek (round 2)
+    {
+      stage: "Animal Hide-and-Seek",
+      body: (
+        <div className="center-col">
+          <Pic src={`${IMG}/dog.jpg`} label="dog" size={110} onZoom={onZoom} />
         </div>
       ),
     },
@@ -273,6 +315,14 @@ function buildSlides({ onZoom }) {
             <div className="brow me">
               <div className="avatar coral">S</div>
               <div className="bubble right">It's a cat!</div>
+            </div>
+            <div className="brow">
+              <div className="avatar navy">T</div>
+              <div className="bubble left">It swims. It lives in water.</div>
+            </div>
+            <div className="brow me">
+              <div className="avatar coral">S</div>
+              <div className="bubble right">It's a fish!</div>
             </div>
           </div>
         </div>
@@ -292,6 +342,14 @@ function buildSlides({ onZoom }) {
             <div className="brow">
               <div className="avatar navy">T</div>
               <div className="bubble left">Is it a dog?</div>
+            </div>
+            <div className="brow me">
+              <div className="avatar coral">S</div>
+              <div className="bubble right">It has feathers.</div>
+            </div>
+            <div className="brow">
+              <div className="avatar navy">T</div>
+              <div className="bubble left">Is it a bird?</div>
             </div>
           </div>
         </div>

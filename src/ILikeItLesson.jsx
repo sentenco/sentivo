@@ -227,7 +227,7 @@ function buildSlides({ onZoom }) {
         </>
       ),
     },
-    // 3: I Like It!
+    // 3: I Like It! (model 1)
     {
       stage: "I Like It!",
       body: (
@@ -242,7 +242,22 @@ function buildSlides({ onZoom }) {
         </div>
       ),
     },
-    // 4: Like It! practice
+    // 3b: I Like It! (model 2)
+    {
+      stage: "I Like It!",
+      body: (
+        <div className="center-col">
+          <Pic src={`${IMG}/apple.jpg`} label="apple" size={100} onZoom={onZoom} />
+          <div className="bubble-col" style={{ maxWidth: 380 }}>
+            <div className="brow">
+              <div className="avatar navy">T</div>
+              <div className="bubble left">I like apples!</div>
+            </div>
+          </div>
+        </div>
+      ),
+    },
+    // 4: Like It! practice (round 1)
     {
       stage: "Like It!",
       body: (
@@ -253,6 +268,21 @@ function buildSlides({ onZoom }) {
             <div className="brow me">
               <div className="avatar coral">S</div>
               <div className="bubble right">I like bananas!</div>
+            </div>
+          </div>
+        </div>
+      ),
+    },
+    // 4b: Like It! practice (round 2)
+    {
+      stage: "Like It!",
+      body: (
+        <div className="center-col">
+          <Pic src={`${IMG}/egg.jpg`} label="egg" size={100} onZoom={onZoom} />
+          <div className="bubble-col" style={{ maxWidth: 380 }}>
+            <div className="brow me">
+              <div className="avatar coral">S</div>
+              <div className="bubble right">I like eggs!</div>
             </div>
           </div>
         </div>
@@ -315,7 +345,25 @@ function buildSlides({ onZoom }) {
         </div>
       ),
     },
-    // 9: HIGHLIGHT My Food Vote (round 2)
+    // 8b: HIGHLIGHT My Food Vote (round 2)
+    {
+      stage: "HIGHLIGHT: My Food Vote",
+      body: (
+        <div className="center-col">
+          <div className="word-row">
+            <Pic src={`${IMG}/egg.jpg`} label="egg" size={80} onZoom={onZoom} />
+            <Pic src={`${IMG}/banana.jpg`} label="banana" size={80} onZoom={onZoom} />
+          </div>
+          <div className="bubble-col" style={{ maxWidth: 380 }}>
+            <div className="brow">
+              <div className="avatar navy">T</div>
+              <div className="bubble left">Egg or banana?</div>
+            </div>
+          </div>
+        </div>
+      ),
+    },
+    // 9: HIGHLIGHT My Food Vote (round 3)
     {
       stage: "HIGHLIGHT: My Food Vote",
       body: (
@@ -342,6 +390,8 @@ function buildSlides({ onZoom }) {
           <div className="word-row">
             <Pic src={`${IMG}/egg.jpg`} label="egg" size={70} onZoom={onZoom} />
             <LetterTile letters="MOP" color={BLEND_COLOR} size={70} fontSize={20} onZoom={onZoom} />
+            <Pic src={`${IMG}/banana.jpg`} label="banana" size={70} onZoom={onZoom} />
+            <LetterTile letters="POP" color={BLEND_COLOR} size={70} fontSize={20} onZoom={onZoom} />
           </div>
         </>
       ),

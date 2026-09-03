@@ -207,13 +207,17 @@ function buildSlides({ onZoom }) {
         <>
           <span className="title-highlight"><h2 className="slide-h sub">Big or Small?</h2></span>
           <div className="word-row">
+            <Pic src={`${IMG}/elephant.jpg`} label="elephant" size={90} onZoom={onZoom} />
             <DescriptorTag label="Big" color={SIZE_COLOR.Big} onZoom={onZoom} />
+          </div>
+          <div className="word-row">
+            <Pic src={`${IMG}/monkey.avif`} label="monkey" size={70} onZoom={onZoom} />
             <DescriptorTag label="Small" color={SIZE_COLOR.Small} onZoom={onZoom} />
           </div>
         </>
       ),
     },
-    // 4: Look & Say
+    // 4: Look & Say (round 1)
     {
       stage: "Look & Say",
       body: (
@@ -228,7 +232,22 @@ function buildSlides({ onZoom }) {
         </div>
       ),
     },
-    // 5: It's a Big...
+    // 4b: Look & Say (round 2)
+    {
+      stage: "Look & Say",
+      body: (
+        <div className="center-col">
+          <Pic src={`${IMG}/monkey.avif`} label="monkey" size={90} onZoom={onZoom} />
+          <div className="bubble-col" style={{ maxWidth: 380 }}>
+            <div className="brow me">
+              <div className="avatar coral">S</div>
+              <div className="bubble right">Small!</div>
+            </div>
+          </div>
+        </div>
+      ),
+    },
+    // 5: It's a Big... (round 1)
     {
       stage: "It's a Big...",
       body: (
@@ -246,7 +265,25 @@ function buildSlides({ onZoom }) {
         </div>
       ),
     },
-    // 6: Size Switch
+    // 5b: It's a Small... (round 2)
+    {
+      stage: "It's a Big...",
+      body: (
+        <div className="center-col">
+          <div className="word-row">
+            <Pic src={`${IMG}/fish.avif`} label="fish" size={70} onZoom={onZoom} />
+            <DescriptorTag label="Small" color={SIZE_COLOR.Small} onZoom={onZoom} />
+          </div>
+          <div className="bubble-col" style={{ maxWidth: 380 }}>
+            <div className="brow me">
+              <div className="avatar coral">S</div>
+              <div className="bubble right">It's a small fish!</div>
+            </div>
+          </div>
+        </div>
+      ),
+    },
+    // 6: Size Switch (round 1)
     {
       stage: "Size Switch",
       body: (
@@ -257,6 +294,16 @@ function buildSlides({ onZoom }) {
             <Pic src={`${IMG}/cat.jpg`} label="cat" size={54} onZoom={onZoom} />
           </div>
         </>
+      ),
+    },
+    // 6b: Size Switch (round 2)
+    {
+      stage: "Size Switch",
+      body: (
+        <div className="word-row">
+          <Pic src={`${IMG}/dog.jpg`} label="dog" size={54} onZoom={onZoom} />
+          <Pic src={`${IMG}/dog.jpg`} label="dog" size={110} onZoom={onZoom} />
+        </div>
       ),
     },
     // 7: HIGHLIGHT Animal Size Race (round 1)
@@ -278,7 +325,43 @@ function buildSlides({ onZoom }) {
         </div>
       ),
     },
+    // 7b: HIGHLIGHT Animal Size Race (round 1, second pair)
+    {
+      stage: "HIGHLIGHT: Animal Size Race",
+      body: (
+        <div className="center-col">
+          <div className="word-row">
+            <Pic src={`${IMG}/monkey.avif`} label="monkey" size={60} onZoom={onZoom} />
+            <Pic src={`${IMG}/dog.jpg`} label="dog" size={80} onZoom={onZoom} />
+          </div>
+          <div className="bubble-col" style={{ maxWidth: 380 }}>
+            <div className="brow">
+              <div className="avatar navy">T</div>
+              <div className="bubble left">Find the small animal!</div>
+            </div>
+          </div>
+        </div>
+      ),
+    },
     // 8: HIGHLIGHT Animal Size Race (round 2, switch)
+    {
+      stage: "HIGHLIGHT: Animal Size Race",
+      body: (
+        <div className="center-col">
+          <div className="word-row">
+            <Pic src={`${IMG}/lion.avif`} label="lion" size={70} onZoom={onZoom} />
+            <Pic src={`${IMG}/fish.avif`} label="fish" size={70} onZoom={onZoom} />
+          </div>
+          <div className="bubble-col" style={{ maxWidth: 420 }}>
+            <div className="brow me">
+              <div className="avatar coral">S</div>
+              <div className="bubble right">Find the small animal!</div>
+            </div>
+          </div>
+        </div>
+      ),
+    },
+    // 8b: HIGHLIGHT Animal Size Race (round 2, second pair)
     {
       stage: "HIGHLIGHT: Animal Size Race",
       body: (
@@ -286,7 +369,7 @@ function buildSlides({ onZoom }) {
           <div className="bubble-col" style={{ maxWidth: 420 }}>
             <div className="brow me">
               <div className="avatar coral">S</div>
-              <div className="bubble right">Find the small animal!</div>
+              <div className="bubble right">Find the big animal!</div>
             </div>
           </div>
         </div>

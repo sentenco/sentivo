@@ -214,15 +214,42 @@ function buildSlides({ onZoom }) {
         </>
       ),
     },
-    // 4: Like or Don't Like?
+    // 4: Like or Don't Like? (round 1)
     {
       stage: "Like or Don't Like?",
       body: (
-        <div className="bubble-col" style={{ maxWidth: 420 }}>
-          <div className="brow me">
-            <div className="avatar coral">S</div>
-            <div className="bubble right">I like pizza. I don't like eggs.</div>
+        <div className="center-col">
+          <Pic src={`${IMG}/pizza.avif`} label="pizza" size={100} onZoom={onZoom} />
+          <div className="bubble-col" style={{ maxWidth: 380 }}>
+            <div className="brow me">
+              <div className="avatar coral">S</div>
+              <div className="bubble right">I like pizza!</div>
+            </div>
           </div>
+        </div>
+      ),
+    },
+    // 4b: Like or Don't Like? (round 2)
+    {
+      stage: "Like or Don't Like?",
+      body: (
+        <div className="center-col">
+          <Pic src={`${IMG}/egg.jpg`} label="egg" size={100} onZoom={onZoom} />
+          <div className="bubble-col" style={{ maxWidth: 380 }}>
+            <div className="brow me">
+              <div className="avatar coral">S</div>
+              <div className="bubble right">I don't like eggs!</div>
+            </div>
+          </div>
+        </div>
+      ),
+    },
+    // 4c: Like or Don't Like? (round 3)
+    {
+      stage: "Like or Don't Like?",
+      body: (
+        <div className="center-col">
+          <Pic src={`${IMG}/apple.jpg`} label="apple" size={100} onZoom={onZoom} />
         </div>
       ),
     },
@@ -243,12 +270,22 @@ function buildSlides({ onZoom }) {
         </>
       ),
     },
-    // 6: Food + Sentence Challenge
+    // 6: Food + Sentence Challenge (round 1)
     {
       stage: "Food + Sentence Challenge",
       body: (
         <div className="center-col">
           <Pic src={`${IMG}/banana.jpg`} label="banana" size={100} onZoom={onZoom} />
+          <p className="slide-p">I like ___. or I don't like ___.</p>
+        </div>
+      ),
+    },
+    // 6b: Food + Sentence Challenge (round 2)
+    {
+      stage: "Food + Sentence Challenge",
+      body: (
+        <div className="center-col">
+          <Pic src={null} label="rice" size={100} onZoom={onZoom} />
           <p className="slide-p">I like ___. or I don't like ___.</p>
         </div>
       ),
@@ -262,11 +299,12 @@ function buildSlides({ onZoom }) {
           <div className="word-row">
             <Pic src={`${IMG}/apple.jpg`} label="apple" size={70} onZoom={onZoom} />
             <Pic src={`${IMG}/pizza.avif`} label="pizza" size={70} onZoom={onZoom} />
+            <Pic src={`${IMG}/egg.jpg`} label="egg" size={70} onZoom={onZoom} />
           </div>
           <div className="bubble-col" style={{ maxWidth: 380 }}>
             <div className="brow me">
               <div className="avatar coral">S</div>
-              <div className="bubble right">I like apples!</div>
+              <div className="bubble right">I like apples! I don't like eggs.</div>
             </div>
           </div>
         </div>
@@ -287,7 +325,7 @@ function buildSlides({ onZoom }) {
         </div>
       ),
     },
-    // 9: Mixed Review Challenge
+    // 9: Mixed Review Challenge (round 1)
     {
       stage: "Mixed Review Challenge",
       body: (
@@ -295,6 +333,16 @@ function buildSlides({ onZoom }) {
           <span className="title-highlight"><h2 className="slide-h sub">Mixed Challenge!</h2></span>
           <Pic src={`${IMG}/pizza.avif`} label="pizza" size={90} onZoom={onZoom} />
           <LetterTile letters="HOP" color={OP_COLOR} size={64} fontSize={18} onZoom={onZoom} />
+        </div>
+      ),
+    },
+    // 9b: Mixed Review Challenge (round 2)
+    {
+      stage: "Mixed Review Challenge",
+      body: (
+        <div className="center-col">
+          <Pic src={`${IMG}/banana.jpg`} label="banana" size={90} onZoom={onZoom} />
+          <LetterTile letters="FIN" color={BLEND_COLOR} size={64} fontSize={18} onZoom={onZoom} />
         </div>
       ),
     },

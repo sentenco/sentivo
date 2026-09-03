@@ -250,7 +250,7 @@ function buildSlides({ onZoom }) {
         </>
       ),
     },
-    // 4: It's a...
+    // 4: It's a... (round 1)
     {
       stage: "It's a...",
       body: (
@@ -265,7 +265,37 @@ function buildSlides({ onZoom }) {
         </div>
       ),
     },
-    // 5: Big or Small?
+    // 4b: It's a... (round 2)
+    {
+      stage: "It's a...",
+      body: (
+        <div className="center-col">
+          <Pic src={`${IMG}/lion.avif`} label="lion" size={100} onZoom={onZoom} />
+          <div className="bubble-col" style={{ maxWidth: 380 }}>
+            <div className="brow me">
+              <div className="avatar coral">S</div>
+              <div className="bubble right">It's a lion!</div>
+            </div>
+          </div>
+        </div>
+      ),
+    },
+    // 4c: It's a... (round 3)
+    {
+      stage: "It's a...",
+      body: (
+        <div className="center-col">
+          <Pic src={`${IMG}/cat.jpg`} label="cat" size={100} onZoom={onZoom} />
+          <div className="bubble-col" style={{ maxWidth: 380 }}>
+            <div className="brow me">
+              <div className="avatar coral">S</div>
+              <div className="bubble right">It's a cat!</div>
+            </div>
+          </div>
+        </div>
+      ),
+    },
+    // 5: Big or Small? (round 1)
     {
       stage: "Big or Small?",
       body: (
@@ -273,6 +303,18 @@ function buildSlides({ onZoom }) {
           <div className="word-row">
             <Pic src={`${IMG}/elephant.jpg`} label="elephant" size={80} onZoom={onZoom} />
             <DescriptorTag label="Big" color={SIZE_COLOR.Big} onZoom={onZoom} />
+          </div>
+        </div>
+      ),
+    },
+    // 5b: Big or Small? (round 2)
+    {
+      stage: "Big or Small?",
+      body: (
+        <div className="center-col">
+          <div className="word-row">
+            <Pic src={`${IMG}/monkey.avif`} label="monkey" size={64} onZoom={onZoom} />
+            <DescriptorTag label="Small" color={SIZE_COLOR.Small} onZoom={onZoom} />
           </div>
         </div>
       ),
@@ -312,6 +354,7 @@ function buildSlides({ onZoom }) {
           <div className="word-row">
             <Pic src={`${IMG}/dog.jpg`} label="dog" size={70} onZoom={onZoom} />
             <Pic src={`${IMG}/elephant.jpg`} label="elephant" size={70} onZoom={onZoom} />
+            <Pic src={`${IMG}/monkey.avif`} label="monkey" size={70} onZoom={onZoom} />
           </div>
         </>
       ),

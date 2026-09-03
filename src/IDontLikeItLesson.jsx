@@ -230,13 +230,46 @@ function buildSlides({ onZoom }) {
         </div>
       ),
     },
-    // 4: Like or Don't Like?
+    // 3b: I Don't Like It! (second model)
+    {
+      stage: "I Don't Like It!",
+      body: (
+        <div className="center-col">
+          <Pic src={null} label="rice" size={100} onZoom={onZoom} />
+          <div className="bubble-col" style={{ maxWidth: 380 }}>
+            <div className="brow">
+              <div className="avatar navy">T</div>
+              <div className="bubble left">I don't like rice! 😖</div>
+            </div>
+          </div>
+        </div>
+      ),
+    },
+    // 4: Like or Don't Like? (round 1)
     {
       stage: "Like or Don't Like?",
       body: (
         <div className="center-col">
           <span className="title-highlight"><h2 className="slide-h sub">Like or Don't Like?</h2></span>
           <Pic src={`${IMG}/banana.jpg`} label="banana" size={100} onZoom={onZoom} />
+        </div>
+      ),
+    },
+    // 4b: Like or Don't Like? (round 2)
+    {
+      stage: "Like or Don't Like?",
+      body: (
+        <div className="center-col">
+          <Pic src={`${IMG}/pizza.avif`} label="pizza" size={100} onZoom={onZoom} />
+        </div>
+      ),
+    },
+    // 4c: Like or Don't Like? (round 3)
+    {
+      stage: "Like or Don't Like?",
+      body: (
+        <div className="center-col">
+          <Pic src={`${IMG}/apple.jpg`} label="apple" size={100} onZoom={onZoom} />
         </div>
       ),
     },
@@ -253,7 +286,7 @@ function buildSlides({ onZoom }) {
         </>
       ),
     },
-    // 6: What Does Teacher Like?
+    // 6: What Does Teacher Like? (round 1)
     {
       stage: "What Does Teacher Like?",
       body: (
@@ -261,6 +294,18 @@ function buildSlides({ onZoom }) {
           <div className="brow">
             <div className="avatar navy">T</div>
             <div className="bubble left">I like rice. I don't like bananas.</div>
+          </div>
+        </div>
+      ),
+    },
+    // 6b: What Does Teacher Like? (round 2)
+    {
+      stage: "What Does Teacher Like?",
+      body: (
+        <div className="bubble-col" style={{ maxWidth: 420 }}>
+          <div className="brow">
+            <div className="avatar navy">T</div>
+            <div className="bubble left">I like apples. I don't like eggs.</div>
           </div>
         </div>
       ),
@@ -276,6 +321,21 @@ function buildSlides({ onZoom }) {
             <div className="brow me">
               <div className="avatar coral">S</div>
               <div className="bubble right">I don't like it! 😝</div>
+            </div>
+          </div>
+        </div>
+      ),
+    },
+    // 7b: HIGHLIGHT Food Judge (round 1, second combo)
+    {
+      stage: "HIGHLIGHT: Food Judge",
+      body: (
+        <div className="center-col">
+          <Pic src={null} label="rice with apple slices" size={100} onZoom={onZoom} />
+          <div className="bubble-col" style={{ maxWidth: 380 }}>
+            <div className="brow me">
+              <div className="avatar coral">S</div>
+              <div className="bubble right">I like it! 😋</div>
             </div>
           </div>
         </div>
@@ -299,12 +359,36 @@ function buildSlides({ onZoom }) {
         </div>
       ),
     },
+    // 8b: HIGHLIGHT Food Judge (round 2, second combo)
+    {
+      stage: "HIGHLIGHT: Food Judge",
+      body: (
+        <div className="center-col">
+          <div className="bubble-col" style={{ maxWidth: 420 }}>
+            <div className="brow">
+              <div className="avatar navy">T</div>
+              <div className="bubble left">I like banana pizza!</div>
+            </div>
+            <div className="brow me">
+              <div className="avatar coral">S</div>
+              <div className="bubble right">Yuck! Do you like rice?</div>
+            </div>
+          </div>
+        </div>
+      ),
+    },
     // 9: My Food Choices
     {
       stage: "My Food Choices",
       body: (
         <>
           <span className="title-highlight"><h2 className="slide-h sub">My Food Choices!</h2></span>
+          <div className="word-row">
+            <Pic src={`${IMG}/pizza.avif`} label="pizza" size={64} onZoom={onZoom} />
+            <Pic src={`${IMG}/banana.jpg`} label="banana" size={64} onZoom={onZoom} />
+            <Pic src={`${IMG}/egg.jpg`} label="egg" size={64} onZoom={onZoom} />
+            <Pic src={`${IMG}/apple.jpg`} label="apple" size={64} onZoom={onZoom} />
+          </div>
           <div className="word-row">
             <PrefTag label="Like" onZoom={onZoom} />
             <PrefTag label="Don't Like" onZoom={onZoom} />

@@ -252,7 +252,7 @@ function buildSlides({ onZoom }) {
         </>
       ),
     },
-    // 5: Yummy or Not?
+    // 5: Yummy or Not? (round 1)
     {
       stage: "Yummy or Not?",
       body: (
@@ -263,6 +263,36 @@ function buildSlides({ onZoom }) {
             <div className="brow me">
               <div className="avatar coral">S</div>
               <div className="bubble right">Yummy!</div>
+            </div>
+          </div>
+        </div>
+      ),
+    },
+    // 5b: Yummy or Not? (round 2)
+    {
+      stage: "Yummy or Not?",
+      body: (
+        <div className="center-col">
+          <Pic src={`${IMG}/banana.jpg`} label="banana" size={110} onZoom={onZoom} />
+          <div className="bubble-col" style={{ maxWidth: 380 }}>
+            <div className="brow me">
+              <div className="avatar coral">S</div>
+              <div className="bubble right">Yummy!</div>
+            </div>
+          </div>
+        </div>
+      ),
+    },
+    // 5c: Yummy or Not? (round 3)
+    {
+      stage: "Yummy or Not?",
+      body: (
+        <div className="center-col">
+          <Pic src={`${IMG}/egg.jpg`} label="egg" size={110} onZoom={onZoom} />
+          <div className="bubble-col" style={{ maxWidth: 380 }}>
+            <div className="brow me">
+              <div className="avatar coral">S</div>
+              <div className="bubble right">No!</div>
             </div>
           </div>
         </div>
@@ -322,6 +352,14 @@ function buildSlides({ onZoom }) {
               <div className="avatar coral">S</div>
               <div className="bubble right">Banana!</div>
             </div>
+            <div className="brow">
+              <div className="avatar navy">T</div>
+              <div className="bubble left">It is white. It comes from a chicken.</div>
+            </div>
+            <div className="brow me">
+              <div className="avatar coral">S</div>
+              <div className="bubble right">Egg!</div>
+            </div>
           </div>
         </div>
       ),
@@ -340,6 +378,14 @@ function buildSlides({ onZoom }) {
             <div className="brow">
               <div className="avatar navy">T</div>
               <div className="bubble left">Is it... pizza?</div>
+            </div>
+            <div className="brow me">
+              <div className="avatar coral">S</div>
+              <div className="bubble right">It is red.</div>
+            </div>
+            <div className="brow">
+              <div className="avatar navy">T</div>
+              <div className="bubble left">Is it... an apple?</div>
             </div>
           </div>
         </div>

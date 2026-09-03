@@ -218,6 +218,21 @@ function buildSlides({ onZoom }) {
         </div>
       ),
     },
+    // 4b: Tell Me About It (round 2)
+    {
+      stage: "Tell Me About It",
+      body: (
+        <div className="center-col">
+          <Pic src={`${IMG}/monkey.avif`} label="monkey" size={90} onZoom={onZoom} />
+          <div className="bubble-col" style={{ maxWidth: 380 }}>
+            <div className="brow">
+              <div className="avatar navy">T</div>
+              <div className="bubble left">And this one?</div>
+            </div>
+          </div>
+        </div>
+      ),
+    },
     // 5: Animal Choices
     {
       stage: "Animal Choices",
@@ -236,10 +251,15 @@ function buildSlides({ onZoom }) {
     {
       stage: "Make an Animal Scene",
       body: (
-        <div className="center-col">
+        <>
           <span className="title-highlight"><h2 className="slide-h sub">Make Your Own Scene!</h2></span>
-          <Pic src={null} label="a blank scene to build" size={110} onZoom={onZoom} />
-        </div>
+          <div className="word-row">
+            <Pic src={`${IMG}/cat.jpg`} label="cat" size={64} onZoom={onZoom} />
+            <Pic src={`${IMG}/dog.jpg`} label="dog" size={64} onZoom={onZoom} />
+            <Pic src={`${IMG}/lion.avif`} label="lion" size={64} onZoom={onZoom} />
+            <Pic src={`${IMG}/monkey.avif`} label="monkey" size={64} onZoom={onZoom} />
+          </div>
+        </>
       ),
     },
     // 7: HIGHLIGHT Animal Storyteller
@@ -252,6 +272,10 @@ function buildSlides({ onZoom }) {
             <div className="brow">
               <div className="avatar navy">T</div>
               <div className="bubble left">What is here? Big or small?</div>
+            </div>
+            <div className="brow">
+              <div className="avatar navy">T</div>
+              <div className="bubble left">What happens next in your story?</div>
             </div>
           </div>
         </div>

@@ -197,12 +197,22 @@ function buildSlides({ onZoom }) {
         </>
       ),
     },
-    // 3: It's a...
+    // 3: It's a... (round 1)
     {
       stage: "2. It's a...",
       body: (
         <div className="center-col">
           <Pic src={`${IMG}/lion.avif`} label="lion" size={100} onZoom={onZoom} />
+          <p className="slide-p">What is it?</p>
+        </div>
+      ),
+    },
+    // 3b: It's a... (round 2)
+    {
+      stage: "2. It's a...",
+      body: (
+        <div className="center-col">
+          <Pic src={`${IMG}/dog.jpg`} label="dog" size={100} onZoom={onZoom} />
           <p className="slide-p">What is it?</p>
         </div>
       ),
@@ -217,6 +227,16 @@ function buildSlides({ onZoom }) {
         </div>
       ),
     },
+    // 4b: Big or Small? (round 2)
+    {
+      stage: "3. Big or Small?",
+      body: (
+        <div className="word-row">
+          <Pic src={`${IMG}/lion.avif`} label="lion" size={80} onZoom={onZoom} />
+          <Pic src={`${IMG}/fish.avif`} label="fish" size={60} onZoom={onZoom} />
+        </div>
+      ),
+    },
     // 5: Listen & Find
     {
       stage: "4. Listen & Find",
@@ -225,6 +245,14 @@ function buildSlides({ onZoom }) {
           <div className="brow">
             <div className="avatar navy">T</div>
             <div className="bubble left">Find the big animal!</div>
+          </div>
+          <div className="brow">
+            <div className="avatar navy">T</div>
+            <div className="bubble left">Find the dog!</div>
+          </div>
+          <div className="brow">
+            <div className="avatar navy">T</div>
+            <div className="bubble left">Find the small animal!</div>
           </div>
         </div>
       ),
@@ -254,6 +282,14 @@ function buildSlides({ onZoom }) {
               <div className="avatar coral">S</div>
               <div className="bubble right">It's a giraffe!</div>
             </div>
+            <div className="brow">
+              <div className="avatar navy">T</div>
+              <div className="bubble left">It swims. It is small.</div>
+            </div>
+            <div className="brow me">
+              <div className="avatar coral">S</div>
+              <div className="bubble right">It's a fish!</div>
+            </div>
           </div>
         </div>
       ),
@@ -271,6 +307,14 @@ function buildSlides({ onZoom }) {
             <div className="brow">
               <div className="avatar navy">T</div>
               <div className="bubble left">Is it a lion?</div>
+            </div>
+            <div className="brow me">
+              <div className="avatar coral">S</div>
+              <div className="bubble right">It is very big and gray.</div>
+            </div>
+            <div className="brow">
+              <div className="avatar navy">T</div>
+              <div className="bubble left">Is it an elephant?</div>
             </div>
           </div>
         </div>

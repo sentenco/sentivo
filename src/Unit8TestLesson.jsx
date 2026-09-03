@@ -206,7 +206,7 @@ function buildSlides({ onZoom }) {
         </>
       ),
     },
-    // 3: My Food Choices
+    // 3: My Food Choices (round 1)
     {
       stage: "2. My Food Choices",
       body: (
@@ -216,16 +216,34 @@ function buildSlides({ onZoom }) {
         </div>
       ),
     },
+    // 3b: My Food Choices (round 2)
+    {
+      stage: "2. My Food Choices",
+      body: (
+        <div className="center-col">
+          <Pic src={`${IMG}/egg.jpg`} label="egg" size={100} onZoom={onZoom} />
+          <p className="slide-p">Do you like it?</p>
+        </div>
+      ),
+    },
     // 4: Like or Don't Like?
     {
       stage: "3. Like or Don't Like?",
       body: (
-        <div className="bubble-col" style={{ maxWidth: 420 }}>
-          <div className="brow">
-            <div className="avatar navy">T</div>
-            <div className="bubble left">Sort the foods. Which ones do you like?</div>
+        <>
+          <div className="word-row">
+            <Pic src={`${IMG}/apple.jpg`} label="apple" size={64} onZoom={onZoom} />
+            <Pic src={`${IMG}/banana.jpg`} label="banana" size={64} onZoom={onZoom} />
+            <Pic src={`${IMG}/pizza.avif`} label="pizza" size={64} onZoom={onZoom} />
+            <Pic src={`${IMG}/egg.jpg`} label="egg" size={64} onZoom={onZoom} />
           </div>
-        </div>
+          <div className="bubble-col" style={{ maxWidth: 420 }}>
+            <div className="brow">
+              <div className="avatar navy">T</div>
+              <div className="bubble left">Sort the foods. Which ones do you like?</div>
+            </div>
+          </div>
+        </>
       ),
     },
     // 5: Word Family Check
@@ -266,6 +284,10 @@ function buildSlides({ onZoom }) {
               <div className="avatar navy">T</div>
               <div className="bubble left">I would like pizza, please.</div>
             </div>
+            <div className="brow">
+              <div className="avatar navy">T</div>
+              <div className="bubble left">Do you have any apples?</div>
+            </div>
           </div>
         </div>
       ),
@@ -279,6 +301,10 @@ function buildSlides({ onZoom }) {
             <div className="brow me">
               <div className="avatar coral">S</div>
               <div className="bubble right">Do you like rice?</div>
+            </div>
+            <div className="brow me">
+              <div className="avatar coral">S</div>
+              <div className="bubble right">Do you like eggs?</div>
             </div>
           </div>
         </div>

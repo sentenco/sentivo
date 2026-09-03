@@ -205,7 +205,7 @@ function buildSlides({ onZoom }) {
         </>
       ),
     },
-    // 4: Food Choices
+    // 4: Food Choices (round 1)
     {
       stage: "Food Choices",
       body: (
@@ -220,14 +220,37 @@ function buildSlides({ onZoom }) {
         </div>
       ),
     },
+    // 4b: Food Choices (round 2)
+    {
+      stage: "Food Choices",
+      body: (
+        <div className="center-col">
+          <Pic src={`${IMG}/pizza.avif`} label="pizza" size={100} onZoom={onZoom} />
+          <div className="bubble-col" style={{ maxWidth: 380 }}>
+            <div className="brow">
+              <div className="avatar navy">T</div>
+              <div className="bubble left">What about this one?</div>
+            </div>
+          </div>
+        </div>
+      ),
+    },
     // 5: Word Family Explorer
     {
       stage: "Word Family Explorer",
       body: (
-        <div className="bubble-col" style={{ maxWidth: 420 }}>
-          <div className="brow">
-            <div className="avatar navy">T</div>
-            <div className="bubble left">Can you find words that sound the same?</div>
+        <div className="center-col">
+          <div className="word-row">
+            <span className="fam-pill">pin</span>
+            <span className="fam-pill">hop</span>
+            <span className="fam-pill">fin</span>
+            <span className="fam-pill">mop</span>
+          </div>
+          <div className="bubble-col" style={{ maxWidth: 420 }}>
+            <div className="brow">
+              <div className="avatar navy">T</div>
+              <div className="bubble left">Can you find words that sound the same?</div>
+            </div>
           </div>
         </div>
       ),
@@ -236,10 +259,14 @@ function buildSlides({ onZoom }) {
     {
       stage: "My Food Menu",
       body: (
-        <div className="center-col">
+        <>
           <span className="title-highlight"><h2 className="slide-h sub">My Food Menu!</h2></span>
-          <Pic src={null} label="a blank menu card" size={110} onZoom={onZoom} />
-        </div>
+          <div className="word-row">
+            <Pic src={`${IMG}/banana.jpg`} label="banana" size={70} onZoom={onZoom} />
+            <Pic src={`${IMG}/apple.jpg`} label="apple" size={70} onZoom={onZoom} />
+            <Pic src={null} label="rice" size={70} onZoom={onZoom} />
+          </div>
+        </>
       ),
     },
     // 7: HIGHLIGHT You're the Chef! (round 1)
@@ -360,6 +387,7 @@ export const styles = `
 .center-col { display: flex; flex-direction: column; align-items: center; gap: 14px; }
 
 .word-row { display: flex; gap: 16px; position: relative; z-index: 1; flex-wrap: wrap; justify-content: center; align-items: center; }
+.fam-pill { font-family: 'Baloo 2', sans-serif; font-weight: 700; font-size: 18px; color: var(--navy); background: #fff; padding: 10px 20px; border-radius: 14px; box-shadow: 0 6px 14px rgba(27,42,74,0.1); }
 .pic { position: relative; cursor: zoom-in; overflow: hidden; flex-shrink: 0; border-radius: 24px; background: #fff; box-shadow: 0 0 0 5px #fff, 0 8px 18px rgba(27,42,74,0.16); transition: transform 0.15s ease; }
 .pic:hover { transform: scale(1.04); }
 .pic img { display: block; width: 100%; height: 100%; object-fit: contain; }

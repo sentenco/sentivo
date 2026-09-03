@@ -215,7 +215,7 @@ function buildSlides({ onZoom }) {
         </>
       ),
     },
-    // 4: What Is It?
+    // 4: What Is It? (round 1)
     {
       stage: "What Is It?",
       body: (
@@ -225,6 +225,36 @@ function buildSlides({ onZoom }) {
             <div className="brow me">
               <div className="avatar coral">S</div>
               <div className="bubble right">It's a monkey!</div>
+            </div>
+          </div>
+        </div>
+      ),
+    },
+    // 4b: What Is It? (round 2)
+    {
+      stage: "What Is It?",
+      body: (
+        <div className="center-col">
+          <Pic src={`${IMG}/dog.jpg`} label="dog" size={110} onZoom={onZoom} />
+          <div className="bubble-col" style={{ maxWidth: 380 }}>
+            <div className="brow me">
+              <div className="avatar coral">S</div>
+              <div className="bubble right">It's a dog!</div>
+            </div>
+          </div>
+        </div>
+      ),
+    },
+    // 4c: What Is It? (round 3, new animal)
+    {
+      stage: "What Is It?",
+      body: (
+        <div className="center-col">
+          <Pic src={`${IMG}/lion.avif`} label="lion" size={110} onZoom={onZoom} />
+          <div className="bubble-col" style={{ maxWidth: 380 }}>
+            <div className="brow me">
+              <div className="avatar coral">S</div>
+              <div className="bubble right">It's a lion!</div>
             </div>
           </div>
         </div>
@@ -244,13 +274,23 @@ function buildSlides({ onZoom }) {
         </>
       ),
     },
-    // 6: Zoo Walk
+    // 6: Zoo Walk (area 1)
     {
       stage: "Zoo Walk",
       body: (
         <div className="center-col">
           <span className="title-highlight"><h2 className="slide-h sub">Let's Walk at the Zoo!</h2></span>
           <Pic src={null} label="a zoo scene" size={120} onZoom={onZoom} />
+        </div>
+      ),
+    },
+    // 6b: Zoo Walk (area 2)
+    {
+      stage: "Zoo Walk",
+      body: (
+        <div className="center-col">
+          <span className="title-highlight"><h2 className="slide-h sub">Keep Walking!</h2></span>
+          <Pic src={null} label="another zoo area" size={120} onZoom={onZoom} />
         </div>
       ),
     },
@@ -273,6 +313,24 @@ function buildSlides({ onZoom }) {
         </div>
       ),
     },
+    // 7b: HIGHLIGHT Who Am I? Animal Acting (round 1, second animal)
+    {
+      stage: "HIGHLIGHT: Who Am I? Animal Acting",
+      body: (
+        <div className="center-col">
+          <div className="bubble-col" style={{ maxWidth: 420 }}>
+            <div className="brow me">
+              <div className="avatar coral">S</div>
+              <div className="bubble right">(acts like a monkey) 🐵</div>
+            </div>
+            <div className="brow">
+              <div className="avatar navy">T</div>
+              <div className="bubble left">Are you a monkey?</div>
+            </div>
+          </div>
+        </div>
+      ),
+    },
     // 8: HIGHLIGHT Who Am I? Animal Acting (round 2, switch)
     {
       stage: "HIGHLIGHT: Who Am I? Animal Acting",
@@ -286,6 +344,24 @@ function buildSlides({ onZoom }) {
             <div className="brow me">
               <div className="avatar coral">S</div>
               <div className="bubble right">It's a lion!</div>
+            </div>
+          </div>
+        </div>
+      ),
+    },
+    // 8b: HIGHLIGHT Who Am I? Animal Acting (round 2, second animal)
+    {
+      stage: "HIGHLIGHT: Who Am I? Animal Acting",
+      body: (
+        <div className="center-col">
+          <div className="bubble-col" style={{ maxWidth: 420 }}>
+            <div className="brow">
+              <div className="avatar navy">T</div>
+              <div className="bubble left">(acts like a fish) 🐟</div>
+            </div>
+            <div className="brow me">
+              <div className="avatar coral">S</div>
+              <div className="bubble right">It's a fish!</div>
             </div>
           </div>
         </div>
