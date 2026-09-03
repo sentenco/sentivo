@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { TEENS_LEVELS, TEENS_UNITS } from "./teensCurriculumData";
 import { ADULTS_LEVELS, ADULTS_UNITS } from "./adultsCurriculumData";
+import AudienceSwitchTabs from "./AudienceSwitchTabs";
 
 const TRACKS = {
   teens: { levels: TEENS_LEVELS, units: TEENS_UNITS, label: "Teens", age: "Ages 13 to 17" },
@@ -28,6 +29,8 @@ export default function TrackLevelPage({ audience, level, onBack }) {
       <div className="tlp-blob tlp-blob--b" />
 
       <div className="tlp-stage">
+        <AudienceSwitchTabs active={audience} level={level} />
+
         <button type="button" className="tlp-breadcrumb" onClick={onBack}>
           Curriculum <span className="tlp-crumb-sep">&rsaquo;</span> {track.label} <span className="tlp-crumb-sep">&rsaquo;</span> <span className={`tlp-crumb-current tlp-crumb-current--${data.accent}`}>{level} &middot; {data.name}</span>
         </button>

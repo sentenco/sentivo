@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { LEVEL_DATA, UNITS, READY_UNITS } from "./kidsCurriculumData";
+import AudienceSwitchTabs from "./AudienceSwitchTabs";
 
 const READY_LESSONS = { A1: { 1: [1, 2, 3, 4, 5, 6], 2: [1, 2, 3, 4, 5, 6], 3: [1, 2, 3, 4, 5, 6], 4: [1, 2, 3, 4, 5, 6], 5: [1, 2, 3, 4, 5, 6], 6: [1, 2, 3, 4, 5, 6], 7: [1, 2, 3, 4, 5, 6], 8: [1, 2, 3, 4, 5, 6], 9: [1, 2, 3, 4, 5, 6], 10: [1, 2, 3, 4, 5, 6], 11: [1, 2, 3, 4, 5, 6], 12: [1, 2, 3, 4, 5, 6] } };
 
@@ -43,6 +44,8 @@ export default function LevelPage({ level = "A1" }) {
       <div className="lp-blob lp-blob--b" />
 
       <div className="lp-stage">
+        <AudienceSwitchTabs active="kids" level={level} />
+
         <div className="lp-topbar">
           <div className="lp-breadcrumb">
             Curriculum <span className="lp-crumb-sep">&rsaquo;</span> <span style={{ color: data.color }}>{level} &middot; {data.name}</span>
