@@ -4,8 +4,14 @@ import { ADULTS_LEVELS, ADULTS_UNITS } from "./adultsCurriculumData";
 import AudienceSwitchTabs from "./AudienceSwitchTabs";
 
 const TRACKS = {
-  teens: { levels: TEENS_LEVELS, units: TEENS_UNITS, label: "Teens", age: "Ages 13 to 17" },
-  adults: { levels: ADULTS_LEVELS, units: ADULTS_UNITS, label: "Adults", age: "Ages 18+" },
+  teens: {
+    levels: TEENS_LEVELS, units: TEENS_UNITS, label: "Teens", age: "Ages 13 to 17",
+    statTitle: "Built for teens", statSub: "Topics and pace matched to teenage learners",
+  },
+  adults: {
+    levels: ADULTS_LEVELS, units: ADULTS_UNITS, label: "Adults", age: "Ages 18+",
+    statTitle: "Real adult content", statSub: "Practical and task-based, not childish",
+  },
 };
 
 const ACCENT_COLORS = {
@@ -51,9 +57,34 @@ export default function TrackLevelPage({ audience, level, onBack }) {
           <p className="tlp-description">{data.description}</p>
         </div>
 
-        <div className="tlp-status-banner">
-          <span className="tlp-status-badge">Coming soon</span>
-          <p className="tlp-status-text">Every unit and lesson below is planned and locked in. Lessons haven't been built yet, so nothing opens until they're ready.</p>
+        <div className="tlp-stats-strip">
+          <div className="tlp-stat-item">
+            <div className="tlp-stat-icon tlp-stat-icon--blue">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 7c-1.6-1.1-4.2-1.6-6.5-1.2v12.5c2.3-.4 4.9.1 6.5 1.2m0-12.5c1.6-1.1 4.2-1.6 6.5-1.2v12.5c-2.3-.4-4.9.1-6.5 1.2M12 7v11"/></svg>
+            </div>
+            <div>
+              <div className="tlp-stat-title">12 Units</div>
+              <div className="tlp-stat-sub">Each with 5 lessons plus a summative test</div>
+            </div>
+          </div>
+          <div className="tlp-stat-item">
+            <div className="tlp-stat-icon tlp-stat-icon--coral">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="0.7" fill="currentColor"/></svg>
+            </div>
+            <div>
+              <div className="tlp-stat-title">Practical skills</div>
+              <div className="tlp-stat-sub">Focus on real-life communication</div>
+            </div>
+          </div>
+          <div className="tlp-stat-item">
+            <div className="tlp-stat-icon tlp-stat-icon--lav">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8.5 14.5s1.5 2 3.5 2 3.5-2 3.5-2"/><circle cx="9" cy="10" r="0.9" fill="currentColor" stroke="none"/><circle cx="15" cy="10" r="0.9" fill="currentColor" stroke="none"/></svg>
+            </div>
+            <div>
+              <div className="tlp-stat-title">{track.statTitle}</div>
+              <div className="tlp-stat-sub">{track.statSub}</div>
+            </div>
+          </div>
         </div>
 
         <div className="tlp-toc">
@@ -162,13 +193,25 @@ const styles = `
 .tlp-description { font-size: 13px; font-weight: 500; color: #4A5578; line-height: 1.55; max-width: 60%; }
 @media (max-width: 700px) { .tlp-description { max-width: 100%; } }
 
-.tlp-status-banner {
-  display: flex; align-items: center; gap: 14px;
-  background: #F7F5FB; border: 1px dashed #EDE6F4; border-radius: 12px;
-  padding: 14px 20px; margin-bottom: 26px;
+.tlp-stats-strip {
+  background: #fff;
+  border: 1px solid #EDE6F4;
+  border-radius: 16px;
+  padding: 20px 26px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-bottom: 26px;
+  box-shadow: 0 4px 16px rgba(27,42,74,0.06);
 }
-.tlp-status-badge { flex-shrink: 0; font-size: 10px; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase; color: #A6A2C0; background: #fff; padding: 5px 12px; border-radius: 999px; }
-.tlp-status-text { font-size: 12.5px; color: #6B6E96; line-height: 1.5; margin: 0; }
+@media (max-width: 700px) { .tlp-stats-strip { grid-template-columns: 1fr; } }
+.tlp-stat-item { display: flex; align-items: center; gap: 12px; }
+.tlp-stat-icon { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.tlp-stat-icon--blue { background: #E4E9F5; color: #4A5578; }
+.tlp-stat-icon--coral { background: #FFE6DD; color: #FF6B4A; }
+.tlp-stat-icon--lav { background: #EEE9F7; color: #7A5FA8; }
+.tlp-stat-title { font-family: 'Source Serif 4', serif; font-weight: 600; font-size: 13.5px; color: #1B2A4A; }
+.tlp-stat-sub { font-size: 11px; font-weight: 500; color: #6B6E96; margin-top: 1px; line-height: 1.3; }
 
 .tlp-toc {
   background: #fff;
@@ -247,6 +290,5 @@ const styles = `
   .tlp-toc-header { padding: 22px 20px; }
   .tlp-toc-list { padding: 10px 16px 24px; }
   .tlp-toc-panel-inner { padding-left: 40px; }
-  .tlp-status-banner { flex-direction: column; align-items: flex-start; }
 }
 `;
