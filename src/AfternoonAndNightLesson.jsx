@@ -1,0 +1,418 @@
+import React, { useEffect, useState } from "react";
+
+const TIME_COLOR = { Morning: "#F2A900", Afternoon: "#FF6B4A", Night: "#5A6B92" };
+
+const CLOUD_VARIANTS = [
+  { a: { bottom: 90, right: -20 }, b: { top: 90, left: -25 } },
+  { a: { top: -30, left: 120 }, b: { bottom: -20, right: 90 } },
+  { a: { top: -20, right: 60 }, b: { bottom: 100, left: -15 } },
+  { a: { bottom: -15, left: 60 }, b: { top: 60, right: -20 } },
+];
+
+export function StarIcon({ size = 20, fill = "var(--sun)", style }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill={fill} style={style}>
+      <path d="M12 2l2.2 5.8L20 9l-4.6 4 1.4 6-4.8-3.4L7.2 19l1.4-6L4 9l5.8-1.2z" />
+    </svg>
+  );
+}
+
+function PhotoIcon({ size = 42 }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+      <rect x="3" y="3" width="18" height="18" rx="3" />
+      <circle cx="9" cy="9" r="2" />
+      <path d="M21 15l-5-5-4 4-3-3-6 6" />
+    </svg>
+  );
+}
+
+function Pic({ src, label, size = 116, onZoom }) {
+  const big = (
+    <div className="zoom-pic">
+      {src ? <img src={src} alt={label} /> : (
+        <div className="zoom-ph">
+          <PhotoIcon size={44} />
+          <span>{label}</span>
+        </div>
+      )}
+    </div>
+  );
+  return (
+    <div className="pic" style={{ width: size, height: size }} onClick={() => onZoom(big)}>
+      {src ? <img src={src} alt={label} draggable={false} /> : (
+        <div className="pic-ph">
+          <PhotoIcon size={typeof size === "number" ? Math.round(size * 0.22) : 26} />
+          <span>{label}</span>
+        </div>
+      )}
+    </div>
+  );
+}
+
+function WordCard({ src, word, label, onZoom }) {
+  return (
+    <div className="wc">
+      <Pic src={src} label={label} onZoom={onZoom} />
+      <div className="word">{word}</div>
+    </div>
+  );
+}
+
+function TimeTag({ label, onZoom }) {
+  const color = TIME_COLOR[label];
+  const big = <div className="time-zoom" style={{ background: color }}>{label}</div>;
+  return (
+    <div className="time-tag" style={{ background: color }} onClick={() => onZoom(big)}>
+      {label}
+    </div>
+  );
+}
+
+export default function AfternoonAndNightLesson() {
+  const [i, setI] = useState(0);
+  const [zoom, setZoom] = useState(null);
+
+  useEffect(() => {
+    const styleId = "hal-styles";
+    const existing = document.getElementById(styleId);
+    if (existing) existing.remove();
+    const tag = document.createElement("style");
+    tag.id = styleId;
+    tag.textContent = styles;
+    document.head.appendChild(tag);
+  }, []);
+
+  useEffect(() => {
+    if (!window.opener) return;
+    const wrap = document.querySelector(".hal-wrap");
+    const slide = document.querySelector(".slide");
+    if (!wrap || !slide) return;
+    const pad = parseFloat(getComputedStyle(wrap).paddingLeft) || 0;
+    const targetW = Math.ceil(slide.offsetWidth + pad * 2);
+    const targetH = Math.ceil(slide.offsetHeight + pad * 2);
+    const chromeW = window.outerWidth - window.innerWidth;
+    const chromeH = window.outerHeight - window.innerHeight;
+    const screenW = window.screen.availWidth || 1600;
+    const screenH = window.screen.availHeight || 900;
+    const outerW = Math.min(targetW + chromeW, screenW);
+    const outerH = Math.min(targetH + chromeH, screenH);
+    window.resizeTo(outerW, outerH);
+    const left = Math.max(0, Math.floor((screenW - outerW) / 2));
+    const top = Math.max(0, Math.floor((screenH - outerH) / 2));
+    window.moveTo(left, top);
+  }, []);
+
+  useEffect(() => {
+    if (zoom) {
+      document.body.style.overflow = "hidden";
+      return () => { document.body.style.overflow = ""; };
+    }
+  }, [zoom]);
+
+  function exit() {
+    window.close();
+  }
+
+  const slides = buildSlides({ onZoom: setZoom });
+  const total = slides.length;
+  const s = slides[i];
+  const cloud = CLOUD_VARIANTS[i % CLOUD_VARIANTS.length];
+
+  function go(delta) {
+    setI((cur) => Math.max(0, Math.min(total - 1, cur + delta)));
+  }
+
+  return (
+    <div className="hal-wrap">
+      <div className="deck-single">
+        <div className="slide">
+          <span className="cloud cloud--a" style={cloud.a} />
+          <span className="cloud cloud--b" style={cloud.b} />
+          <button className="close-btn" onClick={exit}>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M6 6l12 12M18 6L6 18" /></svg>
+          </button>
+
+          <div className="slide-header">
+            <div className="brand-bubble">
+              <img className="brand-logo" src="/logo-sentivo.png" alt="" />
+              <span className="brand-word">entivo</span>
+            </div>
+            <div className="stage-chip">
+              <span className="stage-name">{s.stage}</span>
+            </div>
+          </div>
+
+          <div className="slide-body">{s.body}</div>
+
+          <div className="slide-footer">
+            <button className={`nav-btn ${i === 0 ? "is-off" : ""}`} onClick={() => go(-1)} disabled={i === 0}>&larr; Previous</button>
+            <div className="progress-track">
+              {Array.from({ length: total }).map((_, idx) => (
+                <span key={idx} className={`dot ${idx === i ? "on" : ""}`} />
+              ))}
+            </div>
+            <button className="nav-btn next" onClick={() => (i === total - 1 ? exit() : go(1))}>
+              {i === total - 1 ? "Finish Lesson" : "Next →"}
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {zoom && (
+        <div className="zoom-overlay open" onClick={() => setZoom(null)}>
+          <div className="zoom-overlay-inner" onClick={(e) => e.stopPropagation()}>
+            <button className="zoom-close" onClick={() => setZoom(null)}>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M6 6l12 12M18 6L6 18" /></svg>
+            </button>
+            {zoom}
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+export const LESSON_GUIDE = [
+  { stage: "Unit 12 · Lesson 2", time: null, note: null },
+  { stage: "Morning Review", time: "~3 min", note: "Quickly review 3-4 morning routines using pictures and actions." },
+  { stage: "Afternoon Time", time: "~4 min", note: "Introduce go home, play, eat dinner. Practice through pictures and actions." },
+  { stage: "Night Time", time: "~3 min", note: "Introduce take a bath, go to bed, sleep." },
+  { stage: "Day or Night?", time: "~3 min", note: "Show routine pictures. Student decides: \"Morning!\" \"Afternoon!\" \"Night!\" Then says the action." },
+  { stage: "HIGHLIGHT: Day or Night Detective", time: "~4 min", note: "Give clues about a routine: \"It is dark.\" \"I am in my bed.\" Student identifies the routine." },
+  { stage: "HIGHLIGHT: Day or Night Detective", time: "~3 min", note: "Switch to visual clues and let the student explain their choice." },
+  { stage: "Mix & Match", time: "~4 min", note: "Mix morning, afternoon, and night pictures. Student sorts them into the correct part of the day." },
+  { stage: "Wrap-Up", time: null, note: null },
+];
+
+function buildSlides({ onZoom }) {
+  return [
+    // 1: Cover
+    {
+      stage: "Unit 12 · Lesson 2",
+      body: (
+        <div className="center-col">
+          <span className="title-highlight"><h1 className="slide-h">Afternoon and Night!</h1></span>
+          <p className="slide-p">Today we learn the rest of the day!</p>
+        </div>
+      ),
+    },
+    // 2: Morning Review
+    {
+      stage: "Morning Review",
+      body: (
+        <div className="word-row">
+          <WordCard src={null} word="Wake Up" label="wake up" onZoom={onZoom} />
+          <WordCard src={null} word="Eat" label="eat" onZoom={onZoom} />
+        </div>
+      ),
+    },
+    // 3: Afternoon Time
+    {
+      stage: "Afternoon Time",
+      body: (
+        <>
+          <span className="title-highlight"><h2 className="slide-h sub">Afternoon Time!</h2></span>
+          <div className="word-row">
+            <WordCard src={null} word="Go Home" label="go home" onZoom={onZoom} />
+            <WordCard src={null} word="Play" label="play" onZoom={onZoom} />
+            <WordCard src={null} word="Eat Dinner" label="eat dinner" onZoom={onZoom} />
+          </div>
+        </>
+      ),
+    },
+    // 4: Night Time
+    {
+      stage: "Night Time",
+      body: (
+        <>
+          <span className="title-highlight"><h2 className="slide-h sub">Night Time!</h2></span>
+          <div className="word-row">
+            <WordCard src={null} word="Take a Bath" label="take a bath" onZoom={onZoom} />
+            <WordCard src={null} word="Go to Bed" label="go to bed" onZoom={onZoom} />
+            <WordCard src={null} word="Sleep" label="sleep" onZoom={onZoom} />
+          </div>
+        </>
+      ),
+    },
+    // 5: Day or Night? (round 1)
+    {
+      stage: "Day or Night?",
+      body: (
+        <div className="center-col">
+          <WordCard src={null} word="Sleep" label="sleep" onZoom={onZoom} />
+          <TimeTag label="Night" onZoom={onZoom} />
+        </div>
+      ),
+    },
+    // 5b: Day or Night? (round 2)
+    {
+      stage: "Day or Night?",
+      body: (
+        <div className="center-col">
+          <WordCard src={null} word="Play" label="play" onZoom={onZoom} />
+          <TimeTag label="Afternoon" onZoom={onZoom} />
+        </div>
+      ),
+    },
+    // 6: HIGHLIGHT Day or Night Detective (round 1)
+    {
+      stage: "HIGHLIGHT: Day or Night Detective",
+      body: (
+        <div className="center-col">
+          <span className="title-highlight"><h2 className="slide-h sub">🔍 Day or Night Detective!</h2></span>
+          <div className="bubble-col" style={{ maxWidth: 420 }}>
+            <div className="brow">
+              <div className="avatar navy">T</div>
+              <div className="bubble left">It is dark. I am in my bed.</div>
+            </div>
+            <div className="brow me">
+              <div className="avatar coral">S</div>
+              <div className="bubble right">Sleep!</div>
+            </div>
+          </div>
+        </div>
+      ),
+    },
+    // 7: HIGHLIGHT Day or Night Detective (round 2, visual clue)
+    {
+      stage: "HIGHLIGHT: Day or Night Detective",
+      body: (
+        <div className="center-col">
+          <WordCard src={null} word="Eat Dinner" label="eat dinner" onZoom={onZoom} />
+          <div className="bubble-col" style={{ maxWidth: 380 }}>
+            <div className="brow">
+              <div className="avatar navy">T</div>
+              <div className="bubble left">Morning, afternoon, or night?</div>
+            </div>
+            <div className="brow me">
+              <div className="avatar coral">S</div>
+              <div className="bubble right">Afternoon!</div>
+            </div>
+          </div>
+        </div>
+      ),
+    },
+    // 8: Mix & Match
+    {
+      stage: "Mix & Match",
+      body: (
+        <>
+          <span className="title-highlight"><h2 className="slide-h sub">Mix & Match!</h2></span>
+          <div className="word-row">
+            <WordCard src={null} word="Wake Up" label="wake up" onZoom={onZoom} />
+            <WordCard src={null} word="Go Home" label="go home" onZoom={onZoom} />
+            <WordCard src={null} word="Go to Bed" label="go to bed" onZoom={onZoom} />
+          </div>
+        </>
+      ),
+    },
+    // 9: Wrap-up
+    {
+      stage: "Wrap-Up",
+      body: (
+        <div className="center-col">
+          <StarIcon size={48} fill="var(--sun)" />
+          <h2 className="slide-h sub">Great Job!</h2>
+          <p className="slide-p">You know morning, afternoon, and night! See you next lesson!</p>
+        </div>
+      ),
+    },
+  ];
+}
+
+export const styles = `
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Quicksand:wght@500;600;700&family=Fredoka:wght@600;700&display=swap');
+
+:root {
+  --coral: #FF6B4A; --coral-deep: #E0502F; --coral-light: #FFE6DD;
+  --sun: #F2A900; --navy: #1B2A4A; --navy-soft: #5A6B92; --navy-light: #E4E9F5;
+  --ink: #2B2438; --ink-soft: #736A87;
+}
+
+.hal-wrap { min-height: 100vh; width: 100%; background: #EDE7F6; color: var(--ink); font-family: 'Quicksand', sans-serif; padding: 1cm; box-sizing: border-box; display: flex; align-items: center; justify-content: center; }
+.hal-wrap * { box-sizing: border-box; }
+.deck-single { flex-shrink: 0; }
+
+.slide {
+  position: relative; width: 720px; height: 560px; flex-shrink: 0;
+  display: flex; flex-direction: column; overflow: hidden;
+  background: linear-gradient(160deg, #FFF9F5 0%, #FFE9DF 58%, #FFDCC9 100%);
+  border-radius: 30px;
+  box-shadow: 0 24px 50px rgba(27,42,74,0.22);
+}
+.cloud { position: absolute; border-radius: 50%; z-index: 0; pointer-events: none; }
+.cloud--a { width: 140px; height: 140px; background: var(--coral); opacity: 0.85; }
+.cloud--b { width: 100px; height: 100px; background: var(--sun); opacity: 0.85; }
+
+.close-btn { position: absolute; top: 14px; right: 14px; z-index: 4; width: 30px; height: 30px; border-radius: 50%; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.2); color: #fff; }
+
+.slide-header {
+  flex-shrink: 0; position: relative; z-index: 2; overflow: hidden;
+  background: linear-gradient(135deg, var(--navy) 0%, #263b66 100%);
+  box-shadow: 0 8px 18px rgba(27,42,74,0.2);
+  padding: 22px 30px; display: flex; align-items: center; justify-content: space-between;
+}
+.slide-header::before { content: ""; position: absolute; top: -60px; right: -30px; width: 190px; height: 190px; border-radius: 50%; background: radial-gradient(circle, rgba(255,107,74,0.4), transparent 70%); pointer-events: none; }
+
+.brand-bubble { position: relative; z-index: 1; display: flex; align-items: center; gap: 0; background: #fff; border-radius: 999px; padding: 6px 16px 6px 8px; box-shadow: 0 3px 8px rgba(0,0,0,0.2); }
+.brand-logo { height: 24px; width: auto; display: block; margin-right: -3px; }
+.brand-word { font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 16px; color: var(--navy); }
+
+.stage-chip { position: relative; z-index: 1; display: flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.16); padding: 8px 16px; border-radius: 999px; }
+.stage-name { font-family: 'Baloo 2', sans-serif; font-weight: 700; font-size: 12px; color: #fff; letter-spacing: 0.02em; }
+
+.slide-body { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px 40px; position: relative; z-index: 1; gap: 12px; }
+
+.slide-footer {
+  flex-shrink: 0; position: relative; z-index: 2;
+  background: linear-gradient(315deg, var(--navy) 0%, #263b66 100%);
+  box-shadow: 0 -8px 18px rgba(27,42,74,0.2);
+  padding: 18px 26px; display: flex; align-items: center; justify-content: space-between;
+}
+.nav-btn { display: inline-flex; align-items: center; gap: 7px; font-family: 'Baloo 2', sans-serif; font-weight: 700; font-size: 13px; padding: 12px 22px; border-radius: 16px; border: none; cursor: pointer; background: linear-gradient(180deg, #fff 0%, #F5EEE7 100%); color: var(--navy); box-shadow: 0 4px 0 rgba(27,42,74,0.15), 0 8px 16px rgba(27,42,74,0.1); }
+.nav-btn.next { background: linear-gradient(180deg, var(--coral) 0%, var(--coral-deep) 100%); color: #fff; box-shadow: 0 4px 0 rgba(160,45,18,0.4), 0 8px 18px rgba(224,80,47,0.32); }
+.nav-btn.is-off, .nav-btn:disabled { opacity: 0.32; box-shadow: 0 1px 2px rgba(27,42,74,0.1) inset; cursor: default; }
+.progress-track { display: flex; align-items: center; gap: 7px; }
+.dot { width: 7px; height: 7px; border-radius: 50%; background: rgba(255,255,255,0.3); }
+.dot.on { width: 22px; border-radius: 5px; background: var(--coral); }
+
+.title-highlight { position: relative; display: inline-block; }
+.title-highlight::before { content: ""; position: absolute; left: -12px; right: -12px; top: 34%; bottom: 18%; background: #FFD066; opacity: 0.85; transform: rotate(-1.4deg); border-radius: 4px; z-index: 0; }
+.slide-h { font-family: 'Baloo 2', sans-serif; font-weight: 800; font-size: 40px; color: var(--navy); margin: 0; text-align: center; position: relative; z-index: 1; line-height: 1.05; }
+.slide-h.sub { font-size: 28px; }
+.slide-p { font-family: 'Quicksand', sans-serif; font-size: 16px; color: var(--ink-soft); font-weight: 600; text-align: center; max-width: 540px; margin: 0; position: relative; z-index: 1; }
+
+.center-col { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+
+.word-row { display: flex; gap: 12px; position: relative; z-index: 1; flex-wrap: wrap; justify-content: center; align-items: center; }
+.wc { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+.pic { position: relative; cursor: zoom-in; overflow: hidden; flex-shrink: 0; border-radius: 22px; background: #fff; box-shadow: 0 0 0 4px #fff, 0 8px 18px rgba(27,42,74,0.16); transition: transform 0.15s ease; }
+.pic:hover { transform: scale(1.04); }
+.pic img { display: block; width: 100%; height: 100%; object-fit: contain; }
+.pic-ph { width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; color: var(--coral-deep); background: var(--coral-light); }
+.pic-ph span { font-size: 9px; font-weight: 700; text-align: center; padding: 0 5px; }
+.word { font-family: 'Baloo 2', sans-serif; font-weight: 700; font-size: 13.5px; color: var(--navy); text-align: center; }
+
+.time-tag { cursor: zoom-in; font-family: 'Baloo 2', sans-serif; font-weight: 700; font-size: 18px; color: #fff; padding: 12px 24px; border-radius: 16px; box-shadow: 0 6px 14px rgba(27,42,74,0.15); transition: transform 0.15s ease; }
+.time-tag:hover { transform: scale(1.05); }
+.time-zoom { font-family: 'Baloo 2', sans-serif; font-weight: 800; font-size: 40px; color: #fff; padding: 30px 56px; border-radius: 30px; }
+
+.bubble-col { display: flex; flex-direction: column; gap: 8px; position: relative; z-index: 1; }
+.brow { display: flex; align-items: center; gap: 9px; }
+.brow.me { flex-direction: row-reverse; align-self: flex-end; }
+.avatar { width: 30px; height: 30px; border-radius: 50%; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-family: 'Baloo 2', sans-serif; font-weight: 700; font-size: 10.5px; color: #fff; overflow: hidden; }
+.avatar.navy { background: var(--navy); }
+.avatar.coral { background: var(--coral); }
+.bubble { background: #fff; border-radius: 15px; padding: 9px 13px; font-weight: 700; font-size: 13.5px; color: var(--ink); box-shadow: 0 6px 14px rgba(27,42,74,0.08); }
+.bubble.left { border-radius: 15px 15px 15px 4px; }
+.bubble.right { border-radius: 15px 15px 4px 15px; }
+
+.zoom-overlay { position: fixed; inset: 0; background: rgba(27,42,74,0.72); display: flex; align-items: center; justify-content: center; z-index: 999; }
+.zoom-overlay-inner { position: relative; background: #fff; border-radius: 28px; padding: 34px; box-shadow: 0 30px 60px rgba(0,0,0,0.32); display: flex; align-items: center; justify-content: center; }
+.zoom-close { position: absolute; top: -16px; right: -16px; width: 38px; height: 38px; border-radius: 50%; background: #fff; border: none; box-shadow: 0 6px 16px rgba(0,0,0,0.2); cursor: pointer; display: flex; align-items: center; justify-content: center; color: var(--ink); }
+.zoom-pic { width: 380px; height: 380px; display: flex; align-items: center; justify-content: center; border-radius: 18px; overflow: hidden; background: #fff; }
+.zoom-pic img { width: 100%; height: 100%; object-fit: contain; }
+.zoom-ph { width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; border: 2.5px dashed var(--coral); border-radius: 18px; color: var(--coral-deep); }
+.zoom-ph span { font-size: 15px; font-weight: 700; text-align: center; padding: 0 24px; }
+`;

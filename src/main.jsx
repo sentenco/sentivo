@@ -85,6 +85,12 @@ import PlaytimeFunLesson from './PlaytimeFunLesson.jsx'
 import Unit11LetsReviewLesson from './Unit11LetsReviewLesson.jsx'
 import Unit11ShowWhatYouKnowLesson from './Unit11ShowWhatYouKnowLesson.jsx'
 import Unit11TestLesson from './Unit11TestLesson.jsx'
+import MorningTimeLesson from './MorningTimeLesson.jsx'
+import AfternoonAndNightLesson from './AfternoonAndNightLesson.jsx'
+import MyWholeDayLesson from './MyWholeDayLesson.jsx'
+import Unit12LetsReviewLesson from './Unit12LetsReviewLesson.jsx'
+import Unit12ShowWhatYouKnowLesson from './Unit12ShowWhatYouKnowLesson.jsx'
+import Unit12TestLesson from './Unit12TestLesson.jsx'
 import RealEstateVocabLesson from './RealEstateVocabLesson.jsx'
 import RealEstateVocabGuide from './RealEstateVocabGuide.jsx'
 import BeWillGrammarLesson from './BeWillGrammarLesson.jsx'
@@ -363,6 +369,12 @@ createRoot(document.getElementById('root')).render(
             <Route path="/library/curriculum/A1/unit/11/lesson/4" element={<Unit11LetsReviewLesson />} />
             <Route path="/library/curriculum/A1/unit/11/lesson/5" element={<Unit11ShowWhatYouKnowLesson />} />
             <Route path="/library/curriculum/A1/unit/11/lesson/6" element={<Unit11TestLesson />} />
+            <Route path="/library/curriculum/A1/unit/12/lesson/1" element={<MorningTimeLesson />} />
+            <Route path="/library/curriculum/A1/unit/12/lesson/2" element={<AfternoonAndNightLesson />} />
+            <Route path="/library/curriculum/A1/unit/12/lesson/3" element={<MyWholeDayLesson />} />
+            <Route path="/library/curriculum/A1/unit/12/lesson/4" element={<Unit12LetsReviewLesson />} />
+            <Route path="/library/curriculum/A1/unit/12/lesson/5" element={<Unit12ShowWhatYouKnowLesson />} />
+            <Route path="/library/curriculum/A1/unit/12/lesson/6" element={<Unit12TestLesson />} />
             <Route path="/library/customized-lessons/real-estate-vocabulary" element={<RealEstateVocabLesson />} />
             <Route path="/library/customized-lessons/real-estate-vocabulary/guide" element={<RealEstateVocabGuide />} />
             <Route path="/library/customized-lessons/be-verbs-and-will" element={<BeWillGrammarLesson />} />
