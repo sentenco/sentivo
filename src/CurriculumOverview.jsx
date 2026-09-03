@@ -7,12 +7,6 @@ const LEVELS = [
     tag: "Start here",
     accent: "coral",
     description: "Letters, phonics, and the first words and phrases to say hello, count, and talk about everyday life.",
-    icon: (
-      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <circle cx="12" cy="12" r="9" />
-        <path d="M14.8 9.2 12.9 13l-3.8 1.9L11 11.1l3.8-1.9z" fill="currentColor" stroke="none" />
-      </svg>
-    ),
   },
   {
     code: "A2",
@@ -20,12 +14,6 @@ const LEVELS = [
     tag: "Next step",
     accent: "navy",
     description: "Longer sentences, more tenses, and the independence to handle everyday situations with confidence.",
-    icon: (
-      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <path d="M12 3c2.2 2 3.5 5.2 3.5 9s-1.3 7-3.5 9c-2.2-2-3.5-5.2-3.5-9s1.3-7 3.5-9z" />
-        <path d="M3 12h18" />
-      </svg>
-    ),
   },
 ];
 
@@ -110,7 +98,7 @@ export default function CurriculumOverview({ onSelectLevel }) {
                   tabIndex={0}
                   onKeyDown={(e) => e.key === "Enter" && onSelectLevel && onSelectLevel(lv.code)}
                 >
-                  <div className="co-level-icon">{lv.icon}</div>
+                  <span className="co-level-watermark">{lv.code}</span>
                   <div className="co-level-top">
                     <div className="co-level-code">{lv.code}</div>
                     <span className="co-level-tag">{lv.tag}</span>
@@ -228,43 +216,46 @@ const styles = `
 .co-level-card {
   background: #fff;
   border: 1px solid #EDE6F4;
-  border-radius: 16px;
-  padding: 30px 30px 26px;
+  border-radius: 18px;
+  padding: 32px 30px 26px;
   cursor: pointer;
   position: relative;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   box-shadow: 0 4px 16px rgba(27,42,74,0.06);
-  transition: transform 0.16s ease, box-shadow 0.16s ease, border-color 0.16s ease;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
   outline: none;
 }
-.co-level-card:hover, .co-level-card:focus-visible { transform: translateY(-4px); box-shadow: 0 18px 36px rgba(27,42,74,0.12); }
-.co-level-card::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 6px; }
-.co-level-card--coral::before { background: #FF6B4A; }
+.co-level-card:hover, .co-level-card:focus-visible { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(27,42,74,0.13); }
+.co-level-card::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 6px; z-index: 2; }
+.co-level-card::after { content: ""; position: absolute; top: -70px; right: -70px; width: 200px; height: 200px; border-radius: 50%; pointer-events: none; z-index: 0; }
+.co-level-card--coral::before { background: linear-gradient(90deg, #FF6B4A, #FF9273); }
+.co-level-card--coral::after { background: radial-gradient(circle, rgba(255,107,74,0.09), rgba(255,107,74,0) 70%); }
 .co-level-card--coral:hover { border-color: #FF6B4A; }
-.co-level-card--navy::before { background: #1B2A4A; }
+.co-level-card--navy::before { background: linear-gradient(90deg, #1B2A4A, #3C5285); }
+.co-level-card--navy::after { background: radial-gradient(circle, rgba(27,42,74,0.08), rgba(27,42,74,0) 70%); }
 .co-level-card--navy:hover { border-color: #1B2A4A; }
 
-.co-level-icon {
-  position: absolute; top: 22px; right: 26px;
-  width: 46px; height: 46px; border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
+.co-level-watermark {
+  position: absolute; top: -20px; right: -4px;
+  font-family: 'Playfair Display', serif; font-weight: 900; font-size: 120px; line-height: 1;
+  letter-spacing: -0.03em; pointer-events: none; z-index: 0;
 }
-.co-level-card--coral .co-level-icon { background: #FFE6DD; color: #FF6B4A; }
-.co-level-card--navy .co-level-icon { background: #E7EAF3; color: #1B2A4A; }
+.co-level-card--coral .co-level-watermark { color: rgba(255,107,74,0.07); }
+.co-level-card--navy .co-level-watermark { color: rgba(27,42,74,0.06); }
 
-.co-level-top { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 6px; padding-right: 56px; }
-.co-level-code { font-family: 'Source Serif 4', serif; font-weight: 600; font-size: 40px; }
+.co-level-top { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 6px; position: relative; z-index: 1; }
+.co-level-code { font-family: 'Source Serif 4', serif; font-weight: 600; font-size: 34px; }
 .co-level-card--coral .co-level-code { color: #FF6B4A; }
 .co-level-card--navy .co-level-code { color: #1B2A4A; }
 .co-level-tag { font-size: 10.5px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; padding: 4px 10px; border-radius: 6px; color: #E0502F; background: #FFE6DD; }
 .co-level-card--navy .co-level-tag { color: #1B2A4A; background: #E7EAF3; }
 
-.co-level-name { font-family: 'Source Serif 4', serif; font-weight: 600; font-size: 18px; margin-bottom: 12px; }
-.co-level-desc { font-size: 13.5px; font-weight: 500; color: #6B6E96; line-height: 1.65; margin: 0 0 22px; }
+.co-level-name { font-family: 'Source Serif 4', serif; font-weight: 600; font-size: 18px; margin-bottom: 12px; position: relative; z-index: 1; }
+.co-level-desc { font-size: 13.5px; font-weight: 500; color: #6B6E96; line-height: 1.65; margin: 0 0 22px; position: relative; z-index: 1; }
 
-.co-level-foot { display: flex; align-items: center; justify-content: space-between; border-top: 1px solid #EDE6F4; padding-top: 16px; margin-top: auto; }
+.co-level-foot { display: flex; align-items: center; justify-content: space-between; border-top: 1px solid #EDE6F4; padding-top: 16px; margin-top: auto; position: relative; z-index: 1; }
 .co-level-units { font-size: 12px; font-weight: 700; color: #6B6E96; }
 .co-level-units b { color: #1B2A4A; font-family: 'Source Serif 4', serif; font-size: 14px; }
 .co-level-cta { font-size: 12.5px; font-weight: 700; display: inline-flex; align-items: center; gap: 5px; }

@@ -1707,7 +1707,7 @@ export default function Library() {
 
         <div className="gc-sections">
           <button
-            className={`gc-sec-tab ${!isCurriculum && !isArticleReader && category === "All" ? "is-active" : ""}`}
+            className={`gc-sec-tab ${!isCurriculum && !isArticleReader && !isSpark && category === "All" ? "is-active" : ""}`}
             onClick={() => changeCategory("All")}
           >
             Homeroom
@@ -2194,16 +2194,16 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   border-radius: 10px; text-decoration: none;
   color: var(--muted); background: none;
 }
-.gc-ed-spark:hover { background: rgba(27,42,74,0.06); color: #1B2A4A; }
-.gc-ed-spark.is-active { background: #1B2A4A; color: #fff; }
+.gc-ed-spark:hover { background: rgba(255,107,74,0.08); color: var(--coral); }
+.gc-ed-spark.is-active { background: var(--coral); color: #fff; }
 .gc-ed-curr {
   display: inline-flex; align-items: center; gap: 6px;
   font-size: 12px; font-weight: 800; letter-spacing: 0.02em; padding: 6px 13px;
   border-radius: 10px; cursor: pointer;
   color: var(--muted); background: none; border: none;
 }
-.gc-ed-curr:hover { background: rgba(255,107,74,0.08); color: var(--coral); }
-.gc-ed-curr.is-active { background: var(--coral); color: #fff; }
+.gc-ed-curr:hover { background: rgba(27,42,74,0.06); color: #1B2A4A; }
+.gc-ed-curr.is-active { background: #1B2A4A; color: #fff; }
 .gc-ed-custom {
   display: inline-flex; align-items: center; gap: 6px;
   font-size: 12px; font-weight: 800; letter-spacing: 0.02em; padding: 6px 13px;
