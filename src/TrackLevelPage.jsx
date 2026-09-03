@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { TEENS_LEVELS, TEENS_UNITS } from "./teensCurriculumData";
 import { ADULTS_LEVELS, ADULTS_UNITS } from "./adultsCurriculumData";
 import AudienceSwitchTabs from "./AudienceSwitchTabs";
@@ -8,10 +8,17 @@ const TRACKS = {
   adults: { levels: ADULTS_LEVELS, units: ADULTS_UNITS, label: "Adults", age: "Ages 18+" },
 };
 
+const ACCENT_COLORS = {
+  coral: { color: "#FF6B4A", light: "#FFE6DD" },
+  navy: { color: "#1B2A4A", light: "#E7EAF3" },
+};
+
 export default function TrackLevelPage({ audience, level, onBack }) {
   const track = TRACKS[audience] || TRACKS.teens;
   const data = track.levels[level] || track.levels.A1;
   const units = track.units[level] || track.units.A1;
+  const colors = ACCENT_COLORS[data.accent] || ACCENT_COLORS.coral;
+  const [openUnit, setOpenUnit] = useState(null);
 
   useEffect(() => {
     const styleId = "tlp-styles";
@@ -32,49 +39,72 @@ export default function TrackLevelPage({ audience, level, onBack }) {
         <AudienceSwitchTabs active={audience} level={level} />
 
         <button type="button" className="tlp-breadcrumb" onClick={onBack}>
-          Curriculum <span className="tlp-crumb-sep">&rsaquo;</span> {track.label} <span className="tlp-crumb-sep">&rsaquo;</span> <span className={`tlp-crumb-current tlp-crumb-current--${data.accent}`}>{level} &middot; {data.name}</span>
+          Curriculum <span className="tlp-crumb-sep">&rsaquo;</span> {track.label} <span className="tlp-crumb-sep">&rsaquo;</span> <span style={{ color: colors.color }}>{level} &middot; {data.name}</span>
         </button>
 
-        <div className={`tlp-hero tlp-hero--${data.accent}`}>
-          <div className="tlp-hero-kicker-row">
-            <span className="tlp-hero-rule" />
-            <span className="tlp-hero-kicker">{track.label} track &middot; {track.age}</span>
-            <span className="tlp-hero-rule" />
-          </div>
-          <div className="tlp-hero-title-row">
-            <span className="tlp-level-code">{level}</span>
+        <div className="tlp-banner-hero" style={{ background: colors.light }}>
+          <div className="tlp-cefr-tag" style={{ color: colors.color }}>{track.label} &middot; CEFR {level}</div>
+          <div className="tlp-banner-title">
+            <span className="tlp-level-code" style={{ color: colors.color }}>{level}</span>
             <span className="tlp-level-name">{data.name}</span>
           </div>
-          <p className="tlp-hero-desc">{data.description}</p>
+          <p className="tlp-description">{data.description}</p>
         </div>
 
         <div className="tlp-status-banner">
           <span className="tlp-status-badge">Coming soon</span>
-          <p className="tlp-status-text">The unit map below is locked in. Lessons haven't been built yet, so each unit will open once its 6 lessons are ready.</p>
+          <p className="tlp-status-text">Every unit and lesson below is planned and locked in. Lessons haven't been built yet, so nothing opens until they're ready.</p>
         </div>
 
         <div className="tlp-toc">
-          <div className="tlp-toc-header">
-            <h2 className="tlp-toc-title">Unit map</h2>
+          <div className="tlp-toc-header" style={{ background: colors.color }}>
+            <div className="tlp-toc-eyebrow-row">
+              <span className="tlp-toc-eyebrow-rule" />
+              <span className="tlp-toc-eyebrow">{track.label} &middot; {level} {data.name}</span>
+            </div>
+            <h2 className="tlp-toc-title">Table of Contents</h2>
             <p className="tlp-toc-sub">12 units &middot; 72 lessons</p>
           </div>
+
           <ul className="tlp-toc-list">
-            {units.map((u) => (
-              <li key={u.num} className="tlp-toc-item">
-                <span className={`tlp-toc-unit-label tlp-toc-unit-label--${data.accent}`}>
-                  Unit {String(u.num).padStart(2, "0")}
-                </span>
-                <div className="tlp-toc-main">
-                  <div className="tlp-toc-title-row">
-                    <span className="tlp-toc-item-title">{u.title}</span>
-                    <span className="tlp-toc-leader" />
-                    <span className="tlp-toc-page-tag">Coming soon</span>
+            {units.map((u) => {
+              const isOpen = openUnit === u.num;
+              return (
+                <li key={u.num} className={`tlp-toc-item ${isOpen ? "is-open" : ""}`}>
+                  <div className="tlp-toc-row" onClick={() => setOpenUnit(isOpen ? null : u.num)}>
+                    <span className="tlp-toc-unit-label" style={{ color: colors.color, background: colors.light }}>
+                      Unit {String(u.num).padStart(2, "0")}
+                    </span>
+                    <div className="tlp-toc-main">
+                      <div className="tlp-toc-title-row">
+                        <span className="tlp-toc-item-title">{u.title}</span>
+                        <span className="tlp-toc-leader" />
+                        <span className="tlp-toc-page-tag">Coming soon</span>
+                      </div>
+                      <div className="tlp-toc-focus">{u.focus} &middot; {u.anchor}</div>
+                    </div>
+                    <span className="tlp-toc-chevron" style={isOpen ? { background: colors.color, color: "#fff" } : {}}>
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+                    </span>
                   </div>
-                  <div className="tlp-toc-focus">{u.focus}</div>
-                  <span className="tlp-toc-anchor">{u.anchor}</span>
-                </div>
-              </li>
-            ))}
+
+                  <div className="tlp-toc-panel">
+                    <div className="tlp-toc-panel-inner">
+                      {u.lessons.map((l) => (
+                        <div key={l.num} className={`tlp-toc-lesson-row ${l.isTest ? "is-test" : ""}`}>
+                          <span className="tlp-toc-lesson-bullet">{l.isTest ? "T" : l.num}</span>
+                          <div className="tlp-toc-lesson-main">
+                            <span className="tlp-toc-lesson-title">{l.title}</span>
+                            <span className="tlp-toc-lesson-focus">{l.focus}</span>
+                          </div>
+                          <span className="tlp-toc-lesson-tag">{l.isTest ? "Test" : "Lesson"}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </li>
+              );
+            })}
           </ul>
         </div>
       </div>
@@ -83,14 +113,14 @@ export default function TrackLevelPage({ audience, level, onBack }) {
 }
 
 const styles = `
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@800;900&family=Source+Serif+4:wght@500;600;700&family=Inter:wght@500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@500;600;700&family=Inter:wght@500;600;700;800&display=swap');
 
 .tlp-wrap {
   min-height: 100%;
   width: 100%;
   flex-shrink: 0;
   background: #FFFCF6;
-  color: #1B2A4A;
+  color: #23264A;
   font-family: 'Inter', sans-serif;
   position: relative;
   overflow: hidden;
@@ -101,23 +131,36 @@ const styles = `
 .tlp-blob--a { width: 420px; height: 420px; top: -180px; right: -140px; background: rgba(255,107,74,0.07); }
 .tlp-blob--b { width: 460px; height: 460px; bottom: -220px; left: -160px; background: rgba(27,42,74,0.05); }
 
-.tlp-stage { position: relative; z-index: 1; max-width: 900px; margin: 0 auto; padding: 26px 40px 70px; }
+.tlp-stage { position: relative; z-index: 1; max-width: 1040px; margin: 0 auto; padding: 26px 40px 70px; }
 
 .tlp-breadcrumb { display: block; background: none; border: none; cursor: pointer; padding: 0; font-size: 12px; font-weight: 600; color: #6B6E96; margin-bottom: 22px; text-align: left; }
 .tlp-crumb-sep { color: #C7C4DC; }
-.tlp-crumb-current--coral { color: #FF6B4A; }
-.tlp-crumb-current--navy { color: #1B2A4A; }
 
-.tlp-hero { border-radius: 16px; padding: 24px 32px 22px; text-align: center; margin-bottom: 20px; }
-.tlp-hero--coral { background: #FFE6DD; }
-.tlp-hero--navy { background: #E7EAF3; }
-.tlp-hero-kicker-row { display: flex; align-items: center; justify-content: center; gap: 14px; margin-bottom: 6px; }
-.tlp-hero-rule { flex: 0 1 48px; height: 1px; background: rgba(27,42,74,0.22); }
-.tlp-hero-kicker { font-family: 'Source Serif 4', serif; font-weight: 700; font-size: 10.5px; letter-spacing: 0.18em; text-transform: uppercase; color: #6B6E96; }
-.tlp-hero-title-row { display: flex; align-items: baseline; justify-content: center; gap: 12px; margin-bottom: 10px; }
-.tlp-level-code { font-family: 'Source Serif 4', serif; font-weight: 600; font-size: 36px; color: #1B2A4A; }
-.tlp-level-name { font-family: 'Playfair Display', serif; font-weight: 900; font-size: clamp(24px, 3.4vw, 32px); text-transform: uppercase; letter-spacing: 0.01em; color: #1B2A4A; }
-.tlp-hero-desc { font-size: 13.5px; font-weight: 500; color: #6B6E96; line-height: 1.6; max-width: 480px; margin: 0 auto; }
+.tlp-banner-hero {
+  border-radius: 20px;
+  padding: 26px 32px;
+  margin-bottom: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.tlp-cefr-tag {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 4px 10px;
+  border-radius: 999px;
+  align-self: flex-start;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(27,42,74,0.1);
+}
+.tlp-banner-title { display: flex; align-items: baseline; gap: 12px; }
+.tlp-level-code { font-family: 'Source Serif 4', serif; font-size: 40px; font-weight: 600; line-height: 1; }
+.tlp-level-name { font-family: 'Source Serif 4', serif; font-size: 26px; font-weight: 600; color: #23264A; }
+.tlp-description { font-size: 13px; font-weight: 500; color: #4A5578; line-height: 1.55; max-width: 60%; }
+@media (max-width: 700px) { .tlp-description { max-width: 100%; } }
 
 .tlp-status-banner {
   display: flex; align-items: center; gap: 14px;
@@ -127,30 +170,83 @@ const styles = `
 .tlp-status-badge { flex-shrink: 0; font-size: 10px; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase; color: #A6A2C0; background: #fff; padding: 5px 12px; border-radius: 999px; }
 .tlp-status-text { font-size: 12.5px; color: #6B6E96; line-height: 1.5; margin: 0; }
 
-.tlp-toc { background: #fff; border: 1px solid #EDE6F4; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 16px rgba(27,42,74,0.05); }
-.tlp-toc-header { padding: 20px 26px 14px; border-bottom: 1px solid #EDE6F4; }
-.tlp-toc-title { font-family: 'Source Serif 4', serif; font-weight: 600; font-size: 19px; color: #1B2A4A; margin: 0 0 4px; }
-.tlp-toc-sub { font-size: 12px; color: #6B6E96; font-weight: 500; margin: 0; }
+.tlp-toc {
+  background: #fff;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 18px 40px rgba(27,42,74,0.12);
+  border: 1px solid #EDE6F4;
+}
 
-.tlp-toc-list { list-style: none; margin: 0; padding: 0; }
-.tlp-toc-item { display: flex; align-items: flex-start; gap: 16px; padding: 16px 26px; border-bottom: 1px solid #F5F1F9; }
+.tlp-toc-header { padding: 30px 40px 26px; position: relative; overflow: hidden; }
+.tlp-toc-header::before {
+  content: ""; position: absolute; top: -60px; right: -40px; width: 220px; height: 220px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,255,255,0.18), transparent 70%);
+  pointer-events: none;
+}
+.tlp-toc-eyebrow-row { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; position: relative; z-index: 1; }
+.tlp-toc-eyebrow-rule { flex: 0 1 34px; height: 1px; background: rgba(255,255,255,0.35); }
+.tlp-toc-eyebrow { font-family: 'Source Serif 4', serif; font-weight: 700; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.8); }
+.tlp-toc-title { font-family: 'Source Serif 4', serif; font-weight: 600; font-size: 28px; margin: 0; color: #fff; position: relative; z-index: 1; }
+.tlp-toc-sub { font-size: 12.5px; color: rgba(255,255,255,0.65); margin-top: 6px; position: relative; z-index: 1; }
+
+.tlp-toc-list { list-style: none; margin: 0; padding: 10px 40px 34px; }
+.tlp-toc-item { border-bottom: 1px solid #F0EBFA; }
 .tlp-toc-item:last-child { border-bottom: none; }
-.tlp-toc-unit-label { flex-shrink: 0; font-size: 10.5px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; padding: 5px 10px; border-radius: 6px; margin-top: 1px; }
-.tlp-toc-unit-label--coral { color: #E0502F; background: #FFE6DD; }
-.tlp-toc-unit-label--navy { color: #1B2A4A; background: #E7EAF3; }
 
+.tlp-toc-row {
+  display: flex; align-items: center; gap: 16px;
+  padding: 15px 8px;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background 0.15s ease;
+}
+.tlp-toc-row:hover { background: #FAF7FC; }
+.tlp-toc-item.is-open .tlp-toc-row { background: #FAF7FC; }
+
+.tlp-toc-unit-label {
+  flex-shrink: 0;
+  font-family: 'Source Serif 4', serif; font-weight: 700; font-size: 12px; letter-spacing: 0.03em;
+  padding: 5px 10px; border-radius: 7px;
+  width: 68px; text-align: center;
+}
 .tlp-toc-main { flex: 1; min-width: 0; }
-.tlp-toc-title-row { display: flex; align-items: baseline; gap: 8px; margin-bottom: 4px; }
-.tlp-toc-item-title { font-family: 'Source Serif 4', serif; font-weight: 600; font-size: 14.5px; color: #1B2A4A; white-space: nowrap; }
-.tlp-toc-leader { flex: 1; border-bottom: 1px dotted #E0DCEC; margin-bottom: 3px; }
-.tlp-toc-page-tag { flex-shrink: 0; font-size: 10px; font-weight: 700; letter-spacing: 0.03em; text-transform: uppercase; color: #A6A2C0; }
-.tlp-toc-focus { font-size: 12.5px; color: #6B6E96; line-height: 1.5; margin-bottom: 5px; }
-.tlp-toc-anchor { display: inline-block; font-size: 10.5px; font-weight: 700; color: #6B6E96; background: #F7F5FB; border: 1px solid #EDE6F4; padding: 3px 9px; border-radius: 999px; }
+.tlp-toc-title-row { display: flex; align-items: baseline; gap: 10px; }
+.tlp-toc-item-title { font-family: 'Source Serif 4', serif; font-weight: 600; font-size: 16px; color: #23264A; white-space: nowrap; }
+.tlp-toc-leader { flex: 1; border-bottom: 1.5px dotted #D8D2E8; margin-bottom: 5px; }
+.tlp-toc-page-tag { font-size: 11px; font-weight: 700; color: #6B6E96; white-space: nowrap; }
+.tlp-toc-focus { font-size: 12px; color: #6B6E96; margin-top: 3px; }
 
-@media (max-width: 640px) {
+.tlp-toc-chevron {
+  flex-shrink: 0; width: 26px; height: 26px; border-radius: 50%;
+  color: #6B6E96; display: flex; align-items: center; justify-content: center;
+  transition: transform 0.2s ease, color 0.15s ease, background 0.15s ease;
+}
+.tlp-toc-item.is-open .tlp-toc-chevron { transform: rotate(180deg); }
+
+.tlp-toc-panel { max-height: 0; overflow: hidden; transition: max-height 0.25s ease; }
+.tlp-toc-item.is-open .tlp-toc-panel { max-height: 600px; }
+.tlp-toc-panel-inner { padding: 4px 8px 18px 84px; }
+.tlp-toc-lesson-row { display: flex; align-items: center; gap: 12px; padding: 9px 8px; border-radius: 8px; margin: 0 -8px; }
+.tlp-toc-lesson-bullet {
+  flex-shrink: 0; width: 21px; height: 21px; border-radius: 50%;
+  background: #fff; border: 1.5px solid #FF6B4A; color: #E0502F;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Source Serif 4', serif; font-weight: 700; font-size: 10px;
+}
+.tlp-toc-lesson-row.is-test .tlp-toc-lesson-bullet { border-color: #C98A00; color: #A87A1E; background: #FBF0DC; }
+.tlp-toc-lesson-main { flex: 1; min-width: 0; display: flex; align-items: baseline; gap: 8px; }
+.tlp-toc-lesson-title { font-family: 'Source Serif 4', serif; font-weight: 600; font-size: 13.5px; color: #23264A; white-space: nowrap; }
+.tlp-toc-lesson-focus { font-size: 11.5px; color: #6B6E96; }
+.tlp-toc-lesson-tag { font-size: 9px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; color: #C7A8B8; margin-left: auto; flex-shrink: 0; }
+.tlp-toc-lesson-row.is-test .tlp-toc-lesson-tag { color: #A87A1E; }
+
+@media (max-width: 700px) {
   .tlp-stage { padding: 20px 18px 50px; }
-  .tlp-hero { padding: 20px 18px 18px; }
-  .tlp-toc-header, .tlp-toc-item { padding-left: 16px; padding-right: 16px; }
+  .tlp-banner-hero { padding: 20px 18px; }
+  .tlp-toc-header { padding: 22px 20px; }
+  .tlp-toc-list { padding: 10px 16px 24px; }
+  .tlp-toc-panel-inner { padding-left: 40px; }
   .tlp-status-banner { flex-direction: column; align-items: flex-start; }
 }
 `;
