@@ -1921,18 +1921,23 @@ export default function Library() {
             </div>
 
             <div className="cl-cta">
-              <div className="cl-cta-text">
-                <h2>Request a custom lesson</h2>
-                <p>Open a student's syllabus and use "Request custom lesson" to send the topic, level, duration, and language. Once it's built, it shows up here.</p>
+              <div className="cl-cta-icon">
+                <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
               </div>
-              <button type="button" className="cl-cta-btn" onClick={() => navigate("/library/syllabus")}>
-                Go to Syllabus Generator
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-              </button>
+              <div className="cl-cta-body">
+                <div className="cl-cta-text">
+                  <h2>Request a custom lesson</h2>
+                  <p>Open a student's syllabus and use "Request custom lesson" to send the topic, level, duration, and language. Once it's built, it shows up here.</p>
+                </div>
+                <button type="button" className="cl-cta-btn" onClick={() => navigate("/library/syllabus")}>
+                  Go to Syllabus Generator
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </button>
+              </div>
             </div>
 
             <div className="cl-gallery-hd-row">
-              <h2 className="cl-gallery-hd">Published custom lessons</h2>
+              <h2 className="cl-gallery-hd">Published lessons</h2>
               <div className="cl-tabs">
                 {["All", ...Array.from(new Set(CUSTOM_LESSONS.map((l) => l.tag)))].map((t) => (
                   <button key={t} type="button" className={`cl-tab ${clTab === t ? "is-active" : ""}`} onClick={() => setClTab(t)}>
@@ -1947,17 +1952,14 @@ export default function Library() {
                 const accent = l.tag === "Vocabulary" ? "coral" : "navy";
                 return (
                   <div key={l.slug} className={`cl-lesson-card cl-lesson-card--${accent}`}>
+                    <span className="cl-lesson-watermark">{l.tag.charAt(0)}</span>
                     <div className="cl-lesson-body">
                       <span className="cl-lesson-tag">{l.tag}</span>
                       <h3 className="cl-lesson-title">{l.title}</h3>
                       <p className="cl-lesson-level">{l.level}</p>
                       <p className="cl-lesson-desc">{l.desc}</p>
                     </div>
-                    <div className="cl-lesson-actions">
-                      <button type="button" className="cl-lesson-guide" onClick={() => openCustomLessonPopup(`${path}/guide`, "sentivoCustomGuide", 560, 640)}>
-                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20M4 4.5A2.5 2.5 0 0 1 6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5z" /></svg>
-                        Guide
-                      </button>
+                    <div className="cl-lesson-foot">
                       <button type="button" className="cl-lesson-open" onClick={() => openCustomLessonPopup(path, "sentivoCustomLesson", 840, 860)}>
                         Open
                         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
@@ -2624,28 +2626,36 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 /* ---------- Customized Lessons landing ---------- */
 .cl-page { width: 100%; max-width: 1040px; margin: 0 auto; padding: clamp(10px, 1.6vw, 18px) 0 40px; }
 
-.cl-hero { text-align: center; margin-bottom: 28px; }
-.cl-hero-kicker-row { display: flex; align-items: center; justify-content: center; gap: 14px; margin-bottom: 8px; }
-.cl-hero-rule { flex: 0 1 48px; height: 1px; background: rgba(27,42,74,0.18); }
-.cl-hero-kicker { font-family: 'Source Serif 4', serif; font-weight: 700; font-size: 10.5px; letter-spacing: 0.2em; text-transform: uppercase; color: #E0502F; }
-.cl-title {
-  font-family: 'Playfair Display', serif; font-weight: 900; font-size: clamp(26px, 3.6vw, 34px);
-  letter-spacing: 0.01em; text-transform: uppercase; color: #1B2A4A; margin: 0 0 12px; line-height: 1;
+.cl-hero {
+  background: #FFE6DD; border-radius: 18px; padding: 30px 36px 26px; text-align: center;
+  margin-bottom: 26px; position: relative; overflow: hidden;
 }
-.cl-sub { font-family: 'Inter', sans-serif; font-size: 13.5px; font-weight: 500; color: #6B6E96; max-width: 560px; margin: 0 auto; line-height: 1.6; }
+.cl-hero::after {
+  content: ""; position: absolute; top: -60px; right: -60px; width: 200px; height: 200px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,255,255,0.35), transparent 70%); pointer-events: none;
+}
+.cl-hero-kicker-row { display: flex; align-items: center; justify-content: center; gap: 14px; margin-bottom: 6px; position: relative; z-index: 1; }
+.cl-hero-rule { flex: 0 1 48px; height: 1px; background: rgba(27,42,74,0.22); }
+.cl-hero-kicker { font-family: 'Source Serif 4', serif; font-weight: 700; font-size: 10.5px; letter-spacing: 0.22em; text-transform: uppercase; color: #E0502F; }
+.cl-title {
+  font-family: 'Playfair Display', serif; font-weight: 900; font-size: clamp(28px, 4vw, 36px);
+  letter-spacing: 0.01em; text-transform: uppercase; color: #1B2A4A; margin: 6px 0 12px; line-height: 1;
+  position: relative; z-index: 1;
+}
+.cl-sub { font-family: 'Inter', sans-serif; font-size: 13.5px; font-weight: 500; color: #6B6E96; max-width: 520px; margin: 0 auto; line-height: 1.6; position: relative; z-index: 1; }
 
 .cl-cta {
-  display: flex; align-items: center; justify-content: space-between; gap: 24px;
-  background: #fff; border: 1px solid #EDE6F4; border-left: 5px solid #FF6B4A; border-radius: 16px;
-  padding: 24px 28px; margin: 0 0 34px;
-  box-shadow: 0 4px 16px rgba(27,42,74,0.06);
+  display: flex; background: #fff; border: 1px solid #EDE6F4; border-radius: 16px; overflow: hidden;
+  margin: 0 0 32px; box-shadow: 0 4px 16px rgba(27,42,74,0.06);
 }
-.cl-cta-text h2 { font-family: 'Source Serif 4', serif; font-weight: 600; font-size: 18px; color: #1B2A4A; margin: 0 0 6px; }
-.cl-cta-text p { font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 500; color: #6B6E96; margin: 0; max-width: 480px; line-height: 1.55; }
+.cl-cta-icon { flex: 0 0 96px; background: #1B2A4A; display: flex; align-items: center; justify-content: center; color: #fff; }
+.cl-cta-body { flex: 1; display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 22px 26px; }
+.cl-cta-text h2 { font-family: 'Source Serif 4', serif; font-weight: 600; font-size: 17px; color: #1B2A4A; margin: 0 0 5px; }
+.cl-cta-text p { font-family: 'Inter', sans-serif; font-size: 12.5px; font-weight: 500; color: #6B6E96; margin: 0; max-width: 440px; line-height: 1.55; }
 .cl-cta-btn {
-  display: inline-flex; align-items: center; gap: 8px; flex-shrink: 0;
-  font-family: 'Source Serif 4', serif; font-weight: 600; font-size: 13.5px; color: #fff;
-  background: #FF6B4A; border: none; border-radius: 999px; padding: 12px 22px; cursor: pointer;
+  flex-shrink: 0; display: inline-flex; align-items: center; gap: 8px;
+  font-family: 'Source Serif 4', serif; font-weight: 600; font-size: 13px; color: #fff;
+  background: #FF6B4A; border: none; border-radius: 999px; padding: 11px 20px; cursor: pointer;
   box-shadow: 0 6px 16px rgba(255,107,74,0.28);
 }
 .cl-cta-btn:hover { background: #E0502F; }
@@ -2653,7 +2663,7 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .cl-gallery-hd-row { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-bottom: 18px; }
 .cl-gallery-hd { font-family: 'Source Serif 4', serif; font-weight: 600; font-size: 18px; color: #1B2A4A; margin: 0; }
 
-.cl-tabs { display: flex; flex-wrap: wrap; gap: 6px; background: rgba(27,42,74,0.045); border-radius: 999px; padding: 4px; }
+.cl-tabs { display: inline-flex; flex-wrap: wrap; gap: 4px; background: rgba(27,42,74,0.045); border-radius: 999px; padding: 4px; }
 .cl-tab {
   font-family: 'Inter', sans-serif; font-weight: 700; font-size: 12px; color: #6B6E96;
   background: none; border: none; border-radius: 999px; padding: 7px 15px; cursor: pointer;
@@ -2664,7 +2674,7 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .cl-gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); gap: 18px; }
 .cl-lesson-card {
   display: flex; flex-direction: column; background: #fff; border: 1px solid #EDE6F4; border-radius: 16px;
-  padding: 22px 22px 18px; position: relative; overflow: hidden;
+  padding: 24px 22px 20px; position: relative; overflow: hidden;
   box-shadow: 0 4px 16px rgba(27,42,74,0.06);
   transition: transform 0.16s ease, box-shadow 0.16s ease;
 }
@@ -2672,29 +2682,36 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .cl-lesson-card::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 4px; }
 .cl-lesson-card--coral::before { background: #FF6B4A; }
 .cl-lesson-card--navy::before { background: #1B2A4A; }
-.cl-lesson-body { flex: 1; }
+.cl-lesson-watermark {
+  position: absolute; top: -14px; right: -2px;
+  font-family: 'Playfair Display', serif; font-weight: 900; font-size: 88px; line-height: 1;
+  pointer-events: none; z-index: 0;
+}
+.cl-lesson-card--coral .cl-lesson-watermark { color: rgba(255,107,74,0.08); }
+.cl-lesson-card--navy .cl-lesson-watermark { color: rgba(27,42,74,0.06); }
+.cl-lesson-body { flex: 1; position: relative; z-index: 1; }
 .cl-lesson-tag {
   display: inline-block; font-family: 'Inter', sans-serif; font-weight: 700; font-size: 10px;
-  letter-spacing: 0.06em; text-transform: uppercase; border-radius: 999px; padding: 4px 10px; margin-bottom: 10px;
+  letter-spacing: 0.06em; text-transform: uppercase; border-radius: 999px; padding: 4px 10px; margin-bottom: 12px;
 }
 .cl-lesson-card--coral .cl-lesson-tag { color: #E0502F; background: #FFE6DD; }
 .cl-lesson-card--navy .cl-lesson-tag { color: #1B2A4A; background: #E7EAF3; }
-.cl-lesson-title { font-family: 'Source Serif 4', serif; font-weight: 600; font-size: 16.5px; color: #1B2A4A; margin: 0 0 5px; }
-.cl-lesson-level { font-family: 'Inter', sans-serif; font-weight: 700; font-size: 11px; color: #A6A2C0; margin: 0 0 8px; text-transform: uppercase; letter-spacing: 0.03em; }
+.cl-lesson-title { font-family: 'Source Serif 4', serif; font-weight: 600; font-size: 17px; color: #1B2A4A; margin: 0 0 6px; }
+.cl-lesson-level { font-family: 'Inter', sans-serif; font-weight: 700; font-size: 10.5px; color: #A6A2C0; margin: 0 0 10px; text-transform: uppercase; letter-spacing: 0.03em; }
 .cl-lesson-desc { font-family: 'Inter', sans-serif; font-size: 12.5px; font-weight: 500; color: #6B6E96; line-height: 1.55; margin: 0; }
-.cl-lesson-actions { display: flex; gap: 8px; margin-top: 18px; padding-top: 16px; border-top: 1px solid #EDE6F4; }
-.cl-lesson-guide, .cl-lesson-open {
-  display: inline-flex; align-items: center; justify-content: center; gap: 6px;
-  font-family: 'Source Serif 4', serif; font-weight: 600; font-size: 12px;
-  border-radius: 999px; padding: 8px 14px; cursor: pointer; border: none;
+.cl-lesson-foot { position: relative; z-index: 1; margin-top: 18px; padding-top: 16px; border-top: 1px solid #EDE6F4; }
+.cl-lesson-open {
+  display: flex; align-items: center; justify-content: center; gap: 6px; width: 100%;
+  font-family: 'Source Serif 4', serif; font-weight: 600; font-size: 13px; color: #fff;
+  background: #1B2A4A; border: none; border-radius: 999px; padding: 10px; cursor: pointer;
 }
-.cl-lesson-guide { background: #F7F5FB; color: #6B6E96; }
-.cl-lesson-guide:hover { background: #EDE6F4; color: #1B2A4A; }
-.cl-lesson-open { flex: 1; background: #1B2A4A; color: #fff; }
-.cl-lesson-open:hover { background: #12203D; }
+.cl-lesson-card--coral .cl-lesson-open { background: #FF6B4A; }
+.cl-lesson-open:hover { opacity: 0.9; }
 
 @media (max-width: 640px) {
-  .cl-cta { flex-direction: column; align-items: flex-start; }
+  .cl-cta { flex-direction: column; }
+  .cl-cta-icon { width: 100%; height: 56px; }
+  .cl-cta-body { flex-direction: column; align-items: flex-start; }
   .cl-gallery-hd-row { flex-direction: column; align-items: flex-start; }
 }
 
