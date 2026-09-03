@@ -144,12 +144,14 @@ export const UNITS = {
   ],
   A2: [
     {
-      num: 1, title: "My Weekend", focus: "Talking about what you did", thread: "Past simple, regular verbs",
-      lessons: buildLessons(1, [
-        { title: "What Did You Do?", focus: "Past simple: played, watched", short: "regular verbs" },
-        { title: "More Yesterday!", focus: "Past simple: walked, cooked", short: "more verbs" },
-        { title: "My Weekend Story!", focus: "Connecting past events", short: "connecting events" },
-      ]),
+      num: 1, title: "School Life and School Projects", focus: "Talking about school subjects, your day, clubs, and a class project", thread: "Simple past, comparatives, connectors",
+      lessons: [
+        { num: 1, title: "School Subjects", focus: "Say which school subjects you have and give simple opinions" },
+        { num: 2, title: "My School Day", focus: "Sequence a school day using first, then, after that, finally" },
+        { num: 3, title: "After-School Clubs", focus: "Talk about after-school activities and compare preferences" },
+        { num: 4, title: "A Class Project", focus: "Describe a simple class project using sequencing and because" },
+        { num: 5, title: "Unit Review", focus: "Talk and write briefly about school life, school days, and simple projects" },
+      ],
     },
     {
       num: 2, title: "Yesterday & Today", focus: "Recounting recent events", thread: "Past simple, irregular verbs",

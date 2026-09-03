@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { LEVEL_DATA, UNITS, READY_UNITS } from "./kidsCurriculumData";
 import AudienceSwitchTabs from "./AudienceSwitchTabs";
 
-const READY_LESSONS = { A1: { 1: [1, 2, 3, 4, 5, 6], 2: [1, 2, 3, 4, 5, 6], 3: [1, 2, 3, 4, 5, 6], 4: [1, 2, 3, 4, 5, 6], 5: [1, 2, 3, 4, 5, 6], 6: [1, 2, 3, 4, 5, 6], 7: [1, 2, 3, 4, 5, 6], 8: [1, 2, 3, 4, 5, 6], 9: [1, 2, 3, 4, 5, 6], 10: [1, 2, 3, 4, 5, 6], 11: [1, 2, 3, 4, 5, 6], 12: [1, 2, 3, 4, 5, 6] } };
+const READY_LESSONS = { A1: { 1: [1, 2, 3, 4, 5, 6], 2: [1, 2, 3, 4, 5, 6], 3: [1, 2, 3, 4, 5, 6], 4: [1, 2, 3, 4, 5, 6], 5: [1, 2, 3, 4, 5, 6], 6: [1, 2, 3, 4, 5, 6], 7: [1, 2, 3, 4, 5, 6], 8: [1, 2, 3, 4, 5, 6], 9: [1, 2, 3, 4, 5, 6], 10: [1, 2, 3, 4, 5, 6], 11: [1, 2, 3, 4, 5, 6], 12: [1, 2, 3, 4, 5, 6] }, A2: { 1: [1] } };
 
 function openPopup(path, name, w, h) {
   const screenW = window.screen.availWidth || 1600;
@@ -138,7 +138,7 @@ export default function LevelPage({ level = "A1" }) {
                       <div className="lp-toc-title-row">
                         <span className="lp-toc-item-title">{u.title}</span>
                         <span className="lp-toc-leader" />
-                        <span className="lp-toc-page-tag">{isReady ? "6 lessons" : "Coming soon"}</span>
+                        <span className="lp-toc-page-tag">{isReady ? `${u.lessons.length} lessons` : "Coming soon"}</span>
                       </div>
                       <div className="lp-toc-focus">{u.focus} &middot; {u.thread}</div>
                     </div>

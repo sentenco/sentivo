@@ -86,6 +86,7 @@ import Unit11LetsReviewLesson from './Unit11LetsReviewLesson.jsx'
 import Unit11ShowWhatYouKnowLesson from './Unit11ShowWhatYouKnowLesson.jsx'
 import Unit11TestLesson from './Unit11TestLesson.jsx'
 import MorningTimeLesson from './MorningTimeLesson.jsx'
+import SchoolSubjectsLesson from './SchoolSubjectsLesson.jsx'
 import AfternoonAndNightLesson from './AfternoonAndNightLesson.jsx'
 import MyWholeDayLesson from './MyWholeDayLesson.jsx'
 import Unit12LetsReviewLesson from './Unit12LetsReviewLesson.jsx'
@@ -377,6 +378,7 @@ createRoot(document.getElementById('root')).render(
             <Route path="/library/curriculum/A1/unit/12/lesson/4" element={<Unit12LetsReviewLesson />} />
             <Route path="/library/curriculum/A1/unit/12/lesson/5" element={<Unit12ShowWhatYouKnowLesson />} />
             <Route path="/library/curriculum/A1/unit/12/lesson/6" element={<Unit12TestLesson />} />
+            <Route path="/library/curriculum/A2/unit/1/lesson/1" element={<SchoolSubjectsLesson />} />
             <Route path="/library/customized-lessons/real-estate-vocabulary" element={<RealEstateVocabLesson />} />
             <Route path="/library/customized-lessons/real-estate-vocabulary/guide" element={<RealEstateVocabGuide />} />
             <Route path="/library/customized-lessons/be-verbs-and-will" element={<BeWillGrammarLesson />} />
