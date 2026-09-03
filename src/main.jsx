@@ -300,6 +300,8 @@ createRoot(document.getElementById('root')).render(
             <Route path="/" element={<Library />} />
             <Route path="/library" element={<Library />} />
             <Route path="/library/curriculum" element={<Library />} />
+            <Route path="/library/curriculum/teens/:level" element={<Library />} />
+            <Route path="/library/curriculum/adults/:level" element={<Library />} />
             <Route path="/library/curriculum/:level" element={<Library />} />
             <Route path="/library/curriculum/:level/:track" element={<Library />} />
             <Route path="/library/curriculum/:level/unit/:unitNum" element={<Library />} />

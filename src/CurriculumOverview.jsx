@@ -1,45 +1,34 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { TEENS_LEVELS } from "./teensCurriculumData";
+import { ADULTS_LEVELS } from "./adultsCurriculumData";
 
-const LEVELS = [
-  {
+const KIDS_LEVELS = {
+  A1: {
     code: "A1",
     name: "Discover",
     tag: "Start here",
     accent: "coral",
     description: "Letters, phonics, and the first words and phrases to say hello, count, and talk about everyday life.",
   },
-  {
+  A2: {
     code: "A2",
     name: "Soar",
     tag: "Next step",
     accent: "navy",
     description: "Longer sentences, more tenses, and the independence to handle everyday situations with confidence.",
   },
-];
+};
 
 const AUDIENCES = [
-  { id: "kids", label: "Kids", age: "6–12" },
-  { id: "teens", label: "Teens", age: "13–17" },
-  { id: "adults", label: "Adults", age: "18+" },
+  { id: "kids", label: "Kids", age: "6–12", kicker: "Kids track · Ages 6 to 12", levels: KIDS_LEVELS },
+  { id: "teens", label: "Teens", age: "13–17", kicker: "Teens track · Ages 13 to 17", levels: TEENS_LEVELS },
+  { id: "adults", label: "Adults", age: "18+", kicker: "Adults track · Ages 18+", levels: ADULTS_LEVELS },
 ];
-
-const SOON = {
-  teens: {
-    kicker: "Teens track",
-    title: "A dedicated Teens foundation is on the way",
-    desc: "Two full levels are already mapped out: 24 units and 144 lessons, paced and worded for teenage learners. Building starts once the current curriculum work wraps up.",
-    chips: ["Level 1 · 12 units", "Level 2 · 12 units"],
-  },
-  adults: {
-    kicker: "Adults track",
-    title: "Groundwork and Structure are already planned",
-    desc: "24 units and 144 lessons, written fresh for adult beginners, not adapted from the Kids course. Building starts once the current curriculum work wraps up.",
-    chips: ["A1 · Groundwork", "A2 · Structure"],
-  },
-};
 
 export default function CurriculumOverview({ onSelectLevel }) {
   const [audience, setAudience] = useState("kids");
+  const navigate = useNavigate();
 
   useEffect(() => {
     const styleId = "co-styles";
@@ -51,7 +40,16 @@ export default function CurriculumOverview({ onSelectLevel }) {
     document.head.appendChild(tag);
   }, []);
 
-  const soon = SOON[audience];
+  const current = AUDIENCES.find((a) => a.id === audience) || AUDIENCES[0];
+  const levels = [current.levels.A1, current.levels.A2];
+
+  function openLevel(code) {
+    if (audience === "kids") {
+      onSelectLevel && onSelectLevel(code);
+    } else {
+      navigate(`/library/curriculum/${audience}/${code}`);
+    }
+  }
 
   return (
     <div className="co-wrap">
@@ -72,70 +70,44 @@ export default function CurriculumOverview({ onSelectLevel }) {
           ))}
         </div>
 
-        {audience === "kids" ? (
-          <>
-            <div className="co-hero-band">
-              <div className="co-hero-kicker-row">
-                <span className="co-hero-rule" />
-                <span className="co-hero-kicker">Kids track · Ages 6 to 12</span>
-                <span className="co-hero-rule" />
-              </div>
-              <h1 className="co-title">Curriculum</h1>
-              <div className="co-stat-row">
-                <div className="co-stat"><div className="co-stat-num co-stat-num--coral">2</div><div className="co-stat-label">Levels</div></div>
-                <div className="co-stat"><div className="co-stat-num co-stat-num--navy">24</div><div className="co-stat-label">Units</div></div>
-                <div className="co-stat"><div className="co-stat-num co-stat-num--coral">144</div><div className="co-stat-label">Lessons</div></div>
-              </div>
-            </div>
+        <div className={`co-hero-band ${audience !== "kids" ? "co-hero-band--navy" : ""}`}>
+          <div className="co-hero-kicker-row">
+            <span className="co-hero-rule" />
+            <span className={`co-hero-kicker ${audience !== "kids" ? "co-hero-kicker--navy" : ""}`}>{current.kicker}</span>
+            <span className="co-hero-rule" />
+          </div>
+          <h1 className="co-title">Curriculum</h1>
+          <div className="co-stat-row">
+            <div className="co-stat"><div className="co-stat-num co-stat-num--coral">2</div><div className="co-stat-label">Levels</div></div>
+            <div className="co-stat"><div className="co-stat-num co-stat-num--navy">24</div><div className="co-stat-label">Units</div></div>
+            <div className="co-stat"><div className="co-stat-num co-stat-num--coral">144</div><div className="co-stat-label">Lessons</div></div>
+          </div>
+        </div>
 
-            <div className="co-levels-grid">
-              {LEVELS.map((lv) => (
-                <div
-                  key={lv.code}
-                  className={`co-level-card co-level-card--${lv.accent}`}
-                  onClick={() => onSelectLevel && onSelectLevel(lv.code)}
-                  role="button"
-                  tabIndex={0}
-                  onKeyDown={(e) => e.key === "Enter" && onSelectLevel && onSelectLevel(lv.code)}
-                >
-                  <span className="co-level-watermark">{lv.code}</span>
-                  <div className="co-level-top">
-                    <div className="co-level-code">{lv.code}</div>
-                    <span className="co-level-tag">{lv.tag}</span>
-                  </div>
-                  <div className="co-level-name">{lv.name}</div>
-                  <p className="co-level-desc">{lv.description}</p>
-                  <div className="co-level-foot">
-                    <span className="co-level-units"><b>12</b> units</span>
-                    <span className="co-level-cta">View curriculum &rarr;</span>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </>
-        ) : (
-          <>
-            <div className="co-hero-band co-hero-band--navy">
-              <div className="co-hero-kicker-row">
-                <span className="co-hero-rule" />
-                <span className="co-hero-kicker co-hero-kicker--navy">{soon.kicker}</span>
-                <span className="co-hero-rule" />
+        <div className="co-levels-grid">
+          {levels.map((lv) => (
+            <div
+              key={lv.code}
+              className={`co-level-card co-level-card--${lv.accent}`}
+              onClick={() => openLevel(lv.code)}
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e) => e.key === "Enter" && openLevel(lv.code)}
+            >
+              <span className="co-level-watermark">{lv.code}</span>
+              <div className="co-level-top">
+                <div className="co-level-code">{lv.code}</div>
+                <span className="co-level-tag">{lv.tag}</span>
               </div>
-              <h1 className="co-title">Curriculum</h1>
-            </div>
-
-            <div className="co-soon-panel">
-              <span className="co-soon-badge">Coming soon</span>
-              <h2 className="co-soon-title">{soon.title}</h2>
-              <p className="co-soon-desc">{soon.desc}</p>
-              <div className="co-soon-chips">
-                {soon.chips.map((c) => (
-                  <span key={c} className="co-soon-chip">{c}</span>
-                ))}
+              <div className="co-level-name">{lv.name}</div>
+              <p className="co-level-desc">{lv.description}</p>
+              <div className="co-level-foot">
+                <span className="co-level-units"><b>12</b> units</span>
+                <span className="co-level-cta">View curriculum &rarr;</span>
               </div>
             </div>
-          </>
-        )}
+          ))}
+        </div>
       </div>
     </div>
   );
@@ -261,20 +233,4 @@ const styles = `
 .co-level-cta { font-size: 12.5px; font-weight: 700; display: inline-flex; align-items: center; gap: 5px; }
 .co-level-card--coral .co-level-cta { color: #FF6B4A; }
 .co-level-card--navy .co-level-cta { color: #1B2A4A; }
-
-.co-soon-panel {
-  background: #fff; border: 1.5px dashed #EDE6F4; border-radius: 18px;
-  padding: 52px 40px; text-align: center;
-}
-.co-soon-badge {
-  display: inline-block; font-size: 10.5px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase;
-  color: #A6A2C0; background: #F7F5FB; padding: 5px 14px; border-radius: 999px; margin-bottom: 16px;
-}
-.co-soon-title { font-family: 'Source Serif 4', serif; font-weight: 600; font-size: 22px; color: #1B2A4A; margin: 0 0 10px; }
-.co-soon-desc { font-size: 13.5px; color: #6B6E96; line-height: 1.65; max-width: 460px; margin: 0 auto; }
-.co-soon-chips { display: flex; justify-content: center; gap: 12px; margin-top: 26px; flex-wrap: wrap; }
-.co-soon-chip {
-  font-family: 'Source Serif 4', serif; font-weight: 600; font-size: 13px; color: #6B6E96;
-  background: #F7F5FB; border: 1px solid #EDE6F4; border-radius: 10px; padding: 9px 18px;
-}
 `;

@@ -6,6 +6,7 @@ import ProfileSettings from "./ProfileSettings.jsx";
 import { supabase } from "./supabaseClient";
 import { timeAgo } from "./slideDeckTypes";
 import CurriculumRouter from "./CurriculumRouter";
+import TrackLevelPage from "./TrackLevelPage";
 import SparkHub from "./SparkHub";
 import ArticleReader from "./ArticleReader.jsx";
 import ImagePlaceholder from "./slides/ImagePlaceholder";
@@ -1221,6 +1222,8 @@ export default function Library() {
   const location = useLocation();
   const params = useParams();
   const isCurriculum = location.pathname.startsWith("/library/curriculum");
+  const isTeensCurriculum = location.pathname.startsWith("/library/curriculum/teens/");
+  const isAdultsCurriculum = location.pathname.startsWith("/library/curriculum/adults/");
   const curriculumLevel = params.level || null;
   const curriculumTrack = params.track || null;
   const curriculumUnit = params.unitNum || null;
@@ -1705,26 +1708,28 @@ export default function Library() {
           </div>
         </div>
 
-        <div className="gc-sections">
-          <button
-            className={`gc-sec-tab ${!isCurriculum && !isArticleReader && !isSpark && category === "All" ? "is-active" : ""}`}
-            onClick={() => changeCategory("All")}
-          >
-            Homeroom
-          </button>
-          {CATEGORIES.map((cat) => (
+        <div className="gc-navbar">
+          <div className="gc-sections">
             <button
-              key={cat}
-              className={`gc-sec-tab ${!isCurriculum && (isArticleReader ? cat === "Articles" : category === cat) ? "is-active" : ""}`}
-              onClick={() => changeCategory(cat)}
+              className={`gc-sec-tab ${!isCurriculum && !isArticleReader && !isSpark && category === "All" ? "is-active" : ""}`}
+              onClick={() => changeCategory("All")}
             >
-              {cat}
+              Homeroom
             </button>
-          ))}
-        </div>
+            {CATEGORIES.map((cat) => (
+              <button
+                key={cat}
+                className={`gc-sec-tab ${!isCurriculum && (isArticleReader ? cat === "Articles" : category === cat) ? "is-active" : ""}`}
+                onClick={() => changeCategory(cat)}
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
 
-        <div className="gc-editions">
-          <div className="gc-editions-group">
+          <div className="gc-nav-divider" />
+
+          <div className="gc-editions">
             <a href="/library/spark" className={`gc-ed-spark ${isSpark ? "is-active" : ""}`}>
               <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z"/></svg>
               Spark Class
@@ -1741,7 +1746,7 @@ export default function Library() {
               {["A1", "A2"].map((lvl) => (
                 <button
                   key={lvl}
-                  className={`gc-ed-tab ${isCurriculum && curriculumLevel === lvl ? "is-active" : ""}`}
+                  className={`gc-ed-tab ${isCurriculum && !isTeensCurriculum && !isAdultsCurriculum && curriculumLevel === lvl ? "is-active" : ""}`}
                   onClick={() => goToSidebar("curriculum", lvl)}
                   title={{ "A1": "A1 — Beginner", "A2": "A2 — Elementary" }[lvl]}
                 >
@@ -1769,6 +1774,18 @@ export default function Library() {
       ) : isSpark ? (
         <div className="content" style={{ padding: 0, maxWidth: "100%", overflow: "auto" }}>
           <SparkHub />
+        </div>
+      ) : isTeensCurriculum || isAdultsCurriculum ? (
+        <div className="content" style={{ padding: 0, maxWidth: "100%", overflow: "auto" }}>
+          {plan === "pro_plus" ? (
+            <TrackLevelPage
+              audience={isTeensCurriculum ? "teens" : "adults"}
+              level={curriculumLevel}
+              onBack={() => navigate("/library/curriculum")}
+            />
+          ) : (
+            <CurriculumLockedFeature navigate={navigate} />
+          )}
         </div>
       ) : isCurriculum ? (
         <div className="content" style={{ padding: 0, maxWidth: "100%", overflow: "auto" }}>
@@ -2162,60 +2179,58 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .gc-search input::placeholder { color: #9B9382; }
 .gc-btn { font-family: 'Quicksand', sans-serif; font-size: 13.5px; font-weight: 700; padding: 8px 18px; border-radius: 999px; border: 1.5px solid var(--ink); color: var(--ink); background: transparent; cursor: pointer; text-decoration: none; }
 .gc-btn.primary { background: var(--ink); color: var(--card); }
-.gc-sections { display: flex; align-items: center; justify-content: center; gap: 0; padding: 4px 40px; font-family: 'Quicksand', sans-serif; overflow-x: auto; border-bottom: 1px solid var(--hair); }
+.gc-navbar { display: flex; flex-direction: column; padding: 6px 40px; gap: 2px; border-bottom: 1px solid var(--hair); font-family: 'Quicksand', sans-serif; }
+
+.gc-sections { display: flex; align-items: center; justify-content: center; gap: 0; overflow-x: auto; }
 .gc-sec-tab {
-  font-size: 13px;
+  font-size: 12.5px;
   font-weight: 800;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
-  padding: 8px 18px;
+  padding: 6px 16px;
   color: var(--ink);
   border: none;
-  border-bottom: 3px solid transparent;
   white-space: nowrap;
   background: none;
   cursor: pointer;
   text-decoration: none;
+  border-radius: 999px;
 }
-.gc-sec-tab:not(:last-child) { border-right: 1px solid rgba(34,58,51,0.12); }
 .gc-sec-tab:hover { color: var(--coral); }
-.gc-sec-tab.is-active { border-bottom-color: transparent; background: var(--ink); color: #FFFFFF; border-radius: 999px; }
+.gc-sec-tab.is-active { background: var(--ink); color: #FFFFFF; }
 
-.gc-editions { display: flex; align-items: center; justify-content: center; padding: 9px 40px; border-bottom: 1px solid var(--hair); font-family: 'Quicksand', sans-serif; background: rgba(34,58,51,0.035); }
-.gc-editions-group {
-  display: inline-flex; align-items: center; gap: 7px; padding: 5px;
-  background: var(--card); border: 1px solid var(--hair); border-radius: 14px;
-  box-shadow: 0 2px 10px rgba(27,42,74,0.05);
-}
-.gc-editions-sep { width: 1px; height: 20px; background: var(--hair); flex-shrink: 0; }
+.gc-nav-divider { height: 1px; background: var(--hair); margin: 1px 0; }
+
+.gc-editions { display: flex; align-items: center; justify-content: center; gap: 4px; padding: 4px 0 2px; flex-wrap: wrap; }
+.gc-editions-sep { width: 1px; height: 18px; background: var(--hair); flex-shrink: 0; }
 .gc-ed-spark {
-  display: inline-flex; align-items: center; gap: 6px;
-  font-size: 12px; font-weight: 800; letter-spacing: 0.02em; padding: 6px 13px;
-  border-radius: 10px; text-decoration: none;
+  display: inline-flex; align-items: center; gap: 5px;
+  font-size: 11.5px; font-weight: 800; letter-spacing: 0.02em; padding: 5px 12px;
+  border-radius: 999px; text-decoration: none;
   color: var(--muted); background: none;
 }
 .gc-ed-spark:hover { background: rgba(255,107,74,0.08); color: var(--coral); }
 .gc-ed-spark.is-active { background: var(--coral); color: #fff; }
 .gc-ed-curr {
-  display: inline-flex; align-items: center; gap: 6px;
-  font-size: 12px; font-weight: 800; letter-spacing: 0.02em; padding: 6px 13px;
-  border-radius: 10px; cursor: pointer;
+  display: inline-flex; align-items: center; gap: 5px;
+  font-size: 11.5px; font-weight: 800; letter-spacing: 0.02em; padding: 5px 12px;
+  border-radius: 999px; cursor: pointer;
   color: var(--muted); background: none; border: none;
 }
 .gc-ed-curr:hover { background: rgba(27,42,74,0.06); color: #1B2A4A; }
 .gc-ed-curr.is-active { background: #1B2A4A; color: #fff; }
 .gc-ed-custom {
-  display: inline-flex; align-items: center; gap: 6px;
-  font-size: 12px; font-weight: 800; letter-spacing: 0.02em; padding: 6px 13px;
-  border-radius: 10px; cursor: pointer;
+  display: inline-flex; align-items: center; gap: 5px;
+  font-size: 11.5px; font-weight: 800; letter-spacing: 0.02em; padding: 5px 12px;
+  border-radius: 999px; cursor: pointer;
   color: var(--muted); background: none; border: none;
 }
 .gc-ed-custom:hover { background: rgba(27,42,74,0.06); color: #1B2A4A; }
 .gc-ed-custom.is-active { background: #1B2A4A; color: #fff; }
-.gc-editions-levels { display: inline-flex; align-items: center; gap: 2px; background: rgba(27,42,74,0.045); border-radius: 10px; padding: 3px; }
-.gc-ed-tab { font-size: 11.5px; font-weight: 800; letter-spacing: 0.02em; padding: 5px 12px; border-radius: 8px; color: var(--muted); background: none; border: none; cursor: pointer; }
+.gc-editions-levels { display: inline-flex; align-items: center; gap: 2px; background: rgba(27,42,74,0.045); border-radius: 999px; padding: 2px; }
+.gc-ed-tab { font-size: 11px; font-weight: 800; letter-spacing: 0.02em; padding: 4px 11px; border-radius: 999px; color: var(--muted); background: none; border: none; cursor: pointer; }
 .gc-ed-tab:hover { color: var(--coral); }
-.gc-ed-tab.is-active { background: var(--card); color: var(--ink); box-shadow: 0 1px 4px rgba(27,42,74,0.12); }
+.gc-ed-tab.is-active { background: var(--card); color: var(--ink); box-shadow: 0 1px 3px rgba(27,42,74,0.12); }
 
 /* ── Today: teacher dashboard ── */
 .gc-dashboard {
@@ -2362,14 +2377,14 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 
 /* ── Responsive: narrower / non-maximized browser windows ── */
 @media (max-width: 1300px) {
-  .gc-topbar, .gc-sections, .gc-editions { padding-left: 20px; padding-right: 20px; }
+  .gc-topbar, .gc-navbar { padding-left: 20px; padding-right: 20px; }
   .gc-dashboard { max-width: 720px; }
-  .gc-sec-tab { font-size: 13px; letter-spacing: 0.04em; padding: 8px 14px; }
+  .gc-sec-tab { font-size: 12px; letter-spacing: 0.03em; padding: 6px 12px; }
 }
 @media (max-width: 900px) {
-  .gc-topbar, .gc-sections, .gc-editions { padding-left: 14px; padding-right: 14px; }
+  .gc-topbar, .gc-navbar { padding-left: 14px; padding-right: 14px; }
   .gc-search input { width: 130px; }
-  .gc-sec-tab { font-size: 10.5px; letter-spacing: 0.02em; padding: 7px 8px; }
+  .gc-sec-tab { font-size: 10.5px; letter-spacing: 0.02em; padding: 6px 8px; }
 }
 
 .notif-wrap { position: relative; }
