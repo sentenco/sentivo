@@ -101,7 +101,7 @@ function CategoryLockedFeature({ category, navigate }) {
     <div className="cat-locked">
       <span className="cat-locked-icon"><LockIcon /></span>
       <p className="cat-locked-eyebrow">Pro feature</p>
-      <h2 className="cat-locked-title">{category} is part of Sentivo Pro</h2>
+      <h2 className="cat-locked-title">{category === "Customized Lessons" ? "Custom Lessons" : category} is part of Sentivo Pro</h2>
       <p className="cat-locked-desc">
         Upgrade to unlock every category, Speaking, Reading, Grammar, Vocabulary, Writing, and Listening, plus Teacher's Desk without the daily unlock.
       </p>
@@ -1760,7 +1760,7 @@ export default function Library() {
               onClick={() => changeCategory("Customized Lessons")}
             >
               <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.2 5.8L20 9l-4.6 4 1.4 6-4.8-3.4L7.2 19l1.4-6L4 9l5.8-1.2z" /></svg>
-              Customized Lessons
+              Custom Lessons
             </button>
           </div>
         </div>
@@ -1913,7 +1913,7 @@ export default function Library() {
             <div className="cl-hero">
               <div className="cl-hero-kicker-row">
                 <span className="cl-hero-rule" />
-                <span className="cl-hero-kicker">Sentivo &middot; Customized Lessons</span>
+                <span className="cl-hero-kicker">Sentivo &middot; Custom Lessons</span>
                 <span className="cl-hero-rule" />
               </div>
               <h1 className="cl-title">Custom Lessons</h1>
