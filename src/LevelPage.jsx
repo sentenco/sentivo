@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { LEVEL_DATA, UNITS, READY_UNITS } from "./kidsCurriculumData";
 
-const READY_LESSONS = { A1: { 1: [1, 2, 3, 4, 5, 6], 2: [1, 2, 3, 4, 5, 6], 3: [1, 2, 3, 4, 5, 6], 4: [1, 2, 3, 4, 5, 6], 5: [1, 2, 3, 4, 5, 6], 6: [1, 2, 3, 4, 5, 6], 7: [1, 2, 3, 4, 5, 6], 8: [1, 2, 3, 4, 5, 6] } };
+const READY_LESSONS = { A1: { 1: [1, 2, 3, 4, 5, 6], 2: [1, 2, 3, 4, 5, 6], 3: [1, 2, 3, 4, 5, 6], 4: [1, 2, 3, 4, 5, 6], 5: [1, 2, 3, 4, 5, 6], 6: [1, 2, 3, 4, 5, 6], 7: [1, 2, 3, 4, 5, 6], 8: [1, 2, 3, 4, 5, 6], 9: [1, 2, 3, 4, 5, 6] } };
 
 function openPopup(path, name, w, h) {
   const screenW = window.screen.availWidth || 1600;
