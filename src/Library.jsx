@@ -1909,13 +1909,16 @@ export default function Library() {
             </div>
           </div>
         ) : category === "Customized Lessons" ? (
-          <div className="dyn-landing dyn-landing--custom">
-            <div className="dyn-landing-hero">
-              <span className="dyn-landing-eyebrow">Sentivo · Customized Lessons</span>
-              <h1><span className="dyn-landing-pill">Custom Lessons</span></h1>
+          <div className="cl-page">
+            <div className="cl-hero">
+              <div className="cl-hero-kicker-row">
+                <span className="cl-hero-rule" />
+                <span className="cl-hero-kicker">Sentivo &middot; Customized Lessons</span>
+                <span className="cl-hero-rule" />
+              </div>
+              <h1 className="cl-title">Custom Lessons</h1>
               <p className="cl-sub">A lesson built around one student's real need: their job, their upcoming trip, the exact words they asked for, in the language they actually speak.</p>
             </div>
-            <div className="dyn-landing-row"></div>
 
             <div className="cl-cta">
               <div className="cl-cta-text">
@@ -1928,19 +1931,22 @@ export default function Library() {
               </button>
             </div>
 
-            <div className="cl-gallery-hd">Published custom lessons</div>
-            <div className="cl-tabs">
-              {["All", ...Array.from(new Set(CUSTOM_LESSONS.map((l) => l.tag)))].map((t) => (
-                <button key={t} type="button" className={`cl-tab ${clTab === t ? "is-active" : ""}`} onClick={() => setClTab(t)}>
-                  {t}
-                </button>
-              ))}
+            <div className="cl-gallery-hd-row">
+              <h2 className="cl-gallery-hd">Published custom lessons</h2>
+              <div className="cl-tabs">
+                {["All", ...Array.from(new Set(CUSTOM_LESSONS.map((l) => l.tag)))].map((t) => (
+                  <button key={t} type="button" className={`cl-tab ${clTab === t ? "is-active" : ""}`} onClick={() => setClTab(t)}>
+                    {t}
+                  </button>
+                ))}
+              </div>
             </div>
             <div className="cl-gallery-grid">
               {CUSTOM_LESSONS.filter((l) => clTab === "All" || l.tag === clTab).map((l) => {
                 const path = `/library/customized-lessons/${l.slug}`;
+                const accent = l.tag === "Vocabulary" ? "coral" : "navy";
                 return (
-                  <div key={l.slug} className="cl-lesson-card">
+                  <div key={l.slug} className={`cl-lesson-card cl-lesson-card--${accent}`}>
                     <div className="cl-lesson-body">
                       <span className="cl-lesson-tag">{l.tag}</span>
                       <h3 className="cl-lesson-title">{l.title}</h3>
@@ -2200,6 +2206,8 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .gc-sec-tab.is-active { background: var(--ink); color: #FFFFFF; }
 
 .gc-nav-divider { height: 1px; background: var(--hair); margin: 1px 0; }
+.gc-sec-tab, .gc-ed-spark, .gc-ed-curr, .gc-ed-custom, .gc-ed-tab { outline: none; }
+.gc-sec-tab:focus-visible, .gc-ed-spark:focus-visible, .gc-ed-curr:focus-visible, .gc-ed-custom:focus-visible, .gc-ed-tab:focus-visible { box-shadow: 0 0 0 2px rgba(255,107,74,0.35); }
 
 .gc-editions { display: flex; align-items: center; justify-content: center; gap: 4px; padding: 4px 0 2px; flex-wrap: wrap; }
 .gc-editions-sep { width: 1px; height: 18px; background: var(--hair); flex-shrink: 0; }
@@ -2565,9 +2573,6 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .dyn-landing--writing {
   background: linear-gradient(180deg, #F3FAF8 0%, #E4F1EC 100%);
 }
-.dyn-landing--custom {
-  background: linear-gradient(180deg, #F2F4FA 0%, #E4E9F5 100%);
-}
 .dyn-landing--listen {
   background: linear-gradient(180deg, #F0F6F4 0%, #DEF0EA 100%);
 }
@@ -2582,7 +2587,6 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 }
 .dyn-landing--vocab .dyn-landing-eyebrow { color: #96721B; }
 .dyn-landing--writing .dyn-landing-eyebrow { color: #3F7A4E; }
-.dyn-landing--custom .dyn-landing-eyebrow { color: #1B2A4A; }
 .dyn-landing--listen .dyn-landing-eyebrow { color: #157A5A; }
 .dyn-landing-pill {
   display: inline-flex;
@@ -2598,17 +2602,14 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 }
 .dyn-landing--vocab .dyn-landing-pill { background: rgba(184,140,26,0.16); }
 .dyn-landing--writing .dyn-landing-pill { background: rgba(63,122,78,0.14); }
-.dyn-landing--custom .dyn-landing-pill { background: rgba(27,42,74,0.1); }
 .dyn-landing--listen .dyn-landing-pill { background: rgba(21,122,90,0.14); color: #157A5A; }
 .dyn-landing-row { position: relative; height: 2px; width: 100%; max-width: 1040px; margin: clamp(22px, 2.8vw, 32px) 0; }
 .dyn-landing--vocab .dyn-landing-row { background: #E8D6A0; }
 .dyn-landing--writing .dyn-landing-row { background: #C3DCC0; }
-.dyn-landing--custom .dyn-landing-row { background: #C7D0E5; }
 .dyn-landing--listen .dyn-landing-row { background: #B7DED0; }
 .dyn-landing-row::before, .dyn-landing-row::after { content: ""; position: absolute; top: -3px; width: 8px; height: 8px; border-radius: 50%; }
 .dyn-landing--vocab .dyn-landing-row::before, .dyn-landing--vocab .dyn-landing-row::after { background: #B88C1A; }
 .dyn-landing--writing .dyn-landing-row::before, .dyn-landing--writing .dyn-landing-row::after { background: #3F7A4E; }
-.dyn-landing--custom .dyn-landing-row::before, .dyn-landing--custom .dyn-landing-row::after { background: #1B2A4A; }
 .dyn-landing--listen .dyn-landing-row::before, .dyn-landing--listen .dyn-landing-row::after { background: #157A5A; }
 .dyn-landing-row::before { left: 0; }
 .dyn-landing-row::after { right: 0; }
@@ -2620,59 +2621,82 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .dyn-landing-soon-title { font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 20px; color: #2B2A4A; margin: 0 0 8px; }
 .dyn-landing-soon-desc { font-family: 'Quicksand', sans-serif; font-size: 14px; color: #6B6580; margin: 0; }
 
-.cl-sub { font-family: 'Quicksand', sans-serif; font-size: 14px; font-weight: 600; color: #5A6B92; max-width: 560px; margin: 10px auto 0; line-height: 1.6; }
+/* ---------- Customized Lessons landing ---------- */
+.cl-page { width: 100%; max-width: 1040px; margin: 0 auto; padding: clamp(10px, 1.6vw, 18px) 0 40px; }
+
+.cl-hero { text-align: center; margin-bottom: 28px; }
+.cl-hero-kicker-row { display: flex; align-items: center; justify-content: center; gap: 14px; margin-bottom: 8px; }
+.cl-hero-rule { flex: 0 1 48px; height: 1px; background: rgba(27,42,74,0.18); }
+.cl-hero-kicker { font-family: 'Source Serif 4', serif; font-weight: 700; font-size: 10.5px; letter-spacing: 0.2em; text-transform: uppercase; color: #E0502F; }
+.cl-title {
+  font-family: 'Playfair Display', serif; font-weight: 900; font-size: clamp(26px, 3.6vw, 34px);
+  letter-spacing: 0.01em; text-transform: uppercase; color: #1B2A4A; margin: 0 0 12px; line-height: 1;
+}
+.cl-sub { font-family: 'Inter', sans-serif; font-size: 13.5px; font-weight: 500; color: #6B6E96; max-width: 560px; margin: 0 auto; line-height: 1.6; }
+
 .cl-cta {
   display: flex; align-items: center; justify-content: space-between; gap: 24px;
-  background: #fff; border: 1px solid #DDE3F0; border-radius: 18px;
-  padding: 24px 28px; margin: 0 auto 34px; max-width: 900px;
-  box-shadow: 0 10px 26px rgba(27,42,74,0.08);
+  background: #fff; border: 1px solid #EDE6F4; border-left: 5px solid #FF6B4A; border-radius: 16px;
+  padding: 24px 28px; margin: 0 0 34px;
+  box-shadow: 0 4px 16px rgba(27,42,74,0.06);
 }
-.cl-cta-text h2 { font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 18px; color: #1B2A4A; margin: 0 0 6px; }
-.cl-cta-text p { font-family: 'Quicksand', sans-serif; font-size: 13px; font-weight: 600; color: #6B6580; margin: 0; max-width: 480px; line-height: 1.55; }
+.cl-cta-text h2 { font-family: 'Source Serif 4', serif; font-weight: 600; font-size: 18px; color: #1B2A4A; margin: 0 0 6px; }
+.cl-cta-text p { font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 500; color: #6B6E96; margin: 0; max-width: 480px; line-height: 1.55; }
 .cl-cta-btn {
   display: inline-flex; align-items: center; gap: 8px; flex-shrink: 0;
-  font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 13.5px; color: #fff;
+  font-family: 'Source Serif 4', serif; font-weight: 600; font-size: 13.5px; color: #fff;
   background: #FF6B4A; border: none; border-radius: 999px; padding: 12px 22px; cursor: pointer;
-  box-shadow: 0 6px 16px rgba(255,107,74,0.32);
+  box-shadow: 0 6px 16px rgba(255,107,74,0.28);
 }
 .cl-cta-btn:hover { background: #E0502F; }
-.cl-gallery-hd { font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 16px; color: #1B2A4A; max-width: 900px; margin: 0 auto 14px; }
 
-.cl-tabs { display: flex; flex-wrap: wrap; gap: 8px; max-width: 900px; margin: 0 auto 18px; }
+.cl-gallery-hd-row { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-bottom: 18px; }
+.cl-gallery-hd { font-family: 'Source Serif 4', serif; font-weight: 600; font-size: 18px; color: #1B2A4A; margin: 0; }
+
+.cl-tabs { display: flex; flex-wrap: wrap; gap: 6px; background: rgba(27,42,74,0.045); border-radius: 999px; padding: 4px; }
 .cl-tab {
-  font-family: 'Quicksand', sans-serif; font-weight: 700; font-size: 12.5px; color: #6B6580;
-  background: #fff; border: 1px solid #E4E8F2; border-radius: 999px; padding: 8px 16px; cursor: pointer;
+  font-family: 'Inter', sans-serif; font-weight: 700; font-size: 12px; color: #6B6E96;
+  background: none; border: none; border-radius: 999px; padding: 7px 15px; cursor: pointer;
 }
-.cl-tab:hover { border-color: #C7D0E5; }
-.cl-tab.is-active { background: #1B2A4A; border-color: #1B2A4A; color: #fff; }
+.cl-tab:hover { color: #1B2A4A; }
+.cl-tab.is-active { background: #fff; color: #1B2A4A; box-shadow: 0 1px 4px rgba(27,42,74,0.12); }
 
-.cl-gallery-grid {
-  display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px;
-  max-width: 900px; margin: 0 auto;
-}
+.cl-gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); gap: 18px; }
 .cl-lesson-card {
-  display: flex; flex-direction: column; background: #fff; border: 1px solid #E4E8F2; border-radius: 16px;
-  padding: 18px 18px 16px; box-shadow: 0 4px 14px rgba(27,42,74,0.06);
+  display: flex; flex-direction: column; background: #fff; border: 1px solid #EDE6F4; border-radius: 16px;
+  padding: 22px 22px 18px; position: relative; overflow: hidden;
+  box-shadow: 0 4px 16px rgba(27,42,74,0.06);
+  transition: transform 0.16s ease, box-shadow 0.16s ease;
 }
+.cl-lesson-card:hover { transform: translateY(-3px); box-shadow: 0 14px 28px rgba(27,42,74,0.1); }
+.cl-lesson-card::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 4px; }
+.cl-lesson-card--coral::before { background: #FF6B4A; }
+.cl-lesson-card--navy::before { background: #1B2A4A; }
 .cl-lesson-body { flex: 1; }
 .cl-lesson-tag {
-  display: inline-block; font-family: 'Quicksand', sans-serif; font-weight: 700; font-size: 10.5px;
-  letter-spacing: 0.06em; text-transform: uppercase; color: #FF6B4A; background: rgba(255,107,74,0.1);
-  border-radius: 999px; padding: 4px 10px; margin-bottom: 10px;
+  display: inline-block; font-family: 'Inter', sans-serif; font-weight: 700; font-size: 10px;
+  letter-spacing: 0.06em; text-transform: uppercase; border-radius: 999px; padding: 4px 10px; margin-bottom: 10px;
 }
-.cl-lesson-title { font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 17px; color: #1B2A4A; margin: 0 0 6px; }
-.cl-lesson-level { font-family: 'Quicksand', sans-serif; font-weight: 700; font-size: 11.5px; color: #6B6580; margin: 0 0 8px; }
-.cl-lesson-desc { font-family: 'Quicksand', sans-serif; font-size: 13px; font-weight: 600; color: #6B6580; line-height: 1.55; margin: 0; }
-.cl-lesson-actions { display: flex; gap: 8px; margin-top: 16px; }
+.cl-lesson-card--coral .cl-lesson-tag { color: #E0502F; background: #FFE6DD; }
+.cl-lesson-card--navy .cl-lesson-tag { color: #1B2A4A; background: #E7EAF3; }
+.cl-lesson-title { font-family: 'Source Serif 4', serif; font-weight: 600; font-size: 16.5px; color: #1B2A4A; margin: 0 0 5px; }
+.cl-lesson-level { font-family: 'Inter', sans-serif; font-weight: 700; font-size: 11px; color: #A6A2C0; margin: 0 0 8px; text-transform: uppercase; letter-spacing: 0.03em; }
+.cl-lesson-desc { font-family: 'Inter', sans-serif; font-size: 12.5px; font-weight: 500; color: #6B6E96; line-height: 1.55; margin: 0; }
+.cl-lesson-actions { display: flex; gap: 8px; margin-top: 18px; padding-top: 16px; border-top: 1px solid #EDE6F4; }
 .cl-lesson-guide, .cl-lesson-open {
   display: inline-flex; align-items: center; justify-content: center; gap: 6px;
-  font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 12.5px;
-  border-radius: 999px; padding: 9px 14px; cursor: pointer; border: none;
+  font-family: 'Source Serif 4', serif; font-weight: 600; font-size: 12px;
+  border-radius: 999px; padding: 8px 14px; cursor: pointer; border: none;
 }
-.cl-lesson-guide { background: rgba(27,42,74,0.08); color: #1B2A4A; }
-.cl-lesson-guide:hover { background: rgba(27,42,74,0.14); }
+.cl-lesson-guide { background: #F7F5FB; color: #6B6E96; }
+.cl-lesson-guide:hover { background: #EDE6F4; color: #1B2A4A; }
 .cl-lesson-open { flex: 1; background: #1B2A4A; color: #fff; }
 .cl-lesson-open:hover { background: #12203D; }
+
+@media (max-width: 640px) {
+  .cl-cta { flex-direction: column; align-items: flex-start; }
+  .cl-gallery-hd-row { flex-direction: column; align-items: flex-start; }
+}
 
 /* ---------- Speaking: The Fluency Clinic ---------- */
 .spklab-page {
