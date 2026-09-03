@@ -23,7 +23,7 @@ const ACCENT_COLORS = {
 // its route in main.jsx) as each one actually ships. Everything else stays
 // disabled/"Coming soon", same pattern as Kids' LevelPage.jsx.
 const READY_LESSONS = {
-  teens: { A1: { 1: [1] } },
+  teens: { A1: { 1: [1] }, A2: { 1: [1] } },
   adults: {},
 };
 
