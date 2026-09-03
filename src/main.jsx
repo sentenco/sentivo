@@ -87,6 +87,7 @@ import Unit11ShowWhatYouKnowLesson from './Unit11ShowWhatYouKnowLesson.jsx'
 import Unit11TestLesson from './Unit11TestLesson.jsx'
 import MorningTimeLesson from './MorningTimeLesson.jsx'
 import SchoolSubjectsLesson from './SchoolSubjectsLesson.jsx'
+import TeensSayHelloLesson from './TeensSayHelloLesson.jsx'
 import AfternoonAndNightLesson from './AfternoonAndNightLesson.jsx'
 import MyWholeDayLesson from './MyWholeDayLesson.jsx'
 import Unit12LetsReviewLesson from './Unit12LetsReviewLesson.jsx'
@@ -303,6 +304,7 @@ createRoot(document.getElementById('root')).render(
             <Route path="/library/curriculum" element={<Library />} />
             <Route path="/library/curriculum/teens/:level" element={<Library />} />
             <Route path="/library/curriculum/adults/:level" element={<Library />} />
+            <Route path="/library/curriculum/teens/A1/unit/1/lesson/1" element={<TeensSayHelloLesson />} />
             <Route path="/library/curriculum/:level" element={<Library />} />
             <Route path="/library/curriculum/:level/:track" element={<Library />} />
             <Route path="/library/curriculum/:level/unit/:unitNum" element={<Library />} />

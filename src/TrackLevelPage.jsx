@@ -19,6 +19,28 @@ const ACCENT_COLORS = {
   navy: { color: "#1B2A4A", light: "#E7EAF3" },
 };
 
+// Which lessons have a real player built -- add an entry here (and build
+// its route in main.jsx) as each one actually ships. Everything else stays
+// disabled/"Coming soon", same pattern as Kids' LevelPage.jsx.
+const READY_LESSONS = {
+  teens: { A1: { 1: [1] } },
+  adults: {},
+};
+
+function openLessonPopup(path) {
+  const screenW = window.screen.availWidth || 1600;
+  const screenH = window.screen.availHeight || 900;
+  const w = Math.min(780, screenW - 40);
+  const h = Math.min(620, screenH - 80);
+  const left = Math.max(0, Math.floor((screenW - w) / 2));
+  const top = Math.max(0, Math.floor((screenH - h) / 2));
+  window.open(
+    path,
+    "sentivoTrackLesson",
+    `width=${w},height=${h},left=${left},top=${top},toolbar=no,location=no,menubar=no,status=no,scrollbars=yes,resizable=yes`
+  );
+}
+
 export default function TrackLevelPage({ audience, level, onBack }) {
   const track = TRACKS[audience] || TRACKS.teens;
   const data = track.levels[level] || track.levels.A1;
@@ -121,16 +143,27 @@ export default function TrackLevelPage({ audience, level, onBack }) {
 
                   <div className="tlp-toc-panel">
                     <div className="tlp-toc-panel-inner">
-                      {u.lessons.map((l) => (
-                        <div key={l.num} className={`tlp-toc-lesson-row ${l.isTest ? "is-test" : ""}`}>
-                          <span className="tlp-toc-lesson-bullet">{l.isTest ? "T" : l.num}</span>
-                          <div className="tlp-toc-lesson-main">
-                            <span className="tlp-toc-lesson-title">{l.title}</span>
-                            <span className="tlp-toc-lesson-focus">{l.focus}</span>
+                      {u.lessons.map((l) => {
+                        const lessonReady = (((READY_LESSONS[audience] || {})[level] || {})[u.num] || []).includes(l.num);
+                        const lessonPath = `/library/curriculum/${audience}/${level}/unit/${u.num}/lesson/${l.num}`;
+                        return (
+                          <div key={l.num} className={`tlp-toc-lesson-row ${l.isTest ? "is-test" : ""} ${lessonReady ? "is-ready" : ""}`}>
+                            <span className="tlp-toc-lesson-bullet">{l.isTest ? "T" : l.num}</span>
+                            <div className="tlp-toc-lesson-main">
+                              <span className="tlp-toc-lesson-title">{l.title}</span>
+                              <span className="tlp-toc-lesson-focus">{l.focus}</span>
+                            </div>
+                            {lessonReady ? (
+                              <button type="button" className="tlp-toc-lesson-open" onClick={() => openLessonPopup(lessonPath)}>
+                                Open
+                                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                              </button>
+                            ) : (
+                              <span className="tlp-toc-lesson-tag">{l.isTest ? "Test" : "Lesson"}</span>
+                            )}
                           </div>
-                          <span className="tlp-toc-lesson-tag">{l.isTest ? "Test" : "Lesson"}</span>
-                        </div>
-                      ))}
+                        );
+                      })}
                     </div>
                   </div>
                 </li>
@@ -283,6 +316,14 @@ const styles = `
 .tlp-toc-lesson-focus { font-size: 11.5px; color: #6B6E96; }
 .tlp-toc-lesson-tag { font-size: 9px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; color: #C7A8B8; margin-left: auto; flex-shrink: 0; }
 .tlp-toc-lesson-row.is-test .tlp-toc-lesson-tag { color: #A87A1E; }
+.tlp-toc-lesson-row.is-ready:hover { background: #FFF9F7; }
+.tlp-toc-lesson-open {
+  display: inline-flex; align-items: center; gap: 4px; cursor: pointer; border: none;
+  font-family: 'Source Serif 4', serif; font-weight: 600; font-size: 11px;
+  color: #fff; background: #FF6B4A; border-radius: 999px; padding: 4px 11px;
+  margin-left: auto; flex-shrink: 0;
+}
+.tlp-toc-lesson-open:hover { background: #E0502F; }
 
 @media (max-width: 700px) {
   .tlp-stage { padding: 20px 18px 50px; }
