@@ -513,7 +513,7 @@ export const styles = `
   background-size: cover; background-repeat: no-repeat;
 }
 .slide--title { background-image: url('/curriculum/a1-shared/title-bg.jpg'); background-position: left center; }
-.slide--regular { background-image: url('/curriculum/a1-shared/slide-bg-v2.jpg'); background-position: bottom right; }
+.slide--regular { background-image: url('/curriculum/a1-shared/slide-bg-v3.jpg'); background-position: bottom right; }
 
 .close-btn { position: absolute; top: 14px; right: 14px; z-index: 4; width: 30px; height: 30px; border-radius: 50%; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; background: rgba(27,42,74,0.15); color: var(--navy); }
 
