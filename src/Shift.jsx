@@ -151,6 +151,21 @@ function HistoryModal({ rows, onClose }) {
   );
 }
 
+function ChainCompleteStage({ history, onContinue }) {
+  return (
+    <div className="sh-prompt-stage">
+      <span className="sh-prompt-eyebrow">Chain Complete</span>
+      <p className="sh-prompt-text">Nice work! Here's the conversation you just built. Read it over, then continue whenever you're ready.</p>
+      <div className="sh-chain-complete-history">
+        <HistoryLog rows={history} />
+      </div>
+      <button type="button" className="sh-choice-btn sh-choice-btn--good sh-continue-btn" onClick={onContinue}>
+        Continue to Unaided Retell →
+      </button>
+    </div>
+  );
+}
+
 function PromptStage({ eyebrow, prompt, ctaLabel, onContinue }) {
   return (
     <div className="sh-prompt-stage">
@@ -198,7 +213,7 @@ export default function Shift() {
     setHistory((prev) => [...prev, { q: question, a: answer }]);
     const next = chainIdx + 1;
     if (next >= lesson.chain.length) {
-      setStage("retell");
+      setStage("chainDone");
     } else {
       setChainIdx(next);
     }
@@ -220,7 +235,7 @@ export default function Shift() {
             <ProgressRow total={lesson.chain.length} doneCount={history.length} currentIdx={chainIdx} />
           )}
 
-          {stage !== "cover" && stage !== "chain" && history.length > 0 && (
+          {stage !== "cover" && stage !== "chain" && stage !== "chainDone" && history.length > 0 && (
             <div className="sh-review-row">
               <button type="button" className="sh-review-btn" onClick={() => setShowHistory(true)}>
                 💬 Review your conversation
@@ -239,6 +254,10 @@ export default function Shift() {
 
           {stage === "chain" && (
             <ChainStage lesson={lesson} chainIdx={chainIdx} history={history} onAdvance={advanceChain} />
+          )}
+
+          {stage === "chainDone" && (
+            <ChainCompleteStage history={history} onContinue={() => setStage("retell")} />
           )}
 
           {stage === "retell" && (
@@ -374,6 +393,7 @@ const CSS = `
 .sh-hist-modal-body { overflow-y: auto; padding: 4px 0 12px; }
 
 .sh-prompt-stage { padding: 26px 26px 24px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 14px; }
+.sh-chain-complete-history { width: 100%; max-height: 300px; overflow-y: auto; text-align: left; }
 .sh-prompt-eyebrow { font-size: 11px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: #8A6D1F; background: #FFF4D6; border-radius: 999px; padding: 4px 14px; }
 .sh-prompt-text { font-family: 'Fraunces', serif; font-weight: 600; font-size: 19px; line-height: 1.45; color: #1B2A4A; max-width: 460px; margin: 0; }
 .sh-continue-btn { margin-top: 4px; }
