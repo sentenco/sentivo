@@ -155,7 +155,6 @@ function ChainCompleteStage({ history, onContinue }) {
   return (
     <div className="sh-prompt-stage">
       <span className="sh-prompt-eyebrow">Chain Complete</span>
-      <p className="sh-prompt-text">Nice work! Here's the conversation you just built. Read it over, then continue whenever you're ready.</p>
       <div className="sh-chain-complete-history">
         <HistoryLog rows={history} />
       </div>
