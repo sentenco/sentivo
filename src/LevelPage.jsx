@@ -45,7 +45,7 @@ export default function LevelPage({ level = "A1" }) {
       <div className="lp-stage">
         <div className="lp-topbar">
           <div className="lp-breadcrumb">
-            Kids Curriculum <span className="lp-crumb-sep">&rsaquo;</span> <span style={{ color: data.color }}>{level} &middot; {data.name}</span>
+            Curriculum <span className="lp-crumb-sep">&rsaquo;</span> <span style={{ color: data.color }}>{level} &middot; {data.name}</span>
           </div>
         </div>
 
@@ -112,7 +112,7 @@ export default function LevelPage({ level = "A1" }) {
           <div className="lp-toc-header" style={{ background: data.color }}>
             <div className="lp-toc-eyebrow-row">
               <span className="lp-toc-eyebrow-rule" />
-              <span className="lp-toc-eyebrow">Kids Curriculum &middot; {level} {data.name}</span>
+              <span className="lp-toc-eyebrow">Curriculum &middot; {level} {data.name}</span>
             </div>
             <h2 className="lp-toc-title">Table of Contents</h2>
             <p className="lp-toc-sub">12 units &middot; 72 lessons</p>

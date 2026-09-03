@@ -1724,34 +1724,40 @@ export default function Library() {
         </div>
 
         <div className="gc-editions">
-          <a href="/library/spark" className={`gc-ed-spark ${isSpark ? "is-active" : ""}`}>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z"/></svg>
-            Spark Class
-          </a>
-          <button
-            className={`gc-ed-kids ${isCurriculum && !curriculumLevel ? "is-active" : ""}`}
-            onClick={() => goToSidebar("curriculum", null)}
-          >
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M12 7c-1.6-1.1-4.2-1.6-6.5-1.2v12.5c2.3-.4 4.9.1 6.5 1.2m0-12.5c1.6-1.1 4.2-1.6 6.5-1.2v12.5c-2.3-.4-4.9.1-6.5 1.2M12 7v11"/></svg>
-            Kids Curriculum
-          </button>
-          {["A1", "A2"].map((lvl) => (
+          <div className="gc-editions-group">
+            <a href="/library/spark" className={`gc-ed-spark ${isSpark ? "is-active" : ""}`}>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z"/></svg>
+              Spark Class
+            </a>
+            <span className="gc-editions-sep" />
             <button
-              key={lvl}
-              className={`gc-ed-tab ${isCurriculum && curriculumLevel === lvl ? "is-active" : ""}`}
-              onClick={() => goToSidebar("curriculum", lvl)}
-              title={{ "A1": "A1 — Beginner", "A2": "A2 — Elementary" }[lvl]}
+              className={`gc-ed-curr ${isCurriculum && !curriculumLevel ? "is-active" : ""}`}
+              onClick={() => goToSidebar("curriculum", null)}
             >
-              {lvl}
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M12 7c-1.6-1.1-4.2-1.6-6.5-1.2v12.5c2.3-.4 4.9.1 6.5 1.2m0-12.5c1.6-1.1 4.2-1.6 6.5-1.2v12.5c-2.3-.4-4.9.1-6.5 1.2M12 7v11"/></svg>
+              Curriculum
             </button>
-          ))}
-          <button
-            className={`gc-ed-custom ${!isCurriculum && !isSpark && category === "Customized Lessons" ? "is-active" : ""}`}
-            onClick={() => changeCategory("Customized Lessons")}
-          >
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.2 5.8L20 9l-4.6 4 1.4 6-4.8-3.4L7.2 19l1.4-6L4 9l5.8-1.2z" /></svg>
-            Customized Lessons
-          </button>
+            <div className="gc-editions-levels">
+              {["A1", "A2"].map((lvl) => (
+                <button
+                  key={lvl}
+                  className={`gc-ed-tab ${isCurriculum && curriculumLevel === lvl ? "is-active" : ""}`}
+                  onClick={() => goToSidebar("curriculum", lvl)}
+                  title={{ "A1": "A1 — Beginner", "A2": "A2 — Elementary" }[lvl]}
+                >
+                  {lvl}
+                </button>
+              ))}
+            </div>
+            <span className="gc-editions-sep" />
+            <button
+              className={`gc-ed-custom ${!isCurriculum && !isSpark && category === "Customized Lessons" ? "is-active" : ""}`}
+              onClick={() => changeCategory("Customized Lessons")}
+            >
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.2 5.8L20 9l-4.6 4 1.4 6-4.8-3.4L7.2 19l1.4-6L4 9l5.8-1.2z" /></svg>
+              Customized Lessons
+            </button>
+          </div>
         </div>
       </header>
 
@@ -2175,34 +2181,41 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .gc-sec-tab:hover { color: var(--coral); }
 .gc-sec-tab.is-active { border-bottom-color: transparent; background: var(--ink); color: #FFFFFF; border-radius: 999px; }
 
-.gc-editions { display: flex; align-items: center; justify-content: center; gap: 11px; padding: 5px 40px; border-bottom: 1px solid var(--hair); font-family: 'Quicksand', sans-serif; background: rgba(34,58,51,0.035); }
+.gc-editions { display: flex; align-items: center; justify-content: center; padding: 9px 40px; border-bottom: 1px solid var(--hair); font-family: 'Quicksand', sans-serif; background: rgba(34,58,51,0.035); }
+.gc-editions-group {
+  display: inline-flex; align-items: center; gap: 7px; padding: 5px;
+  background: var(--card); border: 1px solid var(--hair); border-radius: 14px;
+  box-shadow: 0 2px 10px rgba(27,42,74,0.05);
+}
+.gc-editions-sep { width: 1px; height: 20px; background: var(--hair); flex-shrink: 0; }
 .gc-ed-spark {
   display: inline-flex; align-items: center; gap: 6px;
-  font-size: 12px; font-weight: 800; letter-spacing: 0.02em; padding: 5px 13px;
-  border-radius: 999px; text-decoration: none;
-  color: #1B2A4A; background: #EDF0F7; border: 1.5px solid #C7D0E3;
+  font-size: 12px; font-weight: 800; letter-spacing: 0.02em; padding: 6px 13px;
+  border-radius: 10px; text-decoration: none;
+  color: var(--muted); background: none;
 }
-.gc-ed-spark:hover { background: #DCE2F0; }
-.gc-ed-spark.is-active { background: #1B2A4A; color: #fff; border-color: #1B2A4A; }
-.gc-ed-kids {
+.gc-ed-spark:hover { background: rgba(27,42,74,0.06); color: #1B2A4A; }
+.gc-ed-spark.is-active { background: #1B2A4A; color: #fff; }
+.gc-ed-curr {
   display: inline-flex; align-items: center; gap: 6px;
-  font-size: 12px; font-weight: 800; letter-spacing: 0.02em; padding: 5px 13px;
-  border-radius: 999px; cursor: pointer;
-  color: var(--coral); background: none; border: 1.5px solid var(--coral);
+  font-size: 12px; font-weight: 800; letter-spacing: 0.02em; padding: 6px 13px;
+  border-radius: 10px; cursor: pointer;
+  color: var(--muted); background: none; border: none;
 }
-.gc-ed-kids:hover { background: rgba(255,107,74,0.08); }
-.gc-ed-kids.is-active { background: var(--coral); color: #fff; }
+.gc-ed-curr:hover { background: rgba(255,107,74,0.08); color: var(--coral); }
+.gc-ed-curr.is-active { background: var(--coral); color: #fff; }
 .gc-ed-custom {
   display: inline-flex; align-items: center; gap: 6px;
-  font-size: 12px; font-weight: 800; letter-spacing: 0.02em; padding: 5px 13px;
-  border-radius: 999px; cursor: pointer;
-  color: #1B2A4A; background: none; border: 1.5px solid #1B2A4A;
+  font-size: 12px; font-weight: 800; letter-spacing: 0.02em; padding: 6px 13px;
+  border-radius: 10px; cursor: pointer;
+  color: var(--muted); background: none; border: none;
 }
-.gc-ed-custom:hover { background: rgba(27,42,74,0.06); }
+.gc-ed-custom:hover { background: rgba(27,42,74,0.06); color: #1B2A4A; }
 .gc-ed-custom.is-active { background: #1B2A4A; color: #fff; }
-.gc-ed-tab { font-size: 12px; font-weight: 800; letter-spacing: 0.02em; padding: 5px 13px; border-radius: 999px; color: var(--muted); background: none; border: none; cursor: pointer; }
+.gc-editions-levels { display: inline-flex; align-items: center; gap: 2px; background: rgba(27,42,74,0.045); border-radius: 10px; padding: 3px; }
+.gc-ed-tab { font-size: 11.5px; font-weight: 800; letter-spacing: 0.02em; padding: 5px 12px; border-radius: 8px; color: var(--muted); background: none; border: none; cursor: pointer; }
 .gc-ed-tab:hover { color: var(--coral); }
-.gc-ed-tab.is-active { background: var(--ink); color: var(--card); }
+.gc-ed-tab.is-active { background: var(--card); color: var(--ink); box-shadow: 0 1px 4px rgba(27,42,74,0.12); }
 
 /* ── Today: teacher dashboard ── */
 .gc-dashboard {

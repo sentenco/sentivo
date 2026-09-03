@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 const LEVELS = [
   {
@@ -7,6 +7,12 @@ const LEVELS = [
     tag: "Start here",
     accent: "coral",
     description: "Letters, phonics, and the first words and phrases to say hello, count, and talk about everyday life.",
+    icon: (
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="9" />
+        <path d="M14.8 9.2 12.9 13l-3.8 1.9L11 11.1l3.8-1.9z" fill="currentColor" stroke="none" />
+      </svg>
+    ),
   },
   {
     code: "A2",
@@ -14,10 +20,39 @@ const LEVELS = [
     tag: "Next step",
     accent: "navy",
     description: "Longer sentences, more tenses, and the independence to handle everyday situations with confidence.",
+    icon: (
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M12 3c2.2 2 3.5 5.2 3.5 9s-1.3 7-3.5 9c-2.2-2-3.5-5.2-3.5-9s1.3-7 3.5-9z" />
+        <path d="M3 12h18" />
+      </svg>
+    ),
   },
 ];
 
+const AUDIENCES = [
+  { id: "kids", label: "Kids", age: "6–12" },
+  { id: "teens", label: "Teens", age: "13–17" },
+  { id: "adults", label: "Adults", age: "18+" },
+];
+
+const SOON = {
+  teens: {
+    kicker: "Teens track",
+    title: "A dedicated Teens foundation is on the way",
+    desc: "Two full levels are already mapped out: 24 units and 144 lessons, paced and worded for teenage learners. Building starts once the current curriculum work wraps up.",
+    chips: ["Level 1 · 12 units", "Level 2 · 12 units"],
+  },
+  adults: {
+    kicker: "Adults track",
+    title: "Groundwork and Structure are already planned",
+    desc: "24 units and 144 lessons, written fresh for adult beginners, not adapted from the Kids course. Building starts once the current curriculum work wraps up.",
+    chips: ["A1 · Groundwork", "A2 · Structure"],
+  },
+};
+
 export default function CurriculumOverview({ onSelectLevel }) {
+  const [audience, setAudience] = useState("kids");
+
   useEffect(() => {
     const styleId = "co-styles";
     const existing = document.getElementById(styleId);
@@ -28,49 +63,91 @@ export default function CurriculumOverview({ onSelectLevel }) {
     document.head.appendChild(tag);
   }, []);
 
+  const soon = SOON[audience];
+
   return (
     <div className="co-wrap">
       <div className="co-blob co-blob--a" />
       <div className="co-blob co-blob--b" />
 
       <div className="co-stage">
-        <div className="co-hero-band">
-          <div className="co-hero-kicker-row">
-            <span className="co-hero-rule" />
-            <span className="co-hero-kicker">For young learners, ages 6 to 12</span>
-            <span className="co-hero-rule" />
-          </div>
-          <h1 className="co-title">Kids Curriculum</h1>
-          <div className="co-stat-row">
-            <div className="co-stat"><div className="co-stat-num co-stat-num--coral">2</div><div className="co-stat-label">Levels</div></div>
-            <div className="co-stat"><div className="co-stat-num co-stat-num--navy">24</div><div className="co-stat-label">Units</div></div>
-            <div className="co-stat"><div className="co-stat-num co-stat-num--coral">144</div><div className="co-stat-label">Lessons</div></div>
-          </div>
-        </div>
-
-        <div className="co-levels-grid">
-          {LEVELS.map((lv) => (
-            <div
-              key={lv.code}
-              className={`co-level-card co-level-card--${lv.accent}`}
-              onClick={() => onSelectLevel && onSelectLevel(lv.code)}
-              role="button"
-              tabIndex={0}
-              onKeyDown={(e) => e.key === "Enter" && onSelectLevel && onSelectLevel(lv.code)}
+        <div className="co-audience-row">
+          {AUDIENCES.map((a) => (
+            <button
+              key={a.id}
+              type="button"
+              className={`co-audience-pill ${audience === a.id ? "is-active" : ""}`}
+              onClick={() => setAudience(a.id)}
             >
-              <div className="co-level-top">
-                <div className="co-level-code">{lv.code}</div>
-                <span className="co-level-tag">{lv.tag}</span>
-              </div>
-              <div className="co-level-name">{lv.name}</div>
-              <p className="co-level-desc">{lv.description}</p>
-              <div className="co-level-foot">
-                <span className="co-level-units"><b>12</b> units</span>
-                <span className="co-level-cta">View curriculum &rarr;</span>
-              </div>
-            </div>
+              {a.label} <span className="co-audience-age">{a.age}</span>
+            </button>
           ))}
         </div>
+
+        {audience === "kids" ? (
+          <>
+            <div className="co-hero-band">
+              <div className="co-hero-kicker-row">
+                <span className="co-hero-rule" />
+                <span className="co-hero-kicker">Kids track · Ages 6 to 12</span>
+                <span className="co-hero-rule" />
+              </div>
+              <h1 className="co-title">Curriculum</h1>
+              <div className="co-stat-row">
+                <div className="co-stat"><div className="co-stat-num co-stat-num--coral">2</div><div className="co-stat-label">Levels</div></div>
+                <div className="co-stat"><div className="co-stat-num co-stat-num--navy">24</div><div className="co-stat-label">Units</div></div>
+                <div className="co-stat"><div className="co-stat-num co-stat-num--coral">144</div><div className="co-stat-label">Lessons</div></div>
+              </div>
+            </div>
+
+            <div className="co-levels-grid">
+              {LEVELS.map((lv) => (
+                <div
+                  key={lv.code}
+                  className={`co-level-card co-level-card--${lv.accent}`}
+                  onClick={() => onSelectLevel && onSelectLevel(lv.code)}
+                  role="button"
+                  tabIndex={0}
+                  onKeyDown={(e) => e.key === "Enter" && onSelectLevel && onSelectLevel(lv.code)}
+                >
+                  <div className="co-level-icon">{lv.icon}</div>
+                  <div className="co-level-top">
+                    <div className="co-level-code">{lv.code}</div>
+                    <span className="co-level-tag">{lv.tag}</span>
+                  </div>
+                  <div className="co-level-name">{lv.name}</div>
+                  <p className="co-level-desc">{lv.description}</p>
+                  <div className="co-level-foot">
+                    <span className="co-level-units"><b>12</b> units</span>
+                    <span className="co-level-cta">View curriculum &rarr;</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </>
+        ) : (
+          <>
+            <div className="co-hero-band co-hero-band--navy">
+              <div className="co-hero-kicker-row">
+                <span className="co-hero-rule" />
+                <span className="co-hero-kicker co-hero-kicker--navy">{soon.kicker}</span>
+                <span className="co-hero-rule" />
+              </div>
+              <h1 className="co-title">Curriculum</h1>
+            </div>
+
+            <div className="co-soon-panel">
+              <span className="co-soon-badge">Coming soon</span>
+              <h2 className="co-soon-title">{soon.title}</h2>
+              <p className="co-soon-desc">{soon.desc}</p>
+              <div className="co-soon-chips">
+                {soon.chips.map((c) => (
+                  <span key={c} className="co-soon-chip">{c}</span>
+                ))}
+              </div>
+            </div>
+          </>
+        )}
       </div>
     </div>
   );
@@ -95,7 +172,18 @@ const styles = `
 .co-blob--a { width: 420px; height: 420px; top: -180px; right: -140px; background: rgba(255,107,74,0.08); }
 .co-blob--b { width: 460px; height: 460px; bottom: -220px; left: -160px; background: rgba(27,42,74,0.06); }
 
-.co-stage { position: relative; z-index: 1; max-width: 1040px; margin: 0 auto; padding: 30px 40px 70px; }
+.co-stage { position: relative; z-index: 1; max-width: 1040px; margin: 0 auto; padding: 26px 40px 70px; }
+
+.co-audience-row { display: flex; justify-content: center; gap: 10px; margin-bottom: 26px; }
+.co-audience-pill {
+  display: inline-flex; align-items: center; gap: 8px; padding: 10px 22px; border-radius: 999px;
+  border: 1.5px solid #EDE6F4; background: #fff; cursor: pointer;
+  font-family: 'Source Serif 4', serif; font-weight: 600; font-size: 14.5px; color: #6B6E96;
+  transition: all 0.15s ease;
+}
+.co-audience-pill .co-audience-age { font-family: 'Inter', sans-serif; font-weight: 700; font-size: 10px; text-transform: uppercase; letter-spacing: 0.04em; opacity: 0.65; }
+.co-audience-pill.is-active { background: #1B2A4A; border-color: #1B2A4A; color: #fff; }
+.co-audience-pill:not(.is-active):hover { border-color: #FF6B4A; color: #1B2A4A; }
 
 .co-hero-band {
   background: #FFE6DD;
@@ -104,6 +192,7 @@ const styles = `
   text-align: center;
   margin-bottom: 32px;
 }
+.co-hero-band--navy { background: #E7EAF3; }
 .co-hero-kicker-row { display: flex; align-items: center; justify-content: center; gap: 14px; margin-bottom: 4px; }
 .co-hero-rule { flex: 0 1 48px; height: 1px; background: rgba(27,42,74,0.22); }
 .co-hero-kicker {
@@ -114,6 +203,7 @@ const styles = `
   text-transform: uppercase;
   color: #E0502F;
 }
+.co-hero-kicker--navy { color: #1B2A4A; }
 .co-title {
   font-family: 'Playfair Display', serif;
   font-weight: 900;
@@ -156,11 +246,20 @@ const styles = `
 .co-level-card--navy::before { background: #1B2A4A; }
 .co-level-card--navy:hover { border-color: #1B2A4A; }
 
-.co-level-top { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 6px; }
+.co-level-icon {
+  position: absolute; top: 22px; right: 26px;
+  width: 46px; height: 46px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+}
+.co-level-card--coral .co-level-icon { background: #FFE6DD; color: #FF6B4A; }
+.co-level-card--navy .co-level-icon { background: #E7EAF3; color: #1B2A4A; }
+
+.co-level-top { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 6px; padding-right: 56px; }
 .co-level-code { font-family: 'Source Serif 4', serif; font-weight: 600; font-size: 40px; }
 .co-level-card--coral .co-level-code { color: #FF6B4A; }
 .co-level-card--navy .co-level-code { color: #1B2A4A; }
 .co-level-tag { font-size: 10.5px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; padding: 4px 10px; border-radius: 6px; color: #E0502F; background: #FFE6DD; }
+.co-level-card--navy .co-level-tag { color: #1B2A4A; background: #E7EAF3; }
 
 .co-level-name { font-family: 'Source Serif 4', serif; font-weight: 600; font-size: 18px; margin-bottom: 12px; }
 .co-level-desc { font-size: 13.5px; font-weight: 500; color: #6B6E96; line-height: 1.65; margin: 0 0 22px; }
@@ -171,4 +270,20 @@ const styles = `
 .co-level-cta { font-size: 12.5px; font-weight: 700; display: inline-flex; align-items: center; gap: 5px; }
 .co-level-card--coral .co-level-cta { color: #FF6B4A; }
 .co-level-card--navy .co-level-cta { color: #1B2A4A; }
+
+.co-soon-panel {
+  background: #fff; border: 1.5px dashed #EDE6F4; border-radius: 18px;
+  padding: 52px 40px; text-align: center;
+}
+.co-soon-badge {
+  display: inline-block; font-size: 10.5px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase;
+  color: #A6A2C0; background: #F7F5FB; padding: 5px 14px; border-radius: 999px; margin-bottom: 16px;
+}
+.co-soon-title { font-family: 'Source Serif 4', serif; font-weight: 600; font-size: 22px; color: #1B2A4A; margin: 0 0 10px; }
+.co-soon-desc { font-size: 13.5px; color: #6B6E96; line-height: 1.65; max-width: 460px; margin: 0 auto; }
+.co-soon-chips { display: flex; justify-content: center; gap: 12px; margin-top: 26px; flex-wrap: wrap; }
+.co-soon-chip {
+  font-family: 'Source Serif 4', serif; font-weight: 600; font-size: 13px; color: #6B6E96;
+  background: #F7F5FB; border: 1px solid #EDE6F4; border-radius: 10px; padding: 9px 18px;
+}
 `;

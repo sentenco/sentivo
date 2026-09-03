@@ -55,7 +55,7 @@ export default function UnitPage({ level = "A1", unitNum = "1", onBack }) {
 
       <div className="up-stage">
         <button type="button" className="up-breadcrumb" onClick={onBack}>
-          Kids Curriculum <span className="up-crumb-sep">&rsaquo;</span> {level} <span className="up-crumb-sep">&rsaquo;</span> <span style={{ color: color.accent }}>Unit {unitNum}</span>
+          Curriculum <span className="up-crumb-sep">&rsaquo;</span> {level} <span className="up-crumb-sep">&rsaquo;</span> <span style={{ color: color.accent }}>Unit {unitNum}</span>
         </button>
 
         <div className="up-hero" style={{ "--accent": color.accent }}>
