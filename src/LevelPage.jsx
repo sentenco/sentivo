@@ -94,23 +94,6 @@ export default function LevelPage({ level = "A1" }) {
           </div>
         </div>
 
-        <div className="lp-goals-section">
-          <div className="lp-goals-label">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke={data.color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/></svg>
-            Can-do goals
-          </div>
-          <ul className="lp-goals">
-            {data.goals.map((g, i) => (
-              <li key={i} className="lp-goal">
-                <span className="lp-goal-check" style={{ background: data.color }}>
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                </span>
-                {g}
-              </li>
-            ))}
-          </ul>
-        </div>
-
         <div className="lp-toc">
           <div className="lp-toc-header" style={{ background: data.color }}>
             <div className="lp-toc-eyebrow-row">
@@ -277,16 +260,6 @@ const styles = `
 .lp-stat-title { font-family: 'Source Serif 4', serif; font-weight: 600; font-size: 13.5px; color: #1B2A4A; }
 .lp-stat-sub { font-size: 11px; font-weight: 500; color: #6B6E96; margin-top: 1px; line-height: 1.3; }
 
-.lp-goals-section { margin-bottom: 26px; }
-.lp-goals-label { display: flex; align-items: center; gap: 7px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #1B2A4A; margin-bottom: 12px; }
-.lp-goals {
-  list-style: none; margin: 0; padding: 0;
-  background: #fff; border: 1px solid #EDE6F4; border-radius: 16px;
-  box-shadow: 0 4px 16px rgba(27,42,74,0.06);
-}
-.lp-goal { display: flex; align-items: center; gap: 12px; font-size: 13px; font-weight: 600; color: #23264A; padding: 14px 22px; border-bottom: 1px solid #F3F0FB; }
-.lp-goal:last-child { border-bottom: none; }
-.lp-goal-check { width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
 
 .lp-toc {
   background: #fff;

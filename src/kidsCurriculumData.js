@@ -8,11 +8,6 @@ export const LEVEL_DATA = {
     banner: "/curriculum/a1-banner.png",
     description:
       "The starting point for young learners. A1 builds two things at once: the alphabet and phonics needed to read and write simple words, and the everyday phrases needed to start speaking English right away.",
-    goals: [
-      "Recognize all 26 letters and basic phonics sounds",
-      "Read and write simple words like cat, dog, and pen",
-      "Use greetings, numbers, colors, and simple sentences like \"I am\" and \"I like\"",
-    ],
   },
   A2: {
     name: "Soar",
@@ -23,11 +18,6 @@ export const LEVEL_DATA = {
     banner: "/curriculum/a2-banner.png",
     description:
       "Once the alphabet and phonics are secure, A2 expands into longer, connected sentences and more independent everyday situations, with the foundation from A1 as the base.",
-    goals: [
-      "Talk about past events using simple past tense",
-      "Handle everyday situations like shopping and finding places",
-      "Describe routines, plans, and feelings in connected sentences",
-    ],
   },
 };
 
