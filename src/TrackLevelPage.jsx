@@ -24,7 +24,7 @@ const ACCENT_COLORS = {
 // disabled/"Coming soon", same pattern as Kids' LevelPage.jsx.
 const READY_LESSONS = {
   teens: { A1: { 1: [1] }, A2: { 1: [1] } },
-  adults: {},
+  adults: { A1: { 1: [1] }, A2: { 1: [1] } },
 };
 
 function openLessonPopup(path) {
