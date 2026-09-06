@@ -27,9 +27,9 @@ export const CHAPTERS = [
     story:
       "After three years of saving money carefully and living with my parents again after college, I finally decide it's time to move into my own apartment. My parents support the decision completely, though my mother admits she'll miss having me around the house every evening. Sitting on my childhood bedroom floor, surrounded by half-packed boxes, I scroll through apartment listings with a mixture of nervous excitement and genuine uncertainty. Living independently means budgeting carefully, cooking my own meals, and handling problems without anyone else nearby to help immediately. Still, the idea of finally having my own space thrills me completely.",
     questions: [
-      "How long has Renee been living with her parents again?",
-      "How does Renee's mother feel about the decision?",
-      "What does living independently mean for Renee?",
+      { text: "How long has Renee been living with her parents again?", answer: "Three years." },
+      { text: "How does Renee's mother feel about the decision?", answer: "Supportive, though she'll miss having Renee around." },
+      { text: "What does living independently mean for Renee?", answer: "Budgeting, cooking, and handling problems alone." },
     ],
     trueFalse: [
       { text: "Renee has been saving money for three years.", answer: true },
@@ -56,9 +56,9 @@ export const CHAPTERS = [
     story:
       "Diane, my closest friend, offers to join me for apartment viewings, insisting a second opinion always helps with such an important decision. Together, we visit five different apartments across two weekends, each one revealing new compromises between location, price, and available space. One apartment has beautiful natural light but sits far from public transportation, while another feels perfectly located but noticeably cramped and outdated inside. “Trust your gut when you find the right one,” Diane advises, watching me hesitate over yet another listing with mixed feelings. Finally, in a quiet building near a small park, something about the sixth apartment simply feels right.",
     questions: [
-      "Who joins Renee for apartment viewings?",
-      "How many apartments do they visit?",
-      "What advice does Diane give Renee?",
+      { text: "Who joins Renee for apartment viewings?", answer: "Diane." },
+      { text: "How many apartments do they visit?", answer: "Five." },
+      { text: "What advice does Diane give Renee?", answer: "Trust your gut when you find the right one." },
     ],
     trueFalse: [
       { text: "Diane joins Renee for apartment viewings.", answer: true },
@@ -85,9 +85,9 @@ export const CHAPTERS = [
     story:
       "The following Monday, I meet the landlord to review the lease agreement, my hands trembling slightly as I hold the pen above the signature line. He explains the monthly rent, security deposit, and building rules calmly, though the amount of paperwork feels genuinely overwhelming for my very first lease. “Take your time reading through everything,” he says patiently, noticing my nervous hesitation over the lengthy document. After carefully reviewing each section, I finally sign my name, officially becoming responsible for an entire apartment for the first time in my life. Walking outside afterward, the reality of this commitment settles in slowly.",
     questions: [
-      "What does Renee's hand do while holding the pen?",
-      "What does the landlord explain calmly?",
-      "How does Renee feel walking outside afterward?",
+      { text: "What does Renee's hand do while holding the pen?", answer: "Tremble slightly." },
+      { text: "What does the landlord explain calmly?", answer: "The monthly rent, security deposit, and building rules." },
+      { text: "How does Renee feel walking outside afterward?", answer: "The reality of the commitment settles in slowly." },
     ],
     trueFalse: [
       { text: "Renee's hands tremble slightly while signing.", answer: true },
@@ -114,9 +114,9 @@ export const CHAPTERS = [
     story:
       "Moving day arrives with chaotic energy, as Diane and two other friends show up early to help carry boxes up three narrow flights of stairs. By midday, our collective energy fades noticeably, replaced by exhausted laughter every time someone nearly drops a heavy box on the stairs. “Whoever designed this staircase clearly hated movers,” Diane jokes, wiping sweat from her forehead between trips up and down. Despite the exhausting physical labor, something feels genuinely special about filling an empty apartment with familiar furniture and belongings. By evening, boxes fill every corner of the space, but it already feels undeniably like mine.",
     questions: [
-      "Who helps Renee move?",
-      "How many flights of stairs do they carry boxes up?",
-      "How does the apartment feel by evening?",
+      { text: "Who helps Renee move?", answer: "Diane and two other friends." },
+      { text: "How many flights of stairs do they carry boxes up?", answer: "Three." },
+      { text: "How does the apartment feel by evening?", answer: "Undeniably like hers." },
     ],
     trueFalse: [
       { text: "Diane and two other friends help Renee move.", answer: true },
@@ -143,9 +143,9 @@ export const CHAPTERS = [
     story:
       "Alone that evening, I face my biggest challenge yet: assembling a flat-pack bookshelf using only a small instruction booklet and a single tiny screwdriver. The diagrams seem straightforward at first, but somehow I end up with several mysterious extra screws and one noticeably crooked shelf. After nearly an hour of quiet frustration, I finally realize I attached one panel completely backward from the very beginning. Rather than starting over entirely, I carefully disassemble just that section, correcting my mistake with newfound patience. When the bookshelf finally stands upright and stable, I feel a surprisingly deep sense of accomplishment over something so seemingly small.",
     questions: [
-      "What furniture does Renee try to assemble alone?",
-      "What mistake does Renee eventually realize she made?",
-      "How does Renee feel once the bookshelf stands stable?",
+      { text: "What furniture does Renee try to assemble alone?", answer: "A flat-pack bookshelf." },
+      { text: "What mistake does Renee eventually realize she made?", answer: "She attached one panel completely backward." },
+      { text: "How does Renee feel once the bookshelf stands stable?", answer: "A deep sense of accomplishment." },
     ],
     trueFalse: [
       { text: "Renee tries to assemble a flat-pack bookshelf.", answer: true },
@@ -172,9 +172,9 @@ export const CHAPTERS = [
     story:
       "A week after moving in, I notice a slow, steady drip coming from beneath the kitchen sink, forming an annoying puddle each morning. Uncertain whether to call the landlord immediately or attempt fixing it myself, I decide to research the problem online first. A helpful video tutorial explains the issue looks like a simple loose connection rather than anything seriously broken. Kneeling awkwardly under the sink with a wrench and flashlight, I carefully tighten the connection, feeling oddly proud of solving a real household problem independently. The dripping finally stops completely, and I text Diane immediately, practically bragging about my small victory.",
     questions: [
-      "What does Renee notice a week after moving in?",
-      "What does Renee do before calling the landlord?",
-      "How does Renee feel after fixing the problem?",
+      { text: "What does Renee notice a week after moving in?", answer: "A slow drip from beneath the kitchen sink." },
+      { text: "What does Renee do before calling the landlord?", answer: "Researches the problem online." },
+      { text: "How does Renee feel after fixing the problem?", answer: "Oddly proud." },
     ],
     trueFalse: [
       { text: "Renee notices a slow drip under the kitchen sink.", answer: true },
@@ -201,9 +201,9 @@ export const CHAPTERS = [
     story:
       "While searching for a wrench to tackle another small repair, I realize I don't actually own many tools yet in my new apartment. Nervously, I knock on my next-door neighbor's door, hoping he might have something I could borrow for a few minutes. Mr. Osei answers warmly, introducing himself properly for the first time since I moved in two weeks earlier. He not only lends me a wrench but also offers helpful advice about the building's occasionally quirky plumbing system. “Feel free to knock anytime you need something,” he says kindly, and I walk back to my apartment feeling genuinely less alone in this new place.",
     questions: [
-      "What does Renee realize she doesn't own yet?",
-      "Who does Renee knock on the door of?",
-      "What does Mr. Osei offer besides the wrench?",
+      { text: "What does Renee realize she doesn't own yet?", answer: "Many tools." },
+      { text: "Who does Renee knock on the door of?", answer: "Her next-door neighbor, Mr. Osei." },
+      { text: "What does Mr. Osei offer besides the wrench?", answer: "Advice about the building's plumbing." },
     ],
     trueFalse: [
       { text: "Renee realizes she doesn't own many tools yet.", answer: true },
@@ -230,9 +230,9 @@ export const CHAPTERS = [
     story:
       "For the first time, I do a proper grocery shop entirely for myself, without my mother's usual list guiding every single purchase decision. Standing in the produce aisle, I realize I genuinely don't know how much of anything a single person actually needs for one week. I buy modest portions of vegetables, a few basic proteins, and ingredients for two or three simple meals I already know how to cook confidently. At checkout, my total feels surprisingly small compared to family shopping trips, a strange but satisfying reminder of my new independent life. Carrying bags home alone, I feel oddly accomplished by something so ordinary.",
     questions: [
-      "What does Renee do for the first time?",
-      "What does Renee realize in the produce aisle?",
-      "How does Renee's total at checkout feel to her?",
+      { text: "What does Renee do for the first time?", answer: "A proper grocery shop entirely for herself." },
+      { text: "What does Renee realize in the produce aisle?", answer: "She doesn't know how much a single person needs for a week." },
+      { text: "How does Renee's total at checkout feel to her?", answer: "Surprisingly small." },
     ],
     trueFalse: [
       { text: "Renee does a grocery shop entirely for herself.", answer: true },
@@ -259,9 +259,9 @@ export const CHAPTERS = [
     story:
       "That night, after Diane leaves and the apartment finally falls completely silent, I sit alone on the floor wrapped in a blanket, taking in my new surroundings. The quiet feels strange after years of family noise constantly filling every room of my parents' house. For a brief, honest moment, loneliness creeps in unexpectedly, mixing uncomfortably with the pride I felt just hours earlier during moving day. I remind myself this adjustment period is completely normal, and that independence naturally includes both wonderful freedom and occasional quiet moments like this one. Watching city lights through my window, I slowly feel calmer.",
     questions: [
-      "What does Renee do after Diane leaves?",
-      "Why does the quiet feel strange to Renee?",
-      "What does Renee remind herself about this adjustment period?",
+      { text: "What does Renee do after Diane leaves?", answer: "Sits alone on the floor wrapped in a blanket." },
+      { text: "Why does the quiet feel strange to Renee?", answer: "After years of family noise filling the house." },
+      { text: "What does Renee remind herself about this adjustment period?", answer: "That it's completely normal." },
     ],
     trueFalse: [
       { text: "Renee sits alone on the floor wrapped in a blanket.", answer: true },
@@ -288,9 +288,9 @@ export const CHAPTERS = [
     story:
       "Several weeks later, my apartment finally feels completely different from the empty, echoing space I first walked into with a set of new keys. Framed photos hang on the walls, plants sit thriving near the window, and familiar smells from home-cooked meals now fill the kitchen regularly. Diane visits often, always commenting on how much more like “me” the space feels with each passing week. Looking back, the overwhelming lease-signing, the wobbly bookshelf, and even that lonely first night all feel like meaningful steps rather than mistakes along this journey. This apartment isn't just a place I live now; it genuinely feels like home.",
     questions: [
-      "How does the apartment feel several weeks later?",
-      "What does Diane comment on during her visits?",
-      "How does Renee view the earlier struggles now?",
+      { text: "How does the apartment feel several weeks later?", answer: "Completely different from the empty space she first walked into." },
+      { text: "What does Diane comment on during her visits?", answer: "How much more like 'her' the space feels." },
+      { text: "How does Renee view the earlier struggles now?", answer: "As meaningful steps rather than mistakes." },
     ],
     trueFalse: [
       { text: "The apartment still feels empty and echoing weeks later.", answer: false },

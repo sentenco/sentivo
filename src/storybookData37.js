@@ -23,9 +23,9 @@ export const CHAPTERS = [
     story:
       "Lately, something feels different between Vivian and me, though I can't quite pinpoint exactly when this quiet shift began happening. We have been inseparable since third grade, sharing everything from secrets to lunch tables without a single serious argument ever occurring. This week, though, she hasn't texted first, hasn't saved me a seat at lunch, and seems perpetually distracted whenever we do talk briefly. I tell myself I'm probably overthinking things, that everyone gets busy sometimes with schoolwork or family matters. Still, a small, uncomfortable knot forms in my stomach every time I notice her avoiding eye contact lately.",
     questions: [
-      "How long have Nadia and Vivian been friends?",
-      "What has Nadia noticed about Vivian's behavior?",
-      "What does Nadia tell herself?",
+      { text: "How long have Nadia and Vivian been friends?", answer: "Since third grade." },
+      { text: "What has Nadia noticed about Vivian's behavior?", answer: "She hasn't texted first, saved a seat, or seemed distracted." },
+      { text: "What does Nadia tell herself?", answer: "That she's probably overthinking things." },
     ],
     trueFalse: [
       { text: "Nadia and Vivian have been friends since third grade.", answer: true },
@@ -52,9 +52,9 @@ export const CHAPTERS = [
     story:
       "At lunch today, Vivian sits across from me like usual, but the easy, comfortable conversation we always shared feels noticeably absent between us now. I attempt small talk about an upcoming test, but her responses come short and clipped, nothing like her normally animated storytelling style. The silence stretches uncomfortably between bites of food, filled only by the distant chatter of other tables around us. I catch her checking her phone repeatedly, and something about her expression seems guarded in a way I don't recognize from years of friendship. Walking to class afterward, an unfamiliar distance follows us down the hallway.",
     questions: [
-      "How does the lunch conversation feel today?",
-      "What does Nadia attempt to talk about?",
-      "What does Nadia notice Vivian doing repeatedly?",
+      { text: "How does the lunch conversation feel today?", answer: "Noticeably absent of their usual easy conversation." },
+      { text: "What does Nadia attempt to talk about?", answer: "An upcoming test." },
+      { text: "What does Nadia notice Vivian doing repeatedly?", answer: "Checking her phone." },
     ],
     trueFalse: [
       { text: "The lunch conversation feels easy and comfortable as usual.", answer: false },
@@ -81,9 +81,9 @@ export const CHAPTERS = [
     story:
       "Unable to bear the tension any longer, I finally confront Vivian after school, assuming she's upset about a comment I made weeks ago regarding her new friend group. “Is this about what I said at the party?” I ask directly, bracing myself for an uncomfortable but necessary conversation. Vivian's confused expression immediately tells me I've guessed completely wrong, and something about her hurt reaction makes the situation feel even worse now. “That's not it at all, Nadia,” she says quietly, her voice carrying an edge I don't fully understand yet. Instead of clarifying further, she simply walks away, leaving me more confused than before.",
     questions: [
-      "What does Nadia assume Vivian is upset about?",
-      "How does Vivian react to Nadia's guess?",
-      "What does Vivian do instead of explaining further?",
+      { text: "What does Nadia assume Vivian is upset about?", answer: "A comment Nadia made at a party about her new friend group." },
+      { text: "How does Vivian react to Nadia's guess?", answer: "Confused -- it's completely wrong." },
+      { text: "What does Vivian do instead of explaining further?", answer: "She walks away." },
     ],
     trueFalse: [
       { text: "Nadia assumes it's about a comment at a party.", answer: true },
@@ -110,9 +110,9 @@ export const CHAPTERS = [
     story:
       "Frustrated by Vivian's vague dismissal, I press further the next day, my patience wearing thin from days of confusing distance between us. “You can't just say it's not that and walk away. Tell me what's actually wrong,” I say, my voice rising with genuine frustration despite my efforts to stay calm. Vivian's composure cracks slightly, and she snaps back that maybe I wouldn't understand even if she explained everything honestly right now. The exchange escalates quickly into raised voices near the lockers, both of us saying things neither of us truly means in that heated moment. We separate angrily, the friendship feeling more fractured than ever before.",
     questions: [
-      "What does Nadia press Vivian to do?",
-      "How does Vivian's composure react?",
-      "What happens near the lockers?",
+      { text: "What does Nadia press Vivian to do?", answer: "Tell her what's actually wrong." },
+      { text: "How does Vivian's composure react?", answer: "It cracks -- she snaps back." },
+      { text: "What happens near the lockers?", answer: "Their argument escalates into raised voices." },
     ],
     trueFalse: [
       { text: "Nadia presses Vivian to explain what's wrong.", answer: true },
@@ -139,9 +139,9 @@ export const CHAPTERS = [
     story:
       "For the following week, Vivian and I avoid each other entirely, our usual seats and shared routines suddenly feeling painfully empty and unfamiliar. I sit alone at lunch, glancing occasionally toward her new table, feeling a strange mixture of anger, sadness, and stubborn pride preventing me from reaching out first. Other classmates notice the obvious tension, occasionally asking cautiously if everything's okay between us lately. I brush off their concerns, insisting everything's fine, though privately, the loneliness feels heavier with each passing day apart. Nights become harder too, filled with replaying our argument, wondering where exactly everything went so wrong.",
     questions: [
-      "How long do Nadia and Vivian avoid each other?",
-      "What does Nadia feel sitting alone at lunch?",
-      "What do classmates notice?",
+      { text: "How long do Nadia and Vivian avoid each other?", answer: "A week." },
+      { text: "What does Nadia feel sitting alone at lunch?", answer: "A mixture of anger, sadness, and stubborn pride." },
+      { text: "What do classmates notice?", answer: "The obvious tension between them." },
     ],
     trueFalse: [
       { text: "They avoid each other for the following week.", answer: true },
@@ -168,9 +168,9 @@ export const CHAPTERS = [
     story:
       "Noticing my obvious sadness, my older sister sits down beside me one evening, gently asking what's actually going on between Vivian and me. I explain the whole confusing situation, admitting I still don't understand what triggered this sudden, painful distance between us. “Sometimes people pull away because they're struggling with something they're embarrassed to share,” my sister suggests thoughtfully, drawing from her own past friendship experiences. This perspective hadn't genuinely occurred to me before, since I had mostly focused on feeling hurt rather than curious about Vivian's actual situation. Maybe, I realize slowly, this isn't really about me at all.",
     questions: [
-      "Who sits down to talk with Nadia?",
-      "What does Nadia's sister suggest?",
-      "What does Nadia realize by the end?",
+      { text: "Who sits down to talk with Nadia?", answer: "Her older sister." },
+      { text: "What does Nadia's sister suggest?", answer: "That people pull away when struggling with something embarrassing." },
+      { text: "What does Nadia realize by the end?", answer: "That maybe this isn't really about her." },
     ],
     trueFalse: [
       { text: "Nadia's older sister talks with her about the situation.", answer: true },
@@ -197,9 +197,9 @@ export const CHAPTERS = [
     story:
       "Inspired by my sister's words, I decide texting feels too impersonal for something this important, so I write Vivian an actual handwritten note instead. Several crumpled attempts later, I finally settle on something honest, admitting I miss her, I'm sorry for pushing too hard, and I genuinely want to understand whatever she's going through. I avoid demanding immediate answers, instead simply offering to listen whenever, if ever, she feels ready to share anything at all. Folding the note carefully, I slip it through the vents of her locker before first period, my heart pounding with vulnerable, uncertain hope.",
     questions: [
-      "Why does Nadia choose to write a note instead of texting?",
-      "What does Nadia admit in the note?",
-      "Where does Nadia leave the note?",
+      { text: "Why does Nadia choose to write a note instead of texting?", answer: "Because texting feels too impersonal for something this important." },
+      { text: "What does Nadia admit in the note?", answer: "That she misses Vivian and is sorry for pushing too hard." },
+      { text: "Where does Nadia leave the note?", answer: "In the vents of Vivian's locker." },
     ],
     trueFalse: [
       { text: "Nadia decides texting feels too impersonal.", answer: true },
@@ -226,9 +226,9 @@ export const CHAPTERS = [
     story:
       "The next afternoon, Vivian finds me by my locker, holding the folded note gently, her eyes noticeably softer than they've been in weeks. “Can we talk? At the park, maybe?” she asks quietly, and relief floods through me instantly at this small but meaningful gesture. We walk together in slightly awkward silence toward our old favorite bench, the same spot where we shared secrets throughout middle school years ago. Sitting down, neither of us speaks immediately, both clearly nervous about finally addressing everything honestly after weeks of painful, confusing distance. Finally, Vivian takes a deep breath and begins speaking.",
     questions: [
-      "What does Vivian hold when she finds Nadia?",
-      "Where does Vivian suggest they talk?",
-      "How do they both feel sitting on the bench?",
+      { text: "What does Vivian hold when she finds Nadia?", answer: "The folded note." },
+      { text: "Where does Vivian suggest they talk?", answer: "At the park." },
+      { text: "How do they both feel sitting on the bench?", answer: "Nervous." },
     ],
     trueFalse: [
       { text: "Vivian holds the folded note when she finds Nadia.", answer: true },
@@ -255,9 +255,9 @@ export const CHAPTERS = [
     story:
       "Vivian finally explains everything: her parents have been fighting constantly, and they recently announced plans to separate, something she felt too embarrassed and overwhelmed to share with anyone. “I didn't want you treating me differently, feeling sorry for me,” she admits, tears welling up as months of pent-up stress finally surface. I feel a wave of guilt for pushing so hard without considering she might be struggling privately with something significant. Reaching over, I hold her hand gently, apologizing for not being more patient and understanding during everything she's clearly been going through alone. We both cry a little, releasing weeks of built-up tension together.",
     questions: [
-      "What has been happening with Vivian's parents?",
-      "Why didn't Vivian want to share this?",
-      "How does Nadia react to hearing this?",
+      { text: "What has been happening with Vivian's parents?", answer: "They've been fighting and are planning to separate." },
+      { text: "Why didn't Vivian want to share this?", answer: "She didn't want Nadia treating her differently or feeling sorry for her." },
+      { text: "How does Nadia react to hearing this?", answer: "A wave of guilt -- she holds Vivian's hand and apologizes." },
     ],
     trueFalse: [
       { text: "Vivian's parents have been fighting and plan to separate.", answer: true },
@@ -284,9 +284,9 @@ export const CHAPTERS = [
     story:
       "Walking home together afterward, our conversation flows naturally again, though it carries a new depth I hadn't noticed before this whole difficult experience. I promise Vivian she can always share hard things with me, even when it feels embarrassing or complicated to explain everything clearly. She apologizes too, for pulling away instead of trusting our friendship enough to be honest from the very beginning. We both agree that avoiding problems only makes everything feel worse, while honest, uncomfortable conversations actually bring people genuinely closer together in the end. Our friendship feels different now, tested but undeniably stronger, built on something deeper than before.",
     questions: [
-      "What does Nadia promise Vivian?",
-      "What does Vivian apologize for?",
-      "What do they both agree about avoiding problems?",
+      { text: "What does Nadia promise Vivian?", answer: "That she can always share hard things with her." },
+      { text: "What does Vivian apologize for?", answer: "Pulling away instead of trusting their friendship." },
+      { text: "What do they both agree about avoiding problems?", answer: "That it only makes things worse, while honest conversation brings people closer." },
     ],
     trueFalse: [
       { text: "Nadia promises Vivian can always share hard things with her.", answer: true },

@@ -24,9 +24,9 @@ export const CHAPTERS = [
     story:
       "Saturday morning finally arrives, and our whole family is packing the car for our very first camping trip. I carry the rolled-up tent while Lily loads sleeping bags into the trunk carefully. “Don't forget the marshmallows,” Lily reminds Dad, who checks everything off his packing list twice. I feel a bubbling excitement in my chest, since I have never slept outside in nature before. “Are we bringing the fishing rods too?” I ask eagerly. “Of course,” Dad says, smiling. Once everything fits perfectly into the car, we finally climb in, ready for our big adventure to begin.",
     questions: [
-      "What does Owen carry to the car?",
-      "What does Lily remind Dad not to forget?",
-      "How does Owen feel about the trip?",
+      { text: "What does Owen carry to the car?", answer: "The rolled-up tent." },
+      { text: "What does Lily remind Dad not to forget?", answer: "The marshmallows." },
+      { text: "How does Owen feel about the trip?", answer: "Bubbling excitement." },
     ],
     trueFalse: [
       { text: "Owen carries the rolled-up tent.", answer: true },
@@ -49,9 +49,9 @@ export const CHAPTERS = [
     story:
       "The drive to the campsite takes almost three hours, so Lily and I play games to pass the time. We spot yellow cars and count animals along the road, laughing whenever we both shout the same answer. As we get closer, the scenery changes from busy streets to tall green trees and winding mountain roads. “We're almost there,” Dad announces, and I press my face against the window, watching the beautiful forest pass by. When we finally turn onto a bumpy dirt road, my excitement grows even stronger, knowing our campsite is just minutes away now.",
     questions: [
-      "How long does the drive take?",
-      "What game do Owen and Lily play?",
-      "What does the scenery look like as they get closer?",
+      { text: "How long does the drive take?", answer: "Almost three hours." },
+      { text: "What game do Owen and Lily play?", answer: "Spotting yellow cars and counting animals." },
+      { text: "What does the scenery look like as they get closer?", answer: "Tall green trees and winding mountain roads." },
     ],
     trueFalse: [
       { text: "The drive takes almost three hours.", answer: true },
@@ -74,9 +74,9 @@ export const CHAPTERS = [
     story:
       "At the campsite, Dad announces that Lily and I get to set up the tent ourselves this time, with him only helping if needed. We spread out the tent poles, but connecting them correctly proves much harder than it looks. Our first attempt leans sideways dramatically, and we both burst out laughing at our wobbly creation. “Try connecting the poles in a criss-cross pattern,” Dad suggests helpfully, without actually touching anything himself. After several more tries, our tent finally stands up straight and sturdy. “We did it ourselves!” Lily cheers, and I feel a proud sense of accomplishment.",
     questions: [
-      "Who gets to set up the tent?",
-      "What happens on their first attempt?",
-      "What does Dad suggest?",
+      { text: "Who gets to set up the tent?", answer: "Owen and Lily." },
+      { text: "What happens on their first attempt?", answer: "It leans sideways dramatically." },
+      { text: "What does Dad suggest?", answer: "Connecting the poles in a criss-cross pattern." },
     ],
     trueFalse: [
       { text: "Owen and Lily set up the tent themselves.", answer: true },
@@ -99,9 +99,9 @@ export const CHAPTERS = [
     story:
       "After finishing the tent, we decide to explore the forest trail near our campsite before lunch. Dad leads the way, pointing out interesting things along the path, like a woodpecker tapping loudly on a tree trunk. “Look at these mushrooms,” Lily says, crouching down to examine some bright orange ones growing near the trail. We discover animal tracks pressed into soft mud and even spot a small chipmunk darting between rocks. Walking through the quiet, peaceful woods feels completely different from our noisy neighborhood back home, and I love every single new discovery we make together.",
     questions: [
-      "What does Dad point out on the trail?",
-      "What does Lily examine?",
-      "What animal tracks do they discover?",
+      { text: "What does Dad point out on the trail?", answer: "A woodpecker tapping on a tree trunk." },
+      { text: "What does Lily examine?", answer: "Bright orange mushrooms." },
+      { text: "What animal tracks do they discover?", answer: "Tracks pressed into soft mud, and a chipmunk." },
     ],
     trueFalse: [
       { text: "Dad points out a woodpecker.", answer: true },
@@ -124,9 +124,9 @@ export const CHAPTERS = [
     story:
       "As evening approaches, Dad teaches us how to build a safe campfire before dinner. “Always stack the smallest sticks first, like a little teepee,” he explains, demonstrating carefully. He reminds us that fire safety matters more than anything else, and we must never touch matches without an adult present. Once the fire crackles happily, we roast hot dogs on long metal sticks for dinner. Later, we carefully roast marshmallows too, watching them turn golden brown and gooey. Sitting around the warm, glowing fire feels magical, completely different from anything I have experienced before at home.",
     questions: [
-      "How does Dad say to stack the sticks?",
-      "What does Dad say matters most?",
-      "What do they roast for dinner?",
+      { text: "How does Dad say to stack the sticks?", answer: "Like a little teepee, smallest first." },
+      { text: "What does Dad say matters most?", answer: "Fire safety." },
+      { text: "What do they roast for dinner?", answer: "Hot dogs." },
     ],
     trueFalse: [
       { text: "Dad says to stack sticks like a teepee.", answer: true },
@@ -149,9 +149,9 @@ export const CHAPTERS = [
     story:
       "After dinner, Dad suggests we tell stories around the crackling campfire, just like he did when he was young. He begins with a funny tale about getting lost searching for berries as a boy, making both Lily and me laugh loudly. Then Lily tells a spooky story about a friendly forest ghost, using a mysterious, wobbly voice that gives me happy chills. When it's my turn, I make up a silly adventure about a talking raccoon who steals campers' marshmallows. We laugh together late into the evening, and I realize campfire stories might be my favorite part of camping so far.",
     questions: [
-      "What does Dad's story involve?",
-      "What kind of story does Lily tell?",
-      "What does Owen's story involve?",
+      { text: "What does Dad's story involve?", answer: "Getting lost searching for berries as a boy." },
+      { text: "What kind of story does Lily tell?", answer: "A spooky story about a friendly forest ghost." },
+      { text: "What does Owen's story involve?", answer: "A talking raccoon who steals campers' marshmallows." },
     ],
     trueFalse: [
       { text: "Dad tells a funny story about getting lost.", answer: true },
@@ -174,9 +174,9 @@ export const CHAPTERS = [
     story:
       "Later that night, tucked inside our sleeping bags, I suddenly hear a strange rustling noise just outside the tent. My whole body freezes, and my heart starts pounding loudly in my chest. “Did you hear that?” I whisper nervously to Lily, but she is already fast asleep, breathing peacefully. The rustling continues, followed by an odd hooting sound somewhere in the darkness. I pull my sleeping bag tightly around myself, feeling much braver during the daytime than I do right now, alone with my racing imagination in the pitch-black tent.",
     questions: [
-      "What does Owen hear outside the tent?",
-      "How does Owen's body react?",
-      "What is Lily doing while Owen is scared?",
+      { text: "What does Owen hear outside the tent?", answer: "A strange rustling noise and a hooting sound." },
+      { text: "How does Owen's body react?", answer: "He freezes and his heart pounds." },
+      { text: "What is Lily doing while Owen is scared?", answer: "Sleeping peacefully." },
     ],
     trueFalse: [
       { text: "Owen hears a strange rustling noise.", answer: true },
@@ -199,9 +199,9 @@ export const CHAPTERS = [
     story:
       "Unable to sleep, I quietly unzip my sleeping bag and crawl over to Dad's side of the tent. “I heard scary noises outside,” I whisper, feeling a little embarrassed about waking him. Dad doesn't laugh at all; instead, he listens carefully and smiles reassuringly. “That's probably just an owl and some wind moving through the leaves,” he explains gently, shining his flashlight briefly outside to show me nothing dangerous is there. He lets me stay close beside him for the rest of the night. Feeling safe next to Dad, my racing heart slowly calms down completely.",
     questions: [
-      "What does Owen tell Dad?",
-      "What does Dad say the noise probably was?",
-      "How does Owen feel after talking to Dad?",
+      { text: "What does Owen tell Dad?", answer: "That he heard scary noises outside." },
+      { text: "What does Dad say the noise probably was?", answer: "An owl and wind moving through the leaves." },
+      { text: "How does Owen feel after talking to Dad?", answer: "Safe -- his racing heart calms down." },
     ],
     trueFalse: [
       { text: "Owen tells Dad about the scary noises.", answer: true },
@@ -224,9 +224,9 @@ export const CHAPTERS = [
     story:
       "Early the next morning, refreshed after finally falling back asleep, we head out for a sunrise hike together. The forest looks completely different in the soft morning light, calm and golden. Suddenly, Lily grabs my arm and points silently toward a clearing ahead. Two deer stand peacefully near a sparkling lake, grazing quietly in the morning mist. We freeze completely still, watching in amazed silence until the deer slowly wander away into the trees. “That was incredible,” I whisper, and Dad nods, smiling proudly at witnessing something so beautiful together as a family.",
     questions: [
-      "What time of day is the hike?",
-      "What does Lily point toward?",
-      "What do they see near the lake?",
+      { text: "What time of day is the hike?", answer: "Sunrise, in the morning." },
+      { text: "What does Lily point toward?", answer: "A clearing ahead." },
+      { text: "What do they see near the lake?", answer: "Two deer grazing." },
     ],
     trueFalse: [
       { text: "The hike happens early in the morning.", answer: true },
@@ -249,9 +249,9 @@ export const CHAPTERS = [
     story:
       "By afternoon, it's time to pack everything back into the car and head home. Folding the tent feels much easier now that we know how it works, and we finish quickly as a team. As Dad starts the engine, I look back one last time at our campsite, already feeling a little sad to leave. “Can we come back next month?” I ask hopefully. Dad laughs and promises we definitely will. Thinking about the campfire stories, the deer, and even the scary noises that turned out fine, I realize this camping trip became one unforgettable adventure I will never forget.",
     questions: [
-      "What do they do by afternoon?",
-      "How does folding the tent feel this time?",
-      "What does Owen ask Dad?",
+      { text: "What do they do by afternoon?", answer: "Pack everything back into the car." },
+      { text: "How does folding the tent feel this time?", answer: "Much easier." },
+      { text: "What does Owen ask Dad?", answer: "Can we come back next month?" },
     ],
     trueFalse: [
       { text: "They pack everything to head home.", answer: true },

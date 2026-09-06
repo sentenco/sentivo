@@ -24,9 +24,9 @@ export const CHAPTERS = [
     story:
       "After reading every issue of our school newspaper obsessively for two years, I finally work up the courage to join the staff myself. Ms. Rivera welcomes me warmly into the cramped, cluttered office, explaining that new reporters usually start with smaller, simpler assignments before earning bigger stories. I nod eagerly, imagining myself uncovering something important and meaningful for the whole school to read about. “Everyone starts somewhere, Caleb,” she says, handing me a small stack of upcoming events to write about. Walking out with my very first assignment, I feel a genuine thrill about officially becoming part of something real.",
     questions: [
-      "Why does Caleb decide to join the newspaper?",
-      "What does Ms. Rivera explain to new reporters?",
-      "How does Caleb feel with his first assignment?",
+      { text: "Why does Caleb decide to join the newspaper?", answer: "He's read every issue obsessively for two years." },
+      { text: "What does Ms. Rivera explain to new reporters?", answer: "That they usually start with smaller assignments." },
+      { text: "How does Caleb feel with his first assignment?", answer: "A genuine thrill." },
     ],
     trueFalse: [
       { text: "Caleb has read the newspaper for two years.", answer: true },
@@ -53,9 +53,9 @@ export const CHAPTERS = [
     story:
       "My first assignment turns out to be reporting on a small change to the cafeteria menu, hardly the exciting investigative journalism I had imagined joining for. I interview the cafeteria manager, jot down uninspiring quotes about nutritional guidelines, and struggle to make three hundred words feel remotely interesting. Iris, another reporter who sits near me, notices my obvious disappointment and laughs sympathetically. “We all start with menu changes and lost-and-found updates,” she admits, sharing her own embarrassing first article about a broken water fountain. Somehow, knowing everyone begins this way makes the assignment feel slightly less discouraging.",
     questions: [
-      "What is Caleb's first assignment about?",
-      "Who does Caleb interview?",
-      "What does Iris admit about her own first article?",
+      { text: "What is Caleb's first assignment about?", answer: "A small change to the cafeteria menu." },
+      { text: "Who does Caleb interview?", answer: "The cafeteria manager." },
+      { text: "What does Iris admit about her own first article?", answer: "That it was about a broken water fountain." },
     ],
     trueFalse: [
       { text: "Caleb's first assignment is about a menu change.", answer: true },
@@ -82,9 +82,9 @@ export const CHAPTERS = [
     story:
       "While walking through the hallway one afternoon, I overhear two teachers discussing the school's budget in hushed, worried tones near the art room. Something about “cutting the art program” catches my attention immediately, and I slow my pace, straining to hear more details without seeming obvious. This sounds like something students would genuinely want to know about, unlike menu changes or lost umbrellas. My heart races with unexpected excitement as I realize I might have accidentally stumbled onto real, meaningful news. I decide right there in the hallway that I need to investigate this story properly, whatever it takes.",
     questions: [
-      "What does Caleb overhear teachers discussing?",
-      "How does this compare to his previous stories?",
-      "What does Caleb decide to do?",
+      { text: "What does Caleb overhear teachers discussing?", answer: "Cutting the art program." },
+      { text: "How does this compare to his previous stories?", answer: "It's something students would genuinely want to know about." },
+      { text: "What does Caleb decide to do?", answer: "Investigate the story properly." },
     ],
     trueFalse: [
       { text: "Caleb overhears teachers discussing budget cuts.", answer: true },
@@ -111,9 +111,9 @@ export const CHAPTERS = [
     story:
       "I start by visiting the art room directly, asking Mr. Foster, the art teacher, whether the rumors about budget cuts hold any truth. He confirms cautiously that funding discussions are indeed happening, though nothing official has been decided yet by the administration. Next, I interview several students in the hallway, discovering that many genuinely care about keeping the art program running for future classes. Taking careful notes, I realize this story involves real people with real concerns, unlike my previous, forgettable assignments. Gathering these different perspectives feels like actual journalism, exactly what originally drew me toward joining the newspaper.",
     questions: [
-      "Who does Caleb interview first?",
-      "What does Mr. Foster confirm?",
-      "What does Caleb discover from interviewing students?",
+      { text: "Who does Caleb interview first?", answer: "Mr. Foster, the art teacher." },
+      { text: "What does Mr. Foster confirm?", answer: "That funding discussions are happening, though nothing is decided." },
+      { text: "What does Caleb discover from interviewing students?", answer: "That many genuinely care about keeping the art program." },
     ],
     trueFalse: [
       { text: "Caleb interviews Mr. Foster, the art teacher.", answer: true },
@@ -140,9 +140,9 @@ export const CHAPTERS = [
     story:
       "Excited about my findings, I bring my story pitch to Ms. Rivera, expecting immediate enthusiastic approval for such an important topic. Instead, she reads it slowly, her expression thoughtful rather than immediately encouraging, which honestly surprises and worries me a little. “This is a serious, sensitive story. Are you prepared to handle it responsibly?” she asks carefully, not doubting my ability exactly, but emphasizing genuine journalistic responsibility. I assure her I understand the importance of accuracy and fairness, especially regarding something affecting real students and teachers. After a long pause, she finally nods, agreeing cautiously to let me pursue it under her guidance.",
     questions: [
-      "How does Ms. Rivera react to Caleb's pitch?",
-      "What does Ms. Rivera ask Caleb?",
-      "What does Caleb assure her?",
+      { text: "How does Ms. Rivera react to Caleb's pitch?", answer: "Thoughtfully, not immediately enthusiastic." },
+      { text: "What does Ms. Rivera ask Caleb?", answer: "If he's prepared to handle it responsibly." },
+      { text: "What does Caleb assure her?", answer: "That he understands the importance of accuracy and fairness." },
     ],
     trueFalse: [
       { text: "Ms. Rivera immediately approves with pure enthusiasm.", answer: false },
@@ -169,9 +169,9 @@ export const CHAPTERS = [
     story:
       "With official permission secured, Iris offers to help me dig deeper, and together we schedule an interview with the school principal directly. We prepare thoughtful, specific questions beforehand, wanting to understand the actual financial reasoning rather than relying only on hallway rumors. Iris teaches me how to structure genuinely useful interview questions, avoiding anything that sounds accusatory or one-sided unfairly. “Good journalism asks hard questions respectfully,” she explains, reviewing my draft questions with her sharp editing eye. By the time our interview is scheduled for Thursday, I feel far more prepared and considerably less nervous than I expected to feel.",
     questions: [
-      "Who offers to help Caleb dig deeper?",
-      "Who do they schedule an interview with?",
-      "What does Iris teach Caleb?",
+      { text: "Who offers to help Caleb dig deeper?", answer: "Iris." },
+      { text: "Who do they schedule an interview with?", answer: "The school principal." },
+      { text: "What does Iris teach Caleb?", answer: "How to structure fair, non-accusatory interview questions." },
     ],
     trueFalse: [
       { text: "Iris offers to help Caleb dig deeper.", answer: true },
@@ -198,9 +198,9 @@ export const CHAPTERS = [
     story:
       "Armed with quotes from teachers, students, and the principal, I finally sit down to write the actual article, feeling the weight of responsibility more than ever. Balancing every perspective fairly proves harder than I expected, since I genuinely want to represent everyone's concerns without appearing biased toward any particular side. I rewrite my opening paragraph four separate times, searching for a tone that feels serious without becoming overly dramatic or sensational. Late into the evening, surrounded by crumpled paper and empty tea cups, I finally produce a draft that feels honest, balanced, and genuinely worth submitting to Ms. Rivera for review.",
     questions: [
-      "What does Caleb finally sit down to do?",
-      "What does Caleb find harder than expected?",
-      "How many times does Caleb rewrite his opening paragraph?",
+      { text: "What does Caleb finally sit down to do?", answer: "Write the actual article." },
+      { text: "What does Caleb find harder than expected?", answer: "Balancing every perspective fairly." },
+      { text: "How many times does Caleb rewrite his opening paragraph?", answer: "Four times." },
     ],
     trueFalse: [
       { text: "Caleb sits down to write the actual article.", answer: true },
@@ -227,9 +227,9 @@ export const CHAPTERS = [
     story:
       "Ms. Rivera reads my draft slowly the next day, her red pen moving steadily across the paper while I sit nearby trying not to fidget nervously. “This part needs a source,” she notes at one point, and “this sentence sounds like your opinion, not fact,” at another. Though her feedback stings slightly, I recognize she's genuinely helping me become more precise and credible as a reporter. We spend nearly an hour revising sentences together, cutting anything unnecessary and strengthening weaker, unclear arguments throughout the article. By the end, my article looks noticeably different, but undeniably stronger and more professionally polished than my original draft.",
     questions: [
-      "What does Ms. Rivera do with her red pen?",
-      "What kind of feedback does she give?",
-      "How does Caleb feel about her feedback?",
+      { text: "What does Ms. Rivera do with her red pen?", answer: "Marks up his draft." },
+      { text: "What kind of feedback does she give?", answer: "That parts need sources and some sentences sound like opinion, not fact." },
+      { text: "How does Caleb feel about her feedback?", answer: "It stings, but he recognizes it's helping him." },
     ],
     trueFalse: [
       { text: "Ms. Rivera marks up the draft with a red pen.", answer: true },
@@ -256,9 +256,9 @@ export const CHAPTERS = [
     story:
       "On publication day, I arrive early to watch students grab copies of the newspaper from the stack near the main entrance, my stomach fluttering nervously. Seeing my name printed as the byline above the article feels surreal, something I have imagined for two entire years finally becoming real. Throughout the day, classmates approach me with genuine questions and opinions about the art program, several thanking me directly for investigating something they actually cared about. Even a couple of skeptical teachers stop me in the hallway, acknowledging the article felt fair and well-researched despite the sensitive topic. This response feels better than any grade I have ever received.",
     questions: [
-      "What does Caleb watch students do?",
-      "How does Caleb feel seeing his byline?",
-      "How do classmates react throughout the day?",
+      { text: "What does Caleb watch students do?", answer: "Grab copies of the newspaper." },
+      { text: "How does Caleb feel seeing his byline?", answer: "Surreal." },
+      { text: "How do classmates react throughout the day?", answer: "They thank him for investigating something they cared about." },
     ],
     trueFalse: [
       { text: "Caleb watches students grab newspaper copies.", answer: true },
@@ -285,9 +285,9 @@ export const CHAPTERS = [
     story:
       "Two weeks after publication, the administration announces they've reconsidered the budget decision, citing overwhelming student interest revealed through the newspaper article. Standing outside the art room, watching students paint just like always, I feel a swell of pride unlike anything I've experienced from schoolwork before. “You started this,” Iris reminds me, though I quickly credit her research help and Ms. Rivera's careful guidance throughout the entire process. Ms. Rivera smiles proudly, mentioning that journalism's real purpose is exactly this: giving people information that leads to genuine, meaningful change. Walking away, I already feel eager to find my next important story.",
     questions: [
-      "What does the administration announce?",
-      "How does Caleb feel watching students paint again?",
-      "What does Ms. Rivera say journalism's real purpose is?",
+      { text: "What does the administration announce?", answer: "That they've reconsidered the budget decision." },
+      { text: "How does Caleb feel watching students paint again?", answer: "A swell of pride." },
+      { text: "What does Ms. Rivera say journalism's real purpose is?", answer: "Giving people information that leads to genuine, meaningful change." },
     ],
     trueFalse: [
       { text: "The administration reconsiders the budget decision.", answer: true },

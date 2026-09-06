@@ -24,9 +24,9 @@ export const CHAPTERS = [
     story:
       "After my English teacher mentions that I argue persuasively during class discussions, she suggests I try out for the school debate team. I stand outside the classroom door for a full minute, unsure whether I actually have the confidence to walk inside. Public speaking has never been something I enjoyed, and the idea of debating strangers in front of judges sounds genuinely terrifying. Still, something about the challenge pulls at my curiosity. Taking a deep breath, I finally push open the door and step into a room full of students who all seem far more prepared than I feel.",
     questions: [
-      "Why does the teacher suggest Diego try debate?",
-      "How does Diego feel about public speaking?",
-      "What does Diego finally do?",
+      { text: "Why does the teacher suggest Diego try debate?", answer: "Because he argues persuasively during class discussions." },
+      { text: "How does Diego feel about public speaking?", answer: "He finds it terrifying -- he's never enjoyed it." },
+      { text: "What does Diego finally do?", answer: "Pushes open the door and steps into the room." },
     ],
     trueFalse: [
       { text: "Diego's teacher suggests he try out for debate.", answer: true },
@@ -53,9 +53,9 @@ export const CHAPTERS = [
     story:
       "Mr. Alvarez begins the meeting by explaining the debate format, and honestly, the rules feel completely overwhelming at first. There are opening statements, rebuttals, cross-examinations, and closing arguments, each with strict time limits I struggle to keep straight. “Don't worry, everyone feels lost during their first week,” Mr. Alvarez says, noticing my confused expression among several others. He explains that debate isn't really about winning arguments through volume, but through logic, evidence, and staying calm under pressure. By the end of the meeting, my head spins with new vocabulary, but a small part of me feels intrigued rather than defeated.",
     questions: [
-      "What does Mr. Alvarez explain?",
-      "What does Mr. Alvarez say about winning debates?",
-      "How does Diego feel by the end of the meeting?",
+      { text: "What does Mr. Alvarez explain?", answer: "The debate format -- opening statements, rebuttals, cross-examinations, closing arguments." },
+      { text: "What does Mr. Alvarez say about winning debates?", answer: "That it's about logic, evidence, and staying calm, not volume." },
+      { text: "How does Diego feel by the end of the meeting?", answer: "Intrigued rather than defeated." },
     ],
     trueFalse: [
       { text: "Mr. Alvarez explains the debate format.", answer: true },
@@ -82,9 +82,9 @@ export const CHAPTERS = [
     story:
       "For team debates, Mr. Alvarez pairs students together, and I end up partnered with Priya, someone I have only ever seen around school but never actually spoken to. “I've heard you're good at arguing,” Priya says with a grin, extending her hand for a confident handshake. I laugh nervously, admitting I'm not sure that's necessarily a compliment. As we start discussing our first practice topic, I quickly notice Priya thinks incredibly fast on her feet, building arguments almost effortlessly. Working alongside someone so naturally talented feels intimidating at first, but I also sense this partnership could genuinely help me improve.",
     questions: [
-      "Who does Diego get paired with?",
-      "What does Priya say about Diego?",
-      "What does Diego notice about Priya's thinking?",
+      { text: "Who does Diego get paired with?", answer: "Priya." },
+      { text: "What does Priya say about Diego?", answer: "That she's heard he's good at arguing." },
+      { text: "What does Diego notice about Priya's thinking?", answer: "That she thinks incredibly fast on her feet." },
     ],
     trueFalse: [
       { text: "Diego is paired with Priya.", answer: true },
@@ -111,9 +111,9 @@ export const CHAPTERS = [
     story:
       "Our first assigned topic asks whether school uniforms should be required, and Priya suggests we spend the whole weekend researching both sides thoroughly. “Understanding the opposing argument makes your own argument stronger,” she explains, opening several tabs of articles on her laptop. We highlight key statistics and organize our strongest points into a clear, logical outline. I discover that building a genuinely persuasive argument requires much more careful thinking than simply stating an opinion loudly. By Sunday evening, we have transformed a messy pile of research into three solid, well-supported points that I actually feel proud presenting.",
     questions: [
-      "What is their first assigned topic?",
-      "What does Priya say about understanding the opposing argument?",
-      "How do they organize their research?",
+      { text: "What is their first assigned topic?", answer: "Whether school uniforms should be required." },
+      { text: "What does Priya say about understanding the opposing argument?", answer: "That it makes your own argument stronger." },
+      { text: "How do they organize their research?", answer: "Into a clear, logical outline with key statistics." },
     ],
     trueFalse: [
       { text: "Their topic is about school uniforms.", answer: true },
@@ -140,9 +140,9 @@ export const CHAPTERS = [
     story:
       "Mr. Alvarez organizes a practice round where different pairs debate against each other under timed, realistic conditions. When it's my turn to speak, my prepared notecards suddenly feel useless, and my mind goes completely blank for several agonizing seconds. I stumble through my opening statement, repeating myself awkwardly while my opponent watches with a patient but slightly amused expression. Priya tries subtly signaling encouragement from the sidelines, but nervousness completely overwhelms my ability to think clearly. When my three minutes finally end, I sit down feeling embarrassed, wondering whether I made a serious mistake joining this team.",
     questions: [
-      "What does Mr. Alvarez organize?",
-      "What happens to Diego's mind during his turn?",
-      "How does Diego feel when his three minutes end?",
+      { text: "What does Mr. Alvarez organize?", answer: "A practice round with timed, realistic conditions." },
+      { text: "What happens to Diego's mind during his turn?", answer: "It goes completely blank." },
+      { text: "How does Diego feel when his three minutes end?", answer: "Embarrassed." },
     ],
     trueFalse: [
       { text: "Mr. Alvarez organizes a timed practice round.", answer: true },
@@ -169,9 +169,9 @@ export const CHAPTERS = [
     story:
       "After practice ends, I sit alone on the bleachers, replaying my embarrassing performance over and over in my head. Maybe Priya deserves a better partner, someone who doesn't freeze up the moment real pressure appears in front of an audience. I seriously consider quitting the team altogether, convinced that today's disaster proves I simply don't belong here among naturally confident speakers. My notecards lie scattered beside me, a small, defeated reminder of hours spent preparing for something I still completely failed at delivering. Part of me wants to disappear quietly before anyone notices how discouraged I actually feel.",
     questions: [
-      "Where does Diego sit after practice?",
-      "What does Diego consider doing?",
-      "How does Diego feel looking at his notecards?",
+      { text: "Where does Diego sit after practice?", answer: "Alone on the bleachers." },
+      { text: "What does Diego consider doing?", answer: "Quitting the team." },
+      { text: "How does Diego feel looking at his notecards?", answer: "Defeated." },
     ],
     trueFalse: [
       { text: "Diego sits alone on the bleachers.", answer: true },
@@ -198,9 +198,9 @@ export const CHAPTERS = [
     story:
       "Just as I'm about to leave, Priya walks over and sits beside me without saying a word at first. “Everyone freezes their first time. I did too,” she finally admits, surprising me completely. She explains that the problem wasn't my argument, which was actually well-researched, but rather that I tried memorizing every word instead of just knowing my main points. “Speak like you're explaining it to a friend,” she suggests, “not reciting a script.” Hearing that even Priya struggled once makes my failure feel less permanent, and slowly, a small flicker of determination replaces my earlier urge to quit.",
     questions: [
-      "What does Priya admit about her own first time?",
-      "What does Priya say the real problem was?",
-      "What advice does Priya give Diego?",
+      { text: "What does Priya admit about her own first time?", answer: "That she froze too." },
+      { text: "What does Priya say the real problem was?", answer: "That he tried memorizing every word instead of knowing his main points." },
+      { text: "What advice does Priya give Diego?", answer: "Speak like you're explaining it to a friend, not reciting a script." },
     ],
     trueFalse: [
       { text: "Priya admits she froze during her first time too.", answer: true },
@@ -227,9 +227,9 @@ export const CHAPTERS = [
     story:
       "A month later, our team travels to a real regional debate tournament held at a different school's gymnasium. The room buzzes with dozens of students in matching team colors, and my nerves return instantly at the sight of unfamiliar, confident faces everywhere. Priya squeezes my shoulder reassuringly as we find our assigned table for the first round. Remembering her advice, I focus on knowing my main points rather than reciting memorized sentences word for word. When my turn comes, my voice shakes slightly at first, but I push through, speaking more naturally than I ever managed during practice.",
     questions: [
-      "Where does the tournament take place?",
-      "How does Diego feel seeing the competing teams?",
-      "What does Diego remember when it's his turn?",
+      { text: "Where does the tournament take place?", answer: "A different school's gymnasium." },
+      { text: "How does Diego feel seeing the competing teams?", answer: "His nerves return instantly." },
+      { text: "What does Diego remember when it's his turn?", answer: "To know his main points rather than reciting memorized sentences." },
     ],
     trueFalse: [
       { text: "The tournament takes place at a different school.", answer: true },
@@ -256,9 +256,9 @@ export const CHAPTERS = [
     story:
       "Our final round pairs us against the tournament's top-ranked team, a duo known for their sharp, quick rebuttals that had eliminated several other teams already. My stomach tightens as their lead speaker begins, effortlessly dismantling parts of an argument we had prepared. Instead of panicking like I might have weeks ago, I remember Priya's advice and calmly build on our remaining points instead. When it's my turn for rebuttal, I surprise myself by responding smoothly, addressing their argument directly instead of ignoring it. Whether we win or lose, I realize I am actually holding my own.",
     questions: [
-      "Who do they face in the final round?",
-      "What does the opposing lead speaker do?",
-      "How does Diego react compared to how he might have before?",
+      { text: "Who do they face in the final round?", answer: "The tournament's top-ranked team." },
+      { text: "What does the opposing lead speaker do?", answer: "Dismantles parts of their argument effortlessly." },
+      { text: "How does Diego react compared to how he might have before?", answer: "He stays calm and builds on their remaining points instead of panicking." },
     ],
     trueFalse: [
       { text: "They face the tournament's top-ranked team.", answer: true },
@@ -285,9 +285,9 @@ export const CHAPTERS = [
     story:
       "In the end, our team doesn't win the tournament, losing narrowly to the top-ranked pair by only a few judge points. Standing outside the gymnasium afterward, I expect to feel crushed, but strangely, I mostly feel proud instead. “Remember how you froze during that first practice round?” Priya asks, grinning as she recalls how far I have actually come. She's right; the nervous, blank-minded version of myself from weeks ago would never have survived facing the tournament's toughest team so calmly. Walking to the car, I already find myself looking forward to next semester's competition, something I never expected to feel.",
     questions: [
-      "Does their team win the tournament?",
-      "How does Diego feel afterward, unexpectedly?",
-      "What does Diego look forward to by the end?",
+      { text: "Does their team win the tournament?", answer: "No, they lose narrowly." },
+      { text: "How does Diego feel afterward, unexpectedly?", answer: "Proud." },
+      { text: "What does Diego look forward to by the end?", answer: "Next semester's competition." },
     ],
     trueFalse: [
       { text: "Their team loses narrowly to the top-ranked pair.", answer: true },

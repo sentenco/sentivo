@@ -24,9 +24,9 @@ export const CHAPTERS = [
     story:
       "For my sixteenth birthday, my older cousin surprises me with something I've secretly wanted for months: a genuine, brand-new skateboard with bright orange wheels. I have watched skating videos online countless times, admiring how effortlessly experienced skaters glide, flip, and balance with apparent ease. Holding the smooth wooden deck in my hands, I feel a rush of excitement mixed with sudden, unexpected nervousness about actually trying it myself. “You'll fall a lot before you get good,” my cousin warns honestly, though his warning barely dampens my enthusiasm. That evening, I can't wait to finally step onto it for the very first time.",
     questions: [
-      "What does Marcus's cousin give him?",
-      "What has Marcus watched countless times?",
-      "What warning does his cousin give?",
+      { text: "What does Marcus's cousin give him?", answer: "A new skateboard with orange wheels." },
+      { text: "What has Marcus watched countless times?", answer: "Skating videos online." },
+      { text: "What warning does his cousin give?", answer: "You'll fall a lot before you get good." },
     ],
     trueFalse: [
       { text: "Marcus's cousin gives him a skateboard.", answer: true },
@@ -53,9 +53,9 @@ export const CHAPTERS = [
     story:
       "In our driveway, I step onto the skateboard for the first time, immediately discovering that standing still on wheels feels shockingly harder than any video suggested. My arms flail wildly for balance, and within seconds, I topple sideways onto the grass, feeling slightly foolish despite no one else being around. My little sister watches from the porch, giggling openly at my clumsy, uncoordinated attempts to simply stay upright. Determined despite the embarrassment, I climb back on repeatedly, falling nearly a dozen times before managing even a few wobbly, uncertain seconds of actual balance. This is definitely harder than it looks online.",
     questions: [
-      "What does Marcus discover about standing on the skateboard?",
-      "Who watches and giggles at Marcus?",
-      "How many times does Marcus fall?",
+      { text: "What does Marcus discover about standing on the skateboard?", answer: "That it's shockingly harder than it looks." },
+      { text: "Who watches and giggles at Marcus?", answer: "His little sister." },
+      { text: "How many times does Marcus fall?", answer: "Nearly a dozen." },
     ],
     trueFalse: [
       { text: "Standing still on wheels feels harder than expected.", answer: true },
@@ -82,9 +82,9 @@ export const CHAPTERS = [
     story:
       "After a week of driveway practice, I finally muster enough courage to visit the local skate park everyone at school talks about constantly. Standing at the entrance, I watch several skilled skaters gliding smoothly across ramps, performing tricks that look impossibly graceful and effortless from where I stand. Suddenly, my modest driveway progress feels embarrassingly insignificant compared to their obvious expertise and confident, practiced movements. Part of me considers turning around immediately, convinced everyone will notice how obviously inexperienced I actually am. Taking a deep breath instead, I step through the gate, reminding myself everyone here started exactly where I'm standing now.",
     questions: [
-      "Where does Marcus finally visit?",
-      "What does Marcus watch skilled skaters doing?",
-      "What does Marcus consider doing?",
+      { text: "Where does Marcus finally visit?", answer: "The local skate park." },
+      { text: "What does Marcus watch skilled skaters doing?", answer: "Gliding smoothly and performing tricks." },
+      { text: "What does Marcus consider doing?", answer: "Turning around immediately and leaving." },
     ],
     trueFalse: [
       { text: "Marcus visits the local skate park.", answer: true },
@@ -111,9 +111,9 @@ export const CHAPTERS = [
     story:
       "Sitting awkwardly on a bench, watching rather than participating, I notice a friendly-looking guy named Dev approaching with an easy, welcoming smile. “First time here? I remember mine,” he says casually, sitting down beside me without any judgment in his tone whatsoever. He offers a few beginner tips about foot placement and weight distribution, things I hadn't considered while practicing alone in my driveway. Dev demonstrates a simple pushing motion, encouraging me to try it slowly on flat ground before attempting anything more ambitious. His patient, friendly guidance makes the intimidating park suddenly feel considerably more welcoming and approachable than before.",
     questions: [
-      "Who approaches Marcus at the skate park?",
-      "What does Dev offer Marcus?",
-      "How does Dev's guidance make Marcus feel?",
+      { text: "Who approaches Marcus at the skate park?", answer: "Dev." },
+      { text: "What does Dev offer Marcus?", answer: "Beginner tips about foot placement and weight distribution." },
+      { text: "How does Dev's guidance make Marcus feel?", answer: "The park feels more welcoming." },
     ],
     trueFalse: [
       { text: "Dev approaches Marcus with a friendly smile.", answer: true },
@@ -140,9 +140,9 @@ export const CHAPTERS = [
     story:
       "Feeling slightly more confident after Dev's tips, I attempt a gentle slope, gaining more speed than I anticipated and quickly losing complete control. My board shoots forward unexpectedly, and I crash hard onto the pavement, scraping my elbow painfully against the rough concrete surface. Pain shoots through my arm, and for a moment, embarrassed tears threaten to well up despite my genuine effort to stay composed in front of strangers. Several skaters glance over with concern, though thankfully no one laughs or makes the situation feel worse than it already does. Sitting there, clutching my throbbing elbow, I seriously question whether skating is really worth this.",
     questions: [
-      "What does Marcus attempt after Dev's tips?",
-      "What happens to Marcus's board?",
-      "How does Marcus feel sitting on the ground?",
+      { text: "What does Marcus attempt after Dev's tips?", answer: "A gentle slope." },
+      { text: "What happens to Marcus's board?", answer: "It shoots forward and he crashes." },
+      { text: "How does Marcus feel sitting on the ground?", answer: "He questions whether skating is worth it." },
     ],
     trueFalse: [
       { text: "Marcus attempts a gentle slope.", answer: true },
@@ -169,9 +169,9 @@ export const CHAPTERS = [
     story:
       "An older skater named Jasmine walks over, offering a hand to help me up while examining my scraped elbow with practiced, unbothered casualness. “Want to see something?” she asks, rolling up her pant leg to reveal an impressive collection of old scars and faded bruises across her knee. “Everyone here has stories like yours,” she explains, sitting down beside me on the edge of a ramp. She shares how she broke her wrist during her second month of skating, yet kept practicing anyway because quitting felt worse than temporary pain ever could. Her honesty about struggling too somehow makes my own embarrassment feel considerably lighter.",
     questions: [
-      "Who walks over to help Marcus?",
-      "What does Jasmine show Marcus?",
-      "What happened to Jasmine during her second month?",
+      { text: "Who walks over to help Marcus?", answer: "Jasmine." },
+      { text: "What does Jasmine show Marcus?", answer: "Her old scars and bruises." },
+      { text: "What happened to Jasmine during her second month?", answer: "She broke her wrist." },
     ],
     trueFalse: [
       { text: "Jasmine walks over to help Marcus up.", answer: true },
@@ -198,9 +198,9 @@ export const CHAPTERS = [
     story:
       "Over the following two weeks, I return to the skate park almost daily, gradually noticing small but genuinely encouraging improvements in my balance and confidence. Pushing off and gliding across flat ground no longer requires intense concentration, becoming instead something closer to natural, automatic movement. Dev and Jasmine both offer occasional encouragement whenever they spot me practicing, sometimes shouting friendly tips as they skate past effortlessly. I still fall occasionally, though considerably less often than during my first painful week, and the falls themselves feel less discouraging now somehow. Each small success, however minor it seems, motivates me to keep returning consistently.",
     questions: [
-      "How often does Marcus return to the skate park?",
-      "What no longer requires intense concentration?",
-      "How do Dev and Jasmine help Marcus?",
+      { text: "How often does Marcus return to the skate park?", answer: "Almost daily." },
+      { text: "What no longer requires intense concentration?", answer: "Pushing off and gliding across flat ground." },
+      { text: "How do Dev and Jasmine help Marcus?", answer: "They offer encouragement and friendly tips." },
     ],
     trueFalse: [
       { text: "Marcus returns to the skate park almost daily.", answer: true },
@@ -227,9 +227,9 @@ export const CHAPTERS = [
     story:
       "Feeling more confident after weeks of steady progress, I decide it's finally time to attempt my first actual trick, a basic jump called an ollie. Dev explains the technique patiently, demonstrating how pressing the tail down while sliding your front foot forward should launch the board upward smoothly. My first attempt sends the board flying sideways awkwardly, missing my feet entirely and rolling several feet away across the pavement. I try again and again, each attempt slightly different but equally unsuccessful, my frustration building steadily with every failed try. Dev reminds me patiently that this particular trick took him nearly a month to master properly.",
     questions: [
-      "What trick does Marcus decide to attempt?",
-      "What does Dev explain about the technique?",
-      "How long did this trick take Dev to master?",
+      { text: "What trick does Marcus decide to attempt?", answer: "An ollie." },
+      { text: "What does Dev explain about the technique?", answer: "Pressing the tail down while sliding the front foot forward." },
+      { text: "How long did this trick take Dev to master?", answer: "Nearly a month." },
     ],
     trueFalse: [
       { text: "Marcus attempts an ollie for the first time.", answer: true },
@@ -256,9 +256,9 @@ export const CHAPTERS = [
     story:
       "After nearly two weeks of failed, frustrating attempts, something finally clicks during my regular Saturday practice session at the park. My foot presses the tail at exactly the right angle, and suddenly the board pops cleanly into the air beneath me, hovering briefly before landing smoothly back under my feet. Stunned, I nearly forget to keep rolling forward, catching myself just in time to avoid another embarrassing fall immediately afterward. Dev and Jasmine, who happened to be watching, erupt into genuine, enthusiastic cheers from across the park. “You got it! You actually got it!” Dev shouts, running over with an excited high-five waiting.",
     questions: [
-      "What finally happens during Marcus's practice session?",
-      "What does Marcus almost forget to do?",
-      "How do Dev and Jasmine react?",
+      { text: "What finally happens during Marcus's practice session?", answer: "He lands the ollie." },
+      { text: "What does Marcus almost forget to do?", answer: "Keep rolling forward." },
+      { text: "How do Dev and Jasmine react?", answer: "They erupt into cheers." },
     ],
     trueFalse: [
       { text: "Something finally clicks during Marcus's practice.", answer: true },
@@ -285,9 +285,9 @@ export const CHAPTERS = [
     story:
       "By evening, word of my landed ollie has apparently spread among the regular skaters, and several others come over to congratulate me warmly on my progress. Sitting on the edge of a ramp afterward, sharing snacks with Dev, Jasmine, and a few others whose names I'm finally starting to learn, I feel genuinely different than I did weeks earlier. This place that once felt intimidating and unwelcoming now feels almost like a second home, filled with people who understand exactly what today's small victory meant. Watching the sunset paint the ramps orange, I realize that every scraped elbow along the way was completely worth this feeling.",
     questions: [
-      "What has spread among the regular skaters?",
-      "Where does Marcus sit sharing snacks?",
-      "How does the park feel to Marcus now compared to before?",
+      { text: "What has spread among the regular skaters?", answer: "Word of his landed ollie." },
+      { text: "Where does Marcus sit sharing snacks?", answer: "On the edge of a ramp." },
+      { text: "How does the park feel to Marcus now compared to before?", answer: "Like a second home, instead of intimidating." },
     ],
     trueFalse: [
       { text: "Word of Marcus's landed ollie has spread.", answer: true },

@@ -31,9 +31,9 @@ export const CHAPTERS = [
     story:
       "On Monday morning, Mr. Cole walks into class and writes something on the whiteboard that makes my stomach drop: “Final Exam — Two Weeks.” A quiet groan spreads across the room, and I feel my chest tighten with sudden panic. This exam covers three whole months of material, and honestly, I have barely reviewed any of it so far. While everyone else complains to their neighbors, I sit frozen, thinking about how far behind I already feel. Two weeks doesn't sound like nearly enough time to learn everything I need to know before this exam decides so much of my grade.",
     questions: [
-      "What does Mr. Cole write on the whiteboard?",
-      "How does Maya feel when she sees it?",
-      "How much material does the exam cover?",
+      { text: "What does Mr. Cole write on the whiteboard?", answer: "Final Exam -- Two Weeks." },
+      { text: "How does Maya feel when she sees it?", answer: "Panicked, her stomach drops." },
+      { text: "How much material does the exam cover?", answer: "Three whole months." },
     ],
     trueFalse: [
       { text: "Mr. Cole announces the final exam is in two weeks.", answer: true },
@@ -60,9 +60,9 @@ export const CHAPTERS = [
     story:
       "At lunch, I explain my panic to Jordan, who has always been much more organized than I am about schoolwork. “Let's make a real plan instead of just worrying,” Jordan suggests calmly, pulling out a notebook. We divide the fourteen days into sections, deciding which subject we will focus on each afternoon after school. Jordan even suggests studying together at the library, since we struggle with different topics and could actually help each other. Writing everything down somehow makes the huge amount of material feel a little more manageable. For the first time since the announcement, I feel a small spark of hope.",
     questions: [
-      "What does Jordan suggest making?",
-      "How do they divide the fourteen days?",
-      "Where do they decide to study together?",
+      { text: "What does Jordan suggest making?", answer: "A real study plan." },
+      { text: "How do they divide the fourteen days?", answer: "Into sections for different subjects each afternoon." },
+      { text: "Where do they decide to study together?", answer: "The library." },
     ],
     trueFalse: [
       { text: "Jordan suggests making a real study plan.", answer: true },
@@ -89,9 +89,9 @@ export const CHAPTERS = [
     story:
       "Our first study session doesn't go nearly as well as I had hoped. I sit down with my textbook open, determined to focus, but my phone keeps buzzing with messages from group chats. Every few minutes, I check a notification, telling myself it will only take a second, but somehow twenty minutes disappear each time. When I finally look up, an entire hour has passed and I have barely read two pages. Jordan, who studies at my house today, notices my scattered attention immediately. “Maybe we should try something different tomorrow,” Jordan says gently, and I nod, embarrassed by how unfocused I have been.",
     questions: [
-      "What keeps interrupting Maya while she studies?",
-      "How much does Maya read in an hour?",
-      "What does Jordan suggest?",
+      { text: "What keeps interrupting Maya while she studies?", answer: "Her phone buzzing with messages." },
+      { text: "How much does Maya read in an hour?", answer: "Barely two pages." },
+      { text: "What does Jordan suggest?", answer: "Trying something different tomorrow." },
     ],
     trueFalse: [
       { text: "Maya's phone keeps buzzing with messages.", answer: true },
@@ -118,9 +118,9 @@ export const CHAPTERS = [
     story:
       "That evening, Mom notices my frustration and offers some advice from her own school days. “Try studying in short bursts, with real breaks in between,” she suggests, setting a timer for twenty-five minutes. She also recommends leaving my phone in another room completely, which sounds painful but strangely necessary. I make a stack of flashcards for vocabulary words instead of just rereading my notes passively. During my first real focused session, I actually remember information much better than before. When the timer finally rings, I feel surprised at how much I accomplished without constant interruptions pulling my attention away.",
     questions: [
-      "What advice does Mom give Maya?",
-      "What does Mom recommend Maya do with her phone?",
-      "What does Maya make instead of just rereading notes?",
+      { text: "What advice does Mom give Maya?", answer: "Study in short bursts with real breaks in between." },
+      { text: "What does Mom recommend Maya do with her phone?", answer: "Leave it in another room." },
+      { text: "What does Maya make instead of just rereading notes?", answer: "Flashcards." },
     ],
     trueFalse: [
       { text: "Mom suggests studying in short bursts with breaks.", answer: true },
@@ -147,9 +147,9 @@ export const CHAPTERS = [
     story:
       "By the end of the first week, I glance over at Jordan's notes during our library session and feel a wave of anxiety rush through me. Jordan's notebook is perfectly organized with color-coded sections, while mine looks messy and incomplete in comparison. “You already know so much more than me,” I say quietly, my confidence sinking lower with every page I compare. Jordan looks up, surprised by my sudden discouragement. “We're just better at different subjects,” Jordan replies simply, but I can't shake the growing feeling that I might not be ready for this exam no matter how hard I try.",
     questions: [
-      "What does Maya notice about Jordan's notes?",
-      "How does Maya's notebook compare?",
-      "What does Jordan say about their different strengths?",
+      { text: "What does Maya notice about Jordan's notes?", answer: "They are perfectly organized with color-coded sections." },
+      { text: "How does Maya's notebook compare?", answer: "Messy and incomplete." },
+      { text: "What does Jordan say about their different strengths?", answer: "That they're just better at different subjects." },
     ],
     trueFalse: [
       { text: "Jordan's notes are color-coded and organized.", answer: true },
@@ -176,9 +176,9 @@ export const CHAPTERS = [
     story:
       "Noticing my discouragement, Jordan pauses our session and flips back through my notebook carefully. “Look at this answer you wrote yesterday,” Jordan says, pointing to a paragraph I had completely forgotten about. “This is actually better explained than mine.” I stare at my own words, surprised that they sound more confident than I remembered feeling while writing them. Jordan explains that everyone studies differently, and comparing our progress isn't fair to either of us. “Let's just focus on getting a little better each day instead,” Jordan suggests warmly. Hearing this reframes the whole exam in a way that finally feels achievable.",
     questions: [
-      "What does Jordan point out in Maya's notebook?",
-      "How does Maya feel reading her own answer?",
-      "What does Jordan suggest focusing on instead?",
+      { text: "What does Jordan point out in Maya's notebook?", answer: "An answer she wrote yesterday that's actually well explained." },
+      { text: "How does Maya feel reading her own answer?", answer: "Surprised -- it sounds more confident than she remembered." },
+      { text: "What does Jordan suggest focusing on instead?", answer: "Getting a little better each day." },
     ],
     trueFalse: [
       { text: "Jordan points out a well-written answer of Maya's.", answer: true },
@@ -205,9 +205,9 @@ export const CHAPTERS = [
     story:
       "With one week left, Mr. Cole hands out a practice test to help us prepare for the real exam's format and timing. Jordan and I decide to take it together under real exam conditions, setting a strict timer and sitting apart so we can't help each other. My hands feel slightly shaky as I turn the first page, but I remind myself this is just practice, not the actual grade. Some questions feel surprisingly familiar from our study sessions, while others make me pause and think much harder. When the timer finally buzzes, I feel exhausted but oddly proud of pushing through it.",
     questions: [
-      "What does Mr. Cole hand out?",
-      "How do Maya and Jordan take the practice test?",
-      "How does Maya feel when the timer buzzes?",
+      { text: "What does Mr. Cole hand out?", answer: "A practice test." },
+      { text: "How do Maya and Jordan take the practice test?", answer: "Together, under real exam conditions, sitting apart." },
+      { text: "How does Maya feel when the timer buzzes?", answer: "Exhausted but oddly proud." },
     ],
     trueFalse: [
       { text: "Mr. Cole hands out a practice test.", answer: true },
@@ -234,9 +234,9 @@ export const CHAPTERS = [
     story:
       "The next day, Mr. Cole returns our graded practice tests, and I nervously flip to my score before reading any comments. It's not perfect, but it's better than I expected, especially considering how nervous I felt. Jordan and I sit down together to review every single mistake, discussing why each wrong answer happened instead of just moving past it. “This is actually the most useful part,” Jordan explains, “because now we know exactly what to review.” Going through our errors carefully, rather than feeling embarrassed about them, helps both of us understand the material in a way that simple rereading never could.",
     questions: [
-      "What does Mr. Cole return the next day?",
-      "How does Maya feel about her score?",
-      "Why does Jordan say reviewing mistakes is useful?",
+      { text: "What does Mr. Cole return the next day?", answer: "Their graded practice tests." },
+      { text: "How does Maya feel about her score?", answer: "Not perfect, but better than expected." },
+      { text: "Why does Jordan say reviewing mistakes is useful?", answer: "Because now they know exactly what to review." },
     ],
     trueFalse: [
       { text: "Mr. Cole returns their graded practice tests.", answer: true },
@@ -263,9 +263,9 @@ export const CHAPTERS = [
     story:
       "The morning of the actual exam arrives faster than I expected, and my stomach feels tight with nervous energy as I get ready. Mom makes my favorite breakfast, reminding me gently that I have prepared more than I realize over these past two weeks. At school, I meet Jordan outside the exam hall, and we exchange a quick, nervous smile. “We've got this,” Jordan says confidently, though I can tell they feel just as nervous as I do underneath their calm expression. Taking a deep breath, I remind myself of everything we practiced together and walk through the doors.",
     questions: [
-      "How does Maya feel the morning of the exam?",
-      "What does Mom remind Maya of?",
-      "What does Jordan say outside the exam hall?",
+      { text: "How does Maya feel the morning of the exam?", answer: "Her stomach feels tight with nervous energy." },
+      { text: "What does Mom remind Maya of?", answer: "That she has prepared more than she realizes." },
+      { text: "What does Jordan say outside the exam hall?", answer: "We've got this." },
     ],
     trueFalse: [
       { text: "Maya's stomach feels tight with nervous energy.", answer: true },
@@ -292,9 +292,9 @@ export const CHAPTERS = [
     story:
       "A week later, Mr. Cole hands back our exam results, and my hands tremble slightly as I unfold the paper. My score is not perfect, but it's significantly better than I ever imagined possible two weeks ago. Jordan grins widely at their own paper beside me, and we both realize how far we've come since that panicked Monday morning. “We actually did it,” I say, still a little in disbelief at how much we improved through consistent effort. Walking home together, I understand now that studying isn't really about being perfect, it's about growing steadily and never giving up along the way.",
     questions: [
-      "How does Maya feel unfolding her results?",
-      "How does Maya's score compare to what she imagined?",
-      "What does Maya understand about studying by the end?",
+      { text: "How does Maya feel unfolding her results?", answer: "Her hands tremble slightly." },
+      { text: "How does Maya's score compare to what she imagined?", answer: "Significantly better than she ever imagined." },
+      { text: "What does Maya understand about studying by the end?", answer: "That it's about growing steadily and never giving up, not being perfect." },
     ],
     trueFalse: [
       { text: "Maya's hands tremble as she unfolds the paper.", answer: true },
