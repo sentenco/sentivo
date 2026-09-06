@@ -24,9 +24,9 @@ export const CHAPTERS = [
     story:
       "Looking at my planner tonight, I count five different clubs I've committed to this semester alone. Student council, yearbook committee, volunteer club, the debate team, and now tutoring younger students twice weekly. Whenever someone asks me to join something, I find myself agreeing almost automatically, without genuinely considering my own limits. Tonight, I'm supposed to attend two meetings that overlap directly, and I haven't figured out which one to prioritize. My eyes feel heavy from exhaustion, and I realize I can't actually remember the last time I simply relaxed. If I keep going at this pace, something will eventually have to give completely.",
     questions: [
-      "How many clubs has Yuki committed to this semester?",
-      "What does Yuki do whenever someone asks her to join something?",
-      "What problem does Yuki have tonight?",
+      { text: "How many clubs has Yuki committed to this semester?", answer: "Five." },
+      { text: "What does Yuki do whenever someone asks her to join something?", answer: "Agrees almost automatically." },
+      { text: "What problem does Yuki have tonight?", answer: "Two meetings that overlap directly." },
     ],
     trueFalse: [
       { text: "Yuki has committed to five different clubs.", answer: true },
@@ -53,9 +53,9 @@ export const CHAPTERS = [
     story:
       "Between classes, a classmate approaches, asking if I'd help organize the upcoming school fair committee too. Despite the exhaustion already weighing on me, I hear myself saying yes before I've even properly considered the request. Walking away, I immediately regret it, wondering why saying no feels so genuinely difficult for me. I've always worried that refusing might disappoint people or make me seem uncommitted and unreliable somehow. However, saying yes to everything is clearly starting to affect my grades, sleep, and overall well-being lately. That evening, I add the fair committee to my already overwhelming planner, feeling a familiar knot forming in my stomach.",
     questions: [
-      "What does a classmate ask Yuki to help with?",
-      "What does Yuki do before considering the request?",
-      "What has Yuki always worried about?",
+      { text: "What does a classmate ask Yuki to help with?", answer: "Organizing the school fair committee." },
+      { text: "What does Yuki do before considering the request?", answer: "Says yes." },
+      { text: "What has Yuki always worried about?", answer: "That refusing might disappoint people." },
     ],
     trueFalse: [
       { text: "A classmate asks Yuki to help with the fair committee.", answer: true },
@@ -82,9 +82,9 @@ export const CHAPTERS = [
     story:
       "My older brother Ben stops by my room that evening, noticing my exhausted expression and cluttered, overloaded planner immediately. “You've been like this for weeks now. When was the last time you actually rested?” he asks directly. I try brushing off his concern, insisting I'm managing everything fine, though my voice sounds unconvincing even to myself. Ben, who dealt with similar overcommitment during his own junior year, shares how burnout eventually forced him to reevaluate everything completely. “Saying yes to everything isn't actually generous if it means saying no to your own health,” he points out gently. His words linger uncomfortably, since some part of me already suspected this truth myself.",
     questions: [
-      "Who stops by Yuki's room that evening?",
-      "What does Ben ask Yuki directly?",
-      "What does Ben share about his own experience?",
+      { text: "Who stops by Yuki's room that evening?", answer: "Her older brother Ben." },
+      { text: "What does Ben ask Yuki directly?", answer: "When was the last time she actually rested?" },
+      { text: "What does Ben share about his own experience?", answer: "That burnout forced him to reevaluate everything during his junior year." },
     ],
     trueFalse: [
       { text: "Ben stops by Yuki's room that evening.", answer: true },
@@ -111,9 +111,9 @@ export const CHAPTERS = [
     story:
       "This week proves Ben's point painfully clearly, as I rush frantically between commitments, forgetting important details along the way. I miss a deadline for the yearbook committee, something I never would have done before this semester started. During debate practice, I can barely focus, my mind constantly drifting toward everything else I still need to accomplish. A teacher pulls me aside, gently mentioning that my grades have dropped noticeably over the past month. Hearing this feels like a wake-up call I desperately needed but had been avoiding acknowledging until now. That night, exhausted beyond words, I finally admit something genuinely needs to change immediately.",
     questions: [
-      "What does Yuki miss this week?",
-      "What happens during debate practice?",
-      "What does a teacher mention to Yuki?",
+      { text: "What does Yuki miss this week?", answer: "A deadline for the yearbook committee." },
+      { text: "What happens during debate practice?", answer: "She can barely focus." },
+      { text: "What does a teacher mention to Yuki?", answer: "That her grades have dropped noticeably." },
     ],
     trueFalse: [
       { text: "Yuki misses a deadline for the yearbook committee.", answer: true },
@@ -140,9 +140,9 @@ export const CHAPTERS = [
     story:
       "The next day, I schedule an appointment with our guidance counselor, Ms. Farah, hoping she can offer some genuine perspective. I explain everything: the five commitments, the missed deadline, my dropping grades, and my constant exhaustion lately. She listens without judgment, then asks a simple question: “What would happen if you actually said no to something?” I admit I've never seriously considered that possibility, assuming refusing anything would somehow disappoint everyone involved. She gently explains that overcommitting often stems from wanting approval, rather than genuinely wanting to do everything equally. Her words feel uncomfortably accurate, like she's identified something about myself I hadn't fully recognized before.",
     questions: [
-      "Who does Yuki schedule an appointment with?",
-      "What question does Ms. Farah ask Yuki?",
-      "What does Ms. Farah say overcommitting often stems from?",
+      { text: "Who does Yuki schedule an appointment with?", answer: "Ms. Farah, the guidance counselor." },
+      { text: "What question does Ms. Farah ask Yuki?", answer: "What would happen if you actually said no to something?" },
+      { text: "What does Ms. Farah say overcommitting often stems from?", answer: "Wanting approval." },
     ],
     trueFalse: [
       { text: "Yuki schedules an appointment with Ms. Farah.", answer: true },
@@ -169,9 +169,9 @@ export const CHAPTERS = [
     story:
       "Following Ms. Farah's suggestion, I make a list of every commitment and honestly rank how much each one genuinely matters to me. Debate team and volunteer club feel meaningful and worth keeping, something I actually chose because I cared about them. The fair committee, however, I only joined because refusing felt awkward, not because I wanted to participate. Looking at this list clearly laid out helps me realize not every commitment deserves equal priority in my life. If I release the ones draining me without adding real value, maybe I could actually enjoy the ones remaining. This exercise feels surprisingly clarifying, like finally seeing a problem I'd been avoiding directly.",
     questions: [
-      "What does Yuki do following Ms. Farah's suggestion?",
-      "Which commitments does Yuki feel are meaningful?",
-      "Why did Yuki join the fair committee?",
+      { text: "What does Yuki do following Ms. Farah's suggestion?", answer: "Makes a list ranking how much each commitment matters." },
+      { text: "Which commitments does Yuki feel are meaningful?", answer: "Debate team and volunteer club." },
+      { text: "Why did Yuki join the fair committee?", answer: "Because refusing felt awkward." },
     ],
     trueFalse: [
       { text: "Yuki makes a list ranking her commitments.", answer: true },
@@ -198,9 +198,9 @@ export const CHAPTERS = [
     story:
       "Gathering my courage, I approach the fair committee leader to explain I need to step back from this commitment. My heart pounds as I speak, half expecting disappointment or frustration in response to my decision. Instead, she simply nods, saying she completely understands and thanks me for being honest rather than just disappearing quietly. Relief floods through me instantly, since I had built up this moment into something far scarier than it actually turned out being. Walking away, I realize my fear of disappointing people had been considerably larger than reality itself. This first successful no gives me unexpected confidence to consider what else might need reconsidering.",
     questions: [
-      "What does Yuki approach the fair committee leader to explain?",
-      "How does the leader respond to Yuki's decision?",
-      "How does Yuki feel after this conversation?",
+      { text: "What does Yuki approach the fair committee leader to explain?", answer: "That she needs to step back." },
+      { text: "How does the leader respond to Yuki's decision?", answer: "She understands and thanks Yuki for being honest." },
+      { text: "How does Yuki feel after this conversation?", answer: "Relieved -- her fear was bigger than reality." },
     ],
     trueFalse: [
       { text: "Yuki explains she needs to step back from the commitment.", answer: true },
@@ -227,9 +227,9 @@ export const CHAPTERS = [
     story:
       "Encouraged by my first success, I reevaluate my other commitments, deciding to also step back from student council. This decision feels harder somehow, since student council carries more visibility and social expectation than the fair committee did. Nevertheless, I remind myself of Ms. Farah's words about approval-seeking versus genuine desire to participate. I also start declining smaller requests more consistently, like extra tutoring sessions that overlap with time I need for myself. Each time I say no now, it feels slightly less terrifying than the time before it. My planner looks noticeably lighter these days, and somehow, that emptiness feels like genuine relief instead of failure.",
     questions: [
-      "What does Yuki decide to also step back from?",
-      "Why does this decision feel harder?",
-      "How does Yuki's planner look these days?",
+      { text: "What does Yuki decide to also step back from?", answer: "Student council." },
+      { text: "Why does this decision feel harder?", answer: "Because it carries more visibility and social expectation." },
+      { text: "How does Yuki's planner look these days?", answer: "Noticeably lighter." },
     ],
     trueFalse: [
       { text: "Yuki decides to step back from student council too.", answer: true },
@@ -256,9 +256,9 @@ export const CHAPTERS = [
     story:
       "With only two meaningful commitments remaining, I suddenly have actual free time appearing in my schedule for the first time in months. On Tuesday evening, I read an entire novel purely for enjoyment, something I genuinely can't remember doing recently. Ben notices the change immediately, commenting that I seem noticeably calmer and more like myself again lately. My grades have already started improving slightly, likely because I can actually focus without constant mental exhaustion draining me. Debate team and volunteer club feel more enjoyable now too, since I'm not simultaneously worrying about four other obligations. This newfound balance feels unfamiliar still, but genuinely, refreshingly welcome.",
     questions: [
-      "How many meaningful commitments does Yuki have remaining?",
-      "What does Yuki do on Tuesday evening?",
-      "What does Ben notice about Yuki?",
+      { text: "How many meaningful commitments does Yuki have remaining?", answer: "Two." },
+      { text: "What does Yuki do on Tuesday evening?", answer: "Reads an entire novel for enjoyment." },
+      { text: "What does Ben notice about Yuki?", answer: "That she seems calmer and more like herself." },
     ],
     trueFalse: [
       { text: "Yuki has only two meaningful commitments remaining.", answer: true },
@@ -285,9 +285,9 @@ export const CHAPTERS = [
     story:
       "A month later, I look at my planner and barely recognize the overwhelmed, exhausted version of myself from before. I've learned that saying no isn't selfish or unreliable, despite what I had always assumed throughout my life. Ms. Farah's question still echoes sometimes: what would actually happen if I said no? Usually, the honest answer turns out to be far less catastrophic than my anxious mind originally predicted. I still care deeply about helping others and staying involved, but now within limits that actually protect my well-being too. This experience taught me that genuine generosity requires boundaries, not the complete absence of them entirely.",
     questions: [
-      "How does Yuki feel looking at her planner a month later?",
-      "What has Yuki learned about saying no?",
-      "What did this experience teach Yuki about generosity?",
+      { text: "How does Yuki feel looking at her planner a month later?", answer: "She barely recognizes her overwhelmed former self." },
+      { text: "What has Yuki learned about saying no?", answer: "That it isn't selfish or unreliable." },
+      { text: "What did this experience teach Yuki about generosity?", answer: "That it requires boundaries, not the absence of them." },
     ],
     trueFalse: [
       { text: "Yuki barely recognizes her exhausted former self.", answer: true },

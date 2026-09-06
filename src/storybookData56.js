@@ -24,9 +24,9 @@ export const CHAPTERS = [
     story:
       "Last month, I started making candles as a hobby, mostly to relax after stressful days at school. What began as simple experimentation gradually became something I genuinely looked forward to every single evening. My friends who saw the finished candles kept asking where I bought them, surprised when I admitted I made them myself. If people are willing to pay for these, maybe this hobby could become something more substantial than just a pastime. Grandma Rosa, noticing my growing collection, suggests I consider selling them at the weekend farmers market nearby. The idea excites me immediately, though the practical details feel genuinely overwhelming to consider.",
     questions: [
-      "What did Theo start doing last month?",
-      "What did Theo's friends keep asking?",
-      "What does Grandma Rosa suggest?",
+      { text: "What did Theo start doing last month?", answer: "Making candles as a hobby." },
+      { text: "What did Theo's friends keep asking?", answer: "Where he bought the candles." },
+      { text: "What does Grandma Rosa suggest?", answer: "Selling them at the weekend farmers market." },
     ],
     trueFalse: [
       { text: "Theo started making candles last month.", answer: true },
@@ -53,9 +53,9 @@ export const CHAPTERS = [
     story:
       "Grandma Rosa, who ran a small bakery years ago, offers to teach me the basics of running a genuine small business. We sit together calculating exact costs: wax, wicks, containers, and fragrance oils for each individual candle. “You need to know your costs before you can decide a fair price,” she explains patiently, walking me through each calculation. I'm surprised how much thought goes into pricing something correctly, beyond simply guessing a reasonable-sounding number. She also mentions the importance of setting aside money specifically for buying more supplies later. Although this feels more complicated than I initially expected, I appreciate having someone experienced guiding me through it.",
     questions: [
-      "What did Grandma Rosa run years ago?",
-      "What do Theo and Grandma Rosa calculate together?",
-      "What does Grandma Rosa say you need to know before pricing?",
+      { text: "What did Grandma Rosa run years ago?", answer: "A small bakery." },
+      { text: "What do Theo and Grandma Rosa calculate together?", answer: "The exact costs of wax, wicks, containers, and fragrance oils." },
+      { text: "What does Grandma Rosa say you need to know before pricing?", answer: "Your costs." },
     ],
     trueFalse: [
       { text: "Grandma Rosa ran a small bakery years ago.", answer: true },
@@ -82,9 +82,9 @@ export const CHAPTERS = [
     story:
       "Over the following two weeks, I spend nearly every evening producing enough candles for my first market appearance. I experiment with different scents, eventually settling on lavender, vanilla, and a fresh pine option for variety. Grandma Rosa helps me design a simple handmade sign, and together we create small price tags for each candle. Packing everything carefully into a wooden crate, I feel a strange mixture of excitement and genuine nervousness building steadily. This whole process requires far more preparation than I originally anticipated when this idea first started. If nobody buys anything this weekend, I'm honestly unsure how I'll feel about continuing further.",
     questions: [
-      "How long does Theo spend preparing for the market?",
-      "What scents does Theo settle on?",
-      "What does Theo feel packing everything into the crate?",
+      { text: "How long does Theo spend preparing for the market?", answer: "Two weeks, nearly every evening." },
+      { text: "What scents does Theo settle on?", answer: "Lavender, vanilla, and pine." },
+      { text: "What does Theo feel packing everything into the crate?", answer: "Excitement and genuine nervousness." },
     ],
     trueFalse: [
       { text: "Theo spends nearly every evening for two weeks preparing.", answer: true },
@@ -111,9 +111,9 @@ export const CHAPTERS = [
     story:
       "Saturday morning arrives, and I set up my small table at the farmers market before most vendors have even arrived. My hands shake slightly arranging the candles, adjusting them repeatedly even though they already look perfectly fine. The first hour passes slowly, with people glancing at my table but continuing past without stopping to look closer. I start doubting whether this whole idea was genuinely realistic or simply an overly optimistic daydream. Just as discouragement begins settling in, an older woman stops, picks up a lavender candle, and smells it appreciatively. She purchases two candles, becoming my very first customer, and something inside me shifts hopefully.",
     questions: [
-      "What time does Theo set up his table?",
-      "How does the first hour go?",
-      "Who becomes Theo's very first customer?",
+      { text: "What time does Theo set up his table?", answer: "Before most vendors arrive, Saturday morning." },
+      { text: "How does the first hour go?", answer: "Slowly -- people glance but don't stop." },
+      { text: "Who becomes Theo's very first customer?", answer: "An older woman who buys two lavender candles." },
     ],
     trueFalse: [
       { text: "Theo sets up his table before most vendors arrive.", answer: true },
@@ -140,9 +140,9 @@ export const CHAPTERS = [
     story:
       "By early afternoon, I've sold only four candles total, far fewer than I had optimistically hoped for today. Watching nearby vendors selling produce and baked goods steadily makes me wonder if candles simply aren't in high demand here. I calculate my earnings against my costs and realize today's profit barely covers the gas money spent driving here. Discouragement creeps in slowly, whispering doubts about whether this entire venture makes any practical sense whatsoever. However, I remind myself that Grandma Rosa mentioned her bakery struggled significantly during its first few months too. Perhaps today isn't failure exactly, just an uncomfortable, necessary first step in a longer process.",
     questions: [
-      "How many candles has Theo sold by early afternoon?",
-      "What does Theo calculate about his earnings?",
-      "What does Theo remind himself about Grandma Rosa's bakery?",
+      { text: "How many candles has Theo sold by early afternoon?", answer: "Four." },
+      { text: "What does Theo calculate about his earnings?", answer: "That profit barely covers the gas money." },
+      { text: "What does Theo remind himself about Grandma Rosa's bakery?", answer: "That it also struggled in its first few months." },
     ],
     trueFalse: [
       { text: "Theo has sold only four candles by early afternoon.", answer: true },
@@ -169,9 +169,9 @@ export const CHAPTERS = [
     story:
       "Just as I'm considering packing up early, my classmate Sam wanders past and stops, surprised to see me there. “Wait, you made these? They smell incredible,” he says, picking up the vanilla candle and examining it closely. We chat for a while, and he mentions he'd genuinely love to buy one for his mom's upcoming birthday. Talking with someone familiar, rather than strangers, helps ease some of the awkwardness I'd been feeling all day. Sam also suggests posting photos online, mentioning that several classmates might be interested if they actually knew this existed. His encouragement, though small, genuinely shifts my mood after an otherwise discouraging afternoon.",
     questions: [
-      "Who wanders past Theo's table?",
-      "What does Sam mention wanting to buy?",
-      "What does Sam suggest Theo do?",
+      { text: "Who wanders past Theo's table?", answer: "His classmate Sam." },
+      { text: "What does Sam mention wanting to buy?", answer: "A candle for his mom's birthday." },
+      { text: "What does Sam suggest Theo do?", answer: "Post photos online." },
     ],
     trueFalse: [
       { text: "Theo's classmate Sam wanders past his table.", answer: true },
@@ -198,9 +198,9 @@ export const CHAPTERS = [
     story:
       "That evening, following Sam's suggestion, I create a simple social media account specifically for my small candle business. I photograph each candle carefully, using natural light near my bedroom window for the clearest, most appealing images. Writing captions feels awkward initially, though I gradually find a comfortable, genuine voice describing each scent and its inspiration. I share the account with a few close friends first, nervous about a wider audience seeing something so personal. Within an hour, several classmates comment, expressing genuine interest and asking questions about pricing and availability. This small digital step feels surprisingly significant, opening possibilities I hadn't fully considered before today.",
     questions: [
-      "What does Theo create that evening?",
-      "How does Theo photograph the candles?",
-      "How do classmates respond to the account?",
+      { text: "What does Theo create that evening?", answer: "A social media account for his candle business." },
+      { text: "How does Theo photograph the candles?", answer: "Using natural light near his bedroom window." },
+      { text: "How do classmates respond to the account?", answer: "Several comment with genuine interest." },
     ],
     trueFalse: [
       { text: "Theo creates a social media account for his business.", answer: true },
@@ -227,9 +227,9 @@ export const CHAPTERS = [
     story:
       "Two weeks later, I return to the farmers market with a slightly larger selection and, thanks to social media, a bit more confidence. Several classmates who saw my posts actually show up specifically to purchase candles, which genuinely surprises and delights me. Grandma Rosa joins me this time, helping with sales while offering encouragement whenever conversations with customers feel intimidating. By midday, I've already sold more than double what I sold during my entire first market appearance. A regular market vendor nearby compliments my scents, offering small tips about attracting more foot traffic effectively. Today feels dramatically different from that discouraging first Saturday just two weeks earlier.",
     questions: [
-      "How does Theo's confidence compare to the first market day?",
-      "Who shows up specifically to purchase candles?",
-      "How does today compare to Theo's first market appearance?",
+      { text: "How does Theo's confidence compare to the first market day?", answer: "A bit more confident, thanks to social media." },
+      { text: "Who shows up specifically to purchase candles?", answer: "Several classmates who saw his posts." },
+      { text: "How does today compare to Theo's first market appearance?", answer: "He sells more than double what he sold the first time." },
     ],
     trueFalse: [
       { text: "Theo has a bit more confidence this time.", answer: true },
@@ -256,9 +256,9 @@ export const CHAPTERS = [
     story:
       "That evening, Grandma Rosa and I sit down together to count earnings and plan our next practical steps carefully. Following her advice, I set aside a portion specifically for buying more supplies rather than spending everything immediately. We create a list of new scents to try, based on customer feedback and requests from the past two markets. I also decide to invest slightly in better packaging, something a customer mentioned might increase perceived value noticeably. Grandma Rosa reminds me that sustainable businesses grow gradually, reinvesting steadily rather than expanding too quickly without proper planning. Watching my small hobby transform into something genuinely sustainable feels remarkably satisfying tonight.",
     questions: [
-      "What do Theo and Grandma Rosa do that evening?",
-      "What does Theo set aside a portion for?",
-      "What does Grandma Rosa remind Theo about sustainable businesses?",
+      { text: "What do Theo and Grandma Rosa do that evening?", answer: "Count earnings and plan next steps." },
+      { text: "What does Theo set aside a portion for?", answer: "Buying more supplies." },
+      { text: "What does Grandma Rosa remind Theo about sustainable businesses?", answer: "That they grow gradually, reinvesting steadily." },
     ],
     trueFalse: [
       { text: "Theo and Grandma Rosa count earnings together.", answer: true },
@@ -285,9 +285,9 @@ export const CHAPTERS = [
     story:
       "Three months later, my small candle stand has become a regular, recognizable fixture at the weekend farmers market. I now have several repeat customers who greet me by name, along with a small but steadily growing online following too. Looking back at that discouraging first Saturday, I barely recognize the nervous, uncertain version of myself from back then. Grandma Rosa still helps occasionally, though I handle most decisions confidently on my own now, something that genuinely surprises me sometimes. This experience taught me that meaningful growth rarely happens instantly; it builds slowly through persistence, feedback, and reinvestment. What started as simple stress relief has genuinely become something I'm authentically proud of building.",
     questions: [
-      "What has Theo's candle stand become three months later?",
-      "What does Theo now have that he didn't before?",
-      "What did this experience teach Theo about growth?",
+      { text: "What has Theo's candle stand become three months later?", answer: "A regular, recognizable fixture at the market." },
+      { text: "What does Theo now have that he didn't before?", answer: "Several repeat customers and a growing online following." },
+      { text: "What did this experience teach Theo about growth?", answer: "That it builds slowly through persistence, feedback, and reinvestment." },
     ],
     trueFalse: [
       { text: "Theo's stand has become a regular market fixture.", answer: true },

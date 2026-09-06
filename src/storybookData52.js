@@ -24,9 +24,9 @@ export const CHAPTERS = [
     story:
       "Ms. Whitfield announces that our next assignment requires each of us to present a research topic alone in front of the class. My stomach immediately tightens, a familiar, uncomfortable sensation whenever public speaking gets mentioned in any context. While other students seem only mildly annoyed by the assignment, I feel something closer to genuine panic building inside me. I've always struggled with presentations, my voice shaking and my mind going completely blank under pressure. If I could choose any assignment except this one, I honestly would, without hesitation or regret. Friday feels impossibly close already, even though it's technically still five days away.",
     questions: [
-      "What does the assignment require each student to do?",
-      "How does Aisha's stomach react to the news?",
-      "What has Aisha always struggled with?",
+      { text: "What does the assignment require each student to do?", answer: "Present a research topic alone in front of the class." },
+      { text: "How does Aisha's stomach react to the news?", answer: "It tightens immediately." },
+      { text: "What has Aisha always struggled with?", answer: "Presentations." },
     ],
     trueFalse: [
       { text: "The assignment requires an individual presentation.", answer: true },
@@ -53,9 +53,9 @@ export const CHAPTERS = [
     story:
       "That evening, I open my laptop to start researching, but I find myself scrolling through unrelated websites instead. Somehow, cleaning my entire room suddenly feels more urgent than actually preparing for something that terrifies me. I know avoiding this won't make Friday disappear, but knowing something logically doesn't always change how I behave. By midnight, I've accomplished almost nothing related to my actual assignment, just a spotless room and wasted hours. Frustrated with myself, I finally write down a topic, though even that small step feels exhausting somehow. Tomorrow, I promise myself, I'll actually start working on this instead of avoiding it completely.",
     questions: [
-      "What does Aisha do instead of researching?",
-      "What does Aisha realize about avoiding the assignment?",
-      "What has Aisha accomplished by midnight?",
+      { text: "What does Aisha do instead of researching?", answer: "Scrolls through unrelated websites and cleans her room." },
+      { text: "What does Aisha realize about avoiding the assignment?", answer: "That it won't make Friday disappear." },
+      { text: "What has Aisha accomplished by midnight?", answer: "Almost nothing -- just a spotless room." },
     ],
     trueFalse: [
       { text: "Aisha scrolls through unrelated websites instead.", answer: true },
@@ -82,9 +82,9 @@ export const CHAPTERS = [
     story:
       "After class the next day, I gather enough courage to admit my anxiety about the presentation to Ms. Whitfield directly. She listens patiently, nodding as I explain how my voice shakes and my thoughts scatter whenever I'm in front of people. Rather than dismissing my concerns, she shares that many students experience exactly this same fear before presenting. “Would it help if you practiced in front of just me first, before the actual presentation?” she offers kindly. Relief washes over me instantly, since practicing with one person feels dramatically less terrifying than facing the entire class immediately. We schedule a practice session for Thursday, giving me something concrete to work toward.",
     questions: [
-      "What does Aisha admit to Ms. Whitfield?",
-      "What does Ms. Whitfield say about other students?",
-      "What does Ms. Whitfield offer Aisha?",
+      { text: "What does Aisha admit to Ms. Whitfield?", answer: "Her anxiety about the presentation." },
+      { text: "What does Ms. Whitfield say about other students?", answer: "That many experience the same fear." },
+      { text: "What does Ms. Whitfield offer Aisha?", answer: "To practice in front of just her first." },
     ],
     trueFalse: [
       { text: "Aisha admits her anxiety to Ms. Whitfield.", answer: true },
@@ -111,9 +111,9 @@ export const CHAPTERS = [
     story:
       "With a concrete plan in place, I finally dive into researching my topic properly, focused entirely on ocean conservation. Once I actually start, I realize the material genuinely interests me, which somehow makes the process less painful overall. I organize my research into clear sections, writing key points on index cards to help me stay on track later. While writing, I occasionally forget about the presentation itself, absorbed instead in learning fascinating facts about coral reefs. By evening, I have a solid outline, complete with statistics, images, and a clear structure for delivery. Although the content feels ready, the thought of actually speaking it aloud still makes my chest tighten uncomfortably.",
     questions: [
-      "What topic does Aisha research?",
-      "What does Aisha realize once she starts?",
-      "What does Aisha have by evening?",
+      { text: "What topic does Aisha research?", answer: "Ocean conservation." },
+      { text: "What does Aisha realize once she starts?", answer: "That the material genuinely interests her." },
+      { text: "What does Aisha have by evening?", answer: "A solid outline with statistics, images, and structure." },
     ],
     trueFalse: [
       { text: "Aisha's topic is ocean conservation.", answer: true },
@@ -140,9 +140,9 @@ export const CHAPTERS = [
     story:
       "Thursday arrives, and I stand nervously in front of Ms. Whitfield in the empty classroom after school. My hands shake as I begin, my voice barely above a whisper for the first sentence or two. She waits patiently, offering a reassuring nod rather than interrupting or correcting me immediately. As I continue, something unexpected happens: I start focusing on the content itself rather than my own fear. By the middle of my practice run, my voice has steadied considerably, though my hands still tremble slightly. Afterward, Ms. Whitfield offers specific, gentle feedback, noting that my knowledge clearly shows despite my visible nervousness.",
     questions: [
-      "Where does Aisha practice her presentation?",
-      "How does Aisha's voice sound at first?",
-      "What happens as Aisha continues speaking?",
+      { text: "Where does Aisha practice her presentation?", answer: "In the empty classroom after school." },
+      { text: "How does Aisha's voice sound at first?", answer: "Barely above a whisper." },
+      { text: "What happens as Aisha continues speaking?", answer: "She starts focusing on the content rather than her fear." },
     ],
     trueFalse: [
       { text: "Aisha practices in the empty classroom after school.", answer: true },
@@ -169,9 +169,9 @@ export const CHAPTERS = [
     story:
       "In the hallway before lunch, Devon mentions casually that he also gets nervous before presentations, which genuinely surprises me. He always seems so relaxed and confident during class discussions, so I assumed public speaking came naturally to him. “I just don't let people see it as much,” he admits, shrugging like it's not a big deal at all. He shares a small trick that helps him: picking one friendly face in the crowd to focus on while speaking. I hadn't considered that even outwardly confident people might be hiding similar anxiety underneath. This conversation, unexpectedly, makes me feel considerably less alone heading into tomorrow's actual presentation.",
     questions: [
-      "What does Devon mention to Aisha?",
-      "What had Aisha assumed about Devon?",
-      "What trick does Devon share with Aisha?",
+      { text: "What does Devon mention to Aisha?", answer: "That he also gets nervous before presentations." },
+      { text: "What had Aisha assumed about Devon?", answer: "That public speaking came naturally to him." },
+      { text: "What trick does Devon share with Aisha?", answer: "Picking one friendly face in the crowd to focus on." },
     ],
     trueFalse: [
       { text: "Devon mentions he also gets nervous before presentations.", answer: true },
@@ -198,9 +198,9 @@ export const CHAPTERS = [
     story:
       "I wake up earlier than necessary, my stomach already twisted into familiar, uncomfortable knots before I even leave bed. Standing in front of the mirror, I practice Devon's trick, imagining a friendly face I'll focus on later. My mom notices my quietness at breakfast and reminds me gently that being nervous doesn't mean I'll fail today. If I focus only on getting through it, rather than being perfect, maybe that expectation feels more manageable. I review my notecards one final time on the bus, my hands slightly less shaky than they were yesterday. By the time I reach school, nervous energy has replaced pure dread, which somehow feels like real progress.",
     questions: [
-      "How does Aisha's stomach feel when she wakes up?",
-      "What does Aisha practice in front of the mirror?",
-      "What does Aisha's mom remind her at breakfast?",
+      { text: "How does Aisha's stomach feel when she wakes up?", answer: "Twisted into familiar, uncomfortable knots." },
+      { text: "What does Aisha practice in front of the mirror?", answer: "Devon's trick." },
+      { text: "What does Aisha's mom remind her at breakfast?", answer: "That being nervous doesn't mean she'll fail." },
     ],
     trueFalse: [
       { text: "Aisha's stomach feels twisted into knots.", answer: true },
@@ -227,9 +227,9 @@ export const CHAPTERS = [
     story:
       "When my name is called, my legs feel heavy walking to the front, but I remind myself of everything I practiced. I find Devon's face in the crowd, and he gives me a small, encouraging nod that steadies me slightly. My first sentence comes out shakier than I'd like, but I push through instead of stopping to restart. Slowly, as I move through my notecards, my voice gains strength, and the words start flowing more naturally. I even glance up occasionally, noticing classmates actually listening rather than judging me the way I had imagined. Before I fully realize it, I'm delivering my final sentence, and the room breaks into applause.",
     questions: [
-      "What does Aisha do when she reaches the front?",
-      "How does Aisha's first sentence sound?",
-      "What does Aisha notice about her classmates while presenting?",
+      { text: "What does Aisha do when she reaches the front?", answer: "Finds Devon's face in the crowd." },
+      { text: "How does Aisha's first sentence sound?", answer: "Shakier than she'd like." },
+      { text: "What does Aisha notice about her classmates while presenting?", answer: "That they're actually listening, not judging." },
     ],
     trueFalse: [
       { text: "Aisha finds Devon's face in the crowd.", answer: true },
@@ -256,9 +256,9 @@ export const CHAPTERS = [
     story:
       "Sitting back down, I exhale a breath I feel like I'd been holding since Ms. Whitfield first announced the assignment. Ms. Whitfield gives me a warm thumbs up from across the room, and I feel my shoulders finally relax completely. Devon leans over during the next presentation, whispering that mine was genuinely one of the most interesting topics today. I can hardly believe I actually did it, especially considering how impossible this felt just five days ago. The fear hasn't disappeared entirely, and I know future presentations will still bring some nervousness. However, I now have real proof that I can push through that fear successfully.",
     questions: [
-      "What does Aisha do sitting back down?",
-      "What does Ms. Whitfield give Aisha?",
-      "What does Aisha now have proof of?",
+      { text: "What does Aisha do sitting back down?", answer: "Exhales a breath she'd been holding." },
+      { text: "What does Ms. Whitfield give Aisha?", answer: "A warm thumbs up." },
+      { text: "What does Aisha now have proof of?", answer: "That she can push through her fear successfully." },
     ],
     trueFalse: [
       { text: "Aisha exhales a breath she'd been holding.", answer: true },
@@ -285,9 +285,9 @@ export const CHAPTERS = [
     story:
       "That evening, I write in my journal about the entire experience, wanting to remember exactly how today actually felt. I realize my anxiety wasn't something to eliminate completely, but rather something I could learn to work alongside instead. Ms. Whitfield's practice offer, Devon's honest confession, and my mom's gentle words all mattered more than I initially recognized. If I hadn't reached out for support, I might have let fear stop me from trying at all. Next time a presentation gets assigned, I know the nervousness will likely return, at least somewhat. But now I also know something equally important: nervousness and capability can genuinely coexist within the same person.",
     questions: [
-      "What does Aisha do that evening?",
-      "What does Aisha realize about her anxiety?",
-      "What does Aisha know will likely happen next time?",
+      { text: "What does Aisha do that evening?", answer: "Writes in her journal about the experience." },
+      { text: "What does Aisha realize about her anxiety?", answer: "That it wasn't something to eliminate, but to work alongside." },
+      { text: "What does Aisha know will likely happen next time?", answer: "That the nervousness will likely return, at least somewhat." },
     ],
     trueFalse: [
       { text: "Aisha writes in her journal that evening.", answer: true },

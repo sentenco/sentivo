@@ -24,9 +24,9 @@ export const CHAPTERS = [
     story:
       "Scrolling through my phone before bed, I notice several unkind comments underneath a photo Nina posted earlier today. Marcus and a few others are mocking her artwork, using words that feel deliberately cruel rather than simply teasing. I've known Nina since elementary school, and seeing this makes something uncomfortable twist inside my chest. Part of me wants to scroll past quickly, pretending I never saw it at all. However, another part of me knows that staying silent feels almost like agreeing with what's happening here. I close the app without commenting, though the guilty feeling lingers long after I put my phone down.",
     questions: [
-      "What does Ethan notice while scrolling that night?",
-      "Who is being mocked, and by whom?",
-      "How does Ethan feel about this situation?",
+      { text: "What does Ethan notice while scrolling that night?", answer: "Unkind comments mocking Nina's artwork." },
+      { text: "Who is being mocked, and by whom?", answer: "Nina, by Marcus and others." },
+      { text: "How does Ethan feel about this situation?", answer: "Uncomfortable, torn about staying silent." },
     ],
     trueFalse: [
       { text: "Ethan notices unkind comments under Nina's photo.", answer: true },
@@ -53,9 +53,9 @@ export const CHAPTERS = [
     story:
       "Over the next few days, I notice the comments continuing, growing gradually meaner with each new post Nina shares. In class, Nina seems quieter than usual, keeping her head down and avoiding eye contact with almost everyone. During lunch, I overhear two classmates whispering about the situation, treating it more like entertainment than something serious. If nobody says anything, this will probably just keep escalating until it becomes something much worse. I feel torn between wanting to help and worrying about becoming a target myself if I speak up. Watching Nina retreat further into herself each day makes ignoring this feel increasingly impossible.",
     questions: [
-      "What does Ethan notice about the comments over the next few days?",
-      "How does Nina seem in class?",
-      "What does Ethan overhear during lunch?",
+      { text: "What does Ethan notice about the comments over the next few days?", answer: "They keep growing meaner." },
+      { text: "How does Nina seem in class?", answer: "Quieter, avoiding eye contact." },
+      { text: "What does Ethan overhear during lunch?", answer: "Classmates treating it like entertainment." },
     ],
     trueFalse: [
       { text: "The comments continue and grow meaner.", answer: true },
@@ -82,9 +82,9 @@ export const CHAPTERS = [
     story:
       "That night, I sit in my room, weighing what would actually happen if I said something publicly online. Marcus is popular, and speaking against him could easily make me a target for the same treatment. Although this fear feels legitimate, I keep thinking about how alone Nina must feel right now, facing this without support. If I were in her position, I would desperately want at least one person to acknowledge what's happening. I remember something my dad once told me: doing the right thing rarely feels comfortable or convenient in the moment. Slowly, I decide that staying silent isn't actually the safe choice I've been telling myself it was.",
     questions: [
-      "What does Ethan weigh that night?",
-      "What could speaking against Marcus risk for Ethan?",
-      "What does Ethan remember his dad telling him?",
+      { text: "What does Ethan weigh that night?", answer: "What would happen if he said something publicly." },
+      { text: "What could speaking against Marcus risk for Ethan?", answer: "Becoming a target himself." },
+      { text: "What does Ethan remember his dad telling him?", answer: "That doing the right thing rarely feels comfortable." },
     ],
     trueFalse: [
       { text: "Ethan weighs what would happen if he said something.", answer: true },
@@ -111,9 +111,9 @@ export const CHAPTERS = [
     story:
       "The next day, instead of confronting Marcus immediately, I decide to reach out to Nina privately first. I find her sitting alone at lunch and ask quietly if I can join her, which clearly surprises her. “I've seen the comments,” I say gently, watching her expression shift from guarded to visibly relieved. She admits she's been struggling with feeling embarrassed and unsure whether anyone even noticed what was happening. I tell her honestly that I noticed, and that what's happening to her isn't acceptable at all. For the first time in days, Nina's shoulders relax slightly, like she's carrying a little less weight now.",
     questions: [
-      "What does Ethan decide to do first?",
-      "What does Ethan tell Nina he's seen?",
-      "How does Nina react to Ethan's words?",
+      { text: "What does Ethan decide to do first?", answer: "Reach out to Nina privately." },
+      { text: "What does Ethan tell Nina he's seen?", answer: "The comments." },
+      { text: "How does Nina react to Ethan's words?", answer: "Her shoulders relax slightly, relieved." },
     ],
     trueFalse: [
       { text: "Ethan decides to reach out to Nina first.", answer: true },
@@ -140,9 +140,9 @@ export const CHAPTERS = [
     story:
       "That evening, I open the group chat where the unkind comments have been posted most frequently. My hands feel slightly shaky as I type a message defending Nina's artwork and calling out the mocking directly. Before sending it, I read it three times, worried about how Marcus and others might react to this. Although deleting the message feels tempting, I remind myself why I'm doing this in the first place. I press send, and immediately, my phone buzzes with several new notifications appearing rapidly one after another. Whatever happens next, at least Nina will know that someone was willing to speak up for her.",
     questions: [
-      "Where does Ethan post his message that evening?",
-      "How do Ethan's hands feel while typing?",
-      "What does Ethan do before sending the message?",
+      { text: "Where does Ethan post his message that evening?", answer: "The group chat." },
+      { text: "How do Ethan's hands feel while typing?", answer: "Slightly shaky." },
+      { text: "What does Ethan do before sending the message?", answer: "Reads it three times." },
     ],
     trueFalse: [
       { text: "Ethan posts his message in the group chat.", answer: true },
@@ -169,9 +169,9 @@ export const CHAPTERS = [
     story:
       "Within minutes, Marcus replies defensively, accusing me of overreacting and telling me to mind my own business instead. A few of his friends pile on too, and my phone buzzes constantly with notifications that feel increasingly hostile. My stomach tightens reading each new message, and I briefly wonder if I made a serious mistake speaking up. However, I also notice something unexpected: two other classmates message me privately, thanking me quietly for saying something. They admit they had noticed the comments too but felt too afraid to say anything themselves. Even though the group chat feels tense right now, I don't regret sending that message.",
     questions: [
-      "How does Marcus reply to Ethan's message?",
-      "How does Ethan's stomach feel reading the responses?",
-      "What do two other classmates do?",
+      { text: "How does Marcus reply to Ethan's message?", answer: "Defensively, accusing him of overreacting." },
+      { text: "How does Ethan's stomach feel reading the responses?", answer: "Tight." },
+      { text: "What do two other classmates do?", answer: "Message him privately, thanking him." },
     ],
     trueFalse: [
       { text: "Marcus replies defensively, accusing Ethan of overreacting.", answer: true },
@@ -198,9 +198,9 @@ export const CHAPTERS = [
     story:
       "The next morning, I decide the situation needs more than just a message in a group chat. I visit our school counselor, Ms. Delgado, and explain everything that's been happening to Nina online. She listens carefully, asking thoughtful questions rather than jumping immediately to conclusions or punishments. “Thank you for trusting me with this. You did the right thing bringing it forward,” she says sincerely. She explains the school has clear policies about online harassment, even when it happens outside school hours. Although I feel nervous about what happens next, I also feel relieved that this isn't only my responsibility anymore.",
     questions: [
-      "Who does Ethan visit the next morning?",
-      "What does Ms. Delgado do while Ethan explains?",
-      "What does Ms. Delgado say about the school's policies?",
+      { text: "Who does Ethan visit the next morning?", answer: "The school counselor, Ms. Delgado." },
+      { text: "What does Ms. Delgado do while Ethan explains?", answer: "Listens carefully, asking thoughtful questions." },
+      { text: "What does Ms. Delgado say about the school's policies?", answer: "That there are clear policies about online harassment, even outside school hours." },
     ],
     trueFalse: [
       { text: "Ethan visits the school counselor, Ms. Delgado.", answer: true },
@@ -227,9 +227,9 @@ export const CHAPTERS = [
     story:
       "Over the following days, the school addresses the situation directly, meeting separately with Marcus and the other students involved. I don't know exactly what was said in those meetings, but Marcus's public comments about Nina noticeably stop appearing. Surprisingly, Marcus approaches me in the hallway a few days later, looking uncomfortable but clearly wanting to say something. “I didn't think about how that would actually affect her,” he admits, avoiding direct eye contact throughout. I don't fully forgive him immediately, but I appreciate that he's at least acknowledging the harm he caused. Change doesn't happen instantly, but this conversation feels like a genuinely important first step.",
     questions: [
-      "What does the school do over the following days?",
-      "What happens to Marcus's public comments about Nina?",
-      "What does Marcus admit to Ethan in the hallway?",
+      { text: "What does the school do over the following days?", answer: "Meets separately with Marcus and the other students." },
+      { text: "What happens to Marcus's public comments about Nina?", answer: "They stop appearing." },
+      { text: "What does Marcus admit to Ethan in the hallway?", answer: "That he didn't think about how it would affect her." },
     ],
     trueFalse: [
       { text: "The school addresses the situation directly.", answer: true },
@@ -256,9 +256,9 @@ export const CHAPTERS = [
     story:
       "Weeks later, I notice Nina gradually returning to her normal, confident self during lunch and class discussions. She starts sharing her artwork more openly again, no longer hesitant about posting new pieces online. One afternoon, she thanks me specifically for what I did, admitting it meant more to her than I probably realized. “Having someone actually say something made me feel less invisible,” she explains honestly, her voice steady now. I tell her I simply couldn't watch it continue without saying anything, that it genuinely wasn't a difficult choice morally. Watching her laugh freely again with our small friend group feels like real, meaningful progress.",
     questions: [
-      "What does Ethan notice about Nina weeks later?",
-      "What does Nina start doing again?",
-      "What does Nina thank Ethan for?",
+      { text: "What does Ethan notice about Nina weeks later?", answer: "That she's gradually returning to her confident self." },
+      { text: "What does Nina start doing again?", answer: "Sharing her artwork openly." },
+      { text: "What does Nina thank Ethan for?", answer: "Speaking up, making her feel less invisible." },
     ],
     trueFalse: [
       { text: "Ethan notices Nina returning to her confident self.", answer: true },
@@ -285,9 +285,9 @@ export const CHAPTERS = [
     story:
       "Looking back on everything that happened, I realize how close I came to staying silent that very first night. If I had scrolled past without saying anything, Nina's situation might have continued getting worse indefinitely. I learned that speaking up doesn't require being fearless, only being willing to act despite feeling genuinely afraid. The backlash from Marcus's friends was uncomfortable, but it faded far quicker than I had originally worried it would. What mattered more, ultimately, was that Nina knew she wasn't facing this completely alone. I now understand that staying silent isn't neutral at all; sometimes, silence quietly takes a side too.",
     questions: [
-      "What does Ethan realize looking back on everything?",
-      "What did Ethan learn about speaking up?",
-      "What does Ethan now understand about staying silent?",
+      { text: "What does Ethan realize looking back on everything?", answer: "How close he came to staying silent that first night." },
+      { text: "What did Ethan learn about speaking up?", answer: "That it doesn't require being fearless, only acting despite fear." },
+      { text: "What does Ethan now understand about staying silent?", answer: "That it isn't neutral -- it takes a side too." },
     ],
     trueFalse: [
       { text: "Ethan realizes how close he came to staying silent.", answer: true },

@@ -24,9 +24,9 @@ export const CHAPTERS = [
     story:
       "For as long as I can remember, my dad has assumed I would eventually study engineering, just like him and my older brother. I've never directly disagreed with this plan, mostly because bringing it up always felt easier avoided than confronted. Lately, though, my art teacher has been encouraging me to consider applying to art school instead. Painting makes me feel genuinely alive in a way that math and science assignments simply never have. If I mention this to my dad, I know it will likely lead to a conversation I've been dreading for years. Tonight, sitting between two brochures, I finally admit I can't keep avoiding this decision forever.",
     questions: [
-      "What has Sana's dad always assumed about her future?",
-      "What has Sana's art teacher been encouraging?",
-      "How does painting make Sana feel?",
+      { text: "What has Sana's dad always assumed about her future?", answer: "That she'd study engineering." },
+      { text: "What has Sana's art teacher been encouraging?", answer: "Applying to art school." },
+      { text: "How does painting make Sana feel?", answer: "Genuinely alive." },
     ],
     trueFalse: [
       { text: "Sana's dad assumed she would study engineering.", answer: true },
@@ -53,9 +53,9 @@ export const CHAPTERS = [
     story:
       "After class, Ms. Okoro asks me to stay behind to look through my portfolio together more carefully. She points to a painting I made last month, saying it shows genuine talent and a distinctive artistic voice already forming. “Have you thought seriously about applying to art school?” she asks, watching my reaction closely and thoughtfully. I admit I've thought about it constantly, though I haven't told my parents anything about these feelings yet. She explains applications are due in two months, which means I can't delay this decision much longer. Walking home, her words replay in my mind, mixing excitement with genuine, familiar anxiety.",
     questions: [
-      "What does Ms. Okoro ask Sana to do after class?",
-      "What does Ms. Okoro say about Sana's painting?",
-      "When are applications due?",
+      { text: "What does Ms. Okoro ask Sana to do after class?", answer: "Look through her portfolio together." },
+      { text: "What does Ms. Okoro say about Sana's painting?", answer: "That it shows genuine talent and a distinctive voice." },
+      { text: "When are applications due?", answer: "In two months." },
     ],
     trueFalse: [
       { text: "Ms. Okoro asks Sana to stay behind after class.", answer: true },
@@ -82,9 +82,9 @@ export const CHAPTERS = [
     story:
       "That night, I stand in front of my mirror, rehearsing exactly how I'll bring this up with my dad tomorrow. Every version of the conversation I imagine ends with him looking disappointed, or worse, genuinely hurt by my decision. I remind myself that avoiding this conversation only delays an inevitable moment, not prevents it entirely. If I could show him my portfolio first, maybe he would understand why this matters so much to me. I practice specific phrases, trying to sound confident rather than apologetic about something I actually care about deeply. Despite hours of rehearsal, I still don't feel remotely ready for tomorrow's actual conversation.",
     questions: [
-      "What does Sana do that night?",
-      "How does Sana imagine the conversation ending?",
-      "What does Sana remind herself about avoiding the conversation?",
+      { text: "What does Sana do that night?", answer: "Rehearses how to bring it up with her dad." },
+      { text: "How does Sana imagine the conversation ending?", answer: "With her dad disappointed or hurt." },
+      { text: "What does Sana remind herself about avoiding the conversation?", answer: "That it only delays the inevitable, not prevents it." },
     ],
     trueFalse: [
       { text: "Sana rehearses the conversation in front of her mirror.", answer: true },
@@ -111,9 +111,9 @@ export const CHAPTERS = [
     story:
       "The next evening, I ask Dad if we can talk about something important, my voice noticeably shaking as I speak. He sets down his newspaper immediately, giving me his full attention in a way that makes this feel even more real. I explain, as clearly as I can, how deeply painting matters to me and how engineering never felt genuinely right. His expression shifts from confusion to something harder to read, somewhere between concern and quiet disappointment. “I always assumed you enjoyed the engineering path we discussed,” he says slowly, clearly processing this unexpected shift. I take a deep breath, knowing this conversation has only just truly begun.",
     questions: [
-      "What does Sana ask her dad?",
-      "How does Sana's voice sound as she speaks?",
-      "What does Dad say he always assumed?",
+      { text: "What does Sana ask her dad?", answer: "If they can talk about something important." },
+      { text: "How does Sana's voice sound as she speaks?", answer: "Noticeably shaking." },
+      { text: "What does Dad say he always assumed?", answer: "That she enjoyed the engineering path." },
     ],
     trueFalse: [
       { text: "Sana asks her dad if they can talk.", answer: true },
@@ -140,9 +140,9 @@ export const CHAPTERS = [
     story:
       "Dad explains his worries carefully, mentioning financial stability and how competitive the art world can genuinely be. He isn't trying to be unkind, I realize, only expressing fears rooted in wanting a secure future for me. “Art is a wonderful hobby, but can it really support you long-term?” he asks, not dismissively, but with real concern. I feel frustration building, though I try reminding myself that understanding his perspective doesn't mean automatically agreeing with it. I explain that many artists build sustainable careers, mentioning illustration, design, and teaching as realistic possibilities. Although he doesn't look convinced yet, he does seem willing to actually listen now.",
     questions: [
-      "What worries does Dad explain to Sana?",
-      "How does Dad ask about art supporting her long-term?",
-      "What does Sana mention as realistic possibilities?",
+      { text: "What worries does Dad explain to Sana?", answer: "Financial stability and how competitive the art world is." },
+      { text: "How does Dad ask about art supporting her long-term?", answer: "Can it really support you long-term?" },
+      { text: "What does Sana mention as realistic possibilities?", answer: "Illustration, design, and teaching." },
     ],
     trueFalse: [
       { text: "Dad mentions financial stability as a worry.", answer: true },
@@ -169,9 +169,9 @@ export const CHAPTERS = [
     story:
       "I bring out my portfolio, something I've never actually shown him in this much detail before. He flips through slowly, pausing longer on certain pieces, his expression shifting from politeness to genuine surprise. “I didn't realize your skill had developed this much,” he admits, sounding almost embarrassed about not knowing sooner. I explain how many hours I've spent practicing after school, hours he assumed were spent on homework instead. Seeing tangible proof of my dedication seems to shift something in how seriously he's taking this conversation now. For the first time tonight, I feel like he's seeing me clearly, not just his assumptions about me.",
     questions: [
-      "What does Sana bring out during the conversation?",
-      "How does Dad's expression change looking through it?",
-      "What does Dad admit about Sana's skill?",
+      { text: "What does Sana bring out during the conversation?", answer: "Her portfolio." },
+      { text: "How does Dad's expression change looking through it?", answer: "From politeness to genuine surprise." },
+      { text: "What does Dad admit about Sana's skill?", answer: "That he didn't realize it had developed this much." },
     ],
     trueFalse: [
       { text: "Sana brings out her portfolio.", answer: true },
@@ -198,9 +198,9 @@ export const CHAPTERS = [
     story:
       "Dad suggests we research together, looking specifically at career outcomes for graduates from serious art programs. Together, we find statistics showing many art graduates do build stable, successful careers across various creative industries. He remains cautious, suggesting I also apply to one or two universities offering both art and a practical minor. Although this isn't exactly what I originally hoped for, it feels like genuine middle ground rather than simple defeat. If this compromise lets me pursue painting while easing his concerns somewhat, that seems worth seriously considering. We spend another hour researching programs together, something I never expected tonight's conversation to include.",
     questions: [
-      "What does Dad suggest they do together?",
-      "What does Dad suggest Sana also do?",
-      "How does Sana feel about this compromise?",
+      { text: "What does Dad suggest they do together?", answer: "Research career outcomes for art program graduates." },
+      { text: "What does Dad suggest Sana also do?", answer: "Apply to a university offering both art and a practical minor." },
+      { text: "How does Sana feel about this compromise?", answer: "Like genuine middle ground, worth considering." },
     ],
     trueFalse: [
       { text: "Dad suggests researching career outcomes together.", answer: true },
@@ -227,9 +227,9 @@ export const CHAPTERS = [
     story:
       "The next day, I tell Ms. Okoro everything that happened during our long conversation the night before. She listens with genuine interest, smiling warmly when I mention that Dad actually looked through my entire portfolio. “Compromises aren't failures, Sana. Sometimes they're just the beginning of a longer journey,” she reminds me kindly. She offers to help me research programs that combine strong art training with practical, career-focused coursework. I feel a wave of relief knowing I have support both at home now and here at school. This entire experience is teaching me that difficult conversations, however uncomfortable, can genuinely lead somewhere worthwhile.",
     questions: [
-      "Who does Sana tell about the conversation?",
-      "What does Ms. Okoro say about compromises?",
-      "What does Ms. Okoro offer to help with?",
+      { text: "Who does Sana tell about the conversation?", answer: "Ms. Okoro." },
+      { text: "What does Ms. Okoro say about compromises?", answer: "That they aren't failures, just the beginning of a longer journey." },
+      { text: "What does Ms. Okoro offer to help with?", answer: "Researching programs combining art training with practical coursework." },
     ],
     trueFalse: [
       { text: "Sana tells Ms. Okoro about the conversation.", answer: true },
@@ -256,9 +256,9 @@ export const CHAPTERS = [
     story:
       "Over the following weeks, Dad and I spend several evenings researching universities that offer exactly the combination we discussed. He asks thoughtful questions during our research, genuinely trying to understand this world that once felt completely foreign to him. I notice him researching art career statistics independently too, clearly wanting to feel more informed and confident about this decision. We narrow our list down to four programs, each offering strong art training alongside practical, employable skills. Watching him engage this seriously with something that matters so much to me feels genuinely meaningful. Our relationship, I realize, has actually grown stronger through navigating this disagreement honestly together.",
     questions: [
-      "What do Sana and Dad do over the following weeks?",
-      "What does Dad do independently?",
-      "How many programs do they narrow their list down to?",
+      { text: "What do Sana and Dad do over the following weeks?", answer: "Research universities together." },
+      { text: "What does Dad do independently?", answer: "Research art career statistics on his own." },
+      { text: "How many programs do they narrow their list down to?", answer: "Four." },
     ],
     trueFalse: [
       { text: "Sana and Dad research universities together.", answer: true },
@@ -285,9 +285,9 @@ export const CHAPTERS = [
     story:
       "Tonight, I sit at my laptop, finger hovering over the submit button for my first-choice art program application. Dad stands behind me, having offered to be there when I finally send it, something I never expected weeks ago. “I'm proud of you for knowing what you want and fighting for it respectfully,” he says quietly. I press submit, and something settles inside me, a mixture of excitement, nervousness, and genuine gratitude for how far we've come. This journey taught me that choosing my own path didn't mean rejecting my family, only inviting them to understand it. If I hadn't found the courage to speak that first evening, none of this progress would exist.",
     questions: [
-      "What is Sana about to do tonight?",
-      "What does Dad say he's proud of?",
-      "What did this journey teach Sana about choosing her own path?",
+      { text: "What is Sana about to do tonight?", answer: "Submit her first-choice art program application." },
+      { text: "What does Dad say he's proud of?", answer: "That she knows what she wants and fights for it respectfully." },
+      { text: "What did this journey teach Sana about choosing her own path?", answer: "That it didn't mean rejecting her family, only inviting them to understand it." },
     ],
     trueFalse: [
       { text: "Sana is about to submit her application.", answer: true },

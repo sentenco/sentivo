@@ -27,9 +27,9 @@ export const CHAPTERS = [
     story:
       "On Friday evening, I sit down to review my monthly budget, which usually starts with a quick glance at my payslip. Something looks off immediately, though it takes me a moment to figure out exactly what. Comparing this month's number with last month's, I notice my pay is considerably lower than it should be. At first, I assume I'm simply misreading something, so I check the numbers twice more, carefully. Unfortunately, the difference is real, and now I have to figure out what actually happened and who I should contact about it.",
     questions: [
-      "What does Marcus usually start his budget review with?",
-      "What does Marcus notice about this month's pay?",
-      "What does Marcus do after noticing the difference?",
+      { text: "What does Marcus usually start his budget review with?", answer: "A glance at his payslip." },
+      { text: "What does Marcus notice about this month's pay?", answer: "It's considerably lower than it should be." },
+      { text: "What does Marcus do after noticing the difference?", answer: "Checks the numbers twice more." },
     ],
     trueFalse: [
       { text: "Marcus reviews his budget on Friday evening.", answer: true },
@@ -56,9 +56,9 @@ export const CHAPTERS = [
     story:
       "Before contacting anyone, I decide to look into this myself first, comparing both payslips line by line. I find that my usual monthly bonus, which normally appears automatically, is completely missing from this particular payslip. This has never happened before in my three years at the company, which makes the situation slightly more concerning. I wonder whether this was simply a one-time mistake or possibly a sign of a larger, ongoing problem. Either way, I know I'll need to follow up with someone in payroll first thing on Monday morning.",
     questions: [
-      "What does Marcus do before contacting anyone?",
-      "What does Marcus find missing from his payslip?",
-      "How long has Marcus worked at the company?",
+      { text: "What does Marcus do before contacting anyone?", answer: "Looks into it himself, comparing payslips line by line." },
+      { text: "What does Marcus find missing from his payslip?", answer: "His usual monthly bonus." },
+      { text: "How long has Marcus worked at the company?", answer: "Three years." },
     ],
     trueFalse: [
       { text: "Marcus compares both payslips line by line.", answer: true },
@@ -85,9 +85,9 @@ export const CHAPTERS = [
     story:
       "On Monday morning, I write a polite but clear email to Ms. Alvarez in HR, explaining exactly what I noticed. I attach both payslips, highlighting the missing bonus amount so she can see the difference immediately. In my message, I ask whether this could be looked into as soon as possible, since it affects my monthly budget directly. I try to keep my tone professional and calm, even though I'm honestly a little frustrated underneath. Within an hour, I receive a reply saying she'll check the payroll system and get back to me by the end of the day.",
     questions: [
-      "Who does Marcus write an email to?",
-      "What does Marcus attach to the email?",
-      "How quickly does Marcus receive a reply?",
+      { text: "Who does Marcus write an email to?", answer: "Ms. Alvarez in HR." },
+      { text: "What does Marcus attach to the email?", answer: "Both payslips, highlighting the missing bonus." },
+      { text: "How quickly does Marcus receive a reply?", answer: "Within an hour." },
     ],
     trueFalse: [
       { text: "Marcus writes a polite but clear email to Ms. Alvarez.", answer: true },
@@ -114,9 +114,9 @@ export const CHAPTERS = [
     story:
       "The rest of the workday passes slowly, since part of my mind keeps wondering what Ms. Alvarez will eventually find. I try to focus on my regular tasks, though I check my email more often than I probably should. Around four in the afternoon, a message finally arrives, and my heart skips slightly as I open it. She explains that there was, in fact, a system error affecting several employees' bonuses this month, not just mine. Although knowing it wasn't personal makes me feel somewhat better, I'm still curious exactly when this will be corrected.",
     questions: [
-      "How does Marcus feel during the workday?",
-      "When does a message finally arrive?",
-      "What does Ms. Alvarez explain caused the error?",
+      { text: "How does Marcus feel during the workday?", answer: "Distracted, checking his email often." },
+      { text: "When does a message finally arrive?", answer: "Around four in the afternoon." },
+      { text: "What does Ms. Alvarez explain caused the error?", answer: "A system error affecting several employees' bonuses." },
     ],
     trueFalse: [
       { text: "The workday passes slowly for Marcus.", answer: true },
@@ -143,9 +143,9 @@ export const CHAPTERS = [
     story:
       "Ms. Alvarez suggests a short video call so she can walk me through exactly what went wrong, step by step. During the call, she shares her screen, showing a spreadsheet where a formula had apparently calculated bonuses incorrectly for a specific group. “This should have been caught earlier, and I sincerely apologize for the stress this caused you,” she says honestly. I appreciate her transparency, especially since she could have simply given a vague, generic answer instead. She explains that the finance team is already working on a fix, which should be resolved within the next two business days.",
     questions: [
-      "What does Ms. Alvarez suggest?",
-      "What does the spreadsheet show went wrong?",
-      "How long will the fix take, according to Ms. Alvarez?",
+      { text: "What does Ms. Alvarez suggest?", answer: "A short video call to walk through what went wrong." },
+      { text: "What does the spreadsheet show went wrong?", answer: "A formula had calculated bonuses incorrectly for a specific group." },
+      { text: "How long will the fix take, according to Ms. Alvarez?", answer: "Within the next two business days." },
     ],
     trueFalse: [
       { text: "Ms. Alvarez suggests a short video call.", answer: true },
@@ -172,9 +172,9 @@ export const CHAPTERS = [
     story:
       "Two days pass, and although the finance team said the fix would come by now, my account still shows no change. I decide to send a brief, friendly follow-up email rather than assuming the worst has happened. Ms. Alvarez responds quickly, explaining that the correction is being processed but might take one more business day to reflect. On the other hand, she offers to send me written confirmation of the exact amount owed, just in case I need it for my own records. I thank her, appreciating that she's keeping me informed rather than leaving me wondering silently.",
     questions: [
-      "What does Marcus notice after two days?",
-      "What does Marcus decide to send?",
-      "What does Ms. Alvarez offer to send Marcus?",
+      { text: "What does Marcus notice after two days?", answer: "His account still shows no change." },
+      { text: "What does Marcus decide to send?", answer: "A brief, friendly follow-up email." },
+      { text: "What does Ms. Alvarez offer to send Marcus?", answer: "Written confirmation of the exact amount owed." },
     ],
     trueFalse: [
       { text: "Marcus's account shows no change after two days.", answer: true },
@@ -201,9 +201,9 @@ export const CHAPTERS = [
     story:
       "The following morning, I receive a notification from my bank showing an unexpected deposit had arrived overnight. Opening the app immediately, I confirm that the missing bonus amount has finally been added to my account correctly. Relief spreads through me instantly, followed quickly by genuine appreciation for how the entire situation was ultimately handled. Ms. Alvarez even sends a short message confirming the correction, along with a brief written explanation for my personal records. I reply thanking her for the update, adding that I appreciated how clearly everything had been communicated throughout.",
     questions: [
-      "What does Marcus receive the following morning?",
-      "What does Marcus confirm in the banking app?",
-      "What does Ms. Alvarez send along with the correction?",
+      { text: "What does Marcus receive the following morning?", answer: "A notification of an unexpected deposit." },
+      { text: "What does Marcus confirm in the banking app?", answer: "That the missing bonus has been added correctly." },
+      { text: "What does Ms. Alvarez send along with the correction?", answer: "A short message with a written explanation." },
     ],
     trueFalse: [
       { text: "Marcus receives a notification about an unexpected deposit.", answer: true },
@@ -230,9 +230,9 @@ export const CHAPTERS = [
     story:
       "During lunch, I mention the whole situation to a coworker, curious whether her paycheck was affected as well. She confirms that hers had the exact same issue, and she'd also contacted HR separately about it. We compare notes, agreeing that Ms. Alvarez handled everything professionally, despite the initial inconvenience it caused everyone involved. My coworker jokes that at least now we know payroll actually double-checks these situations carefully when something goes wrong. Although the mistake itself was frustrating, in the end, the company's response genuinely reassured both of us about how future issues might be handled.",
     questions: [
-      "Who does Marcus mention the situation to during lunch?",
-      "What does the coworker confirm about her own paycheck?",
-      "What do Marcus and his coworker agree about Ms. Alvarez?",
+      { text: "Who does Marcus mention the situation to during lunch?", answer: "A coworker." },
+      { text: "What does the coworker confirm about her own paycheck?", answer: "That she had the exact same issue." },
+      { text: "What do Marcus and his coworker agree about Ms. Alvarez?", answer: "That she handled everything professionally." },
     ],
     trueFalse: [
       { text: "Marcus mentions the situation to a coworker during lunch.", answer: true },
@@ -259,9 +259,9 @@ export const CHAPTERS = [
     story:
       "A week later, the company sends a short memo explaining new steps being added to prevent similar payroll errors going forward. According to the memo, an additional review step will now be required before any bonus calculations are finalized each month. I appreciate that the company didn't just fix my individual issue quietly but addressed the underlying cause for everyone. This kind of response, in my opinion, says a lot about how seriously an organization takes its employees' trust. Whatever caused the original error, at least something genuinely useful came out of the whole experience.",
     questions: [
-      "What does the company send a week later?",
-      "What new step will be added to payroll calculations?",
-      "What does Marcus appreciate about the company's response?",
+      { text: "What does the company send a week later?", answer: "A memo about new steps to prevent payroll errors." },
+      { text: "What new step will be added to payroll calculations?", answer: "An additional review step." },
+      { text: "What does Marcus appreciate about the company's response?", answer: "That they addressed the underlying cause for everyone." },
     ],
     trueFalse: [
       { text: "The company sends a memo about new payroll steps.", answer: true },
@@ -288,9 +288,9 @@ export const CHAPTERS = [
     story:
       "Looking back on the whole experience, I realize how differently things could have gone if I had reacted with anger instead of patience. Had I sent an angry, accusatory email that first Monday, the entire process might have felt more tense for everyone involved. Instead, staying calm and communicating clearly allowed Ms. Alvarez to actually help me efficiently and honestly. I've also learned to check my payslip more carefully each month, rather than only glancing at the final total. In the end, this small workplace hiccup taught me something genuinely useful about handling problems calmly and professionally.",
     questions: [
-      "What does Marcus realize looking back on the experience?",
-      "What has Marcus learned to do each month?",
-      "What does Marcus feel this experience taught him?",
+      { text: "What does Marcus realize looking back on the experience?", answer: "How differently things could have gone if he'd reacted with anger." },
+      { text: "What has Marcus learned to do each month?", answer: "Check his payslip more carefully." },
+      { text: "What does Marcus feel this experience taught him?", answer: "Something useful about handling problems calmly and professionally." },
     ],
     trueFalse: [
       { text: "Marcus realizes staying calm helped the situation go smoothly.", answer: true },

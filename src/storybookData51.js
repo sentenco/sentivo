@@ -24,9 +24,9 @@ export const CHAPTERS = [
     story:
       "For the past two months, I've practiced basketball almost every single day after school without exception. Making the varsity team has been my main goal since I started high school, and try-outs are finally tomorrow. I've been shooting free throws, running drills, and watching game footage whenever I possibly have free time. If I make the team this year, it would prove all those early morning practices were genuinely worth the effort. My legs ache tonight from today's final practice session, but I feel more prepared than I've ever felt before. Tomorrow will either confirm everything I've worked toward or force me to reconsider my whole plan.",
     questions: [
-      "How long has Jordan been practicing basketball?",
-      "What has been Jordan's main goal since high school started?",
-      "How does Jordan feel the night before try-outs?",
+      { text: "How long has Jordan been practicing basketball?", answer: "Two months, almost every day." },
+      { text: "What has been Jordan's main goal since high school started?", answer: "Making the varsity team." },
+      { text: "How does Jordan feel the night before try-outs?", answer: "More prepared than ever, though his legs ache." },
     ],
     trueFalse: [
       { text: "Jordan has practiced almost every day for two months.", answer: true },
@@ -53,9 +53,9 @@ export const CHAPTERS = [
     story:
       "The gym feels crowded and tense as nearly thirty players stretch and warm up before try-outs officially begin. Coach Reeves walks around with his clipboard, occasionally jotting down notes while watching everyone carefully. My hands feel slightly sweaty, though I try to focus only on my own performance rather than comparing myself to others. During the scrimmage portion, I make a few solid plays, though I also miss an easy shot I normally never miss. While running drills, I notice Coach Reeves watching me specifically at one point, which makes me both hopeful and nervous simultaneously. By the end of the session, I genuinely have no idea how well I actually performed.",
     questions: [
-      "How many players are trying out?",
-      "What does Jordan try to focus on?",
-      "How does Jordan feel by the end of the session?",
+      { text: "How many players are trying out?", answer: "Nearly thirty." },
+      { text: "What does Jordan try to focus on?", answer: "His own performance, not comparing to others." },
+      { text: "How does Jordan feel by the end of the session?", answer: "He has no idea how well he performed." },
     ],
     trueFalse: [
       { text: "Nearly thirty players are trying out.", answer: true },
@@ -82,9 +82,9 @@ export const CHAPTERS = [
     story:
       "Coach Reeves announced the results would be posted three days later, which somehow feels like an eternity right now. Every hour that passes, I find myself checking my phone, half expecting some kind of early notification. Mei, noticing my constant anxiety at lunch, reminds me that overthinking this won't actually change the outcome at all. She's right, logically, but knowing something intellectually doesn't always calm the nervous feeling in my stomach. That night, I replay every single play from try-outs, wondering if I could have done something differently. If only results came out immediately, this waiting period wouldn't feel nearly as unbearable as it currently does.",
     questions: [
-      "When did Coach Reeves say results would be posted?",
-      "What does Mei remind Jordan at lunch?",
-      "What does Jordan do that night?",
+      { text: "When did Coach Reeves say results would be posted?", answer: "Three days later." },
+      { text: "What does Mei remind Jordan at lunch?", answer: "That overthinking won't change the outcome." },
+      { text: "What does Jordan do that night?", answer: "Replays every play from try-outs." },
     ],
     trueFalse: [
       { text: "Results will be posted three days later.", answer: true },
@@ -111,9 +111,9 @@ export const CHAPTERS = [
     story:
       "On the third morning, a crowd already surrounds the gym doors before I even arrive at school. I push through gently, my heart pounding as I scan the list for my name among the others. I read it once, then twice, my stomach sinking lower with each careful pass through the names. My name isn't there, and for a moment, I genuinely cannot process what that actually means. Students around me celebrate loudly, hugging each other, while I stand frozen, feeling completely invisible in the noisy crowd. I quietly step back and walk away before anyone notices the tears threatening to form in my eyes.",
     questions: [
-      "What does Jordan find when he reaches the gym doors?",
-      "How many times does Jordan read the list?",
-      "How does Jordan feel when he doesn't find his name?",
+      { text: "What does Jordan find when he reaches the gym doors?", answer: "A crowd around the posted list." },
+      { text: "How many times does Jordan read the list?", answer: "Twice." },
+      { text: "How does Jordan feel when he doesn't find his name?", answer: "He can't process it -- feels invisible." },
     ],
     trueFalse: [
       { text: "A crowd already surrounds the gym doors.", answer: true },
@@ -140,9 +140,9 @@ export const CHAPTERS = [
     story:
       "I sit alone on a bench outside, unable to face going back into a school full of celebrating classmates. Two months of early mornings, sore muscles, and missed hangouts suddenly feel completely pointless in this exact moment. I text my mom that I'll walk home instead of getting picked up, needing time alone before facing anyone. Although I know logically that one failed try-out doesn't define my entire future, it certainly doesn't feel that way right now. I keep replaying that missed shot from try-out day, wondering if it single-handedly cost me my spot. The disappointment sits heavy in my chest, making even simple breathing feel oddly difficult today.",
     questions: [
-      "Where does Jordan sit after seeing the list?",
-      "What does Jordan text his mom?",
-      "What does Jordan keep replaying?",
+      { text: "Where does Jordan sit after seeing the list?", answer: "On a bench outside." },
+      { text: "What does Jordan text his mom?", answer: "That he'll walk home instead of being picked up." },
+      { text: "What does Jordan keep replaying?", answer: "The missed shot from try-out day." },
     ],
     trueFalse: [
       { text: "Jordan sits alone on a bench outside.", answer: true },
@@ -169,9 +169,9 @@ export const CHAPTERS = [
     story:
       "That evening, Mei shows up unannounced at my house, having heard the news from someone at school. She doesn't offer empty comfort or pretend the situation isn't genuinely disappointing, which I appreciate more than expected. Instead, she asks thoughtful questions about what basketball actually means to me beyond just making this particular team. I admit I love the sport itself deeply, not only the status of wearing a varsity jersey. “Maybe there are other ways to keep playing, even if this specific door closed,” she suggests carefully. Her perspective doesn't erase my disappointment completely, but it does offer something I desperately needed: a slightly wider view.",
     questions: [
-      "How does Mei find out about the news?",
-      "What does Mei avoid doing?",
-      "What does Mei suggest to Jordan?",
+      { text: "How does Mei find out about the news?", answer: "She hears it from someone at school." },
+      { text: "What does Mei avoid doing?", answer: "Offering empty comfort or pretending it isn't disappointing." },
+      { text: "What does Mei suggest to Jordan?", answer: "That there might be other ways to keep playing." },
     ],
     trueFalse: [
       { text: "Mei shows up unannounced at Jordan's house.", answer: true },
@@ -198,9 +198,9 @@ export const CHAPTERS = [
     story:
       "A few days later, I gather enough courage to ask Coach Reeves for honest feedback about my try-out performance. He seems genuinely pleased I asked, explaining that my skills were actually solid, but my consistency needs more work overall. “You have real potential, Jordan, but there were three other players slightly more consistent this particular year,” he explains honestly. Hearing this stings, but it also feels considerably more useful than simply wondering endlessly what went wrong. He mentions a summer development league that could help me improve specific weaknesses before next year's try-outs. Walking out of his office, I feel something unexpected: cautious hope instead of pure defeat.",
     questions: [
-      "What does Jordan ask Coach Reeves for?",
-      "What does Coach Reeves say about Jordan's skills?",
-      "What does Coach Reeves mention that could help Jordan?",
+      { text: "What does Jordan ask Coach Reeves for?", answer: "Honest feedback about his try-out performance." },
+      { text: "What does Coach Reeves say about Jordan's skills?", answer: "That they're solid, but his consistency needs more work." },
+      { text: "What does Coach Reeves mention that could help Jordan?", answer: "A summer development league." },
     ],
     trueFalse: [
       { text: "Jordan asks Coach Reeves for honest feedback.", answer: true },
@@ -227,9 +227,9 @@ export const CHAPTERS = [
     story:
       "I decide to sign up for the summer development league Coach Reeves mentioned, despite still feeling residual disappointment about missing varsity. The league feels different from regular try-outs, focused more on genuine skill-building than immediate competition or comparison. I work specifically on my consistency, practicing the same shots repeatedly until they feel completely automatic rather than uncertain. Some days feel discouraging, especially when progress seems painfully slow compared to what I'm hoping for. However, other days bring small breakthroughs, moments where something finally clicks into place after weeks of repetitive effort. Slowly, I begin rebuilding not just my basketball skills, but also my confidence in myself.",
     questions: [
-      "What does Jordan decide to sign up for?",
-      "What does Jordan work on specifically?",
-      "What does Jordan begin rebuilding besides basketball skills?",
+      { text: "What does Jordan decide to sign up for?", answer: "The summer development league." },
+      { text: "What does Jordan work on specifically?", answer: "His consistency." },
+      { text: "What does Jordan begin rebuilding besides basketball skills?", answer: "His confidence in himself." },
     ],
     trueFalse: [
       { text: "Jordan signs up for the summer development league.", answer: true },
@@ -256,9 +256,9 @@ export const CHAPTERS = [
     story:
       "By midsummer, I've become genuinely close with several teammates from the development league, something I hadn't expected at all. Unlike the pressure-filled atmosphere of varsity try-outs, this group feels supportive, encouraging each other through mistakes rather than judging them harshly. One teammate, Marcus, also didn't make varsity this year, and we bond over our shared disappointment and determination. We practice extra hours together sometimes, pushing each other to improve rather than competing against one another directly. I realize this experience is teaching me something varsity might not have: genuine teamwork built on mutual support instead of only competition. Missing that first list might have led me somewhere unexpectedly valuable.",
     questions: [
-      "What has Jordan become by midsummer?",
-      "Who is Marcus, and what do he and Jordan share?",
-      "What is Jordan realizing about this experience?",
+      { text: "What has Jordan become by midsummer?", answer: "Close with several teammates from the league." },
+      { text: "Who is Marcus, and what do he and Jordan share?", answer: "A teammate who also didn't make varsity; they share disappointment and determination." },
+      { text: "What is Jordan realizing about this experience?", answer: "That it's teaching him genuine teamwork built on mutual support." },
     ],
     trueFalse: [
       { text: "Jordan has become close with several teammates.", answer: true },
@@ -285,9 +285,9 @@ export const CHAPTERS = [
     story:
       "As summer ends, I reflect on how differently this season turned out compared to what I had originally planned. If someone had told me in spring that failing try-outs would lead to genuine growth, I probably wouldn't have believed them. My consistency has improved noticeably, something Coach Reeves himself noticed when he stopped by one of our league games recently. I'm planning to try out again next year, though this time with a healthier perspective on what success actually means. Whether or not I make the team, I now know that setbacks don't have to be endings, only unexpected redirections. This summer taught me resilience matters more than any single try-out result ever could.",
     questions: [
-      "What does Jordan reflect on as summer ends?",
-      "What did Coach Reeves notice when he stopped by?",
-      "What has Jordan learned about setbacks?",
+      { text: "What does Jordan reflect on as summer ends?", answer: "How differently this season turned out than planned." },
+      { text: "What did Coach Reeves notice when he stopped by?", answer: "That Jordan's consistency has improved noticeably." },
+      { text: "What has Jordan learned about setbacks?", answer: "That they don't have to be endings, only unexpected redirections." },
     ],
     trueFalse: [
       { text: "Jordan reflects on how the season turned out.", answer: true },

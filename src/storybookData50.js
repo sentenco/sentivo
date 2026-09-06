@@ -24,9 +24,9 @@ export const CHAPTERS = [
     story:
       "During library club, I notice how many of our books are falling apart, with torn pages and broken spines everywhere. When I ask the librarian about replacing them, she explains that the school simply doesn't have the budget this year. This bothers me more than I expected, since I've always loved this library since I was younger. If nobody does something, these books will just keep getting worse until students can't use them properly anymore. I mention this to Lena at lunch, and she immediately suggests we organize a fundraiser ourselves. The idea feels ambitious, but something about it also feels genuinely worth trying.",
     questions: [
-      "What does Amir notice about the library books?",
-      "What does the librarian say about the budget?",
-      "What does Lena suggest at lunch?",
+      { text: "What does Amir notice about the library books?", answer: "They're falling apart, with torn pages and broken spines." },
+      { text: "What does the librarian say about the budget?", answer: "That the school doesn't have the budget this year." },
+      { text: "What does Lena suggest at lunch?", answer: "Organizing a fundraiser." },
     ],
     trueFalse: [
       { text: "Amir notices many books are falling apart.", answer: true },
@@ -53,9 +53,9 @@ export const CHAPTERS = [
     story:
       "Before starting anything, Lena and I know we need permission from a teacher to organize this properly. We write a short proposal explaining our goal and bring it to Mr. Okafor after class. He reads it carefully, asking several questions about our plan and how we intend to collect donations. “If you're serious about this, I'll support you, but you'll need to handle most of the organizing yourselves,” he says. I feel a mix of excitement and nervousness, since neither of us has organized something like this before. Lena squeezes my arm reassuringly, reminding me that we can figure out the details together as we go.",
     questions: [
-      "What do Amir and Lena bring to Mr. Okafor?",
-      "What does Mr. Okafor ask about?",
-      "What does Mr. Okafor say he will do?",
+      { text: "What do Amir and Lena bring to Mr. Okafor?", answer: "A short proposal." },
+      { text: "What does Mr. Okafor ask about?", answer: "Their plan and how they intend to collect donations." },
+      { text: "What does Mr. Okafor say he will do?", answer: "Support them, but they'll need to organize it themselves." },
     ],
     trueFalse: [
       { text: "Amir and Lena write a proposal.", answer: true },
@@ -82,9 +82,9 @@ export const CHAPTERS = [
     story:
       "That weekend, Lena and I meet to brainstorm what kind of fundraiser would actually work for our school. We consider a bake sale, but Lena points out that several clubs already do that every semester. Instead, we decide on a talent show, charging a small entry fee for both performers and audience members. Although we've never organized an event this large, we figure the excitement might attract more donations than a simple sale would. We divide our tasks carefully: I'll handle the venue and equipment, while Lena manages sign-ups and publicity. By the end of our meeting, our sticky-note wall looks chaotic, but our plan finally feels solid.",
     questions: [
-      "What event do Amir and Lena decide on?",
-      "Why do they avoid a bake sale?",
-      "How do they divide their tasks?",
+      { text: "What event do Amir and Lena decide on?", answer: "A talent show." },
+      { text: "Why do they avoid a bake sale?", answer: "Because several clubs already do that every semester." },
+      { text: "How do they divide their tasks?", answer: "Amir handles venue and equipment, Lena manages sign-ups and publicity." },
     ],
     trueFalse: [
       { text: "Amir and Lena decide on a talent show.", answer: true },
@@ -111,9 +111,9 @@ export const CHAPTERS = [
     story:
       "With our plan set, Lena and I spend the next week spreading the word throughout school as widely as possible. I design and print flyers, hanging them near the cafeteria, gym, and main entrance where everyone passes daily. Lena creates a sign-up sheet online and shares it through every class group chat she can access. We also ask teachers if we can make short morning announcements about the event and our cause. Some students seem enthusiastic immediately, while others walk past our flyers without even glancing at them. Despite the mixed reactions, five acts sign up within just the first two days, which honestly surprises us both.",
     questions: [
-      "What does Amir do to spread the word?",
-      "What does Lena create online?",
-      "How many acts sign up within the first two days?",
+      { text: "What does Amir do to spread the word?", answer: "Designs and prints flyers." },
+      { text: "What does Lena create online?", answer: "A sign-up sheet." },
+      { text: "How many acts sign up within the first two days?", answer: "Five." },
     ],
     trueFalse: [
       { text: "Amir designs and prints flyers.", answer: true },
@@ -140,9 +140,9 @@ export const CHAPTERS = [
     story:
       "Ten days before the show, I receive a message that the gym has been double-booked for a sports event instead. Panic rushes through me immediately, since we had already promised performers a specific date and location. If we cancel now, all the momentum we've built over the past week would completely disappear. I call Lena right away, and although she sounds worried too, she stays remarkably calm about the situation. “Let's ask Mr. Okafor if the cafeteria could work instead,” she suggests, already thinking practically. I hadn't even considered that option, but suddenly it seems like exactly the solution we desperately need.",
     questions: [
-      "What message does Amir receive ten days before the show?",
-      "What does Amir worry might happen if they cancel?",
-      "What does Lena suggest instead?",
+      { text: "What message does Amir receive ten days before the show?", answer: "That the gym has been double-booked." },
+      { text: "What does Amir worry might happen if they cancel?", answer: "That all their momentum would disappear." },
+      { text: "What does Lena suggest instead?", answer: "Asking if the cafeteria could work." },
     ],
     trueFalse: [
       { text: "The gym has been double-booked for a sports event.", answer: true },
@@ -169,9 +169,9 @@ export const CHAPTERS = [
     story:
       "Mr. Okafor agrees the cafeteria could work, though it means rearranging our entire setup completely from scratch. Together, we measure the space and realize we'll need a smaller stage than originally planned for the gym. Lena redesigns the seating chart while I contact each performer to explain the sudden change of venue. Surprisingly, nobody drops out, and one performer even offers to help us build a simple platform stage. Working through this setback together, rather than separately, actually brings Lena and me closer as genuine partners. By the end of the day, exhausted but relieved, our new plan feels even more solid than before.",
     questions: [
-      "What does Mr. Okafor agree to?",
-      "What does Lena redesign?",
-      "How does this setback affect Amir and Lena's partnership?",
+      { text: "What does Mr. Okafor agree to?", answer: "Using the cafeteria." },
+      { text: "What does Lena redesign?", answer: "The seating chart." },
+      { text: "How does this setback affect Amir and Lena's partnership?", answer: "It brings them closer as genuine partners." },
     ],
     trueFalse: [
       { text: "Mr. Okafor agrees the cafeteria could work.", answer: true },
@@ -198,9 +198,9 @@ export const CHAPTERS = [
     story:
       "The night before the fundraiser, I lie awake, running through every possible thing that could go wrong tomorrow. What if not enough people show up, or what if the sound equipment fails during a performance? Lena had told me earlier that worrying wouldn't change anything, but my mind refuses to listen right now. I finally get up and review our checklist one more time, just to reassure myself everything is actually ready. Ticket sales have already covered nearly half our fundraising goal, which should feel more comforting than it currently does. Eventually, exhaustion wins over anxiety, and I drift into a restless, uneasy sleep before the big day.",
     questions: [
-      "What does Amir do the night before the fundraiser?",
-      "What had Lena told him earlier?",
-      "How much of the fundraising goal have ticket sales covered?",
+      { text: "What does Amir do the night before the fundraiser?", answer: "Reviews the checklist, lying awake worrying." },
+      { text: "What had Lena told him earlier?", answer: "That worrying wouldn't change anything." },
+      { text: "How much of the fundraising goal have ticket sales covered?", answer: "Nearly half." },
     ],
     trueFalse: [
       { text: "Amir lies awake worrying the night before.", answer: true },
@@ -227,9 +227,9 @@ export const CHAPTERS = [
     story:
       "By six o'clock, the cafeteria looks completely transformed, with string lights and a small handmade stage in the corner. Students begin arriving steadily, and within twenty minutes, nearly every seat has someone sitting in it. Lena manages backstage while I greet guests at the door, collecting tickets and directing people to open seats. When the first performer steps onto the stage, the room erupts into supportive applause, and my nervousness slowly starts fading. Performance after performance goes smoothly, each one met with genuine enthusiasm from the packed, energetic crowd. Watching everything come together after weeks of planning feels genuinely overwhelming, in the best possible way.",
     questions: [
-      "How does the cafeteria look by six o'clock?",
-      "What does Amir do at the door?",
-      "How does the crowd react to the performances?",
+      { text: "How does the cafeteria look by six o'clock?", answer: "Completely transformed, with string lights and a small stage." },
+      { text: "What does Amir do at the door?", answer: "Greets guests and collects tickets." },
+      { text: "How does the crowd react to the performances?", answer: "With genuine enthusiasm." },
     ],
     trueFalse: [
       { text: "The cafeteria looks completely transformed by six.", answer: true },
@@ -256,9 +256,9 @@ export const CHAPTERS = [
     story:
       "After the last performer bows and the crowd slowly filters out, Lena and I sit down to count everything we raised tonight. Ticket sales, plus a few generous extra donations, add up to more money than either of us had honestly expected. When we reach the final total, we look at each other, both too stunned to speak for a moment. “We actually did this,” Lena finally says, her voice filled with disbelief and quiet pride. I think about the worn-out library books that started this whole idea just a few weeks ago. Tomorrow, we'll present the total to Mr. Okafor and the librarian, but tonight, we simply celebrate quietly together.",
     questions: [
-      "What do Amir and Lena do after the show ends?",
-      "How does the total compare to what they expected?",
-      "What does Lena say when they reach the final total?",
+      { text: "What do Amir and Lena do after the show ends?", answer: "Sit down to count everything they raised." },
+      { text: "How does the total compare to what they expected?", answer: "More than either had expected." },
+      { text: "What does Lena say when they reach the final total?", answer: "We actually did this." },
     ],
     trueFalse: [
       { text: "Amir and Lena count everything they raised.", answer: true },
@@ -285,9 +285,9 @@ export const CHAPTERS = [
     story:
       "Two weeks later, boxes of brand-new books arrive at the library, purchased entirely with the money we raised together. The librarian nearly cries when she sees the collection, thanking Amir and Lena repeatedly for their thoughtful effort. Helping unpack and shelve the books feels even more satisfying than the fundraiser night itself somehow. Several classmates who attended the show now stop by regularly, asking when the next fundraiser might happen. I never expected that noticing a small problem could lead to something this meaningful and lasting. If I hadn't mentioned those torn pages to Lena, none of this would have happened at all.",
     questions: [
-      "What arrives at the library two weeks later?",
-      "How does the librarian react?",
-      "What do several classmates ask Amir now?",
+      { text: "What arrives at the library two weeks later?", answer: "Boxes of brand-new books." },
+      { text: "How does the librarian react?", answer: "She nearly cries, thanking them repeatedly." },
+      { text: "What do several classmates ask Amir now?", answer: "When the next fundraiser might happen." },
     ],
     trueFalse: [
       { text: "Boxes of brand-new books arrive two weeks later.", answer: true },

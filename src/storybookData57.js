@@ -35,9 +35,9 @@ export const CHAPTERS = [
     story:
       "After a delayed flight and a long taxi ride, I finally arrive at my hotel close to eleven at night. I'm here for a work conference starting early tomorrow, so all I want is to check in and sleep. The lobby is quiet, with only a single receptionist working behind the desk at this hour. I pull up my confirmation email on my phone, feeling relieved that at least the booking itself should be straightforward. Walking toward the desk, I rehearse nothing in particular, since checking in is usually the easiest part of traveling. I could not have predicted how wrong that assumption was about to turn out to be.",
     questions: [
-      "What time does Priya arrive at the hotel?",
-      "Why is Priya traveling?",
-      "What does Priya pull up on her phone?",
+      { text: "What time does Priya arrive at the hotel?", answer: "Close to eleven at night." },
+      { text: "Why is Priya traveling?", answer: "For a work conference." },
+      { text: "What does Priya pull up on her phone?", answer: "Her confirmation email." },
     ],
     trueFalse: [
       { text: "Priya arrives close to eleven at night.", answer: true },
@@ -64,9 +64,9 @@ export const CHAPTERS = [
     story:
       "The receptionist types my name into the system, then pauses, her expression shifting from routine to visibly puzzled. “I'm sorry, but I don't see a reservation under this name,” she says, checking again more carefully. My stomach drops slightly, and I show her the confirmation number on my phone, hoping it's simply a search error. She looks it up manually this time, and after a moment, her face confirms my growing suspicion: something has genuinely gone wrong. “It looks like your reservation was accidentally cancelled during a system update earlier this week,” she explains apologetically. I ask if there's any way to sort this out tonight, given how late it already is.",
     questions: [
-      "What does the receptionist say when she checks the system?",
-      "What does Priya show the receptionist?",
-      "What does the receptionist explain happened?",
+      { text: "What does the receptionist say when she checks the system?", answer: "That she doesn't see a reservation under Priya's name." },
+      { text: "What does Priya show the receptionist?", answer: "The confirmation number on her phone." },
+      { text: "What does the receptionist explain happened?", answer: "That the reservation was accidentally cancelled during a system update." },
     ],
     trueFalse: [
       { text: "The receptionist doesn't see a reservation under Priya's name.", answer: true },
@@ -93,9 +93,9 @@ export const CHAPTERS = [
     story:
       "I explain that I have an important conference beginning at eight tomorrow morning and genuinely cannot handle finding another hotel tonight. The receptionist apologizes again, explaining that she doesn't have the authority to resolve booking errors of this particular size. “Would it be possible to speak with someone who does?” I ask, trying to remain calm despite my mounting frustration. She nods and picks up the phone, calling the night manager, who she says will arrive within a few minutes. While waiting, I remind myself that getting angry probably wouldn't speed up the solution anyway. Although this delay is frustrating, panicking certainly won't help resolve the situation any faster.",
     questions: [
-      "What does Priya explain about tomorrow?",
-      "Why can't the receptionist resolve this herself?",
-      "What does Priya ask to speak with someone?",
+      { text: "What does Priya explain about tomorrow?", answer: "That she has an important conference beginning at eight." },
+      { text: "Why can't the receptionist resolve this herself?", answer: "She doesn't have the authority for errors of this size." },
+      { text: "What does Priya ask to speak with someone?", answer: "Someone with the authority to help." },
     ],
     trueFalse: [
       { text: "Priya has an important conference starting at eight tomorrow.", answer: true },
@@ -122,9 +122,9 @@ export const CHAPTERS = [
     story:
       "A few minutes later, Mr. Bennett, the night manager, arrives and introduces himself with a genuinely apologetic expression. He reviews the situation on his own computer, confirming what the receptionist had already explained about the system error. “I sincerely apologize for this inconvenience. Let me see what options we have available,” he says professionally. He checks the hotel's current occupancy, though I can tell from his expression that tonight might be fully booked. If there are truly no rooms left, I'm not entirely sure what my next step would even be. He asks me to wait just a few more minutes while he explores every possible solution.",
     questions: [
-      "Who arrives to help Priya?",
-      "What does Mr. Bennett confirm?",
-      "What does Mr. Bennett check on his computer?",
+      { text: "Who arrives to help Priya?", answer: "Mr. Bennett, the night manager." },
+      { text: "What does Mr. Bennett confirm?", answer: "The system error the receptionist explained." },
+      { text: "What does Mr. Bennett check on his computer?", answer: "The hotel's current occupancy." },
     ],
     trueFalse: [
       { text: "Mr. Bennett is the hotel's night manager.", answer: true },
@@ -151,9 +151,9 @@ export const CHAPTERS = [
     story:
       "Mr. Bennett returns with disappointing news: tonight, the hotel is indeed completely full because of a large event nearby. My heart sinks, and I briefly consider whether I'll need to search for another hotel this late at night. However, he continues speaking before I can panic further, mentioning a possible alternative he'd like to suggest. “We do have a suite available, normally at a much higher rate, but I could offer it at your original price,” he explains. Relief washes over me instantly, though I'm still slightly cautious about whether this solution will actually work smoothly. “That would honestly solve everything,” I tell him, unable to hide my genuine gratitude.",
     questions: [
-      "What news does Mr. Bennett return with?",
-      "What does Mr. Bennett suggest as an alternative?",
-      "How does Priya feel hearing this suggestion?",
+      { text: "What news does Mr. Bennett return with?", answer: "That the hotel is completely full tonight." },
+      { text: "What does Mr. Bennett suggest as an alternative?", answer: "A suite at her original price." },
+      { text: "How does Priya feel hearing this suggestion?", answer: "Relief." },
     ],
     trueFalse: [
       { text: "The hotel is completely full tonight.", answer: true },
@@ -180,9 +180,9 @@ export const CHAPTERS = [
     story:
       "Mr. Bennett personally walks me up to the suite, apologizing once more for the entire situation along the way. The room turns out to be considerably nicer than what I had originally booked, with a small sitting area and a much larger bathroom. “If anything else comes up tonight, please don't hesitate to call the front desk directly,” he says before leaving. I thank him sincerely, genuinely appreciating how he handled what could have easily become a much worse situation. Setting my suitcase down, I finally allow myself to relax after nearly an hour of stressful uncertainty. Despite the rocky start, tonight is ending considerably better than I had feared just thirty minutes ago.",
     questions: [
-      "Who walks Priya up to the suite?",
-      "How does the suite compare to what Priya originally booked?",
-      "What does Mr. Bennett tell Priya before leaving?",
+      { text: "Who walks Priya up to the suite?", answer: "Mr. Bennett." },
+      { text: "How does the suite compare to what Priya originally booked?", answer: "Considerably nicer." },
+      { text: "What does Mr. Bennett tell Priya before leaving?", answer: "To call the front desk if anything else comes up." },
     ],
     trueFalse: [
       { text: "Mr. Bennett personally walks Priya up to the suite.", answer: true },
@@ -209,9 +209,9 @@ export const CHAPTERS = [
     story:
       "Despite the comfortable suite, sleep doesn't come easily, since my mind keeps replaying the evening's stressful events repeatedly. I check my alarm three separate times, worried I might somehow oversleep after such an exhausting, chaotic arrival. Tomorrow's conference presentation weighs on me too, adding another layer of anxiety to an already restless mind. I remind myself that everything worked out reasonably well, in the end, despite how frightening it felt in the moment. Eventually, exhaustion overtakes my racing thoughts, and I drift into a light, uneasy sleep before morning arrives. Whatever tomorrow brings, at least tonight's hotel crisis has been fully resolved.",
     questions: [
-      "Why doesn't sleep come easily for Priya?",
-      "What does Priya check three times?",
-      "What does Priya remind herself about the situation?",
+      { text: "Why doesn't sleep come easily for Priya?", answer: "Her mind keeps replaying the evening's stressful events." },
+      { text: "What does Priya check three times?", answer: "Her alarm." },
+      { text: "What does Priya remind herself about the situation?", answer: "That everything worked out reasonably well in the end." },
     ],
     trueFalse: [
       { text: "Priya's mind keeps replaying the evening's events.", answer: true },
@@ -238,9 +238,9 @@ export const CHAPTERS = [
     story:
       "The next morning, I arrive at the conference feeling surprisingly composed, given everything that happened the night before. Coffee in hand, I check in smoothly this time, without a single complication interrupting the straightforward process. My presentation goes well, and afterward, several colleagues mention how organized and confident I appeared throughout the session. Little do they know about the chaotic hotel situation that preceded this seemingly ordinary morning entirely. On the other hand, I suppose that quietly handling problems is exactly what professionalism sometimes actually requires. I make a mental note to always keep printed confirmations from now on, just in case something similar happens again.",
     questions: [
-      "How does Priya feel arriving at the conference?",
-      "How does Priya's presentation go?",
-      "What mental note does Priya make?",
+      { text: "How does Priya feel arriving at the conference?", answer: "Surprisingly composed." },
+      { text: "How does Priya's presentation go?", answer: "Well." },
+      { text: "What mental note does Priya make?", answer: "To always keep printed confirmations from now on." },
     ],
     trueFalse: [
       { text: "Priya arrives at the conference feeling surprisingly composed.", answer: true },
@@ -267,9 +267,9 @@ export const CHAPTERS = [
     story:
       "That evening, back in my room, I decide to write a short email thanking the hotel for how they handled last night's mistake. I mention Mr. Bennett specifically by name, describing how professionally and calmly he resolved a genuinely stressful situation. Writing this note takes only a few minutes, but it feels important to acknowledge good service, not only complain about bad service. I also mention, gently, that a system error like this could easily happen to someone less understanding. If handled poorly, this exact situation could have ruined someone's entire trip rather than simply becoming a memorable story. I send the email, feeling satisfied that I addressed the situation completely and fairly.",
     questions: [
-      "What does Priya decide to write that evening?",
-      "Who does Priya mention specifically by name?",
-      "Why does Priya feel it's important to write this note?",
+      { text: "What does Priya decide to write that evening?", answer: "A thank-you email to the hotel." },
+      { text: "Who does Priya mention specifically by name?", answer: "Mr. Bennett." },
+      { text: "Why does Priya feel it's important to write this note?", answer: "To acknowledge good service, not just complain about bad service." },
     ],
     trueFalse: [
       { text: "Priya writes a thank-you email to the hotel.", answer: true },
@@ -296,9 +296,9 @@ export const CHAPTERS = [
     story:
       "On my flight home, I reflect on how differently this entire trip could have unfolded without a bit of patience and clear communication. If I had panicked or argued unreasonably at check-in, the situation might have escalated rather than resolved so smoothly. Instead, staying calm and explaining my situation clearly allowed Mr. Bennett to actually help me effectively. This experience taught me something valuable about business travel: mistakes happen, but how people respond genuinely matters more than the mistake itself. I now keep printed confirmations for every trip, a small habit born directly from that chaotic hotel night. In the end, what could have been a disaster became simply an unusual story worth telling colleagues later.",
     questions: [
-      "What does Priya reflect on during her flight home?",
-      "What does Priya say might have happened if she had panicked?",
-      "What habit has Priya started because of this experience?",
+      { text: "What does Priya reflect on during her flight home?", answer: "How differently the trip could have unfolded without patience and clear communication." },
+      { text: "What does Priya say might have happened if she had panicked?", answer: "The situation might have escalated rather than resolved smoothly." },
+      { text: "What habit has Priya started because of this experience?", answer: "Keeping printed confirmations for every trip." },
     ],
     trueFalse: [
       { text: "Priya reflects on the trip during her flight home.", answer: true },

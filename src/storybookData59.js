@@ -27,9 +27,9 @@ export const CHAPTERS = [
     story:
       "After work, I stop by the pharmacy to pick up a prescription my doctor called in earlier this week. The notification on my phone says it's ready, so I expect this errand to take only a few minutes at most. Inside, the pharmacy is fairly busy, with several people waiting in a short line ahead of me. While I wait, I glance at my phone, mentally planning the rest of my evening once this quick stop is finished. When it's finally my turn, I give my name at the counter, and the assistant disappears briefly to retrieve my bag.",
     questions: [
-      "Why does Elena stop by the pharmacy?",
-      "What does the notification on her phone say?",
-      "What does Elena do while waiting in line?",
+      { text: "Why does Elena stop by the pharmacy?", answer: "To pick up a prescription her doctor called in." },
+      { text: "What does the notification on her phone say?", answer: "That it's ready." },
+      { text: "What does Elena do while waiting in line?", answer: "Glances at her phone, planning her evening." },
     ],
     trueFalse: [
       { text: "Elena stops by the pharmacy after work.", answer: true },
@@ -56,9 +56,9 @@ export const CHAPTERS = [
     story:
       "The assistant hands me a small bag, and out of habit, I check the label before leaving the counter. Something immediately catches my attention: the dosage listed seems different from what my doctor had actually mentioned during my appointment. I pull up my doctor's instructions on my phone, comparing the numbers carefully to make sure I'm not simply misremembering something. Unfortunately, the difference is clear, which means either the prescription itself or the label has some kind of error. Rather than simply assuming it's fine, I decide I should mention this immediately to someone who actually works here.",
     questions: [
-      "What does Elena check out of habit?",
-      "What catches Elena's attention on the label?",
-      "What does Elena decide she should do?",
+      { text: "What does Elena check out of habit?", answer: "The label on the bag." },
+      { text: "What catches Elena's attention on the label?", answer: "The dosage seems different from what the doctor mentioned." },
+      { text: "What does Elena decide she should do?", answer: "Mention it to someone who works there." },
     ],
     trueFalse: [
       { text: "Elena checks the label out of habit.", answer: true },
@@ -85,9 +85,9 @@ export const CHAPTERS = [
     story:
       "I ask to speak with the pharmacist directly, and Mr. Diaz comes over, greeting me with a professional, attentive manner. I explain calmly that the dosage on the label doesn't match what I remember my doctor telling me during our appointment. He takes the bottle carefully, examining both the label and the original prescription order on his computer screen. “You were right to bring this up. Let me look into it more closely before you take anything,” he says seriously. I appreciate that he doesn't dismiss my concern, treating it instead as something genuinely worth investigating properly.",
     questions: [
-      "Who comes over to speak with Elena?",
-      "What does Elena explain calmly?",
-      "What does Mr. Diaz say to Elena?",
+      { text: "Who comes over to speak with Elena?", answer: "Mr. Diaz, the pharmacist." },
+      { text: "What does Elena explain calmly?", answer: "That the dosage doesn't match what she remembers." },
+      { text: "What does Mr. Diaz say to Elena?", answer: "That she was right to bring it up, and he'll look into it." },
     ],
     trueFalse: [
       { text: "Mr. Diaz comes over with a professional, attentive manner.", answer: true },
@@ -114,9 +114,9 @@ export const CHAPTERS = [
     story:
       "After a few minutes of checking, Mr. Diaz confirms that there was, in fact, a data entry error somewhere in the system. Apparently, my prescription was accidentally mixed up with another patient's order that had a similar name on file. “I'm genuinely sorry about this. If you had taken this dosage, it could have caused you some unpleasant side effects,” he explains honestly. Hearing this makes me feel slightly uneasy, though I'm also relieved I caught the mistake before it actually became a problem. He assures me that correcting this will only take a few more minutes now that the cause has been identified.",
     questions: [
-      "What does Mr. Diaz confirm happened?",
-      "What was Elena's prescription mixed up with?",
-      "How does Elena feel hearing this explanation?",
+      { text: "What does Mr. Diaz confirm happened?", answer: "A data entry error." },
+      { text: "What was Elena's prescription mixed up with?", answer: "Another patient's order with a similar name." },
+      { text: "How does Elena feel hearing this explanation?", answer: "Slightly uneasy, but relieved she caught it." },
     ],
     trueFalse: [
       { text: "Mr. Diaz confirms a data entry error occurred.", answer: true },
@@ -143,9 +143,9 @@ export const CHAPTERS = [
     story:
       "Mr. Diaz personally prepares the corrected prescription himself this time, double-checking every detail before sealing the new bag. While waiting, I ask what typically happens in situations like this, curious whether such mix-ups occur often at pharmacies generally. He explains that strict double-checking procedures usually prevent this, though rare human errors can still occasionally slip through the system. “We take this extremely seriously, and I'll personally be reporting this internally so it gets reviewed properly,” he assures me. I appreciate his honesty, especially since he easily could have downplayed how serious this mistake actually was.",
     questions: [
-      "Who prepares the corrected prescription?",
-      "What does Elena ask Mr. Diaz while waiting?",
-      "What does Mr. Diaz say he will do?",
+      { text: "Who prepares the corrected prescription?", answer: "Mr. Diaz, personally." },
+      { text: "What does Elena ask Mr. Diaz while waiting?", answer: "Whether such mix-ups happen often." },
+      { text: "What does Mr. Diaz say he will do?", answer: "Report it internally so it gets reviewed." },
     ],
     trueFalse: [
       { text: "Mr. Diaz personally prepares the corrected prescription.", answer: true },
@@ -172,9 +172,9 @@ export const CHAPTERS = [
     story:
       "Before handing me the new bag, Mr. Diaz asks a colleague to independently verify the corrected prescription, just to be completely certain. His colleague checks the dosage against the original doctor's order, comparing every number carefully one final time. Once she confirms everything matches correctly, Mr. Diaz finally hands me the bag, explaining each instruction clearly and slowly this time. He also writes his direct extension on a small card, telling me to call immediately if anything seems even slightly unclear later. This extra layer of caution reassures me considerably, especially given what almost happened only minutes earlier.",
     questions: [
-      "What does Mr. Diaz ask a colleague to do?",
-      "What does the colleague compare?",
-      "What does Mr. Diaz write on a small card?",
+      { text: "What does Mr. Diaz ask a colleague to do?", answer: "Independently verify the corrected prescription." },
+      { text: "What does the colleague compare?", answer: "The dosage against the original doctor's order." },
+      { text: "What does Mr. Diaz write on a small card?", answer: "His direct extension." },
     ],
     trueFalse: [
       { text: "Mr. Diaz asks a colleague to independently verify the prescription.", answer: true },
@@ -201,9 +201,9 @@ export const CHAPTERS = [
     story:
       "That evening, I decide to call my doctor's office as well, just to mention what happened at the pharmacy earlier. The receptionist thanks me for reporting it and says the doctor will likely want to know, given the potential seriousness involved. I explain the situation clearly, including how it was caught and corrected before I actually took anything. She reassures me that my original prescription itself was correct, and only the pharmacy's internal system had the error. Although the whole experience felt slightly unsettling, I'm genuinely glad everyone involved took it as seriously as they did.",
     questions: [
-      "What does Elena decide to do that evening?",
-      "What does the receptionist say about the doctor?",
-      "What does the receptionist reassure Elena about?",
+      { text: "What does Elena decide to do that evening?", answer: "Call her doctor's office." },
+      { text: "What does the receptionist say about the doctor?", answer: "That the doctor will likely want to know." },
+      { text: "What does the receptionist reassure Elena about?", answer: "That her original prescription was correct." },
     ],
     trueFalse: [
       { text: "Elena decides to call her doctor's office that evening.", answer: true },
@@ -230,9 +230,9 @@ export const CHAPTERS = [
     story:
       "A few days later, the pharmacy calls to follow up, which honestly surprises me since I hadn't expected any further contact. It's Mr. Diaz himself, checking whether the corrected medication has been working properly without any unexpected issues. I confirm everything seems fine so far, and I thank him again for handling the entire situation so professionally. He mentions that the pharmacy has since added an additional verification step specifically for prescriptions with similar patient names. Hearing that something concrete changed because of my situation makes the whole experience feel genuinely worthwhile, in the end.",
     questions: [
-      "Who calls Elena a few days later?",
-      "What does Mr. Diaz check on the call?",
-      "What has the pharmacy added since this situation?",
+      { text: "Who calls Elena a few days later?", answer: "Mr. Diaz." },
+      { text: "What does Mr. Diaz check on the call?", answer: "Whether the corrected medication has been working properly." },
+      { text: "What has the pharmacy added since this situation?", answer: "An additional verification step for similar patient names." },
     ],
     trueFalse: [
       { text: "The pharmacy calls Elena a few days later to follow up.", answer: true },
@@ -259,9 +259,9 @@ export const CHAPTERS = [
     story:
       "Over coffee with a friend, I mention the whole pharmacy situation, partly as a warning and partly out of genuine relief. She admits she rarely checks her own labels closely, usually trusting the process completely without a second thought. I explain that, on the other hand, this experience taught me it's always worth double-checking, however busy or trusting you normally feel. She agrees, saying she'll probably start reading labels more carefully herself starting from now on. It feels strange, but sharing this story might actually help prevent a similar mix-up for someone else entirely.",
     questions: [
-      "Who does Elena mention the situation to over coffee?",
-      "What does the friend admit about her own habits?",
-      "What does the friend say she'll start doing?",
+      { text: "Who does Elena mention the situation to over coffee?", answer: "A friend." },
+      { text: "What does the friend admit about her own habits?", answer: "That she rarely checks her labels closely." },
+      { text: "What does the friend say she'll start doing?", answer: "Reading labels more carefully." },
     ],
     trueFalse: [
       { text: "Elena mentions the situation to a friend over coffee.", answer: true },
@@ -288,9 +288,9 @@ export const CHAPTERS = [
     story:
       "Looking back on the entire experience, I realize how easily this small mix-up could have turned into something far more serious. If I hadn't checked the label carefully, or if I'd assumed everything was automatically correct, the outcome might have been genuinely dangerous. Instead, staying alert and speaking up calmly allowed Mr. Diaz to actually catch and correct the problem quickly. I've started keeping a small checklist for anything health-related now, from prescriptions to appointment details generally. In the end, this experience reminded me that questioning something politely is always better than simply assuming it's fine.",
     questions: [
-      "What does Elena realize looking back on this experience?",
-      "What has Elena started keeping now?",
-      "What does this experience remind Elena of?",
+      { text: "What does Elena realize looking back on this experience?", answer: "How easily the mix-up could have turned serious." },
+      { text: "What has Elena started keeping now?", answer: "A small checklist for anything health-related." },
+      { text: "What does this experience remind Elena of?", answer: "That questioning something politely is better than assuming it's fine." },
     ],
     trueFalse: [
       { text: "Elena realizes this could have turned into something serious.", answer: true },
