@@ -37,7 +37,10 @@ function BookHeader({ stage }) {
   return (
     <div className="sb-book-header">
       <span className="sb-book-brand">
-        <img src="/logo-sentivo.png" alt="" className="sb-book-brand-logo" />entivo
+        <span className="sb-book-brand-chip">
+          <img src="/logo-sentivo.png" alt="" className="sb-book-brand-logo" />
+        </span>
+        Sentivo
       </span>
       {stage && <span className="sb-book-stage">{stage}</span>}
     </div>
@@ -89,18 +92,47 @@ function StoryPage({ chapter }) {
   );
 }
 
+// Questions are plain strings in every book authored so far -- support an
+// optional { text, answer } shape too, so a future book can add an answer
+// without a data migration, and the "Show answer" button just doesn't
+// render for a question that doesn't have one.
 function QuestionsPage({ chapter }) {
+  const [revealed, setRevealed] = useState(() => new Set());
+
+  function toggle(i) {
+    setRevealed((prev) => {
+      const next = new Set(prev);
+      if (next.has(i)) next.delete(i);
+      else next.add(i);
+      return next;
+    });
+  }
+
   return (
     <div className="sb-page">
       <h3 className="sb-page-title">Comprehension Questions</h3>
       <p className="sb-page-hint">Talk about the story with your teacher.</p>
-      <ol className="sb-qlist">
-        {chapter.questions.map((q, i) => (
-          <li key={i} className="sb-qitem">
-            {q}
-          </li>
-        ))}
-      </ol>
+      <div className="sb-qcards">
+        {chapter.questions.map((q, i) => {
+          const text = typeof q === "string" ? q : q.text;
+          const answer = typeof q === "string" ? undefined : q.answer;
+          const isOpen = revealed.has(i);
+          return (
+            <div key={i} className="sb-qcard">
+              <div className="sb-qcard-top">
+                <span className="sb-qnum">{i + 1}</span>
+                <span className="sb-qtext">{text}</span>
+                {answer && (
+                  <button type="button" className="sb-qreveal-btn" onClick={() => toggle(i)}>
+                    {isOpen ? "Hide answer" : "Show answer"}
+                  </button>
+                )}
+              </div>
+              {answer && isOpen && <p className="sb-qanswer">{answer}</p>}
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }
@@ -115,13 +147,13 @@ function TrueFalsePage({ chapter }) {
   return (
     <div className="sb-page">
       <h3 className="sb-page-title">True or False</h3>
-      <div className="sb-tf-list">
+      <div className="sb-tf-grid">
         {chapter.trueFalse.map((item, i) => {
           const picked = picks[i];
           const isCorrect = picked !== undefined && picked === item.answer;
           const isWrong = picked !== undefined && picked !== item.answer;
           return (
-            <div key={i} className={`sb-tf-row ${isCorrect ? "is-correct" : ""} ${isWrong ? "is-wrong" : ""}`}>
+            <div key={i} className={`sb-tf-card ${isCorrect ? "is-correct" : ""} ${isWrong ? "is-wrong" : ""}`}>
               <span className="sb-tf-text">{item.text}</span>
               <div className="sb-tf-buttons">
                 <button
@@ -263,6 +295,7 @@ function BuildSentencePage({ chapter, index }) {
           {copied ? "✓" : "⧉"}
         </button>
       </div>
+      <div className="sb-bank-label">🧺 Word bank</div>
       <div className="sb-word-tray">
         {tray.map((w) => (
           <button
@@ -496,6 +529,7 @@ export default function StoryBook({ book = defaultBook }) {
                 );
               })}
             </ol>
+            <div className="sb-toc-footer">{book.title}</div>
           </div>
         )}
 
@@ -614,26 +648,38 @@ const CSS = `
   gap: 16px;
   margin: -30px -36px 18px;
   padding: 16px 36px;
-  border-bottom: 1px solid #EAE6DC;
+  background: #1B2A4A;
   flex-shrink: 0;
 }
 .sb-book-brand {
   display: flex;
   align-items: center;
+  gap: 8px;
   flex-shrink: 0;
   font-family: 'Fredoka', sans-serif;
   font-weight: 700;
   font-size: 16px;
-  color: #1B2A4A;
+  color: #fff;
 }
-.sb-book-brand-logo { height: 22px; width: auto; display: block; margin-right: -3px; }
+.sb-book-brand-chip {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+  flex-shrink: 0;
+}
+.sb-book-brand-logo { height: 15px; width: auto; display: block; }
 .sb-book-stage {
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;
   font-size: 12px;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: #94A0B8;
+  color: rgba(255,255,255,0.6);
   white-space: nowrap;
 }
 
@@ -715,7 +761,20 @@ const CSS = `
   color: #1B2A4A;
   margin: 0 0 10px;
 }
-.sb-toc-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+.sb-toc-list { flex: 1; min-height: 0; overflow: hidden; list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+.sb-toc-footer {
+  flex-shrink: 0;
+  margin: 18px -36px -30px;
+  padding: 14px 36px;
+  background: #1B2A4A;
+  color: rgba(255,255,255,0.6);
+  text-align: center;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
 .sb-toc-btn {
   width: 100%;
   display: flex;
@@ -791,7 +850,13 @@ const CSS = `
 .sb-intro-image img { width: 100%; height: 100%; object-fit: contain; display: block; }
 .sb-page--intro .sb-chapter-title { text-align: center; }
 
-/* ── Story ── */
+/* ── Story: centered in the frame instead of pinned to the top, so a
+   short chapter doesn't read as floating above empty space. Kept simple
+   on purpose -- no image, just the text. ── */
+.sb-page--story { flex: 1; min-height: 0; justify-content: center; align-items: center; text-align: center; }
+.sb-page--story .sb-chapter-title { text-align: center; }
+.sb-page--story .sb-story-text { max-width: 640px; text-align: justify; }
+
 .sb-chapter-num {
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;
@@ -813,23 +878,74 @@ const CSS = `
 }
 
 /* ── Questions ── */
-.sb-qlist { margin: 0; padding: 0 0 0 18px; display: flex; flex-direction: column; gap: 14px; }
-.sb-qitem { font-family: 'Quicksand', sans-serif; font-weight: 600; font-size: 18px; color: #1B2A4A; line-height: 1.4; }
+.sb-qcards { flex: 1; min-height: 0; display: flex; flex-direction: column; gap: 16px; justify-content: center; overflow: hidden; }
+.sb-qcard {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: #FAF7EF;
+  border-left: 5px solid #D85A30;
+  border-radius: 14px;
+  padding: 16px 20px;
+}
+.sb-qcard-top { display: flex; align-items: center; gap: 14px; }
+.sb-qnum {
+  flex-shrink: 0;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #FFF6E0;
+  color: #A9720C;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+}
+.sb-qtext { flex: 1; font-family: 'Quicksand', sans-serif; font-weight: 700; font-size: 17px; color: #1B2A4A; line-height: 1.4; }
+.sb-qreveal-btn {
+  flex-shrink: 0;
+  background: #fff;
+  color: #D85A30;
+  border: 2px solid #F2D2C4;
+  border-radius: 999px;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 700;
+  font-size: 12.5px;
+  padding: 7px 14px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.sb-qreveal-btn:hover { background: #FDECE5; }
+.sb-qanswer {
+  margin: 0 0 0 44px;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  color: #2C6B4F;
+  background: #E4F6EC;
+  border-radius: 10px;
+  padding: 9px 14px;
+}
 
-/* ── True/False ── */
-.sb-tf-list { display: flex; flex-direction: column; gap: 9px; }
-.sb-tf-row {
+/* ── True/False: a grid instead of one tall stacked column, so 4-5 items
+   use the width of the page too, not just its height. An odd item count
+   (Kids-track books use 3) just leaves the grid's last cell empty, which
+   is fine. ── */
+.sb-tf-grid { flex: 1; min-height: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 14px; align-content: center; overflow: hidden; }
+.sb-tf-card {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 8px;
+  gap: 12px;
   background: #FAF7EF;
-  border-radius: 12px;
-  padding: 11px 14px;
+  border-radius: 14px;
+  padding: 18px 18px 16px;
   transition: background 0.15s ease;
 }
-.sb-tf-row.is-correct { background: #E4F6EC; }
-.sb-tf-row.is-wrong { background: #FDEBEF; }
+.sb-tf-card.is-correct { background: #E4F6EC; }
+.sb-tf-card.is-wrong { background: #FDEBEF; }
 .sb-tf-text { font-family: 'Quicksand', sans-serif; font-weight: 600; font-size: 17px; color: #1B2A4A; line-height: 1.4; }
 .sb-tf-buttons { display: flex; gap: 8px; flex-shrink: 0; }
 .sb-tf-btn {
@@ -881,7 +997,19 @@ const CSS = `
 }
 .sb-build-copy-btn:disabled { opacity: 0.35; cursor: default; }
 .sb-build-empty { font-family: 'Quicksand', sans-serif; font-size: 15px; color: #C2C6D2; }
-.sb-word-tray { display: flex; flex-wrap: wrap; gap: 8px; min-height: 34px; justify-content: center; }
+.sb-bank-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 20px 0 10px;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #94A0B8;
+}
+.sb-word-tray { display: flex; flex-wrap: wrap; gap: 8px; min-height: 34px; justify-content: center; background: #FAF7EF; border-radius: 14px; padding: 16px; }
 .sb-word-chip {
   background: #fff;
   border: 2px solid #EAE6DC;
@@ -1026,12 +1154,22 @@ const CSS = `
 }
 .sb-copy-btn:disabled { opacity: 0.4; cursor: default; }
 
-/* ── Nav row ── */
-.sb-nav-row { display: flex; align-items: center; justify-content: space-between; margin-top: 18px; }
+/* ── Nav row: a navy footer bar bled to the card's true edges (same
+   negative-margin trick as .sb-book-header), matching the header at the
+   top of every page. ── */
+.sb-nav-row {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 18px -36px -30px;
+  padding: 16px 36px;
+  background: #1B2A4A;
+}
 .sb-nav-btn {
-  background: #fff;
-  color: #1B2A4A;
-  border: 2px solid #EAE6DC;
+  background: transparent;
+  color: #fff;
+  border: 1.5px solid rgba(255,255,255,0.4);
   border-radius: 999px;
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;
@@ -1042,11 +1180,13 @@ const CSS = `
 .sb-nav-btn--primary { background: #D85A30; border-color: #D85A30; color: #fff; }
 .sb-nav-btn:disabled { opacity: 0.35; cursor: default; }
 .sb-nav-dots { display: flex; gap: 5px; flex-wrap: wrap; justify-content: center; }
-.sb-nav-dot { width: 6px; height: 6px; border-radius: 999px; background: #E4E0D4; }
+.sb-nav-dot { width: 6px; height: 6px; border-radius: 999px; background: rgba(255,255,255,0.25); }
 .sb-nav-dot.is-active { width: 14px; background: #D85A30; }
 
 @media (max-width: 520px) {
   .sb-book { padding: 22px 18px; }
   .sb-book-header { margin: -22px -18px 14px; padding: 12px 18px; }
+  .sb-nav-row { margin: 18px -18px -22px; padding: 14px 18px; }
+  .sb-toc-footer { margin: 18px -18px -22px; padding: 12px 18px; }
 }
 `;
