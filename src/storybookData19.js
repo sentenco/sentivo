@@ -30,9 +30,9 @@ export const CHAPTERS = [
     story:
       "Today, Dad takes my little brother Finn and me to the zoo. I feel very excited because I have never been to a zoo before. We buy our tickets and walk through the big front gate. A map shows us where all the animals live in the zoo. “Which animal do you want to see first, Nora?” Dad asks me. “I want to see the lions!” I say with excitement. Finn holds Dad's hand tightly because he feels a little nervous. We walk down the path, ready for a fun day of animals.",
     questions: [
-      "Who takes Nora and Finn to the zoo?",
-      "What do they use to see where the animals live?",
-      "Which animal does Nora want to see first?",
+      { text: "Who takes Nora and Finn to the zoo?", answer: "Dad." },
+      { text: "What do they use to see where the animals live?", answer: "A map." },
+      { text: "Which animal does Nora want to see first?", answer: "The lions." },
     ],
     trueFalse: [
       { text: "Dad takes them to the zoo.", answer: true },
@@ -55,9 +55,9 @@ export const CHAPTERS = [
     story:
       "We walk to the big lion area and look through the glass. A huge, golden lion lies in the warm sun nearby. Suddenly, the lion opens his mouth and lets out a loud roar! Finn jumps a little, but I feel excited instead of scared. “That was so loud!” I say with a big smile. The lion's mane looks soft and fluffy in the sunlight. Dad tells us that lions roar to talk to other lions far away. We watch the lion for a long time before moving on. Seeing a real lion roar is amazing.",
     questions: [
-      "What does the lion do suddenly?",
-      "How does Finn react?",
-      "Why do lions roar, according to Dad?",
+      { text: "What does the lion do suddenly?", answer: "Lets out a loud roar." },
+      { text: "How does Finn react?", answer: "He jumps a little." },
+      { text: "Why do lions roar, according to Dad?", answer: "To talk to other lions far away." },
     ],
     trueFalse: [
       { text: "The lion roars loudly.", answer: true },
@@ -80,9 +80,9 @@ export const CHAPTERS = [
     story:
       "Next, we walk over to the monkey area of the zoo. Many small monkeys swing and jump from branch to branch. One monkey hangs upside down and makes a funny face at us. Finn laughs so hard that he almost falls down. A baby monkey holds tightly onto its mother's back. The monkeys chase each other and play games together. “They are so funny!” Finn says, laughing again and again. We stay and watch the monkeys play for many minutes. The monkey area is Finn's favorite part of the zoo so far.",
     questions: [
-      "What do the monkeys do?",
-      "What does one monkey do that makes Finn laugh?",
-      "What does a baby monkey do?",
+      { text: "What do the monkeys do?", answer: "Swing and jump from branch to branch." },
+      { text: "What does one monkey do that makes Finn laugh?", answer: "Hangs upside down and makes a funny face." },
+      { text: "What does a baby monkey do?", answer: "Holds tightly onto its mother's back." },
     ],
     trueFalse: [
       { text: "The monkeys swing from branches.", answer: true },
@@ -105,9 +105,9 @@ export const CHAPTERS = [
     story:
       "At the giraffe area, a zookeeper gives us small leaves to feed them. “Hold the leaf up high, and the giraffe will reach it,” she says. A tall giraffe walks slowly toward me with gentle eyes. I hold the leaf up, and the giraffe's long tongue takes it softly. “Its tongue feels funny!” I say, laughing with surprise. Finn feeds a giraffe too, and he giggles happily. The giraffe's neck is much taller than I ever imagined. Feeding a real giraffe is the most exciting thing today. I want to feed the giraffes again before we leave.",
     questions: [
-      "What does the zookeeper give them?",
-      "What does the giraffe use to take the leaf?",
-      "How does Nora feel about the giraffe's tongue?",
+      { text: "What does the zookeeper give them?", answer: "Small leaves to feed the giraffes." },
+      { text: "What does the giraffe use to take the leaf?", answer: "Its long tongue." },
+      { text: "How does Nora feel about the giraffe's tongue?", answer: "Surprised -- she says it feels funny." },
     ],
     trueFalse: [
       { text: "They feed the giraffes leaves.", answer: true },
@@ -130,9 +130,9 @@ export const CHAPTERS = [
     story:
       "We walk to the biggest area in the whole zoo, the elephants. A huge, gray elephant stands quietly under a big shady tree. “Why is the elephant not moving?” Finn asks with curious eyes. “I think the elephant is sleeping,” Dad says with a smile. The elephant flaps its big ears slowly, even while it sleeps. Its long trunk swings gently from side to side in the breeze. We watch quietly so we do not wake the sleepy elephant. After a while, the elephant opens its eyes and looks at us. Seeing such a huge, gentle animal makes me feel amazed.",
     questions: [
-      "What animal is the biggest in the zoo?",
-      "What does Finn ask about the elephant?",
-      "What does the elephant do with its ears?",
+      { text: "What animal is the biggest in the zoo?", answer: "The elephant." },
+      { text: "What does Finn ask about the elephant?", answer: "Why is it not moving?" },
+      { text: "What does the elephant do with its ears?", answer: "Flaps them slowly." },
     ],
     trueFalse: [
       { text: "The elephant is very big.", answer: true },
@@ -155,9 +155,9 @@ export const CHAPTERS = [
     story:
       "Near the bird area, a large peacock suddenly makes a loud, strange sound. Finn jumps and grabs Dad's leg tightly, feeling scared. “It's okay, Finn, that is just how peacocks talk,” Dad says gently. Finn hides his face for a moment, breathing quickly. I hold Finn's hand and say, “Look, its feathers are so pretty.” Finn slowly looks up and sees the peacock's colorful blue and green tail. He smiles a little and lets go of Dad's leg. “It's pretty, but still loud,” Finn says, feeling braver now. We stay a little longer until Finn feels completely calm.",
     questions: [
-      "What sound scares Finn?",
-      "What does Finn do when he feels scared?",
-      "What helps Finn feel braver?",
+      { text: "What sound scares Finn?", answer: "A peacock's loud, strange sound." },
+      { text: "What does Finn do when he feels scared?", answer: "Grabs Dad's leg." },
+      { text: "What helps Finn feel braver?", answer: "Looking at the peacock's pretty feathers." },
     ],
     trueFalse: [
       { text: "A peacock makes a loud sound.", answer: true },
@@ -180,9 +180,9 @@ export const CHAPTERS = [
     story:
       "Inside a cool, icy building, we find the penguin area. Many black-and-white penguins waddle around on the ice. Some penguins jump into the water and swim very fast. “They swim like little rockets!” I say, laughing at how quick they are. Finn presses his hand against the cold glass to feel the chill. A baby penguin follows its mother closely across the ice. We watch the penguins slide on their bellies down a small hill. The penguin house is cold, but it is so much fun. Finn says the penguins are his new favorite animal.",
     questions: [
-      "What color are the penguins?",
-      "What do some penguins do in the water?",
-      "What does a baby penguin do?",
+      { text: "What color are the penguins?", answer: "Black and white." },
+      { text: "What do some penguins do in the water?", answer: "Swim very fast." },
+      { text: "What does a baby penguin do?", answer: "Follows its mother closely across the ice." },
     ],
     trueFalse: [
       { text: "The penguins are black and white.", answer: true },
@@ -205,9 +205,9 @@ export const CHAPTERS = [
     story:
       "At noon, we find a shady table for a picnic lunch. Dad opens our basket with sandwiches, fruit, and cold juice. “I'm so hungry after all that walking!” I say happily. We eat our sandwiches while watching birds fly above the trees. Finn shares his cookies with me, and I share my grapes with him. A friendly squirrel comes close, hoping for a small snack too. We watch the squirrel and laugh at how brave it is. After lunch, we feel ready to see more animals. A picnic at the zoo makes the day even more special.",
     questions: [
-      "What does Dad bring in the basket?",
-      "Who do they watch while eating?",
-      "What comes close during lunch?",
+      { text: "What does Dad bring in the basket?", answer: "Sandwiches, fruit, and cold juice." },
+      { text: "Who do they watch while eating?", answer: "Birds flying above the trees." },
+      { text: "What comes close during lunch?", answer: "A friendly squirrel." },
     ],
     trueFalse: [
       { text: "Dad brings sandwiches and fruit.", answer: true },
@@ -230,9 +230,9 @@ export const CHAPTERS = [
     story:
       "Our last stop is a warm, colorful butterfly garden. Hundreds of butterflies fly gently all around the flowers. A bright orange butterfly lands softly on my shoulder. “Don't move, Nora, it likes you!” Finn whispers with a big smile. I stay very still and watch the butterfly's delicate wings. Finn holds out his hand, hoping a butterfly will land on him too. Soon, a small blue butterfly rests gently on his finger. We both smile with wonder at the beautiful butterflies around us. The butterfly garden feels like a magical, colorful dream.",
     questions: [
-      "Where do they go last?",
-      "What lands on Nora's shoulder?",
-      "What lands on Finn's finger?",
+      { text: "Where do they go last?", answer: "The butterfly garden." },
+      { text: "What lands on Nora's shoulder?", answer: "A bright orange butterfly." },
+      { text: "What lands on Finn's finger?", answer: "A small blue butterfly." },
     ],
     trueFalse: [
       { text: "They visit a butterfly garden.", answer: true },
@@ -255,9 +255,9 @@ export const CHAPTERS = [
     story:
       "As the sun begins to set, it is time to leave the zoo. I feel a little sad because today was so much fun. We walk past the lions, monkeys, and giraffes one last time. “Bye, elephant! Bye, penguins!” Finn shouts happily at the animals. Dad buys us each a small stuffed animal from the gift shop. I choose a soft giraffe, and Finn chooses a fluffy penguin. “This was the best day ever,” I tell Dad with a big smile. On the way home, Finn and I talk about all our favorite animals. I cannot wait to visit the zoo again someday.",
     questions: [
-      "Why does Nora feel a little sad?",
-      "What does Dad buy them?",
-      "What do Nora and Finn talk about on the way home?",
+      { text: "Why does Nora feel a little sad?", answer: "Because it is time to leave the zoo." },
+      { text: "What does Dad buy them?", answer: "A small stuffed animal each." },
+      { text: "What do Nora and Finn talk about on the way home?", answer: "All their favorite animals." },
     ],
     trueFalse: [
       { text: "Nora feels sad because the day is ending.", answer: true },

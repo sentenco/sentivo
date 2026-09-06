@@ -30,9 +30,9 @@ export const CHAPTERS = [
     story:
       "Today is Saturday, and the sun shines bright in the sky. Mom says, “Let's go to the park, Jack!” I put on my shoes quickly and grab my hat. We walk down the street and see the big green park ahead. Many families are already there, playing and having fun. I see swings, a slide, and a big sandbox. Mom finds a bench and sits down to watch me play. I run toward the playground with a big smile on my face. The park is my favorite place to spend a sunny day.",
     questions: [
-      "What day is it?",
-      "What does Mom say?",
-      "What does Jack see at the park?",
+      { text: "What day is it?", answer: "Saturday." },
+      { text: "What does Mom say?", answer: "Let's go to the park, Jack!" },
+      { text: "What does Jack see at the park?", answer: "Swings, a slide, and a big sandbox." },
     ],
     trueFalse: [
       { text: "It is Saturday.", answer: true },
@@ -55,9 +55,9 @@ export const CHAPTERS = [
     story:
       "First, I run to the big swings at the park. I climb up and hold the chains tightly. Mom gives me a gentle push, and I start to swing. “Higher, Mom, higher!” I shout with excitement. The wind blows through my hair as I swing up high. I feel like I am flying up into the blue sky. I laugh and kick my legs to swing even higher. After a while, I slow down and jump off softly. Swinging at the park always makes me feel free and happy.",
     questions: [
-      "What does Jack climb first?",
-      "What does Mom do?",
-      "How does Jack feel when swinging?",
+      { text: "What does Jack climb first?", answer: "The big swings." },
+      { text: "What does Mom do?", answer: "Gives him a gentle push." },
+      { text: "How does Jack feel when swinging?", answer: "Free and happy, like flying." },
     ],
     trueFalse: [
       { text: "Jack climbs the swings first.", answer: true },
@@ -80,9 +80,9 @@ export const CHAPTERS = [
     story:
       "Next, I walk over to the big sandbox at the park. I bring my small bucket and shovel from home. I scoop the soft sand into my bucket carefully. Then, I flip the bucket over and lift it up slowly. A small sandcastle tower stands in front of me! I make three more towers and connect them together. I use small sticks to make windows and doors. Mom takes a photo of my sandcastle with her phone. Building a sandcastle at the park makes me feel like a builder.",
     questions: [
-      "What does Jack bring from home?",
-      "What does Jack build?",
-      "What does Mom do?",
+      { text: "What does Jack bring from home?", answer: "A small bucket and shovel." },
+      { text: "What does Jack build?", answer: "A sandcastle." },
+      { text: "What does Mom do?", answer: "Takes a photo of the sandcastle." },
     ],
     trueFalse: [
       { text: "Jack brings a bucket and shovel.", answer: true },
@@ -105,9 +105,9 @@ export const CHAPTERS = [
     story:
       "After the sandbox, Mom and I walk to the pond. Many white ducks swim slowly in the cool water. Mom gives me a small bag of duck food. I throw small pieces onto the water carefully. The ducks swim quickly and eat the food happily. One brave duck comes close to the edge of the pond. I laugh when it quacks loudly at me. We stay and watch the ducks for a long time. Feeding the ducks is a peaceful part of our day at the park.",
     questions: [
-      "Where do Jack and Mom walk to?",
-      "What does Mom give Jack?",
-      "What does the brave duck do?",
+      { text: "Where do Jack and Mom walk to?", answer: "The pond." },
+      { text: "What does Mom give Jack?", answer: "A small bag of duck food." },
+      { text: "What does the brave duck do?", answer: "Comes close to the edge of the pond and quacks." },
     ],
     trueFalse: [
       { text: "They walk to the pond.", answer: true },
@@ -130,9 +130,9 @@ export const CHAPTERS = [
     story:
       "Near the sandbox, I see a girl playing with a red ball. “Hi, my name is Lily,” she says with a friendly smile. “I'm Jack,” I say, and I smile back at her. Lily asks if I want to play ball with her. We throw the ball back and forth and laugh a lot. Lily tells me she comes to this park every Saturday too. We decide to build a sandcastle together next time. Our moms talk and smile while we play happily. Meeting Lily makes the park feel even more fun.",
     questions: [
-      "What is the new girl's name?",
-      "What do Jack and Lily play with?",
-      "What do they decide to do next time?",
+      { text: "What is the new girl's name?", answer: "Lily." },
+      { text: "What do Jack and Lily play with?", answer: "A red ball." },
+      { text: "What do they decide to do next time?", answer: "Build a sandcastle together." },
     ],
     trueFalse: [
       { text: "The girl's name is Lily.", answer: true },
@@ -155,9 +155,9 @@ export const CHAPTERS = [
     story:
       "On a windy Saturday, I bring my new kite to the park. It is bright red with a long, colorful tail. Mom helps me hold the string tightly at first. I run fast, and the kite lifts up into the sky. “Look, Mom, it's flying!” I shout with joy. The kite dances high above the trees in the blue sky. Lily arrives and watches my kite fly with a big smile. She asks if she can hold the string for a while. We take turns flying the kite until it is time to go home.",
     questions: [
-      "What color is Jack's kite?",
-      "What does Jack do to make the kite fly?",
-      "Who arrives and watches?",
+      { text: "What color is Jack's kite?", answer: "Bright red." },
+      { text: "What does Jack do to make the kite fly?", answer: "Runs fast." },
+      { text: "Who arrives and watches?", answer: "Lily." },
     ],
     trueFalse: [
       { text: "The kite is bright red.", answer: true },
@@ -180,9 +180,9 @@ export const CHAPTERS = [
     story:
       "While running on the path, I trip over a small rock. I fall down and scrape my knee on the ground. It stings a little, and I feel like crying. Mom runs over quickly and kneels beside me. “It's okay, Jack, let me see,” she says gently. She cleans my knee and puts on a small bandage. “You are very brave,” Mom says with a warm smile. Lily comes over and gives me a caring, worried look. After a few minutes, I feel better and want to play again.",
     questions: [
-      "Why does Jack fall down?",
-      "What does Mom put on his knee?",
-      "How does Jack feel after a few minutes?",
+      { text: "Why does Jack fall down?", answer: "He trips over a small rock." },
+      { text: "What does Mom put on his knee?", answer: "A small bandage." },
+      { text: "How does Jack feel after a few minutes?", answer: "Better -- ready to play again." },
     ],
     trueFalse: [
       { text: "Jack trips over a rock.", answer: true },
@@ -205,9 +205,9 @@ export const CHAPTERS = [
     story:
       "After playing all afternoon, Mom says, “Let's get ice cream, Jack!” We walk to the small ice cream cart near the park. I choose a scoop of chocolate ice cream in a crunchy cone. Lily chooses a scoop of pink strawberry ice cream too. We sit together on a bench and eat our cold, sweet treats. The ice cream drips a little, and we both laugh. Mom takes a photo of our happy, messy faces. Ice cream after a fun day at the park is the best treat. I always look forward to this sweet ending to our day.",
     questions: [
-      "What does Mom say?",
-      "What flavor does Jack choose?",
-      "What flavor does Lily choose?",
+      { text: "What does Mom say?", answer: "Let's get ice cream, Jack!" },
+      { text: "What flavor does Jack choose?", answer: "Chocolate." },
+      { text: "What flavor does Lily choose?", answer: "Strawberry." },
     ],
     trueFalse: [
       { text: "Mom suggests getting ice cream.", answer: true },
@@ -230,9 +230,9 @@ export const CHAPTERS = [
     story:
       "One Saturday, dark clouds cover the sky at the park. Suddenly, rain starts to fall, and we run for cover. Mom and I hurry under a big tree near the bench. “Our park day is not over yet,” Mom says with a smile. She opens her bag and takes out a small blanket. We sit under the tree and have a cozy indoor-style picnic. Mom brought sandwiches and juice just in case of rain. We watch the rain fall and laugh at our surprise picnic. Even a rainy day at the park can turn into a fun memory.",
     questions: [
-      "What happens to the sky?",
-      "Where do they go for cover?",
-      "What does Mom take out of her bag?",
+      { text: "What happens to the sky?", answer: "Dark clouds cover it and rain starts to fall." },
+      { text: "Where do they go for cover?", answer: "Under a big tree." },
+      { text: "What does Mom take out of her bag?", answer: "A small blanket." },
     ],
     trueFalse: [
       { text: "Dark clouds cover the sky.", answer: true },
@@ -255,9 +255,9 @@ export const CHAPTERS = [
     story:
       "It has been a whole summer of Saturdays at the park. I played on the swings, built sandcastles, and fed the ducks. I flew my kite, ate ice cream, and made a new friend named Lily. I even learned that a scraped knee is not so scary. Mom and I have so many happy memories from this park. Today, Lily and I sit together and look at the sunset. “This park is my favorite place in the whole world,” I say. Lily nods and says, “Mine too, Jack.” I know I will keep coming back to this special place.",
     questions: [
-      "What did Jack do this summer?",
-      "What did Jack learn?",
-      "What do Jack and Lily agree about at the end?",
+      { text: "What did Jack do this summer?", answer: "Played on the swings, built sandcastles, fed ducks, flew a kite, ate ice cream, and made a friend." },
+      { text: "What did Jack learn?", answer: "That a scraped knee is not so scary." },
+      { text: "What do Jack and Lily agree about at the end?", answer: "That the park is their favorite place in the world." },
     ],
     trueFalse: [
       { text: "Jack played on the swings this summer.", answer: true },

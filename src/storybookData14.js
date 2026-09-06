@@ -30,9 +30,9 @@ export const CHAPTERS = [
     story:
       "Today, Mom drives me to Grandma's house for a whole week. I bring my small bag with my clothes and my favorite toy. Grandma waits at the door and waves with a big smile. “Welcome, Noah!” she says, and she gives me a warm hug. Her house smells like fresh bread and flowers. I see my old room with the soft blue blanket. I put my bag on the bed and look outside the window. I see a big green garden with yellow flowers. I feel happy and excited for my week with Grandma.",
     questions: [
-      "Where does Mom drive Noah?",
-      "What does Grandma's house smell like?",
-      "What does Noah see outside the window?",
+      { text: "Where does Mom drive Noah?", answer: "To Grandma's house." },
+      { text: "What does Grandma's house smell like?", answer: "Fresh bread and flowers." },
+      { text: "What does Noah see outside the window?", answer: "A big green garden with yellow flowers." },
     ],
     trueFalse: [
       { text: "Noah stays with Grandma for a week.", answer: true },
@@ -55,9 +55,9 @@ export const CHAPTERS = [
     story:
       "In the morning, Grandma takes me to see her garden. She wears a big sun hat and green gloves. “Come, Noah, let's water the flowers,” she says. I hold the small watering can carefully. We water the red roses and the yellow sunflowers. Grandma shows me a small green tomato on a plant. “It will be red and ready soon,” she says. I dig in the soft dirt and find a tiny worm. Grandma laughs and says worms help the garden grow. I love spending the morning in Grandma's garden.",
     questions: [
-      "What does Grandma wear in the garden?",
-      "What do they water?",
-      "What does Noah find in the dirt?",
+      { text: "What does Grandma wear in the garden?", answer: "A big sun hat and green gloves." },
+      { text: "What do they water?", answer: "The red roses and yellow sunflowers." },
+      { text: "What does Noah find in the dirt?", answer: "A tiny worm." },
     ],
     trueFalse: [
       { text: "Grandma wears a sun hat.", answer: true },
@@ -80,9 +80,9 @@ export const CHAPTERS = [
     story:
       "This afternoon, Grandma and I bake cookies in her warm kitchen. She ties a small apron around my waist. “First, we mix the flour and sugar,” Grandma says. I stir the bowl slowly and carefully. Grandma helps me roll the dough into small balls. We put the cookies on a tray and place them in the oven. Soon, the kitchen smells sweet and warm. When the cookies are ready, Grandma lets me eat one first. The cookie is soft, warm, and delicious. Baking with Grandma is one of my favorite things to do.",
     questions: [
-      "What do they bake?",
-      "What does Noah do to the dough?",
-      "How does the cookie taste?",
+      { text: "What do they bake?", answer: "Cookies." },
+      { text: "What does Noah do to the dough?", answer: "Rolls it into small balls." },
+      { text: "How does the cookie taste?", answer: "Soft, warm, and delicious." },
     ],
     trueFalse: [
       { text: "Grandma and Noah bake cookies.", answer: true },
@@ -105,9 +105,9 @@ export const CHAPTERS = [
     story:
       "Outside, the rain falls softly on Grandma's window. We cannot play in the garden today. Grandma sits in her big chair and pats the seat next to her. “Come, Noah, I will tell you a story,” she says. I sit close to her and listen carefully. Grandma tells me a story about when she was a little girl. She talks about her old dog and her favorite tree. I ask her many questions, and she smiles at each one. The rain keeps falling, but I do not feel bored at all. Grandma's stories are the best part of a rainy day.",
     questions: [
-      "Why can't they play outside?",
-      "What does Grandma tell Noah?",
-      "How does Noah feel during the story?",
+      { text: "Why can't they play outside?", answer: "Because it is raining." },
+      { text: "What does Grandma tell Noah?", answer: "A story about when she was a little girl." },
+      { text: "How does Noah feel during the story?", answer: "Not bored at all." },
     ],
     trueFalse: [
       { text: "It is sunny outside.", answer: false },
@@ -130,9 +130,9 @@ export const CHAPTERS = [
     story:
       "Early in the morning, Grandma wakes me up quietly. “Come, Noah, it's time to feed the birds,” she whispers. We walk outside with a small bag of seeds. Grandma shows me how to fill the little bird feeder. I sprinkle some seeds on the ground too. Soon, small birds land near us and start to eat. A bright red bird sits on the fence and sings. I stand very still so I do not scare them away. Grandma smiles and says the birds visit every morning. Feeding the birds with Grandma makes me feel calm and happy.",
     questions: [
-      "What time do they feed the birds?",
-      "What does Noah fill?",
-      "What color is the bird that sings?",
+      { text: "What time do they feed the birds?", answer: "Early in the morning." },
+      { text: "What does Noah fill?", answer: "The little bird feeder." },
+      { text: "What color is the bird that sings?", answer: "Red." },
     ],
     trueFalse: [
       { text: "They feed the birds in the morning.", answer: true },
@@ -155,9 +155,9 @@ export const CHAPTERS = [
     story:
       "Today, I help Grandma carry a cup of juice to the table. My foot slips, and the juice spills on the floor! I feel worried and my face turns red. “It's okay, Noah, accidents happen,” Grandma says softly. She does not get angry at all. We get a towel together and clean up the mess. Grandma pours me a new cup of juice with a smile. I say, “I'm sorry, Grandma.” She hugs me and says, “You are a good helper.” I feel better because Grandma is so kind and patient.",
     questions: [
-      "What does Noah spill?",
-      "How does Grandma react?",
-      "How does Noah feel at the end?",
+      { text: "What does Noah spill?", answer: "A cup of juice." },
+      { text: "How does Grandma react?", answer: "She stays calm and says accidents happen." },
+      { text: "How does Noah feel at the end?", answer: "Better." },
     ],
     trueFalse: [
       { text: "Noah spills juice on the floor.", answer: true },
@@ -180,9 +180,9 @@ export const CHAPTERS = [
     story:
       "In the evening, Grandpa sits with me on the soft sofa. He opens a big box full of old photos. “This is me when I was young,” Grandpa says with a laugh. I see photos of Grandma and Grandpa when they were kids. One photo shows them standing next to an old car. Grandpa tells me funny stories about each picture. I laugh when I see a photo of Grandpa with messy hair. He says, “Time goes fast, Noah, so enjoy every day.” I look at the old photos and feel close to my family. This evening with Grandpa feels very special.",
     questions: [
-      "What does Grandpa open?",
-      "What do the photos show?",
-      "What does Grandpa tell Noah?",
+      { text: "What does Grandpa open?", answer: "A big box of old photos." },
+      { text: "What do the photos show?", answer: "Grandma and Grandpa when they were kids." },
+      { text: "What does Grandpa tell Noah?", answer: "Time goes fast, so enjoy every day." },
     ],
     trueFalse: [
       { text: "Grandpa opens a box of old photos.", answer: true },
@@ -205,9 +205,9 @@ export const CHAPTERS = [
     story:
       "In the afternoon, Grandma's neighbor Ruby comes over to play. Ruby is my age, and she has a big, friendly smile. We play in the garden and run around the big tree. Ruby brings her jump rope, and we take turns jumping. I count while Ruby jumps, and then she counts for me. We laugh a lot and share a cold glass of lemonade. Grandma watches us from the porch and smiles happily. Ruby says, “You are fun to play with, Noah!” I feel happy to have a new friend during my week with Grandma.",
     questions: [
-      "Who comes over to play?",
-      "What do they play with?",
-      "What does Ruby say to Noah?",
+      { text: "Who comes over to play?", answer: "Grandma's neighbor Ruby." },
+      { text: "What do they play with?", answer: "A jump rope." },
+      { text: "What does Ruby say to Noah?", answer: "You are fun to play with, Noah!" },
     ],
     trueFalse: [
       { text: "Ruby comes over to play.", answer: true },
@@ -230,9 +230,9 @@ export const CHAPTERS = [
     story:
       "On Saturday, Grandma takes me to the farmers market in town. The market is full of colorful fruits and vegetables. We see red apples, orange carrots, and green lettuce. Grandma lets me choose a fruit to buy for myself. I pick a juicy, red apple from a big basket. A kind man sells us fresh bread that smells amazing. Grandma buys flowers for the kitchen table too. We carry our bags and walk home together slowly. I feel proud because I helped Grandma choose good food. The farmers market is a fun place to visit.",
     questions: [
-      "Where does Grandma take Noah?",
-      "What fruit does Noah choose?",
-      "What does Grandma buy for the kitchen table?",
+      { text: "Where does Grandma take Noah?", answer: "The farmers market." },
+      { text: "What fruit does Noah choose?", answer: "A juicy, red apple." },
+      { text: "What does Grandma buy for the kitchen table?", answer: "Flowers." },
     ],
     trueFalse: [
       { text: "They go to the farmers market.", answer: true },
@@ -255,9 +255,9 @@ export const CHAPTERS = [
     story:
       "Today is my last day at Grandma's house. Mom will come soon to take me home. I help Grandma pack my bag and fold my blue blanket. I think about the garden, the cookies, and the birds we fed. Grandma hugs me tightly and says, “I loved having you here, Noah.” I feel a little sad, but also happy about my fun week. “I will visit again soon, Grandma,” I promise. She smiles and gives me a small bag of cookies for the trip. When Mom arrives, I wave goodbye to Grandma's house. My week with Grandma was the best week ever.",
     questions: [
-      "Who is coming to take Noah home?",
-      "What does Grandma give Noah for the trip?",
-      "How does Noah describe his week?",
+      { text: "Who is coming to take Noah home?", answer: "Mom." },
+      { text: "What does Grandma give Noah for the trip?", answer: "A small bag of cookies." },
+      { text: "How does Noah describe his week?", answer: "The best week ever." },
     ],
     trueFalse: [
       { text: "Mom comes to take Noah home.", answer: true },

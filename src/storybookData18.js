@@ -32,9 +32,9 @@ export const CHAPTERS = [
     story:
       "Today is my first day of school, and I feel a little nervous. Mom helps me put on my new blue backpack. I have a new lunch box with a picture of a cat on it. “You are going to have so much fun, Lucy,” Mom says with a smile. I hold Mom's hand tightly as we walk to the school gate. Many children walk into the big building with their parents. I take a deep breath and try to feel brave. Mom gives me a big hug before I go inside. I feel a little scared, but also a little excited too.",
     questions: [
-      "What does Mom help Lucy put on?",
-      "What does Lucy's lunch box have on it?",
-      "How does Lucy feel before going inside?",
+      { text: "What does Mom help Lucy put on?", answer: "Her new blue backpack." },
+      { text: "What does Lucy's lunch box have on it?", answer: "A picture of a cat." },
+      { text: "How does Lucy feel before going inside?", answer: "A little scared, but also a little excited." },
     ],
     trueFalse: [
       { text: "Lucy wears a blue backpack.", answer: true },
@@ -57,9 +57,9 @@ export const CHAPTERS = [
     story:
       "Inside the classroom, a kind woman smiles at me. “Hello, I am Ms. Bell, your new teacher,” she says warmly. I say, “Hello, my name is Lucy,” in a small voice. Ms. Bell shows me where to put my backpack on a small hook. She has a name tag with my name on my desk. “This is your very own seat, Lucy,” she says kindly. I sit down and look around the colorful classroom. Ms. Bell's voice is soft, and her smile makes me feel calm. I think I am going to like my new teacher.",
     questions: [
-      "What is the teacher's name?",
-      "What does Lucy say her name is?",
-      "What does Lucy find on her desk?",
+      { text: "What is the teacher's name?", answer: "Ms. Bell." },
+      { text: "What does Lucy say her name is?", answer: "Lucy." },
+      { text: "What does Lucy find on her desk?", answer: "A name tag with her name." },
     ],
     trueFalse: [
       { text: "The teacher's name is Ms. Bell.", answer: true },
@@ -82,9 +82,9 @@ export const CHAPTERS = [
     story:
       "I look around my new classroom with big, curious eyes. There are colorful pictures of animals on every wall. A big shelf holds many books, blocks, and puzzles. Small tables and chairs sit together in groups of four. A cozy reading corner has soft pillows and a fuzzy rug. Ms. Bell shows us where the crayons and paper are kept. I see a class pet, a small fish, swimming in a tank. Everything in the classroom looks fun and new. I already want to explore every single corner of this room.",
     questions: [
-      "What is on the walls?",
-      "What does the reading corner have?",
-      "What class pet does Lucy see?",
+      { text: "What is on the walls?", answer: "Colorful pictures of animals." },
+      { text: "What does the reading corner have?", answer: "Soft pillows and a fuzzy rug." },
+      { text: "What class pet does Lucy see?", answer: "A small fish." },
     ],
     trueFalse: [
       { text: "There are pictures of animals on the walls.", answer: true },
@@ -107,9 +107,9 @@ export const CHAPTERS = [
     story:
       "Ms. Bell asks everyone to sit together on the soft rug. “It's time for circle time and a story,” she says. All the children sit in a big, round circle happily. Ms. Bell holds up a colorful book about a brave little bear. She reads with a fun voice, and everyone listens closely. I laugh when the bear does something silly in the story. After the story, Ms. Bell asks us questions about the bear. I raise my hand and answer one question correctly. Circle time is quickly becoming my favorite part of school.",
     questions: [
-      "Where do the children sit?",
-      "What is the story about?",
-      "What does Lucy do after the story?",
+      { text: "Where do the children sit?", answer: "Together on the soft rug, in a circle." },
+      { text: "What is the story about?", answer: "A brave little bear." },
+      { text: "What does Lucy do after the story?", answer: "Raises her hand and answers a question correctly." },
     ],
     trueFalse: [
       { text: "The children sit on a rug.", answer: true },
@@ -132,9 +132,9 @@ export const CHAPTERS = [
     story:
       "At the block area, a boy smiles and waves at me. “Hi, I'm Owen. Do you want to build with me?” he asks. “Yes! My name is Lucy,” I say with a happy smile. We start building a tall tower with colorful blocks together. Owen is very good at making the tower stand up straight. My tower falls down once, but Owen helps me build it again. We laugh together when our tower finally reaches the ceiling almost. Owen says, “You are fun to play with, Lucy!” I feel so happy to make my first friend at school.",
     questions: [
-      "Who asks Lucy to play?",
-      "What do they build together?",
-      "What does Owen say to Lucy?",
+      { text: "Who asks Lucy to play?", answer: "Owen." },
+      { text: "What do they build together?", answer: "A tall tower with colorful blocks." },
+      { text: "What does Owen say to Lucy?", answer: "You are fun to play with, Lucy!" },
     ],
     trueFalse: [
       { text: "Owen asks Lucy to build blocks.", answer: true },
@@ -157,9 +157,9 @@ export const CHAPTERS = [
     story:
       "At snack time, everyone sits together at the small tables. Ms. Bell gives each of us a cup of apple slices. I sit next to my new friend Owen and a girl named Ella. Ella shares her crackers with me, and I share my apple slices too. We talk about our favorite colors while we eat our snacks. Owen says his favorite color is green, and mine is purple. Ella says her favorite color is yellow, like the sun. Snack time is a fun way to talk and make new friends. I feel happy sitting with my new classmates.",
     questions: [
-      "What snack does Ms. Bell give the children?",
-      "Who does Lucy sit next to?",
-      "What do they talk about?",
+      { text: "What snack does Ms. Bell give the children?", answer: "Apple slices." },
+      { text: "Who does Lucy sit next to?", answer: "Owen and a girl named Ella." },
+      { text: "What do they talk about?", answer: "Their favorite colors." },
     ],
     trueFalse: [
       { text: "Ms. Bell gives apple slices.", answer: true },
@@ -182,9 +182,9 @@ export const CHAPTERS = [
     story:
       "In the afternoon, I suddenly think about Mom and feel sad. My eyes fill with tears, and I start to cry quietly. Ms. Bell notices and comes over to sit beside me. “It's okay to miss your mom, Lucy,” she says gently. She gives me a soft tissue and a warm, caring hug. Owen comes over and gives me his favorite toy car to hold. “You can borrow it, Lucy,” he says kindly. I feel better because my teacher and my new friend are so kind. I take a deep breath and feel ready to keep playing.",
     questions: [
-      "Why does Lucy start to cry?",
-      "What does Ms. Bell give Lucy?",
-      "What does Owen give Lucy?",
+      { text: "Why does Lucy start to cry?", answer: "Because she suddenly misses Mom." },
+      { text: "What does Ms. Bell give Lucy?", answer: "A soft tissue and a hug." },
+      { text: "What does Owen give Lucy?", answer: "His favorite toy car." },
     ],
     trueFalse: [
       { text: "Lucy misses her mom.", answer: true },
@@ -207,9 +207,9 @@ export const CHAPTERS = [
     story:
       "After lunch, Ms. Bell takes the whole class outside to play. The playground has swings, a slide, and a climbing wall. Owen and Ella run to the slide, and I follow them quickly. We climb up the ladder and slide down again and again. Ella pushes me gently on the swing, and I laugh with joy. The sun feels warm, and the sky is bright and blue. We play tag and run around the playground together happily. Playing outside with my new friends is so much fun. I do not want playtime to end at all.",
     questions: [
-      "What does the playground have?",
-      "Who does Lucy follow to the slide?",
-      "What does Ella do on the swing?",
+      { text: "What does the playground have?", answer: "Swings, a slide, and a climbing wall." },
+      { text: "Who does Lucy follow to the slide?", answer: "Owen and Ella." },
+      { text: "What does Ella do on the swing?", answer: "Pushes Lucy gently." },
     ],
     trueFalse: [
       { text: "The playground has swings and a slide.", answer: true },
@@ -232,9 +232,9 @@ export const CHAPTERS = [
     story:
       "Today, Ms. Bell says we can bring something special to share. I bring my soft, fluffy teddy bear from home. When it is my turn, I stand in front of the class carefully. “This is my teddy bear. His name is Buttons,” I say. My classmates smile and ask questions about my bear. “Where did you get him?” asks Ella with curious eyes. “My grandma gave him to me,” I answer proudly. Everyone says Buttons looks very soft and cute. I feel proud to share something special with my new friends.",
     questions: [
-      "What does Lucy bring to share?",
-      "What is the teddy bear's name?",
-      "Who gave Lucy the teddy bear?",
+      { text: "What does Lucy bring to share?", answer: "Her teddy bear." },
+      { text: "What is the teddy bear's name?", answer: "Buttons." },
+      { text: "Who gave Lucy the teddy bear?", answer: "Her grandma." },
     ],
     trueFalse: [
       { text: "Lucy brings a teddy bear.", answer: true },
@@ -257,9 +257,9 @@ export const CHAPTERS = [
     story:
       "At the end of the day, Mom waits for me at the school gate. “How was your first day, Lucy?” Mom asks with a big smile. “I made two new friends, and I love my teacher!” I say excitedly. I tell Mom about circle time, snack time, and playing on the playground. I show her the toy car that Owen let me borrow today. Mom listens to every word with a happy, proud smile. “I am so proud of you, Lucy,” she says warmly. I hold Mom's hand and feel excited for tomorrow. My first day of school was better than I ever imagined.",
     questions: [
-      "Who waits for Lucy at the gate?",
-      "What does Lucy tell Mom about?",
-      "How does Lucy feel about tomorrow?",
+      { text: "Who waits for Lucy at the gate?", answer: "Mom." },
+      { text: "What does Lucy tell Mom about?", answer: "Circle time, snack time, and playing on the playground." },
+      { text: "How does Lucy feel about tomorrow?", answer: "Excited." },
     ],
     trueFalse: [
       { text: "Mom waits at the school gate.", answer: true },

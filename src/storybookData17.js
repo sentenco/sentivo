@@ -30,9 +30,9 @@ export const CHAPTERS = [
     story:
       "Today is my birthday, and I get a big surprise. Dad wheels a shiny new bike into the yard. It is purple with white stripes and a soft seat. “Happy birthday, Zara!” Dad says with a big smile. I run over and touch the smooth, cool handlebars. “Can I ride it now?” I ask excitedly. Dad laughs and says, “First, let's put on your helmet.” I put on my blue helmet and feel ready for an adventure. I cannot wait to learn how to ride my new bike.",
     questions: [
-      "What does Zara get for her birthday?",
-      "What color is the bike?",
-      "What does Dad say to put on first?",
+      { text: "What does Zara get for her birthday?", answer: "A new bike." },
+      { text: "What color is the bike?", answer: "Purple with white stripes." },
+      { text: "What does Dad say to put on first?", answer: "Her helmet." },
     ],
     trueFalse: [
       { text: "Zara gets a new bike.", answer: true },
@@ -55,9 +55,9 @@ export const CHAPTERS = [
     story:
       "Dad attaches two small training wheels to my new bike. “These will help you balance, Zara,” he explains kindly. I sit on the seat and hold the handlebars tightly. My feet reach the pedals just right, and I feel proud. Dad checks the training wheels to make sure they are safe. “Are you ready to try?” Dad asks with a smile. I nod my head and take a deep breath. I push the pedals slowly, and the bike starts to move. Riding with training wheels feels safe and exciting at the same time.",
     questions: [
-      "What does Dad attach to the bike?",
-      "What do the training wheels help with?",
-      "How does Zara feel when she is ready?",
+      { text: "What does Dad attach to the bike?", answer: "Training wheels." },
+      { text: "What do the training wheels help with?", answer: "Balance." },
+      { text: "How does Zara feel when she is ready?", answer: "Proud." },
     ],
     trueFalse: [
       { text: "Dad attaches training wheels.", answer: true },
@@ -80,9 +80,9 @@ export const CHAPTERS = [
     story:
       "I push the pedals, and the bike wobbles from side to side. “Keep looking forward, Zara,” Dad calls out to me. I try to steer straight, but the bike zigzags on the path. My hands feel shaky on the handlebars at first. Slowly, the bike starts to feel a little more steady. I make it to the end of the yard without stopping! “You did it!” Dad says, clapping his hands happily. I feel proud, even though the ride was wobbly. Learning something new takes practice, and I am ready to try again.",
     questions: [
-      "What does the bike do at first?",
-      "What does Dad tell Zara to do?",
-      "Does Zara make it to the end of the yard?",
+      { text: "What does the bike do at first?", answer: "Wobbles from side to side." },
+      { text: "What does Dad tell Zara to do?", answer: "Keep looking forward." },
+      { text: "Does Zara make it to the end of the yard?", answer: "Yes, without stopping." },
     ],
     trueFalse: [
       { text: "The bike wobbles at first.", answer: true },
@@ -105,9 +105,9 @@ export const CHAPTERS = [
     story:
       "The next day, Dad takes off the training wheels to help me balance better. “I will hold the seat so you feel safe,” he says. I climb onto the bike, and Dad holds on tightly behind me. I push the pedals, and Dad runs along beside the bike. “You're doing great, Zara!” Dad says, a little out of breath. I feel the wind on my face as we move faster. Dad slowly loosens his grip, but he stays close by. Even without training wheels, I feel brave with Dad right there.",
     questions: [
-      "What does Dad take off the bike?",
-      "What does Dad do to help Zara feel safe?",
-      "How does Zara feel with Dad nearby?",
+      { text: "What does Dad take off the bike?", answer: "The training wheels." },
+      { text: "What does Dad do to help Zara feel safe?", answer: "Holds the seat." },
+      { text: "How does Zara feel with Dad nearby?", answer: "Brave." },
     ],
     trueFalse: [
       { text: "Dad takes off the training wheels.", answer: true },
@@ -130,9 +130,9 @@ export const CHAPTERS = [
     story:
       "Today, Dad lets go of the seat for a few seconds. I ride on my own, but then I lose my balance. The bike tips over, and I fall onto the soft grass. My knee feels a little sore, and I want to cry. Dad runs over quickly and helps me stand up. “Are you okay, Zara?” he asks with a worried face. “I'm okay, Dad, just a little scraped,” I say bravely. Dad hugs me and says falling is part of learning to ride. I take a deep breath and get ready to try once more.",
     questions: [
-      "What happens when Dad lets go?",
-      "Where does Zara fall?",
-      "What does Dad say about falling?",
+      { text: "What happens when Dad lets go?", answer: "Zara loses her balance and the bike tips over." },
+      { text: "Where does Zara fall?", answer: "Onto the soft grass." },
+      { text: "What does Dad say about falling?", answer: "That falling is part of learning to ride." },
     ],
     trueFalse: [
       { text: "Zara loses her balance.", answer: true },
@@ -155,9 +155,9 @@ export const CHAPTERS = [
     story:
       "After my little fall, I feel a bit nervous to try again. Dad kneels beside me and says, “You can do this, Zara.” I take a deep breath and climb back onto my bike. Dad holds the seat gently, just like before. I push the pedals slowly and focus on looking straight ahead. This time, I feel more balanced and confident on the bike. Dad lets go again, and I ride a little further than before. “I'm doing it, Dad!” I shout with excitement. Trying again after a fall makes me feel strong and brave.",
     questions: [
-      "How does Zara feel before trying again?",
-      "What does Dad say to encourage her?",
-      "Does Zara ride further this time?",
+      { text: "How does Zara feel before trying again?", answer: "A bit nervous." },
+      { text: "What does Dad say to encourage her?", answer: "You can do this, Zara." },
+      { text: "Does Zara ride further this time?", answer: "Yes, a little further than before." },
     ],
     trueFalse: [
       { text: "Zara feels nervous at first.", answer: true },
@@ -180,9 +180,9 @@ export const CHAPTERS = [
     story:
       "Today, I tell Dad I am ready to ride all by myself. “No training wheels and no holding on?” Dad asks with a smile. “Yes, Dad, I want to try,” I say confidently. Dad checks my helmet and makes sure the bike is ready. I climb on the bike and push off the ground slowly. My legs pedal steadily, and the bike moves forward smoothly. I look ahead and keep my balance all by myself. Dad watches from a distance with a proud smile on his face. I cannot believe I am really riding on my own!",
     questions: [
-      "What does Zara tell Dad she is ready for?",
-      "What does Dad check before she rides?",
-      "How does Zara ride this time?",
+      { text: "What does Zara tell Dad she is ready for?", answer: "To ride all by herself, with no training wheels or holding on." },
+      { text: "What does Dad check before she rides?", answer: "Her helmet and the bike." },
+      { text: "How does Zara ride this time?", answer: "By herself, keeping her balance." },
     ],
     trueFalse: [
       { text: "Zara wants to ride without help.", answer: true },
@@ -205,9 +205,9 @@ export const CHAPTERS = [
     story:
       "My big brother Felix comes outside to watch me ride. “Go, Zara, go!” he shouts and claps his hands. I smile and pedal a little faster down the path. Felix runs alongside me, cheering with every turn I make. “You're really good at this!” Felix says with a proud smile. I feel happy that my big brother believes in me. He gives me a high five when I stop safely at the end. “Thanks for cheering for me, Felix,” I say happily. Having my brother's support makes riding my bike even more fun.",
     questions: [
-      "Who comes outside to watch Zara ride?",
-      "What does Felix do while Zara rides?",
-      "What does Felix give Zara at the end?",
+      { text: "Who comes outside to watch Zara ride?", answer: "Her big brother Felix." },
+      { text: "What does Felix do while Zara rides?", answer: "Cheers and runs alongside her." },
+      { text: "What does Felix give Zara at the end?", answer: "A high five." },
     ],
     trueFalse: [
       { text: "Felix comes outside to watch.", answer: true },
@@ -230,9 +230,9 @@ export const CHAPTERS = [
     story:
       "Today, Dad says I can ride down our whole street. “Stay close to the side, and I'll walk with you,” Dad says. I pedal past our neighbor's house and wave to Mrs. Lopez. The wind feels cool against my face as I ride along. I see kids playing and dogs barking as I pass by. Dad walks beside me the whole time, smiling proudly. I ride all the way to the corner and turn around carefully. Riding down the real street feels like a big, exciting adventure. I feel like I can ride anywhere now!",
     questions: [
-      "What does Dad say Zara can do today?",
-      "Who does Zara wave to?",
-      "How does the wind feel?",
+      { text: "What does Dad say Zara can do today?", answer: "Ride down the whole street." },
+      { text: "Who does Zara wave to?", answer: "Their neighbor, Mrs. Lopez." },
+      { text: "How does the wind feel?", answer: "Cool against her face." },
     ],
     trueFalse: [
       { text: "Zara rides down the street.", answer: true },
@@ -255,9 +255,9 @@ export const CHAPTERS = [
     story:
       "It has been one month since I got my new bike. I remember my first wobbly ride and my little fall. Now, I can ride fast, turn corners, and stop safely. Dad no longer needs to hold my seat or walk beside me. Felix says I am one of the best bike riders on our street. Today, our whole family rides bikes together around the neighborhood. I feel the wind in my hair and a big smile on my face. “I did it, I can really ride my bike!” I shout happily. Learning to ride my bike taught me that practice makes anything possible.",
     questions: [
-      "How long has it been since Zara got her bike?",
-      "What does Zara remember from the beginning?",
-      "What does the whole family do together?",
+      { text: "How long has it been since Zara got her bike?", answer: "One month." },
+      { text: "What does Zara remember from the beginning?", answer: "Her first wobbly ride and her little fall." },
+      { text: "What does the whole family do together?", answer: "Ride bikes together around the neighborhood." },
     ],
     trueFalse: [
       { text: "It has been one month.", answer: true },

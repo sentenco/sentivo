@@ -36,9 +36,9 @@ export const CHAPTERS = [
     story:
       "Today is a special day. I come home from school and open the door. I see a small brown puppy on the kitchen floor! Mom smiles and says, “He is your new puppy!” I feel so happy, and I want to jump and shout. The puppy runs to me and licks my hand. Dad says, “You can play with him now.” I sit on the floor and pet his soft fur. This is the best day ever!",
     questions: [
-      "What does Ellie see on the kitchen floor?",
-      "What does Mom say?",
-      "How does Ellie feel?",
+      { text: "What does Ellie see on the kitchen floor?", answer: "A small brown puppy." },
+      { text: "What does Mom say?", answer: "He is your new puppy!" },
+      { text: "How does Ellie feel?", answer: "So happy." },
     ],
     trueFalse: [
       { text: "Ellie sees a puppy on the kitchen floor.", answer: true },
@@ -61,9 +61,9 @@ export const CHAPTERS = [
     story:
       "We sit together in the living room. Dad says, “We need a good name for him.” I think of many names. Mom says, “What about Max?” My brother Theo says, “I like Rex!” I look at the puppy's big brown eyes. I say, “His name is Milo.” Everyone smiles and says, “Milo is a good name!” The puppy wags his tail. Now he has a name!",
     questions: [
-      "Where does the family sit?",
-      "What name does Ellie choose?",
-      "What does the puppy do when he gets his name?",
+      { text: "Where does the family sit?", answer: "In the living room." },
+      { text: "What name does Ellie choose?", answer: "Milo." },
+      { text: "What does the puppy do when he gets his name?", answer: "He wags his tail." },
     ],
     trueFalse: [
       { text: "The family sits in the kitchen.", answer: false },
@@ -86,9 +86,9 @@ export const CHAPTERS = [
     story:
       "At night, Milo sleeps in a small bed in my room. Soon, I hear a soft cry. Milo is awake, and he looks scared. I get out of bed and sit next to him. I say, “It's okay, Milo. I'm here.” I pet his head slowly. Milo stops crying and rests his head on my hand. Soon, we both fall asleep. In the morning, Milo licks my face and wakes me up.",
     questions: [
-      "Where does Milo sleep?",
-      "What does Milo do at night?",
-      "What wakes Ellie up in the morning?",
+      { text: "Where does Milo sleep?", answer: "In a small bed in Ellie's room." },
+      { text: "What does Milo do at night?", answer: "He cries softly because he looks scared." },
+      { text: "What wakes Ellie up in the morning?", answer: "Milo licking her face." },
     ],
     trueFalse: [
       { text: "Milo sleeps in the kitchen.", answer: false },
@@ -111,9 +111,9 @@ export const CHAPTERS = [
     story:
       "Today, Dad teaches Milo a new trick. Dad holds a small treat and says, “Sit, Milo!” Milo looks confused and jumps up. Dad tries again, slowly and kindly. “Sit, Milo,” he says softly. This time, Milo sits down! We clap and cheer for him. Milo gets his treat and wags his tail. I say, “Good boy, Milo!” Puppy school is fun, and Milo learns fast.",
     questions: [
-      "Who teaches Milo a new trick?",
-      "What word does Dad say to Milo?",
-      "What does Milo get when he sits?",
+      { text: "Who teaches Milo a new trick?", answer: "Dad." },
+      { text: "What word does Dad say to Milo?", answer: "Sit." },
+      { text: "What does Milo get when he sits?", answer: "A treat." },
     ],
     trueFalse: [
       { text: "Dad teaches Milo a new trick.", answer: true },
@@ -136,9 +136,9 @@ export const CHAPTERS = [
     story:
       "On Saturday, I take Milo for his first walk. I hold his leash, and we walk to the park. Milo sniffs the grass and wags his tail. At the park, I see my friend Grace with her dog. Grace says, “Your puppy is so cute!” Milo and Grace's dog play together and run in circles. We sit on a bench and watch them play. It is a fun day at the park.",
     questions: [
-      "Where does Ellie take Milo?",
-      "Who does she see at the park?",
-      "What do Milo and Grace's dog do?",
+      { text: "Where does Ellie take Milo?", answer: "The park, for his first walk." },
+      { text: "Who does she see at the park?", answer: "Her friend Grace." },
+      { text: "What do Milo and Grace's dog do?", answer: "They play together and run in circles." },
     ],
     trueFalse: [
       { text: "Ellie takes Milo to the park.", answer: true },
@@ -161,9 +161,9 @@ export const CHAPTERS = [
     story:
       "One afternoon, I come home and see something on the floor. Milo has chewed my favorite shoe! I feel upset and want to shout. Mom says, “Milo is still a baby. He does not know yet.” We clean up the mess together. Dad gives Milo a chew toy instead. I hug Milo and say, “It's okay, Milo.” I learn that puppies make mistakes too.",
     questions: [
-      "What does Milo chew?",
-      "How does Ellie feel at first?",
-      "What does Ellie learn?",
+      { text: "What does Milo chew?", answer: "Ellie's favorite shoe." },
+      { text: "How does Ellie feel at first?", answer: "Upset." },
+      { text: "What does Ellie learn?", answer: "That puppies make mistakes too." },
     ],
     trueFalse: [
       { text: "Milo chews Ellie's shoe.", answer: true },
@@ -186,9 +186,9 @@ export const CHAPTERS = [
     story:
       "Today, Milo needs a bath. He rolled in the mud outside! I fill the tub with warm water. Milo does not like the water at first. He shakes and splashes everywhere. Water goes all over my clothes, and I start to laugh. Slowly, Milo relaxes and enjoys the warm water. I wash his soft fur gently. After the bath, Milo looks clean and smells so fresh. He shakes his whole body and gets me wet again!",
     questions: [
-      "Why does Milo need a bath?",
-      "What does Milo do at first?",
-      "How does Milo look after the bath?",
+      { text: "Why does Milo need a bath?", answer: "Because he rolled in the mud outside." },
+      { text: "What does Milo do at first?", answer: "He does not like the water -- he shakes and splashes." },
+      { text: "How does Milo look after the bath?", answer: "Clean and fresh-smelling." },
     ],
     trueFalse: [
       { text: "Milo rolled in the mud.", answer: true },
@@ -211,9 +211,9 @@ export const CHAPTERS = [
     story:
       "In the yard, I throw a small ball for Milo. “Go get it, Milo!” I shout. Milo runs fast, but he does not bring the ball back. He just looks at it and barks. I try again and again, but Milo does not understand yet. Then, on the fifth try, Milo picks up the ball and runs back to me! I clap my hands and say, “Good job, Milo!” Now Milo loves to play fetch every day.",
     questions: [
-      "What does Ellie throw for Milo?",
-      "What does Milo do at first?",
-      "What happens on the fifth try?",
+      { text: "What does Ellie throw for Milo?", answer: "A small ball." },
+      { text: "What does Milo do at first?", answer: "He just looks at the ball and barks." },
+      { text: "What happens on the fifth try?", answer: "Milo picks up the ball and runs back to Ellie." },
     ],
     trueFalse: [
       { text: "Ellie throws a ball for Milo.", answer: true },
@@ -236,9 +236,9 @@ export const CHAPTERS = [
     story:
       "At school, it is show-and-tell day. I bring photos of Milo to show my class. I stand at the front and hold up a photo. “This is my puppy, Milo,” I say. My classmates smile and ask questions. “What does he eat?” asks one boy. “What tricks does he know?” asks a girl. I answer every question with a big smile. Everyone says Milo looks very cute. I feel proud to share my puppy with my class.",
     questions: [
-      "What does Ellie bring to school?",
-      "What does Ellie say about the photo?",
-      "How does Ellie feel?",
+      { text: "What does Ellie bring to school?", answer: "Photos of Milo." },
+      { text: "What does Ellie say about the photo?", answer: "This is my puppy, Milo." },
+      { text: "How does Ellie feel?", answer: "Proud." },
     ],
     trueFalse: [
       { text: "Ellie brings Milo's photos to school.", answer: true },
@@ -261,9 +261,9 @@ export const CHAPTERS = [
     story:
       "It has been one month since Milo came home. He is bigger now and knows many tricks. Milo can sit, come, and fetch the ball. Every morning, he wakes me up with a lick on my face. Every afternoon, we play together in the yard. At night, Milo sleeps next to my bed. I remember the first day, when Milo was scared and small. Now, Milo is happy and full of energy. I look at Milo and smile. He is not just my puppy. He is my best friend.",
     questions: [
-      "How long has Milo been home?",
-      "What tricks can Milo do now?",
-      "What does Ellie call Milo at the end?",
+      { text: "How long has Milo been home?", answer: "One month." },
+      { text: "What tricks can Milo do now?", answer: "Sit, come, and fetch the ball." },
+      { text: "What does Ellie call Milo at the end?", answer: "Her best friend." },
     ],
     trueFalse: [
       { text: "Milo has been home for one month.", answer: true },

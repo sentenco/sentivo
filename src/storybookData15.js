@@ -29,9 +29,9 @@ export const CHAPTERS = [
     story:
       "Oscar is my best friend at school. We sit next to each other in class every day. Oscar has short brown hair and always wears a blue cap. Every morning, we wave and say, “Good morning!” to each other. At recess, we play together on the swings. Oscar tells funny jokes that always make me laugh. We share our favorite stories about our weekends. I feel happy when Oscar is with me at school. Having a best friend makes every day more fun.",
     questions: [
-      "Who is Ivy's best friend?",
-      "What do they do every morning?",
-      "Where do they play at recess?",
+      { text: "Who is Ivy's best friend?", answer: "Oscar." },
+      { text: "What do they do every morning?", answer: "Wave and say Good morning to each other." },
+      { text: "Where do they play at recess?", answer: "On the swings." },
     ],
     trueFalse: [
       { text: "Oscar is Ivy's best friend.", answer: true },
@@ -54,9 +54,9 @@ export const CHAPTERS = [
     story:
       "At lunchtime, I open my lunch box and see a red apple. Oscar opens his lunch box and has orange crackers. “Do you want to share?” Oscar asks with a smile. I give him half of my apple, and he gives me some crackers. We sit together at the small round table. Oscar says my apple is sweet and juicy. I say his crackers are crunchy and tasty. We laugh and talk about our favorite foods. Sharing snacks with Oscar makes lunchtime my favorite part of the day.",
     questions: [
-      "What does Ivy have for lunch?",
-      "What does Oscar have for lunch?",
-      "What do they do with their food?",
+      { text: "What does Ivy have for lunch?", answer: "A red apple." },
+      { text: "What does Oscar have for lunch?", answer: "Orange crackers." },
+      { text: "What do they do with their food?", answer: "They share it." },
     ],
     trueFalse: [
       { text: "Ivy has an apple for lunch.", answer: true },
@@ -79,9 +79,9 @@ export const CHAPTERS = [
     story:
       "After school, Oscar comes to my house to play. We decide to build a big fort in my room. We use soft blankets and put them over two chairs. Oscar holds the blanket while I tuck in the sides. We add pillows inside to make it soft and cozy. Inside the fort, we use a flashlight because it is dark. We tell stories and giggle inside our secret fort. My little brother wants to come in, so we let him join. Building a fort with Oscar is one of my favorite games.",
     questions: [
-      "What do they build in Ivy's room?",
-      "What do they use to build the fort?",
-      "Who wants to join them?",
+      { text: "What do they build in Ivy's room?", answer: "A blanket fort." },
+      { text: "What do they use to build the fort?", answer: "Soft blankets, two chairs, and pillows." },
+      { text: "Who wants to join them?", answer: "Ivy's little brother." },
     ],
     trueFalse: [
       { text: "They build a fort.", answer: true },
@@ -104,9 +104,9 @@ export const CHAPTERS = [
     story:
       "At recess, Oscar and I both want to play with the same red ball. “I had it first!” I say loudly. “No, I saw it first!” Oscar says back. We both feel upset, and we do not want to share. I cross my arms and walk away from Oscar. Oscar sits alone on the bench, looking sad. I think about how much fun we usually have together. Playing alone does not feel as fun as playing with Oscar. I realize that our friendship is more important than one ball.",
     questions: [
-      "What do Ivy and Oscar both want?",
-      "How do they feel?",
-      "What does Ivy realize?",
+      { text: "What do Ivy and Oscar both want?", answer: "The same red ball." },
+      { text: "How do they feel?", answer: "Upset." },
+      { text: "What does Ivy realize?", answer: "That their friendship is more important than one ball." },
     ],
     trueFalse: [
       { text: "They both want the same ball.", answer: true },
@@ -129,9 +129,9 @@ export const CHAPTERS = [
     story:
       "The next day, I see Oscar sitting alone at recess again. I walk over slowly and sit down next to him. “I'm sorry about the ball yesterday,” I say quietly. Oscar looks up and says, “I'm sorry too, Ivy.” We both smile, and I feel much better inside. “Let's share the ball today,” Oscar says kindly. We take turns throwing and catching the ball together. Saying sorry was hard, but it made our friendship strong again. I learn that good friends can fix their problems together.",
     questions: [
-      "Where does Ivy find Oscar?",
-      "What does Ivy say to Oscar?",
-      "What do they do with the ball this time?",
+      { text: "Where does Ivy find Oscar?", answer: "Sitting alone at recess." },
+      { text: "What does Ivy say to Oscar?", answer: "I'm sorry about the ball yesterday." },
+      { text: "What do they do with the ball this time?", answer: "They take turns throwing and catching it." },
     ],
     trueFalse: [
       { text: "Ivy finds Oscar sitting alone.", answer: true },
@@ -154,9 +154,9 @@ export const CHAPTERS = [
     story:
       "During art class, Oscar and I sit at the same table. We each get a big piece of paper and colorful crayons. I draw a picture of a tall, green tree with birds. Oscar draws a picture of a fast, red race car. We show each other our drawings and give kind compliments. “I love your tree, Ivy!” Oscar says with a big smile. “Your car looks so fast, Oscar!” I say happily. We decide to trade drawings and keep them forever. Art class is more fun when I create with my best friend.",
     questions: [
-      "What does Ivy draw?",
-      "What does Oscar draw?",
-      "What do they decide to do with their drawings?",
+      { text: "What does Ivy draw?", answer: "A tall, green tree with birds." },
+      { text: "What does Oscar draw?", answer: "A fast, red race car." },
+      { text: "What do they decide to do with their drawings?", answer: "Trade them and keep them forever." },
     ],
     trueFalse: [
       { text: "Ivy draws a tree.", answer: true },
@@ -179,9 +179,9 @@ export const CHAPTERS = [
     story:
       "Today, it rains hard, so we cannot play outside at recess. Oscar and I stay inside the classroom instead. We choose a puzzle from the shelf and sit on the rug. The puzzle has one hundred pieces of a big rainbow. We work together, finding pieces that fit just right. Oscar is very good at finding the corner pieces. I am good at finding the pieces with bright colors. After a while, we finish the whole puzzle together. Even on a rainy day, playing with Oscar is always fun.",
     questions: [
-      "Why do they stay inside?",
-      "What do they choose to do?",
-      "How many pieces does the puzzle have?",
+      { text: "Why do they stay inside?", answer: "Because it rains hard." },
+      { text: "What do they choose to do?", answer: "A puzzle." },
+      { text: "How many pieces does the puzzle have?", answer: "One hundred." },
     ],
     trueFalse: [
       { text: "It rains, so they stay inside.", answer: true },
@@ -204,9 +204,9 @@ export const CHAPTERS = [
     story:
       "After school, Oscar looks worried about his math homework. “I don't understand these numbers,” he says softly. I sit next to him and look at his paper. “Let's do it together,” I say with a smile. I show him how to add the numbers step by step. Oscar tries the next problem, and he gets it right! “You did it, Oscar!” I say, and we both cheer happily. Oscar says, “Thank you for helping me, Ivy.” Helping my best friend makes me feel proud and happy.",
     questions: [
-      "What is Oscar worried about?",
-      "What does Ivy do to help?",
-      "How does Oscar feel after getting the answer right?",
+      { text: "What is Oscar worried about?", answer: "His math homework." },
+      { text: "What does Ivy do to help?", answer: "Shows him how to add the numbers step by step." },
+      { text: "How does Oscar feel after getting the answer right?", answer: "Happy -- they both cheer." },
     ],
     trueFalse: [
       { text: "Oscar is worried about math homework.", answer: true },
@@ -229,9 +229,9 @@ export const CHAPTERS = [
     story:
       "One morning, Oscar hands me a small box before class. “This is for you,” he says with a shy smile. Inside the box, I find a colorful friendship bracelet. It has blue and yellow strings woven together carefully. “I made it myself,” Oscar says proudly. I put the bracelet on my wrist right away. “I love it, Oscar! Thank you so much!” I say happily. The next day, I give Oscar a matching bracelet I made too. Now we both wear our friendship bracelets every single day.",
     questions: [
-      "What does Oscar give Ivy?",
-      "What colors are the bracelet?",
-      "What does Ivy give Oscar the next day?",
+      { text: "What does Oscar give Ivy?", answer: "A friendship bracelet." },
+      { text: "What colors are the bracelet?", answer: "Blue and yellow." },
+      { text: "What does Ivy give Oscar the next day?", answer: "A matching bracelet she made." },
     ],
     trueFalse: [
       { text: "Oscar gives Ivy a bracelet.", answer: true },
@@ -254,9 +254,9 @@ export const CHAPTERS = [
     story:
       "It has been a whole school year since Oscar and I became friends. We shared snacks, built forts, and fixed a small fight together. We drew pictures, did puzzles, and helped each other with homework. Now summer break is here, and we will not see each other every day. “I will miss you, Oscar,” I say with a small tear in my eye. “Me too, Ivy, but we can still play sometimes,” Oscar says kindly. We promise to call each other and meet at the park. I look at my friendship bracelet and smile with happiness. Oscar is not just my classmate. He is my best friend forever.",
     questions: [
-      "How long have Ivy and Oscar been friends?",
-      "What do they promise to do?",
-      "What does Ivy look at and smile?",
+      { text: "How long have Ivy and Oscar been friends?", answer: "A whole school year." },
+      { text: "What do they promise to do?", answer: "Call each other and meet at the park." },
+      { text: "What does Ivy look at and smile?", answer: "Her friendship bracelet." },
     ],
     trueFalse: [
       { text: "They have been friends for a school year.", answer: true },

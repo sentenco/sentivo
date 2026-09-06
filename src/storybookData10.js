@@ -34,9 +34,9 @@ export const CHAPTERS = [
     story:
       "This morning, I wake up with a sore throat and a heavy head. At first, I sit on my bed and hope I will feel better soon. I drink some water, but my throat still hurts, and my body feels weak. Then I decide to visit the small clinic near my apartment. I put on a clean shirt, take my bag, and walk slowly down the street. When I arrive at the clinic, I see a woman sitting behind a desk near the door. She smiles and says, “Good morning, how can I help you?” I tell her, “I have a sore throat, and I do not feel well today.” She gives me a form and asks me to sit down and wait for the doctor. As I sit in the quiet room, I still feel sick, but I also feel calm because I know help is coming.",
     questions: [
-      "How does the writer feel in the morning?",
-      "Where does the writer go?",
-      "What does the woman at the desk give to the writer?",
+      { text: "How does the writer feel in the morning?", answer: "Sick, with a sore throat and a heavy head." },
+      { text: "Where does the writer go?", answer: "To the small clinic near the apartment." },
+      { text: "What does the woman at the desk give to the writer?", answer: "A form." },
     ],
     trueFalse: [
       { text: "The writer wakes up with a sore throat.", answer: true },
@@ -72,9 +72,9 @@ export const CHAPTERS = [
     story:
       "At the desk, the kind receptionist gives me a small white form to fill in. The form asks for my name, my age, and my phone number. I write my details slowly and carefully with a black pen. Then she asks, “Is this your first visit to our clinic?” I say, “Yes, this is my first time here today.” She types my name into her computer and makes a new file for me. She asks me what problem brings me to the clinic today. I tell her, “I have a sore throat and a headache since this morning.” She smiles and says, “Please sit down, and the doctor will call you soon.” As I give back the form, I feel calm because the receptionist is helpful and kind.",
     questions: [
-      "What does the receptionist give the writer to fill in?",
-      "What three things does the form ask for?",
-      "What does the receptionist say the writer should do?",
+      { text: "What does the receptionist give the writer to fill in?", answer: "A small white form." },
+      { text: "What three things does the form ask for?", answer: "Name, age, and phone number." },
+      { text: "What does the receptionist say the writer should do?", answer: "Sit down and wait for the doctor." },
     ],
     trueFalse: [
       { text: "The form asks for the writer's name, age, and phone number.", answer: true },
@@ -110,9 +110,9 @@ export const CHAPTERS = [
     story:
       "After I give back the form, I sit down on a chair in the waiting room. The room is clean and quiet, with soft chairs and a small table. A few other people wait too, and some of them look a little tired. On the wall, there is a clock, some health posters, and a big plant. I hold my bag on my lap and take slow, deep breaths. My throat still hurts, but the calm room helps me feel less worried. I read a health poster about washing hands and drinking clean water. A nurse comes out and calls another patient into a room. I wait for about ten minutes and try to stay calm and patient. As I wait quietly, I feel okay because I know the doctor will help me soon.",
     questions: [
-      "Where does the writer sit after giving back the form?",
-      "What is on the wall of the waiting room?",
-      "What does the health poster talk about?",
+      { text: "Where does the writer sit after giving back the form?", answer: "In the waiting room." },
+      { text: "What is on the wall of the waiting room?", answer: "A clock, health posters, and a big plant." },
+      { text: "What does the health poster talk about?", answer: "Washing hands and drinking clean water." },
     ],
     trueFalse: [
       { text: "The waiting room is clean and quiet.", answer: true },
@@ -148,9 +148,9 @@ export const CHAPTERS = [
     story:
       "Soon, the nurse opens a door and calls, “Please come in, it is your turn.” I stand up, walk into the room, and see a kind doctor at her desk. She smiles and says, “Hello, my name is Dr. Santos, please sit down.” I sit on the chair next to her desk and put my bag on the floor. She looks at my form on her computer and reads my details. Then she asks, “How are you feeling today, and what is the problem?” Her voice is soft and calm, so I do not feel nervous anymore. I feel that she really wants to listen and help me get better. The room is bright and clean, and everything feels safe and quiet. As I sit with Dr. Santos, I feel calm because she is friendly and kind.",
     questions: [
-      "Who calls the writer into the room?",
-      "What is the doctor's name?",
-      "What does the doctor ask the writer?",
+      { text: "Who calls the writer into the room?", answer: "The nurse." },
+      { text: "What is the doctor's name?", answer: "Dr. Santos." },
+      { text: "What does the doctor ask the writer?", answer: "How are you feeling today, and what is the problem?" },
     ],
     trueFalse: [
       { text: "Dr. Santos is a kind doctor.", answer: true },
@@ -186,9 +186,9 @@ export const CHAPTERS = [
     story:
       "Dr. Santos asks me to tell her about my problem step by step. I say, “Since this morning, I have a sore throat and a headache.” She asks, “Do you have a fever or a cough too?” I tell her, “Yes, I feel a little hot, and I cough sometimes.” She asks when the problem started and how I feel now. I explain that I woke up feeling weak and tired today. She listens carefully and writes some notes on her computer. Then she asks if I sleep well and drink enough water each day. I answer all her questions slowly and honestly. As I describe my symptoms, I feel relieved because the doctor understands my problem clearly.",
     questions: [
-      "What symptoms does the writer have?",
-      "What does the doctor ask about besides the sore throat?",
-      "What does the doctor do while the writer speaks?",
+      { text: "What symptoms does the writer have?", answer: "A sore throat, a headache, a slight fever, and a cough." },
+      { text: "What does the doctor ask about besides the sore throat?", answer: "A fever or a cough." },
+      { text: "What does the doctor do while the writer speaks?", answer: "Writes some notes on her computer." },
     ],
     trueFalse: [
       { text: "The writer has a sore throat and a headache.", answer: true },
@@ -224,9 +224,9 @@ export const CHAPTERS = [
     story:
       "Next, Dr. Santos says, “Let me check you now, please do not worry.” She puts a small thermometer under my arm to check my temperature. Then she looks inside my throat with a little light and a stick. “Say 'ahhh' for me, please,” she says, and I open my mouth wide. She listens to my chest and back with a stethoscope and asks me to breathe. Her hands are gentle, and she tells me each step before she does it. She checks my temperature and says, “You have a small fever, but it is not serious.” I feel calm because she explains everything in a clear and kind way. She writes some notes and gives me a soft, friendly smile. As the check-up ends, I feel relieved because my problem is small and easy to treat.",
     questions: [
-      "What does the doctor put under the writer's arm?",
-      "What does the doctor ask the writer to say?",
-      "What does the doctor say about the fever?",
+      { text: "What does the doctor put under the writer's arm?", answer: "A thermometer." },
+      { text: "What does the doctor ask the writer to say?", answer: "\"Ahhh.\"" },
+      { text: "What does the doctor say about the fever?", answer: "That it is small and not serious." },
     ],
     trueFalse: [
       { text: "The doctor checks the writer's throat with a light.", answer: true },
@@ -262,9 +262,9 @@ export const CHAPTERS = [
     story:
       "After the check-up, Dr. Santos tells me what I need to do to get better. She says, “You have a small throat infection, so I will give you some medicine.” She writes a prescription on a small piece of paper for me. “Take this medicine two times a day, after your meals,” she explains. She also tells me to drink a lot of warm water and rest at home. “Do not drink cold drinks, and try to sleep well tonight,” she adds. I listen carefully and repeat the instructions so I remember them. She asks, “Do you have any questions for me before you go?” I say, “No, thank you, Dr. Santos, you explain everything clearly.” As I take the prescription, I feel hopeful because now I know how to get better.",
     questions: [
-      "What does the doctor say the writer has?",
-      "How many times a day should the writer take the medicine?",
-      "What does the doctor tell the writer to drink?",
+      { text: "What does the doctor say the writer has?", answer: "A small throat infection." },
+      { text: "How many times a day should the writer take the medicine?", answer: "Two times a day, after meals." },
+      { text: "What does the doctor tell the writer to drink?", answer: "A lot of warm water." },
     ],
     trueFalse: [
       { text: "The doctor gives the writer a prescription for medicine.", answer: true },
@@ -297,9 +297,9 @@ export const CHAPTERS = [
     story:
       "I leave the doctor's room and walk to the small pharmacy in the clinic. Behind the counter, a friendly pharmacist in a white coat smiles at me. I give him the prescription from Dr. Santos and wait for a minute. He reads the paper and finds my medicine on a shelf behind him. He puts the medicine in a small paper bag with a white label. “Take one tablet two times a day, after your meals,” he tells me. He also gives me some throat lozenges to help with the pain. I pay for the medicine and put the bag safely in my hand. He says, “Get well soon, and drink lots of warm water.” As I leave the pharmacy, I feel ready because now I have everything I need to get better.",
     questions: [
-      "Who is behind the pharmacy counter?",
-      "What does the pharmacist put the medicine in?",
-      "What does the pharmacist give besides the tablets?",
+      { text: "Who is behind the pharmacy counter?", answer: "A friendly pharmacist." },
+      { text: "What does the pharmacist put the medicine in?", answer: "A small paper bag with a white label." },
+      { text: "What does the pharmacist give besides the tablets?", answer: "Throat lozenges." },
     ],
     trueFalse: [
       { text: "The pharmacist wears a white coat.", answer: true },
@@ -335,9 +335,9 @@ export const CHAPTERS = [
     story:
       "When I get home, I take off my shoes and change into soft, warm clothes. I drink a big glass of warm water, just like the doctor tells me. Then I take my first tablet after I eat a small, simple lunch. I make a cup of warm tea with honey to help my sore throat. I lie down on my bed with a soft blanket and close my eyes. I turn off the bright lights and let my body rest in the quiet room. I do not use my phone too much, so my eyes can rest too. In the afternoon, I sleep for a while and feel a little better after. My throat still hurts a bit, but the pain is not as strong now. As I rest at home, I feel calm because I am taking good care of myself.",
     questions: [
-      "What does the writer drink at home, like the doctor says?",
-      "What does the writer put in the warm tea?",
-      "How does the writer feel after sleeping in the afternoon?",
+      { text: "What does the writer drink at home, like the doctor says?", answer: "A big glass of warm water." },
+      { text: "What does the writer put in the warm tea?", answer: "Honey." },
+      { text: "How does the writer feel after sleeping in the afternoon?", answer: "A little better." },
     ],
     trueFalse: [
       { text: "The writer takes the first tablet after eating lunch.", answer: true },
@@ -373,9 +373,9 @@ export const CHAPTERS = [
     story:
       "After a few days of medicine and rest, I wake up and feel much better. My throat does not hurt anymore, and my head feels light and clear. I do not have a fever, and my body feels strong and full of energy. I remember the first morning, when I felt weak, hot, and worried. Now I am thankful for Dr. Santos, the kind nurse, and the friendly pharmacist. I finish all my medicine, exactly as the doctor tells me to. I drink water, eat healthy food, and sleep well every night. I understand now that going to the doctor early is a smart and good choice. Next time I feel sick, I will not be afraid to visit the clinic. As I feel healthy again, I feel happy and thankful because I got the help I needed.",
     questions: [
-      "How does the writer feel after a few days of medicine and rest?",
-      "Who does the writer feel thankful for?",
-      "What did the writer learn about going to the doctor?",
+      { text: "How does the writer feel after a few days of medicine and rest?", answer: "Much better." },
+      { text: "Who does the writer feel thankful for?", answer: "Dr. Santos, the nurse, and the pharmacist." },
+      { text: "What did the writer learn about going to the doctor?", answer: "That going to the doctor early is a smart and good choice." },
     ],
     trueFalse: [
       { text: "The writer feels much better after a few days.", answer: true },

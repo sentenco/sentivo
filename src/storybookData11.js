@@ -31,9 +31,9 @@ export const CHAPTERS = [
     story:
       "Every day, I work hard from morning until the evening. When I come home, I feel tired, and my mind is full of work. For a long time, I only sat on the sofa and looked at my phone. But one evening, I think, “I want to do more with my free time.” Free time is a small gift after a busy day at work. I decide to try new things that make me feel happy and calm. I want to walk, cook, read, and meet my friends more often. My friend Leo says, “Free time is for rest and fun, not more stress.” I write a small list of hobbies I want to try after work. As I look at my list, I feel excited because my free time can be happy and full.",
     questions: [
-      "How does the writer feel when coming home from work?",
-      "What does the writer decide to do with free time?",
-      "What does Leo say about free time?",
+      { text: "How does the writer feel when coming home from work?", answer: "Tired." },
+      { text: "What does the writer decide to do with free time?", answer: "Try new things like walking, cooking, reading, and meeting friends." },
+      { text: "What does Leo say about free time?", answer: "Free time is for rest and fun, not more stress." },
     ],
     trueFalse: [
       { text: "The writer works hard from morning until evening.", answer: true },
@@ -69,9 +69,9 @@ export const CHAPTERS = [
     story:
       "Tonight, I want a quiet and calm evening in my home. After dinner, I wash the dishes and clean my small kitchen. Then I turn off the big lights and turn on a soft, warm lamp. I make a cup of tea and sit in my favourite chair by the window. I do not look at my phone or my work emails tonight. Instead, I open a simple book and read a few quiet pages. Outside, the city is dark, and the street is calm and peaceful. I feel my body relax and my mind become slow and soft. A quiet evening at home is simple, but it feels very good. As I sit in the warm light, I feel calm because I give myself time to rest.",
     questions: [
-      "What does the writer make to drink in the evening?",
-      "What does the writer read?",
-      "How does the writer feel at the end?",
+      { text: "What does the writer make to drink in the evening?", answer: "A cup of tea." },
+      { text: "What does the writer read?", answer: "A simple book." },
+      { text: "How does the writer feel at the end?", answer: "Calm." },
     ],
     trueFalse: [
       { text: "The writer wants a calm evening at home.", answer: true },
@@ -107,9 +107,9 @@ export const CHAPTERS = [
     story:
       "On a nice evening, I decide to take a walk in the park. I put on comfortable shoes and a light jacket for the cool air. The park is near my home, so I walk there in just a few minutes. Many people walk, run, or sit on the green grass with their families. I walk slowly along the path and look at the tall green trees. Some children play with a ball, and some old people sit and talk. I breathe the fresh air and feel my body become light and free. I do not think about work; I only enjoy the calm park. A walk in the park is free, easy, and good for my health. When I walk home, I feel fresh and happy because a simple walk lifts my mood.",
     questions: [
-      "What does the writer put on before the walk?",
-      "What do the children do in the park?",
-      "How does the writer feel when walking home?",
+      { text: "What does the writer put on before the walk?", answer: "Comfortable shoes and a light jacket." },
+      { text: "What do the children do in the park?", answer: "Play with a ball." },
+      { text: "How does the writer feel when walking home?", answer: "Fresh and happy." },
     ],
     trueFalse: [
       { text: "The writer takes a walk in the park in the evening.", answer: true },
@@ -145,9 +145,9 @@ export const CHAPTERS = [
     story:
       "On Friday night, I want to relax and watch a good movie at home. I make some popcorn in a bowl and pour a cool glass of juice. I turn off the big lights and sit on my soft, comfortable sofa. I choose a fun and simple movie that I really want to see. The story is exciting, and I forget about my busy week at work. I laugh at the funny parts and feel surprised at the exciting parts. The movie takes me to a new world for about two hours. I eat my popcorn slowly and enjoy every minute of the film. When the movie ends, I feel happy and calm inside. As I turn off the screen, I feel relaxed because a good movie is a nice, easy hobby.",
     questions: [
-      "What does the writer make to eat while watching the movie?",
-      "When does the writer watch the movie?",
-      "How does the writer feel when the movie ends?",
+      { text: "What does the writer make to eat while watching the movie?", answer: "Popcorn." },
+      { text: "When does the writer watch the movie?", answer: "On Friday night." },
+      { text: "How does the writer feel when the movie ends?", answer: "Happy and calm." },
     ],
     trueFalse: [
       { text: "The writer watches a movie on Friday night.", answer: true },
@@ -183,9 +183,9 @@ export const CHAPTERS = [
     story:
       "This weekend, I want to try cooking as a fun new hobby. I go to the market and buy fresh vegetables, rice, and chicken. In my kitchen, I wash my hands and put on a clean apron. I cut the vegetables into small pieces on a wooden board. I follow a simple recipe on my phone, step by step. I cook the rice, fry the chicken, and mix the colourful vegetables. My kitchen smells warm and delicious, like a small restaurant. I taste the food and add a little salt to make it better. When the meal is ready, I sit down and eat my own cooking. As I enjoy my meal, I feel proud because I made something good with my own hands.",
     questions: [
-      "What does the writer buy at the market?",
-      "What does the writer follow to cook?",
-      "How does the writer feel while eating the meal?",
+      { text: "What does the writer buy at the market?", answer: "Fresh vegetables, rice, and chicken." },
+      { text: "What does the writer follow to cook?", answer: "A simple recipe on the phone." },
+      { text: "How does the writer feel while eating the meal?", answer: "Proud." },
     ],
     trueFalse: [
       { text: "The writer tries cooking as a new hobby.", answer: true },
@@ -221,9 +221,9 @@ export const CHAPTERS = [
     story:
       "In the evening, I like to listen to music to relax my mind. I sit on my sofa, close my eyes, and play my favourite songs. The soft music fills my room and makes me feel calm and happy. Some songs are slow and quiet, and some songs are fun and fast. When a fast song plays, I move my head and tap my feet. I remember happy times from my life when I hear an old song. Music helps me forget my stress from the busy day at work. Sometimes I sing along softly to the words I know well. Listening to music is a simple and free hobby that I love. As the music plays, I feel peaceful because it fills my heart with good feelings.",
     questions: [
-      "When does the writer like to listen to music?",
-      "What does the writer do when a fast song plays?",
-      "How does the writer feel as the music plays?",
+      { text: "When does the writer like to listen to music?", answer: "In the evening." },
+      { text: "What does the writer do when a fast song plays?", answer: "Moves their head and taps their feet." },
+      { text: "How does the writer feel as the music plays?", answer: "Peaceful." },
     ],
     trueFalse: [
       { text: "The writer listens to music to relax the mind.", answer: true },
@@ -259,9 +259,9 @@ export const CHAPTERS = [
     story:
       "On Saturday afternoon, I meet my friend Leo for coffee. We choose a small café near the park with big, sunny windows. I order a warm coffee, and Leo orders a cup of tea. We sit at a table by the window and talk about our week. Leo tells me a funny story, and I laugh out loud. I tell him about my new hobbies, like cooking and walking. We talk about our dreams, our families, and our plans. The time passes quickly because we enjoy each other's company. It feels so good to talk with a real friend, not a phone. As I finish my coffee, I feel happy because good friends make free time special.",
     questions: [
-      "Who does the writer meet for coffee?",
-      "What does the writer order at the café?",
-      "What do the writer and Leo talk about?",
+      { text: "Who does the writer meet for coffee?", answer: "Their friend Leo." },
+      { text: "What does the writer order at the café?", answer: "A warm coffee." },
+      { text: "What do the writer and Leo talk about?", answer: "Their dreams, their families, and their plans." },
     ],
     trueFalse: [
       { text: "The writer meets Leo for coffee on Saturday.", answer: true },
@@ -297,9 +297,9 @@ export const CHAPTERS = [
     story:
       "This week, I decide to try a new class in my free time. I find a small art class in a building near my office. On the first day, I feel a little nervous, but also excited to learn. The teacher is kind and shows us how to draw simple pictures. I sit next to a friendly woman who is also a beginner like me. We use pencils and paper to draw a bowl of colourful fruit. At first, my drawing is not good, but I do not give up. The teacher says, “Everyone learns step by step, so keep trying.” Slowly, my drawing becomes better, and I feel proud of my work. As I leave the class, I feel happy because I learn something new and fun.",
     questions: [
-      "What kind of class does the writer try?",
-      "What do they draw in the class?",
-      "What does the teacher say when the writer's drawing is not good?",
+      { text: "What kind of class does the writer try?", answer: "A small art class." },
+      { text: "What do they draw in the class?", answer: "A bowl of colourful fruit." },
+      { text: "What does the teacher say when the writer's drawing is not good?", answer: "Everyone learns step by step, so keep trying." },
     ],
     trueFalse: [
       { text: "The writer tries an art class.", answer: true },
@@ -335,9 +335,9 @@ export const CHAPTERS = [
     story:
       "This weekend, I want to relax and enjoy my free time slowly. On Saturday morning, I wake up late and drink my coffee in bed. I do not rush, and I do not look at my work emails. In the afternoon, I take a walk in the park and enjoy the sun. Later, I cook a simple, healthy meal and eat it near the window. In the evening, I watch a movie and listen to soft music. On Sunday, I meet Leo, and we talk and laugh at a café. I read my book, clean my home, and rest on my sofa. This weekend feels full of small, happy, and calm moments. As the weekend ends, I feel rested because I used my free time in a good way.",
     questions: [
-      "What does the writer do on Saturday morning?",
-      "Who does the writer meet on Sunday?",
-      "How does the writer feel as the weekend ends?",
+      { text: "What does the writer do on Saturday morning?", answer: "Wakes up late and drinks coffee in bed." },
+      { text: "Who does the writer meet on Sunday?", answer: "Leo." },
+      { text: "How does the writer feel as the weekend ends?", answer: "Rested." },
     ],
     trueFalse: [
       { text: "The writer wakes up late on Saturday morning.", answer: true },
@@ -373,9 +373,9 @@ export const CHAPTERS = [
     story:
       "After a few weeks of new hobbies, I feel happier and more balanced. In the past, I only worked and looked at my phone every evening. Now I walk, cook, read, and listen to music in my free time. I meet my friend Leo and enjoy real conversations at a café. I try a new art class and learn something fun every week. My mind feels calm, and my body feels rested and strong. My free time is not empty anymore; it is full of small, good things. My friends say, “You look happy and relaxed these days.” I understand now that free time is important for a good life. As I look at my new hobbies, I feel proud and thankful because my life after work is full and happy.",
     questions: [
-      "How did the writer spend free time in the past?",
-      "What hobbies does the writer do now?",
-      "How does the writer feel about life after work at the end?",
+      { text: "How did the writer spend free time in the past?", answer: "Only worked and looked at the phone every evening." },
+      { text: "What hobbies does the writer do now?", answer: "Walking, cooking, reading, listening to music, and an art class." },
+      { text: "How does the writer feel about life after work at the end?", answer: "Proud and thankful." },
     ],
     trueFalse: [
       { text: "In the past, the writer only worked and looked at the phone.", answer: true },

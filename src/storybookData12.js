@@ -32,9 +32,9 @@ export const CHAPTERS = [
     story:
       "On Saturday afternoon, I walk to a small café near my apartment. The weather is warm, and many people sit outside at small round tables. When I go inside, I smell coffee, bread, and hot soup. A woman behind the counter smiles and says, “Hello, welcome.” I look at the menu board and read the food names slowly. Today I want something simple, so I choose chicken soup, bread, and iced tea. Then I pay for my meal and carry my tray to a table near the window. While I eat, I watch people walk past the café and talk on the street. The soup is warm, and the bread is soft, so I enjoy every bite. When I finish my lunch, I feel full, calm, and glad that I came to this quiet place.",
     questions: [
-      "Where does the writer go on Saturday afternoon?",
-      "What meal does the writer choose?",
-      "How does the writer feel at the end?",
+      { text: "Where does the writer go on Saturday afternoon?", answer: "A small café near the apartment." },
+      { text: "What meal does the writer choose?", answer: "Chicken soup, bread, and iced tea." },
+      { text: "How does the writer feel at the end?", answer: "Full, calm, and glad." },
     ],
     trueFalse: [
       { text: "The writer goes to a small café near the apartment.", answer: true },
@@ -70,9 +70,9 @@ export const CHAPTERS = [
     story:
       "On Sunday morning, I go to the busy market near my home. The market is full of colours, sounds, and good smells. I see fresh fruit, green vegetables, fish, and warm bread on the tables. First, I buy red apples, yellow bananas, and a green cabbage. Then I choose some fresh fish and a small bag of rice. A kind seller says, “These tomatoes are very fresh today.” I smile and buy some tomatoes and onions for my dinner. I carry my bags carefully and count my money at each table. The food is fresh and cheap, and I feel happy to cook it later. As I walk home with my full bags, I feel glad because I have good food for the week.",
     questions: [
-      "When does the writer go to the market?",
-      "What fruit does the writer buy first?",
-      "What does the kind seller say?",
+      { text: "When does the writer go to the market?", answer: "Sunday morning." },
+      { text: "What fruit does the writer buy first?", answer: "Red apples." },
+      { text: "What does the kind seller say?", answer: "These tomatoes are very fresh today." },
     ],
     trueFalse: [
       { text: "The writer goes to the market on Sunday morning.", answer: true },
@@ -108,9 +108,9 @@ export const CHAPTERS = [
     story:
       "Tonight, I want to cook a simple and healthy meal at home. I wash my hands and take out my fresh food from the fridge. I put on an apron and get a knife, a pan, and a wooden board. First, I cut the onions, tomatoes, and vegetables into small pieces. Then I cook the rice in a pot with a little water and salt. I fry the fish in a pan with a small amount of oil. My kitchen smells warm and delicious, like a small home restaurant. I taste the food and add a little pepper to make it better. When the meal is ready, I put it on a clean, white plate. As I sit down to eat, I feel proud because I cooked a good meal by myself.",
     questions: [
-      "What does the writer want to cook tonight?",
-      "What does the writer cut into small pieces first?",
-      "How does the writer feel while sitting down to eat?",
+      { text: "What does the writer want to cook tonight?", answer: "A simple and healthy meal." },
+      { text: "What does the writer cut into small pieces first?", answer: "Onions, tomatoes, and vegetables." },
+      { text: "How does the writer feel while sitting down to eat?", answer: "Proud." },
     ],
     trueFalse: [
       { text: "The writer cooks a simple and healthy meal at home.", answer: true },
@@ -146,9 +146,9 @@ export const CHAPTERS = [
     story:
       "On a slow morning, I decide to eat breakfast at a nearby café. The café is small and warm, with soft music and a good coffee smell. I sit at a table by the window and look at the menu. A friendly waiter comes and asks, “What would you like this morning?” I say, “I would like eggs, toast, and a cup of coffee, please.” He writes my order and says, “Thank you, it will come soon.” In a few minutes, he brings my warm eggs, golden toast, and hot coffee. The food looks fresh, and the coffee smells wonderful. I eat slowly and watch the busy street outside the window. As I finish my breakfast, I feel happy because a café breakfast is a nice treat.",
     questions: [
-      "Where does the writer eat breakfast?",
-      "What does the writer order?",
-      "How does the writer feel at the end?",
+      { text: "Where does the writer eat breakfast?", answer: "At a nearby café." },
+      { text: "What does the writer order?", answer: "Eggs, toast, and a cup of coffee." },
+      { text: "How does the writer feel at the end?", answer: "Happy." },
     ],
     trueFalse: [
       { text: "The writer eats breakfast at a nearby café.", answer: true },
@@ -184,9 +184,9 @@ export const CHAPTERS = [
     story:
       "This weekend, I want to try a new restaurant in my city. My friend Ana tells me about a nice place that serves warm noodle soup. We walk together and find the restaurant on a quiet street. When we go inside, a waiter smiles and says, “Welcome, please sit here.” The restaurant is clean and bright, with pictures of food on the walls. We sit at a table and read the big, colourful menu. There are many new dishes that I have never tried before. Ana says, “Let's try the special noodle soup and some spring rolls.” I feel a little nervous but also excited to taste new food. As we wait for our food, I feel happy because trying new places is fun.",
     questions: [
-      "Who tells the writer about the new restaurant?",
-      "What food does the new restaurant serve?",
-      "What does Ana suggest they try?",
+      { text: "Who tells the writer about the new restaurant?", answer: "Their friend Ana." },
+      { text: "What food does the new restaurant serve?", answer: "Warm noodle soup." },
+      { text: "What does Ana suggest they try?", answer: "The special noodle soup and some spring rolls." },
     ],
     trueFalse: [
       { text: "The writer tries a new restaurant this weekend.", answer: true },
@@ -222,9 +222,9 @@ export const CHAPTERS = [
     story:
       "At the restaurant, the waiter comes to our table with a friendly smile. He asks, “Are you ready to order your food?” I look at the menu one more time and choose my dish. I say, “I would like the noodle soup and a glass of water, please.” Ana says, “I would like the same soup and some spring rolls.” The waiter writes our order carefully on his small notepad. He asks, “Would you like anything else with your meal?” I say, “No, thank you, that is all for now.” He smiles and says, “Your food will be ready soon.” As the waiter walks away, I feel proud because I ordered my food clearly in English.",
     questions: [
-      "What does the waiter ask first?",
-      "What does the writer order?",
-      "How does the writer feel after ordering?",
+      { text: "What does the waiter ask first?", answer: "Are you ready to order your food?" },
+      { text: "What does the writer order?", answer: "The noodle soup and a glass of water." },
+      { text: "How does the writer feel after ordering?", answer: "Proud." },
     ],
     trueFalse: [
       { text: "The writer orders noodle soup and a glass of water.", answer: true },
@@ -260,9 +260,9 @@ export const CHAPTERS = [
     story:
       "Soon, the waiter brings our hot food to the table. The noodle soup smells wonderful, and the spring rolls look golden and crispy. Ana and I say, “Thank you,” and start to eat our meal. The soup is warm, and the noodles are soft and delicious. We share the spring rolls and talk about our week and our plans. Ana tells me a funny story, and I laugh so much. Eating out with a friend makes the food taste even better. We eat slowly, enjoy the flavours, and never feel in a hurry. The restaurant is warm, and our table feels happy and full of talk. As we finish our meal, I feel grateful because good food and a good friend go together.",
     questions: [
-      "What food does the waiter bring?",
-      "What do the writer and Ana talk about?",
-      "How does the writer feel at the end of the meal?",
+      { text: "What food does the waiter bring?", answer: "Noodle soup and spring rolls." },
+      { text: "What do the writer and Ana talk about?", answer: "Their week and their plans." },
+      { text: "How does the writer feel at the end of the meal?", answer: "Grateful." },
     ],
     trueFalse: [
       { text: "The soup is warm and the noodles are soft.", answer: true },
@@ -298,9 +298,9 @@ export const CHAPTERS = [
     story:
       "After our happy meal, we are ready to pay the bill. I raise my hand a little, and the waiter comes to our table. I say, “Excuse me, can we have the bill, please?” He nods and brings a small paper bill on a plate. I look at the bill and read the price for our food and drinks. Ana says, “Let's share the bill, so we each pay half.” We count our money and put it together on the small plate. I add a little extra money as a tip for the kind waiter. The waiter smiles and says, “Thank you very much, please come again.” As we leave the restaurant, I feel good because we shared a nice meal and paid together.",
     questions: [
-      "What does the writer ask the waiter for?",
-      "How do the writer and Ana pay the bill?",
-      "What does the writer add for the waiter?",
+      { text: "What does the writer ask the waiter for?", answer: "The bill." },
+      { text: "How do the writer and Ana pay the bill?", answer: "They share it and each pay half." },
+      { text: "What does the writer add for the waiter?", answer: "A little extra money as a tip." },
     ],
     trueFalse: [
       { text: "The writer asks the waiter for the bill.", answer: true },
@@ -336,9 +336,9 @@ export const CHAPTERS = [
     story:
       "Today is a special day, so I want to cook a nice dinner at home. I invite my friend Ana to eat with me in the evening. I go to the market and buy fresh fish, vegetables, rice, and fruit. In my kitchen, I cook carefully and make the food look nice on the plates. I set the table with clean plates, glasses, and a small candle. When Ana arrives, she smiles and says, “The food smells wonderful.” We sit down together and eat the warm, delicious dinner. We talk, laugh, and enjoy every bite of the special meal. For dessert, we eat sweet fruit and drink warm tea. As we finish our special dinner, I feel happy because I shared good food with a good friend.",
     questions: [
-      "Who does the writer invite for dinner?",
-      "What does the writer put on the table?",
-      "What do they eat for dessert?",
+      { text: "Who does the writer invite for dinner?", answer: "Their friend Ana." },
+      { text: "What does the writer put on the table?", answer: "Clean plates, glasses, and a small candle." },
+      { text: "What do they eat for dessert?", answer: "Sweet fruit and warm tea." },
     ],
     trueFalse: [
       { text: "The writer cooks a special dinner at home.", answer: true },
@@ -374,9 +374,9 @@ export const CHAPTERS = [
     story:
       "After many weeks, I understand that food brings me a lot of joy. In the past, I ate fast food alone in front of my phone. Now I shop at the market, cook at home, and eat out with friends. I try new cafés, new restaurants, and new dishes each week. I learn to order food clearly and pay the bill with a smile. I cook simple, fresh meals that are good for my body. I share special dinners with my friend Ana and enjoy our talks. Food is not only for my stomach; it is also for happy moments. My friends say, “You look happy, and your food always looks so good.” As I think about my food journey, I feel proud and thankful because good food fills my life with joy.",
     questions: [
-      "How did the writer eat in the past?",
-      "What does the writer do now with food?",
-      "How does the writer feel about their food journey at the end?",
+      { text: "How did the writer eat in the past?", answer: "Fast food alone in front of the phone." },
+      { text: "What does the writer do now with food?", answer: "Shops at the market, cooks at home, and eats out with friends." },
+      { text: "How does the writer feel about their food journey at the end?", answer: "Proud and thankful." },
     ],
     trueFalse: [
       { text: "In the past, the writer ate fast food alone in front of the phone.", answer: true },
