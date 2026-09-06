@@ -1202,6 +1202,14 @@ export default function Library() {
   const [page, setPage] = useState(() => Number(searchParams.get("page")) || 1);
   const [query, setQuery] = useState("");
   const [clTab, setClTab] = useState("All");
+  const [clStudentName, setClStudentName] = useState("");
+  const [clLevel, setClLevel] = useState("A1");
+  const [clAgeTrack, setClAgeTrack] = useState("Kids");
+  const [clTopic, setClTopic] = useState("");
+  const [clLanguage, setClLanguage] = useState("");
+  const [clDuration, setClDuration] = useState("25");
+  const [clNotes, setClNotes] = useState("");
+  const [clCopied, setClCopied] = useState(false);
   const [showAllToday, setShowAllToday] = useState(false);
   const { user, plan, signOut } = useAuth();
   const isAdmin = user?.email?.toLowerCase() === "caldrin1999@gmail.com";
@@ -1423,6 +1431,32 @@ export default function Library() {
     setPage(1);
     setShowAllToday(false);
     navigate(`/library?cat=${encodeURIComponent(cat)}`);
+  }
+
+  function buildCustomLessonRequestText() {
+    const lines = [
+      "Custom Lesson Request",
+      `Student: ${clStudentName.trim() || "Not specified"}`,
+      `Topic: ${clTopic.trim()}`,
+      `Level: ${clLevel} · ${clAgeTrack}`,
+      `Duration: ${clDuration} minutes`,
+      `Student's language: ${clLanguage.trim()}`,
+    ];
+    if (clNotes.trim()) lines.push(`Notes: ${clNotes.trim()}`);
+    lines.push("", "Sent at least 2 hours before the lesson.");
+    return lines.join("\n");
+  }
+
+  async function handleCopyCustomLessonRequest() {
+    const text = buildCustomLessonRequestText();
+    try {
+      await navigator.clipboard.writeText(text);
+    } catch {
+      // Clipboard access can fail (permissions, browser context); the
+      // filled-in fields are still right there for a manual copy either way.
+    }
+    setClCopied(true);
+    window.setTimeout(() => setClCopied(false), 1600);
   }
 
   const genericContent = toolsLoading ? (
@@ -1917,23 +1951,97 @@ export default function Library() {
                 <span className="cl-hero-rule" />
               </div>
               <h1 className="cl-title">Custom Lessons</h1>
-              <p className="cl-sub">A lesson built around one student's real need: their job, their upcoming trip, the exact words they asked for, in the language they actually speak.</p>
+              <p className="cl-sub">Sometimes a student needs something the library doesn't have yet, their job, their upcoming trip, the exact words they asked about. Tell us who it's for, and we'll build it around them.</p>
             </div>
 
-            <div className="cl-cta">
-              <div className="cl-cta-icon">
-                <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
-              </div>
-              <div className="cl-cta-body">
-                <div className="cl-cta-text">
-                  <h2>Request a custom lesson</h2>
-                  <p>Open a student's syllabus and use "Request custom lesson" to send the topic, level, duration, and language. Once it's built, it shows up here.</p>
+            <div className="cl-req">
+              <div className="cl-req-head">
+                <div className="cl-req-icon">
+                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
                 </div>
-                <button type="button" className="cl-cta-btn" onClick={() => navigate("/library/syllabus")}>
-                  Go to Syllabus Generator
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                </button>
+                <div>
+                  <h2 className="cl-req-title">Ask for one</h2>
+                  <p className="cl-req-lead">A couple of details and we'll take it from there. It'll show up in the gallery below once it's ready.</p>
+                </div>
               </div>
+
+              <p className="cl-req-timing">⏰ Send this at least 2 hours before the lesson.</p>
+
+              <div className="cl-req-grid">
+                <label className="cl-req-field">
+                  Student name
+                  <input
+                    type="text"
+                    className="cl-req-input"
+                    value={clStudentName}
+                    onChange={(e) => setClStudentName(e.target.value)}
+                    placeholder="e.g. Priya"
+                  />
+                </label>
+                <label className="cl-req-field">
+                  Level
+                  <select className="cl-req-input" value={clLevel} onChange={(e) => setClLevel(e.target.value)}>
+                    {["A1", "A2", "B1", "B2", "C1", "C2"].map((lv) => <option key={lv} value={lv}>{lv}</option>)}
+                  </select>
+                </label>
+                <label className="cl-req-field">
+                  Age group
+                  <select className="cl-req-input" value={clAgeTrack} onChange={(e) => setClAgeTrack(e.target.value)}>
+                    {["Kids", "Teens", "Adults"].map((t) => <option key={t} value={t}>{t}</option>)}
+                  </select>
+                </label>
+                <label className="cl-req-field">
+                  Student's language
+                  <input
+                    type="text"
+                    className="cl-req-input"
+                    value={clLanguage}
+                    onChange={(e) => setClLanguage(e.target.value)}
+                    placeholder="e.g. Hebrew"
+                  />
+                </label>
+                <label className="cl-req-field cl-req-field--narrow">
+                  Duration (min)
+                  <input
+                    type="number"
+                    min="5"
+                    max="120"
+                    className="cl-req-input"
+                    value={clDuration}
+                    onChange={(e) => setClDuration(e.target.value)}
+                  />
+                </label>
+                <label className="cl-req-field cl-req-field--wide">
+                  Topic
+                  <textarea
+                    className="cl-req-input cl-req-textarea"
+                    rows={2}
+                    value={clTopic}
+                    onChange={(e) => setClTopic(e.target.value)}
+                    placeholder="e.g. Real estate and sales, studying in the US"
+                  />
+                </label>
+                <label className="cl-req-field cl-req-field--wide">
+                  Notes <span className="cl-req-optional">(optional)</span>
+                  <textarea
+                    className="cl-req-input cl-req-textarea"
+                    rows={2}
+                    value={clNotes}
+                    onChange={(e) => setClNotes(e.target.value)}
+                    placeholder="Anything else worth knowing"
+                  />
+                </label>
+              </div>
+
+              <button
+                type="button"
+                className="cl-req-btn"
+                onClick={handleCopyCustomLessonRequest}
+                disabled={!clTopic.trim() || !clLanguage.trim()}
+              >
+                {clCopied ? "✓ Copied, paste it into Messenger" : "Copy request"}
+              </button>
+              <p className="cl-req-hint">Paste this into Messenger to send it our way.</p>
             </div>
 
             <div className="cl-gallery-hd-row">
@@ -2644,21 +2752,39 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 }
 .cl-sub { font-family: 'Inter', sans-serif; font-size: 13.5px; font-weight: 500; color: #6B6E96; max-width: 520px; margin: 0 auto; line-height: 1.6; position: relative; z-index: 1; }
 
-.cl-cta {
-  display: flex; background: #fff; border: 1px solid #EDE6F4; border-radius: 16px; overflow: hidden;
-  margin: 0 0 32px; box-shadow: 0 4px 16px rgba(27,42,74,0.06);
+.cl-req {
+  background: #fff; border: 1px solid #EDE6F4; border-radius: 16px; overflow: hidden;
+  margin: 0 0 32px; box-shadow: 0 4px 16px rgba(27,42,74,0.06); padding: 24px 26px 26px;
 }
-.cl-cta-icon { flex: 0 0 96px; background: #1B2A4A; display: flex; align-items: center; justify-content: center; color: #fff; }
-.cl-cta-body { flex: 1; display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 22px 26px; }
-.cl-cta-text h2 { font-family: 'Source Serif 4', serif; font-weight: 600; font-size: 17px; color: #1B2A4A; margin: 0 0 5px; }
-.cl-cta-text p { font-family: 'Inter', sans-serif; font-size: 12.5px; font-weight: 500; color: #6B6E96; margin: 0; max-width: 440px; line-height: 1.55; }
-.cl-cta-btn {
-  flex-shrink: 0; display: inline-flex; align-items: center; gap: 8px;
+.cl-req-head { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 16px; }
+.cl-req-icon {
+  flex: 0 0 44px; width: 44px; height: 44px; border-radius: 12px; background: #1B2A4A;
+  display: flex; align-items: center; justify-content: center; color: #fff;
+}
+.cl-req-title { font-family: 'Source Serif 4', serif; font-weight: 600; font-size: 17px; color: #1B2A4A; margin: 0 0 4px; }
+.cl-req-lead { font-family: 'Inter', sans-serif; font-size: 12.5px; font-weight: 500; color: #6B6E96; margin: 0; max-width: 480px; line-height: 1.55; }
+.cl-req-timing { margin: 0 0 16px; font-family: 'Inter', sans-serif; font-size: 12.5px; font-weight: 700; color: #E0502F; }
+.cl-req-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-bottom: 18px; }
+.cl-req-field { display: flex; flex-direction: column; gap: 6px; font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 700; color: #1B2A4A; }
+.cl-req-field--wide { grid-column: 1 / -1; }
+.cl-req-field--narrow { grid-column: span 1; }
+.cl-req-optional { font-weight: 500; color: #A6A2C0; text-transform: none; }
+.cl-req-input {
+  font-family: 'Inter', sans-serif; font-weight: 600; font-size: 13px; color: #1B2A4A;
+  background: #FBFAFD; border: 1.5px solid #EDE6F4; border-radius: 10px; padding: 9px 12px;
+  outline: none; resize: vertical;
+}
+.cl-req-input:focus { border-color: #FF6B4A; }
+.cl-req-textarea { font-family: 'Inter', sans-serif; }
+.cl-req-btn {
+  display: inline-flex; align-items: center; gap: 8px;
   font-family: 'Source Serif 4', serif; font-weight: 600; font-size: 13px; color: #fff;
-  background: #FF6B4A; border: none; border-radius: 999px; padding: 11px 20px; cursor: pointer;
+  background: #FF6B4A; border: none; border-radius: 999px; padding: 11px 22px; cursor: pointer;
   box-shadow: 0 6px 16px rgba(255,107,74,0.28);
 }
-.cl-cta-btn:hover { background: #E0502F; }
+.cl-req-btn:hover { background: #E0502F; }
+.cl-req-btn:disabled { opacity: 0.5; cursor: default; box-shadow: none; }
+.cl-req-hint { margin: 10px 0 0; font-family: 'Inter', sans-serif; font-size: 11.5px; font-weight: 500; color: #A6A2C0; }
 
 .cl-gallery-hd-row { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-bottom: 18px; }
 .cl-gallery-hd { font-family: 'Source Serif 4', serif; font-weight: 600; font-size: 18px; color: #1B2A4A; margin: 0; }
@@ -2709,9 +2835,8 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .cl-lesson-open:hover { opacity: 0.9; }
 
 @media (max-width: 640px) {
-  .cl-cta { flex-direction: column; }
-  .cl-cta-icon { width: 100%; height: 56px; }
-  .cl-cta-body { flex-direction: column; align-items: flex-start; }
+  .cl-req-grid { grid-template-columns: 1fr; }
+  .cl-req-field--narrow { grid-column: 1 / -1; }
   .cl-gallery-hd-row { flex-direction: column; align-items: flex-start; }
 }
 
