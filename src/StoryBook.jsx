@@ -44,6 +44,16 @@ function BookHeader({ stage }) {
   );
 }
 
+// A tile's id is always its real target position (assigned once when the
+// tray is built from words.map((text, i) => ({ text, id: i }))), so a run
+// of built[i].id === i is a genuinely correct prefix -- reliable even when
+// the sentence repeats a word, unlike comparing built[i].text directly.
+function correctPrefixLength(built) {
+  let i = 0;
+  while (i < built.length && built[i].id === i) i++;
+  return i;
+}
+
 function shuffle(arr) {
   const a = [...arr];
   for (let i = a.length - 1; i > 0; i--) {
@@ -176,6 +186,24 @@ function BuildSentencePage({ chapter, index }) {
 
   const allPlaced = built.length === words.length;
   const isCorrect = checked && built.every((w, i) => w.text === words[i]);
+  const correctLen = correctPrefixLength(built);
+
+  // Hint trims off anything the student built out of order, then reveals
+  // whichever tile actually belongs next -- wherever it currently is (the
+  // tray, or among the tiles just trimmed away).
+  function giveHint() {
+    if (checked || correctLen >= words.length) return;
+    const wrongTail = built.slice(correctLen);
+    const keptBuilt = built.slice(0, correctLen);
+    const nextId = correctLen;
+    const hintTile = wrongTail.find((w) => w.id === nextId) || tray.find((w) => w.id === nextId);
+    if (!hintTile) return;
+    setBuilt([...keptBuilt, hintTile]);
+    setTray([
+      ...tray.filter((w) => w.id !== nextId),
+      ...wrongTail.filter((w) => w.id !== nextId),
+    ]);
+  }
 
   return (
     <div className="sb-page">
@@ -212,15 +240,16 @@ function BuildSentencePage({ chapter, index }) {
         <button type="button" className="sb-check-btn" disabled={!allPlaced || checked} onClick={() => setChecked(true)}>
           ✓ Check
         </button>
+        <button type="button" className="sb-hint-btn" disabled={checked || correctLen >= words.length} onClick={giveHint}>
+          💡 Hint
+        </button>
+        <button type="button" className="sb-retry-btn" disabled={built.length === 0 && !checked} onClick={reset}>
+          ↻ Restart
+        </button>
         {checked && (
-          <>
-            <span className={`sb-build-feedback ${isCorrect ? "is-good" : "is-retry"}`}>
-              {isCorrect ? "🎉 Perfect! That's the sentence." : "Not quite the right order -- try again!"}
-            </span>
-            <button type="button" className="sb-retry-btn" onClick={reset}>
-              ↻ Try Again
-            </button>
-          </>
+          <span className={`sb-build-feedback ${isCorrect ? "is-good" : "is-retry"}`}>
+            {isCorrect ? "🎉 Perfect! That's the sentence." : "Not quite the right order -- try again!"}
+          </span>
         )}
       </div>
     </div>
@@ -826,6 +855,20 @@ const CSS = `
   padding: 8px 16px;
   cursor: pointer;
 }
+.sb-retry-btn:disabled { opacity: 0.35; cursor: default; }
+.sb-hint-btn {
+  background: #FFF6E0;
+  color: #A9720C;
+  border: 2px solid #F2D48A;
+  border-radius: 999px;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  padding: 8px 16px;
+  cursor: pointer;
+}
+.sb-hint-btn:hover:not(:disabled) { background: #FCEFC7; }
+.sb-hint-btn:disabled { opacity: 0.35; cursor: default; }
 
 /* ── My Sentence ── */
 .sb-example { font-family: 'Quicksand', sans-serif; font-size: 15px; color: #94A0B8; margin: 0; }
