@@ -153,8 +153,14 @@ function BuildSentencePage({ chapter, index }) {
 
   const [tray, setTray] = useState(() => shuffle(words.map((text, i) => ({ text, id: i }))));
   const [built, setBuilt] = useState([]);
-  const [checked, setChecked] = useState(false);
   const [copied, setCopied] = useState(false);
+  const [hintedId, setHintedId] = useState(null);
+  // popup: { kind: "hint", word } | { kind: "check", correct: true }
+  //       | { kind: "check", correct: false, correctText, keptBuilt, wrongTail }
+  const [popup, setPopup] = useState(null);
+
+  const correctLen = correctPrefixLength(built);
+  const isComplete = built.length === words.length && correctLen === words.length;
 
   async function copySentence() {
     try {
@@ -167,13 +173,12 @@ function BuildSentencePage({ chapter, index }) {
   }
 
   function tapTray(word) {
-    if (checked) return;
     setTray((prev) => prev.filter((w) => w.id !== word.id));
     setBuilt((prev) => [...prev, word]);
+    if (hintedId === word.id) setHintedId(null);
   }
 
   function tapBuilt(word) {
-    if (checked) return;
     setBuilt((prev) => prev.filter((w) => w.id !== word.id));
     setTray((prev) => [...prev, word]);
   }
@@ -181,28 +186,57 @@ function BuildSentencePage({ chapter, index }) {
   function reset() {
     setTray(shuffle(words.map((text, i) => ({ text, id: i }))));
     setBuilt([]);
-    setChecked(false);
+    setHintedId(null);
+    setPopup(null);
   }
 
-  const allPlaced = built.length === words.length;
-  const isCorrect = checked && built.every((w, i) => w.text === words[i]);
-  const correctLen = correctPrefixLength(built);
-
-  // Hint trims off anything the student built out of order, then reveals
-  // whichever tile actually belongs next -- wherever it currently is (the
-  // tray, or among the tiles just trimmed away).
+  // Hint trims off anything the student built out of order, then tells the
+  // student (via popup) which word comes next -- it doesn't place it for
+  // them, they still have to find and tap that word themselves. The tile
+  // gets a highlight in the tray as a visual assist.
   function giveHint() {
-    if (checked || correctLen >= words.length) return;
+    if (correctLen >= words.length) return;
     const wrongTail = built.slice(correctLen);
     const keptBuilt = built.slice(0, correctLen);
     const nextId = correctLen;
     const hintTile = wrongTail.find((w) => w.id === nextId) || tray.find((w) => w.id === nextId);
     if (!hintTile) return;
-    setBuilt([...keptBuilt, hintTile]);
-    setTray([
-      ...tray.filter((w) => w.id !== nextId),
-      ...wrongTail.filter((w) => w.id !== nextId),
-    ]);
+    setBuilt(keptBuilt);
+    setTray((prev) => {
+      const withoutHintTile = prev.filter((w) => w.id !== nextId);
+      const returningWrong = wrongTail.filter((w) => w.id !== nextId);
+      return [...withoutHintTile, ...returningWrong, hintTile];
+    });
+    setHintedId(nextId);
+    setPopup({ kind: "hint", word: hintTile.text });
+  }
+
+  // Check shows the verdict first; the wrong tail is only actually removed
+  // once the student closes the popup, so they see the popup as the
+  // moment their mistake gets cleared, not something that already
+  // happened underneath it.
+  function handleCheck() {
+    if (isComplete) {
+      setPopup({ kind: "check", correct: true });
+      return;
+    }
+    const keptBuilt = built.slice(0, correctLen);
+    const wrongTail = built.slice(correctLen);
+    setPopup({
+      kind: "check",
+      correct: false,
+      correctText: keptBuilt.map((w) => w.text).join(" "),
+      keptBuilt,
+      wrongTail,
+    });
+  }
+
+  function closePopup() {
+    if (popup?.kind === "check" && !popup.correct) {
+      setBuilt(popup.keptBuilt);
+      setTray((prev) => [...prev, ...popup.wrongTail]);
+    }
+    setPopup(null);
   }
 
   return (
@@ -211,7 +245,7 @@ function BuildSentencePage({ chapter, index }) {
         Build-a-Sentence <span className="sb-page-title-sub">({index + 1} of {chapter.buildSentence.length})</span>
       </h3>
       <p className="sb-page-hint">Tap the words in the correct order to build a sentence from the story.</p>
-      <div className={`sb-build-row ${checked ? (isCorrect ? "is-correct" : "is-wrong") : ""}`}>
+      <div className={`sb-build-row ${isComplete ? "is-correct" : ""}`}>
         {built.length === 0 && <span className="sb-build-empty">Tap words below to start building…</span>}
         {built.map((w) => (
           <button type="button" key={w.id} className="sb-word-chip sb-word-chip--built" onClick={() => tapBuilt(w)}>
@@ -231,27 +265,61 @@ function BuildSentencePage({ chapter, index }) {
       </div>
       <div className="sb-word-tray">
         {tray.map((w) => (
-          <button type="button" key={w.id} className="sb-word-chip" onClick={() => tapTray(w)}>
+          <button
+            type="button"
+            key={w.id}
+            className={`sb-word-chip ${w.id === hintedId ? "sb-word-chip--hinted" : ""}`}
+            onClick={() => tapTray(w)}
+          >
             {w.text}
           </button>
         ))}
       </div>
       <div className="sb-build-check-row">
-        <button type="button" className="sb-check-btn" disabled={!allPlaced || checked} onClick={() => setChecked(true)}>
+        <button type="button" className="sb-check-btn" onClick={handleCheck}>
           ✓ Check
         </button>
-        <button type="button" className="sb-hint-btn" disabled={checked || correctLen >= words.length} onClick={giveHint}>
+        <button type="button" className="sb-hint-btn" disabled={correctLen >= words.length} onClick={giveHint}>
           💡 Hint
         </button>
-        <button type="button" className="sb-retry-btn" disabled={built.length === 0 && !checked} onClick={reset}>
+        <button type="button" className="sb-retry-btn" disabled={built.length === 0} onClick={reset}>
           ↻ Restart
         </button>
-        {checked && (
-          <span className={`sb-build-feedback ${isCorrect ? "is-good" : "is-retry"}`}>
-            {isCorrect ? "🎉 Perfect! That's the sentence." : "Not quite the right order -- try again!"}
-          </span>
-        )}
       </div>
+
+      {popup && (
+        <div className="sb-popup-overlay">
+          <div className="sb-popup-card">
+            {popup.kind === "hint" && (
+              <>
+                <span className="sb-popup-icon">💡</span>
+                <h4 className="sb-popup-title">Hint</h4>
+                <p className="sb-popup-text">The next word is:</p>
+                <span className="sb-popup-word">{popup.word}</span>
+              </>
+            )}
+            {popup.kind === "check" && popup.correct && (
+              <>
+                <span className="sb-popup-icon">🎉</span>
+                <h4 className="sb-popup-title">Perfect!</h4>
+                <p className="sb-popup-text">That's the sentence exactly right.</p>
+              </>
+            )}
+            {popup.kind === "check" && !popup.correct && (
+              <>
+                <span className="sb-popup-icon">🤔</span>
+                <h4 className="sb-popup-title">Not quite</h4>
+                <p className="sb-popup-text">
+                  {popup.correctText
+                    ? <>This much of your answer is correct:<br /><span className="sb-popup-word">{popup.correctText}</span></>
+                    : "You haven't placed any words yet."}
+                </p>
+              </>
+            )}
+            <button type="button" className="sb-popup-ok-btn" onClick={closePopup}>OK</button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
@@ -710,7 +778,7 @@ const CSS = `
 .sb-progress-fill { height: 100%; background: #D85A30; transition: width 0.2s ease; }
 
 .sb-page-body { flex: 1; min-height: 0; overflow: hidden; }
-.sb-page { display: flex; flex-direction: column; gap: 10px; }
+.sb-page { position: relative; display: flex; flex-direction: column; gap: 10px; }
 .sb-page-title { font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 23px; color: #1B2A4A; margin: 0; }
 .sb-page-title-sub { font-family: 'Quicksand', sans-serif; font-weight: 600; font-size: 15px; color: #94A0B8; }
 .sb-page-hint { font-family: 'Quicksand', sans-serif; font-weight: 500; font-size: 16px; color: #7C8598; margin: -4px 0 4px; }
@@ -869,6 +937,65 @@ const CSS = `
 }
 .sb-hint-btn:hover:not(:disabled) { background: #FCEFC7; }
 .sb-hint-btn:disabled { opacity: 0.35; cursor: default; }
+
+/* Highlights the tray tile Hint revealed, so the student can find it. */
+.sb-word-chip--hinted {
+  border-color: #D85A30;
+  box-shadow: 0 0 0 3px rgba(216,90,48,0.25);
+  animation: sb-hint-pulse 1s ease-in-out infinite;
+}
+@keyframes sb-hint-pulse {
+  0%, 100% { box-shadow: 0 0 0 3px rgba(216,90,48,0.25); }
+  50% { box-shadow: 0 0 0 6px rgba(216,90,48,0.05); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sb-word-chip--hinted { animation: none; }
+}
+
+/* ── Check/Hint popup ── */
+.sb-popup-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(27,42,74,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 20;
+  animation: sb-page-in 0.15s ease;
+}
+.sb-popup-card {
+  background: #FFFDF7;
+  border: 3px solid #1B2A4A;
+  border-radius: 16px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+  padding: 26px 30px;
+  max-width: 340px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  text-align: center;
+}
+.sb-popup-icon { font-size: 32px; line-height: 1; }
+.sb-popup-title { font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 20px; color: #1B2A4A; margin: 0; }
+.sb-popup-text { font-family: 'Quicksand', sans-serif; font-weight: 600; font-size: 15px; color: #7C8598; margin: 0; line-height: 1.5; }
+.sb-popup-word { font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 22px; color: #D85A30; }
+.sb-popup-ok-btn {
+  margin-top: 6px;
+  background: #D85A30;
+  color: #fff;
+  border: none;
+  border-radius: 999px;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  padding: 10px 30px;
+  cursor: pointer;
+  box-shadow: 0 3px 0 #A8431F;
+}
+.sb-popup-ok-btn:active { transform: translateY(2px); box-shadow: 0 1px 0 #A8431F; }
 
 /* ── My Sentence ── */
 .sb-example { font-family: 'Quicksand', sans-serif; font-size: 15px; color: #94A0B8; margin: 0; }
