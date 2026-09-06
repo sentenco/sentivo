@@ -39,13 +39,13 @@ export default {
       shortAnswer: false,
       clue: "Present Continuous (right now): <b>am eating</b>.",
       model: "I'm eating cereal.",
-      nextLine: "Do you always eat cereal for breakfast?",
+      nextLine: "Do you always eat the same thing for breakfast?",
     },
     {
-      question: "Do you always eat cereal for breakfast?",
+      question: "Do you always eat the same thing for breakfast?",
       shortAnswer: true,
       clue: "Short answer + follow-up. Present Simple (habit): <b>don't</b>.",
-      model: "No, I don't. I usually have toast.",
+      model: "No, I don't. It's different every day.",
       nextLine: "Speaking of chores, are you taking out the trash today?",
     },
     {
@@ -60,20 +60,20 @@ export default {
       shortAnswer: false,
       clue: "Present Simple (habit/routine): <b>does</b>.",
       model: "Dad usually does the dishes.",
-      nextLine: "Ha, good answer. Is he doing them right now?",
+      nextLine: "Ha, good answer. Are they doing them right now?",
     },
     {
-      question: "Is he doing them right now?",
+      question: "Are they doing them right now?",
       shortAnswer: true,
-      clue: "Short answer + follow-up. Present Continuous (right now): <b>isn't</b>.",
-      model: "No, he isn't. He's reading the newspaper.",
-      nextLine: "Typical Saturday. Do you ever help him with the dishes?",
+      clue: "Short answer + follow-up. Present Continuous (right now): <b>aren't</b>.",
+      model: "No, they aren't. They're reading the newspaper.",
+      nextLine: "Typical Saturday. Do you ever help with the dishes?",
     },
     {
-      question: "Do you ever help him with the dishes?",
+      question: "Do you ever help with the dishes?",
       shortAnswer: true,
       clue: "Short answer + follow-up. Present Simple (general habit): <b>do</b>.",
-      model: "Yes, I do. I help him most weekends.",
+      model: "Yes, I do. I help out most weekends.",
       nextLine: "Good to know. Let's get this kitchen cleaned up.",
     },
   ],
@@ -87,7 +87,7 @@ export default {
   },
 
   wrap: {
-    prompt: "One thing to remember: Present Simple for habits and routines (I usually eat toast, Dad does the dishes), Present Continuous for what's happening right now or already fixed for later today (I'm eating cereal, I'm doing it after breakfast). Before next lesson, notice a moment where you'd naturally say \"right now\" versus \"usually.\"",
+    prompt: "One thing to remember: Present Simple for habits and routines (it's different every day, Dad usually does the dishes), Present Continuous for what's happening right now or already fixed for later today (I'm eating cereal, I'm doing it after breakfast). Before next lesson, notice a moment where you'd naturally say \"right now\" versus \"usually.\"",
   },
 
   teacherGuide: {

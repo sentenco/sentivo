@@ -39,13 +39,13 @@ export default {
       shortAnswer: false,
       clue: "Present Continuous (right now / ongoing thought): <b>am thinking</b>.",
       model: "I'm thinking about the new movie.",
-      nextLine: "Do you always like going to the movies?",
+      nextLine: "Do you always have a plan for the weekend?",
     },
     {
-      question: "Do you always like going to the movies?",
+      question: "Do you always have a plan for the weekend?",
       shortAnswer: true,
       clue: "Short answer + follow-up. Present Simple (habit/preference): <b>do</b>.",
-      model: "Yes, I do. It's basically my favorite thing.",
+      model: "Yes, I do. I always have something in mind.",
       nextLine: "Is anyone else joining us this weekend?",
     },
     {
@@ -53,13 +53,13 @@ export default {
       shortAnswer: true,
       clue: "Short answer + follow-up. Present Continuous (fixed plan): <b>are</b>.",
       model: "Yes, they are. A few others are coming too.",
-      nextLine: "Who usually picks the movie in our group?",
+      nextLine: "Who usually decides what you guys do?",
     },
     {
-      question: "Who usually picks the movie in our group?",
+      question: "Who usually decides what you guys do?",
       shortAnswer: false,
-      clue: "Present Simple (habit/routine): <b>pick</b>.",
-      model: "You usually pick the movie.",
+      clue: "Present Simple (habit/routine): <b>decide</b>.",
+      model: "You usually decide.",
       nextLine: "Are you texting everyone right now to confirm?",
     },
     {
@@ -87,7 +87,7 @@ export default {
   },
 
   wrap: {
-    prompt: "One thing to remember: Present Simple for habits and routines (I usually go out, you usually pick the movie), Present Continuous for what's happening right now or already fixed for later (I'm thinking about the movie, they're coming too). Before next lesson, notice a moment where you'd naturally say \"right now\" versus \"usually.\"",
+    prompt: "One thing to remember: Present Simple for habits and routines (I usually go out, you usually decide), Present Continuous for what's happening right now or already fixed for later (I'm thinking about the movie, they're coming too). Before next lesson, notice a moment where you'd naturally say \"right now\" versus \"usually.\"",
   },
 
   teacherGuide: {

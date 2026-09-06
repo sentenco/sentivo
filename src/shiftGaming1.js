@@ -39,10 +39,10 @@ export default {
       shortAnswer: false,
       clue: "Present Continuous (right now): <b>am picking</b>.",
       model: "I'm picking the healer this time.",
-      nextLine: "Do you always play healer when we lose a round?",
+      nextLine: "Do you always pick the same role?",
     },
     {
-      question: "Do you always play healer when we lose a round?",
+      question: "Do you always pick the same role?",
       shortAnswer: true,
       clue: "Short answer + follow-up. Present Simple (habit): <b>do</b>.",
       model: "Yes, I do. It's kind of a habit.",
@@ -87,7 +87,7 @@ export default {
   },
 
   wrap: {
-    prompt: "One thing to remember: Present Simple for habits and routines (you usually call the shots, I always play healer), Present Continuous for what's happening right now or already fixed for the match (I'm loading in, I'm checking the map). Before next lesson, notice a moment where you'd naturally say \"right now\" versus \"usually.\"",
+    prompt: "One thing to remember: Present Simple for habits and routines (you usually call the shots, I always pick the same role), Present Continuous for what's happening right now or already fixed for the match (I'm loading in, I'm checking the map). Before next lesson, notice a moment where you'd naturally say \"right now\" versus \"usually.\"",
   },
 
   teacherGuide: {

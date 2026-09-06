@@ -39,10 +39,10 @@ export default {
       shortAnswer: false,
       clue: "Present Continuous (right now): <b>am looking</b>.",
       model: "I'm looking for my math book.",
-      nextLine: "Do you always forget your books?",
+      nextLine: "Do you always forget something?",
     },
     {
-      question: "Do you always forget your books?",
+      question: "Do you always forget something?",
       shortAnswer: true,
       clue: "Short answer + follow-up. Present Simple (habit): <b>do</b>.",
       model: "Yes, I do. It happens all the time.",
