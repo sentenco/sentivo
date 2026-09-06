@@ -4,21 +4,16 @@ import { getArticle } from "./articlesData";
 
 const EDITION_KEYS = ["plain", "polished", "precise"];
 
-// The fixed card size the whole layout is built around -- matches the
-// popup window ArticleReader.jsx's openPlayer() opens (width=680,
-// height=960, resizable=no). Kept as constants here (not just in the CSS)
-// because the pagination math needs the real column-viewport pixel width
-// to know how far to translate per page-turn.
-const CARD_WIDTH = 680;
-const CARD_HEIGHT = 960;
+// The card fills whatever size the (resizable) popup window is dragged to
+// -- there's no fixed width/height anymore. PAGE_PADDING/COLUMN_GAP are
+// layout constants (spacing), not size constants. FALLBACK_COLUMN_WIDTH is
+// only a sane default for the very first paint, before the viewport ref is
+// measured -- real column width is computed live in measureWidth() below
+// and re-computed on every resize, so shrinking the window narrows the
+// columns and pagination picks up the slack automatically.
 const PAGE_PADDING = 36;
 const COLUMN_GAP = 32;
-// Fixed, not auto-stretched -- column-count would let the browser stretch
-// each column wider to fill leftover space, which then silently drifts out
-// of sync with the page-turn math below (that math assumes this exact
-// width). A plain column-width with no column-count always renders at
-// precisely this size, so the two stay consistent by construction.
-const COLUMN_WIDTH = (CARD_WIDTH - PAGE_PADDING * 2 - COLUMN_GAP) / 2;
+const FALLBACK_COLUMN_WIDTH = (680 - PAGE_PADDING * 2 - COLUMN_GAP) / 2;
 
 function Gloss({ word, pos, def, glossKey, openKey, setOpenKey }) {
   const isOpen = openKey === glossKey;
@@ -105,21 +100,30 @@ export default function ArticlePlayerPage() {
   const [openKey, setOpenKey] = useState(null);
   const [page, setPage] = useState(0);
   const [totalPages, setTotalPages] = useState(1);
+  const [colWidth, setColWidth] = useState(FALLBACK_COLUMN_WIDTH);
   const viewportRef = useRef(null);
   const innerRef = useRef(null);
 
   // Book-style pagination, not shrink-to-fit: the inner content flows into
-  // as many fixed-width columns as it naturally needs (no column-count
-  // limit), and the fixed-size viewport only ever shows exactly 2 of them
-  // at once, sliding over by one full "spread" (2 columns' width) per page
-  // turn. This is what actually guarantees all three of "always 2 columns",
-  // "fixed player size", and "content always fits" at once, regardless of
-  // how long a given edition's text is -- a shrinking font has a floor and
-  // eventually fails for a long article; this can't fail, it just adds
-  // another page. Recomputed whenever the edition changes (different
-  // editions are different lengths) and once webfonts finish loading
-  // (measuring against the fallback font before the swap under-counts).
-  const measure = useCallback(() => {
+  // as many columns as it naturally needs at the current column width (no
+  // column-count limit), and the viewport only ever shows exactly 2 of
+  // them at once, sliding over by one full "spread" per page turn. This
+  // guarantees "always 2 columns" and "content always fits" regardless of
+  // how long a given edition's text is, and now also regardless of window
+  // size -- a shrinking font has a floor and eventually fails for a long
+  // article; this can't fail, it just adds another page.
+  const measureWidth = useCallback(() => {
+    const viewport = viewportRef.current;
+    if (!viewport) return;
+    // Not column-count -- that lets the browser auto-stretch each column
+    // to fill leftover space, which drifts out of sync with the page-turn
+    // math. Deriving column-width ourselves from the live viewport width
+    // keeps the two in agreement at every size, not just the size this was
+    // built at.
+    setColWidth((viewport.clientWidth - COLUMN_GAP) / 2);
+  }, []);
+
+  const measurePages = useCallback(() => {
     const viewport = viewportRef.current;
     const inner = innerRef.current;
     if (!viewport || !inner) return;
@@ -136,17 +140,25 @@ export default function ArticlePlayerPage() {
 
   useLayoutEffect(() => {
     setPage(0);
-    measure();
+    measureWidth();
+  }, [edition, measureWidth]);
+
+  // Re-measure pages once colWidth has actually been applied to the DOM
+  // (setColWidth in the effect above triggers this on the next render) --
+  // measuring scrollWidth before the new column width lands would count
+  // columns sized for the previous viewport, not this one.
+  useLayoutEffect(() => {
+    measurePages();
     if (document.fonts && document.fonts.ready) {
-      document.fonts.ready.then(measure);
+      document.fonts.ready.then(measurePages);
     }
-  }, [edition, measure]);
+  }, [colWidth, edition, measurePages]);
 
   useLayoutEffect(() => {
-    function onResize() { measure(); }
+    function onResize() { measureWidth(); }
     window.addEventListener("resize", onResize);
     return () => window.removeEventListener("resize", onResize);
-  }, [measure]);
+  }, [measureWidth]);
 
   function goToPage(next) {
     setPage((p) => Math.max(0, Math.min(next, totalPages - 1)));
@@ -172,7 +184,7 @@ export default function ArticlePlayerPage() {
   const publishedLabel = article.publishedAt
     ? new Date(`${article.publishedAt}T00:00:00`).toLocaleDateString(undefined, { month: "long", day: "numeric", year: "numeric" })
     : null;
-  const viewportWidth = viewportRef.current?.clientWidth || (CARD_WIDTH - 72);
+  const viewportWidth = viewportRef.current?.clientWidth || (FALLBACK_COLUMN_WIDTH * 2 + COLUMN_GAP);
   const pageStep = viewportWidth + COLUMN_GAP;
 
   return (
@@ -195,7 +207,10 @@ export default function ArticlePlayerPage() {
 
         <div className="app-page">
           <div className="app-masthead">
-            <img className="app-masthead-logo" src="/logo-sentivo.png" alt="" />
+            <div className="app-masthead-blob" />
+            <div className="app-masthead-logo-chip">
+              <img className="app-masthead-logo" src="/logo-sentivo.png" alt="" />
+            </div>
             <div className="app-masthead-kicker-row">
               <span className="app-masthead-rule" />
               <span className="app-masthead-kicker">The Sentivo</span>
@@ -226,7 +241,7 @@ export default function ArticlePlayerPage() {
             <div
               className="app-columns-inner"
               ref={innerRef}
-              style={{ transform: `translateX(-${page * pageStep}px)` }}
+              style={{ transform: `translateX(-${page * pageStep}px)`, columnWidth: `${colWidth}px` }}
             >
               {(() => {
                 const firstParaIdx = ed.blocks.findIndex((b) => b.type !== "quote");
@@ -285,12 +300,12 @@ export default function ArticlePlayerPage() {
 }
 
 const CSS = `
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap');
 
 .app-shell {
-  width: 100%;
-  min-height: 100vh;
-  overflow: auto;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
   background: #E4DED1;
   color: #171717;
   box-sizing: border-box;
@@ -302,9 +317,10 @@ const CSS = `
 .app-shell * { box-sizing: border-box; }
 
 .app-card {
-  width: ${CARD_WIDTH}px;
-  height: ${CARD_HEIGHT}px;
-  flex-shrink: 0;
+  width: 100%;
+  height: 100%;
+  min-width: 320px;
+  min-height: 420px;
   background: #FFFFFF;
   display: flex;
   flex-direction: column;
@@ -370,53 +386,81 @@ const CSS = `
 
 .app-masthead {
   flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
   text-align: center;
-  padding: 10px 0 6px;
+  padding: 16px 0 14px;
+  margin: 0 -${PAGE_PADDING}px;
+  background: #1B2A4A;
 }
-.app-masthead-logo { height: 17px; width: auto; display: inline-block; margin-bottom: 4px; }
-.app-masthead-kicker-row { display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 1px; }
-.app-masthead-rule { flex: 0 1 36px; height: 1px; background: #1B2A4A; opacity: 0.45; }
+.app-masthead-blob {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: #FF6B4A;
+  opacity: 0.16;
+  top: -90px;
+  right: -60px;
+  pointer-events: none;
+}
+.app-masthead-logo-chip {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #FFFFFF;
+  border-radius: 999px;
+  padding: 5px 10px;
+  margin-bottom: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.18);
+}
+.app-masthead-logo { height: 15px; width: auto; display: block; }
+.app-masthead-kicker-row { position: relative; display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 1px; }
+.app-masthead-rule { flex: 0 1 36px; height: 1px; background: rgba(255,255,255,0.4); }
 .app-masthead-kicker {
   font-family: 'Source Serif 4', serif;
   font-weight: 700;
   font-size: 9.5px;
   letter-spacing: 0.3em;
   text-transform: uppercase;
-  color: #1B2A4A;
+  color: rgba(255,255,255,0.78);
 }
 .app-masthead-word {
+  position: relative;
   font-family: 'Playfair Display', serif;
   font-weight: 900;
   font-size: 24px;
   letter-spacing: 0.01em;
   text-transform: uppercase;
-  color: #1B2A4A;
+  color: #FFFFFF;
   line-height: 1;
   margin: 1px 0 5px;
 }
-.app-masthead-underline { width: 100px; height: 2px; background: #FF6B4A; margin: 0 auto 5px; }
+.app-masthead-underline { position: relative; width: 100px; height: 2px; background: #FF6B4A; margin: 0 auto 5px; }
 .app-masthead-tagline {
+  position: relative;
   font-family: 'Source Serif 4', serif;
   font-weight: 600;
   font-size: 8.5px;
   letter-spacing: 0.26em;
   text-transform: uppercase;
-  color: #1B2A4A;
-  opacity: 0.7;
+  color: rgba(255,255,255,0.65);
 }
 
 .app-title {
   flex-shrink: 0;
-  font-family: 'Playfair Display', serif;
-  font-weight: 900;
+  font-family: 'Fraunces', serif;
+  font-weight: 600;
   font-size: 32px;
   line-height: 1.14;
   letter-spacing: 0;
   text-align: center;
   text-transform: none;
-  margin: 12px 0 8px;
+  color: #1B2A4A;
+  margin: 14px 0 8px;
 }
-.app-title em { font-style: italic; font-weight: 700; }
+.app-title em { font-style: italic; font-weight: 700; color: #E0502F; }
 
 .app-byline {
   flex-shrink: 0;
@@ -448,7 +492,6 @@ const CSS = `
   font-size: 17.5px;
   line-height: 1.5;
   color: #262626;
-  column-width: ${COLUMN_WIDTH}px;
   column-gap: ${COLUMN_GAP}px;
   column-fill: auto;
   column-rule: 1px solid #E2DED5;
@@ -456,7 +499,7 @@ const CSS = `
   transition: transform 0.32s ease;
   will-change: transform;
 }
-.app-columns-inner p { margin: 0 0 13px; break-inside: avoid; }
+.app-columns-inner p { margin: 0 0 12px; }
 
 .app-first-p::after { content: ""; display: table; clear: both; }
 .app-dropcap {
@@ -497,6 +540,7 @@ const CSS = `
   align-items: center;
   justify-content: center;
 }
+.app-pager-btn:hover:not(:disabled) { border-color: #FF6B4A; color: #E0502F; }
 .app-pager-btn:disabled { opacity: 0.3; cursor: default; }
 .app-pager-count {
   font-family: 'Source Serif 4', serif;
@@ -538,13 +582,15 @@ const CSS = `
 .app-gloss.is-open .app-tip { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); pointer-events: auto; }
 
 .app-pullquote {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Fraunces', serif;
   font-style: italic;
-  font-weight: 700;
-  font-size: 24px;
-  line-height: 1.4;
-  color: #171717;
-  margin: 6px 0 24px;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 1.35;
+  color: #E0502F;
+  border-left: 3px solid #FF6B4A;
+  padding-left: 12px;
+  margin: 6px 0 20px;
   break-inside: avoid;
 }
 

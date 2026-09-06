@@ -8,9 +8,9 @@ const EDITION_KEYS = ["plain", "polished", "precise"];
 // matching the FORGE/ASCEND/Verb Tenses chrome-less window.open pattern.
 // This page (ArticleReader) stays the teacher's reference copy, with the
 // discussion guide and citations; the popup is what gets shared on screen.
-// Fixed portrait size (not scaled to the screen) so the banner, title, and
-// 2-column layout always render exactly as designed, not cropped/collapsed
-// differently on smaller screens.
+// Portrait size is just a starting default -- the window is resizable, and
+// the player itself reflows its columns/pagination to whatever size it's
+// dragged to.
 function openPlayer(slug, edition) {
   const w = 680;
   const h = 960;
@@ -22,7 +22,7 @@ function openPlayer(slug, edition) {
   window.open(
     `/library/articles/${slug}/player?edition=${edition}`,
     "sentivoArticlePlayer",
-    `width=${w},height=${h},left=${left},top=${top},toolbar=no,location=no,menubar=no,status=no,scrollbars=yes,resizable=no`
+    `width=${w},height=${h},left=${left},top=${top},toolbar=no,location=no,menubar=no,status=no,scrollbars=yes,resizable=yes`
   );
 }
 
