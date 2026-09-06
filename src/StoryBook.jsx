@@ -306,6 +306,22 @@ export default function StoryBook({ book = defaultBook }) {
   const isFirstPage = chapterIdx === 0 && pageIdx === 0;
   const isLastPage = chapterIdx === CHAPTERS.length - 1 && pageIdx === totalPages - 1;
 
+  // Real book-style page numbers, counted across the whole book (not reset
+  // per chapter) so the Table of Contents can say which page a chapter
+  // actually starts on, the same way a printed book's contents page does.
+  const chapterPageCounts = useMemo(() => CHAPTERS.map((c) => getPageTypes(c).length), [CHAPTERS]);
+  const bookTotalPages = useMemo(() => chapterPageCounts.reduce((a, b) => a + b, 0), [chapterPageCounts]);
+  const chapterStartPage = useMemo(() => {
+    const starts = [];
+    let running = 1;
+    chapterPageCounts.forEach((count) => {
+      starts.push(running);
+      running += count;
+    });
+    return starts;
+  }, [chapterPageCounts]);
+  const currentBookPage = chapterStartPage[chapterIdx] + pageIdx;
+
   function openChapter(idx) {
     setChapterIdx(idx);
     setPageIdx(0);
@@ -347,21 +363,26 @@ export default function StoryBook({ book = defaultBook }) {
 
       <div className="sb-stage">
         {view === "cover" && (
-          <button
-            type="button"
-            className="sb-cover-card"
-            onClick={() => setView("toc")}
-          >
-            {book.coverImage ? (
-              <img className="sb-cover-card-img" src={book.coverImage} alt={book.title} />
-            ) : (
-              <div className="sb-cover-card-ph">
-                <ImagePlaceholder note={book.coverImageNote} />
+          <div className="sb-book">
+            <BookHeader stage={getStageLabel("cover")} />
+            <div className="sb-cover-layout">
+              <div className="sb-cover-art">
+                {book.coverImage ? (
+                  <img src={book.coverImage} alt={book.title} />
+                ) : (
+                  <ImagePlaceholder note={book.coverImageNote} compact />
+                )}
               </div>
-            )}
-            <div className="sb-cover-card-scrim" />
-            <h1 className="sb-cover-card-title">{book.title}</h1>
-          </button>
+              <div className="sb-cover-info">
+                <span className="sb-cover-eyebrow">Sentivo Storybook</span>
+                <h1 className="sb-cover-title">{book.title}</h1>
+                <p className="sb-cover-meta">{CHAPTERS.length} chapters &middot; {bookTotalPages} pages</p>
+                <button type="button" className="sb-cover-start-btn" onClick={() => setView("toc")}>
+                  Start Reading →
+                </button>
+              </div>
+            </div>
+          </div>
         )}
 
         {view === "toc" && (
@@ -376,6 +397,7 @@ export default function StoryBook({ book = defaultBook }) {
                     <button type="button" className="sb-toc-btn" onClick={() => openChapter(idx)}>
                       <span className="sb-toc-num">{c.number}</span>
                       <span className="sb-toc-title">{c.title}</span>
+                      <span className="sb-toc-page">Page {chapterStartPage[idx]}</span>
                       <span className="sb-toc-arrow">→</span>
                     </button>
                   </li>
@@ -390,6 +412,7 @@ export default function StoryBook({ book = defaultBook }) {
             <BookHeader stage={getStageLabel("chapter", pageType)} />
             <div className="sb-page-header">
               <span className="sb-page-header-counter">Chapter {chapter.number} of {CHAPTERS.length}</span>
+              <span className="sb-page-header-pagenum">Page {currentBookPage} of {bookTotalPages}</span>
             </div>
             <div className="sb-progress-track">
               <div
@@ -522,13 +545,15 @@ const CSS = `
   white-space: nowrap;
 }
 
-/* Landscape book card -- every page (cover, characters, contents, chapter
-   pages) shares this exact size so the book doesn't resize as you flip
-   through it. */
+/* Landscape book card -- every page (cover, contents, chapter pages)
+   shares this exact size so the book never resizes as you flip through it,
+   and is tall enough that a chapter's content fits without scrolling
+   (overflow is hidden, not auto -- content is sized to fit, not clipped
+   away, see the page-type rules below). */
 .sb-book {
   width: 860px;
   max-width: 100%;
-  height: 660px;
+  height: 820px;
   background: #FFFDF7;
   border-radius: 18px;
   border: 3px solid #1B2A4A;
@@ -536,7 +561,7 @@ const CSS = `
   display: flex;
   flex-direction: column;
   padding: 30px 36px;
-  overflow-y: auto;
+  overflow: hidden;
   animation: sb-page-in 0.28s ease;
 }
 @keyframes sb-page-in {
@@ -544,49 +569,54 @@ const CSS = `
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* ── Cover: a real portrait book jacket. Full-bleed art, title stamped
-   over the bottom like printed cover type. Sized to the art's native
-   2:3 ratio so the whole illustration shows, nothing cropped. ── */
-.sb-cover-card {
-  position: relative;
-  width: 440px;
-  max-width: 100%;
-  aspect-ratio: 2 / 3;
-  border-radius: 18px;
-  border: 3px solid #1B2A4A;
-  box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+/* ── Cover: shares the same book frame as every other page (see .sb-book
+   above) instead of its own portrait jacket shape, so the whole reading
+   flow is one consistent size. Art sits in its own panel at object-fit:
+   contain so a portrait-oriented illustration is never cropped, title and
+   a Start Reading button sit beside it. ── */
+.sb-cover-layout {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+.sb-cover-art {
+  flex: 0 0 320px;
+  height: 100%;
+  max-height: 620px;
+  border-radius: 14px;
   overflow: hidden;
-  padding: 0;
-  background: #FFFDF7;
-  display: block;
-  cursor: pointer;
-  font: inherit;
-  transition: transform 0.12s ease, box-shadow 0.12s ease;
-  animation: sb-page-in 0.28s ease;
+  background: #FAF7EF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.sb-cover-card:hover { transform: translateY(-2px); box-shadow: 0 26px 56px rgba(0,0,0,0.24); }
-.sb-cover-card-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; display: block; }
-.sb-cover-card-ph { position: absolute; inset: 0; }
-.sb-cover-card-scrim {
-  position: absolute;
-  left: 0; right: 0; bottom: 0;
-  height: 42%;
-  background: linear-gradient(to top, rgba(14,18,32,0.88) 0%, rgba(14,18,32,0.5) 55%, rgba(14,18,32,0) 100%);
-}
-.sb-cover-card-title {
-  position: absolute;
-  left: 26px;
-  right: 26px;
-  bottom: 26px;
-  font-family: 'Fredoka', sans-serif;
+.sb-cover-art img { width: 100%; height: 100%; object-fit: contain; display: block; }
+.sb-cover-info { flex: 1; min-width: 0; display: flex; flex-direction: column; align-items: flex-start; gap: 10px; }
+.sb-cover-eyebrow {
+  font-family: 'Quicksand', sans-serif;
   font-weight: 700;
-  font-size: 36px;
-  line-height: 1.2;
-  color: #fff;
-  text-shadow: 0 2px 12px rgba(0,0,0,0.4);
-  margin: 0;
-  text-align: left;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #D85A30;
 }
+.sb-cover-title { font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 40px; line-height: 1.16; color: #1B2A4A; margin: 0; }
+.sb-cover-meta { font-family: 'Quicksand', sans-serif; font-weight: 600; font-size: 15px; color: #94A0B8; margin: 0 0 8px; }
+.sb-cover-start-btn {
+  background: #D85A30;
+  color: #fff;
+  border: none;
+  border-radius: 999px;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  padding: 13px 26px;
+  cursor: pointer;
+  box-shadow: 0 3px 0 #A8431F;
+}
+.sb-cover-start-btn:active { transform: translateY(2px); box-shadow: 0 1px 0 #A8431F; }
 
 /* ── Table of contents ── */
 .sb-toc-heading {
@@ -632,20 +662,33 @@ const CSS = `
   font-size: 14px;
   color: #1B2A4A;
 }
+.sb-toc-page {
+  flex-shrink: 0;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 600;
+  font-size: 13px;
+  color: #94A0B8;
+}
 .sb-toc-arrow { color: #D85A30; font-weight: 700; }
 
 /* ── Chapter page chrome ── */
-.sb-page-header { display: flex; align-items: center; justify-content: flex-end; }
+.sb-page-header { display: flex; align-items: center; justify-content: space-between; }
 .sb-page-header-counter {
   font-family: 'Quicksand', sans-serif;
   font-weight: 600;
   font-size: 13px;
   color: #94A0B8;
 }
-.sb-progress-track { height: 3px; background: #EFEAE0; border-radius: 999px; margin: 9px 0 18px; overflow: hidden; }
+.sb-page-header-pagenum {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  color: #D85A30;
+}
+.sb-progress-track { height: 3px; background: #EFEAE0; border-radius: 999px; margin: 9px 0 18px; overflow: hidden; flex-shrink: 0; }
 .sb-progress-fill { height: 100%; background: #D85A30; transition: width 0.2s ease; }
 
-.sb-page-body { flex: 1; min-height: 420px; overflow-y: auto; }
+.sb-page-body { flex: 1; min-height: 0; overflow: hidden; }
 .sb-page { display: flex; flex-direction: column; gap: 10px; }
 .sb-page-title { font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 23px; color: #1B2A4A; margin: 0; }
 .sb-page-title-sub { font-family: 'Quicksand', sans-serif; font-weight: 600; font-size: 15px; color: #94A0B8; }
@@ -653,8 +696,8 @@ const CSS = `
 
 /* ── Chapter intro: full-page image + title, nothing else. Container is
    square to match the source art's native 1:1 ratio -- nothing cropped. ── */
-.sb-page--intro { flex: 1; align-items: center; justify-content: center; text-align: center; gap: 8px; }
-.sb-intro-image { height: 365px; width: auto; max-width: 100%; aspect-ratio: 1 / 1; border-radius: 12px; overflow: hidden; margin: 0 auto 8px; }
+.sb-page--intro { flex: 1; min-height: 0; align-items: center; justify-content: center; text-align: center; gap: 8px; }
+.sb-intro-image { height: 480px; width: auto; max-width: 100%; aspect-ratio: 1 / 1; border-radius: 12px; overflow: hidden; margin: 0 auto 8px; }
 .sb-intro-image .img-ph { border-radius: 12px; }
 .sb-intro-image img { width: 100%; height: 100%; object-fit: contain; display: block; }
 .sb-page--intro .sb-chapter-title { text-align: center; }
@@ -843,5 +886,8 @@ const CSS = `
 @media (max-width: 520px) {
   .sb-book { padding: 22px 18px; }
   .sb-book-header { margin: -22px -18px 14px; padding: 12px 18px; }
+  .sb-cover-layout { flex-direction: column; gap: 16px; text-align: center; }
+  .sb-cover-art { flex: 0 0 auto; width: 100%; max-height: 260px; }
+  .sb-cover-info { align-items: center; }
 }
 `;
