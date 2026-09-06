@@ -1202,6 +1202,7 @@ export default function Library() {
   const [page, setPage] = useState(() => Number(searchParams.get("page")) || 1);
   const [query, setQuery] = useState("");
   const [clTab, setClTab] = useState("All");
+  const [clFormOpen, setClFormOpen] = useState(false);
   const [clStudentName, setClStudentName] = useState("");
   const [clLevel, setClLevel] = useState("A1");
   const [clAgeTrack, setClAgeTrack] = useState("Kids");
@@ -1210,6 +1211,8 @@ export default function Library() {
   const [clDuration, setClDuration] = useState("25");
   const [clNotes, setClNotes] = useState("");
   const [clCopied, setClCopied] = useState(false);
+  const [clRequests, setClRequests] = useState([]);
+  const [clRequestsLoading, setClRequestsLoading] = useState(false);
   const [showAllToday, setShowAllToday] = useState(false);
   const { user, plan, signOut } = useAuth();
   const isAdmin = user?.email?.toLowerCase() === "caldrin1999@gmail.com";
@@ -1276,6 +1279,23 @@ export default function Library() {
       .limit(20)
       .then(({ data }) => setNotifications(data || []));
   }, [user]);
+
+  useEffect(() => {
+    if (!user || category !== "Customized Lessons") return;
+    let isMounted = true;
+    setClRequestsLoading(true);
+    supabase
+      .from("custom_lesson_requests")
+      .select("id, student_name, level, age_track, language, duration, topic, notes, status, created_at")
+      .eq("user_id", user.id)
+      .order("created_at", { ascending: false })
+      .then(({ data }) => {
+        if (!isMounted) return;
+        setClRequests(data || []);
+        setClRequestsLoading(false);
+      });
+    return () => { isMounted = false; };
+  }, [user, category]);
 
   useEffect(() => {
     if (!user) { setUnreadMessageCount(0); return; }
@@ -1456,7 +1476,37 @@ export default function Library() {
       // filled-in fields are still right there for a manual copy either way.
     }
     setClCopied(true);
-    window.setTimeout(() => setClCopied(false), 1600);
+    if (user) {
+      const { data } = await supabase
+        .from("custom_lesson_requests")
+        .insert({
+          user_id: user.id,
+          student_name: clStudentName.trim() || null,
+          level: clLevel,
+          age_track: clAgeTrack,
+          language: clLanguage.trim(),
+          duration: Number(clDuration) || null,
+          topic: clTopic.trim(),
+          notes: clNotes.trim() || null,
+        })
+        .select()
+        .single();
+      if (data) setClRequests((prev) => [data, ...prev]);
+    }
+    window.setTimeout(() => {
+      setClCopied(false);
+      setClStudentName("");
+      setClTopic("");
+      setClLanguage("");
+      setClNotes("");
+      setClDuration("25");
+      setClFormOpen(false);
+    }, 1600);
+  }
+
+  async function markCustomLessonRequestReceived(requestId) {
+    setClRequests((prev) => prev.map((r) => (r.id === requestId ? { ...r, status: "delivered" } : r)));
+    await supabase.from("custom_lesson_requests").update({ status: "delivered" }).eq("id", requestId);
   }
 
   const genericContent = toolsLoading ? (
@@ -1955,94 +2005,127 @@ export default function Library() {
             </div>
 
             <div className="cl-req">
-              <div className="cl-req-head">
+              <button type="button" className="cl-req-head" onClick={() => setClFormOpen((o) => !o)}>
                 <div className="cl-req-icon">
                   <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
                 </div>
-                <div>
+                <div className="cl-req-head-text">
                   <h2 className="cl-req-title">Ask for one</h2>
                   <p className="cl-req-lead">A couple of details and we'll take it from there. It'll show up in the gallery below once it's ready.</p>
                 </div>
-              </div>
-
-              <p className="cl-req-timing">⏰ Send this at least 2 hours before the lesson.</p>
-
-              <div className="cl-req-grid">
-                <label className="cl-req-field">
-                  Student name
-                  <input
-                    type="text"
-                    className="cl-req-input"
-                    value={clStudentName}
-                    onChange={(e) => setClStudentName(e.target.value)}
-                    placeholder="e.g. Priya"
-                  />
-                </label>
-                <label className="cl-req-field">
-                  Level
-                  <select className="cl-req-input" value={clLevel} onChange={(e) => setClLevel(e.target.value)}>
-                    {["A1", "A2", "B1", "B2", "C1", "C2"].map((lv) => <option key={lv} value={lv}>{lv}</option>)}
-                  </select>
-                </label>
-                <label className="cl-req-field">
-                  Age group
-                  <select className="cl-req-input" value={clAgeTrack} onChange={(e) => setClAgeTrack(e.target.value)}>
-                    {["Kids", "Teens", "Adults"].map((t) => <option key={t} value={t}>{t}</option>)}
-                  </select>
-                </label>
-                <label className="cl-req-field">
-                  Student's language
-                  <input
-                    type="text"
-                    className="cl-req-input"
-                    value={clLanguage}
-                    onChange={(e) => setClLanguage(e.target.value)}
-                    placeholder="e.g. Hebrew"
-                  />
-                </label>
-                <label className="cl-req-field cl-req-field--narrow">
-                  Duration (min)
-                  <input
-                    type="number"
-                    min="5"
-                    max="120"
-                    className="cl-req-input"
-                    value={clDuration}
-                    onChange={(e) => setClDuration(e.target.value)}
-                  />
-                </label>
-                <label className="cl-req-field cl-req-field--wide">
-                  Topic
-                  <textarea
-                    className="cl-req-input cl-req-textarea"
-                    rows={2}
-                    value={clTopic}
-                    onChange={(e) => setClTopic(e.target.value)}
-                    placeholder="e.g. Real estate and sales, studying in the US"
-                  />
-                </label>
-                <label className="cl-req-field cl-req-field--wide">
-                  Notes <span className="cl-req-optional">(optional)</span>
-                  <textarea
-                    className="cl-req-input cl-req-textarea"
-                    rows={2}
-                    value={clNotes}
-                    onChange={(e) => setClNotes(e.target.value)}
-                    placeholder="Anything else worth knowing"
-                  />
-                </label>
-              </div>
-
-              <button
-                type="button"
-                className="cl-req-btn"
-                onClick={handleCopyCustomLessonRequest}
-                disabled={!clTopic.trim() || !clLanguage.trim()}
-              >
-                {clCopied ? "✓ Copied, paste it into Messenger" : "Copy request"}
+                <svg className={`cl-req-chevron ${clFormOpen ? "is-open" : ""}`} width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M6 9l6 6 6-6"/></svg>
               </button>
-              <p className="cl-req-hint">Paste this into Messenger to send it our way.</p>
+
+              {clFormOpen && (
+                <div className="cl-req-body">
+                  <p className="cl-req-timing">⏰ Send this at least 2 hours before the lesson.</p>
+
+                  <div className="cl-req-grid">
+                    <label className="cl-req-field">
+                      Student name
+                      <input
+                        type="text"
+                        className="cl-req-input"
+                        value={clStudentName}
+                        onChange={(e) => setClStudentName(e.target.value)}
+                        placeholder="e.g. Priya"
+                      />
+                    </label>
+                    <label className="cl-req-field">
+                      Level
+                      <select className="cl-req-input" value={clLevel} onChange={(e) => setClLevel(e.target.value)}>
+                        {["A1", "A2", "B1", "B2", "C1", "C2"].map((lv) => <option key={lv} value={lv}>{lv}</option>)}
+                      </select>
+                    </label>
+                    <label className="cl-req-field">
+                      Age group
+                      <select className="cl-req-input" value={clAgeTrack} onChange={(e) => setClAgeTrack(e.target.value)}>
+                        {["Kids", "Teens", "Adults"].map((t) => <option key={t} value={t}>{t}</option>)}
+                      </select>
+                    </label>
+                    <label className="cl-req-field">
+                      Student's language
+                      <input
+                        type="text"
+                        className="cl-req-input"
+                        value={clLanguage}
+                        onChange={(e) => setClLanguage(e.target.value)}
+                        placeholder="e.g. Hebrew"
+                      />
+                    </label>
+                    <label className="cl-req-field cl-req-field--narrow">
+                      Duration (min)
+                      <input
+                        type="number"
+                        min="5"
+                        max="120"
+                        className="cl-req-input"
+                        value={clDuration}
+                        onChange={(e) => setClDuration(e.target.value)}
+                      />
+                    </label>
+                    <label className="cl-req-field cl-req-field--wide">
+                      Topic
+                      <textarea
+                        className="cl-req-input cl-req-textarea"
+                        rows={2}
+                        value={clTopic}
+                        onChange={(e) => setClTopic(e.target.value)}
+                        placeholder="e.g. Real estate and sales, studying in the US"
+                      />
+                    </label>
+                    <label className="cl-req-field cl-req-field--wide">
+                      Notes <span className="cl-req-optional">(optional)</span>
+                      <textarea
+                        className="cl-req-input cl-req-textarea"
+                        rows={2}
+                        value={clNotes}
+                        onChange={(e) => setClNotes(e.target.value)}
+                        placeholder="Anything else worth knowing"
+                      />
+                    </label>
+                  </div>
+
+                  <button
+                    type="button"
+                    className="cl-req-btn"
+                    onClick={handleCopyCustomLessonRequest}
+                    disabled={!clTopic.trim() || !clLanguage.trim()}
+                  >
+                    {clCopied ? "✓ Copied, paste it into Messenger" : "Copy request"}
+                  </button>
+                  <p className="cl-req-hint">Paste this into Messenger to send it our way.</p>
+                </div>
+              )}
             </div>
+
+            {user && clRequests.length > 0 && (
+              <div className="cl-mine">
+                <h2 className="cl-mine-hd">Your requests</h2>
+                <div className="cl-mine-list">
+                  {clRequests.map((r) => (
+                    <div key={r.id} className="cl-mine-row">
+                      <div className="cl-mine-info">
+                        <span className="cl-mine-topic">{r.topic}</span>
+                        <span className="cl-mine-meta">
+                          {r.student_name ? `${r.student_name} · ` : ""}{r.level}{r.age_track ? ` · ${r.age_track}` : ""} · {new Date(r.created_at).toLocaleDateString(undefined, { month: "short", day: "numeric" })}
+                        </span>
+                      </div>
+                      {r.status === "delivered" ? (
+                        <span className="cl-mine-tag cl-mine-tag--done">Delivered</span>
+                      ) : (
+                        <>
+                          <span className="cl-mine-tag cl-mine-tag--pending">Pending</span>
+                          <button type="button" className="cl-mine-received" onClick={() => markCustomLessonRequestReceived(r.id)}>
+                            Mark received
+                          </button>
+                        </>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
 
             <div className="cl-gallery-hd-row">
               <h2 className="cl-gallery-hd">Published lessons</h2>
@@ -2754,15 +2837,22 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 
 .cl-req {
   background: #fff; border: 1px solid #EDE6F4; border-radius: 16px; overflow: hidden;
-  margin: 0 0 32px; box-shadow: 0 4px 16px rgba(27,42,74,0.06); padding: 24px 26px 26px;
+  margin: 0 0 32px; box-shadow: 0 4px 16px rgba(27,42,74,0.06);
 }
-.cl-req-head { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 16px; }
+.cl-req-head {
+  width: 100%; display: flex; align-items: flex-start; gap: 14px; padding: 20px 24px;
+  background: none; border: none; cursor: pointer; text-align: left; font: inherit;
+}
+.cl-req-head-text { flex: 1; }
 .cl-req-icon {
   flex: 0 0 44px; width: 44px; height: 44px; border-radius: 12px; background: #1B2A4A;
   display: flex; align-items: center; justify-content: center; color: #fff;
 }
 .cl-req-title { font-family: 'Source Serif 4', serif; font-weight: 600; font-size: 17px; color: #1B2A4A; margin: 0 0 4px; }
 .cl-req-lead { font-family: 'Inter', sans-serif; font-size: 12.5px; font-weight: 500; color: #6B6E96; margin: 0; max-width: 480px; line-height: 1.55; }
+.cl-req-chevron { flex-shrink: 0; color: #6B6E96; margin-top: 8px; transition: transform 0.18s ease; }
+.cl-req-chevron.is-open { transform: rotate(180deg); }
+.cl-req-body { padding: 0 24px 26px; }
 .cl-req-timing { margin: 0 0 16px; font-family: 'Inter', sans-serif; font-size: 12.5px; font-weight: 700; color: #E0502F; }
 .cl-req-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-bottom: 18px; }
 .cl-req-field { display: flex; flex-direction: column; gap: 6px; font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 700; color: #1B2A4A; }
@@ -2785,6 +2875,28 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .cl-req-btn:hover { background: #E0502F; }
 .cl-req-btn:disabled { opacity: 0.5; cursor: default; box-shadow: none; }
 .cl-req-hint { margin: 10px 0 0; font-family: 'Inter', sans-serif; font-size: 11.5px; font-weight: 500; color: #A6A2C0; }
+
+.cl-mine { margin: 0 0 32px; }
+.cl-mine-hd { font-family: 'Source Serif 4', serif; font-weight: 600; font-size: 15px; color: #1B2A4A; margin: 0 0 12px; }
+.cl-mine-list { display: flex; flex-direction: column; gap: 8px; }
+.cl-mine-row {
+  display: flex; align-items: center; gap: 12px; background: #fff; border: 1px solid #EDE6F4; border-radius: 12px;
+  padding: 12px 16px; box-shadow: 0 2px 8px rgba(27,42,74,0.05);
+}
+.cl-mine-info { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 3px; }
+.cl-mine-topic { font-family: 'Inter', sans-serif; font-weight: 700; font-size: 13px; color: #1B2A4A; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.cl-mine-meta { font-family: 'Inter', sans-serif; font-weight: 500; font-size: 11.5px; color: #A6A2C0; }
+.cl-mine-tag {
+  flex-shrink: 0; font-family: 'Inter', sans-serif; font-weight: 700; font-size: 10px; letter-spacing: 0.04em;
+  text-transform: uppercase; border-radius: 999px; padding: 4px 10px;
+}
+.cl-mine-tag--pending { background: #FFF4D6; color: #8A6D1F; }
+.cl-mine-tag--done { background: #E7F5EC; color: #2F9E58; }
+.cl-mine-received {
+  flex-shrink: 0; font-family: 'Inter', sans-serif; font-weight: 700; font-size: 11.5px; color: #1B2A4A;
+  background: #F1EEF9; border: none; border-radius: 999px; padding: 6px 12px; cursor: pointer;
+}
+.cl-mine-received:hover { background: #E7EAF3; }
 
 .cl-gallery-hd-row { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-bottom: 18px; }
 .cl-gallery-hd { font-family: 'Source Serif 4', serif; font-weight: 600; font-size: 18px; color: #1B2A4A; margin: 0; }
@@ -2838,6 +2950,7 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   .cl-req-grid { grid-template-columns: 1fr; }
   .cl-req-field--narrow { grid-column: 1 / -1; }
   .cl-gallery-hd-row { flex-direction: column; align-items: flex-start; }
+  .cl-mine-row { flex-wrap: wrap; }
 }
 
 /* ---------- Speaking: The Fluency Clinic ---------- */
