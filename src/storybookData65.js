@@ -37,9 +37,9 @@ export const CHAPTERS = [
     story:
       "At this week's student council meeting, Mr. Ferris announces that a formal proposal to abolish the school uniform has been submitted. Immediately, the room splits into two camps, each side already forming opinions before the discussion has even properly begun. Kwame argues passionately that uniforms suppress individual expression, while Yuna counters that they reduce visible inequality between students. As the council's newly appointed mediator, I realize I'll need to hear both sides fully before forming any conclusion myself. Mr. Ferris asks me to organize a school-wide forum, where both perspectives can be presented and genuinely considered.",
     questions: [
-      "What proposal does Mr. Ferris announce?",
-      "What does Kwame argue about uniforms?",
-      "What does Mr. Ferris ask Nadia to organize?",
+      { text: "What proposal does Mr. Ferris announce?", answer: "A formal proposal to abolish the school uniform." },
+      { text: "What does Kwame argue about uniforms?", answer: "That they suppress individual expression." },
+      { text: "What does Mr. Ferris ask Nadia to organize?", answer: "A school-wide forum." },
     ],
     trueFalse: [
       { text: "A proposal to abolish the school uniform has been submitted.", answer: true },
@@ -66,9 +66,9 @@ export const CHAPTERS = [
     story:
       "Preparing for the forum turns out to be considerably harder than I had originally anticipated when I first agreed to organize it. I research uniform policies at other schools, discovering that the arguments on both sides are more nuanced than I'd initially assumed. Some studies suggest uniforms genuinely reduce social pressure around clothing, whereas others argue they simply shift that pressure toward other visible markers instead. I draft discussion questions carefully, trying to ensure neither side would feel dismissed or unfairly represented during the actual event. By the time I finish, I've developed a far more complicated view of the issue than I'd expected.",
     questions: [
-      "How does preparing for the forum turn out to be?",
-      "What does Nadia discover about the arguments on both sides?",
-      "What does Nadia try to ensure with her discussion questions?",
+      { text: "How does preparing for the forum turn out to be?", answer: "Considerably harder than expected." },
+      { text: "What does Nadia discover about the arguments on both sides?", answer: "That they're more nuanced than she'd assumed." },
+      { text: "What does Nadia try to ensure with her discussion questions?", answer: "That neither side would feel dismissed." },
     ],
     trueFalse: [
       { text: "Preparing for the forum is harder than Nadia anticipated.", answer: true },
@@ -95,9 +95,9 @@ export const CHAPTERS = [
     story:
       "The auditorium fills quickly, with far more students attending than I had honestly expected for a policy discussion. I open the forum by explaining the ground rules: respectful language, no interrupting, and genuine listening rather than simply waiting to respond. Kwame speaks first, describing how the uniform had made him feel invisible throughout his early years at the school. Yuna follows, explaining that before uniforms were introduced, she had constantly worried about being judged for what she couldn't afford. Listening to both accounts, I realize this debate matters more personally to people than I had initially understood.",
     questions: [
-      "What does Nadia explain when she opens the forum?",
-      "What does Kwame describe about the uniform?",
-      "What did Yuna worry about before uniforms were introduced?",
+      { text: "What does Nadia explain when she opens the forum?", answer: "The ground rules: respectful language, no interrupting, genuine listening." },
+      { text: "What does Kwame describe about the uniform?", answer: "That it made him feel invisible in his early years." },
+      { text: "What did Yuna worry about before uniforms were introduced?", answer: "Being judged for what she couldn't afford." },
     ],
     trueFalse: [
       { text: "The auditorium fills with more students than expected.", answer: true },
@@ -124,9 +124,9 @@ export const CHAPTERS = [
     story:
       "Midway through the discussion, something unexpected happens: Kwame and Yuna actually begin to agree on certain underlying concerns. Both acknowledge that the real issue may not be uniforms themselves, but rather how visible economic difference feels to students generally. Yuna suggests that a more flexible dress code, with some shared elements, might address both concerns simultaneously. Kwame, somewhat surprised himself, admits this idea hadn't occurred to him before hearing Yuna's perspective directly. Watching this shift happen live, I realize mediation isn't really about choosing a winner, but about finding what both sides actually need.",
     questions: [
-      "What unexpected thing happens midway through the discussion?",
-      "What do Kwame and Yuna both acknowledge?",
-      "What does Yuna suggest as a possible solution?",
+      { text: "What unexpected thing happens midway through the discussion?", answer: "Kwame and Yuna begin to agree on underlying concerns." },
+      { text: "What do Kwame and Yuna both acknowledge?", answer: "That the real issue is how visible economic difference feels." },
+      { text: "What does Yuna suggest as a possible solution?", answer: "A more flexible dress code with shared elements." },
     ],
     trueFalse: [
       { text: "Kwame and Yuna begin to agree on certain concerns.", answer: true },
@@ -153,9 +153,9 @@ export const CHAPTERS = [
     story:
       "I open the floor to questions, and hands shoot up immediately from students eager to share their own perspectives. One student mentions that, given the school's diverse population, any new policy ought to be tested before being fully implemented. Another points out that whatever decision is made, some students will inevitably feel unheard, no matter how carefully it's handled. A quieter student, who rarely speaks in large groups, mentions that uniforms had actually helped her feel like she belonged somewhere. This range of viewpoints, moreover, reminds me that no single solution will satisfy absolutely everyone completely.",
     questions: [
-      "What happens when Nadia opens the floor to questions?",
-      "What does one student suggest about any new policy?",
-      "What does the quieter student mention about uniforms?",
+      { text: "What happens when Nadia opens the floor to questions?", answer: "Hands shoot up immediately." },
+      { text: "What does one student suggest about any new policy?", answer: "That it ought to be tested before being fully implemented." },
+      { text: "What does the quieter student mention about uniforms?", answer: "That they helped her feel like she belonged." },
     ],
     trueFalse: [
       { text: "Hands shoot up immediately when Nadia opens the floor.", answer: true },
@@ -182,9 +182,9 @@ export const CHAPTERS = [
     story:
       "After the forum ends, Mr. Ferris asks the three of us to draft a formal recommendation summarizing what we'd actually heard. Kwame suggests we propose a flexible policy: core shared colors, but more personal freedom within those guidelines. Yuna agrees, provided we include a trial period, so the council can gather feedback before making anything permanent. I write the draft, careful to represent both original positions fairly, rather than favoring whichever argument I personally found stronger. Reading it back afterward, I feel genuinely proud that this reflects a synthesis, not simply one side's victory.",
     questions: [
-      "What does Mr. Ferris ask the three of them to draft?",
-      "What does Kwame suggest proposing?",
-      "What does Yuna agree to, provided something is included?",
+      { text: "What does Mr. Ferris ask the three of them to draft?", answer: "A formal recommendation." },
+      { text: "What does Kwame suggest proposing?", answer: "Core shared colors with more personal freedom." },
+      { text: "What does Yuna agree to, provided something is included?", answer: "A trial period." },
     ],
     trueFalse: [
       { text: "Mr. Ferris asks them to draft a formal recommendation.", answer: true },
@@ -211,9 +211,9 @@ export const CHAPTERS = [
     story:
       "The following week, I present our recommendation to the full student council, feeling more nervous than I'd anticipated beforehand. As I explain the trial period and flexible-color approach, I notice several members nodding, seemingly persuaded by the reasoning behind it. One member asks whether this compromise might simply delay an inevitable, harder decision down the road. I respond honestly that it might, but that testing an idea carefully seemed wiser than deciding based on assumption alone. After some further discussion, the council votes to approve the trial period, with a review scheduled for next semester.",
     questions: [
-      "What does Nadia present to the full student council?",
-      "What does one member ask about the compromise?",
-      "What does the council vote to approve?",
+      { text: "What does Nadia present to the full student council?", answer: "The recommendation." },
+      { text: "What does one member ask about the compromise?", answer: "Whether it might just delay a harder decision." },
+      { text: "What does the council vote to approve?", answer: "The trial period." },
     ],
     trueFalse: [
       { text: "Nadia presents the recommendation the following week.", answer: true },
@@ -240,9 +240,9 @@ export const CHAPTERS = [
     story:
       "The trial period begins the following Monday, and the hallways look noticeably different than they had just days earlier. Some students embrace the new flexibility enthusiastically, while others stick closely to the familiar, original uniform out of habit. Kwame stops me in the hallway, admitting he feels genuinely happy, even though a few details still don't work perfectly. Yuna mentions she's been surprised by how little actual disruption the change has caused, contrary to what she'd initially feared. Watching everyone adjust, I feel cautiously optimistic that this compromise might actually work for most people involved.",
     questions: [
-      "When does the trial period begin?",
-      "How do students respond differently to the new flexibility?",
-      "What does Yuna mention she's been surprised by?",
+      { text: "When does the trial period begin?", answer: "The following Monday." },
+      { text: "How do students respond differently to the new flexibility?", answer: "Some embrace it, others stick to the original uniform." },
+      { text: "What does Yuna mention she's been surprised by?", answer: "How little actual disruption the change has caused." },
     ],
     trueFalse: [
       { text: "The trial period begins the following Monday.", answer: true },
@@ -269,9 +269,9 @@ export const CHAPTERS = [
     story:
       "By the semester review, the council has collected survey data from students across every grade level about the trial. The results, moreover, are more positive than even I had cautiously hoped for when we first proposed this compromise. Most students report feeling more comfortable overall, though a small percentage still prefer the original, stricter uniform policy. Mr. Ferris notes that had we simply voted immediately after the forum, without a trial period, we may have missed this nuanced outcome entirely. This experience teaches me that thorough mediation, given enough patience, can genuinely produce better solutions than quick decisions.",
     questions: [
-      "What has the council collected by the semester review?",
-      "How do the results compare to what Nadia had hoped for?",
-      "What does Mr. Ferris note about voting immediately?",
+      { text: "What has the council collected by the semester review?", answer: "Survey data from students across every grade." },
+      { text: "How do the results compare to what Nadia had hoped for?", answer: "More positive than she'd cautiously hoped." },
+      { text: "What does Mr. Ferris note about voting immediately?", answer: "That they may have missed this nuanced outcome." },
     ],
     trueFalse: [
       { text: "The council has collected survey data from every grade level.", answer: true },
@@ -298,9 +298,9 @@ export const CHAPTERS = [
     story:
       "Looking back on the entire process, I realize how differently things might have unfolded had the council simply voted without genuine discussion. If we had ignored the personal stories shared during the forum, we would likely have chosen a solution that satisfied only half the school. Instead, taking the time to listen, mediate, and test a compromise allowed us to find something genuinely more inclusive. I've learned that disagreement, however uncomfortable in the moment, often contains the seeds of a better shared solution. In the end, this experience taught me that mediation isn't about avoiding conflict, but about using it productively.",
     questions: [
-      "What does Nadia realize looking back on the process?",
-      "What might have happened if they had simply voted without discussion?",
-      "What has Nadia learned about disagreement?",
+      { text: "What does Nadia realize looking back on the process?", answer: "How differently things might have gone without genuine discussion." },
+      { text: "What might have happened if they had simply voted without discussion?", answer: "They'd have chosen a solution satisfying only half the school." },
+      { text: "What has Nadia learned about disagreement?", answer: "That it often contains the seeds of a better shared solution." },
     ],
     trueFalse: [
       { text: "Nadia realizes things might have unfolded differently without discussion.", answer: true },

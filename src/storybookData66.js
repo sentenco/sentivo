@@ -28,9 +28,9 @@ export const CHAPTERS = [
     story:
       "An email arrives from my school's exchange program, confirming I've been accepted to spend next semester studying in another country. I'd applied months ago, half-convinced I wouldn't actually be chosen among so many strong applicants. Reading the acceptance now, excitement floods through me, quickly followed by a wave of genuine uncertainty about what this decision would actually mean. Leaving for five months would mean missing my final year's biggest events, alongside time with people I deeply care about. Still staring at the screen, I realize this is a decision I can't make impulsively, however thrilling it initially feels.",
     questions: [
-      "What does the email confirm?",
-      "How did Isabel feel while waiting to hear back?",
-      "What would leaving for five months mean for Isabel?",
+      { text: "What does the email confirm?", answer: "That Isabel's been accepted to study abroad next semester." },
+      { text: "How did Isabel feel while waiting to hear back?", answer: "Half-convinced she wouldn't be chosen." },
+      { text: "What would leaving for five months mean for Isabel?", answer: "Missing her final year's biggest events." },
     ],
     trueFalse: [
       { text: "Isabel has been accepted into the exchange program.", answer: true },
@@ -57,9 +57,9 @@ export const CHAPTERS = [
     story:
       "That evening, I tell my mother about the acceptance, watching her expression shift between pride and visible concern. She admits that, had she been given a similar opportunity at my age, she may have hesitated for entirely different reasons. Money had always been tight growing up, so an opportunity like this simply hadn't existed within her own possibilities back then. Nevertheless, she reminds me gently that this decision ultimately has to be mine, not something she or anyone else should decide for me. I appreciate her honesty, even though it leaves me with more to consider than before.",
     questions: [
-      "What does Isabel's mother's expression shift between?",
-      "What does Isabel's mother admit about her own past?",
-      "What does Isabel's mother remind her about the decision?",
+      { text: "What does Isabel's mother's expression shift between?", answer: "Pride and visible concern." },
+      { text: "What does Isabel's mother admit about her own past?", answer: "That money had been tight, so this opportunity never existed for her." },
+      { text: "What does Isabel's mother remind her about the decision?", answer: "That it has to be Isabel's own." },
     ],
     trueFalse: [
       { text: "Isabel's mother's expression shifts between pride and concern.", answer: true },
@@ -86,9 +86,9 @@ export const CHAPTERS = [
     story:
       "I tell Jules the news the next day, expecting excitement, though her reaction turns out considerably more complicated than I'd anticipated. She congratulates me genuinely, but I can tell something underneath her words feels noticeably strained and uncertain. Eventually, she admits she's scared of what our friendship might become after five months of near-constant separation. I reassure her that distance wouldn't necessarily weaken what we've built, though I honestly can't promise nothing would change at all. Given how close we've always been, I understand why this news feels more threatening to her than exciting.",
     questions: [
-      "How does Jules's reaction turn out compared to what Isabel expected?",
-      "What does Jules eventually admit she's scared of?",
-      "What does Isabel reassure Jules about?",
+      { text: "How does Jules's reaction turn out compared to what Isabel expected?", answer: "More complicated." },
+      { text: "What does Jules eventually admit she's scared of?", answer: "What their friendship might become after five months apart." },
+      { text: "What does Isabel reassure Jules about?", answer: "That distance wouldn't necessarily weaken what they've built." },
     ],
     trueFalse: [
       { text: "Jules's reaction turns out more complicated than Isabel expected.", answer: true },
@@ -115,9 +115,9 @@ export const CHAPTERS = [
     story:
       "Trying to think more clearly, I write out two lists: everything I'd gain by going, and everything I'd risk by leaving. If I went, I'd experience an entirely different culture, gain independence, and strengthen my university applications considerably. On the other hand, if I stayed, I'd graduate alongside Jules, avoid disrupting our long friendship, and skip the anxiety of navigating somewhere unfamiliar. Neither list feels obviously more compelling than the other, which frustrates me more than I'd expected it to. I realize that whichever choice I make, some genuine loss seems unavoidable either way.",
     questions: [
-      "What does Isabel write out to think more clearly?",
-      "What would Isabel gain if she went?",
-      "What would Isabel avoid if she stayed?",
+      { text: "What does Isabel write out to think more clearly?", answer: "Two lists -- what she'd gain and what she'd risk." },
+      { text: "What would Isabel gain if she went?", answer: "A different culture, independence, and stronger university applications." },
+      { text: "What would Isabel avoid if she stayed?", answer: "Disrupting her friendship with Jules." },
     ],
     trueFalse: [
       { text: "Isabel writes out two lists comparing going and staying.", answer: true },
@@ -144,9 +144,9 @@ export const CHAPTERS = [
     story:
       "My school counselor connects me with Priya, a senior who'd completed a similar exchange program the previous year herself. Priya admits that had she known how hard the first month would be, she may have hesitated to apply at all. However, she explains that the friendships and independence she gained ultimately outweighed those difficult early weeks considerably. She mentions that her own best friend back home had actually grown closer to her, not more distant, throughout that time apart. Hearing this firsthand account gives me a more honest, less idealized picture than I'd had before.",
     questions: [
-      "Who does Isabel's school counselor connect her with?",
-      "What does Priya admit about the first month?",
-      "What does Priya say happened with her own best friend?",
+      { text: "Who does Isabel's school counselor connect her with?", answer: "Priya, a former exchange student." },
+      { text: "What does Priya admit about the first month?", answer: "That it was hard, and she might have hesitated if she'd known." },
+      { text: "What does Priya say happened with her own best friend?", answer: "That they grew closer, not more distant." },
     ],
     trueFalse: [
       { text: "The school counselor connects Isabel with Priya.", answer: true },
@@ -173,9 +173,9 @@ export const CHAPTERS = [
     story:
       "I share Priya's story with Jules, hoping it might ease some of the worry from our earlier conversation. Jules listens carefully, then admits that her fear wasn't really about distance itself, but about feeling replaced somehow. I tell her honestly that no experience abroad could ever replace what we've built over all these years together. Given how long we've been friends, I explain, a semester apart seems unlikely to undo something that solid. Jules finally smiles, saying that hearing this directly helps more than she'd expected it to.",
     questions: [
-      "What does Isabel share with Jules?",
-      "What does Jules admit her fear was really about?",
-      "What does Isabel tell Jules honestly?",
+      { text: "What does Isabel share with Jules?", answer: "Priya's story." },
+      { text: "What does Jules admit her fear was really about?", answer: "Feeling replaced." },
+      { text: "What does Isabel tell Jules honestly?", answer: "That no experience abroad could replace what they've built." },
     ],
     trueFalse: [
       { text: "Isabel shares Priya's story with Jules.", answer: true },
@@ -202,9 +202,9 @@ export const CHAPTERS = [
     story:
       "After weeks of going back and forth, I finally sit down to make my actual decision, rather than continuing to circle the question endlessly. I realize that if I let fear of missing out guide this choice entirely, I'd likely regret not trying at all. Nevertheless, I also recognize that choosing to go doesn't mean abandoning what matters here, just experiencing something additional alongside it. With this reframing, the decision suddenly feels less like choosing between two opposing lives and more like simply expanding one. I sign the acceptance form, feeling a mixture of nervousness and genuine excitement I hadn't expected to feel simultaneously.",
     questions: [
-      "What does Isabel finally sit down to do?",
-      "What does Isabel realize about letting fear guide her choice?",
-      "What does Isabel do at the end of the chapter?",
+      { text: "What does Isabel finally sit down to do?", answer: "Make her actual decision." },
+      { text: "What does Isabel realize about letting fear guide her choice?", answer: "That she'd likely regret not trying." },
+      { text: "What does Isabel do at the end of the chapter?", answer: "Signs the acceptance form." },
     ],
     trueFalse: [
       { text: "Isabel finally sits down to make her actual decision.", answer: true },
@@ -231,9 +231,9 @@ export const CHAPTERS = [
     story:
       "The weeks before departure pass in a blur of paperwork, packing, and increasingly emotional goodbyes with people I care about deeply. Jules helps me pack, insisting on folding everything her own particular way, even though I honestly don't mind either method. My mother writes a small note I find tucked inside my suitcase, simply saying she's proud, whatever happens next. As departure day approaches, I notice my nervousness gradually shifting into something closer to genuine anticipation instead. Whatever challenges await me abroad, I feel increasingly confident this decision was ultimately the right one for me.",
     questions: [
-      "How do the weeks before departure pass?",
-      "What does Jules insist on doing while helping pack?",
-      "What does Isabel find tucked inside her suitcase?",
+      { text: "How do the weeks before departure pass?", answer: "In a blur of paperwork, packing, and goodbyes." },
+      { text: "What does Jules insist on doing while helping pack?", answer: "Folding everything her own particular way." },
+      { text: "What does Isabel find tucked inside her suitcase?", answer: "A note from her mother saying she's proud." },
     ],
     trueFalse: [
       { text: "The weeks before departure pass in a blur of goodbyes.", answer: true },
@@ -260,9 +260,9 @@ export const CHAPTERS = [
     story:
       "Three weeks into the exchange, I finally settle into a rhythm and call home to update everyone properly. Jules appears on screen first, eagerly asking about everything, from classes to the food to the friends I've apparently already made. My mother joins moments later, visibly relieved seeing my face looking genuinely happy rather than merely coping. I admit that the first two weeks had honestly been harder than I'd expected, filled with homesickness I hadn't fully anticipated. Nevertheless, I explain that things have improved considerably, and I'm genuinely glad I hadn't let that early difficulty change my decision.",
     questions: [
-      "What does Isabel finally do three weeks into the exchange?",
-      "How does Isabel's mother react seeing her face?",
-      "What does Isabel admit about the first two weeks?",
+      { text: "What does Isabel finally do three weeks into the exchange?", answer: "Calls home." },
+      { text: "How does Isabel's mother react seeing her face?", answer: "Visibly relieved." },
+      { text: "What does Isabel admit about the first two weeks?", answer: "That they were harder than expected, filled with homesickness." },
     ],
     trueFalse: [
       { text: "Isabel calls home three weeks into the exchange.", answer: true },
@@ -289,9 +289,9 @@ export const CHAPTERS = [
     story:
       "Looking back on the decision now, I realize how differently things might have gone had I let fear of change decide for me. If I had stayed simply to avoid discomfort, I likely would have wondered, for years afterward, what I'd missed. Instead, choosing to face uncertainty directly taught me something about myself I couldn't have learned any other way. My friendship with Jules, moreover, has genuinely deepened rather than weakened, exactly as Priya had once suggested it might. In the end, this experience taught me that growth and belonging aren't actually opposites, but can exist together simultaneously.",
     questions: [
-      "What does Isabel realize looking back on the decision?",
-      "What might have happened if she had stayed simply to avoid discomfort?",
-      "What has Isabel learned about growth and belonging?",
+      { text: "What does Isabel realize looking back on the decision?", answer: "How differently things might have gone had fear decided for her." },
+      { text: "What might have happened if she had stayed simply to avoid discomfort?", answer: "She'd have wondered for years what she missed." },
+      { text: "What has Isabel learned about growth and belonging?", answer: "That they aren't opposites -- they can exist together." },
     ],
     trueFalse: [
       { text: "Isabel realizes things might have gone differently without this choice.", answer: true },

@@ -25,9 +25,9 @@ export const CHAPTERS = [
     story:
       "I arrive at the airport with plenty of time, hoping to relax a little before my flight to my sister's wedding this weekend. Boarding is supposed to begin in forty minutes, so I find a seat near the gate and settle in comfortably. Glancing occasionally at the departures board, everything still appears completely normal, with my flight listed as on time. I use the extra time to reply to a few messages and grab a quick coffee from a nearby kiosk. Little do I know, this peaceful waiting period is about to be interrupted rather suddenly.",
     questions: [
-      "Why is Daniel traveling this weekend?",
-      "How much time does Daniel have before boarding?",
-      "What does Daniel do while he waits?",
+      { text: "Why is Daniel traveling this weekend?", answer: "For his sister's wedding." },
+      { text: "How much time does Daniel have before boarding?", answer: "Forty minutes." },
+      { text: "What does Daniel do while he waits?", answer: "Replies to messages and grabs a coffee." },
     ],
     trueFalse: [
       { text: "Daniel is traveling for his sister's wedding.", answer: true },
@@ -54,9 +54,9 @@ export const CHAPTERS = [
     story:
       "Suddenly, an announcement crackles over the speakers, and I catch the word “delay” before fully understanding the rest. Looking up at the departures board, I notice my flight's status has changed from on time to a new, later departure. Around me, other passengers groan quietly, some immediately pulling out their phones to check connecting flights or plans. My own heart sinks slightly, since I specifically need to arrive in time for tonight's rehearsal dinner. I approach the nearest gate agent, hoping to understand exactly how long this delay might actually last.",
     questions: [
-      "What word does Daniel catch in the announcement?",
-      "What does Daniel notice on the departures board?",
-      "Why does Daniel's heart sink slightly?",
+      { text: "What word does Daniel catch in the announcement?", answer: "Delay." },
+      { text: "What does Daniel notice on the departures board?", answer: "His flight's status changed to a later departure." },
+      { text: "Why does Daniel's heart sink slightly?", answer: "He needs to arrive in time for the rehearsal dinner." },
     ],
     trueFalse: [
       { text: "Daniel catches the word 'delay' in the announcement.", answer: true },
@@ -83,9 +83,9 @@ export const CHAPTERS = [
     story:
       "Ms. Kwan, the gate agent, greets me calmly despite what must already be a stressful shift for her. I explain that I have an important event tonight and ask whether she could tell me more about the reason for this delay. She explains that the delay is due to a mechanical issue being checked by the maintenance crew right now. “Would it be possible to know roughly how long this might take?” I ask, trying to sound polite despite my growing worry. She mentions it's currently estimated at two hours, though she admits that number could still change slightly.",
     questions: [
-      "Who does Daniel speak with about the delay?",
-      "What is causing the delay, according to Ms. Kwan?",
-      "How long is the delay currently estimated to be?",
+      { text: "Who does Daniel speak with about the delay?", answer: "Ms. Kwan, the gate agent." },
+      { text: "What is causing the delay, according to Ms. Kwan?", answer: "A mechanical issue being checked by the maintenance crew." },
+      { text: "How long is the delay currently estimated to be?", answer: "Two hours." },
     ],
     trueFalse: [
       { text: "Ms. Kwan greets Daniel calmly despite a stressful shift.", answer: true },
@@ -112,9 +112,9 @@ export const CHAPTERS = [
     story:
       "Sitting back down, I quickly calculate whether a two-hour delay would still allow me to reach the dinner on time. Even in the best case, I would land only about an hour before the event actually starts, without accounting for traffic. If the delay grows any longer, however, missing the rehearsal dinner entirely becomes a genuine possibility. I text my sister, explaining the situation honestly rather than promising something I'm not actually certain I can deliver. She replies quickly, reassuring me not to stress and that family will understand if I simply arrive a little later.",
     questions: [
-      "What does Daniel calculate while sitting back down?",
-      "What happens in the best-case scenario?",
-      "How does Daniel's sister respond to his text?",
+      { text: "What does Daniel calculate while sitting back down?", answer: "Whether the delay still allows him to reach the dinner on time." },
+      { text: "What happens in the best-case scenario?", answer: "He'd land only about an hour before the event." },
+      { text: "How does Daniel's sister respond to his text?", answer: "Reassures him not to stress." },
     ],
     trueFalse: [
       { text: "Daniel calculates whether he can still reach the dinner on time.", answer: true },
@@ -141,9 +141,9 @@ export const CHAPTERS = [
     story:
       "An hour later, another announcement extends the delay further, and my stomach tightens as I glance up at the board. The new estimate now shows an additional ninety minutes, considerably longer than what was originally suggested earlier. Frustration builds inside me, though I remind myself that getting upset with the staff certainly wouldn't fix the mechanical issue itself. Instead, I walk over calmly and ask Ms. Kwan whether there are any alternative flights I could possibly be rebooked onto. She checks her system thoroughly, mentioning that one earlier connecting option might actually still be available.",
     questions: [
-      "What happens an hour later?",
-      "How much longer does the new estimate add?",
-      "What does Daniel ask Ms. Kwan?",
+      { text: "What happens an hour later?", answer: "The delay is extended further." },
+      { text: "How much longer does the new estimate add?", answer: "An additional ninety minutes." },
+      { text: "What does Daniel ask Ms. Kwan?", answer: "Whether there are any alternative flights he could be rebooked onto." },
     ],
     trueFalse: [
       { text: "Another announcement extends the delay further.", answer: true },
@@ -170,9 +170,9 @@ export const CHAPTERS = [
     story:
       "Ms. Kwan explains that a flight leaving from a nearby gate departs sooner and could actually get me there in time. However, it would involve a layover, which means slightly more walking and one additional security check along the way. “If you're comfortable with that, I could rebook you right now before the seats fill up,” she offers helpfully. Weighing my options quickly, I decide the layover route sounds considerably better than possibly missing tonight's dinner altogether. I thank her sincerely and agree to the change, relieved that a workable solution actually exists after all.",
     questions: [
-      "What does Ms. Kwan explain about the alternative flight?",
-      "What would the alternative flight involve?",
-      "What does Daniel decide to do?",
+      { text: "What does Ms. Kwan explain about the alternative flight?", answer: "That it departs sooner and could get him there in time." },
+      { text: "What would the alternative flight involve?", answer: "A layover and an additional security check." },
+      { text: "What does Daniel decide to do?", answer: "Accept the rebooking." },
     ],
     trueFalse: [
       { text: "The alternative flight departs from a nearby gate sooner.", answer: true },
@@ -199,9 +199,9 @@ export const CHAPTERS = [
     story:
       "With my new boarding pass printed, I hurry through the terminal, weaving carefully between other travelers along the way. The layover gate is farther than I expected, so I pick up my pace, watching the time remaining before boarding closes. Along the way, I pass through the additional security check quickly, thankful the line isn't as long as it could have been. Arriving at the gate slightly out of breath, I find boarding has just begun, which means I made it with time to spare. Settling into my seat moments later, I finally allow myself to relax just a little.",
     questions: [
-      "What does Daniel do once his new boarding pass is printed?",
-      "What does Daniel pass through along the way?",
-      "What does Daniel find when he arrives at the gate?",
+      { text: "What does Daniel do once his new boarding pass is printed?", answer: "Hurries through the terminal." },
+      { text: "What does Daniel pass through along the way?", answer: "An additional security check." },
+      { text: "What does Daniel find when he arrives at the gate?", answer: "Boarding has just begun." },
     ],
     trueFalse: [
       { text: "Daniel hurries through the terminal with his new boarding pass.", answer: true },
@@ -228,9 +228,9 @@ export const CHAPTERS = [
     story:
       "Before the plane doors close, I quickly text my sister, updating her on my new flight and revised arrival time. She responds with a relieved message, saying the timing should now work out perfectly for the rehearsal dinner. I put my phone away as the flight attendants begin their final safety announcements before departure. Looking out the window, I feel a mix of exhaustion and relief after an unexpectedly stressful few hours at the airport. Whatever happens with the layover, at least I'm finally moving in the right direction now.",
     questions: [
-      "What does Daniel do before the plane doors close?",
-      "How does his sister respond to the update?",
-      "How does Daniel feel looking out the window?",
+      { text: "What does Daniel do before the plane doors close?", answer: "Texts his sister with his new flight and arrival time." },
+      { text: "How does his sister respond to the update?", answer: "With relief, saying the timing should work out." },
+      { text: "How does Daniel feel looking out the window?", answer: "A mix of exhaustion and relief." },
     ],
     trueFalse: [
       { text: "Daniel texts his sister before the plane doors close.", answer: true },
@@ -257,9 +257,9 @@ export const CHAPTERS = [
     story:
       "After landing and a short taxi ride, I arrive at the restaurant just as the rehearsal dinner is getting underway. My sister spots me immediately, rushing over with a relieved hug, clearly happy I made it despite everything. “I can't believe you actually made it! I was honestly a little worried,” she admits, laughing with relief. I explain the whole delay, rebooking, and rushing through the airport, and she just shakes her head, amused. Sitting down at the table finally, exhausted but present, I realize the stressful journey was completely worth it in the end.",
     questions: [
-      "When does Daniel arrive at the restaurant?",
-      "How does his sister react when she sees him?",
-      "How does Daniel feel sitting down at the table?",
+      { text: "When does Daniel arrive at the restaurant?", answer: "Just as the rehearsal dinner is getting underway." },
+      { text: "How does his sister react when she sees him?", answer: "She rushes over with a relieved hug." },
+      { text: "How does Daniel feel sitting down at the table?", answer: "Exhausted but present -- it was worth it." },
     ],
     trueFalse: [
       { text: "Daniel arrives just as the rehearsal dinner is getting underway.", answer: true },
@@ -286,9 +286,9 @@ export const CHAPTERS = [
     story:
       "Later that night, reflecting on the entire day, I realize how differently things could have gone without a bit of flexibility. If I had insisted on waiting for my original flight stubbornly, I might have genuinely missed tonight's dinner entirely. Instead, staying calm, asking clear questions, and accepting a reasonable alternative got me here in time after all. I've learned that travel disruptions, however stressful in the moment, usually have some workable solution if you look for one. In the end, what could have been a disappointing story became instead a memorable one worth telling for years.",
     questions: [
-      "What does Daniel reflect on later that night?",
-      "What might have happened if he had insisted on waiting?",
-      "What has Daniel learned about travel disruptions?",
+      { text: "What does Daniel reflect on later that night?", answer: "How differently things could have gone without flexibility." },
+      { text: "What might have happened if he had insisted on waiting?", answer: "He might have missed the dinner entirely." },
+      { text: "What has Daniel learned about travel disruptions?", answer: "That they usually have some workable solution if you look for one." },
     ],
     trueFalse: [
       { text: "Daniel reflects on the entire day later that night.", answer: true },

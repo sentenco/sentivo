@@ -28,9 +28,9 @@ export const CHAPTERS = [
     story:
       "At dinner, my mother announces she's been offered a significant promotion, though it would require our entire family relocating to another city. Her excitement is immediately obvious, but I notice my father's expression shift from surprise toward something considerably more guarded. He asks a few polite questions initially, though I can sense he's already forming objections he hasn't voiced yet. After dinner, I overhear them discussing it privately, their voices growing tenser than I've heard in quite a while. I realize, somewhat uncomfortably, that this decision might end up affecting our entire family's future significantly.",
     questions: [
-      "What does Delphine's mother announce at dinner?",
-      "How does Delphine's father's expression shift?",
-      "What does Delphine overhear after dinner?",
+      { text: "What does Delphine's mother announce at dinner?", answer: "A promotion requiring the family to relocate." },
+      { text: "How does Delphine's father's expression shift?", answer: "From surprise to something more guarded." },
+      { text: "What does Delphine overhear after dinner?", answer: "Her parents discussing it privately, tenser than usual." },
     ],
     trueFalse: [
       { text: "Delphine's mother has been offered a significant promotion.", answer: true },
@@ -57,9 +57,9 @@ export const CHAPTERS = [
     story:
       "Over the following days, my parents' disagreement becomes harder to ignore, even though neither directly involves me in the conversation. My mother argues this opportunity may never come again, and that staying out of fear seems shortsighted long-term. My father counters that uprooting our entire life disrupts not just his career, but my education and friendships considerably too. Neither seems entirely wrong to me, which makes the whole situation feel more complicated than a simple right-versus-wrong disagreement. I begin wondering whether I should say something, or whether this decision genuinely isn't mine to influence.",
     questions: [
-      "What does Delphine's mother argue about the opportunity?",
-      "What does Delphine's father counter about uprooting their life?",
-      "What does Delphine begin wondering?",
+      { text: "What does Delphine's mother argue about the opportunity?", answer: "That it may never come again." },
+      { text: "What does Delphine's father counter about uprooting their life?", answer: "That it disrupts his career and her education and friendships." },
+      { text: "What does Delphine begin wondering?", answer: "Whether she should say something." },
     ],
     trueFalse: [
       { text: "The disagreement becomes harder to ignore over following days.", answer: true },
@@ -86,9 +86,9 @@ export const CHAPTERS = [
     story:
       "I find a quiet moment to ask my mother directly why this opportunity matters so much to her personally. She explains that she's worked toward something like this for years, and turning it down might mean never having another chance. Moreover, she admits she's scared that if she refuses this offer out of fear, she'll always wonder what she'd given up. I ask whether she's considered how disruptive this could genuinely be for Dad and me, given everything we'd have to leave behind. She acknowledges this honestly, admitting she hasn't fully worked out how to address that part yet.",
     questions: [
-      "What does Delphine ask her mother directly?",
-      "What does her mother explain about the opportunity?",
-      "What does Delphine ask her mother to consider?",
+      { text: "What does Delphine ask her mother directly?", answer: "Why the opportunity matters so much to her." },
+      { text: "What does her mother explain about the opportunity?", answer: "That she's worked toward it for years." },
+      { text: "What does Delphine ask her mother to consider?", answer: "How disruptive this could be for Dad and her." },
     ],
     trueFalse: [
       { text: "Delphine asks her mother why this opportunity matters so much.", answer: true },
@@ -115,9 +115,9 @@ export const CHAPTERS = [
     story:
       "Later that week, I have a similar conversation with my father, curious to understand his perspective more fully as well. He explains that he's built deep roots here: close friends, a job he genuinely enjoys, and a community that feels like home. He worries that starting over somewhere unfamiliar, at his age, may not be as easy as my mother seems to assume. Nevertheless, he admits he can see why this opportunity matters deeply to her, even if he personally struggles with it. I realize both my parents are wrestling with genuine, legitimate fears, just from entirely different angles.",
     questions: [
-      "What does Delphine's father explain about his life here?",
-      "What does he worry about regarding starting over?",
-      "What does Delphine realize about both her parents?",
+      { text: "What does Delphine's father explain about his life here?", answer: "Deep roots -- friends, a job he enjoys, a community." },
+      { text: "What does he worry about regarding starting over?", answer: "That it may not be easy at his age." },
+      { text: "What does Delphine realize about both her parents?", answer: "That they're both wrestling with legitimate fears, from different angles." },
     ],
     trueFalse: [
       { text: "Delphine's father has close friends and a job he enjoys.", answer: true },
@@ -144,9 +144,9 @@ export const CHAPTERS = [
     story:
       "Having heard both perspectives, I realize I actually understand something neither of my parents has fully expressed to each other directly. My mother hasn't clearly said she's scared, and my father hasn't clearly said he actually supports her ambition despite his fear. I write down what I want to say, worried that speaking up might seem presumptuous for someone my age. Nevertheless, I remind myself that mediating doesn't mean deciding for them, just helping them actually hear each other properly. Taking a deep breath, I decide I'll try bringing this up carefully during dinner tomorrow evening.",
     questions: [
-      "What does Delphine realize she understands?",
-      "What hasn't my father clearly said, according to Delphine?",
-      "What does Delphine decide to do?",
+      { text: "What does Delphine realize she understands?", answer: "Something neither parent has fully expressed to the other." },
+      { text: "What hasn't my father clearly said, according to Delphine?", answer: "That he actually supports her ambition despite his fear." },
+      { text: "What does Delphine decide to do?", answer: "Bring it up carefully at dinner." },
     ],
     trueFalse: [
       { text: "Delphine realizes something neither parent has expressed to each other.", answer: true },
@@ -173,9 +173,9 @@ export const CHAPTERS = [
     story:
       "At dinner, I take a breath and mention, as gently as I can, that I don't think they've actually heard each other's real concerns yet. Both parents look surprised, though neither interrupts, which I take as a cautiously good sign initially. I explain that Mom hasn't said she's scared of regret, and Dad hasn't said he actually admires her ambition. A long silence follows, until my mother reaches over and admits, quietly, that yes, that's exactly how she feels. My father, visibly moved, admits he hadn't realized how much fear was underneath her excitement this whole time.",
     questions: [
-      "What does Delphine mention at dinner?",
-      "How do both parents react initially?",
-      "What does Delphine's mother admit?",
+      { text: "What does Delphine mention at dinner?", answer: "That they haven't heard each other's real concerns." },
+      { text: "How do both parents react initially?", answer: "Surprised, but they don't interrupt." },
+      { text: "What does Delphine's mother admit?", answer: "That yes, she's scared of regret." },
     ],
     trueFalse: [
       { text: "Delphine mentions they haven't heard each other's real concerns.", answer: true },
@@ -202,9 +202,9 @@ export const CHAPTERS = [
     story:
       "After dinner, my parents talk for over an hour, this time actually listening rather than simply defending their own positions. I overhear fragments: my mother acknowledging how hard leaving would genuinely be for Dad, and him acknowledging her fear of regret. Neither reaches a final decision that night, though something about their tone has shifted considerably from before. I give them space, retreating to my room, feeling relieved that at least they're finally communicating honestly now. Whatever they ultimately decide, I sense this conversation matters more than the actual outcome itself somehow.",
     questions: [
-      "How long do Delphine's parents talk after dinner?",
-      "What does Delphine overhear her mother acknowledging?",
-      "How does Delphine feel giving them space?",
+      { text: "How long do Delphine's parents talk after dinner?", answer: "Over an hour." },
+      { text: "What does Delphine overhear her mother acknowledging?", answer: "How hard leaving would be for Dad." },
+      { text: "How does Delphine feel giving them space?", answer: "Relieved they're finally communicating honestly." },
     ],
     trueFalse: [
       { text: "Delphine's parents talk for over an hour.", answer: true },
@@ -231,9 +231,9 @@ export const CHAPTERS = [
     story:
       "A few days later, my parents call a family meeting, something we rarely do outside of holidays or emergencies. They explain they've decided to accept the offer together, but with a plan that addresses both their concerns directly. My mother will start the new role, while my father takes a few months transitioning his own work remotely before fully relocating. This staggered approach, they explain, gives everyone time to adjust rather than uprooting everything abruptly all at once. I feel proud, realizing this compromise likely wouldn't have emerged without that honest conversation at dinner.",
     questions: [
-      "What do Delphine's parents call a few days later?",
-      "What have they decided together?",
-      "What does the staggered approach give everyone?",
+      { text: "What do Delphine's parents call a few days later?", answer: "A family meeting." },
+      { text: "What have they decided together?", answer: "To accept the offer, with a staggered relocation plan." },
+      { text: "What does the staggered approach give everyone?", answer: "Time to adjust." },
     ],
     trueFalse: [
       { text: "Delphine's parents call a family meeting a few days later.", answer: true },
@@ -260,9 +260,9 @@ export const CHAPTERS = [
     story:
       "As moving day approaches, I say goodbye to close friends, feeling a familiar mixture of sadness and cautious excitement simultaneously. Several friends promise to visit, and given how manageable travel actually is now, I believe they genuinely mean it. My father seems calmer than I expected, having had time to process the decision rather than feeling forced into it suddenly. My mother thanks me privately, admitting that my speaking up at dinner had genuinely changed how this entire process unfolded. I realize that sometimes, the most helpful thing you can do isn't choosing a side, but helping people truly hear each other.",
     questions: [
-      "What does Delphine feel as moving day approaches?",
-      "How does Delphine's father seem compared to what she expected?",
-      "What does Delphine's mother thank her for?",
+      { text: "What does Delphine feel as moving day approaches?", answer: "A mix of sadness and cautious excitement." },
+      { text: "How does Delphine's father seem compared to what she expected?", answer: "Calmer." },
+      { text: "What does Delphine's mother thank her for?", answer: "Speaking up at dinner." },
     ],
     trueFalse: [
       { text: "Delphine feels a mixture of sadness and cautious excitement.", answer: true },
@@ -289,9 +289,9 @@ export const CHAPTERS = [
     story:
       "Looking back on the whole process, I realize how differently things might have gone had I simply stayed silent throughout it all. If my parents had never fully expressed their real fears to each other, the decision may have felt more like a battle than a compromise. Instead, helping them actually listen allowed a solution to emerge that respected both what they needed. I've learned that mediation between people you love isn't about choosing sides, but about creating space for real honesty. In the end, this experience taught me that families, given the chance, can usually find their way to fairness together.",
     questions: [
-      "What does Delphine realize looking back on the process?",
-      "What might have happened if she had stayed silent?",
-      "What has Delphine learned about mediation between people you love?",
+      { text: "What does Delphine realize looking back on the process?", answer: "How differently things might have gone had she stayed silent." },
+      { text: "What might have happened if she had stayed silent?", answer: "The decision may have felt like a battle instead of a compromise." },
+      { text: "What has Delphine learned about mediation between people you love?", answer: "That it's about creating space for real honesty, not choosing sides." },
     ],
     trueFalse: [
       { text: "Delphine realizes things might have gone differently without her involvement.", answer: true },

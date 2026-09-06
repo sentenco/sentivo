@@ -26,9 +26,9 @@ export const CHAPTERS = [
     story:
       "Among this week's mail, I find an official letter reminding me that my driver's license expires in exactly three weeks. I've been meaning to renew it for a while now, so I decide today would be a reasonable day to finally handle it. The letter lists several required documents, including proof of address, my current license, and a recent passport photo. I gather what I believe are all the necessary papers, placing them carefully into a folder by the door. Confident I'm well prepared, I plan to visit the licensing office first thing tomorrow morning.",
     questions: [
-      "What does Yusuf find among this week's mail?",
-      "How long until his license expires?",
-      "What does Yusuf do with the documents he gathers?",
+      { text: "What does Yusuf find among this week's mail?", answer: "A letter reminding him his license expires in three weeks." },
+      { text: "How long until his license expires?", answer: "Three weeks." },
+      { text: "What does Yusuf do with the documents he gathers?", answer: "Places them carefully in a folder by the door." },
     ],
     trueFalse: [
       { text: "Yusuf finds an official letter about his license expiring.", answer: true },
@@ -55,9 +55,9 @@ export const CHAPTERS = [
     story:
       "The licensing office is busier than I expected, with a long row of chairs already filled by other waiting visitors. I take a numbered ticket from the dispenser near the entrance and find an open seat toward the back. Glancing at the screen above the counters, I see they're currently serving numbers considerably lower than mine. Settling in for what will likely be a long wait, I pull out my phone to pass the time productively. After nearly forty minutes, my number finally appears, and I walk confidently toward the assigned counter.",
     questions: [
-      "How does Yusuf describe the licensing office?",
-      "What does Yusuf take near the entrance?",
-      "How long does Yusuf wait before his number appears?",
+      { text: "How does Yusuf describe the licensing office?", answer: "Busier than expected." },
+      { text: "What does Yusuf take near the entrance?", answer: "A numbered ticket." },
+      { text: "How long does Yusuf wait before his number appears?", answer: "Nearly forty minutes." },
     ],
     trueFalse: [
       { text: "The licensing office is busier than Yusuf expected.", answer: true },
@@ -84,9 +84,9 @@ export const CHAPTERS = [
     story:
       "Ms. Okafor greets me politely and begins reviewing my documents one by one, checking each against her list carefully. Everything seems fine until she pauses, mentioning that my proof of address is actually more than three months old. “Unfortunately, this particular document needs to be more recent than what you've brought today,” she explains apologetically. My stomach sinks slightly, since I genuinely believed I had prepared everything correctly beforehand. I ask whether there's any way around this requirement, hoping perhaps a different document might work instead.",
     questions: [
-      "What does Ms. Okafor do when reviewing Yusuf's documents?",
-      "What problem does she find with his proof of address?",
-      "What does Yusuf ask Ms. Okafor?",
+      { text: "What does Ms. Okafor do when reviewing Yusuf's documents?", answer: "Checks each against her list carefully." },
+      { text: "What problem does she find with his proof of address?", answer: "It's more than three months old." },
+      { text: "What does Yusuf ask Ms. Okafor?", answer: "If there's any way around the requirement." },
     ],
     trueFalse: [
       { text: "Ms. Okafor checks each document against her list carefully.", answer: true },
@@ -113,9 +113,9 @@ export const CHAPTERS = [
     story:
       "Ms. Okafor checks a printed list of acceptable alternatives, explaining that a recent utility bill or bank statement could also work instead. Unfortunately, I don't have either of those with me, having only brought exactly what the original letter specified. “Would it be possible for me to bring the correct document tomorrow instead?” I ask, trying to stay patient despite my frustration. She confirms that yes, I can return with an updated document without needing to wait in line again. She writes a small note on my file, explaining that most of my paperwork has already been verified today.",
     questions: [
-      "What alternatives does Ms. Okafor mention?",
-      "Does Yusuf have either alternative document with him?",
-      "What does Yusuf ask Ms. Okafor?",
+      { text: "What alternatives does Ms. Okafor mention?", answer: "A recent utility bill or bank statement." },
+      { text: "Does Yusuf have either alternative document with him?", answer: "No." },
+      { text: "What does Yusuf ask Ms. Okafor?", answer: "If he can bring the correct document tomorrow instead." },
     ],
     trueFalse: [
       { text: "A recent utility bill or bank statement could also work.", answer: true },
@@ -142,9 +142,9 @@ export const CHAPTERS = [
     story:
       "Walking back to my car, I feel mildly annoyed that a single overlooked detail cost me an entire trip to the office. On the other hand, I remind myself that this wasn't really such a serious problem, all things considered. I search my email for a recent utility bill I could print at home, hoping to have everything ready by tomorrow. Fortunately, I find one from just two weeks ago, which should easily satisfy the office's recency requirement. Feeling somewhat better about the situation, I head home to print the document before I forget completely.",
     questions: [
-      "How does Yusuf feel walking back to his car?",
-      "What does Yusuf search his email for?",
-      "How old is the utility bill Yusuf finds?",
+      { text: "How does Yusuf feel walking back to his car?", answer: "Mildly annoyed." },
+      { text: "What does Yusuf search his email for?", answer: "A recent utility bill." },
+      { text: "How old is the utility bill Yusuf finds?", answer: "Two weeks." },
     ],
     trueFalse: [
       { text: "Yusuf feels mildly annoyed about the wasted trip.", answer: true },
@@ -171,9 +171,9 @@ export const CHAPTERS = [
     story:
       "The next morning, I return to the office with my printed utility bill tucked safely inside the folder alongside everything else. As Ms. Okafor promised, I don't need to take another number, since a staff member directs me straight to her counter. She reviews the new document quickly, confirming this time that everything actually meets the requirement properly. “Perfect, this should work just fine,” she says, sounding genuinely pleased that the issue has been resolved so easily. Relief washes over me, especially knowing I won't need to make yet another separate trip.",
     questions: [
-      "What does Yusuf bring with him the next morning?",
-      "Does Yusuf need to take another number this time?",
-      "What does Ms. Okafor say about the new document?",
+      { text: "What does Yusuf bring with him the next morning?", answer: "The printed utility bill." },
+      { text: "Does Yusuf need to take another number this time?", answer: "No." },
+      { text: "What does Ms. Okafor say about the new document?", answer: "That it should work just fine." },
     ],
     trueFalse: [
       { text: "Yusuf brings his printed utility bill the next morning.", answer: true },
@@ -200,9 +200,9 @@ export const CHAPTERS = [
     story:
       "With the documents finally settled, Ms. Okafor moves quickly through the rest of the application process without further complications. She takes my photo using a small camera mounted beside her desk, asking me to remove my glasses briefly. I sign a few forms electronically, confirming my current address and agreeing to the office's standard terms and conditions. She explains that my new license should arrive by mail within roughly ten business days from today. Thanking her for her patience throughout this entire process, I gather my folder and head back outside.",
     questions: [
-      "What does Ms. Okafor do with the small camera?",
-      "What does Yusuf sign electronically?",
-      "How long will it take for the new license to arrive?",
+      { text: "What does Ms. Okafor do with the small camera?", answer: "Takes Yusuf's photo." },
+      { text: "What does Yusuf sign electronically?", answer: "A few forms confirming his address and agreeing to terms." },
+      { text: "How long will it take for the new license to arrive?", answer: "Roughly ten business days." },
     ],
     trueFalse: [
       { text: "Ms. Okafor takes Yusuf's photo using a small camera.", answer: true },
@@ -229,9 +229,9 @@ export const CHAPTERS = [
     story:
       "Back at work, I mention the whole license renewal story to a coworker, half complaining and half laughing about it now. She admits she went through something similar last year, needing three separate visits before finally getting hers sorted properly. We joke that government offices seem to specialize in requiring exactly the one document you didn't think to bring. On the other hand, she points out that checking the requirements list twice beforehand probably saves people the most hassle overall. I make a mental note to always double-check document dates carefully for anything official going forward.",
     questions: [
-      "Who does Yusuf mention the story to at work?",
-      "What does the coworker admit about her own experience?",
-      "What mental note does Yusuf make?",
+      { text: "Who does Yusuf mention the story to at work?", answer: "A coworker." },
+      { text: "What does the coworker admit about her own experience?", answer: "That she needed three separate visits last year." },
+      { text: "What mental note does Yusuf make?", answer: "To always double-check document dates for official things." },
     ],
     trueFalse: [
       { text: "Yusuf mentions the story to a coworker at work.", answer: true },
@@ -258,9 +258,9 @@ export const CHAPTERS = [
     story:
       "Exactly nine days later, I find an envelope from the licensing office waiting in my mailbox after work. Opening it carefully, I slide out my brand new license, checking that all the details are printed correctly this time. Everything looks accurate, including my updated address and a photo that's honestly better than my old one. I tuck the new license into my wallet, finally replacing the expired one I'd been carrying around nervously. This small piece of plastic represents an oddly satisfying conclusion to what felt like an unnecessarily complicated process.",
     questions: [
-      "How many days later does the envelope arrive?",
-      "What does Yusuf check on the new license?",
-      "What does Yusuf do with the new license?",
+      { text: "How many days later does the envelope arrive?", answer: "Nine." },
+      { text: "What does Yusuf check on the new license?", answer: "That all the details are printed correctly." },
+      { text: "What does Yusuf do with the new license?", answer: "Tucks it into his wallet, replacing the expired one." },
     ],
     trueFalse: [
       { text: "The envelope arrives exactly nine days later.", answer: true },
@@ -287,9 +287,9 @@ export const CHAPTERS = [
     story:
       "Looking back on the entire process, I realize how a single overlooked document turned a simple errand into a two-day ordeal. If I had double-checked the exact requirements more carefully beforehand, I likely could have avoided the wasted first trip entirely. However, staying calm and asking clear questions at the counter allowed me to fix the mistake without unnecessary stress. I've since created a small checklist for official documents, listing exactly what's needed before I ever leave the house. In the end, this minor bureaucratic hiccup taught me something genuinely useful about preparing thoroughly for official tasks.",
     questions: [
-      "What does Yusuf realize looking back on the process?",
-      "What might have helped him avoid the wasted first trip?",
-      "What has Yusuf created since this experience?",
+      { text: "What does Yusuf realize looking back on the process?", answer: "How one overlooked document turned a simple errand into a two-day ordeal." },
+      { text: "What might have helped him avoid the wasted first trip?", answer: "Double-checking the exact requirements beforehand." },
+      { text: "What has Yusuf created since this experience?", answer: "A small checklist for official documents." },
     ],
     trueFalse: [
       { text: "A single overlooked document turned this into a two-day ordeal.", answer: true },

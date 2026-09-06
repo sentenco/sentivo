@@ -25,9 +25,9 @@ export const CHAPTERS = [
     story:
       "Sorting through this month's mail, I open my utility bill out of habit, expecting the usual, fairly predictable amount. Instead, the total is nearly double what I normally pay, which immediately catches my attention rather sharply. Scanning the itemized list, I notice an unfamiliar charge labeled simply as a “service adjustment fee.” I don't recall requesting any special service recently, so this label makes very little sense to me. Setting the bill aside for a moment, I decide I'll need to call and ask about this before simply paying it.",
     questions: [
-      "What does Tobias open out of habit?",
-      "How does the total compare to what he normally pays?",
-      "What does Tobias decide he needs to do?",
+      { text: "What does Tobias open out of habit?", answer: "His utility bill." },
+      { text: "How does the total compare to what he normally pays?", answer: "Nearly double." },
+      { text: "What does Tobias decide he needs to do?", answer: "Call and ask about it before paying." },
     ],
     trueFalse: [
       { text: "Tobias opens his utility bill out of habit.", answer: true },
@@ -54,9 +54,9 @@ export const CHAPTERS = [
     story:
       "I find the customer service number printed at the bottom of the bill and dial it, expecting a fairly long wait. A recorded message thanks me for calling and explains that all representatives are currently busy helping other customers. I settle in, putting the call on speaker while I gather the bill and a pen for notes. After roughly ten minutes, a friendly voice finally answers, introducing herself as Renata from billing support. I explain briefly that I'm calling about an unfamiliar charge on this month's statement.",
     questions: [
-      "Where does Tobias find the customer service number?",
-      "What does the recorded message explain?",
-      "Who answers the call?",
+      { text: "Where does Tobias find the customer service number?", answer: "Printed at the bottom of the bill." },
+      { text: "What does the recorded message explain?", answer: "That all representatives are busy." },
+      { text: "Who answers the call?", answer: "Renata, from billing support." },
     ],
     trueFalse: [
       { text: "Tobias finds the number printed at the bottom of the bill.", answer: true },
@@ -83,9 +83,9 @@ export const CHAPTERS = [
     story:
       "Renata asks for my account number, then patiently waits while I read the unfamiliar charge and its exact amount aloud. “I see the charge you're referring to. Let me look into what generated this on our end,” she says calmly. While she checks, I mention that I haven't requested any additional services or changes recently, as far as I remember. She thanks me for the clarification, explaining that this detail will help her narrow down what actually happened. I appreciate that she doesn't sound defensive, treating my concern instead as something reasonable worth properly investigating.",
     questions: [
-      "What does Renata ask Tobias for?",
-      "What does Renata say she will do?",
-      "What does Tobias mention while she checks?",
+      { text: "What does Renata ask Tobias for?", answer: "His account number." },
+      { text: "What does Renata say she will do?", answer: "Look into what generated the charge." },
+      { text: "What does Tobias mention while she checks?", answer: "That he hasn't requested any additional services recently." },
     ],
     trueFalse: [
       { text: "Renata asks for Tobias's account number.", answer: true },
@@ -112,9 +112,9 @@ export const CHAPTERS = [
     story:
       "After a couple of minutes, Renata returns with an explanation, though it's honestly not quite what I expected to hear. Apparently, a technician had visited my address last month, and a routine equipment check was mistakenly billed as an extra service. “This shouldn't have been charged at all, and I sincerely apologize for the confusion,” she explains directly. I ask whether this means the entire charge will simply be removed from my account completely. She confirms that yes, she can reverse it immediately, and my next bill will reflect the corrected amount.",
     questions: [
-      "What does Renata explain after checking?",
-      "What was mistakenly billed as an extra service?",
-      "What does Renata confirm she can do?",
+      { text: "What does Renata explain after checking?", answer: "That a technician's routine equipment check was mistakenly billed as an extra service." },
+      { text: "What was mistakenly billed as an extra service?", answer: "A routine equipment check." },
+      { text: "What does Renata confirm she can do?", answer: "Reverse the charge immediately." },
     ],
     trueFalse: [
       { text: "A technician had visited Tobias's address last month.", answer: true },
@@ -141,9 +141,9 @@ export const CHAPTERS = [
     story:
       "Before ending the call, I ask Renata for a confirmation number, just in case I need proof this conversation actually happened. She provides one immediately, along with a brief written summary that she says will also be emailed to me shortly. “Is there anything else I can help clarify about your account today?” she asks politely before we finish. I mention that everything else on the bill looks correct, so this was genuinely the only issue I had. She thanks me for calling in and confirms the correction should appear within one to two billing cycles.",
     questions: [
-      "What does Tobias ask Renata for before ending the call?",
-      "What does Renata say will also be emailed to him?",
-      "How long does Renata say the correction will take?",
+      { text: "What does Tobias ask Renata for before ending the call?", answer: "A confirmation number." },
+      { text: "What does Renata say will also be emailed to him?", answer: "A brief written summary." },
+      { text: "How long does Renata say the correction will take?", answer: "One to two billing cycles." },
     ],
     trueFalse: [
       { text: "Tobias asks Renata for a confirmation number.", answer: true },
@@ -170,9 +170,9 @@ export const CHAPTERS = [
     story:
       "Later that evening, exactly as promised, an email arrives confirming everything Renata explained during our phone call. The message includes the confirmation number, a brief explanation of the error, and the corrected amount going forward. I appreciate having this in writing, especially in case any question comes up again regarding this specific charge later. I forward the email to myself with a clear subject line, filing it carefully alongside my other important documents. Having everything documented properly gives me a sense of security I honestly hadn't expected from a simple phone call.",
     questions: [
-      "What arrives later that evening?",
-      "What does the email include?",
-      "What does Tobias do with the email?",
+      { text: "What arrives later that evening?", answer: "An email confirming everything Renata explained." },
+      { text: "What does the email include?", answer: "The confirmation number, explanation, and corrected amount." },
+      { text: "What does Tobias do with the email?", answer: "Forwards it to himself and files it." },
     ],
     trueFalse: [
       { text: "An email arrives confirming everything Renata explained.", answer: true },
@@ -199,9 +199,9 @@ export const CHAPTERS = [
     story:
       "A month later, my next bill arrives, and I open it immediately, curious whether the correction was actually applied properly. Scanning the total, I feel relief seeing it matches what I would normally expect to pay each month. The itemized section confirms the service adjustment fee has been completely removed, exactly as Renata had promised. There's also a small note referencing the confirmation number, which reassures me this wasn't simply forgotten or overlooked somehow. Seeing everything corrected properly makes the entire earlier hassle feel considerably less frustrating in hindsight.",
     questions: [
-      "What does Tobias do when his next bill arrives?",
-      "What does Tobias feel seeing the total?",
-      "What does the itemized section confirm?",
+      { text: "What does Tobias do when his next bill arrives?", answer: "Opens it immediately to check the correction." },
+      { text: "What does Tobias feel seeing the total?", answer: "Relief." },
+      { text: "What does the itemized section confirm?", answer: "That the service adjustment fee has been removed." },
     ],
     trueFalse: [
       { text: "Tobias opens his next bill immediately, curious about the correction.", answer: true },
@@ -228,9 +228,9 @@ export const CHAPTERS = [
     story:
       "Over dinner with a friend, I mention the whole billing situation, partly amused now that it's fully resolved. She admits she usually just pays whatever a bill says, rarely questioning charges even when something looks slightly off. I explain that, in my experience, companies generally want to fix genuine mistakes once they're clearly pointed out. On the other hand, staying silent usually just means quietly overpaying for something that was never actually correct. She laughs, saying she'll probably start double-checking her own bills a little more carefully from now on.",
     questions: [
-      "Who does Tobias mention the situation to?",
-      "What does the friend admit about her own habits?",
-      "What does Tobias explain about companies?",
+      { text: "Who does Tobias mention the situation to?", answer: "A friend, over dinner." },
+      { text: "What does the friend admit about her own habits?", answer: "That she usually just pays whatever the bill says." },
+      { text: "What does Tobias explain about companies?", answer: "That they generally want to fix genuine mistakes once pointed out." },
     ],
     trueFalse: [
       { text: "Tobias mentions the situation to a friend over dinner.", answer: true },
@@ -257,9 +257,9 @@ export const CHAPTERS = [
     story:
       "Since this experience, I've started a small habit of reviewing every bill line by line before simply setting it aside. It takes only a couple of extra minutes each month, though it genuinely gives me more confidence about my finances overall. I've created a simple folder where I keep confirmation numbers and emails, just in case something similar happens again. Although most months nothing unusual ever appears, having the habit itself feels reassuring rather than tedious or unnecessary. This small routine, born from one frustrating phone call, has quietly become something I genuinely value now.",
     questions: [
-      "What habit has Tobias started since this experience?",
-      "How long does this habit take each month?",
-      "What has Tobias created to keep records?",
+      { text: "What habit has Tobias started since this experience?", answer: "Reviewing every bill line by line." },
+      { text: "How long does this habit take each month?", answer: "A couple of extra minutes." },
+      { text: "What has Tobias created to keep records?", answer: "A simple folder for confirmation numbers and emails." },
     ],
     trueFalse: [
       { text: "Tobias has started reviewing every bill line by line.", answer: true },
@@ -286,9 +286,9 @@ export const CHAPTERS = [
     story:
       "Looking back on the entire situation, I realize how easily I could have simply paid the incorrect charge without questioning it at all. If I had assumed the bill was automatically correct, I would have quietly overpaid for a mistake that wasn't even mine. Instead, staying curious and calling to ask calmly allowed Renata to actually investigate and fix the real problem. I've learned that questioning an unfamiliar charge politely is always worth the extra ten minutes it takes. In the end, this small dispute taught me something genuinely useful about paying closer attention to my own finances.",
     questions: [
-      "What does Tobias realize looking back on this situation?",
-      "What might have happened if he had assumed the bill was correct?",
-      "What has Tobias learned about questioning unfamiliar charges?",
+      { text: "What does Tobias realize looking back on this situation?", answer: "How easily he could have just paid the incorrect charge." },
+      { text: "What might have happened if he had assumed the bill was correct?", answer: "He would have quietly overpaid." },
+      { text: "What has Tobias learned about questioning unfamiliar charges?", answer: "That it's always worth the extra ten minutes." },
     ],
     trueFalse: [
       { text: "Tobias realizes he could have simply paid the wrong charge.", answer: true },

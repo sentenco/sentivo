@@ -28,9 +28,9 @@ export const CHAPTERS = [
     story:
       "Our Environmental Club has recently learned that the school plans to replace the community garden with a parking expansion. Everyone agrees this decision seems shortsighted, but the club has split sharply over how we should actually respond. Teodoro insists we organize a public protest outside the administration building, arguing that visibility creates real pressure for change. Winnie counters that a protest might alienate the very administrators we'd need to eventually persuade toward reversing the decision. As club president, I realize this disagreement threatens to derail our shared goal entirely, unless I can find some way to bridge it.",
     questions: [
-      "What has the school planned to do with the community garden?",
-      "What does Teodoro insist the club should do?",
-      "What does Winnie counter about a protest?",
+      { text: "What has the school planned to do with the community garden?", answer: "Replace it with a parking expansion." },
+      { text: "What does Teodoro insist the club should do?", answer: "Organize a public protest." },
+      { text: "What does Winnie counter about a protest?", answer: "That it might alienate the administrators they need to persuade." },
     ],
     trueFalse: [
       { text: "The school plans to replace the garden with a parking expansion.", answer: true },
@@ -57,9 +57,9 @@ export const CHAPTERS = [
     story:
       "After the meeting, I ask Teodoro to explain his reasoning more fully, curious what's actually driving his strong conviction. He tells me about a similar situation at another school, where quiet lobbying had dragged on for months without any real result. Only after students organized a visible, well-covered protest did the administration finally take the issue seriously enough to act. He argues that given our limited time before the construction begins, we simply can't afford a slow, uncertain approach. I understand his frustration, though I also wonder whether that other school's specific situation genuinely applies to ours.",
     questions: [
-      "What does Simone ask Teodoro to do?",
-      "What example does Teodoro give from another school?",
-      "What does Teodoro argue about their limited time?",
+      { text: "What does Simone ask Teodoro to do?", answer: "Explain his reasoning more fully." },
+      { text: "What example does Teodoro give from another school?", answer: "That quiet lobbying dragged on for months until a protest worked." },
+      { text: "What does Teodoro argue about their limited time?", answer: "That they can't afford a slow, uncertain approach." },
     ],
     trueFalse: [
       { text: "Simone asks Teodoro to explain his reasoning more fully.", answer: true },
@@ -86,9 +86,9 @@ export const CHAPTERS = [
     story:
       "I have a similar conversation with Winnie, who pulls up research she'd compiled about the administration's decision-making patterns historically. She explains that our principal tends to respond defensively to public criticism, often digging in rather than reconsidering a position. Given this pattern, Winnie argues, a protest might actually make the administration less likely to reverse course, not more. She suggests instead requesting a formal meeting, backed by clear data about the garden's environmental and educational value. I find her reasoning compelling too, though I recognize it requires patience Teodoro clearly feels we don't currently have.",
     questions: [
-      "What research has Winnie compiled?",
-      "What does Winnie say about how the principal responds to criticism?",
-      "What does Winnie suggest instead of a protest?",
+      { text: "What research has Winnie compiled?", answer: "About the administration's decision-making patterns." },
+      { text: "What does Winnie say about how the principal responds to criticism?", answer: "That she responds defensively and digs in." },
+      { text: "What does Winnie suggest instead of a protest?", answer: "Requesting a formal meeting backed by data." },
     ],
     trueFalse: [
       { text: "Winnie has compiled research about the administration's decision patterns.", answer: true },
@@ -115,9 +115,9 @@ export const CHAPTERS = [
     story:
       "Sitting alone that evening, I try mapping out both perspectives honestly, rather than simply picking whichever argument felt more persuasive emotionally. Teodoro's urgency seems justified, given how little time remains before construction genuinely begins on the site. Winnie's caution also seems justified, given what she knows specifically about how our particular administration tends to react. I realize that whichever approach we choose exclusively, we risk alienating either the timeline or the relationship we'd need for lasting success. Perhaps, I think, the answer isn't choosing one approach over the other, but finding a way to combine them.",
     questions: [
-      "What does Simone try to do sitting alone that evening?",
-      "Why does Teodoro's urgency seem justified?",
-      "What does Simone begin to think might be the answer?",
+      { text: "What does Simone try to do sitting alone that evening?", answer: "Map out both perspectives honestly." },
+      { text: "Why does Teodoro's urgency seem justified?", answer: "Because little time remains before construction begins." },
+      { text: "What does Simone begin to think might be the answer?", answer: "Combining both approaches instead of choosing one." },
     ],
     trueFalse: [
       { text: "Simone tries mapping out both perspectives honestly.", answer: true },
@@ -144,9 +144,9 @@ export const CHAPTERS = [
     story:
       "At the next meeting, I propose a two-phase plan, hoping it might genuinely satisfy both Teodoro's urgency and Winnie's caution. First, we'd request a formal meeting with data, giving the administration a fair, respectful chance to reconsider privately. However, if that meeting doesn't produce a real commitment within two weeks, we'd move forward with a public demonstration instead. This way, I explain, we're not choosing between patience and pressure, but sequencing them strategically together. Teodoro looks skeptical initially, though he admits the timeline gives him something concrete to hold onto.",
     questions: [
-      "What does Simone propose at the next meeting?",
-      "What happens first in the two-phase plan?",
-      "What happens if the meeting doesn't produce a commitment?",
+      { text: "What does Simone propose at the next meeting?", answer: "A two-phase plan." },
+      { text: "What happens first in the two-phase plan?", answer: "Requesting a formal meeting with data." },
+      { text: "What happens if the meeting doesn't produce a commitment?", answer: "They'd move forward with a public demonstration." },
     ],
     trueFalse: [
       { text: "Simone proposes a two-phase plan.", answer: true },
@@ -173,9 +173,9 @@ export const CHAPTERS = [
     story:
       "Winnie and I request a formal meeting with the principal, bringing carefully organized data about the garden's educational and environmental value. The principal listens politely, though her expression remains difficult to read throughout most of our presentation. She mentions budget pressures and safety requirements, explaining the parking decision wasn't made carelessly or without genuine consideration. Nevertheless, she agrees to review our proposal formally, promising a decision within the two-week window we'd requested. Leaving her office, I feel cautiously hopeful, though I remind myself this outcome remains genuinely uncertain either way.",
     questions: [
-      "What do Simone and Winnie bring to the meeting?",
-      "What does the principal mention about the decision?",
-      "What does the principal agree to?",
+      { text: "What do Simone and Winnie bring to the meeting?", answer: "Carefully organized data about the garden's value." },
+      { text: "What does the principal mention about the decision?", answer: "Budget pressures and safety requirements." },
+      { text: "What does the principal agree to?", answer: "Review the proposal formally within two weeks." },
     ],
     trueFalse: [
       { text: "Winnie and Simone bring carefully organized data to the meeting.", answer: true },
@@ -202,9 +202,9 @@ export const CHAPTERS = [
     story:
       "While waiting for the principal's decision, Teodoro and I begin quietly preparing for a potential demonstration, just in case it's actually needed. He seems genuinely more at ease now, having accepted that patience, at least temporarily, doesn't mean giving up entirely. We sketch signs and plan logistics together, an odd but oddly productive collaboration between two people who'd initially disagreed sharply. Winnie checks in occasionally too, mentioning she respects that we're preparing responsibly rather than assuming the meeting will definitely succeed. This waiting period, though tense, teaches me that patience and preparation aren't actually opposites after all.",
     questions: [
-      "What do Teodoro and Simone begin preparing while waiting?",
-      "How does Teodoro seem now, compared to before?",
-      "What does Winnie mention when she checks in?",
+      { text: "What do Teodoro and Simone begin preparing while waiting?", answer: "A potential demonstration." },
+      { text: "How does Teodoro seem now, compared to before?", answer: "More at ease." },
+      { text: "What does Winnie mention when she checks in?", answer: "That she respects them preparing responsibly." },
     ],
     trueFalse: [
       { text: "Teodoro and Simone begin preparing for a potential demonstration.", answer: true },
@@ -231,9 +231,9 @@ export const CHAPTERS = [
     story:
       "Exactly on the deadline, an email arrives from the principal's office, and I read it aloud to the gathered club members immediately. She's decided to preserve most of the garden, redesigning the parking plan to require fewer spaces than originally proposed. It's not a complete victory, she admits, but a genuine compromise that respects both the school's needs and the students' concerns. Teodoro cheers loudly, while Winnie simply smiles, quietly satisfied that the patient approach had actually worked. I feel enormous relief, grateful that combining both strategies had led to an outcome neither approach alone might have achieved.",
     questions: [
-      "What arrives exactly on the deadline?",
-      "What has the principal decided?",
-      "How do Teodoro and Winnie each react?",
+      { text: "What arrives exactly on the deadline?", answer: "An email from the principal's office." },
+      { text: "What has the principal decided?", answer: "To preserve most of the garden with a redesigned parking plan." },
+      { text: "How do Teodoro and Winnie each react?", answer: "Teodoro cheers loudly; Winnie smiles, quietly satisfied." },
     ],
     trueFalse: [
       { text: "An email arrives exactly on the deadline.", answer: true },
@@ -260,9 +260,9 @@ export const CHAPTERS = [
     story:
       "A few weeks later, the three of us sit together in the newly preserved garden, reflecting on how the whole process unfolded. Teodoro admits that, had we gone straight to a protest, he's not entirely sure it would have worked as smoothly as it eventually did. Winnie, meanwhile, admits that without the credible threat of a protest, the administration may have simply delayed responding indefinitely. Both acknowledge that the other's approach, however different from their own instinct, contributed something genuinely necessary to the outcome. Listening to them, I feel proud that mediating didn't mean silencing either perspective, but combining their strengths.",
     questions: [
-      "Where do the three of them sit together a few weeks later?",
-      "What does Teodoro admit about going straight to a protest?",
-      "What does Winnie admit about the credible threat of a protest?",
+      { text: "Where do the three of them sit together a few weeks later?", answer: "In the newly preserved garden." },
+      { text: "What does Teodoro admit about going straight to a protest?", answer: "That he's not sure it would have worked as smoothly." },
+      { text: "What does Winnie admit about the credible threat of a protest?", answer: "That without it, the administration may have delayed indefinitely." },
     ],
     trueFalse: [
       { text: "The three of them sit together in the preserved garden.", answer: true },
@@ -289,9 +289,9 @@ export const CHAPTERS = [
     story:
       "Looking back on the entire situation, I realize how differently things might have unfolded had I simply sided with one approach over the other. If I had chosen only urgency or only patience, we likely would have lost either valuable time or a valuable relationship with the administration. Instead, taking the time to genuinely understand both perspectives allowed us to build something stronger than either alone. I've learned that mediation, at its best, doesn't mean compromise in the sense of everyone losing something. In the end, this experience taught me that combining seemingly opposite strengths can produce outcomes neither side imagined possible alone.",
     questions: [
-      "What does Simone realize looking back on the situation?",
-      "What might have happened if she had chosen only one approach?",
-      "What has Simone learned about mediation at its best?",
+      { text: "What does Simone realize looking back on the situation?", answer: "How differently things might have unfolded had she sided with one approach." },
+      { text: "What might have happened if she had chosen only one approach?", answer: "They'd have lost either valuable time or a valuable relationship." },
+      { text: "What has Simone learned about mediation at its best?", answer: "That it doesn't mean compromise where everyone loses something." },
     ],
     trueFalse: [
       { text: "Simone realizes things might have unfolded differently with one approach.", answer: true },

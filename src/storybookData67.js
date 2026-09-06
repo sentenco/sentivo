@@ -28,9 +28,9 @@ export const CHAPTERS = [
     story:
       "Late one evening, a message pops up in our class group chat claiming Beatriz had cheated on last week's history exam. I don't recognize the source immediately, though the message spreads within minutes, with dozens of replies piling up rapidly. Some students seem to accept it as fact instantly, while others question where this information had actually come from originally. I scroll through the thread uneasily, noticing Beatriz hasn't responded, which somehow makes the whole situation feel worse. Whatever the truth turns out to be, I sense this rumor has already caused damage that won't be easily undone.",
     questions: [
-      "What does the message claim about Beatriz?",
-      "How quickly does the message spread?",
-      "What does Malik notice about Beatriz's response?",
+      { text: "What does the message claim about Beatriz?", answer: "That she cheated on last week's history exam." },
+      { text: "How quickly does the message spread?", answer: "Within minutes." },
+      { text: "What does Malik notice about Beatriz's response?", answer: "That she hasn't responded." },
     ],
     trueFalse: [
       { text: "The message claims Beatriz cheated on last week's exam.", answer: true },
@@ -57,9 +57,9 @@ export const CHAPTERS = [
     story:
       "Curious about where this claim originated, I scroll back further, trying to trace the message to its actual first appearance. Eventually, I find it: Otis had posted the original claim, saying he'd heard it secondhand from someone in another class. This detail concerns me considerably, since secondhand information, especially something this serious, ought to be verified before being shared publicly. I message Otis privately, asking whether he'd actually confirmed any of this before posting it to the entire group. He responds casually, saying he'd simply assumed it was true because multiple people had apparently mentioned something similar.",
     questions: [
-      "What does Malik do to find the source of the claim?",
-      "Who posted the original claim, and where had he heard it?",
-      "What does Malik ask Otis privately?",
+      { text: "What does Malik do to find the source of the claim?", answer: "Scrolls back to trace the message's first appearance." },
+      { text: "Who posted the original claim, and where had he heard it?", answer: "Otis, secondhand from someone in another class." },
+      { text: "What does Malik ask Otis privately?", answer: "Whether he'd actually confirmed any of it." },
     ],
     trueFalse: [
       { text: "Malik scrolls back to trace the message's original appearance.", answer: true },
@@ -86,9 +86,9 @@ export const CHAPTERS = [
     story:
       "I find myself genuinely torn about what to do next, caught between two competing instincts that both feel legitimate. On one hand, Otis is someone I've known for years, and calling him out publicly might damage our friendship considerably. On the other hand, Beatriz is being unfairly judged based on nothing more than an unverified secondhand claim. I remind myself that loyalty to a friend shouldn't mean staying silent while someone else gets hurt unfairly. Given this reasoning, I decide that saying something, however uncomfortable, seems like the only genuinely fair option available.",
     questions: [
-      "What two competing instincts does Malik feel torn between?",
-      "Why might calling Otis out publicly be difficult?",
-      "What does Malik decide about staying silent?",
+      { text: "What two competing instincts does Malik feel torn between?", answer: "Loyalty to Otis and fairness to Beatriz." },
+      { text: "Why might calling Otis out publicly be difficult?", answer: "It might damage their years-long friendship." },
+      { text: "What does Malik decide about staying silent?", answer: "That it shouldn't mean letting someone else get hurt unfairly." },
     ],
     trueFalse: [
       { text: "Malik feels torn between two competing instincts.", answer: true },
@@ -115,9 +115,9 @@ export const CHAPTERS = [
     story:
       "I find Otis alone before class and explain, as calmly as I can manage, why this situation genuinely concerns me. I point out that spreading unverified claims, especially ones this serious, can cause real harm regardless of whether they're true. Otis initially seems defensive, insisting he hadn't meant any real damage by simply sharing what he'd heard. However, as I continue explaining Beatriz's likely perspective, his expression gradually shifts from defensiveness toward genuine discomfort instead. By the end of our conversation, he admits, somewhat reluctantly, that he probably should have verified things first.",
     questions: [
-      "What does Malik explain to Otis?",
-      "How does Otis initially react?",
-      "What does Otis admit by the end of the conversation?",
+      { text: "What does Malik explain to Otis?", answer: "That spreading unverified claims can cause real harm." },
+      { text: "How does Otis initially react?", answer: "Defensively." },
+      { text: "What does Otis admit by the end of the conversation?", answer: "That he probably should have verified things first." },
     ],
     trueFalse: [
       { text: "Malik finds Otis alone before class to talk.", answer: true },
@@ -144,9 +144,9 @@ export const CHAPTERS = [
     story:
       "Deciding I also need to speak with Beatriz directly, I approach her carefully, aware she might reasonably distrust anyone right now. She admits she's seen the messages and had genuinely considered not coming to school at all this week. I apologize on behalf of the group chat generally, even though I hadn't personally spread the original claim myself. She appreciates this, though she mentions that apologies alone won't necessarily undo the damage already done to her reputation. Given this, I ask what she thinks would actually help the situation moving forward from here.",
     questions: [
-      "Why does Malik decide he needs to speak with Beatriz?",
-      "What had Beatriz genuinely considered doing?",
-      "What does Beatriz mention about apologies alone?",
+      { text: "Why does Malik decide he needs to speak with Beatriz?", answer: "To address the situation directly." },
+      { text: "What had Beatriz genuinely considered doing?", answer: "Not coming to school that week." },
+      { text: "What does Beatriz mention about apologies alone?", answer: "That they won't necessarily undo the damage." },
     ],
     trueFalse: [
       { text: "Malik decides he needs to speak with Beatriz directly.", answer: true },
@@ -173,9 +173,9 @@ export const CHAPTERS = [
     story:
       "Otis and I agree that a public correction in the group chat is necessary, given how publicly the rumor had spread. He writes a message admitting the original claim was unverified and apologizing directly to Beatriz for the harm caused. Some students respond supportively, though a few seem oddly reluctant to fully let go of the original, more dramatic story. I add my own message, gently reminding everyone that spreading unverified claims can hurt real people regardless of intent. Watching the conversation shift, even slightly, toward accountability feels like a small but genuinely meaningful victory.",
     questions: [
-      "What do Otis and Malik agree is necessary?",
-      "What does Otis's message admit?",
-      "How do some students respond to the correction?",
+      { text: "What do Otis and Malik agree is necessary?", answer: "A public correction in the group chat." },
+      { text: "What does Otis's message admit?", answer: "That the claim was unverified, and apologizes to Beatriz." },
+      { text: "How do some students respond to the correction?", answer: "Supportively, though a few seem reluctant to let go of the story." },
     ],
     trueFalse: [
       { text: "Otis and Malik agree a public correction is necessary.", answer: true },
@@ -202,9 +202,9 @@ export const CHAPTERS = [
     story:
       "The next day, Beatriz mentions she'd seen the correction message and appreciated that Otis had actually taken responsibility publicly. She admits it doesn't completely erase how the past week had felt, though it genuinely helps somewhat. I ask whether she thinks Otis's apology felt sincere, given everything that had happened between them. She considers this carefully, then says that his willingness to admit fault publicly, in spite of the social risk, seemed like real accountability. Hearing her perspective directly, rather than assuming how she felt, strikes me as something I should have done earlier.",
     questions: [
-      "What does Beatriz mention the next day?",
-      "What does Beatriz say about the past week?",
-      "What does Beatriz think about Otis's apology?",
+      { text: "What does Beatriz mention the next day?", answer: "That she'd seen the correction and appreciated it." },
+      { text: "What does Beatriz say about the past week?", answer: "That it doesn't completely erase how it felt, but it helps." },
+      { text: "What does Beatriz think about Otis's apology?", answer: "That admitting fault publicly was real accountability." },
     ],
     trueFalse: [
       { text: "Beatriz mentions she'd seen the correction message.", answer: true },
@@ -231,9 +231,9 @@ export const CHAPTERS = [
     story:
       "Our homeroom teacher, having heard about the situation, dedicates part of a class period to discussing online responsibility more broadly. Several students share their own experiences with rumors, both as the person who spread one and the person harmed by one. Otis speaks up unprompted, admitting publicly what he'd already told me privately about not verifying information first. This openness, moreover, seems to shift the classroom's mood from awkward silence toward genuine, thoughtful reflection instead. I realize this single incident has sparked a conversation that might actually change how people behave going forward.",
     questions: [
-      "What does the homeroom teacher dedicate part of the class to?",
-      "What do several students share?",
-      "What does Otis do during this class discussion?",
+      { text: "What does the homeroom teacher dedicate part of the class to?", answer: "Discussing online responsibility." },
+      { text: "What do several students share?", answer: "Their own experiences with rumors." },
+      { text: "What does Otis do during this class discussion?", answer: "Admits publicly what he'd told Malik privately." },
     ],
     trueFalse: [
       { text: "The homeroom teacher dedicates class time to online responsibility.", answer: true },
@@ -260,9 +260,9 @@ export const CHAPTERS = [
     story:
       "A few weeks later, I notice Beatriz and Otis sitting at the same lunch table, something that would have seemed unlikely just recently. Their conversation seems cautious but genuine, neither pretending the incident hadn't happened nor dwelling on it constantly either. I join them, and we talk about something unrelated entirely, the ordinary kind of conversation that somehow feels meaningful given everything before it. Watching this unfold, I realize that accountability, when handled honestly, can actually rebuild trust rather than permanently destroying it. This experience has taught me something about patience I hadn't fully appreciated before this happened.",
     questions: [
-      "What does Malik notice a few weeks later?",
-      "How does their conversation seem?",
-      "What does Malik realize about accountability?",
+      { text: "What does Malik notice a few weeks later?", answer: "Beatriz and Otis sitting at the same lunch table." },
+      { text: "How does their conversation seem?", answer: "Cautious but genuine." },
+      { text: "What does Malik realize about accountability?", answer: "That it can rebuild trust rather than destroy it." },
     ],
     trueFalse: [
       { text: "Malik notices Beatriz and Otis sitting at the same table.", answer: true },
@@ -289,9 +289,9 @@ export const CHAPTERS = [
     story:
       "Looking back on the entire situation, I realize how easily I could have simply stayed silent and let the rumor run its course. Had I chosen silence, Beatriz might have continued suffering unfairly, while Otis never learned anything meaningful from the situation either. Instead, choosing to speak up, however uncomfortable it initially felt, allowed genuine accountability and eventual healing to actually happen. I've learned that loyalty to a friend shouldn't mean protecting them from consequences they genuinely need to face. In the end, this experience taught me that fairness sometimes requires more courage than simply staying quiet.",
     questions: [
-      "What does Malik realize looking back on the situation?",
-      "What might have happened had he chosen silence?",
-      "What has Malik learned about loyalty and fairness?",
+      { text: "What does Malik realize looking back on the situation?", answer: "How easily he could have stayed silent." },
+      { text: "What might have happened had he chosen silence?", answer: "Beatriz would have kept suffering, and Otis would have learned nothing." },
+      { text: "What has Malik learned about loyalty and fairness?", answer: "That loyalty shouldn't mean protecting a friend from consequences they need to face." },
     ],
     trueFalse: [
       { text: "Malik realizes he could have simply stayed silent.", answer: true },
