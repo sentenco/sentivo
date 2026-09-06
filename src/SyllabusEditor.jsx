@@ -17,6 +17,27 @@ import {
 } from "./syllabusTypes";
 import ConfirmDialog from "./ConfirmDialog";
 
+// Curriculum lessons (Kids Discover, Teens Ignite, Adults Groundwork) are
+// built to run as a centered popup window and self-resize to fit their own
+// content once opened (see any of those lesson files' window.opener effect)
+// -- opening them as a plain new tab strands them at browser-window size
+// instead. Every other skill (Grammar, Vocabulary, Speaking, Writing,
+// Reading, Articles) is a regular full-page app route with no such popup
+// behavior built in, so those stay a normal link.
+function openCurriculumPopup(path) {
+  const screenW = window.screen.availWidth || 1600;
+  const screenH = window.screen.availHeight || 900;
+  const w = Math.min(820, screenW - 40);
+  const h = Math.min(860, screenH - 80);
+  const left = Math.max(0, Math.floor((screenW - w) / 2));
+  const top = Math.max(0, Math.floor((screenH - h) / 2));
+  window.open(
+    path,
+    "sentivoLessonPlayer",
+    `width=${w},height=${h},left=${left},top=${top},toolbar=no,location=no,menubar=no,status=no,scrollbars=yes,resizable=yes`
+  );
+}
+
 const SKILL_LABELS = {
   grammar: "Grammar",
   vocabulary: "Vocabulary",
@@ -517,9 +538,15 @@ export default function SyllabusEditor() {
                     </button>
                   )}
                   {s.href ? (
-                    <a className="syl-open-btn" href={s.href} target="_blank" rel="noreferrer">
-                      Open →
-                    </a>
+                    s.skill === "curriculum" ? (
+                      <button type="button" className="syl-open-btn" onClick={() => openCurriculumPopup(s.href)}>
+                        Open →
+                      </button>
+                    ) : (
+                      <a className="syl-open-btn" href={s.href} target="_blank" rel="noreferrer">
+                        Open →
+                      </a>
+                    )
                   ) : (
                     <span className="syl-open-btn syl-open-btn--off" title="No linked lesson yet">Open →</span>
                   )}
@@ -692,7 +719,7 @@ const CSS = `
 .syl-open-btn {
   display: inline-flex; align-items: center; justify-content: center; white-space: nowrap;
   font-family: 'Inter', sans-serif; font-weight: 700; font-size: 12.5px; color: #FFFFFF;
-  background: #0E8074; border-radius: 999px; padding: 8px 14px; text-decoration: none; cursor: pointer;
+  background: #0E8074; border: none; border-radius: 999px; padding: 8px 14px; text-decoration: none; cursor: pointer;
 }
 .syl-open-btn--off { background: #E5E0DC; color: #9A93A6; cursor: default; }
 
