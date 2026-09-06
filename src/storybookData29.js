@@ -24,9 +24,9 @@ export const CHAPTERS = [
     story:
       "Ms. Ortiz announces that our class will join the school science fair next month, and everyone starts talking excitedly. “You may work with a partner,” she says, and I immediately turn to Finn, my closest friend in science class. “Let's make an erupting volcano!” Finn suggests enthusiastically, and I agree right away because it sounds both exciting and a little challenging. We write our idea on the sign-up sheet, feeling proud that we chose something more interesting than a simple poster. This project already feels like the beginning of a fun adventure together.",
     questions: [
-      "What event does Ms. Ortiz announce?",
-      "What project does Finn suggest?",
-      "How does Nora feel about the idea?",
+      { text: "What event does Ms. Ortiz announce?", answer: "The school science fair." },
+      { text: "What project does Finn suggest?", answer: "An erupting volcano." },
+      { text: "How does Nora feel about the idea?", answer: "Excited, though a little challenged." },
     ],
     trueFalse: [
       { text: "Ms. Ortiz announces a school science fair.", answer: true },
@@ -49,9 +49,9 @@ export const CHAPTERS = [
     story:
       "After school, Finn comes to my house so we can gather everything we need. We check our list carefully: baking soda, vinegar, red food coloring, and clay for the volcano's shape. “My mom says we can use the kitchen table,” I tell Finn as we spread out the materials. We also grab an old plastic bottle to use as the volcano's core. “I think we have everything now,” Finn says, double-checking the list one more time. Looking at all our supplies laid out neatly, I feel a mix of excitement and nervousness about actually building the project tomorrow.",
     questions: [
-      "What materials do they gather?",
-      "Where do they plan to build the project?",
-      "What will they use as the volcano's core?",
+      { text: "What materials do they gather?", answer: "Baking soda, vinegar, red food coloring, and clay." },
+      { text: "Where do they plan to build the project?", answer: "The kitchen table." },
+      { text: "What will they use as the volcano's core?", answer: "An old plastic bottle." },
     ],
     trueFalse: [
       { text: "They gather baking soda and vinegar.", answer: true },
@@ -74,9 +74,9 @@ export const CHAPTERS = [
     story:
       "On Saturday, we spend the whole afternoon shaping our volcano. I mold soft gray clay around the plastic bottle, while Finn carefully smooths the sides to make it look more realistic. “It needs to look like a real mountain,” Finn says, adding small bumps and ridges along the surface. Our hands get covered in sticky clay, but neither of us minds at all. After almost two hours of careful work, our volcano finally starts looking impressive. “This actually looks amazing,” I say proudly, admiring our creation sitting on the table between us.",
     questions: [
-      "What does Nora mold around the bottle?",
-      "What does Finn add to make it realistic?",
-      "How long does building the volcano take?",
+      { text: "What does Nora mold around the bottle?", answer: "Soft gray clay." },
+      { text: "What does Finn add to make it realistic?", answer: "Small bumps and ridges." },
+      { text: "How long does building the volcano take?", answer: "Almost two hours." },
     ],
     trueFalse: [
       { text: "Nora molds clay around a plastic bottle.", answer: true },
@@ -99,9 +99,9 @@ export const CHAPTERS = [
     story:
       "Excited to see results, we pour baking soda into the volcano's opening, followed quickly by vinegar mixed with red food coloring. We wait eagerly, expecting a dramatic eruption, but instead, only a weak, watery fizz bubbles out slowly. “That's it?” Finn asks, clearly disappointed by the underwhelming result. I feel my excitement deflate a little too. “Something must be wrong with our mixture,” I say, staring at the barely-bubbling liquid. Our first attempt is definitely not the exciting eruption we imagined, and we both realize we need to figure out what went wrong.",
     questions: [
-      "What do they pour into the volcano first?",
-      "What happens instead of a dramatic eruption?",
-      "How do Nora and Finn feel about the result?",
+      { text: "What do they pour into the volcano first?", answer: "Baking soda, followed by vinegar mixed with red food coloring." },
+      { text: "What happens instead of a dramatic eruption?", answer: "Only a weak, watery fizz." },
+      { text: "How do Nora and Finn feel about the result?", answer: "Disappointed." },
     ],
     trueFalse: [
       { text: "They pour baking soda then vinegar into the volcano.", answer: true },
@@ -124,9 +124,9 @@ export const CHAPTERS = [
     story:
       "Determined to solve the mystery, we open a science book Finn brought about chemical reactions. “Maybe we didn't use enough baking soda,” Finn suggests, reading through the explanation carefully. We learn that the reaction between baking soda and vinegar needs a proper ratio to create a strong, bubbly eruption. “We only used a small spoonful,” I realize, checking our earlier measurements. Understanding the science behind our failed experiment actually makes the problem feel less frustrating and more like an interesting puzzle we can definitely solve together with a little more research.",
     questions: [
-      "What book do they read?",
-      "What does Finn suggest might be the problem?",
-      "How does understanding the science make Nora feel?",
+      { text: "What book do they read?", answer: "A science book about chemical reactions." },
+      { text: "What does Finn suggest might be the problem?", answer: "That they didn't use enough baking soda." },
+      { text: "How does understanding the science make Nora feel?", answer: "Less frustrated -- more like solving an interesting puzzle." },
     ],
     trueFalse: [
       { text: "They read a science book about chemical reactions.", answer: true },
@@ -149,9 +149,9 @@ export const CHAPTERS = [
     story:
       "Armed with our new knowledge, we clean out the volcano and prepare for a second attempt. This time, I carefully measure three full tablespoons of baking soda instead of just one small spoonful. Finn writes down our exact measurements on a notepad, so we can remember what worked. We pour the vinegar mixture in slowly, watching closely. The eruption is definitely bigger this time, but it still stops quickly instead of bubbling for a long time. “Better, but not perfect yet,” Finn says, and we both agree to try adjusting the recipe one more time.",
     questions: [
-      "How much baking soda does Nora measure this time?",
-      "What does Finn do to remember their measurements?",
-      "How does the second attempt compare to the first?",
+      { text: "How much baking soda does Nora measure this time?", answer: "Three full tablespoons." },
+      { text: "What does Finn do to remember their measurements?", answer: "Writes them down on a notepad." },
+      { text: "How does the second attempt compare to the first?", answer: "Bigger, but it still stops quickly." },
     ],
     trueFalse: [
       { text: "Nora measures three tablespoons of baking soda.", answer: true },
@@ -174,9 +174,9 @@ export const CHAPTERS = [
     story:
       "For our third attempt, we add a small amount of dish soap to make the reaction foamier and longer-lasting, an idea Finn found in another book. We measure everything precisely and pour the mixture in together. This time, bright orange foam erupts dramatically out of the volcano, bubbling and flowing down the sides for almost a full minute! “YES! We did it!” I shout, jumping up and down excitedly. Finn high-fives me with a huge grin. After three attempts and lots of patience, we finally created the impressive eruption we had originally imagined.",
     questions: [
-      "What new ingredient do they add this time?",
-      "What happens with the third attempt?",
-      "How do Nora and Finn react?",
+      { text: "What new ingredient do they add this time?", answer: "A small amount of dish soap." },
+      { text: "What happens with the third attempt?", answer: "Bright orange foam erupts dramatically for almost a minute." },
+      { text: "How do Nora and Finn react?", answer: "They shout and high-five, excited." },
     ],
     trueFalse: [
       { text: "They add dish soap to the mixture.", answer: true },
@@ -199,9 +199,9 @@ export const CHAPTERS = [
     story:
       "With our volcano finally working, we shift our focus to preparing what we will say at the fair. We make a colorful poster explaining the chemical reaction, complete with diagrams and simple explanations. “We should explain why our first two attempts failed too,” Finn suggests, “Judges might like knowing we learned from mistakes.” We practice our presentation multiple times in my living room, taking turns speaking clearly and confidently. By our fifth practice round, we finally feel ready and comfortable explaining every single detail about our exciting, if slightly messy, science journey.",
     questions: [
-      "What do they make to explain their project?",
-      "What does Finn suggest including?",
-      "How many times do they practice?",
+      { text: "What do they make to explain their project?", answer: "A colorful poster with diagrams." },
+      { text: "What does Finn suggest including?", answer: "Explaining why their first two attempts failed." },
+      { text: "How many times do they practice?", answer: "Five times." },
     ],
     trueFalse: [
       { text: "They make a poster with diagrams.", answer: true },
@@ -224,9 +224,9 @@ export const CHAPTERS = [
     story:
       "The school gymnasium buzzes with excitement as families and judges walk between colorful project tables. My stomach feels full of nervous butterflies as our turn approaches. When the judges arrive at our table, Finn and I take deep breaths and begin explaining our project confidently, just like we practiced. We even demonstrate the eruption live, and the judges' eyes widen with delighted surprise as orange foam bubbles impressively down the sides. “Excellent explanation of the chemistry, and great persistence,” one judge says, writing notes on her clipboard. I feel incredibly proud of everything we accomplished together.",
     questions: [
-      "How does Nora feel before the judges arrive?",
-      "What do Nora and Finn demonstrate live?",
-      "What does the judge say about their project?",
+      { text: "How does Nora feel before the judges arrive?", answer: "Full of nervous butterflies." },
+      { text: "What do Nora and Finn demonstrate live?", answer: "The eruption." },
+      { text: "What does the judge say about their project?", answer: "Excellent explanation of the chemistry, and great persistence." },
     ],
     trueFalse: [
       { text: "Nora feels nervous butterflies before the judges arrive.", answer: true },
@@ -249,9 +249,9 @@ export const CHAPTERS = [
     story:
       "At the end of the fair, the principal announces the winners, and my heart pounds with anticipation. We don't win first place, but we receive a special ribbon for “Most Improved Project” after judges heard about our three attempts. Holding the blue ribbon together, Finn and I feel just as proud as if we had won everything. “We didn't give up, and that's what really matters,” Finn says, and I completely agree with him. This whole experience taught me that failing at first isn't the end of a project, it's simply part of the process toward something great.",
     questions: [
-      "What ribbon do Nora and Finn receive?",
-      "Why do they receive this ribbon?",
-      "What lesson does Nora learn from the experience?",
+      { text: "What ribbon do Nora and Finn receive?", answer: "Most Improved Project." },
+      { text: "Why do they receive this ribbon?", answer: "Because the judges heard about their three attempts." },
+      { text: "What lesson does Nora learn from the experience?", answer: "That failing at first isn't the end, it's part of the process toward something great." },
     ],
     trueFalse: [
       { text: "They win first place in the fair.", answer: false },

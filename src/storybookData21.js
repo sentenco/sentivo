@@ -30,9 +30,9 @@ export const CHAPTERS = [
     story:
       "This week, I see a sign in the bookshop window that says, “Part-time helper wanted.” I feel nervous, but I decide to ask about the job. Inside, a kind man introduces himself as Mr. Dizon, the shop owner. He asks me simple questions about school and why I want to work. I tell him I love books and I want to earn my own money. Mr. Dizon smiles and says, “I like your energy, Kayla.” He asks me to come back on Saturday to start training. I walk home feeling proud that I did not give up my nerves. My first job interview goes better than I ever expected.",
     questions: [
-      "Where does Kayla see the sign?",
-      "What does Mr. Dizon ask Kayla?",
-      "How does Kayla feel walking home?",
+      { text: "Where does Kayla see the sign?", answer: "In the bookshop window." },
+      { text: "What does Mr. Dizon ask Kayla?", answer: "Simple questions about school and why she wants to work." },
+      { text: "How does Kayla feel walking home?", answer: "Proud." },
     ],
     trueFalse: [
       { text: "Kayla sees a sign in the bookshop window.", answer: true },
@@ -59,9 +59,9 @@ export const CHAPTERS = [
     story:
       "On Saturday, I arrive early at the small, cozy bookshop. Mr. Dizon shows me around and introduces me to my coworker, Josh. Josh smiles and says, “Welcome to the team, Kayla.” The shop smells like old paper and fresh coffee from the small café corner. Mr. Dizon explains where different book genres are kept on the shelves. I learn where the mystery novels, comics, and children's books are placed. Josh shows me how to greet customers with a friendly smile. By the end of the day, I already feel more comfortable in the shop. My first day at the bookshop feels like a good beginning.",
     questions: [
-      "Who is Kayla's coworker?",
-      "What does the shop smell like?",
-      "How does Kayla feel by the end of the day?",
+      { text: "Who is Kayla's coworker?", answer: "Josh." },
+      { text: "What does the shop smell like?", answer: "Old paper and fresh coffee." },
+      { text: "How does Kayla feel by the end of the day?", answer: "More comfortable." },
     ],
     trueFalse: [
       { text: "Josh is Kayla's coworker.", answer: true },
@@ -88,9 +88,9 @@ export const CHAPTERS = [
     story:
       "Today, Josh teaches me how to use the cash register carefully. “Press this button first, then scan the book,” he explains slowly. My hands feel a little shaky as I try the register myself. I scan a book, and the price shows correctly on the screen. A customer buys two books, and I count her change carefully. “You did that perfectly, Kayla,” Josh says with an encouraging smile. I feel proud that I did not make any mistakes today. By the afternoon, I can use the register without feeling nervous at all. Learning something new at work feels exciting, even when it is a little scary.",
     questions: [
-      "What does Josh teach Kayla?",
-      "What does Kayla do for the customer?",
-      "How does Kayla feel by the afternoon?",
+      { text: "What does Josh teach Kayla?", answer: "How to use the cash register." },
+      { text: "What does Kayla do for the customer?", answer: "Counts her change carefully." },
+      { text: "How does Kayla feel by the afternoon?", answer: "Not nervous at all." },
     ],
     trueFalse: [
       { text: "Josh teaches Kayla the cash register.", answer: true },
@@ -117,9 +117,9 @@ export const CHAPTERS = [
     story:
       "This afternoon, a customer comes in with an angry look on his face. “This book has a torn page, I want my money back,” he says loudly. My heart beats fast, and I am not sure what to say. Josh notices and calmly walks over to help me. “I'm sorry about that, sir, let me get you a new copy,” Josh says kindly. The customer's face softens, and he thanks Josh for the quick help. After the customer leaves, Josh tells me it is okay to ask for help sometimes. “Every worker needs help with hard customers,” he explains gently. I feel thankful to have a kind coworker like Josh.",
     questions: [
-      "Why is the customer angry?",
-      "What does Josh do to help?",
-      "What does Josh tell Kayla afterward?",
+      { text: "Why is the customer angry?", answer: "Because his book has a torn page." },
+      { text: "What does Josh do to help?", answer: "Offers the customer a new copy." },
+      { text: "What does Josh tell Kayla afterward?", answer: "That it's okay to ask for help sometimes." },
     ],
     trueFalse: [
       { text: "The customer's book has a torn page.", answer: true },
@@ -146,9 +146,9 @@ export const CHAPTERS = [
     story:
       "Today, Mr. Dizon asks me to organize the mystery book section. The shelves look messy, with books placed in the wrong order. I sort the books carefully by the author's last name. It takes a long time, but I enjoy the quiet, focused work. Josh helps me for a while and tells me fun facts about famous authors. By the end of the afternoon, the shelf looks neat and organized. Mr. Dizon walks by and says, “This looks fantastic, Kayla.” I feel a real sense of accomplishment looking at the tidy shelf. Small tasks like this make me appreciate working at the bookshop even more.",
     questions: [
-      "What section does Kayla organize?",
-      "How does Kayla sort the books?",
-      "What does Mr. Dizon say about the shelf?",
+      { text: "What section does Kayla organize?", answer: "The mystery book section." },
+      { text: "How does Kayla sort the books?", answer: "By the author's last name." },
+      { text: "What does Mr. Dizon say about the shelf?", answer: "This looks fantastic, Kayla." },
     ],
     trueFalse: [
       { text: "Kayla organizes the mystery section.", answer: true },
@@ -175,9 +175,9 @@ export const CHAPTERS = [
     story:
       "At the end of my second week, Mr. Dizon hands me an envelope. Inside is my very first paycheck from my very first job. I feel a rush of pride looking at the money I earned myself. “Thank you for working so hard, Kayla,” Mr. Dizon says warmly. I decide to save most of the money for something special later. I also want to buy a small gift for my little sister. Josh congratulates me and says everyone remembers their first paycheck forever. That evening, I show my parents the envelope with a huge smile. Earning my own money for the first time feels incredibly rewarding.",
     questions: [
-      "What does Mr. Dizon hand Kayla?",
-      "What does Kayla decide to do with the money?",
-      "How does Kayla feel earning her own money?",
+      { text: "What does Mr. Dizon hand Kayla?", answer: "An envelope with her first paycheck." },
+      { text: "What does Kayla decide to do with the money?", answer: "Save most of it and buy a gift for her sister." },
+      { text: "How does Kayla feel earning her own money?", answer: "Incredibly rewarding." },
     ],
     trueFalse: [
       { text: "Mr. Dizon hands Kayla an envelope.", answer: true },
@@ -204,9 +204,9 @@ export const CHAPTERS = [
     story:
       "This Saturday, the bookshop is busier than I have ever seen it. A famous author visits for a book signing event in the afternoon. Long lines of excited readers wait outside the shop's front door. Josh and I work quickly, helping customers find books and get them signed. My feet feel tired from standing and walking all day long. Despite the busy chaos, I feel excited to be part of something special. Mr. Dizon thanks Josh and me for our hard work at the end. “We could not have done this without you two,” he says gratefully. Busy days like this make working at the bookshop feel truly meaningful.",
     questions: [
-      "What event happens at the bookshop?",
-      "What do Josh and Kayla do all day?",
-      "What does Mr. Dizon say at the end?",
+      { text: "What event happens at the bookshop?", answer: "A famous author's book signing." },
+      { text: "What do Josh and Kayla do all day?", answer: "Help customers find books and get them signed." },
+      { text: "What does Mr. Dizon say at the end?", answer: "We could not have done this without you two." },
     ],
     trueFalse: [
       { text: "A famous author visits for a signing.", answer: true },
@@ -233,9 +233,9 @@ export const CHAPTERS = [
     story:
       "Today, I accidentally give a customer the wrong change at the register. I do not notice my mistake until Josh checks the register later. My face turns red, and I feel embarrassed about the error. “Everyone makes mistakes, Kayla, it's how we learn,” Josh says kindly. We call the customer, who kindly returns the extra change the next day. Mr. Dizon is not angry and simply reminds me to count carefully. I feel relieved that my mistake did not cause a bigger problem. From that day, I always double-check the change before giving it to customers. Making a mistake taught me to be more careful and responsible.",
     questions: [
-      "What mistake does Kayla make?",
-      "What does Josh say about mistakes?",
-      "What does Kayla do differently from that day?",
+      { text: "What mistake does Kayla make?", answer: "She gives a customer the wrong change." },
+      { text: "What does Josh say about mistakes?", answer: "Everyone makes mistakes, it's how we learn." },
+      { text: "What does Kayla do differently from that day?", answer: "Always double-checks the change." },
     ],
     trueFalse: [
       { text: "Kayla gives the wrong change.", answer: true },
@@ -262,9 +262,9 @@ export const CHAPTERS = [
     story:
       "After a few weeks, Josh and I talk more during our quiet shifts. We discover we both love the same fantasy book series. Josh recommends a new book, and I recommend one back to him. During our breaks, we talk about school, friends, and our favorite movies. Josh invites me to a small book club he attends after school. “You would really like it, Kayla,” he says with a warm smile. I realize that Josh is becoming more than just a coworker now. Working at the bookshop gave me a job, but also a good friend. I feel thankful for this unexpected friendship at my first job.",
     questions: [
-      "What do Kayla and Josh both love?",
-      "What does Josh invite Kayla to?",
-      "What does Kayla realize about Josh?",
+      { text: "What do Kayla and Josh both love?", answer: "The same fantasy book series." },
+      { text: "What does Josh invite Kayla to?", answer: "A small book club he attends after school." },
+      { text: "What does Kayla realize about Josh?", answer: "That he is becoming more than just a coworker." },
     ],
     trueFalse: [
       { text: "Kayla and Josh love the same book series.", answer: true },
@@ -291,9 +291,9 @@ export const CHAPTERS = [
     story:
       "It has been three months since I started working at the bookshop. I know the shelves, the register, and every regular customer's favorite genre. Mr. Dizon trusts me to close the shop on my own now. Josh and I have become close friends, not just coworkers. I remember my nervous first interview and how far I have come. My parents say they are proud of how responsible I have become. I saved enough money to buy my sister a special birthday gift. Working my first job taught me more than I ever expected to learn. I feel proud of the person I am becoming through this job.",
     questions: [
-      "How long has Kayla worked at the bookshop?",
-      "What does Mr. Dizon trust Kayla to do now?",
-      "What does Kayla feel proud of?",
+      { text: "How long has Kayla worked at the bookshop?", answer: "Three months." },
+      { text: "What does Mr. Dizon trust Kayla to do now?", answer: "Close the shop on her own." },
+      { text: "What does Kayla feel proud of?", answer: "The person she is becoming through this job." },
     ],
     trueFalse: [
       { text: "Kayla has worked there for three months.", answer: true },

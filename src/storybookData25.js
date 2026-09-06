@@ -24,9 +24,9 @@ export const CHAPTERS = [
     story:
       "This morning, I wake up excited because Mom promised a picnic at the park. I run to the window, but instead of sunshine, I see heavy gray clouds and pouring rain. “Oh no,” I whisper sadly. Sam runs in wearing his shoes already, ready to go, but his face falls too when he looks outside. “The picnic is cancelled,” Mom says gently, seeing our disappointed faces. “I'm sorry, kids.” I feel my excitement disappear completely, replaced by boredom. The whole day suddenly feels ruined, and I flop onto the couch with a heavy sigh.",
     questions: [
-      "What did Mom promise for today?",
-      "What does Ruby see when she looks outside?",
-      "How does Ruby feel when the picnic is cancelled?",
+      { text: "What did Mom promise for today?", answer: "A picnic at the park." },
+      { text: "What does Ruby see when she looks outside?", answer: "Heavy gray clouds and pouring rain." },
+      { text: "How does Ruby feel when the picnic is cancelled?", answer: "Her excitement disappears -- she feels bored and disappointed." },
     ],
     trueFalse: [
       { text: "Mom promised a picnic at the park.", answer: true },
@@ -49,9 +49,9 @@ export const CHAPTERS = [
     story:
       "For almost an hour, Sam and I lie on the couch doing nothing. “There's nothing to do,” Sam complains, kicking his legs. I agree completely, even though we have plenty of toys scattered around the room. Somehow, none of them seem interesting today. I stare at the ceiling and listen to the rain tapping against the window. “I wanted to go outside,” I mutter grumpily. Sam sighs loudly next to me, and we both stay quiet, feeling stuck and a little grumpy about our ruined plans. The afternoon stretches ahead of us, gray and boring.",
     questions: [
-      "What do Ruby and Sam do for an hour?",
-      "What does Sam complain about?",
-      "What sound does Ruby listen to?",
+      { text: "What do Ruby and Sam do for an hour?", answer: "Lie on the couch doing nothing." },
+      { text: "What does Sam complain about?", answer: "That there's nothing to do." },
+      { text: "What sound does Ruby listen to?", answer: "Rain tapping against the window." },
     ],
     trueFalse: [
       { text: "Sam says there's nothing to do.", answer: true },
@@ -74,9 +74,9 @@ export const CHAPTERS = [
     story:
       "Mom walks into the living room and notices our bored, grumpy faces immediately. “I have an idea,” she says with a mischievous smile. “Since we can't go on an outdoor adventure, why don't we have an indoor one instead?” Sam sits up quickly, suddenly curious. “What kind of adventure?” he asks. “A pirate ship adventure!” Mom announces, grabbing cushions from the couch. My boredom disappears instantly, replaced by excitement. “Let's do it!” I shout, jumping off the couch to help. Suddenly, the rainy day feels full of exciting possibilities again.",
     questions: [
-      "What does Mom suggest?",
-      "How does Sam react to Mom's idea?",
-      "What happens to Ruby's boredom?",
+      { text: "What does Mom suggest?", answer: "An indoor pirate ship adventure." },
+      { text: "How does Sam react to Mom's idea?", answer: "He sits up quickly, curious." },
+      { text: "What happens to Ruby's boredom?", answer: "It disappears instantly, replaced by excitement." },
     ],
     trueFalse: [
       { text: "Mom suggests an indoor pirate ship adventure.", answer: true },
@@ -99,9 +99,9 @@ export const CHAPTERS = [
     story:
       "We start building our pirate ship right away. Sam and I stack couch cushions to make the ship's tall sides, while Mom drapes a big blue blanket underneath for the ocean. “Every ship needs a mast!” Mom says, handing us a broomstick to stand upright between two cushions. We tie a small towel to the top for a sail. It takes almost twenty minutes, but soon our living room transforms into a real pirate ship. “This looks amazing,” Sam says, his eyes wide with wonder. I feel proud of what we built together as a team.",
     questions: [
-      "What do they use to make the ship's sides?",
-      "What does the broomstick become?",
-      "How long does building the ship take?",
+      { text: "What do they use to make the ship's sides?", answer: "Couch cushions." },
+      { text: "What does the broomstick become?", answer: "The ship's mast." },
+      { text: "How long does building the ship take?", answer: "Almost twenty minutes." },
     ],
     trueFalse: [
       { text: "They stack cushions for the ship's sides.", answer: true },
@@ -124,9 +124,9 @@ export const CHAPTERS = [
     story:
       "“All aboard!” I shout, climbing onto the ship with an imaginary captain's hat. Sam takes his place at the pretend steering wheel, ready for adventure. “Captain Ruby, which direction should we sail?” he asks, playing along perfectly. “Straight ahead, into the storm!” I announce dramatically, pointing at the rainy window. Outside, thunder rumbles softly, and it fits perfectly into our pretend ocean storm. We rock back and forth on our cushion ship, pretending huge waves are crashing around us. This imaginative game makes the real rain outside feel exciting instead of disappointing.",
     questions: [
-      "What does Ruby pretend to be?",
-      "What does Sam do at the steering wheel?",
-      "How does the real thunder fit into their game?",
+      { text: "What does Ruby pretend to be?", answer: "The captain." },
+      { text: "What does Sam do at the steering wheel?", answer: "Steers the pretend ship." },
+      { text: "How does the real thunder fit into their game?", answer: "It becomes the sound of their pretend ocean storm." },
     ],
     trueFalse: [
       { text: "Ruby pretends to be the captain.", answer: true },
@@ -149,9 +149,9 @@ export const CHAPTERS = [
     story:
       "“Every good pirate adventure needs a treasure map,” I tell Sam, grabbing paper and crayons. I draw our living room, marking the couch, the bookshelf, and the kitchen door with an X for hidden treasure. While Sam is busy building a lookout tower from blocks, I sneak away and hide small toys and a bag of cookies around the house. When I finish, I show Sam the map, and his eyes light up with excitement. “Real treasure?” he asks hopefully. “Only one way to find out,” I say with a mysterious smile, and we grab the map together.",
     questions: [
-      "What does Ruby draw?",
-      "What does Ruby hide around the house?",
-      "How does Sam react to the map?",
+      { text: "What does Ruby draw?", answer: "A treasure map of the living room." },
+      { text: "What does Ruby hide around the house?", answer: "Small toys and a bag of cookies." },
+      { text: "How does Sam react to the map?", answer: "His eyes light up with excitement." },
     ],
     trueFalse: [
       { text: "Ruby draws a treasure map.", answer: true },
@@ -174,9 +174,9 @@ export const CHAPTERS = [
     story:
       "As we search for the first clue, a sudden bright flash lights up the window, followed by a loud crack of thunder. Sam jumps and covers his ears, his face pale with fear. “I don't like that sound,” he whispers, holding onto my arm tightly. I remember feeling scared of thunder too when I was younger, so I understand exactly how he feels. “It's okay,” I say softly, sitting beside him. “Let's pretend the thunder is cannons from an enemy pirate ship, and we are the brave crew sailing right through it.” Slowly, Sam's fear turns into excitement again.",
     questions: [
-      "What happens outside that scares Sam?",
-      "How does Sam react to the thunder?",
-      "How does Ruby help Sam feel better?",
+      { text: "What happens outside that scares Sam?", answer: "A bright flash of lightning and loud thunder." },
+      { text: "How does Sam react to the thunder?", answer: "He jumps and covers his ears, scared." },
+      { text: "How does Ruby help Sam feel better?", answer: "She pretends the thunder is cannons from an enemy pirate ship." },
     ],
     trueFalse: [
       { text: "A flash of lightning and thunder scares Sam.", answer: true },
@@ -199,9 +199,9 @@ export const CHAPTERS = [
     story:
       "Following the map carefully, we search behind the couch, under the bookshelf, and finally near the kitchen door. “X marks the spot!” I announce, pointing at a small potted plant. Sam digs behind it eagerly and pulls out the hidden bag of cookies and toys. “We found the treasure!” he shouts, jumping up and down with joy. We celebrate our victory with a cookie snack, sitting proudly on our pirate ship. The thunder still rumbles outside, but neither of us feels scared anymore. Our imaginative adventure has turned this rainy day into something truly memorable.",
     questions: [
-      "Where do they finally find the treasure?",
-      "What was hidden as treasure?",
-      "How do they celebrate?",
+      { text: "Where do they finally find the treasure?", answer: "Near the kitchen door, behind a potted plant." },
+      { text: "What was hidden as treasure?", answer: "A bag of cookies and toys." },
+      { text: "How do they celebrate?", answer: "With a cookie snack on their pirate ship." },
     ],
     trueFalse: [
       { text: "They find the treasure near the kitchen door.", answer: true },
@@ -224,9 +224,9 @@ export const CHAPTERS = [
     story:
       "By late afternoon, the rain slowly starts to stop, and soft sunlight peeks through the clouds. “Look!” Sam shouts, pointing out the window. A bright rainbow stretches across the sky, its colors clear and beautiful. We press our faces against the glass, watching in amazement. “Maybe tomorrow we can finally have our picnic,” Mom says, joining us at the window. I smile, realizing that although our original plan was ruined, today turned out to be full of unexpected fun anyway. Sometimes the best adventures happen when plans change completely.",
     questions: [
-      "What does Sam see out the window?",
-      "What does Mom say about tomorrow?",
-      "What does Ruby realize about today?",
+      { text: "What does Sam see out the window?", answer: "A rainbow." },
+      { text: "What does Mom say about tomorrow?", answer: "Maybe they can finally have their picnic." },
+      { text: "What does Ruby realize about today?", answer: "That the best adventures happen when plans change." },
     ],
     trueFalse: [
       { text: "Sam sees a rainbow in the sky.", answer: true },
@@ -249,9 +249,9 @@ export const CHAPTERS = [
     story:
       "That evening, as I get ready for bed, I think back on our whole rainy day. We built a ship, sailed through a pretend storm, found hidden treasure, and even watched a beautiful rainbow together. I realize that this unplanned day became one of the best days I have had in a long time, maybe even better than a regular picnic would have been. Sam gives me a tired, happy hug and says, “Can we build the ship again next time it rains?” I laugh and agree completely, already looking forward to our next rainy day adventure.",
     questions: [
-      "What did Ruby and Sam do during their rainy day?",
-      "How does Ruby feel about the day by the end?",
-      "What does Sam ask about next time?",
+      { text: "What did Ruby and Sam do during their rainy day?", answer: "Built a ship, sailed through a pretend storm, found treasure, and watched a rainbow." },
+      { text: "How does Ruby feel about the day by the end?", answer: "That it was one of the best days she's had." },
+      { text: "What does Sam ask about next time?", answer: "If they can build the ship again next time it rains." },
     ],
     trueFalse: [
       { text: "They built a ship and found hidden treasure.", answer: true },

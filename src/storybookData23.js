@@ -29,9 +29,9 @@ export const CHAPTERS = [
     story:
       "On Friday, Chloe gives me a small card at school. It says, “Sleepover at my house on Saturday!” I feel excited, but I am also a little nervous because I have never slept at a friend's house before. “Will you come?” Chloe asks, smiling. “Yes, of course!” I say quickly. When I get home, I ask Mom right away. She says yes, and I jump up and down happily. That night, I keep thinking about what a sleepover is really like. I am excited, but a small part of me is worried too.",
     questions: [
-      "What does Chloe give Mia at school?",
-      "How does Mia feel about the sleepover?",
-      "Who does Mia ask when she gets home?",
+      { text: "What does Chloe give Mia at school?", answer: "A small invitation card." },
+      { text: "How does Mia feel about the sleepover?", answer: "Excited but a little nervous." },
+      { text: "Who does Mia ask when she gets home?", answer: "Mom." },
     ],
     trueFalse: [
       { text: "Chloe invites Mia to a sleepover.", answer: true },
@@ -54,9 +54,9 @@ export const CHAPTERS = [
     story:
       "On Saturday morning, I start packing my bag for the sleepover. I fold my favorite pajamas and put in my toothbrush. Then I look at my old teddy bear on the bed. I have slept with him every night since I was small, but I feel shy about bringing him. “What if Chloe thinks I'm a baby?” I ask myself. After thinking for a moment, I decide to pack him quietly at the bottom of my bag, under my clothes, so no one will notice. Mom watches me and smiles, but she does not say anything about the bear.",
     questions: [
-      "What does Mia pack first?",
-      "Why does Mia feel shy about the teddy bear?",
-      "Where does Mia hide the bear in her bag?",
+      { text: "What does Mia pack first?", answer: "Her favorite pajamas and toothbrush." },
+      { text: "Why does Mia feel shy about the teddy bear?", answer: "She worries Chloe will think she's a baby." },
+      { text: "Where does Mia hide the bear in her bag?", answer: "At the bottom, under her clothes." },
     ],
     trueFalse: [
       { text: "Mia packs her pajamas and toothbrush.", answer: true },
@@ -79,9 +79,9 @@ export const CHAPTERS = [
     story:
       "When we arrive at Chloe's house, Mrs. Park opens the door with a big smile. “Welcome, Mia! We are so happy you're here,” she says warmly. Mom gives me a tight hug and says, “Have so much fun. I will pick you up tomorrow morning.” As Mom's car drives away, I feel a small flutter in my stomach. This is the first time I will sleep in a different house without my family. Chloe grabs my hand and says, “Come on, let's go play!” Her excitement makes me smile, and my nervous feeling starts to disappear a little.",
     questions: [
-      "Who opens the door when Mia arrives?",
-      "What does Mom say before she leaves?",
-      "How does Mia feel when the car drives away?",
+      { text: "Who opens the door when Mia arrives?", answer: "Mrs. Park." },
+      { text: "What does Mom say before she leaves?", answer: "Have so much fun, I will pick you up tomorrow morning." },
+      { text: "How does Mia feel when the car drives away?", answer: "A small flutter of nervousness." },
     ],
     trueFalse: [
       { text: "Mrs. Park welcomes Mia warmly.", answer: true },
@@ -104,9 +104,9 @@ export const CHAPTERS = [
     story:
       "For dinner, Mrs. Park orders a big cheese pizza, and Chloe and I sit on the couch to eat. “This is my favorite kind of night,” Chloe says, and I agree completely. After dinner, we choose a funny movie about a talking dog. We laugh so hard at one scene that pizza almost falls out of my mouth! By the time the movie ends, I am not thinking about home anymore. I am having more fun than I expected. “This sleepover is already better than I imagined,” I tell Chloe, and she grins proudly, happy that I am enjoying myself.",
     questions: [
-      "What do Mia and Chloe eat for dinner?",
-      "What kind of movie do they watch?",
-      "How does Mia feel by the end of the movie?",
+      { text: "What do Mia and Chloe eat for dinner?", answer: "Cheese pizza." },
+      { text: "What kind of movie do they watch?", answer: "A funny movie about a talking dog." },
+      { text: "How does Mia feel by the end of the movie?", answer: "Having more fun than expected -- not thinking about home." },
     ],
     trueFalse: [
       { text: "They eat cheese pizza for dinner.", answer: true },
@@ -129,9 +129,9 @@ export const CHAPTERS = [
     story:
       "After the movie, Chloe has an amazing idea. “Let's build a blanket fort!” she says excitedly. We pull blankets off the beds and drape them over chairs and the couch. It takes us almost thirty minutes, but soon we have a huge fort with a soft floor of pillows inside. We crawl in with flashlights and pretend it is a secret castle. “I am the queen, and you are the knight,” Chloe announces, giggling. We invent a whole adventure story together, and I realize this is the most fun I have had in a very long time.",
     questions: [
-      "What does Chloe suggest building?",
-      "How long does the fort take to build?",
-      "What do Mia and Chloe pretend the fort is?",
+      { text: "What does Chloe suggest building?", answer: "A blanket fort." },
+      { text: "How long does the fort take to build?", answer: "Almost thirty minutes." },
+      { text: "What do Mia and Chloe pretend the fort is?", answer: "A secret castle." },
     ],
     trueFalse: [
       { text: "Chloe suggests building a blanket fort.", answer: true },
@@ -154,9 +154,9 @@ export const CHAPTERS = [
     story:
       "Later that night, Mrs. Park turns off the lights, and Chloe falls asleep quickly inside our fort. I lie awake in my sleeping bag, listening to the quiet house. It sounds different from my own home. Slowly, I start to feel a little sad, and I miss my own bed and my mom's goodnight kiss. Quietly, so no one can hear, I take my teddy bear out of my bag and hold him close. I feel a little silly, but holding him makes me feel calmer. I close my eyes and try to think about the fun day we had instead.",
     questions: [
-      "What does Chloe do quickly after the lights go off?",
-      "Why does Mia start to feel sad?",
-      "What does Mia take out of her bag?",
+      { text: "What does Chloe do quickly after the lights go off?", answer: "Falls asleep." },
+      { text: "Why does Mia start to feel sad?", answer: "Because the house sounds different and she misses her own bed and mom." },
+      { text: "What does Mia take out of her bag?", answer: "Her teddy bear." },
     ],
     trueFalse: [
       { text: "Chloe falls asleep quickly.", answer: true },
@@ -179,9 +179,9 @@ export const CHAPTERS = [
     story:
       "Suddenly, Chloe sits up and whispers, “Mia, are you okay?” I did not know she was still a little awake. I feel embarrassed, but I decide to tell her the truth. “I miss my mom a little,” I whisper back, holding my bear tighter. Instead of laughing, Chloe smiles kindly and says, “I felt the same way at my first sleepover too.” She shows me a small stuffed rabbit hidden in her own bag, and we both start laughing quietly. Talking about it makes me feel much better, and I realize being a little homesick is completely normal.",
     questions: [
-      "What does Chloe ask Mia?",
-      "How does Chloe react when Mia tells the truth?",
-      "What does Chloe show Mia?",
+      { text: "What does Chloe ask Mia?", answer: "Are you okay?" },
+      { text: "How does Chloe react when Mia tells the truth?", answer: "She smiles kindly and says she felt the same way at her first sleepover." },
+      { text: "What does Chloe show Mia?", answer: "Her own small stuffed rabbit hidden in her bag." },
     ],
     trueFalse: [
       { text: "Chloe laughs at Mia for missing her mom.", answer: false },
@@ -204,9 +204,9 @@ export const CHAPTERS = [
     story:
       "The next morning, delicious smells wake me up. I climb out of the fort and follow the smell to the kitchen. Mrs. Park is making pancakes shaped like little stars! “Good morning, sleepy girls,” she says cheerfully. We eat our star pancakes with syrup, and the sunny kitchen feels warm and happy. “Did you sleep well?” Mrs. Park asks. “Yes, mostly,” I say, and Chloe winks at me because she knows our secret. After breakfast, I feel proud that I made it through my first whole night away from home.",
     questions: [
-      "What shape are the pancakes?",
-      "Who makes the pancakes?",
-      "How does Mia feel after breakfast?",
+      { text: "What shape are the pancakes?", answer: "Little stars." },
+      { text: "Who makes the pancakes?", answer: "Mrs. Park." },
+      { text: "How does Mia feel after breakfast?", answer: "Proud she made it through her first night away from home." },
     ],
     trueFalse: [
       { text: "The pancakes are shaped like stars.", answer: true },
@@ -229,9 +229,9 @@ export const CHAPTERS = [
     story:
       "Soon after breakfast, Mom's car pulls into the driveway. I feel happy to see her, but also a little sad that the sleepover is ending so quickly. “Did you have fun?” Mom asks, hugging me tightly. “The best time ever!” I say, and I really mean it. Chloe hugs me goodbye and says, “Let's do this again soon!” As we drive home, I look out the window and think about everything that happened: the fort, the pancakes, and the quiet talk in the dark. I am already excited to tell Mom every single detail.",
     questions: [
-      "How does Mia feel when Mom arrives?",
-      "What does Mia say when Mom asks if she had fun?",
-      "What does Chloe say as Mia leaves?",
+      { text: "How does Mia feel when Mom arrives?", answer: "Happy, but a little sad the sleepover is ending." },
+      { text: "What does Mia say when Mom asks if she had fun?", answer: "The best time ever!" },
+      { text: "What does Chloe say as Mia leaves?", answer: "Let's do this again soon!" },
     ],
     trueFalse: [
       { text: "Mia feels only sad and nothing else when Mom arrives.", answer: false },
@@ -254,9 +254,9 @@ export const CHAPTERS = [
     story:
       "At home, I tell Mom everything about the sleepover, from the pizza and movie to the secret blanket fort. “It sounds like you had an incredible time,” Mom says, smiling. I even tell her about missing home a little, and she says that feeling is completely normal for a first sleepover. “Next time, it will feel even easier,” she promises. That night, I hug my teddy bear in my own bed and think about how brave I was. I already cannot wait for the next sleepover, and I know exactly what I want to pack.",
     questions: [
-      "Who does Mia tell everything to?",
-      "What does Mom say about feeling homesick?",
-      "How does Mia feel about the next sleepover?",
+      { text: "Who does Mia tell everything to?", answer: "Mom." },
+      { text: "What does Mom say about feeling homesick?", answer: "That it is completely normal for a first sleepover." },
+      { text: "How does Mia feel about the next sleepover?", answer: "Excited -- she can't wait." },
     ],
     trueFalse: [
       { text: "Mia tells Mom about the sleepover.", answer: true },

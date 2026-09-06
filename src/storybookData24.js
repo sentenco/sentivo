@@ -25,9 +25,9 @@ export const CHAPTERS = [
     story:
       "Every week, one student in our class gets to take care of Nibbles, our classroom rabbit. On Monday, Ms. Bailey announces that it is my turn this week. “Leo, you will feed Nibbles and clean her cage every day,” she explains. I feel proud because taking care of Nibbles is a big responsibility. Zoe, who had the job last week, gives me some helpful tips. “Nibbles loves carrots, and she gets scared by loud noises,” she says. I promise to take excellent care of our small, fluffy friend all week long.",
     questions: [
-      "What does Leo's new job involve?",
-      "Who had the job before Leo?",
-      "What tip does Zoe give Leo?",
+      { text: "What does Leo's new job involve?", answer: "Feeding Nibbles and cleaning her cage every day." },
+      { text: "Who had the job before Leo?", answer: "Zoe." },
+      { text: "What tip does Zoe give Leo?", answer: "That Nibbles loves carrots and gets scared by loud noises." },
     ],
     trueFalse: [
       { text: "Leo's job is to feed and clean Nibbles' cage.", answer: true },
@@ -50,9 +50,9 @@ export const CHAPTERS = [
     story:
       "During recess, I learn everything about caring for Nibbles. First, I fill her water bottle and add fresh hay to her cage. Then I offer her a small piece of carrot, and she nibbles it happily from my hand. Her whiskers twitch, and her soft fur feels warm when I gently pet her. “She likes you already,” Zoe says with a laugh. I clean the corner of the cage where it is a little messy, just like Zoe showed me. By the end of recess, I feel much more confident about being Nibbles' caretaker.",
     questions: [
-      "What does Leo do first for Nibbles?",
-      "What does Leo offer Nibbles to eat?",
-      "How does Leo feel by the end of recess?",
+      { text: "What does Leo do first for Nibbles?", answer: "Fills her water bottle and adds fresh hay." },
+      { text: "What does Leo offer Nibbles to eat?", answer: "A small piece of carrot." },
+      { text: "How does Leo feel by the end of recess?", answer: "More confident." },
     ],
     trueFalse: [
       { text: "Leo fills the water bottle first.", answer: true },
@@ -75,9 +75,9 @@ export const CHAPTERS = [
     story:
       "On Friday afternoon, Ms. Bailey asks the class an important question. “Nibbles needs a home for the weekend. Who would like to take her?” Many hands go up immediately, including mine, waving excitedly in the air. Ms. Bailey thinks for a moment and then smiles at me. “Leo, since you did such a great job this week, you can take her home,” she says. I feel thrilled but also a little nervous because I have never taken care of a pet by myself for two whole days. Zoe gives me a thumbs up from across the room.",
     questions: [
-      "What does Ms. Bailey ask the class?",
-      "Who does Ms. Bailey choose?",
-      "Why does Leo feel a little nervous?",
+      { text: "What does Ms. Bailey ask the class?", answer: "Who would like to take Nibbles home for the weekend." },
+      { text: "Who does Ms. Bailey choose?", answer: "Leo." },
+      { text: "Why does Leo feel a little nervous?", answer: "He has never taken care of a pet alone for two days." },
     ],
     trueFalse: [
       { text: "Nibbles needs a home for the weekend.", answer: true },
@@ -100,9 +100,9 @@ export const CHAPTERS = [
     story:
       "After school, I carry Nibbles' cage very carefully to the car, making sure not to shake it too much. At home, my little sister runs over excitedly and asks, “Can I pet her? Can I pet her?” I explain to my whole family that Nibbles needs a quiet, safe space and gentle hands. We choose a calm corner of the living room for her cage, away from loud noises. “This is a big responsibility, Leo,” Dad says, “but I know you can handle it.” I nod, feeling determined to be the best rabbit-sitter possible.",
     questions: [
-      "How does Leo carry the cage?",
-      "What does Leo's sister ask?",
-      "Where do they put Nibbles' cage?",
+      { text: "How does Leo carry the cage?", answer: "Very carefully, so it does not shake." },
+      { text: "What does Leo's sister ask?", answer: "Can I pet her?" },
+      { text: "Where do they put Nibbles' cage?", answer: "A calm corner of the living room." },
     ],
     trueFalse: [
       { text: "Leo carries the cage carefully.", answer: true },
@@ -125,9 +125,9 @@ export const CHAPTERS = [
     story:
       "At first, Nibbles seems nervous in her new surroundings. She sits very still in the corner of her cage and does not move much. “Maybe she misses her classroom,” I think to myself. I sit quietly beside her cage and speak in a soft, gentle voice. Slowly, I offer her fresh hay through the cage bars. After a while, she starts hopping around a little and even nibbles on a piece of lettuce. By dinnertime, Nibbles seems much more relaxed, and I feel relieved that she is finally settling into her temporary home.",
     questions: [
-      "How does Nibbles act at first?",
-      "What does Leo do to help her feel better?",
-      "How does Nibbles seem by dinnertime?",
+      { text: "How does Nibbles act at first?", answer: "Nervous -- she sits very still." },
+      { text: "What does Leo do to help her feel better?", answer: "Sits quietly beside her and speaks softly, offering fresh hay." },
+      { text: "How does Nibbles seem by dinnertime?", answer: "Much more relaxed." },
     ],
     trueFalse: [
       { text: "Nibbles seems nervous at first.", answer: true },
@@ -150,9 +150,9 @@ export const CHAPTERS = [
     story:
       "The next morning, I get a terrible surprise. The cage door is open, and Nibbles is nowhere to be seen! My heart starts beating fast, and I feel a wave of panic. “Nibbles is missing!” I shout, and my whole family rushes into the living room. We search under the couch, behind the curtains, and inside every corner of the room. “How did the door open?” Mom asks, checking the latch. I feel terrible, worrying that I forgot to close it properly the night before. We keep searching quietly so we do not scare her further.",
     questions: [
-      "What does Leo discover in the morning?",
-      "How does Leo feel when he sees the empty cage?",
-      "What does the family do to find Nibbles?",
+      { text: "What does Leo discover in the morning?", answer: "The cage door is open and Nibbles is gone." },
+      { text: "How does Leo feel when he sees the empty cage?", answer: "Panicked." },
+      { text: "What does the family do to find Nibbles?", answer: "Search under the couch, behind curtains, and in every corner." },
     ],
     trueFalse: [
       { text: "The cage door is open and Nibbles is gone.", answer: true },
@@ -175,9 +175,9 @@ export const CHAPTERS = [
     story:
       "After ten worried minutes, my sister spots two small ears peeking out from under the couch. “I found her!” she yells excitedly. I lie down on my stomach and reach carefully underneath. Nibbles is sitting there quietly, a little dusty but completely unharmed. I gently scoop her up and hold her close to my chest, feeling my heart slow down with relief. “You scared us so much,” I whisper to her softly. Everyone in my family cheers and hugs each other, relieved that our small adventure ended happily.",
     questions: [
-      "Who spots Nibbles first?",
-      "Where is Nibbles hiding?",
-      "How does Leo feel when he finds her?",
+      { text: "Who spots Nibbles first?", answer: "Leo's sister." },
+      { text: "Where is Nibbles hiding?", answer: "Under the couch." },
+      { text: "How does Leo feel when he finds her?", answer: "Relieved." },
     ],
     trueFalse: [
       { text: "Leo's sister spots Nibbles first.", answer: true },
@@ -200,9 +200,9 @@ export const CHAPTERS = [
     story:
       "That afternoon, Dad and I look closely at Nibbles' cage door together. “The latch is a little loose. That's probably why it opened,” Dad explains. We find a small screwdriver and tighten the latch until it clicks firmly shut. “Now let's test it,” Dad says, and we check the door three times to make sure it stays closed. “Being responsible means fixing problems, not just feeling bad about them,” Dad tells me kindly. I feel proud that we solved the problem together, and I know Nibbles will be much safer for the rest of the weekend.",
     questions: [
-      "What is wrong with the cage door?",
-      "What do Leo and Dad use to fix it?",
-      "What does Dad say about being responsible?",
+      { text: "What is wrong with the cage door?", answer: "The latch is loose." },
+      { text: "What do Leo and Dad use to fix it?", answer: "A small screwdriver." },
+      { text: "What does Dad say about being responsible?", answer: "That it means fixing problems, not just feeling bad about them." },
     ],
     trueFalse: [
       { text: "The latch on the cage is a little loose.", answer: true },
@@ -225,9 +225,9 @@ export const CHAPTERS = [
     story:
       "On Monday morning, I carefully carry Nibbles back to the classroom. Zoe and several other classmates gather around immediately, curious about the weekend. “Did anything exciting happen?” Zoe asks. I take a deep breath and tell them the whole story, from the escape to finding her under the couch. “That sounds so scary!” one classmate says, eyes wide. I explain how Dad and I fixed the latch afterward so it would never happen again. Ms. Bailey listens to my story too, nodding thoughtfully as I finish explaining everything that happened over the weekend.",
     questions: [
-      "What does Leo do on Monday morning?",
-      "What does Zoe ask him?",
-      "Who else listens to Leo's story?",
+      { text: "What does Leo do on Monday morning?", answer: "Carries Nibbles back to the classroom." },
+      { text: "What does Zoe ask him?", answer: "Did anything exciting happen?" },
+      { text: "Who else listens to Leo's story?", answer: "Ms. Bailey." },
     ],
     trueFalse: [
       { text: "Leo carries Nibbles back to the classroom on Monday.", answer: true },
@@ -250,9 +250,9 @@ export const CHAPTERS = [
     story:
       "After hearing my whole story, Ms. Bailey stands up in front of the class. “Leo handled a difficult situation with real responsibility,” she announces. “He stayed calm, found Nibbles safely, and even fixed the problem so it won't happen again.” The whole class claps, and I feel my cheeks turn a little pink from happiness. Zoe leans over and whispers, “You're basically a class hero now!” I laugh, but secretly I feel very proud of myself. I already hope Ms. Bailey picks me for pet duty again very soon, because now I feel ready for anything.",
     questions: [
-      "What does Ms. Bailey say about Leo?",
-      "How does the class react?",
-      "How does Leo feel by the end of the story?",
+      { text: "What does Ms. Bailey say about Leo?", answer: "That he handled a difficult situation with real responsibility." },
+      { text: "How does the class react?", answer: "They clap." },
+      { text: "How does Leo feel by the end of the story?", answer: "Proud." },
     ],
     trueFalse: [
       { text: "Ms. Bailey says Leo handled the situation responsibly.", answer: true },

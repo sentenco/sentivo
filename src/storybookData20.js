@@ -31,9 +31,9 @@ export const CHAPTERS = [
     story:
       "Today, Mom and Dad bring my new baby sister home from the hospital. Her name is Rosie, and she is very small and soft. I look at her tiny hands and tiny little toes. “Do you want to hold her, Ben?” Mom asks me gently. I sit down carefully, and Dad places Rosie in my arms. She feels light, like a small, warm bundle. Rosie opens her eyes for a second and looks at me. “Hi, Rosie, I'm your big brother,” I whisper softly. I feel proud and a little nervous at the same time.",
     questions: [
-      "What is the new baby's name?",
-      "What does Ben look at first?",
-      "How does Ben feel holding Rosie?",
+      { text: "What is the new baby's name?", answer: "Rosie." },
+      { text: "What does Ben look at first?", answer: "Her tiny hands and tiny toes." },
+      { text: "How does Ben feel holding Rosie?", answer: "Proud and a little nervous." },
     ],
     trueFalse: [
       { text: "The baby's name is Rosie.", answer: true },
@@ -56,9 +56,9 @@ export const CHAPTERS = [
     story:
       "That night, Rosie cries loudly, and I cannot fall asleep. Mom walks around the house, holding Rosie and singing softly. “Babies cry because it is how they talk to us,” Mom explains. I put my pillow over my ears, but I can still hear her. In the morning, I feel tired, and so does everyone else. Dad makes coffee and yawns while feeding Rosie her bottle. “Being a baby's family is hard work,” Dad says with a tired smile. I did not know babies could cry so much. I hope Rosie feels better and cries a little less tonight.",
     questions: [
-      "What does Rosie do at night?",
-      "What does Mom say about crying?",
-      "How does everyone feel in the morning?",
+      { text: "What does Rosie do at night?", answer: "She cries loudly." },
+      { text: "What does Mom say about crying?", answer: "That it is how babies talk to us." },
+      { text: "How does everyone feel in the morning?", answer: "Tired." },
     ],
     trueFalse: [
       { text: "Rosie cries loudly at night.", answer: true },
@@ -81,9 +81,9 @@ export const CHAPTERS = [
     story:
       "The next day, I ask Mom if I can help with Rosie. “You can bring me a clean diaper, Ben,” Mom says with a smile. I run to get a soft, clean diaper from the shelf. I also help by holding Rosie's tiny socks while Mom dresses her. “You are such a good helper,” Mom tells me happily. I like feeling useful and important as a big brother. Rosie looks up at me while Mom changes her clothes. I make a silly face, and Rosie's eyes seem to smile a little. Helping with Rosie makes me feel proud of myself.",
     questions: [
-      "What does Ben bring Mom?",
-      "What else does Ben help with?",
-      "How does Ben feel about helping?",
+      { text: "What does Ben bring Mom?", answer: "A clean diaper." },
+      { text: "What else does Ben help with?", answer: "Holding Rosie's tiny socks while Mom dresses her." },
+      { text: "How does Ben feel about helping?", answer: "Proud." },
     ],
     trueFalse: [
       { text: "Ben brings a clean diaper.", answer: true },
@@ -106,9 +106,9 @@ export const CHAPTERS = [
     story:
       "One afternoon, the house feels calm and quiet for a while. I sit on the sofa, and Mom places sleepy Rosie in my arms. She breathes slowly and softly while she sleeps peacefully. I look at her tiny eyelashes and small, round cheeks. I feel warm and calm holding my little sister close. Mom takes a photo of us together on the sofa. “You two look so sweet together,” Mom whispers with a smile. I stay very still so I do not wake Rosie up. This quiet moment with Rosie feels really special to me.",
     questions: [
-      "Where does Ben sit with Rosie?",
-      "What is Rosie doing while Ben holds her?",
-      "What does Mom do?",
+      { text: "Where does Ben sit with Rosie?", answer: "On the sofa." },
+      { text: "What is Rosie doing while Ben holds her?", answer: "Sleeping peacefully." },
+      { text: "What does Mom do?", answer: "Takes a photo of them together." },
     ],
     trueFalse: [
       { text: "Ben sits on the sofa.", answer: true },
@@ -131,9 +131,9 @@ export const CHAPTERS = [
     story:
       "This morning, I lean over Rosie's crib to say good morning. I make a silly face and stick out my tongue playfully. Suddenly, Rosie's little mouth curves into a real smile! “Mom, Dad, come quick! Rosie is smiling!” I shout excitedly. Mom and Dad rush over and see Rosie smiling at me again. “That's her first real smile, Ben!” Mom says with happy tears. I feel so proud that I made my baby sister smile first. Rosie smiles again when I make another silly face. This is one of the happiest moments of my life.",
     questions: [
-      "What does Ben do to Rosie?",
-      "What happens suddenly?",
-      "How does Mom feel about Rosie's first smile?",
+      { text: "What does Ben do to Rosie?", answer: "Makes a silly face and sticks out his tongue." },
+      { text: "What happens suddenly?", answer: "Rosie smiles for the first time." },
+      { text: "How does Mom feel about Rosie's first smile?", answer: "Happy -- she has happy tears." },
     ],
     trueFalse: [
       { text: "Ben makes a silly face.", answer: true },
@@ -156,9 +156,9 @@ export const CHAPTERS = [
     story:
       "Lately, Mom and Dad spend most of their time with Rosie. I feel a little forgotten, even though I know that is silly. Today, I wanted to show Dad my new drawing, but he was busy with Rosie. I feel a small knot of sadness in my stomach. I go to my room and sit quietly by myself. I do not want to be mean, but I feel a little jealous. Nobody notices that I am upset for a little while. I wonder if Mom and Dad still have enough love for me too.",
     questions: [
-      "Who do Mom and Dad spend most time with?",
-      "What did Ben want to show Dad?",
-      "How does Ben feel?",
+      { text: "Who do Mom and Dad spend most time with?", answer: "Rosie." },
+      { text: "What did Ben want to show Dad?", answer: "His new drawing." },
+      { text: "How does Ben feel?", answer: "A little jealous and forgotten." },
     ],
     trueFalse: [
       { text: "Mom and Dad spend time with Rosie.", answer: true },
@@ -181,9 +181,9 @@ export const CHAPTERS = [
     story:
       "That evening, Dad notices I am quiet and sits beside me. “What's wrong, Ben? You seem a little sad today,” he asks gently. I take a deep breath and tell Dad how I feel. “I feel like you and Mom only care about Rosie now,” I say quietly. Dad hugs me tightly and says, “We love you just as much, Ben.” He explains that babies need extra help, but my feelings matter too. Dad looks at my new drawing and says it is wonderful. We spend the next hour together, just Dad and me. Talking about my feelings makes me feel so much better.",
     questions: [
-      "What does Dad notice about Ben?",
-      "What does Ben tell Dad?",
-      "What does Dad say about loving Ben?",
+      { text: "What does Dad notice about Ben?", answer: "That he is quiet and seems a little sad." },
+      { text: "What does Ben tell Dad?", answer: "That he feels like Mom and Dad only care about Rosie now." },
+      { text: "What does Dad say about loving Ben?", answer: "That they love him just as much." },
     ],
     trueFalse: [
       { text: "Dad notices Ben is quiet.", answer: true },
@@ -206,9 +206,9 @@ export const CHAPTERS = [
     story:
       "Today, Mom asks if I want to read a book to Rosie. “She loves the sound of your voice, Ben,” Mom says kindly. I pick my favorite book about a little duck. I sit next to Rosie's crib and open the colorful book. I read slowly and use funny voices for each animal. Rosie looks at me with wide, curious eyes the whole time. She waves her little arms like she is enjoying the story. “You are a wonderful big brother, Ben,” Mom says proudly. Reading to Rosie makes me feel important and loved.",
     questions: [
-      "What does Ben read to Rosie?",
-      "How does Ben read the story?",
-      "What does Rosie do while listening?",
+      { text: "What does Ben read to Rosie?", answer: "A book about a little duck." },
+      { text: "How does Ben read the story?", answer: "Slowly, using funny voices." },
+      { text: "What does Rosie do while listening?", answer: "Waves her little arms." },
     ],
     trueFalse: [
       { text: "Ben reads a book about a duck.", answer: true },
@@ -231,9 +231,9 @@ export const CHAPTERS = [
     story:
       "This afternoon, I hold my finger near Rosie's tiny hand. Her small fingers wrap around mine and hold on tightly. “Look, she's holding my finger!” I say with a big, happy smile. Rosie's grip is surprisingly strong for such a tiny baby. I stay very still so she does not let go. Mom watches us and says, “She really loves her big brother.” I feel a warm, happy feeling inside my chest. Rosie looks up at me and makes a small, happy sound. This little moment makes me love being her big brother even more.",
     questions: [
-      "What does Rosie do to Ben's finger?",
-      "How does Ben describe her grip?",
-      "What does Mom say?",
+      { text: "What does Rosie do to Ben's finger?", answer: "She wraps her fingers around it and holds on tightly." },
+      { text: "How does Ben describe her grip?", answer: "Surprisingly strong." },
+      { text: "What does Mom say?", answer: "She really loves her big brother." },
     ],
     trueFalse: [
       { text: "Rosie grabs Ben's finger.", answer: true },
@@ -256,9 +256,9 @@ export const CHAPTERS = [
     story:
       "It has been one month since Rosie came home with us. I help feed her, sing to her, and make her laugh every day. I do not feel jealous anymore because I know I am loved too. Mom and Dad always make time for both Rosie and me. Rosie smiles big every time she sees my face now. “You are the best big brother, Ben,” Dad says, ruffling my hair. I used to worry that Rosie would take my parents' love away. Now I understand that love grows bigger with every new person. Being Rosie's big brother is one of my favorite things in the whole world.",
     questions: [
-      "How long has Rosie been home?",
-      "What does Ben do for Rosie every day?",
-      "What does Ben understand now about love?",
+      { text: "How long has Rosie been home?", answer: "One month." },
+      { text: "What does Ben do for Rosie every day?", answer: "Helps feed her, sings to her, and makes her laugh." },
+      { text: "What does Ben understand now about love?", answer: "That love grows bigger with every new person." },
     ],
     trueFalse: [
       { text: "Rosie has been home for one month.", answer: true },

@@ -24,9 +24,9 @@ export const CHAPTERS = [
     story:
       "Before I leave for school, I carefully put on my favorite watch, the one Grandpa gave me for my birthday. “Take good care of it,” Grandpa always tells me, since it belonged to him when he was young too. The silver watch ticks quietly on my wrist, making me feel a little more grown up. I check the time proudly, even though I already know we have plenty of time before school starts. This watch means more to me than any other object I own, and I promise myself to always keep it safe and close.",
     questions: [
-      "Who gave Kai the watch?",
-      "How does the watch make Kai feel?",
-      "What does Kai promise himself?",
+      { text: "Who gave Kai the watch?", answer: "Grandpa." },
+      { text: "How does the watch make Kai feel?", answer: "A little more grown up." },
+      { text: "What does Kai promise himself?", answer: "To always keep it safe and close." },
     ],
     trueFalse: [
       { text: "Grandpa gave Kai the watch for his birthday.", answer: true },
@@ -49,9 +49,9 @@ export const CHAPTERS = [
     story:
       "At recess, Ben and I race straight to the monkey bars, our favorite part of the playground. Before climbing, I quickly take off my watch so it won't get scratched, placing it carefully on the nearby bench. “Last one across is a rotten egg!” Ben shouts, already swinging forward. We laugh and compete for almost the entire recess, completely forgetting about everything else around us. When the bell finally rings, we run breathlessly back toward the classroom line, excited and out of breath from all the fun we just had together.",
     questions: [
-      "What is Kai and Ben's favorite part of the playground?",
-      "Why does Kai take off his watch?",
-      "What happens when the bell rings?",
+      { text: "What is Kai and Ben's favorite part of the playground?", answer: "The monkey bars." },
+      { text: "Why does Kai take off his watch?", answer: "So it won't get scratched." },
+      { text: "What happens when the bell rings?", answer: "They run back to the classroom line, out of breath." },
     ],
     trueFalse: [
       { text: "Kai and Ben's favorite spot is the monkey bars.", answer: true },
@@ -74,9 +74,9 @@ export const CHAPTERS = [
     story:
       "Back in the classroom, I sit down at my desk and glance at my wrist to check the time. My stomach suddenly drops. My watch is gone! I remember taking it off at recess, but I completely forgot to pick it back up afterward. Panic rushes through me as I picture Grandpa's disappointed face if I lost his special gift. “This can't be happening,” I whisper to myself, my hands feeling cold and shaky. I raise my hand immediately, hoping Mr. Diaz will let me go back outside to search before it gets too late.",
     questions: [
-      "What does Kai notice is missing?",
-      "What did Kai forget to do?",
-      "How does Kai feel about possibly losing it?",
+      { text: "What does Kai notice is missing?", answer: "His watch." },
+      { text: "What did Kai forget to do?", answer: "Pick it back up after recess." },
+      { text: "How does Kai feel about possibly losing it?", answer: "Panicked." },
     ],
     trueFalse: [
       { text: "Kai notices his watch is missing.", answer: true },
@@ -99,9 +99,9 @@ export const CHAPTERS = [
     story:
       "Mr. Diaz notices my worried face and asks what's wrong. I explain everything quickly, and he tells me to think carefully before panicking further. “Where exactly were you at recess?” he asks calmly. I close my eyes and try to remember every single place I went: the monkey bars, the bench, and then the line for the water fountain. “I placed it on the bench near the monkey bars,” I say slowly, the memory becoming clearer. Retracing my steps in my mind helps me feel a little less panicked and gives me a real place to start searching.",
     questions: [
-      "What does Mr. Diaz ask Kai to do?",
-      "Where does Kai remember placing the watch?",
-      "How does thinking carefully help Kai?",
+      { text: "What does Mr. Diaz ask Kai to do?", answer: "Think carefully about where he was at recess." },
+      { text: "Where does Kai remember placing the watch?", answer: "On the bench near the monkey bars." },
+      { text: "How does thinking carefully help Kai?", answer: "It makes him feel less panicked and gives him a place to start." },
     ],
     trueFalse: [
       { text: "Mr. Diaz tells Kai to think carefully.", answer: true },
@@ -124,9 +124,9 @@ export const CHAPTERS = [
     story:
       "Mr. Diaz gives me permission to search, and I quickly ask Ben to come with me. “I remember you had your watch near the bench,” Ben says thoughtfully, trying to help me remember too. “We'll find it together,” he adds confidently, giving me a reassuring pat on the shoulder. Having Ben beside me makes the situation feel less scary, even though I am still very worried inside. Two people searching feels much better than searching completely alone. We walk quickly toward the playground, both determined to find my grandfather's precious watch before it disappears forever.",
     questions: [
-      "Who does Kai ask to help him search?",
-      "What does Ben remember?",
-      "How does having Ben help make Kai feel?",
+      { text: "Who does Kai ask to help him search?", answer: "Ben." },
+      { text: "What does Ben remember?", answer: "That Kai had his watch near the bench." },
+      { text: "How does having Ben help make Kai feel?", answer: "Less scared." },
     ],
     trueFalse: [
       { text: "Kai asks Ben to help him search.", answer: true },
@@ -149,9 +149,9 @@ export const CHAPTERS = [
     story:
       "Before heading outside, we decide to double-check the classroom first, just in case I dropped it somewhere inside instead. Ben and I search under every desk, inside my cubby, and even behind the bookshelf. “Maybe it fell out of your pocket during class,” Ben suggests, checking near my chair carefully. Unfortunately, after ten minutes of careful searching, we find absolutely nothing inside the classroom. My worry starts growing again, but I try to stay hopeful, reminding myself that we still have not checked the playground yet, where I actually remember leaving it.",
     questions: [
-      "Where do Kai and Ben search first?",
-      "What does Ben suggest?",
-      "What do they find in the classroom?",
+      { text: "Where do Kai and Ben search first?", answer: "The classroom." },
+      { text: "What does Ben suggest?", answer: "That it fell out of Kai's pocket during class." },
+      { text: "What do they find in the classroom?", answer: "Nothing." },
     ],
     trueFalse: [
       { text: "They search the classroom before going outside.", answer: true },
@@ -174,9 +174,9 @@ export const CHAPTERS = [
     story:
       "Feeling discouraged, we return to tell Mr. Diaz that the classroom search failed. He thinks for a moment and then snaps his fingers. “Did you check the Lost and Found box near the office?” he asks. “Sometimes another teacher finds things on the playground and brings them there.” I hadn't even thought of that possibility! Suddenly, hope rushes back into my chest. “Can we go check right now?” I ask eagerly. Mr. Diaz nods and gives us permission, and Ben and I sprint down the hallway toward the office as fast as our legs can carry us.",
     questions: [
-      "What does Mr. Diaz suggest checking?",
-      "Why might the watch be there?",
-      "How does Kai feel about this new idea?",
+      { text: "What does Mr. Diaz suggest checking?", answer: "The Lost and Found box." },
+      { text: "Why might the watch be there?", answer: "Because another teacher might have found it on the playground." },
+      { text: "How does Kai feel about this new idea?", answer: "Hopeful." },
     ],
     trueFalse: [
       { text: "Mr. Diaz suggests checking the Lost and Found box.", answer: true },
@@ -199,9 +199,9 @@ export const CHAPTERS = [
     story:
       "We arrive at the office, slightly out of breath, and find the wooden Lost and Found box sitting quietly in the corner. It is filled with jackets, water bottles, and single mittens. My hands shake a little as I start digging through the pile, item by item. “It has to be in here,” I mutter, mostly to convince myself. Ben helps me search too, carefully moving jackets aside without making a mess. My heart pounds nervously with every item I check, hoping desperately that Grandpa's precious watch is somewhere hidden inside this messy little box.",
     questions: [
-      "What items are inside the Lost and Found box?",
-      "How does Kai's body react while searching?",
-      "How does Ben help Kai?",
+      { text: "What items are inside the Lost and Found box?", answer: "Jackets, water bottles, and single mittens." },
+      { text: "How does Kai's body react while searching?", answer: "His hands shake." },
+      { text: "How does Ben help Kai?", answer: "By searching too, moving jackets aside carefully." },
     ],
     trueFalse: [
       { text: "The box has jackets, water bottles, and mittens.", answer: true },
@@ -224,9 +224,9 @@ export const CHAPTERS = [
     story:
       "Near the very bottom of the box, my fingers touch something small and cool. I pull it out carefully, and my heart leaps with joy. It's my watch! “I found it! I found it!” I shout, holding it up triumphantly for Ben to see. He cheers loudly and gives me a high-five, both of us grinning from ear to ear. I quickly fasten the watch back onto my wrist, feeling an overwhelming wave of relief wash over me. “Grandpa's watch is safe,” I whisper happily to myself, promising once again to never take it off carelessly like that again.",
     questions: [
-      "What does Kai find near the bottom of the box?",
-      "How does Kai react when he finds it?",
-      "What does Kai promise himself?",
+      { text: "What does Kai find near the bottom of the box?", answer: "His watch." },
+      { text: "How does Kai react when he finds it?", answer: "He shouts with joy and holds it up triumphantly." },
+      { text: "What does Kai promise himself?", answer: "To never take it off carelessly again." },
     ],
     trueFalse: [
       { text: "Kai finds his watch near the bottom of the box.", answer: true },
@@ -249,9 +249,9 @@ export const CHAPTERS = [
     story:
       "That evening, I tell Grandpa the whole story during our video call, feeling a little embarrassed about almost losing his gift. Instead of being upset, Grandpa laughs gently and says, “Everyone makes mistakes, Kai. What matters is that you learned something.” From now on, I decide to only take off my watch when absolutely necessary, and always place it somewhere I will definitely remember, like my jacket pocket instead of a random bench. This scary experience taught me an important lesson about being more careful with the things that truly matter to me.",
     questions: [
-      "Who does Kai tell the whole story to?",
-      "What does Grandpa say about mistakes?",
-      "What new habit does Kai decide to form?",
+      { text: "Who does Kai tell the whole story to?", answer: "Grandpa." },
+      { text: "What does Grandpa say about mistakes?", answer: "That everyone makes mistakes; what matters is that you learned something." },
+      { text: "What new habit does Kai decide to form?", answer: "To only take off the watch when necessary and keep it somewhere he'll remember." },
     ],
     trueFalse: [
       { text: "Kai tells Grandpa the whole story.", answer: true },
