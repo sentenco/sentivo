@@ -26,9 +26,9 @@ export const CHAPTERS = [
     story:
       "After last week's severe storm, I discover significant damage to my roof, along with a fallen tree branch that had cracked a fence panel. I photograph everything methodically, documenting the damage from multiple angles before contacting my insurance company to file a claim. Ms. Farrow, the assigned adjuster, visits within a few days, inspecting the damage and taking her own measurements and photographs. A week later, I receive her assessment, and the proposed settlement amount seems considerably lower than what local contractors had quoted me. Given this discrepancy, I realize I'll need to understand exactly why these numbers differ so significantly.",
     questions: [
-      "What does Desmond discover after last week's storm?",
-      "What does Desmond do before contacting his insurance company?",
-      "What does Desmond notice about the proposed settlement amount?",
+      { text: "What does Desmond discover after last week's storm?", answer: "Significant roof damage and a cracked fence panel." },
+      { text: "What does Desmond do before contacting his insurance company?", answer: "Photographs everything methodically." },
+      { text: "What does Desmond notice about the proposed settlement amount?", answer: "That it seems considerably lower than local contractor quotes." },
     ],
     trueFalse: [
       { text: "Desmond discovers significant roof damage after the storm.", answer: true },
@@ -55,9 +55,9 @@ export const CHAPTERS = [
     story:
       "Before disputing the settlement, I decide to gather two additional independent estimates from local, licensed contractors for comparison. Both estimates come in significantly higher than the insurance company's proposed amount, suggesting the initial assessment may have underestimated the actual repair costs. I also research typical material and labor costs in my area, wanting to understand whether recent price increases had been properly accounted for. This research, moreover, reveals that lumber and roofing material costs had risen considerably since the adjuster's original assessment guidelines were last updated. Armed with this concrete evidence, I feel confident that my concern is genuinely justified, not simply personal frustration.",
     questions: [
-      "What does Desmond decide to gather before disputing the settlement?",
-      "How do the independent estimates compare to the insurance amount?",
-      "What does Desmond's research reveal about material costs?",
+      { text: "What does Desmond decide to gather before disputing the settlement?", answer: "Two independent estimates." },
+      { text: "How do the independent estimates compare to the insurance amount?", answer: "Significantly higher." },
+      { text: "What does Desmond's research reveal about material costs?", answer: "That they've risen since the assessment guidelines were last updated." },
     ],
     trueFalse: [
       { text: "Desmond gathers two additional independent contractor estimates.", answer: true },
@@ -84,9 +84,9 @@ export const CHAPTERS = [
     story:
       "I call Ms. Farrow, explaining respectfully that I'd gathered independent estimates significantly higher than the company's proposed settlement amount. She listens carefully, asking me to send documentation so she can formally review the discrepancy on her end. I mention specifically that material costs seem to have increased since the assessment guidelines were last updated, referencing my own research. She acknowledges this is possible, explaining that guideline updates sometimes lag behind actual, current market conditions temporarily. Given her willingness to genuinely reconsider, I feel this conversation is heading toward a productive, collaborative outcome rather than a confrontation.",
     questions: [
-      "What does Desmond explain to Ms. Farrow?",
-      "What does Ms. Farrow ask Desmond to send?",
-      "What does Ms. Farrow acknowledge is possible?",
+      { text: "What does Desmond explain to Ms. Farrow?", answer: "That his independent estimates are significantly higher." },
+      { text: "What does Ms. Farrow ask Desmond to send?", answer: "Documentation." },
+      { text: "What does Ms. Farrow acknowledge is possible?", answer: "That guideline updates lag behind current market conditions." },
     ],
     trueFalse: [
       { text: "Desmond explains he'd gathered higher independent estimates.", answer: true },
@@ -113,9 +113,9 @@ export const CHAPTERS = [
     story:
       "I compile everything into a clear, organized document: photographs, both independent estimates, and a brief summary explaining the discrepancy in market pricing. I keep the tone factual and professional throughout, avoiding language that might sound accusatory or overly emotional in nature. Moreover, I highlight specific line items where the difference seems most significant, making it easier for Ms. Farrow to review efficiently. Sending this documentation, I feel I've presented my case as thoroughly and persuasively as reasonably possible. Now, I simply need to wait for the formal review process to actually run its course.",
     questions: [
-      "What does Desmond compile into a document?",
-      "What tone does Desmond keep throughout?",
-      "What does Desmond highlight in the documentation?",
+      { text: "What does Desmond compile into a document?", answer: "Photographs, estimates, and a summary of the pricing discrepancy." },
+      { text: "What tone does Desmond keep throughout?", answer: "Factual and professional." },
+      { text: "What does Desmond highlight in the documentation?", answer: "Specific line items with the most significant differences." },
     ],
     trueFalse: [
       { text: "Desmond compiles photographs, estimates, and a pricing summary.", answer: true },
@@ -142,9 +142,9 @@ export const CHAPTERS = [
     story:
       "A week later, Ms. Farrow responds, explaining the company has agreed to revise the settlement, though not fully to the amount I'd requested. She mentions that while material costs had indeed increased, some of my estimates included additional work beyond what the original damage strictly required. This distinction, she explains, means the company can only adjust the amount partially rather than matching my highest estimate exactly. I consider this carefully, recognizing that her reasoning, while disappointing, seems genuinely grounded in reasonable, defensible criteria rather than arbitrary refusal. Given this, I decide the revised offer, though not perfect, represents meaningful progress worth acknowledging.",
     questions: [
-      "What does Ms. Farrow explain the company has agreed to?",
-      "What does Ms. Farrow say about some of Desmond's estimates?",
-      "What does Desmond decide about the revised offer?",
+      { text: "What does Ms. Farrow explain the company has agreed to?", answer: "Revise the settlement, though not fully to the requested amount." },
+      { text: "What does Ms. Farrow say about some of Desmond's estimates?", answer: "That they included additional work beyond what was strictly required." },
+      { text: "What does Desmond decide about the revised offer?", answer: "That it represents meaningful progress worth acknowledging." },
     ],
     trueFalse: [
       { text: "Ms. Farrow explains the company agreed to revise the settlement.", answer: true },
@@ -171,9 +171,9 @@ export const CHAPTERS = [
     story:
       "Rather than simply accepting the partial revision, I schedule a call to clarify exactly which items were excluded and why specifically. Ms. Farrow walks me through the itemized breakdown, explaining that one contractor's estimate included optional upgrades beyond basic, necessary repair work. I ask whether removing those specific upgrades from my estimate might allow the remaining costs to be fully covered instead. She reviews this possibility, agreeing that if I resubmit an estimate focused strictly on repair, not upgrade, this could work. This clarification, given how specific it becomes, helps me understand exactly what adjustments would actually strengthen my case.",
     questions: [
-      "What does Desmond schedule instead of simply accepting the revision?",
-      "What does Ms. Farrow explain about one contractor's estimate?",
-      "What does Desmond ask about removing the upgrades?",
+      { text: "What does Desmond schedule instead of simply accepting the revision?", answer: "A call to clarify which items were excluded." },
+      { text: "What does Ms. Farrow explain about one contractor's estimate?", answer: "That it included optional upgrades beyond necessary repair." },
+      { text: "What does Desmond ask about removing the upgrades?", answer: "Whether that would allow the remaining costs to be fully covered." },
     ],
     trueFalse: [
       { text: "Desmond schedules a call to clarify the excluded items.", answer: true },
@@ -200,9 +200,9 @@ export const CHAPTERS = [
     story:
       "I contact the contractor, requesting a revised estimate focused strictly on necessary repairs, excluding the optional upgrades entirely. He provides a new estimate promptly, which, once resubmitted, comes noticeably closer to the insurance company's revised offer amount. I send this updated estimate to Ms. Farrow, along with a brief note explaining the adjustment we'd discussed during our call. She confirms receipt, mentioning she'll process this final review within the next few business days. Given how collaborative this process has felt lately, I feel genuinely optimistic that we're approaching a fair, final resolution.",
     questions: [
-      "What does Desmond request from the contractor?",
-      "How does the new estimate compare to the insurance offer?",
-      "What does Ms. Farrow say she'll do?",
+      { text: "What does Desmond request from the contractor?", answer: "A revised estimate focused strictly on necessary repairs." },
+      { text: "How does the new estimate compare to the insurance offer?", answer: "Noticeably closer." },
+      { text: "What does Ms. Farrow say she'll do?", answer: "Process the final review within a few business days." },
     ],
     trueFalse: [
       { text: "Desmond requests a revised, repair-only estimate.", answer: true },
@@ -229,9 +229,9 @@ export const CHAPTERS = [
     story:
       "A few days later, I receive final approval, with the settlement amount now closely matching the revised, repair-focused estimate. Ms. Farrow's email explains the adjustment clearly, noting that both parties had ultimately reached a figure grounded in accurate, current market conditions. I reply, thanking her for handling this collaboratively rather than simply enforcing the original, outdated assessment without reconsideration. She responds briefly, appreciating that I'd approached the dispute with clear documentation rather than frustration or vague complaints. Reading this final confirmation, I feel genuine relief that patient, evidence-based negotiation had ultimately produced a fair outcome.",
     questions: [
-      "What does Desmond receive a few days later?",
-      "What does Ms. Farrow's email explain?",
-      "What does Ms. Farrow appreciate about how Desmond approached this?",
+      { text: "What does Desmond receive a few days later?", answer: "Final approval." },
+      { text: "What does Ms. Farrow's email explain?", answer: "That both parties reached a figure grounded in accurate market conditions." },
+      { text: "What does Ms. Farrow appreciate about how Desmond approached this?", answer: "That he used clear documentation rather than frustration." },
     ],
     trueFalse: [
       { text: "Desmond receives final approval a few days later.", answer: true },
@@ -258,9 +258,9 @@ export const CHAPTERS = [
     story:
       "My neighbor, whose house sustained similar storm damage, mentions she'd simply accepted her insurance company's first offer without question. I share what I'd learned: gathering independent estimates, requesting clarification, and negotiating based on evidence rather than frustration alone. She admits she hadn't realized insurance settlements could actually be negotiated, having assumed the initial offer was simply final. I explain that, in my experience, most adjusters are open to reasonable, well-documented requests, even if they can't guarantee full agreement. She thanks me for the insight, saying she'll reconsider her own settlement before her repairs actually begin.",
     questions: [
-      "What does Desmond's neighbor mention about her own claim?",
-      "What does Desmond share with his neighbor?",
-      "What had the neighbor assumed about insurance settlements?",
+      { text: "What does Desmond's neighbor mention about her own claim?", answer: "That she simply accepted the first offer without question." },
+      { text: "What does Desmond share with his neighbor?", answer: "Gathering estimates, requesting clarification, negotiating with evidence." },
+      { text: "What had the neighbor assumed about insurance settlements?", answer: "That the initial offer was simply final." },
     ],
     trueFalse: [
       { text: "The neighbor mentions she accepted her first offer without question.", answer: true },
@@ -287,9 +287,9 @@ export const CHAPTERS = [
     story:
       "Looking back on the entire process, I realize how differently things might have unfolded had I simply accepted the original settlement without question. If I had assumed the first offer was final, I likely would have paid a significant amount out of pocket for necessary repairs. Instead, gathering evidence, requesting clarification, and negotiating patiently allowed me to reach an outcome grounded in genuine accuracy. I've learned that insurance settlements, like many formal processes, often have more room for negotiation than they initially appear to allow. In the end, this experience taught me that persistence, paired with solid evidence, tends to produce far better outcomes than passive acceptance.",
     questions: [
-      "What does Desmond realize looking back on the process?",
-      "What might have happened if he had accepted the original settlement?",
-      "What has Desmond learned about insurance settlements?",
+      { text: "What does Desmond realize looking back on the process?", answer: "How differently things might have gone had he accepted the original settlement." },
+      { text: "What might have happened if he had accepted the original settlement?", answer: "He'd have paid significantly out of pocket." },
+      { text: "What has Desmond learned about insurance settlements?", answer: "That they often have more room for negotiation than they appear." },
     ],
     trueFalse: [
       { text: "Desmond realizes things might have gone differently without negotiating.", answer: true },

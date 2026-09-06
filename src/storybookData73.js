@@ -33,9 +33,9 @@ export const CHAPTERS = [
     story:
       "After reviewing my contributions over the past year, I conclude that my current salary no longer reflects my actual responsibilities. I'd taken on two major projects beyond my original role, yet my compensation hadn't been adjusted to account for either. Colleagues in similar positions, I'd discreetly learned, were earning noticeably more, which only reinforced my growing sense that something needed addressing. Rather than simply feeling resentful, I decide the more productive path is requesting a formal conversation about compensation. Given how uncomfortable this conversation might become, I know I'll need to prepare far more thoroughly than I initially assumed.",
     questions: [
-      "What does Naomi conclude after reviewing her contributions?",
-      "What had Naomi taken on beyond her original role?",
-      "What does Naomi decide to do instead of feeling resentful?",
+      { text: "What does Naomi conclude after reviewing her contributions?", answer: "That her salary no longer reflects her actual responsibilities." },
+      { text: "What had Naomi taken on beyond her original role?", answer: "Two major projects." },
+      { text: "What does Naomi decide to do instead of feeling resentful?", answer: "Request a formal conversation about compensation." },
     ],
     trueFalse: [
       { text: "Naomi concludes her salary no longer reflects her responsibilities.", answer: true },
@@ -62,9 +62,9 @@ export const CHAPTERS = [
     story:
       "Over the following week, I compile concrete evidence: project outcomes, measurable metrics, and written feedback from clients I'd worked with directly. I research typical salary ranges for my role and experience level, ensuring my request would be grounded in data rather than assumption. Moreover, I draft a clear summary of my expanded responsibilities, framing them not as complaints but as evidence of growth. I rehearse explaining this calmly, anticipating that Mr. Delacroix might push back or request additional justification. Having built what feels like a genuinely solid case, I schedule a meeting for the following Thursday afternoon.",
     questions: [
-      "What does Naomi compile over the following week?",
-      "What does Naomi research to ground her request?",
-      "What does Naomi anticipate Mr. Delacroix might do?",
+      { text: "What does Naomi compile over the following week?", answer: "Concrete evidence -- project outcomes, metrics, and client feedback." },
+      { text: "What does Naomi research to ground her request?", answer: "Typical salary ranges for her role and experience." },
+      { text: "What does Naomi anticipate Mr. Delacroix might do?", answer: "Push back or request additional justification." },
     ],
     trueFalse: [
       { text: "Naomi compiles project outcomes, metrics, and client feedback.", answer: true },
@@ -91,9 +91,9 @@ export const CHAPTERS = [
     story:
       "Thursday arrives, and I walk into Mr. Delacroix's office feeling more prepared than nervous, which surprises me somewhat. I open by thanking him for his time, then present my case clearly, referencing the projects and metrics I'd compiled. He listens attentively, occasionally jotting notes, which I take as a reasonably encouraging sign initially. When I finish, he acknowledges that my contributions have indeed grown significantly beyond my original job description. However, he mentions that budget constraints this quarter may limit how much flexibility he actually has available.",
     questions: [
-      "How does Naomi feel walking into the meeting?",
-      "What does Naomi do when she opens the meeting?",
-      "What does Mr. Delacroix mention about budget constraints?",
+      { text: "How does Naomi feel walking into the meeting?", answer: "More prepared than nervous." },
+      { text: "What does Naomi do when she opens the meeting?", answer: "Thanks him for his time, then presents her case." },
+      { text: "What does Mr. Delacroix mention about budget constraints?", answer: "That they may limit his flexibility this quarter." },
     ],
     trueFalse: [
       { text: "Naomi feels more prepared than nervous walking in.", answer: true },
@@ -120,9 +120,9 @@ export const CHAPTERS = [
     story:
       "Rather than accepting this as a final answer, I ask whether there might be alternative options given the budget limitations he'd mentioned. He considers this, suggesting perhaps a smaller immediate increase paired with a scheduled review in six months instead. I acknowledge this compromise seems reasonable, though I ask whether the six-month review could be formalized in writing. He agrees this seems fair, appreciating, he notes, that I'm approaching this collaboratively rather than simply demanding an outcome. This exchange, given how it unfolds, feels less like a confrontation and more like genuine problem-solving together.",
     questions: [
-      "What does Naomi ask instead of accepting the answer as final?",
-      "What does Mr. Delacroix suggest as a compromise?",
-      "What does Naomi ask about the six-month review?",
+      { text: "What does Naomi ask instead of accepting the answer as final?", answer: "Whether there are alternative options." },
+      { text: "What does Mr. Delacroix suggest as a compromise?", answer: "A smaller immediate increase with a scheduled six-month review." },
+      { text: "What does Naomi ask about the six-month review?", answer: "Whether it could be formalized in writing." },
     ],
     trueFalse: [
       { text: "Naomi asks whether there might be alternative options.", answer: true },
@@ -149,9 +149,9 @@ export const CHAPTERS = [
     story:
       "We agree on the terms: a modest raise effective immediately, with a formal, documented review scheduled for six months from now. Mr. Delacroix asks his assistant to draft a written confirmation, ensuring both of us have something concrete to reference later. I thank him for his openness, and he, in turn, thanks me for approaching the conversation professionally rather than emotionally. Leaving his office, I feel genuinely proud, not just of the outcome, but of how I'd managed the entire negotiation. This experience, I realize, has taught me something valuable about advocating for myself constructively.",
     questions: [
-      "What do Naomi and Mr. Delacroix agree on?",
-      "What does Mr. Delacroix ask his assistant to do?",
-      "How does Naomi feel leaving his office?",
+      { text: "What do Naomi and Mr. Delacroix agree on?", answer: "A modest raise now, with a documented review in six months." },
+      { text: "What does Mr. Delacroix ask his assistant to do?", answer: "Draft a written confirmation." },
+      { text: "How does Naomi feel leaving his office?", answer: "Genuinely proud." },
     ],
     trueFalse: [
       { text: "They agree on a modest raise with a documented six-month review.", answer: true },
@@ -178,9 +178,9 @@ export const CHAPTERS = [
     story:
       "That evening, I draft a brief follow-up email to Mr. Delacroix, summarizing what we'd agreed on during our meeting. I keep the tone professional and appreciative, avoiding anything that might seem presumptuous or overly casual in writing. In the email, I reference the six-month review date specifically, ensuring there's a clear, shared record of our agreement. I also thank him again, noting that I genuinely appreciated his willingness to discuss this openly rather than dismissing my request outright. Sending the email, I feel satisfied that I'd handled this negotiation thoroughly, from preparation through to written follow-up.",
     questions: [
-      "What does Naomi draft that evening?",
-      "What tone does Naomi keep in the email?",
-      "What does Naomi reference specifically in the email?",
+      { text: "What does Naomi draft that evening?", answer: "A follow-up email." },
+      { text: "What tone does Naomi keep in the email?", answer: "Professional and appreciative." },
+      { text: "What does Naomi reference specifically in the email?", answer: "The six-month review date." },
     ],
     trueFalse: [
       { text: "Naomi drafts a brief follow-up email that evening.", answer: true },
@@ -207,9 +207,9 @@ export const CHAPTERS = [
     story:
       "During lunch, I mention the negotiation to a colleague, partly to share the outcome and partly to offer encouragement. She admits she's been considering a similar conversation herself but has felt too intimidated to actually schedule it. I explain that preparation made the biggest difference, since walking in with data rather than emotion changed the entire dynamic. Moreover, I mention that framing the conversation as collaborative, rather than confrontational, seemed to genuinely matter to how it unfolded. She thanks me for the insight, saying she now feels more confident about approaching her own manager eventually.",
     questions: [
-      "What does Naomi mention during lunch?",
-      "What has the colleague been considering but felt intimidated by?",
-      "What does Naomi explain made the biggest difference?",
+      { text: "What does Naomi mention during lunch?", answer: "The negotiation, to a colleague." },
+      { text: "What has the colleague been considering but felt intimidated by?", answer: "A similar conversation with her manager." },
+      { text: "What does Naomi explain made the biggest difference?", answer: "Preparation -- walking in with data rather than emotion." },
     ],
     trueFalse: [
       { text: "Naomi mentions the negotiation to a colleague during lunch.", answer: true },
@@ -236,9 +236,9 @@ export const CHAPTERS = [
     story:
       "Six months later, exactly as agreed, Mr. Delacroix schedules the promised review meeting to reassess my compensation once again. I arrive with updated metrics, having continued documenting my contributions since our original conversation months earlier. He reviews everything carefully, then confirms that the additional raise we'd discussed will indeed take effect starting next month. I thank him, noting how much I'd appreciated that this agreement was actually honored rather than quietly forgotten over time. This follow-through, more than the raise itself, reinforces my trust in approaching future negotiations directly and professionally.",
     questions: [
-      "What does Mr. Delacroix schedule six months later?",
-      "What does Naomi arrive with?",
-      "What does Mr. Delacroix confirm at the review?",
+      { text: "What does Mr. Delacroix schedule six months later?", answer: "The promised review meeting." },
+      { text: "What does Naomi arrive with?", answer: "Updated metrics." },
+      { text: "What does Mr. Delacroix confirm at the review?", answer: "That the additional raise will take effect next month." },
     ],
     trueFalse: [
       { text: "Mr. Delacroix schedules the promised review meeting six months later.", answer: true },
@@ -265,9 +265,9 @@ export const CHAPTERS = [
     story:
       "A junior colleague, having heard about my experience secondhand, asks if I'd help her prepare for her own upcoming compensation conversation. I agree, walking her through how I'd compiled evidence, researched salary ranges, and anticipated potential pushback beforehand. She admits she'd assumed negotiating meant being aggressive, which had made her avoid the conversation entirely until now. I explain that, in my experience, framing the conversation collaboratively, rather than combatively, tends to produce better long-term outcomes. Watching her leave feeling more confident, I realize this negotiation taught me something worth passing forward to others.",
     questions: [
-      "What does the junior colleague ask Naomi for help with?",
-      "What does Naomi walk her through?",
-      "What had the colleague assumed negotiating meant?",
+      { text: "What does the junior colleague ask Naomi for help with?", answer: "Preparing for her own compensation conversation." },
+      { text: "What does Naomi walk her through?", answer: "How she compiled evidence, researched ranges, and anticipated pushback." },
+      { text: "What had the colleague assumed negotiating meant?", answer: "Being aggressive." },
     ],
     trueFalse: [
       { text: "A junior colleague asks Naomi to help her prepare.", answer: true },
@@ -294,9 +294,9 @@ export const CHAPTERS = [
     story:
       "Looking back on the entire process, I realize how differently things might have unfolded had I approached this out of frustration rather than preparation. If I had simply demanded a raise without evidence, Mr. Delacroix may have reasonably felt pressured rather than genuinely persuaded. Instead, building a thorough case and remaining open to compromise allowed us to reach an outcome that respected us both. I've learned that negotiation, at its best, isn't about winning against someone, but about solving a shared problem together. In the end, this experience taught me that advocating for myself professionally requires patience just as much as confidence.",
     questions: [
-      "What does Naomi realize looking back on the process?",
-      "What might have happened if she had demanded a raise without evidence?",
-      "What has Naomi learned about negotiation at its best?",
+      { text: "What does Naomi realize looking back on the process?", answer: "How differently things might have gone had she approached it from frustration." },
+      { text: "What might have happened if she had demanded a raise without evidence?", answer: "Mr. Delacroix may have felt pressured rather than persuaded." },
+      { text: "What has Naomi learned about negotiation at its best?", answer: "That it's about solving a shared problem together, not winning against someone." },
     ],
     trueFalse: [
       { text: "Naomi realizes things might have gone differently without preparation.", answer: true },

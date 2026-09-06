@@ -28,9 +28,9 @@ export const CHAPTERS = [
     story:
       "Hector and Beatrix, co-founders of a small design studio, ask me to mediate a disagreement that's been building for weeks now. Hector wants to expand rapidly, taking on a large new client that would require hiring several additional employees quickly. Beatrix worries this expansion could overextend their finances, given how unpredictable client payments have occasionally been recently. Neither seems willing to fully concede, and their disagreement has apparently begun affecting daily operations at the studio. As a trusted friend to both, I agree to help, though I recognize this will require genuinely understanding both perspectives fully first.",
     questions: [
-      "What do Hector and Beatrix ask Yolanda to do?",
-      "What does Hector want to do?",
-      "What does Beatrix worry about?",
+      { text: "What do Hector and Beatrix ask Yolanda to do?", answer: "Mediate their disagreement." },
+      { text: "What does Hector want to do?", answer: "Expand rapidly, taking on a large new client." },
+      { text: "What does Beatrix worry about?", answer: "That expansion could overextend their finances." },
     ],
     trueFalse: [
       { text: "Hector and Beatrix are co-founders of a small design studio.", answer: true },
@@ -57,9 +57,9 @@ export const CHAPTERS = [
     story:
       "I meet with Hector separately, curious to understand exactly why this particular opportunity feels so urgent and significant to him. He explains that this new client represents a rare chance to establish the studio as a serious competitor in a larger, more prestigious market. Moreover, he argues that hesitating too long risks losing the opportunity entirely, given how eager competitors are for similar contracts. He acknowledges the financial risk, though he believes their studio's strong reputation would attract additional clients once they'd successfully scaled. Listening carefully, I recognize his ambition is genuine, not simply reckless impatience as it might initially appear.",
     questions: [
-      "Why does Yolanda meet with Hector separately?",
-      "What does Hector explain this new client represents?",
-      "What does Hector believe about their reputation once scaled?",
+      { text: "Why does Yolanda meet with Hector separately?", answer: "To understand why the opportunity feels so urgent to him." },
+      { text: "What does Hector explain this new client represents?", answer: "A rare chance to establish the studio in a larger market." },
+      { text: "What does Hector believe about their reputation once scaled?", answer: "That it would attract additional clients." },
     ],
     trueFalse: [
       { text: "Yolanda meets with Hector separately to understand his urgency.", answer: true },
@@ -86,9 +86,9 @@ export const CHAPTERS = [
     story:
       "I have a similar conversation with Beatrix, who shares detailed financial projections illustrating exactly what expansion would require upfront. She explains that hiring several employees immediately means committing to significant fixed costs, regardless of whether the new client relationship remains stable long-term. Given their studio's history of occasionally delayed client payments, she worries this expansion could genuinely strain their cash flow considerably. She's not opposed to growth generally, she clarifies, but believes a more gradual approach would be considerably less risky overall. Hearing this, I understand her caution stems from genuine financial expertise, not simply excessive risk-aversion.",
     questions: [
-      "What does Beatrix share with Yolanda?",
-      "What does Beatrix explain hiring several employees means?",
-      "What does Beatrix clarify about her position on growth?",
+      { text: "What does Beatrix share with Yolanda?", answer: "Detailed financial projections." },
+      { text: "What does Beatrix explain hiring several employees means?", answer: "Committing to significant fixed costs regardless of client stability." },
+      { text: "What does Beatrix clarify about her position on growth?", answer: "That she's not opposed to it, just prefers a gradual approach." },
     ],
     trueFalse: [
       { text: "Beatrix shares detailed financial projections with Yolanda.", answer: true },
@@ -115,9 +115,9 @@ export const CHAPTERS = [
     story:
       "Reflecting on both conversations, I realize this disagreement isn't really about whether to grow, but about pace and acceptable risk tolerance. Hector's opportunity is genuinely valuable, and waiting too long could indeed mean losing it to a more decisive competitor. Beatrix's concern is equally valid, given that overextending financially could jeopardize the entire studio's stability if payments were delayed unexpectedly. Neither perspective is wrong exactly, though pursuing either exclusively risks losing something the other genuinely values. I decide that helping them find a structured, phased approach might address both urgency and caution simultaneously.",
     questions: [
-      "What does Yolanda realize this disagreement is really about?",
-      "Why is Hector's opportunity genuinely valuable?",
-      "What does Yolanda decide might address both concerns?",
+      { text: "What does Yolanda realize this disagreement is really about?", answer: "Pace and acceptable risk tolerance, not whether to grow." },
+      { text: "Why is Hector's opportunity genuinely valuable?", answer: "Waiting too long could mean losing it to a competitor." },
+      { text: "What does Yolanda decide might address both concerns?", answer: "A structured, phased approach." },
     ],
     trueFalse: [
       { text: "Yolanda realizes this is about pace and risk tolerance, not whether to grow.", answer: true },
@@ -144,9 +144,9 @@ export const CHAPTERS = [
     story:
       "I bring Hector and Beatrix together, proposing a phased approach: accepting the client, but hiring gradually rather than all at once immediately. This way, I explain, they could meet the new client's initial needs without committing to the full financial risk simultaneously. Moreover, I suggest establishing a specific cash-reserve threshold that, if maintained, would trigger the next hiring phase automatically. Hector seems slightly disappointed by the slower timeline, though he acknowledges this genuinely addresses Beatrix's core financial concern. Beatrix, in turn, admits this approach feels considerably safer than either accepting immediately or declining the opportunity entirely.",
     questions: [
-      "What phased approach does Yolanda propose?",
-      "What does Yolanda suggest establishing?",
-      "How does Hector feel about the slower timeline?",
+      { text: "What phased approach does Yolanda propose?", answer: "Accepting the client but hiring gradually." },
+      { text: "What does Yolanda suggest establishing?", answer: "A cash-reserve threshold that triggers the next hiring phase." },
+      { text: "How does Hector feel about the slower timeline?", answer: "Slightly disappointed, but he acknowledges it addresses Beatrix's concern." },
     ],
     trueFalse: [
       { text: "Yolanda proposes accepting the client but hiring gradually.", answer: true },
@@ -173,9 +173,9 @@ export const CHAPTERS = [
     story:
       "I help draft a written agreement outlining the phased hiring plan, the cash-reserve threshold, and specific milestones for reassessment. Beatrix reviews the financial language carefully, suggesting one adjustment to make the reserve threshold slightly more conservative than originally proposed. Hector agrees to this adjustment, noting that a slightly more cautious threshold seems reasonable given how much this decision genuinely matters. Both partners sign the document, formalizing what had begun as an unstructured, emotional disagreement into a clear, shared plan. Watching them shake hands, I feel genuinely satisfied that mediating this hadn't required either of them abandoning their core values.",
     questions: [
-      "What does Yolanda help draft?",
-      "What adjustment does Beatrix suggest?",
-      "What does Hector agree to?",
+      { text: "What does Yolanda help draft?", answer: "A written agreement outlining the phased plan." },
+      { text: "What adjustment does Beatrix suggest?", answer: "Making the reserve threshold more conservative." },
+      { text: "What does Hector agree to?", answer: "The adjustment." },
     ],
     trueFalse: [
       { text: "Yolanda helps draft a written agreement outlining the plan.", answer: true },
@@ -202,9 +202,9 @@ export const CHAPTERS = [
     story:
       "A month later, the studio hires its first new employee under the phased plan, welcoming her with genuine enthusiasm from both partners. Hector seems energized, finally moving forward on the opportunity he'd been anticipating, though within the agreed-upon structure now. Beatrix, meanwhile, closely monitors the cash reserves, though she admits feeling considerably less anxious than she'd expected given the built-in safeguards. The new client relationship, so far, has proceeded smoothly, with payments arriving reliably according to the agreed schedule. Watching this unfold from a distance, I feel proud that the phased compromise had actually translated into genuine, functional progress.",
     questions: [
-      "What happens a month later?",
-      "How does Hector seem now?",
-      "How does Beatrix feel, given the built-in safeguards?",
+      { text: "What happens a month later?", answer: "The studio hires its first new employee under the phased plan." },
+      { text: "How does Hector seem now?", answer: "Energized." },
+      { text: "How does Beatrix feel, given the built-in safeguards?", answer: "Less anxious than expected." },
     ],
     trueFalse: [
       { text: "The studio hires its first new employee a month later.", answer: true },
@@ -231,9 +231,9 @@ export const CHAPTERS = [
     story:
       "As agreed, I meet with Hector and Beatrix at the first scheduled milestone to review progress against the original plan. The cash reserves have remained above the agreed threshold, meeting the criteria required to trigger the next hiring phase. Hector feels validated that his original instinct about the opportunity's value had proven correct, given the client relationship's stability. Beatrix feels validated too, recognizing that the structured approach had prevented what could have otherwise felt like reckless, unmanaged risk. Both thank me again for facilitating a process that respected their different, yet equally legitimate, perspectives throughout.",
     questions: [
-      "What does Yolanda do as agreed?",
-      "What have the cash reserves remained?",
-      "How do both Hector and Beatrix feel?",
+      { text: "What does Yolanda do as agreed?", answer: "Meets with Hector and Beatrix at the first milestone." },
+      { text: "What have the cash reserves remained?", answer: "Above the agreed threshold." },
+      { text: "How do both Hector and Beatrix feel?", answer: "Validated." },
     ],
     trueFalse: [
       { text: "Yolanda meets with them at the first scheduled milestone.", answer: true },
@@ -260,9 +260,9 @@ export const CHAPTERS = [
     story:
       "Several weeks later, Hector mentions to me that this experience has genuinely changed how he and Beatrix approach major decisions together now. Rather than each simply advocating for their instinct, they've started deliberately considering both ambition and caution as complementary, not opposing, forces. Beatrix agrees, admitting she's become more comfortable with calculated risk, provided it's structured thoughtfully rather than impulsive. Both credit the mediation process itself, not just the specific outcome, with strengthening how they communicate during future disagreements. Hearing this, I recognize that successful mediation sometimes changes a relationship's dynamics well beyond the original dispute itself.",
     questions: [
-      "What does Hector mention has genuinely changed?",
-      "What has Beatrix become more comfortable with?",
-      "What do both credit the mediation process with?",
+      { text: "What does Hector mention has genuinely changed?", answer: "How he and Beatrix approach major decisions together." },
+      { text: "What has Beatrix become more comfortable with?", answer: "Calculated risk, structured thoughtfully." },
+      { text: "What do both credit the mediation process with?", answer: "Strengthening how they communicate." },
     ],
     trueFalse: [
       { text: "Hector mentions this changed how they approach major decisions.", answer: true },
@@ -289,9 +289,9 @@ export const CHAPTERS = [
     story:
       "Looking back on the entire process, I realize how differently things might have unfolded had I simply sided with one partner's instinct. If I had pushed for either rapid expansion or complete caution, the studio likely would have lost something valuable either way. Instead, helping them find a structured middle path allowed both ambition and prudence to genuinely coexist productively. I've learned that mediating between business partners isn't about determining who's right, but about designing a framework that honors both perspectives. In the end, this experience taught me that the best solutions often emerge not from compromise alone, but from genuine structural creativity.",
     questions: [
-      "What does Yolanda realize looking back on the process?",
-      "What might have happened if she had sided with one instinct?",
-      "What has Yolanda learned about mediating business partners?",
+      { text: "What does Yolanda realize looking back on the process?", answer: "How differently things might have gone had she sided with one partner." },
+      { text: "What might have happened if she had sided with one instinct?", answer: "The studio likely would have lost something valuable either way." },
+      { text: "What has Yolanda learned about mediating business partners?", answer: "That it's about designing a framework that honors both perspectives." },
     ],
     trueFalse: [
       { text: "Yolanda realizes things might have gone differently with one-sided advice.", answer: true },

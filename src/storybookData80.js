@@ -27,9 +27,9 @@ export const CHAPTERS = [
     story:
       "Reviewing this quarter's anonymous employee survey, I notice a recurring theme: many employees feel the current two-fixed-office-days policy lacks meaningful flexibility. Several comments mention that commuting on specific mandated days, regardless of actual workload, feels unnecessarily rigid given how remote work has generally proven effective. As a manager, I've noticed this myself, particularly among employees managing childcare or long commutes on inconvenient scheduled days. Given how consistently this concern appears across departments, I suspect this isn't simply isolated complaining, but a genuine, addressable problem. I decide I'll research this further before considering whether proposing a policy change might actually be worthwhile.",
     questions: [
-      "What recurring theme does Adaeze notice in the survey?",
-      "What do several comments mention about commuting?",
-      "What does Adaeze decide to do?",
+      { text: "What recurring theme does Adaeze notice in the survey?", answer: "That the two-fixed-office-days policy lacks flexibility." },
+      { text: "What do several comments mention about commuting?", answer: "That mandated days feel unnecessarily rigid." },
+      { text: "What does Adaeze decide to do?", answer: "Research further before proposing a policy change." },
     ],
     trueFalse: [
       { text: "Adaeze notices a recurring theme about office-day flexibility.", answer: true },
@@ -56,9 +56,9 @@ export const CHAPTERS = [
     story:
       "I compile the relevant survey data, along with productivity metrics from the past year comparing office days versus remote work days specifically. The data suggests no meaningful productivity difference exists, which weakens the traditional argument that mandated office days genuinely improve output. I also research what comparable companies in our industry currently offer, discovering that flexible, employee-chosen office days have become increasingly common. Moreover, I interview a few colleagues directly, gathering specific examples of how rigid scheduling had created genuine difficulty for them personally. Armed with this evidence, I feel confident that a formal proposal would be grounded in data, not simply preference.",
     questions: [
-      "What does Adaeze compile?",
-      "What does the productivity data suggest?",
-      "What does Adaeze discover about comparable companies?",
+      { text: "What does Adaeze compile?", answer: "Survey data and productivity metrics." },
+      { text: "What does the productivity data suggest?", answer: "No meaningful productivity difference between office and remote days." },
+      { text: "What does Adaeze discover about comparable companies?", answer: "That flexible, employee-chosen office days have become common." },
     ],
     trueFalse: [
       { text: "Adaeze compiles survey data and productivity metrics.", answer: true },
@@ -85,9 +85,9 @@ export const CHAPTERS = [
     story:
       "I draft a formal proposal, structuring it clearly with sections for background, supporting data, and a specific, actionable recommendation. Rather than simply criticizing the current policy, I frame the proposal constructively, emphasizing how flexibility could genuinely improve both morale and measurable outcomes. I recommend replacing fixed office days with a flexible, department-coordinated system, ensuring teams could still collaborate effectively when needed. Moreover, I include a proposed trial period, allowing the company to evaluate this change before committing to it permanently. Reading my draft back, I feel it strikes the right balance between advocacy and genuine professional objectivity.",
     questions: [
-      "How does Adaeze structure her proposal?",
-      "What does Adaeze recommend replacing fixed office days with?",
-      "What does Adaeze include to allow evaluation before permanence?",
+      { text: "How does Adaeze structure her proposal?", answer: "With sections for background, supporting data, and a recommendation." },
+      { text: "What does Adaeze recommend replacing fixed office days with?", answer: "A flexible, department-coordinated system." },
+      { text: "What does Adaeze include to allow evaluation before permanence?", answer: "A proposed trial period." },
     ],
     trueFalse: [
       { text: "Adaeze structures the proposal with background, data, and recommendation.", answer: true },
@@ -114,9 +114,9 @@ export const CHAPTERS = [
     story:
       "Before submitting the proposal formally, I share the draft with two trusted colleagues, wanting honest feedback before it reaches leadership. One colleague suggests strengthening the data section with a specific example of a team that successfully piloted flexible scheduling elsewhere. Another mentions the proposal could address potential concerns preemptively, such as how client-facing roles might handle the increased flexibility. I incorporate both suggestions, recognizing that anticipating objections strengthens a proposal far more than simply hoping none arise. This collaborative revision process, though it takes extra time, genuinely improves the proposal's overall persuasiveness and thoroughness.",
     questions: [
-      "What does Adaeze do before submitting the proposal formally?",
-      "What does one colleague suggest strengthening?",
-      "What does another colleague mention the proposal could address?",
+      { text: "What does Adaeze do before submitting the proposal formally?", answer: "Shares the draft with two trusted colleagues." },
+      { text: "What does one colleague suggest strengthening?", answer: "The data section with a specific pilot example." },
+      { text: "What does another colleague mention the proposal could address?", answer: "How client-facing roles might handle the flexibility." },
     ],
     trueFalse: [
       { text: "Adaeze shares the draft with two trusted colleagues first.", answer: true },
@@ -143,9 +143,9 @@ export const CHAPTERS = [
     story:
       "I submit the revised proposal to Mr. Castellano, along with a brief cover note summarizing the key recommendation concisely upfront. He responds within a day, mentioning he'd read it thoroughly and would like to discuss it further during a scheduled meeting. I feel a mixture of nervousness and cautious optimism, given how thoroughly I'd prepared this proposal over several weeks. Walking into his office, I remind myself that regardless of the outcome, I'd approached this professionally and evidence-based throughout. Whatever happens next, I know I've genuinely done everything reasonably possible to advocate for this change effectively.",
     questions: [
-      "Who does Adaeze submit the revised proposal to?",
-      "How does Mr. Castellano respond?",
-      "How does Adaeze feel walking into his office?",
+      { text: "Who does Adaeze submit the revised proposal to?", answer: "Mr. Castellano." },
+      { text: "How does Mr. Castellano respond?", answer: "Within a day, wanting to discuss it further." },
+      { text: "How does Adaeze feel walking into his office?", answer: "A mixture of nervousness and cautious optimism." },
     ],
     trueFalse: [
       { text: "Adaeze submits the revised proposal to Mr. Castellano.", answer: true },
@@ -172,9 +172,9 @@ export const CHAPTERS = [
     story:
       "Mr. Castellano opens the meeting by acknowledging the proposal's thoroughness, particularly appreciating the productivity data I'd included. He raises one concern: whether completely flexible scheduling might make cross-team collaboration meetings harder to coordinate effectively. I explain that the proposal actually addresses this, suggesting department-level coordination rather than fully individual, unstructured flexibility. He reconsiders the document, acknowledging he'd initially misread that particular section during his first review. Given this clarification, he seems considerably more receptive, mentioning this addresses his primary concern about maintaining operational coherence.",
     questions: [
-      "What does Mr. Castellano acknowledge about the proposal?",
-      "What concern does Mr. Castellano raise?",
-      "What does Adaeze explain about the proposal?",
+      { text: "What does Mr. Castellano acknowledge about the proposal?", answer: "Its thoroughness, especially the productivity data." },
+      { text: "What concern does Mr. Castellano raise?", answer: "Whether flexible scheduling might make cross-team collaboration harder." },
+      { text: "What does Adaeze explain about the proposal?", answer: "That it addresses this with department-level coordination." },
     ],
     trueFalse: [
       { text: "Mr. Castellano acknowledges the proposal's thoroughness.", answer: true },
@@ -201,9 +201,9 @@ export const CHAPTERS = [
     story:
       "Mr. Castellano approves the proposal for a three-month trial period, with a formal review scheduled afterward to assess its actual effectiveness. He asks that I personally track specific metrics during the trial, ensuring the company has clear data for the final decision. I agree readily, recognizing that this responsibility, while additional work, also gives me genuine ownership over the outcome. He thanks me for bringing forward a well-researched, professionally presented proposal rather than informal, unstructured complaints. Leaving his office, I feel genuinely proud, not just of the approval, but of the entire process that led here.",
     questions: [
-      "What does Mr. Castellano approve?",
-      "What does Mr. Castellano ask Adaeze to do during the trial?",
-      "What does Mr. Castellano thank Adaeze for?",
+      { text: "What does Mr. Castellano approve?", answer: "A three-month trial period." },
+      { text: "What does Mr. Castellano ask Adaeze to do during the trial?", answer: "Personally track specific metrics." },
+      { text: "What does Mr. Castellano thank Adaeze for?", answer: "Bringing forward a well-researched, professional proposal." },
     ],
     trueFalse: [
       { text: "Mr. Castellano approves a three-month trial period.", answer: true },
@@ -230,9 +230,9 @@ export const CHAPTERS = [
     story:
       "Throughout the trial period, I track productivity metrics and collect brief, informal feedback from employees about how the flexibility feels in practice. Most feedback is overwhelmingly positive, with several employees mentioning genuine improvements to their work-life balance and overall morale. A few minor scheduling conflicts arise, though department coordination generally resolves these without significant disruption to broader projects. I document everything carefully, wanting the final review to reflect an accurate, comprehensive picture rather than selective, favorable anecdotes alone. This tracking process, though time-consuming, ensures the eventual decision will be grounded in genuine evidence, not simply my own advocacy.",
     questions: [
-      "What does Adaeze track throughout the trial period?",
-      "How does most feedback turn out?",
-      "Why does Adaeze document everything carefully?",
+      { text: "What does Adaeze track throughout the trial period?", answer: "Productivity metrics and employee feedback." },
+      { text: "How does most feedback turn out?", answer: "Overwhelmingly positive." },
+      { text: "Why does Adaeze document everything carefully?", answer: "To ensure an accurate, comprehensive picture, not selective anecdotes." },
     ],
     trueFalse: [
       { text: "Adaeze tracks productivity metrics and collects employee feedback.", answer: true },
@@ -259,9 +259,9 @@ export const CHAPTERS = [
     story:
       "At the final review meeting, I present a comprehensive summary of the trial's outcomes, including both the positive results and minor challenges encountered. Mr. Castellano and the broader leadership team review the data carefully, asking thoughtful questions about long-term sustainability and potential edge cases. Given the overwhelmingly positive results, leadership decides to formally adopt the flexible scheduling policy company-wide, effective the following month. Mr. Castellano publicly credits my thorough, evidence-based approach with making this decision considerably easier for leadership to support confidently. Hearing this acknowledgment, I feel that months of careful preparation had genuinely culminated in something meaningful.",
     questions: [
-      "What does Adaeze present at the final review meeting?",
-      "What does leadership decide given the results?",
-      "What does Mr. Castellano publicly credit?",
+      { text: "What does Adaeze present at the final review meeting?", answer: "A comprehensive summary of the trial's outcomes." },
+      { text: "What does leadership decide given the results?", answer: "To formally adopt the flexible scheduling policy company-wide." },
+      { text: "What does Mr. Castellano publicly credit?", answer: "Adaeze's thorough, evidence-based approach." },
     ],
     trueFalse: [
       { text: "Adaeze presents a comprehensive summary of the trial's outcomes.", answer: true },
@@ -288,9 +288,9 @@ export const CHAPTERS = [
     story:
       "Looking back on the entire process, I realize how differently things might have unfolded had I simply complained informally rather than proposing something structured. If I had raised this concern casually, without evidence or a clear recommendation, leadership likely would have had little reason to act. Instead, researching thoroughly, writing formally, and tracking results transparently allowed this idea to become genuine, lasting policy. I've learned that advocating for meaningful change at work requires more than identifying a problem; it requires proposing a workable solution. In the end, this experience taught me that patient, evidence-based persistence can genuinely transform how an entire organization operates.",
     questions: [
-      "What does Adaeze realize looking back on the process?",
-      "What might have happened if she had simply complained informally?",
-      "What has Adaeze learned about advocating for meaningful change?",
+      { text: "What does Adaeze realize looking back on the process?", answer: "How differently things might have gone had she complained informally." },
+      { text: "What might have happened if she had simply complained informally?", answer: "Leadership likely would have had little reason to act." },
+      { text: "What has Adaeze learned about advocating for meaningful change?", answer: "That it requires proposing a workable solution, not just identifying a problem." },
     ],
     trueFalse: [
       { text: "Adaeze realizes things might have gone differently without structure.", answer: true },

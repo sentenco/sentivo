@@ -26,9 +26,9 @@ export const CHAPTERS = [
     story:
       "I open an official letter from the homeowners association, informing me that my front-yard vegetable garden violates the community's landscaping guidelines. Apparently, the guidelines specify only ornamental plants are permitted in visible front areas, something I hadn't fully realized when I planted it. The letter requests I remove the garden within thirty days or face a modest but recurring fine going forward. Given how much effort I'd invested, and how much I genuinely enjoy growing my own vegetables, this feels considerably unfair. Rather than simply complying immediately, I decide I'll research whether there's any room for genuine negotiation here.",
     questions: [
-      "What does the official letter inform Rosalind of?",
-      "What do the guidelines specify is permitted in front areas?",
-      "What does Rosalind decide to do instead of complying immediately?",
+      { text: "What does the official letter inform Rosalind of?", answer: "That her front-yard vegetable garden violates landscaping guidelines." },
+      { text: "What do the guidelines specify is permitted in front areas?", answer: "Only ornamental plants." },
+      { text: "What does Rosalind decide to do instead of complying immediately?", answer: "Research whether there's room for negotiation." },
     ],
     trueFalse: [
       { text: "The letter says her garden violates landscaping guidelines.", answer: true },
@@ -55,9 +55,9 @@ export const CHAPTERS = [
     story:
       "I request the full HOA bylaws document, reading through it carefully to understand exactly what's permitted and what genuinely isn't. I discover that while ornamental plants are indeed specified, the guidelines also include a provision allowing exceptions through formal board approval. Moreover, I find that several other properties in the neighborhood have small, permitted gardens, suggesting exceptions aren't entirely unprecedented here. This detail, given how it changes my understanding, suggests negotiation might genuinely be possible rather than simply futile. Armed with this information, I decide to draft a formal request for an exception rather than simply removing the garden.",
     questions: [
-      "What does Rosalind request and read through carefully?",
-      "What provision does Rosalind discover in the guidelines?",
-      "What does Rosalind decide to draft?",
+      { text: "What does Rosalind request and read through carefully?", answer: "The full HOA bylaws document." },
+      { text: "What provision does Rosalind discover in the guidelines?", answer: "That exceptions can be granted through formal board approval." },
+      { text: "What does Rosalind decide to draft?", answer: "A formal request for an exception." },
     ],
     trueFalse: [
       { text: "Rosalind requests the full HOA bylaws document.", answer: true },
@@ -84,9 +84,9 @@ export const CHAPTERS = [
     story:
       "I draft a formal letter to the board, explaining respectfully why I believe an exception is warranted in this particular case. I include photographs showing the garden is well-maintained and, in my view, visually appealing despite not being strictly ornamental. I also reference the specific bylaw provision allowing exceptions, along with examples of similarly approved gardens elsewhere in the neighborhood. Rather than simply demanding compliance, I frame this as a reasonable request grounded in both evidence and existing precedent. Reading the letter back, I feel it strikes an appropriately professional, non-confrontational tone throughout.",
     questions: [
-      "What does Rosalind draft to the board?",
-      "What does Rosalind include in the letter?",
-      "What does Rosalind reference in her request?",
+      { text: "What does Rosalind draft to the board?", answer: "A formal letter explaining why an exception is warranted." },
+      { text: "What does Rosalind include in the letter?", answer: "Photographs showing the garden is well-maintained." },
+      { text: "What does Rosalind reference in her request?", answer: "The specific bylaw provision and examples of approved gardens elsewhere." },
     ],
     trueFalse: [
       { text: "Rosalind drafts a formal letter to the board.", answer: true },
@@ -113,9 +113,9 @@ export const CHAPTERS = [
     story:
       "I submit the formal appeal, along with a request to present my case in person at the board's next scheduled meeting. Mr. Ashworth confirms receipt promptly, mentioning the board will review my request during their meeting in two weeks. While waiting, I continue maintaining the garden carefully, wanting to demonstrate genuine commitment rather than treating this as a temporary display. A neighbor mentions she'd support my appeal if asked, having admired the garden since I'd first planted it. This small gesture of support, given how uncertain the outcome feels, genuinely encourages me moving forward.",
     questions: [
-      "What does Rosalind submit along with the formal appeal?",
-      "What does Mr. Ashworth confirm?",
-      "What does a neighbor mention?",
+      { text: "What does Rosalind submit along with the formal appeal?", answer: "A request to present her case in person." },
+      { text: "What does Mr. Ashworth confirm?", answer: "Receipt, and that the board will review it in two weeks." },
+      { text: "What does a neighbor mention?", answer: "That she'd support Rosalind's appeal." },
     ],
     trueFalse: [
       { text: "Rosalind requests to present her case in person at the meeting.", answer: true },
@@ -142,9 +142,9 @@ export const CHAPTERS = [
     story:
       "At the meeting, I present my case calmly, walking the board through the photographs, the relevant bylaw, and the neighborhood precedent I'd found. Mr. Ashworth asks several clarifying questions, particularly about long-term maintenance and how the garden might look during winter months. I answer honestly, admitting the garden looks less vibrant seasonally, though I'd be willing to add borders for a more polished appearance. One board member mentions appreciating that I'd approached this respectfully rather than simply ignoring the original violation notice. Given the board's attentive questions, I sense they're genuinely considering this request rather than merely going through procedural motions.",
     questions: [
-      "What does Rosalind walk the board through?",
-      "What does Mr. Ashworth ask clarifying questions about?",
-      "What does Rosalind offer to do?",
+      { text: "What does Rosalind walk the board through?", answer: "The photographs, the bylaw, and the neighborhood precedent." },
+      { text: "What does Mr. Ashworth ask clarifying questions about?", answer: "Long-term maintenance and winter appearance." },
+      { text: "What does Rosalind offer to do?", answer: "Add borders for a more polished appearance." },
     ],
     trueFalse: [
       { text: "Rosalind walks the board through photographs, bylaws, and precedent.", answer: true },
@@ -171,9 +171,9 @@ export const CHAPTERS = [
     story:
       "A week later, Mr. Ashworth calls to inform me the board has approved my exception, with one specific condition attached. They'd like me to add a small decorative border, similar to what I'd already offered, to maintain visual consistency with neighboring properties. I agree readily, genuinely relieved that a compromise had been reached rather than an outright rejection of my request. Mr. Ashworth mentions this exception will now be documented, potentially serving as precedent for similar future requests from other homeowners. Hanging up, I feel proud that respectful, well-prepared negotiation had actually produced a positive outcome.",
     questions: [
-      "What does Mr. Ashworth call to inform Rosalind?",
-      "What condition is attached to the approval?",
-      "What does Mr. Ashworth mention about this exception?",
+      { text: "What does Mr. Ashworth call to inform Rosalind?", answer: "That the board has approved her exception." },
+      { text: "What condition is attached to the approval?", answer: "Adding a small decorative border." },
+      { text: "What does Mr. Ashworth mention about this exception?", answer: "That it will be documented as precedent for future requests." },
     ],
     trueFalse: [
       { text: "Mr. Ashworth calls to inform her the board approved her exception.", answer: true },
@@ -200,9 +200,9 @@ export const CHAPTERS = [
     story:
       "Over the following weekend, I install a simple decorative border, exactly as agreed upon during the board's approval process. The garden now looks noticeably more polished, blending the practical vegetables with a more intentional, cohesive visual design overall. A few neighbors stop by, complimenting the improved appearance and asking genuinely curious questions about the vegetables I'm growing. One neighbor mentions she might request a similar exception herself, inspired by seeing how mine had ultimately turned out. I feel satisfied that resolving this respectfully had, in a small way, opened a door for others too.",
     questions: [
-      "What does Rosalind install over the following weekend?",
-      "How does the garden look now?",
-      "What does one neighbor mention?",
+      { text: "What does Rosalind install over the following weekend?", answer: "A simple decorative border." },
+      { text: "How does the garden look now?", answer: "More polished." },
+      { text: "What does one neighbor mention?", answer: "That she might request a similar exception herself." },
     ],
     trueFalse: [
       { text: "Rosalind installs a simple decorative border.", answer: true },
@@ -229,9 +229,9 @@ export const CHAPTERS = [
     story:
       "I write a brief thank-you email to Mr. Ashworth and the board, appreciating their willingness to consider my request thoughtfully. I mention that I understand guidelines exist for good reason, and I respect the board's role in maintaining neighborhood consistency generally. Nevertheless, I express genuine gratitude that they'd been open to a reasonable exception rather than enforcing rigid, blanket compliance regardless of context. Mr. Ashworth replies warmly, saying he appreciated how I'd approached the entire situation professionally from the very beginning. This exchange, small as it is, leaves me feeling genuinely positive about my relationship with the community's governance.",
     questions: [
-      "What does Rosalind write to Mr. Ashworth and the board?",
-      "What does Rosalind mention understanding?",
-      "How does Mr. Ashworth reply?",
+      { text: "What does Rosalind write to Mr. Ashworth and the board?", answer: "A thank-you email." },
+      { text: "What does Rosalind mention understanding?", answer: "That guidelines exist for good reason." },
+      { text: "How does Mr. Ashworth reply?", answer: "Warmly, appreciating her professionalism." },
     ],
     trueFalse: [
       { text: "Rosalind writes a brief thank-you email to the board.", answer: true },
@@ -258,9 +258,9 @@ export const CHAPTERS = [
     story:
       "The neighbor who'd mentioned interest earlier now asks for my help drafting her own exception request, inspired by how mine had unfolded. I walk her through what worked well: referencing specific bylaws, including photographic evidence, and framing the request collaboratively rather than confrontationally. She admits she'd initially assumed challenging an HOA decision meant automatic conflict, an assumption my experience had apparently corrected. I explain that, in my experience, most disputes like this stem from miscommunication rather than genuine, irreconcilable disagreement. Watching her leave feeling more confident, I realize this experience had value extending well beyond my own garden.",
     questions: [
-      "What does the neighbor ask Rosalind for help with?",
-      "What does Rosalind walk her through?",
-      "What had the neighbor initially assumed?",
+      { text: "What does the neighbor ask Rosalind for help with?", answer: "Drafting her own exception request." },
+      { text: "What does Rosalind walk her through?", answer: "Referencing bylaws, including evidence, and framing it collaboratively." },
+      { text: "What had the neighbor initially assumed?", answer: "That challenging an HOA decision meant automatic conflict." },
     ],
     trueFalse: [
       { text: "The neighbor asks Rosalind for help drafting her own request.", answer: true },
@@ -287,9 +287,9 @@ export const CHAPTERS = [
     story:
       "Looking back on the entire dispute, I realize how differently things might have unfolded had I simply removed the garden without question. If I had assumed the rule was absolute and non-negotiable, I would have missed a reasonable path that actually existed within the bylaws. Instead, researching thoroughly and approaching the board respectfully allowed me to reach an outcome that honored both the rules and my own genuine interests. I've learned that formal disputes, approached with preparation rather than frustration, often have more flexibility than they initially appear to allow. In the end, this experience taught me that advocating for something you value is worth the effort required to do it properly.",
     questions: [
-      "What does Rosalind realize looking back on the dispute?",
-      "What might have happened if she had simply removed the garden?",
-      "What has Rosalind learned about formal disputes?",
+      { text: "What does Rosalind realize looking back on the dispute?", answer: "How differently things might have gone had she simply removed the garden." },
+      { text: "What might have happened if she had simply removed the garden?", answer: "She would have missed a reasonable path within the bylaws." },
+      { text: "What has Rosalind learned about formal disputes?", answer: "That they often have more flexibility than they initially appear." },
     ],
     trueFalse: [
       { text: "Rosalind realizes things might have gone differently without questioning the rule.", answer: true },

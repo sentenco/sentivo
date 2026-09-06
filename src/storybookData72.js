@@ -29,9 +29,9 @@ export const CHAPTERS = [
     story:
       "I've been drafting a post about my anxiety for nearly a week now, rewriting it more times than I can count. Part of me genuinely wants to share it, hoping it might help someone else feeling similarly isolated and misunderstood. However, another part of me worries about how classmates, teachers, or even future employers might eventually perceive this vulnerability. I've read that authentic posts like this can genuinely resonate, though I've also seen people mocked for sharing something too personal online. Staring at the unsent draft, I realize I genuinely don't know which instinct I should actually trust here.",
     questions: [
-      "What has Farah been drafting for nearly a week?",
-      "Why does part of Farah want to share it?",
-      "What does another part of Farah worry about?",
+      { text: "What has Farah been drafting for nearly a week?", answer: "A post about her anxiety." },
+      { text: "Why does part of Farah want to share it?", answer: "Hoping it might help someone else feeling isolated." },
+      { text: "What does another part of Farah worry about?", answer: "How classmates, teachers, or employers might perceive it." },
     ],
     trueFalse: [
       { text: "Farah has been drafting a post about her anxiety.", answer: true },
@@ -58,9 +58,9 @@ export const CHAPTERS = [
     story:
       "I show the draft to Dahlia, curious what she'll think, given how openly she shares her own experiences online generally. She reads it carefully, then tells me honestly that this could genuinely help someone struggling silently, exactly like I'd hoped. She mentions that when she'd shared her own difficult experience last year, several classmates had reached out privately, saying it helped them feel less alone. Dahlia argues that staying silent out of fear only reinforces the stigma surrounding mental health that we're supposedly trying to fight. Her encouragement feels genuine, though I notice she doesn't fully address my worry about long-term consequences.",
     questions: [
-      "What does Farah show Dahlia?",
-      "What does Dahlia say happened when she shared her own experience last year?",
-      "What does Dahlia argue about staying silent out of fear?",
+      { text: "What does Farah show Dahlia?", answer: "The draft." },
+      { text: "What does Dahlia say happened when she shared her own experience last year?", answer: "Several classmates reached out privately, saying it helped." },
+      { text: "What does Dahlia argue about staying silent out of fear?", answer: "That it only reinforces the stigma." },
     ],
     trueFalse: [
       { text: "Farah shows the draft to Dahlia.", answer: true },
@@ -87,9 +87,9 @@ export const CHAPTERS = [
     story:
       "I show the same draft to Colin, curious whether his more cautious perspective might reveal something Dahlia's enthusiasm had missed. He reads it slowly, then admits he worries about permanence: once posted, this becomes searchable and screenshot-able indefinitely, regardless of future regret. He mentions a cousin who'd shared something vulnerable years ago, only to have it resurface unexpectedly during a college application process later. Colin isn't against sharing exactly, but he questions whether a public post is genuinely necessary compared to more private, controlled alternatives. His caution feels valid too, though I sense he's perhaps overestimating how likely negative consequences actually are.",
     questions: [
-      "What does Colin worry about regarding permanence?",
-      "What does Colin mention about his cousin?",
-      "What does Colin question about a public post?",
+      { text: "What does Colin worry about regarding permanence?", answer: "That once posted, it's searchable and screenshot-able indefinitely." },
+      { text: "What does Colin mention about his cousin?", answer: "That something vulnerable resurfaced during a college application." },
+      { text: "What does Colin question about a public post?", answer: "Whether it's genuinely necessary compared to private alternatives." },
     ],
     trueFalse: [
       { text: "Colin worries about permanence once something is posted.", answer: true },
@@ -116,9 +116,9 @@ export const CHAPTERS = [
     story:
       "Thinking through both conversations, I realize Dahlia and Colin aren't actually disagreeing about whether my experience matters, but about risk and audience. Dahlia's perspective centers on potential benefit: helping others and reducing stigma through visible, authentic sharing of real struggles. Colin's perspective centers on potential harm: protecting my future self from consequences I can't fully predict or control right now. Neither perspective feels wrong exactly, which means the real question isn't which friend is right, but which risk I'm personally willing to accept. This reframing, given how stuck I'd felt, actually helps me think about this more clearly.",
     questions: [
-      "What does Farah realize Dahlia and Colin aren't actually disagreeing about?",
-      "What does Dahlia's perspective center on?",
-      "What does Colin's perspective center on?",
+      { text: "What does Farah realize Dahlia and Colin aren't actually disagreeing about?", answer: "Whether her experience matters." },
+      { text: "What does Dahlia's perspective center on?", answer: "Potential benefit -- helping others and reducing stigma." },
+      { text: "What does Colin's perspective center on?", answer: "Potential harm -- protecting her future self." },
     ],
     trueFalse: [
       { text: "Farah realizes they aren't disagreeing about whether her experience matters.", answer: true },
@@ -145,9 +145,9 @@ export const CHAPTERS = [
     story:
       "Rather than choosing entirely public or entirely private, I research whether some middle ground might actually address both concerns simultaneously. I discover a feature allowing posts visible only to a smaller, selected group rather than my entire public follower list. This way, I could share with people I trust, potentially helping someone specific, without the permanence Colin worried about affecting strangers. I also consider writing anonymously on a mental health forum instead, separating the content from my actual identity entirely. Given these options, I realize the choice isn't simply share or don't share, but how and with whom.",
     questions: [
-      "What does Farah research instead of choosing entirely public or private?",
-      "What feature does Farah discover?",
-      "What alternative does Farah also consider?",
+      { text: "What does Farah research instead of choosing entirely public or private?", answer: "A middle ground." },
+      { text: "What feature does Farah discover?", answer: "Posts visible only to a smaller, selected group." },
+      { text: "What alternative does Farah also consider?", answer: "Writing anonymously on a mental health forum." },
     ],
     trueFalse: [
       { text: "Farah researches whether a middle ground might exist.", answer: true },
@@ -174,9 +174,9 @@ export const CHAPTERS = [
     story:
       "I bring my middle-ground idea to Dahlia and Colin together, curious whether this compromise might satisfy both of their concerns reasonably. Dahlia admits that a smaller, trusted audience could still genuinely help, even if it reaches fewer people than a fully public post. Colin agrees that this significantly reduces the permanence risk he'd worried about, since screenshots within trusted circles feel less threatening. Neither seems entirely thrilled, exactly, but both acknowledge this addresses their core concern reasonably well. Watching them both nod, even hesitantly, I feel like I've finally found something workable rather than choosing between two extremes.",
     questions: [
-      "What does Farah bring to Dahlia and Colin together?",
-      "What does Dahlia admit about a smaller, trusted audience?",
-      "What does Colin agree this significantly reduces?",
+      { text: "What does Farah bring to Dahlia and Colin together?", answer: "Her middle-ground idea." },
+      { text: "What does Dahlia admit about a smaller, trusted audience?", answer: "That it could still genuinely help." },
+      { text: "What does Colin agree this significantly reduces?", answer: "The permanence risk." },
     ],
     trueFalse: [
       { text: "Farah brings her middle-ground idea to both friends together.", answer: true },
@@ -203,9 +203,9 @@ export const CHAPTERS = [
     story:
       "That evening, I finalize the post, adjusting the audience setting to my smaller, trusted circle rather than fully public visibility. My finger hovers over the button longer than I expected, given how much thought had already gone into this decision. Taking a breath, I finally post it, immediately feeling an odd mixture of relief and lingering vulnerability simultaneously. Within minutes, a few close friends respond supportively, one even sharing that they'd been struggling with something similar themselves recently. I close my phone, deciding I'll check responses again tomorrow rather than obsessively refreshing throughout the night.",
     questions: [
-      "What does Farah adjust before posting?",
-      "How does Farah feel immediately after posting?",
-      "What does one close friend share in response?",
+      { text: "What does Farah adjust before posting?", answer: "The audience setting to her smaller, trusted circle." },
+      { text: "How does Farah feel immediately after posting?", answer: "A mix of relief and lingering vulnerability." },
+      { text: "What does one close friend share in response?", answer: "That they'd been struggling with something similar." },
     ],
     trueFalse: [
       { text: "Farah adjusts the audience to her smaller, trusted circle.", answer: true },
@@ -232,9 +232,9 @@ export const CHAPTERS = [
     story:
       "The next morning, I check my phone and find more responses than I'd honestly expected from such a small audience. Most messages are supportive, though one classmate seems slightly awkward afterward, unsure how to respond directly in person. This mild awkwardness stings briefly, though it's nowhere near the harsh reaction Colin had worried about beforehand. On the other hand, a friend I hadn't been particularly close with reaches out, saying this helped her feel comfortable sharing her own struggle. Weighing these mixed responses together, I realize both Dahlia's hope and Colin's caution had been partially, reasonably correct.",
     questions: [
-      "What does Farah find the next morning?",
-      "How does one classmate seem afterward?",
-      "What does a friend Farah wasn't particularly close with say?",
+      { text: "What does Farah find the next morning?", answer: "More responses than expected." },
+      { text: "How does one classmate seem afterward?", answer: "Slightly awkward." },
+      { text: "What does a friend Farah wasn't particularly close with say?", answer: "That it helped her feel comfortable sharing her own struggle." },
     ],
     trueFalse: [
       { text: "Farah finds more responses than she expected.", answer: true },
@@ -261,9 +261,9 @@ export const CHAPTERS = [
     story:
       "I tell Dahlia and Colin how things turned out, sharing both the supportive messages and the mildly awkward moment afterward. Dahlia seems pleased that her encouragement led somewhere positive, though she acknowledges Colin's caution about permanence remains genuinely valid. Colin admits that seeing the actual outcome, rather than just imagining worst-case scenarios, shifts his perspective somewhat toward Dahlia's optimism. Neither fully abandons their original view, but both seem more willing to hold space for the other's perspective now. I feel grateful that consulting both of them, rather than just one, led me toward a more balanced decision.",
     questions: [
-      "What does Farah tell Dahlia and Colin?",
-      "How does Dahlia react to hearing the outcome?",
-      "How does Colin's perspective shift?",
+      { text: "What does Farah tell Dahlia and Colin?", answer: "How things turned out -- both the support and the awkward moment." },
+      { text: "How does Dahlia react to hearing the outcome?", answer: "Pleased, though she acknowledges Colin's caution remains valid." },
+      { text: "How does Colin's perspective shift?", answer: "Toward Dahlia's optimism." },
     ],
     trueFalse: [
       { text: "Farah tells them both the supportive and awkward moments.", answer: true },
@@ -290,9 +290,9 @@ export const CHAPTERS = [
     story:
       "Looking back on the whole decision, I realize how differently things might have gone had I simply followed one friend's advice exclusively. If I had listened only to Dahlia, I might have overlooked genuine risks Colin had reasonably identified beforehand. Had I listened only to Colin, I likely would have stayed silent, missing a connection that genuinely mattered to someone else. Instead, weighing both perspectives carefully allowed me to find an approach that honored both benefit and caution simultaneously. In the end, this experience taught me that difficult decisions often benefit more from synthesis than from choosing a single, simple answer.",
     questions: [
-      "What does Farah realize looking back on this decision?",
-      "What might have happened if she had listened only to Dahlia?",
-      "What has Farah learned about difficult decisions?",
+      { text: "What does Farah realize looking back on this decision?", answer: "How differently things might have gone had she followed one friend's advice exclusively." },
+      { text: "What might have happened if she had listened only to Dahlia?", answer: "She might have overlooked genuine risks." },
+      { text: "What has Farah learned about difficult decisions?", answer: "That they often benefit more from synthesis than a single simple answer." },
     ],
     trueFalse: [
       { text: "Farah realizes things might have gone differently with one exclusive view.", answer: true },

@@ -27,9 +27,9 @@ export const CHAPTERS = [
     story:
       "My current flour supplier sends their annual contract renewal, and I notice the proposed prices have increased more than I'd expected. Given how tight my bakery's margins already are, absorbing this increase without adjustment would genuinely hurt my business's profitability. I consider simply switching suppliers, though doing so would mean rebuilding a relationship I'd carefully developed over three years. Instead, I decide the more sensible approach is requesting a conversation about the proposed terms before committing to anything. Given how much this decision affects my business, I know I'll need to prepare a genuinely persuasive case beforehand.",
     questions: [
-      "What does Tomas's current flour supplier send?",
-      "What does Tomas notice about the proposed prices?",
-      "What does Tomas decide is the more sensible approach?",
+      { text: "What does Tomas's current flour supplier send?", answer: "The annual contract renewal." },
+      { text: "What does Tomas notice about the proposed prices?", answer: "That they've increased more than expected." },
+      { text: "What does Tomas decide is the more sensible approach?", answer: "Requesting a conversation about the terms." },
     ],
     trueFalse: [
       { text: "Tomas's supplier sends their annual contract renewal.", answer: true },
@@ -56,9 +56,9 @@ export const CHAPTERS = [
     story:
       "Before the conversation, I research pricing from two competing suppliers, ensuring I'd understand the actual market rate genuinely. I discover that while my current supplier's proposed price is indeed higher, it's not dramatically out of line with the broader market. This research, moreover, gives me leverage: I can reference specific competitor rates without necessarily needing to switch suppliers immediately. I also calculate exactly how much a smaller, more reasonable increase would affect my monthly costs specifically. Armed with this data, I feel considerably more confident approaching Ms. Idowu than I would have otherwise.",
     questions: [
-      "What does Tomas research before the conversation?",
-      "What does Tomas discover about the proposed price?",
-      "What does this research give Tomas?",
+      { text: "What does Tomas research before the conversation?", answer: "Pricing from two competing suppliers." },
+      { text: "What does Tomas discover about the proposed price?", answer: "That it's higher, but not dramatically out of line with the market." },
+      { text: "What does this research give Tomas?", answer: "Leverage." },
     ],
     trueFalse: [
       { text: "Tomas researches pricing from two competing suppliers.", answer: true },
@@ -85,9 +85,9 @@ export const CHAPTERS = [
     story:
       "I request a meeting with Ms. Idowu, explaining upfront that I'd like to discuss the proposed contract terms before signing anything. She agrees readily, mentioning she genuinely values our long working relationship and prefers open discussion over losing a client abruptly. I open by acknowledging the quality of her company's product, then explain that the proposed increase exceeds what my current margins can comfortably absorb. She listens attentively, asking clarifying questions rather than immediately defending the proposed pricing outright. This respectful, business-like exchange, given how it begins, leaves me cautiously optimistic about finding common ground.",
     questions: [
-      "What does Tomas request?",
-      "Why does Ms. Idowu agree readily?",
-      "How does Ms. Idowu respond to Tomas's explanation?",
+      { text: "What does Tomas request?", answer: "A meeting with Ms. Idowu." },
+      { text: "Why does Ms. Idowu agree readily?", answer: "She values their long working relationship." },
+      { text: "How does Ms. Idowu respond to Tomas's explanation?", answer: "She listens attentively, asking clarifying questions." },
     ],
     trueFalse: [
       { text: "Tomas requests a meeting to discuss the proposed terms.", answer: true },
@@ -114,9 +114,9 @@ export const CHAPTERS = [
     story:
       "I present my cost breakdown, explaining specifically how the proposed increase would affect my bakery's monthly operating expenses. I mention, respectfully, that I'd researched competitor pricing and found it somewhat more favorable, though not dramatically different overall. Rather than threatening to switch suppliers, I frame this as context, hoping to negotiate collaboratively rather than through implicit pressure. Ms. Idowu nods, acknowledging that a valued, long-term client like myself deserves consideration beyond standard, blanket pricing policies. She mentions she'll need to consult her manager, but suggests there may be flexibility available given our history together.",
     questions: [
-      "What does Tomas present to Ms. Idowu?",
-      "What does Tomas mention about competitor pricing?",
-      "What does Ms. Idowu say she needs to do?",
+      { text: "What does Tomas present to Ms. Idowu?", answer: "A cost breakdown." },
+      { text: "What does Tomas mention about competitor pricing?", answer: "That it's somewhat more favorable, but not dramatically different." },
+      { text: "What does Ms. Idowu say she needs to do?", answer: "Consult her manager." },
     ],
     trueFalse: [
       { text: "Tomas presents a cost breakdown explaining the impact.", answer: true },
@@ -143,9 +143,9 @@ export const CHAPTERS = [
     story:
       "Ms. Idowu steps away briefly to call her manager, returning several minutes later with a revised offer to discuss together. Rather than the full proposed increase, she offers a smaller adjustment, paired with a locked-in rate for the following eighteen months. This longer commitment, she explains, benefits her company too, since it guarantees predictable, stable revenue from a reliable client. I consider this carefully, recognizing that price stability itself has genuine value beyond the immediate number involved. Given these terms, I agree this counteroffer seems considerably more reasonable than the originally proposed contract.",
     questions: [
-      "What does Ms. Idowu do briefly?",
-      "What does the revised offer include?",
-      "Why does the longer commitment benefit her company too?",
+      { text: "What does Ms. Idowu do briefly?", answer: "Step away to call her manager." },
+      { text: "What does the revised offer include?", answer: "A smaller adjustment with a locked-in rate for eighteen months." },
+      { text: "Why does the longer commitment benefit her company too?", answer: "It guarantees predictable, stable revenue." },
     ],
     trueFalse: [
       { text: "Ms. Idowu steps away briefly to call her manager.", answer: true },
@@ -172,9 +172,9 @@ export const CHAPTERS = [
     story:
       "We review the revised contract together, line by line, ensuring both of us fully understand every term before signing anything. I ask a few clarifying questions about delivery schedules and minimum order quantities, wanting complete clarity beforehand. Ms. Idowu answers each question thoroughly, adjusting one minor clause after I mention a scheduling conflict with my current ordering pattern. Once satisfied, we both sign the updated agreement, shaking hands as a gesture of renewed, mutual commitment. Walking her out, I feel genuinely satisfied that this negotiation had strengthened, rather than strained, our working relationship.",
     questions: [
-      "What do Tomas and Ms. Idowu review together?",
-      "What does Tomas ask clarifying questions about?",
-      "What happens once they're both satisfied?",
+      { text: "What do Tomas and Ms. Idowu review together?", answer: "The revised contract, line by line." },
+      { text: "What does Tomas ask clarifying questions about?", answer: "Delivery schedules and minimum order quantities." },
+      { text: "What happens once they're both satisfied?", answer: "They sign the updated agreement." },
     ],
     trueFalse: [
       { text: "Tomas and Ms. Idowu review the revised contract line by line.", answer: true },
@@ -201,9 +201,9 @@ export const CHAPTERS = [
     story:
       "That evening, I draft a formal email to Ms. Idowu, summarizing the finalized terms for both our records going forward. I keep the tone professional, referencing specific numbers and dates rather than vague, general descriptions of what we'd agreed. I also thank her for approaching this collaboratively, noting that I valued the flexibility her company had ultimately shown. Sending this email ensures there's a clear, documented reference should any confusion arise later regarding these specific terms. This written follow-up, I realize, is as much a part of successful negotiation as the actual conversation itself.",
     questions: [
-      "What does Tomas draft that evening?",
-      "What tone does Tomas keep in the email?",
-      "Why does Tomas send this email?",
+      { text: "What does Tomas draft that evening?", answer: "A formal confirmation email." },
+      { text: "What tone does Tomas keep in the email?", answer: "Professional, referencing specific numbers and dates." },
+      { text: "Why does Tomas send this email?", answer: "To ensure a clear, documented reference for later." },
     ],
     trueFalse: [
       { text: "Tomas drafts a formal email summarizing the finalized terms.", answer: true },
@@ -230,9 +230,9 @@ export const CHAPTERS = [
     story:
       "The next morning, I explain the new supplier terms to my staff, since the adjusted pricing directly affects our overall budget planning. One employee asks whether this means we might need to adjust menu prices slightly to maintain our current margins. I explain that, given the smaller-than-expected increase, only minor adjustments should actually be necessary going forward. Another employee mentions appreciating that I'd negotiated rather than simply passing the full increase along without any pushback. This transparency, I realize, matters not just for practical planning, but for maintaining trust within my small team too.",
     questions: [
-      "What does Tomas explain to his staff the next morning?",
-      "What does one employee ask about?",
-      "What does another employee mention appreciating?",
+      { text: "What does Tomas explain to his staff the next morning?", answer: "The new supplier terms." },
+      { text: "What does one employee ask about?", answer: "Whether menu prices need adjusting." },
+      { text: "What does another employee mention appreciating?", answer: "That Tomas negotiated rather than passing along the full increase." },
     ],
     trueFalse: [
       { text: "Tomas explains the new supplier terms to his staff.", answer: true },
@@ -259,9 +259,9 @@ export const CHAPTERS = [
     story:
       "Several months later, Ms. Idowu visits again to discuss an upcoming seasonal order, and our conversation feels noticeably more relaxed than before. She mentions that our negotiation had actually influenced how she approaches other long-term clients now, emphasizing flexibility over rigid, blanket policies. I admit that I'd initially worried negotiating might damage our relationship, though it clearly achieved the opposite outcome instead. Given how smoothly this partnership now operates, I recognize that respectful negotiation, handled well, can genuinely strengthen business relationships rather than threaten them. This realization, more than the specific pricing terms, feels like the negotiation's most lasting outcome.",
     questions: [
-      "What does Ms. Idowu discuss when she visits several months later?",
-      "What does Ms. Idowu mention about their negotiation?",
-      "What does Tomas admit he had initially worried about?",
+      { text: "What does Ms. Idowu discuss when she visits several months later?", answer: "An upcoming seasonal order." },
+      { text: "What does Ms. Idowu mention about their negotiation?", answer: "That it influenced how she approaches other long-term clients." },
+      { text: "What does Tomas admit he had initially worried about?", answer: "That negotiating might damage their relationship." },
     ],
     trueFalse: [
       { text: "Ms. Idowu visits to discuss an upcoming seasonal order.", answer: true },
@@ -288,9 +288,9 @@ export const CHAPTERS = [
     story:
       "Looking back on the entire process, I realize how differently things might have unfolded had I simply accepted the original terms without question. If I had avoided the conversation out of discomfort, I likely would have quietly absorbed costs my business genuinely couldn't sustain long-term. Instead, researching thoroughly and negotiating respectfully allowed me to protect my business while preserving a valuable, long-term relationship. I've learned that negotiation, done well, isn't adversarial by nature, but rather a genuine tool for finding sustainable, mutual solutions. In the end, this experience taught me that advocating for my business requires both preparation and genuine respect for the other side.",
     questions: [
-      "What does Tomas realize looking back on the process?",
-      "What might have happened if he had simply accepted the original terms?",
-      "What has Tomas learned about negotiation done well?",
+      { text: "What does Tomas realize looking back on the process?", answer: "How differently things might have gone had he accepted the original terms." },
+      { text: "What might have happened if he had simply accepted the original terms?", answer: "He would have quietly absorbed costs his business couldn't sustain." },
+      { text: "What has Tomas learned about negotiation done well?", answer: "That it's a tool for finding sustainable, mutual solutions, not adversarial." },
     ],
     trueFalse: [
       { text: "Tomas realizes things might have gone differently without negotiating.", answer: true },

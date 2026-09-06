@@ -28,9 +28,9 @@ export const CHAPTERS = [
     story:
       "Ms. Okonkwo announces a new debate assignment: whether teens should have legally limited screen time, a topic that sparks immediate reactions. I'm assigned to argue against limits, paired with Petra, who's been assigned the opposing position instead. Privately, I actually lean toward supporting some limits myself, which makes this assignment feel more challenging than a topic I'd genuinely believed in. Ms. Okonkwo explains that afterward, we won't simply declare a winner, but write a reflective synthesis considering both sides fairly. This structure, she notes, mirrors how real-world disagreements actually get resolved, rather than simple win-or-lose competitions.",
     questions: [
-      "What debate topic does Ms. Okonkwo announce?",
-      "What position is Rafael assigned to argue?",
-      "What does the class do after the debate, according to Ms. Okonkwo?",
+      { text: "What debate topic does Ms. Okonkwo announce?", answer: "Whether teens should have legally limited screen time." },
+      { text: "What position is Rafael assigned to argue?", answer: "Against limits." },
+      { text: "What does the class do after the debate, according to Ms. Okonkwo?", answer: "Write a reflective synthesis considering both sides." },
     ],
     trueFalse: [
       { text: "The debate topic is whether teens should have limited screen time.", answer: true },
@@ -57,9 +57,9 @@ export const CHAPTERS = [
     story:
       "Researching arguments against screen-time limits proves harder than I expected, given that I personally find some limits reasonable. I find studies suggesting that blanket restrictions often fail to address the actual underlying reasons teens overuse screens. Moreover, some researchers argue that teaching self-regulation ultimately matters more than external limits imposed by adults or governments. I also discover that screen time varies enormously in purpose, from mindless scrolling to genuine creative work or meaningful social connection. By the end of my research, I've developed a genuinely stronger case than I'd initially assumed existed.",
     questions: [
-      "Why does researching this position prove harder than expected?",
-      "What do the studies Rafael finds suggest about blanket restrictions?",
-      "What does Rafael discover about screen time's purpose?",
+      { text: "Why does researching this position prove harder than expected?", answer: "Because he personally finds some limits reasonable." },
+      { text: "What do the studies Rafael finds suggest about blanket restrictions?", answer: "That they often fail to address the actual underlying reasons teens overuse screens." },
+      { text: "What does Rafael discover about screen time's purpose?", answer: "That it varies enormously, from mindless scrolling to creative work or social connection." },
     ],
     trueFalse: [
       { text: "Rafael personally finds some limits reasonable.", answer: true },
@@ -86,9 +86,9 @@ export const CHAPTERS = [
     story:
       "Petra and I meet in the library beforehand, agreeing that even though we're opponents, preparing thoughtfully would benefit the whole class discussion. She shares that she's found compelling research too, particularly around sleep disruption and its measurable effects on teen mental health. I mention my own findings about self-regulation, and she admits she hadn't considered that angle as thoroughly herself. Rather than treating each other as rivals, we end up exchanging genuinely useful sources neither of us had discovered independently. This collaboration, in spite of our opposing assignments, leaves me feeling more prepared than I would have alone.",
     questions: [
-      "Where do Rafael and Petra meet beforehand?",
-      "What has Petra found compelling research about?",
-      "What happens instead of them treating each other as rivals?",
+      { text: "Where do Rafael and Petra meet beforehand?", answer: "The library." },
+      { text: "What has Petra found compelling research about?", answer: "Sleep disruption and its effects on teen mental health." },
+      { text: "What happens instead of them treating each other as rivals?", answer: "They exchange genuinely useful sources." },
     ],
     trueFalse: [
       { text: "Rafael and Petra meet in the library beforehand.", answer: true },
@@ -115,9 +115,9 @@ export const CHAPTERS = [
     story:
       "The debate begins, and I present my argument first, explaining that blanket limits ignore how differently teens actually use screens. I cite the self-regulation research, arguing that teaching skills ultimately serves teens better than simply restricting their access. Petra responds calmly, presenting her sleep-disruption research and arguing that some structure genuinely protects developing brains from measurable harm. Neither of us raises our voice or interrupts, following Ms. Okonkwo's ground rules about respectful, evidence-based exchange throughout. Watching classmates take notes on both arguments, I realize this debate feels more like a genuine exploration than a competition.",
     questions: [
-      "What does Rafael argue about blanket limits?",
-      "What does Petra argue about structure and developing brains?",
-      "How does the debate feel, compared to a competition?",
+      { text: "What does Rafael argue about blanket limits?", answer: "That they ignore how differently teens actually use screens." },
+      { text: "What does Petra argue about structure and developing brains?", answer: "That some structure genuinely protects them from measurable harm." },
+      { text: "How does the debate feel, compared to a competition?", answer: "More like a genuine exploration." },
     ],
     trueFalse: [
       { text: "Rafael argues that blanket limits ignore how differently teens use screens.", answer: true },
@@ -144,9 +144,9 @@ export const CHAPTERS = [
     story:
       "Ms. Okonkwo opens the floor for questions, and classmates raise genuinely thoughtful points neither Petra nor I had fully anticipated beforehand. One student asks whether the real issue might actually be content quality rather than screen time itself. Another wonders whether limits should differ based on age, given how differently a twelve-year-old and an eighteen-year-old might use screens. Petra and I both find ourselves nodding along to points that complicate our original, more simplified positions somewhat. This questioning phase, moreover, reveals just how much nuance exists beneath what initially seemed like a simple yes-or-no debate.",
     questions: [
-      "What does Ms. Okonkwo open the floor for?",
-      "What does one student ask about content quality?",
-      "What does another student wonder about age differences?",
+      { text: "What does Ms. Okonkwo open the floor for?", answer: "Questions." },
+      { text: "What does one student ask about content quality?", answer: "Whether the real issue is content quality rather than screen time itself." },
+      { text: "What does another student wonder about age differences?", answer: "Whether limits should differ based on age." },
     ],
     trueFalse: [
       { text: "Ms. Okonkwo opens the floor for questions.", answer: true },
@@ -173,9 +173,9 @@ export const CHAPTERS = [
     story:
       "After class, Petra and I sit together, comparing notes and discussing which arguments actually seemed most persuasive to us personally. I admit that her sleep-disruption research genuinely shifted my thinking, even though I still believe self-regulation matters considerably too. She admits, in turn, that the content-quality question raised during questions had complicated her own certainty about blanket structure. Neither of us has fully changed our original position, but both of us clearly see the issue differently now. This conversation, given how it unfolded, feels more valuable than simply winning or losing the actual debate.",
     questions: [
-      "What do Rafael and Petra do after class?",
-      "What does Rafael admit shifted his thinking?",
-      "What does Petra admit complicated her certainty?",
+      { text: "What do Rafael and Petra do after class?", answer: "Sit together comparing notes." },
+      { text: "What does Rafael admit shifted his thinking?", answer: "Petra's sleep-disruption research." },
+      { text: "What does Petra admit complicated her certainty?", answer: "The content-quality question." },
     ],
     trueFalse: [
       { text: "Rafael and Petra sit together comparing notes after class.", answer: true },
@@ -202,9 +202,9 @@ export const CHAPTERS = [
     story:
       "Ms. Okonkwo assigns the reflective synthesis, and I sit down to write something considerably more complex than a typical persuasive essay. Rather than declaring a winner, I try genuinely representing both the self-regulation argument and the sleep-disruption research fairly. I write that perhaps the answer isn't strict limits or complete freedom, but flexible guidelines adjusted by age and content type. Given everything I'd heard, I argue that teaching digital literacy might matter more than either extreme position alone. Finishing the draft, I feel genuinely proud that this reflects actual thinking, not simply defending my originally assigned position.",
     questions: [
-      "What does Rafael sit down to write?",
-      "What does Rafael try to represent fairly in his synthesis?",
-      "What does Rafael argue might matter more than either extreme?",
+      { text: "What does Rafael sit down to write?", answer: "The reflective synthesis." },
+      { text: "What does Rafael try to represent fairly in his synthesis?", answer: "Both the self-regulation argument and the sleep-disruption research." },
+      { text: "What does Rafael argue might matter more than either extreme?", answer: "Teaching digital literacy." },
     ],
     trueFalse: [
       { text: "Rafael sits down to write the reflective synthesis.", answer: true },
@@ -231,9 +231,9 @@ export const CHAPTERS = [
     story:
       "Ms. Okonkwo invites volunteers to share their synthesis aloud, and I decide, somewhat nervously, to read mine to the class. As I read my flexible-guidelines argument, I notice Petra nodding along, seemingly recognizing echoes of her own thinking within it. Afterward, she shares her own synthesis, which arrives at a surprisingly similar conclusion from an entirely different starting position. Ms. Okonkwo points out that despite being assigned opposing sides, we'd independently converged on a nuanced, shared understanding. This moment, she explains, demonstrates exactly what genuine intellectual engagement, rather than simple debate-winning, can actually produce.",
     questions: [
-      "What does Rafael decide to do, somewhat nervously?",
-      "What does Rafael notice Petra doing while he reads?",
-      "What does Ms. Okonkwo point out about their conclusions?",
+      { text: "What does Rafael decide to do, somewhat nervously?", answer: "Read his synthesis aloud to the class." },
+      { text: "What does Rafael notice Petra doing while he reads?", answer: "Nodding along." },
+      { text: "What does Ms. Okonkwo point out about their conclusions?", answer: "That they'd independently converged on a nuanced, shared understanding." },
     ],
     trueFalse: [
       { text: "Rafael decides to read his synthesis aloud to the class.", answer: true },
@@ -260,9 +260,9 @@ export const CHAPTERS = [
     story:
       "In the hallway afterward, Petra mentions she used to dread debate assignments, always assuming they meant simply defending a position stubbornly. I admit I'd felt similarly before this particular assignment, expecting competition rather than genuine, collaborative exploration of an issue. We agree that being assigned an unfamiliar or even opposing position actually forced us both to think more carefully. Given this experience, I suspect I'll approach future debates differently, treating them as opportunities rather than battles to win. Walking to my next class, I feel genuinely grateful for an assignment that changed how I think about disagreement itself.",
     questions: [
-      "What does Petra mention she used to dread?",
-      "What does Rafael admit he felt similarly about before this?",
-      "What do they agree about being assigned an unfamiliar position?",
+      { text: "What does Petra mention she used to dread?", answer: "Debate assignments." },
+      { text: "What does Rafael admit he felt similarly about before this?", answer: "Expecting competition rather than collaborative exploration." },
+      { text: "What do they agree about being assigned an unfamiliar position?", answer: "That it forced them both to think more carefully." },
     ],
     trueFalse: [
       { text: "Petra used to dread debate assignments.", answer: true },
@@ -289,9 +289,9 @@ export const CHAPTERS = [
     story:
       "Looking back on the whole assignment, I realize how differently I might have approached it had I simply defended my assigned position stubbornly. If I had ignored Petra's research entirely, I would have written a far weaker, less honest synthesis in the end. Instead, genuinely engaging with an opposing viewpoint allowed me to develop a more complete, nuanced understanding of the issue. I've learned that debate, at its best, isn't really about defeating someone else's argument, but refining your own thinking. In the end, this experience taught me that disagreement, approached openly, can actually be a genuine form of learning.",
     questions: [
-      "What does Rafael realize looking back on the assignment?",
-      "What might have happened if he had ignored Petra's research?",
-      "What has Rafael learned about debate at its best?",
+      { text: "What does Rafael realize looking back on the assignment?", answer: "How differently he might have approached it had he defended his position stubbornly." },
+      { text: "What might have happened if he had ignored Petra's research?", answer: "He'd have written a weaker, less honest synthesis." },
+      { text: "What has Rafael learned about debate at its best?", answer: "That it's about refining your own thinking, not defeating someone else's argument." },
     ],
     trueFalse: [
       { text: "Rafael realizes he could have approached this differently.", answer: true },

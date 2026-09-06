@@ -26,9 +26,9 @@ export const CHAPTERS = [
     story:
       "My lease renewal letter arrives, proposing a rent increase considerably higher than what I'd anticipated based on previous years' adjustments. Having lived here for four years, I've always paid on time and maintained the apartment carefully, which makes this increase feel somewhat unjustified. I check current listings for comparable apartments nearby, discovering that while rents have indeed risen, this particular increase still seems disproportionate. Moving would mean significant costs, from deposits to moving expenses, which I'd genuinely prefer to avoid if reasonably possible. Given this, I decide negotiating directly with Mr. Halloran seems like the more sensible first step.",
     questions: [
-      "What does Bianca's lease renewal letter propose?",
-      "How long has Bianca lived in the apartment?",
-      "What does Bianca discover checking current listings?",
+      { text: "What does Bianca's lease renewal letter propose?", answer: "A rent increase higher than expected." },
+      { text: "How long has Bianca lived in the apartment?", answer: "Four years." },
+      { text: "What does Bianca discover checking current listings?", answer: "That the increase seems disproportionate compared to the market." },
     ],
     trueFalse: [
       { text: "The renewal letter proposes a considerably higher rent increase.", answer: true },
@@ -55,9 +55,9 @@ export const CHAPTERS = [
     story:
       "I spend an evening researching comparable apartments, noting their prices, sizes, and amenities to build a reasonably accurate picture. I discover that similar units in my building's neighborhood rent for noticeably less than what Mr. Halloran is now proposing. I also research typical rent increase percentages in the area, finding that mine exceeds the average by a meaningful margin. This research, moreover, gives me concrete data to reference rather than simply expressing vague dissatisfaction about the number. Feeling genuinely prepared, I draft a few key points I'd like to raise during our upcoming conversation.",
     questions: [
-      "What does Bianca spend an evening doing?",
-      "What does Bianca discover about similar units nearby?",
-      "What does Bianca discover about typical rent increase percentages?",
+      { text: "What does Bianca spend an evening doing?", answer: "Researching comparable apartments." },
+      { text: "What does Bianca discover about similar units nearby?", answer: "That they rent for noticeably less." },
+      { text: "What does Bianca discover about typical rent increase percentages?", answer: "That hers exceeds the average by a meaningful margin." },
     ],
     trueFalse: [
       { text: "Bianca spends an evening researching comparable apartments.", answer: true },
@@ -84,9 +84,9 @@ export const CHAPTERS = [
     story:
       "I email Mr. Halloran, requesting a brief conversation about the proposed renewal terms before formally signing anything. He agrees, and we meet at his office, where I open by acknowledging that I genuinely enjoy living in the building. I mention my four years of reliable, on-time payments, then reference specific comparable listings I'd found nearby. He listens without interrupting, occasionally jotting notes, which I interpret as at least a willingness to hear me out fully. When I finish, he acknowledges that long-term, reliable tenants do genuinely matter to how he manages his properties overall.",
     questions: [
-      "What does Bianca email Mr. Halloran to request?",
-      "What does Bianca mention when she opens the conversation?",
-      "What does Mr. Halloran acknowledge?",
+      { text: "What does Bianca email Mr. Halloran to request?", answer: "A brief conversation about the renewal terms." },
+      { text: "What does Bianca mention when she opens the conversation?", answer: "That she genuinely enjoys living in the building." },
+      { text: "What does Mr. Halloran acknowledge?", answer: "That long-term, reliable tenants matter to him." },
     ],
     trueFalse: [
       { text: "Bianca emails requesting a conversation about the renewal terms.", answer: true },
@@ -113,9 +113,9 @@ export const CHAPTERS = [
     story:
       "I show Mr. Halloran my comparison sheet, pointing out specific nearby listings with similar square footage and amenities. He examines it carefully, mentioning that rising property taxes and maintenance costs partly explain his proposed increase this year. I acknowledge these are legitimate business pressures, though I gently note that the specific percentage still seems higher than comparable properties nearby. Rather than dismissing my point, he considers this, admitting perhaps the initial number hadn't fully accounted for tenant retention value. This exchange, given how respectfully it's unfolding, leaves me cautiously hopeful about reaching a genuinely fair compromise.",
     questions: [
-      "What does Bianca show Mr. Halloran?",
-      "What does Mr. Halloran mention explains part of the increase?",
-      "What does Mr. Halloran admit considering Bianca's point?",
+      { text: "What does Bianca show Mr. Halloran?", answer: "Her comparison sheet of nearby listings." },
+      { text: "What does Mr. Halloran mention explains part of the increase?", answer: "Rising property taxes and maintenance costs." },
+      { text: "What does Mr. Halloran admit considering Bianca's point?", answer: "That the initial number hadn't accounted for tenant retention value." },
     ],
     trueFalse: [
       { text: "Bianca shows Mr. Halloran her comparison sheet.", answer: true },
@@ -142,9 +142,9 @@ export const CHAPTERS = [
     story:
       "Mr. Halloran proposes a revised increase, roughly half of what was originally suggested, given my history as a reliable tenant. He explains this reflects a genuine attempt to balance his rising costs with retaining a tenant he genuinely doesn't want to lose. I consider this carefully, recognizing it's still an increase, though considerably more reasonable than the original proposal. I ask whether a two-year lease, rather than one, might allow for an even more favorable rate given the added stability. He considers this, agreeing that locking in a longer commitment could indeed justify a slightly better rate for both of us.",
     questions: [
-      "What does Mr. Halloran propose?",
-      "What does Mr. Halloran say this reflects?",
-      "What does Bianca ask about a two-year lease?",
+      { text: "What does Mr. Halloran propose?", answer: "A revised increase, roughly half the original." },
+      { text: "What does Mr. Halloran say this reflects?", answer: "An attempt to balance his costs with retaining a valued tenant." },
+      { text: "What does Bianca ask about a two-year lease?", answer: "Whether it might allow for an even more favorable rate." },
     ],
     trueFalse: [
       { text: "Mr. Halloran proposes roughly half the originally suggested increase.", answer: true },
@@ -171,9 +171,9 @@ export const CHAPTERS = [
     story:
       "We finalize a two-year lease with a modest, reasonable increase, considerably lower than what was originally proposed weeks earlier. I read through the document carefully before signing, ensuring every term matches exactly what we'd verbally discussed and agreed upon. Mr. Halloran signs as well, mentioning he appreciated that I'd approached this professionally rather than simply threatening to leave outright. I thank him for his flexibility, genuinely relieved that this negotiation had produced an outcome I could comfortably accept long-term. Leaving his office, I feel proud that preparation and respectful persistence had actually paid off meaningfully.",
     questions: [
-      "What do Bianca and Mr. Halloran finalize?",
-      "What does Bianca do before signing?",
-      "What does Mr. Halloran say he appreciated?",
+      { text: "What do Bianca and Mr. Halloran finalize?", answer: "A two-year lease with a modest increase." },
+      { text: "What does Bianca do before signing?", answer: "Reads through the document carefully." },
+      { text: "What does Mr. Halloran say he appreciated?", answer: "That she approached this professionally rather than threatening to leave." },
     ],
     trueFalse: [
       { text: "They finalize a two-year lease with a modest increase.", answer: true },
@@ -200,9 +200,9 @@ export const CHAPTERS = [
     story:
       "Over coffee, I mention the negotiation to a friend who's currently facing a similar rent increase at her own apartment building. She admits she'd assumed rent increases were simply non-negotiable, having never considered pushing back directly before. I explain that researching comparable listings gave me genuine leverage, rather than relying solely on vague appeals to fairness. Moreover, I mention that proposing a longer lease term ultimately helped, since it offered my landlord something valuable in return. She thanks me for the insight, saying she'll research comparable prices before her own renewal conversation happens.",
     questions: [
-      "What does Bianca mention over coffee?",
-      "What had the friend assumed about rent increases?",
-      "What does Bianca explain gave her genuine leverage?",
+      { text: "What does Bianca mention over coffee?", answer: "The negotiation, to a friend facing a similar increase." },
+      { text: "What had the friend assumed about rent increases?", answer: "That they were simply non-negotiable." },
+      { text: "What does Bianca explain gave her genuine leverage?", answer: "Researching comparable listings." },
     ],
     trueFalse: [
       { text: "Bianca mentions the negotiation to a friend over coffee.", answer: true },
@@ -229,9 +229,9 @@ export const CHAPTERS = [
     story:
       "With the new lease signed, I feel a renewed sense of stability, knowing exactly what my housing costs will be for two years. I use some of the money I'd saved compared to the original proposal to make a few small improvements to my apartment. Mr. Halloran, coincidentally, approves my request to repaint one wall, mentioning he appreciates tenants who genuinely care for their space. This small gesture, though minor, reinforces my sense that this negotiation had actually improved our overall landlord-tenant relationship. Settling back into my routine, I feel genuinely grateful I'd chosen to negotiate rather than simply accepting the first proposal.",
     questions: [
-      "What does Bianca feel with the new lease signed?",
-      "What does Bianca use some of the saved money for?",
-      "What does Mr. Halloran approve?",
+      { text: "What does Bianca feel with the new lease signed?", answer: "A renewed sense of stability." },
+      { text: "What does Bianca use some of the saved money for?", answer: "Small improvements to her apartment." },
+      { text: "What does Mr. Halloran approve?", answer: "Her request to repaint one wall." },
     ],
     trueFalse: [
       { text: "Bianca feels a renewed sense of stability with the new lease.", answer: true },
@@ -258,9 +258,9 @@ export const CHAPTERS = [
     story:
       "A year into the new lease, I receive a routine notice from Mr. Halloran, unrelated to rent, simply updating tenants about building maintenance schedules. I realize how differently I now feel opening mail from him, compared to the anxiety I'd felt receiving that original renewal letter. Our interactions since the negotiation have remained professional and pleasant, without any lingering tension from that initial disagreement. I mention this to a neighbor, who says she's noticed Mr. Halloran seems generally more open to reasonable tenant requests lately too. Perhaps, I consider, one respectful negotiation had quietly shifted something in how he approaches these relationships generally.",
     questions: [
-      "What does Bianca receive a year into the new lease?",
-      "How does Bianca feel opening mail from Mr. Halloran now, compared to before?",
-      "What does a neighbor mention about Mr. Halloran?",
+      { text: "What does Bianca receive a year into the new lease?", answer: "A routine maintenance notice." },
+      { text: "How does Bianca feel opening mail from Mr. Halloran now, compared to before?", answer: "Much less anxious." },
+      { text: "What does a neighbor mention about Mr. Halloran?", answer: "That he seems more open to reasonable tenant requests lately." },
     ],
     trueFalse: [
       { text: "Bianca receives a routine maintenance notice a year later.", answer: true },
@@ -287,9 +287,9 @@ export const CHAPTERS = [
     story:
       "Looking back on the entire process, I realize how differently things might have unfolded had I simply accepted the original proposed increase without question. If I had assumed negotiation wasn't an option, I likely would have paid considerably more or faced the disruption of moving entirely. Instead, researching thoroughly and approaching Mr. Halloran respectfully allowed me to reach an outcome that genuinely worked for both of us. I've learned that even seemingly fixed proposals, like rent increases, often have more flexibility than they initially appear to have. In the end, this experience taught me that advocating for my own interests, done respectfully, rarely damages a relationship and often strengthens it.",
     questions: [
-      "What does Bianca realize looking back on the process?",
-      "What might have happened if she had simply accepted the increase?",
-      "What has Bianca learned about seemingly fixed proposals?",
+      { text: "What does Bianca realize looking back on the process?", answer: "How differently things might have gone had she accepted the increase without question." },
+      { text: "What might have happened if she had simply accepted the increase?", answer: "She'd have paid considerably more or faced moving." },
+      { text: "What has Bianca learned about seemingly fixed proposals?", answer: "That they often have more flexibility than they appear." },
     ],
     trueFalse: [
       { text: "Bianca realizes things might have gone differently without negotiating.", answer: true },
