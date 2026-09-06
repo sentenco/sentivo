@@ -6,6 +6,11 @@ import { BOOK_AGE_TRACK } from "./Library";
 import RELAY_TRACKS from "./relayTracks";
 import ASCEND_TRACKS from "./ascendTracks";
 import SHIFT_TRACKS from "./shiftTracks";
+import { UNITS as KIDS_UNITS } from "./kidsCurriculumData";
+import { TEENS_UNITS } from "./teensCurriculumData";
+import { ADULTS_UNITS } from "./adultsCurriculumData";
+import { READY_LESSONS as KIDS_READY_LESSONS } from "./LevelPage";
+import { READY_LESSONS as TRACK_READY_LESSONS } from "./TrackLevelPage";
 
 export const SYLLABUS_LEVELS = ["A1", "A2", "B1", "B2", "C1", "C2"];
 export const SYLLABUS_AGE_TRACKS = [
@@ -67,11 +72,14 @@ export function weakSkillLabel(weakSkillKey) {
 // real-life scenario -- the underlying content library isn't tagged by
 // context (work/travel/social) yet, so overpromising there would be
 // misleading. See project_syllabus_maker_idea memory for that gap.
-export function buildRationale({ studentName, goalKey, goalOther, weakSkillKey }) {
+export function buildRationale({ studentName, goalKey, goalOther, weakSkillKey, level }) {
   const name = (studentName || "").trim() || "This student";
   const goal = goalLabel(goalKey, goalOther);
   const weakLabel = weakSkillLabel(weakSkillKey);
   let line = `Built for ${name}. Goal: ${goal}.`;
+  if (level === "A1") {
+    line += " Starts with real beginner curriculum lessons where they're available, before moving into the standard mix.";
+  }
   if (weakLabel) {
     line += ` Extra ${weakLabel.toLowerCase()} practice is mixed in since that's the area flagged as needing the most work.`;
   }
@@ -122,6 +130,7 @@ export function newSession(overrides = {}) {
     notes: "",
     skill: "custom",
     source: "custom",
+    href: "",
     completed: false,
     requested: false,
     ...overrides,
@@ -133,7 +142,7 @@ export function newSyllabusSessions() {
 }
 
 function emptyOffsets() {
-  return { grammar: 0, vocabulary: 0, writing: 0, articles: 0, reading: 0, speakingSystem: null, speakingTrackIdx: 0, speakingLessonIdx: 0 };
+  return { grammar: 0, vocabulary: 0, writing: 0, articles: 0, reading: 0, curriculum: 0, speakingSystem: null, speakingTrackIdx: 0, speakingLessonIdx: 0 };
 }
 
 // ---------- Grammar (Foundation modules, fixed pedagogical order) ----------
@@ -316,6 +325,53 @@ function buildArticleSessions(count, startIndex) {
   return { sessions, endIndex: startIndex + count };
 }
 
+// ---------- Curriculum (real Discover/Ignite/Groundwork lessons, A1 only) ----------
+// "Recommended for beginners": at A1 there's real, sequenced, age-matched
+// curriculum content (Kids Discover, Teens Ignite, Adults Groundwork)
+// that's a better fit for a true beginner than the generic Grammar/Vocab
+// pool -- so A1 syllabi pull from it first. Filters through each track's
+// own READY_LESSONS map (the same one its curriculum page uses to decide
+// what shows an "Open" button vs "Coming soon"), so this only ever
+// recommends lessons that actually exist -- and automatically recommends
+// MORE as each track's still-unbuilt lessons get filled in later, with no
+// code change needed here.
+function readyCurriculumLessons(ageTrack) {
+  if (ageTrack === "kids") {
+    const ready = KIDS_READY_LESSONS.A1 || {};
+    return (KIDS_UNITS.A1 || []).flatMap((u) =>
+      (u.lessons || [])
+        .filter((l) => !l.isTest && (ready[u.num] || []).includes(l.num))
+        .map((l) => ({
+          title: l.title,
+          notes: l.focus || "",
+          href: `/library/curriculum/A1/unit/${u.num}/lesson/${l.num}`,
+        }))
+    );
+  }
+  const unitsSource = ageTrack === "teens" ? TEENS_UNITS : ageTrack === "adults" ? ADULTS_UNITS : null;
+  if (!unitsSource) return [];
+  const ready = (TRACK_READY_LESSONS[ageTrack] || {}).A1 || {};
+  return (unitsSource.A1 || []).flatMap((u) =>
+    (u.lessons || [])
+      .filter((l) => !l.isTest && (ready[u.num] || []).includes(l.num))
+      .map((l) => ({
+        title: l.title,
+        notes: l.focus || "",
+        href: `/library/curriculum/${ageTrack}/A1/unit/${u.num}/lesson/${l.num}`,
+      }))
+  );
+}
+
+function buildCurriculumSessions(count, startIndex, ageTrack) {
+  const pool = readyCurriculumLessons(ageTrack);
+  if (pool.length === 0 || count === 0) return { sessions: [], endIndex: startIndex };
+  const sessions = Array.from({ length: count }, (_, i) => {
+    const item = pool[(startIndex + i) % pool.length];
+    return newSession({ title: item.title, notes: item.notes, href: item.href, skill: "curriculum", source: "curriculum" });
+  });
+  return { sessions, endIndex: startIndex + count };
+}
+
 function computeCounts(count, level, focusKey) {
   const floorPct = LEVEL_FLOOR[level] ?? 0.35;
   const floorTotal = Math.round(count * floorPct);
@@ -406,19 +462,17 @@ export function offsetsForFollowUp(parentOffsets, parentLevel, newLevel, ageTrac
   return {
     ...base,
     reading: 0,
+    curriculum: 0,
     speakingTrackIdx: sameSpeakingSystem ? base.speakingTrackIdx : 0,
     speakingLessonIdx: sameSpeakingSystem ? base.speakingLessonIdx : 0,
     speakingSystem: sameSpeakingSystem ? base.speakingSystem : null,
   };
 }
 
-// The one place the generator talks to content. Given level + age track +
-// a total session count + a focus category (one of SYLLABUS_FOCUS_OPTIONS)
-// + starting offsets (for a follow-up syllabus, so it continues instead of
-// repeating), returns the ordered session list plus the offsets to store
-// for whatever follow-up comes after THIS one.
-export async function generateSyllabusSessions({ level, ageTrack, count, focusKey = "balanced", startOffsets = null }) {
-  const offsets = startOffsets || emptyOffsets();
+// The generic content-pool generator (Grammar/Vocabulary/Speaking/Reading/
+// Writing/Articles) -- this is what generateSyllabusSessions below falls
+// back to once any A1 curriculum recommendation has claimed its slots.
+async function generateSyllabusSessionsCore({ level, ageTrack, count, focusKey, offsets }) {
   const counts = computeCounts(count, level, focusKey);
 
   const grammarResult = buildGrammarSessions(counts.grammar, offsets.grammar);
@@ -443,12 +497,56 @@ export async function generateSyllabusSessions({ level, ageTrack, count, focusKe
     writing: writingResult.endIndex,
     articles: articlesResult.endIndex,
     reading: readingResult.endIndex,
+    curriculum: offsets.curriculum,
     speakingSystem: speakingResult.system,
     speakingTrackIdx: speakingResult.trackIdx,
     speakingLessonIdx: speakingResult.lessonIdx,
   };
 
   return { sessions: interleave(groups), offsets: endOffsets };
+}
+
+// The one place the generator talks to content. Given level + age track +
+// a total session count + a focus category (one of SYLLABUS_FOCUS_OPTIONS)
+// + starting offsets (for a follow-up syllabus, so it continues instead of
+// repeating), returns the ordered session list plus the offsets to store
+// for whatever follow-up comes after THIS one.
+//
+// At A1 ("zero beginner and beginners"), real curriculum content is
+// recommended first -- see readyCurriculumLessons() above. Kids A1 has a
+// full 72-lesson pool (more than any one cycle needs), so it replaces the
+// generic mix entirely, round-robining across cycles. Teens/Adults A1
+// currently have only one real lesson each, so it's surfaced once as a
+// recommended opener and the rest of the cycle falls back to the generic
+// pool -- once a track's pool is exhausted (already recommended in an
+// earlier cycle), later cycles fall back to the generic pool too, until
+// more real lessons are built and the pool has something new again.
+export async function generateSyllabusSessions({ level, ageTrack, count, focusKey = "balanced", startOffsets = null }) {
+  const offsets = startOffsets || emptyOffsets();
+
+  if (level === "A1") {
+    const pool = readyCurriculumLessons(ageTrack);
+    const remainingNew = Math.max(0, pool.length - (offsets.curriculum || 0));
+    const curriculumCount = pool.length >= count ? count : Math.min(count, remainingNew);
+
+    if (curriculumCount > 0) {
+      const curriculumResult = buildCurriculumSessions(curriculumCount, offsets.curriculum || 0, ageTrack);
+      const restCount = count - curriculumResult.sessions.length;
+      if (restCount === 0) {
+        return { sessions: curriculumResult.sessions, offsets: { ...offsets, curriculum: curriculumResult.endIndex } };
+      }
+      const restResult = await generateSyllabusSessionsCore({
+        level, ageTrack, count: restCount, focusKey,
+        offsets: { ...offsets, curriculum: curriculumResult.endIndex },
+      });
+      return {
+        sessions: [...curriculumResult.sessions, ...restResult.sessions],
+        offsets: { ...restResult.offsets, curriculum: curriculumResult.endIndex },
+      };
+    }
+  }
+
+  return generateSyllabusSessionsCore({ level, ageTrack, count, focusKey, offsets });
 }
 
 export function timeAgo(iso) {

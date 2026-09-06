@@ -25,6 +25,7 @@ const SKILL_LABELS = {
   writing: "Writing",
   articles: "Articles",
   listening: "Listening",
+  curriculum: "Curriculum",
 };
 
 const SKILL_COLORS = {
@@ -35,6 +36,7 @@ const SKILL_COLORS = {
   writing: "#6B5CE0",
   articles: "#1F6FB0",
   listening: "#8A5A2A",
+  curriculum: "#0E8074",
 };
 
 export default function SyllabusEditor() {
@@ -276,7 +278,7 @@ export default function SyllabusEditor() {
   const hasRealContent = sessions.some((s) => s.title.trim() || s.notes.trim());
   const doneCount = sessions.filter((s) => s.completed).length;
   const progressPct = sessions.length > 0 ? Math.round((doneCount / sessions.length) * 100) : 0;
-  const rationale = hasRealContent ? buildRationale({ studentName, goalKey, goalOther, weakSkillKey: weakSkill }) : null;
+  const rationale = hasRealContent ? buildRationale({ studentName, goalKey, goalOther, weakSkillKey: weakSkill, level }) : null;
   const readyForNextCycle = sessions.length > 0 && doneCount === sessions.length;
 
   return (
@@ -522,6 +524,11 @@ export default function SyllabusEditor() {
                     onChange={(e) => updateSession(s.id, "notes", e.target.value)}
                     placeholder="Notes (optional)"
                   />
+                  {s.href && (
+                    <a className="syl-session-link no-print" href={s.href} target="_blank" rel="noreferrer">
+                      Open this lesson →
+                    </a>
+                  )}
                 </div>
                 <div className="syl-session-actions no-print">
                   {s.requested && (
@@ -697,6 +704,9 @@ const CSS = `
 .syl-skill-tag--writing { background: #EFEBFB; color: #6B5CE0; }
 .syl-skill-tag--articles { background: #E9F3FB; color: #1F6FB0; }
 .syl-skill-tag--listening { background: #F4EDE3; color: #8A5A2A; }
+.syl-skill-tag--curriculum { background: #DDF3EF; color: #0E8074; }
+.syl-session-link { display: inline-block; margin-top: 4px; font-size: 12px; font-weight: 700; color: #0E8074; text-decoration: none; }
+.syl-session-link:hover { text-decoration: underline; }
 .syl-done-tag { font-size: 9.5px; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase; border-radius: 999px; padding: 2px 8px; background: #E7F5EC; color: #2F9E58; }
 .syl-pending-tag { font-size: 9.5px; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase; border-radius: 999px; padding: 2px 8px; background: #FFF4D6; color: #8A6D1F; }
 .syl-t-row--done .syl-t-body { opacity: 0.6; }

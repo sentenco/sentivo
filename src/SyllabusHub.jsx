@@ -14,6 +14,7 @@ const SKILL_COLORS = {
   writing: "#6B5CE0",
   articles: "#1F6FB0",
   listening: "#8A5A2A",
+  curriculum: "#0E8074",
 };
 
 export default function SyllabusHub() {

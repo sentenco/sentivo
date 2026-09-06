@@ -22,7 +22,7 @@ const ACCENT_COLORS = {
 // Which lessons have a real player built -- add an entry here (and build
 // its route in main.jsx) as each one actually ships. Everything else stays
 // disabled/"Coming soon", same pattern as Kids' LevelPage.jsx.
-const READY_LESSONS = {
+export const READY_LESSONS = {
   teens: { A1: { 1: [1] }, A2: { 1: [1] } },
   adults: { A1: { 1: [1] }, A2: { 1: [1] } },
 };
