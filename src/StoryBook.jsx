@@ -363,26 +363,21 @@ export default function StoryBook({ book = defaultBook }) {
 
       <div className="sb-stage">
         {view === "cover" && (
-          <div className="sb-book">
-            <BookHeader stage={getStageLabel("cover")} />
-            <div className="sb-cover-layout">
-              <div className="sb-cover-art">
-                {book.coverImage ? (
-                  <img src={book.coverImage} alt={book.title} />
-                ) : (
-                  <ImagePlaceholder note={book.coverImageNote} compact />
-                )}
+          <button
+            type="button"
+            className="sb-cover-card"
+            onClick={() => setView("toc")}
+          >
+            {book.coverImage ? (
+              <img className="sb-cover-card-img" src={book.coverImage} alt={book.title} />
+            ) : (
+              <div className="sb-cover-card-ph">
+                <ImagePlaceholder note={book.coverImageNote} />
               </div>
-              <div className="sb-cover-info">
-                <span className="sb-cover-eyebrow">Sentivo Storybook</span>
-                <h1 className="sb-cover-title">{book.title}</h1>
-                <p className="sb-cover-meta">{CHAPTERS.length} chapters &middot; {bookTotalPages} pages</p>
-                <button type="button" className="sb-cover-start-btn" onClick={() => setView("toc")}>
-                  Start Reading →
-                </button>
-              </div>
-            </div>
-          </div>
+            )}
+            <div className="sb-cover-card-scrim" />
+            <h1 className="sb-cover-card-title">{book.title}</h1>
+          </button>
         )}
 
         {view === "toc" && (
@@ -569,54 +564,51 @@ const CSS = `
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* ── Cover: shares the same book frame as every other page (see .sb-book
-   above) instead of its own portrait jacket shape, so the whole reading
-   flow is one consistent size. Art sits in its own panel at object-fit:
-   contain so a portrait-oriented illustration is never cropped, title and
-   a Start Reading button sit beside it. ── */
-.sb-cover-layout {
-  flex: 1;
-  min-height: 0;
-  display: flex;
-  align-items: center;
-  gap: 40px;
-}
-.sb-cover-art {
-  flex: 0 0 320px;
-  height: 100%;
-  max-height: 620px;
-  border-radius: 14px;
+/* ── Cover: its own portrait book jacket, separate from the landscape
+   .sb-book frame used by Contents/chapter pages -- full-bleed art with the
+   title stamped over a bottom scrim, like printed cover type, rather than
+   sitting beside the art. Sized to the art's native 2:3 ratio so the whole
+   illustration shows, nothing cropped. ── */
+.sb-cover-card {
+  position: relative;
+  width: 440px;
+  max-width: 100%;
+  aspect-ratio: 2 / 3;
+  border-radius: 18px;
+  border: 3px solid #1B2A4A;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.2);
   overflow: hidden;
-  background: #FAF7EF;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.sb-cover-art img { width: 100%; height: 100%; object-fit: contain; display: block; }
-.sb-cover-info { flex: 1; min-width: 0; display: flex; flex-direction: column; align-items: flex-start; gap: 10px; }
-.sb-cover-eyebrow {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 700;
-  font-size: 13px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: #D85A30;
-}
-.sb-cover-title { font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 40px; line-height: 1.16; color: #1B2A4A; margin: 0; }
-.sb-cover-meta { font-family: 'Quicksand', sans-serif; font-weight: 600; font-size: 15px; color: #94A0B8; margin: 0 0 8px; }
-.sb-cover-start-btn {
-  background: #D85A30;
-  color: #fff;
-  border: none;
-  border-radius: 999px;
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 700;
-  font-size: 16px;
-  padding: 13px 26px;
+  padding: 0;
+  background: #FFFDF7;
+  display: block;
   cursor: pointer;
-  box-shadow: 0 3px 0 #A8431F;
+  font: inherit;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+  animation: sb-page-in 0.28s ease;
 }
-.sb-cover-start-btn:active { transform: translateY(2px); box-shadow: 0 1px 0 #A8431F; }
+.sb-cover-card:hover { transform: translateY(-2px); box-shadow: 0 26px 56px rgba(0,0,0,0.24); }
+.sb-cover-card-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; display: block; }
+.sb-cover-card-ph { position: absolute; inset: 0; }
+.sb-cover-card-scrim {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 42%;
+  background: linear-gradient(to top, rgba(14,18,32,0.88) 0%, rgba(14,18,32,0.5) 55%, rgba(14,18,32,0) 100%);
+}
+.sb-cover-card-title {
+  position: absolute;
+  left: 26px;
+  right: 26px;
+  bottom: 26px;
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 1.2;
+  color: #fff;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.4);
+  margin: 0;
+  text-align: left;
+}
 
 /* ── Table of contents ── */
 .sb-toc-heading {
@@ -886,8 +878,5 @@ const CSS = `
 @media (max-width: 520px) {
   .sb-book { padding: 22px 18px; }
   .sb-book-header { margin: -22px -18px 14px; padding: 12px 18px; }
-  .sb-cover-layout { flex-direction: column; gap: 16px; text-align: center; }
-  .sb-cover-art { flex: 0 0 auto; width: 100%; max-height: 260px; }
-  .sb-cover-info { align-items: center; }
 }
 `;
