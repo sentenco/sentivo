@@ -23,9 +23,9 @@ export const CHAPTERS = [
     story:
       "My old phone finally stopped working last week, so I bought a new smartphone yesterday. The box sits on my kitchen table, and I open it slowly and carefully. Inside, I find the phone, a charging cable, and a small instruction pamphlet. My old phone was very simple, only for calling and sending short messages. This new phone looks much more complicated, with a large screen and many small icons. I feel a little nervous about learning something so new at my age. Still, I know many useful things are possible with a phone like this one.",
     questions: [
-      "Why does Beatriz buy a new phone?",
-      "What does Beatriz find inside the box?",
-      "How does Beatriz feel about learning something new?",
+      { text: "Why does Beatriz buy a new phone?", answer: "Because her old phone stopped working." },
+      { text: "What does Beatriz find inside the box?", answer: "The phone, a charging cable, and an instruction pamphlet." },
+      { text: "How does Beatriz feel about learning something new?", answer: "A little nervous." },
     ],
     trueFalse: [
       { text: "Beatriz's old phone stopped working last week.", answer: true },
@@ -52,9 +52,9 @@ export const CHAPTERS = [
     story:
       "Instead of guessing everything alone, I decide to call my nephew Noah for help. He is young and always seems to understand technology very quickly and easily. “Aunt Beatriz, I can come over this weekend and help you,” he says kindly on the phone. I feel relieved knowing I will not have to figure this out completely alone. Noah always explains things patiently, without making me feel silly for asking simple questions. I thank him and tell him I will have some tea and snacks ready. Waiting for Saturday, I feel a little more hopeful about this new phone.",
     questions: [
-      "Who does Beatriz call for help?",
-      "What does Noah offer to do?",
-      "How does Beatriz feel after talking to Noah?",
+      { text: "Who does Beatriz call for help?", answer: "Her nephew Noah." },
+      { text: "What does Noah offer to do?", answer: "Come over on the weekend to help." },
+      { text: "How does Beatriz feel after talking to Noah?", answer: "Relieved and hopeful." },
     ],
     trueFalse: [
       { text: "Beatriz calls her nephew Noah for help.", answer: true },
@@ -81,9 +81,9 @@ export const CHAPTERS = [
     story:
       "On Saturday, Noah arrives and sits beside me with a warm smile on his face. “Let's start simple,” he says, picking up the new phone gently from the table. He shows me the small button on the side used to turn the phone on. I press it carefully, and the screen lights up brightly, showing colorful icons everywhere. “Don't worry, everything here is easy once you know where to look,” he reassures me kindly. He explains the icons slowly, one at a time, without rushing through any explanation. I feel my nervousness slowly fading with each simple, clear step he shows me.",
     questions: [
-      "What does Noah say to start with?",
-      "What does the small button do?",
-      "How does Noah explain the icons?",
+      { text: "What does Noah say to start with?", answer: "Let's start simple." },
+      { text: "What does the small button do?", answer: "Turns the phone on." },
+      { text: "How does Noah explain the icons?", answer: "Slowly, one at a time, without rushing." },
     ],
     trueFalse: [
       { text: "Noah says let's start simple.", answer: true },
@@ -110,9 +110,9 @@ export const CHAPTERS = [
     story:
       "Next, Noah shows me how to open the messages app and find a contact. My hands feel a little clumsy, but I follow his instructions step by step carefully. I choose my sister's name from the contact list, feeling proud I found it myself. I type a short message slowly, checking each letter twice before sending it. “Hi Carmen, I have a new phone now,” I write with careful concentration. I press the send button, and the message disappears from the screen immediately. A minute later, my phone buzzes with a reply from my sister. I feel a small burst of excitement seeing it work.",
     questions: [
-      "What app does Noah show Beatriz first?",
-      "Who does Beatriz choose to message?",
-      "How does Beatriz feel when the reply arrives?",
+      { text: "What app does Noah show Beatriz first?", answer: "The messages app." },
+      { text: "Who does Beatriz choose to message?", answer: "Her sister Carmen." },
+      { text: "How does Beatriz feel when the reply arrives?", answer: "A small burst of excitement." },
     ],
     trueFalse: [
       { text: "Noah shows Beatriz the messages app.", answer: true },
@@ -139,9 +139,9 @@ export const CHAPTERS = [
     story:
       "Noah suggests we practice something more fun: taking a photo with the camera app. He shows me where the camera icon is and how to open it quickly. I point the phone at him, and he makes a silly, funny pose for the picture. I press the round button on the screen, and the phone makes a small clicking sound. The photo appears on the screen instantly, showing Noah laughing in a funny position. I laugh too, surprised at how clear and colorful the picture looks. Taking photos feels much easier than I expected it to be at first.",
     questions: [
-      "What does Noah suggest they practice?",
-      "What does Noah do for the photo?",
-      "How does the photo look on the screen?",
+      { text: "What does Noah suggest they practice?", answer: "Taking a photo with the camera app." },
+      { text: "What does Noah do for the photo?", answer: "Makes a silly, funny pose." },
+      { text: "How does the photo look on the screen?", answer: "Clear and colorful." },
     ],
     trueFalse: [
       { text: "Noah suggests taking a photo with the camera app.", answer: true },
@@ -168,9 +168,9 @@ export const CHAPTERS = [
     story:
       "Trying to explore on my own, I accidentally open several apps at the same time without understanding it. The screen becomes crowded with different windows, and I feel confused about what happened. “I think I broke it,” I tell Noah, feeling a little worried about my mistake. Noah laughs gently and reassures me that nothing is actually broken at all. He shows me a simple button that closes extra apps and cleans up the screen easily. I feel relieved that fixing my mistake was much simpler than I first thought. Technology mistakes, I realize, are usually not as serious as they seem.",
     questions: [
-      "What does Beatriz accidentally do?",
-      "What does Beatriz worry about?",
-      "How does Noah help fix the confusion?",
+      { text: "What does Beatriz accidentally do?", answer: "Opens several apps at the same time." },
+      { text: "What does Beatriz worry about?", answer: "That she broke the phone." },
+      { text: "How does Noah help fix the confusion?", answer: "Shows her a button that closes extra apps." },
     ],
     trueFalse: [
       { text: "Beatriz accidentally opens several apps at once.", answer: true },
@@ -197,9 +197,9 @@ export const CHAPTERS = [
     story:
       "Noah asks if I would like to learn video calling, so I can see my family more often. My daughter lives far away, and this idea excites me immediately and completely. He downloads a simple video calling app and shows me how it works. We call my daughter together, and her smiling face appears on my screen suddenly. “Mom, you're using a smartphone now?” she asks, clearly surprised and happy about it. We talk for several minutes, and I feel genuinely happy seeing her face so clearly. This feature alone already makes the whole new phone feel worth it.",
     questions: [
-      "What does Noah ask if Beatriz would like to learn?",
-      "Who do they call together?",
-      "How does Beatriz's daughter react?",
+      { text: "What does Noah ask if Beatriz would like to learn?", answer: "Video calling." },
+      { text: "Who do they call together?", answer: "Beatriz's daughter." },
+      { text: "How does Beatriz's daughter react?", answer: "Surprised and happy." },
     ],
     trueFalse: [
       { text: "Noah asks if Beatriz wants to learn video calling.", answer: true },
@@ -226,9 +226,9 @@ export const CHAPTERS = [
     story:
       "After Noah leaves, I decide to practice using my phone a little more by myself. I open the camera app again and take a few more photos around my apartment. I also check the messages app to see if my sister replied again. Slowly, I feel more comfortable finding buttons and menus without asking anyone for help. I make a small mistake once, but I remember Noah's advice about the button that fixes things. Fixing it myself this time makes me feel proud of my quick progress today. Learning something new alone, even in small steps, feels genuinely rewarding.",
     questions: [
-      "What does Beatriz practice after Noah leaves?",
-      "How does Beatriz feel finding things without help?",
-      "How does Beatriz fix her small mistake this time?",
+      { text: "What does Beatriz practice after Noah leaves?", answer: "Taking more photos and checking messages." },
+      { text: "How does Beatriz feel finding things without help?", answer: "More comfortable." },
+      { text: "How does Beatriz fix her small mistake this time?", answer: "By remembering Noah's advice about the button." },
     ],
     trueFalse: [
       { text: "Beatriz practices using her phone alone.", answer: true },
@@ -255,9 +255,9 @@ export const CHAPTERS = [
     story:
       "The next day, I meet my friend Rosa for coffee at our favorite small café. I proudly show her my new phone and the photos I took yesterday. “You learned all this so quickly,” Rosa says, clearly impressed by my new skills. I explain how my nephew helped me and how I practiced more by myself afterward. Rosa admits she also wants a new phone but feels nervous about learning it too. I encourage her kindly, telling her it feels difficult at first but gets easier quickly. Sharing what I learned with a friend makes me feel confident and helpful today.",
     questions: [
-      "Who does Beatriz meet for coffee?",
-      "What does Beatriz show Rosa?",
-      "What does Rosa admit she wants?",
+      { text: "Who does Beatriz meet for coffee?", answer: "Her friend Rosa." },
+      { text: "What does Beatriz show Rosa?", answer: "Her new phone and the photos she took." },
+      { text: "What does Rosa admit she wants?", answer: "A new phone too." },
     ],
     trueFalse: [
       { text: "Beatriz meets her friend Rosa for coffee.", answer: true },
@@ -284,9 +284,9 @@ export const CHAPTERS = [
     story:
       "One week later, using my new phone feels completely normal, almost like a natural part of my day. I video call my daughter every few days now, something I never imagined doing so easily before. I take photos of small, simple moments, like my morning tea or a pretty flower outside. My old worries about this new technology already feel a little silly looking back now. Noah checks in sometimes, proud of how comfortable I have become with everything so quickly. Learning something new at my age felt scary at first, but now it feels genuinely wonderful.",
     questions: [
-      "How does using the phone feel one week later?",
-      "What does Beatriz do every few days now?",
-      "How does Beatriz feel about learning something new now?",
+      { text: "How does using the phone feel one week later?", answer: "Completely normal." },
+      { text: "What does Beatriz do every few days now?", answer: "Video call her daughter." },
+      { text: "How does Beatriz feel about learning something new now?", answer: "It feels genuinely wonderful." },
     ],
     trueFalse: [
       { text: "Using the phone feels completely normal now.", answer: true },

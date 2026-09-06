@@ -29,9 +29,9 @@ export const CHAPTERS = [
     story:
       "After living alone in my apartment for nearly two years, the quiet evenings gradually start feeling less peaceful and more genuinely lonely than I expected. A coworker mentions volunteering at the local animal shelter, and something about the idea of adopting a rescue dog stays with me for weeks afterward. I research the responsibilities carefully, considering the time, cost, and commitment involved before making any final decision. Finally, one Saturday morning, I decide to simply visit the shelter, without promising myself anything beyond just looking. Standing outside the entrance, I take a deep breath before stepping through the door.",
     questions: [
-      "How long has Isaac been living alone?",
-      "What does a coworker mention to Isaac?",
-      "What does Isaac decide to do one Saturday morning?",
+      { text: "How long has Isaac been living alone?", answer: "Nearly two years." },
+      { text: "What does a coworker mention to Isaac?", answer: "Volunteering at the local animal shelter." },
+      { text: "What does Isaac decide to do one Saturday morning?", answer: "Visit the shelter, just to look." },
     ],
     trueFalse: [
       { text: "Isaac has been living alone for nearly two years.", answer: true },
@@ -58,9 +58,9 @@ export const CHAPTERS = [
     story:
       "Ms. Alvarado, a shelter volunteer, walks me past rows of eager, tail-wagging dogs, each one jumping excitedly against their kennel doors. One dog, however, sits quietly in the back corner of his kennel, barely lifting his head as I approach curiously. “That's Ranger. He's been here longer than most, honestly, because his shyness makes him harder to place,” she explains softly. Something about his cautious, watchful eyes stops me completely, unlike the more obviously excitable dogs surrounding him. “He needs someone genuinely patient,” Ms. Alvarado adds, watching my reaction carefully. Despite every practical instinct suggesting an easier dog, I feel strangely drawn toward him.",
     questions: [
-      "What are most of the dogs doing as Isaac walks past?",
-      "What is different about Ranger's behavior?",
-      "What does Ms. Alvarado say Ranger needs?",
+      { text: "What are most of the dogs doing as Isaac walks past?", answer: "Jumping excitedly against their kennel doors." },
+      { text: "What is different about Ranger's behavior?", answer: "He sits quietly in the back corner, barely lifting his head." },
+      { text: "What does Ms. Alvarado say Ranger needs?", answer: "Someone genuinely patient." },
     ],
     trueFalse: [
       { text: "Most dogs jump excitedly against their kennel doors.", answer: true },
@@ -87,9 +87,9 @@ export const CHAPTERS = [
     story:
       "After completing the adoption paperwork, I carefully lead Ranger through my apartment door, unsure exactly what to expect from this next chapter. He hesitates immediately at the threshold, pressing his body against the wall, tail tucked low between his legs nervously. I sit down quietly on the floor nearby, giving him space rather than forcing any immediate interaction he clearly isn't ready for yet. Ranger explores cautiously, sniffing corners and furniture, occasionally glancing back toward me with uncertain, watchful eyes. By evening, he retreats completely under my bed, refusing both food and water despite my gentle, repeated attempts.",
     questions: [
-      "What does Ranger do immediately at the doorway?",
-      "What does Isaac do instead of forcing interaction?",
-      "Where does Ranger retreat to by evening?",
+      { text: "What does Ranger do immediately at the doorway?", answer: "He hesitates, pressing his body against the wall." },
+      { text: "What does Isaac do instead of forcing interaction?", answer: "Sits quietly on the floor, giving him space." },
+      { text: "Where does Ranger retreat to by evening?", answer: "Under the bed." },
     ],
     trueFalse: [
       { text: "Ranger hesitates immediately at the doorway.", answer: true },
@@ -116,9 +116,9 @@ export const CHAPTERS = [
     story:
       "For several days, Ranger only eats when he believes I'm not watching, sneaking cautiously toward his bowl whenever I step into another room. Rather than feeling discouraged, I read that this behavior is common among rescue dogs adjusting slowly to unfamiliar surroundings and people. I begin leaving small treats scattered gently near wherever he chooses to rest, never forcing direct contact or demanding immediate affection from him. Gradually, he starts eating while I sit quietly nearby, no longer requiring complete privacy for something as simple as a meal. These tiny, incremental changes feel disproportionately significant, each one representing genuine, hard-won progress.",
     questions: [
-      "When does Ranger only eat during the first few days?",
-      "What does Isaac begin leaving near Ranger?",
-      "What gradual change happens with Ranger's eating?",
+      { text: "When does Ranger only eat during the first few days?", answer: "When he believes Isaac isn't watching." },
+      { text: "What does Isaac begin leaving near Ranger?", answer: "Small treats." },
+      { text: "What gradual change happens with Ranger's eating?", answer: "He starts eating while Isaac sits quietly nearby." },
     ],
     trueFalse: [
       { text: "Ranger only eats when he thinks Isaac isn't watching.", answer: true },
@@ -145,9 +145,9 @@ export const CHAPTERS = [
     story:
       "Three weeks into our slow progress, a sudden, violent thunderstorm rolls through the city late one night, and Ranger completely panics at the noise. He bolts immediately under my bed, shaking uncontrollably, refusing to come out despite my gentle, worried coaxing for nearly an hour. Watching him regress so completely after weeks of careful progress leaves me questioning whether I'm actually equipped to help an animal with this much fear. I wonder briefly if adopting him was genuinely selfish, prioritizing my own loneliness over what might actually be best for him. Exhausted and discouraged, I finally sit on the floor beside the bed, simply waiting quietly.",
     questions: [
-      "What happens late one night three weeks in?",
-      "How does Ranger react to the thunderstorm?",
-      "What does Isaac question during this setback?",
+      { text: "What happens late one night three weeks in?", answer: "A violent thunderstorm." },
+      { text: "How does Ranger react to the thunderstorm?", answer: "He bolts under the bed, shaking uncontrollably." },
+      { text: "What does Isaac question during this setback?", answer: "Whether he is equipped to help Ranger, and if adopting him was selfish." },
     ],
     trueFalse: [
       { text: "A violent thunderstorm rolls through late one night.", answer: true },
@@ -174,9 +174,9 @@ export const CHAPTERS = [
     story:
       "The next morning, I call Ms. Alvarado, explaining my discouragement and genuine uncertainty about handling setbacks like the previous night's storm. She reassures me calmly that regression after progress is completely normal for traumatized rescue animals, not a sign of my failure whatsoever. She recommends simply existing calmly near Ranger daily, without demanding anything, letting him choose when and how to approach me instead. Following her advice, I spend evenings quietly reading nearby, deliberately ignoring him rather than seeking constant interaction or reassurance from his direction. Slowly, over several days, I notice him resting slightly closer to me each evening.",
     questions: [
-      "Who does Isaac call the next morning?",
-      "What does Ms. Alvarado say about regression?",
-      "What new approach does Isaac try?",
+      { text: "Who does Isaac call the next morning?", answer: "Ms. Alvarado." },
+      { text: "What does Ms. Alvarado say about regression?", answer: "That it's completely normal for traumatized rescue animals." },
+      { text: "What new approach does Isaac try?", answer: "Existing calmly near Ranger without demanding anything." },
     ],
     trueFalse: [
       { text: "Isaac calls Ms. Alvarado the next morning.", answer: true },
@@ -203,9 +203,9 @@ export const CHAPTERS = [
     story:
       "One quiet evening, while reading on the living room floor exactly as Ms. Alvarado suggested, I notice Ranger stand and stretch from his usual resting spot. Instead of retreating toward the bedroom as expected, he walks slowly and deliberately across the living room, directly toward me. My heart races with cautious hope, and I remain perfectly still, resisting every urge to reach toward him immediately. Ranger stops just inches away, sniffing my outstretched hand carefully before finally resting his head gently against my knee. Tears unexpectedly well up in my eyes; this small, quiet moment feels genuinely monumental after weeks of patient waiting.",
     questions: [
-      "What does Ranger do instead of retreating this time?",
-      "What does Isaac resist doing?",
-      "What does Ranger finally do with his head?",
+      { text: "What does Ranger do instead of retreating this time?", answer: "He walks slowly toward Isaac." },
+      { text: "What does Isaac resist doing?", answer: "Reaching toward him immediately." },
+      { text: "What does Ranger finally do with his head?", answer: "Rests it gently against Isaac's knee." },
     ],
     trueFalse: [
       { text: "Ranger walks slowly toward Isaac instead of retreating.", answer: true },
@@ -232,9 +232,9 @@ export const CHAPTERS = [
     story:
       "Building on our newfound connection, I decide it's finally time to attempt our first proper walk together at the small park nearby. Ranger hesitates at the front door initially, but with gentle encouragement and a favorite treat, he steps outside cautiously beside me. The unfamiliar sounds and smells clearly overwhelm him at first, his body tense and alert to every passing car or stranger nearby. Gradually, though, his posture relaxes noticeably, his tail beginning a slow, uncertain wag as we walk along a quiet path. By the walk's end, something in him seems lighter, genuinely curious rather than purely fearful of his surroundings.",
     questions: [
-      "What do Isaac and Ranger attempt for the first time?",
-      "How does Ranger react to the unfamiliar sounds at first?",
-      "What happens to Ranger's tail as they walk?",
+      { text: "What do Isaac and Ranger attempt for the first time?", answer: "A proper walk together at the park." },
+      { text: "How does Ranger react to the unfamiliar sounds at first?", answer: "He's tense and overwhelmed." },
+      { text: "What happens to Ranger's tail as they walk?", answer: "It begins a slow, uncertain wag." },
     ],
     trueFalse: [
       { text: "Isaac and Ranger attempt their first proper walk.", answer: true },
@@ -261,9 +261,9 @@ export const CHAPTERS = [
     story:
       "Three months after that first hesitant step through my apartment door, Ranger has transformed into an entirely different dog than the timid creature I originally brought home. He greets me enthusiastically now whenever I return, tail wagging vigorously, sometimes even bringing a favorite toy directly to my feet. Watching him play freely, bounding playfully across the living room floor, feels almost unrecognizable compared to those first anxious days hiding beneath my bed. Ms. Alvarado, visiting recently for a follow-up check, seems genuinely amazed by his remarkable transformation over such a relatively short period. “This is exactly why patience matters so much,” she says, smiling warmly at us both.",
     questions: [
-      "How much time has passed since Ranger came home?",
-      "How does Ranger greet Isaac now?",
-      "What does Ms. Alvarado say about the transformation?",
+      { text: "How much time has passed since Ranger came home?", answer: "Three months." },
+      { text: "How does Ranger greet Isaac now?", answer: "Enthusiastically, wagging his tail, sometimes bringing a toy." },
+      { text: "What does Ms. Alvarado say about the transformation?", answer: "This is exactly why patience matters so much." },
     ],
     trueFalse: [
       { text: "Three months have passed since Ranger arrived.", answer: true },
@@ -290,9 +290,9 @@ export const CHAPTERS = [
     story:
       "Sitting on my couch this evening, Ranger curled comfortably beside me, I reflect on everything these past few months have genuinely taught me about patience and trust. Adopting him wasn't simply about curing my own loneliness, as I once worried during that difficult, doubtful night of the thunderstorm. Instead, we healed something in each other gradually, learning together how consistent patience eventually builds something lasting and real. My apartment no longer feels quiet in that lonely way it once did, filled instead with the comfortable presence of genuine companionship. Ranger shifts closer, resting his head against my leg, and I smile contentedly.",
     questions: [
-      "Where does Isaac sit this evening?",
-      "What does Isaac realize adopting Ranger wasn't simply about?",
-      "How does Isaac's apartment feel now compared to before?",
+      { text: "Where does Isaac sit this evening?", answer: "On his couch, with Ranger curled beside him." },
+      { text: "What does Isaac realize adopting Ranger wasn't simply about?", answer: "Curing his own loneliness." },
+      { text: "How does Isaac's apartment feel now compared to before?", answer: "Filled with genuine companionship, no longer lonely." },
     ],
     trueFalse: [
       { text: "Isaac sits on his couch with Ranger beside him.", answer: true },

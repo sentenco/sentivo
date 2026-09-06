@@ -23,9 +23,9 @@ export const CHAPTERS = [
     story:
       "Every morning, I leave my apartment at exactly seven-fifteen to catch the bus to work. I do not own a car, so the bus is my main way to travel. I grab my coffee, check my bag for my badge, and lock my door carefully. The walk to the bus stop takes about five minutes down a quiet street. I like this short walk because it helps me wake up before work starts. My bus usually arrives around seven-thirty, so I try not to be late. Today, the morning air feels a little cold, so I walk a bit faster than usual.",
     questions: [
-      "What time does Angela leave her apartment?",
-      "Why does Angela take the bus?",
-      "How long does the walk to the bus stop take?",
+      { text: "What time does Angela leave her apartment?", answer: "Seven-fifteen." },
+      { text: "Why does Angela take the bus?", answer: "Because she does not own a car." },
+      { text: "How long does the walk to the bus stop take?", answer: "About five minutes." },
     ],
     trueFalse: [
       { text: "Angela leaves her apartment at seven-fifteen.", answer: true },
@@ -52,9 +52,9 @@ export const CHAPTERS = [
     story:
       "At the bus stop, a few other people are already waiting for the same bus. I check my phone to see how many minutes until the bus arrives. The app says three minutes, so I have a little time to relax. I see Walter, a man I recognize from riding this bus almost every day. He always carries a newspaper under his arm and smiles at everyone politely. We nod at each other, though we have never really talked before today. The morning traffic passes by slowly, and I hear the sounds of the busy city waking up around us.",
     questions: [
-      "Who else is waiting at the bus stop?",
-      "What does Angela check on her phone?",
-      "What does Walter always carry?",
+      { text: "Who else is waiting at the bus stop?", answer: "Walter." },
+      { text: "What does Angela check on her phone?", answer: "How many minutes until the bus arrives." },
+      { text: "What does Walter always carry?", answer: "A newspaper." },
     ],
     trueFalse: [
       { text: "A few other people are waiting at the stop.", answer: true },
@@ -81,9 +81,9 @@ export const CHAPTERS = [
     story:
       "The bus finally arrives, and the doors open with a soft hissing sound. I step on carefully and tap my transit card on the small reader by the door. The driver nods at me kindly, and I walk toward an empty seat near the middle. Walter gets on right behind me and sits a few rows back with his newspaper. The bus is not too crowded today, which makes the ride feel more comfortable. I look out the window as the bus starts moving through the busy city streets. My commute officially begins now, and I settle in for the ride.",
     questions: [
-      "What sound do the bus doors make?",
-      "What does Angela tap on the reader?",
-      "Where does Angela sit on the bus?",
+      { text: "What sound do the bus doors make?", answer: "A soft hissing sound." },
+      { text: "What does Angela tap on the reader?", answer: "Her transit card." },
+      { text: "Where does Angela sit on the bus?", answer: "Near the middle." },
     ],
     trueFalse: [
       { text: "The bus doors open with a hissing sound.", answer: true },
@@ -110,9 +110,9 @@ export const CHAPTERS = [
     story:
       "A few stops later, the bus arrives at a busy downtown corner near many office buildings. Many people get on the bus at once, and it suddenly feels much more crowded than before. I stand up and give my seat to an older woman carrying heavy grocery bags. She thanks me kindly, and I move toward the back to hold onto a pole instead. The bus feels warm now with so many people standing close together. I check the time on my phone and see I still have fifteen minutes before work starts. The bus continues moving slowly through the traffic.",
     questions: [
-      "Where does the bus arrive a few stops later?",
-      "What does Angela do for the older woman?",
-      "How does the bus feel now with more people?",
+      { text: "Where does the bus arrive a few stops later?", answer: "A busy downtown corner." },
+      { text: "What does Angela do for the older woman?", answer: "Gives her seat to her." },
+      { text: "How does the bus feel now with more people?", answer: "Warm and crowded." },
     ],
     trueFalse: [
       { text: "The bus arrives at a busy downtown corner.", answer: true },
@@ -139,9 +139,9 @@ export const CHAPTERS = [
     story:
       "Suddenly, the bus stops moving and stays still for several minutes in heavy traffic. I look out the window and see a long line of cars stopped ahead of us too. I check my phone and feel a small wave of worry about being late for work. Other passengers also look a little impatient, checking their phones or watches quietly. The driver announces there is an accident ahead, causing this unexpected delay today. I take a deep breath and remind myself that being a few minutes late happens sometimes. There is nothing I can really do except wait patiently now.",
     questions: [
-      "What happens to the bus suddenly?",
-      "What does Angela feel about being late?",
-      "What does the driver announce?",
+      { text: "What happens to the bus suddenly?", answer: "It stops moving in heavy traffic." },
+      { text: "What does Angela feel about being late?", answer: "A small wave of worry." },
+      { text: "What does the driver announce?", answer: "That there is an accident ahead." },
     ],
     trueFalse: [
       { text: "The bus stops moving in heavy traffic.", answer: true },
@@ -168,9 +168,9 @@ export const CHAPTERS = [
     story:
       "During the delay, Walter walks over and stands near me, holding onto the same pole. “Traffic like this happens more than I would like,” he says with a small laugh. I laugh too and agree, feeling glad for the friendly conversation during this boring wait. He asks where I work, and I tell him about my office near the city center. He tells me he works at a small bookstore not too far from my office building. We talk easily for the rest of the delay, and the time passes much faster now. I feel happy to finally know his name properly.",
     questions: [
-      "What does Walter say about the traffic?",
-      "What does Walter ask Angela?",
-      "Where does Walter work?",
+      { text: "What does Walter say about the traffic?", answer: "That it happens more than he'd like." },
+      { text: "What does Walter ask Angela?", answer: "Where she works." },
+      { text: "Where does Walter work?", answer: "A small bookstore." },
     ],
     trueFalse: [
       { text: "Walter walks over and stands near Angela.", answer: true },
@@ -197,9 +197,9 @@ export const CHAPTERS = [
     story:
       "After nearly fifteen minutes, the traffic finally starts moving again, and the bus continues its route. I feel relief as the bus picks up speed, moving smoothly through the remaining streets. Walter returns to his seat, giving me a friendly nod before sitting down again. I check my phone and calculate that I will only be a few minutes late now. My manager understands occasional delays, so I do not feel too worried about it anymore. The city passes by outside the window, and familiar buildings tell me my stop is getting closer. I gather my bag, getting ready to get off soon.",
     questions: [
-      "How long does the traffic delay last?",
-      "How does Angela feel when the bus starts moving?",
-      "What does Angela calculate on her phone?",
+      { text: "How long does the traffic delay last?", answer: "Nearly fifteen minutes." },
+      { text: "How does Angela feel when the bus starts moving?", answer: "Relief." },
+      { text: "What does Angela calculate on her phone?", answer: "That she'll only be a few minutes late." },
     ],
     trueFalse: [
       { text: "The traffic delay lasts nearly fifteen minutes.", answer: true },
@@ -226,9 +226,9 @@ export const CHAPTERS = [
     story:
       "The bus finally reaches my stop, and I press the button to signal the driver to stop. I wave goodbye to Walter, who smiles and says, “See you tomorrow!” I step off the bus and onto the busy sidewalk near my office building. The fresh air feels nice after standing inside the warm, crowded bus for so long. I walk quickly toward the entrance, checking the time one more time on my phone. I am only five minutes late, which feels completely manageable and not too serious. Walking through the office doors, I already feel ready to start my workday.",
     questions: [
-      "What does Angela do to signal the driver?",
-      "What does Walter say as Angela leaves?",
-      "How late is Angela to work?",
+      { text: "What does Angela do to signal the driver?", answer: "Presses the button." },
+      { text: "What does Walter say as Angela leaves?", answer: "See you tomorrow!" },
+      { text: "How late is Angela to work?", answer: "Five minutes." },
     ],
     trueFalse: [
       { text: "Angela presses a button to signal the driver.", answer: true },
@@ -255,9 +255,9 @@ export const CHAPTERS = [
     story:
       "After a long workday, I walk back to the same bus stop for my ride home in the evening. The sky is turning orange, and the streets feel calmer than during the busy morning rush. I sit near a window this time, since the bus is much less crowded now. I see Walter again, and we chat briefly about our workdays before he gets off at his stop. He waves and says, “See you tomorrow morning!” before stepping off happily. I feel tired but satisfied after a full day of work, and the bus ride feels like a nice, quiet break.",
     questions: [
-      "What is the sky doing on Angela's ride home?",
-      "Where does Angela sit on the way home?",
-      "What does Walter say before getting off?",
+      { text: "What is the sky doing on Angela's ride home?", answer: "Turning orange." },
+      { text: "Where does Angela sit on the way home?", answer: "Near a window." },
+      { text: "What does Walter say before getting off?", answer: "See you tomorrow morning!" },
     ],
     trueFalse: [
       { text: "The sky is turning orange on the ride home.", answer: true },
@@ -284,9 +284,9 @@ export const CHAPTERS = [
     story:
       "At home that evening, I think about my day and the small moments that happened on the bus. The morning delay was frustrating at first, but talking with Walter made it feel much better. I realize the bus ride is not just a way to get to work anymore. It has become a small, familiar part of my daily life, filled with routine and friendly faces. Tomorrow, I will see Walter again at the same stop, and we might talk about our days once more. Taking the bus used to feel like just a task, but now it feels comfortable and familiar.",
     questions: [
-      "What does Angela think about that evening?",
-      "What made the morning delay feel better?",
-      "How does taking the bus feel to Angela now?",
+      { text: "What does Angela think about that evening?", answer: "Her day and the small moments on the bus." },
+      { text: "What made the morning delay feel better?", answer: "Talking with Walter." },
+      { text: "How does taking the bus feel to Angela now?", answer: "Comfortable and familiar." },
     ],
     trueFalse: [
       { text: "Angela thinks about her day and the bus ride.", answer: true },

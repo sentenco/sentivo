@@ -23,9 +23,9 @@ export const CHAPTERS = [
     story:
       "My apartment does not have a washing machine, so I go to the laundromat every weekend. Today, my laundry bag is especially full after two busy weeks at work. I gather all my dirty clothes and stuff them carefully into the large bag. I also grab some coins and a small bottle of detergent from my shelf. Carrying the heavy bag down the stairs takes a little effort this morning. I check my phone to see the laundromat's hours before I leave my building. It opens at eight, so I have plenty of time to get there today.",
     questions: [
-      "Why does Hana go to the laundromat every weekend?",
-      "What does Hana gather along with her clothes?",
-      "What time does the laundromat open?",
+      { text: "Why does Hana go to the laundromat every weekend?", answer: "Because her apartment does not have a washing machine." },
+      { text: "What does Hana gather along with her clothes?", answer: "Coins and a small bottle of detergent." },
+      { text: "What time does the laundromat open?", answer: "Eight." },
     ],
     trueFalse: [
       { text: "Hana's apartment does not have a washing machine.", answer: true },
@@ -52,9 +52,9 @@ export const CHAPTERS = [
     story:
       "I arrive at the laundromat and push open the glass door with my free hand. Rows of large washing machines line both walls, humming quietly with other people's laundry inside. The place smells clean, like soap and fresh warm air from the dryers. I find two empty machines near the back and place my heavy bag down beside them. A few other people are already there, reading magazines or looking at their phones quietly. I feel relieved that it is not too crowded this early on a Saturday morning. This gives me space to sort my clothes comfortably.",
     questions: [
-      "What does Hana push open?",
-      "What does the laundromat smell like?",
-      "How does Hana feel about the crowd today?",
+      { text: "What does Hana push open?", answer: "The glass door." },
+      { text: "What does the laundromat smell like?", answer: "Clean, like soap and fresh warm air." },
+      { text: "How does Hana feel about the crowd today?", answer: "Relieved it's not too crowded." },
     ],
     trueFalse: [
       { text: "Hana pushes open a glass door.", answer: true },
@@ -81,9 +81,9 @@ export const CHAPTERS = [
     story:
       "Before starting the machines, I sort my clothes into two separate piles carefully. One pile has light colors, and the other pile has dark colors only. I remember washing them together once, and a dark shirt turned my white shirts slightly gray. Since then, I always sort my laundry carefully to avoid that mistake again. I check pockets quickly for any forgotten coins, tissues, or small papers left inside. Finding an old receipt in my jeans makes me smile a little at the memory. Once everything looks properly sorted, I feel ready to start washing my clothes.",
     questions: [
-      "How does Hana sort her clothes?",
-      "What happened once when she washed everything together?",
-      "What does Hana check in the pockets?",
+      { text: "How does Hana sort her clothes?", answer: "Into light colors and dark colors." },
+      { text: "What happened once when she washed everything together?", answer: "A dark shirt turned her white shirts slightly gray." },
+      { text: "What does Hana check in the pockets?", answer: "Coins, tissues, or small papers." },
     ],
     trueFalse: [
       { text: "Hana sorts her clothes into light and dark piles.", answer: true },
@@ -110,9 +110,9 @@ export const CHAPTERS = [
     story:
       "I load the first machine with my light-colored clothes and add a small amount of detergent. I put coins into the slot and press the correct buttons to start the wash cycle. The machine hums to life, and water begins filling up inside it slowly. I repeat the same steps for my second machine, this time with the dark clothes. Once both machines are running, I check my phone and see the wash will take about thirty minutes. I decide to sit down on a bench nearby and wait patiently for my clothes. This part of laundry day always feels a little slow.",
     questions: [
-      "What does Hana add to the machine?",
-      "What does Hana do to start the wash cycle?",
-      "How long will the wash take?",
+      { text: "What does Hana add to the machine?", answer: "A small amount of detergent." },
+      { text: "What does Hana do to start the wash cycle?", answer: "Puts coins in the slot and presses the buttons." },
+      { text: "How long will the wash take?", answer: "About thirty minutes." },
     ],
     trueFalse: [
       { text: "Hana adds a small amount of detergent.", answer: true },
@@ -139,9 +139,9 @@ export const CHAPTERS = [
     story:
       "While waiting, a man wearing a baseball cap sits down on the bench near me. “First time here, or do you come often?” he asks in a friendly voice, holding a coffee cup. I tell him I come here almost every weekend since my apartment has no machine. He introduces himself as George and says he comes here every Saturday too. We talk casually about our weeks while our clothes wash in the machines nearby. George tells me a funny story about a sock that once got completely lost in the dryer. I laugh, feeling glad for some pleasant company during the wait.",
     questions: [
-      "What does George ask Hana?",
-      "How often does Hana come to the laundromat?",
-      "What story does George tell Hana?",
+      { text: "What does George ask Hana?", answer: "If it's her first time there, or if she comes often." },
+      { text: "How often does Hana come to the laundromat?", answer: "Almost every weekend." },
+      { text: "What story does George tell Hana?", answer: "About a sock that got lost in the dryer." },
     ],
     trueFalse: [
       { text: "George sits down on the bench near Hana.", answer: true },
@@ -168,9 +168,9 @@ export const CHAPTERS = [
     story:
       "A loud beep tells me my first washing machine has finished its cycle. I open the door and pull out my wet, clean clothes carefully into a basket. George offers to help carry my second basket to the dryers nearby. I thank him and load both baskets of clothes into two separate dryers. I add a few coins for drying time and press the start button firmly. The dryers begin turning slowly, tumbling my clothes around inside with warm air. George checks his own machine too, and we sit back down together to wait some more.",
     questions: [
-      "What tells Hana the wash cycle is finished?",
-      "What does George offer to help with?",
-      "What does Hana add to the dryers?",
+      { text: "What tells Hana the wash cycle is finished?", answer: "A loud beep." },
+      { text: "What does George offer to help with?", answer: "Carrying her second basket to the dryers." },
+      { text: "What does Hana add to the dryers?", answer: "A few coins for drying time." },
     ],
     trueFalse: [
       { text: "A loud beep tells Hana the cycle is finished.", answer: true },
@@ -197,9 +197,9 @@ export const CHAPTERS = [
     story:
       "While the dryers spin, I take a book out of my bag to pass the time comfortably. George also takes out his phone, scrolling through something quietly beside me. The laundromat feels peaceful now, filled only with the soft hum of the machines. Sunlight comes through a large window, warming the bench where we both sit together. I read a few chapters, enjoying this quiet, unhurried moment away from my usual busy schedule. Laundry day used to feel boring to me, but today it feels surprisingly relaxing instead. I glance at the dryers occasionally to check on the time remaining.",
     questions: [
-      "What does Hana take out of her bag?",
-      "What does George do on his phone?",
-      "How does laundry day feel to Hana today?",
+      { text: "What does Hana take out of her bag?", answer: "A book." },
+      { text: "What does George do on his phone?", answer: "Scrolls through something quietly." },
+      { text: "How does laundry day feel to Hana today?", answer: "Surprisingly relaxing." },
     ],
     trueFalse: [
       { text: "Hana takes out a book to read.", answer: true },
@@ -226,9 +226,9 @@ export const CHAPTERS = [
     story:
       "The dryers finally beep, and I pull out my warm, soft clothes carefully. I carry the clothes to a large folding table near the window and begin folding them. Each shirt and pair of pants gets folded neatly and placed into my clean bag. George finishes his laundry around the same time and comes over to say goodbye. “See you next Saturday, probably,” he says with a friendly smile before leaving. I nod and wave, already looking forward to more friendly conversation next weekend. Folding warm clothes always feels satisfying, like finishing an important small task well.",
     questions: [
-      "What does Hana carry the clothes to?",
-      "What does George say before leaving?",
-      "How does folding warm clothes feel to Hana?",
+      { text: "What does Hana carry the clothes to?", answer: "A large folding table." },
+      { text: "What does George say before leaving?", answer: "See you next Saturday, probably." },
+      { text: "How does folding warm clothes feel to Hana?", answer: "Satisfying." },
     ],
     trueFalse: [
       { text: "Hana carries the clothes to a folding table.", answer: true },
@@ -255,9 +255,9 @@ export const CHAPTERS = [
     story:
       "I carry my full bag of clean, folded clothes over my shoulder and leave the laundromat. The walk home feels lighter somehow, even though the bag itself is not lighter at all. The afternoon sun feels warm, and the street looks calm on this quiet Saturday. I think about my conversation with George and smile a little at his silly sock story. Small conversations like that make everyday errands feel less like boring chores to me. My apartment feels closer today because my mind is busy with pleasant thoughts. I already look forward to next weekend's laundry trip a little.",
     questions: [
-      "How does Hana carry her bag home?",
-      "How does the walk home feel to Hana?",
-      "What does Hana think about while walking?",
+      { text: "How does Hana carry her bag home?", answer: "Over her shoulder." },
+      { text: "How does the walk home feel to Hana?", answer: "Lighter, even though the bag isn't." },
+      { text: "What does Hana think about while walking?", answer: "Her conversation with George and his sock story." },
     ],
     trueFalse: [
       { text: "Hana carries her bag over her shoulder.", answer: true },
@@ -284,9 +284,9 @@ export const CHAPTERS = [
     story:
       "Back at my apartment, I put my clean clothes carefully into my closet and drawers. Everything smells fresh, and my closet finally looks full and organized again after two busy weeks. I sit down for a moment, feeling satisfied with how my weekend morning went. Laundry day is not always exciting, but today it felt calm and even a little enjoyable. Meeting George made an ordinary chore feel like a small, pleasant part of my week. I already know I will look for him again next time I go. Simple weekend tasks sometimes bring unexpected moments of connection with other people.",
     questions: [
-      "Where does Hana put her clean clothes?",
-      "How does Hana feel sitting down afterward?",
-      "What made this laundry day feel special?",
+      { text: "Where does Hana put her clean clothes?", answer: "In her closet and drawers." },
+      { text: "How does Hana feel sitting down afterward?", answer: "Satisfied." },
+      { text: "What made this laundry day feel special?", answer: "Meeting George." },
     ],
     trueFalse: [
       { text: "Hana puts her clothes into her closet and drawers.", answer: true },
