@@ -2005,7 +2005,7 @@ export default function Library() {
             </div>
 
             <div className="cl-req">
-              <button type="button" className="cl-req-head" onClick={() => setClFormOpen((o) => !o)}>
+              <div className="cl-req-head">
                 <div className="cl-req-icon">
                   <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
                 </div>
@@ -2013,8 +2013,11 @@ export default function Library() {
                   <h2 className="cl-req-title">Ask for one</h2>
                   <p className="cl-req-lead">A couple of details and we'll take it from there. It'll show up in the gallery below once it's ready.</p>
                 </div>
-                <svg className={`cl-req-chevron ${clFormOpen ? "is-open" : ""}`} width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M6 9l6 6 6-6"/></svg>
-              </button>
+                <button type="button" className="cl-req-toggle" onClick={() => setClFormOpen((o) => !o)}>
+                  {clFormOpen ? "Close" : "Request"}
+                  <svg className={`cl-req-chevron ${clFormOpen ? "is-open" : ""}`} width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+                </button>
+              </div>
 
               {clFormOpen && (
                 <div className="cl-req-body">
@@ -2841,16 +2844,22 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 }
 .cl-req-head {
   width: 100%; display: flex; align-items: flex-start; gap: 14px; padding: 20px 24px;
-  background: none; border: none; cursor: pointer; text-align: left; font: inherit;
 }
-.cl-req-head-text { flex: 1; }
+.cl-req-head-text { flex: 1; min-width: 0; }
 .cl-req-icon {
   flex: 0 0 44px; width: 44px; height: 44px; border-radius: 12px; background: #1B2A4A;
   display: flex; align-items: center; justify-content: center; color: #fff;
 }
 .cl-req-title { font-family: 'Source Serif 4', serif; font-weight: 600; font-size: 17px; color: #1B2A4A; margin: 0 0 4px; }
 .cl-req-lead { font-family: 'Inter', sans-serif; font-size: 12.5px; font-weight: 500; color: #6B6E96; margin: 0; max-width: 480px; line-height: 1.55; }
-.cl-req-chevron { flex-shrink: 0; color: #6B6E96; margin-top: 8px; transition: transform 0.18s ease; }
+.cl-req-toggle {
+  flex-shrink: 0; display: inline-flex; align-items: center; gap: 6px; margin-top: 2px;
+  font-family: 'Source Serif 4', serif; font-weight: 600; font-size: 13px; color: #fff;
+  background: #FF6B4A; border: none; border-radius: 999px; padding: 9px 16px; cursor: pointer;
+  box-shadow: 0 6px 16px rgba(255,107,74,0.28);
+}
+.cl-req-toggle:hover { background: #E0502F; }
+.cl-req-chevron { flex-shrink: 0; transition: transform 0.18s ease; }
 .cl-req-chevron.is-open { transform: rotate(180deg); }
 .cl-req-body { padding: 0 24px 26px; }
 .cl-req-timing { margin: 0 0 16px; font-family: 'Inter', sans-serif; font-size: 12.5px; font-weight: 700; color: #E0502F; }
@@ -2947,6 +2956,8 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .cl-lesson-open:hover { opacity: 0.9; }
 
 @media (max-width: 640px) {
+  .cl-req-head { flex-wrap: wrap; }
+  .cl-req-toggle { margin-left: 58px; }
   .cl-req-grid { grid-template-columns: 1fr; }
   .cl-req-field--narrow { grid-column: 1 / -1; }
   .cl-gallery-hd-row { flex-direction: column; align-items: flex-start; }
