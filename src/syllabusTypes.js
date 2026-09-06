@@ -70,6 +70,21 @@ export const WEAK_SKILL_OPTIONS = [
   { key: "articles", label: "Reading comprehension (articles)" },
 ];
 
+// Separate from the Goal -- Goal is the outcome the student wants, this is
+// WHERE they'll actually use English day to day. Two students who both want
+// to "become conversational" but need it for work vs. travel are still
+// different students, worth capturing even though (like Interests) it's
+// reference-only until the content library is tagged by real-life context.
+export const SYLLABUS_CONTEXT_OPTIONS = [
+  { key: "work", label: "Work" },
+  { key: "travel", label: "Travel" },
+  { key: "social", label: "Social and daily life" },
+  { key: "academic", label: "Academic" },
+  { key: "exam", label: "Exam" },
+  { key: "customer_service", label: "Customer service / clients" },
+  { key: "other", label: "Other" },
+];
+
 export function goalLabel(goalKey, goalOther) {
   if (goalKey === "other") return (goalOther || "").trim() || "their own goal";
   return SYLLABUS_GOAL_OPTIONS.find((g) => g.key === goalKey)?.label || "their own goal";
@@ -79,19 +94,31 @@ export function weakSkillLabel(weakSkillKey) {
   return WEAK_SKILL_OPTIONS.find((w) => w.key === weakSkillKey)?.label || null;
 }
 
+export function contextLabel(needKey, needOther) {
+  if (!needKey) return null;
+  if (needKey === "other") return (needOther || "").trim() || null;
+  return SYLLABUS_CONTEXT_OPTIONS.find((n) => n.key === needKey)?.label || null;
+}
+
 // A one-line reason the teacher can read at a glance -- the "why" behind
 // this specific session mix, so the syllabus doesn't just look like a random
 // lesson list. Deliberately plain: this describes the SKILL WEIGHTING the
 // generator actually applied (weak-skill focus + grammar/vocab floor), not
 // a claim that individual lessons were hand-picked for the student's exact
 // real-life scenario -- the underlying content library isn't tagged by
-// context (work/travel/social) yet, so overpromising there would be
-// misleading. See project_syllabus_maker_idea memory for that gap.
-export function buildRationale({ studentName, goalKey, goalOther, weakSkillKey, level }) {
+// context (work/travel/social), native language, or exam format yet, so
+// overpromising there would be misleading. See project_syllabus_maker_idea
+// memory for that gap.
+export function buildRationale({ studentName, goalKey, goalOther, weakSkillKey, level, needKey, needOther, examName }) {
   const name = (studentName || "").trim() || "This student";
   const goal = goalLabel(goalKey, goalOther);
   const weakLabel = weakSkillLabel(weakSkillKey);
-  let line = `Built for ${name}. Goal: ${goal}.`;
+  const context = contextLabel(needKey, needOther);
+  let line = `Built for ${name}. Goal: ${goal}`;
+  line += context ? `, mainly for ${context.toLowerCase()}.` : ".";
+  if (goalKey === "exam" && (examName || "").trim()) {
+    line += ` Preparing for ${examName.trim()}.`;
+  }
   if (level === "A1") {
     line += " Starts with real beginner curriculum lessons where they're available, before moving into the standard mix.";
   }

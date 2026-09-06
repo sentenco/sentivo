@@ -6,6 +6,7 @@ import {
   SYLLABUS_LEVELS,
   SYLLABUS_AGE_TRACKS,
   SYLLABUS_GOAL_OPTIONS,
+  SYLLABUS_CONTEXT_OPTIONS,
   WEAK_SKILL_OPTIONS,
   CYCLE_LENGTH,
   SESSION_DURATION_MIN,
@@ -13,6 +14,9 @@ import {
   generateSyllabusSessions,
   offsetsForFollowUp,
   buildRationale,
+  goalLabel,
+  weakSkillLabel,
+  contextLabel,
   nextLevel,
 } from "./syllabusTypes";
 import ConfirmDialog from "./ConfirmDialog";
@@ -82,11 +86,23 @@ export default function SyllabusEditor() {
   // buildRationale() in syllabusTypes.js for how these turn into the
   // one-line "why" the teacher sees above the session list.
   const [studentName, setStudentName] = useState("");
+  const [studentAge, setStudentAge] = useState("");
   const [goalKey, setGoalKey] = useState("conversational");
   const [goalOther, setGoalOther] = useState("");
+  const [needKey, setNeedKey] = useState("");
+  const [needOther, setNeedOther] = useState("");
+  const [examName, setExamName] = useState("");
   const [weakSkill, setWeakSkill] = useState("");
   const [interests, setInterests] = useState("");
+  const [nativeLanguage, setNativeLanguage] = useState("");
   const [studentNotes, setStudentNotes] = useState("");
+
+  // Once a syllabus has real sessions, the profile locks to a read-only
+  // summary -- it's the thing this syllabus was built around, not a form to
+  // leave open every time the page loads. "Edit profile" snapshots the
+  // current values so "Cancel" can restore them without a network round trip.
+  const [profileEditing, setProfileEditing] = useState(true);
+  const [profileSnapshot, setProfileSnapshot] = useState(null);
 
   const [genCount, setGenCount] = useState(CYCLE_LENGTH);
   const [generating, setGenerating] = useState(false);
@@ -111,7 +127,7 @@ export default function SyllabusEditor() {
       setLoading(true);
       const { data, error } = await supabase
         .from("syllabi")
-        .select("id, title, level, age_track, sessions, offsets, student_name, student_goal, student_goal_other, weak_skill, interests, student_notes, cycle_number, previous_syllabus_id")
+        .select("id, title, level, age_track, sessions, offsets, student_name, student_age, student_goal, student_goal_other, student_need, student_need_other, exam_name, weak_skill, interests, native_language, student_notes, cycle_number, previous_syllabus_id")
         .eq("id", id)
         .eq("user_id", user.id)
         .maybeSingle();
@@ -123,17 +139,25 @@ export default function SyllabusEditor() {
         setLevel(data.level || "A1");
         setNextCycleLevel(data.level || "A1");
         setAgeTrack(data.age_track || "kids");
-        setSessions(data.sessions && data.sessions.length > 0 ? data.sessions : [newSession()]);
+        const loadedSessions = data.sessions && data.sessions.length > 0 ? data.sessions : [newSession()];
+        setSessions(loadedSessions);
         setOffsets(data.offsets || {});
         setStudentName(data.student_name || "");
+        setStudentAge(data.student_age != null ? String(data.student_age) : "");
         setGoalKey(data.student_goal || "conversational");
         setGoalOther(data.student_goal_other || "");
+        setNeedKey(data.student_need || "");
+        setNeedOther(data.student_need_other || "");
+        setExamName(data.exam_name || "");
         setWeakSkill(data.weak_skill || "");
         setNextCycleWeakSkill(data.weak_skill || "");
         setInterests(data.interests || "");
+        setNativeLanguage(data.native_language || "");
         setStudentNotes(data.student_notes || "");
         setCycleNumber(data.cycle_number || 1);
         setPreviousSyllabusId(data.previous_syllabus_id || null);
+        const hasContent = loadedSessions.some((s) => s.title.trim() || s.notes.trim());
+        setProfileEditing(!hasContent);
       }
       setLoading(false);
     }
@@ -148,8 +172,10 @@ export default function SyllabusEditor() {
       .from("syllabi")
       .update({
         title, level, age_track: ageTrack, sessions, offsets,
-        student_name: studentName, student_goal: goalKey, student_goal_other: goalOther,
-        weak_skill: weakSkill, interests, student_notes: studentNotes,
+        student_name: studentName, student_age: studentAge.trim() ? Number(studentAge) : null,
+        student_goal: goalKey, student_goal_other: goalOther,
+        student_need: needKey, student_need_other: needOther, exam_name: examName,
+        weak_skill: weakSkill, interests, native_language: nativeLanguage, student_notes: studentNotes,
         updated_at: new Date().toISOString(),
       })
       .eq("id", id)
@@ -174,6 +200,7 @@ export default function SyllabusEditor() {
     setSessions(result.sessions);
     setOffsets(result.offsets);
     if (studentName.trim()) setTitle(`${studentName.trim()} · Cycle ${cycleNumber}`);
+    setProfileEditing(false);
   }
 
   function handleGenerateClick() {
@@ -187,6 +214,31 @@ export default function SyllabusEditor() {
     } else {
       runGenerate();
     }
+  }
+
+  function startEditProfile() {
+    setProfileSnapshot({
+      studentName, studentAge, goalKey, goalOther, needKey, needOther, examName,
+      weakSkill, interests, nativeLanguage, studentNotes,
+    });
+    setProfileEditing(true);
+  }
+
+  function cancelEditProfile() {
+    if (profileSnapshot) {
+      setStudentName(profileSnapshot.studentName);
+      setStudentAge(profileSnapshot.studentAge);
+      setGoalKey(profileSnapshot.goalKey);
+      setGoalOther(profileSnapshot.goalOther);
+      setNeedKey(profileSnapshot.needKey);
+      setNeedOther(profileSnapshot.needOther);
+      setExamName(profileSnapshot.examName);
+      setWeakSkill(profileSnapshot.weakSkill);
+      setInterests(profileSnapshot.interests);
+      setNativeLanguage(profileSnapshot.nativeLanguage);
+      setStudentNotes(profileSnapshot.studentNotes);
+    }
+    setProfileEditing(false);
   }
 
   async function createNextCycle() {
@@ -211,10 +263,15 @@ export default function SyllabusEditor() {
         sessions: result.sessions,
         offsets: result.offsets,
         student_name: studentName,
+        student_age: studentAge.trim() ? Number(studentAge) : null,
         student_goal: goalKey,
         student_goal_other: goalOther,
+        student_need: needKey,
+        student_need_other: needOther,
+        exam_name: examName,
         weak_skill: nextCycleWeakSkill,
         interests,
+        native_language: nativeLanguage,
         student_notes: studentNotes,
         cycle_number: nextCycleNumber,
         previous_syllabus_id: id,
@@ -283,7 +340,12 @@ export default function SyllabusEditor() {
 
   const higherLevel = nextLevel(level);
   const hasRealContent = sessions.some((s) => s.title.trim() || s.notes.trim());
-  const rationale = hasRealContent ? buildRationale({ studentName, goalKey, goalOther, weakSkillKey: weakSkill, level }) : null;
+  const rationale = hasRealContent
+    ? buildRationale({ studentName, goalKey, goalOther, weakSkillKey: weakSkill, level, needKey, needOther, examName })
+    : null;
+  const ageTrackLabel = SYLLABUS_AGE_TRACKS.find((t) => t.key === ageTrack)?.label || "";
+  const context = contextLabel(needKey, needOther);
+  const initial = (studentName.trim()[0] || "?").toUpperCase();
 
   return (
     <div className="syl-shell">
@@ -329,7 +391,7 @@ export default function SyllabusEditor() {
         </div>
       </div>
       <div className="syl-meta-print print-only">
-        {title} — {level} · {SYLLABUS_AGE_TRACKS.find((t) => t.key === ageTrack)?.label}
+        {title} — {level} · {ageTrackLabel}
       </div>
 
       {nextCyclePanelOpen && (
@@ -347,89 +409,228 @@ export default function SyllabusEditor() {
             {startingNextCycle ? "Creating…" : `Create Cycle ${cycleNumber + 1}`}
           </button>
           <p className="syl-followup-hint">
-            Carries the student's name, goal, and interests forward, and picks up Grammar/Vocabulary/Writing/Articles where this cycle left off.
+            Carries the student's profile forward, and picks up Grammar/Vocabulary/Writing/Articles where this cycle left off.
           </p>
         </div>
       )}
 
       <div className="syl-page">
         <div className="syl-stage">
-          <div className="syl-profile no-print">
-            <div className="syl-profile-title">Student profile</div>
-            <div className="syl-profile-grid">
-              <label className="syl-profile-field">
-                Student name
-                <input
-                  type="text"
-                  className="syl-profile-input"
-                  value={studentName}
-                  onChange={(e) => setStudentName(e.target.value)}
-                  placeholder="e.g. Miguel"
-                />
-              </label>
-              <label className="syl-profile-field">
-                Main goal
-                <select className="syl-profile-input" value={goalKey} onChange={(e) => setGoalKey(e.target.value)}>
-                  {SYLLABUS_GOAL_OPTIONS.map((g) => <option key={g.key} value={g.key}>{g.label}</option>)}
-                </select>
-              </label>
-              {goalKey === "other" && (
-                <label className="syl-profile-field">
-                  Goal, in your own words
+
+          {profileEditing ? (
+            <div className="syl-profile no-print">
+              <div className="syl-who">
+                <div className="syl-avatar">{initial}</div>
+                <div className="syl-who-fields">
+                  <span className="syl-who-label">Student</span>
                   <input
-                    type="text"
-                    className="syl-profile-input"
-                    value={goalOther}
-                    onChange={(e) => setGoalOther(e.target.value)}
-                    placeholder="e.g. Passing a citizenship interview"
+                    className="syl-who-input"
+                    value={studentName}
+                    onChange={(e) => setStudentName(e.target.value)}
+                    placeholder="e.g. Miguel"
+                  />
+                </div>
+                <label className="syl-age-field">
+                  Age
+                  <input
+                    type="number"
+                    min="3"
+                    max="99"
+                    className="syl-age-input"
+                    value={studentAge}
+                    onChange={(e) => setStudentAge(e.target.value)}
+                    placeholder="Age"
                   />
                 </label>
+              </div>
+
+              <div className="syl-section">
+                <div className="syl-section-head">
+                  <span className="syl-section-bar" style={{ background: "#FF6B4A" }} />
+                  <span className="syl-section-title">Goal &amp; context</span>
+                </div>
+                <div className="syl-profile-grid">
+                  <label className="syl-profile-field">
+                    Main goal
+                    <select className="syl-profile-input" value={goalKey} onChange={(e) => setGoalKey(e.target.value)}>
+                      {SYLLABUS_GOAL_OPTIONS.map((g) => <option key={g.key} value={g.key}>{g.label}</option>)}
+                    </select>
+                  </label>
+                  <label className="syl-profile-field">
+                    Where they'll use it
+                    <select className="syl-profile-input" value={needKey} onChange={(e) => setNeedKey(e.target.value)}>
+                      <option value="">Not specified</option>
+                      {SYLLABUS_CONTEXT_OPTIONS.map((n) => <option key={n.key} value={n.key}>{n.label}</option>)}
+                    </select>
+                  </label>
+                  {goalKey === "other" && (
+                    <label className="syl-profile-field">
+                      Goal, in your own words
+                      <input
+                        type="text"
+                        className="syl-profile-input"
+                        value={goalOther}
+                        onChange={(e) => setGoalOther(e.target.value)}
+                        placeholder="e.g. Passing a citizenship interview"
+                      />
+                    </label>
+                  )}
+                  {needKey === "other" && (
+                    <label className="syl-profile-field">
+                      Context, in your own words
+                      <input
+                        type="text"
+                        className="syl-profile-input"
+                        value={needOther}
+                        onChange={(e) => setNeedOther(e.target.value)}
+                        placeholder="e.g. Volunteering abroad"
+                      />
+                    </label>
+                  )}
+                  {goalKey === "exam" && (
+                    <label className="syl-profile-field syl-profile-field--wide">
+                      Which exam
+                      <input
+                        type="text"
+                        className="syl-profile-input"
+                        value={examName}
+                        onChange={(e) => setExamName(e.target.value)}
+                        placeholder="e.g. IELTS, TOEFL, Cambridge B2"
+                      />
+                    </label>
+                  )}
+                </div>
+              </div>
+
+              <div className="syl-section">
+                <div className="syl-section-head">
+                  <span className="syl-section-bar" style={{ background: "#1B2A4A" }} />
+                  <span className="syl-section-title">Diagnosis</span>
+                </div>
+                <label className="syl-profile-field">
+                  Weakest area right now
+                  <select className="syl-profile-input" value={weakSkill} onChange={(e) => setWeakSkill(e.target.value)}>
+                    <option value="">Balanced (no particular weak spot)</option>
+                    {WEAK_SKILL_OPTIONS.map((w) => <option key={w.key} value={w.key}>{w.label}</option>)}
+                  </select>
+                </label>
+              </div>
+
+              <div className="syl-section">
+                <div className="syl-section-head">
+                  <span className="syl-section-bar" style={{ background: "#FF6B4A" }} />
+                  <span className="syl-section-title">Personalization</span>
+                </div>
+                <div className="syl-profile-grid">
+                  <label className="syl-profile-field">
+                    Interests <span className="syl-profile-optional">(for your own reference)</span>
+                    <input
+                      type="text"
+                      className="syl-profile-input"
+                      value={interests}
+                      onChange={(e) => setInterests(e.target.value)}
+                      placeholder="e.g. basketball, cooking, K-dramas"
+                    />
+                  </label>
+                  <label className="syl-profile-field">
+                    Native language <span className="syl-profile-optional">(for your own reference)</span>
+                    <input
+                      type="text"
+                      className="syl-profile-input"
+                      value={nativeLanguage}
+                      onChange={(e) => setNativeLanguage(e.target.value)}
+                      placeholder="e.g. Hebrew"
+                    />
+                  </label>
+                  <label className="syl-profile-field syl-profile-field--wide">
+                    Notes for next cycle <span className="syl-profile-optional">(optional)</span>
+                    <textarea
+                      className="syl-profile-input syl-profile-textarea"
+                      rows={2}
+                      value={studentNotes}
+                      onChange={(e) => setStudentNotes(e.target.value)}
+                      placeholder="Anything worth remembering when you plan what's next"
+                    />
+                  </label>
+                </div>
+              </div>
+
+              <div className="syl-profile-divider" />
+
+              <div className="syl-profile-actions">
+                <label className="syl-profile-count">
+                  Sessions
+                  <input
+                    type="number"
+                    min="1"
+                    max="30"
+                    className="syl-gen-input"
+                    value={genCount}
+                    onChange={(e) => setGenCount(Math.max(1, Number(e.target.value) || 1))}
+                  />
+                </label>
+                <div className="syl-profile-actions-btns">
+                  {hasRealContent && (
+                    <button type="button" className="syl-btn syl-btn--ghost" onClick={cancelEditProfile}>Cancel</button>
+                  )}
+                  <button type="button" className="syl-btn syl-btn--primary" onClick={handleGenerateClick} disabled={generating}>
+                    {generating ? "Generating…" : hasRealContent ? "Regenerate this cycle" : "Generate syllabus"}
+                  </button>
+                </div>
+              </div>
+            </div>
+          ) : (
+            <div className="syl-summary no-print">
+              <div className="syl-summary-top">
+                <div className="syl-avatar">{initial}</div>
+                <div className="syl-summary-name">
+                  {studentName || "This student"}
+                  <span className="syl-summary-sub">{level} · {ageTrackLabel}{studentAge ? ` · Age ${studentAge}` : ""} · Cycle {cycleNumber}</span>
+                </div>
+                <button type="button" className="syl-edit-btn" onClick={startEditProfile}>Edit profile</button>
+              </div>
+              <div className="syl-stat-strip">
+                <div className="syl-stat">
+                  <div className="syl-stat-label">Goal</div>
+                  <div className="syl-stat-value">{goalLabel(goalKey, goalOther)}</div>
+                </div>
+                <div className="syl-stat">
+                  <div className="syl-stat-label">Context</div>
+                  <div className="syl-stat-value">{context || "Not specified"}</div>
+                </div>
+                <div className="syl-stat">
+                  <div className="syl-stat-label">Weakest area</div>
+                  <div className="syl-stat-value">{weakSkillLabel(weakSkill) || "Balanced"}</div>
+                </div>
+                <div className="syl-stat">
+                  <div className="syl-stat-label">Interests</div>
+                  <div className="syl-stat-value">{interests || "Not specified"}</div>
+                </div>
+              </div>
+              {(nativeLanguage || (goalKey === "exam" && examName) || studentNotes) && (
+                <div className="syl-stat-strip syl-stat-strip--secondary">
+                  {nativeLanguage && (
+                    <div className="syl-stat">
+                      <div className="syl-stat-label">Native language</div>
+                      <div className="syl-stat-value">{nativeLanguage}</div>
+                    </div>
+                  )}
+                  {goalKey === "exam" && examName && (
+                    <div className="syl-stat">
+                      <div className="syl-stat-label">Exam</div>
+                      <div className="syl-stat-value">{examName}</div>
+                    </div>
+                  )}
+                  {studentNotes && (
+                    <div className="syl-stat syl-stat--wide">
+                      <div className="syl-stat-label">Notes</div>
+                      <div className="syl-stat-value">{studentNotes}</div>
+                    </div>
+                  )}
+                </div>
               )}
-              <label className="syl-profile-field">
-                Weakest area right now
-                <select className="syl-profile-input" value={weakSkill} onChange={(e) => setWeakSkill(e.target.value)}>
-                  <option value="">Balanced (no particular weak spot)</option>
-                  {WEAK_SKILL_OPTIONS.map((w) => <option key={w.key} value={w.key}>{w.label}</option>)}
-                </select>
-              </label>
-              <label className="syl-profile-field">
-                Interests <span className="syl-profile-optional">(for your own reference)</span>
-                <input
-                  type="text"
-                  className="syl-profile-input"
-                  value={interests}
-                  onChange={(e) => setInterests(e.target.value)}
-                  placeholder="e.g. basketball, cooking, K-dramas"
-                />
-              </label>
-              <label className="syl-profile-field syl-profile-field--wide">
-                Notes for next cycle <span className="syl-profile-optional">(optional)</span>
-                <textarea
-                  className="syl-profile-input syl-profile-textarea"
-                  rows={2}
-                  value={studentNotes}
-                  onChange={(e) => setStudentNotes(e.target.value)}
-                  placeholder="Anything worth remembering when you plan what's next"
-                />
-              </label>
             </div>
-            <div className="syl-profile-actions">
-              <label className="syl-profile-count">
-                Sessions
-                <input
-                  type="number"
-                  min="1"
-                  max="30"
-                  className="syl-gen-input"
-                  value={genCount}
-                  onChange={(e) => setGenCount(Math.max(1, Number(e.target.value) || 1))}
-                />
-              </label>
-              <button type="button" className="syl-btn syl-btn--primary" onClick={handleGenerateClick} disabled={generating}>
-                {generating ? "Generating…" : hasRealContent ? "Regenerate this cycle" : "Generate syllabus"}
-              </button>
-            </div>
-          </div>
+          )}
 
           {rationale && <div className="syl-rationale no-print">{rationale}</div>}
 
@@ -620,7 +821,6 @@ const CSS = `
 }
 .syl-pill-static { font-family: 'Inter', sans-serif; font-weight: 700; font-size: 12.5px; color: #B9C3DC; padding: 6px 4px; }
 
-
 .syl-select {
   font-family: 'Inter', sans-serif; font-weight: 700; font-size: 13px; color: #1B2A4A;
   background: #FBF4F1; border: 1.5px solid #EDE1DB; border-radius: 10px; padding: 8px 12px; cursor: pointer;
@@ -636,8 +836,36 @@ const CSS = `
 .syl-page { padding: 28px 20px 60px; }
 .syl-stage { max-width: 760px; margin: 0 auto; background: #FFFFFF; border-radius: 20px; padding: 30px 32px 34px; box-shadow: 0 10px 30px rgba(27,42,74,0.08); }
 
-.syl-profile { background: #FBF4F1; border-radius: 16px; padding: 20px 22px; margin-bottom: 18px; }
-.syl-profile-title { font-weight: 800; font-size: 11.5px; letter-spacing: 0.08em; text-transform: uppercase; color: #5A6B92; margin-bottom: 14px; }
+.syl-profile, .syl-summary { background: #FBF4F1; border-radius: 16px; padding: 22px 24px; margin-bottom: 18px; }
+
+.syl-avatar {
+  width: 48px; height: 48px; border-radius: 50%; background: #FF6B4A; color: #FFFFFF; flex-shrink: 0;
+  font-family: 'Fraunces', serif; font-weight: 600; font-size: 19px;
+  display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(224,80,47,0.3);
+}
+
+.syl-who { display: flex; align-items: center; gap: 14px; margin-bottom: 22px; flex-wrap: wrap; }
+.syl-who-fields { flex: 1 1 140px; display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.syl-who-label { font-size: 10.5px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: #5A6B92; }
+.syl-who-input {
+  font-family: 'Fraunces', serif; font-weight: 600; font-size: 20px; color: #1B2A4A;
+  border: none; background: transparent; outline: none; padding: 2px 0; width: 100%;
+  border-bottom: 2px solid transparent; transition: border-color 0.15s;
+}
+.syl-who-input:focus { border-bottom-color: #FF6B4A; }
+.syl-age-field { display: flex; flex-direction: column; gap: 4px; font-size: 10.5px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: #5A6B92; flex-shrink: 0; }
+.syl-age-input {
+  width: 56px; font-family: 'Inter', sans-serif; font-weight: 700; font-size: 14px; color: #1B2A4A;
+  background: #FFFFFF; border: 1.5px solid #EDE1DB; border-radius: 10px; padding: 8px 10px; outline: none; text-align: center;
+}
+.syl-age-input:focus { border-color: #FF6B4A; }
+
+.syl-section { margin-bottom: 20px; }
+.syl-section:last-of-type { margin-bottom: 0; }
+.syl-section-head { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; }
+.syl-section-bar { width: 4px; height: 14px; border-radius: 2px; }
+.syl-section-title { font-size: 11px; font-weight: 800; letter-spacing: 0.09em; text-transform: uppercase; color: #5A6B92; }
+
 .syl-profile-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
 .syl-profile-field { display: flex; flex-direction: column; gap: 6px; font-size: 12.5px; font-weight: 700; color: #1B2A4A; }
 .syl-profile-field--wide { grid-column: 1 / -1; }
@@ -648,12 +876,27 @@ const CSS = `
 }
 .syl-profile-input:focus { border-color: #FF6B4A; }
 .syl-profile-textarea { resize: vertical; font-family: 'Inter', sans-serif; }
-.syl-profile-actions { display: flex; align-items: center; gap: 14px; margin-top: 16px; }
+.syl-profile-divider { height: 1px; background: #EDE1DB; margin: 4px 0 18px; }
+.syl-profile-actions { display: flex; align-items: center; justify-content: space-between; gap: 14px; flex-wrap: wrap; }
+.syl-profile-actions-btns { display: flex; align-items: center; gap: 10px; }
 .syl-profile-count { display: flex; align-items: center; gap: 8px; font-size: 12.5px; font-weight: 700; color: #1B2A4A; }
+
+.syl-summary-top { display: flex; align-items: center; gap: 14px; margin-bottom: 18px; flex-wrap: wrap; }
+.syl-summary-name { font-family: 'Fraunces', serif; font-weight: 600; font-size: 20px; color: #1B2A4A; flex: 1 1 140px; min-width: 0; display: flex; flex-direction: column; gap: 3px; }
+.syl-summary-sub { font-family: 'Inter', sans-serif; font-weight: 700; font-size: 11.5px; color: #5A6B92; }
+.syl-edit-btn { font-family: 'Inter', sans-serif; font-weight: 700; font-size: 12.5px; color: #E0502F; background: #FDECE5; border: none; border-radius: 999px; padding: 8px 16px; cursor: pointer; white-space: nowrap; flex-shrink: 0; }
+
+.syl-stat-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; background: #FFFFFF; border-radius: 12px; border: 1.5px solid #EDE1DB; overflow: hidden; }
+.syl-stat-strip--secondary { margin-top: 10px; }
+.syl-stat { padding: 12px 14px; border-right: 1px solid #EDE1DB; min-width: 0; }
+.syl-stat:last-child { border-right: none; }
+.syl-stat--wide { grid-column: span 2; }
+.syl-stat-label { font-size: 9.5px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: #5A6B92; margin-bottom: 4px; }
+.syl-stat-value { font-size: 13px; font-weight: 700; color: #1B2A4A; line-height: 1.35; overflow-wrap: break-word; }
 
 .syl-rationale {
   font-family: 'Fraunces', serif; font-weight: 500; font-style: italic; font-size: 14.5px; color: #1B2A4A;
-  background: #FDECE5; border-radius: 12px; padding: 12px 16px; margin-bottom: 18px; line-height: 1.5;
+  background: #FDECE5; border-left: 4px solid #FF6B4A; border-radius: 0 12px 12px 0; padding: 12px 16px 12px 18px; margin-bottom: 18px; line-height: 1.5;
 }
 
 .syl-toolbar { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; }
@@ -743,5 +986,9 @@ const CSS = `
 
 @media (max-width: 640px) {
   .syl-profile-grid { grid-template-columns: 1fr; }
+  .syl-stat-strip { grid-template-columns: repeat(2, 1fr); }
+  .syl-stat { border-bottom: 1px solid #EDE1DB; }
+  .syl-stat:nth-child(2n) { border-right: none; }
+  .syl-stat--wide { grid-column: span 2; }
 }
 `;
