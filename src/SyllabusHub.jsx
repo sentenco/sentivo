@@ -135,7 +135,6 @@ export default function SyllabusHub() {
               ) : (
                 filteredSyllabi.map((syl) => {
                   const sessionList = syl.sessions || [];
-                  const doneCount = sessionList.filter((s) => s.completed).length;
                   return (
                     <button
                       type="button"
@@ -166,7 +165,7 @@ export default function SyllabusHub() {
                         </span>
                       )}
                       <span className="syh-card-meta">
-                        {sessionList.length > 0 ? `${doneCount}/${sessionList.length} sessions done` : "No sessions yet"} · {timeAgo(syl.updated_at)}
+                        {sessionList.length > 0 ? `${sessionList.length} sessions` : "No sessions yet"} · {timeAgo(syl.updated_at)}
                       </span>
                     </button>
                   );

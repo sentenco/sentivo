@@ -252,22 +252,8 @@ export default function SyllabusEditor() {
     setSessions((prev) => prev.map((s) => (s.id === sid ? { ...s, [field]: value } : s)));
   }
 
-  function removeSession(sid) {
-    setSessions((prev) => prev.filter((s) => s.id !== sid));
-  }
-
   function addSession() {
     setSessions((prev) => [...prev, newSession()]);
-  }
-
-  function moveSession(index, dir) {
-    setSessions((prev) => {
-      const next = [...prev];
-      const target = index + dir;
-      if (target < 0 || target >= next.length) return prev;
-      [next[index], next[target]] = [next[target], next[index]];
-      return next;
-    });
   }
 
   if (authLoading || (user && loading)) return null;
@@ -276,10 +262,7 @@ export default function SyllabusEditor() {
 
   const higherLevel = nextLevel(level);
   const hasRealContent = sessions.some((s) => s.title.trim() || s.notes.trim());
-  const doneCount = sessions.filter((s) => s.completed).length;
-  const progressPct = sessions.length > 0 ? Math.round((doneCount / sessions.length) * 100) : 0;
   const rationale = hasRealContent ? buildRationale({ studentName, goalKey, goalOther, weakSkillKey: weakSkill, level }) : null;
-  const readyForNextCycle = sessions.length > 0 && doneCount === sessions.length;
 
   return (
     <div className="syl-shell">
@@ -318,12 +301,9 @@ export default function SyllabusEditor() {
               </select>
               <span className="syl-pill-static">Cycle {cycleNumber}</span>
               {sessions.length > 0 && (
-                <span className="syl-pill-static">{doneCount}/{sessions.length} sessions · {SESSION_DURATION_MIN} min each</span>
+                <span className="syl-pill-static">{sessions.length} sessions · {SESSION_DURATION_MIN} min each</span>
               )}
             </div>
-            {sessions.length > 0 && (
-              <div className="syl-progress-track"><div className="syl-progress-fill" style={{ width: `${progressPct}%` }} /></div>
-            )}
           </div>
         </div>
       </div>
@@ -346,8 +326,7 @@ export default function SyllabusEditor() {
             {startingNextCycle ? "Creating…" : `Create Cycle ${cycleNumber + 1}`}
           </button>
           <p className="syl-followup-hint">
-            {readyForNextCycle ? "All sessions in this cycle are marked done, " : "You can start the next cycle early, "}
-            it carries the student's name, goal, and interests forward, and picks up Grammar/Vocabulary/Writing/Articles where this cycle left off.
+            Carries the student's name, goal, and interests forward, and picks up Grammar/Vocabulary/Writing/Articles where this cycle left off.
           </p>
         </div>
       )}
@@ -524,11 +503,6 @@ export default function SyllabusEditor() {
                     onChange={(e) => updateSession(s.id, "notes", e.target.value)}
                     placeholder="Notes (optional)"
                   />
-                  {s.href && (
-                    <a className="syl-session-link no-print" href={s.href} target="_blank" rel="noreferrer">
-                      Open this lesson →
-                    </a>
-                  )}
                 </div>
                 <div className="syl-session-actions no-print">
                   {s.requested && (
@@ -542,18 +516,13 @@ export default function SyllabusEditor() {
                       📥
                     </button>
                   )}
-                  <button
-                    type="button"
-                    className={`syl-icon-btn${s.completed ? " syl-icon-btn--done" : ""}`}
-                    onClick={() => updateSession(s.id, "completed", !s.completed)}
-                    aria-label={s.completed ? "Mark not completed" : "Mark completed"}
-                    title={s.completed ? "Mark not completed" : "Mark completed"}
-                  >
-                    ✓
-                  </button>
-                  <button type="button" className="syl-icon-btn" onClick={() => moveSession(i, -1)} disabled={i === 0} aria-label="Move up">↑</button>
-                  <button type="button" className="syl-icon-btn" onClick={() => moveSession(i, 1)} disabled={i === sessions.length - 1} aria-label="Move down">↓</button>
-                  <button type="button" className="syl-icon-btn syl-icon-btn--danger" onClick={() => removeSession(s.id)} aria-label="Remove session">×</button>
+                  {s.href ? (
+                    <a className="syl-open-btn" href={s.href} target="_blank" rel="noreferrer">
+                      Open →
+                    </a>
+                  ) : (
+                    <span className="syl-open-btn syl-open-btn--off" title="No linked lesson yet">Open →</span>
+                  )}
                 </div>
               </div>
             ))}
@@ -624,8 +593,6 @@ const CSS = `
 }
 .syl-pill-static { font-family: 'Inter', sans-serif; font-weight: 700; font-size: 12.5px; color: #B9C3DC; padding: 6px 4px; }
 
-.syl-progress-track { margin-top: 16px; height: 6px; border-radius: 999px; background: rgba(255,255,255,0.14); overflow: hidden; }
-.syl-progress-fill { height: 100%; background: #FF6B4A; border-radius: 999px; transition: width 0.2s ease; }
 
 .syl-select {
   font-family: 'Inter', sans-serif; font-weight: 700; font-size: 13px; color: #1B2A4A;
@@ -705,8 +672,6 @@ const CSS = `
 .syl-skill-tag--articles { background: #E9F3FB; color: #1F6FB0; }
 .syl-skill-tag--listening { background: #F4EDE3; color: #8A5A2A; }
 .syl-skill-tag--curriculum { background: #DDF3EF; color: #0E8074; }
-.syl-session-link { display: inline-block; margin-top: 4px; font-size: 12px; font-weight: 700; color: #0E8074; text-decoration: none; }
-.syl-session-link:hover { text-decoration: underline; }
 .syl-done-tag { font-size: 9.5px; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase; border-radius: 999px; padding: 2px 8px; background: #E7F5EC; color: #2F9E58; }
 .syl-pending-tag { font-size: 9.5px; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase; border-radius: 999px; padding: 2px 8px; background: #FFF4D6; color: #8A6D1F; }
 .syl-t-row--done .syl-t-body { opacity: 0.6; }
@@ -718,15 +683,18 @@ const CSS = `
 .syl-session-notes { font-size: 12.5px; color: #5A6B92; }
 .syl-session-title::placeholder, .syl-session-notes::placeholder { color: #C7B7AE; }
 
-.syl-session-actions { flex-shrink: 0; display: flex; gap: 4px; margin-top: 2px; }
+.syl-session-actions { flex-shrink: 0; display: flex; align-items: center; gap: 6px; margin-top: 2px; }
 .syl-icon-btn {
   width: 26px; height: 26px; border-radius: 8px; border: none; background: #FDECE5; color: #E0502F;
   cursor: pointer; font-size: 13px; font-weight: 800;
 }
-.syl-icon-btn:disabled { opacity: 0.35; cursor: default; }
-.syl-icon-btn--danger { color: #D14B4B; background: #FBEBEB; }
-.syl-icon-btn--done { background: #2F9E58; color: #FFFFFF; }
 .syl-icon-btn--delivered { background: #FFF4D6; }
+.syl-open-btn {
+  display: inline-flex; align-items: center; justify-content: center; white-space: nowrap;
+  font-family: 'Inter', sans-serif; font-weight: 700; font-size: 12.5px; color: #FFFFFF;
+  background: #0E8074; border-radius: 999px; padding: 8px 14px; text-decoration: none; cursor: pointer;
+}
+.syl-open-btn--off { background: #E5E0DC; color: #9A93A6; cursor: default; }
 
 .syl-add-btn {
   margin-top: 14px; align-self: flex-start; background: none; border: 1.5px dashed #EDE1DB;

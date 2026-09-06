@@ -235,7 +235,7 @@ function buildGrammarSessions(count, startIndex) {
 function buildVocabSessions(count, startIndex) {
   const sessions = Array.from({ length: count }, (_, i) => {
     const lesson = VOCAB_LESSONS[(startIndex + i) % VOCAB_LESSONS.length];
-    return newSession({ title: lesson.title, notes: lesson.blurb || "", skill: "vocabulary", source: "vocabulary" });
+    return newSession({ title: lesson.title, notes: lesson.blurb || "", href: lesson.href || "", skill: "vocabulary", source: "vocabulary" });
   });
   return { sessions, endIndex: startIndex + count };
 }
@@ -281,6 +281,7 @@ function buildSpeakingSessions(count, level, ageTrack, startTrackIdx, startLesso
       sessions.push(newSession({
         title: `${system}: ${track.title} — ${lesson.title}`,
         notes: lesson.subtitle || "",
+        href: `/library/${system.toLowerCase()}/${track.id}/${lessonIdx + 1}`,
         skill: "speaking",
         source: "speaking",
       }));
@@ -330,7 +331,7 @@ async function buildReadingSessions(count, level, ageTrack, startIndex) {
 
   const sessions = Array.from({ length: count }, (_, i) => {
     const book = pool[(startIndex + i) % pool.length];
-    return newSession({ title: `Read: ${book.title}`, notes: book.tagline || "", skill: "reading", source: "reading" });
+    return newSession({ title: `Read: ${book.title}`, notes: book.tagline || "", href: `/library/${book.id}`, skill: "reading", source: "reading" });
   });
   return { sessions, endIndex: startIndex + count };
 }
@@ -356,6 +357,7 @@ function buildWritingSessions(count, level, startIndex) {
     sessions.push(newSession({
       title: item ? `${activity.title}: ${item.title}` : activity.title,
       notes: (item && item.focus) || activity.blurb || "",
+      href: item ? `/library/writing/${activity.key}/${item.key}/player` : "",
       skill: "writing",
       source: "writing",
     }));
@@ -370,7 +372,7 @@ function buildWritingSessions(count, level, startIndex) {
 function buildArticleSessions(count, startIndex) {
   const sessions = Array.from({ length: count }, (_, i) => {
     const article = ARTICLES[(startIndex + i) % ARTICLES.length];
-    return newSession({ title: `Article: ${article.title}`, notes: article.dek || "", skill: "articles", source: "articles" });
+    return newSession({ title: `Article: ${article.title}`, notes: article.dek || "", href: `/library/articles/${article.slug}/player`, skill: "articles", source: "articles" });
   });
   return { sessions, endIndex: startIndex + count };
 }
