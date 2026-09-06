@@ -30,9 +30,9 @@ export const CHAPTERS = [
     story:
       "Every morning, I wake up at six thirty and sit quietly on my bed for a minute. Before I look at my phone, I drink a glass of water from the bottle on my table. Then I open the window and take a deep breath of cool morning air. My body feels a little tired, so I stretch my arms, my back, and my legs. After that, I go to the kitchen and make a simple breakfast with eggs, bread, and fruit. I do not rush, and I try to eat slowly while I listen to soft music. When I finish breakfast, I put on my shoes and walk outside for ten minutes. The street is calm, and the short walk helps me feel more awake. Before I leave for work, I smile because my body feels light and my mind feels clear. This small morning routine is simple, but it gives me a better start to my day.",
     questions: [
-      "What does the writer drink before looking at the phone?",
-      "What does the writer eat for breakfast?",
-      "How does the writer feel before leaving for work?",
+      { text: "What does the writer drink before looking at the phone?", answer: "A glass of water." },
+      { text: "What does the writer eat for breakfast?", answer: "Eggs, bread, and fruit." },
+      { text: "How does the writer feel before leaving for work?", answer: "Light, with a clear mind." },
     ],
     trueFalse: [
       { text: "The writer drinks water before looking at the phone.", answer: true },
@@ -68,9 +68,9 @@ export const CHAPTERS = [
     story:
       "Today, I decide to make a healthy breakfast before I go to work. I wash my hands and take out eggs, bread, and fresh fruit from the fridge. I cook two eggs slowly in a small pan with only a little oil. While the eggs cook, I cut a banana and an apple into small pieces. I put brown bread in the toaster and wait for it to turn warm and golden. Then I sit down at the table and eat my breakfast without my phone. I drink a glass of water and a small cup of green tea. I chew my food slowly and enjoy every simple bite. This healthy breakfast is easy, cheap, and good for my body. When I finish, I feel full of energy and ready for a busy day.",
     questions: [
-      "What does the writer take out of the fridge?",
-      "What fruit does the writer cut into small pieces?",
-      "How does the writer feel when the breakfast is finished?",
+      { text: "What does the writer take out of the fridge?", answer: "Eggs, bread, and fresh fruit." },
+      { text: "What fruit does the writer cut into small pieces?", answer: "A banana and an apple." },
+      { text: "How does the writer feel when the breakfast is finished?", answer: "Full of energy." },
     ],
     trueFalse: [
       { text: "The writer cooks the eggs with a little oil.", answer: true },
@@ -106,9 +106,9 @@ export const CHAPTERS = [
     story:
       "After breakfast, I put on my shoes and go outside for a short walk. The morning air is cool and fresh, and the sky is a soft blue. I walk down my street and turn into the small green park nearby. Many people walk, run, or do simple exercises in the park too. I walk fast and swing my arms to make my body warm and awake. I see the tall trees, the little flowers, and some birds in the sky. I do not use my phone, so I can look at the world around me. After about fifteen minutes, my heart beats a little faster, and I feel strong. The walk is short, but it makes my whole body feel more alive. When I walk back home, I feel calm, happy, and ready for the day.",
     questions: [
-      "Where does the writer walk in the morning?",
-      "What does the writer see in the park?",
-      "How long is the morning walk?",
+      { text: "Where does the writer walk in the morning?", answer: "In the small green park nearby." },
+      { text: "What does the writer see in the park?", answer: "Tall trees, little flowers, and some birds." },
+      { text: "How long is the morning walk?", answer: "About fifteen minutes." },
     ],
     trueFalse: [
       { text: "The writer walks in a small green park.", answer: true },
@@ -144,9 +144,9 @@ export const CHAPTERS = [
     story:
       "Today, I want to remember to drink enough water during the whole day. In the morning, I fill a big bottle with clean, cool water. I keep the bottle on my desk so I can see it all the time. Every hour, I take a few sips and slowly finish the bottle. When I drink water, I feel less tired, and my head feels clear. At lunch, I drink water instead of a sweet, sugary drink. In the afternoon, I fill the bottle again and keep drinking slowly. My skin feels better, and my body feels light and fresh. Drinking water is simple, but many people forget to do it. By the end of the day, I feel proud because I drink enough water for my health.",
     questions: [
-      "Where does the writer keep the water bottle?",
-      "What does the writer drink at lunch instead of a sweet drink?",
-      "How does the writer feel by the end of the day?",
+      { text: "Where does the writer keep the water bottle?", answer: "On the desk." },
+      { text: "What does the writer drink at lunch instead of a sweet drink?", answer: "Water." },
+      { text: "How does the writer feel by the end of the day?", answer: "Proud." },
     ],
     trueFalse: [
       { text: "The writer keeps the bottle on the desk.", answer: true },
@@ -179,9 +179,9 @@ export const CHAPTERS = [
     story:
       "At noon, I feel hungry, so I get ready to make a healthy lunch. I do not want fast food today, so I choose fresh and simple things. I cook some rice and add many colourful vegetables to my plate. I put a piece of chicken and some green salad next to the rice. The plate looks bright and full, like a small garden of food. I sit down at the table and eat slowly without hurrying. I drink water with my meal and take small, happy bites. The food tastes fresh, and my stomach feels full but not heavy. After lunch, I do not feel tired or sleepy like I do with fast food. When I finish, I feel good because a healthy lunch gives my body real energy.",
     questions: [
-      "What does the writer add to the rice?",
-      "What does the writer drink with the meal?",
-      "How does the writer feel after eating a healthy lunch?",
+      { text: "What does the writer add to the rice?", answer: "Colourful vegetables, chicken, and green salad." },
+      { text: "What does the writer drink with the meal?", answer: "Water." },
+      { text: "How does the writer feel after eating a healthy lunch?", answer: "Not tired or sleepy -- full of real energy." },
     ],
     trueFalse: [
       { text: "The writer makes a healthy lunch with rice and vegetables.", answer: true },
@@ -217,9 +217,9 @@ export const CHAPTERS = [
     story:
       "In the middle of the afternoon, I feel a little tired at my desk. Instead of drinking more coffee, I decide to take a short rest. I close my eyes and sit quietly in my chair for a few minutes. I take slow, deep breaths and let my shoulders relax down. I think about calm things, like the park, the sky, and the sea. My busy mind becomes quiet, and my body feels softer and lighter. After five minutes, I open my eyes and stretch my arms up high. I drink a little water and stand up to walk around the room. This short rest helps me feel fresh without any sugar or coffee. When I go back to work, I feel calm, awake, and ready to continue.",
     questions: [
-      "What does the writer feel in the afternoon?",
-      "What does the writer do instead of drinking more coffee?",
-      "How does the writer feel when going back to work?",
+      { text: "What does the writer feel in the afternoon?", answer: "A little tired." },
+      { text: "What does the writer do instead of drinking more coffee?", answer: "Takes a short rest." },
+      { text: "How does the writer feel when going back to work?", answer: "Calm, awake, and ready to continue." },
     ],
     trueFalse: [
       { text: "The writer takes a short rest in the afternoon.", answer: true },
@@ -255,9 +255,9 @@ export const CHAPTERS = [
     story:
       "After work, I want to move my body with some easy exercise. I put on comfortable clothes and a good pair of shoes. My friend Maya comes to my apartment, and we walk to the park together. First, we stretch our arms, legs, and backs for a few minutes. Then we walk fast around the park two or three times. After that, we do some simple exercises, like standing up and sitting down. We do not do anything too hard, so we can talk and laugh while we move. Maya says, “Easy exercise every day is better than hard exercise one time.” My body feels warm, and my heart beats in a happy, strong way. When we finish, I feel proud because I take care of my body after a long day.",
     questions: [
-      "Who comes to do exercise with the writer?",
-      "What do they do first at the park?",
-      "What does Maya say about easy exercise?",
+      { text: "Who comes to do exercise with the writer?", answer: "Their friend Maya." },
+      { text: "What do they do first at the park?", answer: "Stretch their arms, legs, and backs." },
+      { text: "What does Maya say about easy exercise?", answer: "Easy exercise every day is better than hard exercise one time." },
     ],
     trueFalse: [
       { text: "Maya does easy exercise with the writer.", answer: true },
@@ -293,9 +293,9 @@ export const CHAPTERS = [
     story:
       "In the evening, I want to relax and let go of the busy day. I turn off my computer and put my phone in another room. I make a warm cup of tea and sit near the window with a soft light. Outside, the sky is dark, and the street is quiet and calm. I read a few pages of a simple book that I really enjoy. Then I write three good things about my day in a small notebook. This helps my mind feel thankful and peaceful before bed. I do not look at bright screens, so my eyes and mind can rest. I take a warm shower and put on clean, comfortable clothes. When I sit quietly in my calm home, I feel relaxed and ready to sleep.",
     questions: [
-      "Where does the writer put the phone in the evening?",
-      "What does the writer write in the small notebook?",
-      "How does the writer feel at the end of the evening?",
+      { text: "Where does the writer put the phone in the evening?", answer: "In another room." },
+      { text: "What does the writer write in the small notebook?", answer: "Three good things about the day." },
+      { text: "How does the writer feel at the end of the evening?", answer: "Relaxed and ready to sleep." },
     ],
     trueFalse: [
       { text: "The writer makes a warm cup of tea in the evening.", answer: true },
@@ -331,9 +331,9 @@ export const CHAPTERS = [
     story:
       "At night, I want to sleep well so my body can rest and heal. I go to bed at the same time every night to help my body know the routine. Before sleep, I make my room dark, quiet, and cool. I put my phone far from my bed so bright lights do not wake me. I lie down, close my eyes, and take a few slow, deep breaths. I think about calm and happy things, not about my problems or my work. Soon my body feels heavy, and my mind becomes soft and quiet. I fall asleep easily and sleep for many peaceful hours. In the morning, I wake up without a tired, heavy feeling. When I wake up, I feel fresh and thankful because good sleep gives me new energy.",
     questions: [
-      "What does the writer do before sleep to help the body?",
-      "Where does the writer put the phone at night?",
-      "How does the writer feel in the morning after good sleep?",
+      { text: "What does the writer do before sleep to help the body?", answer: "Goes to bed at the same time every night." },
+      { text: "Where does the writer put the phone at night?", answer: "Far from the bed." },
+      { text: "How does the writer feel in the morning after good sleep?", answer: "Fresh and thankful." },
     ],
     trueFalse: [
       { text: "The writer goes to bed at the same time every night.", answer: true },
@@ -369,9 +369,9 @@ export const CHAPTERS = [
     story:
       "After one month of my new routine, I sit and think about how I feel. In the past, I felt tired, heavy, and stressed almost every day. Now I wake up early, drink water, and eat healthy food each morning. I walk, stretch, and do easy exercise with my friend Maya. I rest in the afternoon and stay calm in the evening with tea and a book. I sleep well at night, so my body feels strong and fresh. My clothes fit better, my skin looks brighter, and my mind feels clear. My friends say, “You look happy and full of energy these days.” I smile because these small, simple habits change my whole life. As I look at my healthy routine, I feel proud and thankful because I take good care of myself.",
     questions: [
-      "How did the writer feel in the past?",
-      "What do the writer's friends say now?",
-      "How does the writer feel about the healthy routine at the end?",
+      { text: "How did the writer feel in the past?", answer: "Tired, heavy, and stressed almost every day." },
+      { text: "What do the writer's friends say now?", answer: "You look happy and full of energy these days." },
+      { text: "How does the writer feel about the healthy routine at the end?", answer: "Proud and thankful." },
     ],
     trueFalse: [
       { text: "In the past, the writer felt tired and stressed.", answer: true },

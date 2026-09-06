@@ -26,9 +26,9 @@ export const CHAPTERS = [
     story:
       "After school, I walk to the big gym next to the playground. The doors are open, and I can hear a ball bouncing on the floor. Inside the gym, the lights are bright, and a tall hoop hangs above the shiny court. A teacher in a red shirt holds a basketball and looks at the students. He smiles at me and says, “Welcome to the basketball club, Nina.” I feel my hands shake a little, but I smile back at him. He gives me a ball and shows me how to hold it with both hands. Other students bounce their balls on the floor and laugh together. When I try to bounce my ball, it goes a little to the side, but no one laughs at me. I take a deep breath, try again, and this time the ball comes back to my hand, so I feel scared and excited, but glad I came to the gym.",
     questions: [
-      "Where does Nina go after school?",
-      "What does the teacher in the red shirt say to Nina?",
-      "What happens when Nina tries to bounce the ball again?",
+      { text: "Where does Nina go after school?", answer: "The big gym next to the playground." },
+      { text: "What does the teacher in the red shirt say to Nina?", answer: "Welcome to the basketball club, Nina." },
+      { text: "What happens when Nina tries to bounce the ball again?", answer: "It comes back to her hand." },
     ],
     trueFalse: [
       { text: "Nina goes to the gym next to the playground.", answer: true },
@@ -58,9 +58,9 @@ export const CHAPTERS = [
     story:
       "The next afternoon, I come to the gym a little early and sit on the wooden bench. The coach in the red shirt walks over to me and sits down beside me. He says, “My name is Coach Ben, and I am happy you joined the team.” He asks me my name, my class, and if I like sports. I tell him I am Nina, I am in class seven, and I want to learn basketball. Coach Ben smiles and says, “Everyone starts as a beginner, so do not worry.” Then two girls run over and say, “Hi, I'm Mia,” and “I'm Jay, welcome to the team.” We all shake hands, and the gym feels warmer and friendlier to me. When practice starts, I stand with Mia and Jay in the line. In that moment, I feel calm because now I know my coach and two new friends.",
     questions: [
-      "What is the coach's name?",
-      "What class is Nina in?",
-      "Who are the two girls that say hello to Nina?",
+      { text: "What is the coach's name?", answer: "Coach Ben." },
+      { text: "What class is Nina in?", answer: "Class seven." },
+      { text: "Who are the two girls that say hello to Nina?", answer: "Mia and Jay." },
     ],
     trueFalse: [
       { text: "Nina comes to the gym late.", answer: false },
@@ -96,9 +96,9 @@ export const CHAPTERS = [
     story:
       "Today, Coach Ben says we will learn how to bounce and dribble the ball. He stands in the middle of the court and shows us slowly with his own ball. “Push the ball down with your fingers, not your whole hand,” he tells us. I try to bounce the ball, but at first it jumps too high and goes away from me. Mia laughs kindly and says, “Keep your hand soft, like this.” I copy her, and slowly my ball stays close to my body. Then Coach Ben asks us to walk and bounce the ball at the same time. My first steps are slow, but I do not drop the ball this time. When I dribble all the way to the wall and back, Coach Ben claps for me. In that moment, I feel proud because I can bounce and walk with the ball.",
     questions: [
-      "What does Coach Ben teach the team today?",
-      "What does Mia tell Nina about her hand?",
-      "What does Coach Ben do when Nina dribbles to the wall and back?",
+      { text: "What does Coach Ben teach the team today?", answer: "How to bounce and dribble the ball." },
+      { text: "What does Mia tell Nina about her hand?", answer: "To keep it soft." },
+      { text: "What does Coach Ben do when Nina dribbles to the wall and back?", answer: "He claps for her." },
     ],
     trueFalse: [
       { text: "The team learns to bounce and dribble the ball.", answer: true },
@@ -134,9 +134,9 @@ export const CHAPTERS = [
     story:
       "On Thursday, Coach Ben says it is time to shoot the ball at the hoop. He stands under the tall hoop and shows us how to hold the ball and look up. “Bend your knees, then push the ball up softly,” he tells the team. My first shot is too weak, and the ball does not reach the hoop. Jay stands next to me and says, “Try again, and use your legs, not only your arms.” I bend my knees, look at the hoop, and push the ball up with both hands. This time the ball flies higher and touches the ring, but it does not go in. On my next try, the ball drops through the hoop, and I hear a soft sound. My friends cheer for me, and I feel excited because I made my first basket today.",
     questions: [
-      "What does Coach Ben teach on Thursday?",
-      "What does Jay tell Nina to use?",
-      "What happens on Nina's next try after touching the ring?",
+      { text: "What does Coach Ben teach on Thursday?", answer: "Shooting the ball at the hoop." },
+      { text: "What does Jay tell Nina to use?", answer: "Her legs, not only her arms." },
+      { text: "What happens on Nina's next try after touching the ring?", answer: "The ball drops through the hoop." },
     ],
     trueFalse: [
       { text: "Nina's first shot goes into the hoop.", answer: false },
@@ -169,9 +169,9 @@ export const CHAPTERS = [
     story:
       "During practice, we play a small game with two teams on the court. I run fast to catch the ball, but I do not look down at my feet. Suddenly, I slip on the shiny floor and fall on my side. For a moment, my face feels hot because everyone can see me. Coach Ben runs to me quickly and asks, “Nina, are you okay?” I say yes, and Mia gives me her hand and helps me stand up. Coach Ben tells the team, “Falling is normal, so do not be afraid to try.” I brush the dust from my shorts and take a deep breath. Then I go back into the game and pass the ball to Jay. In that moment, I feel brave because a small mistake did not stop me.",
     questions: [
-      "What does Nina forget to look at when she runs?",
-      "Who helps Nina stand up?",
-      "What does Coach Ben say about falling?",
+      { text: "What does Nina forget to look at when she runs?", answer: "Her feet." },
+      { text: "Who helps Nina stand up?", answer: "Mia." },
+      { text: "What does Coach Ben say about falling?", answer: "That falling is normal, so do not be afraid to try." },
     ],
     trueFalse: [
       { text: "Nina slips and falls on the court.", answer: true },
@@ -204,9 +204,9 @@ export const CHAPTERS = [
     story:
       "After hard practice, we sit on the bench and drink water during our break. Mia opens her bag and shares some small crackers with the team. Jay talks about her favourite player and says, “She can jump so high and shoot from far away.” I tell them I do not know many players yet, but I want to learn more. Mia says, “We can watch a short game on my phone after school.” We laugh and talk about our own dreams in basketball. Coach Ben walks past us and says, “Good rest, team, you play well today.” The break feels short but happy, like a small party on the bench. When Coach Ben blows his whistle, we stand up and get ready again. In that moment, I feel warm inside because these teammates feel like real friends.",
     questions: [
-      "What does Mia share with the team?",
-      "What does Jay talk about during the break?",
-      "What does Coach Ben say when he walks past them?",
+      { text: "What does Mia share with the team?", answer: "Small crackers." },
+      { text: "What does Jay talk about during the break?", answer: "Her favorite player." },
+      { text: "What does Coach Ben say when he walks past them?", answer: "Good rest, team, you play well today." },
     ],
     trueFalse: [
       { text: "The team drinks water during the break.", answer: true },
@@ -242,9 +242,9 @@ export const CHAPTERS = [
     story:
       "On Friday, I stay in the gym for extra practice with Mia and Jay. The other students go home, so the big gym feels quiet and calm. We take three balls and stand in front of the tall hoop together. Mia says, “Let's count how many baskets we can make in five minutes.” I dribble, bend my knees, and shoot the ball as many times as I can. At first, I miss more than I make, but slowly my hands feel stronger. Jay counts my baskets out loud and says, “Nina, you are getting better every day.” We help each other pick up the balls and try again and again. When the extra practice ends, my arms are tired, but my heart is happy. In that moment, I feel proud because I work hard even when no one asks me to.",
     questions: [
-      "Who stays for extra practice with Nina?",
-      "What does Mia want the friends to count?",
-      "What does Jay say about Nina?",
+      { text: "Who stays for extra practice with Nina?", answer: "Mia and Jay." },
+      { text: "What does Mia want the friends to count?", answer: "How many baskets they can make in five minutes." },
+      { text: "What does Jay say about Nina?", answer: "That she is getting better every day." },
     ],
     trueFalse: [
       { text: "The gym is loud and full during extra practice.", answer: false },
@@ -277,9 +277,9 @@ export const CHAPTERS = [
     story:
       "Next week, our team will play a mini game against another class in the gym. Coach Ben tells us to wear our team shirts and come early on game day. He shows us a simple plan on a small white board with arrows and circles. “Pass the ball, help each other, and do not be afraid,” he says to us. We practise passing and running in the right places on the court. Mia and I practise a quick pass near the hoop many times. Jay says, “If we play as one team, we can do our best.” After practice, we put our hands together in the middle and say, “Team!” I go home and put my clean team shirt on my chair for the game. In that moment, I feel nervous but ready because our team is prepared together.",
     questions: [
-      "Who will the team play against next week?",
-      "What does Coach Ben show on the small white board?",
-      "What do the players say when they put their hands together?",
+      { text: "Who will the team play against next week?", answer: "Another class." },
+      { text: "What does Coach Ben show on the small white board?", answer: "A simple plan with arrows and circles." },
+      { text: "What do the players say when they put their hands together?", answer: "Team!" },
     ],
     trueFalse: [
       { text: "The mini game is against another class.", answer: true },
@@ -312,9 +312,9 @@ export const CHAPTERS = [
     story:
       "Today is game day, and the gym is full of students who come to watch. My heart beats fast when I hear the loud voices and see the bright lights. Coach Ben says, “Just do your best, and remember to help your team.” When the game starts, I run, pass, and try to stay close to Mia and Jay. In the first half, the other class scores two baskets, and we feel a little worried. But Jay catches the ball and passes it to me near the hoop. I bend my knees, look up, and shoot the ball into the basket. The whole gym cheers, and my teammates hug me with big smiles. When the game ends, we do not win, but we play well and never give up. In that moment, I feel proud because I scored in my very first game.",
     questions: [
-      "Why is the gym full today?",
-      "Who passes the ball to Nina near the hoop?",
-      "Does the team win the game?",
+      { text: "Why is the gym full today?", answer: "Because it is game day and students come to watch." },
+      { text: "Who passes the ball to Nina near the hoop?", answer: "Jay." },
+      { text: "Does the team win the game?", answer: "No, they do not win, but they play well." },
     ],
     trueFalse: [
       { text: "Many students come to watch the game.", answer: true },
@@ -350,9 +350,9 @@ export const CHAPTERS = [
     story:
       "On Monday, I walk into the gym, and it does not feel new or scary anymore. Mia waves at me, Jay throws me a ball, and Coach Ben smiles at the door. We start our practice, and my hands move with the ball more easily now. I can bounce, dribble, pass, and shoot, and I am not afraid to try. During a short break, Coach Ben says, “Nina, you are a real part of this team now.” I look around at the tall hoop, the shiny court, and my kind friends. I remember my first day, when my hands shook and the ball went to the side. Now I feel strong, calm, and happy in this same gym. At the end of practice, we put our hands together and shout, “Team!” In that moment, I feel proud because the basketball team truly feels like my place.",
     questions: [
-      "How does the gym feel to Nina on Monday?",
-      "What does Coach Ben say to Nina during the break?",
-      "What does Nina remember from her first day?",
+      { text: "How does the gym feel to Nina on Monday?", answer: "Not new or scary anymore." },
+      { text: "What does Coach Ben say to Nina during the break?", answer: "You are a real part of this team now." },
+      { text: "What does Nina remember from her first day?", answer: "When her hands shook and the ball went to the side." },
     ],
     trueFalse: [
       { text: "The gym feels new and scary to Nina now.", answer: false },

@@ -26,9 +26,9 @@ export const CHAPTERS = [
     story:
       "Every Saturday morning, I go to the big swimming pool in the city. Today is my first swimming lesson, and my stomach feels a little tight. I stand near the water and watch other people swim from one side to the other. Some children wear bright goggles and splash happily in the shallow end. The swim coach, Ms. Lee, walks over and smiles at me. She says, “Hello, Sam, welcome to the class.” I say hello back and hold my towel close to my body. Ms. Lee gives me a blue swim cap and tells me to put it on my head. The water looks cold and deep, but the coach stands near me and waits. When I slowly put my feet in the pool, the water feels cool on my skin. I still feel a little afraid, but I am proud that I took my first step into the pool.",
     questions: [
-      "When does Sam go to the swimming pool?",
-      "Who is Ms. Lee?",
-      "What does Sam do at the end of the story?",
+      { text: "When does Sam go to the swimming pool?", answer: "Every Saturday morning." },
+      { text: "Who is Ms. Lee?", answer: "The swim coach." },
+      { text: "What does Sam do at the end of the story?", answer: "He slowly puts his feet in the pool." },
     ],
     trueFalse: [
       { text: "Today is Sam's first swimming lesson.", answer: true },
@@ -64,9 +64,9 @@ export const CHAPTERS = [
     story:
       "On my second Saturday, I arrive early and sit on a bench near the pool. Ms. Lee comes to me and says, “Good morning, Sam, are you ready to learn today?” She calls all the students together and asks us to sit in a row. One by one, we say our names, our ages, and if we can swim a little. A boy next to me says, “Hi, I am Ravi,” and a girl says, “I am Tina.” Ms. Lee tells us that today we will only learn in the shallow water. “Do not worry,” she says, “everyone learns at their own speed.” We all put on our swim caps and goggles and walk to the edge together. When I look at my new classmates, I do not feel so alone anymore. In that moment, I feel calm because now I know my coach and my class.",
     questions: [
-      "What does Ms. Lee ask the students to do first?",
-      "What are the names of the two classmates Sam meets?",
-      "Where will the class learn today?",
+      { text: "What does Ms. Lee ask the students to do first?", answer: "Sit in a row and say their names, ages, and if they can swim a little." },
+      { text: "What are the names of the two classmates Sam meets?", answer: "Ravi and Tina." },
+      { text: "Where will the class learn today?", answer: "In the shallow water." },
     ],
     trueFalse: [
       { text: "Sam arrives early and sits on a bench.", answer: true },
@@ -99,9 +99,9 @@ export const CHAPTERS = [
     story:
       "Today, Ms. Lee says we will learn how to kick our legs and move our arms. She stands in the shallow water and shows us slowly with her own body. “Kick from your hips, and keep your legs long and straight,” she tells us. I hold the edge of the pool and kick my legs behind me in the water. At first, my kicks make big splashes, but the coach says that is okay. Then Ms. Lee shows us how to move our arms in slow circles. Ravi kicks fast and laughs when the water jumps up around him. I try to kick and move my arms at the same time, but it is a little hard. Slowly, my body starts to feel the rhythm of kick and pull. In that moment, I feel happy because my arms and legs work together in the water.",
     questions: [
-      "What does Ms. Lee teach the class today?",
-      "What does Sam hold while he kicks his legs?",
-      "How does Sam feel at the end?",
+      { text: "What does Ms. Lee teach the class today?", answer: "How to kick their legs and move their arms." },
+      { text: "What does Sam hold while he kicks his legs?", answer: "The edge of the pool." },
+      { text: "How does Sam feel at the end?", answer: "Happy." },
     ],
     trueFalse: [
       { text: "The class learns to kick and move their arms.", answer: true },
@@ -134,9 +134,9 @@ export const CHAPTERS = [
     story:
       "On the next Saturday, we practise moving across the shallow water alone. Ms. Lee stands in the middle of the pool and watches every student. “Push off the wall, kick your legs, and glide like a fish,” she says. I take a deep breath, push off the wall, and float on top of the water. For a few seconds, I move forward without holding the edge. My face is in the water, so I lift my head to breathe and then look down again. Tina swims next to me and gives me a thumbs-up under the water. I reach the other side of the shallow area and stand up with a big smile. Ms. Lee claps and says, “Very good, Sam, you can move on your own now.” In that moment, I feel proud because I swim a short way without any help.",
     questions: [
-      "What does Ms. Lee tell the students to do?",
-      "What does Sam do to breathe?",
-      "What does Ms. Lee say when Sam reaches the other side?",
+      { text: "What does Ms. Lee tell the students to do?", answer: "Push off the wall, kick their legs, and glide like a fish." },
+      { text: "What does Sam do to breathe?", answer: "He lifts his head out of the water." },
+      { text: "What does Ms. Lee say when Sam reaches the other side?", answer: "Very good, Sam, you can move on your own now." },
     ],
     trueFalse: [
       { text: "Sam practises in the shallow water.", answer: true },
@@ -169,9 +169,9 @@ export const CHAPTERS = [
     story:
       "Today, Ms. Lee points to the other end of the pool, where the water is deep. My heart beats fast because I know I cannot touch the floor there. She says, “Soon you will learn to swim in the deep water too.” I look at the dark blue water and hold the edge with both hands. Ravi says he is a little scared too, so I feel better because I am not alone. Ms. Lee tells us we will only look at the deep end today, not swim in it. We walk slowly along the edge and watch the deep water below us. I take a deep breath and tell myself that I can be brave step by step. Ms. Lee smiles and says, “Being nervous is normal, and I will help you.” In that moment, I feel calmer because my coach understands my fear.",
     questions: [
-      "Why does Sam's heart beat fast?",
-      "Who says he is a little scared too?",
-      "What does Ms. Lee say about being nervous?",
+      { text: "Why does Sam's heart beat fast?", answer: "Because he knows he cannot touch the floor in the deep water." },
+      { text: "Who says he is a little scared too?", answer: "Ravi." },
+      { text: "What does Ms. Lee say about being nervous?", answer: "That it is normal, and she will help him." },
     ],
     trueFalse: [
       { text: "The deep water is at the other end of the pool.", answer: true },
@@ -204,9 +204,9 @@ export const CHAPTERS = [
     story:
       "The next lesson, Ms. Lee stands in the deeper water and holds out her hands. “I will hold you, Sam, so you are safe,” she says with a warm smile. I hold her hands and slowly move to where my feet cannot touch the floor. At first, I feel scared, but Ms. Lee keeps me safe on top of the water. Ravi and Tina swim near me and say, “You can do it, Sam!” I kick my legs and move my arms while the coach holds me lightly. Then Ms. Lee lets go for two seconds, and I float on my own. My friends cheer, and I put my feet back on the shallow floor with a smile. My body still shakes a little, but my heart feels strong. In that moment, I feel thankful because my coach and friends help me be brave.",
     questions: [
-      "What does Ms. Lee do to keep Sam safe?",
-      "What do Ravi and Tina say to Sam?",
-      "What happens when Ms. Lee lets go for two seconds?",
+      { text: "What does Ms. Lee do to keep Sam safe?", answer: "She holds his hands." },
+      { text: "What do Ravi and Tina say to Sam?", answer: "You can do it, Sam!" },
+      { text: "What happens when Ms. Lee lets go for two seconds?", answer: "Sam floats on his own." },
     ],
     trueFalse: [
       { text: "Ms. Lee holds Sam's hands in the deeper water.", answer: true },
@@ -239,9 +239,9 @@ export const CHAPTERS = [
     story:
       "Today, Ms. Lee says, “Sam, I think you are ready to swim one full length.” My heart jumps, but this time I feel more excited than afraid. I stand at the shallow end and look all the way to the other side. Ms. Lee walks along the edge next to me so I am never alone. I push off the wall, kick my legs, and move my arms in a steady rhythm. I breathe to the side, look down, and keep my body long and straight. Halfway across, my arms feel tired, but I tell myself, “Keep going, Sam.” Slowly, I reach the other wall and touch it with my hand. Ravi, Tina, and Ms. Lee all cheer loudly for me. In that moment, I feel amazing because I swim the whole length of the pool for the first time.",
     questions: [
-      "What does Ms. Lee think Sam is ready to do?",
-      "Who walks along the edge next to Sam?",
-      "What does Sam tell himself halfway across?",
+      { text: "What does Ms. Lee think Sam is ready to do?", answer: "Swim one full length of the pool." },
+      { text: "Who walks along the edge next to Sam?", answer: "Ms. Lee." },
+      { text: "What does Sam tell himself halfway across?", answer: "Keep going, Sam." },
     ],
     trueFalse: [
       { text: "Sam swims one full length of the pool.", answer: true },
@@ -274,9 +274,9 @@ export const CHAPTERS = [
     story:
       "Today, Ms. Lee says we will play a fun game in the shallow water. She puts small colourful rings on the floor of the pool. “Take a breath, go under the water, and pick up one ring,” she tells us. I hold my nose, go under the water, and open my eyes behind my goggles. I see a red ring near my feet, so I reach down and grab it quickly. When I come up, I hold the ring high, and my friends laugh and clap. Ravi finds a blue ring, and Tina finds two rings at the same time. We swim, dive, and count our rings together in the warm water. The game makes my swimming feel like play, not hard work. In that moment, I feel joyful because learning to swim can also be so much fun.",
     questions: [
-      "What does Ms. Lee put on the floor of the pool?",
-      "What colour ring does Sam pick up?",
-      "How does Sam feel at the end?",
+      { text: "What does Ms. Lee put on the floor of the pool?", answer: "Small colourful rings." },
+      { text: "What colour ring does Sam pick up?", answer: "Red." },
+      { text: "How does Sam feel at the end?", answer: "Joyful." },
     ],
     trueFalse: [
       { text: "The class plays a game with rings in the water.", answer: true },
@@ -309,9 +309,9 @@ export const CHAPTERS = [
     story:
       "Today is a special “swim day” at the pool, and many families come to watch. Ms. Lee tells us we will each swim one length to show what we can do. My hands feel a little cold, but I remember all my practice. When it is my turn, I stand at the wall and take a slow, deep breath. Ms. Lee says, “You can do it, Sam,” and I push off into the water. I kick, pull, and breathe, and I keep my eyes on the other wall. The people clap softly as I move across the calm blue water. When I touch the far wall, I lift my head and smile with tired arms. Ms. Lee gives me a small paper certificate with my name on it. In that moment, I feel so proud because everyone can see how much I have learned.",
     questions: [
-      "What is special about today at the pool?",
-      "What does Sam do when it is his turn?",
-      "What does Ms. Lee give Sam at the end?",
+      { text: "What is special about today at the pool?", answer: "It is a special swim day and families come to watch." },
+      { text: "What does Sam do when it is his turn?", answer: "He takes a slow, deep breath and pushes off into the water." },
+      { text: "What does Ms. Lee give Sam at the end?", answer: "A small paper certificate with his name on it." },
     ],
     trueFalse: [
       { text: "Many families come to watch the swim day.", answer: true },
@@ -344,9 +344,9 @@ export const CHAPTERS = [
     story:
       "On my last Saturday of the class, I walk to the pool and feel calm and happy. The water does not look cold or scary to me anymore. Ms. Lee smiles and says, “Sam, look how far you have come since your first day.” I put on my cap and goggles and jump gently into the water. I swim to the deep end, float, and come back without any fear. Ravi and Tina swim beside me, and we laugh and race in a friendly way. I remember my first day, when my stomach felt tight and my feet did not want to move. Now I can kick, glide, dive, and swim a full length on my own. Ms. Lee says, “You are a stronger swimmer now, and I am proud of you.” In that moment, I feel wonderful because the pool has become a happy place for me.",
     questions: [
-      "How does the pool look to Sam on his last Saturday?",
-      "What can Sam do now that he could not do at first?",
-      "What does Ms. Lee say to Sam at the end?",
+      { text: "How does the pool look to Sam on his last Saturday?", answer: "Not cold or scary anymore." },
+      { text: "What can Sam do now that he could not do at first?", answer: "Kick, glide, dive, and swim a full length on his own." },
+      { text: "What does Ms. Lee say to Sam at the end?", answer: "You are a stronger swimmer now, and I am proud of you." },
     ],
     trueFalse: [
       { text: "The water looks scary to Sam on his last day.", answer: false },

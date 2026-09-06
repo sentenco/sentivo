@@ -28,9 +28,9 @@ export const CHAPTERS = [
     story:
       "Every weekday, I wake up at six o'clock in the morning. I wash my face, get dressed, and make a cup of coffee in the kitchen. While I eat bread and eggs, I look at my phone and check the time. At seven o'clock, I leave my apartment and walk to the bus stop near my street. The bus is full, but I find a seat by the window and watch the city go by. When I arrive at the office building, I take the lift to the fifth floor. My desk is next to a big window, and my computer is already on. I sit down, put my bag under the desk, and open my email. A coworker smiles at me and says, “Good morning,” and I smile back. As I start my work for the day, I feel calm, awake, and ready for the office.",
     questions: [
-      "What does the writer drink in the kitchen?",
-      "How does the writer go to work?",
-      "What does the writer do when they sit at the desk?",
+      { text: "What does the writer drink in the kitchen?", answer: "A cup of coffee." },
+      { text: "How does the writer go to work?", answer: "By bus." },
+      { text: "What does the writer do when they sit at the desk?", answer: "Puts the bag under the desk and opens email." },
     ],
     trueFalse: [
       { text: "The writer walks to the bus stop near the street.", answer: true },
@@ -66,9 +66,9 @@ export const CHAPTERS = [
     story:
       "On Tuesday, my alarm rings at six o'clock, and I turn it off slowly. I stay in bed for one minute, then I get up and open the curtains. The sky is grey, so I choose a warm jacket for the cool morning. I brush my teeth, wash my face, and put on my clean work clothes. In the kitchen, I make coffee and eat a small bowl of oatmeal with fruit. Before I leave, I check my bag for my phone, my keys, and my office card. I look in the mirror one time and take a deep breath for the day. Then I put on my shoes and lock the apartment door behind me. The hallway is quiet, and I walk down the stairs to the street. As I step outside into the cool air, I feel fresh and ready to go to work.",
     questions: [
-      "What time does the alarm ring?",
-      "What does the writer eat for breakfast?",
-      "What three things does the writer check in the bag?",
+      { text: "What time does the alarm ring?", answer: "Six o'clock." },
+      { text: "What does the writer eat for breakfast?", answer: "A small bowl of oatmeal with fruit." },
+      { text: "What three things does the writer check in the bag?", answer: "Phone, keys, and office card." },
     ],
     trueFalse: [
       { text: "The writer stays in bed for one minute after the alarm.", answer: true },
@@ -104,9 +104,9 @@ export const CHAPTERS = [
     story:
       "Every morning, I walk to the bus stop at the end of my street. Many people wait there, so I stand in line and look at my phone. When the bus comes, the doors open, and I tap my card to pay. The bus is warm, and I find a seat near the middle by the window. I put my bag on my lap and watch the shops and cars go by. Some people read books, and some people listen to music with headphones. At one stop, an old man gets on, so I stand up and give him my seat. He says, “Thank you,” and I smile and hold the bar with my hand. After about twenty minutes, the bus stops near my office building. As I step off the bus, I feel awake and ready to start my work.",
     questions: [
-      "How does the writer pay for the bus?",
-      "Why does the writer stand up on the bus?",
-      "How long is the bus ride?",
+      { text: "How does the writer pay for the bus?", answer: "By tapping a card." },
+      { text: "Why does the writer stand up on the bus?", answer: "To give the seat to an old man." },
+      { text: "How long is the bus ride?", answer: "About twenty minutes." },
     ],
     trueFalse: [
       { text: "The writer taps a card to pay for the bus.", answer: true },
@@ -142,9 +142,9 @@ export const CHAPTERS = [
     story:
       "When I arrive at the office, I say good morning to the people near the door. I walk to my desk, sit down, and turn on my computer screen. First, I open my email and read the new messages from last night. My manager, Ms. Reyes, sends a short message about our work for today. I write a small list of my tasks on a yellow paper note. Then I make a cup of tea in the small office kitchen and come back to my desk. My coworker Dan sits next to me and asks, “How are you today?” I say, “I am good, thank you,” and we both start our work. The office is quiet, and I can hear soft sounds of keyboards. As I begin my first task, I feel focused and ready for a busy day.",
     questions: [
-      "What does the writer do first at the desk?",
-      "Who sends a message about the work for today?",
-      "Where does the writer make a cup of tea?",
+      { text: "What does the writer do first at the desk?", answer: "Opens email and reads new messages." },
+      { text: "Who sends a message about the work for today?", answer: "Ms. Reyes, the manager." },
+      { text: "Where does the writer make a cup of tea?", answer: "In the small office kitchen." },
     ],
     trueFalse: [
       { text: "The writer opens email first at the desk.", answer: true },
@@ -180,9 +180,9 @@ export const CHAPTERS = [
     story:
       "This morning, I have three important tasks on my list to finish. First, I write a short report about the work from last week. I type carefully and check my words so there are no mistakes. Then I call a customer to answer a simple question about their order. I speak slowly and clearly, and the customer says, “Thank you for your help.” After the call, I send two emails to my team about our next meeting. Dan asks me a question, and I show him how to open the right file. Time passes quickly, and soon it is almost twelve o'clock. I cross out each task on my note with a happy line. As I finish my morning work, I feel proud because I did everything on my list.",
     questions: [
-      "How many tasks does the writer have on the list?",
-      "What does the writer do first?",
-      "What does the customer say after the phone call?",
+      { text: "How many tasks does the writer have on the list?", answer: "Three." },
+      { text: "What does the writer do first?", answer: "Writes a short report about last week's work." },
+      { text: "What does the customer say after the phone call?", answer: "Thank you for your help." },
     ],
     trueFalse: [
       { text: "The writer has three tasks to finish.", answer: true },
@@ -218,9 +218,9 @@ export const CHAPTERS = [
     story:
       "At twelve o'clock, my manager says, “It is time for lunch, everyone.” I stand up, stretch my arms, and turn off my computer screen. Dan asks me, “Do you want to eat lunch with us today?” I say yes, and we walk together to the small canteen on the ground floor. The room smells of warm rice, soup, and fresh bread. I buy a plate of rice and chicken and a bottle of water. We sit at a table near the window and talk about our weekend plans. Ms. Reyes tells a funny story, and everyone at the table laughs. For thirty minutes, I forget about work and just enjoy the food and my coworkers. As I finish my lunch, I feel relaxed and happy to work with kind people.",
     questions: [
-      "What time is the lunch break?",
-      "Where do they go for lunch?",
-      "What does the writer buy to eat?",
+      { text: "What time is the lunch break?", answer: "Twelve o'clock." },
+      { text: "Where do they go for lunch?", answer: "The small canteen on the ground floor." },
+      { text: "What does the writer buy to eat?", answer: "A plate of rice and chicken and a bottle of water." },
     ],
     trueFalse: [
       { text: "Dan invites the writer to eat lunch with the coworkers.", answer: true },
@@ -256,9 +256,9 @@ export const CHAPTERS = [
     story:
       "After lunch, the afternoon is very busy at the office. My phone rings, my email box is full, and there is a meeting at two o'clock. I take a deep breath and start with the most important task first. In the meeting, my team talks about a new project for next month. Ms. Reyes asks me to share my ideas, so I speak clearly to the group. My hands feel a little nervous, but my coworkers listen and nod their heads. After the meeting, I return to my desk and answer many emails. Dan helps me carry some heavy boxes to the storage room. We work fast, but we still smile and help each other along the way. As the afternoon ends, I feel tired but proud because we finish so much work together.",
     questions: [
-      "What time is the meeting?",
-      "What does Ms. Reyes ask the writer to share?",
-      "Who helps the writer carry the heavy boxes?",
+      { text: "What time is the meeting?", answer: "Two o'clock." },
+      { text: "What does Ms. Reyes ask the writer to share?", answer: "Their ideas." },
+      { text: "Who helps the writer carry the heavy boxes?", answer: "Dan." },
     ],
     trueFalse: [
       { text: "The afternoon is very busy at the office.", answer: true },
@@ -294,9 +294,9 @@ export const CHAPTERS = [
     story:
       "Late in the day, my computer suddenly stops and the screen goes dark. I feel worried because I have important work on the screen. I try to turn it on again, but nothing happens on the black screen. Dan sees my face and asks, “Are you okay? What is the problem?” I tell him my computer is not working, and he comes to help me. Together, we call the office helper, Mr. Tan, from the tech team. Mr. Tan checks the cables and finds one that is loose behind the desk. He plugs it in again, and the screen turns on with all my work still there. I feel so relieved, and I say, “Thank you very much for your help.” As I go back to work, I feel calm because a small problem is easy to fix with help.",
     questions: [
-      "What is the problem with the writer's computer?",
-      "Who does the writer call for help?",
-      "What does Mr. Tan find behind the desk?",
+      { text: "What is the problem with the writer's computer?", answer: "It suddenly stops and the screen goes dark." },
+      { text: "Who does the writer call for help?", answer: "Mr. Tan, from the tech team." },
+      { text: "What does Mr. Tan find behind the desk?", answer: "A loose cable." },
     ],
     trueFalse: [
       { text: "The writer's computer screen goes dark.", answer: true },
@@ -332,9 +332,9 @@ export const CHAPTERS = [
     story:
       "At five o'clock, the workday is almost over, and I check my task list. I am happy because I finished every task on my note today. I save all my files and close the programs on my computer. Then I tidy my desk and put my papers in a neat pile. I say, “Goodbye, see you tomorrow,” to Dan and Ms. Reyes. I put on my jacket, take my bag, and walk to the lift with a smile. Outside, the sky is orange, and the evening air feels cool and fresh. I walk to the bus stop and wait with the other tired workers. On the bus home, I close my eyes for a moment and think about my day. As I ride home, I feel satisfied because I did good work and now I can rest.",
     questions: [
-      "What time is it when the workday is almost over?",
-      "What does the writer do before leaving the desk?",
-      "What colour is the sky outside?",
+      { text: "What time is it when the workday is almost over?", answer: "Five o'clock." },
+      { text: "What does the writer do before leaving the desk?", answer: "Saves all files, closes programs, and tidies the desk." },
+      { text: "What colour is the sky outside?", answer: "Orange." },
     ],
     trueFalse: [
       { text: "The writer finishes every task today.", answer: true },
@@ -370,9 +370,9 @@ export const CHAPTERS = [
     story:
       "On Friday afternoon, I sit at my desk and think about the whole week. On Monday, I felt a little nervous, but now the office feels like home. This week, I wrote reports, answered calls, and joined an important meeting. I helped Dan with his files, and he helped me carry heavy boxes. When my computer had a problem, kind coworkers helped me fix it fast. Ms. Reyes walks to my desk and says, “You did great work this week.” I smile and say, “Thank you, I really enjoy working with this team.” I turn off my computer and say goodbye to everyone for the weekend. Outside, the evening is bright, and I feel light and free. As I walk home, I feel proud and thankful because I had a full and good week at work.",
     questions: [
-      "How did the writer feel on Monday?",
-      "What does Ms. Reyes say on Friday afternoon?",
-      "How does the writer feel as they walk home?",
+      { text: "How did the writer feel on Monday?", answer: "A little nervous." },
+      { text: "What does Ms. Reyes say on Friday afternoon?", answer: "You did great work this week." },
+      { text: "How does the writer feel as they walk home?", answer: "Proud and thankful." },
     ],
     trueFalse: [
       { text: "On Monday, the writer felt a little nervous.", answer: true },

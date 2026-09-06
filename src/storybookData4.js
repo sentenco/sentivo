@@ -27,9 +27,9 @@ export const CHAPTERS = [
     story:
       "After school, I walk to the big field behind the classrooms. The grass is green, and I see some boys and girls passing a football to each other. Our coach, Mr. Cruz, stands near the goal and holds a list of names. He looks at me and says, “Welcome to the school football team, Marco.” My heart jumps because I really love football. Mr. Cruz gives me a blue team shirt with number ten on the back. I touch the shirt and feel the soft, clean cloth in my hands. Some teammates smile at me and say, “Hi, Marco,” so I do not feel alone. I put on the shirt and look at the field around me. In that moment, I feel proud and ready to play for my school team.",
     questions: [
-      "Where does Marco go after school?",
-      "Who is Mr. Cruz?",
-      "What color is Marco's new team shirt?",
+      { text: "Where does Marco go after school?", answer: "The big field behind the classrooms." },
+      { text: "Who is Mr. Cruz?", answer: "The football coach." },
+      { text: "What color is Marco's new team shirt?", answer: "Blue." },
     ],
     trueFalse: [
       { text: "Marco sees boys and girls passing a football on the field.", answer: true },
@@ -65,9 +65,9 @@ export const CHAPTERS = [
     story:
       "The next day, I go to the field again after my last class. This time, I know where to stand, so I feel more relaxed. Mr. Cruz blows his whistle and asks us to make two lines. We start with easy warm-up exercises and then run across the field. My legs feel tired, but I want to do my best. A boy named Luis stands next to me and shows me how to stretch my arms and legs. Then we kick the ball to a partner and count each pass together. I miss the ball one time, but Luis smiles and says, “It's okay, try again.” I kick the next pass better, and the ball goes straight to him. At the end of practice, I feel tired but happy because I finished my first day with the team.",
     questions: [
-      "How does Marco feel at the start of practice?",
-      "What does Luis show Marco?",
-      "How does Marco feel at the end of practice?",
+      { text: "How does Marco feel at the start of practice?", answer: "More relaxed." },
+      { text: "What does Luis show Marco?", answer: "How to stretch his arms and legs." },
+      { text: "How does Marco feel at the end of practice?", answer: "Tired but happy." },
     ],
     trueFalse: [
       { text: "Marco feels more relaxed on the second day.", answer: true },
@@ -103,9 +103,9 @@ export const CHAPTERS = [
     story:
       "On Thursday, our team practises passing the ball in small groups. I stand with Luis, Ana, and Ben near the middle of the field. Mr. Cruz tells us to look up before we kick the ball. At first, I look down too much, and my pass is too short. Ana calls my name and says, “Marco, look at me first.” I try again and kick the ball more carefully this time. The ball rolls across the grass and stops right at Ana's feet. Ben claps his hands and says, “Good pass!” We keep playing for ten more minutes, and I start to feel more confident. When practice ends, I know I am learning something new every day.",
     questions: [
-      "Who is in Marco's small group?",
-      "What does Ana tell Marco to do?",
-      "How does Marco feel when practice ends?",
+      { text: "Who is in Marco's small group?", answer: "Luis, Ana, and Ben." },
+      { text: "What does Ana tell Marco to do?", answer: "Look at her first before kicking." },
+      { text: "How does Marco feel when practice ends?", answer: "More confident." },
     ],
     trueFalse: [
       { text: "Marco practises passing in a small group.", answer: true },
@@ -141,9 +141,9 @@ export const CHAPTERS = [
     story:
       "Friday is a hot day, but our team still practises after school. Mr. Cruz tells us to run from one side of the field to the other side. The sun is bright, and sweat runs down my face. At first, I want to stop because my legs feel heavy. Then I hear Luis say, “Come on, Marco, you can do it!” I take a deep breath and keep running beside him. When we reach the end of the field, I bend down and laugh because I am so tired. Mr. Cruz gives us water and says running makes us stronger players. I drink slowly and feel the cool water in my throat. On my way home, I feel tired, but I also feel stronger than before.",
     questions: [
-      "What does Mr. Cruz tell the team to do?",
-      "Why does Marco want to stop at first?",
-      "How does Marco feel on his way home?",
+      { text: "What does Mr. Cruz tell the team to do?", answer: "Run from one side of the field to the other." },
+      { text: "Why does Marco want to stop at first?", answer: "Because his legs feel heavy." },
+      { text: "How does Marco feel on his way home?", answer: "Tired, but also stronger than before." },
     ],
     trueFalse: [
       { text: "The team practises on a hot day.", answer: true },
@@ -179,9 +179,9 @@ export const CHAPTERS = [
     story:
       "After practice on Monday, Mr. Cruz asks me to stay for a minute. I feel a little nervous because I think I made a mistake. He sits on the bench and tells me to sit beside him. Then he says, “Marco, you work hard, and I can see that.” I look at him and listen very carefully. He tells me my passes are getting better, but I need to talk more with my teammates. I nod and say, “Yes, Coach, I will try.” Mr. Cruz smiles and says good teams always speak to each other on the field. As I walk home, I think about his words again and again. I feel calm because the coach believes I can improve.",
     questions: [
-      "Who asks Marco to stay after practice?",
-      "What does Mr. Cruz say Marco needs to do more?",
-      "How does Marco feel at the end?",
+      { text: "Who asks Marco to stay after practice?", answer: "Mr. Cruz." },
+      { text: "What does Mr. Cruz say Marco needs to do more?", answer: "Talk more with his teammates." },
+      { text: "How does Marco feel at the end?", answer: "Calm." },
     ],
     trueFalse: [
       { text: "Marco thinks he made a mistake at first.", answer: true },
@@ -214,9 +214,9 @@ export const CHAPTERS = [
     story:
       "At break time on Tuesday, I sit under a tree with some teammates near the field. Luis has a sandwich, and Ana drinks water from a blue bottle. Ben talks about his favourite football player and shows us a photo on his phone. Then Ana asks me about my old school and my old team. I tell them I played football in the park with my cousins after class. Luis laughs and says we should all play in the park one day. We talk about football shoes, school homework, and our favourite snacks. The bell rings, but we are still smiling and talking as we stand up. When I walk back to class with them, I feel like I really belong to the team now.",
     questions: [
-      "Where does Marco sit at break time?",
-      "What does Ben show on his phone?",
-      "How does Marco feel when he walks back to class?",
+      { text: "Where does Marco sit at break time?", answer: "Under a tree near the field." },
+      { text: "What does Ben show on his phone?", answer: "A photo of his favorite football player." },
+      { text: "How does Marco feel when he walks back to class?", answer: "Like he really belongs to the team." },
     ],
     trueFalse: [
       { text: "Marco sits with teammates under a tree.", answer: true },
@@ -252,9 +252,9 @@ export const CHAPTERS = [
     story:
       "One afternoon, dark clouds cover the sky before football practice begins. Some students look worried, but Mr. Cruz says we can still train for a short time. Soon, light rain starts to fall on the field. The grass feels wet under my shoes, and the ball moves faster on the ground. At first, I do not like the rain because my shirt feels cold. Then Luis kicks the ball to me, and I pass it back with a smile. Ana laughs when water drops fall on her face, and soon everyone is laughing too. We run, pass, and shout to each other while the rain gets a little stronger. When practice ends, my clothes are wet, but I feel fresh and full of energy. It is not a perfect day, but it becomes one of my favourite practices.",
     questions: [
-      "What covers the sky before practice?",
-      "Why does Marco not like the rain at first?",
-      "How does Marco feel when practice ends?",
+      { text: "What covers the sky before practice?", answer: "Dark clouds." },
+      { text: "Why does Marco not like the rain at first?", answer: "Because his shirt feels cold." },
+      { text: "How does Marco feel when practice ends?", answer: "Fresh and full of energy." },
     ],
     trueFalse: [
       { text: "Mr. Cruz cancels practice right away.", answer: false },
@@ -290,9 +290,9 @@ export const CHAPTERS = [
     story:
       "On Friday, Mr. Cruz tells us we will have a match against another class next week. Everyone on the team becomes excited at once. He says we need to practise carefully and work together. During practice, we pass the ball faster and listen closely to the coach's instructions. I try to speak more on the field, just like Mr. Cruz told me before. When Luis runs to the left, I call his name and pass the ball to him. He scores a goal in practice, and our team cheers loudly. After training, we sit on the grass and talk about the match next week. I feel nervous about the game, but I also feel ready to help my team. For the first time, I can really imagine myself playing in our school match.",
     questions: [
-      "When will the team have a match?",
-      "What does Marco try to do more on the field?",
-      "How does Marco feel about the match?",
+      { text: "When will the team have a match?", answer: "Next week." },
+      { text: "What does Marco try to do more on the field?", answer: "Speak more to his teammates on the field." },
+      { text: "How does Marco feel about the match?", answer: "Nervous but ready." },
     ],
     trueFalse: [
       { text: "The team will play a match next week.", answer: true },
@@ -325,9 +325,9 @@ export const CHAPTERS = [
     story:
       "The day of the match arrives, and I wake up early with a fast heartbeat. At school, I put on my blue team shirt and tie my shoes carefully. Our team meets near the field, and Mr. Cruz tells us to stay calm and play together. Many students stand near the side of the field to watch us. When the whistle blows, the game begins, and I run after the ball with my teammates. In the middle of the match, Luis passes the ball to me, and I send it to Ana on the left side. She kicks it hard, and the ball goes into the goal. Everyone cheers, and I shout with joy. We keep playing until the final whistle, and our team wins by one goal. After the match, I feel tired, excited, and very proud of what we did together.",
     questions: [
-      "How does Marco feel when he wakes up on the day of the match?",
-      "Who scores the goal?",
-      "What is the result of the match?",
+      { text: "How does Marco feel when he wakes up on the day of the match?", answer: "His heart beats fast." },
+      { text: "Who scores the goal?", answer: "Ana." },
+      { text: "What is the result of the match?", answer: "Their team wins by one goal." },
     ],
     trueFalse: [
       { text: "Marco wakes up late on the day of the match.", answer: false },
@@ -363,9 +363,9 @@ export const CHAPTERS = [
     story:
       "On Monday after the match, I walk to school with my football shoes in my bag. The weekend game is over, but I still remember every moment on the field. In class, some students smile at me and say, “Good game, Marco!” At break time, Luis, Ana, and Ben sit with me again under the tree. We talk about the goal, the passes, and the loud cheers from the students. Mr. Cruz walks by and tells us he is proud of our teamwork. I thank him and smile because I know I worked hard for this team. Then I look at my blue shirt folded neatly inside my bag. It is only a shirt, but to me it means friendship, effort, and football. As I walk home after school, I feel happy because I am not only learning to play, I am learning to be part of a team.",
     questions: [
-      "What do some students say to Marco in class?",
-      "Who tells the team he is proud of their teamwork?",
-      "What does the blue shirt mean to Marco?",
+      { text: "What do some students say to Marco in class?", answer: "Good game, Marco!" },
+      { text: "Who tells the team he is proud of their teamwork?", answer: "Mr. Cruz." },
+      { text: "What does the blue shirt mean to Marco?", answer: "Friendship, effort, and football." },
     ],
     trueFalse: [
       { text: "Marco forgets the match very quickly.", answer: false },

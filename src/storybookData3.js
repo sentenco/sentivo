@@ -26,9 +26,9 @@ export const CHAPTERS = [
     story:
       "It is Saturday morning, and I wake up a little late in my room. Sunlight comes through the window and makes the floor warm and bright. My younger brother Marco is already in the kitchen with our mother. I wash my face, fix my bed, and walk out of my room slowly. On the table, I see bread, eggs, and a glass of juice for breakfast. Marco smiles and says, “Good morning, ate Lena!” I sit with my family, eat my breakfast, and feel calm and happy at home.",
     questions: [
-      "What day is it in the story?",
-      "Who is already in the kitchen?",
-      "How does Lena feel at the end?",
+      { text: "What day is it in the story?", answer: "Saturday." },
+      { text: "Who is already in the kitchen?", answer: "Her brother Marco and their mother." },
+      { text: "How does Lena feel at the end?", answer: "Calm and happy." },
     ],
     trueFalse: [
       { text: "It is Saturday morning.", answer: true },
@@ -61,9 +61,9 @@ export const CHAPTERS = [
     story:
       "After breakfast, I hear someone call my name outside the house. I walk to the gate and see my neighbor, Bea, with a small paper bag in her hand. She says her mother made banana bread and wants to share some with us. Marco stands beside me and looks at the bag with big eyes. I laugh and open the gate for Bea. We talk for a few minutes about school and the weekend. When I take the paper bag and thank her, I feel glad to have a kind neighbor.",
     questions: [
-      "Who calls Lena outside the house?",
-      "What is in Bea's paper bag?",
-      "How does Lena feel at the end?",
+      { text: "Who calls Lena outside the house?", answer: "Her neighbor, Bea." },
+      { text: "What is in Bea's paper bag?", answer: "Banana bread." },
+      { text: "How does Lena feel at the end?", answer: "Glad to have a kind neighbor." },
     ],
     trueFalse: [
       { text: "Bea is Lena's neighbor.", answer: true },
@@ -96,9 +96,9 @@ export const CHAPTERS = [
     story:
       "In the afternoon, Marco and I go to the kitchen because we feel hungry. Our mother puts the banana bread on a plate and cuts it into small pieces. The bread smells sweet, and the whole kitchen feels warm. Bea comes in with two glasses of cold water and sits with us at the table. Marco eats quickly and smiles with food on his lips. We laugh, eat our snack, and talk about our favorite foods. When the plates are empty, the kitchen feels full of happy voices.",
     questions: [
-      "Why do Lena and Marco go to the kitchen?",
-      "What does their mother cut into small pieces?",
-      "What do they talk about while eating?",
+      { text: "Why do Lena and Marco go to the kitchen?", answer: "Because they feel hungry." },
+      { text: "What does their mother cut into small pieces?", answer: "The banana bread." },
+      { text: "What do they talk about while eating?", answer: "Their favorite foods." },
     ],
     trueFalse: [
       { text: "Lena and Marco go to the kitchen because they are sleepy.", answer: false },
@@ -134,9 +134,9 @@ export const CHAPTERS = [
     story:
       "Later that day, Marco brings his notebook to the dining table and looks at me. He says, “Ate Lena, can you help me with my homework?” I sit beside him and read the questions slowly. Bea stays with us and checks the spelling on one page. Marco writes the answers with his pencil and asks us small questions. After a few minutes, he finishes the last line and puts down the pencil. He smiles at us, and I feel proud because we help him do his work.",
     questions: [
-      "Who asks for help with homework?",
-      "Where do they sit to do the homework?",
-      "How does Lena feel at the end?",
+      { text: "Who asks for help with homework?", answer: "Marco." },
+      { text: "Where do they sit to do the homework?", answer: "At the dining table." },
+      { text: "How does Lena feel at the end?", answer: "Proud." },
     ],
     trueFalse: [
       { text: "Marco asks Lena to help him.", answer: true },
@@ -169,9 +169,9 @@ export const CHAPTERS = [
     story:
       "On Sunday morning, our cousin Nina comes to visit our house. She lives in another town, so we do not see her every week. Marco runs to the door and says, “Hi, Nina!” with a big smile. Nina brings a small box of cookies for our family. Bea is still at our house, so she meets Nina for the first time. We sit in the living room, talk about school, and drink cold juice together. When Nina laughs at Marco's funny story, the room feels bright and full of life.",
     questions: [
-      "Who visits the house on Sunday morning?",
-      "What does Nina bring for the family?",
-      "Where do they sit and talk?",
+      { text: "Who visits the house on Sunday morning?", answer: "Their cousin Nina." },
+      { text: "What does Nina bring for the family?", answer: "A small box of cookies." },
+      { text: "Where do they sit and talk?", answer: "In the living room." },
     ],
     trueFalse: [
       { text: "Nina lives in the same house as Lena.", answer: false },
@@ -204,9 +204,9 @@ export const CHAPTERS = [
     story:
       "Before lunch, our mother asks us to help clean the living room. Marco picks up the books on the floor and puts them on the shelf. Nina folds a blanket and places it on the sofa. Bea wipes the small table with a cloth and hums a happy song. I fix the pillows and open the window for fresh air. The room looks messy at first, but little by little it becomes clean and bright. When we finish and sit down to look at the room, I feel happy because we did the work together.",
     questions: [
-      "What does their mother ask them to clean?",
-      "What does Marco put on the shelf?",
-      "How does Lena feel when they finish?",
+      { text: "What does their mother ask them to clean?", answer: "The living room." },
+      { text: "What does Marco put on the shelf?", answer: "The books." },
+      { text: "How does Lena feel when they finish?", answer: "Happy." },
     ],
     trueFalse: [
       { text: "They clean the kitchen before lunch.", answer: false },
@@ -239,9 +239,9 @@ export const CHAPTERS = [
     story:
       "In the afternoon, dark clouds cover the sky and the rain starts to fall. We cannot go outside, so Marco brings a board game to the table. Nina reads the game rules, and Bea laughs at the funny pictures on the box. I move my game piece carefully and try to win the first round. Marco claps when he gets a lucky number and jumps in his chair. The rain makes a soft sound on the roof while we play together. When the game ends, I do not feel bored because the rainy afternoon becomes fun.",
     questions: [
-      "Why can they not go outside?",
-      "What does Marco bring to the table?",
-      "How does Lena feel when the game ends?",
+      { text: "Why can they not go outside?", answer: "Because it is raining." },
+      { text: "What does Marco bring to the table?", answer: "A board game." },
+      { text: "How does Lena feel when the game ends?", answer: "Not bored -- the rainy afternoon becomes fun." },
     ],
     trueFalse: [
       { text: "It starts to rain in the afternoon.", answer: true },
@@ -274,9 +274,9 @@ export const CHAPTERS = [
     story:
       "In the evening, our father comes home from work and smiles when he sees everyone together. The table is ready, and the smell of fish, rice, and vegetables fills the room. Marco tells Father about the board game, and Nina talks about her town. Bea thanks our parents for the food and sits quietly beside me. We eat dinner, pass the dishes, and listen to one another. Father says, “It is nice to have a full table tonight.” As I look around at my family and friends, I feel warm inside and very thankful.",
     questions: [
-      "Who comes home in the evening?",
-      "What food smells fill the room?",
-      "How does Lena feel at the end?",
+      { text: "Who comes home in the evening?", answer: "Their father." },
+      { text: "What food smells fill the room?", answer: "Fish, rice, and vegetables." },
+      { text: "How does Lena feel at the end?", answer: "Warm inside and thankful." },
     ],
     trueFalse: [
       { text: "Their father comes home from work.", answer: true },
@@ -309,9 +309,9 @@ export const CHAPTERS = [
     story:
       "That night, the lamp in the living room suddenly stops working. The room becomes darker, and Marco looks worried for a moment. Our father checks the lamp and says it needs a new light bulb. Nina brings a chair, and I hold the small box with the new bulb inside. Bea stands near Marco and tells him it will be okay soon. After a few minutes, the lamp shines again and fills the room with light. We all clap, and I feel glad because the problem is small and easy to fix together.",
     questions: [
-      "What stops working in the living room?",
-      "What does the lamp need?",
-      "How does Lena feel at the end?",
+      { text: "What stops working in the living room?", answer: "The lamp." },
+      { text: "What does the lamp need?", answer: "A new light bulb." },
+      { text: "How does Lena feel at the end?", answer: "Glad." },
     ],
     trueFalse: [
       { text: "The lamp stops working at night.", answer: true },
@@ -347,9 +347,9 @@ export const CHAPTERS = [
     story:
       "On Sunday evening, the house feels quiet after our busy weekend together. Nina gets ready to go home, and Marco gives her a quick hug at the gate. Bea waves goodbye and says she will visit again next weekend. I go back inside and look at the clean living room, the empty plates, and the games on the shelf. The house looks simple, but it feels full of good memories from the weekend. I sit near the window and think about the food, the laughter, and the time with the people around me. As the sun goes down, I feel peaceful because home is warm when love and kindness are inside it.",
     questions: [
-      "Who gets ready to go home on Sunday evening?",
-      "What does Bea say at the gate?",
-      "How does Lena feel at the end?",
+      { text: "Who gets ready to go home on Sunday evening?", answer: "Nina." },
+      { text: "What does Bea say at the gate?", answer: "That she will visit again next weekend." },
+      { text: "How does Lena feel at the end?", answer: "Peaceful." },
     ],
     trueFalse: [
       { text: "Nina stays at the house forever.", answer: false },

@@ -37,9 +37,9 @@ export const CHAPTERS = [
     story:
       "Today is my first morning at this new school. I stand at the school gate and hold my small backpack. A friendly teacher smiles at me and says, “Good morning, welcome!” She walks with me and shows me the way to my new classroom. In the hallway, I see many students talking and laughing, and my heart beats fast. When I walk into the classroom, a boy and a girl look at me and smile. The girl says, “Hi, I’m Sara,” and the boy says, “I’m Ken, nice to meet you.” I take a deep breath and say, “Hello, my name is Leo,” and I feel a little less shy and a little more at home.",
     questions: [
-      "Where does Leo stand at the beginning of the story?",
-      "Who shows Leo the way to his new classroom?",
-      "What are the names of the two classmates Leo meets?",
+      { text: "Where does Leo stand at the beginning of the story?", answer: "At the school gate." },
+      { text: "Who shows Leo the way to his new classroom?", answer: "The teacher." },
+      { text: "What are the names of the two classmates Leo meets?", answer: "Sara and Ken." },
     ],
     trueFalse: [
       { text: "It is Leo’s first morning at this school.", answer: true },
@@ -75,9 +75,9 @@ export const CHAPTERS = [
     story:
       "The next day, I arrive a little early and walk into the classroom slowly. Sara waves at me and points to a desk near the window. “You can sit here, Leo,” she says with a friendly smile. Ken sits in front of me and turns around to show me his notebook. He wrote my name on a small sticker and puts it on my desk. The teacher comes in, looks at me, and says, “Good, you found your seat.” I look at my name on the desk and feel like this place is really for me.",
     questions: [
-      "Where does Sara tell Leo to sit?",
-      "What does Ken put on Leo’s desk?",
-      "What does the teacher say when she sees Leo?",
+      { text: "Where does Sara tell Leo to sit?", answer: "At a desk near the window." },
+      { text: "What does Ken put on Leo’s desk?", answer: "A small sticker with Leo's name." },
+      { text: "What does the teacher say when she sees Leo?", answer: "Good, you found your seat." },
     ],
     trueFalse: [
       { text: "Leo arrives late to the classroom.", answer: false },
@@ -110,9 +110,9 @@ export const CHAPTERS = [
     story:
       "At break time, the teacher says, “You can go outside now,” and the students run to the school yard. Sara and Ken walk with me so I do not feel alone. We stand under a big tree and watch other students play basketball and talk. Ken asks me, “What do you like to do at school?” I tell him I like to draw and sometimes play games on my phone. Sara listens and says, “Maybe we can draw together in art class.” I look around the yard and feel less like a stranger and more like part of the school.",
     questions: [
-      "Where do the students go at break time?",
-      "Why do Sara and Ken walk with Leo?",
-      "What does Leo say he likes to do?",
+      { text: "Where do the students go at break time?", answer: "The school yard." },
+      { text: "Why do Sara and Ken walk with Leo?", answer: "So he does not feel alone." },
+      { text: "What does Leo say he likes to do?", answer: "Draw and sometimes play games on his phone." },
     ],
     trueFalse: [
       { text: "The students stay in the classroom during break.", answer: false },
@@ -145,9 +145,9 @@ export const CHAPTERS = [
     story:
       "At lunchtime, Sara asks, “Leo, do you want to eat in the canteen with us?” I say yes, and we walk to the small canteen at the end of the hall. The room is busy, and I can smell rice, soup, and fried chicken. Ken helps me read the menu on the wall and points to a simple meal. I buy rice and chicken and a bottle of water with my money. We sit together at a table, and Sara tells me about the school clubs. As I eat my warm food and listen to them, I feel comfortable and not nervous anymore.",
     questions: [
-      "Where do they go for lunch?",
-      "Who helps Leo read the menu?",
-      "What does Leo buy to eat?",
+      { text: "Where do they go for lunch?", answer: "The canteen." },
+      { text: "Who helps Leo read the menu?", answer: "Ken." },
+      { text: "What does Leo buy to eat?", answer: "Rice and chicken and a bottle of water." },
     ],
     trueFalse: [
       { text: "Leo eats alone in the classroom.", answer: false },
@@ -180,9 +180,9 @@ export const CHAPTERS = [
     story:
       "One afternoon, after class, I look in my bag and cannot find my blue notebook. I feel worried because my homework and notes are inside it. Sara and Ken stay with me and help me check my desk and chair. We walk back to the hallway and look on the floor near the door. A boy from another class holds up a notebook and asks, “Is this yours?” I see my name on the cover and say, “Yes, thank you so much!” When I put the notebook safely in my bag, I feel safe again and very thankful for my classmates.",
     questions: [
-      "What item does Leo lose?",
-      "Who helps Leo look for it?",
-      "Who finds the notebook in the hallway?",
+      { text: "What item does Leo lose?", answer: "His blue notebook." },
+      { text: "Who helps Leo look for it?", answer: "Sara and Ken." },
+      { text: "Who finds the notebook in the hallway?", answer: "A boy from another class." },
     ],
     trueFalse: [
       { text: "Leo loses his blue notebook.", answer: true },
@@ -215,9 +215,9 @@ export const CHAPTERS = [
     story:
       "On Wednesday, the teacher tells the class about the English club after school. She says students can play word games, watch short videos, and practice speaking. Sara looks at me and says, “Leo, I think you will like this club.” After classes, Ken and I walk to the small room for the club together. Inside, a few students sit in a circle and smile at us. We play a simple word game and laugh when someone says a funny answer. When the club ends, I feel excited because I now have a place to practise English with new friends.",
     questions: [
-      "What club does the teacher tell the class about?",
-      "What do students do in the English club?",
-      "How does Leo feel when the club ends?",
+      { text: "What club does the teacher tell the class about?", answer: "The English club." },
+      { text: "What do students do in the English club?", answer: "Play word games, watch short videos, and practice speaking." },
+      { text: "How does Leo feel when the club ends?", answer: "Excited." },
     ],
     trueFalse: [
       { text: "The club is about English.", answer: true },
@@ -250,9 +250,9 @@ export const CHAPTERS = [
     story:
       "The next morning, our teacher asks us to open our notebooks for a homework check. My hands feel a little cold, but I know I finished all the exercises last night. She walks around the room and looks at each student’s work. When she stops at my desk, she reads my answers slowly. Then she smiles and says, “Good job, Leo, your homework is clear.” Sara and Ken look at me and give me a small thumbs-up. I close my notebook and feel proud of my work in this new class.",
     questions: [
-      "What does the teacher ask the students to open?",
-      "How does Leo feel before the homework check?",
-      "What does the teacher say to Leo?",
+      { text: "What does the teacher ask the students to open?", answer: "Their notebooks." },
+      { text: "How does Leo feel before the homework check?", answer: "A little cold and nervous." },
+      { text: "What does the teacher say to Leo?", answer: "Good job, Leo, your homework is clear." },
     ],
     trueFalse: [
       { text: "Leo did not do his homework.", answer: false },
@@ -285,9 +285,9 @@ export const CHAPTERS = [
     story:
       "This week, our teacher asks us to make a small poster in groups. She puts me with Sara, Ken, and another boy named Amir. We choose the topic “My School Day” and decide to draw pictures and write short sentences. Sara writes the title at the top of the paper in big letters. Ken draws a classroom, and Amir draws the canteen and the yard. I write simple sentences under each picture. When we finish the poster, I feel happy because our group works well together.",
     questions: [
-      "What does the teacher ask the students to make?",
-      "Who is in Leo’s group?",
-      "What topic does their group choose?",
+      { text: "What does the teacher ask the students to make?", answer: "A small poster in groups." },
+      { text: "Who is in Leo’s group?", answer: "Sara, Ken, and Amir." },
+      { text: "What topic does their group choose?", answer: "My School Day." },
     ],
     trueFalse: [
       { text: "The group topic is “My School Day.”", answer: true },
@@ -320,9 +320,9 @@ export const CHAPTERS = [
     story:
       "Today, each group stands at the front of the classroom to show their poster. My group is a little nervous, but the teacher smiles and tells us to start. Sara holds the poster, and Ken points to the first picture of the classroom. Amir reads one short sentence, and I read the next one slowly. Some students listen and nod when they understand. When we finish, the class claps, and the teacher says, “Well done, that was clear.” I feel nervous and excited at the same time, but I am glad we could speak in front of the class.",
     questions: [
-      "What does each group show at the front of the classroom?",
-      "Who holds the poster in Leo’s group?",
-      "How does Leo feel at the end?",
+      { text: "What does each group show at the front of the classroom?", answer: "Their poster." },
+      { text: "Who holds the poster in Leo’s group?", answer: "Sara." },
+      { text: "How does Leo feel at the end?", answer: "Nervous and excited at the same time." },
     ],
     trueFalse: [
       { text: "The class ignores the group and does not clap.", answer: false },
@@ -355,9 +355,9 @@ export const CHAPTERS = [
     story:
       "On Friday morning, I walk into the classroom and hear my classmates talking and laughing. Sara waves at me, Ken moves his bag so I can sit, and Amir asks, “How are you today, Leo?” The teacher starts the lesson and uses our poster from last week on the board. She says, “This class did good work this month.” I look around and see my name on my desk, my notebook in my bag, and our poster on the wall. At the end of the day, we leave the school together and talk about next week. As I walk home with my friends, this school does not feel new anymore, and this class feels like home to me.",
     questions: [
-      "What does Sara do when Leo enters the classroom?",
-      "What does the teacher use on the board?",
-      "How does the class feel to Leo at the end?",
+      { text: "What does Sara do when Leo enters the classroom?", answer: "She waves at him." },
+      { text: "What does the teacher use on the board?", answer: "Their poster from last week." },
+      { text: "How does the class feel to Leo at the end?", answer: "Like home." },
     ],
     trueFalse: [
       { text: "Leo hears his classmates talking and laughing.", answer: true },
