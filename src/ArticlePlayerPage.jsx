@@ -1,10 +1,24 @@
-import { useState, useRef, useLayoutEffect } from "react";
+import { useState, useRef, useLayoutEffect, useCallback } from "react";
 import { useParams, useSearchParams } from "react-router-dom";
 import { getArticle } from "./articlesData";
 
 const EDITION_KEYS = ["plain", "polished", "precise"];
-const MAX_FONT_SIZE = 18.5;
-const MIN_FONT_SIZE = 12.5;
+
+// The fixed card size the whole layout is built around -- matches the
+// popup window ArticleReader.jsx's openPlayer() opens (width=680,
+// height=960, resizable=no). Kept as constants here (not just in the CSS)
+// because the pagination math needs the real column-viewport pixel width
+// to know how far to translate per page-turn.
+const CARD_WIDTH = 680;
+const CARD_HEIGHT = 960;
+const PAGE_PADDING = 36;
+const COLUMN_GAP = 32;
+// Fixed, not auto-stretched -- column-count would let the browser stretch
+// each column wider to fill leftover space, which then silently drifts out
+// of sync with the page-turn math below (that math assumes this exact
+// width). A plain column-width with no column-count always renders at
+// precisely this size, so the two stay consistent by construction.
+const COLUMN_WIDTH = (CARD_WIDTH - PAGE_PADDING * 2 - COLUMN_GAP) / 2;
 
 function Gloss({ word, pos, def, glossKey, openKey, setOpenKey }) {
   const isOpen = openKey === glossKey;
@@ -89,45 +103,67 @@ export default function ArticlePlayerPage() {
   const editionParam = searchParams.get("edition");
   const [edition, setEdition] = useState(EDITION_KEYS.includes(editionParam) ? editionParam : "polished");
   const [openKey, setOpenKey] = useState(null);
-  const columnsRef = useRef(null);
+  const [page, setPage] = useState(0);
+  const [totalPages, setTotalPages] = useState(1);
+  const viewportRef = useRef(null);
+  const innerRef = useRef(null);
 
-  // Shrinks the article font-size until the text fits within the visible
-  // columns (no horizontal spillover into a hidden extra column), instead
-  // of relying on a single fixed size that might clip longer editions or
-  // overflow shorter windows. Re-runs once the webfont has actually
-  // loaded -- @import fonts swap in asynchronously, and measuring against
-  // the fallback font before that swap can under- or over-fit the text.
+  // Book-style pagination, not shrink-to-fit: the inner content flows into
+  // as many fixed-width columns as it naturally needs (no column-count
+  // limit), and the fixed-size viewport only ever shows exactly 2 of them
+  // at once, sliding over by one full "spread" (2 columns' width) per page
+  // turn. This is what actually guarantees all three of "always 2 columns",
+  // "fixed player size", and "content always fits" at once, regardless of
+  // how long a given edition's text is -- a shrinking font has a floor and
+  // eventually fails for a long article; this can't fail, it just adds
+  // another page. Recomputed whenever the edition changes (different
+  // editions are different lengths) and once webfonts finish loading
+  // (measuring against the fallback font before the swap under-counts).
+  const measure = useCallback(() => {
+    const viewport = viewportRef.current;
+    const inner = innerRef.current;
+    if (!viewport || !inner) return;
+    // The step between pages isn't the viewport width alone -- column-gap
+    // applies uniformly between EVERY pair of adjacent columns, including
+    // the seam between one page's 2nd column and the next page's 1st, so
+    // that seam's gap has to be skipped too or every page after the first
+    // lands slightly short and clips into the next column's text.
+    const pageStep = viewport.clientWidth + COLUMN_GAP;
+    const pages = Math.max(1, Math.ceil((inner.scrollWidth - 1) / pageStep));
+    setTotalPages(pages);
+    setPage((p) => Math.min(p, pages - 1));
+  }, []);
+
   useLayoutEffect(() => {
-    const el = columnsRef.current;
-    if (!el) return;
-    function fit() {
-      el.classList.remove("is-scrollable");
-      el.style.columns = "";
-      let size = MAX_FONT_SIZE;
-      el.style.fontSize = `${size}px`;
-      while (el.scrollWidth > el.clientWidth + 1 && size > MIN_FONT_SIZE) {
-        size -= 0.5;
-        el.style.fontSize = `${size}px`;
-      }
-      // Even the smallest size doesn't fit (an unusually long edition) --
-      // fall back to one scrollable column instead of silently clipping
-      // whatever spilled into a hidden extra column.
-      if (el.scrollWidth > el.clientWidth + 1) {
-        el.classList.add("is-scrollable");
-        el.style.columns = "1";
-      }
-    }
-    fit();
+    setPage(0);
+    measure();
     if (document.fonts && document.fonts.ready) {
-      document.fonts.ready.then(fit);
+      document.fonts.ready.then(measure);
     }
-  });
+  }, [edition, measure]);
+
+  useLayoutEffect(() => {
+    function onResize() { measure(); }
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, [measure]);
+
+  function goToPage(next) {
+    setPage((p) => Math.max(0, Math.min(next, totalPages - 1)));
+  }
+
+  function handleKeyDown(e) {
+    if (e.key === "ArrowRight") goToPage(page + 1);
+    if (e.key === "ArrowLeft") goToPage(page - 1);
+  }
 
   if (!article || !article.ready) {
     return (
       <div className="app-shell">
         <style>{CSS}</style>
-        <div className="app-missing">This article isn't published yet.</div>
+        <div className="app-card">
+          <div className="app-missing">This article isn't published yet.</div>
+        </div>
       </div>
     );
   }
@@ -136,88 +172,114 @@ export default function ArticlePlayerPage() {
   const publishedLabel = article.publishedAt
     ? new Date(`${article.publishedAt}T00:00:00`).toLocaleDateString(undefined, { month: "long", day: "numeric", year: "numeric" })
     : null;
+  const viewportWidth = viewportRef.current?.clientWidth || (CARD_WIDTH - 72);
+  const pageStep = viewportWidth + COLUMN_GAP;
 
   return (
-    <div className="app-shell" onClick={() => setOpenKey(null)}>
+    <div className="app-shell" onClick={() => setOpenKey(null)} onKeyDown={handleKeyDown} tabIndex={-1}>
       <style>{CSS}</style>
 
-      <div className="app-editions">
-        {EDITION_KEYS.map((k) => (
-          <button
-            key={k}
-            type="button"
-            className={`app-ed-btn ${edition === k ? "is-active" : ""}`}
-            onClick={(e) => { e.stopPropagation(); setEdition(k); }}
-          >
-            {article.editions[k].label}
-          </button>
-        ))}
-      </div>
+      <div className="app-card">
+        <div className="app-editions">
+          {EDITION_KEYS.map((k) => (
+            <button
+              key={k}
+              type="button"
+              className={`app-ed-btn ${edition === k ? "is-active" : ""}`}
+              onClick={(e) => { e.stopPropagation(); setEdition(k); }}
+            >
+              {article.editions[k].label}
+            </button>
+          ))}
+        </div>
 
-      <div className="app-page">
-        <div className="app-masthead">
-          <img className="app-masthead-logo" src="/logo-sentivo.png" alt="" />
-          <div className="app-masthead-kicker-row">
-            <span className="app-masthead-rule" />
-            <span className="app-masthead-kicker">The Sentivo</span>
-            <span className="app-masthead-rule" />
+        <div className="app-page">
+          <div className="app-masthead">
+            <img className="app-masthead-logo" src="/logo-sentivo.png" alt="" />
+            <div className="app-masthead-kicker-row">
+              <span className="app-masthead-rule" />
+              <span className="app-masthead-kicker">The Sentivo</span>
+              <span className="app-masthead-rule" />
+            </div>
+            <div className="app-masthead-word">Gazette</div>
+            <div className="app-masthead-underline" />
+            <div className="app-masthead-tagline">News, Ideas &amp; Perspectives</div>
           </div>
-          <div className="app-masthead-word">Gazette</div>
-          <div className="app-masthead-underline" />
-          <div className="app-masthead-tagline">News, Ideas &amp; Perspectives</div>
-        </div>
 
-        <h1 className="app-title"><StyledTitle title={article.title} /></h1>
+          <h1 className="app-title"><StyledTitle title={article.title} /></h1>
 
-        <div className="app-byline">
-          {publishedLabel && (
+          <div className="app-byline">
+            {publishedLabel && (
+              <span className="app-byline-item">
+                <svg className="app-byline-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="5" width="18" height="16" rx="2" /><path d="M8 3v4M16 3v4M3 10h18" /></svg>
+                {publishedLabel}
+              </span>
+            )}
+            {publishedLabel && <span className="app-dot">·</span>}
             <span className="app-byline-item">
-              <svg className="app-byline-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="5" width="18" height="16" rx="2" /><path d="M8 3v4M16 3v4M3 10h18" /></svg>
-              {publishedLabel}
+              <svg className="app-byline-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20.6 12.6 12.9 4.9A2 2 0 0 0 11.5 4.3H5a1 1 0 0 0-1 1v6.5c0 .5.2 1 .6 1.4l7.7 7.7a2 2 0 0 0 2.8 0l5.5-5.5a2 2 0 0 0 0-2.8Z" /><circle cx="8.5" cy="8.5" r="1.2" fill="currentColor" stroke="none" /></svg>
+              {article.topicTitle}
             </span>
-          )}
-          {publishedLabel && <span className="app-dot">·</span>}
-          <span className="app-byline-item">
-            <svg className="app-byline-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20.6 12.6 12.9 4.9A2 2 0 0 0 11.5 4.3H5a1 1 0 0 0-1 1v6.5c0 .5.2 1 .6 1.4l7.7 7.7a2 2 0 0 0 2.8 0l5.5-5.5a2 2 0 0 0 0-2.8Z" /><circle cx="8.5" cy="8.5" r="1.2" fill="currentColor" stroke="none" /></svg>
-            {article.topicTitle}
-          </span>
+          </div>
+
+          <div className="app-columns" ref={viewportRef}>
+            <div
+              className="app-columns-inner"
+              ref={innerRef}
+              style={{ transform: `translateX(-${page * pageStep}px)` }}
+            >
+              {(() => {
+                const firstParaIdx = ed.blocks.findIndex((b) => b.type !== "quote");
+                return ed.blocks.map((block, i) =>
+                  block.type === "quote" ? (
+                    <blockquote key={i} className="app-pullquote">“{block.text}”</blockquote>
+                  ) : i === firstParaIdx ? (
+                    <FirstParagraph
+                      key={i}
+                      parts={block.parts}
+                      blockIdx={i}
+                      openKey={openKey}
+                      setOpenKey={setOpenKey}
+                    />
+                  ) : (
+                    <Paragraph
+                      key={i}
+                      parts={block.parts}
+                      blockIdx={i}
+                      openKey={openKey}
+                      setOpenKey={setOpenKey}
+                    />
+                  )
+                );
+              })()}
+            </div>
+          </div>
+
+          <div className="app-pager">
+            <button
+              type="button"
+              className="app-pager-btn"
+              onClick={(e) => { e.stopPropagation(); goToPage(page - 1); }}
+              disabled={page === 0}
+              aria-label="Previous page"
+            >
+              ‹
+            </button>
+            <span className="app-pager-count">Page {page + 1} of {totalPages}</span>
+            <button
+              type="button"
+              className="app-pager-btn"
+              onClick={(e) => { e.stopPropagation(); goToPage(page + 1); }}
+              disabled={page >= totalPages - 1}
+              aria-label="Next page"
+            >
+              ›
+            </button>
+          </div>
         </div>
 
-        <div className="app-columns" ref={columnsRef}>
-          {(() => {
-            const firstParaIdx = ed.blocks.findIndex((b) => b.type !== "quote");
-            return ed.blocks.map((block, i) =>
-              block.type === "quote" ? (
-                <blockquote key={i} className="app-pullquote">“{block.text}”</blockquote>
-              ) : i === firstParaIdx ? (
-                <FirstParagraph
-                  key={i}
-                  parts={block.parts}
-                  blockIdx={i}
-                  openKey={openKey}
-                  setOpenKey={setOpenKey}
-                />
-              ) : (
-                <Paragraph
-                  key={i}
-                  parts={block.parts}
-                  blockIdx={i}
-                  openKey={openKey}
-                  setOpenKey={setOpenKey}
-                />
-              )
-            );
-          })()}
-        </div>
-
-        <div className="app-footer-mark">
-          <span className="app-masthead-rule" />
-          <img className="app-footer-logo" src="/logo-sentivo.png" alt="" />
-          <span className="app-masthead-rule" />
-        </div>
+        <div className="app-footer">The Sentivo Gazette</div>
       </div>
-
-      <div className="app-footer">The Sentivo Gazette</div>
     </div>
   );
 }
@@ -227,17 +289,31 @@ const CSS = `
 
 .app-shell {
   width: 100%;
-  height: 100vh;
-  overflow: hidden;
-  background: #FFFFFF;
+  min-height: 100vh;
+  overflow: auto;
+  background: #E4DED1;
   color: #171717;
   box-sizing: border-box;
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
 }
 .app-shell * { box-sizing: border-box; }
 
-.app-missing { padding: 60px; text-align: center; font-family: 'Source Serif 4', serif; color: #8A8578; }
+.app-card {
+  width: ${CARD_WIDTH}px;
+  height: ${CARD_HEIGHT}px;
+  flex-shrink: 0;
+  background: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.35);
+}
+
+.app-missing { margin: auto; padding: 60px; text-align: center; font-family: 'Source Serif 4', serif; color: #8A8578; }
 
 .app-editions {
   flex-shrink: 0;
@@ -287,17 +363,15 @@ const CSS = `
   min-height: 0;
   display: flex;
   flex-direction: column;
-  max-width: 1400px;
   width: 100%;
-  margin: 0 auto;
-  padding: 0 40px 14px;
+  padding: 0 ${PAGE_PADDING}px 10px;
   overflow: hidden;
 }
 
 .app-masthead {
   flex-shrink: 0;
   text-align: center;
-  padding: clamp(8px, 1.2vh, 12px) 0 clamp(4px, 0.8vh, 8px);
+  padding: 10px 0 6px;
 }
 .app-masthead-logo { height: 17px; width: auto; display: inline-block; margin-bottom: 4px; }
 .app-masthead-kicker-row { display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 1px; }
@@ -313,14 +387,14 @@ const CSS = `
 .app-masthead-word {
   font-family: 'Playfair Display', serif;
   font-weight: 900;
-  font-size: clamp(20px, 2.6vh, 28px);
+  font-size: 24px;
   letter-spacing: 0.01em;
   text-transform: uppercase;
   color: #1B2A4A;
   line-height: 1;
   margin: 1px 0 5px;
 }
-.app-masthead-underline { width: clamp(80px, 14%, 130px); height: 2px; background: #FF6B4A; margin: 0 auto 5px; }
+.app-masthead-underline { width: 100px; height: 2px; background: #FF6B4A; margin: 0 auto 5px; }
 .app-masthead-tagline {
   font-family: 'Source Serif 4', serif;
   font-weight: 600;
@@ -335,12 +409,12 @@ const CSS = `
   flex-shrink: 0;
   font-family: 'Playfair Display', serif;
   font-weight: 900;
-  font-size: clamp(30px, 4.6vh, 44px);
+  font-size: 32px;
   line-height: 1.14;
   letter-spacing: 0;
   text-align: center;
   text-transform: none;
-  margin: clamp(10px, 1.6vh, 16px) 0 clamp(6px, 1vh, 10px);
+  margin: 12px 0 8px;
 }
 .app-title em { font-style: italic; font-weight: 700; }
 
@@ -350,13 +424,13 @@ const CSS = `
   align-items: center;
   justify-content: center;
   font-family: 'Source Serif 4', serif;
-  font-size: 12.5px;
+  font-size: 12px;
   font-weight: 600;
-  letter-spacing: 0.07em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   color: #8A8578;
   text-align: center;
-  margin: 0 0 clamp(10px, 1.6vh, 16px);
+  margin: 0 0 14px;
 }
 .app-byline-item { display: inline-flex; align-items: center; gap: 5px; }
 .app-byline-icon { width: 13px; height: 13px; flex-shrink: 0; color: #FF6B4A; }
@@ -366,19 +440,23 @@ const CSS = `
   flex: 1;
   min-height: 0;
   overflow: hidden;
+  position: relative;
+}
+.app-columns-inner {
+  height: 100%;
   font-family: 'Source Serif 4', serif;
-  font-size: 18.5px;
-  line-height: 1.52;
+  font-size: 17.5px;
+  line-height: 1.5;
   color: #262626;
-  columns: 260px;
-  column-gap: 36px;
+  column-width: ${COLUMN_WIDTH}px;
+  column-gap: ${COLUMN_GAP}px;
   column-fill: auto;
   column-rule: 1px solid #E2DED5;
   text-align: justify;
-  padding: 0 0 8px;
+  transition: transform 0.32s ease;
+  will-change: transform;
 }
-.app-columns.is-scrollable { overflow-y: auto; overflow-x: hidden; }
-.app-columns p { margin: 0 0 13px; break-inside: avoid; }
+.app-columns-inner p { margin: 0 0 13px; break-inside: avoid; }
 
 .app-first-p::after { content: ""; display: table; clear: both; }
 .app-dropcap {
@@ -388,17 +466,46 @@ const CSS = `
   line-height: 1;
   color: #FFFFFF;
   background: #1B2A4A;
-  width: 46px;
-  height: 46px;
+  width: 44px;
+  height: 44px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 30px;
+  font-size: 29px;
   margin: 3px 10px 2px 0;
 }
 
-.app-footer-mark { flex-shrink: 0; display: flex; align-items: center; justify-content: center; gap: 14px; padding: 8px 0 0; }
-.app-footer-logo { height: 16px; width: auto; }
+.app-pager {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 8px 0 4px;
+}
+.app-pager-btn {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1.5px solid #E2DED5;
+  background: #FFFFFF;
+  color: #1B2A4A;
+  font-size: 16px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.app-pager-btn:disabled { opacity: 0.3; cursor: default; }
+.app-pager-count {
+  font-family: 'Source Serif 4', serif;
+  font-weight: 600;
+  font-size: 11.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #8A8578;
+}
 
 .app-gloss {
   cursor: pointer;
@@ -434,7 +541,7 @@ const CSS = `
   font-family: 'Playfair Display', serif;
   font-style: italic;
   font-weight: 700;
-  font-size: 25px;
+  font-size: 24px;
   line-height: 1.4;
   color: #171717;
   margin: 6px 0 24px;
@@ -452,11 +559,5 @@ const CSS = `
   font-weight: 700;
   letter-spacing: 0.26em;
   text-transform: uppercase;
-}
-
-@media (max-width: 480px) {
-  .app-page { padding: 0 20px 14px; }
-  .app-title { font-size: 28px; }
-  .app-columns { columns: 1; }
 }
 `;
