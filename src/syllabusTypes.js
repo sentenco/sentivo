@@ -11,6 +11,21 @@ import { TEENS_UNITS } from "./teensCurriculumData";
 import { ADULTS_UNITS } from "./adultsCurriculumData";
 import { READY_LESSONS as KIDS_READY_LESSONS } from "./LevelPage";
 import { READY_LESSONS as TRACK_READY_LESSONS } from "./TrackLevelPage";
+import VT_TENSES from "./vtTracks";
+import POS_TOPICS from "./posTracks";
+import SP_LESSONS from "./spTracks";
+import MD_LESSONS from "./mdTracks";
+import CND_LESSONS from "./cndTracks";
+import PV_LESSONS from "./pvTracks";
+import QF_LESSONS from "./qfTracks";
+import NAQ_LESSONS from "./naqTracks";
+import PP_LESSONS from "./ppTracks";
+import CS_LESSONS from "./csTracks";
+import RS_LESSONS from "./rsTracks";
+import RC_LESSONS from "./rcTracks";
+import GI_LESSONS from "./giTracks";
+import PR_LESSONS from "./prTracks";
+import PE_LESSONS from "./peTracks";
 
 export const SYLLABUS_LEVELS = ["A1", "A2", "B1", "B2", "C1", "C2"];
 export const SYLLABUS_AGE_TRACKS = [
@@ -173,10 +188,45 @@ const GRAMMAR_MODULES = [
   { title: "Subject-Verb Agreement", href: "/library/grammar/subject-verb-agreement", tier: "supplementary" },
 ];
 
+// Each Foundation-tier module is actually a multi-lesson hub (a tense, a
+// modal function, a conditional type, etc. per lesson, at /:code under the
+// module's own route) -- a syllabus session naming just the hub ("Verb
+// Tenses") isn't specific enough to teach from and doesn't point anywhere
+// useful. This flattens every module down to its real individual lessons,
+// each with the exact route to open. Verb Tenses and Parts of Speech pair
+// each topic with a Discussion (A) and Test (B) lesson -- the syllabus uses
+// the Discussion lesson, since that's what actually introduces the
+// language point. Modules with no registry here (Conjunctions, Linking
+// Words, Word Order, Subject-Verb Agreement) are already a single specific
+// lesson, so the module entry itself is used unchanged.
+const GRAMMAR_LESSON_POOLS = {
+  "verb-tenses": VT_TENSES.map((t) => ({ title: t.tenseName, href: `/library/grammar/verb-tenses/${t.lessonA.code}` })),
+  "parts-of-speech": POS_TOPICS.map((t) => ({ title: t.topicName, href: `/library/grammar/parts-of-speech/${t.lessonA.code}` })),
+  "sentence-patterns": SP_LESSONS.map((l) => ({ title: l.title, href: `/library/grammar/sentence-patterns/${l.code}` })),
+  "modals": MD_LESSONS.map((l) => ({ title: l.title, href: `/library/grammar/modals/${l.code}` })),
+  "conditionals": CND_LESSONS.map((l) => ({ title: l.title, href: `/library/grammar/conditionals/${l.code}` })),
+  "passive-voice": PV_LESSONS.map((l) => ({ title: l.title, href: `/library/grammar/passive-voice/${l.code}` })),
+  "question-formation": QF_LESSONS.map((l) => ({ title: l.title, href: `/library/grammar/question-formation/${l.code}` })),
+  "nouns-articles-quantifiers": NAQ_LESSONS.map((l) => ({ title: l.title, href: `/library/grammar/nouns-articles-quantifiers/${l.code}` })),
+  "pronouns-possessives": PP_LESSONS.map((l) => ({ title: l.title, href: `/library/grammar/pronouns-possessives/${l.code}` })),
+  "comparatives-superlatives": CS_LESSONS.map((l) => ({ title: l.title, href: `/library/grammar/comparatives-superlatives/${l.code}` })),
+  "reported-speech": RS_LESSONS.map((l) => ({ title: l.title, href: `/library/grammar/reported-speech/${l.code}` })),
+  "relative-clauses": RC_LESSONS.map((l) => ({ title: l.title, href: `/library/grammar/relative-clauses/${l.code}` })),
+  "gerunds-infinitives": GI_LESSONS.map((l) => ({ title: l.title, href: `/library/grammar/gerunds-infinitives/${l.code}` })),
+  "prepositions": PR_LESSONS.map((l) => ({ title: l.title, href: `/library/grammar/prepositions/${l.code}` })),
+  "punctuation-essentials": PE_LESSONS.map((l) => ({ title: l.title, href: `/library/grammar/punctuation-essentials/${l.code}` })),
+};
+
+const GRAMMAR_LESSON_LIST = GRAMMAR_MODULES.flatMap((mod) => {
+  const slug = mod.href.split("/").pop();
+  const pool = GRAMMAR_LESSON_POOLS[slug];
+  return pool && pool.length > 0 ? pool : [{ title: mod.title, href: mod.href }];
+});
+
 function buildGrammarSessions(count, startIndex) {
   const sessions = Array.from({ length: count }, (_, i) => {
-    const mod = GRAMMAR_MODULES[(startIndex + i) % GRAMMAR_MODULES.length];
-    return newSession({ title: mod.title, notes: mod.href, skill: "grammar", source: "grammar" });
+    const item = GRAMMAR_LESSON_LIST[(startIndex + i) % GRAMMAR_LESSON_LIST.length];
+    return newSession({ title: item.title, notes: "", href: item.href, skill: "grammar", source: "grammar" });
   });
   return { sessions, endIndex: startIndex + count };
 }
