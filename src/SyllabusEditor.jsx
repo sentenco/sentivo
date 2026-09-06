@@ -5,10 +5,14 @@ import { useAuth } from "./AuthContext";
 import {
   SYLLABUS_LEVELS,
   SYLLABUS_AGE_TRACKS,
-  SYLLABUS_FOCUS_OPTIONS,
+  SYLLABUS_GOAL_OPTIONS,
+  WEAK_SKILL_OPTIONS,
+  CYCLE_LENGTH,
+  SESSION_DURATION_MIN,
   newSession,
   generateSyllabusSessions,
   offsetsForFollowUp,
+  buildRationale,
   nextLevel,
 } from "./syllabusTypes";
 import ConfirmDialog from "./ConfirmDialog";
@@ -45,23 +49,35 @@ export default function SyllabusEditor() {
   const [ageTrack, setAgeTrack] = useState("kids");
   const [sessions, setSessions] = useState([]);
   const [offsets, setOffsets] = useState({});
+  const [cycleNumber, setCycleNumber] = useState(1);
+  const [previousSyllabusId, setPreviousSyllabusId] = useState(null);
   const [saving, setSaving] = useState(false);
   const [savedAt, setSavedAt] = useState(null);
 
-  const [genCount, setGenCount] = useState(10);
-  const [genFocus, setGenFocus] = useState("balanced");
+  // Student profile -- this is what makes the generated syllabus actually
+  // personalized instead of a generic level-appropriate mix. See
+  // buildRationale() in syllabusTypes.js for how these turn into the
+  // one-line "why" the teacher sees above the session list.
+  const [studentName, setStudentName] = useState("");
+  const [goalKey, setGoalKey] = useState("conversational");
+  const [goalOther, setGoalOther] = useState("");
+  const [weakSkill, setWeakSkill] = useState("");
+  const [interests, setInterests] = useState("");
+  const [studentNotes, setStudentNotes] = useState("");
+
+  const [genCount, setGenCount] = useState(CYCLE_LENGTH);
   const [generating, setGenerating] = useState(false);
-  const [genPanelOpen, setGenPanelOpen] = useState(false);
   const [confirmRegenerate, setConfirmRegenerate] = useState(false);
 
-  const [followUpPanelOpen, setFollowUpPanelOpen] = useState(false);
-  const [followUpLevel, setFollowUpLevel] = useState(level);
-  const [followingUp, setFollowingUp] = useState(false);
+  const [nextCyclePanelOpen, setNextCyclePanelOpen] = useState(false);
+  const [nextCycleLevel, setNextCycleLevel] = useState(level);
+  const [nextCycleWeakSkill, setNextCycleWeakSkill] = useState("");
+  const [startingNextCycle, setStartingNextCycle] = useState(false);
 
   const [reqPanelOpen, setReqPanelOpen] = useState(false);
   const [reqTopic, setReqTopic] = useState("");
   const [reqLanguage, setReqLanguage] = useState("");
-  const [reqDuration, setReqDuration] = useState("25");
+  const [reqDuration, setReqDuration] = useState(String(SESSION_DURATION_MIN));
   const [reqNotes, setReqNotes] = useState("");
   const [reqCopied, setReqCopied] = useState(false);
 
@@ -72,7 +88,7 @@ export default function SyllabusEditor() {
       setLoading(true);
       const { data, error } = await supabase
         .from("syllabi")
-        .select("id, title, level, age_track, sessions, offsets")
+        .select("id, title, level, age_track, sessions, offsets, student_name, student_goal, student_goal_other, weak_skill, interests, student_notes, cycle_number, previous_syllabus_id")
         .eq("id", id)
         .eq("user_id", user.id)
         .maybeSingle();
@@ -82,10 +98,19 @@ export default function SyllabusEditor() {
       } else {
         setTitle(data.title || "Untitled syllabus");
         setLevel(data.level || "A1");
-        setFollowUpLevel(data.level || "A1");
+        setNextCycleLevel(data.level || "A1");
         setAgeTrack(data.age_track || "kids");
         setSessions(data.sessions && data.sessions.length > 0 ? data.sessions : [newSession()]);
         setOffsets(data.offsets || {});
+        setStudentName(data.student_name || "");
+        setGoalKey(data.student_goal || "conversational");
+        setGoalOther(data.student_goal_other || "");
+        setWeakSkill(data.weak_skill || "");
+        setNextCycleWeakSkill(data.weak_skill || "");
+        setInterests(data.interests || "");
+        setStudentNotes(data.student_notes || "");
+        setCycleNumber(data.cycle_number || 1);
+        setPreviousSyllabusId(data.previous_syllabus_id || null);
       }
       setLoading(false);
     }
@@ -98,7 +123,12 @@ export default function SyllabusEditor() {
     setSaving(true);
     const { error } = await supabase
       .from("syllabi")
-      .update({ title, level, age_track: ageTrack, sessions, offsets, updated_at: new Date().toISOString() })
+      .update({
+        title, level, age_track: ageTrack, sessions, offsets,
+        student_name: studentName, student_goal: goalKey, student_goal_other: goalOther,
+        weak_skill: weakSkill, interests, student_notes: studentNotes,
+        updated_at: new Date().toISOString(),
+      })
       .eq("id", id)
       .eq("user_id", user.id);
     setSaving(false);
@@ -111,19 +141,23 @@ export default function SyllabusEditor() {
       level,
       ageTrack,
       count: genCount,
-      focusKey: genFocus,
+      focusKey: weakSkill || "balanced",
     });
     setGenerating(false);
-    setGenPanelOpen(false);
     if (result.sessions.length === 0) {
       window.alert(`Couldn't generate anything for ${level} ${ageTrack}. Add sessions manually below instead.`);
       return;
     }
     setSessions(result.sessions);
     setOffsets(result.offsets);
+    if (studentName.trim()) setTitle(`${studentName.trim()} · Cycle ${cycleNumber}`);
   }
 
   function handleGenerateClick() {
+    if (!studentName.trim()) {
+      window.alert("Add the student's name first, that's what this syllabus is built around.");
+      return;
+    }
     const hasRealContent = sessions.some((s) => s.title.trim() || s.notes.trim());
     if (hasRealContent) {
       setConfirmRegenerate(true);
@@ -132,31 +166,40 @@ export default function SyllabusEditor() {
     }
   }
 
-  async function createFollowUp() {
-    if (!user || followingUp) return;
-    setFollowingUp(true);
-    const startOffsets = offsetsForFollowUp(offsets, level, followUpLevel, ageTrack);
+  async function createNextCycle() {
+    if (!user || startingNextCycle) return;
+    setStartingNextCycle(true);
+    const startOffsets = offsetsForFollowUp(offsets, level, nextCycleLevel, ageTrack);
+    const nextCycleNumber = cycleNumber + 1;
     const result = await generateSyllabusSessions({
-      level: followUpLevel,
+      level: nextCycleLevel,
       ageTrack,
-      count: sessions.length || 10,
-      focusKey: genFocus,
+      count: sessions.length || CYCLE_LENGTH,
+      focusKey: nextCycleWeakSkill || "balanced",
       startOffsets,
     });
     const { data, error } = await supabase
       .from("syllabi")
       .insert({
         user_id: user.id,
-        title: `${title} (follow-up)`,
-        level: followUpLevel,
+        title: `${studentName.trim() || title} · Cycle ${nextCycleNumber}`,
+        level: nextCycleLevel,
         age_track: ageTrack,
         sessions: result.sessions,
         offsets: result.offsets,
+        student_name: studentName,
+        student_goal: goalKey,
+        student_goal_other: goalOther,
+        weak_skill: nextCycleWeakSkill,
+        interests,
+        student_notes: studentNotes,
+        cycle_number: nextCycleNumber,
+        previous_syllabus_id: id,
       })
       .select()
       .single();
-    setFollowingUp(false);
-    setFollowUpPanelOpen(false);
+    setStartingNextCycle(false);
+    setNextCyclePanelOpen(false);
     if (!error && data) navigate(`/library/syllabus/${data.id}/edit`);
   }
 
@@ -199,7 +242,7 @@ export default function SyllabusEditor() {
       setReqTopic("");
       setReqLanguage("");
       setReqNotes("");
-      setReqDuration("25");
+      setReqDuration(String(SESSION_DURATION_MIN));
     }, 1400);
   }
 
@@ -230,6 +273,11 @@ export default function SyllabusEditor() {
   if (notFound) return <p className="syl-signin">Syllabus not found.</p>;
 
   const higherLevel = nextLevel(level);
+  const hasRealContent = sessions.some((s) => s.title.trim() || s.notes.trim());
+  const doneCount = sessions.filter((s) => s.completed).length;
+  const progressPct = sessions.length > 0 ? Math.round((doneCount / sessions.length) * 100) : 0;
+  const rationale = hasRealContent ? buildRationale({ studentName, goalKey, goalOther, weakSkillKey: weakSkill }) : null;
+  const readyForNextCycle = sessions.length > 0 && doneCount === sessions.length;
 
   return (
     <div className="syl-shell">
@@ -242,7 +290,9 @@ export default function SyllabusEditor() {
           </button>
           <div className="syl-topbar-actions">
             <span className="syl-saved-note">{saving ? "Saving…" : savedAt ? "Saved" : ""}</span>
-            <button type="button" className="syl-btn syl-btn--ghost" onClick={() => setFollowUpPanelOpen((o) => !o)}>Generate follow-up</button>
+            {hasRealContent && (
+              <button type="button" className="syl-btn syl-btn--ghost" onClick={() => setNextCyclePanelOpen((o) => !o)}>Start next cycle</button>
+            )}
             <button type="button" className="syl-btn syl-btn--ghost" onClick={() => window.print()}>Print</button>
             <button type="button" className="syl-btn syl-btn--primary" onClick={save} disabled={saving}>Save</button>
           </div>
@@ -258,14 +308,20 @@ export default function SyllabusEditor() {
               placeholder="Untitled syllabus"
             />
             <div className="syl-meta-row">
-              <select className="syl-pill-select" value={level} onChange={(e) => { setLevel(e.target.value); setFollowUpLevel(e.target.value); }}>
+              <select className="syl-pill-select" value={level} onChange={(e) => { setLevel(e.target.value); setNextCycleLevel(e.target.value); }}>
                 {SYLLABUS_LEVELS.map((lv) => <option key={lv} value={lv}>{lv}</option>)}
               </select>
               <select className="syl-pill-select" value={ageTrack} onChange={(e) => setAgeTrack(e.target.value)}>
                 {SYLLABUS_AGE_TRACKS.map((t) => <option key={t.key} value={t.key}>{t.label}</option>)}
               </select>
-              <span className="syl-pill-static">{sessions.length} {sessions.length === 1 ? "session" : "sessions"}</span>
+              <span className="syl-pill-static">Cycle {cycleNumber}</span>
+              {sessions.length > 0 && (
+                <span className="syl-pill-static">{doneCount}/{sessions.length} sessions · {SESSION_DURATION_MIN} min each</span>
+              )}
             </div>
+            {sessions.length > 0 && (
+              <div className="syl-progress-track"><div className="syl-progress-fill" style={{ width: `${progressPct}%` }} /></div>
+            )}
           </div>
         </div>
       </div>
@@ -273,28 +329,109 @@ export default function SyllabusEditor() {
         {title} — {level} · {SYLLABUS_AGE_TRACKS.find((t) => t.key === ageTrack)?.label}
       </div>
 
-      {followUpPanelOpen && (
+      {nextCyclePanelOpen && (
         <div className="syl-followup-bar no-print">
-          <span className="syl-followup-label">Continue at</span>
-          <select className="syl-select" value={followUpLevel} onChange={(e) => setFollowUpLevel(e.target.value)}>
+          <span className="syl-followup-label">Next cycle</span>
+          <select className="syl-select" value={nextCycleLevel} onChange={(e) => setNextCycleLevel(e.target.value)}>
             <option value={level}>{level} (same level)</option>
             {higherLevel && <option value={higherLevel}>{higherLevel} (level up)</option>}
           </select>
-          <button type="button" className="syl-btn syl-btn--primary" onClick={createFollowUp} disabled={followingUp}>
-            {followingUp ? "Creating…" : "Create follow-up syllabus"}
+          <select className="syl-select" value={nextCycleWeakSkill} onChange={(e) => setNextCycleWeakSkill(e.target.value)}>
+            <option value="">Balanced (no particular weak spot)</option>
+            {WEAK_SKILL_OPTIONS.map((w) => <option key={w.key} value={w.key}>Still weak: {w.label}</option>)}
+          </select>
+          <button type="button" className="syl-btn syl-btn--primary" onClick={createNextCycle} disabled={startingNextCycle}>
+            {startingNextCycle ? "Creating…" : `Create Cycle ${cycleNumber + 1}`}
           </button>
           <p className="syl-followup-hint">
-            Picks up where this syllabus's Grammar, Vocabulary, Writing, and Articles left off. Speaking and Reading restart if the level changes, since their content is level-specific.
+            {readyForNextCycle ? "All sessions in this cycle are marked done, " : "You can start the next cycle early, "}
+            it carries the student's name, goal, and interests forward, and picks up Grammar/Vocabulary/Writing/Articles where this cycle left off.
           </p>
         </div>
       )}
 
       <div className="syl-page">
         <div className="syl-stage">
+          <div className="syl-profile no-print">
+            <div className="syl-profile-title">Student profile</div>
+            <div className="syl-profile-grid">
+              <label className="syl-profile-field">
+                Student name
+                <input
+                  type="text"
+                  className="syl-profile-input"
+                  value={studentName}
+                  onChange={(e) => setStudentName(e.target.value)}
+                  placeholder="e.g. Miguel"
+                />
+              </label>
+              <label className="syl-profile-field">
+                Main goal
+                <select className="syl-profile-input" value={goalKey} onChange={(e) => setGoalKey(e.target.value)}>
+                  {SYLLABUS_GOAL_OPTIONS.map((g) => <option key={g.key} value={g.key}>{g.label}</option>)}
+                </select>
+              </label>
+              {goalKey === "other" && (
+                <label className="syl-profile-field">
+                  Goal, in your own words
+                  <input
+                    type="text"
+                    className="syl-profile-input"
+                    value={goalOther}
+                    onChange={(e) => setGoalOther(e.target.value)}
+                    placeholder="e.g. Passing a citizenship interview"
+                  />
+                </label>
+              )}
+              <label className="syl-profile-field">
+                Weakest area right now
+                <select className="syl-profile-input" value={weakSkill} onChange={(e) => setWeakSkill(e.target.value)}>
+                  <option value="">Balanced (no particular weak spot)</option>
+                  {WEAK_SKILL_OPTIONS.map((w) => <option key={w.key} value={w.key}>{w.label}</option>)}
+                </select>
+              </label>
+              <label className="syl-profile-field">
+                Interests <span className="syl-profile-optional">(for your own reference)</span>
+                <input
+                  type="text"
+                  className="syl-profile-input"
+                  value={interests}
+                  onChange={(e) => setInterests(e.target.value)}
+                  placeholder="e.g. basketball, cooking, K-dramas"
+                />
+              </label>
+              <label className="syl-profile-field syl-profile-field--wide">
+                Notes for next cycle <span className="syl-profile-optional">(optional)</span>
+                <textarea
+                  className="syl-profile-input syl-profile-textarea"
+                  rows={2}
+                  value={studentNotes}
+                  onChange={(e) => setStudentNotes(e.target.value)}
+                  placeholder="Anything worth remembering when you plan what's next"
+                />
+              </label>
+            </div>
+            <div className="syl-profile-actions">
+              <label className="syl-profile-count">
+                Sessions
+                <input
+                  type="number"
+                  min="1"
+                  max="30"
+                  className="syl-gen-input"
+                  value={genCount}
+                  onChange={(e) => setGenCount(Math.max(1, Number(e.target.value) || 1))}
+                />
+              </label>
+              <button type="button" className="syl-btn syl-btn--primary" onClick={handleGenerateClick} disabled={generating}>
+                {generating ? "Generating…" : hasRealContent ? "Regenerate this cycle" : "Generate syllabus"}
+              </button>
+            </div>
+          </div>
+
+          {rationale && <div className="syl-rationale no-print">{rationale}</div>}
+
           <div className="syl-toolbar no-print">
-            <button type="button" className="syl-btn syl-btn--ghost" onClick={() => setGenPanelOpen((o) => !o)}>
-              Generate from curriculum
-            </button>
             <button type="button" className="syl-btn syl-btn--ghost" onClick={() => setReqPanelOpen((o) => !o)}>
               Request custom lesson
             </button>
@@ -360,40 +497,13 @@ export default function SyllabusEditor() {
             </div>
           )}
 
-          {genPanelOpen && (
-            <div className="syl-gen-panel no-print">
-              <label className="syl-gen-label">
-                Total sessions
-                <input
-                  type="number"
-                  min="1"
-                  max="60"
-                  className="syl-gen-input"
-                  value={genCount}
-                  onChange={(e) => setGenCount(Math.max(1, Number(e.target.value) || 1))}
-                />
-              </label>
-              <label className="syl-gen-label">
-                Focus
-                <select className="syl-select" value={genFocus} onChange={(e) => setGenFocus(e.target.value)}>
-                  {SYLLABUS_FOCUS_OPTIONS.map((p) => <option key={p.key} value={p.key}>{p.label}</option>)}
-                </select>
-              </label>
-              <button type="button" className="syl-btn syl-btn--primary" onClick={handleGenerateClick} disabled={generating}>
-                {generating ? "Generating…" : "Generate draft"}
-              </button>
-              <p className="syl-gen-hint">
-                Grammar and vocabulary are always included at a level-appropriate baseline, on top of whatever focus you pick. Replaces the current session list below.
-              </p>
-            </div>
-          )}
-
           <div className="syl-timeline">
             {sessions.map((s, i) => (
               <div className={`syl-t-row${s.completed ? " syl-t-row--done" : ""}`} key={s.id}>
                 <span className="syl-t-dot" style={{ background: SKILL_COLORS[s.skill] || "#5A6B92" }}>{s.completed ? "✓" : i + 1}</span>
                 <div className="syl-t-body">
                   <div className="syl-t-tags">
+                    <span className="syl-session-of">Session {i + 1} of {sessions.length}</span>
                     {s.skill && s.skill !== "custom" && (
                       <span className={`syl-skill-tag syl-skill-tag--${s.skill}`}>{SKILL_LABELS[s.skill] || s.skill}</span>
                     )}
@@ -507,6 +617,9 @@ const CSS = `
 }
 .syl-pill-static { font-family: 'Inter', sans-serif; font-weight: 700; font-size: 12.5px; color: #B9C3DC; padding: 6px 4px; }
 
+.syl-progress-track { margin-top: 16px; height: 6px; border-radius: 999px; background: rgba(255,255,255,0.14); overflow: hidden; }
+.syl-progress-fill { height: 100%; background: #FF6B4A; border-radius: 999px; transition: width 0.2s ease; }
+
 .syl-select {
   font-family: 'Inter', sans-serif; font-weight: 700; font-size: 13px; color: #1B2A4A;
   background: #FBF4F1; border: 1.5px solid #EDE1DB; border-radius: 10px; padding: 8px 12px; cursor: pointer;
@@ -522,15 +635,29 @@ const CSS = `
 .syl-page { padding: 28px 20px 60px; }
 .syl-stage { max-width: 760px; margin: 0 auto; background: #FFFFFF; border-radius: 20px; padding: 30px 32px 34px; box-shadow: 0 10px 30px rgba(27,42,74,0.08); }
 
+.syl-profile { background: #FBF4F1; border-radius: 16px; padding: 20px 22px; margin-bottom: 18px; }
+.syl-profile-title { font-weight: 800; font-size: 11.5px; letter-spacing: 0.08em; text-transform: uppercase; color: #5A6B92; margin-bottom: 14px; }
+.syl-profile-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+.syl-profile-field { display: flex; flex-direction: column; gap: 6px; font-size: 12.5px; font-weight: 700; color: #1B2A4A; }
+.syl-profile-field--wide { grid-column: 1 / -1; }
+.syl-profile-optional { font-weight: 500; color: #9A93A6; text-transform: none; letter-spacing: 0; }
+.syl-profile-input {
+  font-family: 'Inter', sans-serif; font-weight: 600; font-size: 13.5px; color: #1B2A4A;
+  background: #FFFFFF; border: 1.5px solid #EDE1DB; border-radius: 10px; padding: 9px 12px; outline: none;
+}
+.syl-profile-input:focus { border-color: #FF6B4A; }
+.syl-profile-textarea { resize: vertical; font-family: 'Inter', sans-serif; }
+.syl-profile-actions { display: flex; align-items: center; gap: 14px; margin-top: 16px; }
+.syl-profile-count { display: flex; align-items: center; gap: 8px; font-size: 12.5px; font-weight: 700; color: #1B2A4A; }
+
+.syl-rationale {
+  font-family: 'Fraunces', serif; font-weight: 500; font-style: italic; font-size: 14.5px; color: #1B2A4A;
+  background: #FDECE5; border-radius: 12px; padding: 12px 16px; margin-bottom: 18px; line-height: 1.5;
+}
+
 .syl-toolbar { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; }
 
-.syl-gen-panel {
-  background: #FBF4F1; border-radius: 14px; padding: 18px 20px; margin-bottom: 24px;
-  display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
-}
-.syl-gen-label { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 700; color: #1B2A4A; }
 .syl-gen-input { width: 60px; padding: 7px 10px; border-radius: 8px; border: 1.5px solid #EDE1DB; font-family: 'Inter', sans-serif; font-weight: 700; }
-.syl-gen-hint { flex-basis: 100%; font-size: 12px; color: #5A6B92; margin: 0; }
 
 .syl-req-panel {
   background: #FBF4F1; border-radius: 14px; padding: 18px 20px; margin-bottom: 24px;
@@ -557,7 +684,8 @@ const CSS = `
   display: flex; align-items: center; justify-content: center; margin-top: 2px;
 }
 .syl-t-body { flex: 1; min-width: 0; background: #FBF4F1; border-radius: 12px; padding: 12px 14px; display: flex; flex-direction: column; gap: 2px; }
-.syl-t-tags { display: flex; align-items: center; gap: 6px; margin-bottom: 4px; }
+.syl-t-tags { display: flex; align-items: center; gap: 6px; margin-bottom: 4px; flex-wrap: wrap; }
+.syl-session-of { font-size: 9.5px; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase; color: #A79A92; }
 .syl-skill-tag {
   font-size: 9.5px; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase;
   border-radius: 999px; padding: 2px 8px;
@@ -606,5 +734,9 @@ const CSS = `
   .syl-meta-print { font-family: 'Fraunces', serif; font-weight: 600; font-size: 20px; color: #1B2A4A; margin: 24px 20px 18px; }
   .syl-t-body { background: none; border-bottom: 1px solid #EDE1DB; border-radius: 0; padding: 10px 0; }
   .syl-timeline::before { display: none; }
+}
+
+@media (max-width: 640px) {
+  .syl-profile-grid { grid-template-columns: 1fr; }
 }
 `;

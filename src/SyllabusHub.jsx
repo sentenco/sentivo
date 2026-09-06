@@ -38,7 +38,7 @@ export default function SyllabusHub() {
       setLoading(true);
       const { data, error } = await supabase
         .from("syllabi")
-        .select("id, title, level, age_track, sessions, updated_at")
+        .select("id, title, level, age_track, sessions, updated_at, student_name, cycle_number")
         .eq("user_id", user.id)
         .order("updated_at", { ascending: false });
       if (!isMounted) return;
@@ -93,7 +93,7 @@ export default function SyllabusHub() {
             <span className="syh-eyebrow">Sentivo · Homeroom</span>
             <h1 className="syh-hero-title">Syllabus Generator</h1>
             <p className="syh-hero-blurb">
-              Generate a draft schedule from the curriculum, then edit, reorder, or swap sessions until it fits your class.
+              Build a 12-session plan around one student's goal and weak spot, then use it as your guide, class after class. Start a new cycle when they're ready.
             </p>
           </div>
         </div>
@@ -151,8 +151,12 @@ export default function SyllabusHub() {
                       >
                         ×
                       </button>
-                      {syl.level && <span className="syh-card-level">{syl.level}{syl.age_track ? ` · ${syl.age_track}` : ""}</span>}
-                      <span className="syh-card-title">{syl.title || "Untitled syllabus"}</span>
+                      {syl.level && (
+                        <span className="syh-card-level">
+                          {syl.level}{syl.age_track ? ` · ${syl.age_track}` : ""}{syl.cycle_number > 1 ? ` · Cycle ${syl.cycle_number}` : ""}
+                        </span>
+                      )}
+                      <span className="syh-card-title">{syl.student_name || syl.title || "Untitled syllabus"}</span>
                       {sessionList.length > 0 && (
                         <span className="syh-card-strip">
                           {sessionList.map((s, i) => (

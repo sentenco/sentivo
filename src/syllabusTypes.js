@@ -14,6 +14,70 @@ export const SYLLABUS_AGE_TRACKS = [
   { key: "adults", label: "Adults" },
 ];
 
+// A default-size cycle: enough sessions to make real progress on a goal
+// without asking the teacher to plan further ahead than they can predict a
+// student's pace. A cycle is a fixed block -- see CYCLE_LENGTH below -- not
+// an open-ended course, so the number is deliberately not "however many you
+// want" the way the old generator's raw count field was.
+export const CYCLE_LENGTH = 12;
+export const SESSION_DURATION_MIN = 25;
+
+// What the syllabus is actually FOR -- this is what makes two students at
+// the same level get different syllabi, per the personalized-syllabus spec.
+// "other" pairs with a free-text field (student_goal_other) rather than
+// forcing every real reason into one of these buckets.
+export const SYLLABUS_GOAL_OPTIONS = [
+  { key: "conversational", label: "Become conversational" },
+  { key: "workplace", label: "Improve workplace English" },
+  { key: "interview", label: "Prepare for an interview" },
+  { key: "academic", label: "Study abroad / academic English" },
+  { key: "exam", label: "Pass an English exam" },
+  { key: "travel", label: "Travel" },
+  { key: "social", label: "Social and daily life" },
+  { key: "customer_service", label: "Customer service / clients" },
+  { key: "other", label: "Other" },
+];
+
+// Reuses the same categories as SYLLABUS_FOCUS_OPTIONS minus "balanced" --
+// a weak skill IS a focus, just framed as a teacher's observation about the
+// student rather than an abstract lesson-mix preference.
+export const WEAK_SKILL_OPTIONS = [
+  { key: "grammar", label: "Grammar" },
+  { key: "vocabulary", label: "Vocabulary" },
+  { key: "speaking", label: "Speaking" },
+  { key: "reading", label: "Reading" },
+  { key: "writing", label: "Writing" },
+  { key: "articles", label: "Reading comprehension (articles)" },
+];
+
+export function goalLabel(goalKey, goalOther) {
+  if (goalKey === "other") return (goalOther || "").trim() || "their own goal";
+  return SYLLABUS_GOAL_OPTIONS.find((g) => g.key === goalKey)?.label || "their own goal";
+}
+
+export function weakSkillLabel(weakSkillKey) {
+  return WEAK_SKILL_OPTIONS.find((w) => w.key === weakSkillKey)?.label || null;
+}
+
+// A one-line reason the teacher can read at a glance -- the "why" behind
+// this specific session mix, so the syllabus doesn't just look like a random
+// lesson list. Deliberately plain: this describes the SKILL WEIGHTING the
+// generator actually applied (weak-skill focus + grammar/vocab floor), not
+// a claim that individual lessons were hand-picked for the student's exact
+// real-life scenario -- the underlying content library isn't tagged by
+// context (work/travel/social) yet, so overpromising there would be
+// misleading. See project_syllabus_maker_idea memory for that gap.
+export function buildRationale({ studentName, goalKey, goalOther, weakSkillKey }) {
+  const name = (studentName || "").trim() || "This student";
+  const goal = goalLabel(goalKey, goalOther);
+  const weakLabel = weakSkillLabel(weakSkillKey);
+  let line = `Built for ${name}. Goal: ${goal}.`;
+  if (weakLabel) {
+    line += ` Extra ${weakLabel.toLowerCase()} practice is mixed in since that's the area flagged as needing the most work.`;
+  }
+  return line;
+}
+
 // One choice per real content category, plus Balanced. No "Mostly" prefix
 // on the labels -- picking a category as the focus already implies "mostly
 // this one." Grammar/Vocabulary can be picked as a focus too, on top of
