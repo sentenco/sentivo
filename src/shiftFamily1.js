@@ -60,13 +60,13 @@ export default {
       shortAnswer: false,
       clue: "Present Simple (habit/routine): <b>does</b>.",
       model: "Dad usually does the dishes.",
-      nextLine: "Ha, good answer. Are they doing them right now?",
+      nextLine: "Ha, good answer. Is that happening right now?",
     },
     {
-      question: "Are they doing them right now?",
+      question: "Is that happening right now?",
       shortAnswer: true,
-      clue: "Short answer + follow-up. Present Continuous (right now): <b>aren't</b>.",
-      model: "No, they aren't. They're reading the newspaper.",
+      clue: "Short answer + follow-up. Present Continuous (right now): <b>isn't</b>.",
+      model: "No, it isn't. He does them after dinner, not now.",
       nextLine: "Typical Saturday. Do you ever help with the dishes?",
     },
     {
