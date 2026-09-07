@@ -14,11 +14,11 @@ export default {
 
   scene: {
     title: "Table 4, Casual Dining",
-    context: "You're a new customer. The waiter is making conversation while you decide what to order.",
+    context: "You're a new customer, waiting for a friend to arrive. The waiter is making conversation while you decide what to order.",
   },
 
   scenarioSet: {
-    say: "You're at a restaurant for the first time. The waiter is friendly and chatty while you look at the menu. Answer naturally, out loud, as yourself at this table.",
+    say: "You're at a restaurant for the first time, waiting for a friend who's running a few minutes late. The waiter is friendly and chatty while you look at the menu. Answer naturally, out loud, as yourself at this table.",
   },
 
   // The Cold Chain: each question's tense stays hidden from the student.
@@ -98,7 +98,7 @@ export default {
   teacherGuide: {
     scenarioSet: {
       goal: "Set the scene fast, don't over-explain. The student should feel like they just sat down, not like class started.",
-      say: ["You're at a restaurant for the first time. I'm your waiter. Just answer naturally, like you're really here."],
+      say: ["You're at a restaurant for the first time, and you're waiting for a friend who's running a few minutes late. I'm your waiter. Just answer naturally, like you're really here."],
       do: ["Keep this under a minute. Don't preview the grammar focus, let the chain surface it naturally."],
       timing: "1-2 min",
     },
