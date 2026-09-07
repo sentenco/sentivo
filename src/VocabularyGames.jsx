@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
 import SYNONYMS_TOPICS from "./synonymsTopics";
 import SYNONYMS_TOPICS_B1B2 from "./synonymsTopicsB1B2";
 import SYNONYMS_TOPICS_C1C2 from "./synonymsTopicsC1C2";
@@ -412,14 +413,29 @@ function openLessonPlayer(href) {
 }
 
 export default function VocabularyGames({ query }) {
-  const [mainTab, setMainTab] = useState("lessons");
-  const [gameKey, setGameKey] = useState(null);
-  const [levelTab, setLevelTab] = useState(LEVEL_GROUPS[0]);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [mainTab, setMainTab] = useState(() => {
+    const fromUrl = searchParams.get("vMain");
+    return fromUrl === "games" ? "games" : "lessons";
+  });
+  const [gameKey, setGameKey] = useState(() => {
+    const fromUrl = searchParams.get("vGame");
+    return GAME_TYPES.some((g) => g.key === fromUrl) ? fromUrl : null;
+  });
+  const [levelTab, setLevelTab] = useState(() => {
+    const fromUrl = searchParams.get("vLevel");
+    return LEVEL_GROUPS.includes(fromUrl) ? fromUrl : LEVEL_GROUPS[0];
+  });
   const q = query.trim().toLowerCase();
 
   function selectMainTab(tab) {
     setMainTab(tab);
     setGameKey(null);
+    const next = new URLSearchParams(searchParams);
+    next.set("vMain", tab);
+    next.delete("vGame");
+    next.delete("vLevel");
+    setSearchParams(next, { replace: true });
   }
 
   const tabBar = (
@@ -457,6 +473,17 @@ export default function VocabularyGames({ query }) {
     window.history.pushState({ vgDepth: 1 }, "");
     setGameKey(key);
     setLevelTab(LEVEL_GROUPS[0]);
+    const next = new URLSearchParams(searchParams);
+    next.set("vGame", key);
+    next.delete("vLevel");
+    setSearchParams(next, { replace: true });
+  }
+
+  function selectLevelTab(lvl) {
+    setLevelTab(lvl);
+    const next = new URLSearchParams(searchParams);
+    next.set("vLevel", lvl);
+    setSearchParams(next, { replace: true });
   }
 
   const game = GAME_TYPES.find((g) => g.key === gameKey);
@@ -571,7 +598,7 @@ export default function VocabularyGames({ query }) {
                     key={lvl}
                     type="button"
                     className={`vg-level-tab ${levelTab === lvl ? "is-active" : ""}`}
-                    onClick={() => setLevelTab(lvl)}
+                    onClick={() => selectLevelTab(lvl)}
                   >
                     {lvl}
                   </button>
