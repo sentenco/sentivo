@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useSearchParams } from "react-router-dom";
 import { supabase } from "./supabaseClient";
 import { useAuth } from "./AuthContext";
 import { newSlide, newTextElement, newImageElement } from "./slideDeckTypes";
@@ -29,10 +29,21 @@ function openPresenter(deckId) {
 export default function SlideDeckEditor() {
   const { deckId } = useParams();
   const { user, loading: authLoading } = useAuth();
+  const [searchParams, setSearchParams] = useSearchParams();
 
   const [deckTitle, setDeckTitle] = useState("");
   const [slides, setSlides] = useState([]);
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [activeIndex, setActiveIndex] = useState(() => Number(searchParams.get("slide")) || 0);
+
+  // Mirror the active slide into the URL so a refresh while editing lands
+  // back on the same slide instead of the first one.
+  useEffect(() => {
+    const next = new URLSearchParams(searchParams);
+    if (activeIndex > 0) next.set("slide", String(activeIndex));
+    else next.delete("slide");
+    setSearchParams(next, { replace: true });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [activeIndex]);
   const [deleteSlideIndex, setDeleteSlideIndex] = useState(null);
   const [loading, setLoading] = useState(true);
   const [notFound, setNotFound] = useState(false);

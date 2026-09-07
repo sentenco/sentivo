@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { supabase } from "./supabaseClient";
 import { useAuth } from "./AuthContext";
 import AuthForm from "./AuthForm";
@@ -15,7 +15,18 @@ export default function SlideDeckHub() {
   const [authMode, setAuthMode] = useState(null);
   const [deletingId, setDeletingId] = useState(null);
   const [deleteTarget, setDeleteTarget] = useState(null);
-  const [tab, setTab] = useState("new");
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [tab, setTab] = useState(() => {
+    const fromUrl = searchParams.get("tab");
+    return fromUrl === "mine" ? "mine" : "new";
+  });
+
+  function selectTab(key) {
+    setTab(key);
+    const next = new URLSearchParams(searchParams);
+    next.set("tab", key);
+    setSearchParams(next, { replace: true });
+  }
 
   useEffect(() => {
     if (!user) {
@@ -88,8 +99,8 @@ export default function SlideDeckHub() {
           ) : (
             <>
               <div className="sdh-tabs">
-                <button type="button" className={`sdh-tab ${tab === "new" ? "is-active" : ""}`} onClick={() => setTab("new")}>New deck</button>
-                <button type="button" className={`sdh-tab ${tab === "mine" ? "is-active" : ""}`} onClick={() => setTab("mine")}>My decks{decks.length > 0 ? ` (${decks.length})` : ""}</button>
+                <button type="button" className={`sdh-tab ${tab === "new" ? "is-active" : ""}`} onClick={() => selectTab("new")}>New deck</button>
+                <button type="button" className={`sdh-tab ${tab === "mine" ? "is-active" : ""}`} onClick={() => selectTab("mine")}>My decks{decks.length > 0 ? ` (${decks.length})` : ""}</button>
               </div>
 
               {tab === "new" ? (

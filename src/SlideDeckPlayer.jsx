@@ -1,13 +1,24 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useSearchParams } from "react-router-dom";
 import { supabase } from "./supabaseClient";
 
 export default function SlideDeckPlayer() {
   const { deckId } = useParams();
+  const [searchParams, setSearchParams] = useSearchParams();
   const [deck, setDeck] = useState(null);
   const [loading, setLoading] = useState(true);
   const [notFound, setNotFound] = useState(false);
-  const [index, setIndex] = useState(0);
+  const [index, setIndex] = useState(() => Number(searchParams.get("slide")) || 0);
+
+  // Mirror the slide index into the URL so a refresh mid-presentation lands
+  // back on the same slide instead of the first one.
+  useEffect(() => {
+    const next = new URLSearchParams(searchParams);
+    if (index > 0) next.set("slide", String(index));
+    else next.delete("slide");
+    setSearchParams(next, { replace: true });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [index]);
 
   useEffect(() => {
     let isMounted = true;
