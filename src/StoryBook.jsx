@@ -1,5 +1,5 @@
-import { useMemo, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useMemo, useState } from "react";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import ImagePlaceholder from "./slides/ImagePlaceholder";
 import defaultBook from "./storybookData";
 
@@ -424,10 +424,23 @@ function renderPage(pageType, chapter, imageAspect) {
 
 export default function StoryBook({ book = defaultBook }) {
   const navigate = useNavigate();
-  const [view, setView] = useState("cover"); // cover | toc | chapter
-  const [chapterIdx, setChapterIdx] = useState(0);
-  const [pageIdx, setPageIdx] = useState(0);
+  const [searchParams, setSearchParams] = useSearchParams();
   const CHAPTERS = book.chapters;
+
+  // Restore whichever chapter/page a refresh finds in the URL, instead of
+  // always bouncing back to the cover -- see the sync effect below.
+  const [view, setView] = useState(() => {
+    const v = searchParams.get("view");
+    return v === "toc" || v === "chapter" ? v : "cover";
+  }); // cover | toc | chapter
+  const [chapterIdx, setChapterIdx] = useState(() => {
+    const n = Number(searchParams.get("ch"));
+    return Number.isInteger(n) && n >= 0 && n < CHAPTERS.length ? n : 0;
+  });
+  const [pageIdx, setPageIdx] = useState(() => {
+    const n = Number(searchParams.get("pg"));
+    return Number.isInteger(n) && n >= 0 ? n : 0;
+  });
 
   const chapter = CHAPTERS[chapterIdx];
   const pageTypes = useMemo(() => getPageTypes(chapter), [chapter]);
@@ -451,6 +464,22 @@ export default function StoryBook({ book = defaultBook }) {
     return starts;
   }, [chapterPageCounts]);
   const currentBookPage = chapterStartPage[chapterIdx] + pageIdx;
+
+  // Mirror view/chapter/page into the URL so a refresh lands back on the
+  // same page instead of resetting to the cover.
+  useEffect(() => {
+    const next = new URLSearchParams(searchParams);
+    next.set("view", view);
+    if (view === "chapter") {
+      next.set("ch", String(chapterIdx));
+      next.set("pg", String(pageIdx));
+    } else {
+      next.delete("ch");
+      next.delete("pg");
+    }
+    setSearchParams(next, { replace: true });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [view, chapterIdx, pageIdx]);
 
   function openChapter(idx) {
     setChapterIdx(idx);

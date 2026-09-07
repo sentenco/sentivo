@@ -450,8 +450,12 @@ function openSupplementaryLesson(href) {
 const SUPP_PAGE_SIZE = 10;
 
 function GrammarFeature({ navigate, query }) {
-  const [tab, setTab] = useState("foundation");
-  const [suppPage, setSuppPage] = useState(0);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [tab, setTab] = useState(() => {
+    const fromUrl = searchParams.get("gTab");
+    return GRAMMAR_TABS.some((t) => t.key === fromUrl) ? fromUrl : "foundation";
+  });
+  const [suppPage, setSuppPage] = useState(() => Number(searchParams.get("gPage")) || 0);
   const q = query.trim().toLowerCase();
   const tierModules = GRAMMAR_MODULES.filter((m) => m.tier === tab);
   const modules = q
@@ -468,9 +472,21 @@ function GrammarFeature({ navigate, query }) {
     ? modules.slice(currentSuppPage * SUPP_PAGE_SIZE, currentSuppPage * SUPP_PAGE_SIZE + SUPP_PAGE_SIZE)
     : modules;
 
+  function goToSuppPage(page) {
+    setSuppPage(page);
+    const next = new URLSearchParams(searchParams);
+    if (page > 0) next.set("gPage", String(page));
+    else next.delete("gPage");
+    setSearchParams(next, { replace: true });
+  }
+
   function selectTab(key) {
     setTab(key);
     setSuppPage(0);
+    const next = new URLSearchParams(searchParams);
+    next.set("gTab", key);
+    next.delete("gPage");
+    setSearchParams(next, { replace: true });
   }
 
   return (
@@ -559,7 +575,7 @@ function GrammarFeature({ navigate, query }) {
               <button
                 type="button"
                 className="gdn-supp-pager-btn"
-                onClick={() => setSuppPage((p) => Math.max(0, p - 1))}
+                onClick={() => goToSuppPage(Math.max(0, currentSuppPage - 1))}
                 disabled={currentSuppPage === 0}
               >
                 ← Prev
@@ -570,7 +586,7 @@ function GrammarFeature({ navigate, query }) {
                     key={i}
                     type="button"
                     className={`gdn-supp-pager-dot ${i === currentSuppPage ? "is-active" : ""}`}
-                    onClick={() => setSuppPage(i)}
+                    onClick={() => goToSuppPage(i)}
                   >
                     {i + 1}
                   </button>
@@ -579,7 +595,7 @@ function GrammarFeature({ navigate, query }) {
               <button
                 type="button"
                 className="gdn-supp-pager-btn"
-                onClick={() => setSuppPage((p) => Math.min(suppPageCount - 1, p + 1))}
+                onClick={() => goToSuppPage(Math.min(suppPageCount - 1, currentSuppPage + 1))}
                 disabled={currentSuppPage === suppPageCount - 1}
               >
                 Next →
