@@ -1228,7 +1228,7 @@ export default function Library() {
   const [category, setCategory] = useState(() => searchParams.get("cat") || "All");
   const [page, setPage] = useState(() => Number(searchParams.get("page")) || 1);
   const [query, setQuery] = useState("");
-  const [clTab, setClTab] = useState("All");
+  const [clTab, setClTab] = useState(() => searchParams.get("clTab") || "All");
   const [clFormOpen, setClFormOpen] = useState(false);
   const [clStudentName, setClStudentName] = useState("");
   const [clLevel, setClLevel] = useState("A1");
@@ -2161,7 +2161,7 @@ export default function Library() {
               <h2 className="cl-gallery-hd">Published lessons</h2>
               <div className="cl-tabs">
                 {["All", ...Array.from(new Set(CUSTOM_LESSONS.map((l) => l.tag)))].map((t) => (
-                  <button key={t} type="button" className={`cl-tab ${clTab === t ? "is-active" : ""}`} onClick={() => setClTab(t)}>
+                  <button key={t} type="button" className={`cl-tab ${clTab === t ? "is-active" : ""}`} onClick={() => { setClTab(t); const next = new URLSearchParams(searchParams); if (t === "All") next.delete("clTab"); else next.set("clTab", t); setSearchParams(next, { replace: true }); }}>
                     {t}
                   </button>
                 ))}

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { TEENS_LEVELS } from "./teensCurriculumData";
 import { ADULTS_LEVELS } from "./adultsCurriculumData";
 
@@ -27,8 +27,19 @@ const AUDIENCES = [
 ];
 
 export default function CurriculumOverview({ onSelectLevel }) {
-  const [audience, setAudience] = useState("kids");
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [audience, setAudience] = useState(() => {
+    const fromUrl = searchParams.get("curAud");
+    return AUDIENCES.some((a) => a.id === fromUrl) ? fromUrl : "kids";
+  });
   const navigate = useNavigate();
+
+  function selectAudience(id) {
+    setAudience(id);
+    const next = new URLSearchParams(searchParams);
+    next.set("curAud", id);
+    setSearchParams(next, { replace: true });
+  }
 
   useEffect(() => {
     const styleId = "co-styles";
@@ -63,7 +74,7 @@ export default function CurriculumOverview({ onSelectLevel }) {
               key={a.id}
               type="button"
               className={`co-audience-pill ${audience === a.id ? "is-active" : ""}`}
-              onClick={() => setAudience(a.id)}
+              onClick={() => selectAudience(a.id)}
             >
               {a.label} <span className="co-audience-age">{a.age}</span>
             </button>

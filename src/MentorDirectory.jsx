@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { supabase } from "./supabaseClient";
 import { useAuth } from "./AuthContext";
 import { teachingBadge } from "./ProfileSettings.jsx";
@@ -13,9 +13,18 @@ function initials(name) {
 export default function MentorDirectory() {
   const navigate = useNavigate();
   const { user } = useAuth();
+  const [searchParams, setSearchParams] = useSearchParams();
   const [mentors, setMentors] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [filter, setFilter] = useState("All");
+  const [filter, setFilter] = useState(() => searchParams.get("filter") || "All");
+
+  function selectFilter(f) {
+    setFilter(f);
+    const next = new URLSearchParams(searchParams);
+    if (f === "All") next.delete("filter");
+    else next.set("filter", f);
+    setSearchParams(next, { replace: true });
+  }
 
   useEffect(() => {
     loadMentors();
@@ -56,7 +65,7 @@ export default function MentorDirectory() {
         {filterOptions.length > 2 && (
           <div className="md-filters">
             {filterOptions.map((f) => (
-              <button type="button" key={f} className={`md-filter ${filter === f ? "is-active" : ""}`} onClick={() => setFilter(f)}>
+              <button type="button" key={f} className={`md-filter ${filter === f ? "is-active" : ""}`} onClick={() => selectFilter(f)}>
                 {f}
               </button>
             ))}
