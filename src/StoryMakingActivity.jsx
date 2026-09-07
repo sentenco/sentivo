@@ -286,8 +286,8 @@ const CSS = `
   background: repeating-linear-gradient(45deg, #6EC3E0, #6EC3E0 6px, #A6DCEC 6px, #A6DCEC 12px);
 }
 
-.sm-picture-pane { position: relative; background: #F3EEE6; min-height: 320px; }
-.sm-scene { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+.sm-picture-pane { position: relative; background: #F3EEE6; aspect-ratio: 4 / 3; align-self: start; }
+.sm-scene { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; display: block; }
 .sm-corner { position: absolute; top: 0; right: 0; width: 34px; height: 34px; filter: drop-shadow(-1px 1px 2px rgba(43,42,74,0.12)); }
 
 .sm-content-pane { padding: clamp(24px, 3.2vw, 36px); display: flex; flex-direction: column; min-width: 0; }
@@ -386,6 +386,6 @@ const CSS = `
 
 @media (max-width: 760px) {
   .sm-card { grid-template-columns: 1fr; }
-  .sm-picture-pane { min-height: 0; aspect-ratio: 16 / 9; }
+  .sm-picture-pane { aspect-ratio: 4 / 3; }
 }
 `;
