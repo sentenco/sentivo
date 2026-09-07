@@ -781,8 +781,19 @@ function BookshelfRows({ books, navigate, colorOffset }) {
 }
 
 function BookshelfFeature({ items, navigate, query }) {
-  const [level, setLevel] = useState("A1");
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [level, setLevel] = useState(() => {
+    const fromUrl = searchParams.get("rLevel");
+    return READING_LEVELS.includes(fromUrl) ? fromUrl : "A1";
+  });
   const isSearching = query.trim().length > 0;
+
+  function selectLevel(lvl) {
+    setLevel(lvl);
+    const next = new URLSearchParams(searchParams);
+    next.set("rLevel", lvl);
+    setSearchParams(next, { replace: true });
+  }
   // A search should surface matches across every level, not just the
   // currently selected level tab, so the level filter is skipped while
   // `items` (already title-matched by the parent) has an active query.
@@ -812,7 +823,7 @@ function BookshelfFeature({ items, navigate, query }) {
               key={lvl}
               type="button"
               className={`bkshf-level-tab ${level === lvl ? "is-active" : ""}`}
-              onClick={() => setLevel(lvl)}
+              onClick={() => selectLevel(lvl)}
             >
               {lvl}
             </button>

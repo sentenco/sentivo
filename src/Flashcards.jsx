@@ -1,4 +1,5 @@
 import React, { useState, useMemo } from "react";
+import { useSearchParams } from "react-router-dom";
 
 const WORDS = [
   { id: "record", word: "RECORD", level: "beginner",
@@ -192,8 +193,12 @@ function ProCard({ item }) {
 }
 
 export default function Flashcards() {
-  const [level, setLevel] = useState("beginner");
-  const [index, setIndex] = useState(0);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [level, setLevel] = useState(() => {
+    const fromUrl = searchParams.get("level");
+    return LEVELS.some((l) => l.key === fromUrl) ? fromUrl : "beginner";
+  });
+  const [index, setIndex] = useState(() => Number(searchParams.get("card")) || 0);
 
   const filtered = useMemo(() => {
     if (level === "all") return WORDS;
@@ -204,16 +209,28 @@ export default function Flashcards() {
   const current = filtered[safeIndex];
   const isPro = level !== "beginner";
 
+  function goToIndex(i) {
+    setIndex(i);
+    const next = new URLSearchParams(searchParams);
+    if (i > 0) next.set("card", String(i));
+    else next.delete("card");
+    setSearchParams(next, { replace: true });
+  }
+
   function changeLevel(key) {
     setLevel(key);
     setIndex(0);
+    const next = new URLSearchParams(searchParams);
+    next.set("level", key);
+    next.delete("card");
+    setSearchParams(next, { replace: true });
   }
 
   function next() {
-    setIndex((i) => (i + 1) % filtered.length);
+    goToIndex((index + 1) % filtered.length);
   }
   function prev() {
-    setIndex((i) => (i - 1 + filtered.length) % filtered.length);
+    goToIndex((index - 1 + filtered.length) % filtered.length);
   }
 
   return (
