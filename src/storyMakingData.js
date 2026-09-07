@@ -9,6 +9,7 @@ import parkImg from "./assets/story-making/park.jpg";
 import parkZooImg from "./assets/story-making/park-zoo.jpg";
 import lostPuppyImg from "./assets/story-making/lost-puppy.jpg";
 import newStudentImg from "./assets/story-making/new-student.jpg";
+import birthdayPartyImg from "./assets/story-making/birthday-party.jpg";
 
 const A1A2 = [
   {
@@ -56,7 +57,7 @@ const A1A2 = [
     title: "Birthday Party",
     focus: "Simple past, party vocabulary",
     scene: "party",
-    image: null,
+    image: birthdayPartyImg,
     words: ["birthday", "balloons", "cake", "friends", "gift", "sing"],
     prompt: "Look at the picture and use the words to write a short, 5-sentence story.",
     sample: "It was my little brother's birthday last weekend. Our house was full of colorful balloons and a big chocolate cake. All of his friends came to celebrate with him. We sang the birthday song and he opened his gifts. It was a very happy day for our whole family.",
