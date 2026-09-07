@@ -39,8 +39,30 @@ function Avatar({ side, size, wrong }) {
   );
 }
 
-function HistoryLog({ rows }) {
+function HistoryLog({ rows, audience, roles }) {
   if (rows.length === 0) return null;
+
+  if (audience === "adults") {
+    const themLabel = roles?.them || "Them";
+    const meLabel = roles?.me || "You";
+    return (
+      <div className="sh-itinerary">
+        {rows.map((row, i) => (
+          <div className="sh-i-block" key={i}>
+            <div className="sh-i-row sh-i-row--them">
+              <span className="sh-i-tag">{themLabel}</span>
+              <span className="sh-i-line">{row.q}</span>
+            </div>
+            <div className="sh-i-row sh-i-row--me">
+              <span className="sh-i-tag">{meLabel}</span>
+              <span className="sh-i-line">{row.a}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+    );
+  }
+
   return (
     <div className="sh-history">
       {rows.map((row, i) => (
@@ -59,7 +81,7 @@ function HistoryLog({ rows }) {
   );
 }
 
-function ChainStage({ lesson, chainIdx, history, onAdvance }) {
+function ChainStage({ lesson, chainIdx, history, onAdvance, audience }) {
   const [attempt, setAttempt] = useState(0);
   const [clueOpen, setClueOpen] = useState(false);
   const [typed, setTyped] = useState("");
@@ -97,9 +119,9 @@ function ChainStage({ lesson, chainIdx, history, onAdvance }) {
 
   return (
     <>
-      <HistoryLog rows={history} />
+      <HistoryLog rows={history} audience={audience} roles={lesson.roles} />
       <div className="sh-slide">
-        <Avatar side={avatarSide} size="lg" wrong={avatarWrong} />
+        {audience !== "adults" && <Avatar side={avatarSide} size="lg" wrong={avatarWrong} />}
         <div className={lineClass}>{lineText}</div>
       </div>
 
@@ -135,7 +157,7 @@ function ChainStage({ lesson, chainIdx, history, onAdvance }) {
   );
 }
 
-function HistoryModal({ rows, onClose }) {
+function HistoryModal({ rows, onClose, audience, roles }) {
   return (
     <div className="sh-hist-overlay" onClick={onClose}>
       <div className="sh-hist-modal" onClick={(e) => e.stopPropagation()}>
@@ -144,19 +166,19 @@ function HistoryModal({ rows, onClose }) {
           <button type="button" className="sh-hist-close" onClick={onClose}>✕</button>
         </div>
         <div className="sh-hist-modal-body">
-          <HistoryLog rows={rows} />
+          <HistoryLog rows={rows} audience={audience} roles={roles} />
         </div>
       </div>
     </div>
   );
 }
 
-function ChainCompleteStage({ history, onContinue }) {
+function ChainCompleteStage({ history, onContinue, audience, roles }) {
   return (
     <div className="sh-prompt-stage">
       <span className="sh-prompt-eyebrow">Chain Complete</span>
       <div className="sh-chain-complete-history">
-        <HistoryLog rows={history} />
+        <HistoryLog rows={history} audience={audience} roles={roles} />
       </div>
       <button type="button" className="sh-choice-btn sh-choice-btn--good sh-continue-btn" onClick={onContinue}>
         Continue to Unaided Retell →
@@ -193,6 +215,7 @@ export default function Shift() {
   const { trackId, lessonNum } = useParams();
   const lesson = getLesson(trackId, Number(lessonNum));
   const track = getTrack(trackId);
+  const audience = track?.audience?.includes("adults") ? "adults" : "teens";
   const [stage, setStage] = useState("cover");
   const [chainIdx, setChainIdx] = useState(0);
   const [history, setHistory] = useState([]);
@@ -220,19 +243,25 @@ export default function Shift() {
   }
 
   return (
-    <div className="sh-shell">
+    <div className={`sh-shell sh-theme-${audience}`}>
       <style>{CSS}</style>
 
       <div className="sh-stage">
         <div className="sh-panel">
           <TopBar />
           <div className="sh-hero">
-            <div className="sh-bulb-row">
-              {Array.from({ length: 9 }, (_, i) => (
-                <span key={i} className={`sh-bulb${i % 2 === 0 ? " on" : ""}`} />
-              ))}
+            {audience === "teens" && (
+              <div className="sh-bulb-row">
+                {Array.from({ length: 9 }, (_, i) => (
+                  <span key={i} className={`sh-bulb${i % 2 === 0 ? " on" : ""}`} />
+                ))}
+              </div>
+            )}
+            <div className="sh-hero-eyebrow">
+              {audience === "adults"
+                ? `Scenario ${String(lessonNum).padStart(2, "0")} — ${track.title}`
+                : "Now Showing"}
             </div>
-            <div className="sh-hero-eyebrow">Now Showing</div>
             <div className="sh-hero-title">{lesson.scene.title}</div>
             <div className="sh-hero-sub">{lesson.scene.context}</div>
           </div>
@@ -249,7 +278,7 @@ export default function Shift() {
                   <div className="sh-stub-field-value">{track.level}</div>
                 </div>
                 <div className="sh-stub-field">
-                  <div className="sh-stub-field-label">Scene</div>
+                  <div className="sh-stub-field-label">{audience === "adults" ? "Exchange" : "Scene"}</div>
                   <div className="sh-stub-field-value">
                     {String(Math.min(chainIdx + 1, lesson.chain.length)).padStart(2, "0")}/
                     {String(lesson.chain.length).padStart(2, "0")}
@@ -282,11 +311,11 @@ export default function Shift() {
           )}
 
           {stage === "chain" && (
-            <ChainStage lesson={lesson} chainIdx={chainIdx} history={history} onAdvance={advanceChain} />
+            <ChainStage lesson={lesson} chainIdx={chainIdx} history={history} onAdvance={advanceChain} audience={audience} />
           )}
 
           {stage === "chainDone" && (
-            <ChainCompleteStage history={history} onContinue={() => setStage("retell")} />
+            <ChainCompleteStage history={history} onContinue={() => setStage("retell")} audience={audience} roles={lesson.roles} />
           )}
 
           {stage === "retell" && (
@@ -301,13 +330,15 @@ export default function Shift() {
         </div>
       </div>
 
-      {showHistory && <HistoryModal rows={history} onClose={() => setShowHistory(false)} />}
+      {showHistory && (
+        <HistoryModal rows={history} onClose={() => setShowHistory(false)} audience={audience} roles={lesson.roles} />
+      )}
     </div>
   );
 }
 
 const CSS = `
-@import url('https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap');
 
 :root { color-scheme: light; }
 
@@ -454,6 +485,48 @@ const CSS = `
 .sh-prompt-eyebrow { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #C8102E; background: #FBEAD2; border-radius: 999px; padding: 4px 14px; }
 .sh-prompt-text { font-family: 'Inter', sans-serif; font-style: italic; font-weight: 600; font-size: 18px; line-height: 1.45; color: #1B2A4A; max-width: 460px; margin: 0; }
 .sh-continue-btn { margin-top: 4px; }
+
+/* Adults theme -- "Boarding Pass": navy + burnt orange, itinerary rows instead of bubbles, no avatars */
+.sh-theme-adults .sh-panel { box-shadow: 0 20px 44px rgba(11,37,69,0.18); border-color: #E4E1D8; }
+.sh-theme-adults .sh-hero { background: #0B2545; }
+.sh-theme-adults .sh-hero-eyebrow { color: #E8632C; }
+.sh-theme-adults .sh-hero-title { font-family: 'IBM Plex Sans', sans-serif; font-weight: 700; text-transform: none; letter-spacing: 0; }
+.sh-theme-adults .sh-hero-sub { color: #AFC0D8; }
+.sh-theme-adults .sh-stub { background: #0B2545; }
+.sh-theme-adults .sh-stub-field-value { font-family: 'IBM Plex Mono', monospace; font-weight: 700; }
+.sh-theme-adults .sh-seg { background: #E4E1D8; }
+.sh-theme-adults .sh-seg.is-done { background: #E8632C; }
+.sh-theme-adults .sh-seg.is-current { background: #0B2545; }
+
+.sh-itinerary { display: flex; flex-direction: column; padding: 14px 24px 4px; }
+.sh-i-row { padding: 10px 0; border-bottom: 1px solid #ECE9E0; display: flex; gap: 12px; align-items: baseline; }
+.sh-i-block:last-child .sh-i-row--me { border-bottom: none; }
+.sh-i-tag { font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: 0.08em; text-transform: uppercase; color: #9A9484; flex-shrink: 0; width: 64px; }
+.sh-i-row--me .sh-i-tag { color: #E8632C; }
+.sh-i-line { font-family: 'IBM Plex Sans', sans-serif; font-size: 14px; color: #2A3648; line-height: 1.4; }
+
+.sh-theme-adults .sh-slide { background: #0B2545; border-radius: 10px; padding: 20px 26px; }
+.sh-theme-adults .sh-slide::before {
+  content: "✈"; inset: auto; position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
+  width: 24px; height: 24px; border-radius: 50%; background: #E8632C; color: #FFFFFF; font-size: 11px;
+  display: flex; align-items: center; justify-content: center; border: none;
+}
+.sh-theme-adults .sh-line { font-family: 'IBM Plex Sans', sans-serif; font-weight: 600; text-transform: none; letter-spacing: 0; font-size: 17px; }
+.sh-theme-adults .sh-line::before { content: "“"; }
+.sh-theme-adults .sh-line::after { content: "”"; }
+.sh-theme-adults .sh-line.is-wrong { color: #F4C2C2; }
+.sh-theme-adults .sh-compose { border-top: 1px dashed #E4E1D8; }
+.sh-theme-adults .sh-clue-btn { color: #E8632C; }
+.sh-theme-adults .sh-type-label { color: #9A9484; }
+.sh-theme-adults .sh-type-input { border-color: #E4E1D8; font-family: 'IBM Plex Sans', sans-serif; }
+.sh-theme-adults .sh-choice-btn { font-family: 'IBM Plex Mono', monospace; border-radius: 4px; border-width: 2px; border-color: #0B2545; color: #0B2545; transform: rotate(-2deg); }
+.sh-theme-adults .sh-choice-btn--bad:hover { border-color: #C0392B; color: #C0392B; }
+.sh-theme-adults .sh-choice-btn--good { background: #FFFFFF; border-color: #1F7A3F; color: #1F7A3F; transform: rotate(1.5deg); }
+.sh-theme-adults .sh-review-btn { background: #F3E6DE; border-color: #E6CBB8; color: #0B2545; font-family: 'IBM Plex Mono', monospace; }
+.sh-theme-adults .sh-prompt-eyebrow { color: #E8632C; background: #F3E6DE; }
+.sh-theme-adults .sh-prompt-text { font-family: 'IBM Plex Sans', sans-serif; font-style: normal; font-weight: 500; }
+.sh-theme-adults .sh-hist-modal-head { background: #0B2545; font-family: 'IBM Plex Sans', sans-serif; font-weight: 700; text-transform: none; letter-spacing: 0; }
+.sh-theme-adults .sh-hist-close { color: #E8632C; }
 
 @media (max-width: 520px) {
   .sh-bubble { font-size: 13.5px; }
