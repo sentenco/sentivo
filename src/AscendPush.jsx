@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
 
 // ASCEND new mechanic player ("Push"). Renders lessons shaped like
 // ascendDay1.js: { prompts: [{question, answer, pushes, skills}], recall: [...] }.
@@ -101,10 +102,21 @@ function buildSlides(lesson) {
 const STAGE_LABELS = { cover: "Cover", prompt: "Prompt", recall: "Remember This?", wrap: "Wrap-up" };
 
 export default function AscendPush({ lesson, track }) {
-  const [slideIdx, setSlideIdx] = useState(0);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [slideIdx, setSlideIdx] = useState(() => Number(searchParams.get("slide")) || 0);
   const [water, setWater] = useState(0);
   const [note, setNote] = useState("");
   const [wateredSlides, setWateredSlides] = useState(() => new Set());
+
+  // Mirror the slide position into the URL so a refresh mid-lesson lands
+  // back on the same slide instead of the cover.
+  useEffect(() => {
+    const next = new URLSearchParams(searchParams);
+    if (slideIdx > 0) next.set("slide", String(slideIdx));
+    else next.delete("slide");
+    setSearchParams(next, { replace: true });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [slideIdx]);
 
   const slides = buildSlides(lesson);
   const slide = slides[slideIdx];
