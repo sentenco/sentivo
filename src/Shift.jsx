@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useParams, useSearchParams } from "react-router-dom";
 import { getLesson, getTrack } from "./shiftTracks";
 
 // SHIFT player, rebuilt around a single mechanic: a connected chain of
@@ -216,10 +216,31 @@ export default function Shift() {
   const lesson = getLesson(trackId, Number(lessonNum));
   const track = getTrack(trackId);
   const audience = track?.audience?.includes("adults") ? "adults" : "teens";
-  const [stage, setStage] = useState("cover");
-  const [chainIdx, setChainIdx] = useState(0);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const STAGES = ["cover", "chain", "chainDone", "retell", "transfer", "wrap"];
+  const [stage, setStage] = useState(() => {
+    const fromUrl = searchParams.get("stage");
+    return STAGES.includes(fromUrl) ? fromUrl : "cover";
+  });
+  const [chainIdx, setChainIdx] = useState(() => {
+    const n = Number(searchParams.get("chain"));
+    return Number.isInteger(n) && n >= 0 ? n : 0;
+  });
   const [history, setHistory] = useState([]);
   const [showHistory, setShowHistory] = useState(false);
+
+  // Mirror stage + chain position into the URL so a refresh mid-lesson
+  // lands back near the same spot instead of the cover. The typed-answer
+  // history itself can't reasonably survive a refresh (freeform text, not
+  // a simple index), so only the reader's position in the flow persists.
+  useEffect(() => {
+    const next = new URLSearchParams(searchParams);
+    next.set("stage", stage);
+    if (stage === "chain" && chainIdx > 0) next.set("chain", String(chainIdx));
+    else next.delete("chain");
+    setSearchParams(next, { replace: true });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [stage, chainIdx]);
 
   if (!lesson) {
     return (
