@@ -155,23 +155,12 @@ function StoryScene({ name }) {
 }
 
 export default function StoryMakingActivity({ item }) {
-  const rounds = item.rounds && item.rounds.length ? item.rounds : [item];
-  const [roundIndex, setRoundIndex] = useState(0);
+  const round = item;
   const [draft, setDraft] = useState("");
-  const [revealed, setRevealed] = useState(false);
-  const round = rounds[roundIndex];
-  const isLastRound = roundIndex === rounds.length - 1;
   const sentenceCount = useMemo(() => countSentences(draft), [draft]);
 
   function restart() {
     setDraft("");
-    setRevealed(false);
-  }
-
-  function nextRound() {
-    setRoundIndex((i) => i + 1);
-    setDraft("");
-    setRevealed(false);
   }
 
   return (
@@ -204,9 +193,6 @@ export default function StoryMakingActivity({ item }) {
 
           <h1 className="sm-title">{round.title || item.title}</h1>
           <span className="sm-focus">{item.focus}</span>
-          {rounds.length > 1 && (
-            <span className="sm-round-tag">{roundIndex === 0 ? "Story 1 of 2" : "Story 2 of 2 · Bonus"}</span>
-          )}
 
           <p className="sm-prompt">{round.prompt}</p>
           <div className="sm-words">
@@ -223,22 +209,8 @@ export default function StoryMakingActivity({ item }) {
             rows={5}
           />
 
-          {revealed && (
-            <div className="sm-sample">
-              <span className="sm-label">Sample story</span>
-              <p className="sm-sample-text">{round.sample}</p>
-            </div>
-          )}
-
           <div className="sm-nav">
-            <button type="button" className="sm-btn" onClick={restart}>Restart ↻</button>
-            {revealed && !isLastRound ? (
-              <button type="button" className="sm-btn sm-btn--primary" onClick={nextRound}>Bonus story →</button>
-            ) : (
-              <button type="button" className="sm-btn sm-btn--primary" onClick={() => setRevealed(true)} disabled={revealed}>
-                {revealed ? "Sample shown" : "Show sample →"}
-              </button>
-            )}
+            <button type="button" className="sm-btn sm-btn--primary" onClick={restart}>Restart ↻</button>
           </div>
         </div>
       </div>
@@ -286,8 +258,8 @@ const CSS = `
   background: repeating-linear-gradient(45deg, #6EC3E0, #6EC3E0 6px, #A6DCEC 6px, #A6DCEC 12px);
 }
 
-.sm-picture-pane { position: relative; background: #F3EEE6; aspect-ratio: 1 / 1; }
-.sm-scene { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; display: block; }
+.sm-picture-pane { position: relative; background: #F3EEE6; }
+.sm-scene { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
 .sm-corner { position: absolute; top: 0; right: 0; width: 34px; height: 34px; filter: drop-shadow(-1px 1px 2px rgba(43,42,74,0.12)); }
 
 .sm-content-pane { padding: clamp(24px, 3.2vw, 36px); display: flex; flex-direction: column; min-width: 0; }
@@ -311,19 +283,6 @@ const CSS = `
 
 .sm-title { font-family: 'Caveat', cursive; font-weight: 700; font-size: clamp(28px, 4.2vw, 36px); color: #4A3F3A; margin: 0 0 4px; }
 .sm-focus { display: inline-block; font-size: 12.5px; font-weight: 600; color: #A9836F; margin-right: 10px; }
-.sm-round-tag {
-  display: inline-block;
-  font-family: 'Karla', sans-serif;
-  font-size: 10.5px;
-  font-weight: 800;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: #1F9D6E;
-  background: #E4F8EC;
-  border-radius: 999px;
-  padding: 3px 10px;
-}
-.sm-focus + .sm-round-tag { margin-bottom: 18px; }
 
 .sm-prompt { font-size: 13.5px; font-weight: 500; color: #A9836F; line-height: 1.5; margin: 0 0 12px; }
 .sm-words { display: flex; flex-wrap: wrap; gap: 9px; margin-bottom: 18px; }
@@ -360,11 +319,7 @@ const CSS = `
 }
 .sm-textarea:focus { outline: none; border-color: #3E9DBF; }
 
-.sm-sample { margin-top: 16px; background: #E4F8EC; border-radius: 14px; padding: 16px 18px; }
-.sm-label { display: block; font-size: 12px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: #1F7A47; margin-bottom: 8px; }
-.sm-sample-text { font-family: 'Karla', sans-serif; font-size: 14.5px; color: #1F7A47; line-height: 1.6; margin: 0; }
-
-.sm-nav { display: flex; justify-content: space-between; margin-top: 22px; }
+.sm-nav { display: flex; justify-content: flex-start; margin-top: 22px; }
 .sm-btn {
   font-family: 'Karla', sans-serif;
   font-weight: 800;
