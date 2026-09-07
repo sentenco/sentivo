@@ -13,6 +13,8 @@ import birthdayPartyImg from "./assets/story-making/birthday-party.jpg";
 import rainyDayImg from "./assets/story-making/rainy-day.jpg";
 import meetingTheNeighborImg from "./assets/story-making/meeting-the-neighbor.jpg";
 import atTheMarketImg from "./assets/story-making/at-the-market.jpg";
+import petsNewTrickImg from "./assets/story-making/pets-new-trick.jpg";
+import tripToTheBeachImg from "./assets/story-making/trip-to-the-beach.jpg";
 
 const A1A2 = [
   {
@@ -100,7 +102,7 @@ const A1A2 = [
     title: "My Pet's New Trick",
     focus: "Simple past, adjectives",
     scene: "bonus",
-    image: null,
+    image: petsNewTrickImg,
     words: ["dog", "trick", "practice", "treat", "proud", "clap"],
     prompt: "Look at the picture and use the words to write a short, 5-sentence story.",
     sample: "My dog Rocky learned a new trick this month. Every evening, we practiced for ten minutes in the garden. I gave him a small treat every time he did it right. Yesterday he finally rolled over perfectly for the first time. My whole family clapped and I felt so proud of him.",
@@ -110,7 +112,7 @@ const A1A2 = [
     title: "A Trip to the Beach",
     focus: "Simple past, sequencing words",
     scene: "bonus",
-    image: null,
+    image: tripToTheBeachImg,
     words: ["beach", "sandcastle", "waves", "shells", "sunscreen", "tired"],
     prompt: "Look at the picture and use the words to write a short, 5-sentence story.",
     sample: "We drove to the beach early to find a good spot. First, my brother and I built a big sandcastle near the water. Then we collected small shells along the shore. After lunch, we put on more sunscreen and played in the waves. By evening, we were tired but very happy.",
