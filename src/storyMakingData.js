@@ -24,6 +24,7 @@ import weekendVolunteerProjectImg from "./assets/story-making/weekend-volunteer-
 import theStudyGroupImg from "./assets/story-making/the-study-group.jpg";
 import startingANewJobImg from "./assets/story-making/starting-a-new-job.jpg";
 import theNeighborhoodFestivalImg from "./assets/story-making/the-neighborhood-festival.jpg";
+import theJobInterviewImg from "./assets/story-making/the-job-interview.jpg";
 
 const A1A2 = [
   {
@@ -174,7 +175,7 @@ const B1B2 = [
     title: "The Job Interview",
     focus: "Past tense, workplace vocabulary, connectors",
     scene: "interview",
-    image: null,
+    image: theJobInterviewImg,
     words: ["interview", "nervous", "suit", "questions", "handshake", "confident"],
     prompt: "Look at the picture and use the words to write a short, 5-sentence story.",
     sample: "David put on his best suit for the interview, even though he felt nervous. The manager asked several questions about his previous experience. Although his hands were shaking, he answered clearly and honestly. At the end, they shared a firm handshake. He left the office feeling far more confident than when he arrived.",
