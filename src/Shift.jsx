@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useParams } from "react-router-dom";
-import { getLesson } from "./shiftTracks";
+import { getLesson, getTrack } from "./shiftTracks";
 
 // SHIFT player, rebuilt around a single mechanic: a connected chain of
 // in-character exchanges where the target tense stays hidden from the
@@ -192,6 +192,7 @@ function WrapStage({ prompt }) {
 export default function Shift() {
   const { trackId, lessonNum } = useParams();
   const lesson = getLesson(trackId, Number(lessonNum));
+  const track = getTrack(trackId);
   const [stage, setStage] = useState("cover");
   const [chainIdx, setChainIdx] = useState(0);
   const [history, setHistory] = useState([]);
@@ -226,9 +227,38 @@ export default function Shift() {
         <div className="sh-panel">
           <TopBar />
           <div className="sh-hero">
+            <div className="sh-bulb-row">
+              {Array.from({ length: 9 }, (_, i) => (
+                <span key={i} className={`sh-bulb${i % 2 === 0 ? " on" : ""}`} />
+              ))}
+            </div>
+            <div className="sh-hero-eyebrow">Now Showing</div>
             <div className="sh-hero-title">{lesson.scene.title}</div>
             <div className="sh-hero-sub">{lesson.scene.context}</div>
           </div>
+
+          {stage !== "cover" && track && (
+            <>
+              <div className="sh-stub">
+                <div className="sh-stub-field">
+                  <div className="sh-stub-field-label">Track</div>
+                  <div className="sh-stub-field-value">{track.title}</div>
+                </div>
+                <div className="sh-stub-field">
+                  <div className="sh-stub-field-label">Level</div>
+                  <div className="sh-stub-field-value">{track.level}</div>
+                </div>
+                <div className="sh-stub-field">
+                  <div className="sh-stub-field-label">Scene</div>
+                  <div className="sh-stub-field-value">
+                    {String(Math.min(chainIdx + 1, lesson.chain.length)).padStart(2, "0")}/
+                    {String(lesson.chain.length).padStart(2, "0")}
+                  </div>
+                </div>
+              </div>
+              <div className="sh-perforation" />
+            </>
+          )}
 
           {stage !== "cover" && (
             <ProgressRow total={lesson.chain.length} doneCount={history.length} currentIdx={chainIdx} />
@@ -277,14 +307,14 @@ export default function Shift() {
 }
 
 const CSS = `
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600;700&display=swap');
 
 :root { color-scheme: light; }
 
 .sh-shell {
   width: 100%;
   min-height: 100vh;
-  background: #F4EDE8;
+  background: #F5EDE1;
   color: #1B2A4A;
   font-family: 'Inter', sans-serif;
   box-sizing: border-box;
@@ -304,100 +334,129 @@ const CSS = `
 .sh-stage { width: 100%; max-width: 640px; margin: 0 auto; }
 
 .sh-panel {
-  background: #FBF4F1; border-radius: 26px; overflow: hidden;
-  box-shadow: 0 20px 44px rgba(27,42,74,0.16); border: 1px solid #EDE1DB;
+  background: #FFFCF5; border-radius: 26px; overflow: hidden;
+  box-shadow: 0 20px 44px rgba(200,16,46,0.14); border: 1px solid #EFE1C4;
 }
 
 .sh-hero {
-  margin: 18px 18px 0; background: linear-gradient(120deg, #FFDE70 0%, #FFCF3D 100%); border-radius: 18px; padding: 16px 20px 14px;
-  position: relative; overflow: hidden; box-shadow: 0 12px 24px rgba(255,207,61,0.28);
+  margin: 18px 18px 0; background: #1B2A4A; border-radius: 18px; padding: 16px 20px 16px;
+  position: relative; overflow: hidden;
 }
-.sh-hero-title { font-weight: 800; font-size: 14px; color: #1B2A4A; position: relative; }
-.sh-hero-sub { font-size: 11.5px; color: rgba(27,42,74,0.72); margin-top: 2px; position: relative; }
+.sh-bulb-row { display: flex; gap: 6px; justify-content: center; margin-bottom: 10px; }
+.sh-bulb { width: 6px; height: 6px; border-radius: 50%; background: #3A4A70; display: block; }
+.sh-bulb.on { background: #E8A93B; box-shadow: 0 0 6px rgba(232,169,59,0.8); }
+.sh-hero-eyebrow {
+  font-family: 'IBM Plex Mono', monospace; font-size: 10px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase;
+  color: #E8A93B; text-align: center; margin-bottom: 4px;
+}
+.sh-hero-title {
+  font-family: 'Anton', sans-serif; font-weight: 400; font-size: clamp(18px, 3vw, 22px); text-transform: uppercase; letter-spacing: 0.02em;
+  color: #FFFFFF; text-align: center; position: relative;
+}
+.sh-hero-sub { font-size: 12px; color: #B9C4DC; margin-top: 4px; position: relative; text-align: center; font-weight: 600; }
 
-.sh-progress-row { display: flex; gap: 4px; padding: 14px 22px 4px; }
-.sh-seg { flex: 1; height: 3px; border-radius: 999px; background: #EDE1DB; transition: background 0.25s ease; }
-.sh-seg.is-done { background: #2F9E58; }
-.sh-seg.is-current { background: #1B2A4A; }
+.sh-stub { display: flex; justify-content: center; gap: 26px; background: #1B2A4A; padding: 0 20px 16px; margin: 0 18px; }
+.sh-stub-field-label { font-family: 'IBM Plex Mono', monospace; font-size: 8px; letter-spacing: 0.1em; text-transform: uppercase; color: #7488A8; text-align: center; margin-bottom: 2px; }
+.sh-stub-field-value { font-family: 'Anton', sans-serif; font-weight: 400; font-size: 13px; color: #FFFFFF; text-align: center; letter-spacing: 0.03em; }
+
+.sh-perforation { position: relative; height: 0; margin: 0 18px; border-top: 2px dashed #E8D9B8; }
+.sh-perforation::before, .sh-perforation::after {
+  content: ""; position: absolute; top: -11px; width: 22px; height: 22px; border-radius: 50%; background: #F5EDE1;
+}
+.sh-perforation::before { left: -29px; }
+.sh-perforation::after { right: -29px; }
+
+.sh-progress-row { display: flex; gap: 4px; padding: 16px 22px 4px; }
+.sh-seg { flex: 1; height: 4px; border-radius: 2px; background: #F0E4C8; transition: background 0.25s ease; }
+.sh-seg.is-done { background: #C8102E; }
+.sh-seg.is-current { background: #E8A93B; }
 
 .sh-avatar {
   width: 30px; height: 30px; border-radius: 50%; flex-shrink: 0; display: flex; align-items: center;
-  justify-content: center; overflow: hidden; background: #E7EBF3;
+  justify-content: center; overflow: hidden; background: #F0E4C8; border: 1.5px solid #1B2A4A;
 }
 .sh-avatar-img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.sh-avatar--me { background: #FFF4D6; }
-.sh-avatar--lg { width: 44px; height: 44px; margin-bottom: 10px; }
-.sh-avatar--lg.is-wrong { box-shadow: 0 0 0 3px rgba(214,83,109,0.55); }
+.sh-avatar--me { background: #FBEAD2; }
+.sh-avatar--lg { width: 48px; height: 48px; margin-bottom: 10px; border-width: 2px; }
+.sh-avatar--lg.is-wrong { box-shadow: 0 0 0 3px rgba(200,16,46,0.45); }
 
 .sh-history { display: flex; flex-direction: column; gap: 10px; padding: 16px 22px 4px; }
-.sh-hist-row { display: flex; flex-direction: column; gap: 6px; padding-bottom: 10px; border-bottom: 1px solid #EDE1DB; }
+.sh-hist-row { display: flex; flex-direction: column; gap: 6px; padding-bottom: 10px; border-bottom: 1px dashed #EFE1C4; }
 .sh-bubble-line { display: flex; align-items: flex-end; gap: 8px; }
 .sh-bubble-line--them { justify-content: flex-start; }
 .sh-bubble-line--me { justify-content: flex-end; }
 .sh-bubble {
-  font-size: 15px; line-height: 1.4; padding: 8px 13px; border-radius: 14px; max-width: 78%;
-  font-family: 'Fraunces', serif; font-weight: 500;
+  font-size: 14.5px; line-height: 1.4; padding: 8px 13px; border-radius: 12px; max-width: 78%;
+  font-family: 'Inter', sans-serif; font-style: italic; font-weight: 600; border: 1.5px solid #EFE1C4;
 }
-.sh-bubble--them { background: #E7EBF3; color: #1B2A4A; border-bottom-left-radius: 4px; }
-.sh-bubble--me { background: #FFF4D6; color: #1B2A4A; font-weight: 600; border-bottom-right-radius: 4px; }
+.sh-bubble--them { background: #FFFCF5; color: #1B2A4A; border-bottom-left-radius: 4px; }
+.sh-bubble--me { background: #FBEAD2; color: #1B2A4A; border-color: #E8A93B; border-bottom-right-radius: 4px; }
 
 .sh-slide {
-  background: #FFFFFF; margin: 14px auto; border-radius: 18px; display: flex; flex-direction: column;
-  align-items: center; justify-content: center; padding: 16px 22px; text-align: center;
-  box-shadow: 0 8px 18px rgba(27,42,74,0.06); width: fit-content; max-width: calc(100% - 36px);
+  background: #1B2A4A; margin: 14px auto; border-radius: 14px; display: flex; flex-direction: column;
+  align-items: center; justify-content: center; padding: 18px 24px; text-align: center; position: relative;
+  box-shadow: 0 10px 22px rgba(27,42,74,0.22); width: fit-content; max-width: calc(100% - 36px);
 }
-.sh-line { font-family: 'Fraunces', serif; font-weight: 600; font-size: clamp(17px, 2.4vw, 20px); line-height: 1.35; color: #1B2A4A; max-width: 400px; }
-.sh-line.is-wrong { color: #7A2438; }
+.sh-slide::before {
+  content: ""; position: absolute; inset: 6px; border-radius: 8px; border: 2px dotted rgba(232,169,59,0.5); pointer-events: none;
+}
+.sh-line {
+  font-family: 'Anton', sans-serif; font-weight: 400; font-size: clamp(16px, 2.6vw, 19px); text-transform: uppercase;
+  letter-spacing: 0.01em; line-height: 1.3; color: #FFFFFF; max-width: 400px; position: relative;
+}
+.sh-line.is-wrong { color: #F4A6B3; }
 
-.sh-compose { background: #FFFFFF; border-top: 1px solid #EDE1DB; padding: 16px 22px 20px; margin: 0 18px 18px; border-radius: 0 0 18px 18px; }
+.sh-compose { background: #FFFCF5; border-top: 1px dashed #EFE1C4; padding: 16px 22px 20px; margin: 0 18px 18px; border-radius: 0 0 18px 18px; }
 .sh-clue-row { text-align: center; margin-bottom: 10px; }
-.sh-clue-btn { font-family: 'Inter', sans-serif; font-size: 11.5px; font-weight: 700; color: #8A6D1F; background: none; border: none; cursor: pointer; padding: 0; }
-.sh-clue-box { margin-top: 6px; font-size: 12px; color: #1B2A4A; background: #FFF4D6; border-radius: 8px; padding: 8px 10px; display: inline-block; }
+.sh-clue-btn { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: #C8102E; background: none; border: none; cursor: pointer; padding: 0; }
+.sh-clue-box { margin-top: 6px; font-size: 12px; color: #1B2A4A; background: #FBEAD2; border-radius: 8px; padding: 8px 10px; display: inline-block; }
 .sh-clue-box b { font-weight: 800; }
-.sh-type-label { display: block; text-align: center; font-size: 11px; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; color: #5A6B92; margin-bottom: 8px; }
+.sh-type-label { display: block; text-align: center; font-size: 10.5px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #A99B78; font-family: 'IBM Plex Mono', monospace; margin-bottom: 8px; }
 .sh-type-input {
   width: 100%; font-family: 'Inter', sans-serif; font-size: 14px; color: #1B2A4A; text-align: center;
-  background: #FBF4F1; border: 1.5px solid #EDE1DB; border-radius: 12px; padding: 10px 14px; outline: none; margin-bottom: 12px;
+  background: #FFFFFF; border: 1.5px solid #EFE1C4; border-radius: 12px; padding: 10px 14px; outline: none; margin-bottom: 12px;
 }
 .sh-type-input:focus { border-color: #1B2A4A; }
 .sh-teacher-buttons { display: flex; gap: 8px; justify-content: center; }
 .sh-choice-btn {
-  font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 700; border-radius: 999px; padding: 9px 20px; cursor: pointer;
-  border: 1.5px solid #EDE1DB; background: #FFFFFF; color: #1B2A4A;
+  font-family: 'Anton', sans-serif; font-weight: 400; font-size: 12px; letter-spacing: 0.02em; text-transform: uppercase;
+  border-radius: 999px; padding: 9px 20px; cursor: pointer;
+  border: 2px solid #1B2A4A; background: #FFFFFF; color: #1B2A4A;
 }
-.sh-choice-btn--bad:hover { border-color: #D6536D; color: #D6536D; }
-.sh-choice-btn--good { background: #1B2A4A; border-color: #1B2A4A; color: #FFFFFF; }
+.sh-choice-btn--bad:hover { border-color: #C8102E; color: #C8102E; }
+.sh-choice-btn--good { background: #C8102E; border-color: #C8102E; color: #FFFFFF; }
 
 .sh-review-row { display: flex; justify-content: center; padding: 10px 22px 0; }
 .sh-review-btn {
-  font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 700; color: #1B2A4A;
-  background: #FFF4D6; border: 1.5px solid #FFE18F; border-radius: 999px; padding: 8px 16px; cursor: pointer;
+  font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 700; letter-spacing: 0.02em; color: #1B2A4A;
+  background: #FBEAD2; border: 1.5px solid #E8A93B; border-radius: 999px; padding: 8px 16px; cursor: pointer;
   display: inline-flex; align-items: center; gap: 6px;
 }
-.sh-review-btn:hover { background: #FFE9AE; }
+.sh-review-btn:hover { background: #F6DFB4; }
 
 .sh-hist-overlay {
   position: fixed; inset: 0; background: rgba(27,42,74,0.55); display: flex; align-items: center; justify-content: center;
   z-index: 999; padding: 24px;
 }
 .sh-hist-modal {
-  background: #FBF4F1; border-radius: 22px; max-width: 480px; width: 100%; max-height: 80vh; display: flex; flex-direction: column;
+  background: #FFFCF5; border-radius: 22px; max-width: 480px; width: 100%; max-height: 80vh; display: flex; flex-direction: column;
   box-shadow: 0 30px 60px rgba(0,0,0,0.32); overflow: hidden;
 }
 .sh-hist-modal-head {
-  display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; background: #FFFFFF; border-bottom: 1px solid #EDE1DB;
-  font-family: 'Inter', sans-serif; font-weight: 800; font-size: 13px; color: #1B2A4A;
+  display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; background: #1B2A4A; border-bottom: 1px solid #EFE1C4;
+  font-family: 'Anton', sans-serif; font-weight: 400; font-size: 13px; letter-spacing: 0.02em; text-transform: uppercase; color: #FFFFFF;
 }
-.sh-hist-close { background: none; border: none; cursor: pointer; font-size: 16px; color: #5A6B92; line-height: 1; padding: 4px; }
+.sh-hist-close { background: none; border: none; cursor: pointer; font-size: 16px; color: #E8A93B; line-height: 1; padding: 4px; }
 .sh-hist-modal-body { overflow-y: auto; padding: 4px 0 12px; }
 
 .sh-prompt-stage { padding: 26px 26px 24px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 14px; }
 .sh-chain-complete-history { width: 100%; max-height: 300px; overflow-y: auto; text-align: left; }
-.sh-prompt-eyebrow { font-size: 11px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: #8A6D1F; background: #FFF4D6; border-radius: 999px; padding: 4px 14px; }
-.sh-prompt-text { font-family: 'Fraunces', serif; font-weight: 600; font-size: 19px; line-height: 1.45; color: #1B2A4A; max-width: 460px; margin: 0; }
+.sh-prompt-eyebrow { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #C8102E; background: #FBEAD2; border-radius: 999px; padding: 4px 14px; }
+.sh-prompt-text { font-family: 'Inter', sans-serif; font-style: italic; font-weight: 600; font-size: 18px; line-height: 1.45; color: #1B2A4A; max-width: 460px; margin: 0; }
 .sh-continue-btn { margin-top: 4px; }
 
 @media (max-width: 520px) {
   .sh-bubble { font-size: 13.5px; }
+  .sh-stub { gap: 16px; }
 }
 `;
