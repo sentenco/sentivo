@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import TRACKS from "./ascendTracks";
 
 const LEVELS = [
@@ -47,7 +47,18 @@ function GhostCard() {
 
 export default function AscendHub() {
   const navigate = useNavigate();
-  const [level, setLevel] = useState("a2b1");
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [level, setLevel] = useState(() => {
+    const fromUrl = searchParams.get("level");
+    return LEVELS.some((l) => l.key === fromUrl) ? fromUrl : "a2b1";
+  });
+
+  function selectLevel(key) {
+    setLevel(key);
+    const next = new URLSearchParams(searchParams);
+    next.set("level", key);
+    setSearchParams(next, { replace: true });
+  }
 
   return (
     <div className="ah-shell">
@@ -74,7 +85,7 @@ export default function AscendHub() {
               key={l.key}
               type="button"
               className={`ah-level-tab ${level === l.key ? "is-active" : ""}`}
-              onClick={() => setLevel(l.key)}
+              onClick={() => selectLevel(l.key)}
             >
               {l.label}
             </button>

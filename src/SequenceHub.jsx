@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import TRACKS from "./sequenceTracks";
 
 const AUDIENCES = [
@@ -42,8 +42,19 @@ function GhostCard() {
 
 export default function SequenceHub() {
   const navigate = useNavigate();
-  const [audience, setAudience] = useState("teens");
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [audience, setAudience] = useState(() => {
+    const fromUrl = searchParams.get("audience");
+    return AUDIENCES.some((a) => a.key === fromUrl) ? fromUrl : "teens";
+  });
   const tracks = TRACKS.filter((t) => t.audience.includes(audience));
+
+  function selectAudience(key) {
+    setAudience(key);
+    const next = new URLSearchParams(searchParams);
+    next.set("audience", key);
+    setSearchParams(next, { replace: true });
+  }
 
   return (
     <div className="sqh-shell">
@@ -70,7 +81,7 @@ export default function SequenceHub() {
               key={a.key}
               type="button"
               className={`sqh-audience-tab ${audience === a.key ? "is-active" : ""}`}
-              onClick={() => setAudience(a.key)}
+              onClick={() => selectAudience(a.key)}
             >
               {a.label}
             </button>

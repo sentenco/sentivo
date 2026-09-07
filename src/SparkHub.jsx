@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import KIDS_LESSONS from "./sparkTracks";
 import TEENS_LESSONS from "./sparkTeensTracks";
 import ADULTS_LESSONS from "./sparkAdultsTracks";
@@ -135,8 +136,19 @@ const AUDIENCES = {
 };
 
 export default function SparkHub() {
-  const [audience, setAudience] = useState("kids");
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [audience, setAudience] = useState(() => {
+    const fromUrl = searchParams.get("sparkAud");
+    return Object.keys(AUDIENCES).includes(fromUrl) ? fromUrl : "kids";
+  });
   const config = AUDIENCES[audience];
+
+  function selectAudience(key) {
+    setAudience(key);
+    const next = new URLSearchParams(searchParams);
+    next.set("sparkAud", key);
+    setSearchParams(next, { replace: true });
+  }
 
   return (
     <div className="spkh-shell">
@@ -160,7 +172,7 @@ export default function SparkHub() {
                 key={key}
                 type="button"
                 className={`spkh-audience-btn ${audience === key ? "is-active" : ""}`}
-                onClick={() => setAudience(key)}
+                onClick={() => selectAudience(key)}
               >
                 {a.label}
               </button>
