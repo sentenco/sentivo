@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useParams, useSearchParams } from "react-router-dom";
 import { getLesson } from "./sequenceTracks";
 
 // SEQUENCE player, implementing the "Anchor and Expand" mechanic. The
@@ -45,8 +45,19 @@ function PartsList({ parts }) {
 export default function Sequence() {
   const { trackId, lessonNum } = useParams();
   const lesson = getLesson(trackId, Number(lessonNum));
-  const [slideIdx, setSlideIdx] = useState(0);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [slideIdx, setSlideIdx] = useState(() => Number(searchParams.get("slide")) || 0);
   const [answerRevealed, setAnswerRevealed] = useState(false);
+
+  // Mirror the slide position into the URL so a refresh mid-lesson lands
+  // back on the same slide instead of the cover.
+  useEffect(() => {
+    const next = new URLSearchParams(searchParams);
+    if (slideIdx > 0) next.set("slide", String(slideIdx));
+    else next.delete("slide");
+    setSearchParams(next, { replace: true });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [slideIdx]);
 
   if (!lesson) {
     return (
