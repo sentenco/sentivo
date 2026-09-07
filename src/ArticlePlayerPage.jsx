@@ -1,4 +1,4 @@
-import { useState, useRef, useLayoutEffect, useCallback } from "react";
+import { useState, useRef, useEffect, useLayoutEffect, useCallback } from "react";
 import { useParams, useSearchParams } from "react-router-dom";
 import { getArticle } from "./articlesData";
 
@@ -94,11 +94,11 @@ function StyledTitle({ title }) {
 export default function ArticlePlayerPage() {
   const { slug } = useParams();
   const article = getArticle(slug);
-  const [searchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
   const editionParam = searchParams.get("edition");
   const [edition, setEdition] = useState(EDITION_KEYS.includes(editionParam) ? editionParam : "polished");
   const [openKey, setOpenKey] = useState(null);
-  const [page, setPage] = useState(0);
+  const [page, setPage] = useState(() => Number(searchParams.get("page")) || 0);
   const [totalPages, setTotalPages] = useState(1);
   const [colWidth, setColWidth] = useState(FALLBACK_COLUMN_WIDTH);
   const viewportRef = useRef(null);
@@ -138,10 +138,31 @@ export default function ArticlePlayerPage() {
     setPage((p) => Math.min(p, pages - 1));
   }, []);
 
+  // Skip the page reset on the very first run so a page restored from the
+  // URL (a refresh mid-article) survives -- only an actual edition switch
+  // by the reader should jump back to page 1. Compares the previous VALUE
+  // (not a boolean flag) so this stays correct under StrictMode's dev-only
+  // double-invoke of effects, which would otherwise fire the reset once
+  // "for free" on mount.
+  const prevEditionRef = useRef(null);
   useLayoutEffect(() => {
-    setPage(0);
+    if (prevEditionRef.current !== null && prevEditionRef.current !== edition) {
+      setPage(0);
+    }
+    prevEditionRef.current = edition;
     measureWidth();
   }, [edition, measureWidth]);
+
+  // Mirror edition + page into the URL so a refresh lands back on the same
+  // spread instead of the first page of the default edition.
+  useEffect(() => {
+    const next = new URLSearchParams(searchParams);
+    next.set("edition", edition);
+    if (page > 0) next.set("page", String(page));
+    else next.delete("page");
+    setSearchParams(next, { replace: true });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [edition, page]);
 
   // Re-measure pages once colWidth has actually been applied to the DOM
   // (setColWidth in the effect above triggers this on the next render) --

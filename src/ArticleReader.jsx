@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useSearchParams } from "react-router-dom";
 import { getArticle } from "./articlesData";
 
 const EDITION_KEYS = ["plain", "polished", "precise"];
@@ -82,8 +82,19 @@ function Paragraph({ parts, blockIdx, openKey, setOpenKey, references, year, onC
 export default function ArticleReader() {
   const { slug } = useParams();
   const article = getArticle(slug);
-  const [edition, setEdition] = useState("polished");
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [edition, setEdition] = useState(() => {
+    const fromUrl = searchParams.get("edition");
+    return EDITION_KEYS.includes(fromUrl) ? fromUrl : "polished";
+  });
   const [openKey, setOpenKey] = useState(null);
+
+  function selectEdition(key) {
+    setEdition(key);
+    const next = new URLSearchParams(searchParams);
+    next.set("edition", key);
+    setSearchParams(next, { replace: true });
+  }
 
   if (!article || !article.ready) {
     return (
@@ -143,7 +154,7 @@ export default function ArticleReader() {
                 key={k}
                 type="button"
                 className={`ar-ed-btn ${edition === k ? "is-active" : ""}`}
-                onClick={() => setEdition(k)}
+                onClick={() => selectEdition(k)}
               >
                 <span className="ar-ed-name">{article.editions[k].label.replace(/ Edition$/, "")}</span>
                 <span className="ar-ed-range">{article.editions[k].range}</span>
