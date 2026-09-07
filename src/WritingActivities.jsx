@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
 import PROOFREADING_SETS from "./proofreadingData";
 import STORY_MAKING_SETS from "./storyMakingData";
 import MESSAGE_REPLY_SETS from "./messageReplyData";
@@ -143,8 +144,12 @@ function openTopicPlayer(typeKey, topicKey) {
 }
 
 export default function WritingActivities({ query }) {
-  const [typeKey, setTypeKey] = useState(null);
-  const [levelTab, setLevelTab] = useState(LEVEL_GROUPS[0]);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [typeKey, setTypeKey] = useState(() => searchParams.get("wType"));
+  const [levelTab, setLevelTab] = useState(() => {
+    const fromUrl = searchParams.get("wLevel");
+    return LEVEL_GROUPS.includes(fromUrl) ? fromUrl : LEVEL_GROUPS[0];
+  });
   const q = query.trim().toLowerCase();
 
   // Browser back/forward drives navigation instead of an in-page back
@@ -159,10 +164,23 @@ export default function WritingActivities({ query }) {
     return () => window.removeEventListener("popstate", onPopState);
   }, []);
 
+  // Mirror the current drill-down into the URL (wType/wLevel) so a refresh
+  // lands back on the same type + CEFR tab instead of the type picker.
   function openType(key) {
     window.history.pushState({ waDepth: 1 }, "");
     setTypeKey(key);
     setLevelTab(LEVEL_GROUPS[0]);
+    const next = new URLSearchParams(searchParams);
+    next.set("wType", key);
+    next.set("wLevel", LEVEL_GROUPS[0]);
+    setSearchParams(next, { replace: true });
+  }
+
+  function selectLevel(lvl) {
+    setLevelTab(lvl);
+    const next = new URLSearchParams(searchParams);
+    next.set("wLevel", lvl);
+    setSearchParams(next, { replace: true });
   }
 
   const type = ACTIVITY_TYPES.find((t) => t.key === typeKey);
@@ -231,7 +249,7 @@ export default function WritingActivities({ query }) {
               key={lvl}
               type="button"
               className={`wa-level-tab ${levelTab === lvl ? "is-active" : ""}`}
-              onClick={() => setLevelTab(lvl)}
+              onClick={() => selectLevel(lvl)}
             >
               {lvl}
             </button>
