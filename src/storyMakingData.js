@@ -15,6 +15,15 @@ import meetingTheNeighborImg from "./assets/story-making/meeting-the-neighbor.jp
 import atTheMarketImg from "./assets/story-making/at-the-market.jpg";
 import petsNewTrickImg from "./assets/story-making/pets-new-trick.jpg";
 import tripToTheBeachImg from "./assets/story-making/trip-to-the-beach.jpg";
+import theSchoolPlayImg from "./assets/story-making/the-school-play.jpg";
+import theBrokenBikeImg from "./assets/story-making/the-broken-bike.jpg";
+import theCoffeeShopSpillImg from "./assets/story-making/the-coffee-shop-spill.jpg";
+import theLostWalletImg from "./assets/story-making/the-lost-wallet.jpg";
+import missedFlightImg from "./assets/story-making/missed-flight.jpg";
+import weekendVolunteerProjectImg from "./assets/story-making/weekend-volunteer-project.jpg";
+import theStudyGroupImg from "./assets/story-making/the-study-group.jpg";
+import startingANewJobImg from "./assets/story-making/starting-a-new-job.jpg";
+import theNeighborhoodFestivalImg from "./assets/story-making/the-neighborhood-festival.jpg";
 
 const A1A2 = [
   {
@@ -125,7 +134,7 @@ const B1B2 = [
     title: "The School Play",
     focus: "Past continuous + simple past, sequencing",
     scene: "bonus",
-    image: null,
+    image: theSchoolPlayImg,
     words: ["school play", "backstage", "forgot", "lines", "audience", "applause"],
     prompt: "Look at the picture and use the words to write a short, 5-sentence story.",
     sample: "Backstage before the school play, everyone was nervous and quiet. Just before her scene, Priya suddenly forgot her lines. Her friend whispered the first word from behind the curtain. Priya took a breath and finished the scene perfectly. The audience gave her a huge round of applause.",
@@ -135,7 +144,7 @@ const B1B2 = [
     title: "The Broken Bike",
     focus: "Past tense narrative, descriptive detail",
     scene: "bonus",
-    image: null,
+    image: theBrokenBikeImg,
     words: ["bike", "flat tire", "stranded", "stranger", "fix", "grateful"],
     prompt: "Look at the picture and use the words to write a short, 5-sentence story.",
     sample: "Halfway home, Leo's bike suddenly got a flat tire. He was stranded on a quiet road far from home. A stranger walking his dog stopped and offered to help. Together they managed to fix the tire in ten minutes. Leo thanked him and felt grateful the whole ride home.",
@@ -145,7 +154,7 @@ const B1B2 = [
     title: "The Coffee Shop Spill",
     focus: "Past continuous + simple past, connectors",
     scene: "bonus",
-    image: null,
+    image: theCoffeeShopSpillImg,
     words: ["coffee shop", "stranger", "laptop", "spilled", "apologize", "conversation"],
     prompt: "Look at the picture and use the words to write a short, 5-sentence story.",
     sample: "I was working on my laptop at a busy coffee shop. A stranger accidentally spilled coffee near my table. He apologized right away and helped me dry my papers. We ended up sharing a table for the rest of the morning. It turned into a nice conversation between two strangers.",
@@ -155,7 +164,7 @@ const B1B2 = [
     title: "The Lost Wallet",
     focus: "Past tense, feelings vocabulary",
     scene: "bonus",
-    image: null,
+    image: theLostWalletImg,
     words: ["wallet", "lost", "worried", "stranger", "return", "thankful"],
     prompt: "Look at the picture and use the words to write a short, 5-sentence story.",
     sample: "I noticed my wallet was missing as soon as I got home. I felt worried and tried to remember every place I had visited. A stranger found it on the sidewalk near the market. She called the number on my card and offered to return it. I was so thankful that I brought her a small gift the next day.",
@@ -175,7 +184,7 @@ const B1B2 = [
     title: "Missed Flight",
     focus: "Past tense narrative, cause and effect",
     scene: "airport",
-    image: null,
+    image: missedFlightImg,
     words: ["airport", "delay", "luggage", "gate", "worried", "rebook"],
     prompt: "Look at the picture and use the words to write a short, 5-sentence story.",
     sample: "Traffic on the way to the airport caused a long delay. By the time I checked my luggage, I only had ten minutes left. I ran through the terminal, but the gate had already closed. I felt worried as I watched my flight leave without me. Luckily, an airline agent helped me rebook a seat on the next flight.",
@@ -185,7 +194,7 @@ const B1B2 = [
     title: "A Weekend Volunteer Project",
     focus: "Past tense narrative, cause and effect",
     scene: "bonus",
-    image: null,
+    image: weekendVolunteerProjectImg,
     words: ["volunteer", "shelter", "paint", "team", "exhausted", "rewarding"],
     prompt: "Look at the picture and use the words to write a short, 5-sentence story.",
     sample: "Our office organized a volunteer day at a local animal shelter. Since the building badly needed repairs, our team spent the morning painting the walls. Everyone worked together, even though the weather was hot. By the afternoon we were completely exhausted but proud of what we had done. It turned out to be one of the most rewarding weekends I've had in a long time.",
@@ -195,7 +204,7 @@ const B1B2 = [
     title: "The Study Group",
     focus: "Past tense narrative, connectors",
     scene: "bonus",
-    image: null,
+    image: theStudyGroupImg,
     words: ["exam", "study group", "notes", "confused", "explain", "relieved"],
     prompt: "Look at the picture and use the words to write a short, 5-sentence story.",
     sample: "Two nights before the exam, I was still confused about half the material. Because my notes made no sense to me, I asked a few classmates to form a study group. One of them explained the topic in a way that finally made it click. We quizzed each other until almost midnight. I walked into the exam feeling far more relieved than I expected.",
@@ -205,7 +214,7 @@ const B1B2 = [
     title: "Starting a New Job",
     focus: "Past tense, workplace vocabulary",
     scene: "bonus",
-    image: null,
+    image: startingANewJobImg,
     words: ["first day", "colleagues", "overwhelmed", "training", "mistake", "settle in"],
     prompt: "Look at the picture and use the words to write a short, 5-sentence story.",
     sample: "On my first day, my new colleagues welcomed me with a short office tour. I felt a little overwhelmed trying to remember everyone's name. During training, I made a small mistake with the booking system, but my manager just laughed it off. By the end of the week, I had already learned the basics of my role. It didn't take long to settle in and feel part of the team.",
@@ -215,7 +224,7 @@ const B1B2 = [
     title: "The Neighborhood Festival",
     focus: "Past tense narrative, sequencing",
     scene: "bonus",
-    image: null,
+    image: theNeighborhoodFestivalImg,
     words: ["festival", "stalls", "organize", "crowd", "music", "proud"],
     prompt: "Look at the picture and use the words to write a short, 5-sentence story.",
     sample: "Our neighborhood association decided to organize a small street festival this year. Volunteers set up food stalls and a stage for live music along the main road. By the afternoon, a huge crowd had gathered, far more than anyone expected. Local bands played until sunset while children ran between the stalls. Everyone agreed it was the best festival the neighborhood had ever had, and I felt proud to have helped plan it.",
