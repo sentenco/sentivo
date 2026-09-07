@@ -10,6 +10,9 @@ import parkZooImg from "./assets/story-making/park-zoo.jpg";
 import lostPuppyImg from "./assets/story-making/lost-puppy.jpg";
 import newStudentImg from "./assets/story-making/new-student.jpg";
 import birthdayPartyImg from "./assets/story-making/birthday-party.jpg";
+import rainyDayImg from "./assets/story-making/rainy-day.jpg";
+import meetingTheNeighborImg from "./assets/story-making/meeting-the-neighbor.jpg";
+import atTheMarketImg from "./assets/story-making/at-the-market.jpg";
 
 const A1A2 = [
   {
@@ -67,7 +70,7 @@ const A1A2 = [
     title: "A Rainy Day",
     focus: "Simple past, weather vocabulary",
     scene: "rain",
-    image: null,
+    image: rainyDayImg,
     words: ["rain", "umbrella", "puddle", "boots", "run", "laugh"],
     prompt: "Look at the picture and use the words to write a short, 5-sentence story.",
     sample: "The rain started suddenly while we were walking to school. I opened my umbrella, but the wind turned it inside out. My sister jumped straight into a deep puddle in her yellow boots. We had to run the rest of the way, completely soaked. By the time we arrived, we couldn't stop laughing.",
@@ -77,7 +80,7 @@ const A1A2 = [
     title: "Meeting the Neighbor",
     focus: "Simple past, everyday vocabulary",
     scene: "neighbor",
-    image: null,
+    image: meetingTheNeighborImg,
     words: ["neighbor", "moving truck", "boxes", "coffee", "smile", "welcome"],
     prompt: "Look at the picture and use the words to write a short, 5-sentence story.",
     sample: "A moving truck stopped in front of the house next door yesterday. Our new neighbor carried box after box into her new home. In the afternoon, I brought her a cup of coffee. She smiled and thanked me for the warm welcome. We talked on the porch for almost an hour.",
@@ -87,7 +90,7 @@ const A1A2 = [
     title: "At the Market",
     focus: "Simple past, shopping vocabulary",
     scene: "market",
-    image: null,
+    image: atTheMarketImg,
     words: ["market", "vegetables", "basket", "seller", "price", "bag"],
     prompt: "Look at the picture and use the words to write a short, 5-sentence story.",
     sample: "On Sunday morning, I walked to the local market to buy fresh vegetables. I filled my basket with tomatoes, onions, and peppers. The seller told me a fair price for everything. I paid and packed it all into my bag. It was a simple trip, but I enjoyed every minute of it.",
