@@ -119,12 +119,14 @@ export default function TrackLevelPage({ audience, level, onBack }) {
               <span className="tlp-toc-eyebrow">{track.label} &middot; {level} {data.name}</span>
             </div>
             <h2 className="tlp-toc-title">Table of Contents</h2>
-            <p className="tlp-toc-sub">12 units &middot; 72 lessons</p>
+            <p className="tlp-toc-sub">{units.length} units &middot; {units.reduce((sum, u) => sum + u.lessons.length, 0)} lessons</p>
           </div>
 
           <ul className="tlp-toc-list">
             {units.map((u) => {
               const isOpen = openUnit === u.num;
+              const readyForUnit = ((READY_LESSONS[audience] || {})[level] || {})[u.num] || [];
+              const unitReady = u.lessons.length > 0 && u.lessons.every((l) => readyForUnit.includes(l.num));
               return (
                 <li key={u.num} className={`tlp-toc-item ${isOpen ? "is-open" : ""}`}>
                   <div className="tlp-toc-row" onClick={() => setOpenUnit(isOpen ? null : u.num)}>
@@ -135,7 +137,7 @@ export default function TrackLevelPage({ audience, level, onBack }) {
                       <div className="tlp-toc-title-row">
                         <span className="tlp-toc-item-title">{u.title}</span>
                         <span className="tlp-toc-leader" />
-                        <span className="tlp-toc-page-tag">Coming soon</span>
+                        {!unitReady && <span className="tlp-toc-page-tag">Coming soon</span>}
                       </div>
                       <div className="tlp-toc-focus">{u.focus} &middot; {u.anchor}</div>
                     </div>
