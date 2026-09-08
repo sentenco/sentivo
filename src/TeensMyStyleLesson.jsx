@@ -110,7 +110,7 @@ function buildSlides() {
       stage: "Unit 1 · Lesson 1",
       body: (
         <div className="title-content">
-          <div className="title-eyebrow">A2 &middot; Momentum</div>
+          <div className="title-eyebrow">A2 &middot; Ablaze</div>
           <h1 className="title-h">My Style</h1>
           <p className="title-p">Learn the words to describe your own personal style.</p>
         </div>

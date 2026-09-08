@@ -1,4 +1,4 @@
-// Adults track: Groundwork (A1) / Structure (A2). Unit topics, grammar
+// Adults track: Sprout (A1) / Bloom (A2). Unit topics, grammar
 // anchors, and now the 5-teaching-lesson + test breakdown per unit are all
 // locked (see memory project_adults_curriculum_plan.md). No lesson content
 // (slides/activities) has been written yet -- titles and focuses only.
@@ -6,14 +6,14 @@
 export const ADULTS_LEVELS = {
   A1: {
     code: "A1",
-    name: "Groundwork",
+    name: "Sprout",
     tag: "Start here",
     accent: "coral",
     description: "Everyday English for real situations: introductions, family, home, work, and the words to get through your day with confidence.",
   },
   A2: {
     code: "A2",
-    name: "Structure",
+    name: "Bloom",
     tag: "Next step",
     accent: "navy",
     description: "More detail and more nuance: plans, opinions, past experiences, and the language to handle everyday adult life with ease.",
@@ -168,7 +168,7 @@ export const ADULTS_UNITS = {
       ],
     },
     {
-      num: 2, title: "Work and Study Life", anchor: "comparatives", focus: "Describe your work or study routine in more detail than Groundwork",
+      num: 2, title: "Work and Study Life", anchor: "comparatives", focus: "Describe your work or study routine in more detail than Sprout",
       lessons: [
         { num: 1, title: "My Routine vs Before", focus: "Comparatives, intro" },
         { num: 2, title: "Which Job Is Better?", focus: "Comparing jobs and roles" },

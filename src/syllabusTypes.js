@@ -404,9 +404,9 @@ function buildArticleSessions(count, startIndex) {
   return { sessions, endIndex: startIndex + count };
 }
 
-// ---------- Curriculum (real Discover/Ignite/Groundwork lessons, A1 only) ----------
+// ---------- Curriculum (real Discover/Ignite/Sprout lessons, A1 only) ----------
 // "Recommended for beginners": at A1 there's real, sequenced, age-matched
-// curriculum content (Kids Discover, Teens Ignite, Adults Groundwork)
+// curriculum content (Kids Discover, Teens Ignite, Adults Sprout)
 // that's a better fit for a true beginner than the generic Grammar/Vocab
 // pool -- so A1 syllabi pull from it first. Filters through each track's
 // own READY_LESSONS map (the same one its curriculum page uses to decide

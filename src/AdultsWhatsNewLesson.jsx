@@ -99,7 +99,7 @@ function buildSlides() {
       stage: "Unit 1 · Lesson 1",
       body: (
         <div className="title-content">
-          <div className="title-eyebrow">A2 &middot; Structure</div>
+          <div className="title-eyebrow">A2 &middot; Bloom</div>
           <h1 className="title-h">What&apos;s New?</h1>
           <p className="title-p">Talk about what you&apos;re doing these days, using the present continuous.</p>
         </div>

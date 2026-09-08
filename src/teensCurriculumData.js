@@ -1,4 +1,4 @@
-// Teens track: Ignite (A1) / Momentum (A2). Unit topics, grammar anchors,
+// Teens track: Ignite (A1) / Ablaze (A2). Unit topics, grammar anchors,
 // and now the 5-teaching-lesson + test breakdown per unit are all locked
 // (see memory project_teens_curriculum_plan.md). No lesson content
 // (slides/activities) has been written yet -- titles and focuses only.
@@ -13,7 +13,7 @@ export const TEENS_LEVELS = {
   },
   A2: {
     code: "A2",
-    name: "Momentum",
+    name: "Ablaze",
     tag: "Next step",
     accent: "navy",
     description: "More detail on the things that matter to you: style, friendships, travel, and the confidence to say what you really think.",

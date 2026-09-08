@@ -21,7 +21,7 @@ import {
 } from "./syllabusTypes";
 import ConfirmDialog from "./ConfirmDialog";
 
-// Curriculum lessons (Kids Discover, Teens Ignite, Adults Groundwork) are
+// Curriculum lessons (Kids Discover, Teens Ignite, Adults Sprout) are
 // built to run as a centered popup window and self-resize to fit their own
 // content once opened (see any of those lesson files' window.opener effect)
 // -- opening them as a plain new tab strands them at browser-window size
