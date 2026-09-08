@@ -51,4 +51,59 @@ export const IGNITE_A1_LESSONS = {
       { type: "landing", stage: "Unit Complete!", heading: "Unit 1 Complete!", caption: "You can greet someone, ask and answer questions, spell your name, and handle a full first meeting on your own." },
     ],
   },
+  "2-1": {
+    slides: [
+      { type: "title", stage: "Unit 2 · Lesson 1", eyebrow: "A1 · Ignite", title: "My Family", subtitle: "Name basic family members." },
+      { type: "vocab", stage: "Getting Ready", heading: "Family Words", subheading: "New words for this unit", items: [{ label: "mom" }, { label: "dad" }, { label: "brother" }, { label: "sister" }, { label: "grandma" }, { label: "grandpa" }] },
+      { type: "examples", stage: "Learn It", heading: "This Is My...", subheading: "Point and name", rows: [["Who is this?", "This is the mother."], ["Show me the brother.", "This is my brother."]] },
+      { type: "dialogue", stage: "Try It", heading: "Who Is This?", subheading: "Identify each family member", turns: [{ who: "teacher", text: "Who is this?" }, { who: "student", text: "This is the mother." }, { who: "teacher", text: "Show me the brother." }] },
+      { type: "dialogue", stage: "Family Tree Mystery", heading: "Family Tree Mystery", subheading: "The Park Family: Dad David, Mom Lisa, Brother Max, Sister Emma", turns: [{ who: "teacher", text: "I'm a girl. I'm Max's sister. Who am I?" }, { who: "student", text: "Emma!" }, { who: "teacher", text: "Do you have a brother or a sister?" }] },
+      { type: "practice", stage: "Exit Check", heading: "Name Five", subheading: "Name each family member without help", line: "This is my ___. This is my ___. This is my ___." },
+      { type: "landing", stage: "Wrap-Up", heading: "Nice Work!", caption: "You can now name the people in a family. Next up: talking about them." },
+    ],
+  },
+  "2-2": {
+    slides: [
+      { type: "title", stage: "Unit 2 · Lesson 2", eyebrow: "A1 · Ignite", title: "Talking About Family", subtitle: "Say simple facts about family members." },
+      { type: "vocab", stage: "Getting Ready", heading: "I Have...", subheading: "New patterns for this unit", items: [{ label: "I have one brother." }, { label: "His name is..." }, { label: "Her name is..." }, { label: "He is ___ years old." }] },
+      { type: "examples", stage: "Learn It", heading: "Build a Fact", subheading: "Relationship + name + age", rows: [["Sophie, sister, 13", "She is my sister. Her name is Sophie. She is 13."]] },
+      { type: "dialogue", stage: "Try It", heading: "Give the Facts", subheading: "Turn information into sentences", turns: [{ who: "teacher", text: "Sophie. Sister. 13." }, { who: "student", text: "She is my sister. Her name is Sophie. She is 13 years old." }] },
+      { type: "dialogue", stage: "Family Profile Cards", heading: "Family Profile Cards", subheading: "Maya, sister, 14, favorite color purple — some clues hidden each round", turns: [{ who: "teacher", text: "👧 Sister, 14. Tell me about her." }, { who: "student", text: "She is my sister. She is 14 years old." }, { who: "teacher", text: "Now: Jack, brother, 16." }] },
+      { type: "practice", stage: "Exit Check", heading: "Talk About Family", subheading: "One family member, at least 3 facts, 20-30 seconds", line: "This is my ___. ___'s name is ___. ___ is ___ years old." },
+      { type: "landing", stage: "Wrap-Up", heading: "Nice Work!", caption: "You can now share real facts about your family. Next up: describing people." },
+    ],
+  },
+  "2-3": {
+    slides: [
+      { type: "title", stage: "Unit 2 · Lesson 3", eyebrow: "A1 · Ignite", title: "People I Know", subtitle: "Describe people with simple words." },
+      { type: "vocab", stage: "Getting Ready", heading: "Appearance & Personality", subheading: "New describing words", items: [{ label: "tall / short" }, { label: "long hair / short hair" }, { label: "nice / funny" }, { label: "friendly / quiet" }] },
+      { type: "message", stage: "Learn It", heading: "Is + Adjective, Has + Noun", subheading: "Two different patterns", lines: ["She *is* tall.", "She *has* long hair.", "He *is* funny."] },
+      { type: "dialogue", stage: "Try It", heading: "Describe What You See", subheading: "Look at a person and describe them", turns: [{ who: "teacher", text: "What can you see?" }, { who: "student", text: "He is tall. He has short hair." }] },
+      { type: "dialogue", stage: "Who Am I Describing?", heading: "Who Am I Describing?", subheading: "Alex tall/funny, Mia short/friendly, Ben quiet, Sara nice — guess from clues", turns: [{ who: "teacher", text: "This person is tall. This person has long hair. This person is friendly." }, { who: "student", text: "Mia!" }, { who: "teacher", text: "Now you describe someone for me." }] },
+      { type: "practice", stage: "Exit Check", heading: "Describe One Person", subheading: "At least three simple sentences", line: "He/She is my ___. He/She is ___. He/She has ___." },
+      { type: "landing", stage: "Wrap-Up", heading: "Nice Work!", caption: "You can now describe people you know. Next up: family questions." },
+    ],
+  },
+  "2-4": {
+    slides: [
+      { type: "title", stage: "Unit 2 · Lesson 4", eyebrow: "A1 · Ignite", title: "Family Questions", subtitle: "Answer simple questions about family." },
+      { type: "vocab", stage: "Getting Ready", heading: "Family Questions", subheading: "New questions for this unit", items: [{ label: "Do you have a brother?" }, { label: "How many sisters?" }, { label: "What's his/her name?" }, { label: "What is he/she like?" }] },
+      { type: "examples", stage: "Learn It", heading: "Question → Answer", subheading: "The key patterns", rows: [["Do you have a brother?", "Yes, I do."], ["How many brothers do you have?", "I have two brothers."]] },
+      { type: "dialogue", stage: "Try It", heading: "Ask, Then Match", subheading: "Answer, then match answers to questions", turns: [{ who: "teacher", text: "Do you have a sister?" }, { who: "student", text: "Yes, I do." }] },
+      { type: "dialogue", stage: "Family Interview", heading: "Family Interview", subheading: "You interview the teacher's fictional character, then switch roles", turns: [{ who: "student", text: "Do you have a brother?" }, { who: "teacher", text: "Yes, I do." }, { who: "student", text: "What's his name?" }, { who: "teacher", text: "His name is Leo." }] },
+      { type: "practice", stage: "Exit Check", heading: "Answer Independently", subheading: "3-4 random family questions", line: "Yes, I do. / No, I don't. I have ___ ___." },
+      { type: "landing", stage: "Wrap-Up", heading: "Nice Work!", caption: "You can now ask and answer family questions confidently. Next up: Unit Review." },
+    ],
+  },
+  "2-5": {
+    slides: [
+      { type: "title", stage: "Unit 2 · Unit Review", eyebrow: "A1 · Ignite", title: "Unit Review", subtitle: "Talk briefly about family using everything you've learned. No new language today." },
+      { type: "vocab", stage: "Quick Review", heading: "Family → Facts → Description → Questions", subheading: "Everything from this unit", items: [{ label: "family members" }, { label: "numbers" }, { label: "ages" }, { label: "appearance" }, { label: "personality" }] },
+      { type: "message", stage: "Language Review", heading: "Who? → Facts → Description", subheading: "Your speaking structure", lines: ["This is my brother. His name is Alex. He is *15* years old. He is *tall and funny*."] },
+      { type: "dialogue", stage: "Controlled Practice", heading: "Talk About the Profile", subheading: "Use a fictional profile to build sentences", turns: [{ who: "teacher", text: "Sophie, sister, 13, funny. Tell me about her." }, { who: "student", text: "This is my sister. Her name is Sophie. She is 13. She is funny." }] },
+      { type: "dialogue", stage: "My Family, My Story", heading: "My Family, My Story", subheading: "Choose real or fictional, prepare, then present 30-60 seconds", turns: [{ who: "student", text: "This is my family. This is my mom. Her name is Anna. She is 40 years old. She is friendly." }, { who: "teacher", text: "What's her name? How old is your brother?" } ] },
+      { type: "practice", stage: "Exit Check", heading: "Tell Me About Your Family", subheading: "Speak independently for 30-60 seconds", line: "This is my family. This is my ___. ___'s name is ___. ___ is ___." },
+      { type: "landing", stage: "Unit Complete!", heading: "Unit 2 Complete!", caption: "You can name family members, give facts, describe people, answer questions, and talk about your family." },
+    ],
+  },
 };

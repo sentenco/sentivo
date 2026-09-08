@@ -37,12 +37,11 @@ export const TEENS_UNITS = {
     {
       num: 2, title: "Family and People I Know", anchor: "possessive 's, have got", focus: "Talk about your family and people you know",
       lessons: [
-        { num: 1, title: "My Family", focus: "Name family members, possessive 's" },
-        { num: 2, title: "Who Do You Know?", focus: "Talk about friends and people you know" },
-        { num: 3, title: "What Do They Look Like?", focus: "Have got for description" },
-        { num: 4, title: "Tell Me About Them", focus: "Consolidate: fuller description practice" },
-        { num: 5, title: "Describe Your Family", focus: "Production: speaking or writing task" },
-        { num: 6, title: "Unit Test", focus: "Summative test", isTest: true },
+        { num: 1, title: "My Family", focus: "Name basic family members" },
+        { num: 2, title: "Talking About Family", focus: "Say simple facts about family members" },
+        { num: 3, title: "People I Know", focus: "Describe people with simple words" },
+        { num: 4, title: "Family Questions", focus: "Ask and answer questions about family" },
+        { num: 5, title: "Unit Review", focus: "Summative review", isTest: true },
       ],
     },
     {
