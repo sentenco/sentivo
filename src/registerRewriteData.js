@@ -4,6 +4,10 @@
 // helpfulPhrases: [3-4], prompt, sample }
 // "direction" is "toFormal" or "toCasual" -- alternated across items so
 // students practice register-shifting both ways, not just formalizing.
+// An item can carry "rounds" instead of a single original/helpfulPhrases/
+// sample -- several messages to rewrite in the same scenario, one after
+// another. "Text to a Teacher" is the pilot for this (4 rounds); every
+// other topic is still the single-message shape for now.
 
 const A1A2 = [
   {
@@ -12,10 +16,29 @@ const A1A2 = [
     focus: "Formal greetings, polite requests",
     direction: "toFormal",
     context: "You're texting your teacher, not a friend.",
-    original: "hey i forgot my homework at home lol can i bring it tmrw",
-    helpfulPhrases: ["Dear Mr./Ms. ___", "I apologize for", "Would it be possible to"],
-    prompt: "Rewrite this message formally for your teacher.",
-    sample: "Dear Ms. Reyes, I apologize, but I forgot my homework at home today. Would it be possible to bring it tomorrow instead? Thank you for understanding.",
+    prompt: "Rewrite each message formally for your teacher.",
+    rounds: [
+      {
+        original: "hey i forgot my homework at home lol can i bring it tmrw",
+        helpfulPhrases: ["Dear Mr./Ms. ___", "I apologize for", "Would it be possible to"],
+        sample: "Dear Ms. Reyes, I apologize, but I forgot my homework at home today. Would it be possible to bring it tomorrow instead? Thank you for understanding.",
+      },
+      {
+        original: "can u give me more time for the essay im not done yet",
+        helpfulPhrases: ["I am writing to ask", "additional time", "Thank you for your understanding"],
+        sample: "Dear Mr./Ms. ___, I am writing to ask if I could have some additional time to complete the essay, as I have not yet finished it. Thank you for your understanding.",
+      },
+      {
+        original: "i missed the quiz yesterday can i retake it",
+        helpfulPhrases: ["I was unable to", "Would it be possible to", "Thank you for considering"],
+        sample: "Dear Mr./Ms. ___, I was unable to take the quiz yesterday. Would it be possible to arrange a time to retake it? Thank you for considering my request.",
+      },
+      {
+        original: "i dont get the homework can u explain it again",
+        helpfulPhrases: ["I did not fully understand", "Would you be able to", "I would greatly appreciate"],
+        sample: "Dear Mr./Ms. ___, I did not fully understand the homework assignment. Would you be able to explain it again? I would greatly appreciate your help.",
+      },
+    ],
   },
   {
     key: "partyInvite",

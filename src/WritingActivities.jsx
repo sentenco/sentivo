@@ -34,7 +34,7 @@ export const ACTIVITY_TYPES = [
     key: "registerRewrite",
     title: "Register Rewrite",
     icon: "🔁",
-    blurb: "Rewrite a message formally or casually, then compare with a sample.",
+    blurb: "Rewrite a message formally or casually.",
     hue: "mint",
     sets: REGISTER_REWRITE_SETS,
   },
@@ -45,7 +45,7 @@ const LEVEL_GROUPS = ["A1-A2", "B1-B2", "C1-C2"];
 // Activity types with a Teacher's Guide -- their topic cards show a
 // separate "Guide" button next to "Start" instead of the whole card
 // being one click-through button.
-const HAS_GUIDE = ["proofreading", "storyMaking"];
+const HAS_GUIDE = ["proofreading", "storyMaking", "registerRewrite"];
 
 function ProofreadingBanner() {
   return (
@@ -136,8 +136,8 @@ const BANNERS = {
 function openTopicPlayer(typeKey, topicKey) {
   const screenW = window.screen.availWidth || 1600;
   const screenH = window.screen.availHeight || 900;
-  const w = Math.min(typeKey === "storyMaking" ? 1000 : typeKey === "proofreading" ? 620 : 720, screenW - 40);
-  const h = Math.min(typeKey === "proofreading" ? 520 : 700, screenH - 80);
+  const w = Math.min(typeKey === "storyMaking" ? 1000 : typeKey === "proofreading" ? 620 : typeKey === "registerRewrite" ? 660 : 720, screenW - 40);
+  const h = Math.min(typeKey === "proofreading" ? 520 : typeKey === "registerRewrite" ? 560 : 700, screenH - 80);
   const left = Math.max(0, Math.floor((screenW - w) / 2));
   const top = Math.max(0, Math.floor((screenH - h) / 2));
 
