@@ -8,6 +8,8 @@ const LETTER_COLOR = {
   A: "#F2A900", B: "#2E97C7", C: "#22A67E",
   D: "#E0567A", E: "#8E6FCE", F: "#2BAFAF",
   G: "#C77D2E", H: "#D6478C", I: "#4FA8D8",
+  P: "#C2410C", U: "#0D9488", R: "#7C3AED",
+  L: "#059669", N: "#DB2777",
 };
 const EMOTION_COLOR = { Happy: "#F2A900", Sad: "#4A90C2", Tired: "#9B7FD4" };
 const EMOTION_IMG = { Happy: `${IMG2}/happy.png`, Sad: `${IMG2}/sad.png`, Tired: `${IMG2}/tired.png` };
@@ -58,6 +60,30 @@ function LetterTile({ letters, color, size = 74, fontSize = 28, onZoom }) {
   return (
     <div className="letter-tile" style={{ background: color, width: size, height: size, fontSize }} onClick={() => onZoom(big)}>
       {letters}
+    </div>
+  );
+}
+
+function TapLetterTile({ letter, color, size = 90, fontSize = 36 }) {
+  const [shown, setShown] = useState(false);
+  if (shown) {
+    return (
+      <div
+        className="letter-tile tap-tile"
+        style={{ background: color, width: size, height: size, fontSize }}
+        onClick={() => setShown(false)}
+      >
+        {letter}
+      </div>
+    );
+  }
+  return (
+    <div
+      className="blank-tile tap-tile"
+      style={{ width: size, height: size, fontSize: Math.round(fontSize * 0.55) }}
+      onClick={() => setShown(true)}
+    >
+      ?
     </div>
   );
 }
@@ -182,6 +208,8 @@ export const LESSON_GUIDE = [
   { stage: "Part 3: Greetings", time: "~4 min", note: "Start the interaction yourself and see how independently the student responds: hello, name, and beyond." },
   { stage: "Part 4: How Are You?", time: "~4 min", note: "Do not say the feeling word yourself. Let the student choose and describe it." },
   { stage: "Part 5: Speaking Challenge", time: "~4 min", note: "A short role-play: the student greets you, asks your name, asks how you are, and says 'Nice to meet you!' with as little prompting as possible." },
+  { stage: "Part 6: Spelling Challenge", time: "~2 min", note: "Show the cup picture. Let the student tap each tile to reveal C, U, and P, saying the letter and sounding out the word as each one appears." },
+  { stage: "Part 6: Spelling Challenge", time: "~2.5 min", note: "One more word: show the airplane picture and let the student tap-to-reveal all 8 letters the same way. This is a longer word -- offer a bit more support if needed." },
   { stage: "My Unit 1 Score!", time: "~3 min", note: "Keep feedback positive and specific. Show the star chart, celebrate what went well, and note anything worth a bit more practice next time." },
   { stage: "Wrap-Up", time: null, note: null },
 ];
@@ -321,6 +349,80 @@ function buildSlides({ onZoom }) {
         </div>
       ),
     },
+    // 8b: Part 6: Spelling Challenge (tap to reveal, Cup)
+    {
+      stage: "Part 6: Spelling Challenge",
+      time: "~2 min",
+      body: (
+        <>
+          <span className="title-highlight"><h2 className="slide-h sub">Spelling Challenge!</h2></span>
+          <Pic src={`${IMG1}/cup.jpg`} label="cup" size={110} onZoom={onZoom} />
+          <div className="row" style={{ marginTop: 14 }}>
+            <TapLetterTile letter="C" color={LETTER_COLOR.C} size={90} fontSize={36} />
+            <TapLetterTile letter="U" color={LETTER_COLOR.U} size={90} fontSize={36} />
+            <TapLetterTile letter="P" color={LETTER_COLOR.P} size={90} fontSize={36} />
+          </div>
+        </>
+      ),
+    },
+    // 8c: Part 6: Spelling Challenge (Cup reveal)
+    {
+      stage: "Part 6: Spelling Challenge",
+      time: "~1 min",
+      body: (
+        <>
+          <span className="title-highlight"><h2 className="slide-h sub">It's a Cup!</h2></span>
+          <div className="row" style={{ marginBottom: 10 }}>
+            <LetterTile letters="C" color={LETTER_COLOR.C} size={54} fontSize={22} onZoom={onZoom} />
+            <LetterTile letters="U" color={LETTER_COLOR.U} size={54} fontSize={22} onZoom={onZoom} />
+            <LetterTile letters="P" color={LETTER_COLOR.P} size={54} fontSize={22} onZoom={onZoom} />
+          </div>
+          <Pic src={`${IMG1}/cup.jpg`} label="cup" size={130} onZoom={onZoom} />
+        </>
+      ),
+    },
+    // 8d: Part 6: Spelling Challenge (tap to reveal, Airplane)
+    {
+      stage: "Part 6: Spelling Challenge",
+      time: "~2.5 min",
+      body: (
+        <>
+          <span className="title-highlight"><h2 className="slide-h sub">One More Word!</h2></span>
+          <Pic src={`${IMG1}/airplane.jpg`} label="airplane" size={110} onZoom={onZoom} />
+          <div className="row" style={{ marginTop: 14, flexWrap: "wrap", maxWidth: 480, gap: 12 }}>
+            <TapLetterTile letter="A" color={LETTER_COLOR.A} size={54} fontSize={22} />
+            <TapLetterTile letter="I" color={LETTER_COLOR.I} size={54} fontSize={22} />
+            <TapLetterTile letter="R" color={LETTER_COLOR.R} size={54} fontSize={22} />
+            <TapLetterTile letter="P" color={LETTER_COLOR.P} size={54} fontSize={22} />
+            <TapLetterTile letter="L" color={LETTER_COLOR.L} size={54} fontSize={22} />
+            <TapLetterTile letter="A" color={LETTER_COLOR.A} size={54} fontSize={22} />
+            <TapLetterTile letter="N" color={LETTER_COLOR.N} size={54} fontSize={22} />
+            <TapLetterTile letter="E" color={LETTER_COLOR.E} size={54} fontSize={22} />
+          </div>
+        </>
+      ),
+    },
+    // 8e: Part 6: Spelling Challenge (Airplane reveal)
+    {
+      stage: "Part 6: Spelling Challenge",
+      time: "~1 min",
+      body: (
+        <>
+          <span className="title-highlight"><h2 className="slide-h sub">It's an Airplane!</h2></span>
+          <div className="row" style={{ marginBottom: 10, flexWrap: "wrap", maxWidth: 480, gap: 8 }}>
+            <LetterTile letters="A" color={LETTER_COLOR.A} size={40} fontSize={16} onZoom={onZoom} />
+            <LetterTile letters="I" color={LETTER_COLOR.I} size={40} fontSize={16} onZoom={onZoom} />
+            <LetterTile letters="R" color={LETTER_COLOR.R} size={40} fontSize={16} onZoom={onZoom} />
+            <LetterTile letters="P" color={LETTER_COLOR.P} size={40} fontSize={16} onZoom={onZoom} />
+            <LetterTile letters="L" color={LETTER_COLOR.L} size={40} fontSize={16} onZoom={onZoom} />
+            <LetterTile letters="A" color={LETTER_COLOR.A} size={40} fontSize={16} onZoom={onZoom} />
+            <LetterTile letters="N" color={LETTER_COLOR.N} size={40} fontSize={16} onZoom={onZoom} />
+            <LetterTile letters="E" color={LETTER_COLOR.E} size={40} fontSize={16} onZoom={onZoom} />
+          </div>
+          <Pic src={`${IMG1}/airplane.jpg`} label="airplane" size={130} onZoom={onZoom} />
+        </>
+      ),
+    },
     // 9: My Unit 1 Score!
     {
       stage: "My Unit 1 Score!",
@@ -427,6 +529,10 @@ export const styles = `
 
 .letter-row { display: flex; gap: 14px; position: relative; z-index: 1; flex-wrap: wrap; justify-content: center; }
 .letter-tile { cursor: zoom-in; border-radius: 16px; display: flex; align-items: center; justify-content: center; font-family: 'Baloo 2', sans-serif; font-weight: 800; color: #fff; border: 3px solid #fff; box-shadow: 0 6px 14px rgba(27,42,74,0.15); transition: transform 0.15s ease; }
+.blank-tile { border-radius: 16px; background: repeating-linear-gradient(45deg, #D9D2F3, #D9D2F3 6px, #E8E3F8 6px, #E8E3F8 12px); border: 3px dashed #B8AEDD; }
+.tap-tile { cursor: pointer; transition: transform 0.15s ease; }
+.tap-tile:hover { transform: scale(1.05); }
+.blank-tile.tap-tile { display: flex; align-items: center; justify-content: center; font-family: 'Baloo 2', sans-serif; font-weight: 800; color: #B8AEDD; }
 .letter-tile:hover { transform: scale(1.05); }
 .zoom-letter-tile { width: 300px; height: 300px; border-radius: 40px; }
 .zoom-letter-tile span { font-family: 'Baloo 2', sans-serif; font-weight: 800; font-size: 120px; color: #fff; }
