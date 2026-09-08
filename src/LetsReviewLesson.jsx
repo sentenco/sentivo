@@ -68,6 +68,30 @@ function BlankTile({ size = 74 }) {
   return <div className="blank-tile" style={{ width: size, height: size }} />;
 }
 
+function TapLetterTile({ letter, color, size = 90, fontSize = 36 }) {
+  const [shown, setShown] = useState(false);
+  if (shown) {
+    return (
+      <div
+        className="letter-tile tap-tile"
+        style={{ background: color, width: size, height: size, fontSize }}
+        onClick={() => setShown(false)}
+      >
+        {letter}
+      </div>
+    );
+  }
+  return (
+    <div
+      className="blank-tile tap-tile"
+      style={{ width: size, height: size, fontSize: Math.round(fontSize * 0.55) }}
+      onClick={() => setShown(true)}
+    >
+      ?
+    </div>
+  );
+}
+
 function WordCard({ src, word, label, onZoom }) {
   return (
     <div className="wc">
@@ -198,9 +222,8 @@ export const LESSON_GUIDE = [
   { stage: "Nice to Meet You!", time: "~3 min", note: "Practice the mini-dialogue together, then switch roles: let the student pretend to be the teacher and greet you first." },
   { stage: "Letter Review: A-I", time: "~4 min", note: "Show A-I in mixed order and let the student name each one. Then point to an uppercase and lowercase pair and ask if they match." },
   { stage: "What Letter?", time: "~4 min", note: "Show each picture and ask what letter it starts with, not just the word itself." },
-  { stage: "Mystery Picture!", time: "~1.5 min", note: "Reveal only the letter D. Ask 'What letter?'" },
-  { stage: "Mystery Picture!", time: "~1.5 min", note: "Reveal the O next. Ask 'What is it?' and let the student guess the whole word before the last letter appears." },
-  { stage: "Mystery Picture!", time: "~2 min", note: "Reveal G and the picture together. Celebrate with a silly reaction!" },
+  { stage: "Mystery Picture!", time: "~2 min", note: "Show the dog picture. Let the student tap each tile to reveal D, O, and G, saying the letter and sounding out the word as each one appears." },
+  { stage: "Mystery Picture!", time: "~1.5 min", note: "One more round with the bag picture -- same tap-to-reveal for B, A, and G." },
   { stage: "My A-I Challenge", time: "~1.5 min", note: "One more quick pass through all 9 letters, in mixed order." },
   { stage: "My A-I Challenge", time: "~1.5 min", note: "Finish with the full exchange together: greeting, feeling, and 'Nice to meet you!'" },
   { stage: "Wrap-Up", time: null, note: null },
@@ -350,44 +373,18 @@ function buildSlides({ onZoom }) {
         </>
       ),
     },
-    // 8: Mystery Picture Round 1
+    // 8: Mystery Picture Round 1 (tap to reveal)
     {
       stage: "Mystery Picture!",
-      time: "~1.5 min",
+      time: "~2 min",
       body: (
         <>
           <span className="title-highlight"><h2 className="slide-h sub">Mystery Picture!</h2></span>
-          <div className="row">
-            <LetterTile letters="D" color={MYSTERY_COLOR.D} size={90} fontSize={36} onZoom={onZoom} />
-            <BlankTile size={90} />
-            <BlankTile size={90} />
-          </div>
-          <div className="bubble-col" style={{ maxWidth: 380, marginTop: 8 }}>
-            <div className="brow">
-              <div className="avatar navy">T</div>
-              <div className="bubble left">What letter?</div>
-            </div>
-          </div>
-        </>
-      ),
-    },
-    // 9: Mystery Picture Round 1 continued
-    {
-      stage: "Mystery Picture!",
-      time: "~1.5 min",
-      body: (
-        <>
-          <span className="title-highlight"><h2 className="slide-h sub">What Is It?</h2></span>
-          <div className="row">
-            <LetterTile letters="D" color={MYSTERY_COLOR.D} size={90} fontSize={36} onZoom={onZoom} />
-            <LetterTile letters="O" color={MYSTERY_COLOR.O} size={90} fontSize={36} onZoom={onZoom} />
-            <BlankTile size={90} />
-          </div>
-          <div className="bubble-col" style={{ maxWidth: 380, marginTop: 8 }}>
-            <div className="brow">
-              <div className="avatar navy">T</div>
-              <div className="bubble left">What is it?</div>
-            </div>
+          <Pic src={`${IMG2}/dog.jpg`} label="dog" size={110} onZoom={onZoom} />
+          <div className="row" style={{ marginTop: 14 }}>
+            <TapLetterTile letter="D" color={MYSTERY_COLOR.D} size={90} fontSize={36} />
+            <TapLetterTile letter="O" color={MYSTERY_COLOR.O} size={90} fontSize={36} />
+            <TapLetterTile letter="G" color={MYSTERY_COLOR.G} size={90} fontSize={36} />
           </div>
         </>
       ),
@@ -408,23 +405,18 @@ function buildSlides({ onZoom }) {
         </>
       ),
     },
-    // 10b: Mystery Picture Round 2
+    // 10b: Mystery Picture Round 2 (tap to reveal)
     {
       stage: "Mystery Picture!",
-      time: "~1.3 min",
+      time: "~1.5 min",
       body: (
         <>
           <span className="title-highlight"><h2 className="slide-h sub">One More Mystery!</h2></span>
-          <div className="row">
-            <LetterTile letters="B" color={LETTER_COLOR.B} size={90} fontSize={36} onZoom={onZoom} />
-            <BlankTile size={90} />
-            <BlankTile size={90} />
-          </div>
-          <div className="bubble-col" style={{ maxWidth: 380, marginTop: 8 }}>
-            <div className="brow">
-              <div className="avatar navy">T</div>
-              <div className="bubble left">What letter? What could it be?</div>
-            </div>
+          <Pic src={`${IMG4}/bag.avif`} label="bag" size={110} onZoom={onZoom} />
+          <div className="row" style={{ marginTop: 14 }}>
+            <TapLetterTile letter="B" color={LETTER_COLOR.B} size={90} fontSize={36} />
+            <TapLetterTile letter="A" color={LETTER_COLOR.A} size={90} fontSize={36} />
+            <TapLetterTile letter="G" color={LETTER_COLOR.G} size={90} fontSize={36} />
           </div>
         </>
       ),
@@ -571,6 +563,9 @@ export const styles = `
 .zoom-letter-tile span { font-family: 'Baloo 2', sans-serif; font-weight: 800; font-size: 120px; color: #fff; }
 
 .blank-tile { border-radius: 16px; background: repeating-linear-gradient(45deg, #D9D2F3, #D9D2F3 6px, #E8E3F8 6px, #E8E3F8 12px); border: 3px dashed #B8AEDD; }
+.tap-tile { cursor: pointer; transition: transform 0.15s ease; }
+.tap-tile:hover { transform: scale(1.05); }
+.blank-tile.tap-tile { display: flex; align-items: center; justify-content: center; font-family: 'Baloo 2', sans-serif; font-weight: 800; color: #B8AEDD; }
 
 .match-pair { display: flex; align-items: center; gap: 10px; }
 .match-plus { font-family: 'Baloo 2', sans-serif; font-weight: 800; font-size: 22px; color: var(--ink-soft); }
