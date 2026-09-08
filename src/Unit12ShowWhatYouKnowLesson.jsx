@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 
+const CAT_IMG = "/curriculum/u1-l1/cat.jpg";
+
 export function StarIcon({ size = 20, fill = "var(--sun)", style }) {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" fill={fill} style={style}>
@@ -215,7 +217,7 @@ function buildSlides({ onZoom }) {
         <>
           <span className="title-highlight"><h2 className="slide-h sub">What Can You Read?</h2></span>
           <div className="word-row">
-            <WordCard src={null} word="cat" label="cat" onZoom={onZoom} />
+            <WordCard src={CAT_IMG} word="cat" label="cat" onZoom={onZoom} />
             <WordCard src={null} word="hop" label="hop" onZoom={onZoom} />
             <WordCard src={null} word="wig" label="wig" onZoom={onZoom} />
           </div>

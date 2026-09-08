@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 const IMG = "/curriculum/u11-l1";
+const DOLL_IMG = "/curriculum/u1-l2/doll.png";
 
 export function StarIcon({ size = 20, fill = "var(--sun)", style }) {
   return (
@@ -198,7 +199,7 @@ function buildSlides({ onZoom }) {
           <div className="word-row">
             <WordCard src={null} word="Toy" label="toy" onZoom={onZoom} />
             <WordCard src={`${IMG}/ball.jpg`} word="Ball" label="ball" onZoom={onZoom} />
-            <WordCard src={null} word="Doll" label="doll" onZoom={onZoom} />
+            <WordCard src={DOLL_IMG} word="Doll" label="doll" onZoom={onZoom} />
             <WordCard src={`${IMG}/car.avif`} word="Car" label="car" onZoom={onZoom} />
           </div>
         </>
@@ -256,7 +257,7 @@ function buildSlides({ onZoom }) {
       stage: "Word Practice",
       body: (
         <div className="center-col">
-          <Pic src={null} label="doll" size={100} onZoom={onZoom} />
+          <Pic src={DOLL_IMG} label="doll" size={100} onZoom={onZoom} />
           <div className="bubble-col" style={{ maxWidth: 380 }}>
             <div className="brow me">
               <div className="avatar coral">S</div>
@@ -321,7 +322,7 @@ function buildSlides({ onZoom }) {
           <div className="word-row">
             <Pic src={`${IMG}/ball.jpg`} label="ball" size={64} onZoom={onZoom} />
             <Pic src={`${IMG}/car.avif`} label="car" size={64} onZoom={onZoom} />
-            <Pic src={null} label="doll" size={64} onZoom={onZoom} />
+            <Pic src={DOLL_IMG} label="doll" size={64} onZoom={onZoom} />
           </div>
           <div className="bubble-col" style={{ maxWidth: 380 }}>
             <div className="brow">

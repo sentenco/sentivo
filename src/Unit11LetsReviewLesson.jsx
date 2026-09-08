@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 const IMG = "/curriculum/u11-l1";
+const DOLL_IMG = "/curriculum/u1-l2/doll.png";
 
 export function StarIcon({ size = 20, fill = "var(--sun)", style }) {
   return (
@@ -213,7 +214,7 @@ function buildSlides({ onZoom }) {
           <div className="word-row">
             <WordCard src={null} word="Toy" label="toy" onZoom={onZoom} />
             <WordCard src={`${IMG}/ball.jpg`} word="Ball" label="ball" onZoom={onZoom} />
-            <WordCard src={null} word="Doll" label="doll" onZoom={onZoom} />
+            <WordCard src={DOLL_IMG} word="Doll" label="doll" onZoom={onZoom} />
             <WordCard src={`${IMG}/car.avif`} word="Car" label="car" onZoom={onZoom} />
           </div>
         </>
@@ -308,7 +309,7 @@ function buildSlides({ onZoom }) {
         <>
           <span className="title-highlight"><h2 className="slide-h sub">Mixed Challenge!</h2></span>
           <div className="word-row">
-            <Pic src={null} label="doll" size={70} onZoom={onZoom} />
+            <Pic src={DOLL_IMG} label="doll" size={70} onZoom={onZoom} />
             <ActionChip label="Jump" onZoom={onZoom} />
           </div>
         </>

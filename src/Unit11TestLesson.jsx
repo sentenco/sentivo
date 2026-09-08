@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 const IMG = "/curriculum/u11-l1";
+const DOLL_IMG = "/curriculum/u1-l2/doll.png";
 
 export function StarIcon({ size = 20, fill = "var(--sun)", style }) {
   return (
@@ -198,7 +199,7 @@ function buildSlides({ onZoom }) {
           <div className="word-row">
             <Pic src={`${IMG}/ball.jpg`} label="ball" size={70} onZoom={onZoom} />
             <Pic src={`${IMG}/car.avif`} label="car" size={70} onZoom={onZoom} />
-            <Pic src={null} label="doll" size={70} onZoom={onZoom} />
+            <Pic src={DOLL_IMG} label="doll" size={70} onZoom={onZoom} />
           </div>
         </>
       ),

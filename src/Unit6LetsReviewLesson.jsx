@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 
 const BLEND_COLOR = "#2E97C7";
 const SIZE_COLOR = { Big: "#FF6B4A", Small: "#4FA8D8", Long: "#8E6FCE", Short: "#F2A900" };
+const HAT_IMG = "/curriculum/u1-l3/hat.avif";
+const DOG_IMG = "/curriculum/u1-l2/dog.jpg";
 
 export function StarIcon({ size = 20, fill = "var(--sun)", style }) {
   return (
@@ -323,8 +325,8 @@ function buildSlides({ onZoom }) {
         <>
           <span className="title-highlight"><h2 className="slide-h sub">Add a Friend!</h2></span>
           <div className="word-row">
-            <WordCard src={null} word="Hat" label="hat" onZoom={onZoom} />
-            <WordCard src={null} word="Dog" label="dog" onZoom={onZoom} />
+            <WordCard src={HAT_IMG} word="Hat" label="hat" onZoom={onZoom} />
+            <WordCard src={DOG_IMG} word="Dog" label="dog" onZoom={onZoom} />
           </div>
         </>
       ),

@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 
+const STAR_IMG = "/curriculum/u3-l1/star.avif";
+
 const LETTER_COLOR = {
   S: "#E0567A", T: "#2E97C7", U: "#22A67E", V: "#8E6FCE",
   W: "#2BAFAF", X: "#F2A900", Y: "#C77D2E", Z: "#D6478C",
@@ -334,7 +336,7 @@ function buildSlides({ onZoom }) {
           <span className="title-highlight"><h2 className="slide-h sub">🎨 Build My Picture!</h2></span>
           <div className="word-row">
             <ColorSwatch name="Blue" hex={COLOR_HEX.Blue} size={70} onZoom={onZoom} />
-            <Pic src={null} label="star" size={70} onZoom={onZoom} />
+            <Pic src={STAR_IMG} label="star" size={70} onZoom={onZoom} />
           </div>
           <p className="slide-p">Choose a color and a shape. "Blue star."</p>
         </>

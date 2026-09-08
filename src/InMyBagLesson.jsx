@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 const IMG = "/curriculum/u7-l1";
+const PENCIL_IMG = "/curriculum/u2-l3/pencil.jpeg";
 
 export function StarIcon({ size = 20, fill = "var(--sun)", style }) {
   return (
@@ -283,7 +284,7 @@ function buildSlides({ onZoom }) {
           <span className="title-highlight"><h2 className="slide-h sub">🎒 What's in My Bag?</h2></span>
           <div className="word-row">
             <WordCard src={null} word="Pen" label="pen" onZoom={onZoom} />
-            <WordCard src={null} word="Pencil" label="pencil" onZoom={onZoom} />
+            <WordCard src={PENCIL_IMG} word="Pencil" label="pencil" onZoom={onZoom} />
             <WordCard src={null} word="Crayon" label="crayon" onZoom={onZoom} />
           </div>
           <p className="slide-p">Choose 2-3 to put in your bag!</p>

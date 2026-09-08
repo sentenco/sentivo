@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 
 const BLEND_COLOR = "#2E97C7";
 const SIZE_COLOR = { Big: "#FF6B4A", Small: "#4FA8D8", Long: "#8E6FCE", Short: "#F2A900" };
+const DOG_IMG = "/curriculum/u1-l2/dog.jpg";
 
 export function StarIcon({ size = 20, fill = "var(--sun)", style }) {
   return (
@@ -212,7 +213,7 @@ function buildSlides({ onZoom }) {
           <p className="slide-p title-p">Today we learn more body parts, describing words, and the -og family.</p>
           <div className="word-row">
             <DescriptorTag label="Big" color={SIZE_COLOR.Big} onZoom={onZoom} />
-            <WordCard src={null} word="Dog" label="dog" onZoom={onZoom} />
+            <WordCard src={DOG_IMG} word="Dog" label="dog" onZoom={onZoom} />
           </div>
         </div>
       ),
@@ -315,7 +316,7 @@ function buildSlides({ onZoom }) {
         <>
           <span className="title-highlight"><h2 className="slide-h sub">Same or Different?</h2></span>
           <div className="word-row">
-            <WordCard src={null} word="Dog" label="dog" onZoom={onZoom} />
+            <WordCard src={DOG_IMG} word="Dog" label="dog" onZoom={onZoom} />
             <WordCard src={null} word="Log" label="log" onZoom={onZoom} />
             <WordCard src={null} word="Fog" label="fog" onZoom={onZoom} />
             <WordCard src={null} word="Hog" label="hog" onZoom={onZoom} />
@@ -364,7 +365,7 @@ function buildSlides({ onZoom }) {
       body: (
         <>
           <span className="title-highlight"><h2 className="slide-h sub">What's This?</h2></span>
-          <WordCard src={null} word="Dog" label="dog" onZoom={onZoom} />
+          <WordCard src={DOG_IMG} word="Dog" label="dog" onZoom={onZoom} />
         </>
       ),
     },
