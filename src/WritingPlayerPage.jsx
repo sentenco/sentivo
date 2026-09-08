@@ -33,6 +33,14 @@ export default function WritingPlayerPage() {
 
   const Player = PLAYERS[type.key];
 
+  // Proofreading is a fixed-size, self-contained lesson card with its own
+  // logo baked in (see ProofreadingActivity.jsx) -- it doesn't want
+  // PlayerChrome's outer branded header on top of that. The other Writing
+  // activities are untouched and still use the shared chrome.
+  if (type.key === "proofreading") {
+    return <Player item={topic} />;
+  }
+
   return (
     <PlayerChrome eyebrow="Writing">
       <Player item={topic} />

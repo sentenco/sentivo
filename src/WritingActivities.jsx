@@ -10,7 +10,7 @@ export const ACTIVITY_TYPES = [
     key: "proofreading",
     title: "Proofreading",
     icon: "✅",
-    blurb: "Find and fix the mistakes, then compare with the answer key.",
+    blurb: "Find and fix the mistakes in the paragraph.",
     hue: "gold",
     sets: PROOFREADING_SETS,
   },
@@ -131,14 +131,31 @@ const BANNERS = {
 function openTopicPlayer(typeKey, topicKey) {
   const screenW = window.screen.availWidth || 1600;
   const screenH = window.screen.availHeight || 900;
-  const w = Math.min(typeKey === "storyMaking" ? 1000 : 720, screenW - 40);
-  const h = Math.min(700, screenH - 80);
+  const w = Math.min(typeKey === "storyMaking" ? 1000 : typeKey === "proofreading" ? 780 : 720, screenW - 40);
+  const h = Math.min(typeKey === "proofreading" ? 620 : 700, screenH - 80);
   const left = Math.max(0, Math.floor((screenW - w) / 2));
   const top = Math.max(0, Math.floor((screenH - h) / 2));
 
   window.open(
     `/library/writing/${typeKey}/${topicKey}/player`,
     "sentivoWritingPlayer",
+    `width=${w},height=${h},left=${left},top=${top},toolbar=no,location=no,menubar=no,status=no,scrollbars=yes,resizable=yes`
+  );
+}
+
+// Teacher's Guide opens as its own scrollable popup, not sized to the
+// fixed player card since it's a document meant to be read, not a slide.
+function openTopicGuide(typeKey, topicKey) {
+  const screenW = window.screen.availWidth || 1600;
+  const screenH = window.screen.availHeight || 900;
+  const w = Math.min(680, screenW - 40);
+  const h = Math.min(800, screenH - 60);
+  const left = Math.max(0, Math.floor((screenW - w) / 2));
+  const top = Math.max(0, Math.floor((screenH - h) / 2));
+
+  window.open(
+    `/library/writing/${typeKey}/${topicKey}/guide`,
+    "sentivoWritingGuide",
     `width=${w},height=${h},left=${left},top=${top},toolbar=no,location=no,menubar=no,status=no,scrollbars=yes,resizable=yes`
   );
 }
@@ -211,22 +228,37 @@ export default function WritingActivities({ query }) {
           <p className="empty-msg">No Writing activities match "{query.trim()}".</p>
         ) : (
           <div className="wa-cat-grid">
-            {matches.map(({ topic, type: t }) => (
-              <button
-                key={`${t.key}-${topic.key}`}
-                type="button"
-                className={`wa-cat-card wa-cat-card--${t.hue}`}
-                onClick={() => openTopicPlayer(t.key, topic.key)}
-              >
-                <div className="wa-cat-top">
-                  <span className="wa-cat-icon">{t.icon}</span>
-                  <span className="wa-cat-tag">Ready</span>
+            {matches.map(({ topic, type: t }) =>
+              t.key === "proofreading" ? (
+                <div key={`${t.key}-${topic.key}`} className={`wa-cat-card wa-cat-card--${t.hue} wa-cat-card--static`}>
+                  <div className="wa-cat-top">
+                    <span className="wa-cat-icon">{t.icon}</span>
+                    <span className="wa-cat-tag">Ready</span>
+                  </div>
+                  <span className="wa-cat-title">{topic.title}</span>
+                  <span className="wa-cat-blurb">{t.title} · {topic.cefrGroup}</span>
+                  <div className="wa-cat-actions">
+                    <button type="button" className="wa-cat-guide" onClick={() => openTopicGuide(t.key, topic.key)}>Guide</button>
+                    <button type="button" className="wa-cat-cta wa-cat-cta--btn" onClick={() => openTopicPlayer(t.key, topic.key)}>Start →</button>
+                  </div>
                 </div>
-                <span className="wa-cat-title">{topic.title}</span>
-                <span className="wa-cat-blurb">{t.title} · {topic.cefrGroup}</span>
-                <span className="wa-cat-cta">Start →</span>
-              </button>
-            ))}
+              ) : (
+                <button
+                  key={`${t.key}-${topic.key}`}
+                  type="button"
+                  className={`wa-cat-card wa-cat-card--${t.hue}`}
+                  onClick={() => openTopicPlayer(t.key, topic.key)}
+                >
+                  <div className="wa-cat-top">
+                    <span className="wa-cat-icon">{t.icon}</span>
+                    <span className="wa-cat-tag">Ready</span>
+                  </div>
+                  <span className="wa-cat-title">{topic.title}</span>
+                  <span className="wa-cat-blurb">{t.title} · {topic.cefrGroup}</span>
+                  <span className="wa-cat-cta">Start →</span>
+                </button>
+              )
+            )}
           </div>
         )}
       </div>
@@ -256,17 +288,32 @@ export default function WritingActivities({ query }) {
           ))}
         </div>
         <div className="wa-cat-grid">
-          {levelTopics.map((t) => (
-            <button key={t.key} type="button" className={`wa-cat-card wa-cat-card--${type.hue}`} onClick={() => openTopicPlayer(typeKey, t.key)}>
-              <div className="wa-cat-top">
-                <span className="wa-cat-icon">{type.icon}</span>
-                <span className="wa-cat-tag">Ready</span>
+          {levelTopics.map((t) =>
+            type.key === "proofreading" ? (
+              <div key={t.key} className={`wa-cat-card wa-cat-card--${type.hue} wa-cat-card--static`}>
+                <div className="wa-cat-top">
+                  <span className="wa-cat-icon">{type.icon}</span>
+                  <span className="wa-cat-tag">Ready</span>
+                </div>
+                <span className="wa-cat-title">{t.title}</span>
+                <span className="wa-cat-blurb">{t.focus}</span>
+                <div className="wa-cat-actions">
+                  <button type="button" className="wa-cat-guide" onClick={() => openTopicGuide(typeKey, t.key)}>Guide</button>
+                  <button type="button" className="wa-cat-cta wa-cat-cta--btn" onClick={() => openTopicPlayer(typeKey, t.key)}>Start →</button>
+                </div>
               </div>
-              <span className="wa-cat-title">{t.title}</span>
-              <span className="wa-cat-blurb">{t.focus}</span>
-              <span className="wa-cat-cta">Start →</span>
-            </button>
-          ))}
+            ) : (
+              <button key={t.key} type="button" className={`wa-cat-card wa-cat-card--${type.hue}`} onClick={() => openTopicPlayer(typeKey, t.key)}>
+                <div className="wa-cat-top">
+                  <span className="wa-cat-icon">{type.icon}</span>
+                  <span className="wa-cat-tag">Ready</span>
+                </div>
+                <span className="wa-cat-title">{t.title}</span>
+                <span className="wa-cat-blurb">{t.focus}</span>
+                <span className="wa-cat-cta">Start →</span>
+              </button>
+            )
+          )}
         </div>
       </div>
     );
@@ -427,6 +474,17 @@ const CSS = `
   transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
 }
 .wa-cat-card:hover { transform: translateY(-3px); box-shadow: 0 14px 26px var(--wac-shadow-hover, rgba(239,111,92,0.18)); border-color: var(--wac-accent, #EF6F5C); }
+.wa-cat-card--static { cursor: default; }
+.wa-cat-card--static:hover { transform: none; box-shadow: 0 8px 18px var(--wac-shadow, rgba(239,111,92,0.10)); border-color: var(--wac-border, #F5D9CC); }
+
+.wa-cat-actions { margin-top: auto; display: flex; align-items: center; gap: 8px; width: 100%; }
+.wa-cat-guide {
+  font-family: 'Karla', sans-serif; font-weight: 800; font-size: 11.5px;
+  color: var(--wac-accent, #EF6F5C); background: var(--wac-icon-bg, rgba(239,111,92,0.10));
+  border: none; border-radius: 999px; padding: 7px 14px; cursor: pointer;
+}
+.wa-cat-guide:hover { filter: brightness(0.95); }
+.wa-cat-cta--btn { border: none; cursor: pointer; align-self: auto; margin-top: 0; }
 
 .wa-cat-card--gold  { --wac-accent: #A9720A; --wac-icon-bg: rgba(232,168,61,0.22); --wac-border: #FCE4B0; --wac-shadow: rgba(154,90,22,0.10); --wac-shadow-hover: rgba(154,90,22,0.16); }
 .wa-cat-card--sky   { --wac-accent: #2A6E85; --wac-icon-bg: rgba(62,157,191,0.14); --wac-border: #C7E6EE; --wac-shadow: rgba(30,90,120,0.10); --wac-shadow-hover: rgba(30,90,120,0.16); }

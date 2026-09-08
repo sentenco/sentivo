@@ -105,6 +105,7 @@ import BeWillGrammarGuide from './BeWillGrammarGuide.jsx'
 import PresentSimpleProgressiveLesson from './PresentSimpleProgressiveLesson.jsx'
 import PresentSimpleProgressiveGuide from './PresentSimpleProgressiveGuide.jsx'
 import WritingPlayerPage from './WritingPlayerPage.jsx'
+import WritingGuidePage from './WritingGuidePage.jsx'
 import NotebookHub from './NotebookHub.jsx'
 import FeedbackGenerator from './FeedbackGenerator.jsx'
 import NotebookPage from './NotebookPage.jsx'
@@ -412,6 +413,7 @@ createRoot(document.getElementById('root')).render(
             <Route path="/library/vocabulary/lessons/eponyms" element={<EponymsLesson />} />
             <Route path="/library/vocabulary/lessons/portmanteau" element={<PortmanteauLesson />} />
             <Route path="/library/writing/:typeKey/:topicKey/player" element={<WritingPlayerPage />} />
+            <Route path="/library/writing/:typeKey/:topicKey/guide" element={<WritingGuidePage />} />
             <Route path="/library/notebook" element={<NotebookHub />} />
             <Route path="/library/feedback" element={<FeedbackGenerator />} />
             <Route path="/library/notebook/:design" element={<NotebookPage />} />
