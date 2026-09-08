@@ -1,15 +1,13 @@
 // Teacher's Guide for one Story Making topic: a suggested pacing for the
 // whole 25-minute class, plus the sample answer (uses the same word bank
 // and connectors the student sees) that isn't shown in the student player.
-function parseFocus(focus) {
-  const tense = focus.split(",")[0].trim();
-  const match = focus.match(/\(([^)]+)\)/);
-  const connectors = match ? match[1].split(",").map((s) => s.trim()) : null;
-  return { tense, connectors };
+function getTense(focus) {
+  return focus.split(",")[0].trim();
 }
 
 export default function StoryMakingGuide({ item }) {
-  const { tense, connectors } = parseFocus(item.focus);
+  const tense = getTense(item.focus);
+  const connectors = item.connectors;
 
   return (
     <div className="smg-wrap">

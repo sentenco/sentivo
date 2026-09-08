@@ -149,22 +149,21 @@ function StoryScene({ name }) {
   );
 }
 
-// Own logo, depth, tilt, and a tense badge + connectors on a Post-it
-// (parsed out of item.focus, e.g. "Simple past, sequencing (first,
-// then, after)" -- the Post-it only renders when a parenthesized list
-// is present, which not every level's focus line has).
-function parseFocus(focus) {
-  const tense = focus.split(",")[0].trim();
-  const match = focus.match(/\(([^)]+)\)/);
-  const connectors = match ? match[1].split(",").map((s) => s.trim()) : null;
-  return { tense, connectors };
+// Tense badge comes from the first part of item.focus (e.g. "Simple
+// past" out of "Simple past, sequencing"). The Post-it's connectors
+// come straight from item.connectors -- every topic has a real,
+// level-appropriate list now (see storyMakingData.js), not just the
+// ones whose old focus string happened to spell them out in parens.
+function getTense(focus) {
+  return focus.split(",")[0].trim();
 }
 
 export default function StoryMakingActivity({ item }) {
   const round = item;
   const [draft, setDraft] = useState("");
   const [checked, setChecked] = useState(false);
-  const { tense, connectors } = parseFocus(item.focus);
+  const tense = getTense(item.focus);
+  const connectors = item.connectors;
 
   function restart() {
     setDraft("");
@@ -314,7 +313,7 @@ const CSS = `
 
 .sm2-content-pane { position: relative; padding: 22px 28px 20px; display: flex; flex-direction: column; min-width: 0; height: 100%; }
 
-.sm2-brand-row { display: flex; align-items: center; margin-bottom: 12px; padding-right: 80px; }
+.sm2-brand-row { display: flex; align-items: center; margin-bottom: 12px; padding-right: 130px; }
 .sm2-brand-pill {
   display: inline-flex; align-items: center; gap: 0;
   background: #E1F1F6;
@@ -327,11 +326,11 @@ const CSS = `
 .sm2-brand-type { font-family: 'Karla', sans-serif; font-weight: 800; font-size: 13.5px; letter-spacing: 0.02em; color: #2A6E85; }
 
 .sm2-postit {
-  position: absolute; top: 16px; right: 22px; z-index: 2;
-  width: 84px; height: 84px;
+  position: absolute; top: 16px; right: 20px; z-index: 2;
+  width: 118px; min-height: 84px;
   background: #FFE29E;
-  padding: 7px;
-  transform: rotate(5deg);
+  padding: 8px 9px 10px;
+  transform: rotate(4deg);
   box-shadow: 0 6px 14px rgba(169,114,10,0.20);
   display: flex; flex-direction: column; align-items: center; justify-content: center;
   text-align: center;
@@ -343,8 +342,8 @@ const CSS = `
   border-width: 0 0 13px 13px;
   border-color: transparent transparent rgba(169,114,10,0.18) transparent;
 }
-.sm2-postit-label { display: block; font-family: 'Karla', sans-serif; font-weight: 800; font-size: 8px; letter-spacing: 0.08em; text-transform: uppercase; color: #8A5A00; margin-bottom: 4px; }
-.sm2-postit-chain { font-family: 'Caveat', cursive; font-weight: 700; font-size: 15px; color: #5C3D00; line-height: 1.25; white-space: pre-line; }
+.sm2-postit-label { display: block; font-family: 'Karla', sans-serif; font-weight: 800; font-size: 8px; letter-spacing: 0.08em; text-transform: uppercase; color: #8A5A00; margin-bottom: 5px; }
+.sm2-postit-chain { display: block; font-family: 'Karla', sans-serif; font-weight: 700; font-size: 10.5px; color: #5C3D00; line-height: 1.45; white-space: pre-line; }
 
 .sm2-title { font-family: 'Caveat', cursive; font-weight: 700; font-size: 32px; color: #4A3F3A; margin: 0 0 8px; line-height: 1.05; }
 
