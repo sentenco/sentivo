@@ -27,6 +27,7 @@ export default function ProofreadingActivity({ item }) {
       <div className="pf-blob pf-blob--b" />
 
       <div className="pf-card">
+        <span className="pf-tape" />
         <button type="button" className="pf-close" onClick={exit} aria-label="Close">
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M6 6l12 12M18 6L6 18" /></svg>
         </button>
@@ -42,8 +43,8 @@ export default function ProofreadingActivity({ item }) {
         <div className="pf-body">
           {kind === "intro" && (
             <div className="pf-intro">
-              <span className="pf-focus-tag">{item.focus}</span>
               <h1 className="pf-title">{item.title}</h1>
+              <span className="pf-focus-tag">{item.focus}</span>
               <p className="pf-instructions">
                 Read the paragraph on the next page. It has some mistakes in it.
                 Find them, then rewrite the whole paragraph correctly in the box.
@@ -109,15 +110,21 @@ const CSS = `
 .pf-card {
   position: relative;
   z-index: 1;
-  width: 720px;
-  height: 560px;
+  width: 560px;
+  height: 460px;
   flex-shrink: 0;
   background: #FFFFFF;
-  border-radius: 24px;
+  border-radius: 20px;
   box-shadow: 0 20px 44px rgba(169,114,10,0.16);
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  transform: rotate(-0.6deg);
+}
+.pf-tape {
+  position: absolute; top: -12px; left: 50%; transform: translateX(-50%) rotate(-3deg);
+  width: 68px; height: 22px; opacity: 0.9; z-index: 3;
+  background: repeating-linear-gradient(45deg, #FFD166, #FFD166 6px, #FFE29E 6px, #FFE29E 12px);
 }
 
 .pf-close {
@@ -142,24 +149,24 @@ const CSS = `
   margin-right: 28px;
 }
 
-.pf-body { flex: 1; min-height: 0; overflow-y: auto; padding: 20px 44px; display: flex; align-items: center; }
+.pf-body { flex: 1; min-height: 0; overflow-y: auto; padding: 14px 36px; display: flex; align-items: center; }
 
 .pf-intro { width: 100%; text-align: center; }
 .pf-focus-tag {
   display: inline-block; font-size: 11.5px; font-weight: 700; color: #A9720A;
-  background: rgba(232,168,61,0.16); border-radius: 999px; padding: 5px 14px; margin-bottom: 14px;
+  background: rgba(232,168,61,0.16); border-radius: 999px; padding: 5px 14px; margin-top: 10px; margin-bottom: 14px;
 }
-.pf-title { font-family: 'Caveat', cursive; font-weight: 700; font-size: 42px; color: #4A3F3A; margin: 0 0 16px; line-height: 1.05; }
-.pf-instructions { font-family: 'Karla', sans-serif; font-weight: 600; font-size: 15.5px; color: #6B5D52; line-height: 1.6; max-width: 440px; margin: 0 auto; }
+.pf-title { font-family: 'Caveat', cursive; font-weight: 700; font-size: 36px; color: #4A3F3A; margin: 0; line-height: 1.05; }
+.pf-instructions { font-family: 'Karla', sans-serif; font-weight: 600; font-size: 14px; color: #6B5D52; line-height: 1.55; max-width: 400px; margin: 0 auto; }
 
 .pf-fixit { width: 100%; }
-.pf-hint { font-size: 13px; font-weight: 500; color: #A9836F; line-height: 1.5; margin: 0 0 12px; }
-.pf-script { font-family: 'Karla', sans-serif; font-size: 14.5px; line-height: 1.65; border-radius: 14px; padding: 15px 18px; white-space: pre-line; margin: 0 0 14px; }
+.pf-hint { font-size: 12.5px; font-weight: 500; color: #A9836F; line-height: 1.5; margin: 0 0 10px; }
+.pf-script { font-family: 'Karla', sans-serif; font-size: 13.5px; line-height: 1.6; border-radius: 14px; padding: 13px 16px; white-space: pre-line; margin: 0 0 12px; }
 .pf-script--mistakes { color: #B3392F; background: #FDEAEA; font-style: italic; }
 
 .pf-textarea {
   width: 100%;
-  min-height: 130px;
+  min-height: 100px;
   border: 1px solid #FCE4B0;
   border-radius: 14px;
   padding: 14px 16px;
