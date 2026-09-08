@@ -35,9 +35,12 @@ export default function WritingPlayerPage() {
 
   // Proofreading is a fixed-size, self-contained lesson card with its own
   // logo baked in (see ProofreadingActivity.jsx) -- it doesn't want
-  // PlayerChrome's outer branded header on top of that. The other Writing
-  // activities are untouched and still use the shared chrome.
-  if (type.key === "proofreading") {
+  // PlayerChrome's outer branded header on top of that. Same for Story
+  // Making's "A Day at the Park" pilot redesign (see
+  // StoryMakingActivityV2 in StoryMakingActivity.jsx) -- every other
+  // Writing topic is untouched and still uses the shared chrome.
+  const isSelfContained = type.key === "proofreading" || (type.key === "storyMaking" && topic.key === "dayAtThePark");
+  if (isSelfContained) {
     return <Player item={topic} />;
   }
 

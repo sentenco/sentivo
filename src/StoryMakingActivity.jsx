@@ -154,6 +154,100 @@ function StoryScene({ name }) {
   );
 }
 
+// "A Day at the Park" only, for now -- the redesigned card (own logo,
+// depth, tilt, tense badge + connectors on a Post-it). Everything else
+// still renders the original layout below until this is validated.
+function parseFocus(focus) {
+  const tense = focus.split(",")[0].trim();
+  const match = focus.match(/\(([^)]+)\)/);
+  const connectors = match ? match[1].split(",").map((s) => s.trim()) : null;
+  return { tense, connectors };
+}
+
+function StoryMakingActivityV2({ item }) {
+  const round = item;
+  const [draft, setDraft] = useState("");
+  const { tense, connectors } = parseFocus(item.focus);
+
+  function restart() {
+    setDraft("");
+  }
+
+  function check() {
+    // Placeholder -- no checking logic yet, the button just lives on the card.
+  }
+
+  return (
+    <div className="sm2-shell">
+      <style>{CSS_V2}</style>
+      <div className="sm2-blob sm2-blob--a" />
+      <div className="sm2-blob sm2-blob--b" />
+
+      <div className="sm2-frame">
+        <span className="sm2-paper-back" />
+        <span className="sm2-tape" />
+
+        <div className="sm2-card">
+          <div className="sm2-pic-pane">
+            {round.image ? (
+              <img className="sm2-scene" src={round.image} alt="" />
+            ) : (
+              <StoryScene name={round.scene} />
+            )}
+            <svg className="sm2-pic-corner" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+              <path d="M0 0 H40 V40 Z" fill="#FFFFFF" fillOpacity="0.85" />
+              <path d="M0 0 H40 V40 Z" fill="none" stroke="#E0D6C4" strokeWidth="1" />
+            </svg>
+          </div>
+
+          <div className="sm2-content-pane">
+            <div className="sm2-brand-row">
+              <span className="sm2-brand-pill">
+                <img className="sm2-brand-logo" src="/logo-sentivo.png" alt="" />
+                <span className="sm2-brand-word">entivo</span>
+                <span className="sm2-brand-sep">·</span>
+                <span className="sm2-brand-type">Story Making</span>
+              </span>
+              {connectors && (
+                <div className="sm2-postit">
+                  <span className="sm2-postit-label">Connectors</span>
+                  <span className="sm2-postit-chain">{connectors.join("\n")}</span>
+                </div>
+              )}
+            </div>
+
+            <h1 className="sm2-title">{round.title || item.title}</h1>
+
+            <div className="sm2-meta-row">
+              <span className="sm2-tense-badge">🕓 {tense}</span>
+            </div>
+
+            <p className="sm2-prompt">{round.prompt}</p>
+
+            <div className="sm2-words">
+              {round.words.map((w) => (
+                <span className="sm2-word" key={w}>{w}</span>
+              ))}
+            </div>
+
+            <textarea
+              className="sm2-textarea"
+              placeholder="Write your 5-sentence story here…"
+              value={draft}
+              onChange={(e) => setDraft(e.target.value)}
+            />
+
+            <div className="sm2-nav-row">
+              <button type="button" className="sm2-btn" onClick={restart}>Restart ↻</button>
+              <button type="button" className="sm2-btn sm2-btn--primary" onClick={check}>Check ✓</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function StoryMakingActivity({ item }) {
   const round = item;
   const [draft, setDraft] = useState("");
@@ -161,6 +255,10 @@ export default function StoryMakingActivity({ item }) {
 
   function restart() {
     setDraft("");
+  }
+
+  if (item.key === "dayAtThePark") {
+    return <StoryMakingActivityV2 item={item} />;
   }
 
   return (
@@ -343,4 +441,153 @@ const CSS = `
   .sm-card { grid-template-columns: 1fr; }
   .sm-picture-pane { aspect-ratio: 4 / 3; }
 }
+`;
+
+const CSS_V2 = `
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Karla:wght@500;600;700;800&display=swap');
+
+.sm2-shell {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1cm;
+  box-sizing: border-box;
+  font-family: 'Karla', sans-serif;
+  background: linear-gradient(160deg, #FFF8EF 0%, #FFF1E6 100%);
+  overflow: hidden;
+}
+.sm2-shell * { box-sizing: border-box; }
+
+.sm2-blob { position: absolute; border-radius: 50%; pointer-events: none; z-index: 0; }
+.sm2-blob--a { width: 220px; height: 220px; top: -60px; left: 0; background: rgba(62,157,191,0.12); }
+.sm2-blob--b { width: 200px; height: 200px; bottom: -60px; right: 4%; background: rgba(111,207,151,0.10); }
+
+.sm2-frame { position: relative; z-index: 1; width: 900px; max-width: 100%; height: 560px; }
+
+.sm2-paper-back {
+  position: absolute; inset: 0;
+  background: #FBEFDD;
+  border-radius: 24px;
+  transform: rotate(1.6deg) translate(8px, 10px);
+  box-shadow: 0 16px 34px rgba(42,110,133,0.14);
+  z-index: 0;
+}
+
+.sm2-tape {
+  position: absolute; top: -14px; left: 46%; transform: translateX(-50%) rotate(-3deg);
+  width: 74px; height: 25px; z-index: 4;
+  background: repeating-linear-gradient(45deg, #3E9DBF, #3E9DBF 6px, #C7E6EE 6px, #C7E6EE 12px);
+  box-shadow: 0 3px 6px rgba(42,110,133,0.20);
+}
+
+.sm2-card {
+  position: relative; z-index: 1;
+  width: 100%; height: 100%;
+  background: #FFFFFF;
+  border-radius: 22px;
+  display: grid;
+  grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+  overflow: hidden;
+  box-shadow:
+    0 1px 2px rgba(42,110,133,0.10),
+    0 12px 22px rgba(42,110,133,0.14),
+    0 30px 55px rgba(42,110,133,0.18);
+  transform: rotate(-0.7deg);
+}
+
+.sm2-pic-pane { position: relative; background: #F3EEE6; }
+.sm2-scene { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+.sm2-pic-corner { position: absolute; top: 0; right: 0; width: 34px; height: 34px; filter: drop-shadow(-1px 1px 2px rgba(43,42,74,0.12)); }
+
+.sm2-content-pane { position: relative; padding: 22px 28px 20px; display: flex; flex-direction: column; min-width: 0; height: 100%; }
+
+.sm2-brand-row { display: flex; align-items: center; margin-bottom: 12px; padding-right: 80px; }
+.sm2-brand-pill {
+  display: inline-flex; align-items: center; gap: 0;
+  background: #E1F1F6;
+  border-radius: 999px;
+  padding: 5px 14px 5px 5px;
+}
+.sm2-brand-logo { width: 22px; height: 22px; border-radius: 50%; flex-shrink: 0; }
+.sm2-brand-word { font-family: 'Karla', sans-serif; font-weight: 800; font-size: 13.5px; color: #2A6E85; margin-left: 4px; }
+.sm2-brand-sep { color: #2A6E85; opacity: 0.4; margin: 0 7px; font-weight: 700; }
+.sm2-brand-type { font-family: 'Karla', sans-serif; font-weight: 800; font-size: 13.5px; letter-spacing: 0.02em; color: #2A6E85; }
+
+.sm2-postit {
+  position: absolute; top: 16px; right: 22px; z-index: 2;
+  width: 84px; height: 84px;
+  background: #FFE29E;
+  padding: 7px;
+  transform: rotate(5deg);
+  box-shadow: 0 6px 14px rgba(169,114,10,0.20);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center;
+}
+.sm2-postit::after {
+  content: ""; position: absolute; right: 0; bottom: 0;
+  width: 0; height: 0;
+  border-style: solid;
+  border-width: 0 0 13px 13px;
+  border-color: transparent transparent rgba(169,114,10,0.18) transparent;
+}
+.sm2-postit-label { display: block; font-family: 'Karla', sans-serif; font-weight: 800; font-size: 8px; letter-spacing: 0.08em; text-transform: uppercase; color: #8A5A00; margin-bottom: 4px; }
+.sm2-postit-chain { font-family: 'Caveat', cursive; font-weight: 700; font-size: 15px; color: #5C3D00; line-height: 1.25; white-space: pre-line; }
+
+.sm2-title { font-family: 'Caveat', cursive; font-weight: 700; font-size: 32px; color: #4A3F3A; margin: 0 0 8px; line-height: 1.05; }
+
+.sm2-meta-row { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; flex-wrap: wrap; }
+.sm2-tense-badge {
+  display: inline-flex; align-items: center; gap: 5px;
+  font-family: 'Karla', sans-serif; font-weight: 800; font-size: 11px; letter-spacing: 0.03em;
+  color: #2A6E85; background: #E1F1F6;
+  border: 1px solid #C7E6EE;
+  border-radius: 999px; padding: 5px 11px;
+}
+
+.sm2-prompt { font-size: 12.5px; font-weight: 500; color: #A9836F; line-height: 1.5; margin: 0 0 10px; }
+
+.sm2-words { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 14px; }
+.sm2-word {
+  font-family: 'Karla', sans-serif; font-weight: 700; font-size: 12px;
+  color: #2A6E85; background: #FFFFFF;
+  border: 1.5px solid #C7E6EE; border-radius: 8px;
+  padding: 6px 10px; box-shadow: 0 2px 0 #C7E6EE;
+}
+.sm2-word:nth-child(3n+1) { transform: rotate(-2.5deg); }
+.sm2-word:nth-child(3n+2) { transform: rotate(2deg); }
+.sm2-word:nth-child(3n+3) { transform: rotate(-1deg); }
+
+.sm2-textarea {
+  width: 100%;
+  flex: 1;
+  min-height: 130px;
+  border: 1px solid #C7E6EE;
+  border-radius: 14px;
+  padding: 14px 15px;
+  font-family: 'Karla', sans-serif;
+  font-size: 13.5px;
+  color: #4A3F3A;
+  line-height: 26px;
+  resize: none;
+  background: #FFFDF8 repeating-linear-gradient(to bottom, transparent 0, transparent 25px, #E1F1F6 26px);
+  background-position: 0 3px;
+}
+.sm2-textarea:focus { outline: none; border-color: #3E9DBF; }
+
+.sm2-nav-row { display: flex; align-items: center; gap: 10px; margin-top: 14px; flex: 0 0 auto; }
+.sm2-btn {
+  font-family: 'Karla', sans-serif; font-weight: 800; font-size: 13px;
+  border: none; border-radius: 14px; padding: 11px 20px; cursor: pointer;
+  background: #FBEDE3; color: #A9836F;
+}
+.sm2-btn--primary {
+  color: #FFFFFF;
+  background: linear-gradient(135deg, #3E9DBF 0%, #2A6E85 100%);
+  box-shadow: 0 4px 0 #1D4E5F;
+  margin-left: auto;
+}
+.sm2-btn--primary:active { transform: translateY(3px); box-shadow: 0 1px 0 #1D4E5F; }
 `;
