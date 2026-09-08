@@ -87,23 +87,21 @@ export const TEENS_UNITS = {
     {
       num: 7, title: "My Room", anchor: "there is/are, prepositions of place", focus: "Describe your room and what's in it",
       lessons: [
-        { num: 1, title: "In My Room", focus: "There is/are" },
-        { num: 2, title: "Where Is It?", focus: "Prepositions of place" },
-        { num: 3, title: "Describe Your Room", focus: "Fuller description practice" },
-        { num: 4, title: "Compare Rooms", focus: "Consolidate: ask about a friend's room" },
-        { num: 5, title: "My Dream Room", focus: "Production: speaking or writing task" },
-        { num: 6, title: "Unit Test", focus: "Summative test", isTest: true },
+        { num: 1, title: "My Room", focus: "Name common room objects and furniture" },
+        { num: 2, title: "In My Room", focus: "Say where things are, prepositions of place" },
+        { num: 3, title: "My Space", focus: "Describe your room in personal terms" },
+        { num: 4, title: "Room Questions", focus: "Answer simple questions about your room" },
+        { num: 5, title: "Unit Review", focus: "Summative review", isTest: true },
       ],
     },
     {
       num: 8, title: "Food and Drinks", anchor: "like / would like, some/any", focus: "Talk about food you like, order snacks or a meal with friends",
       lessons: [
-        { num: 1, title: "Food I Like", focus: "Food vocabulary, like" },
-        { num: 2, title: "I'd Like...", focus: "Ordering with would like" },
-        { num: 3, title: "Some or Any?", focus: "Some/any with food" },
-        { num: 4, title: "Order with Friends", focus: "Consolidate: an ordering dialogue" },
-        { num: 5, title: "Plan a Snack Order", focus: "Production: a real ordering roleplay" },
-        { num: 6, title: "Unit Test", focus: "Summative test", isTest: true },
+        { num: 1, title: "Food and Drinks", focus: "Name basic food and drink items" },
+        { num: 2, title: "Likes and Dislikes", focus: "Say what food and drinks you like or don't like" },
+        { num: 3, title: "At Mealtimes", focus: "Talk about simple meal routines" },
+        { num: 4, title: "Ordering Food", focus: "Use a simple order in a food situation" },
+        { num: 5, title: "Unit Review", focus: "Summative review", isTest: true },
       ],
     },
     {
