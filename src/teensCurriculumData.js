@@ -107,23 +107,21 @@ export const TEENS_UNITS = {
     {
       num: 9, title: "Clothes and Style", anchor: "present continuous", focus: "Describe what you're wearing today and your own style",
       lessons: [
-        { num: 1, title: "What Are You Wearing?", focus: "Present continuous, clothes vocabulary" },
-        { num: 2, title: "My Style", focus: "Describing personal style" },
-        { num: 3, title: "Today's Outfit", focus: "Practice describing outfits" },
-        { num: 4, title: "Talk About Style", focus: "Consolidate: fuller conversation" },
-        { num: 5, title: "Describe Your Style", focus: "Production: speaking or writing task" },
-        { num: 6, title: "Unit Test", focus: "Summative test", isTest: true },
+        { num: 1, title: "Clothes and Style", focus: "Name basic clothes and style words" },
+        { num: 2, title: "What Are You Wearing?", focus: "Describe what someone is wearing" },
+        { num: 3, title: "Style and Color", focus: "Describe clothes with colors" },
+        { num: 4, title: "Shopping for Clothes", focus: "Ask for a clothing item simply" },
+        { num: 5, title: "Unit Review", focus: "Summative review", isTest: true },
       ],
     },
     {
       num: 10, title: "Weather and Seasons", anchor: "it's + adjective", focus: "Talk about the weather and your favorite season",
       lessons: [
-        { num: 1, title: "What's the Weather?", focus: "It's + adjective" },
-        { num: 2, title: "My Favorite Season", focus: "Seasons vocabulary" },
-        { num: 3, title: "Weather and Activities", focus: "Connect weather to what you do" },
-        { num: 4, title: "Talk About the Weather", focus: "Consolidate: fuller conversation" },
-        { num: 5, title: "Describe Your Favorite Season", focus: "Production: speaking or writing task" },
-        { num: 6, title: "Unit Test", focus: "Summative test", isTest: true },
+        { num: 1, title: "Weather and Seasons", focus: "Name basic weather words and seasons" },
+        { num: 2, title: "What's the Weather Like?", focus: "Answer a simple weather question" },
+        { num: 3, title: "Seasons and Clothes", focus: "Match seasons with suitable clothes" },
+        { num: 4, title: "Weather Preferences", focus: "Say which weather you like" },
+        { num: 5, title: "Unit Review", focus: "Summative review", isTest: true },
       ],
     },
     {
