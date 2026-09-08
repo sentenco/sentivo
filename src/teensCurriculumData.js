@@ -9,6 +9,7 @@ export const TEENS_LEVELS = {
     name: "Ignite",
     tag: "Start here",
     accent: "coral",
+    banner: "/curriculum/teens-a1-banner.png",
     description: "School, friends, hobbies, and the words to talk about your own world, from your room to your weekend plans.",
   },
   A2: {
@@ -16,6 +17,7 @@ export const TEENS_LEVELS = {
     name: "Ablaze",
     tag: "Next step",
     accent: "navy",
+    banner: "/curriculum/teens-a2-banner.png",
     description: "More detail on the things that matter to you: style, friendships, travel, and the confidence to say what you really think.",
   },
 };

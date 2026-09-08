@@ -70,7 +70,10 @@ export default function TrackLevelPage({ audience, level, onBack }) {
           Curriculum <span className="tlp-crumb-sep">&rsaquo;</span> {track.label} <span className="tlp-crumb-sep">&rsaquo;</span> <span style={{ color: colors.color }}>{level} &middot; {data.name}</span>
         </button>
 
-        <div className="tlp-banner-hero" style={{ background: colors.light }}>
+        <div
+          className="tlp-banner-hero"
+          style={data.banner ? { backgroundImage: `url(${data.banner})` } : { background: colors.light }}
+        >
           <div className="tlp-cefr-tag" style={{ color: colors.color }}>{track.label} &middot; CEFR {level}</div>
           <div className="tlp-banner-title">
             <span className="tlp-level-code" style={{ color: colors.color }}>{level}</span>
@@ -204,9 +207,14 @@ const styles = `
   border-radius: 20px;
   padding: 26px 32px;
   margin-bottom: 18px;
+  background-size: cover;
+  background-position: right center;
+  background-repeat: no-repeat;
   display: flex;
   flex-direction: column;
   gap: 8px;
+  min-height: 200px;
+  justify-content: center;
 }
 .tlp-cefr-tag {
   display: inline-block;
@@ -220,7 +228,7 @@ const styles = `
   background: #fff;
   box-shadow: 0 2px 8px rgba(27,42,74,0.1);
 }
-.tlp-banner-title { display: flex; align-items: baseline; gap: 12px; }
+.tlp-banner-title { display: flex; align-items: baseline; gap: 12px; max-width: 60%; }
 .tlp-level-code { font-family: 'Source Serif 4', serif; font-size: 40px; font-weight: 600; line-height: 1; }
 .tlp-level-name { font-family: 'Source Serif 4', serif; font-size: 26px; font-weight: 600; color: #23264A; }
 .tlp-description { font-size: 13px; font-weight: 500; color: #4A5578; line-height: 1.55; max-width: 60%; }
