@@ -27,12 +27,11 @@ export const TEENS_UNITS = {
     {
       num: 1, title: "Greetings and Introductions", anchor: "to be, subject pronouns", focus: "Introduce yourself and ask a new classmate's name and where they're from",
       lessons: [
-        { num: 1, title: "Say Hello", focus: "Basic greetings, introduce yourself by name" },
-        { num: 2, title: "Where Are You From?", focus: "Countries and nationalities, subject pronouns" },
-        { num: 3, title: "Meet My Classmate", focus: "Ask a partner questions, practice dialogue" },
-        { num: 4, title: "Let's Check", focus: "Review and consolidate" },
-        { num: 5, title: "Introduce Someone", focus: "Production: introduce a partner, or write a short bio" },
-        { num: 6, title: "Unit Test", focus: "Summative test", isTest: true },
+        { num: 1, title: "Hello and Me", focus: "Basic greetings, introduce yourself by name" },
+        { num: 2, title: "Questions and Answers", focus: "Ask and answer basic introduction questions" },
+        { num: 3, title: "Spelling and Numbers", focus: "Spell your name and share your age" },
+        { num: 4, title: "Meeting Someone New", focus: "Full first-meeting conversation" },
+        { num: 5, title: "Unit Review", focus: "Summative review", isTest: true },
       ],
     },
     {
