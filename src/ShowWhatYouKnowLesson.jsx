@@ -8,6 +8,7 @@ const LETTER_COLOR = {
   A: "#F2A900", B: "#2E97C7", C: "#22A67E",
   D: "#E0567A", E: "#8E6FCE", F: "#2BAFAF",
   G: "#C77D2E", H: "#D6478C", I: "#4FA8D8",
+  T: "#4A6FA5",
 };
 
 export function StarIcon({ size = 20, fill = "var(--sun)", style }) {
@@ -56,6 +57,30 @@ function LetterTile({ letters, color, size = 74, fontSize = 28, onZoom }) {
   return (
     <div className="letter-tile" style={{ background: color, width: size, height: size, fontSize }} onClick={() => onZoom(big)}>
       {letters}
+    </div>
+  );
+}
+
+function TapLetterTile({ letter, color, size = 90, fontSize = 36 }) {
+  const [shown, setShown] = useState(false);
+  if (shown) {
+    return (
+      <div
+        className="letter-tile tap-tile"
+        style={{ background: color, width: size, height: size, fontSize }}
+        onClick={() => setShown(false)}
+      >
+        {letter}
+      </div>
+    );
+  }
+  return (
+    <div
+      className="blank-tile tap-tile"
+      style={{ width: size, height: size, fontSize: Math.round(fontSize * 0.55) }}
+      onClick={() => setShown(true)}
+    >
+      ?
     </div>
   );
 }
@@ -167,13 +192,9 @@ export const LESSON_GUIDE = [
   { stage: "How Are You?", time: "~4 min", note: "Have a real exchange: ask 'How are you?', react to their answer, and ask a simple follow-up like 'Are you happy?'" },
   { stage: "Letter Talk", time: "~4 min", note: "Show a mixed set of A-I letters and pictures. Let the student name letters and say words with as little prompting as possible." },
   { stage: "Look, Think & Say", time: "~4 min", note: "Show the picture set and ask open questions: 'What do you see?', 'What letter?', 'What is it?' Let the student talk as much as they can." },
-  { stage: "Show What You Know!", time: "~2 min", note: "Introduce yourself as a brand new character. Wait for the student to start the conversation." },
-  { stage: "Show What You Know!", time: "~2 min", note: [
-    "Let the student greet you first: \"Hello!\"",
-    "Let them ask \"What's your name?\" and \"How are you?\"",
-    "Respond naturally, then switch roles so you greet them.",
-  ] },
-  { stage: "Show What You Know!", time: "~2 min", note: "Now it's your turn to start. See if the student can answer everything independently." },
+  { stage: "Show What You Know!", time: "~2 min", note: "Show the cat picture. Let the student tap each tile to reveal C, A, and T, saying the letter and sounding out the word as each one appears." },
+  { stage: "Show What You Know!", time: "~1 min", note: null },
+  { stage: "Show What You Know!", time: "~2 min", note: "One more word: show the hat picture and let the student tap-to-reveal H, A, and T the same way." },
   { stage: "My A-I Challenge", time: "~2 min", note: "Let the student pick letters and name a word for each one, with minimal help." },
   { stage: "My A-I Challenge", time: "~2 min", note: "Finish with one last natural greeting exchange, then celebrate everything they did today!" },
   { stage: "Wrap-Up", time: null, note: null },
@@ -328,70 +349,67 @@ function buildSlides({ onZoom }) {
         </>
       ),
     },
-    // 6: Show What You Know! (new character intro)
-    {
-      stage: "Show What You Know!",
-      time: "~2 min",
-      body: (
-        <div className="center-col">
-          <span className="title-highlight"><h2 className="slide-h sub">A New Friend!</h2></span>
-          <div className="avatar navy" style={{ width: 64, height: 64, fontSize: 22 }}>?</div>
-          <p className="slide-p">The teacher becomes someone new. You start the conversation!</p>
-        </div>
-      ),
-    },
-    // 7: Show What You Know! (student-led dialogue)
+    // 6: Show What You Know! (spell it -- tap to reveal, Cat)
     {
       stage: "Show What You Know!",
       time: "~2 min",
       body: (
         <>
-          <span className="title-highlight"><h2 className="slide-h sub">You Go First!</h2></span>
-          <div className="bubble-col" style={{ maxWidth: 460 }}>
-            <div className="brow me">
-              <div className="avatar coral">S</div>
-              <div className="bubble right"><span className="fill"></span></div>
-            </div>
-            <div className="brow">
-              <div className="avatar navy">T</div>
-              <div className="bubble left">Hi! I'm someone new.</div>
-            </div>
-            <div className="brow me">
-              <div className="avatar coral">S</div>
-              <div className="bubble right"><span className="fill"></span></div>
-            </div>
+          <span className="title-highlight"><h2 className="slide-h sub">Spell It!</h2></span>
+          <Pic src={`${IMG1}/cat.jpg`} label="cat" size={110} onZoom={onZoom} />
+          <div className="row" style={{ marginTop: 14 }}>
+            <TapLetterTile letter="C" color={LETTER_COLOR.C} size={90} fontSize={36} />
+            <TapLetterTile letter="A" color={LETTER_COLOR.A} size={90} fontSize={36} />
+            <TapLetterTile letter="T" color={LETTER_COLOR.T} size={90} fontSize={36} />
           </div>
         </>
       ),
     },
-    // 8: Show What You Know! (switch roles)
+    // 7: Show What You Know! (Cat reveal)
+    {
+      stage: "Show What You Know!",
+      time: "~1 min",
+      body: (
+        <>
+          <span className="title-highlight"><h2 className="slide-h sub">It's a Cat!</h2></span>
+          <div className="row" style={{ marginBottom: 10 }}>
+            <LetterTile letters="C" color={LETTER_COLOR.C} size={54} fontSize={22} onZoom={onZoom} />
+            <LetterTile letters="A" color={LETTER_COLOR.A} size={54} fontSize={22} onZoom={onZoom} />
+            <LetterTile letters="T" color={LETTER_COLOR.T} size={54} fontSize={22} onZoom={onZoom} />
+          </div>
+          <Pic src={`${IMG1}/cat.jpg`} label="cat" size={130} onZoom={onZoom} />
+        </>
+      ),
+    },
+    // 8: Show What You Know! (spell it -- tap to reveal, Hat)
     {
       stage: "Show What You Know!",
       time: "~2 min",
       body: (
-        <div className="center-col">
-          <span className="title-highlight"><h2 className="slide-h sub">Switch!</h2></span>
-          <p className="slide-p">Now the teacher goes first. Answer everything on your own!</p>
-        </div>
+        <>
+          <span className="title-highlight"><h2 className="slide-h sub">One More Word!</h2></span>
+          <Pic src={`${IMG3}/hat.avif`} label="hat" size={110} onZoom={onZoom} />
+          <div className="row" style={{ marginTop: 14 }}>
+            <TapLetterTile letter="H" color={LETTER_COLOR.H} size={90} fontSize={36} />
+            <TapLetterTile letter="A" color={LETTER_COLOR.A} size={90} fontSize={36} />
+            <TapLetterTile letter="T" color={LETTER_COLOR.T} size={90} fontSize={36} />
+          </div>
+        </>
       ),
     },
-    // 8b: Show What You Know! (one more switch)
+    // 8b: Show What You Know! (Hat reveal)
     {
       stage: "Show What You Know!",
       time: "~1.5 min",
       body: (
         <>
-          <span className="title-highlight"><h2 className="slide-h sub">Once More!</h2></span>
-          <div className="bubble-col" style={{ maxWidth: 460 }}>
-            <div className="brow">
-              <div className="avatar navy">T</div>
-              <div className="bubble left">How are you today?</div>
-            </div>
-            <div className="brow me">
-              <div className="avatar coral">S</div>
-              <div className="bubble right"><span className="fill"></span></div>
-            </div>
+          <span className="title-highlight"><h2 className="slide-h sub">It's a Hat!</h2></span>
+          <div className="row" style={{ marginBottom: 10 }}>
+            <LetterTile letters="H" color={LETTER_COLOR.H} size={54} fontSize={22} onZoom={onZoom} />
+            <LetterTile letters="A" color={LETTER_COLOR.A} size={54} fontSize={22} onZoom={onZoom} />
+            <LetterTile letters="T" color={LETTER_COLOR.T} size={54} fontSize={22} onZoom={onZoom} />
           </div>
+          <Pic src={`${IMG3}/hat.avif`} label="hat" size={130} onZoom={onZoom} />
         </>
       ),
     },
@@ -498,6 +516,10 @@ export const styles = `
 .letter-row { display: flex; gap: 14px; position: relative; z-index: 1; flex-wrap: wrap; justify-content: center; }
 .letter-tile { cursor: zoom-in; border-radius: 16px; display: flex; align-items: center; justify-content: center; font-family: 'Baloo 2', sans-serif; font-weight: 800; color: #fff; border: 3px solid #fff; box-shadow: 0 6px 14px rgba(27,42,74,0.15); transition: transform 0.15s ease; }
 .letter-tile:hover { transform: scale(1.05); }
+.blank-tile { border-radius: 16px; background: repeating-linear-gradient(45deg, #D9D2F3, #D9D2F3 6px, #E8E3F8 6px, #E8E3F8 12px); border: 3px dashed #B8AEDD; }
+.tap-tile { cursor: pointer; transition: transform 0.15s ease; }
+.tap-tile:hover { transform: scale(1.05); }
+.blank-tile.tap-tile { display: flex; align-items: center; justify-content: center; font-family: 'Baloo 2', sans-serif; font-weight: 800; color: #B8AEDD; }
 .zoom-letter-tile { width: 300px; height: 300px; border-radius: 40px; }
 .zoom-letter-tile span { font-family: 'Baloo 2', sans-serif; font-weight: 800; font-size: 120px; color: #fff; }
 
