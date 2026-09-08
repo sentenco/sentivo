@@ -193,9 +193,9 @@ export const LESSON_GUIDE = [
   { stage: "L is for...", time: "~1.5 min", note: "Say each word slowly: \"L is for lion. L is for leaf. L is for lamp.\"" },
   { stage: "Count & Say", time: "~2.5 min", note: "Show a group of apples. Student counts aloud: \"One! Two! Three!\" Mix the quantity so it isn't memorized." },
   { stage: "Count & Say", time: "~2.5 min", note: "Repeat with a different quantity of stars so the student connects the number, word, and quantity." },
-  { stage: "Look & Match", time: "~4 min", note: "Show a number and a matching quantity, and a letter with its matching word. Model: \"3 -> three balloons. J -> juice.\"" },
-  { stage: "HIGHLIGHT: How Many?", time: "~2 min", note: "Show a group of grapes for a few seconds, then hide it. Ask \"How many?\" and let the student remember and answer." },
-  { stage: "HIGHLIGHT: How Many?", time: "~2 min", note: "Follow with a quick letter challenge: \"What letter?\" using J, K, or L." },
+  { stage: "Look & Match", time: "~4 min", note: "Show two number-and-quantity pairs to match: \"4 -> four balloons. 3 -> three juices.\"" },
+  { stage: "HIGHLIGHT: How Many?", time: "~2 min", note: "Show a group of kites for a few seconds, then hide it. Ask \"How many?\", let the student remember and answer, then ask what letter kite starts with (K)." },
+  { stage: "HIGHLIGHT: How Many?", time: "~2 min", note: "Repeat with a group of leaves. Ask \"How many?\", then what letter leaf starts with (L)." },
   { stage: "Count & Say Goodbye", time: "~1.5 min", note: "Count 1 to 5 together one final time." },
   { stage: "Count & Say Goodbye", time: "~1.5 min", note: "Flash J, K, L for a quick identification check, then finish with the familiar goodbye routine." },
   { stage: "Wrap-Up", time: null, note: null },
@@ -365,8 +365,8 @@ function buildSlides({ onZoom }) {
               <CountGroup n={4} icon="🎈" size={38} onZoom={onZoom} />
             </div>
             <div className="look-row">
-              <span className="look-letter" style={{ background: LETTER_COLOR.J }}>J</span>
-              <Pic src={`${IMG}/juice.avif`} label="juice" size={70} onZoom={onZoom} />
+              <span className="look-letter" style={{ background: NUMBER_COLOR[3] }}>3</span>
+              <CountGroup n={3} icon="🧃" size={38} onZoom={onZoom} />
             </div>
           </div>
         </>
@@ -379,7 +379,7 @@ function buildSlides({ onZoom }) {
       body: (
         <>
           <span className="title-highlight"><h2 className="slide-h sub">Look Carefully!</h2></span>
-          <CountGroup n={4} icon="🍇" size={54} onZoom={onZoom} />
+          <CountGroup n={4} icon="🪁" size={54} onZoom={onZoom} />
           <p className="slide-p" style={{ marginTop: 4 }}>Remember how many you see... then we hide it!</p>
         </>
       ),
@@ -394,7 +394,7 @@ function buildSlides({ onZoom }) {
           <div className="bubble-col" style={{ maxWidth: 380 }}>
             <div className="brow">
               <div className="avatar navy">T</div>
-              <div className="bubble left">How many grapes were there?</div>
+              <div className="bubble left">How many kites were there?</div>
             </div>
           </div>
           <div className="row" style={{ marginTop: 8 }}>
@@ -411,7 +411,7 @@ function buildSlides({ onZoom }) {
       body: (
         <>
           <span className="title-highlight"><h2 className="slide-h sub">Look Again!</h2></span>
-          <CountGroup n={5} icon="🎈" size={50} onZoom={onZoom} />
+          <CountGroup n={5} icon="🍃" size={50} onZoom={onZoom} />
           <p className="slide-p" style={{ marginTop: 4 }}>Remember how many you see... then we hide it!</p>
         </>
       ),
@@ -426,7 +426,7 @@ function buildSlides({ onZoom }) {
           <div className="bubble-col" style={{ maxWidth: 380 }}>
             <div className="brow">
               <div className="avatar navy">T</div>
-              <div className="bubble left">How many balloons were there?</div>
+              <div className="bubble left">How many leaves were there?</div>
             </div>
           </div>
           <div className="row" style={{ marginTop: 8 }}>
