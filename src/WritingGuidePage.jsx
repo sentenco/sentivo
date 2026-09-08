@@ -1,11 +1,12 @@
 import { useParams } from "react-router-dom";
 import { ACTIVITY_TYPES } from "./WritingActivities";
 import ProofreadingGuide from "./ProofreadingGuide";
+import StoryMakingGuide from "./StoryMakingGuide";
 
-// Only Proofreading has a Teacher's Guide so far -- add an entry here as
-// the other Writing activities get one too.
+// Add an entry here as each Writing activity gets a Teacher's Guide.
 const GUIDES = {
   proofreading: ProofreadingGuide,
+  storyMaking: StoryMakingGuide,
 };
 
 export default function WritingGuidePage() {

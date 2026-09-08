@@ -33,13 +33,12 @@ export default function WritingPlayerPage() {
 
   const Player = PLAYERS[type.key];
 
-  // Proofreading is a fixed-size, self-contained lesson card with its own
-  // logo baked in (see ProofreadingActivity.jsx) -- it doesn't want
-  // PlayerChrome's outer branded header on top of that. Same for Story
-  // Making's "A Day at the Park" pilot redesign (see
-  // StoryMakingActivityV2 in StoryMakingActivity.jsx) -- every other
-  // Writing topic is untouched and still uses the shared chrome.
-  const isSelfContained = type.key === "proofreading" || (type.key === "storyMaking" && topic.key === "dayAtThePark");
+  // Proofreading and Story Making are fixed-size, self-contained lesson
+  // cards with their own logo baked in (see ProofreadingActivity.jsx /
+  // StoryMakingActivity.jsx) -- they don't want PlayerChrome's outer
+  // branded header on top of that. Message Reply and Register Rewrite
+  // still use the shared chrome.
+  const isSelfContained = type.key === "proofreading" || type.key === "storyMaking";
   if (isSelfContained) {
     return <Player item={topic} />;
   }

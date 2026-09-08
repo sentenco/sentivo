@@ -1,9 +1,4 @@
-import { useMemo, useState } from "react";
-
-function countSentences(text) {
-  const matches = text.trim().match(/[^.!?]+[.!?]+/g);
-  return matches ? matches.length : (text.trim() ? 1 : 0);
-}
+import { useState } from "react";
 
 // Flat, rounded-shape illustrations used until a real generated picture is
 // wired in via round.image. "bonus" is a neutral placeholder shared by every
@@ -148,15 +143,16 @@ function StoryScene({ name }) {
   };
 
   return (
-    <svg className="sm-scene" viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg">
+    <svg className="sm2-scene" viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg">
       {scenes[name] || <rect width="320" height="200" rx="20" fill="#EDE7F6" />}
     </svg>
   );
 }
 
-// "A Day at the Park" only, for now -- the redesigned card (own logo,
-// depth, tilt, tense badge + connectors on a Post-it). Everything else
-// still renders the original layout below until this is validated.
+// Own logo, depth, tilt, and a tense badge + connectors on a Post-it
+// (parsed out of item.focus, e.g. "Simple past, sequencing (first,
+// then, after)" -- the Post-it only renders when a parenthesized list
+// is present, which not every level's focus line has).
 function parseFocus(focus) {
   const tense = focus.split(",")[0].trim();
   const match = focus.match(/\(([^)]+)\)/);
@@ -164,7 +160,7 @@ function parseFocus(focus) {
   return { tense, connectors };
 }
 
-function StoryMakingActivityV2({ item }) {
+export default function StoryMakingActivity({ item }) {
   const round = item;
   const [draft, setDraft] = useState("");
   const { tense, connectors } = parseFocus(item.focus);
@@ -179,7 +175,7 @@ function StoryMakingActivityV2({ item }) {
 
   return (
     <div className="sm2-shell">
-      <style>{CSS_V2}</style>
+      <style>{CSS}</style>
       <div className="sm2-blob sm2-blob--a" />
       <div className="sm2-blob sm2-blob--b" />
 
@@ -248,202 +244,7 @@ function StoryMakingActivityV2({ item }) {
   );
 }
 
-export default function StoryMakingActivity({ item }) {
-  const round = item;
-  const [draft, setDraft] = useState("");
-  const sentenceCount = useMemo(() => countSentences(draft), [draft]);
-
-  function restart() {
-    setDraft("");
-  }
-
-  if (item.key === "dayAtThePark") {
-    return <StoryMakingActivityV2 item={item} />;
-  }
-
-  return (
-    <div className="sm-shell">
-      <style>{CSS}</style>
-
-      <div className="sm-card">
-        <span className="sm-tape" />
-        <div className="sm-picture-pane">
-          {round.image ? (
-            <img className="sm-scene" src={round.image} alt="" />
-          ) : (
-            <StoryScene name={round.scene} />
-          )}
-          <svg className="sm-corner" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
-            <path d="M0 0 H40 V40 Z" fill="#FFFFFF" fillOpacity="0.85" />
-            <path d="M0 0 H40 V40 Z" fill="none" stroke="#E0D6C4" strokeWidth="1" />
-          </svg>
-        </div>
-
-        <div className="sm-content-pane">
-          <div className="sm-bar">
-            <span className="sm-eyebrow">Sentivo · Story Making</span>
-            <div className="sm-count-dots" data-full={sentenceCount >= 5} aria-label={`${sentenceCount} of 5 sentences`}>
-              {Array.from({ length: 5 }).map((_, i) => (
-                <span key={i} className={`sm-count-dot ${i < sentenceCount ? "is-filled" : ""}`} />
-              ))}
-            </div>
-          </div>
-
-          <h1 className="sm-title">{round.title || item.title}</h1>
-          <span className="sm-focus">{item.focus}</span>
-
-          <p className="sm-prompt">{round.prompt}</p>
-          <div className="sm-words">
-            {round.words.map((w) => (
-              <span className="sm-word" key={w}>{w}</span>
-            ))}
-          </div>
-
-          <textarea
-            className="sm-textarea"
-            placeholder="Write your 5-sentence story here…"
-            value={draft}
-            onChange={(e) => setDraft(e.target.value)}
-            rows={5}
-          />
-
-          <div className="sm-nav">
-            <button type="button" className="sm-btn sm-btn--primary" onClick={restart}>Restart ↻</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
-
 const CSS = `
-@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Karla:wght@500;600;700;800&display=swap');
-
-.sm-shell {
-  position: relative;
-  width: 100%;
-  min-height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: clamp(16px, 3vw, 32px);
-  font-family: 'Karla', sans-serif;
-  background: linear-gradient(160deg, #FFF8EF 0%, #FFF1E6 100%);
-  overflow: hidden;
-}
-.sm-shell * { box-sizing: border-box; }
-.sm-shell::before, .sm-shell::after {
-  content: ""; position: absolute; border-radius: 50%; pointer-events: none;
-}
-.sm-shell::before { width: 150px; height: 150px; background: rgba(62,157,191,0.14); top: -40px; left: -30px; }
-.sm-shell::after { width: 110px; height: 110px; background: rgba(111,207,151,0.14); bottom: -20px; right: 6%; }
-
-.sm-card {
-  position: relative;
-  width: 100%;
-  max-width: 980px;
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  background: #FFFFFF;
-  border-radius: 22px;
-  overflow: hidden;
-  box-shadow: 0 24px 50px rgba(42,110,133,0.20);
-  z-index: 1;
-}
-.sm-tape {
-  position: absolute; top: -12px; left: 50%; transform: translateX(-50%) rotate(-3deg);
-  width: 68px; height: 22px; opacity: 0.9; z-index: 3;
-  background: repeating-linear-gradient(45deg, #6EC3E0, #6EC3E0 6px, #A6DCEC 6px, #A6DCEC 12px);
-}
-
-.sm-picture-pane { position: relative; background: #F3EEE6; }
-.sm-scene { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
-.sm-corner { position: absolute; top: 0; right: 0; width: 34px; height: 34px; filter: drop-shadow(-1px 1px 2px rgba(43,42,74,0.12)); }
-
-.sm-content-pane { padding: clamp(24px, 3.2vw, 36px); display: flex; flex-direction: column; min-width: 0; }
-
-.sm-bar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
-.sm-eyebrow {
-  font-family: 'Karla', sans-serif;
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: #2A6E85;
-  background: rgba(62,157,191,0.14);
-  border-radius: 999px;
-  padding: 5px 14px;
-}
-.sm-count-dots { display: flex; align-items: center; gap: 5px; }
-.sm-count-dot { width: 7px; height: 7px; border-radius: 50%; background: #D6EDF4; transition: background 0.2s ease, transform 0.2s ease; }
-.sm-count-dot.is-filled { background: #3E9DBF; transform: scale(1.15); }
-.sm-count-dots[data-full="true"] .sm-count-dot.is-filled { background: #1F9D6E; }
-
-.sm-title { font-family: 'Caveat', cursive; font-weight: 700; font-size: clamp(28px, 4.2vw, 36px); color: #4A3F3A; margin: 0 0 4px; }
-.sm-focus { display: inline-block; font-size: 12.5px; font-weight: 600; color: #A9836F; margin-right: 10px; }
-
-.sm-prompt { font-size: 13.5px; font-weight: 500; color: #A9836F; line-height: 1.5; margin: 0 0 12px; }
-.sm-words { display: flex; flex-wrap: wrap; gap: 9px; margin-bottom: 18px; }
-.sm-word {
-  font-family: 'Karla', sans-serif;
-  font-weight: 700;
-  font-size: 12.5px;
-  color: #2A6E85;
-  background: #FFFFFF;
-  border: 1.5px solid #C7E6EE;
-  border-radius: 9px;
-  padding: 7px 12px;
-  box-shadow: 0 2px 0 #C7E6EE;
-  transform: rotate(var(--tilt, 0deg));
-}
-.sm-word:nth-child(3n+1) { --tilt: -3deg; }
-.sm-word:nth-child(3n+2) { --tilt: 2deg; }
-.sm-word:nth-child(3n+3) { --tilt: -1deg; }
-
-.sm-textarea {
-  width: 100%;
-  flex: 1;
-  min-height: 130px;
-  border: 1px solid #C7E6EE;
-  border-radius: 14px;
-  padding: 16px 16px 14px;
-  font-family: 'Karla', sans-serif;
-  font-size: 14.5px;
-  color: #4A3F3A;
-  line-height: 28px;
-  resize: vertical;
-  background: #FFFDF8 repeating-linear-gradient(to bottom, transparent 0, transparent 27px, #E1F1F6 28px);
-  background-position: 0 4px;
-}
-.sm-textarea:focus { outline: none; border-color: #3E9DBF; }
-
-.sm-nav { display: flex; justify-content: flex-start; margin-top: 22px; }
-.sm-btn {
-  font-family: 'Karla', sans-serif;
-  font-weight: 800;
-  font-size: 14px;
-  border: none;
-  border-radius: 14px;
-  padding: 12px 24px;
-  cursor: pointer;
-  background: #FBEDE3;
-  color: #A9836F;
-}
-.sm-btn:disabled { opacity: 0.5; cursor: default; }
-.sm-btn--primary {
-  color: #FFFFFF;
-  background: linear-gradient(135deg, #6EC3E0 0%, #2A6E85 100%);
-  box-shadow: 0 6px 0 #1D4E5F;
-}
-.sm-btn--primary:active { transform: translateY(3px); box-shadow: 0 3px 0 #1D4E5F; }
-
-@media (max-width: 760px) {
-  .sm-card { grid-template-columns: 1fr; }
-  .sm-picture-pane { aspect-ratio: 4 / 3; }
-}
-`;
-
-const CSS_V2 = `
 @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Karla:wght@500;600;700;800&display=swap');
 
 .sm2-shell {

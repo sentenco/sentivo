@@ -42,6 +42,11 @@ export const ACTIVITY_TYPES = [
 
 const LEVEL_GROUPS = ["A1-A2", "B1-B2", "C1-C2"];
 
+// Activity types with a Teacher's Guide -- their topic cards show a
+// separate "Guide" button next to "Start" instead of the whole card
+// being one click-through button.
+const HAS_GUIDE = ["proofreading", "storyMaking"];
+
 function ProofreadingBanner() {
   return (
     <svg className="wa-banner" viewBox="0 0 320 120" xmlns="http://www.w3.org/2000/svg">
@@ -229,7 +234,7 @@ export default function WritingActivities({ query }) {
         ) : (
           <div className="wa-cat-grid">
             {matches.map(({ topic, type: t }) =>
-              t.key === "proofreading" ? (
+              HAS_GUIDE.includes(t.key) ? (
                 <div key={`${t.key}-${topic.key}`} className={`wa-cat-card wa-cat-card--${t.hue} wa-cat-card--static`}>
                   <div className="wa-cat-top">
                     <span className="wa-cat-icon">{t.icon}</span>
@@ -289,7 +294,7 @@ export default function WritingActivities({ query }) {
         </div>
         <div className="wa-cat-grid">
           {levelTopics.map((t) =>
-            type.key === "proofreading" ? (
+            HAS_GUIDE.includes(type.key) ? (
               <div key={t.key} className={`wa-cat-card wa-cat-card--${type.hue} wa-cat-card--static`}>
                 <div className="wa-cat-top">
                   <span className="wa-cat-icon">{type.icon}</span>
