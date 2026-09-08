@@ -163,14 +163,16 @@ function parseFocus(focus) {
 export default function StoryMakingActivity({ item }) {
   const round = item;
   const [draft, setDraft] = useState("");
+  const [checked, setChecked] = useState(false);
   const { tense, connectors } = parseFocus(item.focus);
 
   function restart() {
     setDraft("");
+    setChecked(false);
   }
 
   function check() {
-    // Placeholder -- no checking logic yet, the button just lives on the card.
+    setChecked(true);
   }
 
   return (
@@ -226,16 +228,23 @@ export default function StoryMakingActivity({ item }) {
               ))}
             </div>
 
-            <textarea
-              className="sm2-textarea"
-              placeholder="Write your 5-sentence story here…"
-              value={draft}
-              onChange={(e) => setDraft(e.target.value)}
-            />
+            {checked ? (
+              <div className="sm2-story-final">
+                <span className="sm2-story-label">✓ Your Story</span>
+                <p className="sm2-story-text">{draft}</p>
+              </div>
+            ) : (
+              <textarea
+                className="sm2-textarea"
+                placeholder="Write your 5-sentence story here…"
+                value={draft}
+                onChange={(e) => setDraft(e.target.value)}
+              />
+            )}
 
             <div className="sm2-nav-row">
               <button type="button" className="sm2-btn" onClick={restart}>Restart ↻</button>
-              <button type="button" className="sm2-btn sm2-btn--primary" onClick={check}>Check ✓</button>
+              <button type="button" className="sm2-btn sm2-btn--primary" onClick={check} disabled={checked || !draft.trim()}>Check ✓</button>
             </div>
           </div>
         </div>
@@ -378,6 +387,24 @@ const CSS = `
 }
 .sm2-textarea:focus { outline: none; border-color: #3E9DBF; }
 
+.sm2-story-final {
+  width: 100%;
+  flex: 1;
+  min-height: 130px;
+  border: 1px solid #A8DFC0;
+  border-radius: 14px;
+  padding: 14px 15px;
+  overflow-y: auto;
+  background: #F3FBF6 repeating-linear-gradient(to bottom, transparent 0, transparent 25px, #DCF3E4 26px);
+  background-position: 0 3px;
+}
+.sm2-story-label {
+  display: inline-block; font-family: 'Karla', sans-serif; font-weight: 800; font-size: 10px;
+  letter-spacing: 0.06em; text-transform: uppercase; color: #1F9D6E;
+  background: #DCF3E4; border-radius: 999px; padding: 3px 9px; margin-bottom: 8px;
+}
+.sm2-story-text { font-family: 'Karla', sans-serif; font-size: 13.5px; color: #2B4A38; line-height: 26px; margin: 0; white-space: pre-wrap; }
+
 .sm2-nav-row { display: flex; align-items: center; gap: 10px; margin-top: 14px; flex: 0 0 auto; }
 .sm2-btn {
   font-family: 'Karla', sans-serif; font-weight: 800; font-size: 13px;
@@ -390,5 +417,6 @@ const CSS = `
   box-shadow: 0 4px 0 #1D4E5F;
   margin-left: auto;
 }
+.sm2-btn--primary:disabled { opacity: 0.45; cursor: default; box-shadow: none; }
 .sm2-btn--primary:active { transform: translateY(3px); box-shadow: 0 1px 0 #1D4E5F; }
 `;
