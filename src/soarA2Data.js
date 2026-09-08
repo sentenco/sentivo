@@ -187,4 +187,203 @@ export const SOAR_A2_LESSONS = {
       { type: "landing", stage: "Landing", heading: "Unit 3 Complete!", cardTitle: "Unit 3 Test", caption: "My favorite season is summer. There are many sunny days. I like going to the beach." },
     ],
   },
+
+  // ---------- Unit 4: Around Town ----------
+  "4-1": {
+    slides: [
+      { type: "title", stage: "A2 · Soar", eyebrow: "Unit 4 · Lesson 1", title: "Places in Town! 🏙️", subtitle: "Name common places in town and say where one place is using next to." },
+      { type: "chips", stage: "Getting Ready", heading: "Places in Town", subheading: "What places do you know?", items: ["store", "park", "school", "library", "hospital", "restaurant", "supermarket", "bank", "bus stop", "playground"] },
+      { type: "message", stage: "Taking Off", heading: "Where Is It?", subheading: "🏫 School | 🏪 Store", lines: ["The store is *next to* the school.", "What is next to the park?"] },
+      { type: "dialogue", stage: "Flight Log", heading: "Town Tour Guide", subheading: "Be the tour guide!", turns: [{ who: "teacher", text: "Where can I go to read?" }, { who: "student", text: "There is a library. The library is next to the park." }, { who: "teacher", text: "Where can I go to buy food?" }] },
+      { type: "postcard", stage: "Postcard Message", heading: "Exit Challenge", subheading: "Describe your town (3-4 sentences)", line: "There is a ___. The ___ is next to the ___." },
+      { type: "landing", stage: "Landing", heading: "You've Landed!", cardTitle: "Places in Town", caption: "There is a school. The park is next to the school. The store is next to the park." },
+    ],
+  },
+  "4-2": {
+    slides: [
+      { type: "title", stage: "A2 · Soar", eyebrow: "Unit 4 · Lesson 2", title: "Where Is It? 📍", subtitle: "Describe where places are using behind and between." },
+      { type: "message", stage: "Getting Ready", heading: "Warm-Up Review", subheading: "Use yesterday's town map", lines: ["Where is the school? What is next to the park?"] },
+      { type: "message", stage: "Taking Off", heading: "New Prepositions", subheading: "behind · between", lines: ["The park is *behind* the school.", "The bank is *between* the store and the library."] },
+      { type: "message", stage: "Map Detective", heading: "Map Detective", subheading: "Answer in complete sentences", lines: ["What is behind the school?", "What is between the bank and the park?"] },
+      { type: "dialogue", stage: "Flight Log", heading: "Hidden Place", subheading: "Ask yes/no questions to find the secret place", turns: [{ who: "student", text: "Is it next to the school?" }, { who: "teacher", text: "No." }, { who: "student", text: "Is it between the store and the library?" }, { who: "teacher", text: "Yes!" }] },
+      { type: "postcard", stage: "Postcard Message", heading: "Exit Challenge", subheading: "Describe 3 locations without being prompted", line: "The ___ is next to the ___. The ___ is behind the ___. The ___ is between the ___ and the ___." },
+      { type: "landing", stage: "Landing", heading: "You've Landed!", cardTitle: "Where Is It?", caption: "The library is next to the school. The bank is between the store and the hospital." },
+    ],
+  },
+  "4-3": {
+    slides: [
+      { type: "title", stage: "A2 · Soar", eyebrow: "Unit 4 · Lesson 3", title: "Giving Directions! 🗺️", subtitle: "Give and follow simple directions to a place." },
+      { type: "chips", stage: "Getting Ready", heading: "Direction Words", subheading: "New words for today", items: ["go", "turn", "left", "right", "straight", "stop", "go past"] },
+      { type: "message", stage: "Taking Off", heading: "Learn Directions", subheading: "⬆️ Go straight · ⬅️ Turn left · ➡️ Turn right · 🛑 Stop", lines: ["Go straight!", "Turn left!"] },
+      { type: "message", stage: "Build a Route", heading: "Build a Route", subheading: "Break the direction into small steps", lines: ["Go straight. Turn right. The park is on your *left*."] },
+      { type: "dialogue", stage: "Flight Log", heading: "Lost Tourist", subheading: "Help the lost tourist find the bank!", turns: [{ who: "teacher", text: "I'm at the school. I want to go to the bank. Help me!" }, { who: "student", text: "Go straight. Turn left. Go past the park. The bank is on your right." }] },
+      { type: "postcard", stage: "Postcard Message", heading: "Exit Challenge", subheading: "Give directions from one place to another (2-3 steps)", line: "Go ___. Turn ___. The ___ is on your ___." },
+      { type: "landing", stage: "Landing", heading: "You've Landed!", cardTitle: "Giving Directions!", caption: "Go straight. Turn left. Go past the park. The bank is on your right." },
+    ],
+  },
+  "4-4": {
+    slides: [
+      { type: "title", stage: "A2 · Soar", eyebrow: "Unit 4 · Lesson 4", title: "Let's Review! 🔄", subtitle: "Combine places, prepositions, and directions to communicate around a town." },
+      { type: "chips", stage: "Fast Retrieval", heading: "Fast Retrieval", subheading: "Name the places, then answer: Where is the bank?", items: ["store", "park", "school", "library", "hospital", "restaurant", "bank"] },
+      { type: "dialogue", stage: "Fix the Map", heading: "Fix the Map", subheading: "The picture shows the store is BEHIND the school", turns: [{ who: "teacher", text: "The store is next to the school." }, { who: "student", text: "No! The store is behind the school." }] },
+      { type: "message", stage: "Direction Challenge", heading: "Direction Challenge", subheading: "Follow the route, then switch roles", lines: ["Go straight. Turn left. Stop."] },
+      { type: "dialogue", stage: "Flight Log", heading: "Wrong Directions", subheading: "Catch the mistake — the map shows the library is on the LEFT", turns: [{ who: "teacher", text: "Go straight. Turn left. The library is on your right." }, { who: "student", text: "No, it's on your left! Go straight, turn left, and the library is on your left." }] },
+      { type: "postcard", stage: "Postcard Message", heading: "Exit Talk", subheading: "Tell me about your town", line: "There is a ___. The ___ is next to the ___. To get to the ___, go ___ and turn ___." },
+      { type: "landing", stage: "Landing", heading: "You've Landed!", cardTitle: "Let's Review!", caption: "There is a school. The park is next to the school. Go straight and turn right to reach the store." },
+    ],
+  },
+  "4-5": {
+    slides: [
+      { type: "title", stage: "A2 · Soar", eyebrow: "Unit 4 · Lesson 5", title: "Show What You Know! ⭐", subtitle: "Use the unit language independently — no reveal!" },
+      { type: "message", stage: "Mystery Town", heading: "Mystery Town", subheading: "A brand-new town map", lines: ["Tell me about this town."] },
+      { type: "dialogue", stage: "Flight Log", heading: "My Town Tour", subheading: "Give a complete virtual tour", turns: [{ who: "teacher", text: "Where is the hospital?" }, { who: "student", text: "The hospital is next to the bank." }, { who: "teacher", text: "How do I get to the supermarket?" }, { who: "student", text: "Go straight, then turn right." }] },
+      { type: "message", stage: "Change the Map", heading: "Change the Map", subheading: "Adapt to a changing situation", lines: ["Move the park. Where is it now? What is next to it?"] },
+      { type: "message", stage: "My Town", heading: "My Town", subheading: "Create or imagine your own town", lines: ["What places are in your town? What is your favorite place?"] },
+      { type: "postcard", stage: "Postcard Message", heading: "Quick Reflection", subheading: "Can you help me find it?", line: "My favorite place is the ___. It is next to the ___." },
+      { type: "landing", stage: "Landing", heading: "You've Landed!", cardTitle: "Show What You Know!", caption: "There is a park in my town. My favorite place is the library, next to the park." },
+    ],
+  },
+  "4-6": {
+    slides: [
+      { type: "title", stage: "A2 · Soar", eyebrow: "Unit 4 · Test", title: "Unit 4 Test", subtitle: "Around Town — describe places and navigate independently." },
+      { type: "chips", stage: "Part 1: Places", heading: "Name the Places", subheading: "6-8 pictures", items: ["store", "park", "school", "library", "hospital", "bank"] },
+      { type: "message", stage: "Part 2: Where Is It?", heading: "Where Is It?", subheading: "Use next to, behind, between", lines: ["What is next to the school? What is behind the library?"] },
+      { type: "message", stage: "Part 3-4: Directions ⭐", heading: "Give Directions", subheading: "I'm at the school. How can I get to the supermarket?", lines: ["Go straight. Turn right. Go straight again. The supermarket is on your *left*."] },
+      { type: "message", stage: "Part 5: Speaking", heading: "Tell Me About Your Town", subheading: "4-6 connected sentences", lines: ["There is a school in my town. The park is next to the school."] },
+      { type: "postcard", stage: "Part 6: Writing", heading: "Short Writing", subheading: "3-5 sentences about the town/map", line: "There is a ___ next to the ___. The ___ is between the ___ and the ___." },
+      { type: "landing", stage: "Landing", heading: "Unit 4 Complete!", cardTitle: "Unit 4 Test", caption: "There is a park next to the school. The bank is between the store and the library." },
+    ],
+  },
+
+  // ---------- Unit 5: Let's Go Shopping ----------
+  "5-1": {
+    slides: [
+      { type: "title", stage: "A2 · Soar", eyebrow: "Unit 5 · Lesson 1", title: "At the Store! 🛒", subtitle: "Identify shopping items and ask \"How much is it?\" / \"How much are they?\"" },
+      { type: "chips", stage: "Getting Ready", heading: "Shopping Words", subheading: "Today we're going shopping!", items: ["shirt", "shoes", "book", "pencil", "apple", "water", "toy", "bag"] },
+      { type: "message", stage: "Taking Off", heading: "How Much?", subheading: "👕 $5 · 👟 $10 (pair)", lines: ["How much is it? It's *five dollars*.", "How much are they? They're *ten dollars*."] },
+      { type: "dialogue", stage: "Flight Log", heading: "Customer Interview", subheading: "Teacher: store employee. You: customer.", turns: [{ who: "teacher", text: "Can I help you? What do you want?" }, { who: "student", text: "How much is it?" }, { who: "student", text: "How much are they?" }] },
+      { type: "postcard", stage: "Postcard Message", heading: "Exit Challenge", subheading: "Choose 3 things you want to buy", line: "I want a ___. It's ___ dollars." },
+      { type: "landing", stage: "Landing", heading: "You've Landed!", cardTitle: "At the Store!", caption: "How much is it? It's five dollars. How much are they? They're ten dollars." },
+    ],
+  },
+  "5-2": {
+    slides: [
+      { type: "title", stage: "A2 · Soar", eyebrow: "Unit 5 · Lesson 2", title: "Counting Money! 💰", subtitle: "Understand and say common prices and quantities." },
+      { type: "message", stage: "Getting Ready", heading: "Warm-Up", subheading: "Quick price review", lines: ["How much is the book? How much are the shoes?"] },
+      { type: "message", stage: "Taking Off", heading: "Prices & Quantities", subheading: "🍎 → one apple · 🍎🍎 → two apples", lines: ["One apple is *10 pesos*.", "Two apples are *20 pesos*."] },
+      { type: "dialogue", stage: "How Many?", heading: "How Many?", subheading: "Practice with different products", turns: [{ who: "teacher", text: "How many do you want?" }, { who: "student", text: "I want two." }] },
+      { type: "dialogue", stage: "Flight Log", heading: "Shopping Budget", subheading: "You have 20 pesos! What will you buy?", turns: [{ who: "teacher", text: "You have 20 pesos." }, { who: "student", text: "I want two apples. They are five pesos. I have twenty pesos." }] },
+      { type: "postcard", stage: "Postcard Message", heading: "Exit Challenge", subheading: "Buy three things — say what and how many", line: "I want ___ ___(s). They are ___ pesos." },
+      { type: "landing", stage: "Landing", heading: "You've Landed!", cardTitle: "Counting Money!", caption: "I want two apples. They are twenty pesos. I have thirty pesos." },
+    ],
+  },
+  "5-3": {
+    slides: [
+      { type: "title", stage: "A2 · Soar", eyebrow: "Unit 5 · Lesson 3", title: "Let's Buy Something! 🛍️", subtitle: "Take part in a simple shopping conversation from beginning to end." },
+      { type: "chips", stage: "Getting Ready", heading: "Customer Phrases", subheading: "What you say when shopping", items: ["Hello.", "I'd like a ___, please.", "How much is it?", "I'll take it, please.", "Thank you."] },
+      { type: "dialogue", stage: "Taking Off", heading: "Build the Conversation", subheading: "Customer and Cashier", turns: [{ who: "student", text: "Hello. I'd like a book, please." }, { who: "teacher", text: "Sure. It's 50 pesos." }, { who: "student", text: "I'll take it, please." }] },
+      { type: "dialogue", stage: "Flight Log", heading: "The Busy Cashier", subheading: "Complete several purchases — even when there's a problem!", turns: [{ who: "teacher", text: "Sorry, we're out of apples." }, { who: "student", text: "Okay. I'd like a banana, please." }] },
+      { type: "postcard", stage: "Postcard Message", heading: "Exit Challenge", subheading: "Complete a shopping conversation on your own", line: "Hello. I'd like a ___, please. How much is it? I'll take it, please." },
+      { type: "landing", stage: "Landing", heading: "You've Landed!", cardTitle: "Let's Buy Something!", caption: "Hello. I'd like a book, please. It's 50 pesos. I'll take it, please. Thank you!" },
+    ],
+  },
+  "5-4": {
+    slides: [
+      { type: "title", stage: "A2 · Soar", eyebrow: "Unit 5 · Lesson 4", title: "Let's Review! 🔄", subtitle: "Use shopping vocabulary, prices, quantities, and expressions together." },
+      { type: "message", stage: "Shopping Speed Round", heading: "Shopping Speed Round", subheading: "Say the price fast!", lines: ["It's *20 pesos*.", "They're *50 pesos*."] },
+      { type: "message", stage: "Quantity Challenge", heading: "Quantity Challenge", subheading: "🍎🍎🍎", lines: ["How many apples? How much are three apples?"] },
+      { type: "dialogue", stage: "Fix the Shopping Mistake", heading: "Fix the Shopping Mistake", subheading: "Catch and correct the error", turns: [{ who: "teacher", text: "Two apples? They're ten dollars." }, { who: "student", text: "No, they're five dollars!" }] },
+      { type: "dialogue", stage: "Flight Log", heading: "Shopping Mistakes", subheading: "Find and correct more mistakes", turns: [{ who: "teacher", text: "You want three books?" }, { who: "student", text: "No, I want two books." }] },
+      { type: "postcard", stage: "Postcard Message", heading: "Exit Talk", subheading: "What do you usually buy at a store?", line: "I usually buy ___ because ___." },
+      { type: "landing", stage: "Landing", heading: "You've Landed!", cardTitle: "Let's Review!", caption: "I usually buy books because I like reading. They're around 50 pesos." },
+    ],
+  },
+  "5-5": {
+    slides: [
+      { type: "title", stage: "A2 · Soar", eyebrow: "Unit 5 · Lesson 5", title: "Show What You Know! ⭐", subtitle: "Use shopping language independently — no reveal!" },
+      { type: "message", stage: "Mystery Store", heading: "Mystery Store", subheading: "New products, new prices", lines: ["You are shopping. What do you want?"] },
+      { type: "dialogue", stage: "Flight Log", heading: "Shopping Trip", subheading: "You need food for a picnic. You have 30 pesos.", turns: [{ who: "teacher", text: "Welcome! What can I get you?" }, { who: "student", text: "I'd like two apples and a water, please." }] },
+      { type: "dialogue", stage: "The Price Changed!", heading: "The Price Changed!", subheading: "Respond spontaneously", turns: [{ who: "teacher", text: "Oh! The apples are now 80 pesos." }, { who: "student", text: "Hmm, do you have anything cheaper?" }] },
+      { type: "message", stage: "Switch Roles", heading: "Switch Roles", subheading: "Now you're the cashier!", lines: ["Check the picture and respond appropriately when the teacher shops."] },
+      { type: "postcard", stage: "Postcard Message", heading: "Quick Reflection", subheading: "What did you buy? How much did you spend?", line: "I bought ___ and ___. I spent ___ pesos." },
+      { type: "landing", stage: "Landing", heading: "You've Landed!", cardTitle: "Show What You Know!", caption: "I bought two apples and a water. I spent thirty pesos. My favorite thing was the apples!" },
+    ],
+  },
+  "5-6": {
+    slides: [
+      { type: "title", stage: "A2 · Soar", eyebrow: "Unit 5 · Test", title: "Unit 5 Test", subtitle: "Let's Go Shopping — handle a shopping situation independently." },
+      { type: "chips", stage: "Part 1: Vocabulary", heading: "Name the Products", subheading: "8-10 products", items: ["shirt", "shoes", "book", "apple", "water", "toy"] },
+      { type: "message", stage: "Part 2-3: Prices & Quantities", heading: "Prices & Quantities", subheading: "How much is/are it/they? How many?", lines: ["How much is the shirt? How many apples are there?"] },
+      { type: "message", stage: "Part 4: Questions", heading: "Ask the Questions", subheading: "You ask this time!", lines: ["How much is the book? How much are the pencils?"] },
+      { type: "dialogue", stage: "Part 5: Roleplay ⭐", heading: "Shopping Roleplay", subheading: "Choose, ask, decide, and buy politely", turns: [{ who: "student", text: "Hello. I'd like two apples, please. How much are they?" }, { who: "teacher", text: "They're 40 pesos." }, { who: "student", text: "Okay. I'll take them, please." }] },
+      { type: "postcard", stage: "Part 6: Writing", heading: "Short Writing", subheading: "3-5 sentences", line: "I want to buy ___. They are ___ pesos. I like shopping for ___." },
+      { type: "landing", stage: "Landing", heading: "Unit 5 Complete!", cardTitle: "Unit 5 Test", caption: "I want to buy two apples. They are 40 pesos. I also want a book for 50 pesos." },
+    ],
+  },
+
+  // ---------- Unit 6: Jobs People Do ----------
+  "6-1": {
+    slides: [
+      { type: "title", stage: "A2 · Soar", eyebrow: "Unit 6 · Lesson 1", title: "What's Your Job? 👨‍💼", subtitle: "Identify jobs and describe people with He is a... / She is a..." },
+      { type: "chips", stage: "Getting Ready", heading: "Jobs", subheading: "Today, let's talk about people and their jobs!", items: ["teacher", "doctor", "nurse", "police officer", "firefighter", "chef", "farmer", "driver", "dentist"] },
+      { type: "message", stage: "Taking Off", heading: "He or She?", subheading: "👨‍🍳 → chef · 👩‍⚕️ → doctor", lines: ["He is a *chef*.", "She is a *doctor*."] },
+      { type: "dialogue", stage: "Flight Log", heading: "Job Interview", subheading: "Guess the mystery worker!", turns: [{ who: "student", text: "What is your job?" }, { who: "teacher", text: "I help sick people." }, { who: "student", text: "Are you a doctor?" }, { who: "teacher", text: "Yes!" }] },
+      { type: "postcard", stage: "Postcard Message", heading: "Exit Challenge", subheading: "Describe 4 people's jobs", line: "He is a ___. She is a ___." },
+      { type: "landing", stage: "Landing", heading: "You've Landed!", cardTitle: "What's Your Job?", caption: "He is a firefighter. She is a nurse." },
+    ],
+  },
+  "6-2": {
+    slides: [
+      { type: "title", stage: "A2 · Soar", eyebrow: "Unit 6 · Lesson 2", title: "More Jobs! 👩‍🔧", subtitle: "Talk about more jobs and describe simple job duties." },
+      { type: "chips", stage: "Getting Ready", heading: "More Jobs", subheading: "New workers to meet", items: ["engineer", "pilot", "mechanic", "artist", "baker", "veterinarian", "photographer", "scientist"] },
+      { type: "message", stage: "Taking Off", heading: "Jobs + Duties", subheading: "👨‍🔧 Mechanic → fixes cars · 👩‍🍳 Baker → makes bread", lines: ["She is a *baker*. She *makes bread*.", "He is a *mechanic*. He *fixes cars*."] },
+      { type: "dialogue", stage: "Who Does What?", heading: "Who Does What?", subheading: "Connect the job to the action", turns: [{ who: "teacher", text: "She makes bread." }, { who: "student", text: "She is a baker!" }] },
+      { type: "dialogue", stage: "Flight Log", heading: "Who Am I?", subheading: "Guess the job from the clues", turns: [{ who: "teacher", text: "I work with animals. I help sick animals." }, { who: "student", text: "You are a veterinarian!" }] },
+      { type: "postcard", stage: "Postcard Message", heading: "Exit Challenge", subheading: "Choose 3 jobs and describe what each person does", line: "She is a ___. She ___." },
+      { type: "landing", stage: "Landing", heading: "You've Landed!", cardTitle: "More Jobs!", caption: "He is a pilot. He flies a plane. She is a veterinarian. She cares for animals." },
+    ],
+  },
+  "6-3": {
+    slides: [
+      { type: "title", stage: "A2 · Soar", eyebrow: "Unit 6 · Lesson 3", title: "Community Helpers! 🚒", subtitle: "Talk about how different workers help people in the community." },
+      { type: "message", stage: "Getting Ready", heading: "How Do They Help?", subheading: "Who helps sick people? Who keeps people safe?", lines: ["A firefighter *helps people*.", "A doctor *treats sick people*."] },
+      { type: "message", stage: "Taking Off", heading: "Community Problems", subheading: "Who can help?", lines: ["I am sick. Who can help me?", "There is a fire. Who can help?"] },
+      { type: "dialogue", stage: "Flight Log", heading: "Emergency Call", subheading: "Identify the right helper and explain why", turns: [{ who: "teacher", text: "Someone is sick!" }, { who: "student", text: "A doctor can help because she treats sick people." }] },
+      { type: "message", stage: "Postcard Message", heading: "Exit Talk", subheading: "Which community helper is important to you? Why?", lines: ["I think firefighters are important because *they help people*."] },
+      { type: "landing", stage: "Landing", heading: "You've Landed!", cardTitle: "Community Helpers!", caption: "A doctor treats sick people. A police officer keeps people safe." },
+    ],
+  },
+  "6-4": {
+    slides: [
+      { type: "title", stage: "A2 · Soar", eyebrow: "Unit 6 · Lesson 4", title: "Let's Review! 🔄", subtitle: "Combine jobs, job duties, and community-helper language." },
+      { type: "chips", stage: "Job Speed Round", heading: "Job Speed Round", subheading: "Say it fast!", items: ["driver", "nurse", "farmer", "chef", "pilot", "baker"] },
+      { type: "dialogue", stage: "What Do They Do?", heading: "What Do They Do?", subheading: "Job → duty", turns: [{ who: "teacher", text: "She is a chef." }, { who: "student", text: "She cooks food." }] },
+      { type: "dialogue", stage: "Fix the Mistake", heading: "Fix the Mistake", subheading: "Catch the error", turns: [{ who: "teacher", text: "A doctor fixes cars." }, { who: "student", text: "No! A mechanic fixes cars." }] },
+      { type: "dialogue", stage: "Flight Log", heading: "Job Mistake Challenge", subheading: "Correct the mistake, then say who CAN help", turns: [{ who: "teacher", text: "A firefighter delivers letters." }, { who: "student", text: "No. A mail carrier delivers letters." }] },
+      { type: "postcard", stage: "Postcard Message", heading: "Exit Talk", subheading: "Talk about three community helpers", line: "A ___ helps people by ___." },
+      { type: "landing", stage: "Landing", heading: "You've Landed!", cardTitle: "Let's Review!", caption: "A firefighter helps people. A teacher helps students learn." },
+    ],
+  },
+  "6-5": {
+    slides: [
+      { type: "title", stage: "A2 · Soar", eyebrow: "Unit 6 · Lesson 5", title: "Show What You Know! ⭐", subtitle: "Communicate about jobs and community helpers independently." },
+      { type: "message", stage: "Mystery Workers", heading: "Mystery Workers", subheading: "Describe them yourself", lines: ["Who is this? What does this person do?"] },
+      { type: "dialogue", stage: "Flight Log", heading: "Community Help Desk", subheading: "You work at the help desk — who can solve each problem?", turns: [{ who: "teacher", text: "My dog is sick." }, { who: "student", text: "A veterinarian can help. They care for animals." }, { who: "teacher", text: "There's a fire!" }] },
+      { type: "dialogue", stage: "Guess My Job", heading: "Guess My Job", subheading: "Give clues without saying the job", turns: [{ who: "teacher", text: "I work in a hospital. I help sick people." }, { who: "student", text: "You're a doctor!" }] },
+      { type: "message", stage: "My Dream Job", heading: "My Dream Job", subheading: "What job would you like to have? Why?", lines: ["I want to be a *veterinarian* because I like animals."] },
+      { type: "postcard", stage: "Postcard Message", heading: "Quick Reflection", subheading: "Which job helps people the most?", line: "I think a ___ helps people the most because ___." },
+      { type: "landing", stage: "Landing", heading: "You've Landed!", cardTitle: "Show What You Know!", caption: "I want to be a veterinarian because I like animals and want to help them." },
+    ],
+  },
+  "6-6": {
+    slides: [
+      { type: "title", stage: "A2 · Soar", eyebrow: "Unit 6 · Test", title: "Unit 6 Test", subtitle: "Jobs People Do — identify, describe, and explain independently." },
+      { type: "chips", stage: "Part 1: Jobs", heading: "Name the Jobs", subheading: "8-10 pictures", items: ["teacher", "doctor", "firefighter", "chef", "mechanic", "pilot"] },
+      { type: "message", stage: "Part 2: He or She?", heading: "He or She?", subheading: "Complete sentences", lines: ["He is a *firefighter*.", "She is a *doctor*."] },
+      { type: "message", stage: "Part 3: Duties", heading: "What Does a Mechanic Do?", subheading: "Job → duty", lines: ["A mechanic *fixes cars*."] },
+      { type: "dialogue", stage: "Part 4: Who Can Help? ⭐", heading: "Who Can Help?", subheading: "Identify the helper and explain why", turns: [{ who: "teacher", text: "My dog is sick. Who can help?" }, { who: "student", text: "A veterinarian can help. She cares for sick animals." }] },
+      { type: "postcard", stage: "Part 5-6: Speaking & Writing", heading: "Community Helpers", subheading: "3-4 helpers, with a reason", line: "She is a ___. She ___. I think ___s are important because ___." },
+      { type: "landing", stage: "Landing", heading: "Unit 6 Complete!", cardTitle: "Unit 6 Test", caption: "She is a veterinarian. She takes care of animals. I think veterinarians are important." },
+    ],
+  },
 };
