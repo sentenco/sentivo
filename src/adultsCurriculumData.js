@@ -9,6 +9,7 @@ export const ADULTS_LEVELS = {
     name: "Sprout",
     tag: "Start here",
     accent: "coral",
+    banner: "/curriculum/adults-a1-banner.png",
     description: "Everyday English for real situations: introductions, family, home, work, and the words to get through your day with confidence.",
   },
   A2: {
@@ -16,6 +17,7 @@ export const ADULTS_LEVELS = {
     name: "Bloom",
     tag: "Next step",
     accent: "navy",
+    banner: "/curriculum/adults-a2-banner.png",
     description: "More detail and more nuance: plans, opinions, past experiences, and the language to handle everyday adult life with ease.",
   },
 };
