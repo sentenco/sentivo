@@ -67,23 +67,21 @@ export const TEENS_UNITS = {
     {
       num: 5, title: "Hobbies and Interests", anchor: "like/enjoy + -ing, frequency", focus: "Talk about your own hobbies and ask a friend about theirs",
       lessons: [
-        { num: 1, title: "My Hobbies", focus: "Like/enjoy + -ing" },
-        { num: 2, title: "How Often?", focus: "Frequency adverbs" },
-        { num: 3, title: "Ask a Friend", focus: "Practice asking about hobbies" },
-        { num: 4, title: "Compare Hobbies", focus: "Consolidate: fuller conversation" },
-        { num: 5, title: "Talk About Your Hobbies", focus: "Production: speaking or writing task" },
-        { num: 6, title: "Unit Test", focus: "Summative test", isTest: true },
+        { num: 1, title: "Hobbies and Interests", focus: "Name common hobbies and interests" },
+        { num: 2, title: "I Like / I Don't Like", focus: "Express simple likes and dislikes" },
+        { num: 3, title: "Interest Questions", focus: "Ask and answer questions about interests" },
+        { num: 4, title: "Hobbies in Real Life", focus: "Describe when and how you do a hobby" },
+        { num: 5, title: "Unit Review", focus: "Summative review", isTest: true },
       ],
     },
     {
       num: 6, title: "My Daily Routine", anchor: "present simple, time expressions", focus: "Describe your daily and school routine",
       lessons: [
-        { num: 1, title: "My Day", focus: "Basic routine" },
-        { num: 2, title: "What Time?", focus: "Time expressions" },
-        { num: 3, title: "School Day vs Weekend", focus: "Compare routines" },
-        { num: 4, title: "Describe a Full Day", focus: "Consolidate: fuller routine description" },
-        { num: 5, title: "A Day in My Life", focus: "Production: speaking or writing task" },
-        { num: 6, title: "Unit Test", focus: "Summative test", isTest: true },
+        { num: 1, title: "My Daily Routine", focus: "Name common daily routine verbs" },
+        { num: 2, title: "Time in My Day", focus: "Say simple routine times" },
+        { num: 3, title: "My Morning", focus: "Describe a simple morning routine" },
+        { num: 4, title: "Daily Routine Questions", focus: "Ask and answer basic routine questions" },
+        { num: 5, title: "Unit Review", focus: "Summative review", isTest: true },
       ],
     },
     {
