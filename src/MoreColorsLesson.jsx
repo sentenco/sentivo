@@ -67,6 +67,76 @@ function WordCard({ src, word, label, onZoom }) {
   );
 }
 
+function shuffle(arr) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function MatchGame({ pairs }) {
+  const byId = Object.fromEntries(pairs.map((p) => [p.id, p]));
+  const [leftOrder] = useState(() => shuffle(pairs.map((p) => p.id)));
+  const [rightOrder] = useState(() => shuffle(pairs.map((p) => p.id)));
+  const [selected, setSelected] = useState(null);
+  const [matched, setMatched] = useState([]);
+  const [wrong, setWrong] = useState(null);
+
+  function pickLeft(id) {
+    if (matched.includes(id) || wrong) return;
+    setSelected(id);
+  }
+  function pickRight(id) {
+    if (matched.includes(id) || wrong || selected == null) return;
+    if (selected === id) {
+      setMatched((m) => [...m, id]);
+      setSelected(null);
+    } else {
+      setWrong({ left: selected, right: id });
+      setTimeout(() => { setWrong(null); setSelected(null); }, 500);
+    }
+  }
+
+  return (
+    <div className="match-wrap">
+      <div className="match-game">
+        <div className="match-col">
+          {leftOrder.map((id) => {
+            const p = byId[id];
+            return (
+              <div
+                key={id}
+                className={`match-tile ${matched.includes(id) ? "is-matched" : ""} ${selected === id ? "is-selected" : ""} ${wrong?.left === id ? "is-wrong" : ""}`}
+                style={{ background: p.tileColor }}
+                onClick={() => pickLeft(id)}
+              >
+                {p.tileLabel}
+              </div>
+            );
+          })}
+        </div>
+        <div className="match-col">
+          {rightOrder.map((id) => {
+            const p = byId[id];
+            return (
+              <div
+                key={id}
+                className={`match-right ${matched.includes(id) ? "is-matched" : ""} ${wrong?.right === id ? "is-wrong" : ""}`}
+                onClick={() => pickRight(id)}
+              >
+                {p.rightNode}
+              </div>
+            );
+          })}
+        </div>
+      </div>
+      {matched.length === pairs.length && <p className="match-done">Great matching! 🎉</p>}
+    </div>
+  );
+}
+
 function ColorSwatch({ name, hex, size = 90, onZoom }) {
   const big = <div className="swatch zoom-swatch" style={{ background: hex }} />;
   return (
@@ -187,7 +257,7 @@ export const LESSON_GUIDE = [
   { stage: "W is for...", time: "~1.5 min", note: "Say each word slowly: \"W is for watermelon. W is for watch. W is for web.\"" },
   { stage: "X is for...", time: "~1.5 min", note: "Say each word slowly: \"X is for x-ray. X is for xylophone.\"" },
   { stage: "Color & Say", time: "~2.5 min", note: "Mix the old and new colors. Show different colored objects and ask \"What color?\" Include quick recognition of V-X." },
-  { stage: "Look & Match", time: "~4 min", note: "Show V-X with simple picture examples, then show them in different colors and ask \"What letter?\" and \"What color?\"" },
+  { stage: "Look & Match", time: "~4 min", note: "The student taps a letter, then taps the picture that starts with it to make the match. Let them try it themselves before helping." },
   { stage: "HIGHLIGHT: Color Shop!", time: "~2.5 min", note: "Create a pretend online shop with colorful objects. Ask \"What color do you want?\" Student chooses an object/color and says it." },
   { stage: "HIGHLIGHT: Color Shop!", time: "~1.5 min", note: "Add V-X letter cards as bonus challenges." },
   { stage: "Color & Letter Check", time: "~1.5 min", note: "Flash mixed colors and V-X. Student identifies them quickly." },
@@ -327,16 +397,13 @@ function buildSlides({ onZoom }) {
       body: (
         <>
           <span className="title-highlight"><h2 className="slide-h sub">Look & Match!</h2></span>
-          <div className="look-groups">
-            <div className="look-row">
-              <span className="look-letter" style={{ background: LETTER_COLOR.V }}>V</span>
-              <Pic src={`${IMG}/van.avif`} label="van" size={70} onZoom={onZoom} />
-            </div>
-            <div className="look-row">
-              <LetterTile letters="W" color={COLOR_HEX.Orange} size={50} fontSize={20} onZoom={onZoom} />
-              <Pic src={`${IMG}/watermelon.avif`} label="watermelon" size={70} onZoom={onZoom} />
-            </div>
-          </div>
+          <p className="slide-p" style={{ marginBottom: 4 }}>Tap a letter, then tap the picture that starts with it!</p>
+          <MatchGame
+            pairs={[
+              { id: "v", tileLabel: "V", tileColor: LETTER_COLOR.V, rightNode: <img src={`${IMG}/van.avif`} alt="van" className="match-img" /> },
+              { id: "w", tileLabel: "W", tileColor: LETTER_COLOR.W, rightNode: <img src={`${IMG}/watermelon.avif`} alt="watermelon" className="match-img" /> },
+            ]}
+          />
         </>
       ),
     },
@@ -555,9 +622,19 @@ export const styles = `
 .bubble.right { border-radius: 18px 18px 4px 18px; }
 .bubble .fill { display: inline-block; min-width: 64px; border-bottom: 2.5px solid var(--coral-deep); vertical-align: -2px; }
 
-.look-groups { display: flex; flex-direction: column; gap: 16px; position: relative; z-index: 1; }
-.look-row { display: flex; align-items: center; gap: 18px; }
-.look-letter { width: 50px; height: 50px; border-radius: 16px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-family: 'Baloo 2', sans-serif; font-weight: 800; font-size: 22px; color: #fff; box-shadow: 0 4px 10px rgba(27,42,74,0.15); }
+.match-wrap { position: relative; z-index: 1; }
+.match-game { display: flex; gap: 70px; justify-content: center; align-items: flex-start; margin-top: 6px; }
+.match-col { display: flex; flex-direction: column; gap: 18px; }
+.match-tile { width: 74px; height: 74px; border-radius: 16px; display: flex; align-items: center; justify-content: center; font-family: 'Baloo 2', sans-serif; font-weight: 800; font-size: 28px; color: #fff; border: 3px solid #fff; box-shadow: 0 6px 14px rgba(27,42,74,0.15); cursor: pointer; transition: transform 0.15s ease, box-shadow 0.15s ease; }
+.match-tile.is-selected { box-shadow: 0 0 0 4px #FFD166, 0 6px 14px rgba(27,42,74,0.15); transform: scale(1.06); }
+.match-tile.is-matched { opacity: 0.5; cursor: default; }
+.match-tile.is-wrong { animation: matchShake 0.4s ease; }
+.match-right { width: 90px; height: 90px; border-radius: 16px; background: #fff; display: flex; align-items: center; justify-content: center; padding: 8px; box-shadow: 0 4px 12px rgba(27,42,74,0.1); cursor: pointer; transition: transform 0.15s ease, box-shadow 0.15s ease; border: 3px solid transparent; }
+.match-right.is-matched { border-color: #22A67E; opacity: 0.65; cursor: default; }
+.match-right.is-wrong { animation: matchShake 0.4s ease; border-color: #E0567A; }
+.match-img { width: 100%; height: 100%; object-fit: contain; }
+.match-done { margin-top: 14px; font-family: 'Baloo 2', sans-serif; font-weight: 700; font-size: 16px; color: #22A67E; }
+@keyframes matchShake { 0%, 100% { transform: translateX(0); } 20% { transform: translateX(-6px); } 40% { transform: translateX(6px); } 60% { transform: translateX(-4px); } 80% { transform: translateX(4px); } }
 
 .zoom-overlay { position: fixed; inset: 0; background: rgba(27,42,74,0.72); display: flex; align-items: center; justify-content: center; z-index: 999; }
 .zoom-overlay-inner { position: relative; background: #fff; border-radius: 28px; padding: 34px; box-shadow: 0 30px 60px rgba(0,0,0,0.32); display: flex; align-items: center; justify-content: center; }
