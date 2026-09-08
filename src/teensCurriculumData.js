@@ -47,23 +47,21 @@ export const TEENS_UNITS = {
     {
       num: 3, title: "School Life", anchor: "present simple", focus: "Talk about your school subjects and schedule",
       lessons: [
-        { num: 1, title: "My Subjects", focus: "School subject vocabulary" },
-        { num: 2, title: "My Schedule", focus: "Present simple for routine class times" },
-        { num: 3, title: "What's Your Favorite Subject?", focus: "Opinions and present simple" },
-        { num: 4, title: "Talk About School", focus: "Consolidate: fuller school conversation" },
-        { num: 5, title: "Describe Your School Day", focus: "Production: speaking or writing task" },
-        { num: 6, title: "Unit Test", focus: "Summative test", isTest: true },
+        { num: 1, title: "School Subjects", focus: "Name basic school subjects" },
+        { num: 2, title: "My School Day", focus: "Simple sentences about your school day" },
+        { num: 3, title: "Teachers and Classmates", focus: "Describe people at school" },
+        { num: 4, title: "School Questions", focus: "Answer simple questions about school life" },
+        { num: 5, title: "Unit Review", focus: "Summative review", isTest: true },
       ],
     },
     {
       num: 4, title: "Friends and Free Time", anchor: "present simple, like + noun", focus: "Talk about your friends and what you do together",
       lessons: [
-        { num: 1, title: "My Friends", focus: "Introduce friends, present simple" },
-        { num: 2, title: "What Do You Like?", focus: "Like + noun" },
-        { num: 3, title: "What We Do Together", focus: "Activities with friends" },
-        { num: 4, title: "Talk About Your Friends", focus: "Consolidate: fuller conversation" },
-        { num: 5, title: "My Best Friend", focus: "Production: speaking or writing task" },
-        { num: 6, title: "Unit Test", focus: "Summative test", isTest: true },
+        { num: 1, title: "Friends and Words for People", focus: "Name words for friends, describe friendship" },
+        { num: 2, title: "What Friends Like", focus: "Talk about a friend's likes, simple present" },
+        { num: 3, title: "Free Time Activities", focus: "Name common free-time activities" },
+        { num: 4, title: "Friends and Free Time Questions", focus: "Ask and answer questions about friends and free time" },
+        { num: 5, title: "Unit Review", focus: "Summative review", isTest: true },
       ],
     },
     {
