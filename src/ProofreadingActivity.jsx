@@ -1,12 +1,15 @@
 import { useState } from "react";
 
-const STEPS = ["intro", "fixIt"];
+const STEPS = ["intro", "warmup", "fixIt", "wrapup"];
+const LABELS = { intro: "Instructions", warmup: "Warm-Up", fixIt: "Fix the Mistakes", wrapup: "Great Job!" };
 
 // Proofreading: a fixed-size, self-contained lesson card (matching the
-// site-wide lesson-player convention -- own logo/close button on the card
-// itself, no outer PlayerChrome). Title/instructions page, then the flawed
-// paragraph with a plain textarea for the student's rewrite -- no answer
-// key here anymore, that lives in ProofreadingGuide.jsx for the teacher.
+// site-wide lesson-player convention -- own logo baked into the card, no
+// outer PlayerChrome). 4 pages: title/instructions, warm-up talk, the
+// flawed paragraph with a plain textarea for the student's rewrite, then
+// a closing Great Job page. No in-player answer reveal -- the corrected
+// version lives in ProofreadingGuide.jsx for the teacher. No close (X)
+// button -- the only way out is finishing the last page.
 export default function ProofreadingActivity({ item }) {
   const [step, setStep] = useState(0);
   const [draft, setDraft] = useState("");
@@ -26,59 +29,74 @@ export default function ProofreadingActivity({ item }) {
       <div className="pf-blob pf-blob--a" />
       <div className="pf-blob pf-blob--b" />
 
-      <div className="pf-card">
+      <div className="pf-frame">
+        <span className="pf-paper-back" />
         <span className="pf-tape" />
-        <button type="button" className="pf-close" onClick={exit} aria-label="Close">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M6 6l12 12M18 6L6 18" /></svg>
-        </button>
 
-        <div className="pf-bar">
-          <span className="pf-brand">
-            <img src="/logo-sentivo.png" alt="" className="pf-logo" />
-            <span className="pf-brand-word">entivo</span>
-          </span>
-          <span className="pf-eyebrow">{kind === "intro" ? "Instructions" : "Fix the Mistakes"}</span>
-        </div>
-
-        <div className="pf-body">
-          {kind === "intro" && (
-            <div className="pf-intro">
-              <h1 className="pf-title">{item.title}</h1>
-              <span className="pf-focus-tag">{item.focus}</span>
-              <p className="pf-instructions">
-                Read the paragraph on the next page. It has some mistakes in it.
-                Find them, then rewrite the whole paragraph correctly in the box.
-              </p>
-            </div>
-          )}
-
-          {kind === "fixIt" && (
-            <div className="pf-fixit">
-              <p className="pf-hint">Read the text below, then rewrite it correctly in the box.</p>
-              <p className="pf-script pf-script--mistakes">{item.mistakes}</p>
-
-              <textarea
-                className="pf-textarea"
-                placeholder="Type the corrected version here…"
-                value={draft}
-                onChange={(e) => setDraft(e.target.value)}
-              />
-            </div>
-          )}
-        </div>
-
-        <div className="pf-nav">
-          <button type="button" className="pf-btn" onClick={() => go(-1)} disabled={step === 0}>← Back</button>
-          <div className="pf-dots">
-            {STEPS.map((s, i) => (
-              <span key={s} className={`pf-dot ${i === step ? "is-active" : i < step ? "is-done" : ""}`} />
-            ))}
+        <div className="pf-card">
+          <div className="pf-bar">
+            <span className="pf-brand">
+              <img src="/logo-sentivo.png" alt="" className="pf-logo" />
+              <span className="pf-brand-word">entivo</span>
+            </span>
+            <span className="pf-eyebrow">{LABELS[kind]}</span>
           </div>
-          {step + 1 < STEPS.length ? (
-            <button type="button" className="pf-btn pf-btn--primary" onClick={() => go(1)}>Next →</button>
-          ) : (
-            <button type="button" className="pf-btn pf-btn--primary" onClick={exit}>Finish ✓</button>
-          )}
+
+          <div className="pf-body">
+            {kind === "intro" && (
+              <div className="pf-intro">
+                <h1 className="pf-title">{item.title}</h1>
+                <span className="pf-focus-tag">{item.focus}</span>
+                <p className="pf-instructions">
+                  Read the paragraph on the next page. It has some mistakes in it.
+                  Find them, then rewrite the whole paragraph correctly in the box.
+                </p>
+              </div>
+            )}
+
+            {kind === "warmup" && (
+              <div className="pf-intro">
+                <span className="pf-stage-label">Warm-Up</span>
+                <p className="pf-text">{item.warmup}</p>
+              </div>
+            )}
+
+            {kind === "fixIt" && (
+              <div className="pf-fixit">
+                <p className="pf-hint">Read the text below, then rewrite it correctly in the box.</p>
+                <p className="pf-script pf-script--mistakes">{item.mistakes}</p>
+
+                <textarea
+                  className="pf-textarea"
+                  placeholder="Type the corrected version here…"
+                  value={draft}
+                  onChange={(e) => setDraft(e.target.value)}
+                />
+              </div>
+            )}
+
+            {kind === "wrapup" && (
+              <div className="pf-intro">
+                <span className="pf-star">★</span>
+                <h2 className="pf-wrapup-title">Great Job!</h2>
+                <p className="pf-text">Thanks for practicing your writing today. See you next time!</p>
+              </div>
+            )}
+          </div>
+
+          <div className="pf-nav">
+            <button type="button" className="pf-btn" onClick={() => go(-1)} disabled={step === 0}>← Back</button>
+            <div className="pf-dots">
+              {STEPS.map((s, i) => (
+                <span key={s} className={`pf-dot ${i === step ? "is-active" : i < step ? "is-done" : ""}`} />
+              ))}
+            </div>
+            {step + 1 < STEPS.length ? (
+              <button type="button" className="pf-btn pf-btn--primary" onClick={() => go(1)}>Next →</button>
+            ) : (
+              <button type="button" className="pf-btn pf-btn--primary" onClick={exit}>Finish ✓</button>
+            )}
+          </div>
         </div>
       </div>
     </div>
@@ -107,31 +125,46 @@ const CSS = `
 .pf-blob--a { width: 220px; height: 220px; top: -70px; left: -60px; background: rgba(232,168,61,0.14); }
 .pf-blob--b { width: 200px; height: 200px; bottom: -70px; right: -50px; background: rgba(111,207,151,0.12); }
 
-.pf-card {
+.pf-frame {
   position: relative;
   z-index: 1;
   width: 560px;
   height: 460px;
   flex-shrink: 0;
+}
+
+.pf-paper-back {
+  position: absolute;
+  inset: 0;
+  background: #FBEFDD;
+  border-radius: 20px;
+  transform: rotate(2.2deg) translate(7px, 9px);
+  box-shadow: 0 14px 30px rgba(169,114,10,0.12);
+  z-index: 0;
+}
+
+.pf-tape {
+  position: absolute; top: -13px; left: 50%; transform: translateX(-50%) rotate(-3deg);
+  width: 70px; height: 24px; opacity: 0.92; z-index: 3;
+  background: repeating-linear-gradient(45deg, #FFD166, #FFD166 6px, #FFE29E 6px, #FFE29E 12px);
+  box-shadow: 0 3px 6px rgba(169,114,10,0.18);
+}
+
+.pf-card {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
   background: #FFFFFF;
   border-radius: 20px;
-  box-shadow: 0 20px 44px rgba(169,114,10,0.16);
+  box-shadow:
+    0 1px 2px rgba(169,114,10,0.10),
+    0 10px 18px rgba(169,114,10,0.12),
+    0 28px 50px rgba(169,114,10,0.16);
   display: flex;
   flex-direction: column;
   overflow: hidden;
   transform: rotate(-0.6deg);
-}
-.pf-tape {
-  position: absolute; top: -12px; left: 50%; transform: translateX(-50%) rotate(-3deg);
-  width: 68px; height: 22px; opacity: 0.9; z-index: 3;
-  background: repeating-linear-gradient(45deg, #FFD166, #FFD166 6px, #FFE29E 6px, #FFE29E 12px);
-}
-
-.pf-close {
-  position: absolute; top: 14px; right: 14px; z-index: 4;
-  width: 30px; height: 30px; border-radius: 50%; border: none; cursor: pointer;
-  display: flex; align-items: center; justify-content: center;
-  background: rgba(169,114,10,0.10); color: #A9720A;
 }
 
 .pf-bar {
@@ -139,14 +172,18 @@ const CSS = `
   display: flex; align-items: center; justify-content: space-between;
   padding: 20px 24px 0;
 }
-.pf-brand { display: flex; align-items: center; gap: 6px; }
+.pf-brand {
+  display: flex; align-items: center; gap: 2px;
+  background: rgba(232,168,61,0.16);
+  border-radius: 999px;
+  padding: 5px 13px 5px 5px;
+}
 .pf-logo { width: 22px; height: 22px; border-radius: 50%; }
-.pf-brand-word { font-family: 'Karla', sans-serif; font-weight: 800; font-size: 14px; color: #4A3F3A; }
+.pf-brand-word { font-family: 'Karla', sans-serif; font-weight: 800; font-size: 14px; color: #A9720A; }
 .pf-eyebrow {
   font-family: 'Karla', sans-serif; font-size: 11px; font-weight: 800;
   letter-spacing: 0.12em; text-transform: uppercase; color: #A9720A;
   background: rgba(232,168,61,0.16); border-radius: 999px; padding: 6px 14px;
-  margin-right: 28px;
 }
 
 .pf-body { flex: 1; min-height: 0; overflow-y: auto; padding: 14px 36px; display: flex; align-items: center; }
@@ -158,6 +195,14 @@ const CSS = `
 }
 .pf-title { font-family: 'Caveat', cursive; font-weight: 700; font-size: 36px; color: #4A3F3A; margin: 0; line-height: 1.05; }
 .pf-instructions { font-family: 'Karla', sans-serif; font-weight: 600; font-size: 14px; color: #6B5D52; line-height: 1.55; max-width: 400px; margin: 0 auto; }
+
+.pf-stage-label {
+  display: block; font-family: 'Caveat', cursive; font-weight: 700; font-size: 30px; color: #4A3F3A; margin-bottom: 14px;
+}
+.pf-text { font-family: 'Karla', sans-serif; font-weight: 600; font-size: 15.5px; color: #4A3F3A; line-height: 1.6; max-width: 400px; margin: 0 auto; }
+
+.pf-star { display: inline-block; font-size: 34px; color: #E8A83D; margin-bottom: 6px; }
+.pf-wrapup-title { font-family: 'Caveat', cursive; font-weight: 700; font-size: 34px; color: #4A3F3A; margin: 0 0 10px; }
 
 .pf-fixit { width: 100%; }
 .pf-hint { font-size: 12.5px; font-weight: 500; color: #A9836F; line-height: 1.5; margin: 0 0 10px; }
