@@ -33,23 +33,14 @@ export default function WritingPlayerPage() {
 
   const Player = PLAYERS[type.key];
 
-  // Proofreading, Story Making, and Register Rewrite are fixed-size,
-  // self-contained lesson cards with their own logo baked in -- they
-  // don't want PlayerChrome's outer branded header on top of that.
-  // Message Reply still uses the shared chrome.
-  const isSelfContained = type.key === "proofreading" || type.key === "storyMaking" || type.key === "registerRewrite";
-  if (isSelfContained) {
-    // Register Rewrite topics are opened one round at a time -- each
-    // number on the topic card is its own standalone activity/window.
-    if (type.key === "registerRewrite") {
-      return <Player item={topic} roundIndex={Number(roundIndex) || 0} />;
-    }
-    return <Player item={topic} />;
-  }
+  // Every Writing activity type is a fixed-size, self-contained lesson
+  // card with its own logo baked in -- none of them want PlayerChrome's
+  // outer branded header on top of that.
 
-  return (
-    <PlayerChrome eyebrow="Writing">
-      <Player item={topic} />
-    </PlayerChrome>
-  );
+  // Register Rewrite topics are opened one round at a time -- each
+  // number on the topic card is its own standalone activity/window.
+  if (type.key === "registerRewrite") {
+    return <Player item={topic} roundIndex={Number(roundIndex) || 0} />;
+  }
+  return <Player item={topic} />;
 }

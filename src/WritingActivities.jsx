@@ -141,8 +141,8 @@ const BANNERS = {
 function openTopicPlayer(typeKey, topicKey) {
   const screenW = window.screen.availWidth || 1600;
   const screenH = window.screen.availHeight || 900;
-  const w = Math.min(typeKey === "storyMaking" ? 1000 : typeKey === "proofreading" ? 620 : typeKey === "registerRewrite" ? 660 : 720, screenW - 40);
-  const h = Math.min(typeKey === "proofreading" ? 520 : typeKey === "registerRewrite" ? 560 : 700, screenH - 80);
+  const w = Math.min(typeKey === "storyMaking" ? 1000 : typeKey === "proofreading" ? 620 : typeKey === "registerRewrite" ? 660 : typeKey === "messageReply" ? 480 : 720, screenW - 40);
+  const h = Math.min(typeKey === "proofreading" ? 520 : typeKey === "registerRewrite" ? 560 : typeKey === "messageReply" ? 760 : 700, screenH - 80);
   const left = Math.max(0, Math.floor((screenW - w) / 2));
   const top = Math.max(0, Math.floor((screenH - h) / 2));
 

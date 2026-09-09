@@ -1,9 +1,12 @@
 // Writing category, Message Reply activity: 10 items per CEFR level group
 // (A1-A2 / B1-B2 / C1-C2), 30 total. Shape per item:
 // { key, title, cefrGroup, focus, from, context, incoming,
-// mustInclude: [3], prompt, sample } -- "mustInclude" lists communicative
-// functions the reply should hit (not vocabulary), since this activity
-// practices functional/register writing, not word usage.
+// mustInclude: [3], prompt, sample, closing } -- "mustInclude" lists
+// communicative functions the reply should hit (not vocabulary), since
+// this activity practices functional/register writing, not word usage.
+// "closing" is the other person's reply that arrives ~5s after the
+// student sends theirs, wrapping up the thread before "Show sample
+// reply" appears -- grounded in that item's own scenario, not filler.
 
 const A1A2 = [
   {
@@ -16,6 +19,7 @@ const A1A2 = [
     mustInclude: ["Apologize", "Explain why", "Say when you'll arrive"],
     prompt: "Reply to Mom's text.",
     sample: "Sorry Mom! I missed the bus because I woke up late. I'm walking to school now. I'll be there in 10 minutes.",
+    closing: "OK, be careful! Let me know when you get there. Love you 💕",
   },
   {
     key: "partyInvitation",
@@ -27,6 +31,7 @@ const A1A2 = [
     mustInclude: ["Say yes or no", "Thank them", "Ask one question"],
     prompt: "Reply to Sam's invitation.",
     sample: "Hi Sam! Yes, I can come, thank you for inviting me! What time should I be there, and can I bring anything?",
+    closing: "Awesome, see you there! 🎉",
   },
   {
     key: "weekendPlans",
@@ -38,6 +43,7 @@ const A1A2 = [
     mustInclude: ["Say what you're doing", "Suggest an activity", "Ask when"],
     prompt: "Reply to Jess's text.",
     sample: "I don't have plans yet, so yes! Do you want to go to the mall or watch a movie? What time works for you?",
+    closing: "Sounds fun! Can't wait 😊",
   },
   {
     key: "lostHomework",
@@ -49,6 +55,7 @@ const A1A2 = [
     mustInclude: ["Apologize", "Explain what happened", "Say when you'll send it"],
     prompt: "Reply to Mr. Lee's text.",
     sample: "I'm so sorry, Mr. Lee! My laptop stopped working last night and I couldn't send it. I'll send it as soon as I get home today.",
+    closing: "Thanks for letting me know. I'll look out for it.",
   },
   {
     key: "sickDay",
@@ -60,6 +67,7 @@ const A1A2 = [
     mustInclude: ["Say what happened", "Answer her question", "Offer to help"],
     prompt: "Reply to Mia in the group chat.",
     sample: "Hi Mia! Yes, we got math homework, pages 12 and 13. I hope you feel better soon. I can send you my notes if you want!",
+    closing: "Thank you so much! I'll get better soon 💛",
   },
   {
     key: "newPet",
@@ -71,6 +79,7 @@ const A1A2 = [
     mustInclude: ["Show excitement", "Ask a question", "Say something nice"],
     prompt: "Reply to Leo's text.",
     sample: "That's so exciting! What kind of dog is Max? He sounds adorable, I can't wait to meet him!",
+    closing: "He's a golden retriever! I'll bring him to show you soon 🐶",
   },
   {
     key: "moviePlans",
@@ -82,6 +91,7 @@ const A1A2 = [
     mustInclude: ["Say yes or no", "Suggest a time", "Ask a question"],
     prompt: "Reply to Ana's text.",
     sample: "Yes, I'd love to! Is 6pm okay for you? Which cinema were you thinking of going to?",
+    closing: "Perfect, see you at 6! 🎬",
   },
   {
     key: "birthdayWishes",
@@ -93,6 +103,7 @@ const A1A2 = [
     mustInclude: ["Thank her", "Say how your day is", "Say something kind"],
     prompt: "Reply to Grandma's text.",
     sample: "Thank you so much, Grandma! My day is great so far, everyone has been so nice to me. I love you and I can't wait to see you soon!",
+    closing: "Aww, that's so sweet! Enjoy your special day, sweetheart 💕",
   },
   {
     key: "borrowingSomething",
@@ -104,6 +115,7 @@ const A1A2 = [
     mustInclude: ["Say yes", "Say when he can get them", "Offer more help"],
     prompt: "Reply to Tom's text.",
     sample: "Of course, no problem! I can bring them to school tomorrow morning. Let me know if you have any questions about them too!",
+    closing: "Thank you so much, you're a lifesaver!",
   },
   {
     key: "meetingUpAfterSchool",
@@ -115,6 +127,7 @@ const A1A2 = [
     mustInclude: ["Say yes or no", "Suggest a place", "Suggest a time"],
     prompt: "Reply to Zara's text.",
     sample: "Sure, that sounds great! How about the library at 4pm? We can go over the math homework together.",
+    closing: "Great, see you at the library at 4! 📚",
   },
 ];
 
@@ -129,6 +142,7 @@ const B1B2 = [
     mustInclude: ["Explain the situation", "Apologize if needed", "Propose a next step"],
     prompt: "Reply to Priya in the group chat.",
     sample: "Hi Priya, sorry for the late reply! I've been stuck on the research part, but I'll finish my slides tonight and send them by 9pm so we still have time to review everything before tomorrow.",
+    closing: "That works, thanks for the update. I'll wait for your slides tonight.",
   },
   {
     key: "canceledPlans",
@@ -140,6 +154,7 @@ const B1B2 = [
     mustInclude: ["Show understanding", "Say it's okay", "Suggest another time"],
     prompt: "Reply to Marcus's text.",
     sample: "No worries at all, family comes first! Hope everything is okay. Want to reschedule for next weekend instead? We could go Sunday if that works better.",
+    closing: "Thanks for understanding. Sunday sounds great, let's plan for that!",
   },
   {
     key: "landlordMessage",
@@ -151,6 +166,7 @@ const B1B2 = [
     mustInclude: ["Confirm or suggest another time", "Thank them", "Ask one question"],
     prompt: "Reply to your landlord.",
     sample: "Hi Mr. Alvarez, thank you for arranging this. Thursday at 2pm works for me. Will I need to be home the whole time, or can I leave a key?",
+    closing: "Sounds good, I'll let the plumber know a key will be left for him.",
   },
   {
     key: "coworkerQuestion",
@@ -162,6 +178,7 @@ const B1B2 = [
     mustInclude: ["Say yes or no", "Give a reason if declining", "Be friendly"],
     prompt: "Reply to Lena.",
     sample: "Hi Lena, no problem, I can swap with you! I don't have any plans that day. Just let the manager know so it's official.",
+    closing: "Thank you so much, I really appreciate it! I'll let the manager know.",
   },
   {
     key: "restaurantReservationChange",
@@ -173,6 +190,7 @@ const B1B2 = [
     mustInclude: ["Confirm or propose another time", "Ask a follow-up question", "Stay polite"],
     prompt: "Reply to the restaurant.",
     sample: "Hi, thanks for letting me know. 8pm works fine for us. Could you also confirm the table is still for four people?",
+    closing: "Confirmed, table for four at 8pm. See you then!",
   },
   {
     key: "neighborNoiseComplaint",
@@ -184,6 +202,7 @@ const B1B2 = [
     mustInclude: ["Apologize", "Explain briefly", "Reassure it won't happen again"],
     prompt: "Reply to Mrs. Chen.",
     sample: "Hi Mrs. Chen, I'm really sorry about that, we were hosting a small get-together and lost track of time. It won't happen again, thank you for letting me know.",
+    closing: "Thank you for understanding, I appreciate it.",
   },
   {
     key: "doctorsAppointmentReminder",
@@ -195,6 +214,7 @@ const B1B2 = [
     mustInclude: ["Confirm or ask to reschedule", "Be polite", "Mention a reason if rescheduling"],
     prompt: "Reply to the clinic.",
     sample: "Hi, thank you for the reminder. I actually need to reschedule due to a work conflict tomorrow morning. Could we move it to later in the week instead?",
+    closing: "No problem, we've moved your appointment to Friday at 10am.",
   },
   {
     key: "gymMembershipQuestion",
@@ -206,6 +226,7 @@ const B1B2 = [
     mustInclude: ["Say yes or no", "Ask about pricing or options", "Thank them"],
     prompt: "Reply to the gym.",
     sample: "Hi, thanks for checking in! I'm interested in renewing. Could you tell me if there are any discounts for a longer membership plan?",
+    closing: "Great! I'll send over our current membership deals shortly.",
   },
   {
     key: "deliveryDelayNotice",
@@ -217,6 +238,7 @@ const B1B2 = [
     mustInclude: ["Express concern politely", "Ask for a new estimated date", "Stay polite"],
     prompt: "Reply to QuickShip Delivery.",
     sample: "Hi, thanks for the update, though I was hoping to receive it sooner. Could you tell me the new expected delivery date so I can plan accordingly?",
+    closing: "Understood, your new estimated delivery date is Thursday. Thanks for your patience.",
   },
   {
     key: "volunteerEventInvite",
@@ -228,6 +250,7 @@ const B1B2 = [
     mustInclude: ["Say yes or no", "Ask a question", "Thank them for inviting you"],
     prompt: "Reply to the Community Center.",
     sample: "Hi, thank you for inviting me, I'd love to join! What time should I arrive, and is there anything specific I should bring?",
+    closing: "Wonderful! We'll see you Saturday morning, just bring gloves and a water bottle.",
   },
 ];
 
@@ -242,6 +265,7 @@ const C1C2 = [
     mustInclude: ["Apologize sincerely", "Briefly explain the delay", "Offer a concrete solution"],
     prompt: "Reply to Mr. Delgado's email.",
     sample: "Dear Mr. Delgado, I sincerely apologize for the delay and the inconvenience this has caused. Your order was held up due to a shipping issue on our end. I've arranged expedited delivery, and it will arrive by Monday. As an apology, we'd also like to offer a 15% discount on your next order.",
+    closing: "Thank you for the prompt resolution. I appreciate the swift response.",
   },
   {
     key: "meetingReschedule",
@@ -253,6 +277,7 @@ const C1C2 = [
     mustInclude: ["Acknowledge the request", "Propose 2 alternative times", "Stay flexible"],
     prompt: "Reply to Ms. Okafor's email.",
     sample: "Hi Ms. Okafor, of course, no problem. I'm available Wednesday at 2pm or Thursday at 11am, please let me know whichever works best for you, and I'll update the calendar accordingly.",
+    closing: "Thursday at 11am works perfectly. I'll send a new calendar invite shortly.",
   },
   {
     key: "jobOfferNegotiation",
@@ -264,6 +289,7 @@ const C1C2 = [
     mustInclude: ["Thank them for the offer", "Tactfully raise the salary point", "Express continued interest"],
     prompt: "Reply to Ms. Whitfield's email.",
     sample: "Dear Ms. Whitfield, thank you very much for this offer, I'm genuinely excited about the opportunity. Given my experience and the scope of the role, I was hoping we could discuss a starting salary closer to $75,000. I remain very enthusiastic about joining the team and look forward to your thoughts.",
+    closing: "Thank you for your patience. I'll review this internally and follow up by the end of the week.",
   },
   {
     key: "conferenceInvitation",
@@ -275,6 +301,7 @@ const C1C2 = [
     mustInclude: ["Accept formally", "Confirm or request dates", "Ask about logistics"],
     prompt: "Reply to Dr. Patel's email.",
     sample: "Dear Dr. Patel, thank you for this kind invitation, it would be an honor to speak at the summit. I am available on the proposed dates. Could you share further details regarding the expected topic scope and travel arrangements?",
+    closing: "Wonderful, we're delighted to have you. I'll send the full details shortly.",
   },
   {
     key: "performanceReviewFollowUp",
@@ -286,6 +313,7 @@ const C1C2 = [
     mustInclude: ["Acknowledge the feedback", "Ask a clarifying question", "Show commitment to improving"],
     prompt: "Reply to Mr. Osei's email.",
     sample: "Dear Mr. Osei, thank you for the feedback, I appreciate the clarity. Could you point me toward specific areas or projects where this has been most noticeable? I'm fully committed to improving this over the coming quarter.",
+    closing: "That's helpful context, thank you. Let's check in again in a few weeks.",
   },
   {
     key: "partnershipProposalResponse",
@@ -297,6 +325,7 @@ const C1C2 = [
     mustInclude: ["Express interest", "Request more detail before committing", "Propose next steps"],
     prompt: "Reply to Ms. Ibarra's email.",
     sample: "Dear Ms. Ibarra, thank you for reaching out, this sounds like an interesting opportunity. Before scheduling a call, could you share a brief outline of what the partnership would involve? I'd be glad to arrange a preliminary discussion once I've had a chance to review it.",
+    closing: "Understood, I'll put together an outline and send it over this week.",
   },
   {
     key: "mediaInterviewRequest",
@@ -308,6 +337,7 @@ const C1C2 = [
     mustInclude: ["Accept or decline formally", "Set a condition or boundary if needed", "Suggest timing"],
     prompt: "Reply to Jordan's email.",
     sample: "Dear Jordan, thank you for thinking of me for this feature. I'd be glad to take part, provided I can review any quotes before publication. I'm available Tuesday or Wednesday afternoon next week, whichever suits your schedule best.",
+    closing: "That works well for me. I'll send over some background questions beforehand.",
   },
   {
     key: "contractClarification",
@@ -319,6 +349,7 @@ const C1C2 = [
     mustInclude: ["Acknowledge receipt", "Ask a specific clarifying question", "Avoid confirming until clarified"],
     prompt: "Reply to the Legal Department.",
     sample: "Dear team, thank you for sending the contract over. Before confirming, I'd like clarification on the termination clause in Section 4.2, specifically the notice period required. I'll confirm my agreement once this point has been addressed.",
+    closing: "Good catch, we'll get that clause reviewed and revert shortly.",
   },
   {
     key: "colleagueConflictResolution",
@@ -330,6 +361,7 @@ const C1C2 = [
     mustInclude: ["Acknowledge their feelings", "Avoid being defensive", "Propose a constructive conversation"],
     prompt: "Reply to Chris's email.",
     sample: "Hi Chris, thank you for being open about this, and I'm sorry it came across that way. That certainly wasn't my intention, and I'd genuinely like to hear more about your perspective. Could we set aside some time this week to talk it through properly?",
+    closing: "I appreciate that, thank you. Let's find some time later this week.",
   },
   {
     key: "formalComplaintToAVendor",
@@ -341,6 +373,7 @@ const C1C2 = [
     mustInclude: ["State the issue clearly", "Reference specifics", "Request a corrective action"],
     prompt: "Draft the formal complaint email to the vendor.",
     sample: "Dear Vendor Team, we are writing to formally raise concerns regarding the quality of our last three shipments, each of which contained defective units exceeding our agreed tolerance threshold. We request a full quality review on your end and a corrective action plan within the next ten business days.",
+    closing: "Thanks, this reads well, please go ahead and send it to the vendor.",
   },
 ];
 
