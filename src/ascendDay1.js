@@ -15,6 +15,7 @@ export default {
     {
       question: "Tell me about your weekend.",
       answer: "It was good.",
+      leveledAnswer: "It was really relaxing because I finally got some free time to rest.",
       pushes: [
         "That word isn't doing much work. Say it again with a more specific adjective than good, nice, or fine.",
         "Good. Now add a reason or detail to make it a fuller sentence.",
@@ -24,6 +25,7 @@ export default {
     {
       question: "What did you do?",
       answer: "I went to my friend's house.",
+      leveledAnswer: "I headed over to my friend's house for a few hours on Saturday.",
       pushes: [
         "'Went' is a pretty plain verb. Try a stronger one that shows more.",
         "Now add when or how long, right in the same sentence.",
@@ -33,6 +35,7 @@ export default {
     {
       question: "How did you feel afterward?",
       answer: "I was tired.",
+      leveledAnswer: "I felt exhausted because we stayed up talking until really late.",
       pushes: [
         "Instead of tired, happy, or sad, give us the exact feeling.",
         "Now combine the feeling and the reason into one sentence.",
@@ -42,6 +45,7 @@ export default {
     {
       question: "Did anything interesting happen?",
       answer: "We watched a movie.",
+      leveledAnswer: "We watched a really funny comedy at his place.",
       pushes: [
         "'Movie' is fine, but which movie? Give us the name or the type.",
         "Now tell us where you watched it.",
@@ -51,6 +55,7 @@ export default {
     {
       question: "What was the movie like?",
       answer: "It was okay.",
+      leveledAnswer: "It was actually hilarious because the jokes were so unexpected.",
       pushes: [
         "'Okay' doesn't tell us much. Give us a stronger opinion word.",
         "Now give one reason why you felt that way.",
@@ -60,6 +65,7 @@ export default {
     {
       question: "Would you do anything differently next time?",
       answer: "I would go earlier.",
+      leveledAnswer: "Next time I will go earlier so we have more time to hang out before dinner.",
       pushes: [
         "Good start. Now tell us why you'd go earlier.",
         "Can you make that sound more like a plan, not just an idea? Try 'next time I will...'",
@@ -69,6 +75,7 @@ export default {
     {
       question: "What are your plans for next weekend?",
       answer: "I don't know yet.",
+      leveledAnswer: "I'm thinking about going hiking with my cousins if the weather is nice.",
       pushes: [
         "That's honest, but let's practice speculating. Try 'I might...' or 'I'm thinking about...'",
         "Now add what you'd do it with, or who with.",
@@ -78,6 +85,7 @@ export default {
     {
       question: "Is there anything you're looking forward to?",
       answer: "Maybe seeing my family.",
+      leveledAnswer: "I'm really looking forward to seeing my family because I haven't seen them in months.",
       pushes: [
         "Tell us why that matters to you. Give a reason.",
         "Now put it all together in one full, natural-sounding sentence.",

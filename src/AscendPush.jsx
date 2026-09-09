@@ -93,7 +93,7 @@ function PlantSvg({ stage }) {
 
 function buildSlides(lesson) {
   const slides = [{ type: "cover" }];
-  lesson.prompts.forEach((p) => slides.push({ type: "prompt", question: p.question }));
+  lesson.prompts.forEach((p) => slides.push({ type: "prompt", question: p.question, answer: p.answer }));
   lesson.recall.forEach((r) => slides.push({ type: "recall", question: r.question }));
   slides.push({ type: "wrap" });
   return slides;
@@ -107,6 +107,7 @@ export default function AscendPush({ lesson, track }) {
   const [water, setWater] = useState(0);
   const [note, setNote] = useState("");
   const [wateredSlides, setWateredSlides] = useState(() => new Set());
+  const [drafts, setDrafts] = useState({});
 
   // Mirror the slide position into the URL so a refresh mid-lesson lands
   // back on the same slide instead of the cover.
@@ -124,6 +125,11 @@ export default function AscendPush({ lesson, track }) {
   const isLast = slideIdx === slides.length - 1;
   const stage = growthStage(water);
   const alreadyWatered = wateredSlides.has(slideIdx);
+  const draftEmpty = !(drafts[slideIdx] || "").trim();
+
+  function setDraft(value) {
+    setDrafts((d) => ({ ...d, [slideIdx]: value }));
+  }
 
   function goPrev() {
     if (!isFirst) setSlideIdx((i) => i - 1);
@@ -174,10 +180,22 @@ export default function AscendPush({ lesson, track }) {
               <div className="asp-slide">
                 <div className="asp-prompt-ref">Prompt</div>
                 <div className="asp-prompt-q">{slide.question}</div>
+                <div className="asp-starting-box">
+                  <span className="asp-starting-label">Starting point</span>
+                  <p className="asp-starting-text">{slide.answer}</p>
+                </div>
                 <div className="asp-cta-line">Now, level it up!</div>
-                <div className="asp-write-row"><input className="asp-write-input" type="text" placeholder="Type here" /></div>
+                <div className="asp-write-row">
+                  <input
+                    className="asp-write-input"
+                    type="text"
+                    placeholder="Say it stronger, then type it here…"
+                    value={drafts[slideIdx] || ""}
+                    onChange={(e) => setDraft(e.target.value)}
+                  />
+                </div>
                 <div className="asp-mark-row">
-                  <button type="button" className="asp-mbtn asp-mbtn--level" onClick={() => levelUp("Watered. Move on when ready.")} disabled={alreadyWatered}>
+                  <button type="button" className="asp-mbtn asp-mbtn--level" onClick={() => levelUp("Watered. Move on when ready.")} disabled={alreadyWatered || draftEmpty}>
                     {alreadyWatered ? "Watered ✓" : "Leveled Up ✓"}
                   </button>
                 </div>
@@ -189,10 +207,18 @@ export default function AscendPush({ lesson, track }) {
               <div className="asp-slide">
                 <div className="asp-prompt-ref is-recall">Remember This?</div>
                 <div className="asp-prompt-q">{slide.question}</div>
-                <div className="asp-cta-line is-recall">Answer it again.</div>
-                <div className="asp-write-row"><input className="asp-write-input" type="text" placeholder="Type here" /></div>
+                <div className="asp-cta-line is-recall">Answer it again — no help this time.</div>
+                <div className="asp-write-row">
+                  <input
+                    className="asp-write-input"
+                    type="text"
+                    placeholder="Type your leveled-up answer…"
+                    value={drafts[slideIdx] || ""}
+                    onChange={(e) => setDraft(e.target.value)}
+                  />
+                </div>
                 <div className="asp-mark-row">
-                  <button type="button" className="asp-mbtn asp-mbtn--remembered" onClick={() => levelUp("It stuck. Nice work.")} disabled={alreadyWatered}>
+                  <button type="button" className="asp-mbtn asp-mbtn--remembered" onClick={() => levelUp("It stuck. Nice work.")} disabled={alreadyWatered || draftEmpty}>
                     {alreadyWatered ? "Remembered ✓" : "Remembered It ✓"}
                   </button>
                 </div>
@@ -308,7 +334,7 @@ const CSS = `
 
 .asp-growth-label { font-family: 'Baloo 2', cursive; font-weight: 700; font-size: 15px; color: #C9701F; margin-top: 4px; }
 
-.asp-deck-body { height: 250px; display: flex; align-items: center; justify-content: center; padding: 20px 22px 6px; overflow: hidden; flex-shrink: 0; }
+.asp-deck-body { min-height: 250px; max-height: 340px; display: flex; align-items: center; justify-content: center; padding: 20px 22px 6px; overflow-y: auto; flex-shrink: 0; }
 .asp-slide { width: 100%; text-align: center; }
 
 .asp-cover-crumb { font-weight: 700; font-size: 11.5px; color: #4B8B92; margin-bottom: 12px; }
@@ -319,6 +345,13 @@ const CSS = `
 .asp-prompt-ref { font-weight: 700; font-size: 11px; color: #4B8B92; margin-bottom: 4px; }
 .asp-prompt-ref.is-recall { color: #10646B; }
 .asp-prompt-q { font-family: 'Baloo 2', cursive; font-weight: 700; font-size: 20px; color: #10646B; margin-bottom: 16px; line-height: 1.3; }
+
+.asp-starting-box {
+  background: #FFFDF9; border: 1px solid #F3C99A; border-radius: 12px;
+  padding: 10px 14px; margin-bottom: 12px; text-align: left;
+}
+.asp-starting-label { display: block; font-weight: 800; font-size: 9.5px; text-transform: uppercase; letter-spacing: 0.05em; color: #C9701F; margin-bottom: 3px; }
+.asp-starting-text { font-family: 'IBM Plex Sans', sans-serif; font-weight: 600; font-size: 13.5px; color: #10646B; margin: 0; line-height: 1.4; }
 
 .asp-cta-line { font-family: 'Baloo 2', cursive; font-weight: 700; font-size: 16px; color: #C9701F; margin-bottom: 12px; }
 .asp-cta-line.is-recall { color: #10646B; }
