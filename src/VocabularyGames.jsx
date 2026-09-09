@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
+import wordBankBg from "./assets/vocabulary/word-bank-bg.jpg";
 import synonymsBanner from "./assets/vocabulary-games/synonyms-banner.jpg";
 import antonymsBanner from "./assets/vocabulary-games/antonyms-banner.jpg";
 import wordSortBanner from "./assets/vocabulary-games/word-sort-banner.jpg";
@@ -401,7 +402,6 @@ export default function VocabularyGames({ query }) {
         <div className="vg-page">
           <div className="vg-hero">
             <span className="vg-eyebrow">Sentivo · Vocabulary</span>
-            <h1><span className="vg-pill">🐬 Word Bank</span></h1>
             <p className="vg-blurb">Results for "{query.trim()}"</p>
           </div>
           <div className="vg-row"></div>
@@ -441,7 +441,6 @@ export default function VocabularyGames({ query }) {
         <div className="vg-page">
           <div className="vg-hero">
             <span className="vg-eyebrow">Sentivo · Vocabulary</span>
-            <h1><span className="vg-pill">🐬 Word Bank</span></h1>
             <p className="vg-blurb">Dive in and grow your word bank, one word at a time.</p>
           </div>
           {tabBar}
@@ -549,7 +548,6 @@ export default function VocabularyGames({ query }) {
       <div className="vg-page">
         <div className="vg-hero">
           <span className="vg-eyebrow">Sentivo · Vocabulary</span>
-          <h1><span className="vg-pill">🐬 Word Bank</span></h1>
           <p className="vg-blurb">Dive in and grow your word bank, one word at a time.</p>
         </div>
         {tabBar}
@@ -586,7 +584,7 @@ const CSS = `
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: linear-gradient(180deg, #EAF8F6 0%, #D6F1EC 100%);
+  background: url(${wordBankBg}) top center / cover no-repeat, linear-gradient(180deg, #EAF8F6 0%, #D6F1EC 100%);
   overflow: hidden;
 }
 .vg-page::before, .vg-page::after {
@@ -599,7 +597,7 @@ const CSS = `
 .vg-page::before { width: 60px; height: 60px; top: 18px; left: 6%; }
 .vg-page::after { width: 26px; height: 26px; top: 70px; left: 12%; }
 
-.vg-hero { text-align: center; position: relative; z-index: 1; }
+.vg-hero { text-align: center; position: relative; z-index: 1; padding-top: clamp(120px, 20vw, 220px); }
 .vg-eyebrow {
   display: block;
   font-family: 'Mulish', sans-serif;
