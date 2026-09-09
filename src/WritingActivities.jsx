@@ -461,7 +461,7 @@ const CSS = `
   color: #6B5D52;
   margin: 14px auto 0;
   padding: 7px 20px;
-  background: rgba(255,248,239,0.88);
+  background: rgba(255,248,239,0.5);
   border-radius: 999px;
   line-height: 1.5;
 }
