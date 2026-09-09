@@ -178,7 +178,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Zara riding steadily on her own down the yard path, no hands holding her, Dad watching proudly from a distance with a big smile.",
     story:
-      "Today, I tell Dad I am ready to ride all by myself. “No training wheels and no holding on?” Dad asks with a smile. “Yes, Dad, I want to try,” I say confidently. Dad checks my helmet and makes sure the bike is ready. I climb on the bike and push off the ground slowly. My legs pedal steadily, and the bike moves forward smoothly. I look ahead and keep my balance all by myself. Dad watches from a distance with a proud smile on his face. I cannot believe I am really riding on my own!",
+      "Today, I tell Dad I am ready to ride all by myself. “No training wheels and no holding on, Zara?” Dad asks with a smile. “Yes, Dad, I want to try,” I say confidently. Dad checks my helmet and makes sure the bike is ready. I climb on the bike and push off the ground slowly. My legs pedal steadily, and the bike moves forward smoothly. I look ahead and keep my balance all by myself. Dad watches from a distance with a proud smile on his face. I cannot believe I am really riding on my own!",
     questions: [
       { text: "What does Zara tell Dad she is ready for?", answer: "To ride all by herself, with no training wheels or holding on." },
       { text: "What does Dad check before she rides?", answer: "Her helmet and the bike." },
@@ -228,7 +228,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Zara riding along the sidewalk past neighborhood houses, Dad walking beside her, a neighbor waving from her porch, kids playing in the distance.",
     story:
-      "Today, Dad says I can ride down our whole street. “Stay close to the side, and I'll walk with you,” Dad says. I pedal past our neighbor's house and wave to Mrs. Lopez. The wind feels cool against my face as I ride along. I see kids playing and dogs barking as I pass by. Dad walks beside me the whole time, smiling proudly. I ride all the way to the corner and turn around carefully. Riding down the real street feels like a big, exciting adventure. I feel like I can ride anywhere now!",
+      "Today, Dad says I can ride down our whole street. “Stay close to the side, Zara, and I'll walk with you,” Dad says. I pedal past our neighbor's house and wave to Mrs. Lopez. The wind feels cool against my face as I ride along. I see kids playing and dogs barking as I pass by. Dad walks beside me the whole time, smiling proudly. I ride all the way to the corner and turn around carefully. Riding down the real street feels like a big, exciting adventure. I feel like I can ride anywhere now!",
     questions: [
       { text: "What does Dad say Zara can do today?", answer: "Ride down the whole street." },
       { text: "Who does Zara wave to?", answer: "Their neighbor, Mrs. Lopez." },
@@ -253,7 +253,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "The whole family riding bikes together around the neighborhood at sunset, Zara in front with a huge proud smile, Dad and Felix riding behind her.",
     story:
-      "It has been one month since I got my new bike. I remember my first wobbly ride and my little fall. Now, I can ride fast, turn corners, and stop safely. Dad no longer needs to hold my seat or walk beside me. Felix says I am one of the best bike riders on our street. Today, our whole family rides bikes together around the neighborhood. I feel the wind in my hair and a big smile on my face. “I did it, I can really ride my bike!” I shout happily. Learning to ride my bike taught me that practice makes anything possible.",
+      "It has been one month since I got my new bike. I remember my first wobbly ride and my little fall. Now, I can ride fast, turn corners, and stop safely. Dad no longer needs to hold my seat or walk beside me. “You're one of the best bike riders on our street, Zara,” Felix says. Today, our whole family rides bikes together around the neighborhood. I feel the wind in my hair and a big smile on my face. “I did it, I can really ride my bike!” I shout happily. Learning to ride my bike taught me that practice makes anything possible.",
     questions: [
       { text: "How long has it been since Zara got her bike?", answer: "One month." },
       { text: "What does Zara remember from the beginning?", answer: "Her first wobbly ride and her little fall." },

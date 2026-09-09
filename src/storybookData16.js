@@ -28,7 +28,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Jack running toward a bright, green park with a playground, Mom walking behind him carrying a bag, sun shining overhead.",
     story:
-      "Today is Saturday, and the sun shines bright in the sky. Mom says, “Let's go to the park, Jack!” I put on my shoes quickly and grab my hat. We walk down the street and see the big green park ahead. Many families are already there, playing and having fun. I see swings, a slide, and a big sandbox. Mom finds a bench and sits down to watch me play. I run toward the playground with a big smile on my face. The park is my favorite place to spend a sunny day.",
+      "Today is Saturday, and the sun shines bright in the sky. Mom says, “Let's go to the park, Jack!” I put on my shoes quickly and grab my hat. We walk down the street and see the big green park ahead. Many families are already there, playing and having fun. I see swings, a slide, and a big sandbox. Mom finds a bench and sits down to watch me play. “Have fun, Jack!” she calls out. I run toward the playground with a big smile on my face. The park is my favorite place to spend a sunny day.",
     questions: [
       { text: "What day is it?", answer: "Saturday." },
       { text: "What does Mom say?", answer: "Let's go to the park, Jack!" },
@@ -53,7 +53,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Jack swinging high with a big smile, Mom giving him a gentle push from behind, blue sky and trees in the background.",
     story:
-      "First, I run to the big swings at the park. I climb up and hold the chains tightly. Mom gives me a gentle push, and I start to swing. “Higher, Mom, higher!” I shout with excitement. The wind blows through my hair as I swing up high. I feel like I am flying up into the blue sky. I laugh and kick my legs to swing even higher. After a while, I slow down and jump off softly. Swinging at the park always makes me feel free and happy.",
+      "First, I run to the big swings at the park. I climb up and hold the chains tightly. “Ready, Jack?” Mom asks, and she gives me a gentle push. I start to swing. “Higher, Mom, higher!” I shout with excitement. The wind blows through my hair as I swing up high. I feel like I am flying up into the blue sky. I laugh and kick my legs to swing even higher. After a while, I slow down and jump off softly. Swinging at the park always makes me feel free and happy.",
     questions: [
       { text: "What does Jack climb first?", answer: "The big swings." },
       { text: "What does Mom do?", answer: "Gives him a gentle push." },
@@ -78,7 +78,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Jack kneeling in a sandbox building a small sandcastle with a bucket and shovel, Mom taking a photo with her phone nearby.",
     story:
-      "Next, I walk over to the big sandbox at the park. I bring my small bucket and shovel from home. I scoop the soft sand into my bucket carefully. Then, I flip the bucket over and lift it up slowly. A small sandcastle tower stands in front of me! I make three more towers and connect them together. I use small sticks to make windows and doors. Mom takes a photo of my sandcastle with her phone. Building a sandcastle at the park makes me feel like a builder.",
+      "Next, I walk over to the big sandbox at the park. I bring my small bucket and shovel from home. I scoop the soft sand into my bucket carefully. Then, I flip the bucket over and lift it up slowly. A small sandcastle tower stands in front of me! I make three more towers and connect them together. I use small sticks to make windows and doors. “What a tall castle, Jack!” Mom says, and she takes a photo of it with her phone. Building a sandcastle at the park makes me feel like a builder.",
     questions: [
       { text: "What does Jack bring from home?", answer: "A small bucket and shovel." },
       { text: "What does Jack build?", answer: "A sandcastle." },
@@ -103,7 +103,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Jack standing at the edge of a calm pond throwing small pieces of food to a group of white ducks, Mom standing beside him with the food bag.",
     story:
-      "After the sandbox, Mom and I walk to the pond. Many white ducks swim slowly in the cool water. Mom gives me a small bag of duck food. I throw small pieces onto the water carefully. The ducks swim quickly and eat the food happily. One brave duck comes close to the edge of the pond. I laugh when it quacks loudly at me. We stay and watch the ducks for a long time. Feeding the ducks is a peaceful part of our day at the park.",
+      "After the sandbox, Mom and I walk to the pond. Many white ducks swim slowly in the cool water. “Here, Jack, try this,” Mom says, and she gives me a small bag of duck food. I throw small pieces onto the water carefully. The ducks swim quickly and eat the food happily. One brave duck comes close to the edge of the pond. I laugh when it quacks loudly at me. We stay and watch the ducks for a long time. Feeding the ducks is a peaceful part of our day at the park.",
     questions: [
       { text: "Where do Jack and Mom walk to?", answer: "The pond." },
       { text: "What does Mom give Jack?", answer: "A small bag of duck food." },
@@ -153,7 +153,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Jack running with a bright red kite lifting into a windy blue sky, Lily watching and smiling nearby, Mom holding the kite string spool.",
     story:
-      "On a windy Saturday, I bring my new kite to the park. It is bright red with a long, colorful tail. Mom helps me hold the string tightly at first. I run fast, and the kite lifts up into the sky. “Look, Mom, it's flying!” I shout with joy. The kite dances high above the trees in the blue sky. Lily arrives and watches my kite fly with a big smile. She asks if she can hold the string for a while. We take turns flying the kite until it is time to go home.",
+      "On a windy Saturday, I bring my new kite to the park. It is bright red with a long, colorful tail. Mom helps me hold the string tightly at first. “Run, Jack, run!” she says. I run fast, and the kite lifts up into the sky. “Look, Mom, it's flying!” I shout with joy. The kite dances high above the trees in the blue sky. Lily arrives and watches my kite fly with a big smile. She asks if she can hold the string for a while. We take turns flying the kite until it is time to go home.",
     questions: [
       { text: "What color is Jack's kite?", answer: "Bright red." },
       { text: "What does Jack do to make the kite fly?", answer: "Runs fast." },
@@ -228,7 +228,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Jack and Mom sitting under a big tree on a small blanket having an impromptu picnic with sandwiches, rain falling gently around them.",
     story:
-      "One Saturday, dark clouds cover the sky at the park. Suddenly, rain starts to fall, and we run for cover. Mom and I hurry under a big tree near the bench. “Our park day is not over yet,” Mom says with a smile. She opens her bag and takes out a small blanket. We sit under the tree and have a cozy indoor-style picnic. Mom brought sandwiches and juice just in case of rain. We watch the rain fall and laugh at our surprise picnic. Even a rainy day at the park can turn into a fun memory.",
+      "One Saturday, dark clouds cover the sky at the park. Suddenly, rain starts to fall, and we run for cover. Mom and I hurry under a big tree near the bench. “Our park day is not over yet, Jack,” Mom says with a smile. She opens her bag and takes out a small blanket. We sit under the tree and have a cozy indoor-style picnic. Mom brought sandwiches and juice just in case of rain. We watch the rain fall and laugh at our surprise picnic. Even a rainy day at the park can turn into a fun memory.",
     questions: [
       { text: "What happens to the sky?", answer: "Dark clouds cover it and rain starts to fall." },
       { text: "Where do they go for cover?", answer: "Under a big tree." },

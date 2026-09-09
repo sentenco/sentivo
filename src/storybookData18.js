@@ -80,7 +80,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Lucy looking around a colorful classroom with animal posters, a reading corner with pillows, and a small fish tank on a shelf.",
     story:
-      "I look around my new classroom with big, curious eyes. There are colorful pictures of animals on every wall. A big shelf holds many books, blocks, and puzzles. Small tables and chairs sit together in groups of four. A cozy reading corner has soft pillows and a fuzzy rug. Ms. Bell shows us where the crayons and paper are kept. I see a class pet, a small fish, swimming in a tank. Everything in the classroom looks fun and new. I already want to explore every single corner of this room.",
+      "I look around my new classroom with big, curious eyes. There are colorful pictures of animals on every wall. A big shelf holds many books, blocks, and puzzles. Small tables and chairs sit together in groups of four. A cozy reading corner has soft pillows and a fuzzy rug. “Welcome, Lucy,” Ms. Bell says, and she shows us where the crayons and paper are kept. I see a class pet, a small fish, swimming in a tank. Everything in the classroom looks fun and new. I already want to explore every single corner of this room.",
     questions: [
       { text: "What is on the walls?", answer: "Colorful pictures of animals." },
       { text: "What does the reading corner have?", answer: "Soft pillows and a fuzzy rug." },
@@ -105,7 +105,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Ms. Bell holding up a colorful picture book to a group of children sitting in a circle on a soft rug, Lucy laughing and listening closely.",
     story:
-      "Ms. Bell asks everyone to sit together on the soft rug. “It's time for circle time and a story,” she says. All the children sit in a big, round circle happily. Ms. Bell holds up a colorful book about a brave little bear. She reads with a fun voice, and everyone listens closely. I laugh when the bear does something silly in the story. After the story, Ms. Bell asks us questions about the bear. I raise my hand and answer one question correctly. Circle time is quickly becoming my favorite part of school.",
+      "Ms. Bell asks everyone to sit together on the soft rug. “It's time for circle time and a story,” she says. All the children sit in a big, round circle happily. Ms. Bell holds up a colorful book about a brave little bear. She reads with a fun voice, and everyone listens closely. I laugh when the bear does something silly in the story. After the story, Ms. Bell asks us questions about the bear. I raise my hand and answer one question correctly. “Great answer, Lucy!” Ms. Bell says with a smile. Circle time is quickly becoming my favorite part of school.",
     questions: [
       { text: "Where do the children sit?", answer: "Together on the soft rug, in a circle." },
       { text: "What is the story about?", answer: "A brave little bear." },
@@ -155,7 +155,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Lucy, Owen, and Ella sitting together at a small table sharing apple slices and crackers, all smiling and talking.",
     story:
-      "At snack time, everyone sits together at the small tables. Ms. Bell gives each of us a cup of apple slices. I sit next to my new friend Owen and a girl named Ella. Ella shares her crackers with me, and I share my apple slices too. We talk about our favorite colors while we eat our snacks. Owen says his favorite color is green, and mine is purple. Ella says her favorite color is yellow, like the sun. Snack time is a fun way to talk and make new friends. I feel happy sitting with my new classmates.",
+      "At snack time, everyone sits together at the small tables. Ms. Bell gives each of us a cup of apple slices. I sit next to my new friend Owen and a girl named Ella. “Want to share, Lucy?” Ella asks, and she shares her crackers with me, and I share my apple slices too. We talk about our favorite colors while we eat our snacks. Owen says his favorite color is green, and mine is purple. Ella says her favorite color is yellow, like the sun. Snack time is a fun way to talk and make new friends. I feel happy sitting with my new classmates.",
     questions: [
       { text: "What snack does Ms. Bell give the children?", answer: "Apple slices." },
       { text: "Who does Lucy sit next to?", answer: "Owen and a girl named Ella." },
@@ -205,7 +205,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Lucy, Owen, and Ella playing together on a sunny playground with swings and a slide, all laughing and running around.",
     story:
-      "After lunch, Ms. Bell takes the whole class outside to play. The playground has swings, a slide, and a climbing wall. Owen and Ella run to the slide, and I follow them quickly. We climb up the ladder and slide down again and again. Ella pushes me gently on the swing, and I laugh with joy. The sun feels warm, and the sky is bright and blue. We play tag and run around the playground together happily. Playing outside with my new friends is so much fun. I do not want playtime to end at all.",
+      "After lunch, Ms. Bell takes the whole class outside to play. The playground has swings, a slide, and a climbing wall. “Come on, Lucy!” Owen calls, and he and Ella run to the slide as I follow them quickly. We climb up the ladder and slide down again and again. Ella pushes me gently on the swing, and I laugh with joy. The sun feels warm, and the sky is bright and blue. We play tag and run around the playground together happily. Playing outside with my new friends is so much fun. I do not want playtime to end at all.",
     questions: [
       { text: "What does the playground have?", answer: "Swings, a slide, and a climbing wall." },
       { text: "Who does Lucy follow to the slide?", answer: "Owen and Ella." },
@@ -230,7 +230,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Lucy standing in front of the class holding up a soft teddy bear, classmates sitting on the rug listening with curious smiles.",
     story:
-      "Today, Ms. Bell says we can bring something special to share. I bring my soft, fluffy teddy bear from home. When it is my turn, I stand in front of the class carefully. “This is my teddy bear. His name is Buttons,” I say. My classmates smile and ask questions about my bear. “Where did you get him?” asks Ella with curious eyes. “My grandma gave him to me,” I answer proudly. Everyone says Buttons looks very soft and cute. I feel proud to share something special with my new friends.",
+      "Today, Ms. Bell says we can bring something special to share. I bring my soft, fluffy teddy bear from home. When it is my turn, I stand in front of the class carefully. “This is my teddy bear. His name is Buttons,” I say. My classmates smile and ask questions about my bear. “Where did you get him, Lucy?” asks Ella with curious eyes. “My grandma gave him to me,” I answer proudly. Everyone says Buttons looks very soft and cute. I feel proud to share something special with my new friends.",
     questions: [
       { text: "What does Lucy bring to share?", answer: "Her teddy bear." },
       { text: "What is the teddy bear's name?", answer: "Buttons." },

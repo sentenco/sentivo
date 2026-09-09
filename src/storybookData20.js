@@ -54,7 +54,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Mom walking around the living room at night gently rocking a crying Rosie, Ben sitting up in bed nearby with a pillow over his ears, Dad yawning in the kitchen.",
     story:
-      "That night, Rosie cries loudly, and I cannot fall asleep. Mom walks around the house, holding Rosie and singing softly. “Babies cry because it is how they talk to us,” Mom explains. I put my pillow over my ears, but I can still hear her. In the morning, I feel tired, and so does everyone else. Dad makes coffee and yawns while feeding Rosie her bottle. “Being a baby's family is hard work,” Dad says with a tired smile. I did not know babies could cry so much. I hope Rosie feels better and cries a little less tonight.",
+      "That night, Rosie cries loudly, and I cannot fall asleep. Mom walks around the house, holding Rosie and singing softly. “Babies cry because it is how they talk to us,” Mom explains. I put my pillow over my ears, but I can still hear her. In the morning, I feel tired, and so does everyone else. Dad makes coffee and yawns while feeding Rosie her bottle. “Being a baby's family is hard work, Ben,” Dad says with a tired smile. I did not know babies could cry so much. I hope Rosie feels better and cries a little less tonight.",
     questions: [
       { text: "What does Rosie do at night?", answer: "She cries loudly." },
       { text: "What does Mom say about crying?", answer: "That it is how babies talk to us." },
@@ -104,7 +104,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Ben sitting calmly on the sofa holding sleeping Rosie close, Mom taking a gentle photo of the two of them together.",
     story:
-      "One afternoon, the house feels calm and quiet for a while. I sit on the sofa, and Mom places sleepy Rosie in my arms. She breathes slowly and softly while she sleeps peacefully. I look at her tiny eyelashes and small, round cheeks. I feel warm and calm holding my little sister close. Mom takes a photo of us together on the sofa. “You two look so sweet together,” Mom whispers with a smile. I stay very still so I do not wake Rosie up. This quiet moment with Rosie feels really special to me.",
+      "One afternoon, the house feels calm and quiet for a while. I sit on the sofa, and Mom places sleepy Rosie in my arms. She breathes slowly and softly while she sleeps peacefully. I look at her tiny eyelashes and small, round cheeks. I feel warm and calm holding my little sister close. Mom takes a photo of us together on the sofa. “You two look so sweet together, Ben,” Mom whispers with a smile. I stay very still so I do not wake Rosie up. This quiet moment with Rosie feels really special to me.",
     questions: [
       { text: "Where does Ben sit with Rosie?", answer: "On the sofa." },
       { text: "What is Rosie doing while Ben holds her?", answer: "Sleeping peacefully." },
@@ -154,7 +154,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Ben sitting alone in his room holding a drawing, looking a little sad, while through the doorway Mom and Dad are busy caring for baby Rosie.",
     story:
-      "Lately, Mom and Dad spend most of their time with Rosie. I feel a little forgotten, even though I know that is silly. Today, I wanted to show Dad my new drawing, but he was busy with Rosie. I feel a small knot of sadness in my stomach. I go to my room and sit quietly by myself. I do not want to be mean, but I feel a little jealous. Nobody notices that I am upset for a little while. I wonder if Mom and Dad still have enough love for me too.",
+      "Lately, Mom and Dad spend most of their time with Rosie. I feel a little forgotten, even though I know that is silly. Today, I wanted to show Dad my new drawing, but he was busy with Rosie. I feel a small knot of sadness in my stomach. I go to my room and sit quietly by myself. I do not want to be mean, but I feel a little jealous. I wait to hear someone call, “Ben, are you okay?” but nobody notices that I am upset for a little while. I wonder if Mom and Dad still have enough love for me too.",
     questions: [
       { text: "Who do Mom and Dad spend most time with?", answer: "Rosie." },
       { text: "What did Ben want to show Dad?", answer: "His new drawing." },
@@ -229,7 +229,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Ben holding very still as tiny Rosie's hand wraps tightly around his finger, both looking at each other, Mom watching with a warm smile nearby.",
     story:
-      "This afternoon, I hold my finger near Rosie's tiny hand. Her small fingers wrap around mine and hold on tightly. “Look, she's holding my finger!” I say with a big, happy smile. Rosie's grip is surprisingly strong for such a tiny baby. I stay very still so she does not let go. Mom watches us and says, “She really loves her big brother.” I feel a warm, happy feeling inside my chest. Rosie looks up at me and makes a small, happy sound. This little moment makes me love being her big brother even more.",
+      "This afternoon, I hold my finger near Rosie's tiny hand. Her small fingers wrap around mine and hold on tightly. “Look, she's holding my finger!” I say with a big, happy smile. Rosie's grip is surprisingly strong for such a tiny baby. I stay very still so she does not let go. Mom watches us and says, “She really loves her big brother, Ben.” I feel a warm, happy feeling inside my chest. Rosie looks up at me and makes a small, happy sound. This little moment makes me love being her big brother even more.",
     questions: [
       { text: "What does Rosie do to Ben's finger?", answer: "She wraps her fingers around it and holds on tightly." },
       { text: "How does Ben describe her grip?", answer: "Surprisingly strong." },

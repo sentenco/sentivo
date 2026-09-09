@@ -53,7 +53,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "A large golden lion lying in the sun behind glass, mouth open mid-roar, Nora smiling with excitement and Finn jumping slightly beside her.",
     story:
-      "We walk to the big lion area and look through the glass. A huge, golden lion lies in the warm sun nearby. Suddenly, the lion opens his mouth and lets out a loud roar! Finn jumps a little, but I feel excited instead of scared. “That was so loud!” I say with a big smile. The lion's mane looks soft and fluffy in the sunlight. Dad tells us that lions roar to talk to other lions far away. We watch the lion for a long time before moving on. Seeing a real lion roar is amazing.",
+      "We walk to the big lion area and look through the glass. A huge, golden lion lies in the warm sun nearby. Suddenly, the lion opens his mouth and lets out a loud roar! Finn jumps a little, but I feel excited instead of scared. “That was so loud!” I say with a big smile. “I saw you were not scared at all, Nora,” Dad says proudly. The lion's mane looks soft and fluffy in the sunlight. Dad tells us that lions roar to talk to other lions far away. We watch the lion for a long time before moving on. Seeing a real lion roar is amazing.",
     questions: [
       { text: "What does the lion do suddenly?", answer: "Lets out a loud roar." },
       { text: "How does Finn react?", answer: "He jumps a little." },
@@ -78,7 +78,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Several monkeys swinging between branches, one hanging upside down making a funny face, Finn laughing hard nearby, a baby monkey clinging to its mother.",
     story:
-      "Next, we walk over to the monkey area of the zoo. Many small monkeys swing and jump from branch to branch. One monkey hangs upside down and makes a funny face at us. Finn laughs so hard that he almost falls down. A baby monkey holds tightly onto its mother's back. The monkeys chase each other and play games together. “They are so funny!” Finn says, laughing again and again. We stay and watch the monkeys play for many minutes. The monkey area is Finn's favorite part of the zoo so far.",
+      "Next, we walk over to the monkey area of the zoo. Many small monkeys swing and jump from branch to branch. One monkey hangs upside down and makes a funny face at us. Finn laughs so hard that he almost falls down. A baby monkey holds tightly onto its mother's back. “Look at that one, Nora!” Dad says, pointing. The monkeys chase each other and play games together. “They are so funny!” Finn says, laughing again and again. We stay and watch the monkeys play for many minutes. The monkey area is Finn's favorite part of the zoo so far.",
     questions: [
       { text: "What do the monkeys do?", answer: "Swing and jump from branch to branch." },
       { text: "What does one monkey do that makes Finn laugh?", answer: "Hangs upside down and makes a funny face." },
@@ -103,7 +103,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Nora holding up a leaf toward a tall giraffe bending its long neck down, Finn nearby laughing while feeding another giraffe, a zookeeper watching and smiling.",
     story:
-      "At the giraffe area, a zookeeper gives us small leaves to feed them. “Hold the leaf up high, and the giraffe will reach it,” she says. A tall giraffe walks slowly toward me with gentle eyes. I hold the leaf up, and the giraffe's long tongue takes it softly. “Its tongue feels funny!” I say, laughing with surprise. Finn feeds a giraffe too, and he giggles happily. The giraffe's neck is much taller than I ever imagined. Feeding a real giraffe is the most exciting thing today. I want to feed the giraffes again before we leave.",
+      "At the giraffe area, a zookeeper gives us small leaves to feed them. “Hold the leaf up high, Nora, and the giraffe will reach it,” she says. A tall giraffe walks slowly toward me with gentle eyes. I hold the leaf up, and the giraffe's long tongue takes it softly. “Its tongue feels funny!” I say, laughing with surprise. Finn feeds a giraffe too, and he giggles happily. The giraffe's neck is much taller than I ever imagined. Feeding a real giraffe is the most exciting thing today. I want to feed the giraffes again before we leave.",
     questions: [
       { text: "What does the zookeeper give them?", answer: "Small leaves to feed the giraffes." },
       { text: "What does the giraffe use to take the leaf?", answer: "Its long tongue." },
@@ -128,7 +128,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "A large gray elephant standing quietly under a shady tree, flapping its ears slowly, Nora, Finn, and Dad watching quietly nearby.",
     story:
-      "We walk to the biggest area in the whole zoo, the elephants. A huge, gray elephant stands quietly under a big shady tree. “Why is the elephant not moving?” Finn asks with curious eyes. “I think the elephant is sleeping,” Dad says with a smile. The elephant flaps its big ears slowly, even while it sleeps. Its long trunk swings gently from side to side in the breeze. We watch quietly so we do not wake the sleepy elephant. After a while, the elephant opens its eyes and looks at us. Seeing such a huge, gentle animal makes me feel amazed.",
+      "We walk to the biggest area in the whole zoo, the elephants. A huge, gray elephant stands quietly under a big shady tree. “Why is the elephant not moving?” Finn asks with curious eyes. “I think the elephant is sleeping, Nora,” Dad says with a smile. The elephant flaps its big ears slowly, even while it sleeps. Its long trunk swings gently from side to side in the breeze. We watch quietly so we do not wake the sleepy elephant. After a while, the elephant opens its eyes and looks at us. Seeing such a huge, gentle animal makes me feel amazed.",
     questions: [
       { text: "What animal is the biggest in the zoo?", answer: "The elephant." },
       { text: "What does Finn ask about the elephant?", answer: "Why is it not moving?" },
@@ -153,7 +153,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "A colorful peacock with its tail spread, Finn hiding behind Dad's leg looking startled, Nora holding Finn's hand pointing at the peacock's feathers.",
     story:
-      "Near the bird area, a large peacock suddenly makes a loud, strange sound. Finn jumps and grabs Dad's leg tightly, feeling scared. “It's okay, Finn, that is just how peacocks talk,” Dad says gently. Finn hides his face for a moment, breathing quickly. I hold Finn's hand and say, “Look, its feathers are so pretty.” Finn slowly looks up and sees the peacock's colorful blue and green tail. He smiles a little and lets go of Dad's leg. “It's pretty, but still loud,” Finn says, feeling braver now. We stay a little longer until Finn feels completely calm.",
+      "Near the bird area, a large peacock suddenly makes a loud, strange sound. Finn jumps and grabs Dad's leg tightly, feeling scared. “It's okay, Finn, that is just how peacocks talk,” Dad says gently. Finn hides his face for a moment, breathing quickly. “Good thinking, Nora,” Dad says, as I hold Finn's hand and say, “Look, its feathers are so pretty.” Finn slowly looks up and sees the peacock's colorful blue and green tail. He smiles a little and lets go of Dad's leg. “It's pretty, but still loud,” Finn says, feeling braver now. We stay a little longer until Finn feels completely calm.",
     questions: [
       { text: "What sound scares Finn?", answer: "A peacock's loud, strange sound." },
       { text: "What does Finn do when he feels scared?", answer: "Grabs Dad's leg." },
@@ -178,7 +178,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Nora and Finn pressing their hands against cold glass watching black and white penguins swim fast underwater, one baby penguin following its mother on the ice.",
     story:
-      "Inside a cool, icy building, we find the penguin area. Many black-and-white penguins waddle around on the ice. Some penguins jump into the water and swim very fast. “They swim like little rockets!” I say, laughing at how quick they are. Finn presses his hand against the cold glass to feel the chill. A baby penguin follows its mother closely across the ice. We watch the penguins slide on their bellies down a small hill. The penguin house is cold, but it is so much fun. Finn says the penguins are his new favorite animal.",
+      "Inside a cool, icy building, we find the penguin area. Many black-and-white penguins waddle around on the ice. Some penguins jump into the water and swim very fast. “They swim like little rockets!” I say, laughing at how quick they are. “You're right, Nora,” Dad laughs. Finn presses his hand against the cold glass to feel the chill. A baby penguin follows its mother closely across the ice. We watch the penguins slide on their bellies down a small hill. The penguin house is cold, but it is so much fun. Finn says the penguins are his new favorite animal.",
     questions: [
       { text: "What color are the penguins?", answer: "Black and white." },
       { text: "What do some penguins do in the water?", answer: "Swim very fast." },
@@ -203,7 +203,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Nora, Finn, and Dad sitting at a shady picnic table eating sandwiches, a curious squirrel approaching nearby, birds flying overhead.",
     story:
-      "At noon, we find a shady table for a picnic lunch. Dad opens our basket with sandwiches, fruit, and cold juice. “I'm so hungry after all that walking!” I say happily. We eat our sandwiches while watching birds fly above the trees. Finn shares his cookies with me, and I share my grapes with him. A friendly squirrel comes close, hoping for a small snack too. We watch the squirrel and laugh at how brave it is. After lunch, we feel ready to see more animals. A picnic at the zoo makes the day even more special.",
+      "At noon, we find a shady table for a picnic lunch. Dad opens our basket with sandwiches, fruit, and cold juice. “Here you go, Nora,” he says, handing me a sandwich. “I'm so hungry after all that walking!” I say happily. We eat our sandwiches while watching birds fly above the trees. Finn shares his cookies with me, and I share my grapes with him. A friendly squirrel comes close, hoping for a small snack too. We watch the squirrel and laugh at how brave it is. After lunch, we feel ready to see more animals. A picnic at the zoo makes the day even more special.",
     questions: [
       { text: "What does Dad bring in the basket?", answer: "Sandwiches, fruit, and cold juice." },
       { text: "Who do they watch while eating?", answer: "Birds flying above the trees." },
@@ -253,7 +253,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Nora and Finn waving goodbye near the zoo exit at sunset, each holding a small stuffed animal from the gift shop, Dad smiling beside them.",
     story:
-      "As the sun begins to set, it is time to leave the zoo. I feel a little sad because today was so much fun. We walk past the lions, monkeys, and giraffes one last time. “Bye, elephant! Bye, penguins!” Finn shouts happily at the animals. Dad buys us each a small stuffed animal from the gift shop. I choose a soft giraffe, and Finn chooses a fluffy penguin. “This was the best day ever,” I tell Dad with a big smile. On the way home, Finn and I talk about all our favorite animals. I cannot wait to visit the zoo again someday.",
+      "As the sun begins to set, it is time to leave the zoo. I feel a little sad because today was so much fun. We walk past the lions, monkeys, and giraffes one last time. “Bye, elephant! Bye, penguins!” Finn shouts happily at the animals. Dad buys us each a small stuffed animal from the gift shop. I choose a soft giraffe, and Finn chooses a fluffy penguin. “This was the best day ever,” I tell Dad with a big smile. “I'm so glad you liked it, Nora,” Dad says, hugging me. On the way home, Finn and I talk about all our favorite animals. I cannot wait to visit the zoo again someday.",
     questions: [
       { text: "Why does Nora feel a little sad?", answer: "Because it is time to leave the zoo." },
       { text: "What does Dad buy them?", answer: "A small stuffed animal each." },

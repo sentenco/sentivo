@@ -78,7 +78,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Noah wearing a small apron stirring a mixing bowl on the kitchen counter, Grandma rolling cookie dough into balls beside him, a tray nearby.",
     story:
-      "This afternoon, Grandma and I bake cookies in her warm kitchen. She ties a small apron around my waist. “First, we mix the flour and sugar,” Grandma says. I stir the bowl slowly and carefully. Grandma helps me roll the dough into small balls. We put the cookies on a tray and place them in the oven. Soon, the kitchen smells sweet and warm. When the cookies are ready, Grandma lets me eat one first. The cookie is soft, warm, and delicious. Baking with Grandma is one of my favorite things to do.",
+      "This afternoon, Grandma and I bake cookies in her warm kitchen. She ties a small apron around my waist. “First, we mix the flour and sugar, Noah,” Grandma says. I stir the bowl slowly and carefully. Grandma helps me roll the dough into small balls. We put the cookies on a tray and place them in the oven. Soon, the kitchen smells sweet and warm. When the cookies are ready, Grandma lets me eat one first. The cookie is soft, warm, and delicious. Baking with Grandma is one of my favorite things to do.",
     questions: [
       { text: "What do they bake?", answer: "Cookies." },
       { text: "What does Noah do to the dough?", answer: "Rolls it into small balls." },
@@ -228,7 +228,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Noah and Grandma walking through a colorful outdoor market, Noah holding a red apple, stalls of fruit, vegetables, and flowers around them.",
     story:
-      "On Saturday, Grandma takes me to the farmers market in town. The market is full of colorful fruits and vegetables. We see red apples, orange carrots, and green lettuce. Grandma lets me choose a fruit to buy for myself. I pick a juicy, red apple from a big basket. A kind man sells us fresh bread that smells amazing. Grandma buys flowers for the kitchen table too. We carry our bags and walk home together slowly. I feel proud because I helped Grandma choose good food. The farmers market is a fun place to visit.",
+      "On Saturday, Grandma takes me to the farmers market in town. The market is full of colorful fruits and vegetables. We see red apples, orange carrots, and green lettuce. “Choose a fruit, Noah,” Grandma says. I pick a juicy, red apple from a big basket. A kind man sells us fresh bread that smells amazing. Grandma buys flowers for the kitchen table too. We carry our bags and walk home together slowly. I feel proud because I helped Grandma choose good food. The farmers market is a fun place to visit.",
     questions: [
       { text: "Where does Grandma take Noah?", answer: "The farmers market." },
       { text: "What fruit does Noah choose?", answer: "A juicy, red apple." },

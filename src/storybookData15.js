@@ -27,7 +27,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Ivy and Oscar sitting next to each other at their classroom desks, both smiling and waving good morning, a blue cap visible on Oscar.",
     story:
-      "Oscar is my best friend at school. We sit next to each other in class every day. Oscar has short brown hair and always wears a blue cap. Every morning, we wave and say, “Good morning!” to each other. At recess, we play together on the swings. Oscar tells funny jokes that always make me laugh. We share our favorite stories about our weekends. I feel happy when Oscar is with me at school. Having a best friend makes every day more fun.",
+      "Oscar is my best friend at school. We sit next to each other in class every day. Oscar has short brown hair and always wears a blue cap. Every morning, Oscar waves and says, “Good morning, Ivy!” At recess, we play together on the swings. Oscar tells funny jokes that always make me laugh. “Did you hear this one, Ivy?” he asks before every joke. We share our favorite stories about our weekends. I feel happy when Oscar is with me at school. Having a best friend makes every day more fun.",
     questions: [
       { text: "Who is Ivy's best friend?", answer: "Oscar." },
       { text: "What do they do every morning?", answer: "Wave and say Good morning to each other." },
@@ -52,7 +52,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Ivy and Oscar sitting at a small round lunch table, Ivy holding half an apple out to Oscar, his box of orange crackers open between them.",
     story:
-      "At lunchtime, I open my lunch box and see a red apple. Oscar opens his lunch box and has orange crackers. “Do you want to share?” Oscar asks with a smile. I give him half of my apple, and he gives me some crackers. We sit together at the small round table. Oscar says my apple is sweet and juicy. I say his crackers are crunchy and tasty. We laugh and talk about our favorite foods. Sharing snacks with Oscar makes lunchtime my favorite part of the day.",
+      "At lunchtime, I open my lunch box and see a red apple. Oscar opens his lunch box and has orange crackers. “Do you want to share, Ivy?” Oscar asks with a smile. I give him half of my apple, and he gives me some crackers. We sit together at the small round table. “Your apple is sweet and juicy, Ivy,” Oscar says. I say his crackers are crunchy and tasty. We laugh and talk about our favorite foods. Sharing snacks with Oscar makes lunchtime my favorite part of the day.",
     questions: [
       { text: "What does Ivy have for lunch?", answer: "A red apple." },
       { text: "What does Oscar have for lunch?", answer: "Orange crackers." },
@@ -77,7 +77,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Ivy and Oscar inside a cozy blanket fort made of blankets draped over chairs, a flashlight glowing between them, Ivy's little brother peeking inside.",
     story:
-      "After school, Oscar comes to my house to play. We decide to build a big fort in my room. We use soft blankets and put them over two chairs. Oscar holds the blanket while I tuck in the sides. We add pillows inside to make it soft and cozy. Inside the fort, we use a flashlight because it is dark. We tell stories and giggle inside our secret fort. My little brother wants to come in, so we let him join. Building a fort with Oscar is one of my favorite games.",
+      "After school, Oscar comes to my house to play. We decide to build a big fort in my room. We use soft blankets and put them over two chairs. Oscar holds the blanket while I tuck in the sides. “This is the best fort ever, Ivy!” Oscar says. We add pillows inside to make it soft and cozy. Inside the fort, we use a flashlight because it is dark. We tell stories and giggle inside our secret fort. My little brother peeks in and asks, “Ivy, can I play too?” so we let him join. Building a fort with Oscar is one of my favorite games.",
     questions: [
       { text: "What do they build in Ivy's room?", answer: "A blanket fort." },
       { text: "What do they use to build the fort?", answer: "Soft blankets, two chairs, and pillows." },
@@ -102,7 +102,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Ivy walking away with crossed arms on the playground, Oscar sitting alone on a bench looking sad, a red ball on the ground between them.",
     story:
-      "At recess, Oscar and I both want to play with the same red ball. “I had it first!” I say loudly. “No, I saw it first!” Oscar says back. We both feel upset, and we do not want to share. I cross my arms and walk away from Oscar. Oscar sits alone on the bench, looking sad. I think about how much fun we usually have together. Playing alone does not feel as fun as playing with Oscar. I realize that our friendship is more important than one ball.",
+      "At recess, Oscar and I both want to play with the same red ball. “I had it first!” I say loudly. “No, I saw it first, Ivy!” Oscar says back. We both feel upset, and we do not want to share. I cross my arms and walk away from Oscar. Oscar sits alone on the bench, looking sad. I think about how much fun we usually have together. Playing alone does not feel as fun as playing with Oscar. I realize that our friendship is more important than one ball.",
     questions: [
       { text: "What do Ivy and Oscar both want?", answer: "The same red ball." },
       { text: "How do they feel?", answer: "Upset." },
@@ -127,7 +127,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Ivy sitting down next to Oscar on the same playground bench, both smiling now and about to share the red ball again.",
     story:
-      "The next day, I see Oscar sitting alone at recess again. I walk over slowly and sit down next to him. “I'm sorry about the ball yesterday,” I say quietly. Oscar looks up and says, “I'm sorry too, Ivy.” We both smile, and I feel much better inside. “Let's share the ball today,” Oscar says kindly. We take turns throwing and catching the ball together. Saying sorry was hard, but it made our friendship strong again. I learn that good friends can fix their problems together.",
+      "The next day, I see Oscar sitting alone at recess again. I walk over slowly and sit down next to him. “I'm sorry about the ball yesterday,” I say quietly. Oscar looks up and says, “I'm sorry too, Ivy.” We both smile, and I feel much better inside. “Let's share the ball today, Ivy,” Oscar says kindly. We take turns throwing and catching the ball together. Saying sorry was hard, but it made our friendship strong again. I learn that good friends can fix their problems together.",
     questions: [
       { text: "Where does Ivy find Oscar?", answer: "Sitting alone at recess." },
       { text: "What does Ivy say to Oscar?", answer: "I'm sorry about the ball yesterday." },
@@ -177,7 +177,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Ivy and Oscar sitting on a classroom rug working together on a large rainbow-colored jigsaw puzzle, rain visible through the window behind them.",
     story:
-      "Today, it rains hard, so we cannot play outside at recess. Oscar and I stay inside the classroom instead. We choose a puzzle from the shelf and sit on the rug. The puzzle has one hundred pieces of a big rainbow. We work together, finding pieces that fit just right. Oscar is very good at finding the corner pieces. I am good at finding the pieces with bright colors. After a while, we finish the whole puzzle together. Even on a rainy day, playing with Oscar is always fun.",
+      "Today, it rains hard, so we cannot play outside at recess. Oscar and I stay inside the classroom instead. We choose a puzzle from the shelf and sit on the rug. The puzzle has one hundred pieces of a big rainbow. We work together, finding pieces that fit just right. Oscar is very good at finding the corner pieces. “Found another one, Ivy!” he says proudly. I am good at finding the pieces with bright colors. After a while, we finish the whole puzzle together. “We did it, Ivy!” Oscar cheers. Even on a rainy day, playing with Oscar is always fun.",
     questions: [
       { text: "Why do they stay inside?", answer: "Because it rains hard." },
       { text: "What do they choose to do?", answer: "A puzzle." },
@@ -227,7 +227,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Oscar shyly handing Ivy a small box before class, a colorful blue and yellow friendship bracelet visible inside, both smiling in the school hallway.",
     story:
-      "One morning, Oscar hands me a small box before class. “This is for you,” he says with a shy smile. Inside the box, I find a colorful friendship bracelet. It has blue and yellow strings woven together carefully. “I made it myself,” Oscar says proudly. I put the bracelet on my wrist right away. “I love it, Oscar! Thank you so much!” I say happily. The next day, I give Oscar a matching bracelet I made too. Now we both wear our friendship bracelets every single day.",
+      "One morning, Oscar hands me a small box before class. “This is for you, Ivy,” he says with a shy smile. Inside the box, I find a colorful friendship bracelet. It has blue and yellow strings woven together carefully. “I made it myself,” Oscar says proudly. I put the bracelet on my wrist right away. “I love it, Oscar! Thank you so much!” I say happily. The next day, I give Oscar a matching bracelet I made too. “Best friends forever, Ivy,” Oscar says with a big smile. Now we both wear our friendship bracelets every single day.",
     questions: [
       { text: "What does Oscar give Ivy?", answer: "A friendship bracelet." },
       { text: "What colors are the bracelet?", answer: "Blue and yellow." },
