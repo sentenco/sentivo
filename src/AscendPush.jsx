@@ -262,17 +262,19 @@ const CSS = `
   font-family: 'IBM Plex Sans', sans-serif;
   color: #10646B;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
   padding: 36px;
   box-sizing: border-box;
 }
 .asp-shell * { box-sizing: border-box; }
 
-.asp-page { width: 100%; max-width: 460px; }
+.asp-page { width: 420px; height: 610px; flex-shrink: 0; }
 
 .asp-deck {
   position: relative;
+  width: 100%;
+  height: 100%;
   background: #FFFFFF;
   border-radius: 26px;
   box-shadow: 0 20px 46px rgba(16,100,107,0.16);
@@ -334,7 +336,7 @@ const CSS = `
 
 .asp-growth-label { font-family: 'Baloo 2', cursive; font-weight: 700; font-size: 15px; color: #C9701F; margin-top: 4px; }
 
-.asp-deck-body { min-height: 250px; max-height: 340px; display: flex; align-items: center; justify-content: center; padding: 20px 22px 6px; overflow-y: auto; flex-shrink: 0; }
+.asp-deck-body { flex: 1; min-height: 0; display: flex; align-items: center; justify-content: center; padding: 20px 22px 6px; overflow-y: auto; }
 .asp-slide { width: 100%; text-align: center; }
 
 .asp-cover-crumb { font-weight: 700; font-size: 11.5px; color: #4B8B92; margin-bottom: 12px; }
