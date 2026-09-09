@@ -388,6 +388,7 @@ export default function WritingActivities({ query }) {
       <div className="wa-hero">
         <span className="wa-eyebrow">Sentivo · Writing</span>
         <span className="wa-pill">📔 Scrapbook Studio</span>
+        <p className="wa-blurb">Four hands-on ways to practice real writing, from fixing mistakes to replying to a message.</p>
       </div>
       <div className="wa-row"></div>
       <div className="wa-block-grid">
