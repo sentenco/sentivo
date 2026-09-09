@@ -560,8 +560,6 @@ export default function VocabularyGames({ query }) {
             <button key={g.key} type="button" className={`vg-block vg-block--${g.hue}`} onClick={() => openGame(g.key)}>
               <GameBanner name={g.key} />
               <div className="vg-block-body">
-                <h3 className="vg-block-title">{g.title}</h3>
-                <p className="vg-block-blurb">{g.blurb}</p>
                 <span className="vg-block-cta">See categories →</span>
               </div>
             </button>
@@ -662,10 +660,8 @@ const CSS = `
   transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 .vg-block:hover { transform: translateY(-3px); box-shadow: 0 14px 0 rgba(14,110,124,0.1); }
-.vg-banner { display: block; width: 100%; height: 140px; object-fit: cover; }
-.vg-block-body { padding: 18px 20px 20px; }
-.vg-block-title { font-family: 'Grandstander', cursive; font-weight: 700; font-size: 18px; margin: 0 0 6px; color: #123B40; }
-.vg-block-blurb { font-size: 13px; color: #4F8B90; margin: 0 0 16px; line-height: 1.5; font-weight: 600; }
+.vg-banner { display: block; width: 100%; height: auto; }
+.vg-block-body { padding: 14px 20px 18px; }
 .vg-block-cta { font-family: 'Grandstander', cursive; font-weight: 700; font-size: 12.5px; }
 .vg-block--coral .vg-block-cta { color: #E85A3D; }
 .vg-block--teal .vg-block-cta { color: #0E6E7C; }
