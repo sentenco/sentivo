@@ -275,6 +275,19 @@ export default function WritingActivities({ query }) {
                     <button type="button" className="rr-guide-link" onClick={() => openTopicGuide(t.key, topic.key)}>Guide</button>
                   </div>
                 </div>
+              ) : t.key === "proofreading" ? (
+                <div key={`${t.key}-${topic.key}`} className={`wa-cat-card wa-cat-card--${t.hue} wa-cat-card--static`}>
+                  <div className="wa-cat-top">
+                    <span className={`wa-cat-level wa-cat-level--${levelSlug(topic.cefrGroup)}`}>{topic.cefrGroup}</span>
+                    <span className="wa-cat-tag">Ready</span>
+                  </div>
+                  <span className="wa-cat-title">{topic.title}</span>
+                  <span className="wa-cat-blurb">{topic.focus}</span>
+                  <div className="wa-cat-actions">
+                    <button type="button" className="wa-cat-guide" onClick={() => openTopicGuide(t.key, topic.key)}>Guide</button>
+                    <button type="button" className="wa-cat-cta wa-cat-cta--btn" onClick={() => openTopicPlayer(t.key, topic.key)}>Start →</button>
+                  </div>
+                </div>
               ) : HAS_GUIDE.includes(t.key) ? (
                 <div key={`${t.key}-${topic.key}`} className={`wa-cat-card wa-cat-card--${t.hue} wa-cat-card--static`}>
                   <div className="wa-cat-top">
@@ -317,7 +330,7 @@ export default function WritingActivities({ query }) {
         <style>{CSS}</style>
         <div className="wa-hero">
           <span className="wa-eyebrow">Sentivo · Writing</span>
-          <span className={`wa-pill wa-pill--${type.hue}`}>{type.icon} {type.title}</span>
+          <span className={`wa-pill wa-pill--${type.hue}`}>{type.key !== "proofreading" && <>{type.icon} </>}{type.title}</span>
           <p className="wa-blurb">{type.blurb}</p>
         </div>
         <div className="wa-row"></div>
@@ -350,6 +363,19 @@ export default function WritingActivities({ query }) {
                     ))}
                   </div>
                   <button type="button" className="rr-guide-link" onClick={() => openTopicGuide(typeKey, t.key)}>Guide</button>
+                </div>
+              </div>
+            ) : type.key === "proofreading" ? (
+              <div key={t.key} className={`wa-cat-card wa-cat-card--${type.hue} wa-cat-card--static`}>
+                <div className="wa-cat-top">
+                  <span className={`wa-cat-level wa-cat-level--${levelSlug(t.cefrGroup)}`}>{t.cefrGroup}</span>
+                  <span className="wa-cat-tag">Ready</span>
+                </div>
+                <span className="wa-cat-title">{t.title}</span>
+                <span className="wa-cat-blurb">{t.focus}</span>
+                <div className="wa-cat-actions">
+                  <button type="button" className="wa-cat-guide" onClick={() => openTopicGuide(typeKey, t.key)}>Guide</button>
+                  <button type="button" className="wa-cat-cta wa-cat-cta--btn" onClick={() => openTopicPlayer(typeKey, t.key)}>Start →</button>
                 </div>
               </div>
             ) : HAS_GUIDE.includes(type.key) ? (
@@ -570,6 +596,22 @@ const CSS = `
 .wa-cat-card--mint:hover {
   transform: translateY(-4px);
   box-shadow: 0 1px 1px rgba(20,107,78,0.06), 0 14px 22px rgba(20,107,78,0.11), 0 30px 46px rgba(20,107,78,0.11);
+}
+
+/* Proofreading is the only "gold" activity type -- same depth pass. */
+.wa-cat-card--gold {
+  position: relative;
+  background: linear-gradient(180deg, #FFFFFF 0%, #FFFCF6 100%);
+  box-shadow: 0 1px 1px rgba(154,90,22,0.05), 0 8px 16px rgba(154,90,22,0.07), 0 22px 34px rgba(154,90,22,0.07);
+}
+.wa-cat-card--gold::before {
+  content: ""; position: absolute; inset: 0 0 auto 0; height: 4px;
+  border-radius: 14px 14px 0 0;
+  background: linear-gradient(90deg, #FFD166, #A9720A);
+}
+.wa-cat-card--gold:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 1px 1px rgba(154,90,22,0.06), 0 14px 22px rgba(154,90,22,0.11), 0 30px 46px rgba(154,90,22,0.11);
 }
 
 .wa-cat-level {

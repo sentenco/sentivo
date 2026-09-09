@@ -2,6 +2,7 @@ import { useState } from "react";
 
 const STEPS = ["intro", "warmup", "fixIt", "wrapup"];
 const LABELS = { intro: "Instructions", warmup: "Warm-Up", fixIt: "Fix the Mistakes", wrapup: "Great Job!" };
+const LEVEL_TIER = { "A1-A2": "a1a2", "B1-B2": "b1b2", "C1-C2": "c1c2" };
 
 // Proofreading: a fixed-size, self-contained lesson card (matching the
 // site-wide lesson-player convention -- own logo baked into the card, no
@@ -14,6 +15,8 @@ export default function ProofreadingActivity({ item }) {
   const [step, setStep] = useState(0);
   const [draft, setDraft] = useState("");
   const kind = STEPS[step];
+  const tier = LEVEL_TIER[item.cefrGroup] || "a1a2";
+  const wordCount = draft.trim() ? draft.trim().split(/\s+/).length : 0;
 
   function exit() {
     window.close();
@@ -39,7 +42,10 @@ export default function ProofreadingActivity({ item }) {
               <img src="/logo-sentivo.png" alt="" className="pf-logo" />
               <span className="pf-brand-word">entivo</span>
             </span>
-            <span className="pf-eyebrow">{LABELS[kind]}</span>
+            <div className="pf-bar-right">
+              <span className={`pf-level pf-level--${tier}`}>{item.cefrGroup}</span>
+              <span className="pf-eyebrow">{LABELS[kind]}</span>
+            </div>
           </div>
 
           <div className="pf-body">
@@ -64,7 +70,10 @@ export default function ProofreadingActivity({ item }) {
             {kind === "fixIt" && (
               <div className="pf-fixit">
                 <p className="pf-hint">Read the text below, then rewrite it correctly in the box.</p>
-                <p className="pf-script pf-script--mistakes">{item.mistakes}</p>
+                <div className="pf-script-wrap">
+                  <span className="pf-pin" aria-hidden="true">📎</span>
+                  <p className="pf-script pf-script--mistakes">{item.mistakes}</p>
+                </div>
 
                 <textarea
                   className="pf-textarea"
@@ -72,6 +81,7 @@ export default function ProofreadingActivity({ item }) {
                   value={draft}
                   onChange={(e) => setDraft(e.target.value)}
                 />
+                <span className="pf-wordcount">{wordCount === 1 ? "1 word" : `${wordCount} words`}</span>
               </div>
             )}
 
@@ -117,6 +127,8 @@ const CSS = `
   box-sizing: border-box;
   font-family: 'Karla', sans-serif;
   background: #FFF8EF;
+  background-image: radial-gradient(circle at 1px 1px, rgba(169,131,111,0.12) 1px, transparent 0);
+  background-size: 22px 22px;
   overflow: hidden;
 }
 .pf-wrap * { box-sizing: border-box; }
@@ -155,12 +167,13 @@ const CSS = `
   z-index: 1;
   width: 100%;
   height: 100%;
-  background: #FFFFFF;
+  background: linear-gradient(180deg, #FFFFFF 0%, #FFFCF6 100%);
   border-radius: 20px;
   box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.9),
     0 1px 2px rgba(169,114,10,0.10),
     0 10px 18px rgba(169,114,10,0.12),
-    0 28px 50px rgba(169,114,10,0.16);
+    0 30px 54px rgba(169,114,10,0.18);
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -180,6 +193,11 @@ const CSS = `
 }
 .pf-logo { width: 22px; height: 22px; border-radius: 50%; }
 .pf-brand-word { font-family: 'Karla', sans-serif; font-weight: 800; font-size: 14px; color: #A9720A; }
+.pf-bar-right { display: flex; align-items: center; gap: 8px; }
+.pf-level { font-family: 'Karla', sans-serif; font-weight: 800; font-size: 11px; letter-spacing: 0.02em; border-radius: 999px; padding: 5px 11px; }
+.pf-level--a1a2 { color: #2F7A50; background: rgba(76,175,122,0.16); }
+.pf-level--b1b2 { color: #2A6E85; background: #E1F1F6; }
+.pf-level--c1c2 { color: #B8391F; background: #FFE4DC; }
 .pf-eyebrow {
   font-family: 'Karla', sans-serif; font-size: 11px; font-weight: 800;
   letter-spacing: 0.12em; text-transform: uppercase; color: #A9720A;
@@ -206,23 +224,42 @@ const CSS = `
 
 .pf-fixit { width: 100%; }
 .pf-hint { font-size: 12.5px; font-weight: 500; color: #A9836F; line-height: 1.5; margin: 0 0 10px; }
-.pf-script { font-family: 'Karla', sans-serif; font-size: 13.5px; line-height: 1.6; border-radius: 14px; padding: 13px 16px; white-space: pre-line; margin: 0 0 12px; }
+.pf-script-wrap {
+  position: relative;
+  transform: rotate(-0.8deg);
+  margin: 0 0 12px;
+  box-shadow:
+    inset 0 1px 3px rgba(179,57,47,0.06),
+    0 6px 14px rgba(169,131,111,0.14),
+    0 1px 0 rgba(255,255,255,0.6);
+  border-radius: 3px 14px 14px 14px;
+}
+.pf-pin {
+  position: absolute; top: -13px; left: 12px; font-size: 20px; line-height: 1; z-index: 1;
+  transform: rotate(-18deg); filter: drop-shadow(0 2px 2px rgba(74,63,58,0.25));
+}
+.pf-script { font-family: 'Karla', sans-serif; font-size: 13.5px; line-height: 1.6; border-radius: 3px 14px 14px 14px; padding: 15px 16px 13px; white-space: pre-line; margin: 0; }
 .pf-script--mistakes { color: #B3392F; background: #FDEAEA; font-style: italic; }
+.pf-wordcount { display: block; margin-top: 8px; font-family: 'Karla', sans-serif; font-weight: 700; font-size: 11.5px; color: #A9836F; letter-spacing: 0.02em; text-align: right; }
 
 .pf-textarea {
   width: 100%;
   min-height: 100px;
   border: 1px solid #FCE4B0;
   border-radius: 14px;
-  padding: 14px 16px;
+  padding: 15px 16px 12px;
   font-family: 'Karla', sans-serif;
   font-size: 14px;
   color: #4A3F3A;
-  line-height: 1.6;
+  line-height: 24px;
   resize: none;
-  background: #FFFDF8;
+  background:
+    repeating-linear-gradient(to bottom, transparent 0, transparent 23px, rgba(169,114,10,0.10) 24px),
+    #FFFDF8;
+  box-shadow: inset 0 2px 4px rgba(169,114,10,0.06);
+  transition: box-shadow 0.15s ease, border-color 0.15s ease;
 }
-.pf-textarea:focus { outline: none; border-color: #E8A83D; }
+.pf-textarea:focus { outline: none; border-color: #E8A83D; box-shadow: inset 0 2px 4px rgba(169,114,10,0.06), 0 0 0 3px rgba(232,168,61,0.22); }
 
 .pf-nav {
   flex: 0 0 auto;
