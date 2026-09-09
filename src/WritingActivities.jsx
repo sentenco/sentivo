@@ -453,7 +453,18 @@ const CSS = `
 .wa-pill--sky { color: #2A6E85; background: rgba(62,157,191,0.16); }
 .wa-pill--coral { color: #B8391F; background: rgba(232,90,61,0.16); }
 .wa-pill--mint { color: #2F7A50; background: rgba(76,175,122,0.16); }
-.wa-blurb { font-size: 14px; font-weight: 600; color: #A9836F; margin: 14px 0 0; }
+.wa-blurb {
+  width: fit-content;
+  max-width: 520px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #6B5D52;
+  margin: 14px auto 0;
+  padding: 7px 20px;
+  background: rgba(255,248,239,0.88);
+  border-radius: 999px;
+  line-height: 1.5;
+}
 
 .wa-row { position: relative; height: 2px; width: 100%; max-width: 700px; margin: clamp(22px, 2.8vw, 32px) auto; background: #F5D9CC; z-index: 1; }
 .wa-row::before, .wa-row::after { content: ""; position: absolute; top: -3px; width: 8px; height: 8px; border-radius: 50%; background: #FF8A75; }
