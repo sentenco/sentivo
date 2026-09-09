@@ -3,12 +3,12 @@
 // through storybookData19.js. Eighth book in the Kids age track. Same
 // simplified vocabulary/sentence length and 3+3 True/False and
 // Build-a-Sentence pattern.
-// Images are not generated yet (Midjourney subscription paused). image/
-// coverImage are left null so StoryBook.jsx's built-in ImagePlaceholder
-// fallback renders instead.
+// Chapter images are not generated yet -- image is left null per chapter so
+// StoryBook.jsx's built-in ImagePlaceholder fallback renders instead.
+import coverImg from "./assets/storybook20/cover.jpg";
 
 export const STORYBOOK_TITLE = "My Little Sister";
-export const COVER_IMAGE = null;
+export const COVER_IMAGE = coverImg;
 export const COVER_IMAGE_NOTE =
   "Ben sitting on the sofa carefully holding his tiny baby sister Rosie, both looking at each other warmly, Mom and Dad watching happily nearby.";
 

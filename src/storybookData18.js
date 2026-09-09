@@ -3,12 +3,12 @@
 // through storybookData17.js. Sixth book in the Kids age track. Same
 // simplified vocabulary/sentence length and 3+3 True/False and
 // Build-a-Sentence pattern.
-// Images are not generated yet (Midjourney subscription paused). image/
-// coverImage are left null so StoryBook.jsx's built-in ImagePlaceholder
-// fallback renders instead.
+// Chapter images are not generated yet -- image is left null per chapter so
+// StoryBook.jsx's built-in ImagePlaceholder fallback renders instead.
+import coverImg from "./assets/storybook18/cover.jpg";
 
 export const STORYBOOK_TITLE = "My First Day at School";
-export const COVER_IMAGE = null;
+export const COVER_IMAGE = coverImg;
 export const COVER_IMAGE_NOTE =
   "Lucy standing at the school gate holding Mom's hand and a blue backpack, a friendly teacher waving from the classroom doorway, other children arriving.";
 

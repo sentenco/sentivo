@@ -3,12 +3,12 @@
 // and storybookData14.js. Third book in the Kids age track. Same
 // simplified vocabulary/sentence length and 3+3 True/False and
 // Build-a-Sentence pattern.
-// Images are not generated yet (Midjourney subscription paused). image/
-// coverImage are left null so StoryBook.jsx's built-in ImagePlaceholder
-// fallback renders instead.
+// Chapter images are not generated yet -- image is left null per chapter so
+// StoryBook.jsx's built-in ImagePlaceholder fallback renders instead.
+import coverImg from "./assets/storybook15/cover.jpg";
 
 export const STORYBOOK_TITLE = "My Best Friend and Me";
-export const COVER_IMAGE = null;
+export const COVER_IMAGE = coverImg;
 export const COVER_IMAGE_NOTE =
   "Ivy and Oscar sitting together on the school playground, both wearing matching friendship bracelets and smiling, swings visible in the background.";
 

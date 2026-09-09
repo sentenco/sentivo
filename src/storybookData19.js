@@ -3,12 +3,12 @@
 // through storybookData18.js. Seventh book in the Kids age track. Same
 // simplified vocabulary/sentence length and 3+3 True/False and
 // Build-a-Sentence pattern.
-// Images are not generated yet (Midjourney subscription paused). image/
-// coverImage are left null so StoryBook.jsx's built-in ImagePlaceholder
-// fallback renders instead.
+// Chapter images are not generated yet -- image is left null per chapter so
+// StoryBook.jsx's built-in ImagePlaceholder fallback renders instead.
+import coverImg from "./assets/storybook19/cover.jpg";
 
 export const STORYBOOK_TITLE = "A Trip to the Zoo";
-export const COVER_IMAGE = null;
+export const COVER_IMAGE = coverImg;
 export const COVER_IMAGE_NOTE =
   "Nora and her little brother Finn standing at the zoo entrance holding Dad's hands, a big colorful zoo map sign and animal statues visible behind them.";
 

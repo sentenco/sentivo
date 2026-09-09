@@ -3,12 +3,12 @@
 // through storybookData16.js. Fifth and final book in this Kids-track
 // batch. Same simplified vocabulary/sentence length and 3+3 True/False
 // and Build-a-Sentence pattern.
-// Images are not generated yet (Midjourney subscription paused). image/
-// coverImage are left null so StoryBook.jsx's built-in ImagePlaceholder
-// fallback renders instead.
+// Chapter images are not generated yet -- image is left null per chapter so
+// StoryBook.jsx's built-in ImagePlaceholder fallback renders instead.
+import coverImg from "./assets/storybook17/cover.jpg";
 
 export const STORYBOOK_TITLE = "Learning to Ride My Bike";
-export const COVER_IMAGE = null;
+export const COVER_IMAGE = coverImg;
 export const COVER_IMAGE_NOTE =
   "Zara riding her purple bike down the street with a big proud smile, Dad walking beside her, her brother Felix cheering from the sidewalk.";
 

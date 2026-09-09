@@ -3,12 +3,12 @@
 // through storybookData15.js. Fourth book in the Kids age track. Same
 // simplified vocabulary/sentence length and 3+3 True/False and
 // Build-a-Sentence pattern.
-// Images are not generated yet (Midjourney subscription paused). image/
-// coverImage are left null so StoryBook.jsx's built-in ImagePlaceholder
-// fallback renders instead.
+// Chapter images are not generated yet -- image is left null per chapter so
+// StoryBook.jsx's built-in ImagePlaceholder fallback renders instead.
+import coverImg from "./assets/storybook16/cover.jpg";
 
 export const STORYBOOK_TITLE = "Fun at the Park";
-export const COVER_IMAGE = null;
+export const COVER_IMAGE = coverImg;
 export const COVER_IMAGE_NOTE =
   "Jack running toward a sunny playground with swings and a sandbox, Mom sitting on a bench in the background, a kite and a red ball visible nearby.";
 
