@@ -4,13 +4,12 @@
 // throughout, matching the source text. The receptionist and Dr. Santos
 // are explicitly "she" in the source; the pharmacist is explicitly "he";
 // the nurse is never gendered, so stays neutral.
-// Images are not generated yet (Midjourney subscription paused as of 2026-07-21).
-// image/coverImage are left null so StoryBook.jsx's built-in ImagePlaceholder
-// fallback renders instead -- swap in real imports from ./assets/storybook10/
-// once art exists, same as storybookData.js / storybookData2.js do.
+// Chapter images are not generated yet -- image is left null per chapter so
+// StoryBook.jsx's built-in ImagePlaceholder fallback renders instead.
+import coverImg from "./assets/storybook10/cover.jpg";
 
 export const STORYBOOK_TITLE = "Feeling Better Again";
-export const COVER_IMAGE = null;
+export const COVER_IMAGE = coverImg;
 export const COVER_IMAGE_NOTE =
   "The narrator sitting calmly in a bright, clean clinic waiting room holding a small form, a plant and a health poster visible on the wall nearby.";
 

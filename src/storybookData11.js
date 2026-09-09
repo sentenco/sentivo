@@ -4,13 +4,12 @@
 // throughout, matching the source text. Friend Leo is ALSO never gendered
 // by the source text (no "he"/"his" ever used), so Leo's CHARACTERS entry
 // stays neutral too, same as Maya in Book 9.
-// Images are not generated yet (Midjourney subscription paused as of 2026-07-21).
-// image/coverImage are left null so StoryBook.jsx's built-in ImagePlaceholder
-// fallback renders instead -- swap in real imports from ./assets/storybook11/
-// once art exists, same as storybookData.js / storybookData2.js do.
+// Chapter images are not generated yet -- image is left null per chapter so
+// StoryBook.jsx's built-in ImagePlaceholder fallback renders instead.
+import coverImg from "./assets/storybook11/cover.jpg";
 
 export const STORYBOOK_TITLE = "A Happier Free Time";
-export const COVER_IMAGE = null;
+export const COVER_IMAGE = coverImg;
 export const COVER_IMAGE_NOTE =
   "The narrator sitting comfortably in a cozy city apartment in the evening, a small handwritten list of hobbies on the table, warm lamp light and a window showing the evening city outside.";
 

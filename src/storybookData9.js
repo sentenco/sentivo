@@ -3,13 +3,12 @@
 // Like Books 7-8, this narrator is an adult and stays gender-neutral
 // throughout, matching the source text (no gendered pronoun is ever used
 // for the narrator or for the friend Maya -- neither is ever "he" or "she").
-// Images are not generated yet (Midjourney subscription paused as of 2026-07-21).
-// image/coverImage are left null so StoryBook.jsx's built-in ImagePlaceholder
-// fallback renders instead -- swap in real imports from ./assets/storybook9/
-// once art exists, same as storybookData.js / storybookData2.js do.
+// Chapter images are not generated yet -- image is left null per chapter so
+// StoryBook.jsx's built-in ImagePlaceholder fallback renders instead.
+import coverImg from "./assets/storybook9/cover.jpg";
 
 export const STORYBOOK_TITLE = "A Healthier Me";
-export const COVER_IMAGE = null;
+export const COVER_IMAGE = coverImg;
 export const COVER_IMAGE_NOTE =
   "The narrator sitting calmly on the edge of a bed in a bright city apartment at sunrise, a glass of water on the nearby table, window open to cool morning air.";
 

@@ -2,12 +2,12 @@
 // Static content -- no Supabase, mirrors the pattern in storybookData13.js.
 // Second book in the Kids age track. Same simplified vocabulary/sentence
 // length and 3+3 True/False and Build-a-Sentence pattern as Book 13.
-// Images are not generated yet (Midjourney subscription paused). image/
-// coverImage are left null so StoryBook.jsx's built-in ImagePlaceholder
-// fallback renders instead.
+// Chapter images are not generated yet -- image is left null per chapter so
+// StoryBook.jsx's built-in ImagePlaceholder fallback renders instead.
+import coverImg from "./assets/storybook14/cover.jpg";
 
 export const STORYBOOK_TITLE = "A Week with Grandma";
-export const COVER_IMAGE = null;
+export const COVER_IMAGE = coverImg;
 export const COVER_IMAGE_NOTE =
   "Noah and Grandma standing together in her sunny garden, both smiling, a small watering can in Noah's hand and yellow flowers all around them.";
 

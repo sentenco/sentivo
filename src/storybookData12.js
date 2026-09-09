@@ -4,14 +4,12 @@
 // throughout, matching the source text. Unlike Leo (Book 11) and Maya
 // (Book 9), friend Ana IS explicitly gendered here -- "she smiles and
 // says" in Chapter 9 -- so Ana's CHARACTERS entry uses "she", not neutral.
-// Images are not generated yet (Midjourney subscription paused as of 2026-07-21).
-// image/coverImage are left null so StoryBook.jsx's built-in ImagePlaceholder
-// fallback renders instead -- swap in real imports from ./assets/storybook12/
-// once art exists, same as storybookData.js / storybookData2.js do.
-// Final book in the 12-book Story Book series.
+// Chapter images are not generated yet -- image is left null per chapter so
+// StoryBook.jsx's built-in ImagePlaceholder fallback renders instead.
+import coverImg from "./assets/storybook12/cover.jpg";
 
 export const STORYBOOK_TITLE = "Food Brings Me Joy";
-export const COVER_IMAGE = null;
+export const COVER_IMAGE = coverImg;
 export const COVER_IMAGE_NOTE =
   "The narrator sitting at a small round café table near a window, a warm bowl of soup, bread, and iced tea on a tray, sunny street life visible outside.";
 
