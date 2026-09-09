@@ -49,22 +49,22 @@ const A1A2 = [
     prompt: "Rewrite this invitation casually for your friend.",
     rounds: [
       {
-        original: "You are cordially invited to attend a gathering at my residence this Saturday at 3:00 PM. Your presence would be appreciated.",
+        original: "You are formally invited to a party at my house this Saturday at 3:00 PM. We would be happy if you could come.",
         helpfulPhrases: ["Hey!", "come over", "It'll be fun"],
         sample: "Hey! Come over to my place this Saturday at 3! It'll be so fun, hope you can make it!",
       },
       {
-        original: "I would be delighted if you could join me for a small celebration at my home this Friday evening.",
+        original: "I would be very happy if you could join me for a small party at my home this Friday evening.",
         helpfulPhrases: ["Hey, wanna come over", "Friday night", "It'll be so fun"],
         sample: "Hey, wanna come over Friday night? It'll be so fun!",
       },
       {
-        original: "Please be advised that refreshments will be provided at the gathering, commencing at four o'clock.",
+        original: "Please note that snacks will be provided at the party, starting at four o'clock.",
         helpfulPhrases: ["gonna be", "starts at", "come whenever"],
         sample: "There's gonna be snacks! Starts at 4, come whenever!",
       },
       {
-        original: "Kindly RSVP at your earliest convenience so that I may finalize the arrangements.",
+        original: "Please let me know soon if you can come, so that I can plan everything.",
         helpfulPhrases: ["let me know", "can make it", "so I can"],
         sample: "Let me know if you can make it so I can plan everything!",
       },
@@ -94,7 +94,7 @@ const A1A2 = [
         sample: "Hey Mom, I finished all my chores! Can I go play now?",
       },
       {
-        original: "I wish to express that I am feeling unwell and would prefer to remain at home rather than attend school today.",
+        original: "I want to tell you that I am feeling unwell today and would prefer to stay home instead of going to school.",
         helpfulPhrases: ["Hey Mom", "don't feel good", "can I stay home"],
         sample: "Hey Mom, I don't feel good, can I stay home today?",
       },
@@ -109,22 +109,22 @@ const A1A2 = [
     prompt: "Rewrite this note casually for your classmate.",
     rounds: [
       {
-        original: "Excuse me, would you be so kind as to lend me a pencil? I appear to have forgotten mine today.",
+        original: "Excuse me, could you please lend me a pencil? I forgot mine today.",
         helpfulPhrases: ["hey", "can i borrow", "forgot mine"],
         sample: "hey, can i borrow a pencil? i forgot mine at home lol",
       },
       {
-        original: "Might I trouble you for a sheet of paper, as I have exhausted my own supply?",
+        original: "Excuse me, could I please have a sheet of paper? I have no more.",
         helpfulPhrases: ["hey", "got any", "i'm all out"],
         sample: "hey, got any extra paper? i'm all out lol",
       },
       {
-        original: "Would you be willing to share your notes from yesterday's lesson, as I was unable to attend?",
+        original: "Would you be willing to share your notes from yesterday's lesson? I was not able to come to class.",
         helpfulPhrases: ["hey", "can i see", "i missed"],
         sample: "hey, can i see your notes from yesterday? i missed class",
       },
       {
-        original: "I would be most grateful if you could assist me with this math problem.",
+        original: "I would be very grateful if you could help me with this math problem.",
         helpfulPhrases: ["hey", "can you help", "i'm stuck"],
         sample: "hey, can you help me with this problem? i'm stuck",
       },
@@ -199,22 +199,22 @@ const A1A2 = [
     prompt: "Rewrite this invitation casually for your friend.",
     rounds: [
       {
-        original: "I would like to formally invite you to visit my home this afternoon, should your schedule permit.",
+        original: "I would like to invite you to visit my home this afternoon, if you are free.",
         helpfulPhrases: ["wanna come over", "this afternoon", "let me know"],
         sample: "wanna come over this afternoon? let me know if you're free!",
       },
       {
-        original: "I am writing to ask if you might be available to visit this weekend.",
+        original: "I am writing to ask if you are free to visit this weekend.",
         helpfulPhrases: ["wanna hang out", "this weekend", "lmk"],
         sample: "wanna hang out this weekend? lmk if ur free!",
       },
       {
-        original: "It would bring me great pleasure if you could join me for dinner this evening.",
+        original: "I would be very happy if you could join me for dinner this evening.",
         helpfulPhrases: ["wanna come over", "tonight", "would be fun"],
         sample: "wanna come over for dinner tonight? would be fun!",
       },
       {
-        original: "I extend an invitation for you to join me at the cinema this Saturday.",
+        original: "I would like to invite you to join me at the cinema this Saturday.",
         helpfulPhrases: ["wanna go", "Saturday", "lemme know"],
         sample: "wanna go to the movies Saturday? lemme know!",
       },
@@ -289,7 +289,7 @@ const A1A2 = [
     prompt: "Rewrite this message casually for your friend.",
     rounds: [
       {
-        original: "I sincerely apologize for my behavior yesterday and hope that you can find it in your heart to forgive me.",
+        original: "I am very sorry for my behavior yesterday. I hope that you can forgive me.",
         helpfulPhrases: ["hey, sorry about", "my bad", "hope we're good"],
         sample: "hey, sorry about yesterday, that was my bad. hope we're good?",
       },
