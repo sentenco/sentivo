@@ -1,5 +1,9 @@
 import { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
+import synonymsBanner from "./assets/vocabulary-games/synonyms-banner.jpg";
+import antonymsBanner from "./assets/vocabulary-games/antonyms-banner.jpg";
+import wordSortBanner from "./assets/vocabulary-games/word-sort-banner.jpg";
+import oddOneOutBanner from "./assets/vocabulary-games/odd-one-out-banner.jpg";
 import SYNONYMS_TOPICS from "./synonymsTopics";
 import SYNONYMS_TOPICS_B1B2 from "./synonymsTopicsB1B2";
 import SYNONYMS_TOPICS_C1C2 from "./synonymsTopicsC1C2";
@@ -48,123 +52,12 @@ export const GAME_TYPES = [
 
 function GameBanner({ name }) {
   const banners = {
-    // Just the equal sign: the mark, not a diagram of it.
-    synonyms: (
-      <>
-        <defs>
-          <linearGradient id="vgb-syn-bg" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0" stopColor="#FFE1DA" />
-            <stop offset="1" stopColor="#FFC5B4" />
-          </linearGradient>
-          <linearGradient id="vgb-syn-mark" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stopColor="#FF9376" />
-            <stop offset="1" stopColor="#E85A3D" />
-          </linearGradient>
-          <filter id="vgb-syn-shadow" x="-40%" y="-40%" width="180%" height="180%">
-            <feDropShadow dx="0" dy="5" stdDeviation="6" floodColor="#C1451F" floodOpacity="0.22" />
-          </filter>
-        </defs>
-        <rect width="320" height="140" fill="url(#vgb-syn-bg)" />
-        <g filter="url(#vgb-syn-shadow)">
-          <rect x="112" y="52" width="96" height="16" rx="8" fill="url(#vgb-syn-mark)" />
-          <rect x="112" y="82" width="96" height="16" rx="8" fill="url(#vgb-syn-mark)" />
-        </g>
-      </>
-    ),
-    // A classic black-and-white yin-yang, opposite but two halves of
-    // one whole meaning-pair.
-    antonyms: (
-      <>
-        <defs>
-          <linearGradient id="vgb-ant-bg" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0" stopColor="#E1F3F3" />
-            <stop offset="1" stopColor="#C5E8E6" />
-          </linearGradient>
-          <filter id="vgb-ant-shadow" x="-40%" y="-40%" width="180%" height="180%">
-            <feDropShadow dx="0" dy="6" stdDeviation="7" floodColor="#0E6E7C" floodOpacity="0.22" />
-          </filter>
-        </defs>
-        <rect width="320" height="140" fill="url(#vgb-ant-bg)" />
-        <g filter="url(#vgb-ant-shadow)">
-          <circle cx="160" cy="70" r="50" fill="#0E6E7C" />
-          <path d="M160 20 A50 50 0 0 1 160 120 A25 25 0 0 1 160 70 A25 25 0 0 0 160 20 Z" fill="#FFFFFF" />
-          <circle cx="160" cy="70" r="50" fill="none" stroke="#0E6E7C" strokeWidth="2" />
-          <circle cx="160" cy="45" r="8" fill="#0E6E7C" />
-          <circle cx="160" cy="95" r="8" fill="#FFFFFF" />
-        </g>
-      </>
-    ),
-    // A hopper of mixed tiles funnels down into two color-sorted bins:
-    // the physical act of sorting, not just an icon of it.
-    wordSort: (
-      <>
-        <defs>
-          <linearGradient id="vgb-sort-bg" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0" stopColor="#DFF7EF" />
-            <stop offset="1" stopColor="#C3EEDD" />
-          </linearGradient>
-          <linearGradient id="vgb-sort-binL" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stopColor="#6FE0BE" />
-            <stop offset="1" stopColor="#4FD1A5" />
-          </linearGradient>
-          <linearGradient id="vgb-sort-binR" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stopColor="#3FBF8F" />
-            <stop offset="1" stopColor="#1C8A68" />
-          </linearGradient>
-          <filter id="vgb-sort-shadow" x="-40%" y="-40%" width="180%" height="180%">
-            <feDropShadow dx="0" dy="5" stdDeviation="5" floodColor="#146B4E" floodOpacity="0.2" />
-          </filter>
-        </defs>
-        <rect width="320" height="140" fill="url(#vgb-sort-bg)" />
-        <path d="M118 28 H202 L172 66 H148 Z" fill="#FFFFFF" opacity="0.85" stroke="#8FD1A8" strokeWidth="2" />
-        <g filter="url(#vgb-sort-shadow)">
-          <rect x="70" y="90" width="72" height="34" rx="8" fill="url(#vgb-sort-binL)" />
-          <rect x="178" y="90" width="72" height="34" rx="8" fill="url(#vgb-sort-binR)" />
-        </g>
-        <rect x="132" y="16" width="24" height="24" rx="6" fill="#FFCB4C" transform="rotate(-10 144 28)" />
-        <rect x="168" y="10" width="22" height="22" rx="6" fill="#FF8F6B" transform="rotate(8 179 21)" />
-        <path d="M155 70 Q120 82 100 92" fill="none" stroke="#8FD1A8" strokeWidth="2.5" strokeDasharray="4 5" />
-        <path d="M165 70 Q205 82 222 92" fill="none" stroke="#8FD1A8" strokeWidth="2.5" strokeDasharray="4 5" />
-        <rect x="86" y="98" width="18" height="18" rx="5" fill="#FFCB4C" transform="rotate(-6 95 107)" />
-        <rect x="204" y="98" width="18" height="18" rx="5" fill="#FF8F6B" transform="rotate(6 213 107)" />
-      </>
-    ),
-    // A magnifying glass catches the one shape that breaks the pattern:
-    // the exact moment of noticing.
-    oddOneOut: (
-      <>
-        <defs>
-          <linearGradient id="vgb-odd-bg" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0" stopColor="#FFF3D9" />
-            <stop offset="1" stopColor="#FCE4B0" />
-          </linearGradient>
-          <radialGradient id="vgb-odd-glass" cx="0.35" cy="0.3" r="0.8">
-            <stop offset="0" stopColor="#FFFFFF" stopOpacity="0.9" />
-            <stop offset="1" stopColor="#FFF6EA" stopOpacity="0.35" />
-          </radialGradient>
-          <filter id="vgb-odd-shadow" x="-60%" y="-60%" width="220%" height="220%">
-            <feDropShadow dx="0" dy="6" stdDeviation="6" floodColor="#8A5A16" floodOpacity="0.25" />
-          </filter>
-        </defs>
-        <rect width="320" height="140" fill="url(#vgb-odd-bg)" />
-        <g opacity="0.5" fill="#E8C98A">
-          <circle cx="58" cy="48" r="10" /><circle cx="92" cy="32" r="10" /><circle cx="58" cy="100" r="10" />
-          <circle cx="94" cy="118" r="10" /><circle cx="252" cy="42" r="10" /><circle cx="256" cy="102" r="10" />
-        </g>
-        <rect x="150" y="50" width="32" height="32" rx="7" fill="#E8A81A" transform="rotate(45 166 66)" />
-        <g filter="url(#vgb-odd-shadow)">
-          <circle cx="166" cy="66" r="34" fill="url(#vgb-odd-glass)" stroke="#A9720A" strokeWidth="6" />
-          <rect x="187" y="88" width="15" height="46" rx="7.5" fill="#7A5108" transform="rotate(42 194.5 111)" />
-        </g>
-        <path d="M148 50 a24 24 0 0 1 24 -14" fill="none" stroke="#FFFFFF" strokeWidth="4" strokeLinecap="round" opacity="0.65" />
-      </>
-    ),
+    synonyms: synonymsBanner,
+    antonyms: antonymsBanner,
+    wordSort: wordSortBanner,
+    oddOneOut: oddOneOutBanner,
   };
-  return (
-    <svg className="vg-banner" viewBox="0 0 320 140" xmlns="http://www.w3.org/2000/svg">
-      {banners[name] || <rect width="320" height="140" fill="#EDE7F6" />}
-    </svg>
-  );
+  return <img className="vg-banner" src={banners[name]} alt="" />;
 }
 
 const LEVEL_GROUPS = ["A1-A2", "B1-B2", "C1-C2"];
@@ -769,7 +662,7 @@ const CSS = `
   transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 .vg-block:hover { transform: translateY(-3px); box-shadow: 0 14px 0 rgba(14,110,124,0.1); }
-.vg-banner { display: block; width: 100%; height: auto; }
+.vg-banner { display: block; width: 100%; height: 140px; object-fit: cover; }
 .vg-block-body { padding: 18px 20px 20px; }
 .vg-block-title { font-family: 'Grandstander', cursive; font-weight: 700; font-size: 18px; margin: 0 0 6px; color: #123B40; }
 .vg-block-blurb { font-size: 13px; color: #4F8B90; margin: 0 0 16px; line-height: 1.5; font-weight: 600; }
