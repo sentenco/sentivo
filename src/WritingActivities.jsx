@@ -42,6 +42,11 @@ export const ACTIVITY_TYPES = [
 
 const LEVEL_GROUPS = ["A1-A2", "B1-B2", "C1-C2"];
 
+// "A1-A2" -> "a1a2", used for the wa-cat-level--a1a2/b1b2/c1c2 tint classes.
+function levelSlug(cefrGroup) {
+  return cefrGroup.replace(/-/g, "").toLowerCase();
+}
+
 // Activity types with a Teacher's Guide -- their topic cards show a
 // separate "Guide" button next to "Start" instead of the whole card
 // being one click-through button.
@@ -148,6 +153,25 @@ function openTopicPlayer(typeKey, topicKey) {
   );
 }
 
+// Register Rewrite topics carry several rounds, and each one opens as
+// its own standalone one-page activity/window (no Back/Next carousel
+// between rounds) -- this is what the numbered chips on the topic card
+// call instead of openTopicPlayer.
+function openTopicRound(typeKey, topicKey, roundIndex) {
+  const screenW = window.screen.availWidth || 1600;
+  const screenH = window.screen.availHeight || 900;
+  const w = Math.min(660, screenW - 40);
+  const h = Math.min(560, screenH - 80);
+  const left = Math.max(0, Math.floor((screenW - w) / 2));
+  const top = Math.max(0, Math.floor((screenH - h) / 2));
+
+  window.open(
+    `/library/writing/${typeKey}/${topicKey}/player/${roundIndex}`,
+    "sentivoWritingPlayer",
+    `width=${w},height=${h},left=${left},top=${top},toolbar=no,location=no,menubar=no,status=no,scrollbars=yes,resizable=yes`
+  );
+}
+
 // Teacher's Guide opens as its own scrollable popup, not sized to the
 // fixed player card since it's a document meant to be read, not a slide.
 function openTopicGuide(typeKey, topicKey) {
@@ -234,7 +258,24 @@ export default function WritingActivities({ query }) {
         ) : (
           <div className="wa-cat-grid">
             {matches.map(({ topic, type: t }) =>
-              HAS_GUIDE.includes(t.key) ? (
+              t.key === "registerRewrite" ? (
+                <div key={`${t.key}-${topic.key}`} className={`wa-cat-card wa-cat-card--${t.hue} wa-cat-card--static`}>
+                  <div className="wa-cat-top">
+                    <span className={`wa-cat-level wa-cat-level--${levelSlug(topic.cefrGroup)}`}>{topic.cefrGroup}</span>
+                    <span className="wa-cat-tag">Ready</span>
+                  </div>
+                  <span className="wa-cat-title">{topic.title}</span>
+                  <span className="wa-cat-blurb">{topic.focus}</span>
+                  <div className="rr-rounds-row">
+                    <div className="rr-round-chips">
+                      {topic.rounds.map((_, i) => (
+                        <button key={i} type="button" className="rr-round-chip" onClick={() => openTopicRound(t.key, topic.key, i)}>{i + 1}</button>
+                      ))}
+                    </div>
+                    <button type="button" className="rr-guide-link" onClick={() => openTopicGuide(t.key, topic.key)}>Guide</button>
+                  </div>
+                </div>
+              ) : HAS_GUIDE.includes(t.key) ? (
                 <div key={`${t.key}-${topic.key}`} className={`wa-cat-card wa-cat-card--${t.hue} wa-cat-card--static`}>
                   <div className="wa-cat-top">
                     <span className="wa-cat-icon">{t.icon}</span>
@@ -294,7 +335,24 @@ export default function WritingActivities({ query }) {
         </div>
         <div className="wa-cat-grid">
           {levelTopics.map((t) =>
-            HAS_GUIDE.includes(type.key) ? (
+            type.key === "registerRewrite" ? (
+              <div key={t.key} className={`wa-cat-card wa-cat-card--${type.hue} wa-cat-card--static`}>
+                <div className="wa-cat-top">
+                  <span className={`wa-cat-level wa-cat-level--${levelSlug(t.cefrGroup)}`}>{t.cefrGroup}</span>
+                  <span className="wa-cat-tag">Ready</span>
+                </div>
+                <span className="wa-cat-title">{t.title}</span>
+                <span className="wa-cat-blurb">{t.focus}</span>
+                <div className="rr-rounds-row">
+                  <div className="rr-round-chips">
+                    {t.rounds.map((_, i) => (
+                      <button key={i} type="button" className="rr-round-chip" onClick={() => openTopicRound(typeKey, t.key, i)}>{i + 1}</button>
+                    ))}
+                  </div>
+                  <button type="button" className="rr-guide-link" onClick={() => openTopicGuide(typeKey, t.key)}>Guide</button>
+                </div>
+              </div>
+            ) : HAS_GUIDE.includes(type.key) ? (
               <div key={t.key} className={`wa-cat-card wa-cat-card--${type.hue} wa-cat-card--static`}>
                 <div className="wa-cat-top">
                   <span className="wa-cat-icon">{type.icon}</span>
@@ -495,6 +553,61 @@ const CSS = `
 .wa-cat-card--sky   { --wac-accent: #2A6E85; --wac-icon-bg: rgba(62,157,191,0.14); --wac-border: #C7E6EE; --wac-shadow: rgba(30,90,120,0.10); --wac-shadow-hover: rgba(30,90,120,0.16); }
 .wa-cat-card--coral { --wac-accent: #B8391F; --wac-icon-bg: rgba(255,138,117,0.16); --wac-border: #FFD9CC; --wac-shadow: rgba(200,70,45,0.10); --wac-shadow-hover: rgba(200,70,45,0.16); }
 .wa-cat-card--mint  { --wac-accent: #2F7A50; --wac-icon-bg: rgba(76,175,122,0.16); --wac-border: #C3EEDD; --wac-shadow: rgba(20,107,78,0.10); --wac-shadow-hover: rgba(20,107,78,0.16); }
+
+/* Register Rewrite is the only "mint" activity type -- give its card a
+   bit more depth (top accent, layered shadow, hover lift) without
+   touching the other activity types' shared .wa-cat-card look. */
+.wa-cat-card--mint {
+  position: relative;
+  background: linear-gradient(180deg, #FFFFFF 0%, #FCFEFC 100%);
+  box-shadow: 0 1px 1px rgba(20,107,78,0.05), 0 8px 16px rgba(20,107,78,0.07), 0 22px 34px rgba(20,107,78,0.07);
+}
+.wa-cat-card--mint::before {
+  content: ""; position: absolute; inset: 0 0 auto 0; height: 4px;
+  border-radius: 14px 14px 0 0;
+  background: linear-gradient(90deg, #6FCF97, #2F7A50);
+}
+.wa-cat-card--mint:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 1px 1px rgba(20,107,78,0.06), 0 14px 22px rgba(20,107,78,0.11), 0 30px 46px rgba(20,107,78,0.11);
+}
+
+.wa-cat-level {
+  font-family: 'Karla', sans-serif; font-weight: 800; font-size: 11px; letter-spacing: 0.02em;
+  border-radius: 999px; padding: 5px 11px;
+}
+.wa-cat-level--a1a2 { color: #2F7A50; background: rgba(76,175,122,0.16); }
+.wa-cat-level--b1b2 { color: #2A6E85; background: #E1F1F6; }
+.wa-cat-level--c1c2 { color: #B8391F; background: #FFE4DC; }
+
+.rr-rounds-row {
+  margin-top: auto; width: 100%; display: flex; align-items: center; justify-content: space-between;
+  gap: 10px; padding-top: 14px; border-top: 1px dashed #C3EEDD;
+}
+.rr-round-chips { display: flex; gap: 7px; }
+.rr-round-chip {
+  width: 30px; height: 30px; border-radius: 50%; border: none;
+  background: linear-gradient(180deg, #DFF3E7 0%, #CDEEDC 100%);
+  color: #2F7A50; font-family: 'Karla', sans-serif; font-weight: 800; font-size: 13px;
+  cursor: pointer; display: flex; align-items: center; justify-content: center;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.8), 0 2px 4px rgba(47,122,80,0.14);
+  transition: transform 0.14s ease, box-shadow 0.14s ease, background 0.14s ease;
+}
+.rr-round-chip:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(180deg, #6FCF97 0%, #2F7A50 100%);
+  color: #fff;
+  box-shadow: 0 5px 10px rgba(31,90,58,0.28);
+}
+.rr-round-chip:active { transform: translateY(0); }
+.rr-guide-link {
+  font-family: 'Karla', sans-serif; font-weight: 800; font-size: 11.5px;
+  color: #A9836F; background: #F5EEE4; border: none; border-radius: 999px;
+  padding: 8px 13px; cursor: pointer; white-space: nowrap;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.6);
+  transition: background 0.14s ease;
+}
+.rr-guide-link:hover { background: #EFE2D2; }
 
 .wa-cat-top { display: flex; align-items: center; justify-content: space-between; width: 100%; margin-bottom: 12px; }
 .wa-cat-icon {

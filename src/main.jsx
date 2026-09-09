@@ -413,6 +413,7 @@ createRoot(document.getElementById('root')).render(
             <Route path="/library/vocabulary/lessons/eponyms" element={<EponymsLesson />} />
             <Route path="/library/vocabulary/lessons/portmanteau" element={<PortmanteauLesson />} />
             <Route path="/library/writing/:typeKey/:topicKey/player" element={<WritingPlayerPage />} />
+            <Route path="/library/writing/:typeKey/:topicKey/player/:roundIndex" element={<WritingPlayerPage />} />
             <Route path="/library/writing/:typeKey/:topicKey/guide" element={<WritingGuidePage />} />
             <Route path="/library/notebook" element={<NotebookHub />} />
             <Route path="/library/feedback" element={<FeedbackGenerator />} />

@@ -17,7 +17,7 @@ const PLAYERS = {
 // from WritingActivities, matching the Editorial View / lesson-player
 // pattern (its own window, not embedded in the Library page).
 export default function WritingPlayerPage() {
-  const { typeKey, topicKey } = useParams();
+  const { typeKey, topicKey, roundIndex } = useParams();
   const type = ACTIVITY_TYPES.find((t) => t.key === typeKey);
   const topic = type ? type.sets.find((t) => t.key === topicKey) : null;
 
@@ -39,6 +39,11 @@ export default function WritingPlayerPage() {
   // Message Reply still uses the shared chrome.
   const isSelfContained = type.key === "proofreading" || type.key === "storyMaking" || type.key === "registerRewrite";
   if (isSelfContained) {
+    // Register Rewrite topics are opened one round at a time -- each
+    // number on the topic card is its own standalone activity/window.
+    if (type.key === "registerRewrite") {
+      return <Player item={topic} roundIndex={Number(roundIndex) || 0} />;
+    }
     return <Player item={topic} />;
   }
 
