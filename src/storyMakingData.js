@@ -30,6 +30,16 @@ import theStudyGroupImg from "./assets/story-making/the-study-group.jpg";
 import startingANewJobImg from "./assets/story-making/starting-a-new-job.jpg";
 import theNeighborhoodFestivalImg from "./assets/story-making/the-neighborhood-festival.jpg";
 import theJobInterviewImg from "./assets/story-making/the-job-interview.jpg";
+import theDifficultCallImg from "./assets/story-making/the-difficult-call.jpg";
+import theDelayedFlightImg from "./assets/story-making/the-delayed-flight.jpg";
+import theProductLaunchImg from "./assets/story-making/the-product-launch.jpg";
+import theFailedNegotiationImg from "./assets/story-making/the-failed-negotiation.jpg";
+import theMentorsAdviceImg from "./assets/story-making/the-mentors-advice.jpg";
+import theConferenceKeynoteImg from "./assets/story-making/the-conference-keynote.jpg";
+import theTeamRestructuringImg from "./assets/story-making/the-team-restructuring.jpg";
+import theWhistleblowerImg from "./assets/story-making/the-whistleblower.jpg";
+import theInvestmentPitchImg from "./assets/story-making/the-investment-pitch.jpg";
+import theRetirementPartyImg from "./assets/story-making/the-retirement-party.jpg";
 
 const A1A2 = [
   {
@@ -263,7 +273,7 @@ const C1C2 = [
     title: "The Difficult Call",
     focus: "Past tense narrative, workplace register",
     scene: "bonus",
-    image: null,
+    image: theDifficultCallImg,
     words: ["client", "complaint", "frustrated", "solution", "calm", "resolved"],
     prompt: "Look at the picture and use the words to write a short, 5-sentence story.",
     sample: "An important client called the office with an angry complaint. The manager sounded frustrated as she explained what had gone wrong. James stayed calm and listened carefully to every detail. He offered a clear solution within a few minutes. By the end of the call, the issue was fully resolved.",
@@ -274,7 +284,7 @@ const C1C2 = [
     title: "The Delayed Flight",
     focus: "Past tense narrative, connectors",
     scene: "bonus",
-    image: null,
+    image: theDelayedFlightImg,
     words: ["business trip", "delayed flight", "meeting", "laptop", "reschedule", "relieved"],
     prompt: "Look at the picture and use the words to write a short, 5-sentence story.",
     sample: "Sarah's flight was delayed just hours before an important business trip. She worried she would miss the client meeting entirely. Using her laptop at the gate, she managed to reschedule the meeting for later that afternoon. Her flight finally boarded two hours late. She felt relieved when she landed with enough time to prepare.",
@@ -285,7 +295,7 @@ const C1C2 = [
     title: "The Product Launch",
     focus: "Past tense narrative, concession clauses",
     scene: "bonus",
-    image: null,
+    image: theProductLaunchImg,
     words: ["launch", "deadline", "malfunction", "crisis", "improvise", "applause"],
     prompt: "Look at the picture and use the words to write a short, 5-sentence story.",
     sample: "The product launch had been scheduled for months, and the whole team had worked toward the deadline relentlessly. Minutes before the demo, the main prototype suffered an unexpected malfunction backstage. Although the crisis threatened to derail the entire presentation, Mei calmly improvised with a backup unit she had brought just in case. The audience never noticed anything had gone wrong. When the demo ended, the room erupted into applause.",
@@ -296,7 +306,7 @@ const C1C2 = [
     title: "The Failed Negotiation",
     focus: "Past tense narrative, hedging language",
     scene: "bonus",
-    image: null,
+    image: theFailedNegotiationImg,
     words: ["negotiation", "impasse", "concession", "walk away", "reconsider", "compromise"],
     prompt: "Look at the picture and use the words to write a short, 5-sentence story.",
     sample: "After three hours, the negotiation had reached a complete impasse. Neither side seemed willing to offer a meaningful concession. Frustrated, the supplier's representative threatened to walk away from the deal entirely. It was only after a short break that both parties agreed to reconsider their positions. By evening, they had reached a compromise that neither had expected at the start of the day.",
@@ -307,7 +317,7 @@ const C1C2 = [
     title: "The Mentor's Advice",
     focus: "Past tense narrative, reflective tone",
     scene: "bonus",
-    image: null,
+    image: theMentorsAdviceImg,
     words: ["mentor", "self-doubt", "perspective", "candid", "reassess", "gratitude"],
     prompt: "Look at the picture and use the words to write a short, 5-sentence story.",
     sample: "Riddled with self-doubt after a disappointing quarter, Alex reached out to his old mentor for perspective. Over coffee, she was refreshingly candid about her own early failures in the industry. Her advice pushed him to reassess not just his strategy, but his entire definition of success. He left the conversation with a clarity he hadn't felt in months. Years later, he still credits that single conversation with a deep sense of gratitude.",
@@ -318,7 +328,7 @@ const C1C2 = [
     title: "The Conference Keynote",
     focus: "Past tense narrative, formal register",
     scene: "bonus",
-    image: null,
+    image: theConferenceKeynoteImg,
     words: ["keynote", "audience", "technical difficulty", "composure", "resonate", "standing ovation"],
     prompt: "Look at the picture and use the words to write a short, 5-sentence story.",
     sample: "Minutes before the keynote, a technical difficulty wiped out the entire slide deck in front of a packed audience. Rather than panic, the speaker maintained her composure and simply spoke from memory instead. Without the slides constraining her, the talk became noticeably more personal and seemed to resonate even more deeply with the crowd. She wove in stories she had never planned to share. By the closing remarks, the audience rose for a standing ovation.",
@@ -329,7 +339,7 @@ const C1C2 = [
     title: "The Team Restructuring",
     focus: "Past tense narrative, passive constructions",
     scene: "bonus",
-    image: null,
+    image: theTeamRestructuringImg,
     words: ["restructuring", "uncertainty", "morale", "transparent", "reassign", "cautiously optimistic"],
     prompt: "Look at the picture and use the words to write a short, 5-sentence story.",
     sample: "News of the company restructuring spread quickly, and uncertainty settled over the whole department. Morale dropped noticeably as rumors circulated faster than any official statement. To address this, the director held a transparent town hall explaining exactly which roles would be reassigned. Though several employees remained anxious about the changes, most left the meeting feeling somewhat reassured. By the following month, the team had grown cautiously optimistic about the new direction.",
@@ -340,7 +350,7 @@ const C1C2 = [
     title: "The Whistleblower",
     focus: "Past tense narrative, formal/legal vocabulary",
     scene: "bonus",
-    image: null,
+    image: theWhistleblowerImg,
     words: ["irregularities", "conscience", "anonymous", "retaliation", "investigation", "vindicated"],
     prompt: "Look at the picture and use the words to write a short, 5-sentence story.",
     sample: "For weeks, Noor had noticed troubling irregularities in the company's financial reports. Her conscience eventually outweighed her fear of consequences, and she filed an anonymous report with the compliance team. She braced herself for possible retaliation from senior management. Instead, an internal investigation was launched within days and confirmed everything she had suspected. Months later, she felt entirely vindicated, though she never once regretted the risk she had taken.",
@@ -351,7 +361,7 @@ const C1C2 = [
     title: "The Investment Pitch",
     focus: "Past tense narrative, formal register",
     scene: "bonus",
-    image: null,
+    image: theInvestmentPitchImg,
     words: ["pitch", "investors", "skeptical", "traction", "pivot", "secured funding"],
     prompt: "Look at the picture and use the words to write a short, 5-sentence story.",
     sample: "The founders had rehearsed their pitch dozens of times before finally standing in front of the investors. At first, the panel seemed openly skeptical of the company's early traction. Sensing this, one founder made a bold decision to pivot the presentation toward a different market entirely. The shift caught the investors' attention almost immediately. By the end of the meeting, the startup had secured the funding it desperately needed.",
@@ -362,7 +372,7 @@ const C1C2 = [
     title: "The Retirement Party",
     focus: "Past tense narrative, reflective/formal tone",
     scene: "bonus",
-    image: null,
+    image: theRetirementPartyImg,
     words: ["retirement", "decades", "tribute", "nostalgic", "legacy", "bittersweet"],
     prompt: "Look at the picture and use the words to write a short, 5-sentence story.",
     sample: "After four decades at the same company, Mr. Alvarez's retirement party filled the office with an unusually reflective mood. Colleague after colleague stood up to pay tribute to the mentorship he had quietly offered over the years. Many admitted feeling nostalgic for the early days he had helped shape. Someone joked that his legacy would outlast the building itself. It was, everyone agreed, a genuinely bittersweet way to end such a long career.",
