@@ -53,7 +53,6 @@ export default function ForgeTrack() {
         <div className="ft-hero">
           <div className="ft-hero-tags">
             <span className="ft-tag">Working Vocabulary</span>
-            <span className="ft-tag ft-tag--level">{track.level}</span>
           </div>
           <h1 className="ft-hero-title">{track.title}</h1>
         </div>
@@ -148,7 +147,6 @@ const CSS = `
   border-radius: 999px;
   padding: 4px 12px;
 }
-.ft-tag--level { color: #10646B; background: #F6D4D2; }
 .ft-hero-title {
   font-family: 'Baloo 2', cursive;
   font-weight: 800;

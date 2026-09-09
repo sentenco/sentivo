@@ -62,7 +62,6 @@ export default function ForgeHub() {
               <a key={track.id} href={`/library/forge/${track.id}`} className="fh-track-card">
                 <div className="fh-track-ribbon">
                   <span className="fh-track-num">Track {String(i + 1).padStart(2, "0")}</span>
-                  <span className="fh-track-level-pill">{track.level}</span>
                 </div>
                 <div className="fh-track-body">
                   <div className="fh-track-tags">
@@ -218,18 +217,8 @@ const CSS = `
   padding: 16px 22px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
 }
 .fh-track-num { font-family: 'Baloo 2', cursive; font-weight: 700; font-size: 20px; color: #FFFFFF; }
-.fh-track-level-pill {
-  font-family: 'IBM Plex Sans', sans-serif;
-  font-weight: 800;
-  font-size: 11px;
-  color: #C93F3A;
-  background: #FFFFFF;
-  border-radius: 999px;
-  padding: 4px 12px;
-}
 
 .fh-track-body { padding: 22px 22px 20px; flex: 1; display: flex; flex-direction: column; gap: 14px; }
 .fh-track-tags { display: flex; flex-wrap: wrap; gap: 6px; }

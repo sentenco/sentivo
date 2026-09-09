@@ -88,7 +88,6 @@ const TRACKS = [
   {
     id: "health",
     title: "Health",
-    level: "A2-B1",
     audience: ["adults"],
     blurb: "Real situations around clinics, pharmacies, and wellness, one root situation per lesson, word banks you'll actually reach for.",
     lessons: [health1, health2, health3, health4, health5, health6, health7, health8],
@@ -96,7 +95,6 @@ const TRACKS = [
   {
     id: "friends",
     title: "Friends & Social Life",
-    level: "A2-B1",
     audience: ["teens"],
     blurb: "Real situations with friends, from making plans to saying goodbye, one root situation per lesson, word banks you'll actually reach for.",
     lessons: [friends1, friends2, friends3, friends4, friends5, friends6, friends7, friends8],
@@ -104,7 +102,6 @@ const TRACKS = [
   {
     id: "school",
     title: "School Life",
-    level: "A2-B1",
     audience: ["teens"],
     blurb: "Real situations from class schedules to report cards, one root situation per lesson, word banks you'll actually reach for.",
     lessons: [school1, school2, school3, school4, school5, school6, school7, school8],
@@ -112,7 +109,6 @@ const TRACKS = [
   {
     id: "family",
     title: "Family & Home Life",
-    level: "A2-B1",
     audience: ["teens"],
     blurb: "Real situations at home, from chores to family trips, one root situation per lesson, word banks you'll actually reach for.",
     lessons: [family1, family2, family3, family4, family5, family6, family7, family8],
@@ -120,7 +116,6 @@ const TRACKS = [
   {
     id: "sports",
     title: "Sports & Fitness",
-    level: "A2-B1",
     audience: ["teens"],
     blurb: "Real situations on and off the field, from tryouts to championships, one root situation per lesson, word banks you'll actually reach for.",
     lessons: [sports1, sports2, sports3, sports4, sports5, sports6, sports7, sports8],
@@ -128,7 +123,6 @@ const TRACKS = [
   {
     id: "gaming",
     title: "Online & Gaming",
-    level: "A2-B1",
     audience: ["teens"],
     blurb: "Real situations online, from squad games to streamers, one root situation per lesson, word banks you'll actually reach for.",
     lessons: [gaming1, gaming2, gaming3, gaming4, gaming5, gaming6, gaming7, gaming8],
@@ -136,7 +130,6 @@ const TRACKS = [
   {
     id: "career",
     title: "Career & Job Search",
-    level: "A2-B1",
     audience: ["adults"],
     blurb: "Real situations from job interviews to work-life balance, one root situation per lesson, word banks you'll actually reach for.",
     lessons: [career1, career2, career3, career4, career5, career6, career7, career8],
@@ -144,7 +137,6 @@ const TRACKS = [
   {
     id: "finance",
     title: "Finance & Banking",
-    level: "A2-B1",
     audience: ["adults"],
     blurb: "Real situations with money, from opening an account to planning a big purchase, one root situation per lesson, word banks you'll actually reach for.",
     lessons: [finance1, finance2, finance3, finance4, finance5, finance6, finance7, finance8],
@@ -152,7 +144,6 @@ const TRACKS = [
   {
     id: "housing",
     title: "Housing & Apartment Life",
-    level: "A2-B1",
     audience: ["adults"],
     blurb: "Real situations around renting and home life, from apartment hunting to moving day, one root situation per lesson, word banks you'll actually reach for.",
     lessons: [housing1, housing2, housing3, housing4, housing5, housing6, housing7, housing8],
@@ -160,7 +151,6 @@ const TRACKS = [
   {
     id: "travel",
     title: "Travel & Transportation",
-    level: "A2-B1",
     audience: ["adults"],
     blurb: "Real situations on the move, from booking a flight to coming home, one root situation per lesson, word banks you'll actually reach for.",
     lessons: [travel1, travel2, travel3, travel4, travel5, travel6, travel7, travel8],
