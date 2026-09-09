@@ -275,7 +275,7 @@ export default function WritingActivities({ query }) {
                     <button type="button" className="rr-guide-link" onClick={() => openTopicGuide(t.key, topic.key)}>Guide</button>
                   </div>
                 </div>
-              ) : t.key === "proofreading" ? (
+              ) : HAS_GUIDE.includes(t.key) ? (
                 <div key={`${t.key}-${topic.key}`} className={`wa-cat-card wa-cat-card--${t.hue} wa-cat-card--static`}>
                   <div className="wa-cat-top">
                     <span className={`wa-cat-level wa-cat-level--${levelSlug(topic.cefrGroup)}`}>{topic.cefrGroup}</span>
@@ -283,19 +283,6 @@ export default function WritingActivities({ query }) {
                   </div>
                   <span className="wa-cat-title">{topic.title}</span>
                   <span className="wa-cat-blurb">{topic.focus}</span>
-                  <div className="wa-cat-actions">
-                    <button type="button" className="wa-cat-guide" onClick={() => openTopicGuide(t.key, topic.key)}>Guide</button>
-                    <button type="button" className="wa-cat-cta wa-cat-cta--btn" onClick={() => openTopicPlayer(t.key, topic.key)}>Start →</button>
-                  </div>
-                </div>
-              ) : HAS_GUIDE.includes(t.key) ? (
-                <div key={`${t.key}-${topic.key}`} className={`wa-cat-card wa-cat-card--${t.hue} wa-cat-card--static`}>
-                  <div className="wa-cat-top">
-                    <span className="wa-cat-icon">{t.icon}</span>
-                    <span className="wa-cat-tag">Ready</span>
-                  </div>
-                  <span className="wa-cat-title">{topic.title}</span>
-                  <span className="wa-cat-blurb">{t.title} · {topic.cefrGroup}</span>
                   <div className="wa-cat-actions">
                     <button type="button" className="wa-cat-guide" onClick={() => openTopicGuide(t.key, topic.key)}>Guide</button>
                     <button type="button" className="wa-cat-cta wa-cat-cta--btn" onClick={() => openTopicPlayer(t.key, topic.key)}>Start →</button>
@@ -309,11 +296,11 @@ export default function WritingActivities({ query }) {
                   onClick={() => openTopicPlayer(t.key, topic.key)}
                 >
                   <div className="wa-cat-top">
-                    <span className="wa-cat-icon">{t.icon}</span>
+                    <span className={`wa-cat-level wa-cat-level--${levelSlug(topic.cefrGroup)}`}>{topic.cefrGroup}</span>
                     <span className="wa-cat-tag">Ready</span>
                   </div>
                   <span className="wa-cat-title">{topic.title}</span>
-                  <span className="wa-cat-blurb">{t.title} · {topic.cefrGroup}</span>
+                  <span className="wa-cat-blurb">{topic.focus}</span>
                   <span className="wa-cat-cta">Start →</span>
                 </button>
               )
@@ -330,7 +317,7 @@ export default function WritingActivities({ query }) {
         <style>{CSS}</style>
         <div className="wa-hero">
           <span className="wa-eyebrow">Sentivo · Writing</span>
-          <span className={`wa-pill wa-pill--${type.hue}`}>{type.key !== "proofreading" && <>{type.icon} </>}{type.title}</span>
+          <span className={`wa-pill wa-pill--${type.hue}`}>{type.title}</span>
           <p className="wa-blurb">{type.blurb}</p>
         </div>
         <div className="wa-row"></div>
@@ -365,7 +352,7 @@ export default function WritingActivities({ query }) {
                   <button type="button" className="rr-guide-link" onClick={() => openTopicGuide(typeKey, t.key)}>Guide</button>
                 </div>
               </div>
-            ) : type.key === "proofreading" ? (
+            ) : HAS_GUIDE.includes(type.key) ? (
               <div key={t.key} className={`wa-cat-card wa-cat-card--${type.hue} wa-cat-card--static`}>
                 <div className="wa-cat-top">
                   <span className={`wa-cat-level wa-cat-level--${levelSlug(t.cefrGroup)}`}>{t.cefrGroup}</span>
@@ -378,23 +365,10 @@ export default function WritingActivities({ query }) {
                   <button type="button" className="wa-cat-cta wa-cat-cta--btn" onClick={() => openTopicPlayer(typeKey, t.key)}>Start →</button>
                 </div>
               </div>
-            ) : HAS_GUIDE.includes(type.key) ? (
-              <div key={t.key} className={`wa-cat-card wa-cat-card--${type.hue} wa-cat-card--static`}>
-                <div className="wa-cat-top">
-                  <span className="wa-cat-icon">{type.icon}</span>
-                  <span className="wa-cat-tag">Ready</span>
-                </div>
-                <span className="wa-cat-title">{t.title}</span>
-                <span className="wa-cat-blurb">{t.focus}</span>
-                <div className="wa-cat-actions">
-                  <button type="button" className="wa-cat-guide" onClick={() => openTopicGuide(typeKey, t.key)}>Guide</button>
-                  <button type="button" className="wa-cat-cta wa-cat-cta--btn" onClick={() => openTopicPlayer(typeKey, t.key)}>Start →</button>
-                </div>
-              </div>
             ) : (
               <button key={t.key} type="button" className={`wa-cat-card wa-cat-card--${type.hue}`} onClick={() => openTopicPlayer(typeKey, t.key)}>
                 <div className="wa-cat-top">
-                  <span className="wa-cat-icon">{type.icon}</span>
+                  <span className={`wa-cat-level wa-cat-level--${levelSlug(t.cefrGroup)}`}>{t.cefrGroup}</span>
                   <span className="wa-cat-tag">Ready</span>
                 </div>
                 <span className="wa-cat-title">{t.title}</span>
@@ -614,6 +588,37 @@ const CSS = `
   box-shadow: 0 1px 1px rgba(154,90,22,0.06), 0 14px 22px rgba(154,90,22,0.11), 0 30px 46px rgba(154,90,22,0.11);
 }
 
+/* Same depth pass for Story Making (sky) and Message Reply (coral). */
+.wa-cat-card--sky {
+  position: relative;
+  background: linear-gradient(180deg, #FFFFFF 0%, #F9FDFE 100%);
+  box-shadow: 0 1px 1px rgba(30,90,120,0.05), 0 8px 16px rgba(30,90,120,0.07), 0 22px 34px rgba(30,90,120,0.07);
+}
+.wa-cat-card--sky::before {
+  content: ""; position: absolute; inset: 0 0 auto 0; height: 4px;
+  border-radius: 14px 14px 0 0;
+  background: linear-gradient(90deg, #6EC3E0, #2A6E85);
+}
+.wa-cat-card--sky:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 1px 1px rgba(30,90,120,0.06), 0 14px 22px rgba(30,90,120,0.11), 0 30px 46px rgba(30,90,120,0.11);
+}
+
+.wa-cat-card--coral {
+  position: relative;
+  background: linear-gradient(180deg, #FFFFFF 0%, #FFFAF8 100%);
+  box-shadow: 0 1px 1px rgba(200,70,45,0.05), 0 8px 16px rgba(200,70,45,0.07), 0 22px 34px rgba(200,70,45,0.07);
+}
+.wa-cat-card--coral::before {
+  content: ""; position: absolute; inset: 0 0 auto 0; height: 4px;
+  border-radius: 14px 14px 0 0;
+  background: linear-gradient(90deg, #FF8A75, #B8391F);
+}
+.wa-cat-card--coral:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 1px 1px rgba(200,70,45,0.06), 0 14px 22px rgba(200,70,45,0.11), 0 30px 46px rgba(200,70,45,0.11);
+}
+
 .wa-cat-level {
   font-family: 'Karla', sans-serif; font-weight: 800; font-size: 11px; letter-spacing: 0.02em;
   border-radius: 999px; padding: 5px 11px;
@@ -652,17 +657,6 @@ const CSS = `
 .rr-guide-link:hover { background: #EFE2D2; }
 
 .wa-cat-top { display: flex; align-items: center; justify-content: space-between; width: 100%; margin-bottom: 12px; }
-.wa-cat-icon {
-  width: 32px;
-  height: 32px;
-  flex-shrink: 0;
-  border-radius: 10px;
-  background: var(--wac-icon-bg, rgba(239,111,92,0.12));
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 15px;
-}
 .wa-cat-tag {
   font-size: 9.5px;
   font-weight: 800;
