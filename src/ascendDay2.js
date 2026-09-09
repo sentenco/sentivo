@@ -13,6 +13,7 @@ export default {
     {
       question: "Tell me about your morning today.",
       answer: "It was busy.",
+      leveledAnswer: "It was really hectic because I overslept and had to rush to get everything ready.",
       pushes: [
         "Busy is pretty vague. Give us a more specific word for how the morning felt.",
         "Now add what made it that way.",
@@ -22,6 +23,7 @@ export default {
     {
       question: "What time did you wake up?",
       answer: "I woke up late.",
+      leveledAnswer: "I woke up at eight because my alarm didn't go off.",
       pushes: [
         "Give us the actual time, not just late.",
         "Now tell us why, using 'because' in the same sentence.",
@@ -31,6 +33,7 @@ export default {
     {
       question: "What did you do to get ready?",
       answer: "I got dressed and left.",
+      leveledAnswer: "First I brushed my teeth and got dressed, then I grabbed my bag and rushed out the door.",
       pushes: [
         "Walk us through it in more steps, not just two verbs.",
         "Now add 'first... then...' to show the order.",
@@ -40,6 +43,7 @@ export default {
     {
       question: "Did you have breakfast?",
       answer: "Yes, I ate something.",
+      leveledAnswer: "Yes, I ate some toast with my little sister before we left for school.",
       pushes: [
         "Something is vague. Tell us exactly what.",
         "Now tell us where or with who.",
@@ -49,6 +53,7 @@ export default {
     {
       question: "How did you get to school?",
       answer: "I walked.",
+      leveledAnswer: "I walked for about fifteen minutes, and it felt nice because the weather was cool.",
       pushes: [
         "Add how long it took.",
         "Now tell us how it felt, and why.",
@@ -58,6 +63,7 @@ export default {
     {
       question: "Was anything different about this morning?",
       answer: "Not really.",
+      leveledAnswer: "Actually, I had toast instead of cereal, but it didn't really change how my morning felt.",
       pushes: [
         "Push yourself to find one small thing that was different.",
         "Now explain why that small thing mattered or didn't.",
@@ -67,6 +73,7 @@ export default {
     {
       question: "What would make your mornings easier?",
       answer: "Waking up earlier.",
+      leveledAnswer: "If I woke up earlier, I wouldn't have to rush and I could eat breakfast calmly.",
       pushes: [
         "Turn that into a full sentence with 'If I...'",
         "Now add what would happen next, as a result.",
@@ -76,6 +83,7 @@ export default {
     {
       question: "Is there a morning routine you'd like to start?",
       answer: "Maybe exercise.",
+      leveledAnswer: "Maybe some light stretching before school, but I haven't started because I always wake up too late.",
       pushes: [
         "Say more about what kind, and when.",
         "Now tell us why you haven't started yet.",

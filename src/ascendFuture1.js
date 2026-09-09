@@ -15,6 +15,7 @@ export default {
     {
       question: "Tell me about what you want to do after you finish school.",
       answer: "I'm not sure yet, maybe college.",
+      leveledAnswer: "I'm not fully sure yet, but I've been leaning toward studying psychology, mainly because I find it genuinely fascinating how people's minds and behavior work.",
       pushes: [
         "That's honest, but let's get more specific. What field or area interests you?",
         "Now tell us why that area interests you.",
@@ -24,6 +25,7 @@ export default {
     {
       question: "What's your opinion on the education system you're part of?",
       answer: "It's okay, but kind of stressful.",
+      leveledAnswer: "It's honestly quite overwhelming at times because of how much pressure is placed on exam results, although I do appreciate that it's pushed me to develop real discipline.",
       pushes: [
         "'Stressful' is a start, give us a more precise word or reason.",
         "Now balance that with something positive about the system.",
@@ -33,6 +35,7 @@ export default {
     {
       question: "Do you feel pressure about your future, and where does it come from?",
       answer: "Yeah, mostly from my parents, I guess.",
+      leveledAnswer: "I definitely feel pressure, mostly from my parents, but honestly a lot of it also comes from comparing myself to how far along my friends already seem to be.",
       pushes: [
         "Good instinct. Now commit to that with a clearer stance, not just 'I guess'.",
         "Now name another source of that pressure, not just one.",
@@ -42,6 +45,7 @@ export default {
     {
       question: "Describe a moment that shaped what you want to do in the future.",
       answer: "Something happened and it made me think differently.",
+      leveledAnswer: "I volunteered at a local shelter last year, and it genuinely shifted my thinking away from chasing a high salary toward wanting a career that actually feels meaningful.",
       pushes: [
         "'Something' is too vague. What exactly happened?",
         "Now explain specifically how your thinking changed.",
@@ -51,6 +55,7 @@ export default {
     {
       question: "Do you think grades are the best way to measure someone's potential?",
       answer: "No, not really.",
+      leveledAnswer: "Not really, because grades mainly measure how well someone performs under exam conditions, not qualities like creativity or resilience, which I think would be far better measured through real projects or portfolios.",
       pushes: [
         "Good start, but too brief. Give us a specific reason.",
         "Now suggest what could measure potential better.",
@@ -60,6 +65,7 @@ export default {
     {
       question: "How important is it to know exactly what you want to do at your age?",
       answer: "Not that important, I think.",
+      leveledAnswer: "I don't think it's that important, since plenty of successful people figured things out much later, though I'd say that depends a bit on how competitive the field you're aiming for actually is.",
       pushes: [
         "Good instinct. Now support that with a specific reason or example.",
         "Now qualify it, is that true for everyone, or does it depend?",
@@ -69,6 +75,7 @@ export default {
     {
       question: "What's one skill you think will matter most in your future, beyond school subjects?",
       answer: "Being able to talk to people, maybe.",
+      leveledAnswer: "I'd say strong communication skills matter most, because no matter what career you end up in, being able to clearly express your ideas will always set you apart.",
       pushes: [
         "'Talk to people' is a bit vague for this context. Name the precise skill.",
         "Now explain why that skill will matter.",
@@ -78,6 +85,7 @@ export default {
     {
       question: "Where do you see yourself in ten years?",
       answer: "I don't really know, somewhere good I hope.",
+      leveledAnswer: "I'd like to think I'll be working in a field I'm genuinely passionate about, maybe living in a different city, with enough stability to actually enjoy my own life.",
       pushes: [
         "That's honest, but let's practice speculating with more precision. Try 'I might...' or 'I'd like to think...'",
         "Now add one concrete detail to that picture.",

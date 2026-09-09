@@ -13,6 +13,7 @@ export default {
     {
       question: "Tell me about a day that didn't go the way you planned.",
       answer: "It was a mess.",
+      leveledAnswer: "The whole morning fell apart because my car wouldn't start, and this happened just last week.",
       pushes: [
         "A mess is very general. Tell us the actual problem.",
         "Now tell us when this happened.",
@@ -22,6 +23,7 @@ export default {
     {
       question: "What was your original plan for that day?",
       answer: "Just a normal day.",
+      leveledAnswer: "I had planned to go straight to work and finish an early report, but it started going wrong the moment I left the house.",
       pushes: [
         "Tell us specifically what you had planned.",
         "Now tell us at what point it started going wrong.",
@@ -31,6 +33,7 @@ export default {
     {
       question: "What was the first thing that went wrong?",
       answer: "Something came up.",
+      leveledAnswer: "My babysitter cancelled last minute, and that threw off my entire schedule for the morning.",
       pushes: [
         "Tell us exactly what came up.",
         "Now tell us why it threw off your plan.",
@@ -40,6 +43,7 @@ export default {
     {
       question: "How did you react in that moment?",
       answer: "I got stressed.",
+      leveledAnswer: "I felt completely panicked, and my first instinct was to call my sister for help.",
       pushes: [
         "Give us a more precise feeling word than stressed.",
         "Now tell us what your first instinct was.",
@@ -49,6 +53,7 @@ export default {
     {
       question: "What did you do to adjust your plans?",
       answer: "I rearranged some things.",
+      leveledAnswer: "I moved my meeting to the afternoon and worked from home instead, and it actually worked out fine in the end.",
       pushes: [
         "Tell us exactly what you rearranged.",
         "Now tell us if it worked out in the end.",
@@ -58,6 +63,7 @@ export default {
     {
       question: "Did anyone else get affected by the change of plans?",
       answer: "A couple of people.",
+      leveledAnswer: "My coworkers had to wait for my report, so I messaged them right away to explain the delay.",
       pushes: [
         "Tell us who, and how they were affected.",
         "Now tell us how you handled that with them.",
@@ -67,6 +73,7 @@ export default {
     {
       question: "Looking back, what would you do differently?",
       answer: "Build in more flexibility.",
+      leveledAnswer: "If I had left more time in the morning, the whole day wouldn't have felt so rushed.",
       pushes: [
         "Give us one exact thing you'd change.",
         "Now use 'If I had...' to talk about that day.",
@@ -76,6 +83,7 @@ export default {
     {
       question: "How do you usually handle unexpected changes now?",
       answer: "I try to stay flexible.",
+      leveledAnswer: "I usually take a few minutes to reprioritize my tasks, and it's definitely gotten easier with practice.",
       pushes: [
         "Describe exactly what staying flexible looks like for you.",
         "Now tell us if it's gotten easier over time.",

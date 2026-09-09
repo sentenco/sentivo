@@ -13,6 +13,7 @@ export default {
     {
       question: "Tell me about your stress levels these days.",
       answer: "Pretty high.",
+      leveledAnswer: "It's honestly been really high lately, mostly because of the workload at the office.",
       pushes: [
         "Give us a more specific word or scale.",
         "Now tell us what's causing most of it.",
@@ -22,6 +23,7 @@ export default {
     {
       question: "What's the biggest source of stress in your life right now?",
       answer: "Work, mostly.",
+      leveledAnswer: "It's mainly the constant deadlines, and it's been like this for the past couple of months.",
       pushes: [
         "Tell us exactly what part of work.",
         "Now tell us how long it's been like this.",
@@ -31,6 +33,7 @@ export default {
     {
       question: "How does that stress show up in your day-to-day life?",
       answer: "I feel tired a lot.",
+      leveledAnswer: "I get frequent headaches and find it hard to concentrate, and I've noticed I'm more short-tempered with my family too.",
       pushes: [
         "Tell us more specifically how it affects you, physically or mentally.",
         "Now tell us if it affects the people around you too.",
@@ -40,6 +43,7 @@ export default {
     {
       question: "What do you currently do to manage it?",
       answer: "Not much, honestly.",
+      leveledAnswer: "I try to take short walks during my lunch break, but honestly it doesn't help all that much.",
       pushes: [
         "Push yourself to name one thing you do try.",
         "Now tell us how well it actually works.",
@@ -49,6 +53,7 @@ export default {
     {
       question: "How do you separate work from personal time?",
       answer: "I try to, but it's hard.",
+      leveledAnswer: "It's hard because I keep checking emails at night, so I'd like to start turning off notifications after six.",
       pushes: [
         "Tell us specifically what makes it hard.",
         "Now tell us one boundary you'd like to set.",
@@ -58,6 +63,7 @@ export default {
     {
       question: "Has anyone noticed you seem stressed?",
       answer: "Maybe once or twice.",
+      leveledAnswer: "My partner mentioned I seemed on edge last week, and it made me realize I should slow down.",
       pushes: [
         "Tell us who, and what they said or noticed.",
         "Now tell us how that made you feel.",
@@ -67,6 +73,7 @@ export default {
     {
       question: "What would a healthier balance look like for you?",
       answer: "More free time.",
+      leveledAnswer: "It would mean leaving work on time and actually having weekends to myself, so a first step would be saying no to extra tasks.",
       pushes: [
         "Describe it in specific terms, not just 'more free time'.",
         "Now tell us one real step toward that.",
@@ -76,6 +83,7 @@ export default {
     {
       question: "What's stopping you from making that change now?",
       answer: "It's complicated.",
+      leveledAnswer: "I worry that saying no will make me look less committed, but I think I could change that with practice.",
       pushes: [
         "Push yourself to name one specific reason.",
         "Now tell us if you think it's something you can change.",

@@ -13,6 +13,7 @@ export default {
     {
       question: "Tell me about a recent test or exam.",
       answer: "It was hard.",
+      leveledAnswer: "It was a really tough science test because the questions covered topics we barely reviewed.",
       pushes: [
         "Hard is very general. Tell us what subject it was, exactly.",
         "Now tell us what specifically made it hard.",
@@ -22,6 +23,7 @@ export default {
     {
       question: "How did you prepare for it?",
       answer: "I studied.",
+      leveledAnswer: "I made flashcards and reviewed my notes for about two hours the night before.",
       pushes: [
         "Studied how, exactly? Give us a method.",
         "Now tell us how long you spent preparing.",
@@ -31,6 +33,7 @@ export default {
     {
       question: "How did you feel right before it?",
       answer: "Nervous.",
+      leveledAnswer: "I felt really anxious, and my stomach was in knots right before it started.",
       pushes: [
         "Give us a more precise feeling word than nervous.",
         "Now tell us how your body felt because of it.",
@@ -40,6 +43,7 @@ export default {
     {
       question: "Was there a question or part that surprised you?",
       answer: "Yes, one part.",
+      leveledAnswer: "Yes, there was a question about a topic we never covered, so I just made my best guess and moved on.",
       pushes: [
         "Tell us exactly what that part was about.",
         "Now tell us how you handled it in the moment.",
@@ -49,6 +53,7 @@ export default {
     {
       question: "How do you think you did?",
       answer: "Not bad, I think.",
+      leveledAnswer: "I think I got around eighty percent, because I was confident on most of the questions.",
       pushes: [
         "Give us a clearer prediction, using a percentage or grade guess.",
         "Now tell us what makes you think that.",
@@ -58,6 +63,7 @@ export default {
     {
       question: "How did you feel after it was over?",
       answer: "Relieved.",
+      leveledAnswer: "I felt so relieved that I went straight home and watched a movie, which was a huge change from how anxious I felt before.",
       pushes: [
         "Tell us what you did right after to celebrate or relax.",
         "Now compare that feeling to how you felt before.",
@@ -67,6 +73,7 @@ export default {
     {
       question: "What would you do differently next time you prepare?",
       answer: "Start earlier.",
+      leveledAnswer: "Next time I will start studying at least a week earlier instead of just the night before.",
       pushes: [
         "Tell us how much earlier, exactly.",
         "Now turn it into a plan with 'Next time I will...'",
@@ -76,6 +83,7 @@ export default {
     {
       question: "How do you usually deal with exam stress?",
       answer: "I try not to think about it.",
+      leveledAnswer: "I usually take a few deep breaths and go for a short walk, and it actually helps me calm down.",
       pushes: [
         "Tell us one real thing you do, not just avoidance.",
         "Now tell us if it actually works for you.",

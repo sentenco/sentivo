@@ -13,6 +13,7 @@ export default {
     {
       question: "Tell me about a health habit you're trying to build.",
       answer: "Exercising more.",
+      leveledAnswer: "I'm trying to go running, and I'm aiming for at least three times a week.",
       pushes: [
         "Tell us exactly what kind of exercise.",
         "Now tell us how often you're aiming for.",
@@ -22,6 +23,7 @@ export default {
     {
       question: "Why did you decide to start it?",
       answer: "I felt like I should.",
+      leveledAnswer: "I wanted more energy for my kids, and it really started after I got out of breath just climbing the stairs.",
       pushes: [
         "Give us a more specific, real reason.",
         "Now tell us if something particular triggered the decision.",
@@ -31,6 +33,7 @@ export default {
     {
       question: "How has it been going so far?",
       answer: "Okay, I guess.",
+      leveledAnswer: "It's been fairly steady, actually, since I've managed to stick to it most weeks.",
       pushes: [
         "Give us a more precise word than okay.",
         "Now tell us how consistent you've actually been.",
@@ -40,6 +43,7 @@ export default {
     {
       question: "What's the hardest part about keeping it up?",
       answer: "Finding time.",
+      leveledAnswer: "It's hardest on weekday mornings, because work always ends up taking priority.",
       pushes: [
         "Tell us specifically when it's hardest to find time.",
         "Now tell us what usually gets in the way.",
@@ -49,6 +53,7 @@ export default {
     {
       question: "Have you had any setbacks?",
       answer: "A couple.",
+      leveledAnswer: "I got sick for a week and lost all momentum, but I just started small again and slowly built it back up.",
       pushes: [
         "Tell us about one specific setback.",
         "Now tell us how you got back on track after it.",
@@ -58,6 +63,7 @@ export default {
     {
       question: "What's helped you stay motivated?",
       answer: "Just pushing myself.",
+      leveledAnswer: "Having a workout partner has really helped, and it's honestly made a big difference in staying consistent.",
       pushes: [
         "Give us a more specific motivator, like a person, goal, or reward.",
         "Now tell us how effective that's actually been.",
@@ -67,6 +73,7 @@ export default {
     {
       question: "How do you think this habit will affect you long-term?",
       answer: "It'll help.",
+      leveledAnswer: "If I keep this up, I think I'll have a lot more energy and fewer aches by next year.",
       pushes: [
         "Give us a specific benefit you're hoping for.",
         "Now put it in a sentence with 'If I keep this up...'",
@@ -76,6 +83,7 @@ export default {
     {
       question: "Is there another habit you'd like to build after this one?",
       answer: "Maybe something else.",
+      leveledAnswer: "I'd like to start meal prepping too, but I'm waiting until running feels automatic first.",
       pushes: [
         "Tell us what it is, exactly.",
         "Now tell us why you're waiting until after this one.",

@@ -15,6 +15,7 @@ export default {
     {
       question: "Tell me about a show or movie you like.",
       answer: "It's good.",
+      leveledAnswer: "It's really gripping because every episode ends with a huge cliffhanger.",
       pushes: [
         "That word isn't doing much work. Say it again with a more specific adjective than good, nice, or fine.",
         "Now add a reason or detail to make it a fuller sentence.",
@@ -24,6 +25,7 @@ export default {
     {
       question: "What's it about?",
       answer: "It's about some people.",
+      leveledAnswer: "It's a mystery series about a group of students solving a crime at their school.",
       pushes: [
         "That's pretty vague. Give us more, like the genre or the main idea.",
         "Now add one specific detail about the story.",
@@ -33,6 +35,7 @@ export default {
     {
       question: "What did you think of the last episode or scene you watched?",
       answer: "It was okay.",
+      leveledAnswer: "It was actually really tense because the main character finally found out the truth.",
       pushes: [
         "'Okay' doesn't tell us much. Give us a stronger opinion word.",
         "Now give one reason why you felt that way.",
@@ -42,6 +45,7 @@ export default {
     {
       question: "Who's your favorite character?",
       answer: "I like the main character.",
+      leveledAnswer: "I really admire the main character because she stays brave even when things go wrong, like when she stood up to the villain alone.",
       pushes: [
         "'Like' is pretty plain. Tell us more about why.",
         "Now add a specific example of something they did.",
@@ -51,6 +55,7 @@ export default {
     {
       question: "How did you feel after watching it?",
       answer: "I was happy.",
+      leveledAnswer: "I felt really satisfied because the ending finally answered all the questions from the season.",
       pushes: [
         "Instead of happy, sad, or excited, give us the exact feeling.",
         "Now combine the feeling and the reason into one sentence.",
@@ -60,6 +65,7 @@ export default {
     {
       question: "Would you recommend it to a friend?",
       answer: "Maybe, I guess.",
+      leveledAnswer: "I'd definitely recommend it to my friend who loves mystery shows, because the plot twists are so unexpected.",
       pushes: [
         "Good start. Now tell us who you'd recommend it to, and why.",
         "Can you make that sound more confident, not just 'I guess'?",
@@ -69,6 +75,7 @@ export default {
     {
       question: "What are you planning to watch next?",
       answer: "I don't know yet.",
+      leveledAnswer: "I'm thinking about starting a new comedy series with my sister this weekend.",
       pushes: [
         "That's honest, but let's practice speculating. Try 'I might...' or 'I'm thinking about...'",
         "Now add why, or who with.",
@@ -78,6 +85,7 @@ export default {
     {
       question: "Is there a new season or movie you're looking forward to?",
       answer: "Maybe the next season.",
+      leveledAnswer: "I'm really looking forward to the next season because the last episode left everything unresolved.",
       pushes: [
         "Tell us why that matters to you. Give a reason.",
         "Now put it all together in one full, natural-sounding sentence.",

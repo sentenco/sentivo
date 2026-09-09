@@ -13,6 +13,7 @@ export default {
     {
       question: "Do you think social media makes people compare themselves to others more?",
       answer: "Yeah, definitely.",
+      leveledAnswer: "For a lot of people, I'd say it's the constant stream of curated, highlight-reel photos that quietly trains you to measure your own life against everyone else's best moments.",
       pushes: [
         "Definitely is a strong word with no support. Give us a specific mechanism, like what on the app actually drives that comparison.",
         "Now hedge it slightly, since this isn't true for everyone. Try 'for a lot of people...'",
@@ -22,6 +23,7 @@ export default {
     {
       question: "Have you ever compared yourself to someone you saw online?",
       answer: "Sometimes, yeah.",
+      leveledAnswer: "Once I saw a classmate's travel photos and found myself comparing my lifestyle to hers, even though I knew I was only seeing the highlights.",
       pushes: [
         "Give us a specific, concrete example rather than a general admission.",
         "Now name precisely what you were comparing, appearance, success, lifestyle, something else.",
@@ -31,6 +33,7 @@ export default {
     {
       question: "Why do you think people post highlight reels instead of ordinary moments?",
       answer: "They want to look good.",
+      leveledAnswer: "I think it's in part because of a deeper need for validation, people post the polished version of themselves because they're genuinely insecure about how they'll be judged otherwise.",
       pushes: [
         "Push past the obvious answer. Is there a deeper motivation, insecurity, validation, social pressure?",
         "Now use a nuanced connector like 'in part because...' to show it's not the only reason.",
@@ -40,6 +43,7 @@ export default {
     {
       question: "Is it fair to blame the platforms themselves for this comparison culture?",
       answer: "Kind of, yes.",
+      leveledAnswer: "I get that users choose what they post, but platforms are responsible for designing algorithms that reward comparison, so while individual choice plays a role, I'd still say the platforms bear more of the blame.",
       pushes: [
         "'Kind of' is doing all the work here. Distinguish what the platform is responsible for versus what isn't.",
         "Now acknowledge the counterargument before restating your position.",
@@ -49,6 +53,7 @@ export default {
     {
       question: "Do you think this affects some people more than others?",
       answer: "Probably, yeah.",
+      leveledAnswer: "I think younger teens are especially vulnerable, because their sense of identity is still forming, so what they see online has a much bigger influence on how they see themselves.",
       pushes: [
         "Name a specific group or factor that might make someone more vulnerable to it.",
         "Now explain why that factor makes a difference, not just that it does.",
@@ -58,6 +63,7 @@ export default {
     {
       question: "Have you ever changed your own posting habits because of this?",
       answer: "A bit, maybe.",
+      leveledAnswer: "I stopped posting as many selfies as I used to, mainly after I realized I was only doing it to get reassurance from likes and comments.",
       pushes: [
         "Give us a concrete example of what actually changed.",
         "Now tell us what prompted that change, specifically.",
@@ -67,6 +73,7 @@ export default {
     {
       question: "What responsibility do you think users have, versus the platforms?",
       answer: "Both are responsible.",
+      leveledAnswer: "Users are responsible for what they choose to post and how they react to it, while platforms design the algorithms that amplify comparison in the first place, so it's ultimately the platforms that hold the greater responsibility.",
       pushes: [
         "Unpack that. What exactly falls on the user, and what falls on the platform?",
         "Now weigh them against each other, using something like 'while... it's ultimately...'",
@@ -76,6 +83,7 @@ export default {
     {
       question: "Do you think this comparison culture will get better or worse in the future?",
       answer: "Worse, probably.",
+      leveledAnswer: "I'd guess it'll get worse, given how quickly AI-generated, unrealistically perfect content is spreading, although stricter regulation on algorithmic content could realistically slow that trend down.",
       pushes: [
         "Give a specific trend or piece of evidence behind that prediction.",
         "Now propose one thing that could realistically shift that trajectory.",

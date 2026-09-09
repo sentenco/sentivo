@@ -15,6 +15,7 @@ export default {
     {
       question: "Tell me about your shopping habits.",
       answer: "I shop sometimes, it's fine.",
+      leveledAnswer: "I actually shop pretty carefully because I don't like wasting money on things I don't need.",
       pushes: [
         "That word isn't doing much work. Say it again with a more specific word than fine, good, or okay.",
         "Now add a reason or detail to make it a fuller sentence.",
@@ -24,6 +25,7 @@ export default {
     {
       question: "What did you buy recently?",
       answer: "I got some clothes.",
+      leveledAnswer: "I picked up a new jacket because my old one finally wore out.",
       pushes: [
         "'Got' is a pretty plain verb. Try a stronger one that shows more.",
         "Now add why you bought them.",
@@ -33,6 +35,7 @@ export default {
     {
       question: "How do you feel about spending money on things you want, not just need?",
       answer: "It's okay sometimes.",
+      leveledAnswer: "It actually feels pretty rewarding sometimes because I work hard and deserve a treat now and then.",
       pushes: [
         "'Okay' doesn't tell us much. Give us a stronger opinion word.",
         "Now give one reason why you feel that way.",
@@ -42,6 +45,7 @@ export default {
     {
       question: "Tell me about something you saved up for.",
       answer: "I saved for something and got it.",
+      leveledAnswer: "I saved up for a new laptop, and it took me about four months.",
       pushes: [
         "'Something' is vague. What exactly did you save for?",
         "Now tell us how long it took.",
@@ -51,6 +55,7 @@ export default {
     {
       question: "Do you usually plan your spending, or just decide in the moment?",
       answer: "A little of both, I think.",
+      leveledAnswer: "I mostly plan ahead, but last week I ended up buying a coffee maker on impulse.",
       pushes: [
         "Give us more. Which one do you do more often?",
         "Now add an example of a time you did this.",
@@ -60,6 +65,7 @@ export default {
     {
       question: "Is there something you'd like to save for?",
       answer: "Maybe a trip, I guess.",
+      leveledAnswer: "I'd like to save for a trip because I haven't taken a proper vacation in years.",
       pushes: [
         "Good start. Now tell us why that matters to you.",
         "Can you make that sound more confident, not just 'I guess'?",
@@ -69,6 +75,7 @@ export default {
     {
       question: "What are your plans for your money this month?",
       answer: "I don't know yet.",
+      leveledAnswer: "I'm thinking about putting some extra money toward my savings account this month.",
       pushes: [
         "That's honest, but let's practice speculating. Try 'I might...' or 'I'm thinking about...'",
         "Now add what you'd spend it on, specifically.",
@@ -78,6 +85,7 @@ export default {
     {
       question: "Is there a purchase you're looking forward to making?",
       answer: "Maybe a new phone.",
+      leveledAnswer: "I'm really looking forward to getting a new phone because mine barely holds a charge anymore.",
       pushes: [
         "Tell us why that matters to you. Give a reason.",
         "Now put it all together in one full, natural-sounding sentence.",

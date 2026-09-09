@@ -15,6 +15,7 @@ export default {
     {
       question: "Tell me about the last trip you took.",
       answer: "It was fun.",
+      leveledAnswer: "It was really refreshing because I finally got to disconnect from work for a few days.",
       pushes: [
         "That word isn't doing much work. Say it again with a more specific adjective than fun, good, or nice.",
         "Now add a reason or detail to make it a fuller sentence.",
@@ -24,6 +25,7 @@ export default {
     {
       question: "How do you usually get around, day to day?",
       answer: "I just drive, or take the bus.",
+      leveledAnswer: "I usually take the bus, and it takes about forty minutes, though I don't mind it because I can just relax.",
       pushes: [
         "That's clear, but plain. Tell us more, like how long it usually takes.",
         "Now add how you feel about it.",
@@ -33,6 +35,7 @@ export default {
     {
       question: "How was your trip to work or somewhere recently?",
       answer: "It was okay.",
+      leveledAnswer: "It was actually really stressful because the traffic was much heavier than usual.",
       pushes: [
         "'Okay' doesn't tell us much. Give us a stronger opinion word.",
         "Now give one reason why you felt that way.",
@@ -42,6 +45,7 @@ export default {
     {
       question: "Tell me about a place you visited that you really liked.",
       answer: "I went somewhere nice.",
+      leveledAnswer: "I went to Baguio, and I loved it because the cool weather was such a nice change.",
       pushes: [
         "'Somewhere' is vague. Where exactly did you go?",
         "Now tell us what made it nice.",
@@ -51,6 +55,7 @@ export default {
     {
       question: "Do you prefer traveling alone or with others?",
       answer: "With others, mostly.",
+      leveledAnswer: "I prefer traveling with others because it's more fun to share the experience, like when my sister and I explored a new city together last year.",
       pushes: [
         "Give us more. Why do you prefer that?",
         "Now add an example from a real trip.",
@@ -60,6 +65,7 @@ export default {
     {
       question: "Is there a place you'd like to visit someday?",
       answer: "Maybe somewhere warm, I guess.",
+      leveledAnswer: "I'd like to visit somewhere warm because I really want to relax on a beach for once.",
       pushes: [
         "Good start. Now tell us why that place appeals to you.",
         "Can you make that sound more confident, not just 'I guess'?",
@@ -69,6 +75,7 @@ export default {
     {
       question: "What are your travel plans for this year?",
       answer: "I don't know yet.",
+      leveledAnswer: "I'm thinking about visiting Cebu with my husband sometime this year.",
       pushes: [
         "That's honest, but let's practice speculating. Try 'I might...' or 'I'm thinking about...'",
         "Now add where, or who with.",
@@ -78,6 +85,7 @@ export default {
     {
       question: "Is there anything about traveling you're looking forward to?",
       answer: "Maybe just relaxing somewhere new.",
+      leveledAnswer: "I'm really looking forward to relaxing somewhere new because I've been working nonstop lately.",
       pushes: [
         "Tell us why that matters to you. Give a reason.",
         "Now put it all together in one full, natural-sounding sentence.",

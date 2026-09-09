@@ -13,6 +13,7 @@ export default {
     {
       question: "Tell me about a time travel didn't go smoothly for you.",
       answer: "There was a problem.",
+      leveledAnswer: "My flight got delayed by six hours, and this happened last year at the airport in Cebu.",
       pushes: [
         "Tell us exactly what the problem was.",
         "Now tell us when and where this happened.",
@@ -22,6 +23,7 @@ export default {
     {
       question: "When did you realize something was wrong?",
       answer: "Pretty quickly.",
+      leveledAnswer: "I noticed as soon as the departure board changed to 'delayed,' and I felt my heart sink.",
       pushes: [
         "Describe that moment in more detail.",
         "Now tell us how you felt right then.",
@@ -31,6 +33,7 @@ export default {
     {
       question: "What was your first reaction?",
       answer: "I panicked a little.",
+      leveledAnswer: "I felt really anxious, and my first thought was whether I'd miss my connecting flight.",
       pushes: [
         "Give us a more precise feeling word.",
         "Now tell us what your first thought was about what to do.",
@@ -40,6 +43,7 @@ export default {
     {
       question: "What did you do to solve it?",
       answer: "I figured something out.",
+      leveledAnswer: "I went straight to the airline counter and asked to be rebooked, and a staff member there helped me find a later connection.",
       pushes: [
         "Tell us exactly what you did, step by step.",
         "Now tell us if you had help from anyone.",
@@ -49,6 +53,7 @@ export default {
     {
       question: "How long did it take to sort out?",
       answer: "A while.",
+      leveledAnswer: "It took about two hours to get everything rebooked, and the waiting was pretty tense the whole time.",
       pushes: [
         "Give us a rough timeframe.",
         "Now tell us what that wait was like.",
@@ -58,6 +63,7 @@ export default {
     {
       question: "Did it affect the rest of your trip?",
       answer: "A bit.",
+      leveledAnswer: "It meant I missed my first night's hotel booking, so I had to rearrange my whole itinerary for the next day.",
       pushes: [
         "Tell us specifically how it affected things.",
         "Now tell us how you adjusted.",
@@ -67,6 +73,7 @@ export default {
     {
       question: "Looking back, how do you feel about it now?",
       answer: "It's kind of funny now.",
+      leveledAnswer: "I was so stressed at the time, but now it actually makes a pretty good story to tell at dinner parties.",
       pushes: [
         "Tell us why it feels that way now, compared to then.",
         "Now tell us if it makes a good story to tell people.",
@@ -76,6 +83,7 @@ export default {
     {
       question: "What would you do differently to avoid it next time?",
       answer: "Plan ahead more.",
+      leveledAnswer: "Next time I will build in a longer layover so a delay doesn't ruin my connection.",
       pushes: [
         "Give us one exact thing you'd change.",
         "Now use 'Next time I will...'",

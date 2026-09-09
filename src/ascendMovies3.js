@@ -13,6 +13,7 @@ export default {
     {
       question: "Tell me about a series you're currently watching.",
       answer: "It's good.",
+      leveledAnswer: "It's really addictive because it's about a group of teens solving mysteries in their town.",
       pushes: [
         "Good is very general. Give us a stronger word.",
         "Now tell us what the series is about.",
@@ -22,6 +23,7 @@ export default {
     {
       question: "How many episodes have you watched?",
       answer: "A lot.",
+      leveledAnswer: "I've watched around fifteen episodes, and I'm going through them pretty fast, almost two a night.",
       pushes: [
         "Give us a rough number.",
         "Now tell us how quickly you're going through them.",
@@ -31,6 +33,7 @@ export default {
     {
       question: "What's happening in the story right now?",
       answer: "Some stuff.",
+      leveledAnswer: "Right now the main character just discovered a secret about her family, and I'm really curious to see what happens next.",
       pushes: [
         "Give us one specific plot detail.",
         "Now tell us how you feel about that part of the story.",
@@ -40,6 +43,7 @@ export default {
     {
       question: "Is there a twist or surprise that caught you off guard?",
       answer: "Yes, one part.",
+      leveledAnswer: "Yes, it turned out the character everyone trusted was actually the villain, and I honestly thought it would be someone else.",
       pushes: [
         "Describe that twist in more detail.",
         "Now tell us what you thought would happen instead.",
@@ -49,6 +53,7 @@ export default {
     {
       question: "What do you think will happen next?",
       answer: "Not sure.",
+      leveledAnswer: "I think the main character will finally confront her rival, because the tension between them has been building for episodes.",
       pushes: [
         "Make a real guess, using 'I think... will...'",
         "Now tell us why you think that.",
@@ -58,6 +63,7 @@ export default {
     {
       question: "Is there a character you especially like or dislike?",
       answer: "There's one I like.",
+      leveledAnswer: "There's a character named Alex who's really clever and brave, and I like him because he always finds a way out of trouble.",
       pushes: [
         "Tell us who, and describe them a bit.",
         "Now tell us specifically why you like them.",
@@ -67,6 +73,7 @@ export default {
     {
       question: "Have you talked to anyone else about the series?",
       answer: "A little.",
+      leveledAnswer: "I talked to my friend about the latest episode, and she actually agreed that the twist was shocking.",
       pushes: [
         "Tell us who, and what you talked about.",
         "Now tell us if they agreed with your opinion.",
@@ -76,6 +83,7 @@ export default {
     {
       question: "Is there a new season or series you're looking forward to?",
       answer: "Maybe one.",
+      leveledAnswer: "There's a new season coming out soon, and I'm excited because I really want to know how the story ends.",
       pushes: [
         "Tell us which one, exactly.",
         "Now tell us why you're excited for it.",

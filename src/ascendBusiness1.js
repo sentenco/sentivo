@@ -15,6 +15,7 @@ export default {
     {
       question: "Tell me about how technology has changed your industry.",
       answer: "It's changed a lot, mostly with new software.",
+      leveledAnswer: "It's changed dramatically with the rollout of cloud-based collaboration tools, which has noticeably improved how quickly our team can get things done.",
       pushes: [
         "'New software' is pretty generic. Name what kind of technology specifically, and how it's used.",
         "Now add the effect this had, not just what changed.",
@@ -24,6 +25,7 @@ export default {
     {
       question: "What's your opinion on AI in the workplace?",
       answer: "I think it's useful, but a bit scary too.",
+      leveledAnswer: "While I find it genuinely useful for automating repetitive tasks, I'd argue it also raises legitimate concerns around job security, on the other hand, resisting it entirely isn't realistic either.",
       pushes: [
         "'Scary' is too casual for this context. Give us a more precise, professional word for that concern.",
         "Now frame that as a balanced argument, not just two feelings side by side.",
@@ -33,6 +35,7 @@ export default {
     {
       question: "How do you think AI will affect jobs in the next few years?",
       answer: "Some jobs will probably disappear.",
+      leveledAnswer: "It's likely that roles built around repetitive data entry will gradually be phased out, since AI can already handle that kind of work more efficiently.",
       pushes: [
         "'Disappear' is vague. Which kinds of roles, specifically, and why?",
         "Now hedge that prediction more precisely, this isn't a certainty.",
@@ -42,6 +45,7 @@ export default {
     {
       question: "Describe a time your company adopted a new system or tool.",
       answer: "We got a new tool and it was hard at first.",
+      leveledAnswer: "We rolled out a new project management platform, and the steep learning curve made the transition genuinely difficult at first, eventually, though, the team adapted once we ran a series of hands-on training sessions.",
       pushes: [
         "'Hard' doesn't say much. What exactly made the transition difficult?",
         "Now describe how the situation was resolved, using more formal connecting language.",
@@ -51,6 +55,7 @@ export default {
     {
       question: "What skills do you think will matter most in the future workplace?",
       answer: "Being good with technology, I think.",
+      leveledAnswer: "I'd say data literacy will matter most, since so many roles are increasingly built around interpreting and acting on data-driven insights.",
       pushes: [
         "'Good with technology' is vague for a professional context. Name the actual skill.",
         "Now explain why that skill will matter, connecting it to a real trend.",
@@ -60,6 +65,7 @@ export default {
     {
       question: "Do you think businesses are moving too fast or too slow with new technology?",
       answer: "Maybe too fast, I guess.",
+      leveledAnswer: "Arguably, many businesses are moving too fast, rolling out AI tools before employees have been properly trained to use them responsibly.",
       pushes: [
         "Good instinct. Now commit to that opinion with a stronger stance, not just 'maybe' and 'I guess'.",
         "Now support it with a specific reason or example.",
@@ -69,6 +75,7 @@ export default {
     {
       question: "What do you think a company should consider before adopting AI tools?",
       answer: "They should think about if it's a good idea.",
+      leveledAnswer: "They should carefully weigh not only the cost of implementation but also the ethical implications of how the tool will actually be used.",
       pushes: [
         "That's circular, it doesn't say anything new. Name an actual consideration, like cost, ethics, or training.",
         "Now put two considerations together in one sentence, using a connector like 'not only... but also'.",
@@ -78,6 +85,7 @@ export default {
     {
       question: "Where do you see your industry in ten years?",
       answer: "It'll probably be really different.",
+      leveledAnswer: "I imagine most routine analysis will be handled by AI within the next decade, which should free up professionals to focus on strategy and client relationships instead.",
       pushes: [
         "'Really different' says nothing concrete. Predict something specific.",
         "Now put it all together in one fluent, C1-level sentence with a clear structure.",

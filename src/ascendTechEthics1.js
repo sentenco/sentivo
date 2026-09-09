@@ -15,6 +15,7 @@ export default {
     {
       question: "Tell me about a piece of technology you couldn't imagine living without.",
       answer: "My phone, obviously.",
+      leveledAnswer: "My phone, mainly because it's how I stay connected to everyone I care about, and without it I'd honestly struggle to coordinate even basic plans with my friends.",
       pushes: [
         "'Obviously' skips the actual explanation. Tell us specifically why.",
         "Now add what you'd do differently if you didn't have it.",
@@ -24,6 +25,7 @@ export default {
     {
       question: "What's your opinion on privacy online, do you think we have enough of it?",
       answer: "No, not really, companies know too much.",
+      leveledAnswer: "Not really, companies track things like your exact location and browsing habits to build a profile on you, although I'd say that's more true for some platforms than others.",
       pushes: [
         "'Know too much' is vague. Name a specific example of what they know or do.",
         "Now hedge this a bit, is this true for everyone equally?",
@@ -33,6 +35,7 @@ export default {
     {
       question: "Do you think it's ethical for companies to use personal data to target ads?",
       answer: "Not really, it feels wrong.",
+      leveledAnswer: "It feels wrong mainly because most people never actually gave informed consent for their data to be used that way, though I can see the argument that it does make ads more genuinely relevant instead of just random.",
       pushes: [
         "'Feels wrong' is too vague for this context. Give us the actual ethical issue.",
         "Now consider the other side, is there any argument for it?",
@@ -42,6 +45,7 @@ export default {
     {
       question: "Describe a time technology made something easier, but maybe also caused a problem.",
       answer: "It saved time but I got kind of dependent on it.",
+      leveledAnswer: "Using AI to help draft essays saved me a lot of time, but I noticed I was leaning on it so much that my own writing skills started to feel a bit rusty, and honestly I'm not sure that trade-off was entirely worth it.",
       pushes: [
         "'Dependent' is a start. Give us a specific example of that dependence.",
         "Now reflect on whether the trade-off was worth it.",
@@ -51,6 +55,7 @@ export default {
     {
       question: "What do you think about AI being used to create art or writing?",
       answer: "It's interesting, but kind of unfair to artists.",
+      leveledAnswer: "It's interesting, but the real concern is that these AI models are often trained on artists' work without their consent or compensation, though I do think it's opened up creative tools to people who never had access before.",
       pushes: [
         "'Unfair' is a start, name the specific concern more precisely.",
         "Now balance it, is there anything positive about it too?",
@@ -60,6 +65,7 @@ export default {
     {
       question: "Do you think there should be limits on what technology companies are allowed to do?",
       answer: "Yeah, probably, I think so.",
+      leveledAnswer: "I do think there should be limits, mainly because these companies currently have almost no accountability for the harm their products can cause, so I'd want to see specific limits on how much personal data they're allowed to collect.",
       pushes: [
         "Good instinct. Now commit to a clearer stance and support it with a reason.",
         "Now name a specific kind of limit.",
@@ -69,6 +75,7 @@ export default {
     {
       question: "What responsibility do you think users have when it comes to using technology ethically?",
       answer: "They should think before they post or share things.",
+      leveledAnswer: "They should specifically think about whether what they're sharing could seriously harm someone's reputation, because once something spreads online, it's nearly impossible to fully take back.",
       pushes: [
         "That's a start, but be more specific. What exactly should they think about?",
         "Now connect it to a consequence if they don't.",
@@ -78,6 +85,7 @@ export default {
     {
       question: "How do you think technology will change the biggest ethical questions we face in ten years?",
       answer: "It'll probably bring up a lot of new problems.",
+      leveledAnswer: "I'd guess the biggest ethical question will be how to handle AI making consequential decisions about real people's lives, like hiring or medical care, without genuine human oversight.",
       pushes: [
         "'A lot of new problems' says nothing concrete. Predict something specific.",
         "Now put it all together in one fluent, precise sentence.",

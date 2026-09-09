@@ -13,6 +13,7 @@ export default {
     {
       question: "Tell me about a competition or match you took part in.",
       answer: "It was okay.",
+      leveledAnswer: "It was actually really thrilling because it was the regional swimming championship.",
       pushes: [
         "Okay is very general. Give us a stronger word.",
         "Now tell us exactly what the competition was.",
@@ -22,6 +23,7 @@ export default {
     {
       question: "How did you feel before it started?",
       answer: "Nervous.",
+      leveledAnswer: "I felt really anxious, so I took a few deep breaths before we started.",
       pushes: [
         "Give us a more precise feeling word.",
         "Now tell us what you did to deal with that feeling.",
@@ -31,6 +33,7 @@ export default {
     {
       question: "What happened during it?",
       answer: "A lot happened.",
+      leveledAnswer: "One moment that stood out was when I almost tripped at the start, but I quickly regained my balance and kept going.",
       pushes: [
         "Pick one specific moment and describe it.",
         "Now tell us how you reacted in that moment.",
@@ -40,6 +43,7 @@ export default {
     {
       question: "How did you perform?",
       answer: "Pretty well.",
+      leveledAnswer: "I finished in second place overall, though I struggled a bit with my timing at the start.",
       pushes: [
         "Give us a specific detail that shows how well.",
         "Now tell us if there was a part you struggled with.",
@@ -49,6 +53,7 @@ export default {
     {
       question: "What was the result?",
       answer: "We did fine.",
+      leveledAnswer: "We actually came in third place, and I felt really proud of how far we'd come.",
       pushes: [
         "Give us the actual result, exactly.",
         "Now tell us how you felt about that result.",
@@ -58,6 +63,7 @@ export default {
     {
       question: "Was there a moment you're proud of?",
       answer: "Yes, one part.",
+      leveledAnswer: "Yes, the moment I beat my personal best time, because it showed all the extra training had paid off.",
       pushes: [
         "Describe that moment in more detail.",
         "Now tell us why it makes you proud, specifically.",
@@ -67,6 +73,7 @@ export default {
     {
       question: "What would you improve for next time?",
       answer: "My technique.",
+      leveledAnswer: "Next time I will work on my starting technique, since that's where I lost the most time.",
       pushes: [
         "Tell us exactly which part of your technique.",
         "Now put it into a sentence with 'Next time I will...'",
@@ -76,6 +83,7 @@ export default {
     {
       question: "Is there another competition coming up you're preparing for?",
       answer: "Maybe one.",
+      leveledAnswer: "There's a regional meet next month, and I'm preparing by practicing my starts every day after school.",
       pushes: [
         "Tell us what it is, exactly.",
         "Now tell us how you're preparing for it.",

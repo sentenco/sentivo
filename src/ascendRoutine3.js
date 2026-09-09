@@ -13,6 +13,7 @@ export default {
     {
       question: "Tell me about a recent day off.",
       answer: "It was relaxing.",
+      leveledAnswer: "It was really peaceful because I spent the whole morning reading in bed.",
       pushes: [
         "Relaxing is fine, but give us a more specific word.",
         "Now tell us exactly what you did with the time.",
@@ -22,6 +23,7 @@ export default {
     {
       question: "Did you plan the day, or was it spontaneous?",
       answer: "A bit of both.",
+      leveledAnswer: "I planned breakfast with a friend, but the rest just happened naturally, and I actually preferred that part.",
       pushes: [
         "Tell us which parts were planned and which weren't.",
         "Now tell us which you preferred.",
@@ -31,6 +33,7 @@ export default {
     {
       question: "Did you spend it alone or with others?",
       answer: "Mostly alone.",
+      leveledAnswer: "I chose to spend it alone because I needed some quiet time, though I do enjoy company too.",
       pushes: [
         "Tell us why you chose that, or if it just happened that way.",
         "Now tell us how it compared to spending time with others.",
@@ -40,6 +43,7 @@ export default {
     {
       question: "Did you get any errands done?",
       answer: "A couple.",
+      leveledAnswer: "I picked up groceries and dropped off some dry cleaning, but I don't love mixing chores with a day off.",
       pushes: [
         "Name at least one specific errand.",
         "Now tell us how you felt about mixing errands with a day off.",
@@ -49,6 +53,7 @@ export default {
     {
       question: "What was the best part of the day?",
       answer: "Just relaxing.",
+      leveledAnswer: "The best part was lying in the hammock with a coffee, because I finally felt completely calm.",
       pushes: [
         "Give us a specific moment, not just 'relaxing'.",
         "Now tell us why that moment stood out.",
@@ -58,6 +63,7 @@ export default {
     {
       question: "Did you feel guilty about not being productive?",
       answer: "A little.",
+      leveledAnswer: "I felt a little guilty because I always feel like I should be doing something useful, but I reminded myself that rest counts too.",
       pushes: [
         "Tell us where that feeling comes from.",
         "Now tell us how you talked yourself out of it, if you did.",
@@ -67,6 +73,7 @@ export default {
     {
       question: "How did you feel returning to work the next day?",
       answer: "Fine, mostly.",
+      leveledAnswer: "I felt refreshed, and the day off really did help me focus better.",
       pushes: [
         "Give us a more precise word than fine.",
         "Now tell us if the day off actually helped.",
@@ -76,6 +83,7 @@ export default {
     {
       question: "What would your ideal day off look like?",
       answer: "Something relaxing.",
+      leveledAnswer: "I'd wake up late, go for a walk, and then read all afternoon, but work usually gets in the way.",
       pushes: [
         "Describe it in specific steps.",
         "Now tell us what's stopping you from having a day like that.",

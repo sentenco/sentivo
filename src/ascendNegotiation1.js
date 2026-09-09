@@ -15,6 +15,7 @@ export default {
     {
       question: "Tell me about a time you had to negotiate something.",
       answer: "I asked for a better deal and we agreed.",
+      leveledAnswer: "I was negotiating the terms of a vendor contract, and the strategy that worked was anchoring with a specific number first, backed by data on comparable market rates.",
       pushes: [
         "'Better deal' is vague. What exactly were you negotiating?",
         "Now tell us the strategy you used to get there.",
@@ -24,6 +25,7 @@ export default {
     {
       question: "What makes someone a strong negotiator, in your view?",
       answer: "They're confident and know what they want.",
+      leveledAnswer: "Active listening is probably the most underrated skill, and when you combine it with a clear sense of your own priorities, you can find creative solutions the other side hadn't considered.",
       pushes: [
         "'Confident' is a bit generic here. Name a more specific skill.",
         "Now connect two of these skills together in one sentence.",
@@ -33,6 +35,7 @@ export default {
     {
       question: "Describe a time a negotiation didn't go the way you wanted.",
       answer: "It didn't work out and I was disappointed.",
+      leveledAnswer: "The client walked away because I pushed too hard on price without addressing their timeline concerns, and what I learned is that I need to understand the other side's priorities before making my ask.",
       pushes: [
         "'Didn't work out' says nothing concrete. What actually happened?",
         "Now tell us what you learned or would do differently.",
@@ -42,6 +45,7 @@ export default {
     {
       question: "How important is compromise in a negotiation?",
       answer: "It's important, both sides need to be happy.",
+      leveledAnswer: "Compromise matters because both parties need to walk away feeling the outcome was mutually beneficial, though it isn't always the right approach when one side's position is simply non-negotiable.",
       pushes: [
         "'Happy' is too casual for this context. Give us a more precise term.",
         "Now qualify that, is compromise always the right approach?",
@@ -51,6 +55,7 @@ export default {
     {
       question: "What should someone do before entering an important negotiation?",
       answer: "They should prepare and know the facts.",
+      leveledAnswer: "They should research the other party's likely priorities and set a clear walk-away point, not only to strengthen their position but also to avoid making concessions under pressure.",
       pushes: [
         "'Prepare' and 'know the facts' are vague. Name two specific things to prepare.",
         "Now connect them using a more sophisticated structure than just 'and'.",
@@ -60,6 +65,7 @@ export default {
     {
       question: "Do you think contracts should always be followed exactly as written?",
       answer: "Mostly yes, but sometimes things change.",
+      leveledAnswer: "I'd say contracts should generally be honored as written, since that's what makes agreements reliable, though a clear example of justified flexibility would be unforeseen circumstances like a supplier going out of business.",
       pushes: [
         "Good instinct. Now commit to a clearer stance and support it.",
         "Now give a specific example of when circumstances might justify flexibility.",
@@ -69,6 +75,7 @@ export default {
     {
       question: "What's a common mistake people make when signing a contract?",
       answer: "They don't read it carefully.",
+      leveledAnswer: "People often skip over the termination clause entirely, and that oversight can leave them locked into unfavorable terms if the relationship sours.",
       pushes: [
         "That's a start, but too general. What specifically do people miss?",
         "Now add a consequence of that mistake.",
@@ -78,6 +85,7 @@ export default {
     {
       question: "How do you think negotiation skills will matter in your future career?",
       answer: "They'll probably be really useful.",
+      leveledAnswer: "I expect negotiation skills to become increasingly valuable as my role shifts toward client-facing work, where securing favorable terms will directly affect my results.",
       pushes: [
         "'Really useful' says nothing concrete. Predict something specific.",
         "Now put it all together in one fluent, precise sentence.",

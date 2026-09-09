@@ -15,6 +15,7 @@ export default {
     {
       question: "Tell me about your family.",
       answer: "It's good.",
+      leveledAnswer: "It's really supportive because we always help each other out when things get tough.",
       pushes: [
         "That word isn't doing much work. Say it again with a more specific adjective than good, nice, or fine.",
         "Now add a reason or detail to make it a fuller sentence.",
@@ -24,6 +25,7 @@ export default {
     {
       question: "Who do you live with?",
       answer: "My parents and my sister.",
+      leveledAnswer: "I live with my parents and my younger sister, who's always making everyone laugh, and living together feels pretty comfortable.",
       pushes: [
         "That's clear, but plain. Add a small detail about one of them.",
         "Now add how you'd describe living together, in one word or phrase.",
@@ -33,6 +35,7 @@ export default {
     {
       question: "What do you usually do together as a family?",
       answer: "We just hang out.",
+      leveledAnswer: "We usually watch movies together, and we do it almost every Friday night.",
       pushes: [
         "'Hang out' is pretty vague. What do you actually do together?",
         "Now add when this usually happens.",
@@ -42,6 +45,7 @@ export default {
     {
       question: "Tell me about a family member you're close to.",
       answer: "I'm close to my sister.",
+      leveledAnswer: "I'm close to my sister because she always listens when I need to talk, like last week when she helped me with a problem at school.",
       pushes: [
         "Good, now tell us why you're close to her.",
         "Now give us a specific example of that closeness.",
@@ -51,6 +55,7 @@ export default {
     {
       question: "Do you ever disagree with your family about anything?",
       answer: "Sometimes, a little.",
+      leveledAnswer: "We sometimes disagree about how much time I spend on my phone, but it usually gets resolved once we talk it through calmly.",
       pushes: [
         "Give us more. What kind of thing do you usually disagree about?",
         "Now tell us how it usually gets resolved.",
@@ -60,6 +65,7 @@ export default {
     {
       question: "What's a family tradition you have?",
       answer: "We eat dinner together, I guess.",
+      leveledAnswer: "We eat dinner together every night, and it matters to me because it's the one time we all talk about our day.",
       pushes: [
         "Good start. Now tell us why that tradition matters to you.",
         "Can you make that sound more confident, not just 'I guess'?",
@@ -69,6 +75,7 @@ export default {
     {
       question: "What are your plans with your family this weekend?",
       answer: "I don't know yet.",
+      leveledAnswer: "I'm thinking about going to visit my grandparents with my family this weekend.",
       pushes: [
         "That's honest, but let's practice speculating. Try 'I might...' or 'I'm thinking about...'",
         "Now add what you'd do, specifically.",
@@ -78,6 +85,7 @@ export default {
     {
       question: "Is there anything about your family you're looking forward to?",
       answer: "Maybe a trip we're planning.",
+      leveledAnswer: "I'm really looking forward to the trip we're planning because we haven't traveled together in a long time.",
       pushes: [
         "Tell us why that matters to you. Give a reason.",
         "Now put it all together in one full, natural-sounding sentence.",

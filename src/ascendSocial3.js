@@ -13,6 +13,7 @@ export default {
     {
       question: "What's your honest opinion on 'cancel culture'?",
       answer: "It's kind of good and bad.",
+      leveledAnswer: "I'd say it does more good than harm overall, because it's given ordinary people a way to hold public figures accountable when nothing else would, like when celebrities finally face consequences for things they said years ago.",
       pushes: [
         "That's a hedge, not an opinion. Take a clearer position, even if it's nuanced.",
         "Now support it with one specific example or piece of reasoning.",
@@ -22,6 +23,7 @@ export default {
     {
       question: "Do you think public accountability online is usually fair?",
       answer: "Not always.",
+      leveledAnswer: "It's not always fair, like when someone gets piled on for a single tweet taken out of context, but it does feel fair in cases where there's a clear, repeated pattern of harmful behavior.",
       pushes: [
         "Give a specific case, real or hypothetical, that illustrates when it isn't fair.",
         "Now contrast it with a case where it is fair.",
@@ -31,6 +33,7 @@ export default {
     {
       question: "Is there a difference between holding someone accountable and 'canceling' them?",
       answer: "Yeah, I think so.",
+      leveledAnswer: "I'd say accountability means facing real, proportionate consequences for your actions, while canceling is more about permanently writing someone off, which is exactly what happened in that YouTuber controversy where the apology was never even considered enough.",
       pushes: [
         "Define that distinction precisely, not just 'yeah'.",
         "Now use it to evaluate a real online controversy you've seen.",
@@ -40,6 +43,7 @@ export default {
     {
       question: "Do you think people should be able to change and be forgiven publicly?",
       answer: "I think so, yeah.",
+      leveledAnswer: "I think so, as long as they genuinely acknowledge what they did and change their behavior afterward, although when the harm was really serious, I think forgiveness has to be earned over a much longer time.",
       pushes: [
         "Qualify that, under what conditions should forgiveness happen?",
         "Now address what happens when the harm was serious.",
@@ -49,6 +53,7 @@ export default {
     {
       question: "How much does context matter when judging someone's online mistake?",
       answer: "A lot.",
+      leveledAnswer: "Whether the person's intent was malicious or careless matters a lot, because a genuine mistake made in ignorance carries far less moral weight than something said deliberately to hurt someone.",
       pushes: [
         "Name a specific contextual factor that should matter.",
         "Now explain why that factor changes the moral weight of the mistake.",
@@ -58,6 +63,7 @@ export default {
     {
       question: "Do you think online mobs sometimes go too far?",
       answer: "Yes, definitely.",
+      leveledAnswer: "Definitely, especially when it escalates into doxxing or death threats that are wildly disproportionate to whatever the person actually did, although I'd say that's not the case in every single instance.",
       pushes: [
         "Give us a specific way it goes too far, harassment, doxxing, disproportionate consequences.",
         "Now hedge slightly, since not every case is like that.",
@@ -67,6 +73,7 @@ export default {
     {
       question: "What responsibility do platforms have in moderating this kind of pile-on?",
       answer: "A lot of responsibility.",
+      leveledAnswer: "Platforms could limit how quickly a single post can go viral before it's reviewed, though I'll admit that's genuinely difficult to enforce without slowing down legitimate content too.",
       pushes: [
         "Name one specific thing platforms could do differently.",
         "Now acknowledge a limitation or difficulty in doing that.",
@@ -76,6 +83,7 @@ export default {
     {
       question: "Where do you land, overall, on how we should handle public online mistakes?",
       answer: "Somewhere in the middle.",
+      leveledAnswer: "Overall, I believe public accountability is necessary, but it needs to be proportionate to the offense and leave room for genuine change.",
       pushes: [
         "Turn that into an actual, specific position, not just 'the middle'.",
         "Now summarize it in one precise sentence, as if concluding an argument.",

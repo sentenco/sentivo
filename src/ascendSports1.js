@@ -15,6 +15,7 @@ export default {
     {
       question: "Tell me about a sport or activity you do.",
       answer: "It's fun.",
+      leveledAnswer: "It's really exciting because every practice feels like a new challenge.",
       pushes: [
         "That word isn't doing much work. Say it again with a more specific adjective than fun, good, or nice.",
         "Now add a reason or detail to make it a fuller sentence.",
@@ -24,6 +25,7 @@ export default {
     {
       question: "How often do you practice or play?",
       answer: "A few times a week.",
+      leveledAnswer: "I practice a few times a week at the local court with my teammates, and honestly the schedule feels pretty manageable.",
       pushes: [
         "That's clear, but plain. Tell us more, like where or with who.",
         "Now add how that schedule feels to you.",
@@ -33,6 +35,7 @@ export default {
     {
       question: "Tell me about your last game or practice.",
       answer: "It was okay.",
+      leveledAnswer: "It was actually really intense because we were up against a tough opponent.",
       pushes: [
         "'Okay' doesn't tell us much. Give us a stronger opinion word.",
         "Now give one reason why you felt that way.",
@@ -42,6 +45,7 @@ export default {
     {
       question: "Did anything interesting happen?",
       answer: "We won.",
+      leveledAnswer: "We won by scoring in the last few minutes, and it felt amazing.",
       pushes: [
         "'Won' is fine, but give us more. How did it happen?",
         "Now tell us how that felt.",
@@ -51,6 +55,7 @@ export default {
     {
       question: "Who do you usually play or practice with?",
       answer: "My friends.",
+      leveledAnswer: "My friends, and they're all really encouraging teammates, so we communicate well on the field.",
       pushes: [
         "Give us more. Tell us something about them as teammates.",
         "Now add a detail about how you all work together.",
@@ -60,6 +65,7 @@ export default {
     {
       question: "What's something you're trying to improve?",
       answer: "My speed, I guess.",
+      leveledAnswer: "My speed, because I want to keep up better during matches, so I've been doing extra sprint drills.",
       pushes: [
         "Good start. Now tell us why that matters, or how you're working on it.",
         "Can you make that sound more confident, not just 'I guess'?",
@@ -69,6 +75,7 @@ export default {
     {
       question: "What are your plans for your next game or practice?",
       answer: "I don't know yet.",
+      leveledAnswer: "I'm thinking about focusing more on my footwork during the next practice.",
       pushes: [
         "That's honest, but let's practice speculating. Try 'I might...' or 'I'm thinking about...'",
         "Now add what you'd do differently, or who with.",
@@ -78,6 +85,7 @@ export default {
     {
       question: "Is there anything about this sport you're looking forward to?",
       answer: "Maybe the next tournament.",
+      leveledAnswer: "I'm really looking forward to the next tournament because it's my chance to prove how much I've improved.",
       pushes: [
         "Tell us why that matters to you. Give a reason.",
         "Now put it all together in one full, natural-sounding sentence.",

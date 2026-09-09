@@ -15,6 +15,7 @@ export default {
     {
       question: "Tell me about your day today.",
       answer: "It was fine.",
+      leveledAnswer: "It was actually pretty productive because I managed to finish everything on my list.",
       pushes: [
         "That word isn't doing much work. Say it again with a more specific adjective than fine, good, or okay.",
         "Now add a reason or detail to make it a fuller sentence.",
@@ -24,6 +25,7 @@ export default {
     {
       question: "What did you do at work today?",
       answer: "I did some meetings.",
+      leveledAnswer: "I sat through several meetings about the new project budget.",
       pushes: [
         "'Did' is a pretty plain verb. Try a stronger one that shows more.",
         "Now add what the meetings were about.",
@@ -33,6 +35,7 @@ export default {
     {
       question: "How did you feel by the end of the day?",
       answer: "I was tired.",
+      leveledAnswer: "I felt drained because the meetings ran back to back all afternoon.",
       pushes: [
         "Instead of tired, busy, or stressed, give us the exact feeling.",
         "Now combine the feeling and the reason into one sentence.",
@@ -42,6 +45,7 @@ export default {
     {
       question: "Did anything unusual happen today?",
       answer: "Something came up.",
+      leveledAnswer: "My computer crashed right before a deadline, so I had to redo the report quickly.",
       pushes: [
         "'Something' is pretty vague. What exactly came up?",
         "Now tell us how you handled it.",
@@ -51,6 +55,7 @@ export default {
     {
       question: "How was your commute or trip to work today?",
       answer: "It was okay.",
+      leveledAnswer: "It was actually really frustrating because the traffic was much worse than usual.",
       pushes: [
         "'Okay' doesn't tell us much. Give us a stronger opinion word.",
         "Now give one reason why you felt that way.",
@@ -60,6 +65,7 @@ export default {
     {
       question: "Is there anything you'd do differently tomorrow?",
       answer: "I would start earlier.",
+      leveledAnswer: "Tomorrow I will start earlier so I don't feel so rushed in the morning.",
       pushes: [
         "Good start. Now tell us why you'd start earlier.",
         "Can you make that sound more like a plan, not just an idea? Try 'tomorrow I will...'",
@@ -69,6 +75,7 @@ export default {
     {
       question: "What are your plans for this weekend?",
       answer: "I don't know yet.",
+      leveledAnswer: "I'm thinking about going to the market with my sister on Saturday.",
       pushes: [
         "That's honest, but let's practice speculating. Try 'I might...' or 'I'm thinking about...'",
         "Now add what you'd do it with, or who with.",
@@ -78,6 +85,7 @@ export default {
     {
       question: "Is there anything you're looking forward to this week?",
       answer: "Maybe seeing some friends.",
+      leveledAnswer: "I'm really looking forward to seeing some friends because we haven't caught up in weeks.",
       pushes: [
         "Tell us why that matters to you. Give a reason.",
         "Now put it all together in one full, natural-sounding sentence.",

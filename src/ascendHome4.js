@@ -13,6 +13,7 @@ export default {
     {
       question: "Tell me what your neighborhood is like.",
       answer: "It's nice.",
+      leveledAnswer: "It's actually really peaceful, mostly because it's a quiet residential street with very little traffic.",
       pushes: [
         "Nice is very general. Give us a stronger word.",
         "Now tell us one specific thing that makes it that way.",
@@ -22,6 +23,7 @@ export default {
     {
       question: "How long have you lived there?",
       answer: "A few years.",
+      leveledAnswer: "I've lived there for about five years, and a lot more shops have opened up since I first moved in.",
       pushes: [
         "Give us a more exact number.",
         "Now tell us how it's changed since you moved in.",
@@ -31,6 +33,7 @@ export default {
     {
       question: "Do you know your neighbors well?",
       answer: "Some of them.",
+      leveledAnswer: "I know the couple next door pretty well, and we usually chat whenever we're both out watering the plants.",
       pushes: [
         "Tell us about one specific neighbor.",
         "Now tell us how you usually interact with them.",
@@ -40,6 +43,7 @@ export default {
     {
       question: "Has anything changed in the neighborhood recently?",
       answer: "A little.",
+      leveledAnswer: "A new grocery store opened just around the corner, and I'm really happy about it because it saves me a lot of time.",
       pushes: [
         "Tell us exactly what's changed.",
         "Now tell us how you feel about that change.",
@@ -49,6 +53,7 @@ export default {
     {
       question: "Is there a local place you go to often?",
       answer: "Yes, one place.",
+      leveledAnswer: "There's a small café down the street I go to often, because the owner always remembers my order.",
       pushes: [
         "Tell us exactly what it is.",
         "Now tell us why you like going there.",
@@ -58,6 +63,7 @@ export default {
     {
       question: "Is there anything about the area you'd like to see improved?",
       answer: "A few things.",
+      leveledAnswer: "I'd like to see better street lighting, because it would make walking home at night feel much safer.",
       pushes: [
         "Give us one specific thing.",
         "Now tell us why it would make a real difference.",
@@ -67,6 +73,7 @@ export default {
     {
       question: "Do you feel like part of the community there?",
       answer: "Somewhat.",
+      leveledAnswer: "I feel connected because of the neighbors I've gotten to know, though I'd like to get more involved in local events.",
       pushes: [
         "Tell us specifically what makes you feel connected, or not.",
         "Now tell us if you'd like that to change.",
@@ -76,6 +83,7 @@ export default {
     {
       question: "Could you see yourself living somewhere else in the future?",
       answer: "Maybe.",
+      leveledAnswer: "I might move eventually if my family grows, and I'd probably consider somewhere a bit quieter outside the city.",
       pushes: [
         "Give us a real reason, either way.",
         "Now tell us what kind of place you'd consider instead.",

@@ -15,6 +15,7 @@ export default {
     {
       question: "Tell me how you're feeling today, health-wise.",
       answer: "I feel fine.",
+      leveledAnswer: "I actually feel pretty energetic today because I slept really well last night.",
       pushes: [
         "That word isn't doing much work. Say it again with a more specific word than fine, good, or okay.",
         "Now add a reason or detail to make it a fuller sentence.",
@@ -24,6 +25,7 @@ export default {
     {
       question: "What do you usually do to stay healthy?",
       answer: "I try to eat well and exercise.",
+      leveledAnswer: "I try to eat more vegetables and go jogging three times a week.",
       pushes: [
         "That's clear, but plain. Tell us more, like what kind of exercise or food.",
         "Now add how often you do this.",
@@ -33,6 +35,7 @@ export default {
     {
       question: "How did you sleep last night?",
       answer: "It was okay.",
+      leveledAnswer: "It was actually pretty restless because I kept waking up from the noise outside.",
       pushes: [
         "'Okay' doesn't tell us much. Give us a stronger opinion word.",
         "Now give one reason why you slept that way.",
@@ -42,6 +45,7 @@ export default {
     {
       question: "Tell me about a time you were sick or not feeling well.",
       answer: "I felt bad and stayed home.",
+      leveledAnswer: "I had a bad headache and a sore throat, and it lasted for about three days.",
       pushes: [
         "'Bad' is vague. What were the actual symptoms?",
         "Now tell us how long it lasted.",
@@ -51,6 +55,7 @@ export default {
     {
       question: "Do you go to the doctor regularly?",
       answer: "Sometimes, when I need to.",
+      leveledAnswer: "I usually go about once a year for a check-up, but honestly I get a bit nervous about it.",
       pushes: [
         "Give us more. How often, roughly?",
         "Now add how you feel about going to the doctor.",
@@ -60,6 +65,7 @@ export default {
     {
       question: "Is there a health habit you'd like to improve?",
       answer: "Maybe sleeping more, I guess.",
+      leveledAnswer: "I'd like to sleep more because I've been feeling foggy during the day.",
       pushes: [
         "Good start. Now tell us why that matters to you.",
         "Can you make that sound more confident, not just 'I guess'?",
@@ -69,6 +75,7 @@ export default {
     {
       question: "What are your plans for staying healthy next month?",
       answer: "I don't know yet.",
+      leveledAnswer: "I'm thinking about joining a gym near my house next month.",
       pushes: [
         "That's honest, but let's practice speculating. Try 'I might...' or 'I'm thinking about...'",
         "Now add what you'd do specifically.",
@@ -78,6 +85,7 @@ export default {
     {
       question: "Is there anything about your health you're looking forward to improving?",
       answer: "Maybe having more energy.",
+      leveledAnswer: "I'm really looking forward to having more energy because I want to keep up with my kids.",
       pushes: [
         "Tell us why that matters to you. Give a reason.",
         "Now put it all together in one full, natural-sounding sentence.",
