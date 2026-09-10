@@ -4,6 +4,11 @@ const LESSON = {
   title: "Nominalization for Formal Writing",
   formula: "decide → decision · analyze → analysis (verb → noun)  ·  different → difference · aware → awareness (adjective → noun)",
   leadIn: "Compare these two: “We decided quickly.” vs “The decision was quick.” Which one sounds more like a business report?",
+  importance: [
+    "Nominalization is one of the defining features separating academic and business writing from everyday speech, so it's directly useful for essays, reports, and professional emails.",
+    "It shifts a sentence's focus from who did something to the fact or result itself, which is exactly the tone formal writing expects — a genuine stylistic tool, not just a word-form swap.",
+    "Recognizing these verb-to-noun and adjective-to-noun pairs (decide/decision, aware/awareness) also builds vocabulary breadth, since one root now unlocks two usable words instead of one.",
+  ],
   teach: [
     {
       name: "Turning Verbs into Nouns",
@@ -41,8 +46,9 @@ const LESSON = {
 
 function buildSlides(lesson) {
   const slides = ["cover", "warmup"];
-  if (lesson.comparePairs) slides.push("predict", "compare");
+  if (lesson.importance) slides.push("importance");
   lesson.teach.forEach((_, i) => slides.push(`teach${i}`));
+  if (lesson.comparePairs) slides.push("predict", "compare");
   if (lesson.guided) {
     const guidedChunks = Math.ceil(lesson.guided.length / 3);
     for (let i = 0; i < guidedChunks; i++) slides.push(`guided${i}`);
@@ -72,6 +78,22 @@ function WarmupSlide({ lesson }) {
   );
 }
 
+function ImportanceSlide({ lesson }) {
+  return (
+    <div className="noml-slide noml-slide--part">
+      <h3 className="noml-h">Why This Matters</h3>
+      <div className="noml-importance-list">
+        {lesson.importance.map((line, i) => (
+          <div key={i} className="noml-importance-item">
+            <span className="noml-importance-num">{i + 1}</span>
+            <p className="noml-importance-text">{line}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function TeachSlide({ lesson, index }) {
   const concept = lesson.teach[index];
   return (
@@ -96,7 +118,7 @@ function PredictSlide({ lesson }) {
     <div className="noml-slide">
       <span className="noml-eyebrow">Think About It</span>
       <h3 className="noml-h">{left} <span className="noml-vs">vs</span> {right}</h3>
-      <p className="noml-compare-note">What's the difference? Take a guess before we explain.</p>
+      <p className="noml-compare-note">You've just seen both. In your own words, how would you explain the difference?</p>
     </div>
   );
 }
@@ -170,6 +192,7 @@ function WrapupSlide({ lesson }) {
 function renderSlide(slideType, lesson) {
   if (slideType === "cover") return <CoverSlide lesson={lesson} />;
   if (slideType === "warmup") return <WarmupSlide lesson={lesson} />;
+  if (slideType === "importance") return <ImportanceSlide lesson={lesson} />;
   if (slideType.startsWith("teach")) return <TeachSlide lesson={lesson} index={Number(slideType.replace("teach", ""))} />;
   if (slideType === "predict") return <PredictSlide lesson={lesson} />;
   if (slideType === "compare") return <CompareSlide lesson={lesson} />;
@@ -185,6 +208,7 @@ function stageLabel(slideType) {
   switch (slideType) {
     case "cover": return "Cover";
     case "warmup": return "Warm-up";
+    case "importance": return "Why It Matters";
     case "predict": return "Think About It";
     case "compare": return "Compare";
     case "practice": return "Practice";
@@ -472,6 +496,39 @@ const CSS = `
 }
 .noml-speaking-list { max-width: 720px; font-size: 18px; text-align: left; }
 .noml-speaking-list li { margin-bottom: 8px; }
+
+.noml-importance-list { display: flex; flex-direction: column; gap: 12px; width: 100%; max-width: 720px; text-align: left; }
+.noml-importance-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  background: #E9F5F5;
+  border: 3px solid #1A1A1A;
+  border-radius: 14px;
+  padding: 14px 18px;
+}
+.noml-importance-num {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Bangers', cursive;
+  font-size: 16px;
+  color: #FFFFFF;
+  background: #0E7C86;
+  border: 2.5px solid #1A1A1A;
+  border-radius: 50%;
+}
+.noml-importance-text {
+  font-family: 'Comic Neue', cursive, sans-serif;
+  font-weight: 700;
+  font-size: 16.5px;
+  color: #1A1A1A;
+  line-height: 1.5;
+  margin: 4px 0 0;
+}
 
 .noml-quiz-list {
   display: flex;

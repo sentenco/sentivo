@@ -4,6 +4,11 @@ const LESSON = {
   title: "Parallel Structure",
   formula: "match the form: all -ing, all to + verb, or all one word class, never mixed",
   leadIn: "Read this out loud: “I like swimming, running, and to bike.” Does something feel off about the last item?",
+  importance: [
+    "Broken parallel structure is one of the most common reasons a sentence sounds \"off\" to a native ear, even when the listener can't say exactly why — it disrupts rhythm, not just grammar.",
+    "This shows up everywhere writing matters: resumes, essays, presentations, professional emails — anywhere a list or comparison appears, which is almost everywhere.",
+    "There's a simple, repeatable fix (match the first item's form), so this is a high-payoff editing skill you can apply to your own writing right away, not just something to recognize.",
+  ],
   teach: [
     {
       name: "Parallel Structure in Lists",
@@ -41,8 +46,9 @@ const LESSON = {
 
 function buildSlides(lesson) {
   const slides = ["cover", "warmup"];
-  if (lesson.comparePairs) slides.push("predict", "compare");
+  if (lesson.importance) slides.push("importance");
   lesson.teach.forEach((_, i) => slides.push(`teach${i}`));
+  if (lesson.comparePairs) slides.push("predict", "compare");
   if (lesson.guided) {
     const guidedChunks = Math.ceil(lesson.guided.length / 3);
     for (let i = 0; i < guidedChunks; i++) slides.push(`guided${i}`);
@@ -72,6 +78,22 @@ function WarmupSlide({ lesson }) {
   );
 }
 
+function ImportanceSlide({ lesson }) {
+  return (
+    <div className="psl-slide psl-slide--part">
+      <h3 className="psl-h">Why This Matters</h3>
+      <div className="psl-importance-list">
+        {lesson.importance.map((line, i) => (
+          <div key={i} className="psl-importance-item">
+            <span className="psl-importance-num">{i + 1}</span>
+            <p className="psl-importance-text">{line}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function TeachSlide({ lesson, index }) {
   const concept = lesson.teach[index];
   return (
@@ -96,7 +118,7 @@ function PredictSlide({ lesson }) {
     <div className="psl-slide">
       <span className="psl-eyebrow">Think About It</span>
       <h3 className="psl-h">{left} <span className="psl-vs">vs</span> {right}</h3>
-      <p className="psl-compare-note">What's the difference? Take a guess before we explain.</p>
+      <p className="psl-compare-note">You've just seen both. In your own words, how would you explain the difference?</p>
     </div>
   );
 }
@@ -170,6 +192,7 @@ function WrapupSlide({ lesson }) {
 function renderSlide(slideType, lesson) {
   if (slideType === "cover") return <CoverSlide lesson={lesson} />;
   if (slideType === "warmup") return <WarmupSlide lesson={lesson} />;
+  if (slideType === "importance") return <ImportanceSlide lesson={lesson} />;
   if (slideType.startsWith("teach")) return <TeachSlide lesson={lesson} index={Number(slideType.replace("teach", ""))} />;
   if (slideType === "predict") return <PredictSlide lesson={lesson} />;
   if (slideType === "compare") return <CompareSlide lesson={lesson} />;
@@ -185,6 +208,7 @@ function stageLabel(slideType) {
   switch (slideType) {
     case "cover": return "Cover";
     case "warmup": return "Warm-up";
+    case "importance": return "Why It Matters";
     case "predict": return "Think About It";
     case "compare": return "Compare";
     case "practice": return "Practice";
@@ -472,6 +496,39 @@ const CSS = `
 }
 .psl-speaking-list { max-width: 720px; font-size: 18px; text-align: left; }
 .psl-speaking-list li { margin-bottom: 8px; }
+
+.psl-importance-list { display: flex; flex-direction: column; gap: 12px; width: 100%; max-width: 720px; text-align: left; }
+.psl-importance-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  background: #F2EEFB;
+  border: 3px solid #1A1A1A;
+  border-radius: 14px;
+  padding: 14px 18px;
+}
+.psl-importance-num {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Bangers', cursive;
+  font-size: 16px;
+  color: #FFFFFF;
+  background: #6247AA;
+  border: 2.5px solid #1A1A1A;
+  border-radius: 50%;
+}
+.psl-importance-text {
+  font-family: 'Comic Neue', cursive, sans-serif;
+  font-weight: 700;
+  font-size: 16.5px;
+  color: #1A1A1A;
+  line-height: 1.5;
+  margin: 4px 0 0;
+}
 
 .psl-quiz-list {
   display: flex;
