@@ -4,6 +4,11 @@ const LESSON = {
   title: "Question Tags with Modals & Rare Auxiliaries",
   formula: "basic tag review  ·  true modal + flipped modal tag  ·  have to / used to + do-support tag",
   leadIn: "Finish this out loud: “You're a student here, ___?” What tag word did you reach for?",
+  importance: [
+    "They're everywhere in real conversation — used constantly to check, confirm, or soften what someone just said, more than a full yes/no question would.",
+    "Forming them correctly proves you actually control the auxiliary (be/do/have/modals), not just memorized whole sentences.",
+    "Intonation carries real meaning: a rising tag genuinely asks, a falling tag just assumes agreement.",
+  ],
   teach: [
     {
       name: "Quick Review: The Basic Pattern",
@@ -50,6 +55,7 @@ const LESSON = {
 
 function buildSlides(lesson) {
   const slides = ["cover", "warmup"];
+  if (lesson.importance) slides.push("importance");
   lesson.teach.forEach((_, i) => slides.push(`teach${i}`));
   if (lesson.comparePairs) slides.push("predict", "compare");
   if (lesson.guided) {
@@ -76,6 +82,22 @@ function WarmupSlide({ lesson }) {
       <span className="qtml-eyebrow">Warm-up</span>
       <div className="qtml-bubble qtml-bubble--solo">
         <p className="qtml-bubble-text qtml-bubble-text--big">“{lesson.leadIn}”</p>
+      </div>
+    </div>
+  );
+}
+
+function ImportanceSlide({ lesson }) {
+  return (
+    <div className="qtml-slide qtml-slide--part">
+      <h3 className="qtml-h">Why Question Tags Matter</h3>
+      <div className="qtml-importance-list">
+        {lesson.importance.map((line, i) => (
+          <div key={i} className="qtml-importance-item">
+            <span className="qtml-importance-num">{i + 1}</span>
+            <p className="qtml-importance-text">{line}</p>
+          </div>
+        ))}
       </div>
     </div>
   );
@@ -179,6 +201,7 @@ function WrapupSlide({ lesson }) {
 function renderSlide(slideType, lesson) {
   if (slideType === "cover") return <CoverSlide lesson={lesson} />;
   if (slideType === "warmup") return <WarmupSlide lesson={lesson} />;
+  if (slideType === "importance") return <ImportanceSlide lesson={lesson} />;
   if (slideType.startsWith("teach")) return <TeachSlide lesson={lesson} index={Number(slideType.replace("teach", ""))} />;
   if (slideType === "predict") return <PredictSlide lesson={lesson} />;
   if (slideType === "compare") return <CompareSlide lesson={lesson} />;
@@ -194,6 +217,7 @@ function stageLabel(slideType) {
   switch (slideType) {
     case "cover": return "Cover";
     case "warmup": return "Warm-up";
+    case "importance": return "Why It Matters";
     case "predict": return "Think About It";
     case "compare": return "Compare";
     case "practice": return "Practice";
@@ -481,6 +505,39 @@ const CSS = `
 }
 .qtml-speaking-list { max-width: 720px; font-size: 18px; text-align: left; }
 .qtml-speaking-list li { margin-bottom: 8px; }
+
+.qtml-importance-list { display: flex; flex-direction: column; gap: 12px; width: 100%; max-width: 720px; text-align: left; }
+.qtml-importance-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  background: #EAF2FA;
+  border: 3px solid #1A1A1A;
+  border-radius: 14px;
+  padding: 14px 18px;
+}
+.qtml-importance-num {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Bangers', cursive;
+  font-size: 16px;
+  color: #FFFFFF;
+  background: #3E7CB8;
+  border: 2.5px solid #1A1A1A;
+  border-radius: 50%;
+}
+.qtml-importance-text {
+  font-family: 'Comic Neue', cursive, sans-serif;
+  font-weight: 700;
+  font-size: 16.5px;
+  color: #1A1A1A;
+  line-height: 1.5;
+  margin: 4px 0 0;
+}
 
 .qtml-quiz-list {
   display: flex;
