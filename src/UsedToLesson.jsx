@@ -4,6 +4,11 @@ const LESSON = {
   title: "Used To / Be Used To / Get Used To",
   formula: "used to + verb (past habit)  ·  be used to + -ing (familiar)  ·  get used to + -ing (adjusting)",
   leadIn: "Name one thing you used to do as a kid that you don't do anymore.",
+  importance: [
+    "\"Used to\" is one of the first past-habit structures learners meet, but it's also one of the most confused with \"be used to\" — mixing them up produces a sentence that's grammatically fine but means something completely different.",
+    "Native speakers use \"get used to\" constantly when talking about moving, new jobs, or any life change — a real everyday structure, not a textbook rarity.",
+    "The -ing rule (be/get used to always takes -ing, used to never does) is a quick, reliable test you can apply on the spot instead of memorizing sentence by sentence.",
+  ],
   teach: [
     {
       name: "Used To: A Past Habit",
@@ -41,8 +46,9 @@ const LESSON = {
 
 function buildSlides(lesson) {
   const slides = ["cover", "warmup"];
-  if (lesson.comparePairs) slides.push("predict", "compare");
+  if (lesson.importance) slides.push("importance");
   lesson.teach.forEach((_, i) => slides.push(`teach${i}`));
+  if (lesson.comparePairs) slides.push("predict", "compare");
   if (lesson.guided) {
     const guidedChunks = Math.ceil(lesson.guided.length / 3);
     for (let i = 0; i < guidedChunks; i++) slides.push(`guided${i}`);
@@ -72,6 +78,22 @@ function WarmupSlide({ lesson }) {
   );
 }
 
+function ImportanceSlide({ lesson }) {
+  return (
+    <div className="ustl-slide ustl-slide--part">
+      <h3 className="ustl-h">Why This Matters</h3>
+      <div className="ustl-importance-list">
+        {lesson.importance.map((line, i) => (
+          <div key={i} className="ustl-importance-item">
+            <span className="ustl-importance-num">{i + 1}</span>
+            <p className="ustl-importance-text">{line}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function TeachSlide({ lesson, index }) {
   const concept = lesson.teach[index];
   return (
@@ -96,7 +118,7 @@ function PredictSlide({ lesson }) {
     <div className="ustl-slide">
       <span className="ustl-eyebrow">Think About It</span>
       <h3 className="ustl-h">{left} <span className="ustl-vs">vs</span> {right}</h3>
-      <p className="ustl-compare-note">What's the difference? Take a guess before we explain.</p>
+      <p className="ustl-compare-note">You've just seen both. In your own words, how would you explain the difference?</p>
     </div>
   );
 }
@@ -170,6 +192,7 @@ function WrapupSlide({ lesson }) {
 function renderSlide(slideType, lesson) {
   if (slideType === "cover") return <CoverSlide lesson={lesson} />;
   if (slideType === "warmup") return <WarmupSlide lesson={lesson} />;
+  if (slideType === "importance") return <ImportanceSlide lesson={lesson} />;
   if (slideType.startsWith("teach")) return <TeachSlide lesson={lesson} index={Number(slideType.replace("teach", ""))} />;
   if (slideType === "predict") return <PredictSlide lesson={lesson} />;
   if (slideType === "compare") return <CompareSlide lesson={lesson} />;
@@ -185,6 +208,7 @@ function stageLabel(slideType) {
   switch (slideType) {
     case "cover": return "Cover";
     case "warmup": return "Warm-up";
+    case "importance": return "Why It Matters";
     case "predict": return "Think About It";
     case "compare": return "Compare";
     case "practice": return "Practice";
@@ -472,6 +496,39 @@ const CSS = `
 }
 .ustl-speaking-list { max-width: 720px; font-size: 18px; text-align: left; }
 .ustl-speaking-list li { margin-bottom: 8px; }
+
+.ustl-importance-list { display: flex; flex-direction: column; gap: 12px; width: 100%; max-width: 720px; text-align: left; }
+.ustl-importance-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  background: #FDF0F5;
+  border: 3px solid #1A1A1A;
+  border-radius: 14px;
+  padding: 14px 18px;
+}
+.ustl-importance-num {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Bangers', cursive;
+  font-size: 16px;
+  color: #FFFFFF;
+  background: #C2255C;
+  border: 2.5px solid #1A1A1A;
+  border-radius: 50%;
+}
+.ustl-importance-text {
+  font-family: 'Comic Neue', cursive, sans-serif;
+  font-weight: 700;
+  font-size: 16.5px;
+  color: #1A1A1A;
+  line-height: 1.5;
+  margin: 4px 0 0;
+}
 
 .ustl-quiz-list {
   display: flex;
