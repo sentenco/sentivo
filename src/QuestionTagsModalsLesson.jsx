@@ -2,17 +2,22 @@ import { useState } from "react";
 
 const LESSON = {
   title: "Question Tags with Modals & Rare Auxiliaries",
-  formula: "true modal + flipped modal tag  ·  have to / used to + do-support tag",
-  leadIn: "Finish this out loud: “You must be tired, ___?” What tag word did you reach for?",
+  formula: "basic tag review  ·  true modal + flipped modal tag  ·  have to / used to + do-support tag",
+  leadIn: "Finish this out loud: “You're a student here, ___?” What tag word did you reach for?",
   teach: [
     {
+      name: "Quick Review: The Basic Pattern",
+      definition: "A question tag repeats the sentence's own auxiliary — be, do, or have — and flips the polarity: a positive statement gets a negative tag, a negative statement gets a positive one.",
+      examples: ["You're a student here, aren't you?", "She doesn't like coffee, does she?", "They've already left, haven't they?"],
+    },
+    {
       name: "Modal Verb Tags",
-      definition: "Modals like must, might, could, should, will, and would form question tags the same way as any auxiliary: just flip the polarity and repeat the modal.",
+      definition: "Now for the harder case. Modals like must, might, could, should, will, and would follow that same rule: flip the polarity and repeat the modal itself.",
       examples: ["You must be tired, mustn't you?", "She should call him, shouldn't she?", "They will help, won't they?"],
     },
     {
-      name: "Have To, Used To & Ought To: Treated Like Main Verbs",
-      definition: "Have to and used to aren't true auxiliaries, so their tags borrow do/does/did, just like a regular verb. Ought to is the one exception that keeps its own form.",
+      name: "Have To, Used To & Ought To: The Rare Auxiliaries",
+      definition: "Have to and used to look like modals, but they're not true auxiliaries — they act like regular verbs, so their tags borrow do/does/did instead of repeating themselves. Ought to is the one exception that keeps its own form.",
       examples: ["She has to leave, doesn't she?", "You used to live here, didn't you?", "We ought to go, oughtn't we?"],
     },
   ],
@@ -24,6 +29,9 @@ const LESSON = {
     { left: "She could help us, couldn't she?", right: "She used to dance, didn't she?" },
   ],
   guided: [
+    { prompt: "You're new here, ___ you?", answer: "aren't" },
+    { prompt: "He doesn't like tea, ___ he?", answer: "does" },
+    { prompt: "They've already left, ___ they?", answer: "haven't" },
     { prompt: "You must be hungry, ___ you?", answer: "mustn't" },
     { prompt: "She should apologize, ___ she?", answer: "shouldn't" },
     { prompt: "They will be there, ___ they?", answer: "won't" },
@@ -32,17 +40,18 @@ const LESSON = {
     { prompt: "We ought to call her, ___ we?", answer: "oughtn't / shouldn't" },
   ],
   practice: [
+    "Write one question tag using a simple positive statement with be, do, or have.",
     "Write one question tag using a true modal like must, could, or should.",
     "Write one question tag using have to, remembering to borrow do/does.",
     "Write one question tag using used to.",
   ],
-  wrapup: "True modals repeat themselves in a question tag. Have to and used to act like regular verbs, so their tags use do/does/did instead.",
+  wrapup: "A question tag repeats the sentence's own auxiliary and flips the polarity. True modals repeat themselves in the tag. Have to and used to act like regular verbs, so their tags borrow do/does/did instead.",
 };
 
 function buildSlides(lesson) {
   const slides = ["cover", "warmup"];
-  if (lesson.comparePairs) slides.push("predict", "compare");
   lesson.teach.forEach((_, i) => slides.push(`teach${i}`));
+  if (lesson.comparePairs) slides.push("predict", "compare");
   if (lesson.guided) {
     const guidedChunks = Math.ceil(lesson.guided.length / 3);
     for (let i = 0; i < guidedChunks; i++) slides.push(`guided${i}`);
@@ -96,7 +105,7 @@ function PredictSlide({ lesson }) {
     <div className="qtml-slide">
       <span className="qtml-eyebrow">Think About It</span>
       <h3 className="qtml-h">{left} <span className="qtml-vs">vs</span> {right}</h3>
-      <p className="qtml-compare-note">What's the difference? Take a guess before we explain.</p>
+      <p className="qtml-compare-note">You've just seen both. In your own words, how would you explain the difference?</p>
     </div>
   );
 }
