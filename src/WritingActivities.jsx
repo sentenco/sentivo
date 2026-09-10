@@ -233,6 +233,29 @@ export default function WritingActivities({ query }) {
   const topics = type ? type.sets : [];
   const levelTopics = topics.filter((t) => t.cefrGroup === levelTab);
 
+  const scrapbookDecor = (
+    <div className="wa-decor" aria-hidden="true">
+      <span className="wa-decor-corner wa-decor-corner--tl" />
+      <span className="wa-decor-corner wa-decor-corner--br" />
+      <span className="wa-decor-tape wa-decor-tape--tr" />
+      <span className="wa-decor-tape wa-decor-tape--bl" />
+      <svg className="wa-decor-item" style={{ top: "8%", right: "9%" }} width="30" height="30" viewBox="0 0 24 24" fill="none">
+        <path d="M14 4 L7 11 a3 3 0 0 0 4.2 4.2 L18 8.5 a2 2 0 0 0 -2.8 -2.8 L9.5 12.4" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+      <svg className="wa-decor-item" style={{ top: "38%", left: "1.5%" }} width="34" height="34" viewBox="0 0 24 24" fill="none">
+        <path d="M12 20 C6 16 4 12.5 4 9.5 A3.5 3.5 0 0 1 12 8 A3.5 3.5 0 0 1 20 9.5 C20 12.5 18 16 12 20 Z" stroke="currentColor" strokeWidth="1.3" />
+      </svg>
+      <svg className="wa-decor-item" style={{ bottom: "16%", right: "2%" }} width="30" height="30" viewBox="0 0 24 24" fill="none">
+        <circle cx="9" cy="8" r="3" stroke="currentColor" strokeWidth="1.3" />
+        <path d="M9 11 L7 20 M9 11 L11.5 15" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" />
+        <path d="M4 15 q4 -2 6 2" stroke="currentColor" strokeWidth="1" fill="none" />
+      </svg>
+      <svg className="wa-decor-item" style={{ top: "60%", left: "3%" }} width="36" height="20" viewBox="0 0 40 22" fill="none">
+        <path d="M2 18 q6 -4 10 -1 t9 -2 t9 0 t8 -3" stroke="currentColor" strokeWidth="1.1" strokeDasharray="1.5 4" fill="none" />
+      </svg>
+    </div>
+  );
+
   // Search results: a flat list of matching topics across every activity
   // type and CEFR level, bypassing the normal "pick a type, then a level"
   // drill-down (and taking priority even mid-drill-down) so the header
@@ -247,6 +270,7 @@ export default function WritingActivities({ query }) {
     return (
       <div className="wa-panel">
         <style>{CSS}</style>
+        {scrapbookDecor}
         <div className="wa-hero">
           <span className="wa-eyebrow">Sentivo · Writing</span>
           <span className="wa-pill">📔 Scrapbook Studio</span>
@@ -315,6 +339,7 @@ export default function WritingActivities({ query }) {
     return (
       <div className="wa-panel">
         <style>{CSS}</style>
+        {scrapbookDecor}
         <div className="wa-hero">
           <span className="wa-eyebrow">Sentivo · Writing</span>
           <span className={`wa-pill wa-pill--${type.hue}`}>{type.title}</span>
@@ -385,6 +410,7 @@ export default function WritingActivities({ query }) {
   return (
     <div className="wa-panel">
       <style>{CSS}</style>
+      {scrapbookDecor}
       <div className="wa-hero">
         <span className="wa-eyebrow">Sentivo · Writing</span>
         <span className="wa-pill">📔 Scrapbook Studio</span>
@@ -401,7 +427,6 @@ export default function WritingActivities({ query }) {
             <div className="wa-block-body">
               <h3 className="wa-block-title">{t.title}</h3>
               <p className="wa-block-blurb">{t.blurb}</p>
-              <span className="wa-block-cta">See levels →</span>
             </div>
           </button>
           );
@@ -422,10 +447,32 @@ const CSS = `
   position: relative;
   border-radius: 28px;
   padding: clamp(24px, 3.4vw, 40px) clamp(18px, 3vw, 32px) clamp(30px, 4vw, 44px);
-  background: url('/writing-scrapbook-bg.jpg') center top / cover no-repeat, linear-gradient(160deg, #FFF8EF 0%, #FFF1E6 100%);
+  background:
+    repeating-linear-gradient(0deg, rgba(169,131,111,0.07) 0px, rgba(169,131,111,0.07) 1px, transparent 1px, transparent 26px),
+    repeating-linear-gradient(90deg, rgba(169,131,111,0.07) 0px, rgba(169,131,111,0.07) 1px, transparent 1px, transparent 26px),
+    linear-gradient(160deg, #FFF8EF 0%, #FFF1E6 100%);
   overflow: hidden;
 }
 .wa-panel * { box-sizing: border-box; }
+
+.wa-decor { position: absolute; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; border-radius: inherit; }
+.wa-decor-item { position: absolute; color: #A9836F; opacity: 0.5; }
+.wa-decor-corner {
+  position: absolute; width: 130px; height: 130px; background: #E4C79C;
+  clip-path: polygon(0 0, 100% 0, 0 100%);
+  box-shadow: 4px 4px 10px rgba(169,131,111,0.16);
+}
+.wa-decor-corner--tl { top: -1px; left: -1px; }
+.wa-decor-corner--br { bottom: -1px; right: -1px; transform: rotate(180deg); }
+.wa-decor-tape { position: absolute; width: 90px; height: 30px; opacity: 0.85; z-index: 1; }
+.wa-decor-tape--tr {
+  top: 26px; right: -18px; transform: rotate(42deg);
+  background: repeating-linear-gradient(45deg, #FF8A75, #FF8A75 6px, #FFB3A3 6px, #FFB3A3 12px);
+}
+.wa-decor-tape--bl {
+  bottom: 30px; left: -18px; transform: rotate(42deg);
+  background: repeating-linear-gradient(45deg, #6EC3E0, #6EC3E0 6px, #A6DCEC 6px, #A6DCEC 12px);
+}
 
 .wa-hero { text-align: center; position: relative; z-index: 1; }
 .wa-eyebrow {
@@ -503,12 +550,7 @@ const CSS = `
 .wa-banner { display: block; width: 100%; height: auto; overflow: hidden; border-radius: 4px 4px 0 0; }
 .wa-block-body { padding: 18px 20px 20px; }
 .wa-block-title { font-family: 'Caveat', cursive; font-weight: 700; font-size: 26px; margin: 0 0 6px; color: #4A3F3A; }
-.wa-block-blurb { font-size: 13px; font-weight: 500; color: #A9836F; margin: 0 0 16px; line-height: 1.5; }
-.wa-block-cta { font-family: 'Karla', sans-serif; font-weight: 800; font-size: 12.5px; }
-.wa-block--gold .wa-block-cta { color: #A9720A; }
-.wa-block--sky .wa-block-cta { color: #2A6E85; }
-.wa-block--coral .wa-block-cta { color: #B8391F; }
-.wa-block--mint .wa-block-cta { color: #2F7A50; }
+.wa-block-blurb { font-size: 13px; font-weight: 500; color: #A9836F; margin: 0; line-height: 1.5; }
 
 .wa-level-tabs { display: flex; gap: 8px; margin-bottom: 24px; flex-wrap: wrap; justify-content: center; position: relative; z-index: 1; }
 .wa-level-tab {
