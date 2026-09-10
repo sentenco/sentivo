@@ -4,6 +4,11 @@ const LESSON = {
   title: "Get-Passive vs Be-Passive",
   formula: "be + past participle (neutral)  ·  get + past participle (casual, dramatic, often sudden)",
   leadIn: "Think of something surprising that happened to you recently, good or bad. How would you tell a close friend about it?",
+  importance: [
+    "Get-passive is everywhere in real spoken English but almost never taught alongside standard passive voice, leaving a real gap between textbook English and how people actually talk.",
+    "Choosing between be and get changes the emotional flavor of a sentence, not just the formality — the wrong one can make a dramatic story sound flat, or a formal report sound oddly casual.",
+    "This is a genuine register skill: knowing when to reach for get instead of be is part of sounding natural, not just grammatically correct.",
+  ],
   teach: [
     {
       name: "Be-Passive: Neutral, Standard",
@@ -41,8 +46,9 @@ const LESSON = {
 
 function buildSlides(lesson) {
   const slides = ["cover", "warmup"];
-  if (lesson.comparePairs) slides.push("predict", "compare");
+  if (lesson.importance) slides.push("importance");
   lesson.teach.forEach((_, i) => slides.push(`teach${i}`));
+  if (lesson.comparePairs) slides.push("predict", "compare");
   if (lesson.guided) {
     const guidedChunks = Math.ceil(lesson.guided.length / 3);
     for (let i = 0; i < guidedChunks; i++) slides.push(`guided${i}`);
@@ -72,6 +78,22 @@ function WarmupSlide({ lesson }) {
   );
 }
 
+function ImportanceSlide({ lesson }) {
+  return (
+    <div className="gpl-slide gpl-slide--part">
+      <h3 className="gpl-h">Why This Matters</h3>
+      <div className="gpl-importance-list">
+        {lesson.importance.map((line, i) => (
+          <div key={i} className="gpl-importance-item">
+            <span className="gpl-importance-num">{i + 1}</span>
+            <p className="gpl-importance-text">{line}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function TeachSlide({ lesson, index }) {
   const concept = lesson.teach[index];
   return (
@@ -96,7 +118,7 @@ function PredictSlide({ lesson }) {
     <div className="gpl-slide">
       <span className="gpl-eyebrow">Think About It</span>
       <h3 className="gpl-h">{left} <span className="gpl-vs">vs</span> {right}</h3>
-      <p className="gpl-compare-note">What's the difference? Take a guess before we explain.</p>
+      <p className="gpl-compare-note">You've just seen both. In your own words, how would you explain the difference?</p>
     </div>
   );
 }
@@ -170,6 +192,7 @@ function WrapupSlide({ lesson }) {
 function renderSlide(slideType, lesson) {
   if (slideType === "cover") return <CoverSlide lesson={lesson} />;
   if (slideType === "warmup") return <WarmupSlide lesson={lesson} />;
+  if (slideType === "importance") return <ImportanceSlide lesson={lesson} />;
   if (slideType.startsWith("teach")) return <TeachSlide lesson={lesson} index={Number(slideType.replace("teach", ""))} />;
   if (slideType === "predict") return <PredictSlide lesson={lesson} />;
   if (slideType === "compare") return <CompareSlide lesson={lesson} />;
@@ -182,6 +205,7 @@ function renderSlide(slideType, lesson) {
 const STAGE_LABELS = {
   cover: "Cover",
   warmup: "Warm-up",
+  importance: "Why It Matters",
   predict: "Think About It",
   compare: "Compare",
   practice: "Practice",
@@ -470,6 +494,39 @@ const CSS = `
 }
 .gpl-speaking-list { max-width: 720px; font-size: 18px; text-align: left; }
 .gpl-speaking-list li { margin-bottom: 8px; }
+
+.gpl-importance-list { display: flex; flex-direction: column; gap: 12px; width: 100%; max-width: 720px; text-align: left; }
+.gpl-importance-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  background: #FCF5E6;
+  border: 3px solid #1A1A1A;
+  border-radius: 14px;
+  padding: 14px 18px;
+}
+.gpl-importance-num {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Bangers', cursive;
+  font-size: 16px;
+  color: #FFFFFF;
+  background: #E3A73C;
+  border: 2.5px solid #1A1A1A;
+  border-radius: 50%;
+}
+.gpl-importance-text {
+  font-family: 'Comic Neue', cursive, sans-serif;
+  font-weight: 700;
+  font-size: 16.5px;
+  color: #1A1A1A;
+  line-height: 1.5;
+  margin: 4px 0 0;
+}
 
 .gpl-quiz-list {
   display: flex;
