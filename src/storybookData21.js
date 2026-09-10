@@ -3,12 +3,12 @@
 // through storybookData6.js (the original Teens track). Seventh Teens
 // book. Uses the Teens-track pattern: 5 True/False and 5 Build-a-Sentence
 // per chapter, Build-a-Sentence items ordered shortest-to-longest.
-// Images are not generated yet (Midjourney subscription paused). image/
-// coverImage are left null so StoryBook.jsx's built-in ImagePlaceholder
-// fallback renders instead.
+// Chapter images are not generated yet -- image is left null per chapter so
+// StoryBook.jsx's built-in ImagePlaceholder fallback renders instead.
+import coverImg from "./assets/storybook21/cover.jpg";
 
 export const STORYBOOK_TITLE = "My First Part-Time Job";
-export const COVER_IMAGE = null;
+export const COVER_IMAGE = coverImg;
 export const COVER_IMAGE_NOTE =
   "Kayla standing proudly behind the counter of a small, cozy bookshop, coworker Josh smiling beside her, shelves of books and a warm reading corner in the background.";
 

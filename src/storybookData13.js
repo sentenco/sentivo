@@ -5,13 +5,12 @@
 // content are simpler than the Teens books, and each chapter uses only 3
 // True/False and 3 Build-a-Sentence items instead of 5, per the Kids-track
 // spec.
-// Images are not generated yet (Midjourney subscription paused). image/
-// coverImage are left null so StoryBook.jsx's built-in ImagePlaceholder
-// fallback renders instead -- swap in real imports from ./assets/storybook13/
-// once art exists, same as storybookData9.js does.
+// Chapter images are not generated yet -- image is left null per chapter so
+// StoryBook.jsx's built-in ImagePlaceholder fallback renders instead.
+import coverImg from "./assets/storybook13/cover.jpg";
 
 export const STORYBOOK_TITLE = "My New Puppy";
-export const COVER_IMAGE = null;
+export const COVER_IMAGE = coverImg;
 export const COVER_IMAGE_NOTE =
   "Ellie sitting on the living room floor hugging her small brown puppy Milo, both smiling, warm cozy home setting with a dog bed and a ball nearby.";
 

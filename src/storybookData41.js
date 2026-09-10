@@ -8,11 +8,12 @@
 // itself is kept deliberately simple (short sentences, mostly simple
 // present/past, minimal subordination) to actually earn the A1 label,
 // while the topic itself stays adult-appropriate (starting a new job).
-// Images are not generated yet. image/coverImage are left null so
+// Chapter images are not generated yet -- image is left null per chapter so
 // StoryBook.jsx's built-in ImagePlaceholder fallback renders instead.
+import coverImg from "./assets/storybook41/cover.jpg";
 
 export const STORYBOOK_TITLE = "My First Day at a New Job";
-export const COVER_IMAGE = null;
+export const COVER_IMAGE = coverImg;
 export const COVER_IMAGE_NOTE =
   "Carlos standing nervously in front of a small office building, checking his watch, a welcome sign visible through the glass door.";
 
