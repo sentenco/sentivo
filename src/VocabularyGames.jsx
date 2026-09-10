@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
-import wordBankBg from "./assets/vocabulary/word-bank-bg.jpg";
 import synonymsBanner from "./assets/vocabulary-games/synonyms-banner.jpg";
 import antonymsBanner from "./assets/vocabulary-games/antonyms-banner.jpg";
 import wordSortBanner from "./assets/vocabulary-games/word-sort-banner.jpg";
@@ -332,6 +331,37 @@ export default function VocabularyGames({ query }) {
     setSearchParams(next, { replace: true });
   }
 
+  const atlasDecor = (
+    <div className="vg-decor" aria-hidden="true">
+      <svg className="vg-decor-item" style={{ top: "6%", left: "4%" }} width="56" height="56" viewBox="0 0 24 24" fill="none">
+        <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="1.4" />
+        <path d="M12 3 a9 9 0 0 1 0 18 M3 12 h18" stroke="currentColor" strokeWidth="0.9" />
+        <path d="M12 8.5 l1.8 1.8 -1.8 5.2 -1.8 -5.2 Z" fill="currentColor" />
+      </svg>
+      <svg className="vg-decor-item" style={{ top: "10%", right: "6%" }} width="44" height="44" viewBox="0 0 24 24" fill="none">
+        <path d="M2 16 L22 9 L22 11.5 L14 14.5 L14 20 L11.5 21 L10.5 15.5 L4.5 17.5 Z" stroke="currentColor" strokeWidth="1.3" strokeLinejoin="round" fill="none" />
+      </svg>
+      <svg className="vg-decor-item" style={{ bottom: "10%", left: "7%" }} width="48" height="48" viewBox="0 0 24 24" fill="none">
+        <path d="M12 2 C7.5 2 4 5.6 4 10 C4 15.6 12 22 12 22 C12 22 20 15.6 20 10 C20 5.6 16.5 2 12 2 Z" stroke="currentColor" strokeWidth="1.4" />
+        <circle cx="12" cy="10" r="3" stroke="currentColor" strokeWidth="1.2" />
+      </svg>
+      <svg className="vg-decor-item" style={{ bottom: "14%", right: "8%" }} width="50" height="50" viewBox="0 0 24 24" fill="none">
+        <rect x="4" y="5" width="16" height="12" rx="1.5" stroke="currentColor" strokeWidth="1.3" />
+        <path d="M4 8 h16 M9 5 v12 M15 5 v12" stroke="currentColor" strokeWidth="0.9" />
+        <path d="M7 11 q1.5 -2 3 0 t3 0 t3 0" stroke="currentColor" strokeWidth="0.9" fill="none" />
+      </svg>
+      <svg className="vg-decor-item" style={{ top: "42%", left: "1.5%" }} width="38" height="38" viewBox="0 0 24 24" fill="none">
+        <circle cx="12" cy="12" r="8.5" stroke="currentColor" strokeWidth="1.3" strokeDasharray="2 3" />
+        <circle cx="12" cy="12" r="1.6" fill="currentColor" />
+      </svg>
+      <svg className="vg-decor-item" style={{ top: "48%", right: "2%" }} width="42" height="42" viewBox="0 0 24 24" fill="none">
+        <path d="M5 18 q7 -14 14 0" stroke="currentColor" strokeWidth="1.3" strokeDasharray="1.5 3.5" fill="none" />
+        <circle cx="5" cy="18" r="1.6" fill="currentColor" />
+        <circle cx="19" cy="18" r="1.6" fill="currentColor" />
+      </svg>
+    </div>
+  );
+
   const tabBar = (
     <div className="vg-maintabs">
       <button
@@ -400,6 +430,7 @@ export default function VocabularyGames({ query }) {
       <div className="vg-shell">
         <style>{CSS}</style>
         <div className="vg-page">
+          {atlasDecor}
           <div className="vg-hero">
             <span className="vg-eyebrow">Sentivo · Vocabulary</span>
             <h1><span className="vg-pill">🐬 Word Bank</span></h1>
@@ -440,6 +471,7 @@ export default function VocabularyGames({ query }) {
       <div className="vg-shell">
         <style>{CSS}</style>
         <div className="vg-page">
+          {atlasDecor}
           <div className="vg-hero">
             <span className="vg-eyebrow">Sentivo · Vocabulary</span>
             <h1><span className="vg-pill">🐬 Word Bank</span></h1>
@@ -476,6 +508,7 @@ export default function VocabularyGames({ query }) {
       <div className="vg-shell">
         <style>{CSS}</style>
         <div className="vg-page">
+          {atlasDecor}
           <div className="vg-hero">
             <span className="vg-eyebrow">Sentivo · Vocabulary</span>
             <h1><span className="vg-pill">{game.icon} {game.title}</span></h1>
@@ -548,6 +581,7 @@ export default function VocabularyGames({ query }) {
     <div className="vg-shell">
       <style>{CSS}</style>
       <div className="vg-page">
+        {atlasDecor}
         <div className="vg-hero">
           <span className="vg-eyebrow">Sentivo · Vocabulary</span>
           <h1><span className="vg-pill">🐬 Word Bank</span></h1>
@@ -587,18 +621,14 @@ const CSS = `
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: url(${wordBankBg}) top center / cover no-repeat, linear-gradient(180deg, #EAF8F6 0%, #D6F1EC 100%);
+  background:
+    repeating-linear-gradient(0deg, rgba(14,110,124,0.05) 0px, rgba(14,110,124,0.05) 1px, transparent 1px, transparent 64px),
+    repeating-linear-gradient(90deg, rgba(14,110,124,0.05) 0px, rgba(14,110,124,0.05) 1px, transparent 1px, transparent 64px),
+    linear-gradient(180deg, #FBF6E9 0%, #F3ECD6 55%, #ECE3C6 100%);
   overflow: hidden;
 }
-.vg-page::before, .vg-page::after {
-  content: "";
-  position: absolute;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.5);
-  pointer-events: none;
-}
-.vg-page::before { width: 60px; height: 60px; top: 18px; left: 6%; }
-.vg-page::after { width: 26px; height: 26px; top: 70px; left: 12%; }
+.vg-decor { position: absolute; inset: 0; pointer-events: none; z-index: 0; }
+.vg-decor-item { position: absolute; color: #0E6E7C; opacity: 0.14; }
 
 .vg-hero { text-align: center; position: relative; z-index: 1; }
 .vg-eyebrow {
