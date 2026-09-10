@@ -1952,12 +1952,57 @@ export default function Library() {
           <BookshelfFeature items={filtered} navigate={navigate} query={query} />
         ) : category === "Speaking" ? (
           <div className="spklab-page">
+            <div className="spklab-grid-overlay"></div>
+            <div className="spklab-vignette"></div>
+
+            <svg className="spklab-deco" style={{ top: "4%", left: 24, opacity: 0.14 }} width="70" height="70" viewBox="0 0 24 24" fill="none">
+              <path d="M6 3v6a4 4 0 0 0 8 0V3" strokeWidth="1.5" strokeLinecap="round" />
+              <circle cx="6" cy="3" r="1.1" fill="#10646B" />
+              <circle cx="14" cy="3" r="1.1" fill="#10646B" />
+              <path d="M10 12v3a5 5 0 0 0 5 5h1.5" strokeWidth="1.5" strokeLinecap="round" />
+              <circle cx="18.5" cy="20" r="2.4" fill="none" strokeWidth="1.5" />
+            </svg>
+            <svg className="spklab-deco" style={{ top: "8%", right: 28, opacity: 0.12, transform: "rotate(35deg)" }} width="56" height="56" viewBox="0 0 24 24" fill="none">
+              <rect x="2" y="10.5" width="3" height="3" fill="none" strokeWidth="1.4" />
+              <rect x="5" y="9" width="10" height="6" rx="1.5" fill="none" strokeWidth="1.4" />
+              <rect x="15" y="10.5" width="3" height="3" fill="none" strokeWidth="1.4" />
+              <line x1="18" y1="12" x2="22" y2="12" strokeWidth="1.4" strokeLinecap="round" />
+            </svg>
+            <svg className="spklab-deco" style={{ top: "22%", left: 40, opacity: 0.1, transform: "rotate(-18deg)" }} width="48" height="48" viewBox="0 0 24 24" fill="none">
+              <rect x="7" y="2" width="10" height="20" rx="5" strokeWidth="1.5" />
+              <line x1="7" y1="12" x2="17" y2="12" strokeWidth="1.5" />
+            </svg>
+            <svg className="spklab-deco" style={{ top: "30%", right: 46, opacity: 0.13 }} width="60" height="60" viewBox="0 0 24 24" fill="none">
+              <path d="M2 13 H6 L8 7 L11 19 L13 8 L14.5 13 H22" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+            <svg className="spklab-deco" style={{ bottom: "32%", left: 30, opacity: 0.11 }} width="50" height="50" viewBox="0 0 24 24" fill="none">
+              <path d="M12 3v18M3 12h18" strokeWidth="2" strokeLinecap="round" />
+            </svg>
+            <svg className="spklab-deco" style={{ bottom: "26%", right: 30, opacity: 0.1, transform: "rotate(12deg)" }} width="46" height="64" viewBox="0 0 24 32" fill="none">
+              <rect x="8" y="2" width="8" height="22" rx="4" strokeWidth="1.5" />
+              <circle cx="12" cy="27" r="3.5" strokeWidth="1.5" />
+              <line x1="9.5" y1="10" x2="14.5" y2="10" strokeWidth="1.2" />
+              <line x1="9.5" y1="14" x2="14.5" y2="14" strokeWidth="1.2" />
+            </svg>
+            <svg className="spklab-deco" style={{ bottom: "12%", left: 50, opacity: 0.12 }} width="50" height="50" viewBox="0 0 24 24" fill="none">
+              <rect x="5" y="9" width="14" height="6" rx="3" strokeWidth="1.6" />
+              <line x1="12" y1="9" x2="12" y2="15" strokeWidth="1.6" />
+            </svg>
+            <svg className="spklab-deco" style={{ bottom: "6%", right: 40, opacity: 0.1, transform: "rotate(-10deg)" }} width="56" height="56" viewBox="0 0 24 24" fill="none">
+              <path d="M9 3 h6" strokeWidth="1.4" strokeLinecap="round" />
+              <path d="M10 3 v11 a2 2 0 0 0 4 0 V3" fill="none" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+              <line x1="10" y1="10" x2="14" y2="10" strokeWidth="1.2" strokeLinecap="round" />
+            </svg>
+
             <div className="spklab-hero">
               <span className="spklab-eyebrow">Sentivo · Speaking</span>
               <h1 className="spklab-title">The Fluency Clinic</h1>
               <p className="spklab-sub">Diagnose the gap. Prescribe the modality.</p>
             </div>
-            <div className="spklab-lane"></div>
+            <svg className="spklab-lane" viewBox="0 0 520 20" preserveAspectRatio="none">
+              <polyline points="0,10 150,10 165,10 174,3 183,17 192,10 200,10 320,10 335,10 344,3 353,17 362,10 370,10 520,10"
+                fill="none" stroke="#2AA8AE" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" opacity="0.8" />
+            </svg>
             {(() => {
               const q = query.trim().toLowerCase();
 
@@ -1979,10 +2024,11 @@ export default function Library() {
                   <div className="spklab-grid">
                     {results.map(({ modality, track }) => (
                       <a key={`${modality.key}-${track.id}`} href={`${modality.href}/${track.id}`} className={`spklab-card spklab-card--${modality.hue}`}>
-                        <svg className="spklab-pin" viewBox="0 0 24 24">
-                          <circle cx="12" cy="12" r="12" />
-                          {SPKLAB_PIN_ICONS[modality.key]}
-                        </svg>
+                        <div className="spklab-pin-wrap">
+                          <div className="spklab-pin">
+                            <svg width="20" height="20" viewBox="0 0 24 24">{SPKLAB_PIN_ICONS[modality.key]}</svg>
+                          </div>
+                        </div>
                         <div className="spklab-body">
                           <h3 className="spklab-name">{track.title}</h3>
                           <div className="spklab-label">{modality.name}{track.level ? ` · ${track.level}` : ""}</div>
@@ -2005,10 +2051,11 @@ export default function Library() {
                         {...(t.comingSoon ? {} : { href: t.href })}
                         className={`spklab-card spklab-card--${t.hue}${t.comingSoon ? " spklab-card--soon" : ""}`}
                       >
-                        <svg className="spklab-pin" viewBox="0 0 24 24">
-                          <circle cx="12" cy="12" r="12" />
-                          {SPKLAB_PIN_ICONS[t.key]}
-                        </svg>
+                        <div className="spklab-pin-wrap">
+                          <div className="spklab-pin">
+                            <svg width="20" height="20" viewBox="0 0 24 24">{SPKLAB_PIN_ICONS[t.key]}</svg>
+                          </div>
+                        </div>
                         <div className="spklab-body">
                           <h3 className="spklab-name">{t.name}</h3>
                           <div className="spklab-label">Diagnosis</div>
@@ -3014,17 +3061,31 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 }
 
 /* ---------- Speaking: The Fluency Clinic ---------- */
+/* "Clinical Chart" treatment (Mint) -- scoped entirely to .spklab-* below.
+   Deliberately does NOT touch .gc-navbar/.gc-editions/.gc-sec-tab/.gc-ed-*
+   (the shared app nav above this page) -- those stay exactly as they are. */
 .spklab-page {
   width: 100%;
   max-width: 1080px;
-  background-image: url('/fluency-clinic-bg.png');
-  background-size: cover;
-  background-position: center;
+  background: linear-gradient(180deg, #EAF6F4 0%, #DCF0ED 42%, #D2EBE7 100%);
   border-radius: 22px;
   padding: clamp(26px, 3.6vw, 48px) clamp(20px, 3.2vw, 40px);
   position: relative;
   overflow: hidden;
 }
+.spklab-grid-overlay {
+  position: absolute; inset: 0;
+  background-image:
+    repeating-linear-gradient(0deg, rgba(16,100,107,0.07) 0px, rgba(16,100,107,0.07) 1px, transparent 1px, transparent 28px),
+    repeating-linear-gradient(90deg, rgba(16,100,107,0.07) 0px, rgba(16,100,107,0.07) 1px, transparent 1px, transparent 28px);
+  pointer-events: none;
+}
+.spklab-vignette {
+  position: absolute; inset: 0;
+  box-shadow: inset 0 0 140px rgba(16,100,107,0.06);
+  pointer-events: none;
+}
+.spklab-deco { position: absolute; pointer-events: none; stroke: #10646B; z-index: 0; }
 .spklab-hero { text-align: center; max-width: 560px; margin: 0 auto; position: relative; z-index: 1; }
 .spklab-eyebrow {
   display: block;
@@ -3033,7 +3094,7 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   font-size: 11px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: #2AA8AE;
+  color: #178A82;
 }
 .spklab-title {
   font-family: 'Baloo 2', cursive;
@@ -3042,6 +3103,7 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   color: #10646B;
   margin: 8px 0 8px;
   line-height: 1.1;
+  text-shadow: 0 1px 0 rgba(255,255,255,0.7), 0 2px 8px rgba(16,100,107,0.12);
 }
 .spklab-sub {
   font-family: 'IBM Plex Sans', sans-serif;
@@ -3051,10 +3113,7 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   color: #4B8B92;
   margin: 0 auto;
 }
-.spklab-lane { position: relative; height: 2px; background: #BFE6E1; margin: clamp(26px, 3vw, 36px) 0; z-index: 1; }
-.spklab-lane::before, .spklab-lane::after { content: ""; position: absolute; top: -3px; width: 8px; height: 8px; border-radius: 50%; background: #2AA8AE; }
-.spklab-lane::before { left: 0; }
-.spklab-lane::after { right: 0; }
+.spklab-lane { position: relative; display: block; margin: clamp(26px, 3vw, 36px) auto 0; z-index: 1; width: 100%; max-width: 520px; }
 
 .spklab-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(14px, 1.8vw, 22px); position: relative; z-index: 1; }
 .spklab-card {
@@ -3062,29 +3121,34 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   flex-direction: column;
   height: 100%;
   text-decoration: none;
-  background: #FFFFFF;
+  background: #FBF9F5;
   border-radius: 16px;
   overflow: visible;
-  box-shadow: 0 10px 22px rgba(16,100,107,0.14);
+  box-shadow: 0 2px 4px rgba(16,100,107,0.08), 0 20px 32px rgba(16,100,107,0.16), inset 0 1px 0 rgba(255,255,255,0.7);
   position: relative;
   transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
-.spklab-card:hover { transform: translateY(-4px); box-shadow: 0 16px 30px rgba(16,100,107,0.2); }
+.spklab-card:hover { transform: translateY(-4px); box-shadow: 0 4px 8px rgba(16,100,107,0.12), 0 26px 40px rgba(16,100,107,0.22), inset 0 1px 0 rgba(255,255,255,0.7); }
+.spklab-pin-wrap { position: absolute; top: -18px; left: 50%; transform: translateX(-50%); z-index: 2; }
 .spklab-pin {
-  position: absolute; top: -16px; left: 50%; transform: translateX(-50%);
-  width: 34px; height: 34px; z-index: 2;
+  width: 38px; height: 38px;
   border-radius: 50%;
-  box-shadow: 0 4px 8px rgba(16,100,107,0.28);
+  display: flex; align-items: center; justify-content: center;
+  box-shadow:
+    inset 0 2px 2px rgba(255,255,255,0.55),
+    inset 0 -4px 6px rgba(0,0,0,0.22),
+    0 6px 12px rgba(16,100,107,0.28),
+    0 0 0 4px #FBF9F5;
 }
-.spklab-card--forge .spklab-pin circle:first-child { fill: #E8544E; }
-.spklab-card--shift .spklab-pin circle:first-child { fill: #E8B400; }
-.spklab-card--ascend .spklab-pin circle:first-child { fill: #F2994A; }
-.spklab-card--relay .spklab-pin circle:first-child { fill: #3E7CB1; }
-.spklab-card--bridge .spklab-pin circle:first-child { fill: #4FAE7A; }
-.spklab-card--derive .spklab-pin circle:first-child { fill: #D6478C; }
-.spklab-card--sequence .spklab-pin circle:first-child { fill: #5C6BC0; }
+.spklab-card--forge .spklab-pin { background: radial-gradient(circle at 35% 30%, #F1857F, #E8544E 75%); }
+.spklab-card--shift .spklab-pin { background: radial-gradient(circle at 35% 30%, #F3CC5A, #E8B400 75%); }
+.spklab-card--ascend .spklab-pin { background: radial-gradient(circle at 35% 30%, #F6B36E, #F2994A 75%); }
+.spklab-card--relay .spklab-pin { background: radial-gradient(circle at 35% 30%, #6FA3CC, #3E7CB1 75%); }
+.spklab-card--bridge .spklab-pin { background: radial-gradient(circle at 35% 30%, #86D1A6, #4FAE7A 75%); }
+.spklab-card--derive .spklab-pin { background: radial-gradient(circle at 35% 30%, #E67FB1, #D6478C 75%); }
+.spklab-card--sequence .spklab-pin { background: radial-gradient(circle at 35% 30%, #8D98DB, #5C6BC0 75%); }
 
-.spklab-body { padding: 30px 20px 22px; text-align: center; display: flex; flex-direction: column; align-items: center; flex: 1; width: 100%; }
+.spklab-body { padding: 32px 20px 22px; text-align: center; display: flex; flex-direction: column; align-items: center; flex: 1; width: 100%; }
 .spklab-name { font-family: 'Baloo 2', cursive; font-weight: 700; font-size: clamp(22px, 2.1vw, 26px); color: #10646B; margin: 0 0 10px; }
 .spklab-label {
   display: inline-block;
@@ -3099,11 +3163,12 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   padding: 3px 10px;
   margin-bottom: 8px;
 }
-.spklab-gap { font-family: 'IBM Plex Sans', sans-serif; font-weight: 700; font-size: 13.5px; margin: 0 0 18px; color: #10646B; }
+.spklab-gap { font-family: 'IBM Plex Sans', sans-serif; font-weight: 700; font-size: 13.5px; margin: 0 0 18px; color: #4E6B6D; }
 .spklab-cta {
   display: block; text-align: center; margin-top: auto; width: 100%;
   font-family: 'IBM Plex Sans', sans-serif; font-weight: 700; font-size: 12.5px;
   color: #FFFFFF; border-radius: 8px; padding: 10px 0;
+  box-shadow: 0 6px 14px rgba(16,100,107,0.22);
 }
 .spklab-card--forge .spklab-cta { background: #E8544E; }
 .spklab-card--shift .spklab-cta { background: #E8B400; text-shadow: 0 1px 3px rgba(120,80,0,0.5); }
@@ -3114,7 +3179,7 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .spklab-card--sequence .spklab-cta { background: #5C6BC0; }
 
 .spklab-card--soon { cursor: default; }
-.spklab-card--soon .spklab-cta { background: #C7DCDD; color: #4B8B92; }
+.spklab-card--soon .spklab-cta { background: #C7DCDD; color: #4B8B92; box-shadow: none; }
 
 @media (max-width: 700px) {
   .spklab-grid { grid-template-columns: 1fr; }
