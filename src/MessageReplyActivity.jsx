@@ -182,7 +182,7 @@ const CSS = `
 .mr2-wrap {
   position: relative;
   width: 100%;
-  min-height: 100vh;
+  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -200,7 +200,7 @@ const CSS = `
 .mr2-blob--a { width: 200px; height: 200px; top: -20px; left: 8%; background: rgba(255,138,117,0.14); }
 .mr2-blob--b { width: 170px; height: 170px; bottom: 0; right: 10%; background: rgba(111,207,151,0.12); }
 
-.mr2-frame { position: relative; z-index: 1; width: 380px; height: min(660px, calc(100vh - 2.2cm)); flex-shrink: 0; }
+.mr2-frame { position: relative; z-index: 1; width: 100%; height: 100%; }
 .mr2-paper-back {
   position: absolute; inset: 0; background: #FFF1EC; border-radius: 34px;
   transform: rotate(1.4deg) translate(7px, 9px); box-shadow: 0 16px 34px rgba(184,57,31,0.14);
