@@ -4,6 +4,11 @@ const LESSON = {
   title: "Both / Either / Neither",
   formula: "both + plural verb  ·  either/neither + singular verb  ·  either...or / neither...nor agrees with the nearer subject",
   leadIn: "Think of two restaurants you like equally. Say one sentence using both, and one using either.",
+  importance: [
+    "These are the go-to words for comparing exactly two things, so they show up constantly in everyday choices and agreements (\"either works for me\").",
+    "It's genuinely counterintuitive that either and neither, which refer to two things, take a SINGULAR verb — this has to be learned directly, because logic alone points the wrong way.",
+    "Once either/neither pair up with or/nor, the agreement flips to match the nearer subject — the same pattern shows up in other grammar points, so mastering it here transfers directly.",
+  ],
   teach: [
     {
       name: "Both, Either, Neither: Agreement",
@@ -41,8 +46,9 @@ const LESSON = {
 
 function buildSlides(lesson) {
   const slides = ["cover", "warmup"];
-  if (lesson.comparePairs) slides.push("predict", "compare");
+  if (lesson.importance) slides.push("importance");
   lesson.teach.forEach((_, i) => slides.push(`teach${i}`));
+  if (lesson.comparePairs) slides.push("predict", "compare");
   if (lesson.guided) {
     const guidedChunks = Math.ceil(lesson.guided.length / 3);
     for (let i = 0; i < guidedChunks; i++) slides.push(`guided${i}`);
@@ -72,6 +78,22 @@ function WarmupSlide({ lesson }) {
   );
 }
 
+function ImportanceSlide({ lesson }) {
+  return (
+    <div className="benl-slide benl-slide--part">
+      <h3 className="benl-h">Why This Matters</h3>
+      <div className="benl-importance-list">
+        {lesson.importance.map((line, i) => (
+          <div key={i} className="benl-importance-item">
+            <span className="benl-importance-num">{i + 1}</span>
+            <p className="benl-importance-text">{line}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function TeachSlide({ lesson, index }) {
   const concept = lesson.teach[index];
   return (
@@ -96,7 +118,7 @@ function PredictSlide({ lesson }) {
     <div className="benl-slide">
       <span className="benl-eyebrow">Think About It</span>
       <h3 className="benl-h">{left} <span className="benl-vs">vs</span> {right}</h3>
-      <p className="benl-compare-note">What's the difference? Take a guess before we explain.</p>
+      <p className="benl-compare-note">You've just seen both. In your own words, how would you explain the difference?</p>
     </div>
   );
 }
@@ -170,6 +192,7 @@ function WrapupSlide({ lesson }) {
 function renderSlide(slideType, lesson) {
   if (slideType === "cover") return <CoverSlide lesson={lesson} />;
   if (slideType === "warmup") return <WarmupSlide lesson={lesson} />;
+  if (slideType === "importance") return <ImportanceSlide lesson={lesson} />;
   if (slideType.startsWith("teach")) return <TeachSlide lesson={lesson} index={Number(slideType.replace("teach", ""))} />;
   if (slideType === "predict") return <PredictSlide lesson={lesson} />;
   if (slideType === "compare") return <CompareSlide lesson={lesson} />;
@@ -182,6 +205,7 @@ function renderSlide(slideType, lesson) {
 const STAGE_LABELS = {
   cover: "Cover",
   warmup: "Warm-up",
+  importance: "Why It Matters",
   predict: "Think About It",
   compare: "Compare",
   practice: "Practice",
@@ -470,6 +494,39 @@ const CSS = `
 }
 .benl-speaking-list { max-width: 720px; font-size: 18px; text-align: left; }
 .benl-speaking-list li { margin-bottom: 8px; }
+
+.benl-importance-list { display: flex; flex-direction: column; gap: 12px; width: 100%; max-width: 720px; text-align: left; }
+.benl-importance-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  background: #F5EFE8;
+  border: 3px solid #1A1A1A;
+  border-radius: 14px;
+  padding: 14px 18px;
+}
+.benl-importance-num {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Bangers', cursive;
+  font-size: 16px;
+  color: #FFFFFF;
+  background: #8A6748;
+  border: 2.5px solid #1A1A1A;
+  border-radius: 50%;
+}
+.benl-importance-text {
+  font-family: 'Comic Neue', cursive, sans-serif;
+  font-weight: 700;
+  font-size: 16.5px;
+  color: #1A1A1A;
+  line-height: 1.5;
+  margin: 4px 0 0;
+}
 
 .benl-quiz-list {
   display: flex;
