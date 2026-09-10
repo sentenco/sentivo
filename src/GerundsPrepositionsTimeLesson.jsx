@@ -4,6 +4,11 @@ const LESSON = {
   title: "Gerunds vs Infinitives After Prepositions of Time",
   formula: "before/after/since + gerund (preposition)  ·  to + base verb (infinitive of purpose)",
   leadIn: "What's one thing you do before leaving the house every morning?",
+  importance: [
+    "The single word \"to\" playing two completely different roles (preposition vs. infinitive marker) is one of the sneakiest ambiguities in English — knowing which one you're looking at prevents a whole category of verb-form mistakes.",
+    "Every pattern here (before, after, since + gerund) is extremely common in describing routines and sequences — everyday sentences, not rare structures.",
+    "Getting this wrong (\"before to eat,\" \"to studying\") is a very visible error that instantly flags a sentence as non-native, so fixing it is a high-value win.",
+  ],
   teach: [
     {
       name: "Preposition of Time + Gerund",
@@ -41,8 +46,9 @@ const LESSON = {
 
 function buildSlides(lesson) {
   const slides = ["cover", "warmup"];
-  if (lesson.comparePairs) slides.push("predict", "compare");
+  if (lesson.importance) slides.push("importance");
   lesson.teach.forEach((_, i) => slides.push(`teach${i}`));
+  if (lesson.comparePairs) slides.push("predict", "compare");
   if (lesson.guided) {
     const guidedChunks = Math.ceil(lesson.guided.length / 3);
     for (let i = 0; i < guidedChunks; i++) slides.push(`guided${i}`);
@@ -72,6 +78,22 @@ function WarmupSlide({ lesson }) {
   );
 }
 
+function ImportanceSlide({ lesson }) {
+  return (
+    <div className="gipl-slide gipl-slide--part">
+      <h3 className="gipl-h">Why This Matters</h3>
+      <div className="gipl-importance-list">
+        {lesson.importance.map((line, i) => (
+          <div key={i} className="gipl-importance-item">
+            <span className="gipl-importance-num">{i + 1}</span>
+            <p className="gipl-importance-text">{line}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function TeachSlide({ lesson, index }) {
   const concept = lesson.teach[index];
   return (
@@ -96,7 +118,7 @@ function PredictSlide({ lesson }) {
     <div className="gipl-slide">
       <span className="gipl-eyebrow">Think About It</span>
       <h3 className="gipl-h">{left} <span className="gipl-vs">vs</span> {right}</h3>
-      <p className="gipl-compare-note">What's the difference? Take a guess before we explain.</p>
+      <p className="gipl-compare-note">You've just seen both. In your own words, how would you explain the difference?</p>
     </div>
   );
 }
@@ -170,6 +192,7 @@ function WrapupSlide({ lesson }) {
 function renderSlide(slideType, lesson) {
   if (slideType === "cover") return <CoverSlide lesson={lesson} />;
   if (slideType === "warmup") return <WarmupSlide lesson={lesson} />;
+  if (slideType === "importance") return <ImportanceSlide lesson={lesson} />;
   if (slideType.startsWith("teach")) return <TeachSlide lesson={lesson} index={Number(slideType.replace("teach", ""))} />;
   if (slideType === "predict") return <PredictSlide lesson={lesson} />;
   if (slideType === "compare") return <CompareSlide lesson={lesson} />;
@@ -182,6 +205,7 @@ function renderSlide(slideType, lesson) {
 const STAGE_LABELS = {
   cover: "Cover",
   warmup: "Warm-up",
+  importance: "Why It Matters",
   predict: "Think About It",
   compare: "Compare",
   practice: "Practice",
@@ -470,6 +494,39 @@ const CSS = `
 }
 .gipl-speaking-list { max-width: 720px; font-size: 18px; text-align: left; }
 .gipl-speaking-list li { margin-bottom: 8px; }
+
+.gipl-importance-list { display: flex; flex-direction: column; gap: 12px; width: 100%; max-width: 720px; text-align: left; }
+.gipl-importance-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  background: #F2EEFB;
+  border: 3px solid #1A1A1A;
+  border-radius: 14px;
+  padding: 14px 18px;
+}
+.gipl-importance-num {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Bangers', cursive;
+  font-size: 16px;
+  color: #FFFFFF;
+  background: #6247AA;
+  border: 2.5px solid #1A1A1A;
+  border-radius: 50%;
+}
+.gipl-importance-text {
+  font-family: 'Comic Neue', cursive, sans-serif;
+  font-weight: 700;
+  font-size: 16.5px;
+  color: #1A1A1A;
+  line-height: 1.5;
+  margin: 4px 0 0;
+}
 
 .gipl-quiz-list {
   display: flex;

@@ -4,6 +4,11 @@ const LESSON = {
   title: "All / Whole",
   formula: "all + (the/my/etc.) + noun  ·  (the/my/etc.) + whole + singular noun",
   leadIn: "Think of a day you worked non-stop, start to finish. Describe it using all day, then again using the whole day.",
+  importance: [
+    "All and whole express the exact same idea but sit on opposite sides of the article or possessive — a purely positional rule, so it's fast to master once the pattern clicks.",
+    "\"All the day\" is a mistake almost every learner makes at some point, since the usual all + determiner + noun logic feels natural but is backwards for this specific pair.",
+    "Choosing between the two also changes the rhythm and emphasis of a sentence, so it's a small style tool as well as a correctness rule.",
+  ],
   teach: [
     {
       name: "All: Comes Before the Determiner",
@@ -41,8 +46,9 @@ const LESSON = {
 
 function buildSlides(lesson) {
   const slides = ["cover", "warmup"];
-  if (lesson.comparePairs) slides.push("predict", "compare");
+  if (lesson.importance) slides.push("importance");
   lesson.teach.forEach((_, i) => slides.push(`teach${i}`));
+  if (lesson.comparePairs) slides.push("predict", "compare");
   if (lesson.guided) {
     const guidedChunks = Math.ceil(lesson.guided.length / 3);
     for (let i = 0; i < guidedChunks; i++) slides.push(`guided${i}`);
@@ -72,6 +78,22 @@ function WarmupSlide({ lesson }) {
   );
 }
 
+function ImportanceSlide({ lesson }) {
+  return (
+    <div className="awl-slide awl-slide--part">
+      <h3 className="awl-h">Why This Matters</h3>
+      <div className="awl-importance-list">
+        {lesson.importance.map((line, i) => (
+          <div key={i} className="awl-importance-item">
+            <span className="awl-importance-num">{i + 1}</span>
+            <p className="awl-importance-text">{line}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function TeachSlide({ lesson, index }) {
   const concept = lesson.teach[index];
   return (
@@ -96,7 +118,7 @@ function PredictSlide({ lesson }) {
     <div className="awl-slide">
       <span className="awl-eyebrow">Think About It</span>
       <h3 className="awl-h">{left} <span className="awl-vs">vs</span> {right}</h3>
-      <p className="awl-compare-note">What's the difference? Take a guess before we explain.</p>
+      <p className="awl-compare-note">You've just seen both. In your own words, how would you explain the difference?</p>
     </div>
   );
 }
@@ -170,6 +192,7 @@ function WrapupSlide({ lesson }) {
 function renderSlide(slideType, lesson) {
   if (slideType === "cover") return <CoverSlide lesson={lesson} />;
   if (slideType === "warmup") return <WarmupSlide lesson={lesson} />;
+  if (slideType === "importance") return <ImportanceSlide lesson={lesson} />;
   if (slideType.startsWith("teach")) return <TeachSlide lesson={lesson} index={Number(slideType.replace("teach", ""))} />;
   if (slideType === "predict") return <PredictSlide lesson={lesson} />;
   if (slideType === "compare") return <CompareSlide lesson={lesson} />;
@@ -182,6 +205,7 @@ function renderSlide(slideType, lesson) {
 const STAGE_LABELS = {
   cover: "Cover",
   warmup: "Warm-up",
+  importance: "Why It Matters",
   predict: "Think About It",
   compare: "Compare",
   practice: "Practice",
@@ -470,6 +494,39 @@ const CSS = `
 }
 .awl-speaking-list { max-width: 720px; font-size: 18px; text-align: left; }
 .awl-speaking-list li { margin-bottom: 8px; }
+
+.awl-importance-list { display: flex; flex-direction: column; gap: 12px; width: 100%; max-width: 720px; text-align: left; }
+.awl-importance-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  background: #E9F5F5;
+  border: 3px solid #1A1A1A;
+  border-radius: 14px;
+  padding: 14px 18px;
+}
+.awl-importance-num {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Bangers', cursive;
+  font-size: 16px;
+  color: #FFFFFF;
+  background: #0E7C86;
+  border: 2.5px solid #1A1A1A;
+  border-radius: 50%;
+}
+.awl-importance-text {
+  font-family: 'Comic Neue', cursive, sans-serif;
+  font-weight: 700;
+  font-size: 16.5px;
+  color: #1A1A1A;
+  line-height: 1.5;
+  margin: 4px 0 0;
+}
 
 .awl-quiz-list {
   display: flex;
