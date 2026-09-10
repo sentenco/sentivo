@@ -3,6 +3,18 @@
 Saved 2026-09-10, not yet sent to the user. Send when asked — copy each
 numbered block verbatim, it's self-contained.
 
+**ON HOLD 2026-09-10 — Books 9-12 are being replaced with new content.**
+The user said Books 3-12 (Siblings and Neighbors at Home, My School
+Football Team, My School Basketball Team, A Stronger Swimmer, A Full and
+Good Week, A Good Week at the Shop, and this file's own 9-12: A Healthier
+Me, Feeling Better Again, A Happier Free Time, Food Brings Me Joy) will
+all be REPLACED with different stories. Do NOT send or generate the 9-12
+redo prompts below until the new story content for those books exists —
+they describe scenes from the OLD stories and will be wrong for whatever
+replaces them. Book 13's prompt is unaffected (not in the replace list)
+and is still valid to send. See [[project_storybook_feature_status]] and
+[[project_storybook_cover_art_batch]] for the replacement status.
+
 **Why these need a redo (not part of the normal 21-80 batch):**
 - **Books 9-12** ("A Healthier Me", "Feeling Better Again", "A Happier Free
   Time", "Food Brings Me Joy"): wired in live (`78fcf9c`) but flagged by the

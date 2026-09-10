@@ -5,9 +5,13 @@ a time) when asked — copy each numbered block verbatim, it's self-contained.
 
 **Status of earlier batches (for context, don't resend):**
 - Books 1-8: real cover art already live, not part of this task.
-- Books 9-12 ("A Healthier Me" through "Food Brings Me Joy"): wired live but
-  flagged by the user for regeneration — see `project_storybook_cover_art_batch`
-  memory. Redo prompts already sent once; don't duplicate here.
+- Books 3-12 are being REPLACED with new story content (user, 2026-09-10) —
+  Siblings and Neighbors at Home, My School Football Team, My School
+  Basketball Team, A Stronger Swimmer, A Full and Good Week, A Good Week at
+  the Shop, A Healthier Me, Feeling Better Again, A Happier Free Time, Food
+  Brings Me Joy. Do not generate or send new cover art for any of these
+  until the replacement story text exists — see `project_storybook_cover_art_batch`
+  memory. (Books 9-12's old redo prompts are on hold for the same reason.)
 - Book 13 ("My New Puppy"): wired-in art was wrong (showed an adult, not
   child narrator Ellie). Redo prompt already sent once.
 - Book 14 ("A Week with Grandma"): confirmed good by the user, no redo.
