@@ -4,6 +4,11 @@ const LESSON = {
   title: "Causative Verbs",
   formula: "have/get + object + past participle (someone else does it)  ·  make/let + person + base verb (force/permission)",
   leadIn: "Name one thing you had done for you recently, like a haircut or a repair.",
+  importance: [
+    "Native speakers use have/get something done constantly for everyday services — haircuts, repairs, deliveries — without it, a learner is stuck saying \"I cut my hair\" when they mean they paid someone else to.",
+    "Mixing up make, let, and have changes who's actually in control of the action — a real difference in meaning, not just a grammar technicality.",
+    "The verb after the object changes shape depending on which causative you use (past participle vs. base form), so this pattern only becomes reliable with real practice.",
+  ],
   teach: [
     {
       name: "Have/Get Something Done: Someone Else Does It",
@@ -41,8 +46,9 @@ const LESSON = {
 
 function buildSlides(lesson) {
   const slides = ["cover", "warmup"];
-  if (lesson.comparePairs) slides.push("predict", "compare");
+  if (lesson.importance) slides.push("importance");
   lesson.teach.forEach((_, i) => slides.push(`teach${i}`));
+  if (lesson.comparePairs) slides.push("predict", "compare");
   if (lesson.guided) {
     const guidedChunks = Math.ceil(lesson.guided.length / 3);
     for (let i = 0; i < guidedChunks; i++) slides.push(`guided${i}`);
@@ -72,6 +78,22 @@ function WarmupSlide({ lesson }) {
   );
 }
 
+function ImportanceSlide({ lesson }) {
+  return (
+    <div className="cvl-slide cvl-slide--part">
+      <h3 className="cvl-h">Why Causative Verbs Matter</h3>
+      <div className="cvl-importance-list">
+        {lesson.importance.map((line, i) => (
+          <div key={i} className="cvl-importance-item">
+            <span className="cvl-importance-num">{i + 1}</span>
+            <p className="cvl-importance-text">{line}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function TeachSlide({ lesson, index }) {
   const concept = lesson.teach[index];
   return (
@@ -96,7 +118,7 @@ function PredictSlide({ lesson }) {
     <div className="cvl-slide">
       <span className="cvl-eyebrow">Think About It</span>
       <h3 className="cvl-h">{left} <span className="cvl-vs">vs</span> {right}</h3>
-      <p className="cvl-compare-note">What's the difference? Take a guess before we explain.</p>
+      <p className="cvl-compare-note">You've just seen both. In your own words, how would you explain the difference?</p>
     </div>
   );
 }
@@ -170,6 +192,7 @@ function WrapupSlide({ lesson }) {
 function renderSlide(slideType, lesson) {
   if (slideType === "cover") return <CoverSlide lesson={lesson} />;
   if (slideType === "warmup") return <WarmupSlide lesson={lesson} />;
+  if (slideType === "importance") return <ImportanceSlide lesson={lesson} />;
   if (slideType.startsWith("teach")) return <TeachSlide lesson={lesson} index={Number(slideType.replace("teach", ""))} />;
   if (slideType === "predict") return <PredictSlide lesson={lesson} />;
   if (slideType === "compare") return <CompareSlide lesson={lesson} />;
@@ -182,6 +205,7 @@ function renderSlide(slideType, lesson) {
 const STAGE_LABELS = {
   cover: "Cover",
   warmup: "Warm-up",
+  importance: "Why It Matters",
   predict: "Think About It",
   compare: "Compare",
   practice: "Practice",
@@ -470,6 +494,39 @@ const CSS = `
 }
 .cvl-speaking-list { max-width: 720px; font-size: 18px; text-align: left; }
 .cvl-speaking-list li { margin-bottom: 8px; }
+
+.cvl-importance-list { display: flex; flex-direction: column; gap: 12px; width: 100%; max-width: 720px; text-align: left; }
+.cvl-importance-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  background: #FBF3E4;
+  border: 3px solid #1A1A1A;
+  border-radius: 14px;
+  padding: 14px 18px;
+}
+.cvl-importance-num {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Bangers', cursive;
+  font-size: 16px;
+  color: #FFFFFF;
+  background: #E3A73C;
+  border: 2.5px solid #1A1A1A;
+  border-radius: 50%;
+}
+.cvl-importance-text {
+  font-family: 'Comic Neue', cursive, sans-serif;
+  font-weight: 700;
+  font-size: 16.5px;
+  color: #1A1A1A;
+  line-height: 1.5;
+  margin: 4px 0 0;
+}
 
 .cvl-quiz-list {
   display: flex;

@@ -4,6 +4,11 @@ const LESSON = {
   title: "Conjunctions",
   formula: "FANBOYS join equals  ·  because/although/since join a dependent clause",
   leadIn: "Combine these two ideas into one sentence: 'It was raining.' + 'We went for a walk.'",
+  importance: [
+    "Conjunctions are the glue holding real sentences together — without them, writing and speech collapse into short, disconnected fragments.",
+    "The conjunction you pick signals the actual logical relationship (reason, contrast, result, condition), so choosing the wrong one confuses a reader even when every word is spelled right.",
+    "Whether a clause needs a comma often comes down to which type of conjunction you used — a real, testable punctuation skill this lesson sets up.",
+  ],
   fanboys: [
     { letter: "F", word: "For", usage: "Gives a reason, in a formal, almost literary way.", examples: ["She left early, for she had a flight to catch.", "He stayed quiet, for he had nothing to add."] },
     { letter: "A", word: "And", usage: "Adds one idea to another.", examples: ["I bought bread, and I bought milk.", "She sings, and she dances."] },
@@ -45,9 +50,10 @@ const LESSON = {
 
 function buildSlides(lesson) {
   const slides = ["cover", "warmup"];
-  if (lesson.comparePairs) slides.push("predict", "compare");
+  if (lesson.importance) slides.push("importance");
   lesson.fanboys.forEach((_, i) => slides.push(`fanboys${i}`));
   lesson.teach.forEach((_, i) => slides.push(`teach${i}`));
+  if (lesson.comparePairs) slides.push("predict", "compare");
   if (lesson.guided) {
     const guidedChunks = Math.ceil(lesson.guided.length / 3);
     for (let i = 0; i < guidedChunks; i++) slides.push(`guided${i}`);
@@ -72,6 +78,22 @@ function WarmupSlide({ lesson }) {
       <span className="cjl-eyebrow">Warm-up</span>
       <div className="cjl-bubble cjl-bubble--solo">
         <p className="cjl-bubble-text cjl-bubble-text--big">“{lesson.leadIn}”</p>
+      </div>
+    </div>
+  );
+}
+
+function ImportanceSlide({ lesson }) {
+  return (
+    <div className="cjl-slide cjl-slide--part">
+      <h3 className="cjl-h">Why Conjunctions Matter</h3>
+      <div className="cjl-importance-list">
+        {lesson.importance.map((line, i) => (
+          <div key={i} className="cjl-importance-item">
+            <span className="cjl-importance-num">{i + 1}</span>
+            <p className="cjl-importance-text">{line}</p>
+          </div>
+        ))}
       </div>
     </div>
   );
@@ -122,7 +144,7 @@ function PredictSlide({ lesson }) {
     <div className="cjl-slide">
       <span className="cjl-eyebrow">Think About It</span>
       <h3 className="cjl-h">{left} <span className="cjl-vs">vs</span> {right}</h3>
-      <p className="cjl-compare-note">What's the difference? Take a guess before we explain.</p>
+      <p className="cjl-compare-note">You've just seen both. In your own words, how would you explain the difference?</p>
     </div>
   );
 }
@@ -196,6 +218,7 @@ function WrapupSlide({ lesson }) {
 function renderSlide(slideType, lesson) {
   if (slideType === "cover") return <CoverSlide lesson={lesson} />;
   if (slideType === "warmup") return <WarmupSlide lesson={lesson} />;
+  if (slideType === "importance") return <ImportanceSlide lesson={lesson} />;
   if (slideType.startsWith("fanboys")) return <FanboysSlide lesson={lesson} index={Number(slideType.replace("fanboys", ""))} />;
   if (slideType.startsWith("teach")) return <TeachSlide lesson={lesson} index={Number(slideType.replace("teach", ""))} />;
   if (slideType === "predict") return <PredictSlide lesson={lesson} />;
@@ -209,6 +232,7 @@ function renderSlide(slideType, lesson) {
 const STAGE_LABELS = {
   cover: "Cover",
   warmup: "Warm-up",
+  importance: "Why It Matters",
   predict: "Think About It",
   compare: "Compare",
   practice: "Practice",
@@ -538,6 +562,39 @@ const CSS = `
 }
 .cjl-speaking-list { max-width: 720px; font-size: 18px; text-align: left; }
 .cjl-speaking-list li { margin-bottom: 8px; }
+
+.cjl-importance-list { display: flex; flex-direction: column; gap: 12px; width: 100%; max-width: 720px; text-align: left; }
+.cjl-importance-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  background: #F1F8EE;
+  border: 3px solid #1A1A1A;
+  border-radius: 14px;
+  padding: 14px 18px;
+}
+.cjl-importance-num {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Bangers', cursive;
+  font-size: 16px;
+  color: #FFFFFF;
+  background: #4C9A5D;
+  border: 2.5px solid #1A1A1A;
+  border-radius: 50%;
+}
+.cjl-importance-text {
+  font-family: 'Comic Neue', cursive, sans-serif;
+  font-weight: 700;
+  font-size: 16.5px;
+  color: #1A1A1A;
+  line-height: 1.5;
+  margin: 4px 0 0;
+}
 
 .cjl-quiz-list {
   display: flex;

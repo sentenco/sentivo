@@ -4,6 +4,11 @@ const LESSON = {
   title: "Linking Words",
   formula: "however/nevertheless (contrast)  ·  therefore/as a result (consequence): new sentence, comma after",
   leadIn: "Finish this sentence with a linking word: 'It was raining heavily. ___, we decided to go for a walk anyway.'",
+  importance: [
+    "Linking words are how formal writing signals logic across sentence boundaries — essays, reports, and emails lean on them far more than casual speech does.",
+    "Getting the punctuation right (a period or semicolon before, a comma after) is often what separates a fluent sentence from a run-on or comma splice.",
+    "Confusing a linking word with a conjunction — using however like but — is one of the most common intermediate mistakes, and exactly what this lesson heads off.",
+  ],
   teach: [
     {
       name: "Contrast: However, Nevertheless",
@@ -41,8 +46,9 @@ const LESSON = {
 
 function buildSlides(lesson) {
   const slides = ["cover", "warmup"];
-  if (lesson.comparePairs) slides.push("predict", "compare");
+  if (lesson.importance) slides.push("importance");
   lesson.teach.forEach((_, i) => slides.push(`teach${i}`));
+  if (lesson.comparePairs) slides.push("predict", "compare");
   if (lesson.guided) {
     const guidedChunks = Math.ceil(lesson.guided.length / 3);
     for (let i = 0; i < guidedChunks; i++) slides.push(`guided${i}`);
@@ -72,6 +78,22 @@ function WarmupSlide({ lesson }) {
   );
 }
 
+function ImportanceSlide({ lesson }) {
+  return (
+    <div className="lwl-slide lwl-slide--part">
+      <h3 className="lwl-h">Why Linking Words Matter</h3>
+      <div className="lwl-importance-list">
+        {lesson.importance.map((line, i) => (
+          <div key={i} className="lwl-importance-item">
+            <span className="lwl-importance-num">{i + 1}</span>
+            <p className="lwl-importance-text">{line}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function TeachSlide({ lesson, index }) {
   const concept = lesson.teach[index];
   return (
@@ -96,7 +118,7 @@ function PredictSlide({ lesson }) {
     <div className="lwl-slide">
       <span className="lwl-eyebrow">Think About It</span>
       <h3 className="lwl-h">{left} <span className="lwl-vs">vs</span> {right}</h3>
-      <p className="lwl-compare-note">What's the difference? Take a guess before we explain.</p>
+      <p className="lwl-compare-note">You've just seen both. In your own words, how would you explain the difference?</p>
     </div>
   );
 }
@@ -170,6 +192,7 @@ function WrapupSlide({ lesson }) {
 function renderSlide(slideType, lesson) {
   if (slideType === "cover") return <CoverSlide lesson={lesson} />;
   if (slideType === "warmup") return <WarmupSlide lesson={lesson} />;
+  if (slideType === "importance") return <ImportanceSlide lesson={lesson} />;
   if (slideType.startsWith("teach")) return <TeachSlide lesson={lesson} index={Number(slideType.replace("teach", ""))} />;
   if (slideType === "predict") return <PredictSlide lesson={lesson} />;
   if (slideType === "compare") return <CompareSlide lesson={lesson} />;
@@ -185,6 +208,7 @@ function stageLabel(slideType) {
   switch (slideType) {
     case "cover": return "Cover";
     case "warmup": return "Warm-up";
+    case "importance": return "Why It Matters";
     case "predict": return "Think About It";
     case "compare": return "Compare";
     case "practice": return "Practice";
@@ -472,6 +496,39 @@ const CSS = `
 }
 .lwl-speaking-list { max-width: 720px; font-size: 18px; text-align: left; }
 .lwl-speaking-list li { margin-bottom: 8px; }
+
+.lwl-importance-list { display: flex; flex-direction: column; gap: 12px; width: 100%; max-width: 720px; text-align: left; }
+.lwl-importance-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  background: #EAF7F7;
+  border: 3px solid #1A1A1A;
+  border-radius: 14px;
+  padding: 14px 18px;
+}
+.lwl-importance-num {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Bangers', cursive;
+  font-size: 16px;
+  color: #FFFFFF;
+  background: #0E7C86;
+  border: 2.5px solid #1A1A1A;
+  border-radius: 50%;
+}
+.lwl-importance-text {
+  font-family: 'Comic Neue', cursive, sans-serif;
+  font-weight: 700;
+  font-size: 16.5px;
+  color: #1A1A1A;
+  line-height: 1.5;
+  margin: 4px 0 0;
+}
 
 .lwl-quiz-list {
   display: flex;
