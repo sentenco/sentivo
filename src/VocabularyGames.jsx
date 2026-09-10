@@ -433,7 +433,7 @@ export default function VocabularyGames({ query }) {
           {atlasDecor}
           <div className="vg-hero">
             <span className="vg-eyebrow">Sentivo · Vocabulary</span>
-            <h1><span className="vg-pill">🐬 Word Bank</span></h1>
+            <h1><span className="vg-pill">Word Bank</span></h1>
             <p className="vg-blurb">Results for "{query.trim()}"</p>
           </div>
           <div className="vg-row"></div>
@@ -474,7 +474,7 @@ export default function VocabularyGames({ query }) {
           {atlasDecor}
           <div className="vg-hero">
             <span className="vg-eyebrow">Sentivo · Vocabulary</span>
-            <h1><span className="vg-pill">🐬 Word Bank</span></h1>
+            <h1><span className="vg-pill">Word Bank</span></h1>
             <p className="vg-blurb">Dive in and grow your word bank, one word at a time.</p>
           </div>
           {tabBar}
@@ -622,13 +622,13 @@ const CSS = `
   flex-direction: column;
   align-items: center;
   background:
-    repeating-linear-gradient(0deg, rgba(14,110,124,0.05) 0px, rgba(14,110,124,0.05) 1px, transparent 1px, transparent 64px),
-    repeating-linear-gradient(90deg, rgba(14,110,124,0.05) 0px, rgba(14,110,124,0.05) 1px, transparent 1px, transparent 64px),
-    linear-gradient(180deg, #FBF6E9 0%, #F3ECD6 55%, #ECE3C6 100%);
+    repeating-linear-gradient(0deg, rgba(14,110,124,0.06) 0px, rgba(14,110,124,0.06) 1px, transparent 1px, transparent 64px),
+    repeating-linear-gradient(90deg, rgba(14,110,124,0.06) 0px, rgba(14,110,124,0.06) 1px, transparent 1px, transparent 64px),
+    linear-gradient(180deg, #EAF8F6 0%, #D6F1EC 100%);
   overflow: hidden;
 }
 .vg-decor { position: absolute; inset: 0; pointer-events: none; z-index: 0; }
-.vg-decor-item { position: absolute; color: #0E6E7C; opacity: 0.14; }
+.vg-decor-item { position: absolute; color: #0E6E7C; opacity: 0.16; }
 
 .vg-hero { text-align: center; position: relative; z-index: 1; }
 .vg-eyebrow {
