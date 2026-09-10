@@ -1259,7 +1259,7 @@ export default function Library() {
   const [searchParams, setSearchParams] = useSearchParams();
   const [category, setCategory] = useState(() => searchParams.get("cat") || "All");
   const [page, setPage] = useState(() => Number(searchParams.get("page")) || 1);
-  const [query, setQuery] = useState("");
+  const [query, setQuery] = useState(() => searchParams.get("q") || "");
   const [clTab, setClTab] = useState(() => searchParams.get("clTab") || "All");
   const [clFormOpen, setClFormOpen] = useState(false);
   const [clStudentName, setClStudentName] = useState("");
@@ -2297,7 +2297,7 @@ export default function Library() {
   );
 }
 
-const CSS = `
+export const CSS = `
 @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&family=Quicksand:wght@500;600;700&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@700;900&family=Bangers&family=Comic+Neue:wght@400;700&family=Baloo+2:wght@600;700;800&family=IBM+Plex+Sans:wght@500;600;700;800&family=Lilita+One&family=Nunito:wght@600;700;800&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap');
 
 * { box-sizing: border-box; margin: 0; padding: 0; }

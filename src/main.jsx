@@ -289,6 +289,7 @@ import PartsOfSpeechTrack from './PartsOfSpeechTrack.jsx'
 import PartsOfSpeechLesson from './PartsOfSpeechLesson.jsx'
 import Shift from './Shift.jsx'
 import ShiftHub from './ShiftHub.jsx'
+import LibraryPageShell from './LibraryPageShell.jsx'
 import ShiftTrack from './ShiftTrack.jsx'
 import ShiftGuide from './ShiftGuide.jsx'
 import Spark from './Spark.jsx'
@@ -515,55 +516,55 @@ createRoot(document.getElementById('root')).render(
             <Route path="/library/mentors/apply" element={<MentorApply />} />
             <Route path="/library/admin/mentors" element={<MentorAdmin />} />
             <Route path="/library/teacher/:id" element={<TeacherProfile />} />
-            <Route path="/library/forge" element={<ForgeHub />} />
-            <Route path="/library/forge/:trackId" element={<ForgeTrack />} />
+            <Route path="/library/forge" element={<LibraryPageShell><ForgeHub /></LibraryPageShell>} />
+            <Route path="/library/forge/:trackId" element={<LibraryPageShell><ForgeTrack /></LibraryPageShell>} />
             <Route path="/library/forge/:trackId/:lessonNum" element={<Forge />} />
-            <Route path="/library/relay" element={<RelayHub />} />
-            <Route path="/library/relay/:trackId" element={<RelayTrack />} />
+            <Route path="/library/relay" element={<LibraryPageShell><RelayHub /></LibraryPageShell>} />
+            <Route path="/library/relay/:trackId" element={<LibraryPageShell><RelayTrack /></LibraryPageShell>} />
             <Route path="/library/relay/:trackId/:lessonNum" element={<Relay />} />
             <Route path="/library/relay/:trackId/:lessonNum/guide" element={<RelayGuide />} />
-            <Route path="/library/ascend" element={<AscendHub />} />
-            <Route path="/library/ascend/:trackId" element={<AscendTrack />} />
+            <Route path="/library/ascend" element={<LibraryPageShell><AscendHub /></LibraryPageShell>} />
+            <Route path="/library/ascend/:trackId" element={<LibraryPageShell><AscendTrack /></LibraryPageShell>} />
             <Route path="/library/ascend/:trackId/:lessonNum" element={<Ascend />} />
             <Route path="/library/ascend/:trackId/:lessonNum/guide" element={<AscendGuide />} />
-            <Route path="/library/bridge" element={<BridgeHub />} />
-            <Route path="/library/bridge/:trackId" element={<BridgeTrack />} />
+            <Route path="/library/bridge" element={<LibraryPageShell><BridgeHub /></LibraryPageShell>} />
+            <Route path="/library/bridge/:trackId" element={<LibraryPageShell><BridgeTrack /></LibraryPageShell>} />
             <Route path="/library/bridge/:trackId/:lessonNum" element={<Bridge />} />
             <Route path="/library/bridge/:trackId/:lessonNum/guide" element={<BridgeGuide />} />
-            <Route path="/library/derive" element={<DeriveHub />} />
-            <Route path="/library/derive/:trackId" element={<DeriveTrack />} />
+            <Route path="/library/derive" element={<LibraryPageShell><DeriveHub /></LibraryPageShell>} />
+            <Route path="/library/derive/:trackId" element={<LibraryPageShell><DeriveTrack /></LibraryPageShell>} />
             <Route path="/library/derive/:trackId/:lessonNum" element={<Derive />} />
-            <Route path="/library/sequence" element={<SequenceHub />} />
-            <Route path="/library/sequence/:trackId" element={<SequenceTrack />} />
+            <Route path="/library/sequence" element={<LibraryPageShell><SequenceHub /></LibraryPageShell>} />
+            <Route path="/library/sequence/:trackId" element={<LibraryPageShell><SequenceTrack /></LibraryPageShell>} />
             <Route path="/library/sequence/:trackId/:lessonNum" element={<Sequence />} />
             <Route path="/library/sequence/:trackId/:lessonNum/guide" element={<SequenceGuide />} />
-            <Route path="/library/grammar/parts-of-speech" element={<PartsOfSpeechTrack />} />
+            <Route path="/library/grammar/parts-of-speech" element={<LibraryPageShell><PartsOfSpeechTrack /></LibraryPageShell>} />
             <Route path="/library/grammar/parts-of-speech/:code" element={<PartsOfSpeechLesson />} />
-            <Route path="/library/grammar/verb-tenses" element={<VerbTensesTrack />} />
+            <Route path="/library/grammar/verb-tenses" element={<LibraryPageShell><VerbTensesTrack /></LibraryPageShell>} />
             <Route path="/library/grammar/verb-tenses/:code" element={<VerbTensesLesson />} />
-            <Route path="/library/grammar/sentence-patterns" element={<SentencePatternsTrack />} />
+            <Route path="/library/grammar/sentence-patterns" element={<LibraryPageShell><SentencePatternsTrack /></LibraryPageShell>} />
             <Route path="/library/grammar/sentence-patterns/:code" element={<SentencePatternsLesson />} />
-            <Route path="/library/grammar/modals" element={<ModalsTrack />} />
+            <Route path="/library/grammar/modals" element={<LibraryPageShell><ModalsTrack /></LibraryPageShell>} />
             <Route path="/library/grammar/modals/:code" element={<ModalsLesson />} />
-            <Route path="/library/grammar/conditionals" element={<ConditionalsTrack />} />
+            <Route path="/library/grammar/conditionals" element={<LibraryPageShell><ConditionalsTrack /></LibraryPageShell>} />
             <Route path="/library/grammar/conditionals/:code" element={<ConditionalsLesson />} />
-            <Route path="/library/grammar/passive-voice" element={<PassiveVoiceTrack />} />
+            <Route path="/library/grammar/passive-voice" element={<LibraryPageShell><PassiveVoiceTrack /></LibraryPageShell>} />
             <Route path="/library/grammar/passive-voice/:code" element={<PassiveVoiceLesson />} />
-            <Route path="/library/grammar/question-formation" element={<QuestionFormationTrack />} />
+            <Route path="/library/grammar/question-formation" element={<LibraryPageShell><QuestionFormationTrack /></LibraryPageShell>} />
             <Route path="/library/grammar/question-formation/:code" element={<QuestionFormationLesson />} />
-            <Route path="/library/grammar/nouns-articles-quantifiers" element={<NounsArticlesTrack />} />
+            <Route path="/library/grammar/nouns-articles-quantifiers" element={<LibraryPageShell><NounsArticlesTrack /></LibraryPageShell>} />
             <Route path="/library/grammar/nouns-articles-quantifiers/:code" element={<NounsArticlesLesson />} />
-            <Route path="/library/grammar/pronouns-possessives" element={<PronounsTrack />} />
+            <Route path="/library/grammar/pronouns-possessives" element={<LibraryPageShell><PronounsTrack /></LibraryPageShell>} />
             <Route path="/library/grammar/pronouns-possessives/:code" element={<PronounsLesson />} />
-            <Route path="/library/grammar/comparatives-superlatives" element={<ComparativesTrack />} />
+            <Route path="/library/grammar/comparatives-superlatives" element={<LibraryPageShell><ComparativesTrack /></LibraryPageShell>} />
             <Route path="/library/grammar/comparatives-superlatives/:code" element={<ComparativesLesson />} />
-            <Route path="/library/grammar/reported-speech" element={<ReportedSpeechTrack />} />
+            <Route path="/library/grammar/reported-speech" element={<LibraryPageShell><ReportedSpeechTrack /></LibraryPageShell>} />
             <Route path="/library/grammar/reported-speech/:code" element={<ReportedSpeechLesson />} />
-            <Route path="/library/grammar/relative-clauses" element={<RelativeClausesTrack />} />
+            <Route path="/library/grammar/relative-clauses" element={<LibraryPageShell><RelativeClausesTrack /></LibraryPageShell>} />
             <Route path="/library/grammar/relative-clauses/:code" element={<RelativeClausesLesson />} />
-            <Route path="/library/grammar/gerunds-infinitives" element={<GerundsInfinitivesTrack />} />
+            <Route path="/library/grammar/gerunds-infinitives" element={<LibraryPageShell><GerundsInfinitivesTrack /></LibraryPageShell>} />
             <Route path="/library/grammar/gerunds-infinitives/:code" element={<GerundsInfinitivesLesson />} />
-            <Route path="/library/grammar/prepositions" element={<PrepositionsTrack />} />
+            <Route path="/library/grammar/prepositions" element={<LibraryPageShell><PrepositionsTrack /></LibraryPageShell>} />
             <Route path="/library/grammar/prepositions/:code" element={<PrepositionsLesson />} />
             <Route path="/library/grammar/conjunctions" element={<ConjunctionsLesson />} />
             <Route path="/library/grammar/linking-words" element={<LinkingWordsLesson />} />
@@ -595,10 +596,10 @@ createRoot(document.getElementById('root')).render(
             <Route path="/library/grammar/whom" element={<WhomLesson />} />
             <Route path="/library/grammar/parallel-structure" element={<ParallelStructureLesson />} />
             <Route path="/library/grammar/nominalization" element={<NominalizationLesson />} />
-            <Route path="/library/grammar/punctuation-essentials" element={<PunctuationEssentialsTrack />} />
+            <Route path="/library/grammar/punctuation-essentials" element={<LibraryPageShell><PunctuationEssentialsTrack /></LibraryPageShell>} />
             <Route path="/library/grammar/punctuation-essentials/:code" element={<PunctuationEssentialsLesson />} />
-            <Route path="/library/shift" element={<ShiftHub />} />
-            <Route path="/library/shift/:trackId" element={<ShiftTrack />} />
+            <Route path="/library/shift" element={<LibraryPageShell><ShiftHub /></LibraryPageShell>} />
+            <Route path="/library/shift/:trackId" element={<LibraryPageShell><ShiftTrack /></LibraryPageShell>} />
             <Route path="/library/shift/:trackId/:lessonNum" element={<Shift />} />
             <Route path="/library/shift/:trackId/:lessonNum/guide" element={<ShiftGuide />} />
             <Route path="/library/spark" element={<Library />} />
