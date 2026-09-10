@@ -4,7 +4,17 @@ const LESSON = {
   title: "Phrasal Verbs: Separable vs Inseparable",
   formula: "separable: verb + particle + object OR verb + object + particle  ·  inseparable: verb + particle + object only",
   leadIn: "Think of one thing you need to turn off before bed tonight.",
+  importance: [
+    "Phrasal verbs are everywhere in real spoken English — native speakers reach for them far more often than the single-word formal equivalent (find out vs. discover, give up vs. abandon).",
+    "The meaning is often nothing like the individual words, so guessing from vocabulary alone fails constantly — this is a pattern that has to be learned directly, not inferred.",
+    "Separable vs. inseparable decides where the object physically goes in the sentence, and with a pronoun it's not optional — getting it wrong sounds clearly off to a native ear.",
+  ],
   teach: [
+    {
+      name: "What Is a Phrasal Verb?",
+      definition: "A phrasal verb combines a verb with one or more particles (small words like up, off, into) to create a meaning that's often completely different from the verb alone.",
+      examples: ["give up (quit) vs. give (hand over)", "look after (care for) vs. look (see)", "turn off (stop) vs. turn (rotate)"],
+    },
     {
       name: "Separable Phrasal Verbs: The Object Can Move",
       definition: "With separable phrasal verbs, the object can go either after the whole phrase or between the verb and the particle. With pronouns, it must go in the middle.",
@@ -41,8 +51,9 @@ const LESSON = {
 
 function buildSlides(lesson) {
   const slides = ["cover", "warmup"];
-  if (lesson.comparePairs) slides.push("predict", "compare");
+  if (lesson.importance) slides.push("importance");
   lesson.teach.forEach((_, i) => slides.push(`teach${i}`));
+  if (lesson.comparePairs) slides.push("predict", "compare");
   if (lesson.guided) {
     const guidedChunks = Math.ceil(lesson.guided.length / 3);
     for (let i = 0; i < guidedChunks; i++) slides.push(`guided${i}`);
@@ -72,6 +83,22 @@ function WarmupSlide({ lesson }) {
   );
 }
 
+function ImportanceSlide({ lesson }) {
+  return (
+    <div className="phvl-slide phvl-slide--part">
+      <h3 className="phvl-h">Why Phrasal Verbs Matter</h3>
+      <div className="phvl-importance-list">
+        {lesson.importance.map((line, i) => (
+          <div key={i} className="phvl-importance-item">
+            <span className="phvl-importance-num">{i + 1}</span>
+            <p className="phvl-importance-text">{line}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function TeachSlide({ lesson, index }) {
   const concept = lesson.teach[index];
   return (
@@ -96,7 +123,7 @@ function PredictSlide({ lesson }) {
     <div className="phvl-slide">
       <span className="phvl-eyebrow">Think About It</span>
       <h3 className="phvl-h">{left} <span className="phvl-vs">vs</span> {right}</h3>
-      <p className="phvl-compare-note">What's the difference? Take a guess before we explain.</p>
+      <p className="phvl-compare-note">You've just seen both. In your own words, how would you explain the difference?</p>
     </div>
   );
 }
@@ -170,6 +197,7 @@ function WrapupSlide({ lesson }) {
 function renderSlide(slideType, lesson) {
   if (slideType === "cover") return <CoverSlide lesson={lesson} />;
   if (slideType === "warmup") return <WarmupSlide lesson={lesson} />;
+  if (slideType === "importance") return <ImportanceSlide lesson={lesson} />;
   if (slideType.startsWith("teach")) return <TeachSlide lesson={lesson} index={Number(slideType.replace("teach", ""))} />;
   if (slideType === "predict") return <PredictSlide lesson={lesson} />;
   if (slideType === "compare") return <CompareSlide lesson={lesson} />;
@@ -185,6 +213,7 @@ function stageLabel(slideType) {
   switch (slideType) {
     case "cover": return "Cover";
     case "warmup": return "Warm-up";
+    case "importance": return "Why It Matters";
     case "predict": return "Think About It";
     case "compare": return "Compare";
     case "practice": return "Practice";
@@ -472,6 +501,39 @@ const CSS = `
 }
 .phvl-speaking-list { max-width: 720px; font-size: 18px; text-align: left; }
 .phvl-speaking-list li { margin-bottom: 8px; }
+
+.phvl-importance-list { display: flex; flex-direction: column; gap: 12px; width: 100%; max-width: 720px; text-align: left; }
+.phvl-importance-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  background: #FBF0F8;
+  border: 3px solid #1A1A1A;
+  border-radius: 14px;
+  padding: 14px 18px;
+}
+.phvl-importance-num {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Bangers', cursive;
+  font-size: 16px;
+  color: #FFFFFF;
+  background: #A6238C;
+  border: 2.5px solid #1A1A1A;
+  border-radius: 50%;
+}
+.phvl-importance-text {
+  font-family: 'Comic Neue', cursive, sans-serif;
+  font-weight: 700;
+  font-size: 16.5px;
+  color: #1A1A1A;
+  line-height: 1.5;
+  margin: 4px 0 0;
+}
 
 .phvl-quiz-list {
   display: flex;
