@@ -115,7 +115,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "An unhappy customer holding a torn book at the counter, Kayla looking uncertain while Josh calmly steps in to help, shelves of books in the background.",
     story:
-      "This afternoon, a customer comes in with an angry look on his face. “This book has a torn page, I want my money back,” he says loudly. My heart beats fast, and I am not sure what to say. Josh notices and calmly walks over to help me. “I'm sorry about that, sir, let me get you a new copy,” Josh says kindly. The customer's face softens, and he thanks Josh for the quick help. After the customer leaves, Josh tells me it is okay to ask for help sometimes. “Every worker needs help with hard customers,” he explains gently. I feel thankful to have a kind coworker like Josh.",
+      "This afternoon, a customer comes in with an angry look on his face. “This book has a torn page, I want my money back,” he says loudly. My heart beats fast, and I am not sure what to say. Josh notices and calmly walks over. “I've got this, Kayla,” he says, then turns to the customer. “I'm sorry about that, sir, let me get you a new copy,” Josh says kindly. The customer's face softens, and he thanks Josh for the quick help. After the customer leaves, Josh tells me it is okay to ask for help sometimes. “Every worker needs help with hard customers,” he explains gently. I feel thankful to have a kind coworker like Josh.",
     questions: [
       { text: "Why is the customer angry?", answer: "Because his book has a torn page." },
       { text: "What does Josh do to help?", answer: "Offers the customer a new copy." },
@@ -202,7 +202,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "A long line of excited readers waiting outside the bookshop for an author signing event, Kayla and Josh working quickly behind the counter.",
     story:
-      "This Saturday, the bookshop is busier than I have ever seen it. A famous author visits for a book signing event in the afternoon. Long lines of excited readers wait outside the shop's front door. Josh and I work quickly, helping customers find books and get them signed. My feet feel tired from standing and walking all day long. Despite the busy chaos, I feel excited to be part of something special. Mr. Dizon thanks Josh and me for our hard work at the end. “We could not have done this without you two,” he says gratefully. Busy days like this make working at the bookshop feel truly meaningful.",
+      "This Saturday, the bookshop is busier than I have ever seen it. A famous author visits for a book signing event in the afternoon. Long lines of excited readers wait outside the shop's front door. Josh and I work quickly, helping customers find books and get them signed. My feet feel tired from standing and walking all day long. Despite the busy chaos, I feel excited to be part of something special. Mr. Dizon thanks Josh and me for our hard work at the end. “We could not have done this without you two, Kayla and Josh,” he says gratefully. Busy days like this make working at the bookshop feel truly meaningful.",
     questions: [
       { text: "What event happens at the bookshop?", answer: "A famous author's book signing." },
       { text: "What do Josh and Kayla do all day?", answer: "Help customers find books and get them signed." },
@@ -289,7 +289,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Kayla confidently closing the bookshop register at the end of the day, Josh beside her locking the front door, Mr. Dizon waving goodbye from behind the counter.",
     story:
-      "It has been three months since I started working at the bookshop. I know the shelves, the register, and every regular customer's favorite genre. Mr. Dizon trusts me to close the shop on my own now. Josh and I have become close friends, not just coworkers. I remember my nervous first interview and how far I have come. My parents say they are proud of how responsible I have become. I saved enough money to buy my sister a special birthday gift. Working my first job taught me more than I ever expected to learn. I feel proud of the person I am becoming through this job.",
+      "It has been three months since I started working at the bookshop. I know the shelves, the register, and every regular customer's favorite genre. Mr. Dizon trusts me to close the shop on my own now. Josh and I have become close friends, not just coworkers. I remember my nervous first interview and how far I have come. “We are so proud of you, Kayla,” my parents say, proud of how responsible I have become. I saved enough money to buy my sister a special birthday gift. Working my first job taught me more than I ever expected to learn. I feel proud of the person I am becoming through this job.",
     questions: [
       { text: "How long has Kayla worked at the bookshop?", answer: "Three months." },
       { text: "What does Mr. Dizon trust Kayla to do now?", answer: "Close the shop on her own." },

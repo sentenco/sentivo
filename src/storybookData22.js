@@ -29,7 +29,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Zoe and Cody standing in front of a school hallway poster announcing the talent show, both smiling as they write their names on a sign-up sheet.",
     story:
-      "This morning, a poster on the wall announces the school talent show. “Sign up now, all talents welcome!” the poster says in bright letters. My best friend Cody looks at me and says, “We should do this together!” I feel excited, but also a little nervous about performing. We write our names on the sign-up sheet outside the music room. Ms. Alvarez, the music teacher, smiles and says she cannot wait to see us. “What will you two perform?” she asks curiously. Cody and I look at each other, not sure yet. Signing up for the talent show feels like a big, exciting step.",
+      "This morning, a poster on the wall announces the school talent show. “Sign up now, all talents welcome!” the poster says in bright letters. My best friend Cody looks at me and says, “We should do this together, Zoe!” I feel excited, but also a little nervous about performing. We write our names on the sign-up sheet outside the music room. Ms. Alvarez, the music teacher, smiles and says she cannot wait to see us. “What will you two perform?” she asks curiously. Cody and I look at each other, not sure yet. Signing up for the talent show feels like a big, exciting step.",
     questions: [
       { text: "What does the poster announce?", answer: "The school talent show." },
       { text: "Who wants to sign up with Zoe?", answer: "Cody." },
@@ -58,7 +58,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Zoe and Cody sitting in the music room flipping through a stack of song sheets, Ms. Alvarez listening nearby with a supportive smile.",
     story:
-      "After school, Cody and I sit in the music room to choose a song. “What about a song we both know well?” Cody suggests thoughtfully. We look through many songs, trying to find the perfect one. I want something upbeat, while Cody prefers something a little slower. After a while, we agree on a fun, popular song we both love. Ms. Alvarez listens to our choice and says it sounds like a great fit. “This song shows off both your voices well,” she says with a smile. We feel relieved to finally have our song chosen. Now the real work of practicing can begin.",
+      "After school, Cody and I sit in the music room to choose a song. “What about a song we both know well, Zoe?” Cody suggests thoughtfully. We look through many songs, trying to find the perfect one. I want something upbeat, while Cody prefers something a little slower. After a while, we agree on a fun, popular song we both love. Ms. Alvarez listens to our choice and says it sounds like a great fit. “This song shows off both your voices well,” she says with a smile. We feel relieved to finally have our song chosen. Now the real work of practicing can begin.",
     questions: [
       { text: "Where do Zoe and Cody choose a song?", answer: "The music room." },
       { text: "What kind of song does Zoe want?", answer: "Something upbeat." },
@@ -87,7 +87,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Zoe and Cody standing on the empty auditorium stage during their first rehearsal, Ms. Alvarez sitting in the front row taking notes.",
     story:
-      "Our first rehearsal happens in the empty auditorium after school. My voice sounds shaky, and I forget some of the words. Cody stays patient and reminds me gently when I lose my place. “It's just the first try, we'll get better,” Cody says encouragingly. Ms. Alvarez watches from the front row and takes helpful notes. She tells us to relax our shoulders and breathe before singing. We try the song again, and it already sounds much better. By the end of rehearsal, we both feel more confident about our song. The first rehearsal is not perfect, but it is a good beginning.",
+      "Our first rehearsal happens in the empty auditorium after school. My voice sounds shaky, and I forget some of the words. Cody stays patient and reminds me gently when I lose my place. “It's just the first try, Zoe, we'll get better,” Cody says encouragingly. Ms. Alvarez watches from the front row and takes helpful notes. She tells us to relax our shoulders and breathe before singing. We try the song again, and it already sounds much better. By the end of rehearsal, we both feel more confident about our song. The first rehearsal is not perfect, but it is a good beginning.",
     questions: [
       { text: "Where does the first rehearsal happen?", answer: "In the empty auditorium." },
       { text: "What happens to Zoe's voice?", answer: "It sounds shaky and she forgets some words." },
@@ -116,7 +116,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Zoe sitting on her bed looking worried the night before rehearsal, then the next day talking quietly with Cody in the hallway before class.",
     story:
-      "The night before our second rehearsal, I feel a wave of worry. What if I forget the words in front of the whole school? My stomach feels tight, and I cannot sleep well that night. The next day, I tell Cody about my fear before rehearsal starts. “I get scared too, but we can be scared together,” Cody says kindly. Ms. Alvarez tells us that even famous singers feel nervous sometimes. “Stage fright means you care about doing well,” she explains gently. Her words make me feel less alone with my worry. I decide to focus on having fun instead of being perfect.",
+      "The night before our second rehearsal, I feel a wave of worry. What if I forget the words in front of the whole school? My stomach feels tight, and I cannot sleep well that night. The next day, I tell Cody about my fear before rehearsal starts. “I get scared too, Zoe, but we can be scared together,” Cody says kindly. Ms. Alvarez tells us that even famous singers feel nervous sometimes. “Stage fright means you care about doing well,” she explains gently. Her words make me feel less alone with my worry. I decide to focus on having fun instead of being perfect.",
     questions: [
       { text: "What does Zoe worry about?", answer: "Forgetting the words in front of the whole school." },
       { text: "What does Zoe tell Cody?", answer: "About her fear." },
@@ -145,7 +145,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Zoe and Cody practicing their song together in a garage using an old microphone and speaker, Cody's little sister watching and clapping nearby.",
     story:
-      "Every day after school, Cody and I practice our song together. We practice in Cody's garage, using an old microphone and speaker. Cody's little sister watches us and claps after every practice session. We work on hitting the high notes and staying together in rhythm. Some days, we laugh so much that we forget to practice seriously. Other days, we focus completely and get through the whole song perfectly. Cody always makes practicing feel fun instead of stressful and scary. By the end of the week, we know the song by heart. Practicing with a good friend makes everything feel easier and more fun.",
+      "Every day after school, Cody and I practice our song together. We practice in Cody's garage, using an old microphone and speaker. Cody's little sister watches us and claps, shouting, “Go, Zoe and Cody!” after every practice session. We work on hitting the high notes and staying together in rhythm. Some days, we laugh so much that we forget to practice seriously. Other days, we focus completely and get through the whole song perfectly. Cody always makes practicing feel fun instead of stressful and scary. By the end of the week, we know the song by heart. Practicing with a good friend makes everything feel easier and more fun.",
     questions: [
       { text: "Where do Zoe and Cody practice?", answer: "In Cody's garage." },
       { text: "Who watches them practice?", answer: "Cody's little sister." },
@@ -174,7 +174,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Zoe standing in front of her closet looking worried at a dress with a broken zipper, Mom helping her look through other outfits on the bed.",
     story:
-      "Two days before the show, I try on my performance outfit at home. To my surprise, the zipper on my favorite dress is broken! I feel a small wave of panic thinking about the show. I call Cody, and he tells me not to worry too much. My mom offers to help me find a quick solution to the problem. We look through my closet and find another outfit that works well. Mom sews a small button on the new outfit to make it special. “Problem solved, and you look great too,” Mom says with a proud smile. A small costume problem does not have to ruin the whole show.",
+      "Two days before the show, I try on my performance outfit at home. To my surprise, the zipper on my favorite dress is broken! I feel a small wave of panic thinking about the show. I call Cody, and he tells me not to worry too much. My mom offers to help me find a quick solution to the problem. We look through my closet and find another outfit that works well. Mom sews a small button on the new outfit to make it special. “Problem solved, and you look great too, Zoe,” Mom says with a proud smile. A small costume problem does not have to ruin the whole show.",
     questions: [
       { text: "What problem does Zoe find with her dress?", answer: "The zipper is broken." },
       { text: "Who helps Zoe solve the problem?", answer: "Her mom." },
@@ -203,7 +203,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Zoe and Cody performing in their costumes on the fully lit auditorium stage, Ms. Alvarez watching proudly from the audience seats.",
     story:
-      "The day before the show, we have our full dress rehearsal on stage. We wear our costumes and perform under the bright stage lights. My hands shake a little as the microphone turns on for us. Cody gives me an encouraging nod, and we begin singing together. Our voices blend nicely, and the rhythm feels smooth and confident. Ms. Alvarez watches from the audience seats with a proud, warm smile. “That was wonderful, you two are ready,” she says when we finish. Hearing those words makes all our practice feel worth it. We walk off stage feeling excited and ready for tomorrow's show.",
+      "The day before the show, we have our full dress rehearsal on stage. We wear our costumes and perform under the bright stage lights. My hands shake a little as the microphone turns on for us. Cody gives me an encouraging nod, and we begin singing together. Our voices blend nicely, and the rhythm feels smooth and confident. Ms. Alvarez watches from the audience seats with a proud, warm smile. “That was wonderful, Zoe and Cody, you two are ready,” she says when we finish. Hearing those words makes all our practice feel worth it. We walk off stage feeling excited and ready for tomorrow's show.",
     questions: [
       { text: "What do they wear during dress rehearsal?", answer: "Their costumes." },
       { text: "What does Cody give Zoe before singing?", answer: "An encouraging nod." },
@@ -261,7 +261,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Zoe and Cody standing together on the bright stage in front of a full auditorium, singing confidently into microphones, the audience clapping.",
     story:
-      "The auditorium is full of students, teachers, and excited parents tonight. Backstage, my heart pounds as we wait for our turn to perform. “We've got this,” Cody whispers, squeezing my hand for support. Our names are called, and we walk onto the bright, lit stage. The music starts, and I take a deep breath before singing. My nervousness disappears as soon as I hear Cody's voice beside mine. We sing together confidently, smiling at each other through the whole song. The audience claps loudly and cheers when our performance finally ends. Standing on that stage with Cody is a moment I will never forget.",
+      "The auditorium is full of students, teachers, and excited parents tonight. Backstage, my heart pounds as we wait for our turn to perform. “We've got this, Zoe,” Cody whispers, squeezing my hand for support. Our names are called, and we walk onto the bright, lit stage. The music starts, and I take a deep breath before singing. My nervousness disappears as soon as I hear Cody's voice beside mine. We sing together confidently, smiling at each other through the whole song. The audience claps loudly and cheers when our performance finally ends. Standing on that stage with Cody is a moment I will never forget.",
     questions: [
       { text: "Who fills the auditorium tonight?", answer: "Students, teachers, and excited parents." },
       { text: "What does Cody say backstage?", answer: "We've got this." },
@@ -290,7 +290,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Zoe and Cody hugging with big smiles after the show, Zoe's parents nearby with proud expressions, Ms. Alvarez congratulating them in the background.",
     story:
-      "After the show, Cody and I hug each other with huge smiles. “We actually did it!” I say, still feeling the excitement in my chest. Ms. Alvarez comes over and congratulates us on a wonderful performance. My parents find me in the crowd and give me a big, proud hug. “You sounded amazing up there,” my mom says with happy tears. We did not win first place, but that does not matter to me. I learned that facing my fear was the real victory tonight. Cody and I already talk about performing together again next year. Our first talent show together is a memory I will always treasure.",
+      "After the show, Cody and I hug each other with huge smiles. “We actually did it!” I say, still feeling the excitement in my chest. Ms. Alvarez comes over and congratulates us on a wonderful performance. My parents find me in the crowd and give me a big, proud hug. “You sounded amazing up there, Zoe,” my mom says with happy tears. We did not win first place, but that does not matter to me. I learned that facing my fear was the real victory tonight. Cody and I already talk about performing together again next year. Our first talent show together is a memory I will always treasure.",
     questions: [
       { text: "What do Zoe and Cody do after the show?", answer: "Hug each other with huge smiles." },
       { text: "What does Ms. Alvarez do?", answer: "Congratulates them on a wonderful performance." },
