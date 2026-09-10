@@ -4,6 +4,11 @@ const LESSON = {
   title: "Would Rather / Had Better",
   formula: "would rather + base verb (preference)  ·  had better + base verb (urgent advice)",
   leadIn: "Would you rather stay in tonight, or go out? And what's something you'd better not forget to do today?",
+  importance: [
+    "These are two of the most common ways to give an opinion or a warning in casual speech — something you'll reach for daily, not a rare structure.",
+    "The tone really matters: using had better for a mild preference sounds unexpectedly bossy or alarming, while would rather for a real warning sounds too soft.",
+    "Both take the bare base verb with no \"to,\" which trips up learners used to other opinion or advice verbs (want to, need to) that do take an infinitive.",
+  ],
   teach: [
     {
       name: "Would Rather: Preference",
@@ -41,8 +46,9 @@ const LESSON = {
 
 function buildSlides(lesson) {
   const slides = ["cover", "warmup"];
-  if (lesson.comparePairs) slides.push("predict", "compare");
+  if (lesson.importance) slides.push("importance");
   lesson.teach.forEach((_, i) => slides.push(`teach${i}`));
+  if (lesson.comparePairs) slides.push("predict", "compare");
   if (lesson.guided) {
     const guidedChunks = Math.ceil(lesson.guided.length / 3);
     for (let i = 0; i < guidedChunks; i++) slides.push(`guided${i}`);
@@ -72,6 +78,22 @@ function WarmupSlide({ lesson }) {
   );
 }
 
+function ImportanceSlide({ lesson }) {
+  return (
+    <div className="wrhl-slide wrhl-slide--part">
+      <h3 className="wrhl-h">Why This Matters</h3>
+      <div className="wrhl-importance-list">
+        {lesson.importance.map((line, i) => (
+          <div key={i} className="wrhl-importance-item">
+            <span className="wrhl-importance-num">{i + 1}</span>
+            <p className="wrhl-importance-text">{line}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function TeachSlide({ lesson, index }) {
   const concept = lesson.teach[index];
   return (
@@ -96,7 +118,7 @@ function PredictSlide({ lesson }) {
     <div className="wrhl-slide">
       <span className="wrhl-eyebrow">Think About It</span>
       <h3 className="wrhl-h">{left} <span className="wrhl-vs">vs</span> {right}</h3>
-      <p className="wrhl-compare-note">What's the difference? Take a guess before we explain.</p>
+      <p className="wrhl-compare-note">You've just seen both. In your own words, how would you explain the difference?</p>
     </div>
   );
 }
@@ -170,6 +192,7 @@ function WrapupSlide({ lesson }) {
 function renderSlide(slideType, lesson) {
   if (slideType === "cover") return <CoverSlide lesson={lesson} />;
   if (slideType === "warmup") return <WarmupSlide lesson={lesson} />;
+  if (slideType === "importance") return <ImportanceSlide lesson={lesson} />;
   if (slideType.startsWith("teach")) return <TeachSlide lesson={lesson} index={Number(slideType.replace("teach", ""))} />;
   if (slideType === "predict") return <PredictSlide lesson={lesson} />;
   if (slideType === "compare") return <CompareSlide lesson={lesson} />;
@@ -185,6 +208,7 @@ function stageLabel(slideType) {
   switch (slideType) {
     case "cover": return "Cover";
     case "warmup": return "Warm-up";
+    case "importance": return "Why It Matters";
     case "predict": return "Think About It";
     case "compare": return "Compare";
     case "practice": return "Practice";
@@ -472,6 +496,39 @@ const CSS = `
 }
 .wrhl-speaking-list { max-width: 720px; font-size: 18px; text-align: left; }
 .wrhl-speaking-list li { margin-bottom: 8px; }
+
+.wrhl-importance-list { display: flex; flex-direction: column; gap: 12px; width: 100%; max-width: 720px; text-align: left; }
+.wrhl-importance-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  background: #FCF5E6;
+  border: 3px solid #1A1A1A;
+  border-radius: 14px;
+  padding: 14px 18px;
+}
+.wrhl-importance-num {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Bangers', cursive;
+  font-size: 16px;
+  color: #FFFFFF;
+  background: #E3A73C;
+  border: 2.5px solid #1A1A1A;
+  border-radius: 50%;
+}
+.wrhl-importance-text {
+  font-family: 'Comic Neue', cursive, sans-serif;
+  font-weight: 700;
+  font-size: 16.5px;
+  color: #1A1A1A;
+  line-height: 1.5;
+  margin: 4px 0 0;
+}
 
 .wrhl-quiz-list {
   display: flex;

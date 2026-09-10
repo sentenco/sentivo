@@ -4,6 +4,11 @@ const LESSON = {
   title: "Countable Nouns That Look Uncountable",
   formula: "always-uncountable nouns: no -s, no a/an  ·  rare countable use: a/an or -s allowed, narrower meaning",
   leadIn: "Have you ever said “informations” or “an advice” by accident? What sounded off about it?",
+  importance: [
+    "These specific nouns (news, advice, furniture, information) are extremely high-frequency, so getting them wrong shows up constantly, not just in rare vocabulary.",
+    "This is one of the most persistent errors even at advanced levels, because the words genuinely feel countable — it isn't a beginner gap that fades with time.",
+    "Knowing the rare countable exceptions (a coffee, two works) unlocks natural, idiomatic-sounding speech, not just error avoidance.",
+  ],
   teach: [
     {
       name: "Feels Countable, Isn't: Always Uncountable",
@@ -41,8 +46,9 @@ const LESSON = {
 
 function buildSlides(lesson) {
   const slides = ["cover", "warmup"];
-  if (lesson.comparePairs) slides.push("predict", "compare");
+  if (lesson.importance) slides.push("importance");
   lesson.teach.forEach((_, i) => slides.push(`teach${i}`));
+  if (lesson.comparePairs) slides.push("predict", "compare");
   if (lesson.guided) {
     const guidedChunks = Math.ceil(lesson.guided.length / 3);
     for (let i = 0; i < guidedChunks; i++) slides.push(`guided${i}`);
@@ -72,6 +78,22 @@ function WarmupSlide({ lesson }) {
   );
 }
 
+function ImportanceSlide({ lesson }) {
+  return (
+    <div className="cntl-slide cntl-slide--part">
+      <h3 className="cntl-h">Why This Matters</h3>
+      <div className="cntl-importance-list">
+        {lesson.importance.map((line, i) => (
+          <div key={i} className="cntl-importance-item">
+            <span className="cntl-importance-num">{i + 1}</span>
+            <p className="cntl-importance-text">{line}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function TeachSlide({ lesson, index }) {
   const concept = lesson.teach[index];
   return (
@@ -96,7 +118,7 @@ function PredictSlide({ lesson }) {
     <div className="cntl-slide">
       <span className="cntl-eyebrow">Think About It</span>
       <h3 className="cntl-h">{left} <span className="cntl-vs">vs</span> {right}</h3>
-      <p className="cntl-compare-note">What's the difference? Take a guess before we explain.</p>
+      <p className="cntl-compare-note">You've just seen both. In your own words, how would you explain the difference?</p>
     </div>
   );
 }
@@ -170,6 +192,7 @@ function WrapupSlide({ lesson }) {
 function renderSlide(slideType, lesson) {
   if (slideType === "cover") return <CoverSlide lesson={lesson} />;
   if (slideType === "warmup") return <WarmupSlide lesson={lesson} />;
+  if (slideType === "importance") return <ImportanceSlide lesson={lesson} />;
   if (slideType.startsWith("teach")) return <TeachSlide lesson={lesson} index={Number(slideType.replace("teach", ""))} />;
   if (slideType === "predict") return <PredictSlide lesson={lesson} />;
   if (slideType === "compare") return <CompareSlide lesson={lesson} />;
@@ -182,6 +205,7 @@ function renderSlide(slideType, lesson) {
 const STAGE_LABELS = {
   cover: "Cover",
   warmup: "Warm-up",
+  importance: "Why It Matters",
   predict: "Think About It",
   compare: "Compare",
   practice: "Practice",
@@ -470,6 +494,39 @@ const CSS = `
 }
 .cntl-speaking-list { max-width: 720px; font-size: 18px; text-align: left; }
 .cntl-speaking-list li { margin-bottom: 8px; }
+
+.cntl-importance-list { display: flex; flex-direction: column; gap: 12px; width: 100%; max-width: 720px; text-align: left; }
+.cntl-importance-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  background: #EFF7F0;
+  border: 3px solid #1A1A1A;
+  border-radius: 14px;
+  padding: 14px 18px;
+}
+.cntl-importance-num {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Bangers', cursive;
+  font-size: 16px;
+  color: #FFFFFF;
+  background: #4C9A5D;
+  border: 2.5px solid #1A1A1A;
+  border-radius: 50%;
+}
+.cntl-importance-text {
+  font-family: 'Comic Neue', cursive, sans-serif;
+  font-weight: 700;
+  font-size: 16.5px;
+  color: #1A1A1A;
+  line-height: 1.5;
+  margin: 4px 0 0;
+}
 
 .cntl-quiz-list {
   display: flex;
