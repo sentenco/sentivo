@@ -257,7 +257,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Quinn and Leo sitting at a table by a big sunny café window, cups of coffee and tea between them, both laughing mid-conversation.",
     story:
-      "On Saturday afternoon, I meet my friend Leo for coffee. We choose a small café near the park with big, sunny windows. I order a warm coffee, and Leo orders a cup of tea. We sit at a table by the window and talk about our week. Leo tells me a funny story, and I laugh out loud. “You needed this, Quinn,” Leo says. I tell him about my new hobbies, like cooking and walking. We talk about our dreams, our families, and our plans. The time passes quickly because we enjoy each other's company. It feels so good to talk with a real friend, not a phone. As I finish my coffee, I feel happy because good friends make free time special.",
+      "On Saturday afternoon, I meet my friend Leo for coffee. We choose a small café near the park with big, sunny windows. I order a warm coffee, and Leo orders a cup of tea. We sit at a table by the window and talk about our week. Leo tells me a funny story, and I laugh out loud. “You needed this, Quinn,” Leo says. I tell Leo about my new hobbies, like cooking and walking. We talk about our dreams, our families, and our plans. The time passes quickly because we enjoy each other's company. It feels so good to talk with a real friend, not a phone. As I finish my coffee, I feel happy because good friends make free time special.",
     questions: [
       { text: "Who does Quinn meet for coffee?", answer: "Their friend Leo." },
       { text: "What does Quinn order at the café?", answer: "A warm coffee." },
