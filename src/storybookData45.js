@@ -22,7 +22,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Miguel standing in the kitchen looking at a recipe on his phone, ingredients spread out on the counter in front of him.",
     story:
-      "Tonight, Sofia has to work late, so I decide to cook dinner for our family myself. I do not cook very often, so I feel a little nervous about this plan. I find a simple recipe on my phone for chicken and vegetables. I write down the ingredients I need and check what I already have at home. I am missing a few things, so I plan a quick trip to the store first. Lucas and Mia are excited when I tell them I am cooking tonight. “Can we help too?” Mia asks with a big smile on her face.",
+      "Tonight, Sofia has to work late, so I decide to cook dinner for our family myself. I do not cook very often, so I feel a little nervous about this plan. I find a simple recipe on my phone for chicken and vegetables. I write down the ingredients I need and check what I already have at home. I am missing a few things, so I plan a quick trip to the store first. Lucas and Mia are excited when I tell them I am cooking tonight. “Can we help too, Miguel?” Mia asks with a big smile on her face.",
     questions: [
       { text: "Why does Miguel decide to cook dinner tonight?", answer: "Because Sofia has to work late." },
       { text: "How does Miguel feel about this plan?", answer: "A little nervous." },
@@ -51,7 +51,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Miguel pushing a small shopping cart through a grocery store aisle with Lucas and Mia beside him, checking a list on his phone.",
     story:
-      "I take Lucas and Mia with me to the store to buy the ingredients we need. They enjoy walking through the aisles and helping me find items on my list. Lucas finds the chicken quickly, and Mia picks out fresh carrots and potatoes carefully. I check my phone to make sure I do not forget anything important. The kids ask if we can also buy a small dessert for after dinner. I agree, and we choose a small chocolate cake to share together later. Shopping together feels fun, and it makes the trip go by much faster.",
+      "I take Lucas and Mia with me to the store to buy the ingredients we need. They enjoy walking through the aisles and helping me find items on my list. “Look, Miguel, I found the chicken!” Lucas says, and Mia picks out fresh carrots and potatoes carefully. I check my phone to make sure I do not forget anything important. The kids ask if we can also buy a small dessert for after dinner. I agree, and we choose a small chocolate cake to share together later. Shopping together feels fun, and it makes the trip go by much faster.",
     questions: [
       { text: "Who does Miguel take with him to the store?", answer: "Lucas and Mia." },
       { text: "What does Lucas find quickly?", answer: "The chicken." },
@@ -80,7 +80,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Miguel washing vegetables at the kitchen sink, a recipe open on his phone propped against a jar on the counter.",
     story:
-      "Back home, I put on my apron and set my phone on the counter for the recipe. First, I wash the vegetables carefully under running water in the sink. I cut the carrots and potatoes into small pieces, just like the recipe shows. The chicken needs to be cleaned and seasoned with salt and pepper next. I feel a little slow at first, checking the recipe after almost every single step. Sofia calls to check on us, and I tell her everything is going okay so far. “You can do this,” she says encouragingly before hanging up the phone.",
+      "Back home, I put on my apron and set my phone on the counter for the recipe. First, I wash the vegetables carefully under running water in the sink. I cut the carrots and potatoes into small pieces, just like the recipe shows. The chicken needs to be cleaned and seasoned with salt and pepper next. I feel a little slow at first, checking the recipe after almost every single step. Sofia calls to check on us, and I tell her everything is going okay so far. “You can do this, Miguel,” she says encouragingly before hanging up the phone.",
     questions: [
       { text: "What does Miguel wash first?", answer: "The vegetables." },
       { text: "How does Miguel cut the carrots and potatoes?", answer: "Into small pieces, like the recipe shows." },
@@ -109,7 +109,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Lucas stirring a bowl of vegetables while Mia sets the table, both children happily helping in the kitchen with Miguel supervising.",
     story:
-      "Lucas asks if he can stir the vegetables in the bowl, and I let him carefully help me. He stirs slowly and proudly, happy to be part of making dinner tonight. Mia decides to set the table instead, placing plates and forks in the right spots. She counts the plates carefully to make sure everyone has exactly what they need. Watching them help makes me smile, even though the kitchen is getting a little messy. Cooking together as a small team feels much more fun than cooking completely alone. I thank them both for being such wonderful little helpers tonight.",
+      "Lucas asks if he can stir the vegetables in the bowl, and I let him carefully help me. He stirs slowly and proudly, happy to be part of making dinner tonight. Mia decides to set the table instead, placing plates and forks in the right spots. She counts the plates carefully to make sure everyone has exactly what they need. Watching them help makes me smile, even though the kitchen is getting a little messy. Cooking together as a small team feels much more fun than cooking completely alone. “Great job, Miguel!” Mia says proudly, and I thank them both for being such wonderful little helpers tonight.",
     questions: [
       { text: "What does Lucas ask to help with?", answer: "Stirring the vegetables." },
       { text: "What does Mia decide to do instead?", answer: "Set the table." },
@@ -138,7 +138,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Miguel looking worried at a slightly burnt pan on the stove, waving away smoke with a kitchen towel.",
     story:
-      "While talking with the kids, I forget to check the chicken cooking in the pan on the stove. Suddenly, I smell something burning and rush over to check it quickly. One side of the chicken looks darker than it should, and a little smoke rises up. I feel worried and turn off the stove immediately, moving the pan to a cool spot. Looking closely, only the outside is a little too dark, but the inside still looks fine. I decide the dinner is not ruined completely, just slightly imperfect now. I laugh a little at my small kitchen mistake tonight.",
+      "While talking with the kids, I forget to check the chicken cooking in the pan on the stove. Suddenly, I smell something burning and rush over to check it quickly. One side of the chicken looks darker than it should, and a little smoke rises up. “Stay calm, Miguel,” I tell myself, and I turn off the stove immediately, moving the pan to a cool spot. Looking closely, only the outside is a little too dark, but the inside still looks fine. I decide the dinner is not ruined completely, just slightly imperfect now. I laugh a little at my small kitchen mistake tonight.",
     questions: [
       { text: "What does Miguel forget to check?", answer: "The chicken cooking in the pan." },
       { text: "What does Miguel smell suddenly?", answer: "Something burning." },
@@ -167,7 +167,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Miguel carefully cutting away the darker part of the chicken, checking it with a fork, the kids watching curiously nearby.",
     story:
-      "I carefully cut away the slightly burnt part of the chicken with a sharp knife. The rest of the meat looks perfectly fine and smells delicious still. I check it one more time with a fork to make sure it is fully cooked. Lucas and Mia watch curiously, asking if the chicken is still safe to eat. “Yes, it's completely fine now,” I tell them, feeling more confident about the situation. I add the vegetables to the pan and let everything cook together for a few more minutes. The kitchen starts to smell wonderful, and my confidence slowly starts coming back.",
+      "I carefully cut away the slightly burnt part of the chicken with a sharp knife. The rest of the meat looks perfectly fine and smells delicious still. I check it one more time with a fork to make sure it is fully cooked. Lucas and Mia watch curiously. “Is it safe, Miguel?” Mia asks. “Yes, it's completely fine now,” I tell them, feeling more confident about the situation. I add the vegetables to the pan and let everything cook together for a few more minutes. The kitchen starts to smell wonderful, and my confidence slowly starts coming back.",
     questions: [
       { text: "What does Miguel cut away with a knife?", answer: "The slightly burnt part of the chicken." },
       { text: "What do Lucas and Mia ask?", answer: "If the chicken is still safe to eat." },
@@ -196,7 +196,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "The family gathering around a fully set dinner table, Mia placing napkins carefully while Miguel carries the finished dish to the table.",
     story:
-      "The dinner finally looks ready, so I turn off the stove and prepare to serve it. Mia already set the table earlier, so everything is neat and ready for us. I carry the pan carefully to the table and serve everyone a portion. The chicken and vegetables look colorful and smell wonderful in the warm kitchen. Lucas helps by pouring water into everyone's glasses at the table. We all sit down together, and I feel proud looking at the meal I cooked. Even with the small mistake earlier, dinner looks surprisingly good tonight.",
+      "The dinner finally looks ready, so I turn off the stove and prepare to serve it. Mia already set the table earlier, so everything is neat and ready for us. I carry the pan carefully to the table and serve everyone a portion. The chicken and vegetables look colorful and smell wonderful in the warm kitchen. Lucas helps by pouring water into everyone's glasses at the table. “Great job, Miguel!” Lucas says as we all sit down together, and I feel proud looking at the meal I cooked. Even with the small mistake earlier, dinner looks surprisingly good tonight.",
     questions: [
       { text: "Who already set the table earlier?", answer: "Mia." },
       { text: "What does Lucas help with?", answer: "Pouring water into the glasses." },
@@ -225,7 +225,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Sofia walking through the front door, smiling with surprise as she sees the family sitting at a set dinner table.",
     story:
-      "Just as we start eating, Sofia arrives home from her long day of work. She walks into the kitchen and sees us all sitting at the table together. Her eyes widen with surprise, and she smiles warmly at the scene in front of her. “You actually cooked a whole dinner?” she asks, clearly impressed by the effort I made. I invite her to sit down and try a plate before it gets too cold. She tastes the chicken and vegetables and says it tastes really good tonight. I feel proud that my small kitchen mistake did not ruin the whole meal.",
+      "Just as we start eating, Sofia arrives home from her long day of work. She walks into the kitchen and sees us all sitting at the table together. Her eyes widen with surprise, and she smiles warmly at the scene in front of her. “Miguel, you actually cooked a whole dinner?” she asks, clearly impressed by the effort I made. I invite her to sit down and try a plate before it gets too cold. She tastes the chicken and vegetables and says it tastes really good tonight. I feel proud that my small kitchen mistake did not ruin the whole meal.",
     questions: [
       { text: "When does Sofia arrive home?", answer: "Just as they start eating." },
       { text: "How does Sofia react seeing the table?", answer: "Surprised and impressed." },
@@ -254,7 +254,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "The family sitting together eating slices of chocolate cake, everyone smiling and talking around the dinner table.",
     story:
-      "After finishing dinner, I bring out the small chocolate cake we bought earlier at the store. Everyone's eyes light up, and Mia claps her hands excitedly at the table. I cut the cake carefully and give everyone a slice on their plate. We eat dessert together, laughing and talking about our day around the table. Sofia tells us about her busy day at work while enjoying her piece of cake. Lucas talks proudly about helping stir the vegetables earlier in the kitchen. This simple family moment feels warm and special, even though tonight started with a small kitchen mistake.",
+      "After finishing dinner, I bring out the small chocolate cake we bought earlier at the store. Everyone's eyes light up, and Mia claps her hands excitedly at the table. I cut the cake carefully and give everyone a slice on their plate. We eat dessert together, laughing and talking about our day around the table. “This cake was a great idea, Miguel,” Sofia says, telling us about her busy day at work while enjoying her piece of cake. Lucas talks proudly about helping stir the vegetables earlier in the kitchen. This simple family moment feels warm and special, even though tonight started with a small kitchen mistake.",
     questions: [
       { text: "What dessert does Miguel bring out?", answer: "A small chocolate cake." },
       { text: "How does Mia react seeing the cake?", answer: "She claps her hands excitedly." },
@@ -283,7 +283,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Miguel washing dishes at the sink that evening, looking satisfied, Sofia drying dishes beside him and smiling.",
     story:
-      "Later that evening, Sofia and I wash the dishes together while the kids watch television. “I'm proud of you for cooking tonight,” Sofia says, drying a plate beside me. I tell her about the small mistake with the chicken, and she laughs kindly about it. “Everyone makes mistakes when they try something new,” she reminds me warmly. I feel happy that dinner turned out well despite my nervous start earlier today. Cooking for my family taught me something important about trying new things bravely. Next time, I already feel more confident about cooking dinner again for everyone.",
+      "Later that evening, Sofia and I wash the dishes together while the kids watch television. “I'm proud of you for cooking tonight, Miguel,” Sofia says, drying a plate beside me. I tell her about the small mistake with the chicken, and she laughs kindly about it. “Everyone makes mistakes when they try something new,” she reminds me warmly. I feel happy that dinner turned out well despite my nervous start earlier today. Cooking for my family taught me something important about trying new things bravely. Next time, I already feel more confident about cooking dinner again for everyone.",
     questions: [
       { text: "What do Sofia and Miguel do together that evening?", answer: "Wash the dishes." },
       { text: "What does Sofia say she is proud of?", answer: "Miguel cooking tonight." },

@@ -116,7 +116,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Carlos sitting at his desk, staring confused at a computer screen full of icons, Fatima pointing at the screen to help.",
     story:
-      "In the afternoon, I sit at my new desk and turn on the computer. There are many programs I do not know. I feel confused looking at all the icons and buttons. Fatima notices my confused face and comes over to help me. She shows me how to open my email and how to save a file. “Don't worry, it looks hard now, but it gets easier,” she says kindly. I try the steps myself, and I make a small mistake. Fatima laughs gently and shows me again. This time, I do it correctly. I feel proud of this small success.",
+      "In the afternoon, I sit at my new desk and turn on the computer. There are many programs I do not know. I feel confused looking at all the icons and buttons. Fatima notices my confused face. “Need help, Carlos?” she asks, and comes over to help me. She shows me how to open my email and how to save a file. “Don't worry, it looks hard now, but it gets easier,” she says kindly. I try the steps myself, and I make a small mistake. Fatima laughs gently and shows me again. This time, I do it correctly. I feel proud of this small success.",
     questions: [
       { text: "What does Carlos do in the afternoon?", answer: "Sits at his desk and turns on the computer." },
       { text: "Why does Fatima come over to help?", answer: "Because she notices his confused face." },
@@ -145,7 +145,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Carlos sitting at a lunch table with Fatima and two other coworkers, everyone eating and talking, sandwiches and drinks on the table.",
     story:
-      "At noon, Fatima invites me to eat lunch with her and two other coworkers. I feel a little shy at first, sitting with people I just met. We sit at a small table near the window and open our lunch bags. The other coworkers ask me questions about myself, and I answer them slowly. They tell me funny stories about their own first days at the office. I laugh with them, and my shyness disappears little by little. By the end of lunch, I feel like part of the team already. This makes me happy and less nervous about the rest of the day.",
+      "At noon, Fatima invites me to eat lunch. “Join us, Carlos,” she says, with her and two other coworkers. I feel a little shy at first, sitting with people I just met. We sit at a small table near the window and open our lunch bags. The other coworkers ask me questions about myself, and I answer them slowly. They tell me funny stories about their own first days at the office. I laugh with them, and my shyness disappears little by little. By the end of lunch, I feel like part of the team already. This makes me happy and less nervous about the rest of the day.",
     questions: [
       { text: "Who invites Carlos to eat lunch?", answer: "Fatima." },
       { text: "How does Carlos feel at first?", answer: "A little shy." },
@@ -174,7 +174,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Carlos looking worried at a printer that jammed with paper, Fatima walking over to help him fix it.",
     story:
-      "In the afternoon, Mr. Yang asks me to print some papers for a meeting. I walk to the printer and press the button. But the printer makes a strange noise and stops working. I feel worried and do not know what to do. I look around, but no one is near to help me right away. Then Fatima walks by and sees my worried face. “The printer gets paper stuck sometimes,” she says calmly. She opens the printer and removes the stuck paper carefully. In one minute, the printer works again. I thank her again, feeling grateful for such a helpful coworker on my first day.",
+      "In the afternoon, Mr. Yang asks me to print some papers for a meeting. I walk to the printer and press the button. But the printer makes a strange noise and stops working. I feel worried and do not know what to do. I look around, but no one is near to help me right away. Then Fatima walks by and sees my worried face. “The printer gets paper stuck sometimes, Carlos,” she says calmly. She opens the printer and removes the stuck paper carefully. In one minute, the printer works again. I thank her again, feeling grateful for such a helpful coworker on my first day.",
     questions: [
       { text: "What does Mr. Yang ask Carlos to do?", answer: "Print some papers for a meeting." },
       { text: "What happens with the printer?", answer: "It makes a strange noise and stops working." },
@@ -203,7 +203,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Carlos sitting at a conference table with Mr. Yang, Fatima, and other coworkers, listening carefully during a team meeting.",
     story:
-      "At three o'clock, the whole team has a meeting in a small conference room. I sit next to Fatima and listen carefully. Mr. Yang talks about the team's goals for the month. I do not understand every word, but I understand the main ideas. When it's my turn to speak, I introduce myself to the group. My voice shakes a little, but I finish my short introduction. Everyone claps and welcomes me warmly to the team. After the meeting, one coworker tells me I did a great job. I feel relieved that the meeting is over and proud of myself.",
+      "At three o'clock, the whole team has a meeting in a small conference room. I sit next to Fatima and listen carefully. Mr. Yang talks about the team's goals for the month. I do not understand every word, but I understand the main ideas. When it's my turn to speak, I introduce myself to the group. My voice shakes a little, but I finish my short introduction. Everyone claps and welcomes me warmly to the team. After the meeting, one coworker tells me, “You did a great job, Carlos.” I feel relieved that the meeting is over and proud of myself.",
     questions: [
       { text: "What time is the team meeting?", answer: "Three o'clock." },
       { text: "What does Mr. Yang talk about?", answer: "The team's goals for the month." },
@@ -261,7 +261,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Carlos sitting on a train seat, smiling at a text message on his phone, city lights visible through the train window at dusk.",
     story:
-      "On the train home, my phone buzzes with a new message. It is from Fatima. “Great first day! You did better than you think,” she writes. I smile and read the message again. It feels nice to know someone at work is thinking of me. I write back, “Thank you! See you tomorrow.” Looking out the train window, I feel happy about my decision to take this job. The day was long and a little scary at times, but also full of kind people. I close my eyes for a moment, feeling more relaxed than I did this morning.",
+      "On the train home, my phone buzzes with a new message. It is from Fatima. “Great first day, Carlos! You did better than you think,” she writes. I smile and read the message again. It feels nice to know someone at work is thinking of me. I write back, “Thank you! See you tomorrow.” Looking out the train window, I feel happy about my decision to take this job. The day was long and a little scary at times, but also full of kind people. I close my eyes for a moment, feeling more relaxed than I did this morning.",
     questions: [
       { text: "Who sends Carlos a text message?", answer: "Fatima." },
       { text: "What does the message say?", answer: "Great first day! You did better than you think." },
@@ -290,7 +290,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Carlos at home laying out his clothes for the next day, a small notebook and pen on the table, a calm smile on his face.",
     story:
-      "At home, I make dinner and think about my first day at the new job. It had many new things: a new desk, a new computer, and many new faces. I remember Fatima's kindness and Mr. Yang's patience with all my questions. I lay out my clothes for tomorrow, just like I did today. I open my new notebook and read the notes I wrote earlier. Everything makes a little more sense now than it did this morning. I turn off the light and get ready for bed, feeling calm. Tomorrow will still be new, but I know I am not alone there.",
+      "At home, I make dinner and think about my first day at the new job. It had many new things: a new desk, a new computer, and many new faces. I remember Fatima's kindness and Mr. Yang's patience with all my questions. I lay out my clothes for tomorrow, just like I did today. At the top of one page, I had written, “Carlos's first day,” and I read the notes underneath it. Everything makes a little more sense now than it did this morning. I turn off the light and get ready for bed, feeling calm. Tomorrow will still be new, but I know I am not alone there.",
     questions: [
       { text: "What does Carlos do after dinner?", answer: "Lays out his clothes for tomorrow and reads his notes." },
       { text: "What does Carlos remember about Fatima and Mr. Yang?", answer: "Fatima's kindness and Mr. Yang's patience." },

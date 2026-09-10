@@ -22,7 +22,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Omar sitting at his kitchen table, wrapping a small package in brown paper and tape.",
     story:
-      "My sister's birthday is next week, and she lives in another city far from me. I bought her a small gift, and now I need to mail it to her. I wrap the gift carefully in brown paper and tape it closed firmly. I write her name and address on the front in clear, careful handwriting. I have never mailed a package before, so I feel a little unsure about the process. I search online for the nearest post office and check its opening hours. It opens at nine, so I plan to go there this morning.",
+      "My sister's birthday is next week, and she lives in another city far from me. I bought her a small gift, and now I need to mail it to her. I wrap the gift carefully in brown paper and tape it closed firmly. I write her name and address on the front in clear, careful handwriting. “Omar, you can figure this out,” I tell myself, since I have never mailed a package before and feel a little unsure about the process. I search online for the nearest post office and check its opening hours. It opens at nine, so I plan to go there this morning.",
     questions: [
       { text: "Why does Omar need to mail a package?", answer: "Because his sister's birthday is next week and she lives in another city." },
       { text: "What does Omar do to the gift first?", answer: "Wraps it carefully in brown paper." },
@@ -51,7 +51,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Omar walking down a city street holding his package, looking at his phone for directions, a post office sign visible ahead.",
     story:
-      "I leave my apartment with the package under my arm and check my phone for directions. The post office is only a short walk away, about ten minutes from my home. I follow the map on my phone, turning left at a small coffee shop on the corner. The morning air feels fresh, and the streets are not too busy yet today. Soon, I see a blue and white sign that says “Post Office” ahead of me. I feel a small sense of accomplishment just finding the right place easily. I walk toward the entrance and open the door carefully.",
+      "I leave my apartment with the package under my arm and check my phone for directions. The post office is only a short walk away, about ten minutes from my home. I follow the map on my phone, turning left at a small coffee shop on the corner. The morning air feels fresh, and the streets are not too busy yet today. Soon, I see a blue and white sign that says “Post Office” ahead of me. “Good job, Omar,” I think, feeling a small sense of accomplishment just finding the right place easily. I walk toward the entrance and open the door carefully.",
     questions: [
       { text: "How far is the post office from Omar's home?", answer: "About a ten-minute walk." },
       { text: "Where does Omar turn left?", answer: "At a small coffee shop on the corner." },
@@ -80,7 +80,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Omar standing in a short line inside the post office, holding his package, other customers waiting ahead of him.",
     story:
-      "Inside, I see a short line of people waiting for the two open counters. I stand behind a woman holding several large envelopes in her hands. The line moves slowly, but I do not mind waiting a little today. I look around the post office at the stamps and boxes displayed on the walls. There are many different sizes of boxes, and I wonder which one I might need. My package is small, so I hope I will not need to buy a new box. After a few minutes, the woman in front of me finishes, and it is my turn.",
+      "Inside, I see a short line of people waiting for the two open counters. I stand behind a woman holding several large envelopes in her hands. “Just wait, Omar,” I think. The line moves slowly, but I do not mind waiting a little today. I look around the post office at the stamps and boxes displayed on the walls. There are many different sizes of boxes, and I wonder which one I might need. My package is small, so I hope I will not need to buy a new box. After a few minutes, the woman in front of me finishes, and it is my turn.",
     questions: [
       { text: "How many counters are open?", answer: "Two." },
       { text: "What is the woman in front of Omar holding?", answer: "Several large envelopes." },
@@ -109,7 +109,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Omar placing his package on the counter, Ms. Park smiling and greeting him, ready to help with the mailing process.",
     story:
-      "I walk to the counter and place my package carefully in front of the clerk. Her name tag says Ms. Park, and she greets me with a warm, professional smile. “Good morning! What can I help you with today?” she asks kindly. I explain that I need to send this package to my sister in another city. “No problem at all. Let's get it weighed first,” she says, reaching for the package. I feel relieved that the process seems simple so far, not as confusing as I expected. Ms. Park's calm, friendly manner makes me feel comfortable asking any questions I have.",
+      "I walk to the counter and place my package carefully in front of the clerk. Her name tag says Ms. Park, and she greets me with a warm, professional smile. “Good morning! What can I help you with today?” she asks kindly. “My name is Omar, and I need to send this package to my sister in another city,” I explain. “No problem at all. Let's get it weighed first,” she says, reaching for the package. I feel relieved that the process seems simple so far, not as confusing as I expected. Ms. Park's calm, friendly manner makes me feel comfortable asking any questions I have.",
     questions: [
       { text: "What is written on the clerk's name tag?", answer: "Ms. Park." },
       { text: "What does Omar explain to Ms. Park?", answer: "That he needs to send the package to his sister." },
@@ -138,7 +138,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Ms. Park placing Omar's package on a small digital scale, both looking at the weight displayed on the screen.",
     story:
-      "Ms. Park places my package on a small digital scale on the counter. The screen shows the weight, and she checks it against a price chart nearby. “It's light, so shipping will not be too expensive,” she tells me with a smile. She asks how quickly I want the package to arrive at its destination. I explain that it does not need to be very fast, just before my sister's birthday. Ms. Park suggests a standard shipping option that will arrive in about five days. I agree, feeling glad the price and time both sound completely reasonable to me.",
+      "Ms. Park places my package on a small digital scale on the counter. The screen shows the weight, and she checks it against a price chart nearby. “It's light, so shipping will not be too expensive, Omar,” she tells me with a smile. She asks how quickly I want the package to arrive at its destination. I explain that it does not need to be very fast, just before my sister's birthday. Ms. Park suggests a standard shipping option that will arrive in about five days. I agree, feeling glad the price and time both sound completely reasonable to me.",
     questions: [
       { text: "What does Ms. Park place the package on?", answer: "A small digital scale." },
       { text: "What does Ms. Park say about the shipping cost?", answer: "That it's light, so shipping will not be too expensive." },
@@ -167,7 +167,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Omar writing on a small mailing form at the counter, Ms. Park pointing at a specific line for the address.",
     story:
-      "Ms. Park gives me a small form to fill out with the shipping address. I write my sister's full name and her complete address carefully on the lines. “Make sure the zip code is correct,” Ms. Park reminds me kindly, pointing at the line. I check the number twice against my phone to make sure it matches exactly. I also write my own address in the sender's section at the top. Ms. Park checks the form quickly and says everything looks correct and complete. Filling out the form takes only a minute, much faster than I originally expected it to take.",
+      "Ms. Park gives me a small form to fill out with the shipping address. I write my sister's full name and her complete address carefully on the lines. “Make sure the zip code is correct, Omar,” Ms. Park reminds me kindly, pointing at the line. I check the number twice against my phone to make sure it matches exactly. I also write my own address in the sender's section at the top. Ms. Park checks the form quickly and says everything looks correct and complete. Filling out the form takes only a minute, much faster than I originally expected it to take.",
     questions: [
       { text: "What does Ms. Park give Omar?", answer: "A small form." },
       { text: "What does Ms. Park remind Omar to check?", answer: "The zip code." },
@@ -196,7 +196,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Omar pointing at a small display of colorful stamps behind the counter while Ms. Park shows him a few options.",
     story:
-      "While waiting, I notice a small display of colorful stamps behind the counter. I remember I also need stamps for some letters I need to send later. I ask Ms. Park if I can buy a few stamps along with the package shipping. “Of course, we have several designs to choose from,” she says, showing me a sheet. I pick a design with a picture of flowers, thinking my aunt would like receiving it. I buy ten stamps, more than I need right now, just to have extras ready. Ms. Park adds the stamps to my total cost for today's visit.",
+      "While waiting, I notice a small display of colorful stamps behind the counter. I remember I also need stamps for some letters I need to send later. I ask Ms. Park if I can buy a few stamps along with the package shipping. “Of course, Omar, we have several designs to choose from,” she says, showing me a sheet. I pick a design with a picture of flowers, thinking my aunt would like receiving it. I buy ten stamps, more than I need right now, just to have extras ready. Ms. Park adds the stamps to my total cost for today's visit.",
     questions: [
       { text: "What does Omar notice behind the counter?", answer: "A display of colorful stamps." },
       { text: "What does Omar ask Ms. Park about?", answer: "Buying a few stamps." },
@@ -225,7 +225,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Omar tapping his card on a small payment machine at the counter, Ms. Park handing him a receipt and a tracking slip.",
     story:
-      "Ms. Park tells me the total cost for the shipping and the ten stamps together. I take out my card and tap it on the small payment machine on the counter. The payment goes through quickly, and the machine prints a receipt for me. Ms. Park also hands me a small tracking slip with a special number on it. “You can check this number online to see where your package is,” she explains. I thank her for her help and carefully put the receipt into my wallet. This whole visit turned out to be much easier than I originally expected.",
+      "Ms. Park tells me the total cost for the shipping and the ten stamps together. I take out my card and tap it on the small payment machine on the counter. The payment goes through quickly, and the machine prints a receipt for me. Ms. Park also hands me a small tracking slip with a special number on it. “You can check this number online to see where your package is, Omar,” she explains. I thank her for her help and carefully put the receipt into my wallet. This whole visit turned out to be much easier than I originally expected.",
     questions: [
       { text: "How does Omar pay for everything?", answer: "With his card, tapping it on the machine." },
       { text: "What does Ms. Park hand Omar besides the receipt?", answer: "A tracking slip." },
@@ -254,7 +254,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Omar walking out of the post office through the glass doors, holding his receipt and tracking slip, sunlight outside.",
     story:
-      "I say goodbye to Ms. Park and walk toward the post office's glass doors. Outside, the morning sun feels warm, and the street looks a little busier now than before. I check the tracking slip one more time to make sure I did not lose it. My package is finally on its way to my sister in another city now. I feel proud that I completed this simple errand successfully on my very first try. It seemed a little confusing at first, but everything worked out just fine. Walking home, I already feel confident about mailing packages again in the future.",
+      "I say goodbye to Ms. Park and walk toward the post office's glass doors. Outside, the morning sun feels warm, and the street looks a little busier now than before. I check the tracking slip one more time to make sure I did not lose it. My package is finally on its way to my sister in another city now. “Well done, Omar,” I think, feeling proud that I completed this simple errand successfully on my very first try. It seemed a little confusing at first, but everything worked out just fine. Walking home, I already feel confident about mailing packages again in the future.",
     questions: [
       { text: "How does the morning sun feel to Omar outside?", answer: "Warm." },
       { text: "What does Omar check one more time?", answer: "The tracking slip." },
@@ -283,7 +283,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Omar sitting at home checking his phone, smiling at a tracking update and a message from his sister on the screen.",
     story:
-      "A few days later, I check the tracking number Ms. Park gave me at the post office. The screen shows my package is now getting close to my sister's city. I feel a small thrill knowing the birthday gift will arrive on time. Two days after that, I receive a happy message from my sister on my phone. “I got your gift! Thank you so much, I love it,” she writes with excitement. I smile widely, feeling proud that my simple trip to the post office made her so happy. Something as small as mailing a package can create such a meaningful moment.",
+      "A few days later, I check the tracking number Ms. Park gave me at the post office. The screen shows my package is now getting close to my sister's city. I feel a small thrill knowing the birthday gift will arrive on time. Two days after that, I receive a happy message from my sister on my phone. “I got your gift! Thank you so much, Omar, I love it,” she writes with excitement. I smile widely, feeling proud that my simple trip to the post office made her so happy. Something as small as mailing a package can create such a meaningful moment.",
     questions: [
       { text: "What does Omar check a few days later?", answer: "The tracking number." },
       { text: "What does the tracking screen show?", answer: "That his package is close to his sister's city." },

@@ -21,7 +21,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Beatriz opening a phone box on her kitchen table, looking at the new smartphone inside with a curious but uncertain expression.",
     story:
-      "My old phone finally stopped working last week, so I bought a new smartphone yesterday. The box sits on my kitchen table, and I open it slowly and carefully. Inside, I find the phone, a charging cable, and a small instruction pamphlet. My old phone was very simple, only for calling and sending short messages. This new phone looks much more complicated, with a large screen and many small icons. I feel a little nervous about learning something so new at my age. Still, I know many useful things are possible with a phone like this one.",
+      "My old phone finally stopped working last week, so I bought a new smartphone yesterday. The box sits on my kitchen table, and I open it slowly and carefully. Inside, I find the phone, a charging cable, and a small instruction pamphlet. My old phone was very simple, only for calling and sending short messages. This new phone looks much more complicated, with a large screen and many small icons. “Beatriz, you can learn this,” I tell myself, even though I feel a little nervous about learning something so new at my age. Still, I know many useful things are possible with a phone like this one.",
     questions: [
       { text: "Why does Beatriz buy a new phone?", answer: "Because her old phone stopped working." },
       { text: "What does Beatriz find inside the box?", answer: "The phone, a charging cable, and an instruction pamphlet." },
@@ -79,7 +79,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Noah sitting beside Beatriz on the couch, showing her how to press the power button on her new phone.",
     story:
-      "On Saturday, Noah arrives and sits beside me with a warm smile on his face. “Let's start simple,” he says, picking up the new phone gently from the table. He shows me the small button on the side used to turn the phone on. I press it carefully, and the screen lights up brightly, showing colorful icons everywhere. “Don't worry, everything here is easy once you know where to look,” he reassures me kindly. He explains the icons slowly, one at a time, without rushing through any explanation. I feel my nervousness slowly fading with each simple, clear step he shows me.",
+      "On Saturday, Noah arrives and sits beside me with a warm smile on his face. “Let's start simple, Aunt Beatriz,” he says, picking up the new phone gently from the table. He shows me the small button on the side used to turn the phone on. I press it carefully, and the screen lights up brightly, showing colorful icons everywhere. “Don't worry, everything here is easy once you know where to look,” he reassures me kindly. He explains the icons slowly, one at a time, without rushing through any explanation. I feel my nervousness slowly fading with each simple, clear step he shows me.",
     questions: [
       { text: "What does Noah say to start with?", answer: "Let's start simple." },
       { text: "What does the small button do?", answer: "Turns the phone on." },
@@ -108,7 +108,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Beatriz carefully typing a text message on her new phone while Noah watches and points at the screen, both smiling.",
     story:
-      "Next, Noah shows me how to open the messages app and find a contact. My hands feel a little clumsy, but I follow his instructions step by step carefully. I choose my sister's name from the contact list, feeling proud I found it myself. I type a short message slowly, checking each letter twice before sending it. “Hi Carmen, I have a new phone now,” I write with careful concentration. I press the send button, and the message disappears from the screen immediately. A minute later, my phone buzzes with a reply from my sister. I feel a small burst of excitement seeing it work.",
+      "Next, Noah shows me how to open the messages app and find a contact. My hands feel a little clumsy, but I follow his instructions step by step carefully. “Nice work, Aunt Beatriz,” Noah says as I choose my sister's name from the contact list, feeling proud I found it myself. I type a short message slowly, checking each letter twice before sending it. “Hi Carmen, I have a new phone now,” I write with careful concentration. I press the send button, and the message disappears from the screen immediately. A minute later, my phone buzzes with a reply from my sister. I feel a small burst of excitement seeing it work.",
     questions: [
       { text: "What app does Noah show Beatriz first?", answer: "The messages app." },
       { text: "Who does Beatriz choose to message?", answer: "Her sister Carmen." },
@@ -137,7 +137,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Beatriz holding up her new phone, taking a photo of Noah as he smiles and makes a funny pose in the living room.",
     story:
-      "Noah suggests we practice something more fun: taking a photo with the camera app. He shows me where the camera icon is and how to open it quickly. I point the phone at him, and he makes a silly, funny pose for the picture. I press the round button on the screen, and the phone makes a small clicking sound. The photo appears on the screen instantly, showing Noah laughing in a funny position. I laugh too, surprised at how clear and colorful the picture looks. Taking photos feels much easier than I expected it to be at first.",
+      "Noah suggests we practice something more fun: taking a photo with the camera app. “Try this, Aunt Beatriz,” he says, showing me where the camera icon is and how to open it quickly. I point the phone at him, and he makes a silly, funny pose for the picture. I press the round button on the screen, and the phone makes a small clicking sound. The photo appears on the screen instantly, showing Noah laughing in a funny position. I laugh too, surprised at how clear and colorful the picture looks. Taking photos feels much easier than I expected it to be at first.",
     questions: [
       { text: "What does Noah suggest they practice?", answer: "Taking a photo with the camera app." },
       { text: "What does Noah do for the photo?", answer: "Makes a silly, funny pose." },
@@ -166,7 +166,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Beatriz frowning slightly at the phone screen, several apps open at once, Noah pointing helpfully at one specific button.",
     story:
-      "Trying to explore on my own, I accidentally open several apps at the same time without understanding it. The screen becomes crowded with different windows, and I feel confused about what happened. “I think I broke it,” I tell Noah, feeling a little worried about my mistake. Noah laughs gently and reassures me that nothing is actually broken at all. He shows me a simple button that closes extra apps and cleans up the screen easily. I feel relieved that fixing my mistake was much simpler than I first thought. Technology mistakes, I realize, are usually not as serious as they seem.",
+      "Trying to explore on my own, I accidentally open several apps at the same time without understanding it. The screen becomes crowded with different windows, and I feel confused about what happened. “I think I broke it,” I tell Noah, feeling a little worried about my mistake. Noah laughs gently. “You didn't break it, Aunt Beatriz,” he reassures me. He shows me a simple button that closes extra apps and cleans up the screen easily. I feel relieved that fixing my mistake was much simpler than I first thought. Technology mistakes, I realize, are usually not as serious as they seem.",
     questions: [
       { text: "What does Beatriz accidentally do?", answer: "Opens several apps at the same time." },
       { text: "What does Beatriz worry about?", answer: "That she broke the phone." },
@@ -195,7 +195,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Beatriz smiling and waving at her phone screen during a video call, Noah sitting beside her helping set up the app.",
     story:
-      "Noah asks if I would like to learn video calling, so I can see my family more often. My daughter lives far away, and this idea excites me immediately and completely. He downloads a simple video calling app and shows me how it works. We call my daughter together, and her smiling face appears on my screen suddenly. “Mom, you're using a smartphone now?” she asks, clearly surprised and happy about it. We talk for several minutes, and I feel genuinely happy seeing her face so clearly. This feature alone already makes the whole new phone feel worth it.",
+      "“Aunt Beatriz, want to learn video calling?” Noah asks, so I can see my family more often. My daughter lives far away, and this idea excites me immediately and completely. He downloads a simple video calling app and shows me how it works. We call my daughter together, and her smiling face appears on my screen suddenly. “Mom, you're using a smartphone now?” she asks, clearly surprised and happy about it. We talk for several minutes, and I feel genuinely happy seeing her face so clearly. This feature alone already makes the whole new phone feel worth it.",
     questions: [
       { text: "What does Noah ask if Beatriz would like to learn?", answer: "Video calling." },
       { text: "Who do they call together?", answer: "Beatriz's daughter." },
@@ -224,7 +224,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Beatriz sitting alone on her couch that evening, confidently scrolling through her phone with a small smile.",
     story:
-      "After Noah leaves, I decide to practice using my phone a little more by myself. I open the camera app again and take a few more photos around my apartment. I also check the messages app to see if my sister replied again. Slowly, I feel more comfortable finding buttons and menus without asking anyone for help. I make a small mistake once, but I remember Noah's advice about the button that fixes things. Fixing it myself this time makes me feel proud of my quick progress today. Learning something new alone, even in small steps, feels genuinely rewarding.",
+      "After Noah leaves, I decide to practice using my phone a little more by myself. I open the camera app again and take a few more photos around my apartment. I also check the messages app to see if my sister replied again. “Look at you, Beatriz,” I think with a smile, feeling more comfortable finding buttons and menus without asking anyone for help. I make a small mistake once, but I remember Noah's advice about the button that fixes things. Fixing it myself this time makes me feel proud of my quick progress today. Learning something new alone, even in small steps, feels genuinely rewarding.",
     questions: [
       { text: "What does Beatriz practice after Noah leaves?", answer: "Taking more photos and checking messages." },
       { text: "How does Beatriz feel finding things without help?", answer: "More comfortable." },
@@ -253,7 +253,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Beatriz sitting at a café table with a friend, both looking at her phone screen as she shows off a photo, smiling proudly.",
     story:
-      "The next day, I meet my friend Rosa for coffee at our favorite small café. I proudly show her my new phone and the photos I took yesterday. “You learned all this so quickly,” Rosa says, clearly impressed by my new skills. I explain how my nephew helped me and how I practiced more by myself afterward. Rosa admits she also wants a new phone but feels nervous about learning it too. I encourage her kindly, telling her it feels difficult at first but gets easier quickly. Sharing what I learned with a friend makes me feel confident and helpful today.",
+      "The next day, I meet my friend Rosa for coffee at our favorite small café. I proudly show her my new phone and the photos I took yesterday. “You learned all this so quickly, Beatriz,” Rosa says, clearly impressed by my new skills. I explain how my nephew helped me and how I practiced more by myself afterward. Rosa admits she also wants a new phone but feels nervous about learning it too. I encourage her kindly, telling her it feels difficult at first but gets easier quickly. Sharing what I learned with a friend makes me feel confident and helpful today.",
     questions: [
       { text: "Who does Beatriz meet for coffee?", answer: "Her friend Rosa." },
       { text: "What does Beatriz show Rosa?", answer: "Her new phone and the photos she took." },
@@ -282,7 +282,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Beatriz sitting comfortably on her couch, video calling her daughter and looking at photos, completely relaxed and confident.",
     story:
-      "One week later, using my new phone feels completely normal, almost like a natural part of my day. I video call my daughter every few days now, something I never imagined doing so easily before. I take photos of small, simple moments, like my morning tea or a pretty flower outside. My old worries about this new technology already feel a little silly looking back now. Noah checks in sometimes, proud of how comfortable I have become with everything so quickly. Learning something new at my age felt scary at first, but now it feels genuinely wonderful.",
+      "One week later, using my new phone feels completely normal, almost like a natural part of my day. I video call my daughter every few days now, something I never imagined doing so easily before. I take photos of small, simple moments, like my morning tea or a pretty flower outside. My old worries about this new technology already feel a little silly looking back now. “You're a natural, Aunt Beatriz,” Noah says when he checks in sometimes, proud of how comfortable I have become with everything so quickly. Learning something new at my age felt scary at first, but now it feels genuinely wonderful.",
     questions: [
       { text: "How does using the phone feel one week later?", answer: "Completely normal." },
       { text: "What does Beatriz do every few days now?", answer: "Video call her daughter." },

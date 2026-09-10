@@ -21,7 +21,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Derek sitting at his kitchen table, looking at bank papers and his ID card, a laptop open in front of him.",
     story:
-      "This week, I need to open a new bank account for my paycheck. I have never done this before, so I feel a little nervous about it. I look online and find the bank's address near my apartment. I gather my ID card and some important papers I might need. I put everything into a folder so I do not lose anything important. My friend tells me the bank visit is usually quick and simple. Still, I want to be ready with all the right documents. I check the folder one more time before I leave my apartment.",
+      "This week, I need to open a new bank account for my paycheck. I have never done this before, so I feel a little nervous about it. I look online and find the bank's address near my apartment. I gather my ID card and some important papers I might need. I put everything into a folder so I do not lose anything important. My friend texts, “Good luck at the bank, Derek!” and tells me the visit is usually quick and simple. Still, I want to be ready with all the right documents. I check the folder one more time before I leave my apartment.",
     questions: [
       { text: "What does Derek need to do this week?", answer: "Open a new bank account." },
       { text: "How does Derek feel about this task?", answer: "A little nervous." },
@@ -50,7 +50,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Derek walking through the entrance of a bank building, a security guard nodding as he passes a line of chairs.",
     story:
-      "I arrive at the bank around ten in the morning, hoping it is not too busy yet. The building is large, with big glass doors and a security guard near the entrance. I walk inside and see rows of chairs where some people are already waiting. A machine near the door prints small paper tickets with numbers on them. I take a ticket and check the number carefully: it says thirty-two. I look at a screen that shows the number currently being helped. It says twenty-eight, so I know I still have a short wait ahead.",
+      "I arrive at the bank around ten in the morning, hoping it is not too busy yet. The building is large, with big glass doors and a security guard near the entrance. I write my name, Derek, on the sign-in sheet by the door. I walk inside and see rows of chairs where some people are already waiting. A machine near the door prints small paper tickets with numbers on them. I take a ticket and check the number carefully: it says thirty-two. I look at a screen that shows the number currently being helped. It says twenty-eight, so I know I still have a short wait ahead.",
     questions: [
       { text: "What time does Derek arrive at the bank?", answer: "Around ten in the morning." },
       { text: "What does the machine near the door do?", answer: "Prints small paper tickets with numbers." },
@@ -79,7 +79,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Derek sitting in a waiting chair, checking his phone occasionally, looking up at a digital number screen on the wall.",
     story:
-      "I sit down on one of the chairs and check my phone while I wait. Time passes slowly, and I watch the number on the screen change every few minutes. A woman next to me is also waiting, and we talk a little about the weather outside. This small conversation helps the time pass more quickly than I expect. I look up again, and the screen finally shows number thirty-one. My turn is almost here now, and I feel my nervousness returning a little. I take a deep breath and gather my folder, getting ready to stand up.",
+      "I sit down on one of the chairs and check my phone while I wait. Time passes slowly, and I watch the number on the screen change every few minutes. A woman next to me is also waiting. “What's your name?” she asks. “Derek,” I say, and we talk a little about the weather outside. This small conversation helps the time pass more quickly than I expect. I look up again, and the screen finally shows number thirty-one. My turn is almost here now, and I feel my nervousness returning a little. I take a deep breath and gather my folder, getting ready to stand up.",
     questions: [
       { text: "What does Derek do while he waits?", answer: "Checks his phone." },
       { text: "Who does Derek talk to while waiting?", answer: "A woman next to him." },
@@ -108,7 +108,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Derek sitting across from Ms. Reyes at a bank counter, both looking at his ID card and paperwork on the desk.",
     story:
-      "The number thirty-two finally appears, and I walk toward the counter with my folder. A friendly bank worker named Ms. Reyes greets me with a warm smile. “How can I help you today?” she asks kindly, and I explain that I want to open a new account. She nods and asks for my ID card, which I hand her carefully from my folder. She types something into her computer and checks my information slowly and clearly. “Everything looks good so far,” she says, making me feel a little more relaxed about the whole process.",
+      "The number thirty-two finally appears, and I walk toward the counter with my folder. A friendly bank worker named Ms. Reyes greets me with a warm smile. “How can I help you today?” she asks kindly, and I explain that I want to open a new account. She nods and asks for my ID card, which I hand her carefully from my folder. “Nice to meet you, Derek,” she says, reading the card. She types something into her computer and checks my information slowly and clearly. “Everything looks good so far,” she says, making me feel a little more relaxed about the whole process.",
     questions: [
       { text: "Who greets Derek at the counter?", answer: "Ms. Reyes." },
       { text: "What does Derek explain to Ms. Reyes?", answer: "That he wants to open a new account." },
@@ -137,7 +137,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Derek carefully writing on a paper form at the bank counter, Ms. Reyes pointing at a specific line for him to sign.",
     story:
-      "Ms. Reyes gives me a short form to fill out with my personal information. I write my name, address, and phone number carefully in the correct boxes. Some questions on the form confuse me a little, so I ask her for help. She explains each question patiently, and I understand everything much better now. “Just sign here at the bottom,” she says, pointing to a small line on the page. I sign my name carefully and hand the form back to her. Filling out forms feels easier when someone explains things clearly like Ms. Reyes does.",
+      "Ms. Reyes gives me a short form to fill out with my personal information. I write my name, address, and phone number carefully in the correct boxes. Some questions on the form confuse me a little, so I ask her for help. She explains each question patiently, and I understand everything much better now. “Just sign here at the bottom, Derek,” she says, pointing to a small line on the page. I sign my name carefully and hand the form back to her. Filling out forms feels easier when someone explains things clearly like Ms. Reyes does.",
     questions: [
       { text: "What does Ms. Reyes give Derek?", answer: "A short form to fill out." },
       { text: "What does Derek write in the boxes?", answer: "His name, address, and phone number." },
@@ -166,7 +166,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Derek counting cash to deposit at the counter while Ms. Reyes explains something on a small printed pamphlet, both looking at the numbers together.",
     story:
-      "Ms. Reyes asks how much money I want to put into my new account today. I take out the cash I brought and count it carefully on the counter. She explains the account has no monthly fee if I keep a small amount inside it. I did not know this detail before, so I feel glad she explained it clearly. She also gives me a small pamphlet with more information to read later. I ask a few more questions about using the account online. She answers everything patiently, and I begin to feel confident about my choice.",
+      "Ms. Reyes asks how much money I want to put into my new account today. I take out the cash I brought and count it carefully on the counter. “Derek, this account has no monthly fee if you keep a small amount inside it,” she explains. I did not know this detail before, so I feel glad she explained it clearly. She also gives me a small pamphlet with more information to read later. I ask a few more questions about using the account online. She answers everything patiently, and I begin to feel confident about my choice.",
     questions: [
       { text: "What does Ms. Reyes ask Derek?", answer: "How much money he wants to put into the account." },
       { text: "What does Ms. Reyes explain about the account?", answer: "That it has no monthly fee if he keeps a small amount inside." },
@@ -195,7 +195,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Ms. Reyes handing Derek a new debit card across the counter, Derek smiling and holding it carefully.",
     story:
-      "After completing the paperwork, Ms. Reyes tells me my account is officially open now. She explains that a debit card will arrive by mail within one week. To my surprise, she also gives me a temporary card I can use right away today. I hold the small plastic card carefully, feeling excited about this new step. “Remember to set a secret number for it later,” she reminds me kindly. I nod and put the card safely into my wallet. This whole process feels much easier than I expected it to be earlier this morning.",
+      "After completing the paperwork, Ms. Reyes tells me my account is officially open now. She explains that a debit card will arrive by mail within one week. To my surprise, she also gives me a temporary card I can use right away today. I hold the small plastic card carefully, feeling excited about this new step. “Remember to set a secret number for it later, Derek,” she reminds me kindly. I nod and put the card safely into my wallet. This whole process feels much easier than I expected it to be earlier this morning.",
     questions: [
       { text: "What does Ms. Reyes tell Derek about his account?", answer: "That it is officially open." },
       { text: "What does Ms. Reyes give Derek to use today?", answer: "A temporary card." },
@@ -224,7 +224,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Derek pointing at a phone app screen while Ms. Reyes explains something, both looking at the small screen together at the counter.",
     story:
-      "Before leaving, I ask Ms. Reyes about the bank's mobile app on my phone. She shows me how to download it and explains the basic features clearly. I can check my balance, send money, and see recent activity right from my phone. This makes managing my account much more convenient for my busy schedule. She also tells me about the bank's hours and where to find help if needed. I thank her sincerely for her patience and clear explanations today. Standing up from the chair, I feel proud of completing this important task successfully.",
+      "Before leaving, I ask Ms. Reyes about the bank's mobile app on my phone. She shows me how to download it and explains the basic features clearly. I can check my balance, send money, and see recent activity right from my phone. This makes managing my account much more convenient for my busy schedule. She also tells me about the bank's hours and where to find help if needed. “Good luck with everything, Derek,” she says. I thank her sincerely for her patience and clear explanations today. Standing up from the chair, I feel proud of completing this important task successfully.",
     questions: [
       { text: "What does Derek ask about before leaving?", answer: "The bank's mobile app." },
       { text: "What can Derek do with the mobile app?", answer: "Check his balance, send money, and see recent activity." },
@@ -253,7 +253,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Derek walking out of the bank's glass doors, checking his wallet with the new card visible, sunshine outside.",
     story:
-      "I say goodbye to Ms. Reyes and walk toward the bank's large glass doors. Outside, the sun feels warm on my face after sitting inside for almost an hour. I check my wallet one more time to make sure my new card is safely inside. My folder is now empty since I gave all my papers to Ms. Reyes earlier. Walking to my car, I feel a small sense of accomplishment about this simple errand. It seemed complicated this morning, but it turned out to be manageable after all. I already feel ready to use my new account soon.",
+      "I say goodbye to Ms. Reyes and walk toward the bank's large glass doors. Outside, the sun feels warm on my face after sitting inside for almost an hour. I check my wallet one more time to make sure my new card is safely inside. My folder is now empty since I gave all my papers to Ms. Reyes earlier. Walking to my car, I think, “Derek, you did it.” I feel a small sense of accomplishment about this simple errand. It seemed complicated this morning, but it turned out to be manageable after all. I already feel ready to use my new account soon.",
     questions: [
       { text: "How does the sun feel to Derek outside?", answer: "Warm." },
       { text: "What does Derek check in his wallet?", answer: "That his new card is safely inside." },
@@ -282,7 +282,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Derek sitting at home, checking his new bank app on his phone with a satisfied smile, the temporary card resting on the table.",
     story:
-      "That evening, I sit on my couch and open the new banking app on my phone. I log in for the first time and see my new account clearly on the screen. It feels strange but exciting to see my own account after only one visit today. I remember how nervous I felt this morning before going to the bank. Looking back, the whole process was much simpler than I imagined it would be. Ms. Reyes explained everything clearly and made the visit feel comfortable and easy. Next week, my paycheck will go directly into this new account.",
+      "That evening, I sit on my couch and open the new banking app on my phone. I log in for the first time, and the screen shows, “Welcome, Derek!” I see my new account clearly below it. It feels strange but exciting to see my own account after only one visit today. I remember how nervous I felt this morning before going to the bank. Looking back, the whole process was much simpler than I imagined it would be. Ms. Reyes explained everything clearly and made the visit feel comfortable and easy. Next week, my paycheck will go directly into this new account.",
     questions: [
       { text: "What does Derek do that evening?", answer: "Opens the new banking app on his phone." },
       { text: "How does Derek feel seeing his account for the first time?", answer: "Strange but exciting." },
