@@ -58,7 +58,7 @@ export const CHAPTERS = [
       },
       {
         target: "As I sit in the quiet room, I still feel sick, but I also feel calm because I know help is coming.",
-        jumbled: ["I", "feel", "know", "in", "I", "calm", "because", "sit", "room,", "help", "also", "quiet", "the", "sick,", "but", "As", "coming.", "I", "still", "is", "feel"],
+        jumbled: ["I", "feel", "know", "in", "I", "calm", "because", "sit", "room,", "help", "also", "quiet", "the", "sick,", "but", "As", "coming.", "I", "still", "is", "feel", "I"],
       },
     ],
     mySentencePrompt: "Write or say one sentence about going to a clinic or doctor.",

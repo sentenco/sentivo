@@ -45,7 +45,7 @@ export const CHAPTERS = [
       { target: "I smile and say, “Good morning, how can I help you?”", jumbled: ["I", "you?”", "say,", "morning,", "help", "“Good", "can", "I", "how", "smile", "and"] },
       {
         target: "I unlock the door, turn on the lights, and help open the shop for the day.",
-        jumbled: ["shop", "open", "the", "help", "turn", "I", "the", "day.", "unlock", "lights,", "the", "door,", "on", "and", "for"],
+        jumbled: ["shop", "open", "the", "help", "turn", "I", "the", "day.", "unlock", "lights,", "the", "door,", "on", "and", "for", "the"],
       },
       {
         target: "The shop is only ten minutes away, so I walk there with my bag on my shoulder.",
