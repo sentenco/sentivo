@@ -3710,24 +3710,23 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
   margin: clamp(26px, 3vw, 36px) 0;
 }
 
-.bkshf-level-tabs { position: relative; z-index: 1; display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-top: clamp(18px, 2.4vw, 26px); }
+.bkshf-level-tabs { position: relative; z-index: 1; display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; margin-top: clamp(18px, 2.4vw, 26px); }
 .bkshf-level-tab {
   font-family: 'Nunito', sans-serif;
   font-weight: 800;
   font-size: 13.5px;
   color: #1F3A5F;
   background: #FFFDF8;
-  border: 2.5px solid transparent;
-  border-radius: 14px;
-  padding: 9px 18px 9px 32px;
+  border: none;
+  padding: 10px 20px 14px;
   cursor: pointer;
   position: relative;
   box-shadow: 0 4px 0 rgba(0,0,0,0.08);
+  clip-path: polygon(0 0, 100% 0, 100% 78%, 50% 100%, 0 78%);
   transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
-.bkshf-level-tab::before { content: "⭐"; position: absolute; left: 12px; font-size: 12px; }
 .bkshf-level-tab:hover { transform: translateY(-1px); }
-.bkshf-level-tab.is-active { background: #1F3A5F; border-color: #1F3A5F; color: #FFFDF8; box-shadow: 0 4px 0 rgba(0,0,0,0.14); }
+.bkshf-level-tab.is-active { background: #1F3A5F; color: #FFFDF8; box-shadow: 0 4px 0 rgba(0,0,0,0.14); }
 
 .bkshf-empty { position: relative; z-index: 1; text-align: center; padding: 40px 20px 20px; }
 .bkshf-empty-icon { font-size: 34px; display: block; margin-bottom: 10px; }
