@@ -4,6 +4,11 @@ const LESSON = {
   title: "Subject-Verb Agreement",
   formula: "singular subject → singular verb  ·  plural subject → plural verb  ·  or/nor agrees with the nearer subject",
   leadIn: "Quick check: “Neither the manager nor the staff ___ (be) available today.” Which verb form feels right, and why?",
+  importance: [
+    "Subject-verb agreement mistakes are one of the fastest ways to sound careless in writing, even when every other part of a sentence is correct — readers notice it instantly.",
+    "The trickier cases here (or/nor, indefinite pronouns, phrases sitting in between) are exactly where even advanced students slip, because the surface word order fools the ear.",
+    "This isn't just a writing-class rule — it's tested constantly in formal English exams and professional communication, so getting the exceptions solid pays off well beyond the classroom.",
+  ],
   traps: [
     { tag: "S+V", word: "Basic Agreement", usage: "A singular subject (he, she, it, or any singular noun) takes a verb with -s in the present tense; a plural subject drops it.", examples: ["She walks to school.", "The students walk to school."] },
     { tag: "AND", word: "Compound Subjects with And", usage: "Two subjects joined by and act as one plural subject, even if each one is singular on its own.", examples: ["Tom and Jerry are best friends.", "Rice and beans are on the menu."] },
@@ -36,8 +41,9 @@ const LESSON = {
 
 function buildSlides(lesson) {
   const slides = ["cover", "warmup"];
-  if (lesson.comparePairs) slides.push("predict", "compare");
+  if (lesson.importance) slides.push("importance");
   lesson.traps.forEach((_, i) => slides.push(`trap${i}`));
+  if (lesson.comparePairs) slides.push("predict", "compare");
   if (lesson.guided) {
     const guidedChunks = Math.ceil(lesson.guided.length / 3);
     for (let i = 0; i < guidedChunks; i++) slides.push(`guided${i}`);
@@ -62,6 +68,22 @@ function WarmupSlide({ lesson }) {
       <span className="sval-eyebrow">Warm-up</span>
       <div className="sval-bubble sval-bubble--solo">
         <p className="sval-bubble-text sval-bubble-text--big">“{lesson.leadIn}”</p>
+      </div>
+    </div>
+  );
+}
+
+function ImportanceSlide({ lesson }) {
+  return (
+    <div className="sval-slide sval-slide--part">
+      <h3 className="sval-h">Why Subject-Verb Agreement Matters</h3>
+      <div className="sval-importance-list">
+        {lesson.importance.map((line, i) => (
+          <div key={i} className="sval-importance-item">
+            <span className="sval-importance-num">{i + 1}</span>
+            <p className="sval-importance-text">{line}</p>
+          </div>
+        ))}
       </div>
     </div>
   );
@@ -95,7 +117,7 @@ function PredictSlide({ lesson }) {
     <div className="sval-slide">
       <span className="sval-eyebrow">Think About It</span>
       <h3 className="sval-h">{left} <span className="sval-vs">vs</span> {right}</h3>
-      <p className="sval-compare-note">What's the difference? Take a guess before we explain.</p>
+      <p className="sval-compare-note">You've just seen both. In your own words, how would you explain the difference?</p>
     </div>
   );
 }
@@ -169,6 +191,7 @@ function WrapupSlide({ lesson }) {
 function renderSlide(slideType, lesson) {
   if (slideType === "cover") return <CoverSlide lesson={lesson} />;
   if (slideType === "warmup") return <WarmupSlide lesson={lesson} />;
+  if (slideType === "importance") return <ImportanceSlide lesson={lesson} />;
   if (slideType.startsWith("trap")) return <TrapSlide lesson={lesson} index={Number(slideType.replace("trap", ""))} />;
   if (slideType === "predict") return <PredictSlide lesson={lesson} />;
   if (slideType === "compare") return <CompareSlide lesson={lesson} />;
@@ -184,6 +207,7 @@ function stageLabel(slideType) {
   switch (slideType) {
     case "cover": return "Cover";
     case "warmup": return "Warm-up";
+    case "importance": return "Why It Matters";
     case "predict": return "Think About It";
     case "compare": return "Compare";
     case "practice": return "Practice";
@@ -513,6 +537,39 @@ const CSS = `
 }
 .sval-speaking-list { max-width: 720px; font-size: 18px; text-align: left; }
 .sval-speaking-list li { margin-bottom: 8px; }
+
+.sval-importance-list { display: flex; flex-direction: column; gap: 12px; width: 100%; max-width: 720px; text-align: left; }
+.sval-importance-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  background: #F7F2E4;
+  border: 3px solid #1A1A1A;
+  border-radius: 14px;
+  padding: 14px 18px;
+}
+.sval-importance-num {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Bangers', cursive;
+  font-size: 16px;
+  color: #FFFFFF;
+  background: #96762B;
+  border: 2.5px solid #1A1A1A;
+  border-radius: 50%;
+}
+.sval-importance-text {
+  font-family: 'Comic Neue', cursive, sans-serif;
+  font-weight: 700;
+  font-size: 16.5px;
+  color: #1A1A1A;
+  line-height: 1.5;
+  margin: 4px 0 0;
+}
 
 .sval-quiz-list {
   display: flex;

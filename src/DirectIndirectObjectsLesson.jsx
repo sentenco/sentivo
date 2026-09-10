@@ -4,6 +4,11 @@ const LESSON = {
   title: "Direct & Indirect Objects",
   formula: "verb + person + thing (no preposition)  ·  verb + thing + to/for + person",
   leadIn: "Say one sentence about something you gave someone recently, two different ways.",
+  importance: [
+    "This pattern shows up in dozens of everyday verbs — give, tell, show, send, buy, bring — so mastering the order once pays off across a huge chunk of common speech.",
+    "Using the wrong order with certain verbs (explain, describe, suggest) produces a sentence a native speaker would flag immediately — this lesson exists specifically to catch that.",
+    "Being able to flip between both orders naturally gives you flexibility in sentence stress: which idea you put first changes what sounds most important.",
+  ],
   teach: [
     {
       name: "No Preposition: Indirect Object First",
@@ -41,8 +46,9 @@ const LESSON = {
 
 function buildSlides(lesson) {
   const slides = ["cover", "warmup"];
-  if (lesson.comparePairs) slides.push("predict", "compare");
+  if (lesson.importance) slides.push("importance");
   lesson.teach.forEach((_, i) => slides.push(`teach${i}`));
+  if (lesson.comparePairs) slides.push("predict", "compare");
   if (lesson.guided) {
     const guidedChunks = Math.ceil(lesson.guided.length / 3);
     for (let i = 0; i < guidedChunks; i++) slides.push(`guided${i}`);
@@ -72,6 +78,22 @@ function WarmupSlide({ lesson }) {
   );
 }
 
+function ImportanceSlide({ lesson }) {
+  return (
+    <div className="diol-slide diol-slide--part">
+      <h3 className="diol-h">Why This Matters</h3>
+      <div className="diol-importance-list">
+        {lesson.importance.map((line, i) => (
+          <div key={i} className="diol-importance-item">
+            <span className="diol-importance-num">{i + 1}</span>
+            <p className="diol-importance-text">{line}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function TeachSlide({ lesson, index }) {
   const concept = lesson.teach[index];
   return (
@@ -96,7 +118,7 @@ function PredictSlide({ lesson }) {
     <div className="diol-slide">
       <span className="diol-eyebrow">Think About It</span>
       <h3 className="diol-h">{left} <span className="diol-vs">vs</span> {right}</h3>
-      <p className="diol-compare-note">What's the difference? Take a guess before we explain.</p>
+      <p className="diol-compare-note">You've just seen both. In your own words, how would you explain the difference?</p>
     </div>
   );
 }
@@ -170,6 +192,7 @@ function WrapupSlide({ lesson }) {
 function renderSlide(slideType, lesson) {
   if (slideType === "cover") return <CoverSlide lesson={lesson} />;
   if (slideType === "warmup") return <WarmupSlide lesson={lesson} />;
+  if (slideType === "importance") return <ImportanceSlide lesson={lesson} />;
   if (slideType.startsWith("teach")) return <TeachSlide lesson={lesson} index={Number(slideType.replace("teach", ""))} />;
   if (slideType === "predict") return <PredictSlide lesson={lesson} />;
   if (slideType === "compare") return <CompareSlide lesson={lesson} />;
@@ -182,6 +205,7 @@ function renderSlide(slideType, lesson) {
 const STAGE_LABELS = {
   cover: "Cover",
   warmup: "Warm-up",
+  importance: "Why It Matters",
   predict: "Think About It",
   compare: "Compare",
   practice: "Practice",
@@ -471,6 +495,39 @@ const CSS = `
 }
 .diol-speaking-list { max-width: 720px; font-size: 18px; text-align: left; }
 .diol-speaking-list li { margin-bottom: 8px; }
+
+.diol-importance-list { display: flex; flex-direction: column; gap: 12px; width: 100%; max-width: 720px; text-align: left; }
+.diol-importance-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  background: #FBEDED;
+  border: 3px solid #1A1A1A;
+  border-radius: 14px;
+  padding: 14px 18px;
+}
+.diol-importance-num {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Bangers', cursive;
+  font-size: 16px;
+  color: #FFFFFF;
+  background: #B23A3A;
+  border: 2.5px solid #1A1A1A;
+  border-radius: 50%;
+}
+.diol-importance-text {
+  font-family: 'Comic Neue', cursive, sans-serif;
+  font-weight: 700;
+  font-size: 16.5px;
+  color: #1A1A1A;
+  line-height: 1.5;
+  margin: 4px 0 0;
+}
 
 .diol-quiz-list {
   display: flex;
