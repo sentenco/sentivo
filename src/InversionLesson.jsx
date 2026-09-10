@@ -4,6 +4,11 @@ const LESSON = {
   title: "Inversion",
   formula: "negative word + auxiliary + subject (emphasis)  ·  had/were/should + subject (formal conditional, no if)",
   leadIn: "Rewrite this sentence for more dramatic effect: 'I have never seen such a mess.'",
+  importance: [
+    "Inversion is a signature marker of formal and literary register — using it well instantly raises how sophisticated your writing sounds, at the level examiners and readers actually notice.",
+    "It shows up constantly in essays, speeches, and news writing, so recognizing it while reading is just as valuable as producing it yourself.",
+    "The if-less formal conditional (Had I known..., Should you need...) is genuinely common in professional emails and reports, not just literature — a practical register shift, not a party trick.",
+  ],
   teach: [
     {
       name: "Negative Adverbial Inversion",
@@ -41,8 +46,9 @@ const LESSON = {
 
 function buildSlides(lesson) {
   const slides = ["cover", "warmup"];
-  if (lesson.comparePairs) slides.push("predict", "compare");
+  if (lesson.importance) slides.push("importance");
   lesson.teach.forEach((_, i) => slides.push(`teach${i}`));
+  if (lesson.comparePairs) slides.push("predict", "compare");
   if (lesson.guided) {
     const guidedChunks = Math.ceil(lesson.guided.length / 3);
     for (let i = 0; i < guidedChunks; i++) slides.push(`guided${i}`);
@@ -72,6 +78,22 @@ function WarmupSlide({ lesson }) {
   );
 }
 
+function ImportanceSlide({ lesson }) {
+  return (
+    <div className="ivl-slide ivl-slide--part">
+      <h3 className="ivl-h">Why Inversion Matters</h3>
+      <div className="ivl-importance-list">
+        {lesson.importance.map((line, i) => (
+          <div key={i} className="ivl-importance-item">
+            <span className="ivl-importance-num">{i + 1}</span>
+            <p className="ivl-importance-text">{line}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function TeachSlide({ lesson, index }) {
   const concept = lesson.teach[index];
   return (
@@ -96,7 +118,7 @@ function PredictSlide({ lesson }) {
     <div className="ivl-slide">
       <span className="ivl-eyebrow">Think About It</span>
       <h3 className="ivl-h">{left} <span className="ivl-vs">vs</span> {right}</h3>
-      <p className="ivl-compare-note">What's the difference? Take a guess before we explain.</p>
+      <p className="ivl-compare-note">You've just seen both. In your own words, how would you explain the difference?</p>
     </div>
   );
 }
@@ -170,6 +192,7 @@ function WrapupSlide({ lesson }) {
 function renderSlide(slideType, lesson) {
   if (slideType === "cover") return <CoverSlide lesson={lesson} />;
   if (slideType === "warmup") return <WarmupSlide lesson={lesson} />;
+  if (slideType === "importance") return <ImportanceSlide lesson={lesson} />;
   if (slideType.startsWith("teach")) return <TeachSlide lesson={lesson} index={Number(slideType.replace("teach", ""))} />;
   if (slideType === "predict") return <PredictSlide lesson={lesson} />;
   if (slideType === "compare") return <CompareSlide lesson={lesson} />;
@@ -182,6 +205,7 @@ function renderSlide(slideType, lesson) {
 const STAGE_LABELS = {
   cover: "Cover",
   warmup: "Warm-up",
+  importance: "Why It Matters",
   predict: "Think About It",
   compare: "Compare",
   practice: "Practice",
@@ -470,6 +494,39 @@ const CSS = `
 }
 .ivl-speaking-list { max-width: 720px; font-size: 18px; text-align: left; }
 .ivl-speaking-list li { margin-bottom: 8px; }
+
+.ivl-importance-list { display: flex; flex-direction: column; gap: 12px; width: 100%; max-width: 720px; text-align: left; }
+.ivl-importance-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  background: #FDF0E9;
+  border: 3px solid #1A1A1A;
+  border-radius: 14px;
+  padding: 14px 18px;
+}
+.ivl-importance-num {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Bangers', cursive;
+  font-size: 16px;
+  color: #FFFFFF;
+  background: #E1592A;
+  border: 2.5px solid #1A1A1A;
+  border-radius: 50%;
+}
+.ivl-importance-text {
+  font-family: 'Comic Neue', cursive, sans-serif;
+  font-weight: 700;
+  font-size: 16.5px;
+  color: #1A1A1A;
+  line-height: 1.5;
+  margin: 4px 0 0;
+}
 
 .ivl-quiz-list {
   display: flex;

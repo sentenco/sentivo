@@ -4,6 +4,11 @@ const LESSON = {
   title: "Word Order",
   formula: "OSASCOMP: Opinion, Size, Age, Shape, Color, Origin, Material, Purpose",
   leadIn: "Describe an object near you using three adjectives. Don't worry about the order yet, just try it.",
+  importance: [
+    "Stacking adjectives in the wrong order is one of the most reliable \"non-native\" tells in English — even advanced learners with strong vocabulary slip on this.",
+    "Native speakers follow this sequence automatically without ever learning the rule — knowing it consciously is a genuine shortcut to sounding fluent faster.",
+    "Most real sentences only stack two or three adjectives at once, so this isn't about memorizing all eight slots — it's about knowing which of a few comes first, something you'll use in almost every descriptive sentence.",
+  ],
   osascomp: [
     { letter: "O", word: "Opinion", usage: "What you think or feel about something. It always comes first, before any factual description.", examples: ["a beautiful painting", "an ugly building"] },
     { letter: "S", word: "Size", usage: "How big or small something is.", examples: ["a small dog", "a huge house"] },
@@ -39,8 +44,9 @@ const LESSON = {
 
 function buildSlides(lesson) {
   const slides = ["cover", "warmup"];
-  if (lesson.comparePairs) slides.push("predict", "compare");
+  if (lesson.importance) slides.push("importance");
   lesson.osascomp.forEach((_, i) => slides.push(`osascomp${i}`));
+  if (lesson.comparePairs) slides.push("predict", "compare");
   if (lesson.guided) {
     const guidedChunks = Math.ceil(lesson.guided.length / 3);
     for (let i = 0; i < guidedChunks; i++) slides.push(`guided${i}`);
@@ -65,6 +71,22 @@ function WarmupSlide({ lesson }) {
       <span className="wol-eyebrow">Warm-up</span>
       <div className="wol-bubble wol-bubble--solo">
         <p className="wol-bubble-text wol-bubble-text--big">“{lesson.leadIn}”</p>
+      </div>
+    </div>
+  );
+}
+
+function ImportanceSlide({ lesson }) {
+  return (
+    <div className="wol-slide wol-slide--part">
+      <h3 className="wol-h">Why Word Order Matters</h3>
+      <div className="wol-importance-list">
+        {lesson.importance.map((line, i) => (
+          <div key={i} className="wol-importance-item">
+            <span className="wol-importance-num">{i + 1}</span>
+            <p className="wol-importance-text">{line}</p>
+          </div>
+        ))}
       </div>
     </div>
   );
@@ -98,7 +120,7 @@ function PredictSlide({ lesson }) {
     <div className="wol-slide">
       <span className="wol-eyebrow">Think About It</span>
       <h3 className="wol-h">{left} <span className="wol-vs">vs</span> {right}</h3>
-      <p className="wol-compare-note">What's the difference? Take a guess before we explain.</p>
+      <p className="wol-compare-note">You've just seen the pattern. In your own words, why does the order matter?</p>
     </div>
   );
 }
@@ -172,6 +194,7 @@ function WrapupSlide({ lesson }) {
 function renderSlide(slideType, lesson) {
   if (slideType === "cover") return <CoverSlide lesson={lesson} />;
   if (slideType === "warmup") return <WarmupSlide lesson={lesson} />;
+  if (slideType === "importance") return <ImportanceSlide lesson={lesson} />;
   if (slideType.startsWith("osascomp")) return <OsascompSlide lesson={lesson} index={Number(slideType.replace("osascomp", ""))} />;
   if (slideType === "predict") return <PredictSlide lesson={lesson} />;
   if (slideType === "compare") return <CompareSlide lesson={lesson} />;
@@ -187,6 +210,7 @@ function stageLabel(slideType) {
   switch (slideType) {
     case "cover": return "Cover";
     case "warmup": return "Warm-up";
+    case "importance": return "Why It Matters";
     case "predict": return "Think About It";
     case "compare": return "Compare";
     case "practice": return "Practice";
@@ -514,6 +538,39 @@ const CSS = `
 }
 .wol-speaking-list { max-width: 720px; font-size: 18px; text-align: left; }
 .wol-speaking-list li { margin-bottom: 8px; }
+
+.wol-importance-list { display: flex; flex-direction: column; gap: 12px; width: 100%; max-width: 720px; text-align: left; }
+.wol-importance-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  background: #F3EDE5;
+  border: 3px solid #1A1A1A;
+  border-radius: 14px;
+  padding: 14px 18px;
+}
+.wol-importance-num {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Bangers', cursive;
+  font-size: 16px;
+  color: #FFFFFF;
+  background: #8A6748;
+  border: 2.5px solid #1A1A1A;
+  border-radius: 50%;
+}
+.wol-importance-text {
+  font-family: 'Comic Neue', cursive, sans-serif;
+  font-weight: 700;
+  font-size: 16.5px;
+  color: #1A1A1A;
+  line-height: 1.5;
+  margin: 4px 0 0;
+}
 
 .wol-quiz-list {
   display: flex;
