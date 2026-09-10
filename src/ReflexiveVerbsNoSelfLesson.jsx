@@ -4,6 +4,11 @@ const LESSON = {
   title: "Reflexive Verbs That Don't Need \"-self\"",
   formula: "concentrate/relax/wake up (no -self)  ·  hurt/introduce/enjoy (needs -self)",
   leadIn: "In your first language, do you say the equivalent of “I wash myself” or just “I wash”? How is English different?",
+  importance: [
+    "Speakers of many languages translate their own reflexive habits directly into English, producing a very specific, recognizable error pattern (\"concentrate myself,\" \"relax yourself\").",
+    "These verbs are extremely common in daily instructions and small talk, so the mistake shows up constantly, not occasionally.",
+    "There's genuinely no shortcut rule here — it has to be learned as two lists, which is exactly why deliberate, explicit teaching makes the real difference over just exposure.",
+  ],
   teach: [
     {
       name: "English Verbs That Drop the Reflexive",
@@ -41,8 +46,9 @@ const LESSON = {
 
 function buildSlides(lesson) {
   const slides = ["cover", "warmup"];
-  if (lesson.comparePairs) slides.push("predict", "compare");
+  if (lesson.importance) slides.push("importance");
   lesson.teach.forEach((_, i) => slides.push(`teach${i}`));
+  if (lesson.comparePairs) slides.push("predict", "compare");
   if (lesson.guided) {
     const guidedChunks = Math.ceil(lesson.guided.length / 3);
     for (let i = 0; i < guidedChunks; i++) slides.push(`guided${i}`);
@@ -72,6 +78,22 @@ function WarmupSlide({ lesson }) {
   );
 }
 
+function ImportanceSlide({ lesson }) {
+  return (
+    <div className="rvsl-slide rvsl-slide--part">
+      <h3 className="rvsl-h">Why This Matters</h3>
+      <div className="rvsl-importance-list">
+        {lesson.importance.map((line, i) => (
+          <div key={i} className="rvsl-importance-item">
+            <span className="rvsl-importance-num">{i + 1}</span>
+            <p className="rvsl-importance-text">{line}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function TeachSlide({ lesson, index }) {
   const concept = lesson.teach[index];
   return (
@@ -96,7 +118,7 @@ function PredictSlide({ lesson }) {
     <div className="rvsl-slide">
       <span className="rvsl-eyebrow">Think About It</span>
       <h3 className="rvsl-h">{left} <span className="rvsl-vs">vs</span> {right}</h3>
-      <p className="rvsl-compare-note">What's the difference? Take a guess before we explain.</p>
+      <p className="rvsl-compare-note">You've just seen both. In your own words, how would you explain the difference?</p>
     </div>
   );
 }
@@ -170,6 +192,7 @@ function WrapupSlide({ lesson }) {
 function renderSlide(slideType, lesson) {
   if (slideType === "cover") return <CoverSlide lesson={lesson} />;
   if (slideType === "warmup") return <WarmupSlide lesson={lesson} />;
+  if (slideType === "importance") return <ImportanceSlide lesson={lesson} />;
   if (slideType.startsWith("teach")) return <TeachSlide lesson={lesson} index={Number(slideType.replace("teach", ""))} />;
   if (slideType === "predict") return <PredictSlide lesson={lesson} />;
   if (slideType === "compare") return <CompareSlide lesson={lesson} />;
@@ -185,6 +208,7 @@ function stageLabel(slideType) {
   switch (slideType) {
     case "cover": return "Cover";
     case "warmup": return "Warm-up";
+    case "importance": return "Why It Matters";
     case "predict": return "Think About It";
     case "compare": return "Compare";
     case "practice": return "Practice";
@@ -472,6 +496,39 @@ const CSS = `
 }
 .rvsl-speaking-list { max-width: 720px; font-size: 18px; text-align: left; }
 .rvsl-speaking-list li { margin-bottom: 8px; }
+
+.rvsl-importance-list { display: flex; flex-direction: column; gap: 12px; width: 100%; max-width: 720px; text-align: left; }
+.rvsl-importance-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  background: #F2F8E4;
+  border: 3px solid #1A1A1A;
+  border-radius: 14px;
+  padding: 14px 18px;
+}
+.rvsl-importance-num {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Bangers', cursive;
+  font-size: 16px;
+  color: #FFFFFF;
+  background: #6B9E1E;
+  border: 2.5px solid #1A1A1A;
+  border-radius: 50%;
+}
+.rvsl-importance-text {
+  font-family: 'Comic Neue', cursive, sans-serif;
+  font-weight: 700;
+  font-size: 16.5px;
+  color: #1A1A1A;
+  line-height: 1.5;
+  margin: 4px 0 0;
+}
 
 .rvsl-quiz-list {
   display: flex;

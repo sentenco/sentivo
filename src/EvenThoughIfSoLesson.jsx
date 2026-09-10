@@ -4,6 +4,11 @@ const LESSON = {
   title: "Even Though / Even If / Even So",
   formula: "even though + fact  ·  even if + uncertain condition  ·  Even so, ... (linking two sentences)",
   leadIn: "Think of a time you did something even though it was hard. Now imagine a situation where you'd do something even if it were hard.",
+  importance: [
+    "Even though vs. even if is a real fact-versus-hypothetical distinction, so mixing them up doesn't just sound off — it can claim something happened when you meant it might happen.",
+    "These three near-identical words show up constantly in arguing, persuading, and explaining decisions — high-frequency territory for expressing nuance.",
+    "Even so is easy to accidentally use like a conjunction inside one sentence, so recognizing it as a standalone linking word prevents a real punctuation mistake.",
+  ],
   teach: [
     {
       name: "Even Though vs Even If: A Fact or a Hypothetical?",
@@ -41,8 +46,9 @@ const LESSON = {
 
 function buildSlides(lesson) {
   const slides = ["cover", "warmup"];
-  if (lesson.comparePairs) slides.push("predict", "compare");
+  if (lesson.importance) slides.push("importance");
   lesson.teach.forEach((_, i) => slides.push(`teach${i}`));
+  if (lesson.comparePairs) slides.push("predict", "compare");
   if (lesson.guided) {
     const guidedChunks = Math.ceil(lesson.guided.length / 3);
     for (let i = 0; i < guidedChunks; i++) slides.push(`guided${i}`);
@@ -72,6 +78,22 @@ function WarmupSlide({ lesson }) {
   );
 }
 
+function ImportanceSlide({ lesson }) {
+  return (
+    <div className="etil-slide etil-slide--part">
+      <h3 className="etil-h">Why This Matters</h3>
+      <div className="etil-importance-list">
+        {lesson.importance.map((line, i) => (
+          <div key={i} className="etil-importance-item">
+            <span className="etil-importance-num">{i + 1}</span>
+            <p className="etil-importance-text">{line}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function TeachSlide({ lesson, index }) {
   const concept = lesson.teach[index];
   return (
@@ -96,7 +118,7 @@ function PredictSlide({ lesson }) {
     <div className="etil-slide">
       <span className="etil-eyebrow">Think About It</span>
       <h3 className="etil-h">{left} <span className="etil-vs">vs</span> {right}</h3>
-      <p className="etil-compare-note">What's the difference? Take a guess before we explain.</p>
+      <p className="etil-compare-note">You've just seen both. In your own words, how would you explain the difference?</p>
     </div>
   );
 }
@@ -170,6 +192,7 @@ function WrapupSlide({ lesson }) {
 function renderSlide(slideType, lesson) {
   if (slideType === "cover") return <CoverSlide lesson={lesson} />;
   if (slideType === "warmup") return <WarmupSlide lesson={lesson} />;
+  if (slideType === "importance") return <ImportanceSlide lesson={lesson} />;
   if (slideType.startsWith("teach")) return <TeachSlide lesson={lesson} index={Number(slideType.replace("teach", ""))} />;
   if (slideType === "predict") return <PredictSlide lesson={lesson} />;
   if (slideType === "compare") return <CompareSlide lesson={lesson} />;
@@ -182,6 +205,7 @@ function renderSlide(slideType, lesson) {
 const STAGE_LABELS = {
   cover: "Cover",
   warmup: "Warm-up",
+  importance: "Why It Matters",
   predict: "Think About It",
   compare: "Compare",
   practice: "Practice",
@@ -470,6 +494,39 @@ const CSS = `
 }
 .etil-speaking-list { max-width: 720px; font-size: 18px; text-align: left; }
 .etil-speaking-list li { margin-bottom: 8px; }
+
+.etil-importance-list { display: flex; flex-direction: column; gap: 12px; width: 100%; max-width: 720px; text-align: left; }
+.etil-importance-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  background: #FEF1EA;
+  border: 3px solid #1A1A1A;
+  border-radius: 14px;
+  padding: 14px 18px;
+}
+.etil-importance-num {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Bangers', cursive;
+  font-size: 16px;
+  color: #FFFFFF;
+  background: #E1592A;
+  border: 2.5px solid #1A1A1A;
+  border-radius: 50%;
+}
+.etil-importance-text {
+  font-family: 'Comic Neue', cursive, sans-serif;
+  font-weight: 700;
+  font-size: 16.5px;
+  color: #1A1A1A;
+  line-height: 1.5;
+  margin: 4px 0 0;
+}
 
 .etil-quiz-list {
   display: flex;
