@@ -59,7 +59,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Lena opening the gate for her neighbor Bea, who holds a small paper bag of banana bread, while Marco looks at the bag with big eyes beside Lena.",
     story:
-      "After breakfast, I hear someone call my name outside the house. I walk to the gate and see my neighbor, Bea, with a small paper bag in her hand. She says her mother made banana bread and wants to share some with us. Marco stands beside me and looks at the bag with big eyes. I laugh and open the gate for Bea. We talk for a few minutes about school and the weekend. When I take the paper bag and thank her, I feel glad to have a kind neighbor.",
+      "After breakfast, I hear someone call my name outside the house: “Lena!” I walk to the gate and see my neighbor, Bea, with a small paper bag in her hand. She says her mother made banana bread and wants to share some with us. Marco stands beside me and looks at the bag with big eyes. I laugh and open the gate for Bea. We talk for a few minutes about school and the weekend. When I take the paper bag and thank her, I feel glad to have a kind neighbor.",
     questions: [
       { text: "Who calls Lena outside the house?", answer: "Her neighbor, Bea." },
       { text: "What is in Bea's paper bag?", answer: "Banana bread." },
@@ -94,7 +94,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Lena, Marco, and Bea sitting together at the kitchen table with a plate of sliced banana bread and glasses of cold water, all smiling and eating.",
     story:
-      "In the afternoon, Marco and I go to the kitchen because we feel hungry. Our mother puts the banana bread on a plate and cuts it into small pieces. The bread smells sweet, and the whole kitchen feels warm. Bea comes in with two glasses of cold water and sits with us at the table. Marco eats quickly and smiles with food on his lips. We laugh, eat our snack, and talk about our favorite foods. When the plates are empty, the kitchen feels full of happy voices.",
+      "In the afternoon, Marco and I go to the kitchen because we feel hungry. Our mother puts the banana bread on a plate and cuts it into small pieces. The bread smells sweet, and the whole kitchen feels warm. Bea comes in with two glasses of cold water and sits with us at the table. “Here you go, Lena,” she says, handing me a glass. Marco eats quickly and smiles with food on his lips. We laugh, eat our snack, and talk about our favorite foods. When the plates are empty, the kitchen feels full of happy voices.",
     questions: [
       { text: "Why do Lena and Marco go to the kitchen?", answer: "Because they feel hungry." },
       { text: "What does their mother cut into small pieces?", answer: "The banana bread." },
@@ -167,7 +167,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Nina at the front door hugging or greeting Marco with a big smile, holding a small box of cookies, while Lena and Bea watch from the living room.",
     story:
-      "On Sunday morning, our cousin Nina comes to visit our house. She lives in another town, so we do not see her every week. Marco runs to the door and says, “Hi, Nina!” with a big smile. Nina brings a small box of cookies for our family. Bea is still at our house, so she meets Nina for the first time. We sit in the living room, talk about school, and drink cold juice together. When Nina laughs at Marco's funny story, the room feels bright and full of life.",
+      "On Sunday morning, our cousin Nina comes to visit our house. She lives in another town, so we do not see her every week. Marco runs to the door and says, “Hi, Nina!” with a big smile, and Nina hugs him before turning to me. “Lena, I missed you!” she says. Nina brings a small box of cookies for our family. Bea is still at our house, so she meets Nina for the first time. We sit in the living room, talk about school, and drink cold juice together. When Nina laughs at Marco's funny story, the room feels bright and full of life.",
     questions: [
       { text: "Who visits the house on Sunday morning?", answer: "Their cousin Nina." },
       { text: "What does Nina bring for the family?", answer: "A small box of cookies." },
@@ -202,7 +202,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Lena, Marco, Nina, and Bea all cleaning the living room together -- Marco stacking books on a shelf, Nina folding a blanket, Bea wiping a table, Lena fixing pillows.",
     story:
-      "Before lunch, our mother asks us to help clean the living room. Marco picks up the books on the floor and puts them on the shelf. Nina folds a blanket and places it on the sofa. Bea wipes the small table with a cloth and hums a happy song. I fix the pillows and open the window for fresh air. The room looks messy at first, but little by little it becomes clean and bright. When we finish and sit down to look at the room, I feel happy because we did the work together.",
+      "Before lunch, our mother asks us to help clean the living room. “Lena, can you fix the pillows after?” she says. Marco picks up the books on the floor and puts them on the shelf. Nina folds a blanket and places it on the sofa. Bea wipes the small table with a cloth and hums a happy song. I fix the pillows and open the window for fresh air. The room looks messy at first, but little by little it becomes clean and bright. When we finish and sit down to look at the room, I feel happy because we did the work together.",
     questions: [
       { text: "What does their mother ask them to clean?", answer: "The living room." },
       { text: "What does Marco put on the shelf?", answer: "The books." },
@@ -237,7 +237,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Lena, Marco, Nina, and Bea sitting around the table playing a board game together, rain visible through the window behind them, Marco clapping excitedly.",
     story:
-      "In the afternoon, dark clouds cover the sky and the rain starts to fall. We cannot go outside, so Marco brings a board game to the table. Nina reads the game rules, and Bea laughs at the funny pictures on the box. I move my game piece carefully and try to win the first round. Marco claps when he gets a lucky number and jumps in his chair. The rain makes a soft sound on the roof while we play together. When the game ends, I do not feel bored because the rainy afternoon becomes fun.",
+      "In the afternoon, dark clouds cover the sky and the rain starts to fall. We cannot go outside, so Marco brings a board game to the table. Nina reads the game rules and asks, “Are you ready, Lena?” Bea laughs at the funny pictures on the box. I move my game piece carefully and try to win the first round. Marco claps when he gets a lucky number and jumps in his chair. The rain makes a soft sound on the roof while we play together. When the game ends, I do not feel bored because the rainy afternoon becomes fun.",
     questions: [
       { text: "Why can they not go outside?", answer: "Because it is raining." },
       { text: "What does Marco bring to the table?", answer: "A board game." },
@@ -272,7 +272,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "The whole family and Bea sitting around the dinner table -- father just home from work, dishes of fish, rice, and vegetables, everyone talking and passing food.",
     story:
-      "In the evening, our father comes home from work and smiles when he sees everyone together. The table is ready, and the smell of fish, rice, and vegetables fills the room. Marco tells Father about the board game, and Nina talks about her town. Bea thanks our parents for the food and sits quietly beside me. We eat dinner, pass the dishes, and listen to one another. Father says, “It is nice to have a full table tonight.” As I look around at my family and friends, I feel warm inside and very thankful.",
+      "In the evening, our father comes home from work and smiles when he sees everyone together. The table is ready, and the smell of fish, rice, and vegetables fills the room. Marco tells Father about the board game, and Nina talks about her town. Bea thanks our parents for the food and sits quietly beside me. We eat dinner, pass the dishes, and listen to one another. Father says, “It is nice to have a full table tonight, don’t you think, Lena?” As I look around at my family and friends, I feel warm inside and very thankful.",
     questions: [
       { text: "Who comes home in the evening?", answer: "Their father." },
       { text: "What food smells fill the room?", answer: "Fish, rice, and vegetables." },
@@ -307,7 +307,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "The living room lamp dark, father checking it while Nina holds a chair and Lena holds a small box with a new light bulb, Bea standing near a worried-looking Marco.",
     story:
-      "That night, the lamp in the living room suddenly stops working. The room becomes darker, and Marco looks worried for a moment. Our father checks the lamp and says it needs a new light bulb. Nina brings a chair, and I hold the small box with the new bulb inside. Bea stands near Marco and tells him it will be okay soon. After a few minutes, the lamp shines again and fills the room with light. We all clap, and I feel glad because the problem is small and easy to fix together.",
+      "That night, the lamp in the living room suddenly stops working. The room becomes darker, and Marco looks worried for a moment. Our father checks the lamp and says it needs a new light bulb. “Lena, can you get the box?” he asks. Nina brings a chair, and I hold the small box with the new bulb inside. Bea stands near Marco and tells him it will be okay soon. After a few minutes, the lamp shines again and fills the room with light. We all clap, and I feel glad because the problem is small and easy to fix together.",
     questions: [
       { text: "What stops working in the living room?", answer: "The lamp." },
       { text: "What does the lamp need?", answer: "A new light bulb." },
@@ -345,7 +345,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Lena sitting near the living room window at sunset, looking peaceful, with the clean room, empty plates, and shelf of games visible -- Nina and Marco hugging goodbye at the gate in the background.",
     story:
-      "On Sunday evening, the house feels quiet after our busy weekend together. Nina gets ready to go home, and Marco gives her a quick hug at the gate. Bea waves goodbye and says she will visit again next weekend. I go back inside and look at the clean living room, the empty plates, and the games on the shelf. The house looks simple, but it feels full of good memories from the weekend. I sit near the window and think about the food, the laughter, and the time with the people around me. As the sun goes down, I feel peaceful because home is warm when love and kindness are inside it.",
+      "On Sunday evening, the house feels quiet after our busy weekend together. Nina gets ready to go home, and Marco gives her a quick hug at the gate. Bea waves goodbye and says, “See you next weekend, Lena!” I go back inside and look at the clean living room, the empty plates, and the games on the shelf. The house looks simple, but it feels full of good memories from the weekend. I sit near the window and think about the food, the laughter, and the time with the people around me. As the sun goes down, I feel peaceful because home is warm when love and kindness are inside it.",
     questions: [
       { text: "Who gets ready to go home on Sunday evening?", answer: "Nina." },
       { text: "What does Bea say at the gate?", answer: "That she will visit again next weekend." },

@@ -48,7 +48,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Leo kneeling beside the rabbit cage, gently offering a carrot slice to Nibbles while Zoe watches and smiles.",
     story:
-      "During recess, I learn everything about caring for Nibbles. First, I fill her water bottle and add fresh hay to her cage. Then I offer her a small piece of carrot, and she nibbles it happily from my hand. Her whiskers twitch, and her soft fur feels warm when I gently pet her. “She likes you already,” Zoe says with a laugh. I clean the corner of the cage where it is a little messy, just like Zoe showed me. By the end of recess, I feel much more confident about being Nibbles' caretaker.",
+      "During recess, I learn everything about caring for Nibbles. First, I fill her water bottle and add fresh hay to her cage. Then I offer her a small piece of carrot, and she nibbles it happily from my hand. Her whiskers twitch, and her soft fur feels warm when I gently pet her. “She likes you already, Leo,” Zoe says with a laugh. I clean the corner of the cage where it is a little messy, just like Zoe showed me. By the end of recess, I feel much more confident about being Nibbles' caretaker.",
     questions: [
       { text: "What does Leo do first for Nibbles?", answer: "Fills her water bottle and adds fresh hay." },
       { text: "What does Leo offer Nibbles to eat?", answer: "A small piece of carrot." },
@@ -123,7 +123,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Nibbles crouched quietly in the corner of her cage in Leo's living room, Leo sitting nearby speaking softly and offering hay.",
     story:
-      "At first, Nibbles seems nervous in her new surroundings. She sits very still in the corner of her cage and does not move much. “Maybe she misses her classroom,” I think to myself. I sit quietly beside her cage and speak in a soft, gentle voice. Slowly, I offer her fresh hay through the cage bars. After a while, she starts hopping around a little and even nibbles on a piece of lettuce. By dinnertime, Nibbles seems much more relaxed, and I feel relieved that she is finally settling into her temporary home.",
+      "At first, Nibbles seems nervous in her new surroundings. She sits very still in the corner of her cage and does not move much. “Maybe she misses her classroom,” I think to myself. I sit quietly beside her cage and speak in a soft, gentle voice. Slowly, I offer her fresh hay through the cage bars. After a while, she starts hopping around a little and even nibbles on a piece of lettuce. Mom peeks in and smiles. “She's warming up to you, Leo,” she says. By dinnertime, Nibbles seems much more relaxed, and I feel relieved that she is finally settling into her temporary home.",
     questions: [
       { text: "How does Nibbles act at first?", answer: "Nervous -- she sits very still." },
       { text: "What does Leo do to help her feel better?", answer: "Sits quietly beside her and speaks softly, offering fresh hay." },
@@ -148,7 +148,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Leo and his sister crawling under the living room furniture, looking worried, the empty open cage visible behind them.",
     story:
-      "The next morning, I get a terrible surprise. The cage door is open, and Nibbles is nowhere to be seen! My heart starts beating fast, and I feel a wave of panic. “Nibbles is missing!” I shout, and my whole family rushes into the living room. We search under the couch, behind the curtains, and inside every corner of the room. “How did the door open?” Mom asks, checking the latch. I feel terrible, worrying that I forgot to close it properly the night before. We keep searching quietly so we do not scare her further.",
+      "The next morning, I get a terrible surprise. The cage door is open, and Nibbles is nowhere to be seen! My heart starts beating fast, and I feel a wave of panic. “Nibbles is missing!” I shout, and my whole family rushes into the living room. We search under the couch, behind the curtains, and inside every corner of the room. “How did the door open, Leo?” Mom asks, checking the latch. I feel terrible, worrying that I forgot to close it properly the night before. We keep searching quietly so we do not scare her further.",
     questions: [
       { text: "What does Leo discover in the morning?", answer: "The cage door is open and Nibbles is gone." },
       { text: "How does Leo feel when he sees the empty cage?", answer: "Panicked." },
@@ -173,7 +173,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Leo lying on his stomach, reaching under the couch and gently pulling out a slightly dusty but happy Nibbles.",
     story:
-      "After ten worried minutes, my sister spots two small ears peeking out from under the couch. “I found her!” she yells excitedly. I lie down on my stomach and reach carefully underneath. Nibbles is sitting there quietly, a little dusty but completely unharmed. I gently scoop her up and hold her close to my chest, feeling my heart slow down with relief. “You scared us so much,” I whisper to her softly. Everyone in my family cheers and hugs each other, relieved that our small adventure ended happily.",
+      "After ten worried minutes, my sister spots two small ears peeking out from under the couch. “I found her, Leo!” she yells excitedly. I lie down on my stomach and reach carefully underneath. Nibbles is sitting there quietly, a little dusty but completely unharmed. I gently scoop her up and hold her close to my chest, feeling my heart slow down with relief. “You scared us so much,” I whisper to her softly. Everyone in my family cheers and hugs each other, relieved that our small adventure ended happily.",
     questions: [
       { text: "Who spots Nibbles first?", answer: "Leo's sister." },
       { text: "Where is Nibbles hiding?", answer: "Under the couch." },
@@ -198,7 +198,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Dad and Leo kneeling beside the rabbit cage, fixing a small metal latch together with a screwdriver, Nibbles watching calmly nearby.",
     story:
-      "That afternoon, Dad and I look closely at Nibbles' cage door together. “The latch is a little loose. That's probably why it opened,” Dad explains. We find a small screwdriver and tighten the latch until it clicks firmly shut. “Now let's test it,” Dad says, and we check the door three times to make sure it stays closed. “Being responsible means fixing problems, not just feeling bad about them,” Dad tells me kindly. I feel proud that we solved the problem together, and I know Nibbles will be much safer for the rest of the weekend.",
+      "That afternoon, Dad and I look closely at Nibbles' cage door together. “The latch is a little loose. That's probably why it opened,” Dad explains. We find a small screwdriver and tighten the latch until it clicks firmly shut. “Now let's test it, Leo,” Dad says, and we check the door three times to make sure it stays closed. “Being responsible means fixing problems, not just feeling bad about them,” Dad tells me kindly. I feel proud that we solved the problem together, and I know Nibbles will be much safer for the rest of the weekend.",
     questions: [
       { text: "What is wrong with the cage door?", answer: "The latch is loose." },
       { text: "What do Leo and Dad use to fix it?", answer: "A small screwdriver." },
@@ -223,7 +223,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Leo carrying the cage into the classroom on Monday morning, Zoe and other classmates gathering around excitedly to hear his story.",
     story:
-      "On Monday morning, I carefully carry Nibbles back to the classroom. Zoe and several other classmates gather around immediately, curious about the weekend. “Did anything exciting happen?” Zoe asks. I take a deep breath and tell them the whole story, from the escape to finding her under the couch. “That sounds so scary!” one classmate says, eyes wide. I explain how Dad and I fixed the latch afterward so it would never happen again. Ms. Bailey listens to my story too, nodding thoughtfully as I finish explaining everything that happened over the weekend.",
+      "On Monday morning, I carefully carry Nibbles back to the classroom. Zoe and several other classmates gather around immediately, curious about the weekend. “Did anything exciting happen, Leo?” Zoe asks. I take a deep breath and tell them the whole story, from the escape to finding her under the couch. “That sounds so scary!” one classmate says, eyes wide. I explain how Dad and I fixed the latch afterward so it would never happen again. Ms. Bailey listens to my story too, nodding thoughtfully as I finish explaining everything that happened over the weekend.",
     questions: [
       { text: "What does Leo do on Monday morning?", answer: "Carries Nibbles back to the classroom." },
       { text: "What does Zoe ask him?", answer: "Did anything exciting happen?" },

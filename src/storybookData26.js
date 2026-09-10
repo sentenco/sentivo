@@ -22,7 +22,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Theo standing at the edge of Grandpa's backyard garden, looking at neat rows of dirt and gardening tools, Grandpa smiling beside him.",
     story:
-      "Every Saturday, I visit Grandpa's house, and today he takes me straight to his backyard garden. “Would you like to help me plant vegetables this year?” he asks, handing me a small trowel. I look at the empty rows of soft brown dirt and feel excited about the idea. “What can we grow?” I ask curiously. “Tomatoes, carrots, and maybe some pumpkins,” Grandpa says, smiling under his straw hat. I have never grown anything before, but Grandpa promises to teach me everything step by step. I feel proud that he trusts me to help with his special garden.",
+      "Every Saturday, I visit Grandpa's house, and today he takes me straight to his backyard garden. “Would you like to help me plant vegetables this year, Theo?” he asks, handing me a small trowel. I look at the empty rows of soft brown dirt and feel excited about the idea. “What can we grow?” I ask curiously. “Tomatoes, carrots, and maybe some pumpkins,” Grandpa says, smiling under his straw hat. I have never grown anything before, but Grandpa promises to teach me everything step by step. I feel proud that he trusts me to help with his special garden.",
     questions: [
       { text: "What does Grandpa ask Theo?", answer: "If he would like to help plant vegetables." },
       { text: "What vegetables might they grow?", answer: "Tomatoes, carrots, and pumpkins." },
@@ -72,7 +72,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Theo carrying a small watering can across the garden, carefully sprinkling water over the newly planted rows of soil.",
     story:
-      "Grandpa explains that seeds need water and sunlight every single day to grow properly. Now I visit the garden every afternoon after school, carrying a small green watering can. I pour water gently over each row, careful not to drown the tiny seeds underneath. “You're becoming a real gardener,” Grandpa says, watching me from his porch chair. It becomes part of my daily routine, and I actually start looking forward to this quiet time in the garden. I check the soil for any changes, but for now, everything still looks exactly the same as before.",
+      "Grandpa explains that seeds need water and sunlight every single day to grow properly. Now I visit the garden every afternoon after school, carrying a small green watering can. I pour water gently over each row, careful not to drown the tiny seeds underneath. “You're becoming a real gardener, Theo,” Grandpa says, watching me from his porch chair. It becomes part of my daily routine, and I actually start looking forward to this quiet time in the garden. I check the soil for any changes, but for now, everything still looks exactly the same as before.",
     questions: [
       { text: "What do seeds need to grow properly?", answer: "Water and sunlight every day." },
       { text: "When does Theo visit the garden?", answer: "Every afternoon after school." },
@@ -147,7 +147,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Theo and Grandpa kneeling in the garden, carefully pulling tall green weeds from around the young tomato plants.",
     story:
-      "A few days later, I notice strange plants growing between our neat rows of vegetables. “What are these?” I ask, pointing at the tall, spiky green plants. “Those are weeds,” Grandpa explains. “They steal water and sunlight from our real plants, so we need to remove them.” We spend the whole afternoon carefully pulling weeds by their roots, making sure not to disturb our growing vegetables nearby. My hands get dirty and a little tired, but I understand that taking care of a garden means solving problems as they appear, not just planting and waiting.",
+      "A few days later, I notice strange plants growing between our neat rows of vegetables. “What are these?” I ask, pointing at the tall, spiky green plants. “Those are weeds,” Grandpa explains. “They steal water and sunlight from our real plants, so we need to remove them, Theo.” We spend the whole afternoon carefully pulling weeds by their roots, making sure not to disturb our growing vegetables nearby. My hands get dirty and a little tired, but I understand that taking care of a garden means solving problems as they appear, not just planting and waiting.",
     questions: [
       { text: "What strange plants does Theo notice?", answer: "Weeds." },
       { text: "Why do weeds need to be removed?", answer: "Because they steal water and sunlight from the real plants." },
@@ -172,7 +172,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Theo pointing curiously at a small red ladybug resting on a tomato leaf, Grandpa explaining beside him with a gentle smile.",
     story:
-      "While weeding, I spot a small red bug with black spots resting on a leaf. “Should I remove this too?” I ask, worried it might be harmful. Grandpa leans in closer and shakes his head. “That's a ladybug. She actually eats the bad bugs that damage our plants,” he explains. I learn that not every bug in the garden is a problem; some of them are actually helpful friends. Grandpa shows me a different, greenish bug nearby that does damage leaves, and we carefully remove that one instead. I realize gardening requires paying close attention to small details.",
+      "While weeding, I spot a small red bug with black spots resting on a leaf. “Should I remove this too?” I ask, worried it might be harmful. Grandpa leans in closer and shakes his head. “That's a ladybug, Theo. She actually eats the bad bugs that damage our plants,” he explains. I learn that not every bug in the garden is a problem; some of them are actually helpful friends. Grandpa shows me a different, greenish bug nearby that does damage leaves, and we carefully remove that one instead. I realize gardening requires paying close attention to small details.",
     questions: [
       { text: "What bug does Theo spot on a leaf?", answer: "A small red bug with black spots -- a ladybug." },
       { text: "What does the ladybug do that is helpful?", answer: "Eats the bad bugs that damage the plants." },
@@ -197,7 +197,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Ivy kneeling in the garden beside Theo, both children laughing while planting flowers along the garden's edge, Grandpa watching happily.",
     story:
-      "One afternoon, my neighbor Ivy sees me working in the garden and walks over curiously. “Can I help too?” she asks, peeking through the fence. “Of course!” I say happily, showing her how to water the plants correctly. Grandpa gives Ivy her own small trowel, and together we plant colorful flowers along the garden's edge. Ivy asks lots of questions, and I feel proud explaining everything I have learned so far. Working together makes the afternoon fly by quickly, and the garden looks even more beautiful with two helpers instead of just one.",
+      "One afternoon, my neighbor Ivy sees me working in the garden and walks over curiously. “Can I help too, Theo?” she asks, peeking through the fence. “Of course!” I say happily, showing her how to water the plants correctly. Grandpa gives Ivy her own small trowel, and together we plant colorful flowers along the garden's edge. Ivy asks lots of questions, and I feel proud explaining everything I have learned so far. Working together makes the afternoon fly by quickly, and the garden looks even more beautiful with two helpers instead of just one.",
     questions: [
       { text: "What does Ivy ask Theo?", answer: "Can I help too?" },
       { text: "What does Grandpa give Ivy?", answer: "Her own small trowel." },
@@ -247,7 +247,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Theo's whole family and Ivy's family gathered around a table filled with fresh vegetables, everyone smiling and sharing a meal together.",
     story:
-      "That evening, we bring the harvested vegetables home, and Mom cooks a delicious dinner using our fresh tomatoes and carrots. We invite Ivy's family over to share the meal, and everyone praises how delicious homegrown vegetables taste. “We should share some with the neighbors too,” Grandpa suggests, and I happily agree, filling small bags with extra vegetables. Walking around the neighborhood delivering our garden's gifts makes me feel proud and generous. I realize that helping something grow, and then sharing what it produces, might be one of the best feelings I have ever experienced.",
+      "That evening, we bring the harvested vegetables home, and Mom cooks a delicious dinner using our fresh tomatoes and carrots. We invite Ivy's family over to share the meal, and everyone praises how delicious homegrown vegetables taste. “We should share some with the neighbors too, Theo,” Grandpa suggests, and I happily agree, filling small bags with extra vegetables. Walking around the neighborhood delivering our garden's gifts makes me feel proud and generous. I realize that helping something grow, and then sharing what it produces, might be one of the best feelings I have ever experienced.",
     questions: [
       { text: "What does Mom cook for dinner?", answer: "A meal using the fresh tomatoes and carrots." },
       { text: "Who does Grandpa suggest sharing vegetables with?", answer: "The neighbors." },

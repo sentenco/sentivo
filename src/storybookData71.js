@@ -25,7 +25,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Amara sitting at a lunch table between two empty chairs on opposite sides, looking concerned as she checks her phone.",
     story:
-      "At lunch, I notice Lucia and Ben sitting at opposite ends of our usual table, neither one acknowledging the other directly. This silence feels unusual, given how close the three of us have been since freshman year without any real conflict. I ask Lucia casually what's going on, and she simply shrugs, saying Ben knows exactly what he did. Ben, when I ask him separately, insists he doesn't actually know what Lucia is upset about at all. Caught between two conflicting accounts, I realize I might need to understand this more carefully before choosing any side.",
+      "At lunch, I notice Lucia and Ben sitting at opposite ends of our usual table, neither one acknowledging the other directly. This silence feels unusual, given how close the three of us have been since freshman year without any real conflict. I ask Lucia casually what's going on, and she simply shrugs, saying Ben knows exactly what he did. “Ask him, Amara,” is all she says. Ben, when I ask him separately, insists he doesn't actually know what Lucia is upset about at all. Caught between two conflicting accounts, I realize I might need to understand this more carefully before choosing any side.",
     questions: [
       { text: "What does Amara notice at lunch?", answer: "Lucia and Ben sitting at opposite ends of the table, not acknowledging each other." },
       { text: "What does Lucia say when Amara asks what's going on?", answer: "That Ben knows exactly what he did." },
@@ -54,7 +54,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Amara and Lucia sitting on a bench outside school, Lucia explaining something with a frustrated expression.",
     story:
-      "After school, I catch Lucia alone and ask her to explain what actually happened between her and Ben. She tells me that Ben had promised to help her prepare for a big presentation, then simply never showed up without any explanation. Worse, she says, he hadn't even apologized afterward, acting as though nothing significant had actually occurred at all. Lucia admits she feels genuinely hurt, not just inconvenienced, since this touches on a pattern she's noticed before. I listen carefully, recognizing that her frustration seems to stem from something deeper than this single incident alone.",
+      "After school, I catch Lucia alone and ask her to explain what actually happened between her and Ben. She tells me that Ben had promised to help her prepare for a big presentation, then simply never showed up without any explanation. Worse, she says, he hadn't even apologized afterward, acting as though nothing significant had actually occurred at all. Lucia admits she feels genuinely hurt, not just inconvenienced, since this touches on a pattern she's noticed before. “It's not just this one time, Amara,” she says quietly. I listen carefully, recognizing that her frustration seems to stem from something deeper than this single incident alone.",
     questions: [
       { text: "What does Amara ask Lucia to explain?", answer: "What actually happened between her and Ben." },
       { text: "What had Ben promised, according to Lucia?", answer: "To help her prepare for a big presentation." },
@@ -83,7 +83,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Amara and Ben walking together after school, Ben looking down, hands in his pockets as he speaks.",
     story:
-      "The next day, I find a moment to talk with Ben, curious to hear his perspective on the same situation. He explains that he'd genuinely forgotten about their study session, since he'd been dealing with a family emergency that same evening. He admits he should have texted Lucia immediately, but he'd felt too overwhelmed to explain everything at the time. Moreover, he says, whenever Lucia gets upset, he tends to withdraw rather than confront the situation directly, which he recognizes isn't ideal. Hearing this, I realize both Ben's silence and Lucia's hurt stem from genuinely understandable, if conflicting, reactions.",
+      "The next day, I find a moment to talk with Ben, curious to hear his perspective on the same situation. He explains that he'd genuinely forgotten about their study session, since he'd been dealing with a family emergency that same evening. He admits he should have texted Lucia immediately, but he'd felt too overwhelmed to explain everything at the time. Moreover, he says, whenever Lucia gets upset, he tends to withdraw rather than confront the situation directly, which he recognizes isn't ideal. “I don't know how to fix that, Amara,” he admits. Hearing this, I realize both Ben's silence and Lucia's hurt stem from genuinely understandable, if conflicting, reactions.",
     questions: [
       { text: "What does Ben explain about forgetting the study session?", answer: "That he'd been dealing with a family emergency that evening." },
       { text: "What does Ben admit he should have done?", answer: "Texted Lucia immediately." },
@@ -112,7 +112,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Amara sitting alone at home, notebook open, writing down both perspectives side by side.",
     story:
-      "That evening, I think through both perspectives carefully, trying to understand why this small incident escalated so significantly. Lucia's hurt makes sense, given that reliability clearly matters deeply to her, especially regarding something as important as a presentation. Ben's withdrawal also makes sense, given that confrontation genuinely overwhelms him, particularly during an already stressful, emotional evening. Neither of them is being unreasonable exactly, though their different ways of handling stress collided badly this particular time. I realize that helping them reconnect will require each of them understanding the other's perspective, not just apologizing.",
+      "That evening, I think through both perspectives carefully, trying to understand why this small incident escalated so significantly. Lucia's hurt makes sense, given that reliability clearly matters deeply to her, especially regarding something as important as a presentation. Ben's withdrawal also makes sense, given that confrontation genuinely overwhelms him, particularly during an already stressful, emotional evening. Neither of them is being unreasonable exactly, though their different ways of handling stress collided badly this particular time. Okay, Amara, you can't just tell them to make up, I think, closing my notebook. I realize that helping them reconnect will require each of them understanding the other's perspective, not just apologizing.",
     questions: [
       { text: "What does Amara think through that evening?", answer: "Both perspectives, trying to understand the escalation." },
       { text: "Why does Lucia's hurt make sense to Amara?", answer: "Because reliability matters deeply to her." },
@@ -141,7 +141,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Amara and Lucia sitting together again, Amara speaking gently while Lucia listens with a softening expression.",
     story:
-      "I approach Lucia carefully, mentioning that Ben had actually been dealing with a family emergency that same evening. Her expression shifts slightly, though she admits this doesn't fully excuse him not communicating anything at all. I explain that Ben tends to withdraw under stress, not because he doesn't care, but because confrontation genuinely overwhelms him. Lucia considers this, admitting she hadn't realized how differently they each process difficult emotions and situations. She agrees that, given this context, she'd be willing to hear him out properly before deciding how she feels.",
+      "I approach Lucia carefully, mentioning that Ben had actually been dealing with a family emergency that same evening. Her expression shifts slightly, though she admits this doesn't fully excuse him not communicating anything at all. “Okay, Amara, I hear you,” she says, still a little guarded. I explain that Ben tends to withdraw under stress, not because he doesn't care, but because confrontation genuinely overwhelms him. Lucia considers this, admitting she hadn't realized how differently they each process difficult emotions and situations. She agrees that, given this context, she'd be willing to hear him out properly before deciding how she feels.",
     questions: [
       { text: "What does Amara mention to Lucia?", answer: "That Ben had been dealing with a family emergency." },
       { text: "What does Lucia admit this doesn't fully excuse?", answer: "Him not communicating anything at all." },
@@ -170,7 +170,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Amara and Ben sitting together, Amara speaking encouragingly while Ben looks nervous but attentive.",
     story:
-      "I approach Ben separately, explaining that Lucia's hurt runs deeper than just the missed study session itself. I tell him that reliability seems to matter enormously to her, and his silence afterward may have felt like confirmation of a pattern she fears. Ben looks visibly uncomfortable, admitting he hadn't considered how his silence might be interpreted, rather than simply forgotten and moved past. I encourage him gently, suggesting that even a brief, honest explanation would likely mean more to Lucia than he assumes. He agrees, though he admits reaching out directly still feels genuinely intimidating to him.",
+      "I approach Ben separately, explaining that Lucia's hurt runs deeper than just the missed study session itself. I tell him that reliability seems to matter enormously to her, and his silence afterward may have felt like confirmation of a pattern she fears. Ben looks visibly uncomfortable, admitting he hadn't considered how his silence might be interpreted, rather than simply forgotten and moved past. “I really didn't mean it that way, Amara,” he says. I encourage him gently, suggesting that even a brief, honest explanation would likely mean more to Lucia than he assumes. He agrees, though he admits reaching out directly still feels genuinely intimidating to him.",
     questions: [
       { text: "What does Amara tell Ben about Lucia's hurt?", answer: "That reliability matters enormously to her." },
       { text: "How does Ben look when he hears this?", answer: "Visibly uncomfortable." },
@@ -199,7 +199,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Lucia and Ben sitting together at the lunch table again, talking directly to each other, Amara sitting a little further away.",
     story:
-      "The next day, I notice Lucia and Ben sitting together, actually talking rather than avoiding each other's eyes across the table. I keep some distance, sensing this conversation needs to happen between them directly, not with me mediating every word. Later, Ben tells me that he'd explained the family emergency, and Lucia had genuinely apologized for assuming the worst about him. Lucia, separately, mentions that Ben had promised to communicate better going forward, rather than withdrawing silently whenever things felt overwhelming. Hearing both accounts align this time, rather than conflict, I feel genuine relief that they'd worked through it themselves.",
+      "The next day, I notice Lucia and Ben sitting together, actually talking rather than avoiding each other's eyes across the table. Okay, Amara, let them handle this one, I remind myself, staying seated. I keep some distance, sensing this conversation needs to happen between them directly, not with me mediating every word. Later, Ben tells me that he'd explained the family emergency, and Lucia had genuinely apologized for assuming the worst about him. Lucia, separately, mentions that Ben had promised to communicate better going forward, rather than withdrawing silently whenever things felt overwhelming. Hearing both accounts align this time, rather than conflict, I feel genuine relief that they'd worked through it themselves.",
     questions: [
       { text: "What does Amara notice the next day?", answer: "Lucia and Ben sitting together, actually talking." },
       { text: "Why does Amara keep some distance?", answer: "Because the conversation needs to happen between them directly." },
@@ -228,7 +228,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Amara, Lucia, and Ben sitting together at lunch, all three laughing at something, the earlier tension gone.",
     story:
-      "By the following week, the three of us sit together at lunch again, the earlier tension seemingly resolved between them. Things aren't exactly identical to before, though; both Lucia and Ben seem more mindful now about communicating directly. Lucia mentions she's trying not to assume the worst immediately, giving people a chance to explain before reacting strongly. Ben, meanwhile, admits he's practicing sending even a short message rather than going completely silent when overwhelmed. Watching this small but genuine growth in both of them, I feel proud our friendship survived something that could have ended it.",
+      "By the following week, the three of us sit together at lunch again, the earlier tension seemingly resolved between them. Things aren't exactly identical to before, though; both Lucia and Ben seem more mindful now about communicating directly. Lucia mentions she's trying not to assume the worst immediately, giving people a chance to explain before reacting strongly. Ben, meanwhile, admits he's practicing sending even a short message rather than going completely silent when overwhelmed. You helped make this happen, Amara, I think, watching them both laugh. Watching this small but genuine growth in both of them, I feel proud our friendship survived something that could have ended it.",
     questions: [
       { text: "What happens by the following week?", answer: "The three of them sit together at lunch again." },
       { text: "What is Lucia mentioning she's trying not to do?", answer: "Assume the worst immediately." },
@@ -257,7 +257,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Amara, Lucia, and Ben sitting together outside school, talking openly about what happened, all relaxed now.",
     story:
-      "A few weeks later, the three of us talk openly about what had happened, something I hadn't expected to become a comfortable topic. Lucia admits that hearing Ben's side, rather than just assuming intent, genuinely changed how she reacts to disappointment now. Ben admits that seeing how much his silence had hurt Lucia motivated him more than any lecture could have. Both thank me for not simply taking a side, but instead helping them actually understand each other properly. I explain that I hadn't done much beyond listening carefully and trusting they could work it out themselves.",
+      "A few weeks later, the three of us talk openly about what had happened, something I hadn't expected to become a comfortable topic. Lucia admits that hearing Ben's side, rather than just assuming intent, genuinely changed how she reacts to disappointment now. Ben admits that seeing how much his silence had hurt Lucia motivated him more than any lecture could have. Both thank me for not simply taking a side, but instead helping them actually understand each other properly. “Seriously, thank you, Amara,” Lucia says, and Ben nods in agreement. I explain that I hadn't done much beyond listening carefully and trusting they could work it out themselves.",
     questions: [
       { text: "What do the three of them do a few weeks later?", answer: "Talk openly about what happened." },
       { text: "What does Lucia admit changed how she reacts to disappointment?", answer: "Hearing Ben's side instead of assuming intent." },
@@ -286,7 +286,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Amara sitting alone at home that evening, reflecting quietly in her journal, a small smile on her face.",
     story:
-      "Looking back on the whole situation, I realize how differently things might have gone had I simply chosen one friend's side immediately. If I had sided with Lucia without hearing Ben, or with Ben without acknowledging Lucia's hurt, I likely would have lost one friendship trying to protect the other. Instead, patiently understanding both perspectives allowed me to help them actually reconnect rather than simply picking a winner. I've learned that being a good friend to two people sometimes means resisting the urge to choose sides at all. In the end, this experience taught me that genuine mediation requires trusting people to grow, not just fixing things for them.",
+      "Looking back on the whole situation, I realize how differently things might have gone had I simply chosen one friend's side immediately. You did the right thing, Amara, I think, closing my journal for the night. If I had sided with Lucia without hearing Ben, or with Ben without acknowledging Lucia's hurt, I likely would have lost one friendship trying to protect the other. Instead, patiently understanding both perspectives allowed me to help them actually reconnect rather than simply picking a winner. I've learned that being a good friend to two people sometimes means resisting the urge to choose sides at all. In the end, this experience taught me that genuine mediation requires trusting people to grow, not just fixing things for them.",
     questions: [
       { text: "What does Amara realize looking back on the situation?", answer: "How differently things might have gone had she chosen a side immediately." },
       { text: "What might have happened if she had chosen one friend's side?", answer: "She likely would have lost one friendship trying to protect the other." },

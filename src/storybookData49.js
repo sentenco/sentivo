@@ -33,7 +33,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Zoe lying on her bed at night, her face lit only by her phone screen, a tired but tense expression as she scrolls endlessly.",
     story:
-      "Lately, I've noticed that I check my phone almost constantly, even when nothing important is happening. Last night, I was scrolling through photos of a classmate's vacation when I suddenly felt strangely empty inside. Everyone online seems to be having a more exciting, more successful life than I am, or at least that's how it feels. I know comparing myself like this isn't healthy, but I can't seem to stop doing it anyway. My screen time report this week showed nearly seven hours a day, which honestly shocked me. Something has to change, although I'm not entirely sure what that should look like yet.",
+      "Lately, I've noticed that I check my phone almost constantly, even when nothing important is happening. Last night, I was scrolling through photos of a classmate's vacation when I suddenly felt strangely empty inside. Everyone online seems to be having a more exciting, more successful life than I am, or at least that's how it feels. I know comparing myself like this isn't healthy, but I can't seem to stop doing it anyway. My screen time report this week showed nearly seven hours a day, which honestly shocked me. \"Something has to change, Zoe,\" I tell myself, although I'm not entirely sure what that should look like yet.",
     questions: [
       { text: "What does Zoe notice about her phone habits lately?", answer: "She checks it almost constantly, even when nothing is happening." },
       { text: "How does Zoe feel scrolling through the vacation photos?", answer: "Strangely empty." },
@@ -62,7 +62,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Zoe and Priya sitting together at a café table, Priya gesturing enthusiastically while explaining an idea, Zoe looking uncertain.",
     story:
-      "The next day, I tell Priya how empty and exhausted social media has been making me feel. Instead of just sympathizing, she suggests something bold: a full week without any social media apps at all. “If you deleted the apps, you wouldn't even be tempted to check them,” she reasons calmly. I feel a flash of panic just imagining it, since I've never gone more than a few hours without checking something. Priya, who tried something similar last year, says the first two days were the hardest by far. Although the idea terrifies me a little, part of me is genuinely curious what would happen.",
+      "The next day, I tell Priya how empty and exhausted social media has been making me feel. Instead of just sympathizing, she suggests something bold: a full week without any social media apps at all. “If you deleted the apps, Zoe, you wouldn't even be tempted to check them,” she reasons calmly. I feel a flash of panic just imagining it, since I've never gone more than a few hours without checking something. Priya, who tried something similar last year, says the first two days were the hardest by far. Although the idea terrifies me a little, part of me is genuinely curious what would happen.",
     questions: [
       { text: "What does Priya suggest to Zoe?", answer: "A full week without social media apps." },
       { text: "How does Zoe feel imagining a week without social media?", answer: "A flash of panic." },
@@ -91,7 +91,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Zoe's finger hovering over an app icon on her phone screen, hesitating before finally pressing delete, a determined expression on her face.",
     story:
-      "That evening, I sit on my bed, staring at the apps I want to remove for the week ahead. My thumb hovers over the first icon for almost a full minute before I finally press delete. Deleting the second and third apps feels slightly easier, though my hands are still shaking a little. Once everything is gone, my home screen looks strangely empty, almost like something is missing from my life already. I set a reminder for exactly seven days from now, when I will allow myself to reinstall everything. Whatever happens this week, I have already committed, and there's no turning back now.",
+      "That evening, I sit on my bed, staring at the apps I want to remove for the week ahead. My thumb hovers over the first icon for almost a full minute before I finally press delete. Deleting the second and third apps feels slightly easier, though my hands are still shaking a little. Once everything is gone, my home screen looks strangely empty, almost like something is missing from my life already. \"No turning back now, Zoe,\" I whisper to the empty room. I set a reminder for exactly seven days from now, when I will allow myself to reinstall everything. Whatever happens this week, I have already committed, and there's no turning back now.",
     questions: [
       { text: "What does Zoe do with the apps that evening?", answer: "Deletes them." },
       { text: "How does Zoe's home screen look afterward?", answer: "Strangely empty." },
@@ -120,7 +120,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Zoe sitting at her desk, reaching automatically for her phone out of habit, then pausing with a frustrated expression when she remembers the apps are gone.",
     story:
-      "By the next morning, I already notice how many times I reach for my phone out of pure habit. While waiting for the bus, I catch myself unlocking my phone at least six times, each time remembering there's nothing there now. The silence feels uncomfortable, almost like a constant itch I can't scratch no matter how hard I try. At lunch, I overhear friends discussing a video that went viral, and I feel a strange pang of exclusion. I had never realized how much of my social life actually depended on staying constantly updated online. This first day feels much harder than I honestly expected it to be.",
+      "By the next morning, I already notice how many times I reach for my phone out of pure habit. While waiting for the bus, I catch myself unlocking my phone at least six times, each time remembering there's nothing there now. The silence feels uncomfortable, almost like a constant itch I can't scratch no matter how hard I try. At lunch, I overhear friends discussing a video that went viral, and I feel a strange pang of exclusion. I had never realized how much of my social life actually depended on staying constantly updated online. \"This is only day one, Zoe,\" I remind myself. This first day feels much harder than I honestly expected it to be.",
     questions: [
       { text: "What does Zoe notice by the next morning?", answer: "How many times she reaches for her phone out of habit." },
       { text: "How many times does Zoe unlock her phone while waiting for the bus?", answer: "At least six times." },
@@ -149,7 +149,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Zoe sitting on her bedroom floor with an old sketchbook, drawing intently, evening sunlight coming through the window.",
     story:
-      "Without endless scrolling to fill my free time, I suddenly realize how many empty hours I actually have. That evening, instead of reaching for my phone, I dig out an old sketchbook I hadn't touched in months. I sit by my window and draw for almost an hour, something I used to genuinely love doing years ago. While I was drawing, I completely forgot to check the time, which almost never happens anymore lately. It occurs to me that I had been using my phone partly to avoid boredom, but also to avoid deeper, quieter thoughts. Rediscovering this small hobby feels unexpectedly comforting, like reconnecting with an old friend.",
+      "Without endless scrolling to fill my free time, I suddenly realize how many empty hours I actually have. That evening, instead of reaching for my phone, I dig out an old sketchbook I hadn't touched in months. I sit by my window and draw for almost an hour, something I used to genuinely love doing years ago. While I was drawing, I completely forgot to check the time, which almost never happens anymore lately. It occurs to me that I had been using my phone partly to avoid boredom, but also to avoid deeper, quieter thoughts. \"Maybe you never really lost this, Zoe,\" I think, smiling faintly. Rediscovering this small hobby feels unexpectedly comforting, like reconnecting with an old friend.",
     questions: [
       { text: "What does Zoe dig out that evening?", answer: "An old sketchbook." },
       { text: "What happens to Zoe's sense of time while drawing?", answer: "She completely forgets to check it." },
@@ -178,7 +178,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Zoe standing in the app store on her phone, her finger hovering over the download button, a conflicted expression on her face.",
     story:
-      "On day four, something stressful happens at school, and my first instinct is to post about it online. I open the app store without even thinking, my finger already hovering over the download button. I pause, remembering how I felt during that first uncomfortable day, and how proud I had been of getting through it. If I reinstalled the app now, all that earlier effort would basically be wasted, I remind myself firmly. Instead, I text Priya directly, explaining what happened and how frustrated I feel about it. She responds within minutes, and somehow, this feels like a more genuine kind of connection anyway.",
+      "On day four, something stressful happens at school, and my first instinct is to post about it online. I open the app store without even thinking, my finger already hovering over the download button. I pause, remembering how I felt during that first uncomfortable day, and how proud I had been of getting through it. \"Don't throw that away, Zoe,\" I remind myself firmly. If I reinstalled the app now, all that earlier effort would basically be wasted. Instead, I text Priya directly, explaining what happened and how frustrated I feel about it. She responds within minutes, and somehow, this feels like a more genuine kind of connection anyway.",
     questions: [
       { text: "What happens at school on day four?", answer: "Something stressful." },
       { text: "What is Zoe's first instinct?", answer: "To post about it online." },
@@ -207,7 +207,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Zoe and Priya sitting together on a park bench, deep in conversation, phones nowhere in sight, both looking relaxed and engaged.",
     story:
-      "On day five, Priya and I meet at the park, and I notice something different about our conversation right away. Normally, we would both glance at our phones occasionally, even mid-conversation, without really meaning to. Today, neither of us has that option, so we talk uninterrupted for almost two hours straight. I tell her things I probably wouldn't have shared over text, since talking in person feels more vulnerable somehow. She admits she has also been thinking about deleting her apps permanently, not just for this one week. Walking home afterward, I realize this might be the longest real conversation we've had in months.",
+      "On day five, Priya and I meet at the park, and I notice something different about our conversation right away. Normally, we would both glance at our phones occasionally, even mid-conversation, without really meaning to. Today, neither of us has that option, so we talk uninterrupted for almost two hours straight. I tell her things I probably wouldn't have shared over text, since talking in person feels more vulnerable somehow. “I've been thinking about deleting mine too, Zoe, not just for this one week,” she admits. Walking home afterward, I realize this might be the longest real conversation we've had in months.",
     questions: [
       { text: "What does Zoe notice about their conversation today?", answer: "That they talk uninterrupted, without glancing at phones." },
       { text: "How long do they talk uninterrupted?", answer: "Almost two hours." },
@@ -236,7 +236,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Zoe sitting on her bed, looking at her phone's app store, the reminder notification visible on the screen, a thoughtful expression on her face.",
     story:
-      "The reminder finally goes off: seven days have passed, and I'm technically free to reinstall everything now. Surprisingly, I don't feel the urgent excitement I expected to feel at this exact moment. Instead, I open my journal, where I've been writing down thoughts and feelings all week instead of posting them. Reading back through my entries, I notice how much calmer and more present I have generally felt lately. If I reinstall everything exactly as before, I might slide right back into my old habits within days. I decide to think about this decision carefully rather than rushing into anything immediately.",
+      "The reminder finally goes off: seven days have passed, and I'm technically free to reinstall everything now. Surprisingly, I don't feel the urgent excitement I expected to feel at this exact moment. Instead, I open my journal, where I've been writing down thoughts and feelings all week instead of posting them. Reading back through my entries, I notice how much calmer and more present I have generally felt lately. If I reinstall everything exactly as before, I might slide right back into my old habits within days. \"No rush, Zoe,\" I write at the bottom of the page, and I decide to think about this decision carefully rather than rushing into anything immediately.",
     questions: [
       { text: "What happens when the reminder finally goes off?", answer: "Zoe is free to reinstall everything, but doesn't feel urgent excitement." },
       { text: "How does Zoe feel compared to what she expected?", answer: "Calmer, not eager to reinstall." },
@@ -265,7 +265,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Zoe reinstalling one app on her phone while turning off notifications in the settings menu, a calm and deliberate expression on her face.",
     story:
-      "After thinking it over for two more days, I decide on a middle ground instead of an all-or-nothing choice. I reinstall only one app, the one I actually use to stay connected with distant relatives, nothing else. I also turn off all notifications, so checking the app becomes a conscious choice rather than an automatic reflex. If a notification isn't controlling my attention constantly, I feel like I'm the one actually in charge now. Priya, impressed by this compromise, decides to try something similar with her own accounts. This new approach feels more sustainable than either extreme, whether that's constant scrolling or complete avoidance.",
+      "After thinking it over for two more days, I decide on a middle ground instead of an all-or-nothing choice. I reinstall only one app, the one I actually use to stay connected with distant relatives, nothing else. I also turn off all notifications, so checking the app becomes a conscious choice rather than an automatic reflex. \"This is your choice now, Zoe,\" I think. If a notification isn't controlling my attention constantly, I feel like I'm the one actually in charge now. Priya, impressed by this compromise, decides to try something similar with her own accounts. This new approach feels more sustainable than either extreme, whether that's constant scrolling or complete avoidance.",
     questions: [
       { text: "What decision does Zoe make after two more days?", answer: "A middle ground -- reinstalling only one app." },
       { text: "Which app does Zoe reinstall?", answer: "The one she uses to stay connected with distant relatives." },
@@ -294,7 +294,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Zoe sitting at her desk, writing in her journal one final entry, her phone resting face-down beside her, a peaceful expression on her face.",
     story:
-      "A month later, I look back at that first uncomfortable day and barely recognize how anxious I felt then. My screen time has dropped significantly, not because I forced it, but because I genuinely don't need it as much anymore. I still draw regularly now, something I almost gave up entirely before this whole experiment began. Whenever I feel that familiar urge to compare myself to others online, I remember how empty that feeling actually was. Priya and I meet in person far more often now, having real conversations instead of just liking each other's posts. Taking that break taught me that stepping back sometimes helps you see yourself more clearly.",
+      "A month later, I look back at that first uncomfortable day and barely recognize how anxious I felt then. My screen time has dropped significantly, not because I forced it, but because I genuinely don't need it as much anymore. I still draw regularly now, something I almost gave up entirely before this whole experiment began. Whenever I feel that familiar urge to compare myself to others online, I remember how empty that feeling actually was. Priya and I meet in person far more often now, having real conversations instead of just liking each other's posts. \"You needed that, Zoe,\" I think sometimes, smiling to myself. Taking that break taught me that stepping back sometimes helps you see yourself more clearly.",
     questions: [
       { text: "How does Zoe's screen time compare to before?", answer: "It has dropped significantly." },
       { text: "What does Zoe still do regularly now?", answer: "Draw." },

@@ -74,7 +74,7 @@ export const CHAPTERS = [
     image: chapter2Img,
     imageNote: "Paul and Mia at a school desk during break time, with Ethan eating a sandwich and Angel talking nearby.",
     story:
-      "At school, I sit with Mia during break time. Our classroom is noisy, but I like the happy sound. Ethan buys a sandwich and a bottle of water from the small canteen. Near the window, Angel tells us about her basketball practice after class. We listen to her and smile because she is very excited. My sandwich is warm, and Mia shares her apple with me. When the bell rings again, we go back to class together.",
+      "At school, I sit with Mia during break time. Our classroom is noisy, but I like the happy sound. Ethan buys a sandwich and a bottle of water from the small canteen. Near the window, Angel tells us about her basketball practice after class. We listen to her and smile because she is very excited. My sandwich is warm, and Mia shares her apple with me. “Here, Paul, try some,” she says. When the bell rings again, we go back to class together.",
     questions: [
       { text: "Who sits with Paul during break time?", answer: "Mia." },
       { text: "What does Ethan buy from the canteen?", answer: "A sandwich and a bottle of water." },
@@ -147,7 +147,7 @@ export const CHAPTERS = [
     image: chapter4Img,
     imageNote: "The four friends at the school gate in the late afternoon sun, Ethan holding a skateboard.",
     story:
-      "When classes end, I wait for my friends at the school gate. Ethan wants to go to the park because he likes skateboarding there. Mia needs to go home early and help her mother in the kitchen. Angel asks us to stop at a small shop for cold drinks first. I look at the sky, feel the warm air, and think it is a good afternoon. In the end, we go to the shop together and talk on the way. After that, we say goodbye and follow our own plans.",
+      "When classes end, I wait for my friends at the school gate. Ethan wants to go to the park because he likes skateboarding there. Mia needs to go home early and help her mother in the kitchen. Angel asks us to stop at a small shop for cold drinks first. “Paul, are you coming?” she says. I look at the sky, feel the warm air, and think it is a good afternoon. In the end, we go to the shop together and talk on the way. After that, we say goodbye and follow our own plans.",
     questions: [
       { text: "Where does Paul wait for his friends?", answer: "At the school gate." },
       { text: "Why does Ethan want to go to the park?", answer: "Because he likes skateboarding there." },
@@ -185,7 +185,7 @@ export const CHAPTERS = [
     image: chapter5Img,
     imageNote: "The four friends walking home together in the rain, all sharing one big blue umbrella.",
     story:
-      "This afternoon, dark clouds fill the sky above our school. A few minutes later, the rain starts, and everyone runs to the front hall. Ethan laughs because he has a big blue umbrella in his bag. Mia stands next to me and watches the water on the street. Angel says the rain is cold, but she likes the fresh air. When the rain gets lighter, we walk home slowly under Ethan’s umbrella. Our shoes get a little wet, but the walk feels fun.",
+      "This afternoon, dark clouds fill the sky above our school. A few minutes later, the rain starts, and everyone runs to the front hall. Ethan laughs because he has a big blue umbrella in his bag. “Don’t worry, Paul, we’ll stay dry,” he says. Mia stands next to me and watches the water on the street. Angel says the rain is cold, but she likes the fresh air. When the rain gets lighter, we walk home slowly under Ethan’s umbrella. Our shoes get a little wet, but the walk feels fun.",
     questions: [
       { text: "What fills the sky above the school?", answer: "Dark clouds." },
       { text: "What does Ethan have in his bag?", answer: "A big blue umbrella." },
@@ -223,7 +223,7 @@ export const CHAPTERS = [
     image: chapter6Img,
     imageNote: "Paul and Mia sitting together in the art room, drawing; a finished picture of a park with birds on the table.",
     story:
-      "On Wednesday, I stay at school for the art club after class. Mia sits beside me because she also likes drawing. Ethan does not join the club, but he comes to see our pictures for a few minutes. Angel looks at my paper and says my tree is nice and colorful. The room is quiet, so I can think and draw well. I make a picture of a park with birds, grass, and a bench. Before going home, I put my drawing in my bag and feel proud.",
+      "On Wednesday, I stay at school for the art club after class. Mia sits beside me because she also likes drawing. Ethan does not join the club, but he comes to see our pictures for a few minutes. Angel looks at my paper and says, “Paul, your tree is nice and colorful.” The room is quiet, so I can think and draw well. I make a picture of a park with birds, grass, and a bench. Before going home, I put my drawing in my bag and feel proud.",
     questions: [
       { text: "What club does Paul join after class?", answer: "The art club." },
       { text: "Who sits beside Paul?", answer: "Mia." },
@@ -261,7 +261,7 @@ export const CHAPTERS = [
     image: chapter7Img,
     imageNote: "Paul at the breakfast table with a plate of pancakes, looking at a photo on his phone.",
     story:
-      "On Saturday morning, I do not go to school, so I wake up a little late. My father makes pancakes, and the sweet smell fills the kitchen. After breakfast, Ethan sends me a photo of his new football shoes. Mia stays at home and reads a comic book near her window. Angel helps her older sister clean the living room and arrange the chairs. In the afternoon, I play a mobile game and listen to music in my room. It is a simple day, but I feel relaxed and happy.",
+      "On Saturday morning, I do not go to school, so I wake up a little late. My father makes pancakes, and the sweet smell fills the kitchen. “Good morning, Paul,” he says with a smile. After breakfast, Ethan sends me a photo of his new football shoes. Mia stays at home and reads a comic book near her window. Angel helps her older sister clean the living room and arrange the chairs. In the afternoon, I play a mobile game and listen to music in my room. It is a simple day, but I feel relaxed and happy.",
     questions: [
       { text: "Why does Paul wake up a little late?", answer: "Because he does not go to school on Saturday." },
       { text: "What does Ethan send to Paul?", answer: "A photo of his new football shoes." },
@@ -293,7 +293,7 @@ export const CHAPTERS = [
     image: chapter8Img,
     imageNote: "The friends surprising Mia at the lunch table with a small pink gift bag and a set of colorful pens.",
     story:
-      "Today is Mia’s birthday, and we want to do something nice for her. Before class, Ethan gives Angel a small pink gift bag to carry. I keep a birthday card inside my notebook and wait for the right time. At lunch, we call Mia to our table and sing for her with big smiles. She looks surprised, opens the gift bag, and finds a set of colorful pens. Her eyes shine, and she thanks us again and again. The lunch break feels short, but the moment feels special.",
+      "Today is Mia’s birthday, and we want to do something nice for her. Before class, Ethan gives Angel a small pink gift bag to carry. I keep a birthday card inside my notebook and wait for the right time. At lunch, we call Mia to our table and sing for her with big smiles. She looks surprised, opens the gift bag, and finds a set of colorful pens. Her eyes shine, and she thanks us again and again. “Thank you, Paul, Ethan, Angel!” she says. The lunch break feels short, but the moment feels special.",
     questions: [
       { text: "Whose birthday is it?", answer: "Mia's." },
       { text: "What does Paul keep inside his notebook?", answer: "A birthday card." },
@@ -328,7 +328,7 @@ export const CHAPTERS = [
     image: chapter9Img,
     imageNote: "Paul, Ethan, Mia, and Angel gathered around a classroom desk, making a poster about healthy habits.",
     story:
-      "This week, our class makes a simple project about healthy habits. In the classroom, the teacher puts us in one group, so we work together. Ethan writes the title on a big sheet of paper with neat letters. Mia draws fruit and water bottles in bright colors. Angel talks about exercise and gives us good ideas for the poster. I cut the pictures carefully and glue them in the right place. At the end of class, our poster looks clean, colorful, and complete.",
+      "This week, our class makes a simple project about healthy habits. In the classroom, the teacher puts us in one group, so we work together. Ethan writes the title on a big sheet of paper with neat letters. Mia draws fruit and water bottles in bright colors. Angel talks about exercise and gives us good ideas for the poster. “Paul, can you cut the pictures?” she asks. I cut the pictures carefully and glue them in the right place. At the end of class, our poster looks clean, colorful, and complete.",
     questions: [
       { text: "What is the class project about?", answer: "Healthy habits." },
       { text: "Who writes the title on the paper?", answer: "Ethan." },
@@ -363,7 +363,7 @@ export const CHAPTERS = [
     image: chapter10Img,
     imageNote: "The four friends standing together in front of a wall of colorful class posters, all smiling.",
     story:
-      "This morning, our teacher puts the class projects on the wall for everyone to see. I stand with Ethan, Mia, and Angel in front of our poster and smile. The teacher says our work is neat, colorful, and easy to understand. Ethan looks proud, and Angel gives Mia a happy high five. During break time, we talk about our favorite moments this term. I think about the rainy walk, the art club, and Mia’s birthday surprise. On the way home, I feel thankful for my friends and for all our good days together.",
+      "This morning, our teacher puts the class projects on the wall for everyone to see. I stand with Ethan, Mia, and Angel in front of our poster and smile. The teacher says our work is neat, colorful, and easy to understand. “Well done, Paul,” she adds with a smile. Ethan looks proud, and Angel gives Mia a happy high five. During break time, we talk about our favorite moments this term. I think about the rainy walk, the art club, and Mia’s birthday surprise. On the way home, I feel thankful for my friends and for all our good days together.",
     questions: [
       { text: "Where does the teacher put the class projects?", answer: "On the wall." },
       { text: "What does the teacher say about their work?", answer: "That it is neat, colorful, and easy to understand." },

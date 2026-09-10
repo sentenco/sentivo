@@ -25,7 +25,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Amara watching from her doorway as movers carry boxes and furniture into the apartment upstairs.",
     story:
-      "Over the weekend, I notice movers carrying boxes and furniture into the previously empty apartment directly above mine. I introduce myself briefly in the hallway to the new tenant, a friendly young man named Théo who seems genuinely pleasant. We exchange a few polite words about the building, and he mentions he's just moved here for a new job downtown. Everything seems perfectly normal for the first couple of days, with only the usual sounds of someone settling in. However, by midweek, I start noticing something considerably louder than typical everyday apartment noise.",
+      "Over the weekend, I notice movers carrying boxes and furniture into the previously empty apartment directly above mine. “I'm Amara, I live right below you,” I say, introducing myself briefly in the hallway to the new tenant, a friendly young man named Théo who seems genuinely pleasant. We exchange a few polite words about the building, and he mentions he's just moved here for a new job downtown. Everything seems perfectly normal for the first couple of days, with only the usual sounds of someone settling in. However, by midweek, I start noticing something considerably louder than typical everyday apartment noise.",
     questions: [
       { text: "What does Amara notice over the weekend?", answer: "Movers carrying boxes into the apartment above hers." },
       { text: "Who does Amara meet in the hallway?", answer: "Théo, the new tenant." },
@@ -54,7 +54,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Amara lying awake in bed at night, looking up at the ceiling as muffled music and footsteps sound from above.",
     story:
-      "Around midnight, muffled music and what sounds like furniture being dragged across the floor wake me from a light sleep. I lie there for a while, hoping it's simply a one-time thing related to unpacking or rearranging furniture. However, the noise continues steadily for nearly an hour, making it genuinely difficult to fall back asleep comfortably. I check the time repeatedly, growing increasingly frustrated as tomorrow's early work meeting looms uncomfortably close. Eventually, exhaustion outweighs my frustration, and I manage to drift into an uneasy, restless sleep.",
+      "Around midnight, muffled music and what sounds like furniture being dragged across the floor wake me from a light sleep. I lie there for a while, hoping it's simply a one-time thing related to unpacking or rearranging furniture. However, the noise continues steadily for nearly an hour, making it genuinely difficult to fall back asleep comfortably. I check my phone repeatedly, its lock screen reading “Amara's alarm: 6:30 AM,” growing increasingly frustrated as tomorrow's early work meeting looms uncomfortably close. Eventually, exhaustion outweighs my frustration, and I manage to drift into an uneasy, restless sleep.",
     questions: [
       { text: "What wakes Amara around midnight?", answer: "Muffled music and furniture being dragged." },
       { text: "How long does the noise continue?", answer: "Nearly an hour." },
@@ -83,7 +83,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Amara sitting at her kitchen table the next morning, tired, looking up at the ceiling with a frustrated expression.",
     story:
-      "The following few nights bring more of the same, with loud music and heavy footsteps becoming an unwelcome nightly routine. I try being patient at first, reminding myself that Théo is still new and perhaps unaware of how sound travels here. However, after nearly a week of interrupted sleep, my patience has genuinely started wearing thin considerably. I mention the situation briefly to another neighbor, who admits she's noticed the noise too, though less directly above her. Realizing this isn't simply my imagination reassures me slightly, though it doesn't actually solve the underlying problem.",
+      "The following few nights bring more of the same, with loud music and heavy footsteps becoming an unwelcome nightly routine. I try being patient at first, reminding myself that Théo is still new and perhaps unaware of how sound travels here. However, after nearly a week of interrupted sleep, my patience has genuinely started wearing thin considerably. I mention the situation briefly to another neighbor. “You're not imagining it, Amara, I've heard it too, though not as loud,” she admits. Realizing this isn't simply my imagination reassures me slightly, though it doesn't actually solve the underlying problem.",
     questions: [
       { text: "What becomes an unwelcome nightly routine?", answer: "Loud music and heavy footsteps." },
       { text: "What does Amara try being at first?", answer: "Patient." },
@@ -112,7 +112,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Amara sitting at her kitchen table, weighing two pieces of paper: one labeled 'Talk directly' and one labeled 'Contact management.'",
     story:
-      "Exhausted and increasingly frustrated, I consider two possible approaches: speaking with Théo directly or contacting building management instead. On the other hand, going straight to management feels slightly excessive for what could still be an easily fixable misunderstanding. I decide that approaching Théo calmly and directly seems like the more reasonable first step to take. If that conversation doesn't actually improve anything, I can always escalate the situation through official channels later. Feeling somewhat more decisive now, I plan to knock on his door sometime after work today.",
+      "Exhausted and increasingly frustrated, I write “Amara's Plan” at the top of a notepad page and consider two possible approaches: speaking with Théo directly or contacting building management instead. On the other hand, going straight to management feels slightly excessive for what could still be an easily fixable misunderstanding. I decide that approaching Théo calmly and directly seems like the more reasonable first step to take. If that conversation doesn't actually improve anything, I can always escalate the situation through official channels later. Feeling somewhat more decisive now, I plan to knock on his door sometime after work today.",
     questions: [
       { text: "What two approaches does Amara consider?", answer: "Speaking with Théo directly or contacting building management." },
       { text: "Why does going straight to management feel excessive?", answer: "Because it could still be an easily fixable misunderstanding." },
@@ -141,7 +141,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Amara standing outside Théo's apartment door, hand raised to knock, taking a deep breath before doing so.",
     story:
-      "Standing outside Théo's door that evening, I take a deep breath, reminding myself to stay calm and specifically friendly. He opens the door, looking mildly surprised but greeting me warmly, clearly not expecting a serious conversation. I explain gently that the noise, particularly late at night, has been making it difficult for me to sleep well. “I had honestly no idea it was traveling that clearly. I'm really sorry about that,” he responds immediately, sounding genuinely embarrassed. His reaction reassures me considerably, since I had quietly worried this conversation might become awkward or tense instead.",
+      "Standing outside Théo's door that evening, I take a deep breath, reminding myself to stay calm and specifically friendly. He opens the door, looking mildly surprised but greeting me warmly, clearly not expecting a serious conversation. I explain gently that the noise, particularly late at night, has been making it difficult for me to sleep well. “I had honestly no idea it was traveling that clearly, Amara. I'm really sorry about that,” he responds immediately, sounding genuinely embarrassed. His reaction reassures me considerably, since I had quietly worried this conversation might become awkward or tense instead.",
     questions: [
       { text: "What does Amara remind herself to do before knocking?", answer: "Stay calm and friendly." },
       { text: "How does Théo react when he opens the door?", answer: "Mildly surprised, greeting her warmly." },
@@ -170,7 +170,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Amara and Théo standing in the doorway, both talking casually, Théo gesturing as he suggests an idea.",
     story:
-      "Théo explains that he'd been rearranging furniture and occasionally listening to music while unpacking boxes late at night. He suggests wearing headphones during late hours and finishing any heavy furniture moving considerably earlier in the evening. “Would it help if I also put down a rug under my speakers?” he asks thoughtfully, clearly wanting to actually fix this properly. I appreciate his willingness to problem-solve rather than simply apologizing without offering any real changes. We agree that if anything comes up again, I'll simply mention it directly rather than letting frustration build silently.",
+      "Théo explains that he'd been rearranging furniture and occasionally listening to music while unpacking boxes late at night. He suggests wearing headphones during late hours and finishing any heavy furniture moving considerably earlier in the evening. “Would it help if I also put down a rug under my speakers, Amara?” he asks thoughtfully, clearly wanting to actually fix this properly. I appreciate his willingness to problem-solve rather than simply apologizing without offering any real changes. We agree that if anything comes up again, I'll simply mention it directly rather than letting frustration build silently.",
     questions: [
       { text: "What does Théo explain he'd been doing at night?", answer: "Rearranging furniture and listening to music while unpacking." },
       { text: "What does Théo suggest doing during late hours?", answer: "Wearing headphones and finishing heavy furniture moving earlier." },
@@ -199,7 +199,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Amara lying peacefully in bed at night, the ceiling above quiet and dark, a small smile on her sleeping face.",
     story:
-      "That night, and for several nights afterward, my apartment stays noticeably quieter than it had been throughout the entire previous week. I sleep considerably better, and my morning routine feels less rushed without the exhaustion I'd been carrying around constantly. I run into Théo briefly in the hallway a few days later, and he asks whether things have improved since our conversation. I confirm honestly that yes, it's been considerably better, and I genuinely appreciate him taking my concern seriously. He seems relieved to hear this, mentioning he'd felt slightly guilty since our initial conversation that evening.",
+      "That night, and for several nights afterward, my apartment stays noticeably quieter than it had been throughout the entire previous week. I sleep considerably better, and my morning routine feels less rushed without the exhaustion I'd been carrying around constantly. I run into Théo briefly in the hallway a few days later. “Hey Amara, has it gotten better since we talked?” he asks. I confirm honestly that yes, it's been considerably better, and I genuinely appreciate him taking my concern seriously. He seems relieved to hear this, mentioning he'd felt slightly guilty since our initial conversation that evening.",
     questions: [
       { text: "How does Amara's apartment stay that night?", answer: "Noticeably quieter." },
       { text: "How does Amara sleep afterward?", answer: "Considerably better." },
@@ -228,7 +228,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Amara chatting with the neighbor from before in the building's shared laundry room, both folding laundry casually.",
     story:
-      "In the laundry room, I mention to the other neighbor that the noise situation with Théo has genuinely improved considerably since our conversation. She seems pleasantly surprised, admitting she assumed such issues usually required involving building management eventually. I explain that, in my experience, approaching someone directly and calmly often works better than escalating things immediately. On the other hand, I acknowledge that a direct conversation isn't always possible or appropriate, depending on the actual situation. She agrees, saying she'll consider a similar approach if something ever bothers her about another neighbor.",
+      "In the laundry room, I mention to the other neighbor that the noise situation with Théo has genuinely improved considerably since our conversation. “Really, Amara? I assumed you'd have to get management involved,” she says, pleasantly surprised. I explain that, in my experience, approaching someone directly and calmly often works better than escalating things immediately. On the other hand, I acknowledge that a direct conversation isn't always possible or appropriate, depending on the actual situation. She agrees, saying she'll consider a similar approach if something ever bothers her about another neighbor.",
     questions: [
       { text: "What does Amara mention to the other neighbor?", answer: "That the noise situation has genuinely improved." },
       { text: "What does the other neighbor seem surprised by?", answer: "That it didn't require involving management." },
@@ -257,7 +257,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Théo knocking on Amara's door holding a small potted plant, both smiling in the doorway.",
     story:
-      "A few days later, Théo knocks on my door, holding a small potted plant he says he thought I might genuinely like. “This is just a small thank-you for handling everything so kindly instead of getting angry,” he explains, smiling warmly. I'm pleasantly surprised, accepting the gift while telling him honestly that it really wasn't necessary at all. He insists it is, mentioning that my patience made an awkward situation considerably easier for him to navigate. This small, unexpected gesture makes me feel genuinely glad I chose conversation over silent frustration or formal complaints.",
+      "A few days later, Théo knocks on my door, holding a small potted plant he says he thought I might genuinely like. “This is just a small thank-you, Amara, for handling everything so kindly instead of getting angry,” he explains, smiling warmly. I'm pleasantly surprised, accepting the gift while telling him honestly that it really wasn't necessary at all. He insists it is, mentioning that my patience made an awkward situation considerably easier for him to navigate. This small, unexpected gesture makes me feel genuinely glad I chose conversation over silent frustration or formal complaints.",
     questions: [
       { text: "What does Théo bring to Amara's door?", answer: "A small potted plant." },
       { text: "What does Théo say the gift is for?", answer: "A thank-you for handling everything kindly instead of getting angry." },
@@ -286,7 +286,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Amara sitting comfortably in her apartment with the small plant now on her windowsill, relaxed and content.",
     story:
-      "Looking back on the entire situation, I realize how easily this could have escalated into something far more tense and unpleasant. If I had complained to management immediately, without speaking to Théo directly first, our relationship might have started off poorly. Instead, staying calm and approaching the conversation kindly allowed us to actually resolve things quickly and fairly. I've learned that most conflicts between neighbors can be solved through simple, honest communication rather than avoidance or escalation. In the end, this small noise dispute unexpectedly became the beginning of a genuinely friendly neighborly relationship.",
+      "Looking back on the entire situation, I write one line in my journal, “Amara: talk first, escalate later,” and realize how easily this could have escalated into something far more tense and unpleasant. If I had complained to management immediately, without speaking to Théo directly first, our relationship might have started off poorly. Instead, staying calm and approaching the conversation kindly allowed us to actually resolve things quickly and fairly. I've learned that most conflicts between neighbors can be solved through simple, honest communication rather than avoidance or escalation. In the end, this small noise dispute unexpectedly became the beginning of a genuinely friendly neighborly relationship.",
     questions: [
       { text: "What does Amara realize looking back on this situation?", answer: "How easily it could have escalated into something tense." },
       { text: "What might have happened if she had gone straight to management?", answer: "Their relationship might have started off poorly." },

@@ -1,7 +1,8 @@
 // A2 Adults digital storybook, Book 10: "Feeling Better Again"
 // Static content -- no Supabase, mirrors the pattern in storybookData9.js.
-// Like Books 7-9, this narrator is an adult and stays gender-neutral
-// throughout, matching the source text. The receptionist and Dr. Santos
+// Like Books 7-9, this book's narrator, Riley, is an adult and stays
+// gender-neutral throughout -- no gendered pronoun is ever used for Riley
+// in the story, only their name. Grace (the receptionist) and Dr. Santos
 // are explicitly "she" in the source; the pharmacist is explicitly "he";
 // the nurse is never gendered, so stays neutral.
 // Chapter images are not generated yet -- image is left null per chapter so
@@ -11,14 +12,14 @@ import coverImg from "./assets/storybook10/cover.jpg";
 export const STORYBOOK_TITLE = "Feeling Better Again";
 export const COVER_IMAGE = coverImg;
 export const COVER_IMAGE_NOTE =
-  "The narrator sitting calmly in a bright, clean clinic waiting room holding a small form, a plant and a health poster visible on the wall nearby.";
+  "Riley sitting calmly in a bright, clean clinic waiting room holding a small form, a plant and a health poster visible on the wall nearby.";
 
 // A consistent "look" for each recurring character, so every chapter's
 // image placeholder note can reference the same description -- keeps an
 // illustrator's art consistent across all 10 chapters.
 export const CHARACTERS = [
-  { name: "The narrator", role: "A patient with a sore throat", look: "Simple comfortable clothing, a little tired at first but calm, no gendered features emphasized -- the source text never assigns a pronoun to this character." },
-  { name: "The receptionist", role: "Works the front desk of the clinic", look: "Neat cardigan or blouse, warm and welcoming smile -- explicitly \"she\" in the source text." },
+  { name: "Riley", role: "A patient with a sore throat", look: "Simple comfortable clothing, a little tired at first but calm, gender-neutral by design -- the story never uses a pronoun for Riley, only their name." },
+  { name: "Grace", role: "Works the front desk of the clinic", look: "Neat cardigan or blouse, warm and welcoming smile -- explicitly \"she\" in the source text." },
   { name: "Dr. Santos", role: "The clinic doctor", look: "White coat, stethoscope, gentle and reassuring manner -- explicitly \"she\" in the source text." },
   { name: "The nurse", role: "Calls patients in from the waiting room", look: "Simple scrubs, calm and efficient -- the source text never assigns a pronoun to this character, so keep neutral." },
   { name: "The pharmacist", role: "Works the clinic's small pharmacy counter", look: "White coat, friendly and reassuring -- explicitly \"he\" in the source text." },
@@ -29,20 +30,20 @@ export const CHAPTERS = [
     number: 1,
     title: "My First Visit to the Clinic",
     image: null,
-    imageNote: "The narrator walking into a small neighborhood clinic looking a little unwell, the receptionist smiling from behind the front desk, quiet street visible through the door.",
+    imageNote: "Riley walking into a small neighborhood clinic looking a little unwell, Grace smiling from behind the front desk, quiet street visible through the door.",
     story:
-      "This morning, I wake up with a sore throat and a heavy head. At first, I sit on my bed and hope I will feel better soon. I drink some water, but my throat still hurts, and my body feels weak. Then I decide to visit the small clinic near my apartment. I put on a clean shirt, take my bag, and walk slowly down the street. When I arrive at the clinic, I see a woman sitting behind a desk near the door. She smiles and says, “Good morning, how can I help you?” I tell her, “I have a sore throat, and I do not feel well today.” She gives me a form and asks me to sit down and wait for the doctor. As I sit in the quiet room, I still feel sick, but I also feel calm because I know help is coming.",
+      "This morning, I wake up with a sore throat and a heavy head. At first, I sit on my bed and hope I will feel better soon. “Maybe it will pass, Riley,” I tell myself, but I do not feel any better. I drink some water, but my throat still hurts, and my body feels weak. Then I decide to visit the small clinic near my apartment. I put on a clean shirt, take my bag, and walk slowly down the street. When I arrive at the clinic, I see a woman sitting behind a desk near the door. She smiles and says, “Good morning, how can I help you?” I tell her, “I have a sore throat, and I do not feel well today.” She gives me a form and asks me to sit down and wait for the doctor. As I sit in the quiet room, I still feel sick, but I also feel calm because I know help is coming.",
     questions: [
-      { text: "How does the writer feel in the morning?", answer: "Sick, with a sore throat and a heavy head." },
-      { text: "Where does the writer go?", answer: "To the small clinic near the apartment." },
-      { text: "What does the woman at the desk give to the writer?", answer: "A form." },
+      { text: "How does Riley feel in the morning?", answer: "Sick, with a sore throat and a heavy head." },
+      { text: "Where does Riley go?", answer: "To the small clinic near the apartment." },
+      { text: "What does the woman at the desk give to Riley?", answer: "A form." },
     ],
     trueFalse: [
-      { text: "The writer wakes up with a sore throat.", answer: true },
-      { text: "The writer goes to a shop near the apartment.", answer: false },
-      { text: "The writer feels calm at the end because help is coming.", answer: true },
-      { text: "The receptionist gives the writer a form.", answer: true },
-      { text: "The writer feels perfectly fine in the morning.", answer: false },
+      { text: "Riley wakes up with a sore throat.", answer: true },
+      { text: "Riley goes to a shop near the apartment.", answer: false },
+      { text: "Riley feels calm at the end because help is coming.", answer: true },
+      { text: "Grace gives Riley a form.", answer: true },
+      { text: "Riley feels perfectly fine in the morning.", answer: false },
     ],
     buildSentence: [
       { target: "I drink some water.", jumbled: ["drink", "some", "water.", "I"] },
@@ -67,20 +68,20 @@ export const CHAPTERS = [
     number: 2,
     title: "Talking to the Receptionist",
     image: null,
-    imageNote: "The narrator writing on a small white form at the front desk, the receptionist typing details into a computer and smiling warmly.",
+    imageNote: "Riley writing on a small white form at the front desk, Grace typing details into a computer and smiling warmly.",
     story:
-      "At the desk, the kind receptionist gives me a small white form to fill in. The form asks for my name, my age, and my phone number. I write my details slowly and carefully with a black pen. Then she asks, “Is this your first visit to our clinic?” I say, “Yes, this is my first time here today.” She types my name into her computer and makes a new file for me. She asks me what problem brings me to the clinic today. I tell her, “I have a sore throat and a headache since this morning.” She smiles and says, “Please sit down, and the doctor will call you soon.” As I give back the form, I feel calm because the receptionist is helpful and kind.",
+      "At the desk, Grace, the kind receptionist, gives me a small white form to fill in. The form asks for my name, my age, and my phone number. I write my details slowly and carefully with a black pen. Then she asks, “Is this your first visit to our clinic?” I say, “Yes, this is my first time here today.” She types my name into her computer and makes a new file for me. She asks me what problem brings me to the clinic today. I tell her, “I have a sore throat and a headache since this morning.” She smiles and says, “Please sit down, Riley, and the doctor will call you soon.” As I give back the form, I feel calm because Grace is helpful and kind.",
     questions: [
-      { text: "What does the receptionist give the writer to fill in?", answer: "A small white form." },
+      { text: "What does Grace give Riley to fill in?", answer: "A small white form." },
       { text: "What three things does the form ask for?", answer: "Name, age, and phone number." },
-      { text: "What does the receptionist say the writer should do?", answer: "Sit down and wait for the doctor." },
+      { text: "What does Grace say Riley should do?", answer: "Sit down and wait for the doctor." },
     ],
     trueFalse: [
-      { text: "The form asks for the writer's name, age, and phone number.", answer: true },
-      { text: "This is the writer's tenth visit to the clinic.", answer: false },
-      { text: "The writer feels calm because the receptionist is kind.", answer: true },
-      { text: "The writer writes with a black pen.", answer: true },
-      { text: "The receptionist refuses to help the writer.", answer: false },
+      { text: "The form asks for Riley's name, age, and phone number.", answer: true },
+      { text: "This is Riley's tenth visit to the clinic.", answer: false },
+      { text: "Riley feels calm because Grace is kind.", answer: true },
+      { text: "Riley writes with a black pen.", answer: true },
+      { text: "Grace refuses to help Riley.", answer: false },
     ],
     buildSentence: [
       { target: "I write my details.", jumbled: ["write", "my", "details.", "I"] },
@@ -94,8 +95,8 @@ export const CHAPTERS = [
         jumbled: ["her,", "tell", "I", "have", "“I", "sore", "a", "throat", "a", "and", "since", "headache", "morning.”", "this"],
       },
       {
-        target: "As I give back the form, I feel calm because the receptionist is helpful and kind.",
-        jumbled: ["give", "I", "back", "As", "form,", "the", "feel", "I", "calm", "because", "receptionist", "the", "helpful", "is", "kind.", "and"],
+        target: "As I give back the form, I feel calm because Grace is helpful and kind.",
+        jumbled: ["give", "I", "back", "As", "form,", "the", "feel", "I", "calm", "because", "Grace", "helpful", "is", "kind.", "and"],
       },
     ],
     mySentencePrompt: "Write or say one sentence about filling in a form.",
@@ -105,20 +106,20 @@ export const CHAPTERS = [
     number: 3,
     title: "Waiting for the Doctor",
     image: null,
-    imageNote: "The narrator sitting quietly in a clean waiting room with soft chairs, a clock, health posters, and a big plant, a nurse calling another patient in the background.",
+    imageNote: "Riley sitting quietly in a clean waiting room with soft chairs, a clock, health posters, and a big plant, a nurse calling another patient in the background.",
     story:
-      "After I give back the form, I sit down on a chair in the waiting room. The room is clean and quiet, with soft chairs and a small table. A few other people wait too, and some of them look a little tired. On the wall, there is a clock, some health posters, and a big plant. I hold my bag on my lap and take slow, deep breaths. My throat still hurts, but the calm room helps me feel less worried. I read a health poster about washing hands and drinking clean water. A nurse comes out and calls another patient into a room. I wait for about ten minutes and try to stay calm and patient. As I wait quietly, I feel okay because I know the doctor will help me soon.",
+      "After I give back the form, I sit down on a chair in the waiting room. The room is clean and quiet, with soft chairs and a small table. A few other people wait too, and some of them look a little tired. On the wall, there is a clock, some health posters, and a big plant. I hold my bag on my lap and take slow, deep breaths. “Stay calm, Riley,” I whisper to myself, and my shoulders relax a little. My throat still hurts, but the calm room helps me feel less worried. I read a health poster about washing hands and drinking clean water. A nurse comes out and calls another patient into a room. I wait for about ten minutes and try to stay calm and patient. As I wait quietly, I feel okay because I know the doctor will help me soon.",
     questions: [
-      { text: "Where does the writer sit after giving back the form?", answer: "In the waiting room." },
+      { text: "Where does Riley sit after giving back the form?", answer: "In the waiting room." },
       { text: "What is on the wall of the waiting room?", answer: "A clock, health posters, and a big plant." },
       { text: "What does the health poster talk about?", answer: "Washing hands and drinking clean water." },
     ],
     trueFalse: [
       { text: "The waiting room is clean and quiet.", answer: true },
-      { text: "The writer waits for many hours.", answer: false },
-      { text: "The writer feels okay because the doctor will help soon.", answer: true },
+      { text: "Riley waits for many hours.", answer: false },
+      { text: "Riley feels okay because the doctor will help soon.", answer: true },
       { text: "A nurse calls another patient.", answer: true },
-      { text: "The writer refuses to wait and leaves.", answer: false },
+      { text: "Riley refuses to wait and leaves.", answer: false },
     ],
     buildSentence: [
       { target: "The room is clean.", jumbled: ["room", "is", "clean.", "The"] },
@@ -143,20 +144,20 @@ export const CHAPTERS = [
     number: 4,
     title: "Meeting the Doctor",
     image: null,
-    imageNote: "The narrator sitting down beside Dr. Santos's desk in a bright clean office, Dr. Santos smiling warmly and reading the form on her computer screen.",
+    imageNote: "Riley sitting down beside Dr. Santos's desk in a bright clean office, Dr. Santos smiling warmly and reading the form on her computer screen.",
     story:
-      "Soon, the nurse opens a door and calls, “Please come in, it is your turn.” I stand up, walk into the room, and see a kind doctor at her desk. She smiles and says, “Hello, my name is Dr. Santos, please sit down.” I sit on the chair next to her desk and put my bag on the floor. She looks at my form on her computer and reads my details. Then she asks, “How are you feeling today, and what is the problem?” Her voice is soft and calm, so I do not feel nervous anymore. I feel that she really wants to listen and help me get better. The room is bright and clean, and everything feels safe and quiet. As I sit with Dr. Santos, I feel calm because she is friendly and kind.",
+      "Soon, the nurse opens a door and calls, “Riley, please come in, it is your turn.” I stand up, walk into the room, and see a kind doctor at her desk. She smiles and says, “Hello, my name is Dr. Santos, please sit down.” I sit on the chair next to her desk and put my bag on the floor. She looks at my form on her computer and reads my details. Then she asks, “How are you feeling today, and what is the problem?” Her voice is soft and calm, so I do not feel nervous anymore. I feel that she really wants to listen and help me get better. The room is bright and clean, and everything feels safe and quiet. As I sit with Dr. Santos, I feel calm because she is friendly and kind.",
     questions: [
-      { text: "Who calls the writer into the room?", answer: "The nurse." },
+      { text: "Who calls Riley into the room?", answer: "The nurse." },
       { text: "What is the doctor's name?", answer: "Dr. Santos." },
-      { text: "What does the doctor ask the writer?", answer: "How are you feeling today, and what is the problem?" },
+      { text: "What does the doctor ask Riley?", answer: "How are you feeling today, and what is the problem?" },
     ],
     trueFalse: [
       { text: "Dr. Santos is a kind doctor.", answer: true },
-      { text: "The writer feels very nervous with the doctor.", answer: false },
-      { text: "The writer feels calm because the doctor is friendly.", answer: true },
-      { text: "The nurse calls the writer into the room.", answer: true },
-      { text: "Dr. Santos ignores the writer's form.", answer: false },
+      { text: "Riley feels very nervous with the doctor.", answer: false },
+      { text: "Riley feels calm because the doctor is friendly.", answer: true },
+      { text: "The nurse calls Riley into the room.", answer: true },
+      { text: "Dr. Santos ignores Riley's form.", answer: false },
     ],
     buildSentence: [
       { target: "I stand up.", jumbled: ["stand", "up.", "I"] },
@@ -181,19 +182,19 @@ export const CHAPTERS = [
     number: 5,
     title: "Describing My Symptoms",
     image: null,
-    imageNote: "The narrator explaining symptoms to Dr. Santos, who listens carefully and writes notes on her computer, calm and attentive.",
+    imageNote: "Riley explaining symptoms to Dr. Santos, who listens carefully and writes notes on her computer, calm and attentive.",
     story:
-      "Dr. Santos asks me to tell her about my problem step by step. I say, “Since this morning, I have a sore throat and a headache.” She asks, “Do you have a fever or a cough too?” I tell her, “Yes, I feel a little hot, and I cough sometimes.” She asks when the problem started and how I feel now. I explain that I woke up feeling weak and tired today. She listens carefully and writes some notes on her computer. Then she asks if I sleep well and drink enough water each day. I answer all her questions slowly and honestly. As I describe my symptoms, I feel relieved because the doctor understands my problem clearly.",
+      "Dr. Santos asks me to tell her about my problem step by step. I say, “Since this morning, I have a sore throat and a headache.” She asks, “Do you have a fever or a cough too, Riley?” I tell her, “Yes, I feel a little hot, and I cough sometimes.” She asks when the problem started and how I feel now. I explain that I woke up feeling weak and tired today. She listens carefully and writes some notes on her computer. Then she asks if I sleep well and drink enough water each day. I answer all her questions slowly and honestly. As I describe my symptoms, I feel relieved because the doctor understands my problem clearly.",
     questions: [
-      { text: "What symptoms does the writer have?", answer: "A sore throat, a headache, a slight fever, and a cough." },
+      { text: "What symptoms does Riley have?", answer: "A sore throat, a headache, a slight fever, and a cough." },
       { text: "What does the doctor ask about besides the sore throat?", answer: "A fever or a cough." },
-      { text: "What does the doctor do while the writer speaks?", answer: "Writes some notes on her computer." },
+      { text: "What does the doctor do while Riley speaks?", answer: "Writes some notes on her computer." },
     ],
     trueFalse: [
-      { text: "The writer has a sore throat and a headache.", answer: true },
-      { text: "The doctor does not listen to the writer.", answer: false },
-      { text: "The writer feels relieved because the doctor understands.", answer: true },
-      { text: "The writer has a fever and a cough.", answer: true },
+      { text: "Riley has a sore throat and a headache.", answer: true },
+      { text: "The doctor does not listen to Riley.", answer: false },
+      { text: "Riley feels relieved because the doctor understands.", answer: true },
+      { text: "Riley has a fever and a cough.", answer: true },
       { text: "The doctor never writes any notes.", answer: false },
     ],
     buildSentence: [
@@ -219,18 +220,18 @@ export const CHAPTERS = [
     number: 6,
     title: "The Simple Check-Up",
     image: null,
-    imageNote: "Dr. Santos checking the narrator's throat with a small light, a thermometer and stethoscope visible on the desk, the narrator's mouth open saying 'ahhh'.",
+    imageNote: "Dr. Santos checking Riley's throat with a small light, a thermometer and stethoscope visible on the desk, Riley's mouth open saying 'ahhh'.",
     story:
-      "Next, Dr. Santos says, “Let me check you now, please do not worry.” She puts a small thermometer under my arm to check my temperature. Then she looks inside my throat with a little light and a stick. “Say 'ahhh' for me, please,” she says, and I open my mouth wide. She listens to my chest and back with a stethoscope and asks me to breathe. Her hands are gentle, and she tells me each step before she does it. She checks my temperature and says, “You have a small fever, but it is not serious.” I feel calm because she explains everything in a clear and kind way. She writes some notes and gives me a soft, friendly smile. As the check-up ends, I feel relieved because my problem is small and easy to treat.",
+      "Next, Dr. Santos says, “Let me check you now, Riley, please do not worry.” She puts a small thermometer under my arm to check my temperature. Then she looks inside my throat with a little light and a stick. “Say 'ahhh' for me, please,” she says, and I open my mouth wide. She listens to my chest and back with a stethoscope and asks me to breathe. Her hands are gentle, and she tells me each step before she does it. She checks my temperature and says, “You have a small fever, but it is not serious.” I feel calm because she explains everything in a clear and kind way. She writes some notes and gives me a soft, friendly smile. As the check-up ends, I feel relieved because my problem is small and easy to treat.",
     questions: [
-      { text: "What does the doctor put under the writer's arm?", answer: "A thermometer." },
-      { text: "What does the doctor ask the writer to say?", answer: "\"Ahhh.\"" },
+      { text: "What does the doctor put under Riley's arm?", answer: "A thermometer." },
+      { text: "What does the doctor ask Riley to say?", answer: "\"Ahhh.\"" },
       { text: "What does the doctor say about the fever?", answer: "That it is small and not serious." },
     ],
     trueFalse: [
-      { text: "The doctor checks the writer's throat with a light.", answer: true },
+      { text: "The doctor checks Riley's throat with a light.", answer: true },
       { text: "The doctor says the problem is very serious.", answer: false },
-      { text: "The writer feels relieved at the end of the check-up.", answer: true },
+      { text: "Riley feels relieved at the end of the check-up.", answer: true },
       { text: "Dr. Santos listens with a stethoscope.", answer: true },
       { text: "Dr. Santos says nothing about the fever.", answer: false },
     ],
@@ -257,20 +258,20 @@ export const CHAPTERS = [
     number: 7,
     title: "Getting My Medicine",
     image: null,
-    imageNote: "Dr. Santos handing the narrator a small prescription paper across the desk, explaining instructions with a calm gesture, the narrator listening carefully.",
+    imageNote: "Dr. Santos handing Riley a small prescription paper across the desk, explaining instructions with a calm gesture, Riley listening carefully.",
     story:
-      "After the check-up, Dr. Santos tells me what I need to do to get better. She says, “You have a small throat infection, so I will give you some medicine.” She writes a prescription on a small piece of paper for me. “Take this medicine two times a day, after your meals,” she explains. She also tells me to drink a lot of warm water and rest at home. “Do not drink cold drinks, and try to sleep well tonight,” she adds. I listen carefully and repeat the instructions so I remember them. She asks, “Do you have any questions for me before you go?” I say, “No, thank you, Dr. Santos, you explain everything clearly.” As I take the prescription, I feel hopeful because now I know how to get better.",
+      "After the check-up, Dr. Santos tells me what I need to do to get better. She says, “You have a small throat infection, Riley, so I will give you some medicine.” She writes a prescription on a small piece of paper for me. “Take this medicine two times a day, after your meals,” she explains. She also tells me to drink a lot of warm water and rest at home. “Do not drink cold drinks, and try to sleep well tonight,” she adds. I listen carefully and repeat the instructions so I remember them. She asks, “Do you have any questions for me before you go?” I say, “No, thank you, Dr. Santos, you explain everything clearly.” As I take the prescription, I feel hopeful because now I know how to get better.",
     questions: [
-      { text: "What does the doctor say the writer has?", answer: "A small throat infection." },
-      { text: "How many times a day should the writer take the medicine?", answer: "Two times a day, after meals." },
-      { text: "What does the doctor tell the writer to drink?", answer: "A lot of warm water." },
+      { text: "What does the doctor say Riley has?", answer: "A small throat infection." },
+      { text: "How many times a day should Riley take the medicine?", answer: "Two times a day, after meals." },
+      { text: "What does the doctor tell Riley to drink?", answer: "A lot of warm water." },
     ],
     trueFalse: [
-      { text: "The doctor gives the writer a prescription for medicine.", answer: true },
+      { text: "The doctor gives Riley a prescription for medicine.", answer: true },
       { text: "The doctor says to drink cold drinks.", answer: false },
-      { text: "The writer feels hopeful because they know how to get better.", answer: true },
-      { text: "Dr. Santos tells the writer to rest at home.", answer: true },
-      { text: "The writer has many questions for the doctor.", answer: false },
+      { text: "Riley feels hopeful because they know how to get better.", answer: true },
+      { text: "Dr. Santos tells Riley to rest at home.", answer: true },
+      { text: "Riley has many questions for the doctor.", answer: false },
     ],
     buildSentence: [
       { target: "I listen carefully.", jumbled: ["listen", "carefully.", "I"] },
@@ -292,9 +293,9 @@ export const CHAPTERS = [
     number: 8,
     title: "At the Pharmacy",
     image: null,
-    imageNote: "The narrator handing a prescription to a friendly pharmacist in a white coat behind the pharmacy counter, a small paper bag of medicine and throat lozenges nearby.",
+    imageNote: "Riley handing a prescription to a friendly pharmacist in a white coat behind the pharmacy counter, a small paper bag of medicine and throat lozenges nearby.",
     story:
-      "I leave the doctor's room and walk to the small pharmacy in the clinic. Behind the counter, a friendly pharmacist in a white coat smiles at me. I give him the prescription from Dr. Santos and wait for a minute. He reads the paper and finds my medicine on a shelf behind him. He puts the medicine in a small paper bag with a white label. “Take one tablet two times a day, after your meals,” he tells me. He also gives me some throat lozenges to help with the pain. I pay for the medicine and put the bag safely in my hand. He says, “Get well soon, and drink lots of warm water.” As I leave the pharmacy, I feel ready because now I have everything I need to get better.",
+      "I leave the doctor's room and walk to the small pharmacy in the clinic. Behind the counter, a friendly pharmacist in a white coat smiles at me. I give him the prescription from Dr. Santos and wait for a minute. He reads the paper and finds my medicine on a shelf behind him. He puts the medicine in a small paper bag with a white label. “Take one tablet two times a day, after your meals,” he tells me. He also gives me some throat lozenges to help with the pain. I pay for the medicine and put the bag safely in my hand. He says, “Get well soon, Riley, and drink lots of warm water.” As I leave the pharmacy, I feel ready because now I have everything I need to get better.",
     questions: [
       { text: "Who is behind the pharmacy counter?", answer: "A friendly pharmacist." },
       { text: "What does the pharmacist put the medicine in?", answer: "A small paper bag with a white label." },
@@ -302,8 +303,8 @@ export const CHAPTERS = [
     ],
     trueFalse: [
       { text: "The pharmacist wears a white coat.", answer: true },
-      { text: "The writer does not pay for the medicine.", answer: false },
-      { text: "The writer feels ready to get better at the end.", answer: true },
+      { text: "Riley does not pay for the medicine.", answer: false },
+      { text: "Riley feels ready to get better at the end.", answer: true },
       { text: "The pharmacist gives throat lozenges too.", answer: true },
       { text: "The pharmacist cannot find the medicine.", answer: false },
     ],
@@ -330,20 +331,20 @@ export const CHAPTERS = [
     number: 9,
     title: "Resting at Home",
     image: null,
-    imageNote: "The narrator lying on a bed under a soft blanket in a quiet dim room, a cup of warm tea with honey on the nightstand, phone put away.",
+    imageNote: "Riley lying on a bed under a soft blanket in a quiet dim room, a cup of warm tea with honey on the nightstand, phone put away.",
     story:
-      "When I get home, I take off my shoes and change into soft, warm clothes. I drink a big glass of warm water, just like the doctor tells me. Then I take my first tablet after I eat a small, simple lunch. I make a cup of warm tea with honey to help my sore throat. I lie down on my bed with a soft blanket and close my eyes. I turn off the bright lights and let my body rest in the quiet room. I do not use my phone too much, so my eyes can rest too. In the afternoon, I sleep for a while and feel a little better after. My throat still hurts a bit, but the pain is not as strong now. As I rest at home, I feel calm because I am taking good care of myself.",
+      "When I get home, I take off my shoes and change into soft, warm clothes. I drink a big glass of warm water, just like the doctor tells me. Then I take my first tablet after I eat a small, simple lunch. I make a cup of warm tea with honey to help my sore throat. I lie down on my bed with a soft blanket and close my eyes. I turn off the bright lights and let my body rest in the quiet room. “Just rest now, Riley,” I tell myself, sinking into the pillow. I do not use my phone too much, so my eyes can rest too. In the afternoon, I sleep for a while and feel a little better after. My throat still hurts a bit, but the pain is not as strong now. As I rest at home, I feel calm because I am taking good care of myself.",
     questions: [
-      { text: "What does the writer drink at home, like the doctor says?", answer: "A big glass of warm water." },
-      { text: "What does the writer put in the warm tea?", answer: "Honey." },
-      { text: "How does the writer feel after sleeping in the afternoon?", answer: "A little better." },
+      { text: "What does Riley drink at home, like the doctor says?", answer: "A big glass of warm water." },
+      { text: "What does Riley put in the warm tea?", answer: "Honey." },
+      { text: "How does Riley feel after sleeping in the afternoon?", answer: "A little better." },
     ],
     trueFalse: [
-      { text: "The writer takes the first tablet after eating lunch.", answer: true },
-      { text: "The writer uses the phone all afternoon.", answer: false },
-      { text: "The writer feels calm because they are taking care of themselves.", answer: true },
-      { text: "The writer changes into soft, warm clothes.", answer: true },
-      { text: "The writer's throat feels worse after resting.", answer: false },
+      { text: "Riley takes the first tablet after eating lunch.", answer: true },
+      { text: "Riley uses the phone all afternoon.", answer: false },
+      { text: "Riley feels calm because they are taking care of themselves.", answer: true },
+      { text: "Riley changes into soft, warm clothes.", answer: true },
+      { text: "Riley's throat feels worse after resting.", answer: false },
     ],
     buildSentence: [
       { target: "I take off my shoes.", jumbled: ["take", "off", "my", "shoes.", "I"] },
@@ -368,20 +369,20 @@ export const CHAPTERS = [
     number: 10,
     title: "Feeling Better Again",
     image: null,
-    imageNote: "The narrator standing by an open window with bright fresh light, smiling and full of energy, an empty medicine bottle and finished tea cup visible nearby showing recovery.",
+    imageNote: "Riley standing by an open window with bright fresh light, smiling and full of energy, an empty medicine bottle and finished tea cup visible nearby showing recovery.",
     story:
-      "After a few days of medicine and rest, I wake up and feel much better. My throat does not hurt anymore, and my head feels light and clear. I do not have a fever, and my body feels strong and full of energy. I remember the first morning, when I felt weak, hot, and worried. Now I am thankful for Dr. Santos, the kind nurse, and the friendly pharmacist. I finish all my medicine, exactly as the doctor tells me to. I drink water, eat healthy food, and sleep well every night. I understand now that going to the doctor early is a smart and good choice. Next time I feel sick, I will not be afraid to visit the clinic. As I feel healthy again, I feel happy and thankful because I got the help I needed.",
+      "After a few days of medicine and rest, I wake up and feel much better. My throat does not hurt anymore, and my head feels light and clear. I do not have a fever, and my body feels strong and full of energy. I remember the first morning, when I felt weak, hot, and worried. “Look how far you have come, Riley,” I think, smiling to myself. Now I am thankful for Dr. Santos, the kind nurse, and the friendly pharmacist. I finish all my medicine, exactly as the doctor tells me to. I drink water, eat healthy food, and sleep well every night. I understand now that going to the doctor early is a smart and good choice. Next time I feel sick, I will not be afraid to visit the clinic. As I feel healthy again, I feel happy and thankful because I got the help I needed.",
     questions: [
-      { text: "How does the writer feel after a few days of medicine and rest?", answer: "Much better." },
-      { text: "Who does the writer feel thankful for?", answer: "Dr. Santos, the nurse, and the pharmacist." },
-      { text: "What did the writer learn about going to the doctor?", answer: "That going to the doctor early is a smart and good choice." },
+      { text: "How does Riley feel after a few days of medicine and rest?", answer: "Much better." },
+      { text: "Who does Riley feel thankful for?", answer: "Dr. Santos, the nurse, and the pharmacist." },
+      { text: "What did Riley learn about going to the doctor?", answer: "That going to the doctor early is a smart and good choice." },
     ],
     trueFalse: [
-      { text: "The writer feels much better after a few days.", answer: true },
-      { text: "The writer still has a fever and a sore throat.", answer: false },
-      { text: "The writer feels happy and thankful at the end.", answer: true },
-      { text: "The writer's throat does not hurt anymore.", answer: true },
-      { text: "The writer forgets to finish the medicine.", answer: false },
+      { text: "Riley feels much better after a few days.", answer: true },
+      { text: "Riley still has a fever and a sore throat.", answer: false },
+      { text: "Riley feels happy and thankful at the end.", answer: true },
+      { text: "Riley's throat does not hurt anymore.", answer: true },
+      { text: "Riley forgets to finish the medicine.", answer: false },
     ],
     buildSentence: [
       { target: "My head feels clear.", jumbled: ["head", "feels", "clear.", "My"] },

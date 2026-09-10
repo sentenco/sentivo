@@ -24,7 +24,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Sofia at her desk, surrounded by three separate project folders, looking overwhelmed while checking her calendar.",
     story:
-      "Three separate projects have landed on my desk this week, each with a deadline that somehow falls on the exact same day. At first, I assume I can simply manage everything through careful planning and a few extra hours of work. However, as I map out the actual timeline more carefully, it becomes obvious that finishing all three properly just isn't realistic. Quality would definitely suffer if I tried rushing through everything without adjusting something in the schedule. I realize I'll need to talk to my manager honestly, rather than quietly struggling and hoping things somehow work out.",
+      "Three separate projects have landed on my desk this week, each with a deadline that somehow falls on the exact same day. A sticky note on my monitor, in my own handwriting, still reads “Sofia's Week” above the growing list. At first, I assume I can simply manage everything through careful planning and a few extra hours of work. However, as I map out the actual timeline more carefully, it becomes obvious that finishing all three properly just isn't realistic. Quality would definitely suffer if I tried rushing through everything without adjusting something in the schedule. I realize I'll need to talk to my manager honestly, rather than quietly struggling and hoping things somehow work out.",
     questions: [
       { text: "How many projects have landed on Sofia's desk?", answer: "Three." },
       { text: "What does Sofia assume at first?", answer: "That she can manage everything through careful planning." },
@@ -53,7 +53,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Sofia at her desk writing notes on a notepad, planning out exactly what she wants to say before a meeting.",
     story:
-      "Before approaching Mr. Whitfield, I spend some time preparing exactly what I want to say, rather than just walking in unprepared. I write down each project's current status, along with a realistic timeline for what could actually be finished by when. Rather than simply complaining about being overloaded, I want to propose an actual solution he could consider. I also think carefully about which project genuinely matters most, in case a full extension isn't something he can offer. Feeling reasonably prepared, I send him a quick message asking whether he has a few minutes to talk sometime today.",
+      "Before approaching Mr. Whitfield, I spend some time preparing exactly what I want to say, rather than just walking in unprepared. I write down each project's current status, along with a realistic timeline for what could actually be finished by when. Rather than simply complaining about being overloaded, I want to propose an actual solution he could consider. I also think carefully about which project genuinely matters most, in case a full extension isn't something he can offer. Feeling reasonably prepared, I send him a quick message asking whether he has a few minutes to talk sometime today. “Sure, Sofia, come by after lunch,” he replies within a few minutes.",
     questions: [
       { text: "What does Sofia do before approaching Mr. Whitfield?", answer: "Prepares exactly what she wants to say." },
       { text: "What does Sofia write down for each project?", answer: "Its current status and a realistic timeline." },
@@ -82,7 +82,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Sofia sitting across from Mr. Whitfield at his desk, notebook open, explaining her situation calmly.",
     story:
-      "Mr. Whitfield agrees to meet after lunch, and I walk into his office feeling nervous but reasonably confident about my plan. I explain honestly that three deadlines landing on the same day has made everything considerably harder to manage well. “Would it be possible to discuss adjusting one of these timelines slightly?” I ask, trying to sound solution-focused rather than defeated. He listens carefully, nodding as I walk through each project's current status and realistic completion estimate. To my relief, he doesn't seem annoyed, instead appearing genuinely interested in understanding the actual situation.",
+      "Mr. Whitfield agrees to meet after lunch, and I walk into his office feeling nervous but reasonably confident about my plan. I explain honestly that three deadlines landing on the same day has made everything considerably harder to manage well. “Would it be possible to discuss adjusting one of these timelines slightly?” I ask, trying to sound solution-focused rather than defeated. “I appreciate you bringing this to me directly, Sofia,” he says, listening carefully and nodding as I walk through each project's current status and realistic completion estimate. To my relief, he doesn't seem annoyed, instead appearing genuinely interested in understanding the actual situation.",
     questions: [
       { text: "When does Mr. Whitfield agree to meet?", answer: "After lunch." },
       { text: "What does Sofia explain honestly?", answer: "That three deadlines on the same day makes everything harder to manage." },
@@ -111,7 +111,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Mr. Whitfield looking at a printed schedule, thinking carefully, Sofia watching with a hopeful expression.",
     story:
-      "Mr. Whitfield reviews the three projects, thinking out loud about which one might realistically allow for some flexibility. He mentions that the client presentation absolutely cannot move, since it's tied to an external meeting already scheduled. However, the internal report, on the other hand, could potentially shift by a couple of days without causing major problems. “If we moved that deadline, would the remaining two feel manageable for you?” he asks thoughtfully. I consider this carefully, mentally reorganizing my week, before confirming that this arrangement would genuinely help significantly.",
+      "Mr. Whitfield reviews the three projects, thinking out loud about which one might realistically allow for some flexibility. He mentions that the client presentation absolutely cannot move, since it's tied to an external meeting already scheduled. However, the internal report, on the other hand, could potentially shift by a couple of days without causing major problems. “If we moved that deadline, Sofia, would the remaining two feel manageable for you?” he asks thoughtfully. I consider this carefully, mentally reorganizing my week, before confirming that this arrangement would genuinely help significantly.",
     questions: [
       { text: "What does Mr. Whitfield think out loud about?", answer: "Which project might allow for flexibility." },
       { text: "Which project absolutely cannot move, according to Mr. Whitfield?", answer: "The client presentation." },
@@ -140,7 +140,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Sofia and Mr. Whitfield shaking hands across the desk, both looking satisfied, a revised calendar visible on the screen.",
     story:
-      "We agree that the internal report deadline will move two days later, giving me some much-needed breathing room this week. Mr. Whitfield also suggests I loop in a colleague who could assist with a smaller part of the third project. “I should have checked in with the team sooner about workload balance generally,” he admits honestly, which genuinely surprises me. I thank him for being so understanding and flexible, especially since he easily could have simply said no. Leaving his office, I feel considerably lighter than when I walked in less than twenty minutes ago.",
+      "We agree that the internal report deadline will move two days later, giving me some much-needed breathing room this week. “Take the two days, Sofia,” he says, also suggesting I loop in a colleague who could assist with a smaller part of the third project. “I should have checked in with the team sooner about workload balance generally,” he admits honestly, which genuinely surprises me. I thank him for being so understanding and flexible, especially since he easily could have simply said no. Leaving his office, I feel considerably lighter than when I walked in less than twenty minutes ago.",
     questions: [
       { text: "What do Sofia and Mr. Whitfield agree on?", answer: "Moving the internal report deadline two days later." },
       { text: "What does Mr. Whitfield suggest about a colleague?", answer: "Looping one in to help with part of the third project." },
@@ -169,7 +169,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Sofia back at her desk, rewriting her to-do list with the new deadline reflected, looking noticeably more relaxed.",
     story:
-      "Back at my desk, I update my calendar immediately, reflecting the new deadline and my slightly adjusted workload for the week. I also message the colleague Mr. Whitfield mentioned, explaining briefly what kind of help would actually be most useful. She responds enthusiastically, saying she'd be glad to take on that particular task starting tomorrow morning. With everything reorganized, my three-project pile up suddenly feels genuinely manageable rather than completely overwhelming. I take a short break, feeling grateful that a single honest conversation changed my entire week so significantly.",
+      "Back at my desk, I update my calendar immediately, reflecting the new deadline and my slightly adjusted workload for the week. I also message the colleague Mr. Whitfield mentioned, explaining briefly what kind of help would actually be most useful. “Of course, Sofia, happy to help,” she responds enthusiastically, saying she'd be glad to take on that particular task starting tomorrow morning. With everything reorganized, my three-project pile up suddenly feels genuinely manageable rather than completely overwhelming. I take a short break, feeling grateful that a single honest conversation changed my entire week so significantly.",
     questions: [
       { text: "What does Sofia do back at her desk?", answer: "Updates her calendar with the new deadline." },
       { text: "Who does Sofia message about helping?", answer: "The colleague Mr. Whitfield mentioned." },
@@ -198,7 +198,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Sofia standing confidently in a meeting room, presenting slides to a small group of clients, looking composed.",
     story:
-      "With more breathing room in my schedule, I'm able to focus fully on preparing the client presentation without constant distraction. I rehearse it twice the evening before, catching a few small mistakes I probably would have missed otherwise. On presentation day, everything goes smoothly, and the client seems genuinely impressed by how organized and thorough the material feels. Afterward, a colleague mentions how calm and confident I appeared throughout the entire meeting. Little do they know how close I came to feeling completely overwhelmed just one week earlier.",
+      "With more breathing room in my schedule, I'm able to focus fully on preparing the client presentation without constant distraction. I rehearse it twice the evening before, the title slide still reading “Prepared by Sofia” in the corner, catching a few small mistakes I probably would have missed otherwise. On presentation day, everything goes smoothly, and the client seems genuinely impressed by how organized and thorough the material feels. Afterward, a colleague mentions how calm and confident I appeared throughout the entire meeting. Little do they know how close I came to feeling completely overwhelmed just one week earlier.",
     questions: [
       { text: "What is Sofia able to focus on with more breathing room?", answer: "Preparing the client presentation." },
       { text: "What does Sofia do the evening before the presentation?", answer: "Rehearses it twice." },
@@ -227,7 +227,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Sofia and her helpful colleague chatting over coffee in the break room, both relaxed and smiling.",
     story:
-      "During a coffee break, I thank my colleague again for taking on part of the third project so willingly last week. She mentions she's glad I asked directly, rather than quietly struggling through everything completely on my own. I admit that asking for help initially felt uncomfortable, since I usually prefer handling things independently myself. On the other hand, she points out that a team functions better when people communicate honestly about their actual workload. Her comment sticks with me, making me reconsider how I'll approach similar situations going forward.",
+      "During a coffee break, I thank my colleague again for taking on part of the third project so willingly last week. “I'm glad you asked directly, Sofia,” she mentions, rather than my quietly struggling through everything completely on my own. I admit that asking for help initially felt uncomfortable, since I usually prefer handling things independently myself. On the other hand, she points out that a team functions better when people communicate honestly about their actual workload. Her comment sticks with me, making me reconsider how I'll approach similar situations going forward.",
     questions: [
       { text: "What does Sofia thank her colleague for again?", answer: "Taking on part of the third project." },
       { text: "What does the colleague say she's glad about?", answer: "That Sofia asked directly." },
@@ -256,7 +256,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Mr. Whitfield leading a small team meeting, a whiteboard behind him showing a new workload-planning process.",
     story:
-      "The following week, Mr. Whitfield calls a short team meeting to discuss workload planning going forward more generally. He mentions, without naming anyone specifically, that overlapping deadlines had recently caused unnecessary stress for someone on the team. From now on, he explains, the team will check upcoming deadlines together weekly, rather than everyone managing things separately and silently. Several colleagues nod, agreeing this would genuinely help prevent similar situations from happening again in the future. I feel a quiet sense of satisfaction, knowing my honest conversation helped create something useful for everyone.",
+      "The following week, Mr. Whitfield calls a short team meeting to discuss workload planning going forward more generally. He mentions, without naming anyone specifically, that overlapping deadlines had recently caused unnecessary stress for someone on the team. From now on, he explains, the team will check upcoming deadlines together weekly, rather than everyone managing things separately and silently. Several colleagues nod, agreeing this would genuinely help prevent similar situations from happening again in the future. You started this, Sofia, I think quietly to myself, feeling a sense of satisfaction knowing my honest conversation helped create something useful for everyone.",
     questions: [
       { text: "What does Mr. Whitfield call a meeting to discuss?", answer: "Workload planning going forward." },
       { text: "What does Mr. Whitfield say caused unnecessary stress?", answer: "Overlapping deadlines." },
@@ -285,7 +285,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Sofia at her desk at the end of the day, calendar neatly organized, looking calm and satisfied as she packs up.",
     story:
-      "Looking back on the entire week, I realize how differently things could have gone if I had simply stayed quiet and struggled alone. Had I tried pushing through all three deadlines without saying anything, quality would have suffered, and I likely would have burned out completely. Instead, preparing carefully and asking clearly allowed Mr. Whitfield to actually understand and help with the situation properly. I've learned that negotiating a deadline isn't a sign of weakness, but rather a genuinely useful professional skill. In the end, this experience taught me that honest, well-prepared conversations usually lead to better outcomes for everyone involved.",
+      "Looking back on the entire week, I write one line in my planner, “Note to self, Sofia: ask before you drown,” and realize how differently things could have gone if I had simply stayed quiet and struggled alone. Had I tried pushing through all three deadlines without saying anything, quality would have suffered, and I likely would have burned out completely. Instead, preparing carefully and asking clearly allowed Mr. Whitfield to actually understand and help with the situation properly. I've learned that negotiating a deadline isn't a sign of weakness, but rather a genuinely useful professional skill. In the end, this experience taught me that honest, well-prepared conversations usually lead to better outcomes for everyone involved.",
     questions: [
       { text: "What does Sofia realize looking back on the week?", answer: "How differently things could have gone if she'd stayed quiet." },
       { text: "What might have happened if she had stayed quiet?", answer: "Quality would have suffered and she'd have burned out." },

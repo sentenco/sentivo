@@ -23,7 +23,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Mom whispering excitedly to Ella in the kitchen, a calendar on the wall with Max's birthday circled, Max playing obliviously in another room.",
     story:
-      "Mom pulls me into the kitchen and closes the door quietly. “Max's birthday is next Saturday, and I want to plan a surprise party,” she whispers excitedly. My eyes light up immediately because I love surprises, especially for my little brother. “Can I help plan it?” I ask eagerly. “Of course! I need your help with everything,” Mom says, smiling warmly. We start making a list of things we need: decorations, a cake, and games. Keeping this secret from Max for a whole week feels like a big challenge, but I am determined to make his birthday unforgettable.",
+      "Mom pulls me into the kitchen and closes the door quietly. “Max's birthday is next Saturday, and I want to plan a surprise party,” she whispers excitedly. My eyes light up immediately because I love surprises, especially for my little brother. “Can I help plan it?” I ask eagerly. “Of course, Ella! I need your help with everything,” Mom says, smiling warmly. We start making a list of things we need: decorations, a cake, and games. Keeping this secret from Max for a whole week feels like a big challenge, but I am determined to make his birthday unforgettable.",
     questions: [
       { text: "What does Mom want to plan for Max?", answer: "A surprise birthday party." },
       { text: "How does Ella feel about helping?", answer: "Excited." },
@@ -48,7 +48,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Ella and Mom sitting at the kitchen table writing names on a list, a crayon drawing of Max's friends taped to the fridge nearby.",
     story:
-      "That evening, Mom and I sit at the kitchen table with a notebook, writing down names for the guest list. “Who are Max's best friends from preschool?” Mom asks me. I think carefully and name a few kids he always talks about, like Leo and Sofia. We also add our grandparents and Max's favorite cousin, Ben. “Don't forget Uncle Jake, he always makes Max laugh,” I remind Mom. By the end, our list has fifteen names on it. “This is going to be a wonderful party,” Mom says, and I nod eagerly, already imagining Max's excited face.",
+      "That evening, Mom and I sit at the kitchen table with a notebook, writing down names for the guest list. “Who are Max's best friends from preschool?” Mom asks me. I think carefully and name a few kids he always talks about, like Leo and Sofia. We also add our grandparents and Max's favorite cousin, Ben. “Don't forget Uncle Jake, he always makes Max laugh,” I remind Mom. By the end, our list has fifteen names on it. “This is going to be a wonderful party, Ella,” Mom says, and I nod eagerly, already imagining Max's excited face.",
     questions: [
       { text: "What do Mom and Ella write?", answer: "The guest list." },
       { text: "Who does Ella name as Max's friends?", answer: "Leo and Sofia." },
@@ -73,7 +73,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Ella standing in a toy store aisle, comparing a toy dinosaur set and a dinosaur puzzle, thinking hard with a finger on her chin.",
     story:
-      "On Wednesday, Dad takes me to the toy store to help pick Max's gift. “He loves dinosaurs more than anything,” I tell Dad, walking straight to that aisle. I see a large dinosaur toy set and also a colorful dinosaur puzzle, and I cannot decide which one Max would love more. “What does your gut tell you?” Dad asks, smiling. I remember how Max always pretends his toys are exploring, so I choose the dinosaur set with moving parts. “Perfect choice,” Dad says proudly. I feel confident that Max will absolutely love unwrapping this gift.",
+      "On Wednesday, Dad takes me to the toy store to help pick Max's gift. “He loves dinosaurs more than anything,” I tell Dad, walking straight to that aisle. I see a large dinosaur toy set and also a colorful dinosaur puzzle, and I cannot decide which one Max would love more. “What does your gut tell you?” Dad asks, smiling. I remember how Max always pretends his toys are exploring, so I choose the dinosaur set with moving parts. “Perfect choice, Ella,” Dad says proudly. I feel confident that Max will absolutely love unwrapping this gift.",
     questions: [
       { text: "What does Max love more than anything?", answer: "Dinosaurs." },
       { text: "What two gifts does Ella consider?", answer: "A dinosaur toy set and a dinosaur puzzle." },
@@ -98,7 +98,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Ella standing on a step stool taping green dinosaur streamers to the wall, Dad blowing up balloons nearby, both working quickly.",
     story:
-      "On Saturday morning, Grandma takes Max to the park so we can decorate secretly. Dad and I work quickly, hanging green dinosaur streamers across the living room and tying colorful balloons to every chair. Mom arranges a big “Happy Birthday” banner above the fireplace, carefully checking that it hangs perfectly straight. “We only have two hours before they come back,” Dad reminds us, so we move even faster. By the time we finish, our living room looks like a magical dinosaur jungle. I feel so excited imagining Max's face when he walks through the door.",
+      "On Saturday morning, Grandma takes Max to the park so we can decorate secretly. Dad and I work quickly, hanging green dinosaur streamers across the living room and tying colorful balloons to every chair. Mom arranges a big “Happy Birthday” banner above the fireplace, carefully checking that it hangs perfectly straight. “We only have two hours before they come back, Ella,” Dad reminds us, so we move even faster. By the time we finish, our living room looks like a magical dinosaur jungle. I feel so excited imagining Max's face when he walks through the door.",
     questions: [
       { text: "Where does Grandma take Max?", answer: "The park." },
       { text: "What do Dad and Ella hang around the room?", answer: "Green dinosaur streamers and balloons." },
@@ -123,7 +123,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Mom looking worried at a slightly sunken chocolate cake on the kitchen counter, Ella holding a bag of decorating candy, ready to help fix it.",
     story:
-      "While we finish decorating, Mom calls me into the kitchen with a worried voice. “The cake sank in the middle,” she says, pointing at the slightly lopsided chocolate cake. My heart drops for a moment, but then I have an idea. “What if we cover the middle with candy and dinosaur figures?” I suggest. Mom's face brightens instantly. Together, we pile colorful candy and small plastic dinosaurs right over the sunken part, and honestly, it looks even better than a plain cake. “Problems have solutions,” Mom says, laughing with relief, and I feel proud we fixed it together.",
+      "While we finish decorating, Mom calls me into the kitchen with a worried voice. “The cake sank in the middle, Ella,” she says, pointing at the slightly lopsided chocolate cake. My heart drops for a moment, but then I have an idea. “What if we cover the middle with candy and dinosaur figures?” I suggest. Mom's face brightens instantly. Together, we pile colorful candy and small plastic dinosaurs right over the sunken part, and honestly, it looks even better than a plain cake. “Problems have solutions,” Mom says, laughing with relief, and I feel proud we fixed it together.",
     questions: [
       { text: "What problem happens with the cake?", answer: "It sinks in the middle." },
       { text: "What idea does Ella suggest?", answer: "Cover the middle with candy and dinosaur figures." },
@@ -148,7 +148,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Ella hiding a wrapped gift behind her back and smiling nervously at Max, who looks at her with curious suspicion.",
     story:
-      "Right before Grandma brings Max home, Dad quickly hides the decorations behind closed doors, and we all act normal. When Max walks in, he looks at me curiously. “Why are you smiling so weird?” he asks suspiciously. “No reason!” I say too quickly, trying not to laugh. He almost walks toward the living room, but I distract him by asking about his time at the park instead. My heart beats fast, worried he might discover our secret too early. Thankfully, he gets distracted talking about the ducks he saw, and the surprise stays safe for now.",
+      "Right before Grandma brings Max home, Dad quickly hides the decorations behind closed doors, and we all act normal. When Max walks in, he looks at me curiously. “Why are you smiling so weird, Ella?” he asks suspiciously. “No reason!” I say too quickly, trying not to laugh. He almost walks toward the living room, but I distract him by asking about his time at the park instead. My heart beats fast, worried he might discover our secret too early. Thankfully, he gets distracted talking about the ducks he saw, and the surprise stays safe for now.",
     questions: [
       { text: "What does Max notice about Ella?", answer: "That she is smiling weirdly." },
       { text: "What does Ella say when Max asks why she's smiling?", answer: "No reason!" },
@@ -173,7 +173,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Family members and friends crouching quietly behind the couch and kitchen counter, all holding back giggles as they wait in the dim living room.",
     story:
-      "While Max naps for his afternoon rest, guests slowly start arriving through the back door to stay quiet. Leo, Sofia, Ben, and even Uncle Jake tiptoe inside, trying hard not to giggle too loudly. “Everyone, hide behind the couch and the kitchen counter,” Dad whispers, turning off the living room lights. I peek through the curtains and see Grandma walking Max toward the front door, right on schedule. My stomach feels full of nervous butterflies as everyone crouches down, holding their breath, waiting for the perfect moment to surprise my little brother.",
+      "While Max naps for his afternoon rest, guests slowly start arriving through the back door to stay quiet. Leo, Sofia, Ben, and even Uncle Jake tiptoe inside, trying hard not to giggle too loudly. “Everyone, hide behind the couch and the kitchen counter,” Dad whispers, turning to me. “Get ready, Ella,” he adds, turning off the living room lights. I peek through the curtains and see Grandma walking Max toward the front door, right on schedule. My stomach feels full of nervous butterflies as everyone crouches down, holding their breath, waiting for the perfect moment to surprise my little brother.",
     questions: [
       { text: "What are the guests trying to do quietly?", answer: "Arrive and hide without giggling too loudly." },
       { text: "Where does everyone hide?", answer: "Behind the couch and the kitchen counter." },
@@ -198,7 +198,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Max standing in the doorway with a shocked, delighted expression, everyone jumping out from hiding with confetti in the air, Ella laughing beside him.",
     story:
-      "The front door opens, and Max steps inside, rubbing his sleepy eyes. Suddenly, everyone jumps out from their hiding spots. “SURPRISE!” we all shout together, throwing confetti into the air. Max freezes for a moment, completely shocked, and then a huge smile spreads across his face. “This is for me?” he asks in disbelief, looking around at all his friends and family. “Happy birthday, Max!” I shout, hugging him tightly. His eyes fill with happy tears, and he hugs me back even tighter. Watching his reaction makes every bit of planning completely worth it.",
+      "The front door opens, and Max steps inside, rubbing his sleepy eyes. Suddenly, everyone jumps out from their hiding spots. “SURPRISE!” we all shout together, throwing confetti into the air. Max freezes for a moment, completely shocked, and then a huge smile spreads across his face. “This is for me?” he asks in disbelief, looking around at all his friends and family. “Happy birthday, Max!” I shout, hugging him tightly. His eyes fill with happy tears, and he hugs me back even tighter. “Way to go, Ella!” Dad calls out, grinning as confetti settles around us. Watching his reaction makes every bit of planning completely worth it.",
     questions: [
       { text: "What does Max do when he steps inside?", answer: "Rubs his sleepy eyes, then freezes in shock." },
       { text: "How does Max react to the surprise?", answer: "A huge smile spreads and his eyes fill with happy tears." },
@@ -223,7 +223,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Max and his friends laughing while playing a dinosaur-themed pin-the-tail game, blindfolded and spinning, other kids cheering around them.",
     story:
-      "After the surprise, we move outside for party games in the backyard. We play a dinosaur-themed version of pin-the-tail, where each blindfolded kid tries to stick a paper tail on a giant dinosaur poster. Max giggles uncontrollably as Leo spins in the wrong direction completely. Next, we play musical chairs, and Sofia wins after a fierce final round against Ben. Everyone laughs, cheers, and claps throughout the games. Watching Max laugh so freely with his friends fills me with warmth, and I realize this party is turning out even better than I imagined.",
+      "After the surprise, we move outside for party games in the backyard. We play a dinosaur-themed version of pin-the-tail, where each blindfolded kid tries to stick a paper tail on a giant dinosaur poster. Max giggles uncontrollably as Leo spins in the wrong direction completely. Next, we play musical chairs, and Sofia wins after a fierce final round against Ben. Everyone laughs, cheers, and claps throughout the games. “This is the best day, Ella!” Max shouts between rounds. Watching Max laugh so freely with his friends fills me with warmth, and I realize this party is turning out even better than I imagined.",
     questions: [
       { text: "What game do they play involving a dinosaur poster?", answer: "Pin-the-tail." },
       { text: "Who wins the musical chairs game?", answer: "Sofia." },

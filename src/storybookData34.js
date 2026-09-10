@@ -23,7 +23,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Mr. Bennett reading out group assignments from a clipboard while students shift in their seats, Grace exchanging a glance with Amara across the room.",
     story:
-      "Mr. Bennett announces our history project on ancient civilizations, and instead of letting us pick partners, he assigns groups randomly using his clipboard. My stomach sinks slightly when I hear I'm grouped with Amara, whom I barely know, and Tyler, who seems to spend most classes staring out the window instead of taking notes. Amara catches my eye from across the room and gives a small, reassuring shrug, as if to say we'll figure this out together somehow. I try to stay optimistic, reminding myself that first impressions about classmates aren't always completely accurate representations of how they actually work.",
+      "Mr. Bennett announces our history project on ancient civilizations, and instead of letting us pick partners, he assigns groups randomly using his clipboard. My stomach sinks slightly when I hear I'm grouped with Amara, whom I barely know, and Tyler, who seems to spend most classes staring out the window instead of taking notes. Amara catches my eye from across the room and gives a small, reassuring shrug, as if to say we'll figure this out together somehow. “Stay optimistic, Grace,” I tell myself, since first impressions about classmates aren't always completely accurate representations of how they actually work.",
     questions: [
       { text: "What project does Mr. Bennett announce?", answer: "A history project on ancient civilizations." },
       { text: "How does Mr. Bennett assign the groups?", answer: "Randomly, using his clipboard." },
@@ -52,7 +52,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Grace, Amara, and Tyler sitting at a library table, Grace writing a task list while Tyler leans back in his chair looking uninterested.",
     story:
-      "We meet at the library after school to divide up the research and presentation tasks for our project on ancient Egypt. Amara suggests we each research a different section, then combine everything into one cohesive presentation before the deadline. Tyler agrees to research daily life along the Nile River, though he barely looks up from his phone the entire meeting. “Does two weeks sound like enough time for everyone?” I ask, glancing pointedly at Tyler, who just shrugs without offering any real response. Despite my slight unease about his engagement level, we leave with a reasonably clear plan.",
+      "We meet at the library after school to divide up the research and presentation tasks for our project on ancient Egypt. Amara suggests we each research a different section, then combine everything into one cohesive presentation before the deadline. Tyler agrees to research daily life along the Nile River, though he barely looks up from his phone the entire meeting. “Sound good, Grace?” Amara checks, and I nod. “Does two weeks sound like enough time for everyone?” I ask, glancing pointedly at Tyler, who just shrugs without offering any real response. Despite my slight unease about his engagement level, we leave with a reasonably clear plan.",
     questions: [
       { text: "What topic does their project cover?", answer: "Ancient Egypt." },
       { text: "What does Amara suggest they do?", answer: "Each research a different section, then combine it." },
@@ -81,7 +81,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Grace and Amara sitting alone at the library table, looking at an empty chair and checking their phones for a reply from Tyler that never comes.",
     story:
-      "At our second meeting, Tyler doesn't show up at all, sending a brief text about ten minutes late claiming something unexpected came up at home. Amara and I wait around for another fifteen minutes before finally accepting he isn't coming and starting without him. The following week, the same pattern repeats itself, this time with a vague excuse about forgetting the meeting entirely. “Should we just tell Mr. Bennett?” I ask Amara, frustration creeping into my voice despite my efforts to stay patient. Amara suggests giving Tyler one more chance before escalating things, though I can tell she's growing frustrated too.",
+      "At our second meeting, Tyler doesn't show up at all, sending a brief text about ten minutes late claiming something unexpected came up at home. Amara and I wait around for another fifteen minutes before finally accepting he isn't coming and starting without him. The following week, the same pattern repeats itself, this time with a vague excuse about forgetting the meeting entirely. “Should we just tell Mr. Bennett?” I ask Amara, frustration creeping into my voice despite my efforts to stay patient. “Let's give Tyler one more chance, Grace,” Amara suggests, though I can tell she's growing frustrated too.",
     questions: [
       { text: "What happens at their second meeting?", answer: "Tyler doesn't show up." },
       { text: "What excuse does Tyler give the following week?", answer: "That he forgot the meeting entirely." },
@@ -110,7 +110,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Grace and Amara staying late in the library, surrounded by extra books and notes, dividing Tyler's unfinished research between themselves with tired expressions.",
     story:
-      "With the deadline only five days away and Tyler's section still completely untouched, Amara and I reluctantly decide to divide his research between ourselves. Staying late at the library becomes routine, and I notice both of us growing increasingly exhausted from carrying essentially three people's workload. “This isn't fair to us,” I mutter one evening, rubbing my tired eyes after another two-hour session. Amara agrees quietly, though she reminds me that failing the project would hurt all three of our grades equally, regardless of who actually did the work. Despite our resentment, quitting doesn't feel like a real option.",
+      "With the deadline only five days away and Tyler's section still completely untouched, Amara and I reluctantly decide to divide his research between ourselves. Staying late at the library becomes routine, and I notice both of us growing increasingly exhausted from carrying essentially three people's workload. “This isn't fair to us,” I mutter one evening, rubbing my tired eyes after another two-hour session. Amara agrees quietly. “Failing this would hurt all three of us equally, Grace,” she reminds me, regardless of who actually did the work. Despite our resentment, quitting doesn't feel like a real option.",
     questions: [
       { text: "How many days remain before the deadline?", answer: "Five." },
       { text: "What do Grace and Amara decide to do?", answer: "Divide Tyler's research between themselves." },
@@ -139,7 +139,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Grace sitting at her desk at home late at night, staring frustrated at her laptop screen filled with unfinished slides, a clock showing it's nearly midnight.",
     story:
-      "Working alone late one night on the final slides, my frustration with Tyler boils over into something closer to genuine anger than mild annoyance. I imagine confronting him dramatically in front of the whole class, listing every missed meeting and broken promise in painful detail. Part of me wants to simply present without his section at all, letting him face whatever consequences come from his own choices. But doing that would also lower my own grade unfairly, since group projects get evaluated as a complete, unified whole. Staring at the clock reading nearly midnight, exhaustion mixes uncomfortably with my simmering resentment toward Tyler.",
+      "Working alone late one night on the final slides, my frustration with Tyler boils over into something closer to genuine anger than mild annoyance. I imagine confronting him dramatically in front of the whole class, listing every missed meeting and broken promise in painful detail. Part of me wants to simply present without his section at all, letting him face whatever consequences come from his own choices. But doing that would also lower my own grade unfairly, since group projects get evaluated as a complete, unified whole. “Get it together, Grace,” I mutter, staring at the clock reading nearly midnight, exhaustion mixing uncomfortably with my simmering resentment toward Tyler.",
     questions: [
       { text: "What does Grace's frustration turn into?", answer: "Something closer to genuine anger." },
       { text: "What does Grace imagine doing?", answer: "Confronting Tyler dramatically in front of the class." },
@@ -168,7 +168,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Grace standing beside Tyler's locker in the hallway, arms crossed but voice calm, Tyler looking down at the floor guiltily as students pass by.",
     story:
-      "The next morning, I decide direct conversation is more productive than continued silent resentment, so I approach Tyler at his locker before class. “We need to talk about the project,” I say firmly but calmly, having practiced this exact sentence in my head all morning. Tyler's shoulders tense immediately, and he starts mumbling another excuse before I gently but firmly cut him off. “I'm not trying to attack you. I just need to understand what's actually going on,” I explain, surprising myself with how much calmer I sound than I actually feel. Something shifts slightly in his guarded expression.",
+      "The next morning, I decide direct conversation is more productive than continued silent resentment, so I approach Tyler at his locker before class. “We need to talk about the project,” I say firmly but calmly, having practiced this exact sentence in my head all morning. Tyler's shoulders tense immediately, and he starts mumbling, “Look, Grace, I know I've been slacking,” before I gently but firmly cut him off. “I'm not trying to attack you. I just need to understand what's actually going on,” I explain, surprising myself with how much calmer I sound than I actually feel. Something shifts slightly in his guarded expression.",
     questions: [
       { text: "What does Grace decide to do?", answer: "Talk to Tyler directly." },
       { text: "Where does Grace approach Tyler?", answer: "At his locker." },
@@ -197,7 +197,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Tyler sitting on a bench outside the school, explaining quietly to Grace with a tired, vulnerable expression, his backpack open with a part-time job schedule visible.",
     story:
-      "Tyler finally admits the truth: his parents' recent divorce means he now works evening shifts at a grocery store to help with household expenses. “I didn't want anyone feeling sorry for me,” he mumbles, staring at his shoes rather than meeting my eyes directly. Suddenly, his missed meetings and vague excuses make painful, complicated sense in a way I hadn't considered at all. I feel a wave of guilt wash over my earlier anger, realizing I judged his situation without ever actually asking why. “Why didn't you just tell us?” I ask gently, and he shrugs, admitting he felt too embarrassed to explain everything.",
+      "Tyler finally admits the truth: his parents' recent divorce means he now works evening shifts at a grocery store to help with household expenses. “I didn't want anyone feeling sorry for me, Grace,” he mumbles, staring at his shoes rather than meeting my eyes directly. Suddenly, his missed meetings and vague excuses make painful, complicated sense in a way I hadn't considered at all. I feel a wave of guilt wash over my earlier anger, realizing I judged his situation without ever actually asking why. “Why didn't you just tell us?” I ask gently, and he shrugs, admitting he felt too embarrassed to explain everything.",
     questions: [
       { text: "What does Tyler finally admit?", answer: "That his parents' divorce means he works evening shifts at a grocery store." },
       { text: "Why didn't Tyler want to tell anyone?", answer: "He didn't want anyone feeling sorry for him." },
@@ -226,7 +226,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Grace, Amara, and Tyler sitting together at the library table, all three actively working now, Tyler typing on a laptop with a determined expression.",
     story:
-      "After learning about Tyler's situation, the three of us sit down together to create a fairer, more realistic plan for finishing the project. “What if you handle the parts you can do quickly at home, and we handle anything requiring extra library time?” Amara suggests thoughtfully, and Tyler nods gratefully at the flexible compromise. He commits to writing his section over the weekend when his work schedule allows more free time. Watching him actually engage now, typing quickly with genuine focus, I realize how differently this whole situation might have gone if we had simply talked sooner instead of assuming the worst.",
+      "After learning about Tyler's situation, the three of us sit down together to create a fairer, more realistic plan for finishing the project. “What if you handle the parts you can do quickly at home, and we handle anything requiring extra library time?” Amara suggests thoughtfully, and Tyler nods gratefully at the flexible compromise, adding quietly, “Thanks for hearing me out, Grace.” He commits to writing his section over the weekend when his work schedule allows more free time. Watching him actually engage now, typing quickly with genuine focus, I realize how differently this whole situation might have gone if we had simply talked sooner instead of assuming the worst.",
     questions: [
       { text: "What plan do they create together?", answer: "A fairer plan dividing tasks based on Tyler's schedule." },
       { text: "What does Amara suggest?", answer: "That Tyler handle parts he can do quickly at home." },
@@ -255,7 +255,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Grace, Amara, and Tyler standing together at the front of the classroom, presenting their ancient Egypt poster confidently, Mr. Bennett watching with an approving nod.",
     story:
-      "On presentation day, all three of us stand together at the front of the classroom, our poster displaying weeks of combined, genuine effort. Tyler speaks clearly about daily life along the Nile River, and I notice a flicker of pride cross his face when classmates ask him engaged follow-up questions. Amara and I present our sections smoothly too, having practiced together the night before to ensure everything flows naturally as one cohesive presentation. Mr. Bennett nods approvingly throughout, occasionally jotting notes on his clipboard while we speak. Finishing together feels genuinely satisfying, unlike the resentful ending I had once imagined weeks earlier.",
+      "On presentation day, all three of us stand together at the front of the classroom, our poster displaying weeks of combined, genuine effort. Tyler speaks clearly about daily life along the Nile River, and I notice a flicker of pride cross his face when classmates ask him engaged follow-up questions. Amara and I present our sections smoothly too, having practiced together the night before to ensure everything flows naturally as one cohesive presentation. “We did it, Grace,” Amara whispers as we finish, and I grin back. Mr. Bennett nods approvingly throughout, occasionally jotting notes on his clipboard while we speak. Finishing together feels genuinely satisfying, unlike the resentful ending I had once imagined weeks earlier.",
     questions: [
       { text: "What does their poster display?", answer: "Weeks of combined, genuine effort." },
       { text: "How does Tyler feel when classmates ask questions?", answer: "A flicker of pride." },
@@ -284,7 +284,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Grace, Amara, and Tyler laughing together outside the classroom after receiving their grade, Tyler showing them something on his phone.",
     story:
-      "A few days later, Mr. Bennett returns our graded projects, and I feel genuine relief seeing a strong grade for all three of us equally. More importantly than the grade itself, though, I realize how close I came to judging Tyler unfairly without ever understanding his actual circumstances. Walking out of class together, Tyler mentions he might invite us both to his family's small apartment sometime, something that feels like real friendship forming from what started as pure frustration. “Thanks for actually asking instead of just being angry,” he tells me quietly, and I nod, genuinely grateful I chose conversation over assumption.",
+      "A few days later, Mr. Bennett returns our graded projects, and I feel genuine relief seeing a strong grade for all three of us equally. More importantly than the grade itself, though, I realize how close I came to judging Tyler unfairly without ever understanding his actual circumstances. Walking out of class together, Tyler mentions he might invite us both to his family's small apartment sometime, something that feels like real friendship forming from what started as pure frustration. “Thanks for actually asking instead of just being angry, Grace,” he tells me quietly, and I nod, genuinely grateful I chose conversation over assumption.",
     questions: [
       { text: "What grade do they receive?", answer: "A strong grade, equally for all three." },
       { text: "What does Grace realize was more important than the grade?", answer: "That she almost judged Tyler unfairly without understanding his circumstances." },

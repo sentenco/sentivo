@@ -22,7 +22,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Harper and Naomi jumping excitedly in Harper's bedroom, holding up two printed concert tickets, a poster of their favorite band on the wall behind them.",
     story:
-      "Naomi bursts into my room waving her phone frantically, practically screaming that she just bought us tickets to see our favorite band live. I stare at the confirmation screen in disbelief, unable to process that we're actually going to see them perform in person next month. We have listened to this band's music together since middle school, memorizing every lyric during countless sleepovers and long bus rides. “This is actually happening,” I say, still slightly stunned, while Naomi practically vibrates with uncontainable excitement beside me. For the rest of the evening, we can't stop replaying their songs, imagining what the actual concert will feel like.",
+      "Naomi bursts into my room waving her phone frantically. “Harper, I just bought us tickets to see them live!” she practically screams. I stare at the confirmation screen in disbelief, unable to process that we're actually going to see them perform in person next month. We have listened to this band's music together since middle school, memorizing every lyric during countless sleepovers and long bus rides. “This is actually happening,” I say, still slightly stunned, while Naomi practically vibrates with uncontainable excitement beside me. For the rest of the evening, we can't stop replaying their songs, imagining what the actual concert will feel like.",
     questions: [
       { text: "What does Naomi buy?", answer: "Concert tickets to see their favorite band." },
       { text: "How long have they listened to this band together?", answer: "Since middle school." },
@@ -51,7 +51,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Harper standing nervously in the kitchen explaining the concert plan to Mom, who listens with a thoughtful, slightly concerned expression.",
     story:
-      "Convincing Mom to let us attend without an adult chaperone turns out to be far more difficult than actually buying the tickets themselves. “You've never gone anywhere that crowded without me,” she says, her forehead creasing with obvious worry as I explain our plan. I promise repeatedly to text updates throughout the night and establish a clear, reliable meeting point for afterward. After nearly twenty minutes of careful negotiation, Mom finally agrees, though her conditions include a strict curfew and constant phone communication. Walking away, relief floods through me, mixed with a new sense of responsibility I hadn't quite expected to feel.",
+      "Convincing Mom to let us attend without an adult chaperone turns out to be far more difficult than actually buying the tickets themselves. “You've never gone anywhere that crowded without me, Harper,” she says, her forehead creasing with obvious worry as I explain our plan. I promise repeatedly to text updates throughout the night and establish a clear, reliable meeting point for afterward. After nearly twenty minutes of careful negotiation, Mom finally agrees, though her conditions include a strict curfew and constant phone communication. Walking away, relief floods through me, mixed with a new sense of responsibility I hadn't quite expected to feel.",
     questions: [
       { text: "What does Harper need to convince Mom about?", answer: "Letting them attend without an adult chaperone." },
       { text: "What does Mom say she's worried about?", answer: "That they've never gone anywhere that crowded alone." },
@@ -80,7 +80,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Harper and Naomi sitting on the bedroom floor with a paper map spread out, marking a meeting point and planning their outfits laid out nearby.",
     story:
-      "With Mom's cautious approval secured, Naomi and I spend the following days meticulously planning every logistical detail of concert night. We choose outfits together, obsessing over what feels stylish yet practical enough for hours of standing in a crowd. Naomi's older cousin agrees to drop us off and pick us up afterward, which reassures Mom considerably during our final negotiation. We mark a specific meeting spot near the venue's east entrance in case phones die or we somehow get separated inside. By the night before, our carefully organized plan feels almost as exciting as the actual concert itself.",
+      "With Mom's cautious approval secured, Naomi and I spend the following days meticulously planning every logistical detail of concert night. We choose outfits together, obsessing over what feels stylish yet practical enough for hours of standing in a crowd. Naomi's older cousin agrees to drop us off and pick us up afterward, which reassures Mom considerably during our final negotiation. We mark a specific meeting spot near the venue's east entrance in case phones die or we somehow get separated inside. “This is going to be perfect, Harper,” Naomi says, grinning as she finishes marking the map. By the night before, our carefully organized plan feels almost as exciting as the actual concert itself.",
     questions: [
       { text: "What do Harper and Naomi choose together?", answer: "Their outfits." },
       { text: "Who agrees to drive them?", answer: "Naomi's older cousin." },
@@ -109,7 +109,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Harper and Naomi standing in a long, winding line outside a concert venue at dusk, surrounded by other excited fans, string lights glowing overhead.",
     story:
-      "We arrive at the venue nearly two hours before doors open, only to find a line already snaking around an entire city block. Naomi immediately starts chatting with strangers nearby, discovering shared favorite songs and swapping predictions about the setlist enthusiastically. The anticipation building throughout the line feels almost tangible, an electric current running through every excited fan waiting alongside us. As the sun sets slowly behind the venue, string lights flicker on above the entrance, adding to the growing magic of the evening. When the doors finally open, the crowd surges forward with a collective, overwhelming cheer.",
+      "We arrive at the venue nearly two hours before doors open, only to find a line already snaking around an entire city block. Naomi immediately starts chatting with strangers nearby, discovering shared favorite songs and swapping predictions about the setlist enthusiastically. The anticipation building throughout the line feels almost tangible, an electric current running through every excited fan waiting alongside us. As the sun sets slowly behind the venue, string lights flicker on above the entrance, adding to the growing magic of the evening. “Can you believe this, Harper?” Naomi shouts over the noise as the doors finally open and the crowd surges forward with a collective, overwhelming cheer.",
     questions: [
       { text: "How early do they arrive?", answer: "Nearly two hours before doors open." },
       { text: "What does Naomi do while waiting in line?", answer: "Chats with strangers about the band." },
@@ -138,7 +138,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Harper standing alone in a densely packed crowd, looking around frantically with a worried expression, phone held up searching for signal.",
     story:
-      "Inside the venue, the crowd pushes and shifts constantly, and somewhere in that chaotic movement, Naomi's hand slips from mine completely. Panic rises quickly in my chest as I spin around, scanning unfamiliar faces desperately for any sign of her familiar denim jacket. My phone shows barely any signal in the packed space, and my texts refuse to send no matter how many times I try. For several agonizing minutes, I feel genuinely small and frightened, surrounded by hundreds of strangers in an unfamiliar place without my best friend nearby. Remembering our backup plan becomes my only source of comfort.",
+      "Inside the venue, the crowd pushes and shifts constantly, and somewhere in that chaotic movement, Naomi's hand slips from mine completely. Panic rises quickly in my chest as I spin around, scanning unfamiliar faces desperately for any sign of her familiar denim jacket. My phone shows barely any signal in the packed space, and my texts refuse to send no matter how many times I try. For several agonizing minutes, I feel genuinely small and frightened, surrounded by hundreds of strangers in an unfamiliar place without my best friend nearby. “Think, Harper,” I tell myself, and remembering our backup plan becomes my only source of comfort.",
     questions: [
       { text: "What happens to Naomi's hand?", answer: "It slips from Harper's." },
       { text: "What does Harper scan for?", answer: "Naomi's denim jacket." },
@@ -167,7 +167,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Harper pushing calmly through the crowd toward the venue's east entrance sign, spotting Naomi waving from a distance with relief on both faces.",
     story:
-      "Taking a deep breath, I force myself to remember our carefully planned meeting spot near the east entrance, exactly as we had discussed the night before. Instead of panicking further, I calmly navigate toward that direction, weaving carefully through the dense, ever-shifting crowd around me. My heart still pounds anxiously, but having an actual plan makes the overwhelming situation feel manageable rather than completely hopeless. After several tense minutes of searching, I finally spot Naomi's distinctive denim jacket near the entrance, waving both arms frantically above her head. Relief crashes over me instantly as we reunite, hugging tightly amid the chaos.",
+      "Taking a deep breath, I force myself to remember our carefully planned meeting spot near the east entrance, exactly as we had discussed the night before. Instead of panicking further, I calmly navigate toward that direction, weaving carefully through the dense, ever-shifting crowd around me. My heart still pounds anxiously, but having an actual plan makes the overwhelming situation feel manageable rather than completely hopeless. After several tense minutes of searching, I finally spot Naomi's distinctive denim jacket near the entrance. “Harper! Over here!” she shouts, waving both arms frantically above her head. Relief crashes over me instantly as we reunite, hugging tightly amid the chaos.",
     questions: [
       { text: "What does Harper force herself to remember?", answer: "Their planned meeting spot near the east entrance." },
       { text: "How does having a plan help Harper?", answer: "It makes the situation feel manageable instead of hopeless." },
@@ -196,7 +196,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Harper and Naomi standing together with arms raised, colorful stage lights illuminating their thrilled faces as the band performs in the background.",
     story:
-      "Reunited safely, Naomi and I push together toward a better spot just as the lights suddenly dim and the crowd erupts into deafening cheers. The band walks onstage, and the opening chords of their most popular song send electric energy rippling through the entire crowd instantly. I scream along with every lyric, my earlier panic completely forgotten, replaced entirely by pure, uncontainable joy. Naomi grabs my hand again, this time intentionally, and we jump together in perfect rhythm with thousands of other fans around us. Nothing about this moment feels ordinary; everything sparkles with an energy I have never experienced before.",
+      "Reunited safely, Naomi and I push together toward a better spot just as the lights suddenly dim and the crowd erupts into deafening cheers. The band walks onstage, and the opening chords of their most popular song send electric energy rippling through the entire crowd instantly. I scream along with every lyric, my earlier panic completely forgotten, replaced entirely by pure, uncontainable joy. “This is it, Harper!” Naomi shouts over the music, grabbing my hand again, this time intentionally, and we jump together in perfect rhythm with thousands of other fans around us. Nothing about this moment feels ordinary; everything sparkles with an energy I have never experienced before.",
     questions: [
       { text: "What happens as the lights dim?", answer: "The crowd erupts into cheers as the band walks onstage." },
       { text: "How does Harper feel singing along?", answer: "Pure, uncontainable joy." },
@@ -225,7 +225,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "The lead singer sitting alone on the edge of the stage with an acoustic guitar, spotlight focused, the crowd holding up phone lights during a quiet encore moment.",
     story:
-      "Just when we assume the concert has ended, the lead singer walks back out alone, carrying only an acoustic guitar and a single spotlight. The entire crowd falls into a hushed, reverent silence as she begins an unplugged, stripped-down version of an older, lesser-known song. Naomi and I exchange amazed glances, recognizing the song immediately from our earliest days as fans years ago. Phones rise around us, their small lights transforming the venue into something resembling a sea of tiny, twinkling stars. This unexpected, intimate moment feels even more special than the loud, energetic songs performed earlier.",
+      "Just when we assume the concert has ended, the lead singer walks back out alone, carrying only an acoustic guitar and a single spotlight. The entire crowd falls into a hushed, reverent silence as she begins an unplugged, stripped-down version of an older, lesser-known song. “Harper, that's the song!” Naomi whispers, and we exchange amazed glances, recognizing it immediately from our earliest days as fans years ago. Phones rise around us, their small lights transforming the venue into something resembling a sea of tiny, twinkling stars. This unexpected, intimate moment feels even more special than the loud, energetic songs performed earlier.",
     questions: [
       { text: "What does the lead singer come back with?", answer: "An acoustic guitar, alone." },
       { text: "How does the crowd react to this moment?", answer: "Falls into hushed silence." },
@@ -254,7 +254,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Harper and Naomi walking side by side toward the pickup spot after the concert, both slightly tired but glowing with happiness, streetlights illuminating the sidewalk.",
     story:
-      "As the venue empties, Naomi and I walk together toward our designated pickup spot, ears still ringing pleasantly from hours of loud music. My legs ache from standing and jumping for so long, but honestly, I barely notice the discomfort through my lingering excitement. We replay our favorite moments from the entire night, especially the surprising acoustic encore that neither of us expected at all. “Best night ever,” Naomi declares confidently, and for once, I completely agree without any hesitation whatsoever. Under the streetlights, walking slowly toward her cousin's waiting car, everything about tonight feels perfectly, unforgettably complete.",
+      "As the venue empties, Naomi and I walk together toward our designated pickup spot, ears still ringing pleasantly from hours of loud music. My legs ache from standing and jumping for so long, but honestly, I barely notice the discomfort through my lingering excitement. We replay our favorite moments from the entire night, especially the surprising acoustic encore that neither of us expected at all. “Best night ever, Harper,” Naomi declares confidently, and for once, I completely agree without any hesitation whatsoever. Under the streetlights, walking slowly toward her cousin's waiting car, everything about tonight feels perfectly, unforgettably complete.",
     questions: [
       { text: "How do Harper's ears feel afterward?", answer: "Ringing pleasantly." },
       { text: "What do they replay while walking?", answer: "Their favorite moments from the night." },
@@ -283,7 +283,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Harper sitting on her bed at home telling Mom excitedly about the concert, phone photos spread across the blanket between them.",
     story:
-      "Back home safely before curfew, I find Mom waiting up in the living room, clearly relieved to see me walk through the door unharmed. I tell her everything, from the exciting anticipation of the long line to the terrifying few minutes when Naomi and I got separated inside. Instead of worrying more, Mom seems genuinely proud hearing how calmly I handled that scary moment using our backup plan. “Sounds like you handled it perfectly,” she says warmly, and something about her trust makes tonight feel even more meaningful. Lying in bed afterward, I already find myself dreaming about the next concert.",
+      "Back home safely before curfew, I find Mom waiting up in the living room, clearly relieved to see me walk through the door unharmed. I tell her everything, from the exciting anticipation of the long line to the terrifying few minutes when Naomi and I got separated inside. Instead of worrying more, Mom seems genuinely proud hearing how calmly I handled that scary moment using our backup plan. “Sounds like you handled it perfectly, Harper,” she says warmly, and something about her trust makes tonight feel even more meaningful. Lying in bed afterward, I already find myself dreaming about the next concert.",
     questions: [
       { text: "Who is waiting up for Harper?", answer: "Mom." },
       { text: "What does Harper tell Mom about?", answer: "Everything, including the scary moment of getting separated." },

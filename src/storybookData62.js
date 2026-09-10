@@ -23,7 +23,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Tobias sitting on his couch, sorting through mail, stopping to look closely at one bill with a furrowed brow.",
     story:
-      "Sorting through this month's mail, I open my utility bill out of habit, expecting the usual, fairly predictable amount. Instead, the total is nearly double what I normally pay, which immediately catches my attention rather sharply. Scanning the itemized list, I notice an unfamiliar charge labeled simply as a “service adjustment fee.” I don't recall requesting any special service recently, so this label makes very little sense to me. Setting the bill aside for a moment, I decide I'll need to call and ask about this before simply paying it.",
+      "Sorting through this month's mail, I open the envelope addressed to Tobias, my utility bill, out of habit, expecting the usual, fairly predictable amount. Instead, the total is nearly double what I normally pay, which immediately catches my attention rather sharply. Scanning the itemized list, I notice an unfamiliar charge labeled simply as a “service adjustment fee.” I don't recall requesting any special service recently, so this label makes very little sense to me. Setting the bill aside for a moment, I decide I'll need to call and ask about this before simply paying it.",
     questions: [
       { text: "What does Tobias open out of habit?", answer: "His utility bill." },
       { text: "How does the total compare to what he normally pays?", answer: "Nearly double." },
@@ -52,7 +52,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Tobias sitting on the couch with the bill on his lap, phone to his ear, listening to a hold message.",
     story:
-      "I find the customer service number printed at the bottom of the bill and dial it, expecting a fairly long wait. A recorded message thanks me for calling and explains that all representatives are currently busy helping other customers. I settle in, putting the call on speaker while I gather the bill and a pen for notes. After roughly ten minutes, a friendly voice finally answers, introducing herself as Renata from billing support. I explain briefly that I'm calling about an unfamiliar charge on this month's statement.",
+      "I find the customer service number printed at the bottom of the bill and dial it, expecting a fairly long wait. A recorded message thanks me for calling and explains that all representatives are currently busy helping other customers. I settle in, putting the call on speaker while I gather the bill and a pen for notes. After roughly ten minutes, a friendly voice finally answers, introducing herself as Renata from billing support. She asks for my name, and I tell her, “Tobias,” before explaining briefly that I'm calling about an unfamiliar charge on this month's statement.",
     questions: [
       { text: "Where does Tobias find the customer service number?", answer: "Printed at the bottom of the bill." },
       { text: "What does the recorded message explain?", answer: "That all representatives are busy." },
@@ -81,7 +81,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Tobias reading numbers off the bill to Renata over the phone, tracing his finger down the itemized list.",
     story:
-      "Renata asks for my account number, then patiently waits while I read the unfamiliar charge and its exact amount aloud. “I see the charge you're referring to. Let me look into what generated this on our end,” she says calmly. While she checks, I mention that I haven't requested any additional services or changes recently, as far as I remember. She thanks me for the clarification, explaining that this detail will help her narrow down what actually happened. I appreciate that she doesn't sound defensive, treating my concern instead as something reasonable worth properly investigating.",
+      "Renata asks for my account number, then patiently waits while I read the unfamiliar charge and its exact amount aloud. “I see the charge you're referring to, Tobias. Let me look into what generated this on our end,” she says calmly. While she checks, I mention that I haven't requested any additional services or changes recently, as far as I remember. She thanks me for the clarification, explaining that this detail will help her narrow down what actually happened. I appreciate that she doesn't sound defensive, treating my concern instead as something reasonable worth properly investigating.",
     questions: [
       { text: "What does Renata ask Tobias for?", answer: "His account number." },
       { text: "What does Renata say she will do?", answer: "Look into what generated the charge." },
@@ -110,7 +110,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Renata's side of the call, sitting at a headset desk, looking at her own computer screen while speaking.",
     story:
-      "After a couple of minutes, Renata returns with an explanation, though it's honestly not quite what I expected to hear. Apparently, a technician had visited my address last month, and a routine equipment check was mistakenly billed as an extra service. “This shouldn't have been charged at all, and I sincerely apologize for the confusion,” she explains directly. I ask whether this means the entire charge will simply be removed from my account completely. She confirms that yes, she can reverse it immediately, and my next bill will reflect the corrected amount.",
+      "After a couple of minutes, Renata returns with an explanation, though it's honestly not quite what I expected to hear. Apparently, a technician had visited my address last month, and a routine equipment check was mistakenly billed as an extra service. “This shouldn't have been charged at all, Tobias, and I sincerely apologize for the confusion,” she explains directly. I ask whether this means the entire charge will simply be removed from my account completely. She confirms that yes, she can reverse it immediately, and my next bill will reflect the corrected amount.",
     questions: [
       { text: "What does Renata explain after checking?", answer: "That a technician's routine equipment check was mistakenly billed as an extra service." },
       { text: "What was mistakenly billed as an extra service?", answer: "A routine equipment check." },
@@ -139,7 +139,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Tobias writing down a confirmation number on a notepad while still holding the phone to his ear.",
     story:
-      "Before ending the call, I ask Renata for a confirmation number, just in case I need proof this conversation actually happened. She provides one immediately, along with a brief written summary that she says will also be emailed to me shortly. “Is there anything else I can help clarify about your account today?” she asks politely before we finish. I mention that everything else on the bill looks correct, so this was genuinely the only issue I had. She thanks me for calling in and confirms the correction should appear within one to two billing cycles.",
+      "Before ending the call, I ask Renata for a confirmation number, just in case I need proof this conversation actually happened. She provides one immediately, along with a brief written summary that she says will also be emailed to me shortly. “Is there anything else I can help clarify about your account today, Tobias?” she asks politely before we finish. I mention that everything else on the bill looks correct, so this was genuinely the only issue I had. She thanks me for calling in and confirms the correction should appear within one to two billing cycles.",
     questions: [
       { text: "What does Tobias ask Renata for before ending the call?", answer: "A confirmation number." },
       { text: "What does Renata say will also be emailed to him?", answer: "A brief written summary." },
@@ -168,7 +168,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Tobias checking his email on his laptop, reading a confirmation message from the utility company.",
     story:
-      "Later that evening, exactly as promised, an email arrives confirming everything Renata explained during our phone call. The message includes the confirmation number, a brief explanation of the error, and the corrected amount going forward. I appreciate having this in writing, especially in case any question comes up again regarding this specific charge later. I forward the email to myself with a clear subject line, filing it carefully alongside my other important documents. Having everything documented properly gives me a sense of security I honestly hadn't expected from a simple phone call.",
+      "Later that evening, exactly as promised, an email arrives, opening simply with “Dear Tobias,” confirming everything Renata explained during our phone call. The message includes the confirmation number, a brief explanation of the error, and the corrected amount going forward. I appreciate having this in writing, especially in case any question comes up again regarding this specific charge later. I forward the email to myself with a clear subject line, filing it carefully alongside my other important documents. Having everything documented properly gives me a sense of security I honestly hadn't expected from a simple phone call.",
     questions: [
       { text: "What arrives later that evening?", answer: "An email confirming everything Renata explained." },
       { text: "What does the email include?", answer: "The confirmation number, explanation, and corrected amount." },
@@ -197,7 +197,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Tobias opening his mailbox a month later, pulling out a new bill and opening it right there on the porch.",
     story:
-      "A month later, my next bill arrives, and I open it immediately, curious whether the correction was actually applied properly. Scanning the total, I feel relief seeing it matches what I would normally expect to pay each month. The itemized section confirms the service adjustment fee has been completely removed, exactly as Renata had promised. There's also a small note referencing the confirmation number, which reassures me this wasn't simply forgotten or overlooked somehow. Seeing everything corrected properly makes the entire earlier hassle feel considerably less frustrating in hindsight.",
+      "A month later, my next bill arrives, and I open it immediately, curious whether the correction was actually applied properly. Scanning the total, I feel relief seeing it matches what I would normally expect to pay each month. The itemized section confirms the service adjustment fee has been completely removed, my account name, Tobias, printed clearly beside the total, exactly as Renata had promised. There's also a small note referencing the confirmation number, which reassures me this wasn't simply forgotten or overlooked somehow. Seeing everything corrected properly makes the entire earlier hassle feel considerably less frustrating in hindsight.",
     questions: [
       { text: "What does Tobias do when his next bill arrives?", answer: "Opens it immediately to check the correction." },
       { text: "What does Tobias feel seeing the total?", answer: "Relief." },
@@ -226,7 +226,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Tobias chatting with a friend at a casual dinner table, gesturing while telling the story of the billing dispute.",
     story:
-      "Over dinner with a friend, I mention the whole billing situation, partly amused now that it's fully resolved. She admits she usually just pays whatever a bill says, rarely questioning charges even when something looks slightly off. I explain that, in my experience, companies generally want to fix genuine mistakes once they're clearly pointed out. On the other hand, staying silent usually just means quietly overpaying for something that was never actually correct. She laughs, saying she'll probably start double-checking her own bills a little more carefully from now on.",
+      "Over dinner with a friend, I mention the whole billing situation, partly amused now that it's fully resolved. She admits she usually just pays whatever a bill says, rarely questioning charges even when something looks slightly off. I explain that, in my experience, companies generally want to fix genuine mistakes once they're clearly pointed out. On the other hand, staying silent usually just means quietly overpaying for something that was never actually correct. “Well, Tobias, at least you got your money back,” she laughs, saying she'll probably start double-checking her own bills a little more carefully from now on.",
     questions: [
       { text: "Who does Tobias mention the situation to?", answer: "A friend, over dinner." },
       { text: "What does the friend admit about her own habits?", answer: "That she usually just pays whatever the bill says." },
@@ -255,7 +255,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Tobias sitting at his kitchen table with a small folder labeled 'Bills,' organizing recent statements.",
     story:
-      "Since this experience, I've started a small habit of reviewing every bill line by line before simply setting it aside. It takes only a couple of extra minutes each month, though it genuinely gives me more confidence about my finances overall. I've created a simple folder where I keep confirmation numbers and emails, just in case something similar happens again. Although most months nothing unusual ever appears, having the habit itself feels reassuring rather than tedious or unnecessary. This small routine, born from one frustrating phone call, has quietly become something I genuinely value now.",
+      "Since this experience, I've started a small habit of reviewing every bill line by line before simply setting it aside. It takes only a couple of extra minutes each month, though it genuinely gives me more confidence about my finances overall. I've created a simple folder, labeled “Tobias — Bills,” where I keep confirmation numbers and emails, just in case something similar happens again. Although most months nothing unusual ever appears, having the habit itself feels reassuring rather than tedious or unnecessary. This small routine, born from one frustrating phone call, has quietly become something I genuinely value now.",
     questions: [
       { text: "What habit has Tobias started since this experience?", answer: "Reviewing every bill line by line." },
       { text: "How long does this habit take each month?", answer: "A couple of extra minutes." },
@@ -284,7 +284,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Tobias sitting comfortably on his couch, calmly reviewing a bill, relaxed and unbothered this time.",
     story:
-      "Looking back on the entire situation, I realize how easily I could have simply paid the incorrect charge without questioning it at all. If I had assumed the bill was automatically correct, I would have quietly overpaid for a mistake that wasn't even mine. Instead, staying curious and calling to ask calmly allowed Renata to actually investigate and fix the real problem. I've learned that questioning an unfamiliar charge politely is always worth the extra ten minutes it takes. In the end, this small dispute taught me something genuinely useful about paying closer attention to my own finances.",
+      "Looking back on the entire situation, I add one more note inside the folder, “Tobias: always ask,” and realize how easily I could have simply paid the incorrect charge without questioning it at all. If I had assumed the bill was automatically correct, I would have quietly overpaid for a mistake that wasn't even mine. Instead, staying curious and calling to ask calmly allowed Renata to actually investigate and fix the real problem. I've learned that questioning an unfamiliar charge politely is always worth the extra ten minutes it takes. In the end, this small dispute taught me something genuinely useful about paying closer attention to my own finances.",
     questions: [
       { text: "What does Tobias realize looking back on this situation?", answer: "How easily he could have just paid the incorrect charge." },
       { text: "What might have happened if he had assumed the bill was correct?", answer: "He would have quietly overpaid." },

@@ -22,7 +22,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Sofia holding up her freshly printed learner's permit outside the local DMV office, Dad standing proudly beside her with car keys in hand.",
     story:
-      "The moment I turn sixteen, getting my learner's permit becomes the only thing I can think about, day and night. Dad takes me to the local office on my actual birthday, and I fill out the paperwork with hands that shake slightly from excitement. When the clerk finally hands me my temporary permit, I stare at it like it's some kind of golden ticket to freedom. “Ready for your first real lesson this weekend?” Dad asks, grinning as we walk back to the car together. I nod enthusiastically, though a small, nervous flutter mixes with all my excitement.",
+      "The moment I turn sixteen, getting my learner's permit becomes the only thing I can think about, day and night. Dad takes me to the local office on my actual birthday, and I fill out the paperwork with hands that shake slightly from excitement. When the clerk finally hands me my temporary permit, I stare at it like it's some kind of golden ticket to freedom. “Ready for your first real lesson this weekend, Sofia?” Dad asks, grinning as we walk back to the car together. I nod enthusiastically, though a small, nervous flutter mixes with all my excitement.",
     questions: [
       { text: "What does Sofia get on her birthday?", answer: "Her learner's permit." },
       { text: "How do Sofia's hands feel while filling out paperwork?", answer: "Shaking slightly from excitement." },
@@ -51,7 +51,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Sofia sitting in the driver's seat of an empty parking lot, gripping the steering wheel tightly, Mr. Kim in the passenger seat calmly giving instructions.",
     story:
-      "Saturday morning, Mr. Kim meets us at an empty church parking lot for my very first actual driving lesson. Sitting in the driver's seat for the first time feels strangely unfamiliar, even though I have watched Dad drive thousands of times before. “Adjust your mirrors first, then find the brake with your right foot,” Mr. Kim instructs patiently, noticing my white-knuckled grip on the wheel. Starting the engine sends an unexpected jolt of nervous energy through my entire body. Slowly, carefully, I press the gas pedal, and the car creeps forward for the very first time under my own control.",
+      "Saturday morning, Mr. Kim meets us at an empty church parking lot for my very first actual driving lesson. Sitting in the driver's seat for the first time feels strangely unfamiliar, even though I have watched Dad drive thousands of times before. “Adjust your mirrors first, then find the brake with your right foot, Sofia,” Mr. Kim instructs patiently, noticing my white-knuckled grip on the wheel. Starting the engine sends an unexpected jolt of nervous energy through my entire body. Slowly, carefully, I press the gas pedal, and the car creeps forward for the very first time under my own control.",
     questions: [
       { text: "Where does the first lesson take place?", answer: "An empty church parking lot." },
       { text: "What does Mr. Kim tell Sofia to adjust first?", answer: "Her mirrors." },
@@ -80,7 +80,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Sofia looking embarrassed with her hands over her face as the car sits stalled beside a knocked-over orange traffic cone.",
     story:
-      "Halfway through the lesson, Mr. Kim asks me to practice a simple turn around a row of orange traffic cones. Focusing too hard on steering, I forget to press the gas steadily, and the engine suddenly sputters and dies completely. My cheeks flush red with embarrassment as the car rolls slightly and knocks over one of the cones with a soft thud. “Happens to literally everyone,” Mr. Kim reassures me calmly, not seeming bothered in the slightest by my obvious mistake. Restarting the engine, I try again, determined not to let one small stall ruin my entire confidence.",
+      "Halfway through the lesson, Mr. Kim asks me to practice a simple turn around a row of orange traffic cones. Focusing too hard on steering, I forget to press the gas steadily, and the engine suddenly sputters and dies completely. My cheeks flush red with embarrassment as the car rolls slightly and knocks over one of the cones with a soft thud. “Happens to literally everyone, Sofia,” Mr. Kim reassures me calmly, not seeming bothered in the slightest by my obvious mistake. Restarting the engine, I try again, determined not to let one small stall ruin my entire confidence.",
     questions: [
       { text: "What does Mr. Kim ask Sofia to practice?", answer: "A simple turn around traffic cones." },
       { text: "What happens to the engine?", answer: "It sputters and dies." },
@@ -109,7 +109,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Dad sitting calmly in the passenger seat of the family car in a wide empty lot, gesturing encouragingly as Sofia practices turns.",
     story:
-      "Between official lessons with Mr. Kim, Dad offers to take me practicing in an empty lot near our neighborhood every evening. Unlike my nervous energy, Dad stays remarkably relaxed no matter how many mistakes I make during our sessions together. “You're overthinking the mirrors again,” he says gently one evening, without a hint of frustration in his tone. His calm presence in the passenger seat somehow makes me feel braver about attempting trickier maneuvers I would otherwise avoid. After a week of these evening practice sessions, steering and braking finally start feeling less like separate, terrifying tasks and more like one smooth motion.",
+      "Between official lessons with Mr. Kim, Dad offers to take me practicing in an empty lot near our neighborhood every evening. Unlike my nervous energy, Dad stays remarkably relaxed no matter how many mistakes I make during our sessions together. “You're overthinking the mirrors again, Sofia,” he says gently one evening, without a hint of frustration in his tone. His calm presence in the passenger seat somehow makes me feel braver about attempting trickier maneuvers I would otherwise avoid. After a week of these evening practice sessions, steering and braking finally start feeling less like separate, terrifying tasks and more like one smooth motion.",
     questions: [
       { text: "Where does Dad take Sofia to practice?", answer: "An empty lot near their neighborhood." },
       { text: "How does Dad react to Sofia's mistakes?", answer: "He stays relaxed, without frustration." },
@@ -138,7 +138,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Sofia gripping the steering wheel tightly, checking her mirrors nervously as the car merges onto a busy street with several other vehicles.",
     story:
-      "Three weeks into lessons, Mr. Kim announces it's time to practice driving on an actual street instead of the empty lot. My heart pounds as I check my mirrors repeatedly, waiting anxiously for a large enough gap between passing cars. “Signal, check your blind spot, then go,” Mr. Kim reminds me calmly, though his voice sounds distant beneath my own racing thoughts. When I finally merge, the car accelerates smoothly into traffic, and for a brief, thrilling moment, I actually feel like a real driver instead of just a nervous teenager pretending. The unfamiliar sensation of real speed takes some getting used to.",
+      "Three weeks into lessons, Mr. Kim announces it's time to practice driving on an actual street instead of the empty lot. My heart pounds as I check my mirrors repeatedly, waiting anxiously for a large enough gap between passing cars. “Signal, check your blind spot, then go, Sofia,” Mr. Kim reminds me calmly, though his voice sounds distant beneath my own racing thoughts. When I finally merge, the car accelerates smoothly into traffic, and for a brief, thrilling moment, I actually feel like a real driver instead of just a nervous teenager pretending. The unfamiliar sensation of real speed takes some getting used to.",
     questions: [
       { text: "What does Mr. Kim announce it's time to practice?", answer: "Driving on an actual street." },
       { text: "What does Sofia check repeatedly?", answer: "Her mirrors, waiting for a gap between cars." },
@@ -167,7 +167,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Sofia braking hard with wide eyes as another car pulls out unexpectedly ahead, Mr. Kim calmly reaching for the instructor's brake pedal.",
     story:
-      "During our fourth lesson on a quiet residential street, a car suddenly pulls out from a driveway without checking properly for oncoming traffic. My whole body freezes for a split second before instinct kicks in, and I slam the brake hard, my heart lurching into my throat. Mr. Kim's hand hovers near his own instructor brake, ready to intervene if needed, but somehow we stop safely with plenty of room to spare. “You reacted exactly right,” he says, though my hands won't stop trembling for several long minutes afterward. That moment terrifies me more than any mistake I've made so far.",
+      "During our fourth lesson on a quiet residential street, a car suddenly pulls out from a driveway without checking properly for oncoming traffic. My whole body freezes for a split second before instinct kicks in, and I slam the brake hard, my heart lurching into my throat. Mr. Kim's hand hovers near his own instructor brake, ready to intervene if needed, but somehow we stop safely with plenty of room to spare. “You reacted exactly right, Sofia,” he says, though my hands won't stop trembling for several long minutes afterward. That moment terrifies me more than any mistake I've made so far.",
     questions: [
       { text: "What does another car do suddenly?", answer: "Pulls out from a driveway without checking for traffic." },
       { text: "What does Sofia's body do at first?", answer: "Freezes for a split second." },
@@ -196,7 +196,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Sofia sitting on the porch steps at home with Dad, talking quietly while the car sits parked in the driveway behind them.",
     story:
-      "That evening, I tell Dad about the close call, admitting quietly that maybe I'm not actually cut out for driving after all. Instead of dismissing my fear, Dad listens carefully and shares a similar story from when he first learned to drive decades ago. “Fear after a close call means you're taking this seriously, not that you're failing,” he explains, sitting beside me on the porch steps. He reminds me that even experienced drivers face unpredictable situations sometimes, and reacting well matters more than never feeling scared at all. Slowly, talking honestly about my fear makes it feel much more manageable than before.",
+      "That evening, I tell Dad about the close call, admitting quietly that maybe I'm not actually cut out for driving after all. Instead of dismissing my fear, Dad listens carefully and shares a similar story from when he first learned to drive decades ago. “Fear after a close call means you're taking this seriously, Sofia, not that you're failing,” he explains, sitting beside me on the porch steps. He reminds me that even experienced drivers face unpredictable situations sometimes, and reacting well matters more than never feeling scared at all. Slowly, talking honestly about my fear makes it feel much more manageable than before.",
     questions: [
       { text: "What does Sofia tell Dad about?", answer: "The close call." },
       { text: "What does Dad share with Sofia?", answer: "A similar story from when he first learned to drive." },
@@ -225,7 +225,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Sofia looking over her shoulder while carefully reversing the car between two orange cones set up to look like parked vehicles.",
     story:
-      "With only two weeks left before my driving test, Mr. Kim insists we dedicate an entire lesson purely to parallel parking, a skill I have been quietly dreading. He sets up two cones representing parked cars, and my first three attempts end with the car angled awkwardly, nowhere close to the curb. “Slow down and trust the mirrors,” Mr. Kim repeats patiently, refusing to let frustration creep into his voice despite my repeated failures. On my seventh attempt, something finally clicks, and the car glides smoothly into the space between the cones. The relief and pride I feel afterward completely erase my earlier frustration.",
+      "With only two weeks left before my driving test, Mr. Kim insists we dedicate an entire lesson purely to parallel parking, a skill I have been quietly dreading. He sets up two cones representing parked cars, and my first three attempts end with the car angled awkwardly, nowhere close to the curb. “Slow down and trust the mirrors, Sofia,” Mr. Kim repeats patiently, refusing to let frustration creep into his voice despite my repeated failures. On my seventh attempt, something finally clicks, and the car glides smoothly into the space between the cones. The relief and pride I feel afterward completely erase my earlier frustration.",
     questions: [
       { text: "What skill does Mr. Kim want to practice?", answer: "Parallel parking." },
       { text: "How do Sofia's first three attempts go?", answer: "Angled awkwardly, nowhere near the curb." },
@@ -254,7 +254,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Sofia sitting nervously in the driver's seat outside the DMV testing center, an examiner with a clipboard sitting beside her, Dad watching anxiously from the sidewalk.",
     story:
-      "The morning of my actual driving test, I barely eat breakfast, my stomach far too full of nervous butterflies to handle food. A serious-looking examiner climbs into the passenger seat with a clipboard, instructing me to begin with a simple three-point turn. My hands feel clammy against the steering wheel, but I remind myself of everything Mr. Kim and Dad taught me over these past weeks. Through parallel parking, lane changes, and a nerve-wracking stop at a busy intersection, I focus entirely on staying calm rather than perfect. Twenty long minutes later, we finally pull back into the testing center parking lot.",
+      "The morning of my actual driving test, I barely eat breakfast, my stomach far too full of nervous butterflies to handle food. A serious-looking examiner climbs into the passenger seat with a clipboard, instructing me to begin with a simple three-point turn. My hands feel clammy against the steering wheel, but I remind myself, “You've got this, Sofia,” recalling everything Mr. Kim and Dad taught me over these past weeks. Through parallel parking, lane changes, and a nerve-wracking stop at a busy intersection, I focus entirely on staying calm rather than perfect. Twenty long minutes later, we finally pull back into the testing center parking lot.",
     questions: [
       { text: "How does Sofia feel eating breakfast that morning?", answer: "Too nervous to eat much." },
       { text: "Who climbs into the passenger seat?", answer: "A serious-looking examiner." },
@@ -283,7 +283,7 @@ export const CHAPTERS = [
     image: null,
     imageNote: "Sofia hugging Dad tightly outside the DMV, holding a printed 'PASS' slip, both grinning widely with pure joy.",
     story:
-      "Back inside the testing center, the examiner reviews her notes silently while my heart hammers against my ribs, waiting for the verdict. “Congratulations, you passed,” she finally says, and pure relief floods through my entire body all at once. I rush outside to find Dad waiting anxiously, and the moment he sees my face, he already knows the answer before I even speak. We hug tightly right there on the sidewalk, and I think back on every stall, every nervous mirror check, and that one terrifying close call. Looking back, all those difficult moments feel completely worth it now.",
+      "Back inside the testing center, the examiner reviews her notes silently while my heart hammers against my ribs, waiting for the verdict. “Congratulations, you passed, Sofia,” she finally says, and pure relief floods through my entire body all at once. I rush outside to find Dad waiting anxiously, and the moment he sees my face, he already knows the answer before I even speak. We hug tightly right there on the sidewalk, and I think back on every stall, every nervous mirror check, and that one terrifying close call. Looking back, all those difficult moments feel completely worth it now.",
     questions: [
       { text: "What does the examiner say to Sofia?", answer: "Congratulations, you passed." },
       { text: "How does Sofia feel hearing the news?", answer: "Pure relief." },

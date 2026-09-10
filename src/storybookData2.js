@@ -108,7 +108,7 @@ export const CHAPTERS = [
     image: chapter3Img,
     imageNote: "Leo, Sara, and Ken standing together under a big tree in the school yard, with other students playing basketball in the background.",
     story:
-      "At break time, the teacher says, “You can go outside now,” and the students run to the school yard. Sara and Ken walk with me so I do not feel alone. We stand under a big tree and watch other students play basketball and talk. Ken asks me, “What do you like to do at school?” I tell him I like to draw and sometimes play games on my phone. Sara listens and says, “Maybe we can draw together in art class.” I look around the yard and feel less like a stranger and more like part of the school.",
+      "At break time, the teacher says, “You can go outside now,” and the students run to the school yard. Sara and Ken walk with me so I do not feel alone. We stand under a big tree and watch other students play basketball and talk. Ken asks me, “What do you like to do at school, Leo?” I tell him I like to draw and sometimes play games on my phone. Sara listens and says, “Maybe we can draw together in art class.” I look around the yard and feel less like a stranger and more like part of the school.",
     questions: [
       { text: "Where do the students go at break time?", answer: "The school yard." },
       { text: "Why do Sara and Ken walk with Leo?", answer: "So he does not feel alone." },
@@ -178,7 +178,7 @@ export const CHAPTERS = [
     image: chapter5Img,
     imageNote: "Leo looking worried while searching the hallway floor with Sara and Ken; a boy from another class holding up a blue notebook.",
     story:
-      "One afternoon, after class, I look in my bag and cannot find my blue notebook. I feel worried because my homework and notes are inside it. Sara and Ken stay with me and help me check my desk and chair. We walk back to the hallway and look on the floor near the door. A boy from another class holds up a notebook and asks, “Is this yours?” I see my name on the cover and say, “Yes, thank you so much!” When I put the notebook safely in my bag, I feel safe again and very thankful for my classmates.",
+      "One afternoon, after class, I look in my bag and cannot find my blue notebook. I feel worried because my homework and notes are inside it. Sara and Ken stay with me and help me check my desk and chair. We walk back to the hallway and look on the floor near the door. A boy from another class holds up a notebook and asks, “Is this yours, Leo? I saw your name on it.” I see my name on the cover and say, “Yes, thank you so much!” When I put the notebook safely in my bag, I feel safe again and very thankful for my classmates.",
     questions: [
       { text: "What item does Leo lose?", answer: "His blue notebook." },
       { text: "Who helps Leo look for it?", answer: "Sara and Ken." },
@@ -283,7 +283,7 @@ export const CHAPTERS = [
     image: chapter8Img,
     imageNote: "Leo, Sara, Ken, and Amir working together around a table on a poster titled 'My School Day', drawing pictures and writing sentences.",
     story:
-      "This week, our teacher asks us to make a small poster in groups. She puts me with Sara, Ken, and another boy named Amir. We choose the topic “My School Day” and decide to draw pictures and write short sentences. Sara writes the title at the top of the paper in big letters. Ken draws a classroom, and Amir draws the canteen and the yard. I write simple sentences under each picture. When we finish the poster, I feel happy because our group works well together.",
+      "This week, our teacher asks us to make a small poster in groups. She puts me with Sara, Ken, and another boy named Amir. We choose the topic “My School Day” and decide to draw pictures and write short sentences. Sara writes the title at the top of the paper in big letters. “Leo, what do you think?” she asks, showing me the page. Ken draws a classroom, and Amir draws the canteen and the yard. I write simple sentences under each picture. When we finish the poster, I feel happy because our group works well together.",
     questions: [
       { text: "What does the teacher ask the students to make?", answer: "A small poster in groups." },
       { text: "Who is in Leo’s group?", answer: "Sara, Ken, and Amir." },
@@ -318,7 +318,7 @@ export const CHAPTERS = [
     image: chapter9Img,
     imageNote: "Leo's group standing at the front of the classroom presenting their poster; Sara holding the poster, Ken pointing at a picture, classmates listening and clapping.",
     story:
-      "Today, each group stands at the front of the classroom to show their poster. My group is a little nervous, but the teacher smiles and tells us to start. Sara holds the poster, and Ken points to the first picture of the classroom. Amir reads one short sentence, and I read the next one slowly. Some students listen and nod when they understand. When we finish, the class claps, and the teacher says, “Well done, that was clear.” I feel nervous and excited at the same time, but I am glad we could speak in front of the class.",
+      "Today, each group stands at the front of the classroom to show their poster. My group is a little nervous, but the teacher smiles and tells us to start. Sara holds the poster, and Ken points to the first picture of the classroom. Amir reads one short sentence, and I read the next one slowly. Some students listen and nod when they understand. When we finish, the class claps, and the teacher says, “Well done, Leo, that was clear.” I feel nervous and excited at the same time, but I am glad we could speak in front of the class.",
     questions: [
       { text: "What does each group show at the front of the classroom?", answer: "Their poster." },
       { text: "Who holds the poster in Leo’s group?", answer: "Sara." },
