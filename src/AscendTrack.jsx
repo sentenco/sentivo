@@ -1,4 +1,4 @@
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { getTrack } from "./ascendTracks";
 
 function slideCount(lesson) {
@@ -42,7 +42,6 @@ function openGuide(trackId, num) {
 
 export default function AscendTrack() {
   const { trackId } = useParams();
-  const navigate = useNavigate();
   const track = getTrack(trackId);
 
   if (!track) {
@@ -60,12 +59,6 @@ export default function AscendTrack() {
     <div className="as-shell">
       <style>{CSS}</style>
       <div className="as-stage">
-        <div className="as-topbar">
-          <button type="button" className="as-brand" onClick={() => navigate("/library")} title="Back to Homeroom">
-            <img src="/logo-sentivo.png" alt="" className="as-brand-logo" />entivo
-          </button>
-        </div>
-
         <div className="as-hero">
           <div className="as-hero-tags">
             <span className="as-tag">{track.theme}</span>
@@ -139,23 +132,6 @@ const CSS = `
 .as-stage { width: 100%; max-width: 880px; margin: 0 auto; padding: 26px 28px 64px; }
 
 .as-missing { font-family: 'IBM Plex Sans', sans-serif; color: #4B8B92; text-align: center; margin-top: 60px; }
-
-.as-topbar { display: flex; align-items: center; padding-bottom: 30px; }
-.as-brand {
-  display: inline-flex;
-  align-items: center;
-  gap: 2px;
-  font-family: 'IBM Plex Sans', sans-serif;
-  font-weight: 800;
-  font-size: 19px;
-  color: #10646B;
-  text-decoration: none;
-  cursor: pointer;
-  border: none;
-  background: none;
-  padding: 0;
-}
-.as-brand-logo { height: 30px; width: auto; display: block; margin-right: -4px; }
 
 .as-hero { text-align: center; margin-bottom: 40px; }
 .as-hero-tags { display: flex; justify-content: center; gap: 8px; margin-bottom: 16px; }

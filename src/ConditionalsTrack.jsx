@@ -22,11 +22,6 @@ export default function ConditionalsTrack() {
   return (
     <div className="cnt-shell">
       <style>{CSS}</style>
-      <header className="cnt-topbar">
-        <span className="cnt-brand"><img src="/logo-sentivo.png" alt="" className="cnt-brand-logo" />entivo</span>
-        <span className="cnt-topbar-title">Conditionals</span>
-      </header>
-
       <div className="cnt-stage">
         <div className="cnt-hero">
           <span className="cnt-hero-badge">What If...?</span>
@@ -75,34 +70,6 @@ const CSS = `
   font-family: 'Comic Neue', cursive, sans-serif;
 }
 .cnt-shell * { box-sizing: border-box; }
-
-.cnt-topbar {
-  width: 100%;
-  max-width: 1040px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 20px 24px 0;
-}
-.cnt-brand {
-  display: flex;
-  align-items: center;
-  flex-shrink: 0;
-  font-family: 'Fredoka', sans-serif;
-  font-weight: 700;
-  font-size: 20px;
-  letter-spacing: 0.01em;
-  color: #2B2A4A;
-}
-.cnt-brand-logo { height: 28px; width: auto; display: block; margin-right: -4px; }
-.cnt-topbar-title {
-  font-family: 'Comic Neue', cursive, sans-serif;
-  font-weight: 700;
-  font-size: 12.5px;
-  letter-spacing: 1.2px;
-  text-transform: uppercase;
-  color: #8A3A56;
-}
 
 .cnt-stage {
   flex: 1;

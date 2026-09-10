@@ -21,11 +21,6 @@ export default function RelativeClausesTrack() {
   return (
     <div className="rct-shell">
       <style>{CSS}</style>
-      <header className="rct-topbar">
-        <span className="rct-brand"><img src="/logo-sentivo.png" alt="" className="rct-brand-logo" />entivo</span>
-        <span className="rct-topbar-title">Relative Clauses</span>
-      </header>
-
       <div className="rct-stage">
         <div className="rct-hero">
           <span className="rct-hero-badge">Which One?</span>
@@ -74,34 +69,6 @@ const CSS = `
   font-family: 'Comic Neue', cursive, sans-serif;
 }
 .rct-shell * { box-sizing: border-box; }
-
-.rct-topbar {
-  width: 100%;
-  max-width: 1040px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 20px 24px 0;
-}
-.rct-brand {
-  display: flex;
-  align-items: center;
-  flex-shrink: 0;
-  font-family: 'Fredoka', sans-serif;
-  font-weight: 700;
-  font-size: 20px;
-  letter-spacing: 0.01em;
-  color: #2B2A4A;
-}
-.rct-brand-logo { height: 28px; width: auto; display: block; margin-right: -4px; }
-.rct-topbar-title {
-  font-family: 'Comic Neue', cursive, sans-serif;
-  font-weight: 700;
-  font-size: 12.5px;
-  letter-spacing: 1.2px;
-  text-transform: uppercase;
-  color: #3E535F;
-}
 
 .rct-stage {
   flex: 1;

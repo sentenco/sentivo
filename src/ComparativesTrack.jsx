@@ -21,11 +21,6 @@ export default function ComparativesTrack() {
   return (
     <div className="cst-shell">
       <style>{CSS}</style>
-      <header className="cst-topbar">
-        <span className="cst-brand"><img src="/logo-sentivo.png" alt="" className="cst-brand-logo" />entivo</span>
-        <span className="cst-topbar-title">Comparatives &amp; Superlatives</span>
-      </header>
-
       <div className="cst-stage">
         <div className="cst-hero">
           <span className="cst-hero-badge">Bigger, Better, Best!</span>
@@ -74,34 +69,6 @@ const CSS = `
   font-family: 'Comic Neue', cursive, sans-serif;
 }
 .cst-shell * { box-sizing: border-box; }
-
-.cst-topbar {
-  width: 100%;
-  max-width: 1040px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 20px 24px 0;
-}
-.cst-brand {
-  display: flex;
-  align-items: center;
-  flex-shrink: 0;
-  font-family: 'Fredoka', sans-serif;
-  font-weight: 700;
-  font-size: 20px;
-  letter-spacing: 0.01em;
-  color: #2B2A4A;
-}
-.cst-brand-logo { height: 28px; width: auto; display: block; margin-right: -4px; }
-.cst-topbar-title {
-  font-family: 'Comic Neue', cursive, sans-serif;
-  font-weight: 700;
-  font-size: 12.5px;
-  letter-spacing: 1.2px;
-  text-transform: uppercase;
-  color: #8A1B72;
-}
 
 .cst-stage {
   flex: 1;

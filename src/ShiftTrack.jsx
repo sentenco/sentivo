@@ -1,4 +1,4 @@
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { getTrack } from "./shiftTracks";
 
 // SHIFT lessons open as a standalone popup player, matching the FORGE/ASCEND
@@ -40,7 +40,6 @@ function openGuide(trackId, num) {
 
 export default function ShiftTrack() {
   const { trackId } = useParams();
-  const navigate = useNavigate();
   const track = getTrack(trackId);
 
   if (!track) {
@@ -58,12 +57,6 @@ export default function ShiftTrack() {
     <div className="sht-shell">
       <style>{CSS}</style>
       <div className="sht-stage">
-        <div className="sht-topbar">
-          <button type="button" className="sht-brand" onClick={() => navigate("/library")} title="Back to Homeroom">
-            <img src="/logo-sentivo.png" alt="" className="sht-brand-logo" />entivo
-          </button>
-        </div>
-
         <div className="sht-hero">
           <div className="sht-hero-tags">
             <span className="sht-tag">{track.gapFocus}</span>
@@ -137,23 +130,6 @@ const CSS = `
 .sht-stage { width: 100%; max-width: 880px; margin: 0 auto; padding: 26px 28px 64px; }
 
 .sht-missing { font-family: 'IBM Plex Sans', sans-serif; color: #4B8B92; text-align: center; margin-top: 60px; }
-
-.sht-topbar { display: flex; align-items: center; padding-bottom: 30px; }
-.sht-brand {
-  display: inline-flex;
-  align-items: center;
-  gap: 2px;
-  font-family: 'IBM Plex Sans', sans-serif;
-  font-weight: 800;
-  font-size: 19px;
-  color: #10646B;
-  text-decoration: none;
-  cursor: pointer;
-  border: none;
-  background: none;
-  padding: 0;
-}
-.sht-brand-logo { height: 30px; width: auto; display: block; margin-right: -4px; }
 
 .sht-hero { text-align: center; margin-bottom: 40px; }
 .sht-hero-tags { display: flex; justify-content: center; gap: 8px; margin-bottom: 16px; }

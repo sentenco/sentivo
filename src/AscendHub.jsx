@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import TRACKS from "./ascendTracks";
 
 const LEVELS = [
@@ -46,7 +46,6 @@ function GhostCard() {
 }
 
 export default function AscendHub() {
-  const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
   const [level, setLevel] = useState(() => {
     const fromUrl = searchParams.get("level");
@@ -64,12 +63,6 @@ export default function AscendHub() {
     <div className="ah-shell">
       <style>{CSS}</style>
       <div className="ah-stage">
-        <div className="ah-topbar">
-          <button type="button" className="ah-brand" onClick={() => navigate("/library")} title="Back to Homeroom">
-            <img src="/logo-sentivo.png" alt="" className="ah-brand-logo" />entivo
-          </button>
-        </div>
-
         <div className="ah-hero">
           <h1 className="ah-hero-title">Ascend</h1>
           <p className="ah-hero-blurb">
@@ -134,23 +127,6 @@ const CSS = `
 .ah-shell * { box-sizing: border-box; }
 
 .ah-stage { width: 100%; max-width: 1400px; margin: 0 auto; padding: 26px 28px 64px; }
-
-.ah-topbar { display: flex; align-items: center; padding-bottom: 34px; }
-.ah-brand {
-  display: inline-flex;
-  align-items: center;
-  gap: 2px;
-  font-family: 'IBM Plex Sans', sans-serif;
-  font-weight: 800;
-  font-size: 19px;
-  color: #10646B;
-  text-decoration: none;
-  cursor: pointer;
-  border: none;
-  background: none;
-  padding: 0;
-}
-.ah-brand-logo { height: 30px; width: auto; display: block; margin-right: -4px; }
 
 .ah-hero { max-width: 620px; margin: 0 auto; text-align: center; }
 .ah-hero-title {

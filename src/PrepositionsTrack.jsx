@@ -21,11 +21,6 @@ export default function PrepositionsTrack() {
   return (
     <div className="prt-shell">
       <style>{CSS}</style>
-      <header className="prt-topbar">
-        <span className="prt-brand"><img src="/logo-sentivo.png" alt="" className="prt-brand-logo" />entivo</span>
-        <span className="prt-topbar-title">Prepositions</span>
-      </header>
-
       <div className="prt-stage">
         <div className="prt-hero">
           <span className="prt-hero-badge">In, On, or At?</span>
@@ -74,34 +69,6 @@ const CSS = `
   font-family: 'Comic Neue', cursive, sans-serif;
 }
 .prt-shell * { box-sizing: border-box; }
-
-.prt-topbar {
-  width: 100%;
-  max-width: 1040px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 20px 24px 0;
-}
-.prt-brand {
-  display: flex;
-  align-items: center;
-  flex-shrink: 0;
-  font-family: 'Fredoka', sans-serif;
-  font-weight: 700;
-  font-size: 20px;
-  letter-spacing: 0.01em;
-  color: #2B2A4A;
-}
-.prt-brand-logo { height: 28px; width: auto; display: block; margin-right: -4px; }
-.prt-topbar-title {
-  font-family: 'Comic Neue', cursive, sans-serif;
-  font-weight: 700;
-  font-size: 12.5px;
-  letter-spacing: 1.2px;
-  text-transform: uppercase;
-  color: #7A2828;
-}
 
 .prt-stage {
   flex: 1;

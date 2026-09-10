@@ -21,11 +21,6 @@ export default function ReportedSpeechTrack() {
   return (
     <div className="rst-shell">
       <style>{CSS}</style>
-      <header className="rst-topbar">
-        <span className="rst-brand"><img src="/logo-sentivo.png" alt="" className="rst-brand-logo" />entivo</span>
-        <span className="rst-topbar-title">Reported Speech</span>
-      </header>
-
       <div className="rst-stage">
         <div className="rst-hero">
           <span className="rst-hero-badge">She Said, He Said!</span>
@@ -74,34 +69,6 @@ const CSS = `
   font-family: 'Comic Neue', cursive, sans-serif;
 }
 .rst-shell * { box-sizing: border-box; }
-
-.rst-topbar {
-  width: 100%;
-  max-width: 1040px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 20px 24px 0;
-}
-.rst-brand {
-  display: flex;
-  align-items: center;
-  flex-shrink: 0;
-  font-family: 'Fredoka', sans-serif;
-  font-weight: 700;
-  font-size: 20px;
-  letter-spacing: 0.01em;
-  color: #2B2A4A;
-}
-.rst-brand-logo { height: 28px; width: auto; display: block; margin-right: -4px; }
-.rst-topbar-title {
-  font-family: 'Comic Neue', cursive, sans-serif;
-  font-weight: 700;
-  font-size: 12.5px;
-  letter-spacing: 1.2px;
-  text-transform: uppercase;
-  color: #2C4870;
-}
 
 .rst-stage {
   flex: 1;

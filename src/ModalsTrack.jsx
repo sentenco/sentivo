@@ -21,11 +21,6 @@ export default function ModalsTrack() {
   return (
     <div className="mdt-shell">
       <style>{CSS}</style>
-      <header className="mdt-topbar">
-        <span className="mdt-brand"><img src="/logo-sentivo.png" alt="" className="mdt-brand-logo" />entivo</span>
-        <span className="mdt-topbar-title">Modals</span>
-      </header>
-
       <div className="mdt-stage">
         <div className="mdt-hero">
           <span className="mdt-hero-badge">Say It Right!</span>
@@ -78,34 +73,6 @@ const CSS = `
   font-family: 'Comic Neue', cursive, sans-serif;
 }
 .mdt-shell * { box-sizing: border-box; }
-
-.mdt-topbar {
-  width: 100%;
-  max-width: 1040px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 20px 24px 0;
-}
-.mdt-brand {
-  display: flex;
-  align-items: center;
-  flex-shrink: 0;
-  font-family: 'Fredoka', sans-serif;
-  font-weight: 700;
-  font-size: 20px;
-  letter-spacing: 0.01em;
-  color: #2B2A4A;
-}
-.mdt-brand-logo { height: 28px; width: auto; display: block; margin-right: -4px; }
-.mdt-topbar-title {
-  font-family: 'Comic Neue', cursive, sans-serif;
-  font-weight: 700;
-  font-size: 12.5px;
-  letter-spacing: 1.2px;
-  text-transform: uppercase;
-  color: #3F6B3D;
-}
 
 .mdt-stage {
   flex: 1;

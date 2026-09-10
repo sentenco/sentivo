@@ -21,11 +21,6 @@ export default function SentencePatternsTrack() {
   return (
     <div className="spt-shell">
       <style>{CSS}</style>
-      <header className="spt-topbar">
-        <span className="spt-brand"><img src="/logo-sentivo.png" alt="" className="spt-brand-logo" />entivo</span>
-        <span className="spt-topbar-title">Sentence Patterns</span>
-      </header>
-
       <div className="spt-stage">
         <div className="spt-hero">
           <span className="spt-hero-badge">Build a Sentence!</span>
@@ -74,34 +69,6 @@ const CSS = `
   font-family: 'Comic Neue', cursive, sans-serif;
 }
 .spt-shell * { box-sizing: border-box; }
-
-.spt-topbar {
-  width: 100%;
-  max-width: 1040px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 20px 24px 0;
-}
-.spt-brand {
-  display: flex;
-  align-items: center;
-  flex-shrink: 0;
-  font-family: 'Fredoka', sans-serif;
-  font-weight: 700;
-  font-size: 20px;
-  letter-spacing: 0.01em;
-  color: #2B2A4A;
-}
-.spt-brand-logo { height: 28px; width: auto; display: block; margin-right: -4px; }
-.spt-topbar-title {
-  font-family: 'Comic Neue', cursive, sans-serif;
-  font-weight: 700;
-  font-size: 12.5px;
-  letter-spacing: 1.2px;
-  text-transform: uppercase;
-  color: #6B5B3D;
-}
 
 .spt-stage {
   flex: 1;

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import TRACKS from "./shiftTracks";
 
 const AUDIENCES = [
@@ -8,7 +8,6 @@ const AUDIENCES = [
 ];
 
 export default function ShiftHub() {
-  const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
   const [audience, setAudience] = useState(() => {
     const fromUrl = searchParams.get("audience");
@@ -27,12 +26,6 @@ export default function ShiftHub() {
     <div className="shh-shell">
       <style>{CSS}</style>
       <div className="shh-stage">
-        <div className="shh-topbar">
-          <button type="button" className="shh-brand" onClick={() => navigate("/library")} title="Back to Homeroom">
-            <img src="/logo-sentivo.png" alt="" className="shh-brand-logo" />entivo
-          </button>
-        </div>
-
         <div className="shh-hero">
           <h1 className="shh-hero-title">Shift</h1>
           <p className="shh-hero-blurb">
@@ -112,23 +105,6 @@ const CSS = `
 .shh-shell * { box-sizing: border-box; }
 
 .shh-stage { width: 100%; max-width: 1400px; margin: 0 auto; padding: 26px 28px 64px; }
-
-.shh-topbar { display: flex; align-items: center; padding-bottom: 34px; }
-.shh-brand {
-  display: inline-flex;
-  align-items: center;
-  gap: 2px;
-  font-family: 'IBM Plex Sans', sans-serif;
-  font-weight: 800;
-  font-size: 19px;
-  color: #10646B;
-  text-decoration: none;
-  cursor: pointer;
-  border: none;
-  background: none;
-  padding: 0;
-}
-.shh-brand-logo { height: 30px; width: auto; display: block; margin-right: -4px; }
 
 .shh-hero { max-width: 620px; margin: 0 auto; text-align: center; }
 .shh-hero-title {

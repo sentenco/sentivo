@@ -30,11 +30,6 @@ export default function VerbTensesTrack() {
   return (
     <div className="vt-shell">
       <style>{CSS}</style>
-      <header className="vt-topbar">
-        <span className="vt-brand"><img src="/logo-sentivo.png" alt="" className="vt-brand-logo" />entivo</span>
-        <span className="vt-topbar-title">Verb Tenses</span>
-      </header>
-
       <div className="vt-stage">
         <div className="vt-hero">
           <span className="vt-hero-badge">Time Travel!</span>
@@ -93,34 +88,6 @@ const CSS = `
   font-family: 'Comic Neue', cursive, sans-serif;
 }
 .vt-shell * { box-sizing: border-box; }
-
-.vt-topbar {
-  width: 100%;
-  max-width: 1040px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 20px 24px 0;
-}
-.vt-brand {
-  display: flex;
-  align-items: center;
-  flex-shrink: 0;
-  font-family: 'Fredoka', sans-serif;
-  font-weight: 700;
-  font-size: 20px;
-  letter-spacing: 0.01em;
-  color: #2B2A4A;
-}
-.vt-brand-logo { height: 28px; width: auto; display: block; margin-right: -4px; }
-.vt-topbar-title {
-  font-family: 'Comic Neue', cursive, sans-serif;
-  font-weight: 700;
-  font-size: 12.5px;
-  letter-spacing: 1.2px;
-  text-transform: uppercase;
-  color: #6B5B3D;
-}
 
 .vt-stage {
   flex: 1;

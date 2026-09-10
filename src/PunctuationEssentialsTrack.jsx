@@ -21,11 +21,6 @@ export default function PunctuationEssentialsTrack() {
   return (
     <div className="puet-shell">
       <style>{CSS}</style>
-      <header className="puet-topbar">
-        <span className="puet-brand"><img src="/logo-sentivo.png" alt="" className="puet-brand-logo" />entivo</span>
-        <span className="puet-topbar-title">Punctuation Essentials</span>
-      </header>
-
       <div className="puet-stage">
         <div className="puet-hero">
           <span className="puet-hero-badge">Mark It Right!</span>
@@ -73,34 +68,6 @@ const CSS = `
   font-family: 'Comic Neue', cursive, sans-serif;
 }
 .puet-shell * { box-sizing: border-box; }
-
-.puet-topbar {
-  width: 100%;
-  max-width: 1040px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 20px 24px 0;
-}
-.puet-brand {
-  display: flex;
-  align-items: center;
-  flex-shrink: 0;
-  font-family: 'Fredoka', sans-serif;
-  font-weight: 700;
-  font-size: 20px;
-  letter-spacing: 0.01em;
-  color: #2B2A4A;
-}
-.puet-brand-logo { height: 28px; width: auto; display: block; margin-right: -4px; }
-.puet-topbar-title {
-  font-family: 'Comic Neue', cursive, sans-serif;
-  font-weight: 700;
-  font-size: 12.5px;
-  letter-spacing: 1.2px;
-  text-transform: uppercase;
-  color: #2E6E3D;
-}
 
 .puet-stage {
   flex: 1;

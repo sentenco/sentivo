@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import TRACKS from "./bridgeTracks";
 
 const AUDIENCES = [
@@ -36,7 +36,6 @@ function GhostCard() {
 }
 
 export default function BridgeHub() {
-  const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
   const [audience, setAudience] = useState(() => {
     const fromUrl = searchParams.get("audience");
@@ -55,12 +54,6 @@ export default function BridgeHub() {
     <div className="brh-shell">
       <style>{CSS}</style>
       <div className="brh-stage">
-        <div className="brh-topbar">
-          <button type="button" className="brh-brand" onClick={() => navigate("/library")} title="Back to Homeroom">
-            <img src="/logo-sentivo.png" alt="" className="brh-brand-logo" />entivo
-          </button>
-        </div>
-
         <div className="brh-hero">
           <h1 className="brh-hero-title">Bridge</h1>
           <p className="brh-hero-blurb">
@@ -114,23 +107,6 @@ const CSS = `
 .brh-shell * { box-sizing: border-box; }
 
 .brh-stage { width: 100%; max-width: 1080px; margin: 0 auto; padding: 26px 28px 64px; }
-
-.brh-topbar { display: flex; align-items: center; padding-bottom: 34px; }
-.brh-brand {
-  display: inline-flex;
-  align-items: center;
-  gap: 2px;
-  font-family: 'IBM Plex Sans', sans-serif;
-  font-weight: 800;
-  font-size: 19px;
-  color: #10646B;
-  text-decoration: none;
-  cursor: pointer;
-  border: none;
-  background: none;
-  padding: 0;
-}
-.brh-brand-logo { height: 30px; width: auto; display: block; margin-right: -4px; }
 
 .brh-hero { max-width: 620px; margin: 0 auto; text-align: center; }
 .brh-hero-title {

@@ -21,11 +21,6 @@ export default function PronounsTrack() {
   return (
     <div className="ppt-shell">
       <style>{CSS}</style>
-      <header className="ppt-topbar">
-        <span className="ppt-brand"><img src="/logo-sentivo.png" alt="" className="ppt-brand-logo" />entivo</span>
-        <span className="ppt-topbar-title">Pronouns &amp; Possessives</span>
-      </header>
-
       <div className="ppt-stage">
         <div className="ppt-hero">
           <span className="ppt-hero-badge">Who Owns What?</span>
@@ -74,34 +69,6 @@ const CSS = `
   font-family: 'Comic Neue', cursive, sans-serif;
 }
 .ppt-shell * { box-sizing: border-box; }
-
-.ppt-topbar {
-  width: 100%;
-  max-width: 1040px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 20px 24px 0;
-}
-.ppt-brand {
-  display: flex;
-  align-items: center;
-  flex-shrink: 0;
-  font-family: 'Fredoka', sans-serif;
-  font-weight: 700;
-  font-size: 20px;
-  letter-spacing: 0.01em;
-  color: #2B2A4A;
-}
-.ppt-brand-logo { height: 28px; width: auto; display: block; margin-right: -4px; }
-.ppt-topbar-title {
-  font-family: 'Comic Neue', cursive, sans-serif;
-  font-weight: 700;
-  font-size: 12.5px;
-  letter-spacing: 1.2px;
-  text-transform: uppercase;
-  color: #4E6B13;
-}
 
 .ppt-stage {
   flex: 1;

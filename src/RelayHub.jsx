@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import TRACKS from "./relayTracks";
 
 const AUDIENCES = [
@@ -8,7 +8,6 @@ const AUDIENCES = [
 ];
 
 export default function RelayHub() {
-  const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
   const [audience, setAudience] = useState(() => {
     const fromUrl = searchParams.get("audience");
@@ -27,12 +26,6 @@ export default function RelayHub() {
     <div className="rlh-shell">
       <style>{CSS}</style>
       <div className="rlh-stage">
-        <div className="rlh-topbar">
-          <button type="button" className="rlh-brand" onClick={() => navigate("/library")} title="Back to Homeroom">
-            <img src="/logo-sentivo.png" alt="" className="rlh-brand-logo" />entivo
-          </button>
-        </div>
-
         <div className="rlh-hero">
           <h1 className="rlh-hero-title">Relay</h1>
           <p className="rlh-hero-blurb">
@@ -112,23 +105,6 @@ const CSS = `
 .rlh-shell * { box-sizing: border-box; }
 
 .rlh-stage { width: 100%; max-width: 1400px; margin: 0 auto; padding: 26px 28px 64px; }
-
-.rlh-topbar { display: flex; align-items: center; padding-bottom: 34px; }
-.rlh-brand {
-  display: inline-flex;
-  align-items: center;
-  gap: 2px;
-  font-family: 'IBM Plex Sans', sans-serif;
-  font-weight: 800;
-  font-size: 19px;
-  color: #10646B;
-  text-decoration: none;
-  cursor: pointer;
-  border: none;
-  background: none;
-  padding: 0;
-}
-.rlh-brand-logo { height: 30px; width: auto; display: block; margin-right: -4px; }
 
 .rlh-hero { max-width: 620px; margin: 0 auto; text-align: center; }
 .rlh-hero-title {

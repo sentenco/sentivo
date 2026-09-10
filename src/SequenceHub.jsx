@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import TRACKS from "./sequenceTracks";
 
 const AUDIENCES = [
@@ -41,7 +41,6 @@ function GhostCard() {
 }
 
 export default function SequenceHub() {
-  const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
   const [audience, setAudience] = useState(() => {
     const fromUrl = searchParams.get("audience");
@@ -60,12 +59,6 @@ export default function SequenceHub() {
     <div className="sqh-shell">
       <style>{CSS}</style>
       <div className="sqh-stage">
-        <div className="sqh-topbar">
-          <button type="button" className="sqh-brand" onClick={() => navigate("/library")} title="Back to Homeroom">
-            <img src="/logo-sentivo.png" alt="" className="sqh-brand-logo" />entivo
-          </button>
-        </div>
-
         <div className="sqh-hero">
           <h1 className="sqh-hero-title">Sequence</h1>
           <p className="sqh-hero-blurb">
@@ -118,23 +111,6 @@ const CSS = `
 .sqh-shell * { box-sizing: border-box; }
 
 .sqh-stage { width: 100%; max-width: 1080px; margin: 0 auto; padding: 26px 28px 64px; }
-
-.sqh-topbar { display: flex; align-items: center; padding-bottom: 34px; }
-.sqh-brand {
-  display: inline-flex;
-  align-items: center;
-  gap: 2px;
-  font-family: 'IBM Plex Sans', sans-serif;
-  font-weight: 800;
-  font-size: 19px;
-  color: #10646B;
-  text-decoration: none;
-  cursor: pointer;
-  border: none;
-  background: none;
-  padding: 0;
-}
-.sqh-brand-logo { height: 30px; width: auto; display: block; margin-right: -4px; }
 
 .sqh-hero { max-width: 620px; margin: 0 auto; text-align: center; }
 .sqh-hero-title {

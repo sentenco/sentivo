@@ -21,11 +21,6 @@ export default function GerundsInfinitivesTrack() {
   return (
     <div className="git-shell">
       <style>{CSS}</style>
-      <header className="git-topbar">
-        <span className="git-brand"><img src="/logo-sentivo.png" alt="" className="git-brand-logo" />entivo</span>
-        <span className="git-topbar-title">Gerunds &amp; Infinitives</span>
-      </header>
-
       <div className="git-stage">
         <div className="git-hero">
           <span className="git-hero-badge">To Do or -ing?</span>
@@ -74,34 +69,6 @@ const CSS = `
   font-family: 'Comic Neue', cursive, sans-serif;
 }
 .git-shell * { box-sizing: border-box; }
-
-.git-topbar {
-  width: 100%;
-  max-width: 1040px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 20px 24px 0;
-}
-.git-brand {
-  display: flex;
-  align-items: center;
-  flex-shrink: 0;
-  font-family: 'Fredoka', sans-serif;
-  font-weight: 700;
-  font-size: 20px;
-  letter-spacing: 0.01em;
-  color: #2B2A4A;
-}
-.git-brand-logo { height: 28px; width: auto; display: block; margin-right: -4px; }
-.git-topbar-title {
-  font-family: 'Comic Neue', cursive, sans-serif;
-  font-weight: 700;
-  font-size: 12.5px;
-  letter-spacing: 1.2px;
-  text-transform: uppercase;
-  color: #6E5A1F;
-}
 
 .git-stage {
   flex: 1;

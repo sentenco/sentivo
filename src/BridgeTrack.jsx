@@ -1,4 +1,4 @@
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { getTrack } from "./bridgeTracks";
 
 function slideCount(lesson) {
@@ -43,7 +43,6 @@ function openGuide(trackId, num) {
 
 export default function BridgeTrack() {
   const { trackId } = useParams();
-  const navigate = useNavigate();
   const track = getTrack(trackId);
 
   if (!track) {
@@ -61,12 +60,6 @@ export default function BridgeTrack() {
     <div className="brt-shell">
       <style>{CSS}</style>
       <div className="brt-stage">
-        <div className="brt-topbar">
-          <button type="button" className="brt-brand" onClick={() => navigate("/library")} title="Back to Homeroom">
-            <img src="/logo-sentivo.png" alt="" className="brt-brand-logo" />entivo
-          </button>
-        </div>
-
         <div className="brt-hero">
           <span className="brt-tag">Filler Phrase Drill</span>
           <h1 className="brt-hero-title">{track.title}</h1>
@@ -136,23 +129,6 @@ const CSS = `
 .brt-stage { width: 100%; max-width: 880px; margin: 0 auto; padding: 26px 28px 64px; }
 
 .brt-missing { font-family: 'IBM Plex Sans', sans-serif; color: #4B8B92; text-align: center; margin-top: 60px; }
-
-.brt-topbar { display: flex; align-items: center; padding-bottom: 30px; }
-.brt-brand {
-  display: inline-flex;
-  align-items: center;
-  gap: 2px;
-  font-family: 'IBM Plex Sans', sans-serif;
-  font-weight: 800;
-  font-size: 19px;
-  color: #10646B;
-  text-decoration: none;
-  cursor: pointer;
-  border: none;
-  background: none;
-  padding: 0;
-}
-.brt-brand-logo { height: 30px; width: auto; display: block; margin-right: -4px; }
 
 .brt-hero { text-align: center; margin-bottom: 40px; }
 .brt-tag {

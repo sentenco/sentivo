@@ -1,4 +1,3 @@
-import { useNavigate } from "react-router-dom";
 import TOPICS from "./posTracks";
 import { POS_COLORS, PosMark } from "./posVisuals";
 
@@ -33,17 +32,9 @@ function openLesson(code) {
 }
 
 export default function PartsOfSpeechTrack() {
-  const navigate = useNavigate();
   return (
     <div className="pos-shell">
       <style>{CSS}</style>
-      <header className="pos-topbar">
-        <button type="button" className="pos-brand" onClick={() => navigate("/library")} title="Back to Library">
-          <img src="/logo-sentivo.png" alt="" className="pos-brand-logo" />entivo
-        </button>
-        <span className="pos-topbar-title">Parts of Speech</span>
-      </header>
-
       <div className="pos-stage">
         <div className="pos-hero">
           <span className="pos-hero-badge">Grammar Comics!</span>
@@ -104,38 +95,6 @@ const CSS = `
   font-family: 'Comic Neue', cursive, sans-serif;
 }
 .pos-shell * { box-sizing: border-box; }
-
-.pos-topbar {
-  width: 100%;
-  max-width: 1040px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 20px 24px 0;
-}
-.pos-brand {
-  display: flex;
-  align-items: center;
-  flex-shrink: 0;
-  font-family: 'Fredoka', sans-serif;
-  font-weight: 700;
-  font-size: 20px;
-  letter-spacing: 0.01em;
-  color: #2B2A4A;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-}
-.pos-brand-logo { height: 28px; width: auto; display: block; margin-right: -4px; }
-.pos-topbar-title {
-  font-family: 'Comic Neue', cursive, sans-serif;
-  font-weight: 700;
-  font-size: 12.5px;
-  letter-spacing: 1.2px;
-  text-transform: uppercase;
-  color: #6B5B3D;
-}
 
 .pos-stage {
   flex: 1;
