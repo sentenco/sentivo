@@ -4,6 +4,11 @@ const LESSON = {
   title: "Exclamations",
   formula: "What (a/an) + adjective + noun!  ·  How + adjective/adverb!",
   leadIn: "Look outside or around the room. React to something you see, starting with 'What a...!' or 'How...!'",
+  importance: [
+    "Exclamations are how you express genuine reaction and emotion in the moment — without them, every strong feeling gets flattened into a plain statement.",
+    "What and How sound almost interchangeable to a learner at first, but mixing them up (\"How a beautiful day!\") is an instantly noticeable, easily-avoidable mistake.",
+    "This is a quick, high-payoff pattern: two short formulas cover almost every spoken exclamation you'll ever need.",
+  ],
   teach: [
     {
       name: "What: Before a Noun",
@@ -41,8 +46,9 @@ const LESSON = {
 
 function buildSlides(lesson) {
   const slides = ["cover", "warmup"];
-  if (lesson.comparePairs) slides.push("predict", "compare");
+  if (lesson.importance) slides.push("importance");
   lesson.teach.forEach((_, i) => slides.push(`teach${i}`));
+  if (lesson.comparePairs) slides.push("predict", "compare");
   if (lesson.guided) {
     const guidedChunks = Math.ceil(lesson.guided.length / 3);
     for (let i = 0; i < guidedChunks; i++) slides.push(`guided${i}`);
@@ -72,6 +78,22 @@ function WarmupSlide({ lesson }) {
   );
 }
 
+function ImportanceSlide({ lesson }) {
+  return (
+    <div className="excl-slide excl-slide--part">
+      <h3 className="excl-h">Why Exclamations Matter</h3>
+      <div className="excl-importance-list">
+        {lesson.importance.map((line, i) => (
+          <div key={i} className="excl-importance-item">
+            <span className="excl-importance-num">{i + 1}</span>
+            <p className="excl-importance-text">{line}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function TeachSlide({ lesson, index }) {
   const concept = lesson.teach[index];
   return (
@@ -96,7 +118,7 @@ function PredictSlide({ lesson }) {
     <div className="excl-slide">
       <span className="excl-eyebrow">Think About It</span>
       <h3 className="excl-h">{left} <span className="excl-vs">vs</span> {right}</h3>
-      <p className="excl-compare-note">What's the difference? Take a guess before we explain.</p>
+      <p className="excl-compare-note">You've just seen both. In your own words, how would you explain the difference?</p>
     </div>
   );
 }
@@ -170,6 +192,7 @@ function WrapupSlide({ lesson }) {
 function renderSlide(slideType, lesson) {
   if (slideType === "cover") return <CoverSlide lesson={lesson} />;
   if (slideType === "warmup") return <WarmupSlide lesson={lesson} />;
+  if (slideType === "importance") return <ImportanceSlide lesson={lesson} />;
   if (slideType.startsWith("teach")) return <TeachSlide lesson={lesson} index={Number(slideType.replace("teach", ""))} />;
   if (slideType === "predict") return <PredictSlide lesson={lesson} />;
   if (slideType === "compare") return <CompareSlide lesson={lesson} />;
@@ -182,6 +205,7 @@ function renderSlide(slideType, lesson) {
 const STAGE_LABELS = {
   cover: "Cover",
   warmup: "Warm-up",
+  importance: "Why It Matters",
   predict: "Think About It",
   compare: "Compare",
   practice: "Practice",
@@ -470,6 +494,39 @@ const CSS = `
 }
 .excl-speaking-list { max-width: 720px; font-size: 18px; text-align: left; }
 .excl-speaking-list li { margin-bottom: 8px; }
+
+.excl-importance-list { display: flex; flex-direction: column; gap: 12px; width: 100%; max-width: 720px; text-align: left; }
+.excl-importance-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  background: #EEF2F8;
+  border: 3px solid #1A1A1A;
+  border-radius: 14px;
+  padding: 14px 18px;
+}
+.excl-importance-num {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Bangers', cursive;
+  font-size: 16px;
+  color: #FFFFFF;
+  background: #2C4870;
+  border: 2.5px solid #1A1A1A;
+  border-radius: 50%;
+}
+.excl-importance-text {
+  font-family: 'Comic Neue', cursive, sans-serif;
+  font-weight: 700;
+  font-size: 16.5px;
+  color: #1A1A1A;
+  line-height: 1.5;
+  margin: 4px 0 0;
+}
 
 .excl-quiz-list {
   display: flex;
