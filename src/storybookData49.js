@@ -13,11 +13,12 @@
 // than purely concrete event narration. Same Teens-track shape: 3
 // questions, 5 True/False, 5 Build-a-Sentence per chapter,
 // shortest-to-longest, but noticeably more complex than the A2 batch.
-// Images are not generated yet. image/coverImage are left null so
+// Chapter images are not generated yet -- image is left null per chapter so
 // StoryBook.jsx's built-in ImagePlaceholder fallback renders instead.
+import coverImg from "./assets/storybook49/cover.jpg";
 
 export const STORYBOOK_TITLE = "Taking a Break from Social Media";
-export const COVER_IMAGE = null;
+export const COVER_IMAGE = coverImg;
 export const COVER_IMAGE_NOTE =
   "Zoe sitting on her bedroom floor, placing her phone into a small box labeled '7 Days,' a journal and pen open beside her.";
 

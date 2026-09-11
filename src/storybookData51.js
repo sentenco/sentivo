@@ -1,11 +1,12 @@
 // B1 Teens digital storybook, Book 51: "Failing the Try-Outs"
 // Static content -- no Supabase. Third book in the B1 Teens batch
 // (Books 49-56). Same structure/level as storybookData49.js.
-// Images are not generated yet. image/coverImage are left null so
+// Chapter images are not generated yet -- image is left null per chapter so
 // StoryBook.jsx's built-in ImagePlaceholder fallback renders instead.
+import coverImg from "./assets/storybook51/cover.jpg";
 
 export const STORYBOOK_TITLE = "Failing the Try-Outs";
-export const COVER_IMAGE = null;
+export const COVER_IMAGE = coverImg;
 export const COVER_IMAGE_NOTE =
   "Jordan standing alone outside the gym doors, staring at a posted list without his name on it, shoulders slumped in disappointment.";
 

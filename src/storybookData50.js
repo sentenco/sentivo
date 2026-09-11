@@ -1,11 +1,12 @@
 // B1 Teens digital storybook, Book 50: "Organizing a Fundraiser"
 // Static content -- no Supabase. Second book in the B1 Teens batch
 // (Books 49-56). Same structure/level as storybookData49.js.
-// Images are not generated yet. image/coverImage are left null so
+// Chapter images are not generated yet -- image is left null per chapter so
 // StoryBook.jsx's built-in ImagePlaceholder fallback renders instead.
+import coverImg from "./assets/storybook50/cover.jpg";
 
 export const STORYBOOK_TITLE = "Organizing a Fundraiser";
-export const COVER_IMAGE = null;
+export const COVER_IMAGE = coverImg;
 export const COVER_IMAGE_NOTE =
   "Amir standing in front of a bulletin board covered in fundraiser flyers, holding a clipboard, determined expression, school hallway visible around him.";
 

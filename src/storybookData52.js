@@ -1,11 +1,12 @@
 // B1 Teens digital storybook, Book 52: "The Anxiety Before the Presentation"
 // Static content -- no Supabase. Fourth book in the B1 Teens batch
 // (Books 49-56). Same structure/level as storybookData49.js.
-// Images are not generated yet. image/coverImage are left null so
+// Chapter images are not generated yet -- image is left null per chapter so
 // StoryBook.jsx's built-in ImagePlaceholder fallback renders instead.
+import coverImg from "./assets/storybook52/cover.jpg";
 
 export const STORYBOOK_TITLE = "The Anxiety Before the Presentation";
-export const COVER_IMAGE = null;
+export const COVER_IMAGE = coverImg;
 export const COVER_IMAGE_NOTE =
   "Aisha standing alone in an empty classroom, practicing in front of a whiteboard with note cards shaking slightly in her hands, afternoon light through the windows.";
 

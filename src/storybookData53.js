@@ -1,11 +1,12 @@
 // B1 Teens digital storybook, Book 53: "Standing Up to a Bully Online"
 // Static content -- no Supabase. Fifth book in the B1 Teens batch
 // (Books 49-56). Same structure/level as storybookData49.js.
-// Images are not generated yet. image/coverImage are left null so
+// Chapter images are not generated yet -- image is left null per chapter so
 // StoryBook.jsx's built-in ImagePlaceholder fallback renders instead.
+import coverImg from "./assets/storybook53/cover.jpg";
 
 export const STORYBOOK_TITLE = "Standing Up to a Bully Online";
-export const COVER_IMAGE = null;
+export const COVER_IMAGE = coverImg;
 export const COVER_IMAGE_NOTE =
   "Ethan sitting at his desk at night, staring at his phone screen with a troubled expression, a group chat visible with several unkind messages.";
 
