@@ -1,11 +1,12 @@
 // A2 Teens digital storybook, Book 36: "The School Newspaper"
 // Static content -- no Supabase. Sixth book in the A2 Teens batch
 // (Books 31-38). Same structure/level as storybookData31.js.
-// Images are not generated yet. image/coverImage are left null so
+// Chapter images are not generated yet -- image is left null per chapter so
 // StoryBook.jsx's built-in ImagePlaceholder fallback renders instead.
+import coverImg from "./assets/storybook36/cover.jpg";
 
 export const STORYBOOK_TITLE = "The School Newspaper";
-export const COVER_IMAGE = null;
+export const COVER_IMAGE = coverImg;
 export const COVER_IMAGE_NOTE =
   "Caleb sitting at a cluttered newspaper office desk, typing intently on a laptop surrounded by notebooks and a printed newspaper, Iris reading over his shoulder.";
 

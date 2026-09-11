@@ -48,6 +48,14 @@ import storybook45CoverImg from "./assets/storybook45/cover.jpg";
 import storybook46CoverImg from "./assets/storybook46/cover.jpg";
 import storybook47CoverImg from "./assets/storybook47/cover.jpg";
 import storybook48CoverImg from "./assets/storybook48/cover.jpg";
+import storybook31CoverImg from "./assets/storybook31/cover.jpg";
+import storybook32CoverImg from "./assets/storybook32/cover.jpg";
+import storybook33CoverImg from "./assets/storybook33/cover.jpg";
+import storybook34CoverImg from "./assets/storybook34/cover.jpg";
+import storybook35CoverImg from "./assets/storybook35/cover.jpg";
+import storybook36CoverImg from "./assets/storybook36/cover.jpg";
+import storybook37CoverImg from "./assets/storybook37/cover.jpg";
+import storybook38CoverImg from "./assets/storybook38/cover.jpg";
 import forge1CoverImg from "./assets/forge/track1-cover.jpeg";
 import todayWheelIcon from "./assets/today/icon-wheel.jpg";
 import todayNotebookIcon from "./assets/today/icon-notebook.jpg";
@@ -1100,6 +1108,14 @@ const STORY_COVERS = {
   "storybook-46": storybook46CoverImg,
   "storybook-47": storybook47CoverImg,
   "storybook-48": storybook48CoverImg,
+  "storybook-31": storybook31CoverImg,
+  "storybook-32": storybook32CoverImg,
+  "storybook-33": storybook33CoverImg,
+  "storybook-34": storybook34CoverImg,
+  "storybook-35": storybook35CoverImg,
+  "storybook-36": storybook36CoverImg,
+  "storybook-37": storybook37CoverImg,
+  "storybook-38": storybook38CoverImg,
 };
 
 // Same idea for FORGE tracks -- each track (one card per learner profile)

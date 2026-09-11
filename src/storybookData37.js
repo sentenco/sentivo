@@ -1,11 +1,12 @@
 // A2 Teens digital storybook, Book 37: "A Broken Friendship"
 // Static content -- no Supabase. Seventh book in the A2 Teens batch
 // (Books 31-38). Same structure/level as storybookData31.js.
-// Images are not generated yet. image/coverImage are left null so
+// Chapter images are not generated yet -- image is left null per chapter so
 // StoryBook.jsx's built-in ImagePlaceholder fallback renders instead.
+import coverImg from "./assets/storybook37/cover.jpg";
 
 export const STORYBOOK_TITLE = "A Broken Friendship";
-export const COVER_IMAGE = null;
+export const COVER_IMAGE = coverImg;
 export const COVER_IMAGE_NOTE =
   "Nadia and Vivian sitting on opposite ends of a park bench, both looking away from each other, a folded note resting on the bench between them.";
 

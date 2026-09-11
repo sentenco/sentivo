@@ -1,11 +1,12 @@
 // A2 Teens digital storybook, Book 32: "The School Debate Team"
 // Static content -- no Supabase. Second book in the A2 Teens batch
 // (Books 31-38). Same structure/level as storybookData31.js.
-// Images are not generated yet. image/coverImage are left null so
+// Chapter images are not generated yet -- image is left null per chapter so
 // StoryBook.jsx's built-in ImagePlaceholder fallback renders instead.
+import coverImg from "./assets/storybook32/cover.jpg";
 
 export const STORYBOOK_TITLE = "The School Debate Team";
-export const COVER_IMAGE = null;
+export const COVER_IMAGE = coverImg;
 export const COVER_IMAGE_NOTE =
   "Diego standing at a podium in a school gymnasium, notecards in hand, Priya seated at a nearby table giving an encouraging thumbs up, judges visible in the background.";
 

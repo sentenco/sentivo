@@ -1,11 +1,12 @@
 // A2 Teens digital storybook, Book 34: "The Group Project Disaster"
 // Static content -- no Supabase. Fourth book in the A2 Teens batch
 // (Books 31-38). Same structure/level as storybookData31.js.
-// Images are not generated yet. image/coverImage are left null so
+// Chapter images are not generated yet -- image is left null per chapter so
 // StoryBook.jsx's built-in ImagePlaceholder fallback renders instead.
+import coverImg from "./assets/storybook34/cover.jpg";
 
 export const STORYBOOK_TITLE = "The Group Project Disaster";
-export const COVER_IMAGE = null;
+export const COVER_IMAGE = coverImg;
 export const COVER_IMAGE_NOTE =
   "Grace and Amara standing together at a classroom table covered in poster boards and sticky notes, looking toward an empty chair where a third teammate should be sitting.";
 

@@ -1,11 +1,12 @@
 // A2 Teens digital storybook, Book 38: "Learning to Skateboard"
 // Static content -- no Supabase. Eighth and final book in the A2 Teens
 // batch (Books 31-38). Same structure/level as storybookData31.js.
-// Images are not generated yet. image/coverImage are left null so
+// Chapter images are not generated yet -- image is left null per chapter so
 // StoryBook.jsx's built-in ImagePlaceholder fallback renders instead.
+import coverImg from "./assets/storybook38/cover.jpg";
 
 export const STORYBOOK_TITLE = "Learning to Skateboard";
-export const COVER_IMAGE = null;
+export const COVER_IMAGE = coverImg;
 export const COVER_IMAGE_NOTE =
   "Marcus balancing confidently on a skateboard at a sunny skate park, Dev and Jasmine cheering nearby, colorful ramps and graffiti art in the background.";
 

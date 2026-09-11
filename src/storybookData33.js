@@ -1,11 +1,12 @@
 // A2 Teens digital storybook, Book 33: "Learning to Drive"
 // Static content -- no Supabase. Third book in the A2 Teens batch
 // (Books 31-38). Same structure/level as storybookData31.js.
-// Images are not generated yet. image/coverImage are left null so
+// Chapter images are not generated yet -- image is left null per chapter so
 // StoryBook.jsx's built-in ImagePlaceholder fallback renders instead.
+import coverImg from "./assets/storybook33/cover.jpg";
 
 export const STORYBOOK_TITLE = "Learning to Drive";
-export const COVER_IMAGE = null;
+export const COVER_IMAGE = coverImg;
 export const COVER_IMAGE_NOTE =
   "Sofia sitting proudly in the driver's seat of a car, hands on the wheel, Dad in the passenger seat smiling, an empty parking lot visible through the windshield.";
 
