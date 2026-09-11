@@ -3,17 +3,24 @@
 Saved 2026-09-10, not yet sent to the user. Send when asked — copy each
 numbered block verbatim, it's self-contained.
 
-**ON HOLD 2026-09-10 — Books 9-12 are being replaced with new content.**
-The user said Books 3-12 (Siblings and Neighbors at Home, My School
-Football Team, My School Basketball Team, A Stronger Swimmer, A Full and
-Good Week, A Good Week at the Shop, and this file's own 9-12: A Healthier
-Me, Feeling Better Again, A Happier Free Time, Food Brings Me Joy) will
-all be REPLACED with different stories. Do NOT send or generate the 9-12
-redo prompts below until the new story content for those books exists —
-they describe scenes from the OLD stories and will be wrong for whatever
-replaces them. Book 13's prompt is unaffected (not in the replace list)
-and is still valid to send. See [[project_storybook_feature_status]] and
-[[project_storybook_cover_art_batch]] for the replacement status.
+**ON HOLD 2026-09-10, confirmed/scoped 2026-09-11 — the Adults A2 books
+(7-12) are being replaced with new content.** The user originally flagged
+all of Books 3-12 for replacement (Siblings and Neighbors at Home, My
+School Football Team, My School Basketball Team, A Stronger Swimmer —
+Teens A1 — plus this file's own 7-12: A Full and Good Week, A Good Week
+at the Shop, A Healthier Me, Feeling Better Again, A Happier Free Time,
+Food Brings Me Joy — Adults A2), then on 2026-09-11 confirmed the Adults
+A2 half (7-12) specifically ("we will replace the adults a2"). Do NOT
+send or generate ANY cover prompt for Books 7-12 until the new story
+content exists for each — Books 9-12's prompts below describe scenes
+from the OLD stories and will be wrong for whatever replaces them; Books
+7-8 have no saved cover prompt at all yet (their original Midjourney
+prompts were only ever given in chat, never saved to a doc file, and are
+long gone from context) — a fresh prompt for each needs to be written
+from scratch once the new story text exists. Book 13's prompt is
+unaffected (not in the replace list) and is still valid to send. See
+[[project_storybook_feature_status]] and [[project_storybook_cover_art_batch]]
+for the replacement status.
 
 **Why these need a redo (not part of the normal 21-80 batch):**
 - **Books 9-12** ("A Healthier Me", "Feeling Better Again", "A Happier Free
