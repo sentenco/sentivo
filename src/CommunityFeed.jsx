@@ -217,9 +217,22 @@ export default function CommunityFeed({ afterStats, focusPostId, onActivity } = 
   const [likedByMe, setLikedByMe] = useState(new Set());
 
   const realPosts = posts.filter((p) => p.author_id);
-  const teacherCount = new Set(realPosts.map((p) => p.author_id)).size;
+  const [totalTeachers, setTotalTeachers] = useState(null);
   const tipsShared = posts.filter((p) => p.post_type === "tip").length;
   const dayStreak = computeDayStreak(realPosts);
+
+  // Real total signup count, independent of login state -- unlike posts,
+  // likes, and comments below, this must be visible to logged-out
+  // visitors too, so it doesn't gate on `user`. See get_teacher_count()
+  // (sql/add_teacher_count_rpc.sql), a SECURITY DEFINER RPC that returns
+  // just the count without exposing any profile row data.
+  useEffect(() => {
+    let cancelled = false;
+    supabase.rpc("get_teacher_count").then(({ data, error }) => {
+      if (!cancelled && !error) setTotalTeachers(data);
+    });
+    return () => { cancelled = true; };
+  }, []);
 
   async function loadPosts() {
     setLoadingPosts(true);
@@ -466,7 +479,7 @@ export default function CommunityFeed({ afterStats, focusPostId, onActivity } = 
         <div className="cm-stats">
           <div className="cm-stat">
             <PeopleIcon />
-            <span className="cm-stat-text"><strong>{teacherCount}</strong> Teachers</span>
+            <span className="cm-stat-text"><strong>{totalTeachers ?? "—"}</strong> Teachers</span>
           </div>
           <div className="cm-stat">
             <BulbIcon />
