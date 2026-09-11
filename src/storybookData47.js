@@ -1,11 +1,12 @@
 // A1 Adults digital storybook, Book 47: "Learning to Use My New Phone"
 // Static content -- no Supabase. Seventh book in the A1 Adults batch
 // (Books 41-48). Same structure/level as storybookData41.js.
-// Images are not generated yet. image/coverImage are left null so
+// Chapter images are not generated yet -- image is left null per chapter so
 // StoryBook.jsx's built-in ImagePlaceholder fallback renders instead.
+import coverImg from "./assets/storybook47/cover.jpg";
 
 export const STORYBOOK_TITLE = "Learning to Use My New Phone";
-export const COVER_IMAGE = null;
+export const COVER_IMAGE = coverImg;
 export const COVER_IMAGE_NOTE =
   "Beatriz sitting at her kitchen table, looking curiously at a new smartphone box, an instruction pamphlet spread out beside her.";
 

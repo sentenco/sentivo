@@ -1,11 +1,12 @@
 // A1 Adults digital storybook, Book 45: "Cooking Dinner for the Family"
 // Static content -- no Supabase. Fifth book in the A1 Adults batch
 // (Books 41-48). Same structure/level as storybookData41.js.
-// Images are not generated yet. image/coverImage are left null so
+// Chapter images are not generated yet -- image is left null per chapter so
 // StoryBook.jsx's built-in ImagePlaceholder fallback renders instead.
+import coverImg from "./assets/storybook45/cover.jpg";
 
 export const STORYBOOK_TITLE = "Cooking Dinner for the Family";
-export const COVER_IMAGE = null;
+export const COVER_IMAGE = coverImg;
 export const COVER_IMAGE_NOTE =
   "Miguel standing at a kitchen stove stirring a pot, his wife and two children sitting at a nearby table, warm kitchen light filling the room.";
 

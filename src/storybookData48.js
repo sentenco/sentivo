@@ -2,11 +2,12 @@
 // Static content -- no Supabase. Eighth and final book in the A1 Adults
 // batch (Books 41-48), completing a second full 8-book set for Adults.
 // Same structure/level as storybookData41.js.
-// Images are not generated yet. image/coverImage are left null so
+// Chapter images are not generated yet -- image is left null per chapter so
 // StoryBook.jsx's built-in ImagePlaceholder fallback renders instead.
+import coverImg from "./assets/storybook48/cover.jpg";
 
 export const STORYBOOK_TITLE = "A Visit to the Post Office";
-export const COVER_IMAGE = null;
+export const COVER_IMAGE = coverImg;
 export const COVER_IMAGE_NOTE =
   "Omar standing at a post office counter holding a wrapped package, a clerk weighing it on a small scale, other customers waiting in line behind him.";
 

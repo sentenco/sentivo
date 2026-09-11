@@ -1,11 +1,12 @@
 // A1 Adults digital storybook, Book 46: "A Weekend at the Laundromat"
 // Static content -- no Supabase. Sixth book in the A1 Adults batch
 // (Books 41-48). Same structure/level as storybookData41.js.
-// Images are not generated yet. image/coverImage are left null so
+// Chapter images are not generated yet -- image is left null per chapter so
 // StoryBook.jsx's built-in ImagePlaceholder fallback renders instead.
+import coverImg from "./assets/storybook46/cover.jpg";
 
 export const STORYBOOK_TITLE = "A Weekend at the Laundromat";
-export const COVER_IMAGE = null;
+export const COVER_IMAGE = coverImg;
 export const COVER_IMAGE_NOTE =
   "Hana sitting on a bench inside a laundromat, reading a book while washing machines spin behind her, a full laundry bag beside her feet.";
 

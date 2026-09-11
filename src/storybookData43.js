@@ -1,11 +1,12 @@
 // A1 Adults digital storybook, Book 43: "A Trip to the Bank"
 // Static content -- no Supabase. Third book in the A1 Adults batch
 // (Books 41-48). Same structure/level as storybookData41.js.
-// Images are not generated yet. image/coverImage are left null so
+// Chapter images are not generated yet -- image is left null per chapter so
 // StoryBook.jsx's built-in ImagePlaceholder fallback renders instead.
+import coverImg from "./assets/storybook43/cover.jpg";
 
 export const STORYBOOK_TITLE = "A Trip to the Bank";
-export const COVER_IMAGE = null;
+export const COVER_IMAGE = coverImg;
 export const COVER_IMAGE_NOTE =
   "Derek standing at a bank counter, handing papers to a bank teller, a number ticket in his other hand, other customers waiting on chairs nearby.";
 
