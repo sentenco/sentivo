@@ -1,11 +1,12 @@
 // A2 Kids digital storybook, Book 27: "My Little Brother's Birthday"
 // Static content -- no Supabase. Fifth book in the A2 Kids batch
 // (Books 23-30). Same structure/level as storybookData23.js.
-// Images are not generated yet. image/coverImage are left null so
+// Chapter images are not generated yet -- image is left null per chapter so
 // StoryBook.jsx's built-in ImagePlaceholder fallback renders instead.
+import coverImg from "./assets/storybook27/cover.jpg";
 
 export const STORYBOOK_TITLE = "My Little Brother's Birthday";
-export const COVER_IMAGE = null;
+export const COVER_IMAGE = coverImg;
 export const COVER_IMAGE_NOTE =
   "Ella and her parents hanging colorful dinosaur-themed balloons and streamers in the living room, working quietly and quickly with excited grins.";
 

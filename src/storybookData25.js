@@ -1,11 +1,12 @@
 // A2 Kids digital storybook, Book 25: "A Rainy Day Adventure"
 // Static content -- no Supabase. Third book in the A2 Kids batch
 // (Books 23-30). Same structure/level as storybookData23.js.
-// Images are not generated yet. image/coverImage are left null so
+// Chapter images are not generated yet -- image is left null per chapter so
 // StoryBook.jsx's built-in ImagePlaceholder fallback renders instead.
+import coverImg from "./assets/storybook25/cover.jpg";
 
 export const STORYBOOK_TITLE = "A Rainy Day Adventure";
-export const COVER_IMAGE = null;
+export const COVER_IMAGE = coverImg;
 export const COVER_IMAGE_NOTE =
   "Ruby and Sam sitting inside a cushion 'pirate ship' in their living room, rain streaming down the window behind them, both wearing paper pirate hats and laughing.";
 

@@ -1,11 +1,12 @@
 // A2 Kids digital storybook, Book 24: "The Class Pet"
 // Static content -- no Supabase. Second book in the A2 Kids batch
 // (Books 23-30). Same structure/level as storybookData23.js.
-// Images are not generated yet. image/coverImage are left null so
+// Chapter images are not generated yet -- image is left null per chapter so
 // StoryBook.jsx's built-in ImagePlaceholder fallback renders instead.
+import coverImg from "./assets/storybook24/cover.jpg";
 
 export const STORYBOOK_TITLE = "The Class Pet";
-export const COVER_IMAGE = null;
+export const COVER_IMAGE = coverImg;
 export const COVER_IMAGE_NOTE =
   "Leo carrying a small rabbit cage carefully down the school hallway, a fluffy white rabbit named Nibbles peeking out, Leo smiling with pride.";
 

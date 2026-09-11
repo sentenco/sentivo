@@ -1,11 +1,12 @@
 // A2 Kids digital storybook, Book 28: "Lost and Found"
 // Static content -- no Supabase. Sixth book in the A2 Kids batch
 // (Books 23-30). Same structure/level as storybookData23.js.
-// Images are not generated yet. image/coverImage are left null so
+// Chapter images are not generated yet -- image is left null per chapter so
 // StoryBook.jsx's built-in ImagePlaceholder fallback renders instead.
+import coverImg from "./assets/storybook28/cover.jpg";
 
 export const STORYBOOK_TITLE = "Lost and Found";
-export const COVER_IMAGE = null;
+export const COVER_IMAGE = coverImg;
 export const COVER_IMAGE_NOTE =
   "Kai kneeling on the school playground looking worriedly at his empty wrist, the monkey bars visible behind him, a small silver watch glinting in the grass nearby.";
 

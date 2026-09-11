@@ -5,11 +5,12 @@
 // past continuous / comparative forms than the A1 Kids books, but still
 // simple, everyday topics a child would recognize. Same Kids-track 3+3
 // True/False and Build-a-Sentence pattern (not 5, unlike Teens/Adults).
-// Images are not generated yet. image/coverImage are left null so
+// Chapter images are not generated yet -- image is left null per chapter so
 // StoryBook.jsx's built-in ImagePlaceholder fallback renders instead.
+import coverImg from "./assets/storybook23/cover.jpg";
 
 export const STORYBOOK_TITLE = "My First Sleepover";
-export const COVER_IMAGE = null;
+export const COVER_IMAGE = coverImg;
 export const COVER_IMAGE_NOTE =
   "Mia and Chloe sitting inside a cozy blanket fort in Chloe's living room, giggling with flashlights, a small teddy bear peeking out of Mia's backpack nearby.";
 

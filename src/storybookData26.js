@@ -1,11 +1,12 @@
 // A2 Kids digital storybook, Book 26: "Helping in the Garden"
 // Static content -- no Supabase. Fourth book in the A2 Kids batch
 // (Books 23-30). Same structure/level as storybookData23.js.
-// Images are not generated yet. image/coverImage are left null so
+// Chapter images are not generated yet -- image is left null per chapter so
 // StoryBook.jsx's built-in ImagePlaceholder fallback renders instead.
+import coverImg from "./assets/storybook26/cover.jpg";
 
 export const STORYBOOK_TITLE = "Helping in the Garden";
-export const COVER_IMAGE = null;
+export const COVER_IMAGE = coverImg;
 export const COVER_IMAGE_NOTE =
   "Theo and Grandpa kneeling together in a sunny backyard garden, planting seeds in neat rows, gardening tools and a watering can nearby.";
 
