@@ -16,6 +16,7 @@ import Messenger from './Messenger.jsx'
 import MentorDirectory from './MentorDirectory.jsx'
 import MentorApply from './MentorApply.jsx'
 import MentorAdmin from './MentorAdmin.jsx'
+import AdminTeachers from './AdminTeachers.jsx'
 import TeacherProfile from './TeacherProfile.jsx'
 import ArticlePlayerPage from './ArticlePlayerPage.jsx'
 import VocabularyPlayerPage from './VocabularyPlayerPage.jsx'
@@ -515,6 +516,7 @@ createRoot(document.getElementById('root')).render(
             <Route path="/library/mentors" element={<MentorDirectory />} />
             <Route path="/library/mentors/apply" element={<MentorApply />} />
             <Route path="/library/admin/mentors" element={<MentorAdmin />} />
+            <Route path="/library/admin/teachers" element={<AdminTeachers />} />
             <Route path="/library/teacher/:id" element={<TeacherProfile />} />
             <Route path="/library/forge" element={<LibraryPageShell><ForgeHub /></LibraryPageShell>} />
             <Route path="/library/forge/:trackId" element={<LibraryPageShell><ForgeTrack /></LibraryPageShell>} />

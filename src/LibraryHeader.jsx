@@ -364,6 +364,9 @@ export default function LibraryHeader() {
                       {isAdmin && (
                         <button type="button" className="account-menu-link" onClick={() => { navigate("/library/admin/mentors"); setMenuOpen(false); }}>Mentor Applications</button>
                       )}
+                      {isAdmin && (
+                        <button type="button" className="account-menu-link" onClick={() => { navigate("/library/admin/teachers"); setMenuOpen(false); }}>Teachers</button>
+                      )}
                       <button type="button" className="account-menu-link" onClick={() => { navigate("/library/legal/terms"); setMenuOpen(false); }}>Terms & Privacy</button>
                       <a href="mailto:hello@sentivo.com">Help &amp; Support</a>
                       <button className="logout-btn" onClick={() => { signOut(); setMenuOpen(false); }}>Log out</button>
