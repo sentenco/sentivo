@@ -3,6 +3,12 @@
 Saved 2026-09-10, not yet sent to the user. Send when asked — copy each
 numbered block verbatim, it's self-contained.
 
+**SUPERSEDED 2026-09-11 — this file's Books 9-12 prompts below are now
+stale.** The active prompts for Books 9-12 (plus 7-8) are in
+`storybook-cover-prompts-redo-7-12.md` — use that file instead. Book 13's
+prompt further down is unrelated (Kids track, not part of the Adults A2
+replacement) and is still valid.
+
 **ON HOLD 2026-09-10, confirmed/scoped 2026-09-11 — the Adults A2 books
 (7-12) are being replaced with new content.** The user originally flagged
 all of Books 3-12 for replacement (Siblings and Neighbors at Home, My
