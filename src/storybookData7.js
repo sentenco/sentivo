@@ -3,7 +3,7 @@
 // Unlike Books 1-6 (teen narrators), this book's narrator, Jordan, is an
 // adult office worker and stays gender-neutral throughout -- no gendered
 // pronoun is ever used for Jordan in the story, only their name.
-import coverImg from "./assets/storybook7/cover.jpeg";
+import coverImg from "./assets/storybook7/cover.jpg";
 
 export const STORYBOOK_TITLE = "A Full and Good Week";
 export const COVER_IMAGE = coverImg;

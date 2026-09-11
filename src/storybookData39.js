@@ -4,11 +4,12 @@
 // books, matching Kids (23-30) and Teens (31-38). Uses the same pattern
 // as storybookData7.js through storybookData12.js: 3 questions, 5 True/
 // False and 5 Build-a-Sentence per chapter, ordered shortest-to-longest.
-// Images are not generated yet. image/coverImage are left null so
+// Chapter images are not generated yet -- image is left null per chapter so
 // StoryBook.jsx's built-in ImagePlaceholder fallback renders instead.
+import coverImg from "./assets/storybook39/cover.jpg";
 
 export const STORYBOOK_TITLE = "Moving into My First Apartment";
-export const COVER_IMAGE = null;
+export const COVER_IMAGE = coverImg;
 export const COVER_IMAGE_NOTE =
   "Renee standing in the middle of a mostly empty apartment surrounded by moving boxes, holding a set of new keys and smiling proudly, sunlight streaming through a bare window.";
 

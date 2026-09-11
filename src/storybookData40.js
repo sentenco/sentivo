@@ -6,11 +6,12 @@
 // per chapter, ordered shortest-to-longest. Built around a trust-building
 // arc rather than a lost-pet plot, to stay distinct from Book 24's
 // "The Class Pet" (which already uses a pet-escape/found beat).
-// Images are not generated yet. image/coverImage are left null so
+// Chapter images are not generated yet -- image is left null per chapter so
 // StoryBook.jsx's built-in ImagePlaceholder fallback renders instead.
+import coverImg from "./assets/storybook40/cover.jpg";
 
 export const STORYBOOK_TITLE = "Adopting a Rescue Dog";
-export const COVER_IMAGE = null;
+export const COVER_IMAGE = coverImg;
 export const COVER_IMAGE_NOTE =
   "Isaac sitting on the living room floor with a once-shy rescue dog now resting its head happily on his lap, warm evening light filling the cozy apartment.";
 

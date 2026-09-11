@@ -3,7 +3,7 @@
 // Like Book 7, this book's narrator, Casey, is an adult worker and stays
 // gender-neutral throughout -- no gendered pronoun is ever used for Casey
 // in the story, only their name (manager Ms. Cruz is explicitly "she").
-import coverImg from "./assets/storybook8/cover.jpeg";
+import coverImg from "./assets/storybook8/cover.jpg";
 
 export const STORYBOOK_TITLE = "A Good Week at the Shop";
 export const COVER_IMAGE = coverImg;
