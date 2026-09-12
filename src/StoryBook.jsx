@@ -69,13 +69,11 @@ function shuffle(arr) {
 function ChapterIntroPage({ chapter, imageAspect }) {
   return (
     <div className="sb-page sb-page--intro">
-      <div className="sb-intro-image" style={imageAspect ? { aspectRatio: imageAspect } : undefined}>
-        {chapter.image ? (
+      {chapter.image && (
+        <div className="sb-intro-image" style={imageAspect ? { aspectRatio: imageAspect } : undefined}>
           <img src={chapter.image} alt={chapter.title} />
-        ) : (
-          <ImagePlaceholder note={chapter.imageNote} compact />
-        )}
-      </div>
+        </div>
+      )}
       <span className="sb-chapter-num">Chapter {chapter.number}</span>
       <h2 className="sb-chapter-title">{chapter.title}</h2>
     </div>
