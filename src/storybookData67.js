@@ -6,10 +6,11 @@
 // weighing loyalty vs. fairness before intervening, matching the B2
 // spec's mediation/comparing-viewpoints focus. Teens-track shape: 3
 // questions, 5 True/False, 5 Build-a-Sentence per chapter. Images
-// not generated yet -- image/coverImage left null.
+// not generated yet -- image left null per chapter.
+import coverImg from "./assets/storybook67/cover.jpg";
 
 export const STORYBOOK_TITLE = "The Rumor in the Group Chat";
-export const COVER_IMAGE = null;
+export const COVER_IMAGE = coverImg;
 export const COVER_IMAGE_NOTE =
   "Malik staring at his phone screen showing a group chat, a worried expression as he scrolls through a long thread of messages.";
 

@@ -13,11 +13,12 @@
 // Teens batch (49-56), which used simpler complex sentences and a
 // narrower modal/conditional range. Same Teens-track chapter shape:
 // 3 questions, 5 True/False, 5 Build-a-Sentence per chapter.
-// Images not generated yet -- image/coverImage left null so
+// Chapter images not generated yet -- image left null per chapter so
 // StoryBook.jsx's built-in ImagePlaceholder fallback renders instead.
+import coverImg from "./assets/storybook65/cover.jpg";
 
 export const STORYBOOK_TITLE = "The Uniform Policy Vote";
-export const COVER_IMAGE = null;
+export const COVER_IMAGE = coverImg;
 export const COVER_IMAGE_NOTE =
   "Nadia standing at a podium in a school auditorium, addressing a divided student council, two groups of students visible on opposite sides.";
 

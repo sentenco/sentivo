@@ -6,10 +6,11 @@
 // with heavier use of past perfect, second/third conditional, and
 // discourse markers per the B2 Teens spec. Teens-track shape: 3
 // questions, 5 True/False, 5 Build-a-Sentence per chapter. Images
-// not generated yet -- image/coverImage left null.
+// not generated yet -- image left null per chapter.
+import coverImg from "./assets/storybook66/cover.jpg";
 
 export const STORYBOOK_TITLE = "Choosing to Study Abroad";
-export const COVER_IMAGE = null;
+export const COVER_IMAGE = coverImg;
 export const COVER_IMAGE_NOTE =
   "Isabel sitting on her bedroom floor surrounded by two open folders — one labeled 'Exchange Program,' one labeled 'Stay Home' — looking torn.";
 

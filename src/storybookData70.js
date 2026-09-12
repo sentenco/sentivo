@@ -6,10 +6,12 @@
 // class assignment, not competitive nerves, matching the B2 spec's
 // "Debate & Mediate -> Produce" lesson shape and full discourse-
 // marker range. Teens-track shape: 3 questions, 5 True/False, 5
-// Build-a-Sentence per chapter. Images not generated yet.
+// Build-a-Sentence per chapter. Chapter images not generated yet --
+// image left null per chapter.
+import coverImg from "./assets/storybook70/cover.jpg";
 
 export const STORYBOOK_TITLE = "The Great Screen-Time Debate";
-export const COVER_IMAGE = null;
+export const COVER_IMAGE = coverImg;
 export const COVER_IMAGE_NOTE =
   "Rafael standing at the front of a classroom holding notecards, a projected slide behind him reading 'Should Teens Have Limited Screen Time?'";
 

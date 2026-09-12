@@ -6,10 +6,12 @@
 // between two family members' opposing views on relocating for a
 // parent's job, matching the B2 spec's mediation focus applied to
 // family dynamics. Teens-track shape: 3 questions, 5 True/False, 5
-// Build-a-Sentence per chapter. Images not generated yet.
+// Build-a-Sentence per chapter. Chapter images not generated yet --
+// image left null per chapter.
+import coverImg from "./assets/storybook68/cover.jpg";
 
 export const STORYBOOK_TITLE = "Whether We Should Move";
-export const COVER_IMAGE = null;
+export const COVER_IMAGE = coverImg;
 export const COVER_IMAGE_NOTE =
   "Delphine sitting at the family dinner table, her parents on opposite sides mid-argument, a moving-company flyer visible on the table.";
 

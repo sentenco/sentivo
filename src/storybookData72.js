@@ -7,10 +7,12 @@
 // something personally vulnerable, consulting friends' differing
 // opinions, matching the B2 spec's mediation/perspective-weighing
 // focus. Teens-track shape: 3 questions, 5 True/False, 5 Build-a-
-// Sentence per chapter. Images not generated yet.
+// Sentence per chapter. Chapter images not generated yet -- image
+// left null per chapter.
+import coverImg from "./assets/storybook72/cover.jpg";
 
 export const STORYBOOK_TITLE = "Deciding What to Share Online";
-export const COVER_IMAGE = null;
+export const COVER_IMAGE = coverImg;
 export const COVER_IMAGE_NOTE =
   "Farah sitting cross-legged on her bed, phone in hand, staring at an unsent draft post, expression torn between hope and hesitation.";
 

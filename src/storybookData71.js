@@ -5,10 +5,12 @@
 // narrator and one friend) -- here the narrator is a THIRD party
 // mediating between two OTHER close friends, matching the B2 spec's
 // mediation focus. Teens-track shape: 3 questions, 5 True/False, 5
-// Build-a-Sentence per chapter. Images not generated yet.
+// Build-a-Sentence per chapter. Chapter images not generated yet --
+// image left null per chapter.
+import coverImg from "./assets/storybook71/cover.jpg";
 
 export const STORYBOOK_TITLE = "When My Two Best Friends Stopped Talking";
-export const COVER_IMAGE = null;
+export const COVER_IMAGE = coverImg;
 export const COVER_IMAGE_NOTE =
   "Amara standing between two friends, Lucia and Ben, who are seated at opposite ends of a lunch table, both avoiding eye contact.";
 

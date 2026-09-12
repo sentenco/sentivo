@@ -6,10 +6,11 @@
 // (protest vs. quiet lobbying) and the narrator mediating between
 // them, matching the B2 spec's mediation/comparing-viewpoints focus.
 // Teens-track shape: 3 questions, 5 True/False, 5 Build-a-Sentence
-// per chapter. Images not generated yet -- image/coverImage null.
+// per chapter. Chapter images not generated yet -- image null per chapter.
+import coverImg from "./assets/storybook69/cover.jpg";
 
 export const STORYBOOK_TITLE = "The Environmental Club's Big Decision";
-export const COVER_IMAGE = null;
+export const COVER_IMAGE = coverImg;
 export const COVER_IMAGE_NOTE =
   "Simone standing at the front of a classroom-style meeting, two groups of environmental club members seated on opposite sides, mid-disagreement.";
 
