@@ -7,7 +7,13 @@ import defaultBook from "./storybookData";
 // items, Teens/Adults use 5 -- so the page list is derived from each chapter's
 // actual buildSentence length rather than a fixed constant.
 function getPageTypes(chapter) {
-  const types = ["intro", "story", "questions", "truefalse"];
+  // Chapters with no real image (every book except Books 1 and 2) skip the
+  // intro page entirely -- with the image gone (see ChapterIntroPage) it was
+  // just a bare "Chapter N" + title screen, and the Story page immediately
+  // after already shows that same chapter number and title above the text.
+  const types = chapter.image
+    ? ["intro", "story", "questions", "truefalse"]
+    : ["story", "questions", "truefalse"];
   chapter.buildSentence.forEach((_, i) => types.push(`build${i}`));
   types.push("mysentence");
   return types;
