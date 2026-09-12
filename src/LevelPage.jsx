@@ -27,6 +27,7 @@ export default function LevelPage({ level = "A1" }) {
   const units = UNITS[level] || UNITS.A1;
   const readyUnits = READY_UNITS[level] || [];
   const [openUnit, setOpenUnit] = useState(null);
+  const [certNoteVisible, setCertNoteVisible] = useState(false);
 
   useEffect(() => {
     const styleId = "lp-styles";
@@ -169,6 +170,26 @@ export default function LevelPage({ level = "A1" }) {
             })}
           </ul>
         </div>
+
+        {level === "A1" && (
+          <div className="lp-cert-cta">
+            <div className="lp-cert-cta-icon">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#FF6B4A" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="8" r="5"/><path d="M8.5 12.5 7 21l5-2.5 5 2.5-1.5-8.5"/></svg>
+            </div>
+            <div className="lp-cert-cta-main">
+              <span className="lp-cert-cta-eyebrow">All 12 units complete</span>
+              <div className="lp-cert-cta-title">Ready to certify a student who finished A1?</div>
+              <div className="lp-cert-cta-sub">Generate a printable Certificate of Completion for {data.name} (A1) &mdash; add their name, and yours, in a moment.</div>
+              {certNoteVisible && (
+                <div className="lp-cert-cta-note">The certificate design is still being finished &mdash; check back soon.</div>
+              )}
+            </div>
+            <button type="button" className="lp-cert-cta-btn" onClick={() => setCertNoteVisible(true)}>
+              Download certificate
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 4v12m0 0l-4-4m4 4l4-4M5 20h14"/></svg>
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );
@@ -340,4 +361,34 @@ const styles = `
   color: #fff; background: #FF6B4A; border-radius: 999px; padding: 4px 11px;
 }
 .lp-toc-lesson-open:hover { background: #E0502F; }
+
+.lp-cert-cta {
+  background: #fff; border-radius: 20px; border: 1.5px solid #FFD9CB;
+  box-shadow: 0 18px 40px rgba(27,42,74,0.12);
+  margin-top: 22px; padding: 30px 36px; position: relative; overflow: hidden;
+  display: flex; align-items: center; gap: 24px;
+}
+.lp-cert-cta::before {
+  content: ""; position: absolute; top: -50px; right: -30px; width: 160px; height: 160px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,107,74,0.14), transparent 70%); pointer-events: none;
+}
+.lp-cert-cta-icon {
+  flex-shrink: 0; width: 60px; height: 60px; border-radius: 50%; background: #FFE6DD;
+  display: flex; align-items: center; justify-content: center;
+}
+.lp-cert-cta-main { flex: 1; min-width: 0; }
+.lp-cert-cta-eyebrow { display: block; font-weight: 700; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: #E0502F; margin-bottom: 5px; }
+.lp-cert-cta-title { font-family: 'Source Serif 4', serif; font-weight: 600; font-size: 19px; color: #23264A; margin-bottom: 5px; }
+.lp-cert-cta-sub { font-size: 13px; color: #6B6E96; line-height: 1.5; }
+.lp-cert-cta-note { font-size: 12px; font-weight: 600; color: #A87A1E; background: #FBF0DC; border-radius: 8px; padding: 7px 11px; margin-top: 10px; display: inline-block; }
+.lp-cert-cta-btn {
+  flex-shrink: 0; display: inline-flex; align-items: center; gap: 8px;
+  font-family: 'Source Serif 4', serif; font-weight: 600; font-size: 13.5px; color: #fff;
+  background: #FF6B4A; border: none; border-radius: 999px; padding: 12px 22px; cursor: pointer; white-space: nowrap;
+}
+.lp-cert-cta-btn:hover { background: #E0502F; }
+@media (max-width: 700px) {
+  .lp-cert-cta { flex-direction: column; align-items: flex-start; text-align: left; }
+  .lp-cert-cta-btn { width: 100%; justify-content: center; }
+}
 `;
