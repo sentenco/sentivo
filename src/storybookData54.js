@@ -1,11 +1,12 @@
 // B1 Teens digital storybook, Book 54: "Choosing My Own Path"
 // Static content -- no Supabase. Sixth book in the B1 Teens batch
 // (Books 49-56). Same structure/level as storybookData49.js.
-// Images are not generated yet. image/coverImage are left null so
+// Chapter images are not generated yet -- image is left null per chapter so
 // StoryBook.jsx's built-in ImagePlaceholder fallback renders instead.
+import coverImg from "./assets/storybook54/cover.jpg";
 
 export const STORYBOOK_TITLE = "Choosing My Own Path";
-export const COVER_IMAGE = null;
+export const COVER_IMAGE = coverImg;
 export const COVER_IMAGE_NOTE =
   "Sana sitting at the kitchen table across from her father, two brochures spread between them, a tense but hopeful conversation happening.";
 

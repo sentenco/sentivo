@@ -1,11 +1,12 @@
 // B1 Teens digital storybook, Book 55: "Learning to Say No"
 // Static content -- no Supabase. Seventh book in the B1 Teens batch
 // (Books 49-56). Same structure/level as storybookData49.js.
-// Images are not generated yet. image/coverImage are left null so
+// Chapter images are not generated yet -- image is left null per chapter so
 // StoryBook.jsx's built-in ImagePlaceholder fallback renders instead.
+import coverImg from "./assets/storybook55/cover.jpg";
 
 export const STORYBOOK_TITLE = "Learning to Say No";
-export const COVER_IMAGE = null;
+export const COVER_IMAGE = coverImg;
 export const COVER_IMAGE_NOTE =
   "Yuki sitting at her desk late at night, surrounded by planners and sticky notes for five different clubs, exhausted and overwhelmed.";
 

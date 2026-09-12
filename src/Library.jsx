@@ -63,6 +63,9 @@ import storybook50CoverImg from "./assets/storybook50/cover.jpg";
 import storybook51CoverImg from "./assets/storybook51/cover.jpg";
 import storybook52CoverImg from "./assets/storybook52/cover.jpg";
 import storybook53CoverImg from "./assets/storybook53/cover.jpg";
+import storybook54CoverImg from "./assets/storybook54/cover.jpg";
+import storybook55CoverImg from "./assets/storybook55/cover.jpg";
+import storybook56CoverImg from "./assets/storybook56/cover.jpg";
 import forge1CoverImg from "./assets/forge/track1-cover.jpeg";
 import todayWheelIcon from "./assets/today/icon-wheel.jpg";
 import todayNotebookIcon from "./assets/today/icon-notebook.jpg";
@@ -1130,6 +1133,9 @@ const STORY_COVERS = {
   "storybook-51": storybook51CoverImg,
   "storybook-52": storybook52CoverImg,
   "storybook-53": storybook53CoverImg,
+  "storybook-54": storybook54CoverImg,
+  "storybook-55": storybook55CoverImg,
+  "storybook-56": storybook56CoverImg,
 };
 
 // Same idea for FORGE tracks -- each track (one card per learner profile)
