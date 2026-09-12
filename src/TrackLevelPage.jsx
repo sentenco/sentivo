@@ -178,20 +178,20 @@ export default function TrackLevelPage({ audience, level, onBack }) {
           </ul>
         </div>
 
-        {level === "A1" && (
-          <div className="tlp-cert-cta">
-            <div className="tlp-cert-cta-icon">
-              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#FF6B4A" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="8" r="5"/><path d="M8.5 12.5 7 21l5-2.5 5 2.5-1.5-8.5"/></svg>
+        {(level === "A1" || level === "A2") && (
+          <div className="tlp-cert-cta" style={{ borderColor: colors.light }}>
+            <div className="tlp-cert-cta-icon" style={{ background: colors.light }}>
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke={colors.color} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="8" r="5"/><path d="M8.5 12.5 7 21l5-2.5 5 2.5-1.5-8.5"/></svg>
             </div>
             <div className="tlp-cert-cta-main">
-              <span className="tlp-cert-cta-eyebrow">All {units.length} units complete</span>
-              <div className="tlp-cert-cta-title">Ready to certify a student who finished A1?</div>
-              <div className="tlp-cert-cta-sub">Generate a printable Certificate of Completion for {data.name} (A1) &mdash; add their name, and yours, in a moment.</div>
+              <span className="tlp-cert-cta-eyebrow" style={{ color: colors.color }}>All {units.length} units complete</span>
+              <div className="tlp-cert-cta-title">Ready to certify a student who finished {level}?</div>
+              <div className="tlp-cert-cta-sub">Generate a printable Certificate of Completion for {data.name} ({level}) &mdash; add their name, and yours, in a moment.</div>
               {certNoteVisible && (
                 <div className="tlp-cert-cta-note">The certificate design is still being finished &mdash; check back soon.</div>
               )}
             </div>
-            <button type="button" className="tlp-cert-cta-btn" onClick={() => setCertNoteVisible(true)}>
+            <button type="button" className="tlp-cert-cta-btn" style={{ background: colors.color }} onClick={() => setCertNoteVisible(true)}>
               Download certificate
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 4v12m0 0l-4-4m4 4l4-4M5 20h14"/></svg>
             </button>
@@ -380,7 +380,7 @@ const styles = `
   font-family: 'Source Serif 4', serif; font-weight: 600; font-size: 13.5px; color: #fff;
   background: #FF6B4A; border: none; border-radius: 999px; padding: 12px 22px; cursor: pointer; white-space: nowrap;
 }
-.tlp-cert-cta-btn:hover { background: #E0502F; }
+.tlp-cert-cta-btn:hover { filter: brightness(0.9); }
 
 @media (max-width: 700px) {
   .tlp-stage { padding: 20px 18px 50px; }
