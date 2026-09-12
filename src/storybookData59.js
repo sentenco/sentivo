@@ -6,10 +6,11 @@
 // "service incident" and "phone call / problem explanation" focus.
 // Grammar/vocab calibrated the same way as Books 57-58. Adults-track
 // shape: 3 questions, 5 True/False, 5 Build-a-Sentence per chapter.
-// Images not generated yet -- image/coverImage left null.
+// Chapter images not generated yet -- image left null per chapter.
+import coverImg from "./assets/storybook59/cover.jpg";
 
 export const STORYBOOK_TITLE = "A Mix-Up at the Pharmacy";
-export const COVER_IMAGE = null;
+export const COVER_IMAGE = coverImg;
 export const COVER_IMAGE_NOTE =
   "Elena standing at a pharmacy counter, looking closely at a small orange pill bottle with a puzzled expression, pharmacist nearby.";
 

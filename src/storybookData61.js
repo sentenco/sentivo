@@ -5,10 +5,12 @@
 // could we, should) and workplace/deadline vocabulary. Distinct from
 // Book 58 (a payroll error) -- this is a proactive negotiation, not
 // a mistake to correct. Adults-track shape: 3 questions, 5 True/
-// False, 5 Build-a-Sentence per chapter. Images not generated yet.
+// False, 5 Build-a-Sentence per chapter. Chapter images not generated
+// yet -- image left null per chapter.
+import coverImg from "./assets/storybook61/cover.jpg";
 
 export const STORYBOOK_TITLE = "Negotiating a Deadline at Work";
-export const COVER_IMAGE = null;
+export const COVER_IMAGE = coverImg;
 export const COVER_IMAGE_NOTE =
   "Sofia sitting at her office desk surrounded by sticky notes and an open laptop, looking at a calendar with a stressed expression.";
 

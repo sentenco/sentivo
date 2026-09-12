@@ -4,10 +4,11 @@
 // Adults spec's explicit "short phone calls / problem explanations"
 // skill target and complaint-handling vocabulary. Adults-track shape:
 // 3 questions, 5 True/False, 5 Build-a-Sentence per chapter. Images
-// not generated yet -- image/coverImage left null.
+// not generated yet -- image left null per chapter.
+import coverImg from "./assets/storybook62/cover.jpg";
 
 export const STORYBOOK_TITLE = "A Billing Dispute";
-export const COVER_IMAGE = null;
+export const COVER_IMAGE = coverImg;
 export const COVER_IMAGE_NOTE =
   "Tobias sitting on his couch, phone to his ear, looking at a printed utility bill with a circled charge, one hand on his forehead.";
 

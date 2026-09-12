@@ -5,11 +5,12 @@
 // clauses and linking devices, specialized payroll/HR vocabulary and
 // multi-word verbs (look into, sort out, follow up). Adults-track
 // shape: 3 questions, 5 True/False, 5 Build-a-Sentence per chapter,
-// shortest-to-longest. Images not generated yet -- image/coverImage
-// left null so StoryBook.jsx's ImagePlaceholder fallback renders.
+// shortest-to-longest. Chapter images not generated yet -- image left
+// null per chapter so StoryBook.jsx's ImagePlaceholder fallback renders.
+import coverImg from "./assets/storybook58/cover.jpg";
 
 export const STORYBOOK_TITLE = "A Problem with My Paycheck";
-export const COVER_IMAGE = null;
+export const COVER_IMAGE = coverImg;
 export const COVER_IMAGE_NOTE =
   "Marcus sitting at his kitchen table, laptop open showing a payslip, one hand on his forehead, looking concerned.";
 

@@ -4,10 +4,11 @@
 // emphasis on negotiation, rebooking, and communicating with staff
 // under pressure. First air-travel story in the whole feature.
 // Adults-track shape: 3 questions, 5 True/False, 5 Build-a-Sentence
-// per chapter. Images not generated yet -- image/coverImage null.
+// per chapter. Chapter images not generated yet -- image null per chapter.
+import coverImg from "./assets/storybook60/cover.jpg";
 
 export const STORYBOOK_TITLE = "A Delayed Flight";
-export const COVER_IMAGE = null;
+export const COVER_IMAGE = coverImg;
 export const COVER_IMAGE_NOTE =
   "Daniel standing at an airport gate, looking up at a departures board showing a delayed flight, suitcase beside him.";
 

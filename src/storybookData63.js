@@ -5,10 +5,12 @@
 // transactions -- this one centers on a complication (a missing
 // document / wrong office) requiring problem-solving, matching B1's
 // higher complexity target. Adults-track shape: 3 questions, 5 True/
-// False, 5 Build-a-Sentence per chapter. Images not generated yet.
+// False, 5 Build-a-Sentence per chapter. Chapter images not generated
+// yet -- image left null per chapter.
+import coverImg from "./assets/storybook63/cover.jpg";
 
 export const STORYBOOK_TITLE = "Renewing My Driver's License";
-export const COVER_IMAGE = null;
+export const COVER_IMAGE = coverImg;
 export const COVER_IMAGE_NOTE =
   "Yusuf standing at a government office counter, holding a folder of documents, looking at a clerk who is shaking her head apologetically.";
 

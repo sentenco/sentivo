@@ -13,11 +13,12 @@
 // into workplace/service incidents and complaint resolution per the
 // source document. Same Adults-track shape: 3 questions, 5 True/False,
 // 5 Build-a-Sentence per chapter, shortest-to-longest.
-// Images are not generated yet. image/coverImage are left null so
+// Chapter images are not generated yet -- image is left null per chapter so
 // StoryBook.jsx's built-in ImagePlaceholder fallback renders instead.
+import coverImg from "./assets/storybook57/cover.jpg";
 
 export const STORYBOOK_TITLE = "A Mix-Up at the Hotel";
-export const COVER_IMAGE = null;
+export const COVER_IMAGE = coverImg;
 export const COVER_IMAGE_NOTE =
   "Priya standing at a hotel front desk late at night, rolling suitcase beside her, looking at a confused receptionist checking a computer screen.";
 

@@ -6,10 +6,11 @@
 // and diplomatic resolution, matching the B1 Adults spec's complaint-
 // handling and linking-device targets. Adults-track shape: 3
 // questions, 5 True/False, 5 Build-a-Sentence per chapter. Images
-// not generated yet -- image/coverImage left null.
+// not generated yet -- image left null per chapter.
+import coverImg from "./assets/storybook64/cover.jpg";
 
 export const STORYBOOK_TITLE = "A Noisy New Neighbor";
-export const COVER_IMAGE = null;
+export const COVER_IMAGE = coverImg;
 export const COVER_IMAGE_NOTE =
   "Amara standing in her apartment hallway at night, hand raised near a neighbor's door, looking hesitant but determined.";
 
