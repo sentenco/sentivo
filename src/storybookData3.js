@@ -1,6 +1,6 @@
 // A1 Teens digital storybook, Book 3: "Siblings and Neighbors at Home"
 // Static content -- no Supabase, mirrors the pattern in storybookData2.js.
-import coverImg from "./assets/storybook3/cover.jpeg";
+import coverImg from "./assets/storybook3/cover.jpg";
 
 export const STORYBOOK_TITLE = "Siblings and Neighbors at Home";
 export const COVER_IMAGE = coverImg;

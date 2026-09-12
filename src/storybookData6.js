@@ -1,6 +1,6 @@
 // A1 Teens digital storybook, Book 6: "A Stronger Swimmer"
 // Static content -- no Supabase, mirrors the pattern in storybookData5.js.
-import coverImg from "./assets/storybook6/cover.jpeg";
+import coverImg from "./assets/storybook6/cover.jpg";
 
 export const STORYBOOK_TITLE = "A Stronger Swimmer";
 export const COVER_IMAGE = coverImg;

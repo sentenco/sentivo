@@ -1,6 +1,6 @@
 // A1 Teens digital storybook, Book 5: "My School Basketball Team"
 // Static content -- no Supabase, mirrors the pattern in storybookData4.js.
-import coverImg from "./assets/storybook5/cover.jpeg";
+import coverImg from "./assets/storybook5/cover.jpg";
 
 export const STORYBOOK_TITLE = "My School Basketball Team";
 export const COVER_IMAGE = coverImg;
