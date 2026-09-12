@@ -5,10 +5,12 @@
 // phone-call correction of an obvious clerical error) -- this one
 // involves genuine back-and-forth negotiation over a disputed
 // settlement figure. Adults-track shape: 3 questions, 5 True/False,
-// 5 Build-a-Sentence per chapter. Images not generated yet.
+// 5 Build-a-Sentence per chapter. Chapter images not generated yet --
+// image left null per chapter.
+import coverImg from "./assets/storybook77/cover.jpg";
 
 export const STORYBOOK_TITLE = "Negotiating an Insurance Claim";
-export const COVER_IMAGE = null;
+export const COVER_IMAGE = coverImg;
 export const COVER_IMAGE_NOTE =
   "Desmond standing in his driveway looking at storm damage on his roof, phone in hand, an insurance claim letter tucked under his arm.";
 

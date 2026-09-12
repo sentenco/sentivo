@@ -5,10 +5,12 @@
 // centers on a homeowner negotiating a rule dispute with an HOA
 // board, matching the B2 Adults spec's genre-aware writing focus
 // (a formal appeal letter). Adults-track shape: 3 questions, 5 True/
-// False, 5 Build-a-Sentence per chapter. Images not generated yet.
+// False, 5 Build-a-Sentence per chapter. Chapter images not generated
+// yet -- image left null per chapter.
+import coverImg from "./assets/storybook76/cover.jpg";
 
 export const STORYBOOK_TITLE = "A Dispute with the Homeowners Association";
-export const COVER_IMAGE = null;
+export const COVER_IMAGE = coverImg;
 export const COVER_IMAGE_NOTE =
   "Rosalind standing in her front yard looking at a small vegetable garden, an official-looking letter in her hand, expression concerned.";
 

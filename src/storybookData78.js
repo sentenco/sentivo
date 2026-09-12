@@ -6,10 +6,12 @@
 // context -- here the narrator is a mutual friend/consultant
 // mediating between two business partners disagreeing on company
 // direction. Adults-track shape: 3 questions, 5 True/False, 5
-// Build-a-Sentence per chapter. Images not generated yet.
+// Build-a-Sentence per chapter. Chapter images not generated yet --
+// image left null per chapter.
+import coverImg from "./assets/storybook78/cover.jpg";
 
 export const STORYBOOK_TITLE = "Mediating a Business Partnership Dispute";
-export const COVER_IMAGE = null;
+export const COVER_IMAGE = coverImg;
 export const COVER_IMAGE_NOTE =
   "Yolanda sitting at a café table between two business partners, both looking tense, papers with financial projections spread between them.";
 

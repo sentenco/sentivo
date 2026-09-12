@@ -12,10 +12,11 @@
 // the B1 Adults batch (57-64), which centered on service/incident
 // resolution rather than deliberate negotiation. Adults-track shape:
 // 3 questions, 5 True/False, 5 Build-a-Sentence per chapter. Images
-// not generated yet -- image/coverImage left null.
+// not generated yet -- image left null per chapter.
+import coverImg from "./assets/storybook73/cover.jpg";
 
 export const STORYBOOK_TITLE = "Negotiating a Salary Raise";
-export const COVER_IMAGE = null;
+export const COVER_IMAGE = coverImg;
 export const COVER_IMAGE_NOTE =
   "Naomi sitting at her desk reviewing printed notes before a meeting, a calendar reminder for 'Salary Review' visible on her monitor.";
 

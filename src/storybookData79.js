@@ -5,10 +5,11 @@
 // HOA dispute (a rule/exception negotiation with a board, not a
 // direct landlord price negotiation). Adults-track shape: 3
 // questions, 5 True/False, 5 Build-a-Sentence per chapter. Images
-// not generated yet -- image/coverImage left null.
+// not generated yet -- image left null per chapter.
+import coverImg from "./assets/storybook79/cover.jpg";
 
 export const STORYBOOK_TITLE = "Negotiating a Rent Increase";
-export const COVER_IMAGE = null;
+export const COVER_IMAGE = coverImg;
 export const COVER_IMAGE_NOTE =
   "Bianca sitting at her kitchen table reading a lease renewal letter, laptop open beside her showing apartment listings.";
 

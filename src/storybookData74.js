@@ -5,10 +5,11 @@
 // but distinct in context and mechanics (a team lead resolving a
 // process/credit dispute, not a personal friendship rift). Adults-
 // track shape: 3 questions, 5 True/False, 5 Build-a-Sentence per
-// chapter. Images not generated yet -- image/coverImage left null.
+// chapter. Chapter images not generated yet -- image left null per chapter.
+import coverImg from "./assets/storybook74/cover.jpg";
 
 export const STORYBOOK_TITLE = "Mediating a Dispute Between Coworkers";
-export const COVER_IMAGE = null;
+export const COVER_IMAGE = coverImg;
 export const COVER_IMAGE_NOTE =
   "Ines standing between Salim and Petra at a shared office desk, both avoiding eye contact, tension visible in the room.";
 

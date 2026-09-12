@@ -6,10 +6,11 @@
 // supplier, matching the B2 Adults spec's "instrumental relevance"
 // and genre-aware writing (formal proposal/email) focus. Adults-
 // track shape: 3 questions, 5 True/False, 5 Build-a-Sentence per
-// chapter. Images not generated yet -- image/coverImage left null.
+// chapter. Chapter images not generated yet -- image left null per chapter.
+import coverImg from "./assets/storybook75/cover.jpg";
 
 export const STORYBOOK_TITLE = "Negotiating a Vendor Contract";
-export const COVER_IMAGE = null;
+export const COVER_IMAGE = coverImg;
 export const COVER_IMAGE_NOTE =
   "Tomas sitting at a small bakery's back office desk, a supplier contract spread out in front of him, calculator and notes nearby.";
 

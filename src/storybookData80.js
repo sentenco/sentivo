@@ -6,10 +6,11 @@
 // negotiation contexts (salary, coworker mediation, vendor contract,
 // HOA, insurance, business partnership, rent). Adults-track shape:
 // 3 questions, 5 True/False, 5 Build-a-Sentence per chapter. Images
-// not generated yet -- image/coverImage left null.
+// not generated yet -- image left null per chapter.
+import coverImg from "./assets/storybook80/cover.jpg";
 
 export const STORYBOOK_TITLE = "Proposing a Change to Company Policy";
-export const COVER_IMAGE = null;
+export const COVER_IMAGE = coverImg;
 export const COVER_IMAGE_NOTE =
   "Adaeze sitting at her desk drafting a formal proposal document on her laptop, sticky notes with employee feedback pinned nearby.";
 
