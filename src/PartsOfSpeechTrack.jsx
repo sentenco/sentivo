@@ -37,7 +37,6 @@ export default function PartsOfSpeechTrack() {
       <style>{CSS}</style>
       <div className="pos-stage">
         <div className="pos-hero">
-          <span className="pos-hero-badge">Grammar Comics!</span>
           <h1 className="pos-hero-title">Parts of Speech</h1>
           <p className="pos-hero-blurb">
             The 8 traditional parts of speech, taught across 6 topics, one pair of lessons each: a Lesson to build the
@@ -104,21 +103,8 @@ const CSS = `
 }
 
 .pos-hero { margin-bottom: 34px; }
-.pos-hero-badge {
-  display: inline-block;
-  font-family: 'Bangers', cursive;
-  font-weight: 400;
-  font-size: 16px;
-  letter-spacing: 0.4px;
-  color: #FFFFFF;
-  background: #8338EC;
-  border: 3px solid #1A1A1A;
-  border-radius: 999px;
-  padding: 3px 16px 5px;
-  transform: rotate(-3deg);
-  margin-bottom: 12px;
-}
 .pos-hero-title {
+  text-align: center;
   font-family: 'Bangers', cursive;
   font-weight: 400;
   font-size: 56px;
