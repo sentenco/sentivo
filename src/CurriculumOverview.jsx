@@ -68,19 +68,6 @@ export default function CurriculumOverview({ onSelectLevel }) {
       <div className="co-blob co-blob--b" />
 
       <div className="co-stage">
-        <div className="co-audience-row">
-          {AUDIENCES.map((a) => (
-            <button
-              key={a.id}
-              type="button"
-              className={`co-audience-pill ${audience === a.id ? "is-active" : ""}`}
-              onClick={() => selectAudience(a.id)}
-            >
-              {a.label} <span className="co-audience-age">{a.age}</span>
-            </button>
-          ))}
-        </div>
-
         <div className={`co-hero-band ${audience !== "kids" ? "co-hero-band--navy" : ""}`}>
           <div className="co-hero-kicker-row">
             <span className="co-hero-rule" />
@@ -88,6 +75,20 @@ export default function CurriculumOverview({ onSelectLevel }) {
             <span className="co-hero-rule" />
           </div>
           <h1 className="co-title">Curriculum</h1>
+
+          <div className="co-audience-toggle">
+            {AUDIENCES.map((a) => (
+              <button
+                key={a.id}
+                type="button"
+                className={`co-audience-btn ${audience === a.id ? "is-active" : ""}`}
+                onClick={() => selectAudience(a.id)}
+              >
+                {a.label} <span className="co-audience-age">{a.age}</span>
+              </button>
+            ))}
+          </div>
+
           <div className="co-stat-row">
             <div className="co-stat"><div className="co-stat-num co-stat-num--coral">2</div><div className="co-stat-label">Levels</div></div>
             <div className="co-stat"><div className="co-stat-num co-stat-num--navy">24</div><div className="co-stat-label">Units</div></div>
@@ -145,16 +146,15 @@ const styles = `
 
 .co-stage { position: relative; z-index: 1; max-width: 1040px; margin: 0 auto; padding: 26px 40px 70px; }
 
-.co-audience-row { display: flex; justify-content: center; gap: 10px; margin-bottom: 26px; }
-.co-audience-pill {
-  display: inline-flex; align-items: center; gap: 8px; padding: 10px 22px; border-radius: 999px;
-  border: 1.5px solid #EDE6F4; background: #fff; cursor: pointer;
-  font-family: 'Source Serif 4', serif; font-weight: 600; font-size: 14.5px; color: #6B6E96;
+.co-audience-toggle { display: inline-flex; background: #fff; border-radius: 999px; padding: 4px; gap: 4px; margin: 0 0 18px; }
+.co-audience-btn {
+  display: inline-flex; align-items: center; gap: 7px;
+  font-family: 'Source Serif 4', serif; font-weight: 600; font-size: 13.5px; color: #6B6E96;
+  background: transparent; border: none; border-radius: 999px; padding: 8px 18px; cursor: pointer;
   transition: all 0.15s ease;
 }
-.co-audience-pill .co-audience-age { font-family: 'Inter', sans-serif; font-weight: 700; font-size: 10px; text-transform: uppercase; letter-spacing: 0.04em; opacity: 0.65; }
-.co-audience-pill.is-active { background: #1B2A4A; border-color: #1B2A4A; color: #fff; }
-.co-audience-pill:not(.is-active):hover { border-color: #FF6B4A; color: #1B2A4A; }
+.co-audience-btn .co-audience-age { font-family: 'Inter', sans-serif; font-weight: 700; font-size: 10px; text-transform: uppercase; letter-spacing: 0.04em; opacity: 0.65; }
+.co-audience-btn.is-active { background: #1B2A4A; color: #fff; }
 
 .co-hero-band {
   background: #FFE6DD;

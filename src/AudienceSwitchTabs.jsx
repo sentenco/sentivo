@@ -7,7 +7,7 @@ const AUDIENCES = [
   { id: "adults", label: "Adults", age: "18+", path: (lvl) => `/library/curriculum/adults/${lvl}` },
 ];
 
-export default function AudienceSwitchTabs({ active, level = "A1" }) {
+export default function AudienceSwitchTabs({ active, level = "A1", variant = "row" }) {
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -20,7 +20,7 @@ export default function AudienceSwitchTabs({ active, level = "A1" }) {
   }, []);
 
   return (
-    <div className="ast-row">
+    <div className={`ast-row ${variant === "banner" ? "ast-row--banner" : ""}`}>
       {AUDIENCES.map((a) => (
         <button
           key={a.id}
@@ -37,12 +37,14 @@ export default function AudienceSwitchTabs({ active, level = "A1" }) {
 
 const styles = `
 .ast-row { display: flex; justify-content: center; gap: 8px; margin-bottom: 22px; }
+.ast-row--banner { justify-content: flex-start; margin-bottom: 10px; }
 .ast-pill {
   display: inline-flex; align-items: center; gap: 6px; padding: 7px 16px; border-radius: 999px;
   border: 1.5px solid #EDE6F4; background: #fff; cursor: pointer;
   font-family: 'Source Serif 4', serif; font-weight: 600; font-size: 12.5px; color: #6B6E96;
   transition: all 0.15s ease;
 }
+.ast-row--banner .ast-pill { box-shadow: 0 2px 8px rgba(27,42,74,0.1); }
 .ast-pill .ast-age { font-family: 'Inter', sans-serif; font-weight: 700; font-size: 9px; text-transform: uppercase; letter-spacing: 0.04em; opacity: 0.65; }
 .ast-pill.is-active { background: #1B2A4A; border-color: #1B2A4A; color: #fff; cursor: default; }
 .ast-pill:not(.is-active):hover { border-color: #FF6B4A; color: #1B2A4A; }

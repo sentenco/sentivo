@@ -65,8 +65,6 @@ export default function TrackLevelPage({ audience, level, onBack }) {
       <div className="tlp-blob tlp-blob--b" />
 
       <div className="tlp-stage">
-        <AudienceSwitchTabs active={audience} level={level} />
-
         <button type="button" className="tlp-breadcrumb" onClick={onBack}>
           Curriculum <span className="tlp-crumb-sep">&rsaquo;</span> {track.label} <span className="tlp-crumb-sep">&rsaquo;</span> <span style={{ color: colors.color }}>{level} &middot; {data.name}</span>
         </button>
@@ -75,6 +73,8 @@ export default function TrackLevelPage({ audience, level, onBack }) {
           className="tlp-banner-hero"
           style={data.banner ? { backgroundImage: `url(${data.banner})` } : { background: colors.light }}
         >
+          <AudienceSwitchTabs active={audience} level={level} variant="banner" />
+
           <div className="tlp-cefr-tag" style={{ color: colors.color }}>{track.label} &middot; CEFR {level}</div>
           <div className="tlp-banner-title">
             <span className="tlp-level-code" style={{ color: colors.color }}>{level}</span>
