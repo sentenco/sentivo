@@ -162,6 +162,13 @@ const styles = `
   padding: 22px 32px 20px;
   text-align: center;
   margin-bottom: 32px;
+  height: 220px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
 }
 .co-hero-band--navy { background: #E7EAF3; }
 .co-hero-kicker-row { display: flex; align-items: center; justify-content: center; gap: 14px; margin-bottom: 4px; }

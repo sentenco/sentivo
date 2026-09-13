@@ -236,8 +236,10 @@ const styles = `
   display: flex;
   flex-direction: column;
   gap: 8px;
-  min-height: 200px;
+  height: 248px;
+  overflow: hidden;
   justify-content: center;
+  box-sizing: border-box;
 }
 .tlp-cefr-tag {
   display: inline-block;
@@ -254,7 +256,10 @@ const styles = `
 .tlp-banner-title { display: flex; align-items: baseline; gap: 12px; max-width: 60%; }
 .tlp-level-code { font-family: 'Source Serif 4', serif; font-size: 40px; font-weight: 600; line-height: 1; }
 .tlp-level-name { font-family: 'Source Serif 4', serif; font-size: 26px; font-weight: 600; color: #23264A; }
-.tlp-description { font-size: 13px; font-weight: 500; color: #4A5578; line-height: 1.55; max-width: 60%; }
+.tlp-description {
+  font-size: 13px; font-weight: 500; color: #4A5578; line-height: 1.55; max-width: 60%;
+  display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis;
+}
 @media (max-width: 700px) { .tlp-description { max-width: 100%; } }
 
 .tlp-stats-strip {

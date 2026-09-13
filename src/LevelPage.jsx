@@ -230,8 +230,10 @@ const styles = `
   display: flex;
   flex-direction: column;
   gap: 8px;
-  min-height: 200px;
+  height: 248px;
+  overflow: hidden;
   justify-content: center;
+  box-sizing: border-box;
 }
 .lp-cefr-tag {
   display: inline-block;
@@ -258,7 +260,10 @@ const styles = `
   font-weight: 600;
   color: #23264A;
 }
-.lp-description { font-size: 13px; font-weight: 500; color: #4A5578; line-height: 1.55; max-width: 55%; }
+.lp-description {
+  font-size: 13px; font-weight: 500; color: #4A5578; line-height: 1.55; max-width: 55%;
+  display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis;
+}
 @media (max-width: 700px) { .lp-banner-title, .lp-description { max-width: 100%; } }
 
 .lp-stats-strip {
