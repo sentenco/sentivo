@@ -3,6 +3,7 @@ import { useSearchParams } from "react-router-dom";
 import TRACKS from "./shiftTracks";
 
 const AUDIENCES = [
+  { key: "kids", label: "Kids" },
   { key: "teens", label: "Teens" },
   { key: "adults", label: "Adults" },
 ];

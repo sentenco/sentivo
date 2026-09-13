@@ -60,6 +60,37 @@ import airport3 from "./shiftAirport3";
 import airport4 from "./shiftAirport4";
 import airport5 from "./shiftAirport5";
 
+import kidsFamily1 from "./shiftKidsFamily1";
+import kidsFamily2 from "./shiftKidsFamily2";
+import kidsFamily3 from "./shiftKidsFamily3";
+import kidsFamily4 from "./shiftKidsFamily4";
+import kidsFamily5 from "./shiftKidsFamily5";
+import kidsSchool1 from "./shiftKidsSchool1";
+import kidsSchool2 from "./shiftKidsSchool2";
+import kidsSchool3 from "./shiftKidsSchool3";
+import kidsSchool4 from "./shiftKidsSchool4";
+import kidsSchool5 from "./shiftKidsSchool5";
+import kidsFriends1 from "./shiftKidsFriends1";
+import kidsFriends2 from "./shiftKidsFriends2";
+import kidsFriends3 from "./shiftKidsFriends3";
+import kidsFriends4 from "./shiftKidsFriends4";
+import kidsFriends5 from "./shiftKidsFriends5";
+import kidsBirthday1 from "./shiftKidsBirthday1";
+import kidsBirthday2 from "./shiftKidsBirthday2";
+import kidsBirthday3 from "./shiftKidsBirthday3";
+import kidsBirthday4 from "./shiftKidsBirthday4";
+import kidsBirthday5 from "./shiftKidsBirthday5";
+import kidsPets1 from "./shiftKidsPets1";
+import kidsPets2 from "./shiftKidsPets2";
+import kidsPets3 from "./shiftKidsPets3";
+import kidsPets4 from "./shiftKidsPets4";
+import kidsPets5 from "./shiftKidsPets5";
+import kidsAfterschool1 from "./shiftKidsAfterschool1";
+import kidsAfterschool2 from "./shiftKidsAfterschool2";
+import kidsAfterschool3 from "./shiftKidsAfterschool3";
+import kidsAfterschool4 from "./shiftKidsAfterschool4";
+import kidsAfterschool5 from "./shiftKidsAfterschool5";
+
 const TRACKS = [
   {
     id: "family",
@@ -159,6 +190,60 @@ const TRACKS = [
     audience: ["adults"],
     blurb: "Five travel scenes, five airport moments, one tense-accuracy skill trained live in conversation, not in isolated drills.",
     lessons: [airport1, airport2, airport3, airport4, airport5],
+  },
+  {
+    id: "kids-family",
+    title: "Family & Home",
+    gapFocus: "Simple Tense Choice",
+    level: "A1",
+    audience: ["kids"],
+    blurb: "Five family scenes at home, one simple tense choice trained live in easy, real conversation.",
+    lessons: [kidsFamily1, kidsFamily2, kidsFamily3, kidsFamily4, kidsFamily5],
+  },
+  {
+    id: "kids-school",
+    title: "School Day",
+    gapFocus: "Simple Tense Choice",
+    level: "A1",
+    audience: ["kids"],
+    blurb: "Five school-day scenes, one simple tense choice trained live in easy, real conversation.",
+    lessons: [kidsSchool1, kidsSchool2, kidsSchool3, kidsSchool4, kidsSchool5],
+  },
+  {
+    id: "kids-friends",
+    title: "Friends & Play",
+    gapFocus: "Simple Tense Choice",
+    level: "A1",
+    audience: ["kids"],
+    blurb: "Five playtime scenes with a best friend, one simple tense choice trained live in easy, real conversation.",
+    lessons: [kidsFriends1, kidsFriends2, kidsFriends3, kidsFriends4, kidsFriends5],
+  },
+  {
+    id: "kids-birthday",
+    title: "Birthday Party",
+    gapFocus: "Simple Tense Choice",
+    level: "A1",
+    audience: ["kids"],
+    blurb: "Five birthday party scenes, one simple tense choice trained live in easy, real conversation.",
+    lessons: [kidsBirthday1, kidsBirthday2, kidsBirthday3, kidsBirthday4, kidsBirthday5],
+  },
+  {
+    id: "kids-pets",
+    title: "Pets & Animals",
+    gapFocus: "Simple Tense Choice",
+    level: "A1",
+    audience: ["kids"],
+    blurb: "Five scenes with pets and animals, one simple tense choice trained live in easy, real conversation.",
+    lessons: [kidsPets1, kidsPets2, kidsPets3, kidsPets4, kidsPets5],
+  },
+  {
+    id: "kids-afterschool",
+    title: "After-School Fun",
+    gapFocus: "Simple Tense Choice",
+    level: "A1",
+    audience: ["kids"],
+    blurb: "Five after-school activity scenes, one simple tense choice trained live in easy, real conversation.",
+    lessons: [kidsAfterschool1, kidsAfterschool2, kidsAfterschool3, kidsAfterschool4, kidsAfterschool5],
   },
 ];
 
