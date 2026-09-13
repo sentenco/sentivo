@@ -129,13 +129,13 @@ const CSS = `
   color: #FFFFFF;
   margin: 0 0 12px;
   letter-spacing: -0.01em;
-  padding: 2px 6px;
+  padding: 10px 20px;
   background: #3E7CB1;
 }
 .rlh-hero-title::after {
   content: "";
   position: absolute;
-  top: 6px; left: 6px; right: -6px; bottom: -6px;
+  top: 8px; left: 8px; right: -8px; bottom: -8px;
   background: #2C5F8A;
   z-index: -1;
 }
