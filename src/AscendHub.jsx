@@ -221,7 +221,7 @@ const CSS = `
 
 .ah-column-tracks {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: 20px;
 }
 
@@ -304,5 +304,8 @@ const CSS = `
 
 @media (max-width: 760px) {
   .ah-columns { grid-template-columns: 1fr; gap: 32px; }
+}
+@media (max-width: 520px) {
+  .ah-column-tracks { grid-template-columns: 1fr; }
 }
 `;

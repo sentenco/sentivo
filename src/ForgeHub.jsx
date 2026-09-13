@@ -120,7 +120,7 @@ const CSS = `
   position: relative;
   z-index: 1;
   width: 100%;
-  max-width: 1080px;
+  max-width: 1400px;
   margin: 0 auto;
   padding: 26px 28px 64px;
 }
@@ -186,7 +186,7 @@ const CSS = `
 
 .fh-tracks-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-template-columns: repeat(4, 1fr);
   gap: 22px;
 }
 
@@ -257,6 +257,12 @@ const CSS = `
 .fh-ghost-label { font-family: 'Baloo 2', cursive; font-weight: 700; font-size: 17px; color: #4B8B92; opacity: 0.7; }
 .fh-ghost-sub { font-family: 'IBM Plex Sans', sans-serif; font-size: 12.5px; margin-top: 6px; color: #4B8B92; opacity: 0.6; }
 
+@media (max-width: 1180px) {
+  .fh-tracks-grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 860px) {
+  .fh-tracks-grid { grid-template-columns: repeat(2, 1fr); }
+}
 @media (max-width: 640px) {
   .fh-tracks-grid { grid-template-columns: 1fr; }
 }
