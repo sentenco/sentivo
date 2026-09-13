@@ -216,7 +216,7 @@ const styles = `
 
 .lp-stage { position: relative; z-index: 1; max-width: 1040px; margin: 0 auto; padding: 26px 40px 70px; }
 
-.lp-topbar { margin-bottom: 26px; }
+.lp-topbar { margin-bottom: 22px; }
 .lp-breadcrumb { font-size: 12px; font-weight: 600; color: #6B6E96; }
 .lp-crumb-sep { color: #C7C4DC; }
 
