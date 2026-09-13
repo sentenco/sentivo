@@ -58,15 +58,19 @@ export default function SequenceHub() {
   return (
     <div className="sqh-shell">
       <style>{CSS}</style>
+      <div className="sqh-block"></div>
+      <div className="sqh-block-b"></div>
+      <div className="sqh-echo">SEQUENCE</div>
       <div className="sqh-stage">
         <div className="sqh-hero">
+          <span className="sqh-hero-kicker">Speaking Modality</span>
           <h1 className="sqh-hero-title">Sequence</h1>
           <p className="sqh-hero-blurb">
             Sequence takes words a student already knows and drills putting them in the order that actually makes a sentence. Built for students who have the right words but can't arrange them.
           </p>
         </div>
 
-        <div className="sqh-dot-lane"></div>
+        <div className="sqh-rule"><span></span><i></i><span></span></div>
 
         <div className="sqh-audience-tabs">
           {AUDIENCES.map((a) => (
@@ -90,41 +94,62 @@ export default function SequenceHub() {
 }
 
 const CSS = `
-@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=IBM+Plex+Sans:wght@500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=IBM+Plex+Mono:wght@600&family=IBM+Plex+Sans:wght@500;600;700;800&display=swap');
 
 .sqh-shell {
   width: 100%;
   min-height: 100vh;
-  background-color: #DEF3FB;
-  background-image:
-    radial-gradient(circle at 6% 8%, rgba(92,107,192,0.18), transparent 30%),
-    radial-gradient(circle at 96% 14%, rgba(42,168,174,0.20), transparent 34%),
-    radial-gradient(circle at 18% 96%, rgba(42,168,174,0.20), transparent 28%),
-    radial-gradient(circle at 88% 90%, rgba(92,107,192,0.18), transparent 26%),
-    radial-gradient(rgba(16,100,107,0.10) 1.4px, transparent 1.4px),
-    linear-gradient(165deg, #EAFBF8 0%, #DEF3FB 100%);
-  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, repeat, no-repeat;
-  background-size: auto, auto, auto, auto, 28px 28px, auto;
-  background-attachment: fixed;
+  position: relative;
+  overflow: hidden;
+  background: #FBF3E9;
   box-sizing: border-box;
 }
 .sqh-shell * { box-sizing: border-box; }
 
-.sqh-stage { width: 100%; max-width: 1080px; margin: 0 auto; padding: 26px 28px 64px; }
+.sqh-block {
+  position: absolute; top: 0; right: 0; width: 0; height: 0;
+  border-style: solid; border-width: 0 220px 220px 0;
+  border-color: transparent #5C6BC0 transparent transparent; z-index: 0;
+}
+.sqh-block-b {
+  position: absolute; bottom: 0; right: 0; width: 0; height: 0;
+  border-style: solid; border-width: 160px 160px 0 0;
+  border-color: transparent #3F4C9E transparent transparent; z-index: 0;
+}
+.sqh-echo {
+  position: absolute; top: 6%; left: 50%; transform: translateX(-50%);
+  font-family: 'Baloo 2', cursive; font-weight: 800; font-size: 260px; line-height: 1;
+  color: #3F4C9E; opacity: 0.06; white-space: nowrap; z-index: 0; pointer-events: none;
+  letter-spacing: -0.02em;
+}
+
+.sqh-stage { position: relative; z-index: 1; width: 100%; max-width: 1080px; margin: 0 auto; padding: 26px 28px 64px; }
 
 .sqh-hero { max-width: 620px; margin: 0 auto; text-align: center; }
 .sqh-hero-title {
+  position: relative;
+  display: inline-block;
   font-family: 'Baloo 2', cursive;
   font-weight: 800;
   font-size: 56px;
-  color: #10646B;
-  margin: 0 0 16px;
+  color: #FFFFFF;
+  margin: 0 0 12px;
   letter-spacing: -0.01em;
-  text-shadow:
-    1.5px 1.5px 0 rgba(92,107,192,0.30),
-    3px 3px 0 rgba(92,107,192,0.30),
-    4.5px 4.5px 0 rgba(92,107,192,0.30),
-    5px 10px 22px rgba(16,100,107,0.22);
+  padding: 2px 6px;
+  background: #5C6BC0;
+}
+.sqh-hero-title::after {
+  content: "";
+  position: absolute;
+  top: 6px; left: 6px; right: -6px; bottom: -6px;
+  background: #3F4C9E;
+  z-index: -1;
+}
+.sqh-hero-kicker {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: 'IBM Plex Mono', monospace; font-weight: 600; font-size: 11.5px;
+  letter-spacing: 0.18em; text-transform: uppercase; color: #FFFFFF;
+  background: #3F4C9E; border-radius: 3px; padding: 6px 16px; margin-bottom: 16px;
 }
 .sqh-hero-blurb {
   font-family: 'IBM Plex Sans', sans-serif;
@@ -132,28 +157,16 @@ const CSS = `
   font-size: 16.5px;
   line-height: 1.6;
   color: #4B8B92;
-  margin: 0 auto;
+  margin: 20px auto 0;
   max-width: 520px;
 }
 
-.sqh-dot-lane {
-  position: relative;
-  height: 2px;
-  background: #CDEBEA;
-  margin: 34px auto 32px;
-  max-width: 340px;
+.sqh-rule {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  margin: 22px auto 24px;
 }
-.sqh-dot-lane::before, .sqh-dot-lane::after {
-  content: "";
-  position: absolute;
-  top: -4px;
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: #5C6BC0;
-}
-.sqh-dot-lane::before { left: 0; }
-.sqh-dot-lane::after { right: 0; }
+.sqh-rule span { display: block; height: 4px; width: 60px; background: #5C6BC0; }
+.sqh-rule i { display: block; width: 8px; height: 8px; background: #3F4C9E; transform: rotate(45deg); }
 
 .sqh-audience-tabs { display: flex; justify-content: center; gap: 8px; margin-bottom: 40px; }
 .sqh-audience-tab {

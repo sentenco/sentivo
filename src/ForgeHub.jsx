@@ -25,15 +25,19 @@ export default function ForgeHub() {
   return (
     <div className="fh-shell">
       <style>{CSS}</style>
+      <div className="fh-block"></div>
+      <div className="fh-block-b"></div>
+      <div className="fh-echo">FORGE</div>
       <div className="fh-stage">
         <div className="fh-hero">
+          <span className="fh-hero-kicker">Speaking Modality</span>
           <h1 className="fh-hero-title">Forge</h1>
           <p className="fh-hero-blurb">
             Forge builds real, working vocabulary through the situations you'll actually be in, one category at a time.
           </p>
         </div>
 
-        <div className="fh-dot-lane"></div>
+        <div className="fh-rule"><span></span><i></i><span></span></div>
 
         <div className="fh-audience-tabs">
           {AUDIENCES.map((a) => (
@@ -83,27 +87,38 @@ export default function ForgeHub() {
 }
 
 const CSS = `
-@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=IBM+Plex+Sans:wght@500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=IBM+Plex+Mono:wght@600&family=IBM+Plex+Sans:wght@500;600;700;800&display=swap');
 
 .fh-shell {
   width: 100%;
   min-height: 100vh;
-  background-color: #DEF3FB;
-  background-image:
-    radial-gradient(circle at 6% 8%, rgba(232,84,78,0.16), transparent 30%),
-    radial-gradient(circle at 96% 14%, rgba(42,168,174,0.20), transparent 34%),
-    radial-gradient(circle at 18% 96%, rgba(42,168,174,0.20), transparent 28%),
-    radial-gradient(circle at 88% 90%, rgba(232,84,78,0.16), transparent 26%),
-    radial-gradient(rgba(16,100,107,0.10) 1.4px, transparent 1.4px),
-    linear-gradient(165deg, #EAFBF8 0%, #DEF3FB 100%);
-  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, repeat, no-repeat;
-  background-size: auto, auto, auto, auto, 28px 28px, auto;
-  background-attachment: fixed;
+  position: relative;
+  overflow: hidden;
+  background: #FBF3E9;
   box-sizing: border-box;
 }
 .fh-shell * { box-sizing: border-box; }
 
+.fh-block {
+  position: absolute; top: 0; right: 0; width: 0; height: 0;
+  border-style: solid; border-width: 0 220px 220px 0;
+  border-color: transparent #E8544E transparent transparent; z-index: 0;
+}
+.fh-block-b {
+  position: absolute; bottom: 0; right: 0; width: 0; height: 0;
+  border-style: solid; border-width: 160px 160px 0 0;
+  border-color: transparent #C93F3A transparent transparent; z-index: 0;
+}
+.fh-echo {
+  position: absolute; top: 6%; left: 50%; transform: translateX(-50%);
+  font-family: 'Baloo 2', cursive; font-weight: 800; font-size: 260px; line-height: 1;
+  color: #C93F3A; opacity: 0.06; white-space: nowrap; z-index: 0; pointer-events: none;
+  letter-spacing: -0.02em;
+}
+
 .fh-stage {
+  position: relative;
+  z-index: 1;
   width: 100%;
   max-width: 1080px;
   margin: 0 auto;
@@ -112,17 +127,29 @@ const CSS = `
 
 .fh-hero { max-width: 620px; margin: 0 auto; text-align: center; }
 .fh-hero-title {
+  position: relative;
+  display: inline-block;
   font-family: 'Baloo 2', cursive;
   font-weight: 800;
   font-size: 56px;
-  color: #10646B;
-  margin: 0 0 16px;
+  color: #FFFFFF;
+  margin: 0 0 12px;
   letter-spacing: -0.01em;
-  text-shadow:
-    1.5px 1.5px 0 rgba(232,84,78,0.30),
-    3px 3px 0 rgba(232,84,78,0.30),
-    4.5px 4.5px 0 rgba(232,84,78,0.30),
-    5px 10px 22px rgba(16,100,107,0.22);
+  padding: 2px 6px;
+  background: #E8544E;
+}
+.fh-hero-title::after {
+  content: "";
+  position: absolute;
+  top: 6px; left: 6px; right: -6px; bottom: -6px;
+  background: #C93F3A;
+  z-index: -1;
+}
+.fh-hero-kicker {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: 'IBM Plex Mono', monospace; font-weight: 600; font-size: 11.5px;
+  letter-spacing: 0.18em; text-transform: uppercase; color: #FFFFFF;
+  background: #C93F3A; border-radius: 3px; padding: 6px 16px; margin-bottom: 16px;
 }
 .fh-hero-blurb {
   font-family: 'IBM Plex Sans', sans-serif;
@@ -130,28 +157,16 @@ const CSS = `
   font-size: 16.5px;
   line-height: 1.6;
   color: #4B8B92;
-  margin: 0 auto;
+  margin: 20px auto 0;
   max-width: 520px;
 }
 
-.fh-dot-lane {
-  position: relative;
-  height: 2px;
-  background: #CDEBEA;
-  margin: 34px auto 40px;
-  max-width: 340px;
+.fh-rule {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  margin: 22px auto 24px;
 }
-.fh-dot-lane::before, .fh-dot-lane::after {
-  content: "";
-  position: absolute;
-  top: -4px;
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: #E8544E;
-}
-.fh-dot-lane::before { left: 0; }
-.fh-dot-lane::after { right: 0; }
+.fh-rule span { display: block; height: 4px; width: 60px; background: #E8544E; }
+.fh-rule i { display: block; width: 8px; height: 8px; background: #C93F3A; transform: rotate(45deg); }
 
 .fh-audience-tabs { display: flex; justify-content: center; gap: 8px; margin-bottom: 32px; }
 .fh-audience-tab {
