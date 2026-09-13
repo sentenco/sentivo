@@ -129,13 +129,13 @@ const CSS = `
   color: #FFFFFF;
   margin: 0 0 12px;
   letter-spacing: -0.01em;
-  padding: 10px 20px;
+  padding: 18px 34px;
   background: #D6478C;
 }
 .dvh-hero-title::after {
   content: "";
   position: absolute;
-  top: 8px; left: 8px; right: -8px; bottom: -8px;
+  top: 12px; left: 12px; right: -12px; bottom: -12px;
   background: #B23370;
   z-index: -1;
 }
