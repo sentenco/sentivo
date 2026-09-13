@@ -56,13 +56,17 @@ export default function ShiftTrack() {
   return (
     <div className="sht-shell">
       <style>{CSS}</style>
+      <div className="sht-block"></div>
+      <div className="sht-block-b"></div>
+      <div className="sht-echo">SHIFT</div>
       <div className="sht-stage">
         <div className="sht-hero">
+          <span className="sht-hero-kicker">Shift</span>
+          <h1 className="sht-hero-title">{track.title}</h1>
           <div className="sht-hero-tags">
             <span className="sht-tag">{track.gapFocus}</span>
             <span className="sht-tag sht-tag--level">{track.level}</span>
           </div>
-          <h1 className="sht-hero-title">{track.title}</h1>
         </div>
 
         <div className="sht-lesson-list">
@@ -107,32 +111,65 @@ export default function ShiftTrack() {
 }
 
 const CSS = `
-@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=IBM+Plex+Sans:wght@500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=IBM+Plex+Mono:wght@600&family=IBM+Plex+Sans:wght@500;600;700;800&display=swap');
 
 .sht-shell {
   width: 100%;
   min-height: 100vh;
-  background-color: #DEF3FB;
-  background-image:
-    radial-gradient(circle at 6% 8%, rgba(232,180,0,0.18), transparent 30%),
-    radial-gradient(circle at 96% 14%, rgba(42,168,174,0.20), transparent 34%),
-    radial-gradient(circle at 18% 96%, rgba(42,168,174,0.20), transparent 28%),
-    radial-gradient(circle at 88% 90%, rgba(232,180,0,0.18), transparent 26%),
-    radial-gradient(rgba(16,100,107,0.10) 1.4px, transparent 1.4px),
-    linear-gradient(165deg, #EAFBF8 0%, #DEF3FB 100%);
-  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, repeat, no-repeat;
-  background-size: auto, auto, auto, auto, 28px 28px, auto;
-  background-attachment: fixed;
+  position: relative;
+  overflow: hidden;
+  background: #FBF3E9;
   box-sizing: border-box;
 }
 .sht-shell * { box-sizing: border-box; }
 
-.sht-stage { width: 100%; max-width: 880px; margin: 0 auto; padding: 26px 28px 64px; }
+.sht-block {
+  position: absolute; top: 0; right: 0; width: 0; height: 0;
+  border-style: solid; border-width: 0 220px 220px 0;
+  border-color: transparent #FFDE70 transparent transparent; z-index: 0;
+}
+.sht-block-b {
+  position: absolute; bottom: 0; right: 0; width: 0; height: 0;
+  border-style: solid; border-width: 160px 160px 0 0;
+  border-color: transparent #FFCF3D transparent transparent; z-index: 0;
+}
+.sht-echo {
+  position: absolute; top: 6%; left: 50%; transform: translateX(-50%);
+  font-family: 'Baloo 2', cursive; font-weight: 800; font-size: 260px; line-height: 1;
+  color: #FFCF3D; opacity: 0.06; white-space: nowrap; z-index: 0; pointer-events: none;
+  letter-spacing: -0.02em;
+}
+
+.sht-stage { position: relative; z-index: 1; width: 100%; max-width: 880px; margin: 0 auto; padding: 26px 28px 64px; }
 
 .sht-missing { font-family: 'IBM Plex Sans', sans-serif; color: #4B8B92; text-align: center; margin-top: 60px; }
 
 .sht-hero { text-align: center; margin-bottom: 40px; }
-.sht-hero-tags { display: flex; justify-content: center; gap: 8px; margin-bottom: 16px; }
+.sht-hero-kicker {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: 'IBM Plex Mono', monospace; font-weight: 600; font-size: 11.5px;
+  letter-spacing: 0.18em; text-transform: uppercase; color: #FFFFFF;
+  background: #FFCF3D; border-radius: 3px; padding: 6px 16px; margin-bottom: 16px;
+}
+.sht-hero-title {
+  position: relative;
+  display: inline-block;
+  font-family: 'Baloo 2', cursive;
+  font-weight: 800;
+  font-size: 42px;
+  color: #10646B;
+  margin: 0 0 18px;
+  padding: 12px 22px;
+  background: #FFDE70;
+}
+.sht-hero-title::after {
+  content: "";
+  position: absolute;
+  top: 8px; left: 8px; right: -8px; bottom: -8px;
+  background: #FFCF3D;
+  z-index: -1;
+}
+.sht-hero-tags { display: flex; justify-content: center; gap: 8px; }
 .sht-tag {
   font-family: 'IBM Plex Sans', sans-serif;
   font-weight: 700;
@@ -143,18 +180,6 @@ const CSS = `
   padding: 4px 12px;
 }
 .sht-tag--level { color: #10646B; background: #FFDE70; }
-.sht-hero-title {
-  font-family: 'Baloo 2', cursive;
-  font-weight: 800;
-  font-size: 42px;
-  color: #10646B;
-  margin: 0;
-  text-shadow:
-    1.2px 1.2px 0 rgba(255,207,61,0.32),
-    2.4px 2.4px 0 rgba(255,207,61,0.32),
-    3.6px 3.6px 0 rgba(255,207,61,0.32),
-    4px 8px 18px rgba(16,100,107,0.2);
-}
 
 .sht-lesson-list { display: flex; flex-direction: column; gap: 14px; }
 .sht-row {

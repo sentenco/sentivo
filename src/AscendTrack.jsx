@@ -48,6 +48,9 @@ export default function AscendTrack() {
     return (
       <div className="as-shell">
         <style>{CSS}</style>
+      <div className="as-block"></div>
+      <div className="as-block-b"></div>
+      <div className="as-echo">ASCEND</div>
         <div className="as-stage">
           <p className="as-missing">Track not found.</p>
         </div>
@@ -58,13 +61,17 @@ export default function AscendTrack() {
   return (
     <div className="as-shell">
       <style>{CSS}</style>
+      <div className="as-block"></div>
+      <div className="as-block-b"></div>
+      <div className="as-echo">ASCEND</div>
       <div className="as-stage">
         <div className="as-hero">
+          <span className="as-hero-kicker">Ascend</span>
+          <h1 className="as-hero-title">{track.title}</h1>
           <div className="as-hero-tags">
             <span className="as-tag">{track.theme}</span>
             <span className="as-tag as-tag--level">{track.level}</span>
           </div>
-          <h1 className="as-hero-title">{track.title}</h1>
         </div>
 
         <div className="as-lesson-list">
@@ -109,32 +116,41 @@ export default function AscendTrack() {
 }
 
 const CSS = `
-@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=IBM+Plex+Sans:wght@500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=IBM+Plex+Mono:wght@600&family=IBM+Plex+Sans:wght@500;600;700;800&display=swap');
 
 .as-shell {
   width: 100%;
   min-height: 100vh;
-  background-color: #DEF3FB;
-  background-image:
-    radial-gradient(circle at 6% 8%, rgba(242,153,74,0.18), transparent 30%),
-    radial-gradient(circle at 96% 14%, rgba(42,168,174,0.20), transparent 34%),
-    radial-gradient(circle at 18% 96%, rgba(42,168,174,0.20), transparent 28%),
-    radial-gradient(circle at 88% 90%, rgba(242,153,74,0.18), transparent 26%),
-    radial-gradient(rgba(16,100,107,0.10) 1.4px, transparent 1.4px),
-    linear-gradient(165deg, #EAFBF8 0%, #DEF3FB 100%);
-  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, repeat, no-repeat;
-  background-size: auto, auto, auto, auto, 28px 28px, auto;
-  background-attachment: fixed;
+  position: relative;
+  overflow: hidden;
+  background: #FBF3E9;
   box-sizing: border-box;
 }
 .as-shell * { box-sizing: border-box; }
 
-.as-stage { width: 100%; max-width: 880px; margin: 0 auto; padding: 26px 28px 64px; }
+.as-block {
+  position: absolute; top: 0; right: 0; width: 0; height: 0;
+  border-style: solid; border-width: 0 220px 220px 0;
+  border-color: transparent #F2994A transparent transparent; z-index: 0;
+}
+.as-block-b {
+  position: absolute; bottom: 0; right: 0; width: 0; height: 0;
+  border-style: solid; border-width: 160px 160px 0 0;
+  border-color: transparent #D97D2E transparent transparent; z-index: 0;
+}
+.as-echo {
+  position: absolute; top: 6%; left: 50%; transform: translateX(-50%);
+  font-family: 'Baloo 2', cursive; font-weight: 800; font-size: 260px; line-height: 1;
+  color: #D97D2E; opacity: 0.06; white-space: nowrap; z-index: 0; pointer-events: none;
+  letter-spacing: -0.02em;
+}
+
+.as-stage { position: relative; z-index: 1; width: 100%; max-width: 880px; margin: 0 auto; padding: 26px 28px 64px; }
 
 .as-missing { font-family: 'IBM Plex Sans', sans-serif; color: #4B8B92; text-align: center; margin-top: 60px; }
 
 .as-hero { text-align: center; margin-bottom: 40px; }
-.as-hero-tags { display: flex; justify-content: center; gap: 8px; margin-bottom: 16px; }
+.as-hero-tags { display: flex; justify-content: center; gap: 8px; }
 .as-tag {
   font-family: 'IBM Plex Sans', sans-serif;
   font-weight: 700;
@@ -145,17 +161,29 @@ const CSS = `
   padding: 4px 12px;
 }
 .as-tag--level { color: #FFFFFF; background: #F2994A; }
+.as-hero-kicker {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: 'IBM Plex Mono', monospace; font-weight: 600; font-size: 11.5px;
+  letter-spacing: 0.18em; text-transform: uppercase; color: #FFFFFF;
+  background: #D97D2E; border-radius: 3px; padding: 6px 16px; margin-bottom: 16px;
+}
 .as-hero-title {
+  position: relative;
+  display: inline-block;
   font-family: 'Baloo 2', cursive;
   font-weight: 800;
   font-size: 42px;
   color: #10646B;
-  margin: 0;
-  text-shadow:
-    1.2px 1.2px 0 rgba(242,153,74,0.32),
-    2.4px 2.4px 0 rgba(242,153,74,0.32),
-    3.6px 3.6px 0 rgba(242,153,74,0.32),
-    4px 8px 18px rgba(16,100,107,0.2);
+  margin: 0 0 18px;
+  padding: 12px 22px;
+  background: #F2994A;
+}
+.as-hero-title::after {
+  content: "";
+  position: absolute;
+  top: 8px; left: 8px; right: -8px; bottom: -8px;
+  background: #D97D2E;
+  z-index: -1;
 }
 
 .as-lesson-list { display: flex; flex-direction: column; gap: 14px; }
