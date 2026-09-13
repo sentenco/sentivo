@@ -32,7 +32,6 @@ export default function VerbTensesTrack() {
       <style>{CSS}</style>
       <div className="vt-stage">
         <div className="vt-hero">
-          <span className="vt-hero-badge">Time Travel!</span>
           <h1 className="vt-hero-title">Verb Tenses</h1>
           <p className="vt-hero-blurb">
             The 12 basic English tenses, one pair of lessons each: a Discussion lesson to build the meaning, form, and
@@ -97,21 +96,8 @@ const CSS = `
 }
 
 .vt-hero { margin-bottom: 34px; }
-.vt-hero-badge {
-  display: inline-block;
-  font-family: 'Bangers', cursive;
-  font-weight: 400;
-  font-size: 16px;
-  letter-spacing: 0.4px;
-  color: #FFFFFF;
-  background: #5E60CE;
-  border: 3px solid #1A1A1A;
-  border-radius: 999px;
-  padding: 3px 16px 5px;
-  transform: rotate(-3deg);
-  margin-bottom: 12px;
-}
 .vt-hero-title {
+  text-align: center;
   font-family: 'Bangers', cursive;
   font-weight: 400;
   font-size: 52px;
@@ -122,11 +108,12 @@ const CSS = `
   text-shadow: 3px 3px 0 #E76F51;
 }
 .vt-hero-blurb {
+  text-align: center;
   font-family: 'Comic Neue', cursive, sans-serif;
   font-weight: 700;
   font-size: 16px;
   color: #3A3226;
-  margin: 0;
+  margin: 0 auto;
   max-width: 620px;
   line-height: 1.55;
 }

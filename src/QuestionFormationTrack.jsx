@@ -23,7 +23,6 @@ export default function QuestionFormationTrack() {
       <style>{CSS}</style>
       <div className="qft-stage">
         <div className="qft-hero">
-          <span className="qft-hero-badge">Ask Away!</span>
           <h1 className="qft-hero-title">Question Formation</h1>
           <p className="qft-hero-blurb">
             Yes/no questions, wh-questions, question tags, and indirect questions: 4 lessons covering how a
@@ -78,21 +77,8 @@ const CSS = `
 }
 
 .qft-hero { margin-bottom: 34px; }
-.qft-hero-badge {
-  display: inline-block;
-  font-family: 'Bangers', cursive;
-  font-weight: 400;
-  font-size: 16px;
-  letter-spacing: 0.4px;
-  color: #FFFFFF;
-  background: #0E7C86;
-  border: 3px solid #1A1A1A;
-  border-radius: 999px;
-  padding: 3px 16px 5px;
-  transform: rotate(-3deg);
-  margin-bottom: 12px;
-}
 .qft-hero-title {
+  text-align: center;
   font-family: 'Bangers', cursive;
   font-weight: 400;
   font-size: 52px;
@@ -103,11 +89,12 @@ const CSS = `
   text-shadow: 3px 3px 0 #FFC300;
 }
 .qft-hero-blurb {
+  text-align: center;
   font-family: 'Comic Neue', cursive, sans-serif;
   font-weight: 700;
   font-size: 16px;
   color: #1B3A3D;
-  margin: 0;
+  margin: 0 auto;
   max-width: 640px;
   line-height: 1.55;
 }

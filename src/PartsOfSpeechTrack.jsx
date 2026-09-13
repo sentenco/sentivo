@@ -115,11 +115,12 @@ const CSS = `
   text-shadow: 3px 3px 0 #FFC300;
 }
 .pos-hero-blurb {
+  text-align: center;
   font-family: 'Comic Neue', cursive, sans-serif;
   font-weight: 700;
   font-size: 16px;
   color: #3A3226;
-  margin: 0;
+  margin: 0 auto;
   max-width: 640px;
   line-height: 1.55;
 }

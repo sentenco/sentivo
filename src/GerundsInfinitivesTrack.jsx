@@ -23,7 +23,6 @@ export default function GerundsInfinitivesTrack() {
       <style>{CSS}</style>
       <div className="git-stage">
         <div className="git-hero">
-          <span className="git-hero-badge">To Do or -ing?</span>
           <h1 className="git-hero-title">Gerunds &amp; Infinitives</h1>
           <p className="git-hero-blurb">
             Verbs that demand one or the other, verbs that take either (and a few that flip meaning), gerunds as
@@ -78,21 +77,8 @@ const CSS = `
 }
 
 .git-hero { margin-bottom: 34px; }
-.git-hero-badge {
-  display: inline-block;
-  font-family: 'Bangers', cursive;
-  font-weight: 400;
-  font-size: 16px;
-  letter-spacing: 0.4px;
-  color: #FFFFFF;
-  background: #96762B;
-  border: 3px solid #1A1A1A;
-  border-radius: 999px;
-  padding: 3px 16px 5px;
-  transform: rotate(-3deg);
-  margin-bottom: 12px;
-}
 .git-hero-title {
+  text-align: center;
   font-family: 'Bangers', cursive;
   font-weight: 400;
   font-size: 44px;
@@ -103,11 +89,12 @@ const CSS = `
   text-shadow: 3px 3px 0 #FFC300;
 }
 .git-hero-blurb {
+  text-align: center;
   font-family: 'Comic Neue', cursive, sans-serif;
   font-weight: 700;
   font-size: 16px;
   color: #3A2F12;
-  margin: 0;
+  margin: 0 auto;
   max-width: 640px;
   line-height: 1.55;
 }

@@ -23,7 +23,6 @@ export default function ReportedSpeechTrack() {
       <style>{CSS}</style>
       <div className="rst-stage">
         <div className="rst-hero">
-          <span className="rst-hero-badge">She Said, He Said!</span>
           <h1 className="rst-hero-title">Reported Speech</h1>
           <p className="rst-hero-blurb">
             Backshift, say vs tell, time and place changes, reported questions, commands, and the exceptions
@@ -78,21 +77,8 @@ const CSS = `
 }
 
 .rst-hero { margin-bottom: 34px; }
-.rst-hero-badge {
-  display: inline-block;
-  font-family: 'Bangers', cursive;
-  font-weight: 400;
-  font-size: 16px;
-  letter-spacing: 0.4px;
-  color: #FFFFFF;
-  background: #2C4870;
-  border: 3px solid #1A1A1A;
-  border-radius: 999px;
-  padding: 3px 16px 5px;
-  transform: rotate(-3deg);
-  margin-bottom: 12px;
-}
 .rst-hero-title {
+  text-align: center;
   font-family: 'Bangers', cursive;
   font-weight: 400;
   font-size: 48px;
@@ -103,11 +89,12 @@ const CSS = `
   text-shadow: 3px 3px 0 #FFC300;
 }
 .rst-hero-blurb {
+  text-align: center;
   font-family: 'Comic Neue', cursive, sans-serif;
   font-weight: 700;
   font-size: 16px;
   color: #1E2E45;
-  margin: 0;
+  margin: 0 auto;
   max-width: 640px;
   line-height: 1.55;
 }

@@ -23,7 +23,6 @@ export default function ComparativesTrack() {
       <style>{CSS}</style>
       <div className="cst-stage">
         <div className="cst-hero">
-          <span className="cst-hero-badge">Bigger, Better, Best!</span>
           <h1 className="cst-hero-title">Comparatives &amp; Superlatives</h1>
           <p className="cst-hero-blurb">
             Short adjectives, long adjectives, irregular forms, equal comparison, degree modifiers, and double
@@ -78,21 +77,8 @@ const CSS = `
 }
 
 .cst-hero { margin-bottom: 34px; }
-.cst-hero-badge {
-  display: inline-block;
-  font-family: 'Bangers', cursive;
-  font-weight: 400;
-  font-size: 16px;
-  letter-spacing: 0.4px;
-  color: #FFFFFF;
-  background: #A6238C;
-  border: 3px solid #1A1A1A;
-  border-radius: 999px;
-  padding: 3px 16px 5px;
-  transform: rotate(-3deg);
-  margin-bottom: 12px;
-}
 .cst-hero-title {
+  text-align: center;
   font-family: 'Bangers', cursive;
   font-weight: 400;
   font-size: 44px;
@@ -103,11 +89,12 @@ const CSS = `
   text-shadow: 3px 3px 0 #FFC300;
 }
 .cst-hero-blurb {
+  text-align: center;
   font-family: 'Comic Neue', cursive, sans-serif;
   font-weight: 700;
   font-size: 16px;
   color: #3A1E33;
-  margin: 0;
+  margin: 0 auto;
   max-width: 640px;
   line-height: 1.55;
 }

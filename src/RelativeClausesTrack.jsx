@@ -23,7 +23,6 @@ export default function RelativeClausesTrack() {
       <style>{CSS}</style>
       <div className="rct-stage">
         <div className="rct-hero">
-          <span className="rct-hero-badge">Which One?</span>
           <h1 className="rct-hero-title">Relative Clauses</h1>
           <p className="rct-hero-blurb">
             Who, which, that, whose, where, when, the comma rule, and shrinking a clause down to a phrase: 4
@@ -78,21 +77,8 @@ const CSS = `
 }
 
 .rct-hero { margin-bottom: 34px; }
-.rct-hero-badge {
-  display: inline-block;
-  font-family: 'Bangers', cursive;
-  font-weight: 400;
-  font-size: 16px;
-  letter-spacing: 0.4px;
-  color: #FFFFFF;
-  background: #55707F;
-  border: 3px solid #1A1A1A;
-  border-radius: 999px;
-  padding: 3px 16px 5px;
-  transform: rotate(-3deg);
-  margin-bottom: 12px;
-}
 .rct-hero-title {
+  text-align: center;
   font-family: 'Bangers', cursive;
   font-weight: 400;
   font-size: 48px;
@@ -103,11 +89,12 @@ const CSS = `
   text-shadow: 3px 3px 0 #FFC300;
 }
 .rct-hero-blurb {
+  text-align: center;
   font-family: 'Comic Neue', cursive, sans-serif;
   font-weight: 700;
   font-size: 16px;
   color: #22303A;
-  margin: 0;
+  margin: 0 auto;
   max-width: 640px;
   line-height: 1.55;
 }

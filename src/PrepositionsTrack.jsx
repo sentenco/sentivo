@@ -23,7 +23,6 @@ export default function PrepositionsTrack() {
       <style>{CSS}</style>
       <div className="prt-stage">
         <div className="prt-hero">
-          <span className="prt-hero-badge">In, On, or At?</span>
           <h1 className="prt-hero-title">Prepositions</h1>
           <p className="prt-hero-blurb">
             Place, time, movement, the fixed pairings verbs and adjectives demand, and by/with/without: 6
@@ -78,21 +77,8 @@ const CSS = `
 }
 
 .prt-hero { margin-bottom: 34px; }
-.prt-hero-badge {
-  display: inline-block;
-  font-family: 'Bangers', cursive;
-  font-weight: 400;
-  font-size: 16px;
-  letter-spacing: 0.4px;
-  color: #FFFFFF;
-  background: #B23A3A;
-  border: 3px solid #1A1A1A;
-  border-radius: 999px;
-  padding: 3px 16px 5px;
-  transform: rotate(-3deg);
-  margin-bottom: 12px;
-}
 .prt-hero-title {
+  text-align: center;
   font-family: 'Bangers', cursive;
   font-weight: 400;
   font-size: 52px;
@@ -103,11 +89,12 @@ const CSS = `
   text-shadow: 3px 3px 0 #FFC300;
 }
 .prt-hero-blurb {
+  text-align: center;
   font-family: 'Comic Neue', cursive, sans-serif;
   font-weight: 700;
   font-size: 16px;
   color: #3A1E1E;
-  margin: 0;
+  margin: 0 auto;
   max-width: 640px;
   line-height: 1.55;
 }

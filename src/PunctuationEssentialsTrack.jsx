@@ -23,7 +23,6 @@ export default function PunctuationEssentialsTrack() {
       <style>{CSS}</style>
       <div className="puet-stage">
         <div className="puet-hero">
-          <span className="puet-hero-badge">Mark It Right!</span>
           <h1 className="puet-hero-title">Punctuation Essentials</h1>
           <p className="puet-hero-blurb">
             Commas, apostrophes, semicolons and colons, and quotation marks: 5 lessons, one mark at a time.
@@ -77,21 +76,8 @@ const CSS = `
 }
 
 .puet-hero { margin-bottom: 34px; }
-.puet-hero-badge {
-  display: inline-block;
-  font-family: 'Bangers', cursive;
-  font-weight: 400;
-  font-size: 16px;
-  letter-spacing: 0.4px;
-  color: #FFFFFF;
-  background: #4C9A5D;
-  border: 3px solid #1A1A1A;
-  border-radius: 999px;
-  padding: 3px 16px 5px;
-  transform: rotate(-3deg);
-  margin-bottom: 12px;
-}
 .puet-hero-title {
+  text-align: center;
   font-family: 'Bangers', cursive;
   font-weight: 400;
   font-size: 48px;
@@ -102,11 +88,12 @@ const CSS = `
   text-shadow: 3px 3px 0 #FFC300;
 }
 .puet-hero-blurb {
+  text-align: center;
   font-family: 'Comic Neue', cursive, sans-serif;
   font-weight: 700;
   font-size: 16px;
   color: #1F3A26;
-  margin: 0;
+  margin: 0 auto;
   max-width: 640px;
   line-height: 1.55;
 }

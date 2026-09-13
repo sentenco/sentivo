@@ -23,7 +23,6 @@ export default function PronounsTrack() {
       <style>{CSS}</style>
       <div className="ppt-stage">
         <div className="ppt-hero">
-          <span className="ppt-hero-badge">Who Owns What?</span>
           <h1 className="ppt-hero-title">Pronouns &amp; Possessives</h1>
           <p className="ppt-hero-blurb">
             I vs me, my vs mine, myself vs himself, this vs that, and the apostrophe that shows ownership: 5
@@ -78,21 +77,8 @@ const CSS = `
 }
 
 .ppt-hero { margin-bottom: 34px; }
-.ppt-hero-badge {
-  display: inline-block;
-  font-family: 'Bangers', cursive;
-  font-weight: 400;
-  font-size: 16px;
-  letter-spacing: 0.4px;
-  color: #FFFFFF;
-  background: #6B9E1E;
-  border: 3px solid #1A1A1A;
-  border-radius: 999px;
-  padding: 3px 16px 5px;
-  transform: rotate(-3deg);
-  margin-bottom: 12px;
-}
 .ppt-hero-title {
+  text-align: center;
   font-family: 'Bangers', cursive;
   font-weight: 400;
   font-size: 46px;
@@ -103,11 +89,12 @@ const CSS = `
   text-shadow: 3px 3px 0 #FFC300;
 }
 .ppt-hero-blurb {
+  text-align: center;
   font-family: 'Comic Neue', cursive, sans-serif;
   font-weight: 700;
   font-size: 16px;
   color: #2A3517;
-  margin: 0;
+  margin: 0 auto;
   max-width: 640px;
   line-height: 1.55;
 }
