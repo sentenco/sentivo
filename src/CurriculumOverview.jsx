@@ -76,6 +76,12 @@ export default function CurriculumOverview({ onSelectLevel }) {
           </div>
           <h1 className="co-title">Curriculum</h1>
 
+          <div className="co-stat-row">
+            <div className="co-stat"><div className="co-stat-num co-stat-num--coral">2</div><div className="co-stat-label">Levels</div></div>
+            <div className="co-stat"><div className="co-stat-num co-stat-num--navy">24</div><div className="co-stat-label">Units</div></div>
+            <div className="co-stat"><div className="co-stat-num co-stat-num--coral">144</div><div className="co-stat-label">Lessons</div></div>
+          </div>
+
           <div className="co-audience-toggle">
             {AUDIENCES.map((a) => (
               <button
@@ -87,12 +93,6 @@ export default function CurriculumOverview({ onSelectLevel }) {
                 {a.label} <span className="co-audience-age">{a.age}</span>
               </button>
             ))}
-          </div>
-
-          <div className="co-stat-row">
-            <div className="co-stat"><div className="co-stat-num co-stat-num--coral">2</div><div className="co-stat-label">Levels</div></div>
-            <div className="co-stat"><div className="co-stat-num co-stat-num--navy">24</div><div className="co-stat-label">Units</div></div>
-            <div className="co-stat"><div className="co-stat-num co-stat-num--coral">144</div><div className="co-stat-label">Lessons</div></div>
           </div>
         </div>
 
@@ -146,7 +146,7 @@ const styles = `
 
 .co-stage { position: relative; z-index: 1; max-width: 1040px; margin: 0 auto; padding: 26px 40px 70px; }
 
-.co-audience-toggle { display: inline-flex; background: #fff; border-radius: 999px; padding: 4px; gap: 4px; margin: 0 0 18px; }
+.co-audience-toggle { display: inline-flex; background: #fff; border-radius: 999px; padding: 4px; gap: 4px; margin: 16px 0 0; }
 .co-audience-btn {
   display: inline-flex; align-items: center; gap: 7px;
   font-family: 'Source Serif 4', serif; font-weight: 600; font-size: 13.5px; color: #6B6E96;

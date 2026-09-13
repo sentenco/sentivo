@@ -55,14 +55,14 @@ export default function LevelPage({ level = "A1" }) {
           className="lp-banner-hero"
           style={data.banner ? { backgroundImage: `url(${data.banner})` } : { background: data.light }}
         >
-          <AudienceSwitchTabs active="kids" level={level} variant="banner" />
-
           <div className="lp-cefr-tag" style={{ color: data.color, background: "#fff" }}>{data.cefr}</div>
           <div className="lp-banner-title">
             <span className="lp-level-code" style={{ color: data.color }}>{level}</span>
             <span className="lp-level-name">{data.name}</span>
           </div>
           <p className="lp-description">{data.description}</p>
+
+          <AudienceSwitchTabs active="kids" level={level} variant="banner" />
         </div>
 
         <div className="lp-stats-strip">

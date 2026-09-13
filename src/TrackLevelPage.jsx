@@ -73,14 +73,14 @@ export default function TrackLevelPage({ audience, level, onBack }) {
           className="tlp-banner-hero"
           style={data.banner ? { backgroundImage: `url(${data.banner})` } : { background: colors.light }}
         >
-          <AudienceSwitchTabs active={audience} level={level} variant="banner" />
-
           <div className="tlp-cefr-tag" style={{ color: colors.color }}>{track.label} &middot; CEFR {level}</div>
           <div className="tlp-banner-title">
             <span className="tlp-level-code" style={{ color: colors.color }}>{level}</span>
             <span className="tlp-level-name">{data.name}</span>
           </div>
           <p className="tlp-description">{data.description}</p>
+
+          <AudienceSwitchTabs active={audience} level={level} variant="banner" />
         </div>
 
         <div className="tlp-stats-strip">

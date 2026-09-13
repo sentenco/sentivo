@@ -37,7 +37,7 @@ export default function AudienceSwitchTabs({ active, level = "A1", variant = "ro
 
 const styles = `
 .ast-row { display: flex; justify-content: center; gap: 8px; margin-bottom: 22px; }
-.ast-row--banner { justify-content: flex-start; margin-bottom: 10px; }
+.ast-row--banner { justify-content: center; margin-bottom: 0; margin-top: 6px; }
 .ast-pill {
   display: inline-flex; align-items: center; gap: 6px; padding: 7px 16px; border-radius: 999px;
   border: 1.5px solid #EDE6F4; background: #fff; cursor: pointer;
